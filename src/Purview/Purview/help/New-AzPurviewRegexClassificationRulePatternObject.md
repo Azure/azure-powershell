@@ -1,7 +1,7 @@
 ---
 external help file: Az.Purview-help.xml
 Module Name: Az.Purview
-online version: https://docs.microsoft.com/powershell/module/az.Purview/new-AzPurviewRegexClassificationRulePatternObject
+online version: https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewRegexClassificationRulePatternObject
 schema: 2.0.0
 ---
 
@@ -23,8 +23,10 @@ Create an in-memory object for RegexClassificationRulePattern.
 
 ### Example 1: Create Regex Classification Rule Pattern Object
 ```powershell
-PS C:\> New-AzPurviewRegexClassificationRulePatternObject -Pattern '^col1$'
+New-AzPurviewRegexClassificationRulePatternObject -Pattern '^col1$'
+```
 
+```output
 Kind  Pattern
 ----  -------
 Regex ^col1$

@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.ImportExport
-online version: https://docs.microsoft.com/powershell/module/az.importexport/get-azimportexport
+online version: https://learn.microsoft.com/powershell/module/az.importexport/get-azimportexport
 schema: 2.0.0
 ---
 
@@ -14,7 +14,7 @@ Gets information about an existing job.
 
 ### List (Default)
 ```
-Get-AzImportExport [-SubscriptionId <String[]>] [-Filter <String>] [-Top <Int32>] [-AcceptLanguage <String>]
+Get-AzImportExport [-SubscriptionId <String[]>] [-Filter <String>] [-Top <Int64>] [-AcceptLanguage <String>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -32,7 +32,7 @@ Get-AzImportExport -InputObject <IImportExportIdentity> [-AcceptLanguage <String
 
 ### List1
 ```
-Get-AzImportExport -ResourceGroupName <String> [-SubscriptionId <String[]>] [-Filter <String>] [-Top <Int32>]
+Get-AzImportExport -ResourceGroupName <String> [-SubscriptionId <String[]>] [-Filter <String>] [-Top <Int64>]
  [-AcceptLanguage <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -207,7 +207,7 @@ An integer value that specifies how many jobs at most should be returned.
 The value cannot exceed 100.
 
 ```yaml
-Type: System.Int32
+Type: System.Int64
 Parameter Sets: List, List1
 Aliases:
 
@@ -227,7 +227,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.IJobResponse
+### Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api202101.IJobResponse
 
 ## NOTES
 
@@ -238,7 +238,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IImportExportIdentity>: Identity Parameter
+`INPUTOBJECT <IImportExportIdentity>`: Identity Parameter
   - `[Id <String>]`: Resource identity path
   - `[JobName <String>]`: The name of the import/export job.
   - `[LocationName <String>]`: The name of the location. For example, West US or westus.

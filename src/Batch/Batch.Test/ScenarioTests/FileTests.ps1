@@ -84,7 +84,7 @@ Tests downloading a Remote Desktop Protocol file
 #>
 function Test-GetRDPFile
 {
-    param([string]$poolId, [string]$computeNodeId)
+    param([string]$poolId)
 
     $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
     $stream = New-Object System.IO.MemoryStream 
@@ -92,6 +92,9 @@ function Test-GetRDPFile
 
     try
     {
+        $computeNodes = Get-AzBatchComputeNode -PoolId $poolId -BatchContext $context
+        $computeNodeId = $computeNodes[0].Id
+
         $computeNode = Get-AzBatchComputeNode -PoolId $poolId -Id $computeNodeId -BatchContext $context
         $computeNode | Get-AzBatchRemoteDesktopProtocolFile -BatchContext $context -DestinationStream $stream
         

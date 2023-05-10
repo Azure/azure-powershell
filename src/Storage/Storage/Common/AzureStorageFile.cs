@@ -93,6 +93,8 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
         /// Azure storage file constructor from track1 file object
         /// </summary>
         /// <param name="file">Cloud file object</param>
+        /// <param name="storageContext"></param>
+        /// <param name="clientOptions"></param>
         public AzureStorageFile(CloudFile file, AzureStorageContext storageContext, ShareClientOptions clientOptions = null)
         {
             Name = file.Name;
@@ -106,7 +108,10 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
         /// <summary>
         /// Azure storage file constructor from Track2 list file item
         /// </summary>
-        /// <param name="file">Cloud file object</param>
+        /// <param name="shareFileClient"></param>
+        /// <param name="storageContext"></param>
+        /// <param name="shareFileItem"></param>
+        /// <param name="clientOptions"></param>
         public AzureStorageFile(ShareFileClient shareFileClient, AzureStorageContext storageContext, ShareFileItem shareFileItem, ShareClientOptions clientOptions = null)
         {
             Name = shareFileClient.Name;
@@ -131,7 +136,10 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
         /// <summary>
         /// Azure storage file constructor from Track2 get file properties output
         /// </summary>
-        /// <param name="file">Cloud file object</param>
+        /// <param name="shareFileClient"></param>
+        /// <param name="storageContext"></param>
+        /// <param name="shareFileProperties"></param>
+        /// <param name="clientOptions"></param>
         public AzureStorageFile(ShareFileClient shareFileClient, AzureStorageContext storageContext, ShareFileProperties shareFileProperties = null, ShareClientOptions clientOptions = null)
         {
             Name = shareFileClient.Name;

@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.ServiceLinker
-online version: https://docs.microsoft.com/powershell/module/az.servicelinker/get-azservicelinkerconfigurationforspringcloud
+online version: https://learn.microsoft.com/powershell/module/az.servicelinker/get-azservicelinkerconfigurationforspringcloud
 schema: 2.0.0
 ---
 
@@ -25,7 +25,7 @@ list source configurations for a linker in spring cloud.
 
 ### Example 1: Get spring cloud's linker configuration list
 ```powershell
-Get-AzServiceLinkerConfigurationForSpringCloud -ServiceName servicelinker-springcloud -AppName appconfiguration -ResourceGroupName servicelinker-test-group -LinkerName postgresql_linker |fl
+Get-AzServiceLinkerConfigurationForSpringCloud -ServiceName servicelinker-springcloud -AppName appconfiguration -ResourceGroupName servicelinker-test-group -LinkerName postgresql_linker | Format-List
 ```
 
 ```output
@@ -198,7 +198,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20220501.ISourceConfiguration
+### Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.ISourceConfiguration
 
 ## NOTES
 

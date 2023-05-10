@@ -123,110 +123,112 @@ namespace Microsoft.Azure.Commands.Network
 
         public override void Execute()
         {
-
-            var existingFrontendIpConfiguration = this.LoadBalancer.FrontendIpConfigurations.SingleOrDefault(resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
-            if (existingFrontendIpConfiguration != null)
+            if (ShouldProcess(this.LoadBalancer.Name, "Adding Front-End IP Configuration"))
             {
-                throw new ArgumentException("FrontendIpConfiguration with the specified name already exists");
-            }
-
-            // FrontendIpConfigurations
-            if (this.LoadBalancer.FrontendIpConfigurations == null)
-            {
-                this.LoadBalancer.FrontendIpConfigurations = new List<PSFrontendIPConfiguration>();
-            }
-
-            if (string.Equals(ParameterSetName, "SetByResourceSubnet"))
-            {
-                if (this.Subnet != null)
+                var existingFrontendIpConfiguration = this.LoadBalancer.FrontendIpConfigurations.SingleOrDefault(resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
+                if (existingFrontendIpConfiguration != null)
                 {
-                    this.SubnetId = this.Subnet.Id;
+                    throw new ArgumentException("FrontendIpConfiguration with the specified name already exists");
                 }
-            }
 
-            if (string.Equals(ParameterSetName, "SetByResourcePublicIpAddress"))
-            {
-                if (this.PublicIpAddress != null)
+                // FrontendIpConfigurations
+                if (this.LoadBalancer.FrontendIpConfigurations == null)
                 {
-                    this.PublicIpAddressId = this.PublicIpAddress.Id;
+                    this.LoadBalancer.FrontendIpConfigurations = new List<PSFrontendIPConfiguration>();
                 }
-            }
 
-            if (string.Equals(ParameterSetName, "SetByResourcePublicIpAddressPrefix"))
-            {
-                if (this.PublicIpAddressPrefix != null)
+                if (string.Equals(ParameterSetName, "SetByResourceSubnet"))
                 {
-                    this.PublicIpAddressPrefixId = this.PublicIpAddressPrefix.Id;
+                    if (this.Subnet != null)
+                    {
+                        this.SubnetId = this.Subnet.Id;
+                    }
                 }
-            }
 
-            var vFrontendIpConfigurations = new PSFrontendIPConfiguration();
-
-            vFrontendIpConfigurations.PrivateIpAddress = this.PrivateIpAddress;
-            vFrontendIpConfigurations.PrivateIpAddressVersion = this.PrivateIpAddressVersion;
-            if (!string.IsNullOrEmpty(vFrontendIpConfigurations.PrivateIpAddress))
-            {
-                vFrontendIpConfigurations.PrivateIpAllocationMethod = "Static";
-            }
-            else
-            {
-                vFrontendIpConfigurations.PrivateIpAllocationMethod = "Dynamic";
-            }
-
-            vFrontendIpConfigurations.Name = this.Name;
-
-            vFrontendIpConfigurations.Zones = this.Zone?.ToList();
-            if (!string.IsNullOrEmpty(this.SubnetId))
-            {
-                // Subnet
-                if (vFrontendIpConfigurations.Subnet == null)
+                if (string.Equals(ParameterSetName, "SetByResourcePublicIpAddress"))
                 {
-                    vFrontendIpConfigurations.Subnet = new PSSubnet();
+                    if (this.PublicIpAddress != null)
+                    {
+                        this.PublicIpAddressId = this.PublicIpAddress.Id;
+                    }
                 }
-                vFrontendIpConfigurations.Subnet.Id = this.SubnetId;
-            }
 
-            if (!string.IsNullOrEmpty(this.GatewayLoadBalancerId))
-            {
-                // Gateway
-                if (vFrontendIpConfigurations.GatewayLoadBalancer == null)
+                if (string.Equals(ParameterSetName, "SetByResourcePublicIpAddressPrefix"))
                 {
-                    vFrontendIpConfigurations.GatewayLoadBalancer = new PSFrontendIPConfiguration();
+                    if (this.PublicIpAddressPrefix != null)
+                    {
+                        this.PublicIpAddressPrefixId = this.PublicIpAddressPrefix.Id;
+                    }
                 }
-                vFrontendIpConfigurations.GatewayLoadBalancer.Id = this.GatewayLoadBalancerId;
-            }
 
-            if (!string.IsNullOrEmpty(this.PublicIpAddressId))
-            {
-                // PublicIpAddress
-                if (vFrontendIpConfigurations.PublicIpAddress == null)
+                var vFrontendIpConfigurations = new PSFrontendIPConfiguration();
+
+                vFrontendIpConfigurations.PrivateIpAddress = this.PrivateIpAddress;
+                vFrontendIpConfigurations.PrivateIpAddressVersion = this.PrivateIpAddressVersion;
+                if (!string.IsNullOrEmpty(vFrontendIpConfigurations.PrivateIpAddress))
                 {
-                    vFrontendIpConfigurations.PublicIpAddress = new PSPublicIpAddress();
+                    vFrontendIpConfigurations.PrivateIpAllocationMethod = "Static";
                 }
-                vFrontendIpConfigurations.PublicIpAddress.Id = this.PublicIpAddressId;
-            }
-
-            if (!string.IsNullOrEmpty(this.PublicIpAddressPrefixId))
-            {
-                // PublicIpAddressPrefix
-                if (vFrontendIpConfigurations.PublicIPPrefix == null)
+                else
                 {
-                    vFrontendIpConfigurations.PublicIPPrefix = new PSPublicIpPrefix();
+                    vFrontendIpConfigurations.PrivateIpAllocationMethod = "Dynamic";
                 }
-                vFrontendIpConfigurations.PublicIPPrefix.Id = this.PublicIpAddressPrefixId;
+
+                vFrontendIpConfigurations.Name = this.Name;
+
+                vFrontendIpConfigurations.Zones = this.Zone?.ToList();
+                if (!string.IsNullOrEmpty(this.SubnetId))
+                {
+                    // Subnet
+                    if (vFrontendIpConfigurations.Subnet == null)
+                    {
+                        vFrontendIpConfigurations.Subnet = new PSSubnet();
+                    }
+                    vFrontendIpConfigurations.Subnet.Id = this.SubnetId;
+                }
+
+                if (!string.IsNullOrEmpty(this.GatewayLoadBalancerId))
+                {
+                    // Gateway
+                    if (vFrontendIpConfigurations.GatewayLoadBalancer == null)
+                    {
+                        vFrontendIpConfigurations.GatewayLoadBalancer = new PSFrontendIPConfiguration();
+                    }
+                    vFrontendIpConfigurations.GatewayLoadBalancer.Id = this.GatewayLoadBalancerId;
+                }
+
+                if (!string.IsNullOrEmpty(this.PublicIpAddressId))
+                {
+                    // PublicIpAddress
+                    if (vFrontendIpConfigurations.PublicIpAddress == null)
+                    {
+                        vFrontendIpConfigurations.PublicIpAddress = new PSPublicIpAddress();
+                    }
+                    vFrontendIpConfigurations.PublicIpAddress.Id = this.PublicIpAddressId;
+                }
+
+                if (!string.IsNullOrEmpty(this.PublicIpAddressPrefixId))
+                {
+                    // PublicIpAddressPrefix
+                    if (vFrontendIpConfigurations.PublicIPPrefix == null)
+                    {
+                        vFrontendIpConfigurations.PublicIPPrefix = new PSPublicIpPrefix();
+                    }
+                    vFrontendIpConfigurations.PublicIPPrefix.Id = this.PublicIpAddressPrefixId;
+                }
+
+                var generatedId = string.Format(
+                    "/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Network/loadBalancers/{2}/{3}/{4}",
+                    this.NetworkClient.NetworkManagementClient.SubscriptionId,
+                    this.LoadBalancer.ResourceGroupName,
+                    this.LoadBalancer.Name,
+                    "FrontendIpConfigurations",
+                    this.Name);
+                vFrontendIpConfigurations.Id = generatedId;
+
+                this.LoadBalancer.FrontendIpConfigurations.Add(vFrontendIpConfigurations);
+                WriteObject(this.LoadBalancer, true);
             }
-
-            var generatedId = string.Format(
-                "/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Network/loadBalancers/{2}/{3}/{4}",
-                this.NetworkClient.NetworkManagementClient.SubscriptionId,
-                this.LoadBalancer.ResourceGroupName,
-                this.LoadBalancer.Name,
-                "FrontendIpConfigurations",
-                this.Name);
-            vFrontendIpConfigurations.Id = generatedId;
-
-            this.LoadBalancer.FrontendIpConfigurations.Add(vFrontendIpConfigurations);
-            WriteObject(this.LoadBalancer, true);
         }
     }
 }

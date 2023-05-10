@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.RedisCache.dll-Help.xml
 Module Name: Az.RedisCache
 ms.assetid: BC00DEF9-6A93-4DF5-8E5B-C488551BA1D1
-online version: https://docs.microsoft.com/powershell/module/az.rediscache/import-azrediscache
+online version: https://learn.microsoft.com/powershell/module/az.rediscache/import-azrediscache
 schema: 2.0.0
 ---
 
@@ -14,8 +14,9 @@ Imports data from blobs to Azure Redis Cache.
 ## SYNTAX
 
 ```
-Import-AzRedisCache [-ResourceGroupName <String>] -Name <String> -Files <String[]> [-Format <String>] [-Force]
- [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Import-AzRedisCache [-ResourceGroupName <String>] -Name <String> -Files <String[]> [-Format <String>]
+ [-PreferredDataArchiveAuthMethod <String>] [-Force] [-PassThru] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -29,6 +30,13 @@ Import-AzRedisCache -ResourceGroupName "ResourceGroup13" -Name "RedisCache06" -F
 ```
 
 This command imports data from the blob that is specified by the SAS URL into Azure Redis Cache.
+
+### Example 2: Import data using managed identity
+```powershell
+Import-AzRedisCache -ResourceGroupName "ResourceGroup13" -Name "RedisCache06" -Files @("https://mystorageaccount.blob.core.windows.net/container22/blobname") -Force -PreferredDataArchiveAuthMethod ManagedIdentity
+```
+
+This command imports data from the blob that is specified into Azure Redis Cache using managed identity as the authorization method. It assumes that both the cache and storage account have been configured to use managed identity. 
 
 ## PARAMETERS
 
@@ -124,6 +132,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PreferredDataArchiveAuthMethod
+Preferred auth method to communicate to storage account used for data archive, specify SAS or ManagedIdentity, default value is SAS.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/approve-azprivateendpointconnection
+online version: https://learn.microsoft.com/powershell/module/az.network/approve-azprivateendpointconnection
 schema: 2.0.0
 ---
 
@@ -14,15 +14,15 @@ Approves a private endpoint connection.
 
 ### ByResourceId (Default)
 ```
-Approve-AzPrivateEndpointConnection -ResourceId <String> [-Description <String>]
+Approve-AzPrivateEndpointConnection [-Description <String>] -ResourceId <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByResource
 ```
-Approve-AzPrivateEndpointConnection -Name <String> -ServiceName <String> -ResourceGroupName <String>
- [-PrivateLinkResourceType <string>][-Description <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Approve-AzPrivateEndpointConnection -Name <String> [-Description <String>] -ResourceGroupName <String>
+ -ServiceName <String> [-DefaultProfile <IAzureContextContainer>] -PrivateLinkResourceType <String>
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -32,7 +32,7 @@ The **Approve-AzPrivateEndpointConnection** cmdlet approves a private endpoint c
 
 ### Example 1
 ```powershell
-Approve-AzPrivateEndpointConnection -Name TestPrivateEndpointConnection -ResourceGroupName TestResourceGroup -ServiceName TestPrivateLinkService
+Approve-AzPrivateEndpointConnection -Name TestPrivateEndpointConnection -ResourceGroupName TestResourceGroup -ServiceName TestPrivateLinkService -PrivateLinkResourceType Microsoft.Network/privateLinkServices
 ```
 
 This example approves a private endpoint connection.
@@ -92,10 +92,10 @@ Type: System.String
 Parameter Sets: ByResource
 Aliases:
 
-Required: False
+Required: True
 Position: Named
-Default value: 'Microsoft.Network/privateLinkServices'
-Accept pipeline input: True (ByPropertyName)
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -143,7 +143,6 @@ Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
-
 
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).

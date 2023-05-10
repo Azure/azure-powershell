@@ -31,7 +31,7 @@ PS C:\> {{ Add code here }}
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20.IOperation
 .Link
-https://docs.microsoft.com/powershell/module/az.communication/get-azcommunicationoperation
+https://learn.microsoft.com/powershell/module/az.communication/get-azcommunicationoperation
 #>
 function Get-AzCommunicationOperation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20.IOperation])]

@@ -12,64 +12,61 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Reflection;
 using Microsoft.Azure.Batch;
 using Microsoft.Azure.Batch.Common;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using System;
+using System.IO;
+using System.Security.Cryptography.X509Certificates;
 using Xunit;
-using Microsoft.Azure.ServiceManagement.Common.Models;
 
 namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
 {
-    public class CertificateTests : WindowsAzure.Commands.Test.Utilities.Common.RMTestBase
+    public class CertificateTests : BatchTestRunner
     {
-        public XunitTracingInterceptor _logger;
-
-        public CertificateTests(Xunit.Abstractions.ITestOutputHelper output)
+        public CertificateTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
+
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCertificateCrudOperations()
         {
-            BatchController.NewInstance.RunPsTest(_logger, "Test-CertificateCrudOperations");
+            TestRunner.RunTestScript("Test-CertificateCrudOperations");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCancelCertificateDelete()
         {
-            BatchController controller = BatchController.NewInstance;
             BatchAccountContext context = null;
-            string thumbprint = null;
+            X509Certificate2 cert = new X509Certificate2(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources/BatchTestCert01.cer"));
+            string thumbprint = cert.Thumbprint.ToLowerInvariant();
             string poolId = "certPool";
-            controller.RunPsTestWorkflow(
-                _logger,
-                () => { return new string[] { string.Format("Test-TestCancelCertificateDelete '{0}' '{1}'", BatchTestHelpers.TestCertificateAlgorithm, thumbprint) }; },
-                () =>
+            TestRunner.RunTestScript(
+                null,
+                mockContext =>
                 {
                     context = new ScenarioTestContext();
-                    thumbprint = ScenarioTestHelpers.AddTestCertificate(controller, context, BatchTestHelpers.TestCertificateFileName).ToLowerInvariant();
+                    thumbprint = ScenarioTestHelpers.AddTestCertificate(this, context, BatchTestHelpers.TestCertificateFileName).ToLowerInvariant();
                     CertificateReference certRef = new CertificateReference();
                     certRef.StoreLocation = CertStoreLocation.CurrentUser;
                     certRef.StoreName = "My";
                     certRef.ThumbprintAlgorithm = BatchTestHelpers.TestCertificateAlgorithm;
                     certRef.Thumbprint = thumbprint;
                     certRef.Visibility = CertificateVisibility.Task;
-                    ScenarioTestHelpers.CreateTestPool(controller, context, poolId, targetDedicated: 0, targetLowPriority: 0, certReference: certRef);
-                    ScenarioTestHelpers.DeleteTestCertificate(controller, context, BatchTestHelpers.TestCertificateAlgorithm, thumbprint);
-                    ScenarioTestHelpers.WaitForCertificateToFailDeletion(controller, context, BatchTestHelpers.TestCertificateAlgorithm, thumbprint);
+                    ScenarioTestHelpers.CreateTestPool(this, context, poolId, targetDedicated: 0, targetLowPriority: 0, certReference: certRef);
+                    ScenarioTestHelpers.DeleteTestCertificate(this, context, BatchTestHelpers.TestCertificateAlgorithm, thumbprint);
+                    ScenarioTestHelpers.WaitForCertificateToFailDeletion(this, context, BatchTestHelpers.TestCertificateAlgorithm, thumbprint);
                 },
                 () =>
                 {
-                    ScenarioTestHelpers.DeletePool(controller, context, poolId);
-                    ScenarioTestHelpers.DeleteTestCertificate(controller, context, BatchTestHelpers.TestCertificateAlgorithm, thumbprint);
+                    ScenarioTestHelpers.DeletePool(this, context, poolId);
+                    ScenarioTestHelpers.DeleteTestCertificate(this, context, BatchTestHelpers.TestCertificateAlgorithm, thumbprint);
                 },
-                MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
-                MethodBase.GetCurrentMethod().Name);
+                $"Test-TestCancelCertificateDelete '{BatchTestHelpers.TestCertificateAlgorithm}' '{thumbprint}'"
+            );
         }
     }
 }

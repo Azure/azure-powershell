@@ -125,7 +125,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization
         /// <summary>Creates the module instance.</summary>
         private Module()
         {
-            /// constructor
+            // constructor
             ClientAPI = new Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Authorization();
             _handler.Proxy = _webProxy;
             _pipeline = new Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Runtime.HttpPipeline(new Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Runtime.HttpClientFactory(new global::System.Net.Http.HttpClient()));

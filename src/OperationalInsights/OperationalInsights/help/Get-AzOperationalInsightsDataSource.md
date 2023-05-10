@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights.dll-Help.xml
 Module Name: Az.OperationalInsights
 ms.assetid: 1F094EBA-E4AE-4B3E-BA20-858818C6FD12
-online version: https://docs.microsoft.com/powershell/module/az.operationalinsights/get-azoperationalinsightsdatasource
+online version: https://learn.microsoft.com/powershell/module/az.operationalinsights/get-azoperationalinsightsdatasource
 schema: 2.0.0
 ---
 
@@ -43,10 +43,12 @@ You can specify a data source to get.
 You can filter the results based on the kind of data source.
 
 ## EXAMPLES
+
 ### Example 1
 ```powershell
 Get-AzOperationalInsightsDataSource -Kind CustomLog -ResourceGroupName testrg -WorkspaceName LogAnalyticsWorkspace
 ```
+
 ```output
 Name              : DataSource_CustomLog_Customlog_CL
 ResourceGroupName : testrg
@@ -61,7 +63,9 @@ Properties        : {"customLogName":"Customlog_CL","description":"","extraction
                     ths":null,"windowsFileTypeLogPaths":["D:\\logs.txt"]}},"recordDelimiter":{"regexDelimiter":{"matchI
                     ndex":0,"numberdGroup":null,"pattern":"\\n"}}}]}
 ```
+
 Get data sources.
+
 ## PARAMETERS
 
 ### -DefaultProfile

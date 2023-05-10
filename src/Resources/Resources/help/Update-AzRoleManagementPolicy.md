@@ -1,7 +1,7 @@
 ---
 external help file: Az.Resources-help.xml
 Module Name: Az.Resources
-online version: https://docs.microsoft.com/powershell/module/az.resources/update-azrolemanagementpolicy
+online version: https://learn.microsoft.com/powershell/module/az.resources/update-azrolemanagementpolicy
 schema: 2.0.0
 ---
 
@@ -33,8 +33,8 @@ Update a role management policy
 
 ### Example 1: Update expiration rule of a policy
 ```powershell
-PS C:\> $scope = "/subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d/"
-PS C:\> $expirationRule = [RoleManagementPolicyExpirationRule]@{
+$scope = "/subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d/"
+$expirationRule = [RoleManagementPolicyExpirationRule]@{
             isExpirationRequired = "false";
             maximumDuration = "P180D";
             id = "Expiration_Admin_Eligibility";
@@ -46,9 +46,11 @@ PS C:\> $expirationRule = [RoleManagementPolicyExpirationRule]@{
             targetInheritableSetting = $null;
             targetEnforcedSetting = $null;
         }
-PS C:\> $rules = [IRoleManagementPolicyRule[]]@($expirationRule)
-PS C:\> Update-AzRoleManagementPolicy -Scope $scope -Name "33b520ea-3544-4abc-8565-3588deb8e68e" -Rule $rules
+$rules = [IRoleManagementPolicyRule[]]@($expirationRule)
+Update-AzRoleManagementPolicy -Scope $scope -Name "33b520ea-3544-4abc-8565-3588deb8e68e" -Rule $rules
+```
 
+```output
 Name                                 Type                                           Scope
 ----                                 ----                                           -----
 33b520ea-3544-4abc-8565-3588deb8e68e Microsoft.Authorization/roleManagementPolicies /subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d
@@ -58,8 +60,8 @@ Each individual `Rule` on a policy can be update independently.
 
 ### Example 2: Update expiration rule and a notification rule of a policy
 ```powershell
-PS C:\> $scope = "/subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d/"
-PS C:\> $expirationRule = [RoleManagementPolicyExpirationRule]@{
+$scope = "/subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d/"
+$expirationRule = [RoleManagementPolicyExpirationRule]@{
             isExpirationRequired = "false";
             maximumDuration = "P180D";
             id = "Expiration_Admin_Eligibility";
@@ -71,7 +73,7 @@ PS C:\> $expirationRule = [RoleManagementPolicyExpirationRule]@{
             targetInheritableSetting = $null;
             targetEnforcedSetting = $null;
         }
-PS C:\> $notificationRule = [RoleManagementPolicyNotificationRule]@{
+$notificationRule = [RoleManagementPolicyNotificationRule]@{
             notificationType = "Email";
             recipientType = "Approver";
             isDefaultRecipientsEnabled = "false";
@@ -86,9 +88,11 @@ PS C:\> $notificationRule = [RoleManagementPolicyNotificationRule]@{
             targetInheritableSetting = $null;
             targetEnforcedSetting = $null;
         }
-PS C:\> $rules = [IRoleManagementPolicyRule[]]@($expirationRule, $notificationRule)
-PS C:\> Update-AzRoleManagementPolicy -Scope $scope -Name "33b520ea-3544-4abc-8565-3588deb8e68e" -Rule $rules
+$rules = [IRoleManagementPolicyRule[]]@($expirationRule, $notificationRule)
+Update-AzRoleManagementPolicy -Scope $scope -Name "33b520ea-3544-4abc-8565-3588deb8e68e" -Rule $rules
+```
 
+```output
 Name                                 Type                                           Scope
 ----                                 ----                                           -----
 33b520ea-3544-4abc-8565-3588deb8e68e Microsoft.Authorization/roleManagementPolicies /subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d
@@ -99,7 +103,8 @@ Multiple `Rule` can be updated together.
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -271,7 +276,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IAuthorizationIdentity>: Identity Parameter
+`INPUTOBJECT <IAuthorizationIdentity>`: Identity Parameter
   - `[Id <String>]`: Resource identity path
   - `[RoleAssignmentScheduleInstanceName <String>]`: The name (hash of schedule name + time) of the role assignment schedule to get.
   - `[RoleAssignmentScheduleName <String>]`: The name (guid) of the role assignment schedule to get.
@@ -283,7 +288,7 @@ INPUTOBJECT <IAuthorizationIdentity>: Identity Parameter
   - `[RoleManagementPolicyName <String>]`: The name (guid) of the role management policy to get.
   - `[Scope <String>]`: The scope of the role management policy.
 
-RULE <IRoleManagementPolicyRule[]>: The rule applied to the policy.
+`RULE <IRoleManagementPolicyRule[]>`: The rule applied to the policy.
   - `RuleType <RoleManagementPolicyRuleType>`: The type of rule
   - `[Id <String>]`: The id of the rule.
   - `[TargetCaller <String>]`: The caller of the setting.

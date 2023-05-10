@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.dll-Help.xml
 Module Name: Az.FrontDoor
-online version: https://docs.microsoft.com/powershell/module/az.frontdoor/new-azfrontdoorrulesengineruleobject
+online version: https://learn.microsoft.com/powershell/module/az.frontdoor/new-azfrontdoorrulesengineruleobject
 schema: 2.0.0
 ---
 
@@ -27,6 +27,7 @@ Use cmdlet "New-AzFrontDoorRulesEngineMatchConditionObject" to create PSRulesEng
 ## EXAMPLES
 
 ### Example 1
+<!-- Skip: Output cannot be splitted from code -->
 ```powershell
 New-AzFrontDoorRulesEngineRuleObject -Name rules1 -Priority 0 -Action $rulesEngineAction -MatchProcessingBehavior Stop -MatchCondition $rulesEngineMatchCondition
 

@@ -29,7 +29,7 @@ Global   ContosoAcsResource1 Microsoft.Communication/communicationServices
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.ICommunicationServiceResource
 .Link
-https://docs.microsoft.com/powershell/module/az.communication/new-azcommunicationservice
+https://learn.microsoft.com/powershell/module/az.communication/new-azcommunicationservice
 #>
 function New-AzCommunicationService {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.ICommunicationServiceResource])]

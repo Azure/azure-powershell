@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.StorageSync.dll-Help.xml
 Module Name: Az.StorageSync
-online version: https://docs.microsoft.com/powershell/module/Az.storagesync/remove-Azstoragesynccloudendpoint
+online version: https://learn.microsoft.com/powershell/module/Az.storagesync/remove-Azstoragesynccloudendpoint
 schema: 2.0.0
 ---
 
@@ -106,7 +106,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name of the CloudEndpoint.
+Name of the CloudEndpoint. To verify the cloud endpoint name, use the Get-AzStorageSyncCloudEndpoint cmdlet, and check the Name property of the returned object.
 
 ```yaml
 Type: System.String

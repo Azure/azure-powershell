@@ -1,22 +1,15 @@
-### Example 1: {{ Add title here }}
+### Example 1: Start an AzureCDN Endpoint under the AzureCDN profile
 ```powershell
-{{ Add code here }}
+Start-AzCdnEndpoint -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -Name endptest001
 ```
 
 ```output
-{{ Add output here }}
+Location Name        ResourceGroupName
+-------- ----        -----------------
+WestUs   endptest001 testps-rg-da16jm
 ```
 
-{{ Add description here }}
+Start an AzureCDN Endpoint under the AzureCDN profile
 
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
 

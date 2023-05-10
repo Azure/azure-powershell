@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.BotService
-online version: https://docs.microsoft.com/powershell/module/az.botservice/export-azbotserviceapp
+online version: https://learn.microsoft.com/powershell/module/az.botservice/export-azbotserviceapp
 schema: 2.0.0
 ---
 
@@ -32,9 +32,9 @@ Parameter $SavePath not provided, defaulting to current working directory.
 
     Directory: D:\powershell\BotService\azure-powershell\src\BotService
 
-Mode                 LastWriteTime         Length Name
-----                 -------------         ------ ----
-d----          2020/12/15    13:45                youriechobottest
+Mode                   LastWriteTime          Length Name
+----                   -------------          ------ ----
+d----          2020/12/15    1:45 PM                 youriechobottest
 ```
 
 Download the BotService App folder
@@ -123,7 +123,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IBot
+### Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.IBot
 
 ## NOTES
 

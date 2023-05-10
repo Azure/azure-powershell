@@ -1,6 +1,6 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31112.23
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33403.182
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Storage.Management", "Storage.Management\Storage.Management.csproj", "{A50AB133-5C04-4A17-9054-F8343683EC23}"
 EndProject
@@ -23,6 +23,10 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ScenarioTest.ResourceManager", "..\..\tools\ScenarioTest.ResourceManager\ScenarioTest.ResourceManager.csproj", "{F83FBA8D-732D-437C-A0E2-02E45B01E123}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestFx", "..\..\tools\TestFx\TestFx.csproj", "{BC80A1D0-FFA4-43D9-AA74-799F5CB54B58}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Storage.Management.Sdk", "Storage.Management.Sdk\Storage.Management.Sdk.csproj", "{1BA85EC7-F8E5-423F-BA1B-B3918D0D59A3}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AssemblyLoading", "..\Accounts\AssemblyLoading\AssemblyLoading.csproj", "{02615977-4499-48E6-9824-8B9F431E30EA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -70,6 +74,14 @@ Global
 		{BC80A1D0-FFA4-43D9-AA74-799F5CB54B58}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BC80A1D0-FFA4-43D9-AA74-799F5CB54B58}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BC80A1D0-FFA4-43D9-AA74-799F5CB54B58}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1BA85EC7-F8E5-423F-BA1B-B3918D0D59A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1BA85EC7-F8E5-423F-BA1B-B3918D0D59A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1BA85EC7-F8E5-423F-BA1B-B3918D0D59A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1BA85EC7-F8E5-423F-BA1B-B3918D0D59A3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{02615977-4499-48E6-9824-8B9F431E30EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{02615977-4499-48E6-9824-8B9F431E30EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{02615977-4499-48E6-9824-8B9F431E30EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{02615977-4499-48E6-9824-8B9F431E30EA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

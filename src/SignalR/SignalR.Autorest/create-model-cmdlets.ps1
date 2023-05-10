@@ -23,7 +23,7 @@ function CreateModelCmdlet {
     }
 
     $ModelCsPath = Join-Path (Join-Path $PSScriptRoot 'generated\api') 'Models'
-    $ModuleName = 'Az.SignalR'.Split(".")[1]
+    $ModuleName = ''
     $OutputDir = Join-Path $PSScriptRoot 'custom\autogen-model-cmdlets'
     $null = New-Item -ItemType Directory -Force -Path $OutputDir
 
@@ -115,7 +115,9 @@ function CreateModelCmdlet {
                 # check whether completer is needed
                 $completer = '';
                 if($Type.Split('.').Split('.')[-2] -eq 'Support') {
-                    $completer += "`n        [ArgumentCompleter([${Type}])]"
+                    # If Type is an array, need to strip []
+                    $strippedType = $Type.Replace('[]', '')
+                    $completer += "`n        [ArgumentCompleter([${strippedType}])]"
                 }
                 $ParameterDefineScript = "
         [Parameter($ParameterDefineProperty)]${completer}
@@ -156,7 +158,7 @@ Create an in-memory object for ${ObjectType}.
 .Outputs
 ${ObjectTypeWithNamespace}
 .Link
-https://docs.microsoft.com/powershell/module/az.${ModuleName}/new-Az${ModulePrefix}${ObjectType}Object
+https://learn.microsoft.com/powershell/module/az.${ModuleName}/new-Az${ModulePrefix}${ObjectType}Object
 #>
 function New-Az${ModulePrefix}${ObjectType}Object {
     [OutputType('${ObjectTypeWithNamespace}')]

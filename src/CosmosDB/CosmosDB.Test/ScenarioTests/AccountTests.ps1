@@ -195,10 +195,10 @@ function Test-AccountRelatedCmdletsUsingObject
 
 function Test-AddRegionOperation
 {
-  $rgName = "CosmosDBResourceGroup5"
+  $rgName = "CosmosDBResourceGroup9"
   $location = "East US"
   $locationlist = "East US", "West US"
-  $cosmosDBAccountName = "testupdateregionpowershell1"
+  $cosmosDBAccountName = "testupdateregionpowershell11"
   $resourceGroup = New-AzResourceGroup -ResourceGroupName $rgName  -Location $location
 
   try {
@@ -214,6 +214,7 @@ function Test-AddRegionOperation
         }
 
     $updatedCosmosDBAccount = Update-AzCosmosDBAccountRegion -ResourceGroupName $rgName -Name $cosmosDBAccountName -Location $locationlist
+    Start-Sleep -s 60
     $updatedCosmosDBAccount = Get-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDBAccountName
     Assert-AreEqual $updatedCosmosDBAccount.Locations.Count 2
    }

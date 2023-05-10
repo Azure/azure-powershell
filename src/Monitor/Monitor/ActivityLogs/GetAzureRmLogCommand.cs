@@ -30,11 +30,7 @@ namespace Microsoft.Azure.Commands.Insights.Events
         /// <summary>
         /// Gets or sets the starttime parameter of the cmdlet
         /// </summary>
-        [Parameter(ParameterSetName = CorrelationIdParameterSetName, ValueFromPipelineByPropertyName = true, HelpMessage = "The correlationId of the query")]
-        [Parameter(ParameterSetName = ResourceIdParameterSetName, ValueFromPipelineByPropertyName = true, HelpMessage = "The resourceId of the query")]
-        [Parameter(ParameterSetName = ResourceGroupParameterSetName, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group name of the query")]
-        [Parameter(ParameterSetName = ResourceProviderParameterSetName, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource provider name of the query")]
-        [Parameter(ParameterSetName = SubscriptionLevelParameterSetName, ValueFromPipelineByPropertyName = true, HelpMessage = "The subscriptionId of the query")]
+        [Parameter(ValueFromPipelineByPropertyName = true, HelpMessage = "The startTime of the query")]
         public override DateTime? StartTime { get; set; }
 
         /// <summary>

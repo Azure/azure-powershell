@@ -20,6 +20,9 @@
 
 ## Upcoming Release
 
+## Version 1.2.1
+* Upgraded AutoMapper to Microsoft.Azure.PowerShell.AutoMapper 6.2.2 with fix [#18721]
+
 ## Version 1.2.0
 * Added Guest patch maintenance support.
 

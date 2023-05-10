@@ -14,13 +14,11 @@
 
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.PowerShell.Common.Config;
-using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Common.Authentication.Config
 {
     [Cmdlet("Import", AzureRMConstants.AzureRMPrefix + "Config", SupportsShouldProcess = true)]
-    [CmdletPreview(ConfigCommandBase.PreviewMessage)]
     [OutputType(typeof(bool))]
     public class ImportConfigCommand : AzureRMCmdlet
     {

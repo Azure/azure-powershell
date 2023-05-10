@@ -31,7 +31,7 @@ Count Id
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.IUnresolvedDependency
 .Link
-https://docs.microsoft.com/powershell/module/az.resourcemover/get-azresourcemoverunresolveddependency
+https://learn.microsoft.com/powershell/module/az.resourcemover/get-azresourcemoverunresolveddependency
 #>
 function Get-AzResourceMoverUnresolvedDependency {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.IUnresolvedDependency])]

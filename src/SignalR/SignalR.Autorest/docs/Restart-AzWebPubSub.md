@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.SignalR
-online version: https://docs.microsoft.com/powershell/module/az.signalr/restart-azwebpubsub
+online version: https://learn.microsoft.com/powershell/module/az.signalr/restart-azwebpubsub
 schema: 2.0.0
 ---
 
@@ -31,18 +31,18 @@ Operation to restart a resource.
 
 ### Example 1: Restart a Web PubSub resource
 ```powershell
-PS C:\> Restart-AzWebPubSub -ResourceGroupName psdemo -Name psdemo-wps
+Restart-AzWebPubSub -ResourceGroupName psdemo -Name psdemo-wps
 ```
 
 
 
 ### Example 2: Restart a Web PubSub resource with identity
 ```powershell
-PS C:\> $identity = @{ResourceGroupName = 'psdemo'
+$identity = @{ResourceGroupName = 'psdemo'
 ResourceName = 'psdemo-wps'
 SubscriptionId = $(Get-AzContext).Subscription.Id }
 
-PS C:\> $identity | Restart-AzWebPubSub
+$identity | Restart-AzWebPubSub
 ```
 
 
@@ -223,10 +223,12 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IWebPubSubIdentity>: Identity Parameter
+`INPUTOBJECT <IWebPubSubIdentity>`: Identity Parameter
+  - `[CertificateName <String>]`: Custom certificate name
   - `[HubName <String>]`: The hub name.
   - `[Id <String>]`: Resource identity path
   - `[Location <String>]`: the region
+  - `[Name <String>]`: Custom domain name.
   - `[PrivateEndpointConnectionName <String>]`: The name of the private endpoint connection
   - `[ResourceGroupName <String>]`: The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   - `[ResourceName <String>]`: The name of the resource.

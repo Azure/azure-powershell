@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
 ms.assetid: 3CFA6E31-E243-4B22-AE8F-1942DD324639
-online version: https://docs.microsoft.com/powershell/module/az.storage/new-azstoragetablesastoken
+online version: https://learn.microsoft.com/powershell/module/az.storage/new-azstoragetablesastoken
 schema: 2.0.0
 ---
 
@@ -35,24 +35,24 @@ The **New-AzStorageTableSASToken** cmdlet generates a Shared Access Signature (S
 ## EXAMPLES
 
 ### Example 1: Generate an SAS token that has full permissions for a table
-```
-C:\PS>New-AzStorageTableSASToken -Name "ContosoResources" -Permission "raud"
+```powershell
+New-AzStorageTableSASToken -Name "ContosoResources" -Permission "raud"
 ```
 
 This command generates an SAS token with full permissions for the table named ContosoResources.
 That token is for read, add, update, and delete permissions.
 
 ### Example 2: Generate an SAS token for a range of partitions
-```
-C:\PS>New-AzStorageTableSASToken -Name "ContosoResources" -Permission "raud" -StartPartitionKey "a" -EndPartitionKey "b"
+```powershell
+New-AzStorageTableSASToken -Name "ContosoResources" -Permission "raud" -StartPartitionKey "a" -EndPartitionKey "b"
 ```
 
 This command generates and SAS token with full permissions for the table named ContosoResources.
 The command limits the token to the range that the *StartPartitionKey* and *EndPartitionKey* parameters specify.
 
 ### Example 3: Generate an SAS token that has a stored access policy for a table
-```
-C:\PS>New-AzStorageTableSASToken -Name "ContosoResources" -Policy "ClientPolicy01"
+```powershell
+New-AzStorageTableSASToken -Name "ContosoResources" -Policy "ClientPolicy01"
 ```
 
 This command generates an SAS token for the table named ContosoResources.

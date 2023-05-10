@@ -43,8 +43,7 @@ namespace Microsoft.Azure.Commands.Sql.Server.Services
         /// <summary>
         /// Creates a communicator for Azure Sql Databases
         /// </summary>
-        /// <param name="profile"></param>
-        /// <param name="subscription"></param>
+        /// <param name="context">The current azure context</param>
         public AzureSqlServerCommunicator(IAzureContext context)
         {
             Context = context;

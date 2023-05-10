@@ -133,7 +133,7 @@ The following public serializable properties are found in the `Parameter` class:
 
 #### `AssemblyMetadata`
 
-The [`AssemblyMetadata`](https://github.com/Azure/azure-powershell/blob/01a81fbb7ea6c086fff2bc137053168c0fc7728a/tools/Tools.Common/Models/AssemblyMetadata.cs) class contains information about the content of an assembly. The constructor for this class takes a [`System.Reflection.Assembly`](https://docs.microsoft.com/en-us/dotnet/api/system.reflection.assembly) object.
+The [`AssemblyMetadata`](https://github.com/Azure/azure-powershell/blob/01a81fbb7ea6c086fff2bc137053168c0fc7728a/tools/Tools.Common/Models/AssemblyMetadata.cs) class contains information about the content of an assembly. The constructor for this class takes a [`System.Reflection.Assembly`](https://learn.microsoft.com/en-us/dotnet/api/system.reflection.assembly) object.
 
 The following public serializable properties are found in this class:
 

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.Management.dll-Help.xml
 Module Name: Az.Storage
-online version: https://docs.microsoft.com/powershell/module/az.storage/disable-azstorageblobrestorepolicy
+online version: https://learn.microsoft.com/powershell/module/az.storage/disable-azstorageblobrestorepolicy
 schema: 2.0.0
 ---
 
@@ -37,7 +37,7 @@ The **Disable-AzStorageBlobRestorePolicy** cmdlet disables Blob Restore Policy f
 
 ### Example 1: Disables Blob Restore Policy for the Azure Storage Blob service on a Storage account
 ```powershell
-PS C:\> Disable-AzStorageBlobRestorePolicy -ResourceGroupName "myresourcegoup" -StorageAccountName "mystorageaccount"
+Disable-AzStorageBlobRestorePolicy -ResourceGroupName "myresourcegoup" -StorageAccountName "mystorageaccount"
 ```
 
 This command Disables Blob Restore Policy for the Azure Storage Blob service on a Storage account.

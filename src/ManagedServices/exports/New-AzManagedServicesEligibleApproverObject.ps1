@@ -29,7 +29,7 @@ xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx Approvers group
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.EligibleApprover
 .Link
-https://docs.microsoft.com/powershell/module/az.ManagedServices/new-AzManagedServicesEligibleApproverObject
+https://learn.microsoft.com/powershell/module/az.ManagedServices/new-AzManagedServicesEligibleApproverObject
 #>
 function New-AzManagedServicesEligibleApproverObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.EligibleApprover])]

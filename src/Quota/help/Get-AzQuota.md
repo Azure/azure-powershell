@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Quota
-online version: https://docs.microsoft.com/powershell/module/az.quota/get-azquota
+online version: https://learn.microsoft.com/powershell/module/az.quota/get-azquota
 schema: 2.0.0
 ---
 
@@ -156,7 +156,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IQuotaIdentity>: Identity Parameter
+INPUTOBJECT `<IQuotaIdentity>`: Identity Parameter
   - `[Id <String>]`: Quota request ID.
   - `[Id1 <String>]`: Resource identity path
   - `[ResourceName <String>]`: Resource name for a given resource provider. For example:         - SKU name for Microsoft.Compute         - SKU or TotalLowPriorityCores for Microsoft.MachineLearningServices          For Microsoft.Network PublicIPAddresses.

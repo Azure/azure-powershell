@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
-online version: https://docs.microsoft.com/powershell/module/az.compute/new-azdiskupdateconfig
+online version: https://learn.microsoft.com/powershell/module/az.compute/new-azdiskupdateconfig
 schema: 2.0.0
 ---
 
@@ -20,8 +20,8 @@ New-AzDiskUpdateConfig [[-SkuName] <String>] [-Tier <String>] [-DiskIOPSReadOnly
  [-EncryptionSettingsEnabled <Boolean>] [-DiskEncryptionKey <KeyVaultAndSecretReference>]
  [-KeyEncryptionKey <KeyVaultAndKeyReference>] [-DiskEncryptionSetId <String>] [-EncryptionType <String>]
  [-BurstingEnabled <Boolean>] [-PublicNetworkAccess <String>] [-AcceleratedNetwork <Boolean>]
- [-DataAccessAuthMode <String>] [-Architecture <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DataAccessAuthMode <String>] [-Architecture <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -32,9 +32,9 @@ The **New-AzDiskUpdateConfig** cmdlet creates a configurable disk update object.
 ### Example 1
 ```powershell
 $diskupdateconfig = New-AzDiskUpdateConfig -DiskSizeGB 10 -SkuName Premium_LRS -OsType Windows -EncryptionSettingsEnabled $true;
-$secretUrl = https://myvault.vault-int.azure-int.net/secrets/123/;
+$secretUrl = 'https://myvault.vault-int.azure-int.net/secrets/123/';
 $secretId = '/subscriptions/0000000-0000-0000-0000-000000000000/resourceGroups/ResourceGroup01/providers/Microsoft.KeyVault/vaults/TestVault123';
-$keyUrl = https://myvault.vault-int.azure-int.net/keys/456;
+$keyUrl = 'https://myvault.vault-int.azure-int.net/keys/456';
 $keyId = '/subscriptions/0000000-0000-0000-0000-000000000000/resourceGroups/ResourceGroup01/providers/Microsoft.KeyVault/vaults/TestVault456';
 $diskupdateconfig = Set-AzDiskUpdateDiskEncryptionKey -DiskUpdate $diskupdateconfig -SecretUrl $secretUrl -SourceVaultId $secretId;
 $diskupdateconfig = Set-AzDiskUpdateKeyEncryptionKey -DiskUpdate $diskupdateconfig -KeyUrl $keyUrl -SourceVaultId $keyId;
@@ -132,7 +132,7 @@ Accept wildcard characters: False
 ```
 
 ### -DiskAccessId
-{{ Fill DiskAccessId Description }}
+ARM id of the DiskAccess resource for using private endpoints on disks
 
 ```yaml
 Type: System.String
@@ -252,7 +252,7 @@ Accept wildcard characters: False
 ```
 
 ### -EncryptionSettingsEnabled
-Enable encryption settings.
+Enable encryption settings on the disk
 
 ```yaml
 Type: System.Nullable`1[System.Boolean]
@@ -267,7 +267,7 @@ Accept wildcard characters: False
 ```
 
 ### -EncryptionType
-The type of key used to encrypt the data of the disk.  Available values are: 'EncryptionAtRestWithPlatformKey', 'EncryptionAtRestWithCustomerKey'
+The type of key used to encrypt the data of the disk. Available values are: EncryptionAtRestWithPlatformKey, EncryptionAtRestWithCustomerKey
 
 ```yaml
 Type: System.String
@@ -312,7 +312,7 @@ Accept wildcard characters: False
 ```
 
 ### -NetworkAccessPolicy
-{{ Fill NetworkAccessPolicy Description }}
+Policy for accessing the disk via network. Available values are: AllowAll, AllowPrivate, DeyAll
 
 ```yaml
 Type: System.String
@@ -358,7 +358,7 @@ Accept wildcard characters: False
 ```
 
 ### -PurchasePlan
-{{ Fill PurchasePlan Description }}
+Sets the purchase plan for the disk. Used for establishing the purchase context of any 3rd Party artifact through Marketplace.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Compute.Automation.Models.PSPurchasePlan
@@ -388,7 +388,7 @@ Accept wildcard characters: False
 ```
 
 ### -SupportsHibernation
-{{ Fill SupportsHibernation Description }}
+Indicates if the OS on the disk supports hibernation with $true or $false
 
 ```yaml
 Type: System.Nullable`1[System.Boolean]

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.dll-Help.xml
 Module Name: Az.EventGrid
-online version:
+online version: https://learn.microsoft.com/powershell/module/az.eventgrid/new-azeventgridsystemtopic
 schema: 2.0.0
 ---
 
@@ -25,7 +25,7 @@ New-AzEventGridSystemTopic -ResourceGroupName <String> -Name <String> -Source <S
 ```
 
 ## DESCRIPTION
-Creates a new Azure Event System Grid Topic. Once the system topic is created, an azure service application can publish events to the system topic.
+Creates a new Azure Event Grid System Topic. Once the system topic is created, an azure service application can publish events to the system topic.
 
 ## EXAMPLES
 
@@ -38,7 +38,7 @@ Creates an Event Grid System topic \`Topic1\`  for the Azure ServiceBus namespac
 
 ### Example 2
 ```powershell
-New-AzEventGridTopic -ResourceGroupName MyResourceGroupName -Name Topic1 -Source ServiceBusNamespaceResourceId -TopicType 'Microsoft.ServiceBus.Namespaces' -Location westus2 -Tag @{ Department="Finance"; Environment="Test" }
+New-AzEventGridSystemTopic -ResourceGroupName MyResourceGroupName -Name Topic1 -Source ServiceBusNamespaceResourceId -TopicType 'Microsoft.ServiceBus.Namespaces' -Location westus2 -Tag @{ Department="Finance"; Environment="Test" }
 ```
 
 Creates an Event Grid System topic \`Topic1\` for the Azure ServiceBus namespace with resource id \`ServiceBusNamespaceResourceId\` in the specified geographic location \`westus2\`, in resource group \`MyResourceGroupName\` with the specified tags "Department" and "Environment".

@@ -85,7 +85,9 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
         /// <summary>
         /// Azure storage file constructor
         /// </summary>
-        /// <param name="file">Cloud file Directory object</param>
+        /// <param name="dir">Cloud file Directory object</param>
+        /// <param name="storageContext"></param>
+        /// <param name="clientOptions"></param>
         public AzureStorageFileDirectory(CloudFileDirectory dir, AzureStorageContext storageContext, ShareClientOptions clientOptions = null)
         {
             Name = dir.Name;
@@ -98,7 +100,10 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
         /// <summary>
         /// Azure storage file constructor from Track2 list file item
         /// </summary>
-        /// <param name="file">Cloud file object</param>
+        /// <param name="shareDirectoryClient"></param>
+        /// <param name="storageContext"></param>
+        /// <param name="shareFileItem"></param>
+        /// <param name="clientOptions"></param>
         public AzureStorageFileDirectory(ShareDirectoryClient shareDirectoryClient, AzureStorageContext storageContext, ShareFileItem shareFileItem, ShareClientOptions clientOptions = null)
         {
             Name = shareDirectoryClient.Name;
@@ -119,7 +124,10 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
         /// <summary>
         /// Azure storage file constructor from Track2 get file properties output
         /// </summary>
-        /// <param name="file">Cloud file object</param>
+        /// <param name="shareDirectoryClient"></param>
+        /// <param name="storageContext"></param>
+        /// <param name="shareDirectoryProperties"></param>
+        /// <param name="clientOptions"></param>
         public AzureStorageFileDirectory(ShareDirectoryClient shareDirectoryClient, AzureStorageContext storageContext, ShareDirectoryProperties shareDirectoryProperties = null, ShareClientOptions clientOptions = null)
         {
             Name = shareDirectoryClient.Name;

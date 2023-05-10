@@ -35,7 +35,7 @@ function Test-RemoveComputeNodes
     $select = "id,state"
     $computeNodes = Get-AzBatchComputeNode -PoolId $poolId -Select $select -BatchContext $context
     $start = [DateTime]::Now
-    $timeout = Compute-TestTimeout 30
+    $timeout = Compute-TestTimeout 60
     $end = $start.AddSeconds($timeout)
     while ($computeNodes[0].State -ne 'LeavingPool' -and $computeNodes[1].State -ne 'LeavingPool')
     {
@@ -43,7 +43,7 @@ function Test-RemoveComputeNodes
         {
             throw [System.TimeoutException] "Timed out waiting for compute nodes to enter LeavingPool state"
         }
-        Start-TestSleep 1000
+        Start-TestSleep -Seconds 1
         $computeNodes = Get-AzBatchComputeNode -PoolId $poolId -Select $select -BatchContext $context
     }
 }
@@ -54,9 +54,16 @@ Tests rebooting and reimaging a compute node
 #>
 function Test-RebootAndReimageComputeNode
 {
-    param([string]$poolId, [string]$computeNodeId, [string]$computeNodeId2)
+    param([string]$poolId)
 
     $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
+
+    $computeNodes = Get-AzBatchComputeNode -PoolId $poolId -BatchContext $context
+    $computeNodeId = $computeNodes[0].Id
+    $computeNodeId2 = $computeNodes[1].Id
+
+    WaitForIdleComputeNode $context $poolId $computeNodeId
+    WaitForIdleComputeNode $context $poolId $computeNodeId2
 
     $rebootOption = ([Microsoft.Azure.Batch.Common.ComputeNodeRebootOption]::Terminate)
     $reimageOption = ([Microsoft.Azure.Batch.Common.ComputeNodeReimageOption]::Terminate)
@@ -78,9 +85,14 @@ Tests disabling and enabling compute node scheduling
 #>
 function Test-DisableAndEnableComputeNodeScheduling
 {
-    param([string]$poolId, [string]$computeNodeId)
+    param([string]$poolId)
 
     $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
+
+    $computeNodes = Get-AzBatchComputeNode -PoolId $poolId -BatchContext $context
+    $computeNodeId = $computeNodes[0].Id
+
+    WaitForIdleComputeNode $context $poolId $computeNodeId
 
     $disableOption = ([Microsoft.Azure.Batch.Common.DisableComputeNodeSchedulingOption]::Terminate)
     Get-AzBatchComputeNode $poolId $computeNodeId -BatchContext $context | Disable-AzBatchComputeNodeScheduling -DisableSchedulingOption $disableOption -BatchContext $context
@@ -100,12 +112,35 @@ Tests getting remote login settings from compute node
 #>
 function Test-GetRemoteLoginSettings
 {
-    param([string]$poolId, [string]$computeNodeId)
+    param([string]$poolId)
     
     $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
+
+    $computeNodes = Get-AzBatchComputeNode -PoolId $poolId -BatchContext $context
+    $computeNodeId = $computeNodes[0].Id
+
     $remoteLoginSettings = Get-AzBatchComputeNode $poolId $computeNodeId -BatchContext $context | Get-AzBatchRemoteLoginSettings -BatchContext $context
 
     Assert-AreNotEqual $null $remoteLoginSettings.IPAddress
     Assert-AreNotEqual $null $remoteLoginSettings.Port
 }
 
+function WaitForIdleComputeNode
+{
+    param([Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext]$context, [string]$poolId, [string]$computeNodeId)
+
+    $start = [DateTime]::Now
+    $timeout = Compute-TestTimeout 600
+    $end = $start.AddSeconds($timeout)
+
+    $computeNode = Get-AzBatchComputeNode -Id $computeNodeId -PoolId $poolId -BatchContext $context -Select "id,state"
+    while ($computeNode.State -ne 'idle')
+    {
+        if ([DateTime]::Now -gt $end)
+        {
+            throw [System.TimeoutException] "Timed out waiting for idle compute node"
+        }
+        Start-TestSleep -Seconds 5
+        $computeNode = Get-AzBatchComputeNode -Id $computeNodeId -PoolId $poolId -BatchContext $context -Select "id,state"
+    }
+}

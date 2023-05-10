@@ -44,7 +44,7 @@ INPUTOBJECT <ILogzIdentity>: Identity Parameter
   [SubAccountName <String>]: Sub Account resource name
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.logz/remove-azlogzmonitortagrule
+https://learn.microsoft.com/powershell/module/az.logz/remove-azlogzmonitortagrule
 #>
 function Remove-AzLogzMonitorTagRule {
 [OutputType([System.Boolean])]

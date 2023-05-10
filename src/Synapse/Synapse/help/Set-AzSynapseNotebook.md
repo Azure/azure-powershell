@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Synapse.dll-Help.xml
 Module Name: Az.Synapse
-online version: https://docs.microsoft.com/powershell/module/az.synapse/set-azsynapsenotebook
+online version: https://learn.microsoft.com/powershell/module/az.synapse/set-azsynapsenotebook
 schema: 2.0.0
 ---
 
@@ -50,7 +50,7 @@ Set-AzSynapseNotebook -WorkspaceName ContosoWorkspace -DefinitionFile "C:\\sampl
 ```
 
 ```output
-    WorkspaceName : ContosoWorkspace
+WorkspaceName : ContosoWorkspace
     Properties    : Microsoft.Azure.Commands.Synapse.Models.PSNotebook
     Name          : notebook
 ```
@@ -155,7 +155,7 @@ Number of core and memory to be used for executors allocated in the specified Sp
 Type: System.String
 Parameter Sets: SetByNameAndSparkPool, SetByObjectAndSparkPool
 Aliases:
-Accepted values: Small, Medium, Large
+Accepted values: Small, Medium, Large, XLarge, XXLarge, XXXLarge
 
 Required: False
 Position: Named

@@ -32,6 +32,8 @@ namespace Microsoft.Azure.Commands.Resources.Test
     using WindowsAzure.Commands.Test.Utilities.Common;
     using Xunit;
     using Xunit.Abstractions;
+    using Microsoft.Azure.Commands.TestFx;
+
     /// <summary>
     /// Tests the Azure Provider Feature cmdlets
     /// </summary>

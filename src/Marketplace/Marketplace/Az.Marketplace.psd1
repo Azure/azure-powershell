@@ -32,7 +32,7 @@ Copyright = 'Microsoft Corporation. All rights reserved.'
 # Description of the functionality provided by this module
 Description = 'Microsoft Azure PowerShell - Marketplace service cmdlets for Azure Resource Manager in Windows PowerShell and PowerShell Core.
 
-For more information on marketplace, please visit the following: https://docs.microsoft.com/azure/marketplace/'
+For more information on marketplace, please visit the following: https://learn.microsoft.com/azure/marketplace/'
 
 # Minimum version of the PowerShell engine required by this module
 PowerShellVersion = '5.1'
@@ -100,7 +100,7 @@ CmdletsToExport = 'Get-AzMarketplacePrivateStore',
 # VariablesToExport = @()
 
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
-AliasesToExport = ''
+AliasesToExport = @()
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()

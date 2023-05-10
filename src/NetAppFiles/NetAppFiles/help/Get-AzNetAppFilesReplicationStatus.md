@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles.dll-Help.xml
 Module Name: Az.NetAppFiles
-online version: https://docs.microsoft.com/powershell/module/az.netappfiles/get-aznetappfilesreplicationstatus
+online version: https://learn.microsoft.com/powershell/module/az.netappfiles/get-aznetappfilesreplicationstatus
 schema: 2.0.0
 ---
 
@@ -37,7 +37,7 @@ Get the status of the replication
 
 ### Example 1
 ```powershell
-Get-AzNetAppFilesReplicationStatus -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -PoolName "MyAnfPool" -PoolName "MyDestinationPool" -VolumeName "MyVol"
+Get-AzNetAppFilesReplicationStatus -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -PoolName "MyAnfPool" -VolumeName "MyVol"
 ```
 
 ```output

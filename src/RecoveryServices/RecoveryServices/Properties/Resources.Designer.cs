@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -266,6 +266,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Properties {
         internal static string MissingChannelIntergrityKey {
             get {
                 return ResourceManager.GetString("MissingChannelIntergrityKey", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please provide the value for DisableAzureMonitorAlertsForJobFailure and DisableClassicAlerts parameters to configure alerts.
+        /// </summary>
+        internal static string MissingParameterForAlerts {
+            get {
+                return ResourceManager.GetString("MissingParameterForAlerts", resourceCulture);
             }
         }
         
@@ -664,6 +673,28 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Properties {
         internal static string WaitingForCompletion {
             get {
                 return ResourceManager.GetString("WaitingForCompletion", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Immutability can only be locked when it is Unlocked(Enabled).
+        /// </summary>
+        internal static string ImmutabilityCantBeLocked
+        {
+            get
+            {
+                return ResourceManager.GetString("ImmutabilityCantBeLocked", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Immutability State can't be updated once enabled and locked.
+        /// </summary>
+        internal static string ImmutabilityNotUnlocked
+        {
+            get
+            {
+                return ResourceManager.GetString("ImmutabilityNotUnlocked", resourceCulture);
             }
         }
     }

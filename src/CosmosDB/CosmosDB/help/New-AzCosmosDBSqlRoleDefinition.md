@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.dll-Help.xml
 Module Name: Az.CosmosDB
-online version: https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbsqlroledefinition
+online version: https://learn.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbsqlroledefinition
 schema: 2.0.0
 ---
 
@@ -285,7 +285,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.Commands.CosmosDB.Models.PSSqlRoleDefinitionGetResults
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.CosmosDB.Models.PSSqlRoleAssignmentGetResults
+### Microsoft.Azure.Commands.CosmosDB.Models.PSSqlRoleDefinitionGetResults
 ## NOTES
 
 ## RELATED LINKS

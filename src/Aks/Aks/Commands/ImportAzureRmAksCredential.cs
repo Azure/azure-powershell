@@ -21,6 +21,7 @@ using System.Text;
 
 using Microsoft.Azure.Commands.Aks.Models;
 using Microsoft.Azure.Commands.Aks.Properties;
+using Microsoft.Azure.Commands.Common.Exceptions;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.ContainerService;
 using Microsoft.Azure.Management.ContainerService.Models;
@@ -96,6 +97,11 @@ namespace Microsoft.Azure.Commands.Aks
                 "A kubectl config file to create or update. Use '-' to print YAML to stdout instead.  Default: %Home%/.kube/config.")]
         public string ConfigPath { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Get private cluster credential with server address to be public fqdn.")]
+        public SwitchParameter PublicFqdn { get; set; } = false;
+
         [Parameter(Mandatory = false, HelpMessage = "Import Kubernetes config even if it is the default")]
         public SwitchParameter Force { get; set; }
 
@@ -149,13 +155,14 @@ namespace Microsoft.Azure.Commands.Aks
 
                         try
                         {
+                            string serverFQDN = PublicFqdn ? "public" : null;
                             if (Admin)
                             {
-                                credentialResult = Client.ManagedClusters.ListClusterAdminCredentials(ResourceGroupName, Name).Kubeconfigs[0];
+                                credentialResult = Client.ManagedClusters.ListClusterAdminCredentials(ResourceGroupName, Name, serverFQDN).Kubeconfigs[0];
                             }
                             else
                             {
-                                credentialResult = Client.ManagedClusters.ListClusterUserCredentials(ResourceGroupName, Name).Kubeconfigs[0];
+                                credentialResult = Client.ManagedClusters.ListClusterUserCredentials(ResourceGroupName, Name, serverFQDN).Kubeconfigs[0];
                             }
                         }
                         catch (ValidationException e)
@@ -201,8 +208,16 @@ namespace Microsoft.Azure.Commands.Aks
             }
             else
             {
-                var mergedConfig = MergeKubeConfig(File.ReadAllText(ConfigPath), config);
-                File.WriteAllText(ConfigPath, mergedConfig);
+                var existConfigContent = File.ReadAllText(ConfigPath).Trim();
+                if (existConfigContent != "")
+                {
+                    var mergedConfig = MergeKubeConfig(existConfigContent, config);
+                    File.WriteAllText(ConfigPath, mergedConfig);
+                }
+                else
+                {
+                    File.WriteAllText(ConfigPath, config);
+                }
             }
         }
 
@@ -243,6 +258,10 @@ namespace Microsoft.Azure.Commands.Aks
 
         private static YamlSequenceNode MergeNamedItems(YamlMappingNode original, YamlMappingNode addition, string key)
         {
+            if (!(original[new YamlScalarNode(key)] is YamlSequenceNode))
+            {
+                throw new AzPSException("Please make sure the format of your existing config file is following the standard. See the reference here: https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/", Common.ErrorKind.UserError);
+            }
             var origNamedItems = (YamlSequenceNode) original[new YamlScalarNode(key)];
             var newNamedItems = (YamlSequenceNode) addition[new YamlScalarNode(key)];
             var namedItems = new Dictionary<string, YamlMappingNode>();

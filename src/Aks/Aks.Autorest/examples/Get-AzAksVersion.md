@@ -1,7 +1,9 @@
-### Example 1: List available version for creating managed Kubernetes cluster.
+### Example 1: List available version for creating managed Kubernetes cluster
 ```powershell
-PS C:\> Get-AzAksVersion -location eastus
+Get-AzAksVersion -location eastus
+```
 
+```output
 Default IsPreview OrchestratorType OrchestratorVersion
 ------- --------- ---------------- -------------------
                   Kubernetes       1.19.11
@@ -15,4 +17,5 @@ True              Kubernetes       1.20.9
 ```
 
 List available version for creating managed Kubernetes cluster.
+
 

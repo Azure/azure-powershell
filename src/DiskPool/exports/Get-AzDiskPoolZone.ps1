@@ -31,7 +31,7 @@ Premium  Premium  {3, 1, 2}
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IDiskPoolZoneInfo
 .Link
-https://docs.microsoft.com/powershell/module/az.diskpool/get-azdiskpoolzone
+https://learn.microsoft.com/powershell/module/az.diskpool/get-azdiskpoolzone
 #>
 function Get-AzDiskPoolZone {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IDiskPoolZoneInfo])]

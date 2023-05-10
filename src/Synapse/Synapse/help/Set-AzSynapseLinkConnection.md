@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Synapse.dll-Help.xml
 Module Name: Az.Synapse
-online version: https://docs.microsoft.com/powershell/module/az.synapse/set-azsynapselinkconnection
+online version: https://learn.microsoft.com/powershell/module/az.synapse/set-azsynapselinkconnection
 schema: 2.0.0
 ---
 
@@ -31,15 +31,46 @@ The **Set-AzSynapseLinkConnection** cmdlet creates or updates a link connections
 
 ### Example 1
 ```powershell
-PS C:\> Set-AzSynapseLinkConnection -WorkspaceName ContosoWorkspace -DefinitionFile "C:\\samples\\linkconnection.json"
+<#
+linkconnection.json
+{
+	"name":"sampleLinkConnection", // please change to your link connection name
+	"properties":{
+		"sourceDatabase":{
+			"typeProperties":{ // please change to your source database resourceId and principalId
+				"resourceId":"/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/sampleResourceGroup/providers/Microsoft.Sql/servers/sampleServer",
+				"principalId":"xxxxxxxxxx"
+				},
+			"linkedService":{
+				"referenceName":"sampleLinkServiceReference", // please change to your source database link service name
+				"type":"LinkedServiceReference"
+			}
+		},
+		"targetDatabase":{
+			"linkedService":{
+				"referenceName":"sampleLinkServiceReference", // please change to your target database link service name
+				"type":"LinkedServiceReference",
+				"parameters":{
+					"DBName":"v2"
+				}
+			}
+		},
+		"compute":{
+			"coreCount":16,
+			"computeType":"General"
+		}
+	}
+}
+#>
+Set-AzSynapseLinkConnection -WorkspaceName ContosoWorkspace -DefinitionFile "C:\samples\linkconnection.json"
 ```
 
 This command creates or updates a link connection from definition file linkconnection.json in the workspace named ContosoWorkspace.
 
 ### Example 2
 ```powershell
-PS C:\> $ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
-PS C:\> $ws | Set-AzSynapseLinkConnection -DefinitionFile "C:\\samples\\linkconnection.json"
+$ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
+$ws | Set-AzSynapseLinkConnection -DefinitionFile "C:\samples\linkconnection.json"
 ```
 
 This command creates or updates a link connection from definition file linkconnection.json in the workspace named ContosoWorkspace through pipeline.

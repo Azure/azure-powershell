@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.ADDomainServices
-online version: https://docs.microsoft.com/powershell/module/az.addomainservices/update-azaddomainservice
+online version: https://learn.microsoft.com/powershell/module/az.addomainservices/update-azaddomainservice
 schema: 2.0.0
 ---
 
@@ -581,7 +581,7 @@ FORESTTRUST <IForestTrust[]>: List of settings for Resource Forest
   - `[TrustPassword <SecureString>]`: Trust Password
   - `[TrustedDomainFqdn <String>]`: Trusted Domain FQDN
 
-INPUTOBJECT <IAdDomainServicesIdentity>: Identity Parameter
+INPUTOBJECT `<IAdDomainServicesIdentity>`: Identity Parameter
   - `[DomainServiceName <String>]`: The name of the domain service.
   - `[Id <String>]`: Resource identity path
   - `[ResourceGroupName <String>]`: The name of the resource group within the user's subscription. The name is case insensitive.

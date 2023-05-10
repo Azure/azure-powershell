@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
 ms.assetid: E9500392-6BE1-46EC-9AF5-9234281025E6
-online version: https://docs.microsoft.com/powershell/module/az.storage/new-azstoragequeue
+online version: https://learn.microsoft.com/powershell/module/az.storage/new-azstoragequeue
 schema: 2.0.0
 ---
 
@@ -24,15 +24,15 @@ The **New-AzStorageQueue** cmdlet creates a storage queue in Azure.
 ## EXAMPLES
 
 ### Example 1: Create an Azure storage queue
-```
-PS C:\>New-AzStorageQueue -Name "queueabc"
+```powershell
+New-AzStorageQueue -Name "queueabc"
 ```
 
 This example creates a storage queue named queueabc.
 
 ### Example 2: Create multiple azure storage queues
-```
-PS C:\>"queue1 queue2 queue3".split() | New-AzStorageQueue
+```powershell
+"queue1 queue2 queue3".split() | New-AzStorageQueue
 ```
 
 This example creates multiple storage queues.

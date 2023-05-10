@@ -47,7 +47,8 @@ The following prerequisites should be completed before contributing to the Azure
 - Install [Visual Studio 2019 or above](https://www.visualstudio.com/downloads/)
 - Install the latest version of [Git](https://git-scm.com/downloads)
 - Install the [`platyPS` module](help-generation.md#Installing-platyPS)
-- Install the latest [**.NET Core SDK** and **.NET Framework Dev Pack 4.7.2**](https://dotnet.microsoft.com/download) or greater
+- Install [PSScriptAnalyzer](https://github.com/PowerShell/PSScriptAnalyzer#installation)
+- Install [**.NET Core 3.1, the Latest .NET, and .NET Framework Dev Pack 4.7.2**](https://dotnet.microsoft.com/en-us/download/dotnet) or greater
 - Install [PowerShell 7](https://github.com/PowerShell/PowerShell/releases/latest)
 - Set the PowerShell [execution policy](https://technet.microsoft.com/en-us/library/ee176961.aspx) to **Unrestricted** for the following versions of PowerShell:
   - `C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe`
@@ -248,17 +249,58 @@ _Note_: As mentioned in the prerequisites section, set the PowerShell [execution
 
 ## Using Azure TestFramework
 
-Please see our guide on [Using Azure TestFramework](../testing-docs/using-azure-test-framework.md) for information on how to setup the appropriate connection string and record tests using the `Microsoft.Rest.ClientRuntime.Azure.TestFramework` package.
+Please see our guide on [Using Azure TestFramework](../testing-docs/using-azure-test-framework.md) for information on how to setup the appropriate connection string and record tests.
 
 ## Scenario Tests
+
+### Adding Test Project
+
+- Create a new folder called `ScenarioTests`
+- Create a new folder called `SessionRecords`
+- Inside the `ScenarioTests` folder, create a new class called `<SERVICE>TestRunner`
+- In the `<SERVICE>TestRunner` class, it should have the similar field and constructor like shown below. The parameter values passed in are based on the real situation.
+```csharp
+    protected readonly ITestRunner TestRunner;
+
+    protected <SERVICE>TestRunner(ITestOutputHelper output)
+    {
+        TestRunner = TestManager.CreateInstance(output)
+            .WithProjectSubfolderForTests("ScenarioTests")
+            .WithNewPsScriptFilename($"{GetType().Name}.ps1")
+            .WithCommonPsScripts(new[]
+            {
+                @"Common.ps1",
+                @"../AzureRM.Resources.ps1",
+                @"../AzureRM.Storage.ps1"
+            })
+            .WithNewRmModules(helper => new[]
+            {
+                helper.RMProfileModule,
+                ...
+            })
+            .WithNewRecordMatcherArguments(
+                userAgentsToIgnore: new Dictionary<string, string>
+                {
+                    ...
+                },
+                resourceProviders: new Dictionary<string, string>
+                {
+                    ...
+                }
+            )
+            .Build();
+    }
+```
 
 ### Adding Scenario Tests
 
 - Create a new class in `<SERVICE>.Test`
+    - The new class must inherit from the `<SERVICE>TestRunner` class in this project.
     - Add `[Fact]` as an attribute to every test
     - Add `[Trait(Category.AcceptanceType, Category.CheckIn)]` as an attribute to any test that should be run during CI in Playback mode.
     - Add `[Trait(Category.AcceptanceType, Category.LiveOnly)]` as an attribute to any test that cannot be run in Playback mode (for example, if a test depends on a Dataplane SDK).
-- Create a ps1 file in the same folder that contains the actual tests ([see sample](../../src/Media/Media.Test/ScenarioTests))
+- Create a ps1 file in the same folder that contains the actual tests.
+- The name of the ps1 file should exactly match with name of the class. ([see sample](../../src/Media/Media.Test/ScenarioTests))
     - Use `Assert-AreEqual x y` to verify that values are the same
     - Use `Assert-AreNotEqual x y` to verify that values are not the same
     - Use `Assert-Throws scriptblock message` to verify an exception is being thrown
@@ -290,22 +332,19 @@ CI in DevOps will happens under `Debug` folder. So you need to make sure that th
 
 > **Important!**
 > 1. Be sure that you have set the `ExecutionPolicy` to `Unrestricted` on both 32-bit and 64-bit PowerShell environments, as mentioned in the [prerequisites](#prerequisites) at the top
-> 2. When recording tests, if you are using a Prod environment, use ServicePrincipalName (SPN) and ServicePrincipalSecret. For more information on creating an SPN, click [here](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-create-service-principal-portal).
+> 2. When recording tests, if you are using a Prod environment, use ServicePrincipalName (SPN) and ServicePrincipalSecret. For more information on creating an SPN, click [here](https://learn.microsoft.com/en-us/azure/azure-resource-manager/resource-group-create-service-principal-portal).
 
 ### AD Scenario Tests
 
 Create this environment variables for the AD scenario tests:
 
 - `AZURE_SERVICE_PRINCIPAL` should be a service principal - an application defined in the subscription's tenant - that has management access to the subscription (or at least to a resource group in the tenant)
-  - `AZURE_SERVICE_PRINCIPAL=UserId=<UserGuid>;Password=<Password>;AADTenant=<TenantGuid>;SubscriptionId=<SubscriptionId>`
+  - `AZURE_SERVICE_PRINCIPAL=UserId=<UserGuid>;Password=<Password>;TenantId=<TenantGuid>;SubscriptionId=<SubscriptionId>`
 
 ### Recording/Running Tests
 
 - Set up environment variables using New-TestCredential as described [here](../testing-docs/using-azure-test-framework.md#new-testcredential)
-- Run the test in Visual Studio in the Test Explorer window and make sure you got a generated JSON file that matches the test name in the bin folder under the `SessionRecords` folder
-- Copy this `SessionRecords` folder and place it inside the test project
-  - Inside Visual Studio, add all of the generated JSON files, making sure to change the "Copy to Output Directory" property for each one to "Copy if newer"
-  -  Make sure that all of these JSON files appear in your `<SERVICE>.Test.csproj` file
+- Run the test in Visual Studio in the Test Explorer window and make sure you got a generated JSON file that matches the test name under the `SessionRecords` folder
 
 # After Development
 

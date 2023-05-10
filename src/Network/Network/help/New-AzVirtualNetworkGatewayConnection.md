@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 0F141A92-4994-45B3-AE94-09865BC691C4
-online version: https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworkgatewayconnection
+online version: https://learn.microsoft.com/powershell/module/az.network/new-azvirtualnetworkgatewayconnection
 schema: 2.0.0
 ---
 
@@ -22,8 +22,10 @@ New-AzVirtualNetworkGatewayConnection -Name <String> -ResourceGroupName <String>
  [-SharedKey <String>] [-Peer <PSPeering>] [-EnableBgp <Boolean>] [-UseLocalAzureIpAddress] [-Tag <Hashtable>]
  [-Force] [-UsePolicyBasedTrafficSelectors <Boolean>] [-IpsecPolicies <PSIpsecPolicy[]>]
  [-TrafficSelectorPolicy <PSTrafficSelectorPolicy[]>] [-ConnectionProtocol <String>]
- [-IngressNatRule <PSResourceId[]>] [-EgressNatRule <PSResourceId[]>] [-AsJob] [-ExpressRouteGatewayBypass]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-IngressNatRule <PSResourceId[]>] [-EgressNatRule <PSResourceId[]>]
+ [-GatewayCustomBgpIpAddress <PSGatewayCustomBgpIpConfiguration[]>] [-AsJob] [-ExpressRouteGatewayBypass]
+ [-EnablePrivateLinkFastPath] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### SetByResourceId
@@ -35,8 +37,10 @@ New-AzVirtualNetworkGatewayConnection -Name <String> -ResourceGroupName <String>
  [-SharedKey <String>] [-PeerId <String>] [-EnableBgp <Boolean>] [-UseLocalAzureIpAddress] [-Tag <Hashtable>]
  [-Force] [-UsePolicyBasedTrafficSelectors <Boolean>] [-IpsecPolicies <PSIpsecPolicy[]>]
  [-TrafficSelectorPolicy <PSTrafficSelectorPolicy[]>] [-ConnectionProtocol <String>]
- [-IngressNatRule <PSResourceId[]>] [-EgressNatRule <PSResourceId[]>] [-AsJob] [-ExpressRouteGatewayBypass]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-IngressNatRule <PSResourceId[]>] [-EgressNatRule <PSResourceId[]>]
+ [-GatewayCustomBgpIpAddress <PSGatewayCustomBgpIpConfiguration[]>] [-AsJob] [-ExpressRouteGatewayBypass]
+ [-EnablePrivateLinkFastPath] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -46,18 +50,37 @@ Creates the Site-to-Site VPN connection between the virtual network gateway and 
 
 ### Example 1
 ```powershell
-New-AzVirtualNetworkGatewayConnection -Name conn-client-1 -ResourceGroupName $RG1 -VirtualNetworkGateway1 $vnetgw1 -VirtualNetworkGateway2 $vnetgw2 -Location $loc1 -ConnectionType Vnet2Vnet -SharedKey 'a1b2c3d4e5'
+$vnetgw1 = Get-AzVirtualNetworkGateway -ResourceGroupName "Rg1" -Name "gw1"
+$vnetgw2 = Get-AzVirtualNetworkGateway -ResourceGroupName "Rg1" -Name "gw2"
+New-AzVirtualNetworkGatewayConnection -Name conn-client-1 -ResourceGroupName "Rg1" -VirtualNetworkGateway1 $vnetgw1 -VirtualNetworkGateway2 $vnetgw2 -Location "eastus" -ConnectionType Vnet2Vnet -SharedKey 'a1b2c3d4e5'
 ```
+
 ### Example 2 Add/Update IngressNatRule/EgressNatRule to an existing virtual network gateway connection
 ```powershell
-$ingressnatrule = Get-AzVirtualNetworkGatewayNatRule -ResourceGroupName $RG1 -Name "natRule1" -ParentResourceName vnetgw1
-$egressnatrule = Get-azVirtualNetworkGatewayNatRule -ResourceGroupName $RG1 -Name "natRule2" -ParentResourceName vnetgw1
-New-AzVirtualNetworkGatewayConnection -Name conn-client-1 -ResourceGroupName $RG1 -VirtualNetworkGateway1 $vnetgw1 -VirtualNetworkGateway2 $vnetgw2 -Location $loc1 -ConnectionType Vnet2Vnet -SharedKey 'a1b2c3d4e5' 
+$vnetgw1 = Get-AzVirtualNetworkGateway -ResourceGroupName "Rg1" -Name "vnetgw1"
+$vnetgw2 = Get-AzVirtualNetworkGateway -ResourceGroupName "Rg1" -Name "vnetgw2"
+$ingressnatrule = Get-AzVirtualNetworkGatewayNatRule -ResourceGroupName "Rg1" -Name "natRule1" -ParentResourceName vnetgw1
+$egressnatrule = Get-AzVirtualNetworkGatewayNatRule -ResourceGroupName "Rg1" -Name "natRule2" -ParentResourceName vnetgw1
+New-AzVirtualNetworkGatewayConnection -Name conn-client-1 -ResourceGroupName $RG1 -VirtualNetworkGateway1 $vnetgw1 -VirtualNetworkGateway2 $vnetgw2 -Location "eastus" -ConnectionType Vnet2Vnet -SharedKey 'a1b2c3d4e5' `
 -IngressNatRule $ingressnatrule -EgressNatRule $egressnatrule
 ```
+
 The first command gets a virtual network gateway natRule named natRule1 that's type is IngressSnat.
 The second command gets a virtual network gateway natRule named natRule2 that's type is EgressSnat.
 The third command creates this new virtual Network gateway connection with Ingress and Egress NatRules.
+
+### Example 3 Add GatewayCustomBgpIpAddress to virtual network gateway connection
+```powershell
+$LocalnetGateway = Get-AzLocalNetworkGateway -ResourceGroupName "PS_testing" -name "testLng"
+$gateway = Get-AzVirtualNetworkGateway -ResourceGroupName PS_testing -ResourceName testGw
+$address = New-AzGatewayCustomBgpIpConfigurationObject -IpConfigurationId "/subscriptions/83704d68-d560-4c67-b1c7-12404db89dc3/resourceGroups/PS_testing/providers/Microsoft.Network/virtualNetworkGateways/testGw/ipConfigurations/default" -CustomBgpIpAddress "169.254.21.1"
+
+New-AzVirtualNetworkGatewayConnection -ResourceGroupName "PS_testing" -name "Conn" -location "eastus" -VirtualNetworkGateway1 $gateway -LocalNetworkGateway2 $localnetGateway -ConnectionType IPsec -RoutingWeight 3 -SharedKey abc -GatewayCustomBgpIpAddress $address -EnableBgp $true
+```
+
+The two command gets a local network gateway and virtual network gateway.
+The thrid command creates a AzGatewayCustomBgpIpConfigurationObject.
+The third command creates this new virtual Network gateway connection with GatewayCustomBgpIpAddress.
 
 ## PARAMETERS
 
@@ -88,21 +111,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -213,6 +221,22 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -EnablePrivateLinkFastPath
+Bypass the ExpressRoute gateway when accessing private-links.
+ExpressRoute FastPath (ExpressRouteGatewayBypass) must be enabled.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -ExpressRouteGatewayBypass
 Whether to use accelerated virtual network access by bypassing gateway
 
@@ -240,6 +264,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -GatewayCustomBgpIpAddress
+The GatewayCustomBgpIpAddress of Virtual network gateway used in this connection.
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSGatewayCustomBgpIpConfiguration[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -395,8 +434,6 @@ Accept wildcard characters: False
 
 ### -Tag
 A hashtable which represents resource tags.
-Key-value pairs in the form of a hash table. For example:
-@{key0="value0";key1=$null;key2="value2"}
 
 ```yaml
 Type: System.Collections.Hashtable
@@ -411,7 +448,7 @@ Accept wildcard characters: False
 ```
 
 ### -TrafficSelectorPolicy
-A list of Traffic Selector policies.
+A list of traffic selector policies.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSTrafficSelectorPolicy[]
@@ -485,6 +522,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -WhatIf
 Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
@@ -525,6 +577,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.Commands.Network.Models.PSIpsecPolicy[]
 
 ### Microsoft.Azure.Commands.Network.Models.PSTrafficSelectorPolicy[]
+
+### Microsoft.Azure.Commands.Network.Models.PSGatewayCustomBgpIpConfiguration[]
 
 ## OUTPUTS
 

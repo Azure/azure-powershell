@@ -145,6 +145,7 @@ namespace Microsoft.Azure.Commands.Network
                     pcResult.ProvisioningState = psPacketCapture.ProvisioningState;
                     pcResult.StorageLocation = psPacketCapture.StorageLocation;
                     pcResult.Target = psPacketCapture.Target;
+                    pcResult.TargetType = psPacketCapture.TargetType;
                     pcResult.TimeLimitInSeconds = psPacketCapture.TimeLimitInSeconds;
                 }
 
@@ -200,6 +201,7 @@ namespace Microsoft.Azure.Commands.Network
                         pcResult.Name = psPacketCapture.Name;
                         pcResult.StorageLocation = psPacketCapture.StorageLocation;
                         pcResult.Target = psPacketCapture.Target;
+                        pcResult.TargetType = psPacketCapture.TargetType;
                         pcResult.TimeLimitInSeconds = psPacketCapture.TimeLimitInSeconds;
                         pcResult.ProvisioningState = psPacketCapture.ProvisioningState;
                     }

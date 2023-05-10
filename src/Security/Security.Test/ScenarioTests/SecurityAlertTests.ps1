@@ -89,11 +89,25 @@ function Set-AzureRmSecurityAlert-ResourceGroupLevelResource
 	$location = Extract-ResourceLocation -ResourceId $alert.Id
 	$rgName = Extract-ResourceGroup -ResourceId $alert.Id
 
+	# Validate Active status
 	Set-AzSecurityAlert -ResourceGroupName $rgName -Location $location -Name $alert.Name -ActionType "Activate"
-
 	$fetchedAlert = Get-AzSecurityAlert -ResourceGroupName $rgName -Location $location -Name $alert.Name
-
 	Validate-AlertActivity -alert $fetchedAlert
+
+	# Validate Dismissed status
+	Set-AzSecurityAlert -ResourceGroupName $rgName -Location $location -Name $alert.Name -ActionType "Dismiss"
+	$fetchedAlert = Get-AzSecurityAlert -ResourceGroupName $rgName -Location $location -Name $alert.Name
+	Validate-AlertDismissed -alert $fetchedAlert
+
+	# Validate Resolved status
+	Set-AzSecurityAlert -ResourceGroupName $rgName -Location $location -Name $alert.Name -ActionType "Resolve"
+	$fetchedAlert = Get-AzSecurityAlert -ResourceGroupName $rgName -Location $location -Name $alert.Name
+	Validate-AlertResolved -alert $fetchedAlert
+
+	# Validate InProgress status
+	Set-AzSecurityAlert -ResourceGroupName $rgName -Location $location -Name $alert.Name -ActionType "InProgress"
+	$fetchedAlert = Get-AzSecurityAlert -ResourceGroupName $rgName -Location $location -Name $alert.Name
+	Validate-AlertInProgress -alert $fetchedAlert
 }
 
 <#
@@ -106,11 +120,25 @@ function Set-AzureRmSecurityAlert-SubscriptionLevelResource
 	$alert = $alerts | where { $_.Id -notlike "*resourceGroups*" } | Select -First 1
 	$location = Extract-ResourceLocation -ResourceId $alert.Id
 
+	# Validate Active status
 	Set-AzSecurityAlert -Location $location -Name $alert.Name -ActionType "Activate"
-
 	$fetchedAlert = Get-AzSecurityAlert -Location $location -Name $alert.Name
-
 	Validate-AlertActivity -alert $fetchedAlert
+
+	# Validate Dismissed status
+	Set-AzSecurityAlert -Location $location -Name $alert.Name -ActionType "Dismiss"
+	$fetchedAlert = Get-AzSecurityAlert -Location $location -Name $alert.Name
+	Validate-AlertDismissed -alert $fetchedAlert
+
+	# Validate Resolved status
+	Set-AzSecurityAlert -Location $location -Name $alert.Name -ActionType "Resolve"
+	$fetchedAlert = Get-AzSecurityAlert -Location $location -Name $alert.Name
+	Validate-AlertResolved -alert $fetchedAlert
+
+	# Validate InProgress status
+	Set-AzSecurityAlert -Location $location -Name $alert.Name -ActionType "InProgress"
+	$fetchedAlert = Get-AzSecurityAlert -Location $location -Name $alert.Name
+	Validate-AlertInProgress -alert $fetchedAlert
 }
 
 <#
@@ -122,10 +150,25 @@ function Set-AzureRmSecurityAlert-ResourceId
 	$alerts = Get-AzSecurityAlert
 	$alert = $alerts | Select -First 1
 
+	# Validate Active status
 	Set-AzSecurityAlert -ResourceId $alert.Id -ActionType "Activate"
 	$fetchedAlert = Get-AzSecurityAlert -ResourceId $alert.Id
-
 	Validate-AlertActivity -alert $fetchedAlert
+
+	# Validate Dismissed status
+	Set-AzSecurityAlert -ResourceId $alert.Id -ActionType "Dismiss"
+	$fetchedAlert = Get-AzSecurityAlert -ResourceId $alert.Id
+	Validate-AlertDismissed -alert $fetchedAlert
+
+	# Validate Resolved status
+	Set-AzSecurityAlert -ResourceId $alert.Id -ActionType "Resolve"
+	$fetchedAlert = Get-AzSecurityAlert -ResourceId $alert.Id
+	Validate-AlertResolved -alert $fetchedAlert
+
+	# Validate InProgress status
+	Set-AzSecurityAlert -ResourceId $alert.Id -ActionType "InProgress"
+	$fetchedAlert = Get-AzSecurityAlert -ResourceId $alert.Id
+	Validate-AlertInProgress -alert $fetchedAlert
 }
 
 <#
@@ -166,4 +209,40 @@ function Validate-AlertActivity
 
 	Assert-NotNull $alert
 	Assert-True { $alert.Status -eq "Active" }
+}
+
+<#
+.SYNOPSIS
+Validates a single alert
+#>
+function Validate-AlertDismissed
+{
+	param($alert)
+
+	Assert-NotNull $alert
+	Assert-True { $alert.Status -eq "Dismissed" }
+}
+
+<#
+.SYNOPSIS
+Validates a single alert
+#>
+function Validate-AlertResolved
+{
+	param($alert)
+
+	Assert-NotNull $alert
+	Assert-True { $alert.Status -eq "Resolved" }
+}
+
+<#
+.SYNOPSIS
+Validates a single alert
+#>
+function Validate-AlertInProgress
+{
+	param($alert)
+
+	Assert-NotNull $alert
+	Assert-True { $alert.Status -eq "InProgress" }
 }

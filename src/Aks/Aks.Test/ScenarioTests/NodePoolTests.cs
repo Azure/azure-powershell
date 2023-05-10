@@ -16,5 +16,12 @@ namespace Commands.Aks.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-NewNodePool");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNodePoolMode()
+        {
+            TestRunner.RunTestScript("Test-NodePoolMode");
+        }
     }
 }

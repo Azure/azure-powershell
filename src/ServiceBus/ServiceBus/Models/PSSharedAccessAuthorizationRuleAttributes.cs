@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Models
         /// <summary>
         /// The rights associated with the rule.
         /// </summary>
-        public IList<AccessRights?> Rights { get; set; }
+        public IList<string> Rights { get; set; }
        
     }
 }

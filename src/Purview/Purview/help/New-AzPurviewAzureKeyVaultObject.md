@@ -1,7 +1,7 @@
 ---
 external help file: Az.Purview-help.xml
 Module Name: Az.Purview
-online version: https://docs.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureKeyVaultObject
+online version: https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureKeyVaultObject
 schema: 2.0.0
 ---
 
@@ -23,8 +23,10 @@ Create an in-memory object for AzureKeyVault.
 
 ### Example 1: Create a key vault connection object
 ```powershell
-PS C:\> New-AzPurviewAzureKeyVaultObject -BaseUrl 'https://datascankv.vault.azure.net/' -Description 'This is a key vault'
+New-AzPurviewAzureKeyVaultObject -BaseUrl 'https://datascankv.vault.azure.net/' -Description 'This is a key vault'
+```
 
+```output
 BaseUrl           : https://datascankv.vault.azure.net/
 Description       : This is a key vault
 Id                :

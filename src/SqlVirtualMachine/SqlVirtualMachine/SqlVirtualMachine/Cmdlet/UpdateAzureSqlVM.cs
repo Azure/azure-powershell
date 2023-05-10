@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,6 +22,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Commands.SqlVirtualMachine.Common;
 using Microsoft.Azure.Commands.SqlVirtualMachine.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using static Microsoft.Azure.Commands.SqlVirtualMachine.Common.ParameterSet;
 
 namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet
@@ -29,6 +31,7 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet
     /// This class implements the Update-AzSqlVM cmdlet. It allows to update the information relative to an Azure Sql Virtual Machine
     /// and return to the user an AzureSqlVMModel object corresponding to the instance updated.
     /// </summary>
+    [CmdletOutputBreakingChange(typeof(AzureSqlVMModel), DeprecatedOutputProperties = new String[] { "SqlManagementType" })]
     [Cmdlet(VerbsData.Update, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlVM", DefaultParameterSetName = NameParameterList, SupportsShouldProcess = true)]
     [OutputType(typeof(AzureSqlVMModel))]
     public class UpdateAzureSqlVM : AzureSqlVMUpsertCmdletBase
@@ -102,6 +105,7 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet
         /// <summary>
         /// SqlManagementType of the new sql virtual machine
         /// </summary>
+        [CmdletParameterBreakingChange("SqlManagementType", ChangeDescription = "SqlManagementType parameter is being deprecated")]
         [Parameter(Mandatory = false,
             ParameterSetName = NameParameterList,
             HelpMessage = HelpMessages.SqlManagementTypeSqlVM)]
@@ -125,6 +129,7 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet
         /// <summary>
         /// Sql virtual machine to be updated
         /// </summary>
+        [CmdletParameterBreakingChange("InputObject", ChangeDescription = "InputObject parameter alias 'SqlVM' will be removed.")]
         [Parameter(Mandatory = true,
             ParameterSetName = NameInputObject,
             ValueFromPipeline = true,
@@ -186,7 +191,7 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet
         /// <summary>
         /// Apply user input to the retrieved sql virtual machine.
         /// </summary>
-        /// <param name="model">The sql virtual machine that will be updated<param>
+        /// <param name="model">The sql virtual machine that will be updated</param>
         /// <returns>The model to send to the update</returns>
         protected override IEnumerable<AzureSqlVMModel> ApplyUserInputToModel(IEnumerable<AzureSqlVMModel> model)
         {
@@ -194,7 +199,7 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet
             AzureSqlVMModel sqlVM = model.FirstOrDefault();
             if (ParameterSetName.EndsWith(ParameterSet.InputObject))
             {
-                sqlVM.Offer                     = InputObject.Offer                   ?? sqlVM.Offer;     
+                sqlVM.Offer                     = InputObject.Offer                   ?? sqlVM.Offer;
                 sqlVM.Sku                       = InputObject.Sku                     ?? sqlVM.Sku;
                 sqlVM.LicenseType               = InputObject.LicenseType             ?? sqlVM.LicenseType;
                 sqlVM.SqlManagementType         = InputObject.SqlManagementType       ?? sqlVM.SqlManagementType;

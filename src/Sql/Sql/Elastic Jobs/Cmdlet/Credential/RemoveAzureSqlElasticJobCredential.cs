@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
         /// <summary>
         /// Check to see if the credential already exists for the agent.
         /// </summary>
-        /// <returns>Throws exception if the credential doesn't exist.<returns>
+        /// <returns>Throws exception if the credential doesn't exist.</returns>
         protected override IEnumerable<AzureSqlElasticJobCredentialModel> GetEntity()
         {
             try

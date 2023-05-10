@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ResourceManager.dll-Help.xml
 Module Name: Az.Resources
 ms.assetid: C3B2C33F-8BD4-4E31-9450-EF6A3A6A5325
-online version: https://docs.microsoft.com/powershell/module/az.resources/set-azpolicyassignment
+online version: https://learn.microsoft.com/powershell/module/az.resources/set-azpolicyassignment
 schema: 2.0.0
 ---
 
@@ -133,6 +133,7 @@ The command stores that object in the $PolicyAssignment variable.
 The final command updates the parameter values on the policy assignment named PolicyAssignment.
 
 ### Example 5: Update policy assignment parameters with policy parameter file
+<!-- Skip: Output cannot be splitted from code -->
 Create a file called _AllowedLocations.json_ in the local working directory with the following content.
 
 ```

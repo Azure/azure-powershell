@@ -16,13 +16,19 @@ Describe 'Get-AzKustoCluster' {
         . ($mockingPath | Select-Object -First 1).FullName
     }
     It 'Get' {
-        $clusterGetItem = Get-AzKustoCluster -ResourceGroupName $env.resourceGroupName -Name $env.clusterName
-        Validate_Cluster $clusterGetItem $env.clusterName $env.location "Running" "Succeeded" $env.resourceType $env.skuName $env.skuTier $env.capacity
+        $clusterGetItem = Get-AzKustoCluster -ResourceGroupName $env.resourceGroupName -Name $env.kustoClusterName
+        Validate_Cluster $clusterGetItem $env.kustoClusterName $env.location "Running" "Succeeded" "Microsoft.Kusto/Clusters" $env.kustoSkuName $env.kustoClusterTier 1
     }
 
     It 'List' {
-        [array]$clusterGet = Get-AzKustoCluster -ResourceGroupName $env.resourceGroupName
-        $clusterGetItem = $clusterGet[0]
-        Validate_Cluster $clusterGetItem $env.clusterName $env.location "Running" "Succeeded" $env.resourceType $env.skuName $env.skuTier $env.capacity
+        [array]$clustersGet = Get-AzKustoCluster -ResourceGroupName $env.resourceGroupName
+        $clustersGet.Count | Should -BeGreaterOrEqual 2
+        foreach ($cluster in $clustersGet)
+        {
+            if ($cluster.Name -eq $env.kustoClusterName)
+            {
+                Validate_Cluster $cluster $env.kustoClusterName $env.location "Running" "Succeeded" "Microsoft.Kusto/Clusters" $env.kustoSkuName $env.kustoClusterTier 1
+            }
+        }
     }
 }

@@ -6,38 +6,41 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Support
 {
 
-    /// <summary>Tier of a managed cluster SKU.</summary>
+    /// <summary>
+    /// If not specified, the default is 'Free'. See [AKS Pricing Tier](https://learn.microsoft.com/azure/aks/free-standard-pricing-tiers)
+    /// for more details.
+    /// </summary>
     public partial class ManagedClusterSkuTierTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {
 
         /// <summary>
-        /// Determines if the converter can convert the <see cref="sourceValue"/> parameter to the <see cref="destinationType" />
-        /// parameter.
+        /// Determines if the converter can convert the <paramref name="sourceValue"/> parameter to the <paramref name="destinationType"
+        /// /> parameter.
         /// </summary>
         /// <param name="sourceValue">the <see cref="System.Object"/> to convert from</param>
         /// <param name="destinationType">the <see cref="System.Type" /> to convert to</param>
         /// <returns>
-        /// <c>true</c> if the converter can convert the <see cref="sourceValue"/> parameter to the <see cref="destinationType" />
-        /// parameter, otherwise <c>false</c>.
+        /// <c>true</c> if the converter can convert the <paramref name="sourceValue"/> parameter to the <paramref name="destinationType"
+        /// /> parameter, otherwise <c>false</c>.
         /// </returns>
         public override bool CanConvertFrom(object sourceValue, global::System.Type destinationType) => true;
 
         /// <summary>
-        /// Determines if the converter can convert the <see cref="sourceValue"/> parameter to the <see cref="destinationType" />
-        /// parameter.
+        /// Determines if the converter can convert the <paramref name="sourceValue"/> parameter to the <paramref name="destinationType"
+        /// /> parameter.
         /// </summary>
         /// <param name="sourceValue">the <see cref="System.Object"/> to convert from</param>
         /// <param name="destinationType">the <see cref="System.Type" /> to convert to</param>
         /// <returns>
-        /// <c>true</c> if the converter can convert the <see cref="sourceValue"/> parameter to the <see cref="destinationType" />
-        /// parameter, otherwise <c>false</c>.
+        /// <c>true</c> if the converter can convert the <paramref name="sourceValue"/> parameter to the <paramref name="destinationType"
+        /// /> parameter, otherwise <c>false</c>.
         /// </returns>
         public override bool CanConvertTo(object sourceValue, global::System.Type destinationType) => false;
 
         /// <summary>
-        /// Converts the <see cref="sourceValue" /> parameter to the <see cref="destinationType" /> parameter using <see cref="formatProvider"
-        /// /> and <see cref="ignoreCase" />
+        /// Converts the <paramref name="sourceValue" /> parameter to the <paramref name="destinationType" /> parameter using <paramref
+        /// name="formatProvider" /> and <paramref name="ignoreCase" />
         /// </summary>
         /// <param name="sourceValue">the <see cref="System.Object"/> to convert from</param>
         /// <param name="destinationType">the <see cref="System.Type" /> to convert to</param>

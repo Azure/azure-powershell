@@ -166,7 +166,6 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Services
         /// </summary>
         /// <param name="resourceGroupName">The resource group the server is in</param>
         /// <param name="serverName">The name of the server</param>
-        /// <param name="clientId">The client identifier.</param>
         /// <returns></returns>
         /// <remarks>
         /// These 2 operations (get location, throw if not supported) are combined in order to minimize round trips.
@@ -405,10 +404,6 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Services
         /// <summary>
         /// Upserts a job
         /// </summary>
-        /// <param name="resourceGroupName">The resource group name</param>
-        /// <param name="agentServerName">The server name</param>
-        /// <param name="agentName">The agent name</param>
-        /// <param name="jobName">The job name</param>
         /// <param name="model">The job parameters</param>
         /// <returns></returns>
         public AzureSqlElasticJobModel UpsertJob(AzureSqlElasticJobModel model)
@@ -704,6 +699,8 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Services
         /// <param name="resourceGroupName">The resource group</param>
         /// <param name="serverName">The server the agent is in</param>
         /// <param name="agentName">The agent name</param>
+        /// <param name="jobName">The job name</param>
+        /// <param name="jobExecutionId">The job execution id</param>
         /// <returns>The converted agent model</returns>
         public AzureSqlElasticJobExecutionModel GetJobExecution(string resourceGroupName, string serverName, string agentName, string jobName, Guid jobExecutionId)
         {
@@ -714,8 +711,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Services
         /// <summary>
         /// Cancels a job execution
         /// </summary>
-        /// <param name="resourceGroupName">The resource group name</param>
-        /// <param name="serverName">The server the agents are in</param>
+        /// <param name="model"></param>
         /// <returns>The converted agent model(s)</returns>
         public void CancelJobExecution(AzureSqlElasticJobExecutionModel model)
         {
@@ -728,6 +724,13 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Services
         /// <param name="resourceGroupName">The resource group name</param>
         /// <param name="serverName">The server the agent is in</param>
         /// <param name="agentName">The agent name</param>
+        /// <param name="createTimeMin">The create time min</param>
+        /// <param name="createTimeMax">The create time max</param>
+        /// <param name="endTimeMin">The end time min</param>
+        /// <param name="endTimeMax">The end time max</param>
+        /// <param name="isActive">The is active flag</param>
+        /// <param name="skip">The skip count</param>
+        /// <param name="top">The top count</param>
         public List<AzureSqlElasticJobExecutionModel> ListByAgent(
             string resourceGroupName,
             string serverName,
@@ -760,6 +763,14 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Services
         /// <param name="resourceGroupName">The resource group name</param>
         /// <param name="serverName">The server the agent is in</param>
         /// <param name="agentName">The agent name</param>
+        /// <param name="jobName">The job name</param>
+        /// <param name="createTimeMin">The create time min</param>
+        /// <param name="createTimeMax">The create time max</param>
+        /// <param name="endTimeMin">The end time min</param>
+        /// <param name="endTimeMax">The end time max</param>
+        /// <param name="isActive">The is active flag</param>
+        /// <param name="skip">The skip count</param>
+        /// <param name="top">The top count</param>
         public List<AzureSqlElasticJobExecutionModel> ListByJob(
             string resourceGroupName,
             string serverName,
@@ -821,7 +832,13 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Services
         /// <param name="agentName"></param>
         /// <param name="jobName"></param>
         /// <param name="jobExecutionId"></param>
-        /// <param name="stepName"></param>
+        /// <param name="createTimeMin"></param>
+        /// <param name="createTimeMax"></param>
+        /// <param name="endTimeMin"></param>
+        /// <param name="endTimeMax"></param>
+        /// <param name="isActive"></param>
+        /// <param name="skip"></param>
+        /// <param name="top"></param>
         /// <returns></returns>
         public List<AzureSqlElasticJobStepExecutionModel> ListJobExecutionSteps(
             string resourceGroupName,
@@ -887,6 +904,13 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Services
         /// <param name="jobName"></param>
         /// <param name="jobExecutionId"></param>
         /// <param name="stepName"></param>
+        /// <param name="createTimeMin"></param>
+        /// <param name="createTimeMax"></param>
+        /// <param name="endTimeMin"></param>
+        /// <param name="endTimeMax"></param>
+        /// <param name="isActive"></param>
+        /// <param name="skip"></param>
+        /// <param name="top"></param>
         /// <returns></returns>
         public List<AzureSqlElasticJobTargetExecutionModel> ListJobTargetExecutionsByStep(
             string resourceGroupName,
@@ -924,7 +948,13 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Services
         /// <param name="agentName"></param>
         /// <param name="jobName"></param>
         /// <param name="jobExecutionId"></param>
-        /// <param name="stepName"></param>
+        /// <param name="createTimeMin"></param>
+        /// <param name="createTimeMax"></param>
+        /// <param name="endTimeMin"></param>
+        /// <param name="endTimeMax"></param>
+        /// <param name="isActive"></param>
+        /// <param name="skip"></param>
+        /// <param name="top"></param>
         /// <returns></returns>
         public List<AzureSqlElasticJobTargetExecutionModel> ListJobTargetExecutions(
             string resourceGroupName,
@@ -958,6 +988,8 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Services
         /// </summary>
         /// <param name="resourceGroupName">The resource group the server is in</param>
         /// <param name="serverName">The server the agent is in</param>
+        /// <param name="agentName">The agent name</param>
+        /// <param name="jobName">The job name</param>
         /// <param name="resp">The management client server response to convert</param>
         /// <returns>The converted agent model</returns>
         private static AzureSqlElasticJobExecutionModel CreateJobExecutionModelFromResponse(

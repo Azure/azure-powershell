@@ -27,7 +27,7 @@ Get-AzContainerInstanceLog -ContainerGroupName test-cg -ContainerName test-conta
 .Outputs
 System.String
 .Link
-https://docs.microsoft.com/powershell/module/az.containerinstance/get-azcontainerinstancelog
+https://learn.microsoft.com/powershell/module/az.containerinstance/get-azcontainerinstancelog
 #>
 function Get-AzContainerInstanceLog {
 [OutputType([System.String])]

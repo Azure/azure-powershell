@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         [Parameter(
             ParameterSetName = AzureToAzureEnableAutoUpdate,
             Mandatory = true,
-            HelpMessage = "Specifies the automation accountId used for auto udpate.")]
+            HelpMessage = "Specifies the automation accountId used for auto update.")]
         public string AutomationAccountId { get; set; }
 
         #endregion Parameters

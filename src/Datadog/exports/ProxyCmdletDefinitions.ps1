@@ -29,7 +29,7 @@ Datadog     Microsoft.Datadog/agreements
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.Api20210301.IDatadogAgreementResource
 .Link
-https://docs.microsoft.com/powershell/module/az.datadog/get-azdatadogmarketplaceagreement
+https://learn.microsoft.com/powershell/module/az.datadog/get-azdatadogmarketplaceagreement
 #>
 function Get-AzDatadogMarketplaceAgreement {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.Api20210301.IDatadogAgreementResource])]
@@ -158,7 +158,7 @@ Created             CreatedBy           Key                              Name
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.Api20210301.IDatadogApiKey
 .Link
-https://docs.microsoft.com/powershell/module/az.datadog/get-azdatadogmonitorapikey
+https://learn.microsoft.com/powershell/module/az.datadog/get-azdatadogmonitorapikey
 #>
 function Get-AzDatadogMonitorApiKey {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.Api20210301.IDatadogApiKey])]
@@ -320,7 +320,7 @@ INPUTOBJECT <IDatadogIdentity>: Identity Parameter
   [RuleSetName <String>]: Rule set name
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.datadog/get-azdatadogmonitordefaultkey
+https://learn.microsoft.com/powershell/module/az.datadog/get-azdatadogmonitordefaultkey
 #>
 function Get-AzDatadogMonitorDefaultKey {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.Api20210301.IDatadogApiKey])]
@@ -467,7 +467,7 @@ PS C:\> Get-AzDatadogMonitorHost -ResourceGroupName azure-rg-Datadog -Name Datad
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.Api20210301.IDatadogHost
 .Link
-https://docs.microsoft.com/powershell/module/az.datadog/get-azdatadogmonitorhost
+https://learn.microsoft.com/powershell/module/az.datadog/get-azdatadogmonitorhost
 #>
 function Get-AzDatadogMonitorHost {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.Api20210301.IDatadogHost])]
@@ -617,7 +617,7 @@ Id
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.Api20210301.ILinkedResource
 .Link
-https://docs.microsoft.com/powershell/module/az.datadog/get-azdatadogmonitorlinkedresource
+https://learn.microsoft.com/powershell/module/az.datadog/get-azdatadogmonitorlinkedresource
 #>
 function Get-AzDatadogMonitorLinkedResource {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.Api20210301.ILinkedResource])]
@@ -756,7 +756,7 @@ PS C:\> Get-AzDatadogMonitorMonitoredResource -ResourceGroupName azure-rg-Datado
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.Api20210301.IMonitoredResource
 .Link
-https://docs.microsoft.com/powershell/module/az.datadog/get-azdatadogmonitormonitoredresource
+https://learn.microsoft.com/powershell/module/az.datadog/get-azdatadogmonitormonitoredresource
 #>
 function Get-AzDatadogMonitorMonitoredResource {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.Api20210301.IMonitoredResource])]
@@ -930,7 +930,7 @@ INPUTOBJECT <IDatadogIdentity>: Identity Parameter
   [RuleSetName <String>]: Rule set name
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.datadog/get-azdatadogmonitor
+https://learn.microsoft.com/powershell/module/az.datadog/get-azdatadogmonitor
 #>
 function Get-AzDatadogMonitor {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.Api20210301.IDatadogMonitorResource])]
@@ -1112,7 +1112,7 @@ INPUTOBJECT <IDatadogIdentity>: Identity Parameter
   [RuleSetName <String>]: Rule set name
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.datadog/get-azdatadogsinglesignonconfiguration
+https://learn.microsoft.com/powershell/module/az.datadog/get-azdatadogsinglesignonconfiguration
 #>
 function Get-AzDatadogSingleSignOnConfiguration {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.Api20210301.IDatadogSingleSignOnResource])]
@@ -1298,7 +1298,7 @@ INPUTOBJECT <IDatadogIdentity>: Identity Parameter
   [RuleSetName <String>]: Rule set name
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.datadog/get-azdatadogtagrule
+https://learn.microsoft.com/powershell/module/az.datadog/get-azdatadogtagrule
 #>
 function Get-AzDatadogTagRule {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.Api20210301.IMonitoringTagRules])]
@@ -1458,7 +1458,7 @@ default microsoft.Datadog/agreements
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.Api20210301.IDatadogAgreementResource
 .Link
-https://docs.microsoft.com/powershell/module/az.datadog/new-azdatadogmarketplaceagreement
+https://learn.microsoft.com/powershell/module/az.datadog/new-azdatadogmarketplaceagreement
 #>
 function New-AzDatadogMarketplaceAgreement {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.Api20210301.IDatadogAgreementResource])]
@@ -1636,7 +1636,7 @@ eastus2euap Datadog-pwsh01 microsoft.Datadog/monitors
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.Api20210301.IDatadogMonitorResource
 .Link
-https://docs.microsoft.com/powershell/module/az.datadog/new-azdatadogmonitor
+https://learn.microsoft.com/powershell/module/az.datadog/new-azdatadogmonitor
 #>
 function New-AzDatadogMonitor {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.Api20210301.IDatadogMonitorResource])]
@@ -1898,7 +1898,7 @@ INPUTOBJECT <IDatadogIdentity>: Identity Parameter
   [RuleSetName <String>]: Rule set name
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.datadog/new-azdatadogsinglesignonconfiguration
+https://learn.microsoft.com/powershell/module/az.datadog/new-azdatadogsinglesignonconfiguration
 #>
 function New-AzDatadogSingleSignOnConfiguration {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.Api20210301.IDatadogSingleSignOnResource])]
@@ -2115,7 +2115,7 @@ METRICRULEFILTERINGTAG <IFilteringTag[]>: List of filtering tags to be used for 
   [Name <String>]: The name (also known as the key) of the tag.
   [Value <String>]: The value of the tag.
 .Link
-https://docs.microsoft.com/powershell/module/az.datadog/new-azdatadogtagrule
+https://learn.microsoft.com/powershell/module/az.datadog/new-azdatadogtagrule
 #>
 function New-AzDatadogTagRule {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.Api20210301.IMonitoringTagRules])]
@@ -2324,7 +2324,7 @@ INPUTOBJECT <IDatadogIdentity>: Identity Parameter
   [RuleSetName <String>]: Rule set name
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.datadog/remove-azdatadogmonitor
+https://learn.microsoft.com/powershell/module/az.datadog/remove-azdatadogmonitor
 #>
 function Remove-AzDatadogMonitor {
 [OutputType([System.Boolean])]
@@ -2493,7 +2493,7 @@ Created CreatedBy Key                              Name
 .Outputs
 System.Boolean
 .Link
-https://docs.microsoft.com/powershell/module/az.datadog/set-azdatadogmonitordefaultkey
+https://learn.microsoft.com/powershell/module/az.datadog/set-azdatadogmonitordefaultkey
 #>
 function Set-AzDatadogMonitorDefaultKey {
 [OutputType([System.Boolean])]
@@ -2681,7 +2681,7 @@ INPUTOBJECT <IDatadogIdentity>: Identity Parameter
   [RuleSetName <String>]: Rule set name
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.datadog/update-azdatadogmonitorsetpasswordlink
+https://learn.microsoft.com/powershell/module/az.datadog/update-azdatadogmonitorsetpasswordlink
 #>
 function Update-AzDatadogMonitorSetPasswordLink {
 [OutputType([System.String])]
@@ -2850,7 +2850,7 @@ INPUTOBJECT <IDatadogIdentity>: Identity Parameter
   [RuleSetName <String>]: Rule set name
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.datadog/update-azdatadogmonitor
+https://learn.microsoft.com/powershell/module/az.datadog/update-azdatadogmonitor
 #>
 function Update-AzDatadogMonitor {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.Api20210301.IDatadogMonitorResource])]
@@ -3030,7 +3030,7 @@ PS C:\> New-AzDatadogFilteringTagObject -Action "Include" -Value "Prod" -Name "E
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.Api20210301.FilteringTag
 .Link
-https://docs.microsoft.com/powershell/module/az.Datadog/new-AzDatadogFilteringTagObject
+https://learn.microsoft.com/powershell/module/az.Datadog/new-AzDatadogFilteringTagObject
 #>
 function New-AzDatadogFilteringTagObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.Api20210301.FilteringTag])]

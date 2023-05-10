@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Support
 {
 
-    /// <summary>Argument completer implementation for DriveState.</summary>
+    /// <summary>The drive's current state.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Support.DriveStateTypeConverter))]
     public partial struct DriveState :
         System.Management.Automation.IArgumentCompleter
@@ -28,31 +28,31 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Specified".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Specified", "Specified", global::System.Management.Automation.CompletionResultType.ParameterValue, "Specified");
+                yield return new global::System.Management.Automation.CompletionResult("'Specified'", "Specified", global::System.Management.Automation.CompletionResultType.ParameterValue, "Specified");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Received".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Received", "Received", global::System.Management.Automation.CompletionResultType.ParameterValue, "Received");
+                yield return new global::System.Management.Automation.CompletionResult("'Received'", "Received", global::System.Management.Automation.CompletionResultType.ParameterValue, "Received");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "NeverReceived".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("NeverReceived", "NeverReceived", global::System.Management.Automation.CompletionResultType.ParameterValue, "NeverReceived");
+                yield return new global::System.Management.Automation.CompletionResult("'NeverReceived'", "NeverReceived", global::System.Management.Automation.CompletionResultType.ParameterValue, "NeverReceived");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Transferring".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Transferring", "Transferring", global::System.Management.Automation.CompletionResultType.ParameterValue, "Transferring");
+                yield return new global::System.Management.Automation.CompletionResult("'Transferring'", "Transferring", global::System.Management.Automation.CompletionResultType.ParameterValue, "Transferring");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Completed".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Completed", "Completed", global::System.Management.Automation.CompletionResultType.ParameterValue, "Completed");
+                yield return new global::System.Management.Automation.CompletionResult("'Completed'", "Completed", global::System.Management.Automation.CompletionResultType.ParameterValue, "Completed");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "CompletedMoreInfo".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("CompletedMoreInfo", "CompletedMoreInfo", global::System.Management.Automation.CompletionResultType.ParameterValue, "CompletedMoreInfo");
+                yield return new global::System.Management.Automation.CompletionResult("'CompletedMoreInfo'", "CompletedMoreInfo", global::System.Management.Automation.CompletionResultType.ParameterValue, "CompletedMoreInfo");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "ShippedBack".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("ShippedBack", "ShippedBack", global::System.Management.Automation.CompletionResultType.ParameterValue, "ShippedBack");
+                yield return new global::System.Management.Automation.CompletionResult("'ShippedBack'", "ShippedBack", global::System.Management.Automation.CompletionResultType.ParameterValue, "ShippedBack");
             }
         }
     }

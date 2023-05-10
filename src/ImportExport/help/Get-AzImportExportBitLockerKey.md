@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.ImportExport
-online version: https://docs.microsoft.com/powershell/module/az.importexport/get-azimportexportbitlockerkey
+online version: https://learn.microsoft.com/powershell/module/az.importexport/get-azimportexportbitlockerkey
 schema: 2.0.0
 ---
 
@@ -24,7 +24,7 @@ Returns the BitLocker Keys for all drives in the specified job.
 
 ### Example 1: List all BitLocker Keys in specified ImportExport job
 ```powershell
-Get-AzImportExportBitLockerKey -JobName test-job -ResourceGroupName ImportTestRG 
+Get-AzImportExportBitLockerKey -JobName test-job -ResourceGroupName ImportTestRG
 ```
 
 ```output
@@ -119,7 +119,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.IDriveBitLockerKey
+### Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api202101.IDriveBitLockerKey
 
 ## NOTES
 

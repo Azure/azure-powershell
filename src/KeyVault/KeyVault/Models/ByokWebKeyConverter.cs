@@ -19,9 +19,7 @@ using KeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
 using Track2Sdk = Azure.Security.KeyVault.Keys;
 using Track1Sdk = Microsoft.Azure.KeyVault.WebKey;
 using System.Security.Cryptography;
-using Microsoft.Azure.KeyVault.WebKey;
 using Microsoft.Azure.Commands.KeyVault.Helpers;
-using System.Collections.Generic;
 using System.Linq;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
@@ -44,7 +42,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
                 if (JwkHelper.IsEC(extraInfo?.KeyType))
                 {
-                    jwk.Kty = JsonWebKeyType.EllipticCurveHsm; // byok -> hsm
+                    jwk.Kty = Track1Sdk.JsonWebKeyType.EllipticCurveHsm; // byok -> hsm
                     jwk.CurveName = extraInfo.CurveName;
                 }
 

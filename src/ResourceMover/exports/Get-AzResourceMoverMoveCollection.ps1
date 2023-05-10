@@ -51,7 +51,7 @@ Etag                                   Location      Name                       
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.IMoveCollection
 .Link
-https://docs.microsoft.com/powershell/module/az.resourcemover/get-azresourcemovermovecollection
+https://learn.microsoft.com/powershell/module/az.resourcemover/get-azresourcemovermovecollection
 #>
 function Get-AzResourceMoverMoveCollection {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.IMoveCollection])]

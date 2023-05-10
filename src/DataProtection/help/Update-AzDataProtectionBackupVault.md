@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.DataProtection
-online version: https://docs.microsoft.com/powershell/module/az.dataprotection/update-azdataprotectionbackupvault
+online version: https://learn.microsoft.com/powershell/module/az.dataprotection/update-azdataprotectionbackupvault
 schema: 2.0.0
 ---
 
@@ -16,15 +16,21 @@ For example, updating tags for a resource.
 ### UpdateExpanded (Default)
 ```
 Update-AzDataProtectionBackupVault -ResourceGroupName <String> -VaultName <String> [-SubscriptionId <String>]
- [-AzureMonitorAlertsForAllJobFailure <AlertsState>] [-IdentityType <String>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-AzureMonitorAlertsForAllJobFailure <AlertsState>]
+ [-CrossSubscriptionRestoreState <CrossSubscriptionRestoreState>] [-IdentityType <String>]
+ [-ImmutabilityState <ImmutabilityState>] [-SoftDeleteRetentionDurationInDay <Double>]
+ [-SoftDeleteState <SoftDeleteState>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzDataProtectionBackupVault -InputObject <IDataProtectionIdentity>
- [-AzureMonitorAlertsForAllJobFailure <AlertsState>] [-IdentityType <String>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-AzureMonitorAlertsForAllJobFailure <AlertsState>]
+ [-CrossSubscriptionRestoreState <CrossSubscriptionRestoreState>] [-IdentityType <String>]
+ [-ImmutabilityState <ImmutabilityState>] [-SoftDeleteRetentionDurationInDay <Double>]
+ [-SoftDeleteState <SoftDeleteState>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -50,8 +56,10 @@ The second command adds the given tags to the backup vault.
 
 ### Example 2: Disable Azure monitor alerts for job failures
 ```powershell
-PS C:\>  Update-AzDataProtectionBackupVault -ResourceGroupName "rgName" -VaultName "vaultName" -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -AzureMonitorAlertsForAllJobFailure 'Disabled'
+Update-AzDataProtectionBackupVault -ResourceGroupName "rgName" -VaultName "vaultName" -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -AzureMonitorAlertsForAllJobFailure 'Disabled'
+```
 
+```output
 Name          Location      Type                                  IdentityType
 ----          --------      ----                                  ------------
 vaultName southeastasia Microsoft.DataProtection/backupVaults SystemAssigned
@@ -60,6 +68,20 @@ vaultName southeastasia Microsoft.DataProtection/backupVaults SystemAssigned
 This command disables the monitor alerts for all the job failures for the backup vault.
 Allowed values are: Enabled, Disabled.
 Note that by default this setting is enabled.
+
+### Example 3: Update vault ImmutabilityState, CrossSubscriptionRestoreState, soft delete settings
+```powershell
+Update-AzDataProtectionBackupVault -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -ResourceGroupName "resourceGroupName" -VaultName "vaultName" -CrossSubscriptionRestoreState Disabled -ImmutabilityState Disabled -SoftDeleteRetentionDurationInDay 99 -SoftDeleteState Off
+```
+
+```output
+Name          Location      Type                                  IdentityType
+----          --------      ----                                  ------------
+vaultName southeastasia Microsoft.DataProtection/backupVaults SystemAssigned
+```
+
+This command is used to modify Immutability state, cross subscription restore state, soft delete settings of the vault.
+These parameters are optional and can be used independently.
 
 ## PARAMETERS
 
@@ -94,8 +116,25 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -CrossSubscriptionRestoreState
+Cross subscription restore state of the vault.
+Allowed values are Disabled, Enabled, PermanentlyDisabled.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.CrossSubscriptionRestoreState
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -114,6 +153,22 @@ The identityType which can be either SystemAssigned or None
 
 ```yaml
 Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ImmutabilityState
+Immutability state of the vault.
+Allowed values are Disabled, Unlocked, Locked.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.ImmutabilityState
 Parameter Sets: (All)
 Aliases:
 
@@ -156,7 +211,8 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The name of the resource group where the backup vault is present.
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
@@ -170,8 +226,40 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -SoftDeleteRetentionDurationInDay
+Soft delete retention duration in days.
+
+```yaml
+Type: System.Double
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SoftDeleteState
+Soft delete state of the vault.
+Allowed values are Off, On, AlwaysOn.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.SoftDeleteState
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SubscriptionId
-The subscription Id.
+The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String
@@ -255,7 +343,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220401.IBackupVaultResource
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202301.IBackupVaultResource
 
 ## NOTES
 
@@ -266,8 +354,8 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IDataProtectionIdentity>: Identity Parameter
-  - `[BackupInstanceName <String>]`: The name of the backup instance
+`INPUTOBJECT <IDataProtectionIdentity>`: Identity Parameter
+  - `[BackupInstanceName <String>]`: The name of the backup instance.
   - `[BackupPolicyName <String>]`: 
   - `[Id <String>]`: Resource identity path
   - `[JobId <String>]`: The Job ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
@@ -275,9 +363,9 @@ INPUTOBJECT <IDataProtectionIdentity>: Identity Parameter
   - `[OperationId <String>]`: 
   - `[RecoveryPointId <String>]`: 
   - `[RequestName <String>]`: 
-  - `[ResourceGroupName <String>]`: The name of the resource group where the backup vault is present.
+  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
   - `[ResourceGuardsName <String>]`: The name of ResourceGuard
-  - `[SubscriptionId <String>]`: The subscription Id.
+  - `[SubscriptionId <String>]`: The ID of the target subscription. The value must be an UUID.
   - `[VaultName <String>]`: The name of the backup vault.
 
 ## RELATED LINKS

@@ -15,9 +15,12 @@
 
 namespace Microsoft.Azure.Commands.ApiManagement.Commands
 {
-    using Microsoft.Azure.Commands.ApiManagement.Models;
-    using ResourceManager.Common.ArgumentCompleters;
+    using System;
     using System.Management.Automation;
+    using Microsoft.Azure.Commands.ApiManagement.Models;
+    using Microsoft.Azure.Management.ApiManagement.Models;
+    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+    using ResourceManager.Common.ArgumentCompleters;
 
     [Cmdlet("Add", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApiManagementRegion"), OutputType(typeof(PsApiManagement))]
     public class AddAzureApiManagementRegion : AzureApiManagementCmdletBase
@@ -37,11 +40,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
-        [Parameter(
-            ValueFromPipelineByPropertyName = false,
-            Mandatory = false,
-            HelpMessage = "Tier of the deployment region. Valid and Default value is Premium.")]
-        public PsApiManagementSku? Sku { get; set; }
+
 
         [Parameter(
             ValueFromPipelineByPropertyName = false,
@@ -73,6 +72,12 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
         [Parameter(Mandatory = false, HelpMessage = "Standard SKU PublicIpAddress ResoureId for integration into stv2 Virtual Network Deployments")]
         public string PublicIpAddressId { get; set; }
 
+        [Parameter(
+        ValueFromPipelineByPropertyName = false,
+        Mandatory = false,
+        HelpMessage = "Tier of the deployment region. Valid and Default value is Premium.")]
+        public string Sku { get; set; }
+
         public override void ExecuteCmdlet()
         {
             ExecuteCmdLetWrap(
@@ -80,7 +85,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
                 {
                     ApiManagement.AddRegion(
                         Location, 
-                        Sku ?? PsApiManagementSku.Premium, 
+                        Sku ?? SkuType.Premium, 
                         Capacity ?? 1,
                         VirtualNetwork,
                         Zone,

@@ -6,13 +6,26 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Support
 {
 
-    /// <summary>Network policy used for building Kubernetes network.</summary>
+    /// <summary>Network policy used for building the Kubernetes network.</summary>
     public partial struct NetworkPolicy :
         System.IEquatable<NetworkPolicy>
     {
+        /// <summary>
+        /// Use Azure network policies. See [differences between Azure and Calico policies](https://docs.microsoft.com/azure/aks/use-network-policies#differences-between-azure-and-calico-policies-and-their-capabilities)
+        /// for more information.
+        /// </summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.NetworkPolicy Azure = @"azure";
 
+        /// <summary>
+        /// Use Calico network policies. See [differences between Azure and Calico policies](https://docs.microsoft.com/azure/aks/use-network-policies#differences-between-azure-and-calico-policies-and-their-capabilities)
+        /// for more information.
+        /// </summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.NetworkPolicy Calico = @"calico";
+
+        /// <summary>
+        /// Use Cilium to enforce network policies. This requires networkDataplane to be 'cilium'.
+        /// </summary>
+        public static Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.NetworkPolicy Cilium = @"cilium";
 
         /// <summary>the value for an instance of the <see cref="NetworkPolicy" /> Enum.</summary>
         private string _value { get; set; }
@@ -47,7 +60,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Support
             return this._value.GetHashCode();
         }
 
-        /// <summary>Creates an instance of the <see cref="NetworkPolicy" Enum class./></summary>
+        /// <summary>Creates an instance of the <see cref="NetworkPolicy"/> Enum class.</summary>
         /// <param name="underlyingValue">the value to create an instance for.</param>
         private NetworkPolicy(string underlyingValue)
         {
@@ -78,8 +91,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Support
         }
 
         /// <summary>Overriding != operator for enum NetworkPolicy</summary>
-        /// <param name="e1">the value to compare against <see cref="e2" /></param>
-        /// <param name="e2">the value to compare against <see cref="e1" /></param>
+        /// <param name="e1">the value to compare against <paramref name="e2" /></param>
+        /// <param name="e2">the value to compare against <paramref name="e1" /></param>
         /// <returns><c>true</c> if the two instances are not equal to the same value</returns>
         public static bool operator !=(Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.NetworkPolicy e1, Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.NetworkPolicy e2)
         {
@@ -87,8 +100,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Support
         }
 
         /// <summary>Overriding == operator for enum NetworkPolicy</summary>
-        /// <param name="e1">the value to compare against <see cref="e2" /></param>
-        /// <param name="e2">the value to compare against <see cref="e1" /></param>
+        /// <param name="e1">the value to compare against <paramref name="e2" /></param>
+        /// <param name="e2">the value to compare against <paramref name="e1" /></param>
         /// <returns><c>true</c> if the two instances are equal to the same value</returns>
         public static bool operator ==(Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.NetworkPolicy e1, Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.NetworkPolicy e2)
         {

@@ -19,22 +19,29 @@ namespace Microsoft.Azure.Commands.CosmosDB.Test.ScenarioTests.ScenarioTest
 {
     public class RestoreTests : CosmosDBTestRunner
     {
-        public RestoreTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
+        public RestoreTests(Xunit.Abstractions.ITestOutputHelper output): base(output)
         {
-        }
-
-        [Fact(Skip = "Unrecognized time format for linux/mac.")]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestRestoreAccountCmdlets()
-        {
-            TestRunner.RunTestScript("Test-RestoreAccountCmdlets");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestRestoreFromNewAccountCmdlets()
+        public void TestSqlRestoreAccountCmdlets()
         {
-            TestRunner.RunTestScript("Test-RestoreFromNewAccountCmdlets");
+            TestRunner.RunTestScript("Test-SqlRestoreAccountCmdlets");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSqlRestoreFromNewAccountCmdlets()
+        {
+            TestRunner.RunTestScript("Test-SqlRestoreFromNewAccountCmdlets");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestMongoDBRestoreFromNewAccountCmdlets()
+        {
+            TestRunner.RunTestScript("Test-MongoDBRestoreFromNewAccountCmdlets");
         }
 
         [Fact]
@@ -53,6 +60,34 @@ namespace Microsoft.Azure.Commands.CosmosDB.Test.ScenarioTests.ScenarioTest
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGremlinRestoreAccountCmdlets()
+        {
+            TestRunner.RunTestScript("Test-GremlinRestoreAccountCmdlets");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGremlinRestoreFromNewAccountCmdlets()
+        {
+            TestRunner.RunTestScript("Test-GremlinRestoreFromNewAccountCmdlets");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestTableRestoreAccountCmdlets()
+        {
+            TestRunner.RunTestScript("Test-TableRestoreAccountCmdlets");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestTableRestoreFromNewAccountCmdlets()
+        {
+            TestRunner.RunTestScript("Test-TableRestoreFromNewAccountCmdlets");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSqlContainerBackupInformationCmdLets()
         {
             TestRunner.RunTestScript("Test-SqlContainerBackupInformationCmdLets");
@@ -67,9 +102,37 @@ namespace Microsoft.Azure.Commands.CosmosDB.Test.ScenarioTests.ScenarioTest
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestUpdateCosmosDBAccountBackupPolicyCmdLet()
+        public void TestGremlinGraphBackupInformationCmdLets()
         {
-            TestRunner.RunTestScript("Test-UpdateCosmosDBAccountBackupPolicyCmdLet");
+            TestRunner.RunTestScript("Test-GremlinGraphBackupInformationCmdLets");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestTableBackupInformationCmdLets()
+        {
+            TestRunner.RunTestScript("Test-TableBackupInformationCmdLets");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestUpdateCosmosDBAccountBackupPolicyToContinuous30DaysCmdLets()
+        {
+            TestRunner.RunTestScript("Test-UpdateCosmosDBAccountBackupPolicyToContinuous30DaysCmdLets");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestUpdateCosmosDBAccountBackupPolicyToContinuous7DaysCmdLets()
+        {
+            TestRunner.RunTestScript("Test-UpdateCosmosDBAccountBackupPolicyToContinuous7DaysCmdLets");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestProvisionCosmosDBAccountBackupPolicyWithContinuous7DaysCmdLets()
+        {
+            TestRunner.RunTestScript("Test-ProvisionCosmosDBAccountBackupPolicyWithContinuous7DaysCmdLets");
         }
     }
 }

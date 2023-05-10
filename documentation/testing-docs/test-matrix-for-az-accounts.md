@@ -78,7 +78,6 @@ It should be fine to run these test cases in just one platform, e.g. Windows Pow
 |Azure Global Instance|P0||
 |Azure US Instance|P2|Will be covered by dedicated team|
 |Azure China Instance|P2|Will be covered by dedicated team|
-|Azure German Instance|P2|Will be covered by dedicated team|
 |ADFS Environment|P1|Ask Azure Stack team to help|
 
 ### PowerShell Platforms

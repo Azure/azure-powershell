@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Common
         protected const string ObjectParameterSet = "ByObjectParameterSet";
         protected const string ParentObjectParameterSet = "ByParentObjectParameterSet";
         protected const string FieldsParameterSet = "ByFieldsParameterSet";
-
+        public const string PreviewMessage = "The cmdlet  is in preview.";
 
         /// <summary>
         /// Gets or sets the Azure NetApp Files management client.

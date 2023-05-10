@@ -1,7 +1,7 @@
 ---
 external help file: Az.Resources-help.xml
 Module Name: Az.Resources
-online version: https://docs.microsoft.com/powershell/module/az.resources/new-azrolemanagementpolicyassignment
+online version: https://learn.microsoft.com/powershell/module/az.resources/new-azrolemanagementpolicyassignment
 schema: 2.0.0
 ---
 
@@ -22,11 +22,13 @@ Create a role management policy assignment
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create a new role management policy assignment
 ```powershell
-PS C:\> $scope = "/subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d/"
-PS C:\> New-AzRoleManagementPolicyAssignment -Scope $scope -Name "0a4d3ef7-147b-4777-a958-ae9dfab3c331"
+$scope = "/subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d/"
+New-AzRoleManagementPolicyAssignment -Scope $scope -Name "0a4d3ef7-147b-4777-a958-ae9dfab3c331"
+```
 
+```output
 The requested resource does not support http method 'PUT'.
 ```
 
@@ -35,7 +37,8 @@ This operation is currently not supported
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject

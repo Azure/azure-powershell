@@ -15,12 +15,14 @@
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.EventHub.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.EventHub.Commands.NetworkruleSet
 {
     /// <summary>
     /// 'Remove-AzureRmEventHub' Cmdlet removes the specified EventHub
     /// </summary>
+    [GenericBreakingChange("This cmdlet would be deprecated in a future release. Please use Set-AzEventHubNetworkRuleSet.")]
     [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventHubNetworkRuleSet", DefaultParameterSetName = NetwrokruleSetPropertiesParameterSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class RemoveAzureEventHubNetworkRuleSet : AzureEventHubsCmdletBase
     {
@@ -69,7 +71,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.NetworkruleSet
             {
                 try
                 {
-                    var result = Client.DeleteNetworkRuleSet(ResourceGroupName, Name);
+                    var result = UtilityClient.DeleteNetworkRuleSet(ResourceGroupName, Name);
 
                     if (PassThru.IsPresent)
                     {

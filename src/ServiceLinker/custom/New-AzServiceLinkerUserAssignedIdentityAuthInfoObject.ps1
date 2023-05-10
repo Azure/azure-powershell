@@ -21,12 +21,12 @@ Create an in-memory object for UserAssignedIdentityAuthInfo.
 Create an in-memory object for UserAssignedIdentityAuthInfo.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20220501.UserAssignedIdentityAuthInfo
+Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.UserAssignedIdentityAuthInfo
 .Link
-https://docs.microsoft.com/powershell/module/az.ServiceLinker/new-azservicelinkeruserassignedidentityauthinfoobject
+https://learn.microsoft.com/powershell/module/az.ServiceLinker/new-azservicelinkeruserassignedidentityauthinfoobject
 #>
 function New-AzServiceLinkerUserAssignedIdentityAuthInfoObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20220501.UserAssignedIdentityAuthInfo')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.UserAssignedIdentityAuthInfo')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -44,7 +44,7 @@ function New-AzServiceLinkerUserAssignedIdentityAuthInfoObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20220501.UserAssignedIdentityAuthInfo]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.UserAssignedIdentityAuthInfo]::New()
 
         if ($PSBoundParameters.ContainsKey('ClientId')) {
             $Object.ClientId = $ClientId

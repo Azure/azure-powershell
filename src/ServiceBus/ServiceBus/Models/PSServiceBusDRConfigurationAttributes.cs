@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Models
         /// <summary>
         /// Gets provisioning state of the disaster recovery
         /// </summary>
-        public ProvisioningStateDR? ProvisioningState { get; set; }
+        public string ProvisioningState { get; set; }
 
         /// <summary>
         /// Gets or sets a value that indicates partner namespace
@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Models
         /// capture description. Possible values include:
         /// 'Primary', 'PrimaryNotReplicating', 'Secondary'
         /// </summary>
-        public RoleDisasterRecovery? Role { get; set; }
+        public string Role { get; set; }
 
         /// <summary>
         /// Gets number of entities pending to be replicated.

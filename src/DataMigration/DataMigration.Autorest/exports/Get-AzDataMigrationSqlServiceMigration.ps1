@@ -25,7 +25,7 @@ Get-AzDataMigrationSqlServiceMigration -ResourceGroupName "MyResourceGroup" -Sql
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IDatabaseMigration
 .Link
-https://docs.microsoft.com/powershell/module/az.datamigration/get-azdatamigrationsqlservicemigration
+https://learn.microsoft.com/powershell/module/az.datamigration/get-azdatamigrationsqlservicemigration
 #>
 function Get-AzDataMigrationSqlServiceMigration {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IDatabaseMigration])]
@@ -114,7 +114,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Runspace.Version.ToString()
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
         }         
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {

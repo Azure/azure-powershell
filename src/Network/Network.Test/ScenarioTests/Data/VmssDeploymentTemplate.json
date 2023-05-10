@@ -317,7 +317,7 @@
         "[concat('Microsoft.Network/networkSecurityGroups/', variables('nsgName'))]"
       ],
       "sku": {
-        "name": "Standard_A2",
+        "name": "Standard_A2_v2",
         "tier": "Standard",
         "capacity": "[parameters('instanceCount')]"
       },

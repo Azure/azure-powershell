@@ -12,18 +12,6 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
-<#
-.SYNOPSIS
-Sleeps but only during recording.
-#>
-function Start-TestSleep($milliseconds)
-{
-    if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback)
-    {
-        Start-Sleep -Milliseconds $milliseconds
-    }
-}
-
 function Compute-TestTimeout($seconds)
 {
     if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -eq [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback)

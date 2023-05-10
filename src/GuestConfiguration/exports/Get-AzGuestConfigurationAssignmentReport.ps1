@@ -27,7 +27,7 @@ Get-AzGuestConfigurationAssignmentReport -GuestConfigurationAssignmentName test-
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.Api20220125.IGuestConfigurationAssignmentReport
 .Link
-https://docs.microsoft.com/powershell/module/az.guestconfiguration/get-azguestconfigurationassignmentreport
+https://learn.microsoft.com/powershell/module/az.guestconfiguration/get-azguestconfigurationassignmentreport
 #>
 function Get-AzGuestConfigurationAssignmentReport {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.Api20220125.IGuestConfigurationAssignmentReport])]

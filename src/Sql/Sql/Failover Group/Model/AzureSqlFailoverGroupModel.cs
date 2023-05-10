@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Management.Sql.LegacySdk.Models;
 using System.Collections.Generic;
+using System;
 
 namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Model
 {
@@ -53,6 +54,11 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Model
         /// Gets or sets the partner servers
         /// </summary>
         public IList<FailoverGroupPartnerServer> PartnerServers { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Id of partner subscription id
+        /// </summary>
+        public string PartnerSubscriptionId { get; set; }
 
         /// <summary>
         /// Gets or sets the name of the partner resource group name
@@ -136,7 +142,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Model
         /// </summary>
         /// <param name="resourceGroupName">Resource group</param>
         /// <param name="serverName">Server name</param>
-        /// <param name="advisorName">Advisor name</param>
+        /// <param name="failoverGroupName">The name of the Azure Sql Database FailoverGroup</param>
         /// <param name="failoverGroup">Recommended Action object</param>
         public AzureSqlFailoverGroupModel(string resourceGroupName, string serverName, string failoverGroupName, Management.Sql.LegacySdk.Models.FailoverGroup failoverGroup)
         {

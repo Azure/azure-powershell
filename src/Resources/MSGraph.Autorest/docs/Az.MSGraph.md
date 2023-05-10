@@ -1,7 +1,7 @@
 ---
 Module Name: Az.MSGraph
 Module Guid: 9c1e9bcf-5175-4d03-99c7-a7f2f7040f46
-Download Help Link: https://docs.microsoft.com/powershell/module/az.msgraph
+Download Help Link: https://learn.microsoft.com/powershell/module/az.msgraph
 Help Version: 1.0.0.0
 Locale: en-US
 ---
@@ -20,7 +20,7 @@ Adds member to group.
 ### [Get-AzADAppCredential](Get-AzADAppCredential.md)
 Lists key credentials and password credentials for an application.
 
-### [Get-AzADAppFederatedIdentityCredential](Get-AzADAppFederatedIdentityCredential.md)
+### [Get-AzADAppFederatedCredential](Get-AzADAppFederatedCredential.md)
 Get federatedIdentityCredentials by Id from applications.
 
 ### [Get-AzADApplication](Get-AzADApplication.md)
@@ -35,6 +35,9 @@ Lists entities from groups or get entity from groups by key
 ### [Get-AzADGroupMember](Get-AzADGroupMember.md)
 Lists members from group.
 
+### [Get-AzADOrganization](Get-AzADOrganization.md)
+Retrieve a list of organization objects.
+
 ### [Get-AzADServicePrincipal](Get-AzADServicePrincipal.md)
 Lists entities from service principals or get entity from service principals by key
 
@@ -47,7 +50,7 @@ Lists entities from users or get entity from users by key
 ### [New-AzADAppCredential](New-AzADAppCredential.md)
 Creates key credentials or password credentials for an application.
 
-### [New-AzADAppFederatedIdentityCredential](New-AzADAppFederatedIdentityCredential.md)
+### [New-AzADAppFederatedCredential](New-AzADAppFederatedCredential.md)
 Create federatedIdentityCredential for applications.
 
 ### [New-AzADApplication](New-AzADApplication.md)
@@ -68,8 +71,8 @@ Adds new entity to users
 ### [Remove-AzADAppCredential](Remove-AzADAppCredential.md)
 Removes key credentials or password credentials for an application.
 
-### [Remove-AzADAppFederatedIdentityCredential](Remove-AzADAppFederatedIdentityCredential.md)
-Delete federatedIdentityCredentials for applications.
+### [Remove-AzADAppFederatedCredential](Remove-AzADAppFederatedCredential.md)
+Delete navigation property federatedIdentityCredentials for applications
 
 ### [Remove-AzADApplication](Remove-AzADApplication.md)
 Deletes entity from applications
@@ -96,8 +99,8 @@ Removes key credentials or password credentials for an service principal.
 ### [Remove-AzADUser](Remove-AzADUser.md)
 Deletes entity from users.
 
-### [Update-AzADAppFederatedIdentityCredential](Update-AzADAppFederatedIdentityCredential.md)
-Update the federatedIdentityCredentials in applications.
+### [Update-AzADAppFederatedCredential](Update-AzADAppFederatedCredential.md)
+Update the navigation property federatedIdentityCredentials in applications
 
 ### [Update-AzADApplication](Update-AzADApplication.md)
 Updates entity in applications

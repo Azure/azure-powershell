@@ -14,6 +14,8 @@ function setupEnv() {
     # For any resources you created for test, you should add it to $env here.
     $env.ClusterName  = 'ps-cache-test1-' + (RandomString -allChars $false -len 8)
     $env.ClusterName2 = 'ps-cache-test2-' + (RandomString -allChars $false -len 8)
+    $env.ClusterName3  = 'ps-cache-test3-' + (RandomString -allChars $false -len 8)
+    $env.ClusterName4 = 'ps-cache-test4-' + (RandomString -allChars $false -len 8)
     $env.ResourceGroupName = 'ps-redisenterprise-rg-' + (RandomString -allChars $false -len 8)
     $env.Location = 'East US'
     New-AzResourceGroup -Name $env.ResourceGroupName -Location $env.Location | Out-Null

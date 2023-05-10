@@ -33,15 +33,17 @@ namespace Microsoft.Azure.Commands.Network.Models
         public static PSAzureFirewallPolicyApplicationRuleProtocol MapUserInputToApplicationRuleProtocol(string userInput)
         {
             var protocolRegEx = new Regex("^[hH][tT][tT][pP][sS]?(:[1-9][0-9]*)?$");
+            var mssqlRegEx = new Regex("^[mM][sS][sS][qQ][lL]?(:[1-9][0-9]*)?$");
 
             var supportedProtocolsAndTheirDefaultPorts = new List<PSAzureFirewallPolicyApplicationRuleProtocol>
             {
                 new PSAzureFirewallPolicyApplicationRuleProtocol { ProtocolType = MNM.AzureFirewallApplicationRuleProtocolType.Http, Port = 80 },
-                new PSAzureFirewallPolicyApplicationRuleProtocol { ProtocolType = MNM.AzureFirewallApplicationRuleProtocolType.Https, Port = 443 }
+                new PSAzureFirewallPolicyApplicationRuleProtocol { ProtocolType = MNM.AzureFirewallApplicationRuleProtocolType.Https, Port = 443 },
+                new PSAzureFirewallPolicyApplicationRuleProtocol { ProtocolType = MNM.AzureFirewallApplicationRuleProtocolType.Mssql, Port = 1433 }
             };
 
             //The actual validation is performed in NRP. Here we are just trying to map user info to our model
-            if (!protocolRegEx.IsMatch(userInput))
+            if (!protocolRegEx.IsMatch(userInput) && !mssqlRegEx.IsMatch(userInput))
             {
                 throw new ArgumentException($"Invalid protocol {userInput}");
             }

@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.BareMetal
-online version: https://docs.microsoft.com/powershell/module/az.baremetal/update-azbaremetal
+online version: https://learn.microsoft.com/powershell/module/az.baremetal/update-azbaremetal
 schema: 2.0.0
 ---
 
@@ -200,7 +200,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IBareMetalIdentity>: Identity Parameter
+INPUTOBJECT `<IBareMetalIdentity>`: Identity Parameter
   - `[AzureBareMetalInstanceName <String>]`: Name of the Azure BareMetal on Azure instance.
   - `[Id <String>]`: Resource identity path
   - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.

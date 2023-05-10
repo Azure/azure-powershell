@@ -14,4 +14,6 @@
     <PackageReference Include="Microsoft.Azure.Management.DevSpaces" Version="0.10.0-preview" />
   </ItemGroup>
 
+  <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.Post.props" />
+
 </Project>

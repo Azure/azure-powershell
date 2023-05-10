@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.KubernetesConfiguration
-online version: https://docs.microsoft.com/powershell/module/az.kubernetesconfiguration/new-azkubernetesconfigurationflux
+online version: https://learn.microsoft.com/powershell/module/az.kubernetesconfiguration/new-azkubernetesconfigurationflux
 schema: 2.0.0
 ---
 
@@ -33,7 +33,7 @@ Create a new Kubernetes Flux Configuration.
 
 ### Example 1: Create a new Kubernetes Flux Configuration.
 ```powershell
-PS C:\> $kustomizations = @{
+$kustomizations = @{
     infra=@{
         Name = "infra"
         Path = "./infrastructure"
@@ -46,8 +46,10 @@ PS C:\> $kustomizations = @{
         DependsOn = @("infra")
     }
 }
-PS C:\> New-AzKubernetesConfigurationFlux -ClusterName azpstest_cluster_arc -ClusterType ConnectedClusters -Name azpstestflux-k8s -ResourceGroupName azpstest_gp -Namespace namespace-t01 -Scope 'cluster' -GitRepositoryUrl https://github.com/Azure/gitops-flux2-kustomize-helm-mt -RepositoryRefBranch main -SourceKind 'GitRepository' -GitRepositorySyncIntervalInSecond 600 -GitRepositoryTimeoutInSecond 600 -Suspend:$false -Kustomization $kustomizations
+New-AzKubernetesConfigurationFlux -ClusterName azpstest_cluster_arc -ClusterType ConnectedClusters -Name azpstestflux-k8s -ResourceGroupName azpstest_gp -Namespace namespace-t01 -Scope 'cluster' -GitRepositoryUrl https://github.com/Azure/gitops-flux2-kustomize-helm-mt -RepositoryRefBranch main -SourceKind 'GitRepository' -GitRepositorySyncIntervalInSecond 600 -GitRepositoryTimeoutInSecond 600 -Suspend:$false -Kustomization $kustomizations
+```
 
+```output
 Name             ResourceGroupName
 ----             -----------------
 azpstestflux-k8s azpstest_gp

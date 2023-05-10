@@ -47,6 +47,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
         /// </summary>
         /// <param name="credentials">The service client credentials.</param>
         /// <param name="headerValues">The header values.</param>
+        /// <param name="cmdletHeaderValues">The cmdlet info header values.</param>
         protected HttpClientHelper(ServiceClientCredentials credentials, IEnumerable<ProductInfoHeaderValue> headerValues, Dictionary<string, string> cmdletHeaderValues)
         {
             this.credentials = credentials;

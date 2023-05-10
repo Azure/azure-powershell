@@ -18,11 +18,14 @@ Tests compute node user operations
 #>
 function Test-ComputeNodeUserEndToEnd
 {
-    param([string]$poolId, [string]$computeNodeId)
+    param([string]$poolId)
 
     $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
     $userName = "userendtoend"
     $password1 = ConvertTo-SecureString "Password1234!" -AsPlainText -Force
+
+    $computeNodes = Get-AzBatchComputeNode -PoolId $poolId -BatchContext $context
+    $computeNodeId = $computeNodes[0].Id
 
     # Create a user
     New-AzBatchComputeNodeUser -PoolId $poolId -ComputeNodeId $computeNodeId -Name $userName -Password $password1 -BatchContext $context

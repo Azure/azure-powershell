@@ -29,7 +29,7 @@ testws/testfollowerkustopool/followerconfiguration Microsoft.Synapse/workspaces/
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IAttachedDatabaseConfiguration
 .Link
-https://docs.microsoft.com/powershell/module/az.synapse/new-azsynapsekustopoolattacheddatabaseconfiguration
+https://learn.microsoft.com/powershell/module/az.synapse/new-azsynapsekustopoolattacheddatabaseconfiguration
 #>
 function New-AzSynapseKustoPoolAttachedDatabaseConfiguration {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IAttachedDatabaseConfiguration])]

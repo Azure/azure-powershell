@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added cmdlets for Prometheus rule group
+
+## Version 0.5.0
+* Added parameter `comment` for `Update-AzAlerteState`
 
 ## Version 0.4.1
 * Added support for 24-hour clock in `Set-AzAlertProcessingRule` [#17762]

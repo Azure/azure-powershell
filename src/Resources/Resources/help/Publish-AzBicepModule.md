@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ResourceManager.dll-Help.xml
 Module Name: Az.Resources
-online version: https://docs.microsoft.com/powershell/module/az.resources/publish-azbicepmodule
+online version: https://learn.microsoft.com/powershell/module/az.resources/publish-azbicepmodule
 schema: 2.0.0
 ---
 
@@ -13,7 +13,7 @@ Publishes a Bicep file to a registry.
 ## SYNTAX
 
 ```
-Publish-AzBicepModule -FilePath <String> -Target <String> [-PassThru]
+Publish-AzBicepModule -FilePath <String> -Target <String> [-DocumentationUri <String>] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -24,7 +24,7 @@ The **Publish-AzBicepModule** cmdlet publishes a Bicep file to a registry as a m
 
 ### Example 1
 ```powershell
-Publish-AzBicepModule -FilePath main.bicep -Target br:{registry}/{moduleName}:{tag}
+Publish-AzBicepModule -FilePath 'main.bicep' -Target 'br:{registry}/{moduleName}:{tag}'
 ```
 
 Publishes `main.bicep` to `br:{registry}/{moduleName}:{tag}`.
@@ -38,6 +38,21 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DocumentationUri
+The documentation uri of the Bicep module..
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named

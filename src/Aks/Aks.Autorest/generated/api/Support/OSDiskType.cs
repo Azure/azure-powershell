@@ -6,12 +6,24 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Support
 {
 
-    /// <summary>OSDiskType represents the type of an OS disk on an agent pool.</summary>
+    /// <summary>
+    /// The default is 'Ephemeral' if the VM supports it and has a cache disk larger than the requested OSDiskSizeGB. Otherwise,
+    /// defaults to 'Managed'. May not be changed after creation. For more information see [Ephemeral OS](https://docs.microsoft.com/azure/aks/cluster-configuration#ephemeral-os).
+    /// </summary>
     public partial struct OSDiskType :
         System.IEquatable<OSDiskType>
     {
+        /// <summary>
+        /// Ephemeral OS disks are stored only on the host machine, just like a temporary disk. This provides lower read/write latency,
+        /// along with faster node scaling and cluster upgrades.
+        /// </summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.OSDiskType Ephemeral = @"Ephemeral";
 
+        /// <summary>
+        /// Azure replicates the operating system disk for a virtual machine to Azure storage to avoid data loss should the VM need
+        /// to be relocated to another host. Since containers aren't designed to have local state persisted, this behavior offers
+        /// limited value while providing some drawbacks, including slower node provisioning and higher read/write latency.
+        /// </summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.OSDiskType Managed = @"Managed";
 
         /// <summary>the value for an instance of the <see cref="OSDiskType" /> Enum.</summary>
@@ -47,7 +59,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Support
             return this._value.GetHashCode();
         }
 
-        /// <summary>Creates an instance of the <see cref="OSDiskType" Enum class./></summary>
+        /// <summary>Creates an instance of the <see cref="OSDiskType"/> Enum class.</summary>
         /// <param name="underlyingValue">the value to create an instance for.</param>
         private OSDiskType(string underlyingValue)
         {
@@ -78,8 +90,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Support
         }
 
         /// <summary>Overriding != operator for enum OSDiskType</summary>
-        /// <param name="e1">the value to compare against <see cref="e2" /></param>
-        /// <param name="e2">the value to compare against <see cref="e1" /></param>
+        /// <param name="e1">the value to compare against <paramref name="e2" /></param>
+        /// <param name="e2">the value to compare against <paramref name="e1" /></param>
         /// <returns><c>true</c> if the two instances are not equal to the same value</returns>
         public static bool operator !=(Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.OSDiskType e1, Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.OSDiskType e2)
         {
@@ -87,8 +99,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Support
         }
 
         /// <summary>Overriding == operator for enum OSDiskType</summary>
-        /// <param name="e1">the value to compare against <see cref="e2" /></param>
-        /// <param name="e2">the value to compare against <see cref="e1" /></param>
+        /// <param name="e1">the value to compare against <paramref name="e2" /></param>
+        /// <param name="e2">the value to compare against <paramref name="e1" /></param>
         /// <returns><c>true</c> if the two instances are equal to the same value</returns>
         public static bool operator ==(Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.OSDiskType e1, Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.OSDiskType e2)
         {

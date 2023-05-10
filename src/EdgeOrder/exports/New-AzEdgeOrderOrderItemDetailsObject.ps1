@@ -48,7 +48,7 @@ PRODUCTDETAIL <IProductDetails>: Unique identifier for configuration.
     [ProductLineName <String>]: Represents product line name that uniquely identifies product line
     [ProductName <String>]: Represents product name that uniquely identifies product
 .Link
-https://docs.microsoft.com/powershell/module/az.EdgeOrder/new-AzEdgeOrderOrderItemDetailsObject
+https://learn.microsoft.com/powershell/module/az.EdgeOrder/new-AzEdgeOrderOrderItemDetailsObject
 #>
 function New-AzEdgeOrderOrderItemDetailsObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.OrderItemDetails])]

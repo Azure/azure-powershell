@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.StorageSync.dll-Help.xml
 Module Name: Az.StorageSync
-online version: https://docs.microsoft.com/powershell/module/az.storagesync/invoke-azstoragesyncchangedetection
+online version: https://learn.microsoft.com/powershell/module/az.storagesync/invoke-azstoragesyncchangedetection
 schema: 2.0.0
 ---
 
@@ -16,7 +16,7 @@ This command can be used to manually initiate the detection of namespace changes
 > - Files that are moved out of the share.
 > - Files that are deleted and created with the same name.  
 > 
->  If share-level change detection is invoked, all of these changes will be detected. These changes will also be detected when the scheduled [change detection job](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#afs-change-detection) runs.
+>  If share-level change detection is invoked, all of these changes will be detected. These changes will also be detected when the scheduled [change detection job](https://learn.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#afs-change-detection) runs.
 
 ## SYNTAX
 

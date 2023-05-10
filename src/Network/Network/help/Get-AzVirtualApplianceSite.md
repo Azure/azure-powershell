@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/get-azvirtualappliancesite
+online version: https://learn.microsoft.com/powershell/module/az.network/get-azvirtualappliancesite
 schema: 2.0.0
 ---
 
@@ -66,7 +66,6 @@ Id                : /subscriptions/00000000-0000-0000-0000-000000000000/resource
 ```
 
 List Virtual Appliance site resources in a Network Virtual Appliance.
-
 
 ## PARAMETERS
 

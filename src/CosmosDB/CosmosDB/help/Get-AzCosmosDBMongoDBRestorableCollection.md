@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.dll-Help.xml
 Module Name: Az.CosmosDB
-online version: https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbmongodbrestorablecollection
+online version: https://learn.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbmongodbrestorablecollection
 schema: 2.0.0
 ---
 
@@ -15,7 +15,8 @@ Lists all the restorable Azure Cosmos DB MongoDB collection available for a spec
 ### ByNameParameterSet (Default)
 ```
 Get-AzCosmosDBMongoDBRestorableCollection -Location <String> -DatabaseAccountInstanceId <String>
- -DatabaseRId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ -DatabaseRId <String> [-StartTime <String>] [-EndTime <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ByParentObjectParameterSet
@@ -119,6 +120,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EndTime
+Restorable MongoDB collections event feed end time.
+
+```yaml
+Type: System.String
+Parameter Sets: ByNameParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -InputObject
 CosmosDB Restorable MongoDB Database object
 
@@ -143,6 +159,21 @@ Parameter Sets: ByNameParameterSet
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -StartTime
+Restorable MongoDB collections event feed start time.
+
+```yaml
+Type: System.String
+Parameter Sets: ByNameParameterSet
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

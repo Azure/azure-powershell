@@ -34,6 +34,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support
             {
                 yield return new global::System.Management.Automation.CompletionResult("'LocallyRedundant'", "LocallyRedundant", global::System.Management.Automation.CompletionResultType.ParameterValue, "LocallyRedundant");
             }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "ZoneRedundant".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'ZoneRedundant'", "ZoneRedundant", global::System.Management.Automation.CompletionResultType.ParameterValue, "ZoneRedundant");
+            }
         }
     }
 }

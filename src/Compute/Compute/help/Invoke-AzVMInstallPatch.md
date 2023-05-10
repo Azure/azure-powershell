@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
-online version: https://docs.microsoft.com/powershell/module/az.compute/invoke-azvminstallpatch
+online version: https://learn.microsoft.com/powershell/module/az.compute/invoke-azvminstallpatch
 schema: 2.0.0
 ---
 
@@ -75,7 +75,7 @@ This example installs critical patches on the VM.
 ### Example 2
 ```powershell
 $myVM = Get-AzVM -ResourceGroupName 'MyRG' -Name 'MyVM'
-Invoke-AzVmInstallPatch -VM $myVM -MaximumDuration "PT90M" -RebootSetting "Always" -Windows -ClassificationToIncludeForWindows "Security" -KBNumberToInclude ["KB1234567", "KB123567"] -KBNumberToExclude ["KB1234702", "KB1234802"] -ExcludeKBsRequiringReboot
+Invoke-AzVmInstallPatch -VM $myVM -MaximumDuration "PT90M" -RebootSetting "Always" -Windows -ClassificationToIncludeForWindows "Security" -KBNumberToInclude "KB1234567", "KB123567" -KBNumberToExclude "KB1234702", "KB1234802" -ExcludeKBsRequiringReboot
 ```
 
 This example passes a PSVirtualMachine object to '-VM' parameter. It also installs security patches while including and excluding certain KBs by using '-KBNumberToExclude' and '-KBNumberToInclude'. It also excludes KBs that require reboot by using '-ExcludeKBsRequiringReboot'.
@@ -83,7 +83,7 @@ This example passes a PSVirtualMachine object to '-VM' parameter. It also instal
 ### Example 3
 ```powershell
 $myLinuxVM = Get-AzVM -ResourceGroupName 'MyRG' -Name 'MyLinuxVM'
-Invoke-AzVMInstallPatch -ResourceId $myLinuxVM.id -MaximumDuration "PT90M" -RebootSetting "Always" -Linux -ClassificationToIncludeForLinux "Security" -PackageNameMaskToInclude ["package123"] -PackageNameMaskToExclude ["package567"]
+Invoke-AzVMInstallPatch -ResourceId $myLinuxVM.id -MaximumDuration "PT90M" -RebootSetting "Always" -Linux -ClassificationToIncludeForLinux "Security" -PackageNameMaskToInclude "package123" -PackageNameMaskToExclude "package567"
 ```
 
 This example installs certain packages to the Linux VM provided by Resource ID. 

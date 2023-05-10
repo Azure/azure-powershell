@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/new-azstaticroute
+online version: https://learn.microsoft.com/powershell/module/az.network/new-azstaticroute
 schema: 2.0.0
 ---
 
@@ -12,8 +12,9 @@ Creates a StaticRoute object which can then be added to a RoutingConfiguration o
 
 ## SYNTAX
 
-```powershell
-New-AzStaticRoute -Name <String> -AddressPrefix <String[]> -NextHopIpAddress <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+New-AzStaticRoute -Name <String> -AddressPrefix <String[]> -NextHopIpAddress <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -36,26 +37,11 @@ The above command will create a StaticRoute object which can then be added to a 
 
 ## PARAMETERS
 
-### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
-
-```yaml
-Type: IAzureContextContainer
-Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -AddressPrefix
 List of address prefixes.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -66,12 +52,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with Azure.
+
+```yaml
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzContext, AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 The route name.
 
 ```yaml
-Type: String
-Parameter Sets: (all)
+Type: System.String
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -85,7 +86,7 @@ Accept wildcard characters: False
 The next hop ip address.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

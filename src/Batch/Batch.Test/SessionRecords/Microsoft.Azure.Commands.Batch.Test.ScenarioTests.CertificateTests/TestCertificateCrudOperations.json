@@ -1,28 +1,27 @@
 {
   "Entries": [
     {
-      "RequestUri": "/certificates?api-version=2022-01-01.15.0",
-      "EncodedRequestUri": "L2NlcnRpZmljYXRlcz9hcGktdmVyc2lvbj0yMDIyLTAxLTAxLjE1LjA=",
+      "RequestUri": "/certificates?api-version=2022-10-01.16.0",
+      "EncodedRequestUri": "L2NlcnRpZmljYXRlcz9hcGktdmVyc2lvbj0yMDIyLTEwLTAxLjE2LjA=",
       "RequestMethod": "POST",
-      "RequestBody": "{\r\n  \"thumbprint\": \"c1e494a415149c5f211c4778b52f2e834a07247c\",\r\n  \"thumbprintAlgorithm\": \"sha1\",\r\n  \"data\": \"MIIB9DCCAWGgAwIBAgIQpUXhwCuAPJRDhl7kY/0PdTAJBgUrDgMCHQUAMBYxFDASBgNVBAMTC0JhdGNoVGVzdDAxMB4XDTE1MTAwMjE2MjkwNVoXDTM5MTIzMTIzNTk1OVowFjEUMBIGA1UEAxMLQmF0Y2hUZXN0MDEwgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBAM06unpRipn3BmHBM75d0s8w/Wwifci16PoJo4c2V68GwsCCFsNOn5ypo7BBXo1fpBjrnso5w+koaE5LjxkBSVm+TkogwbKlW6WURTM0O5viRVbPnEEU/Y01Pj5cJElFuLEk9Uoe/r/lP8b5A607t1cPjSXkwhEZEYc3LkHDSo0ZAgMBAAGjSzBJMEcGA1UdAQRAMD6AEFRsTAsrvF+FmPuICooZXaKhGDAWMRQwEgYDVQQDEwtCYXRjaFRlc3QwMYIQpUXhwCuAPJRDhl7kY/0PdTAJBgUrDgMCHQUAA4GBALt0F8Ep+8XVE/M2aNtxzlku72gxiOiAo1HmpUaixXx3gl8kdP3xgoKMaq4JskqdLmbJJUnCQ3wmzsdPwjswsW2ycT12zuBddaiS+id98k8U/KYc6FxMgS+H70FYOxARLn7P4FSSBf/QCyign+BherzezdZ5NBdfzbmWxIMP5iFJ\",\r\n  \"certificateFormat\": \"cer\"\r\n}",
       "RequestHeaders": {
         "client-request-id": [
-          "efff2d06-a1c0-4c30-905e-3cd28ee5d4ce"
+          "e463cbe6-1c0e-4fa9-938a-8aafe0694387"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "ocp-date": [
-          "Tue, 15 Feb 2022 19:36:30 GMT"
+          "Fri, 02 Dec 2022 17:22:53 GMT"
         ],
         "x-ms-client-request-id": [
-          "432f0e92-24d1-4045-82bc-efd72272cec5"
+          "bc8913ee-3f04-4077-958a-247b7f63c741"
         ],
         "User-Agent": [
-          "FxVersion/4.6.30411.01",
+          "FxVersion/4.700.22.51102",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19044.",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/15.300.22.6302",
+          "OSVersion/Microsoft.Windows.10.0.19045",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/15.400.22.55103",
           "AzurePowershell/Az1.0.0"
         ],
         "Content-Type": [
@@ -32,18 +31,19 @@
           "816"
         ]
       },
+      "RequestBody": "{\r\n  \"thumbprint\": \"c1e494a415149c5f211c4778b52f2e834a07247c\",\r\n  \"thumbprintAlgorithm\": \"sha1\",\r\n  \"data\": \"MIIB9DCCAWGgAwIBAgIQpUXhwCuAPJRDhl7kY/0PdTAJBgUrDgMCHQUAMBYxFDASBgNVBAMTC0JhdGNoVGVzdDAxMB4XDTE1MTAwMjE2MjkwNVoXDTM5MTIzMTIzNTk1OVowFjEUMBIGA1UEAxMLQmF0Y2hUZXN0MDEwgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBAM06unpRipn3BmHBM75d0s8w/Wwifci16PoJo4c2V68GwsCCFsNOn5ypo7BBXo1fpBjrnso5w+koaE5LjxkBSVm+TkogwbKlW6WURTM0O5viRVbPnEEU/Y01Pj5cJElFuLEk9Uoe/r/lP8b5A607t1cPjSXkwhEZEYc3LkHDSo0ZAgMBAAGjSzBJMEcGA1UdAQRAMD6AEFRsTAsrvF+FmPuICooZXaKhGDAWMRQwEgYDVQQDEwtCYXRjaFRlc3QwMYIQpUXhwCuAPJRDhl7kY/0PdTAJBgUrDgMCHQUAA4GBALt0F8Ep+8XVE/M2aNtxzlku72gxiOiAo1HmpUaixXx3gl8kdP3xgoKMaq4JskqdLmbJJUnCQ3wmzsdPwjswsW2ycT12zuBddaiS+id98k8U/KYc6FxMgS+H70FYOxARLn7P4FSSBf/QCyign+BherzezdZ5NBdfzbmWxIMP5iFJ\",\r\n  \"certificateFormat\": \"cer\"\r\n}",
       "ResponseHeaders": {
         "Transfer-Encoding": [
           "chunked"
         ],
         "Location": [
-          "https://mikeportal.eastus.batch.azure.com/certificates(ThumbprintAlgorithm=sha1,Thumbprint=c1e494a415149c5f211c4778b52f2e834a07247c)"
+          "https://mikebatcheast.eastus.batch.azure.com/certificates(ThumbprintAlgorithm=sha1,Thumbprint=c1e494a415149c5f211c4778b52f2e834a07247c)"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "91ef17e2-3d15-44f0-b0b5-cc68c650c51b"
+          "1ea1c75a-a237-465d-8de3-473dfb6c7877"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -55,41 +55,41 @@
           "3.0"
         ],
         "DataServiceId": [
-          "https://mikeportal.eastus.batch.azure.com/certificates(ThumbprintAlgorithm=sha1,Thumbprint=c1e494a415149c5f211c4778b52f2e834a07247c)"
+          "https://mikebatcheast.eastus.batch.azure.com/certificates(ThumbprintAlgorithm=sha1,Thumbprint=c1e494a415149c5f211c4778b52f2e834a07247c)"
         ],
         "Date": [
-          "Tue, 15 Feb 2022 19:36:29 GMT"
+          "Fri, 02 Dec 2022 17:22:52 GMT"
         ]
       },
       "ResponseBody": "",
       "StatusCode": 201
     },
     {
-      "RequestUri": "/certificates(thumbprintAlgorithm=sha1,thumbprint=C1E494A415149C5F211C4778B52F2E834A07247C)?api-version=2022-01-01.15.0",
-      "EncodedRequestUri": "L2NlcnRpZmljYXRlcyh0aHVtYnByaW50QWxnb3JpdGhtPXNoYTEsdGh1bWJwcmludD1DMUU0OTRBNDE1MTQ5QzVGMjExQzQ3NzhCNTJGMkU4MzRBMDcyNDdDKT9hcGktdmVyc2lvbj0yMDIyLTAxLTAxLjE1LjA=",
+      "RequestUri": "/certificates(thumbprintAlgorithm=sha1,thumbprint=C1E494A415149C5F211C4778B52F2E834A07247C)?api-version=2022-10-01.16.0",
+      "EncodedRequestUri": "L2NlcnRpZmljYXRlcyh0aHVtYnByaW50QWxnb3JpdGhtPXNoYTEsdGh1bWJwcmludD1DMUU0OTRBNDE1MTQ5QzVGMjExQzQ3NzhCNTJGMkU4MzRBMDcyNDdDKT9hcGktdmVyc2lvbj0yMDIyLTEwLTAxLjE2LjA=",
       "RequestMethod": "GET",
-      "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "02adf1ed-2093-42bb-93d0-a62cf4958528"
+          "48f94b5f-15c4-4de0-8672-1a6efe3595d6"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "ocp-date": [
-          "Tue, 15 Feb 2022 19:36:30 GMT"
+          "Fri, 02 Dec 2022 17:22:53 GMT"
         ],
         "x-ms-client-request-id": [
-          "b0577c05-f049-441a-9056-42e6c0e54f2b"
+          "6d17ce58-0a7b-4e0e-9643-0225b699dab8"
         ],
         "User-Agent": [
-          "FxVersion/4.6.30411.01",
+          "FxVersion/4.700.22.51102",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19044.",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/15.300.22.6302",
+          "OSVersion/Microsoft.Windows.10.0.19045",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/15.400.22.55103",
           "AzurePowershell/Az1.0.0"
         ]
       },
+      "RequestBody": "",
       "ResponseHeaders": {
         "Transfer-Encoding": [
           "chunked"
@@ -98,7 +98,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "16353810-e491-44c1-a2d5-6af8a8ac6b70"
+          "c4740e34-c309-4ed7-821a-e34cfc183390"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -110,44 +110,44 @@
           "3.0"
         ],
         "Date": [
-          "Tue, 15 Feb 2022 19:36:29 GMT"
+          "Fri, 02 Dec 2022 17:22:52 GMT"
         ],
         "Content-Type": [
           "application/json; odata=minimalmetadata"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://mikeportal.eastus.batch.azure.com/$metadata#certificates/@Element\",\r\n  \"thumbprint\": \"c1e494a415149c5f211c4778b52f2e834a07247c\",\r\n  \"thumbprintAlgorithm\": \"sha1\",\r\n  \"url\": \"https://mikeportal.eastus.batch.azure.com/certificates(thumbprintAlgorithm=sha1,thumbprint=C1E494A415149C5F211C4778B52F2E834A07247C)\",\r\n  \"state\": \"active\",\r\n  \"stateTransitionTime\": \"2022-02-15T19:36:30.481441Z\",\r\n  \"publicData\": \"MIIB9DCCAWGgAwIBAgIQpUXhwCuAPJRDhl7kY/0PdTAJBgUrDgMCHQUAMBYxFDASBgNVBAMTC0JhdGNoVGVzdDAxMB4XDTE1MTAwMjE2MjkwNVoXDTM5MTIzMTIzNTk1OVowFjEUMBIGA1UEAxMLQmF0Y2hUZXN0MDEwgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBAM06unpRipn3BmHBM75d0s8w/Wwifci16PoJo4c2V68GwsCCFsNOn5ypo7BBXo1fpBjrnso5w+koaE5LjxkBSVm+TkogwbKlW6WURTM0O5viRVbPnEEU/Y01Pj5cJElFuLEk9Uoe/r/lP8b5A607t1cPjSXkwhEZEYc3LkHDSo0ZAgMBAAGjSzBJMEcGA1UdAQRAMD6AEFRsTAsrvF+FmPuICooZXaKhGDAWMRQwEgYDVQQDEwtCYXRjaFRlc3QwMYIQpUXhwCuAPJRDhl7kY/0PdTAJBgUrDgMCHQUAA4GBALt0F8Ep+8XVE/M2aNtxzlku72gxiOiAo1HmpUaixXx3gl8kdP3xgoKMaq4JskqdLmbJJUnCQ3wmzsdPwjswsW2ycT12zuBddaiS+id98k8U/KYc6FxMgS+H70FYOxARLn7P4FSSBf/QCyign+BherzezdZ5NBdfzbmWxIMP5iFJ\"\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://mikebatcheast.eastus.batch.azure.com/$metadata#certificates/@Element\",\r\n  \"thumbprint\": \"c1e494a415149c5f211c4778b52f2e834a07247c\",\r\n  \"thumbprintAlgorithm\": \"sha1\",\r\n  \"url\": \"https://mikebatcheast.eastus.batch.azure.com/certificates(thumbprintAlgorithm=sha1,thumbprint=C1E494A415149C5F211C4778B52F2E834A07247C)\",\r\n  \"state\": \"active\",\r\n  \"stateTransitionTime\": \"2022-12-02T17:22:52.823496Z\",\r\n  \"publicData\": \"MIIB9DCCAWGgAwIBAgIQpUXhwCuAPJRDhl7kY/0PdTAJBgUrDgMCHQUAMBYxFDASBgNVBAMTC0JhdGNoVGVzdDAxMB4XDTE1MTAwMjE2MjkwNVoXDTM5MTIzMTIzNTk1OVowFjEUMBIGA1UEAxMLQmF0Y2hUZXN0MDEwgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBAM06unpRipn3BmHBM75d0s8w/Wwifci16PoJo4c2V68GwsCCFsNOn5ypo7BBXo1fpBjrnso5w+koaE5LjxkBSVm+TkogwbKlW6WURTM0O5viRVbPnEEU/Y01Pj5cJElFuLEk9Uoe/r/lP8b5A607t1cPjSXkwhEZEYc3LkHDSo0ZAgMBAAGjSzBJMEcGA1UdAQRAMD6AEFRsTAsrvF+FmPuICooZXaKhGDAWMRQwEgYDVQQDEwtCYXRjaFRlc3QwMYIQpUXhwCuAPJRDhl7kY/0PdTAJBgUrDgMCHQUAA4GBALt0F8Ep+8XVE/M2aNtxzlku72gxiOiAo1HmpUaixXx3gl8kdP3xgoKMaq4JskqdLmbJJUnCQ3wmzsdPwjswsW2ycT12zuBddaiS+id98k8U/KYc6FxMgS+H70FYOxARLn7P4FSSBf/QCyign+BherzezdZ5NBdfzbmWxIMP5iFJ\"\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/certificates(thumbprintAlgorithm=sha1,thumbprint=c1e494a415149c5f211c4778b52f2e834a07247c)?api-version=2022-01-01.15.0",
-      "EncodedRequestUri": "L2NlcnRpZmljYXRlcyh0aHVtYnByaW50QWxnb3JpdGhtPXNoYTEsdGh1bWJwcmludD1jMWU0OTRhNDE1MTQ5YzVmMjExYzQ3NzhiNTJmMmU4MzRhMDcyNDdjKT9hcGktdmVyc2lvbj0yMDIyLTAxLTAxLjE1LjA=",
+      "RequestUri": "/certificates(thumbprintAlgorithm=sha1,thumbprint=c1e494a415149c5f211c4778b52f2e834a07247c)?api-version=2022-10-01.16.0",
+      "EncodedRequestUri": "L2NlcnRpZmljYXRlcyh0aHVtYnByaW50QWxnb3JpdGhtPXNoYTEsdGh1bWJwcmludD1jMWU0OTRhNDE1MTQ5YzVmMjExYzQ3NzhiNTJmMmU4MzRhMDcyNDdjKT9hcGktdmVyc2lvbj0yMDIyLTEwLTAxLjE2LjA=",
       "RequestMethod": "DELETE",
-      "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "9699ba9b-0743-42b9-a486-8e280740095a"
+          "e5de1411-6982-45dd-a614-c15b43d0c1ff"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "ocp-date": [
-          "Tue, 15 Feb 2022 19:36:31 GMT"
+          "Fri, 02 Dec 2022 17:22:53 GMT"
         ],
         "x-ms-client-request-id": [
-          "55d00845-6db9-4698-b7e8-149c0ef49c8d"
+          "3d7a9938-0ec2-4853-bd21-6e31c2d2ff05"
         ],
         "User-Agent": [
-          "FxVersion/4.6.30411.01",
+          "FxVersion/4.700.22.51102",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19044.",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/15.300.22.6302",
+          "OSVersion/Microsoft.Windows.10.0.19045",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/15.400.22.55103",
           "AzurePowershell/Az1.0.0"
         ],
         "Content-Length": [
           "0"
         ]
       },
+      "RequestBody": "",
       "ResponseHeaders": {
         "Transfer-Encoding": [
           "chunked"
@@ -156,7 +156,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "d4107e14-cb51-4377-9990-33ad9ec7ee2e"
+          "2913c2f7-ffe3-4d43-ab75-4c4c311333d5"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -168,38 +168,38 @@
           "3.0"
         ],
         "Date": [
-          "Tue, 15 Feb 2022 19:36:30 GMT"
+          "Fri, 02 Dec 2022 17:22:52 GMT"
         ]
       },
       "ResponseBody": "",
       "StatusCode": 202
     },
     {
-      "RequestUri": "/certificates?api-version=2022-01-01.15.0",
-      "EncodedRequestUri": "L2NlcnRpZmljYXRlcz9hcGktdmVyc2lvbj0yMDIyLTAxLTAxLjE1LjA=",
+      "RequestUri": "/certificates?api-version=2022-10-01.16.0",
+      "EncodedRequestUri": "L2NlcnRpZmljYXRlcz9hcGktdmVyc2lvbj0yMDIyLTEwLTAxLjE2LjA=",
       "RequestMethod": "GET",
-      "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "97c86b00-1e6f-4d61-bca1-cd581c1eebfa"
+          "544e44d7-7b23-4a85-bff2-34e03a844bb7"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "ocp-date": [
-          "Tue, 15 Feb 2022 19:36:31 GMT"
+          "Fri, 02 Dec 2022 17:22:53 GMT"
         ],
         "x-ms-client-request-id": [
-          "c4e25729-757c-494e-813d-34f4a8bcd5dc"
+          "c30316d4-cd55-4e9a-a2e6-a5300245993e"
         ],
         "User-Agent": [
-          "FxVersion/4.6.30411.01",
+          "FxVersion/4.700.22.51102",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19044.",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/15.300.22.6302",
+          "OSVersion/Microsoft.Windows.10.0.19045",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/15.400.22.55103",
           "AzurePowershell/Az1.0.0"
         ]
       },
+      "RequestBody": "",
       "ResponseHeaders": {
         "Transfer-Encoding": [
           "chunked"
@@ -208,7 +208,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "465219b5-d18e-4511-b8d8-a80ff4caf59b"
+          "76947dff-f19a-49fa-87f2-b75b28ccf292"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -220,21 +220,21 @@
           "3.0"
         ],
         "Date": [
-          "Tue, 15 Feb 2022 19:36:30 GMT"
+          "Fri, 02 Dec 2022 17:22:52 GMT"
         ],
         "Content-Type": [
           "application/json; odata=minimalmetadata"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://mikeportal.eastus.batch.azure.com/$metadata#certificates\",\r\n  \"value\": [\r\n    {\r\n      \"thumbprint\": \"04c06ba9fe4e26217c0b92e21917a7a2d7822d6d\",\r\n      \"thumbprintAlgorithm\": \"sha1\",\r\n      \"url\": \"https://mikeportal.eastus.batch.azure.com/certificates(thumbprintAlgorithm=sha1,thumbprint=04c06ba9fe4e26217c0b92e21917a7a2d7822d6d)\",\r\n      \"state\": \"active\",\r\n      \"stateTransitionTime\": \"2021-06-07T16:06:36.6109259Z\",\r\n      \"publicData\": \"MIICwTCCAamgAwIBAgIRGUm7cuoxK0W9QFVcMdPFfwAwDQYJKoZIhvcNAQEFBQAwDjEMMAoGA1UEAwwDRm9vMB4XDTIxMDYwNzEyMDYzNloXDTIxMDYwNzEyMDYzNlowDjEMMAoGA1UEAwwDRm9vMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAv2wpeW7lr6qZ9ZZPpSQXY9p2zFyHvZzs52zP/2Oi6UhAzxymUqOAu/EqvKnpQuSa3jaYpbk8+sndh5vWeQTADg6I5Fu8jHI6uZqrR7TR4hnKehhaDmWF8xRWVPwnEbC29Y1lP9HdFV19FQaYhD+m0jaFn5IWzCYqaieHMQxe2JzUq959+IGR20fhZr0Pu/Iys4uoIOJz7VGJdjg1P459WAFGlVjkKX9TrcxGUeqREjOo9ADS7GUbGz5UdKXcvUcYTwDTb2k8ZVdZQGyCHky+f61BNfZuOLurwcrRQhPnxd9MOEDF6fYmV5sZxR5OMEP8dq4kkd9dKL0i+q7vc/0NOQIDAQABoxowGDAWBgNVHSUBAf8EDDAKBggrBgEFBQcDATANBgkqhkiG9w0BAQUFAAOCAQEARNlI4wthcHeIols7RQEKTjahU0Xx+uiNeTLxKCtCI/u1otYN2MUN4wVWZ+WYDB/IHXhkBu0VO60K5xIQaWkp37qvPV2Bchzojw8Hy74W6p3Y/o84yL+O6X4qYmMgjqGzI7IX7ntqKLAn18UbIbTi1bGTOi7iZn0EIlnBFQbierz8P998DqEi1Q8wq9nDA5OAMSl16cZ5S6uS/Cs9E05EDTNQEnisDNxXuBoO1NU9jrLzTGSi5cZKRjk4dzNDVcoxzWjott4E7J/mBjLR5VjSqER788yOrjYEZVrAEn/0YuYCqmLfl4EvNb4ioV0n8fp67NFiLPoVMQKXg8WpephKcQ==\"\r\n    },\r\n    {\r\n      \"thumbprint\": \"38c26cf94f7317cbfae4506b761daf61de4ecd4b\",\r\n      \"thumbprintAlgorithm\": \"sha1\",\r\n      \"url\": \"https://mikeportal.eastus.batch.azure.com/certificates(thumbprintAlgorithm=sha1,thumbprint=38c26cf94f7317cbfae4506b761daf61de4ecd4b)\",\r\n      \"state\": \"deletefailed\",\r\n      \"stateTransitionTime\": \"2020-10-05T20:00:23.2441549Z\",\r\n      \"previousState\": \"deleting\",\r\n      \"previousStateTransitionTime\": \"2020-10-05T19:59:20.3197512Z\",\r\n      \"publicData\": \"MIICwTCCAamgAwIBAgIRZswwMvQfTEG4TB8ipilmggAwDQYJKoZIhvcNAQEFBQAwDjEMMAoGA1UEAwwDRm9vMB4XDTIwMTAwNTE1NTgxMFoXDTIwMTAwNTE1NTgxMFowDjEMMAoGA1UEAwwDRm9vMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA3/2lribH6LufX7pwFms00eNSO08StmHJoMBOFVoUZb5a0mn+BJkzzDnEwpHbTagv3eIVnM9rCwO/QZLwe0GxAc8th//mMJS9H+aKUXeu3bhccsJOKAKKKpNX0/SRUA3GLLU1ITIUiuFY1fqQUQWpw6iTcNj90zWjruWXnjCqJm9KyTDTdTl1A4fNG7YcZ7Q+cWU3CD54gybA82BcZMojjTmCmssCecJtnMAC5qWnlAomXtpGqEYa6Ol7An/JcOgWvlTwEbfWiXNIsMNnzgH5jEVYWS+EERQhpVp3w1wOH0AWwIx/6Sfh6PqlYGaRPOkHwOlHB1YFYUnW3cxHsfZ9GQIDAQABoxowGDAWBgNVHSUBAf8EDDAKBggrBgEFBQcDATANBgkqhkiG9w0BAQUFAAOCAQEATjbVxuWSzrXNX8Syc7NbEQenkoczUolVHPxJOmgZP5kNxGjy7tzHAabk0QcwW95wKaHfSFbi5ENGc1YUkHEZJO8V3SujWcdpxcJMJ1ooXKCF+Qs5G1pLAnwvfxiV2qDEMf1YKwPLSHyju76Q3UFOtvKwWIZ7+tdpL2K4ht12Mp/Y9IjCg5pUjpbEhqY9N36e0Fw3f/aTAU3zdyPC9DJXahAXi7V4zD2JXBcp4niMp3Q5oEyQ3k/cgddMoCtGCMXIpD0xJHbEHLnZYWblrOU5uBAMR7KLFqDA2Qe0ujs5EZSanaKYrDCAZ6ECBKiLC7PLNXBVxIVqcLAyyKFV+2uujg==\",\r\n      \"deleteCertificateError\": {\r\n        \"code\": \"PoolsReferencingCertificate\",\r\n        \"message\": \"The specified certificate is being used by the below mentioned pool(s)\",\r\n        \"values\": [\r\n          {\r\n            \"name\": \"Pools\",\r\n            \"value\": \"CancelDeleteCert-mipatera\"\r\n          }\r\n        ]\r\n      }\r\n    },\r\n    {\r\n      \"thumbprint\": \"7bcab01ddd0004317fcba75bb446f59fea8bc79b\",\r\n      \"thumbprintAlgorithm\": \"sha1\",\r\n      \"url\": \"https://mikeportal.eastus.batch.azure.com/certificates(thumbprintAlgorithm=sha1,thumbprint=7bcab01ddd0004317fcba75bb446f59fea8bc79b)\",\r\n      \"state\": \"deletefailed\",\r\n      \"stateTransitionTime\": \"2021-06-07T16:07:37.149386Z\",\r\n      \"previousState\": \"deleting\",\r\n      \"previousStateTransitionTime\": \"2021-06-07T16:06:37.0703745Z\",\r\n      \"publicData\": \"MIICwTCCAamgAwIBAgIRNJt3FreH30aAEo83v5pNTAAwDQYJKoZIhvcNAQEFBQAwDjEMMAoGA1UEAwwDRm9vMB4XDTIxMDYwNzEyMDYzNVoXDTIxMDYwNzEyMDYzNVowDjEMMAoGA1UEAwwDRm9vMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAs4WkINfkYczceNN4bop0K1OYwWsUYqVxNuV+lGWRujKybdwGn3mhZsVe4EBqFu2yvgpLd22jtdgmtx+iAJKPq7LfeEV36NQvDd/u9/z3ef6dV8mgOYN0y12Rp6lFJ7+JoLDzLgkKkJPmRQ1bNSy/5bI5VeAUfJN3Nl1Auioy4HpwzqawqwbWAm70P8nO0itUrjxuUktJk9fbvwvnJeU6FuCQ/XMkO2XTSal+u86itfUWmI2hH0V4J9ckXJjbg2LcjS+RfTsjugcKvLUYeGSsJbTeTKXffJ0/UZX36E9eq/UbpB5+GWrwhOgsBbyjNFPPqgkIT0+FZ36zCvgwPbxXBQIDAQABoxowGDAWBgNVHSUBAf8EDDAKBggrBgEFBQcDATANBgkqhkiG9w0BAQUFAAOCAQEAGgl2sQns0U/Q5CdvTczml4+0aanuckHvZZua3b5fPOt0Mw6ESm69YeGtugoQDTe7RDfa2IhU0xf2e6xenc+AqeOFDhtx3s4NTyZnv+MZiN9Ud1KCfLQoxlskhEJZmY+DcbfFlIQlLeo23eLqoeHKfUk6/kQaiHpwa329/Fj8nNGa764l8i9WqH5/sda1Jl9URZ5zmypWwzgzmQphCXwNv4xqR6oMYm7o1Z/3XAqClCDeyUPYCnz19inaEU4+XR4bcZYCWKoh+ghx1fccjyBX/NPgNTTEKrmii8iAmoMJeNJYqp13hBO6TUJDnKq5ijJWWDz3hRehBFv6HrUDBfU/FQ==\",\r\n      \"deleteCertificateError\": {\r\n        \"code\": \"PoolsReferencingCertificate\",\r\n        \"message\": \"The specified certificate is being used by the below mentioned pool(s)\",\r\n        \"values\": [\r\n          {\r\n            \"name\": \"Pools\",\r\n            \"value\": \"CancelDeleteCert-mipatera\"\r\n          }\r\n        ]\r\n      }\r\n    },\r\n    {\r\n      \"thumbprint\": \"80d625615ebca1cb49f439116ed7edd67da2cd5b\",\r\n      \"thumbprintAlgorithm\": \"sha1\",\r\n      \"url\": \"https://mikeportal.eastus.batch.azure.com/certificates(thumbprintAlgorithm=sha1,thumbprint=80d625615ebca1cb49f439116ed7edd67da2cd5b)\",\r\n      \"state\": \"active\",\r\n      \"stateTransitionTime\": \"2020-10-05T19:58:13.3160263Z\",\r\n      \"publicData\": \"MIICwTCCAamgAwIBAgIRLrjPmJKbzkuRTbdXDS/eqQAwDQYJKoZIhvcNAQEFBQAwDjEMMAoGA1UEAwwDRm9vMB4XDTIwMTAwNTE1NTgxMloXDTIwMTAwNTE1NTgxMlowDjEMMAoGA1UEAwwDRm9vMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAp1h9L5ix2IbOCbNuxYjayHYaJh3PoDUQlNGwz75g2+igtvgDVIqgmpEk9FmZH2hJgAyWiaAwm/l3Irk/17MvrHEkCsh7FZ1/femWSOhy9dcxhIn0r5DJubJREcoy8JAfjRXFKuupTKRcAjJXPMNp6+LsYYNp1DfYflxGqiGJ3uylM22XiqXRJJG3aaw6sApW/MhE+/AoPzrXrEi/2hpE/Zao6nuX0JftvWjeF3SG9+uem4eovZzQHqo4FhiS+eIN9mlPUctht/jzsBa96EDAxmE7m1dZGyGbXtOVdTwdo7injclOATByY/iLYKvk4f6Flk39pVUk9zeQOK8yeJ/GnwIDAQABoxowGDAWBgNVHSUBAf8EDDAKBggrBgEFBQcDATANBgkqhkiG9w0BAQUFAAOCAQEAB0kZ4VM8pxrMFvALuaVVpjXWYG/5juCmw7NzQPZpcnS6ecyrUBfGSU5RlRUFu0JQjO8qt9OyTyS+frRqiXfij3l8dA0R+Nd1aLjLxdTKY73D6xTjgzH6ERqhSmwofqIHZBX+Plta2YOk/pjQdGBBgoaDpcO+1Zxn5NSaAUJ4GkRRfaLAaY4g8gW5KqIHYOtE0YtuQpp9ZQZl24RevYyR58lsEVnUxMdCuztnn73EZjEeq503eBvsKFL45Dw3scnApcI2ZuX0Aynwazr0s2vaXfSfj3uB/4m5IQ3LiprM52Zl5MVYgmAzHurRuq70EuoDXPQokrzsRwPGqwkBGd6EKA==\"\r\n    },\r\n    {\r\n      \"thumbprint\": \"aecad2c43c876591a3a5a7cb10d82dfc3b884075\",\r\n      \"thumbprintAlgorithm\": \"sha1\",\r\n      \"url\": \"https://mikeportal.eastus.batch.azure.com/certificates(thumbprintAlgorithm=sha1,thumbprint=aecad2c43c876591a3a5a7cb10d82dfc3b884075)\",\r\n      \"state\": \"deletefailed\",\r\n      \"stateTransitionTime\": \"2020-09-28T19:27:15.6938587Z\",\r\n      \"previousState\": \"deleting\",\r\n      \"previousStateTransitionTime\": \"2020-09-28T19:26:12.7494494Z\",\r\n      \"publicData\": \"MIICwTCCAamgAwIBAgIRZLjc+Kh940a3M1igbNQU5QAwDQYJKoZIhvcNAQEFBQAwDjEMMAoGA1UEAwwDRm9vMB4XDTIwMDkyODE1MjYwOVoXDTIwMDkyODE1MjYwOVowDjEMMAoGA1UEAwwDRm9vMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAgOICkxDccl50ZViZIaa2DWT7DKrlV/qbY8V8aWTj+SA3ydpI6ABf+x8HMcCREK3S5/L2c5+r6frds5n5TGmLTNdwwY1dgiPcFvh3cmHsZX/NbrF2gW5YcjiFjARJO+EqNF6sIFlCpXh4o2j96eI/h+dHD68QEC5RRZwXIRAaTd63yhrIsmALmwvNh06cNlB4adMryULy3k6rbgzfcz6muEU0zRP+iFeQJ8gXpc5vEpmAdmPcu8+wRyXPv3Ni1n9K/pMwc5BNEfyA6J3Pg1qs6s82v4vTV8NE+/GHbPuv7X/C4bJKkVLC2xDgVkkUqnhDdKrJBWf9nS60VQKpyNhjMwIDAQABoxowGDAWBgNVHSUBAf8EDDAKBggrBgEFBQcDATANBgkqhkiG9w0BAQUFAAOCAQEAbClmcMUBaXDS78vssVzKAl0Zst0rIVx7X42prRnRmL8KoEmQboKjx6L6hBZjSJkTJBvFlfhl4UcfX9DrRXnvCR6qEoFN+KJ+g4r6l+tB+frMuWmeY6kpzJLcLT5EJLV734GFDEpjDl9+xwFjJg++Im9QeB/3IGNXAbACzX+OgxtdH17avdPxf1Sfu2jM6X6aBDOCkfSS0+Fu/qlQCMZtGVcEQvfze08JQZWzoeqL5ArALJdYtK9pArV53bQj6yzAhXEUvOPSv8C/R3dk9BLFfoF6YpkWOmDTuH12/tlLDKdDSbK4kD+7QHDwQRrl/+fdfAKkIYs1sixc6dOsDI1iFw==\",\r\n      \"deleteCertificateError\": {\r\n        \"code\": \"PoolsReferencingCertificate\",\r\n        \"message\": \"The specified certificate is being used by the below mentioned pool(s)\",\r\n        \"values\": [\r\n          {\r\n            \"name\": \"Pools\",\r\n            \"value\": \"mipatera_DB638163-7F2D-4C32-9941-E3F6A6877842\"\r\n          }\r\n        ]\r\n      }\r\n    },\r\n    {\r\n      \"thumbprint\": \"c1e494a415149c5f211c4778b52f2e834a07247c\",\r\n      \"thumbprintAlgorithm\": \"sha1\",\r\n      \"url\": \"https://mikeportal.eastus.batch.azure.com/certificates(thumbprintAlgorithm=sha1,thumbprint=c1e494a415149c5f211c4778b52f2e834a07247c)\",\r\n      \"state\": \"deleting\",\r\n      \"stateTransitionTime\": \"2022-02-15T19:36:30.7071675Z\",\r\n      \"previousState\": \"active\",\r\n      \"previousStateTransitionTime\": \"2022-02-15T19:36:30.481441Z\",\r\n      \"publicData\": \"MIIB9DCCAWGgAwIBAgIQpUXhwCuAPJRDhl7kY/0PdTAJBgUrDgMCHQUAMBYxFDASBgNVBAMTC0JhdGNoVGVzdDAxMB4XDTE1MTAwMjE2MjkwNVoXDTM5MTIzMTIzNTk1OVowFjEUMBIGA1UEAxMLQmF0Y2hUZXN0MDEwgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBAM06unpRipn3BmHBM75d0s8w/Wwifci16PoJo4c2V68GwsCCFsNOn5ypo7BBXo1fpBjrnso5w+koaE5LjxkBSVm+TkogwbKlW6WURTM0O5viRVbPnEEU/Y01Pj5cJElFuLEk9Uoe/r/lP8b5A607t1cPjSXkwhEZEYc3LkHDSo0ZAgMBAAGjSzBJMEcGA1UdAQRAMD6AEFRsTAsrvF+FmPuICooZXaKhGDAWMRQwEgYDVQQDEwtCYXRjaFRlc3QwMYIQpUXhwCuAPJRDhl7kY/0PdTAJBgUrDgMCHQUAA4GBALt0F8Ep+8XVE/M2aNtxzlku72gxiOiAo1HmpUaixXx3gl8kdP3xgoKMaq4JskqdLmbJJUnCQ3wmzsdPwjswsW2ycT12zuBddaiS+id98k8U/KYc6FxMgS+H70FYOxARLn7P4FSSBf/QCyign+BherzezdZ5NBdfzbmWxIMP5iFJ\"\r\n    },\r\n    {\r\n      \"thumbprint\": \"e88c8fe843310afa172dfb3d736e05f5d898ce8a\",\r\n      \"thumbprintAlgorithm\": \"sha1\",\r\n      \"url\": \"https://mikeportal.eastus.batch.azure.com/certificates(thumbprintAlgorithm=sha1,thumbprint=e88c8fe843310afa172dfb3d736e05f5d898ce8a)\",\r\n      \"state\": \"deletefailed\",\r\n      \"stateTransitionTime\": \"2020-09-28T19:27:15.6388586Z\",\r\n      \"previousState\": \"deleting\",\r\n      \"previousStateTransitionTime\": \"2020-09-28T19:26:12.6525095Z\",\r\n      \"publicData\": \"MIICwTCCAamgAwIBAgIRLvuawndKrke4c7wvnVvZXwAwDQYJKoZIhvcNAQEFBQAwDjEMMAoGA1UEAwwDRm9vMB4XDTIwMDkyODE1MjYwOFoXDTIwMDkyODE1MjYwOFowDjEMMAoGA1UEAwwDRm9vMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAivbctq93RbaeiN+L/Ide1ebKawuq+eSM8E+iKp3OuzYWUdLyRGf2t9ZyUSehTOhlYBzfjm4LYF1h2UGiuG/oTuONx/Ic7S1Q+Fjxdhd7rQjnI2jDNn5oandQnxLGwjI04rcs2T43u91k+4rnQWJSD00W4cS0QcJfDTETZ6E/rVIhqX7MHiVHmg+v0CgFzN2vRlyQ4ogylmRIhzkxc7eMT1NellF6aHicXWzK3IKNgoZ8jpAFqTT+Y4ahpvKuYvFhj0/bEMON90uBclH4JqrBse2lNH/Az+e1t2BRCfo5uF3Woh1CTPQ7iphDAimN4F8K7IsUrEw/2RdnreLFILMlLwIDAQABoxowGDAWBgNVHSUBAf8EDDAKBggrBgEFBQcDATANBgkqhkiG9w0BAQUFAAOCAQEAQR3m8jKArikm3OuhGWVIJMGBk8tIDzTwZ+fJNhuerjToQF4VekVQgW/suHgW/ZwV5/hMySrxysnjzMRqnmEvzW7LLKT1fbFZQUidp7MDgnmRI+oTCywfduU33q6aj4CnzZGXe+UVF+R4ZOqR8WusM5RwEnDUaybb5oHsEEQwj2fRKCaOc+ngak/Q6ev83TZXf8XtUsK/DKkHdqF96BtB8bpMBtTq3OjapcL6vYSzWlFFYLGh2cThiyMlqM7AA+J+Y/+ilonYB/f8SeO772HyoXodelsTMjkP9iSW1g7EX4ak49okK9UqCM1polvEtWBERpg188K9Y2fIAcukZrXrrQ==\",\r\n      \"deleteCertificateError\": {\r\n        \"code\": \"PoolsReferencingCertificate\",\r\n        \"message\": \"The specified certificate is being used by the below mentioned pool(s)\",\r\n        \"values\": [\r\n          {\r\n            \"name\": \"Pools\",\r\n            \"value\": \"mipatera_DB638163-7F2D-4C32-9941-E3F6A6877842\"\r\n          }\r\n        ]\r\n      }\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://mikebatcheast.eastus.batch.azure.com/$metadata#certificates\",\r\n  \"value\": [\r\n    {\r\n      \"thumbprint\": \"c1e494a415149c5f211c4778b52f2e834a07247c\",\r\n      \"thumbprintAlgorithm\": \"sha1\",\r\n      \"url\": \"https://mikebatcheast.eastus.batch.azure.com/certificates(thumbprintAlgorithm=sha1,thumbprint=c1e494a415149c5f211c4778b52f2e834a07247c)\",\r\n      \"state\": \"deleting\",\r\n      \"stateTransitionTime\": \"2022-12-02T17:22:53.0094251Z\",\r\n      \"previousState\": \"active\",\r\n      \"previousStateTransitionTime\": \"2022-12-02T17:22:52.823496Z\",\r\n      \"publicData\": \"MIIB9DCCAWGgAwIBAgIQpUXhwCuAPJRDhl7kY/0PdTAJBgUrDgMCHQUAMBYxFDASBgNVBAMTC0JhdGNoVGVzdDAxMB4XDTE1MTAwMjE2MjkwNVoXDTM5MTIzMTIzNTk1OVowFjEUMBIGA1UEAxMLQmF0Y2hUZXN0MDEwgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBAM06unpRipn3BmHBM75d0s8w/Wwifci16PoJo4c2V68GwsCCFsNOn5ypo7BBXo1fpBjrnso5w+koaE5LjxkBSVm+TkogwbKlW6WURTM0O5viRVbPnEEU/Y01Pj5cJElFuLEk9Uoe/r/lP8b5A607t1cPjSXkwhEZEYc3LkHDSo0ZAgMBAAGjSzBJMEcGA1UdAQRAMD6AEFRsTAsrvF+FmPuICooZXaKhGDAWMRQwEgYDVQQDEwtCYXRjaFRlc3QwMYIQpUXhwCuAPJRDhl7kY/0PdTAJBgUrDgMCHQUAA4GBALt0F8Ep+8XVE/M2aNtxzlku72gxiOiAo1HmpUaixXx3gl8kdP3xgoKMaq4JskqdLmbJJUnCQ3wmzsdPwjswsW2ycT12zuBddaiS+id98k8U/KYc6FxMgS+H70FYOxARLn7P4FSSBf/QCyign+BherzezdZ5NBdfzbmWxIMP5iFJ\"\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     }
   ],
   "Names": {},
   "Variables": {
-    "SubscriptionId": "ba2358c2-42f2-4138-88df-7c68cf608bea",
-    "AZURE_BATCH_ACCOUNT": "mikeportal",
-    "AZURE_BATCH_ENDPOINT": "https://mikeportal.eastus.batch.azure.com",
-    "AZURE_BATCH_RESOURCE_GROUP": "batchportal"
+    "SubscriptionId": "67e11b19-95f8-4d96-a472-5f626c5445ec",
+    "AZURE_BATCH_ACCOUNT": "mikebatcheast",
+    "AZURE_BATCH_ENDPOINT": "https://mikebatcheast.eastus.batch.azure.com",
+    "AZURE_BATCH_RESOURCE_GROUP": "mikeazure"
   }
 }

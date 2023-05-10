@@ -12,78 +12,71 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Reflection;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
-using Microsoft.Azure.ServiceManagement.Common.Models;
 
 namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
 {
-    public class PoolTests : WindowsAzure.Commands.Test.Utilities.Common.RMTestBase
+    public class PoolTests : BatchTestRunner
     {
         private const string testPoolId = ScenarioTestHelpers.SharedPool;
 
         // Get from WATaskOSFamilyVersions table, which lags behind https://azure.microsoft.com/en-us/documentation/articles/cloud-services-guestos-update-matrix/
         private const string specificOSVersion = "WA-GUEST-OS-4.56_201807-02";
-        public XunitTracingInterceptor _logger;
 
-        public PoolTests(Xunit.Abstractions.ITestOutputHelper output)
+        public PoolTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
+
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestPoolCRUD()
         {
-            BatchController.NewInstance.RunPsTest(_logger, "Test-PoolCRUD");
+            TestRunner.RunTestScript("Test-PoolCRUD");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestResizeAndStopResizePool()
         {
-            BatchController controller = BatchController.NewInstance;
             BatchAccountContext context = null;
             string poolId = "resizePool";
-            controller.RunPsTestWorkflow(
-                _logger,
-                () => { return new string[] { string.Format("Test-ResizeAndStopResizePool '{0}'", poolId) }; },
-                () =>
+            TestRunner.RunTestScript(
+                null,
+                mockContext =>
                 {
                     context = new ScenarioTestContext();
-                    ScenarioTestHelpers.CreateTestPool(controller, context, poolId, targetDedicated: 0, targetLowPriority: 0);
+                    ScenarioTestHelpers.CreateTestPool(this, context, poolId, targetDedicated: 0, targetLowPriority: 0);
                 },
                 () =>
                 {
-                    ScenarioTestHelpers.DeletePool(controller, context, poolId);
+                    ScenarioTestHelpers.WaitForSteadyPoolAllocation(this, context, poolId);
+                    ScenarioTestHelpers.DeletePool(this, context, poolId);
                 },
-                MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
-                MethodBase.GetCurrentMethod().Name);
+                $"Test-ResizeAndStopResizePool '{poolId}'"
+            );
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAutoScaleActions()
         {
-            BatchController controller = BatchController.NewInstance;
             BatchAccountContext context = null;
             string poolId = "autoscalePool";
-            controller.RunPsTestWorkflow(
-                _logger,
-                () => { return new string[] { string.Format("Test-AutoScaleActions '{0}'", poolId) }; },
-                () =>
+            TestRunner.RunTestScript(
+                null,
+                mockContext =>
                 {
                     context = new ScenarioTestContext();
-                    ScenarioTestHelpers.CreateTestPool(controller, context, poolId, targetDedicated: 0, targetLowPriority: 0);
+                    ScenarioTestHelpers.CreateTestPool(this, context, poolId, targetDedicated: 0, targetLowPriority: 0);
                 },
                 () =>
                 {
-                    ScenarioTestHelpers.DeletePool(controller, context, poolId);
+                    ScenarioTestHelpers.DeletePool(this, context, poolId);
                 },
-                MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
-                MethodBase.GetCurrentMethod().Name);
+                $"Test-AutoScaleActions '{poolId}'"
+            );
         }
     }
 }

@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ApiManagement.dll-Help.xml
 Module Name: Az.ApiManagement
 ms.assetid: DBA7AD5F-CC13-417A-B753-F998942530BB
-online version: https://docs.microsoft.com/powershell/module/az.apimanagement/get-azapimanagement
+online version: https://learn.microsoft.com/powershell/module/az.apimanagement/get-azapimanagement
 schema: 2.0.0
 ---
 
@@ -56,8 +56,10 @@ This command gets all API Management services within a subscription.
 ### Example 2: Get an API Management services by a specific name
 
 ```powershell
-PS D:> Get-AzApiManagement -ResourceGroupName "contosogroup" -Name "contoso"                                                                                                                                 
+Get-AzApiManagement -ResourceGroupName "contosogroup" -Name "contoso"                                                                                                                                 
+```
 
+```output
 PublicIPAddresses                     : {52.143.79.150}
 PrivateIPAddresses                    :
 Id                                    : /subscriptions/4f5285a3-9fd7-40ad-91b1-d8fc3823983d/resourceGroups/contosogroup/providers/Microsoft.ApiManagement/service/contoso

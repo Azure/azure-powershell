@@ -34,6 +34,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
         /// </summary>
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
 
+        /// <summary>A private cloud resource</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IPrivateCloud _privateCloudBody = new Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.PrivateCloud();
+
         /// <summary>when specified, runs this cmdlet as a PowerShell job</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Run the command as a job")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Category(global::Microsoft.Azure.PowerShell.Cmdlets.VMware.ParameterCategory.Runtime)]
@@ -48,7 +51,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
         Description = @"The secondary availability zone for the private cloud",
         SerializedName = @"secondaryZone",
         PossibleTypes = new [] { typeof(int) })]
-        public int AvailabilitySecondaryZone { get => PrivateCloudBody.AvailabilitySecondaryZone ?? default(int); set => PrivateCloudBody.AvailabilitySecondaryZone = value; }
+        public int AvailabilitySecondaryZone { get => _privateCloudBody.AvailabilitySecondaryZone ?? default(int); set => _privateCloudBody.AvailabilitySecondaryZone = value; }
 
         /// <summary>The availability strategy for the private cloud</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The availability strategy for the private cloud")]
@@ -60,7 +63,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
         SerializedName = @"strategy",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.AvailabilityStrategy) })]
         [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.AvailabilityStrategy))]
-        public Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.AvailabilityStrategy AvailabilityStrategy { get => PrivateCloudBody.AvailabilityStrategy ?? ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.AvailabilityStrategy)""); set => PrivateCloudBody.AvailabilityStrategy = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.AvailabilityStrategy AvailabilityStrategy { get => _privateCloudBody.AvailabilityStrategy ?? ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.AvailabilityStrategy)""); set => _privateCloudBody.AvailabilityStrategy = value; }
 
         /// <summary>The primary availability zone for the private cloud</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The primary availability zone for the private cloud")]
@@ -71,7 +74,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
         Description = @"The primary availability zone for the private cloud",
         SerializedName = @"zone",
         PossibleTypes = new [] { typeof(int) })]
-        public int AvailabilityZone { get => PrivateCloudBody.AvailabilityZone ?? default(int); set => PrivateCloudBody.AvailabilityZone = value; }
+        public int AvailabilityZone { get => _privateCloudBody.AvailabilityZone ?? default(int); set => _privateCloudBody.AvailabilityZone = value; }
 
         /// <summary>Wait for .NET debugger to attach</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "Wait for .NET debugger to attach")]
@@ -100,7 +103,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
         SerializedName = @"status",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.EncryptionState) })]
         [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.EncryptionState))]
-        public Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.EncryptionState EncryptionStatus { get => PrivateCloudBody.EncryptionStatus ?? ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.EncryptionState)""); set => PrivateCloudBody.EncryptionStatus = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.EncryptionState EncryptionStatus { get => _privateCloudBody.EncryptionStatus ?? ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.EncryptionState)""); set => _privateCloudBody.EncryptionStatus = value; }
 
         /// <summary>SendAsync Pipeline Steps to be appended to the front of the pipeline</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "SendAsync Pipeline Steps to be appended to the front of the pipeline")]
@@ -124,7 +127,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
         Description = @"vCenter Single Sign On Identity Sources",
         SerializedName = @"identitySources",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IIdentitySource) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IIdentitySource[] IdentitySource { get => PrivateCloudBody.IdentitySource ?? null /* arrayOf */; set => PrivateCloudBody.IdentitySource = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IIdentitySource[] IdentitySource { get => _privateCloudBody.IdentitySource ?? null /* arrayOf */; set => _privateCloudBody.IdentitySource = value; }
 
         /// <summary>
         /// The type of identity used for the private cloud. The type 'SystemAssigned' refers to an implicitly created identity. The
@@ -139,7 +142,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
         SerializedName = @"type",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.ResourceIdentityType) })]
         [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.ResourceIdentityType))]
-        public Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.ResourceIdentityType IdentityType { get => PrivateCloudBody.IdentityType ?? ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.ResourceIdentityType)""); set => PrivateCloudBody.IdentityType = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.ResourceIdentityType IdentityType { get => _privateCloudBody.IdentityType ?? ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.ResourceIdentityType)""); set => _privateCloudBody.IdentityType = value; }
 
         /// <summary>Connectivity to internet is enabled or disabled</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Connectivity to internet is enabled or disabled")]
@@ -151,7 +154,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
         SerializedName = @"internet",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.InternetEnum) })]
         [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.InternetEnum))]
-        public Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.InternetEnum Internet { get => PrivateCloudBody.Internet ?? ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.InternetEnum)""); set => PrivateCloudBody.Internet = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.InternetEnum Internet { get => _privateCloudBody.Internet ?? ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.InternetEnum)""); set => _privateCloudBody.Internet = value; }
 
         /// <summary>Accessor for our copy of the InvocationInfo.</summary>
         public global::System.Management.Automation.InvocationInfo InvocationInformation { get => __invocationInfo = __invocationInfo ?? this.MyInvocation ; set { __invocationInfo = value; } }
@@ -165,7 +168,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
         Description = @"The name of the key.",
         SerializedName = @"keyName",
         PossibleTypes = new [] { typeof(string) })]
-        public string KeyVaultPropertyKeyName { get => PrivateCloudBody.KeyVaultPropertyKeyName ?? null; set => PrivateCloudBody.KeyVaultPropertyKeyName = value; }
+        public string KeyVaultPropertyKeyName { get => _privateCloudBody.KeyVaultPropertyKeyName ?? null; set => _privateCloudBody.KeyVaultPropertyKeyName = value; }
 
         /// <summary>The URL of the vault.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The URL of the vault.")]
@@ -176,7 +179,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
         Description = @"The URL of the vault.",
         SerializedName = @"keyVaultUrl",
         PossibleTypes = new [] { typeof(string) })]
-        public string KeyVaultPropertyKeyVaultUrl { get => PrivateCloudBody.KeyVaultPropertyKeyVaultUrl ?? null; set => PrivateCloudBody.KeyVaultPropertyKeyVaultUrl = value; }
+        public string KeyVaultPropertyKeyVaultUrl { get => _privateCloudBody.KeyVaultPropertyKeyVaultUrl ?? null; set => _privateCloudBody.KeyVaultPropertyKeyVaultUrl = value; }
 
         /// <summary>The version of the key.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The version of the key.")]
@@ -187,7 +190,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
         Description = @"The version of the key.",
         SerializedName = @"keyVersion",
         PossibleTypes = new [] { typeof(string) })]
-        public string KeyVaultPropertyKeyVersion { get => PrivateCloudBody.KeyVaultPropertyKeyVersion ?? null; set => PrivateCloudBody.KeyVaultPropertyKeyVersion = value; }
+        public string KeyVaultPropertyKeyVersion { get => _privateCloudBody.KeyVaultPropertyKeyVersion ?? null; set => _privateCloudBody.KeyVaultPropertyKeyVersion = value; }
 
         /// <summary>Resource location</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Resource location")]
@@ -198,7 +201,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
         Description = @"Resource location",
         SerializedName = @"location",
         PossibleTypes = new [] { typeof(string) })]
-        public string Location { get => PrivateCloudBody.Location ?? null; set => PrivateCloudBody.Location = value; }
+        public string Location { get => _privateCloudBody.Location ?? null; set => _privateCloudBody.Location = value; }
 
         /// <summary>The hosts</summary>
         [global::System.Management.Automation.AllowEmptyCollection]
@@ -210,7 +213,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
         Description = @"The hosts",
         SerializedName = @"hosts",
         PossibleTypes = new [] { typeof(string) })]
-        public string[] ManagementClusterHost { get => PrivateCloudBody.ManagementClusterHost ?? null /* arrayOf */; set => PrivateCloudBody.ManagementClusterHost = value; }
+        public string[] ManagementClusterHost { get => _privateCloudBody.ManagementClusterHost ?? null /* arrayOf */; set => _privateCloudBody.ManagementClusterHost = value; }
 
         /// <summary>The cluster size</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The cluster size")]
@@ -221,14 +224,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
         Description = @"The cluster size",
         SerializedName = @"clusterSize",
         PossibleTypes = new [] { typeof(int) })]
-        public int ManagementClusterSize { get => PrivateCloudBody.ManagementClusterSize ?? default(int); set => PrivateCloudBody.ManagementClusterSize = value; }
+        public int ManagementClusterSize { get => _privateCloudBody.ManagementClusterSize ?? default(int); set => _privateCloudBody.ManagementClusterSize = value; }
 
         /// <summary>
-        /// <see cref="IEventListener" /> cancellation delegate. Stops the cmdlet when called.
+        /// <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener" /> cancellation delegate. Stops the cmdlet when called.
         /// </summary>
         global::System.Action Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener.Cancel => _cancellationTokenSource.Cancel;
 
-        /// <summary><see cref="IEventListener" /> cancellation token.</summary>
+        /// <summary><see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener" /> cancellation token.</summary>
         global::System.Threading.CancellationToken Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener.Token => _cancellationTokenSource.Token;
 
         /// <summary>Backing field for <see cref="Name" /> property.</summary>
@@ -258,7 +261,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
         Description = @"The block of addresses should be unique across VNet in your subscription as well as on-premise. Make sure the CIDR format is conformed to (A.B.C.D/X) where A,B,C,D are between 0 and 255, and X is between 0 and 22",
         SerializedName = @"networkBlock",
         PossibleTypes = new [] { typeof(string) })]
-        public string NetworkBlock { get => PrivateCloudBody.NetworkBlock ?? null; set => PrivateCloudBody.NetworkBlock = value; }
+        public string NetworkBlock { get => _privateCloudBody.NetworkBlock ?? null; set => _privateCloudBody.NetworkBlock = value; }
 
         /// <summary>
         /// when specified, will make the remote call, and return an AsyncOperationResponse, letting the remote operation continue
@@ -277,18 +280,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
         Description = @"Optionally, set the NSX-T Manager password when the private cloud is created",
         SerializedName = @"nsxtPassword",
         PossibleTypes = new [] { typeof(string) })]
-        public string NsxtPassword { get => PrivateCloudBody.NsxtPassword ?? null; set => PrivateCloudBody.NsxtPassword = value; }
+        public string NsxtPassword { get => _privateCloudBody.NsxtPassword ?? null; set => _privateCloudBody.NsxtPassword = value; }
 
         /// <summary>
         /// The instance of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.HttpPipeline" /> that the remote call will use.
         /// </summary>
         private Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.HttpPipeline Pipeline { get; set; }
-
-        /// <summary>Backing field for <see cref="PrivateCloudBody" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IPrivateCloud _privateCloudBody= new Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.PrivateCloud();
-
-        /// <summary>A private cloud resource</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IPrivateCloud PrivateCloudBody { get => this._privateCloudBody; set => this._privateCloudBody = value; }
 
         /// <summary>The URI for the proxy server to use</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "The URI for the proxy server to use")]
@@ -329,7 +326,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
         Description = @"The name of the SKU.",
         SerializedName = @"name",
         PossibleTypes = new [] { typeof(string) })]
-        public string SkuName { get => PrivateCloudBody.SkuName ?? null; set => PrivateCloudBody.SkuName = value; }
+        public string SkuName { get => _privateCloudBody.SkuName ?? null; set => _privateCloudBody.SkuName = value; }
 
         /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
         private string _subscriptionId;
@@ -359,7 +356,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
         Description = @"Resource tags",
         SerializedName = @"tags",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IResourceTags) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IResourceTags Tag { get => PrivateCloudBody.Tag ?? null /* object */; set => PrivateCloudBody.Tag = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IResourceTags Tag { get => _privateCloudBody.Tag ?? null /* object */; set => _privateCloudBody.Tag = value; }
 
         /// <summary>Optionally, set the vCenter admin password when the private cloud is created</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Optionally, set the vCenter admin password when the private cloud is created")]
@@ -370,15 +367,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
         Description = @"Optionally, set the vCenter admin password when the private cloud is created",
         SerializedName = @"vcenterPassword",
         PossibleTypes = new [] { typeof(string) })]
-        public string VcenterPassword { get => PrivateCloudBody.VcenterPassword ?? null; set => PrivateCloudBody.VcenterPassword = value; }
+        public string VcenterPassword { get => _privateCloudBody.VcenterPassword ?? null; set => _privateCloudBody.VcenterPassword = value; }
 
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.ICloudError"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.ICloudError">Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.ICloudError</see>
+        /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onDefault method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
@@ -389,8 +386,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IPrivateCloud"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IPrivateCloud">Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IPrivateCloud</see>
+        /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
@@ -401,6 +398,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
         /// </summary>
         protected override void BeginProcessing()
         {
+            var telemetryId = Microsoft.Azure.PowerShell.Cmdlets.VMware.Module.Instance.GetTelemetryId.Invoke();
+            if (telemetryId != "" && telemetryId != "internal")
+            {
+                __correlationId = telemetryId;
+            }
             Module.Instance.SetProxyConfiguration(Proxy, ProxyCredential, ProxyUseDefaultCredentials);
             if (Break)
             {
@@ -426,7 +428,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
             clone.ProxyUseDefaultCredentials = this.ProxyUseDefaultCredentials;
             clone.HttpPipelinePrepend = this.HttpPipelinePrepend;
             clone.HttpPipelineAppend = this.HttpPipelineAppend;
-            clone.PrivateCloudBody = this.PrivateCloudBody;
+            clone._privateCloudBody = this._privateCloudBody;
             clone.SubscriptionId = this.SubscriptionId;
             clone.ResourceGroupName = this.ResourceGroupName;
             clone.Name = this.Name;
@@ -436,7 +438,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
         /// <summary>Performs clean-up after the command execution</summary>
         protected override void EndProcessing()
         {
-            ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.CmdletEndProcessing).Wait(); if( ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
+
         }
 
         /// <summary>Handles/Dispatches events during the call to the REST service.</summary>
@@ -577,7 +579,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
         {
             using( NoSynchronizationContext )
             {
-                await ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.CmdletProcessRecordAsyncStart); if( ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 await ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.CmdletGetPipeline); if( ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 Pipeline = Microsoft.Azure.PowerShell.Cmdlets.VMware.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName);
                 if (null != HttpPipelinePrepend)
@@ -592,12 +593,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
                 try
                 {
                     await ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                    await this.Client.PrivateCloudsCreateOrUpdate(SubscriptionId, ResourceGroupName, Name, PrivateCloudBody, onOk, onDefault, this, Pipeline);
+                    await this.Client.PrivateCloudsCreateOrUpdate(SubscriptionId, ResourceGroupName, Name, _privateCloudBody, onOk, onDefault, this, Pipeline);
                     await ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,Name=Name,body=PrivateCloudBody})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,Name=Name,body=_privateCloudBody})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -620,8 +621,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.ICloudError"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.ICloudError">Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.ICloudError</see>
+        /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
@@ -643,14 +644,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
                 {
                     // Unrecognized Response. Create an error record based on what we have.
                     var ex = new Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.ICloudError>(responseMessage, await response);
-                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, Name=Name, body=PrivateCloudBody })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, Name=Name, body=_privateCloudBody })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
                     });
                 }
                 else
                 {
-                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, Name=Name, body=PrivateCloudBody })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, Name=Name, body=_privateCloudBody })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(message) { RecommendedAction = global::System.String.Empty }
                     });
@@ -660,8 +661,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IPrivateCloud"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IPrivateCloud">Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IPrivateCloud</see>
+        /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>

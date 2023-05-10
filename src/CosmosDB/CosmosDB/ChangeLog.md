@@ -19,9 +19,30 @@
 -->
 
 ## Upcoming Release
-* Fixed bug related to Update-AzCosmosDBSqlContainer command on containers with Client Encryption Policy.
+* Added support for Continuous 7 Days backup mode.
+
+## Version 1.10.1
+* Updated Azure.Core to 1.31.0.
+
+## Version 1.10.0
+* Introduced restorable apis support for Gremlin and Table, which includes:
+    - Added the apis for RestorableGremlinDatabases, RestorableGremlinGraphs, RestorableGremlinResources,RestorableTables, RestorableResources.
+    - Added RetrieveContinuousBackupInfo apis for Gremlin and Table which help in determining the restore point of time and the resources to restore.
+    - Added GremlinDatabasesToRestore and TablesToRestore field to provision and restore database account api.
+    - Added StartTime and EndTime support for listing restorable containers event feed.
+
+## Version 1.9.1
+* Updated Azure.Core to 1.28.0.
 
 ## Version 1.9.0
+* Added support for Cosmos DB Service related cmdlets.
+
+## Version 1.8.2
+* Added support for partition key and id paths to be part of client encryption policy.
+* Fixed bug related to Update-AzCosmosDBSqlContainer command on containers with Client Encryption Policy.
+
+## Version 1.8.1
+* Fixed bug related to Update-AzCosmosDBSqlContainer command on containers with Client Encryption Policy.
 * Fixed the optional Location paramater of New-AzCosmosDBAccount cmdlet.
 
 ## Version 1.8.0

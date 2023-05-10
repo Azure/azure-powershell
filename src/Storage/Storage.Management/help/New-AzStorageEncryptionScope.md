@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.Management.dll-Help.xml
 Module Name: Az.Storage
-online version: https://docs.microsoft.com/powershell/module/az.storage/new-azstorageencryptionscope
+online version: https://learn.microsoft.com/powershell/module/az.storage/new-azstorageencryptionscope
 schema: 2.0.0
 ---
 
@@ -46,9 +46,10 @@ The **New-AzStorageEncryptionScope** cmdlet creates an encryption scope for a St
 ## EXAMPLES
 
 ### Example 1: Create an encryption scope with Storage Encryption
+```powershell
+New-AzStorageEncryptionScope -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount"  -EncryptionScopeName testscope -StorageEncryption
 ```
-PS C:\> New-AzStorageEncryptionScope -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount"  -EncryptionScopeName testscope -StorageEncryption
-
+```output
    ResourceGroupName: myresourcegroup, StorageAccountName: mystorageaccount
 
 Name      State    Source            KeyVaultKeyUri RequireInfrastructureEncryption                                         
@@ -59,11 +60,12 @@ testscope Enabled  Microsoft.Storage
 This command creates an encryption scope with Storage Encryption.
 
 ### Example 2: Create an encryption scope with Keyvault Encryption, and RequireInfrastructureEncryption
-```
-PS C:\> New-AzStorageEncryptionScope -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" `
+```powershell
+New-AzStorageEncryptionScope -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" `
 	-EncryptionScopeName testscope -KeyvaultEncryption -KeyUri "https://keyvalutname.vault.azure.net:443/keys/keyname/34a0ba563b4243d9a0ef2b1d3c0c7d57" `
 	-RequireInfrastructureEncryption 
-
+```
+```output
    ResourceGroupName: myresourcegroup, StorageAccountName: mystorageaccount
 
 Name         State   Source           KeyVaultKeyUri                                                                          RequireInfrastructureEncryption                                       

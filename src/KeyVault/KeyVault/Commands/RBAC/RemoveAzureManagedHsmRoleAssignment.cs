@@ -101,8 +101,6 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
 
         public override void ExecuteCmdlet()
         {
-            MSGraphMessageHelper.WriteMessageForCmdletsSwallowException(this);
-
             switch (ParameterSetName)
             {
                 case ParameterSet.InputObject:

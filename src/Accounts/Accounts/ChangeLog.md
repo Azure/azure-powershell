@@ -19,9 +19,74 @@
 -->
 
 ## Upcoming Release
-* Fixed incorrect access token [#18105]
+* Updated System.Security.Permissions to 4.7.0.
+
+## Version 2.12.2
+* Fixed `AzureSynapseAnalyticsEndpointResourceId` of `USGovernment` environment.
+* Updated Azure.Core to 1.31.0.
+* Updated the reference of Azure PowerShell Common to 1.3.75-preview.
+
+## Version 2.12.1
+* Fixed an issue that broke some cmdlets in Az.Synapse module.
+
+## Version 2.12.0
+* Fixed the issue that errors related to WAM are thrown when it is not enabled. [#20871] [#20824]
+* Updated Azure.Core library to 1.28.0.
+* Fixed an issue that the helper message about missing modules shows up at the wrong time. [#19228]
+* Added a hint message for some resource creation cmdlets when there is another region which may reduce the costs.
+* Supported environment initialization and auto-discovery with ArmMetadata of API version 2022-09-01.
+
+## Version 2.11.2
+* Supported Web Account Manager on ARM64-based Windows systems. Fixed an issue where `Connect-AzAccount` failed with error "Unable to load DLL 'msalruntime_arm64'". [#20700]
+* Enabled credential to be found only by applicationId while tenant was not matched when acquire token. [#20484]
+* When Az.Accounts ran in parallel, the waiters were allowed to wait infinitely to avoid throw exception in automation environment. [#20455]
+
+## Version 2.11.1
+* Fixed an issue where Az.Accounts cannot be imported correctly. [#20615]
+
+## Version 2.11.0
+* Supported Web Account Manager (WAM) as an opt-in interactive login experience. Enable it by `Update-AzConfig -EnableLoginByWam $true`.
+* Optimized the mechanism for assembly loading.
+* Enabled AzKeyStore with keyring in Linux.
+* Fixed a typo in GetAzureRmContextAutosaveSetting.cs changing the cmdlet class name to GetAzureRmContextAutosaveSetting
+* Removed survey on error message in `Resolve-AzError`. [#20398]
+
+## Version 2.10.4
+* Enabled caching tokens when logging in with a client assertion. This fixed the incorrectly short lifespan of tokens.
+* Upgraded target framework of Microsoft.Identity.Client to net461 [#20189]
+* Stored `ServicePrincipalSecret` and `CertificatePassword` into `AzKeyStore`.
+* Updated the reference of Azure PowerShell Common to 1.3.67-preview.
+
+## Version 2.10.3
+* Updated `Get-AzSubscription` to retrieve subscription by Id rather than listed all the subscriptions from server if subscription Id is provided. [#19115]
+
+## Version 2.10.2
+* Upgraded Azure.Core to 1.25.0 and Azure.Identity to 1.6.1
+* Upgraded Microsoft.Identity.Client to 4.46.2 and Microsoft.Identity.Client.Extensions.Msal to 2.23.0
+* Upgraded Microsoft.ApplicationInsights to 2.13.1
+* [Breaking Change] Changed target framework of AuthenticationAssemblyLoadContext to netcoreapp3.1.
+* [Breaking Change] Removed built-in environment of Azure Germany
+* Supported tenant domain as input while using `Connect-AzAccount` with parameter `Tenant`. [#19471]
+* Used the ArgumentCompleter attribute to replace the dynamic parameters of `Get-AzContext`. [#18041]
+* Fixed issue that module cannot be imported when required file is locked [#19624]
+
+## Version 2.10.1
+* Deduplicated subscriptions belonging to multiple tenants while using `Get-AzSubscription` with parameter `SubscriptionName`. [#19427]
+
+## Version 2.10.0
+* Supported returning all subscriptions with specified name while using `Get-AzSubscription` with parameter `SubscriptionName`. [#19295]
+* Fixed null reference exception when cmdlet uses AzureRestOperation [#18104]
+* Updated survey message and settings
+
+## Version 2.9.1
+* Implemented `SupportsShouldProcess` for `Invoke-AzRestMethod`
+* Supported giving suggestions if an Azure PowerShell command cannot be found, for example when there is a typo in command name.
+
+## Version 2.9.0
 * Supported exporting and importing configurations by `Export-AzConfig` and `Import-AzConfig`.
-* Upgraded version of Microsoft.Identity.Client for .NET Framework [#18495]
+* Fixed an issue that Az.Accounts may fail to be imported in parallel PowerShell processes. [#18321]
+* Fixed incorrect access token [#18105]
+* Upgraded version of Microsoft.Identity.Client for .NET Framework. [#18495]
 * Fixed an issue that Az.Accounts failed to be imported if multiple environment variables, which only differ by case, are set. [#18304]
 
 ## Version 2.8.0

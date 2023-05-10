@@ -74,6 +74,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models
             {_annotationId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.Json.JsonString>("annotationId"), out var __jsonAnnotationId) ? (string)__jsonAnnotationId : (string)AnnotationId;}
             {_exportId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.Json.JsonString>("exportId"), out var __jsonExportId) ? (string)__jsonExportId : (string)ExportId;}
             {_storageType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.Json.JsonString>("storageType"), out var __jsonStorageType) ? (string)__jsonStorageType : (string)StorageType;}
+            {_revisionId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.Json.JsonString>("revisionId"), out var __jsonRevisionId) ? (string)__jsonRevisionId : (string)RevisionId;}
             {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)Id;}
             AfterFromJson(json);
         }
@@ -119,6 +120,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models
             AddIf( null != (((object)this._annotationId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.Json.JsonString(this._annotationId.ToString()) : null, "annotationId" ,container.Add );
             AddIf( null != (((object)this._exportId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.Json.JsonString(this._exportId.ToString()) : null, "exportId" ,container.Add );
             AddIf( null != (((object)this._storageType)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.Json.JsonString(this._storageType.ToString()) : null, "storageType" ,container.Add );
+            AddIf( null != (((object)this._revisionId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.Json.JsonString(this._revisionId.ToString()) : null, "revisionId" ,container.Add );
             AddIf( null != (((object)this._id)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.Json.JsonString(this._id.ToString()) : null, "id" ,container.Add );
             AfterToJson(ref container);
             return container;

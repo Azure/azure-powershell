@@ -31,7 +31,7 @@ PS C:\> {{ Add code here }}
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.IOperationListResult
 .Link
-https://docs.microsoft.com/powershell/module/az.marketplace/get-azmarketplaceoperation
+https://learn.microsoft.com/powershell/module/az.marketplace/get-azmarketplaceoperation
 #>
 function Get-AzMarketplaceOperation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.IOperationListResult])]

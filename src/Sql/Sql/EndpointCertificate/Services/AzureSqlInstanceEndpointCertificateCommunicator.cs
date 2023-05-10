@@ -43,8 +43,7 @@ namespace Microsoft.Azure.Commands.Sql.EndpointCertificate.Services
         /// <summary>
         /// Creates a communicator for endpoint certificate
         /// </summary>
-        /// <param name="profile"></param>
-        /// <param name="subscription"></param>
+        /// <param name="context">The current azure context</param>
         public AzureSqlInstanceEndpointCertificateCommunicator(IAzureContext context)
         {
             Context = context;

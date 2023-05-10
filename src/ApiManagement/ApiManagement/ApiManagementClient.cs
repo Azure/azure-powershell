@@ -129,7 +129,7 @@ namespace Microsoft.Azure.Commands.ApiManagement
             string administratorEmail,
             Dictionary<string, string> tags,
             bool enableClientCertificate,
-            PsApiManagementSku sku = PsApiManagementSku.Developer,
+            string sku = SkuType.Developer,
             int? capacity = null,
             PsApiManagementVpnType vpnType = PsApiManagementVpnType.None,
             PsApiManagementVirtualNetwork virtualNetwork = null,
@@ -149,7 +149,7 @@ namespace Microsoft.Azure.Commands.ApiManagement
 
             if(capacity == null)
             {
-                capacity = (sku == PsApiManagementSku.Consumption ? 0 : 1);
+                capacity = (sku == SkuType.Consumption ? 0 : 1);
             }
 
             var skuProperties = new ApiManagementServiceSkuProperties(skuType, capacity.Value);

@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.dll-Help.xml
 Module Name: Az.KeyVault
 ms.assetid: 89299823-3382-402D-9458-519466748051
-online version: https://docs.microsoft.com/powershell/module/az.keyvault/add-azkeyvaultcertificate
+online version: https://learn.microsoft.com/powershell/module/az.keyvault/add-azkeyvaultcertificate
 schema: 2.0.0
 ---
 
@@ -25,6 +25,7 @@ The **Add-AzKeyVaultCertificate** cmdlet starts the process of enrolling for a c
 ## EXAMPLES
 
 ### Example 1: Add a certificate
+<!-- Skip: Output cannot be splitted from code -->
 ```powershell
 $Policy = New-AzKeyVaultCertificatePolicy -SecretContentType "application/x-pkcs12" -SubjectName "CN=contoso.com" -IssuerName "Self" -ValidityInMonths 6 -ReuseKeyOnRenewal
 Add-AzKeyVaultCertificate -VaultName "ContosoKV01" -Name "TestCert01" -CertificatePolicy $Policy

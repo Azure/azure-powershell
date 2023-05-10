@@ -23,11 +23,11 @@ Updates a database script.
 Update-AzKustoScript -DatabaseName mykustodatabase -Name newkustoscript -ClusterName testnewkustocluster -ResourceGroupName testrg -ScriptUrl $BlobSASURL -ScriptUrlSasToken $BlobSASToken
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.IScript
+Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IScript
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.IScript
+Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IScript
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -63,10 +63,10 @@ PARAMETER <IScript>: Class representing a database script.
   [Url <String>]: The url to the KQL script blob file. Must not be used together with scriptContent property
   [UrlSasToken <String>]: The SaS token that provide read access to the file which contain the script. Must be provided when using scriptUrl property.
 .Link
-https://docs.microsoft.com/powershell/module/az.kusto/update-azkustoscript
+https://learn.microsoft.com/powershell/module/az.kusto/update-azkustoscript
 #>
 function Update-AzKustoScript {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.IScript])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IScript])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Update', Mandatory)]
@@ -118,7 +118,7 @@ param(
     [Parameter(ParameterSetName='Update', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='UpdateViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.IScript]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IScript]
     # Class representing a database script.
     # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
@@ -168,7 +168,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter()]
@@ -232,7 +233,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Runspace.Version.ToString()
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
         }         
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {

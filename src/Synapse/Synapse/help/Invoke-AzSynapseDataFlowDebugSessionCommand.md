@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Synapse.dll-Help.xml
 Module Name: Az.Synapse
-online version: https://docs.microsoft.com/powershell/module/az.synapse/invoke-azsynapsedataflowdebugsessioncommand
+online version: https://learn.microsoft.com/powershell/module/az.synapse/invoke-azsynapsedataflowdebugsessioncommand
 schema: 2.0.0
 ---
 
@@ -39,6 +39,7 @@ Stop-AzSynapseDataFlowDebugSession
 ## EXAMPLES
 
 ### Example 1
+<!-- Skip: Output cannot be splitted from code -->
 ```powershell
 $result = Invoke-AzSynapseDataFlowDebugSessionCommand -WorkspaceName ContosoWorkspace -Command executePreviewQuery -SessionId 3afb278e-ac5f-469f-a0b6-2f04c3ab59bc -StreamName source1 -RowLimit 100 -AsJob
 $result | Format-Table -wrap

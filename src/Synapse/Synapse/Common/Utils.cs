@@ -29,6 +29,7 @@ using System.Linq;
 using System.Net;
 using System.Text.RegularExpressions;
 using static Microsoft.Azure.Commands.Synapse.Models.SynapseConstants;
+using Operation = Azure.Operation;
 
 namespace Microsoft.Azure.Commands.Synapse.Common
 {

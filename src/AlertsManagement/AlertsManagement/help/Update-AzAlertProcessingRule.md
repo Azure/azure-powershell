@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement.dll-Help.xml
 Module Name: Az.AlertsManagement
-online version: https://docs.microsoft.com/powershell/module/az.alertsmanagement/update-azactionrule
+online version: https://learn.microsoft.com/powershell/module/az.alertsmanagement/update-azalertprocessingrule
 schema: 2.0.0
 ---
 
@@ -26,7 +26,7 @@ Update-AzAlertProcessingRule -ResourceId <String> [-Enabled <String>] [-Tag <Has
 
 ### ByInputObject
 ```
-Update-AzAlertProcessingRule -InputObject <PSActionRule> [-Enabled <String>] [-Tag <Hashtable>]
+Update-AzAlertProcessingRule -InputObject <PSAlertProcessingRule> [-Enabled <String>] [-Tag <Hashtable>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -37,7 +37,7 @@ Update-AzAlertProcessingRule -InputObject <PSActionRule> [-Enabled <String>] [-T
 
 ### Example 1
 ```powershell
-PS C:\> Update-AzAlertProcessingRule -ResourceGroupName "test-rg" -Name "Test-AlertProcessingRule" -Enabled "False"
+Update-AzAlertProcessingRule -ResourceGroupName "test-rg" -Name "Test-AlertProcessingRule" -Enabled "False"
 ```
 
 This cmdlet disables the alert processing rule. 
@@ -59,11 +59,26 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Enabled
+Alert Processing rule status
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -InputObject
 The action rule resource
 
 ```yaml
-Type: Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSActionRule
+Type: Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSAlertProcessingRule
 Parameter Sets: ByInputObject
 Aliases:
 
@@ -116,21 +131,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Enabled
-Alert Processing rule status
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

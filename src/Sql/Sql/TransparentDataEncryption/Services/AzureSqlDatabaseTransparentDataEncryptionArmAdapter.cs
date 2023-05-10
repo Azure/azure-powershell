@@ -48,8 +48,7 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Adapter
         /// <summary>
         /// Constructs a Transparent Data Encryption adapter
         /// </summary>
-        /// <param name="profile">The current azure profile</param>
-        /// <param name="subscription">The current azure subscription</param>
+        /// <param name="context">The current azure context</param>
         public AzureSqlDatabaseTransparentDataEncryptionArmAdapter(IAzureContext context)
         {
             Context = context;
@@ -147,6 +146,21 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Adapter
 
             return AzureRmSqlManagedInstanceTransparentDataEncryptionProtectorModel.FromManagedInstanceEncryptionProtector(
                 model.ResourceGroupName, model.ManagedInstanceName, managedInstanceEncryptionProtector);
+        }
+
+        public AzureRmSqlManagedInstanceTransparentDataEncryptionProtectorModel GetAzureRmSqlManagedInstanceTransparentDataEncryptionProtector(string resourceGroupName, string managedInstanceName)
+        {
+            var managedInstanceEncryptionProtector = Communicator.GetManagedInstanceEncryptionProtector(
+                resourceGroupName: resourceGroupName,
+                managedInstanceName: managedInstanceName);
+
+            return AzureRmSqlManagedInstanceTransparentDataEncryptionProtectorModel.FromManagedInstanceEncryptionProtector(
+                resourceGroupName, managedInstanceName, managedInstanceEncryptionProtector);
+        }
+
+        public void RevalidateAzureRmSqlManagedInstanceTransparentDataEncryptionProtector(string resourceGroupName, string managedInstanceName)
+        {
+            Communicator.RevalidateManagedInstanceEncryptionProtector(resourceGroupName, managedInstanceName);
         }
 
         public AzureRmSqlManagedInstanceTransparentDataEncryptionProtectorModel CreateOrUpdateManagedInstanceEncryptionProtector(AzureRmSqlManagedInstanceTransparentDataEncryptionProtectorModel model)

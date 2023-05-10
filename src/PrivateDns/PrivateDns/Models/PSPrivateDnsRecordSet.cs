@@ -376,7 +376,7 @@ namespace Microsoft.Azure.Commands.PrivateDns.Models
     }
 
     /// <summary>
-    /// Represents a Private DNS record of type MX that is part of a <see cref="DnsRecordSet"/>.
+    /// Represents a Private DNS record of type MX that is part of a <see cref="PSPrivateDnsRecordSet"/>.
     /// </summary>
     public class MxRecord : PSPrivateDnsRecordBase
     {
@@ -415,7 +415,7 @@ namespace Microsoft.Azure.Commands.PrivateDns.Models
     }
 
     /// <summary>
-    /// Represents a Private DNS record of type SRV that is part of a <see cref="DnsRecordSet"/>.
+    /// Represents a Private DNS record of type SRV that is part of a <see cref="PSPrivateDnsRecordSet"/>.
     /// </summary>
     public class SrvRecord : PSPrivateDnsRecordBase
     {
@@ -472,7 +472,7 @@ namespace Microsoft.Azure.Commands.PrivateDns.Models
     }
 
     /// <summary>
-    /// Represents a Private DNS record of type SOA that is part of a <see cref="DnsRecordSet"/>.
+    /// Represents a Private DNS record of type SOA that is part of a <see cref="PSPrivateDnsRecordSet"/>.
     /// </summary>
     public class SoaRecord : PSPrivateDnsRecordBase
     {
@@ -550,7 +550,7 @@ namespace Microsoft.Azure.Commands.PrivateDns.Models
     }
 
     /// <summary>
-    /// Represents a Private DNS record of type PTR that is part of a <see cref="DnsRecordSet"/>.
+    /// Represents a Private DNS record of type PTR that is part of a <see cref="PSPrivateDnsRecordSet"/>.
     /// </summary>
     public class PtrRecord : PSPrivateDnsRecordBase
     {

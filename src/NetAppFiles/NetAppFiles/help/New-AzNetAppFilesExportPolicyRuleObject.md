@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles.dll-Help.xml
 Module Name: Az.NetAppFiles
-online version: https://docs.microsoft.com/powershell/module/az.netappfiles/new-aznetappfilesexportpolicyruleobject
+online version: https://learn.microsoft.com/powershell/module/az.netappfiles/new-aznetappfilesexportpolicyruleobject
 schema: 2.0.0
 ---
 
@@ -26,10 +26,10 @@ New-AzNetAppFilesExportPolicyRuleObject is a helper cmdlet that creates an expor
 
 ### Example 1
 ```powershell
-PS C:\> $exportPolicyRule = New-AzNetAppFilesExportPolicyRuleObject -RuleIndex 1 -AllowedClients '0.0.0.0/0' -UnixReadOnly -UnixReadWrite -Cifs -Nfsv3 
-PS C:\> $exportPolicyRules = $($exportPolicyRule)
-PS C:\> $newExportPolicy = New-AzNetAppFilesExportPolicyObject -Rules $exportPolicyRules
-PS C:\> New-AzNetAppFilesVolume -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -PoolName "MyAnfPool" -Name "MyAnfVolume" -l "westus2" -CreationToken "MyAnfVolume" -UsageThreshold 1099511627776 -ServiceLevel "Premium" -SubnetId "/subscriptions/subsId/resourceGroups/MyRG/providers/Microsoft.Network/virtualNetworks/MyVnetName/subnets/MySubNetName" -ExportPolicy $newExportPolicy
+$exportPolicyRule = New-AzNetAppFilesExportPolicyRuleObject -RuleIndex 1 -AllowedClient '0.0.0.0/0' -UnixReadOnly -UnixReadWrite -Cifs -Nfsv3 
+$exportPolicyRules = $($exportPolicyRule)
+$newExportPolicy = New-AzNetAppFilesExportPolicyObject -Rule $exportPolicyRules
+New-AzNetAppFilesVolume -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -PoolName "MyAnfPool" -Name "MyAnfVolume" -Location "westus2" -CreationToken "MyAnfVolume" -UsageThreshold 1099511627776 -ServiceLevel "Premium" -SubnetId "/subscriptions/subsId/resourceGroups/MyRG/providers/Microsoft.Network/virtualNetworks/MyVnetName/subnets/MySubNetName" -ExportPolicy $newExportPolicy
 ```
 
 This example creates an ExportPolicyRule in variable $exportPolicyRule, sets it an export policy object  $exportPolicyRules that is then used in the creation of an AFN volume "MyAnfVolume""

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Accounts.dll-Help.xml
 Module Name: Az.Accounts
-online version: https://docs.microsoft.com/powershell/module/az.accounts/clear-azconfig
+online version: https://learn.microsoft.com/powershell/module/az.accounts/clear-azconfig
 schema: 2.0.0
 ---
 
@@ -22,7 +22,8 @@ Clear-AzConfig [-Force] [-PassThru] [-AppliesTo <String>] [-Scope <ConfigScope>]
 ```
 Clear-AzConfig [-PassThru] [-AppliesTo <String>] [-Scope <ConfigScope>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [-DefaultSubscriptionForLogin]
- [-DisplayBreakingChangeWarning] [-EnableDataCollection] [<CommonParameters>]
+ [-DisplayBreakingChangeWarning] [-DisplaySurveyMessage] [-EnableDataCollection] [-EnableLoginByWam]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -114,9 +115,42 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DisplaySurveyMessage
+When enabled, you are prompted infrequently to participate in user experience surveys for Azure PowerShell.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: ClearByKey
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -EnableDataCollection
 When enabled, Azure PowerShell cmdlets send telemetry data to Microsoft to improve the customer experience.
 For more information, see our privacy statement: https://aka.ms/privacy
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: ClearByKey
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableLoginByWam
+\[Preview\] When enabled, Web Account Manager (WAM) will be the default interactive login experience.
+It will fall back to using the browser if the platform does not support WAM.
+Note that this feature is under preview. Microsoft Account (MSA) is currently not supported.
+Feel free to reach out to Azure PowerShell team if you have any feedbacks: https://aka.ms/azpsissue
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -168,7 +202,7 @@ By default it is CurrentUser.
 Type: Microsoft.Azure.PowerShell.Common.Config.ConfigScope
 Parameter Sets: (All)
 Aliases:
-Accepted values: CurrentUser, Process
+Accepted values: CurrentUser, Process, Default, Environment
 
 Required: False
 Position: Named

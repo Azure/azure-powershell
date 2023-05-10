@@ -446,3 +446,132 @@ function Test-MongoMigrateThroughputCmdlets
       Remove-AzCosmosDBMongoDBDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
   }
 }
+
+<#
+.SYNOPSIS
+Test MongoDB RBAC cmdlets using Name paramter set
+#>
+function Test-MongoRBACCmdlets
+{
+  $AccountName = "mongo-db0004414"
+  $rgName = "mongorbactest-4414"
+  #$rgName = "CosmosDBResourceGroup44"
+  $DatabaseName = "dbName"
+  $CollectionName = "collection1"
+  $shardKey = "partitionkey1"
+  $partitionKeys = @("partitionkey1", "partitionkey2")
+  $partitionKeys2 = @("partitionkey1", "partitionkey2", "partitionkey3")
+  $capabilities = @("EnableMongo", "EnableMongoRoleBasedAccessControl")
+  $ttlKeys = @("_ts")
+  $ttlInSeconds = 604800
+  $ttlInSeconds = 1204800
+  $DatabaseName2 = "dbName2"
+  $CollectionName2 = "collection2"
+  $ThroughputValue = 500
+  $UpdatedCollectionThroughputValue = 600
+  $location = "East US"
+  $apiKind = "MongoDB"
+  $serverVersion = "3.6" #3.2 or 3.6
+  $consistencyLevel = "Session"
+  $locations = @()
+  $locations += New-AzCosmosDBLocationObject -LocationName "East US" -FailoverPriority 0 -IsZoneRedundant 0
+  $subscriptionId = $(getVariable "SubscriptionId")
+  $RoleName1 = "mongoPSRole1"
+  $RoleDefinitionId1 = $DatabaseName + "." + $RoleName1
+  $FullyQualifiedRoleDefinitionId1 = "/subscriptions/$subscriptionId/resourceGroups/$rgName/providers/Microsoft.DocumentDB/databaseAccounts/$AccountName/mongodbRoleDefinitions/$RoleDefinitionId1"
+  $actions1 = 'insert', 'find'
+  $updateaction = 'find'
+  $Resource1 = New-AzCosmosDBMongoDBPrivilegeResource -Database $DatabaseName -Collection $CollectionName
+  $Privilege1 = New-AzCosmosDBMongoDBPrivilege -PrivilegeResource $Resource1 -Actions $actions1
+  $Roles = New-AzCosmosDBMongoDBRole -Database $DatabaseName -Role $RoleName1
+  $RoleName2 = "mongoPSInheritedRole1"
+  $RoleDefinitionId2 = $DatabaseName + "." + $RoleName2
+  $FullyQualifiedRoleDefinitionId2 = "/subscriptions/$subscriptionId/resourceGroups/$rgName/providers/Microsoft.DocumentDB/databaseAccounts/$AccountName/mongodbRoleDefinitions/$RoleDefinitionId2"
+  $actions2 = 'insert'
+  $Privilege2 = New-AzCosmosDBMongoDBPrivilege -PrivilegeResource $Resource1 -Actions $actions2
+  $Username1 = 'testuser1'
+  $Pass1 = 'testuserpass1'
+  $Mechanisms = 'SCRAM-SHA-256'
+  $CustomData = 'Test custom data'
+  $UpdatedRoles = New-AzCosmosDBMongoDBRole -Database $DatabaseName -Role $RoleName2
+  $UserDefinitionId1 = $DatabaseName + "." + $Username1
+  $FullyQualifiedUserDefinitionId1 = "/subscriptions/$subscriptionId/resourceGroups/$rgName/providers/Microsoft.DocumentDB/databaseAccounts/$AccountName/mongodbUserDefinitions/$UserDefinitionId1"
+
+
+Try {
+      $resourceGroup = New-AzResourceGroup -ResourceGroupName $rgName  -Location   $location
+      New-AzCosmosDBAccount -ResourceGroupName $rgName -LocationObject $locations -Capabilities $capabilities -Name $AccountName -ApiKind $apiKind -DefaultConsistencyLevel $consistencyLevel
+
+
+      # create a new database
+      $NewDatabase =  New-AzCosmosDBMongoDBDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
+      Assert-AreEqual $NewDatabase.Name $DatabaseName
+
+      #create a new Collection
+      $NewCollection = New-AzCosmosDBMongoDBCollection -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $CollectionName
+      Assert-AreEqual $NewCollection.Name $CollectionName
+
+      #create a new Mongo Role
+      $RoleDef = New-AzCosmosDBMongoDBRoleDefinition -ResourceGroupName $rgName -AccountName $AccountName -Id $FullyQualifiedRoleDefinitionId1 -RoleName $RoleName1 -Type "CustomRole" -DatabaseName $DatabaseName -Privileges $Privilege1
+      Assert-AreEqual $RoleDef.Id $FullyQualifiedRoleDefinitionId1
+
+      # get existing Mongo Role
+      $GetRole = Get-AzCosmosDBMongoDBRoleDefinition -AccountName $AccountName -ResourceGroupName $rgName -Id $RoleDefinitionId1
+      Assert-AreEqual $GetRole.Id $FullyQualifiedRoleDefinitionId1
+
+      # Update Role
+      $Privilege1 = New-AzCosmosDBMongoDBPrivilege -PrivilegeResource $Resource1 -Actions $updateaction
+      $RoleDef = Update-AzCosmosDBMongoDBRoleDefinition -ResourceGroupName $rgName -AccountName $AccountName -Id $FullyQualifiedRoleDefinitionId1 -RoleName $RoleName1 -Type "CustomRole" -DatabaseName $DatabaseName -Privileges $Privilege1
+      Assert-AreEqual $RoleDef.Id $FullyQualifiedRoleDefinitionId1
+      Assert-AreEqual $RoleDef.Privileges.Actions 'find'
+
+      #create a new Mongo Role with inherited role
+      $RoleDef2 = New-AzCosmosDBMongoDBRoleDefinition -ResourceGroupName $rgName -AccountName $AccountName -Id $FullyQualifiedRoleDefinitionId2 -RoleName $RoleName2 -Type "CustomRole" -DatabaseName $DatabaseName -Privileges $Privilege2 -Roles $Roles
+      Assert-AreEqual $RoleDef2.Id $FullyQualifiedRoleDefinitionId2
+      Assert-AreEqual $RoleDef2.Privileges.Actions 'insert'
+      Assert-AreEqual $RoleDef2.Roles.RoleProperty $RoleName1
+
+      # get existing Mongo Role
+      $GetRole = Get-AzCosmosDBMongoDBRoleDefinition -AccountName $AccountName -ResourceGroupName $rgName -Id $RoleDefinitionId2
+      Assert-AreEqual $GetRole.Id $FullyQualifiedRoleDefinitionId2
+
+      # Create a new User Definition
+      $UserDef1 = New-AzCosmosDBMongoDBUserDefinition -ResourceGroupName $rgName -AccountName $AccountName -Id $FullyQualifiedUserDefinitionId1 -UserName $Username1 -Password $Pass1 -Mechanisms $Mechanisms -CustomData $CustomData -DatabaseName $DatabaseName -Roles $Roles
+      Assert-AreEqual $UserDef1.Id $FullyQualifiedUserDefinitionId1
+      Assert-AreEqual $UserDef1.UserName $Username1
+      Assert-AreEqual $UserDef1.Roles.RoleProperty $RoleName1
+
+      # get existing Mongo User
+      $GetUser = Get-AzCosmosDBMongoDBUserDefinition -AccountName $AccountName -ResourceGroupName $rgName -Id $UserDefinitionId1
+      Assert-AreEqual $GetUser.Id $FullyQualifiedUserDefinitionId1
+
+      # Update a User Definition
+      $UserDef1 = Update-AzCosmosDBMongoDBUserDefinition -ResourceGroupName $rgName -AccountName $AccountName -Id $FullyQualifiedUserDefinitionId1 -UserName $Username1 -Password $Pass1 -Mechanisms $Mechanisms -CustomData $CustomData -DatabaseName $DatabaseName -Roles $UpdatedRoles
+      Assert-AreEqual $UserDef1.Id $FullyQualifiedUserDefinitionId1
+      Assert-AreEqual $UserDef1.UserName $Username1
+      Assert-AreEqual $UserDef1.Roles.RoleProperty $RoleName2
+
+      # delete existing User.
+      $IsRemoved = Remove-AzCosmosDBMongoDBUserDefinition -AccountName $AccountName -ResourceGroupName $rgName -Id $UserDefinitionId1 -PassThru
+      Assert-AreEqual $IsRemoved true
+
+      # delete existing Roles.
+      $IsRemoved = Remove-AzCosmosDBMongoDBRoleDefinition -AccountName $AccountName -ResourceGroupName $rgName -Id $RoleDefinitionId2 -PassThru
+      Assert-AreEqual $IsRemoved true
+      $IsRemoved = Remove-AzCosmosDBMongoDBRoleDefinition -AccountName $AccountName -ResourceGroupName $rgName -Id $RoleDefinitionId1 -PassThru
+      Assert-AreEqual $IsRemoved true
+
+      #delete a Collection
+      $IsCollectionRemoved =  Remove-AzCosmosDBMongoDBCollection -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $CollectionName -PassThru
+      Assert-AreEqual $IsCollectionRemoved true
+
+      #delete a database
+      $IsRemoved = Remove-AzCosmosDBMongoDBDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName -PassThru
+      Assert-AreEqual $IsRemoved true
+    }
+
+    Finally {
+        Remove-AzCosmosDBMongoDBCollection -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $CollectionName
+        Remove-AzCosmosDBMongoDBDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
+	}
+}

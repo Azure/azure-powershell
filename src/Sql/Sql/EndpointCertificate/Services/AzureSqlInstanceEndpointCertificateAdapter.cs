@@ -60,8 +60,8 @@ namespace Microsoft.Azure.Commands.Sql.EndpointCertificate.Services
         /// <summary>
         /// Gets a list of all endpoint certificates in managed instance
         /// </summary>
-        /// <param name="resourceGroupName"></param>
-        /// <param name="instanceName"></param>
+        /// <param name="resourceGroupName">Name of the resource group</param>
+        /// <param name="instanceName">Name of the managed instance</param>
         /// <returns>A list of all the endpoint certificates</returns>
         public List<AzureSqlInstanceEndpointCertificateModel> ListEndpointCertificates(string resourceGroupName, string instanceName)
         {
@@ -73,6 +73,8 @@ namespace Microsoft.Azure.Commands.Sql.EndpointCertificate.Services
         /// <summary>
         /// Convert a Management.Sql.Models.EndpointCertificate to AzureSqlInstanceEndpointCertificateModel
         /// </summary>
+        /// <param name="resourceGroupName">Name of the resource group</param>
+        /// <param name="instanceName">Name of the managed instance</param>
         /// <param name="endpointCertificate">The management client endpoint certificate response to convert</param>
         /// <returns>The converted endpoint certificate model</returns>
         private static AzureSqlInstanceEndpointCertificateModel CreateEndpointCertificateModelFromResponse(string resourceGroupName, string instanceName, Management.Sql.Models.EndpointCertificate endpointCertificate)

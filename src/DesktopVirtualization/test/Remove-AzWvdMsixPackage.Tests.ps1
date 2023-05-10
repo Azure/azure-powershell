@@ -18,9 +18,26 @@ Describe 'Remove-AzWvdMsixPackage' {
         $string1 = "some image"
         $data1 = $enc.GetBytes($string1) 
 
-        $apps = @( [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IMsixPackageApplications]@{appId = 'MsixTest_Application_Id'; description = 'testing from ps'; appUserModelID = 'MsixTest_Application_ModelID'; friendlyName = 'some name'; iconImageName = 'Apptile'; rawIcon = $data1; rawPng = $data1 })
-        $deps = @( [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IMsixPackageDependencies]@{dependencyName = 'MsixTest_Dependency_Name'; publisher = 'MsixTest_Dependency_Publisher'; minVersion = '0.0.0.42' })   
-        
+        $apps = @( [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.IMsixPackageApplications]@{appId = 'MsixTest_Application_Id'; description = 'testing from ps'; appUserModelID = 'MsixTest_Application_ModelID'; friendlyName = 'some name'; iconImageName = 'Apptile'; rawIcon = $data1; rawPng = $data1 })
+        $deps = @( [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.IMsixPackageDependencies]@{dependencyName = 'MsixTest_Dependency_Name'; publisher = 'MsixTest_Dependency_Publisher'; minVersion = '0.0.0.42' })   
+
+        $hostPool = New-AzWvdHostPool -SubscriptionId $env.SubscriptionId `
+            -ResourceGroupName $env.ResourceGroup `
+            -Name $env.HostPool `
+            -Location $env.Location `
+            -HostPoolType 'Shared' `
+            -LoadBalancerType 'DepthFirst' `
+            -RegistrationTokenOperation 'Update' `
+            -ExpirationTime $((get-date).ToUniversalTime().AddDays(1).ToString('yyyy-MM-ddTHH:mm:ss.fffffffZ')) `
+            -Description 'des' `
+            -FriendlyName 'fri' `
+            -MaxSessionLimit 5 `
+            -VMTemplate $null `
+            -CustomRdpProperty $null `
+            -Ring $null `
+            -ValidationEnvironment:$false `
+            -PreferredAppGroupType 'Desktop'
+
         $package_created = New-AzWvdMsixPackage -FullName 'MsixTest_FullName_UnitTest' `
             -HostPoolName $env.HostPool `
             -ResourceGroupName $env.ResourceGroup `
@@ -65,5 +82,9 @@ Describe 'Remove-AzWvdMsixPackage' {
         catch {
     
         }
+
+        $hostPool = Remove-AzWvdHostPool -SubscriptionId $env.SubscriptionId `
+            -ResourceGroupName $env.ResourceGroup `
+            -Name $env.HostPool
     }
 }

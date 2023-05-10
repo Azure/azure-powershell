@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataFactoryV2.dll-Help.xml
 Module Name: Az.DataFactory
-online version: https://docs.microsoft.com/powershell/module/az.datafactory/add-azdatafactoryv2dataflowdebugsessionpackage
+online version: https://learn.microsoft.com/powershell/module/az.datafactory/add-azdatafactoryv2dataflowdebugsessionpackage
 schema: 2.0.0
 ---
 
@@ -48,7 +48,7 @@ Add-AzDataFactoryV2DataFlowDebugSessionPackage -ResourceGroupName adf -DataFacto
 ```
 
 Add data flow package into debug session "550effe4-93a3-485c-8525-eaf25259efbd" of "WikiADF" data factory.
-Pakcage file contains data flow debug resource, list of dataset debug resouce, list of linked service debug resource, debug setting and session ID. For instance:
+Pakcage file contains data flow debug resource, list of dataset debug resource, list of linked service debug resource, debug setting and session ID. For instance:
 
 {
   "dataFlow": {

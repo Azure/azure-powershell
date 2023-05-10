@@ -27,7 +27,7 @@ Lists all of the available operations supported by Microsoft Healthcare resource
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IOperationDetail
 .Link
-https://docs.microsoft.com/powershell/module/az.healthcareapis/get-azhealthcareoperation
+https://learn.microsoft.com/powershell/module/az.healthcareapis/get-azhealthcareoperation
 #>
 function Get-AzHealthcareOperation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IOperationDetail])]

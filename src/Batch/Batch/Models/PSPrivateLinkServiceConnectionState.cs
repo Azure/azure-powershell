@@ -37,15 +37,21 @@ namespace Microsoft.Azure.Commands.Batch.Models
         public string Description { get; set; }
 
         /// <summary>
-        /// Gets the action required on the private connection state
+        /// Gets the actions required on the private connection state
         /// </summary>
-        public string ActionRequired { get; }
+        [Obsolete("This property is deprecated. Please use ActionsRequired instead.")]
+        public string ActionRequired { get { return ActionsRequired; } }
+
+        /// <summary>
+        /// Gets the actions required on the private connection state
+        /// </summary>
+        public string ActionsRequired { get; }
 
         public PSPrivateLinkServiceConnectionState(PrivateLinkServiceConnectionStatus status, string description = default(string), string actionRequired = default(string))
         {
             Status = status;
             Description = description;
-            ActionRequired = actionRequired;
+            ActionsRequired = actionRequired;
         }
 
         internal static PSPrivateLinkServiceConnectionState CreateFromPrivateLinkServiceConnectionState(PrivateLinkServiceConnectionState privateLinkServiceConnectionState)
@@ -58,7 +64,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
             return new PSPrivateLinkServiceConnectionState(
                 privateLinkServiceConnectionState.Status,
                 privateLinkServiceConnectionState.Description,
-                privateLinkServiceConnectionState.ActionRequired);
+                privateLinkServiceConnectionState.ActionsRequired);
         }
     }
 }

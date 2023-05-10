@@ -97,7 +97,6 @@ namespace Microsoft.Azure.Commands.Synapse.Commands
         /// Add request to queue. These requests will be processed later using multi-thread
         /// </summary>
         /// <param name="filePath">local file path</param>
-        /// <param name="packageName">package name</param>
         private void EnqueueUploadRequest(string filePath)
         {
             bool isFile = UploadRequests.EnqueueRequest(filePath);

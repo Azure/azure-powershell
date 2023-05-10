@@ -1,0 +1,48 @@
+{
+    "resourceType":"storageAccounts/objectReplicationPolicies",
+    "apiVersion":"2021-08-01",
+    "learnMore":{
+       "url":"https://learn.microsoft.com/powershell/module/az.storage/#storage"       
+    },
+    "commands":[
+      {
+        "name":"Get-AzStorageObjectReplicationPolicy",
+        "description":"Get the object replication policy of the storage account by policy ID.",
+        "path":"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/objectReplicationPolicies/{objectReplicationPolicyId}",
+        "confirmation":false,
+        "help":{
+           "learnMore":{
+              "url":"https://learn.microsoft.com/powershell/module/az.storage/get-azstorageobjectreplicationpolicy"
+           },
+           "parameterSets":[
+              {
+                 "parameters":[
+                    "[-ResourceGroupName] <String>",
+                    "[-StorageAccountName] <String>",
+                    "[-PolicyId <String>]"
+                 ]
+              }
+           ]
+        },
+        "examples":[
+           {
+              "description":"Gets object replication policy of a Storage account.",
+              "parameters":[    
+                 {
+                    "name":"-ResourceGroupName",
+                    "value":"[path.resourceGroupName]"
+                 },
+                 {
+                    "name":"-StorageAccountName",
+                    "value":"[path.accountName]"
+                 },
+                 {
+                    "name":"-PolicyId",
+                    "value":"[path.objectReplicationPolicyId]"
+                 }
+              ]
+           }
+        ]
+      }
+    ]
+}

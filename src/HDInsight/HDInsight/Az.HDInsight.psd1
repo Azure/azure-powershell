@@ -32,7 +32,7 @@ Copyright = 'Microsoft Corporation. All rights reserved.'
 # Description of the functionality provided by this module
 Description = 'Microsoft Azure PowerShell - HDInsight service cmdlets for Azure Resource Manager in Windows PowerShell and PowerShell Core.
 
-For more information on HDInsight, please visit the following: https://docs.microsoft.com/azure/hdinsight/'
+For more information on HDInsight, please visit the following: https://learn.microsoft.com/azure/hdinsight/'
 
 # Minimum version of the PowerShell engine required by this module
 PowerShellVersion = '5.1'

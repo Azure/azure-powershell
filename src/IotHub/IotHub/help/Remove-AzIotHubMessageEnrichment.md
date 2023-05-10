@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.IotHub.dll-Help.xml
 Module Name: Az.IotHub
-online version: https://docs.microsoft.com/powershell/module/az.iothub/remove-aziothubmessageenrichment
+online version: https://learn.microsoft.com/powershell/module/az.iothub/remove-aziothubmessageenrichment
 schema: 2.0.0
 ---
 
@@ -31,7 +31,7 @@ Remove-AzIotHubMessageEnrichment [-ResourceId] <String> [-Key <String>] [-PassTh
 ```
 
 ## DESCRIPTION
-For a detailed explanation of message enrichments in Azure IoT Hub, see https://docs.microsoft.com/azure/iot-hub/iot-hub-message-enrichments-overview
+For a detailed explanation of message enrichments in Azure IoT Hub, see https://learn.microsoft.com/azure/iot-hub/iot-hub-message-enrichments-overview
 
 ## EXAMPLES
 

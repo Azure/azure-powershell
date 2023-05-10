@@ -1,7 +1,7 @@
 ---
 Module Name: Az.PostgreSql
 Module Guid: b09b1b72-75a0-43a4-a342-b69a27eb64b5
-Download Help Link: https://docs.microsoft.com/powershell/module/az.postgresql
+Download Help Link: https://learn.microsoft.com/powershell/module/az.postgresql
 Help Version: 1.0.0.0
 Locale: en-US
 ---

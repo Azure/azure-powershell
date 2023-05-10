@@ -37,6 +37,28 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models
             return recordTypes.Select(d => mapping[d.Trim().ToLowerInvariant()]).ToArray();
         }
 
+        public static string[] ConvertToRecordType(string[] documentTypes)
+        {
+            if (documentTypes == null)
+            {
+                throw new ArgumentNullException("documentTypes");
+            }
+
+            Dictionary<string, string> mapping = new Dictionary<string, string>();
+            mapping.Add(DocumentTypes.Requests.ToLowerInvariant(), RecordTypes.Requests);
+            mapping.Add(DocumentTypes.Event.ToLowerInvariant(), RecordTypes.Event);
+            mapping.Add(DocumentTypes.Exceptions.ToLowerInvariant(), RecordTypes.Exceptions);
+            mapping.Add(DocumentTypes.Messages.ToLowerInvariant(), RecordTypes.Messages);
+            mapping.Add(DocumentTypes.Metrics.ToLowerInvariant(), RecordTypes.Metrics);
+            mapping.Add(DocumentTypes.PageViewPerformance.ToLowerInvariant(), RecordTypes.PageViewPerformance);
+            mapping.Add(DocumentTypes.PageViews.ToLowerInvariant(), RecordTypes.PageViews);
+            mapping.Add(DocumentTypes.RemoteDependency.ToLowerInvariant(), RecordTypes.RemoteDependency);
+            mapping.Add(DocumentTypes.Availability.ToLowerInvariant(), RecordTypes.Availability);
+            mapping.Add(DocumentTypes.PerformanceCounters.ToLowerInvariant(), RecordTypes.PerformanceCounters);
+
+            return documentTypes.Select(d => mapping[d.Trim().ToLowerInvariant()]).ToArray();
+        }
+
         public static string ParseSubscriptionFromId(string idFromServer)
         {
             if (!string.IsNullOrEmpty(idFromServer))

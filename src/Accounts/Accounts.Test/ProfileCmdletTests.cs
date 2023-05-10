@@ -15,12 +15,15 @@
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Commands.ScenarioTest;
+using Microsoft.Azure.Commands.TestFx.Mocks;
 using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Moq;
 using System;
 using System.Linq;
 using System.Management.Automation;
@@ -33,6 +36,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
     {
         private MemoryDataStore dataStore;
         private MockCommandRuntime commandRuntimeMock;
+        private AzKeyStore keyStore;
 
         public ProfileCmdletTests(ITestOutputHelper output)
         {
@@ -42,12 +46,25 @@ namespace Microsoft.Azure.Commands.Profile.Test
             AzureSession.Instance.DataStore = dataStore;
             commandRuntimeMock = new MockCommandRuntime();
             AzureSession.Instance.AuthenticationFactory = new MockTokenAuthenticationFactory();
+            keyStore = SetMockedAzKeyStore();
+        }
+
+        private AzKeyStore SetMockedAzKeyStore()
+        {
+            var storageMocker = new Mock<IStorage>();
+            storageMocker.Setup(f => f.Create()).Returns(storageMocker.Object);
+            storageMocker.Setup(f => f.ReadData()).Returns(new byte[0]);
+            storageMocker.Setup(f => f.WriteData(It.IsAny<byte[]>())).Callback((byte[] s) => { });
+            var keyStore = new AzKeyStore(AzureSession.Instance.ARMProfileDirectory, "azkeystore", false, storageMocker.Object);
+            return keyStore;
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SelectAzureProfileInMemory()
         {
+            AzureSession.Instance.RegisterComponent(AzKeyStore.Name, () => keyStore, true);
+
             var profile = new AzureRmProfile { DefaultContext = new AzureContext() };
             var env = new AzureEnvironment(AzureEnvironment.PublicEnvironments.Values.FirstOrDefault());
             env.Name = "foo";
@@ -70,6 +87,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SelectAzureProfileBadPath()
         {
+            AzureSession.Instance.RegisterComponent(AzKeyStore.Name, () => keyStore, true);
 #pragma warning disable CS0618 // Suppress obsolescence warning: cmdlet name is changing
             ImportAzureRMContextCommand cmdlt = new ImportAzureRMContextCommand();
 #pragma warning restore CS0618 // Suppress obsolescence warning: cmdlet name is changing
@@ -87,6 +105,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SelectAzureProfileFromDisk()
         {
+            AzureSession.Instance.RegisterComponent(AzKeyStore.Name, () => keyStore, true);
             var profile = new AzureRmProfile();
             profile.EnvironmentTable.Add("foo", new AzureEnvironment(new AzureEnvironment( AzureEnvironment.PublicEnvironments.Values.FirstOrDefault())));
             profile.EnvironmentTable["foo"].Name = "foo";
@@ -109,6 +128,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SaveAzureProfileInMemory()
         {
+            AzureSession.Instance.RegisterComponent(AzKeyStore.Name, () => keyStore, true);
             var profile = new AzureRmProfile();
             profile.EnvironmentTable.Add("foo", new AzureEnvironment(AzureEnvironment.PublicEnvironments.Values.FirstOrDefault()));
             profile.EnvironmentTable["foo"].Name = "foo";
@@ -133,6 +153,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SaveAzureProfileNull()
         {
+            AzureSession.Instance.RegisterComponent(AzKeyStore.Name, () => keyStore, true);
 #pragma warning disable CS0618 // Suppress obsolescence warning: cmdlet name is changing
             SaveAzureRMContextCommand cmdlt = new SaveAzureRMContextCommand();
 #pragma warning restore CS0618 // Suppress obsolescence warning: cmdlet name is changing
@@ -149,6 +170,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SaveAzureProfileFromDefault()
         {
+            AzureSession.Instance.RegisterComponent(AzKeyStore.Name, () => keyStore, true);
             var profile = new AzureRmProfile();
             profile.EnvironmentTable.Add("foo", new AzureEnvironment(AzureEnvironment.PublicEnvironments.Values.FirstOrDefault()));
             profile.DefaultContext = new AzureContext(new AzureSubscription(), new AzureAccount(), profile.EnvironmentTable["foo"]);

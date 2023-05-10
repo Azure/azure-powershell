@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Search.dll-Help.xml
 Module Name: Az.Search
-online version: https://docs.microsoft.com/powershell/module/az.search/get-azsearchservice
+online version: https://learn.microsoft.com/powershell/module/az.search/get-azsearchservice
 schema: 2.0.0
 ---
 
@@ -32,8 +32,8 @@ The **Get-AzSearchService** cmdlet gets the specified Azure Cognitive Search ser
 ```powershell
 Get-AzSearchService -ResourceGroupName felixwa-01
 ```
-```output
 
+```output
 ResourceGroupName : felixwa-01
 Name              : felixwa-basic-search
 Location          : West US

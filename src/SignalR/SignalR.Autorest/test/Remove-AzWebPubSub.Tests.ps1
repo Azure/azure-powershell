@@ -18,8 +18,6 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzWebPubSub'))
 
 Describe 'Remove-AzWebPubSub' {
     It 'Delete' {
-        Set-ItResult -Skipped -Because  "The resoure provider is not ready."
-
         $name = $env.WpsPrefix + "remove-wps-" + "Delete"
         New-AzWebPubSub -ResourceGroupName $env.ResourceGroupName -Name $name -Location eastus -SkuName Standard_S1
 
@@ -30,8 +28,6 @@ Describe 'Remove-AzWebPubSub' {
     }
 
     It 'DeleteViaIdentity' {
-        Set-ItResult -Skipped -Because  "The resoure provider is not ready."
-
         $name = $env.WpsPrefix + "remove-wps-" + "DeleteViaIdentity"
         $wps = New-AzWebPubSub -ResourceGroupName $env.ResourceGroupName -Name $name -Location eastus -SkuName Standard_S1
 

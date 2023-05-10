@@ -77,7 +77,7 @@ ARG_3dd199c6-cfec-421a-bcd3-797c08de63bc_0ee1aacb-523b-40bd-96a0-00fed2f47380_13
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ChangeAnalysis.Models.Api20210401.IChange
 .Link
-https://docs.microsoft.com/powershell/module/az.changeanalysis/get-azchangeanalysis
+https://learn.microsoft.com/powershell/module/az.changeanalysis/get-azchangeanalysis
 #>
 function Get-AzChangeAnalysis {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ChangeAnalysis.Models.Api20210401.IChange])]

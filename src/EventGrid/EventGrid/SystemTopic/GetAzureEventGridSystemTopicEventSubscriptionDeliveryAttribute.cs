@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.EventGrid
 
         public override void ExecuteCmdlet()
         {
-            DeliveryAttributeListResult deliveryAttributeListResult = this.Client.GetAzEventSubscriptionsDeliveryAttribute(this.ResourceGroupName, this.SystemTopicName, this.EventSubscriptionName);
+            DeliveryAttributeListResult deliveryAttributeListResult = this.Client.GetAzSystemTopicEventSubscriptionsDeliveryAttribute(this.ResourceGroupName, this.SystemTopicName, this.EventSubscriptionName);
             PsDeliveryAttribute PsDeliveryAttribute = new PsDeliveryAttribute(deliveryAttributeListResult);
             this.WriteObject(PsDeliveryAttribute, true);
         }

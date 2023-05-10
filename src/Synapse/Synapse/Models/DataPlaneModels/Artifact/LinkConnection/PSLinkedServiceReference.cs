@@ -14,6 +14,7 @@
 
 using Azure.Analytics.Synapse.Artifacts;
 using Azure.Analytics.Synapse.Artifacts.Models;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Synapse.Models
 {
@@ -30,7 +31,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         public string ReferenceName { get; set; }
 
-        public object Parameters { get; set; }
+        public IDictionary<string, object> Parameters { get; }
     }
 }
 

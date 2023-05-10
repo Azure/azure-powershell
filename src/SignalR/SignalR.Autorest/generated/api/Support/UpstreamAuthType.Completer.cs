@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support
 {
 
-    /// <summary>Gets or sets the type of auth. None or ManagedIdentity is supported now.</summary>
+    /// <summary>Upstream auth type enum.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.UpstreamAuthTypeTypeConverter))]
     public partial struct UpstreamAuthType :
         System.Management.Automation.IArgumentCompleter

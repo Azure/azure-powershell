@@ -434,19 +434,36 @@ function Test-PrivateEndpointApplicationSecurityGroup
             Assert-NotNull $asg.Id
         }
 
-        # Update application security groups for the private endpoint
-        $pe.ApplicationSecurityGroups[0].Name = "testname"
-        $pe | Set-AzPrivateEndpoint
-        $pe.ApplicationSecurityGroups[0].Id = "testid"
-        Assert-ThrowsContains  { $pe | Set-AzPrivateEndpoint } "BadRequest"
-
-        # Verfication after Set-
+        # Add application security group
+        $asgNew = New-AzApplicationSecurityGroup -Name "ApplicationSecurityGroupNew" -ResourceGroupName $rgname -Location $location
+        $pe.ApplicationSecurityGroups.Add($asgNew)
+        Set-AzPrivateEndpoint -PrivateEndpoint $pe
+        # Verification after Set-
         $pe = Get-AzPrivateEndpoint -Name $rname -ResourceGroupName $rgname
+        Assert-AreEqual 3 $pe.ApplicationSecurityGroups.Count
+        Assert-AreEqual $asgNew.Id $pe.ApplicationSecurityGroups[2].Id
+
+        # Remove application security group
+        $asg0 = $pe.ApplicationSecurityGroups[0]
+        $asg0Id = $asg0.Id
+        $pe.ApplicationSecurityGroups.Remove($asg0)
+        Set-AzPrivateEndpoint -PrivateEndpoint $pe
+        # Verify after Set-
+        $pe = Get-AzPrivateEndpoint -Name $rname -ResourceGroupName $rgname
+        Assert-AreEqual 2 $pe.ApplicationSecurityGroups.Count
         foreach ($asg in $pe.ApplicationSecurityGroups)
         {
-            Assert-AreNotEqual "testname" $asg.Name
-            Assert-AreNotEqual "testid" $asg.Id
+            Assert-AreNotEqual $asg0Id $asg.Name
         }
+
+        # Assign application security group
+        $asg = New-AzApplicationSecurityGroup -Name "ApplicationSecurityGroup" -ResourceGroupName $rgname -Location $location
+        $pe.ApplicationSecurityGroups = $asg
+        Set-AzPrivateEndpoint -PrivateEndpoint $pe
+        # Verification after Set-
+        $pe = Get-AzPrivateEndpoint -Name $rname -ResourceGroupName $rgname
+        Assert-AreEqual 1 $pe.ApplicationSecurityGroups.Count
+        Assert-AreEqual $asg.Id $pe.ApplicationSecurityGroups[0].Id
     }
     finally
     {
@@ -536,22 +553,57 @@ function Test-PrivateEndpointIpConfiguration
         Assert-AreEqual $rname $pe.Name
         Assert-AreEqual "Succeeded" $pe.ProvisioningState
         Assert-AreEqual "IpConfiguration" $pe.IpConfigurations[0].Name
+        Assert-AreEqual "11.0.1.100" $pe.IpConfigurations[0].PrivateIPAddress
 
         # Update properties of IpConfiguration for the private endpoint
-        Assert-ThrowsLike  { $pe.IpConfigurations[0].Name = "testname" } "* is a ReadOnly property."
-        Assert-ThrowsLike  { $pe.IpConfigurations[0].GroupId = "testgroupid" } "* is a ReadOnly property."
-        Assert-ThrowsLike  { $pe.IpConfigurations[0].MemberName = "testmembername" } "* is a ReadOnly property."
-        $ipconfig2 = New-AzPrivateEndpointIpConfiguration -Name "IpConfiguration2" -PrivateIpAddress "11.0.1.101"
-        Assert-ThrowsLike  { $pe.IpConfigurations = $ipconfig2 } "* is a ReadOnly property."
-        Assert-ThrowsLike { $pe.IpConfigurations[0] = $ipconfig2 } "Unable to index into an object of type *"
-        Assert-ThrowsLike  { $pe.IpConfigurations.Add($ipconfig2) } "Cannot find an overload for *"
-        Assert-ThrowsLike  { $pe.IpConfigurations.Remove($ipconfig2) } "Cannot find an overload for *"
-
-        # Verfication after Set-
-        $pe | Set-AzPrivateEndpoint
+        Assert-ThrowsLike { $pe.IpConfigurations[0].PrivateIPAddress = "pipaddress" } "* is a ReadOnly property."
+        $pe.IpConfigurations[0].Name = "IpConfiguration-Updated"
+        $pe.IpConfigurations[0].GroupId = "IpConfiguration-Updated-GroupId"
+        $pe.IpConfigurations[0].MemberName = "IpConfiguration-Updated-MemberName"
+        Set-AzPrivateEndpoint -PrivateEndpoint $pe
+        # Verify after Set-
         $pe = Get-AzPrivateEndpoint -Name $rname -ResourceGroupName $rgname
-        Assert-NotNull $pe
-        Assert-AreEqual "IpConfiguration" $pe.IpConfigurations[0].Name
+        Assert-AreEqual "IpConfiguration-Updated" $pe.IpConfigurations[0].Name
+        Assert-AreEqual "IpConfiguration-Updated-GroupId" $pe.IpConfigurations[0].GroupId
+        Assert-AreEqual "IpConfiguration-Updated-MemberName" $pe.IpConfigurations[0].MemberName
+        Assert-AreEqual "11.0.1.100" $pe.IpConfigurations[0].PrivateIPAddress
+
+        # Add ip configuration
+        $ipcfgNew = New-AzPrivateEndpointIpConfiguration -Name "IpConfiguration-New" -GroupId "IpConfiguration-New-GroupId" -MemberName "IpConfiguration-New-MemberName" -PrivateIpAddress "11.0.1.101"
+        $pe.IpConfigurations.Add($ipcfgNew)
+        Set-AzPrivateEndpoint -PrivateEndpoint $pe
+        # Verification after Set-
+        $pe = Get-AzPrivateEndpoint -Name $rname -ResourceGroupName $rgname
+        Assert-AreEqual 2 $pe.IpConfigurations.Count
+        Assert-AreEqual $ipcfgNew.Name $pe.IpConfigurations[1].Name
+        Assert-AreEqual $ipcfgNew.GroupId $pe.IpConfigurations[1].GroupId
+        Assert-AreEqual $ipcfgNew.MemberName $pe.IpConfigurations[1].MemberName
+        Assert-AreEqual $ipcfgNew.PrivateIPAddress $pe.IpConfigurations[1].PrivateIPAddress
+
+        # Remove ip configuration
+        $ipcfg0 = $pe.IpConfigurations[0]
+        $ipcfg0Name = $ipcfg0.Name
+        $pe.IpConfigurations.Remove($ipcfg0)
+        Set-AzPrivateEndpoint -PrivateEndpoint $pe
+        # Verify after Set-
+        $pe = Get-AzPrivateEndpoint -Name $rname -ResourceGroupName $rgname
+        Assert-AreEqual 1 $pe.IpConfigurations.Count
+        foreach ($ipcfg in $pe.IpConfigurations)
+        {
+            Assert-AreNotEqual $ipcfg.Name $ipcfg0Name.Name
+        }
+
+        # Assign ip configuration
+        $ipcfg = New-AzPrivateEndpointIpConfiguration -Name "pe-ipcfg" -GroupId "pe-ipcfg-groupid" -MemberName "pe-ipcfg-membername" -PrivateIpAddress "11.0.1.111"
+        $pe.IpConfigurations = $ipcfg
+        Set-AzPrivateEndpoint -PrivateEndpoint $pe
+        # Verification after Set-
+        $pe = Get-AzPrivateEndpoint -Name $rname -ResourceGroupName $rgname
+        Assert-AreEqual 1 $pe.IpConfigurations.Count
+        Assert-AreEqual $ipcfg.Name $pe.IpConfigurations[0].Name
+        Assert-AreEqual $ipcfg.GroupId $pe.IpConfigurations[0].GroupId
+        Assert-AreEqual $ipcfg.MemberName $pe.IpConfigurations[0].MemberName
+        Assert-AreEqual $ipcfg.PrivateIPAddress $pe.IpConfigurations[0].PrivateIPAddress
     }
     finally
     {

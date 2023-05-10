@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Subscription.dll-Help.xml
 Module Name: Az.Subscription
-online version:https://docs.microsoft.com/powershell/module/az.subscription/new-azsubscriptionalias
+online version:https://learn.microsoft.com/powershell/module/az.subscription/new-azsubscriptionalias
 schema: 2.0.0
 ---
 
@@ -146,14 +146,14 @@ Accept wildcard characters: False
 ```
 
 ### -Workload
-Type of Workload
+Type of Workload. Accepted values: DevTest, Production.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

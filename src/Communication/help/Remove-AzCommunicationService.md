@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Communication
-online version: https://docs.microsoft.com/powershell/module/az.communication/remove-azcommunicationservice
+online version: https://learn.microsoft.com/powershell/module/az.communication/remove-azcommunicationservice
 schema: 2.0.0
 ---
 
@@ -211,7 +211,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <ICommunicationIdentity>: Identity Parameter
+INPUTOBJECT `<ICommunicationIdentity>`: Identity Parameter
   - `[CommunicationServiceName <String>]`: The name of the CommunicationService resource.
   - `[Id <String>]`: Resource identity path
   - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.

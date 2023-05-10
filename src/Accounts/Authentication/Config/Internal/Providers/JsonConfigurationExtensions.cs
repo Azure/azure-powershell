@@ -27,6 +27,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Config.Internal.Provide
         /// Adds a JSON configuration source to <paramref name="builder"/>.
         /// </summary>
         /// <param name="builder">The <see cref="IConfigurationBuilder"/> to add to.</param>
+        /// <param name="id"></param>
         /// <param name="stream">The <see cref="Stream"/> to read the json configuration data from.</param>
         /// <returns>The <see cref="IConfigurationBuilder"/>.</returns>
         public static IConfigurationBuilder AddJsonStream(this IConfigurationBuilder builder, string id, Stream stream)

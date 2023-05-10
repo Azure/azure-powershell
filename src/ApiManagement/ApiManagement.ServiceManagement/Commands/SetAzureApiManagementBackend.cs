@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         [Parameter(
             ValueFromPipelineByPropertyName = true,
             Mandatory = false,
-            HelpMessage = "Original uri of entity in external system backend points to. This parameter is optional.")]
+            HelpMessage = "The absolute http URL of the Azure Resource. This parameter is optional.")]
         public String ResourceId { get; set; }
 
         [Parameter(

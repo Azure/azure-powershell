@@ -51,7 +51,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Helper.Network.Models
         /// virtual network. The remote virtual network can be in the same or
         /// different region (preview). See here to register for the preview
         /// and learn more
-        /// (https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-create-peering).</param>
+        /// (https://learn.microsoft.com/en-us/azure/virtual-network/virtual-network-create-peering).</param>
         /// <param name="remoteAddressSpace">The reference to the remote
         /// virtual network address space.</param>
         /// <param name="remoteBgpCommunities">The reference to the remote
@@ -126,7 +126,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Helper.Network.Models
         /// Gets or sets the reference to the remote virtual network. The
         /// remote virtual network can be in the same or different region
         /// (preview). See here to register for the preview and learn more
-        /// (https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-create-peering).
+        /// (https://learn.microsoft.com/en-us/azure/virtual-network/virtual-network-create-peering).
         /// </summary>
         [JsonProperty(PropertyName = "properties.remoteVirtualNetwork")]
         public SubResource RemoteVirtualNetwork { get; set; }

@@ -40,28 +40,30 @@ namespace Microsoft.Azure.Commands.Network
 
         public override void Execute()
         {
-
-            // InboundNatRules
-            if (this.LoadBalancer.InboundNatRules == null)
+            if (ShouldProcess(this.Name, "Removing the inbound NAT rule configuration"))
             {
-                WriteObject(this.LoadBalancer);
-                return;
-            }
-            var vInboundNatRules = this.LoadBalancer.InboundNatRules.SingleOrDefault
-                (e =>
-                    string.Equals(e.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase)
-                );
+                // InboundNatRules
+                if (this.LoadBalancer.InboundNatRules == null)
+                {
+                    WriteObject(this.LoadBalancer);
+                    return;
+                }
+                var vInboundNatRules = this.LoadBalancer.InboundNatRules.SingleOrDefault
+                    (e =>
+                        string.Equals(e.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase)
+                    );
 
-            if (vInboundNatRules != null)
-            {
-                this.LoadBalancer.InboundNatRules.Remove(vInboundNatRules);
-            }
+                if (vInboundNatRules != null)
+                {
+                    this.LoadBalancer.InboundNatRules.Remove(vInboundNatRules);
+                }
 
-            if (this.LoadBalancer.InboundNatRules.Count == 0)
-            {
-                this.LoadBalancer.InboundNatRules = null;
+                if (this.LoadBalancer.InboundNatRules.Count == 0)
+                {
+                    this.LoadBalancer.InboundNatRules = null;
+                }
+                WriteObject(this.LoadBalancer, true);
             }
-            WriteObject(this.LoadBalancer, true);
         }
     }
 }

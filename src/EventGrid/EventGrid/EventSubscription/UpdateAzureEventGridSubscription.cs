@@ -373,6 +373,39 @@ namespace Microsoft.Azure.Commands.EventGrid
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = false,
+            HelpMessage = EventGridConstants.AdvancedFilterHelp,
+            ParameterSetName = CustomTopicEventSubscriptionParameterSet)]
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = false,
+            HelpMessage = EventGridConstants.AdvancedFilterHelp,
+            ParameterSetName = DomainEventSubscriptionParameterSet)]
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = false,
+            HelpMessage = EventGridConstants.AdvancedFilterHelp,
+            ParameterSetName = DomainTopicEventSubscriptionParameterSet)]
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = false,
+            HelpMessage = EventGridConstants.AdvancedFilterHelp,
+            ParameterSetName = ResourceGroupNameParameterSet)]
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = false,
+            HelpMessage = EventGridConstants.AdvancedFilterHelp,
+            ParameterSetName = ResourceIdEventSubscriptionParameterSet)]
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = false,
+            HelpMessage = EventGridConstants.AdvancedFilterHelp,
+            ParameterSetName = EventSubscriptionCustomTopicInputObjectParameterSet)]
+        [ValidateNotNullOrEmpty]
+        public Hashtable[] DeliveryAttributeMapping { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = false,
             HelpMessage = EventGridConstants.EventTtlHelp,
             ParameterSetName = CustomTopicEventSubscriptionParameterSet)]
         [Parameter(
@@ -729,6 +762,7 @@ namespace Microsoft.Azure.Commands.EventGrid
                     deadLetterEndpoint: this.DeadLetterEndpoint,
                     expirationDate: this.ExpirationDate,
                     advancedFilter: this.AdvancedFilter,
+                    deliveryAttributeMapping: this.DeliveryAttributeMapping,
                     maxEventsPerBatch: maxEventsPerBatch,
                     preferredBatchSizeInKiloByte: preferredBatchSizeInKiloByte,
                     aadAppIdOrUri: aadAppIdOrUri,

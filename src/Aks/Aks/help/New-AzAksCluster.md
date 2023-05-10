@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Aks.dll-Help.xml
 Module Name: Az.Aks
-online version: https://docs.microsoft.com/powershell/module/az.aks/new-azakscluster
+online version: https://learn.microsoft.com/powershell/module/az.aks/new-azakscluster
 schema: 2.0.0
 ---
 
@@ -18,24 +18,33 @@ The cmdlet may call below Microsoft Graph API according to input parameters:
 
 ```
 New-AzAksCluster [-NodeVmSetType <String>] [-NodeVnetSubnetID <String>] [-NodeMaxPodCount <Int32>]
- [-NodeSetPriority <String>] [-NodePoolMode <String>] [-NodeScaleSetEvictionPolicy <String>]
- [-AddOnNameToBeEnabled <String[]>] [-WorkspaceResourceId <String>] [-SubnetName <String>] [-EnableRbac]
- [-WindowsProfileAdminUserName <String>] [-WindowsProfileAdminUserPassword <SecureString>]
- [-NetworkPlugin <String>] [-NetworkPolicy <String>] [-PodCidr <String>] [-ServiceCidr <String>]
- [-DnsServiceIP <String>] [-DockerBridgeCidr <String>] [-NodePoolLabel <Hashtable>]
- [-AksCustomHeader <Hashtable>] [-LoadBalancerSku <String>] [-Force] [-GenerateSshKey] [-EnableNodePublicIp]
- [-NodePublicIPPrefixID <String>] [-ResourceGroupName] <String> [-Name] <String>
+ [-NodeSetPriority <String>] [-NodePoolMode <String>] [-NodeOsSKU <String>]
+ [-NodeScaleSetEvictionPolicy <String>] [-AddOnNameToBeEnabled <String[]>] [-WorkspaceResourceId <String>]
+ [-SubnetName <String>] [-EnableRbac] [-WindowsProfileAdminUserName <String>]
+ [-WindowsProfileAdminUserPassword <SecureString>] [-NetworkPlugin <String>] [-NetworkPolicy <String>]
+ [-PodCidr <String>] [-ServiceCidr <String>] [-DnsServiceIP <String>] [-DockerBridgeCidr <String>]
+ [-OutboundType <String>] [-LoadBalancerSku <String>] [-Force] [-GenerateSshKey] [-EnableNodePublicIp]
+ [-NodePublicIPPrefixID <String>] [-AvailabilityZone <String[]>] [-NodeResourceGroup <String>]
+ [-EnableEncryptionAtHost] [-EnableUltraSSD] [-NodeLinuxOSConfig <LinuxOSConfig>]
+ [-NodeKubeletConfig <KubeletConfig>] [-NodeMaxSurge <String>] [-PPG <String>] [-EnableFIPS]
+ [-AutoScalerProfile <ManagedClusterPropertiesAutoScalerProfile>] [-GpuInstanceProfile <String>]
+ [-EnableUptimeSLA] [-EdgeZone <String>] [-NodeHostGroupID <String>] [-NodePodSubnetID <String>]
+ [-EnableOidcIssuer] [-ResourceGroupName] <String> [-Name] <String>
  [[-ServicePrincipalIdAndSecret] <PSCredential>] [-Location <String>] [-LinuxProfileAdminUserName <String>]
  [-DnsNamePrefix <String>] [-KubernetesVersion <String>] [-NodeName <String>] [-NodeMinCount <Int32>]
  [-NodeMaxCount <Int32>] [-EnableNodeAutoScaling] [-NodeCount <Int32>] [-NodeOsDiskSize <Int32>]
- [-NodeVmSize <String>] [-SshKeyValue <String>] [-AcrNameToAttach <String>] [-AsJob] [-Tag <Hashtable>]
- [-LoadBalancerAllocatedOutboundPort <Int32>] [-LoadBalancerManagedOutboundIpCount <Int32>]
- [-LoadBalancerOutboundIp <String[]>] [-LoadBalancerOutboundIpPrefix <String[]>]
- [-LoadBalancerIdleTimeoutInMinute <Int32>] [-ApiServerAccessAuthorizedIpRange <String[]>]
- [-EnableApiServerAccessPrivateCluster] [-ApiServerAccessPrivateDnsZone <String>]
- [-EnableApiServerAccessPrivateClusterPublicFQDN] [-FqdnSubdomain <String>] [-EnableManagedIdentity]
- [-AssignIdentity <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [-SubscriptionId <String>] [<CommonParameters>]
+ [-NodeVmSize <String>] [-NodePoolLabel <Hashtable>] [-NodePoolTag <Hashtable>] [-SshKeyValue <String>]
+ [-AcrNameToAttach <String>] [-AsJob] [-Tag <Hashtable>] [-LoadBalancerAllocatedOutboundPort <Int32>]
+ [-LoadBalancerManagedOutboundIpCount <Int32>] [-LoadBalancerOutboundIp <String[]>]
+ [-LoadBalancerOutboundIpPrefix <String[]>] [-LoadBalancerIdleTimeoutInMinute <Int32>]
+ [-ApiServerAccessAuthorizedIpRange <String[]>] [-EnableApiServerAccessPrivateCluster]
+ [-ApiServerAccessPrivateDnsZone <String>] [-EnableApiServerAccessPrivateClusterPublicFQDN]
+ [-FqdnSubdomain <String>] [-EnableManagedIdentity] [-AssignIdentity <String>] [-AutoUpgradeChannel <String>]
+ [-DiskEncryptionSetID <String>] [-DisableLocalAccount] [-HttpProxy <String>] [-HttpsProxy <String>]
+ [-HttpProxyConfigNoProxyEndpoint <String[]>] [-HttpProxyConfigTrustedCa <String>]
+ [-AksCustomHeader <Hashtable>] [-AadProfile <ManagedClusterAADProfile>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [-SubscriptionId <String>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -44,7 +53,7 @@ Create a new Azure Kubernetes Service(AKS) cluster.
 
 ## EXAMPLES
 
-### New an AKS with default params.
+### Create an AKS with default params.
 
 ```powershell
 New-AzAksCluster -ResourceGroupName myResourceGroup -Name myCluster
@@ -60,7 +69,78 @@ New-AzAksCluster -ResourceGroupName myResourceGroup -Name myCluster -WindowsProf
 New-AzAksNodePool -ResourceGroupName myResourceGroup -ClusterName myCluster -Name win1 -OsType Windows -VmSetType VirtualMachineScaleSets
 ```
 
+### Create an AKS cluster with LinuxOSConfig and KubeletConfig.
+When you create an AKS cluster, you can specify the kubelet and OS configurations. The type of `NodeLinuxOSConfig` and `NodeKubeletConfig` must be `Microsoft.Azure.Management.ContainerService.Models.LinuxOSConfig` and `Microsoft.Azure.Management.ContainerService.Models.KubeletConfig` respectively.
+
+
+```powershell
+$linuxOsConfigJsonStr = @'
+            {
+             "transparentHugePageEnabled": "madvise",
+             "transparentHugePageDefrag": "defer+madvise",
+             "swapFileSizeMB": 1500,
+             "sysctls": {
+              "netCoreSomaxconn": 163849,
+              "netIpv4TcpTwReuse": true,
+              "netIpv4IpLocalPortRange": "32000 60000"
+             }
+            }
+'@
+$linuxOsConfig = [Microsoft.Azure.Management.ContainerService.Models.LinuxOSConfig] ($linuxOsConfigJsonStr | ConvertFrom-Json)
+$kubeletConfigStr = @'
+            {
+             "failSwapOn": false
+            }
+'@
+$kubeletConfig = [Microsoft.Azure.Management.ContainerService.Models.KubeletConfig] ($kubeletConfigStr | ConvertFrom-Json)
+
+New-AzAksCluster -ResourceGroupName myResourceGroup -Name myAKSCluster -NodeLinuxOSConfig $linuxOsConfig -NodeKubeletConfig $kubeletConfig
+```
+
+### Create an AKS cluster with AutoScalerProfile.
+When you create an AKS cluster, you can configure granular details of the cluster autoscaler by changing the default values in the cluster-wide autoscaler profile.
+
+```powershell
+$AutoScalerProfile=@{
+    ScanInterval="30s"
+    Expander="least-waste"
+}
+$AutoScalerProfile=[Microsoft.Azure.Management.ContainerService.Models.ManagedClusterPropertiesAutoScalerProfile]$AutoScalerProfile
+
+New-AzAksCluster -ResourceGroupName myResourceGroup -Name myAKSCluster -AutoScalerProfile $AutoScalerProfile
+```
+
+### Create an AKS cluster with AadProfile.
+When you create an AKS cluster, you can configure the AAD profile.
+
+```powershell
+$AKSAdminGroup=New-AzADGroup -DisplayName myAKSAdminGroup -MailNickname myAKSAdminGroup
+$AadProfile=@{
+    managed=$true
+    enableAzureRBAC=$false
+    adminGroupObjectIDs=[System.Collections.Generic.List[string]]@($AKSAdminGroup.Id)
+}
+$AadProfile=[Microsoft.Azure.Management.ContainerService.Models.ManagedClusterAADProfile]$AadProfile
+
+New-AzAksCluster -ResourceGroupName myResourceGroup -Name myAKSCluster -AadProfile $AadProfile
+```
+
 ## PARAMETERS
+
+### -AadProfile
+The Azure Active Directory configuration.
+
+```yaml
+Type: Microsoft.Azure.Management.ContainerService.Models.ManagedClusterAADProfile
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -AcrNameToAttach
 Grant the 'acrpull' role of the specified ACR to AKS Service Principal, e.g. myacr
@@ -167,6 +247,51 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -AutoScalerProfile
+The parameters to be applied to the cluster-autoscaler.
+
+```yaml
+Type: Microsoft.Azure.Management.ContainerService.Models.ManagedClusterPropertiesAutoScalerProfile
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AutoUpgradeChannel
+The upgrade channel for auto upgrade. For more information see https://learn.microsoft.com/azure/aks/upgrade-cluster#set-auto-upgrade-channel.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AvailabilityZone
+Availability zones for cluster. Must use VirtualMachineScaleSets AgentPoolType.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -174,6 +299,36 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DisableLocalAccount
+Local accounts should be disabled on the Managed Cluster.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DiskEncryptionSetID
+The resource ID of the disk encryption set to use for enabling encryption.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -227,6 +382,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EdgeZone
+The name of the Edge Zone.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -EnableApiServerAccessPrivateCluster
 Whether to create the cluster as a private cluster or not.
 
@@ -244,6 +414,36 @@ Accept wildcard characters: False
 
 ### -EnableApiServerAccessPrivateClusterPublicFQDN
 Whether to create additional public FQDN for private cluster or not.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableEncryptionAtHost
+Whether to enable host based OS and data drive
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableFIPS
+Whether to use a FIPS-enabled OS
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -302,8 +502,53 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EnableOidcIssuer
+Whether to enalbe OIDC issuer feature.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -EnableRbac
 Whether to enable Kubernetes Role-Based Access
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableUltraSSD
+whether to enable UltraSSD
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableUptimeSLA
+Whether to use use Uptime SLA.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -352,6 +597,81 @@ Generate ssh key file to {HOME}/.ssh/id_rsa.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -GpuInstanceProfile
+The GpuInstanceProfile to be used to specify GPU MIG instance profile for supported GPU VM SKU.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -HttpProxy
+The HTTP proxy server endpoint to use.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -HttpProxyConfigNoProxyEndpoint
+The endpoints that should not go through proxy.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -HttpProxyConfigTrustedCa
+Alternative CA cert to use for connecting to proxy servers.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -HttpsProxy
+The HTTPS proxy server endpoint to use
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -558,6 +878,51 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -NodeHostGroupID
+The fully qualified resource ID of the Dedicated Host Group to provision virtual machines from, used only in creation scenario and not allowed to changed once set.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NodeKubeletConfig
+The Kubelet configuration on the agent pool nodes.
+
+```yaml
+Type: Microsoft.Azure.Management.ContainerService.Models.KubeletConfig
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NodeLinuxOSConfig
+The OS configuration of Linux agent nodes.
+
+```yaml
+Type: Microsoft.Azure.Management.ContainerService.Models.LinuxOSConfig
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -NodeMaxCount
 Maximum number of nodes for auto-scaling
 
@@ -578,6 +943,21 @@ Maximum number of pods that can run on node.
 
 ```yaml
 Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NodeMaxSurge
+The maximum number or percentage of nodes that ar surged during upgrade.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -633,6 +1013,36 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -NodeOsSKU
+The default OS sku for the node pools.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NodePodSubnetID
+The ID of the subnet which pods will join when launched.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -NodePoolLabel
 Node pool labels used for building Kubernetes network.
 
@@ -663,8 +1073,38 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -NodePoolTag
+The tags to be persisted on the agent pool virtual machine scale set.
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -NodePublicIPPrefixID
 The resource Id of public IP prefix for node pool.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NodeResourceGroup
+The resource group containing agent pool.
 
 ```yaml
 Type: System.String
@@ -753,8 +1193,38 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -OutboundType
+The outbound (egress) routing method.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -PodCidr
 Pod cidr used for building Kubernetes network.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PPG
+The ID for Proximity Placement Group.
 
 ```yaml
 Type: System.String

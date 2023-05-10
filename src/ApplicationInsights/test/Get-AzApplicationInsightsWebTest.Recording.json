@@ -1,8 +1,8 @@
 {
-  "Get-AzApplicationInsightsWebTest+[NoContext]+List1+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/microsoft.insights/webtests?api-version=2018-05-01-preview+1": {
+  "Get-AzApplicationInsightsWebTest+[NoContext]+List1+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/microsoft.insights/webtests?api-version=2022-06-15+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/microsoft.insights/webtests?api-version=2018-05-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/microsoft.insights/webtests?api-version=2022-06-15",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -40,10 +40,10 @@
       "isContentBase64": false
     }
   },
-  "Get-AzApplicationInsightsWebTest+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/appInsights-hkrs2v-test/providers/microsoft.insights/webtests/standardwebtest-p9b7o0-pwsh?api-version=2018-05-01-preview+1": {
+  "Get-AzApplicationInsightsWebTest+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/appInsights-hkrs2v-test/providers/microsoft.insights/webtests/standardwebtest-p9b7o0-pwsh?api-version=2022-06-15+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/appInsights-hkrs2v-test/providers/microsoft.insights/webtests/standardwebtest-p9b7o0-pwsh?api-version=2018-05-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/appInsights-hkrs2v-test/providers/microsoft.insights/webtests/standardwebtest-p9b7o0-pwsh?api-version=2022-06-15",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -84,10 +84,10 @@
       "isContentBase64": false
     }
   },
-  "Get-AzApplicationInsightsWebTest+[NoContext]+List2+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/appInsights-hkrs2v-test/providers/microsoft.insights/webtests?api-version=2018-05-01-preview+1": {
+  "Get-AzApplicationInsightsWebTest+[NoContext]+List2+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/appInsights-hkrs2v-test/providers/microsoft.insights/webtests?api-version=2022-06-15+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/appInsights-hkrs2v-test/providers/microsoft.insights/webtests?api-version=2018-05-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/appInsights-hkrs2v-test/providers/microsoft.insights/webtests?api-version=2022-06-15",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -125,10 +125,10 @@
       "isContentBase64": false
     }
   },
-  "Get-AzApplicationInsightsWebTest+[NoContext]+List+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/appInsights-hkrs2v-test/providers/microsoft.insights/components/appInsights-48mah3-pwsh/webtests?api-version=2018-05-01-preview+1": {
+  "Get-AzApplicationInsightsWebTest+[NoContext]+List+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/appInsights-hkrs2v-test/providers/microsoft.insights/components/appInsights-48mah3-pwsh/webtests?api-version=2022-06-15+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/appInsights-hkrs2v-test/providers/microsoft.insights/components/appInsights-48mah3-pwsh/webtests?api-version=2018-05-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/appInsights-hkrs2v-test/providers/microsoft.insights/components/appInsights-48mah3-pwsh/webtests?api-version=2022-06-15",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -169,10 +169,10 @@
       "isContentBase64": false
     }
   },
-  "Get-AzApplicationInsightsWebTest+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/appInsights-hkrs2v-test/providers/microsoft.insights/webtests/standardwebtest-p9b7o0-pwsh?api-version=2018-05-01-preview+1": {
+  "Get-AzApplicationInsightsWebTest+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/appInsights-hkrs2v-test/providers/microsoft.insights/webtests/standardwebtest-p9b7o0-pwsh?api-version=2022-06-15+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/appInsights-hkrs2v-test/providers/microsoft.insights/webtests/standardwebtest-p9b7o0-pwsh?api-version=2018-05-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/appInsights-hkrs2v-test/providers/microsoft.insights/webtests/standardwebtest-p9b7o0-pwsh?api-version=2022-06-15",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -213,10 +213,10 @@
       "isContentBase64": false
     }
   },
-  "Get-AzApplicationInsightsWebTest+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/appInsights-hkrs2v-test/providers/microsoft.insights/webtests/standardwebtest-p9b7o0-pwsh?api-version=2018-05-01-preview+2": {
+  "Get-AzApplicationInsightsWebTest+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/appInsights-hkrs2v-test/providers/microsoft.insights/webtests/standardwebtest-p9b7o0-pwsh?api-version=2022-06-15+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/appInsights-hkrs2v-test/providers/microsoft.insights/webtests/standardwebtest-p9b7o0-pwsh?api-version=2018-05-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/appInsights-hkrs2v-test/providers/microsoft.insights/webtests/standardwebtest-p9b7o0-pwsh?api-version=2022-06-15",
       "Content": null,
       "isContentBase64": false,
       "Headers": {

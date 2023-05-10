@@ -30,7 +30,7 @@ Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IVirtua
 .Outputs
 System.Boolean
 .Link
-https://docs.microsoft.com/powershell/module/az.labservices/start-azlabservicesvmredeployment
+https://learn.microsoft.com/powershell/module/az.labservices/start-azlabservicesvmredeployment
 #>
 function Start-AzLabServicesVMRedeployment {
 [OutputType([System.Boolean], [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IVirtualMachine])]

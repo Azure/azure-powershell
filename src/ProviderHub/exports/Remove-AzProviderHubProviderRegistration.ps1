@@ -44,7 +44,7 @@ INPUTOBJECT <IProviderHubIdentity>: Identity Parameter
   [Sku <String>]: The SKU.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.providerhub/remove-azproviderhubproviderregistration
+https://learn.microsoft.com/powershell/module/az.providerhub/remove-azproviderhubproviderregistration
 #>
 function Remove-AzProviderHubProviderRegistration {
 [OutputType([System.Boolean])]

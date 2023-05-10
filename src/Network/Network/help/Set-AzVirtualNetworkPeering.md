@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 06DAD751-3A43-4EF6-94C5-AA7AC1A67FC8
-online version: https://docs.microsoft.com/powershell/module/az.network/set-azvirtualnetworkpeering
+online version: https://learn.microsoft.com/powershell/module/az.network/set-azvirtualnetworkpeering
 schema: 2.0.0
 ---
 
@@ -26,7 +26,7 @@ The **Set-AzVirtualNetworkPeering** cmdlet configures a virtual network peering.
 ### Example 1: Change forwarded traffic configuration of a virtual network peering
 ```powershell
 # Get the virtual network peering you want to update information for
-Get-AzVirtualNetworkPeering -VirtualNetworkName "myVnet1" -ResourceGroupName "ResourceGroup" -Name "myVnet1ToMyVnet2"
+$myVnet1ToMyVnet2 = Get-AzVirtualNetworkPeering -VirtualNetworkName "myVnet1" -ResourceGroupName "ResourceGroup" -Name "myVnet1ToMyVnet2"
 
 # Change value of AllowForwardedTraffic property
 $myVnet1ToMyVnet2.AllowForwardedTraffic = $True
@@ -123,7 +123,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

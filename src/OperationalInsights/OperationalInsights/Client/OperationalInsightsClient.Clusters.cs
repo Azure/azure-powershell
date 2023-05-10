@@ -11,7 +11,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.OperationalInsights.Models;
 using Microsoft.Azure.Management.OperationalInsights;
 using Microsoft.Azure.Management.OperationalInsights.Models;
 using System.Collections.Generic;
@@ -20,6 +19,7 @@ using System.Management.Automation;
 using System.Net;
 using Microsoft.Rest;
 using Microsoft.Rest.Azure;
+using Microsoft.Azure.Commands.OperationalInsights.Models;
 
 namespace Microsoft.Azure.Commands.OperationalInsights.Client
 {
@@ -71,10 +71,10 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
                 throw new PSInvalidOperationException(string.Format("cluster: '{0}' already exists in '{1}'. Please use Update-AzOperationalInsightsCluster for updating.", clusterName, resourceGroupName));
             }
 
-            return new PSCluster(this.OperationalInsightsManagementClient.Clusters.CreateOrUpdate(resourceGroupName, clusterName, parameters.getCluster()));
+            return new PSCluster(this.OperationalInsightsManagementClient.Clusters.CreateOrUpdate(resourceGroupName, clusterName, parameters.GetCluster()));
         }
 
-        public virtual PSCluster UpdatePSCluster(string resourceGroupName, string clusterName, PSClusterPatch parameters)
+        public virtual PSCluster UpdatePSCluster(string resourceGroupName, string clusterName, PSCluster parameters)
         {
             PSCluster existingCluster;
             try
@@ -92,22 +92,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
                 ? existingCluster.BillingType
                 : parameters.BillingType;
 
-            parameters.Sku = parameters.Sku != null ? parameters.Sku : existingCluster.Sku;
-
-            if (parameters.KeyVaultProperties != null)
-            {
-                parameters.KeyVaultProperties.KeyName = string.IsNullOrEmpty(parameters.KeyVaultProperties.KeyName)
-                    ? existingCluster.KeyVaultProperties?.KeyName
-                    : parameters.KeyVaultProperties.KeyName;
-
-                parameters.KeyVaultProperties.KeyVaultUri = string.IsNullOrEmpty(parameters.KeyVaultProperties.KeyVaultUri)
-                    ? existingCluster.KeyVaultProperties?.KeyVaultUri
-                    : parameters.KeyVaultProperties.KeyVaultUri;
-
-                parameters.KeyVaultProperties.KeyVersion = string.IsNullOrEmpty(parameters.KeyVaultProperties.KeyVersion)
-                    ? existingCluster.KeyVaultProperties?.KeyVersion
-                    : parameters.KeyVaultProperties.KeyVersion;
-            }
+            parameters.CapacityReservationProperties = parameters.CapacityReservationProperties ?? existingCluster.CapacityReservationProperties;
 
             var response = this.OperationalInsightsManagementClient.Clusters.Update(resourceGroupName, clusterName, parameters.GetClusterPatch());
 

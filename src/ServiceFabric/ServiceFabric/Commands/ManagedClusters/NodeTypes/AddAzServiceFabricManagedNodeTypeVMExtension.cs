@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         public override void ExecuteCmdlet()
         {
             this.SetParams();
-            if (ShouldProcess(target: this.Name, action: string.Format("Add Extenions {0} with type {1} to node type {2}", this.Name, this.Type, this.NodeTypeName)))
+            if (ShouldProcess(target: this.Name, action: string.Format("Add Extensions {0} with type {1} to node type {2}", this.Name, this.Type, this.NodeTypeName)))
             {
                 try
                 {

@@ -1,7 +1,7 @@
 ---
 external help file: Az.Purview-help.xml
 Module Name: Az.Purview
-online version: https://docs.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureSqlDatabaseMsiScanObject
+online version: https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureSqlDatabaseMsiScanObject
 schema: 2.0.0
 ---
 
@@ -26,8 +26,10 @@ Create an in-memory object for AzureSqlDatabaseMsiScan.
 
 ### Example 1: Create Azure Sql Db Msi scan object
 ```powershell
-PS C:\> New-AzPurviewAzureSqlDatabaseMsiScanObject -Kind 'AzureSqlDatabaseMsi' -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -DatabaseName 'db' -ScanRulesetName 'AzureSqlDatabase' -ScanRulesetType 'System' -ServerEndpoint 'stzn.database.windows.net'
+New-AzPurviewAzureSqlDatabaseMsiScanObject -Kind 'AzureSqlDatabaseMsi' -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -DatabaseName 'db' -ScanRulesetName 'AzureSqlDatabase' -ScanRulesetType 'System' -ServerEndpoint 'stzn.database.windows.net'
+```
 
+```output
 CollectionLastModifiedAt  :
 CollectionReferenceName   : parv-brs-2
 CollectionType            : CollectionReference

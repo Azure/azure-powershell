@@ -1,4 +1,5 @@
-﻿Microsoft Visual Studio Solution File, Format Version 12.00
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.32126.315
 MinimumVisualStudioVersion = 10.0.40219.1
@@ -33,7 +34,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tags", "..\Resources\Tags\T
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KeyVault", "..\KeyVault\KeyVault\KeyVault.csproj", "{1C67BD60-FE24-482C-BE67-E400FCF0BAC2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Authorization", "..\Resources\Authorization.Autorest\Az.Authorization.csproj", "{AC2D75A0-C617-4198-8DBF-051318F0B18A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Az.Authorization", "..\Resources\Authorization.Autorest\Az.Authorization.csproj", "{AC2D75A0-C617-4198-8DBF-051318F0B18A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CosmosDB.Sdk", "CosmosDB.Sdk\CosmosDB.Sdk.csproj", "{732EA9B7-1A18-4375-9EC8-D403A107AA39}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -153,6 +156,14 @@ Global
 		{AC2D75A0-C617-4198-8DBF-051318F0B18A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{AC2D75A0-C617-4198-8DBF-051318F0B18A}.Release|x64.ActiveCfg = Release|Any CPU
 		{AC2D75A0-C617-4198-8DBF-051318F0B18A}.Release|x64.Build.0 = Release|Any CPU
+		{732EA9B7-1A18-4375-9EC8-D403A107AA39}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{732EA9B7-1A18-4375-9EC8-D403A107AA39}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{732EA9B7-1A18-4375-9EC8-D403A107AA39}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{732EA9B7-1A18-4375-9EC8-D403A107AA39}.Debug|x64.Build.0 = Debug|Any CPU
+		{732EA9B7-1A18-4375-9EC8-D403A107AA39}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{732EA9B7-1A18-4375-9EC8-D403A107AA39}.Release|Any CPU.Build.0 = Release|Any CPU
+		{732EA9B7-1A18-4375-9EC8-D403A107AA39}.Release|x64.ActiveCfg = Release|Any CPU
+		{732EA9B7-1A18-4375-9EC8-D403A107AA39}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric.dll-Help.xml
 Module Name: Az.ServiceFabric
-online version: https://docs.microsoft.com/powershell/module/az.servicefabric/new-azservicefabricmanagedclusterservice
+online version: https://learn.microsoft.com/powershell/module/az.servicefabric/new-azservicefabricmanagedclusterservice
 schema: 2.0.0
 ---
 
@@ -97,7 +97,7 @@ $appName = "testApp"
 $serviceName = "testService1"
 $serviceTypeName = "testStateless"
 $statelessServiceMetric = New-Object -TypeName "Microsoft.Azure.Commands.ServiceFabric.Models.PSServiceMetric" -ArgumentList @("metric1", "Low", 4)
-New-AzServiceFabricManagedClusterService -ResourceGroupName $resourceGroupName -ClusterName $clusterName -ApplicationName $appName -Name $serviceName -Type $serviceTypeName -Stateless -InstanceCount -1 -PartitionSchemaSingleton -Metric @($statelessServiceMetric) -Verbose
+New-AzServiceFabricManagedClusterService -ResourceGroupName $resourceGroupName -ClusterName $clusterName -ApplicationName $appName -Name $serviceName -Type $serviceTypeName -Stateless -InstanceCount -1 -PartitionSchemeSingleton -Metric @($statelessServiceMetric) -Verbose
 ```
 
 This example will create a new stateless managed service "testService1" with instance count -1 (on all the nodes).

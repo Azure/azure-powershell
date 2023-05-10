@@ -70,6 +70,30 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
             {
                 yield return new global::System.Management.Automation.CompletionResult("'MigrationFailed'", "MigrationFailed", global::System.Management.Automation.CompletionResultType.ParameterValue, "MigrationFailed");
             }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "ResumeInProgress".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'ResumeInProgress'", "ResumeInProgress", global::System.Management.Automation.CompletionResultType.ParameterValue, "ResumeInProgress");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "ResumeInitiated".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'ResumeInitiated'", "ResumeInitiated", global::System.Management.Automation.CompletionResultType.ParameterValue, "ResumeInitiated");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "SuspendingProtection".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'SuspendingProtection'", "SuspendingProtection", global::System.Management.Automation.CompletionResultType.ParameterValue, "SuspendingProtection");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "ProtectionSuspended".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'ProtectionSuspended'", "ProtectionSuspended", global::System.Management.Automation.CompletionResultType.ParameterValue, "ProtectionSuspended");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "MigrationCompletedWithInformation".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'MigrationCompletedWithInformation'", "MigrationCompletedWithInformation", global::System.Management.Automation.CompletionResultType.ParameterValue, "MigrationCompletedWithInformation");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "MigrationPartiallySucceeded".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'MigrationPartiallySucceeded'", "MigrationPartiallySucceeded", global::System.Management.Automation.CompletionResultType.ParameterValue, "MigrationPartiallySucceeded");
+            }
         }
     }
 }

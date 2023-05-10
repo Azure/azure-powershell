@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
         /// <summary>
         /// The default Lock API version.
         /// </summary>
-        public static readonly string LockApiVersion = "2015-01-01";
+        public static readonly string LockApiVersion = "2017-04-01";
 
         /// <summary>
         /// The default deployment operation API version.

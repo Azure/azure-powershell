@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
     using Xunit;
     using Xunit.Abstractions;
 
-    public class DeploymentWhatIfTests : ResourceTestRunner
+    public class DeploymentWhatIfTests : ResourcesTestRunner
     {
         public DeploymentWhatIfTests(ITestOutputHelper output) : base(output)
         {

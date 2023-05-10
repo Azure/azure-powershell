@@ -121,6 +121,7 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateSet(
             MNM.FirewallPolicySkuTier.Standard,
             MNM.FirewallPolicySkuTier.Premium,
+            MNM.FirewallPolicySkuTier.Basic,
             IgnoreCase = true)]
         public string SkuTier { get; set; }
 
@@ -143,6 +144,16 @@ namespace Microsoft.Azure.Commands.Network
         )]
         public string[] PrivateRange { get; set; }
 
+        [Parameter(
+           Mandatory = false,
+           HelpMessage = "Explicit Proxy Settings in Firewall Policy.")]
+        public PSAzureFirewallPolicyExplicitProxy ExplicitProxy { get; set; }
+
+        [Parameter(
+          Mandatory = false,
+          HelpMessage = "The private IP addresses/IP ranges to which traffic will not be SNAT in Firewall Policy.")]
+        public PSAzureFirewallPolicySNAT Snat { get; set; }
+
         public override void Execute()
         {
 
@@ -160,6 +171,10 @@ namespace Microsoft.Azure.Commands.Network
 
         private PSAzureFirewallPolicy CreateAzureFirewallPolicy()
         {
+            if (this.Snat != null && this.PrivateRange != null && this.PrivateRange.Length > 0)
+            {
+                throw new ArgumentException("Please use Snat parameter to set PrivateRange. Private ranges can not be provided on both Snat and PrivateRange parameters at the same time.");
+            }
 
             var firewallPolicy = new PSAzureFirewallPolicy()
             {
@@ -176,8 +191,14 @@ namespace Microsoft.Azure.Commands.Network
                     Tier = this.SkuTier ?? MNM.FirewallPolicySkuTier.Standard
                 },
                 IntrusionDetection = this.IntrusionDetection,
-                PrivateRange = this.PrivateRange
+                PrivateRange = this.PrivateRange,
+                ExplicitProxy = this.ExplicitProxy
             };
+
+            if (this.Snat != null)
+            {
+                firewallPolicy.Snat = this.Snat;
+            }
 
             if (this.UserAssignedIdentityId != null)
             {

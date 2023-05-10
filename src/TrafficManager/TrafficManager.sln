@@ -20,6 +20,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ScenarioTest.ResourceManage
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestFx", "..\..\tools\TestFx\TestFx.csproj", "{BC80A1D0-FFA4-43D9-AA74-799F5CB54B58}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TrafficManager.Management.Sdk", "TrafficManager.Management.Sdk\TrafficManager.Management.Sdk.csproj", "{413CC729-DAAD-4B9B-88C4-AA9F72BFA998}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -58,6 +60,10 @@ Global
 		{BC80A1D0-FFA4-43D9-AA74-799F5CB54B58}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BC80A1D0-FFA4-43D9-AA74-799F5CB54B58}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BC80A1D0-FFA4-43D9-AA74-799F5CB54B58}.Release|Any CPU.Build.0 = Release|Any CPU
+		{413CC729-DAAD-4B9B-88C4-AA9F72BFA998}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{413CC729-DAAD-4B9B-88C4-AA9F72BFA998}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{413CC729-DAAD-4B9B-88C4-AA9F72BFA998}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{413CC729-DAAD-4B9B-88C4-AA9F72BFA998}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

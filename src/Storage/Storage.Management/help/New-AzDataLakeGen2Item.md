@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
-online version: https://docs.microsoft.com/powershell/module/az.storage/new-azdatalakegen2item
+online version: https://learn.microsoft.com/powershell/module/az.storage/new-azdatalakegen2item
 schema: 2.0.0
 ---
 
@@ -35,25 +35,29 @@ This cmdlet only works if Hierarchical Namespace is enabled for the Storage acco
 ## EXAMPLES
 
 ### Example 1: Create a directory with specified permission, Umask, properties, and metadata
+```powershell
+New-AzDataLakeGen2Item -FileSystem "testfilesystem" -Path "dir1/dir2/" -Directory -Permission rwxrwxrwT -Umask ---rw---- -Property @{"CacheControl" = "READ"; "ContentDisposition" = "True"} -Metadata  @{"tag1" = "value1"; "tag2" = "value2" }
 ```
-PS C:\>New-AzDataLakeGen2Item -FileSystem "testfilesystem" -Path "dir1/dir2/" -Directory -Permission rwxrwxrwx -Umask ---rw---- -Property @{"CacheControl" = "READ"; "ContentDisposition" = "True"} -Metadata  @{"tag1" = "value1"; "tag2" = "value2" }
 
-   FileSystem Name: filesystem1
+```output
+FileSystem Name: filesystem1
 
 Path                 IsDirectory  Length          LastModified         Permissions  Owner                Group               
 ----                 -----------  ------          ------------         -----------  -----                -----               
-dir1/dir2            True                         2020-03-23 09:15:56Z rwx---rwx    $superuser           $superuser
+dir1/dir2            True                         2020-03-23 09:15:56Z rwx---rwT    $superuser           $superuser
 ```
 
 This command creates a directory with specified Permission, Umask, properties, and metadata
 
 ### Example 2: Create(upload) a data lake file from a local source file, and the cmdlet runs in background
+```powershell
+$task = New-AzDataLakeGen2Item  -FileSystem "testfilesystem" -Path "dir1/dir2/file1" -Source "c:\sourcefile.txt" -Force -asjob
+$task | Wait-Job
+$task.Output
 ```
-PS C:\> $task = New-AzDataLakeGen2Item  -FileSystem "testfilesystem" -Path "dir1/dir2/file1" -Source "c:\sourcefile.txt" -Force -asjob
-PS C:\> $task | Wait-Job
-PS C:\> $task.Output
 
-   FileSystem Name: filesystem1
+```output
+FileSystem Name: filesystem1
 
 Path                 IsDirectory  Length          LastModified         Permissions  Owner                Group                
 ----                 -----------  ------          ------------         -----------  -----                -----               
@@ -201,9 +205,9 @@ Accept wildcard characters: False
 ```
 
 ### -Permission
-Sets POSIX access permissions for the file owner, the file owning group, and others.
-Each class may be granted read, write, or execute permission.
-Symbolic (rwxrw-rw-) is supported.
+Sets POSIX access permissions for the file owner, the file owning group, and others. Each class may be granted read, write, or execute permission. Symbolic (rwxrw-rw-) is supported. 
+The sticky bit is also supported and its represented either by the letter t or T in the final character-place depending on whether the execution bit for the others category is set or unset respectively, 
+absence of t or T indicates sticky bit not set.
 
 ```yaml
 Type: System.String
@@ -298,7 +302,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

@@ -1,0 +1,40 @@
+{
+  "Get-AzDynatraceMonitorLinkableEnv+[NoContext]+ListExpanded+$POST+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dyobrgcv1ai3/providers/Dynatrace.Observability/monitors/dyobwdxe2m/listLinkableEnvironments?api-version=2021-09-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dyobrgcv1ai3/providers/Dynatrace.Observability/monitors/dyobwdxe2m/listLinkableEnvironments?api-version=2021-09-01",
+      "Content": "{\r\n  \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n  \"userPrincipal\": \"v-diya@microsoft.com\",\r\n  \"region\": \"East US\"\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "126" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Request-Context": [ "appId=cid-v1:fab059ea-d726-424a-9451-6beb3dc74944" ],
+        "mise-correlation-id": [ "9e93f7c2-79d1-4183-a2f0-bce1e31bd9ee" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "6ae72a06-e0c7-4f86-a1ec-862f75f17ed0" ],
+        "x-ms-correlation-request-id": [ "cd4f9139-435d-4c18-ba42-c65e581b1e40" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220824T054924Z:cd4f9139-435d-4c18-ba42-c65e581b1e40" ],
+        "Date": [ "Wed, 24 Aug 2022 05:49:24 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "28" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[],\"nextLink\":null}",
+      "isContentBase64": false
+    }
+  }
+}

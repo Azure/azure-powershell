@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
     public class NewAzureWebAppSlotCmdlet : WebAppBaseClientCmdLet
     {
 
-		[Parameter(Position = 0, Mandatory = true, HelpMessage = "The name of the resource group.")]
+        [Parameter(Position = 0, Mandatory = true, HelpMessage = "The name of the resource group.")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
         [ValidateNotNullOrEmpty]
         public SwitchParameter IgnoreCustomHostNames { get; set; }
 
-        [Parameter(Position = 8, Mandatory = false, HelpMessage = "Overrides all application settings in new web app")]
+        [Parameter(Position = 8, Mandatory = false, HelpMessage = "Overrides all application settings in new web app. It works only with SourceWebApp parameter")]
         [ValidateNotNullOrEmpty]
         public Hashtable AppSettingsOverrides { get; set; }
 
@@ -77,95 +77,102 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
         [ValidateNotNullOrEmpty]
         public string AseResourceGroupName { get; set; }
 
-		[Parameter(Mandatory = false, HelpMessage = "Container Image Name and optional tag, for example (image:tag)")]
-		[ValidateNotNullOrEmpty]
-		public string ContainerImageName { get; set; }
+        [Parameter(Mandatory = false, HelpMessage = "Container Image Name and optional tag, for example (image:tag)")]
+        [ValidateNotNullOrEmpty]
+        public string ContainerImageName { get; set; }
 
-		[Parameter(Mandatory = false, HelpMessage = "Private Container Registry Server Url")]
-		[ValidateNotNullOrEmpty]
-		public string ContainerRegistryUrl { get; set; }
+        [Parameter(Mandatory = false, HelpMessage = "Private Container Registry Server Url")]
+        [ValidateNotNullOrEmpty]
+        public string ContainerRegistryUrl { get; set; }
 
-		[Parameter(Mandatory = false, HelpMessage = "Private Container Registry Username")]
-		[ValidateNotNullOrEmpty]
-		public string ContainerRegistryUser { get; set; }
+        [Parameter(Mandatory = false, HelpMessage = "Private Container Registry Username")]
+        [ValidateNotNullOrEmpty]
+        public string ContainerRegistryUser { get; set; }
 
-		[Parameter(Mandatory = false, HelpMessage = "Private Container Registry Password")]
-		[ValidateNotNullOrEmpty]
-		public SecureString ContainerRegistryPassword { get; set; }
+        [Parameter(Mandatory = false, HelpMessage = "Private Container Registry Password")]
+        [ValidateNotNullOrEmpty]
+        public SecureString ContainerRegistryPassword { get; set; }
 
-		[Parameter(Mandatory = false, HelpMessage = "Enables/Disables container continuous deployment webhook")]
-		public SwitchParameter EnableContainerContinuousDeployment { get; set; }
+        [Parameter(Mandatory = false, HelpMessage = "Enables/Disables container continuous deployment webhook")]
+        public SwitchParameter EnableContainerContinuousDeployment { get; set; }
 
+        [Parameter( Mandatory = false, HelpMessage = "Copies the managed identity from the parent or source WebApp")]
+        [ValidateNotNullOrEmpty]
+        public SwitchParameter CopyIdentity { get; set; }
 
-		[Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
-		private Hashtable GetAppSettingsToUpdate()
-		{
-			Hashtable appSettings = new Hashtable();
-			if (ContainerRegistryUrl != null)
-			{
-				appSettings[CmdletHelpers.DockerRegistryServerUrl] = ContainerRegistryUrl;
-			}
-			if (ContainerRegistryUser != null)
-			{
-				appSettings[CmdletHelpers.DockerRegistryServerUserName] = ContainerRegistryUser;
-			}
-			if (ContainerRegistryPassword != null)
-			{
-				appSettings[CmdletHelpers.DockerRegistryServerPassword] = ContainerRegistryPassword.ConvertToString();
-			}
-			if (EnableContainerContinuousDeployment.IsPresent)
-			{
-				appSettings[CmdletHelpers.DockerEnableCI] = "true";
-			}
-			return appSettings;
-		}
+        [Parameter(Mandatory = false, HelpMessage = "Tags are name/value pairs that enable you to categorize resources")]
+        public Hashtable Tag { get; set; }
 
-		private void UpdateConfigIfNeeded(Site site)
-		{
-			SiteConfig siteConfig = site.SiteConfig;
+        private Hashtable GetAppSettingsToUpdate()
+        {
+            Hashtable appSettings = new Hashtable();
+            if (ContainerRegistryUrl != null)
+            {
+                appSettings[CmdletHelpers.DockerRegistryServerUrl] = ContainerRegistryUrl;
+            }
+            if (ContainerRegistryUser != null)
+            {
+                appSettings[CmdletHelpers.DockerRegistryServerUserName] = ContainerRegistryUser;
+            }
+            if (ContainerRegistryPassword != null)
+            {
+                appSettings[CmdletHelpers.DockerRegistryServerPassword] = ContainerRegistryPassword.ConvertToString();
+            }
+            if (EnableContainerContinuousDeployment.IsPresent)
+            {
+                appSettings[CmdletHelpers.DockerEnableCI] = "true";
+            }
+            return appSettings;
+        }
 
-			bool configUpdateRequired = false;
+        private void UpdateConfigIfNeeded(Site site)
+        {
+            SiteConfig siteConfig = site.SiteConfig;
+
+            bool configUpdateRequired = false;
 			
-			if (ContainerImageName != null)
-			{
-				if (site.IsXenon.GetValueOrDefault())
-				{
-					siteConfig.WindowsFxVersion = CmdletHelpers.DockerImagePrefix + ContainerImageName;
-					configUpdateRequired = true;
-				}
-			}
+            if (ContainerImageName != null)
+            {
+                if (site.IsXenon.GetValueOrDefault())
+                {
+                    siteConfig.WindowsFxVersion = CmdletHelpers.DockerImagePrefix + ContainerImageName;
+                    configUpdateRequired = true;
+                }
+            }
 
-			Hashtable appSettings = GetAppSettingsToUpdate();
-			if (appSettings.Count > 0)
-			{
-				configUpdateRequired = true;
-			}
+            Hashtable appSettings = GetAppSettingsToUpdate();
+            if (appSettings.Count > 0)
+            {
+                configUpdateRequired = true;
+            }
 
-			if (configUpdateRequired && siteConfig.AppSettings != null)
-			{
-				foreach (NameValuePair nameValuePair in siteConfig.AppSettings)
-				{
-					if (!appSettings.ContainsKey(nameValuePair.Name))
-					{
-						appSettings[nameValuePair.Name] = nameValuePair.Value;
-					}
-				}
-			}
+            if (configUpdateRequired && siteConfig.AppSettings != null)
+            {
+                foreach (NameValuePair nameValuePair in siteConfig.AppSettings)
+                {
+                    if (!appSettings.ContainsKey(nameValuePair.Name))
+                    {
+                        appSettings[nameValuePair.Name] = nameValuePair.Value;
+                    }
+                }
+            }
 
-			if (configUpdateRequired)
-			{
-				WebsitesClient.UpdateWebAppConfiguration(ResourceGroupName, site.Location, Name, Slot, siteConfig, appSettings.ConvertToStringDictionary());
-				site = WebsitesClient.GetWebApp(ResourceGroupName, Name, Slot);
-			}
-			WriteObject(site);
-		}
-		public override void ExecuteCmdlet()
+            if (configUpdateRequired)
+            {
+                WebsitesClient.UpdateWebAppConfiguration(ResourceGroupName, site.Location, Name, Slot, siteConfig, appSettings.ConvertToStringDictionary());
+                site = WebsitesClient.GetWebApp(ResourceGroupName, Name, Slot);
+            }
+            WriteObject(site);
+        }
+	
+        public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
-            
-            CloningInfo cloningInfo = null;
+	    ManagedServiceIdentity sourceIdentity = null;
+	    CloningInfo cloningInfo = null;
             if (SourceWebApp != null)
             {
                 cloningInfo = new CloningInfo
@@ -178,11 +185,13 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
                     AppSettingsOverrides = AppSettingsOverrides == null ? null : AppSettingsOverrides.Cast<DictionaryEntry>().ToDictionary(kvp => kvp.Key.ToString(), kvp => kvp.Value.ToString(), StringComparer.Ordinal)
                 };
                 cloningInfo = new PSCloningInfo(cloningInfo);
-            }
+                if(CopyIdentity.IsPresent) sourceIdentity = SourceWebApp.Identity;
+	    }
 
             var webApp = new PSSite(WebsitesClient.GetWebApp(ResourceGroupName, Name, null));
-			var site = new PSSite(WebsitesClient.CreateWebApp(ResourceGroupName, Name, Slot, webApp.Location, AppServicePlan==null?webApp.ServerFarmId : AppServicePlan, cloningInfo, AseName, AseResourceGroupName));
-			UpdateConfigIfNeeded(site);
+	    if (CopyIdentity.IsPresent && sourceIdentity == null) sourceIdentity = webApp.Identity;
+	    var site = new PSSite(WebsitesClient.CreateWebApp(ResourceGroupName, Name, Slot, webApp.Location, AppServicePlan==null?webApp.ServerFarmId : AppServicePlan, cloningInfo, AseName, AseResourceGroupName, (IDictionary<string, string>)CmdletHelpers.ConvertToStringDictionary(Tag),sourceIdentity));
+	    UpdateConfigIfNeeded(site);
         }
     }
 }

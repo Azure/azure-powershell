@@ -13,15 +13,15 @@ while(-not $mockingPath) {
 
 Describe 'New-AzBotService' {
     It 'Registration' {
-        $NewAzBot = New-AzBotService -ResourceGroupName $env.ResourceGroupName -Name $env.NewBotService1 -ApplicationId $env.WebApplication1 -Location $env.Location -Sku F0 -Description "description" -Registration
-        $NewAzBot.Name | Should -Be $env.NewBotService1
+        $NewAzBot = New-AzBotService -ResourceGroupName $env.ResourceGroupName -Name $env.NewBotService2 -ApplicationId $env.WebApplication2 -Location $env.Location -Sku F0 -Description "description" -Registration
+        $NewAzBot.Name | Should -Be $env.NewBotService2
     }
 
     #this case use the cmdlet 'New-AzResourceGroupDeployment' and it is can not be recorded.
     It 'WebApp' -Skip {
         $ApplicationSecret = ConvertTo-SecureString -String $env.Secret -Force -AsPlainText
         write-host $ApplicationSecret
-        $NewAzBot = New-AzBotService -ResourceGroupName $env.ResourceGroupName -Name $env.NewBotService2 -ApplicationId $env.WebApplication2 -Location $env.Location -Sku F0 -Description "description" -ApplicationSecret $ApplicationSecret -Webapp
-        $NewAzBot.Name | Should -Be $env.NewBotService2
+        $NewAzBot = New-AzBotService -ResourceGroupName $env.ResourceGroupName -Name $env.NewBotService3 -ApplicationId $env.WebApplication3 -Location $env.Location -Sku F0 -Description "description" -ApplicationSecret $ApplicationSecret -Webapp
+        $NewAzBot.Name | Should -Be $env.NewBotService3
     }
 }

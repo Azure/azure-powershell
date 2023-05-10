@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
 ms.assetid: 2E7E20CD-6A2B-455E-9476-8E0827429162
-online version: https://docs.microsoft.com/powershell/module/az.sql/get-azsqlservercommunicationlink
+online version: https://learn.microsoft.com/powershell/module/az.sql/get-azsqlservercommunicationlink
 schema: 2.0.0
 ---
 
@@ -159,4 +159,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 [Remove-AzSqlServerCommunicationLink](./Remove-AzSqlServerCommunicationLink.md)
 
-[SQL Database Documentation](https://docs.microsoft.com/azure/sql-database/)
+[SQL Database Documentation](https://learn.microsoft.com/azure/sql-database/)

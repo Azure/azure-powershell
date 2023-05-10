@@ -1,7 +1,7 @@
 ---
 Module Name: Az.KeyVault
 Module Guid: D48CF693-4125-4D2D-8790-1514F44CE325
-Download Help Link: https://docs.microsoft.com/powershell/module/az.keyvault
+Download Help Link: https://learn.microsoft.com/powershell/module/az.keyvault
 Help Version: 4.0.0.0
 Locale: en-US
 ---
@@ -205,6 +205,9 @@ Recovers a previously deleted KeyVault-managed storage SAS definition.
 
 ### [Undo-AzKeyVaultRemoval](Undo-AzKeyVaultRemoval.md)
 Recovers a deleted key vault into an active state.
+
+### [Undo-AzKeyVaultManagedHsmRemoval](./Undo-AzKeyVaultManagedHsmRemoval.md)
+Recovers a deleted HSM into an active state.
 
 ### [Undo-AzKeyVaultSecretRemoval](Undo-AzKeyVaultSecretRemoval.md)
 Recovers a deleted secret in a key vault into an active state.

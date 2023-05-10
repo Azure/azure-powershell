@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Migrate
-online version: https://docs.microsoft.com/powershell/module/az.migrate/remove-azmigrateproject
+online version: https://learn.microsoft.com/powershell/module/az.migrate/remove-azmigrateproject
 schema: 2.0.0
 ---
 
@@ -27,10 +27,6 @@ Deleting non-existent project is a no-operation.
 ### Example 1: Delete (Default)
 ```powershell
 Remove-AzMigrateProject -SubscriptionId xxx-xxx-xxx -ResourceGroupName BugBashAVSVMware -Name BugBashAVSVMware
-```
-
-```output
---No output--
 ```
 
 Delete the migrate project.

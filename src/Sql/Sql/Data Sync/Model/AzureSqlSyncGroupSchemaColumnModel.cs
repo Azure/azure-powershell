@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Model
     /// </summary>
     public class AzureSqlSyncGroupSchemaColumnModel
     {
-        // <summary>
+        /// <summary>
         /// The quoted table name
         /// </summary>
         public string QuotedName { get; set; }

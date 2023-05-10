@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.HanaOnAzure
-online version: https://docs.microsoft.com/powershell/module/az.hanaonazure/get-azsapmonitor
+online version: https://learn.microsoft.com/powershell/module/az.hanaonazure/get-azsapmonitor
 schema: 2.0.0
 ---
 
@@ -186,7 +186,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IHanaOnAzureIdentity>: Identity Parameter
+INPUTOBJECT `<IHanaOnAzureIdentity>`: Identity Parameter
   - `[Id <String>]`: Resource identity path
   - `[Location <String>]`: The location of the deleted vault.
   - `[OperationKind <AccessPolicyUpdateKind?>]`: Name of the operation

@@ -24,6 +24,8 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         public PSDynamicExecutorAllocation(DynamicExecutorAllocation dynamicExecutorAllocation)
         {
             this.Enabled = dynamicExecutorAllocation?.Enabled ?? false;
+            this.MinExecutors = dynamicExecutorAllocation?.MinExecutors;
+            this.MaxExecutors = dynamicExecutorAllocation?.MaxExecutors;
         }
 
         /// <summary>
@@ -31,5 +33,15 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// enabled or not.
         /// </summary>
         public bool Enabled { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the minimum number of executors alloted
+        /// </summary>
+        public int? MinExecutors { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the maximum number of executors alloted
+        /// </summary>
+        public int? MaxExecutors { get; set; }
     }
 }

@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Monitor.dll-Help.xml
 Module Name: Az.Monitor
 ms.assetid: A70F4C03-E842-45D5-9323-DC5B14B569F1
-online version: https://docs.microsoft.com/powershell/module/az.monitor/get-azautoscalehistory
+online version: https://learn.microsoft.com/powershell/module/az.monitor/get-azautoscalehistory
 schema: 2.0.0
 ---
 
@@ -304,8 +304,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
-[Add-AzAutoscaleSetting](./Add-AzAutoscaleSetting.md)
 
 [Get-AzAutoscaleSetting](./Get-AzAutoscaleSetting.md)
 

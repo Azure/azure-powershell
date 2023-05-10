@@ -46,7 +46,7 @@ TRANSFERFILTERDETAIL <ITransferConfigurationTransferFilterDetails>: Map of filte
     FilterFilePath <String>: Path of the file that contains the details of all items to transfer.
     FilterFileType <FilterFileType>: Type of the filter file.
 .Link
-https://docs.microsoft.com/powershell/module/az.DataBox/new-AzDataBoxTransferConfigurationObject
+https://learn.microsoft.com/powershell/module/az.DataBox/new-AzDataBoxTransferConfigurationObject
 #>
 function New-AzDataBoxTransferConfigurationObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.TransferConfiguration])]

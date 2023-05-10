@@ -38,7 +38,7 @@ IDENTITYPROPERTY <IIdentityProperties>: Managed identity properties used for key
   [Type <String>]: Managed service identity type.
   [UserAssignedResourceId <String>]: Arm resource id for user assigned identity to be used to fetch MSI token.
 .Link
-https://docs.microsoft.com/powershell/module/az.DataBox/new-AzDataBoxKeyEncryptionKeyObject
+https://learn.microsoft.com/powershell/module/az.DataBox/new-AzDataBoxKeyEncryptionKeyObject
 #>
 function New-AzDataBoxKeyEncryptionKeyObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.KeyEncryptionKey])]

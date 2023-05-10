@@ -29,6 +29,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Cmdlets
         /// <summary>A unique id generatd for the this cmdlet when ProcessRecord() is called.</summary>
         private string __processRecordId;
 
+        /// <summary>Site REST Resource.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSite _body = new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.VMwareSite();
+
         /// <summary>
         /// The <see cref="global::System.Threading.CancellationTokenSource" /> for this operation.
         /// </summary>
@@ -43,7 +46,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Cmdlets
         Description = @"Key vault ARM Id.",
         SerializedName = @"keyVaultId",
         PossibleTypes = new [] { typeof(string) })]
-        public string AgentDetailKeyVaultId { get => Body.AgentDetailKeyVaultId ?? null; set => Body.AgentDetailKeyVaultId = value; }
+        public string AgentDetailKeyVaultId { get => _body.AgentDetailKeyVaultId ?? null; set => _body.AgentDetailKeyVaultId = value; }
 
         /// <summary>Key vault URI.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Key vault URI.")]
@@ -54,7 +57,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Cmdlets
         Description = @"Key vault URI.",
         SerializedName = @"keyVaultUri",
         PossibleTypes = new [] { typeof(string) })]
-        public string AgentDetailKeyVaultUri { get => Body.AgentDetailKeyVaultUri ?? null; set => Body.AgentDetailKeyVaultUri = value; }
+        public string AgentDetailKeyVaultUri { get => _body.AgentDetailKeyVaultUri ?? null; set => _body.AgentDetailKeyVaultUri = value; }
 
         /// <summary>Appliance Name.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Appliance Name.")]
@@ -65,13 +68,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Cmdlets
         Description = @"Appliance Name.",
         SerializedName = @"applianceName",
         PossibleTypes = new [] { typeof(string) })]
-        public string ApplianceName { get => Body.ApplianceName ?? null; set => Body.ApplianceName = value; }
-
-        /// <summary>Backing field for <see cref="Body" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSite _body= new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.VMwareSite();
-
-        /// <summary>Site REST Resource.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSite Body { get => this._body; set => this._body = value; }
+        public string ApplianceName { get => _body.ApplianceName ?? null; set => _body.ApplianceName = value; }
 
         /// <summary>Wait for .NET debugger to attach</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "Wait for .NET debugger to attach")]
@@ -99,7 +96,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Cmdlets
         Description = @"ARM ID of migration hub solution for SDS.",
         SerializedName = @"discoverySolutionId",
         PossibleTypes = new [] { typeof(string) })]
-        public string DiscoverySolutionId { get => Body.DiscoverySolutionId ?? null; set => Body.DiscoverySolutionId = value; }
+        public string DiscoverySolutionId { get => _body.DiscoverySolutionId ?? null; set => _body.DiscoverySolutionId = value; }
 
         /// <summary>eTag for concurrency control.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "eTag for concurrency control.")]
@@ -110,7 +107,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Cmdlets
         Description = @"eTag for concurrency control.",
         SerializedName = @"eTag",
         PossibleTypes = new [] { typeof(string) })]
-        public string ETag { get => Body.ETag ?? null; set => Body.ETag = value; }
+        public string ETag { get => _body.ETag ?? null; set => _body.ETag = value; }
 
         /// <summary>SendAsync Pipeline Steps to be appended to the front of the pipeline</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "SendAsync Pipeline Steps to be appended to the front of the pipeline")]
@@ -136,14 +133,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Cmdlets
         Description = @"Azure location in which Sites is created.",
         SerializedName = @"location",
         PossibleTypes = new [] { typeof(string) })]
-        public string Location { get => Body.Location ?? null; set => Body.Location = value; }
+        public string Location { get => _body.Location ?? null; set => _body.Location = value; }
 
         /// <summary>
-        /// <see cref="IEventListener" /> cancellation delegate. Stops the cmdlet when called.
+        /// <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener" /> cancellation delegate. Stops the cmdlet when called.
         /// </summary>
         global::System.Action Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener.Cancel => _cancellationTokenSource.Cancel;
 
-        /// <summary><see cref="IEventListener" /> cancellation token.</summary>
+        /// <summary><see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener" /> cancellation token.</summary>
         global::System.Threading.CancellationToken Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener.Token => _cancellationTokenSource.Token;
 
         /// <summary>Name of the VMware site.</summary>
@@ -155,7 +152,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Cmdlets
         Description = @"Name of the VMware site.",
         SerializedName = @"name",
         PossibleTypes = new [] { typeof(string) })]
-        public string Name { get => Body.Name ?? null; set => Body.Name = value; }
+        public string Name { get => _body.Name ?? null; set => _body.Name = value; }
 
         /// <summary>
         /// The instance of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.HttpPipeline" /> that the remote call will use.
@@ -203,7 +200,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Cmdlets
         Description = @"AAD Authority URL which was used to request the token for the service principal.",
         SerializedName = @"aadAuthority",
         PossibleTypes = new [] { typeof(string) })]
-        public string ServicePrincipalIdentityDetailAadAuthority { get => Body.ServicePrincipalIdentityDetailAadAuthority ?? null; set => Body.ServicePrincipalIdentityDetailAadAuthority = value; }
+        public string ServicePrincipalIdentityDetailAadAuthority { get => _body.ServicePrincipalIdentityDetailAadAuthority ?? null; set => _body.ServicePrincipalIdentityDetailAadAuthority = value; }
 
         /// <summary>
         /// Application/client Id for the service principal with which the on-premise management/data plane components would communicate
@@ -217,7 +214,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Cmdlets
         Description = @"Application/client Id for the service principal with which the on-premise management/data plane components would communicate with our Azure services.",
         SerializedName = @"applicationId",
         PossibleTypes = new [] { typeof(string) })]
-        public string ServicePrincipalIdentityDetailApplicationId { get => Body.ServicePrincipalIdentityDetailApplicationId ?? null; set => Body.ServicePrincipalIdentityDetailApplicationId = value; }
+        public string ServicePrincipalIdentityDetailApplicationId { get => _body.ServicePrincipalIdentityDetailApplicationId ?? null; set => _body.ServicePrincipalIdentityDetailApplicationId = value; }
 
         /// <summary>Intended audience for the service principal.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Intended audience for the service principal.")]
@@ -228,7 +225,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Cmdlets
         Description = @"Intended audience for the service principal.",
         SerializedName = @"audience",
         PossibleTypes = new [] { typeof(string) })]
-        public string ServicePrincipalIdentityDetailAudience { get => Body.ServicePrincipalIdentityDetailAudience ?? null; set => Body.ServicePrincipalIdentityDetailAudience = value; }
+        public string ServicePrincipalIdentityDetailAudience { get => _body.ServicePrincipalIdentityDetailAudience ?? null; set => _body.ServicePrincipalIdentityDetailAudience = value; }
 
         /// <summary>
         /// Object Id of the service principal with which the on-premise management/data plane components would communicate with our
@@ -242,7 +239,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Cmdlets
         Description = @"Object Id of the service principal with which the on-premise management/data plane components would communicate with our Azure services.",
         SerializedName = @"objectId",
         PossibleTypes = new [] { typeof(string) })]
-        public string ServicePrincipalIdentityDetailObjectId { get => Body.ServicePrincipalIdentityDetailObjectId ?? null; set => Body.ServicePrincipalIdentityDetailObjectId = value; }
+        public string ServicePrincipalIdentityDetailObjectId { get => _body.ServicePrincipalIdentityDetailObjectId ?? null; set => _body.ServicePrincipalIdentityDetailObjectId = value; }
 
         /// <summary>Raw certificate data for building certificate expiry flows.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Raw certificate data for building certificate expiry flows.")]
@@ -253,7 +250,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Cmdlets
         Description = @"Raw certificate data for building certificate expiry flows.",
         SerializedName = @"rawCertData",
         PossibleTypes = new [] { typeof(string) })]
-        public string ServicePrincipalIdentityDetailRawCertData { get => Body.ServicePrincipalIdentityDetailRawCertData ?? null; set => Body.ServicePrincipalIdentityDetailRawCertData = value; }
+        public string ServicePrincipalIdentityDetailRawCertData { get => _body.ServicePrincipalIdentityDetailRawCertData ?? null; set => _body.ServicePrincipalIdentityDetailRawCertData = value; }
 
         /// <summary>
         /// Tenant Id for the service principal with which the on-premise management/data plane components would communicate with
@@ -267,7 +264,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Cmdlets
         Description = @"Tenant Id for the service principal with which the on-premise management/data plane components would communicate with our Azure services.",
         SerializedName = @"tenantId",
         PossibleTypes = new [] { typeof(string) })]
-        public string ServicePrincipalIdentityDetailTenantId { get => Body.ServicePrincipalIdentityDetailTenantId ?? null; set => Body.ServicePrincipalIdentityDetailTenantId = value; }
+        public string ServicePrincipalIdentityDetailTenantId { get => _body.ServicePrincipalIdentityDetailTenantId ?? null; set => _body.ServicePrincipalIdentityDetailTenantId = value; }
 
         /// <summary>Backing field for <see cref="SiteName" /> property.</summary>
         private string _siteName;
@@ -311,15 +308,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Cmdlets
         Description = @"Dictionary of <string>",
         SerializedName = @"tags",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteTags) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteTags Tag { get => Body.Tag ?? null /* object */; set => Body.Tag = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSiteTags Tag { get => _body.Tag ?? null /* object */; set => _body.Tag = value; }
 
         /// <summary>
         /// <c>overrideOnCreated</c> will be called before the regular onCreated has been processed, allowing customization of what
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSite"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSite">Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSite</see>
+        /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onCreated method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
@@ -330,8 +327,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Cmdlets
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSite"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSite">Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSite</see>
+        /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
@@ -342,6 +339,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Cmdlets
         /// </summary>
         protected override void BeginProcessing()
         {
+            var telemetryId = Microsoft.Azure.PowerShell.Cmdlets.Migrate.Module.Instance.GetTelemetryId.Invoke();
+            if (telemetryId != "" && telemetryId != "internal")
+            {
+                __correlationId = telemetryId;
+            }
             Module.Instance.SetProxyConfiguration(Proxy, ProxyCredential, ProxyUseDefaultCredentials);
             if (Break)
             {
@@ -353,7 +355,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Cmdlets
         /// <summary>Performs clean-up after the command execution</summary>
         protected override void EndProcessing()
         {
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.CmdletEndProcessing).Wait(); if( ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
+
         }
 
         /// <summary>Handles/Dispatches events during the call to the REST service.</summary>
@@ -456,7 +458,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Cmdlets
         {
             using( NoSynchronizationContext )
             {
-                await ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.CmdletProcessRecordAsyncStart); if( ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 await ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.CmdletGetPipeline); if( ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 Pipeline = Microsoft.Azure.PowerShell.Cmdlets.Migrate.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName);
                 if (null != HttpPipelinePrepend)
@@ -471,12 +472,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Cmdlets
                 try
                 {
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                    await this.Client.SitesCreateOrUpdate(SubscriptionId, ResourceGroupName, SiteName, Body, onOk, onCreated, this, Pipeline);
+                    await this.Client.SitesCreateOrUpdate(SubscriptionId, ResourceGroupName, SiteName, _body, onOk, onCreated, this, Pipeline);
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,SiteName=SiteName,body=Body})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,SiteName=SiteName,body=_body})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -505,8 +506,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 201 (Created).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSite"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSite">Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSite</see>
+        /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
@@ -529,8 +530,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSite"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSite">Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSite</see>
+        /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>

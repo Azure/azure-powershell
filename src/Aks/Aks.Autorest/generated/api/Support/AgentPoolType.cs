@@ -6,18 +6,20 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Support
 {
 
-    /// <summary>AgentPoolType represents types of an agent pool.</summary>
+    /// <summary>The type of Agent Pool.</summary>
     public partial struct AgentPoolType :
         System.IEquatable<AgentPoolType>
     {
+        /// <summary>Use of this is strongly discouraged.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.AgentPoolType AvailabilitySet = @"AvailabilitySet";
 
+        /// <summary>Create an Agent Pool backed by a Virtual Machine Scale Set.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.AgentPoolType VirtualMachineScaleSets = @"VirtualMachineScaleSets";
 
         /// <summary>the value for an instance of the <see cref="AgentPoolType" /> Enum.</summary>
         private string _value { get; set; }
 
-        /// <summary>Creates an instance of the <see cref="AgentPoolType" Enum class./></summary>
+        /// <summary>Creates an instance of the <see cref="AgentPoolType"/> Enum class.</summary>
         /// <param name="underlyingValue">the value to create an instance for.</param>
         private AgentPoolType(string underlyingValue)
         {
@@ -78,8 +80,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Support
         }
 
         /// <summary>Overriding != operator for enum AgentPoolType</summary>
-        /// <param name="e1">the value to compare against <see cref="e2" /></param>
-        /// <param name="e2">the value to compare against <see cref="e1" /></param>
+        /// <param name="e1">the value to compare against <paramref name="e2" /></param>
+        /// <param name="e2">the value to compare against <paramref name="e1" /></param>
         /// <returns><c>true</c> if the two instances are not equal to the same value</returns>
         public static bool operator !=(Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.AgentPoolType e1, Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.AgentPoolType e2)
         {
@@ -87,8 +89,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Support
         }
 
         /// <summary>Overriding == operator for enum AgentPoolType</summary>
-        /// <param name="e1">the value to compare against <see cref="e2" /></param>
-        /// <param name="e2">the value to compare against <see cref="e1" /></param>
+        /// <param name="e1">the value to compare against <paramref name="e2" /></param>
+        /// <param name="e2">the value to compare against <paramref name="e1" /></param>
         /// <returns><c>true</c> if the two instances are equal to the same value</returns>
         public static bool operator ==(Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.AgentPoolType e1, Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.AgentPoolType e2)
         {

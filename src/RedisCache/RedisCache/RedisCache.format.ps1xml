@@ -310,6 +310,22 @@
 								<Label>ProvisioningState</Label>
 								<PropertyName>ProvisioningState</PropertyName>
 							</ListItem>
+							<ListItem>
+								<Label>LinkedRedisCacheLocation</Label>
+								<PropertyName>LinkedRedisCacheLocation</PropertyName>
+							</ListItem>
+							<ListItem>
+								<Label>ServerRole</Label>
+								<PropertyName>ServerRole</PropertyName>
+							</ListItem>
+							<ListItem>
+								<Label>PrimaryHostName</Label>
+								<PropertyName>PrimaryHostName</PropertyName>
+							</ListItem>
+							<ListItem>
+								<Label>GeoReplicatedPrimaryHostName</Label>
+								<PropertyName>GeoReplicatedPrimaryHostName</PropertyName>
+							</ListItem>
 						</ListItems>
 					</ListEntry>
 				</ListEntries>

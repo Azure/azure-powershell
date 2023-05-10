@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.dll-Help.xml
 Module Name: Az.SqlVirtualMachine
-online version: https://docs.microsoft.com/powershell/module/az.sqlvirtualmachine/update-azsqlvm
+online version: https://learn.microsoft.com/powershell/module/az.sqlvirtualmachine/update-azsqlvm
 schema: 2.0.0
 ---
 
@@ -46,8 +46,10 @@ The Update-AzSqlVM cmdlet updates a sql virtual machine.
 ### Example 1
 ```powershell
 $tags = @{'key'='value'}
-$vm = Update-AzSqlVM -InputObject $vm -Tag $tags
-$group.Tags
+$vm = Get-AzSqlVM -ResourceGroupName "ResourceGroup01" -Name "vm"
+$vm.Tags = $tags
+$vm = Update-AzSqlVM -ResourceGroupName "ResourceGroup01" -Name "vm" -InputObject $vm
+$vm.Tags
 ```
 
 ```output

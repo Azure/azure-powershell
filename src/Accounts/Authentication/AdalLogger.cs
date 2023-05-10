@@ -131,6 +131,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             /// </summary>
             /// <param name="level">The log level</param>
             /// <param name="message">The log message</param>
+            /// <param name="containsPII"></param>
             public void Log(LogLevel level, string message, bool containsPII)
             {
                 foreach (var logger in _loggers)

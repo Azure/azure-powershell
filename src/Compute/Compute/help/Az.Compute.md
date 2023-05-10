@@ -1,7 +1,7 @@
 ---
 Module Name: Az.Compute
 Module Guid: 0a83c907-1ffb-4d87-a492-c65ac7d7ed37
-Download Help Link: https://docs.microsoft.com/powershell/module/az.compute
+Download Help Link: https://learn.microsoft.com/powershell/module/az.compute
 Help Version: 3.5.0.0
 Locale: en-US
 ---
@@ -204,7 +204,7 @@ Gets the VMImage publishers.
 Gets VMImage SKUs.
 
 ### [Get-AzVMRunCommand](Get-AzVMRunCommand.md)
-Gets specific run command for a subscription in a location.
+Gets a specific Run Command or a list of Run Commands for a Virtual Machine
 
 ### [Get-AzVMRunCommandDocument](Get-AzVMRunCommandDocument.md)
 Get a run command document.
@@ -518,6 +518,9 @@ The operation to delete the VMSS VM run command.
 ### [Repair-AzVmssServiceFabricUpdateDomain](Repair-AzVmssServiceFabricUpdateDomain.md)
 Manual platform update domain walk to update virtual machines in a service fabric virtual machine scale set.
 
+### [Restart-AzHost](Restart-AzHost.md)
+Restart the dedicated host.
+
 ### [Restart-AzVM](Restart-AzVM.md)
 Restarts an Azure virtual machine.
 
@@ -573,7 +576,7 @@ Sets the disk encryption key properties on a snapshot update object.
 Sets the key encryption key properties on a snapshot update object.
 
 ### [Set-AzVM](Set-AzVM.md)
-Marks a virtual machine as generalized.
+This cmdlet can be used to do the followings: reapply or redeploy a virtual machine, mark a virtual machine as generalized, simulate eviction to a spot virtual machine.
 
 ### [Set-AzVMAccessExtension](Set-AzVMAccessExtension.md)
 Adds the VMAccess extension to a virtual machine.

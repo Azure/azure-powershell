@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
-online version:
+online version: https://learn.microsoft.com/powershell/module/az.compute/restart-azhost
 schema: 2.0.0
 ---
 
@@ -31,13 +31,13 @@ Restart-AzHost -InputObject <PSHost> [-DefaultProfile <IAzureContextContainer>] 
 ```
 
 ## DESCRIPTION
-Restart the dedicated host. The operation will complete successfully once the dedicated host has restarted and is running. To determine the health of VMs deployed on the dedicated host after the restart check the Resource Health Center in the Azure Portal. Please refer to https://docs.microsoft.com/en-us/azure/service-health/resource-health-overview for more details.
+Restart the dedicated host. The operation will complete successfully once the dedicated host has restarted and is running. To determine the health of VMs deployed on the dedicated host after the restart check the Resource Health Center in the Azure Portal. Please refer to https://learn.microsoft.com/en-us/azure/service-health/resource-health-overview for more details.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-$Location = <Location>;
+$Location = 'Location';
 $ResourceGroupName = New-AzResourceGroup -Name $rgname -Location $Location -Force;
 
 $hostGroupName = $ResourceGroupName + 'hostgroup'

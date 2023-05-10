@@ -13,12 +13,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="AutoMapper" Version="6.2.2" />
-    <PackageReference Include="Microsoft.Azure.Management.Compute" Version="55.0.0" />
-    <PackageReference Include="System.Security.Permissions" Version="4.5.0" />
+    <PackageReference Include="Microsoft.Azure.PowerShell.AutoMapper" Version="6.2.2" />
+    <PackageReference Include="Microsoft.Azure.Management.ResourceGraph" Version="2.1.0" />
+    <PackageReference Include="Microsoft.Azure.Management.Compute" Version="60.0.0" />
+    <PackageReference Include="System.Security.Permissions" Version="4.7.0" />
     <PackageReference Include="System.ServiceModel.Primitives" Version="4.7.0" />
     <PackageReference Include="WindowsAzure.Storage" Version="9.3.0" />
     <PackageReference Include="System.Management" Version="4.5.0" />
+    <!-- Include the following DLLs for security issue -->
+    <PackageReference Include="System.Security.Cryptography.Xml" Version="4.7.1" />
   </ItemGroup>
 
   <ItemGroup>
@@ -53,5 +56,7 @@
       <ExcludeAssets>runtime</ExcludeAssets>
     </ProjectReference>
   </ItemGroup>
+
+  <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.Post.props" />
 
 </Project>

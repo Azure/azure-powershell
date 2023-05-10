@@ -54,5 +54,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             }
             return false;
         }
+
+        public override bool BeEquivalent(object obj)
+        {
+            if (obj is ServicePrincipalKey other)
+            {
+                return this.name == other.name && this.appId == other.appId;
+            }
+            return false;
+        }
     }
 }

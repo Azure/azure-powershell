@@ -69,7 +69,7 @@ OUTPUT <IOutput>: An output object, containing all information associated with t
   [SizeWindow <Single?>]: 
   [TimeWindow <String>]: 
 .Link
-https://docs.microsoft.com/powershell/module/az.streamanalytics/update-azstreamanalyticsoutput
+https://learn.microsoft.com/powershell/module/az.streamanalytics/update-azstreamanalyticsoutput
 #>
 function Update-AzStreamAnalyticsOutput {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IOutput])]

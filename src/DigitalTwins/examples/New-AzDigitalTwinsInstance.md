@@ -1,23 +1,13 @@
-### Example 1: Create an AzDigitalTwinsInstance by default.
+### Example 1: Create or update the metadata of a DigitalTwinsInstance.
 ```powershell
-PS C:\> New-AzDigitalTwinsInstance -ResourceGroupName youritest -ResourceName youriDigitalTwin -Location eastus
-
-Location Name             SkuName Type
--------- ----             ------- ----
-eastus   youriDigitalTwin S1      Microsoft.DigitalTwins/digitalTwinsInstances
+New-AzDigitalTwinsInstance -ResourceGroupName azps_test_group -ResourceName azps-digitaltwins-instance -Location eastus -IdentityType 'SystemAssigned' -PublicNetworkAccess 'Enabled'
 ```
 
-Create an AzDigitalTwinsInstance by default
-
-### Example 2: Create an AzDigitalTwinsInstance by AzDigitalTwins Object.
-```powershell
-PS C:\> $GetAzDigTwin = Get-AzDigitalTwinsInstance -ResourceGroupName youritemp -ResourceName youriDigitalTwinsTest
-New-AzDigitalTwinsInstance -ResourceGroupName youritemp -ResourceName youriDigitalTwinsTest01 -DigitalTwinsCreate $getAzdigitalTwins
-
-Location Name                    Type
--------- ----                    ----
-eastus   youriDigitalTwinsTest01 Microsoft.DigitalTwins/digitalTwinsInstances
+```output
+Name                       Location ResourceGroupName
+----                       -------- -----------------
+azps-digitaltwins-instance eastus   azps_test_group
 ```
 
-Create an AzDigitalTwinsInstance by AzDigitalTwins Object
-
+Create or update the metadata of a DigitalTwinsInstance.
+The usual pattern to modify a property is to retrieve the DigitalTwinsInstance and security metadata, and then combine them with the modified values in a new body to update the DigitalTwinsInstance.

@@ -1,0 +1,57 @@
+﻿{
+  "anyOf": [
+    {
+      "allOf": [
+        {
+          "claim": "x-ms-attestation-type",
+          "equals": "sevsnpvm"
+        },
+        {
+          "claim": "x-ms-compliance-status",
+          "equals": "azure-compliant-cvm"
+        }
+      ],
+      "authority": "https://sharedeus.eus.attest.azure.net/"
+    },
+    {
+      "allOf": [
+        {
+          "claim": "x-ms-attestation-type",
+          "equals": "sevsnpvm"
+        },
+        {
+          "claim": "x-ms-compliance-status",
+          "equals": "azure-compliant-cvm"
+        }
+      ],
+      "authority": "https://sharedwus.wus.attest.azure.net/"
+    },
+    {
+      "allOf": [
+        {
+          "claim": "x-ms-attestation-type",
+          "equals": "sevsnpvm"
+        },
+        {
+          "claim": "x-ms-compliance-status",
+          "equals": "azure-compliant-cvm"
+        }
+      ],
+      "authority": "https://sharedneu.neu.attest.azure.net/"
+    },
+    {
+      "allOf": [
+        {
+          "claim": "x-ms-attestation-type",
+          "equals": "sevsnpvm"
+        },
+        {
+          "claim": "x-ms-compliance-status",
+          "equals": "azure-compliant-cvm"
+        }
+      ],
+      "authority": "https://sharedweu.weu.attest.azure.net/"
+    }
+  ],
+  "version": "1.0.0"
+}

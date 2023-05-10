@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
 ms.assetid: 8F7AF1B8-D769-452C-92CF-4486C3EB894D
-online version: https://docs.microsoft.com/powershell/module/az.compute/set-azvmosdisk
+online version: https://learn.microsoft.com/powershell/module/az.compute/set-azvmosdisk
 schema: 2.0.0
 ---
 
@@ -18,8 +18,8 @@ Sets the operating system disk properties on a virtual machine.
 Set-AzVMOSDisk [-VM] <PSVirtualMachine> [[-Name] <String>] [[-VhdUri] <String>] [[-Caching] <CachingTypes>]
  [[-SourceImageUri] <String>] [[-CreateOption] <String>] [-DiskSizeInGB <Int32>] [-ManagedDiskId <String>]
  [-StorageAccountType <String>] [-DiskEncryptionSetId <String>] [-WriteAccelerator] [-DiffDiskSetting <String>]
- [-DiffDiskPlacement <String>] [-DeleteOption <String>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-DiffDiskPlacement <String>] [-DeleteOption <String>] [-SecurityEncryptionType <String>]
+ [-SecureVMDiskEncryptionSet <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### WindowsParamSet
@@ -28,6 +28,7 @@ Set-AzVMOSDisk [-VM] <PSVirtualMachine> [[-Name] <String>] [[-VhdUri] <String>] 
  [[-SourceImageUri] <String>] [[-CreateOption] <String>] [-Windows] [-DiskSizeInGB <Int32>]
  [-ManagedDiskId <String>] [-StorageAccountType <String>] [-DiskEncryptionSetId <String>] [-WriteAccelerator]
  [-DiffDiskSetting <String>] [-DiffDiskPlacement <String>] [-DeleteOption <String>]
+ [-SecurityEncryptionType <String>] [-SecureVMDiskEncryptionSet <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -38,7 +39,8 @@ Set-AzVMOSDisk [-VM] <PSVirtualMachine> [[-Name] <String>] [[-VhdUri] <String>] 
  [-DiskEncryptionKeyVaultId] <String> [[-KeyEncryptionKeyUrl] <String>] [[-KeyEncryptionKeyVaultId] <String>]
  [-DiskSizeInGB <Int32>] [-ManagedDiskId <String>] [-StorageAccountType <String>]
  [-DiskEncryptionSetId <String>] [-WriteAccelerator] [-DiffDiskSetting <String>] [-DiffDiskPlacement <String>]
- [-DeleteOption <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DeleteOption <String>] [-SecurityEncryptionType <String>] [-SecureVMDiskEncryptionSet <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### LinuxParamSet
@@ -47,6 +49,7 @@ Set-AzVMOSDisk [-VM] <PSVirtualMachine> [[-Name] <String>] [[-VhdUri] <String>] 
  [[-SourceImageUri] <String>] [[-CreateOption] <String>] [-Linux] [-DiskSizeInGB <Int32>]
  [-ManagedDiskId <String>] [-StorageAccountType <String>] [-DiskEncryptionSetId <String>] [-WriteAccelerator]
  [-DiffDiskSetting <String>] [-DiffDiskPlacement <String>] [-DeleteOption <String>]
+ [-SecurityEncryptionType <String>] [-SecureVMDiskEncryptionSet <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -57,7 +60,8 @@ Set-AzVMOSDisk [-VM] <PSVirtualMachine> [[-Name] <String>] [[-VhdUri] <String>] 
  [-DiskEncryptionKeyVaultId] <String> [[-KeyEncryptionKeyUrl] <String>] [[-KeyEncryptionKeyVaultId] <String>]
  [-DiskSizeInGB <Int32>] [-ManagedDiskId <String>] [-StorageAccountType <String>]
  [-DiskEncryptionSetId <String>] [-WriteAccelerator] [-DiffDiskSetting <String>] [-DiffDiskPlacement <String>]
- [-DeleteOption <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DeleteOption <String>] [-SecurityEncryptionType <String>] [-SecureVMDiskEncryptionSet <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -119,6 +123,76 @@ New-AzVM -VM $VirtualMachine -ResourceGroupName " ResourceGroup11"
 ```
 
 This example sets the disk encryption settings on a virtual machine operating system disk.
+
+### Example 5: Create a ConfidentialVM virtual machine with VM OS Disk encryption of DiskWithVMGuestState, and Disk Encryption Set encryption of ConfidentialVmEncryptedWithCustomerKey.
+```powershell
+# Create Resource Group
+$Location = 'northeurope';
+New-AzResourceGroup -Name $ResourceGroupName -Location $Location;
+
+$vmSize = "Standard_DC2as_v5";        
+$identityType = "SystemAssigned";
+$secureEncryptGuestState = "DiskWithVMGuestState";
+$vmSecurityType = "ConfidentialVM";
+$securePassword = "Password" | ConvertTo-SecureString -AsPlainText -Force; 
+$cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
+
+# Create Key Vault
+New-AzKeyVault -Name $keyVaultName -Location $Location -ResourceGroupName $ResourceGroupName -Sku Premium -EnablePurgeProtection -EnabledForDiskEncryption;
+
+$cvmAgent = Get-AzADServicePrincipal -ApplicationId 'bf7b6499-ff71-4aa2-97a4-f372087be7f0';
+Set-AzKeyVaultAccessPolicy -VaultName $keyVaultName -ResourceGroupName $ResourceGroupName -ObjectId $cvmAgent.id -PermissionsToKeys get,release;
+
+# Add Key vault Key
+$KeyName = "keyname";
+$KeySize = 3072;
+
+Add-AzKeyVaultKey -VaultName $kvname -Name $KeyName -Size $KeySize -KeyOps wrapKey,unwrapKey -KeyType RSA -Destination HSM -Exportable -UseDefaultCVMPolicy;
+        
+# Capture Key Vault and Key details
+$encryptionKeyVaultId = (Get-AzKeyVault -VaultName $keyVaultName -ResourceGroupName $ResourceGroupName).ResourceId;
+$encryptionKeyURL = (Get-AzKeyVaultKey -VaultName $keyVaultName -KeyName $keyName).Key.Kid;
+
+# Create new DES Config and Disk Encryption Set
+$diskEncryptionType = "ConfidentialVmEncryptedWithCustomerKey";
+$desConfig = New-AzDiskEncryptionSetConfig -Location $loc -SourceVaultId $encryptionKeyVaultId -KeyUrl $encryptionKeyURL -IdentityType SystemAssigned -EncryptionType $diskEncryptionType;
+New-AzDiskEncryptionSet -ResourceGroupName $ResourceGroupName -Name $desName -DiskEncryptionSet $desConfig;
+        
+$diskencset = Get-AzDiskEncryptionSet -ResourceGroupName $rgname -Name $desName;
+        
+# Assign DES Access Policy to key vault
+$desIdentity = (Get-AzDiskEncryptionSet -Name $desName -ResourceGroupName $ResourceGroupName).Identity.PrincipalId;
+        
+Set-AzKeyVaultAccessPolicy -VaultName $keyVaultName -ResourceGroupName $ResourceGroupName -ObjectId $desIdentity -PermissionsToKeys wrapKey,unwrapKey,get -BypassObjectIdValidation;
+        
+$VirtualMachine = New-AzVMConfig -VMName $VMName -VMSize $vmSize;
+$VirtualMachine = Set-AzVMOperatingSystem -VM $VirtualMachine -Windows -ComputerName $computerName -Credential $cred -ProvisionVMAgent -EnableAutoUpdate;
+$VirtualMachine = Set-AzVMSourceImage -VM $VirtualMachine -PublisherName 'MicrosoftWindowsServer' -Offer 'windowsserver' -Skus '2022-datacenter-smalldisk-g2' -Version "latest";
+        
+$subnet = New-AzVirtualNetworkSubnetConfig -Name ($subnetPrefix + $ResourceGroupName) -AddressPrefix "10.0.0.0/24";
+$vnet = New-AzVirtualNetwork -Force -Name ($vnetPrefix + $ResourceGroupName) -ResourceGroupName $ResourceGroupName -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
+$vnet = Get-AzVirtualNetwork -Name ($vnetPrefix + $ResourceGroupName) -ResourceGroupName $ResourceGroupName;
+$subnetId = $vnet.Subnets[0].Id;
+$pubip = New-AzPublicIpAddress -Force -Name ($pubIpPrefix + $ResourceGroupName) -ResourceGroupName $ResourceGroupName -Location $loc -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel2;
+$pubip = Get-AzPublicIpAddress -Name ($pubIpPrefix + $ResourceGroupName) -ResourceGroupName $ResourceGroupName;
+$pubipId = $pubip.Id;
+$nic = New-AzNetworkInterface -Force -Name ($nicPrefix + $ResourceGroupName) -ResourceGroupName $ResourceGroupName -Location $loc -SubnetId $subnetId -PublicIpAddressId $pubip.Id;
+$nic = Get-AzNetworkInterface -Name ($nicPrefix + $ResourceGroupName) -ResourceGroupName $ResourceGroupName;
+$nicId = $nic.Id;
+
+$VirtualMachine = Add-AzVMNetworkInterface -VM $VirtualMachine -Id $nicId;
+
+# Set VM SecurityType and connect to DES
+$VirtualMachine = Set-AzVMOSDisk -VM $VirtualMachine -StorageAccountType "StandardSSD_LRS" -CreateOption "FromImage" -SecurityEncryptionType $secureEncryptGuestState -SecureVMDiskEncryptionSet $diskencset.Id;
+$VirtualMachine = Set-AzVmSecurityProfile -VM $VirtualMachine -SecurityType $vmSecurityType;
+$VirtualMachine = Set-AzVmUefi -VM $VirtualMachine -EnableVtpm $true -EnableSecureBoot $true;
+
+New-AzVM -ResourceGroupName $ResourceGroupName -Location $loc -Vm $VirtualMachine;
+$vm = Get-AzVm -ResourceGroupName $ResourceGroupName -Name $vmname;
+
+# Verify the SecurityEncryptionType value on the disk.
+# $vm.StorageProfile.OsDisk.ManagedDisk.SecurityProfile.SecurityEncryptionType == 'DiskWithVMGuestState';
+```
 
 ## PARAMETERS
 
@@ -202,7 +276,7 @@ Accept wildcard characters: False
 ```
 
 ### -DiffDiskPlacement
-Specifies the ephemeral disk placement for operating system disk. This property can be used by user in the request to choose the location i.e. cache disk or resource disk space for Ephemeral OS disk provisioning. For more information on Ephemeral OS disk size requirements, please refer Ephemeral OS disk size requirements for Windows VM at https://docs.microsoft.com/azure/virtual-machines/windows/ephemeral-os-disks#size-requirements and Linux VM at https://docs.microsoft.com/azure/virtual-machines/linux/ephemeral-os-disks#size-requirements. This parameter can only be used if the parameter DiffDiskSetting is set to 'Local'.
+Specifies the ephemeral disk placement for operating system disk. This property can be used by user in the request to choose the location i.e. cache disk or resource disk space for Ephemeral OS disk provisioning. For more information on Ephemeral OS disk size requirements, please refer Ephemeral OS disk size requirements for Windows VM at https://learn.microsoft.com/azure/virtual-machines/windows/ephemeral-os-disks#size-requirements and Linux VM at https://learn.microsoft.com/azure/virtual-machines/linux/ephemeral-os-disks#size-requirements. This parameter can only be used if the parameter DiffDiskSetting is set to 'Local'.
 
 ```yaml
 Type: System.String
@@ -212,7 +286,7 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -364,6 +438,36 @@ Required: False
 Position: 1
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SecureVMDiskEncryptionSet
+ARM Resource ID for Disk Encryption Set. Allows customer to provide ARM ID for Disk Encryption Set created with ConfidentialVmEncryptedWithCustomerKey encryption type. This will allow customer to use Customer Managed Key (CMK) encryption with Confidential VM. Parameter SecurityEncryptionType value should be DiskwithVMGuestState.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -SecurityEncryptionType
+Sets the SecurityEncryptionType value on the managed disk of the VM. possible values include: TrustedLaunch, ConfidentialVM_DiskEncryptedWithCustomerKey, ConfidentialVM_VMGuestStateOnlyEncryptedWithPlatformKey, ConfidentialVM_DiskEncryptedWithPlatformKey
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

@@ -376,7 +376,7 @@ SITEENVELOPE <ISitePatchResource>: ARM resource for a site.
     [WindowsFxVersion <String>]: Xenon App Framework and version
     [XManagedServiceIdentityId <Int32?>]: Explicit Managed Service Identity Id
 .Link
-https://docs.microsoft.com/powershell/module/az.functions/update-azfunctionapp
+https://learn.microsoft.com/powershell/module/az.functions/update-azfunctionapp
 #>
 function Update-AzFunctionApp {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISite])]

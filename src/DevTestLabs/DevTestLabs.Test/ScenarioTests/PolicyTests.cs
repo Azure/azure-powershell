@@ -17,48 +17,47 @@ using Xunit;
 
 namespace Microsoft.Azure.Commands.DevTestLabs.Test.ScenarioTests
 {
-    public class PolicyTests : IClassFixture<DevTestLabsTestFixture>
+    public class PolicyTests : DevTestLabsTestRunner
     {
-        private DevTestLabsTestFixture _fixture;
 
-        public PolicyTests(DevTestLabsTestFixture fixture)
+        public PolicyTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _fixture = fixture;
+            
         }
 
         [Fact(Skip = "New ResourceManager version. Needs re-recorded. DevTestLab tests need to be re-enabled, as outlined in issue https://github.com/Azure/azure-powershell/issues/6677")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAzureRmDtlVMsPerLabPolicy()
         {
-            _fixture.RunTest("Test-AzureRmDtlVMsPerLabPolicy");
+            TestRunner.RunTestScript("Test-AzureRmDtlVMsPerLabPolicy");
         }
 
         [Fact(Skip = "New ResourceManager version. Needs re-recorded. DevTestLab tests need to be re-enabled, as outlined in issue https://github.com/Azure/azure-powershell/issues/6677")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAzureRmDtlVMsPerUserPolicy()
         {
-            _fixture.RunTest("Test-AzureRmDtlVMsPerUserPolicy");
+            TestRunner.RunTestScript("Test-AzureRmDtlVMsPerUserPolicy");
         }
 
         [Fact(Skip = "New ResourceManager version. Needs re-recorded. DevTestLab tests need to be re-enabled, as outlined in issue https://github.com/Azure/azure-powershell/issues/6677")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAzureRmDtlAllowedVMSizesPolicy()
         {
-            _fixture.RunTest("Test-AzureRmDtlAllowedVMSizesPolicy");
+            TestRunner.RunTestScript("Test-AzureRmDtlAllowedVMSizesPolicy");
         }
 
         [Fact(Skip = "New ResourceManager version. Needs re-recorded. DevTestLab tests need to be re-enabled, as outlined in issue https://github.com/Azure/azure-powershell/issues/6677")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAzureRmDtlAutoShutdownPolicy()
         {
-            _fixture.RunTest("Test-AzureRmDtlAutoShutdownPolicy");
+            TestRunner.RunTestScript("Test-AzureRmDtlAutoShutdownPolicy");
         }
 
         [Fact(Skip = "New ResourceManager version. Needs re-recorded. DevTestLab tests need to be re-enabled, as outlined in issue https://github.com/Azure/azure-powershell/issues/6677")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAzureRmDtlAutoStartPolicy()
         {
-            _fixture.RunTest("Test-AzureRmDtlAutoStartPolicy");
+            TestRunner.RunTestScript("Test-AzureRmDtlAutoStartPolicy");
         }
     }
 }

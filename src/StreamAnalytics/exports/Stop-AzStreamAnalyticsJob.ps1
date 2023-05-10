@@ -48,7 +48,7 @@ INPUTOBJECT <IStreamAnalyticsIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [TransformationName <String>]: The name of the transformation.
 .Link
-https://docs.microsoft.com/powershell/module/az.streamanalytics/stop-azstreamanalyticsjob
+https://learn.microsoft.com/powershell/module/az.streamanalytics/stop-azstreamanalyticsjob
 #>
 function Stop-AzStreamAnalyticsJob {
 [OutputType([System.Boolean])]

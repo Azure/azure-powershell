@@ -25,7 +25,7 @@ PS C:\> Get-AzElasticMonitoredResource -ResourceGroupName azure-elastic-test -Na
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IMonitoredResource
 .Link
-https://docs.microsoft.com/powershell/module/az.elastic/get-azelasticmonitoredresource
+https://learn.microsoft.com/powershell/module/az.elastic/get-azelasticmonitoredresource
 #>
 function Get-AzElasticMonitoredResource {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IMonitoredResource])]

@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Sql.Replication.Model
@@ -50,5 +51,25 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Model
         /// Gets or sets the tags associated with the Azure SQL Server.
         /// </summary>
         public Dictionary<string, string> Tags { get; set; }
+
+        /// <summary>
+        /// Gets or sets the identity of the database.
+        /// </summary>
+        public Management.Sql.Models.DatabaseIdentity Identity { get; set; }
+
+        /// <summary>
+        /// Gets or sets the encryption protector
+        /// </summary>
+        public string EncryptionProtector { get; set; }
+
+        /// <summary>
+        /// Gets or sets the list of AKV keys
+        /// </summary>
+        public IDictionary<string, Management.Sql.Models.DatabaseKey> Keys { get; set; }
+
+        /// <summary>
+        /// Gets or sets a federated client id to use in xtcmk scenario
+        /// </summary>
+        public Guid? FederatedClientId { get; set; }
     }
 }

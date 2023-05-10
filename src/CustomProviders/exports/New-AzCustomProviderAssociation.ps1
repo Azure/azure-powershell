@@ -29,7 +29,7 @@ East US 2 MyAssoc  Microsoft.CustomProviders/associations
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.Api20180901Preview.IAssociation
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.customproviders/new-azcustomproviderassociation
+https://learn.microsoft.com/en-us/powershell/module/az.customproviders/new-azcustomproviderassociation
 #>
 function New-AzCustomProviderAssociation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.Api20180901Preview.IAssociation])]

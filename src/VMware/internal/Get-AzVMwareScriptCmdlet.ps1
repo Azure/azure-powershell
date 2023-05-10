@@ -20,13 +20,9 @@ Return information about a script cmdlet resource in a specific package on a pri
 .Description
 Return information about a script cmdlet resource in a specific package on a private cloud
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity
@@ -64,7 +60,7 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
   [VirtualMachineId <String>]: Virtual Machine identifier
 .Link
-https://docs.microsoft.com/powershell/module/az.vmware/get-azvmwarescriptcmdlet
+https://learn.microsoft.com/powershell/module/az.vmware/get-azvmwarescriptcmdlet
 #>
 function Get-AzVMwareScriptCmdlet {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IScriptCmdlet])]
@@ -169,6 +165,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             Get = 'Az.VMware.private\Get-AzVMwareScriptCmdlet_Get';
             GetViaIdentity = 'Az.VMware.private\Get-AzVMwareScriptCmdlet_GetViaIdentity';
@@ -183,6 +180,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -191,15 +189,18 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }

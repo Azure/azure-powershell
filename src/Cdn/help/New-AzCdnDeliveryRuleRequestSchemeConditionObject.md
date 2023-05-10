@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Cdn
-online version: https://docs.microsoft.com/powershell/module/az.Cdn/new-AzCdnDeliveryRuleRequestSchemeConditionObject
+online version: https://learn.microsoft.com/powershell/module/az.Cdn/new-AzCdnDeliveryRuleRequestSchemeConditionObject
 schema: 2.0.0
 ---
 
@@ -22,27 +22,18 @@ Create an in-memory object for DeliveryRuleRequestSchemeCondition.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create an in-memory object for AzureCDN DeliveryRuleRequestSchemeCondition
 ```powershell
-{{ Add code here }}
+New-AzCdnDeliveryRuleRequestSchemeConditionObject -Name RequestScheme -ParameterMatchValue HTTP
 ```
 
 ```output
-{{ Add output here }}
+Name
+----
+RequestScheme
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Create an in-memory object for AzureCDN DeliveryRuleRequestSchemeCondition
 
 ## PARAMETERS
 

@@ -36,12 +36,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
                 null,
                 cancellationToken: RMAdapter.CmdletCancellationToken).Result.Body;
             return resource;
-        }       
+        }
 
         /// <summary>
         /// Get storage accounts according to the query params
         /// </summary>
         /// <param name="storageAccountName">Name of the container to unregister</param>
+        /// <param name="subscriptionId"></param>
         /// <returns>Generic resource returned from the service</returns>
         public GenericResource GetStorageAccountResource(string storageAccountName, string subscriptionId = null)
         {

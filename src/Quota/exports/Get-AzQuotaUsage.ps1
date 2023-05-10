@@ -49,7 +49,7 @@ MinPublicIpInterNetworkPrefixLength Public IPv4 Prefix Length                 0
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.Api20210315Preview.ICurrentUsagesBase
 .Link
-https://docs.microsoft.com/powershell/module/az.quota/get-azquotausage
+https://learn.microsoft.com/powershell/module/az.quota/get-azquotausage
 #>
 function Get-AzQuotaUsage {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.Api20210315Preview.ICurrentUsagesBase])]

@@ -17,7 +17,7 @@ This directory contains the PowerShell module for the Databricks service.
 This module was primarily generated via [AutoRest](https://github.com/Azure/autorest) using the [PowerShell](https://github.com/Azure/autorest.powershell) extension.
 
 ## Module Requirements
-- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 2.2.3 or greater
+- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 2.7.5 or greater
 
 ## Authentication
 AutoRest does not generate authentication code for the module. Authentication is handled via Az.Accounts by altering the HTTP payload before it is sent.
@@ -47,12 +47,13 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ``` yaml
+branch: 96c583e9d5d09c51fe8a21843180c51b98b4a7db
 require:
   - $(this-folder)/../readme.azure.noprofile.md
-# lock the commit
-input-file:
-  - https://github.com/Azure/azure-rest-api-specs/blob/cfe9bfd432231086b92cda77a327756a90758a8f/specification/databricks/resource-manager/Microsoft.Databricks/preview/2021-04-01-preview/databricks.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/a3c9363637ad7d30407cd6dd26d280cbb166cbf9/specification/databricks/resource-manager/Microsoft.Databricks/preview/2021-04-01-preview/vnetpeering.json
+  - $(repo)/specification/databricks/resource-manager/readme.md
+try-require:
+  - $(repo)/specification/databricks/resource-manager/readme.powershell.md
+
 module-version: 1.1.0
 title: Databricks
 subject-prefix: $(service-name)
@@ -193,12 +194,24 @@ directive:
       subject: VNetPeering
       parameter-name: DatabrickVirtualNetworkId 
     set:
-      parameter-name: DatabricksVirtualNetworkId 
+      parameter-name: DatabricksVirtualNetworkId
+  - where:
+      subject: AccessConnector
+      parameter-name: ConnectorName 
+    set:
+      parameter-name: Name  
   # Remove the set Workspace cmdlet
   - where:
       verb: Set
       subject: Workspace
     remove: true
+
+  # Remove the set AccessConnector cmdlet
+  - where:
+      verb: Set
+      subject: AccessConnector
+    remove: true
+
   # Hide the New Workspace cmdlet for customization
   - where:
       verb: New
@@ -225,6 +238,13 @@ directive:
           - ManagedResourceGroupId
         labels:
           ManagedResourceGroupId: Managed Resource Group ID
+  - where:
+      verb: New
+      subject: AccessConnector
+      parameter-name: IdentityUserAssignedIdentity
+    set:
+      parameter-name: UserAssignedIdentity
+      
   # Update property names related to CMK
   - where:
       model-name: Workspace

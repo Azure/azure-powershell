@@ -17,7 +17,7 @@ This directory contains the PowerShell module for the ImportExport service.
 This module was primarily generated via [AutoRest](https://github.com/Azure/autorest) using the [PowerShell](https://github.com/Azure/autorest.powershell) extension.
 
 ## Module Requirements
-- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 1.7.4 or greater
+- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 2.7.5 or greater
 
 ## Authentication
 AutoRest does not generate authentication code for the module. Authentication is handled via Az.Accounts by altering the HTTP payload before it is sent.
@@ -45,17 +45,65 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ``` yaml
+branch: a59006e985447b922b68210244e5fd024a30f1b4
 require:
   - $(this-folder)/../readme.azure.noprofile.md
-input-file:
-  - $(repo)/specification/storageimportexport/resource-manager/Microsoft.ImportExport/stable/2016-11-01/storageimportexport.json
+  - $(repo)/specification/storageimportexport/resource-manager/readme.md
+
 title: ImportExport
 module-version: 0.1.0
 subject-prefix: ''
 directive:
+  - from: swagger-document
+    where: $..get
+    transform: delete $.externalDocs
+  - from: swagger-document
+    where: $..post
+    transform: delete $.externalDocs
+  - from: swagger-document
+    where: $..delete
+    transform: delete $.externalDocs
+  - from: swagger-document
+    where: $..put
+    transform: delete $.externalDocs
+  - from: swagger-document
+    where: $..patch
+    transform: delete $.externalDocs
+
+  - from: swagger-document
+    where: $.definitions.PutJobParameters.properties.tags
+    transform: >-
+      return {
+          "type": "object",
+          "additionalProperties": true,
+          "description": "Specifies the tags that will be assigned to the job."
+        }
+
+  - from: swagger-document
+    where: $.definitions.UpdateJobParameters.properties.tags
+    transform: >-
+      return {
+          "type": "object",
+          "additionalProperties": true,
+          "description": "Specifies the tags that will be assigned to the job."
+        }
+
   - where:
       variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
     remove: true
+
+  - where:
+      subject: Job
+      parameter-name: BlobPath
+    set:
+      parameter-name: BlobListBlobPath
+
+  - where:
+      subject: Job
+      parameter-name: EncryptionKeyKekVaultResourceId
+    set:
+      parameter-name: EncryptionKeyKekVaultId
+
   - where:
       subject: Job
     set:
@@ -69,4 +117,5 @@ directive:
     set:
       subject: ImportExportBitLockerKey
     hide: true
+
 ```

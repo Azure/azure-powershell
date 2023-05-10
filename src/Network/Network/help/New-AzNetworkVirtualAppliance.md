@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/new-aznetworkvirtualappliance
+online version: https://learn.microsoft.com/powershell/module/az.network/new-aznetworkvirtualappliance
 schema: 2.0.0
 ---
 
@@ -40,7 +40,6 @@ The New-AzNetworkVirtualAppliance command creates a Network Virtual Appliance re
 $sku=New-AzVirtualApplianceSkuProperty -VendorName "barracudasdwanrelease" -BundledScaleUnit 1 -MarketPlaceVersion 'latest'
 $hub=Get-AzVirtualHub -ResourceGroupName testrg -Name hub
 $nva=New-AzNetworkVirtualAppliance -ResourceGroupName testrg -Name nva -Location eastus2 -VirtualApplianceAsn 1270 -VirtualHubId $hub.Id -Sku $sku -CloudInitConfiguration "echo Hello World!"
-
 ```
 
 Creates a new Network Virtual Appliance resource in resource group: testrg.

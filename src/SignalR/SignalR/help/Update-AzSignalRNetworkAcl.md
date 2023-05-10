@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.SignalR.dll-Help.xml
 Module Name: Az.SignalR
-online version: https://docs.microsoft.com/powershell/module/az.signalr/update-azsignalrnetworkacl
+online version: https://learn.microsoft.com/powershell/module/az.signalr/update-azsignalrnetworkacl
 schema: 2.0.0
 ---
 
@@ -39,6 +39,9 @@ Update the Network ACL of a SignalR service, including the default action and th
 ## EXAMPLES
 
 ### Allow RESTAPI,ClientConnection for public network and set default action to Deny
+<!-- Skip: Output cannot be splitted from code -->
+
+
 ```powershell
 $networkAcl = Update-AzSignalRNetworkAcl -Name pssignalr -ResourceGroupName test_resource_group -DefaultAction Deny -PublicNetwork -Allow RESTAPI,ClientConnection
 
@@ -280,6 +283,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
+
+### Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource
 
 ## OUTPUTS
 

@@ -292,6 +292,39 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [PSArgumentCompleter("Replace", "Restart", "Reimage")]
         public string AutomaticRepairAction { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The number of VMs that should be regular priority VMs before adding any Spot VMs",
+            ValueFromPipelineByPropertyName = true)]
+        public int BaseRegularPriorityCount { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The percentage of VMs that should be regular priority after the base number of regular priority VMs has been reached",
+            ValueFromPipelineByPropertyName = true)]
+        public int RegularPriorityPercentage { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Specifies the gallery image resource id for vmss deployment. This can be fetched from the gallery image GET call.")]
+        [ResourceIdCompleter("Microsoft.Compute galleries/images/versions")]
+        public string ImageReferenceId { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Specified the shared gallery image unique id for vm deployment. This can be fetched from shared gallery image GET call.")]
+        public string SharedGalleryImageId { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Specifies whether the OS Image Scheduled event is enabled or disabled.")]
+        public SwitchParameter OSImageScheduledEventEnabled { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The length of time a virtual machine being reimaged or having its OS upgraded will have to potentially approve the OS Image Scheduled Event before the event is auto approved (timed out). The configuration is specified in ISO 8601 format, with the value set to 15 minutes (PT15M).")]
+        public string OSImageScheduledEventNotBeforeTimeoutInMinutes { get; set; }
+
         protected override void ProcessRecord()
         {
             if (ShouldProcess("VirtualMachineScaleSet", "New"))
@@ -331,6 +364,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             // ExtendedLocation
             CM.PSExtendedLocation vExtendedLocation = null;
+
+            // PriorityMix
+            PriorityMixPolicy vPriorityMixPolicy = null;
 
             if (this.IsParameterBound(c => c.SkuName))
             {
@@ -674,11 +710,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     vIdentity = new VirtualMachineScaleSetIdentity();
                 }
 
-                vIdentity.UserAssignedIdentities = new Dictionary<string, VirtualMachineScaleSetIdentityUserAssignedIdentitiesValue>();
+                vIdentity.UserAssignedIdentities = new Dictionary<string, UserAssignedIdentitiesValue>();
 
                 foreach (var id in this.IdentityId)
                 {
-                    vIdentity.UserAssignedIdentities.Add(id, new VirtualMachineScaleSetIdentityUserAssignedIdentitiesValue());
+                    vIdentity.UserAssignedIdentities.Add(id, new UserAssignedIdentitiesValue());
                 }
             }
 
@@ -711,6 +747,96 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 vAutomaticRepairsPolicy.RepairAction = this.AutomaticRepairAction;
             }
 
+            if (this.IsParameterBound(c => c.BaseRegularPriorityCount))
+            {
+                if (vPriorityMixPolicy == null)
+                {
+                    vPriorityMixPolicy = new PriorityMixPolicy();
+                }
+                vPriorityMixPolicy.BaseRegularPriorityCount = this.BaseRegularPriorityCount;
+            }
+
+            if (this.IsParameterBound(c => c.RegularPriorityPercentage))
+            {
+                if (vPriorityMixPolicy == null)
+                {
+                    vPriorityMixPolicy = new PriorityMixPolicy();
+                }
+                vPriorityMixPolicy.RegularPriorityPercentageAboveBase = this.RegularPriorityPercentage;
+            }
+
+            if (this.IsParameterBound(c => c.ImageReferenceId))
+            {
+                if (vVirtualMachineProfile == null)
+                {
+                    vVirtualMachineProfile = new PSVirtualMachineScaleSetVMProfile();
+                }
+
+                if (vVirtualMachineProfile.StorageProfile == null)
+                {
+                    vVirtualMachineProfile.StorageProfile = new VirtualMachineScaleSetStorageProfile();
+                }
+
+                if (vVirtualMachineProfile.StorageProfile.ImageReference == null)
+                {
+                    vVirtualMachineProfile.StorageProfile.ImageReference = new ImageReference();
+                }
+                vVirtualMachineProfile.StorageProfile.ImageReference.Id = this.ImageReferenceId;
+            }
+
+            if (this.IsParameterBound(c => c.SharedGalleryImageId))
+            {
+                if (vVirtualMachineProfile == null)
+                {
+                    vVirtualMachineProfile = new PSVirtualMachineScaleSetVMProfile();
+                }
+
+                if (vVirtualMachineProfile.StorageProfile == null)
+                {
+                    vVirtualMachineProfile.StorageProfile = new VirtualMachineScaleSetStorageProfile();
+                }
+
+                if (vVirtualMachineProfile.StorageProfile.ImageReference == null)
+                {
+                    vVirtualMachineProfile.StorageProfile.ImageReference = new ImageReference();
+                }
+                vVirtualMachineProfile.StorageProfile.ImageReference.SharedGalleryImageId = this.SharedGalleryImageId;
+            }
+
+            if (this.IsParameterBound(c => c.OSImageScheduledEventEnabled))
+            {
+                if (vVirtualMachineProfile == null)
+                {
+                    vVirtualMachineProfile = new PSVirtualMachineScaleSetVMProfile();
+                }
+                if (vVirtualMachineProfile.ScheduledEventsProfile == null)
+                {
+                    vVirtualMachineProfile.ScheduledEventsProfile = new ScheduledEventsProfile();
+                }
+                if (vVirtualMachineProfile.ScheduledEventsProfile.OsImageNotificationProfile == null)
+                {
+                    vVirtualMachineProfile.ScheduledEventsProfile.OsImageNotificationProfile = new OSImageNotificationProfile();
+                }
+                vVirtualMachineProfile.ScheduledEventsProfile.OsImageNotificationProfile.Enable = this.OSImageScheduledEventEnabled;
+            }
+
+            if (this.IsParameterBound(c => c.OSImageScheduledEventNotBeforeTimeoutInMinutes))
+            {
+                if (vVirtualMachineProfile == null)
+                {
+                    vVirtualMachineProfile = new PSVirtualMachineScaleSetVMProfile();
+                }
+                if (vVirtualMachineProfile.ScheduledEventsProfile == null)
+                {
+                    vVirtualMachineProfile.ScheduledEventsProfile = new ScheduledEventsProfile();
+                }
+                if (vVirtualMachineProfile.ScheduledEventsProfile.OsImageNotificationProfile == null)
+                {
+                    vVirtualMachineProfile.ScheduledEventsProfile.OsImageNotificationProfile = new OSImageNotificationProfile();
+                }
+                vVirtualMachineProfile.ScheduledEventsProfile.OsImageNotificationProfile.NotBeforeTimeout = this.OSImageScheduledEventNotBeforeTimeoutInMinutes;
+            }
+
             var vVirtualMachineScaleSet = new PSVirtualMachineScaleSet
             {
                 Overprovision = this.IsParameterBound(c => c.Overprovision) ? this.Overprovision : (bool?)null,
@@ -732,7 +858,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 ScaleInPolicy = vScaleInPolicy,
                 Identity = vIdentity,
                 OrchestrationMode = this.IsParameterBound(c => c.OrchestrationMode) ? this.OrchestrationMode : null,
-                SpotRestorePolicy = this.IsParameterBound(c => c.EnableSpotRestore) ? new SpotRestorePolicy(true, this.SpotRestoreTimeout) : null
+                SpotRestorePolicy = this.IsParameterBound(c => c.EnableSpotRestore) ? new SpotRestorePolicy(true, this.SpotRestoreTimeout) : null,
+                PriorityMixPolicy = vPriorityMixPolicy 
             };
 
             WriteObject(vVirtualMachineScaleSet);

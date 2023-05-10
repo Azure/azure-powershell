@@ -12,15 +12,124 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
-$location = "southeastasia"
-$resourceGroupName = "pstestwlRG1bca8"
-$vaultName = "pstestwlRSV1bca8"
+# $location = "southeastasia"
+# $resourceGroupName = "pstestwlRG1bca8"
+# $vaultName = "pstestwlRSV1bca8"
+
 $newPolicyName = "testSqlPolicy"
+$location = "centraluseuap"
+$resourceGroupName = "iaasvm-pstest-rg"
+$vaultName = "iaasvm-pstest-vault"
+
+function Test-AzureVmWorkloadNonUTCPolicy
+{
+	$resourceGroupName = "hiagarg"
+	$vaultName = "hiaga-zrs-vault"		
+	$newSQLPolnonUTC = "sql-pstest-local-policy"	
+
+	try
+	{	
+		# get vault
+		$vault = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName
+
+		$date= Get-Date -Hour 9 -Minute 0 -Second 0 -Year 2022 -Day 26 -Month 12 -Millisecond 0
+		$date = [DateTime]::SpecifyKind($date,[DateTimeKind]::Utc)		
+
+		## non-UTC policy timezone
+		$timeZone = Get-TimeZone -ListAvailable | Where-Object { $_.Id -match "Tokyo" } 		
+		
+		# create SQL policies 
+		$schPol = Get-AzRecoveryServicesBackupSchedulePolicyObject -WorkloadType MSSQL -BackupManagementType AzureWorkload -PolicySubType Standard
+		$retPol = Get-AzRecoveryServicesBackupRetentionPolicyObject -WorkloadType MSSQL -BackupManagementType AzureWorkload
+		$schPol.FullBackupSchedulePolicy.ScheduleRunFrequency = "Weekly"
+		$schPol.FullBackupSchedulePolicy.ScheduleRunTimes[0] = $date
+		$retPol.FullBackupRetentionPolicy.IsDailyScheduleEnabled = $false
+		$retPol.FullBackupRetentionPolicy.IsMonthlyScheduleEnabled = $false
+		$retPol.FullBackupRetentionPolicy.WeeklySchedule.DurationCountInWeeks = 35
+		$retPol.FullBackupRetentionPolicy.YearlySchedule.DurationCountInYears = 2
+		$schPol.IsDifferentialBackupEnabled = $true
+		$schPol.DifferentialBackupSchedulePolicy.ScheduleRunDays[0] = "Wednesday"
+		$schPol.DifferentialBackupSchedulePolicy.ScheduleRunTimes[0] = $date.AddHours(1)
+		$retPol.DifferentialBackupRetentionPolicy.RetentionCount = 15
+		$schPol.FullBackupSchedulePolicy.ScheduleRunTimeZone = $timeZone[0].Id
+		
+		$polLocal = New-AzRecoveryServicesBackupProtectionPolicy -Name $newSQLPolnonUTC -WorkloadType MSSQL -BackupManagementType AzureWorkload -RetentionPolicy $retPol -SchedulePolicy $schPol -VaultId $vault.ID
+		
+		# assert
+		Assert-True { $polLocal.FullBackupSchedulePolicy.ScheduleRunTimes[0].Hour -eq 9 }
+		Assert-True { $polLocal.FullBackupSchedulePolicy.ScheduleRunTimes[0].Kind -eq "Utc" }
+		Assert-True { $polLocal.FullBackupSchedulePolicy.ScheduleRunTimeZone -eq "Tokyo Standard Time" }
+		
+		$schPol.FullBackupSchedulePolicy.ScheduleRunTimeZone = "UTC"
+		Set-AzRecoveryServicesBackupProtectionPolicy -Policy $polLocal[0] -SchedulePolicy $schPol -VaultId $vault.ID
+		$polLocal = Get-AzRecoveryServicesBackupProtectionPolicy -Name $newSQLPolnonUTC -VaultId $vault.ID
+
+		Assert-True { $polLocal.FullBackupSchedulePolicy.ScheduleRunTimes[0].Hour -eq 9 }
+		Assert-True { $polLocal.FullBackupSchedulePolicy.ScheduleRunTimes[0].Kind -eq "Utc" }
+		Assert-True { $polLocal.FullBackupSchedulePolicy.ScheduleRunTimeZone -eq "UTC" }		
+	}
+	finally
+	{
+		# delete policies
+		Remove-AzRecoveryServicesBackupProtectionPolicy -VaultId $vault.ID -Name $newSQLPolnonUTC -Force
+	}
+}
+
+function Test-AzureVmWorkloadSmartTieringPolicy
+{
+	$location = "centraluseuap"
+	$resourceGroupName = "hiagarg"
+	$vaultName = "hiagaVault"
+	$tierRecommendedPolicy =  "hiagaSQLArchiveTierRecommended"
+	$tierAfterPolicy = "hiagaSQLArchiveTierAfter"	
+	$archiveDisabledPolicy = "hiagaSQLArchiveDisabled"
+	
+	try
+	{
+		$vault = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName
+
+		$schPol = Get-AzRecoveryServicesBackupSchedulePolicyObject -WorkloadType MSSQL -BackupManagementType AzureWorkload
+		$retPol = Get-AzRecoveryServicesBackupRetentionPolicyObject -WorkloadType MSSQL -BackupManagementType AzureWorkload
+
+		# error scenario - tier recommended not supported 
+		Assert-ThrowsContains { $pol = New-AzRecoveryServicesBackupProtectionPolicy -Name $tierRecommendedPolicy -WorkloadType MSSQL  -BackupManagementType AzureWorkload -RetentionPolicy $retPol -SchedulePolicy $schPol -VaultId $vault.ID  -MoveToArchiveTier $true -TieringMode TierRecommended } `
+		"Tiering mode TierRecommended is not supported for BackupManagementType AzureWorkload";
+		
+		
+		# error scenario for tier after policy
+		Assert-ThrowsContains { $pol = New-AzRecoveryServicesBackupProtectionPolicy -Name $tierAfterPolicy -WorkloadType MSSQL -BackupManagementType AzureWorkload -RetentionPolicy $retPol -SchedulePolicy $schPol -VaultId $vault.ID -MoveToArchiveTier $true -TieringMode TierAllEligible -TierAfterDuration 40 -TierAfterDurationType Days } `
+		"TierAfterDuration needs to be >= 45 Days, at least one retention policy for full backup (daily / weekly / monthly / yearly) should be >= (TierAfter + 180) days";
+
+		# create tier after policy 
+		$pol = New-AzRecoveryServicesBackupProtectionPolicy -Name $tierAfterPolicy  -WorkloadType MSSQL  -BackupManagementType AzureWorkload -RetentionPolicy $retPol -SchedulePolicy $schPol -VaultId $vault.ID  -MoveToArchiveTier $true -TieringMode TierAllEligible -TierAfterDuration 45 -TierAfterDurationType Days
+		
+		Assert-True { $pol.Name -eq $tierAfterPolicy }	
+		
+		# modify policy
+		$pol = Get-AzRecoveryServicesBackupProtectionPolicy  -VaultId $vault.ID | Where { $_.Name -match $tierAfterPolicy }
+		Set-AzRecoveryServicesBackupProtectionPolicy -VaultId $vault.ID -Policy $pol[0] -MoveToArchiveTier $false
+		Set-AzRecoveryServicesBackupProtectionPolicy -VaultId $vault.ID -Policy $pol[0] -MoveToArchiveTier $true -TieringMode TierAllEligible -TierAfterDuration 45 -TierAfterDurationType Days
+
+		# create archive disabled policy 
+		$pol = New-AzRecoveryServicesBackupProtectionPolicy -Name $archiveDisabledPolicy -WorkloadType MSSQL -BackupManagementType AzureWorkload -RetentionPolicy $retPol -SchedulePolicy $schPol -VaultId $vault.ID -MoveToArchiveTier $false
+		Assert-True { $pol.Name -eq $archiveDisabledPolicy }	
+	}
+	finally
+	{
+		# Cleanup		
+		# Delete policy
+		$pol = Get-AzRecoveryServicesBackupProtectionPolicy  -VaultId $vault.ID | Where { $_.Name -match "Archive" }
+
+		foreach ($policy in $pol){
+		   Remove-AzRecoveryServicesBackupProtectionPolicy -VaultId $vault.ID -Policy $policy -Force
+		}
+	}
+}
 
 function Test-AzureVmWorkloadPolicy
 {
 	$vault = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName
-		
+	
 	# Get default policy objects
 	$schedulePolicy = Get-AzRecoveryServicesBackupSchedulePolicyObject -WorkloadType MSSQL
 	Assert-NotNull $schedulePolicy

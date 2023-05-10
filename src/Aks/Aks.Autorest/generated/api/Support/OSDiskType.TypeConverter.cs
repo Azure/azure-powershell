@@ -6,38 +6,41 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Support
 {
 
-    /// <summary>OSDiskType represents the type of an OS disk on an agent pool.</summary>
+    /// <summary>
+    /// The default is 'Ephemeral' if the VM supports it and has a cache disk larger than the requested OSDiskSizeGB. Otherwise,
+    /// defaults to 'Managed'. May not be changed after creation. For more information see [Ephemeral OS](https://docs.microsoft.com/azure/aks/cluster-configuration#ephemeral-os).
+    /// </summary>
     public partial class OSDiskTypeTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {
 
         /// <summary>
-        /// Determines if the converter can convert the <see cref="sourceValue"/> parameter to the <see cref="destinationType" />
-        /// parameter.
+        /// Determines if the converter can convert the <paramref name="sourceValue"/> parameter to the <paramref name="destinationType"
+        /// /> parameter.
         /// </summary>
         /// <param name="sourceValue">the <see cref="System.Object"/> to convert from</param>
         /// <param name="destinationType">the <see cref="System.Type" /> to convert to</param>
         /// <returns>
-        /// <c>true</c> if the converter can convert the <see cref="sourceValue"/> parameter to the <see cref="destinationType" />
-        /// parameter, otherwise <c>false</c>.
+        /// <c>true</c> if the converter can convert the <paramref name="sourceValue"/> parameter to the <paramref name="destinationType"
+        /// /> parameter, otherwise <c>false</c>.
         /// </returns>
         public override bool CanConvertFrom(object sourceValue, global::System.Type destinationType) => true;
 
         /// <summary>
-        /// Determines if the converter can convert the <see cref="sourceValue"/> parameter to the <see cref="destinationType" />
-        /// parameter.
+        /// Determines if the converter can convert the <paramref name="sourceValue"/> parameter to the <paramref name="destinationType"
+        /// /> parameter.
         /// </summary>
         /// <param name="sourceValue">the <see cref="System.Object"/> to convert from</param>
         /// <param name="destinationType">the <see cref="System.Type" /> to convert to</param>
         /// <returns>
-        /// <c>true</c> if the converter can convert the <see cref="sourceValue"/> parameter to the <see cref="destinationType" />
-        /// parameter, otherwise <c>false</c>.
+        /// <c>true</c> if the converter can convert the <paramref name="sourceValue"/> parameter to the <paramref name="destinationType"
+        /// /> parameter, otherwise <c>false</c>.
         /// </returns>
         public override bool CanConvertTo(object sourceValue, global::System.Type destinationType) => false;
 
         /// <summary>
-        /// Converts the <see cref="sourceValue" /> parameter to the <see cref="destinationType" /> parameter using <see cref="formatProvider"
-        /// /> and <see cref="ignoreCase" />
+        /// Converts the <paramref name="sourceValue" /> parameter to the <paramref name="destinationType" /> parameter using <paramref
+        /// name="formatProvider" /> and <paramref name="ignoreCase" />
         /// </summary>
         /// <param name="sourceValue">the <see cref="System.Object"/> to convert from</param>
         /// <param name="destinationType">the <see cref="System.Type" /> to convert to</param>

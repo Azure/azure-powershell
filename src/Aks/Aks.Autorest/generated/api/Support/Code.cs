@@ -10,14 +10,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Support
     public partial struct Code :
         System.IEquatable<Code>
     {
+        /// <summary>The cluster is running.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.Code Running = @"Running";
 
+        /// <summary>The cluster is stopped.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.Code Stopped = @"Stopped";
 
         /// <summary>the value for an instance of the <see cref="Code" /> Enum.</summary>
         private string _value { get; set; }
 
-        /// <summary>Creates an instance of the <see cref="Code" Enum class./></summary>
+        /// <summary>Creates an instance of the <see cref="Code"/> Enum class.</summary>
         /// <param name="underlyingValue">the value to create an instance for.</param>
         private Code(string underlyingValue)
         {
@@ -78,8 +80,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Support
         }
 
         /// <summary>Overriding != operator for enum Code</summary>
-        /// <param name="e1">the value to compare against <see cref="e2" /></param>
-        /// <param name="e2">the value to compare against <see cref="e1" /></param>
+        /// <param name="e1">the value to compare against <paramref name="e2" /></param>
+        /// <param name="e2">the value to compare against <paramref name="e1" /></param>
         /// <returns><c>true</c> if the two instances are not equal to the same value</returns>
         public static bool operator !=(Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.Code e1, Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.Code e2)
         {
@@ -87,8 +89,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Support
         }
 
         /// <summary>Overriding == operator for enum Code</summary>
-        /// <param name="e1">the value to compare against <see cref="e2" /></param>
-        /// <param name="e2">the value to compare against <see cref="e1" /></param>
+        /// <param name="e1">the value to compare against <paramref name="e2" /></param>
+        /// <param name="e2">the value to compare against <paramref name="e1" /></param>
         /// <returns><c>true</c> if the two instances are equal to the same value</returns>
         public static bool operator ==(Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.Code e1, Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.Code e2)
         {

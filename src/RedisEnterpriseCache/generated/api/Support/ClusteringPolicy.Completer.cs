@@ -28,11 +28,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "EnterpriseCluster".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("EnterpriseCluster", "EnterpriseCluster", global::System.Management.Automation.CompletionResultType.ParameterValue, "EnterpriseCluster");
+                yield return new global::System.Management.Automation.CompletionResult("'EnterpriseCluster'", "EnterpriseCluster", global::System.Management.Automation.CompletionResultType.ParameterValue, "EnterpriseCluster");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "OSSCluster".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("OSSCluster", "OSSCluster", global::System.Management.Automation.CompletionResultType.ParameterValue, "OSSCluster");
+                yield return new global::System.Management.Automation.CompletionResult("'OSSCluster'", "OSSCluster", global::System.Management.Automation.CompletionResultType.ParameterValue, "OSSCluster");
             }
         }
     }

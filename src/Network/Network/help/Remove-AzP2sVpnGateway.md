@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/remove-azp2svpngateway
+online version: https://learn.microsoft.com/powershell/module/az.network/remove-azp2svpngateway
 schema: 2.0.0
 ---
 
@@ -37,7 +37,7 @@ The **Remove-AzP2sVpnGateway** cmdlet enables you to remove an existing P2SVpnGa
 
 ### Example 1
 ```powershell
-Remove-AzP2sVpnGateway -Name 683482ade8564515aed4b8448c9757ea-westus-gw-ResourceGroupName P2SCortexGATesting -Force -PassThru
+Remove-AzP2sVpnGateway -Name 683482ade8564515aed4b8448c9757ea-westus-gw -ResourceGroupName P2SCortexGATesting -Force -PassThru
 ```
 
 The **Remove-AzP2sVpnGateway** cmdlet enables you to remove an existing P2SVpnGateway under VirtualHub.
@@ -48,7 +48,7 @@ The **Remove-AzP2sVpnGateway** cmdlet enables you to remove an existing P2SVpnGa
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -63,7 +63,7 @@ Accept wildcard characters: False
 Do not ask for confirmation.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -78,7 +78,7 @@ Accept wildcard characters: False
 The p2sVpnGateway object to be deleted.
 
 ```yaml
-Type: PSP2SVpnGateway
+Type: Microsoft.Azure.Commands.Network.Models.PSP2SVpnGateway
 Parameter Sets: ByP2SVpnGatewayObject
 Aliases: P2SVpnGateway
 
@@ -93,7 +93,7 @@ Accept wildcard characters: False
 The P2SVpnGateway name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByP2SVpnGatewayName
 Aliases: ResourceName, P2SVpnGatewayName
 
@@ -108,7 +108,7 @@ Accept wildcard characters: False
 Returns an object representing the item on which this operation is being performed.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -123,7 +123,7 @@ Accept wildcard characters: False
 The resource group name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByP2SVpnGatewayName
 Aliases:
 
@@ -138,7 +138,7 @@ Accept wildcard characters: False
 The Azure resource ID for the p2sVpnGateway to be deleted.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByP2SVpnGatewayResourceId
 Aliases: p2sVpnGatewayId
 
@@ -153,7 +153,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -169,7 +169,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -181,7 +181,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

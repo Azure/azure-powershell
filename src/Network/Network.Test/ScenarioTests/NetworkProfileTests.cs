@@ -21,7 +21,7 @@
 // 
 // For documentation on code generator please visit
 //   https://aka.ms/nrp-code-generation
-// Please contact sdnnrp@microsoft.com if you need to make changes to this file.
+// Please contact wanrpdev@microsoft.com if you need to make changes to this file.
 // </auto-generated>
 
 using Microsoft.Azure.Commands.Network.Test.ScenarioTests;
@@ -39,7 +39,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
+        [Trait(Category.Owner, NrpTeamAlias.wanrpdev)]
         public void TestNetworkProfileCRUDMinimalParameters()
         {
             TestRunner.RunTestScript(string.Format("Test-NetworkProfileCRUDMinimalParameters"));
@@ -47,7 +47,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
+        [Trait(Category.Owner, NrpTeamAlias.wanrpdev)]
         public void TestNetworkProfileCRUDAllParameters()
         {
             TestRunner.RunTestScript(string.Format("Test-NetworkProfileCRUDAllParameters"));
@@ -55,7 +55,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
+        [Trait(Category.Owner, NrpTeamAlias.wanrpdev)]
         public void TestContainerNetworkInterfaceConfigCRUDMinimalParameters()
         {
             TestRunner.RunTestScript(string.Format("Test-ContainerNetworkInterfaceConfigCRUDMinimalParameters"));
@@ -63,7 +63,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
+        [Trait(Category.Owner, NrpTeamAlias.wanrpdev)]
         public void TestContainerNetworkInterfaceConfigCRUD()
         {
             TestRunner.RunTestScript(string.Format("Test-ContainerNetworkInterfaceConfigCRUD"));

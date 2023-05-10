@@ -28,7 +28,7 @@ DiskCapacity MemoryCapacity Status  Version
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IDeploymentInfoResponse
 .Link
-https://docs.microsoft.com/powershell/module/az.elastic/get-azelasticdeploymentinfo
+https://learn.microsoft.com/powershell/module/az.elastic/get-azelasticdeploymentinfo
 #>
 function Get-AzElasticDeploymentInfo {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IDeploymentInfoResponse])]
@@ -178,7 +178,7 @@ INPUTOBJECT <IElasticIdentity>: Identity Parameter
   [RuleSetName <String>]: Tag Rule Set resource name
   [SubscriptionId <String>]: The Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000)
 .Link
-https://docs.microsoft.com/powershell/module/az.elastic/get-azelasticdetailvmingestion
+https://learn.microsoft.com/powershell/module/az.elastic/get-azelasticdetailvmingestion
 #>
 function Get-AzElasticDetailVMIngestion {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IVMIngestionDetailsResponse])]
@@ -314,7 +314,7 @@ PS C:\> Get-AzElasticMonitoredResource -ResourceGroupName azure-elastic-test -Na
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IMonitoredResource
 .Link
-https://docs.microsoft.com/powershell/module/az.elastic/get-azelasticmonitoredresource
+https://learn.microsoft.com/powershell/module/az.elastic/get-azelasticmonitoredresource
 #>
 function Get-AzElasticMonitoredResource {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IMonitoredResource])]
@@ -483,7 +483,7 @@ INPUTOBJECT <IElasticIdentity>: Identity Parameter
   [RuleSetName <String>]: Tag Rule Set resource name
   [SubscriptionId <String>]: The Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000)
 .Link
-https://docs.microsoft.com/powershell/module/az.elastic/get-azelasticmonitor
+https://learn.microsoft.com/powershell/module/az.elastic/get-azelasticmonitor
 #>
 function Get-AzElasticMonitor {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResource])]
@@ -647,7 +647,7 @@ INPUTOBJECT <IElasticIdentity>: Identity Parameter
   [RuleSetName <String>]: Tag Rule Set resource name
   [SubscriptionId <String>]: The Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000)
 .Link
-https://docs.microsoft.com/powershell/module/az.elastic/get-azelastictagrule
+https://learn.microsoft.com/powershell/module/az.elastic/get-azelastictagrule
 #>
 function Get-AzElasticTagRule {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IMonitoringTagRules])]
@@ -789,7 +789,7 @@ VMResourceId
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IVMResources
 .Link
-https://docs.microsoft.com/powershell/module/az.elastic/get-azelasticvmhost
+https://learn.microsoft.com/powershell/module/az.elastic/get-azelasticvmhost
 #>
 function Get-AzElasticVMHost {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IVMResources])]
@@ -920,7 +920,7 @@ elastic-pwsh02 ess-monthly-consumption_Monthly Enabled          westus2  azure-e
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResource
 .Link
-https://docs.microsoft.com/powershell/module/az.elastic/new-azelasticmonitor
+https://learn.microsoft.com/powershell/module/az.elastic/new-azelasticmonitor
 #>
 function New-AzElasticMonitor {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResource])]
@@ -1160,7 +1160,7 @@ LOGRULEFILTERINGTAG <IFilteringTag[]>: List of filtering tags to be used for cap
   [Name <String>]: The name (also known as the key) of the tag.
   [Value <String>]: The value of the tag.
 .Link
-https://docs.microsoft.com/powershell/module/az.elastic/new-azelastictagrule
+https://learn.microsoft.com/powershell/module/az.elastic/new-azelastictagrule
 #>
 function New-AzElasticTagRule {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IMonitoringTagRules])]
@@ -1337,7 +1337,7 @@ INPUTOBJECT <IElasticIdentity>: Identity Parameter
   [RuleSetName <String>]: Tag Rule Set resource name
   [SubscriptionId <String>]: The Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000)
 .Link
-https://docs.microsoft.com/powershell/module/az.elastic/remove-azelasticmonitor
+https://learn.microsoft.com/powershell/module/az.elastic/remove-azelasticmonitor
 #>
 function Remove-AzElasticMonitor {
 [OutputType([System.Boolean])]
@@ -1514,7 +1514,7 @@ INPUTOBJECT <IElasticIdentity>: Identity Parameter
   [RuleSetName <String>]: Tag Rule Set resource name
   [SubscriptionId <String>]: The Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000)
 .Link
-https://docs.microsoft.com/powershell/module/az.elastic/update-azelasticmonitor
+https://learn.microsoft.com/powershell/module/az.elastic/update-azelasticmonitor
 #>
 function Update-AzElasticMonitor {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResource])]
@@ -1674,7 +1674,7 @@ INPUTOBJECT <IElasticIdentity>: Identity Parameter
   [RuleSetName <String>]: Tag Rule Set resource name
   [SubscriptionId <String>]: The Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000)
 .Link
-https://docs.microsoft.com/powershell/module/az.elastic/update-azelasticvmcollection
+https://learn.microsoft.com/powershell/module/az.elastic/update-azelasticvmcollection
 #>
 function Update-AzElasticVMCollection {
 [OutputType([System.Boolean])]
@@ -1833,7 +1833,7 @@ default microsoft.elastic/monitors/tagrules
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.FilteringTag
 .Link
-https://docs.microsoft.com/powershell/module/az.Elastic/new-AzElasticFilteringTagObject
+https://learn.microsoft.com/powershell/module/az.Elastic/new-AzElasticFilteringTagObject
 #>
 function New-AzElasticFilteringTagObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.FilteringTag])]

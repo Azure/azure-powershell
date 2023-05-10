@@ -9,6 +9,13 @@
     <AzTestAssemblySuffix>.Test</AzTestAssemblySuffix>
   </PropertyGroup>
 
+  <ItemGroup>
+    <AssemblyAttribute Include="System.Reflection.AssemblyMetadataAttribute">
+      <_Parameter1>TestProjectPath</_Parameter1>
+      <_Parameter2>$(MSBuildProjectDirectory)</_Parameter2>
+    </AssemblyAttribute>
+  </ItemGroup>
+
   <!-- Build -->
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
@@ -27,13 +34,11 @@
   </PropertyGroup>
 
   <ItemGroup Condition="'$(IncludeCommonTestProject)' != 'false'">
-    <ProjectReference Include="$(RepoTools)ScenarioTest.ResourceManager\ScenarioTest.ResourceManager.csproj" />
     <ProjectReference Include="$(RepoTools)TestFx\TestFx.csproj" />
   </ItemGroup>
 
   <!-- Assets -->
   <ItemGroup>
-    <None Update="SessionRecords\**\*.json" CopyToOutputDirectory="PreserveNewest" />
     <None Update="ScenarioTests\*.ps1" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 

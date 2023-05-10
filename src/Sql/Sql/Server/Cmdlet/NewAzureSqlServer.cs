@@ -108,14 +108,14 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
             HelpMessage = "The Key Vault URI for encryption")]
         public string KeyId { get; set; }
 
-        // <summary>
+        /// <summary>
         /// List of user assigned identities.
         /// </summary>
         [Parameter(Mandatory = false,
             HelpMessage = "List of user assigned identities")]
         public List<string> UserAssignedIdentityId { get; set; }
 
-        // <summary>
+        /// <summary>
         /// Type of identity to be assigned to the server..
         /// </summary>
         [Parameter(Mandatory = false,

@@ -76,5 +76,26 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-GeoRestoreManagedDatabase");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSetManagedDatabase()
+        {
+            TestRunner.RunTestScript("Test-SetManagedDatabase");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestManagedDatabaseCrossSubscriptionRestore()
+        {
+            TestRunner.RunTestScript("Test-CrossSubscriptionRestoreManagedDatabase");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestDeletedManagedDatabaseCrossSubscriptionRestore()
+        {
+            TestRunner.RunTestScript("Test-CrossSubscriptionRestoreDeletedManagedDatabase");
+        }
     }
 }

@@ -66,8 +66,7 @@ namespace Microsoft.Azure.Commands.Sql.InstanceActiveDirectoryAdministrator.Serv
         /// <summary>
         /// Constructs a Azure SQL Instance Active Directory administrator adapter
         /// </summary>
-        /// <param name="profile">The current azure profile</param>
-        /// <param name="subscription">The current azure subscription</param>
+        /// <param name="context">The current azure context</param>
         public AzureSqlInstanceActiveDirectoryAdministratorAdapter(IAzureContext context)
         {
             Context = context;
@@ -134,7 +133,7 @@ namespace Microsoft.Azure.Commands.Sql.InstanceActiveDirectoryAdministrator.Serv
         /// <summary>
         /// Converts the response from the service to a powershell database object
         /// </summary>
-        /// <param name="resourceGroupName">The resource group the managed instance is in</param>
+        /// <param name="resourceGroup">The resource group the managed instance is in</param>
         /// <param name="managedInstanceName">The name of the Azure Sql InstanceActiveDirectoryAdministrator Managed Instance</param>
         /// <param name="admin">The service response</param>
         /// <returns>The converted model</returns>

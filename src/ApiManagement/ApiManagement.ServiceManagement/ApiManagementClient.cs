@@ -1200,6 +1200,8 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
 
             string soapApiType = GetApiTypeForImport(specificationFormat, apiType);
 
+            apiPath = apiPath ?? string.Empty;
+            
             var createOrUpdateContract = new ApiCreateOrUpdateParameter()
             {
                 Format = contentFormat,
@@ -1287,6 +1289,9 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
                     break;
                 case PsApiManagementApiFormat.Swagger:
                     headerValue = fromFile ? ContentFormat.SwaggerJson : ContentFormat.SwaggerLinkJson;
+                    break;
+                case PsApiManagementApiFormat.GraphQL:
+                    headerValue = ContentFormat.GraphqlLink;
                     break;
                 case PsApiManagementApiFormat.OpenApi:
                     headerValue = fromFile ? ContentFormat.Openapi : ContentFormat.OpenapiLink;

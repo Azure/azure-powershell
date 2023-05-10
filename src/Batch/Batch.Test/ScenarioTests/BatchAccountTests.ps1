@@ -137,7 +137,7 @@ function Test-CreateNewBatchAccountWithNoPublicIp
 
         $privateLinkResource = Get-AzPrivateLinkResource -PrivateLinkResourceId $createdAccount.Id
 
-        $plsConnection = New-AzPrivateLinkServiceConnection -Name "myplsconnection" -PrivateLinkServiceId $createdAccount.Id -GroupId $privateLinkResource.GroupId
+        $plsConnection = New-AzPrivateLinkServiceConnection -Name "myplsconnection" -PrivateLinkServiceId $createdAccount.Id -GroupId "batchAccount"
         New-AzPrivateEndpoint -ResourceGroupName $resourceGroup -Name "mypec" -Location $location -Subnet $vnet.subnets[0] -PrivateLinkServiceConnection $plsConnection -ByManualRequest
 
         $connection = Get-AzPrivateEndpointConnection -PrivateLinkResourceId $createdAccount.Id

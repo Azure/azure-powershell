@@ -19,7 +19,7 @@ Deletes entity from users.
 .Description
 Deletes entity from users.
 .Link
-https://docs.microsoft.com/powershell/module/az.resources/remove-azaduser
+https://learn.microsoft.com/powershell/module/az.resources/remove-azaduser
 #>
 function Remove-AzADUser {
     [OutputType([System.Boolean])]

@@ -128,11 +128,11 @@ namespace Microsoft.Azure.Commands.Network
             // Add support for new properties ApplicationSecurityGroup, IpConfiguration, CustomNetworkInterfaceName
             if (this.ApplicationSecurityGroup != null && this.ApplicationSecurityGroup.Length > 0)
             {
-                psPrivateEndpoint._psApplicationSecurityGroups = ApplicationSecurityGroup.ToList();
+                psPrivateEndpoint.ApplicationSecurityGroups = this.ApplicationSecurityGroup.ToList();
             }
             if (this.IpConfiguration != null && this.IpConfiguration.Length > 0)
             {
-                psPrivateEndpoint._psIpConfigurations = this.IpConfiguration.ToList();
+                psPrivateEndpoint.IpConfigurations = this.IpConfiguration.ToList();
             }
             if (this.CustomNetworkInterfaceName != null)
             {

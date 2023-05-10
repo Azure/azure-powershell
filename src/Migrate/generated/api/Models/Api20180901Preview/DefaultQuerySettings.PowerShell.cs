@@ -30,7 +30,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview
         /// <summary>
         /// <c>BeforeDeserializeDictionary</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
@@ -42,7 +43,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview
         /// <summary>
         /// <c>BeforeDeserializePSObject</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
@@ -65,12 +67,30 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IDefaultQuerySettingsInternal)this).EnableExpand = (bool?) content.GetValueForProperty("EnableExpand",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IDefaultQuerySettingsInternal)this).EnableExpand, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IDefaultQuerySettingsInternal)this).EnableSelect = (bool?) content.GetValueForProperty("EnableSelect",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IDefaultQuerySettingsInternal)this).EnableSelect, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IDefaultQuerySettingsInternal)this).EnableCount = (bool?) content.GetValueForProperty("EnableCount",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IDefaultQuerySettingsInternal)this).EnableCount, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IDefaultQuerySettingsInternal)this).EnableOrderBy = (bool?) content.GetValueForProperty("EnableOrderBy",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IDefaultQuerySettingsInternal)this).EnableOrderBy, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IDefaultQuerySettingsInternal)this).EnableFilter = (bool?) content.GetValueForProperty("EnableFilter",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IDefaultQuerySettingsInternal)this).EnableFilter, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IDefaultQuerySettingsInternal)this).MaxTop = (int?) content.GetValueForProperty("MaxTop",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IDefaultQuerySettingsInternal)this).MaxTop, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            if (content.Contains("EnableExpand"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IDefaultQuerySettingsInternal)this).EnableExpand = (bool?) content.GetValueForProperty("EnableExpand",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IDefaultQuerySettingsInternal)this).EnableExpand, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("EnableSelect"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IDefaultQuerySettingsInternal)this).EnableSelect = (bool?) content.GetValueForProperty("EnableSelect",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IDefaultQuerySettingsInternal)this).EnableSelect, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("EnableCount"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IDefaultQuerySettingsInternal)this).EnableCount = (bool?) content.GetValueForProperty("EnableCount",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IDefaultQuerySettingsInternal)this).EnableCount, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("EnableOrderBy"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IDefaultQuerySettingsInternal)this).EnableOrderBy = (bool?) content.GetValueForProperty("EnableOrderBy",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IDefaultQuerySettingsInternal)this).EnableOrderBy, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("EnableFilter"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IDefaultQuerySettingsInternal)this).EnableFilter = (bool?) content.GetValueForProperty("EnableFilter",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IDefaultQuerySettingsInternal)this).EnableFilter, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("MaxTop"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IDefaultQuerySettingsInternal)this).MaxTop = (int?) content.GetValueForProperty("MaxTop",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IDefaultQuerySettingsInternal)this).MaxTop, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -88,12 +108,30 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IDefaultQuerySettingsInternal)this).EnableExpand = (bool?) content.GetValueForProperty("EnableExpand",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IDefaultQuerySettingsInternal)this).EnableExpand, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IDefaultQuerySettingsInternal)this).EnableSelect = (bool?) content.GetValueForProperty("EnableSelect",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IDefaultQuerySettingsInternal)this).EnableSelect, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IDefaultQuerySettingsInternal)this).EnableCount = (bool?) content.GetValueForProperty("EnableCount",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IDefaultQuerySettingsInternal)this).EnableCount, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IDefaultQuerySettingsInternal)this).EnableOrderBy = (bool?) content.GetValueForProperty("EnableOrderBy",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IDefaultQuerySettingsInternal)this).EnableOrderBy, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IDefaultQuerySettingsInternal)this).EnableFilter = (bool?) content.GetValueForProperty("EnableFilter",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IDefaultQuerySettingsInternal)this).EnableFilter, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IDefaultQuerySettingsInternal)this).MaxTop = (int?) content.GetValueForProperty("MaxTop",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IDefaultQuerySettingsInternal)this).MaxTop, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            if (content.Contains("EnableExpand"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IDefaultQuerySettingsInternal)this).EnableExpand = (bool?) content.GetValueForProperty("EnableExpand",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IDefaultQuerySettingsInternal)this).EnableExpand, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("EnableSelect"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IDefaultQuerySettingsInternal)this).EnableSelect = (bool?) content.GetValueForProperty("EnableSelect",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IDefaultQuerySettingsInternal)this).EnableSelect, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("EnableCount"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IDefaultQuerySettingsInternal)this).EnableCount = (bool?) content.GetValueForProperty("EnableCount",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IDefaultQuerySettingsInternal)this).EnableCount, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("EnableOrderBy"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IDefaultQuerySettingsInternal)this).EnableOrderBy = (bool?) content.GetValueForProperty("EnableOrderBy",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IDefaultQuerySettingsInternal)this).EnableOrderBy, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("EnableFilter"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IDefaultQuerySettingsInternal)this).EnableFilter = (bool?) content.GetValueForProperty("EnableFilter",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IDefaultQuerySettingsInternal)this).EnableFilter, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("MaxTop"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IDefaultQuerySettingsInternal)this).MaxTop = (int?) content.GetValueForProperty("MaxTop",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IDefaultQuerySettingsInternal)this).MaxTop, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
             AfterDeserializePSObject(content);
         }
 
@@ -129,7 +167,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview
         /// Creates a new instance of <see cref="DefaultQuerySettings" />, deserializing the content from a json string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="className" /> model class.</returns>
+        /// <returns>an instance of the <see cref="DefaultQuerySettings" /> model class.</returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IDefaultQuerySettings FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>Serializes this instance to a json string.</summary>

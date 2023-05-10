@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Batch.dll-Help.xml
 Module Name: Az.Batch
 ms.assetid: AFDE5ECD-29AB-4C91-98BF-1B8C9C3BB079
-online version: https://docs.microsoft.com/powershell/module/az.batch/get-azbatchaccountkey
+online version: https://learn.microsoft.com/powershell/module/az.batch/get-azbatchaccountkey
 schema: 2.0.0
 ---
 
@@ -31,6 +31,9 @@ $Context = Get-AzBatchAccountKey -AccountName myaccount
 This command gets the account details and stores it in a `$Context` object for use later.
 
 ### Example 2: Get batch account keys and display them
+<!-- Skip: Output cannot be splitted from code -->
+
+
 ```powershell
 $Context = Get-AzBatchAccountKey -AccountName myaccount
 $Context.PrimaryAccountKey

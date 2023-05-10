@@ -26,7 +26,7 @@ PS C:\> New-AzDiskPoolIscsiLunObject -ManagedDiskAzureResourceId "/subscriptions
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IscsiLun
 .Link
-https://docs.microsoft.com/powershell/module/az.DiskPool/new-AzDiskPoolIscsiLunObject
+https://learn.microsoft.com/powershell/module/az.DiskPool/new-AzDiskPoolIscsiLunObject
 #>
 function New-AzDiskPoolIscsiLunObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IscsiLun])]

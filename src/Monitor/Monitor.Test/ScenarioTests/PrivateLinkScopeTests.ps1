@@ -104,12 +104,12 @@ function Test-PrivateLinkScopeCRUD
         Assert-NotNull $connectionApprove;
         Assert-AreEqual "Approved" $connectionApprove.PrivateLinkServiceConnectionState.Status
 
-        Start-TestSleep 20000
+        Start-TestSleep -Seconds 20
 
         $connectionRemove = Remove-AzPrivateEndpointConnection -ResourceId $connection.Id -PassThru -Force
         Assert-AreEqual true $connectionRemove
 
-        Start-TestSleep 15000
+        Start-TestSleep -Seconds 15
 
         $connection2 = Get-AzPrivateEndpointConnection -PrivateLinkResourceId $scope1.Id
         Assert-Null $connection2

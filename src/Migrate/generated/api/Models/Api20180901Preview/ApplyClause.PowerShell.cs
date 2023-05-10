@@ -30,7 +30,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview
         /// <summary>
         /// <c>BeforeDeserializeDictionary</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
@@ -42,7 +43,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview
         /// <summary>
         /// <c>BeforeDeserializePSObject</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
@@ -65,7 +67,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IApplyClauseInternal)this).Transformation = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.ITransformationNode[]) content.GetValueForProperty("Transformation",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IApplyClauseInternal)this).Transformation, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.ITransformationNode>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.TransformationNodeTypeConverter.ConvertFrom));
+            if (content.Contains("Transformation"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IApplyClauseInternal)this).Transformation = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.ITransformationNode[]) content.GetValueForProperty("Transformation",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IApplyClauseInternal)this).Transformation, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.ITransformationNode>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.TransformationNodeTypeConverter.ConvertFrom));
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -83,7 +88,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IApplyClauseInternal)this).Transformation = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.ITransformationNode[]) content.GetValueForProperty("Transformation",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IApplyClauseInternal)this).Transformation, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.ITransformationNode>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.TransformationNodeTypeConverter.ConvertFrom));
+            if (content.Contains("Transformation"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IApplyClauseInternal)this).Transformation = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.ITransformationNode[]) content.GetValueForProperty("Transformation",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IApplyClauseInternal)this).Transformation, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.ITransformationNode>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.TransformationNodeTypeConverter.ConvertFrom));
+            }
             AfterDeserializePSObject(content);
         }
 
@@ -117,7 +125,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview
         /// Creates a new instance of <see cref="ApplyClause" />, deserializing the content from a json string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="className" /> model class.</returns>
+        /// <returns>an instance of the <see cref="ApplyClause" /> model class.</returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IApplyClause FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>Serializes this instance to a json string.</summary>

@@ -30,11 +30,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Encrypted".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Encrypted", "Encrypted", global::System.Management.Automation.CompletionResultType.ParameterValue, "Encrypted");
+                yield return new global::System.Management.Automation.CompletionResult("'Encrypted'", "Encrypted", global::System.Management.Automation.CompletionResultType.ParameterValue, "Encrypted");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Plaintext".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Plaintext", "Plaintext", global::System.Management.Automation.CompletionResultType.ParameterValue, "Plaintext");
+                yield return new global::System.Management.Automation.CompletionResult("'Plaintext'", "Plaintext", global::System.Management.Automation.CompletionResultType.ParameterValue, "Plaintext");
             }
         }
     }

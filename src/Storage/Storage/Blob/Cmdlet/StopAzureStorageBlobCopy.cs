@@ -143,6 +143,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         /// <summary>
         /// Stop copy operation by name
         /// </summary>
+        /// <param name="taskId">Task id</param>
+        /// <param name="localChannel">IStorageBlobManagement channel object</param>
         /// <param name="containerName">Container name</param>
         /// <param name="blobName">Blob name</param>
         /// <param name="copyId">copy id</param>
@@ -155,6 +157,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         /// <summary>
         /// Stop copy operation by CloudBlobContainer
         /// </summary>
+        /// <param name="taskId">Task id</param>
+        /// <param name="localChannel">IStorageBlobManagement channel object</param>
         /// <param name="container">CloudBlobContainer object</param>
         /// <param name="blobName">Blob name</param>
         /// <param name="copyId">Copy id</param>
@@ -173,8 +177,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         /// <summary>
         /// Stop copy operation by CloudBlob object
         /// </summary>
+        /// <param name="taskId">Task id</param>
+        /// <param name="localChannel">IStorageBlobManagement channel object</param>
         /// <param name="blob">CloudBlob object</param>
         /// <param name="copyId">Copy id</param>
+        /// <param name="fetchCopyIdFromBlob"></param>
         private async Task StopCopyBlob(long taskId, IStorageBlobManagement localChannel, CloudBlob blob, string copyId, bool fetchCopyIdFromBlob = false)
         {
             ValidateBlobType(blob);

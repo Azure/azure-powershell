@@ -30,7 +30,7 @@ PS C:\> {{ Add code here }}
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Models.Api20201208.IOperationDetail
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.healthbot/get-azhealthbotoperation
+https://learn.microsoft.com/en-us/powershell/module/az.healthbot/get-azhealthbotoperation
 #>
 function Get-AzHealthBotOperation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Models.Api20201208.IOperationDetail])]

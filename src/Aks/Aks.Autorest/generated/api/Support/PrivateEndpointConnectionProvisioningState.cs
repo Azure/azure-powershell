@@ -10,6 +10,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Support
     public partial struct PrivateEndpointConnectionProvisioningState :
         System.IEquatable<PrivateEndpointConnectionProvisioningState>
     {
+        public static Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.PrivateEndpointConnectionProvisioningState Canceled = @"Canceled";
+
         public static Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.PrivateEndpointConnectionProvisioningState Creating = @"Creating";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.PrivateEndpointConnectionProvisioningState Deleting = @"Deleting";
@@ -56,7 +58,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Support
         }
 
         /// <summary>
-        /// Creates an instance of the <see cref="PrivateEndpointConnectionProvisioningState" Enum class./>
+        /// Creates an instance of the <see cref="PrivateEndpointConnectionProvisioningState"/> Enum class.
         /// </summary>
         /// <param name="underlyingValue">the value to create an instance for.</param>
         private PrivateEndpointConnectionProvisioningState(string underlyingValue)
@@ -92,8 +94,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Support
         }
 
         /// <summary>Overriding != operator for enum PrivateEndpointConnectionProvisioningState</summary>
-        /// <param name="e1">the value to compare against <see cref="e2" /></param>
-        /// <param name="e2">the value to compare against <see cref="e1" /></param>
+        /// <param name="e1">the value to compare against <paramref name="e2" /></param>
+        /// <param name="e2">the value to compare against <paramref name="e1" /></param>
         /// <returns><c>true</c> if the two instances are not equal to the same value</returns>
         public static bool operator !=(Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.PrivateEndpointConnectionProvisioningState e1, Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.PrivateEndpointConnectionProvisioningState e2)
         {
@@ -101,8 +103,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Support
         }
 
         /// <summary>Overriding == operator for enum PrivateEndpointConnectionProvisioningState</summary>
-        /// <param name="e1">the value to compare against <see cref="e2" /></param>
-        /// <param name="e2">the value to compare against <see cref="e1" /></param>
+        /// <param name="e1">the value to compare against <paramref name="e2" /></param>
+        /// <param name="e2">the value to compare against <paramref name="e1" /></param>
         /// <returns><c>true</c> if the two instances are equal to the same value</returns>
         public static bool operator ==(Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.PrivateEndpointConnectionProvisioningState e1, Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.PrivateEndpointConnectionProvisioningState e2)
         {

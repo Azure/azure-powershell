@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.SiteRecovery.dll-Help.xml
 Module Name: Az.RecoveryServices
-online version: https://docs.microsoft.com/powershell/module/az.recoveryservices/new-azrecoveryservicesasrvcenter
+online version: https://learn.microsoft.com/powershell/module/az.recoveryservices/new-azrecoveryservicesasrvcenter
 schema: 2.0.0
 ---
 
@@ -24,7 +24,7 @@ The **New-AzRecoveryServicesAsrvCenter** cmdlet adds a vCenter server to discove
 
 ### Example 1
 ```powershell
-New-AzRecoveryServicesAsrvCenter -Account $ConfigServer.FabricSpecificDetails.RunAsAccounts[1] -Fabric $ConfigServer -Name InmTest59 -Port 443 -Server 10.150.209.6
+New-AzRecoveryServicesAsrvCenter -Account $ConfigServer.FabricSpecificDetails.RunAsAccounts[1] -Fabric $ConfigServer -Name InmTest59 -Port 443 -IpOrHostName 10.150.209.6
 ```
 
 ```output

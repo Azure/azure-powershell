@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles.dll-Help.xml
 Module Name: Az.NetAppFiles
-online version: https://docs.microsoft.com/powershell/module/az.netappfiles/new-aznetappfilesactivedirectory
+online version: https://learn.microsoft.com/powershell/module/az.netappfiles/new-aznetappfilesactivedirectory
 schema: 2.0.0
 ---
 
@@ -19,6 +19,7 @@ New-AzNetAppFilesActiveDirectory -ResourceGroupName <String> -AccountName <Strin
  [-OrganizationalUnit <String>] [-KdcIP <String>] [-BackupOperator <String[]>]
  [-ServerRootCACertificate <String>] [-AdName <String>] [-SecurityOperator <String[]>] [-AesEncryption]
  [-LdapSigning] [-LdapOverTLS] [-AllowLocalNfsUsersWithLdap] [-Administrator <String[]>] [-EncryptDCConnection]
+ [-LdapSearchScope <PSNetAppFilesLdapSearchScopeOpt>] [-PreferredServersForLdapClient <String[]>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -28,7 +29,8 @@ New-AzNetAppFilesActiveDirectory [-Dns <String[]>] -Domain <String> [-Site <Stri
  [-Username <String>] [-Password <SecureString>] [-OrganizationalUnit <String>] [-KdcIP <String>]
  [-BackupOperator <String[]>] [-ServerRootCACertificate <String>] [-AdName <String>]
  [-SecurityOperator <String[]>] [-AesEncryption] [-LdapSigning] [-LdapOverTLS] [-AllowLocalNfsUsersWithLdap]
- [-Administrator <String[]>] [-EncryptDCConnection] -AccountObject <PSNetAppFilesAccount>
+ [-Administrator <String[]>] [-EncryptDCConnection] [-LdapSearchScope <PSNetAppFilesLdapSearchScopeOpt>]
+ [-PreferredServersForLdapClient <String[]>] -AccountObject <PSNetAppFilesAccount>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -40,7 +42,7 @@ The **New-AzNetAppFilesActiveDirectory** cmdlet creates a new active directory c
 ### Example 1
 ```powershell
 $pwd_secure_string = Read-Host "Enter a Password" -AsSecureString
-New-AzNetAppFilesActiveDirectory -ResourceGroupName "MyRG" -Location "westus2" -AccountName "MyAccount" -AdName "MyADName" -Username "AdUserName" -Password $pwd_secure_string -Domain "AdDomain" -Dns "192.0.2.2" -SmbServerName "AdSmbServerName"
+New-AzNetAppFilesActiveDirectory -ResourceGroupName "MyRG" -AccountName "MyAccount" -AdName "MyADName" -Username "AdUserName" -Password $pwd_secure_string -Domain "AdDomain" -Dns "192.0.2.2" -SmbServerName "AdSmbServerName"
 ```
 
 This command gets the AD password from promt into a secreates the new Active Directory configuration for the ANF account "MyAnfAccount".
@@ -245,6 +247,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -LdapSearchScope
+LDAP Search scope options.
+
+```yaml
+Type: Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesLdapSearchScopeOpt
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -LdapSigning
 When LDAP over SSL/TLS is enabled, Specifies whether or not the LDAP traffic needs to be signed.
 
@@ -280,6 +297,21 @@ Plain text password of Active Directory domain administrator, value is masked in
 
 ```yaml
 Type: System.Security.SecureString
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PreferredServersForLdapClient
+Comma separated list of IPv4 addresses of preferred servers for LDAP client. At most two comma separated IPv4 addresses can be passed.
+
+```yaml
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -367,7 +399,7 @@ Accept wildcard characters: False
 ```
 
 ### -Username
-Username of Active Directory domain administrator
+A domain user account with permission to create machine accounts
 
 ```yaml
 Type: System.String

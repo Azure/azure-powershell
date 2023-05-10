@@ -81,6 +81,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <summary>
         /// Get queue permission
         /// </summary>
+        /// <param name="queue">Cloud queue object</param>
         /// <param name="options">Queue request options </param>
         /// <param name="operationContext">Operation context</param>
         /// <returns>QueuePermissions object</returns>

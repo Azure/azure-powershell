@@ -1,11 +1,13 @@
 ### Example 1: Update a Windows Virtual Desktop Desktop
 ```powershell
-PS C:\> Update-AzWvdDesktop -ResourceGroupName ResourceGroupName `
-                             -GroupName ApplicationGroupName `
-                             -Name DesktopName `
-                             -FriendlyName 'Friendly name' `
-                             -Description 'Description' `
+Update-AzWvdDesktop -ResourceGroupName ResourceGroupName `
+                    -ApplicationGroupName ApplicationGroupName `
+                    -Name DesktopName `
+                    -FriendlyName 'Friendly name' `
+                    -Description 'Description'
+```
 
+```output
 Name                             Type
 ----                             ----
 ApplicationGroupName/DesktopName Microsoft.DesktopVirtualization/applicationgroups/desktops

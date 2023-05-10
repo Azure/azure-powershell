@@ -23,7 +23,7 @@ Create an in-memory object for DeliveryRule.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.DeliveryRule
 .Link
-https://docs.microsoft.com/powershell/module/az.Cdn/new-AzCdnDeliveryRuleObject
+https://learn.microsoft.com/powershell/module/az.Cdn/new-AzCdnDeliveryRuleObject
 #>
 function New-AzCdnDeliveryRuleObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.DeliveryRule')]

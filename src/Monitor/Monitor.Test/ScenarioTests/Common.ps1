@@ -81,18 +81,6 @@ function Clean-ResourceGroup($rgname)
 
 <#
 .SYNOPSIS
-Sleeps but only during recording.
-#>
-function Start-TestSleep($milliseconds)
-{
-    if ((Get-MonitorTestMode) -ne 'Playback')
-    {
-        Start-Sleep -Milliseconds $milliseconds
-    }
-}
-
-<#
-.SYNOPSIS
 Gets test mode - 'Record' or 'Playback'
 #>
 function Get-MonitorTestMode {

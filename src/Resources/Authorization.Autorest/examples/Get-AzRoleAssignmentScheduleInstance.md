@@ -1,9 +1,11 @@
 ### Example 1: List all role assignment schedule instances for a resource
 
 ```powershell
-PS C:\> $scope = "/subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d"
-PS C:\> Get-AzRoleAssignmentScheduleInstance -Scope $scope 
+$scope = "/subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d"
+Get-AzRoleAssignmentScheduleInstance -Scope $scope 
+```
 
+```output
 Name                                 Type                                            Scope
 ----                                 ----                                            -----
 986d4ad8-f513-4a21-92e5-7163486e9e7c Microsoft.Authorization/roleAssignmentScheduleInstances /subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d
@@ -17,9 +19,11 @@ Returns all `roleAssignmentScheduleInstances` for the `scope`. To call the API, 
 ### Example 2: List all My role assignment schedule instances for a resource
 
 ```powershell
-PS C:\> $scope = "/" # "/" stands for tenant level resource
-PS C:\> Get-AzRoleAssignmentScheduleInstance -Scope $scope -Filter "asTarget()"
+$scope = "/" # "/" stands for tenant level resource
+Get-AzRoleAssignmentScheduleInstance -Scope $scope -Filter "asTarget()"
+```
 
+```output
 Name                                 Type                                            Scope                                                 RoleDefinitionId
 ----                                 ----                                            -----                                                 ----------------                                                                      
 4cd7e26b-8eca-425c-969d-ec708c88bf18 Microsoft.Authorization/roleAssignmentScheduleInstances /subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d   /subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d/providers/Microsoft.Authorizatio… 
@@ -33,10 +37,12 @@ Returns all `roleAssignmentScheduleInstances` for the `scope` which are assigned
 ### Example 3: List all role assignment schedule instances for a resource with filters
 
 ```powershell
-PS C:\> $scope = "/subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d"
-PS C:\> $filter = "roleDefinitionId eq '/providers/Microsoft.Authorization/roleDefinitions/8e3af657-a8ff-443c-a75c-2fe8c4bcb635'"
-PS C:\> Get-AzRoleAssignmentScheduleInstance -Scope $scope -Filter $filter
+$scope = "/subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d"
+$filter = "roleDefinitionId eq '/providers/Microsoft.Authorization/roleDefinitions/8e3af657-a8ff-443c-a75c-2fe8c4bcb635'"
+Get-AzRoleAssignmentScheduleInstance -Scope $scope -Filter $filter
+```
 
+```output
 Name                                 Type                                            Scope                                                                                 RoleDefinitionId
 ----                                 ----                                            -----                                                                                 ----------------                                      
 314aa57e-064d-46c3-964e-a0d20989c1a2 Microsoft.Authorization/roleAssignmentScheduleInstances /subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d                                   /subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d/… 
@@ -59,9 +65,11 @@ Supported filters:
 ### Example 4: Get a role assignment schedule instances by scope and name
 
 ```powershell
-PS C:\> $scope = "/subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d"
-PS C:\> Get-AzRoleAssignmentScheduleInstance -Scope $scope -Name "4cd7e26b-8eca-425c-969d-ec708c88bf18"
+$scope = "/subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d"
+Get-AzRoleAssignmentScheduleInstance -Scope $scope -Name "4cd7e26b-8eca-425c-969d-ec708c88bf18"
+```
 
+```output
 Name                                 Type                                            Scope                                               RoleDefinitionId
 ----                                 ----                                            -----                                               ----------------                                                                        
 4cd7e26b-8eca-425c-969d-ec708c88bf18 Microsoft.Authorization/roleAssignmentScheduleInstances /subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d /subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d/providers/Microsoft.Authorization/… 

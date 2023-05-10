@@ -27,7 +27,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
+        [Trait(Category.Owner, NrpTeamAlias.plcpdev)]
         public void TestPrivateLinkServiceCRUD()
         {
             TestRunner.RunTestScript("Test-PrivateLinkServiceCRUD");
@@ -35,7 +35,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
+        [Trait(Category.Owner, NrpTeamAlias.plcpdev)]
         public void TestPrivateLinkServiceInEdgeZone()
         {
             TestRunner.RunTestScript("Test-PrivateLinkServiceInEdgeZone");
@@ -43,7 +43,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
+        [Trait(Category.Owner, NrpTeamAlias.plcpdev)]
         public void TestPrivateEndpointConnectionCRUD()
         {
             TestRunner.RunTestScript("Test-PrivateEndpointConnectionCRUD");
@@ -51,7 +51,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
+        [Trait(Category.Owner, NrpTeamAlias.plcpdev)]
         public void TestStoragePrivateEndpoint()
         {
             TestRunner.RunTestScript("Test-StoragePrivateEndpoint");
@@ -59,7 +59,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
+        [Trait(Category.Owner, NrpTeamAlias.plcpdev)]
         public void TestResourceManagerPrivateEndpoint()
         {
             TestRunner.RunTestScript("Test-ResourceManagerPrivateEndpoint");

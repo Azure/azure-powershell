@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         /// <summary>
         /// VmImage sets the Service Fabric runtime package delivery hint for the cluster, which results in dropping the appropriately-mapped package for the VM image OS.
         /// Accepted values: Windows, Linux, Ubuntu, Ubuntu18_04
-        /// Note: Linux & Ubuntu both map to Ubuntu 16.04
+        /// Note: Linux &amp; Ubuntu both map to Ubuntu 16.04
         /// </summary>
         [Parameter(Mandatory = true, ValueFromPipeline = true,
                    HelpMessage = "VM Image hint for determining SF runtime package delivery: i.e. .cab/.deb")]

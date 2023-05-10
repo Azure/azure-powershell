@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Models
 
         public string TenantId { get; set; }
 
-        public ManagedServiceIdentityType? Type { get; set; }
+        public string Type { get; set; }
 
         public IDictionary<string, UserAssignedIdentity> UserAssignedIdentities { get; set; }
 

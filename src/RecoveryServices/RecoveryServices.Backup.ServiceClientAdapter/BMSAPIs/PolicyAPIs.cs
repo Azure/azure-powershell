@@ -29,6 +29,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         /// </summary>
         /// <param name="policyName">Name of the policy</param>
         /// <param name="request">Policy create or update request</param>
+        /// <param name="vaultName"></param>
+        /// <param name="resourceGroupName"></param>
+        /// <param name="auxiliaryAccessToken"></param>
+        /// <param name="isMUAProtected"></param>
         /// <returns>Policy created by this operation</returns>
         public RestAzureNS.AzureOperationResponse<ProtectionPolicyResource>
             CreateOrUpdateProtectionPolicy(
@@ -90,6 +94,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         /// Gets a protection policy given the name
         /// </summary>
         /// <param name="policyName">Name of the policy</param>
+        /// <param name="vaultName"></param>
+        /// <param name="resourceGroupName"></param>
         /// <returns>Policy response returned by the service</returns>
         public ProtectionPolicyResource GetProtectionPolicy(
             string policyName,
@@ -108,6 +114,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         /// </summary>
         /// <param name="queryFilter">Query filter</param>
         /// <param name="skipToken">Skip token for pagination</param>
+        /// <param name="vaultName"></param>
+        /// <param name="resourceGroupName"></param>
         /// <returns>List of protection policies</returns>
         public List<ProtectionPolicyResource> ListProtectionPolicy(
             RestAzureODataNS.ODataQuery<ProtectionPolicyQueryObject> queryFilter,
@@ -134,6 +142,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         /// Deletes protection policy from the vault specified by the name
         /// </summary>
         /// <param name="policyName">Name of the policy to be deleted</param>
+        /// <param name="vaultName"></param>
+        /// <param name="resourceGroupName"></param>
         /// <returns>Default azure operation response</returns>
         public RestAzureNS.AzureOperationResponse RemoveProtectionPolicy(
                 string policyName,

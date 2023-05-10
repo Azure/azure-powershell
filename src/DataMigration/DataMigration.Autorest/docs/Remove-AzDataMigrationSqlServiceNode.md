@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.DataMigration
-online version: https://docs.microsoft.com/powershell/module/az.datamigration/remove-azdatamigrationsqlservicenode
+online version: https://learn.microsoft.com/powershell/module/az.datamigration/remove-azdatamigrationsqlservicenode
 schema: 2.0.0
 ---
 
@@ -32,7 +32,7 @@ Delete the integration runtime node.
 
 ### Example 1: Remove the specified Intergration Runtime Node for a Sql Migration Service
 ```powershell
-Remove-AzDataMigrationSqlServiceNode -ResourceGroupName "MyResourceGroup" -SqlMigrationServiceName "MySqlMigrationService" -NodeName "WIN-AKLAB" | Select *
+Remove-AzDataMigrationSqlServiceNode -ResourceGroupName "MyResourceGroup" -SqlMigrationServiceName "MySqlMigrationService" -NodeName "WIN-AKLAB" | Select-Object *
 ```
 
 ```output
@@ -218,7 +218,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IDataMigrationIdentity>: Identity Parameter
+`INPUTOBJECT <IDataMigrationIdentity>`: Identity Parameter
   - `[Id <String>]`: Resource identity path
   - `[ManagedInstanceName <String>]`: 
   - `[ResourceGroupName <String>]`: Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.

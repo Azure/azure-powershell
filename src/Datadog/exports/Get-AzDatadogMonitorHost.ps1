@@ -25,7 +25,7 @@ PS C:\> Get-AzDatadogMonitorHost -ResourceGroupName azure-rg-Datadog -Name Datad
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.Api20210301.IDatadogHost
 .Link
-https://docs.microsoft.com/powershell/module/az.datadog/get-azdatadogmonitorhost
+https://learn.microsoft.com/powershell/module/az.datadog/get-azdatadogmonitorhost
 #>
 function Get-AzDatadogMonitorHost {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.Api20210301.IDatadogHost])]

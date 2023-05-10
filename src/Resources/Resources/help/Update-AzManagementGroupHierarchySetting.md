@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Resources.dll-Help.xml
 Module Name: Az.Resources
-online version: https://docs.microsoft.com/powershell/module/az.resources/get-azmanagementgroup/
+online version: https://learn.microsoft.com/powershell/module/az.resources/update-azmanagementgrouphierarchysetting
 schema: 2.0.0
 ---
 
@@ -178,7 +178,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSHierarchySettings
 
 ## NOTES
-
-## RELATED LINKS
 
 ## RELATED LINKS

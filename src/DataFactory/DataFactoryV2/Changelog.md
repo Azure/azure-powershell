@@ -18,6 +18,26 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.16.13
+* Updated ADF .Net SDK version to 9.2.0
+* Added AzureBlobFS sasUri and sasToken properties in ADF
+* Added AzureBlobStorage containerUri and authenticationType properties in ADF
+* Added support copyComputeScale And pipelineExternalComputeScale in IntegrationRuntime
+
+## Version 1.16.12
+* Updated ADF .Net SDK version to 9.0.0
+
+## Version 1.16.11
+* Updated ADF .Net SDK version to 8.0.0
+
+## Version 1.16.10
+* Updated ADF .Net SDK version to 7.0.0
+
+## Version 1.16.9
+* Updated ADF .Net SDK version to 6.4.0
+
+## Version 1.16.8
 * Updated ADF .Net SDK version to 6.3.0
 
 ## Version 1.16.7

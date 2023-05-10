@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support
 {
 
-    /// <summary>Represent the identity type: systemAssigned, userAssigned, None</summary>
+    /// <summary>Represents the identity type: systemAssigned, userAssigned, None</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.ManagedIdentityTypeTypeConverter))]
     public partial struct ManagedIdentityType :
         System.Management.Automation.IArgumentCompleter

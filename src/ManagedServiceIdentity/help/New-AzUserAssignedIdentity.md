@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.ManagedServiceIdentity
-online version: https://docs.microsoft.com/powershell/module/az.managedserviceidentity/new-azuserassignedidentity
+online version: https://learn.microsoft.com/powershell/module/az.managedserviceidentity/new-azuserassignedidentity
 schema: 2.0.0
 ---
 
@@ -25,8 +25,10 @@ Create or update an identity in the specified subscription and resource group.
 
 ### Example 1: Creates an user assigned identity in the specified subscription and resource group
 ```powershell
-PS C:\> New-AzUserAssignedIdentity -ResourceGroupName azure-rg-test -Name uai-pwsh01 -Location eastus
+New-AzUserAssignedIdentity -ResourceGroupName azure-rg-test -Name uai-pwsh01 -Location eastus
+```
 
+```output
 Location Name       ResourceGroupName
 -------- ----       -----------------
 eastus   uai-pwsh01 azure-rg-test
@@ -164,7 +166,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.Api20181130.IIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.Api20230131.IIdentity
 
 ## NOTES
 

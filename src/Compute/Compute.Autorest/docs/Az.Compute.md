@@ -1,7 +1,7 @@
 ---
 Module Name: Az.Compute
 Module Guid: 64d81db2-280c-4cff-a9f8-9e3ef386b229
-Download Help Link: https://docs.microsoft.com/powershell/module/az.compute
+Download Help Link: https://learn.microsoft.com/powershell/module/az.compute
 Help Version: 1.0.0.0
 Locale: en-US
 ---
@@ -16,12 +16,6 @@ Retrieves information about a gallery Application Definition.
 
 ### [Get-AzGalleryApplicationVersion](Get-AzGalleryApplicationVersion.md)
 Retrieves information about a gallery Application Version.
-
-### [Get-AzVMRunCommand](Get-AzVMRunCommand.md)
-Gets specific run command for a subscription in a location.
-
-### [Get-AzVmssVMRunCommand](Get-AzVmssVMRunCommand.md)
-The operation to get the VMSS VM run command.
 
 ### [New-AzGalleryApplication](New-AzGalleryApplication.md)
 Create or update a gallery Application Definition.

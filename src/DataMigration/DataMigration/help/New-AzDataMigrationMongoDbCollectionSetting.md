@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataMigration.dll-Help.xml
 Module Name: Az.DataMigration
-online version: https://docs.microsoft.com/powershell/module/az.datamigration/New-AzDataMigrationMongoDbCollectionSetting
+online version: https://learn.microsoft.com/powershell/module/az.datamigration/New-AzDataMigrationMongoDbCollectionSetting
 schema: 2.0.0
 ---
 
@@ -26,6 +26,9 @@ the database level settings for migration.
 ## EXAMPLES
 
 ### Example 1
+<!-- Skip: Output cannot be splitted from code -->
+
+
 ```powershell
 $x = New-AzDataMigrationMongoDbCollectionSetting -Name myCollection -TargetRequestUnit 1000 -CanDelete -ShardKey "_id:-1,age:1,name"
 $x

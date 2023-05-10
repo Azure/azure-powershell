@@ -32,7 +32,7 @@ Copyright = 'Microsoft Corporation. All rights reserved.'
 # Description of the functionality provided by this module
 Description = 'Microsoft Azure PowerShell - Private DNS service cmdlets for Azure Resource Manager in Windows PowerShell and PowerShell Core.
 
-For more information on Private DNS, please visit the following: https://docs.microsoft.com/azure/privatedns/'
+For more information on Private DNS, please visit the following: https://learn.microsoft.com/azure/privatedns/'
 
 # Minimum version of the PowerShell engine required by this module
 PowerShellVersion = '5.1'

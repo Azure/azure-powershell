@@ -11,6 +11,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Azure.Security.KeyVault.Certificates;
+
 using Microsoft.Azure.Commands.KeyVault.Properties;
 using Microsoft.Azure.KeyVault.Models;
 using System;
@@ -28,6 +30,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         public string SecretId { get; internal set; }
         public string Thumbprint { get; set; }
 
+        public PSKeyVaultCertificatePolicy Policy { get; set; }
         public string RecoveryLevel { get; private set; }
 
         internal PSKeyVaultCertificate(CertificateBundle certificateBundle, VaultUriHelper vaultUriHelper)
@@ -42,9 +45,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
             SetObjectIdentifier(vaultUriHelper, certificateBundle.CertificateIdentifier);
 
-            // VaultName formatted incorrect in certificateBundle
-            var vaultUri = new Uri(certificateBundle.CertificateIdentifier.Vault);
-            VaultName = vaultUri.Host.Split('.').First();
+            // Vault formatted as "https://{vaultName}.vault.azure.net:443" in certificateBundle
+            VaultName = new Uri(certificateBundle.CertificateIdentifier.Vault).Host.Split('.').First();
 
             if ( certificateBundle.Cer != null )
             {
@@ -88,14 +90,12 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             if (certificateBundle.CertificateIdentifier == null)
                 throw new ArgumentException(Resources.InvalidKeyIdentifier);
 
-            var vaultUri = new Uri(certificateBundle.CertificateIdentifier.Vault);
-
             SetObjectIdentifier(new ObjectIdentifier
             {
                 Id = certificateBundle.CertificateIdentifier.Identifier,
                 Name = certificateBundle.CertificateIdentifier.Name,
-                // VaultName formatted incorrect in certificateBundle
-                VaultName = vaultUri.Host.Split('.').First(),
+                // Vault formatted as "https://{vaultName}.vault.azure.net:443" in certificateBundle
+                VaultName = new Uri(certificateBundle.CertificateIdentifier.Vault).Host.Split('.').First(),
                 Version = certificateBundle.CertificateIdentifier.Version
             });
 
@@ -128,6 +128,46 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             if (certificateBundle.Tags != null)
             {
                 Tags = (certificateBundle.Tags == null) ? null : certificateBundle.Tags.ConvertToHashtable();
+            }
+        }
+
+        internal PSKeyVaultCertificate(KeyVaultCertificateWithPolicy keyVaultCertificate) 
+        {
+            if (keyVaultCertificate == null)
+            {
+                throw new ArgumentNullException(nameof(keyVaultCertificate));
+            }
+            if (keyVaultCertificate.Id == null)
+                throw new ArgumentException(Resources.InvalidKeyIdentifier);
+
+            SetObjectIdentifier(new ObjectIdentifier
+            {
+                Id = keyVaultCertificate.Id.ToString(),
+                Name = keyVaultCertificate.Name,
+                // Extract VaultName from VaultUri
+                VaultName = keyVaultCertificate.Properties?.VaultUri.Host.Split('.').First(),
+                Version = keyVaultCertificate.Properties?.Version
+            });
+
+            if (keyVaultCertificate.Cer != null)
+            {
+                Certificate = new X509Certificate2(keyVaultCertificate.Cer);
+                Thumbprint = Certificate.Thumbprint;
+            }
+
+            KeyId = keyVaultCertificate.KeyId?.ToString();
+            SecretId = keyVaultCertificate.SecretId?.ToString();
+            Policy = PSKeyVaultCertificatePolicy.FromTrack2CertificatePolicy(keyVaultCertificate.Policy);
+
+            if (keyVaultCertificate.Properties != null)
+            {
+                Created = keyVaultCertificate.Properties.CreatedOn?.DateTime;
+                Expires = keyVaultCertificate.Properties.ExpiresOn?.DateTime;
+                NotBefore = keyVaultCertificate.Properties.NotBefore?.DateTime;
+                Enabled = keyVaultCertificate.Properties.Enabled;
+                Updated = keyVaultCertificate.Properties.UpdatedOn?.DateTime;
+                RecoveryLevel = keyVaultCertificate.Properties.RecoveryLevel;
+                Tags = keyVaultCertificate.Properties.Tags?.ConvertToHashtable();
             }
         }
 

@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
 ms.assetid: F1EC601C-3ADD-402A-A5F7-84A95D312187
-online version: https://docs.microsoft.com/powershell/module/az.storage/get-azstoragequeuestoredaccesspolicy
+online version: https://learn.microsoft.com/powershell/module/az.storage/get-azstoragequeuestoredaccesspolicy
 schema: 2.0.0
 ---
 
@@ -24,15 +24,15 @@ The **Get-AzStorageQueueStoredAccessPolicy** cmdlet lists the stored access poli
 ## EXAMPLES
 
 ### Example 1: Get a stored access policy in the queue
-```
-PS C:\>Get-AzStorageQueueStoredAccessPolicy -Queue "MyQueue" -Policy "Policy12"
+```powershell
+Get-AzStorageQueueStoredAccessPolicy -Queue "MyQueue" -Policy "Policy12"
 ```
 
 This command gets the access policy named Policy12 in the storage queue named MyQueue.
 
 ### Example 2: Get all stored access policies in the queue
-```
-PS C:\>Get-AzStorageQueueStoredAccessPolicy -Queue "MyQueue"
+```powershell
+Get-AzStorageQueueStoredAccessPolicy -Queue "MyQueue"
 ```
 
 This command gets all stored access policies in the queue named MyQueue.

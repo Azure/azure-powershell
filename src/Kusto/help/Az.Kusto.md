@@ -1,7 +1,7 @@
 ---
 Module Name: Az.Kusto
 Module Guid: 18c61846-f6f0-425e-ba4b-5cf903e2bdd8
-Download Help Link: https://docs.microsoft.com/powershell/module/az.kusto
+Download Help Link: https://learn.microsoft.com/powershell/module/az.kusto
 Help Version: 1.0.0.0
 Locale: en-US
 ---
@@ -67,6 +67,9 @@ Gets a private link resource.
 
 ### [Get-AzKustoScript](Get-AzKustoScript.md)
 Gets a Kusto cluster database script.
+
+### [Get-AzKustoSku](Get-AzKustoSku.md)
+Lists eligible region SKUs for Kusto resource provider by Azure region.
 
 ### [Invoke-AzKustoDataConnectionValidation](Invoke-AzKustoDataConnectionValidation.md)
 Checks that the data connection parameters are valid.

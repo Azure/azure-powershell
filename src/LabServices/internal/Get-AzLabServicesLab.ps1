@@ -52,7 +52,7 @@ westus2       anotherlab Name                                     Microsoft.LabS
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ILab
 .Link
-https://docs.microsoft.com/powershell/module/az.labservices/get-azlabserviceslab
+https://learn.microsoft.com/powershell/module/az.labservices/get-azlabserviceslab
 #>
 function Get-AzLabServicesLab {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ILab])]

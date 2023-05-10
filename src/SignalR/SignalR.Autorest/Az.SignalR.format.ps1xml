@@ -9,10 +9,16 @@
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
+            <Label>CertificateName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>HubName</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>Location</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Name</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>PrivateEndpointConnectionName</Label>
@@ -34,10 +40,16 @@
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
+                <PropertyName>CertificateName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>HubName</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>Location</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>PrivateEndpointConnectionName</PropertyName>
@@ -146,9 +158,201 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.Dimension</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.CustomCertificate</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.Dimension</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.CustomCertificate</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>KeyVaultBaseUri</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>KeyVaultSecretName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>KeyVaultSecretVersion</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ProvisioningState</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>KeyVaultBaseUri</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>KeyVaultSecretName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>KeyVaultSecretVersion</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ProvisioningState</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.CustomCertificateList</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.CustomCertificateList</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>NextLink</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>NextLink</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.CustomCertificateProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.CustomCertificateProperties</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>KeyVaultBaseUri</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>KeyVaultSecretName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>KeyVaultSecretVersion</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ProvisioningState</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>KeyVaultBaseUri</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>KeyVaultSecretName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>KeyVaultSecretVersion</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ProvisioningState</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.CustomDomain</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.CustomDomain</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>DomainName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ProvisioningState</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>DomainName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ProvisioningState</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.CustomDomainList</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.CustomDomainList</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>NextLink</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>NextLink</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.CustomDomainProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.CustomDomainProperties</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>DomainName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ProvisioningState</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>DomainName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ProvisioningState</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.Dimension</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.Dimension</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -186,9 +390,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.EventHandler</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.EventHandler</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.EventHandler</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.EventHandler</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -220,9 +424,65 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.LiveTraceCategory</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.EventHubEndpoint</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.LiveTraceCategory</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.EventHubEndpoint</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>EventHubName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>FullyQualifiedNamespace</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>EventHubName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>FullyQualifiedNamespace</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.EventNameFilter</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.EventNameFilter</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>SystemEvent</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>UserEventPattern</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>SystemEvent</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>UserEventPattern</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.LiveTraceCategory</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.LiveTraceCategory</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -248,9 +508,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.LiveTraceConfiguration</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.LiveTraceConfiguration</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.LiveTraceConfiguration</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.LiveTraceConfiguration</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -270,9 +530,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.LogSpecification</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.LogSpecification</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.LogSpecification</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.LogSpecification</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -298,9 +558,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ManagedIdentity</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.ManagedIdentity</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ManagedIdentity</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.ManagedIdentity</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -326,9 +586,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ManagedIdentitySettings</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.ManagedIdentitySettings</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ManagedIdentitySettings</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.ManagedIdentitySettings</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -348,9 +608,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.MetricSpecification</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.MetricSpecification</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.MetricSpecification</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.MetricSpecification</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -406,9 +666,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.NameAvailability</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.NameAvailability</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.NameAvailability</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.NameAvailability</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -440,9 +700,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.NameAvailabilityParameters</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.NameAvailabilityParameters</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.NameAvailabilityParameters</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.NameAvailabilityParameters</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -462,9 +722,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.NetworkAcl</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.NetworkAcl</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.NetworkAcl</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.NetworkAcl</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -490,9 +750,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.Operation</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.Operation</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.Operation</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.Operation</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -524,9 +784,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.OperationDisplay</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.OperationDisplay</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.OperationDisplay</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.OperationDisplay</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -564,9 +824,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.OperationList</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.OperationList</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.OperationList</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.OperationList</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -586,9 +846,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.PrivateEndpointAcl</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.PrivateEndpointAcl</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.PrivateEndpointAcl</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.PrivateEndpointAcl</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -620,9 +880,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.PrivateEndpointConnection</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.PrivateEndpointConnection</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.PrivateEndpointConnection</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.PrivateEndpointConnection</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -642,9 +902,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.PrivateEndpointConnectionList</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.PrivateEndpointConnectionList</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.PrivateEndpointConnectionList</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.PrivateEndpointConnectionList</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -664,9 +924,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.PrivateEndpointConnectionProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.PrivateEndpointConnectionProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.PrivateEndpointConnectionProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.PrivateEndpointConnectionProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -692,9 +952,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.PrivateLinkResource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.PrivateLinkResource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.PrivateLinkResource</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.PrivateLinkResource</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -714,9 +974,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.PrivateLinkResourceList</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.PrivateLinkResourceList</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.PrivateLinkResourceList</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.PrivateLinkResourceList</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -736,9 +996,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.PrivateLinkResourceProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.PrivateLinkResourceProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.PrivateLinkResourceProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.PrivateLinkResourceProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -770,9 +1030,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.PrivateLinkServiceConnectionState</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.PrivateLinkServiceConnectionState</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.PrivateLinkServiceConnectionState</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.PrivateLinkServiceConnectionState</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -804,9 +1064,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ProxyResource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.ProxyResource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ProxyResource</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.ProxyResource</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -826,9 +1086,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.RegenerateKeyParameters</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.RegenerateKeyParameters</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.RegenerateKeyParameters</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.RegenerateKeyParameters</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -848,9 +1108,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.Resource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.Resource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.Resource</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.Resource</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -870,9 +1130,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ResourceLogCategory</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.ResourceLogCategory</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ResourceLogCategory</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.ResourceLogCategory</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -898,9 +1158,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ResourceSku</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.ResourceSku</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ResourceSku</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.ResourceSku</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -944,9 +1204,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ShareablePrivateLinkResourceProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.ShareablePrivateLinkResourceProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ShareablePrivateLinkResourceProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.ShareablePrivateLinkResourceProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -972,9 +1232,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ShareablePrivateLinkResourceType</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.ShareablePrivateLinkResourceType</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ShareablePrivateLinkResourceType</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.ShareablePrivateLinkResourceType</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -994,9 +1254,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.SharedPrivateLinkResource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.SharedPrivateLinkResource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.SharedPrivateLinkResource</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.SharedPrivateLinkResource</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1016,9 +1276,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.SharedPrivateLinkResourceList</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.SharedPrivateLinkResourceList</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.SharedPrivateLinkResourceList</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.SharedPrivateLinkResourceList</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1038,9 +1298,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.SharedPrivateLinkResourceProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.SharedPrivateLinkResourceProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.SharedPrivateLinkResourceProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.SharedPrivateLinkResourceProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1084,9 +1344,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.SignalRServiceUsage</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.SignalRServiceUsage</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.SignalRServiceUsage</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.SignalRServiceUsage</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1124,9 +1384,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.SignalRServiceUsageList</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.SignalRServiceUsageList</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.SignalRServiceUsageList</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.SignalRServiceUsageList</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1146,9 +1406,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.SignalRServiceUsageName</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.SignalRServiceUsageName</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.SignalRServiceUsageName</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.SignalRServiceUsageName</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1174,9 +1434,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.Sku</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.Sku</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.Sku</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.Sku</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1238,9 +1498,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.SkuCapacity</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.SkuCapacity</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.SkuCapacity</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.SkuCapacity</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1284,9 +1544,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.SkuList</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.SkuList</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.SkuList</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.SkuList</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1306,9 +1566,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.TrackedResource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.TrackedResource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.TrackedResource</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.TrackedResource</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1334,9 +1594,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.TrackedResourceTags</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.TrackedResourceTags</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.TrackedResourceTags</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.TrackedResourceTags</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1356,9 +1616,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.UserAssignedIdentityProperty</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.UserAssignedIdentityProperty</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.UserAssignedIdentityProperty</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.UserAssignedIdentityProperty</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1384,9 +1644,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.WebPubSubHub</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.WebPubSubHub</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.WebPubSubHub</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.WebPubSubHub</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1412,9 +1672,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.WebPubSubHubList</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.WebPubSubHubList</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.WebPubSubHubList</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.WebPubSubHubList</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1434,9 +1694,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.WebPubSubHubProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.WebPubSubHubProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.WebPubSubHubProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.WebPubSubHubProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1456,9 +1716,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.WebPubSubKeys</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.WebPubSubKeys</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.WebPubSubKeys</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.WebPubSubKeys</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1496,9 +1756,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.WebPubSubNetworkAcLs</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.WebPubSubNetworkAcLs</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.WebPubSubNetworkAcLs</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.WebPubSubNetworkAcLs</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1518,9 +1778,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.WebPubSubProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.WebPubSubProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.WebPubSubProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.WebPubSubProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1594,9 +1854,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.WebPubSubResource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.WebPubSubResource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.WebPubSubResource</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.WebPubSubResource</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1628,9 +1888,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.WebPubSubResourceList</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.WebPubSubResourceList</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.WebPubSubResourceList</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.WebPubSubResourceList</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1650,9 +1910,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.WebPubSubTlsSettings</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.WebPubSubTlsSettings</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.WebPubSubTlsSettings</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.WebPubSubTlsSettings</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>

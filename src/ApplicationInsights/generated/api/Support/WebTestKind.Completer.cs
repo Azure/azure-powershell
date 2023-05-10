@@ -6,7 +6,9 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Support
 {
 
-    /// <summary>The kind of WebTest that this web test watches. Choices are ping and multistep.</summary>
+    /// <summary>
+    /// The kind of WebTest that this web test watches. Choices are ping, multistep and standard.
+    /// </summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Support.WebTestKindTypeConverter))]
     public partial struct WebTestKind :
         System.Management.Automation.IArgumentCompleter
@@ -33,6 +35,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Support
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "multistep".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
                 yield return new global::System.Management.Automation.CompletionResult("'multistep'", "multistep", global::System.Management.Automation.CompletionResultType.ParameterValue, "multistep");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "standard".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'standard'", "standard", global::System.Management.Automation.CompletionResultType.ParameterValue, "standard");
             }
         }
     }

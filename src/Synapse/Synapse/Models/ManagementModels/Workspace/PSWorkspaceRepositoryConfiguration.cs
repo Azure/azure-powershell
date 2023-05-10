@@ -90,7 +90,8 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 ProjectName = this.ProjectName,
                 RepositoryName = this.RepositoryName,
                 CollaborationBranch = this.CollaborationBranch,
-                RootFolder = this.RootFolder
+                RootFolder = this.RootFolder,
+                LastCommitId = this.LastCommitId
             };
         }
     }

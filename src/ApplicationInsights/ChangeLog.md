@@ -18,7 +18,34 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.2.2
+* Added parameter validation for `Get-AzApplicationInsights` [#20697]
+
+## Version 2.2.1
+* Enabled output object enumerating for `Get-AzApplicationInsights` [#20225]
+
+## Version 2.2.0
+* Supported Workbook function. Below is the new cmdlet
+    * `Get-AzApplicationInsightsMyWorkbook`
+    * `Get-AzApplicationInsightsWorkbook`
+    * `Get-AzApplicationInsightsWorkbookRevision`
+    * `Get-AzApplicationInsightsWorkbookTemplate`
+    * `New-AzApplicationInsightsMyWorkbook`
+    * `New-AzApplicationInsightsWorkbook`
+    * `New-AzApplicationInsightsWorkbookTemplate`
+    * `New-AzApplicationInsightsWorkbookTemplateGalleryObject`
+    * `Remove-AzApplicationInsightsMyWorkbook`
+    * `Remove-AzApplicationInsightsWorkbook`
+    * `Remove-AzApplicationInsightsWorkbookTemplate`
+    * `Update-AzApplicationInsightsMyWorkbook`
+    * `Update-AzApplicationInsightsWorkbook`
+    * `Update-AzApplicationInsightsWorkbookTemplate`
+
+## Version 2.1.0
 * Fixed parameters for Set-AzApplicationInsightsDailyCap [#18315]
+* Fixed parameter `DocumentType` for `New-AzApplicationInsightsContinuousExport` and `Set-AzApplicationInsightsContinuousExport` [#18350]
+* Fixed parameter `ResourceId` for `Get-AzApplicationInsights` [#18707]
 
 ## Version 2.0.0
 * Upgraded API version for ApplicationInsights component to 2020-02-02

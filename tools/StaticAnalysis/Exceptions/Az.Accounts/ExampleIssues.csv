@@ -1,0 +1,8 @@
+"Module","Cmdlet","Example","Line","RuleName","ProblemID","Severity","Description","Extent","Remediation"
+"Accounts","Disconnect-AzAccount","2","1","Unbinded_Expression","5014","1","Get-AzContext 'Work' is not explicitly assigned to a parameter.","'Work'","Assign 'Work' explicitly to the parameter."
+"Accounts","Remove-AzContext","1","1","Invalid_Parameter_Name","5011","1","Remove-AzContext -Name is not a valid parameter name.","-Name","Check validity of the parameter -Name."
+"Accounts","Rename-AzContext","1","1","Invalid_Parameter_Name","5011","1","Rename-AzContext -SourceName is not a valid parameter name.","-SourceName","Check validity of the parameter -SourceName."
+"Accounts","Rename-AzContext","1","1","Invalid_Parameter_Name","5011","1","Rename-AzContext -TargetName is not a valid parameter name.","-TargetName","Check validity of the parameter -TargetName."
+"Accounts","Rename-AzContext","2","1","Unbinded_Expression","5014","1","Rename-AzContext 'My context' is not explicitly assigned to a parameter.","'My context'","Assign 'My context' explicitly to the parameter."
+"Accounts","Rename-AzContext","2","1","Unbinded_Expression","5014","1","Rename-AzContext 'Work' is not explicitly assigned to a parameter.","'Work'","Assign 'Work' explicitly to the parameter."
+"Accounts","Select-AzContext","1","1","Unbinded_Expression","5014","1","Select-AzContext 'Work' is not explicitly assigned to a parameter.","'Work'","Assign 'Work' explicitly to the parameter."

@@ -17,7 +17,7 @@ This directory contains the PowerShell module for the DesktopVirtualization serv
 This module was primarily generated via [AutoRest](https://github.com/Azure/autorest) using the [PowerShell](https://github.com/Azure/autorest.powershell) extension.
 
 ## Module Requirements
-- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 2.2.3 or greater
+- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 2.7.5 or greater
 
 ## Authentication
 AutoRest does not generate authentication code for the module. Authentication is handled via Az.Accounts by altering the HTTP payload before it is sent.
@@ -47,13 +47,13 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: 14f98895acdb489aa42126c1226bcc40aadd4cf9
+branch: 45765fbbfd14084eb7a12ebd099aaeddb2a13173
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 sanitize-names: true
 subject-prefix: 'Wvd'
 input-file:
-- $(repo)/specification/desktopvirtualization/resource-manager/Microsoft.DesktopVirtualization/stable/2021-07-12/desktopvirtualization.json
+- $(repo)/specification/desktopvirtualization/resource-manager/Microsoft.DesktopVirtualization/stable/2022-09-09/desktopvirtualization.json
 
 module-version: 2.1.0
 title: DesktopVirtualizationClient
@@ -93,4 +93,35 @@ directive:
       verb: Get
       subject: ActiveApplication
     remove: true
+  - where:      
+      verb: Remove    
+      subject: UserSession
+      parameter-name: Force
+    set:
+      parameter-description: 'Specify to force userSession deletion.'
+  #breaking change warning
+  - where:
+      verb: New
+      subject: ^ApplicationGroup$|^HostPool$ 
+      parameter-name: MigrationRequestMigrationPath|MigrationRequestOperation
+    set:
+      breaking-change:
+        deprecated-by-version: 4.0.0
+        change-description: This is parameter will be deleted.
+  - where:
+      verb: New
+      subject: ^ScalingPlan$
+      parameter-name: HostPoolType
+    set:
+      breaking-change:
+        deprecated-by-version: 4.0.0
+        change-description: The allowed value of this parameter changed from 'BYODesktop, Personal, Pooled' to 'Pooled'
+  - where:
+      verb: Update
+      subject: ^ScalingPlan$
+      parameter-name: HostPoolType
+    set:
+      breaking-change:
+        deprecated-by-version: 4.0.0
+        change-description: This parameter will be deleted.
 ```

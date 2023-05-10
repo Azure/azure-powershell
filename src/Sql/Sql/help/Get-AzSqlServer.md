@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
 ms.assetid: C39ACCAC-2BFF-48D0-95EA-D5B402D74D46
-online version: https://docs.microsoft.com/powershell/module/az.sql/get-azsqlserver
+online version: https://learn.microsoft.com/powershell/module/az.sql/get-azsqlserver
 schema: 2.0.0
 ---
 
@@ -141,6 +141,7 @@ FullyQualifiedDomainName : server02.database.windows.net
 This command gets information about all the Azure SQL Database servers assigned to the resource group ResourceGroup01 that start with "server".
 
 ### Example 5: Get all instances of SQL Server assigned to a resource group with external administrator information
+<!-- Skip: Output cannot be splitted from code -->
 ```powershell
 $val = Get-AzSqlServer -ResourceGroupName "ResourceGroup01" -ExpandActiveDirectoryAdministrator
 
@@ -185,6 +186,7 @@ AzureADOnlyAuthentication : True
 This command gets information about all the Azure SQL Database servers assigned to the resource group ResourceGroup01.
 
 ### Example 6: Get information about an Azure SQL Database server with external administrator information
+<!-- Skip: Output cannot be splitted from code -->
 ```powershell
 $val = Get-AzSqlServer -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -ExpandActiveDirectoryAdministrator
 ResourceGroupName        : resourcegroup01
@@ -323,6 +325,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 [Set-AzSqlServer](./Set-AzSqlServer.md)
 
-[SQL Database Documentation](https://docs.microsoft.com/azure/sql-database/)
+[SQL Database Documentation](https://learn.microsoft.com/azure/sql-database/)
 
 

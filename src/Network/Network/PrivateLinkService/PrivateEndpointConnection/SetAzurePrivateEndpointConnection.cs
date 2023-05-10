@@ -60,6 +60,11 @@ namespace Microsoft.Azure.Commands.Network
                 this.PrivateLinkResourceType = resourceIdentifier.ResourceType.Substring(0, resourceIdentifier.ResourceType.LastIndexOf('/'));
                 this.ServiceName = resourceIdentifier.ParentResource.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries).Last();
             }
+            else if (this.IsParameterBound(c => c.PrivateLinkResourceType))
+            {
+                this.Subscription = DefaultProfile.DefaultContext.Subscription.Id;
+                this.PrivateLinkResourceType = DynamicParameters[privateEndpointTypeName].Value as string;
+            }
 
             IPrivateLinkProvider provider = BuildProvider(this.Subscription, this.PrivateLinkResourceType);
 

@@ -105,8 +105,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <param name="primaryFabricName">Primary fabric name</param>
         /// <param name="primaryNetworkName">Primary network name</param>
         /// <param name="mappingName">Mapping name</param>
-        /// <param name="recoveryFabricName">Recovery fabric name</param>
-        /// <param name="recoveryNetworkId">Recovery network id</param>
+        /// <param name="input">Input data to be passed as request body.</param>
         /// <returns>Long running operation response</returns>
         public PSSiteRecoveryLongRunningOperation NewAzureSiteRecoveryNetworkMapping(
             string primaryFabricName,
@@ -119,7 +118,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     primaryFabricName,
                     primaryNetworkName,
                     mappingName,
-                    input,
+                    input.Properties,
                     this.GetRequestHeaders(true))
                 .GetAwaiter()
                 .GetResult();
@@ -170,7 +169,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     primaryFabricName,
                     primaryNetworkName,
                     mappingName,
-                    input,
+                    input.Properties,
                     this.GetRequestHeaders(true))
                 .GetAwaiter()
                 .GetResult();

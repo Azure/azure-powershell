@@ -1,7 +1,7 @@
 ---
 external help file: Az.Purview-help.xml
 Module Name: Az.Purview
-online version: https://docs.microsoft.com/powershell/module/az.Purview/new-AzPurviewTeradataDataSourceObject
+online version: https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewTeradataDataSourceObject
 schema: 2.0.0
 ---
 
@@ -24,8 +24,10 @@ Create an in-memory object for TeradataDataSource.
 
 ### Example 1: Create Teradata data source object
 ```powershell
-PS C:\> New-AzPurviewTeradataDataSourceObject -Kind 'Teradata' -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -Host '12.13.14.12'
+New-AzPurviewTeradataDataSourceObject -Kind 'Teradata' -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -Host '12.13.14.12'
+```
 
+```output
 CollectionLastModifiedAt :
 CollectionReferenceName  : parv-brs-2
 CollectionType           : CollectionReference

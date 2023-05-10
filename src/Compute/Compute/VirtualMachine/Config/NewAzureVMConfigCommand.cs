@@ -138,6 +138,12 @@ namespace Microsoft.Azure.Commands.Compute
         [ResourceIdCompleter("Microsoft.Compute galleries/images/versions")]
         public string ImageReferenceId { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Specifies the disk controller type configured for the VM and VirtualMachineScaleSet. This property is only supported for virtual machines whose operating system disk and VM sku supports Generation 2 (https://learn.microsoft.com/en-us/azure/virtual-machines/generation-2), please check the HyperVGenerations capability returned as part of VM sku capabilities in the response of Microsoft.Compute SKUs api for the region contains V2 (https://learn.microsoft.com/rest/api/compute/resourceskus/list) . <br> For more information about Disk Controller Types supported please refer to https://aka.ms/azure-diskcontrollertypes.")]
+        [PSArgumentCompleter("SCSI", "NVMe")]
+        public string DiskControllerType { get; set; }
+
         protected override bool IsUsageMetricEnabled
         {
             get { return true; }
@@ -170,14 +176,19 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Specifies the number of vCPUs available for the VM. When this property is not specified in the request body the default behavior is to set it to the value of vCPUs available for that VM size exposed in api response of [List all available virtual machine sizes in a region](https://docs.microsoft.com/en-us/rest/api/compute/resource-skus/list).")]
+            HelpMessage = "Specifies the number of vCPUs available for the VM. When this property is not specified in the request body the default behavior is to set it to the value of vCPUs available for that VM size exposed in api response of [List all available virtual machine sizes in a region](https://learn.microsoft.com/en-us/rest/api/compute/resource-skus/list).")]
         public int vCPUCountAvailable { get; set; }
 
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Specifies the vCPU to physical core ratio. When this property is not specified in the request body the default behavior is set to the value of vCPUsPerCore for the VM Size exposed in api response of [List all available virtual machine sizes in a region](https://docs.microsoft.com/en-us/rest/api/compute/resource-skus/list). Setting this property to 1 also means that hyper-threading is disabled.")]
+            HelpMessage = "Specifies the vCPU to physical core ratio. When this property is not specified in the request body the default behavior is set to the value of vCPUsPerCore for the VM Size exposed in api response of [List all available virtual machine sizes in a region](https://learn.microsoft.com/en-us/rest/api/compute/resource-skus/list). Setting this property to 1 also means that hyper-threading is disabled.")]
         public int vCPUCountPerCore { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Specified the shared gallery image unique id for vm deployment. This can be fetched from shared gallery image GET call.")]
+        public string SharedGalleryImageId { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -208,11 +219,11 @@ namespace Microsoft.Azure.Commands.Compute
                     vm.Identity = new VirtualMachineIdentity();
                 }
 
-                vm.Identity.UserAssignedIdentities = new Dictionary<string, VirtualMachineIdentityUserAssignedIdentitiesValue>();
+                vm.Identity.UserAssignedIdentities = new Dictionary<string, UserAssignedIdentitiesValue>();
 
                 foreach (var id in this.IdentityId)
                 {
-                    vm.Identity.UserAssignedIdentities.Add(id, new VirtualMachineIdentityUserAssignedIdentitiesValue());
+                    vm.Identity.UserAssignedIdentities.Add(id, new UserAssignedIdentitiesValue());
                 }
             }
 
@@ -322,7 +333,29 @@ namespace Microsoft.Azure.Commands.Compute
                 }
                 vm.StorageProfile.ImageReference.Id = this.ImageReferenceId;
             }
-            
+
+            if (this.IsParameterBound(c => c.SharedGalleryImageId))
+            {
+                if (vm.StorageProfile == null)
+                {
+                    vm.StorageProfile = new StorageProfile();
+                }
+                if (vm.StorageProfile.ImageReference == null)
+                {
+                    vm.StorageProfile.ImageReference = new ImageReference();
+                }
+                vm.StorageProfile.ImageReference.SharedGalleryImageId = this.SharedGalleryImageId;
+            }
+
+            if (this.IsParameterBound(c => c.DiskControllerType))
+            {
+                if (vm.StorageProfile == null)
+                {
+                    vm.StorageProfile = new StorageProfile();
+                }
+                vm.StorageProfile.DiskControllerType = this.DiskControllerType;
+            }
+
             if (this.IsParameterBound(c => c.PlatformFaultDomain))
             {
                 vm.PlatformFaultDomain = this.PlatformFaultDomain;

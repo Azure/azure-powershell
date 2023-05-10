@@ -53,6 +53,8 @@ namespace Microsoft.Azure.Commands.TrafficManager.Models
 
         public uint? MinChildEndpointsIPv6 { get; set; }
 
+        public string AlwaysServe { get; set; }
+
         public List<string> GeoMapping { get; set; }
 
         public List<TrafficManagerIpAddressRange> SubnetMapping { get; set; }
@@ -74,6 +76,7 @@ namespace Microsoft.Azure.Commands.TrafficManager.Models
             endpoint.Weight = this.Weight;
             endpoint.Subnets = this.SubnetMapping?.Select(ipAddressRange => ipAddressRange.ToSDKSubnetMapping()).ToList();
             endpoint.CustomHeaders = this.CustomHeaders?.Select(customHeader => customHeader.ToSDKEndpointPropertiesCustomHeadersItem()).ToList();
+            endpoint.AlwaysServe = this.AlwaysServe;
             return endpoint;
         }
 

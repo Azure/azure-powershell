@@ -1,101 +1,148 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.dll-Help.xml
+external help file: Az.ServiceBus-help.xml
 Module Name: Az.ServiceBus
-online version: https://docs.microsoft.com/powershell/module/az.servicebus/set-azservicebusnetworkruleset
+online version: https://learn.microsoft.com/powershell/module/az.servicebus/set-azservicebusnetworkruleset
 schema: 2.0.0
 ---
 
 # Set-AzServiceBusNetworkRuleSet
 
 ## SYNOPSIS
-Update the NetworkruleSet of the given Namespace in the current Azure subscription.
+Updates the NetworkRuleSet of a ServiceBus namespace
 
 ## SYNTAX
 
-### NetworkRuleSetPropertiesSet (Default)
+### SetExpanded (Default)
 ```
-Set-AzServiceBusNetworkRuleSet [-ResourceGroupName] <String> [-Name] <String> [-DefaultAction <String>]
- [-PublicNetworkAccess <String>] [-TrustedServiceAccessEnabled] [[-IPRule] <PSNWRuleSetIpRulesAttributes[]>]
- [[-VirtualNetworkRule] <PSNWRuleSetVirtualNetworkRulesAttributes[]>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### NetworkRuleSetInputObjectSet
-```
-Set-AzServiceBusNetworkRuleSet [-ResourceGroupName] <String> [-Name] <String>
- [-InputObject] <PSNetworkRuleSetAttributes> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Set-AzServiceBusNetworkRuleSet -NamespaceName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-PublicNetworkAccess <PublicNetworkAccess>] [-TrustedServiceAccessEnabled] [-DefaultAction <DefaultAction>]
+ [-IPRule <INwRuleSetIPRules[]>] [-VirtualNetworkRule <INwRuleSetVirtualNetworkRules[]>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### NetworkRuleSetResourceIdParameterSet
+### SetViaIdentityExpanded
 ```
-Set-AzServiceBusNetworkRuleSet [-ResourceGroupName] <String> [-Name] <String> [-ResourceId] <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzServiceBusNetworkRuleSet -InputObject <IServiceBusIdentity> [-PublicNetworkAccess <PublicNetworkAccess>]
+ [-TrustedServiceAccessEnabled] [-DefaultAction <DefaultAction>] [-IPRule <INwRuleSetIPRules[]>]
+ [-VirtualNetworkRule <INwRuleSetVirtualNetworkRules[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Update the NetworkRuleSet of the given Namespace in the current Azure subscription.
+Updates the NetworkRuleSet of a ServiceBus namespace
 
 ## EXAMPLES
 
-### Example 1 
+### Example 1: Add IP Rules and Virtual Network Rules to a Network Rule Set
 ```powershell
-$IpRules = @([Microsoft.Azure.Commands.ServiceBus.Models.PSNWRuleSetIpRulesAttributes] @{IpMask = "4.4.4.4";Action = "Allow"},[Microsoft.Azure.Commands.ServiceBus.Models.PSNWRuleSetIpRulesAttributes] @{IpMask = "3.3.3.3";Action = "Allow"})
-$VirtualNetworkRules = @([Microsoft.Azure.Commands.ServiceBus.Models.PSNWRuleSetVirtualNetworkRulesAttributes]@{Subnet=@{Id="/subscriptions/subscriptionId/resourcegroups/ResourceGroup/providers/Microsoft.Network/virtualNetworks/sbehvnettest1/subnets/default"};IgnoreMissingVnetServiceEndpoint=$True})
-Set-AzServiceBusNetworkRuleSet -ResourceGroupName v-ajnavtest -Name ServiceBus-Namespace1-1375 -IPRule $IpRules -VirtualNetworkRule $VirtualNetworkRules -DefaultAction "Allow" -Debug
-
+$ipRule1 = New-AzServiceBusIPRuleConfig -IPMask 2.2.2.2 -Action Allow
+$ipRule2 = New-AzServiceBusIPRuleConfig -IPMask 3.3.3.3 -Action Allow
+$virtualNetworkRule1 = New-AzServiceBusVirtualNetworkRuleConfig -SubnetId /subscriptions/subscriptionId/resourcegroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/myVirtualNetwork/subnets/default
+$networkRuleSet = Get-AzServiceBusNetworkRuleSet -ResourceGroupName myResourceGroup -NamespaceName myNamespace
+$networkRuleSet.IPRule += $ipRule1
+$networkRuleSet.IPRule += $ipRule2
+$networkRuleSet.VirtualNetworkRule += $virtualNetworkRule1
+Set-AzServiceBusNetworkRuleSet -ResourceGroupName myResourceGroup -NamespaceName myNamespace -IPRule $ipRule1,$ipRule2 -VirtualNetworkRule $virtualNetworkRule1,$virtualNetworkRule2,$virtualNetworkRule3
 ```
 
 ```output
-Name                : default
-DefaultAction       : Allow
-Id                  : /subscriptions/subscriptionId/resourcegroups/ResourceGroup/providers/Microsoft.ServiceBus/namespaces/ServiceBus-Namespace-1122/networkRuleSets/default
-Type                : Microsoft.ServiceBus/Namespaces/NetworkRuleSet
-IpRules             : {4.4.4.4, Allow, 3.3.3.3, Allow}
-VirtualNetworkRules : {/subscriptions/subscriptionId/resourcegroups/ResourceGroup/providers/Microsoft.Network/virtualNetworks/sbehvnettest1/subnets/default, True}
+DefaultAction                : Deny
+IPRule                       : {{
+                                 "ipMask": "1.1.1.1",
+                                 "action": "Allow"
+                               }, {
+                                 "ipMask": "2.2.2.2",
+                                 "action": "Allow"
+                               }, {
+                                 "ipMask": "3.3.3.3",
+                                 "action": "Allow"
+                               }}
+Id                           : /subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.ServiceBus/namespaces/myNamespace/networkRuleSets/
+                               default
+Location                     : Australia East
+Name                         : default
+PublicNetworkAccess          : Enabled
+ResourceGroupName            : myResourceGroup
+TrustedServiceAccessEnabled  :
+Type                         : Microsoft.ServiceBus/Namespaces/NetworkRuleSets
+VirtualNetworkRule           : {{
+                                 "subnet": {
+                                   "id": "/subscriptions/subscriptionId/resourcegroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/myVirtualNetwork/subnets/default"
+                                 },
+                                 "ignoreMissingVnetServiceEndpoint": false
+                               },{
+                                 "subnet": {
+                                   "id": "/subscriptions/subscriptionId/resourcegroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/myVirtualNetwork/subnets/mySubnet"
+                                 },
+                                 "ignoreMissingVnetServiceEndpoint": false
+                               }}
 ```
-Update the NetworkRuleSet using -IPRule and -VirtualNetworkRule parameters
 
-### Example 2
+Appends virtual network rules and IPRules to the existing rules.
+
+### Example 2: Enable Trusted Service Access on a namespace
 ```powershell
-$getresult = Get-AzServiceBusNetworkRuleSet -ResourceGroupName v-ajnavtest -Name ServiceBus-Namespace1-1375
-Set-AzServiceBusNetworkRuleSet -ResourceGroupName v-ajnavtest -Name ServiceBus-Namespace1-1375 -InputObject $getresult
+Set-AzServiceBusNetworkRuleSet -ResourceGroupName myResourceGroup -NamespaceName myNamespace -TrustedServiceAccessEnabled
 ```
 
 ```output
-Name                : default
-DefaultAction       : Allow
-Id                  : /subscriptions/subscriptionId/resourcegroups/ResourceGroup/providers/Microsoft.ServiceBus/namespaces/ServiceBus-Namespace-1122/networkRuleSets/default
-Type                : Microsoft.ServiceBus/Namespaces/NetworkRuleSet
-IpRules             : {4.4.4.4, Allow, 3.3.3.3, Allow}
-VirtualNetworkRules : {/subscriptions/subscriptionId/resourcegroups/ResourceGroup/providers/Microsoft.Network/virtualNetworks/sbehvnettest1/subnets/default, True}
+DefaultAction                : Deny
+IPRule                       : {{
+                                 "ipMask": "1.1.1.1",
+                                 "action": "Allow"
+                               }, {
+                                 "ipMask": "2.2.2.2",
+                                 "action": "Allow"
+                               }, {
+                                 "ipMask": "3.3.3.3",
+                                 "action": "Allow"
+                               }}
+Id                           : /subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.ServiceBus/namespaces/myNamespace/networkRuleSets/
+                               default
+Location                     : Australia East
+Name                         : default
+PublicNetworkAccess          : Enabled
+ResourceGroupName            : myResourceGroup
+TrustedServiceAccessEnabled  : True
+Type                         : Microsoft.ServiceBus/Namespaces/NetworkRuleSets
+VirtualNetworkRule           : {{
+                                 "subnet": {
+                                   "id": "/subscriptions/subscriptionId/resourcegroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/myVirtualNetwork/subnets/default"
+                                 },
+                                 "ignoreMissingVnetServiceEndpoint": false
+                               },{
+                                 "subnet": {
+                                   "id": "/subscriptions/subscriptionId/resourcegroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/myVirtualNetwork/subnets/mySubnet"
+                                 },
+                                 "ignoreMissingVnetServiceEndpoint": false
+                               }}
 ```
-Update the NetworkRuleSet using -InputObject
 
-
-### Example 3
-```powershell
-Set-AzServiceBusNetworkRuleSet -ResourceGroupName v-ajnavtest -Name ServiceBus-Namespace1-1375 -ResourceId /subscriptions/SubscriptionId/resourcegroups/ResourceGroup/providers/Microsoft.ServiceBus/namespaces/ServiceBus-Namespace1-1375
-```
-
-```output
-Name                : default
-DefaultAction       : Allow
-Id                  : /subscriptions/subscriptionId/resourcegroups/ResourceGroup/providers/Microsoft.ServiceBus/namespaces/ServiceBus-Namespace-1122/networkRuleSets/default
-Type                : Microsoft.ServiceBus/Namespaces/NetworkRuleSet
-IpRules             : {4.4.4.4, Allow, 3.3.3.3, Allow}
-VirtualNetworkRules : {/subscriptions/subscriptionId/resourcegroups/ResourceGroup/providers/Microsoft.Network/virtualNetworks/sbehvnettest1/subnets/default, True}
-```
-Update the NetworkRuleSet using -ResourceId of the other namespace.
+Enabled Trusted Service Access on the ServiceBus namespace `myNamespace`.
 
 ## PARAMETERS
 
-### -DefaultAction
-Default Action for NetworkRuleSet
+### -AsJob
+Run the command as a job
 
 ```yaml
-Type: System.String
-Parameter Sets: NetworkRuleSetPropertiesSet
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultAction
+Default Action for Network Rule Set
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.DefaultAction
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -109,9 +156,9 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRMContext, AzureCredential
 
 Required: False
 Position: Named
@@ -121,56 +168,75 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-NetworkruleSet Configuration Object
+Identity parameter.
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.Commands.ServiceBus.Models.PSNetworkRuleSetAttributes
-Parameter Sets: NetworkRuleSetInputObjectSet
+Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentity
+Parameter Sets: SetViaIdentityExpanded
 Aliases:
 
 Required: True
-Position: 2
+Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
 ### -IPRule
-List of IPRuleSet
+List of IpRules
+To construct, see NOTES section for IPRULE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.Commands.ServiceBus.Models.PSNWRuleSetIpRulesAttributes[]
-Parameter Sets: NetworkRuleSetPropertiesSet
+Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.INwRuleSetIPRules[]
+Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 2
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
-ServiceBus Namespace Name.
+### -NamespaceName
+The name of ServiceBus namespace
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
-Aliases: NamespaceName
+Parameter Sets: SetExpanded
+Aliases:
 
 Required: True
-Position: 1
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -PublicNetworkAccess
-Public Network Access for NetworkRuleSet
+This determines if traffic is allowed over public network.
+By default it is enabled.
+If value is SecuredByPerimeter then Inbound and Outbound communication is controlled by the network security perimeter and profile's access rules.
 
 ```yaml
-Type: System.String
-Parameter Sets: NetworkRuleSetPropertiesSet
+Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.PublicNetworkAccess
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -181,41 +247,42 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Resource Group Name.
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: SetExpanded
 Aliases:
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceId
-Resource ID of Namespace
+### -SubscriptionId
+The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: NetworkRuleSetResourceIdParameterSet
+Parameter Sets: SetExpanded
 Aliases:
 
-Required: True
-Position: 2
-Default value: None
-Accept pipeline input: True (ByPropertyName)
+Required: False
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -TrustedServiceAccessEnabled
-Trusted Service Access for NetworkRuleSet
+Value that indicates whether Trusted Service Access is Enabled or not.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: NetworkRuleSetPropertiesSet
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -226,15 +293,16 @@ Accept wildcard characters: False
 ```
 
 ### -VirtualNetworkRule
-List of VirtualNetworkRules
+List of VirtualNetwork Rules
+To construct, see NOTES section for VIRTUALNETWORKRULE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.Commands.ServiceBus.Models.PSNWRuleSetVirtualNetworkRulesAttributes[]
-Parameter Sets: NetworkRuleSetPropertiesSet
-Aliases: VirtualNteworkRule
+Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.INwRuleSetVirtualNetworkRules[]
+Parameter Sets: (All)
+Aliases:
 
 Required: False
-Position: 3
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -250,7 +318,7 @@ Aliases: cf
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -266,7 +334,7 @@ Aliases: wi
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -276,10 +344,41 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.ServiceBus.Models.PSNetworkRuleSetAttributes
-### System.String
+### Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentity
+
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.ServiceBus.Models.PSNetworkRuleSetAttributes
+### Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.INetworkRuleSet
+
 ## NOTES
+
+ALIASES
+
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+
+`INPUTOBJECT <IServiceBusIdentity>`: Identity parameter.
+  - `[Alias <String>]`: The Disaster Recovery configuration name
+  - `[AuthorizationRuleName <String>]`: The authorization rule name.
+  - `[ConfigName <MigrationConfigurationName?>]`: The configuration name. Should always be "$default".
+  - `[Id <String>]`: Resource identity path
+  - `[NamespaceName <String>]`: The namespace name
+  - `[PrivateEndpointConnectionName <String>]`: The PrivateEndpointConnection name
+  - `[QueueName <String>]`: The queue name.
+  - `[ResourceGroupName <String>]`: Name of the Resource group within the Azure subscription.
+  - `[RuleName <String>]`: The rule name.
+  - `[SubscriptionId <String>]`: Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  - `[SubscriptionName <String>]`: The subscription name.
+  - `[TopicName <String>]`: The topic name.
+
+`IPRULE <INwRuleSetIPRules[]>`: List of IpRules
+  - `[Action <NetworkRuleIPAction?>]`: The IP Filter Action
+  - `[IPMask <String>]`: IP Mask
+
+`VIRTUALNETWORKRULE <INwRuleSetVirtualNetworkRules[]>`: List of VirtualNetwork Rules
+  - `[IgnoreMissingVnetServiceEndpoint <Boolean?>]`: Value that indicates whether to ignore missing VNet Service Endpoint
+  - `[SubnetId <String>]`: Resource ID of Virtual Network Subnet
+
 ## RELATED LINKS

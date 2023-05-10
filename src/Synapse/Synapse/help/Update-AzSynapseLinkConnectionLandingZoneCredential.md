@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Synapse.dll-Help.xml
 Module Name: Az.Synapse
-online version: https://docs.microsoft.com/powershell/module/az.synapse/set-azsynapselinkconnectionlandingzonecredential
+online version: https://learn.microsoft.com/powershell/module/az.synapse/update-azsynapselinkconnectionlandingzonecredential
 schema: 2.0.0
 ---
 
@@ -53,7 +53,7 @@ This command updates the landing zone credential with sas token "exampleSasToken
 
 ### Example 3
 ```powershell
-$lc = Get-AzSynpaseLinkConnection -WorkspaceName ContosoWorkspace -Name ContosoLinkConnection
+$lc = Get-AzSynapseLinkConnection -WorkspaceName ContosoWorkspace -Name ContosoLinkConnection
 $lc | Update-AzSynapseLinkConnectionLandingZoneCredential -SasToken "SampleSasToken"
 ```
 

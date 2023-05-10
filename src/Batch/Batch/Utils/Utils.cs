@@ -131,6 +131,7 @@ namespace Microsoft.Azure.Commands.Batch.Utils
                     ConvertEnvironmentSetting);
 
                 jobManager.omObject.ResourceFiles = CreateSyncedList(jobManager.ResourceFiles, ConvertResourceFile);
+                jobManager.omObject.OutputFiles = CreateSyncedList(jobManager.OutputFiles, ps => ps.omObject);
                 jobManager.omObject.ApplicationPackageReferences = CreateSyncedList(jobManager.ApplicationPackageReferences,
                     a =>
                     {

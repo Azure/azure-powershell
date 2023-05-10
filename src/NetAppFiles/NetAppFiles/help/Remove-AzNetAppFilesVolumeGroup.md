@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles.dll-Help.xml
 Module Name: Az.NetAppFiles
-online version: https://docs.microsoft.com/powershell/module/az.netappfiles/remove-aznetappfilesvolumegroup
+online version: https://learn.microsoft.com/powershell/module/az.netappfiles/remove-aznetappfilesvolumegroup
 schema: 2.0.0
 ---
 
@@ -37,13 +37,13 @@ Remove-AzNetAppFilesVolumeGroup [-Name <String>] -InputObject <PSNetAppFilesBack
 ```
 
 ## DESCRIPTION
-The **Remove-AzNetAppFilesVolume** cmdlet deletes an empty ANF VolumeGroup.
+The **Remove-AzNetAppFilesVolumeGroup** cmdlet deletes an empty ANF VolumeGroup.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzNetAppFilesVolume -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -Name "MyAnfVolumeGroup"
+Remove-AzNetAppFilesVolumeGroup -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -Name "MyAnfVolumeGroup"
 ```
 
 This command deletes the ANF volume "MyAnfVolumeGroup" if it has no volumes under the group.

@@ -33,6 +33,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Config.Internal.Provide
         /// Constructor.
         /// </summary>
         /// <param name="source">The source.</param>
+        /// <param name="id"></param>
         public StreamConfigurationProvider(StreamConfigurationSource source, string id) : base(id)
         {
             Source = source ?? throw new ArgumentNullException(nameof(source));

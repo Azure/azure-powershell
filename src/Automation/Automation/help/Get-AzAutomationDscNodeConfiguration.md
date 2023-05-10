@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Automation.dll-Help.xml
 Module Name: Az.Automation
 ms.assetid: 89C931AE-DA81-47A7-80E4-159C36497DA0
-online version: https://docs.microsoft.com/powershell/module/az.automation/get-azautomationdscnodeconfiguration
+online version: https://learn.microsoft.com/powershell/module/az.automation/get-azautomationdscnodeconfiguration
 schema: 2.0.0
 ---
 
@@ -142,6 +142,9 @@ Specifies the rollup status of DSC node configurations that this cmdlet gets.
 Valid values are: 
 - Bad 
 - Good
+*Bad: Non-Compliant* *Good: Compliant*
+>[!NOTE]
+> Even if one node is non-compliant, the overall state of the node configuration shows as bad.
 
 ```yaml
 Type: System.String
@@ -157,7 +160,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

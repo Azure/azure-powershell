@@ -22,6 +22,8 @@ using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Commands.Synapse.Common;
 using Microsoft.Azure.Commands.Common.Exceptions;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using static Microsoft.Azure.Commands.Synapse.Models.SynapseConstants;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Synapse
 {
@@ -80,6 +82,13 @@ namespace Microsoft.Azure.Commands.Synapse
         [ValidateNotNullOrEmpty]
         public string EncryptionKeyIdentifier { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = HelpMessages.UserAssignedIdentityInEncryption)]
+        public string UserAssignedIdentityInEncryption { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = HelpMessages.UseSystemAssignedIdentityInEncryption)]
+        [ValidateNotNullOrEmpty]
+        public object UseSystemAssignedIdentityInEncryption { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = HelpMessages.AsJob)]
         public SwitchParameter AsJob { get; set; }
 
@@ -92,6 +101,14 @@ namespace Microsoft.Azure.Commands.Synapse
         [Parameter(Mandatory = false, HelpMessage = HelpMessages.GitRepository)]
         [ValidateNotNull]
         public PSWorkspaceRepositoryConfiguration GitRepository { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = HelpMessages.PublicNetworkAccess)]
+        [ValidateNotNull]
+        public bool EnablePublicNetworkAccess { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = HelpMessages.UserAssignedIdentityId)]
+        [ValidateNotNull]
+        public List<string> UserAssignedIdentityId { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -127,10 +144,6 @@ namespace Microsoft.Azure.Commands.Synapse
             var createParams = new Workspace
             {
                 Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true),
-                Identity = new ManagedIdentity
-                {
-                    Type = ResourceIdentityType.SystemAssigned
-                },
                 DefaultDataLakeStorage = new DataLakeStorageAccountDetails
                 {
                     AccountUrl = defaultDataLakeStorageAccountUrl,
@@ -150,11 +163,30 @@ namespace Microsoft.Azure.Commands.Synapse
                         {
                             Name = this.EncryptionKeyName,
                             KeyVaultUrl = this.EncryptionKeyIdentifier
+                        },
+                        KekIdentity = new KekIdentityProperties
+                        {
+                            UserAssignedIdentity = this.UserAssignedIdentityInEncryption,
+                            UseSystemAssignedIdentity = this.UseSystemAssignedIdentityInEncryption
                         }
                     }
                 } : null,
-                WorkspaceRepositoryConfiguration = this.IsParameterBound(c => c.GitRepository) ? this.GitRepository.ToSdkObject() : null
+                WorkspaceRepositoryConfiguration = this.IsParameterBound(c => c.GitRepository) ? this.GitRepository.ToSdkObject() : null,
+                PublicNetworkAccess = this.IsParameterBound(c => c.EnablePublicNetworkAccess) ? (this.EnablePublicNetworkAccess? PublicNetworkAccess.Enabled : PublicNetworkAccess.Disabled): null,
+                Identity = this.IsParameterBound(c => c.UserAssignedIdentityId) ? new ManagedIdentity
+                {
+                    Type = ResourceIdentityType.SystemAssignedUserAssigned,
+                    UserAssignedIdentities = new Dictionary<string, UserAssignedManagedIdentity>()
+                } :
+                new ManagedIdentity
+                {
+                    Type = ResourceIdentityType.SystemAssigned
+                }
             };
+            if (this.IsParameterBound(c => c.UserAssignedIdentityId))
+            {
+                UserAssignedIdentityId?.ForEach(identityId => createParams.Identity.UserAssignedIdentities.Add(identityId, new UserAssignedManagedIdentity()));
+            }
 
             if (ShouldProcess(Name, string.Format(Resources.CreatingSynapseWorkspace, this.ResourceGroupName, this.Name)))
             {

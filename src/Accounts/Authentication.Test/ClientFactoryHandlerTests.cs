@@ -12,23 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
-using System;
-using System.Collections.Generic;
-using System.Net.Http;
-using System.Security;
 using Microsoft.Azure.Commands.Common.Authentication.Factories;
-using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
-using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Xunit;
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using System;
 using System.Linq;
-using Microsoft.Azure.Management.Internal.Resources;
+using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 #if NETSTANDARD
-using Microsoft.Azure.Management.Storage.Version2017_10_01;
 #else
 using Microsoft.WindowsAzure.Management.Storage;
 #endif

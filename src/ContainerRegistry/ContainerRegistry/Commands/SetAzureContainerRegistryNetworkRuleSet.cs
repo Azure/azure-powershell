@@ -21,9 +21,12 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections;
 using System.Management.Automation;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+
 
 namespace Microsoft.Azure.Commands.ContainerRegistry.Commands
 {
+    [CmdletDeprecation("4.0.0.0", "05/23/2023")]
     [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ContainerRegistryNetworkRuleSet", DefaultParameterSetName = AddNetworkRuleWithoutInputObject)]
     [OutputType(typeof(PSNetworkRuleSet))]
     public class SetAzureContainerRegistryNetworkRuleSet : ContainerRegistryCmdletBase

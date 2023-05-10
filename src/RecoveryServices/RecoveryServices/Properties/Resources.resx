@@ -322,4 +322,13 @@ Please provide a storage account with the same location as that of the vault.</v
   <data name="InvalidParameterSet" xml:space="preserve">
     <value>Invalid parameter set</value>
   </data>
+  <data name="MissingParameterForAlerts" xml:space="preserve">
+    <value>Please provide the value for DisableAzureMonitorAlertsForJobFailure and DisableClassicAlerts parameters to configure alerts</value>
+  </data>
+  <data name="ImmutabilityNotUnlocked" xml:space="preserve">
+    <value>Immutability State can't be updated once enabled and locked.</value>
+  </data>
+  <data name="ImmutabilityCantBeLocked" xml:space="preserve">
+    <value>Immutability can only be locked when it is Unlocked(Enabled).</value>
+  </data>
 </root>

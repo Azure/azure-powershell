@@ -22,17 +22,16 @@ Returns a BotService specified by the parameters.
 .Example
 Get-AzBotService
 .Example
-Get-AzBotService -Name 'youri-bot1' -ResourceGroupName 'youriBotTest'
+Get-AzBotService -Name botTest1 -ResourceGroupName botTest-rg
 .Example
-Get-AzBotService -ResourceGroupName 'youriBotTest'
+Get-AzBotService -InputObject $botTest1
 .Example
-$getAzbot = Get-AzBotService -Name 'youri-bot1' -ResourceGroupName 'youriBotTest'
-Get-AzBotService -InputObject $getAzbot
+Get-AzBotService -ResourceGroupName botTest-rg
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IBotServiceIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IBot
+Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.IBot
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -40,16 +39,17 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IBotServiceIdentity>: Identity Parameter
   [ChannelName <ChannelName?>]: The name of the Channel resource.
-  [ConnectionName <String>]: The name of the Bot Service Connection Setting resource
+  [ConnectionName <String>]: The name of the Bot Service Connection Setting resource.
   [Id <String>]: Resource identity path
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource
   [ResourceGroupName <String>]: The name of the Bot resource group in the user subscription.
   [ResourceName <String>]: The name of the Bot resource.
   [SubscriptionId <String>]: Azure Subscription ID.
 .Link
-https://docs.microsoft.com/powershell/module/az.botservice/get-azbotservice
+https://learn.microsoft.com/powershell/module/az.botservice/get-azbotservice
 #>
 function Get-AzBotService {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IBot])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.IBot])]
 [CmdletBinding(DefaultParameterSetName='List1', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]

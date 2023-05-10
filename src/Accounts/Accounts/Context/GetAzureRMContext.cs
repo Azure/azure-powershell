@@ -20,6 +20,7 @@ using System.Management.Automation;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Profile.Common;
 using Microsoft.Azure.Commands.Profile.Models.Core;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
@@ -34,6 +35,11 @@ namespace Microsoft.Azure.Commands.Profile
     public class GetAzureRMContextCommand : AzureRMCmdlet, IDynamicParameters
     {
         public const string ListAllParameterSet = "ListAllContexts", GetSingleParameterSet = "GetSingleContext";
+
+        [Parameter(Position = 0, Mandatory = false, HelpMessage = "The name of the context", ParameterSetName = GetSingleParameterSet)]
+        [ContextNameCompleter]
+        public string Name { get; set; }
+
         /// <summary>
         /// Gets the current default context.
         /// </summary>
@@ -142,26 +148,6 @@ namespace Microsoft.Azure.Commands.Profile
             }
 
             WriteObject(context);
-        }
-
-        public new object GetDynamicParameters()
-        {
-            var parameters = base.GetDynamicParameters() as RuntimeDefinedParameterDictionary;
-            AzureRmProfile localProfile = DefaultProfile as AzureRmProfile;
-            if (localProfile != null && localProfile.Contexts != null && localProfile.Contexts.Count > 0)
-            {
-                var nameParameter = new RuntimeDefinedParameter(
-                "Name", typeof(string),
-                    new Collection<Attribute>()
-                    {
-                        new ParameterAttribute { Position =0, Mandatory=false, HelpMessage="The name of the context", ParameterSetName=GetSingleParameterSet },
-                        new ValidateSetAttribute((DefaultProfile as AzureRmProfile).Contexts.Keys.ToArray())
-                    }
-                );
-                parameters.Add(nameParameter.Name, nameParameter);
-            }
-
-            return parameters;
         }
     }
 }

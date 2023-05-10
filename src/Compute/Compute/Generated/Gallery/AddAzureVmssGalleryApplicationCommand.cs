@@ -37,6 +37,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public PSVMGalleryApplication GalleryApplication { get; set; }
 
         [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "If true, any failure for any operation in the VmApplication will fail the deployment. Defaults to false if not specified.")]
+        public SwitchParameter TreatFailureAsDeploymentFailure { get; set; }
+
+        [Parameter(
             Mandatory = false)]
         public int Order { get; set; }
 
@@ -54,6 +60,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             if (this.IsParameterBound(c => c.Order))
             {
                 GalleryApplication.Order = this.Order;
+            }
+
+            if (this.TreatFailureAsDeploymentFailure.IsPresent)
+            {
+                GalleryApplication.TreatFailureAsDeploymentFailure = true;
             }
 
             VirtualMachineScaleSetVM.ApplicationProfile.GalleryApplications.Add(GalleryApplication);

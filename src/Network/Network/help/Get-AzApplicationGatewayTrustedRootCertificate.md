@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/get-azapplicationgatewaytrustedrootcertificate
+online version: https://learn.microsoft.com/powershell/module/az.network/get-azapplicationgatewaytrustedrootcertificate
 schema: 2.0.0
 ---
 
@@ -25,7 +25,7 @@ The **Get-AzApplicationGatewayTrustedRootCertificate** cmdlet gets Trusted Root 
 ### Example 1
 ```powershell
 $gw = Get-AzApplicationGateway -Name $appgwName -ResourceGroupName $resgpName
-$trustedRootCert = Get-AzApplicationGatewayTrustedRootCertificate -ApplicationGateway $gw -Name $certName -CertificateFile ".\rootCA.cer"
+$trustedRootCert = Get-AzApplicationGatewayTrustedRootCertificate -ApplicationGateway $gw -Name $certName
 ```
 
 The first command gets the Application Gateway and stores it in $gw variable.

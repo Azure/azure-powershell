@@ -69,9 +69,23 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         /// </summary>
         public List<PSNetAppFilesActiveDirectory> ActiveDirectories { get; set; }
 
+        public PSNetAppFilesAccountEncryption Encryption { get; set; }
+
+        /// <summary>
+        /// Gets or sets the identity of the resource.
+        /// </summary>
+        public PSManagedServiceIdentity Identity { get; set; }
+
         /// <summary>
         /// Gets or sets System Data
         /// </summary>
         public PSSystemData SystemData { get; set; }
+
+        /// <summary>
+        /// Gets or sets DisableShowmount 
+        /// Shows the status of disableShowmount
+        /// for all volumes under the subscription, null equals false
+        /// </summary>
+        public bool? DisableShowmount {get; set;}
     }
 }

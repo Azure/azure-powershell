@@ -25,7 +25,7 @@ Remove-AzPurviewDefaultAccount -ScopeTenantId xxxxxxxx-38d6-4fb2-bad9-b7b93a3e9c
 .Outputs
 System.Boolean
 .Link
-https://docs.microsoft.com/powershell/module/az.purview/remove-azpurviewdefaultaccount
+https://learn.microsoft.com/powershell/module/az.purview/remove-azpurviewdefaultaccount
 #>
 function Remove-AzPurviewDefaultAccount {
 [OutputType([System.Boolean])]

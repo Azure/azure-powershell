@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
-online version: https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabasefailovergroup
+online version: https://learn.microsoft.com/powershell/module/az.sql/new-azsqldatabasefailovergroup
 schema: 2.0.0
 ---
 
@@ -14,9 +14,10 @@ This command creates a new Azure SQL Database Failover Group.
 
 ```
 New-AzSqlDatabaseFailoverGroup [-ServerName] <String> -FailoverGroupName <String>
- [-PartnerResourceGroupName <String>] -PartnerServerName <String> [-FailoverPolicy <FailoverPolicy>]
- [-GracePeriodWithDataLossHours <Int32>] [-AllowReadOnlyFailoverToPrimary <AllowReadOnlyFailoverToPrimary>]
- [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-PartnerSubscriptionId <String>] [-PartnerResourceGroupName <String>] -PartnerServerName <String>
+ [-FailoverPolicy <FailoverPolicy>] [-GracePeriodWithDataLossHours <Int32>]
+ [-AllowReadOnlyFailoverToPrimary <AllowReadOnlyFailoverToPrimary>] [-ResourceGroupName] <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,6 +25,9 @@ Creates a new Azure SQL Database Failover Group for the specified servers.
 Two Azure SQL Database TDS endpoints are created at FailoverGroupName.SqlDatabaseDnsSuffix (for example, FailoverGroupName.database.windows.net) and FailoverGroupName.secondary.SqlDatabaseDnsSuffix. These endpoints may be used to connect to the primary and secondary servers in the Failover Group, respectively. If the primary server is affected by an outage, automatic failover of the endpoints and databases will be triggered as dictated by the Failover Group's failover policy and grace period.
 Newly created Failover Groups do not contain any databases. To control the set of databases in a Failover Group, use the 'Add-AzSqlDatabaseToFailoverGroup' and 'Remove-AzSqlDatabaseFromFailoverGroup' cmdlets.
 Only values greater than or equal to 1 hour are supported for the '-GracePeriodWithDataLossHours' parameter.
+
+[!NOTE] It's possible to deploy your auto-failover group across subscriptions by using the -PartnerSubscriptionId parameter in Azure Powershell starting with [Az.SQL 3.11.0](https://www.powershellgallery.com/packages/Az.Sql/3.11.0).
+
 
 ## EXAMPLES
 
@@ -40,6 +44,29 @@ $failoverGroup = New-AzSqlDatabaseFailoverGroup -ResourceGroupName rg1 -ServerNa
 ```
 
 This command creates a new Failover Group with failover policy 'Manual' for two servers in different resource groups.
+
+### Example 3
+```powershell
+$sub2 = 'b3c40cd6-024f-428c-921b-cda6c6834c34'
+$failoverGroup = New-AzSqlDatabaseFailoverGroup -ServerName primaryserver -FailoverGroupName fg -PartnerSubscriptionId $sub2 -PartnerResourceGroupName rg2 -PartnerServerName secondaryserver1 -FailoverPolicy Manual -ResourceGroupName rg1
+```
+
+```output
+FailoverGroupName                    : fg
+Location                             : East US
+ResourceGroupName                    : rg1
+ServerName                           : primaryserver
+PartnerLocation                      : West US 2
+PartnerResourceGroupName             : rg2
+PartnerServerName                    : secondaryserver1
+ReplicationRole                      : Primary
+ReplicationState                     : CATCH_UP
+ReadWriteFailoverPolicy              : Manual
+FailoverWithDataLossGracePeriodHours :
+DatabaseNames                        : {}
+```
+
+This command creates a new Failover Group with failover policy 'Manual' for two servers in different subscriptions.
 
 ## PARAMETERS
 
@@ -150,6 +177,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -PartnerSubscriptionId
+The name of the secondary subscription id of the Azure SQL Database Failover Group.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 
@@ -207,4 +249,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 [Remove-AzSqlDatabaseFailoverGroup](./Remove-AzSqlDatabaseFailoverGroup.md)
 
-[SQL Database Documentation](https://docs.microsoft.com/azure/sql-database/)
+[SQL Database Documentation](https://learn.microsoft.com/azure/sql-database/)

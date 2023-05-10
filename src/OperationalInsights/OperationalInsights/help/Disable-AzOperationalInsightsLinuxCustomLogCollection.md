@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights.dll-Help.xml
 Module Name: Az.OperationalInsights
 ms.assetid: EF3FE3F1-1C8F-41EB-990E-F2B30BD9D082
-online version: https://docs.microsoft.com/powershell/module/az.operationalinsights/disable-azoperationalinsightslinuxcustomlogcollection
+online version: https://learn.microsoft.com/powershell/module/az.operationalinsights/disable-azoperationalinsightslinuxcustomlogcollection
 schema: 2.0.0
 ---
 
@@ -44,6 +44,7 @@ ResourceId        : /subscriptions/xxxx-xxxx-xxxx-xxxx-xxxx/resourceGroups/test-
 Kind              : CustomLogCollection
 Properties        : {"state":"LinuxLogsDisabled"}
 ```
+
 Stops collection of custom logs from connected Linux computers in a workspace.
 
 ## PARAMETERS

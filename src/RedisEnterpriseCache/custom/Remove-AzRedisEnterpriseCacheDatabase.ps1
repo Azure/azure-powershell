@@ -44,7 +44,7 @@ INPUTOBJECT <IRedisEnterpriseCacheIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
 
 .Link
-https://docs.microsoft.com/powershell/module/az.redisenterprisecache/remove-azredisenterprisecachedatabase
+https://learn.microsoft.com/powershell/module/az.redisenterprisecache/remove-azredisenterprisecachedatabase
 #>
 function Remove-AzRedisEnterpriseCacheDatabase {
     [OutputType([System.Boolean])]

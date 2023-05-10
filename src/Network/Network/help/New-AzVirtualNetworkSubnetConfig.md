@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 901FD38B-67FA-40D5-8D23-51E5544C25D8
-online version: https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworksubnetconfig
+online version: https://learn.microsoft.com/powershell/module/az.network/new-azvirtualnetworksubnetconfig
 schema: 2.0.0
 ---
 
@@ -19,8 +19,8 @@ New-AzVirtualNetworkSubnetConfig -Name <String> -AddressPrefix <String[]>
  [-NetworkSecurityGroup <PSNetworkSecurityGroup>] [-RouteTable <PSRouteTable>] [-InputObject <PSNatGateway>]
  [-ServiceEndpoint <String[]>] [-ServiceEndpointPolicy <PSServiceEndpointPolicy[]>]
  [-Delegation <PSDelegation[]>] [-PrivateEndpointNetworkPoliciesFlag <String>]
- [-PrivateLinkServiceNetworkPoliciesFlag <String>] [-IpAllocation <PSIpAllocation[]>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-PrivateLinkServiceNetworkPoliciesFlag <String>] [-IpAllocation <PSIpAllocation[]>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### SetByResourceId
@@ -198,7 +198,7 @@ Accept wildcard characters: False
 ```
 
 ### -PrivateEndpointNetworkPoliciesFlag
-Configure to enable or disable applying network policies on private endpoint in the subnet.
+Configure to enable or disable applying network policies on private endpoint in the subnet. Default value is Disabled.
 
 ```yaml
 Type: System.String

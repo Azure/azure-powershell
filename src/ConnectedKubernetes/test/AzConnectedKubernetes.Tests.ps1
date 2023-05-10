@@ -18,7 +18,7 @@ Describe 'AzConnectedKubernetes' {
             $config.ProvisioningState | Should -Be 'Succeeded'
 
             # Clear helm azure-arc environment
-            helm delete azure-arc --no-hooks
+            helm delete azure-arc -n azure-arc-release --no-hooks
         } | Should -Not -Throw
     }
 

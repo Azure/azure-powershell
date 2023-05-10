@@ -12,21 +12,21 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
-$location = "southeastasia"
-$resourceGroupName = "pstestrg8895"
-$vaultName = "pstestrsv8895"
+$location = "eastasia" #"southeastasia"
+$resourceGroupName = "afs-pstest-rg" #"pstestrg8895"
+$vaultName = "afs-pstest-vault" # "pstestrsv8895"
 $fileShareFriendlyName = "fs1"
-$fileShareName = "AzureFileShare;fs1"
-$saName = "pstestsa8895"
-$saRgName = "pstestrg8895"
-$targetSaName = "pstesttargetsa8896"
+$skuName="Standard_LRS"
+$saName = "afspstestsa" # "pstestsa8895"
+$saRgName = "afs-pstest-rg" # "pstestrg8895"
+$fileShareName = "azurefileshare;7f34af6cfe2f3f3204cfd4d18cd6b37f7dec2c84a2d759ffab3d1367f9e17356" #"AzureFileShare;fs1"
+$targetSaName = "afspstesttargetsa" #"pstesttargetsa8896"
 $targetFileShareName = "fs1"
 $targetFolder = "pstestfolder3rty7d7s"
 $folderPath = "pstestfolder1bca8f8e"
 $filePath = "pstestfolder1bca8f8e/pstestfile1bca8f8e.txt"
 $file1 = "file1.txt"
 $file2 = "file2.txt"
-$skuName="Standard_LRS"
 $policyName = "afspolicy1"
 $newPolicyName = "NewAFSBackupPolicy"
 
@@ -66,7 +66,6 @@ function Test-AzureFSItem
 		$container = Get-AzRecoveryServicesBackupContainer `
 			-VaultId $vault.ID `
 			-ContainerType AzureStorage `
-			-Status Registered `
 			-FriendlyName $saName
 		
 		# VARIATION-1: Get all items for container
@@ -150,7 +149,6 @@ function Test-AzureFSBackup
 		$container = Get-AzRecoveryServicesBackupContainer `
 			-VaultId $vault.ID `
 			-ContainerType AzureStorage `
-			-Status Registered `
 			-FriendlyName $saName
 
 		# Trigger backup and wait for completion
@@ -185,7 +183,6 @@ function Test-AzureFSProtection
 		$container = Get-AzRecoveryServicesBackupContainer `
 			-VaultId $vault.ID `
 			-ContainerType AzureStorage `
-			-Status Registered `
 			-FriendlyName $saName
 
 		$item = Get-AzRecoveryServicesBackupItem `
@@ -231,7 +228,6 @@ function Test-AzureFSGetRPs
 		$container = Get-AzRecoveryServicesBackupContainer `
 			-VaultId $vault.ID `
 			-ContainerType AzureStorage `
-			-Status Registered `
 			-FriendlyName $saName
 		$backupJob = Backup-Item $vault $item
 
@@ -270,7 +266,6 @@ function Test-AzureFSFullRestore
 		$container = Get-AzRecoveryServicesBackupContainer `
 			-VaultId $vault.ID `
 			-ContainerType AzureStorage `
-			-Status Registered `
 			-FriendlyName $saName
 		$backupJob = Backup-Item $vault $item
 
@@ -386,6 +381,6 @@ function Test-AzureFSFullRestore
 	}
 	finally
 	{
-		Cleanup-Vault $vault $item $container
+		# Cleanup-Vault $vault $item $container
 	}
 }

@@ -23,7 +23,7 @@ Create an in-memory object for CdnManagedHttpsParameters.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.CdnManagedHttpsParameters
 .Link
-https://docs.microsoft.com/powershell/module/az.Cdn/new-AzCdnManagedHttpsParametersObject
+https://learn.microsoft.com/powershell/module/az.Cdn/new-AzCdnManagedHttpsParametersObject
 #>
 function New-AzCdnManagedHttpsParametersObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.CdnManagedHttpsParameters')]

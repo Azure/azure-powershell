@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         [Parameter(
             ValueFromPipelineByPropertyName = true,
             Mandatory = true,
-            HelpMessage = "Specification format (Wadl, Swagger, Wsdl, Openapi). This parameter is required.")]
+            HelpMessage = "Specification format (Wadl, Swagger, Wsdl, Openapi, GraphQL). This parameter is required.")]
         [ValidateNotNullOrEmpty]
         public PsApiManagementApiFormat SpecificationFormat { get; set; }
 
@@ -147,6 +147,10 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
                 if (!localFile.Exists)
                 {
                     throw new FileNotFoundException(string.Format(CultureInfo.CurrentCulture, Resources.SourceFileNotFound, this.SpecificationPath));
+                }
+                if (SpecificationFormat == PsApiManagementApiFormat.GraphQL)
+                {
+                    throw new InvalidOperationException("SpecificationPath not supported for GraphQL, Import only supports SpecificationUrl. ");
                 }
 
                 Client.ApiImportFromFile(

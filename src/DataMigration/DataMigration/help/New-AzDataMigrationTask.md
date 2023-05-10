@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataMigration.dll-Help.xml
 Module Name: Az.DataMigration
-online version: https://docs.microsoft.com/powershell/module/az.datamigration/New-AzDataMigrationTask
+online version: https://learn.microsoft.com/powershell/module/az.datamigration/New-AzDataMigrationTask
 schema: 2.0.0
 ---
 
 # New-AzDataMigrationTask
 
 ## SYNOPSIS
-Creates and starts a data migration task in the Azure Database Migration Service.
+Creates and starts a data migration task in the Azure Database Migration Service (classic).
 
 ## SYNTAX
 
@@ -32,7 +32,7 @@ New-AzDataMigrationTask [-ResourceId] <String> -TaskType <TaskTypeEnum> -Name <S
 ```
 
 ## DESCRIPTION
-The New-AzDataMigrationTask cmdlet creates data migration task. This cmdlet takes in parameters for Task Type enumerator, Azure Resource Group, name of associated Azure Database Migration Service and Project as input. 
+The New-AzDataMigrationTask cmdlet creates data migration task. This cmdlet takes in parameters for Task Type enumerator, Azure Resource Group, name of associated Azure Database Migration Service (classic) and Project as input.
 
 ## EXAMPLES
 
@@ -136,7 +136,7 @@ Accept wildcard characters: False
 ```
 
 ### -ServiceName
-Database Migration Service Name.
+Azure Database Migration Service (classic) Name.
 
 ```yaml
 Type: System.String

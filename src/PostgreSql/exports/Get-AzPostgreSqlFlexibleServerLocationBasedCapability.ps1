@@ -25,7 +25,7 @@ Get-AzPostgreSqlFlexibleServerLocationBasedCapability -Location eastus
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.ICapabilityProperties
 .Link
-https://docs.microsoft.com/powershell/module/az.postgresql/get-azpostgresqlflexibleserverlocationbasedcapability
+https://learn.microsoft.com/powershell/module/az.postgresql/get-azpostgresqlflexibleserverlocationbasedcapability
 #>
 function Get-AzPostgreSqlFlexibleServerLocationBasedCapability {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.ICapabilityProperties])]

@@ -161,6 +161,7 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Services
         /// Create a sync group
         /// </summary>
         /// <param name="model">AzureSqlSyncGroupModel object</param>
+        /// <param name="syncDatabaseId">The sync database resource id</param>
         /// <returns>Created AzureSqlSyncGroupModel object</returns>
         internal AzureSqlSyncGroupModel CreateSyncGroup(AzureSqlSyncGroupModel model, string syncDatabaseId)
         {
@@ -295,8 +296,7 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Services
         /// Create a sync member
         /// </summary>
         /// <param name="model">AzureSqlSyncMemberModel object</param>
-        /// <param name="databaseType">The type of member database</param>
-        /// <param name="password">The password of member database</param>
+        /// <param name="syncAgentId">The sync agent resource id</param>
         /// <returns>Created AzureSqlSyncGroupModel object</returns>
         internal AzureSqlSyncMemberModel CreateSyncMember(AzureSqlSyncMemberModel model, string syncAgentId)
         {
@@ -335,8 +335,6 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Services
         /// Update a sync member
         /// </summary>
         /// <param name="model">AzureSqlSyncMemberModel object</param>
-        /// <param name="databaseType">The type of member database</param>
-        /// <param name="password">The password of member database</param>
         /// <returns>Updated AzureSqlSyncGroupModel object</returns>
         internal AzureSqlSyncMemberModel UpdateSyncMember(AzureSqlSyncMemberModel model)
         {
@@ -384,6 +382,7 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Services
         /// Gets a sync agent by name
         /// </summary>
         /// <param name="resourceGroupName">The resource group the sync agent is in</param>
+        /// <param name="serverName">The name of the server</param>
         /// <param name="syncAgentName">The name of the sync agent</param>
         /// <returns>The sync agent object</returns>
         public AzureSqlSyncAgentModel GetSyncAgent(string resourceGroupName, string serverName, string syncAgentName)
@@ -412,6 +411,7 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Services
         /// Create a sync agent
         /// </summary>
         /// <param name="model">AzureSqlSyncAgentModel object</param>
+        /// <param name="syncDatabaseId">The sync database resource id</param>
         /// <returns>Created AzureSqlSyncAgentModel object</returns>
         internal AzureSqlSyncAgentModel CreateSyncAgent(AzureSqlSyncAgentModel model, string syncDatabaseId)
         {
@@ -458,6 +458,7 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Services
         /// Get all linked databases connected by a specified sync agent
         /// </summary>
         /// <param name="resourceGroupName">The resource group the sync agent is in</param>
+        /// <param name="serverName">The name of the server</param>
         /// <param name="syncAgentName">The name of the sync agent</param>
         internal ICollection<AzureSqlSyncAgentLinkedDatabaseModel> ListSyncAgentLinkedDatabases(string resourceGroupName, string serverName, string syncAgentName)
         {
@@ -497,6 +498,7 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Services
         /// <param name="resourceGroupName">The resource group the sync member is in</param>
         /// <param name="serverName">The name of the server</param>
         /// <param name="databaseName">The name of the database</param>
+        /// <param name="syncGroupName">The name of the sync group</param>
         /// <param name="syncMember">The sync member object from the response</param>
         /// <returns>The converted model</returns>
         public static AzureSqlSyncMemberModel CreateSyncMemberModelFromResponse(string resourceGroupName, string serverName, string databaseName, string syncGroupName, Management.Sql.Models.SyncMember syncMember)
@@ -508,7 +510,7 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Services
         /// Converts the response from the service to a powershell sync agent object
         /// </summary>
         /// <param name="resourceGroupName">The resource group the agent is in</param>
-        /// <param name="server">The server name</param>
+        /// <param name="serverName">The server name</param>
         /// <param name="syncAgent">The sync agent object from the response</param>
         /// <returns>The converted model</returns>
         public static AzureSqlSyncAgentModel CreateSyncAgentModelFromResponse(string resourceGroupName, string serverName, SyncAgent syncAgent)

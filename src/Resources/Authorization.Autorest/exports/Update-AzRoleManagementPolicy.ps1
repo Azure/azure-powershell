@@ -20,8 +20,8 @@ Update a role management policy
 .Description
 Update a role management policy
 .Example
-PS C:\> $scope = "/subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d/"
-PS C:\> $expirationRule = [RoleManagementPolicyExpirationRule]@{
+$scope = "/subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d/"
+$expirationRule = [RoleManagementPolicyExpirationRule]@{
             isExpirationRequired = "false";
             maximumDuration = "P180D";
             id = "Expiration_Admin_Eligibility";
@@ -33,16 +33,11 @@ PS C:\> $expirationRule = [RoleManagementPolicyExpirationRule]@{
             targetInheritableSetting = $null;
             targetEnforcedSetting = $null;
         }
-PS C:\> $rules = [IRoleManagementPolicyRule[]]@($expirationRule)
-PS C:\> Update-AzRoleManagementPolicy -Scope $scope -Name "33b520ea-3544-4abc-8565-3588deb8e68e" -Rule $rules
-
-Name                                 Type                                           Scope
-----                                 ----                                           -----
-33b520ea-3544-4abc-8565-3588deb8e68e Microsoft.Authorization/roleManagementPolicies /subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d
-
+$rules = [IRoleManagementPolicyRule[]]@($expirationRule)
+Update-AzRoleManagementPolicy -Scope $scope -Name "33b520ea-3544-4abc-8565-3588deb8e68e" -Rule $rules
 .Example
-PS C:\> $scope = "/subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d/"
-PS C:\> $expirationRule = [RoleManagementPolicyExpirationRule]@{
+$scope = "/subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d/"
+$expirationRule = [RoleManagementPolicyExpirationRule]@{
             isExpirationRequired = "false";
             maximumDuration = "P180D";
             id = "Expiration_Admin_Eligibility";
@@ -54,7 +49,7 @@ PS C:\> $expirationRule = [RoleManagementPolicyExpirationRule]@{
             targetInheritableSetting = $null;
             targetEnforcedSetting = $null;
         }
-PS C:\> $notificationRule = [RoleManagementPolicyNotificationRule]@{
+$notificationRule = [RoleManagementPolicyNotificationRule]@{
             notificationType = "Email";
             recipientType = "Approver";
             isDefaultRecipientsEnabled = "false";
@@ -69,13 +64,8 @@ PS C:\> $notificationRule = [RoleManagementPolicyNotificationRule]@{
             targetInheritableSetting = $null;
             targetEnforcedSetting = $null;
         }
-PS C:\> $rules = [IRoleManagementPolicyRule[]]@($expirationRule, $notificationRule)
-PS C:\> Update-AzRoleManagementPolicy -Scope $scope -Name "33b520ea-3544-4abc-8565-3588deb8e68e" -Rule $rules
-
-Name                                 Type                                           Scope
-----                                 ----                                           -----
-33b520ea-3544-4abc-8565-3588deb8e68e Microsoft.Authorization/roleManagementPolicies /subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d
-
+$rules = [IRoleManagementPolicyRule[]]@($expirationRule, $notificationRule)
+Update-AzRoleManagementPolicy -Scope $scope -Name "33b520ea-3544-4abc-8565-3588deb8e68e" -Rule $rules
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.IAuthorizationIdentity
@@ -108,7 +98,7 @@ RULE <IRoleManagementPolicyRule[]>: The rule applied to the policy.
   [TargetObject <String[]>]: The list of target objects.
   [TargetOperation <String[]>]: The type of operation.
 .Link
-https://docs.microsoft.com/powershell/module/az.resources/update-azrolemanagementpolicy
+https://learn.microsoft.com/powershell/module/az.resources/update-azrolemanagementpolicy
 #>
 function Update-AzRoleManagementPolicy {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.Api20201001Preview.IRoleManagementPolicy])]
@@ -165,7 +155,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -217,7 +208,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Runspace.Version.ToString()
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
         }         
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {

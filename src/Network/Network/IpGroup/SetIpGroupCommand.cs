@@ -35,22 +35,25 @@ namespace Microsoft.Azure.Commands.Network
 
         public override void Execute()
         {
-            base.Execute();
-
-            if (!this.IsIpGroupsPresent(this.IpGroup.ResourceGroupName, this.IpGroup.Name))
+            if (ShouldProcess(this.IpGroup.Name, "Updating IpGroup"))
             {
-                throw new System.ArgumentException(string.Format(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound, this.IpGroup.Name));
+                base.Execute();
+
+                if (!this.IsIpGroupsPresent(this.IpGroup.ResourceGroupName, this.IpGroup.Name))
+                {
+                    throw new System.ArgumentException(string.Format(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound, this.IpGroup.Name));
+                }
+
+                // Map to the sdk object
+                var ipGroupSdkObject = NetworkResourceManagerProfile.Mapper.Map<MNM.IpGroup>(this.IpGroup);
+                ipGroupSdkObject.Tags = TagsConversionHelper.CreateTagDictionary(this.IpGroup.Tag, validate: true);
+
+                // Execute the PUT IpGroups call
+                this.IpGroupsClient.CreateOrUpdate(this.IpGroup.ResourceGroupName, this.IpGroup.Name, ipGroupSdkObject);
+
+                var getIpGroups = this.GetIpGroup(this.IpGroup.ResourceGroupName, this.IpGroup.Name);
+                WriteObject(getIpGroups);
             }
-
-            // Map to the sdk object
-            var ipGroupSdkObject = NetworkResourceManagerProfile.Mapper.Map<MNM.IpGroup>(this.IpGroup);
-            ipGroupSdkObject.Tags = TagsConversionHelper.CreateTagDictionary(this.IpGroup.Tag, validate: true);
-
-            // Execute the PUT IpGroups call
-            this.IpGroupsClient.CreateOrUpdate(this.IpGroup.ResourceGroupName, this.IpGroup.Name, ipGroupSdkObject);
-
-            var getIpGroups = this.GetIpGroup(this.IpGroup.ResourceGroupName, this.IpGroup.Name);
-            WriteObject(getIpGroups);
         }
     }
 }

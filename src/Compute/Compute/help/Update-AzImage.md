@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
-online version: https://docs.microsoft.com/powershell/module/az.compute/update-azimage
+online version: https://learn.microsoft.com/powershell/module/az.compute/update-azimage
 schema: 2.0.0
 ---
 
@@ -41,7 +41,7 @@ Currently, only the Tags can be updated.
 $image = Get-AzImage -ResourceGroupName 'ResourceGroup01' -ImageName 'Image01' 
 $image.Tags = New-Object "System.Collections.Generic.Dictionary``2[System.String,System.String]"
 $image.Tags.Add("key1", "val1")
-Update-AzImage -ResourceGroupName 'ResourceGroup01' -ImageName 'Image01' -Image $image
+Update-AzImage -Image $image
 ```
 
 This command updates the Tag value of the existing image 'Image01' in the resource group 'ResourceGroup01'.

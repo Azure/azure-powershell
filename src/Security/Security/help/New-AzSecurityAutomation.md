@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Security.dll-Help.xml
 Module Name: Az.Security
-online version:
+online version: https://learn.microsoft.com/powershell/module/az.security/new-azsecurityautomation
 schema: 2.0.0
 ---
 
@@ -43,7 +43,7 @@ Creates new security automation
 
 ### Example 1
 ```powershell
-PS C:\> New-AzSecurityAutomation -Name 'ampleAutomation' -ResourceGroupName 'SampleResourceGroup' -Description 'Sample security automation' -Scope $scopes -Source $sources -Action $actions
+New-AzSecurityAutomation -Name 'ampleAutomation' -ResourceGroupName 'SampleResourceGroup' -Description 'Sample security automation' -Scope $scopes -Source $sources -Action $actions
 ```
 
 Creates new security automation named "SampleAutomation" under resource group named "SampleResourceGroup"

@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Batch.dll-Help.xml
 Module Name: Az.Batch
 ms.assetid: 2B4BFDDA-9721-42E6-84E1-A209CB782954
-online version: https://docs.microsoft.com/powershell/module/az.batch/new-azbatchtask
+online version: https://learn.microsoft.com/powershell/module/az.batch/new-azbatchtask
 schema: 2.0.0
 ---
 
@@ -126,7 +126,8 @@ New-AzBatchTask -JobId "Job-000001" -Id "Task23" -CommandLine "cmd /c dir /s" -A
 
 ### Example 7: Add a task which runs in a container
 ```powershell
-New-AzBatchTask -JobId "Job-000001" -Id "Task23" -CommandLine "cmd /c dir /s" -ContainerSettings New-Object Microsoft.Azure.Commands.Batch.Models.PSTaskContainerSettings "containerImageName"
+$Context = Get-AzBatchAccountKey -AccountName "ContosoBatchAccount"
+New-AzBatchTask -JobId "Job-000001" -Id "Task23" -CommandLine "cmd /c dir /s" -ContainerSettings (New-Object Microsoft.Azure.Commands.Batch.Models.PSTaskContainerSettings "containerImageName") -BatchContext $Context
 ```
 
 ## PARAMETERS

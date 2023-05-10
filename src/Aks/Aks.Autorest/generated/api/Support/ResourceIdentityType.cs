@@ -7,17 +7,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Support
 {
 
     /// <summary>
-    /// The type of identity used for the managed cluster. Type 'SystemAssigned' will use an implicitly created identity in master
-    /// components and an auto-created user assigned identity in MC_ resource group in agent nodes. Type 'None' will not use MSI
-    /// for the managed cluster, service principal will be used instead.
+    /// For more information see [use managed identities in AKS](https://docs.microsoft.com/azure/aks/use-managed-identity).
     /// </summary>
     public partial struct ResourceIdentityType :
         System.IEquatable<ResourceIdentityType>
     {
+        /// <summary>
+        /// Do not use a managed identity for the Managed Cluster, service principal will be used instead.
+        /// </summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.ResourceIdentityType None = @"None";
 
+        /// <summary>
+        /// Use an implicitly created system assigned managed identity to manage cluster resources. Master components in the control
+        /// plane such as kube-controller-manager will use the system assigned managed identity to manipulate Azure resources.
+        /// </summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.ResourceIdentityType SystemAssigned = @"SystemAssigned";
 
+        /// <summary>
+        /// Use a user-specified identity to manage cluster resources. Master components in the control plane such as kube-controller-manager
+        /// will use the specified user assigned managed identity to manipulate Azure resources.
+        /// </summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.ResourceIdentityType UserAssigned = @"UserAssigned";
 
         /// <summary>the value for an instance of the <see cref="ResourceIdentityType" /> Enum.</summary>
@@ -53,7 +62,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Support
             return this._value.GetHashCode();
         }
 
-        /// <summary>Creates an instance of the <see cref="ResourceIdentityType" Enum class./></summary>
+        /// <summary>Creates an instance of the <see cref="ResourceIdentityType"/> Enum class.</summary>
         /// <param name="underlyingValue">the value to create an instance for.</param>
         private ResourceIdentityType(string underlyingValue)
         {
@@ -84,8 +93,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Support
         }
 
         /// <summary>Overriding != operator for enum ResourceIdentityType</summary>
-        /// <param name="e1">the value to compare against <see cref="e2" /></param>
-        /// <param name="e2">the value to compare against <see cref="e1" /></param>
+        /// <param name="e1">the value to compare against <paramref name="e2" /></param>
+        /// <param name="e2">the value to compare against <paramref name="e1" /></param>
         /// <returns><c>true</c> if the two instances are not equal to the same value</returns>
         public static bool operator !=(Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.ResourceIdentityType e1, Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.ResourceIdentityType e2)
         {
@@ -93,8 +102,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Support
         }
 
         /// <summary>Overriding == operator for enum ResourceIdentityType</summary>
-        /// <param name="e1">the value to compare against <see cref="e2" /></param>
-        /// <param name="e2">the value to compare against <see cref="e1" /></param>
+        /// <param name="e1">the value to compare against <paramref name="e2" /></param>
+        /// <param name="e2">the value to compare against <paramref name="e1" /></param>
         /// <returns><c>true</c> if the two instances are equal to the same value</returns>
         public static bool operator ==(Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.ResourceIdentityType e1, Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.ResourceIdentityType e2)
         {

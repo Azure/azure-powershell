@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/new-azvhubroute
+online version: https://learn.microsoft.com/powershell/module/az.network/new-azvhubroute
 schema: 2.0.0
 ---
 
@@ -12,8 +12,9 @@ Creates a VHubRoute object which can be passed as parameter to the New-AzVHubRou
 
 ## SYNTAX
 
-```powershell
-New-AzVHubRoute -Name <String> -Destination <String[]> -DestinationType <String> -NextHop <String> -NextHopType <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+New-AzVHubRoute -Destination <String[]> -DestinationType <String> -NextHop <String> -Name <String>
+ -NextHopType <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -61,8 +62,10 @@ NextHop         : /subscriptions/testSub/resourceGroups/testRg/providers/Microso
 
 The above command will create a VHubRoute object with nextHop as the specified hubVnetConnection which can then be added to a VHubRouteTable resource.
 
-
 ### Example 3
+<!-- Skip: Output cannot be splitted from code -->
+
+
 ```powershell
 $hub = Get-AzVirtualHub -ResourceGroupName "rgname" -Name "virtual-hub-name"
 $hubVnetConn = Get-AzVirtualHubVnetConnection -ParentObject $hub -Name "connection-name"
@@ -124,14 +127,16 @@ VnetRoutes            : {
 
 Update-AzVirtualHubVnetConnection -InputObject $hubVnetConn -RoutingConfiguration $routingConfig
 ```
+
 The above commands will get the RoutingConfiguration of an already existing AzVHubRoute and then add a static route on the connection. Alternatively, if you hope to create a new connection with the static route within it, please see Example 1 [here.](New-AzRoutingConfiguration.md)
+
 ## PARAMETERS
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -146,7 +151,7 @@ Accept wildcard characters: False
 List of Destinations.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -161,7 +166,7 @@ Accept wildcard characters: False
 Type of Destinations.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -176,8 +181,8 @@ Accept wildcard characters: False
 The route name.
 
 ```yaml
-Type: String
-Parameter Sets: (all)
+Type: System.String
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -191,7 +196,7 @@ Accept wildcard characters: False
 The next hop.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -206,7 +211,7 @@ Accept wildcard characters: False
 The Next Hop type.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

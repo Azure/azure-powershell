@@ -68,13 +68,15 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true)]
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Policy for accessing the disk via network. Available values are: AllowAll, AllowPrivate, DeyAll")]
         [PSArgumentCompleter("AllowAll", "AllowPrivate", "DenyAll")]
         public string NetworkAccessPolicy { get; set; }
 
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true)]
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "ARM id of the DiskAccess resource for using private endpoints on disks")]
         public string DiskAccessId { get; set; }
 
         [Parameter(
@@ -108,18 +110,19 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Sets the Purchase Plan for the Disk")]
+            HelpMessage = "Sets the purchase plan for the disk. Used for establishing the purchase context of any 3rd Party artifact through Marketplace.")]
         public PSPurchasePlan PurchasePlan { get; set; }
 
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Specify if Disk Supports Hibernation with $true of $false")]
+            HelpMessage = "Indicates if the OS on the disk supports hibernation with $true or $false")]
         public bool? SupportsHibernation { get; set; }
 
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true)]
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Enable encryption settings on the disk")]
         public bool? EncryptionSettingsEnabled { get; set; }
 
         [Parameter(
@@ -138,7 +141,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true)]
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The type of key used to encrypt the data of the disk. Available values are: EncryptionAtRestWithPlatformKey, EncryptionAtRestWithCustomerKey")]
         [PSArgumentCompleter("EncryptionAtRestWithPlatformKey", "EncryptionAtRestWithCustomerKey")]
 
         public string EncryptionType { get; set; }

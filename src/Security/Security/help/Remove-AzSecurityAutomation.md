@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Security.dll-Help.xml
 Module Name: Az.Security
-online version:
+online version: https://learn.microsoft.com/powershell/module/az.security/remove-azsecurityautomation
 schema: 2.0.0
 ---
 
@@ -37,7 +37,7 @@ Deletes security automation
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzSecurityAutomation -ResourceGroupName 'sampleResourceGroup' -Name 'sampleAutomation'
+Remove-AzSecurityAutomation -ResourceGroupName 'sampleResourceGroup' -Name 'sampleAutomation'
 ```
 
 Deletes security automation named 'sampleAutomation' under resource group named 'sampleResourceGroup'

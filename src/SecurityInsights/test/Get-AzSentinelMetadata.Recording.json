@@ -1,0 +1,166 @@
+{
+  "Get-AzSentinelMetadata+[NoContext]+List+$GET+https://management.azure.com/subscriptions/51a36d38-3b14-471f-8dde-a5867f5e51eb/resourceGroups/aspstest7ptmcr/providers/Microsoft.OperationalInsights/workspaces/asptest4wysui/providers/Microsoft.SecurityInsights/metadata?api-version=2021-09-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/51a36d38-3b14-471f-8dde-a5867f5e51eb/resourceGroups/aspstest7ptmcr/providers/Microsoft.OperationalInsights/workspaces/asptest4wysui/providers/Microsoft.SecurityInsights/metadata?api-version=2021-09-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "222" ],
+        "x-ms-client-request-id": [ "4679d405-1c0d-4fce-abec-597f4c16d65c" ],
+        "CommandName": [ "Get-AzSentinelMetadata" ],
+        "FullCommandName": [ "Get-AzSentinelMetadata_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.3", "Az.SecurityInsights/1.2.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11952" ],
+        "x-ms-request-id": [ "7065808a-cc9a-4985-8201-473881861d6e" ],
+        "x-ms-correlation-request-id": [ "7065808a-cc9a-4985-8201-473881861d6e" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20220816T160744Z:7065808a-cc9a-4985-8201-473881861d6e" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 16 Aug 2022 16:07:44 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "2645" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/51a36d38-3b14-471f-8dde-a5867f5e51eb/resourcegroups/aspstest7ptmcr/providers/Microsoft.OperationalInsights/workspaces/asptest4wysui/providers/Microsoft.SecurityInsights/metadata/azuresentinel.azure-sentinel-solution-zerotrust\",\"name\":\"azuresentinel.azure-sentinel-solution-zerotrust\",\"type\":\"Microsoft.SecurityInsights/metadata\",\"systemData\":{\"createdAt\":\"2022-08-16T16:05:56.4459878Z\",\"createdBy\":\"nicholas@zeronetworks.com\",\"createdByType\":\"User\",\"lastModifiedAt\":\"2022-08-16T16:05:56.4459878Z\",\"lastModifiedBy\":\"nicholas@zeronetworks.com\",\"lastModifiedByType\":\"User\"},\"properties\":{\"contentId\":\"azuresentinel.azure-sentinel-solution-zerotrust\",\"parentId\":\"azuresentinel.azure-sentinel-solution-zerotrust\",\"kind\":\"Solution\",\"version\":\"1.0.5\",\"source\":{\"kind\":\"Solution\",\"name\":\"ZeroTrust(TIC3.0)\",\"sourceId\":\"azuresentinel.azure-sentinel-solution-zerotrust\"},\"author\":{\"name\":\"Nikhil Tripathi\",\"email\":\"v-ntripathi@microsoft.com\"},\"support\":{\"tier\":\"Microsoft\",\"name\":\"Microsoft Corporation\",\"email\":\"support@microsoft.com\",\"link\":\"https://support.microsoft.com\"},\"dependencies\":{\"criteria\":[{\"contentId\":\"ZeroTrustTIC3.0_workbook\",\"kind\":\"Workbook\",\"version\":\"1.0.5\"},{\"contentId\":\"ZeroTrustDNSFamilyControlsMonitoring_AnalyticalRules\",\"kind\":\"AnalyticsRule\",\"version\":\"1.0.5\"},{\"contentId\":\"ZeroTrustDataProtectionFamilyControlsMonitoring_AnalyticalRules\",\"kind\":\"AnalyticsRule\",\"version\":\"1.0.5\"},{\"contentId\":\"ZeroTrustEmailFamilyControlsMonitoring_AnalyticalRules\",\"kind\":\"AnalyticsRule\",\"version\":\"1.0.5\"},{\"contentId\":\"ZeroTrustEnterpriseFamilyControlsMonitoring_AnalyticalRules\",\"kind\":\"AnalyticsRule\",\"version\":\"1.0.5\"},{\"contentId\":\"ZeroTrustFilesFamilyControlsMonitoring_AnalyticalRules\",\"kind\":\"AnalyticsRule\",\"version\":\"1.0.5\"},{\"contentId\":\"ZeroTrustIntrusionDetectionFamilyControlsMonitoring_AnalyticalRules\",\"kind\":\"AnalyticsRule\",\"version\":\"1.0.5\"},{\"contentId\":\"ZeroTrustNetworkingFamilyControlsMonitoring_AnalyticalRules\",\"kind\":\"AnalyticsRule\",\"version\":\"1.0.5\"},{\"contentId\":\"ZeroTrustResiliencyFamilyControlsMonitoring_AnalyticalRules\",\"kind\":\"AnalyticsRule\",\"version\":\"1.0.5\"},{\"contentId\":\"ZeroTrustUCCFamilyControlsMonitoring_AnalyticalRules\",\"kind\":\"AnalyticsRule\",\"version\":\"1.0.5\"},{\"contentId\":\"ZeroTrustUniversalSecurityCapabilitiesFamilyControlsMonitoring_AnalyticalRules\",\"kind\":\"AnalyticsRule\",\"version\":\"1.0.5\"},{\"contentId\":\"ZeroTrustWebFamilyControlsMonitoring_AnalyticalRules\",\"kind\":\"AnalyticsRule\",\"version\":\"1.0.5\"}],\"operator\":\"AND\"},\"providers\":[\"Microsoft\"],\"categories\":{\"domains\":[\"Identity\",\"Security - Others\"],\"verticals\":null},\"firstPublishDate\":\"2021-10-20\"}}]}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzSentinelMetadata+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/51a36d38-3b14-471f-8dde-a5867f5e51eb/resourceGroups/aspstest7ptmcr/providers/Microsoft.OperationalInsights/workspaces/asptest4wysui/providers/Microsoft.SecurityInsights/metadata/azuresentinel.azure-sentinel-solution-zerotrust?api-version=2021-09-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/51a36d38-3b14-471f-8dde-a5867f5e51eb/resourceGroups/aspstest7ptmcr/providers/Microsoft.OperationalInsights/workspaces/asptest4wysui/providers/Microsoft.SecurityInsights/metadata/azuresentinel.azure-sentinel-solution-zerotrust?api-version=2021-09-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "223" ],
+        "x-ms-client-request-id": [ "90a01563-b597-4c43-9c7a-c720e87a4901" ],
+        "CommandName": [ "Get-AzSentinelMetadata" ],
+        "FullCommandName": [ "Get-AzSentinelMetadata_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.3", "Az.SecurityInsights/1.2.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11951" ],
+        "x-ms-request-id": [ "207cab83-2656-41a1-a92c-fe6cb4e8ca21" ],
+        "x-ms-correlation-request-id": [ "207cab83-2656-41a1-a92c-fe6cb4e8ca21" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20220816T160745Z:207cab83-2656-41a1-a92c-fe6cb4e8ca21" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 16 Aug 2022 16:07:44 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "2633" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/51a36d38-3b14-471f-8dde-a5867f5e51eb/resourcegroups/aspstest7ptmcr/providers/Microsoft.OperationalInsights/workspaces/asptest4wysui/providers/Microsoft.SecurityInsights/metadata/azuresentinel.azure-sentinel-solution-zerotrust\",\"name\":\"azuresentinel.azure-sentinel-solution-zerotrust\",\"type\":\"Microsoft.SecurityInsights/metadata\",\"systemData\":{\"createdAt\":\"2022-08-16T16:05:56.4459878Z\",\"createdBy\":\"nicholas@zeronetworks.com\",\"createdByType\":\"User\",\"lastModifiedAt\":\"2022-08-16T16:05:56.4459878Z\",\"lastModifiedBy\":\"nicholas@zeronetworks.com\",\"lastModifiedByType\":\"User\"},\"properties\":{\"contentId\":\"azuresentinel.azure-sentinel-solution-zerotrust\",\"parentId\":\"azuresentinel.azure-sentinel-solution-zerotrust\",\"kind\":\"Solution\",\"version\":\"1.0.5\",\"source\":{\"kind\":\"Solution\",\"name\":\"ZeroTrust(TIC3.0)\",\"sourceId\":\"azuresentinel.azure-sentinel-solution-zerotrust\"},\"author\":{\"name\":\"Nikhil Tripathi\",\"email\":\"v-ntripathi@microsoft.com\"},\"support\":{\"tier\":\"Microsoft\",\"name\":\"Microsoft Corporation\",\"email\":\"support@microsoft.com\",\"link\":\"https://support.microsoft.com\"},\"dependencies\":{\"criteria\":[{\"contentId\":\"ZeroTrustTIC3.0_workbook\",\"kind\":\"Workbook\",\"version\":\"1.0.5\"},{\"contentId\":\"ZeroTrustDNSFamilyControlsMonitoring_AnalyticalRules\",\"kind\":\"AnalyticsRule\",\"version\":\"1.0.5\"},{\"contentId\":\"ZeroTrustDataProtectionFamilyControlsMonitoring_AnalyticalRules\",\"kind\":\"AnalyticsRule\",\"version\":\"1.0.5\"},{\"contentId\":\"ZeroTrustEmailFamilyControlsMonitoring_AnalyticalRules\",\"kind\":\"AnalyticsRule\",\"version\":\"1.0.5\"},{\"contentId\":\"ZeroTrustEnterpriseFamilyControlsMonitoring_AnalyticalRules\",\"kind\":\"AnalyticsRule\",\"version\":\"1.0.5\"},{\"contentId\":\"ZeroTrustFilesFamilyControlsMonitoring_AnalyticalRules\",\"kind\":\"AnalyticsRule\",\"version\":\"1.0.5\"},{\"contentId\":\"ZeroTrustIntrusionDetectionFamilyControlsMonitoring_AnalyticalRules\",\"kind\":\"AnalyticsRule\",\"version\":\"1.0.5\"},{\"contentId\":\"ZeroTrustNetworkingFamilyControlsMonitoring_AnalyticalRules\",\"kind\":\"AnalyticsRule\",\"version\":\"1.0.5\"},{\"contentId\":\"ZeroTrustResiliencyFamilyControlsMonitoring_AnalyticalRules\",\"kind\":\"AnalyticsRule\",\"version\":\"1.0.5\"},{\"contentId\":\"ZeroTrustUCCFamilyControlsMonitoring_AnalyticalRules\",\"kind\":\"AnalyticsRule\",\"version\":\"1.0.5\"},{\"contentId\":\"ZeroTrustUniversalSecurityCapabilitiesFamilyControlsMonitoring_AnalyticalRules\",\"kind\":\"AnalyticsRule\",\"version\":\"1.0.5\"},{\"contentId\":\"ZeroTrustWebFamilyControlsMonitoring_AnalyticalRules\",\"kind\":\"AnalyticsRule\",\"version\":\"1.0.5\"}],\"operator\":\"AND\"},\"providers\":[\"Microsoft\"],\"categories\":{\"domains\":[\"Identity\",\"Security - Others\"],\"verticals\":null},\"firstPublishDate\":\"2021-10-20\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzSentinelMetadata+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/51a36d38-3b14-471f-8dde-a5867f5e51eb/resourceGroups/aspstest7ptmcr/providers/Microsoft.OperationalInsights/workspaces/asptest4wysui/providers/Microsoft.SecurityInsights/metadata/azuresentinel.azure-sentinel-solution-zerotrust?api-version=2021-09-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/51a36d38-3b14-471f-8dde-a5867f5e51eb/resourceGroups/aspstest7ptmcr/providers/Microsoft.OperationalInsights/workspaces/asptest4wysui/providers/Microsoft.SecurityInsights/metadata/azuresentinel.azure-sentinel-solution-zerotrust?api-version=2021-09-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "224" ],
+        "x-ms-client-request-id": [ "aab796cf-f660-40e5-b466-1216e864d305" ],
+        "CommandName": [ "Get-AzSentinelMetadata" ],
+        "FullCommandName": [ "Get-AzSentinelMetadata_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.3", "Az.SecurityInsights/1.2.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11950" ],
+        "x-ms-request-id": [ "21cf9504-1551-4ad2-8c89-1557d1ebfff4" ],
+        "x-ms-correlation-request-id": [ "21cf9504-1551-4ad2-8c89-1557d1ebfff4" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20220816T160745Z:21cf9504-1551-4ad2-8c89-1557d1ebfff4" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 16 Aug 2022 16:07:45 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "2633" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/51a36d38-3b14-471f-8dde-a5867f5e51eb/resourcegroups/aspstest7ptmcr/providers/Microsoft.OperationalInsights/workspaces/asptest4wysui/providers/Microsoft.SecurityInsights/metadata/azuresentinel.azure-sentinel-solution-zerotrust\",\"name\":\"azuresentinel.azure-sentinel-solution-zerotrust\",\"type\":\"Microsoft.SecurityInsights/metadata\",\"systemData\":{\"createdAt\":\"2022-08-16T16:05:56.4459878Z\",\"createdBy\":\"nicholas@zeronetworks.com\",\"createdByType\":\"User\",\"lastModifiedAt\":\"2022-08-16T16:05:56.4459878Z\",\"lastModifiedBy\":\"nicholas@zeronetworks.com\",\"lastModifiedByType\":\"User\"},\"properties\":{\"contentId\":\"azuresentinel.azure-sentinel-solution-zerotrust\",\"parentId\":\"azuresentinel.azure-sentinel-solution-zerotrust\",\"kind\":\"Solution\",\"version\":\"1.0.5\",\"source\":{\"kind\":\"Solution\",\"name\":\"ZeroTrust(TIC3.0)\",\"sourceId\":\"azuresentinel.azure-sentinel-solution-zerotrust\"},\"author\":{\"name\":\"Nikhil Tripathi\",\"email\":\"v-ntripathi@microsoft.com\"},\"support\":{\"tier\":\"Microsoft\",\"name\":\"Microsoft Corporation\",\"email\":\"support@microsoft.com\",\"link\":\"https://support.microsoft.com\"},\"dependencies\":{\"criteria\":[{\"contentId\":\"ZeroTrustTIC3.0_workbook\",\"kind\":\"Workbook\",\"version\":\"1.0.5\"},{\"contentId\":\"ZeroTrustDNSFamilyControlsMonitoring_AnalyticalRules\",\"kind\":\"AnalyticsRule\",\"version\":\"1.0.5\"},{\"contentId\":\"ZeroTrustDataProtectionFamilyControlsMonitoring_AnalyticalRules\",\"kind\":\"AnalyticsRule\",\"version\":\"1.0.5\"},{\"contentId\":\"ZeroTrustEmailFamilyControlsMonitoring_AnalyticalRules\",\"kind\":\"AnalyticsRule\",\"version\":\"1.0.5\"},{\"contentId\":\"ZeroTrustEnterpriseFamilyControlsMonitoring_AnalyticalRules\",\"kind\":\"AnalyticsRule\",\"version\":\"1.0.5\"},{\"contentId\":\"ZeroTrustFilesFamilyControlsMonitoring_AnalyticalRules\",\"kind\":\"AnalyticsRule\",\"version\":\"1.0.5\"},{\"contentId\":\"ZeroTrustIntrusionDetectionFamilyControlsMonitoring_AnalyticalRules\",\"kind\":\"AnalyticsRule\",\"version\":\"1.0.5\"},{\"contentId\":\"ZeroTrustNetworkingFamilyControlsMonitoring_AnalyticalRules\",\"kind\":\"AnalyticsRule\",\"version\":\"1.0.5\"},{\"contentId\":\"ZeroTrustResiliencyFamilyControlsMonitoring_AnalyticalRules\",\"kind\":\"AnalyticsRule\",\"version\":\"1.0.5\"},{\"contentId\":\"ZeroTrustUCCFamilyControlsMonitoring_AnalyticalRules\",\"kind\":\"AnalyticsRule\",\"version\":\"1.0.5\"},{\"contentId\":\"ZeroTrustUniversalSecurityCapabilitiesFamilyControlsMonitoring_AnalyticalRules\",\"kind\":\"AnalyticsRule\",\"version\":\"1.0.5\"},{\"contentId\":\"ZeroTrustWebFamilyControlsMonitoring_AnalyticalRules\",\"kind\":\"AnalyticsRule\",\"version\":\"1.0.5\"}],\"operator\":\"AND\"},\"providers\":[\"Microsoft\"],\"categories\":{\"domains\":[\"Identity\",\"Security - Others\"],\"verticals\":null},\"firstPublishDate\":\"2021-10-20\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzSentinelMetadata+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/51a36d38-3b14-471f-8dde-a5867f5e51eb/resourceGroups/aspstest7ptmcr/providers/Microsoft.OperationalInsights/workspaces/asptest4wysui/providers/Microsoft.SecurityInsights/metadata/azuresentinel.azure-sentinel-solution-zerotrust?api-version=2021-09-01-preview+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/51a36d38-3b14-471f-8dde-a5867f5e51eb/resourceGroups/aspstest7ptmcr/providers/Microsoft.OperationalInsights/workspaces/asptest4wysui/providers/Microsoft.SecurityInsights/metadata/azuresentinel.azure-sentinel-solution-zerotrust?api-version=2021-09-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "225" ],
+        "x-ms-client-request-id": [ "dff0d8f9-4ce3-48a7-b53b-5cdffe2e3d6d" ],
+        "CommandName": [ "Get-AzSentinelMetadata" ],
+        "FullCommandName": [ "Get-AzSentinelMetadata_GetViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.3", "Az.SecurityInsights/1.2.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11949" ],
+        "x-ms-request-id": [ "68e5f81c-058a-4a4a-8cd6-890d71b3dbab" ],
+        "x-ms-correlation-request-id": [ "68e5f81c-058a-4a4a-8cd6-890d71b3dbab" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20220816T160746Z:68e5f81c-058a-4a4a-8cd6-890d71b3dbab" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 16 Aug 2022 16:07:45 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "2633" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/51a36d38-3b14-471f-8dde-a5867f5e51eb/resourcegroups/aspstest7ptmcr/providers/Microsoft.OperationalInsights/workspaces/asptest4wysui/providers/Microsoft.SecurityInsights/metadata/azuresentinel.azure-sentinel-solution-zerotrust\",\"name\":\"azuresentinel.azure-sentinel-solution-zerotrust\",\"type\":\"Microsoft.SecurityInsights/metadata\",\"systemData\":{\"createdAt\":\"2022-08-16T16:05:56.4459878Z\",\"createdBy\":\"nicholas@zeronetworks.com\",\"createdByType\":\"User\",\"lastModifiedAt\":\"2022-08-16T16:05:56.4459878Z\",\"lastModifiedBy\":\"nicholas@zeronetworks.com\",\"lastModifiedByType\":\"User\"},\"properties\":{\"contentId\":\"azuresentinel.azure-sentinel-solution-zerotrust\",\"parentId\":\"azuresentinel.azure-sentinel-solution-zerotrust\",\"kind\":\"Solution\",\"version\":\"1.0.5\",\"source\":{\"kind\":\"Solution\",\"name\":\"ZeroTrust(TIC3.0)\",\"sourceId\":\"azuresentinel.azure-sentinel-solution-zerotrust\"},\"author\":{\"name\":\"Nikhil Tripathi\",\"email\":\"v-ntripathi@microsoft.com\"},\"support\":{\"tier\":\"Microsoft\",\"name\":\"Microsoft Corporation\",\"email\":\"support@microsoft.com\",\"link\":\"https://support.microsoft.com\"},\"dependencies\":{\"criteria\":[{\"contentId\":\"ZeroTrustTIC3.0_workbook\",\"kind\":\"Workbook\",\"version\":\"1.0.5\"},{\"contentId\":\"ZeroTrustDNSFamilyControlsMonitoring_AnalyticalRules\",\"kind\":\"AnalyticsRule\",\"version\":\"1.0.5\"},{\"contentId\":\"ZeroTrustDataProtectionFamilyControlsMonitoring_AnalyticalRules\",\"kind\":\"AnalyticsRule\",\"version\":\"1.0.5\"},{\"contentId\":\"ZeroTrustEmailFamilyControlsMonitoring_AnalyticalRules\",\"kind\":\"AnalyticsRule\",\"version\":\"1.0.5\"},{\"contentId\":\"ZeroTrustEnterpriseFamilyControlsMonitoring_AnalyticalRules\",\"kind\":\"AnalyticsRule\",\"version\":\"1.0.5\"},{\"contentId\":\"ZeroTrustFilesFamilyControlsMonitoring_AnalyticalRules\",\"kind\":\"AnalyticsRule\",\"version\":\"1.0.5\"},{\"contentId\":\"ZeroTrustIntrusionDetectionFamilyControlsMonitoring_AnalyticalRules\",\"kind\":\"AnalyticsRule\",\"version\":\"1.0.5\"},{\"contentId\":\"ZeroTrustNetworkingFamilyControlsMonitoring_AnalyticalRules\",\"kind\":\"AnalyticsRule\",\"version\":\"1.0.5\"},{\"contentId\":\"ZeroTrustResiliencyFamilyControlsMonitoring_AnalyticalRules\",\"kind\":\"AnalyticsRule\",\"version\":\"1.0.5\"},{\"contentId\":\"ZeroTrustUCCFamilyControlsMonitoring_AnalyticalRules\",\"kind\":\"AnalyticsRule\",\"version\":\"1.0.5\"},{\"contentId\":\"ZeroTrustUniversalSecurityCapabilitiesFamilyControlsMonitoring_AnalyticalRules\",\"kind\":\"AnalyticsRule\",\"version\":\"1.0.5\"},{\"contentId\":\"ZeroTrustWebFamilyControlsMonitoring_AnalyticalRules\",\"kind\":\"AnalyticsRule\",\"version\":\"1.0.5\"}],\"operator\":\"AND\"},\"providers\":[\"Microsoft\"],\"categories\":{\"domains\":[\"Identity\",\"Security - Others\"],\"verticals\":null},\"firstPublishDate\":\"2021-10-20\"}}",
+      "isContentBase64": false
+    }
+  }
+}

@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
 
                 // Check if the Target vault is empty
-                /// Check the containers count in target vault
+                // Check the containers count in target vault
                 var protectionContainersCount = BackupUtils.GetProtectionContainersCount(TargetVault.Name, TargetVault.ResourceGroupName, ServiceClientAdapter);
 
                 Logger.Instance.WriteDebug("Protection Containers within vault: " + TargetVault.Name + " and resource Group: "
@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     throw new ArgumentException(string.Format(Resources.TargetVaultNotEmptyException));
                 }
 
-                /// check the count for VM backupItems
+                // check the count for VM backupItems
 
                 int vmItemsCount = BackupUtils.GetProtectedItems(TargetVault.Name, TargetVault.ResourceGroupName,
                     BackupManagementType.AzureIaasVM, WorkloadType.VM, ServiceClientAdapter).Count;

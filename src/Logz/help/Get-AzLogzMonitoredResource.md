@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Logz
-online version: https://docs.microsoft.com/powershell/module/az.logz/get-azlogzmonitoredresource
+online version: https://learn.microsoft.com/powershell/module/az.logz/get-azlogzmonitoredresource
 schema: 2.0.0
 ---
 

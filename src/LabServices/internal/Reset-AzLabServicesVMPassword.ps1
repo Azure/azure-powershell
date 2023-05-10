@@ -26,7 +26,7 @@ PS C:\> Reset-AzLabServicesVMPassword -ResourceGroupName "Group Name" -LabName "
 .Outputs
 System.Boolean
 .Link
-https://docs.microsoft.com/powershell/module/az.labservices/reset-azlabservicesvmpassword
+https://learn.microsoft.com/powershell/module/az.labservices/reset-azlabservicesvmpassword
 #>
 function Reset-AzLabServicesVMPassword {
 [OutputType([System.Boolean])]

@@ -45,7 +45,7 @@ CONTENT <IOperationsDefinition[]>: .
   [Origin <String>]: 
   [Property <IAny>]: Any object
 .Link
-https://docs.microsoft.com/powershell/module/az.providerhub/new-azproviderhuboperation
+https://learn.microsoft.com/powershell/module/az.providerhub/new-azproviderhuboperation
 #>
 function New-AzProviderHubOperation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IOperationsContent])]

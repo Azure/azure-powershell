@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.VMware
-online version: https://docs.microsoft.com/powershell/module/az.VMware/new-AzVMwarePSCredentialExecutionParameterObject
+online version: https://learn.microsoft.com/powershell/module/az.VMware/new-AzVMwarePSCredentialExecutionParameterObject
 schema: 2.0.0
 ---
 
@@ -26,6 +26,7 @@ Create a in-memory object for PSCredentialExecutionParameter
 ```powershell
 New-AzVMwarePSCredentialExecutionParameterObject -Name azps_test_credentialvalue -Password "passwordValue" -Username "usernameValue"
 ```
+
 ```output
 Name                      Type       Password      Username
 ----                      ----       --------      --------

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Synapse.dll-Help.xml
 Module Name: Az.Synapse
-online version: https://docs.microsoft.com/powershell/module/az.synapse/remove-azsynapsesqlpoolrestorepoint
+online version: https://learn.microsoft.com/powershell/module/az.synapse/remove-azsynapsesqlpoolrestorepoint
 schema: 2.0.0
 ---
 
@@ -45,7 +45,7 @@ The **Remove-AzSynapseSqlPoolRestorePoint** cmdlet permanently deletes an Azure 
 
 ### Example 1
 ```powershell
-Remove-AzSynapseSqlPoolRestorePoint -WorkspaceName ContosoWorkspace -SqlPoolName ContosoSqlPool -Name ContosoSqlPoolRestorePointCreationDate
+Remove-AzSynapseSqlPoolRestorePoint -WorkspaceName ContosoWorkspace -SqlPoolName ContosoSqlPool -RestorePointCreationDate ContosoSqlPoolRestorePointCreationDate
 ```
 
 This command deletes an Azure Synapse Analytics SQL pool restore point.
@@ -53,7 +53,7 @@ This command deletes an Azure Synapse Analytics SQL pool restore point.
 ### Example 2
 ```powershell
 $pool = Get-AzSynapseSqlPool -WorkspaceName ContosoWorkspace -Name ContosoSqlPool
-$pool | Remove-AzSynapseSqlPoolRestorePoint -Name ContosoSqlPoolRestorePointCreationDate
+$pool | Remove-AzSynapseSqlPoolRestorePoint -RestorePointCreationDate ContosoSqlPoolRestorePointCreationDate
 ```
 
 This command deletes an Azure Synapse Analytics SQL pool restore point through pipeline.
@@ -61,7 +61,7 @@ This command deletes an Azure Synapse Analytics SQL pool restore point through p
 ### Example 3
 ```powershell
 $points = Get-AzSynapseSqlPoolRestorePoint -WorkspaceName ContosoWorkspace -Name ContosoSqlPool
-$points[index] | Remove-AzSynapseSqlPoolRestorePoint
+$points[$index] | Remove-AzSynapseSqlPoolRestorePoint
 ```
 
 This command deletes an Azure Synapse Analytics SQL pool restore point through pipeline.

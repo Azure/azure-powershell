@@ -2,14 +2,14 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
 ms.assetid: F26CB715-D66A-4672-AA47-F3B316957FC8
-online version: https://docs.microsoft.com/powershell/module/az.sql/get-azsqlserverAdvancedThreatProtectionSetting
+online version: https://learn.microsoft.com/powershell/module/az.sql/Get-AzSqlServerAdvancedThreatProtectionSetting
 schema: 2.0.0
 ---
 
 # Get-AzSqlServerAdvancedThreatProtectionSetting
 
 ## SYNOPSIS
-Gets the advanced threat protection settings for a server.
+Gets the Advanced Threat Protection settings for a server.
 
 ## SYNTAX
 
@@ -19,28 +19,23 @@ Get-AzSqlServerAdvancedThreatProtectionSetting -ServerName <String> [-ResourceGr
 ```
 
 ## DESCRIPTION
-The **Get-AzSqlServerAdvancedThreatProtectionSetting** cmdlet gets the advanced threat protection settings of an Azure SQL server.
+The **Get-AzSqlServerAdvancedThreatProtectionSetting** cmdlet gets the Advanced Threat Protection settings of an Azure SQL server.
 To use this cmdlet, specify the *ResourceGroupName* and *ServerName* parameters to identify the server for which this cmdlet gets the settings.
 
 ## EXAMPLES
 
-### Example 1: Get the advanced threat protection settings for a server
+### Example 1: Get the Advanced Threat Protection settings for a server
 ```powershell
 Get-AzSqlServerAdvancedThreatProtectionSetting -ResourceGroupName "ResourceGroup11" -ServerName "Server01"
 ```
 
 ```output
-ResourceGroupName            : ResourceGroup11
-ServerName                   : Server01
-ThreatDetectionState         : Enabled
-NotificationRecipientsEmails : admin@myCompany.com
-StorageAccountName           : mystorage
-EmailAdmins                  : True
-ExcludedDetectionTypes       : {}
-RetentionInDays              : 0
+ResourceGroupName             : ResourceGroup11
+ServerName                    : Server01
+AdvancedThreatProtectionState : Enabled
 ```
 
-This command gets the advanced threat protection settings for a server named Server01.
+This command gets the Advanced Threat Protection settings for a server named Server01.
 The server is assigned to the resource group ResourceGroup11.
 
 ## PARAMETERS
@@ -136,4 +131,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[SQL Database Documentation](https://docs.microsoft.com/azure/sql-database/)
+[SQL Database Documentation](https://learn.microsoft.com/azure/sql-database/)

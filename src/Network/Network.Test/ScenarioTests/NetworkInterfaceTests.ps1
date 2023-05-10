@@ -320,12 +320,12 @@ function Test-NetworkInterface-GatewayLoadBalancerConsumer
         $publicipConsumer = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpConsumerName -location $location -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel
 
 		# Create the ipconfiguration
-		$ipconfig1 = New-AzNetworkInterfaceIpConfig -Name $ipconfigConsumerName -Subnet $vnet.Subnets[0] -PublicIpAddress $publicipConsumer -GatewayLoadBalancerId $frontendProvider.Id
+        $ipconfig1 = New-AzNetworkInterfaceIpConfig -Name $ipconfigConsumerName -Subnet $vnet.Subnets[0] -PublicIpAddress $publicipConsumer -GatewayLoadBalancerId $frontendProvider.Id
 
         # Create NetworkInterface
         $nicConsumer = New-AzNetworkInterface -Name $nicConsumerName -ResourceGroupName $rgname -Location $location -IpConfiguration $ipconfig1 -Tag @{ testtag = "testval" }
 
-        # Create NetworkInterface
+        # Get NetworkInterface
         $expectedNicConsumer = Get-AzNetworkInterface -Name $nicName -ResourceGroupName $rgname
 
         # Verification
@@ -985,6 +985,56 @@ function Test-NetworkInterfaceWithAcceleratedNetworking
 
 <#
 .SYNOPSIS
+Tests creating new simple public networkinterface with disableTcpStateTracking Property.
+#>
+function Test-NetworkInterfaceWithDisableTcpStateTracking
+{
+   # Setup
+    $rgname = Get-ResourceGroupName
+    $vnetName = Get-ResourceName
+    $subnetName = Get-ResourceName
+    $publicIpName = Get-ResourceName
+    $nicName = Get-ResourceName
+    $domainNameLabel = Get-ResourceName
+    $rglocation = Get-ProviderLocation ResourceManagement "eastus2euap"
+    $resourceTypeParent = "Microsoft.Network/networkInterfaces"
+    $location = Get-ProviderLocation $resourceTypeParent "eastus2euap"
+    
+    try 
+    {
+        # Create the resource group
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" } 
+        # Create the Virtual Network
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
+        $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+        
+        # Create the publicip
+        $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel
+
+        # Create NetworkInterface with DisableTcpStateTracking Property set to true
+        $actualNic = New-AzNetworkInterface -Name $nicName -ResourceGroupName $rgname -Location $location -Subnet $vnet.Subnets[0] -PublicIpAddress $publicip -DisableTcpStateTracking true
+        $expectedNic = Get-AzNetworkInterface -Name $nicName -ResourceGroupName $rgname
+
+        Assert-NotNull $expectedNic.ResourceGuid
+        Assert-AreEqual "Succeeded" $expectedNic.ProvisioningState
+        Assert-AreEqual $true $expectedNic.DisableTcpStateTracking
+
+        # Delete ResourceGroup
+        $delete = Remove-AzNetworkInterface -ResourceGroupName $rgname -name $nicName -PassThru -Force
+        Assert-AreEqual true $delete
+        
+        $list = Get-AzNetworkInterface -ResourceGroupName $rgname
+        Assert-AreEqual 0 @($list).Count
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
 Test creating new NetworkInterfaceTapConfiguration using minimal set of parameters
 #>
 function Test-NetworkInterfaceTapConfigurationCRUD
@@ -1029,7 +1079,7 @@ function Test-NetworkInterfaceTapConfigurationCRUD
 
         # Create source Nic which is getting tapped
         $sourceIpConfig = New-AzNetworkInterfaceIpConfig -Name $sourceIpConfigName -Subnet $vnet.Subnets[0]
-        $sourceNic = New-AzNetworkInterface -Name $sourceNicName -ResourceGroupName $rgname -Location $location -IpConfiguration $sourceIpConfig -Tag @{ testtag = "testval" }
+        $sourceNic = New-AzNetworkInterface -Name $sourceNicName -ResourceGroupName $rgname -Location $location -IpConfiguration $sourceIpConfig -Tag @{ testtag = "testval" } -EnableAcceleratedNetworking
 
         # Add tap configuration
         Add-AzNetworkInterfaceTapConfig -NetworkInterface $sourceNic -VirtualNetworkTap $vVirtualNetworkTap -Name $rname

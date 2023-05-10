@@ -14,7 +14,7 @@ while(-not $mockingPath) {
 Describe 'Restart-AzMigrateServerReplication' {
     It 'ByIDVMwareCbt' {
         $output = Restart-AzMigrateServerReplication -TargetObjectID $env.srsMachinetempz -SubscriptionId $env.srsSubscriptionId
- 	$output.Count | Should -BeGreaterOrEqual 1
+        $output.Count | Should -BeGreaterOrEqual 1
     }
 
     It 'ByInputObjectVMwareCbt' {

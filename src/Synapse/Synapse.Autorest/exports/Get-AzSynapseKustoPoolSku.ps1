@@ -47,7 +47,7 @@ Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IAzureResou
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.ISkuDescription
 .Link
-https://docs.microsoft.com/powershell/module/az.synapse/get-azsynapsekustopoolsku
+https://learn.microsoft.com/powershell/module/az.synapse/get-azsynapsekustopoolsku
 #>
 function Get-AzSynapseKustoPoolSku {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.ISkuDescription], [Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IAzureResourceSku])]

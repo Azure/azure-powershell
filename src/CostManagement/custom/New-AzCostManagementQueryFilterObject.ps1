@@ -20,34 +20,34 @@ Create a in-memory object for QueryFilter
 Create a in-memory object for QueryFilter
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.QueryFilter
+Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.QueryFilter
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.CostManagement/new-AzCostManagementQueryFilterObject
+https://learn.microsoft.com/powershell/module/az.CostManagement/new-AzCostManagementQueryFilterObject
 #>
 function New-AzCostManagementQueryFilterObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.QueryFilter')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.QueryFilter')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
         [Parameter(HelpMessage="The logical `"AND`" expression. Must have at least 2 items.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryFilter[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.IQueryFilter[]]
         $And,
         [Parameter(HelpMessage="Has comparison expression for a dimensions.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryComparisonExpression]
+        [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.IQueryComparisonExpression]
         $Dimensions,
         [Parameter(HelpMessage="The logical `"NOT`" expression.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryFilter]
+        [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.IQueryFilter]
         $Not,
         [Parameter(HelpMessage="The logical `"OR`" expression. Must have at least 2 items.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryFilter[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.IQueryFilter[]]
         $Or,
         [Parameter(HelpMessage="Has comparison expression for a tag.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryComparisonExpression]
+        [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.IQueryComparisonExpression]
         $Tag
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.QueryFilter]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.QueryFilter]::New()
 
         $Object.And = $And
         $Object.Dimensions = $Dimensions

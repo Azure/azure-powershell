@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
-online version: https://docs.microsoft.com/powershell/module/az.storage/close-azstoragefilehandle
+online version: https://learn.microsoft.com/powershell/module/az.storage/close-azstoragefilehandle
 schema: 2.0.0
 ---
 
@@ -66,30 +66,32 @@ The **Close-AzStorageFileHandle** cmdlet closes file handles of a  file share, o
 ## EXAMPLES
 
 ### Example 1: Close all file handles on a file
-```
-PS C:\> Close-AzStorageFileHandle -ShareName "mysharename" -Path 'dir1/dir2/test.txt' -CloseAll
+```powershell
+Close-AzStorageFileHandle -ShareName "mysharename" -Path 'dir1/dir2/test.txt' -CloseAll
 ```
 
 This command closes all file handles on a file.
 
 ### Example 2: Close all file handles which is opened 1 day ago on a file directory
-```
-PS C:\> Get-AzStorageFileHandle -ShareName "mysharename" -Path 'dir1/dir2' -Recursive | Where-Object {$_.OpenTime.DateTime.AddDays(1) -lt (Get-Date)} | Close-AzStorageFileHandle -ShareName "mysharename"
+```powershell
+Get-AzStorageFileHandle -ShareName "mysharename" -Path 'dir1/dir2' -Recursive | Where-Object {$_.OpenTime.DateTime.AddDays(1) -lt (Get-Date)} | Close-AzStorageFileHandle -ShareName "mysharename"
 ```
 
 This command lists all file handles on a file directory recursively, filters out the handles which are opened 1 day ago, and then closes them.
 
 ### Example 3: Close all file handles on a file directory recursively and show the closed file handle count
+```powershell
+Close-AzStorageFileHandle -ShareName "mysharename" -Path 'dir1/dir2' -Recursive -CloseAll -PassThru
 ```
-PS C:\> Close-AzStorageFileHandle -ShareName "mysharename" -Path 'dir1/dir2' -Recursive -CloseAll -PassThru
+```output
 10
 ```
 
 This command closes all file handles on a file directory and shows the closed file handle count.
 
 ### Example 4: Close all file handles on a file share 
-```
-PS C:\> Close-AzStorageFileHandle -ShareName "mysharename" -CloseAll -Recursive
+```powershell
+Close-AzStorageFileHandle -ShareName "mysharename" -CloseAll -Recursive
 ```
 
 This command closes all file handles on a specific file share recursively.

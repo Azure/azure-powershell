@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.DataShare.DataSetMapping
             ParameterSetName = ParameterSetNames.BlobDataSetParameterSet)]
         [Parameter(
             Mandatory = true,
-            HelpMessage = "Azure data share account name",
+            HelpMessage = "The name of the Azure storage account that is the source of the data being shared.",
             ParameterSetName = ParameterSetNames.AdlsGen2DataSetParameterSet)]
         [ResourceNameCompleter(ResourceTypes.Account, "ResourceGroupName")]
         public string AccountName { get; set; }
@@ -104,7 +104,7 @@ namespace Microsoft.Azure.Commands.DataShare.DataSetMapping
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Azure Storage Account ResourceId",
+            HelpMessage = "Azure Storage Account ResourceId that is the source of the data being shared.",
             ParameterSetName = ParameterSetNames.AdlsGen2DataSetParameterSet)]
         [ValidateNotNullOrEmpty]
         [ResourceIdCompleter(ResourceTypes.StorageAccount)]

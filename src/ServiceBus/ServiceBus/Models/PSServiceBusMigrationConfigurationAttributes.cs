@@ -71,6 +71,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Models
         /// Gets state in which Standard to Premium Migration is, possible
         /// values : Unknown, Reverting, Completing, Initiating, Syncing,
         /// Active
+        /// </summary>
         public string MigrationState { get; set; }
 
     }

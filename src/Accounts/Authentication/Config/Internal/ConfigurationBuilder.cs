@@ -39,6 +39,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Config.Internal
         /// <summary>
         /// Adds a new configuration source.
         /// </summary>
+        /// <param name="id"></param>
         /// <param name="source">The configuration source to add.</param>
         /// <returns>The same <see cref="IConfigurationBuilder"/>.</returns>
         public IConfigurationBuilder Add(string id, IConfigurationSource source)

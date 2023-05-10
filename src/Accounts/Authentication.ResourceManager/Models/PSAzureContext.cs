@@ -163,10 +163,6 @@ namespace Microsoft.Azure.Commands.Profile.Models.Core
         [Ps1Xml(Label = "TenantId", Target = ViewControl.Table, ScriptBlock = "$_.Tenant.ToString()", Position = 4)]
         public IAzureTenant Tenant { get; set; }
 
-        /// <summary>
-        /// Moved to <see cref="IClientApplicationBase.ClientTokenCache"> due to MSAL.
-        /// See <see cref="AuthenticationClientFactory"> for how to create client applications.
-        /// </summary>
         public IAzureTokenCache TokenCache { get; set; } = null;
 
         public string VersionProfile { get; set; }

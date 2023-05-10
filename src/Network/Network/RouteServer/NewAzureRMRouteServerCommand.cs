@@ -77,6 +77,16 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Routing Preference to route traffic")]
+        [ValidateSet(
+            MNM.HubRoutingPreference.ExpressRoute,
+            MNM.HubRoutingPreference.VpnGateway,
+            MNM.HubRoutingPreference.ASPath,
+            IgnoreCase = true)]
+        public string HubRoutingPreference { get; set; }
+
         public override void Execute()
         {
             base.Execute();
@@ -119,6 +129,15 @@ namespace Microsoft.Azure.Commands.Network
                         Name = this.RouteServerName,
                         Location = this.Location
                     };
+
+                    if (string.IsNullOrWhiteSpace(this.HubRoutingPreference))
+                    {
+                        virtualHub.HubRoutingPreference = "ExpressRoute";
+                    }
+                    else
+                    {
+                        virtualHub.HubRoutingPreference = this.HubRoutingPreference;
+                    }
 
                     var publicIpAddressModel = NetworkResourceManagerProfile.Mapper.Map<PublicIPAddress>(this.PublicIpAddress);
                     virtualHub.RouteTables = new List<PSVirtualHubRouteTable>();

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
-online version: https://docs.microsoft.com/powershell/module/az.compute/export-azloganalyticthrottledrequest
+online version: https://learn.microsoft.com/powershell/module/az.compute/export-azloganalyticthrottledrequest
 schema: 2.0.0
 ---
 
@@ -15,7 +15,7 @@ Export logs that show total throttled Api requests for this subscription in the 
 ```
 Export-AzLogAnalyticThrottledRequest [-Location] <String> [-FromTime] <DateTime> [-ToTime] <DateTime>
  [-BlobContainerSasUri] <String> [-GroupByOperationName] [-GroupByResourceName] [-GroupByThrottlePolicy]
- [-GroupByApplicationId] [-GroupByUserAgent] [-AsJob] [-NoWait] [-DefaultProfile <IAzureContextContainer>] 
+ [-GroupByApplicationId] [-GroupByUserAgent] [-AsJob] [-NoWait] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -24,7 +24,7 @@ This exports the total number of throttled Microsoft.Compute API calls.
 The logs can be further aggregated by five options: GroupByOperationName, GroupByThrottlePolicy, GroupByResourceName, GroupByUserAgent, or GroupByApplicationId.
 Note that this cmdlet collects only CRP logs.
 
-For an overview of the Compute Resource Provider's API throttling, see https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-request-limits. 
+For an overview of the Compute Resource Provider's API throttling, see https://learn.microsoft.com/azure/azure-resource-manager/resource-manager-request-limits. 
 
 ## EXAMPLES
 
@@ -118,6 +118,7 @@ Group query result by Application Id.
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
+
 Required: False
 Position: Named
 Default value: None
@@ -177,6 +178,7 @@ Group query result by UserAgent.
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
+
 Required: False
 Position: Named
 Default value: None

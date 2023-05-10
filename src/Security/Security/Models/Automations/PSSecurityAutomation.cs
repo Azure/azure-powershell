@@ -42,7 +42,6 @@ namespace Microsoft.Azure.Commands.Security.Models.Automations
         /// <summary>
         /// Gets or sets the etag.
         /// </summary>
-        /// <value>
         public string ETag { get; set; }
 
         /// <summary>

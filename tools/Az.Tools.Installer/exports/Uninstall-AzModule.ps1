@@ -36,7 +36,7 @@ function Uninstall-AzModule {
         [string[]]
         ${Name},
 
-        [Parameter(ParameterSetName = 'Default',HelpMessage = 'Az modules to exclude from uninstallation.', ValueFromPipelineByPropertyName = $true)]
+        [Parameter(ParameterSetName = 'Default', HelpMessage = 'Az modules to exclude from uninstallation.', ValueFromPipelineByPropertyName = $true)]
         [ValidateNotNullOrEmpty()]
         [string[]]
         ${ExcludeModule},
@@ -125,7 +125,7 @@ function Uninstall-AzModule {
                                 "$_"
                             }
                         }
-                        foreach($versionString in $versionStrings) {
+                        foreach ($versionString in $versionStrings) {
                             PowerShellGet\Uninstall-Module -Name $moduleName -RequiredVersion $versionString -AllowPrerelease -ErrorAction 'Continue'
                         }
                     }

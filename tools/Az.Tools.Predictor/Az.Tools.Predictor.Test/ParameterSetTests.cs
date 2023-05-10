@@ -173,16 +173,16 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         /// Verify that the incomplete parameter is ignored.
         /// </summary>
         [Theory]
-        [InlineData("Get-AzResourceGroup -Name:Test -", false)]
-        [InlineData("Get-AzResourceGroup -Name Test -", false)]
-        [InlineData("Get-AzResourceGroup Test -", true)]
+        [InlineData("Get-LogProperties -Name:name -", false)]
+        [InlineData("Get-LogProperties -Name name -", false)]
+        [InlineData("Get-LogProperties name -", true)]
         public void VerifyIncompleteParameterAtTheEnd(string inputData, bool isPositional)
         {
             var predictionContext = PredictionContext.Create(inputData);
             var commandAst = predictionContext.RelatedAsts.OfType<CommandAst>().LastOrDefault();
             var expected = new List<Parameter>()
             {
-                new Parameter("Name", "Test", isPositional),
+                new Parameter("Name", "name", isPositional),
                 new Parameter(AzPredictorConstants.DashParameterName, null, false),
             };
 
@@ -210,11 +210,11 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         [Fact]
         public void VerifyOnlyOnePositionalParameter()
         {
-            var predictionContext = PredictionContext.Create("Get-AzResourceGroup Test");
+            var predictionContext = PredictionContext.Create("Get-LogProperties name");
             var commandAst = predictionContext.RelatedAsts.OfType<CommandAst>().LastOrDefault();
             var expected = new List<Parameter>()
             {
-                new Parameter("Name", "Test", true),
+                new Parameter("Name", "name", true),
             };
 
             var parameterSet = new ParameterSet(commandAst, _azContext);
@@ -227,12 +227,12 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         [Fact]
         public void VerifyTwoPositionalParameters()
         {
-            var predictionContext = PredictionContext.Create("Get-AzResourceGroup Test $Location");
+            var predictionContext = PredictionContext.Create("Set-Content test.txt abc");
             var commandAst = predictionContext.RelatedAsts.OfType<CommandAst>().LastOrDefault();
             var expected = new List<Parameter>()
             {
-                new Parameter("Name", "Test", true),
-                new Parameter("Location", "$Location", true),
+                new Parameter("Path", "test.txt", true),
+                new Parameter("Value", "abc", true),
             };
 
             var parameterSet = new ParameterSet(commandAst, _azContext);
@@ -245,7 +245,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         [Fact]
         public void VerifyExcessPositionalParameters()
         {
-            var predictionContext = PredictionContext.Create("Get-AzResourceGroup Name Location Test");
+            //var predictionContext = PredictionContext.Create("Get-AzResourceGroup Name Location Test");
+            var predictionContext = PredictionContext.Create("Get-LogProperties name test");
             var commandAst = predictionContext.RelatedAsts.OfType<CommandAst>().LastOrDefault();
             Assert.Throws<CommandLineException>(() => new ParameterSet(commandAst, _azContext));
         }
@@ -257,13 +258,12 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         public void VerifyPositionalParametersFollowedBySwitchParameters()
         {
 
-            var predictionContext = PredictionContext.Create("Get-AzResourceGroup Test $Location -Pre");
+            var predictionContext = PredictionContext.Create(@"Clear-Content C:\*.log -Force");
             var commandAst = predictionContext.RelatedAsts.OfType<CommandAst>().LastOrDefault();
             var expected = new List<Parameter>()
             {
-                new Parameter("Name", "Test", true),
-                new Parameter("Location", "$Location", true),
-                new Parameter("Pre", null, false),
+                new Parameter("Path", @"C:\*.log", true),
+                new Parameter("Force", null, false),
             };
 
             var parameterSet = new ParameterSet(commandAst, _azContext);
@@ -276,12 +276,12 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         [Fact]
         public void VerifyPositionalParametersFollowedByNamedParameters()
         {
-            var predictionContext = PredictionContext.Create("Get-AzResourceGroup Test -Location:$Location");
+            var predictionContext = PredictionContext.Create(@"Get-Content C:\Copy-Script.ps1 -Stream Zone.Identifier");
             var commandAst = predictionContext.RelatedAsts.OfType<CommandAst>().LastOrDefault();
             var expected = new List<Parameter>()
             {
-                new Parameter("Name", "Test", true),
-                new Parameter("Location", "$Location", false),
+                new Parameter("Path", @"C:\Copy-Script.ps1", true),
+                new Parameter("Stream", "Zone.Identifier", false),
             };
 
             var parameterSet = new ParameterSet(commandAst, _azContext);

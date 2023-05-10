@@ -100,8 +100,6 @@ namespace Microsoft.Azure.Commands.KeyVault
         #endregion
         public override void ExecuteCmdlet()
         {
-            MSGraphMessageHelper.WriteMessageForCmdletsSwallowException(this);
-
             switch (ParameterSetName)
             {
                 case GetVaultParameterSet:

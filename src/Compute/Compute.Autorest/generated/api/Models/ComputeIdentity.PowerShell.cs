@@ -30,7 +30,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Models
         /// <summary>
         /// <c>BeforeDeserializeDictionary</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
@@ -42,7 +43,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Models
         /// <summary>
         /// <c>BeforeDeserializePSObject</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
@@ -65,20 +67,62 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Models
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentityInternal)this).SubscriptionId = (string) content.GetValueForProperty("SubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentityInternal)this).SubscriptionId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentityInternal)this).ResourceGroupName = (string) content.GetValueForProperty("ResourceGroupName",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentityInternal)this).ResourceGroupName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentityInternal)this).GalleryName = (string) content.GetValueForProperty("GalleryName",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentityInternal)this).GalleryName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentityInternal)this).GalleryImageName = (string) content.GetValueForProperty("GalleryImageName",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentityInternal)this).GalleryImageName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentityInternal)this).GalleryImageVersionName = (string) content.GetValueForProperty("GalleryImageVersionName",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentityInternal)this).GalleryImageVersionName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentityInternal)this).GalleryApplicationName = (string) content.GetValueForProperty("GalleryApplicationName",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentityInternal)this).GalleryApplicationName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentityInternal)this).GalleryApplicationVersionName = (string) content.GetValueForProperty("GalleryApplicationVersionName",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentityInternal)this).GalleryApplicationVersionName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentityInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentityInternal)this).Location, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentityInternal)this).CommandId = (string) content.GetValueForProperty("CommandId",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentityInternal)this).CommandId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentityInternal)this).VMName = (string) content.GetValueForProperty("VMName",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentityInternal)this).VMName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentityInternal)this).RunCommandName = (string) content.GetValueForProperty("RunCommandName",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentityInternal)this).RunCommandName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentityInternal)this).VMScaleSetName = (string) content.GetValueForProperty("VMScaleSetName",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentityInternal)this).VMScaleSetName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentityInternal)this).InstanceId = (string) content.GetValueForProperty("InstanceId",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentityInternal)this).InstanceId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentityInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentityInternal)this).Id, global::System.Convert.ToString);
+            if (content.Contains("SubscriptionId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentityInternal)this).SubscriptionId = (string) content.GetValueForProperty("SubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentityInternal)this).SubscriptionId, global::System.Convert.ToString);
+            }
+            if (content.Contains("ResourceGroupName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentityInternal)this).ResourceGroupName = (string) content.GetValueForProperty("ResourceGroupName",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentityInternal)this).ResourceGroupName, global::System.Convert.ToString);
+            }
+            if (content.Contains("GalleryName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentityInternal)this).GalleryName = (string) content.GetValueForProperty("GalleryName",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentityInternal)this).GalleryName, global::System.Convert.ToString);
+            }
+            if (content.Contains("GalleryImageName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentityInternal)this).GalleryImageName = (string) content.GetValueForProperty("GalleryImageName",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentityInternal)this).GalleryImageName, global::System.Convert.ToString);
+            }
+            if (content.Contains("GalleryImageVersionName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentityInternal)this).GalleryImageVersionName = (string) content.GetValueForProperty("GalleryImageVersionName",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentityInternal)this).GalleryImageVersionName, global::System.Convert.ToString);
+            }
+            if (content.Contains("GalleryApplicationName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentityInternal)this).GalleryApplicationName = (string) content.GetValueForProperty("GalleryApplicationName",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentityInternal)this).GalleryApplicationName, global::System.Convert.ToString);
+            }
+            if (content.Contains("GalleryApplicationVersionName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentityInternal)this).GalleryApplicationVersionName = (string) content.GetValueForProperty("GalleryApplicationVersionName",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentityInternal)this).GalleryApplicationVersionName, global::System.Convert.ToString);
+            }
+            if (content.Contains("Location"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentityInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentityInternal)this).Location, global::System.Convert.ToString);
+            }
+            if (content.Contains("CommandId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentityInternal)this).CommandId = (string) content.GetValueForProperty("CommandId",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentityInternal)this).CommandId, global::System.Convert.ToString);
+            }
+            if (content.Contains("VMName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentityInternal)this).VMName = (string) content.GetValueForProperty("VMName",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentityInternal)this).VMName, global::System.Convert.ToString);
+            }
+            if (content.Contains("RunCommandName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentityInternal)this).RunCommandName = (string) content.GetValueForProperty("RunCommandName",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentityInternal)this).RunCommandName, global::System.Convert.ToString);
+            }
+            if (content.Contains("VMScaleSetName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentityInternal)this).VMScaleSetName = (string) content.GetValueForProperty("VMScaleSetName",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentityInternal)this).VMScaleSetName, global::System.Convert.ToString);
+            }
+            if (content.Contains("InstanceId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentityInternal)this).InstanceId = (string) content.GetValueForProperty("InstanceId",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentityInternal)this).InstanceId, global::System.Convert.ToString);
+            }
+            if (content.Contains("Id"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentityInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentityInternal)this).Id, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -96,20 +140,62 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Models
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentityInternal)this).SubscriptionId = (string) content.GetValueForProperty("SubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentityInternal)this).SubscriptionId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentityInternal)this).ResourceGroupName = (string) content.GetValueForProperty("ResourceGroupName",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentityInternal)this).ResourceGroupName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentityInternal)this).GalleryName = (string) content.GetValueForProperty("GalleryName",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentityInternal)this).GalleryName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentityInternal)this).GalleryImageName = (string) content.GetValueForProperty("GalleryImageName",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentityInternal)this).GalleryImageName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentityInternal)this).GalleryImageVersionName = (string) content.GetValueForProperty("GalleryImageVersionName",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentityInternal)this).GalleryImageVersionName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentityInternal)this).GalleryApplicationName = (string) content.GetValueForProperty("GalleryApplicationName",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentityInternal)this).GalleryApplicationName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentityInternal)this).GalleryApplicationVersionName = (string) content.GetValueForProperty("GalleryApplicationVersionName",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentityInternal)this).GalleryApplicationVersionName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentityInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentityInternal)this).Location, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentityInternal)this).CommandId = (string) content.GetValueForProperty("CommandId",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentityInternal)this).CommandId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentityInternal)this).VMName = (string) content.GetValueForProperty("VMName",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentityInternal)this).VMName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentityInternal)this).RunCommandName = (string) content.GetValueForProperty("RunCommandName",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentityInternal)this).RunCommandName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentityInternal)this).VMScaleSetName = (string) content.GetValueForProperty("VMScaleSetName",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentityInternal)this).VMScaleSetName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentityInternal)this).InstanceId = (string) content.GetValueForProperty("InstanceId",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentityInternal)this).InstanceId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentityInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentityInternal)this).Id, global::System.Convert.ToString);
+            if (content.Contains("SubscriptionId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentityInternal)this).SubscriptionId = (string) content.GetValueForProperty("SubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentityInternal)this).SubscriptionId, global::System.Convert.ToString);
+            }
+            if (content.Contains("ResourceGroupName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentityInternal)this).ResourceGroupName = (string) content.GetValueForProperty("ResourceGroupName",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentityInternal)this).ResourceGroupName, global::System.Convert.ToString);
+            }
+            if (content.Contains("GalleryName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentityInternal)this).GalleryName = (string) content.GetValueForProperty("GalleryName",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentityInternal)this).GalleryName, global::System.Convert.ToString);
+            }
+            if (content.Contains("GalleryImageName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentityInternal)this).GalleryImageName = (string) content.GetValueForProperty("GalleryImageName",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentityInternal)this).GalleryImageName, global::System.Convert.ToString);
+            }
+            if (content.Contains("GalleryImageVersionName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentityInternal)this).GalleryImageVersionName = (string) content.GetValueForProperty("GalleryImageVersionName",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentityInternal)this).GalleryImageVersionName, global::System.Convert.ToString);
+            }
+            if (content.Contains("GalleryApplicationName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentityInternal)this).GalleryApplicationName = (string) content.GetValueForProperty("GalleryApplicationName",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentityInternal)this).GalleryApplicationName, global::System.Convert.ToString);
+            }
+            if (content.Contains("GalleryApplicationVersionName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentityInternal)this).GalleryApplicationVersionName = (string) content.GetValueForProperty("GalleryApplicationVersionName",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentityInternal)this).GalleryApplicationVersionName, global::System.Convert.ToString);
+            }
+            if (content.Contains("Location"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentityInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentityInternal)this).Location, global::System.Convert.ToString);
+            }
+            if (content.Contains("CommandId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentityInternal)this).CommandId = (string) content.GetValueForProperty("CommandId",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentityInternal)this).CommandId, global::System.Convert.ToString);
+            }
+            if (content.Contains("VMName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentityInternal)this).VMName = (string) content.GetValueForProperty("VMName",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentityInternal)this).VMName, global::System.Convert.ToString);
+            }
+            if (content.Contains("RunCommandName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentityInternal)this).RunCommandName = (string) content.GetValueForProperty("RunCommandName",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentityInternal)this).RunCommandName, global::System.Convert.ToString);
+            }
+            if (content.Contains("VMScaleSetName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentityInternal)this).VMScaleSetName = (string) content.GetValueForProperty("VMScaleSetName",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentityInternal)this).VMScaleSetName, global::System.Convert.ToString);
+            }
+            if (content.Contains("InstanceId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentityInternal)this).InstanceId = (string) content.GetValueForProperty("InstanceId",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentityInternal)this).InstanceId, global::System.Convert.ToString);
+            }
+            if (content.Contains("Id"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentityInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentityInternal)this).Id, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 
@@ -143,7 +229,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Models
         /// Creates a new instance of <see cref="ComputeIdentity" />, deserializing the content from a json string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="className" /> model class.</returns>
+        /// <returns>an instance of the <see cref="ComputeIdentity" /> model class.</returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentity FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>Serializes this instance to a json string.</summary>

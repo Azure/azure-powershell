@@ -28,11 +28,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "externalSubscriptions".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("externalSubscriptions", "externalSubscriptions", global::System.Management.Automation.CompletionResultType.ParameterValue, "externalSubscriptions");
+                yield return new global::System.Management.Automation.CompletionResult("'externalSubscriptions'", "externalSubscriptions", global::System.Management.Automation.CompletionResultType.ParameterValue, "externalSubscriptions");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "externalBillingAccounts".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("externalBillingAccounts", "externalBillingAccounts", global::System.Management.Automation.CompletionResultType.ParameterValue, "externalBillingAccounts");
+                yield return new global::System.Management.Automation.CompletionResult("'externalBillingAccounts'", "externalBillingAccounts", global::System.Management.Automation.CompletionResultType.ParameterValue, "externalBillingAccounts");
             }
         }
     }

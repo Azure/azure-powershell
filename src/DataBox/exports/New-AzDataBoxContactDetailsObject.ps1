@@ -38,7 +38,7 @@ NOTIFICATIONPREFERENCE <INotificationPreference[]>: Notification preference for 
   SendNotification <Boolean>: Notification is required or not.
   StageName <NotificationStageName>: Name of the stage.
 .Link
-https://docs.microsoft.com/powershell/module/az.DataBox/new-AzDataBoxContactDetailsObject
+https://learn.microsoft.com/powershell/module/az.DataBox/new-AzDataBoxContactDetailsObject
 #>
 function New-AzDataBoxContactDetailsObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ContactDetails])]

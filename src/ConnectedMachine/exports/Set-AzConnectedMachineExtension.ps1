@@ -64,7 +64,7 @@ EXTENSIONPARAMETER <IMachineExtension>: Describes a Machine Extension.
   [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
   [TypeHandlerVersion <String>]: Specifies the version of the script handler.
 .Link
-https://docs.microsoft.com/powershell/module/az.connectedmachine/set-azconnectedmachineextension
+https://learn.microsoft.com/powershell/module/az.connectedmachine/set-azconnectedmachineextension
 #>
 function Set-AzConnectedMachineExtension {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20220310.IMachineExtension])]

@@ -20,7 +20,7 @@ using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 {
-    public class ManagedApplicationTests : ResourceTestRunner
+    public class ManagedApplicationTests : ResourcesTestRunner
     {
         public ManagedApplicationTests(ITestOutputHelper output) : base(output)
         {

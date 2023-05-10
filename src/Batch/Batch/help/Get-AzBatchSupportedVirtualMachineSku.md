@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Batch.dll-Help.xml
 Module Name: Az.Batch
-online version: https://docs.microsoft.com/powershell/module/az.batch/get-azbatchsupportedvirtualmachinesku
+online version: https://learn.microsoft.com/powershell/module/az.batch/get-azbatchsupportedvirtualmachinesku
 schema: 2.0.0
 ---
 
@@ -18,13 +18,16 @@ Get-AzBatchSupportedVirtualMachineSku [-Location] <String> [[-MaxResultCount] <I
 ```
 
 ## DESCRIPTION
+Gets the list of Batch supported Virtual Machine VM sizes available at the given location.
 
 ## EXAMPLES
 
 ### Example 1 Get supported skus for a region
 ```powershell
-PS C:\> Get-AzBatchSupportedVirtualMachineSku eastus
+Get-AzBatchSupportedVirtualMachineSku eastus
+```
 
+```output
 Name               FamilyName            Capabilities
 ----               ----------            ------------
 Basic_A1           basicAFamily          {MaxResourceVolumeMB, OSVhdSizeMB, vCPUs, MemoryPreservingMaintenanceSupporte...

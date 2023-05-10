@@ -116,6 +116,12 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
             TestRunner.RunTestScript("Test-UpdateDatabaseWithMaintenanceConfigurationId");
         }
 
+        [Fact(Skip = "Cannot re-record.")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestDatabaseUpdateWithPreferredEnclaveType()
+        {
+            TestRunner.RunTestScript("Test-UpdateDatabaseWithPreferredEnclaveType");
+        }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
@@ -154,6 +160,13 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestDatabaseGetWithPreferredEnclaveType()
+        {
+            TestRunner.RunTestScript("Test-GetDatabaseWithPreferredEnclaveType");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDatabaseRemove()
         {
             TestRunner.RunTestScript("Test-RemoveDatabase");
@@ -175,6 +188,20 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestDatabaseCreateWithGeoZoneBackupStorageRedundancy()
+        {
+            TestRunner.RunTestScript("Test-CreateDatabaseWithGeoZoneBackupStorageRedundancy");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestDatabaseCreateWithPreferredEnclaveType()
+        {
+            TestRunner.RunTestScript("Test-CreateDatabaseWithPreferredEnclaveType");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDatabaseGetWithBackupStorageRedundancy()
         {
             TestRunner.RunTestScript("Test-GetDatabaseWithBackupStorageRedundancy");
@@ -185,6 +212,27 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         public void TestDatabaseCreateWithLedgerEnabled()
         {
             TestRunner.RunTestScript("Test-DatabaseCreateWithLedgerEnabled");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestDatabaseCreateWithPerDBCMK()
+        {
+            TestRunner.RunTestScript("Test-DatabaseCreateWithPerDBCMK");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestDatabaseUpdateWithPerDBCMK()
+        {
+            TestRunner.RunTestScript("Test-DatabaseUpdateWithPerDBCMK");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestRevalidateAndRevertAKVKeyForDatabaseWithPerDBCMK()
+        {
+            TestRunner.RunTestScript("Test-RevalidateAndRevertAKVKeyForDatabaseWithPerDBCMK");
         }
     }
 }

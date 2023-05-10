@@ -31,7 +31,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701
         /// <summary>
         /// <c>BeforeDeserializeDictionary</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
@@ -43,7 +44,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701
         /// <summary>
         /// <c>BeforeDeserializePSObject</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
@@ -84,7 +86,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701
         /// Creates a new instance of <see cref="VirtualMachineRunCommandProperties" />, deserializing the content from a json string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="className" /> model class.</returns>
+        /// <returns>
+        /// an instance of the <see cref="VirtualMachineRunCommandProperties" /> model class.
+        /// </returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandProperties FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>Serializes this instance to a json string.</summary>
@@ -106,28 +110,94 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).Source = (Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandScriptSource) content.GetValueForProperty("Source",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).Source, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.VirtualMachineRunCommandScriptSourceTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).InstanceView = (Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandInstanceView) content.GetValueForProperty("InstanceView",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).InstanceView, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.VirtualMachineRunCommandInstanceViewTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).Parameter = (Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IRunCommandInputParameter[]) content.GetValueForProperty("Parameter",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).Parameter, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IRunCommandInputParameter>(__y, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.RunCommandInputParameterTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).ProtectedParameter = (Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IRunCommandInputParameter[]) content.GetValueForProperty("ProtectedParameter",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).ProtectedParameter, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IRunCommandInputParameter>(__y, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.RunCommandInputParameterTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).AsyncExecution = (bool?) content.GetValueForProperty("AsyncExecution",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).AsyncExecution, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).RunAsUser = (string) content.GetValueForProperty("RunAsUser",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).RunAsUser, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).RunAsPassword = (string) content.GetValueForProperty("RunAsPassword",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).RunAsPassword, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).TimeoutInSecond = (int?) content.GetValueForProperty("TimeoutInSecond",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).TimeoutInSecond, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).OutputBlobUri = (string) content.GetValueForProperty("OutputBlobUri",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).OutputBlobUri, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).ErrorBlobUri = (string) content.GetValueForProperty("ErrorBlobUri",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).ErrorBlobUri, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).ProvisioningState, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).InstanceViewExecutionState = (Microsoft.Azure.PowerShell.Cmdlets.Compute.Support.ExecutionState?) content.GetValueForProperty("InstanceViewExecutionState",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).InstanceViewExecutionState, Microsoft.Azure.PowerShell.Cmdlets.Compute.Support.ExecutionState.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).SourceScript = (string) content.GetValueForProperty("SourceScript",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).SourceScript, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).SourceScriptUri = (string) content.GetValueForProperty("SourceScriptUri",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).SourceScriptUri, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).SourceCommandId = (string) content.GetValueForProperty("SourceCommandId",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).SourceCommandId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).InstanceViewExecutionMessage = (string) content.GetValueForProperty("InstanceViewExecutionMessage",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).InstanceViewExecutionMessage, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).InstanceViewExitCode = (int?) content.GetValueForProperty("InstanceViewExitCode",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).InstanceViewExitCode, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).InstanceViewOutput = (string) content.GetValueForProperty("InstanceViewOutput",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).InstanceViewOutput, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).InstanceViewError = (string) content.GetValueForProperty("InstanceViewError",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).InstanceViewError, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).InstanceViewStartTime = (global::System.DateTime?) content.GetValueForProperty("InstanceViewStartTime",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).InstanceViewStartTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).InstanceViewEndTime = (global::System.DateTime?) content.GetValueForProperty("InstanceViewEndTime",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).InstanceViewEndTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).InstanceViewStatuses = (Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IInstanceViewStatus[]) content.GetValueForProperty("InstanceViewStatuses",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).InstanceViewStatuses, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IInstanceViewStatus>(__y, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.InstanceViewStatusTypeConverter.ConvertFrom));
+            if (content.Contains("Source"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).Source = (Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandScriptSource) content.GetValueForProperty("Source",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).Source, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.VirtualMachineRunCommandScriptSourceTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("InstanceView"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).InstanceView = (Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandInstanceView) content.GetValueForProperty("InstanceView",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).InstanceView, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.VirtualMachineRunCommandInstanceViewTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("Parameter"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).Parameter = (Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IRunCommandInputParameter[]) content.GetValueForProperty("Parameter",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).Parameter, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IRunCommandInputParameter>(__y, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.RunCommandInputParameterTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("ProtectedParameter"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).ProtectedParameter = (Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IRunCommandInputParameter[]) content.GetValueForProperty("ProtectedParameter",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).ProtectedParameter, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IRunCommandInputParameter>(__y, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.RunCommandInputParameterTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("AsyncExecution"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).AsyncExecution = (bool?) content.GetValueForProperty("AsyncExecution",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).AsyncExecution, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("RunAsUser"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).RunAsUser = (string) content.GetValueForProperty("RunAsUser",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).RunAsUser, global::System.Convert.ToString);
+            }
+            if (content.Contains("RunAsPassword"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).RunAsPassword = (string) content.GetValueForProperty("RunAsPassword",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).RunAsPassword, global::System.Convert.ToString);
+            }
+            if (content.Contains("TimeoutInSecond"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).TimeoutInSecond = (int?) content.GetValueForProperty("TimeoutInSecond",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).TimeoutInSecond, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("OutputBlobUri"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).OutputBlobUri = (string) content.GetValueForProperty("OutputBlobUri",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).OutputBlobUri, global::System.Convert.ToString);
+            }
+            if (content.Contains("ErrorBlobUri"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).ErrorBlobUri = (string) content.GetValueForProperty("ErrorBlobUri",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).ErrorBlobUri, global::System.Convert.ToString);
+            }
+            if (content.Contains("ProvisioningState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).ProvisioningState, global::System.Convert.ToString);
+            }
+            if (content.Contains("InstanceViewExecutionState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).InstanceViewExecutionState = (Microsoft.Azure.PowerShell.Cmdlets.Compute.Support.ExecutionState?) content.GetValueForProperty("InstanceViewExecutionState",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).InstanceViewExecutionState, Microsoft.Azure.PowerShell.Cmdlets.Compute.Support.ExecutionState.CreateFrom);
+            }
+            if (content.Contains("SourceScript"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).SourceScript = (string) content.GetValueForProperty("SourceScript",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).SourceScript, global::System.Convert.ToString);
+            }
+            if (content.Contains("SourceScriptUri"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).SourceScriptUri = (string) content.GetValueForProperty("SourceScriptUri",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).SourceScriptUri, global::System.Convert.ToString);
+            }
+            if (content.Contains("SourceCommandId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).SourceCommandId = (string) content.GetValueForProperty("SourceCommandId",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).SourceCommandId, global::System.Convert.ToString);
+            }
+            if (content.Contains("InstanceViewExecutionMessage"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).InstanceViewExecutionMessage = (string) content.GetValueForProperty("InstanceViewExecutionMessage",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).InstanceViewExecutionMessage, global::System.Convert.ToString);
+            }
+            if (content.Contains("InstanceViewExitCode"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).InstanceViewExitCode = (int?) content.GetValueForProperty("InstanceViewExitCode",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).InstanceViewExitCode, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("InstanceViewOutput"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).InstanceViewOutput = (string) content.GetValueForProperty("InstanceViewOutput",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).InstanceViewOutput, global::System.Convert.ToString);
+            }
+            if (content.Contains("InstanceViewError"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).InstanceViewError = (string) content.GetValueForProperty("InstanceViewError",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).InstanceViewError, global::System.Convert.ToString);
+            }
+            if (content.Contains("InstanceViewStartTime"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).InstanceViewStartTime = (global::System.DateTime?) content.GetValueForProperty("InstanceViewStartTime",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).InstanceViewStartTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("InstanceViewEndTime"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).InstanceViewEndTime = (global::System.DateTime?) content.GetValueForProperty("InstanceViewEndTime",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).InstanceViewEndTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("InstanceViewStatuses"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).InstanceViewStatuses = (Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IInstanceViewStatus[]) content.GetValueForProperty("InstanceViewStatuses",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).InstanceViewStatuses, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IInstanceViewStatus>(__y, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.InstanceViewStatusTypeConverter.ConvertFrom));
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -145,28 +215,94 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).Source = (Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandScriptSource) content.GetValueForProperty("Source",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).Source, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.VirtualMachineRunCommandScriptSourceTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).InstanceView = (Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandInstanceView) content.GetValueForProperty("InstanceView",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).InstanceView, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.VirtualMachineRunCommandInstanceViewTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).Parameter = (Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IRunCommandInputParameter[]) content.GetValueForProperty("Parameter",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).Parameter, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IRunCommandInputParameter>(__y, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.RunCommandInputParameterTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).ProtectedParameter = (Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IRunCommandInputParameter[]) content.GetValueForProperty("ProtectedParameter",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).ProtectedParameter, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IRunCommandInputParameter>(__y, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.RunCommandInputParameterTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).AsyncExecution = (bool?) content.GetValueForProperty("AsyncExecution",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).AsyncExecution, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).RunAsUser = (string) content.GetValueForProperty("RunAsUser",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).RunAsUser, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).RunAsPassword = (string) content.GetValueForProperty("RunAsPassword",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).RunAsPassword, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).TimeoutInSecond = (int?) content.GetValueForProperty("TimeoutInSecond",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).TimeoutInSecond, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).OutputBlobUri = (string) content.GetValueForProperty("OutputBlobUri",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).OutputBlobUri, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).ErrorBlobUri = (string) content.GetValueForProperty("ErrorBlobUri",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).ErrorBlobUri, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).ProvisioningState, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).InstanceViewExecutionState = (Microsoft.Azure.PowerShell.Cmdlets.Compute.Support.ExecutionState?) content.GetValueForProperty("InstanceViewExecutionState",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).InstanceViewExecutionState, Microsoft.Azure.PowerShell.Cmdlets.Compute.Support.ExecutionState.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).SourceScript = (string) content.GetValueForProperty("SourceScript",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).SourceScript, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).SourceScriptUri = (string) content.GetValueForProperty("SourceScriptUri",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).SourceScriptUri, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).SourceCommandId = (string) content.GetValueForProperty("SourceCommandId",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).SourceCommandId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).InstanceViewExecutionMessage = (string) content.GetValueForProperty("InstanceViewExecutionMessage",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).InstanceViewExecutionMessage, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).InstanceViewExitCode = (int?) content.GetValueForProperty("InstanceViewExitCode",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).InstanceViewExitCode, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).InstanceViewOutput = (string) content.GetValueForProperty("InstanceViewOutput",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).InstanceViewOutput, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).InstanceViewError = (string) content.GetValueForProperty("InstanceViewError",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).InstanceViewError, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).InstanceViewStartTime = (global::System.DateTime?) content.GetValueForProperty("InstanceViewStartTime",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).InstanceViewStartTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).InstanceViewEndTime = (global::System.DateTime?) content.GetValueForProperty("InstanceViewEndTime",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).InstanceViewEndTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).InstanceViewStatuses = (Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IInstanceViewStatus[]) content.GetValueForProperty("InstanceViewStatuses",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).InstanceViewStatuses, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IInstanceViewStatus>(__y, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.InstanceViewStatusTypeConverter.ConvertFrom));
+            if (content.Contains("Source"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).Source = (Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandScriptSource) content.GetValueForProperty("Source",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).Source, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.VirtualMachineRunCommandScriptSourceTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("InstanceView"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).InstanceView = (Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandInstanceView) content.GetValueForProperty("InstanceView",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).InstanceView, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.VirtualMachineRunCommandInstanceViewTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("Parameter"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).Parameter = (Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IRunCommandInputParameter[]) content.GetValueForProperty("Parameter",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).Parameter, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IRunCommandInputParameter>(__y, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.RunCommandInputParameterTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("ProtectedParameter"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).ProtectedParameter = (Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IRunCommandInputParameter[]) content.GetValueForProperty("ProtectedParameter",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).ProtectedParameter, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IRunCommandInputParameter>(__y, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.RunCommandInputParameterTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("AsyncExecution"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).AsyncExecution = (bool?) content.GetValueForProperty("AsyncExecution",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).AsyncExecution, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("RunAsUser"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).RunAsUser = (string) content.GetValueForProperty("RunAsUser",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).RunAsUser, global::System.Convert.ToString);
+            }
+            if (content.Contains("RunAsPassword"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).RunAsPassword = (string) content.GetValueForProperty("RunAsPassword",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).RunAsPassword, global::System.Convert.ToString);
+            }
+            if (content.Contains("TimeoutInSecond"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).TimeoutInSecond = (int?) content.GetValueForProperty("TimeoutInSecond",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).TimeoutInSecond, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("OutputBlobUri"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).OutputBlobUri = (string) content.GetValueForProperty("OutputBlobUri",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).OutputBlobUri, global::System.Convert.ToString);
+            }
+            if (content.Contains("ErrorBlobUri"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).ErrorBlobUri = (string) content.GetValueForProperty("ErrorBlobUri",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).ErrorBlobUri, global::System.Convert.ToString);
+            }
+            if (content.Contains("ProvisioningState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).ProvisioningState, global::System.Convert.ToString);
+            }
+            if (content.Contains("InstanceViewExecutionState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).InstanceViewExecutionState = (Microsoft.Azure.PowerShell.Cmdlets.Compute.Support.ExecutionState?) content.GetValueForProperty("InstanceViewExecutionState",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).InstanceViewExecutionState, Microsoft.Azure.PowerShell.Cmdlets.Compute.Support.ExecutionState.CreateFrom);
+            }
+            if (content.Contains("SourceScript"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).SourceScript = (string) content.GetValueForProperty("SourceScript",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).SourceScript, global::System.Convert.ToString);
+            }
+            if (content.Contains("SourceScriptUri"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).SourceScriptUri = (string) content.GetValueForProperty("SourceScriptUri",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).SourceScriptUri, global::System.Convert.ToString);
+            }
+            if (content.Contains("SourceCommandId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).SourceCommandId = (string) content.GetValueForProperty("SourceCommandId",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).SourceCommandId, global::System.Convert.ToString);
+            }
+            if (content.Contains("InstanceViewExecutionMessage"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).InstanceViewExecutionMessage = (string) content.GetValueForProperty("InstanceViewExecutionMessage",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).InstanceViewExecutionMessage, global::System.Convert.ToString);
+            }
+            if (content.Contains("InstanceViewExitCode"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).InstanceViewExitCode = (int?) content.GetValueForProperty("InstanceViewExitCode",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).InstanceViewExitCode, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("InstanceViewOutput"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).InstanceViewOutput = (string) content.GetValueForProperty("InstanceViewOutput",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).InstanceViewOutput, global::System.Convert.ToString);
+            }
+            if (content.Contains("InstanceViewError"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).InstanceViewError = (string) content.GetValueForProperty("InstanceViewError",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).InstanceViewError, global::System.Convert.ToString);
+            }
+            if (content.Contains("InstanceViewStartTime"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).InstanceViewStartTime = (global::System.DateTime?) content.GetValueForProperty("InstanceViewStartTime",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).InstanceViewStartTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("InstanceViewEndTime"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).InstanceViewEndTime = (global::System.DateTime?) content.GetValueForProperty("InstanceViewEndTime",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).InstanceViewEndTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("InstanceViewStatuses"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).InstanceViewStatuses = (Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IInstanceViewStatus[]) content.GetValueForProperty("InstanceViewStatuses",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandPropertiesInternal)this).InstanceViewStatuses, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IInstanceViewStatus>(__y, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.InstanceViewStatusTypeConverter.ConvertFrom));
+            }
             AfterDeserializePSObject(content);
         }
     }

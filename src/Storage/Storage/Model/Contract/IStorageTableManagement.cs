@@ -145,7 +145,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <summary>
         /// Get the Table service properties
         /// </summary>
-        /// <param name="account">Cloud storage account</param>
         /// <param name="options">Request options</param>
         /// <param name="operationContext">Operation context</param>
         /// <returns>The service properties of the specified service type</returns>
@@ -154,7 +153,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <summary>
         /// Set Table service properties
         /// </summary>
-        /// <param name="account">Cloud storage account</param>
         /// <param name="properties">Service properties</param>
         /// <param name="options">Request options</param>
         /// <param name="operationContext">Operation context</param>
@@ -182,7 +180,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <param name="tableName"></param>
         /// <param name="filter">Returns only entities that satisfy the specified OData filter. For example, "PartitionKey eq 'foo'".</param>
         /// <param name="maxPerPage">The maximum number of entities that will be returned per page.</param>
-        /// <param name="selects">An IEnumerable<T> of entity property names that selects which set of entity properties to return in the result set.</param>
+        /// <param name="selects">An IEnumerable&lt;T&gt; of entity property names that selects which set of entity properties to return in the result set.</param>
         /// <param name="cancellationToken">A CancellationToken controlling the request lifetime.</param>
         /// <returns></returns>
         IEnumerable<T> QueryTableEntities<T>(string tableName, string filter, int maxPerPage, IEnumerable<string> selects, CancellationToken cancellationToken)

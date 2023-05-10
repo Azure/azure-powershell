@@ -44,5 +44,26 @@ namespace Microsoft.Azure.Commands.Aks.Models
         /// load balancer.
         /// </summary>
         public IList<PSResourceReference> EffectiveOutboundIPs { get; set; }
+		
+		/// <summary>
+        /// Gets or sets the desired number of allocated SNAT ports per VM.
+        /// Allowed values are in the range of 0 to 64000 (inclusive). The
+        /// default value is 0 which results in Azure dynamically allocating
+        /// ports.
+        /// </summary>
+        public int? AllocatedOutboundPorts { get; set; }
+
+        /// <summary>
+        /// Gets or sets desired outbound flow idle timeout in minutes. Allowed
+        /// values are in the range of 4 to 120 (inclusive). The default value
+        /// is 30 minutes.
+        /// </summary>
+        public int? IdleTimeoutInMinutes { get; set; }
+
+        /// <summary>
+        /// Gets or sets enable multiple standard load balancers per AKS
+        /// cluster or not.
+        /// </summary>
+        public bool? EnableMultipleStandardLoadBalancers { get; set; }
     }
 }

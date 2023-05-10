@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.CustomLocation
-online version: https://docs.microsoft.com/powershell/module/az.customlocation/new-azcustomlocation
+online version: https://learn.microsoft.com/powershell/module/az.customlocation/new-azcustomlocation
 schema: 2.0.0
 ---
 

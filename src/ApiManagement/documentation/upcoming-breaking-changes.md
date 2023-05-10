@@ -29,7 +29,8 @@
 
 The following cmdlets were affected this release:
 
-**Set-AzApiManagementOperation**
-**New-AzApiManagementOperation**
+**Add-AzApiManagementRegion**
+**New-AzApiManagement**
+**Update-AzApiManagementRegion**
 
-BreakingChangeAttributeParameterReplaced: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementRepresentation.Samlple
+BreakingChangeAttributeParameterReplaced: Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku

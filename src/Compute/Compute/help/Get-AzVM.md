@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
 ms.assetid: 6250EC11-79CF-428B-A72F-9BD72C1751F0
-online version: https://docs.microsoft.com/powershell/module/az.compute/get-azvm
+online version: https://learn.microsoft.com/powershell/module/az.compute/get-azvm
 schema: 2.0.0
 ---
 
@@ -236,6 +236,8 @@ TEST2               test4         westus Standard_DS1_v2 Windows          test4
 TEST2               test5         eastus Standard_DS1_v2 Windows          test5
 ```
 
+This command gets all virtual machines with names start with "test"
+
 ### Example 7: Get VM with UserData value
 ```powershell
 Get-AzVM -ResourceGroupName <Resource Group Name> -Name <VM Name> -UserData;
@@ -327,7 +329,7 @@ Required: False
 Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
 ```yaml
@@ -339,7 +341,7 @@ Required: True
 Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
 ### -NextLink
@@ -369,7 +371,7 @@ Required: False
 Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
 ```yaml
@@ -381,7 +383,7 @@ Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
 ### -ResourceId

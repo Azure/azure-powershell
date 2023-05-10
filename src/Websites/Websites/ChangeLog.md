@@ -19,6 +19,37 @@
 -->
 ## Upcoming Release
 
+## Version 2.15.1
+* Used AAD Auth instead of Basic Auth for PublishAzureWebApps
+
+## Version 2.15.0
+* Fixed Tag parameter issues with ASE for `New-AzWebApp`
+
+## Version 2.14.0
+* Fixed `Edit-AzWebAppBackupConfiguration` to pass backup configuration enabled or not
+* Added a new parameter `-SoftRestart` for `Restart-AzWebApp` and `Restart-AzWebApp` to perform a soft restart
+* Updated `Get-AzWebApp` and `Get-AzWebAppSlot` to expose `VirtualNetwork Integration Info` [#10665]
+* Set default value for `-RepositoryUrl` of `New-AzStaticWebApp` [#21202]
+
+## Version 2.13.0
+* Added a new parameter `-CopyIdentity` for `New-AzWebAppSlot` to copy the identity from the parent app to the slot.
+* Updated `New-AzWebAppSSLBinding` to support -WhatIf parameter
+
+## Version 2.12.1
+* Fixed `Import-AzWebAppKeyVaultCertificate` to use certificate naming convention same as portal [#19592]
+
+## Version 2.12.0
+* Added Tag parameter for `New-AzWebApp` and `New-AzWebAppSlot`
+* Fixed `Set-AzWebApp` and `Set-AZWebAppSlot` to rethrow exception when Service Principal/User doesn't have permission to list web app configuration. [#19942]
+
+## Version 2.11.5
+* Fixed `Publish-AzWebApp` to use latest publish API when deploying war package [#19791]
+## Version 2.11.4
+* Fixed `Import-AzWebAppKeyVaultCertificate` to use certificate naming convention same as Az-CLI
+
+## Version 2.11.3
+* Fixed `Publish-AzWebapp` to handle relative paths properly [#18028]
+
 ## Version 2.11.2
 * Updated `Get-AzWebApp` and `Get-AzWebAppSlot` to expose `VirtualNetworkSubnetId` property [#18042]
 * Updated `Publish-AzWebApp` to avoid the false positive result when zip deploy is not reachable. 

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancerbackendaddressconfig
+online version: https://learn.microsoft.com/powershell/module/az.network/new-azloadbalancerbackendaddressconfig
 schema: 2.0.0
 ---
 
@@ -40,6 +40,7 @@ Returns a load balancer backend address config.
 $virtualNetwork = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $resourceGroup
 New-AzLoadBalancerBackendAddressConfig -IpAddress "10.0.0.5" -Name "TestVNetRef" -VirtualNetworkId $virtualNetwork.Id
 ```
+
 ### Example 2: New loadbalancer address config with subnet reference
 ```powershell
 $virtualNetwork = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $resourceGroup

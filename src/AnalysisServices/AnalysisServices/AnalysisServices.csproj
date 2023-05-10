@@ -13,7 +13,9 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.Management.Analysis" Version="2.0.4" />
     <PackageReference Include="Microsoft.NETCore.Platforms" Version="2.1.0" />
-    <PackageReference Include="System.Security.Permissions" Version="4.5.0" />
+    <PackageReference Include="System.Security.Permissions" Version="4.7.0" />
   </ItemGroup>
+
+  <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.Post.props" />
 
 </Project>

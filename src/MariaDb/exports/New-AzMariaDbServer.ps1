@@ -32,7 +32,7 @@ mariadb-aassd-01 eastus   adminuser          10.2    5120                    B_G
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServer
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.mariadb/new-azmariadbserver
+https://learn.microsoft.com/en-us/powershell/module/az.mariadb/new-azmariadbserver
 #>
 function New-AzMariaDbServer {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServer])]

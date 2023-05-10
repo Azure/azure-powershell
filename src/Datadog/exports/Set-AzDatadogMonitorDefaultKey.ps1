@@ -28,7 +28,7 @@ Created CreatedBy Key                              Name
 .Outputs
 System.Boolean
 .Link
-https://docs.microsoft.com/powershell/module/az.datadog/set-azdatadogmonitordefaultkey
+https://learn.microsoft.com/powershell/module/az.datadog/set-azdatadogmonitordefaultkey
 #>
 function Set-AzDatadogMonitorDefaultKey {
 [OutputType([System.Boolean])]

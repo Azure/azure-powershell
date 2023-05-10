@@ -185,7 +185,7 @@ function WaitForClusterReadyState($clusterName, $resourceGroupName, $timeoutInSe
         }
 
         Write-Host "Cluster state: $($cluster.ClusterState). Waiting for Ready state before continuing."
-        Start-Sleep -Seconds 15
+        Start-TestSleep -Seconds 15
     }
 
     Write-Error "WaitForClusterReadyState timed out"
@@ -216,7 +216,7 @@ function WaitForManagedClusterReadyState($clusterName, $resourceGroupName, $time
         }
 
         Write-Host "Cluster state: $($cluster.ClusterState). Waiting for Ready state before continuing."
-        Start-Sleep -Seconds 15
+        Start-TestSleep -Seconds 15
     }
 
     Write-Error "WaitForClusterReadyState timed out"
@@ -243,7 +243,7 @@ function WaitForAllJob($timeoutInSeconds = 1200)
             return $false
 		}
 
-        Start-Sleep -Seconds 15
+        Start-TestSleep -Seconds 15
     } while ((Get-Date) -lt $timeoutTime)
 
     Write-Error "WaitForJob timed out"

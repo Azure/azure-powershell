@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/remove-azrouteserverpeer
+online version: https://learn.microsoft.com/powershell/module/az.network/remove-azrouteserverpeer
 schema: 2.0.0
 ---
 
@@ -51,6 +51,7 @@ Remove-AzRouteServerPeer -ResourceId $RouteServerPeerId
 $routeServerPeer = Get-AzRouteServerPeer -ResourceGroupName routeServerRG -RouteServerName routeServer -PeerName peer
 Remove-AzRouteServerPeer -InputObject $RouteServerPeer
 ```
+
 ## PARAMETERS
 
 ### -AsJob

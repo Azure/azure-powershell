@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/new-aznetworkwatcherconnectionmonitorendpointobject
+online version: https://learn.microsoft.com/powershell/module/az.network/new-aznetworkwatcherconnectionmonitorendpointobject
 schema: 2.0.0
 ---
 
@@ -54,6 +54,20 @@ New-AzNetworkWatcherConnectionMonitorEndpointObject -Name <String> [-MMAWorkspac
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### AzureVMSS
+```
+New-AzNetworkWatcherConnectionMonitorEndpointObject -Name <String> [-AzureVMSS] -ResourceId <String>
+ [-IncludeItem <PSNetworkWatcherConnectionMonitorEndpointScopeItem[]>]
+ [-ExcludeItem <PSNetworkWatcherConnectionMonitorEndpointScopeItem[]>] [-CoverageLevel <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### AzureArcVM
+```
+New-AzNetworkWatcherConnectionMonitorEndpointObject -Name <String> [-AzureArcVM] -ResourceId <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 New-AzNetworkWatcherConnectionMonitorEndpointObject cmdlet creates connection monitor endpoint.
 
@@ -79,6 +93,7 @@ Scope     : {
                ]
              }
 ```
+
 ## PARAMETERS
 
 ### -Address
@@ -99,6 +114,21 @@ Accept wildcard characters: False
 ```yaml
 Type: System.String
 Parameter Sets: ExternalAddress, MMAWorkspaceMachine
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AzureArcVM
+AzureArc VM endpoint switch
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: AzureArcVM
 Aliases:
 
 Required: True
@@ -138,6 +168,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -AzureVMSS
+Azure Virtual Machine Scale sets.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: AzureVMSS
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -AzureVNet
 Azure Vnet endpoint switch.
 
@@ -159,7 +204,7 @@ Supported values are Default, Low, BelowAverage, Average, AboveAvergae, Full.
 
 ```yaml
 Type: System.String
-Parameter Sets: AzureVNet, AzureSubnet, MMAWorkspaceNetwork
+Parameter Sets: AzureVNet, AzureSubnet, MMAWorkspaceNetwork, AzureVMSS
 Aliases:
 
 Required: False
@@ -189,7 +234,7 @@ List of items which need to be excluded from endpoint scope.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSNetworkWatcherConnectionMonitorEndpointScopeItem[]
-Parameter Sets: AzureVNet, AzureSubnet, MMAWorkspaceNetwork
+Parameter Sets: AzureVNet, AzureSubnet, MMAWorkspaceNetwork, AzureVMSS
 Aliases:
 
 Required: False
@@ -219,7 +264,7 @@ List of items which need to be included into endpont scope.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSNetworkWatcherConnectionMonitorEndpointScopeItem[]
-Parameter Sets: AzureVNet, MMAWorkspaceMachine
+Parameter Sets: AzureVNet, MMAWorkspaceMachine, AzureVMSS
 Aliases:
 
 Required: False
@@ -291,7 +336,7 @@ Resource ID of the connection monitor endpoint.
 
 ```yaml
 Type: System.String
-Parameter Sets: AzureVM, AzureVNet, AzureSubnet, MMAWorkspaceMachine, MMAWorkspaceNetwork
+Parameter Sets: AzureVM, AzureVNet, AzureSubnet, MMAWorkspaceMachine, MMAWorkspaceNetwork, AzureVMSS, AzureArcVM
 Aliases:
 
 Required: True

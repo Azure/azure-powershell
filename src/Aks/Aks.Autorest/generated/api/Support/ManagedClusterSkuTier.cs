@@ -6,13 +6,25 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Support
 {
 
-    /// <summary>Tier of a managed cluster SKU.</summary>
+    /// <summary>
+    /// If not specified, the default is 'Free'. See [AKS Pricing Tier](https://learn.microsoft.com/azure/aks/free-standard-pricing-tiers)
+    /// for more details.
+    /// </summary>
     public partial struct ManagedClusterSkuTier :
         System.IEquatable<ManagedClusterSkuTier>
     {
+        /// <summary>
+        /// The cluster management is free, but charged for VM, storage, and networking usage. Best for experimenting, learning, simple
+        /// testing, or workloads with fewer than 10 nodes. Not recommended for production use cases.
+        /// </summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.ManagedClusterSkuTier Free = @"Free";
 
-        public static Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.ManagedClusterSkuTier Paid = @"Paid";
+        /// <summary>
+        /// Recommended for mission-critical and production workloads. Includes Kubernetes control plane autoscaling, workload-intensive
+        /// testing, and up to 5,000 nodes per cluster. Guarantees 99.95% availability of the Kubernetes API server endpoint for clusters
+        /// that use Availability Zones and 99.9% of availability for clusters that don't use Availability Zones.
+        /// </summary>
+        public static Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.ManagedClusterSkuTier Standard = @"Standard";
 
         /// <summary>the value for an instance of the <see cref="ManagedClusterSkuTier" /> Enum.</summary>
         private string _value { get; set; }
@@ -47,7 +59,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Support
             return this._value.GetHashCode();
         }
 
-        /// <summary>Creates an instance of the <see cref="ManagedClusterSkuTier" Enum class./></summary>
+        /// <summary>Creates an instance of the <see cref="ManagedClusterSkuTier"/> Enum class.</summary>
         /// <param name="underlyingValue">the value to create an instance for.</param>
         private ManagedClusterSkuTier(string underlyingValue)
         {
@@ -78,8 +90,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Support
         }
 
         /// <summary>Overriding != operator for enum ManagedClusterSkuTier</summary>
-        /// <param name="e1">the value to compare against <see cref="e2" /></param>
-        /// <param name="e2">the value to compare against <see cref="e1" /></param>
+        /// <param name="e1">the value to compare against <paramref name="e2" /></param>
+        /// <param name="e2">the value to compare against <paramref name="e1" /></param>
         /// <returns><c>true</c> if the two instances are not equal to the same value</returns>
         public static bool operator !=(Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.ManagedClusterSkuTier e1, Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.ManagedClusterSkuTier e2)
         {
@@ -87,8 +99,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Support
         }
 
         /// <summary>Overriding == operator for enum ManagedClusterSkuTier</summary>
-        /// <param name="e1">the value to compare against <see cref="e2" /></param>
-        /// <param name="e2">the value to compare against <see cref="e1" /></param>
+        /// <param name="e1">the value to compare against <paramref name="e2" /></param>
+        /// <param name="e2">the value to compare against <paramref name="e1" /></param>
         /// <returns><c>true</c> if the two instances are equal to the same value</returns>
         public static bool operator ==(Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.ManagedClusterSkuTier e1, Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.ManagedClusterSkuTier e2)
         {

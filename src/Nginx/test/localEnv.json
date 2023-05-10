@@ -1,0 +1,7 @@
+{
+  "SubscriptionId": "e3853e83-0d02-4fb3-b88f-05b5fd21aee2",
+  "Tenant": "72f988bf-86f1-41af-91ab-2d7cd011db47",
+  "resourceGroup": "limgu_rg",
+  "nginxDeployment1": "test920",
+  "nginxCert": "tetsCert"
+}

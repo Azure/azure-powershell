@@ -43,8 +43,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerTrustCertificate.Services
         /// <summary>
         /// Creates a communicator for Azure Sql Instance Server Trust Certificate
         /// </summary>
-        /// <param name="profile"></param>
-        /// <param name="subscription"></param>
+        /// <param name="context">The current azure context</param>
         public AzureSqlInstanceServerTrustCertificateCommunicator(IAzureContext context)
         {
             Context = context;

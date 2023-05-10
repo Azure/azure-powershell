@@ -21,8 +21,11 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         public PSLinkConnectionTargetDatabase(LinkConnectionTargetDatabase targetDatabase)
         {
             this.LinkedService = targetDatabase?.LinkedService != null ? new PSLinkedServiceReference(targetDatabase?.LinkedService) : null;
+            this.TypeProperties = targetDatabase?.TypeProperties != null ? new PSLinkConnectionTargetDatabaseTypeProperties(targetDatabase.TypeProperties) : null;
         }
 
         public PSLinkedServiceReference LinkedService { get; set; }
+
+        public PSLinkConnectionTargetDatabaseTypeProperties TypeProperties { get; set; }
     }
 }

@@ -32,7 +32,7 @@ AZPcJC8OCNCpqRsnj1NB3Ngl-qQncBP5IT21jts_2b0 2021-05-20T05:59:16.2028276Z 3l_cups
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.Api20210201.IMapsAccountKeys
 .Link
-https://docs.microsoft.com/powershell/module/az.maps/get-azmapsaccountkey
+https://learn.microsoft.com/powershell/module/az.maps/get-azmapsaccountkey
 #>
 function Get-AzMapsAccountKey {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.Api20210201.IMapsAccountKeys])]

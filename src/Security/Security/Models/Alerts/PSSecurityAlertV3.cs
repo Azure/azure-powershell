@@ -51,6 +51,14 @@ namespace Microsoft.Azure.Commands.SecurityCenter.Models.Alerts
 
         public string AlertType { get; set; }
 
+        public string Version { get; set; }
+
+        public List<string> Techniques { get; set; }
+
+        public List<string> SubTechniques { get; set; }
+
+        public PSAlertPropertiesSupportingEvidence SupportingEvidence { get; set; }
+
         public DateTime? ProcessingEndTimeUtc { get; set; }
 
         public DateTime? EndTimeUtc { get; set; }

@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.HealthcareApis
-online version: https://docs.microsoft.com/powershell/module/az.healthcareapis/new-azhealthcareapisworkspace
+online version: https://learn.microsoft.com/powershell/module/az.healthcareapis/new-azhealthcareapisworkspace
 schema: 2.0.0
 ---
 
@@ -25,8 +25,10 @@ Creates or updates a workspace resource with the specified parameters.
 
 ### Example 1: Creates or update a workspace resource with the specified parameters.
 ```powershell
-PS C:\> New-AzHealthcareApisWorkspace -Name azpshcws -ResourceGroupName azps_test_group -Location eastus2
+New-AzHealthcareApisWorkspace -Name azpshcws -ResourceGroupName azps_test_group -Location eastus2
+```
 
+```output
 Location Name     ResourceGroupName
 -------- ----     -----------------
 eastus2  azpshcws azps_test_group

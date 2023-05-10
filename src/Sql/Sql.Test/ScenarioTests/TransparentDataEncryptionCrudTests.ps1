@@ -75,7 +75,7 @@ function Test-GetTransparentDataEncryption
 			-DatabaseName $db.DatabaseName -State Disabled
 		Assert-AreEqual $tde3.State Disabled
 
-		Start-Sleep -s 1
+		Start-TestSleep -Seconds 1
 
 		$tdeActivity = Get-AzSqlDatabaseTransparentDataEncryptionActivity -ResourceGroupName $server.ResourceGroupname `
 			-ServerName $server.ServerName -DatabaseName $db.DatabaseName
@@ -152,5 +152,26 @@ function Test-SetTransparentDataEncryptionProtector
 	finally
 	{
 		Remove-ResourceGroupForTest $rg
+	}
+}
+
+<#
+	.SYNOPSIS
+	Tests revalidating a server transparent data encryption protector
+#>
+function Test-RevalidateTransparentDataEncryptionProtector ($location = "eastus2euap")
+{
+	# Setup
+	$rg = 'pstest'
+	$server = 'pstestsvr'
+
+	try
+	{
+		# Revalidate
+		Invoke-AzSqlServerTransparentDataEncryptionProtectorRevalidation -ResourceGroupName $rg -ServerName $server
+	}
+	finally
+	{
+		# Remove-ResourceGroupForTest $rg
 	}
 }

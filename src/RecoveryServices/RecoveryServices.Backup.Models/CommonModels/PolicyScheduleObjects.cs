@@ -159,7 +159,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
                 DateTime windowStartTime = (DateTime)ScheduleWindowStartTime;                
 
                 // If ScheduleWindowDuration is greator than (23:30 - ScheduleWindowStartTime) then throw exception  
-                // if non-UTC times are allowed then this exception needs to change 
+                // if non-UTC times (timeZones already allowed) are allowed then this exception needs to change 
                 if (windowStartTime.Minute % 30 != 0 || windowStartTime.Second != 0 || windowStartTime.Millisecond != 0)
                 {
                     throw new ArgumentException(Resources.InvalidScheduleTimeInScheduleException);
@@ -171,7 +171,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         {
             if (ScheduleRunFrequency == ScheduleRunType.Hourly)
             {
-                return string.Format("scheduleRunType:{0}, ScheduleInterval:{1}, ScheduleWindowStartTime:{2}, ScheduleWindowDuration:{3}, ScheduleRunTimeZone:{4}",
+                return string.Format("scheduleRunType:{0}, ScheduleInterval:{1}, ScheduleWindowStartTime:{2}, ScheduleWindowDuration:{3}, ScheduleRunTimeZone: {4}",
                                   ScheduleRunFrequency,
                                   ScheduleInterval,
                                   ScheduleWindowStartTime.ToString(),
@@ -179,10 +179,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
                                   ScheduleRunTimeZone);
             }           
 
-            return string.Format("scheduleRunType:{0}, ScheduleRunDays:{1}, ScheduleRunTimes:{2}",
+            return string.Format("scheduleRunType:{0}, ScheduleRunDays:{1}, ScheduleRunTimes:{2}, ScheduleRunTimeZone: {3}",
                                   ScheduleRunFrequency,
                                   TraceUtils.GetString(ScheduleRunDays),
-                                  TraceUtils.GetString(ScheduleRunTimes));
+                                  TraceUtils.GetString(ScheduleRunTimes),
+                                  ScheduleRunTimeZone);
         }
     }
 
@@ -199,7 +200,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         /// <summary>
         /// Hourly Schedule for Enhanced policy. 
         /// </summary> 
-        public HourlySchedule HourlySchedule { get; set; } // comment this to hide hourly support
+        public HourlySchedule HourlySchedule { get; set; }
 
         /// <summary>
         /// Daily Schedule for Enhanced policy.
@@ -289,20 +290,21 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         {
             if(WeeklySchedule != null)
             {
-                return string.Format("scheduleRunType:{0}, ScheduleRunDays:{1}, ScheduleRunTimes:{2}",
+                return string.Format("scheduleRunType:{0}, ScheduleRunDays:{1}, ScheduleRunTimes:{2}, ScheduleRunTimeZone: {3}",
                                   ScheduleRunFrequency,
                                   TraceUtils.GetString(WeeklySchedule.ScheduleRunDays),
-                                  TraceUtils.GetString(WeeklySchedule.ScheduleRunTimes));
+                                  TraceUtils.GetString(WeeklySchedule.ScheduleRunTimes), ScheduleRunTimeZone);
             }
             else if (DailySchedule != null)
             {
-                return string.Format("scheduleRunType:{0}, ScheduleRunTimes:{1}",
+                return string.Format("scheduleRunType:{0}, ScheduleRunTimes:{1}, ScheduleRunTimeZone: {2}",
                                   ScheduleRunFrequency,                                  
-                                  TraceUtils.GetString(DailySchedule.ScheduleRunTimes));
+                                  TraceUtils.GetString(DailySchedule.ScheduleRunTimes),
+                                  ScheduleRunTimeZone);
             }
             else if (HourlySchedule != null)
             {
-                return string.Format("scheduleRunType:{0}, ScheduleInterval:{1}, ScheduleWindowStartTime:{2}, ScheduleWindowDuration:{3}, ScheduleRunTimeZone:{4}",
+                return string.Format("scheduleRunType:{0}, ScheduleInterval:{1}, ScheduleWindowStartTime:{2}, ScheduleWindowDuration:{3}, ScheduleRunTimeZone: {4}",
                                   ScheduleRunFrequency,
                                   HourlySchedule.Interval,
                                   HourlySchedule.WindowStartTime.ToString(),
@@ -317,6 +319,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
     public class LogSchedulePolicy : SchedulePolicyBase
     {
         public int? ScheduleFrequencyInMins { get; set; }
+
+        public override string ToString()
+        {            
+            return string.Format("ScheduleFrequencyInMins: {0}",
+                                ScheduleFrequencyInMins);
+            
+        }
     }
 
     public class SQLSchedulePolicy : SchedulePolicyBase

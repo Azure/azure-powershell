@@ -21,28 +21,28 @@ The operation to create or update the extension.
 The operation to create or update the extension.
 .Example
 $splat = @{
-            ResourceGroupName = "connectedMachines"
-            MachineName = "linux-eastus1_1"
-            Name = "customScript"
-            Settings = @{
-                commandToExecute = "ls -l"
-            }
-        }
+    ResourceGroupName = "connectedMachines"
+    MachineName = "linux-eastus1_1"
+    Name = "customScript"
+    Settings = @{
+        commandToExecute = "ls -l"
+    }
+}
 Update-AzConnectedMachineExtension @splat
 .Example
 $extToUpdate = Get-AzConnectedMachineExtension -ResourceGroupName connectedMachines -MachineName linux-eastus1_1 -Name customScript
 $extToUpdate | Update-AzConnectedMachineExtension -Settings @{
-                commandToExecute = "ls -l"
-            }
+    commandToExecute = "ls -l"
+}
 .Example
 $extToUpdate = Get-AzConnectedMachineExtension -ResourceGroupName connectedMachines -MachineName linux-eastus1_1 -Name customScript
 # Update the settings on the object that will be used via the pipeline
 $extToUpdate.Setting.commandToExecute = "ls -l"
 $splat = @{
-            ResourceGroupName = "connectedMachines"
-            MachineName = "linux-eastus1_1"
-            Name = "customScript"
-        }
+    ResourceGroupName = "connectedMachines"
+    MachineName = "linux-eastus1_1"
+    Name = "customScript"
+}
 $extToUpdate | Update-AzConnectedMachineExtension @splat
 .Example
 $extToUpdate = Get-AzConnectedMachineExtension -ResourceGroupName connectedMachines -MachineName linux-eastus1_1 -Name customScript
@@ -87,7 +87,7 @@ INPUTOBJECT <IConnectedMachineIdentity>: Identity Parameter
   [ScopeName <String>]: The name of the Azure Arc PrivateLinkScope resource.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.connectedmachine/update-azconnectedmachineextension
+https://learn.microsoft.com/powershell/module/az.connectedmachine/update-azconnectedmachineextension
 #>
 function Update-AzConnectedMachineExtension {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20220310.IMachineExtension])]

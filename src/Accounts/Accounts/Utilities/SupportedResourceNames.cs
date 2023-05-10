@@ -34,6 +34,7 @@ namespace Microsoft.Azure.Commands.Profile
         public const string Storage = "Storage";
         public const string Synapse = "Synapse";
         public const string ManagedHsm = "ManagedHsm";
+        public const string AppConfiguration = "AppConfiguration";
 
         internal static Dictionary<string, string> ResourceNameMap;
         internal static Dictionary<string, string> DataPlaneResourceNameMap;
@@ -54,7 +55,8 @@ namespace Microsoft.Azure.Commands.Profile
                         { OperationalInsights, AzureEnvironment.ExtendedEndpoint.OperationalInsightsEndpointResourceId },
                         { Storage, "https://storage.azure.com/" }, //OAuth scope/resource id for Storage, does not add it to ExtenedEndpoint to avoid confusion with StorageEndpointSuffix
                         { Synapse, AzureEnvironment.ExtendedEndpoint.AzureSynapseAnalyticsEndpointResourceId },
-                        { ManagedHsm, AzureEnvironment.ExtendedEndpoint.ManagedHsmServiceEndpointResourceId }
+                        { ManagedHsm, AzureEnvironment.ExtendedEndpoint.ManagedHsmServiceEndpointResourceId },
+                        { AppConfiguration, AzureEnvironment.ExtendedEndpoint.AzureAppConfigurationEndpointResourceId }
                     };
 
             ResourceNameMap = new Dictionary<string, string>(DataPlaneResourceNameMap);

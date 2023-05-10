@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Security.dll-Help.xml
 Module Name: Az.Security
-online version:
+online version: https://learn.microsoft.com/powershell/module/az.security/confirm-azsecurityautomation
 schema: 2.0.0
 ---
 
@@ -43,7 +43,7 @@ Validates the security automation model before create or update. Any validation 
 
 ### Example 1
 ```powershell
-PS C:\> Confirm-AzSecurityAutomation -Name 'SampleAutomation' -ResourceGroupName 'SampleResourceGroup' -Description 'Sample security automation' -Scope $scopes -Source $sources -Action $actions
+Confirm-AzSecurityAutomation -Name 'SampleAutomation' -ResourceGroupName 'SampleResourceGroup' -Description 'Sample security automation' -Scope $scopes -Source $sources -Action $actions
 ```
 
 Validates that the creation of security automation named "SampleAutomation" under resource group named "SampleResourceGroup"

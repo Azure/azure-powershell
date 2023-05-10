@@ -77,6 +77,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         [ValidateNotNull]
         public DateTimeOffset? ExpiryTime { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Encryption scope to use when sending requests authorized with this SAS URI.")]
+        [ValidateNotNullOrEmpty]
+        public string EncryptionScope { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "Display full uri with sas token")]
         public SwitchParameter FullUri { get; set; }
 
@@ -169,6 +173,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             if (this.Protocol != null)
             {
                 sasBuilder.Protocol = this.Protocol.Value;
+            }
+            if (this.EncryptionScope != null)
+            {
+                sasBuilder.EncryptionScope = this.EncryptionScope;
             }
 
             DataLakeFileSystemClient fileSystem = GetFileSystemClientByName(localChannel, this.FileSystem);

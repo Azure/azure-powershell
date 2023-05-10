@@ -36,13 +36,14 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IBotServiceIdentity>: Identity Parameter
   [ChannelName <ChannelName?>]: The name of the Channel resource.
-  [ConnectionName <String>]: The name of the Bot Service Connection Setting resource
+  [ConnectionName <String>]: The name of the Bot Service Connection Setting resource.
   [Id <String>]: Resource identity path
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource
   [ResourceGroupName <String>]: The name of the Bot resource group in the user subscription.
   [ResourceName <String>]: The name of the Bot resource.
   [SubscriptionId <String>]: Azure Subscription ID.
 .Link
-https://docs.microsoft.com/powershell/module/az.botservice/remove-azbotservice
+https://learn.microsoft.com/powershell/module/az.botservice/remove-azbotservice
 #>
 function Remove-AzBotService {
 [OutputType([System.Boolean])]

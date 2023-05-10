@@ -19,7 +19,7 @@ Creates key credentials or password credentials for an application.
 .Description
 Creates key credentials or password credentials for an application.
 .Link
-https://docs.microsoft.com/powershell/module/az.resources/new-azadappcredential
+https://learn.microsoft.com/powershell/module/az.resources/new-azadappcredential
 #>
 
 function New-AzADAppCredential {

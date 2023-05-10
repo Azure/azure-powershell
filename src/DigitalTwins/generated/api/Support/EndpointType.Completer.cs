@@ -28,15 +28,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "EventHub".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("EventHub", "EventHub", global::System.Management.Automation.CompletionResultType.ParameterValue, "EventHub");
+                yield return new global::System.Management.Automation.CompletionResult("'EventHub'", "EventHub", global::System.Management.Automation.CompletionResultType.ParameterValue, "EventHub");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "EventGrid".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("EventGrid", "EventGrid", global::System.Management.Automation.CompletionResultType.ParameterValue, "EventGrid");
+                yield return new global::System.Management.Automation.CompletionResult("'EventGrid'", "EventGrid", global::System.Management.Automation.CompletionResultType.ParameterValue, "EventGrid");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "ServiceBus".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("ServiceBus", "ServiceBus", global::System.Management.Automation.CompletionResultType.ParameterValue, "ServiceBus");
+                yield return new global::System.Management.Automation.CompletionResult("'ServiceBus'", "ServiceBus", global::System.Management.Automation.CompletionResultType.ParameterValue, "ServiceBus");
             }
         }
     }

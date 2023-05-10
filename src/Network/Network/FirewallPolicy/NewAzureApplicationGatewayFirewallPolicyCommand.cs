@@ -18,10 +18,12 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Network;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using System.Text;
 using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
@@ -147,6 +149,17 @@ namespace Microsoft.Azure.Commands.Network
             // Execute the Create ApplicationGatewayFirewallPolicy call
             this.ApplicationGatewayFirewallPolicyClient.CreateOrUpdate(this.ResourceGroupName, this.Name, firewallPolicyModel);
             var getApplicationGatewayFirewallPolicy = this.GetApplicationGatewayFirewallPolicy(this.ResourceGroupName, this.Name);
+
+            // Assign the CustomBlockResponse fields from policy settings to policy (Feature parity with AFD WAF Policy)
+            getApplicationGatewayFirewallPolicy.CustomBlockResponseStatusCode = getApplicationGatewayFirewallPolicy.PolicySettings.CustomBlockResponseStatusCode;
+
+            if (!string.IsNullOrEmpty(getApplicationGatewayFirewallPolicy.PolicySettings.CustomBlockResponseBody))
+            {
+                // decode the body value as it is base64 encoded
+                string decodedCustomBlockResponseBody = Encoding.UTF8.GetString(Convert.FromBase64String(getApplicationGatewayFirewallPolicy.PolicySettings.CustomBlockResponseBody));
+                getApplicationGatewayFirewallPolicy.CustomBlockResponseBody = decodedCustomBlockResponseBody;
+            }
+            
             return getApplicationGatewayFirewallPolicy;
         }
     }

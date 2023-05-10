@@ -23,12 +23,12 @@ Returns a BotService specified by the parameters.
 Export-AzBotServiceApp -ResourceGroupName youriBotTest -name youriechobottest
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IBot
+Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.IBot
 .Link
-https://docs.microsoft.com/powershell/module/az.botservice/export-azbotserviceapp
+https://learn.microsoft.com/powershell/module/az.botservice/export-azbotserviceapp
 #>
 function Export-AzBotServiceApp {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IBot])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.IBot])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter()]

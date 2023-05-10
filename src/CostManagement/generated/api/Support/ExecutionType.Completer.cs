@@ -28,11 +28,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "OnDemand".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("OnDemand", "OnDemand", global::System.Management.Automation.CompletionResultType.ParameterValue, "OnDemand");
+                yield return new global::System.Management.Automation.CompletionResult("'OnDemand'", "OnDemand", global::System.Management.Automation.CompletionResultType.ParameterValue, "OnDemand");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Scheduled".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Scheduled", "Scheduled", global::System.Management.Automation.CompletionResultType.ParameterValue, "Scheduled");
+                yield return new global::System.Management.Automation.CompletionResult("'Scheduled'", "Scheduled", global::System.Management.Automation.CompletionResultType.ParameterValue, "Scheduled");
             }
         }
     }

@@ -1,7 +1,7 @@
 ---
 Module Name: Az.StorageSync
 Module Guid: 001b4bbc-9d7d-43b2-9e95-7a70325e9509
-Download Help Link: https://docs.microsoft.com/powershell/module/az.storagesync
+Download Help Link: https://learn.microsoft.com/powershell/module/az.storagesync
 Help Version: 1.0.0.0
 Locale: en-US
 ---
@@ -35,7 +35,7 @@ This command can be used to manually initiate the detection of namespaces change
 > - Files that are moved out of the share.
 > - Files that are deleted and created with the same name.  
 > 
->  These changes will be detected when the [change detection job](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#afs-change-detection) runs.
+>  These changes will be detected when the [change detection job](https://learn.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#afs-change-detection) runs.
 
 ### [Invoke-AzStorageSyncCompatibilityCheck](Invoke-AzStorageSyncCompatibilityCheck.md)
 Checks for potential compatibility issues between your system and Azure File Sync.

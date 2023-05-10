@@ -1,14 +1,14 @@
 ---
 external help file:
 Module Name: Az.Aks
-online version: https://docs.microsoft.com/powershell/module/az.aks/get-azaksupgradeprofile
+online version: https://learn.microsoft.com/powershell/module/az.aks/get-azaksupgradeprofile
 schema: 2.0.0
 ---
 
 # Get-AzAksUpgradeProfile
 
 ## SYNOPSIS
-Gets the details of the upgrade profile for a managed cluster with a specified resource group and name.
+Gets the upgrade profile of a managed cluster.
 
 ## SYNTAX
 
@@ -24,14 +24,16 @@ Get-AzAksUpgradeProfile -InputObject <IAksIdentity> [-DefaultProfile <PSObject>]
 ```
 
 ## DESCRIPTION
-Gets the details of the upgrade profile for a managed cluster with a specified resource group and name.
+Gets the upgrade profile of a managed cluster.
 
 ## EXAMPLES
 
 ### Example 1: Get Aks upgrade profile with resource group name and cluster name
 ```powershell
-PS C:\> Get-AzAksUpgradeProfile -ResourceGroupName group -Name myCluster
+Get-AzAksUpgradeProfile -ResourceGroupName group -Name myCluster
+```
 
+```output
 Name    Type
 ----    ----
 default Microsoft.ContainerService/managedClusters/upgradeprofiles
@@ -57,7 +59,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -89,6 +92,7 @@ Accept wildcard characters: False
 
 ### -ResourceGroupName
 The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
@@ -103,8 +107,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-Subscription credentials which uniquely identify Microsoft Azure subscription.
-The subscription ID forms part of the URI for every service call.
+The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
@@ -127,7 +130,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.IManagedClusterUpgradeProfile
+### Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.IManagedClusterUpgradeProfile
 
 ## NOTES
 
@@ -140,15 +143,17 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IAksIdentity>: Identity Parameter
+`INPUTOBJECT <IAksIdentity>`: Identity Parameter
   - `[AgentPoolName <String>]`: The name of the agent pool.
+  - `[CommandId <String>]`: Id of the command.
+  - `[ConfigName <String>]`: The name of the maintenance configuration.
   - `[Id <String>]`: Resource identity path
-  - `[Location <String>]`: The name of a supported Azure region.
+  - `[Location <String>]`: The name of Azure region.
   - `[PrivateEndpointConnectionName <String>]`: The name of the private endpoint connection.
-  - `[ResourceGroupName <String>]`: The name of the resource group.
+  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
   - `[ResourceName <String>]`: The name of the managed cluster resource.
   - `[RoleName <String>]`: The name of the role for managed cluster accessProfile resource.
-  - `[SubscriptionId <String>]`: Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  - `[SubscriptionId <String>]`: The ID of the target subscription.
 
 ## RELATED LINKS
 

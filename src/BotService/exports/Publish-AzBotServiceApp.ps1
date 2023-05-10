@@ -23,7 +23,7 @@ Returns a BotService specified by the parameters.
 Publish-AzBotServiceApp -ResourceGroupName youriBotTest -CodeDir D:\zips\MyEchoBot -Name youriechobottest
 
 .Link
-https://docs.microsoft.com/powershell/module/az.botservice/publish-azbotserviceapp
+https://learn.microsoft.com/powershell/module/az.botservice/publish-azbotserviceapp
 #>
 function Publish-AzBotServiceApp {
 [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]

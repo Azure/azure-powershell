@@ -28,7 +28,7 @@ Created  3
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20200301Preview.IClusterJob
 .Link
-https://docs.microsoft.com/powershell/module/az.streamanalytics/get-azstreamanalyticsclusterstreamingjob
+https://learn.microsoft.com/powershell/module/az.streamanalytics/get-azstreamanalyticsclusterstreamingjob
 #>
 function Get-AzStreamAnalyticsClusterStreamingJob {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20200301Preview.IClusterJob])]

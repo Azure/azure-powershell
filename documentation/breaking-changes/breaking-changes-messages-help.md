@@ -6,13 +6,13 @@ Breaking change warnings are a means for the cmdlet authors to communicate with 
 
 ## How do I get rid of the warnings?
 
-To suppress these warning messages, set the environment variable 'SuppressAzurePowerShellBreakingChangeWarnings' to 'true'.
+To suppress these warning messages, set the config 'DisplayBreakingChangeWarning' to '$false'.
 
-```
-Set-Item Env:\SuppressAzurePowerShellBreakingChangeWarnings "true"
+```powershell
+Update-AzConfig -DisplayBreakingChangeWarning $false
 ```
 
-More details on breaking change message suppression can be found [here](https://github.com/Azure/azure-powershell/blob/preview/documentation/breaking-changes/breaking-changes-attribute-help.md#suppress-the-breaking-change-messages-at-runtime).
+More details on breaking change message suppression can be found [here](https://github.com/Azure/azure-powershell/blob/main/documentation/breaking-changes/breaking-changes-attribute-help.md#suppress-the-breaking-change-messages-at-runtime).
 
 ## Further reading
 
@@ -29,5 +29,5 @@ Here is a [link to our milestones](https://github.com/Azure/azure-powershell/mil
 ) is a good resource on the various types of breaking changes authors can call out in a cmdlet.
 
 ### Send us feedback
-* Generic feedback : Use the [`Send-Feedback`](https://docs.microsoft.com/en-us/powershell/module/azurerm.profile/send-feedback?view=azurermps-6.11.0) cmdlet
+* Generic feedback : Use the [`Send-Feedback`](https://learn.microsoft.com/en-us/powershell/module/azurerm.profile/send-feedback?view=azurermps-6.11.0) cmdlet
 * A bug : Report issues in the [azure-powershell repository issue list](https://github.com/Azure/azure-powershell/issues) 

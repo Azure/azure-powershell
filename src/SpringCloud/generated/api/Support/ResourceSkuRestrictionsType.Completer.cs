@@ -28,11 +28,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Location".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Location", "Location", global::System.Management.Automation.CompletionResultType.ParameterValue, "Location");
+                yield return new global::System.Management.Automation.CompletionResult("'Location'", "Location", global::System.Management.Automation.CompletionResultType.ParameterValue, "Location");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Zone".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Zone", "Zone", global::System.Management.Automation.CompletionResultType.ParameterValue, "Zone");
+                yield return new global::System.Management.Automation.CompletionResult("'Zone'", "Zone", global::System.Management.Automation.CompletionResultType.ParameterValue, "Zone");
             }
         }
     }

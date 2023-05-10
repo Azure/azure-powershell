@@ -19,27 +19,25 @@ using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 {
-    public class ServiceTierAdvisorTests : SqlTestsBase
+    public class ServiceTierAdvisorTests : SqlTestRunner
     {
         public ServiceTierAdvisorTests(ITestOutputHelper output) : base(output)
         {
-            base.resourceTypesToIgnoreApiVersion = new string[] {
-                "Microsoft.Sql/servers"
-            };
+
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetUpgradeDatabaseHint()
         {
-            RunPowerShellTest("Test-GetUpgradeDatabaseHint");
+            TestRunner.RunTestScript("Test-GetUpgradeDatabaseHint");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetUpgradeServerHint()
         {
-            RunPowerShellTest("Test-GetUpgradeServerHint");
+            TestRunner.RunTestScript("Test-GetUpgradeServerHint");
         }
     }
 }

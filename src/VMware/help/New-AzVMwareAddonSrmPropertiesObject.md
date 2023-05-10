@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.VMware
-online version: https://docs.microsoft.com/powershell/module/az.VMware/new-AzVMwareAddonSrmPropertiesObject
+online version: https://learn.microsoft.com/powershell/module/az.VMware/new-AzVMwareAddonSrmPropertiesObject
 schema: 2.0.0
 ---
 
@@ -25,6 +25,7 @@ Create a in-memory object for AddonSrmProperties
 ```powershell
 New-AzVMwareAddonSrmPropertiesObject -LicenseKey "YourLicenseKeyValue"
 ```
+
 ```output
 AddonType ProvisioningState LicenseKey
 --------- ----------------- ----------

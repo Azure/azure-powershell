@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Adapter
         /// Deletes a sql virtual machine
         /// </summary>
         /// <param name="resourceGroupName">The resource group the sql virtual machine is in</param>
-        /// <param name="serverName">The name of the sql virtual machine to delete</param>
+        /// <param name="sqlVirtualMachineName">The name of the sql virtual machine to delete</param>
         public void RemoveSqlVirtualMachine(string resourceGroupName, string sqlVirtualMachineName)
         {
             Communicator.Delete(resourceGroupName, sqlVirtualMachineName);
@@ -86,7 +86,6 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Adapter
         /// <summary>
         /// Gets a list of all the sql virtual machines in a subscription
         /// </summary>
-        /// <param name="resourceGroupName">The name of the resource group</param>
         /// <returns>A list of all the sql virtual machines</returns>
         public List<AzureSqlVMModel> ListSqlVirtualMachine()
         {
@@ -115,7 +114,7 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Adapter
         /// Gets a sql virtual machine in a resource group
         /// </summary>
         /// <param name="resourceGroupName">The name of the resource group</param>
-        /// <param name="serverName">The name of the sql virtual machine</param>
+        /// <param name="sqlVirtualMachineName">The name of the sql virtual machine</param>
         /// <returns>The sql virtual machine</returns>
         public AzureSqlVMModel GetSqlVirtualMachine(string resourceGroupName, string sqlVirtualMachineName)
         {
@@ -126,7 +125,6 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Adapter
         /// <summary>
         /// Convert a Management.SqlVirtualMachine.Models.SqlVirtualMachineModel to AzureSqlVirtualMachineModel
         /// </summary>
-        /// <param name="resourceGroupName">The resource group the sql virtual machine is in</param>
         /// <param name="resp">The management client sql virtual machine response to convert</param>
         /// <returns>The converted sql virtual machine model</returns>
         private AzureSqlVMModel CreateSqlVirtualMachineModelFromResponse(SqlVirtualMachineModel resp)

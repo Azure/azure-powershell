@@ -20,9 +20,7 @@ Removes a content from CDN.
 .Description
 Removes a content from CDN.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+Clear-AzCdnEndpointContent -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -EndpointName endptest001 -ContentPath @("/movies/*","/pictures/pic1.jpg") 
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IPurgeParameters
@@ -53,7 +51,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [SecurityPolicyName <String>]: Name of the security policy under the profile.
   [SubscriptionId <String>]: Azure Subscription ID.
 .Link
-https://docs.microsoft.com/powershell/module/az.cdn/clear-azcdnendpointcontent
+https://learn.microsoft.com/powershell/module/az.cdn/clear-azcdnendpointcontent
 #>
 function Clear-AzCdnEndpointContent {
 [OutputType([System.Boolean])]
@@ -188,7 +186,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Runspace.Version.ToString()
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
         }         
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {

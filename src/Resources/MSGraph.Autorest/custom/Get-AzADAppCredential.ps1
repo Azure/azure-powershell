@@ -19,7 +19,7 @@ Lists key credentials and password credentials for an application.
 .Description
 Lists key credentials and password credentials for an application.
 .Link
-https://docs.microsoft.com/powershell/module/az.resources/get-azadappcredential
+https://learn.microsoft.com/powershell/module/az.resources/get-azadappcredential
 #>
 
 function Get-AzADAppCredential {

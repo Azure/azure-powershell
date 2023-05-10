@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ApiManagement.dll-Help.xml
 Module Name: Az.ApiManagement
 ms.assetid: 5846BBB7-DA8E-41B5-A894-BA2B61C2212C
-online version: https://docs.microsoft.com/powershell/module/az.apimanagement/backup-azapimanagement
+online version: https://learn.microsoft.com/powershell/module/az.apimanagement/backup-azapimanagement
 schema: 2.0.0
 ---
 
@@ -33,20 +33,22 @@ This cmdlet stores the backup as an Azure Storage blob.
 New-AzStorageAccount -StorageAccountName "ContosoStorage" -Location $location -ResourceGroupName "ContosoGroup02" -Type Standard_LRS
 $storageKey = (Get-AzStorageAccountKey -ResourceGroupName "ContosoGroup02" -StorageAccountName "ContosoStorage")[0].Value
 $storageContext = New-AzStorageContext -StorageAccountName "ContosoStorage" -StorageAccountKey $storageKey
-Backup-AzApiManagement -ResourceGroupName "ContosoGroup02" -Name "ContosoApi" -StorageContext $StorageContext -TargetContainerName "ContosoBackups" -TargetBlobName "ContosoBackup.apimbackup"
+Backup-AzApiManagement -ResourceGroupName "ContosoGroup02" -Name "ContosoApi" -StorageContext $StorageContext -TargetContainerName "contosobackups" -TargetBlobName "contosobackups.apimbackup"
 ```
 
 ### Example 2: Back up using Managed Identity
 
 ```powershell
-PS D:> $storageContext=New-AzStorageContext -StorageAccountName apimbackupmsi
-PS D:> $resourceGroupName="contosogroup2";
-PS D:> $apiManagementName="contosoapi";
-PS D:> $containerName="apimbackupcontainer";
-PS D:> $backupName="test-sdk-backup-1";
-PS D:> $msiClientId="a6270d0c-7d86-478b-8cbe-dc9047ba54f7"
-PS D:> Backup-AzApiManagement -ResourceGroupName $resourceGroupName -Name $apiManagementName -StorageContext $storageContext -TargetContainerName $containerName -TargetBlobName $backupName -AccessType "UserAssignedManagedIdentity" -IdentityClientId $msiClientId -PassThru
+$storageContext=New-AzStorageContext -StorageAccountName apimbackupmsi
+$resourceGroupName="contosogroup2";
+$apiManagementName="contosoapi";
+$containerName="apimbackupcontainer";
+$backupName="test-sdk-backup-1";
+$msiClientId="a6270d0c-7d86-478b-8cbe-dc9047ba54f7"
+Backup-AzApiManagement -ResourceGroupName $resourceGroupName -Name $apiManagementName -StorageContext $storageContext -TargetContainerName $containerName -TargetBlobName $backupName -AccessType "UserAssignedManagedIdentity" -IdentityClientId $msiClientId -PassThru
+```
 
+```output
 PublicIPAddresses                     : {52.143.79.150}
 PrivateIPAddresses                    :
 Id                                    : /subscriptions/4f5285a3-9fd7-40ad-91b1-d8fc3823983d/resourceGroups/contosogroup2/providers/Microsoft.ApiManagement/service/contosoapi

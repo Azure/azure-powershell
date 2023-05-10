@@ -13,6 +13,8 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Management.RecoveryServices.Models;
+using System;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.RecoveryServices
 {
@@ -82,6 +84,76 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             this.Properties.ProvisioningState = vault.Properties.ProvisioningState;
             this.Properties.PrivateEndpointStateForBackup = vault.Properties.PrivateEndpointStateForBackup;
             this.Properties.PrivateEndpointStateForSiteRecovery = vault.Properties.PrivateEndpointStateForSiteRecovery;
+            this.Properties.PublicNetworkAccess = vault.Properties.PublicNetworkAccess;
+            this.Properties.RestoreSettings = vault.Properties.RestoreSettings;
+                           
+            if (vault.Properties.PrivateEndpointConnections != null)
+            {
+                this.Properties.PrivateEndpointConnections = new List<PrivateEndpointConnection>();
+                
+                foreach (var serviceClientPEC in vault.Properties.PrivateEndpointConnections)
+                {
+                    PrivateEndpointConnection pec = new PrivateEndpointConnection();
+
+                    pec.ID = serviceClientPEC.Id;
+                    pec.Name = serviceClientPEC.Name;
+                    pec.Type = serviceClientPEC.Type;
+
+                    if (serviceClientPEC.Properties != null)
+                    {
+                        pec.ProvisioningState = serviceClientPEC.Properties.ProvisioningState;
+
+                        if(serviceClientPEC.Properties.GroupIds != null)
+                        {
+                            pec.GroupID = new List<string>();
+
+                            foreach(var groupID in serviceClientPEC.Properties.GroupIds)
+                            {
+                                pec.GroupID.Add(groupID);
+                            }                            
+                        }
+
+                        if (serviceClientPEC.Properties.PrivateLinkServiceConnectionState != null)
+                        {
+                            pec.Description = serviceClientPEC.Properties.PrivateLinkServiceConnectionState.Description;
+                            pec.ConnectionState = serviceClientPEC.Properties.PrivateLinkServiceConnectionState.Status;
+                            pec.ActionRequired = serviceClientPEC.Properties.PrivateLinkServiceConnectionState.ActionsRequired;
+                        }
+
+                        if (serviceClientPEC.Properties.PrivateEndpoint != null) pec.PrivateEndpointID = serviceClientPEC.Properties.PrivateEndpoint.Id;                        
+                    }                    
+                        
+                    this.Properties.PrivateEndpointConnections.Add(pec);
+                }                
+            }
+            
+            if(vault.Properties.MonitoringSettings != null)
+            {
+                this.Properties.AlertSettings = new AlertSettings();
+
+                if (vault.Properties.MonitoringSettings.AzureMonitorAlertSettings != null)
+                {
+                    this.Properties.AlertSettings.AzureMonitorAlertsForAllJobFailure = vault.Properties.MonitoringSettings.AzureMonitorAlertSettings.AlertsForAllJobFailures;
+                }
+
+                if (vault.Properties.MonitoringSettings.ClassicAlertSettings != null)
+                {
+                    this.Properties.AlertSettings.ClassicAlertsForCriticalOperations = vault.Properties.MonitoringSettings.ClassicAlertSettings.AlertsForCriticalOperations;
+                }                
+            }
+
+            if(vault.Properties.SecuritySettings != null && vault.Properties.SecuritySettings.ImmutabilitySettings != null)
+            {
+                this.Properties.ImmutabilitySettings = new ImmutabilitySettings();
+
+                if(vault.Properties.SecuritySettings.ImmutabilitySettings.State != null)
+                {
+                    ImmutabilityState immutabilityState;
+                    Enum.TryParse<ImmutabilityState>(vault.Properties.SecuritySettings.ImmutabilitySettings.State, true, out immutabilityState);
+                    this.Properties.ImmutabilitySettings.ImmutabilityState = immutabilityState;
+                }
+            }
+
             this.Identity = vault.Identity;
         }
 
@@ -153,7 +225,131 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// </summary>
         public string PrivateEndpointStateForSiteRecovery { get; set; }
 
+        /// <summary>
+        /// Gets or sets RestoreSettings.
+        /// </summary>
+        public RestoreSettings RestoreSettings { get; set; }
+
+        /// <summary>
+        /// Gets or sets PublicNetworkAccess.
+        /// </summary>
+        public string PublicNetworkAccess { get; set; }
+
+        public ImmutabilitySettings ImmutabilitySettings { get; set; }
+
+        /// <summary>
+        /// Gets or sets MonitoringSettings.
+        /// </summary>
+        public AlertSettings AlertSettings { get; set; }
+
+        public List<PrivateEndpointConnection> PrivateEndpointConnections { get; set; }
+
         #endregion
+    }
+
+    public class ImmutabilitySettings
+    {
+        #region Properties            
+            public ImmutabilityState ImmutabilityState { get; set; }
+        #endregion
+
+        public override string ToString()
+        {            
+            return string.Format("ImmutabilityState: {0}", ImmutabilityState.ToString());            
+        }
+    }
+
+    public class PrivateEndpointConnection
+    {
+        #region Properties
+
+        /// <summary>
+        /// Gets or sets the ID.
+        /// </summary>
+        public string ID { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Name.
+        /// </summary>
+        public string Name { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Type.
+        /// </summary>
+        public string Type { get; set; }
+
+        /// <summary>
+        /// Gets or sets the ProvisioningState.
+        /// </summary>
+        public string ProvisioningState { get; set; }
+
+        /// <summary>
+        /// Gets or sets the ConnectionState.
+        /// </summary>
+        public string ConnectionState { get; set; }
+
+        /// <summary>
+        /// Gets or sets the ActionsRequired.
+        /// </summary>
+        public string ActionRequired { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Description.
+        /// </summary>
+        public string Description { get; set; }
+
+        /// <summary>
+        /// Gets or sets the GroupID.
+        /// </summary>
+        public List<string> GroupID { get; set; }
+
+        /// <summary>
+        /// Gets or sets the PrivateEndpointID.
+        /// </summary>
+        public string PrivateEndpointID { get; set; }
+
+        #endregion
+
+        public override string ToString()
+        {
+            return string.Format("Name: {0}, ConnectionState: {1}", Name.Split('.')[0], ConnectionState);
+        }
+    }
+
+    public class AlertSettings
+    {
+        #region Properties
+
+        /// <summary>
+        /// Gets or sets the monitor alerts.
+        /// </summary>
+        public string AzureMonitorAlertsForAllJobFailure { get; set; }
+
+        /// <summary>
+        /// Gets or sets AlertsForCriticalOperations.
+        /// </summary>
+        public string ClassicAlertsForCriticalOperations { get; set; }
+
+        #endregion
+
+        public override string ToString()
+        {            
+            if(AzureMonitorAlertsForAllJobFailure != null)
+            {
+                string alerts = string.Format("AzureMonitorAlertsForAllJobFailure: {0}", AzureMonitorAlertsForAllJobFailure.ToString());
+                if (ClassicAlertsForCriticalOperations != null)
+                {
+                    alerts += string.Format(", ClassicAlertsForCriticalOperations: {0}", ClassicAlertsForCriticalOperations.ToString());
+                }
+                return alerts;
+            }
+            else if (ClassicAlertsForCriticalOperations != null)
+            {
+                return string.Format("ClassicAlertsForCriticalOperations: {0}", ClassicAlertsForCriticalOperations.ToString());
+            }
+            
+            return null;
+        }
     }
 
     public class ASRVaultBackupProperties
@@ -207,6 +403,32 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         GeoRedundant = 1,
         ZoneRedundant,
         LocallyRedundant
+    }
+
+    /// <summary>
+    /// Enum to define the vault Immutability state.
+    /// </summary>
+    public enum ImmutabilityState
+    {
+        Disabled = 1,
+        Unlocked,
+        Locked
+    }
+
+    /// <summary>
+    /// Enum to define the cross subscription restore state of the vault.
+    /// </summary>
+    public enum CrossSubscriptionRestoreState
+    {
+        Enabled = 1,
+        Disabled,
+        PermanentlyDisabled
+    }
+
+    public enum PublicNetworkAccess
+    {
+        Enabled = 1,
+        Disabled
     }
 
     /// <summary>

@@ -1,7 +1,7 @@
 ---
 Module Name: Az.Resources
 Module Guid: ab3ca893-26fe-44b0-bd3c-8933df144d7b
-Download Help Link: https://docs.microsoft.com/powershell/module/az.resources
+Download Help Link: https://learn.microsoft.com/powershell/module/az.resources
 Help Version: 5.5.2.0
 Locale: en-US
 ---
@@ -26,7 +26,7 @@ Exports a Template Spec to the local filesystem
 ### [Get-AzADAppCredential](Get-AzADAppCredential.md)
 Lists key credentials and password credentials for an application.
 
-### [Get-AzADAppFederatedIdentityCredential](Get-AzADAppFederatedIdentityCredential.md)
+### [Get-AzADAppFederatedCredential](Get-AzADAppFederatedCredential.md)
 Get federatedIdentityCredentials by Id from applications.
 
 ### [Get-AzADApplication](Get-AzADApplication.md)
@@ -40,6 +40,9 @@ Lists entities from groups or get entity from groups by key
 
 ### [Get-AzADGroupMember](Get-AzADGroupMember.md)
 Lists members from group.
+
+### [Get-AzADOrganization](Get-AzADOrganization.md)
+Retrieve a list of organization objects.
 
 ### [Get-AzADServicePrincipal](Get-AzADServicePrincipal.md)
 Lists entities from service principals or get entity from service principals by key
@@ -233,7 +236,7 @@ Moves a resource to a different resource group or subscription.
 ### [New-AzADAppCredential](New-AzADAppCredential.md)
 Creates key credentials or password credentials for an application.
 
-### [New-AzADAppFederatedIdentityCredential](New-AzADAppFederatedIdentityCredential.md)
+### [New-AzADAppFederatedCredential](New-AzADAppFederatedCredential.md)
 Create federatedIdentityCredential for applications.
 
 ### [New-AzADApplication](New-AzADApplication.md)
@@ -252,7 +255,7 @@ Creates key credentials or password credentials for an service principal.
 Adds new entity to users
 
 ### [New-AzDeployment](New-AzDeployment.md)
-Create a deployment
+Create a deployment at the current subscription scope.
 
 ### [New-AzManagedApplication](New-AzManagedApplication.md)
 Creates an Azure managed application.
@@ -343,7 +346,7 @@ Create a deployment at tenant scope
 Publishes a Bicep file to a registry.
 
 ### [Register-AzProviderFeature](Register-AzProviderFeature.md)
-Registers an Azure provider feature in your account.
+Registers an Azure provider feature in your current subscription context.
 
 ### [Register-AzProviderPreviewFeature](Register-AzProviderPreviewFeature.md)
 Creates a feature registration in your account.
@@ -354,8 +357,8 @@ Registers a resource provider.
 ### [Remove-AzADAppCredential](Remove-AzADAppCredential.md)
 Removes key credentials or password credentials for an application.
 
-### [Remove-AzADAppFederatedIdentityCredential](Remove-AzADAppFederatedIdentityCredential.md)
-Delete federatedIdentityCredentials for applications.
+### [Remove-AzADAppFederatedCredential](Remove-AzADAppFederatedCredential.md)
+Delete navigation property federatedIdentityCredentials for applications
 
 ### [Remove-AzADApplication](Remove-AzADApplication.md)
 Deletes entity from applications
@@ -576,8 +579,8 @@ Removes a feature registration from your account.
 ### [Unregister-AzResourceProvider](Unregister-AzResourceProvider.md)
 Unregisters a resource provider.
 
-### [Update-AzADAppFederatedIdentityCredential](Update-AzADAppFederatedIdentityCredential.md)
-Update the federatedIdentityCredentials in applications.
+### [Update-AzADAppFederatedCredential](Update-AzADAppFederatedCredential.md)
+Update the navigation property federatedIdentityCredentials in applications
 
 ### [Update-AzADApplication](Update-AzADApplication.md)
 Updates entity in applications

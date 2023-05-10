@@ -26,26 +26,26 @@
 #     eg. $nonAzurecomputers
 # 5. need to have a subscription or resource group id in which update management onboarded Vms exists
 #.....eg $query1Scope = @(
-#       "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/sdk-tests-UM-rg"
+#       "/subscriptions/783fd652-64f3-4680-81e9-0b978c542005/resourceGroups/sdk-tests-UM-rg"
 #   )
 # 6. have workspace saved search queries in which it has non azure Vms that are onboarded. 
 #    eg.  $nonAzureQuery1 = @{
  #       FunctionAlias = "SavedSearch1";
- #      WorkspaceResourceId = "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourcegroups/defaultresourcegroup-eus/providers/microsoft.operationalinsights/workspaces/workspace-a159f395-2f28-4897-b66e-a3b3b9a7cde5-eus"
+ #      WorkspaceResourceId = "/subscriptions/783fd652-64f3-4680-81e9-0b978c542005/resourcegroups/mo-resources-eus/providers/microsoft.operationalinsights/workspaces/mo-la-eus2"
 #   }
 
-$rg = "to-delete-02"
-$aa = "fbs-aa-01"
+$rg = "mo-resources-eus"
+$aa = "mo-aaa-eus2"
 $azureVMIdsW = @(
-        "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/sdk-tests-UM-rg/providers/Microsoft.Compute/virtualMachines/vmj-arm-01",
-        "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/sdk-tests-UM-rg/providers/Microsoft.Compute/virtualMachines/vmj-arm-02"
+        "/subscriptions/783fd652-64f3-4680-81e9-0b978c542005/resourceGroups/mo-resources-eus/providers/Microsoft.Compute/virtualMachines/mo-vm-w-01",
+        "/subscriptions/783fd652-64f3-4680-81e9-0b978c542005/resourceGroups/mo-resources-eus/providers/Microsoft.Compute/virtualMachines/mo-vm-w-02"
     )
 
 $azureVMIdsL = @(
-        "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/JemalNcusRg/providers/Microsoft.Compute/virtualMachines/JemalUbuntu"
+        "/subscriptions/783fd652-64f3-4680-81e9-0b978c542005/resourceGroups/mo-resources-eus/providers/Microsoft.Compute/virtualMachines/mo-vm-l-01"
     )
 
-$nonAzurecomputers = @("server-01", "server-02")
+$nonAzurecomputers = @("server-01")
 
  function Test-CreateAndGetSoftwareUpdateConfigurationWithPrePost
 {
@@ -126,8 +126,8 @@ function Test-CreateAndGetSoftwareUpdateConfigurationWithRebootOnly
 
 function Test-GetSoftwareUpdateConfigurationRunWithPrePost
 {
-    $sucName = 'test-suc'
-    $sucrId = 'e5934d51-6e50-41f8-b860-3a3657040f8d'
+    $sucName = 'mo-onetime-01'
+    $sucrId = '7f077575-3905-4608-843e-5651884ffea1'
 
     $sucr = Get-AzAutomationSoftwareUpdateRun  -ResourceGroupName $rg `
                                                              -AutomationAccountName $aa `
@@ -164,7 +164,7 @@ function Test-CreateAndGetSoftwareUpdateConfigurationWithDynamicGroups
                                        -ForUpdate
 
 $query1Scope = @(
-        "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/sdk-tests-UM-rg"
+        "/subscriptions/783fd652-64f3-4680-81e9-0b978c542005/resourceGroups/sdk-tests-UM-rg"
     )
 
     $query1Location =@("Japan East", "UK South")
@@ -183,12 +183,12 @@ $query1Scope = @(
 
     $nonAzureQuery1 = @{
         FunctionAlias = "SavedSearch1";
-       WorkspaceResourceId = "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourcegroups/defaultresourcegroup-eus/providers/microsoft.operationalinsights/workspaces/workspace-a159f395-2f28-4897-b66e-a3b3b9a7cde5-eus"
+       WorkspaceResourceId = "/subscriptions/783fd652-64f3-4680-81e9-0b978c542005/resourcegroups/mo-resources-eus/providers/microsoft.operationalinsights/workspaces/mo-la-eus2"
     }
 
     $nonAzureQuery2 = @{
         FunctionAlias = "SavedSearch2";
-       WorkspaceResourceId = "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourcegroups/defaultresourcegroup-eus/providers/microsoft.operationalinsights/workspaces/workspace-a159f395-2f28-4897-b66e-a3b3b9a7cde5-eus"
+       WorkspaceResourceId = "/subscriptions/783fd652-64f3-4680-81e9-0b978c542005/resourcegroups/mo-resources-eus/providers/microsoft.operationalinsights/workspaces/mo-la-eus2"
     }
 
     $NonAzureQueries = @($nonAzureQuery1, $nonAzureQuery2)
@@ -237,7 +237,7 @@ function Test-CreateAndGetSoftwareUpdateConfigurationWithAzureDynamicGroupsOnly
                                        -ForUpdate
 
 $query1Scope = @(
-        "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/sdk-tests-UM-rg"
+        "/subscriptions/783fd652-64f3-4680-81e9-0b978c542005/resourceGroups/sdk-tests-UM-rg"
     )
 
     $query1Location =@("Japan East", "UK South")
@@ -296,7 +296,7 @@ Test-CreateAndGetSoftwareUpdateConfigurationWithAzureDynamicGroupsOnlyWithOutTag
                                        -ForUpdate
 
 $query1Scope = @(
-        "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/sdk-tests-UM-rg"
+        "/subscriptions/783fd652-64f3-4680-81e9-0b978c542005/resourceGroups/sdk-tests-UM-rg"
     )
 
     $query1Location =@("Japan East", "UK South")
@@ -352,7 +352,7 @@ Test-CreateAndGetSoftwareUpdateConfigurationWithAzureDynamicGroupsOnlyWithOutTag
                                        -ForUpdate
 
 $query1Scope = @(
-        "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/sdk-tests-UM-rg"
+        "/subscriptions/783fd652-64f3-4680-81e9-0b978c542005/resourceGroups/sdk-tests-UM-rg"
     )
 
     $query1Location =@("Japan East", "UK South")
@@ -408,7 +408,7 @@ Test-CreateAndGetSoftwareUpdateConfigurationWithAzureDynamicGroupsOnlyWithOutLoc
                                        -ForUpdate
 
 $query1Scope = @(
-        "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/sdk-tests-UM-rg"
+        "/subscriptions/783fd652-64f3-4680-81e9-0b978c542005/resourceGroups/sdk-tests-UM-rg"
     )
 
     $query1FilterOperator = "All"
@@ -464,7 +464,7 @@ Test-CreateAndGetSoftwareUpdateConfigurationWithAzureDynamicGroupsOnlyWithOutLoc
                                        -ForUpdate
 
 $query1Scope = @(
-        "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/sdk-tests-UM-rg"
+        "/subscriptions/783fd652-64f3-4680-81e9-0b978c542005/resourceGroups/sdk-tests-UM-rg"
     )
     $azq = New-AzAutomationUpdateManagementAzureQuery -ResourceGroupName $rg `
                                        -AutomationAccountName $aa `
@@ -515,12 +515,12 @@ function Test-CreateAndGetSoftwareUpdateConfigurationWithNonAzureDynamicGroupsOn
 
     $nonAzureQuery1 = @{
         FunctionAlias = "SavedSearch1";
-       WorkspaceResourceId = "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourcegroups/defaultresourcegroup-eus/providers/microsoft.operationalinsights/workspaces/workspace-a159f395-2f28-4897-b66e-a3b3b9a7cde5-eus"
+       WorkspaceResourceId = "/subscriptions/783fd652-64f3-4680-81e9-0b978c542005/resourcegroups/mo-resources-eus/providers/microsoft.operationalinsights/workspaces/mo-la-eus2"
     }
 
     $nonAzureQuery2 = @{
         FunctionAlias = "SavedSearch2";
-       WorkspaceResourceId = "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourcegroups/defaultresourcegroup-eus/providers/microsoft.operationalinsights/workspaces/workspace-a159f395-2f28-4897-b66e-a3b3b9a7cde5-eus"
+       WorkspaceResourceId = "/subscriptions/783fd652-64f3-4680-81e9-0b978c542005/resourcegroups/mo-resources-eus/providers/microsoft.operationalinsights/workspaces/mo-la-eus2"
     }
 
     $NonAzureQueries = @($nonAzureQuery1, $nonAzureQuery2)

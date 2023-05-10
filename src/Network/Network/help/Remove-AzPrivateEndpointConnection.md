@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/remove-azprivateendpointconnection
+online version: https://learn.microsoft.com/powershell/module/az.network/remove-azprivateendpointconnection
 schema: 2.0.0
 ---
 
@@ -14,16 +14,15 @@ Removes a private endpoint connection.
 
 ### ByResourceId (Default)
 ```
-Remove-AzPrivateEndpointConnection -ResourceId <String>
- [-Force] [-AsJob] [-PassThru]
+Remove-AzPrivateEndpointConnection [-Description <String>] [-Force] [-AsJob] [-PassThru] -ResourceId <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByResource
 ```
-Remove-AzPrivateEndpointConnection -Name <String> -ServiceName <String> -ResourceGroupName <String>
- [-PrivateLinkResourceType <String>] [-Force] [-AsJob] [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzPrivateEndpointConnection -Name <String> [-Description <String>] [-Force] [-AsJob] [-PassThru]
+ -ResourceGroupName <String> -ServiceName <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] -PrivateLinkResourceType <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -33,7 +32,7 @@ The **Remove-AzPrivateEndpointConnection** cmdlet removes a private endpoint con
 
 ### Example 1
 ```powershell
-Remove-AzPrivateEndpointConnection -Name MyPrivateEndpointConnection1 -ResourceGroupName TestResourceGroup -ServiceName MyPrivateLinkServiceName
+Remove-AzPrivateEndpointConnection -Name MyPrivateEndpointConnection1 -ResourceGroupName TestResourceGroup -ServiceName MyPrivateLinkServiceName -PrivateLinkResourceType Microsoft.Network/privateLinkServices
 ```
 
 This example remove a private endpoint connection named MyPrivateEndpointConnection1
@@ -67,6 +66,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Description
+The reason of action.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -124,10 +138,10 @@ Type: System.String
 Parameter Sets: ByResource
 Aliases:
 
-Required: False
+Required: True
 Position: Named
-Default value: 'Microsoft.Network/privateLinkServices'
-Accept pipeline input: True (ByPropertyName)
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

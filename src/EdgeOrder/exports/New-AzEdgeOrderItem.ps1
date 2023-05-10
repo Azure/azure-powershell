@@ -118,7 +118,7 @@ ORDERITEMDETAIL <IOrderItemDetails>: Represents order item details.
     [TransportPreference <ITransportPreferences>]: Preferences related to the shipment logistics of the order.
       PreferredShipmentType <TransportShipmentTypes>: Indicates Shipment Logistics type that the customer preferred.
 .Link
-https://docs.microsoft.com/powershell/module/az.edgeorder/new-azedgeorderitem
+https://learn.microsoft.com/powershell/module/az.edgeorder/new-azedgeorderitem
 #>
 function New-AzEdgeOrderItem {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.IOrderItemResource])]

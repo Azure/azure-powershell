@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights.dll-Help.xml
 Module Name: Az.OperationalInsights
-online version: https://docs.microsoft.com/powershell/module/az.operationalinsights/update-azoperationalinsightsdataexport
+online version: https://learn.microsoft.com/powershell/module/az.operationalinsights/update-azoperationalinsightsdataexport
 schema: 2.0.0
 ---
 
@@ -184,7 +184,7 @@ Accept wildcard characters: False
 ```
 
 ### -TableName
-An array of tables to export, for example: ["Heartbeat, SecurityEvent"].
+An array of tables to export, for example: \["Heartbeat, SecurityEvent"\].
 
 ```yaml
 Type: System.String[]

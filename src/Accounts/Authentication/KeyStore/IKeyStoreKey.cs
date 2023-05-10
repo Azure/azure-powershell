@@ -16,12 +16,30 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
 {
     public abstract class IKeyStoreKey
     {
+        /// <summary>
+        /// Create key from the data fields of KeyStoreKey.
+        /// </summary>
         protected abstract string CreateKey();
 
+        /// <summary>
+        /// Convert key to string.
+        /// </summary>
         public override abstract string ToString();
 
+        /// <summary>
+        /// Generate hash code of KeyStoreKey.
+        /// </summary>
+        public override abstract int GetHashCode();
+
+        /// <summary>
+        /// Check whether the current key is exactly equal to another.
+        /// </summary>
         public override abstract bool Equals(object obj);
 
-        public override abstract int GetHashCode();
+        /// <summary>
+        /// Check whether the current key can be treated as equal to another even though they are not equal.
+        /// This method can be used as fuzzy search of the keys.
+        /// </summary>
+        public abstract bool BeEquivalent(object obj);
     }
 }

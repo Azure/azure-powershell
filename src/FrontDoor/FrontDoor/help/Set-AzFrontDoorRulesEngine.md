@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.dll-Help.xml
 Module Name: Az.FrontDoor
-online version: https://docs.microsoft.com/powershell/module/az.frontdoor/set-azfrontdoorrulesengine
+online version: https://learn.microsoft.com/powershell/module/az.frontdoor/set-azfrontdoorrulesengine
 schema: 2.0.0
 ---
 
@@ -37,6 +37,7 @@ Update a Rules Engine.
 ## EXAMPLES
 
 ### Example 1
+<!-- Skip: Output cannot be splitted from code -->
 ```powershell
 Get-AzFrontDoorRulesEngine -ResourceGroupName $resourceGroupName -FrontDoorName $frontDoorName -Name myRulesEngine
 

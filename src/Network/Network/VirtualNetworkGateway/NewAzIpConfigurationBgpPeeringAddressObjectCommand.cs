@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.Network.VirtualNetworkGateway
            ParameterSetName = "ByName",
            Mandatory = true,
            HelpMessage = "The virtual network gateway CustomAddress List for BgpPeeringAddresses.")]
-        [ValidateNotNullOrEmpty]
+        [AllowEmptyCollection]
         public List<string> CustomAddress { get; set; }
 
         public override void Execute()

@@ -15,6 +15,7 @@
 using Microsoft.Azure.Commands.WebApps.Utilities;
 using Microsoft.Azure.Management.WebSites.Models;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+using System.Collections.Generic;
 using System.Reflection;
 using System.Security;
 
@@ -73,6 +74,14 @@ namespace Microsoft.Azure.Commands.WebApps.Models
                 object val = AzureStoragePathProp.GetValue(other, null);
                 AzureStoragePath = (WebAppAzureStoragePath[])val;
             }
+
+            PropertyInfo VnetPropInfo = other.GetType().GetProperty("VnetInfo");
+            if (VnetPropInfo != null)
+            {
+                object val = VnetPropInfo.GetValue(other, null);
+                VnetInfo = (IList<VnetInfo>)val;
+                VnetInfo = VnetInfo?.Count <= 0 ? null : VnetInfo;
+            }
         }
 
         public string GitRemoteName { get; set; }
@@ -81,5 +90,6 @@ namespace Microsoft.Azure.Commands.WebApps.Models
         public SecureString GitRemotePassword { get; set; }
         public AzureStoragePropertyDictionaryResource AzureStorageAccounts { get; set; }
         public WebAppAzureStoragePath[] AzureStoragePath { get; set; }
+        public IList<VnetInfo> VnetInfo { get; set; } = null;
     }
 }

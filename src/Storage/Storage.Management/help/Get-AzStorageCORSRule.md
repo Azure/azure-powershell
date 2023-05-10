@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
 ms.assetid: 5FA8A3F3-F52C-40BC-94C2-4CDA00C6F32F
-online version: https://docs.microsoft.com/powershell/module/az.storage/get-azstoragecorsrule
+online version: https://learn.microsoft.com/powershell/module/az.storage/get-azstoragecorsrule
 schema: 2.0.0
 ---
 
@@ -25,8 +25,8 @@ The **Get-AzStorageCORSRule** cmdlet gets Cross-Origin Resource Sharing (CORS) r
 ## EXAMPLES
 
 ### Example 1: Get CORS rules of blob service
-```
-PS C:\>Get-AzStorageCORSRule -ServiceType Blob
+```powershell
+Get-AzStorageCORSRule -ServiceType Blob
 ```
 
 This command gets the CORS rules for the Blob service type.

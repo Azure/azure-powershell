@@ -27,7 +27,8 @@ namespace Microsoft.Azure.Commands.Security.Models.Pricings
                 Id = value.Id,
                 Name = value.Name,
                 PricingTier = value.PricingTier,
-                FreeTrialRemainingTime = value.FreeTrialRemainingTime
+                FreeTrialRemainingTime = value.FreeTrialRemainingTime,
+                SubPlan = value.SubPlan
             };
         }
 

@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                         {
                             return ListTenantQueueDequeueVerLatest();
                         }
-                        var tenants = _tenants.Select((k) => new TenantIdDescription(id: k, tenantId: k));
+                        var tenants = _tenants.Select((k) => new TenantIdDescription(id: k, tenantId: k, domains: new List<string>{GetTenantDomainFromId(k)}));
                         var mockPage = new MockPage<TenantIdDescription>(tenants.ToList());
 
                         AzureOperationResponse<IPage<TenantIdDescription>> r = new AzureOperationResponse<IPage<TenantIdDescription>>
@@ -164,13 +164,16 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                         {
                             return ListTenantQueueDequeueVerLatest();
                         }
-                        var mockPage = new MockPage<TenantIdDescription>(tenants);
 
-                        AzureOperationResponse<IPage<TenantIdDescription>> r = new AzureOperationResponse<IPage<TenantIdDescription>>
+                        AzureOperationResponse<IPage<TenantIdDescription>> r = null;
+                        if (tenants != null)
                         {
-                            Body = mockPage
-                        };
-
+                            var mockPage = new MockPage<TenantIdDescription>(tenants);
+                            r = new AzureOperationResponse<IPage<TenantIdDescription>>
+                            {
+                                Body = mockPage
+                            };
+                        }
                         return Task.FromResult(r);
                     }
                 );
@@ -184,28 +187,26 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                 HasNextPage = Enumerable.Repeat(false, subscriptionListLists.Count).ToList();
             }
             var subscriptionMock = new Mock<ISubscriptionsOperations>();
-            if (subscriptionGetList != null)
-            {
-                subscriptionMock.Setup(
-                    s => s.GetWithHttpMessagesAsync(It.IsAny<string>(), It.IsAny<Dictionary<string, List<string>>>(), It.IsAny<CancellationToken>())).Returns(
-                        (string subId, Dictionary<string, List<string>> ch, CancellationToken token) =>
+            subscriptionMock.Setup(
+                s => s.GetWithHttpMessagesAsync(It.IsAny<string>(), It.IsAny<Dictionary<string, List<string>>>(), It.IsAny<CancellationToken>())).Returns(
+                    (string subId, Dictionary<string, List<string>> ch, CancellationToken token) =>
+                    {
+                        if (SubGetQueueVerLatest != null && SubGetQueueVerLatest.Any())
                         {
-                            if (SubGetQueueVerLatest != null && SubGetQueueVerLatest.Any())
-                            {
-                                return GetSubQueueDequeueVerLatest();
-                            }
-                            AzureOperationResponse<Subscription> result = new AzureOperationResponse<Subscription>()
-                            {
-                                RequestId = Guid.NewGuid().ToString()
-                            };
-                            if (subscriptionGetList.Any())
-                            {
-                                result.Body = subscriptionGetList.First();
-                                subscriptionGetList.RemoveAt(0);
-                            }
-                            return Task.FromResult(result);
-                        });
-            }
+                            return GetSubQueueDequeueVerLatest();
+                        }
+                        if (subscriptionGetList == null || !subscriptionGetList.Any())
+                        {
+                            throw new CloudException("Subscripiton is not in the tenant.");
+                        }
+                        var result = new AzureOperationResponse<Subscription>()
+                        {
+                            RequestId = Guid.NewGuid().ToString(),
+                            Body = subscriptionGetList.First()
+                        };
+                        subscriptionGetList.RemoveAt(0);
+                        return Task.FromResult(result);
+                    });
             subscriptionMock.Setup(
                 (s) => s.ListWithHttpMessagesAsync(null, It.IsAny<CancellationToken>())).Returns(
                     (Dictionary<string, List<string>> ch, CancellationToken token) =>
@@ -216,7 +217,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                         }
 
                         AzureOperationResponse<IPage<Subscription>> result = null;
-                        if (subscriptionListLists.Any() && HasNextPage.Any())
+                        if (subscriptionListLists!= null && subscriptionListLists.Any() && HasNextPage.Any())
                         {
                             result = new AzureOperationResponse<IPage<Subscription>>
                             {
@@ -252,14 +253,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
         public SubscriptionClient GetSubscriptionClientVerLatest(List<TenantIdDescription> tenants, List<Subscription> subscriptionGetList, List<List<Subscription>> subscriptionListLists, List<bool> HasNextPage = null)
         {
             var client = new Mock<SubscriptionClient>() { CallBase = true };
-            if (subscriptionGetList != null || subscriptionListLists != null)
-            {
-                client.SetupGet(c => c.Subscriptions).Returns(GetSubscriptionMock(subscriptionGetList, subscriptionListLists, HasNextPage));
-            }
-            if(tenants != null)
-            {
-                client.SetupGet(c => c.Tenants).Returns(GetTenantMock(tenants));
-            }
+            client.SetupGet(c => c.Subscriptions).Returns(GetSubscriptionMock(subscriptionGetList, subscriptionListLists, HasNextPage));
+            client.SetupGet(c => c.Tenants).Returns(GetTenantMock(tenants));
             return client.Object;
         }
 

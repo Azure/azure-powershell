@@ -131,7 +131,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         FixForInconsistentItems,
         ScheduleRunFrequency,
         PolicySubType,
-        ExistingPolicy
+        ExistingPolicy,
+        TieringPolicy,
+        IsSmartTieringEnabled
     }
 
     public enum ItemParams

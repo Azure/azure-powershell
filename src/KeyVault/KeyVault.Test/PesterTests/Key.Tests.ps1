@@ -45,6 +45,10 @@ Describe "Update key" {
 }
 
 Describe "Import key" {
+    It "Import a RSA key from pfx certificate"{ 
+        Add-AzKeyVaultKey -VaultName bez-kv1123 -KeyName bez-key1123 -KeyFilePath "$PSScriptRoot\..\Resources\importkeytest.pfx" -KeyFilePassword (ConvertTo-SecureString 123456 -AsPlainText -Force)
+    }
+    
     It "should throw when key type EC and curve name are not paired" {
         {
             Add-AzKeyVaultKey -VaultName veakkine-kv -Name PSECImportedKey -KeyFilePath E:\targetBlob.byok -KeyType EC -ErrorAction Stop

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/update-azrouteserver
+online version: https://learn.microsoft.com/powershell/module/az.network/update-azrouteserver
 schema: 2.0.0
 ---
 
@@ -15,12 +15,13 @@ Update an Azure RouteServer.
 ### RouteServerNameParameterSet (Default)
 ```
 Update-AzRouteServer -ResourceGroupName <String> -RouteServerName <String> [-AllowBranchToBranchTraffic]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-HubRoutingPreference <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### RouteServerResourceIdParameterSet
 ```
-Update-AzRouteServer [-AllowBranchToBranchTraffic] -ResourceId <String>
+Update-AzRouteServer [-AllowBranchToBranchTraffic] -ResourceId <String> [-HubRoutingPreference <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -33,13 +34,22 @@ The **Update-AzRouteServer** cmdlet switches the branch-to-branch traffic to an 
 ```powershell
 Update-AzRouteServer -ResourceGroupName $rgname -RouteServerName $routeServerName -AllowBranchToBranchTraffic
 ```
+
 To enable branch to branch traffic for route server.
 
-### Example 1
+### Example 2
 ```powershell
 Update-AzRouteServer -ResourceGroupName $rgname -RouteServerName $routeServerName
 ```
+
 To disable branch to branch traffic for route server.
+
+### Example 3
+```powershell
+Update-AzRouteServer -ResourceGroupName $rgname -RouteServerName $routeServerName -HubRoutingPreference "AsPath"
+```
+
+To change routing preference for route server.
 
 ## PARAMETERS
 
@@ -73,6 +83,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -HubRoutingPreference
+Routing Preference to route traffic
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+Accepted values: ExpressRoute, VpnGateway, ASPath
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The resource group name of the route server.
 
@@ -85,7 +111,7 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
 ### -ResourceId
@@ -115,7 +141,7 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
 ### -Confirm

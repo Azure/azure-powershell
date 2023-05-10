@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.DataProtection
-online version: https://docs.microsoft.com/powershell/module/az.dataprotection/update-azdataprotectionresourceguard
+online version: https://learn.microsoft.com/powershell/module/az.dataprotection/update-azdataprotectionresourceguard
 schema: 2.0.0
 ---
 
@@ -26,10 +26,10 @@ Updates a resource guard belonging to a resource group
 
 ### Example 1: Update a resource guard
 ```powershell
-PS C:\> $resourceGuard = Get-AzDataProtectionResourceGuard -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxxxxxxxxxx" -ResourceGroupName "rgName" -Name "resGuardName"
-PS C:\> $criticalOperations  = $resourceGuard.ResourceGuardOperation.VaultCriticalOperation
-PS C:\> $operationsToBeExcluded = $criticalOperations | where { $_ -match "backupSecurityPIN/action" -or $_ -match "backupInstances/delete" }
-PS C:\> Update-AzDataProtectionResourceGuard -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxxxxxxxxxx" -ResourceGroupName "rgName" -Name $resourceGuard.Name -CriticalOperationExclusionList $operationsToBeExcluded
+$resourceGuard = Get-AzDataProtectionResourceGuard -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxxxxxxxxxx" -ResourceGroupName "rgName" -Name "resGuardName"
+$criticalOperations = $resourceGuard.ResourceGuardOperation.VaultCriticalOperation
+$operationsToBeExcluded = $criticalOperations | Where-Object { $_ -match "backupSecurityPIN/action" -or $_ -match "backupInstances/delete" }
+Update-AzDataProtectionResourceGuard -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxxxxxxxxxx" -ResourceGroupName "rgName" -Name $resourceGuard.Name -CriticalOperationExclusionList $operationsToBeExcluded
 ```
 
 ```output
@@ -204,7 +204,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220401.IResourceGuardResource
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202301.IResourceGuardResource
 
 ## NOTES
 

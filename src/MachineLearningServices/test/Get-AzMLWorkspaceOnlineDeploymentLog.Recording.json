@@ -1,0 +1,42 @@
+{
+  "Get-AzMLWorkspaceOnlineDeploymentLog+[NoContext]+Get+$POST+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-cli01/onlineEndpoints/online-cli01/deployments/blue/getLogs?api-version=2022-05-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-cli01/onlineEndpoints/online-cli01/deployments/blue/getLogs?api-version=2022-05-01",
+      "Content": "{\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "4" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-request-id": [ "61f0c621-0273-4aeb-9750-4470ef0eae15" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1195" ],
+        "Request-Context": [ "appId=cid-v1:2d2e8e63-272e-4b3c-8598-4ee570a0e70d" ],
+        "x-ms-response-type": [ "standard" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-aml-cluster": [ "vienna-eastus-01" ],
+        "x-request-time": [ "0.379" ],
+        "x-ms-correlation-request-id": [ "61f0c621-0273-4aeb-9750-4470ef0eae15" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220605T094109Z:61f0c621-0273-4aeb-9750-4470ef0eae15" ],
+        "Date": [ "Sun, 05 Jun 2022 09:41:09 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "2442" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\n  \"content\": \"Instance status:\\nSystemSetup: Succeeded\\nUserContainerImagePull: Succeeded\\nModelDownload: Succeeded\\nUserContainerStart: Succeeded\\n\\nContainer events:\\nKind: Pod, Name: Pulling, Type: Normal, Time: 20220519-03:11:59.750675, Message: Start pulling container image\\nKind: Pod, Name: Pulling, Type: Normal, Time: 20220519-03:11:59.843068, Message: Start downloading models\\nKind: Pod, Name: Pulled, Type: Normal, Time: 20220519-03:12:54.679466, Message: Container image is pulled successfully\\nKind: Pod, Name: Downloaded, Type: Normal, Time: 20220519-03:12:54.679466, Message: Models are downloaded successfully or no model need to download\\nKind: Pod, Name: Created, Type: Normal, Time: 20220519-03:12:54.798575, Message: Created container inference-server\\nKind: Pod, Name: Started, Type: Normal, Time: 20220519-03:12:54.921722, Message: Started container inference-server\\n\\nContainer logs:\\n2022-05-19T03:12:54,952956956+00:00 - rsyslog/run \\n2022-05-19T03:12:54,953755454+00:00 - iot-server/run \\n2022-05-19T03:12:54,966555224+00:00 - gunicorn/run \\nDynamic Python package installation is disabled.\\nStarting HTTP server\\n2022-05-19T03:12:54,978721295+00:00 - nginx/run \\nEdgeHubConnectionString and IOTEDGE_IOTHUBHOSTNAME are not set. Exiting...\\n2022-05-19T03:12:55,232784837+00:00 - iot-server/finish 1 0\\n2022-05-19T03:12:55,239059079+00:00 - Exit code 1 is normal. Not restarting iot-server.\\nStarting gunicorn 20.1.0\\nListening at: http://127.0.0.1:31311 (14)\\nUsing worker: sync\\nworker timeout is set to 300\\nBooting worker with pid: 39\\nSPARK_HOME not set. Skipping PySpark Initialization.\\nInitializing logger\\n2022-05-19 03:12:55,927 | root | INFO | Starting up app insights client\\nlogging socket was found. logging is available.\\nlogging socket was found. logging is available.\\n2022-05-19 03:12:55,927 | root | INFO | Starting up request id generator\\n2022-05-19 03:12:55,927 | root | INFO | Starting up app insight hooks\\n2022-05-19 03:12:55,928 | root | INFO | Invoking user\u0027s init function\\nInit complete\\n2022-05-19 03:12:56,342 | root | INFO | Users\u0027s init has completed successfully\\n2022-05-19 03:12:56,344 | root | INFO | Skipping middleware: dbg_model_info as it\u0027s not enabled.\\n2022-05-19 03:12:56,344 | root | INFO | Skipping middleware: dbg_resource_usage as it\u0027s not enabled.\\n2022-05-19 03:12:56,345 | root | INFO | Scoring timeout setting is not found. Use default timeout: 3600000 ms\\n\\n\"\n}",
+      "isContentBase64": false
+    }
+  }
+}

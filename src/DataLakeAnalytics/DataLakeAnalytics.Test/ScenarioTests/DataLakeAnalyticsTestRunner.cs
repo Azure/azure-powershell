@@ -65,23 +65,23 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Test.ScenarioTests
 
         private static NewResourceManagementClient GetNewResourceManagementClient(MockContext context)
         {
-            return context.GetServiceClient<NewResourceManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+            return context.GetServiceClient<NewResourceManagementClient>();
         }
 
         private static DataLakeStoreAccountManagementClient GetDataLakeStoreAccountManagementClient(MockContext context)
         {
-            return context.GetServiceClient<DataLakeStoreAccountManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+            return context.GetServiceClient<DataLakeStoreAccountManagementClient>();
         }
 
         private static DataLakeAnalyticsAccountManagementClient GetDataLakeAnalyticsAccountManagementClient(MockContext context)
         {
-            return context.GetServiceClient<DataLakeAnalyticsAccountManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+            return context.GetServiceClient<DataLakeAnalyticsAccountManagementClient>();
         }
 
         private static DataLakeAnalyticsJobManagementClient GetDataLakeAnalyticsJobManagementClient(MockContext context)
         {
             var currentEnvironment = TestEnvironmentFactory.GetTestEnvironment();
-            var toReturn = context.GetServiceClient<DataLakeAnalyticsJobManagementClient>(currentEnvironment, true);
+            var toReturn = context.GetServiceClient<DataLakeAnalyticsJobManagementClient>(true);
             toReturn.AdlaJobDnsSuffix =
                 currentEnvironment.Endpoints.DataLakeAnalyticsJobAndCatalogServiceUri.OriginalString.Replace("https://", "");
             return toReturn;
@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Test.ScenarioTests
         private static DataLakeAnalyticsCatalogManagementClient GetDataLakeAnalyticsCatalogManagementClient(MockContext context)
         {
             var currentEnvironment = TestEnvironmentFactory.GetTestEnvironment();
-            var toReturn = context.GetServiceClient<DataLakeAnalyticsCatalogManagementClient>(currentEnvironment, true);
+            var toReturn = context.GetServiceClient<DataLakeAnalyticsCatalogManagementClient>(true);
             toReturn.AdlaCatalogDnsSuffix =
                 currentEnvironment.Endpoints.DataLakeAnalyticsJobAndCatalogServiceUri.OriginalString.Replace("https://", "");
             return toReturn;

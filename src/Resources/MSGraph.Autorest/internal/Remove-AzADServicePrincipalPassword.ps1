@@ -37,7 +37,7 @@ BODY <IPaths1Idoj4GServiceprincipalsServiceprincipalIdMicrosoftGraphRemovepasswo
   [(Any) <Object>]: This indicates any property can be added to this object.
   [KeyId <String>]: 
 .Link
-https://docs.microsoft.com/powershell/module/az.resources/remove-azadserviceprincipalpassword
+https://learn.microsoft.com/powershell/module/az.resources/remove-azadserviceprincipalpassword
 #>
 function Remove-AzADServicePrincipalPassword {
 [OutputType([System.Boolean])]
@@ -73,7 +73,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]

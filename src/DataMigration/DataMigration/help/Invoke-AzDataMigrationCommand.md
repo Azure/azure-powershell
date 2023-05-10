@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataMigration.dll-Help.xml
 Module Name: Az.DataMigration
-online version: https://docs.microsoft.com/powershell/module/az.datamigration/Invoke-AzDataMigrationCommand
+online version: https://learn.microsoft.com/powershell/module/az.datamigration/Invoke-AzDataMigrationCommand
 schema: 2.0.0
 ---
 
 # Invoke-AzDataMigrationCommand
 
 ## SYNOPSIS
-Creates a new command to be executed on an existing DMS task.
+Creates a new command to be executed on an existing DMS (classic) task.
 
 ## SYNTAX
 
@@ -25,7 +25,7 @@ The Invoke-AzDataMigrationCommand cmdlet creates a new command task to be run on
 
 ### Example 1
 ```powershell
-$command = Invoke-AzDataMigrationCommand -CommandType CompleteSqlDBSync -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName -TaskName $taskName
+$command = Invoke-AzDataMigrationCommand -CommandType CompleteSqlDBSync -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $projectName -TaskName $taskName
 ```
 
 The above examples uses the Invoke-AzDataMigrationCommand cmdlet to create a command for an existing service, project, and task

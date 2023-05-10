@@ -40,9 +40,9 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestSqlIaaSExtensionWith2016Image()
+        public void TestSqlIaaSExtensionWith2017Image()
         {
-            TestRunner.RunTestScript("Test-SetAzureRmVMSqlServerExtensionWith2016Image");
+            TestRunner.RunTestScript("Test-SetAzureRmVMSqlServerExtensionWith2017Image");
         }
     }
 }

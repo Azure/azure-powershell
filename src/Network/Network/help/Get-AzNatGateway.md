@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/get-aznatgateway
+online version: https://learn.microsoft.com/powershell/module/az.network/get-aznatgateway
 schema: 2.0.0
 ---
 
@@ -34,6 +34,9 @@ Gets a Nat Gateway resource in a resource group by name OR NatGateway Id OR all 
 ## EXAMPLES
 
 ### Example 1
+<!-- Skip: Output cannot be splitted from code -->
+
+
 ```powershell
 Get-AzNatGateway -ResourceGroupName "natgateway_test"
 

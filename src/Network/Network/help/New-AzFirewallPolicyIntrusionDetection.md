@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/new-azfirewallpolicyintrusiondetection
+online version: https://learn.microsoft.com/powershell/module/az.network/new-azfirewallpolicyintrusiondetection
 schema: 2.0.0
 ---
 
@@ -51,7 +51,7 @@ This example creates intrusion detection with bypass traffic setting
 ### Example 4: Create firewall policy with intrusion detection configured with private ranges setting
 ```powershell
 $intrusionDetection = New-AzFirewallPolicyIntrusionDetection -Mode "Deny" -PrivateRange @("167.220.204.0/24", "167.221.205.101/32")
-New-AzFirewallPolicy -Name fp1 -Location "westus2" -ResourceGroup TestRg -SkuTier "Premium" -IntrusionDetection $intrusionDetection
+New-AzFirewallPolicy -Name fp1 -Location "westus2" -ResourceGroupName TestRg -SkuTier "Premium" -IntrusionDetection $intrusionDetection
 ```
 
 This example creates intrusion detection with bypass traffic setting

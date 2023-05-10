@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/get-azprivateendpointconnection
+online version: https://learn.microsoft.com/powershell/module/az.network/get-azprivateendpointconnection
 schema: 2.0.0
 ---
 
@@ -27,7 +27,7 @@ Get-AzPrivateEndpointConnection -PrivateLinkResourceId <String> [-Description <S
 ### ByResource
 ```
 Get-AzPrivateEndpointConnection [-Description <String>] [-Name <String>] -ResourceGroupName <String>
- -ServiceName <String> [-DefaultProfile <IAzureContextContainer>] [-PrivateLinkResourceType <String>]
+ -ServiceName <String> [-DefaultProfile <IAzureContextContainer>] -PrivateLinkResourceType <String>
  [<CommonParameters>]
 ```
 
@@ -45,7 +45,7 @@ This example return a list of all private endpoint connections belongs to sql se
 
 ### Example 2
 ```powershell
-Get-AzPrivateEndpointConnection -Name MyPrivateEndpointConnection1 -ResourceGroupName TestResourceGroup -ServiceName MyPrivateLinkService -PrivateLinkResourceType 'Microsoft.Network/privateLinkServices'
+Get-AzPrivateEndpointConnection -Name MyPrivateEndpointConnection1 -ResourceGroupName TestResourceGroup -ServiceName MyPrivateLinkService -PrivateLinkResourceType Microsoft.Network/privateLinkServices
 ```
 
 This example get a private endpoint connection named MyPrivateEndpointConnection1 belongs to private link service named MyPrivateLinkService
@@ -94,7 +94,7 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
 ### -PrivateLinkResourceId
@@ -119,11 +119,10 @@ The private link resource type.
 Type: System.String
 Parameter Sets: ByResource
 Aliases:
-Accepted values: 
 
-Required: False
+Required: True
 Position: Named
-Default value: 'Microsoft.Network/privateLinkServices'
+Default value: None
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```

@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
 ms.assetid: BDF42420-3616-4A64-9562-1A896F828728
-online version: https://docs.microsoft.com/powershell/module/az.storage/new-azstoragesharesastoken
+online version: https://learn.microsoft.com/powershell/module/az.storage/new-azstoragesharesastoken
 schema: 2.0.0
 ---
 
@@ -33,15 +33,15 @@ The **New-AzStorageShareSASToken** cmdlet generates a shared access signature to
 ## EXAMPLES
 
 ### Example 1: Generate a shared access signature token for a share
-```
-PS C:\>New-AzStorageShareSASToken -ShareName "ContosoShare" -Permission "rwdl"
+```powershell
+New-AzStorageShareSASToken -ShareName "ContosoShare" -Permission "rwdl"
 ```
 
 This command creates a shared access signature token for the share named ContosoShare.
 
 ### Example 2: Generate multiple shared access signature token by using the pipeline
-```
-PS C:\>Get-AzStorageShare -Prefix "test" | New-AzStorageShareSASToken -Permission "rwdl"
+```powershell
+Get-AzStorageShare -Prefix "test" | New-AzStorageShareSASToken -Permission "rwdl"
 ```
 
 This command gets all the Storage shares that match the prefix test.
@@ -49,8 +49,8 @@ The command passes them to the current cmdlet by using the pipeline operator.
 The current cmdlet creates a shared access token for each Storage share that has the specified permissions.
 
 ### Example 3: Generate a shared access signature token that uses a shared access policy
-```
-PS C:\>New-AzStorageShareSASToken -ShareName "ContosoShare" -Policy "ContosoPolicy03"
+```powershell
+New-AzStorageShareSASToken -ShareName "ContosoShare" -Policy "ContosoPolicy03"
 ```
 
 This command creates a shared access signature token for the Storage share named ContosoShare that has the policy named ContosoPolicy03.
@@ -216,7 +216,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

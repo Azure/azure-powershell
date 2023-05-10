@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.PrivateDns.dll-Help.xml
 Module Name: Az.PrivateDns
-online version: https://docs.microsoft.com/powershell/module/az.privatedns/add-azprivatednsrecordconfig
+online version: https://learn.microsoft.com/powershell/module/az.privatedns/add-azprivatednsrecordconfig
 schema: 2.0.0
 ---
 
@@ -196,7 +196,7 @@ This example adds a PTR record to an existing record set.
 
 ### Example 6: Add a SRV record to a record set
 ```powershell
-$RecordSet = Get-AzPrivateDnsRecordSet -Name _sip._tcp -RecordType SRV -ResourceGroupName MyResourceGroup-ZoneName myzone.com
+$RecordSet = Get-AzPrivateDnsRecordSet -Name _sip._tcp -RecordType SRV -ResourceGroupName MyResourceGroup -ZoneName myzone.com
 Add-AzPrivateDnsRecordConfig -Priority 0 -Weight 5 -Port 8080 -Target target.example.com
 Set-AzPrivateDnsRecordSet -RecordSet $RecordSet
 

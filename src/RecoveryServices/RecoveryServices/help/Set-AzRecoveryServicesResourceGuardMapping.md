@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Backup.dll-Help.xml
 Module Name: Az.RecoveryServices
-online version:
+online version: https://learn.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesresourceguardmapping
 schema: 2.0.0
 ---
 
@@ -25,8 +25,8 @@ Sets the resource guard mapping to the recovery services vault. This cmdlet crea
 ### Example 1 Create a resource guard mapping in a cross tenant scenario
 
 ```powershell
-PS C:\> $token = (Get-AzAccessToken -TenantId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx").Token
-PS C:\> Set-AzRecoveryServicesResourceGuardMapping -VaultId $vault.ID -ResourceGuardId "Resource-Guard-Id" -Token $token
+$token = (Get-AzAccessToken -TenantId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx").Token
+Set-AzRecoveryServicesResourceGuardMapping -VaultId $vault.ID -ResourceGuardId "Resource-Guard-Id" -Token $token
 ```
 
 The first command fetches the access token for the resource guard tenant where the resource guard is present. The second command creates a mapping between the RSVault $vault and Resource guard. Please note that token parameter is optional and only needed to authenticate cross tenant protected opeartions.

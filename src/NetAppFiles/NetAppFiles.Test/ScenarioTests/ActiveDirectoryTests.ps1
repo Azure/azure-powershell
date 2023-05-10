@@ -77,7 +77,7 @@ function Test-ActiveDirectoryCrud
                               
         #remove by name
         Remove-AzNetAppFilesActiveDirectory -ResourceGroupName $resourceGroup -AccountName $accName1 -ActiveDirectoryId $getRetrievedAd.ActiveDirectoryId
-        Start-Sleep -s 15
+        Start-TestSleep -Seconds 15
         $retrievedActiveDirectoryList = Get-AzNetAppFilesActiveDirectory -ResourceGroupName $resourceGroup -AccountName $accName1
         Assert-AreEqual 0 $retrievedActiveDirectoryList.Length
     }

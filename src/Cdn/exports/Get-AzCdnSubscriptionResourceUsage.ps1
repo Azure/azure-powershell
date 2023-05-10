@@ -20,14 +20,12 @@ Check the quota and actual usage of the CDN profiles under the given subscriptio
 .Description
 Check the quota and actual usage of the CDN profiles under the given subscription.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+Get-AzCdnSubscriptionResourceUsage
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IResourceUsage
 .Link
-https://docs.microsoft.com/powershell/module/az.cdn/get-azcdnsubscriptionresourceusage
+https://learn.microsoft.com/powershell/module/az.cdn/get-azcdnsubscriptionresourceusage
 #>
 function Get-AzCdnSubscriptionResourceUsage {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IResourceUsage])]
@@ -97,7 +95,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Runspace.Version.ToString()
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
         }         
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {

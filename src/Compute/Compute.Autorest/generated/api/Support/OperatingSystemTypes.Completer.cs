@@ -6,10 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Support
 {
 
-    /// <summary>
-    /// This property allows you to specify the supported type of the OS that application is built for. <br><br> Possible values
-    /// are: <br><br> **Windows** <br><br> **Linux**
-    /// </summary>
+    /// <summary>The Operating System type.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Compute.Support.OperatingSystemTypesTypeConverter))]
     public partial struct OperatingSystemTypes :
         System.Management.Automation.IArgumentCompleter

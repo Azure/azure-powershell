@@ -22,6 +22,11 @@ using Microsoft.Rest;
 using System;
 using System.Collections.Generic;
 using Microsoft.Azure.Commands.Common.Exceptions;
+using Track2 = Azure.Containers.ContainerRegistry;
+using Azure.Containers.ContainerRegistry;
+using Microsoft.Azure.Commands.Common.Strategies;
+using Microsoft.Azure.Commands.ContainerRegistry.Track2Models;
+using Azure;
 
 namespace Microsoft.Azure.Commands.ContainerRegistry
 {
@@ -33,6 +38,8 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
         private const string _refreshTokenKey = "AcrRefreshToken";
 
         private AzureContainerRegistryClient _client;
+        private Track2.ContainerRegistryClient _track2Client;
+        private Track2TokenCredential _credential;
         private string _accessToken = default(string);
         private string _endPoint;
         private readonly string _suffix;
@@ -100,6 +107,12 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
         {
             _endPoint = RegistryName.ToLower() + '.' + _suffix;
             _client.LoginUri = _https + _endPoint;
+            _credential = new Track2TokenCredential(new DataServiceCredential(AzureSession.Instance.AuthenticationFactory,
+                        _context, AzureEnvironment.ExtendedEndpoint.ContainerRegistryEndpointResourceId));
+            _track2Client = new Track2.ContainerRegistryClient(new Uri(_https + _endPoint), _credential, new Track2.ContainerRegistryClientOptions()
+            {
+                Audience = _context.Environment.ExtendedProperties[AzureEnvironment.ExtendedEndpoint.ContainerRegistryEndpointResourceId]
+            });
         }
 
         public string GetEndPoint()
@@ -196,7 +209,11 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
 
         public PSTagList ListTag(string repository)
         {
-            return new ContainerRegistryTagListOperation(this, repository).ProcessRequest();
+            ContainerRepository image = _track2Client.GetRepository(repository);
+
+            Pageable<ArtifactManifestProperties> properties = image.GetAllManifestProperties();
+
+            return new PSTagList(properties);
         }
 
         public bool RemoveTag(string repository, string tag)

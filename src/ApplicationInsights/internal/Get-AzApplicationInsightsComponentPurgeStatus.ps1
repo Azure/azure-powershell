@@ -42,11 +42,12 @@ INPUTOBJECT <IApplicationInsightsIdentity>: Identity Parameter
   [PurgeId <String>]: In a purge status request, this is the Id of the operation the status of which is returned.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ResourceName <String>]: The name of the Application Insights component resource.
+  [RevisionId <String>]: The id of the workbook's revision.
   [StorageType <StorageType?>]: The type of the Application Insights component data source for the linked storage account.
   [SubscriptionId <String>]: The ID of the target subscription.
   [WebTestName <String>]: The name of the Application Insights WebTest resource.
 .Link
-https://docs.microsoft.com/powershell/module/az.applicationinsights/get-azapplicationinsightscomponentpurgestatus
+https://learn.microsoft.com/powershell/module/az.applicationinsights/get-azapplicationinsightscomponentpurgestatus
 #>
 function Get-AzApplicationInsightsComponentPurgeStatus {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Support.PurgeState])]

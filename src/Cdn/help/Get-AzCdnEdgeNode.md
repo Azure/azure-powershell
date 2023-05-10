@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Cdn
-online version: https://docs.microsoft.com/powershell/module/az.cdn/get-azcdnedgenode
+online version: https://learn.microsoft.com/powershell/module/az.cdn/get-azcdnedgenode
 schema: 2.0.0
 ---
 
@@ -21,27 +21,20 @@ Edgenodes are the global Point of Presence (POP) locations used to deliver CDN c
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List AzureCDN Edge Noes
 ```powershell
-{{ Add code here }}
+Get-AzCdnEdgeNode
 ```
 
 ```output
-{{ Add output here }}
+Name
+----
+Standard_Verizon
+Premium_Verizon
+Custom_Verizon
 ```
 
-{{ Add description here }}
 
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
 
 ## PARAMETERS
 

@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights.dll-Help.xml
 Module Name: Az.OperationalInsights
 ms.assetid: DFEB9EA3-574A-463B-8B70-46D76ABCA84D
-online version: https://docs.microsoft.com/powershell/module/az.operationalinsights/new-azoperationalinsightssavedsearch
+online version: https://learn.microsoft.com/powershell/module/az.operationalinsights/new-azoperationalinsightssavedsearch
 schema: 2.0.0
 ---
 
@@ -35,7 +35,7 @@ This command creates a new saved search.
 ## PARAMETERS
 
 ### -Category
-Specifies the category name.
+The saved search category.
 
 ```yaml
 Type: System.String
@@ -50,7 +50,7 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
@@ -65,7 +65,7 @@ Accept wildcard characters: False
 ```
 
 ### -DisplayName
-Specifies the saved search display name.
+The saved search display name.
 
 ```yaml
 Type: System.String
@@ -80,7 +80,7 @@ Accept wildcard characters: False
 ```
 
 ### -Force
-Forces the command to run without asking for user confirmation.
+Don't ask for confirmation.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -110,7 +110,9 @@ Accept wildcard characters: False
 ```
 
 ### -FunctionParameter
-The optional function parameters if query serves as a function. Value should be in the following format: 'param-name1:type1 = default_value1, param-name2:type2 = default_value2'. For more examples and proper syntax please refer to https://docs.microsoft.com/azure/kusto/query/functions/user-defined-functions.
+The optional function parameters if query serves as a function.
+Value should be in the following format: 'param-name1:type1 = default_value1, param-name2:type2 = default_value2'.
+For more examples and proper syntax please refer to https://learn.microsoft.com/en-us/azure/kusto/query/functions/user-defined-functions.
 
 ```yaml
 Type: System.String
@@ -125,7 +127,7 @@ Accept wildcard characters: False
 ```
 
 ### -Query
-Specifies the query expression for the saved search.
+The saved search query.
 
 ```yaml
 Type: System.String
@@ -140,7 +142,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Specifies the resource group name.
+The resource group name.
 
 ```yaml
 Type: System.String
@@ -155,7 +157,7 @@ Accept wildcard characters: False
 ```
 
 ### -SavedSearchId
-Specifies the saved search ID.
+The saved search id.
 
 ```yaml
 Type: System.String
@@ -185,7 +187,7 @@ Accept wildcard characters: False
 ```
 
 ### -Version
-Specifies the version.
+The saved search version.
 
 ```yaml
 Type: System.Int64
@@ -194,13 +196,13 @@ Aliases:
 
 Required: False
 Position: 7
-Default value: 1
+Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
 ### -WorkspaceName
-Specifies the workspace name.
+The workspace name.
 
 ```yaml
 Type: System.String
@@ -224,7 +226,7 @@ Aliases: cf
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -240,7 +242,7 @@ Aliases: wi
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -263,7 +265,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
-[Azure Operational Insights Cmdlets](./Az.OperationalInsights.md)
-
-

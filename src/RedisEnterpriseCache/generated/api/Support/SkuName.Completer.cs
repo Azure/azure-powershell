@@ -30,31 +30,31 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Enterprise_E10".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Enterprise_E10", "Enterprise_E10", global::System.Management.Automation.CompletionResultType.ParameterValue, "Enterprise_E10");
+                yield return new global::System.Management.Automation.CompletionResult("'Enterprise_E10'", "Enterprise_E10", global::System.Management.Automation.CompletionResultType.ParameterValue, "Enterprise_E10");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Enterprise_E20".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Enterprise_E20", "Enterprise_E20", global::System.Management.Automation.CompletionResultType.ParameterValue, "Enterprise_E20");
+                yield return new global::System.Management.Automation.CompletionResult("'Enterprise_E20'", "Enterprise_E20", global::System.Management.Automation.CompletionResultType.ParameterValue, "Enterprise_E20");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Enterprise_E50".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Enterprise_E50", "Enterprise_E50", global::System.Management.Automation.CompletionResultType.ParameterValue, "Enterprise_E50");
+                yield return new global::System.Management.Automation.CompletionResult("'Enterprise_E50'", "Enterprise_E50", global::System.Management.Automation.CompletionResultType.ParameterValue, "Enterprise_E50");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Enterprise_E100".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Enterprise_E100", "Enterprise_E100", global::System.Management.Automation.CompletionResultType.ParameterValue, "Enterprise_E100");
+                yield return new global::System.Management.Automation.CompletionResult("'Enterprise_E100'", "Enterprise_E100", global::System.Management.Automation.CompletionResultType.ParameterValue, "Enterprise_E100");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "EnterpriseFlash_F300".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("EnterpriseFlash_F300", "EnterpriseFlash_F300", global::System.Management.Automation.CompletionResultType.ParameterValue, "EnterpriseFlash_F300");
+                yield return new global::System.Management.Automation.CompletionResult("'EnterpriseFlash_F300'", "EnterpriseFlash_F300", global::System.Management.Automation.CompletionResultType.ParameterValue, "EnterpriseFlash_F300");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "EnterpriseFlash_F700".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("EnterpriseFlash_F700", "EnterpriseFlash_F700", global::System.Management.Automation.CompletionResultType.ParameterValue, "EnterpriseFlash_F700");
+                yield return new global::System.Management.Automation.CompletionResult("'EnterpriseFlash_F700'", "EnterpriseFlash_F700", global::System.Management.Automation.CompletionResultType.ParameterValue, "EnterpriseFlash_F700");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "EnterpriseFlash_F1500".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("EnterpriseFlash_F1500", "EnterpriseFlash_F1500", global::System.Management.Automation.CompletionResultType.ParameterValue, "EnterpriseFlash_F1500");
+                yield return new global::System.Management.Automation.CompletionResult("'EnterpriseFlash_F1500'", "EnterpriseFlash_F1500", global::System.Management.Automation.CompletionResultType.ParameterValue, "EnterpriseFlash_F1500");
             }
         }
     }

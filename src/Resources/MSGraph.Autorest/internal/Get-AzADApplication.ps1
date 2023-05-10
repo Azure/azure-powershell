@@ -28,14 +28,16 @@ Get-AzADApplication -First 10
 .Example
 Get-AzADApplication -DisplayNameStartsWith $prefix
 .Example
-Get-AzADapplication -ObjectId $id -Select Tags -AppendSelected
+Get-AzADApplication -ObjectId $id -Select Tags -AppendSelected
 .Example
-Get-AzADapplication -OwnedApplication
+Get-AzADApplication -OwnedApplication
+.Example
+Get-AzADApplication -Filter "startsWith(DisplayName,'some-name')"
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphApplication
 .Link
-https://docs.microsoft.com/powershell/module/az.resources/get-azadapplication
+https://learn.microsoft.com/powershell/module/az.resources/get-azadapplication
 #>
 function Get-AzADApplication {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphApplication])]
@@ -111,7 +113,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]

@@ -1,22 +1,28 @@
-### Example 1: {{ Add title here }}
+### Example 1: List AzureFrontDoor origin groups under the profile
 ```powershell
-{{ Add code here }}
+Get-AzFrontDoorCdnOriginGroup -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6
 ```
 
 ```output
-{{ Add output here }}
+Name   ResourceGroupName
+----   -----------------
+org001 testps-rg-da16jm
+org002 testps-rg-da16jm
 ```
 
-{{ Add description here }}
+List AzureFrontDoor origin groups under the profile
 
-### Example 2: {{ Add title here }}
+
+
+### Example 2: Get an AzureFrontDoor origin group under the profile
 ```powershell
-{{ Add code here }}
+Get-AzFrontDoorCdnOriginGroup -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -OriginGroupName org001
 ```
 
 ```output
-{{ Add output here }}
+Name   ResourceGroupName
+----   -----------------
+org001 testps-rg-da16jm
 ```
-
-{{ Add description here }}
+Get an AzureFrontDoor origin group under the profile
 

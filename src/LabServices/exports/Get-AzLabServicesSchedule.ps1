@@ -88,7 +88,7 @@ LAB <Lab>:
   [Tag <ITrackedResourceTags>]: Resource tags.
     [(Any) <String>]: This indicates any property can be added to this object.
 .Link
-https://docs.microsoft.com/powershell/module/az.labservices/get-azlabservicesschedule
+https://learn.microsoft.com/powershell/module/az.labservices/get-azlabservicesschedule
 #>
 function Get-AzLabServicesSchedule {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ISchedule])]

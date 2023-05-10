@@ -13,11 +13,13 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.Management.PowerBIDedicated" Version="0.11.0-preview" />
-    <PackageReference Include="System.Security.Permissions" Version="4.5.0" />
+    <PackageReference Include="System.Security.Permissions" Version="4.7.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\PowerBIEmbedded\PowerBIEmbedded.csproj" />
   </ItemGroup>
+
+  <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.Post.props" />
 
 </Project>

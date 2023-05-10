@@ -11,7 +11,7 @@ while(-not $mockingPath) {
 }
 . ($mockingPath | Select-Object -First 1).FullName
 
-Describe 'Get-AzGalleryApplication' {
+Describe 'Get-AzGalleryApplication' -Tag 'LiveOnly' {
     
     BeforeAll { 
         $galleryName = "testgallery" + $env.RandomString
@@ -21,6 +21,7 @@ Describe 'Get-AzGalleryApplication' {
     }
 
     It 'List Get-AzGalleryApplication' {
+        Import-Module Az.Compute
         Write-Host -ForegroundColor Yellow "Checking GalleryApplication Get" 
         $galApp = Get-AzGalleryApplication -ResourceGroupName $env.ResourceGroupName -GalleryName $galleryName
         Write-Host -ForegroundColor Yellow "Gallery Application Count: " $galApp.Count
@@ -28,11 +29,13 @@ Describe 'Get-AzGalleryApplication' {
     }
 
     It 'Get' {
+        Import-Module Az.Compute
         $galApp = Get-AzGalleryApplication -ResourceGroupName $env.ResourceGroupName -GalleryName $galleryName -Name $galleryApplicationName
         $galApp.Count | Should BeGreaterThan 0
     }
 
     It 'GetViaIdentity' {
+        Import-Module Az.Compute
         $galApp = Get-AzGalleryApplication -ResourceGroupName $env.ResourceGroupName -GalleryName $galleryName -Name $galleryApplicationName
         $galAppId = Get-AzGalleryApplication -InputObject $galApp.Id
         $galAppId.Count | Should BeGreaterThan 0

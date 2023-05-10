@@ -29,7 +29,7 @@ Name                                 SystemDataCreatedAt SystemDataCreatedBy Sys
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.ICollection
 .Link
-https://docs.microsoft.com/powershell/module/az.marketplace/set-azmarketplaceprivatestorecollection
+https://learn.microsoft.com/powershell/module/az.marketplace/set-azmarketplaceprivatestorecollection
 #>
 function Set-AzMarketplacePrivateStoreCollection {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.ICollection])]

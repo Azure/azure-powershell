@@ -20,11 +20,10 @@ Get federatedIdentityCredentials by Id from applications.
 .Description
 Get federatedIdentityCredentials by Id from applications.
 .Link
-https://docs.microsoft.com/powershell/module/az.resources/get-azadappfederatedidentitycredentials
+https://learn.microsoft.com/powershell/module/az.resources/get-azadappfederatedcredential
 #>
-function Get-AzADAppFederatedIdentityCredential {
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.PreviewMessageAttribute("This cmdlet is using API version beta which is under preview.")]
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10Beta.IMicrosoftGraphFederatedIdentityCredential])]
+function Get-AzADAppFederatedCredential {
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphFederatedIdentityCredential])]
     [CmdletBinding(DefaultParameterSetName='ListByApplicationObjectId', PositionalBinding=$false)]
     param(
         [Parameter(ParameterSetName = 'ListByApplicationObjectId', Mandatory)]
@@ -46,7 +45,7 @@ function Get-AzADAppFederatedIdentityCredential {
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Path')]
         [System.String]
         # key: id of federatedIdentityCredential
-        ${Id},
+        ${FederatedCredentialId},
     
         [Parameter()]
         [AllowEmptyCollection()]
@@ -73,7 +72,7 @@ function Get-AzADAppFederatedIdentityCredential {
         [Parameter(ParameterSetName='ListByApplicationObject')]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Query')]
         [System.String]
-        # Filter items by property values
+        # Filter items by property values, for more detail about filter query please see: https://learn.microsoft.com/en-us/graph/filter-query-parameter
         ${Filter},
     
         [Parameter(ParameterSetName='ListByApplicationObjectId')]
@@ -158,6 +157,6 @@ function Get-AzADAppFederatedIdentityCredential {
             $PSBoundParameters['ApplicationObjectId'] = $PSBoundParameters['ApplicationObject'].Id
             $PSBoundParameters.Remove('ApplicationObject')
         }
-        . Az.MSGraph.internal\Get-AzADAppFederatedIdentityCredential @PSBoundParameters
+        . Az.MSGraph.internal\Get-AzADAppFederatedCredential @PSBoundParameters
     }
 }

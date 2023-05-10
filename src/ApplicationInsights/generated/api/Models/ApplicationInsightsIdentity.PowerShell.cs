@@ -115,6 +115,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IApplicationInsightsIdentityInternal)this).StorageType = (Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Support.StorageType?) content.GetValueForProperty("StorageType",((Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IApplicationInsightsIdentityInternal)this).StorageType, Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Support.StorageType.CreateFrom);
             }
+            if (content.Contains("RevisionId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IApplicationInsightsIdentityInternal)this).RevisionId = (string) content.GetValueForProperty("RevisionId",((Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IApplicationInsightsIdentityInternal)this).RevisionId, global::System.Convert.ToString);
+            }
             if (content.Contains("Id"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IApplicationInsightsIdentityInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IApplicationInsightsIdentityInternal)this).Id, global::System.Convert.ToString);
@@ -175,6 +179,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models
             if (content.Contains("StorageType"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IApplicationInsightsIdentityInternal)this).StorageType = (Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Support.StorageType?) content.GetValueForProperty("StorageType",((Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IApplicationInsightsIdentityInternal)this).StorageType, Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Support.StorageType.CreateFrom);
+            }
+            if (content.Contains("RevisionId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IApplicationInsightsIdentityInternal)this).RevisionId = (string) content.GetValueForProperty("RevisionId",((Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IApplicationInsightsIdentityInternal)this).RevisionId, global::System.Convert.ToString);
             }
             if (content.Contains("Id"))
             {

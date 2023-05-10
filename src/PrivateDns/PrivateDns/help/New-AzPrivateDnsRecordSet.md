@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.PrivateDns.dll-Help.xml
 Module Name: Az.PrivateDns
-online version: https://docs.microsoft.com/powershell/module/az.privatedns/new-azprivatednsrecordset
+online version: https://learn.microsoft.com/powershell/module/az.privatedns/new-azprivatednsrecordset
 schema: 2.0.0
 ---
 
@@ -39,6 +39,7 @@ The New-AzPrivateDnsRecordSet cmdlet creates a new Private Domain Name System (D
 ## EXAMPLES
 
 ### Example 1: Create a RecordSet of type A
+<!-- Skip: Output cannot be splitted from code -->
 ```powershell
 $Records = @()
 $Records += New-AzPrivateDnsRecordConfig -IPv4Address 1.2.3.4

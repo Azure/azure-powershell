@@ -29,7 +29,7 @@ PYTHON
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.ILanguageExtension
 .Link
-https://docs.microsoft.com/powershell/module/az.synapse/get-azsynapsekustopoollanguageextension
+https://learn.microsoft.com/powershell/module/az.synapse/get-azsynapsekustopoollanguageextension
 #>
 function Get-AzSynapseKustoPoolLanguageExtension {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.ILanguageExtension])]

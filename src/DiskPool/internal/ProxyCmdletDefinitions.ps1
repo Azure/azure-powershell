@@ -31,7 +31,7 @@ PS C:\> {{ Add code here }}
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IStoragePoolRpOperation
 .Link
-https://docs.microsoft.com/powershell/module/az.diskpool/get-azdiskpooloperation
+https://learn.microsoft.com/powershell/module/az.diskpool/get-azdiskpooloperation
 #>
 function Get-AzDiskPoolOperation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IStoragePoolRpOperation])]
@@ -148,7 +148,7 @@ To create the parameters described below, construct a hash table containing the 
 DISK <IDisk[]>: List of Azure Managed Disks to attach to a Disk Pool.
   Id <String>: Unique Azure Resource ID of the Managed Disk.
 .Link
-https://docs.microsoft.com/powershell/module/az.diskpool/new-azdiskpool
+https://learn.microsoft.com/powershell/module/az.diskpool/new-azdiskpool
 #>
 function New-AzDiskPool {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IDiskPool])]
@@ -380,7 +380,7 @@ INPUTOBJECT <IDiskPoolIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.diskpool/update-azdiskpool
+https://learn.microsoft.com/powershell/module/az.diskpool/update-azdiskpool
 #>
 function Update-AzDiskPool {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IDiskPool])]

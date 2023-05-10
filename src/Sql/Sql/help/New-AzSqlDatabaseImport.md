@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
 ms.assetid: A1327BC6-F090-490E-8DC2-2CC48A21C2C0
-online version: https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabaseimport
+online version: https://learn.microsoft.com/powershell/module/az.sql/new-azsqldatabaseimport
 schema: 2.0.0
 ---
 
@@ -378,5 +378,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 [New-AzSqlDatabaseExport](./New-AzSqlDatabaseExport.md)
 
-[SQL Database Documentation](https://docs.microsoft.com/azure/sql-database/)
+[SQL Database Documentation](https://learn.microsoft.com/azure/sql-database/)
 

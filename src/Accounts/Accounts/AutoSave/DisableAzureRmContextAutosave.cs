@@ -92,6 +92,11 @@ namespace Microsoft.Azure.Commands.Profile.Context
                 builder.Reset();
             }
 
+            if (AzureSession.Instance.TryGetComponent(AzKeyStore.Name, out AzKeyStore keystore))
+            {
+                keystore.DisableSyncToStorage();
+            }
+
             if (writeAutoSaveFile)
             {
                 FileUtilities.EnsureDirectoryExists(session.ProfileDirectory);

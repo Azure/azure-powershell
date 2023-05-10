@@ -50,6 +50,7 @@ namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Models
         /// <param name="hsmName">Name of the HSM</param>
         /// <param name="certificates">Certificates used to encrypt the security domain data</param>
         /// <param name="quorum">Specify how many keys are required to decrypt the data</param>
+        /// <param name="cancellationToken"></param>
         /// <returns>Encrypted HSM security domain data in string</returns>
         public string DownloadSecurityDomain(string hsmName, IEnumerable<X509Certificate2> certificates, int quorum, CancellationToken cancellationToken)
         {
@@ -275,6 +276,7 @@ namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Models
         /// This key is used to encrypt SD data before uploading to the HSM where SD is going to be restored.
         /// </summary>
         /// <param name="hsmName"></param>
+        /// <param name="cancellationToken"></param>
         /// <returns></returns>
         public X509Certificate2 DownloadSecurityDomainExchangeKey(string hsmName, CancellationToken cancellationToken)
         {
@@ -508,6 +510,7 @@ namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Models
         /// </summary>
         /// <param name="hsmName"></param>
         /// <param name="securityDomainData">Encrypted by exchange key</param>
+        /// <param name="cancellationToken"></param>
         public void RestoreSecurityDomain(string hsmName, SecurityDomainRestoreData securityDomainData, CancellationToken cancellationToken)
         {
             string securityDomain = JsonConvert.SerializeObject(new SecurityDomainWrapper

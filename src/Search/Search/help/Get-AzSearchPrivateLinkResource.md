@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Search.dll-Help.xml
 Module Name: Az.Search
-online version: https://docs.microsoft.com/powershell/module/az.search/get-AzSearchPrivateLinkResource
+online version: https://learn.microsoft.com/powershell/module/az.search/get-AzSearchPrivateLinkResource
 schema: 2.0.0
 ---
 
@@ -39,8 +39,9 @@ The **Get-AzSearchPrivateLinkResource** cmdlet gets private link resource detail
 ```powershell
 Get-AzSearchPrivateLinkResource -ResourceGroupName arjagann -Name arjagann-test-cuseuap | ConvertTo-Json
 ```
+
 ```output
-  "Id": "/subscriptions/a4337210-c6b0-4de4-907a-688f1c120d9a/resourceGroups/arjagann/providers/Microsoft.Search/searchServices/arjagann-test-cuseuap/privateLinkResources/searchService",
+"Id": "/subscriptions/a4337210-c6b0-4de4-907a-688f1c120d9a/resourceGroups/arjagann/providers/Microsoft.Search/searchServices/arjagann-test-cuseuap/privateLinkResources/searchService",
   "Type": "Microsoft.Search/searchServices/privateLinkResources",
   "GroupId": "searchService",
   "RequiredMembers": [

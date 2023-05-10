@@ -15,6 +15,7 @@
 using Microsoft.Azure.Commands.ServiceBus.Commands;
 using Microsoft.Azure.Commands.ServiceBus.Models;
 using Microsoft.Azure.Management.ServiceBus.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System;
 using System.Collections.Generic;
 using System.Management.Automation;
@@ -22,6 +23,7 @@ using System.Text;
 
 namespace Microsoft.Azure.Commands.ServiceBus.Cmdlets.Namespace
 {
+    [GenericBreakingChange("Output type of the cmdlet would change to `Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202210Preview.KeyVaultProperties`.", deprecateByVersion: DeprecateByVersion, changeInEfectByDate: ChangeInEffectByDate)]
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ServiceBusEncryptionConfig"), OutputType(typeof(PSEncryptionConfigAttributes))]
     public class NewKeyVaultPropertyObject : AzureServiceBusCmdletBase
     {

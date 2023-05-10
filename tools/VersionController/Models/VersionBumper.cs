@@ -33,6 +33,10 @@ namespace VersionController.Models
 
         private string _oldVersion, _newVersion;
         private bool _isPreview;
+
+        // Use static variable to store accounts version to avoid calculating more than once
+        private static string _accountsVersion = null;
+
         private IList<string> _changedModules { get; set; }
 
         public AzurePSVersion MinimalVersion { get; set; }
@@ -73,11 +77,75 @@ namespace VersionController.Models
             UpdateSerializedAssemblyVersion();
             UpdateChangeLog();
             var releaseNotes = GetReleaseNotes();
+            _accountsVersion = _accountsVersion ?? GetLatestAccountsVersion();
             UpdateOutputModuleManifest(releaseNotes);
             UpdateDependentModules();
             UpdateRollupModuleManifest();
             UpdateAssemblyInfo();
             Console.WriteLine("Finished bumping version " + moduleName + "\n");
+        }
+
+        private string GetLatestAccountsVersion()
+        {
+            var localVersion = GetLocalAccountsVersion();
+            var version = GetAccountsVersionFromPSGallery();
+            if(!string.IsNullOrEmpty(localVersion) && !string.IsNullOrEmpty(version))
+            {
+                return new System.Version(localVersion).CompareTo(value: new System.Version(version)) > 0 ? localVersion : version;
+            }else if (string.IsNullOrEmpty(localVersion))
+            {
+                return version;
+            }else if (string.IsNullOrEmpty(version))
+            {
+                return localVersion;
+            }
+            else
+            {
+                throw new Exception("Can not find the latest version for Az.Accounts.");
+            }
+
+        }
+
+        /// <summary>
+        /// Get the latest version of Az.Accounts in local
+        /// </summary>
+        /// <returns></returns>
+        private string GetLocalAccountsVersion()
+        {
+
+            // Assume in outputModuleDirectory/../Az.Accounts/Az.Accounts.psd1 exists
+            var accountsOutputDirectory = Path.Combine(Directory.GetParent(_fileHelper.OutputModuleDirectory).FullName,  "Az.Accounts");
+            var accountsManifest = Directory.GetFiles(accountsOutputDirectory, "Az.Accounts.psd1", SearchOption.TopDirectoryOnly)
+                                            .FirstOrDefault();
+
+            string localVersion = null;
+            bool localPreview = false;
+            using (PowerShell powershell = PowerShell.Create())
+            {
+                powershell.AddScript("$metadata = Test-ModuleManifest -Path " + accountsManifest + ";$metadata.Version;$metadata.PrivateData.PSData.Prerelease");
+                var cmdletResult = powershell.Invoke();
+                localVersion = cmdletResult[0]?.ToString();
+                localPreview = !string.IsNullOrEmpty(cmdletResult[1]?.ToString());
+            }
+            // Console.WriteLine("The version of Az.Accounts in local is " + localVersion);
+            return localPreview ? null : localVersion;
+        }
+
+        /// <summary>
+        /// Get the latest version of Az.Accounts from PSGallery
+        /// </summary>
+        /// <returns></returns>
+        private string GetAccountsVersionFromPSGallery()
+        {
+            string version = null;
+            using (PowerShell powershell = PowerShell.Create())
+            {
+                powershell.AddScript("(Find-Module Az.Accounts -Repository PSGallery -AllVersions | Sort-Object {[System.Version]$_.Version} -Descending)[0].Version");
+                var cmdletResult = powershell.Invoke();
+                version = cmdletResult[0]?.ToString();
+            }
+            // Console.WriteLine("The version of Az.Accounts in PSGallery is " + version );
+            return version;
         }
 
         /// <summary>
@@ -373,18 +441,44 @@ namespace VersionController.Models
             var projectModuleManifestPath = _fileHelper.ProjectModuleManifestPath;
             var tempModuleManifestPath = Path.Combine(outputModuleDirectory, moduleName + "-temp.psd1");
             File.Copy(outputModuleManifestPath, tempModuleManifestPath, true);
+
             var script = "$releaseNotes = @();";
             releaseNotes.ForEach(l => script += "$releaseNotes += \"" + l + "\";");
+
+            // Get required module list and update Az,Accounts' version
+            var getRequiredModulesScript = "Import-LocalizedData -BaseDirectory " + outputModuleDirectory + " -FileName " + Path.GetFileName(outputModuleManifestPath) + " -BindingVariable moduleInfo;";
+            getRequiredModulesScript += "$requiredModules = @();";
+            getRequiredModulesScript += "$moduleInfo.RequiredModules.ForEach({ " +
+                        "if ($_.ModuleName -eq \"Az.Accounts\"){ " +
+                        "  $requiredModules += @{ModuleName = \"Az.Accounts\"; ModuleVersion = \"" + _accountsVersion + "\"} " +
+                        "}else " +
+                        "{ " +
+                        "  $requiredModules += $_ " +
+                        "} " +
+                      "});";
+
+            // Update module manifest
+            script += getRequiredModulesScript;
             script += $"$env:PSModulePath+=\";{_fileHelper.OutputResourceManagerDirectory}\";";
             script += "Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope Process;";
-            script += "Update-ModuleManifest -Path " + tempModuleManifestPath + " -ModuleVersion " + _newVersion + " -ReleaseNotes $releaseNotes";
+            script += "if ($requiredModules.Count -gt 0){" +
+                   "Update-ModuleManifest -Path " + tempModuleManifestPath + " -ModuleVersion " + _newVersion + " -ReleaseNotes $releaseNotes" + " -RequiredModules $requiredModules" +
+                "}else {" +
+                   "Update-ModuleManifest -Path " + tempModuleManifestPath + " -ModuleVersion " + _newVersion + " -ReleaseNotes $releaseNotes" +
+                "};";
+            script += "$?";
+
             using (PowerShell powershell = PowerShell.Create())
             {
                 powershell.AddScript(script);
                 var result = powershell.Invoke();
-                if (powershell.Streams.Error.Any())
+                bool exitcode = false;
+                if (result.Count > 0 && 
+                    (!bool.TryParse(result.Last()?.ToString(), out exitcode)) || !exitcode)
                 {
-                    Console.WriteLine($"Found error in updating module {_fileHelper.ModuleName}: {powershell.Streams.Error.First().ToString()}");
+                    var errorMsg = $"Found error in updating module {_fileHelper.ModuleName}: {powershell.Streams.Error.First()?.ToString()}";
+                    _logger.LogError(errorMsg);
+                    throw new Exception(errorMsg);
                 }
             }
 
@@ -392,6 +486,8 @@ namespace VersionController.Models
             tempModuleContent = tempModuleContent.Select(l => l = l.Replace(moduleName + "-temp", moduleName)).ToArray();
             var pattern = @"RootModule(\s*)=(\s*)(['\""])" + moduleName + @"(\.)psm1(['\""])";
             tempModuleContent = tempModuleContent.Select(l => Regex.Replace(l, pattern, @"# RootModule = ''")).ToArray();
+            
+            
             File.WriteAllLines(projectModuleManifestPath, tempModuleContent);
             File.Delete(tempModuleManifestPath);
         }

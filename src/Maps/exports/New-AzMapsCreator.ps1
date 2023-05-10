@@ -32,7 +32,7 @@ eastus2  creator-01 Microsoft.Maps/accounts/creators
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.Api20210201.ICreator
 .Link
-https://docs.microsoft.com/powershell/module/az.maps/new-azmapscreator
+https://learn.microsoft.com/powershell/module/az.maps/new-azmapscreator
 #>
 function New-AzMapsCreator {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.Api20210201.ICreator])]

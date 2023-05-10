@@ -31,7 +31,7 @@ PS C:\> {{ Add code here }}
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoredResource
 .Link
-https://docs.microsoft.com/powershell/module/az.logz/get-azlogzsubaccountmonitoredresource
+https://learn.microsoft.com/powershell/module/az.logz/get-azlogzsubaccountmonitoredresource
 #>
 function Get-AzLogzSubAccountMonitoredResource {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoredResource])]

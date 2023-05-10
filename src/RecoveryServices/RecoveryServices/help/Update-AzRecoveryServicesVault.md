@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.dll-Help.xml
 Module Name: Az.RecoveryServices
-online version: https://docs.microsoft.com/powershell/module/az.recoveryservices/update-azrecoveryservicesvault
+online version: https://learn.microsoft.com/powershell/module/az.recoveryservices/update-azrecoveryservicesvault
 schema: 2.0.0
 ---
 
@@ -12,17 +12,22 @@ Updates MSIdentity to the recovery services vault.
 
 ## SYNTAX
 
-### AzureRSVaultAddMSIdentity (Default)
-```
-Update-AzRecoveryServicesVault [-ResourceGroupName] <String> [-Name] <String> -IdentityType <MSIdentity>
- [-IdentityId <String[]>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### AzureRSVaultRemoveMSIdentity
+### AzureRSVaultRemoveMSIdentity (Default)
 ```
 Update-AzRecoveryServicesVault [-ResourceGroupName] <String> [-Name] <String> [-IdentityId <String[]>]
- [-RemoveUserAssigned] [-RemoveSystemAssigned] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-RemoveUserAssigned] [-RemoveSystemAssigned] [-DisableClassicAlerts <Boolean>]
+ [-DisableAzureMonitorAlertsForJobFailure <Boolean>] [-PublicNetworkAccess <PublicNetworkAccess>]
+ [-ImmutabilityState <ImmutabilityState>] [-CrossSubscriptionRestoreState <CrossSubscriptionRestoreState>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### AzureRSVaultAddMSIdentity
+```
+Update-AzRecoveryServicesVault [-ResourceGroupName] <String> [-Name] <String> -IdentityType <MSIdentity>
+ [-IdentityId <String[]>] [-DisableClassicAlerts <Boolean>] [-DisableAzureMonitorAlertsForJobFailure <Boolean>]
+ [-PublicNetworkAccess <PublicNetworkAccess>] [-ImmutabilityState <ImmutabilityState>]
+ [-CrossSubscriptionRestoreState <CrossSubscriptionRestoreState>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -83,7 +88,55 @@ The third cmdlet fetches all the user MSIs as a list from the vault.
 The fourth cmdlet removes all the user MSIs from the vault. In case you want, you can provide selected user identities to be removed as comma separated, like in previous example.
 The fifth cmdlet shows the identities in the vault, as we removed all the identites, Type is displayed as None.
 
+### Example 4: Update PublicNetworkAccess, ImmutabilityState of recovery services vault
+```powershell
+$vault = Get-AzRecoveryServicesVault -Name "vaultName" -ResourceGroupName "resourceGroupName"
+$updatedVault = Update-AzRecoveryServicesVault -ResourceGroupName $vault.ResourceGroupName -Name $vault.Name -PublicNetworkAccess "Disabled" -ImmutabilityState "Unlocked"
+$updatedVault.Properties.PublicNetworkAccess
+$updatedVault.Properties.ImmutabilitySettings.ImmutabilityState
+```
+
+```output
+Disabled
+Unlocked
+```
+
+The first cmdlet fetches the recovery services vault.
+The second cmdlet updates  PublicNetworkAccess, ImmutabilityState properties of the recovery services vault.
+The third and fourth command are used to fetch the public network access and immutability state of the vault.
+
+### Example 5: Enable/Disable CrossSubscriptionRestore for recovery services vault
+```powershell
+$vault = Get-AzRecoveryServicesVault -Name "vaultName" -ResourceGroupName "resourceGroupName"
+$updatedVault = Update-AzRecoveryServicesVault -ResourceGroupName $vault.ResourceGroupName -Name $vault.Name -CrossSubscriptionRestoreState Disabled
+$updatedVault.Properties.RestoreSettings.CrossSubscriptionRestoreSettings.CrossSubscriptionRestoreState
+```
+
+```output
+Disabled
+```
+
+The first cmdlet fetches the recovery services vault.
+The second cmdlet updates CrossSubscriptionRestoreState of the recovery services vault.
+The third command gets the cross subscription restore state of the vault.
+
 ## PARAMETERS
+
+### -CrossSubscriptionRestoreState
+Cross subscription restore state of the vault. Allowed values are "Enabled", "Disabled", "PermanentlyDisabled".
+
+```yaml
+Type: System.Nullable`1[Microsoft.Azure.Commands.RecoveryServices.CrossSubscriptionRestoreState]
+Parameter Sets: (All)
+Aliases:
+Accepted values: Enabled, Disabled, PermanentlyDisabled
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -92,6 +145,36 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DisableAzureMonitorAlertsForJobFailure
+Boolean paramter to specify whether built-in Azure Monitor alerts should be received for every job failure.
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DisableClassicAlerts
+Boolean paramter to specify whether backup alerts from the classic solution should be disabled or enabled.
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -131,6 +214,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ImmutabilityState
+Immutability State of the vault. Allowed values are "Disabled", "Unlocked", "Locked". 
+Unlocked means Enabled and can be changed, Locked means Enabled and can't be changed.
+
+```yaml
+Type: System.Nullable`1[Microsoft.Azure.Commands.RecoveryServices.ImmutabilityState]
+Parameter Sets: (All)
+Aliases:
+Accepted values: Disabled, Unlocked, Locked
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 
 Specifies the name of the recovery services vault to update.
@@ -142,6 +242,22 @@ Aliases:
 
 Required: True
 Position: 2
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PublicNetworkAccess
+Parameter to Enable/Disable public network access of the vault. This setting is useful with Private Endpoints.
+
+```yaml
+Type: System.Nullable`1[Microsoft.Azure.Commands.RecoveryServices.PublicNetworkAccess]
+Parameter Sets: (All)
+Aliases:
+Accepted values: Enabled, Disabled
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

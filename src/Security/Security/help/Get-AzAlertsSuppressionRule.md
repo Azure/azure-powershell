@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Security.dll-Help.xml
 Module Name: Az.Security
-online version:
+online version: https://learn.microsoft.com/powershell/module/az.security/get-azalertssuppressionrule
 schema: 2.0.0
 ---
 
@@ -35,14 +35,14 @@ Gets or list alerts suppression rules.
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzAlertsSuppressionRule
+Get-AzAlertsSuppressionRule
 ```
 
 List all alerts suppression rules in the subscription.
 
 ### Example 2
 ```powershell
-PS C:\> Get-AzAlertsSuppressionRule -Name "Example"
+Get-AzAlertsSuppressionRule -Name "Example"
 ```
 
 Gets an alerts suppression rule with the name "Example".

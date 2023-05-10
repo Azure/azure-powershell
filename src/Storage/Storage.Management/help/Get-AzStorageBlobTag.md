@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
-online version: https://docs.microsoft.com/powershell/module/az.storage/get-azstorageblobtag
+online version: https://learn.microsoft.com/powershell/module/az.storage/get-azstorageblobtag
 schema: 2.0.0
 ---
 
@@ -42,9 +42,10 @@ The **Get-AzStorageBlobTag** gets blob tags of a specific blob.
 ## EXAMPLES
 
 ### Example 1: Get blob tags on a specific blob
+```powershell
+Get-AzStorageBlobTag -Container "containername" -Blob testblob
 ```
-PS C:\> Get-AzStorageBlobTag -Container "containername" -Blob testblob
-
+```output
 Name                           Value                                                                                                                                                                                 
 ----                           -----                                                                                                                                                                                 
 tag1                           value1                                                                                                                                                                               
@@ -54,9 +55,10 @@ tag2                           value2
 This command gets blob tags on a specific blob.
 
 ### Example 2: Get blob tags on a specific blob with tag condition
+```powershell
+Get-AzStorageBlobTag -Container "containername" -Blob testblob -TagCondition """tag1""='value1'"
 ```
-PS C:\> Get-AzStorageBlobTag -Container "containername" -Blob testblob -TagCondition """tag1""='value1'"
-
+```output
 Name                           Value                                                                                                                                                                                 
 ----                           -----                                                                                                                                                                                 
 tag1                           value1                                                                                                                                                                               
@@ -207,7 +209,7 @@ Accept wildcard characters: False
 ### -TagCondition
 Optional Tag expression statement to check match condition. 
 The blob request will fail when the blob tags does not match the given expression.
-See details in https://docs.microsoft.com/en-us/rest/api/storageservices/specifying-conditional-headers-for-blob-service-operations#tags-conditional-operations.
+See details in https://learn.microsoft.com/en-us/rest/api/storageservices/specifying-conditional-headers-for-blob-service-operations#tags-conditional-operations.
 
 ```yaml
 Type: System.String

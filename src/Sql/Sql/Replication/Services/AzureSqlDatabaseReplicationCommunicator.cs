@@ -46,8 +46,7 @@ namespace Microsoft.Azure.Commands.Sql.ReplicationLink.Services
         /// <summary>
         /// Creates a communicator for Azure SQL Databases
         /// </summary>
-        /// <param name="profile"></param>
-        /// <param name="subscription"></param>
+        /// <param name="context">The current azure context</param>
         public AzureSqlDatabaseReplicationCommunicator(IAzureContext context)
         {
             Context = context;

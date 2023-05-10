@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Security.dll-Help.xml
 Module Name: Az.Security
-online version:
+online version: https://learn.microsoft.com/powershell/module/az.security/remove-azalertssuppressionrule
 schema: 2.0.0
 ---
 
@@ -37,7 +37,7 @@ Deletes an alerts suppression rule.
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzAlertsSuppressionRule -Name "Example"
+Remove-AzAlertsSuppressionRule -Name "Example"
 ```
 
 Deleted an alerts suppression rule with the name "Example"

@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         protected ComputeTestRunner(ITestOutputHelper output)
         {
-            TestRunner = TestFx.TestManager.CreateInstance (output)
+            TestRunner = TestManager.CreateInstance (output)
                 .WithNewPsScriptFilename ($"{GetType().Name}.ps1")
                 .WithProjectSubfolderForTests ("ScenarioTests")
                 .WithCommonPsScripts (new[]
@@ -42,12 +42,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
                     helper.GetRMModulePath("AzureRM.Network.psd1"),
                     helper.GetRMModulePath("AzureRM.KeyVault.psd1"),
                     helper.GetRMModulePath(@"Az.ManagedServiceIdentity.psd1"),
-
                 })
-                .WithRecordMatcher(
-                    (ignoreResourcesClient, resourceProviders, userAgentsToIgnore) =>
-                        new PermissiveRecordMatcherWithApiExclusion(ignoreResourcesClient, resourceProviders, userAgentsToIgnore)
-                )
                 .WithNewRecordMatcherArguments (
                     userAgentsToIgnore: new Dictionary<string, string>
                     {

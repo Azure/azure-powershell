@@ -1,27 +1,27 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/mo-resources-eus/providers/Microsoft.Automation/automationAccounts/mo-aaa-eus2/softwareUpdateConfigurationMachineRuns?api-version=2019-06-01&$filter=properties%2FcorrelationId%20eq%200ba88dce-b361-4b15-b70a-4f99c98a0f1a%20and%20properties%2Fstatus%20eq%20%27Succeeded%27%20and%20properties%2FtargetComputer%20eq%20%27%2Fsubscriptions%2F422b6c61-95b0-4213-b3be-7282315df71d%2FresourceGroups%2Fmo-compute%2Fproviders%2FMicrosoft.Compute%2FvirtualMachines%2Fmo-vm-w-01%27",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDIyYjZjNjEtOTViMC00MjEzLWIzYmUtNzI4MjMxNWRmNzFkL3Jlc291cmNlR3JvdXBzL21vLXJlc291cmNlcy1ldXMvcHJvdmlkZXJzL01pY3Jvc29mdC5BdXRvbWF0aW9uL2F1dG9tYXRpb25BY2NvdW50cy9tby1hYWEtZXVzMi9zb2Z0d2FyZVVwZGF0ZUNvbmZpZ3VyYXRpb25NYWNoaW5lUnVucz9hcGktdmVyc2lvbj0yMDE5LTA2LTAxJiRmaWx0ZXI9cHJvcGVydGllcyUyRmNvcnJlbGF0aW9uSWQlMjBlcSUyMDBiYTg4ZGNlLWIzNjEtNGIxNS1iNzBhLTRmOTljOThhMGYxYSUyMGFuZCUyMHByb3BlcnRpZXMlMkZzdGF0dXMlMjBlcSUyMCUyN1N1Y2NlZWRlZCUyNyUyMGFuZCUyMHByb3BlcnRpZXMlMkZ0YXJnZXRDb21wdXRlciUyMGVxJTIwJTI3JTJGc3Vic2NyaXB0aW9ucyUyRjQyMmI2YzYxLTk1YjAtNDIxMy1iM2JlLTcyODIzMTVkZjcxZCUyRnJlc291cmNlR3JvdXBzJTJGbW8tY29tcHV0ZSUyRnByb3ZpZGVycyUyRk1pY3Jvc29mdC5Db21wdXRlJTJGdmlydHVhbE1hY2hpbmVzJTJGbW8tdm0tdy0wMSUyNw==",
+      "RequestUri": "/subscriptions/783fd652-64f3-4680-81e9-0b978c542005/resourceGroups/mo-resources-eus/providers/Microsoft.Automation/automationAccounts/mo-aaa-eus2/softwareUpdateConfigurationMachineRuns?api-version=2022-08-08&$filter=properties%2FcorrelationId%20eq%207f077575-3905-4608-843e-5651884ffea1%20and%20properties%2Fstatus%20eq%20%27Succeeded%27%20and%20properties%2FtargetComputer%20eq%20%27%2Fsubscriptions%2F783fd652-64f3-4680-81e9-0b978c542005%2FresourceGroups%2Fmo-resources-eus%2Fproviders%2FMicrosoft.Compute%2FvirtualMachines%2Fmo-vm-w-01%27",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNzgzZmQ2NTItNjRmMy00NjgwLTgxZTktMGI5NzhjNTQyMDA1L3Jlc291cmNlR3JvdXBzL21vLXJlc291cmNlcy1ldXMvcHJvdmlkZXJzL01pY3Jvc29mdC5BdXRvbWF0aW9uL2F1dG9tYXRpb25BY2NvdW50cy9tby1hYWEtZXVzMi9zb2Z0d2FyZVVwZGF0ZUNvbmZpZ3VyYXRpb25NYWNoaW5lUnVucz9hcGktdmVyc2lvbj0yMDIyLTA4LTA4JiRmaWx0ZXI9cHJvcGVydGllcyUyRmNvcnJlbGF0aW9uSWQlMjBlcSUyMDdmMDc3NTc1LTM5MDUtNDYwOC04NDNlLTU2NTE4ODRmZmVhMSUyMGFuZCUyMHByb3BlcnRpZXMlMkZzdGF0dXMlMjBlcSUyMCUyN1N1Y2NlZWRlZCUyNyUyMGFuZCUyMHByb3BlcnRpZXMlMkZ0YXJnZXRDb21wdXRlciUyMGVxJTIwJTI3JTJGc3Vic2NyaXB0aW9ucyUyRjc4M2ZkNjUyLTY0ZjMtNDY4MC04MWU5LTBiOTc4YzU0MjAwNSUyRnJlc291cmNlR3JvdXBzJTJGbW8tcmVzb3VyY2VzLWV1cyUyRnByb3ZpZGVycyUyRk1pY3Jvc29mdC5Db21wdXRlJTJGdmlydHVhbE1hY2hpbmVzJTJGbW8tdm0tdy0wMSUyNw==",
       "RequestMethod": "GET",
-      "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "778b81b8-b9f3-46f0-a1c4-ef9b2e0efae7"
+          "020f9afb-eaad-4769-9b49-9ba19038a7c7"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.29812.02",
+          "FxVersion/4.700.22.47601",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19042.",
-          "Microsoft.Azure.Management.Automation.AutomationClient/3.8.3.0"
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.Automation.AutomationClient/1.8.0"
         ],
         "x-ms-activity-id": [
-          "db8b1603-a7ec-454c-b3b5-b2729241c3a6"
+          "0438bc27-607b-4ef2-b747-150eec9745bd"
         ]
       },
+      "RequestBody": "",
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
@@ -30,37 +30,31 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "db8b1603-a7ec-454c-b3b5-b2729241c3a6"
+          "0438bc27-607b-4ef2-b747-150eec9745bd"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11996"
+        ],
+        "x-ms-correlation-request-id": [
+          "c8489d9c-aed0-4041-b024-cc39d7835605"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTINDIA:20221027T114133Z:c8489d9c-aed0-4041-b024-cc39d7835605"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
-        ],
-        "Server": [
-          "Microsoft-IIS/10.0"
-        ],
-        "X-AspNet-Version": [
-          "4.0.30319"
-        ],
-        "X-Powered-By": [
-          "ASP.NET"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11997"
-        ],
-        "x-ms-correlation-request-id": [
-          "791f9399-9941-43cf-b064-c07340cea895"
-        ],
-        "x-ms-routing-request-id": [
-          "CENTRALINDIA:20210405T040236Z:791f9399-9941-43cf-b064-c07340cea895"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Mon, 05 Apr 2021 04:02:35 GMT"
+          "Thu, 27 Oct 2022 11:41:32 GMT"
         ],
         "Content-Length": [
-          "984"
+          "994"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -69,12 +63,12 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/mo-resources-eus/providers/Microsoft.Automation/automationAccounts/mo-aaa-eus2/softwareUpdateConfigurationMachineRuns/9b36fd66-1213-4058-8ad0-49e21bb1f98b\",\r\n      \"name\": \"9b36fd66-1213-4058-8ad0-49e21bb1f98b\",\r\n      \"type\": null,\r\n      \"properties\": {\r\n        \"targetComputer\": \"/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/mo-compute/providers/Microsoft.Compute/virtualMachines/mo-vm-w-01\",\r\n        \"targetComputerType\": \"AzureVirtualMachines\",\r\n        \"softwareUpdateConfiguration\": {\r\n          \"name\": \"mo-monthly-01\"\r\n        },\r\n        \"status\": \"Succeeded\",\r\n        \"osType\": \"Windows\",\r\n        \"correlationId\": \"0ba88dce-b361-4b15-b70a-4f99c98a0f1a\",\r\n        \"sourceComputerId\": \"f95133cb-0433-423a-8683-d97f6246ea22\",\r\n        \"startTime\": \"2021-04-05T05:42:34.8566666+05:30\",\r\n        \"endTime\": \"2021-04-05T05:44:07.42+05:30\",\r\n        \"configuredDuration\": \"PT2H\",\r\n        \"job\": null,\r\n        \"error\": null,\r\n        \"creationTime\": \"2021-04-05T05:42:34.8566666+05:30\",\r\n        \"lastModifiedBy\": null,\r\n        \"lastModifiedTime\": \"2021-04-05T05:44:37.223+05:30\"\r\n      }\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/783fd652-64f3-4680-81e9-0b978c542005/resourceGroups/mo-resources-eus/providers/Microsoft.Automation/automationAccounts/mo-aaa-eus2/softwareUpdateConfigurationMachineRuns/f2effc36-7241-45aa-871e-f0b57865e1a5\",\r\n      \"name\": \"f2effc36-7241-45aa-871e-f0b57865e1a5\",\r\n      \"type\": null,\r\n      \"properties\": {\r\n        \"targetComputer\": \"/subscriptions/783fd652-64f3-4680-81e9-0b978c542005/resourceGroups/mo-resources-eus/providers/Microsoft.Compute/virtualMachines/mo-vm-w-01\",\r\n        \"targetComputerType\": \"AzureVirtualMachines\",\r\n        \"softwareUpdateConfiguration\": {\r\n          \"name\": \"mo-onetime-01\"\r\n        },\r\n        \"status\": \"Succeeded\",\r\n        \"osType\": \"Windows\",\r\n        \"correlationId\": \"7f077575-3905-4608-843e-5651884ffea1\",\r\n        \"sourceComputerId\": \"b6987d1f-71aa-4072-a80b-3667151b6dcb\",\r\n        \"startTime\": \"2022-10-20T21:11:05.1960422+05:30\",\r\n        \"endTime\": \"2022-10-20T21:15:29.0233333+05:30\",\r\n        \"configuredDuration\": \"PT2H\",\r\n        \"job\": null,\r\n        \"error\": null,\r\n        \"creationTime\": \"2022-10-20T21:11:05.1960422+05:30\",\r\n        \"lastModifiedBy\": null,\r\n        \"lastModifiedTime\": \"2022-10-20T21:16:10.02+05:30\"\r\n      }\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     }
   ],
   "Names": {},
   "Variables": {
-    "SubscriptionId": "422b6c61-95b0-4213-b3be-7282315df71d"
+    "SubscriptionId": "783fd652-64f3-4680-81e9-0b978c542005"
   }
 }

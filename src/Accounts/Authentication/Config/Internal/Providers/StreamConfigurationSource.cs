@@ -31,6 +31,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Config.Internal.Provide
         /// Builds the <see cref="StreamConfigurationProvider"/> for this source.
         /// </summary>
         /// <param name="builder">The <see cref="IConfigurationBuilder"/>.</param>
+        /// <param name="id"></param>
         /// <returns>An <see cref="IConfigurationProvider"/></returns>
         public abstract IConfigurationProvider Build(IConfigurationBuilder builder, string id);
     }

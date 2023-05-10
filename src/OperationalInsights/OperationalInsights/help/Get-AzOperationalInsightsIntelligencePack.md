@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights.dll-Help.xml
 Module Name: Az.OperationalInsights
 ms.assetid: 0F9D72C1-2E42-4A67-9FDE-6344F5DE6C30
-online version: https://docs.microsoft.com/powershell/module/az.operationalinsights/get-azoperationalinsightsintelligencepack
+online version: https://learn.microsoft.com/powershell/module/az.operationalinsights/get-azoperationalinsightsintelligencepack
 schema: 2.0.0
 ---
 
@@ -12,7 +12,7 @@ schema: 2.0.0
 Gets the available Intelligence Packs.
 
 > [!NOTE]
-> Solutions is being deprecated, please use [az monitor log-analytics solution](https://docs.microsoft.com/en-us/cli/azure/monitor/log-analytics/solution?view=azure-cli-latest) and [Get-AzMonitorLogAnalyticsSolution](https://docs.microsoft.com/en-us/powershell/module/az.monitoringsolutions/get-azmonitorloganalyticssolution?view=azps-5.9.0) instead if this command.
+> Solutions is being deprecated, please use [az monitor log-analytics solution](https://learn.microsoft.com/en-us/cli/azure/monitor/log-analytics/solution?view=azure-cli-latest) and [Get-AzMonitorLogAnalyticsSolution](https://learn.microsoft.com/en-us/powershell/module/az.monitoringsolutions/get-azmonitorloganalyticssolution?view=azps-5.9.0) instead if this command.
 
 ## SYNTAX
 

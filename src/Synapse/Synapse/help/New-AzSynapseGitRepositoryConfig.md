@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Synapse.dll-Help.xml
 Module Name: Az.Synapse
-online version: https://docs.microsoft.com/powershell/module/az.synapse/new-azsynapsegitrepositoryconfig
+online version: https://learn.microsoft.com/powershell/module/az.synapse/new-azsynapsegitrepositoryconfig
 schema: 2.0.0
 ---
 
@@ -15,7 +15,7 @@ Creates Git repository configuration.
 ```
 New-AzSynapseGitRepositoryConfig -RepositoryType <String> [-HostName <String>] -AccountName <String>
  [-ProjectName <String>] -RepositoryName <String> -CollaborationBranch <String> [-RootFolder <String>]
- [-TenantId <Guid>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-TenantId <Guid>] [-LastCommitId <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -83,6 +83,21 @@ Accept wildcard characters: False
 ### -HostName
 GitHub Enterprise host name.
 For example: `https://github.mydomain.com`
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -LastCommitId
+The last published commit Id.
 
 ```yaml
 Type: System.String

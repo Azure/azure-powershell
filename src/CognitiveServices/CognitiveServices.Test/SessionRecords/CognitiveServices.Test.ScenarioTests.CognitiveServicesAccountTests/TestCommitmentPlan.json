@@ -1,22 +1,21 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourcegroups/pstestrg6303?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjliOTZiMzYtMWY1ZS00MDIxLTg5NTktNTE1MjdlMjZlNmQzL3Jlc291cmNlZ3JvdXBzL3BzdGVzdHJnNjMwMz9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
+      "RequestUri": "/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourcegroups/pstestrg1839?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjliOTZiMzYtMWY1ZS00MDIxLTg5NTktNTE1MjdlMjZlNmQzL3Jlc291cmNlZ3JvdXBzL3BzdGVzdHJnMTgzOT9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"location\": \"Central US EUAP\"\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "ada069ba-394c-48a8-ab9a-9d348d6714fd"
+          "db493711-d602-4e6d-9dc4-8883eefa4d8a"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.700.22.11601",
+          "FxVersion/4.700.22.55902",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22000",
-          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.57"
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.68"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -25,6 +24,7 @@
           "37"
         ]
       },
+      "RequestBody": "{\r\n  \"location\": \"Central US EUAP\"\r\n}",
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
@@ -33,16 +33,16 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1199"
+          "1197"
         ],
         "x-ms-request-id": [
-          "564580f5-8d43-491c-ac14-4f317f3a4b72"
+          "23334a7c-b9a5-4cbb-b804-75f1fab625c7"
         ],
         "x-ms-correlation-request-id": [
-          "564580f5-8d43-491c-ac14-4f317f3a4b72"
+          "23334a7c-b9a5-4cbb-b804-75f1fab625c7"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20220324T225138Z:564580f5-8d43-491c-ac14-4f317f3a4b72"
+          "CANADACENTRAL:20230131T003631Z:23334a7c-b9a5-4cbb-b804-75f1fab625c7"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -51,7 +51,7 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 24 Mar 2022 22:51:38 GMT"
+          "Tue, 31 Jan 2023 00:36:31 GMT"
         ],
         "Content-Length": [
           "184"
@@ -63,26 +63,25 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourceGroups/pstestrg6303\",\r\n  \"name\": \"pstestrg6303\",\r\n  \"location\": \"centraluseuap\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourceGroups/pstestrg1839\",\r\n  \"name\": \"pstestrg1839\",\r\n  \"location\": \"centraluseuap\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourceGroups/pstestrg6303/providers/Microsoft.CognitiveServices/accounts/csapstestrg6303?api-version=2022-03-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjliOTZiMzYtMWY1ZS00MDIxLTg5NTktNTE1MjdlMjZlNmQzL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnNjMwMy9wcm92aWRlcnMvTWljcm9zb2Z0LkNvZ25pdGl2ZVNlcnZpY2VzL2FjY291bnRzL2NzYXBzdGVzdHJnNjMwMz9hcGktdmVyc2lvbj0yMDIyLTAzLTAx",
+      "RequestUri": "/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourceGroups/pstestrg1839/providers/Microsoft.CognitiveServices/accounts/csapstestrg1839?api-version=2022-12-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjliOTZiMzYtMWY1ZS00MDIxLTg5NTktNTE1MjdlMjZlNmQzL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnMTgzOS9wcm92aWRlcnMvTWljcm9zb2Z0LkNvZ25pdGl2ZVNlcnZpY2VzL2FjY291bnRzL2NzYXBzdGVzdHJnMTgzOT9hcGktdmVyc2lvbj0yMDIyLTEyLTAx",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"kind\": \"TextAnalytics\",\r\n  \"sku\": {\r\n    \"name\": \"S\"\r\n  },\r\n  \"location\": \"Central US EUAP\",\r\n  \"properties\": {}\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "6974b53a-8fbf-4d0b-9738-19f09cc5fdba"
+          "afbde576-b7de-4ad1-9884-49758e61e3fd"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.700.22.11601",
+          "FxVersion/4.700.22.55902",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22000",
-          "Microsoft.Azure.Management.CognitiveServices.CognitiveServicesManagementClient/8.2.0.0"
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.CognitiveServices.CognitiveServicesManagementClient/9.0.0.0"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -91,6 +90,7 @@
           "121"
         ]
       },
+      "RequestBody": "{\r\n  \"kind\": \"TextAnalytics\",\r\n  \"sku\": {\r\n    \"name\": \"S\"\r\n  },\r\n  \"location\": \"Central US EUAP\",\r\n  \"properties\": {}\r\n}",
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
@@ -99,19 +99,19 @@
           "no-cache"
         ],
         "ETag": [
-          "\"02000729-0000-3300-0000-623cf5fe0000\""
+          "\"000060d6-0000-3300-0000-63d862950000\""
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "x-ms-request-id": [
-          "ccff682b-5318-44b8-9ab3-1e74d6483bd2"
+          "33158035-4ed9-46e9-a0b0-699b4da0ad79"
         ],
         "azure-asyncoperation": [
-          "https://management.azure.com/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/providers/Microsoft.CognitiveServices/locations/Central US EUAP/operationResults/e1287560-67e6-4070-9526-205bab70e209?api-version=2017-04-18"
+          "https://management.azure.com/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/providers/Microsoft.CognitiveServices/locations/Central US EUAP/operationResults/d7e65fe4-ccf2-4af8-9146-08e589c64476?api-version=2017-04-18"
         ],
         "x-envoy-upstream-service-time": [
-          "739"
+          "2957"
         ],
         "Server": [
           "istio-envoy"
@@ -120,19 +120,19 @@
           "1199"
         ],
         "x-ms-correlation-request-id": [
-          "57942aea-7a52-4683-9cc7-b7b39f4816e1"
+          "41b6fc21-8ca7-4ad7-b08e-0ff032113aa7"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20220324T225143Z:57942aea-7a52-4683-9cc7-b7b39f4816e1"
+          "CANADACENTRAL:20230131T003637Z:41b6fc21-8ca7-4ad7-b08e-0ff032113aa7"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "Date": [
-          "Thu, 24 Mar 2022 22:51:43 GMT"
+          "Tue, 31 Jan 2023 00:36:37 GMT"
         ],
         "Content-Length": [
-          "6698"
+          "7521"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -141,25 +141,25 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourceGroups/pstestrg6303/providers/Microsoft.CognitiveServices/accounts/csapstestrg6303\",\r\n  \"name\": \"csapstestrg6303\",\r\n  \"type\": \"Microsoft.CognitiveServices/accounts\",\r\n  \"etag\": \"\\\"02000729-0000-3300-0000-623cf5fe0000\\\"\",\r\n  \"location\": \"Central US EUAP\",\r\n  \"sku\": {\r\n    \"name\": \"S\"\r\n  },\r\n  \"kind\": \"TextAnalytics\",\r\n  \"properties\": {\r\n    \"endpoint\": \"https://centraluseuap.api.cognitive.microsoft.com/\",\r\n    \"internalId\": \"88a90cf2515841f6a15abe2816aa4376\",\r\n    \"dateCreated\": \"2022-03-24T22:51:42.4765982Z\",\r\n    \"apiProperties\": {\r\n      \"qnaAzureSearchEndpointKey\": null\r\n    },\r\n    \"callRateLimit\": {\r\n      \"rules\": [\r\n        {\r\n          \"key\": \"workflow.endpoint.postcalls\",\r\n          \"renewalPeriod\": 60,\r\n          \"count\": 60,\r\n          \"dynamicThrottlingEnabled\": false,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"/language/:analyze-conversations\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"textAnalytics.authoring.customtext.getcalls\",\r\n          \"renewalPeriod\": 60,\r\n          \"count\": 100,\r\n          \"dynamicThrottlingEnabled\": false,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"language/analyze-text/projects/*\",\r\n              \"method\": \"GET\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"textAnalytics.unifiedAuthoring.updatecalls\",\r\n          \"renewalPeriod\": 60,\r\n          \"count\": 10,\r\n          \"dynamicThrottlingEnabled\": false,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"language/analyze-text/projects/*\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"textAnalytics.authoring.customtext.internal.getcalls\",\r\n          \"renewalPeriod\": 60,\r\n          \"count\": 100,\r\n          \"dynamicThrottlingEnabled\": false,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"language/analyze-text/internal/projects/*\",\r\n              \"method\": \"GET\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"textAnalytics.unifiedAuthoring.internal.updatecalls\",\r\n          \"renewalPeriod\": 60,\r\n          \"count\": 10,\r\n          \"dynamicThrottlingEnabled\": false,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"language/analyze-text/internal/projects/*\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"textAnalytics.unifiedAuthoring.clu.getCalls\",\r\n          \"renewalPeriod\": 60,\r\n          \"count\": 100,\r\n          \"dynamicThrottlingEnabled\": false,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"language/analyze-conversations/projects/*\",\r\n              \"method\": \"GET\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"textAnalytics.unifiedAuthoring.clu.updateCalls\",\r\n          \"renewalPeriod\": 60,\r\n          \"count\": 10,\r\n          \"dynamicThrottlingEnabled\": false,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"language/analyze-conversations/projects/*\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"textAnalytics.unifiedAuthoring.clu.internal.getCalls\",\r\n          \"renewalPeriod\": 60,\r\n          \"count\": 100,\r\n          \"dynamicThrottlingEnabled\": false,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"language/analyze-conversations/internal/projects/*\",\r\n              \"method\": \"GET\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"textAnalytics.unifiedAuthoring.clu.internal.updateCalls\",\r\n          \"renewalPeriod\": 60,\r\n          \"count\": 10,\r\n          \"dynamicThrottlingEnabled\": false,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"language/analyze-conversations/internal/projects/*\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"textAnalytics.customText\",\r\n          \"renewalPeriod\": 60,\r\n          \"count\": 100,\r\n          \"dynamicThrottlingEnabled\": false,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"text/analytics/v3.1-preview.ct.1/analyze/*\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"textAnalytics.analyze\",\r\n          \"renewalPeriod\": 60,\r\n          \"count\": 300,\r\n          \"dynamicThrottlingEnabled\": false,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"text/analytics/v3.1/analyze/*\",\r\n              \"method\": \"*\"\r\n            },\r\n            {\r\n              \"path\": \"text/analytics/v3.2-preview.1/analyze/*\",\r\n              \"method\": \"*\"\r\n            },\r\n            {\r\n              \"path\": \"text/analytics/v3.2-preview.2/analyze/*\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"textAnalytics.healthcare\",\r\n          \"renewalPeriod\": 60,\r\n          \"count\": 300,\r\n          \"dynamicThrottlingEnabled\": false,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"text/analytics/v3.1/entities/health/*\",\r\n              \"method\": \"*\"\r\n            },\r\n            {\r\n              \"path\": \"text/analytics/v3.2-preview.1/health/*\",\r\n              \"method\": \"*\"\r\n            },\r\n            {\r\n              \"path\": \"text/analytics/v3.2-preview.2/health/*\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"textAnalytics\",\r\n          \"renewalPeriod\": 60,\r\n          \"count\": 1000,\r\n          \"dynamicThrottlingEnabled\": false,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"text/analytics/*\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"container.billing\",\r\n          \"renewalPeriod\": 10,\r\n          \"count\": 500,\r\n          \"dynamicThrottlingEnabled\": false,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"billing/*\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"questionanswering\",\r\n          \"renewalPeriod\": 60,\r\n          \"count\": 600,\r\n          \"dynamicThrottlingEnabled\": false,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"qnamaker/*\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"unifiedlanguage.questionanswering\",\r\n          \"renewalPeriod\": 60,\r\n          \"count\": 600,\r\n          \"dynamicThrottlingEnabled\": false,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"language/query-knowledgebases/*\",\r\n              \"method\": \"*\"\r\n            },\r\n            {\r\n              \"path\": \"language/:query-*\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"textAnalytics.analyze.internal.autoTagging\",\r\n          \"renewalPeriod\": 60,\r\n          \"count\": 150,\r\n          \"dynamicThrottlingEnabled\": false,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"TextAnalytics/ct-auto-tagging\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"default\",\r\n          \"renewalPeriod\": 1,\r\n          \"count\": 20,\r\n          \"dynamicThrottlingEnabled\": false,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"*\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        }\r\n      ]\r\n    },\r\n    \"quotaLimit\": {\r\n      \"rules\": [\r\n        {\r\n          \"key\": \"workflow.endpoint.postcalls\",\r\n          \"renewalPeriod\": 2592000,\r\n          \"count\": 100000,\r\n          \"dynamicThrottlingEnabled\": false,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"/language/:analyze-conversations\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        }\r\n      ]\r\n    },\r\n    \"backupUpperLimit\": 20,\r\n    \"isMigrated\": false,\r\n    \"privateEndpointConnections\": [],\r\n    \"publicNetworkAccess\": \"Enabled\",\r\n    \"capabilities\": [\r\n      {\r\n        \"name\": \"VirtualNetworks\"\r\n      },\r\n      {\r\n        \"name\": \"CustomerManagedKey\"\r\n      },\r\n      {\r\n        \"name\": \"CustomerManagedStorage\"\r\n      },\r\n      {\r\n        \"name\": \"Container\",\r\n        \"value\": \"TextAnalytics.*,TextAnalytics.Healthcare,TextAnalytics.HealthcareFhir,TextAnalytics.Keyphrase,TextAnalytics.KeyphraseV2,TextAnalytics.KeyPhraseONNX,TextAnalytics.LanguageFastText,TextAnalytics.Language,TextAnalytics.LanguageV2,TextAnalytics.Sentiment,TextAnalytics.SentimentV2,TextAnalytics.SentimentV3,TextAnalytics.SentimentV3Preview\"\r\n      },\r\n      {\r\n        \"name\": \"Cloud\",\r\n        \"value\": \"TextAnalytics.Healthcare,TextAnalytics.Analyze,QuestionAnswer.AllApis,LanguageService.QuestionAnsweringApis\"\r\n      }\r\n    ],\r\n    \"endpoints\": {\r\n      \"Text Analytics\": \"https://centraluseuap.api.cognitive.microsoft.com/\",\r\n      \"LanguageAuthoring\": \"https://centraluseuap.api.cognitive.microsoft.com/\",\r\n      \"ConversationalLanguageUnderstanding\": \"https://centraluseuap.api.cognitive.microsoft.com/\",\r\n      \"Custom Text Authoring Internal APIs\": \"https://centraluseuap.api.cognitive.microsoft.com/\",\r\n      \"Conversational Language Understanding Authoring Internal APIs\": \"https://centraluseuap.api.cognitive.microsoft.com/\",\r\n      \"Custom Text Authoring\": \"https://centraluseuap.api.cognitive.microsoft.com/\",\r\n      \"Conversational Language Understanding Authoring\": \"https://centraluseuap.api.cognitive.microsoft.com/\",\r\n      \"ConversationalLURuntime\": \"https://centraluseuap.api.cognitive.microsoft.com/\",\r\n      \"Language\": \"https://centraluseuap.api.cognitive.microsoft.com/\",\r\n      \"QnAMaker\": \"https://centraluseuap.api.cognitive.microsoft.com/\",\r\n      \"turing\": \"https://centraluseuap.api.cognitive.microsoft.com/\",\r\n      \"Turing DeepWrite\": \"https://centraluseuap.api.cognitive.microsoft.com/\",\r\n      \"QuestionAnswering\": \"https://centraluseuap.api.cognitive.microsoft.com/\",\r\n      \"QuestionAnsweringBizQA\": \"https://centraluseuap.api.cognitive.microsoft.com/\",\r\n      \"QuestionAnsweringQnAGen\": \"https://centraluseuap.api.cognitive.microsoft.com/\",\r\n      \"LUIS.Authoring\": \"https://centraluseuap.api.cognitive.microsoft.com/\"\r\n    },\r\n    \"provisioningState\": \"Creating\"\r\n  },\r\n  \"systemData\": {\r\n    \"createdBy\": \"50841d5f-166a-406c-8472-6800c9698b43\",\r\n    \"createdByType\": \"Application\",\r\n    \"createdAt\": \"2022-03-24T22:51:42.232845Z\",\r\n    \"lastModifiedBy\": \"50841d5f-166a-406c-8472-6800c9698b43\",\r\n    \"lastModifiedByType\": \"Application\",\r\n    \"lastModifiedAt\": \"2022-03-24T22:51:42.232845Z\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourceGroups/pstestrg1839/providers/Microsoft.CognitiveServices/accounts/csapstestrg1839\",\r\n  \"name\": \"csapstestrg1839\",\r\n  \"type\": \"Microsoft.CognitiveServices/accounts\",\r\n  \"etag\": \"\\\"000060d6-0000-3300-0000-63d862950000\\\"\",\r\n  \"location\": \"Central US EUAP\",\r\n  \"sku\": {\r\n    \"name\": \"S\"\r\n  },\r\n  \"kind\": \"TextAnalytics\",\r\n  \"properties\": {\r\n    \"endpoint\": \"https://centraluseuap.api.cognitive.microsoft.com/\",\r\n    \"internalId\": \"098fd05fcec24e73a580930e15d3724f\",\r\n    \"dateCreated\": \"2023-01-31T00:36:34.3109546Z\",\r\n    \"apiProperties\": {\r\n      \"qnaAzureSearchEndpointKey\": null\r\n    },\r\n    \"callRateLimit\": {\r\n      \"rules\": [\r\n        {\r\n          \"key\": \"workflow.endpoint.postcalls\",\r\n          \"renewalPeriod\": 60,\r\n          \"count\": 1000,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"language/:analyze-conversations\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"textAnalytics.conversations.jobs.getcalls\",\r\n          \"renewalPeriod\": 60,\r\n          \"count\": 1000,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"language/analyze-conversations/jobs/*\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"textAnalytics.conversations.jobs.postcalls\",\r\n          \"renewalPeriod\": 60,\r\n          \"count\": 1000,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"language/analyze-conversations/jobs\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"textAnalytics.authoring.customtext.getcalls\",\r\n          \"renewalPeriod\": 60,\r\n          \"count\": 100,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"language/analyze-text/projects/*\",\r\n              \"method\": \"GET\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"textAnalytics.unifiedAuthoring.updatecalls\",\r\n          \"renewalPeriod\": 60,\r\n          \"count\": 10,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"language/analyze-text/projects/*\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"textAnalytics.authoring.customtext.march.getcalls\",\r\n          \"renewalPeriod\": 60,\r\n          \"count\": 100,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"language/authoring/analyze-text/projects/*\",\r\n              \"method\": \"GET\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"textAnalytics.unifiedAuthoring.march.updatecalls\",\r\n          \"renewalPeriod\": 60,\r\n          \"count\": 10,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"language/authoring/analyze-text/projects/*\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"textAnalytics.authoring.customtext.internal.getcalls\",\r\n          \"renewalPeriod\": 60,\r\n          \"count\": 100,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"language/analyze-text/internal/projects/*\",\r\n              \"method\": \"GET\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"textAnalytics.unifiedAuthoring.internal.updatecalls\",\r\n          \"renewalPeriod\": 60,\r\n          \"count\": 10,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"language/analyze-text/internal/projects/*\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"textAnalytics.unifiedAuthoring.clu.getCalls\",\r\n          \"renewalPeriod\": 60,\r\n          \"count\": 100,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"language/analyze-conversations/projects/*\",\r\n              \"method\": \"GET\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"textAnalytics.unifiedAuthoring.clu.updateCalls\",\r\n          \"renewalPeriod\": 60,\r\n          \"count\": 10,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"language/analyze-conversations/projects/*\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"textAnalytics.unifiedAuthoring.clu.march.getCalls\",\r\n          \"renewalPeriod\": 60,\r\n          \"count\": 100,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"language/authoring/analyze-conversations/projects/*\",\r\n              \"method\": \"GET\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"textAnalytics.unifiedAuthoring.clu.march.updateCalls\",\r\n          \"renewalPeriod\": 60,\r\n          \"count\": 10,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"language/authoring/analyze-conversations/projects/*\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"textAnalytics.unifiedAuthoring.clu.internal.getCalls\",\r\n          \"renewalPeriod\": 60,\r\n          \"count\": 100,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"language/analyze-conversations/internal/projects/*\",\r\n              \"method\": \"GET\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"textAnalytics.unifiedAuthoring.clu.internal.updateCalls\",\r\n          \"renewalPeriod\": 60,\r\n          \"count\": 10,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"language/analyze-conversations/internal/projects/*\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"textAnalytics.customText\",\r\n          \"renewalPeriod\": 60,\r\n          \"count\": 100,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"text/analytics/v3.1-preview.ct.1/analyze/*\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"textAnalytics.analyze\",\r\n          \"renewalPeriod\": 60,\r\n          \"count\": 300,\r\n          \"dynamicThrottlingEnabled\": true,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"text/analytics/v3.1/analyze/*\",\r\n              \"method\": \"*\"\r\n            },\r\n            {\r\n              \"path\": \"text/analytics/v3.2-preview.1/analyze/*\",\r\n              \"method\": \"*\"\r\n            },\r\n            {\r\n              \"path\": \"text/analytics/v3.2-preview.2/analyze/*\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"textAnalytics.healthcare\",\r\n          \"renewalPeriod\": 60,\r\n          \"count\": 300,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"text/analytics/v3.1/entities/health/*\",\r\n              \"method\": \"*\"\r\n            },\r\n            {\r\n              \"path\": \"text/analytics/v3.2-preview.1/health/*\",\r\n              \"method\": \"*\"\r\n            },\r\n            {\r\n              \"path\": \"text/analytics/v3.2-preview.2/health/*\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"textAnalytics.languagedetection\",\r\n          \"renewalPeriod\": 60,\r\n          \"count\": 1000,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"text/analytics/v3.1/languages/*\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"textAnalytics\",\r\n          \"renewalPeriod\": 60,\r\n          \"count\": 1000,\r\n          \"dynamicThrottlingEnabled\": true,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"text/analytics/*\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"container.billing\",\r\n          \"renewalPeriod\": 10,\r\n          \"count\": 500,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"billing/*\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"questionanswering\",\r\n          \"renewalPeriod\": 60,\r\n          \"count\": 600,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"qnamaker/*\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"unifiedlanguage.questionanswering\",\r\n          \"renewalPeriod\": 60,\r\n          \"count\": 600,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"language/query-knowledgebases/*\",\r\n              \"method\": \"*\"\r\n            },\r\n            {\r\n              \"path\": \"language/:query-*\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"textAnalytics.analyze.internal.autoTagging\",\r\n          \"renewalPeriod\": 60,\r\n          \"count\": 150,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"TextAnalytics/ct-auto-tagging\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"textAnalytics.analyze.internal.evaluation\",\r\n          \"renewalPeriod\": 60,\r\n          \"count\": 150,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"TextAnalytics/ct-evaluation\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"default\",\r\n          \"renewalPeriod\": 1,\r\n          \"count\": 20,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"*\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        }\r\n      ]\r\n    },\r\n    \"quotaLimit\": {\r\n      \"rules\": [\r\n        {\r\n          \"key\": \"workflow.endpoint.postcalls\",\r\n          \"renewalPeriod\": 2592000,\r\n          \"count\": 100000,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"/language/:analyze-conversations\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        }\r\n      ]\r\n    },\r\n    \"isMigrated\": false,\r\n    \"privateEndpointConnections\": [],\r\n    \"publicNetworkAccess\": \"Enabled\",\r\n    \"capabilities\": [\r\n      {\r\n        \"name\": \"DynamicThrottling\"\r\n      },\r\n      {\r\n        \"name\": \"VirtualNetworks\"\r\n      },\r\n      {\r\n        \"name\": \"CustomerManagedKey\"\r\n      },\r\n      {\r\n        \"name\": \"CustomerManagedStorage\"\r\n      },\r\n      {\r\n        \"name\": \"Container\",\r\n        \"value\": \"TextAnalytics.*,TextAnalytics.Healthcare,TextAnalytics.HealthcareFhir,TextAnalytics.Keyphrase,TextAnalytics.KeyphraseV2,TextAnalytics.KeyPhraseONNX,TextAnalytics.LanguageFastText,TextAnalytics.Language,TextAnalytics.LanguageV2,TextAnalytics.Sentiment,TextAnalytics.SentimentV2,TextAnalytics.SentimentV3,TextAnalytics.SentimentV3Preview\"\r\n      },\r\n      {\r\n        \"name\": \"Cloud\",\r\n        \"value\": \"TextAnalytics.Healthcare,TextAnalytics.Analyze,QuestionAnswer.AllApis,LanguageService.QuestionAnsweringApis\"\r\n      }\r\n    ],\r\n    \"endpoints\": {\r\n      \"Text Analytics\": \"https://centraluseuap.api.cognitive.microsoft.com/\",\r\n      \"Custom Text Authoring\": \"https://centraluseuap.api.cognitive.microsoft.com/\",\r\n      \"Conversational Language Understanding Authoring\": \"https://centraluseuap.api.cognitive.microsoft.com/\",\r\n      \"Custom Question Answering Authoring\": \"https://centraluseuap.api.cognitive.microsoft.com/\",\r\n      \"Custom Question Answering\": \"https://centraluseuap.api.cognitive.microsoft.com/\",\r\n      \"ConversationalLURuntime\": \"https://centraluseuap.api.cognitive.microsoft.com/\",\r\n      \"Language\": \"https://centraluseuap.api.cognitive.microsoft.com/\",\r\n      \"Language-2022-05-01\": \"https://centraluseuap.api.cognitive.microsoft.com/\",\r\n      \"QnAMaker\": \"https://centraluseuap.api.cognitive.microsoft.com/\",\r\n      \"turing\": \"https://centraluseuap.api.cognitive.microsoft.com/\",\r\n      \"Turing DeepWrite\": \"https://centraluseuap.api.cognitive.microsoft.com/\",\r\n      \"QuestionAnswering\": \"https://centraluseuap.api.cognitive.microsoft.com/\",\r\n      \"QuestionAnsweringBizQA\": \"https://centraluseuap.api.cognitive.microsoft.com/\",\r\n      \"QuestionAnsweringQnAGen\": \"https://centraluseuap.api.cognitive.microsoft.com/\",\r\n      \"QuestionAnswering Generate\": \"https://centraluseuap.api.cognitive.microsoft.com/\",\r\n      \"LUIS.Authoring\": \"https://centraluseuap.api.cognitive.microsoft.com/\",\r\n      \"Container\": \"https://centraluseuap.api.cognitive.microsoft.com/\"\r\n    },\r\n    \"provisioningState\": \"Creating\"\r\n  },\r\n  \"systemData\": {\r\n    \"createdBy\": \"50841d5f-166a-406c-8472-6800c9698b43\",\r\n    \"createdByType\": \"Application\",\r\n    \"createdAt\": \"2023-01-31T00:36:34.0291702Z\",\r\n    \"lastModifiedBy\": \"50841d5f-166a-406c-8472-6800c9698b43\",\r\n    \"lastModifiedByType\": \"Application\",\r\n    \"lastModifiedAt\": \"2023-01-31T00:36:34.0291702Z\"\r\n  }\r\n}",
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/providers/Microsoft.CognitiveServices/locations/Central%20US%20EUAP/operationResults/e1287560-67e6-4070-9526-205bab70e209?api-version=2017-04-18",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjliOTZiMzYtMWY1ZS00MDIxLTg5NTktNTE1MjdlMjZlNmQzL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29nbml0aXZlU2VydmljZXMvbG9jYXRpb25zL0NlbnRyYWwlMjBVUyUyMEVVQVAvb3BlcmF0aW9uUmVzdWx0cy9lMTI4NzU2MC02N2U2LTQwNzAtOTUyNi0yMDViYWI3MGUyMDk/YXBpLXZlcnNpb249MjAxNy0wNC0xOA==",
+      "RequestUri": "/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/providers/Microsoft.CognitiveServices/locations/Central%20US%20EUAP/operationResults/d7e65fe4-ccf2-4af8-9146-08e589c64476?api-version=2017-04-18",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjliOTZiMzYtMWY1ZS00MDIxLTg5NTktNTE1MjdlMjZlNmQzL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29nbml0aXZlU2VydmljZXMvbG9jYXRpb25zL0NlbnRyYWwlMjBVUyUyMEVVQVAvb3BlcmF0aW9uUmVzdWx0cy9kN2U2NWZlNC1jY2YyLTRhZjgtOTE0Ni0wOGU1ODljNjQ0NzY/YXBpLXZlcnNpb249MjAxNy0wNC0xOA==",
       "RequestMethod": "GET",
-      "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "6974b53a-8fbf-4d0b-9738-19f09cc5fdba"
+          "afbde576-b7de-4ad1-9884-49758e61e3fd"
         ],
         "User-Agent": [
-          "FxVersion/4.700.22.11601",
+          "FxVersion/4.700.22.55902",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22000",
-          "Microsoft.Azure.Management.CognitiveServices.CognitiveServicesManagementClient/8.2.0.0"
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.CognitiveServices.CognitiveServicesManagementClient/9.0.0.0"
         ]
       },
+      "RequestBody": "",
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
@@ -171,28 +171,28 @@
           "nosniff"
         ],
         "x-ms-request-id": [
-          "2a2100dd-aaa3-481d-b13a-26d40701f707"
+          "e9e5ad7d-5ab5-438d-9676-ec486d928d55"
         ],
         "x-envoy-upstream-service-time": [
-          "43"
+          "6"
         ],
         "Server": [
           "istio-envoy"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11999"
+          "11998"
         ],
         "x-ms-correlation-request-id": [
-          "2c94525a-4ae6-4233-b1a6-41677a08b166"
+          "54ffe4fc-255f-4969-a001-081d65b93b35"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20220324T225213Z:2c94525a-4ae6-4233-b1a6-41677a08b166"
+          "CANADACENTRAL:20230131T003707Z:54ffe4fc-255f-4969-a001-081d65b93b35"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "Date": [
-          "Thu, 24 Mar 2022 22:52:13 GMT"
+          "Tue, 31 Jan 2023 00:37:07 GMT"
         ],
         "Content-Length": [
           "279"
@@ -204,25 +204,25 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/providers/Microsoft.CognitiveServices/locations/Central US EUAP/operationResults/e1287560-67e6-4070-9526-205bab70e209\",\r\n  \"name\": \"e1287560-67e6-4070-9526-205bab70e209\",\r\n  \"status\": \"Creating\",\r\n  \"startTime\": \"2022-03-24T22:51:42Z\"\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/providers/Microsoft.CognitiveServices/locations/Central US EUAP/operationResults/d7e65fe4-ccf2-4af8-9146-08e589c64476\",\r\n  \"name\": \"d7e65fe4-ccf2-4af8-9146-08e589c64476\",\r\n  \"status\": \"Creating\",\r\n  \"startTime\": \"2023-01-31T00:36:37Z\"\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/providers/Microsoft.CognitiveServices/locations/Central%20US%20EUAP/operationResults/e1287560-67e6-4070-9526-205bab70e209?api-version=2017-04-18",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjliOTZiMzYtMWY1ZS00MDIxLTg5NTktNTE1MjdlMjZlNmQzL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29nbml0aXZlU2VydmljZXMvbG9jYXRpb25zL0NlbnRyYWwlMjBVUyUyMEVVQVAvb3BlcmF0aW9uUmVzdWx0cy9lMTI4NzU2MC02N2U2LTQwNzAtOTUyNi0yMDViYWI3MGUyMDk/YXBpLXZlcnNpb249MjAxNy0wNC0xOA==",
+      "RequestUri": "/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/providers/Microsoft.CognitiveServices/locations/Central%20US%20EUAP/operationResults/d7e65fe4-ccf2-4af8-9146-08e589c64476?api-version=2017-04-18",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjliOTZiMzYtMWY1ZS00MDIxLTg5NTktNTE1MjdlMjZlNmQzL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29nbml0aXZlU2VydmljZXMvbG9jYXRpb25zL0NlbnRyYWwlMjBVUyUyMEVVQVAvb3BlcmF0aW9uUmVzdWx0cy9kN2U2NWZlNC1jY2YyLTRhZjgtOTE0Ni0wOGU1ODljNjQ0NzY/YXBpLXZlcnNpb249MjAxNy0wNC0xOA==",
       "RequestMethod": "GET",
-      "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "6974b53a-8fbf-4d0b-9738-19f09cc5fdba"
+          "afbde576-b7de-4ad1-9884-49758e61e3fd"
         ],
         "User-Agent": [
-          "FxVersion/4.700.22.11601",
+          "FxVersion/4.700.22.55902",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22000",
-          "Microsoft.Azure.Management.CognitiveServices.CognitiveServicesManagementClient/8.2.0.0"
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.CognitiveServices.CognitiveServicesManagementClient/9.0.0.0"
         ]
       },
+      "RequestBody": "",
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
@@ -234,28 +234,28 @@
           "nosniff"
         ],
         "x-ms-request-id": [
-          "930bd5e2-cac8-4011-874a-42ef82ad6799"
+          "910f61e4-f50e-4575-b7de-3242eaf1378c"
         ],
         "x-envoy-upstream-service-time": [
-          "8"
+          "6"
         ],
         "Server": [
           "istio-envoy"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11998"
+          "11997"
         ],
         "x-ms-correlation-request-id": [
-          "df5e82e0-4a86-4043-8c20-ac53e11af64c"
+          "46553ae2-4288-4765-9f9b-254bf7a49c86"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20220324T225244Z:df5e82e0-4a86-4043-8c20-ac53e11af64c"
+          "CANADACENTRAL:20230131T003737Z:46553ae2-4288-4765-9f9b-254bf7a49c86"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "Date": [
-          "Thu, 24 Mar 2022 22:52:43 GMT"
+          "Tue, 31 Jan 2023 00:37:37 GMT"
         ],
         "Content-Length": [
           "313"
@@ -267,25 +267,25 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/providers/Microsoft.CognitiveServices/locations/Central US EUAP/operationResults/e1287560-67e6-4070-9526-205bab70e209\",\r\n  \"name\": \"e1287560-67e6-4070-9526-205bab70e209\",\r\n  \"status\": \"Succeeded\",\r\n  \"startTime\": \"2022-03-24T22:51:42Z\",\r\n  \"endTime\": \"2022-03-24T22:52:14Z\"\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/providers/Microsoft.CognitiveServices/locations/Central US EUAP/operationResults/d7e65fe4-ccf2-4af8-9146-08e589c64476\",\r\n  \"name\": \"d7e65fe4-ccf2-4af8-9146-08e589c64476\",\r\n  \"status\": \"Succeeded\",\r\n  \"startTime\": \"2023-01-31T00:36:37Z\",\r\n  \"endTime\": \"2023-01-31T00:37:08Z\"\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourceGroups/pstestrg6303/providers/Microsoft.CognitiveServices/accounts/csapstestrg6303?api-version=2022-03-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjliOTZiMzYtMWY1ZS00MDIxLTg5NTktNTE1MjdlMjZlNmQzL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnNjMwMy9wcm92aWRlcnMvTWljcm9zb2Z0LkNvZ25pdGl2ZVNlcnZpY2VzL2FjY291bnRzL2NzYXBzdGVzdHJnNjMwMz9hcGktdmVyc2lvbj0yMDIyLTAzLTAx",
+      "RequestUri": "/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourceGroups/pstestrg1839/providers/Microsoft.CognitiveServices/accounts/csapstestrg1839?api-version=2022-12-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjliOTZiMzYtMWY1ZS00MDIxLTg5NTktNTE1MjdlMjZlNmQzL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnMTgzOS9wcm92aWRlcnMvTWljcm9zb2Z0LkNvZ25pdGl2ZVNlcnZpY2VzL2FjY291bnRzL2NzYXBzdGVzdHJnMTgzOT9hcGktdmVyc2lvbj0yMDIyLTEyLTAx",
       "RequestMethod": "GET",
-      "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "6974b53a-8fbf-4d0b-9738-19f09cc5fdba"
+          "afbde576-b7de-4ad1-9884-49758e61e3fd"
         ],
         "User-Agent": [
-          "FxVersion/4.700.22.11601",
+          "FxVersion/4.700.22.55902",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22000",
-          "Microsoft.Azure.Management.CognitiveServices.CognitiveServicesManagementClient/8.2.0.0"
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.CognitiveServices.CognitiveServicesManagementClient/9.0.0.0"
         ]
       },
+      "RequestBody": "",
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
@@ -294,13 +294,13 @@
           "no-cache"
         ],
         "ETag": [
-          "\"02001429-0000-3300-0000-623cf61e0000\""
+          "\"000069d6-0000-3300-0000-63d862b40000\""
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "x-ms-request-id": [
-          "f7ac3666-2a4c-46f4-bc57-fa1c9c39708b"
+          "a2ec0ad2-a6a8-4c49-852c-a2e8e5b56ccf"
         ],
         "x-envoy-upstream-service-time": [
           "12"
@@ -309,22 +309,22 @@
           "istio-envoy"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11997"
+          "11996"
         ],
         "x-ms-correlation-request-id": [
-          "bacac242-07a6-43f0-95f3-808a4c4e058f"
+          "09e0f376-b764-493d-9ccd-b8f4ad27b5c2"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20220324T225244Z:bacac242-07a6-43f0-95f3-808a4c4e058f"
+          "CANADACENTRAL:20230131T003738Z:09e0f376-b764-493d-9ccd-b8f4ad27b5c2"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "Date": [
-          "Thu, 24 Mar 2022 22:52:43 GMT"
+          "Tue, 31 Jan 2023 00:37:37 GMT"
         ],
         "Content-Length": [
-          "6699"
+          "7522"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -333,28 +333,28 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourceGroups/pstestrg6303/providers/Microsoft.CognitiveServices/accounts/csapstestrg6303\",\r\n  \"name\": \"csapstestrg6303\",\r\n  \"type\": \"Microsoft.CognitiveServices/accounts\",\r\n  \"etag\": \"\\\"02001429-0000-3300-0000-623cf61e0000\\\"\",\r\n  \"location\": \"Central US EUAP\",\r\n  \"sku\": {\r\n    \"name\": \"S\"\r\n  },\r\n  \"kind\": \"TextAnalytics\",\r\n  \"properties\": {\r\n    \"endpoint\": \"https://centraluseuap.api.cognitive.microsoft.com/\",\r\n    \"internalId\": \"88a90cf2515841f6a15abe2816aa4376\",\r\n    \"dateCreated\": \"2022-03-24T22:51:42.4765982Z\",\r\n    \"apiProperties\": {\r\n      \"qnaAzureSearchEndpointKey\": null\r\n    },\r\n    \"callRateLimit\": {\r\n      \"rules\": [\r\n        {\r\n          \"key\": \"workflow.endpoint.postcalls\",\r\n          \"renewalPeriod\": 60,\r\n          \"count\": 60,\r\n          \"dynamicThrottlingEnabled\": false,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"/language/:analyze-conversations\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"textAnalytics.authoring.customtext.getcalls\",\r\n          \"renewalPeriod\": 60,\r\n          \"count\": 100,\r\n          \"dynamicThrottlingEnabled\": false,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"language/analyze-text/projects/*\",\r\n              \"method\": \"GET\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"textAnalytics.unifiedAuthoring.updatecalls\",\r\n          \"renewalPeriod\": 60,\r\n          \"count\": 10,\r\n          \"dynamicThrottlingEnabled\": false,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"language/analyze-text/projects/*\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"textAnalytics.authoring.customtext.internal.getcalls\",\r\n          \"renewalPeriod\": 60,\r\n          \"count\": 100,\r\n          \"dynamicThrottlingEnabled\": false,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"language/analyze-text/internal/projects/*\",\r\n              \"method\": \"GET\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"textAnalytics.unifiedAuthoring.internal.updatecalls\",\r\n          \"renewalPeriod\": 60,\r\n          \"count\": 10,\r\n          \"dynamicThrottlingEnabled\": false,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"language/analyze-text/internal/projects/*\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"textAnalytics.unifiedAuthoring.clu.getCalls\",\r\n          \"renewalPeriod\": 60,\r\n          \"count\": 100,\r\n          \"dynamicThrottlingEnabled\": false,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"language/analyze-conversations/projects/*\",\r\n              \"method\": \"GET\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"textAnalytics.unifiedAuthoring.clu.updateCalls\",\r\n          \"renewalPeriod\": 60,\r\n          \"count\": 10,\r\n          \"dynamicThrottlingEnabled\": false,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"language/analyze-conversations/projects/*\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"textAnalytics.unifiedAuthoring.clu.internal.getCalls\",\r\n          \"renewalPeriod\": 60,\r\n          \"count\": 100,\r\n          \"dynamicThrottlingEnabled\": false,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"language/analyze-conversations/internal/projects/*\",\r\n              \"method\": \"GET\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"textAnalytics.unifiedAuthoring.clu.internal.updateCalls\",\r\n          \"renewalPeriod\": 60,\r\n          \"count\": 10,\r\n          \"dynamicThrottlingEnabled\": false,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"language/analyze-conversations/internal/projects/*\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"textAnalytics.customText\",\r\n          \"renewalPeriod\": 60,\r\n          \"count\": 100,\r\n          \"dynamicThrottlingEnabled\": false,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"text/analytics/v3.1-preview.ct.1/analyze/*\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"textAnalytics.analyze\",\r\n          \"renewalPeriod\": 60,\r\n          \"count\": 300,\r\n          \"dynamicThrottlingEnabled\": false,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"text/analytics/v3.1/analyze/*\",\r\n              \"method\": \"*\"\r\n            },\r\n            {\r\n              \"path\": \"text/analytics/v3.2-preview.1/analyze/*\",\r\n              \"method\": \"*\"\r\n            },\r\n            {\r\n              \"path\": \"text/analytics/v3.2-preview.2/analyze/*\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"textAnalytics.healthcare\",\r\n          \"renewalPeriod\": 60,\r\n          \"count\": 300,\r\n          \"dynamicThrottlingEnabled\": false,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"text/analytics/v3.1/entities/health/*\",\r\n              \"method\": \"*\"\r\n            },\r\n            {\r\n              \"path\": \"text/analytics/v3.2-preview.1/health/*\",\r\n              \"method\": \"*\"\r\n            },\r\n            {\r\n              \"path\": \"text/analytics/v3.2-preview.2/health/*\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"textAnalytics\",\r\n          \"renewalPeriod\": 60,\r\n          \"count\": 1000,\r\n          \"dynamicThrottlingEnabled\": false,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"text/analytics/*\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"container.billing\",\r\n          \"renewalPeriod\": 10,\r\n          \"count\": 500,\r\n          \"dynamicThrottlingEnabled\": false,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"billing/*\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"questionanswering\",\r\n          \"renewalPeriod\": 60,\r\n          \"count\": 600,\r\n          \"dynamicThrottlingEnabled\": false,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"qnamaker/*\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"unifiedlanguage.questionanswering\",\r\n          \"renewalPeriod\": 60,\r\n          \"count\": 600,\r\n          \"dynamicThrottlingEnabled\": false,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"language/query-knowledgebases/*\",\r\n              \"method\": \"*\"\r\n            },\r\n            {\r\n              \"path\": \"language/:query-*\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"textAnalytics.analyze.internal.autoTagging\",\r\n          \"renewalPeriod\": 60,\r\n          \"count\": 150,\r\n          \"dynamicThrottlingEnabled\": false,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"TextAnalytics/ct-auto-tagging\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"default\",\r\n          \"renewalPeriod\": 1,\r\n          \"count\": 20,\r\n          \"dynamicThrottlingEnabled\": false,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"*\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        }\r\n      ]\r\n    },\r\n    \"quotaLimit\": {\r\n      \"rules\": [\r\n        {\r\n          \"key\": \"workflow.endpoint.postcalls\",\r\n          \"renewalPeriod\": 2592000,\r\n          \"count\": 100000,\r\n          \"dynamicThrottlingEnabled\": false,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"/language/:analyze-conversations\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        }\r\n      ]\r\n    },\r\n    \"backupUpperLimit\": 20,\r\n    \"isMigrated\": false,\r\n    \"privateEndpointConnections\": [],\r\n    \"publicNetworkAccess\": \"Enabled\",\r\n    \"capabilities\": [\r\n      {\r\n        \"name\": \"VirtualNetworks\"\r\n      },\r\n      {\r\n        \"name\": \"CustomerManagedKey\"\r\n      },\r\n      {\r\n        \"name\": \"CustomerManagedStorage\"\r\n      },\r\n      {\r\n        \"name\": \"Container\",\r\n        \"value\": \"TextAnalytics.*,TextAnalytics.Healthcare,TextAnalytics.HealthcareFhir,TextAnalytics.Keyphrase,TextAnalytics.KeyphraseV2,TextAnalytics.KeyPhraseONNX,TextAnalytics.LanguageFastText,TextAnalytics.Language,TextAnalytics.LanguageV2,TextAnalytics.Sentiment,TextAnalytics.SentimentV2,TextAnalytics.SentimentV3,TextAnalytics.SentimentV3Preview\"\r\n      },\r\n      {\r\n        \"name\": \"Cloud\",\r\n        \"value\": \"TextAnalytics.Healthcare,TextAnalytics.Analyze,QuestionAnswer.AllApis,LanguageService.QuestionAnsweringApis\"\r\n      }\r\n    ],\r\n    \"endpoints\": {\r\n      \"Text Analytics\": \"https://centraluseuap.api.cognitive.microsoft.com/\",\r\n      \"LanguageAuthoring\": \"https://centraluseuap.api.cognitive.microsoft.com/\",\r\n      \"ConversationalLanguageUnderstanding\": \"https://centraluseuap.api.cognitive.microsoft.com/\",\r\n      \"Custom Text Authoring Internal APIs\": \"https://centraluseuap.api.cognitive.microsoft.com/\",\r\n      \"Conversational Language Understanding Authoring Internal APIs\": \"https://centraluseuap.api.cognitive.microsoft.com/\",\r\n      \"Custom Text Authoring\": \"https://centraluseuap.api.cognitive.microsoft.com/\",\r\n      \"Conversational Language Understanding Authoring\": \"https://centraluseuap.api.cognitive.microsoft.com/\",\r\n      \"ConversationalLURuntime\": \"https://centraluseuap.api.cognitive.microsoft.com/\",\r\n      \"Language\": \"https://centraluseuap.api.cognitive.microsoft.com/\",\r\n      \"QnAMaker\": \"https://centraluseuap.api.cognitive.microsoft.com/\",\r\n      \"turing\": \"https://centraluseuap.api.cognitive.microsoft.com/\",\r\n      \"Turing DeepWrite\": \"https://centraluseuap.api.cognitive.microsoft.com/\",\r\n      \"QuestionAnswering\": \"https://centraluseuap.api.cognitive.microsoft.com/\",\r\n      \"QuestionAnsweringBizQA\": \"https://centraluseuap.api.cognitive.microsoft.com/\",\r\n      \"QuestionAnsweringQnAGen\": \"https://centraluseuap.api.cognitive.microsoft.com/\",\r\n      \"LUIS.Authoring\": \"https://centraluseuap.api.cognitive.microsoft.com/\"\r\n    },\r\n    \"provisioningState\": \"Succeeded\"\r\n  },\r\n  \"systemData\": {\r\n    \"createdBy\": \"50841d5f-166a-406c-8472-6800c9698b43\",\r\n    \"createdByType\": \"Application\",\r\n    \"createdAt\": \"2022-03-24T22:51:42.232845Z\",\r\n    \"lastModifiedBy\": \"50841d5f-166a-406c-8472-6800c9698b43\",\r\n    \"lastModifiedByType\": \"Application\",\r\n    \"lastModifiedAt\": \"2022-03-24T22:51:42.232845Z\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourceGroups/pstestrg1839/providers/Microsoft.CognitiveServices/accounts/csapstestrg1839\",\r\n  \"name\": \"csapstestrg1839\",\r\n  \"type\": \"Microsoft.CognitiveServices/accounts\",\r\n  \"etag\": \"\\\"000069d6-0000-3300-0000-63d862b40000\\\"\",\r\n  \"location\": \"Central US EUAP\",\r\n  \"sku\": {\r\n    \"name\": \"S\"\r\n  },\r\n  \"kind\": \"TextAnalytics\",\r\n  \"properties\": {\r\n    \"endpoint\": \"https://centraluseuap.api.cognitive.microsoft.com/\",\r\n    \"internalId\": \"098fd05fcec24e73a580930e15d3724f\",\r\n    \"dateCreated\": \"2023-01-31T00:36:34.3109546Z\",\r\n    \"apiProperties\": {\r\n      \"qnaAzureSearchEndpointKey\": null\r\n    },\r\n    \"callRateLimit\": {\r\n      \"rules\": [\r\n        {\r\n          \"key\": \"workflow.endpoint.postcalls\",\r\n          \"renewalPeriod\": 60,\r\n          \"count\": 1000,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"language/:analyze-conversations\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"textAnalytics.conversations.jobs.getcalls\",\r\n          \"renewalPeriod\": 60,\r\n          \"count\": 1000,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"language/analyze-conversations/jobs/*\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"textAnalytics.conversations.jobs.postcalls\",\r\n          \"renewalPeriod\": 60,\r\n          \"count\": 1000,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"language/analyze-conversations/jobs\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"textAnalytics.authoring.customtext.getcalls\",\r\n          \"renewalPeriod\": 60,\r\n          \"count\": 100,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"language/analyze-text/projects/*\",\r\n              \"method\": \"GET\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"textAnalytics.unifiedAuthoring.updatecalls\",\r\n          \"renewalPeriod\": 60,\r\n          \"count\": 10,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"language/analyze-text/projects/*\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"textAnalytics.authoring.customtext.march.getcalls\",\r\n          \"renewalPeriod\": 60,\r\n          \"count\": 100,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"language/authoring/analyze-text/projects/*\",\r\n              \"method\": \"GET\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"textAnalytics.unifiedAuthoring.march.updatecalls\",\r\n          \"renewalPeriod\": 60,\r\n          \"count\": 10,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"language/authoring/analyze-text/projects/*\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"textAnalytics.authoring.customtext.internal.getcalls\",\r\n          \"renewalPeriod\": 60,\r\n          \"count\": 100,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"language/analyze-text/internal/projects/*\",\r\n              \"method\": \"GET\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"textAnalytics.unifiedAuthoring.internal.updatecalls\",\r\n          \"renewalPeriod\": 60,\r\n          \"count\": 10,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"language/analyze-text/internal/projects/*\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"textAnalytics.unifiedAuthoring.clu.getCalls\",\r\n          \"renewalPeriod\": 60,\r\n          \"count\": 100,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"language/analyze-conversations/projects/*\",\r\n              \"method\": \"GET\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"textAnalytics.unifiedAuthoring.clu.updateCalls\",\r\n          \"renewalPeriod\": 60,\r\n          \"count\": 10,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"language/analyze-conversations/projects/*\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"textAnalytics.unifiedAuthoring.clu.march.getCalls\",\r\n          \"renewalPeriod\": 60,\r\n          \"count\": 100,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"language/authoring/analyze-conversations/projects/*\",\r\n              \"method\": \"GET\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"textAnalytics.unifiedAuthoring.clu.march.updateCalls\",\r\n          \"renewalPeriod\": 60,\r\n          \"count\": 10,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"language/authoring/analyze-conversations/projects/*\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"textAnalytics.unifiedAuthoring.clu.internal.getCalls\",\r\n          \"renewalPeriod\": 60,\r\n          \"count\": 100,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"language/analyze-conversations/internal/projects/*\",\r\n              \"method\": \"GET\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"textAnalytics.unifiedAuthoring.clu.internal.updateCalls\",\r\n          \"renewalPeriod\": 60,\r\n          \"count\": 10,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"language/analyze-conversations/internal/projects/*\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"textAnalytics.customText\",\r\n          \"renewalPeriod\": 60,\r\n          \"count\": 100,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"text/analytics/v3.1-preview.ct.1/analyze/*\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"textAnalytics.analyze\",\r\n          \"renewalPeriod\": 60,\r\n          \"count\": 300,\r\n          \"dynamicThrottlingEnabled\": true,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"text/analytics/v3.1/analyze/*\",\r\n              \"method\": \"*\"\r\n            },\r\n            {\r\n              \"path\": \"text/analytics/v3.2-preview.1/analyze/*\",\r\n              \"method\": \"*\"\r\n            },\r\n            {\r\n              \"path\": \"text/analytics/v3.2-preview.2/analyze/*\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"textAnalytics.healthcare\",\r\n          \"renewalPeriod\": 60,\r\n          \"count\": 300,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"text/analytics/v3.1/entities/health/*\",\r\n              \"method\": \"*\"\r\n            },\r\n            {\r\n              \"path\": \"text/analytics/v3.2-preview.1/health/*\",\r\n              \"method\": \"*\"\r\n            },\r\n            {\r\n              \"path\": \"text/analytics/v3.2-preview.2/health/*\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"textAnalytics.languagedetection\",\r\n          \"renewalPeriod\": 60,\r\n          \"count\": 1000,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"text/analytics/v3.1/languages/*\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"textAnalytics\",\r\n          \"renewalPeriod\": 60,\r\n          \"count\": 1000,\r\n          \"dynamicThrottlingEnabled\": true,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"text/analytics/*\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"container.billing\",\r\n          \"renewalPeriod\": 10,\r\n          \"count\": 500,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"billing/*\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"questionanswering\",\r\n          \"renewalPeriod\": 60,\r\n          \"count\": 600,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"qnamaker/*\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"unifiedlanguage.questionanswering\",\r\n          \"renewalPeriod\": 60,\r\n          \"count\": 600,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"language/query-knowledgebases/*\",\r\n              \"method\": \"*\"\r\n            },\r\n            {\r\n              \"path\": \"language/:query-*\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"textAnalytics.analyze.internal.autoTagging\",\r\n          \"renewalPeriod\": 60,\r\n          \"count\": 150,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"TextAnalytics/ct-auto-tagging\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"textAnalytics.analyze.internal.evaluation\",\r\n          \"renewalPeriod\": 60,\r\n          \"count\": 150,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"TextAnalytics/ct-evaluation\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"default\",\r\n          \"renewalPeriod\": 1,\r\n          \"count\": 20,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"*\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        }\r\n      ]\r\n    },\r\n    \"quotaLimit\": {\r\n      \"rules\": [\r\n        {\r\n          \"key\": \"workflow.endpoint.postcalls\",\r\n          \"renewalPeriod\": 2592000,\r\n          \"count\": 100000,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"/language/:analyze-conversations\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        }\r\n      ]\r\n    },\r\n    \"isMigrated\": false,\r\n    \"privateEndpointConnections\": [],\r\n    \"publicNetworkAccess\": \"Enabled\",\r\n    \"capabilities\": [\r\n      {\r\n        \"name\": \"DynamicThrottling\"\r\n      },\r\n      {\r\n        \"name\": \"VirtualNetworks\"\r\n      },\r\n      {\r\n        \"name\": \"CustomerManagedKey\"\r\n      },\r\n      {\r\n        \"name\": \"CustomerManagedStorage\"\r\n      },\r\n      {\r\n        \"name\": \"Container\",\r\n        \"value\": \"TextAnalytics.*,TextAnalytics.Healthcare,TextAnalytics.HealthcareFhir,TextAnalytics.Keyphrase,TextAnalytics.KeyphraseV2,TextAnalytics.KeyPhraseONNX,TextAnalytics.LanguageFastText,TextAnalytics.Language,TextAnalytics.LanguageV2,TextAnalytics.Sentiment,TextAnalytics.SentimentV2,TextAnalytics.SentimentV3,TextAnalytics.SentimentV3Preview\"\r\n      },\r\n      {\r\n        \"name\": \"Cloud\",\r\n        \"value\": \"TextAnalytics.Healthcare,TextAnalytics.Analyze,QuestionAnswer.AllApis,LanguageService.QuestionAnsweringApis\"\r\n      }\r\n    ],\r\n    \"endpoints\": {\r\n      \"Text Analytics\": \"https://centraluseuap.api.cognitive.microsoft.com/\",\r\n      \"Custom Text Authoring\": \"https://centraluseuap.api.cognitive.microsoft.com/\",\r\n      \"Conversational Language Understanding Authoring\": \"https://centraluseuap.api.cognitive.microsoft.com/\",\r\n      \"Custom Question Answering Authoring\": \"https://centraluseuap.api.cognitive.microsoft.com/\",\r\n      \"Custom Question Answering\": \"https://centraluseuap.api.cognitive.microsoft.com/\",\r\n      \"ConversationalLURuntime\": \"https://centraluseuap.api.cognitive.microsoft.com/\",\r\n      \"Language\": \"https://centraluseuap.api.cognitive.microsoft.com/\",\r\n      \"Language-2022-05-01\": \"https://centraluseuap.api.cognitive.microsoft.com/\",\r\n      \"QnAMaker\": \"https://centraluseuap.api.cognitive.microsoft.com/\",\r\n      \"turing\": \"https://centraluseuap.api.cognitive.microsoft.com/\",\r\n      \"Turing DeepWrite\": \"https://centraluseuap.api.cognitive.microsoft.com/\",\r\n      \"QuestionAnswering\": \"https://centraluseuap.api.cognitive.microsoft.com/\",\r\n      \"QuestionAnsweringBizQA\": \"https://centraluseuap.api.cognitive.microsoft.com/\",\r\n      \"QuestionAnsweringQnAGen\": \"https://centraluseuap.api.cognitive.microsoft.com/\",\r\n      \"QuestionAnswering Generate\": \"https://centraluseuap.api.cognitive.microsoft.com/\",\r\n      \"LUIS.Authoring\": \"https://centraluseuap.api.cognitive.microsoft.com/\",\r\n      \"Container\": \"https://centraluseuap.api.cognitive.microsoft.com/\"\r\n    },\r\n    \"provisioningState\": \"Succeeded\"\r\n  },\r\n  \"systemData\": {\r\n    \"createdBy\": \"50841d5f-166a-406c-8472-6800c9698b43\",\r\n    \"createdByType\": \"Application\",\r\n    \"createdAt\": \"2023-01-31T00:36:34.0291702Z\",\r\n    \"lastModifiedBy\": \"50841d5f-166a-406c-8472-6800c9698b43\",\r\n    \"lastModifiedByType\": \"Application\",\r\n    \"lastModifiedAt\": \"2023-01-31T00:36:34.0291702Z\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourceGroups/pstestrg6303/providers/Microsoft.CognitiveServices/accounts/csapstestrg6303?api-version=2022-03-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjliOTZiMzYtMWY1ZS00MDIxLTg5NTktNTE1MjdlMjZlNmQzL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnNjMwMy9wcm92aWRlcnMvTWljcm9zb2Z0LkNvZ25pdGl2ZVNlcnZpY2VzL2FjY291bnRzL2NzYXBzdGVzdHJnNjMwMz9hcGktdmVyc2lvbj0yMDIyLTAzLTAx",
+      "RequestUri": "/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourceGroups/pstestrg1839/providers/Microsoft.CognitiveServices/accounts/csapstestrg1839?api-version=2022-12-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjliOTZiMzYtMWY1ZS00MDIxLTg5NTktNTE1MjdlMjZlNmQzL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnMTgzOS9wcm92aWRlcnMvTWljcm9zb2Z0LkNvZ25pdGl2ZVNlcnZpY2VzL2FjY291bnRzL2NzYXBzdGVzdHJnMTgzOT9hcGktdmVyc2lvbj0yMDIyLTEyLTAx",
       "RequestMethod": "GET",
-      "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "6974b53a-8fbf-4d0b-9738-19f09cc5fdba"
+          "afbde576-b7de-4ad1-9884-49758e61e3fd"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.700.22.11601",
+          "FxVersion/4.700.22.55902",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22000",
-          "Microsoft.Azure.Management.CognitiveServices.CognitiveServicesManagementClient/8.2.0.0"
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.CognitiveServices.CognitiveServicesManagementClient/9.0.0.0"
         ]
       },
+      "RequestBody": "",
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
@@ -363,82 +363,16 @@
           "no-cache"
         ],
         "ETag": [
-          "\"02001429-0000-3300-0000-623cf61e0000\""
+          "\"000069d6-0000-3300-0000-63d862b40000\""
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "x-ms-request-id": [
-          "48e8517c-61ea-462b-b99d-0cb55b2a082a"
+          "1c1d07f4-6182-4f6e-a02b-4d35e17787ff"
         ],
         "x-envoy-upstream-service-time": [
-          "10"
-        ],
-        "Server": [
-          "istio-envoy"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11996"
-        ],
-        "x-ms-correlation-request-id": [
-          "4eca7dd0-06e0-428e-bfa3-68c55a699a20"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20220324T225244Z:4eca7dd0-06e0-428e-bfa3-68c55a699a20"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "Date": [
-          "Thu, 24 Mar 2022 22:52:43 GMT"
-        ],
-        "Content-Length": [
-          "6699"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourceGroups/pstestrg6303/providers/Microsoft.CognitiveServices/accounts/csapstestrg6303\",\r\n  \"name\": \"csapstestrg6303\",\r\n  \"type\": \"Microsoft.CognitiveServices/accounts\",\r\n  \"etag\": \"\\\"02001429-0000-3300-0000-623cf61e0000\\\"\",\r\n  \"location\": \"Central US EUAP\",\r\n  \"sku\": {\r\n    \"name\": \"S\"\r\n  },\r\n  \"kind\": \"TextAnalytics\",\r\n  \"properties\": {\r\n    \"endpoint\": \"https://centraluseuap.api.cognitive.microsoft.com/\",\r\n    \"internalId\": \"88a90cf2515841f6a15abe2816aa4376\",\r\n    \"dateCreated\": \"2022-03-24T22:51:42.4765982Z\",\r\n    \"apiProperties\": {\r\n      \"qnaAzureSearchEndpointKey\": null\r\n    },\r\n    \"callRateLimit\": {\r\n      \"rules\": [\r\n        {\r\n          \"key\": \"workflow.endpoint.postcalls\",\r\n          \"renewalPeriod\": 60,\r\n          \"count\": 60,\r\n          \"dynamicThrottlingEnabled\": false,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"/language/:analyze-conversations\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"textAnalytics.authoring.customtext.getcalls\",\r\n          \"renewalPeriod\": 60,\r\n          \"count\": 100,\r\n          \"dynamicThrottlingEnabled\": false,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"language/analyze-text/projects/*\",\r\n              \"method\": \"GET\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"textAnalytics.unifiedAuthoring.updatecalls\",\r\n          \"renewalPeriod\": 60,\r\n          \"count\": 10,\r\n          \"dynamicThrottlingEnabled\": false,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"language/analyze-text/projects/*\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"textAnalytics.authoring.customtext.internal.getcalls\",\r\n          \"renewalPeriod\": 60,\r\n          \"count\": 100,\r\n          \"dynamicThrottlingEnabled\": false,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"language/analyze-text/internal/projects/*\",\r\n              \"method\": \"GET\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"textAnalytics.unifiedAuthoring.internal.updatecalls\",\r\n          \"renewalPeriod\": 60,\r\n          \"count\": 10,\r\n          \"dynamicThrottlingEnabled\": false,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"language/analyze-text/internal/projects/*\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"textAnalytics.unifiedAuthoring.clu.getCalls\",\r\n          \"renewalPeriod\": 60,\r\n          \"count\": 100,\r\n          \"dynamicThrottlingEnabled\": false,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"language/analyze-conversations/projects/*\",\r\n              \"method\": \"GET\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"textAnalytics.unifiedAuthoring.clu.updateCalls\",\r\n          \"renewalPeriod\": 60,\r\n          \"count\": 10,\r\n          \"dynamicThrottlingEnabled\": false,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"language/analyze-conversations/projects/*\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"textAnalytics.unifiedAuthoring.clu.internal.getCalls\",\r\n          \"renewalPeriod\": 60,\r\n          \"count\": 100,\r\n          \"dynamicThrottlingEnabled\": false,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"language/analyze-conversations/internal/projects/*\",\r\n              \"method\": \"GET\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"textAnalytics.unifiedAuthoring.clu.internal.updateCalls\",\r\n          \"renewalPeriod\": 60,\r\n          \"count\": 10,\r\n          \"dynamicThrottlingEnabled\": false,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"language/analyze-conversations/internal/projects/*\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"textAnalytics.customText\",\r\n          \"renewalPeriod\": 60,\r\n          \"count\": 100,\r\n          \"dynamicThrottlingEnabled\": false,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"text/analytics/v3.1-preview.ct.1/analyze/*\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"textAnalytics.analyze\",\r\n          \"renewalPeriod\": 60,\r\n          \"count\": 300,\r\n          \"dynamicThrottlingEnabled\": false,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"text/analytics/v3.1/analyze/*\",\r\n              \"method\": \"*\"\r\n            },\r\n            {\r\n              \"path\": \"text/analytics/v3.2-preview.1/analyze/*\",\r\n              \"method\": \"*\"\r\n            },\r\n            {\r\n              \"path\": \"text/analytics/v3.2-preview.2/analyze/*\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"textAnalytics.healthcare\",\r\n          \"renewalPeriod\": 60,\r\n          \"count\": 300,\r\n          \"dynamicThrottlingEnabled\": false,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"text/analytics/v3.1/entities/health/*\",\r\n              \"method\": \"*\"\r\n            },\r\n            {\r\n              \"path\": \"text/analytics/v3.2-preview.1/health/*\",\r\n              \"method\": \"*\"\r\n            },\r\n            {\r\n              \"path\": \"text/analytics/v3.2-preview.2/health/*\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"textAnalytics\",\r\n          \"renewalPeriod\": 60,\r\n          \"count\": 1000,\r\n          \"dynamicThrottlingEnabled\": false,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"text/analytics/*\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"container.billing\",\r\n          \"renewalPeriod\": 10,\r\n          \"count\": 500,\r\n          \"dynamicThrottlingEnabled\": false,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"billing/*\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"questionanswering\",\r\n          \"renewalPeriod\": 60,\r\n          \"count\": 600,\r\n          \"dynamicThrottlingEnabled\": false,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"qnamaker/*\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"unifiedlanguage.questionanswering\",\r\n          \"renewalPeriod\": 60,\r\n          \"count\": 600,\r\n          \"dynamicThrottlingEnabled\": false,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"language/query-knowledgebases/*\",\r\n              \"method\": \"*\"\r\n            },\r\n            {\r\n              \"path\": \"language/:query-*\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"textAnalytics.analyze.internal.autoTagging\",\r\n          \"renewalPeriod\": 60,\r\n          \"count\": 150,\r\n          \"dynamicThrottlingEnabled\": false,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"TextAnalytics/ct-auto-tagging\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"default\",\r\n          \"renewalPeriod\": 1,\r\n          \"count\": 20,\r\n          \"dynamicThrottlingEnabled\": false,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"*\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        }\r\n      ]\r\n    },\r\n    \"quotaLimit\": {\r\n      \"rules\": [\r\n        {\r\n          \"key\": \"workflow.endpoint.postcalls\",\r\n          \"renewalPeriod\": 2592000,\r\n          \"count\": 100000,\r\n          \"dynamicThrottlingEnabled\": false,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"/language/:analyze-conversations\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        }\r\n      ]\r\n    },\r\n    \"backupUpperLimit\": 20,\r\n    \"isMigrated\": false,\r\n    \"privateEndpointConnections\": [],\r\n    \"publicNetworkAccess\": \"Enabled\",\r\n    \"capabilities\": [\r\n      {\r\n        \"name\": \"VirtualNetworks\"\r\n      },\r\n      {\r\n        \"name\": \"CustomerManagedKey\"\r\n      },\r\n      {\r\n        \"name\": \"CustomerManagedStorage\"\r\n      },\r\n      {\r\n        \"name\": \"Container\",\r\n        \"value\": \"TextAnalytics.*,TextAnalytics.Healthcare,TextAnalytics.HealthcareFhir,TextAnalytics.Keyphrase,TextAnalytics.KeyphraseV2,TextAnalytics.KeyPhraseONNX,TextAnalytics.LanguageFastText,TextAnalytics.Language,TextAnalytics.LanguageV2,TextAnalytics.Sentiment,TextAnalytics.SentimentV2,TextAnalytics.SentimentV3,TextAnalytics.SentimentV3Preview\"\r\n      },\r\n      {\r\n        \"name\": \"Cloud\",\r\n        \"value\": \"TextAnalytics.Healthcare,TextAnalytics.Analyze,QuestionAnswer.AllApis,LanguageService.QuestionAnsweringApis\"\r\n      }\r\n    ],\r\n    \"endpoints\": {\r\n      \"Text Analytics\": \"https://centraluseuap.api.cognitive.microsoft.com/\",\r\n      \"LanguageAuthoring\": \"https://centraluseuap.api.cognitive.microsoft.com/\",\r\n      \"ConversationalLanguageUnderstanding\": \"https://centraluseuap.api.cognitive.microsoft.com/\",\r\n      \"Custom Text Authoring Internal APIs\": \"https://centraluseuap.api.cognitive.microsoft.com/\",\r\n      \"Conversational Language Understanding Authoring Internal APIs\": \"https://centraluseuap.api.cognitive.microsoft.com/\",\r\n      \"Custom Text Authoring\": \"https://centraluseuap.api.cognitive.microsoft.com/\",\r\n      \"Conversational Language Understanding Authoring\": \"https://centraluseuap.api.cognitive.microsoft.com/\",\r\n      \"ConversationalLURuntime\": \"https://centraluseuap.api.cognitive.microsoft.com/\",\r\n      \"Language\": \"https://centraluseuap.api.cognitive.microsoft.com/\",\r\n      \"QnAMaker\": \"https://centraluseuap.api.cognitive.microsoft.com/\",\r\n      \"turing\": \"https://centraluseuap.api.cognitive.microsoft.com/\",\r\n      \"Turing DeepWrite\": \"https://centraluseuap.api.cognitive.microsoft.com/\",\r\n      \"QuestionAnswering\": \"https://centraluseuap.api.cognitive.microsoft.com/\",\r\n      \"QuestionAnsweringBizQA\": \"https://centraluseuap.api.cognitive.microsoft.com/\",\r\n      \"QuestionAnsweringQnAGen\": \"https://centraluseuap.api.cognitive.microsoft.com/\",\r\n      \"LUIS.Authoring\": \"https://centraluseuap.api.cognitive.microsoft.com/\"\r\n    },\r\n    \"provisioningState\": \"Succeeded\"\r\n  },\r\n  \"systemData\": {\r\n    \"createdBy\": \"50841d5f-166a-406c-8472-6800c9698b43\",\r\n    \"createdByType\": \"Application\",\r\n    \"createdAt\": \"2022-03-24T22:51:42.232845Z\",\r\n    \"lastModifiedBy\": \"50841d5f-166a-406c-8472-6800c9698b43\",\r\n    \"lastModifiedByType\": \"Application\",\r\n    \"lastModifiedAt\": \"2022-03-24T22:51:42.232845Z\"\r\n  }\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/providers/Microsoft.CognitiveServices/locations/westus/commitmentTiers?api-version=2022-03-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjliOTZiMzYtMWY1ZS00MDIxLTg5NTktNTE1MjdlMjZlNmQzL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29nbml0aXZlU2VydmljZXMvbG9jYXRpb25zL3dlc3R1cy9jb21taXRtZW50VGllcnM/YXBpLXZlcnNpb249MjAyMi0wMy0wMQ==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "d6e8b729-88ed-4835-bd33-3923e53d5f06"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.700.22.11601",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22000",
-          "Microsoft.Azure.Management.CognitiveServices.CognitiveServicesManagementClient/8.2.0.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "x-ms-request-id": [
-          "28f48f8a-7444-4f0d-9f71-cfd9353ee4a9"
-        ],
-        "x-envoy-upstream-service-time": [
-          "14"
+          "9"
         ],
         "Server": [
           "istio-envoy"
@@ -447,19 +381,19 @@
           "11995"
         ],
         "x-ms-correlation-request-id": [
-          "b0cf8746-6859-4c93-aea7-0f296e42448f"
+          "0c90608e-52be-41e8-9e6c-86b02b01244e"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20220324T225244Z:b0cf8746-6859-4c93-aea7-0f296e42448f"
+          "CANADACENTRAL:20230131T003738Z:0c90608e-52be-41e8-9e6c-86b02b01244e"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "Date": [
-          "Thu, 24 Mar 2022 22:52:43 GMT"
+          "Tue, 31 Jan 2023 00:37:37 GMT"
         ],
         "Content-Length": [
-          "10988"
+          "7522"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -468,28 +402,28 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"kind\": \"LUIS\",\r\n      \"skuName\": \"S0\",\r\n      \"hostingModel\": \"Web\",\r\n      \"planType\": \"LanguageTransaction\",\r\n      \"tier\": \"T1\",\r\n      \"quota\": {\r\n        \"quantity\": 1000000,\r\n        \"unit\": \"Transaction\"\r\n      },\r\n      \"cost\": {}\r\n    },\r\n    {\r\n      \"kind\": \"LUIS\",\r\n      \"skuName\": \"S0\",\r\n      \"hostingModel\": \"Web\",\r\n      \"planType\": \"LanguageTransaction\",\r\n      \"tier\": \"T2\",\r\n      \"quota\": {\r\n        \"quantity\": 5000000,\r\n        \"unit\": \"Transaction\"\r\n      },\r\n      \"cost\": {}\r\n    },\r\n    {\r\n      \"kind\": \"LUIS\",\r\n      \"skuName\": \"S0\",\r\n      \"hostingModel\": \"Web\",\r\n      \"planType\": \"LanguageTransaction\",\r\n      \"tier\": \"T3\",\r\n      \"quota\": {\r\n        \"quantity\": 25000000,\r\n        \"unit\": \"Transaction\"\r\n      },\r\n      \"cost\": {}\r\n    },\r\n    {\r\n      \"kind\": \"LUIS\",\r\n      \"skuName\": \"S0\",\r\n      \"hostingModel\": \"ConnectedContainer\",\r\n      \"planType\": \"LanguageTransaction\",\r\n      \"tier\": \"T1\",\r\n      \"quota\": {\r\n        \"quantity\": 1000000,\r\n        \"unit\": \"Transaction\"\r\n      },\r\n      \"cost\": {}\r\n    },\r\n    {\r\n      \"kind\": \"LUIS\",\r\n      \"skuName\": \"S0\",\r\n      \"hostingModel\": \"ConnectedContainer\",\r\n      \"planType\": \"LanguageTransaction\",\r\n      \"tier\": \"T2\",\r\n      \"quota\": {\r\n        \"quantity\": 5000000,\r\n        \"unit\": \"Transaction\"\r\n      },\r\n      \"cost\": {}\r\n    },\r\n    {\r\n      \"kind\": \"LUIS\",\r\n      \"skuName\": \"S0\",\r\n      \"hostingModel\": \"ConnectedContainer\",\r\n      \"planType\": \"LanguageTransaction\",\r\n      \"tier\": \"T3\",\r\n      \"quota\": {\r\n        \"quantity\": 25000000,\r\n        \"unit\": \"Transaction\"\r\n      },\r\n      \"cost\": {}\r\n    },\r\n    {\r\n      \"kind\": \"LUIS\",\r\n      \"skuName\": \"DC0\",\r\n      \"hostingModel\": \"DisconnectedContainer\",\r\n      \"planType\": \"LanguageTransaction\",\r\n      \"tier\": \"T1\",\r\n      \"maxCount\": 10,\r\n      \"quota\": {\r\n        \"quantity\": 1000000,\r\n        \"unit\": \"Transaction\"\r\n      },\r\n      \"cost\": {}\r\n    },\r\n    {\r\n      \"kind\": \"LUIS\",\r\n      \"skuName\": \"DC0\",\r\n      \"hostingModel\": \"DisconnectedContainer\",\r\n      \"planType\": \"LanguageTransaction\",\r\n      \"tier\": \"T2\",\r\n      \"maxCount\": 10,\r\n      \"quota\": {\r\n        \"quantity\": 5000000,\r\n        \"unit\": \"Transaction\"\r\n      },\r\n      \"cost\": {}\r\n    },\r\n    {\r\n      \"kind\": \"LUIS\",\r\n      \"skuName\": \"DC0\",\r\n      \"hostingModel\": \"DisconnectedContainer\",\r\n      \"planType\": \"LanguageTransaction\",\r\n      \"tier\": \"T3\",\r\n      \"maxCount\": 10,\r\n      \"quota\": {\r\n        \"quantity\": 25000000,\r\n        \"unit\": \"Transaction\"\r\n      },\r\n      \"cost\": {}\r\n    },\r\n    {\r\n      \"kind\": \"LUIS\",\r\n      \"skuName\": \"DC0\",\r\n      \"hostingModel\": \"DisconnectedContainer\",\r\n      \"planType\": \"LanguageTransaction\",\r\n      \"tier\": \"T4\",\r\n      \"maxCount\": 10,\r\n      \"quota\": {\r\n        \"quantity\": 50000000,\r\n        \"unit\": \"Transaction\"\r\n      },\r\n      \"cost\": {}\r\n    },\r\n    {\r\n      \"kind\": \"TextAnalytics\",\r\n      \"skuName\": \"S\",\r\n      \"hostingModel\": \"Web\",\r\n      \"planType\": \"TA\",\r\n      \"tier\": \"T1\",\r\n      \"quota\": {\r\n        \"quantity\": 1000000,\r\n        \"unit\": \"Transaction\"\r\n      },\r\n      \"cost\": {}\r\n    },\r\n    {\r\n      \"kind\": \"TextAnalytics\",\r\n      \"skuName\": \"S\",\r\n      \"hostingModel\": \"Web\",\r\n      \"planType\": \"TA\",\r\n      \"tier\": \"T2\",\r\n      \"quota\": {\r\n        \"quantity\": 3000000,\r\n        \"unit\": \"Transaction\"\r\n      },\r\n      \"cost\": {}\r\n    },\r\n    {\r\n      \"kind\": \"TextAnalytics\",\r\n      \"skuName\": \"S\",\r\n      \"hostingModel\": \"Web\",\r\n      \"planType\": \"TA\",\r\n      \"tier\": \"T3\",\r\n      \"quota\": {\r\n        \"quantity\": 10000000,\r\n        \"unit\": \"Transaction\"\r\n      },\r\n      \"cost\": {}\r\n    },\r\n    {\r\n      \"kind\": \"TextAnalytics\",\r\n      \"skuName\": \"S\",\r\n      \"hostingModel\": \"ConnectedContainer\",\r\n      \"planType\": \"TA\",\r\n      \"tier\": \"T1\",\r\n      \"quota\": {\r\n        \"quantity\": 1000000,\r\n        \"unit\": \"Transaction\"\r\n      },\r\n      \"cost\": {}\r\n    },\r\n    {\r\n      \"kind\": \"TextAnalytics\",\r\n      \"skuName\": \"S\",\r\n      \"hostingModel\": \"ConnectedContainer\",\r\n      \"planType\": \"TA\",\r\n      \"tier\": \"T2\",\r\n      \"quota\": {\r\n        \"quantity\": 3000000,\r\n        \"unit\": \"Transaction\"\r\n      },\r\n      \"cost\": {}\r\n    },\r\n    {\r\n      \"kind\": \"TextAnalytics\",\r\n      \"skuName\": \"S\",\r\n      \"hostingModel\": \"ConnectedContainer\",\r\n      \"planType\": \"TA\",\r\n      \"tier\": \"T3\",\r\n      \"quota\": {\r\n        \"quantity\": 10000000,\r\n        \"unit\": \"Transaction\"\r\n      },\r\n      \"cost\": {}\r\n    },\r\n    {\r\n      \"kind\": \"TextAnalytics\",\r\n      \"skuName\": \"DC0\",\r\n      \"hostingModel\": \"DisconnectedContainer\",\r\n      \"planType\": \"TA\",\r\n      \"tier\": \"T1\",\r\n      \"maxCount\": 10,\r\n      \"quota\": {\r\n        \"quantity\": 1000000,\r\n        \"unit\": \"TextRecords\"\r\n      },\r\n      \"cost\": {}\r\n    },\r\n    {\r\n      \"kind\": \"TextAnalytics\",\r\n      \"skuName\": \"DC0\",\r\n      \"hostingModel\": \"DisconnectedContainer\",\r\n      \"planType\": \"TA\",\r\n      \"tier\": \"T2\",\r\n      \"maxCount\": 10,\r\n      \"quota\": {\r\n        \"quantity\": 2500000,\r\n        \"unit\": \"TextRecords\"\r\n      },\r\n      \"cost\": {}\r\n    },\r\n    {\r\n      \"kind\": \"TextAnalytics\",\r\n      \"skuName\": \"DC0\",\r\n      \"hostingModel\": \"DisconnectedContainer\",\r\n      \"planType\": \"TA\",\r\n      \"tier\": \"T3\",\r\n      \"maxCount\": 10,\r\n      \"quota\": {\r\n        \"quantity\": 10000000,\r\n        \"unit\": \"TextRecords\"\r\n      },\r\n      \"cost\": {}\r\n    },\r\n    {\r\n      \"kind\": \"TextAnalytics\",\r\n      \"skuName\": \"DC0\",\r\n      \"hostingModel\": \"DisconnectedContainer\",\r\n      \"planType\": \"TA\",\r\n      \"tier\": \"T4\",\r\n      \"maxCount\": 10,\r\n      \"quota\": {\r\n        \"quantity\": 25000000,\r\n        \"unit\": \"TextRecords\"\r\n      },\r\n      \"cost\": {}\r\n    },\r\n    {\r\n      \"kind\": \"ComputerVision\",\r\n      \"skuName\": \"S1\",\r\n      \"hostingModel\": \"Web\",\r\n      \"planType\": \"Read\",\r\n      \"tier\": \"T1\",\r\n      \"quota\": {\r\n        \"quantity\": 500000,\r\n        \"unit\": \"Transaction\"\r\n      },\r\n      \"cost\": {}\r\n    },\r\n    {\r\n      \"kind\": \"ComputerVision\",\r\n      \"skuName\": \"S1\",\r\n      \"hostingModel\": \"Web\",\r\n      \"planType\": \"Read\",\r\n      \"tier\": \"T2\",\r\n      \"quota\": {\r\n        \"quantity\": 2000000,\r\n        \"unit\": \"Transaction\"\r\n      },\r\n      \"cost\": {}\r\n    },\r\n    {\r\n      \"kind\": \"ComputerVision\",\r\n      \"skuName\": \"S1\",\r\n      \"hostingModel\": \"Web\",\r\n      \"planType\": \"Read\",\r\n      \"tier\": \"T3\",\r\n      \"quota\": {\r\n        \"quantity\": 8000000,\r\n        \"unit\": \"Transaction\"\r\n      },\r\n      \"cost\": {}\r\n    },\r\n    {\r\n      \"kind\": \"ComputerVision\",\r\n      \"skuName\": \"S1\",\r\n      \"hostingModel\": \"ConnectedContainer\",\r\n      \"planType\": \"Read\",\r\n      \"tier\": \"T1\",\r\n      \"quota\": {\r\n        \"quantity\": 500000,\r\n        \"unit\": \"Transaction\"\r\n      },\r\n      \"cost\": {}\r\n    },\r\n    {\r\n      \"kind\": \"ComputerVision\",\r\n      \"skuName\": \"S1\",\r\n      \"hostingModel\": \"ConnectedContainer\",\r\n      \"planType\": \"Read\",\r\n      \"tier\": \"T2\",\r\n      \"quota\": {\r\n        \"quantity\": 2000000,\r\n        \"unit\": \"Transaction\"\r\n      },\r\n      \"cost\": {}\r\n    },\r\n    {\r\n      \"kind\": \"ComputerVision\",\r\n      \"skuName\": \"S1\",\r\n      \"hostingModel\": \"ConnectedContainer\",\r\n      \"planType\": \"Read\",\r\n      \"tier\": \"T3\",\r\n      \"quota\": {\r\n        \"quantity\": 8000000,\r\n        \"unit\": \"Transaction\"\r\n      },\r\n      \"cost\": {}\r\n    },\r\n    {\r\n      \"kind\": \"ComputerVision\",\r\n      \"skuName\": \"DC0\",\r\n      \"hostingModel\": \"DisconnectedContainer\",\r\n      \"planType\": \"Read\",\r\n      \"tier\": \"T1\",\r\n      \"maxCount\": 10,\r\n      \"quota\": {\r\n        \"quantity\": 500000,\r\n        \"unit\": \"Transaction\"\r\n      },\r\n      \"cost\": {}\r\n    },\r\n    {\r\n      \"kind\": \"ComputerVision\",\r\n      \"skuName\": \"DC0\",\r\n      \"hostingModel\": \"DisconnectedContainer\",\r\n      \"planType\": \"Read\",\r\n      \"tier\": \"T2\",\r\n      \"maxCount\": 10,\r\n      \"quota\": {\r\n        \"quantity\": 2000000,\r\n        \"unit\": \"Transaction\"\r\n      },\r\n      \"cost\": {}\r\n    },\r\n    {\r\n      \"kind\": \"ComputerVision\",\r\n      \"skuName\": \"DC0\",\r\n      \"hostingModel\": \"DisconnectedContainer\",\r\n      \"planType\": \"Read\",\r\n      \"tier\": \"T3\",\r\n      \"maxCount\": 10,\r\n      \"quota\": {\r\n        \"quantity\": 8000000,\r\n        \"unit\": \"Transaction\"\r\n      },\r\n      \"cost\": {}\r\n    },\r\n    {\r\n      \"kind\": \"ComputerVision\",\r\n      \"skuName\": \"DC0\",\r\n      \"hostingModel\": \"DisconnectedContainer\",\r\n      \"planType\": \"Read\",\r\n      \"tier\": \"T4\",\r\n      \"maxCount\": 10,\r\n      \"quota\": {\r\n        \"quantity\": 16000000,\r\n        \"unit\": \"Transaction\"\r\n      },\r\n      \"cost\": {}\r\n    },\r\n    {\r\n      \"kind\": \"SpeechServices\",\r\n      \"skuName\": \"S0\",\r\n      \"hostingModel\": \"Web\",\r\n      \"planType\": \"STT\",\r\n      \"tier\": \"T1\",\r\n      \"quota\": {\r\n        \"quantity\": 7200000,\r\n        \"unit\": \"Second\"\r\n      },\r\n      \"cost\": {}\r\n    },\r\n    {\r\n      \"kind\": \"SpeechServices\",\r\n      \"skuName\": \"S0\",\r\n      \"hostingModel\": \"Web\",\r\n      \"planType\": \"STT\",\r\n      \"tier\": \"T2\",\r\n      \"quota\": {\r\n        \"quantity\": 36000000,\r\n        \"unit\": \"Second\"\r\n      },\r\n      \"cost\": {}\r\n    },\r\n    {\r\n      \"kind\": \"SpeechServices\",\r\n      \"skuName\": \"S0\",\r\n      \"hostingModel\": \"Web\",\r\n      \"planType\": \"STT\",\r\n      \"tier\": \"T3\",\r\n      \"quota\": {\r\n        \"quantity\": 180000000,\r\n        \"unit\": \"Second\"\r\n      },\r\n      \"cost\": {}\r\n    },\r\n    {\r\n      \"kind\": \"SpeechServices\",\r\n      \"skuName\": \"S0\",\r\n      \"hostingModel\": \"ConnectedContainer\",\r\n      \"planType\": \"STT\",\r\n      \"tier\": \"T1\",\r\n      \"quota\": {\r\n        \"quantity\": 7200000,\r\n        \"unit\": \"Second\"\r\n      },\r\n      \"cost\": {}\r\n    },\r\n    {\r\n      \"kind\": \"SpeechServices\",\r\n      \"skuName\": \"S0\",\r\n      \"hostingModel\": \"ConnectedContainer\",\r\n      \"planType\": \"STT\",\r\n      \"tier\": \"T2\",\r\n      \"quota\": {\r\n        \"quantity\": 36000000,\r\n        \"unit\": \"Second\"\r\n      },\r\n      \"cost\": {}\r\n    },\r\n    {\r\n      \"kind\": \"SpeechServices\",\r\n      \"skuName\": \"S0\",\r\n      \"hostingModel\": \"ConnectedContainer\",\r\n      \"planType\": \"STT\",\r\n      \"tier\": \"T3\",\r\n      \"quota\": {\r\n        \"quantity\": 180000000,\r\n        \"unit\": \"Second\"\r\n      },\r\n      \"cost\": {}\r\n    },\r\n    {\r\n      \"kind\": \"SpeechServices\",\r\n      \"skuName\": \"S0\",\r\n      \"hostingModel\": \"Web\",\r\n      \"planType\": \"NTTS\",\r\n      \"tier\": \"T1\",\r\n      \"quota\": {\r\n        \"quantity\": 80000000,\r\n        \"unit\": \"Characters\"\r\n      },\r\n      \"cost\": {}\r\n    },\r\n    {\r\n      \"kind\": \"SpeechServices\",\r\n      \"skuName\": \"S0\",\r\n      \"hostingModel\": \"Web\",\r\n      \"planType\": \"NTTS\",\r\n      \"tier\": \"T2\",\r\n      \"quota\": {\r\n        \"quantity\": 400000000,\r\n        \"unit\": \"Characters\"\r\n      },\r\n      \"cost\": {}\r\n    },\r\n    {\r\n      \"kind\": \"SpeechServices\",\r\n      \"skuName\": \"S0\",\r\n      \"hostingModel\": \"Web\",\r\n      \"planType\": \"NTTS\",\r\n      \"tier\": \"T3\",\r\n      \"quota\": {\r\n        \"quantity\": 2000000000,\r\n        \"unit\": \"Characters\"\r\n      },\r\n      \"cost\": {}\r\n    },\r\n    {\r\n      \"kind\": \"SpeechServices\",\r\n      \"skuName\": \"S0\",\r\n      \"hostingModel\": \"ConnectedContainer\",\r\n      \"planType\": \"NTTS\",\r\n      \"tier\": \"T1\",\r\n      \"quota\": {\r\n        \"quantity\": 80000000,\r\n        \"unit\": \"Characters\"\r\n      },\r\n      \"cost\": {}\r\n    },\r\n    {\r\n      \"kind\": \"SpeechServices\",\r\n      \"skuName\": \"S0\",\r\n      \"hostingModel\": \"ConnectedContainer\",\r\n      \"planType\": \"NTTS\",\r\n      \"tier\": \"T2\",\r\n      \"quota\": {\r\n        \"quantity\": 400000000,\r\n        \"unit\": \"Characters\"\r\n      },\r\n      \"cost\": {}\r\n    },\r\n    {\r\n      \"kind\": \"SpeechServices\",\r\n      \"skuName\": \"S0\",\r\n      \"hostingModel\": \"ConnectedContainer\",\r\n      \"planType\": \"NTTS\",\r\n      \"tier\": \"T3\",\r\n      \"quota\": {\r\n        \"quantity\": 2000000000,\r\n        \"unit\": \"Characters\"\r\n      },\r\n      \"cost\": {}\r\n    },\r\n    {\r\n      \"kind\": \"SpeechServices\",\r\n      \"skuName\": \"DC0\",\r\n      \"hostingModel\": \"DisconnectedContainer\",\r\n      \"planType\": \"STT\",\r\n      \"tier\": \"T1\",\r\n      \"maxCount\": 10,\r\n      \"quota\": {\r\n        \"quantity\": 2000,\r\n        \"unit\": \"Hour\"\r\n      },\r\n      \"cost\": {}\r\n    },\r\n    {\r\n      \"kind\": \"SpeechServices\",\r\n      \"skuName\": \"DC0\",\r\n      \"hostingModel\": \"DisconnectedContainer\",\r\n      \"planType\": \"STT\",\r\n      \"tier\": \"T2\",\r\n      \"maxCount\": 10,\r\n      \"quota\": {\r\n        \"quantity\": 10000,\r\n        \"unit\": \"Hour\"\r\n      },\r\n      \"cost\": {}\r\n    },\r\n    {\r\n      \"kind\": \"SpeechServices\",\r\n      \"skuName\": \"DC0\",\r\n      \"hostingModel\": \"DisconnectedContainer\",\r\n      \"planType\": \"STT\",\r\n      \"tier\": \"T3\",\r\n      \"maxCount\": 10,\r\n      \"quota\": {\r\n        \"quantity\": 50000,\r\n        \"unit\": \"Hour\"\r\n      },\r\n      \"cost\": {}\r\n    },\r\n    {\r\n      \"kind\": \"SpeechServices\",\r\n      \"skuName\": \"DC0\",\r\n      \"hostingModel\": \"DisconnectedContainer\",\r\n      \"planType\": \"STT\",\r\n      \"tier\": \"T4\",\r\n      \"maxCount\": 10,\r\n      \"quota\": {\r\n        \"quantity\": 100000,\r\n        \"unit\": \"Hour\"\r\n      },\r\n      \"cost\": {}\r\n    },\r\n    {\r\n      \"kind\": \"SpeechServices\",\r\n      \"skuName\": \"DC0\",\r\n      \"hostingModel\": \"DisconnectedContainer\",\r\n      \"planType\": \"NTTS\",\r\n      \"tier\": \"T1\",\r\n      \"maxCount\": 10,\r\n      \"quota\": {\r\n        \"quantity\": 80000000,\r\n        \"unit\": \"Characters\"\r\n      },\r\n      \"cost\": {}\r\n    },\r\n    {\r\n      \"kind\": \"SpeechServices\",\r\n      \"skuName\": \"DC0\",\r\n      \"hostingModel\": \"DisconnectedContainer\",\r\n      \"planType\": \"NTTS\",\r\n      \"tier\": \"T2\",\r\n      \"maxCount\": 10,\r\n      \"quota\": {\r\n        \"quantity\": 400000000,\r\n        \"unit\": \"Characters\"\r\n      },\r\n      \"cost\": {}\r\n    },\r\n    {\r\n      \"kind\": \"SpeechServices\",\r\n      \"skuName\": \"DC0\",\r\n      \"hostingModel\": \"DisconnectedContainer\",\r\n      \"planType\": \"NTTS\",\r\n      \"tier\": \"T3\",\r\n      \"maxCount\": 10,\r\n      \"quota\": {\r\n        \"quantity\": 2000000000,\r\n        \"unit\": \"Characters\"\r\n      },\r\n      \"cost\": {}\r\n    },\r\n    {\r\n      \"kind\": \"SpeechServices\",\r\n      \"skuName\": \"DC0\",\r\n      \"hostingModel\": \"DisconnectedContainer\",\r\n      \"planType\": \"NTTS\",\r\n      \"tier\": \"T4\",\r\n      \"maxCount\": 10,\r\n      \"quota\": {\r\n        \"quantity\": 4000000000,\r\n        \"unit\": \"Characters\"\r\n      },\r\n      \"cost\": {}\r\n    },\r\n    {\r\n      \"kind\": \"FormRecognizer\",\r\n      \"skuName\": \"S0\",\r\n      \"hostingModel\": \"Web\",\r\n      \"planType\": \"CustomInvoice\",\r\n      \"tier\": \"T1\",\r\n      \"quota\": {\r\n        \"quantity\": 20000,\r\n        \"unit\": \"Transaction\"\r\n      },\r\n      \"cost\": {}\r\n    },\r\n    {\r\n      \"kind\": \"FormRecognizer\",\r\n      \"skuName\": \"S0\",\r\n      \"hostingModel\": \"Web\",\r\n      \"planType\": \"CustomInvoice\",\r\n      \"tier\": \"T2\",\r\n      \"quota\": {\r\n        \"quantity\": 100000,\r\n        \"unit\": \"Transaction\"\r\n      },\r\n      \"cost\": {}\r\n    },\r\n    {\r\n      \"kind\": \"FormRecognizer\",\r\n      \"skuName\": \"S0\",\r\n      \"hostingModel\": \"Web\",\r\n      \"planType\": \"CustomInvoice\",\r\n      \"tier\": \"T3\",\r\n      \"quota\": {\r\n        \"quantity\": 500000,\r\n        \"unit\": \"Transaction\"\r\n      },\r\n      \"cost\": {}\r\n    },\r\n    {\r\n      \"kind\": \"FormRecognizer\",\r\n      \"skuName\": \"S0\",\r\n      \"hostingModel\": \"ConnectedContainer\",\r\n      \"planType\": \"CustomInvoice\",\r\n      \"tier\": \"T1\",\r\n      \"quota\": {\r\n        \"quantity\": 20000,\r\n        \"unit\": \"Transaction\"\r\n      },\r\n      \"cost\": {}\r\n    },\r\n    {\r\n      \"kind\": \"FormRecognizer\",\r\n      \"skuName\": \"S0\",\r\n      \"hostingModel\": \"ConnectedContainer\",\r\n      \"planType\": \"CustomInvoice\",\r\n      \"tier\": \"T2\",\r\n      \"quota\": {\r\n        \"quantity\": 100000,\r\n        \"unit\": \"Transaction\"\r\n      },\r\n      \"cost\": {}\r\n    },\r\n    {\r\n      \"kind\": \"FormRecognizer\",\r\n      \"skuName\": \"S0\",\r\n      \"hostingModel\": \"ConnectedContainer\",\r\n      \"planType\": \"CustomInvoice\",\r\n      \"tier\": \"T3\",\r\n      \"quota\": {\r\n        \"quantity\": 500000,\r\n        \"unit\": \"Transaction\"\r\n      },\r\n      \"cost\": {}\r\n    },\r\n    {\r\n      \"kind\": \"FormRecognizer\",\r\n      \"skuName\": \"DC0\",\r\n      \"hostingModel\": \"DisconnectedContainer\",\r\n      \"planType\": \"CustomInvoice\",\r\n      \"tier\": \"T1\",\r\n      \"maxCount\": 10,\r\n      \"quota\": {\r\n        \"quantity\": 20000,\r\n        \"unit\": \"Pages\"\r\n      },\r\n      \"cost\": {}\r\n    },\r\n    {\r\n      \"kind\": \"FormRecognizer\",\r\n      \"skuName\": \"DC0\",\r\n      \"hostingModel\": \"DisconnectedContainer\",\r\n      \"planType\": \"CustomInvoice\",\r\n      \"tier\": \"T2\",\r\n      \"maxCount\": 10,\r\n      \"quota\": {\r\n        \"quantity\": 100000,\r\n        \"unit\": \"Pages\"\r\n      },\r\n      \"cost\": {}\r\n    },\r\n    {\r\n      \"kind\": \"FormRecognizer\",\r\n      \"skuName\": \"DC0\",\r\n      \"hostingModel\": \"DisconnectedContainer\",\r\n      \"planType\": \"CustomInvoice\",\r\n      \"tier\": \"T3\",\r\n      \"maxCount\": 10,\r\n      \"quota\": {\r\n        \"quantity\": 500000,\r\n        \"unit\": \"Pages\"\r\n      },\r\n      \"cost\": {}\r\n    },\r\n    {\r\n      \"kind\": \"FormRecognizer\",\r\n      \"skuName\": \"DC0\",\r\n      \"hostingModel\": \"DisconnectedContainer\",\r\n      \"planType\": \"CustomInvoice\",\r\n      \"tier\": \"T4\",\r\n      \"maxCount\": 10,\r\n      \"quota\": {\r\n        \"quantity\": 1000000,\r\n        \"unit\": \"Pages\"\r\n      },\r\n      \"cost\": {}\r\n    },\r\n    {\r\n      \"kind\": \"TextTranslation\",\r\n      \"skuName\": \"DC0\",\r\n      \"hostingModel\": \"DisconnectedContainer\",\r\n      \"planType\": \"Characters\",\r\n      \"tier\": \"T1\",\r\n      \"maxCount\": 10,\r\n      \"quota\": {\r\n        \"quantity\": 250000000,\r\n        \"unit\": \"Transaction\"\r\n      },\r\n      \"cost\": {}\r\n    },\r\n    {\r\n      \"kind\": \"TextTranslation\",\r\n      \"skuName\": \"DC0\",\r\n      \"hostingModel\": \"DisconnectedContainer\",\r\n      \"planType\": \"Characters\",\r\n      \"tier\": \"T2\",\r\n      \"maxCount\": 10,\r\n      \"quota\": {\r\n        \"quantity\": 1000000000,\r\n        \"unit\": \"Transaction\"\r\n      },\r\n      \"cost\": {}\r\n    },\r\n    {\r\n      \"kind\": \"TextTranslation\",\r\n      \"skuName\": \"DC0\",\r\n      \"hostingModel\": \"DisconnectedContainer\",\r\n      \"planType\": \"Characters\",\r\n      \"tier\": \"T3\",\r\n      \"maxCount\": 10,\r\n      \"quota\": {\r\n        \"quantity\": 4000000000,\r\n        \"unit\": \"Transaction\"\r\n      },\r\n      \"cost\": {}\r\n    },\r\n    {\r\n      \"kind\": \"TextTranslation\",\r\n      \"skuName\": \"DC0\",\r\n      \"hostingModel\": \"DisconnectedContainer\",\r\n      \"planType\": \"Characters\",\r\n      \"tier\": \"T4\",\r\n      \"maxCount\": 10,\r\n      \"quota\": {\r\n        \"quantity\": 10000000000,\r\n        \"unit\": \"Transaction\"\r\n      },\r\n      \"cost\": {}\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourceGroups/pstestrg1839/providers/Microsoft.CognitiveServices/accounts/csapstestrg1839\",\r\n  \"name\": \"csapstestrg1839\",\r\n  \"type\": \"Microsoft.CognitiveServices/accounts\",\r\n  \"etag\": \"\\\"000069d6-0000-3300-0000-63d862b40000\\\"\",\r\n  \"location\": \"Central US EUAP\",\r\n  \"sku\": {\r\n    \"name\": \"S\"\r\n  },\r\n  \"kind\": \"TextAnalytics\",\r\n  \"properties\": {\r\n    \"endpoint\": \"https://centraluseuap.api.cognitive.microsoft.com/\",\r\n    \"internalId\": \"098fd05fcec24e73a580930e15d3724f\",\r\n    \"dateCreated\": \"2023-01-31T00:36:34.3109546Z\",\r\n    \"apiProperties\": {\r\n      \"qnaAzureSearchEndpointKey\": null\r\n    },\r\n    \"callRateLimit\": {\r\n      \"rules\": [\r\n        {\r\n          \"key\": \"workflow.endpoint.postcalls\",\r\n          \"renewalPeriod\": 60,\r\n          \"count\": 1000,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"language/:analyze-conversations\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"textAnalytics.conversations.jobs.getcalls\",\r\n          \"renewalPeriod\": 60,\r\n          \"count\": 1000,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"language/analyze-conversations/jobs/*\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"textAnalytics.conversations.jobs.postcalls\",\r\n          \"renewalPeriod\": 60,\r\n          \"count\": 1000,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"language/analyze-conversations/jobs\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"textAnalytics.authoring.customtext.getcalls\",\r\n          \"renewalPeriod\": 60,\r\n          \"count\": 100,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"language/analyze-text/projects/*\",\r\n              \"method\": \"GET\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"textAnalytics.unifiedAuthoring.updatecalls\",\r\n          \"renewalPeriod\": 60,\r\n          \"count\": 10,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"language/analyze-text/projects/*\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"textAnalytics.authoring.customtext.march.getcalls\",\r\n          \"renewalPeriod\": 60,\r\n          \"count\": 100,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"language/authoring/analyze-text/projects/*\",\r\n              \"method\": \"GET\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"textAnalytics.unifiedAuthoring.march.updatecalls\",\r\n          \"renewalPeriod\": 60,\r\n          \"count\": 10,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"language/authoring/analyze-text/projects/*\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"textAnalytics.authoring.customtext.internal.getcalls\",\r\n          \"renewalPeriod\": 60,\r\n          \"count\": 100,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"language/analyze-text/internal/projects/*\",\r\n              \"method\": \"GET\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"textAnalytics.unifiedAuthoring.internal.updatecalls\",\r\n          \"renewalPeriod\": 60,\r\n          \"count\": 10,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"language/analyze-text/internal/projects/*\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"textAnalytics.unifiedAuthoring.clu.getCalls\",\r\n          \"renewalPeriod\": 60,\r\n          \"count\": 100,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"language/analyze-conversations/projects/*\",\r\n              \"method\": \"GET\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"textAnalytics.unifiedAuthoring.clu.updateCalls\",\r\n          \"renewalPeriod\": 60,\r\n          \"count\": 10,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"language/analyze-conversations/projects/*\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"textAnalytics.unifiedAuthoring.clu.march.getCalls\",\r\n          \"renewalPeriod\": 60,\r\n          \"count\": 100,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"language/authoring/analyze-conversations/projects/*\",\r\n              \"method\": \"GET\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"textAnalytics.unifiedAuthoring.clu.march.updateCalls\",\r\n          \"renewalPeriod\": 60,\r\n          \"count\": 10,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"language/authoring/analyze-conversations/projects/*\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"textAnalytics.unifiedAuthoring.clu.internal.getCalls\",\r\n          \"renewalPeriod\": 60,\r\n          \"count\": 100,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"language/analyze-conversations/internal/projects/*\",\r\n              \"method\": \"GET\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"textAnalytics.unifiedAuthoring.clu.internal.updateCalls\",\r\n          \"renewalPeriod\": 60,\r\n          \"count\": 10,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"language/analyze-conversations/internal/projects/*\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"textAnalytics.customText\",\r\n          \"renewalPeriod\": 60,\r\n          \"count\": 100,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"text/analytics/v3.1-preview.ct.1/analyze/*\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"textAnalytics.analyze\",\r\n          \"renewalPeriod\": 60,\r\n          \"count\": 300,\r\n          \"dynamicThrottlingEnabled\": true,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"text/analytics/v3.1/analyze/*\",\r\n              \"method\": \"*\"\r\n            },\r\n            {\r\n              \"path\": \"text/analytics/v3.2-preview.1/analyze/*\",\r\n              \"method\": \"*\"\r\n            },\r\n            {\r\n              \"path\": \"text/analytics/v3.2-preview.2/analyze/*\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"textAnalytics.healthcare\",\r\n          \"renewalPeriod\": 60,\r\n          \"count\": 300,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"text/analytics/v3.1/entities/health/*\",\r\n              \"method\": \"*\"\r\n            },\r\n            {\r\n              \"path\": \"text/analytics/v3.2-preview.1/health/*\",\r\n              \"method\": \"*\"\r\n            },\r\n            {\r\n              \"path\": \"text/analytics/v3.2-preview.2/health/*\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"textAnalytics.languagedetection\",\r\n          \"renewalPeriod\": 60,\r\n          \"count\": 1000,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"text/analytics/v3.1/languages/*\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"textAnalytics\",\r\n          \"renewalPeriod\": 60,\r\n          \"count\": 1000,\r\n          \"dynamicThrottlingEnabled\": true,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"text/analytics/*\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"container.billing\",\r\n          \"renewalPeriod\": 10,\r\n          \"count\": 500,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"billing/*\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"questionanswering\",\r\n          \"renewalPeriod\": 60,\r\n          \"count\": 600,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"qnamaker/*\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"unifiedlanguage.questionanswering\",\r\n          \"renewalPeriod\": 60,\r\n          \"count\": 600,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"language/query-knowledgebases/*\",\r\n              \"method\": \"*\"\r\n            },\r\n            {\r\n              \"path\": \"language/:query-*\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"textAnalytics.analyze.internal.autoTagging\",\r\n          \"renewalPeriod\": 60,\r\n          \"count\": 150,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"TextAnalytics/ct-auto-tagging\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"textAnalytics.analyze.internal.evaluation\",\r\n          \"renewalPeriod\": 60,\r\n          \"count\": 150,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"TextAnalytics/ct-evaluation\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"default\",\r\n          \"renewalPeriod\": 1,\r\n          \"count\": 20,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"*\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        }\r\n      ]\r\n    },\r\n    \"quotaLimit\": {\r\n      \"rules\": [\r\n        {\r\n          \"key\": \"workflow.endpoint.postcalls\",\r\n          \"renewalPeriod\": 2592000,\r\n          \"count\": 100000,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"/language/:analyze-conversations\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        }\r\n      ]\r\n    },\r\n    \"isMigrated\": false,\r\n    \"privateEndpointConnections\": [],\r\n    \"publicNetworkAccess\": \"Enabled\",\r\n    \"capabilities\": [\r\n      {\r\n        \"name\": \"DynamicThrottling\"\r\n      },\r\n      {\r\n        \"name\": \"VirtualNetworks\"\r\n      },\r\n      {\r\n        \"name\": \"CustomerManagedKey\"\r\n      },\r\n      {\r\n        \"name\": \"CustomerManagedStorage\"\r\n      },\r\n      {\r\n        \"name\": \"Container\",\r\n        \"value\": \"TextAnalytics.*,TextAnalytics.Healthcare,TextAnalytics.HealthcareFhir,TextAnalytics.Keyphrase,TextAnalytics.KeyphraseV2,TextAnalytics.KeyPhraseONNX,TextAnalytics.LanguageFastText,TextAnalytics.Language,TextAnalytics.LanguageV2,TextAnalytics.Sentiment,TextAnalytics.SentimentV2,TextAnalytics.SentimentV3,TextAnalytics.SentimentV3Preview\"\r\n      },\r\n      {\r\n        \"name\": \"Cloud\",\r\n        \"value\": \"TextAnalytics.Healthcare,TextAnalytics.Analyze,QuestionAnswer.AllApis,LanguageService.QuestionAnsweringApis\"\r\n      }\r\n    ],\r\n    \"endpoints\": {\r\n      \"Text Analytics\": \"https://centraluseuap.api.cognitive.microsoft.com/\",\r\n      \"Custom Text Authoring\": \"https://centraluseuap.api.cognitive.microsoft.com/\",\r\n      \"Conversational Language Understanding Authoring\": \"https://centraluseuap.api.cognitive.microsoft.com/\",\r\n      \"Custom Question Answering Authoring\": \"https://centraluseuap.api.cognitive.microsoft.com/\",\r\n      \"Custom Question Answering\": \"https://centraluseuap.api.cognitive.microsoft.com/\",\r\n      \"ConversationalLURuntime\": \"https://centraluseuap.api.cognitive.microsoft.com/\",\r\n      \"Language\": \"https://centraluseuap.api.cognitive.microsoft.com/\",\r\n      \"Language-2022-05-01\": \"https://centraluseuap.api.cognitive.microsoft.com/\",\r\n      \"QnAMaker\": \"https://centraluseuap.api.cognitive.microsoft.com/\",\r\n      \"turing\": \"https://centraluseuap.api.cognitive.microsoft.com/\",\r\n      \"Turing DeepWrite\": \"https://centraluseuap.api.cognitive.microsoft.com/\",\r\n      \"QuestionAnswering\": \"https://centraluseuap.api.cognitive.microsoft.com/\",\r\n      \"QuestionAnsweringBizQA\": \"https://centraluseuap.api.cognitive.microsoft.com/\",\r\n      \"QuestionAnsweringQnAGen\": \"https://centraluseuap.api.cognitive.microsoft.com/\",\r\n      \"QuestionAnswering Generate\": \"https://centraluseuap.api.cognitive.microsoft.com/\",\r\n      \"LUIS.Authoring\": \"https://centraluseuap.api.cognitive.microsoft.com/\",\r\n      \"Container\": \"https://centraluseuap.api.cognitive.microsoft.com/\"\r\n    },\r\n    \"provisioningState\": \"Succeeded\"\r\n  },\r\n  \"systemData\": {\r\n    \"createdBy\": \"50841d5f-166a-406c-8472-6800c9698b43\",\r\n    \"createdByType\": \"Application\",\r\n    \"createdAt\": \"2023-01-31T00:36:34.0291702Z\",\r\n    \"lastModifiedBy\": \"50841d5f-166a-406c-8472-6800c9698b43\",\r\n    \"lastModifiedByType\": \"Application\",\r\n    \"lastModifiedAt\": \"2023-01-31T00:36:34.0291702Z\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourceGroups/pstestrg6303/providers/Microsoft.CognitiveServices/accounts/csapstestrg6303/commitmentPlans?api-version=2022-03-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjliOTZiMzYtMWY1ZS00MDIxLTg5NTktNTE1MjdlMjZlNmQzL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnNjMwMy9wcm92aWRlcnMvTWljcm9zb2Z0LkNvZ25pdGl2ZVNlcnZpY2VzL2FjY291bnRzL2NzYXBzdGVzdHJnNjMwMy9jb21taXRtZW50UGxhbnM/YXBpLXZlcnNpb249MjAyMi0wMy0wMQ==",
+      "RequestUri": "/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/providers/Microsoft.CognitiveServices/locations/westus/commitmentTiers?api-version=2022-12-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjliOTZiMzYtMWY1ZS00MDIxLTg5NTktNTE1MjdlMjZlNmQzL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29nbml0aXZlU2VydmljZXMvbG9jYXRpb25zL3dlc3R1cy9jb21taXRtZW50VGllcnM/YXBpLXZlcnNpb249MjAyMi0xMi0wMQ==",
       "RequestMethod": "GET",
-      "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "64a2373b-8d5a-4e9a-bb87-5cc38994d855"
+          "1e24ebbf-7635-43a9-bbf0-1d2c149c9ecf"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.700.22.11601",
+          "FxVersion/4.700.22.55902",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22000",
-          "Microsoft.Azure.Management.CognitiveServices.CognitiveServicesManagementClient/8.2.0.0"
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.CognitiveServices.CognitiveServicesManagementClient/9.0.0.0"
         ]
       },
+      "RequestBody": "",
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
@@ -501,10 +435,76 @@
           "nosniff"
         ],
         "x-ms-request-id": [
-          "17e56343-c80e-48d2-84eb-d8c3d4817655"
+          "a0cb5db9-f7a0-4ae7-86f7-1f2665fd2267"
         ],
         "x-envoy-upstream-service-time": [
-          "19"
+          "16"
+        ],
+        "Server": [
+          "istio-envoy"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11998"
+        ],
+        "x-ms-correlation-request-id": [
+          "0895274f-0b79-4d74-a4f6-7d739f1aeb0a"
+        ],
+        "x-ms-routing-request-id": [
+          "CANADACENTRAL:20230131T003738Z:0895274f-0b79-4d74-a4f6-7d739f1aeb0a"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Date": [
+          "Tue, 31 Jan 2023 00:37:38 GMT"
+        ],
+        "Content-Length": [
+          "14442"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"kind\": \"LUIS\",\r\n      \"skuName\": \"S0\",\r\n      \"hostingModel\": \"Web\",\r\n      \"planType\": \"LanguageTransaction\",\r\n      \"tier\": \"T1\",\r\n      \"quota\": {\r\n        \"quantity\": 1000000,\r\n        \"unit\": \"Transaction\"\r\n      },\r\n      \"cost\": {}\r\n    },\r\n    {\r\n      \"kind\": \"LUIS\",\r\n      \"skuName\": \"S0\",\r\n      \"hostingModel\": \"Web\",\r\n      \"planType\": \"LanguageTransaction\",\r\n      \"tier\": \"T2\",\r\n      \"quota\": {\r\n        \"quantity\": 5000000,\r\n        \"unit\": \"Transaction\"\r\n      },\r\n      \"cost\": {}\r\n    },\r\n    {\r\n      \"kind\": \"LUIS\",\r\n      \"skuName\": \"S0\",\r\n      \"hostingModel\": \"Web\",\r\n      \"planType\": \"LanguageTransaction\",\r\n      \"tier\": \"T3\",\r\n      \"quota\": {\r\n        \"quantity\": 25000000,\r\n        \"unit\": \"Transaction\"\r\n      },\r\n      \"cost\": {}\r\n    },\r\n    {\r\n      \"kind\": \"LUIS\",\r\n      \"skuName\": \"S0\",\r\n      \"hostingModel\": \"ConnectedContainer\",\r\n      \"planType\": \"LanguageTransaction\",\r\n      \"tier\": \"T1\",\r\n      \"quota\": {\r\n        \"quantity\": 1000000,\r\n        \"unit\": \"Transaction\"\r\n      },\r\n      \"cost\": {}\r\n    },\r\n    {\r\n      \"kind\": \"LUIS\",\r\n      \"skuName\": \"S0\",\r\n      \"hostingModel\": \"ConnectedContainer\",\r\n      \"planType\": \"LanguageTransaction\",\r\n      \"tier\": \"T2\",\r\n      \"quota\": {\r\n        \"quantity\": 5000000,\r\n        \"unit\": \"Transaction\"\r\n      },\r\n      \"cost\": {}\r\n    },\r\n    {\r\n      \"kind\": \"LUIS\",\r\n      \"skuName\": \"S0\",\r\n      \"hostingModel\": \"ConnectedContainer\",\r\n      \"planType\": \"LanguageTransaction\",\r\n      \"tier\": \"T3\",\r\n      \"quota\": {\r\n        \"quantity\": 25000000,\r\n        \"unit\": \"Transaction\"\r\n      },\r\n      \"cost\": {}\r\n    },\r\n    {\r\n      \"kind\": \"LUIS\",\r\n      \"skuName\": \"DC0\",\r\n      \"hostingModel\": \"DisconnectedContainer\",\r\n      \"planType\": \"LanguageTransaction\",\r\n      \"tier\": \"T1\",\r\n      \"maxCount\": 10,\r\n      \"quota\": {\r\n        \"quantity\": 1000000,\r\n        \"unit\": \"Transaction\"\r\n      },\r\n      \"cost\": {}\r\n    },\r\n    {\r\n      \"kind\": \"LUIS\",\r\n      \"skuName\": \"DC0\",\r\n      \"hostingModel\": \"DisconnectedContainer\",\r\n      \"planType\": \"LanguageTransaction\",\r\n      \"tier\": \"T2\",\r\n      \"maxCount\": 10,\r\n      \"quota\": {\r\n        \"quantity\": 5000000,\r\n        \"unit\": \"Transaction\"\r\n      },\r\n      \"cost\": {}\r\n    },\r\n    {\r\n      \"kind\": \"LUIS\",\r\n      \"skuName\": \"DC0\",\r\n      \"hostingModel\": \"DisconnectedContainer\",\r\n      \"planType\": \"LanguageTransaction\",\r\n      \"tier\": \"T3\",\r\n      \"maxCount\": 10,\r\n      \"quota\": {\r\n        \"quantity\": 25000000,\r\n        \"unit\": \"Transaction\"\r\n      },\r\n      \"cost\": {}\r\n    },\r\n    {\r\n      \"kind\": \"LUIS\",\r\n      \"skuName\": \"DC0\",\r\n      \"hostingModel\": \"DisconnectedContainer\",\r\n      \"planType\": \"LanguageTransaction\",\r\n      \"tier\": \"T4\",\r\n      \"maxCount\": 10,\r\n      \"quota\": {\r\n        \"quantity\": 50000000,\r\n        \"unit\": \"Transaction\"\r\n      },\r\n      \"cost\": {}\r\n    },\r\n    {\r\n      \"kind\": \"TextAnalytics\",\r\n      \"skuName\": \"S\",\r\n      \"hostingModel\": \"Web\",\r\n      \"planType\": \"TA\",\r\n      \"tier\": \"T1\",\r\n      \"quota\": {\r\n        \"quantity\": 1000000,\r\n        \"unit\": \"Transaction\"\r\n      },\r\n      \"cost\": {}\r\n    },\r\n    {\r\n      \"kind\": \"TextAnalytics\",\r\n      \"skuName\": \"S\",\r\n      \"hostingModel\": \"Web\",\r\n      \"planType\": \"TA\",\r\n      \"tier\": \"T2\",\r\n      \"quota\": {\r\n        \"quantity\": 3000000,\r\n        \"unit\": \"Transaction\"\r\n      },\r\n      \"cost\": {}\r\n    },\r\n    {\r\n      \"kind\": \"TextAnalytics\",\r\n      \"skuName\": \"S\",\r\n      \"hostingModel\": \"Web\",\r\n      \"planType\": \"TA\",\r\n      \"tier\": \"T3\",\r\n      \"quota\": {\r\n        \"quantity\": 10000000,\r\n        \"unit\": \"Transaction\"\r\n      },\r\n      \"cost\": {}\r\n    },\r\n    {\r\n      \"kind\": \"TextAnalytics\",\r\n      \"skuName\": \"S\",\r\n      \"hostingModel\": \"ConnectedContainer\",\r\n      \"planType\": \"TA\",\r\n      \"tier\": \"T1\",\r\n      \"quota\": {\r\n        \"quantity\": 1000000,\r\n        \"unit\": \"Transaction\"\r\n      },\r\n      \"cost\": {}\r\n    },\r\n    {\r\n      \"kind\": \"TextAnalytics\",\r\n      \"skuName\": \"S\",\r\n      \"hostingModel\": \"ConnectedContainer\",\r\n      \"planType\": \"TA\",\r\n      \"tier\": \"T2\",\r\n      \"quota\": {\r\n        \"quantity\": 3000000,\r\n        \"unit\": \"Transaction\"\r\n      },\r\n      \"cost\": {}\r\n    },\r\n    {\r\n      \"kind\": \"TextAnalytics\",\r\n      \"skuName\": \"S\",\r\n      \"hostingModel\": \"ConnectedContainer\",\r\n      \"planType\": \"TA\",\r\n      \"tier\": \"T3\",\r\n      \"quota\": {\r\n        \"quantity\": 10000000,\r\n        \"unit\": \"Transaction\"\r\n      },\r\n      \"cost\": {}\r\n    },\r\n    {\r\n      \"kind\": \"TextAnalytics\",\r\n      \"skuName\": \"DC0\",\r\n      \"hostingModel\": \"DisconnectedContainer\",\r\n      \"planType\": \"TA\",\r\n      \"tier\": \"T1\",\r\n      \"maxCount\": 10,\r\n      \"quota\": {\r\n        \"quantity\": 1000000,\r\n        \"unit\": \"TextRecords\"\r\n      },\r\n      \"cost\": {}\r\n    },\r\n    {\r\n      \"kind\": \"TextAnalytics\",\r\n      \"skuName\": \"DC0\",\r\n      \"hostingModel\": \"DisconnectedContainer\",\r\n      \"planType\": \"TA\",\r\n      \"tier\": \"T2\",\r\n      \"maxCount\": 10,\r\n      \"quota\": {\r\n        \"quantity\": 2500000,\r\n        \"unit\": \"TextRecords\"\r\n      },\r\n      \"cost\": {}\r\n    },\r\n    {\r\n      \"kind\": \"TextAnalytics\",\r\n      \"skuName\": \"DC0\",\r\n      \"hostingModel\": \"DisconnectedContainer\",\r\n      \"planType\": \"TA\",\r\n      \"tier\": \"T3\",\r\n      \"maxCount\": 10,\r\n      \"quota\": {\r\n        \"quantity\": 10000000,\r\n        \"unit\": \"TextRecords\"\r\n      },\r\n      \"cost\": {}\r\n    },\r\n    {\r\n      \"kind\": \"TextAnalytics\",\r\n      \"skuName\": \"DC0\",\r\n      \"hostingModel\": \"DisconnectedContainer\",\r\n      \"planType\": \"TA\",\r\n      \"tier\": \"T4\",\r\n      \"maxCount\": 10,\r\n      \"quota\": {\r\n        \"quantity\": 25000000,\r\n        \"unit\": \"TextRecords\"\r\n      },\r\n      \"cost\": {}\r\n    },\r\n    {\r\n      \"kind\": \"ComputerVision\",\r\n      \"skuName\": \"S1\",\r\n      \"hostingModel\": \"Web\",\r\n      \"planType\": \"Read\",\r\n      \"tier\": \"T1\",\r\n      \"quota\": {\r\n        \"quantity\": 500000,\r\n        \"unit\": \"Transaction\"\r\n      },\r\n      \"cost\": {}\r\n    },\r\n    {\r\n      \"kind\": \"ComputerVision\",\r\n      \"skuName\": \"S1\",\r\n      \"hostingModel\": \"Web\",\r\n      \"planType\": \"Read\",\r\n      \"tier\": \"T2\",\r\n      \"quota\": {\r\n        \"quantity\": 2000000,\r\n        \"unit\": \"Transaction\"\r\n      },\r\n      \"cost\": {}\r\n    },\r\n    {\r\n      \"kind\": \"ComputerVision\",\r\n      \"skuName\": \"S1\",\r\n      \"hostingModel\": \"Web\",\r\n      \"planType\": \"Read\",\r\n      \"tier\": \"T3\",\r\n      \"quota\": {\r\n        \"quantity\": 8000000,\r\n        \"unit\": \"Transaction\"\r\n      },\r\n      \"cost\": {}\r\n    },\r\n    {\r\n      \"kind\": \"ComputerVision\",\r\n      \"skuName\": \"S1\",\r\n      \"hostingModel\": \"ConnectedContainer\",\r\n      \"planType\": \"Read\",\r\n      \"tier\": \"T1\",\r\n      \"quota\": {\r\n        \"quantity\": 500000,\r\n        \"unit\": \"Transaction\"\r\n      },\r\n      \"cost\": {}\r\n    },\r\n    {\r\n      \"kind\": \"ComputerVision\",\r\n      \"skuName\": \"S1\",\r\n      \"hostingModel\": \"ConnectedContainer\",\r\n      \"planType\": \"Read\",\r\n      \"tier\": \"T2\",\r\n      \"quota\": {\r\n        \"quantity\": 2000000,\r\n        \"unit\": \"Transaction\"\r\n      },\r\n      \"cost\": {}\r\n    },\r\n    {\r\n      \"kind\": \"ComputerVision\",\r\n      \"skuName\": \"S1\",\r\n      \"hostingModel\": \"ConnectedContainer\",\r\n      \"planType\": \"Read\",\r\n      \"tier\": \"T3\",\r\n      \"quota\": {\r\n        \"quantity\": 8000000,\r\n        \"unit\": \"Transaction\"\r\n      },\r\n      \"cost\": {}\r\n    },\r\n    {\r\n      \"kind\": \"ComputerVision\",\r\n      \"skuName\": \"DC0\",\r\n      \"hostingModel\": \"DisconnectedContainer\",\r\n      \"planType\": \"Read\",\r\n      \"tier\": \"T1\",\r\n      \"maxCount\": 10,\r\n      \"quota\": {\r\n        \"quantity\": 500000,\r\n        \"unit\": \"Transaction\"\r\n      },\r\n      \"cost\": {}\r\n    },\r\n    {\r\n      \"kind\": \"ComputerVision\",\r\n      \"skuName\": \"DC0\",\r\n      \"hostingModel\": \"DisconnectedContainer\",\r\n      \"planType\": \"Read\",\r\n      \"tier\": \"T2\",\r\n      \"maxCount\": 10,\r\n      \"quota\": {\r\n        \"quantity\": 2000000,\r\n        \"unit\": \"Transaction\"\r\n      },\r\n      \"cost\": {}\r\n    },\r\n    {\r\n      \"kind\": \"ComputerVision\",\r\n      \"skuName\": \"DC0\",\r\n      \"hostingModel\": \"DisconnectedContainer\",\r\n      \"planType\": \"Read\",\r\n      \"tier\": \"T3\",\r\n      \"maxCount\": 10,\r\n      \"quota\": {\r\n        \"quantity\": 8000000,\r\n        \"unit\": \"Transaction\"\r\n      },\r\n      \"cost\": {}\r\n    },\r\n    {\r\n      \"kind\": \"ComputerVision\",\r\n      \"skuName\": \"DC0\",\r\n      \"hostingModel\": \"DisconnectedContainer\",\r\n      \"planType\": \"Read\",\r\n      \"tier\": \"T4\",\r\n      \"maxCount\": 10,\r\n      \"quota\": {\r\n        \"quantity\": 16000000,\r\n        \"unit\": \"Transaction\"\r\n      },\r\n      \"cost\": {}\r\n    },\r\n    {\r\n      \"kind\": \"SpeechServices\",\r\n      \"skuName\": \"S0\",\r\n      \"hostingModel\": \"Web\",\r\n      \"planType\": \"STT\",\r\n      \"tier\": \"T1\",\r\n      \"quota\": {\r\n        \"quantity\": 7200000,\r\n        \"unit\": \"Second\"\r\n      },\r\n      \"cost\": {}\r\n    },\r\n    {\r\n      \"kind\": \"SpeechServices\",\r\n      \"skuName\": \"S0\",\r\n      \"hostingModel\": \"Web\",\r\n      \"planType\": \"STT\",\r\n      \"tier\": \"T2\",\r\n      \"quota\": {\r\n        \"quantity\": 36000000,\r\n        \"unit\": \"Second\"\r\n      },\r\n      \"cost\": {}\r\n    },\r\n    {\r\n      \"kind\": \"SpeechServices\",\r\n      \"skuName\": \"S0\",\r\n      \"hostingModel\": \"Web\",\r\n      \"planType\": \"STT\",\r\n      \"tier\": \"T3\",\r\n      \"quota\": {\r\n        \"quantity\": 180000000,\r\n        \"unit\": \"Second\"\r\n      },\r\n      \"cost\": {}\r\n    },\r\n    {\r\n      \"kind\": \"SpeechServices\",\r\n      \"skuName\": \"S0\",\r\n      \"hostingModel\": \"ConnectedContainer\",\r\n      \"planType\": \"STT\",\r\n      \"tier\": \"T1\",\r\n      \"quota\": {\r\n        \"quantity\": 7200000,\r\n        \"unit\": \"Second\"\r\n      },\r\n      \"cost\": {}\r\n    },\r\n    {\r\n      \"kind\": \"SpeechServices\",\r\n      \"skuName\": \"S0\",\r\n      \"hostingModel\": \"ConnectedContainer\",\r\n      \"planType\": \"STT\",\r\n      \"tier\": \"T2\",\r\n      \"quota\": {\r\n        \"quantity\": 36000000,\r\n        \"unit\": \"Second\"\r\n      },\r\n      \"cost\": {}\r\n    },\r\n    {\r\n      \"kind\": \"SpeechServices\",\r\n      \"skuName\": \"S0\",\r\n      \"hostingModel\": \"ConnectedContainer\",\r\n      \"planType\": \"STT\",\r\n      \"tier\": \"T3\",\r\n      \"quota\": {\r\n        \"quantity\": 180000000,\r\n        \"unit\": \"Second\"\r\n      },\r\n      \"cost\": {}\r\n    },\r\n    {\r\n      \"kind\": \"SpeechServices\",\r\n      \"skuName\": \"S0\",\r\n      \"hostingModel\": \"Web\",\r\n      \"planType\": \"NTTS\",\r\n      \"tier\": \"T1\",\r\n      \"quota\": {\r\n        \"quantity\": 80000000,\r\n        \"unit\": \"Characters\"\r\n      },\r\n      \"cost\": {}\r\n    },\r\n    {\r\n      \"kind\": \"SpeechServices\",\r\n      \"skuName\": \"S0\",\r\n      \"hostingModel\": \"Web\",\r\n      \"planType\": \"NTTS\",\r\n      \"tier\": \"T2\",\r\n      \"quota\": {\r\n        \"quantity\": 400000000,\r\n        \"unit\": \"Characters\"\r\n      },\r\n      \"cost\": {}\r\n    },\r\n    {\r\n      \"kind\": \"SpeechServices\",\r\n      \"skuName\": \"S0\",\r\n      \"hostingModel\": \"Web\",\r\n      \"planType\": \"NTTS\",\r\n      \"tier\": \"T3\",\r\n      \"quota\": {\r\n        \"quantity\": 2000000000,\r\n        \"unit\": \"Characters\"\r\n      },\r\n      \"cost\": {}\r\n    },\r\n    {\r\n      \"kind\": \"SpeechServices\",\r\n      \"skuName\": \"S0\",\r\n      \"hostingModel\": \"ConnectedContainer\",\r\n      \"planType\": \"NTTS\",\r\n      \"tier\": \"T1\",\r\n      \"quota\": {\r\n        \"quantity\": 80000000,\r\n        \"unit\": \"Characters\"\r\n      },\r\n      \"cost\": {}\r\n    },\r\n    {\r\n      \"kind\": \"SpeechServices\",\r\n      \"skuName\": \"S0\",\r\n      \"hostingModel\": \"ConnectedContainer\",\r\n      \"planType\": \"NTTS\",\r\n      \"tier\": \"T2\",\r\n      \"quota\": {\r\n        \"quantity\": 400000000,\r\n        \"unit\": \"Characters\"\r\n      },\r\n      \"cost\": {}\r\n    },\r\n    {\r\n      \"kind\": \"SpeechServices\",\r\n      \"skuName\": \"S0\",\r\n      \"hostingModel\": \"ConnectedContainer\",\r\n      \"planType\": \"NTTS\",\r\n      \"tier\": \"T3\",\r\n      \"quota\": {\r\n        \"quantity\": 2000000000,\r\n        \"unit\": \"Characters\"\r\n      },\r\n      \"cost\": {}\r\n    },\r\n    {\r\n      \"kind\": \"SpeechServices\",\r\n      \"skuName\": \"S0\",\r\n      \"hostingModel\": \"Web\",\r\n      \"planType\": \"CustomSTT\",\r\n      \"tier\": \"T1\",\r\n      \"quota\": {\r\n        \"quantity\": 7200000,\r\n        \"unit\": \"Second\"\r\n      },\r\n      \"cost\": {}\r\n    },\r\n    {\r\n      \"kind\": \"SpeechServices\",\r\n      \"skuName\": \"S0\",\r\n      \"hostingModel\": \"Web\",\r\n      \"planType\": \"CustomSTT\",\r\n      \"tier\": \"T2\",\r\n      \"quota\": {\r\n        \"quantity\": 36000000,\r\n        \"unit\": \"Second\"\r\n      },\r\n      \"cost\": {}\r\n    },\r\n    {\r\n      \"kind\": \"SpeechServices\",\r\n      \"skuName\": \"S0\",\r\n      \"hostingModel\": \"Web\",\r\n      \"planType\": \"CustomSTT\",\r\n      \"tier\": \"T3\",\r\n      \"quota\": {\r\n        \"quantity\": 180000000,\r\n        \"unit\": \"Second\"\r\n      },\r\n      \"cost\": {}\r\n    },\r\n    {\r\n      \"kind\": \"SpeechServices\",\r\n      \"skuName\": \"S0\",\r\n      \"hostingModel\": \"Web\",\r\n      \"planType\": \"CustomSTT\",\r\n      \"tier\": \"T4\",\r\n      \"quota\": {\r\n        \"quantity\": 360000000,\r\n        \"unit\": \"Second\"\r\n      },\r\n      \"cost\": {}\r\n    },\r\n    {\r\n      \"kind\": \"SpeechServices\",\r\n      \"skuName\": \"S0\",\r\n      \"hostingModel\": \"ConnectedContainer\",\r\n      \"planType\": \"CustomSTT\",\r\n      \"tier\": \"T1\",\r\n      \"quota\": {\r\n        \"quantity\": 7200000,\r\n        \"unit\": \"Second\"\r\n      },\r\n      \"cost\": {}\r\n    },\r\n    {\r\n      \"kind\": \"SpeechServices\",\r\n      \"skuName\": \"S0\",\r\n      \"hostingModel\": \"ConnectedContainer\",\r\n      \"planType\": \"CustomSTT\",\r\n      \"tier\": \"T2\",\r\n      \"quota\": {\r\n        \"quantity\": 36000000,\r\n        \"unit\": \"Second\"\r\n      },\r\n      \"cost\": {}\r\n    },\r\n    {\r\n      \"kind\": \"SpeechServices\",\r\n      \"skuName\": \"S0\",\r\n      \"hostingModel\": \"ConnectedContainer\",\r\n      \"planType\": \"CustomSTT\",\r\n      \"tier\": \"T3\",\r\n      \"quota\": {\r\n        \"quantity\": 180000000,\r\n        \"unit\": \"Second\"\r\n      },\r\n      \"cost\": {}\r\n    },\r\n    {\r\n      \"kind\": \"SpeechServices\",\r\n      \"skuName\": \"S0\",\r\n      \"hostingModel\": \"ConnectedContainer\",\r\n      \"planType\": \"CustomSTT\",\r\n      \"tier\": \"T4\",\r\n      \"quota\": {\r\n        \"quantity\": 360000000,\r\n        \"unit\": \"Second\"\r\n      },\r\n      \"cost\": {}\r\n    },\r\n    {\r\n      \"kind\": \"SpeechServices\",\r\n      \"skuName\": \"DC0\",\r\n      \"hostingModel\": \"DisconnectedContainer\",\r\n      \"planType\": \"STT\",\r\n      \"tier\": \"T1\",\r\n      \"maxCount\": 10,\r\n      \"quota\": {\r\n        \"quantity\": 2000,\r\n        \"unit\": \"Hour\"\r\n      },\r\n      \"cost\": {}\r\n    },\r\n    {\r\n      \"kind\": \"SpeechServices\",\r\n      \"skuName\": \"DC0\",\r\n      \"hostingModel\": \"DisconnectedContainer\",\r\n      \"planType\": \"STT\",\r\n      \"tier\": \"T2\",\r\n      \"maxCount\": 10,\r\n      \"quota\": {\r\n        \"quantity\": 10000,\r\n        \"unit\": \"Hour\"\r\n      },\r\n      \"cost\": {}\r\n    },\r\n    {\r\n      \"kind\": \"SpeechServices\",\r\n      \"skuName\": \"DC0\",\r\n      \"hostingModel\": \"DisconnectedContainer\",\r\n      \"planType\": \"STT\",\r\n      \"tier\": \"T3\",\r\n      \"maxCount\": 10,\r\n      \"quota\": {\r\n        \"quantity\": 50000,\r\n        \"unit\": \"Hour\"\r\n      },\r\n      \"cost\": {}\r\n    },\r\n    {\r\n      \"kind\": \"SpeechServices\",\r\n      \"skuName\": \"DC0\",\r\n      \"hostingModel\": \"DisconnectedContainer\",\r\n      \"planType\": \"STT\",\r\n      \"tier\": \"T4\",\r\n      \"maxCount\": 10,\r\n      \"quota\": {\r\n        \"quantity\": 100000,\r\n        \"unit\": \"Hour\"\r\n      },\r\n      \"cost\": {}\r\n    },\r\n    {\r\n      \"kind\": \"SpeechServices\",\r\n      \"skuName\": \"DC0\",\r\n      \"hostingModel\": \"DisconnectedContainer\",\r\n      \"planType\": \"CustomSTT\",\r\n      \"tier\": \"T1\",\r\n      \"maxCount\": 10,\r\n      \"quota\": {\r\n        \"quantity\": 2000,\r\n        \"unit\": \"Hour\"\r\n      },\r\n      \"cost\": {}\r\n    },\r\n    {\r\n      \"kind\": \"SpeechServices\",\r\n      \"skuName\": \"DC0\",\r\n      \"hostingModel\": \"DisconnectedContainer\",\r\n      \"planType\": \"NTTS\",\r\n      \"tier\": \"T1\",\r\n      \"maxCount\": 10,\r\n      \"quota\": {\r\n        \"quantity\": 80000000,\r\n        \"unit\": \"Characters\"\r\n      },\r\n      \"cost\": {}\r\n    },\r\n    {\r\n      \"kind\": \"SpeechServices\",\r\n      \"skuName\": \"DC0\",\r\n      \"hostingModel\": \"DisconnectedContainer\",\r\n      \"planType\": \"NTTS\",\r\n      \"tier\": \"T2\",\r\n      \"maxCount\": 10,\r\n      \"quota\": {\r\n        \"quantity\": 400000000,\r\n        \"unit\": \"Characters\"\r\n      },\r\n      \"cost\": {}\r\n    },\r\n    {\r\n      \"kind\": \"SpeechServices\",\r\n      \"skuName\": \"DC0\",\r\n      \"hostingModel\": \"DisconnectedContainer\",\r\n      \"planType\": \"NTTS\",\r\n      \"tier\": \"T3\",\r\n      \"maxCount\": 10,\r\n      \"quota\": {\r\n        \"quantity\": 2000000000,\r\n        \"unit\": \"Characters\"\r\n      },\r\n      \"cost\": {}\r\n    },\r\n    {\r\n      \"kind\": \"SpeechServices\",\r\n      \"skuName\": \"DC0\",\r\n      \"hostingModel\": \"DisconnectedContainer\",\r\n      \"planType\": \"NTTS\",\r\n      \"tier\": \"T4\",\r\n      \"maxCount\": 10,\r\n      \"quota\": {\r\n        \"quantity\": 4000000000,\r\n        \"unit\": \"Characters\"\r\n      },\r\n      \"cost\": {}\r\n    },\r\n    {\r\n      \"kind\": \"FormRecognizer\",\r\n      \"skuName\": \"S0\",\r\n      \"hostingModel\": \"Web\",\r\n      \"planType\": \"CustomInvoice\",\r\n      \"tier\": \"T1\",\r\n      \"quota\": {\r\n        \"quantity\": 20000,\r\n        \"unit\": \"Transaction\"\r\n      },\r\n      \"cost\": {}\r\n    },\r\n    {\r\n      \"kind\": \"FormRecognizer\",\r\n      \"skuName\": \"S0\",\r\n      \"hostingModel\": \"Web\",\r\n      \"planType\": \"CustomInvoice\",\r\n      \"tier\": \"T2\",\r\n      \"quota\": {\r\n        \"quantity\": 100000,\r\n        \"unit\": \"Transaction\"\r\n      },\r\n      \"cost\": {}\r\n    },\r\n    {\r\n      \"kind\": \"FormRecognizer\",\r\n      \"skuName\": \"S0\",\r\n      \"hostingModel\": \"Web\",\r\n      \"planType\": \"CustomInvoice\",\r\n      \"tier\": \"T3\",\r\n      \"quota\": {\r\n        \"quantity\": 500000,\r\n        \"unit\": \"Transaction\"\r\n      },\r\n      \"cost\": {}\r\n    },\r\n    {\r\n      \"kind\": \"FormRecognizer\",\r\n      \"skuName\": \"S0\",\r\n      \"hostingModel\": \"ConnectedContainer\",\r\n      \"planType\": \"CustomInvoice\",\r\n      \"tier\": \"T1\",\r\n      \"quota\": {\r\n        \"quantity\": 20000,\r\n        \"unit\": \"Transaction\"\r\n      },\r\n      \"cost\": {}\r\n    },\r\n    {\r\n      \"kind\": \"FormRecognizer\",\r\n      \"skuName\": \"S0\",\r\n      \"hostingModel\": \"ConnectedContainer\",\r\n      \"planType\": \"CustomInvoice\",\r\n      \"tier\": \"T2\",\r\n      \"quota\": {\r\n        \"quantity\": 100000,\r\n        \"unit\": \"Transaction\"\r\n      },\r\n      \"cost\": {}\r\n    },\r\n    {\r\n      \"kind\": \"FormRecognizer\",\r\n      \"skuName\": \"S0\",\r\n      \"hostingModel\": \"ConnectedContainer\",\r\n      \"planType\": \"CustomInvoice\",\r\n      \"tier\": \"T3\",\r\n      \"quota\": {\r\n        \"quantity\": 500000,\r\n        \"unit\": \"Transaction\"\r\n      },\r\n      \"cost\": {}\r\n    },\r\n    {\r\n      \"kind\": \"FormRecognizer\",\r\n      \"skuName\": \"S0\",\r\n      \"hostingModel\": \"Web\",\r\n      \"planType\": \"PreBuilt\",\r\n      \"tier\": \"T1\",\r\n      \"quota\": {\r\n        \"quantity\": 20000,\r\n        \"unit\": \"Transaction\"\r\n      },\r\n      \"cost\": {}\r\n    },\r\n    {\r\n      \"kind\": \"FormRecognizer\",\r\n      \"skuName\": \"S0\",\r\n      \"hostingModel\": \"Web\",\r\n      \"planType\": \"PreBuilt\",\r\n      \"tier\": \"T2\",\r\n      \"quota\": {\r\n        \"quantity\": 100000,\r\n        \"unit\": \"Transaction\"\r\n      },\r\n      \"cost\": {}\r\n    },\r\n    {\r\n      \"kind\": \"FormRecognizer\",\r\n      \"skuName\": \"S0\",\r\n      \"hostingModel\": \"Web\",\r\n      \"planType\": \"PreBuilt\",\r\n      \"tier\": \"T3\",\r\n      \"quota\": {\r\n        \"quantity\": 500000,\r\n        \"unit\": \"Transaction\"\r\n      },\r\n      \"cost\": {}\r\n    },\r\n    {\r\n      \"kind\": \"FormRecognizer\",\r\n      \"skuName\": \"S0\",\r\n      \"hostingModel\": \"ConnectedContainer\",\r\n      \"planType\": \"PreBuilt\",\r\n      \"tier\": \"T1\",\r\n      \"quota\": {\r\n        \"quantity\": 20000,\r\n        \"unit\": \"Transaction\"\r\n      },\r\n      \"cost\": {}\r\n    },\r\n    {\r\n      \"kind\": \"FormRecognizer\",\r\n      \"skuName\": \"S0\",\r\n      \"hostingModel\": \"ConnectedContainer\",\r\n      \"planType\": \"PreBuilt\",\r\n      \"tier\": \"T2\",\r\n      \"quota\": {\r\n        \"quantity\": 100000,\r\n        \"unit\": \"Transaction\"\r\n      },\r\n      \"cost\": {}\r\n    },\r\n    {\r\n      \"kind\": \"FormRecognizer\",\r\n      \"skuName\": \"S0\",\r\n      \"hostingModel\": \"ConnectedContainer\",\r\n      \"planType\": \"PreBuilt\",\r\n      \"tier\": \"T3\",\r\n      \"quota\": {\r\n        \"quantity\": 500000,\r\n        \"unit\": \"Transaction\"\r\n      },\r\n      \"cost\": {}\r\n    },\r\n    {\r\n      \"kind\": \"FormRecognizer\",\r\n      \"skuName\": \"DC0\",\r\n      \"hostingModel\": \"DisconnectedContainer\",\r\n      \"planType\": \"CustomInvoice\",\r\n      \"tier\": \"T1\",\r\n      \"maxCount\": 10,\r\n      \"quota\": {\r\n        \"quantity\": 20000,\r\n        \"unit\": \"Pages\"\r\n      },\r\n      \"cost\": {}\r\n    },\r\n    {\r\n      \"kind\": \"FormRecognizer\",\r\n      \"skuName\": \"DC0\",\r\n      \"hostingModel\": \"DisconnectedContainer\",\r\n      \"planType\": \"CustomInvoice\",\r\n      \"tier\": \"T2\",\r\n      \"maxCount\": 10,\r\n      \"quota\": {\r\n        \"quantity\": 100000,\r\n        \"unit\": \"Pages\"\r\n      },\r\n      \"cost\": {}\r\n    },\r\n    {\r\n      \"kind\": \"FormRecognizer\",\r\n      \"skuName\": \"DC0\",\r\n      \"hostingModel\": \"DisconnectedContainer\",\r\n      \"planType\": \"CustomInvoice\",\r\n      \"tier\": \"T3\",\r\n      \"maxCount\": 10,\r\n      \"quota\": {\r\n        \"quantity\": 500000,\r\n        \"unit\": \"Pages\"\r\n      },\r\n      \"cost\": {}\r\n    },\r\n    {\r\n      \"kind\": \"FormRecognizer\",\r\n      \"skuName\": \"DC0\",\r\n      \"hostingModel\": \"DisconnectedContainer\",\r\n      \"planType\": \"CustomInvoice\",\r\n      \"tier\": \"T4\",\r\n      \"maxCount\": 10,\r\n      \"quota\": {\r\n        \"quantity\": 1000000,\r\n        \"unit\": \"Pages\"\r\n      },\r\n      \"cost\": {}\r\n    },\r\n    {\r\n      \"kind\": \"TextTranslation\",\r\n      \"skuName\": \"S1\",\r\n      \"hostingModel\": \"Web\",\r\n      \"planType\": \"Characters\",\r\n      \"tier\": \"T1\",\r\n      \"quota\": {\r\n        \"quantity\": 250000000,\r\n        \"unit\": \"Transaction\"\r\n      },\r\n      \"cost\": {}\r\n    },\r\n    {\r\n      \"kind\": \"TextTranslation\",\r\n      \"skuName\": \"S1\",\r\n      \"hostingModel\": \"Web\",\r\n      \"planType\": \"Characters\",\r\n      \"tier\": \"T2\",\r\n      \"quota\": {\r\n        \"quantity\": 1000000000,\r\n        \"unit\": \"Transaction\"\r\n      },\r\n      \"cost\": {}\r\n    },\r\n    {\r\n      \"kind\": \"TextTranslation\",\r\n      \"skuName\": \"S1\",\r\n      \"hostingModel\": \"Web\",\r\n      \"planType\": \"Characters\",\r\n      \"tier\": \"T3\",\r\n      \"quota\": {\r\n        \"quantity\": 4000000000,\r\n        \"unit\": \"Transaction\"\r\n      },\r\n      \"cost\": {}\r\n    },\r\n    {\r\n      \"kind\": \"TextTranslation\",\r\n      \"skuName\": \"S1\",\r\n      \"hostingModel\": \"ConnectedContainer\",\r\n      \"planType\": \"Characters\",\r\n      \"tier\": \"T1\",\r\n      \"quota\": {\r\n        \"quantity\": 250000000,\r\n        \"unit\": \"Transaction\"\r\n      },\r\n      \"cost\": {}\r\n    },\r\n    {\r\n      \"kind\": \"TextTranslation\",\r\n      \"skuName\": \"S1\",\r\n      \"hostingModel\": \"ConnectedContainer\",\r\n      \"planType\": \"Characters\",\r\n      \"tier\": \"T2\",\r\n      \"quota\": {\r\n        \"quantity\": 1000000000,\r\n        \"unit\": \"Transaction\"\r\n      },\r\n      \"cost\": {}\r\n    },\r\n    {\r\n      \"kind\": \"TextTranslation\",\r\n      \"skuName\": \"S1\",\r\n      \"hostingModel\": \"ConnectedContainer\",\r\n      \"planType\": \"Characters\",\r\n      \"tier\": \"T3\",\r\n      \"quota\": {\r\n        \"quantity\": 4000000000,\r\n        \"unit\": \"Transaction\"\r\n      },\r\n      \"cost\": {}\r\n    },\r\n    {\r\n      \"kind\": \"TextTranslation\",\r\n      \"skuName\": \"DC0\",\r\n      \"hostingModel\": \"DisconnectedContainer\",\r\n      \"planType\": \"Characters\",\r\n      \"tier\": \"T1\",\r\n      \"maxCount\": 10,\r\n      \"quota\": {\r\n        \"quantity\": 250000000,\r\n        \"unit\": \"Transaction\"\r\n      },\r\n      \"cost\": {}\r\n    },\r\n    {\r\n      \"kind\": \"TextTranslation\",\r\n      \"skuName\": \"DC0\",\r\n      \"hostingModel\": \"DisconnectedContainer\",\r\n      \"planType\": \"Characters\",\r\n      \"tier\": \"T2\",\r\n      \"maxCount\": 10,\r\n      \"quota\": {\r\n        \"quantity\": 1000000000,\r\n        \"unit\": \"Transaction\"\r\n      },\r\n      \"cost\": {}\r\n    },\r\n    {\r\n      \"kind\": \"TextTranslation\",\r\n      \"skuName\": \"DC0\",\r\n      \"hostingModel\": \"DisconnectedContainer\",\r\n      \"planType\": \"Characters\",\r\n      \"tier\": \"T3\",\r\n      \"maxCount\": 10,\r\n      \"quota\": {\r\n        \"quantity\": 4000000000,\r\n        \"unit\": \"Transaction\"\r\n      },\r\n      \"cost\": {}\r\n    },\r\n    {\r\n      \"kind\": \"TextTranslation\",\r\n      \"skuName\": \"DC0\",\r\n      \"hostingModel\": \"DisconnectedContainer\",\r\n      \"planType\": \"Characters\",\r\n      \"tier\": \"T4\",\r\n      \"maxCount\": 10,\r\n      \"quota\": {\r\n        \"quantity\": 10000000000,\r\n        \"unit\": \"Transaction\"\r\n      },\r\n      \"cost\": {}\r\n    }\r\n  ]\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourceGroups/pstestrg1839/providers/Microsoft.CognitiveServices/accounts/csapstestrg1839/commitmentPlans?api-version=2022-12-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjliOTZiMzYtMWY1ZS00MDIxLTg5NTktNTE1MjdlMjZlNmQzL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnMTgzOS9wcm92aWRlcnMvTWljcm9zb2Z0LkNvZ25pdGl2ZVNlcnZpY2VzL2FjY291bnRzL2NzYXBzdGVzdHJnMTgzOS9jb21taXRtZW50UGxhbnM/YXBpLXZlcnNpb249MjAyMi0xMi0wMQ==",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "bc23a798-9086-404f-b89c-25faf805df83"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.55902",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.CognitiveServices.CognitiveServicesManagementClient/9.0.0.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-request-id": [
+          "04d90de0-a38b-4f67-99c2-6ab668025002"
+        ],
+        "x-envoy-upstream-service-time": [
+          "14"
         ],
         "Server": [
           "istio-envoy"
@@ -513,16 +513,16 @@
           "11994"
         ],
         "x-ms-correlation-request-id": [
-          "bda9f70a-c237-420c-ad2c-806396b118d9"
+          "6dab7eb7-fda6-446c-ade4-418e14e93a80"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20220324T225244Z:bda9f70a-c237-420c-ad2c-806396b118d9"
+          "CANADACENTRAL:20230131T003739Z:6dab7eb7-fda6-446c-ade4-418e14e93a80"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "Date": [
-          "Thu, 24 Mar 2022 22:52:44 GMT"
+          "Tue, 31 Jan 2023 00:37:38 GMT"
         ],
         "Content-Length": [
           "12"
@@ -538,24 +538,24 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourceGroups/pstestrg6303/providers/Microsoft.CognitiveServices/accounts/csapstestrg6303/commitmentPlans?api-version=2022-03-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjliOTZiMzYtMWY1ZS00MDIxLTg5NTktNTE1MjdlMjZlNmQzL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnNjMwMy9wcm92aWRlcnMvTWljcm9zb2Z0LkNvZ25pdGl2ZVNlcnZpY2VzL2FjY291bnRzL2NzYXBzdGVzdHJnNjMwMy9jb21taXRtZW50UGxhbnM/YXBpLXZlcnNpb249MjAyMi0wMy0wMQ==",
+      "RequestUri": "/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourceGroups/pstestrg1839/providers/Microsoft.CognitiveServices/accounts/csapstestrg1839/commitmentPlans?api-version=2022-12-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjliOTZiMzYtMWY1ZS00MDIxLTg5NTktNTE1MjdlMjZlNmQzL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnMTgzOS9wcm92aWRlcnMvTWljcm9zb2Z0LkNvZ25pdGl2ZVNlcnZpY2VzL2FjY291bnRzL2NzYXBzdGVzdHJnMTgzOS9jb21taXRtZW50UGxhbnM/YXBpLXZlcnNpb249MjAyMi0xMi0wMQ==",
       "RequestMethod": "GET",
-      "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "359cafd8-4a23-4f1d-9263-ca5c02b81a0b"
+          "7339271d-f19a-44ea-b7bc-141d65737ee2"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.700.22.11601",
+          "FxVersion/4.700.22.55902",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22000",
-          "Microsoft.Azure.Management.CognitiveServices.CognitiveServicesManagementClient/8.2.0.0"
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.CognitiveServices.CognitiveServicesManagementClient/9.0.0.0"
         ]
       },
+      "RequestBody": "",
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
@@ -567,31 +567,31 @@
           "nosniff"
         ],
         "x-ms-request-id": [
-          "e1be7e70-7f6e-4fd5-80d9-37705dd6221e"
+          "ec6f6d80-1cbd-45c1-9c33-37a3e6387a57"
         ],
         "x-envoy-upstream-service-time": [
-          "33"
+          "10"
         ],
         "Server": [
           "istio-envoy"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11993"
+          "11996"
         ],
         "x-ms-correlation-request-id": [
-          "89885fb0-5a2e-409a-9e0b-826d26473747"
+          "a3e87e08-061f-4107-bfad-c27fe7feb9fe"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20220324T225244Z:89885fb0-5a2e-409a-9e0b-826d26473747"
+          "CANADACENTRAL:20230131T003742Z:a3e87e08-061f-4107-bfad-c27fe7feb9fe"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "Date": [
-          "Thu, 24 Mar 2022 22:52:44 GMT"
+          "Tue, 31 Jan 2023 00:37:41 GMT"
         ],
         "Content-Length": [
-          "799"
+          "798"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -600,26 +600,25 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourceGroups/pstestrg6303/providers/Microsoft.CognitiveServices/accounts/csapstestrg6303/commitmentplans/plan\",\r\n      \"type\": \"Microsoft.CognitiveServices/accounts/commitmentplans\",\r\n      \"name\": \"plan\",\r\n      \"properties\": {\r\n        \"hostingModel\": \"Web\",\r\n        \"planType\": \"TA\",\r\n        \"current\": {\r\n          \"tier\": \"T1\",\r\n          \"startDate\": \"2022-03-24T00:00:00Z\",\r\n          \"endDate\": \"2022-04-01T00:00:00Z\",\r\n          \"quota\": {\r\n            \"quantity\": 258064,\r\n            \"unit\": \"Transaction\"\r\n          }\r\n        },\r\n        \"autoRenew\": false\r\n      },\r\n      \"systemData\": {\r\n        \"createdBy\": \"50841d5f-166a-406c-8472-6800c9698b43\",\r\n        \"createdByType\": \"Application\",\r\n        \"createdAt\": \"2022-03-24T22:52:44.6556872Z\",\r\n        \"lastModifiedBy\": \"50841d5f-166a-406c-8472-6800c9698b43\",\r\n        \"lastModifiedByType\": \"Application\",\r\n        \"lastModifiedAt\": \"2022-03-24T22:52:44.6556872Z\"\r\n      },\r\n      \"etag\": \"\\\"0732ff1d-c12f-47a4-9554-3ac1d904c144\\\"\"\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourceGroups/pstestrg1839/providers/Microsoft.CognitiveServices/accounts/csapstestrg1839/commitmentplans/plan\",\r\n      \"type\": \"Microsoft.CognitiveServices/accounts/commitmentplans\",\r\n      \"name\": \"plan\",\r\n      \"properties\": {\r\n        \"hostingModel\": \"Web\",\r\n        \"planType\": \"TA\",\r\n        \"current\": {\r\n          \"tier\": \"T1\",\r\n          \"startDate\": \"2023-01-31T00:00:00Z\",\r\n          \"endDate\": \"2023-02-01T00:00:00Z\",\r\n          \"quota\": {\r\n            \"quantity\": 32258,\r\n            \"unit\": \"Transaction\"\r\n          }\r\n        },\r\n        \"autoRenew\": false\r\n      },\r\n      \"systemData\": {\r\n        \"createdBy\": \"50841d5f-166a-406c-8472-6800c9698b43\",\r\n        \"createdByType\": \"Application\",\r\n        \"createdAt\": \"2023-01-31T00:37:41.3580496Z\",\r\n        \"lastModifiedBy\": \"50841d5f-166a-406c-8472-6800c9698b43\",\r\n        \"lastModifiedByType\": \"Application\",\r\n        \"lastModifiedAt\": \"2023-01-31T00:37:41.3580496Z\"\r\n      },\r\n      \"etag\": \"\\\"035ae488-461d-4826-9ba8-4f7037c8e0df\\\"\"\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourceGroups/pstestrg6303/providers/Microsoft.CognitiveServices/accounts/csapstestrg6303/commitmentPlans/plan?api-version=2022-03-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjliOTZiMzYtMWY1ZS00MDIxLTg5NTktNTE1MjdlMjZlNmQzL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnNjMwMy9wcm92aWRlcnMvTWljcm9zb2Z0LkNvZ25pdGl2ZVNlcnZpY2VzL2FjY291bnRzL2NzYXBzdGVzdHJnNjMwMy9jb21taXRtZW50UGxhbnMvcGxhbj9hcGktdmVyc2lvbj0yMDIyLTAzLTAx",
+      "RequestUri": "/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourceGroups/pstestrg1839/providers/Microsoft.CognitiveServices/accounts/csapstestrg1839/commitmentPlans/plan?api-version=2022-12-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjliOTZiMzYtMWY1ZS00MDIxLTg5NTktNTE1MjdlMjZlNmQzL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnMTgzOS9wcm92aWRlcnMvTWljcm9zb2Z0LkNvZ25pdGl2ZVNlcnZpY2VzL2FjY291bnRzL2NzYXBzdGVzdHJnMTgzOS9jb21taXRtZW50UGxhbnMvcGxhbj9hcGktdmVyc2lvbj0yMDIyLTEyLTAx",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"hostingModel\": \"Web\",\r\n    \"planType\": \"TA\",\r\n    \"current\": {\r\n      \"tier\": \"T1\"\r\n    },\r\n    \"autoRenew\": false\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "2874df1e-5179-48b5-b024-9e6527ec1f65"
+          "d7f9c368-c2a8-4bd5-923b-e0f26e7827b9"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.700.22.11601",
+          "FxVersion/4.700.22.55902",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22000",
-          "Microsoft.Azure.Management.CognitiveServices.CognitiveServicesManagementClient/8.2.0.0"
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.CognitiveServices.CognitiveServicesManagementClient/9.0.0.0"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -628,6 +627,7 @@
           "149"
         ]
       },
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"hostingModel\": \"Web\",\r\n    \"planType\": \"TA\",\r\n    \"current\": {\r\n      \"tier\": \"T1\"\r\n    },\r\n    \"autoRenew\": false\r\n  }\r\n}",
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
@@ -636,16 +636,16 @@
           "no-cache"
         ],
         "ETag": [
-          "\"0732ff1d-c12f-47a4-9554-3ac1d904c144\""
+          "\"035ae488-461d-4826-9ba8-4f7037c8e0df\""
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "x-ms-request-id": [
-          "e2b45559-3ccd-46fa-848d-510f334c1107"
+          "99ac7227-831d-4bd8-a08e-4c60f546b7a4"
         ],
         "x-envoy-upstream-service-time": [
-          "55"
+          "65"
         ],
         "Server": [
           "istio-envoy"
@@ -654,19 +654,19 @@
           "1198"
         ],
         "x-ms-correlation-request-id": [
-          "7d567fe4-7c18-472c-92ea-ca676302cd4a"
+          "7f784547-8637-4f88-af8d-fa47cdff27d9"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20220324T225244Z:7d567fe4-7c18-472c-92ea-ca676302cd4a"
+          "CANADACENTRAL:20230131T003741Z:7f784547-8637-4f88-af8d-fa47cdff27d9"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "Date": [
-          "Thu, 24 Mar 2022 22:52:44 GMT"
+          "Tue, 31 Jan 2023 00:37:41 GMT"
         ],
         "Content-Length": [
-          "787"
+          "786"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -675,28 +675,28 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourceGroups/pstestrg6303/providers/Microsoft.CognitiveServices/accounts/csapstestrg6303/commitmentplans/plan\",\r\n  \"type\": \"Microsoft.CognitiveServices/accounts/commitmentplans\",\r\n  \"name\": \"plan\",\r\n  \"properties\": {\r\n    \"hostingModel\": \"Web\",\r\n    \"planType\": \"TA\",\r\n    \"current\": {\r\n      \"tier\": \"T1\",\r\n      \"startDate\": \"2022-03-24T00:00:00Z\",\r\n      \"endDate\": \"2022-04-01T00:00:00Z\",\r\n      \"quota\": {\r\n        \"quantity\": 258064,\r\n        \"unit\": \"Transaction\"\r\n      }\r\n    },\r\n    \"autoRenew\": false\r\n  },\r\n  \"systemData\": {\r\n    \"createdBy\": \"50841d5f-166a-406c-8472-6800c9698b43\",\r\n    \"createdByType\": \"Application\",\r\n    \"createdAt\": \"2022-03-24T22:52:44.6556872Z\",\r\n    \"lastModifiedBy\": \"50841d5f-166a-406c-8472-6800c9698b43\",\r\n    \"lastModifiedByType\": \"Application\",\r\n    \"lastModifiedAt\": \"2022-03-24T22:52:44.6556872Z\"\r\n  },\r\n  \"etag\": \"\\\"0732ff1d-c12f-47a4-9554-3ac1d904c144\\\"\"\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourceGroups/pstestrg1839/providers/Microsoft.CognitiveServices/accounts/csapstestrg1839/commitmentplans/plan\",\r\n  \"type\": \"Microsoft.CognitiveServices/accounts/commitmentplans\",\r\n  \"name\": \"plan\",\r\n  \"properties\": {\r\n    \"hostingModel\": \"Web\",\r\n    \"planType\": \"TA\",\r\n    \"current\": {\r\n      \"tier\": \"T1\",\r\n      \"startDate\": \"2023-01-31T00:00:00Z\",\r\n      \"endDate\": \"2023-02-01T00:00:00Z\",\r\n      \"quota\": {\r\n        \"quantity\": 32258,\r\n        \"unit\": \"Transaction\"\r\n      }\r\n    },\r\n    \"autoRenew\": false\r\n  },\r\n  \"systemData\": {\r\n    \"createdBy\": \"50841d5f-166a-406c-8472-6800c9698b43\",\r\n    \"createdByType\": \"Application\",\r\n    \"createdAt\": \"2023-01-31T00:37:41.3580496Z\",\r\n    \"lastModifiedBy\": \"50841d5f-166a-406c-8472-6800c9698b43\",\r\n    \"lastModifiedByType\": \"Application\",\r\n    \"lastModifiedAt\": \"2023-01-31T00:37:41.3580496Z\"\r\n  },\r\n  \"etag\": \"\\\"035ae488-461d-4826-9ba8-4f7037c8e0df\\\"\"\r\n}",
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourceGroups/pstestrg6303/providers/Microsoft.CognitiveServices/accounts/csapstestrg6303/commitmentPlans/plan?api-version=2022-03-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjliOTZiMzYtMWY1ZS00MDIxLTg5NTktNTE1MjdlMjZlNmQzL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnNjMwMy9wcm92aWRlcnMvTWljcm9zb2Z0LkNvZ25pdGl2ZVNlcnZpY2VzL2FjY291bnRzL2NzYXBzdGVzdHJnNjMwMy9jb21taXRtZW50UGxhbnMvcGxhbj9hcGktdmVyc2lvbj0yMDIyLTAzLTAx",
+      "RequestUri": "/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourceGroups/pstestrg1839/providers/Microsoft.CognitiveServices/accounts/csapstestrg1839/commitmentPlans/plan?api-version=2022-12-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjliOTZiMzYtMWY1ZS00MDIxLTg5NTktNTE1MjdlMjZlNmQzL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnMTgzOS9wcm92aWRlcnMvTWljcm9zb2Z0LkNvZ25pdGl2ZVNlcnZpY2VzL2FjY291bnRzL2NzYXBzdGVzdHJnMTgzOS9jb21taXRtZW50UGxhbnMvcGxhbj9hcGktdmVyc2lvbj0yMDIyLTEyLTAx",
       "RequestMethod": "GET",
-      "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "d513df15-ac63-4219-8a54-e18194f4d96d"
+          "e46104d7-168c-4bce-a75c-1f7db5c913fe"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.700.22.11601",
+          "FxVersion/4.700.22.55902",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22000",
-          "Microsoft.Azure.Management.CognitiveServices.CognitiveServicesManagementClient/8.2.0.0"
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.CognitiveServices.CognitiveServicesManagementClient/9.0.0.0"
         ]
       },
+      "RequestBody": "",
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
@@ -705,37 +705,37 @@
           "no-cache"
         ],
         "ETag": [
-          "\"0732ff1d-c12f-47a4-9554-3ac1d904c144\""
+          "\"035ae488-461d-4826-9ba8-4f7037c8e0df\""
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "x-ms-request-id": [
-          "cebe8675-2581-4a64-9901-eda2bed8e39f"
+          "e63d8a99-cd02-43f9-9eb8-affe7bc9277c"
         ],
         "x-envoy-upstream-service-time": [
-          "39"
+          "12"
         ],
         "Server": [
           "istio-envoy"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11992"
+          "11998"
         ],
         "x-ms-correlation-request-id": [
-          "33028b2c-2546-4de9-92e8-156574ed13cd"
+          "5daa7550-83b8-4fa5-bea1-a3bae44a6277"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20220324T225245Z:33028b2c-2546-4de9-92e8-156574ed13cd"
+          "CANADACENTRAL:20230131T003742Z:5daa7550-83b8-4fa5-bea1-a3bae44a6277"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "Date": [
-          "Thu, 24 Mar 2022 22:52:44 GMT"
+          "Tue, 31 Jan 2023 00:37:41 GMT"
         ],
         "Content-Length": [
-          "787"
+          "786"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -744,28 +744,28 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourceGroups/pstestrg6303/providers/Microsoft.CognitiveServices/accounts/csapstestrg6303/commitmentplans/plan\",\r\n  \"type\": \"Microsoft.CognitiveServices/accounts/commitmentplans\",\r\n  \"name\": \"plan\",\r\n  \"properties\": {\r\n    \"hostingModel\": \"Web\",\r\n    \"planType\": \"TA\",\r\n    \"current\": {\r\n      \"tier\": \"T1\",\r\n      \"startDate\": \"2022-03-24T00:00:00Z\",\r\n      \"endDate\": \"2022-04-01T00:00:00Z\",\r\n      \"quota\": {\r\n        \"quantity\": 258064,\r\n        \"unit\": \"Transaction\"\r\n      }\r\n    },\r\n    \"autoRenew\": false\r\n  },\r\n  \"systemData\": {\r\n    \"createdBy\": \"50841d5f-166a-406c-8472-6800c9698b43\",\r\n    \"createdByType\": \"Application\",\r\n    \"createdAt\": \"2022-03-24T22:52:44.6556872Z\",\r\n    \"lastModifiedBy\": \"50841d5f-166a-406c-8472-6800c9698b43\",\r\n    \"lastModifiedByType\": \"Application\",\r\n    \"lastModifiedAt\": \"2022-03-24T22:52:44.6556872Z\"\r\n  },\r\n  \"etag\": \"\\\"0732ff1d-c12f-47a4-9554-3ac1d904c144\\\"\"\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourceGroups/pstestrg1839/providers/Microsoft.CognitiveServices/accounts/csapstestrg1839/commitmentplans/plan\",\r\n  \"type\": \"Microsoft.CognitiveServices/accounts/commitmentplans\",\r\n  \"name\": \"plan\",\r\n  \"properties\": {\r\n    \"hostingModel\": \"Web\",\r\n    \"planType\": \"TA\",\r\n    \"current\": {\r\n      \"tier\": \"T1\",\r\n      \"startDate\": \"2023-01-31T00:00:00Z\",\r\n      \"endDate\": \"2023-02-01T00:00:00Z\",\r\n      \"quota\": {\r\n        \"quantity\": 32258,\r\n        \"unit\": \"Transaction\"\r\n      }\r\n    },\r\n    \"autoRenew\": false\r\n  },\r\n  \"systemData\": {\r\n    \"createdBy\": \"50841d5f-166a-406c-8472-6800c9698b43\",\r\n    \"createdByType\": \"Application\",\r\n    \"createdAt\": \"2023-01-31T00:37:41.3580496Z\",\r\n    \"lastModifiedBy\": \"50841d5f-166a-406c-8472-6800c9698b43\",\r\n    \"lastModifiedByType\": \"Application\",\r\n    \"lastModifiedAt\": \"2023-01-31T00:37:41.3580496Z\"\r\n  },\r\n  \"etag\": \"\\\"035ae488-461d-4826-9ba8-4f7037c8e0df\\\"\"\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourceGroups/pstestrg6303/providers/Microsoft.CognitiveServices/accounts/csapstestrg6303/commitmentPlans/plan?api-version=2022-03-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjliOTZiMzYtMWY1ZS00MDIxLTg5NTktNTE1MjdlMjZlNmQzL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnNjMwMy9wcm92aWRlcnMvTWljcm9zb2Z0LkNvZ25pdGl2ZVNlcnZpY2VzL2FjY291bnRzL2NzYXBzdGVzdHJnNjMwMy9jb21taXRtZW50UGxhbnMvcGxhbj9hcGktdmVyc2lvbj0yMDIyLTAzLTAx",
+      "RequestUri": "/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourceGroups/pstestrg1839/providers/Microsoft.CognitiveServices/accounts/csapstestrg1839/commitmentPlans/plan?api-version=2022-12-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjliOTZiMzYtMWY1ZS00MDIxLTg5NTktNTE1MjdlMjZlNmQzL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnMTgzOS9wcm92aWRlcnMvTWljcm9zb2Z0LkNvZ25pdGl2ZVNlcnZpY2VzL2FjY291bnRzL2NzYXBzdGVzdHJnMTgzOS9jb21taXRtZW50UGxhbnMvcGxhbj9hcGktdmVyc2lvbj0yMDIyLTEyLTAx",
       "RequestMethod": "DELETE",
-      "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "2f974f6c-2f86-4f30-9ebd-670ef973fee5"
+          "756e35f9-16c5-4e71-891e-d570050079be"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.700.22.11601",
+          "FxVersion/4.700.22.55902",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22000",
-          "Microsoft.Azure.Management.CognitiveServices.CognitiveServicesManagementClient/8.2.0.0"
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.CognitiveServices.CognitiveServicesManagementClient/9.0.0.0"
         ]
       },
+      "RequestBody": "",
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
@@ -777,28 +777,28 @@
           "nosniff"
         ],
         "x-envoy-upstream-service-time": [
-          "22"
+          "32"
         ],
         "Server": [
           "istio-envoy"
         ],
         "x-ms-ratelimit-remaining-subscription-deletes": [
-          "14999"
+          "14998"
         ],
         "x-ms-request-id": [
-          "687ca26e-cb7d-47b6-bf1e-dce51dc3d906"
+          "412f5cdb-2b09-43c2-b515-3e2c55970b83"
         ],
         "x-ms-correlation-request-id": [
-          "687ca26e-cb7d-47b6-bf1e-dce51dc3d906"
+          "412f5cdb-2b09-43c2-b515-3e2c55970b83"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20220324T225245Z:687ca26e-cb7d-47b6-bf1e-dce51dc3d906"
+          "CANADACENTRAL:20230131T003743Z:412f5cdb-2b09-43c2-b515-3e2c55970b83"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "Date": [
-          "Thu, 24 Mar 2022 22:52:44 GMT"
+          "Tue, 31 Jan 2023 00:37:42 GMT"
         ],
         "Expires": [
           "-1"
@@ -811,24 +811,24 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourcegroups/pstestrg6303?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjliOTZiMzYtMWY1ZS00MDIxLTg5NTktNTE1MjdlMjZlNmQzL3Jlc291cmNlZ3JvdXBzL3BzdGVzdHJnNjMwMz9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
+      "RequestUri": "/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourcegroups/pstestrg1839?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjliOTZiMzYtMWY1ZS00MDIxLTg5NTktNTE1MjdlMjZlNmQzL3Jlc291cmNlZ3JvdXBzL3BzdGVzdHJnMTgzOT9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
       "RequestMethod": "DELETE",
-      "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "35544c1d-23d3-4164-9a41-12c21a22457c"
+          "187ddeb8-6630-422c-ab6b-234ba356d853"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.700.22.11601",
+          "FxVersion/4.700.22.55902",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22000",
-          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.57"
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.68"
         ]
       },
+      "RequestBody": "",
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
@@ -837,7 +837,7 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSRzYzMDMtQ0VOVFJBTFVTRVVBUCIsImpvYkxvY2F0aW9uIjoiY2VudHJhbHVzZXVhcCJ9?api-version=2016-09-01"
+          "https://management.azure.com/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSRzE4MzktQ0VOVFJBTFVTRVVBUCIsImpvYkxvY2F0aW9uIjoiY2VudHJhbHVzZXVhcCJ9?api-version=2016-09-01"
         ],
         "Retry-After": [
           "15"
@@ -846,13 +846,13 @@
           "14998"
         ],
         "x-ms-request-id": [
-          "fb4fc6e7-05d5-40da-830e-abd684745683"
+          "b0c7de16-b68a-4a86-89f2-47c6ebf372c2"
         ],
         "x-ms-correlation-request-id": [
-          "fb4fc6e7-05d5-40da-830e-abd684745683"
+          "b0c7de16-b68a-4a86-89f2-47c6ebf372c2"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20220324T225246Z:fb4fc6e7-05d5-40da-830e-abd684745683"
+          "CANADACENTRAL:20230131T003744Z:b0c7de16-b68a-4a86-89f2-47c6ebf372c2"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -861,7 +861,7 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 24 Mar 2022 22:52:45 GMT"
+          "Tue, 31 Jan 2023 00:37:44 GMT"
         ],
         "Expires": [
           "-1"
@@ -874,18 +874,18 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSRzYzMDMtQ0VOVFJBTFVTRVVBUCIsImpvYkxvY2F0aW9uIjoiY2VudHJhbHVzZXVhcCJ9?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjliOTZiMzYtMWY1ZS00MDIxLTg5NTktNTE1MjdlMjZlNmQzL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVTFSRlUxUlNSell6TURNdFEwVk9WRkpCVEZWVFJWVkJVQ0lzSW1wdllreHZZMkYwYVc5dUlqb2lZMlZ1ZEhKaGJIVnpaWFZoY0NKOT9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
+      "RequestUri": "/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSRzE4MzktQ0VOVFJBTFVTRVVBUCIsImpvYkxvY2F0aW9uIjoiY2VudHJhbHVzZXVhcCJ9?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjliOTZiMzYtMWY1ZS00MDIxLTg5NTktNTE1MjdlMjZlNmQzL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVTFSRlUxUlNSekU0TXprdFEwVk9WRkpCVEZWVFJWVkJVQ0lzSW1wdllreHZZMkYwYVc5dUlqb2lZMlZ1ZEhKaGJIVnpaWFZoY0NKOT9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
       "RequestMethod": "GET",
-      "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "FxVersion/4.700.22.11601",
+          "FxVersion/4.700.22.55902",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22000",
-          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.57"
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.68"
         ]
       },
+      "RequestBody": "",
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
@@ -894,7 +894,7 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSRzYzMDMtQ0VOVFJBTFVTRVVBUCIsImpvYkxvY2F0aW9uIjoiY2VudHJhbHVzZXVhcCJ9?api-version=2016-09-01"
+          "https://management.azure.com/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSRzE4MzktQ0VOVFJBTFVTRVVBUCIsImpvYkxvY2F0aW9uIjoiY2VudHJhbHVzZXVhcCJ9?api-version=2016-09-01"
         ],
         "Retry-After": [
           "15"
@@ -903,13 +903,13 @@
           "11999"
         ],
         "x-ms-request-id": [
-          "bb3a14ba-3ac3-41cf-a367-a18c420d55cc"
+          "e3626a54-d351-4b8c-bced-a84142b29d60"
         ],
         "x-ms-correlation-request-id": [
-          "bb3a14ba-3ac3-41cf-a367-a18c420d55cc"
+          "e3626a54-d351-4b8c-bced-a84142b29d60"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20220324T225301Z:bb3a14ba-3ac3-41cf-a367-a18c420d55cc"
+          "CANADACENTRAL:20230131T003759Z:e3626a54-d351-4b8c-bced-a84142b29d60"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -918,7 +918,7 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 24 Mar 2022 22:53:00 GMT"
+          "Tue, 31 Jan 2023 00:37:59 GMT"
         ],
         "Expires": [
           "-1"
@@ -931,18 +931,18 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSRzYzMDMtQ0VOVFJBTFVTRVVBUCIsImpvYkxvY2F0aW9uIjoiY2VudHJhbHVzZXVhcCJ9?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjliOTZiMzYtMWY1ZS00MDIxLTg5NTktNTE1MjdlMjZlNmQzL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVTFSRlUxUlNSell6TURNdFEwVk9WRkpCVEZWVFJWVkJVQ0lzSW1wdllreHZZMkYwYVc5dUlqb2lZMlZ1ZEhKaGJIVnpaWFZoY0NKOT9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
+      "RequestUri": "/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSRzE4MzktQ0VOVFJBTFVTRVVBUCIsImpvYkxvY2F0aW9uIjoiY2VudHJhbHVzZXVhcCJ9?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjliOTZiMzYtMWY1ZS00MDIxLTg5NTktNTE1MjdlMjZlNmQzL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVTFSRlUxUlNSekU0TXprdFEwVk9WRkpCVEZWVFJWVkJVQ0lzSW1wdllreHZZMkYwYVc5dUlqb2lZMlZ1ZEhKaGJIVnpaWFZoY0NKOT9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
       "RequestMethod": "GET",
-      "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "FxVersion/4.700.22.11601",
+          "FxVersion/4.700.22.55902",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22000",
-          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.57"
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.68"
         ]
       },
+      "RequestBody": "",
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
@@ -951,7 +951,7 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSRzYzMDMtQ0VOVFJBTFVTRVVBUCIsImpvYkxvY2F0aW9uIjoiY2VudHJhbHVzZXVhcCJ9?api-version=2016-09-01"
+          "https://management.azure.com/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSRzE4MzktQ0VOVFJBTFVTRVVBUCIsImpvYkxvY2F0aW9uIjoiY2VudHJhbHVzZXVhcCJ9?api-version=2016-09-01"
         ],
         "Retry-After": [
           "15"
@@ -960,13 +960,13 @@
           "11998"
         ],
         "x-ms-request-id": [
-          "4f0409dd-9ca8-4e88-97dd-45e99c45a127"
+          "8ef206e9-b8f0-4f60-8d3d-1c11da1a9c74"
         ],
         "x-ms-correlation-request-id": [
-          "4f0409dd-9ca8-4e88-97dd-45e99c45a127"
+          "8ef206e9-b8f0-4f60-8d3d-1c11da1a9c74"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20220324T225316Z:4f0409dd-9ca8-4e88-97dd-45e99c45a127"
+          "CANADACENTRAL:20230131T003815Z:8ef206e9-b8f0-4f60-8d3d-1c11da1a9c74"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -975,7 +975,7 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 24 Mar 2022 22:53:15 GMT"
+          "Tue, 31 Jan 2023 00:38:14 GMT"
         ],
         "Expires": [
           "-1"
@@ -988,18 +988,18 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSRzYzMDMtQ0VOVFJBTFVTRVVBUCIsImpvYkxvY2F0aW9uIjoiY2VudHJhbHVzZXVhcCJ9?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjliOTZiMzYtMWY1ZS00MDIxLTg5NTktNTE1MjdlMjZlNmQzL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVTFSRlUxUlNSell6TURNdFEwVk9WRkpCVEZWVFJWVkJVQ0lzSW1wdllreHZZMkYwYVc5dUlqb2lZMlZ1ZEhKaGJIVnpaWFZoY0NKOT9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
+      "RequestUri": "/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSRzE4MzktQ0VOVFJBTFVTRVVBUCIsImpvYkxvY2F0aW9uIjoiY2VudHJhbHVzZXVhcCJ9?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjliOTZiMzYtMWY1ZS00MDIxLTg5NTktNTE1MjdlMjZlNmQzL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVTFSRlUxUlNSekU0TXprdFEwVk9WRkpCVEZWVFJWVkJVQ0lzSW1wdllreHZZMkYwYVc5dUlqb2lZMlZ1ZEhKaGJIVnpaWFZoY0NKOT9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
       "RequestMethod": "GET",
-      "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "FxVersion/4.700.22.11601",
+          "FxVersion/4.700.22.55902",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22000",
-          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.57"
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.68"
         ]
       },
+      "RequestBody": "",
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
@@ -1008,7 +1008,7 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSRzYzMDMtQ0VOVFJBTFVTRVVBUCIsImpvYkxvY2F0aW9uIjoiY2VudHJhbHVzZXVhcCJ9?api-version=2016-09-01"
+          "https://management.azure.com/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSRzE4MzktQ0VOVFJBTFVTRVVBUCIsImpvYkxvY2F0aW9uIjoiY2VudHJhbHVzZXVhcCJ9?api-version=2016-09-01"
         ],
         "Retry-After": [
           "15"
@@ -1017,13 +1017,13 @@
           "11997"
         ],
         "x-ms-request-id": [
-          "bcd5ebe6-ba52-44aa-b6f2-87ca7d0bc9e3"
+          "4a173efc-33da-4ae7-8340-b73014a0d77d"
         ],
         "x-ms-correlation-request-id": [
-          "bcd5ebe6-ba52-44aa-b6f2-87ca7d0bc9e3"
+          "4a173efc-33da-4ae7-8340-b73014a0d77d"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20220324T225331Z:bcd5ebe6-ba52-44aa-b6f2-87ca7d0bc9e3"
+          "CANADACENTRAL:20230131T003830Z:4a173efc-33da-4ae7-8340-b73014a0d77d"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1032,7 +1032,7 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 24 Mar 2022 22:53:31 GMT"
+          "Tue, 31 Jan 2023 00:38:29 GMT"
         ],
         "Expires": [
           "-1"
@@ -1045,18 +1045,18 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSRzYzMDMtQ0VOVFJBTFVTRVVBUCIsImpvYkxvY2F0aW9uIjoiY2VudHJhbHVzZXVhcCJ9?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjliOTZiMzYtMWY1ZS00MDIxLTg5NTktNTE1MjdlMjZlNmQzL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVTFSRlUxUlNSell6TURNdFEwVk9WRkpCVEZWVFJWVkJVQ0lzSW1wdllreHZZMkYwYVc5dUlqb2lZMlZ1ZEhKaGJIVnpaWFZoY0NKOT9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
+      "RequestUri": "/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSRzE4MzktQ0VOVFJBTFVTRVVBUCIsImpvYkxvY2F0aW9uIjoiY2VudHJhbHVzZXVhcCJ9?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjliOTZiMzYtMWY1ZS00MDIxLTg5NTktNTE1MjdlMjZlNmQzL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVTFSRlUxUlNSekU0TXprdFEwVk9WRkpCVEZWVFJWVkJVQ0lzSW1wdllreHZZMkYwYVc5dUlqb2lZMlZ1ZEhKaGJIVnpaWFZoY0NKOT9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
       "RequestMethod": "GET",
-      "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "FxVersion/4.700.22.11601",
+          "FxVersion/4.700.22.55902",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22000",
-          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.57"
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.68"
         ]
       },
+      "RequestBody": "",
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
@@ -1065,7 +1065,7 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSRzYzMDMtQ0VOVFJBTFVTRVVBUCIsImpvYkxvY2F0aW9uIjoiY2VudHJhbHVzZXVhcCJ9?api-version=2016-09-01"
+          "https://management.azure.com/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSRzE4MzktQ0VOVFJBTFVTRVVBUCIsImpvYkxvY2F0aW9uIjoiY2VudHJhbHVzZXVhcCJ9?api-version=2016-09-01"
         ],
         "Retry-After": [
           "15"
@@ -1074,13 +1074,13 @@
           "11996"
         ],
         "x-ms-request-id": [
-          "b78ada9b-aa17-4e6d-a83c-f287f3f26572"
+          "3fa01408-06f4-49da-82df-1306e991f4e8"
         ],
         "x-ms-correlation-request-id": [
-          "b78ada9b-aa17-4e6d-a83c-f287f3f26572"
+          "3fa01408-06f4-49da-82df-1306e991f4e8"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20220324T225346Z:b78ada9b-aa17-4e6d-a83c-f287f3f26572"
+          "CANADACENTRAL:20230131T003845Z:3fa01408-06f4-49da-82df-1306e991f4e8"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1089,7 +1089,7 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 24 Mar 2022 22:53:46 GMT"
+          "Tue, 31 Jan 2023 00:38:44 GMT"
         ],
         "Expires": [
           "-1"
@@ -1102,18 +1102,18 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSRzYzMDMtQ0VOVFJBTFVTRVVBUCIsImpvYkxvY2F0aW9uIjoiY2VudHJhbHVzZXVhcCJ9?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjliOTZiMzYtMWY1ZS00MDIxLTg5NTktNTE1MjdlMjZlNmQzL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVTFSRlUxUlNSell6TURNdFEwVk9WRkpCVEZWVFJWVkJVQ0lzSW1wdllreHZZMkYwYVc5dUlqb2lZMlZ1ZEhKaGJIVnpaWFZoY0NKOT9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
+      "RequestUri": "/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSRzE4MzktQ0VOVFJBTFVTRVVBUCIsImpvYkxvY2F0aW9uIjoiY2VudHJhbHVzZXVhcCJ9?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjliOTZiMzYtMWY1ZS00MDIxLTg5NTktNTE1MjdlMjZlNmQzL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVTFSRlUxUlNSekU0TXprdFEwVk9WRkpCVEZWVFJWVkJVQ0lzSW1wdllreHZZMkYwYVc5dUlqb2lZMlZ1ZEhKaGJIVnpaWFZoY0NKOT9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
       "RequestMethod": "GET",
-      "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "FxVersion/4.700.22.11601",
+          "FxVersion/4.700.22.55902",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22000",
-          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.57"
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.68"
         ]
       },
+      "RequestBody": "",
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
@@ -1125,13 +1125,13 @@
           "11995"
         ],
         "x-ms-request-id": [
-          "60ba9fbf-591e-481d-8a18-9ab3cb02b3a7"
+          "d4e719b0-dc08-4450-bae8-fb9311dba116"
         ],
         "x-ms-correlation-request-id": [
-          "60ba9fbf-591e-481d-8a18-9ab3cb02b3a7"
+          "d4e719b0-dc08-4450-bae8-fb9311dba116"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20220324T225401Z:60ba9fbf-591e-481d-8a18-9ab3cb02b3a7"
+          "CANADACENTRAL:20230131T003900Z:d4e719b0-dc08-4450-bae8-fb9311dba116"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1140,7 +1140,7 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 24 Mar 2022 22:54:01 GMT"
+          "Tue, 31 Jan 2023 00:38:59 GMT"
         ],
         "Expires": [
           "-1"
@@ -1153,18 +1153,18 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSRzYzMDMtQ0VOVFJBTFVTRVVBUCIsImpvYkxvY2F0aW9uIjoiY2VudHJhbHVzZXVhcCJ9?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjliOTZiMzYtMWY1ZS00MDIxLTg5NTktNTE1MjdlMjZlNmQzL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVTFSRlUxUlNSell6TURNdFEwVk9WRkpCVEZWVFJWVkJVQ0lzSW1wdllreHZZMkYwYVc5dUlqb2lZMlZ1ZEhKaGJIVnpaWFZoY0NKOT9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
+      "RequestUri": "/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSRzE4MzktQ0VOVFJBTFVTRVVBUCIsImpvYkxvY2F0aW9uIjoiY2VudHJhbHVzZXVhcCJ9?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjliOTZiMzYtMWY1ZS00MDIxLTg5NTktNTE1MjdlMjZlNmQzL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVTFSRlUxUlNSekU0TXprdFEwVk9WRkpCVEZWVFJWVkJVQ0lzSW1wdllreHZZMkYwYVc5dUlqb2lZMlZ1ZEhKaGJIVnpaWFZoY0NKOT9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
       "RequestMethod": "GET",
-      "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "FxVersion/4.700.22.11601",
+          "FxVersion/4.700.22.55902",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22000",
-          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.57"
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.68"
         ]
       },
+      "RequestBody": "",
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
@@ -1176,13 +1176,13 @@
           "11994"
         ],
         "x-ms-request-id": [
-          "358015ef-2fc1-4f04-b807-5bda9c05e5d9"
+          "1ba6fcf1-0a22-4f36-8e6b-9479a13bc0e1"
         ],
         "x-ms-correlation-request-id": [
-          "358015ef-2fc1-4f04-b807-5bda9c05e5d9"
+          "1ba6fcf1-0a22-4f36-8e6b-9479a13bc0e1"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20220324T225402Z:358015ef-2fc1-4f04-b807-5bda9c05e5d9"
+          "CANADACENTRAL:20230131T003900Z:1ba6fcf1-0a22-4f36-8e6b-9479a13bc0e1"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1191,7 +1191,7 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 24 Mar 2022 22:54:01 GMT"
+          "Tue, 31 Jan 2023 00:38:59 GMT"
         ],
         "Expires": [
           "-1"
@@ -1206,7 +1206,7 @@
   ],
   "Names": {
     "Test-CommitmentPlan": [
-      "pstestrg6303"
+      "pstestrg1839"
     ]
   },
   "Variables": {

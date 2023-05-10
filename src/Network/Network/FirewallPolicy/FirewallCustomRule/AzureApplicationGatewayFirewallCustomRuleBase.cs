@@ -54,9 +54,20 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public string Action { get; set; }
 
+        [Parameter(
+            HelpMessage = "Describes state of rule.")]
+        [ValidateSet("Disabled", "Enabled", IgnoreCase = true)]
+        [ValidateNotNullOrEmpty]
+        public string State { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
+
+            if (!this.MyInvocation.BoundParameters.ContainsKey("State"))
+            {
+                this.State = "Enabled";
+            }
         }
 
         protected PSApplicationGatewayFirewallCustomRule NewObject()
@@ -67,7 +78,8 @@ namespace Microsoft.Azure.Commands.Network
                 Priority = this.Priority,
                 RuleType = this.RuleType,
                 MatchConditions = this.MatchCondition?.ToList(),
-                Action = this.Action
+                Action = this.Action,
+                State = this.State
             };
         }
     }

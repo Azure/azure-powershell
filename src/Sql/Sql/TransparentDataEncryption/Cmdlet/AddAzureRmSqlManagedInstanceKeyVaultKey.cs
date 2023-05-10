@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Cmdlet
         /// <summary>
         /// Constructs the model to send to the update API
         /// </summary>
-        /// <param name="model"> Model to send to the update API</param>
+        /// <param name="model">Model to send to the update API</param>
         /// <returns>The model to send to the update</returns>
         protected override IEnumerable<AzureRmSqlManagedInstanceKeyVaultKeyModel> ApplyUserInputToModel(IEnumerable<AzureRmSqlManagedInstanceKeyVaultKeyModel> model)
         {

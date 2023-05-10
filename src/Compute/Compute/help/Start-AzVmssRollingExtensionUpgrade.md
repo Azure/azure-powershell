@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
-online version: https://docs.microsoft.com/powershell/module/az.compute/start-azvmssrollingextensionupgrade
+online version: https://learn.microsoft.com/powershell/module/az.compute/start-azvmssrollingextensionupgrade
 schema: 2.0.0
 ---
 
@@ -12,7 +12,7 @@ This cmdlet starts a rolling upgrade for all extensions on the given Virtual Mac
 
 ## SYNTAX
 
-### DefaultParameter
+### DefaultParameter (Default)
 ```
 Start-AzVmssRollingExtensionUpgrade -ResourceGroupName <String> -VMScaleSetName <String> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]

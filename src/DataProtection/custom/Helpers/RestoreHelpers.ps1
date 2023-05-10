@@ -49,6 +49,7 @@ function ValidateRestoreOptions {
 
 	process
 	{
+		Write-Debug "Validating Restore Options"
 		Write-Debug -Message $DatasourceType
 		Write-Debug -Message $RestoreMode
 		Write-Debug -Message $RestoreTargetType

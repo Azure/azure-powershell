@@ -1,0 +1,78 @@
+{
+    "resourceType": "networkInterfaces",
+    "apiVersion": "2021-08-01",
+    "learnMore": {
+        "url": "https://learn.microsoft.com/powershell/module/az.network/#networking"
+    },
+    "commands": [
+        {
+            "name": "Get-AzNetworkInterface",
+            "description": "Gets a network interface.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkInterfaces/{networkInterfaceName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://learn.microsoft.com/powershell/module/az.network/get-aznetworkinterface"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[-Name <String>]",
+                            "[-ResourceGroupName <String>]"
+                        ]
+                    },
+                    {
+                        "parameters": [
+                            "-Name <String>",
+                            "-ResourceGroupName <String>",
+                            "-ExpandResource <String>"
+                        ]
+                    },
+                    {
+                        "parameters": [
+                            "[-Name <String>]",
+                            "-ResourceGroupName <String>",
+                            "[-VirtualMachineScaleSetName <String>]",
+                            "[-VirtualMachineIndex <String>]"
+                        ]
+                    },
+                    {
+                        "parameters": [
+                            "-Name <String>",
+                            "-ResourceGroupName <String>",
+                            "-VirtualMachineScaleSetName <String>",
+                            "-VirtualMachineIndex <String>",
+                            "-ExpandResource <String>"
+                        ]
+                    },
+                    {
+                        "parameters": [
+                            "-ResourceId <String>",
+                            "-ExpandResource <String>"
+                        ]
+                    },
+                    {
+                        "parameters": [
+                            "-ResourceId <String>"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Gets a network interface.",
+                    "parameters": [
+                        {
+                            "name": "-ResourceGroupName",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "-Name",
+                            "value": "[path.networkInterfaceName]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

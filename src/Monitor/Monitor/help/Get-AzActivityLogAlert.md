@@ -1,65 +1,75 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.Monitor.dll-Help.xml
+external help file: Az.ActivityLogAlert.psm1-help.xml
 Module Name: Az.Monitor
-ms.assetid: 85492E00-3776-4F20-A444-9C28CC6154B7
-online version: https://docs.microsoft.com/powershell/module/az.monitor/get-azactivitylogalert
+online version: https://learn.microsoft.com/powershell/module/az.monitor/get-azactivitylogalert
 schema: 2.0.0
 ---
 
 # Get-AzActivityLogAlert
 
 ## SYNOPSIS
-Gets one or more activity log alert resources.
+Get an Activity Log Alert rule.
 
 ## SYNTAX
 
-### GetByNameAndResourceGroup
+### List (Default)
 ```
-Get-AzActivityLogAlert [-ResourceGroupName] <String> [-Name] <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzActivityLogAlert [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### GetByResourceGroup
+### Get
 ```
-Get-AzActivityLogAlert [[-ResourceGroupName] <String>] [-DefaultProfile <IAzureContextContainer>]
+Get-AzActivityLogAlert -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### List1
+```
+Get-AzActivityLogAlert -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### GetViaIdentity
+```
+Get-AzActivityLogAlert -InputObject <IActivityLogAlertIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzActivityLogAlert** cmdlet gets one or more activity log alert resources.
+Get an Activity Log Alert rule.
 
 ## EXAMPLES
 
-### Example 1: Get a activity log alerts by subscription ID
+### Example 1: List activity log alerts under current subscription
 ```powershell
 Get-AzActivityLogAlert
 ```
 
-This command lists all the activity log alerts for the current subscription.
+List activity log alerts under current subscription
 
-### Example 2: Get activity log alerts for the given resource group
+### Example 2: List activity log alerts under resource group
 ```powershell
-Get-AzActivityLogAlert -ResourceGroupName "Default-activityLogAlerts"
+Get-AzActivityLogAlert -ResourceGroupName $rg-name
 ```
 
-This command lists activity log alerts for the given resource group.
+List activity log alerts under resource group
 
-### Example 3: Get an activity log alert.
+### Example 3: Get activity log alert by name
 ```powershell
-Get-AzActivityLogAlert -ResourceGroupName "Default-activityLogAlerts" -Name "alert1"
+Get-AzActivityLogAlert -ResourceGroupName $rg-name -Name $alert-name
 ```
 
-This command lists one (a list with a single element) activity log alert.
+Get activity log alert by name
 
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRMContext, AzureCredential
 
 Required: False
 Position: Named
@@ -68,46 +78,65 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
-The name of the activity log alert.
+### -InputObject
+Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: System.String
-Parameter Sets: GetByNameAndResourceGroup
+Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.IActivityLogAlertIdentity
+Parameter Sets: GetViaIdentity
 Aliases:
 
 Required: True
-Position: 1
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Name
+The name of the Activity Log Alert rule.
+
+```yaml
+Type: System.String
+Parameter Sets: Get
+Aliases: ActivityLogAlertName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The name of the resource group where the alert resource exists.
-If Name is not null or empty, this parameter must contain and non empty string.
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetByNameAndResourceGroup
+Parameter Sets: Get, List1
 Aliases:
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -SubscriptionId
+The ID of the target subscription.
+
 ```yaml
-Type: System.String
-Parameter Sets: GetByResourceGroup
+Type: System.String[]
+Parameter Sets: List, Get, List1
 Aliases:
 
 Required: False
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName)
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -116,20 +145,25 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
+### Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.IActivityLogAlertIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Insights.OutputClasses.PSActivityLogAlertResource
+### Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.Api20201001.IActivityLogAlertResource
 
 ## NOTES
 
+ALIASES
+
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+
+`INPUTOBJECT <IActivityLogAlertIdentity>`: Identity Parameter
+  - `[ActivityLogAlertName <String>]`: The name of the Activity Log Alert rule.
+  - `[Id <String>]`: Resource identity path
+  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
+  - `[SubscriptionId <String>]`: The ID of the target subscription.
+
 ## RELATED LINKS
-
-[Set-AzActivityLogAlert](./Set-AzActivityLogAlert.md)
-
-[Remove-AzActivityLogAlert](./Remove-AzActivityLogAlert.md)
-
-[New-AzActionGroup](./New-AzActionGroup.md)
-
-[New-AzActivityLogAlertCondition](./New-AzActivityLogAlertCondition.md)

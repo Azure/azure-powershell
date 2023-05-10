@@ -49,6 +49,7 @@ namespace Microsoft.Azure.Commands.Network.Models
         public List<PSVpnClientRevokedCertificate> VpnClientRevokedCertificates { get; set; }
         public List<PSIpsecPolicy> VpnClientIpsecPolicies { get; set; }
         public List<PSRadiusServer> RadiusServers { get; set; }
+        public List<PSClientConnectionConfiguration> ClientConnectionConfigurations { get; set; }
 
         [Ps1Xml(Label = "VpnAuthenticationTypes", Target = ViewControl.Table)]
         public List<string> VpnAuthenticationTypes { get; set; }

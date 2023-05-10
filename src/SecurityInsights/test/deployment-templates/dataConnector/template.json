@@ -1,0 +1,55 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "dataconnectorId": {
+            "defaultValue": "dataConnectorId",
+            "type": "string"
+        },
+        "updateDataConnectorId": {
+            "defaultValue": "updateDataConnectorId",
+            "type": "string"
+        },
+        "workspaceName": {
+            "defaultValue": "workspaceName",
+            "type": "string"
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "name": "[concat(parameters('workspaceName'),'/Microsoft.SecurityInsights/', parameters('dataconnectorId'))]",
+            "type": "Microsoft.OperationalInsights/workspaces/providers/dataConnectors",
+            "apiVersion": "2021-03-01-preview",
+            "kind": "AzureSecurityCenter",
+            "properties": {
+                "dataTypes": {
+                    "alerts": {
+                        "state": "Enabled"
+                    }
+                },
+                "subscriptionId": "[subscription().subscriptionId]"
+            }
+        },
+        {
+            "name": "[concat(parameters('workspaceName'),'/Microsoft.SecurityInsights/', parameters('updateDataConnectorId'))]",
+            "type": "Microsoft.OperationalInsights/workspaces/providers/dataConnectors",
+            "apiVersion": "2021-03-01-preview",
+            "kind": "Office365",
+            "properties": {
+                "dataTypes": {
+                    "exchange": {
+                        "state": "Enabled"
+                    },
+                    "sharepoint": {
+                        "state": "Disabled"
+                    },
+                    "teams": {
+                        "state": "Disabled"
+                    }
+                },
+                "tenantId": "[subscription().tenantId]"
+            }
+        }
+    ]
+}

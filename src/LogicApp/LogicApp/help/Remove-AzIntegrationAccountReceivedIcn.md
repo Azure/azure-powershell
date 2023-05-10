@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.LogicApp.dll-Help.xml
 Module Name: Az.LogicApp
-online version: https://docs.microsoft.com/powershell/module/az.logicapp/remove-azintegrationaccountreceivedicn
+online version: https://learn.microsoft.com/powershell/module/az.logicapp/remove-azintegrationaccountreceivedicn
 schema: 2.0.0
 ---
 
@@ -27,6 +27,7 @@ Please do provide the "-AgreementType" parameter to specify whether X12 or Edifa
 ## EXAMPLES
 
 ### Example 1
+<!-- Skip: Output cannot be splitted from code -->
 ```powershell
 Get-AzIntegrationAccountReceivedIcn -AgreementType "X12" -ResourceGroupName "groupName" -Name "accountName" -AgreementName "X12AgreementName" -ControlNumberValue "000000641"
 
@@ -53,6 +54,7 @@ Removes the received X12 interchange control number.
 Confirms the received X12 interchange control number was removed by attempting to get it again.
 
 ### Example 2
+<!-- Skip: Output cannot be splitted from code -->
 ```powershell
 Get-AzIntegrationAccountReceivedIcn -AgreementType "Edifact" -ResourceGroupName "groupName" -Name "accountName" -AgreementName "EdifactAgreementName" -ControlNumberValue "000000641"
 

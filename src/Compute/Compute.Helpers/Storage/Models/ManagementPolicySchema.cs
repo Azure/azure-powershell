@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Helpers.Storage.Models
 
     /// <summary>
     /// The Storage Account ManagementPolicies Rules. See more details in:
-    /// https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.
+    /// https://learn.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.
     /// </summary>
     public partial class ManagementPolicySchema
     {
@@ -35,7 +35,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Helpers.Storage.Models
         /// </summary>
         /// <param name="rules">The Storage Account ManagementPolicies Rules.
         /// See more details in:
-        /// https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.</param>
+        /// https://learn.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.</param>
         public ManagementPolicySchema(IList<ManagementPolicyRule> rules)
         {
             Rules = rules;
@@ -50,7 +50,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Helpers.Storage.Models
         /// <summary>
         /// Gets or sets the Storage Account ManagementPolicies Rules. See more
         /// details in:
-        /// https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.
+        /// https://learn.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.
         /// </summary>
         [JsonProperty(PropertyName = "rules")]
         public IList<ManagementPolicyRule> Rules { get; set; }

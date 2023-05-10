@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Attestation.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
         public void TestGetAttestationPolicySigners()
         {
             TestRunner.RunTestScript("Test-GetAttestationPolicySigners");
@@ -38,14 +38,14 @@ namespace Microsoft.Azure.Commands.Attestation.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
         public void TestAddAttestationPolicySigner()
         {
             TestRunner.RunTestScript("Test-AddAttestationPolicySigner");
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
         public void TestRemoveAttestationPolicySigner()
         {
             TestRunner.RunTestScript("Test-RemoveAttestationPolicySigner");

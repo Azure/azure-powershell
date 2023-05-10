@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights.dll-Help.xml
 Module Name: Az.OperationalInsights
 ms.assetid: 3992E6B5-F794-4C7A-BB59-C8D60E2CD7BC
-online version: https://docs.microsoft.com/powershell/module/az.operationalinsights/set-azoperationalinsightsdatasource
+online version: https://learn.microsoft.com/powershell/module/az.operationalinsights/set-azoperationalinsightsdatasource
 schema: 2.0.0
 ---
 
@@ -22,11 +22,13 @@ Set-AzOperationalInsightsDataSource [-DataSource] <PSDataSource> [-DefaultProfil
 The **Set-AzOperationalInsightsDataSource** cmdlet updates a data source.
 
 ## EXAMPLES
+
 ### Example 1
 ```powershell
 $datasource = Get-AzOperationalInsightsDataSource -Kind CustomLog -ResourceGroupName testrg -WorkspaceName LogAnalyticsWorkspace
 Set-AzOperationalInsightsDataSource -DataSource $datasource
 ```
+
 ```output
 Name              : DataSource_CustomLog_Customlog_CL
 ResourceGroupName : testrg
@@ -41,7 +43,9 @@ Properties        : {"customLogName":"Customlog_CL","description":"","extraction
                     ths":null,"windowsFileTypeLogPaths":["D:\\logs.txt"]}},"recordDelimiter":{"regexDelimiter":{"matchI
                     ndex":0,"numberdGroup":null,"pattern":"\\n"}}}]}
 ```
+
 Update a data source.
+
 ## PARAMETERS
 
 ### -DataSource

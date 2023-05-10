@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Monitor.dll-Help.xml
 Module Name: Az.Monitor
-online version: https://docs.microsoft.com/powershell/module/az.monitor/get-azdatacollectionruleassociation
+online version: https://learn.microsoft.com/powershell/module/az.monitor/get-azdatacollectionruleassociation
 schema: 2.0.0
 ---
 
@@ -14,42 +14,32 @@ Gets data collection rule association(s).
 
 ### ByAssociatedResource (Default)
 ```
-Get-AzDataCollectionRuleAssociation 
-   -TargetResourceId <string> 
-   [-DefaultProfile <IAzureContextContainer>]
-   [<CommonParameters>]
+Get-AzDataCollectionRuleAssociation -TargetResourceId <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ByName
 ```
-Get-AzDataCollectionRuleAssociation 
-   -TargetResourceId <string> 
-   -AssociationName <string> 
-   [-DefaultProfile <IAzureContextContainer>] 
-   [<CommonParameters>]
+Get-AzDataCollectionRuleAssociation -TargetResourceId <String> -AssociationName <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByRule
 ```
-Get-AzDataCollectionRuleAssociation 
-   -ResourceGroupName <string> 
-   -RuleName <string> 
-   [-DefaultProfile <IAzureContextContainer>]
-   [<CommonParameters>]
+Get-AzDataCollectionRuleAssociation -ResourceGroupName <String> -RuleName <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByInputObject
 ```
-Get-AzDataCollectionRuleAssociation 
-   -InputObject <PSDataCollectionRuleResource> 
-   [-DefaultProfile <IAzureContextContainer>]
-   [<CommonParameters>]
+Get-AzDataCollectionRuleAssociation -InputObject <PSDataCollectionRuleResource>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 The **Get-AzDataCollectionRuleAssociation** cmdlet gets one or more data collection rules associations (DCRA).
 
-To apply a DCR to a virtual machine, you create an association for the virtual machine. A virtual machine may have an association to multiple DCRs, and a DCR may have multiple virtual machines associated to it. This allows you to define a set of DCRs, each matching a particular requirement, and apply them to only the virtual machines where they apply. Here is the ["Configure data collection for the Azure Monitor agent"](https://docs.microsoft.com/azure/azure-monitor/platform/data-collection-rule-azure-monitor-agent) using DCRA article.
+To apply a DCR to a virtual machine, you create an association for the virtual machine. A virtual machine may have an association to multiple DCRs, and a DCR may have multiple virtual machines associated to it. This allows you to define a set of DCRs, each matching a particular requirement, and apply them to only the virtual machines where they apply. Here is the ["Configure data collection for the Azure Monitor agent"](https://learn.microsoft.com/azure/azure-monitor/platform/data-collection-rule-azure-monitor-agent) using DCRA article.
 
 ## EXAMPLES
 
@@ -133,6 +123,21 @@ This command lists one (a list with a single element) data collection rule assoc
 
 ## PARAMETERS
 
+### -AssociationName
+The name of the association.
+
+```yaml
+Type: System.String
+Parameter Sets: ByName
+Aliases: Name
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure
 
@@ -148,30 +153,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -TargetResourceId
-The associated resource ID
+### -InputObject
+PSDataCollectionRuleResource Object
 
 ```yaml
-Type: System.String
-Parameter Sets: ByAssociatedResource (Default)
-Aliases: ResourceUri
+Type: Microsoft.Azure.Commands.Insights.OutputClasses.PSDataCollectionRuleResource
+Parameter Sets: ByInputObject
+Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-```yaml
-Type: System.String
-Parameter Sets: ByName
-Aliases: ResourceUri
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -205,33 +198,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-PSDataCollectionRuleResource Object
-
-```yaml
-Type: Microsoft.Azure.Commands.Insights.OutputClasses.PSDataCollectionRuleResource
-Parameter Sets: ByInputObject
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True
-Accept wildcard characters: False
-```
-
-### -AssociationName
-The name of the association.
+### -TargetResourceId
+The associated resource ID
 
 ```yaml
 Type: System.String
-Parameter Sets: ByName
-Aliases: Name
+Parameter Sets: ByAssociatedResource, ByName
+Aliases: ResourceUri
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

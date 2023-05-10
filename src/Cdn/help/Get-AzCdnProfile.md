@@ -1,14 +1,14 @@
 ---
 external help file:
 Module Name: Az.Cdn
-online version: https://docs.microsoft.com/powershell/module/az.cdn/get-azcdnprofile
+online version: https://learn.microsoft.com/powershell/module/az.cdn/get-azcdnprofile
 schema: 2.0.0
 ---
 
 # Get-AzCdnProfile
 
 ## SYNOPSIS
-
+Gets an CDN profile with the specified profile name under the specified subscription and resource group.
 
 ## SYNTAX
 
@@ -35,31 +35,52 @@ Get-AzCdnProfile -ResourceGroupName <String> [-SubscriptionId <String[]>] [-Defa
 ```
 
 ## DESCRIPTION
+Gets an CDN profile with the specified profile name under the specified subscription and resource group.
 
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List AzureCDN profiles under the subscription
 ```powershell
-{{ Add code here }}
+Get-AzCdnProfile
 ```
 
 ```output
-{{ Add output here }}
+Location Name             Kind ResourceGroupName
+-------- ----             ---- -----------------
+Global   p-oln142         cdn  testps-rg-godj4q
+Global   cdn001           cdn  testps-rg-da16jm
+Global   cdn002           cdn  testps-rg-da16jm
 ```
 
-{{ Add description here }}
+List AzureCDN profiles under the subscription
 
-### Example 2: {{ Add title here }}
+### Example 2: List AzureCDN profiles under the resource group
 ```powershell
-{{ Add code here }}
+Get-AzCdnProfile -ResourceGroupName testps-rg-da16jm
 ```
 
 ```output
-{{ Add output here }}
+Location Name   Kind ResourceGroupName
+-------- ----   ---- -----------------
+Global   cdn001 cdn  testps-rg-da16jm
+Global   cdn002 cdn  testps-rg-da16jm
 ```
 
-{{ Add description here }}
+List AzureCDN profiles under the resource group
+
+### Example 3: Get an AzureCDN profile under the resource group
+```powershell
+Get-AzCdnProfile -ResourceGroupName testps-rg-da16jm -Name cdn001
+```
+
+```output
+Location Name   Kind ResourceGroupName
+-------- ----   ---- -----------------
+Global   cdn001 cdn  testps-rg-da16jm
+```
+
+Get an AzureCDN profile under the resource group
 
 ## PARAMETERS
 
@@ -158,7 +179,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <ICdnIdentity>: 
+INPUTOBJECT `<ICdnIdentity>`: 
   - `[CustomDomainName <String>]`: Name of the domain under the profile which is unique globally.
   - `[EndpointName <String>]`: Name of the endpoint under the profile which is unique globally.
   - `[Id <String>]`: Resource identity path

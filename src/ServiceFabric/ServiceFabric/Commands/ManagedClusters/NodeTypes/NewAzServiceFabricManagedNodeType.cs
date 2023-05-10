@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         [Alias("DataDiskSize")]
         public int DiskSize { get; set; } = 100;
 
-        [Parameter(Mandatory = false, HelpMessage = "Managed data disk type. IOPS and throughput are given by the disk size, to see more information go to https://docs.microsoft.com/en-us/azure/virtual-machines/disks-types. Default StandardSSD_LRS")]
+        [Parameter(Mandatory = false, HelpMessage = "Managed data disk type. IOPS and throughput are given by the disk size, to see more information go to https://learn.microsoft.com/en-us/azure/virtual-machines/disks-types. Default StandardSSD_LRS")]
         [Alias("DataDiskType")]
         public PSDiskType DiskType { get; set; } = PSDiskType.StandardSSD_LRS;
 
@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         [Parameter(Mandatory = false, HelpMessage = "Placement tags applied to nodes in the node type as key/value pairs, which can be used to indicate where certain services (workload) should run. Updating this will override the current values.")]
         public Hashtable PlacementProperty { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "The list of user assigned identities associated with the virtual machine scale set under the node type. Each entry will be an ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'. Follow steps to create the identity and add the role assignment with Service Fabric Resource Provider beforehand here: https://docs.microsoft.com/en-us/azure/service-fabric/how-to-managed-identity-managed-cluster-virtual-machine-scale-sets")]
+        [Parameter(Mandatory = false, HelpMessage = "The list of user assigned identities associated with the virtual machine scale set under the node type. Each entry will be an ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'. Follow steps to create the identity and add the role assignment with Service Fabric Resource Provider beforehand here: https://learn.microsoft.com/en-us/azure/service-fabric/how-to-managed-identity-managed-cluster-virtual-machine-scale-sets")]
         public string[] VmUserAssignedIdentity { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Indicates if the node type can only host Stateless workloads.")]

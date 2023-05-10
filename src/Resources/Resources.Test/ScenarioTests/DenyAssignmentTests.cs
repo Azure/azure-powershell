@@ -20,7 +20,7 @@ using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 {
-    public class DenyAssignmentTests : ResourceTestRunner
+    public class DenyAssignmentTests : ResourcesTestRunner
     {
         public XunitTracingInterceptor _logger;
 

@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.DataBox
-online version: https://docs.microsoft.com/powershell/module/az.databox/get-azdataboxjobcredential
+online version: https://learn.microsoft.com/powershell/module/az.databox/get-azdataboxjobcredential
 schema: 2.0.0
 ---
 
@@ -23,6 +23,7 @@ This method gets the unencrypted secrets related to the job.
 ## EXAMPLES
 
 ### Example 1: Get databoxHeavy job credential
+<!-- Skip: Output cannot be splitted from code -->
 ```powershell
 Get-AzDataBoxJobCredential -Name "DtbxPowershell" -ResourceGroupName "resourceGroupName"
 

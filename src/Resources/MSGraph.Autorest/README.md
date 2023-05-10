@@ -51,8 +51,8 @@ require:
   - $(this-folder)/../../readme.azure.noprofile.md
 
 input-file:
+  - ../OpenApiSpecs/v1.0/Identity.DirectoryManagement.yml
   - ../OpenApiSpecs/v1.0/Applications.yml
-  - ../OpenApiSpecs/beta/Applications.yml
   - ../OpenApiSpecs/v1.0/Groups.yml
   - ../OpenApiSpecs/beta/Groups.yml
   - ../OpenApiSpecs/v1.0/Users.yml
@@ -137,6 +137,10 @@ directive:
     remove: true
 
   - where:
+      subject: ^serviceprincipalfederatedidentitycredentials$
+    remove: true
+
+  - where:
       subject: ^application$|^group$|^serviceprincipal$|^user$|^applicationfederatedidentitycredentials$
       variant: ^Update$|^Create$
     remove: true
@@ -151,7 +155,7 @@ directive:
       subject: ^applicationfederatedidentitycredentials$
       parameter-name: FederatedIdentityCredentialId
     set:
-      parameter-name: Id
+      parameter-name: FederatedCredentialId 
 
   - where:
       subject: ^applicationfederatedidentitycredentials$
@@ -172,7 +176,7 @@ directive:
   - where:
       subject: ^applicationfederatedidentitycredentials$
     set: 
-      subject: AppFederatedIdentityCredential
+      subject: AppFederatedCredential
 
   - where:
       subject: ^application$|^serviceprincipal$|^group$
@@ -188,7 +192,10 @@ directive:
   - where:
       subject: application$|applicationpassword$|applicationkey$|serviceprincipal$|serviceprincipalpassword$|serviceprincipalkey$|groupmember$|user$|GroupGraphRefMember$|grouprefmember$
     hide: true
-
+  - where:
+      subject: organization
+      verb: New
+    hide: true
   - where:
       subject: ^group$
       verb: ^Update$
@@ -204,7 +211,12 @@ directive:
   - where:
       subject: UserSigned$
     hide: true
-
+  - where:
+      parameter-name: AccountEnabled
+      verb: Update
+      subject: User
+    set:
+      parameter-description: "true for enabling the account; otherwise, false. Always true when combined with `-Password`. `-AccountEnabled $false` is ignored when changing the account's password."
   - where:
       verb: Get
       variant: ^List(.*)

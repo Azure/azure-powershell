@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Cdn
-online version: https://docs.microsoft.com/powershell/module/az.cdn/get-azfrontdoorcdnrulesetresourceusage
+online version: https://learn.microsoft.com/powershell/module/az.cdn/get-azfrontdoorcdnrulesetresourceusage
 schema: 2.0.0
 ---
 
@@ -22,27 +22,18 @@ Checks the quota and actual usage of the given AzureFrontDoor rule set under the
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get resouce usages of an AzureFrontDoor rule set
 ```powershell
-{{ Add code here }}
+Get-AzFrontDoorCdnRuleSetResourceUsage -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -RuleSetName ruleset001
 ```
 
 ```output
-{{ Add output here }}
+CurrentValue Limit Unit
+------------ ----- ----
+0            100   count
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Get resouce usages of an AzureFrontDoor rule set
 
 ## PARAMETERS
 

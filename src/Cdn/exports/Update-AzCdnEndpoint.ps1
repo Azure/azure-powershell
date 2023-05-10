@@ -28,9 +28,11 @@ To update origins, use the Update Origin operation.
 To update origin groups, use the Update Origin group operation.
 To update custom domains, use the Update Custom Domain operation.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+$tags = @{
+    Tag1 = 11
+    Tag2 = 22
+}
+Update-AzCdnEndpoint -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -Name endptest001 -Tag $tags -DefaultOriginGroupId $originGroup.Id
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -77,7 +79,7 @@ URLSIGNINGKEY <IUrlSigningKey[]>: List of keys used to validate the signed URL h
   KeySourceParameterSubscriptionId <String>: Subscription Id of the user's Key Vault containing the secret
   KeySourceParameterVaultName <String>: The name of the user's Key Vault containing the secret
 .Link
-https://docs.microsoft.com/powershell/module/az.cdn/update-azcdnendpoint
+https://learn.microsoft.com/powershell/module/az.cdn/update-azcdnendpoint
 #>
 function Update-AzCdnEndpoint {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IEndpoint])]
@@ -309,7 +311,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Runspace.Version.ToString()
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
         }         
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {

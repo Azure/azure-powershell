@@ -28,27 +28,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "None".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("None", "None", global::System.Management.Automation.CompletionResultType.ParameterValue, "None");
+                yield return new global::System.Management.Automation.CompletionResult("'None'", "None", global::System.Management.Automation.CompletionResultType.ParameterValue, "None");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "EqualTo".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("EqualTo", "EqualTo", global::System.Management.Automation.CompletionResultType.ParameterValue, "EqualTo");
+                yield return new global::System.Management.Automation.CompletionResult("'EqualTo'", "EqualTo", global::System.Management.Automation.CompletionResultType.ParameterValue, "EqualTo");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "GreaterThan".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("GreaterThan", "GreaterThan", global::System.Management.Automation.CompletionResultType.ParameterValue, "GreaterThan");
+                yield return new global::System.Management.Automation.CompletionResult("'GreaterThan'", "GreaterThan", global::System.Management.Automation.CompletionResultType.ParameterValue, "GreaterThan");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "GreaterThanOrEqualTo".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("GreaterThanOrEqualTo", "GreaterThanOrEqualTo", global::System.Management.Automation.CompletionResultType.ParameterValue, "GreaterThanOrEqualTo");
+                yield return new global::System.Management.Automation.CompletionResult("'GreaterThanOrEqualTo'", "GreaterThanOrEqualTo", global::System.Management.Automation.CompletionResultType.ParameterValue, "GreaterThanOrEqualTo");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "LessThan".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("LessThan", "LessThan", global::System.Management.Automation.CompletionResultType.ParameterValue, "LessThan");
+                yield return new global::System.Management.Automation.CompletionResult("'LessThan'", "LessThan", global::System.Management.Automation.CompletionResultType.ParameterValue, "LessThan");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "LessThanOrEqualTo".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("LessThanOrEqualTo", "LessThanOrEqualTo", global::System.Management.Automation.CompletionResultType.ParameterValue, "LessThanOrEqualTo");
+                yield return new global::System.Management.Automation.CompletionResult("'LessThanOrEqualTo'", "LessThanOrEqualTo", global::System.Management.Automation.CompletionResultType.ParameterValue, "LessThanOrEqualTo");
             }
         }
     }

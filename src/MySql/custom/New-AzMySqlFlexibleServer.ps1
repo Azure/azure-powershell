@@ -114,7 +114,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.ServerVersion]
     ${Version},
 
-    [Parameter(HelpMessage = 'The subnet IP address prefix to use when creating a new vnet in CIDR format. Default value is 10.0.0.0/24.')]
+    [Parameter(HelpMessage = 'The subnet IP address prefix to use when creating a new vnet in CIDR format. Default value is 10.0.0.0/24.')]
     [System.String]
     ${SubnetPrefix},
 

@@ -20,13 +20,9 @@ Delete a vm group by id in a private cloud workload network.
 .Description
 Delete a vm group by id in a private cloud workload network.
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity
@@ -64,7 +60,7 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
   [VirtualMachineId <String>]: Virtual Machine identifier
 .Link
-https://docs.microsoft.com/powershell/module/az.vmware/remove-azvmwareworkloadnetworkvmgroup
+https://learn.microsoft.com/powershell/module/az.vmware/remove-azvmwareworkloadnetworkvmgroup
 #>
 function Remove-AzVMwareWorkloadNetworkVMGroup {
 [OutputType([System.Boolean])]
@@ -177,6 +173,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             Delete = 'Az.VMware.private\Remove-AzVMwareWorkloadNetworkVMGroup_Delete';
             DeleteViaIdentity = 'Az.VMware.private\Remove-AzVMwareWorkloadNetworkVMGroup_DeleteViaIdentity';
@@ -190,6 +187,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -198,15 +196,18 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }

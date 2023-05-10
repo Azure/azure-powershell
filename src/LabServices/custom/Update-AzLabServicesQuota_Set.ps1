@@ -21,7 +21,7 @@ API to update the lab quota.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ILab
 .Link
-https://docs.microsoft.com/powershell/module/az.labservices/update-azlabservicesquota
+https://learn.microsoft.com/powershell/module/az.labservices/update-azlabservicesquota
 #>
 function Update-AzLabServicesQuota_Set {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ILab])]

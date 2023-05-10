@@ -1,7 +1,7 @@
 ---
 Module Name: Az.CognitiveServices
 Module Guid: 66c566b4-950c-4a2b-9f3b-199d92f0df1a
-Download Help Link: https://docs.microsoft.com/powershell/module/az.cognitiveservices
+Download Help Link: https://learn.microsoft.com/powershell/module/az.cognitiveservices
 Help Version: 0.9.4.0
 Locale: en-US
 ---
@@ -26,6 +26,9 @@ Get Deployment of a Cognitive Services account
 ### [Get-AzCognitiveServicesAccountKey](Get-AzCognitiveServicesAccountKey.md)
 Gets the API keys for an account.
 
+### [Get-AzCognitiveServicesAccountModel](Get-AzCognitiveServicesAccountModel.md)
+Get Models available for a Cognitive Services account
+
 ### [Get-AzCognitiveServicesAccountNetworkRuleSet](Get-AzCognitiveServicesAccountNetworkRuleSet.md)
 Get the NetworkRule property of a Cognitive Services account
 
@@ -37,6 +40,12 @@ Gets the available Cognitive Services Account Types.
 
 ### [Get-AzCognitiveServicesAccountUsage](Get-AzCognitiveServicesAccountUsage.md)
 Get current usages for a Cognitive Services account.
+
+### [Get-AzCognitiveServicesCommitmentPlan](Get-AzCognitiveServicesCommitmentPlan.md)
+Get Cognitive Services Commitment Plan
+
+### [Get-AzCognitiveServicesCommitmentPlanAssociation](Get-AzCognitiveServicesCommitmentPlanAssociation.md)
+Get Cognitive Services Commitment Plan Association
 
 ### [Get-AzCognitiveServicesCommitmentTier](Get-AzCognitiveServicesCommitmentTier.md)
 Get CommitmentTier of Cognitive Services
@@ -56,6 +65,12 @@ Create a Deployment for a Cognitive Services account
 ### [New-AzCognitiveServicesAccountKey](New-AzCognitiveServicesAccountKey.md)
 Regenerates an account key.
 
+### [New-AzCognitiveServicesCommitmentPlan](New-AzCognitiveServicesCommitmentPlan.md)
+Create a Cognitive Services Commitment Plan
+
+### [New-AzCognitiveServicesCommitmentPlanAssociation](New-AzCognitiveServicesCommitmentPlanAssociation.md)
+Create a Cognitive Services Commitment Plan Association
+
 ### [New-AzCognitiveServicesObject](New-AzCognitiveServicesObject.md)
 Create a Cognitive Services Object
 
@@ -70,6 +85,12 @@ Delete a Deployment from a Cognitive Services account
 
 ### [Remove-AzCognitiveServicesAccountNetworkRule](Remove-AzCognitiveServicesAccountNetworkRule.md)
 Remove IpRules or VirtualNetworkRules from the NetWorkRule property of a Cognitive Services account
+
+### [Remove-AzCognitiveServicesCommitmentPlan](Remove-AzCognitiveServicesCommitmentPlan.md)
+Remove a Cognitive Services Commitment Plan
+
+### [Remove-AzCognitiveServicesCommitmentPlanAssociation](Remove-AzCognitiveServicesCommitmentPlanAssociation.md)
+Remove a Cognitive Services Commitment Plan Association
 
 ### [Set-AzCognitiveServicesAccount](Set-AzCognitiveServicesAccount.md)
 Modifies an account.

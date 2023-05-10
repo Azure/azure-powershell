@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Batch.dll-Help.xml
 Module Name: Az.Batch
-online version: https://docs.microsoft.com/powershell/module/az.batch/get-azbatchtaskslotcount
+online version: https://learn.microsoft.com/powershell/module/az.batch/get-azbatchtaskslotcount
 schema: 2.0.0
 ---
 
@@ -32,8 +32,11 @@ Task slot counts provide a count of slots by active, running or completed task s
 ## EXAMPLES
 
 ### Example 1: Get task counts by ID
+```powershell
+Get-AzBatchTaskSlotCount -JobId "Job01" -BatchContext $Context
 ```
-PS C:\> Get-AzBatchTaskSlotCounts -JobId "Job01" -BatchContext $Context
+
+```output
 Active              : 1
 Completed           : 0
 Failed              : 0

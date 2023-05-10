@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement.dll-Help.xml
 Module Name: Az.AlertsManagement
-online version: https://docs.microsoft.com/powershell/module/az.alertsmanagement/get-azactionrule
+online version: https://learn.microsoft.com/powershell/module/az.alertsmanagement/get-azalertprocessingrule
 schema: 2.0.0
 ---
 
@@ -14,24 +14,24 @@ Get AlertProcessing Rules Information
 
 ### ListAlertProcessingRules (Default)
 ```
-Get-AzAlertProcessingRule [-Name <String>] [-ResourceGroupName <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### ResourceId
-```
-Get-AzActionRule -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### ListAlertProcessingRulesByResourceGroupName
-```
-Get-AzAlertProcessingRule -ResourceGroupName <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzAlertProcessingRule [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### AlertProcessingRuleByName
 ```
 Get-AzAlertProcessingRule -Name <String> -ResourceGroupName <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
+```
+
+### ListAlertProcessingRulesByResourceGroupName
+```
+Get-AzAlertProcessingRule -ResourceGroupName <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
+```
+
+### ResourceId
+```
+Get-AzAlertProcessingRule -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -41,21 +41,21 @@ Get-AzAlertProcessingRule -Name <String> -ResourceGroupName <String> [-DefaultPr
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzAlertProcessingRule
+Get-AzAlertProcessingRule
 ```
 
 List all alert processing rules configured in subscription.
 
 ### Example 2
 ```powershell
-PS C:\> Get-AzAlertProcessingRule -ResourceGroupName "test-rg"
+Get-AzAlertProcessingRule -ResourceGroupName "test-rg"
 ```
 
 List all alert processing rules configured in resource group test-rg.
 
 ### Example 3
 ```powershell
-PS C:\> Get-AzAlertProcessingRule -ResourceGroupName "test-rg" -Name "Test-AlertProcessing-Rule" | Format-List
+Get-AzAlertProcessingRule -ResourceGroupName "test-rg" -Name "Test-AlertProcessing-Rule" | Format-List
 ```
 
 Get the alert processing rule with name Test-AlertProcessing-Rule in test-rg resource group.
@@ -77,21 +77,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-
 ### -Name
 Name of alert processing rule.
-
-```yaml
-Type: System.String
-Parameter Sets: ListAlertProcessingRules
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ```yaml
 Type: System.String
@@ -110,19 +97,7 @@ Resource Group Name in which alert processing rule resides.
 
 ```yaml
 Type: System.String
-Parameter Sets: ListAlertProcessingRules, ListAlertProcessingRulesByResourceGroupName
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-```yaml
-Type: System.String
-Parameter Sets: AlertProcessingRuleByName
+Parameter Sets: AlertProcessingRuleByName, ListAlertProcessingRulesByResourceGroupName
 Aliases:
 
 Required: True
@@ -132,6 +107,20 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ResourceId
+Get Alert Processing rule by resource id.
+
+```yaml
+Type: System.String
+Parameter Sets: ResourceId
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).

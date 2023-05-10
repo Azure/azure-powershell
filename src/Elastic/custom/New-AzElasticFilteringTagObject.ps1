@@ -22,7 +22,7 @@
     .Outputs
     Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.FilteringTag
     .Link
-    https://docs.microsoft.com/powershell/module/az.Elastic/new-AzElasticFilteringTagObject
+    https://learn.microsoft.com/powershell/module/az.Elastic/new-AzElasticFilteringTagObject
     #>
     function New-AzElasticFilteringTagObject {
         [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.FilteringTag')]

@@ -17,7 +17,6 @@ using System.Management.Automation;
 using Microsoft.Azure.Commands.Insights.OutputClasses;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.Azure.Commands.Insights.Utils;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using System.Linq;
 
@@ -72,14 +71,14 @@ namespace Microsoft.Azure.Commands.Insights.PrivateLinkScopes
                                        .PrivateLinkScopes
                                        .ListByResourceGroupWithHttpMessagesAsync(this.ResourceGroupName)
                                        .Result;
-                    WriteObject(response.Body.Select(scope => PSMapper.Instance.Map<PSMonitorPrivateLinkScope>(scope)).ToList(), true);
+                    WriteObject(response.Body.Select(scope => PSMonitorPrivateLinkScope.ToPSMonitorPrivateLinkScope(scope)).ToList(), true);
                 }
                 else
                 {
                     var response = this.MonitorManagementClient
                                        .PrivateLinkScopes.ListWithHttpMessagesAsync()
                                        .Result;
-                    WriteObject(response.Body.Select(scope => PSMapper.Instance.Map<PSMonitorPrivateLinkScope>(scope)).ToList(), true);
+                    WriteObject(response.Body.Select(scope => PSMonitorPrivateLinkScope.ToPSMonitorPrivateLinkScope(scope)).ToList(), true);
                 }
             }
             else if (ParameterSetName.Equals(ByResourceNameParameterSet) || ParameterSetName.Equals(ResourceId))
@@ -95,7 +94,7 @@ namespace Microsoft.Azure.Commands.Insights.PrivateLinkScopes
                                        .PrivateLinkScopes
                                        .GetWithHttpMessagesAsync(this.ResourceGroupName, this.Name)
                                        .Result;
-                WriteObject(PSMapper.Instance.Map<PSMonitorPrivateLinkScope>(response.Body));
+                WriteObject(PSMonitorPrivateLinkScope.ToPSMonitorPrivateLinkScope(response.Body));
             }
         }
     }

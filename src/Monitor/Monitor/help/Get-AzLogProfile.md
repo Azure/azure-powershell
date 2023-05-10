@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Monitor.dll-Help.xml
 Module Name: Az.Monitor
 ms.assetid: 019EFD94-4087-45F6-812D-FBDFE1B2E48A
-online version: https://docs.microsoft.com/powershell/module/az.monitor/get-azlogprofile
+online version: https://learn.microsoft.com/powershell/module/az.monitor/get-azlogprofile
 schema: 2.0.0
 ---
 
@@ -21,6 +21,7 @@ Get-AzLogProfile [-Name <String>] [-DefaultProfile <IAzureContextContainer>] [<C
 The **Get-AzLogProfile** cmdlet gets a log profile.
 
 ## EXAMPLES
+
 ### Example 1: Gets a log profile
 ```powershell
 Get-AzLogProfile
@@ -51,6 +52,7 @@ Etag             :
 ```
 
 This command gets a log profile.
+
 ## PARAMETERS
 
 ### -DefaultProfile

@@ -12,12 +12,18 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Exceptions;
+using Microsoft.Azure.Commands.KeyVault.Properties;
 using Microsoft.Azure.KeyVault.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
+using System.Text;
+using System.Text.Json;
+using Track2CertificateSDK = Azure.Security.KeyVault.Certificates;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
@@ -31,6 +37,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         public bool? ReuseKeyOnRenewal { get; set; }
         public string SubjectName { get; set; }
         public List<string> DnsNames { get; set; }
+        public List<string> Emails { get; set; }
+        public List<string> UserPrincipalNames { get; set; }
         public List<string> KeyUsage { get; set; }
         public List<string> Ekus { get; set; }
         public int? ValidityInMonths { get; set; }
@@ -86,7 +94,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             var keyTypeToUse = GetDefaultKeyTypeIfNotSpecified(keyType);
             var keySizeToUse = GetDefaultKeySizeIfNotSpecified(keyTypeToUse, curve, keySize);
 
-            DnsNames = (dnsNames == null || !dnsNames.Any()) ? null : dnsNames.ToList();
+            // DnsNames could be an empty list
+            DnsNames = dnsNames?.ToList();
             KeyUsage = (keyUsages == null || !keyUsages.Any()) ? null : keyUsages.ToList();
             Ekus = (ekus == null || !ekus.Any()) ? null : ekus.ToList();
             Enabled = enabled;
@@ -273,6 +282,130 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
             return certificatePolicy;
         }
+        internal bool HasSubjectAlternativeNames()
+        {
+            if ((DnsNames != null && DnsNames.Any())
+                || (Emails != null && Emails.Any())
+                || (UserPrincipalNames != null && UserPrincipalNames.Any()))
+            {
+                return true;
+            }
+            else
+                return false;
+        }
+
+        internal Track2CertificateSDK.SubjectAlternativeNames SetSubjectAlternativeNames(Track2CertificateSDK.SubjectAlternativeNames SubjectAlternativeNames)
+        {
+            if (DnsNames != null && DnsNames.Any())
+                foreach (var dnsName in DnsNames)
+                    SubjectAlternativeNames.DnsNames.Add(dnsName);
+            if (Emails != null && Emails.Any())
+                foreach (var email in Emails)
+                    SubjectAlternativeNames.Emails.Add(email);
+            if (UserPrincipalNames != null && UserPrincipalNames.Any())
+                foreach (var principalName in UserPrincipalNames)
+                    SubjectAlternativeNames.UserPrincipalNames.Add(principalName);
+            return SubjectAlternativeNames;
+        }
+
+        internal Track2CertificateSDK.CertificatePolicy ToTrack2CertificatePolicy()
+        {
+            Track2CertificateSDK.CertificatePolicy certificatePolicy;
+            if (!string.IsNullOrWhiteSpace(IssuerName) || !string.IsNullOrWhiteSpace(SubjectName) || HasSubjectAlternativeNames())
+            {
+                if (!string.IsNullOrWhiteSpace(SubjectName) && HasSubjectAlternativeNames())
+                {
+                    Track2CertificateSDK.SubjectAlternativeNames subjectAlternativeNames = new Track2CertificateSDK.SubjectAlternativeNames();
+                    subjectAlternativeNames = SetSubjectAlternativeNames(subjectAlternativeNames);
+                    certificatePolicy = new Track2CertificateSDK.CertificatePolicy(IssuerName, SubjectName, subjectAlternativeNames);
+                    
+                }
+                else if (!string.IsNullOrWhiteSpace(SubjectName))
+                {
+                    certificatePolicy = new Track2CertificateSDK.CertificatePolicy(IssuerName, SubjectName);
+                }
+                else if (HasSubjectAlternativeNames())
+                {
+                    Track2CertificateSDK.SubjectAlternativeNames subjectAlternativeNames = new Track2CertificateSDK.SubjectAlternativeNames();
+                    subjectAlternativeNames = SetSubjectAlternativeNames(subjectAlternativeNames);
+                    certificatePolicy = new Track2CertificateSDK.CertificatePolicy(IssuerName, subjectAlternativeNames);
+                }
+                else
+                    certificatePolicy = new Track2CertificateSDK.CertificatePolicy(IssuerName, SubjectName);
+            }
+            else
+            {
+                certificatePolicy = new Track2CertificateSDK.CertificatePolicy();
+            }
+            certificatePolicy.ContentType = SecretContentType;
+            if ( !string.IsNullOrEmpty(Kty) )
+                certificatePolicy.KeyType = Kty;
+            certificatePolicy.KeySize = KeySize;
+            if (!string.IsNullOrEmpty(Curve))
+                certificatePolicy.KeyCurveName = Curve;
+            certificatePolicy.ReuseKey = ReuseKeyOnRenewal;
+            certificatePolicy.Exportable = Exportable;
+            certificatePolicy.CertificateTransparency = CertificateTransparency;
+            if (!string.IsNullOrWhiteSpace(CertificateType))
+                certificatePolicy.CertificateType = CertificateType;
+            certificatePolicy.Enabled = Enabled;
+            certificatePolicy.ValidityInMonths = ValidityInMonths;
+
+            if (RenewAtNumberOfDaysBeforeExpiry.HasValue ||
+                RenewAtPercentageLifetime.HasValue ||
+                EmailAtNumberOfDaysBeforeExpiry.HasValue ||
+                EmailAtPercentageLifetime.HasValue)
+            {
+                if ((RenewAtNumberOfDaysBeforeExpiry.HasValue ? 1 : 0) +
+                    (RenewAtPercentageLifetime.HasValue ? 1 : 0) +
+                    (EmailAtNumberOfDaysBeforeExpiry.HasValue ? 1 : 0) +
+                    (EmailAtPercentageLifetime.HasValue ? 1 : 0) > 1)
+                {
+                    throw new ArgumentException("Only one of the values for RenewAtNumberOfDaysBeforeExpiry, RenewAtPercentageLifetime, EmailAtNumberOfDaysBeforeExpiry, EmailAtPercentageLifetime  can be set.");
+                }
+
+                if (RenewAtNumberOfDaysBeforeExpiry.HasValue)
+                {
+                    certificatePolicy.LifetimeActions.Add(
+                        new Track2CertificateSDK.LifetimeAction(Track2CertificateSDK.CertificatePolicyAction.AutoRenew)
+                        {
+                            DaysBeforeExpiry = RenewAtNumberOfDaysBeforeExpiry
+                        }
+                    );
+                }
+
+                if (RenewAtPercentageLifetime.HasValue)
+                {
+                    certificatePolicy.LifetimeActions.Add(
+                        new Track2CertificateSDK.LifetimeAction(Track2CertificateSDK.CertificatePolicyAction.AutoRenew)
+                        {
+                            LifetimePercentage = RenewAtPercentageLifetime
+                        }
+                    );
+                }
+                if (EmailAtNumberOfDaysBeforeExpiry.HasValue)
+                {
+                    certificatePolicy.LifetimeActions.Add(
+                        new Track2CertificateSDK.LifetimeAction(Track2CertificateSDK.CertificatePolicyAction.EmailContacts)
+                        {
+                            DaysBeforeExpiry = EmailAtNumberOfDaysBeforeExpiry
+                        }
+                    );
+                }
+
+                if (EmailAtPercentageLifetime.HasValue)
+                {
+                    certificatePolicy.LifetimeActions.Add(
+                        new Track2CertificateSDK.LifetimeAction(Track2CertificateSDK.CertificatePolicyAction.EmailContacts)
+                        {
+                            LifetimePercentage = EmailAtPercentageLifetime
+                        }
+                    );
+                }
+            }
+
+            return certificatePolicy;
+        }
 
         internal static PSKeyVaultCertificatePolicy FromCertificatePolicy(CertificatePolicy certificatePolicy)
         {
@@ -303,6 +436,258 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             };
         }
 
+        internal static PSKeyVaultCertificatePolicy FromTrack2CertificatePolicy(Track2CertificateSDK.CertificatePolicy certificatePolicy)
+        {
+            return new PSKeyVaultCertificatePolicy
+            {
+                SecretContentType = certificatePolicy.ContentType?.ToString(),
+                Kty = certificatePolicy.KeyType?.ToString(),
+                KeySize = certificatePolicy.KeySize,
+                Curve = certificatePolicy.KeyCurveName?.ToString(),
+                Exportable = certificatePolicy.Exportable,
+                ReuseKeyOnRenewal = certificatePolicy.ReuseKey,
+                SubjectName = certificatePolicy.Subject,
+                DnsNames = certificatePolicy.SubjectAlternativeNames?.DnsNames?.ToList(),
+                Emails = certificatePolicy.SubjectAlternativeNames?.Emails?.ToList(),
+                UserPrincipalNames = certificatePolicy.SubjectAlternativeNames?.UserPrincipalNames?.ToList(),
+                KeyUsage = certificatePolicy.KeyUsage == null ? null : certificatePolicy.KeyUsage == null ? null : certificatePolicy.KeyUsage.Select(keyUsage => keyUsage.ToString()).ToList(),
+                Ekus = certificatePolicy.EnhancedKeyUsage == null ? null : new List<string>(certificatePolicy.EnhancedKeyUsage),
+                ValidityInMonths = certificatePolicy.ValidityInMonths,
+                CertificateTransparency = certificatePolicy.CertificateTransparency,
+                IssuerName = certificatePolicy.IssuerName,
+                CertificateType = certificatePolicy.CertificateType,
+                RenewAtNumberOfDaysBeforeExpiry = certificatePolicy.LifetimeActions == null ? null : FindIntValueForAutoRenewAction(certificatePolicy.LifetimeActions),
+                RenewAtPercentageLifetime = certificatePolicy.LifetimeActions == null ? null : FindIntValueForAutoRenewAction(certificatePolicy.LifetimeActions),
+                EmailAtNumberOfDaysBeforeExpiry = certificatePolicy.LifetimeActions == null ? null : FindIntValueForEmailAction(certificatePolicy.LifetimeActions),
+                EmailAtPercentageLifetime = certificatePolicy.LifetimeActions == null ? null : FindIntValueForEmailAction(certificatePolicy.LifetimeActions),
+                Enabled = certificatePolicy.Enabled,
+                Created = certificatePolicy.CreatedOn.HasValue ? certificatePolicy.CreatedOn.Value.DateTime : (DateTime?)null,
+                Updated = certificatePolicy.UpdatedOn.HasValue ? certificatePolicy.UpdatedOn.Value.DateTime : (DateTime?)null,
+            };
+        }
+        private void ReadKeyProperties(JsonElement json)
+        {
+            foreach (JsonProperty item in json.EnumerateObject())
+            {
+                switch (item.Name)
+                {
+                    case "kty":
+                        Kty = item.Value.GetString();
+                        break;
+                    case "reuse_key":
+                        ReuseKeyOnRenewal = item.Value.GetBoolean();
+                        break;
+                    case "exportable":
+                        Exportable = item.Value.GetBoolean();
+                        break;
+                    case "crv":
+                        Curve = item.Value.GetString();
+                        break;
+                    case "key_size":
+                        KeySize = item.Value.GetInt32();
+                        break;
+                }
+            }
+        }
+        private void ReadSecretProperties(JsonElement json)
+        {
+            if (json.TryGetProperty("contentType", out var value))
+            {
+                SecretContentType = value.GetString();
+            }
+        }
+
+        private void ReadSubjectAlternativeNames(JsonProperty json)
+        {
+            foreach (JsonProperty item in json.Value.EnumerateObject())
+            {
+                switch (item.Name)
+                {
+                    case "dns_names":
+                        DnsNames = new List<string>();
+                        foreach (JsonElement item2 in item.Value.EnumerateArray())
+                        {
+                            DnsNames.Add(item2.GetString());
+                        }
+                        break;
+                    case "emails":
+                        Emails = new List<string>();
+                        foreach (JsonElement item2 in item.Value.EnumerateArray())
+                        {
+                            Emails.Add(item2.GetString());
+                        }
+                        break;
+                    case "upns":
+                        UserPrincipalNames = new List<string>();
+                        foreach (JsonElement item2 in item.Value.EnumerateArray())
+                        {
+                            UserPrincipalNames.Add(item2.GetString());
+                        }
+                        break;
+                }
+            }
+        }
+
+        private void ReadX509CertificateProperties(JsonElement json)
+        {
+            foreach (JsonProperty item in json.EnumerateObject())
+            {
+                switch (item.Name)
+                {
+                    case "subject":
+                        SubjectName = item.Value.GetString();
+                        break;
+                    case "sans":
+                        var SubjectAlternativeNames = new Track2CertificateSDK.SubjectAlternativeNames();
+                        ReadSubjectAlternativeNames(item);
+                            // SubjectAlternativeNames .ReadProperties(item.Value);
+                        break;
+                    case "key_usage":
+                        foreach (JsonElement item2 in item.Value.EnumerateArray())
+                        {
+                            KeyUsage.Add(item2.GetString());
+                        }
+
+                        break;
+                    case "ekus":
+                        foreach (JsonElement item3 in item.Value.EnumerateArray())
+                        {
+                            Ekus.Add(item3.GetString());
+                        }
+
+                        break;
+                    case "validity_months":
+                        ValidityInMonths = item.Value.GetInt32();
+                        break;
+                }
+            }
+        }
+
+        private void ReadIssuerProperties(JsonElement json)
+        {
+            foreach (JsonProperty item in json.EnumerateObject())
+            {
+                switch (item.Name)
+                {
+                    case "cert_transparency":
+                        CertificateTransparency = item.Value.GetBoolean();
+                        break;
+                    
+                    case "cty":
+                        CertificateType = item.Value.GetString();
+                        break;
+
+                    case "name":
+                        IssuerName = item.Value.GetString();
+                        break;
+                }
+            }
+        }
+
+        private void ReadAttributesProperties(JsonElement json)
+        {
+            foreach (JsonProperty item in json.EnumerateObject())
+            {
+                switch (item.Name)
+                {
+                    case "enabled":
+                        Enabled = item.Value.GetBoolean();
+                        break;
+                    case "created":
+                        Created = DateTimeOffset.FromUnixTimeSeconds(item.Value.GetInt64()).DateTime;
+                        break;
+                    case "updated":
+                        Updated = DateTimeOffset.FromUnixTimeSeconds(item.Value.GetInt64()).DateTime;
+                        break;
+                }
+            }
+        }
+        internal static PSKeyVaultCertificatePolicy FromJsonFile(string filePath)
+        {
+            PSKeyVaultCertificatePolicy policy = new PSKeyVaultCertificatePolicy();
+            JsonElement policyJson;
+            if (".json".Equals(Path.GetExtension(filePath), StringComparison.OrdinalIgnoreCase))
+            {
+                using (StreamReader r = new StreamReader(filePath))
+                {
+                    string jsonContent = r.ReadToEnd();
+                    policyJson = JsonDocument.Parse(jsonContent).RootElement; 
+                }
+            }
+            else
+            {
+                throw new AzPSArgumentException(string.Format(Resources.UnsupportedFileFormat, filePath), nameof(filePath));
+            }
+            foreach (JsonProperty item in policyJson.EnumerateObject())
+            {
+                switch (item.Name)
+                {
+                    case "key_props":
+                        policy.ReadKeyProperties(item.Value);
+                        break;
+                    case "secret_props":
+                        policy.ReadSecretProperties(item.Value);
+                        break;
+                    case "x509_props":
+                        policy.ReadX509CertificateProperties(item.Value);
+                        break;
+                    case "issuer":
+                        policy.ReadIssuerProperties(item.Value);
+                        break;
+                    case "attributes":
+                        policy.ReadAttributesProperties(item.Value);
+                        break;
+
+                    case "lifetime_actions":
+                        string actionType = null;
+                        string triggerType = null;
+                        int? triggerValue = null;
+
+                        foreach (JsonElement item2 in item.Value.EnumerateArray())
+                        {
+                            if (item.Value.EnumerateArray().Count() > 1)
+                                throw new AzPSArgumentException(string.Format("Json file property {0} exceed expected number 1.", item.Name), nameof(item.Name));
+                            foreach (JsonProperty item3 in item2.EnumerateObject())
+                            {
+                                if (item3.Name == "trigger")
+                                {
+                                    foreach (JsonProperty item4 in item3.Value.EnumerateObject())
+                                    {
+                                        triggerType = item4.Name;
+                                        triggerValue = item4.Value.GetInt32();
+                                    }
+                                }
+                                else if (item3.Name == "action")
+                                {
+                                    foreach (JsonProperty item4 in item3.Value.EnumerateObject())
+                                    {
+                                        if (item4.Name == "action_type")
+                                            actionType = item4.Value.GetString();
+                                    }
+                                }
+                            }
+                        }
+
+                        if (actionType == ActionType.AutoRenew.ToString())
+                        {
+                            if (triggerType == "days_before_expiry")
+                                policy.RenewAtNumberOfDaysBeforeExpiry = triggerValue;
+                            else if (triggerType == "lifetime_percentage")
+                                policy.RenewAtPercentageLifetime = triggerValue;
+                        }
+                        else if (actionType == ActionType.EmailContacts.ToString())
+                        {
+                            if (triggerType == "days_before_expiry")
+                                policy.EmailAtNumberOfDaysBeforeExpiry = triggerValue;
+                            else if (triggerType == "lifetime_percentage")
+                                policy.EmailAtPercentageLifetime = triggerValue;
+                        }
+                        break;
+                }
+            }
+            return policy;
+        }
+
         private static int? FindIntValueForAutoRenewAction(IEnumerable<LifetimeAction> lifetimeActions, Func<Trigger, int?> intValueGetter)
         {
             var lifetimeAction = lifetimeActions.FirstOrDefault(x => x.Action.ActionType.HasValue &&  0 == string.Compare(x.Action.ActionType.Value.ToString(), ActionType.AutoRenew.ToString(), true) && intValueGetter(x.Trigger).HasValue);
@@ -315,6 +700,14 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             return intValueGetter(lifetimeAction.Trigger);
         }
 
+        private static int? FindIntValueForAutoRenewAction(IList<Track2CertificateSDK.LifetimeAction> lifetimeActions)
+        {
+            var lifetimeAction = 
+                lifetimeActions.FirstOrDefault(x => string.IsNullOrEmpty(x.Action.ToString()) && 0 == string.Compare(x.Action.ToString(), Track2CertificateSDK.CertificatePolicyAction.AutoRenew.ToString(), true)
+                                                && (x.DaysBeforeExpiry.HasValue || x.LifetimePercentage.HasValue));
+            return lifetimeAction == null ? null : (lifetimeAction.DaysBeforeExpiry ?? lifetimeAction.LifetimePercentage);
+        }
+
         private static int? FindIntValueForEmailAction(IEnumerable<LifetimeAction> lifetimeActions, Func<Trigger, int?> intValueGetter)
         {
             var lifetimeAction = lifetimeActions.FirstOrDefault(x => x.Action.ActionType.HasValue && 0 == string.Compare(x.Action.ActionType.Value.ToString(), ActionType.EmailContacts.ToString(), true) && intValueGetter(x.Trigger).HasValue);
@@ -325,6 +718,14 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             }
 
             return intValueGetter(lifetimeAction.Trigger);
+        }
+
+        private static int? FindIntValueForEmailAction(IList<Track2CertificateSDK.LifetimeAction> lifetimeActions)
+        {
+            var lifetimeAction =
+                lifetimeActions.FirstOrDefault(x => !string.IsNullOrEmpty(x.Action.ToString()) && 0 == string.Compare(x.Action.ToString(), Track2CertificateSDK.CertificatePolicyAction.EmailContacts.ToString(), true)
+                                                && (x.DaysBeforeExpiry.HasValue || x.LifetimePercentage.HasValue));
+            return lifetimeAction == null ? null : (lifetimeAction.DaysBeforeExpiry ?? lifetimeAction.LifetimePercentage);
         }
 
         private void ValidateInternal(
@@ -542,6 +943,20 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             {
                 throw new ArgumentException("The subject name provided is not a valid X500 name.", e);
             }
+        }
+
+        public override string ToString()
+        {
+            if (this == null) return string.Empty;
+
+            var sb = new StringBuilder();
+            sb.AppendLine();
+            sb.AppendFormat("{0, -15}: {1}{2}", "Secret Content Type", SecretContentType, Environment.NewLine);
+            sb.AppendFormat("{0, -15}: {1}{2}", "Issuer Name", IssuerName, Environment.NewLine);
+            sb.AppendFormat("{0, -15}: {1}{2}", "Created On", Created, Environment.NewLine);
+            sb.AppendFormat("{0, -15}: {1}{2}", "Updated On", Updated, Environment.NewLine);
+            sb.AppendLine("...");
+            return sb.ToString();
         }
     }
 }

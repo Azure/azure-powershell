@@ -7,13 +7,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support
     {
         AzureDisk = 0,
         AzureBlob,
-        AzureDatabaseForPostgreSQL
+        AzureDatabaseForPostgreSQL,
+        AzureKubernetesService
     }
 
     public enum StorageSettingType
     {
         GeoRedundant = 0,
-        LocallyRedundant
+        LocallyRedundant,
+        ZoneRedundant
     }
 
     public enum DataStoreType

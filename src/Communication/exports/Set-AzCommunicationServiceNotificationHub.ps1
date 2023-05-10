@@ -35,7 +35,7 @@ LINKNOTIFICATIONHUBPARAMETER <ILinkNotificationHubParameters>: Description of an
   ConnectionString <String>: Connection string for the notification hub
   ResourceId <String>: The resource ID of the notification hub
 .Link
-https://docs.microsoft.com/powershell/module/az.communication/set-azcommunicationservicenotificationhub
+https://learn.microsoft.com/powershell/module/az.communication/set-azcommunicationservicenotificationhub
 #>
 function Set-AzCommunicationServiceNotificationHub {
 [OutputType([System.String])]

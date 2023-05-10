@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles.dll-Help.xml
 Module Name: Az.NetAppFiles
-online version: https://docs.microsoft.com/powershell/module/az.netappfiles/update-aznetappfilesactivedirectory
+online version: https://learn.microsoft.com/powershell/module/az.netappfiles/update-aznetappfilesactivedirectory
 schema: 2.0.0
 ---
 
@@ -19,8 +19,9 @@ Update-AzNetAppFilesActiveDirectory -ResourceGroupName <String> -AccountName <St
  [-Username <String>] [-Password <SecureString>] [-OrganizationalUnit <String>] [-KdcIP <String>]
  [-BackupOperator <String[]>] [-ServerRootCACertificate <String>] [-AdName <String>]
  [-SecurityOperator <String[]>] [-AesEncryption] [-LdapSigning] [-LdapOverTLS] [-AllowLocalNfsUsersWithLdap]
- [-Administrator <String[]>] [-EncryptDCConnection] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-Administrator <String[]>] [-EncryptDCConnection] [-LdapSearchScope <PSNetAppFilesLdapSearchScopeOpt>]
+ [-PreferredServersForLdapClient <String[]>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByParentObjectParameterSet
@@ -30,6 +31,7 @@ Update-AzNetAppFilesActiveDirectory -ActiveDirectoryId <String> [-Dns <String[]>
  [-OrganizationalUnit <String>] [-KdcIP <String>] [-BackupOperator <String[]>]
  [-ServerRootCACertificate <String>] [-AdName <String>] [-SecurityOperator <String[]>] [-AesEncryption]
  [-LdapSigning] [-LdapOverTLS] [-AllowLocalNfsUsersWithLdap] [-Administrator <String[]>] [-EncryptDCConnection]
+ [-LdapSearchScope <PSNetAppFilesLdapSearchScopeOpt>] [-PreferredServersForLdapClient <String[]>]
  -AccountObject <PSNetAppFilesAccount> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -40,12 +42,13 @@ Update-AzNetAppFilesActiveDirectory [-Dns <String[]>] [-Domain <String>] [-Site 
  [-SmbServerName <String>] [-Username <String>] [-Password <SecureString>] [-OrganizationalUnit <String>]
  [-KdcIP <String>] [-BackupOperator <String[]>] [-ServerRootCACertificate <String>] [-AdName <String>]
  [-SecurityOperator <String[]>] [-AesEncryption] [-LdapSigning] [-LdapOverTLS] [-AllowLocalNfsUsersWithLdap]
- [-Administrator <String[]>] [-EncryptDCConnection] -InputObject <PSNetAppFilesActiveDirectory>
+ [-Administrator <String[]>] [-EncryptDCConnection] [-LdapSearchScope <PSNetAppFilesLdapSearchScopeOpt>]
+ [-PreferredServersForLdapClient <String[]>] -InputObject <PSNetAppFilesActiveDirectory>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Update-AzNetAppFilesAccount** cmdlet modifies an ANF active directory configuration.
+The **Update-AzNetAppFilesActiveDirectory** cmdlet modifies an ANF active directory configuration.
 
 ## EXAMPLES
 
@@ -286,6 +289,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -LdapSearchScope
+LDAP Search scope options.
+
+```yaml
+Type: Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesLdapSearchScopeOpt
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -LdapSigning
 When LDAP over SSL/TLS is enabled, Specifies whether or not the LDAP traffic needs to be signed.
 
@@ -321,6 +339,21 @@ Plain text password of Active Directory domain administrator, value is masked in
 
 ```yaml
 Type: System.Security.SecureString
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PreferredServersForLdapClient
+Comma separated list of IPv4 addresses of preferred servers for LDAP client. At most two comma separated IPv4 addresses can be passed.
+
+```yaml
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -408,7 +441,7 @@ Accept wildcard characters: False
 ```
 
 ### -Username
-Username of Active Directory domain administrator
+A domain user account with permission to create machine accounts
 
 ```yaml
 Type: System.String

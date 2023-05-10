@@ -88,6 +88,13 @@ namespace Microsoft.Azure.Commands.Network
         public PSResourceId[] EgressNatRule { get; set; }
 
         [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The GatewayCustomBgpIpAddress of Virtual network gateway used in this connection.")]
+        [AllowEmptyCollection]
+        public PSGatewayCustomBgpIpConfiguration[] GatewayCustomBgpIpAddress { get; set; }
+
+        [Parameter(
             Mandatory = true,
             ParameterSetName = VirtualNetworkGatewayParameterSets.UpdateResourceWithTags,
             HelpMessage = "A hashtable which represents resource tags.")]
@@ -175,6 +182,46 @@ namespace Microsoft.Azure.Commands.Network
                                 {
                                     Id = resource.Id
                                 });
+                        }
+                    }
+
+                    if (this.GatewayCustomBgpIpAddress != null && this.GatewayCustomBgpIpAddress.Length > 0)
+                    {
+                        if (this.VirtualNetworkGatewayConnection.GatewayCustomBgpIpAddresses == null)
+                        {
+                            this.VirtualNetworkGatewayConnection.GatewayCustomBgpIpAddresses = new List<PSGatewayCustomBgpIpConfiguration>();
+
+                            foreach (var reqaddress in this.GatewayCustomBgpIpAddress)
+                            {
+                                this.VirtualNetworkGatewayConnection.GatewayCustomBgpIpAddresses.Add(reqaddress);
+                            }
+                        }
+                        else
+                        {
+                            foreach (var reqaddress in this.GatewayCustomBgpIpAddress)
+                            {
+                                bool isGatewayIpConfigurationExists = this.VirtualNetworkGatewayConnection.GatewayCustomBgpIpAddresses.Any(
+                                bgpaddress => bgpaddress.IpconfigurationId.Equals(reqaddress.IpconfigurationId, StringComparison.OrdinalIgnoreCase));
+
+                                if (isGatewayIpConfigurationExists)
+                                {
+                                    var bgpPeeringPropertiesInRequest = this.VirtualNetworkGatewayConnection.GatewayCustomBgpIpAddresses.FirstOrDefault(
+                                        x => x.IpconfigurationId.Equals(reqaddress.IpconfigurationId, StringComparison.OrdinalIgnoreCase));
+
+                                    bgpPeeringPropertiesInRequest.CustomBgpIpAddress = reqaddress.CustomBgpIpAddress;
+                                }
+                                else
+                                {
+                                    this.VirtualNetworkGatewayConnection.GatewayCustomBgpIpAddresses.Add(reqaddress);
+                                }
+                            }
+                        }
+                    }
+                    else
+                    {
+                        if (this.VirtualNetworkGatewayConnection.GatewayCustomBgpIpAddresses != null && this.VirtualNetworkGatewayConnection.GatewayCustomBgpIpAddresses.Count > 0)
+                        {
+                            this.VirtualNetworkGatewayConnection.GatewayCustomBgpIpAddresses.Clear();
                         }
                     }
 

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement.dll-Help.xml
 Module Name: Az.AlertsManagement
-online version: https://docs.microsoft.com/powershell/module/az.alertsmanagement/measure-azalertstatistic
+online version: https://learn.microsoft.com/powershell/module/az.alertsmanagement/measure-azalertstatistic
 schema: 2.0.0
 ---
 
@@ -12,19 +12,19 @@ Gets Alert Summary Information
 
 ## SYNTAX
 
-### SummaryTargetResourceIdFilter
-```
-Measure-AzAlertStatistic -GroupBy <String> [-TargetResourceId <String>] [-MonitorService <String>]
- [-MonitorCondition <String>] [-Severity <String>] [-State <String>] [-AlertRuleId <String>]
- [-TimeRange <String>] [-CustomTimeRange <String>] [-IncludeSmartGroupsCount <Boolean>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### SummaryFilter
+### SummaryFilter (Default)
 ```
 Measure-AzAlertStatistic -GroupBy <String> [-TargetResourceType <String>] [-TargetResourceGroup <String>]
  [-MonitorService <String>] [-MonitorCondition <String>] [-Severity <String>] [-State <String>]
  [-AlertRuleId <String>] [-TimeRange <String>] [-CustomTimeRange <String>] [-IncludeSmartGroupsCount <Boolean>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### SummaryTargetResourceIdFilter
+```
+Measure-AzAlertStatistic -GroupBy <String> -TargetResourceId <String> [-MonitorService <String>]
+ [-MonitorCondition <String>] [-Severity <String>] [-State <String>] [-AlertRuleId <String>]
+ [-TimeRange <String>] [-CustomTimeRange <String>] [-IncludeSmartGroupsCount <Boolean>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -200,7 +200,7 @@ Type: System.String
 Parameter Sets: SummaryTargetResourceIdFilter
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

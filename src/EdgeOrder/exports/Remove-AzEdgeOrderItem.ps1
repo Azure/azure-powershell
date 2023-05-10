@@ -40,7 +40,7 @@ INPUTOBJECT <IEdgeOrderIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.edgeorder/remove-azedgeorderitem
+https://learn.microsoft.com/powershell/module/az.edgeorder/remove-azedgeorderitem
 #>
 function Remove-AzEdgeOrderItem {
 [OutputType([System.Boolean])]

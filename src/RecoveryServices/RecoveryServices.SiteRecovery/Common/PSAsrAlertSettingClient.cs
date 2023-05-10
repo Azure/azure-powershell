@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 .ReplicationAlertSettings
                 .CreateWithHttpMessagesAsync(
                     Constants.DefaultAlertSettingName,
-                    input,
+                    input.Properties,
                     this.GetRequestHeaders(true))
                 .GetAwaiter()
                 .GetResult()

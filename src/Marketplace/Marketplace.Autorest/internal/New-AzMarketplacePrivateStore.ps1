@@ -61,7 +61,7 @@ PAYLOAD <IPrivateStore>: The PrivateStore data structure.
   [PrivateStoreName <String>]: Private Store Name
   [TenantId <String>]: Tenant id
 .Link
-https://docs.microsoft.com/powershell/module/az.marketplace/new-azmarketplaceprivatestore
+https://learn.microsoft.com/powershell/module/az.marketplace/new-azmarketplaceprivatestore
 #>
 function New-AzMarketplacePrivateStore {
 [OutputType([System.Boolean])]

@@ -56,7 +56,7 @@ INPUTOBJECT <IHealthcareApisIdentity>: Identity Parameter
   [SubscriptionId <String>]: The subscription identifier.
   [WorkspaceName <String>]: The name of workspace resource.
 .Link
-https://docs.microsoft.com/powershell/module/az.healthcareapis/update-azhealthcaredicomservice
+https://learn.microsoft.com/powershell/module/az.healthcareapis/update-azhealthcaredicomservice
 #>
 function Update-AzHealthcareDicomService {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IDicomService])]

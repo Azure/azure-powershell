@@ -20,10 +20,10 @@ Delete a private cloud
 .Description
 Delete a private cloud
 .Example
-PS C:\> Remove-AzVMwarePrivateCloud -ResourceGroupName azps_test_group -Name azps_test_cloud
+Remove-AzVMwarePrivateCloud -ResourceGroupName azps_test_group -Name azps_test_cloud
 
 .Example
-PS C:\> Get-AzVMwarePrivateCloud -ResourceGroupName azps_test_group -Name azps_test_cloud | Remove-AzVMwarePrivateCloud
+Get-AzVMwarePrivateCloud -ResourceGroupName azps_test_group -Name azps_test_cloud | Remove-AzVMwarePrivateCloud
 
 
 .Inputs
@@ -62,7 +62,7 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
   [VirtualMachineId <String>]: Virtual Machine identifier
 .Link
-https://docs.microsoft.com/powershell/module/az.vmware/remove-azvmwareprivatecloud
+https://learn.microsoft.com/powershell/module/az.vmware/remove-azvmwareprivatecloud
 #>
 function Remove-AzVMwarePrivateCloud {
 [OutputType([System.Boolean])]
@@ -169,6 +169,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             Delete = 'Az.VMware.private\Remove-AzVMwarePrivateCloud_Delete';
             DeleteViaIdentity = 'Az.VMware.private\Remove-AzVMwarePrivateCloud_DeleteViaIdentity';
@@ -182,6 +183,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -190,15 +192,18 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }

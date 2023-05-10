@@ -83,8 +83,6 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
 
         public override void ExecuteCmdlet()
         {
-            MSGraphMessageHelper.WriteMessageForCmdletsSwallowException(this);
-
             // convert definition name to id
             if (ParameterSetName == ParameterSet.DefinitionNameApplicationId ||
                 ParameterSetName == ParameterSet.DefinitionNameObjectId ||

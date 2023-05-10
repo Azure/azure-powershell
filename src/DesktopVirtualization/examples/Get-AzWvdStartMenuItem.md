@@ -1,7 +1,9 @@
 ### Example 2: List Windows Virtual Desktop Start Menu Items
 ```powershell
-PS C:\> Get-AzWvdStartMenuItem -ResourceGroupName ResourceGroupName -ApplicationGroupName ApplicationGroupName
+Get-AzWvdStartMenuItem -ResourceGroupName ResourceGroupName -ApplicationGroupName ApplicationGroupName
+```
 
+```output
 Name                                                Type
 ----                                                ----
 ApplicationGroupName/Character Map                  Microsoft.DesktopVirtualization/applicationgroups/startmenuitems

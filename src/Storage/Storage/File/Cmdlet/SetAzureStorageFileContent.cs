@@ -21,6 +21,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
     using Microsoft.Azure.Storage.DataMovement;
     using Microsoft.Azure.Storage.File;
     using Microsoft.WindowsAzure.Commands.Common;
+    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
     using Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel;
     using Microsoft.WindowsAzure.Commands.Storage.Common;
     using Microsoft.WindowsAzure.Commands.Utilities.Common;
@@ -168,12 +169,12 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                         ShareFileClient fileClient = AzureStorageFile.GetTrack2FileClient(cloudFileToBeUploaded, ClientOptions);
 
                         // confirm overwrite if file exist
-                        if(!this.Force.IsPresent && 
-                            fileClient.Exists(this.CmdletCancellationToken) && 
+                        if (!this.Force.IsPresent &&
+                            fileClient.Exists(this.CmdletCancellationToken) &&
                             !await this.OutputStream.ConfirmAsync(string.Format(CultureInfo.CurrentCulture, Resources.OverwriteConfirmation, Util.ConvertToString(cloudFileToBeUploaded))))
                         {
                             return;
-                        }                     
+                        }
 
                         await fileClient.CreateAsync(fileSize, cancellationToken: this.CmdletCancellationToken).ConfigureAwait(false);
 
@@ -207,7 +208,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                             for (long offset = 0; offset < fileSize; offset += blockSize)
                             {
                                 long currentBlockSize = offset + blockSize < fileSize ? blockSize : fileSize - offset;
-                                
+
                                 // Only need to create new buffer when chunk size change
                                 if (currentBlockSize != lastBlockSize)
                                 {
@@ -283,7 +284,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 
                     if (this.PassThru)
                     {
-                        WriteCloudFileObject(taskId, this.Channel, cloudFileToBeUploaded);
+                        WriteCloudFileObject(taskId, (AzureStorageContext)this.Context, cloudFileToBeUploaded);
                     }
                 });
             }
@@ -313,6 +314,12 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             {
                 case LocalConstants.DirectoryParameterSetName:
                     baseDirectory = this.Directory;
+                    // Build and set storage context for the output object when
+                    // 1. input track1 object and storage context is missing 2. the current context doesn't match the context of the input object 
+                    if (ShouldSetContext(this.Context, this.Directory.ServiceClient))
+                    {
+                        this.Context = GetStorageContextFromTrack1FileServiceClient(this.Directory.ServiceClient, DefaultContext);
+                    }
                     break;
 
                 case LocalConstants.ShareNameParameterSetName:
@@ -322,6 +329,12 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 
                 case LocalConstants.ShareParameterSetName:
                     baseDirectory = this.Share.GetRootDirectoryReference();
+                    // Build and set storage context for the output object when
+                    // 1. input track1 object and storage context is missing 2. the current context doesn't match the context of the input object 
+                    if (ShouldSetContext(this.Context, this.Share.ServiceClient))
+                    {
+                        this.Context = GetStorageContextFromTrack1FileServiceClient(this.Share.ServiceClient, DefaultContext);
+                    }
                     break;
 
                 default:

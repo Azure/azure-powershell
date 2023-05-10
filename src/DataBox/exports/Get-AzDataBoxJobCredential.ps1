@@ -56,7 +56,7 @@ PS C:\> $cabinetJobSecret = $obj.JobSecret.CabinetPodSecret | Format-List
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IUnencryptedCredentials
 .Link
-https://docs.microsoft.com/powershell/module/az.databox/get-azdataboxjobcredential
+https://learn.microsoft.com/powershell/module/az.databox/get-azdataboxjobcredential
 #>
 function Get-AzDataBoxJobCredential {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IUnencryptedCredentials])]

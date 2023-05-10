@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Attestation.dll-Help.xml
 Module Name: Az.Attestation
-online version: https://docs.microsoft.com/powershell/module/az.attestation/add-azattestationpolicysigner
+online version: https://learn.microsoft.com/powershell/module/az.attestation/add-azattestationpolicysigner
 schema: 2.0.0
 ---
 

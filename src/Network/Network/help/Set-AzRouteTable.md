@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 1CE2A30A-6DF8-4C4C-8348-C3C1CD4D0146
-online version: https://docs.microsoft.com/powershell/module/az.network/set-azroutetable
+online version: https://learn.microsoft.com/powershell/module/az.network/set-azroutetable
 schema: 2.0.0
 ---
 
@@ -76,18 +76,19 @@ The command passes that table to the Add-AzRouteConfig cmdlet by using the pipel
 **Add-AzRouteConfig** adds the route named Route07, and then passes the result to the current cmdlet, which updates the table to reflect your changes.
 
 ### Example 2: Modify route table
+<!-- Skip: Output cannot be splitted from code -->
 
 ```powershell
 $rt = Get-AzRouteTable -ResourceGroupName "rgName" -Name "rtName"
 $rt.DisableBgpRoutePropagation
+
 False
+
 $rt.DisableBgpRoutePropagation = $true
 Set-AzRouteTable -RouteTable $rt
 $rt = Get-AzRouteTable -ResourceGroupName "rgName" -Name "rtName"
 $rt.DisableBgpRoutePropagation
-```
 
-```output
 True
 ```
 
@@ -176,7 +177,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

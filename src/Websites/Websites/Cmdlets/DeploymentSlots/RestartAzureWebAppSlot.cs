@@ -26,10 +26,12 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
     [Cmdlet("Restart", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "WebAppSlot"), OutputType(typeof(PSSite))]
     public class RestartAzureWebAppSlotCmdlet : WebAppSlotBaseCmdlet
     {
+        [Parameter(Mandatory = false, HelpMessage = "Specify true to apply the configuration settings and restarts the app only if necessary.")]
+        public SwitchParameter SoftRestart { get; set; }
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
-            WebsitesClient.RestartWebApp(ResourceGroupName, Name, Slot);
+            WebsitesClient.RestartWebApp(ResourceGroupName, Name, Slot, SoftRestart);
             WriteObject(new PSSite(WebsitesClient.GetWebApp(ResourceGroupName, Name, Slot)));
         }
     }

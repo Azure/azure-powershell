@@ -25,7 +25,7 @@ PS C:\> Get-AzDatadogMonitorMonitoredResource -ResourceGroupName azure-rg-Datado
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.Api20210301.IMonitoredResource
 .Link
-https://docs.microsoft.com/powershell/module/az.datadog/get-azdatadogmonitormonitoredresource
+https://learn.microsoft.com/powershell/module/az.datadog/get-azdatadogmonitormonitoredresource
 #>
 function Get-AzDatadogMonitorMonitoredResource {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.Api20210301.IMonitoredResource])]

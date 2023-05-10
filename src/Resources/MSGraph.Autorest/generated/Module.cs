@@ -142,7 +142,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
         /// <summary>Creates the module instance.</summary>
         private Module()
         {
-            /// constructor
+            // constructor
             ClientAPI = new Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.MSGraph();
             _handler.Proxy = _webProxy;
             _pipeline = new Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.HttpPipeline(new Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.HttpClientFactory(new global::System.Net.Http.HttpClient()));

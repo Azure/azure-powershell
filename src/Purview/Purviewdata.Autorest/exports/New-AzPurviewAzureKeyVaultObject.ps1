@@ -30,7 +30,7 @@ Name              :
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureKeyVault
 .Link
-https://docs.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureKeyVaultObject
+https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureKeyVaultObject
 #>
 function New-AzPurviewAzureKeyVaultObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureKeyVault])]

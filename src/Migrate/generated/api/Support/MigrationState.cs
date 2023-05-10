@@ -22,15 +22,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
 
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.MigrationState InitialSeedingInProgress = @"InitialSeedingInProgress";
 
+        public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.MigrationState MigrationCompletedWithInformation = @"MigrationCompletedWithInformation";
+
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.MigrationState MigrationFailed = @"MigrationFailed";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.MigrationState MigrationInProgress = @"MigrationInProgress";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.MigrationState MigrationPartiallySucceeded = @"MigrationPartiallySucceeded";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.MigrationState MigrationSucceeded = @"MigrationSucceeded";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.MigrationState None = @"None";
 
+        public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.MigrationState ProtectionSuspended = @"ProtectionSuspended";
+
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.MigrationState Replicating = @"Replicating";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.MigrationState ResumeInProgress = @"ResumeInProgress";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.MigrationState ResumeInitiated = @"ResumeInitiated";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.MigrationState SuspendingProtection = @"SuspendingProtection";
 
         /// <summary>the value for an instance of the <see cref="MigrationState" /> Enum.</summary>
         private string _value { get; set; }
@@ -65,7 +77,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
             return this._value.GetHashCode();
         }
 
-        /// <summary>Creates an instance of the <see cref="MigrationState" Enum class./></summary>
+        /// <summary>Creates an instance of the <see cref="MigrationState"/> Enum class.</summary>
         /// <param name="underlyingValue">the value to create an instance for.</param>
         private MigrationState(string underlyingValue)
         {
@@ -96,8 +108,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
         }
 
         /// <summary>Overriding != operator for enum MigrationState</summary>
-        /// <param name="e1">the value to compare against <see cref="e2" /></param>
-        /// <param name="e2">the value to compare against <see cref="e1" /></param>
+        /// <param name="e1">the value to compare against <paramref name="e2" /></param>
+        /// <param name="e2">the value to compare against <paramref name="e1" /></param>
         /// <returns><c>true</c> if the two instances are not equal to the same value</returns>
         public static bool operator !=(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.MigrationState e1, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.MigrationState e2)
         {
@@ -105,8 +117,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
         }
 
         /// <summary>Overriding == operator for enum MigrationState</summary>
-        /// <param name="e1">the value to compare against <see cref="e2" /></param>
-        /// <param name="e2">the value to compare against <see cref="e1" /></param>
+        /// <param name="e1">the value to compare against <paramref name="e2" /></param>
+        /// <param name="e2">the value to compare against <paramref name="e1" /></param>
         /// <returns><c>true</c> if the two instances are equal to the same value</returns>
         public static bool operator ==(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.MigrationState e1, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.MigrationState e2)
         {

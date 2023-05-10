@@ -21,7 +21,7 @@ API to get lab plans.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ILabPlan
 .Link
-https://docs.microsoft.com/powershell/module/az.labservices/get-azlabserviceslabplan
+https://learn.microsoft.com/powershell/module/az.labservices/get-azlabserviceslabplan
 #>
 function Get-AzLabServicesLabPlan_ResourceId {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ILabPlan])]

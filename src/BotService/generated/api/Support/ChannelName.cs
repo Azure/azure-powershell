@@ -9,7 +9,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService.Support
     public partial struct ChannelName :
         System.IEquatable<ChannelName>
     {
+        public static Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.ChannelName AlexaChannel = @"AlexaChannel";
+
         public static Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.ChannelName DirectLineChannel = @"DirectLineChannel";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.ChannelName DirectLineSpeechChannel = @"DirectLineSpeechChannel";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.ChannelName EmailChannel = @"EmailChannel";
 
@@ -17,7 +21,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService.Support
 
         public static Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.ChannelName KikChannel = @"KikChannel";
 
+        public static Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.ChannelName LineChannel = @"LineChannel";
+
         public static Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.ChannelName MSTeamsChannel = @"MsTeamsChannel";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.ChannelName Omnichannel = @"Omnichannel";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.ChannelName OutlookChannel = @"OutlookChannel";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.ChannelName SkypeChannel = @"SkypeChannel";
 
@@ -26,6 +36,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService.Support
         public static Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.ChannelName SmsChannel = @"SmsChannel";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.ChannelName TelegramChannel = @"TelegramChannel";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.ChannelName TelephonyChannel = @"TelephonyChannel";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.ChannelName WebChatChannel = @"WebChatChannel";
 

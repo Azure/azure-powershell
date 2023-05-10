@@ -19,6 +19,8 @@ using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 using CrrModel = Microsoft.Azure.Management.RecoveryServices.Backup.CrossRegionRestore.Models;    
 using Microsoft.Rest.Azure.OData;
 using RestAzureNS = Microsoft.Rest.Azure;
+using Microsoft.Azure.Commands.Common.Strategies;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClientAdapterNS
 {
@@ -28,6 +30,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         /// Gets a job
         /// </summary>
         /// <param name="jobId">ID of the job</param>
+        /// <param name="vaultName"></param>
+        /// <param name="resourceGroupName"></param>
         /// <returns>Job response returned by the service</returns>
         public JobResource GetJob(
             string jobId,
@@ -52,7 +56,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
             CrrModel.CrrJobRequest jobRequest
             )
         {
-            return CrrAdapter.Client.BackupCrrJobDetails.GetWithHttpMessagesAsync(secondaryRegion, jobRequest).Result.Body;
+            return CrrAdapter.Client.BackupCrrJobDetails.GetWithHttpMessagesAsync(secondaryRegion, jobRequest.ResourceId, jobRequest.JobName).Result.Body;
         }
 
         public List<CrrModel.JobResource> GetCrrJobs(string vaultId,
@@ -74,9 +78,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
             
             CrrModel.CrrJobRequest crrJobRequest = new CrrModel.CrrJobRequest();
             crrJobRequest.ResourceId = vaultId;
-            
             Func<RestAzureNS.IPage<CrrModel.JobResource>> listAsync =
-                () => CrrAdapter.Client.BackupCrrJobs.ListWithHttpMessagesAsync(azureRegion, crrJobRequest, queryFilter,  cancellationToken: BmsAdapter.CmdletCancellationToken).Result.Body;
+                () => CrrAdapter.Client.BackupCrrJobs.ListWithHttpMessagesAsync(azureRegion, queryFilter, resourceId: crrJobRequest.ResourceId, jobName: crrJobRequest.JobName, cancellationToken: BmsAdapter.CmdletCancellationToken).Result.Body; 
 
             Func<string, RestAzureNS.IPage<CrrModel.JobResource>> listNextAsync =
                 nextLink => CrrAdapter.Client.BackupCrrJobs.ListNextWithHttpMessagesAsync(
@@ -85,7 +88,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
 
             return HelperUtils.GetPagedListCrr(listAsync, listNextAsync);
         }
-                
+
         /// <summary>
         /// Lists jobs according to the parameters
         /// </summary>
@@ -96,6 +99,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         /// <param name="endTime">Time when the job finished</param>
         /// <param name="backupManagementType">Backup management type of the item represented by the job</param>
         /// <param name="skipToken">Skip token pagination param</param>
+        /// <param name="vaultName"></param>
+        /// <param name="resourceGroupName"></param>
         /// <returns>Job list response from the service</returns>
         public List<JobResource> GetJobs(
             string jobId,
@@ -136,6 +141,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         /// Cancels a job
         /// </summary>
         /// <param name="jobId">ID of the job to cancel</param>
+        /// <param name="vaultName"></param>
+        /// <param name="resourceGroupName"></param>
         /// <returns>Cancelled job response from the service</returns>
         public RestAzureNS.AzureOperationResponse CancelJob(
             string jobId,
@@ -154,6 +161,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         /// </summary>
         /// <param name="jobId">ID of the job</param>
         /// <param name="operationId">ID of the operation associated with the job</param>
+        /// <param name="vaultName"></param>
+        /// <param name="resourceGroupName"></param>
         /// <returns>Job response returned by the service</returns>
         public RestAzureNS.AzureOperationResponse GetJobOperationStatus(
             string jobId,

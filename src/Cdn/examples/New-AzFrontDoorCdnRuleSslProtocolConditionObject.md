@@ -1,22 +1,11 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create an in-memory object for DeliveryRuleSslProtocolCondition
 ```powershell
-{{ Add code here }}
+New-AzFrontDoorCdnRuleSslProtocolConditionObject -Name SslProtocol -ParameterMatchValue TLSv1.2
 ```
 
 ```output
-{{ Add output here }}
+Name
+----
+SslProtocol
 ```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
 

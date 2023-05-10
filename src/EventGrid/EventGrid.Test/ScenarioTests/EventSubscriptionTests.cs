@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.EventGrid.Tests.ScenarioTests
         {
         }
 
-        [Fact]
+        [Fact(Skip = "ServiceBus is generated now. Cannot be recorded now.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void EventGrid_EventSubscription_CustomTopics()
         {
@@ -37,6 +37,13 @@ namespace Microsoft.Azure.Commands.EventGrid.Tests.ScenarioTests
         public void EventGrid_EventSubscription_CustomTopics_InputMapping()
         {
             TestRunner.RunTestScript("EventSubscriptionTests_CustomTopic_InputMapping");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void EventGrid_EventSubscription_CustomTopics_Delivery_Attributes()
+        {
+            TestRunner.RunTestScript("EventSubscriptionTests_CustomTopic_Delivery_Attributes");
         }
 
         [Fact]

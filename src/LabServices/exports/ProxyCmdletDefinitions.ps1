@@ -34,7 +34,7 @@ System.String
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ILabPlan
 .Link
-https://docs.microsoft.com/powershell/module/az.labservices/get-azlabserviceslabplan
+https://learn.microsoft.com/powershell/module/az.labservices/get-azlabserviceslabplan
 #>
 function Get-AzLabServicesLabPlan {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ILabPlan])]
@@ -234,7 +234,7 @@ LABPLAN <LabPlan>:
   [Tag <ITrackedResourceTags>]: Resource tags.
     [(Any) <String>]: This indicates any property can be added to this object.
 .Link
-https://docs.microsoft.com/powershell/module/az.labservices/get-azlabservicesplanimage
+https://learn.microsoft.com/powershell/module/az.labservices/get-azlabservicesplanimage
 #>
 function Get-AzLabServicesPlanImage {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IImage])]
@@ -462,7 +462,7 @@ LAB <Lab>:
   [Tag <ITrackedResourceTags>]: Resource tags.
     [(Any) <String>]: This indicates any property can be added to this object.
 .Link
-https://docs.microsoft.com/powershell/module/az.labservices/get-azlabservicesschedule
+https://learn.microsoft.com/powershell/module/az.labservices/get-azlabservicesschedule
 #>
 function Get-AzLabServicesSchedule {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ISchedule])]
@@ -687,7 +687,7 @@ LAB <Lab>:
   [Tag <ITrackedResourceTags>]: Resource tags.
     [(Any) <String>]: This indicates any property can be added to this object.
 .Link
-https://docs.microsoft.com/powershell/module/az.labservices/get-azlabservicesuser
+https://learn.microsoft.com/powershell/module/az.labservices/get-azlabservicesuser
 #>
 function Get-AzLabServicesUser {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IUser])]
@@ -914,7 +914,7 @@ LAB <Lab>:
   [Tag <ITrackedResourceTags>]: Resource tags.
     [(Any) <String>]: This indicates any property can be added to this object.
 .Link
-https://docs.microsoft.com/powershell/module/az.labservices/get-azlabservicesvm
+https://learn.microsoft.com/powershell/module/az.labservices/get-azlabservicesvm
 #>
 function Get-AzLabServicesVM {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IVirtualMachine])]
@@ -1085,7 +1085,7 @@ westus2  testplan
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ILabPlan
 .Link
-https://docs.microsoft.com/powershell/module/az.labservices/new-azlabserviceslabplan
+https://learn.microsoft.com/powershell/module/az.labservices/new-azlabserviceslabplan
 #>
 function New-AzLabServicesLabPlan {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ILabPlan])]
@@ -1427,7 +1427,7 @@ LAB <Lab>:
   [Tag <ITrackedResourceTags>]: Resource tags.
     [(Any) <String>]: This indicates any property can be added to this object.
 .Link
-https://docs.microsoft.com/powershell/module/az.labservices/new-azlabservicesschedule
+https://learn.microsoft.com/powershell/module/az.labservices/new-azlabservicesschedule
 #>
 function New-AzLabServicesSchedule {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ISchedule])]
@@ -1687,7 +1687,7 @@ LAB <Lab>:
   [Tag <ITrackedResourceTags>]: Resource tags.
     [(Any) <String>]: This indicates any property can be added to this object.
 .Link
-https://docs.microsoft.com/powershell/module/az.labservices/new-azlabservicesuser
+https://learn.microsoft.com/powershell/module/az.labservices/new-azlabservicesuser
 #>
 function New-AzLabServicesUser {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IUser])]
@@ -1918,7 +1918,7 @@ LAB <Lab>:
   [Tag <ITrackedResourceTags>]: Resource tags.
     [(Any) <String>]: This indicates any property can be added to this object.
 .Link
-https://docs.microsoft.com/powershell/module/az.labservices/publish-azlabserviceslab
+https://learn.microsoft.com/powershell/module/az.labservices/publish-azlabserviceslab
 #>
 function Publish-AzLabServicesLab {
 [OutputType([System.Boolean], [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ILab])]
@@ -2121,7 +2121,7 @@ LABPLAN <LabPlan>:
   [Tag <ITrackedResourceTags>]: Resource tags.
     [(Any) <String>]: This indicates any property can be added to this object.
 .Link
-https://docs.microsoft.com/powershell/module/az.labservices/remove-azlabserviceslabplan
+https://learn.microsoft.com/powershell/module/az.labservices/remove-azlabserviceslabplan
 #>
 function Remove-AzLabServicesLabPlan {
 [OutputType([System.Boolean])]
@@ -2361,7 +2361,7 @@ LABPLAN <LabPlan>:
   [Tag <ITrackedResourceTags>]: Resource tags.
     [(Any) <String>]: This indicates any property can be added to this object.
 .Link
-https://docs.microsoft.com/powershell/module/az.labservices/remove-azlabserviceslab
+https://learn.microsoft.com/powershell/module/az.labservices/remove-azlabserviceslab
 #>
 function Remove-AzLabServicesLab {
 [OutputType([System.Boolean])]
@@ -2551,7 +2551,7 @@ SCHEDULE <Schedule>:
   [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
   [TimeZoneId <String>]: The IANA timezone id for the schedule.
 .Link
-https://docs.microsoft.com/powershell/module/az.labservices/remove-azlabservicesschedule
+https://learn.microsoft.com/powershell/module/az.labservices/remove-azlabservicesschedule
 #>
 function Remove-AzLabServicesSchedule {
 [OutputType([System.Boolean])]
@@ -2787,7 +2787,7 @@ USER <User>:
   [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
   [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
 .Link
-https://docs.microsoft.com/powershell/module/az.labservices/remove-azlabservicesuser
+https://learn.microsoft.com/powershell/module/az.labservices/remove-azlabservicesuser
 #>
 function Remove-AzLabServicesUser {
 [OutputType([System.Boolean])]
@@ -2962,7 +2962,7 @@ PS C:\> Save-AzLabServicesLabPlanImage -ResourceGroupName "Group Name" -LabName 
 .Outputs
 System.Boolean
 .Link
-https://docs.microsoft.com/powershell/module/az.labservices/save-azlabserviceslabplanimage
+https://learn.microsoft.com/powershell/module/az.labservices/save-azlabserviceslabplanimage
 #>
 function Save-AzLabServicesLabPlanImage {
 [OutputType([System.Boolean])]
@@ -3138,7 +3138,7 @@ USER <User>:
   [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
   [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
 .Link
-https://docs.microsoft.com/powershell/module/az.labservices/send-azlabservicesuserinvite
+https://learn.microsoft.com/powershell/module/az.labservices/send-azlabservicesuserinvite
 #>
 function Send-AzLabServicesUserInvite {
 [OutputType([System.Boolean], [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IVirtualMachine])]
@@ -3314,7 +3314,7 @@ Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IVirtua
 .Outputs
 System.Boolean
 .Link
-https://docs.microsoft.com/powershell/module/az.labservices/start-azlabservicesvmredeployment
+https://learn.microsoft.com/powershell/module/az.labservices/start-azlabservicesvmredeployment
 #>
 function Start-AzLabServicesVMRedeployment {
 [OutputType([System.Boolean], [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IVirtualMachine])]
@@ -3489,7 +3489,7 @@ VM <VirtualMachine>:
   [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
   [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
 .Link
-https://docs.microsoft.com/powershell/module/az.labservices/start-azlabservicesvm
+https://learn.microsoft.com/powershell/module/az.labservices/start-azlabservicesvm
 #>
 function Start-AzLabServicesVM {
 [OutputType([System.Boolean], [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IVirtualMachine])]
@@ -3672,7 +3672,7 @@ VM <VirtualMachine>:
   [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
   [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
 .Link
-https://docs.microsoft.com/powershell/module/az.labservices/stop-azlabservicesvm
+https://learn.microsoft.com/powershell/module/az.labservices/stop-azlabservicesvm
 #>
 function Stop-AzLabServicesVM {
 [OutputType([System.Boolean], [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IVirtualMachine])]
@@ -3898,7 +3898,7 @@ LAB <Lab>:
   [Tag <ITrackedResourceTags>]: Resource tags.
     [(Any) <String>]: This indicates any property can be added to this object.
 .Link
-https://docs.microsoft.com/powershell/module/az.labservices/sync-azlabserviceslabuser
+https://learn.microsoft.com/powershell/module/az.labservices/sync-azlabserviceslabuser
 #>
 function Sync-AzLabServicesLabUser {
 [OutputType([System.Boolean], [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IUser])]
@@ -4089,7 +4089,7 @@ LABPLAN <LabPlan>:
   [Tag <ITrackedResourceTags>]: Resource tags.
     [(Any) <String>]: This indicates any property can be added to this object.
 .Link
-https://docs.microsoft.com/powershell/module/az.labservices/update-azlabserviceslabplan
+https://learn.microsoft.com/powershell/module/az.labservices/update-azlabserviceslabplan
 #>
 function Update-AzLabServicesLabPlan {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ILabPlan])]
@@ -4412,7 +4412,7 @@ LABPLAN <LabPlan>:
   [Tag <ITrackedResourceTags>]: Resource tags.
     [(Any) <String>]: This indicates any property can be added to this object.
 .Link
-https://docs.microsoft.com/powershell/module/az.labservices/update-azlabservicesplanimage
+https://learn.microsoft.com/powershell/module/az.labservices/update-azlabservicesplanimage
 #>
 function Update-AzLabServicesPlanImage {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IImage])]
@@ -4636,7 +4636,7 @@ LAB <Lab>:
   [Tag <ITrackedResourceTags>]: Resource tags.
     [(Any) <String>]: This indicates any property can be added to this object.
 .Link
-https://docs.microsoft.com/powershell/module/az.labservices/update-azlabservicesschedule
+https://learn.microsoft.com/powershell/module/az.labservices/update-azlabservicesschedule
 #>
 function Update-AzLabServicesSchedule {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ISchedule])]
@@ -4903,7 +4903,7 @@ LAB <Lab>:
   [Tag <ITrackedResourceTags>]: Resource tags.
     [(Any) <String>]: This indicates any property can be added to this object.
 .Link
-https://docs.microsoft.com/powershell/module/az.labservices/update-azlabservicesuser
+https://learn.microsoft.com/powershell/module/az.labservices/update-azlabservicesuser
 #>
 function Update-AzLabServicesUser {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IUser])]
@@ -5092,7 +5092,7 @@ VM <VirtualMachine>:
   [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
   [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
 .Link
-https://docs.microsoft.com/powershell/module/az.labservices/update-azlabservicesvmreimage
+https://learn.microsoft.com/powershell/module/az.labservices/update-azlabservicesvmreimage
 #>
 function Update-AzLabServicesVMReimage {
 [OutputType([System.Boolean], [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IVirtualMachine])]
@@ -5285,7 +5285,7 @@ USER <User>:
   [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
   [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
 .Link
-https://docs.microsoft.com/powershell/module/az.labservices/add-azlabservicesuserquota
+https://learn.microsoft.com/powershell/module/az.labservices/add-azlabservicesuserquota
 #>
 function Add-AzLabServicesUserQuota {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IUser])]
@@ -5438,7 +5438,7 @@ westus2  labName             Microsoft.LabServices/labs
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ILab
 .Link
-https://docs.microsoft.com/powershell/module/az.labservices/get-azlabserviceslabforvm
+https://learn.microsoft.com/powershell/module/az.labservices/get-azlabserviceslabforvm
 #>
 function Get-AzLabServicesLabForVM {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ILab])]
@@ -5618,7 +5618,7 @@ LABPLAN <LabPlan>:
   [Tag <ITrackedResourceTags>]: Resource tags.
     [(Any) <String>]: This indicates any property can be added to this object.
 .Link
-https://docs.microsoft.com/powershell/module/az.labservices/get-azlabserviceslab
+https://learn.microsoft.com/powershell/module/az.labservices/get-azlabserviceslab
 #>
 function Get-AzLabServicesLab {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ILab])]
@@ -5820,7 +5820,7 @@ LAB <Lab>:
   [Tag <ITrackedResourceTags>]: Resource tags.
     [(Any) <String>]: This indicates any property can be added to this object.
 .Link
-https://docs.microsoft.com/powershell/module/az.labservices/get-azlabservicestemplatevm
+https://learn.microsoft.com/powershell/module/az.labservices/get-azlabservicestemplatevm
 #>
 function Get-AzLabServicesTemplateVM {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IVirtualMachine])]
@@ -6021,7 +6021,7 @@ USER <User>:
   [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
   [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
 .Link
-https://docs.microsoft.com/powershell/module/az.labservices/get-azlabservicesuservm
+https://learn.microsoft.com/powershell/module/az.labservices/get-azlabservicesuservm
 #>
 function Get-AzLabServicesUserVM {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IVirtualMachine])]
@@ -6198,7 +6198,7 @@ westus2  NewLab
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ILab
 .Link
-https://docs.microsoft.com/powershell/module/az.labservices/new-azlabserviceslab
+https://learn.microsoft.com/powershell/module/az.labservices/new-azlabserviceslab
 #>
 function New-AzLabServicesLab {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ILab])]
@@ -6630,7 +6630,7 @@ VM <VirtualMachine>:
   [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
   [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
 .Link
-https://docs.microsoft.com/powershell/module/az.labservices/reset-azlabservicesvmpassword
+https://learn.microsoft.com/powershell/module/az.labservices/reset-azlabservicesvmpassword
 #>
 function Reset-AzLabServicesVMPassword {
 [OutputType([System.Boolean], [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IVirtualMachine])]
@@ -6824,7 +6824,7 @@ USER <User>:
   [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
   [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
 .Link
-https://docs.microsoft.com/powershell/module/az.labservices/start-azlabservicesuservm
+https://learn.microsoft.com/powershell/module/az.labservices/start-azlabservicesuservm
 #>
 function Start-AzLabServicesUserVM {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IVirtualMachine])]
@@ -6990,7 +6990,7 @@ USER <User>:
   [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
   [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
 .Link
-https://docs.microsoft.com/powershell/module/az.labservices/stop-azlabservicesuservm
+https://learn.microsoft.com/powershell/module/az.labservices/stop-azlabservicesuservm
 #>
 function Stop-AzLabServicesUserVM {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IVirtualMachine])]
@@ -7143,7 +7143,7 @@ westus2  Lab Name
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ILab
 .Link
-https://docs.microsoft.com/powershell/module/az.labservices/update-azlabserviceslab
+https://learn.microsoft.com/powershell/module/az.labservices/update-azlabserviceslab
 #>
 function Update-AzLabServicesLab {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ILab])]
@@ -7595,7 +7595,7 @@ LAB <Lab>:
   [Tag <ITrackedResourceTags>]: Resource tags.
     [(Any) <String>]: This indicates any property can be added to this object.
 .Link
-https://docs.microsoft.com/powershell/module/az.labservices/update-azlabservicesquota
+https://learn.microsoft.com/powershell/module/az.labservices/update-azlabservicesquota
 #>
 function Update-AzLabServicesQuota {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ILab])]

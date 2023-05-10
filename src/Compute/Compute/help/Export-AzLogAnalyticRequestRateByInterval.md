@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
-online version: https://docs.microsoft.com/powershell/module/az.compute/export-azloganalyticrequestratebyinterval
+online version: https://learn.microsoft.com/powershell/module/az.compute/export-azloganalyticrequestratebyinterval
 schema: 2.0.0
 ---
 
@@ -23,7 +23,7 @@ Export-AzLogAnalyticRequestRateByInterval [-Location] <String> [-FromTime] <Date
 Exports statistical data about the subscription's calls to the Microsoft.Compute API by Success, Failure, or Throttled status, in predefined time intervals. The logs can be further grouped by five parameters: GroupByOperationName, GroupByThrottlePolicy, GroupByResourceName, GroupByUserAgent, or GroupByApplicationId.
 Note that this cmdlet collects only Compute Resource Provider logs; moreover, data about the Disk and Snapshot resource types is not yet available.
 
-For an overview of the Compute Resource Provider's API throttling, see https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-request-limits. 
+For an overview of the Compute Resource Provider's API throttling, see https://learn.microsoft.com/azure/azure-resource-manager/resource-manager-request-limits. 
 
 ## EXAMPLES
 
@@ -147,6 +147,7 @@ Group query result by Application Id.
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
+
 Required: False
 Position: Named
 Default value: None
@@ -206,6 +207,7 @@ Group query result by UserAgent.
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
+
 Required: False
 Position: Named
 Default value: None

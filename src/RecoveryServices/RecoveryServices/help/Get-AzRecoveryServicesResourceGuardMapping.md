@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Backup.dll-Help.xml
 Module Name: Az.RecoveryServices
-online version:
+online version: https://learn.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesresourceguardmapping
 schema: 2.0.0
 ---
 
@@ -25,7 +25,7 @@ Gets the resource guard mapping added to the recovery services vault. This cmdle
 ### Example 1 Fetch the resource guard mapping
 
 ```powershell
-PS C:\> Get-AzRecoveryServicesResourceGuardMapping -VaultId $vault.ID
+Get-AzRecoveryServicesResourceGuardMapping -VaultId $vault.ID
 ```
 
 The above command fetches the existing mapping between the vault and the resource guard.

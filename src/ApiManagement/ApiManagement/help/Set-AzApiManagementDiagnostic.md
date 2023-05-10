@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ApiManagement.ServiceManagement.dll-Help.xml
 Module Name: Az.ApiManagement
-online version: https://docs.microsoft.com/powershell/module/az.apimanagement/set-azapimanagementdiagnostic
+online version: https://learn.microsoft.com/powershell/module/az.apimanagement/set-azapimanagementdiagnostic
 schema: 2.0.0
 ---
 
@@ -45,6 +45,7 @@ The cmdlet **Set-AzApiManagementDiagnostic** updates the diagnostics which is co
 ## EXAMPLES
 
 ### Example 1: Modify a diagnostic at the Global scope
+<!-- Skip: Output cannot be splitted from code -->
 ```powershell
 $context =New-AzApiManagementContext -ResourceGroupName Api-Default-WestUS -ServiceName contoso
 $diagnostic=Get-AzApiManagementDiagnostic -Context $context -DiagnosticId "applicationinsights"

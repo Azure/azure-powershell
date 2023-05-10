@@ -14,6 +14,8 @@
 
 using System.Collections.Generic;
 using Microsoft.Azure.Commands.TestFx;
+using Microsoft.Azure.OperationalInsights;
+using Microsoft.Azure.Test.HttpRecorder;
 using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.OperationalInsights.Test
@@ -47,9 +49,16 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Test
                     {
                         {"Microsoft.Resources", null},
                         {"Microsoft.Features", null},
+                        {"Microsoft.Storage", null},
                         {"Microsoft.Authorization", null}
                     }
                 )
+                .WithManagementClients(context =>
+                {
+                    var credentials = new ApiKeyClientCredentials("DEMO_KEY");
+                    var operationalInsightsDataClient = new OperationalInsightsDataClient(credentials, HttpMockServer.CreateInstance());
+                    return operationalInsightsDataClient;
+                })
                 .Build();
         }
     }

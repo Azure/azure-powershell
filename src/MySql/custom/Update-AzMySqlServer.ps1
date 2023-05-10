@@ -107,6 +107,13 @@ function Update-AzMySqlServer {
         [System.Collections.Hashtable]
         ${Tag},
 
+        [Parameter(HelpMessage="Whether or not public network access is allowed for this server. Value is optional but if passed in, must be 'Enabled' or 'Disabled'")]
+        [Validateset('Enabled', 'Disabled')]
+        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.PublicNetworkAccessEnum])]
+        [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
+        [Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.PublicNetworkAccessEnum]
+        ${PublicNetworkAccess},
+
         [Parameter(HelpMessage = 'The credentials, account, tenant, and subscription used for communication with Azure.')]
         [Alias('AzureRMContext', 'AzureCredential')]
         [ValidateNotNull()]

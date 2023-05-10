@@ -140,6 +140,7 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateSet(
             MNM.FirewallPolicySkuTier.Standard,
             MNM.FirewallPolicySkuTier.Premium,
+            MNM.FirewallPolicySkuTier.Basic,
             IgnoreCase = true)]
         public string SkuTier { get; set; }
 
@@ -160,6 +161,16 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             HelpMessage = "The Private IP Range")]
         public string[] PrivateRange { get; set; }
+
+       [Parameter(
+            Mandatory = false,
+            HelpMessage = "Explicit Proxy Settings in Firewall Policy.")]
+        public PSAzureFirewallPolicyExplicitProxy ExplicitProxy { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The private IP addresses/IP ranges to which traffic will not be SNAT in Firewall Policy.")]
+        public PSAzureFirewallPolicySNAT Snat { get; set; }
 
         private void AddPremiumProperties(PSAzureFirewallPolicy firewallPolicy)
         {
@@ -244,6 +255,9 @@ namespace Microsoft.Azure.Commands.Network
                 this.UserAssignedIdentityId = this.IsParameterBound(c => c.UserAssignedIdentityId) ? UserAssignedIdentityId : (InputObject.Identity?.UserAssignedIdentities != null ? InputObject.Identity.UserAssignedIdentities?.First().Key : null);
                 this.SkuTier = this.IsParameterBound(c => c.SkuTier) ? SkuTier : (InputObject.Sku?.Tier != null ? InputObject.Sku.Tier : null);
                 this.PrivateRange = this.IsParameterBound(c => c.PrivateRange) ? PrivateRange : InputObject.PrivateRange;
+                this.ExplicitProxy = this.IsParameterBound(c => c.ExplicitProxy) ? ExplicitProxy : InputObject.ExplicitProxy;
+                this.Tag = this.IsParameterBound(c => c.Tag) ? Tag : InputObject.Tag;
+                this.Snat = this.IsParameterBound(c => c.Snat) ? Snat : InputObject.Snat;
 
                 var firewallPolicy = new PSAzureFirewallPolicy()
                 {
@@ -255,12 +269,19 @@ namespace Microsoft.Azure.Commands.Network
                     BasePolicy = this.BasePolicy != null ? new Microsoft.Azure.Management.Network.Models.SubResource(this.BasePolicy) : null,
                     DnsSettings = this.DnsSetting,
                     SqlSetting = this.SqlSetting,
-                    PrivateRange = this.PrivateRange
+                    PrivateRange = this.PrivateRange,
+                    ExplicitProxy = this.ExplicitProxy
                 };
+
+                if (this.Snat != null)
+                {
+                    firewallPolicy.Snat = this.Snat;
+                }
 
                 AddPremiumProperties(firewallPolicy);
 
                 var azureFirewallPolicyModel = NetworkResourceManagerProfile.Mapper.Map<MNM.FirewallPolicy>(firewallPolicy);
+                azureFirewallPolicyModel.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true);
 
                 // Execute the PUT AzureFirewall Policy call
                 this.AzureFirewallPolicyClient.CreateOrUpdate(ResourceGroupName, Name, azureFirewallPolicyModel);
@@ -269,6 +290,11 @@ namespace Microsoft.Azure.Commands.Network
             }
             else
             {
+                if (this.Snat != null && this.PrivateRange != null && this.PrivateRange.Length > 0)
+                {
+                    throw new ArgumentException("Please use Snat parameter to set PrivateRange. Private ranges can not be provided on both Snat and PrivateRange parameters at the same time.");
+                }
+
                 var firewallPolicy = new PSAzureFirewallPolicy()
                 {
                     Name = this.Name,
@@ -279,8 +305,14 @@ namespace Microsoft.Azure.Commands.Network
                     BasePolicy = BasePolicy != null ? new Microsoft.Azure.Management.Network.Models.SubResource(BasePolicy) : null,
                     DnsSettings = this.DnsSetting,
                     SqlSetting = this.SqlSetting,
-                    PrivateRange = this.PrivateRange
+                    PrivateRange = this.PrivateRange,
+                    ExplicitProxy = this.ExplicitProxy
                 };
+
+                if (this.Snat != null)
+                {
+                    firewallPolicy.Snat = this.Snat;
+                }
 
                 AddPremiumProperties(firewallPolicy);
 

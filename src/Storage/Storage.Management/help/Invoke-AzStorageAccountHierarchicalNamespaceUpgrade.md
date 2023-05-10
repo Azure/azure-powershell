@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.Management.dll-Help.xml
 Module Name: Az.Storage
-online version: https://docs.microsoft.com/powershell/module/az.storage/invoke-azstorageaccounthierarchicalnamespaceupgrade
+online version: https://learn.microsoft.com/powershell/module/az.storage/invoke-azstorageaccounthierarchicalnamespaceupgrade
 schema: 2.0.0
 ---
 
@@ -31,6 +31,7 @@ The **Invoke-AzStorageAccountHierarchicalNamespaceUpgrade** cmdlet can validate 
 ## EXAMPLES
 
 ### Example 1: Validate a stroage account can be upgrade to enable HierarchicalNamespace, then upgrade it to enabled HierarchicalNamespace
+<!-- Skip: Output cannot be splitted from code -->
 ```
 PS C:\> Invoke-AzStorageAccountHierarchicalNamespaceUpgrade -ResourceGroupName $rgname -Name $accountName -RequestType Validation
 True

@@ -1,7 +1,7 @@
 parameters:
-  osName: ''
   configuration: ''
   testFramework: ''
+  powerShellPlatform: ''
 
 steps:
 - template: download-build-steps.yml
@@ -31,6 +31,17 @@ steps:
 
 - pwsh: 'Install-Module "platyPS", "PSScriptAnalyzer" -Force -Confirm:$false -Scope CurrentUser'
   displayName: 'Install PowerShell Dependencies'
+
+- task: PowerShell@2
+  displayName: 'Install latest modules'
+  inputs:
+    targetType: 'inline'
+    script: |
+      New-Item -ItemType Directory -Path "Az-Cmdlets-latest"
+      Invoke-WebRequest -Uri "https://azpspackage.blob.core.windows.net/release/Az-Cmdlets-latest.tar.gz" -OutFile "Az-Cmdlets-latest/Az-Cmdlets-latest.tar.gz" -MaximumRetryCount 2 -RetryIntervalSec 1
+      tar -xvzf "Az-Cmdlets-latest/Az-Cmdlets-latest.tar.gz" -C "Az-Cmdlets-latest"
+      . Az-Cmdlets-latest/InstallModule.ps1
+    pwsh: true
   
 - task: DotNetCoreCLI@2
   displayName: 'Generate Help'
@@ -38,6 +49,9 @@ steps:
     command: custom
     custom: msbuild
     arguments: 'build.proj /t:GenerateHelp /p:Configuration=${{ parameters.configuration }};PullRequestNumber=$(System.PullRequest.PullRequestNumber)'
+  env:
+      OCTOKITPAT: $(OCTOKITPAT)
+      PowerShellPlatform: ${{ parameters.powerShellPlatform }}
 
 - task: DotNetCoreCLI@2
   displayName: 'Static Analysis'
@@ -45,6 +59,8 @@ steps:
     command: custom
     custom: msbuild
     arguments: 'build.proj /t:StaticAnalysis /p:Configuration=${{ parameters.configuration }};PullRequestNumber=$(System.PullRequest.PullRequestNumber)'
+  env:
+      OCTOKITPAT: $(OCTOKITPAT)
 
 - template: publish-artifacts-steps.yml
   parameters:

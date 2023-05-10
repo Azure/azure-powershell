@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 1.2.0
+* Added a new optional parameter `AlwaysServe` for endpoints.
+
 ## Version 1.1.0
 * Added two new optional parameters 'MinChildEndpointsIPv4' and 'MinChildEndpointsIPv6' for nested endpoints
 

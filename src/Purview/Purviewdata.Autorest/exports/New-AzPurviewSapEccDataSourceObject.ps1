@@ -37,7 +37,7 @@ SystemNumber             : 32
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.SapEccDataSource
 .Link
-https://docs.microsoft.com/powershell/module/az.Purview/new-AzPurviewSapEccDataSourceObject
+https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewSapEccDataSourceObject
 #>
 function New-AzPurviewSapEccDataSourceObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.SapEccDataSource])]

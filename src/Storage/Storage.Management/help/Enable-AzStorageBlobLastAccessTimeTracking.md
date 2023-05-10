@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.Management.dll-Help.xml
 Module Name: Az.Storage
-online version: https://docs.microsoft.com/powershell/module/az.storage/enable-azstoragebloblastaccesstimetracking
+online version: https://learn.microsoft.com/powershell/module/az.storage/enable-azstoragebloblastaccesstimetracking
 schema: 2.0.0
 ---
 
@@ -30,9 +30,10 @@ The **Enable-AzStorageBlobLastAccessTimeTracking** cmdlet enables last access ti
 ## EXAMPLES
 
 ### Example 1: Enable last access time tracking for the Blob service
+```powershell
+Enable-AzStorageBlobLastAccessTimeTracking -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -PassThru 
 ```
-C:\PS>Enable-AzStorageBlobLastAccessTimeTracking -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -PassThru 
-
+```output
 Enable Name               TrackingGranularityInDays BlobType   
 ------ ----               ------------------------- --------   
   True AccessTimeTracking                         1 {blockBlob}

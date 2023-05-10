@@ -46,6 +46,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
         /// <param name="resourceId">The resource Id.</param>
         /// <param name="cancellationToken">The cancellation token</param>
         /// <param name="pre">When specified, indicates if pre-release API versions should be considered.</param>
+        /// <param name="cmdletHeaderValues">The cmdlet info header values.</param>
         internal static Task<string> DetermineApiVersion(IAzureContext context, string resourceId, CancellationToken cancellationToken, bool? pre = null, Dictionary<string, string> cmdletHeaderValues = null)
         {
             var providerNamespace = ResourceIdUtility.GetExtensionProviderNamespace(resourceId)
@@ -65,6 +66,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
         /// <param name="resourceType">The resource type.</param>
         /// <param name="cancellationToken">The cancellation token</param>
         /// <param name="pre">When specified, indicates if pre-release API versions should be considered.</param>
+        /// <param name="cmdletHeaderValues">The cmdlet info header values.</param>
         internal static Task<string> DetermineApiVersion(IAzureContext context, string providerNamespace, string resourceType, CancellationToken cancellationToken, bool? pre = null, Dictionary<string, string> cmdletHeaderValues = null)
         {
             var cacheKey = ApiVersionCache.GetCacheKey(context.Environment.Name, providerNamespace: providerNamespace, resourceType: resourceType);
@@ -106,6 +108,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
         /// <param name="providerNamespace">The provider namespace.</param>
         /// <param name="resourceType">The resource type.</param>
         /// <param name="cancellationToken">The cancellation token.</param>
+        /// <param name="cmdletHeaderValues">The cmdlet info header values.</param>
         private static string[] GetApiVersionsForResourceType(IAzureContext context, string providerNamespace, string resourceType, CancellationToken cancellationToken, Dictionary<string, string> cmdletHeaderValues = null)
         {
             var resourceManagerClient = ResourceManagerClientHelper.GetResourceManagerClient(context, cmdletHeaderValues);

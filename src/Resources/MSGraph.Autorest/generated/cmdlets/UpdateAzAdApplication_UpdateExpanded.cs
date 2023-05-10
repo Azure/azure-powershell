@@ -107,13 +107,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         /// <summary>The reference to the client API class.</summary>
         public Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.MSGraph Client => Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Module.Instance.ClientAPI;
 
-        /// <summary>.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = ".")]
+        /// <summary>
+        /// Date and time when this object was deleted. Always null when the object hasn't been deleted.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Date and time when this object was deleted. Always null when the object hasn't been deleted.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @".",
+        Description = @"Date and time when this object was deleted. Always null when the object hasn't been deleted.",
         SerializedName = @"deletedDateTime",
         PossibleTypes = new [] { typeof(global::System.DateTime) })]
         public global::System.DateTime CreatedOnBehalfOfDeletedDateTime { get => _body.CreatedOnBehalfOfDeletedDateTime ?? default(global::System.DateTime); set => _body.CreatedOnBehalfOfDeletedDateTime = value; }
@@ -130,21 +132,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         public string CreatedOnBehalfOfDisplayName { get => _body.CreatedOnBehalfOfDisplayName ?? null; set => _body.CreatedOnBehalfOfDisplayName = value; }
 
         /// <summary>
-        /// The credentials, account, tenant, and subscription used for communication with Azure
+        /// The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet
+        /// against a different subscription
         /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The credentials, account, tenant, and subscription used for communication with Azure.")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.")]
         [global::System.Management.Automation.ValidateNotNull]
         [global::System.Management.Automation.Alias("AzureRMContext", "AzureCredential")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.ParameterCategory.Azure)]
         public global::System.Management.Automation.PSObject DefaultProfile { get; set; }
 
-        /// <summary>.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = ".")]
+        /// <summary>
+        /// Date and time when this object was deleted. Always null when the object hasn't been deleted.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Date and time when this object was deleted. Always null when the object hasn't been deleted.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @".",
+        Description = @"Date and time when this object was deleted. Always null when the object hasn't been deleted.",
         SerializedName = @"deletedDateTime",
         PossibleTypes = new [] { typeof(global::System.DateTime) })]
         public global::System.DateTime DeletedDateTime { get => _body.DeletedDateTime ?? default(global::System.DateTime); set => _body.DeletedDateTime = value; }
@@ -188,6 +193,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         SerializedName = @"displayName",
         PossibleTypes = new [] { typeof(string) })]
         public string DisplayName { get => _body.DisplayName ?? null; set => _body.DisplayName = value; }
+
+        /// <summary>
+        /// Federated identities for applications. Supports $expand and $filter (eq when counting empty collections).
+        /// </summary>
+        [global::System.Management.Automation.AllowEmptyCollection]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Federated identities for applications. Supports $expand and $filter (eq when counting empty collections).")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Federated identities for applications. Supports $expand and $filter (eq when counting empty collections).",
+        SerializedName = @"federatedIdentityCredentials",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphFederatedIdentityCredential) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphFederatedIdentityCredential[] FederatedIdentityCredentials { get => _body.FederatedIdentityCredentials ?? null /* arrayOf */; set => _body.FederatedIdentityCredentials = value; }
 
         /// <summary>
         /// Configures the groups claim issued in a user or OAuth 2.0 access token that the application expects. To set this attribute,
@@ -556,8 +575,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10Beta.IOdataError"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10Beta.IOdataError">Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10Beta.IOdataError</see>
+        /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onDefault method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
@@ -748,8 +767,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10Beta.IOdataError"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10Beta.IOdataError">Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10Beta.IOdataError</see>
+        /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>

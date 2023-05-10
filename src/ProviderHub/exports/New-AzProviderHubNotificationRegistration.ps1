@@ -42,7 +42,7 @@ NOTIFICATIONENDPOINT <INotificationEndpoint[]>: .
   [Location <String[]>]: 
   [NotificationDestination <String>]: 
 .Link
-https://docs.microsoft.com/powershell/module/az.providerhub/new-azproviderhubnotificationregistration
+https://learn.microsoft.com/powershell/module/az.providerhub/new-azproviderhubnotificationregistration
 #>
 function New-AzProviderHubNotificationRegistration {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.INotificationRegistration])]

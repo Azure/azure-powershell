@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Synapse.dll-Help.xml
 Module Name: Az.Synapse
-online version: https://docs.microsoft.com/powershell/module/az.synapse/update-azsynapsesparkpool
+online version: https://learn.microsoft.com/powershell/module/az.synapse/update-azsynapsesparkpool
 schema: 2.0.0
 ---
 
@@ -17,8 +17,10 @@ Updates a Apache Spark pool in Azure Synapse Analytics.
 Update-AzSynapseSparkPool [-ResourceGroupName <String>] -WorkspaceName <String> -Name <String>
  [-Tag <Hashtable>] [-EnableAutoScale <Boolean>] [-AutoScaleMinNodeCount <Int32>]
  [-AutoScaleMaxNodeCount <Int32>] [-EnableAutoPause <Boolean>] [-AutoPauseDelayInMinute <Int32>]
- [-NodeCount <Int32>] [-NodeSize <String>] [-SparkVersion <String>] [-LibraryRequirementsFilePath <String>]
- [-SparkConfigFilePath <String>] [-PackageAction <PackageActionType>]
+ [-NodeCount <Int32>] [-EnableIsolatedCompute <Boolean>] [-NodeSize <String>]
+ [-EnableDynamicExecutorAllocation <Boolean>] [-MinExecutorCount <Int32>] [-MaxExecutorCount <Int32>]
+ [-SparkVersion <String>] [-LibraryRequirementsFilePath <String>] [-SparkConfigFilePath <String>]
+ [-SparkConfiguration <PSSparkConfigurationResource>] [-PackageAction <PackageActionType>]
  [-Package <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Synapse.Models.WorkspacePackages.PSSynapseWorkspacePackage]>]
  [-ForceApplySetting] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -28,9 +30,11 @@ Update-AzSynapseSparkPool [-ResourceGroupName <String>] -WorkspaceName <String> 
 ```
 Update-AzSynapseSparkPool -Name <String> -WorkspaceObject <PSSynapseWorkspace> [-Tag <Hashtable>]
  [-EnableAutoScale <Boolean>] [-AutoScaleMinNodeCount <Int32>] [-AutoScaleMaxNodeCount <Int32>]
- [-EnableAutoPause <Boolean>] [-AutoPauseDelayInMinute <Int32>] [-NodeCount <Int32>] [-NodeSize <String>]
- [-SparkVersion <String>] [-LibraryRequirementsFilePath <String>] [-SparkConfigFilePath <String>]
- [-PackageAction <PackageActionType>]
+ [-EnableAutoPause <Boolean>] [-AutoPauseDelayInMinute <Int32>] [-NodeCount <Int32>]
+ [-EnableIsolatedCompute <Boolean>] [-NodeSize <String>] [-EnableDynamicExecutorAllocation <Boolean>]
+ [-MinExecutorCount <Int32>] [-MaxExecutorCount <Int32>] [-SparkVersion <String>]
+ [-LibraryRequirementsFilePath <String>] [-SparkConfigFilePath <String>]
+ [-SparkConfiguration <PSSparkConfigurationResource>] [-PackageAction <PackageActionType>]
  [-Package <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Synapse.Models.WorkspacePackages.PSSynapseWorkspacePackage]>]
  [-ForceApplySetting] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -40,8 +44,10 @@ Update-AzSynapseSparkPool -Name <String> -WorkspaceObject <PSSynapseWorkspace> [
 ```
 Update-AzSynapseSparkPool -InputObject <PSSynapseSparkPool> [-Tag <Hashtable>] [-EnableAutoScale <Boolean>]
  [-AutoScaleMinNodeCount <Int32>] [-AutoScaleMaxNodeCount <Int32>] [-EnableAutoPause <Boolean>]
- [-AutoPauseDelayInMinute <Int32>] [-NodeCount <Int32>] [-NodeSize <String>] [-SparkVersion <String>]
- [-LibraryRequirementsFilePath <String>] [-SparkConfigFilePath <String>] [-PackageAction <PackageActionType>]
+ [-AutoPauseDelayInMinute <Int32>] [-NodeCount <Int32>] [-EnableIsolatedCompute <Boolean>] [-NodeSize <String>]
+ [-EnableDynamicExecutorAllocation <Boolean>] [-MinExecutorCount <Int32>] [-MaxExecutorCount <Int32>]
+ [-SparkVersion <String>] [-LibraryRequirementsFilePath <String>] [-SparkConfigFilePath <String>]
+ [-SparkConfiguration <PSSparkConfigurationResource>] [-PackageAction <PackageActionType>]
  [-Package <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Synapse.Models.WorkspacePackages.PSSynapseWorkspacePackage]>]
  [-ForceApplySetting] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -51,8 +57,10 @@ Update-AzSynapseSparkPool -InputObject <PSSynapseSparkPool> [-Tag <Hashtable>] [
 ```
 Update-AzSynapseSparkPool -ResourceId <String> [-Tag <Hashtable>] [-EnableAutoScale <Boolean>]
  [-AutoScaleMinNodeCount <Int32>] [-AutoScaleMaxNodeCount <Int32>] [-EnableAutoPause <Boolean>]
- [-AutoPauseDelayInMinute <Int32>] [-NodeCount <Int32>] [-NodeSize <String>] [-SparkVersion <String>]
- [-LibraryRequirementsFilePath <String>] [-SparkConfigFilePath <String>] [-PackageAction <PackageActionType>]
+ [-AutoPauseDelayInMinute <Int32>] [-NodeCount <Int32>] [-EnableIsolatedCompute <Boolean>] [-NodeSize <String>]
+ [-EnableDynamicExecutorAllocation <Boolean>] [-MinExecutorCount <Int32>] [-MaxExecutorCount <Int32>]
+ [-SparkVersion <String>] [-LibraryRequirementsFilePath <String>] [-SparkConfigFilePath <String>]
+ [-SparkConfiguration <PSSparkConfigurationResource>] [-PackageAction <PackageActionType>]
  [-Package <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Synapse.Models.WorkspacePackages.PSSynapseWorkspacePackage]>]
  [-ForceApplySetting] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -123,13 +131,27 @@ This command disables auto-pause for an Apache Spark pool in Azure Synapse Analy
 
 ### Example 9
 ```powershell
+Update-AzSynapseSparkPool -WorkspaceName ContosoWorkspace -Name ContosoSparkPool -EnableDynamicExecutorAllocation $true -MinExecutorCount 1 -MaxExecutorCount 5
+```
+
+This command enables dynamic executor allocation and specify min executor count and max executor count for an Apache Spark pool in Azure Synapse Analytics.
+
+### Example 10
+```powershell
+Update-AzSynapseSparkPool -WorkspaceName ContosoWorkspace -Name ContosoSparkPool -EnableDynamicExecutorAllocation $false
+```
+
+This command disables dynamic executor allocation for an Apache Spark pool in Azure Synapse Analytics.
+
+### Example 11
+```powershell
 $packages = Get-AzSynapseWorkspacePackage -WorkspaceName ContosoWorkspace
 Update-AzSynapseSparkPool -WorkspaceName ContosoWorkspace -Name ContosoSparkPool -PackageAction Add -Package $packages
 ```
 
 The first command retrieves workspace packages. The second command links these workspace packages to an Apache Spark pool in Azure Synapse Analytics.
 
-### Example 10
+### Example 12
 ```powershell
 $package = Get-AzSynapseWorkspacePackage -WorkspaceName ContosoWorkspace -Name ContosoPackage
 Update-AzSynapseSparkPool -WorkspaceName ContosoWorkspace -Name ContosoSparkPool -PackageAction Remove -Package $package
@@ -137,7 +159,7 @@ Update-AzSynapseSparkPool -WorkspaceName ContosoWorkspace -Name ContosoSparkPool
 
 The first command retrieves workspace packages named ContosoPackage. The second command removes the workspace package from an Apache Spark pool in Azure Synapse Analytics.
 
-### Example 11
+### Example 13
 ```powershell
 $pool = Get-AzSynapseSparkPool -ResourceGroupName ContosoResourceGroup -WorkspaceName ContosoWorkspace -Name ContosoSparkPool
 $pool | Update-AzSynapseSparkPool -PackageAction Remove -Package $pool.WorkspacePackages
@@ -145,27 +167,49 @@ $pool | Update-AzSynapseSparkPool -PackageAction Remove -Package $pool.Workspace
 
 The first command retrieves an Apache Spark pool in Azure Synapse Analytics. The second command removes all workspace packages that are linked to that Apache Spark pool.
 
-### Example 12
+### Example 14
 ```powershell
-Update-AzSynapseSparkPool -WorkspaceName ContosoWorkspace -Name ContosoSparkPool -Tag @{"key" = "value"} -NodeCount 5 -NodeSize Medium -SparkConfigFilePath "c:\sparkconfig.txt"
+$workspace_packages = Get-AzSynapseWorkspacePackage -WorkspaceName ContosoWorkspace
+
+$pool = Get-AzSynapseSparkPool -ResourceGroupName ContosoResourceGroup -WorkspaceName ContosoWorkspace -Name ContosoSparkPool
+$library_names = $pool.WorkspacePackages | Where-Object {$_.name -notlike "new_package-*"} | ForEach-Object {$_.name}
+$library_names += "new_package-2.0-py3-none-any.whl"
+
+$new_pool_packages = @($workspace_packages | Where-Object {$_.name -in $library_names})
+Update-AzSynapseSparkPool -ResourceGroupName ContosoResourceGroup -WorkspaceName ContosoWorkspace -Name ContosoSparkPool -PackageAction Set -Package $new_pool_packages
 ```
 
-This command updates an Apache Spark pool in Azure Synapse Analytics and upload a spark configuration file for the spark pool.
+The first command retrieves the packages available in the workspace. The second command group retrieves the spark pool to get the packages currently linked to this pool and removes all versions of the package starting with `new_package-` from the retrieved list. The new version of the package is then added to this list. In the third group of commands the package list, containing only package names, is tranformed into a list of workspace packages by filtering the list of available workspace_packages accordingly and is then linked to the spark pool.
 
-### Example 13
+### Example 15
+```powershell
+$config = Get-AzSynapseSparkConfiguration -WorkspaceName ContosoWorkspace -Name ContosoSparkConfig1
+Update-AzSynapseSparkPool -WorkspaceName ContosoWorkspace -Name ContosoSparkPool -Tag @{"key" = "value"} -NodeCount 5 -NodeSize Medium -SparkConfiguration $configs
+```
+
+This command updates an Apache Spark pool in Azure Synapse Analytics and specify a Spark configuration for the Spark pool.
+
+### Example 16
 ```powershell
 Update-AzSynapseSparkPool -WorkspaceName ContosoWorkspace -Name ContosoSparkPool -NodeSize small -ForceApplySetting
 ```
 
 This command updates an Apache Spark pool in Azure Synapse Analytics, set NodeSize to small for the spark pool and force stop any running jobs in the Spark pool to apply this new setting.
 
-### Example 14
+### Example 17
 ```powershell
 $pool = Get-AzSynapseSparkPool -ResourceGroupName ContosoResourceGroup -WorkspaceName ContosoWorkspace -Name ContosoSparkPool
 $pool | Update-AzSynapseSparkPool -PackageAction Remove -Package $pool.WorkspacePackages -ForceApplySetting
 ```
 
 The first command retrieves an Apache Spark pool in Azure Synapse Analytics. The second command removes all workspace packages that are linked to that Apache Spark pool and force stop any running jobs in the Spark pool to apply this new setting.
+
+### Example 18
+```powershell
+Update-AzSynapseSparkPool -WorkspaceName ContosoWorkspace -Name ContosoSparkPool -EnableIsolatedCompute $true -NodeSize XXXLarge
+```
+
+This command enables isolated compute and specify node size to XXXLarge(80 vCPU / 504 GB) for an Apache Spark pool in Azure Synapse Analytics.
 
 ## PARAMETERS
 
@@ -276,6 +320,36 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EnableDynamicExecutorAllocation
+Indicates whether dynamic executor allocation should be enabled.
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableIsolatedCompute
+The Isolate Compute option is only available with the XXXLarge (80 vCPU / 504 GB) node size. Enabling this option offers isolation for Apache Spark compute for untrusted services. Isolated compute costs the same as the non-isolated VM of the same size. If you expect to enable Isolated Compute for spark pool, ensure that your Synapse workspace is created in an isolated compute supported region, please refer to this document for more details: https://learn.microsoft.com/en-us/azure/synapse-analytics/spark/apache-spark-pool-configurations#isolated-compute.
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ForceApplySetting
 Whether to stop any running jobs in the Big Data pool.
 
@@ -311,6 +385,36 @@ Environment configuration file ("PIP freeze" output).
 
 ```yaml
 Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MaxExecutorCount
+Maximum number of executors to be allocated in the specified Spark pool. This parameter can be specified when DynamicExecutorAllocation is enabled. The value should lie between 1 (inclusive) and maximumNodeCount (exclusive). If it is not specified manually, the default value will be 2.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MinExecutorCount
+Minimum number of executors to be allocated in the specified Spark pool. This parameter can be specified when DynamicExecutorAllocation is enabled. The value should lie between 1 (inclusive) and maxExecutors (exclusive). If it is not specified manually, the default value will be 1.
+
+```yaml
+Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -359,7 +463,7 @@ This parameter must be specified when Auto-scale is disabled
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: Small, Medium, Large
+Accepted values: Small, Medium, Large, XLarge, XXLarge, XXXLarge
 
 Required: False
 Position: Named
@@ -390,7 +494,7 @@ Package action must be specified when you add or remove a workspace package from
 Type: Microsoft.Azure.Commands.Synapse.Models.SynapseConstants+PackageActionType
 Parameter Sets: (All)
 Aliases:
-Accepted values: Add, Remove
+Accepted values: Add, Remove, Set
 
 Required: False
 Position: Named
@@ -430,7 +534,7 @@ Accept wildcard characters: False
 ```
 
 ### -SparkConfigFilePath
-Spark pool properties configuration file.
+[Deprecated] Spark pool properties configuration file. This parameter is deprecated, please use "-SparkConfiguration" instead.
 
 ```yaml
 Type: System.String
@@ -444,9 +548,24 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -SparkConfiguration
+Apache Spark configuration. When a job is submitted to the pool, the properties specified in the selected configuration will be referenced.
+
+```yaml
+Type: Microsoft.Azure.Commands.Synapse.Models.PSSparkConfigurationResource
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SparkVersion
 Apache Spark version.
-Allowed values: 2.4
+Allowed values: 2.3,2.4,3.1,3.2
 
 ```yaml
 Type: System.String

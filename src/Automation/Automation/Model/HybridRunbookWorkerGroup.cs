@@ -44,11 +44,11 @@ namespace Microsoft.Azure.Commands.Automation.Model
             this.Name = hybridRunbookWorkerGroup.Name;
             this.GroupType = hybridRunbookWorkerGroup.GroupType;
             RunbookWorker = new List<HybridRunbookWorker>();
-            foreach (var worker in hybridRunbookWorkerGroup.HybridRunbookWorkers)
-            {
-                var hbworker = new HybridRunbookWorker(worker);
-                this.RunbookWorker.Add(hbworker);
-            }
+            //foreach (var worker in hybridRunbookWorkerGroup.HybridRunbookWorkers)
+            //{
+            //    var hbworker = new HybridRunbookWorker(worker);
+            //    this.RunbookWorker.Add(hbworker);
+            //}
         }
 
         /// <summary>

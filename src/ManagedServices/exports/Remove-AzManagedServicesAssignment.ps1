@@ -42,7 +42,7 @@ INPUTOBJECT <IManagedServicesIdentity>: Identity Parameter
   [RegistrationDefinitionId <String>]: The GUID of the registration definition.
   [Scope <String>]: The scope of the resource.
 .Link
-https://docs.microsoft.com/powershell/module/az.managedservices/remove-azmanagedservicesassignment
+https://learn.microsoft.com/powershell/module/az.managedservices/remove-azmanagedservicesassignment
 #>
 function Remove-AzManagedServicesAssignment {
 [OutputType([System.Boolean])]

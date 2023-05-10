@@ -126,7 +126,7 @@ function Test-IntersectAddressSpace
         Add-AzVirtualNetworkSubnetConfig -Name "${subnetName}2" -AddressPrefix $subnetAddressPrefix -VirtualNetwork $vnet
         
         # Update VirtualNetwork with two intersecting subnets
-        Assert-ThrowsLike { Set-AzVirtualNetwork -VirtualNetwork $vnet } "*NetcfgInvalidSubnet*Subnet*is not valid in virtual network*"
+        Assert-ThrowsLike { Set-AzVirtualNetwork -VirtualNetwork $vnet } "Subnet*is not valid because its IP address range overlaps with that of an existing subnet in virtual network*"
     }
     finally
     {

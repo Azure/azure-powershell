@@ -30,7 +30,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models
         /// <summary>
         /// <c>BeforeDeserializeDictionary</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
@@ -42,7 +43,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models
         /// <summary>
         /// <c>BeforeDeserializePSObject</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
@@ -81,7 +83,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models
         /// Creates a new instance of <see cref="WebPubSubIdentity" />, deserializing the content from a json string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="className" /> model class.</returns>
+        /// <returns>an instance of the <see cref="WebPubSubIdentity" /> model class.</returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentity FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>Serializes this instance to a json string.</summary>
@@ -118,6 +120,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models
             if (content.Contains("ResourceName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentityInternal)this).ResourceName = (string) content.GetValueForProperty("ResourceName",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentityInternal)this).ResourceName, global::System.Convert.ToString);
+            }
+            if (content.Contains("CertificateName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentityInternal)this).CertificateName = (string) content.GetValueForProperty("CertificateName",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentityInternal)this).CertificateName, global::System.Convert.ToString);
+            }
+            if (content.Contains("Name"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentityInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentityInternal)this).Name, global::System.Convert.ToString);
             }
             if (content.Contains("HubName"))
             {
@@ -167,6 +177,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models
             if (content.Contains("ResourceName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentityInternal)this).ResourceName = (string) content.GetValueForProperty("ResourceName",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentityInternal)this).ResourceName, global::System.Convert.ToString);
+            }
+            if (content.Contains("CertificateName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentityInternal)this).CertificateName = (string) content.GetValueForProperty("CertificateName",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentityInternal)this).CertificateName, global::System.Convert.ToString);
+            }
+            if (content.Contains("Name"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentityInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentityInternal)this).Name, global::System.Convert.ToString);
             }
             if (content.Contains("HubName"))
             {

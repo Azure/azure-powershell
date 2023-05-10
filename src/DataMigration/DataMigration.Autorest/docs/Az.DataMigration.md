@@ -1,7 +1,7 @@
 ---
 Module Name: Az.DataMigration
 Module Guid: e23fee23-903d-423e-9275-f8763efede9d
-Download Help Link: https://docs.microsoft.com/powershell/module/az.datamigration
+Download Help Link: https://learn.microsoft.com/powershell/module/az.datamigration
 Help Version: 1.0.0.0
 Locale: en-US
 ---
@@ -46,6 +46,9 @@ Initiate cutover for in-progress online database migration to SQL Managed Instan
 
 ### [Invoke-AzDataMigrationCutoverToSqlVM](Invoke-AzDataMigrationCutoverToSqlVM.md)
 Initiate cutover for in-progress online database migration to SQL VM.
+
+### [New-AzDataMigrationLoginsMigration](New-AzDataMigrationLoginsMigration.md)
+Migrate logins from the source Sql Servers to the target Azure Sql Servers.
 
 ### [New-AzDataMigrationSqlService](New-AzDataMigrationSqlService.md)
 Create or Update Database Migration Service.

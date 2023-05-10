@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.DiskPool
-online version: https://docs.microsoft.com/powershell/module/az.diskpool/get-azdiskpooliscsitarget
+online version: https://learn.microsoft.com/powershell/module/az.diskpool/get-azdiskpooliscsitarget
 schema: 2.0.0
 ---
 
@@ -187,7 +187,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IDiskPoolIdentity>: Identity Parameter
+INPUTOBJECT `<IDiskPoolIdentity>`: Identity Parameter
   - `[DiskPoolName <String>]`: The name of the Disk Pool.
   - `[Id <String>]`: Resource identity path
   - `[IscsiTargetName <String>]`: The name of the iSCSI Target.

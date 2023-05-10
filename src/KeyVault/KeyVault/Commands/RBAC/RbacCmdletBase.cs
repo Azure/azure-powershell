@@ -62,6 +62,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
         /// and assign them back in the role assignment object.
         /// </summary>
         /// <param name="assignment"></param>
+        /// <param name="hsmName"></param>
+        /// <param name="scope"></param>
         protected void GetAssignmentDetails(PSKeyVaultRoleAssignment assignment, string hsmName, string scope)
         {
             // get all role definition

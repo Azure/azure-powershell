@@ -34,6 +34,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Support
             {
                 yield return new global::System.Management.Automation.CompletionResult("'Dedicated'", "Dedicated", global::System.Management.Automation.CompletionResultType.ParameterValue, "Dedicated");
             }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Confidential".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'Confidential'", "Confidential", global::System.Management.Automation.CompletionResultType.ParameterValue, "Confidential");
+            }
         }
     }
 }

@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
 ms.assetid: 7039528F-42AE-45DB-BF81-FE5003F8AEE2
-online version: https://docs.microsoft.com/powershell/module/az.sql/new-azsqlserver
+online version: https://learn.microsoft.com/powershell/module/az.sql/new-azsqlserver
 schema: 2.0.0
 ---
 
@@ -47,6 +47,7 @@ Tags                     :
 This command creates a version 12 Azure SQL Database server.
 
 ### Example 2: Create a new Azure SQL Database server with External(Azure Active Directory) Administrator, Azure Active Directory Only Authentication and no SqlAdministratorCredentials
+<!-- Skip: Output cannot be splitted from code -->
 ```powershell
 New-AzSqlServer -ResourceGroupName "ResourceGroup01" -Location "Central US" -ServerName "server01" -ServerVersion "12.0" -ExternalAdminName DummyLogin -EnableActiveDirectoryOnlyAuthentication
 ResourceGroupName        : resourcegroup01
@@ -461,4 +462,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 [New-AzSqlServerFirewallRule](./New-AzSqlServerFirewallRule.md)
 
-[SQL Database Documentation](https://docs.microsoft.com/azure/sql-database/)
+[SQL Database Documentation](https://learn.microsoft.com/azure/sql-database/)

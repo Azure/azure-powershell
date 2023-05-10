@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Backup.dll-Help.xml
 Module Name: Az.RecoveryServices
 ms.assetid: 1097FF29-1C23-4960-930C-5C1227419359
-online version: https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupcontainer
+online version: https://learn.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupcontainer
 schema: 2.0.0
 ---
 
@@ -16,8 +16,8 @@ Gets Backup containers.
 
 ```
 Get-AzRecoveryServicesBackupContainer [-ContainerType] <ContainerType> [[-BackupManagementType] <String>]
- [[-FriendlyName] <String>] [[-ResourceGroupName] <String>] [[-Status] <ContainerRegistrationStatus>]
- [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [[-FriendlyName] <String>] [[-ResourceGroupName] <String>] [-VaultId <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -33,7 +33,7 @@ Set the vault context by using the -VaultId parameter.
 
 ```powershell
 $vault = Get-AzRecoveryServicesVault -ResourceGroupName "resourceGroup" -Name "vaultName"
-Get-AzRecoveryServicesBackupContainer -ContainerType "AzureVM" -Status "Registered" -FriendlyName "V2VM" -VaultId $vault.ID
+Get-AzRecoveryServicesBackupContainer -ContainerType "AzureVM" -FriendlyName "V2VM" -VaultId $vault.ID
 ```
 
 This command gets the container named V2VM of type AzureVM.
@@ -65,7 +65,7 @@ This parameter is used to differentiate Windows machines that are backed up usin
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: AzureVM, MAB, AzureWorkload, AzureStorage
+Accepted values: AzureVM, AzureStorage, AzureWorkload, MAB
 
 Required: False
 Position: 2
@@ -141,26 +141,6 @@ Aliases:
 
 Required: False
 Position: 4
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Status
-
-Specifies the container registration status.
-The acceptable values for this parameter are:
-
-- Registered
-
-```yaml
-Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerRegistrationStatus
-Parameter Sets: (All)
-Aliases:
-Accepted values: Registered
-
-Required: False
-Position: 5
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

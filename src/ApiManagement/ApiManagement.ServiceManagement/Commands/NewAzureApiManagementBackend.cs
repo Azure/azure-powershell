@@ -58,8 +58,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
             Mandatory = false,
             HelpMessage = "The Azure AD resource URI of the resource for which a token should be obtained. " +
                           "This could be one of the Azure services that support Azure AD authentication or any other resource URI." +
-                          "The absolute http URL of the Azure Resource. This parameter is optional." +
-                          "This url can be the Arm Resource Id of Logic Apps, Function Apps or Api Apps. ")]
+                          "The absolute http URL of the Azure Resource. This parameter is optional.")]
         [ValidateLength(1, 2000)]
         public String ResourceId { get; set; }
 

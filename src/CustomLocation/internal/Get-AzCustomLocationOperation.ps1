@@ -31,7 +31,7 @@ PS C:\> {{ Add code here }}
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.Api20210815.ICustomLocationOperation
 .Link
-https://docs.microsoft.com/powershell/module/az.customlocation/get-azcustomlocationoperation
+https://learn.microsoft.com/powershell/module/az.customlocation/get-azcustomlocationoperation
 #>
 function Get-AzCustomLocationOperation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.Api20210815.ICustomLocationOperation])]

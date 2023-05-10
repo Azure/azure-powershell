@@ -1,8 +1,8 @@
 {
-  "Get-AzDnsForwardingRuleset+[NoContext]+Get single DNS Forwarding Ruleset by name, expect DNS Forwarding Ruleset by name retrieved+$PUT+https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsResolvers/psdnsresolvername28?api-version=2020-04-01-preview+1": {
+  "Get-AzDnsForwardingRuleset+[NoContext]+Get single DNS Forwarding Ruleset by name, expect DNS Forwarding Ruleset by name retrieved+$PUT+https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsResolvers/psdnsresolvername28?api-version=2022-07-01+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsResolvers/psdnsresolvername28?api-version=2020-04-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsResolvers/psdnsresolvername28?api-version=2022-07-01",
       "Content": "{\r\n  \"location\": \"eastus2\",\r\n  \"properties\": {\r\n    \"virtualNetwork\": {\r\n      \"id\": \"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/virtualNetworks/psvirtualnetworkname28\"\r\n    }\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -17,10 +17,10 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/locations/eastus2/dnsResolverOperationResults/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0RG5zUmVzb2x2ZXIiLCJPcGVyYXRpb25JZCI6ImY0NmY3ZGNjLTA4ZWQtNGViMS1iZTNjLTI4MWYxNTQxODU1NyJ9?api-version=2020-04-01-preview" ],
+        "Location": [ "https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/locations/eastus2/dnsResolverOperationResults/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0RG5zUmVzb2x2ZXIiLCJPcGVyYXRpb25JZCI6ImY0NmY3ZGNjLTA4ZWQtNGViMS1iZTNjLTI4MWYxNTQxODU1NyJ9?api-version=2022-07-01" ],
         "Retry-After": [ "5" ],
         "x-ms-activity-id": [ "cf83967e-b52a-42a0-b6ae-e08e3c7019e0" ],
-        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/locations/eastus2/dnsResolverOperationStatuses/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0RG5zUmVzb2x2ZXIiLCJPcGVyYXRpb25JZCI6ImY0NmY3ZGNjLTA4ZWQtNGViMS1iZTNjLTI4MWYxNTQxODU1NyJ9?api-version=2020-04-01-preview" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/locations/eastus2/dnsResolverOperationStatuses/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0RG5zUmVzb2x2ZXIiLCJPcGVyYXRpb25JZCI6ImY0NmY3ZGNjLTA4ZWQtNGViMS1iZTNjLTI4MWYxNTQxODU1NyJ9?api-version=2022-07-01" ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [ "11999" ],
         "x-ms-request-id": [ "cac553af-736b-4ed9-8fee-25812a75eea5" ],
         "x-ms-correlation-request-id": [ "cac553af-736b-4ed9-8fee-25812a75eea5" ],
@@ -40,10 +40,10 @@
       "isContentBase64": false
     }
   },
-  "Get-AzDnsForwardingRuleset+[NoContext]+Get single DNS Forwarding Ruleset by name, expect DNS Forwarding Ruleset by name retrieved+$GET+https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/locations/eastus2/dnsResolverOperationStatuses/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0RG5zUmVzb2x2ZXIiLCJPcGVyYXRpb25JZCI6ImY0NmY3ZGNjLTA4ZWQtNGViMS1iZTNjLTI4MWYxNTQxODU1NyJ9?api-version=2020-04-01-preview+2": {
+  "Get-AzDnsForwardingRuleset+[NoContext]+Get single DNS Forwarding Ruleset by name, expect DNS Forwarding Ruleset by name retrieved+$GET+https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/locations/eastus2/dnsResolverOperationStatuses/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0RG5zUmVzb2x2ZXIiLCJPcGVyYXRpb25JZCI6ImY0NmY3ZGNjLTA4ZWQtNGViMS1iZTNjLTI4MWYxNTQxODU1NyJ9?api-version=2022-07-01+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/locations/eastus2/dnsResolverOperationStatuses/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0RG5zUmVzb2x2ZXIiLCJPcGVyYXRpb25JZCI6ImY0NmY3ZGNjLTA4ZWQtNGViMS1iZTNjLTI4MWYxNTQxODU1NyJ9?api-version=2020-04-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/locations/eastus2/dnsResolverOperationStatuses/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0RG5zUmVzb2x2ZXIiLCJPcGVyYXRpb25JZCI6ImY0NmY3ZGNjLTA4ZWQtNGViMS1iZTNjLTI4MWYxNTQxODU1NyJ9?api-version=2022-07-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -83,10 +83,10 @@
       "isContentBase64": false
     }
   },
-  "Get-AzDnsForwardingRuleset+[NoContext]+Get single DNS Forwarding Ruleset by name, expect DNS Forwarding Ruleset by name retrieved+$GET+https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsResolvers/psdnsresolvername28?api-version=2020-04-01-preview+3": {
+  "Get-AzDnsForwardingRuleset+[NoContext]+Get single DNS Forwarding Ruleset by name, expect DNS Forwarding Ruleset by name retrieved+$GET+https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsResolvers/psdnsresolvername28?api-version=2022-07-01+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsResolvers/psdnsresolvername28?api-version=2020-04-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsResolvers/psdnsresolvername28?api-version=2022-07-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -126,10 +126,10 @@
       "isContentBase64": false
     }
   },
-  "Get-AzDnsForwardingRuleset+[NoContext]+Get single DNS Forwarding Ruleset by name, expect DNS Forwarding Ruleset by name retrieved+$PUT+https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsResolvers/psdnsresolvername28/outboundEndpoints/psoutboundendpointname28?api-version=2020-04-01-preview+4": {
+  "Get-AzDnsForwardingRuleset+[NoContext]+Get single DNS Forwarding Ruleset by name, expect DNS Forwarding Ruleset by name retrieved+$PUT+https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsResolvers/psdnsresolvername28/outboundEndpoints/psoutboundendpointname28?api-version=2022-07-01+4": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsResolvers/psdnsresolvername28/outboundEndpoints/psoutboundendpointname28?api-version=2020-04-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsResolvers/psdnsresolvername28/outboundEndpoints/psoutboundendpointname28?api-version=2022-07-01",
       "Content": "{\r\n  \"location\": \"eastus2\",\r\n  \"properties\": {\r\n    \"subnet\": {\r\n      \"id\": \"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/virtualNetworks/psvirtualnetworkname28/subnets/snet-sim2\"\r\n    }\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -144,10 +144,10 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/locations/eastus2/dnsResolverOperationResults/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0T3V0Ym91bmRFbmRwb2ludCIsIk9wZXJhdGlvbklkIjoiNTlkNGQ1Y2ItYTczYi00YWZjLWJlY2QtMjIxNTc5NWMyZTU4In0=?api-version=2020-04-01-preview" ],
+        "Location": [ "https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/locations/eastus2/dnsResolverOperationResults/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0T3V0Ym91bmRFbmRwb2ludCIsIk9wZXJhdGlvbklkIjoiNTlkNGQ1Y2ItYTczYi00YWZjLWJlY2QtMjIxNTc5NWMyZTU4In0=?api-version=2022-07-01" ],
         "Retry-After": [ "5" ],
         "x-ms-activity-id": [ "da4a9944-4b1d-488d-8dfc-c91d532275f0" ],
-        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/locations/eastus2/dnsResolverOperationStatuses/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0T3V0Ym91bmRFbmRwb2ludCIsIk9wZXJhdGlvbklkIjoiNTlkNGQ1Y2ItYTczYi00YWZjLWJlY2QtMjIxNTc5NWMyZTU4In0=?api-version=2020-04-01-preview" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/locations/eastus2/dnsResolverOperationStatuses/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0T3V0Ym91bmRFbmRwb2ludCIsIk9wZXJhdGlvbklkIjoiNTlkNGQ1Y2ItYTczYi00YWZjLWJlY2QtMjIxNTc5NWMyZTU4In0=?api-version=2022-07-01" ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [ "11999" ],
         "x-ms-request-id": [ "ba40130c-6667-4d21-abe9-3d38d7117428" ],
         "x-ms-correlation-request-id": [ "ba40130c-6667-4d21-abe9-3d38d7117428" ],
@@ -167,10 +167,10 @@
       "isContentBase64": false
     }
   },
-  "Get-AzDnsForwardingRuleset+[NoContext]+Get single DNS Forwarding Ruleset by name, expect DNS Forwarding Ruleset by name retrieved+$GET+https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/locations/eastus2/dnsResolverOperationStatuses/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0T3V0Ym91bmRFbmRwb2ludCIsIk9wZXJhdGlvbklkIjoiNTlkNGQ1Y2ItYTczYi00YWZjLWJlY2QtMjIxNTc5NWMyZTU4In0=?api-version=2020-04-01-preview+5": {
+  "Get-AzDnsForwardingRuleset+[NoContext]+Get single DNS Forwarding Ruleset by name, expect DNS Forwarding Ruleset by name retrieved+$GET+https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/locations/eastus2/dnsResolverOperationStatuses/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0T3V0Ym91bmRFbmRwb2ludCIsIk9wZXJhdGlvbklkIjoiNTlkNGQ1Y2ItYTczYi00YWZjLWJlY2QtMjIxNTc5NWMyZTU4In0=?api-version=2022-07-01+5": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/locations/eastus2/dnsResolverOperationStatuses/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0T3V0Ym91bmRFbmRwb2ludCIsIk9wZXJhdGlvbklkIjoiNTlkNGQ1Y2ItYTczYi00YWZjLWJlY2QtMjIxNTc5NWMyZTU4In0=?api-version=2020-04-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/locations/eastus2/dnsResolverOperationStatuses/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0T3V0Ym91bmRFbmRwb2ludCIsIk9wZXJhdGlvbklkIjoiNTlkNGQ1Y2ItYTczYi00YWZjLWJlY2QtMjIxNTc5NWMyZTU4In0=?api-version=2022-07-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -210,10 +210,10 @@
       "isContentBase64": false
     }
   },
-  "Get-AzDnsForwardingRuleset+[NoContext]+Get single DNS Forwarding Ruleset by name, expect DNS Forwarding Ruleset by name retrieved+$GET+https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/locations/eastus2/dnsResolverOperationStatuses/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0T3V0Ym91bmRFbmRwb2ludCIsIk9wZXJhdGlvbklkIjoiNTlkNGQ1Y2ItYTczYi00YWZjLWJlY2QtMjIxNTc5NWMyZTU4In0=?api-version=2020-04-01-preview+6": {
+  "Get-AzDnsForwardingRuleset+[NoContext]+Get single DNS Forwarding Ruleset by name, expect DNS Forwarding Ruleset by name retrieved+$GET+https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/locations/eastus2/dnsResolverOperationStatuses/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0T3V0Ym91bmRFbmRwb2ludCIsIk9wZXJhdGlvbklkIjoiNTlkNGQ1Y2ItYTczYi00YWZjLWJlY2QtMjIxNTc5NWMyZTU4In0=?api-version=2022-07-01+6": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/locations/eastus2/dnsResolverOperationStatuses/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0T3V0Ym91bmRFbmRwb2ludCIsIk9wZXJhdGlvbklkIjoiNTlkNGQ1Y2ItYTczYi00YWZjLWJlY2QtMjIxNTc5NWMyZTU4In0=?api-version=2020-04-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/locations/eastus2/dnsResolverOperationStatuses/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0T3V0Ym91bmRFbmRwb2ludCIsIk9wZXJhdGlvbklkIjoiNTlkNGQ1Y2ItYTczYi00YWZjLWJlY2QtMjIxNTc5NWMyZTU4In0=?api-version=2022-07-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -253,10 +253,10 @@
       "isContentBase64": false
     }
   },
-  "Get-AzDnsForwardingRuleset+[NoContext]+Get single DNS Forwarding Ruleset by name, expect DNS Forwarding Ruleset by name retrieved+$GET+https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsResolvers/psdnsresolvername28/outboundEndpoints/psoutboundendpointname28?api-version=2020-04-01-preview+7": {
+  "Get-AzDnsForwardingRuleset+[NoContext]+Get single DNS Forwarding Ruleset by name, expect DNS Forwarding Ruleset by name retrieved+$GET+https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsResolvers/psdnsresolvername28/outboundEndpoints/psoutboundendpointname28?api-version=2022-07-01+7": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsResolvers/psdnsresolvername28/outboundEndpoints/psoutboundendpointname28?api-version=2020-04-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsResolvers/psdnsresolvername28/outboundEndpoints/psoutboundendpointname28?api-version=2022-07-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -296,10 +296,10 @@
       "isContentBase64": false
     }
   },
-  "Get-AzDnsForwardingRuleset+[NoContext]+Get single DNS Forwarding Ruleset by name, expect DNS Forwarding Ruleset by name retrieved+$PUT+https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsForwardingRulesets/psdnsforwardingrulesetname28?api-version=2020-04-01-preview+8": {
+  "Get-AzDnsForwardingRuleset+[NoContext]+Get single DNS Forwarding Ruleset by name, expect DNS Forwarding Ruleset by name retrieved+$PUT+https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsForwardingRulesets/psdnsforwardingrulesetname28?api-version=2022-07-01+8": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsForwardingRulesets/psdnsforwardingrulesetname28?api-version=2020-04-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsForwardingRulesets/psdnsforwardingrulesetname28?api-version=2022-07-01",
       "Content": "{\r\n  \"location\": \"eastus2\",\r\n  \"properties\": {\r\n    \"dnsResolverOutboundEndpoints\": [\r\n      {\r\n        \"id\": \"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsResolvers/psdnsresolvername28/outboundEndpoints/psoutboundendpointname28\"\r\n      }\r\n    ]\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -314,10 +314,10 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/locations/eastus2/dnsResolverOperationResults/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0RG5zRm9yd2FyZGluZ1J1bGVzZXQiLCJPcGVyYXRpb25JZCI6Ijk1YjllM2Y4LTQ1ODAtNDk2MS04ZWJiLTUzZDdlZDlkZjNmNiJ9?api-version=2020-04-01-preview" ],
+        "Location": [ "https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/locations/eastus2/dnsResolverOperationResults/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0RG5zRm9yd2FyZGluZ1J1bGVzZXQiLCJPcGVyYXRpb25JZCI6Ijk1YjllM2Y4LTQ1ODAtNDk2MS04ZWJiLTUzZDdlZDlkZjNmNiJ9?api-version=2022-07-01" ],
         "Retry-After": [ "5" ],
         "x-ms-activity-id": [ "afc5ed0f-7ef1-4a9f-ba45-70965d0f6dea" ],
-        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/locations/eastus2/dnsResolverOperationStatuses/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0RG5zRm9yd2FyZGluZ1J1bGVzZXQiLCJPcGVyYXRpb25JZCI6Ijk1YjllM2Y4LTQ1ODAtNDk2MS04ZWJiLTUzZDdlZDlkZjNmNiJ9?api-version=2020-04-01-preview" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/locations/eastus2/dnsResolverOperationStatuses/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0RG5zRm9yd2FyZGluZ1J1bGVzZXQiLCJPcGVyYXRpb25JZCI6Ijk1YjllM2Y4LTQ1ODAtNDk2MS04ZWJiLTUzZDdlZDlkZjNmNiJ9?api-version=2022-07-01" ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [ "11999" ],
         "x-ms-request-id": [ "549e99bd-799c-4c6b-8d97-74ec6c3ab0c9" ],
         "x-ms-correlation-request-id": [ "549e99bd-799c-4c6b-8d97-74ec6c3ab0c9" ],
@@ -337,10 +337,10 @@
       "isContentBase64": false
     }
   },
-  "Get-AzDnsForwardingRuleset+[NoContext]+Get single DNS Forwarding Ruleset by name, expect DNS Forwarding Ruleset by name retrieved+$GET+https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/locations/eastus2/dnsResolverOperationStatuses/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0RG5zRm9yd2FyZGluZ1J1bGVzZXQiLCJPcGVyYXRpb25JZCI6Ijk1YjllM2Y4LTQ1ODAtNDk2MS04ZWJiLTUzZDdlZDlkZjNmNiJ9?api-version=2020-04-01-preview+9": {
+  "Get-AzDnsForwardingRuleset+[NoContext]+Get single DNS Forwarding Ruleset by name, expect DNS Forwarding Ruleset by name retrieved+$GET+https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/locations/eastus2/dnsResolverOperationStatuses/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0RG5zRm9yd2FyZGluZ1J1bGVzZXQiLCJPcGVyYXRpb25JZCI6Ijk1YjllM2Y4LTQ1ODAtNDk2MS04ZWJiLTUzZDdlZDlkZjNmNiJ9?api-version=2022-07-01+9": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/locations/eastus2/dnsResolverOperationStatuses/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0RG5zRm9yd2FyZGluZ1J1bGVzZXQiLCJPcGVyYXRpb25JZCI6Ijk1YjllM2Y4LTQ1ODAtNDk2MS04ZWJiLTUzZDdlZDlkZjNmNiJ9?api-version=2020-04-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/locations/eastus2/dnsResolverOperationStatuses/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0RG5zRm9yd2FyZGluZ1J1bGVzZXQiLCJPcGVyYXRpb25JZCI6Ijk1YjllM2Y4LTQ1ODAtNDk2MS04ZWJiLTUzZDdlZDlkZjNmNiJ9?api-version=2022-07-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -380,10 +380,10 @@
       "isContentBase64": false
     }
   },
-  "Get-AzDnsForwardingRuleset+[NoContext]+Get single DNS Forwarding Ruleset by name, expect DNS Forwarding Ruleset by name retrieved+$GET+https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsForwardingRulesets/psdnsforwardingrulesetname28?api-version=2020-04-01-preview+10": {
+  "Get-AzDnsForwardingRuleset+[NoContext]+Get single DNS Forwarding Ruleset by name, expect DNS Forwarding Ruleset by name retrieved+$GET+https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsForwardingRulesets/psdnsforwardingrulesetname28?api-version=2022-07-01+10": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsForwardingRulesets/psdnsforwardingrulesetname28?api-version=2020-04-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsForwardingRulesets/psdnsforwardingrulesetname28?api-version=2022-07-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -423,10 +423,10 @@
       "isContentBase64": false
     }
   },
-  "Get-AzDnsForwardingRuleset+[NoContext]+Get single DNS Forwarding Ruleset by name, expect DNS Forwarding Ruleset by name retrieved+$GET+https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsForwardingRulesets/psdnsforwardingrulesetname28?api-version=2020-04-01-preview+11": {
+  "Get-AzDnsForwardingRuleset+[NoContext]+Get single DNS Forwarding Ruleset by name, expect DNS Forwarding Ruleset by name retrieved+$GET+https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsForwardingRulesets/psdnsforwardingrulesetname28?api-version=2022-07-01+11": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsForwardingRulesets/psdnsforwardingrulesetname28?api-version=2020-04-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsForwardingRulesets/psdnsforwardingrulesetname28?api-version=2022-07-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -466,10 +466,10 @@
       "isContentBase64": false
     }
   },
-  "Get-AzDnsForwardingRuleset+[NoContext]+List all DNS forwarding ruleset under the resouce group, expect all DNS forwarding rulesets retrieved+$PUT+https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsResolvers/psdnsresolvername29?api-version=2020-04-01-preview+1": {
+  "Get-AzDnsForwardingRuleset+[NoContext]+List all DNS forwarding ruleset under the resouce group, expect all DNS forwarding rulesets retrieved+$PUT+https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsResolvers/psdnsresolvername29?api-version=2022-07-01+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsResolvers/psdnsresolvername29?api-version=2020-04-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsResolvers/psdnsresolvername29?api-version=2022-07-01",
       "Content": "{\r\n  \"location\": \"eastus2\",\r\n  \"properties\": {\r\n    \"virtualNetwork\": {\r\n      \"id\": \"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/virtualNetworks/psvirtualnetworkname29\"\r\n    }\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -484,10 +484,10 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/locations/eastus2/dnsResolverOperationResults/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0RG5zUmVzb2x2ZXIiLCJPcGVyYXRpb25JZCI6IjE1YWIzOGJjLTg5ZjEtNGM3OS04MzMwLTM4MDgyNDNjM2ZkNyJ9?api-version=2020-04-01-preview" ],
+        "Location": [ "https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/locations/eastus2/dnsResolverOperationResults/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0RG5zUmVzb2x2ZXIiLCJPcGVyYXRpb25JZCI6IjE1YWIzOGJjLTg5ZjEtNGM3OS04MzMwLTM4MDgyNDNjM2ZkNyJ9?api-version=2022-07-01" ],
         "Retry-After": [ "5" ],
         "x-ms-activity-id": [ "bd665075-3b9a-426f-9cf2-326159b5e0fb" ],
-        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/locations/eastus2/dnsResolverOperationStatuses/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0RG5zUmVzb2x2ZXIiLCJPcGVyYXRpb25JZCI6IjE1YWIzOGJjLTg5ZjEtNGM3OS04MzMwLTM4MDgyNDNjM2ZkNyJ9?api-version=2020-04-01-preview" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/locations/eastus2/dnsResolverOperationStatuses/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0RG5zUmVzb2x2ZXIiLCJPcGVyYXRpb25JZCI6IjE1YWIzOGJjLTg5ZjEtNGM3OS04MzMwLTM4MDgyNDNjM2ZkNyJ9?api-version=2022-07-01" ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [ "11998" ],
         "x-ms-request-id": [ "85e76d10-9144-4c62-bee6-64acbbdf9a64" ],
         "x-ms-correlation-request-id": [ "85e76d10-9144-4c62-bee6-64acbbdf9a64" ],
@@ -507,10 +507,10 @@
       "isContentBase64": false
     }
   },
-  "Get-AzDnsForwardingRuleset+[NoContext]+List all DNS forwarding ruleset under the resouce group, expect all DNS forwarding rulesets retrieved+$GET+https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/locations/eastus2/dnsResolverOperationStatuses/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0RG5zUmVzb2x2ZXIiLCJPcGVyYXRpb25JZCI6IjE1YWIzOGJjLTg5ZjEtNGM3OS04MzMwLTM4MDgyNDNjM2ZkNyJ9?api-version=2020-04-01-preview+2": {
+  "Get-AzDnsForwardingRuleset+[NoContext]+List all DNS forwarding ruleset under the resouce group, expect all DNS forwarding rulesets retrieved+$GET+https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/locations/eastus2/dnsResolverOperationStatuses/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0RG5zUmVzb2x2ZXIiLCJPcGVyYXRpb25JZCI6IjE1YWIzOGJjLTg5ZjEtNGM3OS04MzMwLTM4MDgyNDNjM2ZkNyJ9?api-version=2022-07-01+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/locations/eastus2/dnsResolverOperationStatuses/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0RG5zUmVzb2x2ZXIiLCJPcGVyYXRpb25JZCI6IjE1YWIzOGJjLTg5ZjEtNGM3OS04MzMwLTM4MDgyNDNjM2ZkNyJ9?api-version=2020-04-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/locations/eastus2/dnsResolverOperationStatuses/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0RG5zUmVzb2x2ZXIiLCJPcGVyYXRpb25JZCI6IjE1YWIzOGJjLTg5ZjEtNGM3OS04MzMwLTM4MDgyNDNjM2ZkNyJ9?api-version=2022-07-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -550,10 +550,10 @@
       "isContentBase64": false
     }
   },
-  "Get-AzDnsForwardingRuleset+[NoContext]+List all DNS forwarding ruleset under the resouce group, expect all DNS forwarding rulesets retrieved+$GET+https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsResolvers/psdnsresolvername29?api-version=2020-04-01-preview+3": {
+  "Get-AzDnsForwardingRuleset+[NoContext]+List all DNS forwarding ruleset under the resouce group, expect all DNS forwarding rulesets retrieved+$GET+https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsResolvers/psdnsresolvername29?api-version=2022-07-01+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsResolvers/psdnsresolvername29?api-version=2020-04-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsResolvers/psdnsresolvername29?api-version=2022-07-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -593,10 +593,10 @@
       "isContentBase64": false
     }
   },
-  "Get-AzDnsForwardingRuleset+[NoContext]+List all DNS forwarding ruleset under the resouce group, expect all DNS forwarding rulesets retrieved+$PUT+https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsResolvers/psdnsresolvername29/outboundEndpoints/psoutboundendpointname29?api-version=2020-04-01-preview+4": {
+  "Get-AzDnsForwardingRuleset+[NoContext]+List all DNS forwarding ruleset under the resouce group, expect all DNS forwarding rulesets retrieved+$PUT+https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsResolvers/psdnsresolvername29/outboundEndpoints/psoutboundendpointname29?api-version=2022-07-01+4": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsResolvers/psdnsresolvername29/outboundEndpoints/psoutboundendpointname29?api-version=2020-04-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsResolvers/psdnsresolvername29/outboundEndpoints/psoutboundendpointname29?api-version=2022-07-01",
       "Content": "{\r\n  \"location\": \"eastus2\",\r\n  \"properties\": {\r\n    \"subnet\": {\r\n      \"id\": \"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/virtualNetworks/psvirtualnetworkname29/subnets/snet-sim2\"\r\n    }\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -611,10 +611,10 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/locations/eastus2/dnsResolverOperationResults/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0T3V0Ym91bmRFbmRwb2ludCIsIk9wZXJhdGlvbklkIjoiZWVjM2RhYzEtMDIyNi00ZWI0LTljNTEtYzdkMDc3NTA1OTY0In0=?api-version=2020-04-01-preview" ],
+        "Location": [ "https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/locations/eastus2/dnsResolverOperationResults/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0T3V0Ym91bmRFbmRwb2ludCIsIk9wZXJhdGlvbklkIjoiZWVjM2RhYzEtMDIyNi00ZWI0LTljNTEtYzdkMDc3NTA1OTY0In0=?api-version=2022-07-01" ],
         "Retry-After": [ "5" ],
         "x-ms-activity-id": [ "9b38fb39-3882-410e-b78f-4cb2a4005e8b" ],
-        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/locations/eastus2/dnsResolverOperationStatuses/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0T3V0Ym91bmRFbmRwb2ludCIsIk9wZXJhdGlvbklkIjoiZWVjM2RhYzEtMDIyNi00ZWI0LTljNTEtYzdkMDc3NTA1OTY0In0=?api-version=2020-04-01-preview" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/locations/eastus2/dnsResolverOperationStatuses/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0T3V0Ym91bmRFbmRwb2ludCIsIk9wZXJhdGlvbklkIjoiZWVjM2RhYzEtMDIyNi00ZWI0LTljNTEtYzdkMDc3NTA1OTY0In0=?api-version=2022-07-01" ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [ "11998" ],
         "x-ms-request-id": [ "671ae013-acbc-425b-9225-6a44ccae1b7d" ],
         "x-ms-correlation-request-id": [ "671ae013-acbc-425b-9225-6a44ccae1b7d" ],
@@ -634,10 +634,10 @@
       "isContentBase64": false
     }
   },
-  "Get-AzDnsForwardingRuleset+[NoContext]+List all DNS forwarding ruleset under the resouce group, expect all DNS forwarding rulesets retrieved+$GET+https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/locations/eastus2/dnsResolverOperationStatuses/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0T3V0Ym91bmRFbmRwb2ludCIsIk9wZXJhdGlvbklkIjoiZWVjM2RhYzEtMDIyNi00ZWI0LTljNTEtYzdkMDc3NTA1OTY0In0=?api-version=2020-04-01-preview+5": {
+  "Get-AzDnsForwardingRuleset+[NoContext]+List all DNS forwarding ruleset under the resouce group, expect all DNS forwarding rulesets retrieved+$GET+https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/locations/eastus2/dnsResolverOperationStatuses/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0T3V0Ym91bmRFbmRwb2ludCIsIk9wZXJhdGlvbklkIjoiZWVjM2RhYzEtMDIyNi00ZWI0LTljNTEtYzdkMDc3NTA1OTY0In0=?api-version=2022-07-01+5": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/locations/eastus2/dnsResolverOperationStatuses/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0T3V0Ym91bmRFbmRwb2ludCIsIk9wZXJhdGlvbklkIjoiZWVjM2RhYzEtMDIyNi00ZWI0LTljNTEtYzdkMDc3NTA1OTY0In0=?api-version=2020-04-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/locations/eastus2/dnsResolverOperationStatuses/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0T3V0Ym91bmRFbmRwb2ludCIsIk9wZXJhdGlvbklkIjoiZWVjM2RhYzEtMDIyNi00ZWI0LTljNTEtYzdkMDc3NTA1OTY0In0=?api-version=2022-07-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -677,10 +677,10 @@
       "isContentBase64": false
     }
   },
-  "Get-AzDnsForwardingRuleset+[NoContext]+List all DNS forwarding ruleset under the resouce group, expect all DNS forwarding rulesets retrieved+$GET+https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/locations/eastus2/dnsResolverOperationStatuses/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0T3V0Ym91bmRFbmRwb2ludCIsIk9wZXJhdGlvbklkIjoiZWVjM2RhYzEtMDIyNi00ZWI0LTljNTEtYzdkMDc3NTA1OTY0In0=?api-version=2020-04-01-preview+6": {
+  "Get-AzDnsForwardingRuleset+[NoContext]+List all DNS forwarding ruleset under the resouce group, expect all DNS forwarding rulesets retrieved+$GET+https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/locations/eastus2/dnsResolverOperationStatuses/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0T3V0Ym91bmRFbmRwb2ludCIsIk9wZXJhdGlvbklkIjoiZWVjM2RhYzEtMDIyNi00ZWI0LTljNTEtYzdkMDc3NTA1OTY0In0=?api-version=2022-07-01+6": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/locations/eastus2/dnsResolverOperationStatuses/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0T3V0Ym91bmRFbmRwb2ludCIsIk9wZXJhdGlvbklkIjoiZWVjM2RhYzEtMDIyNi00ZWI0LTljNTEtYzdkMDc3NTA1OTY0In0=?api-version=2020-04-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/locations/eastus2/dnsResolverOperationStatuses/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0T3V0Ym91bmRFbmRwb2ludCIsIk9wZXJhdGlvbklkIjoiZWVjM2RhYzEtMDIyNi00ZWI0LTljNTEtYzdkMDc3NTA1OTY0In0=?api-version=2022-07-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -720,10 +720,10 @@
       "isContentBase64": false
     }
   },
-  "Get-AzDnsForwardingRuleset+[NoContext]+List all DNS forwarding ruleset under the resouce group, expect all DNS forwarding rulesets retrieved+$GET+https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsResolvers/psdnsresolvername29/outboundEndpoints/psoutboundendpointname29?api-version=2020-04-01-preview+7": {
+  "Get-AzDnsForwardingRuleset+[NoContext]+List all DNS forwarding ruleset under the resouce group, expect all DNS forwarding rulesets retrieved+$GET+https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsResolvers/psdnsresolvername29/outboundEndpoints/psoutboundendpointname29?api-version=2022-07-01+7": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsResolvers/psdnsresolvername29/outboundEndpoints/psoutboundendpointname29?api-version=2020-04-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsResolvers/psdnsresolvername29/outboundEndpoints/psoutboundendpointname29?api-version=2022-07-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -763,10 +763,10 @@
       "isContentBase64": false
     }
   },
-  "Get-AzDnsForwardingRuleset+[NoContext]+List all DNS forwarding ruleset under the resouce group, expect all DNS forwarding rulesets retrieved+$PUT+https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsForwardingRulesets/psdnsforwardingrulesetname29?api-version=2020-04-01-preview+8": {
+  "Get-AzDnsForwardingRuleset+[NoContext]+List all DNS forwarding ruleset under the resouce group, expect all DNS forwarding rulesets retrieved+$PUT+https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsForwardingRulesets/psdnsforwardingrulesetname29?api-version=2022-07-01+8": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsForwardingRulesets/psdnsforwardingrulesetname29?api-version=2020-04-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsForwardingRulesets/psdnsforwardingrulesetname29?api-version=2022-07-01",
       "Content": "{\r\n  \"location\": \"eastus2\",\r\n  \"properties\": {\r\n    \"dnsResolverOutboundEndpoints\": [\r\n      {\r\n        \"id\": \"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsResolvers/psdnsresolvername29/outboundEndpoints/psoutboundendpointname29\"\r\n      }\r\n    ]\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -781,10 +781,10 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/locations/eastus2/dnsResolverOperationResults/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0RG5zRm9yd2FyZGluZ1J1bGVzZXQiLCJPcGVyYXRpb25JZCI6ImZiYWY3OTEzLTY2OTMtNGUzNy1iZDYyLTY3NTlhNWI2OGFiNSJ9?api-version=2020-04-01-preview" ],
+        "Location": [ "https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/locations/eastus2/dnsResolverOperationResults/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0RG5zRm9yd2FyZGluZ1J1bGVzZXQiLCJPcGVyYXRpb25JZCI6ImZiYWY3OTEzLTY2OTMtNGUzNy1iZDYyLTY3NTlhNWI2OGFiNSJ9?api-version=2022-07-01" ],
         "Retry-After": [ "5" ],
         "x-ms-activity-id": [ "0d457bd6-8d89-4777-9f37-be96b39f8b75" ],
-        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/locations/eastus2/dnsResolverOperationStatuses/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0RG5zRm9yd2FyZGluZ1J1bGVzZXQiLCJPcGVyYXRpb25JZCI6ImZiYWY3OTEzLTY2OTMtNGUzNy1iZDYyLTY3NTlhNWI2OGFiNSJ9?api-version=2020-04-01-preview" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/locations/eastus2/dnsResolverOperationStatuses/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0RG5zRm9yd2FyZGluZ1J1bGVzZXQiLCJPcGVyYXRpb25JZCI6ImZiYWY3OTEzLTY2OTMtNGUzNy1iZDYyLTY3NTlhNWI2OGFiNSJ9?api-version=2022-07-01" ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [ "11998" ],
         "x-ms-request-id": [ "3fdf9314-e653-4703-a6b2-1981031bd1b6" ],
         "x-ms-correlation-request-id": [ "3fdf9314-e653-4703-a6b2-1981031bd1b6" ],
@@ -804,10 +804,10 @@
       "isContentBase64": false
     }
   },
-  "Get-AzDnsForwardingRuleset+[NoContext]+List all DNS forwarding ruleset under the resouce group, expect all DNS forwarding rulesets retrieved+$GET+https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/locations/eastus2/dnsResolverOperationStatuses/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0RG5zRm9yd2FyZGluZ1J1bGVzZXQiLCJPcGVyYXRpb25JZCI6ImZiYWY3OTEzLTY2OTMtNGUzNy1iZDYyLTY3NTlhNWI2OGFiNSJ9?api-version=2020-04-01-preview+9": {
+  "Get-AzDnsForwardingRuleset+[NoContext]+List all DNS forwarding ruleset under the resouce group, expect all DNS forwarding rulesets retrieved+$GET+https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/locations/eastus2/dnsResolverOperationStatuses/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0RG5zRm9yd2FyZGluZ1J1bGVzZXQiLCJPcGVyYXRpb25JZCI6ImZiYWY3OTEzLTY2OTMtNGUzNy1iZDYyLTY3NTlhNWI2OGFiNSJ9?api-version=2022-07-01+9": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/locations/eastus2/dnsResolverOperationStatuses/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0RG5zRm9yd2FyZGluZ1J1bGVzZXQiLCJPcGVyYXRpb25JZCI6ImZiYWY3OTEzLTY2OTMtNGUzNy1iZDYyLTY3NTlhNWI2OGFiNSJ9?api-version=2020-04-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/locations/eastus2/dnsResolverOperationStatuses/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0RG5zRm9yd2FyZGluZ1J1bGVzZXQiLCJPcGVyYXRpb25JZCI6ImZiYWY3OTEzLTY2OTMtNGUzNy1iZDYyLTY3NTlhNWI2OGFiNSJ9?api-version=2022-07-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -847,10 +847,10 @@
       "isContentBase64": false
     }
   },
-  "Get-AzDnsForwardingRuleset+[NoContext]+List all DNS forwarding ruleset under the resouce group, expect all DNS forwarding rulesets retrieved+$GET+https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsForwardingRulesets/psdnsforwardingrulesetname29?api-version=2020-04-01-preview+10": {
+  "Get-AzDnsForwardingRuleset+[NoContext]+List all DNS forwarding ruleset under the resouce group, expect all DNS forwarding rulesets retrieved+$GET+https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsForwardingRulesets/psdnsforwardingrulesetname29?api-version=2022-07-01+10": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsForwardingRulesets/psdnsforwardingrulesetname29?api-version=2020-04-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsForwardingRulesets/psdnsforwardingrulesetname29?api-version=2022-07-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -890,10 +890,10 @@
       "isContentBase64": false
     }
   },
-  "Get-AzDnsForwardingRuleset+[NoContext]+List all DNS forwarding ruleset under the resouce group, expect all DNS forwarding rulesets retrieved+$GET+https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsForwardingRulesets/psdnsforwardingrulesetname29?api-version=2020-04-01-preview+11": {
+  "Get-AzDnsForwardingRuleset+[NoContext]+List all DNS forwarding ruleset under the resouce group, expect all DNS forwarding rulesets retrieved+$GET+https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsForwardingRulesets/psdnsforwardingrulesetname29?api-version=2022-07-01+11": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsForwardingRulesets/psdnsforwardingrulesetname29?api-version=2020-04-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsForwardingRulesets/psdnsforwardingrulesetname29?api-version=2022-07-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {

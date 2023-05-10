@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Resources
-online version: https://docs.microsoft.com/powershell/module/az.resources/remove-azrolemanagementpolicy
+online version: https://learn.microsoft.com/powershell/module/az.resources/remove-azrolemanagementpolicy
 schema: 2.0.0
 ---
 
@@ -31,9 +31,11 @@ Delete a role management policy
 
 ### Example 1: Delete a role management policy
 ```powershell
-PS C:\> $scope = "/subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d/"
-PS C:\> Remove-AzRoleManagementPolicy -Scope $scope -Name "0a4d3ef7-147b-4777-a958-ae9dfab3c331"
+$scope = "/subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d/"
+Remove-AzRoleManagementPolicy -Scope $scope -Name "0a4d3ef7-147b-4777-a958-ae9dfab3c331"
+```
 
+```output
 The requested resource does not support http method 'DELETE'.
 ```
 
@@ -42,7 +44,8 @@ This operation is currently not supported
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -168,7 +171,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IAuthorizationIdentity>: Identity Parameter
+`INPUTOBJECT <IAuthorizationIdentity>`: Identity Parameter
   - `[Id <String>]`: Resource identity path
   - `[RoleAssignmentScheduleInstanceName <String>]`: The name (hash of schedule name + time) of the role assignment schedule to get.
   - `[RoleAssignmentScheduleName <String>]`: The name (guid) of the role assignment schedule to get.

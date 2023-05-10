@@ -12,16 +12,17 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Management.RedisCache.Models;
+
 namespace Microsoft.Azure.Commands.RedisCache
 {
     using Microsoft.Azure.Commands.RedisCache.Models;
     using Microsoft.Azure.Commands.RedisCache.Properties;
-    using Microsoft.Azure.Management.Redis.Models;
     using ResourceManager.Common.ArgumentCompleters;
     using System;
     using System.Collections.Generic;
     using System.Management.Automation;
-    using DayOfWeekEnum = Management.Redis.Models.DayOfWeek;
+    using DayOfWeekEnum = DayOfWeek;
 
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RedisCachePatchSchedule", SupportsShouldProcess = true), OutputType(typeof(PSScheduleEntry))]
     public class NewAzureRedisCachePatchSchedule : RedisCacheCmdletBase

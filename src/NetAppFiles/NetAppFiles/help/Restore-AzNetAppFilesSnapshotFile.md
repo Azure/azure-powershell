@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles.dll-Help.xml
 Module Name: Az.NetAppFiles
-online version:
+online version: https://learn.microsoft.com/powershell/module/az.netappfiles/restore-aznetappfilessnapshotfile
 schema: 2.0.0
 ---
 
@@ -40,7 +40,7 @@ Restore the specified files from the specified snapshot to the active filesystem
 
 ### Example 1
 ```powershell
-PS C:\> Restore-AzNetAppFilesSnapshotFile -ResourceGroupName "MyRG" -Location "westus2" -AccountName "MyAnfAccount" -PoolName "MyAnfPool" -VolumeName "MyVolume" -Name "MySnapshotName" -FilePath "/dir1/customer1.db" -DestintationPath "/AVSdataStore"
+Restore-AzNetAppFilesSnapshotFile -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -PoolName "MyAnfPool" -VolumeName "MyVolume" -Name "MySnapshotName" -FilePath "/dir1/customer1.db" -DestinationPath "/AVSdataStore"
 ```
 
 This command Restores the files provided in FilePath to the directory /AVSdataStore from the MyVolume snapshot called MySnapshotName

@@ -1,22 +1,12 @@
-### Example 1: {{ Add title here }}
+### Example 1: Test the availability of a endpoint name under the AzureFrontDoor profile
 ```powershell
-{{ Add code here }}
+Test-AzFrontDoorCdnEndpointNameAvailability -ResourceGroupName testps-rg-da16jm -Type "Microsoft.Cdn/Profiles/AfdEndpoints" -Name end001
 ```
 
 ```output
-{{ Add output here }}
+AvailableHostname Message            NameAvailable Reason
+----------------- -------            ------------- ------
+                  Name not available False         Name is already in use
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
 

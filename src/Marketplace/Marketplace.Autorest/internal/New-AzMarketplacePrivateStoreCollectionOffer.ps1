@@ -61,7 +61,7 @@ PAYLOAD <IOffer>: The privateStore offer data structure.
   [SpecificPlanIdsLimitation <String[]>]: Plan ids limitation for this offer
   [UpdateSuppressedDueIdempotence <Boolean?>]: Indicating whether the offer was not updated to db (true = not updated). If the allow list is identical to the existed one in db, the offer would not be updated.
 .Link
-https://docs.microsoft.com/powershell/module/az.marketplace/new-azmarketplaceprivatestorecollectionoffer
+https://learn.microsoft.com/powershell/module/az.marketplace/new-azmarketplaceprivatestorecollectionoffer
 #>
 function New-AzMarketplacePrivateStoreCollectionOffer {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.IOffer])]

@@ -14,7 +14,7 @@
 
 namespace Microsoft.Azure.Commands.ServiceBus.Test.ScenarioTests
 {
-    using Microsoft.Azure.Commands.EventHub.Test.ScenarioTests;
+    using Microsoft.Azure.Commands.ServiceBus.Test.ScenarioTests;
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
     using Xunit;
     using Xunit.Abstractions;
@@ -29,13 +29,6 @@ namespace Microsoft.Azure.Commands.ServiceBus.Test.ScenarioTests
         public void ServiceBusNameSpace_CURD_Tests()
         {
             TestRunner.RunTestScript("ServiceBusTests");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void ServiceBusNameSpaceAuth_CURD_Tests()
-        {
-            TestRunner.RunTestScript("ServiceBusNameSpaceAuthTests");
         }
 
         [Fact]

@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
 ms.assetid: EFDFCE12-F39C-4F52-9962-4601F0C4FD47
-online version: https://docs.microsoft.com/powershell/module/az.sql/set-azsqlelasticpoolrecommendedactionstate
+online version: https://learn.microsoft.com/powershell/module/az.sql/set-azsqlelasticpoolrecommendedactionstate
 schema: 2.0.0
 ---
 
@@ -234,4 +234,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 [Set-AzSqlServerRecommendedActionState](./Set-AzSqlServerRecommendedActionState.md)
 
-[SQL Database Documentation](https://docs.microsoft.com/azure/sql-database/)
+[SQL Database Documentation](https://learn.microsoft.com/azure/sql-database/)

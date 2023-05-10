@@ -28,7 +28,7 @@ default microsoft.Datadog/agreements
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.Api20210301.IDatadogAgreementResource
 .Link
-https://docs.microsoft.com/powershell/module/az.datadog/new-azdatadogmarketplaceagreement
+https://learn.microsoft.com/powershell/module/az.datadog/new-azdatadogmarketplaceagreement
 #>
 function New-AzDatadogMarketplaceAgreement {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.Api20210301.IDatadogAgreementResource])]

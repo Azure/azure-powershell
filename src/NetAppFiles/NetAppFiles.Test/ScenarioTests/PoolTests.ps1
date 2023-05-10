@@ -143,7 +143,7 @@ function Test-PoolPipelines
 
         # delete a pool by piping from account
         Get-AnfAccount -ResourceGroupName $resourceGroup -Name $accName | Remove-AnfPool -Name $poolName1 
-        Start-Sleep -Seconds 20.0
+        Start-TestSleep -Seconds 20
         
         # recreate two pools
         New-AnfPool -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName -Name $PoolName1 -PoolSize $poolSize -ServiceLevel $serviceLevel

@@ -3129,9 +3129,6 @@
           <TableColumnHeader>
             <Label>Operator</Label>
           </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Value</Label>
-          </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
@@ -3144,9 +3141,6 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>Operator</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Value</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>

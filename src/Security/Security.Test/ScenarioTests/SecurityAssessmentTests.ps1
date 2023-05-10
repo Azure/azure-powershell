@@ -28,7 +28,7 @@ Get security contacts on a subscription
 #>
 function CreateAndDelete-AzSecurityAssessment
 {
-	$assessmentGuid = "0338728b-bc5c-41d6-ab83-29cf28652680"
+	$assessmentGuid = "45fb078b-a96e-4d0b-90cb-f3ed8a5530c0"
 
 	$metadata = Get-AzSecurityAssessmentMetadata | where { $_.Name -eq $assessmentGuid }
 	Assert-True { $metadata.Count -eq 0 }

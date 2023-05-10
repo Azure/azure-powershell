@@ -49,6 +49,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// <summary>
         /// Converts the resource object to specified resource type object.
         /// </summary>
+        /// <param name="resourceType">The resource type.</param>
         /// <param name="resources">The policy definition resource object.</param>
         protected PSObject[] GetOutputObjects(string resourceType, params JToken[] resources)
         {

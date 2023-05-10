@@ -21,4 +21,3 @@ Kind Location   Name             Type
 ```
 
 This command updates a static site by pipeline.
-

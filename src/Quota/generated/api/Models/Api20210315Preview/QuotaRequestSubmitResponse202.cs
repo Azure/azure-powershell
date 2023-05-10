@@ -21,7 +21,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.Api20210315Preview
         private string _id;
 
         /// <summary>
-        /// The quota request ID. To check the request status, use the **id** value in a [Quota Request Status](https://docs.microsoft.com/en-us/rest/api/reserved-vm-instances/quotarequeststatus/get)
+        /// The quota request ID. To check the request status, use the **id** value in a [Quota Request Status](https://learn.microsoft.com/en-us/rest/api/reserved-vm-instances/quotarequeststatus/get)
         /// GET operation.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Quota.Origin(Microsoft.Azure.PowerShell.Cmdlets.Quota.PropertyOrigin.Owned)]
@@ -149,13 +149,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.Api20210315Preview
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IAny) })]
         Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IAny AnyProperty { get; set; }
         /// <summary>
-        /// The quota request ID. To check the request status, use the **id** value in a [Quota Request Status](https://docs.microsoft.com/en-us/rest/api/reserved-vm-instances/quotarequeststatus/get)
+        /// The quota request ID. To check the request status, use the **id** value in a [Quota Request Status](https://learn.microsoft.com/en-us/rest/api/reserved-vm-instances/quotarequeststatus/get)
         /// GET operation.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.Info(
         Required = false,
         ReadOnly = true,
-        Description = @"The quota request ID. To check the request status, use the **id** value in a [Quota Request Status](https://docs.microsoft.com/en-us/rest/api/reserved-vm-instances/quotarequeststatus/get) GET operation.",
+        Description = @"The quota request ID. To check the request status, use the **id** value in a [Quota Request Status](https://learn.microsoft.com/en-us/rest/api/reserved-vm-instances/quotarequeststatus/get) GET operation.",
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
         string Id { get;  }
@@ -277,7 +277,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.Api20210315Preview
         /// <summary>Additional properties for the specific resource provider.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IAny AnyProperty { get; set; }
         /// <summary>
-        /// The quota request ID. To check the request status, use the **id** value in a [Quota Request Status](https://docs.microsoft.com/en-us/rest/api/reserved-vm-instances/quotarequeststatus/get)
+        /// The quota request ID. To check the request status, use the **id** value in a [Quota Request Status](https://learn.microsoft.com/en-us/rest/api/reserved-vm-instances/quotarequeststatus/get)
         /// GET operation.
         /// </summary>
         string Id { get; set; }

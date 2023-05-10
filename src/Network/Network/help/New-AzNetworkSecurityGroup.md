@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: A420B3E7-2FE9-4D0B-803E-AC28E5F23C59
-online version: https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecuritygroup
+online version: https://learn.microsoft.com/powershell/module/az.network/new-aznetworksecuritygroup
 schema: 2.0.0
 ---
 
@@ -14,7 +14,7 @@ Creates a network security group.
 ## SYNTAX
 
 ```
-New-AzNetworkSecurityGroup -Name <String> -ResourceGroupName <String> -Location <String>
+New-AzNetworkSecurityGroup -Name <String> -ResourceGroupName <String> -Location <String> [-FlushConnection]
  [-SecurityRules <PSSecurityRule[]>] [-Tag <Hashtable>] [-Force] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -49,6 +49,13 @@ Step:1 Create a security rule allowing access from the Internet to port 3389.<br
 Step:2 Create a security rule allowing access from the Internet to port 80.<br>
 Step:3 Add the rules created above to a new NSG named NSG-FrontEnd.<br>
 
+### Example 3: Create a new network security group with flush connection
+```powershell
+New-AzNetworkSecurityGroup -Name "nsg1" -ResourceGroupName "rg1"  -Location  "westus" -FlushConnection
+```
+
+This command creates a new Azure network security group named "nsg1" in resource group "rg1" in location "westus" and enables flushing of connection.
+
 ## PARAMETERS
 
 ### -AsJob
@@ -78,6 +85,22 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FlushConnection
+When enabled, flows created from Network Security Group connections will be re-evaluated when rules are updated.
+Initial enablement will trigger re-evaluation
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -205,7 +228,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

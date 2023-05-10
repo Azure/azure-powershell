@@ -9,6 +9,7 @@ SecurityTmp/
 tmp/
 FilesChanged.txt
 CsprojMappings.json
+global.json
 
 obj
 bin
@@ -70,6 +71,7 @@ dlldata.c
 *.obj
 *.pch
 *.pdb
+!/src/lib/pdb/*.pdb
 *.pgc
 *.pgd
 *.rsp
@@ -238,3 +240,6 @@ src/DataFactory/DataFactoryV2.Test/SessionRecords/Microsoft.Azure.Commands.DataF
 
 # GitHub codespaces
 .venv
+
+# Visual studio live unit testing config
+*.lutconfig

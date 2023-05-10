@@ -1,7 +1,7 @@
 ---
 external help file: Az.Purview-help.xml
 Module Name: Az.Purview
-online version: https://docs.microsoft.com/powershell/module/az.purview/remove-azpurviewclassificationrule
+online version: https://learn.microsoft.com/powershell/module/az.purview/remove-azpurviewclassificationrule
 schema: 2.0.0
 ---
 
@@ -24,8 +24,10 @@ Deletes a classification rule
 
 ### Example 1: Delete custom classification rule by name
 ```powershell
-PS C:\> Remove-AzPurviewClassificationRule -Endpoint https://parv-brs-2.purview.azure.com -ClassificationRuleName 'RuleDUmmy'
+Remove-AzPurviewClassificationRule -Endpoint https://parv-brs-2.purview.azure.com -ClassificationRuleName 'RuleDUmmy'
+```
 
+```output
 ClassificationAction   : Keep
 ClassificationName     : MICROSOFT.GOVERNMENT.AUSTRALIA.DRIVERS_LICENSE_NUMBER
 ColumnPattern          : {{

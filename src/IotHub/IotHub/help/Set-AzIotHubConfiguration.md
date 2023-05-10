@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.IotHub.dll-Help.xml
 Module Name: Az.IotHub
-online version: https://docs.microsoft.com/powershell/module/az.iothub/set-aziothubconfiguration
+online version: https://learn.microsoft.com/powershell/module/az.iothub/set-aziothubconfiguration
 schema: 2.0.0
 ---
 
@@ -36,7 +36,7 @@ Set-AzIotHubConfiguration [-ResourceId] <String> [-Name] <String> [-Priority <In
 ## DESCRIPTION
 Update specified properties of an IoT automatic device management configuration.
 Note: Configuration content is immutable. Configuration properties that can be updated are 'labels', 'metrics', 'priority' and 'targetCondition'.
-See https://docs.microsoft.com/azure/iot-hub/iot-hub-automatic-device-management for more information.
+See https://learn.microsoft.com/azure/iot-hub/iot-hub-automatic-device-management for more information.
 
 ## EXAMPLES
 

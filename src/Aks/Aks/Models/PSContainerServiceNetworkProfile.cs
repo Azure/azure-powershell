@@ -12,21 +12,33 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Management.ContainerService.Models;
+using System.Collections.Generic;
+
 namespace Microsoft.Azure.Commands.Aks.Models
 {
     public class PSContainerServiceNetworkProfile
     {
         /// <summary>
-        /// Gets or sets network plugin used for building Kubernetes network.
-        /// Possible values include: 'azure', 'kubenet'
+        /// Gets or sets network plugin used for building the Kubernetes
+        /// network. Possible values include: 'azure', 'kubenet', 'none'
         /// </summary>
         public string NetworkPlugin { get; set; }
 
         /// <summary>
-        /// Gets or sets network policy used for building Kubernetes network.
-        /// Possible values include: 'calico', 'azure'
+        /// Gets or sets network policy used for building the Kubernetes
+        /// network. Possible values include: 'calico', 'azure'
         /// </summary>
         public string NetworkPolicy { get; set; }
+
+        /// <summary>
+        /// Gets or sets the network mode Azure CNI is configured with.
+        /// </summary>
+        /// <remarks>
+        /// This cannot be specified if networkPlugin is anything other than
+        /// 'azure'. Possible values include: 'transparent', 'bridge'
+        /// </remarks>
+        public string NetworkMode { get; set; }
 
         /// <summary>
         /// Gets or sets a CIDR notation IP range from which to assign pod IPs
@@ -55,15 +67,70 @@ namespace Microsoft.Azure.Commands.Aks.Models
         public string DockerBridgeCidr { get; set; }
 
         /// <summary>
-        /// Gets or sets the load balancer sku for the managed cluster.
-        /// Possible values include: 'standard', 'basic'
+        /// Gets or sets the outbound (egress) routing method.
         /// </summary>
+        /// <remarks>
+        /// This can only be set at cluster creation time and cannot be changed
+        /// later. For more information see [egress outbound
+        /// type](https://learn.microsoft.com/azure/aks/egress-outboundtype).
+        /// Possible values include: 'loadBalancer', 'userDefinedRouting',
+        /// 'managedNATGateway', 'userAssignedNATGateway'
+        /// </remarks>
+        public string OutboundType { get; set; }
+
+        /// <summary>
+        /// Gets or sets the load balancer sku for the managed cluster.
+        /// </summary>
+        /// <remarks>
+        /// The default is 'standard'. See [Azure Load Balancer
+        /// SKUs](https://learn.microsoft.com/azure/load-balancer/skus) for more
+        /// information about the differences between load balancer SKUs.
+        /// Possible values include: 'standard', 'basic'
+        /// </remarks>
         public string LoadBalancerSku { get; set; }
 
         /// <summary>
         /// Gets or sets profile of the cluster load balancer.
         /// </summary>
         public PSManagedClusterLoadBalancerProfile LoadBalancerProfile { get; set; }
+
+        /// <summary>
+        /// Gets or sets profile of the cluster NAT gateway.
+        /// </summary>
+        public ManagedClusterNATGatewayProfile NatGatewayProfile { get; set; }
+
+        /// <summary>
+        /// Gets or sets the CIDR notation IP ranges from which to assign pod
+        /// IPs.
+        /// </summary>
+        /// <remarks>
+        /// One IPv4 CIDR is expected for single-stack networking. Two CIDRs,
+        /// one for each IP family (IPv4/IPv6), is expected for dual-stack
+        /// networking.
+        /// </remarks>
+        public IList<string> PodCidrs { get; set; }
+
+        /// <summary>
+        /// Gets or sets the CIDR notation IP ranges from which to assign
+        /// service cluster IPs.
+        /// </summary>
+        /// <remarks>
+        /// One IPv4 CIDR is expected for single-stack networking. Two CIDRs,
+        /// one for each IP family (IPv4/IPv6), is expected for dual-stack
+        /// networking. They must not overlap with any Subnet IP ranges.
+        /// </remarks>
+        public IList<string> ServiceCidrs { get; set; }
+
+        /// <summary>
+        /// Gets or sets the IP families used to specify IP versions available
+        /// to the cluster.
+        /// </summary>
+        /// <remarks>
+        /// IP families are used to determine single-stack or dual-stack
+        /// clusters. For single-stack, the expected value is IPv4. For
+        /// dual-stack, the expected values are IPv4 and IPv6.
+        /// </remarks>
+        public IList<string> IpFamilies { get; set; }
 
     }
 }

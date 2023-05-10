@@ -6,13 +6,36 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Support
 {
 
+    /// <summary>
+    /// If not specified, the default is 'random'. See [expanders](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#what-are-expanders)
+    /// for more information.
+    /// </summary>
     public partial struct Expander :
         System.IEquatable<Expander>
     {
+        /// <summary>
+        /// Selects the node group that will have the least idle CPU (if tied, unused memory) after scale-up. This is useful when
+        /// you have different classes of nodes, for example, high CPU or high memory nodes, and only want to expand those when there
+        /// are pending pods that need a lot of those resources.
+        /// </summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.Expander LeastWaste = @"least-waste";
 
+        /// <summary>
+        /// Selects the node group that would be able to schedule the most pods when scaling up. This is useful when you are using
+        /// nodeSelector to make sure certain pods land on certain nodes. Note that this won't cause the autoscaler to select bigger
+        /// nodes vs. smaller, as it can add multiple smaller nodes at once.
+        /// </summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.Expander MostPods = @"most-pods";
 
+        /// <summary>
+        /// Selects the node group that has the highest priority assigned by the user. It's configuration is described in more details
+        /// [here](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/expander/priority/readme.md).
+        /// </summary>
+        public static Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.Expander Priority = @"priority";
+
+        /// <summary>
+        /// Used when you don't have a particular need for the node groups to scale differently.
+        /// </summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.Expander Random = @"random";
 
         /// <summary>the value for an instance of the <see cref="Expander" /> Enum.</summary>
@@ -41,7 +64,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Support
             return obj is Expander && Equals((Expander)obj);
         }
 
-        /// <summary>Creates an instance of the <see cref="Expander" Enum class./></summary>
+        /// <summary>Creates an instance of the <see cref="Expander"/> Enum class.</summary>
         /// <param name="underlyingValue">the value to create an instance for.</param>
         private Expander(string underlyingValue)
         {
@@ -79,8 +102,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Support
         }
 
         /// <summary>Overriding != operator for enum Expander</summary>
-        /// <param name="e1">the value to compare against <see cref="e2" /></param>
-        /// <param name="e2">the value to compare against <see cref="e1" /></param>
+        /// <param name="e1">the value to compare against <paramref name="e2" /></param>
+        /// <param name="e2">the value to compare against <paramref name="e1" /></param>
         /// <returns><c>true</c> if the two instances are not equal to the same value</returns>
         public static bool operator !=(Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.Expander e1, Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.Expander e2)
         {
@@ -88,8 +111,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Support
         }
 
         /// <summary>Overriding == operator for enum Expander</summary>
-        /// <param name="e1">the value to compare against <see cref="e2" /></param>
-        /// <param name="e2">the value to compare against <see cref="e1" /></param>
+        /// <param name="e1">the value to compare against <paramref name="e2" /></param>
+        /// <param name="e2">the value to compare against <paramref name="e1" /></param>
         /// <returns><c>true</c> if the two instances are equal to the same value</returns>
         public static bool operator ==(Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.Expander e1, Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.Expander e2)
         {

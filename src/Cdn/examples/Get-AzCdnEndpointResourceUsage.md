@@ -1,22 +1,20 @@
-### Example 1: {{ Add title here }}
+### Example 1: List resource useages of an AzureCDN Endpoint under the AzureCDN profile
 ```powershell
-{{ Add code here }}
+Get-AzCdnEndpointResourceUsage -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -EndpointName endptest001
 ```
 
 ```output
-{{ Add output here }}
+CurrentValue Limit ResourceType          Unit
+------------ ----- ------------          ----
+0            25    customdomain          count
+0            25    geofilter             count
+0            25    deliveryrule          count
+0            10    deliveryrulecondition count
+0            5     deliveryruleaction    count
+1            10    origin                count
+1            10    origingroup           count
+1            10    originsPerOriginGroup count
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+List resource useages of an AzureCDN Endpoint under the AzureCDN profile
 

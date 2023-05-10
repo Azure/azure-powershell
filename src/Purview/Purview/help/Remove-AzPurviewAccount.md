@@ -1,7 +1,7 @@
 ---
 external help file: Az.Purview-help.xml
 Module Name: Az.Purview
-online version: https://docs.microsoft.com/powershell/module/az.purview/remove-azpurviewaccount
+online version: https://learn.microsoft.com/powershell/module/az.purview/remove-azpurviewaccount
 schema: 2.0.0
 ---
 
@@ -218,7 +218,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IPurviewIdentity>: Identity Parameter
+INPUTOBJECT `<IPurviewIdentity>`: Identity Parameter
   - `[AccountName <String>]`: The name of the account.
   - `[GroupId <String>]`: The group identifier.
   - `[Id <String>]`: Resource identity path

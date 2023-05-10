@@ -47,7 +47,7 @@ INPUTOBJECT <IKubernetesConfigurationIdentity>: Identity Parameter
   [SourceControlConfigurationName <String>]: Name of the Source Control Configuration.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.kubernetesconfiguration/get-azkubernetesconfigfluxoperationstatus
+https://learn.microsoft.com/powershell/module/az.kubernetesconfiguration/get-azkubernetesconfigfluxoperationstatus
 #>
 function Get-AzKubernetesConfigFluxOperationStatus {
 [Alias('Get-AzK8sConfigFluxOperationStatus')]
@@ -240,7 +240,7 @@ INPUTOBJECT <IKubernetesConfigurationIdentity>: Identity Parameter
   [SourceControlConfigurationName <String>]: Name of the Source Control Configuration.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.kubernetesconfiguration/get-azkubernetesconfigurationflux
+https://learn.microsoft.com/powershell/module/az.kubernetesconfiguration/get-azkubernetesconfigurationflux
 #>
 function Get-AzKubernetesConfigurationFlux {
 [Alias('Get-AzK8sConfigurationFlux')]
@@ -435,7 +435,7 @@ INPUTOBJECT <IKubernetesConfigurationIdentity>: Identity Parameter
   [SourceControlConfigurationName <String>]: Name of the Source Control Configuration.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.kubernetesconfiguration/get-azkubernetesconfiguration
+https://learn.microsoft.com/powershell/module/az.kubernetesconfiguration/get-azkubernetesconfiguration
 #>
 function Get-AzKubernetesConfiguration {
 [Alias('Get-AzK8sConfiguration')]
@@ -630,7 +630,7 @@ INPUTOBJECT <IKubernetesConfigurationIdentity>: Identity Parameter
   [SourceControlConfigurationName <String>]: Name of the Source Control Configuration.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.kubernetesconfiguration/get-azkubernetesextension
+https://learn.microsoft.com/powershell/module/az.kubernetesconfiguration/get-azkubernetesextension
 #>
 function Get-AzKubernetesExtension {
 [Alias('Get-AzK8sExtension')]
@@ -798,7 +798,7 @@ List all the available operations the KubernetesConfiguration resource provider 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.IResourceProviderOperation
 .Link
-https://docs.microsoft.com/powershell/module/az.kubernetesconfiguration/get-azoperation
+https://learn.microsoft.com/powershell/module/az.kubernetesconfiguration/get-azoperation
 #>
 function Get-AzOperation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.IResourceProviderOperation])]
@@ -922,7 +922,7 @@ azpstestflux-k8s azpstest_gp
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.IFluxConfiguration
 .Link
-https://docs.microsoft.com/powershell/module/az.kubernetesconfiguration/new-azkubernetesconfigurationflux
+https://learn.microsoft.com/powershell/module/az.kubernetesconfiguration/new-azkubernetesconfigurationflux
 #>
 function New-AzKubernetesConfigurationFlux {
 [Alias('New-AzK8sConfigurationFlux')]
@@ -1251,7 +1251,7 @@ azpstestk8s-operator http://github.com/xxxx azpstest_gp
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.ISourceControlConfiguration
 .Link
-https://docs.microsoft.com/powershell/module/az.kubernetesconfiguration/new-azkubernetesconfiguration
+https://learn.microsoft.com/powershell/module/az.kubernetesconfiguration/new-azkubernetesconfiguration
 #>
 function New-AzKubernetesConfiguration {
 [Alias('New-AzK8sConfiguration')]
@@ -1483,7 +1483,7 @@ flux microsoft.flux 1.0.0   Succeeded         True                    Stable
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.IExtension
 .Link
-https://docs.microsoft.com/powershell/module/az.kubernetesconfiguration/new-azkubernetesextension
+https://learn.microsoft.com/powershell/module/az.kubernetesconfiguration/new-azkubernetesextension
 #>
 function New-AzKubernetesExtension {
 [Alias('New-AzK8sExtension')]
@@ -1738,7 +1738,7 @@ INPUTOBJECT <IKubernetesConfigurationIdentity>: Identity Parameter
   [SourceControlConfigurationName <String>]: Name of the Source Control Configuration.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.kubernetesconfiguration/remove-azkubernetesconfigurationflux
+https://learn.microsoft.com/powershell/module/az.kubernetesconfiguration/remove-azkubernetesconfigurationflux
 #>
 function Remove-AzKubernetesConfigurationFlux {
 [Alias('Remove-AzK8sConfigurationFlux')]
@@ -1945,7 +1945,7 @@ INPUTOBJECT <IKubernetesConfigurationIdentity>: Identity Parameter
   [SourceControlConfigurationName <String>]: Name of the Source Control Configuration.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.kubernetesconfiguration/remove-azkubernetesconfiguration
+https://learn.microsoft.com/powershell/module/az.kubernetesconfiguration/remove-azkubernetesconfiguration
 #>
 function Remove-AzKubernetesConfiguration {
 [Alias('Remove-AzK8sConfiguration')]
@@ -2144,7 +2144,7 @@ INPUTOBJECT <IKubernetesConfigurationIdentity>: Identity Parameter
   [SourceControlConfigurationName <String>]: Name of the Source Control Configuration.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.kubernetesconfiguration/remove-azkubernetesextension
+https://learn.microsoft.com/powershell/module/az.kubernetesconfiguration/remove-azkubernetesextension
 #>
 function Remove-AzKubernetesExtension {
 [Alias('Remove-AzK8sExtension')]
@@ -2330,7 +2330,7 @@ Create a new Kubernetes Flux Configuration.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.IFluxConfiguration
 .Link
-https://docs.microsoft.com/powershell/module/az.kubernetesconfiguration/set-azkubernetesconfigurationflux
+https://learn.microsoft.com/powershell/module/az.kubernetesconfiguration/set-azkubernetesconfigurationflux
 #>
 function Set-AzKubernetesConfigurationFlux {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.IFluxConfiguration])]
@@ -2674,7 +2674,7 @@ INPUTOBJECT <IKubernetesConfigurationIdentity>: Identity Parameter
   [SourceControlConfigurationName <String>]: Name of the Source Control Configuration.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.kubernetesconfiguration/update-azkubernetesconfigurationflux
+https://learn.microsoft.com/powershell/module/az.kubernetesconfiguration/update-azkubernetesconfigurationflux
 #>
 function Update-AzKubernetesConfigurationFlux {
 [Alias('Update-AzK8sConfigurationFlux')]
@@ -3007,7 +3007,7 @@ INPUTOBJECT <IKubernetesConfigurationIdentity>: Identity Parameter
   [SourceControlConfigurationName <String>]: Name of the Source Control Configuration.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.kubernetesconfiguration/update-azkubernetesextension
+https://learn.microsoft.com/powershell/module/az.kubernetesconfiguration/update-azkubernetesextension
 #>
 function Update-AzKubernetesExtension {
 [Alias('Update-AzK8sExtension')]

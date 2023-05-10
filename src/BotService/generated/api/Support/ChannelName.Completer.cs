@@ -26,6 +26,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService.Support
         /// </returns>
         public global::System.Collections.Generic.IEnumerable<global::System.Management.Automation.CompletionResult> CompleteArgument(global::System.String commandName, global::System.String parameterName, global::System.String wordToComplete, global::System.Management.Automation.Language.CommandAst commandAst, global::System.Collections.IDictionary fakeBoundParameters)
         {
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "AlexaChannel".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'AlexaChannel'", "AlexaChannel", global::System.Management.Automation.CompletionResultType.ParameterValue, "AlexaChannel");
+            }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "FacebookChannel".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
                 yield return new global::System.Management.Automation.CompletionResult("'FacebookChannel'", "FacebookChannel", global::System.Management.Automation.CompletionResultType.ParameterValue, "FacebookChannel");
@@ -65,6 +69,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService.Support
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "SmsChannel".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
                 yield return new global::System.Management.Automation.CompletionResult("'SmsChannel'", "SmsChannel", global::System.Management.Automation.CompletionResultType.ParameterValue, "SmsChannel");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "LineChannel".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'LineChannel'", "LineChannel", global::System.Management.Automation.CompletionResultType.ParameterValue, "LineChannel");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "DirectLineSpeechChannel".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'DirectLineSpeechChannel'", "DirectLineSpeechChannel", global::System.Management.Automation.CompletionResultType.ParameterValue, "DirectLineSpeechChannel");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "OutlookChannel".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'OutlookChannel'", "OutlookChannel", global::System.Management.Automation.CompletionResultType.ParameterValue, "OutlookChannel");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Omnichannel".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'Omnichannel'", "Omnichannel", global::System.Management.Automation.CompletionResultType.ParameterValue, "Omnichannel");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "TelephonyChannel".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'TelephonyChannel'", "TelephonyChannel", global::System.Management.Automation.CompletionResultType.ParameterValue, "TelephonyChannel");
             }
         }
     }

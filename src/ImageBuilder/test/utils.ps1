@@ -6,156 +6,120 @@ function RandomString([bool]$allChars, [int32]$len) {
     }
 }
 $env = @{}
+if ($UsePreviousConfigForRecord) {
+    $previousEnv = Get-Content (Join-Path $PSScriptRoot 'env.json') | ConvertFrom-Json
+    $previousEnv.psobject.properties | Foreach-Object { $env[$_.Name] = $_.Value }
+}
+# Add script method called AddWithCache to $env, when useCache is set true, it will try to get the value from the $env first.
+# example: $val = $env.AddWithCache('key', $val, $true)
+$env | Add-Member -Type ScriptMethod -Value { param( [string]$key, [object]$val, [bool]$useCache) if ($this.Contains($key) -and $useCache) { return $this[$key] } else { $this[$key] = $val; return $val } } -Name 'AddWithCache'
 function setupEnv() {
+    $DebugPreference = 'Continue'
+
     # Preload subscriptionId and tenant from context, which will be used in test
     # as default. You could change them if needed.
     $env.SubscriptionId = (Get-AzContext).Subscription.Id
     $env.Tenant = (Get-AzContext).Tenant.Id
-    $env.ResourceGroup = 'wyunchi-imagebuilder'
-    $env.Location = 'eastus'
-    $env.RepLocation = 'eastus2'
-
-    #Generate some strings for use in the test.
-    $env.Resources = @{Distributor= @{}; Template=@{}; RunOutputName=@{}; Customizer=@{}}
-
-    $distributorName00 = 'dis-img-' + (RandomString -allChars $false -len 6)
-    $distributorName01 = 'dis-img-' + (RandomString -allChars $false -len 6)
-    $distributorName02 = 'dis-img-' + (RandomString -allChars $false -len 6)
-    $distributorName03 = 'dis-img-' + (RandomString -allChars $false -len 6)
-    $distributorName04 = 'dis-img-' + (RandomString -allChars $false -len 6)
-    $distributorName05 = 'dis-img-' + (RandomString -allChars $false -len 6)
-    $distributorName06 = 'dis-img-' + (RandomString -allChars $false -len 6)
-    $distributorName07 = 'dis-img-' + (RandomString -allChars $false -len 6)
-    $distributorName08 = 'dis-img-' + (RandomString -allChars $false -len 6)
-    $distributorName09 = 'dis-img-' + (RandomString -allChars $false -len 6)
-    $distributorName000 = 'dis-img-' + (RandomString -allChars $false -len 6)
-    $distributorName001 = 'dis-img-' + (RandomString -allChars $false -len 6)
-    $distributorName002 = 'dis-img-' + (RandomString -allChars $false -len 6)
-    $distributorName003 = 'dis-img-' + (RandomString -allChars $false -len 6)
-    $distributorName004 = 'dis-img-' + (RandomString -allChars $false -len 6)
-    $env.Resources.Distributor.Add('distributorName00', $distributorName00);
-    $env.Resources.Distributor.Add('distributorName01', $distributorName01);
-    $env.Resources.Distributor.Add('distributorName02', $distributorName02);
-    $env.Resources.Distributor.Add('distributorName03', $distributorName03);
-    $env.Resources.Distributor.Add('distributorName04', $distributorName04);
-    $env.Resources.Distributor.Add('distributorName05', $distributorName05);
-    $env.Resources.Distributor.Add('distributorName06', $distributorName06);
-    $env.Resources.Distributor.Add('distributorName07', $distributorName07);
-    $env.Resources.Distributor.Add('distributorName08', $distributorName08);
-    $env.Resources.Distributor.Add('distributorName09', $distributorName09);
-    $env.Resources.Distributor.Add('distributorName000', $distributorName000);
-    $env.Resources.Distributor.Add('distributorName001', $distributorName001);
-    $env.Resources.Distributor.Add('distributorName002', $distributorName002);
-    $env.Resources.Distributor.Add('distributorName003', $distributorName003);
-
-    $templateName10 = 'template-name-' + (RandomString -allChars $false -len 6)
-    $templateName11 = 'template-name-' + (RandomString -allChars $false -len 6)
-    $templateName12 = 'template-name-' + (RandomString -allChars $false -len 6)
-    $templateName13 = 'template-name-' + (RandomString -allChars $false -len 6)
-    $templateName14 = 'template-name-' + (RandomString -allChars $false -len 6)
-    $templateName15 = 'template-name-' + (RandomString -allChars $false -len 6)
-    $templateName16 = 'template-name-' + (RandomString -allChars $false -len 6)
-    $templateName17 = 'template-name-' + (RandomString -allChars $false -len 6)
-    $templateName18 = 'template-name-' + (RandomString -allChars $false -len 6)
-    $templateName19 = 'template-name-' + (RandomString -allChars $false -len 6)
-    $templateName100 = 'template-name-' + (RandomString -allChars $false -len 6)
-    $templateName101 = 'template-name-' + (RandomString -allChars $false -len 6)
-    $templateName102 = 'template-name-' + (RandomString -allChars $false -len 6)
-    $templateName103 = 'template-name-' + (RandomString -allChars $false -len 6)
-    $env.Resources.Template.Add('templateName10', $templateName10);
-    $env.Resources.Template.Add('templateName11', $templateName11);
-    $env.Resources.Template.Add('templateName12', $templateName12);
-    $env.Resources.Template.Add('templateName13', $templateName13);
-    $env.Resources.Template.Add('templateName14', $templateName14);
-    $env.Resources.Template.Add('templateName15', $templateName15);
-    $env.Resources.Template.Add('templateName16', $templateName16);
-    $env.Resources.Template.Add('templateName17', $templateName17);
-    $env.Resources.Template.Add('templateName18', $templateName18);
-    $env.Resources.Template.Add('templateName19', $templateName19);
-    $env.Resources.Template.Add('templateName100', $templateName100);
-    $env.Resources.Template.Add('templateName101', $templateName101);
-    $env.Resources.Template.Add('templateName102', $templateName102);
-    $env.Resources.Template.Add('templateName103', $templateName103);
-
-    $runOutputName20 = 'runout-' +  $templateName10
-    $runOutputName21 = 'runout-' +  $templateName11
-    $runOutputName22 = 'runout-' +  $templateName12
-    $runOutputName23 = 'runout-' +  $templateName13
-    $runOutputName24 = 'runout-' +  $templateName14
-    $runOutputName25 = 'runout-' +  $templateName15
-    $runOutputName26 = 'runout-' +  $templateName16
-    $runOutputName27 = 'runout-' +  $templateName17
-    $runOutputName28 = 'runout-' +  $templateName18
-    $runOutputName29 = 'runout-' +  $templateName19
-    $runOutputName200 = 'runout-' +  $templateName100
-    $runOutputName201 = 'runout-' +  $templateName101
-    $runOutputName202 = 'runout-' +  $templateName102
-    $runOutputName203 = 'runout-' +  $templateName103
-    $env.Resources.RunOutputName.Add('runOutputName20', $runOutputName20);
-    $env.Resources.RunOutputName.Add('runOutputName21', $runOutputName21);
-    $env.Resources.RunOutputName.Add('runOutputName22', $runOutputName22);
-    $env.Resources.RunOutputName.Add('runOutputName23', $runOutputName23);
-    $env.Resources.RunOutputName.Add('runOutputName24', $runOutputName24);
-    $env.Resources.RunOutputName.Add('runOutputName25', $runOutputName25);
-    $env.Resources.RunOutputName.Add('runOutputName26', $runOutputName26);
-    $env.Resources.RunOutputName.Add('runOutputName27', $runOutputName27);
-    $env.Resources.RunOutputName.Add('runOutputName28', $runOutputName28);
-    $env.Resources.RunOutputName.Add('runOutputName29', $runOutputName29);
-    $env.Resources.RunOutputName.Add('runOutputName200', $runOutputName200);
-    $env.Resources.RunOutputName.Add('runOutputName201', $runOutputName201);
-    $env.Resources.RunOutputName.Add('runOutputName202', $runOutputName202);
-    $env.Resources.RunOutputName.Add('runOutputName203', $runOutputName203);
     
+    ####### Prerequisite #######
+    # Visit https://github.com/Azure/azvmimagebuilder/tree/main/quickquickstarts to get more details
+    # 1. Create a resource group
+    $rg = $env.AddWithCache("rg", "bez-rg-" + (RandomString -allChars $false -len 6), $UsePreviousConfigForRecord)
+    $location = $env.AddWithCache("location", "centraluseuap", $UsePreviousConfigForRecord)
+    New-AzResourceGroup -Name $rg -Location $location
 
-    # Deploy resource for test.
-    # Deploy image
-    <#
-    Write-Host -ForegroundColor Green "Start deploying resource for test..."
-    New-AzDeployment -Mode Incremental -TemplateFile .\test\deployment-templates\managed-image\template.json -TemplateParameterFile .\test\deployment-templates\managed-image\parameters.json -ResourceGroupName $env.ResourceGroup
-    # Failed: The source blob https://32rngewd8ofquuqtml5ggf2o.blob.core.windows.net/vhds/ffee76c3-a79b-43ae-a207-4fa9ee5e221a.vhd was not found.
-    Write-Host -ForegroundColor Green "Successfully deployed resources."
-    #>
-    #$UserAssignedIdentity = Get-AzUserAssignedIdentity -ResourceGroupName $env.ResourceGroup -Name image-builder-user-assign-identity
-    
-    $env.userAssignedIdentity = "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/wyunchi-imagebuilder/providers/Microsoft.ManagedIdentity/userAssignedIdentities/image-builder-user-assign-identity"
+    # 2. Create an user identity
+    Write-Host -ForegroundColor Green "Creating an user identity..."
+    $identityName = $env.AddWithCache("identityName", "bez-id-" + (RandomString -allChars $false -len 6), $UsePreviousConfigForRecord)
+    $identity = New-AzUserAssignedIdentity -ResourceGroupName $rg -Name $identityName
+    $env.AddWithCache("identity", $identity, $UsePreviousConfigForRecord)
 
-    $customizerName30 = 'customizer-name-' + (RandomString -allChars $false -len 6)
-    $env.Resources.Customizer.Add('customizerName30', $customizerName30);
+    # 3. Create a role definition
+    Write-Host -ForegroundColor Green "Creating a role definition..."
+    $roleName = $env.AddWithCache("roleName", 'Image Builder Service Image Creation Role ' + (RandomString -allChars $false -len 6), $UsePreviousConfigForRecord)
+    $role = New-AzRoleDefinition -Role @{
+        Name = $roleName;
+        IsCustom = $True;
+        Description = "Image Builder access to create resources for the image build, you should delete or split out as appropriate";
+        Actions = @(
+            "Microsoft.Compute/galleries/read",
+            "Microsoft.Compute/galleries/images/read",
+            "Microsoft.Compute/galleries/images/versions/read",
+            "Microsoft.Compute/galleries/images/versions/write",    
+            "Microsoft.Compute/images/write",
+            "Microsoft.Compute/images/read",
+            "Microsoft.Compute/images/delete"
+        );
+        AssignableScopes = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$rg"
+    }
+    $env.AddWithCache("role", $role, $UsePreviousConfigForRecord)
 
-    # For any resources you created for test, you should add it to $env here.
-    $env.Source = @{PlatformImageLinux=@{};PlatformImageWind=@{};ManagedImageLinux=@{}; ManagedImageWind=@{}; SharedImageLinux=@{};SharedImageWind=@{}}
-    $env.Source.PlatformImageLinux = @{publisher = 'Canonical';offer = 'UbuntuServer';sku = '18.04-LTS';version = 'latest'};
-    $env.Source.ManagedImageLinux = @{imageId="/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.ResourceGroup)/providers/Microsoft.Compute/images/test-linux-image"}
-    $env.Source.SharedImageLinux = @{ imageVersionId= "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.ResourceGroup)/providers/Microsoft.Compute/galleries/testsharedgallery/images/imagedefinition-linux/versions/1.0.0"}
-    
-    $env.Distributor = @{VHD = @{};ManagedImageLinux=@{}; SharedImageLinux=@{}}
-    $env.Distributor.VHD = @{}
-    $env.Distributor.ManagedImageLinux = @{imageId = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.ResourceGroup)/providers/Microsoft.Compute/images/$($env.Resources.Distributor.distributorName00)"}
-    $env.Distributor.SharedImageLinux = @{galleryImageId = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.ResourceGroup)/providers/Microsoft.Compute/galleries/myimagegallery/images/lcuas-linux-share"}
+    # 4. Grant role definition above to the user assigned identity
+    Start-Sleep -Seconds 60 # Sleep to allow get-azserviceprincipal work
+    Write-Host -ForegroundColor Green "Assigning a role to the user identity..."
+    New-AzRoleAssignment -ObjectId $identity.PrincipalId -RoleDefinitionId $role.Id -Scope "/subscriptions/$($env.SubscriptionId)/resourceGroups/$rg"
 
-    Write-Host -ForegroundColor Green "Start creating template image for test..."
-    $srcPlatform = New-AzImageBuilderSourceObject -SourceTypePlatformImage -Publisher $env.Source.PlatformImageLinux.publisher -Offer $env.Source.PlatformImageLinux.offer -Sku $env.Source.PlatformImageLinux.sku -Version $env.Source.PlatformImageLinux.version  #-PlanName $null -PlanProduct $null -PlanPublisher $null
-    $distributor = New-AzImageBuilderDistributorObject -ManagedImageDistributor -ArtifactTag @{source='platforimage';baseofimg='UbuntuServer'} -ImageId $env.Distributor.ManagedImageLinux.imageId -Location $env.Location -RunOutputName $env.Resources.RunOutputName.runOutputName20
-    $customizerName = 'downloadBuildArtifacts'
-    $sha256Checksum = 'ade4c5214c3c675e92c66e2d067a870c5b81b9844b3de3cc72c49ff36425fc93'
-    $sourceUri = 'https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/customizeScript2.sh'
-    $customizer = New-AzImageBuilderCustomizerObject -ShellCustomizer -CustomizerName $customizerName -ScriptUri $sourceUri -Sha256Checksum $sha256Checksum
+    # 5. Create an image gallery
+    Write-Host -ForegroundColor Green "Create an image gallery..."
+    $testGalleryName = $env.AddWithCache("testGalleryName", "testGalleryName" + (RandomString -allChars $false -len 6), $UsePreviousConfigForRecord)
+    New-AzGallery -GalleryName $testGalleryName -ResourceGroupName $rg -Location $location
+
+    # 6. Create a gallery definition
+    Write-Host -ForegroundColor Green "Create a gallery definition..."
+    $imageDefName = $env.AddWithCache("imageDefName", "test-image", $UsePreviousConfigForRecord) 
+    $image = New-AzGalleryImageDefinition -GalleryName $testGalleryName -ResourceGroupName $rg -Location $location -Name $imageDefName -OsState generalized -OsType Linux -Publisher bez -Offer UbuntuServer -Sku '18.04-LTS'
+    $env.AddWithCache("image", $image, $UsePreviousConfigForRecord)
+
+    # 7. Create a template with shared image
+    Write-Host -ForegroundColor Green "Creating a image builder template..."
+    $templateName = $env.AddWithCache("templateName", 'bez-tmp-' + (RandomString -allChars $false -len 6), $UsePreviousConfigForRecord)
+    $runOutputName = $env.AddWithCache("runOutputName", 'runOutput1', $UsePreviousConfigForRecord)
+    $JsonTemplatePath = Join-Path $PSScriptRoot JsonTemplateFile.json
+    $Content = Get-Content -Path $JsonTemplatePath  -Raw
+    $Content = $Content -replace '<subscriptionID>', $env.SubscriptionId
+    $Content = $Content -replace '<rgName>', $rg
+    $Content = $Content -replace '<identityName>', $identityName
+    $Content = $Content -replace '<testGalleryName>', $testGalleryName
+    $Content = $Content -replace '<imageDefName>', $imageDefName
+    $Content = $Content -replace '<runOutputName>', $runOutputName
+    $Content | Out-File -FilePath $JsonTemplatePath -Force
+    New-AzImageBuilderTemplate -Name $templateName -ResourceGroupName $rg -JsonTemplatePath $JsonTemplatePath
+
+    # 9. Add user id to access the template
+    Write-Host "Add user id to access the template"
+    New-AzRoleAssignment -ObjectId $identity.PrincipalId -RoleDefinitionName Contributor -ResourceGroupName $rg
     
-    $tmplPlatformManaged = New-AzImageBuilderTemplate -ImageTemplateName $env.Resources.Template.templateName10 -Source $srcPlatform -Distribute $distributor -Customize $customizer -ResourceGroupName $env.ResourceGroup -Location $env.Location -UserAssignedIdentityId $env.userAssignedIdentity
-    Write-Host -ForegroundColor Green "Successfully created templeate image."
+    # 10. Start the image builder above
+    # Need to record start image builder separetely.
+    # Only below lines are not needed in recording stop test cases
+    # Write-Host -ForegroundColor Green "Starting the image builder template..."
+    # Start-Sleep -Seconds 25
+    # Start-AzImageBuilderTemplate -Name $templateName -ResourceGroupName $rg -NoWait
     
-    Write-Host -ForegroundColor Green "Start $($env.Resources.Template.templateName10) template image for test."
-    Start-AzImageBuilderTemplate -ResourceGroupName $env.ResourceGroup -ImageTemplateName $env.Resources.Template.templateName10
-    Write-Host -ForegroundColor Green "Successfully started templeate image."
-    
+    # Prepare some variables for test usage
+    $newTemplateName1 = $env.AddWithCache("newTemplateName1", 'bez-tmp-' + (RandomString -allChars $false -len 6), $UsePreviousConfigForRecord)
+    $newTemplateName2 = $env.AddWithCache("newTemplateName2", 'bez-tmp-' + (RandomString -allChars $false -len 6), $UsePreviousConfigForRecord)
+    $newTemplateName3 = $env.AddWithCache("newTemplateName3", 'bez-tmp-' + (RandomString -allChars $false -len 6), $UsePreviousConfigForRecord)
+
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {
         $envFile = 'localEnv.json'
     }
     set-content -Path (Join-Path $PSScriptRoot $envFile) -Value (ConvertTo-Json $env)
 }
+
 function cleanupEnv() {
     # Clean resources you create for testing
-    Get-AzImageBuilderTemplate -ResourceGroupName $env.ResourceGroup | Where-Object {$_.Name -Match '^template*'} | Remove-AzImageBuilderTemplate
+    # 0. Restore JsonTemplateFile.json
+    # git restore JsonTemplateFile.json
+
+    # 1. Grant role definition above to the user assigned identity
+    Get-AzRoleAssignment -ObjectId $env.identity.PrincipalId -RoleDefinitionName $env.roleName -Scope "/subscriptions/$($env.SubscriptionId)/resourceGroups/$rg" | Remove-AzRoleAssignment -Confirm:$false
+
+    # 2. Remove role definition
+    Get-AzRoleDefinition -Name $env.roleName | Remove-AzRoleDefinition -Force
+
+    # 3. remove resource group
+    Get-AzResourceGroup -Name $env.rg | Remove-AzResourceGroup
 }
 

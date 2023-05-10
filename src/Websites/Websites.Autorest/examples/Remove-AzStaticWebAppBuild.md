@@ -13,4 +13,3 @@ Get-AzStaticWebAppBuild -ResourceGroupName azure-rg-test -Name staticweb-portal0
 ```
 
 This command deletes a static site build by pipeline.
-

@@ -44,34 +44,37 @@ namespace Microsoft.Azure.Commands.Network
 
         public override void Execute()
         {
-            // BackendAddressPools
-            if (this.LoadBalancer.BackendAddressPools == null)
+            if (ShouldProcess(this.LoadBalancer.Name, "Adding Backend pool Configuration"))
             {
-                this.LoadBalancer.BackendAddressPools = new List<PSBackendAddressPool>();
+                // BackendAddressPools
+                if (this.LoadBalancer.BackendAddressPools == null)
+                {
+                    this.LoadBalancer.BackendAddressPools = new List<PSBackendAddressPool>();
+                }
+
+                var existingBackendAddressPool = this.LoadBalancer.BackendAddressPools.SingleOrDefault(resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
+                if (existingBackendAddressPool != null)
+                {
+                    throw new ArgumentException("BackendAddressPool with the specified name already exists");
+                }
+
+                var vBackendAddressPool = new PSBackendAddressPool();
+
+                vBackendAddressPool.Name = this.Name;
+                vBackendAddressPool.TunnelInterfaces = this.TunnelInterface?.ToList();
+
+                var generatedId = string.Format(
+                    "/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Network/loadBalancers/{2}/{3}/{4}",
+                    this.NetworkClient.NetworkManagementClient.SubscriptionId,
+                    this.LoadBalancer.ResourceGroupName,
+                    this.LoadBalancer.Name,
+                    "BackendAddressPools",
+                    this.Name);
+                vBackendAddressPool.Id = generatedId;
+
+                this.LoadBalancer.BackendAddressPools.Add(vBackendAddressPool);
+                WriteObject(this.LoadBalancer, true);
             }
-
-            var existingBackendAddressPool = this.LoadBalancer.BackendAddressPools.SingleOrDefault(resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
-            if (existingBackendAddressPool != null)
-            {
-                throw new ArgumentException("BackendAddressPool with the specified name already exists");
-            }
-
-            var vBackendAddressPool = new PSBackendAddressPool();
-
-            vBackendAddressPool.Name = this.Name;
-            vBackendAddressPool.TunnelInterfaces = this.TunnelInterface?.ToList();
-
-            var generatedId = string.Format(
-                "/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Network/loadBalancers/{2}/{3}/{4}",
-                this.NetworkClient.NetworkManagementClient.SubscriptionId,
-                this.LoadBalancer.ResourceGroupName,
-                this.LoadBalancer.Name,
-                "BackendAddressPools",
-                this.Name);
-            vBackendAddressPool.Id = generatedId;
-
-            this.LoadBalancer.BackendAddressPools.Add(vBackendAddressPool);
-            WriteObject(this.LoadBalancer, true);
         }
     }
 }

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Accounts.dll-Help.xml
 Module Name: Az.Accounts
-online version: https://docs.microsoft.com/powershell/module/az.accounts/add-azenvironment
+online version: https://learn.microsoft.com/powershell/module/az.accounts/add-azenvironment
 schema: 2.0.0
 ---
 
@@ -58,6 +58,7 @@ The built-in environments AzureCloud and AzureChinaCloud target existing public 
 ## EXAMPLES
 
 ### Example 1: Creating and modifying a new environment
+<!-- Skip: Output cannot be splitted from code -->
 ```powershell
 Add-AzEnvironment -Name TestEnvironment `
         -ActiveDirectoryEndpoint TestADEndpoint `
@@ -107,7 +108,7 @@ ExtendedProperties                                : {}
 BatchEndpointResourceId                           :
 ```
 
-In this example we are creating a new Azure environment with sample endpoints using Add-AzEnvironment, and then we are changing the value of the ActiveDirectoryEndpoint and GraphEndpoint attributes of the created environment using the cmdlet Set-AzEnvironment.
+In this example we are creating a new Azure environment with sample endpoints using Add-AzEnvironment, and then we are changing the value of the ActiveDirectoryEndpoint and GraphEndpoint attributes of the created environment using the cmdlet Set-AzEnvironment. 
 
 ### Example 2: Discovering a new environment via Uri
 ```powershell

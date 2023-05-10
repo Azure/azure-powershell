@@ -42,8 +42,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerDisasterRecoveryConfiguration.Servi
         /// <summary>
         /// Constructs a Server Disaster Recovery Configuration adapter
         /// </summary>
-        /// <param name="profile">The current azure profile</param>
-        /// <param name="subscription">The current azure subscription</param>
+        /// <param name="context">The current azure context</param>
         public AzureSqlServerDisasterRecoveryConfigurationAdapter(IAzureContext context)
         {
             Context = context;

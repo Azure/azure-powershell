@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.DnsResolver
-online version: https://docs.microsoft.com/powershell/module/az.dnsresolver/get-azdnsforwardingruleset
+online version: https://learn.microsoft.com/powershell/module/az.dnsresolver/get-azdnsforwardingruleset
 schema: 2.0.0
 ---
 
@@ -78,7 +78,7 @@ westus2  dnsForwardingRuleset Microsoft.Network/dnsForwardingRulesets "04005592-
 
 This command gets single DNS forwarding ruleset by name.
 
-### Example 3: List all DNS forwarding ruleset under the resouce group
+### Example 3: List all DNS forwarding ruleset under the resource group
 ```powershell
 Get-AzDnsForwardingRuleset -ResourceGroupName sampleRG
 ```
@@ -91,7 +91,7 @@ westus2  pw-dnsForwardingRuleset  Microsoft.Network/dnsForwardingRulesets "08009
 westus2  pw-dnsForwardingRuleset1 Microsoft.Network/dnsForwardingRulesets "08007ccc-0000-0800-0000-60e3846a0000"
 ```
 
-This command gets all DNS forwarding ruleset under the resouce group.
+This command gets all DNS forwarding ruleset under the resource group.
 
 ### Example 4: List all DNS forwarding ruleset under the virtual network
 ```powershell
@@ -105,19 +105,6 @@ westus2  dnsForwardingRuleset     Microsoft.Network/dnsForwardingRulesets "04005
 ```
 
 This command gets all DNS forwarding ruleset under the virtual network.
-
-### Example 5: List all DNS forwarding ruleset under the Outbound Endpoint
-```powershell
-Get-AzDnsForwardingRuleset -ResourceGroupName sampleRG -DnsResolverName sampleDnsResolver -OutboundEndpointName sampleOutboundEndpoint
-```
-
-```output
-Location Name                     Type                                    Etag
--------- ----                     ----                                    ----
-westus2  dnsForwardingRuleset     Microsoft.Network/dnsForwardingRulesets "04005592-0000-0800-0000-60e7ec170000"
-```
-
-This command gets all DNS forwarding ruleset under the outbound endpoint.
 
 ## PARAMETERS
 
@@ -269,9 +256,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IDnsForwardingRuleset
+### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IDnsForwardingRuleset
 
-### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IVirtualNetworkDnsForwardingRuleset
+### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IVirtualNetworkDnsForwardingRuleset
 
 ## NOTES
 
@@ -282,7 +269,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IDnsResolverIdentity>: Identity Parameter
+`INPUTOBJECT <IDnsResolverIdentity>`: Identity Parameter
   - `[DnsForwardingRulesetName <String>]`: The name of the DNS forwarding ruleset.
   - `[DnsResolverName <String>]`: The name of the DNS resolver.
   - `[ForwardingRuleName <String>]`: The name of the forwarding rule.

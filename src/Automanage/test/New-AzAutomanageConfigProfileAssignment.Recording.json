@@ -1,0 +1,39 @@
+{
+  "New-AzAutomanageConfigProfileAssignment+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/automangerg/providers/Microsoft.Compute/virtualMachines/aglinuxvm/providers/Microsoft.Automanage/configurationProfileAssignments/default?api-version=2022-05-04+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/automangerg/providers/Microsoft.Compute/virtualMachines/aglinuxvm/providers/Microsoft.Automanage/configurationProfileAssignments/default?api-version=2022-05-04",
+      "Content": "{\r\n  \"properties\": {\r\n    \"configurationProfile\": \"/providers/Microsoft.Automanage/bestPractices/AzureBestPracticesProduction\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "134" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Request-Context": [ "appId=cid-v1:a4d240dc-d543-4b4e-a019-0a571290b85d" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-request-id": [ "a8f6d55e-dd81-46e3-9e94-22bd821bbd8d" ],
+        "x-ms-correlation-request-id": [ "a8f6d55e-dd81-46e3-9e94-22bd821bbd8d" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20221008T084349Z:a8f6d55e-dd81-46e3-9e94-22bd821bbd8d" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sat, 08 Oct 2022 08:43:48 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "816" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/automangerg/providers/Microsoft.Compute/virtualMachines/aglinuxvm/providers/Microsoft.Automanage/configurationProfileAssignments/default\",\"name\":\"default\",\"type\":\"Microsoft.Automanage/configurationProfileAssignments\",\"properties\":{\"targetId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/automangerg/providers/Microsoft.Compute/virtualMachines/aglinuxvm\",\"configurationProfile\":\"/providers/Microsoft.Automanage/bestPractices/AzureBestPracticesProduction\",\"status\":\"Conformant\"},\"systemData\":{\"createdAt\":\"2022-10-08T08:43:47.9311207+00:00\",\"createdBy\":\"v-diya@microsoft.com\",\"createdByType\":\"User\",\"lastModifiedAt\":\"2022-10-08T08:43:47.9311207+00:00\",\"lastModifiedBy\":\"v-diya@microsoft.com\",\"lastModifiedByType\":\"User\"}}",
+      "isContentBase64": false
+    }
+  }
+}

@@ -93,6 +93,89 @@ namespace Microsoft.Azure.Commands.EventGrid.Utilities
             }
         }
 
+        public static void GetResourceGroupNameAndTopicNameAndEventSubscriptionName(
+            string resourceId,
+            out string resourceGroupName,
+            out string topicName,
+            out string eventSubscriptionName)
+        {
+            if (string.IsNullOrEmpty(resourceId))
+            {
+                throw new ArgumentNullException(nameof(resourceId));
+            }
+
+            // ResourceID should be in the following format:
+            // /subscriptions/{subid}/resourceGroups/{rg}/providers/Microsoft.EventGrid/topics/topic1/eventSubscriptions/eventSub1
+            string[] tokens = resourceId.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
+            if (tokens.Length != 10)
+            {
+                throw new Exception($"ResourceId {resourceId} not in the expected format");
+            }
+
+            resourceGroupName = tokens[3];
+            topicName = tokens[7];
+            eventSubscriptionName = tokens[9];
+        }
+
+        public static void GetResourceGroupNameAndDomainNameAndEventSubscriptionName(string resourceId, out string resourceGroupName, out string domainName, out string eventSubscriptionName)
+        {
+            if (string.IsNullOrEmpty(resourceId))
+            {
+                throw new ArgumentNullException(nameof(resourceId));
+            }
+
+            // ResourceID should be in the following format:
+            // /subscriptions/{subid}/resourceGroups/{rg}/providers/Microsoft.EventGrid/domains/domain1/eventSubscriptions/eventSub1
+            string[] tokens = resourceId.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
+            if (tokens.Length != 10)
+            {
+                throw new Exception($"ResourceId {resourceId} not in the expected format");
+            }
+
+            resourceGroupName = tokens[3];
+            domainName = tokens[7];
+            eventSubscriptionName= tokens[9];
+        }
+
+        public static void GetResourceGroupNameAndDomainNameAndDomainTopicNameAndEventSubscriptionName(
+            string resourceId,
+            out string resourceGroupName,
+            out string domainName,
+            out string domainTopicName,
+            out string eventSubscriptionName)
+        {
+            resourceGroupName = string.Empty;
+            domainName = string.Empty;
+            domainTopicName = string.Empty;
+            eventSubscriptionName = string.Empty;
+
+            if (string.IsNullOrEmpty(resourceId))
+            {
+                throw new ArgumentNullException(nameof(resourceId));
+            }
+
+            // ResourceID should be in the following format:
+            // /subscriptions/{subid}/resourceGroups/{rg}/providers/Microsoft.EventGrid/domains/domain1/topics/topic1/eventSubscriptions/eventSub1
+            string[] tokens = resourceId.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
+            if (tokens.Length != 8 && tokens.Length != 10 && tokens.Length != 12)
+            {
+                throw new Exception($"ResourceId {resourceId} not in the expected format");
+            }
+
+            resourceGroupName = tokens[3];
+            domainName = tokens[7];
+
+            if (tokens.Length == 10)
+            {
+                domainTopicName = tokens[9];
+            }
+
+            if (tokens.Length == 12)
+            {
+                eventSubscriptionName = tokens[11];
+            }
+        }
+
         public static string GetScope(string subscriptionId, string resourceGroupName, string topicName, string domainName, string domainTopicName)
         {
             if (string.IsNullOrEmpty(subscriptionId))
@@ -133,6 +216,17 @@ namespace Microsoft.Azure.Commands.EventGrid.Utilities
             }
 
             return scope;
+        }
+
+        public static string ParsePartnerNamespaceNameFromId(string resourceId)
+        {
+            if (!string.IsNullOrEmpty(resourceId))
+            {
+                string[] tokens = resourceId.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
+                return tokens[5];
+            }
+
+            return null;
         }
 
         public static string ParseResourceGroupFromId(string resourceId)

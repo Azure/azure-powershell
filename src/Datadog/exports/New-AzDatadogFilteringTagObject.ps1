@@ -25,7 +25,7 @@ PS C:\> New-AzDatadogFilteringTagObject -Action "Include" -Value "Prod" -Name "E
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.Api20210301.FilteringTag
 .Link
-https://docs.microsoft.com/powershell/module/az.Datadog/new-AzDatadogFilteringTagObject
+https://learn.microsoft.com/powershell/module/az.Datadog/new-AzDatadogFilteringTagObject
 #>
 function New-AzDatadogFilteringTagObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.Api20210301.FilteringTag])]

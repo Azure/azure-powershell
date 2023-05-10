@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
-online version: https://docs.microsoft.com/powershell/module/az.storage/set-azstoragebloblegalhold
+online version: https://learn.microsoft.com/powershell/module/az.storage/set-azstoragebloblegalhold
 schema: 2.0.0
 ---
 
@@ -51,6 +51,7 @@ The cmdlet only works when the blob container has already enabled immutable Stor
 ## EXAMPLES
 
 ### Example 1: Enable legal hold on a Storage blob.
+<!-- Skip: Output cannot be splitted from code -->
 ```
 PS C:\> $blob = Set-AzStorageBlobLegalHold -Container $containerName -Blob $blobname  -EnableLegalHold
 
@@ -70,6 +71,7 @@ This command enables legal hold on a Storage blob, then show the result.
 The command only works when the blob container has already enabled immutable Storage with versioning.
 
 ### Example 2: Disable legal hold on a Storage blob with pipeline.
+<!-- Skip: Output cannot be splitted from code -->
 ```
 PS C:\> $blob = Get-AzStorageBlob -Container $containerName -Blob $blobname | Set-AzStorageBlobLegalHold -DisableLegalHold
 
@@ -242,7 +244,7 @@ Accept wildcard characters: False
 ```
 
 ### -TagCondition
-Optional Tag expression statement to check match condition. The blob request will fail when the blob tags does not match the given expression.See details in https://docs.microsoft.com/en-us/rest/api/storageservices/specifying-conditional-headers-for-blob-service-operations#tags-conditional-operations.
+Optional Tag expression statement to check match condition. The blob request will fail when the blob tags does not match the given expression.See details in https://learn.microsoft.com/en-us/rest/api/storageservices/specifying-conditional-headers-for-blob-service-operations#tags-conditional-operations.
 
 ```yaml
 Type: System.String

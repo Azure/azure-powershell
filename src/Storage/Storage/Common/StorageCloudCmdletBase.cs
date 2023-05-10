@@ -246,7 +246,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         /// <summary>
         /// Get a request options
         /// </summary>
-        /// <param name="type">Service type</param>
         /// <returns>Request options</returns>
         public XTable.TableRequestOptions GetTableRequestOptions()
         {

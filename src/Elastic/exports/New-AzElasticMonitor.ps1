@@ -28,7 +28,7 @@ elastic-pwsh02 ess-monthly-consumption_Monthly Enabled          westus2  azure-e
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResource
 .Link
-https://docs.microsoft.com/powershell/module/az.elastic/new-azelasticmonitor
+https://learn.microsoft.com/powershell/module/az.elastic/new-azelasticmonitor
 #>
 function New-AzElasticMonitor {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResource])]

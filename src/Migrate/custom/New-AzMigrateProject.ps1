@@ -19,7 +19,7 @@ Creates a new Migrate project.
 .Description
 Creates a new Migrate project. 
 .Link
-https://docs.microsoft.com/powershell/module/az.migrate/new-azmigrateproject
+https://learn.microsoft.com/powershell/module/az.migrate/new-azmigrateproject
 #>
 
 function New-AzMigrateProject {

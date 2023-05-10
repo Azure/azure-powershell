@@ -27,7 +27,7 @@ Create a new Kubernetes Flux Configuration.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.IFluxConfiguration
 .Link
-https://docs.microsoft.com/powershell/module/az.kubernetesconfiguration/set-azkubernetesconfigurationflux
+https://learn.microsoft.com/powershell/module/az.kubernetesconfiguration/set-azkubernetesconfigurationflux
 #>
 function Set-AzKubernetesConfigurationFlux {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.IFluxConfiguration])]

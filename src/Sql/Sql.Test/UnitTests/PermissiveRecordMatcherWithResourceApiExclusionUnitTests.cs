@@ -1,4 +1,5 @@
-﻿using Microsoft.WindowsAzure.Commands.ScenarioTest;
+﻿using Microsoft.Azure.Commands.TestFx.Recorder;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using System;
 using System.Collections.Generic;
 using System.Linq;

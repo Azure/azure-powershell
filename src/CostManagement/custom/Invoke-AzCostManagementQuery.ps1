@@ -20,7 +20,7 @@ Query the usage data for scope defined.
 Query the usage data for scope defined.
 #>
 function Invoke-AzCostManagementQuery {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryResult])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.IQueryResult])]
 [CmdletBinding(DefaultParameterSetName='UsageExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UsageExpanded', Mandatory, HelpMessage="This includes 'subscriptions/{subscriptionId}/' for subscription scope, 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for resourceGroup scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for Billing Account scope and 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}' for Department scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/enrollmentAccounts/{enrollmentAccountId}' for EnrollmentAccount scope, 'providers/Microsoft.Management/managementGroups/{managementGroupId} for Management Group scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}' for billingProfile scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/invoiceSections/{invoiceSectionId}' for invoiceSection scope, and 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/customers/{customerId}' specific for partners.")]
@@ -73,7 +73,7 @@ param(
     [Parameter(ParameterSetName='UsageExpanded', HelpMessage="Dictionary of aggregation expression to use in the query.")]
     [Parameter(ParameterSetName='UsageExpanded1', HelpMessage="Dictionary of aggregation expression to use in the query.")]
     [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryDatasetAggregation]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.IQueryDatasetAggregation]))]
     [System.Collections.Hashtable]
     # Dictionary of aggregation expression to use in the query.
     # The key of each item in the dictionary is the alias for the aggregated column.
@@ -83,7 +83,7 @@ param(
     [Parameter(ParameterSetName='UsageExpanded', HelpMessage="Has filter expression to use in the query.")]
     [Parameter(ParameterSetName='UsageExpanded1', HelpMessage="Has filter expression to use in the query.")]
     [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryFilter]
+    [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.IQueryFilter]
     # Has filter expression to use in the query.
     # To construct, see NOTES section for DATASETFILTER properties and create a hash table.
     ${DatasetFilter},
@@ -99,7 +99,7 @@ param(
     [Parameter(ParameterSetName='UsageExpanded', HelpMessage='Array of group by expression to use in the query.')]
     [Parameter(ParameterSetName='UsageExpanded1', HelpMessage="Array of group by expression to use in the query.")]
     [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryGrouping[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.IQueryGrouping[]]
     # Array of group by expression to use in the query.
     # Query can have up to 2 group by clauses.
     # To construct, see NOTES section for DATASETGROUPING properties and create a hash table.
@@ -178,7 +178,7 @@ param(
                       "$Scope/providers/Microsoft.CostManagement/query?api-version=$ApiVersion", "\\?&*$|&*$|(\\?)&+|(&)&+","$1$2")
     }
 
-    $Request = [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.QueryDefinition]::New()
+    $Request = [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.QueryDefinition]::New()
     if ($PSBoundParameters.ContainsKey('ConfigurationColumn')) {
       $Request.ConfigurationColumn = $ConfigurationColumn
     }
@@ -206,7 +206,7 @@ param(
     if ($PSBoundParameters.ContainsKey('Type')) {
       $Request.Type = $Type
     }
-    $Result = [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.QueryResult]::New()
+    $Result = [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.QueryResult]::New()
     $SkipToken = $null
     $RowList = New-Object System.Collections.Generic.List[System.Collections.Generic.List[string]]
     while ($true) {
@@ -228,7 +228,7 @@ param(
 }
 
 function Invoke-AzCostManagementUsageQueryInternal {
-  [OutputType([Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryResult])]
+  [OutputType([Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.IQueryResult])]
   param(
     [System.String]
     ${URL},
@@ -245,16 +245,16 @@ function Invoke-AzCostManagementUsageQueryInternal {
     }
     $ResponseContent = (Invoke-AzRest -Path $URL -Payload $Payload -Method POST).Content | ConvertFrom-Json
 
-    $Result = [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.QueryResult]::New()
+    $Result = [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.QueryResult]::New()
     if ($null -ne $ResponseContent.Properties.NextLink)
     {
       $Result.NextLink = $ResponseContent.Properties.NextLink.split('&')[1]
     }
 
-    $ColumnList = New-Object System.Collections.Generic.List[Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryColumn]
+    $ColumnList = New-Object System.Collections.Generic.List[Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.IQueryColumn]
     foreach ($Column in $ResponseContent.Properties.Columns) {
       Write-Host $Column.ToString()
-      $QueryColumn = [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.QueryColumn]::New()
+      $QueryColumn = [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.QueryColumn]::New()
       $QueryColumn.Name = $Column.Name
       $QueryColumn.Type = $Column.Type
       $ColumnList.Add($QueryColumn)
@@ -265,7 +265,11 @@ function Invoke-AzCostManagementUsageQueryInternal {
     foreach ($Row in $ResponseContent.Properties.Rows) {
       $QueryRow = New-Object System.Collections.Generic.List[string]
       foreach ($Item in $Row) {
-        $QueryRow.Add($Item.ToString())
+        if ($null -eq $Item) {
+          $QueryRow.Add($Item)
+        } else {
+          $QueryRow.Add($Item.ToString())
+        }
       }
       $RowList.Add($QueryRow)
     }

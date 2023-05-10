@@ -44,7 +44,7 @@ INPUTOBJECT <IDedicatedHsmIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the Resource Group to which the resource belongs.
   [SubscriptionId <String>]: Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 .Link
-https://docs.microsoft.com/powershell/module/az.dedicatedhsm/get-azdedicatedhsm
+https://learn.microsoft.com/powershell/module/az.dedicatedhsm/get-azdedicatedhsm
 #>
 function Get-AzDedicatedHsm {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20211130.IDedicatedHsm])]

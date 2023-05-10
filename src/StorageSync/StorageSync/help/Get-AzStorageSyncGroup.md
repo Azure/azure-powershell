@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.StorageSync.dll-Help.xml
 Module Name: Az.StorageSync
-online version: https://docs.microsoft.com/powershell/module/Az.storagesync/get-Azstoragesyncgroup
+online version: https://learn.microsoft.com/powershell/module/Az.storagesync/get-Azstoragesyncgroup
 schema: 2.0.0
 ---
 
@@ -37,7 +37,7 @@ This command lists all sync groups within a given storage sync service. It can b
 
 ### Example 1
 ```powershell
-Get-AzStorageSyncGroup New-AzStorageSyncCloudEndpoint -ResourceGroupName "myResourceGroup" -StorageSyncServiceName "myStorageSyncServiceName"
+Get-AzStorageSyncGroup -ResourceGroupName "myResourceGroup" -StorageSyncServiceName "myStorageSyncServiceName"
 ```
 
 This command gets all sync groups contained within the specified storage sync service. Specify -Name to return a specific one.

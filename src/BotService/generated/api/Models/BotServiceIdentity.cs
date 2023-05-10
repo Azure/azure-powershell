@@ -22,7 +22,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService.Models
         /// <summary>Backing field for <see cref="ConnectionName" /> property.</summary>
         private string _connectionName;
 
-        /// <summary>The name of the Bot Service Connection Setting resource</summary>
+        /// <summary>The name of the Bot Service Connection Setting resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.BotService.Origin(Microsoft.Azure.PowerShell.Cmdlets.BotService.PropertyOrigin.Owned)]
         public string ConnectionName { get => this._connectionName; set => this._connectionName = value; }
 
@@ -32,6 +32,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService.Models
         /// <summary>Resource identity path</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.BotService.Origin(Microsoft.Azure.PowerShell.Cmdlets.BotService.PropertyOrigin.Owned)]
         public string Id { get => this._id; set => this._id = value; }
+
+        /// <summary>Backing field for <see cref="PrivateEndpointConnectionName" /> property.</summary>
+        private string _privateEndpointConnectionName;
+
+        /// <summary>The name of the private endpoint connection associated with the Azure resource</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.BotService.Origin(Microsoft.Azure.PowerShell.Cmdlets.BotService.PropertyOrigin.Owned)]
+        public string PrivateEndpointConnectionName { get => this._privateEndpointConnectionName; set => this._privateEndpointConnectionName = value; }
 
         /// <summary>Backing field for <see cref="ResourceGroupName" /> property.</summary>
         private string _resourceGroupName;
@@ -71,11 +78,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService.Models
         SerializedName = @"channelName",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.ChannelName) })]
         Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.ChannelName? ChannelName { get; set; }
-        /// <summary>The name of the Bot Service Connection Setting resource</summary>
+        /// <summary>The name of the Bot Service Connection Setting resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"The name of the Bot Service Connection Setting resource",
+        Description = @"The name of the Bot Service Connection Setting resource.",
         SerializedName = @"connectionName",
         PossibleTypes = new [] { typeof(string) })]
         string ConnectionName { get; set; }
@@ -87,6 +94,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService.Models
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
         string Id { get; set; }
+        /// <summary>The name of the private endpoint connection associated with the Azure resource</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The name of the private endpoint connection associated with the Azure resource",
+        SerializedName = @"privateEndpointConnectionName",
+        PossibleTypes = new [] { typeof(string) })]
+        string PrivateEndpointConnectionName { get; set; }
         /// <summary>The name of the Bot resource group in the user subscription.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.Info(
         Required = false,
@@ -118,10 +133,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService.Models
     {
         /// <summary>The name of the Channel resource.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.ChannelName? ChannelName { get; set; }
-        /// <summary>The name of the Bot Service Connection Setting resource</summary>
+        /// <summary>The name of the Bot Service Connection Setting resource.</summary>
         string ConnectionName { get; set; }
         /// <summary>Resource identity path</summary>
         string Id { get; set; }
+        /// <summary>The name of the private endpoint connection associated with the Azure resource</summary>
+        string PrivateEndpointConnectionName { get; set; }
         /// <summary>The name of the Bot resource group in the user subscription.</summary>
         string ResourceGroupName { get; set; }
         /// <summary>The name of the Bot resource.</summary>

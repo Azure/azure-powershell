@@ -46,6 +46,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
             {
                 yield return new global::System.Management.Automation.CompletionResult("'TestMigrationCleanupInProgress'", "TestMigrationCleanupInProgress", global::System.Management.Automation.CompletionResultType.ParameterValue, "TestMigrationCleanupInProgress");
             }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "TestMigrationCompletedWithInformation".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'TestMigrationCompletedWithInformation'", "TestMigrationCompletedWithInformation", global::System.Management.Automation.CompletionResultType.ParameterValue, "TestMigrationCompletedWithInformation");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "TestMigrationPartiallySucceeded".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'TestMigrationPartiallySucceeded'", "TestMigrationPartiallySucceeded", global::System.Management.Automation.CompletionResultType.ParameterValue, "TestMigrationPartiallySucceeded");
+            }
         }
     }
 }

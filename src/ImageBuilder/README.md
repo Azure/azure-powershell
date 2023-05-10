@@ -17,7 +17,7 @@ This directory contains the PowerShell module for the ImageBuilder service.
 This module was primarily generated via [AutoRest](https://github.com/Azure/autorest) using the [PowerShell](https://github.com/Azure/autorest.powershell) extension.
 
 ## Module Requirements
-- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 2.2.3 or greater
+- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 2.7.5 or greater
 
 ## Authentication
 AutoRest does not generate authentication code for the module. Authentication is handled via Az.Accounts by altering the HTTP payload before it is sent.
@@ -50,69 +50,107 @@ In this directory, run AutoRest:
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:
-  - $(repo)/specification/imagebuilder/resource-manager/Microsoft.VirtualMachineImages/stable/2020-02-14/imagebuilder.json
-branch: 94ec975d860d4f62525c2381d1cbf7de3e24df2b
+  - $(repo)/specification/imagebuilder/resource-manager/Microsoft.VirtualMachineImages/stable/2022-02-14/imagebuilder.json
+branch: 9f3ac7b135ac83007b7f3f68ca8ca9705284cff9
 title: ImageBuilder
 module-version: 0.1.0
-subject-prefix: ''
+subject-prefix: $(service-name)
 
 identity-correction-for-post: true
+resourcegroup-append: true
 
 directive:
+  # 1. Remove the unexpanded parameter set
+  # 2. For New-* cmdlets, ViaIdentity is not required, so CreateViaIdentityExpanded is removed as well
   - where:
-      verb: Set|Update
-      subject: VirtualMachineImageTemplate
+      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$
     remove: true
+  # Remove the set-* cmdlet
   - where:
-      subject: VirtualMachineImageTemplateRunOutput
-    set:
-      subject: ImageBuilderRunOutput
+      verb: Set
+    remove: true
+
+  # 1. Field 'identity' is required => IdentityType and IdentityUserAssignedIdentity are required
+  # 2. Hide IdentityType as only 'UserAssigned' is valid value so far
+  # 3. Wrap UserAssignedIdentity with UserAssignedIdentityId to simplify customer's input 
+  # 4. Field 'properties' is required => Source, Customize and Distribute are required
   - where:
-      subject: VirtualMachineImageTemplate
-    set:
-      subject: ImageBuilderTemplate
-  - where:
-      verb: New
-      subject: ImageBuilderTemplate
+      variant: ^CreateExpanded$
     hide: true
+  
+  # Rename IdentityUserAssignedIdentity to UserAssignedIdentity
   - where:
-      subject: ImageBuilderTemplate
+      parameter-name: IdentityUserAssignedIdentity
+    set:
+      parameter-name: UserAssignedIdentity
+
+  # Rename *-AzImageBuildVirtualMachineImage(.*) -> *-AzImageBuild(.*)
+  - where:
+      subject: (.*)Image(.*)
+    set:
+      subject: $2
+
+  # Update/Upgrade of image template is not supported
+  - where:
+      verb: Update
+      subject: Template
+    remove: true
+
+  # Rename ImageTemplateName -> Name and keep ImageTemplateName as alias in *-AzImageBuildTemplate
+  - where:
+      subject: Template
       parameter-name: ImageTemplateName
     set:
-      alias: Name
-  # - where:
-  #     variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
-  #   remove: true
+      parameter-name: Name
+      alias: ImageTemplateName
+
+  # Rename RunOutputName -> Name and keep RunOutputName as alias in *-AzImageBuildTemplateRunOutput
   - where:
-      variant: ^CreateExpanded$|^CreateViaIdentityExpanded$
-    remove: true
-  - from: source-file-csharp
-    where: $
-    transform: $ = $.replace(/internal partial interface/, 'public partial interface');
-  - from: source-file-csharp
-    where: $
-    transform: $ = $.replace(/\).Match\(viaIdentity\)/g, ', global::System.Text.RegularExpressions.RegexOptions.IgnoreCase\).Match\(viaIdentity\)');
-  - from: source-file-csharp
-    where: $
-    transform: $ = $.replace(/Azure-AsyncOperation/g, 'azure-asyncoperation');
-  - from: swagger-document
-    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VirtualMachineImages/imageTemplates/{imageTemplateName}/run"].post.responses
-    transform: >-
-        return {
-          "200": {
-            "description": "The operation was successful."
-          },
-          "204": {
-            "description": "The operation was successful."
-          },
-          "202": {
-            "description": "The operation will be completed asynchronously."
-          },
-          "default": {
-            "description": "Error response describing why the operation failed.",
-            "schema": {
-              "$ref": "#/definitions/ApiError"
-            }
-          }
-        }
+      subject: TemplateRunOutput
+      parameter-name: RunOutputName
+    set:
+      parameter-name: Name
+      alias: RunOutputName
+
+  # Rename ValidateInVMValidation to Validator 
+  - where:
+      parameter-name: ValidateInVMValidation
+    set:
+      parameter-name: Validator
+
+  # Collapse model with discriminator
+  - no-inline:
+    - ImageTemplateCustomizer
+    - ImageTemplateDistributor
+    - ImageTemplateSource
+    - ImageTemplateInVMValidator
+  
+  # Generate models and combine them as 1 cmdlet
+  # - model-cmdlet:
+    ############ ImageTemplateCustomizer ############
+    # Combine as 1 cmdlet named New-AzImageBuilderTemplateCustomizerObject
+    # # - ImageTemplateCustomizer
+    # - ImageTemplateShellCustomizer
+    # - ImageTemplateRestartCustomizer
+    # - ImageTemplateWindowsUpdateCustomizer
+    # - ImageTemplatePowerShellCustomizer
+    # - ImageTemplateFileCustomizer
+    ########### ImageTemplateDistributor ###########
+    # Combine as 1 cmdlet named New-AzImageBuilderTemplateDistributorObject
+    # # - ImageTemplateDistributor
+    # - ImageTemplateManagedImageDistributor
+    # - ImageTemplateSharedImageDistributor
+    # - ImageTemplateVhdDistributor
+    ############## ImageTemplateSource ##############
+    # Combine as 1 cmdlet named New-AzImageBuilderTemplateSourceObject
+    # # - ImageTemplateSource
+    # Note: publisher, offer, sku and version are required
+    # - ImageTemplatePlatformImageSource 
+    # - ImageTemplateManagedImageSource
+    # - ImageTemplateSharedImageVersionSource
+    ########### ImageTemplateInVMValidator ###########
+    # Combine as 1 cmdlet named New-AzImageBuilderTemplateValidatorObject
+    # # - ImageTemplateInVMValidator
+    # - ImageTemplateShellValidator
+    # - ImageTemplatePowerShellValidator
 ```

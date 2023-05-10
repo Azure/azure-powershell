@@ -13,6 +13,8 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Sql.Backup.Model;
+using Microsoft.Rest.Azure.OData;
+using System;
 using System.Collections.Generic;
 using System.Management.Automation;
 
@@ -22,6 +24,15 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
     [OutputType(typeof(AzureSqlDatabaseGeoBackupModel))]
     public class GetAzureRMSqlDatabaseGeoBackup : AzureSqlDatabaseGeoBackupCmdletBase
     {
+        [Parameter(Mandatory = false,
+            HelpMessage = "Flag to be used to view all the AKV keys in a database.")]
+        public SwitchParameter ExpandKeyList { get; set; }
+
+        [Parameter(Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Timestamp filter to Get AKV keys")]
+        public string KeysFilter { get; set; }
+
         /// <summary>
         /// Get the entities from the service
         /// </summary>
@@ -30,10 +41,29 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         {
             ICollection<AzureSqlDatabaseGeoBackupModel> results;
 
+            ODataQuery<Management.Sql.Models.RecoverableDatabase> oDataQuery = new ODataQuery<Management.Sql.Models.RecoverableDatabase>();
+
+            if (ExpandKeyList.IsPresent && !String.IsNullOrEmpty(KeysFilter))
+            {
+                oDataQuery.Expand = String.Format("keys($filter=pointInTime('{0}'))", KeysFilter);
+            }
+            else if (ExpandKeyList.IsPresent)
+            {
+                oDataQuery.Expand = "keys";
+            }
+
             if (MyInvocation.BoundParameters.ContainsKey("DatabaseName") && !WildcardPattern.ContainsWildcardCharacters(DatabaseName))
             {
                 results = new List<AzureSqlDatabaseGeoBackupModel>();
-                results.Add(ModelAdapter.GetGeoBackup(this.ResourceGroupName, this.ServerName, this.DatabaseName));
+
+                if (ExpandKeyList.IsPresent)
+                {
+                    results.Add(ModelAdapter.GetRecoverableDatabase(this.ResourceGroupName, this.ServerName, this.DatabaseName, oDataQuery));
+                }
+                else
+                {
+                    results.Add(ModelAdapter.GetGeoBackup(this.ResourceGroupName, this.ServerName, this.DatabaseName));
+                }
             }
             else
             {

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights.dll-Help.xml
 Module Name: Az.OperationalInsights
-online version: https://docs.microsoft.com/powershell/module/az.operationalinsights/get-azoperationalinsightsoperation
+online version: https://learn.microsoft.com/powershell/module/az.operationalinsights/get-azoperationalinsightsoperation
 schema: 2.0.0
 ---
 
@@ -37,8 +37,9 @@ Name        : microsoft.operationalinsights/workspaces/features/{resource_name0}
 Provider    : MicrosoftOperationalInsights
 Resource    : {resource_name1}
 Operation   : 
-Description : 
+Description :
 ```
+
 This command gets all available OperationalInsights Rest API operations by tenant.
 
 ## PARAMETERS

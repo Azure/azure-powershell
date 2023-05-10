@@ -330,7 +330,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters
 
                 case PropertyChangeType.Array:
                     this.FormatPropertyChangePath(propertyChangeType, path, null, children, maxPathLength, indentLevel);
-                    this.FormatPropertyArrayChange(propertyChange.Children, indentLevel + 1);
+                    this.FormatPropertyArrayChange(propertyChange, propertyChange.Children, indentLevel + 1);
                     break;
 
                 case PropertyChangeType.NoEffect:
@@ -351,6 +351,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters
             int maxPathLength,
             int indentLevel)
         {
+            if (string.IsNullOrEmpty(path))
+            {
+                return;
+            }
+
             int paddingWidth = maxPathLength - path.Length + 1;
             bool hasChildren = children != null && children.Count > 0;
 
@@ -449,8 +454,17 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters
             }
         }
 
-        private void FormatPropertyArrayChange(IList<PSWhatIfPropertyChange> propertyChanges, int indentLevel)
+        private void FormatPropertyArrayChange(PSWhatIfPropertyChange parentPropertyChange, IList<PSWhatIfPropertyChange> propertyChanges, int indentLevel)
         {
+            if (string.IsNullOrEmpty(parentPropertyChange.Path))
+            {
+                // The parent change doesn't have a path, which means the current
+                // array change is a nested change. We need to decrease indent_level
+                // and print indentation before printing "[".
+                indentLevel--;
+                FormatIndent(indentLevel);
+            }
+
             if (propertyChanges.Count == 0)
             {
                 this.Builder.AppendLine("[]");

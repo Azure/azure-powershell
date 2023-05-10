@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataShare.dll-Help.xml
 Module Name: Az.DataShare
-online version: https://docs.microsoft.com/powershell/module/az.datashare/new-azdatasharedatasetmapping
+online version: https://learn.microsoft.com/powershell/module/az.datashare/new-azdatasharedatasetmapping
 schema: 2.0.0
 ---
 
@@ -60,7 +60,7 @@ This command creates a data set mapping AdsDataSetMapping to storage account Ads
 ## PARAMETERS
 
 ### -AccountName
-Azure data share account name
+The name of the Azure storage account that is the source of the data being shared.
 
 ```yaml
 Type: System.String
@@ -210,7 +210,7 @@ Accept wildcard characters: False
 ```
 
 ### -StorageAccountResourceId
-Azure Storage Account ResourceId
+Azure Storage Account ResourceId that is the source of the data being shared.
 
 ```yaml
 Type: System.String

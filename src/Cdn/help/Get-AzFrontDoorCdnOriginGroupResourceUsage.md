@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Cdn
-online version: https://docs.microsoft.com/powershell/module/az.cdn/get-azfrontdoorcdnorigingroupresourceusage
+online version: https://learn.microsoft.com/powershell/module/az.cdn/get-azfrontdoorcdnorigingroupresourceusage
 schema: 2.0.0
 ---
 
@@ -23,27 +23,18 @@ Checks the quota and actual usage of the given AzureFrontDoor origin group under
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List resource useages of an AzureFrontDoor origin group under the profile
 ```powershell
-{{ Add code here }}
+Get-AzFrontDoorCdnOriginGroupResourceUsage -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -OriginGroupName org001
 ```
 
 ```output
-{{ Add output here }}
+CurrentValue Limit Unit
+------------ ----- ----
+1            50    count
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+List resource useages of an AzureFrontDoor origin group under the profile
 
 ## PARAMETERS
 

@@ -50,6 +50,7 @@ namespace Microsoft.Azure.Commands.Profile
             SupportedResourceNames.AadGraph,
             SupportedResourceNames.MSGraph,
             SupportedResourceNames.AnalysisServices,
+            SupportedResourceNames.AppConfiguration,
             SupportedResourceNames.Arm,
             SupportedResourceNames.Attestation,
             SupportedResourceNames.Batch,

@@ -16,8 +16,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 {
     using System.Management.Automation;
     using Azure.Storage.File;
+    using global::Azure.Storage.Files.Shares;
+    using global::Azure.Storage.Files.Shares.Models;
     using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
     using Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel;
+    using Microsoft.WindowsAzure.Commands.Storage.Common;
 
     [Cmdlet("New", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageShare", DefaultParameterSetName = Constants.ShareNameParameterSetName), OutputType(typeof(AzureStorageFileShare))]
     public class NewAzureStorageShare : AzureStorageFileCmdletBase
@@ -35,12 +38,13 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         {
             NamingUtil.ValidateShareName(this.Name, false);
 
-            var share = this.Channel.GetShareReference(this.Name);
-            this.RunTask(async taskId =>
-            {
-                await this.Channel.CreateShareAsync(share, this.RequestOptions, this.OperationContext, this.CmdletCancellationToken).ConfigureAwait(false);
-                WriteCloudShareObject(taskId, this.Channel, share);
-            });
+            ShareClient share = Util.GetTrack2ShareReference(this.Name,
+                (AzureStorageContext)this.Context,
+                null,
+                ClientOptions);
+            share.Create(cancellationToken: this.CmdletCancellationToken);
+            ShareProperties shareProperties = share.GetProperties(cancellationToken: this.CmdletCancellationToken).Value;
+            WriteObject(new AzureStorageFileShare(share, (AzureStorageContext)this.Context, shareProperties, ClientOptions));
         }
     }
 }

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights.dll-Help.xml
 Module Name: Az.PolicyInsights
-online version: https://docs.microsoft.com/powershell/module/az.policyinsights/get-azpolicystate
+online version: https://learn.microsoft.com/powershell/module/az.policyinsights/get-azpolicystate
 schema: 2.0.0
 ---
 
@@ -155,14 +155,14 @@ Gets latest policy state records generated in the last day for all resources (wi
 Get-AzPolicyState -PolicyAssignmentName "ddd8ef92e3714a5ea3d208c1"
 ```
 
-Gets latest policy state records generated in the last day for all resources (within the tenant in current session context) effected by the specified policy assignment (that exists in the subscription in current session context).
+Gets latest policy state records generated in the last day for all resources (within the tenant in current session context) effected by the specified policy assignment (that exists at subscription scope in the subscription in current session context).
 
-### Example 13: Get latest policy states for a policy assignment in the specified subscription
+### Example 13: Get latest policy states for a policy assignment with the same scope as the specified subscription
 ```powershell
 Get-AzPolicyState -SubscriptionId "fff10b27-fff3-fff5-fff8-fffbe01e86a5" -PolicyAssignmentName "ddd8ef92e3714a5ea3d208c1"
 ```
 
-Gets latest policy state records generated in the last day for all resources (within the tenant in current session context) effected by the specified policy assignment (that exists in the specified subscription).
+Gets latest policy state records generated in the last day for all resources (within the tenant in current session context) effected by the specified policy assignment (that exists at subscription scope in the specified subscription).
 
 ### Example 14: Get latest policy states for a policy assignment in the specified resource group in the current subscription
 ```powershell
@@ -244,24 +244,31 @@ Gets latest policy state records generated in the last day for the specified res
 
 ### Example 23: Get latest component policy states for a resource (eg. vault) given a resource provider mode policy assignment
 ```powershell
-Get-AzPolicyState -ResourceId "/subscriptions/fff10b27-fff3-fff5-fff8-fffbe01e86a5/resourceGroups/myResourceGroup/providers/Microsoft.KeyVault/vaults/myvault" - Filter "policyAssignmentId eq '/subscriptions/fff10b27-fff3-fff5-fff8-fffbe01e86a5/providers/Microsoft.Authorization/policyAssignments/ddd8ef92e3714a5ea3d208c1'" -Expand "Components(`$filter=ComplianceState eq 'NonCompliant' or ComplianceState eq 'Compliant')"
+Get-AzPolicyState -ResourceId "/subscriptions/fff10b27-fff3-fff5-fff8-fffbe01e86a5/resourceGroups/myResourceGroup/providers/Microsoft.KeyVault/vaults/myvault" -Filter "policyAssignmentId eq '/subscriptions/fff10b27-fff3-fff5-fff8-fffbe01e86a5/providers/Microsoft.Authorization/policyAssignments/ddd8ef92e3714a5ea3d208c1'" -Expand "Components(`$filter=ComplianceState eq 'NonCompliant' or ComplianceState eq 'Compliant')"
 ```
 
 Gets latest component policy state records generated in the last day for the specified resource, given a resource provider mode policy assignment that references a resource provider mode policy definition.
 
 ### Example 24: Get latest component policy states for a resource (eg. vault) given a policy initiative assignment that contains a resource provider mode policy definition
 ```powershell
-Get-AzPolicyState -ResourceId "/subscriptions/fff10b27-fff3-fff5-fff8-fffbe01e86a5/resourceGroups/myResourceGroup/providers/Microsoft.KeyVault/vaults/myvault" - Filter "policyAssignmentId eq '/subscriptions/fff10b27-fff3-fff5-fff8-fffbe01e86a5/providers/Microsoft.Authorization/policyAssignments/ddd8ef92e3714a5ea3d208c1' and policyDefinitionReferenceId eq 'myResourceProviderModeDefinitionReferenceId'" -Expand "Components(`$filter=ComplianceState eq 'NonCompliant' or ComplianceState eq 'Compliant')"
+Get-AzPolicyState -ResourceId "/subscriptions/fff10b27-fff3-fff5-fff8-fffbe01e86a5/resourceGroups/myResourceGroup/providers/Microsoft.KeyVault/vaults/myvault" -Filter "policyAssignmentId eq '/subscriptions/fff10b27-fff3-fff5-fff8-fffbe01e86a5/providers/Microsoft.Authorization/policyAssignments/ddd8ef92e3714a5ea3d208c1' and policyDefinitionReferenceId eq 'myResourceProviderModeDefinitionReferenceId'" -Expand "Components(`$filter=ComplianceState eq 'NonCompliant' or ComplianceState eq 'Compliant')"
 ```
 
 Gets latest component policy state records generated in the last day for the specified resource, given a resource provider mode policy assignment that references an initiative containing a resource provider mode policy definition.
 
 ### Example 25: Get latest component counts by compliance state for a resource (eg. vault) given a resource provider mode policy assignment
 ```powershell
-Get-AzPolicyState -ResourceId "/subscriptions/fff10b27-fff3-fff5-fff8-fffbe01e86a5/resourceGroups/myResourceGroup/providers/Microsoft.KeyVault/vaults/myvault" - Filter "policyAssignmentId eq '/subscriptions/fff10b27-fff3-fff5-fff8-fffbe01e86a5/providers/Microsoft.Authorization/policyAssignments/ddd8ef92e3714a5ea3d208c1'" -Expand "Components(`$filter=ComplianceState eq 'NonCompliant' or ComplianceState eq 'Compliant' or ComplianceState eq 'Conflict';`$apply=groupby((complianceState),aggregate(`$count as count)))"
+Get-AzPolicyState -ResourceId "/subscriptions/fff10b27-fff3-fff5-fff8-fffbe01e86a5/resourceGroups/myResourceGroup/providers/Microsoft.KeyVault/vaults/myvault" -Filter "policyAssignmentId eq '/subscriptions/fff10b27-fff3-fff5-fff8-fffbe01e86a5/providers/Microsoft.Authorization/policyAssignments/ddd8ef92e3714a5ea3d208c1'" -Expand "Components(`$filter=ComplianceState eq 'NonCompliant' or ComplianceState eq 'Compliant' or ComplianceState eq 'Conflict';`$apply=groupby((complianceState),aggregate(`$count as count)))"
 ```
 
 Gets latest component counts generated in the last day grouped by compliance state for the specified resource, given a resource provider mode policy assignment.
+
+### Example 26: Get policy states for a management group scope policy assignment
+```powershell
+Get-AzPolicyState -SubscriptionId "fff10b27-fff3-fff5-fff8-fffbe01e86a5" -Filter "policyAssignmentId eq '/providers/Microsoft.Management/managementGroups/myManagementGroup/providers/Microsoft.Authorization/policyAssignments/ddd8ef92e3714a5ea3d208c1'"
+```
+
+Gets latest policy state records generated in the last day for all resources (within the tenant in current session context) in the specified subscription affected by the specified policy assignment (which is assigned to a management group which is an ancestor of the specified subscription).
 
 ## PARAMETERS
 
@@ -388,7 +395,9 @@ Accept wildcard characters: False
 ```
 
 ### -PolicyAssignmentName
-Policy assignment name.
+The name of a policy assignment.
+This policy assignment must have exactly the same scope as the parameter set. It cannot be a management group scope policy assignment.
+For example: if `-SubscriptionId` and `ResourceGroupName` are specified, the policy assignment must be assigned to that resource group. If only `-SubscriptionId` is specified, then the policy assignment must be assigned to that subscription. 
 
 ```yaml
 Type: System.String
@@ -403,7 +412,8 @@ Accept wildcard characters: False
 ```
 
 ### -PolicyDefinitionName
-Policy definition name.
+The name of a policy definition.
+This policy definition must exist in the subscription being queried. It cannot be a management group scope policy definition.
 
 ```yaml
 Type: System.String
@@ -418,7 +428,8 @@ Accept wildcard characters: False
 ```
 
 ### -PolicySetDefinitionName
-Policy set definition name.
+The name of a policy set definition.
+This policy set definition must exist in the subscription being queried. It cannot be a management group scope policy set definition.
 
 ```yaml
 Type: System.String

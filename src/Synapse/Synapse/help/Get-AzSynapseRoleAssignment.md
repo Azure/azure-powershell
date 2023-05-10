@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Synapse.dll-Help.xml
 Module Name: Az.Synapse
-online version: https://docs.microsoft.com/powershell/module/az.synapse/get-azsynapseroleassignment
+online version: https://learn.microsoft.com/powershell/module/az.synapse/get-azsynapseroleassignment
 schema: 2.0.0
 ---
 
@@ -88,6 +88,9 @@ The cmdlet may call below Microsoft Graph API according to input parameters:
 
 * GET /users/{id}
 * GET /servicePrincipals/{id}
+
+>[!Note]
+> To retrieve a role assignment for a service principal, pass the object ID of the principal in the ObjectId parameter.
 
 ## EXAMPLES
 

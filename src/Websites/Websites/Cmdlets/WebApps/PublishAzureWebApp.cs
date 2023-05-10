@@ -14,6 +14,7 @@
 // ----------------------------------------------------------------------------------
 
 
+using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.WebApps.Models;
 using Microsoft.Azure.Management.WebSites.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
@@ -22,6 +23,7 @@ using System.IO;
 using System.Management.Automation;
 using System.Net;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading;
 
@@ -61,7 +63,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
 
             if (ArchivePath.ToLower().EndsWith("war"))
             {
-                deployUrl = user.ScmUri + "/api/wardeploy?isAsync=true";
+                deployUrl = user.ScmUri + "/api/publish?type=war";
             }
             else if (ArchivePath.ToLower().EndsWith("zip") || ArchivePath.ToLower().EndsWith("jar"))
             {
@@ -74,6 +76,8 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
 
             Action zipDeployAction = () =>
             {
+                if (!Path.IsPathRooted(ArchivePath))
+                    ArchivePath = Path.Combine(this.SessionState.Path.CurrentFileSystemLocation.Path, ArchivePath);
                 using (var s = File.OpenRead(ArchivePath))
                 {
                     HttpClient client = new HttpClient();
@@ -83,8 +87,9 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                         client.Timeout = TimeSpan.FromMilliseconds(Timeout);
                     }
 
-                    var byteArray = Encoding.ASCII.GetBytes(user.PublishingUserName + ":" + user.PublishingPassword);
-                    client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Basic", Convert.ToBase64String(byteArray));
+                    var token = WebsitesClient.GetAccessToken(DefaultContext);
+                    client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token.AccessToken);
+
                     HttpContent fileContent = new StreamContent(s);
                     fileContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/zip");
                     r = client.PostAsync(deployUrl, fileContent).Result;
@@ -124,6 +129,5 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
             PSSite app = new PSSite(WebsitesClient.GetWebApp(ResourceGroupName, Name, Slot));
             WriteObject(app);
         }
-
     }
 }

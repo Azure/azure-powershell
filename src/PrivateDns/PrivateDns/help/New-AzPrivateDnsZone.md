@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.PrivateDns.dll-Help.xml
 Module Name: Az.PrivateDns
-online version: https://docs.microsoft.com/powershell/module/az.privatedns/new-azprivatednszone
+online version: https://learn.microsoft.com/powershell/module/az.privatedns/new-azprivatednszone
 schema: 2.0.0
 ---
 

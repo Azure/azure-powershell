@@ -1,7 +1,6 @@
 pr: none
 trigger: none
-pool:
-  vmImage: 'windows-2019'
+pool: pool-windows-2019
 
 steps:
 - task: PowerShell@2

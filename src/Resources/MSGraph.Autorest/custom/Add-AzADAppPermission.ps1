@@ -25,7 +25,7 @@ Application permissions under the `appRoles` property correspond to `Role` in `-
 
 User needs to grant consent via Azure Portal if the permission requires admin consent because Azure PowerShell doesn't support it yet.
 .Link
-https://docs.microsoft.com/powershell/module/az.resources/add-azadapppermission
+https://learn.microsoft.com/powershell/module/az.resources/add-azadapppermission
 #>
 
 function Add-AzADAppPermission {

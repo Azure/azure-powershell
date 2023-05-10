@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/set-azapplicationgatewaysslprofile
+online version: https://learn.microsoft.com/powershell/module/az.network/set-azapplicationgatewaysslprofile
 schema: 2.0.0
 ---
 
@@ -39,7 +39,7 @@ The first command gets the application gateway named ApplicationGateway01 that b
 The applicationGateway
 
 ```yaml
-Type: PSApplicationGateway
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGateway
 Parameter Sets: (All)
 Aliases:
 
@@ -54,7 +54,7 @@ Accept wildcard characters: False
 Client authentication configuration settings
 
 ```yaml
-Type: PSApplicationGatewayClientAuthConfiguration
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayClientAuthConfiguration
 Parameter Sets: (All)
 Aliases:
 
@@ -69,7 +69,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -84,7 +84,7 @@ Accept wildcard characters: False
 The name of the SSL profile
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -99,7 +99,7 @@ Accept wildcard characters: False
 SSL policy
 
 ```yaml
-Type: PSApplicationGatewaySslPolicy
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewaySslPolicy
 Parameter Sets: (All)
 Aliases:
 
@@ -114,7 +114,7 @@ Accept wildcard characters: False
 The trusted client CA certificate chains
 
 ```yaml
-Type: PSApplicationGatewayTrustedClientCertificate[]
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayTrustedClientCertificate[]
 Parameter Sets: (All)
 Aliases:
 

@@ -44,6 +44,11 @@ namespace Microsoft.Azure.Commands.Management.Storage
         [ValidateNotNullOrEmpty]
         public string[] BlobType { get; set; }
 
+        [Parameter(Mandatory = false,
+            HelpMessage = "An array of blob index tag based filters, there can be at most 10 tag filters.")]
+        [ValidateNotNullOrEmpty]
+        public PSTagFilter[] BlobIndexMatch { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -71,6 +76,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
             {
                 BlobTypes = blobType,
                 PrefixMatch = this.PrefixMatch,
+                BlobIndexMatch = this.BlobIndexMatch,
             };
 
             WriteObject(filter);

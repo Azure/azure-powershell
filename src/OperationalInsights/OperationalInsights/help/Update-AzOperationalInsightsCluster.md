@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights.dll-Help.xml
 Module Name: Az.OperationalInsights
-online version: https://docs.microsoft.com/powershell/module/az.operationalinsights/update-azoperationalinsightscluster
+online version: https://learn.microsoft.com/powershell/module/az.operationalinsights/update-azoperationalinsightscluster
 schema: 2.0.0
 ---
 
@@ -151,7 +151,7 @@ Accept wildcard characters: False
 ```
 
 ### -IdentityType
-the identity type, value can be 'SystemAssigned', 'None'.
+the identity type, value can be 'SystemAssigned', 'None', 'UserAssigned'.
 
 ```yaml
 Type: System.String
@@ -297,7 +297,7 @@ Accept wildcard characters: False
 Sku Capacity
 
 ```yaml
-Type: System.Int64
+Type: System.Nullable`1[System.Int64]
 Parameter Sets: UpdateByNameParameterSet, AllParameterSet, UpdateByResourceIdParameterSet
 Aliases:
 

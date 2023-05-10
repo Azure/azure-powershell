@@ -12,6 +12,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models
         Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IDatabricksIdentityInternal
     {
 
+        /// <summary>Backing field for <see cref="ConnectorName" /> property.</summary>
+        private string _connectorName;
+
+        /// <summary>The name of the azure databricks accessConnector.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Databricks.PropertyOrigin.Owned)]
+        public string ConnectorName { get => this._connectorName; set => this._connectorName = value; }
+
         /// <summary>Backing field for <see cref="GroupId" /> property.</summary>
         private string _groupId;
 
@@ -70,6 +77,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models
     public partial interface IDatabricksIdentity :
         Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.IJsonSerializable
     {
+        /// <summary>The name of the azure databricks accessConnector.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The name of the azure databricks accessConnector.",
+        SerializedName = @"connectorName",
+        PossibleTypes = new [] { typeof(string) })]
+        string ConnectorName { get; set; }
         /// <summary>The name of the private link resource</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Info(
         Required = false,
@@ -131,6 +146,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models
     internal partial interface IDatabricksIdentityInternal
 
     {
+        /// <summary>The name of the azure databricks accessConnector.</summary>
+        string ConnectorName { get; set; }
         /// <summary>The name of the private link resource</summary>
         string GroupId { get; set; }
         /// <summary>Resource identity path</summary>

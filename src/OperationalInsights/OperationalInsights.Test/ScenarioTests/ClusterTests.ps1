@@ -21,6 +21,7 @@ function Test-ClusterCRUD
 	# setup
 	$rgNameExisting = "dabenham-dev"
 	$clusterNameExisting = "dabenhamCluster-dev"
+	$keyNameExisting = "TestClusterKey"
 
 	try
 	{
@@ -36,13 +37,13 @@ function Test-ClusterCRUD
 
 		# update cluster, clusters to be update require provisioning state to be "Succeeded", existing clusters were used in this Test
 		# kv used in this test case need to enable both softdelete and purge protection	
-		$job = Update-AzOperationalInsightsCluster -ResourceGroupName $rgNameExisting -ClusterName $clusterNameExisting -SkuCapacity 1700 -AsJob
+		$job = Update-AzOperationalInsightsCluster -ResourceGroupName $rgNameExisting -ClusterName $clusterNameExisting -SkuCapacity 5000 -AsJob
 		$job | Wait-Job
 		$cluster = $job | Receive-Job
 
 		Assert-NotNull $cluster
 		Assert-AreEqual $keyNameExisting $cluster.KeyVaultProperties.KeyName
-		Assert-AreEqual 1700 $cluster.Sku.Capacity
+		Assert-AreEqual 5000 $cluster.CapacityReservationProperties.MaxCapacity
 		Assert-AreEqual "Succeeded" $cluster.ProvisioningState
 	}
 	finally

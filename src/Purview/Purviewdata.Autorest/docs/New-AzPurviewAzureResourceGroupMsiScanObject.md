@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Purview
-online version: https://docs.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureResourceGroupMsiScanObject
+online version: https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureResourceGroupMsiScanObject
 schema: 2.0.0
 ---
 

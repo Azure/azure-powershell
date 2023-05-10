@@ -48,7 +48,7 @@ INPUTOBJECT <ICustomProvidersIdentity>: Identity Parameter
   [Scope <String>]: The scope of the association.
   [SubscriptionId <String>]: The Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000)
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.customproviders/get-azcustomproviderassociation
+https://learn.microsoft.com/en-us/powershell/module/az.customproviders/get-azcustomproviderassociation
 #>
 function Get-AzCustomProviderAssociation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.Api20180901Preview.IAssociation])]

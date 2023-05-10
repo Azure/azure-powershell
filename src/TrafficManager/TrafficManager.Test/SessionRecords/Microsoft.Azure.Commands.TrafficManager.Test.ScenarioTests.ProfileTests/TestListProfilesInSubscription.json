@@ -1,22 +1,21 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/52bae96a-3806-426c-a5dc-1ae6016b5f15/resourcegroups/ps6881?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTJiYWU5NmEtMzgwNi00MjZjLWE1ZGMtMWFlNjAxNmI1ZjE1L3Jlc291cmNlZ3JvdXBzL3BzNjg4MT9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
+      "RequestUri": "/subscriptions/6bb9d374-1f0d-437e-8bbe-4bc892850065/resourcegroups/ps2431?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNmJiOWQzNzQtMWYwZC00MzdlLThiYmUtNGJjODkyODUwMDY1L3Jlc291cmNlZ3JvdXBzL3BzMjQzMT9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"location\": \"West US\"\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "78c29dd8-9808-4d8d-bfcf-246bf7331b23"
+          "23350d6d-3afb-4326-b2a5-495e80bc8776"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.700.21.56803",
+          "FxVersion/4.700.22.51102",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22000",
-          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.54"
+          "OSVersion/Microsoft.Windows.10.0.19045",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.67"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -25,6 +24,7 @@
           "29"
         ]
       },
+      "RequestBody": "{\r\n  \"location\": \"West US\"\r\n}",
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
@@ -36,13 +36,13 @@
           "1199"
         ],
         "x-ms-request-id": [
-          "4a788c0d-02dc-437e-8b01-751e641d0493"
+          "fb17b20a-eb23-4ea1-ab2c-5ab6346128a4"
         ],
         "x-ms-correlation-request-id": [
-          "4a788c0d-02dc-437e-8b01-751e641d0493"
+          "fb17b20a-eb23-4ea1-ab2c-5ab6346128a4"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHINDIA:20220120T120603Z:4a788c0d-02dc-437e-8b01-751e641d0493"
+          "CENTRALINDIA:20221212T085933Z:fb17b20a-eb23-4ea1-ab2c-5ab6346128a4"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -51,7 +51,7 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 20 Jan 2022 12:06:02 GMT"
+          "Mon, 12 Dec 2022 08:59:32 GMT"
         ],
         "Content-Length": [
           "165"
@@ -63,28 +63,28 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/52bae96a-3806-426c-a5dc-1ae6016b5f15/resourceGroups/ps6881\",\r\n  \"name\": \"ps6881\",\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/6bb9d374-1f0d-437e-8bbe-4bc892850065/resourceGroups/ps2431\",\r\n  \"name\": \"ps2431\",\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/52bae96a-3806-426c-a5dc-1ae6016b5f15/resourceGroups/ps6881/providers/Microsoft.Network/trafficmanagerprofiles/ps1348?api-version=2018-08-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTJiYWU5NmEtMzgwNi00MjZjLWE1ZGMtMWFlNjAxNmI1ZjE1L3Jlc291cmNlR3JvdXBzL3BzNjg4MS9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvdHJhZmZpY21hbmFnZXJwcm9maWxlcy9wczEzNDg/YXBpLXZlcnNpb249MjAxOC0wOC0wMQ==",
+      "RequestUri": "/subscriptions/6bb9d374-1f0d-437e-8bbe-4bc892850065/resourceGroups/ps2431/providers/Microsoft.Network/trafficmanagerprofiles/ps9484?api-version=2022-04-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNmJiOWQzNzQtMWYwZC00MzdlLThiYmUtNGJjODkyODUwMDY1L3Jlc291cmNlR3JvdXBzL3BzMjQzMS9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvdHJhZmZpY21hbmFnZXJwcm9maWxlcy9wczk0ODQ/YXBpLXZlcnNpb249MjAyMi0wNC0wMS1wcmV2aWV3",
       "RequestMethod": "GET",
-      "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "ddaae8e1-c309-4b2e-a021-29471597762b"
+          "cd2a15d7-06c0-4244-aad1-51637eaaa21b"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.700.21.56803",
+          "FxVersion/4.700.22.51102",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22000",
-          "Microsoft.Azure.Management.TrafficManager.TrafficManagerManagementClient/2.5.4.0"
+          "OSVersion/Microsoft.Windows.10.0.19045",
+          "Microsoft.Azure.Management.TrafficManager.TrafficManagerManagementClient/1.1.0"
         ]
       },
+      "RequestBody": "",
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
@@ -96,13 +96,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "a1a9762f-5855-41bc-afdd-816c52c18013"
+          "6b7cd022-ac10-4f22-bc09-3e71f01ddd79"
         ],
         "x-ms-correlation-request-id": [
-          "a1a9762f-5855-41bc-afdd-816c52c18013"
+          "6b7cd022-ac10-4f22-bc09-3e71f01ddd79"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHINDIA:20220120T120605Z:a1a9762f-5855-41bc-afdd-816c52c18013"
+          "CENTRALINDIA:20221212T085934Z:6b7cd022-ac10-4f22-bc09-3e71f01ddd79"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -111,7 +111,7 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 20 Jan 2022 12:06:05 GMT"
+          "Mon, 12 Dec 2022 08:59:34 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -123,26 +123,25 @@
           "225"
         ]
       },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceNotFound\",\r\n    \"message\": \"The Resource 'Microsoft.Network/trafficmanagerprofiles/ps1348' under resource group 'ps6881' was not found. For more details please go to https://aka.ms/ARMResourceNotFoundFix\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceNotFound\",\r\n    \"message\": \"The Resource 'Microsoft.Network/trafficmanagerprofiles/ps9484' under resource group 'ps2431' was not found. For more details please go to https://aka.ms/ARMResourceNotFoundFix\"\r\n  }\r\n}",
       "StatusCode": 404
     },
     {
-      "RequestUri": "/subscriptions/52bae96a-3806-426c-a5dc-1ae6016b5f15/resourceGroups/ps6881/providers/Microsoft.Network/trafficmanagerprofiles/ps1348?api-version=2018-08-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTJiYWU5NmEtMzgwNi00MjZjLWE1ZGMtMWFlNjAxNmI1ZjE1L3Jlc291cmNlR3JvdXBzL3BzNjg4MS9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvdHJhZmZpY21hbmFnZXJwcm9maWxlcy9wczEzNDg/YXBpLXZlcnNpb249MjAxOC0wOC0wMQ==",
+      "RequestUri": "/subscriptions/6bb9d374-1f0d-437e-8bbe-4bc892850065/resourceGroups/ps2431/providers/Microsoft.Network/trafficmanagerprofiles/ps9484?api-version=2022-04-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNmJiOWQzNzQtMWYwZC00MzdlLThiYmUtNGJjODkyODUwMDY1L3Jlc291cmNlR3JvdXBzL3BzMjQzMS9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvdHJhZmZpY21hbmFnZXJwcm9maWxlcy9wczk0ODQ/YXBpLXZlcnNpb249MjAyMi0wNC0wMS1wcmV2aWV3",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"profileStatus\": \"Enabled\",\r\n    \"trafficRoutingMethod\": \"Performance\",\r\n    \"dnsConfig\": {\r\n      \"relativeName\": \"ps4760\",\r\n      \"ttl\": 50\r\n    },\r\n    \"monitorConfig\": {\r\n      \"protocol\": \"HTTP\",\r\n      \"port\": 80,\r\n      \"path\": \"/testpath.asp\"\r\n    }\r\n  },\r\n  \"location\": \"global\",\r\n  \"name\": \"ps1348\"\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "ddaae8e1-c309-4b2e-a021-29471597762b"
+          "cd2a15d7-06c0-4244-aad1-51637eaaa21b"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.700.21.56803",
+          "FxVersion/4.700.22.51102",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22000",
-          "Microsoft.Azure.Management.TrafficManager.TrafficManagerManagementClient/2.5.4.0"
+          "OSVersion/Microsoft.Windows.10.0.19045",
+          "Microsoft.Azure.Management.TrafficManager.TrafficManagerManagementClient/1.1.0"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -151,6 +150,7 @@
           "337"
         ]
       },
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"profileStatus\": \"Enabled\",\r\n    \"trafficRoutingMethod\": \"Performance\",\r\n    \"dnsConfig\": {\r\n      \"relativeName\": \"ps8070\",\r\n      \"ttl\": 50\r\n    },\r\n    \"monitorConfig\": {\r\n      \"protocol\": \"HTTP\",\r\n      \"port\": 80,\r\n      \"path\": \"/testpath.asp\"\r\n    }\r\n  },\r\n  \"location\": \"global\",\r\n  \"name\": \"ps9484\"\r\n}",
       "ResponseHeaders": {
         "Cache-Control": [
           "private"
@@ -162,7 +162,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "ddaae8e1-c309-4b2e-a021-29471597762b"
+          "cd2a15d7-06c0-4244-aad1-51637eaaa21b"
         ],
         "Server": [
           "Microsoft-IIS/10.0"
@@ -174,16 +174,16 @@
           "ASP.NET"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "10798"
+          "4499"
         ],
         "x-ms-correlation-request-id": [
-          "2d8dfe5f-a770-4ac7-8395-aa722152e8a4"
+          "05c37bcf-d7aa-40f8-8567-ed67e7ccf434"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHINDIA:20220120T120611Z:2d8dfe5f-a770-4ac7-8395-aa722152e8a4"
+          "CENTRALINDIA:20221212T085943Z:05c37bcf-d7aa-40f8-8567-ed67e7ccf434"
         ],
         "Date": [
-          "Thu, 20 Jan 2022 12:06:11 GMT"
+          "Mon, 12 Dec 2022 08:59:42 GMT"
         ],
         "Content-Length": [
           "647"
@@ -192,28 +192,28 @@
           "application/json; charset=utf-8"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/52bae96a-3806-426c-a5dc-1ae6016b5f15/resourceGroups/ps6881/providers/Microsoft.Network/trafficManagerProfiles/ps1348\",\r\n  \"name\": \"ps1348\",\r\n  \"type\": \"Microsoft.Network/trafficManagerProfiles\",\r\n  \"location\": \"global\",\r\n  \"properties\": {\r\n    \"profileStatus\": \"Enabled\",\r\n    \"trafficRoutingMethod\": \"Performance\",\r\n    \"dnsConfig\": {\r\n      \"relativeName\": \"ps4760\",\r\n      \"fqdn\": \"ps4760.trafficmanager.net\",\r\n      \"ttl\": 50\r\n    },\r\n    \"monitorConfig\": {\r\n      \"profileMonitorStatus\": \"Inactive\",\r\n      \"protocol\": \"HTTP\",\r\n      \"port\": 80,\r\n      \"path\": \"/testpath.asp\",\r\n      \"intervalInSeconds\": 30,\r\n      \"toleratedNumberOfFailures\": 3,\r\n      \"timeoutInSeconds\": 10\r\n    },\r\n    \"endpoints\": [],\r\n    \"trafficViewEnrollmentStatus\": \"Disabled\",\r\n    \"maxReturn\": null\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/6bb9d374-1f0d-437e-8bbe-4bc892850065/resourceGroups/ps2431/providers/Microsoft.Network/trafficManagerProfiles/ps9484\",\r\n  \"name\": \"ps9484\",\r\n  \"type\": \"Microsoft.Network/trafficManagerProfiles\",\r\n  \"location\": \"global\",\r\n  \"properties\": {\r\n    \"profileStatus\": \"Enabled\",\r\n    \"trafficRoutingMethod\": \"Performance\",\r\n    \"dnsConfig\": {\r\n      \"relativeName\": \"ps8070\",\r\n      \"fqdn\": \"ps8070.trafficmanager.net\",\r\n      \"ttl\": 50\r\n    },\r\n    \"monitorConfig\": {\r\n      \"profileMonitorStatus\": \"Inactive\",\r\n      \"protocol\": \"HTTP\",\r\n      \"port\": 80,\r\n      \"path\": \"/testpath.asp\",\r\n      \"intervalInSeconds\": 30,\r\n      \"toleratedNumberOfFailures\": 3,\r\n      \"timeoutInSeconds\": 10\r\n    },\r\n    \"endpoints\": [],\r\n    \"trafficViewEnrollmentStatus\": \"Disabled\",\r\n    \"maxReturn\": null\r\n  }\r\n}",
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/52bae96a-3806-426c-a5dc-1ae6016b5f15/providers/Microsoft.Network/trafficmanagerprofiles?api-version=2018-08-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTJiYWU5NmEtMzgwNi00MjZjLWE1ZGMtMWFlNjAxNmI1ZjE1L3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay90cmFmZmljbWFuYWdlcnByb2ZpbGVzP2FwaS12ZXJzaW9uPTIwMTgtMDgtMDE=",
+      "RequestUri": "/subscriptions/6bb9d374-1f0d-437e-8bbe-4bc892850065/providers/Microsoft.Network/trafficmanagerprofiles?api-version=2022-04-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNmJiOWQzNzQtMWYwZC00MzdlLThiYmUtNGJjODkyODUwMDY1L3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay90cmFmZmljbWFuYWdlcnByb2ZpbGVzP2FwaS12ZXJzaW9uPTIwMjItMDQtMDEtcHJldmlldw==",
       "RequestMethod": "GET",
-      "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "bbdc0580-9fde-4c2b-a4e3-b1bc65000148"
+          "42f24315-43b8-414f-84b2-ef75561cd784"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.700.21.56803",
+          "FxVersion/4.700.22.51102",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22000",
-          "Microsoft.Azure.Management.TrafficManager.TrafficManagerManagementClient/2.5.4.0"
+          "OSVersion/Microsoft.Windows.10.0.19045",
+          "Microsoft.Azure.Management.TrafficManager.TrafficManagerManagementClient/1.1.0"
         ]
       },
+      "RequestBody": "",
       "ResponseHeaders": {
         "Cache-Control": [
           "private"
@@ -225,7 +225,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "bbdc0580-9fde-4c2b-a4e3-b1bc65000148"
+          "42f24315-43b8-414f-84b2-ef75561cd784"
         ],
         "Server": [
           "Microsoft-IIS/10.0"
@@ -237,46 +237,46 @@
           "ASP.NET"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "10796"
+          "1998"
         ],
         "x-ms-correlation-request-id": [
-          "46802969-71e0-4e3f-bf7e-cd3a3f89c3ed"
+          "99bf08a6-92ac-43d7-a4c1-94bc2e395b60"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHINDIA:20220120T120612Z:46802969-71e0-4e3f-bf7e-cd3a3f89c3ed"
+          "CENTRALINDIA:20221212T085944Z:99bf08a6-92ac-43d7-a4c1-94bc2e395b60"
         ],
         "Date": [
-          "Thu, 20 Jan 2022 12:06:12 GMT"
+          "Mon, 12 Dec 2022 08:59:44 GMT"
         ],
         "Content-Length": [
-          "46929"
+          "669"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/52bae96a-3806-426c-a5dc-1ae6016b5f15/resourceGroups/aliastest/providers/Microsoft.Network/trafficManagerProfiles/aliastestprofilev4\",\r\n      \"name\": \"aliastestprofilev4\",\r\n      \"type\": \"Microsoft.Network/trafficManagerProfiles\",\r\n      \"location\": \"global\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"profileStatus\": \"Enabled\",\r\n        \"trafficRoutingMethod\": \"Performance\",\r\n        \"dnsConfig\": {\r\n          \"relativeName\": \"aliastestprofilev4\",\r\n          \"fqdn\": \"aliastestprofilev4.trafficmanager.net\",\r\n          \"ttl\": 60\r\n        },\r\n        \"monitorConfig\": {\r\n          \"profileMonitorStatus\": null,\r\n          \"protocol\": \"HTTP\",\r\n          \"port\": 80,\r\n          \"path\": \"/\",\r\n          \"intervalInSeconds\": 30,\r\n          \"toleratedNumberOfFailures\": 3,\r\n          \"timeoutInSeconds\": 10\r\n        },\r\n        \"endpoints\": [],\r\n        \"trafficViewEnrollmentStatus\": \"Disabled\",\r\n        \"maxReturn\": 2\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/52bae96a-3806-426c-a5dc-1ae6016b5f15/resourceGroups/aliastest/providers/Microsoft.Network/trafficManagerProfiles/aliastmtestipv6\",\r\n      \"name\": \"aliastmtestipv6\",\r\n      \"type\": \"Microsoft.Network/trafficManagerProfiles\",\r\n      \"location\": \"global\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"profileStatus\": \"Enabled\",\r\n        \"trafficRoutingMethod\": \"MultiValue\",\r\n        \"dnsConfig\": {\r\n          \"relativeName\": \"aliastmtestipv6\",\r\n          \"fqdn\": \"aliastmtestipv6.trafficmanager.net\",\r\n          \"ttl\": 60\r\n        },\r\n        \"monitorConfig\": {\r\n          \"profileMonitorStatus\": null,\r\n          \"protocol\": \"HTTP\",\r\n          \"port\": 80,\r\n          \"path\": \"/\",\r\n          \"intervalInSeconds\": 30,\r\n          \"toleratedNumberOfFailures\": 3,\r\n          \"timeoutInSeconds\": 10,\r\n          \"customHeaders\": [],\r\n          \"expectedStatusCodeRanges\": []\r\n        },\r\n        \"endpoints\": [],\r\n        \"trafficViewEnrollmentStatus\": \"Disabled\",\r\n        \"maxReturn\": 2\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/52bae96a-3806-426c-a5dc-1ae6016b5f15/resourceGroups/aliastest/providers/Microsoft.Network/trafficManagerProfiles/simplealiastest\",\r\n      \"name\": \"simplealiastest\",\r\n      \"type\": \"Microsoft.Network/trafficManagerProfiles\",\r\n      \"location\": \"global\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"profileStatus\": \"Enabled\",\r\n        \"trafficRoutingMethod\": \"Performance\",\r\n        \"dnsConfig\": {\r\n          \"relativeName\": \"simplealiastest\",\r\n          \"fqdn\": \"simplealiastest.trafficmanager.net\",\r\n          \"ttl\": 60\r\n        },\r\n        \"monitorConfig\": {\r\n          \"profileMonitorStatus\": null,\r\n          \"protocol\": \"HTTP\",\r\n          \"port\": 80,\r\n          \"path\": \"/\",\r\n          \"intervalInSeconds\": 30,\r\n          \"toleratedNumberOfFailures\": 3,\r\n          \"timeoutInSeconds\": 10,\r\n          \"customHeaders\": [],\r\n          \"expectedStatusCodeRanges\": []\r\n        },\r\n        \"endpoints\": [\r\n          {\r\n            \"id\": \"/subscriptions/52bae96a-3806-426c-a5dc-1ae6016b5f15/resourceGroups/aliastest/providers/Microsoft.Network/trafficManagerProfiles/simplealiastest/nestedEndpoints/allonce\",\r\n            \"name\": \"allonce\",\r\n            \"type\": \"Microsoft.Network/trafficManagerProfiles/nestedEndpoints\",\r\n            \"properties\": {\r\n              \"endpointStatus\": \"Enabled\",\r\n              \"endpointMonitorStatus\": \"Stopped\",\r\n              \"targetResourceId\": \"/subscriptions/52bae96a-3806-426c-a5dc-1ae6016b5f15/resourceGroups/dns-portal-ux/providers/Microsoft.Network/trafficManagerProfiles/testingforportalarg\",\r\n              \"target\": \"testingforportalarg.trafficmanager.net\",\r\n              \"weight\": 1,\r\n              \"priority\": 4,\r\n              \"endpointLocation\": \"East Asia\",\r\n              \"minChildEndpoints\": 1,\r\n              \"minChildEndpointsIPv4\": 1,\r\n              \"minChildEndpointsIPv6\": 1,\r\n              \"customHeaders\": [],\r\n              \"subnets\": []\r\n            }\r\n          },\r\n          {\r\n            \"id\": \"/subscriptions/52bae96a-3806-426c-a5dc-1ae6016b5f15/resourceGroups/aliastest/providers/Microsoft.Network/trafficManagerProfiles/simplealiastest/nestedEndpoints/test\",\r\n            \"name\": \"test\",\r\n            \"type\": \"Microsoft.Network/trafficManagerProfiles/nestedEndpoints\",\r\n            \"properties\": {\r\n              \"endpointStatus\": \"Enabled\",\r\n              \"endpointMonitorStatus\": \"Stopped\",\r\n              \"targetResourceId\": \"/subscriptions/52bae96a-3806-426c-a5dc-1ae6016b5f15/resourceGroups/aliastest/providers/Microsoft.Network/trafficManagerProfiles/aliastmtestipv6\",\r\n              \"target\": \"aliastmtestipv6.trafficmanager.net\",\r\n              \"weight\": 1,\r\n              \"priority\": 5,\r\n              \"endpointLocation\": \"East Asia\",\r\n              \"minChildEndpoints\": 1,\r\n              \"minChildEndpointsIPv4\": 2,\r\n              \"minChildEndpointsIPv6\": 20\r\n            }\r\n          }\r\n        ],\r\n        \"trafficViewEnrollmentStatus\": \"Disabled\",\r\n        \"maxReturn\": null\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/52bae96a-3806-426c-a5dc-1ae6016b5f15/resourceGroups/aliastest/providers/Microsoft.Network/trafficManagerProfiles/test123wsx\",\r\n      \"name\": \"test123wsx\",\r\n      \"type\": \"Microsoft.Network/trafficManagerProfiles\",\r\n      \"location\": \"global\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"profileStatus\": \"Enabled\",\r\n        \"trafficRoutingMethod\": \"Performance\",\r\n        \"dnsConfig\": {\r\n          \"relativeName\": \"test123wsx\",\r\n          \"fqdn\": \"test123wsx.trafficmanager.net\",\r\n          \"ttl\": 60\r\n        },\r\n        \"monitorConfig\": {\r\n          \"profileMonitorStatus\": null,\r\n          \"protocol\": \"HTTP\",\r\n          \"port\": 80,\r\n          \"path\": \"/\",\r\n          \"intervalInSeconds\": 30,\r\n          \"toleratedNumberOfFailures\": 3,\r\n          \"timeoutInSeconds\": 10\r\n        },\r\n        \"endpoints\": [],\r\n        \"trafficViewEnrollmentStatus\": \"Disabled\",\r\n        \"maxReturn\": 0\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/52bae96a-3806-426c-a5dc-1ae6016b5f15/resourceGroups/arun-billingtest/providers/Microsoft.Network/trafficManagerProfiles/neha\",\r\n      \"name\": \"neha\",\r\n      \"type\": \"Microsoft.Network/trafficManagerProfiles\",\r\n      \"location\": \"global\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"profileStatus\": \"Enabled\",\r\n        \"trafficRoutingMethod\": \"Performance\",\r\n        \"dnsConfig\": {\r\n          \"relativeName\": \"neha\",\r\n          \"fqdn\": \"neha.trafficmanager.net\",\r\n          \"ttl\": 60\r\n        },\r\n        \"monitorConfig\": {\r\n          \"profileMonitorStatus\": null,\r\n          \"protocol\": \"HTTP\",\r\n          \"port\": 80,\r\n          \"path\": \"/\",\r\n          \"intervalInSeconds\": 30,\r\n          \"toleratedNumberOfFailures\": 3,\r\n          \"timeoutInSeconds\": 10\r\n        },\r\n        \"endpoints\": [\r\n          {\r\n            \"id\": \"/subscriptions/52bae96a-3806-426c-a5dc-1ae6016b5f15/resourceGroups/arun-billingtest/providers/Microsoft.Network/trafficManagerProfiles/neha/externalEndpoints/google\",\r\n            \"name\": \"google\",\r\n            \"type\": \"Microsoft.Network/trafficManagerProfiles/externalEndpoints\",\r\n            \"properties\": {\r\n              \"endpointStatus\": \"Enabled\",\r\n              \"endpointMonitorStatus\": null,\r\n              \"targetResourceId\": null,\r\n              \"target\": \"google.com\",\r\n              \"weight\": 1,\r\n              \"priority\": 1,\r\n              \"endpointLocation\": \"East Asia\",\r\n              \"minChildEndpoints\": null,\r\n              \"minChildEndpointsIPv4\": null,\r\n              \"minChildEndpointsIPv6\": null\r\n            }\r\n          },\r\n          {\r\n            \"id\": \"/subscriptions/52bae96a-3806-426c-a5dc-1ae6016b5f15/resourceGroups/arun-billingtest/providers/Microsoft.Network/trafficManagerProfiles/neha/externalEndpoints/microsoft\",\r\n            \"name\": \"microsoft\",\r\n            \"type\": \"Microsoft.Network/trafficManagerProfiles/externalEndpoints\",\r\n            \"properties\": {\r\n              \"endpointStatus\": \"Enabled\",\r\n              \"endpointMonitorStatus\": null,\r\n              \"targetResourceId\": null,\r\n              \"target\": \"microsoft.com\",\r\n              \"weight\": 1,\r\n              \"priority\": 2,\r\n              \"endpointLocation\": \"East Asia\",\r\n              \"minChildEndpoints\": null,\r\n              \"minChildEndpointsIPv4\": null,\r\n              \"minChildEndpointsIPv6\": null\r\n            }\r\n          }\r\n        ],\r\n        \"trafficViewEnrollmentStatus\": \"Disabled\",\r\n        \"maxReturn\": 0\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/52bae96a-3806-426c-a5dc-1ae6016b5f15/resourceGroups/atmtest/providers/Microsoft.Network/trafficManagerProfiles/testcnamechain\",\r\n      \"name\": \"testcnamechain\",\r\n      \"type\": \"Microsoft.Network/trafficManagerProfiles\",\r\n      \"location\": \"global\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"profileStatus\": \"Enabled\",\r\n        \"trafficRoutingMethod\": \"Performance\",\r\n        \"dnsConfig\": {\r\n          \"relativeName\": \"testcnamechain\",\r\n          \"fqdn\": \"testcnamechain.trafficmanager.net\",\r\n          \"ttl\": 60\r\n        },\r\n        \"monitorConfig\": {\r\n          \"profileMonitorStatus\": null,\r\n          \"protocol\": \"HTTP\",\r\n          \"port\": 80,\r\n          \"path\": \"/\",\r\n          \"intervalInSeconds\": 30,\r\n          \"toleratedNumberOfFailures\": 3,\r\n          \"timeoutInSeconds\": 10\r\n        },\r\n        \"endpoints\": [\r\n          {\r\n            \"id\": \"/subscriptions/52bae96a-3806-426c-a5dc-1ae6016b5f15/resourceGroups/atmtest/providers/Microsoft.Network/trafficManagerProfiles/testcnamechain/externalEndpoints/ext1\",\r\n            \"name\": \"ext1\",\r\n            \"type\": \"Microsoft.Network/trafficManagerProfiles/externalEndpoints\",\r\n            \"properties\": {\r\n              \"endpointStatus\": \"Enabled\",\r\n              \"endpointMonitorStatus\": null,\r\n              \"targetResourceId\": null,\r\n              \"target\": \"1.1.1.1\",\r\n              \"weight\": 1,\r\n              \"priority\": 1,\r\n              \"endpointLocation\": \"East Asia\",\r\n              \"minChildEndpoints\": null,\r\n              \"minChildEndpointsIPv4\": null,\r\n              \"minChildEndpointsIPv6\": null\r\n            }\r\n          }\r\n        ],\r\n        \"trafficViewEnrollmentStatus\": \"Disabled\",\r\n        \"maxReturn\": 0\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/52bae96a-3806-426c-a5dc-1ae6016b5f15/resourceGroups/azure-rg-vamsa-portal/providers/Microsoft.Network/trafficManagerProfiles/vamsa-tm-1\",\r\n      \"name\": \"vamsa-tm-1\",\r\n      \"type\": \"Microsoft.Network/trafficManagerProfiles\",\r\n      \"location\": \"global\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"profileStatus\": \"Enabled\",\r\n        \"trafficRoutingMethod\": \"Performance\",\r\n        \"dnsConfig\": {\r\n          \"relativeName\": \"vamsa-tm-1\",\r\n          \"fqdn\": \"vamsa-tm-1.trafficmanager.net\",\r\n          \"ttl\": 60\r\n        },\r\n        \"monitorConfig\": {\r\n          \"profileMonitorStatus\": null,\r\n          \"protocol\": \"HTTP\",\r\n          \"port\": 80,\r\n          \"path\": \"/\",\r\n          \"intervalInSeconds\": 30,\r\n          \"toleratedNumberOfFailures\": 3,\r\n          \"timeoutInSeconds\": 10,\r\n          \"customHeaders\": [],\r\n          \"expectedStatusCodeRanges\": []\r\n        },\r\n        \"endpoints\": [],\r\n        \"trafficViewEnrollmentStatus\": \"Disabled\",\r\n        \"maxReturn\": null\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/52bae96a-3806-426c-a5dc-1ae6016b5f15/resourceGroups/azure-rg-vamsa-portal/providers/Microsoft.Network/trafficManagerProfiles/vamsa-tm-2\",\r\n      \"name\": \"vamsa-tm-2\",\r\n      \"type\": \"Microsoft.Network/trafficManagerProfiles\",\r\n      \"location\": \"global\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"profileStatus\": \"Enabled\",\r\n        \"trafficRoutingMethod\": \"Performance\",\r\n        \"dnsConfig\": {\r\n          \"relativeName\": \"vamsa-tm-2\",\r\n          \"fqdn\": \"vamsa-tm-2.trafficmanager.net\",\r\n          \"ttl\": 60\r\n        },\r\n        \"monitorConfig\": {\r\n          \"profileMonitorStatus\": null,\r\n          \"protocol\": \"HTTP\",\r\n          \"port\": 80,\r\n          \"path\": \"/\",\r\n          \"intervalInSeconds\": 30,\r\n          \"toleratedNumberOfFailures\": 3,\r\n          \"timeoutInSeconds\": 10\r\n        },\r\n        \"endpoints\": [],\r\n        \"trafficViewEnrollmentStatus\": \"Disabled\",\r\n        \"maxReturn\": 0\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/52bae96a-3806-426c-a5dc-1ae6016b5f15/resourceGroups/dns-portal-ux/providers/Microsoft.Network/trafficManagerProfiles/geotestvvv\",\r\n      \"name\": \"geotestvvv\",\r\n      \"type\": \"Microsoft.Network/trafficManagerProfiles\",\r\n      \"location\": \"global\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"profileStatus\": \"Enabled\",\r\n        \"trafficRoutingMethod\": \"Weighted\",\r\n        \"dnsConfig\": {\r\n          \"relativeName\": \"geotestvvv\",\r\n          \"fqdn\": \"geotestvvv.trafficmanager.net\",\r\n          \"ttl\": 60\r\n        },\r\n        \"monitorConfig\": {\r\n          \"profileMonitorStatus\": null,\r\n          \"protocol\": \"HTTP\",\r\n          \"port\": 80,\r\n          \"path\": \"/\",\r\n          \"intervalInSeconds\": 30,\r\n          \"toleratedNumberOfFailures\": 3,\r\n          \"timeoutInSeconds\": 10\r\n        },\r\n        \"endpoints\": [\r\n          {\r\n            \"id\": \"/subscriptions/52bae96a-3806-426c-a5dc-1ae6016b5f15/resourceGroups/dns-portal-ux/providers/Microsoft.Network/trafficManagerProfiles/geotestvvv/azureEndpoints/test\",\r\n            \"name\": \"test\",\r\n            \"type\": \"Microsoft.Network/trafficManagerProfiles/azureEndpoints\",\r\n            \"properties\": {\r\n              \"endpointStatus\": \"Enabled\",\r\n              \"endpointMonitorStatus\": null,\r\n              \"targetResourceId\": \"/subscriptions/52bae96a-3806-426c-a5dc-1ae6016b5f15/resourceGroups/dns-rhc-test/providers/Microsoft.Network/publicIPAddresses/PublicIP-LB-FE\",\r\n              \"target\": \"rhctestsfcluster.westus.cloudapp.azure.com\",\r\n              \"weight\": 1,\r\n              \"priority\": 1,\r\n              \"endpointLocation\": \"West US\",\r\n              \"minChildEndpoints\": null,\r\n              \"minChildEndpointsIPv4\": null,\r\n              \"minChildEndpointsIPv6\": null\r\n            }\r\n          },\r\n          {\r\n            \"id\": \"/subscriptions/52bae96a-3806-426c-a5dc-1ae6016b5f15/resourceGroups/dns-portal-ux/providers/Microsoft.Network/trafficManagerProfiles/geotestvvv/azureEndpoints/testdsafdsa\",\r\n            \"name\": \"testdsafdsa\",\r\n            \"type\": \"Microsoft.Network/trafficManagerProfiles/azureEndpoints\",\r\n            \"properties\": {\r\n              \"endpointStatus\": \"Enabled\",\r\n              \"endpointMonitorStatus\": null,\r\n              \"targetResourceId\": \"/subscriptions/52bae96a-3806-426c-a5dc-1ae6016b5f15/resourceGroups/neha-deploy/providers/Microsoft.ClassicCompute/domainNames/dnsmonitor07092021\",\r\n              \"target\": \"dnsmonitor07092021.cloudapp.net\",\r\n              \"weight\": 1,\r\n              \"priority\": 2,\r\n              \"endpointLocation\": \"East US\",\r\n              \"minChildEndpoints\": null,\r\n              \"minChildEndpointsIPv4\": null,\r\n              \"minChildEndpointsIPv6\": null\r\n            }\r\n          },\r\n          {\r\n            \"id\": \"/subscriptions/52bae96a-3806-426c-a5dc-1ae6016b5f15/resourceGroups/dns-portal-ux/providers/Microsoft.Network/trafficManagerProfiles/geotestvvv/azureEndpoints/testname\",\r\n            \"name\": \"testname\",\r\n            \"type\": \"Microsoft.Network/trafficManagerProfiles/azureEndpoints\",\r\n            \"properties\": {\r\n              \"endpointStatus\": \"Disabled\",\r\n              \"endpointMonitorStatus\": null,\r\n              \"targetResourceId\": \"/subscriptions/52bae96a-3806-426c-a5dc-1ae6016b5f15/resourceGroups/neha-dnsmon/providers/Microsoft.Network/publicIPAddresses/1dd3a59e-2538-47e4-af2c-0b7c8dff0e71-azurebatch-cloudservicepublicip\",\r\n              \"target\": \"dns1dd3a59e-2538-47e4-af2c-0b7c8dff0e71-azurebatch-cloudservice.eastus.cloudapp.azure.com\",\r\n              \"weight\": 1,\r\n              \"priority\": 3,\r\n              \"endpointLocation\": \"East US\",\r\n              \"minChildEndpoints\": null,\r\n              \"minChildEndpointsIPv4\": null,\r\n              \"minChildEndpointsIPv6\": null\r\n            }\r\n          },\r\n          {\r\n            \"id\": \"/subscriptions/52bae96a-3806-426c-a5dc-1ae6016b5f15/resourceGroups/dns-portal-ux/providers/Microsoft.Network/trafficManagerProfiles/geotestvvv/externalEndpoints/asdd\",\r\n            \"name\": \"asdd\",\r\n            \"type\": \"Microsoft.Network/trafficManagerProfiles/externalEndpoints\",\r\n            \"properties\": {\r\n              \"endpointStatus\": \"Enabled\",\r\n              \"endpointMonitorStatus\": null,\r\n              \"targetResourceId\": null,\r\n              \"target\": \"dss.fd\",\r\n              \"weight\": 4,\r\n              \"priority\": 4,\r\n              \"endpointLocation\": null,\r\n              \"minChildEndpoints\": null,\r\n              \"minChildEndpointsIPv4\": null,\r\n              \"minChildEndpointsIPv6\": null\r\n            }\r\n          }\r\n        ],\r\n        \"trafficViewEnrollmentStatus\": \"Disabled\",\r\n        \"maxReturn\": null\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/52bae96a-3806-426c-a5dc-1ae6016b5f15/resourceGroups/dns-portal-ux/providers/Microsoft.Network/trafficManagerProfiles/nestedpowershell\",\r\n      \"name\": \"nestedpowershell\",\r\n      \"type\": \"Microsoft.Network/trafficManagerProfiles\",\r\n      \"location\": \"global\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"profileStatus\": \"Enabled\",\r\n        \"trafficRoutingMethod\": \"MultiValue\",\r\n        \"dnsConfig\": {\r\n          \"relativeName\": \"nestedpowershell\",\r\n          \"fqdn\": \"nestedpowershell.trafficmanager.net\",\r\n          \"ttl\": 60\r\n        },\r\n        \"monitorConfig\": {\r\n          \"profileMonitorStatus\": null,\r\n          \"protocol\": \"HTTP\",\r\n          \"port\": 80,\r\n          \"path\": \"/\",\r\n          \"intervalInSeconds\": 30,\r\n          \"toleratedNumberOfFailures\": 3,\r\n          \"timeoutInSeconds\": 10\r\n        },\r\n        \"endpoints\": [],\r\n        \"trafficViewEnrollmentStatus\": \"Disabled\",\r\n        \"maxReturn\": 2\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/52bae96a-3806-426c-a5dc-1ae6016b5f15/resourceGroups/dns-portal-ux/providers/Microsoft.Network/trafficManagerProfiles/sdkupdate-v8\",\r\n      \"name\": \"sdkupdate-v8\",\r\n      \"type\": \"Microsoft.Network/trafficManagerProfiles\",\r\n      \"location\": \"global\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"profileStatus\": \"Enabled\",\r\n        \"trafficRoutingMethod\": \"Performance\",\r\n        \"dnsConfig\": {\r\n          \"relativeName\": \"sdkupdate.v8\",\r\n          \"fqdn\": \"sdkupdate.v8.trafficmanager.net\",\r\n          \"ttl\": 60\r\n        },\r\n        \"monitorConfig\": {\r\n          \"profileMonitorStatus\": null,\r\n          \"protocol\": \"HTTP\",\r\n          \"port\": 80,\r\n          \"path\": \"/\",\r\n          \"intervalInSeconds\": 30,\r\n          \"toleratedNumberOfFailures\": 3,\r\n          \"timeoutInSeconds\": 10\r\n        },\r\n        \"endpoints\": [\r\n          {\r\n            \"id\": \"/subscriptions/52bae96a-3806-426c-a5dc-1ae6016b5f15/resourceGroups/dns-portal-ux/providers/Microsoft.Network/trafficManagerProfiles/sdkupdate-v8/nestedEndpoints/nested1\",\r\n            \"name\": \"nested1\",\r\n            \"type\": \"Microsoft.Network/trafficManagerProfiles/nestedEndpoints\",\r\n            \"properties\": {\r\n              \"endpointStatus\": \"Enabled\",\r\n              \"endpointMonitorStatus\": \"Stopped\",\r\n              \"targetResourceId\": \"/subscriptions/52bae96a-3806-426c-a5dc-1ae6016b5f15/resourceGroups/portal-new/providers/Microsoft.Network/trafficManagerProfiles/sdkv99\",\r\n              \"target\": \"sdkv99.trafficmanager.net\",\r\n              \"weight\": 1,\r\n              \"priority\": 1,\r\n              \"endpointLocation\": \"East Asia\",\r\n              \"minChildEndpoints\": 1,\r\n              \"minChildEndpointsIPv4\": 0,\r\n              \"minChildEndpointsIPv6\": 0\r\n            }\r\n          }\r\n        ],\r\n        \"trafficViewEnrollmentStatus\": \"Disabled\",\r\n        \"maxReturn\": 0\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/52bae96a-3806-426c-a5dc-1ae6016b5f15/resourceGroups/dns-portal-ux/providers/Microsoft.Network/trafficManagerProfiles/sdkv9\",\r\n      \"name\": \"sdkv9\",\r\n      \"type\": \"Microsoft.Network/trafficManagerProfiles\",\r\n      \"location\": \"global\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"profileStatus\": \"Enabled\",\r\n        \"trafficRoutingMethod\": \"Performance\",\r\n        \"dnsConfig\": {\r\n          \"relativeName\": \"sdkv9\",\r\n          \"fqdn\": \"sdkv9.trafficmanager.net\",\r\n          \"ttl\": 60\r\n        },\r\n        \"monitorConfig\": {\r\n          \"profileMonitorStatus\": null,\r\n          \"protocol\": \"HTTP\",\r\n          \"port\": 80,\r\n          \"path\": \"/\",\r\n          \"intervalInSeconds\": 30,\r\n          \"toleratedNumberOfFailures\": 3,\r\n          \"timeoutInSeconds\": 10\r\n        },\r\n        \"endpoints\": [],\r\n        \"trafficViewEnrollmentStatus\": \"Disabled\",\r\n        \"maxReturn\": 0\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/52bae96a-3806-426c-a5dc-1ae6016b5f15/resourceGroups/dns-portal-ux/providers/Microsoft.Network/trafficManagerProfiles/stagingv8\",\r\n      \"name\": \"stagingv8\",\r\n      \"type\": \"Microsoft.Network/trafficManagerProfiles\",\r\n      \"location\": \"global\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"profileStatus\": \"Enabled\",\r\n        \"trafficRoutingMethod\": \"Performance\",\r\n        \"dnsConfig\": {\r\n          \"relativeName\": \"stagingv8\",\r\n          \"fqdn\": \"stagingv8.trafficmanager.net\",\r\n          \"ttl\": 60\r\n        },\r\n        \"monitorConfig\": {\r\n          \"profileMonitorStatus\": null,\r\n          \"protocol\": \"HTTP\",\r\n          \"port\": 80,\r\n          \"path\": \"/\",\r\n          \"intervalInSeconds\": 30,\r\n          \"toleratedNumberOfFailures\": 3,\r\n          \"timeoutInSeconds\": 10\r\n        },\r\n        \"endpoints\": [\r\n          {\r\n            \"id\": \"/subscriptions/52bae96a-3806-426c-a5dc-1ae6016b5f15/resourceGroups/dns-portal-ux/providers/Microsoft.Network/trafficManagerProfiles/stagingv8/azureEndpoints/testendpoint\",\r\n            \"name\": \"testendpoint\",\r\n            \"type\": \"Microsoft.Network/trafficManagerProfiles/azureEndpoints\",\r\n            \"properties\": {\r\n              \"endpointStatus\": \"Enabled\",\r\n              \"endpointMonitorStatus\": null,\r\n              \"targetResourceId\": \"/subscriptions/52bae96a-3806-426c-a5dc-1ae6016b5f15/resourceGroups/neha-deploy/providers/Microsoft.ClassicCompute/domainNames/dnsmonitor07092021\",\r\n              \"target\": \"dnsmonitor07092021.cloudapp.net\",\r\n              \"weight\": 1,\r\n              \"priority\": 1,\r\n              \"endpointLocation\": \"East US\",\r\n              \"minChildEndpoints\": null,\r\n              \"minChildEndpointsIPv4\": null,\r\n              \"minChildEndpointsIPv6\": null\r\n            }\r\n          }\r\n        ],\r\n        \"trafficViewEnrollmentStatus\": \"Disabled\",\r\n        \"maxReturn\": 0\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/52bae96a-3806-426c-a5dc-1ae6016b5f15/resourceGroups/dns-portal-ux/providers/Microsoft.Network/trafficManagerProfiles/testingforportalarg\",\r\n      \"name\": \"testingforportalarg\",\r\n      \"type\": \"Microsoft.Network/trafficManagerProfiles\",\r\n      \"location\": \"global\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"profileStatus\": \"Enabled\",\r\n        \"trafficRoutingMethod\": \"MultiValue\",\r\n        \"dnsConfig\": {\r\n          \"relativeName\": \"testingforportalarg\",\r\n          \"fqdn\": \"testingforportalarg.trafficmanager.net\",\r\n          \"ttl\": 60\r\n        },\r\n        \"monitorConfig\": {\r\n          \"profileMonitorStatus\": null,\r\n          \"protocol\": \"HTTP\",\r\n          \"port\": 80,\r\n          \"path\": \"/\",\r\n          \"intervalInSeconds\": 30,\r\n          \"toleratedNumberOfFailures\": 3,\r\n          \"timeoutInSeconds\": 10\r\n        },\r\n        \"endpoints\": [],\r\n        \"trafficViewEnrollmentStatus\": \"Disabled\",\r\n        \"maxReturn\": 4\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/52bae96a-3806-426c-a5dc-1ae6016b5f15/resourceGroups/lechaotest/providers/Microsoft.Network/trafficManagerProfiles/lechaotest1\",\r\n      \"name\": \"lechaotest1\",\r\n      \"type\": \"Microsoft.Network/trafficManagerProfiles\",\r\n      \"location\": \"global\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"profileStatus\": \"Disabled\",\r\n        \"trafficRoutingMethod\": \"MultiValue\",\r\n        \"dnsConfig\": {\r\n          \"relativeName\": \"lechaotest1\",\r\n          \"fqdn\": \"lechaotest1.trafficmanager.net\",\r\n          \"ttl\": 60\r\n        },\r\n        \"monitorConfig\": {\r\n          \"profileMonitorStatus\": null,\r\n          \"protocol\": \"HTTPS\",\r\n          \"port\": 443,\r\n          \"path\": \"/\",\r\n          \"intervalInSeconds\": 30,\r\n          \"toleratedNumberOfFailures\": 3,\r\n          \"timeoutInSeconds\": 10,\r\n          \"customHeaders\": [],\r\n          \"expectedStatusCodeRanges\": []\r\n        },\r\n        \"endpoints\": [\r\n          {\r\n            \"id\": \"/subscriptions/52bae96a-3806-426c-a5dc-1ae6016b5f15/resourceGroups/lechaotest/providers/Microsoft.Network/trafficManagerProfiles/lechaotest1/externalEndpoints/endpoint1\",\r\n            \"name\": \"endpoint1\",\r\n            \"type\": \"Microsoft.Network/trafficManagerProfiles/externalEndpoints\",\r\n            \"properties\": {\r\n              \"endpointStatus\": \"Enabled\",\r\n              \"endpointMonitorStatus\": null,\r\n              \"targetResourceId\": null,\r\n              \"target\": \"104.215.148.63\",\r\n              \"weight\": 1,\r\n              \"priority\": 1,\r\n              \"endpointLocation\": null,\r\n              \"minChildEndpoints\": null,\r\n              \"minChildEndpointsIPv4\": null,\r\n              \"minChildEndpointsIPv6\": null,\r\n              \"customHeaders\": [],\r\n              \"subnets\": []\r\n            }\r\n          },\r\n          {\r\n            \"id\": \"/subscriptions/52bae96a-3806-426c-a5dc-1ae6016b5f15/resourceGroups/lechaotest/providers/Microsoft.Network/trafficManagerProfiles/lechaotest1/externalEndpoints/endpoint2\",\r\n            \"name\": \"endpoint2\",\r\n            \"type\": \"Microsoft.Network/trafficManagerProfiles/externalEndpoints\",\r\n            \"properties\": {\r\n              \"endpointStatus\": \"Enabled\",\r\n              \"endpointMonitorStatus\": null,\r\n              \"targetResourceId\": null,\r\n              \"target\": \"40.76.4.15\",\r\n              \"weight\": 1,\r\n              \"priority\": 2,\r\n              \"endpointLocation\": null,\r\n              \"minChildEndpoints\": null,\r\n              \"minChildEndpointsIPv4\": null,\r\n              \"minChildEndpointsIPv6\": null,\r\n              \"customHeaders\": [],\r\n              \"subnets\": []\r\n            }\r\n          },\r\n          {\r\n            \"id\": \"/subscriptions/52bae96a-3806-426c-a5dc-1ae6016b5f15/resourceGroups/lechaotest/providers/Microsoft.Network/trafficManagerProfiles/lechaotest1/externalEndpoints/endpoint3\",\r\n            \"name\": \"endpoint3\",\r\n            \"type\": \"Microsoft.Network/trafficManagerProfiles/externalEndpoints\",\r\n            \"properties\": {\r\n              \"endpointStatus\": \"Enabled\",\r\n              \"endpointMonitorStatus\": null,\r\n              \"targetResourceId\": null,\r\n              \"target\": \"40.112.72.205\",\r\n              \"weight\": 1,\r\n              \"priority\": 3,\r\n              \"endpointLocation\": null,\r\n              \"minChildEndpoints\": null,\r\n              \"minChildEndpointsIPv4\": null,\r\n              \"minChildEndpointsIPv6\": null,\r\n              \"customHeaders\": [],\r\n              \"subnets\": []\r\n            }\r\n          },\r\n          {\r\n            \"id\": \"/subscriptions/52bae96a-3806-426c-a5dc-1ae6016b5f15/resourceGroups/lechaotest/providers/Microsoft.Network/trafficManagerProfiles/lechaotest1/externalEndpoints/endpoint4\",\r\n            \"name\": \"endpoint4\",\r\n            \"type\": \"Microsoft.Network/trafficManagerProfiles/externalEndpoints\",\r\n            \"properties\": {\r\n              \"endpointStatus\": \"Enabled\",\r\n              \"endpointMonitorStatus\": null,\r\n              \"targetResourceId\": null,\r\n              \"target\": \"40.113.200.201\",\r\n              \"weight\": 1,\r\n              \"priority\": 4,\r\n              \"endpointLocation\": null,\r\n              \"minChildEndpoints\": null,\r\n              \"minChildEndpointsIPv4\": null,\r\n              \"minChildEndpointsIPv6\": null,\r\n              \"customHeaders\": [],\r\n              \"subnets\": []\r\n            }\r\n          },\r\n          {\r\n            \"id\": \"/subscriptions/52bae96a-3806-426c-a5dc-1ae6016b5f15/resourceGroups/lechaotest/providers/Microsoft.Network/trafficManagerProfiles/lechaotest1/externalEndpoints/endpoint5\",\r\n            \"name\": \"endpoint5\",\r\n            \"type\": \"Microsoft.Network/trafficManagerProfiles/externalEndpoints\",\r\n            \"properties\": {\r\n              \"endpointStatus\": \"Enabled\",\r\n              \"endpointMonitorStatus\": null,\r\n              \"targetResourceId\": null,\r\n              \"target\": \"13.77.161.179\",\r\n              \"weight\": 1,\r\n              \"priority\": 5,\r\n              \"endpointLocation\": null,\r\n              \"minChildEndpoints\": null,\r\n              \"minChildEndpointsIPv4\": null,\r\n              \"minChildEndpointsIPv6\": null,\r\n              \"customHeaders\": [],\r\n              \"subnets\": []\r\n            }\r\n          },\r\n          {\r\n            \"id\": \"/subscriptions/52bae96a-3806-426c-a5dc-1ae6016b5f15/resourceGroups/lechaotest/providers/Microsoft.Network/trafficManagerProfiles/lechaotest1/externalEndpoints/endpoint6\",\r\n            \"name\": \"endpoint6\",\r\n            \"type\": \"Microsoft.Network/trafficManagerProfiles/externalEndpoints\",\r\n            \"properties\": {\r\n              \"endpointStatus\": \"Enabled\",\r\n              \"endpointMonitorStatus\": null,\r\n              \"targetResourceId\": null,\r\n              \"target\": \"172.217.14.206\",\r\n              \"weight\": 1,\r\n              \"priority\": 6,\r\n              \"endpointLocation\": null,\r\n              \"minChildEndpoints\": null,\r\n              \"minChildEndpointsIPv4\": null,\r\n              \"minChildEndpointsIPv6\": null,\r\n              \"customHeaders\": [],\r\n              \"subnets\": []\r\n            }\r\n          },\r\n          {\r\n            \"id\": \"/subscriptions/52bae96a-3806-426c-a5dc-1ae6016b5f15/resourceGroups/lechaotest/providers/Microsoft.Network/trafficManagerProfiles/lechaotest1/externalEndpoints/endpoint7\",\r\n            \"name\": \"endpoint7\",\r\n            \"type\": \"Microsoft.Network/trafficManagerProfiles/externalEndpoints\",\r\n            \"properties\": {\r\n              \"endpointStatus\": \"Enabled\",\r\n              \"endpointMonitorStatus\": null,\r\n              \"targetResourceId\": null,\r\n              \"target\": \"54.239.28.85\",\r\n              \"weight\": 1,\r\n              \"priority\": 7,\r\n              \"endpointLocation\": null,\r\n              \"minChildEndpoints\": null,\r\n              \"minChildEndpointsIPv4\": null,\r\n              \"minChildEndpointsIPv6\": null,\r\n              \"customHeaders\": [],\r\n              \"subnets\": []\r\n            }\r\n          },\r\n          {\r\n            \"id\": \"/subscriptions/52bae96a-3806-426c-a5dc-1ae6016b5f15/resourceGroups/lechaotest/providers/Microsoft.Network/trafficManagerProfiles/lechaotest1/externalEndpoints/endpoint8\",\r\n            \"name\": \"endpoint8\",\r\n            \"type\": \"Microsoft.Network/trafficManagerProfiles/externalEndpoints\",\r\n            \"properties\": {\r\n              \"endpointStatus\": \"Enabled\",\r\n              \"endpointMonitorStatus\": null,\r\n              \"targetResourceId\": null,\r\n              \"target\": \"176.32.103.205\",\r\n              \"weight\": 1,\r\n              \"priority\": 8,\r\n              \"endpointLocation\": null,\r\n              \"minChildEndpoints\": null,\r\n              \"minChildEndpointsIPv4\": null,\r\n              \"minChildEndpointsIPv6\": null,\r\n              \"customHeaders\": [],\r\n              \"subnets\": []\r\n            }\r\n          }\r\n        ],\r\n        \"trafficViewEnrollmentStatus\": \"Disabled\",\r\n        \"maxReturn\": 8\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/52bae96a-3806-426c-a5dc-1ae6016b5f15/resourceGroups/lizhu-testbilling/providers/Microsoft.Network/trafficManagerProfiles/testbillings\",\r\n      \"name\": \"testbillings\",\r\n      \"type\": \"Microsoft.Network/trafficManagerProfiles\",\r\n      \"location\": \"global\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"profileStatus\": \"Enabled\",\r\n        \"trafficRoutingMethod\": \"Performance\",\r\n        \"dnsConfig\": {\r\n          \"relativeName\": \"testbillings\",\r\n          \"fqdn\": \"testbillings.trafficmanager.net\",\r\n          \"ttl\": 60\r\n        },\r\n        \"monitorConfig\": {\r\n          \"profileMonitorStatus\": null,\r\n          \"protocol\": \"HTTP\",\r\n          \"port\": 80,\r\n          \"path\": \"/\",\r\n          \"intervalInSeconds\": 30,\r\n          \"toleratedNumberOfFailures\": 3,\r\n          \"timeoutInSeconds\": 10\r\n        },\r\n        \"endpoints\": [\r\n          {\r\n            \"id\": \"/subscriptions/52bae96a-3806-426c-a5dc-1ae6016b5f15/resourceGroups/lizhu-testbilling/providers/Microsoft.Network/trafficManagerProfiles/testbillings/externalEndpoints/www.microsoft.com\",\r\n            \"name\": \"www.microsoft.com\",\r\n            \"type\": \"Microsoft.Network/trafficManagerProfiles/externalEndpoints\",\r\n            \"properties\": {\r\n              \"endpointStatus\": \"Disabled\",\r\n              \"endpointMonitorStatus\": null,\r\n              \"targetResourceId\": null,\r\n              \"target\": \"www.microsoft.com\",\r\n              \"weight\": 1,\r\n              \"priority\": 1,\r\n              \"endpointLocation\": \"East Asia\",\r\n              \"minChildEndpoints\": null,\r\n              \"minChildEndpointsIPv4\": null,\r\n              \"minChildEndpointsIPv6\": null\r\n            }\r\n          }\r\n        ],\r\n        \"trafficViewEnrollmentStatus\": \"Disabled\",\r\n        \"maxReturn\": 0\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/52bae96a-3806-426c-a5dc-1ae6016b5f15/resourceGroups/neha-deploy/providers/Microsoft.Network/trafficManagerProfiles/DNSMonitor\",\r\n      \"name\": \"DNSMonitor\",\r\n      \"type\": \"Microsoft.Network/trafficManagerProfiles\",\r\n      \"location\": \"global\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"profileStatus\": \"Enabled\",\r\n        \"trafficRoutingMethod\": \"Geographic\",\r\n        \"dnsConfig\": {\r\n          \"relativeName\": \"dnsmonitor07092021\",\r\n          \"fqdn\": \"dnsmonitor07092021.trafficmanager.net\",\r\n          \"ttl\": 30\r\n        },\r\n        \"monitorConfig\": {\r\n          \"profileMonitorStatus\": null,\r\n          \"protocol\": \"HTTPS\",\r\n          \"port\": 443,\r\n          \"path\": \"/\",\r\n          \"intervalInSeconds\": 30,\r\n          \"toleratedNumberOfFailures\": 3,\r\n          \"timeoutInSeconds\": 10,\r\n          \"expectedStatusCodeRanges\": [\r\n            {\r\n              \"min\": 200,\r\n              \"max\": 202\r\n            },\r\n            {\r\n              \"min\": 301,\r\n              \"max\": 302\r\n            }\r\n          ]\r\n        },\r\n        \"endpoints\": [\r\n          {\r\n            \"id\": \"/subscriptions/52bae96a-3806-426c-a5dc-1ae6016b5f15/resourceGroups/neha-deploy/providers/Microsoft.Network/trafficManagerProfiles/DNSMonitor/externalEndpoints/ep1\",\r\n            \"name\": \"ep1\",\r\n            \"type\": \"Microsoft.Network/trafficManagerProfiles/externalEndpoints\",\r\n            \"properties\": {\r\n              \"endpointStatus\": \"Enabled\",\r\n              \"endpointMonitorStatus\": null,\r\n              \"targetResourceId\": null,\r\n              \"target\": \"www.microsoft.com\",\r\n              \"weight\": 1,\r\n              \"priority\": 1,\r\n              \"endpointLocation\": null,\r\n              \"minChildEndpoints\": null,\r\n              \"minChildEndpointsIPv4\": null,\r\n              \"minChildEndpointsIPv6\": null,\r\n              \"geoMapping\": [\r\n                \"IN\"\r\n              ]\r\n            }\r\n          },\r\n          {\r\n            \"id\": \"/subscriptions/52bae96a-3806-426c-a5dc-1ae6016b5f15/resourceGroups/neha-deploy/providers/Microsoft.Network/trafficManagerProfiles/DNSMonitor/externalEndpoints/ep2\",\r\n            \"name\": \"ep2\",\r\n            \"type\": \"Microsoft.Network/trafficManagerProfiles/externalEndpoints\",\r\n            \"properties\": {\r\n              \"endpointStatus\": \"Enabled\",\r\n              \"endpointMonitorStatus\": null,\r\n              \"targetResourceId\": null,\r\n              \"target\": \"www.google.com\",\r\n              \"weight\": 1,\r\n              \"priority\": 2,\r\n              \"endpointLocation\": null,\r\n              \"minChildEndpoints\": null,\r\n              \"minChildEndpointsIPv4\": null,\r\n              \"minChildEndpointsIPv6\": null,\r\n              \"geoMapping\": [\r\n                \"US\"\r\n              ]\r\n            }\r\n          }\r\n        ],\r\n        \"trafficViewEnrollmentStatus\": \"Disabled\",\r\n        \"maxReturn\": null\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/52bae96a-3806-426c-a5dc-1ae6016b5f15/resourceGroups/new-portalsdk9/providers/Microsoft.Network/trafficManagerProfiles/testingforafd\",\r\n      \"name\": \"testingforafd\",\r\n      \"type\": \"Microsoft.Network/trafficManagerProfiles\",\r\n      \"location\": \"global\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"profileStatus\": \"Enabled\",\r\n        \"trafficRoutingMethod\": \"Performance\",\r\n        \"dnsConfig\": {\r\n          \"relativeName\": \"testingforafd\",\r\n          \"fqdn\": \"testingforafd.trafficmanager.net\",\r\n          \"ttl\": 60\r\n        },\r\n        \"monitorConfig\": {\r\n          \"profileMonitorStatus\": null,\r\n          \"protocol\": \"HTTP\",\r\n          \"port\": 80,\r\n          \"path\": \"/\",\r\n          \"intervalInSeconds\": 30,\r\n          \"toleratedNumberOfFailures\": 3,\r\n          \"timeoutInSeconds\": 10\r\n        },\r\n        \"endpoints\": [],\r\n        \"trafficViewEnrollmentStatus\": \"Disabled\",\r\n        \"maxReturn\": 0\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/52bae96a-3806-426c-a5dc-1ae6016b5f15/resourceGroups/portal-new/providers/Microsoft.Network/trafficManagerProfiles/sdkv99\",\r\n      \"name\": \"sdkv99\",\r\n      \"type\": \"Microsoft.Network/trafficManagerProfiles\",\r\n      \"location\": \"global\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"profileStatus\": \"Enabled\",\r\n        \"trafficRoutingMethod\": \"Geographic\",\r\n        \"dnsConfig\": {\r\n          \"relativeName\": \"sdkv99\",\r\n          \"fqdn\": \"sdkv99.trafficmanager.net\",\r\n          \"ttl\": 60\r\n        },\r\n        \"monitorConfig\": {\r\n          \"profileMonitorStatus\": null,\r\n          \"protocol\": \"HTTP\",\r\n          \"port\": 80,\r\n          \"path\": \"/\",\r\n          \"intervalInSeconds\": 30,\r\n          \"toleratedNumberOfFailures\": 3,\r\n          \"timeoutInSeconds\": 10\r\n        },\r\n        \"endpoints\": [\r\n          {\r\n            \"id\": \"/subscriptions/52bae96a-3806-426c-a5dc-1ae6016b5f15/resourceGroups/portal-new/providers/Microsoft.Network/trafficManagerProfiles/sdkv99/azureEndpoints/test\",\r\n            \"name\": \"test\",\r\n            \"type\": \"Microsoft.Network/trafficManagerProfiles/azureEndpoints\",\r\n            \"properties\": {\r\n              \"endpointStatus\": \"Disabled\",\r\n              \"endpointMonitorStatus\": null,\r\n              \"targetResourceId\": \"/subscriptions/52bae96a-3806-426c-a5dc-1ae6016b5f15/resourceGroups/neha-deploy/providers/Microsoft.ClassicCompute/domainNames/dnsmonitor07092021\",\r\n              \"target\": \"dnsmonitor07092021.cloudapp.net\",\r\n              \"weight\": 1,\r\n              \"priority\": 1,\r\n              \"endpointLocation\": \"East US\",\r\n              \"minChildEndpoints\": null,\r\n              \"minChildEndpointsIPv4\": null,\r\n              \"minChildEndpointsIPv6\": null,\r\n              \"geoMapping\": [\r\n                \"BA\",\r\n                \"IN\",\r\n                \"SY\"\r\n              ]\r\n            }\r\n          }\r\n        ],\r\n        \"trafficViewEnrollmentStatus\": \"Enabled\",\r\n        \"maxReturn\": null\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/52bae96a-3806-426c-a5dc-1ae6016b5f15/resourceGroups/portal-new/providers/Microsoft.Network/trafficManagerProfiles/testgeosdkv8\",\r\n      \"name\": \"testgeosdkv8\",\r\n      \"type\": \"Microsoft.Network/trafficManagerProfiles\",\r\n      \"location\": \"global\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"profileStatus\": \"Enabled\",\r\n        \"trafficRoutingMethod\": \"Geographic\",\r\n        \"dnsConfig\": {\r\n          \"relativeName\": \"testgeosdkv8\",\r\n          \"fqdn\": \"testgeosdkv8.trafficmanager.net\",\r\n          \"ttl\": 60\r\n        },\r\n        \"monitorConfig\": {\r\n          \"profileMonitorStatus\": null,\r\n          \"protocol\": \"HTTP\",\r\n          \"port\": 80,\r\n          \"path\": \"/\",\r\n          \"intervalInSeconds\": 30,\r\n          \"toleratedNumberOfFailures\": 3,\r\n          \"timeoutInSeconds\": 10\r\n        },\r\n        \"endpoints\": [\r\n          {\r\n            \"id\": \"/subscriptions/52bae96a-3806-426c-a5dc-1ae6016b5f15/resourceGroups/portal-new/providers/Microsoft.Network/trafficManagerProfiles/testgeosdkv8/azureEndpoints/test\",\r\n            \"name\": \"test\",\r\n            \"type\": \"Microsoft.Network/trafficManagerProfiles/azureEndpoints\",\r\n            \"properties\": {\r\n              \"endpointStatus\": \"Enabled\",\r\n              \"endpointMonitorStatus\": null,\r\n              \"targetResourceId\": \"/subscriptions/52bae96a-3806-426c-a5dc-1ae6016b5f15/resourceGroups/neha-deploy/providers/Microsoft.ClassicCompute/domainNames/dnsmonitor07092021\",\r\n              \"target\": \"dnsmonitor07092021.cloudapp.net\",\r\n              \"weight\": 1,\r\n              \"priority\": 1,\r\n              \"endpointLocation\": \"East US\",\r\n              \"minChildEndpoints\": null,\r\n              \"minChildEndpointsIPv4\": null,\r\n              \"minChildEndpointsIPv6\": null,\r\n              \"geoMapping\": [\r\n                \"BI\",\r\n                \"BT\",\r\n                \"IN\"\r\n              ],\r\n              \"customHeaders\": [\r\n                {\r\n                  \"name\": \"host\",\r\n                  \"value\": \"contoso.com\"\r\n                },\r\n                {\r\n                  \"name\": \"customheader\",\r\n                  \"value\": \"contoso\"\r\n                }\r\n              ]\r\n            }\r\n          }\r\n        ],\r\n        \"trafficViewEnrollmentStatus\": \"Disabled\",\r\n        \"maxReturn\": 0\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/52bae96a-3806-426c-a5dc-1ae6016b5f15/resourceGroups/portalv9/providers/Microsoft.Network/trafficManagerProfiles/weightedv8\",\r\n      \"name\": \"weightedv8\",\r\n      \"type\": \"Microsoft.Network/trafficManagerProfiles\",\r\n      \"location\": \"global\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"profileStatus\": \"Enabled\",\r\n        \"trafficRoutingMethod\": \"Weighted\",\r\n        \"dnsConfig\": {\r\n          \"relativeName\": \"weightedv8\",\r\n          \"fqdn\": \"weightedv8.trafficmanager.net\",\r\n          \"ttl\": 60\r\n        },\r\n        \"monitorConfig\": {\r\n          \"profileMonitorStatus\": null,\r\n          \"protocol\": \"HTTP\",\r\n          \"port\": 80,\r\n          \"path\": \"/\",\r\n          \"intervalInSeconds\": 30,\r\n          \"toleratedNumberOfFailures\": 3,\r\n          \"timeoutInSeconds\": 10,\r\n          \"customHeaders\": [\r\n            {\r\n              \"name\": \"host\",\r\n              \"value\": \"contoso.com\"\r\n            },\r\n            {\r\n              \"name\": \"newheader\",\r\n              \"value\": \"newvalue\"\r\n            }\r\n          ],\r\n          \"expectedStatusCodeRanges\": [\r\n            {\r\n              \"min\": 301,\r\n              \"max\": 302\r\n            }\r\n          ]\r\n        },\r\n        \"endpoints\": [\r\n          {\r\n            \"id\": \"/subscriptions/52bae96a-3806-426c-a5dc-1ae6016b5f15/resourceGroups/portalv9/providers/Microsoft.Network/trafficManagerProfiles/weightedv8/azureEndpoints/azendpoint\",\r\n            \"name\": \"azendpoint\",\r\n            \"type\": \"Microsoft.Network/trafficManagerProfiles/azureEndpoints\",\r\n            \"properties\": {\r\n              \"endpointStatus\": \"Enabled\",\r\n              \"endpointMonitorStatus\": null,\r\n              \"targetResourceId\": \"/subscriptions/52bae96a-3806-426c-a5dc-1ae6016b5f15/resourceGroups/neha-deploy/providers/Microsoft.ClassicCompute/domainNames/dnsmonitor07092021\",\r\n              \"target\": \"dnsmonitor07092021.cloudapp.net\",\r\n              \"weight\": 20,\r\n              \"priority\": 1,\r\n              \"endpointLocation\": \"East US\",\r\n              \"minChildEndpoints\": null,\r\n              \"minChildEndpointsIPv4\": null,\r\n              \"minChildEndpointsIPv6\": null,\r\n              \"customHeaders\": [\r\n                {\r\n                  \"name\": \"host\",\r\n                  \"value\": \"contoso.com\"\r\n                },\r\n                {\r\n                  \"name\": \"customheader\",\r\n                  \"value\": \"contoso1\"\r\n                }\r\n              ]\r\n            }\r\n          }\r\n        ],\r\n        \"trafficViewEnrollmentStatus\": \"Disabled\",\r\n        \"maxReturn\": null\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/52bae96a-3806-426c-a5dc-1ae6016b5f15/resourceGroups/ps4469/providers/Microsoft.Network/trafficManagerProfiles/ps7520\",\r\n      \"name\": \"ps7520\",\r\n      \"type\": \"Microsoft.Network/trafficManagerProfiles\",\r\n      \"location\": \"global\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"profileStatus\": \"Enabled\",\r\n        \"trafficRoutingMethod\": \"Weighted\",\r\n        \"dnsConfig\": {\r\n          \"relativeName\": \"ps6901\",\r\n          \"fqdn\": \"ps6901.trafficmanager.net\",\r\n          \"ttl\": 50\r\n        },\r\n        \"monitorConfig\": {\r\n          \"profileMonitorStatus\": null,\r\n          \"protocol\": \"HTTP\",\r\n          \"port\": 80,\r\n          \"path\": \"/testpath.asp\",\r\n          \"intervalInSeconds\": 30,\r\n          \"toleratedNumberOfFailures\": 3,\r\n          \"timeoutInSeconds\": 10\r\n        },\r\n        \"endpoints\": [\r\n          {\r\n            \"id\": \"/subscriptions/52bae96a-3806-426c-a5dc-1ae6016b5f15/resourceGroups/ps4469/providers/Microsoft.Network/trafficManagerProfiles/ps7520/externalEndpoints/ps8590\",\r\n            \"name\": \"ps8590\",\r\n            \"type\": \"Microsoft.Network/trafficManagerProfiles/externalEndpoints\",\r\n            \"properties\": {\r\n              \"endpointStatus\": \"Disabled\",\r\n              \"endpointMonitorStatus\": null,\r\n              \"targetResourceId\": null,\r\n              \"target\": \"www.contoso.com\",\r\n              \"weight\": 1,\r\n              \"priority\": 1,\r\n              \"endpointLocation\": \"West US\",\r\n              \"minChildEndpoints\": null,\r\n              \"minChildEndpointsIPv4\": null,\r\n              \"minChildEndpointsIPv6\": null\r\n            }\r\n          }\r\n        ],\r\n        \"trafficViewEnrollmentStatus\": \"Disabled\",\r\n        \"maxReturn\": null\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/52bae96a-3806-426c-a5dc-1ae6016b5f15/resourceGroups/ps6881/providers/Microsoft.Network/trafficManagerProfiles/ps1348\",\r\n      \"name\": \"ps1348\",\r\n      \"type\": \"Microsoft.Network/trafficManagerProfiles\",\r\n      \"location\": \"global\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"profileStatus\": \"Enabled\",\r\n        \"trafficRoutingMethod\": \"Performance\",\r\n        \"dnsConfig\": {\r\n          \"relativeName\": \"ps4760\",\r\n          \"fqdn\": \"ps4760.trafficmanager.net\",\r\n          \"ttl\": 50\r\n        },\r\n        \"monitorConfig\": {\r\n          \"profileMonitorStatus\": null,\r\n          \"protocol\": \"HTTP\",\r\n          \"port\": 80,\r\n          \"path\": \"/testpath.asp\",\r\n          \"intervalInSeconds\": 30,\r\n          \"toleratedNumberOfFailures\": 3,\r\n          \"timeoutInSeconds\": 10\r\n        },\r\n        \"endpoints\": [],\r\n        \"trafficViewEnrollmentStatus\": \"Disabled\",\r\n        \"maxReturn\": null\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/52bae96a-3806-426c-a5dc-1ae6016b5f15/resourceGroups/raghosal-test/providers/Microsoft.Network/trafficManagerProfiles/child\",\r\n      \"name\": \"child\",\r\n      \"type\": \"Microsoft.Network/trafficManagerProfiles\",\r\n      \"location\": \"global\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"profileStatus\": \"Enabled\",\r\n        \"trafficRoutingMethod\": \"Priority\",\r\n        \"dnsConfig\": {\r\n          \"relativeName\": \"child\",\r\n          \"fqdn\": \"child.trafficmanager.net\",\r\n          \"ttl\": 30\r\n        },\r\n        \"monitorConfig\": {\r\n          \"profileMonitorStatus\": null,\r\n          \"protocol\": \"HTTP\",\r\n          \"port\": 80,\r\n          \"path\": \"/\",\r\n          \"intervalInSeconds\": 30,\r\n          \"toleratedNumberOfFailures\": 3,\r\n          \"timeoutInSeconds\": 10\r\n        },\r\n        \"endpoints\": [],\r\n        \"trafficViewEnrollmentStatus\": \"Disabled\",\r\n        \"maxReturn\": null\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/52bae96a-3806-426c-a5dc-1ae6016b5f15/resourceGroups/raghosal-test/providers/Microsoft.Network/trafficManagerProfiles/child1\",\r\n      \"name\": \"child1\",\r\n      \"type\": \"Microsoft.Network/trafficManagerProfiles\",\r\n      \"location\": \"global\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"profileStatus\": \"Enabled\",\r\n        \"trafficRoutingMethod\": \"Priority\",\r\n        \"dnsConfig\": {\r\n          \"relativeName\": \"child1\",\r\n          \"fqdn\": \"child1.trafficmanager.net\",\r\n          \"ttl\": 30\r\n        },\r\n        \"monitorConfig\": {\r\n          \"profileMonitorStatus\": null,\r\n          \"protocol\": \"HTTP\",\r\n          \"port\": 80,\r\n          \"path\": \"/\",\r\n          \"intervalInSeconds\": 30,\r\n          \"toleratedNumberOfFailures\": 3,\r\n          \"timeoutInSeconds\": 10\r\n        },\r\n        \"endpoints\": [],\r\n        \"trafficViewEnrollmentStatus\": \"Disabled\",\r\n        \"maxReturn\": null\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/52bae96a-3806-426c-a5dc-1ae6016b5f15/resourceGroups/raghosal-test/providers/Microsoft.Network/trafficManagerProfiles/child2\",\r\n      \"name\": \"child2\",\r\n      \"type\": \"Microsoft.Network/trafficManagerProfiles\",\r\n      \"location\": \"global\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"profileStatus\": \"Enabled\",\r\n        \"trafficRoutingMethod\": \"Priority\",\r\n        \"dnsConfig\": {\r\n          \"relativeName\": \"child2\",\r\n          \"fqdn\": \"child2.trafficmanager.net\",\r\n          \"ttl\": 30\r\n        },\r\n        \"monitorConfig\": {\r\n          \"profileMonitorStatus\": null,\r\n          \"protocol\": \"HTTP\",\r\n          \"port\": 80,\r\n          \"path\": \"/\",\r\n          \"intervalInSeconds\": 30,\r\n          \"toleratedNumberOfFailures\": 3,\r\n          \"timeoutInSeconds\": 10\r\n        },\r\n        \"endpoints\": [],\r\n        \"trafficViewEnrollmentStatus\": \"Disabled\",\r\n        \"maxReturn\": null\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/52bae96a-3806-426c-a5dc-1ae6016b5f15/resourceGroups/raghosal-test/providers/Microsoft.Network/trafficManagerProfiles/parent\",\r\n      \"name\": \"parent\",\r\n      \"type\": \"Microsoft.Network/trafficManagerProfiles\",\r\n      \"location\": \"global\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"profileStatus\": \"Enabled\",\r\n        \"trafficRoutingMethod\": \"Performance\",\r\n        \"dnsConfig\": {\r\n          \"relativeName\": \"parent555\",\r\n          \"fqdn\": \"parent555.trafficmanager.net\",\r\n          \"ttl\": 30\r\n        },\r\n        \"monitorConfig\": {\r\n          \"profileMonitorStatus\": null,\r\n          \"protocol\": \"HTTP\",\r\n          \"port\": 80,\r\n          \"path\": \"/\",\r\n          \"intervalInSeconds\": 30,\r\n          \"toleratedNumberOfFailures\": 3,\r\n          \"timeoutInSeconds\": 10\r\n        },\r\n        \"endpoints\": [\r\n          {\r\n            \"id\": \"/subscriptions/52bae96a-3806-426c-a5dc-1ae6016b5f15/resourceGroups/raghosal-test/providers/Microsoft.Network/trafficManagerProfiles/parent/nestedEndpoints/child\",\r\n            \"name\": \"child\",\r\n            \"type\": \"Microsoft.Network/trafficManagerProfiles/nestedEndpoints\",\r\n            \"properties\": {\r\n              \"endpointStatus\": \"Enabled\",\r\n              \"endpointMonitorStatus\": \"Stopped\",\r\n              \"targetResourceId\": \"/subscriptions/52bae96a-3806-426c-a5dc-1ae6016b5f15/resourceGroups/raghosal-test/providers/Microsoft.Network/trafficManagerProfiles/powershellTest\",\r\n              \"target\": \"contoso.trafficmanager.net\",\r\n              \"weight\": 1,\r\n              \"priority\": 1,\r\n              \"endpointLocation\": \"East Asia\",\r\n              \"minChildEndpoints\": 2,\r\n              \"minChildEndpointsIPv4\": 0,\r\n              \"minChildEndpointsIPv6\": 0\r\n            }\r\n          }\r\n        ],\r\n        \"trafficViewEnrollmentStatus\": \"Disabled\",\r\n        \"maxReturn\": null\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/52bae96a-3806-426c-a5dc-1ae6016b5f15/resourceGroups/raghosal-test/providers/Microsoft.Network/trafficManagerProfiles/parent1\",\r\n      \"name\": \"parent1\",\r\n      \"type\": \"Microsoft.Network/trafficManagerProfiles\",\r\n      \"location\": \"global\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"profileStatus\": \"Enabled\",\r\n        \"trafficRoutingMethod\": \"Performance\",\r\n        \"dnsConfig\": {\r\n          \"relativeName\": \"parent1\",\r\n          \"fqdn\": \"parent1.trafficmanager.net\",\r\n          \"ttl\": 30\r\n        },\r\n        \"monitorConfig\": {\r\n          \"profileMonitorStatus\": null,\r\n          \"protocol\": \"HTTP\",\r\n          \"port\": 80,\r\n          \"path\": \"/\",\r\n          \"intervalInSeconds\": 30,\r\n          \"toleratedNumberOfFailures\": 3,\r\n          \"timeoutInSeconds\": 10\r\n        },\r\n        \"endpoints\": [\r\n          {\r\n            \"id\": \"/subscriptions/52bae96a-3806-426c-a5dc-1ae6016b5f15/resourceGroups/raghosal-test/providers/Microsoft.Network/trafficManagerProfiles/parent1/nestedEndpoints/child-endpoint\",\r\n            \"name\": \"child-endpoint\",\r\n            \"type\": \"Microsoft.Network/trafficManagerProfiles/nestedEndpoints\",\r\n            \"properties\": {\r\n              \"endpointStatus\": \"Enabled\",\r\n              \"endpointMonitorStatus\": \"Stopped\",\r\n              \"targetResourceId\": \"/subscriptions/52bae96a-3806-426c-a5dc-1ae6016b5f15/resourceGroups/raghosal-test/providers/Microsoft.Network/trafficManagerProfiles/child1\",\r\n              \"target\": \"child1.trafficmanager.net\",\r\n              \"weight\": 1,\r\n              \"priority\": 1,\r\n              \"endpointLocation\": \"North Europe\",\r\n              \"minChildEndpoints\": 2,\r\n              \"minChildEndpointsIPv4\": 0,\r\n              \"minChildEndpointsIPv6\": 0\r\n            }\r\n          }\r\n        ],\r\n        \"trafficViewEnrollmentStatus\": \"Disabled\",\r\n        \"maxReturn\": null\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/52bae96a-3806-426c-a5dc-1ae6016b5f15/resourceGroups/raghosal-test/providers/Microsoft.Network/trafficManagerProfiles/parent2\",\r\n      \"name\": \"parent2\",\r\n      \"type\": \"Microsoft.Network/trafficManagerProfiles\",\r\n      \"location\": \"global\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"profileStatus\": \"Enabled\",\r\n        \"trafficRoutingMethod\": \"Performance\",\r\n        \"dnsConfig\": {\r\n          \"relativeName\": \"parent2\",\r\n          \"fqdn\": \"parent2.trafficmanager.net\",\r\n          \"ttl\": 30\r\n        },\r\n        \"monitorConfig\": {\r\n          \"profileMonitorStatus\": null,\r\n          \"protocol\": \"HTTP\",\r\n          \"port\": 80,\r\n          \"path\": \"/\",\r\n          \"intervalInSeconds\": 30,\r\n          \"toleratedNumberOfFailures\": 3,\r\n          \"timeoutInSeconds\": 10\r\n        },\r\n        \"endpoints\": [\r\n          {\r\n            \"id\": \"/subscriptions/52bae96a-3806-426c-a5dc-1ae6016b5f15/resourceGroups/raghosal-test/providers/Microsoft.Network/trafficManagerProfiles/parent2/nestedEndpoints/child-endpoint\",\r\n            \"name\": \"child-endpoint\",\r\n            \"type\": \"Microsoft.Network/trafficManagerProfiles/nestedEndpoints\",\r\n            \"properties\": {\r\n              \"endpointStatus\": \"Enabled\",\r\n              \"endpointMonitorStatus\": \"Stopped\",\r\n              \"targetResourceId\": \"/subscriptions/52bae96a-3806-426c-a5dc-1ae6016b5f15/resourceGroups/raghosal-test/providers/Microsoft.Network/trafficManagerProfiles/child2\",\r\n              \"target\": \"child2.trafficmanager.net\",\r\n              \"weight\": 1,\r\n              \"priority\": 1,\r\n              \"endpointLocation\": \"North Europe\",\r\n              \"minChildEndpoints\": 2,\r\n              \"minChildEndpointsIPv4\": 0,\r\n              \"minChildEndpointsIPv6\": 1\r\n            }\r\n          }\r\n        ],\r\n        \"trafficViewEnrollmentStatus\": \"Disabled\",\r\n        \"maxReturn\": null\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/52bae96a-3806-426c-a5dc-1ae6016b5f15/resourceGroups/raghosal-test/providers/Microsoft.Network/trafficManagerProfiles/powershellTest\",\r\n      \"name\": \"powershellTest\",\r\n      \"type\": \"Microsoft.Network/trafficManagerProfiles\",\r\n      \"location\": \"global\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"profileStatus\": \"Enabled\",\r\n        \"trafficRoutingMethod\": \"Performance\",\r\n        \"dnsConfig\": {\r\n          \"relativeName\": \"contoso\",\r\n          \"fqdn\": \"contoso.trafficmanager.net\",\r\n          \"ttl\": 30\r\n        },\r\n        \"monitorConfig\": {\r\n          \"profileMonitorStatus\": null,\r\n          \"protocol\": \"HTTP\",\r\n          \"port\": 80,\r\n          \"path\": \"/\",\r\n          \"intervalInSeconds\": 30,\r\n          \"toleratedNumberOfFailures\": 3,\r\n          \"timeoutInSeconds\": 10\r\n        },\r\n        \"endpoints\": [],\r\n        \"trafficViewEnrollmentStatus\": \"Disabled\",\r\n        \"maxReturn\": null\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/52bae96a-3806-426c-a5dc-1ae6016b5f15/resourceGroups/sdp-test/providers/Microsoft.Network/trafficManagerProfiles/sdpTestTm\",\r\n      \"name\": \"sdpTestTm\",\r\n      \"type\": \"Microsoft.Network/trafficManagerProfiles\",\r\n      \"location\": \"global\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"profileStatus\": \"Enabled\",\r\n        \"trafficRoutingMethod\": \"Weighted\",\r\n        \"dnsConfig\": {\r\n          \"relativeName\": \"sdptesttm\",\r\n          \"fqdn\": \"sdptesttm.trafficmanager.net\",\r\n          \"ttl\": 60\r\n        },\r\n        \"monitorConfig\": {\r\n          \"profileMonitorStatus\": null,\r\n          \"protocol\": \"HTTP\",\r\n          \"port\": 800,\r\n          \"path\": \"/\",\r\n          \"intervalInSeconds\": 30,\r\n          \"toleratedNumberOfFailures\": 3,\r\n          \"timeoutInSeconds\": 10\r\n        },\r\n        \"endpoints\": [],\r\n        \"trafficViewEnrollmentStatus\": \"Disabled\",\r\n        \"maxReturn\": null\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/52bae96a-3806-426c-a5dc-1ae6016b5f15/resourceGroups/srbhatna-namereservation/providers/Microsoft.Network/trafficManagerProfiles/a-srbhatna\",\r\n      \"name\": \"a-srbhatna\",\r\n      \"type\": \"Microsoft.Network/trafficManagerProfiles\",\r\n      \"location\": \"global\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"profileStatus\": \"Enabled\",\r\n        \"trafficRoutingMethod\": \"Performance\",\r\n        \"dnsConfig\": {\r\n          \"relativeName\": \"a.srbhatna\",\r\n          \"fqdn\": \"a.srbhatna.trafficmanager.net\",\r\n          \"ttl\": 60\r\n        },\r\n        \"monitorConfig\": {\r\n          \"profileMonitorStatus\": null,\r\n          \"protocol\": \"HTTP\",\r\n          \"port\": 80,\r\n          \"path\": \"/\",\r\n          \"intervalInSeconds\": 30,\r\n          \"toleratedNumberOfFailures\": 3,\r\n          \"timeoutInSeconds\": 10\r\n        },\r\n        \"endpoints\": [],\r\n        \"trafficViewEnrollmentStatus\": \"Disabled\",\r\n        \"maxReturn\": 0\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/52bae96a-3806-426c-a5dc-1ae6016b5f15/resourceGroups/srbhatna-namereservation/providers/Microsoft.Network/trafficManagerProfiles/srbhatna\",\r\n      \"name\": \"srbhatna\",\r\n      \"type\": \"Microsoft.Network/trafficManagerProfiles\",\r\n      \"location\": \"global\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"profileStatus\": \"Enabled\",\r\n        \"trafficRoutingMethod\": \"Performance\",\r\n        \"dnsConfig\": {\r\n          \"relativeName\": \"srbhatna\",\r\n          \"fqdn\": \"srbhatna.trafficmanager.net\",\r\n          \"ttl\": 60\r\n        },\r\n        \"monitorConfig\": {\r\n          \"profileMonitorStatus\": null,\r\n          \"protocol\": \"HTTP\",\r\n          \"port\": 80,\r\n          \"path\": \"/\",\r\n          \"intervalInSeconds\": 30,\r\n          \"toleratedNumberOfFailures\": 3,\r\n          \"timeoutInSeconds\": 10\r\n        },\r\n        \"endpoints\": [],\r\n        \"trafficViewEnrollmentStatus\": \"Disabled\",\r\n        \"maxReturn\": 0\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/52bae96a-3806-426c-a5dc-1ae6016b5f15/resourceGroups/tkarandtmtest/providers/Microsoft.Network/trafficManagerProfiles/atmoutagetest\",\r\n      \"name\": \"atmoutagetest\",\r\n      \"type\": \"Microsoft.Network/trafficManagerProfiles\",\r\n      \"location\": \"global\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"profileStatus\": \"Enabled\",\r\n        \"trafficRoutingMethod\": \"Performance\",\r\n        \"dnsConfig\": {\r\n          \"relativeName\": \"atmoutagetest\",\r\n          \"fqdn\": \"atmoutagetest.trafficmanager.net\",\r\n          \"ttl\": 60\r\n        },\r\n        \"monitorConfig\": {\r\n          \"profileMonitorStatus\": null,\r\n          \"protocol\": \"HTTP\",\r\n          \"port\": 80,\r\n          \"path\": \"/\",\r\n          \"intervalInSeconds\": 30,\r\n          \"toleratedNumberOfFailures\": 3,\r\n          \"timeoutInSeconds\": 10\r\n        },\r\n        \"endpoints\": [\r\n          {\r\n            \"id\": \"/subscriptions/52bae96a-3806-426c-a5dc-1ae6016b5f15/resourceGroups/tkarandtmtest/providers/Microsoft.Network/trafficManagerProfiles/atmoutagetest/externalEndpoints/Google\",\r\n            \"name\": \"Google\",\r\n            \"type\": \"Microsoft.Network/trafficManagerProfiles/externalEndpoints\",\r\n            \"properties\": {\r\n              \"endpointStatus\": \"Enabled\",\r\n              \"endpointMonitorStatus\": null,\r\n              \"targetResourceId\": null,\r\n              \"target\": \"google.com\",\r\n              \"weight\": 1,\r\n              \"priority\": 1,\r\n              \"endpointLocation\": \"East US\",\r\n              \"minChildEndpoints\": null,\r\n              \"minChildEndpointsIPv4\": null,\r\n              \"minChildEndpointsIPv6\": null\r\n            }\r\n          },\r\n          {\r\n            \"id\": \"/subscriptions/52bae96a-3806-426c-a5dc-1ae6016b5f15/resourceGroups/tkarandtmtest/providers/Microsoft.Network/trafficManagerProfiles/atmoutagetest/externalEndpoints/Bing\",\r\n            \"name\": \"Bing\",\r\n            \"type\": \"Microsoft.Network/trafficManagerProfiles/externalEndpoints\",\r\n            \"properties\": {\r\n              \"endpointStatus\": \"Enabled\",\r\n              \"endpointMonitorStatus\": null,\r\n              \"targetResourceId\": null,\r\n              \"target\": \"bing.com\",\r\n              \"weight\": 1,\r\n              \"priority\": 2,\r\n              \"endpointLocation\": \"West US 2\",\r\n              \"minChildEndpoints\": null,\r\n              \"minChildEndpointsIPv4\": null,\r\n              \"minChildEndpointsIPv6\": null\r\n            }\r\n          }\r\n        ],\r\n        \"trafficViewEnrollmentStatus\": \"Disabled\",\r\n        \"maxReturn\": 0\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/52bae96a-3806-426c-a5dc-1ae6016b5f15/resourceGroups/tkarandtmtest/providers/Microsoft.Network/trafficManagerProfiles/geotmtest\",\r\n      \"name\": \"geotmtest\",\r\n      \"type\": \"Microsoft.Network/trafficManagerProfiles\",\r\n      \"location\": \"global\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"profileStatus\": \"Enabled\",\r\n        \"trafficRoutingMethod\": \"Geographic\",\r\n        \"dnsConfig\": {\r\n          \"relativeName\": \"geotmtest\",\r\n          \"fqdn\": \"geotmtest.trafficmanager.net\",\r\n          \"ttl\": 60\r\n        },\r\n        \"monitorConfig\": {\r\n          \"profileMonitorStatus\": null,\r\n          \"protocol\": \"HTTP\",\r\n          \"port\": 80,\r\n          \"path\": \"/\",\r\n          \"intervalInSeconds\": 30,\r\n          \"toleratedNumberOfFailures\": 3,\r\n          \"timeoutInSeconds\": 10,\r\n          \"customHeaders\": [],\r\n          \"expectedStatusCodeRanges\": []\r\n        },\r\n        \"endpoints\": [\r\n          {\r\n            \"id\": \"/subscriptions/52bae96a-3806-426c-a5dc-1ae6016b5f15/resourceGroups/tkarandtmtest/providers/Microsoft.Network/trafficManagerProfiles/geotmtest/externalEndpoints/asiaregion\",\r\n            \"name\": \"asiaregion\",\r\n            \"type\": \"Microsoft.Network/trafficManagerProfiles/externalEndpoints\",\r\n            \"properties\": {\r\n              \"endpointStatus\": \"Disabled\",\r\n              \"endpointMonitorStatus\": null,\r\n              \"targetResourceId\": null,\r\n              \"target\": \"1.1.1.1\",\r\n              \"weight\": 1,\r\n              \"priority\": 1,\r\n              \"endpointLocation\": null,\r\n              \"minChildEndpoints\": null,\r\n              \"minChildEndpointsIPv4\": null,\r\n              \"minChildEndpointsIPv6\": null,\r\n              \"geoMapping\": [\r\n                \"GEO-AS\",\r\n                \"GEO-AN\"\r\n              ]\r\n            }\r\n          },\r\n          {\r\n            \"id\": \"/subscriptions/52bae96a-3806-426c-a5dc-1ae6016b5f15/resourceGroups/tkarandtmtest/providers/Microsoft.Network/trafficManagerProfiles/geotmtest/externalEndpoints/allworld\",\r\n            \"name\": \"allworld\",\r\n            \"type\": \"Microsoft.Network/trafficManagerProfiles/externalEndpoints\",\r\n            \"properties\": {\r\n              \"endpointStatus\": \"Enabled\",\r\n              \"endpointMonitorStatus\": null,\r\n              \"targetResourceId\": null,\r\n              \"target\": \"2.2.2.2\",\r\n              \"weight\": 1,\r\n              \"priority\": 2,\r\n              \"endpointLocation\": null,\r\n              \"minChildEndpoints\": null,\r\n              \"minChildEndpointsIPv4\": null,\r\n              \"minChildEndpointsIPv6\": null,\r\n              \"geoMapping\": [\r\n                \"WORLD\"\r\n              ],\r\n              \"customHeaders\": [],\r\n              \"subnets\": []\r\n            }\r\n          },\r\n          {\r\n            \"id\": \"/subscriptions/52bae96a-3806-426c-a5dc-1ae6016b5f15/resourceGroups/tkarandtmtest/providers/Microsoft.Network/trafficManagerProfiles/geotmtest/externalEndpoints/europe\",\r\n            \"name\": \"europe\",\r\n            \"type\": \"Microsoft.Network/trafficManagerProfiles/externalEndpoints\",\r\n            \"properties\": {\r\n              \"endpointStatus\": \"Enabled\",\r\n              \"endpointMonitorStatus\": null,\r\n              \"targetResourceId\": null,\r\n              \"target\": \"12.12.12.12\",\r\n              \"weight\": 1,\r\n              \"priority\": 3,\r\n              \"endpointLocation\": null,\r\n              \"minChildEndpoints\": null,\r\n              \"minChildEndpointsIPv4\": null,\r\n              \"minChildEndpointsIPv6\": null,\r\n              \"geoMapping\": [\r\n                \"GEO-EU\",\r\n                \"AQ\"\r\n              ]\r\n            }\r\n          }\r\n        ],\r\n        \"trafficViewEnrollmentStatus\": \"Disabled\",\r\n        \"maxReturn\": null\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/52bae96a-3806-426c-a5dc-1ae6016b5f15/resourceGroups/trafficmanagertest/providers/Microsoft.Network/trafficManagerProfiles/nrs-test\",\r\n      \"name\": \"nrs-test\",\r\n      \"type\": \"Microsoft.Network/trafficManagerProfiles\",\r\n      \"location\": \"global\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"profileStatus\": \"Enabled\",\r\n        \"trafficRoutingMethod\": \"Weighted\",\r\n        \"dnsConfig\": {\r\n          \"relativeName\": \"nrs.test\",\r\n          \"fqdn\": \"nrs.test.trafficmanager.net\",\r\n          \"ttl\": 60\r\n        },\r\n        \"monitorConfig\": {\r\n          \"profileMonitorStatus\": null,\r\n          \"protocol\": \"HTTP\",\r\n          \"port\": 80,\r\n          \"path\": \"/\",\r\n          \"intervalInSeconds\": 30,\r\n          \"toleratedNumberOfFailures\": 3,\r\n          \"timeoutInSeconds\": 10,\r\n          \"customHeaders\": [],\r\n          \"expectedStatusCodeRanges\": []\r\n        },\r\n        \"endpoints\": [\r\n          {\r\n            \"id\": \"/subscriptions/52bae96a-3806-426c-a5dc-1ae6016b5f15/resourceGroups/trafficmanagertest/providers/Microsoft.Network/trafficManagerProfiles/nrs-test/externalEndpoints/BL6PNPF0000349E\",\r\n            \"name\": \"BL6PNPF0000349E\",\r\n            \"type\": \"Microsoft.Network/trafficManagerProfiles/externalEndpoints\",\r\n            \"properties\": {\r\n              \"endpointStatus\": \"Enabled\",\r\n              \"endpointMonitorStatus\": null,\r\n              \"targetResourceId\": null,\r\n              \"target\": \"25.66.166.148\",\r\n              \"weight\": 1,\r\n              \"priority\": 1,\r\n              \"endpointLocation\": null,\r\n              \"minChildEndpoints\": null,\r\n              \"minChildEndpointsIPv4\": null,\r\n              \"minChildEndpointsIPv6\": null,\r\n              \"customHeaders\": [],\r\n              \"subnets\": []\r\n            }\r\n          },\r\n          {\r\n            \"id\": \"/subscriptions/52bae96a-3806-426c-a5dc-1ae6016b5f15/resourceGroups/trafficmanagertest/providers/Microsoft.Network/trafficManagerProfiles/nrs-test/externalEndpoints/BL6PNPF0000349F\",\r\n            \"name\": \"BL6PNPF0000349F\",\r\n            \"type\": \"Microsoft.Network/trafficManagerProfiles/externalEndpoints\",\r\n            \"properties\": {\r\n              \"endpointStatus\": \"Enabled\",\r\n              \"endpointMonitorStatus\": null,\r\n              \"targetResourceId\": null,\r\n              \"target\": \"25.107.192.228\",\r\n              \"weight\": 1,\r\n              \"priority\": 2,\r\n              \"endpointLocation\": null,\r\n              \"minChildEndpoints\": null,\r\n              \"minChildEndpointsIPv4\": null,\r\n              \"minChildEndpointsIPv6\": null,\r\n              \"customHeaders\": [],\r\n              \"subnets\": []\r\n            }\r\n          },\r\n          {\r\n            \"id\": \"/subscriptions/52bae96a-3806-426c-a5dc-1ae6016b5f15/resourceGroups/trafficmanagertest/providers/Microsoft.Network/trafficManagerProfiles/nrs-test/externalEndpoints/BL6PNPF000034A0\",\r\n            \"name\": \"BL6PNPF000034A0\",\r\n            \"type\": \"Microsoft.Network/trafficManagerProfiles/externalEndpoints\",\r\n            \"properties\": {\r\n              \"endpointStatus\": \"Enabled\",\r\n              \"endpointMonitorStatus\": null,\r\n              \"targetResourceId\": null,\r\n              \"target\": \"25.113.80.135\",\r\n              \"weight\": 1,\r\n              \"priority\": 3,\r\n              \"endpointLocation\": null,\r\n              \"minChildEndpoints\": null,\r\n              \"minChildEndpointsIPv4\": null,\r\n              \"minChildEndpointsIPv6\": null,\r\n              \"customHeaders\": [],\r\n              \"subnets\": []\r\n            }\r\n          }\r\n        ],\r\n        \"trafficViewEnrollmentStatus\": \"Disabled\",\r\n        \"maxReturn\": null\r\n      }\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/6bb9d374-1f0d-437e-8bbe-4bc892850065/resourceGroups/ps2431/providers/Microsoft.Network/trafficManagerProfiles/ps9484\",\r\n      \"name\": \"ps9484\",\r\n      \"type\": \"Microsoft.Network/trafficManagerProfiles\",\r\n      \"location\": \"global\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"profileStatus\": \"Enabled\",\r\n        \"trafficRoutingMethod\": \"Performance\",\r\n        \"dnsConfig\": {\r\n          \"relativeName\": \"ps8070\",\r\n          \"fqdn\": \"ps8070.trafficmanager.net\",\r\n          \"ttl\": 50\r\n        },\r\n        \"monitorConfig\": {\r\n          \"profileMonitorStatus\": \"Inactive\",\r\n          \"protocol\": \"HTTP\",\r\n          \"port\": 80,\r\n          \"path\": \"/testpath.asp\",\r\n          \"intervalInSeconds\": 30,\r\n          \"toleratedNumberOfFailures\": 3,\r\n          \"timeoutInSeconds\": 10\r\n        },\r\n        \"endpoints\": [],\r\n        \"trafficViewEnrollmentStatus\": \"Disabled\",\r\n        \"maxReturn\": null\r\n      }\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/52bae96a-3806-426c-a5dc-1ae6016b5f15/resourcegroups/ps6881?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTJiYWU5NmEtMzgwNi00MjZjLWE1ZGMtMWFlNjAxNmI1ZjE1L3Jlc291cmNlZ3JvdXBzL3BzNjg4MT9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
+      "RequestUri": "/subscriptions/6bb9d374-1f0d-437e-8bbe-4bc892850065/resourcegroups/ps2431?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNmJiOWQzNzQtMWYwZC00MzdlLThiYmUtNGJjODkyODUwMDY1L3Jlc291cmNlZ3JvdXBzL3BzMjQzMT9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
       "RequestMethod": "DELETE",
-      "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "c2eb55ee-4cd9-4f20-82f2-b828a262d9eb"
+          "a80adae8-7ca1-49f6-83ac-61c5db3aa7fc"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.700.21.56803",
+          "FxVersion/4.700.22.51102",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22000",
-          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.54"
+          "OSVersion/Microsoft.Windows.10.0.19045",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.67"
         ]
       },
+      "RequestBody": "",
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
@@ -285,7 +285,7 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/52bae96a-3806-426c-a5dc-1ae6016b5f15/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzY4ODEtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01"
+          "https://management.azure.com/subscriptions/6bb9d374-1f0d-437e-8bbe-4bc892850065/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzI0MzEtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01"
         ],
         "Retry-After": [
           "15"
@@ -294,13 +294,13 @@
           "14999"
         ],
         "x-ms-request-id": [
-          "a7785123-c817-4a8c-8d2b-fda4c8ff5243"
+          "a9b3adda-f90a-4a7c-9013-81c1d9941a0a"
         ],
         "x-ms-correlation-request-id": [
-          "a7785123-c817-4a8c-8d2b-fda4c8ff5243"
+          "a9b3adda-f90a-4a7c-9013-81c1d9941a0a"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHINDIA:20220120T120618Z:a7785123-c817-4a8c-8d2b-fda4c8ff5243"
+          "CENTRALINDIA:20221212T085952Z:a9b3adda-f90a-4a7c-9013-81c1d9941a0a"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -309,7 +309,7 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 20 Jan 2022 12:06:17 GMT"
+          "Mon, 12 Dec 2022 08:59:52 GMT"
         ],
         "Expires": [
           "-1"
@@ -322,18 +322,18 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/52bae96a-3806-426c-a5dc-1ae6016b5f15/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzY4ODEtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTJiYWU5NmEtMzgwNi00MjZjLWE1ZGMtMWFlNjAxNmI1ZjE1L29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXpZNE9ERXRWMFZUVkZWVElpd2lhbTlpVEc5allYUnBiMjRpT2lKM1pYTjBkWE1pZlE/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
+      "RequestUri": "/subscriptions/6bb9d374-1f0d-437e-8bbe-4bc892850065/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzI0MzEtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNmJiOWQzNzQtMWYwZC00MzdlLThiYmUtNGJjODkyODUwMDY1L29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXpJME16RXRWMFZUVkZWVElpd2lhbTlpVEc5allYUnBiMjRpT2lKM1pYTjBkWE1pZlE/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
       "RequestMethod": "GET",
-      "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "FxVersion/4.700.21.56803",
+          "FxVersion/4.700.22.51102",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22000",
-          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.54"
+          "OSVersion/Microsoft.Windows.10.0.19045",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.67"
         ]
       },
+      "RequestBody": "",
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
@@ -342,7 +342,7 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/52bae96a-3806-426c-a5dc-1ae6016b5f15/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzY4ODEtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01"
+          "https://management.azure.com/subscriptions/6bb9d374-1f0d-437e-8bbe-4bc892850065/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzI0MzEtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01"
         ],
         "Retry-After": [
           "15"
@@ -351,13 +351,13 @@
           "11999"
         ],
         "x-ms-request-id": [
-          "b2f6bd62-bac8-4a10-bd46-44494f2d9cbc"
+          "24bd9fe1-0787-4160-8b1e-349ad71e7dd2"
         ],
         "x-ms-correlation-request-id": [
-          "b2f6bd62-bac8-4a10-bd46-44494f2d9cbc"
+          "24bd9fe1-0787-4160-8b1e-349ad71e7dd2"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHINDIA:20220120T120633Z:b2f6bd62-bac8-4a10-bd46-44494f2d9cbc"
+          "CENTRALINDIA:20221212T090007Z:24bd9fe1-0787-4160-8b1e-349ad71e7dd2"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -366,7 +366,7 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 20 Jan 2022 12:06:33 GMT"
+          "Mon, 12 Dec 2022 09:00:07 GMT"
         ],
         "Expires": [
           "-1"
@@ -379,18 +379,18 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/52bae96a-3806-426c-a5dc-1ae6016b5f15/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzY4ODEtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTJiYWU5NmEtMzgwNi00MjZjLWE1ZGMtMWFlNjAxNmI1ZjE1L29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXpZNE9ERXRWMFZUVkZWVElpd2lhbTlpVEc5allYUnBiMjRpT2lKM1pYTjBkWE1pZlE/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
+      "RequestUri": "/subscriptions/6bb9d374-1f0d-437e-8bbe-4bc892850065/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzI0MzEtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNmJiOWQzNzQtMWYwZC00MzdlLThiYmUtNGJjODkyODUwMDY1L29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXpJME16RXRWMFZUVkZWVElpd2lhbTlpVEc5allYUnBiMjRpT2lKM1pYTjBkWE1pZlE/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
       "RequestMethod": "GET",
-      "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "FxVersion/4.700.21.56803",
+          "FxVersion/4.700.22.51102",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22000",
-          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.54"
+          "OSVersion/Microsoft.Windows.10.0.19045",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.67"
         ]
       },
+      "RequestBody": "",
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
@@ -399,7 +399,7 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/52bae96a-3806-426c-a5dc-1ae6016b5f15/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzY4ODEtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01"
+          "https://management.azure.com/subscriptions/6bb9d374-1f0d-437e-8bbe-4bc892850065/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzI0MzEtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01"
         ],
         "Retry-After": [
           "15"
@@ -408,13 +408,13 @@
           "11998"
         ],
         "x-ms-request-id": [
-          "e37e7a8a-3a22-4de6-a95f-6e680d74ace7"
+          "64837fd7-41a9-49b4-ad16-833700152f3c"
         ],
         "x-ms-correlation-request-id": [
-          "e37e7a8a-3a22-4de6-a95f-6e680d74ace7"
+          "64837fd7-41a9-49b4-ad16-833700152f3c"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHINDIA:20220120T120649Z:e37e7a8a-3a22-4de6-a95f-6e680d74ace7"
+          "CENTRALINDIA:20221212T090023Z:64837fd7-41a9-49b4-ad16-833700152f3c"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -423,7 +423,7 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 20 Jan 2022 12:06:48 GMT"
+          "Mon, 12 Dec 2022 09:00:22 GMT"
         ],
         "Expires": [
           "-1"
@@ -436,18 +436,18 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/52bae96a-3806-426c-a5dc-1ae6016b5f15/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzY4ODEtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTJiYWU5NmEtMzgwNi00MjZjLWE1ZGMtMWFlNjAxNmI1ZjE1L29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXpZNE9ERXRWMFZUVkZWVElpd2lhbTlpVEc5allYUnBiMjRpT2lKM1pYTjBkWE1pZlE/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
+      "RequestUri": "/subscriptions/6bb9d374-1f0d-437e-8bbe-4bc892850065/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzI0MzEtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNmJiOWQzNzQtMWYwZC00MzdlLThiYmUtNGJjODkyODUwMDY1L29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXpJME16RXRWMFZUVkZWVElpd2lhbTlpVEc5allYUnBiMjRpT2lKM1pYTjBkWE1pZlE/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
       "RequestMethod": "GET",
-      "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "FxVersion/4.700.21.56803",
+          "FxVersion/4.700.22.51102",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22000",
-          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.54"
+          "OSVersion/Microsoft.Windows.10.0.19045",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.67"
         ]
       },
+      "RequestBody": "",
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
@@ -456,7 +456,7 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/52bae96a-3806-426c-a5dc-1ae6016b5f15/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzY4ODEtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01"
+          "https://management.azure.com/subscriptions/6bb9d374-1f0d-437e-8bbe-4bc892850065/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzI0MzEtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01"
         ],
         "Retry-After": [
           "15"
@@ -465,13 +465,13 @@
           "11997"
         ],
         "x-ms-request-id": [
-          "70ed2246-94e1-4e30-94c6-8d977a9761f3"
+          "814f35b7-8ea1-4b27-ad61-d5b965745c45"
         ],
         "x-ms-correlation-request-id": [
-          "70ed2246-94e1-4e30-94c6-8d977a9761f3"
+          "814f35b7-8ea1-4b27-ad61-d5b965745c45"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHINDIA:20220120T120705Z:70ed2246-94e1-4e30-94c6-8d977a9761f3"
+          "CENTRALINDIA:20221212T090038Z:814f35b7-8ea1-4b27-ad61-d5b965745c45"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -480,7 +480,7 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 20 Jan 2022 12:07:05 GMT"
+          "Mon, 12 Dec 2022 09:00:38 GMT"
         ],
         "Expires": [
           "-1"
@@ -493,18 +493,18 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/52bae96a-3806-426c-a5dc-1ae6016b5f15/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzY4ODEtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTJiYWU5NmEtMzgwNi00MjZjLWE1ZGMtMWFlNjAxNmI1ZjE1L29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXpZNE9ERXRWMFZUVkZWVElpd2lhbTlpVEc5allYUnBiMjRpT2lKM1pYTjBkWE1pZlE/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
+      "RequestUri": "/subscriptions/6bb9d374-1f0d-437e-8bbe-4bc892850065/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzI0MzEtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNmJiOWQzNzQtMWYwZC00MzdlLThiYmUtNGJjODkyODUwMDY1L29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXpJME16RXRWMFZUVkZWVElpd2lhbTlpVEc5allYUnBiMjRpT2lKM1pYTjBkWE1pZlE/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
       "RequestMethod": "GET",
-      "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "FxVersion/4.700.21.56803",
+          "FxVersion/4.700.22.51102",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22000",
-          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.54"
+          "OSVersion/Microsoft.Windows.10.0.19045",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.67"
         ]
       },
+      "RequestBody": "",
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
@@ -513,7 +513,7 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/52bae96a-3806-426c-a5dc-1ae6016b5f15/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzY4ODEtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01"
+          "https://management.azure.com/subscriptions/6bb9d374-1f0d-437e-8bbe-4bc892850065/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzI0MzEtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01"
         ],
         "Retry-After": [
           "15"
@@ -522,13 +522,13 @@
           "11996"
         ],
         "x-ms-request-id": [
-          "c2b85709-f332-4523-912c-18bbc294a638"
+          "d0fbd095-6b80-4b18-ab22-39b057560d43"
         ],
         "x-ms-correlation-request-id": [
-          "c2b85709-f332-4523-912c-18bbc294a638"
+          "d0fbd095-6b80-4b18-ab22-39b057560d43"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHINDIA:20220120T120721Z:c2b85709-f332-4523-912c-18bbc294a638"
+          "CENTRALINDIA:20221212T090054Z:d0fbd095-6b80-4b18-ab22-39b057560d43"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -537,7 +537,7 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 20 Jan 2022 12:07:21 GMT"
+          "Mon, 12 Dec 2022 09:00:54 GMT"
         ],
         "Expires": [
           "-1"
@@ -550,18 +550,18 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/52bae96a-3806-426c-a5dc-1ae6016b5f15/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzY4ODEtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTJiYWU5NmEtMzgwNi00MjZjLWE1ZGMtMWFlNjAxNmI1ZjE1L29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXpZNE9ERXRWMFZUVkZWVElpd2lhbTlpVEc5allYUnBiMjRpT2lKM1pYTjBkWE1pZlE/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
+      "RequestUri": "/subscriptions/6bb9d374-1f0d-437e-8bbe-4bc892850065/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzI0MzEtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNmJiOWQzNzQtMWYwZC00MzdlLThiYmUtNGJjODkyODUwMDY1L29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXpJME16RXRWMFZUVkZWVElpd2lhbTlpVEc5allYUnBiMjRpT2lKM1pYTjBkWE1pZlE/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
       "RequestMethod": "GET",
-      "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "FxVersion/4.700.21.56803",
+          "FxVersion/4.700.22.51102",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22000",
-          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.54"
+          "OSVersion/Microsoft.Windows.10.0.19045",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.67"
         ]
       },
+      "RequestBody": "",
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
@@ -570,7 +570,7 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/52bae96a-3806-426c-a5dc-1ae6016b5f15/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzY4ODEtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01"
+          "https://management.azure.com/subscriptions/6bb9d374-1f0d-437e-8bbe-4bc892850065/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzI0MzEtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01"
         ],
         "Retry-After": [
           "15"
@@ -579,13 +579,13 @@
           "11995"
         ],
         "x-ms-request-id": [
-          "6986c285-1358-47ff-a2e5-8872a50a7c78"
+          "3cde1af2-e3f3-41fa-8414-0fba7ba0f0f9"
         ],
         "x-ms-correlation-request-id": [
-          "6986c285-1358-47ff-a2e5-8872a50a7c78"
+          "3cde1af2-e3f3-41fa-8414-0fba7ba0f0f9"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHINDIA:20220120T120737Z:6986c285-1358-47ff-a2e5-8872a50a7c78"
+          "CENTRALINDIA:20221212T090109Z:3cde1af2-e3f3-41fa-8414-0fba7ba0f0f9"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -594,7 +594,7 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 20 Jan 2022 12:07:36 GMT"
+          "Mon, 12 Dec 2022 09:01:09 GMT"
         ],
         "Expires": [
           "-1"
@@ -607,18 +607,18 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/52bae96a-3806-426c-a5dc-1ae6016b5f15/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzY4ODEtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTJiYWU5NmEtMzgwNi00MjZjLWE1ZGMtMWFlNjAxNmI1ZjE1L29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXpZNE9ERXRWMFZUVkZWVElpd2lhbTlpVEc5allYUnBiMjRpT2lKM1pYTjBkWE1pZlE/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
+      "RequestUri": "/subscriptions/6bb9d374-1f0d-437e-8bbe-4bc892850065/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzI0MzEtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNmJiOWQzNzQtMWYwZC00MzdlLThiYmUtNGJjODkyODUwMDY1L29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXpJME16RXRWMFZUVkZWVElpd2lhbTlpVEc5allYUnBiMjRpT2lKM1pYTjBkWE1pZlE/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
       "RequestMethod": "GET",
-      "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "FxVersion/4.700.21.56803",
+          "FxVersion/4.700.22.51102",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22000",
-          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.54"
+          "OSVersion/Microsoft.Windows.10.0.19045",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.67"
         ]
       },
+      "RequestBody": "",
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
@@ -627,7 +627,7 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/52bae96a-3806-426c-a5dc-1ae6016b5f15/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzY4ODEtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01"
+          "https://management.azure.com/subscriptions/6bb9d374-1f0d-437e-8bbe-4bc892850065/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzI0MzEtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01"
         ],
         "Retry-After": [
           "15"
@@ -636,13 +636,13 @@
           "11994"
         ],
         "x-ms-request-id": [
-          "26673e87-fc9d-480b-baaf-8cc813bdf39b"
+          "48214104-7d6d-4ecd-be71-9c957946b804"
         ],
         "x-ms-correlation-request-id": [
-          "26673e87-fc9d-480b-baaf-8cc813bdf39b"
+          "48214104-7d6d-4ecd-be71-9c957946b804"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHINDIA:20220120T120752Z:26673e87-fc9d-480b-baaf-8cc813bdf39b"
+          "CENTRALINDIA:20221212T090125Z:48214104-7d6d-4ecd-be71-9c957946b804"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -651,7 +651,7 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 20 Jan 2022 12:07:52 GMT"
+          "Mon, 12 Dec 2022 09:01:24 GMT"
         ],
         "Expires": [
           "-1"
@@ -664,18 +664,18 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/52bae96a-3806-426c-a5dc-1ae6016b5f15/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzY4ODEtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTJiYWU5NmEtMzgwNi00MjZjLWE1ZGMtMWFlNjAxNmI1ZjE1L29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXpZNE9ERXRWMFZUVkZWVElpd2lhbTlpVEc5allYUnBiMjRpT2lKM1pYTjBkWE1pZlE/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
+      "RequestUri": "/subscriptions/6bb9d374-1f0d-437e-8bbe-4bc892850065/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzI0MzEtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNmJiOWQzNzQtMWYwZC00MzdlLThiYmUtNGJjODkyODUwMDY1L29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXpJME16RXRWMFZUVkZWVElpd2lhbTlpVEc5allYUnBiMjRpT2lKM1pYTjBkWE1pZlE/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
       "RequestMethod": "GET",
-      "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "FxVersion/4.700.21.56803",
+          "FxVersion/4.700.22.51102",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22000",
-          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.54"
+          "OSVersion/Microsoft.Windows.10.0.19045",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.67"
         ]
       },
+      "RequestBody": "",
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
@@ -684,7 +684,7 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/52bae96a-3806-426c-a5dc-1ae6016b5f15/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzY4ODEtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01"
+          "https://management.azure.com/subscriptions/6bb9d374-1f0d-437e-8bbe-4bc892850065/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzI0MzEtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01"
         ],
         "Retry-After": [
           "15"
@@ -693,13 +693,13 @@
           "11993"
         ],
         "x-ms-request-id": [
-          "03c1e6bc-6f76-4cee-8428-99e2de9b3db0"
+          "a282f678-6741-4827-8db3-ee0bb660f652"
         ],
         "x-ms-correlation-request-id": [
-          "03c1e6bc-6f76-4cee-8428-99e2de9b3db0"
+          "a282f678-6741-4827-8db3-ee0bb660f652"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHINDIA:20220120T120808Z:03c1e6bc-6f76-4cee-8428-99e2de9b3db0"
+          "CENTRALINDIA:20221212T090140Z:a282f678-6741-4827-8db3-ee0bb660f652"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -708,7 +708,7 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 20 Jan 2022 12:08:07 GMT"
+          "Mon, 12 Dec 2022 09:01:40 GMT"
         ],
         "Expires": [
           "-1"
@@ -721,18 +721,18 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/52bae96a-3806-426c-a5dc-1ae6016b5f15/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzY4ODEtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTJiYWU5NmEtMzgwNi00MjZjLWE1ZGMtMWFlNjAxNmI1ZjE1L29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXpZNE9ERXRWMFZUVkZWVElpd2lhbTlpVEc5allYUnBiMjRpT2lKM1pYTjBkWE1pZlE/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
+      "RequestUri": "/subscriptions/6bb9d374-1f0d-437e-8bbe-4bc892850065/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzI0MzEtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNmJiOWQzNzQtMWYwZC00MzdlLThiYmUtNGJjODkyODUwMDY1L29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXpJME16RXRWMFZUVkZWVElpd2lhbTlpVEc5allYUnBiMjRpT2lKM1pYTjBkWE1pZlE/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
       "RequestMethod": "GET",
-      "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "FxVersion/4.700.21.56803",
+          "FxVersion/4.700.22.51102",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22000",
-          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.54"
+          "OSVersion/Microsoft.Windows.10.0.19045",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.67"
         ]
       },
+      "RequestBody": "",
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
@@ -744,13 +744,13 @@
           "11992"
         ],
         "x-ms-request-id": [
-          "d93613c8-3679-45cb-b5a2-31c00fa1d680"
+          "48281664-0a8b-45ff-8098-e004fb3bee66"
         ],
         "x-ms-correlation-request-id": [
-          "d93613c8-3679-45cb-b5a2-31c00fa1d680"
+          "48281664-0a8b-45ff-8098-e004fb3bee66"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHINDIA:20220120T120823Z:d93613c8-3679-45cb-b5a2-31c00fa1d680"
+          "CENTRALINDIA:20221212T090156Z:48281664-0a8b-45ff-8098-e004fb3bee66"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -759,7 +759,7 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 20 Jan 2022 12:08:23 GMT"
+          "Mon, 12 Dec 2022 09:01:55 GMT"
         ],
         "Expires": [
           "-1"
@@ -772,18 +772,18 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/52bae96a-3806-426c-a5dc-1ae6016b5f15/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzY4ODEtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTJiYWU5NmEtMzgwNi00MjZjLWE1ZGMtMWFlNjAxNmI1ZjE1L29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXpZNE9ERXRWMFZUVkZWVElpd2lhbTlpVEc5allYUnBiMjRpT2lKM1pYTjBkWE1pZlE/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
+      "RequestUri": "/subscriptions/6bb9d374-1f0d-437e-8bbe-4bc892850065/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzI0MzEtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNmJiOWQzNzQtMWYwZC00MzdlLThiYmUtNGJjODkyODUwMDY1L29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXpJME16RXRWMFZUVkZWVElpd2lhbTlpVEc5allYUnBiMjRpT2lKM1pYTjBkWE1pZlE/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
       "RequestMethod": "GET",
-      "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "FxVersion/4.700.21.56803",
+          "FxVersion/4.700.22.51102",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22000",
-          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.54"
+          "OSVersion/Microsoft.Windows.10.0.19045",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.67"
         ]
       },
+      "RequestBody": "",
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
@@ -795,13 +795,13 @@
           "11991"
         ],
         "x-ms-request-id": [
-          "c833b34e-cd0c-45f7-8d56-4e4aa24eac29"
+          "db011e37-18a9-4192-884b-31f213ae5dba"
         ],
         "x-ms-correlation-request-id": [
-          "c833b34e-cd0c-45f7-8d56-4e4aa24eac29"
+          "db011e37-18a9-4192-884b-31f213ae5dba"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHINDIA:20220120T120824Z:c833b34e-cd0c-45f7-8d56-4e4aa24eac29"
+          "CENTRALINDIA:20221212T090156Z:db011e37-18a9-4192-884b-31f213ae5dba"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -810,7 +810,7 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 20 Jan 2022 12:08:24 GMT"
+          "Mon, 12 Dec 2022 09:01:56 GMT"
         ],
         "Expires": [
           "-1"
@@ -825,12 +825,12 @@
   ],
   "Names": {
     "Test-ListProfilesInSubscription": [
-      "ps1348",
-      "ps6881",
-      "ps4760"
+      "ps9484",
+      "ps2431",
+      "ps8070"
     ]
   },
   "Variables": {
-    "SubscriptionId": "52bae96a-3806-426c-a5dc-1ae6016b5f15"
+    "SubscriptionId": "6bb9d374-1f0d-437e-8bbe-4bc892850065"
   }
 }

@@ -20,6 +20,7 @@ using Microsoft.Azure.Commands.SqlVirtualMachine.Common;
 using Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model;
 using Microsoft.Azure.Management.SqlVirtualMachine.Models;
 using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet
 {
@@ -34,6 +35,7 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet
         /// <summary>
         /// Sql virtual machine group to be updated
         /// </summary>
+        [CmdletParameterBreakingChange("InputObject", ChangeDescription = "InputObject parameter alias 'SqlVMGroup' will be removed.")]
         [Parameter(Mandatory = true,
             ParameterSetName = ParameterSet.InputObject,
             ValueFromPipeline = true,
@@ -91,7 +93,7 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet
         /// <summary>
         /// Apply user input to the retrieved sql virtual machine group
         /// </summary>
-        /// <param name="model">The sql virtual machine group that will be updated<param>
+        /// <param name="model">The sql virtual machine group that will be updated</param>
         /// <returns>The model to send to the update</returns>
         protected override IEnumerable<AzureSqlVMGroupModel> ApplyUserInputToModel(IEnumerable<AzureSqlVMGroupModel> model)
         {

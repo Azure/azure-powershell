@@ -6,12 +6,31 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Support
 {
 
-    /// <summary>The outbound (egress) routing method.</summary>
+    /// <summary>
+    /// This can only be set at cluster creation time and cannot be changed later. For more information see [egress outbound type](https://docs.microsoft.com/azure/aks/egress-outboundtype).
+    /// </summary>
     public partial struct OutboundType :
         System.IEquatable<OutboundType>
     {
+        /// <summary>
+        /// The load balancer is used for egress through an AKS assigned public IP. This supports Kubernetes services of type 'loadBalancer'.
+        /// For more information see [outbound type loadbalancer](https://docs.microsoft.com/azure/aks/egress-outboundtype#outbound-type-of-loadbalancer).
+        /// </summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.OutboundType LoadBalancer = @"loadBalancer";
 
+        /// <summary>The AKS-managed NAT gateway is used for egress.</summary>
+        public static Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.OutboundType ManagedNatGateway = @"managedNATGateway";
+
+        /// <summary>
+        /// The user-assigned NAT gateway associated to the cluster subnet is used for egress. This is an advanced scenario and requires
+        /// proper network configuration.
+        /// </summary>
+        public static Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.OutboundType UserAssignedNatGateway = @"userAssignedNATGateway";
+
+        /// <summary>
+        /// Egress paths must be defined by the user. This is an advanced scenario and requires proper network configuration. For
+        /// more information see [outbound type userDefinedRouting](https://docs.microsoft.com/azure/aks/egress-outboundtype#outbound-type-of-userdefinedrouting).
+        /// </summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.OutboundType UserDefinedRouting = @"userDefinedRouting";
 
         /// <summary>the value for an instance of the <see cref="OutboundType" /> Enum.</summary>
@@ -47,7 +66,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Support
             return this._value.GetHashCode();
         }
 
-        /// <summary>Creates an instance of the <see cref="OutboundType" Enum class./></summary>
+        /// <summary>Creates an instance of the <see cref="OutboundType"/> Enum class.</summary>
         /// <param name="underlyingValue">the value to create an instance for.</param>
         private OutboundType(string underlyingValue)
         {
@@ -78,8 +97,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Support
         }
 
         /// <summary>Overriding != operator for enum OutboundType</summary>
-        /// <param name="e1">the value to compare against <see cref="e2" /></param>
-        /// <param name="e2">the value to compare against <see cref="e1" /></param>
+        /// <param name="e1">the value to compare against <paramref name="e2" /></param>
+        /// <param name="e2">the value to compare against <paramref name="e1" /></param>
         /// <returns><c>true</c> if the two instances are not equal to the same value</returns>
         public static bool operator !=(Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.OutboundType e1, Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.OutboundType e2)
         {
@@ -87,8 +106,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Support
         }
 
         /// <summary>Overriding == operator for enum OutboundType</summary>
-        /// <param name="e1">the value to compare against <see cref="e2" /></param>
-        /// <param name="e2">the value to compare against <see cref="e1" /></param>
+        /// <param name="e1">the value to compare against <paramref name="e2" /></param>
+        /// <param name="e2">the value to compare against <paramref name="e1" /></param>
         /// <returns><c>true</c> if the two instances are equal to the same value</returns>
         public static bool operator ==(Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.OutboundType e1, Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.OutboundType e2)
         {

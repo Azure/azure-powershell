@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ApiManagement.ServiceManagement.dll-Help.xml
 Module Name: Az.ApiManagement
-online version: https://docs.microsoft.com/powershell/module/az.apimanagement/new-azapimanagementusertoken
+online version: https://learn.microsoft.com/powershell/module/az.apimanagement/new-azapimanagementusertoken
 schema: 2.0.0
 ---
 
@@ -25,8 +25,7 @@ The cmdlet **New-AzApiManagementUserToken** generates a Shared Access Token for 
 
 ### Example 1: Generate a Shared Access Token for Git User
 ```powershell
-$context = New-AzApiManagementContext -ResourceGroupName powershelltest -ServiceName
-powershellsdkservice
+$context = New-AzApiManagementContext -ResourceGroupName powershelltest -ServiceName powershellsdkservice
 $gitAccess=Get-AzApiManagementTenantAccess -Context $context
 New-AzApiManagementUserToken -Context $context -UserId $gitAccess.Id
 ```

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Automation.dll-Help.xml
 Module Name: Az.Automation
-online version: https://docs.microsoft.com/powershell/module/az.automation/new-azautomationupdatemanagementazurequery
+online version: https://learn.microsoft.com/powershell/module/az.automation/new-azautomationupdatemanagementazurequery
 schema: 2.0.0
 ---
 
@@ -53,11 +53,12 @@ $schedule = New-AzAutomationSchedule -ResourceGroupName "mygroup" `
 New-AzAutomationSoftwareUpdateConfiguration -ResourceGroupName "mygroup" `
                                                  -AutomationAccountName "myaccount" `
                                                  -Schedule $schedule `
-                                                 -Windows `                                                 
+                                                 -Windows `
                                                  -AzureQuery $AzureQueries `
                                                  -IncludedUpdateClassification Critical `
                                                  -Duration $duration
 ```
+
 ```output
 UpdateConfiguration   : Microsoft.Azure.Commands.Automation.Model.UpdateManagement.UpdateConfiguration
 ScheduleConfiguration : Microsoft.Azure.Commands.Automation.Model.Schedule
@@ -69,7 +70,6 @@ Name                  : MyWeeklySchedule
 CreationTime          : 9/14/2018 3:53:27 AM +00:00
 LastModifiedTime      : 9/14/2018 3:53:27 AM +00:00
 Description           :
-
 ```
 
 ## PARAMETERS
@@ -78,7 +78,7 @@ Description           :
 The automation account name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -93,7 +93,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -108,7 +108,7 @@ Accept wildcard characters: False
 Tag filter operator.
 
 ```yaml
-Type: TagOperators
+Type: Microsoft.Azure.Commands.Automation.Model.UpdateManagement.TagOperators
 Parameter Sets: (All)
 Aliases:
 Accepted values: All, Any
@@ -116,6 +116,7 @@ Accepted values: All, Any
 Required: False
 Position: Named
 Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -123,13 +124,14 @@ Accept wildcard characters: False
 List of locations for azure virtual machines.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
-Aliases:
+Aliases: Locaton
 
 Required: False
 Position: Named
 Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -137,7 +139,7 @@ Accept wildcard characters: False
 The resource group name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -152,13 +154,14 @@ Accept wildcard characters: False
 Resource Ids for azure virtual machines.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -166,19 +169,19 @@ Accept wildcard characters: False
 Tag for azure virtual machines.
 
 ```yaml
-Type: Hashtable
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

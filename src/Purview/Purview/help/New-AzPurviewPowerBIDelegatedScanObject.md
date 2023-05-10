@@ -1,7 +1,7 @@
 ---
 external help file: Az.Purview-help.xml
 Module Name: Az.Purview
-online version: https://docs.microsoft.com/powershell/module/az.Purview/new-AzPurviewPowerBIDelegatedScanObject
+online version: https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewPowerBIDelegatedScanObject
 schema: 2.0.0
 ---
 
@@ -27,8 +27,10 @@ Create an in-memory object for PowerBIDelegatedScan.
 
 ### Example 1: Create PowerBI delegated scan object
 ```powershell
-PS C:\> New-AzPurviewPowerBIDelegatedScanObject -Kind 'PowerBIDelegated' -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -IncludePersonalWorkspace $true -ClientId 'xxxxxxx-cdfd-4016-9e80-xxxxxxxx' -UserName 'abcd@msft.com' -Password 'pwd'
+New-AzPurviewPowerBIDelegatedScanObject -Kind 'PowerBIDelegated' -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -IncludePersonalWorkspace $true -ClientId 'xxxxxxx-cdfd-4016-9e80-xxxxxxxx' -UserName 'abcd@msft.com' -Password 'pwd'
+```
 
+```output
 AuthenticationType        :
 ClientId                  : xxxxxxx-cdfd-4016-9e80-xxxxxxxx
 CollectionLastModifiedAt  :

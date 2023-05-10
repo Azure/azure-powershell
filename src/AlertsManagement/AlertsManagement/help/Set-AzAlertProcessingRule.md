@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement.dll-Help.xml
 Module Name: Az.AlertsManagement
-online version: https://docs.microsoft.com/powershell/module/az.alertsmanagement/set-azactionrule
+online version: https://learn.microsoft.com/powershell/module/az.alertsmanagement/set-azalertprocessingrule
 schema: 2.0.0
 ---
 
@@ -12,41 +12,44 @@ Create or update an alert processing rule.
 
 ## SYNTAX
 
-### BySimplifiedFormatSuppressionAlertProcessingRule (Default)
+### BySimplifiedFormatSuppressionActionRule (Default)
 ```
-Set-AzAlertProcessingRule -ResourceGroupName <String> -Name <String> [-Description <String>] -AlertProcessingRuleRuleType <String> 
- -Scope <System.Collections.Generic.List`1[System.String]> -Enabled <String> [-Tag <Hashtable>] 
- [-FilterSeverity <String>] [-FilterMonitorService <String>] [-FilterMonitorCondition <String>] [-FilterTargetResourceType <String>] 
- [-FilterTargetResource <String>] [-FilterTargetResourceGroup <String>] [-FilterAlertRuleId <String>] [-FilterAlertRuleNam <String>]
- [-FilterDescription <String>] [-FilterAlertContext <String>] [-FilterSignalType <String>]
+Set-AzAlertProcessingRule -ResourceGroupName <String> -Name <String> [-Description <String>]
+ [-Enabled <String>] -Scope <System.Collections.Generic.List`1[System.String]> [-Tag <Hashtable>]
+ [-FilterSeverity <String>] [-FilterMonitorService <String>] [-FilterMonitorCondition <String>]
+ [-FilterTargetResource <String>] [-FilterTargetResourceType <String>] [-FilterTargetResourceGroup <String>]
+ [-FilterAlertRuleId <String>] [-FilterAlertRuleName <String>] [-FilterDescription <String>]
+ [-FilterAlertContext <String>] [-FilterSignalType <String>] -AlertProcessingRuleType <String>
  [-ScheduleStartDateTime <String>] [-ScheduleEndDateTime <String>] [-ScheduleTimeZone <String>]
- [-ScheduleReccurenceType <String>] [-ScheduleReccurenceDaysOfWeek <String>] [-ScheduleReccurenceDaysOfMonth <String>] [-ScheduleReccurenceStartTime <String>]  
- [-ScheduleReccurenceEndTime <String>]
- [-ScheduleReccurence2Type <String>] [-ScheduleReccurence2DaysOfWeek <String>] [-ScheduleReccurence2DaysOfMonth <String>] [-ScheduleReccurence2StartTime <String>]
-  [-ScheduleReccurence2EndTime <String>] 
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### BySimplifiedFormatActionGroupAlertProcessingRule 
-```
-Set-AzAlertProcessingRule -ResourceGroupName <String> -Name <String> [-Description <String>] -AlertProcessingRuleRuleType <String> 
- -Scope <System.Collections.Generic.List`1[System.String]> -Enabled <String> [-Tag <Hashtable>] 
- [-FilterSeverity <String>] [-FilterMonitorService <String>] [-FilterMonitorCondition <String>] [-FilterTargetResourceType <String>] 
- [-FilterTargetResource <String>] [-FilterTargetResourceGroup <String>] [-FilterAlertRuleId <String>] [-FilterAlertRuleName <String>]
- [-FilterDescription <String>] [-FilterAlertContext <String>] [-FilterSignalType <String>]
- [-ScheduleStartDateTime <String>] [-ScheduleEndDateTime <String>] [-ScheduleTimeZone <String>]
- [-ScheduleReccurenceType <String>] [-ScheduleReccurenceDaysOfWeek <String>] [-ScheduleReccurenceDaysOfMonth <String>] [-ScheduleReccurenceStartTime <String>]
- [-ScheduleReccurenceEndTime <String>]
- [-ScheduleReccurence2Type <String>] [-ScheduleReccurence2DaysOfWeek <String>] [-ScheduleReccurence2DaysOfMonth <String>] [-ScheduleReccurence2StartTime <String>]
- [-ScheduleReccurence2EndTime <String>] 
- -ActionGroupId <String> 
+ [-ScheduleReccurenceType <String>] [-ScheduleReccurence2Type <String>]
+ [-ScheduleReccurenceDaysOfWeek <String>] [-ScheduleReccurence2DaysOfWeek <String>]
+ [-ScheduleReccurenceDaysOfMonth <String>] [-ScheduleReccurence2DaysOfMonth <String>]
+ [-ScheduleReccurenceStartTime <String>] [-ScheduleReccurence2StartTime <String>]
+ [-ScheduleReccurenceEndTime <String>] [-ScheduleReccurence2EndTime <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByInputObject
 ```
-Set-AzAlertProcessingRule -InputObject <PSAlertProcessingRule> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Set-AzAlertProcessingRule -InputObject <PSAlertProcessingRule> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### BySimplifiedFormatActionGroupActionRule
+```
+Set-AzAlertProcessingRule -ResourceGroupName <String> -Name <String> [-Description <String>]
+ [-Enabled <String>] -Scope <System.Collections.Generic.List`1[System.String]> [-Tag <Hashtable>]
+ [-FilterSeverity <String>] [-FilterMonitorService <String>] [-FilterMonitorCondition <String>]
+ [-FilterTargetResource <String>] [-FilterTargetResourceType <String>] [-FilterTargetResourceGroup <String>]
+ [-FilterAlertRuleId <String>] [-FilterAlertRuleName <String>] [-FilterDescription <String>]
+ [-FilterAlertContext <String>] [-FilterSignalType <String>] -AlertProcessingRuleType <String>
+ [-ScheduleStartDateTime <String>] [-ScheduleEndDateTime <String>] [-ScheduleTimeZone <String>]
+ [-ScheduleReccurenceType <String>] [-ScheduleReccurence2Type <String>]
+ [-ScheduleReccurenceDaysOfWeek <String>] [-ScheduleReccurence2DaysOfWeek <String>]
+ [-ScheduleReccurenceDaysOfMonth <String>] [-ScheduleReccurence2DaysOfMonth <String>]
+ [-ScheduleReccurenceStartTime <String>] [-ScheduleReccurence2StartTime <String>]
+ [-ScheduleReccurenceEndTime <String>] [-ScheduleReccurence2EndTime <String>] -ActionGroupId <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -56,60 +59,31 @@ Set-AzAlertProcessingRule -InputObject <PSAlertProcessingRule> [-DefaultProfile 
 
 ### Example 1
 ```powershell
-Set-AzAlertProcessingRule -ResourceGroupName "test-rg" -Name "AddActionGroupToSubscription" -Scope "/subscriptions/MySubscriptionId" -Description "Add ActionGroup1 to all alerts in the subscription" -Enabled "True" -AlertProcessingRuleType "AddActionGroups" -ActionGroupId "/subscriptions/MySubscriptionId/resourcegroups/MyResourceGroup1/providers/microsoft.insights/actiongroups/ActionGroup1" 
+Set-AzAlertProcessingRule -ResourceGroupName "test-rg" -Name "AddActionGroupToSubscription" -Scope "/subscriptions/MySubscriptionId" -Description "Add ActionGroup1 to all alerts in the subscription" -Enabled "True" -AlertProcessingRuleType "AddActionGroups" -ActionGroupId "/subscriptions/MySubscriptionId/resourcegroups/MyResourceGroup1/providers/microsoft.insights/actiongroups/ActionGroup1"
 ```
 
 This cmdlet creates an alert processing rule that adds an action group to all alerts in a resource group.
 
 ### Example 2
 ```powershell
-Set-AzAlertProcessingRule -ResourceGroupName "test-rg" -Name "AddActionGroupsBySeverity" -Scope "/subscriptions/MySubscriptionId" -Description "Add AGId1 and AGId2 to all Sev0 and Sev1 alerts in these resourceGroups" -Enabled "True" -AlertProcessingRuleType "AddActionGroups" -ActionGroupId "/subscriptions/MySubscriptionId/resourcegroups/MyResourceGroup1/providers/microsoft.insights/actiongroups/ActionGroup1,
-/subscriptions/MySubscriptionId/resourceGroups/MyResourceGroup2/providers/microsoft.insights/actionGroups/MyActionGroup2" -MonitorServiceCondition "Equals:Sev0,Sev1"
+Set-AzAlertProcessingRule -ResourceGroupName "test-rg" -Name "AddActionGroupsBySeverity" -Scope "/subscriptions/MySubscriptionId" -Description "Add AGId1 and AGId2 to all Sev0 and Sev1 alerts in these resourceGroups" -Enabled "True" -AlertProcessingRuleType "AddActionGroups" -ActionGroupId "/subscriptions/MySubscriptionId/resourcegroups/MyResourceGroup1/providers/microsoft.insights/actiongroups/ActionGroup1,/subscriptions/MySubscriptionId/resourceGroups/MyResourceGroup2/providers/microsoft.insights/actionGroups/MyActionGroup2" -FilterMonitorCondition "Equals:Sev0,Sev1"
 ```
 
 This cmdlet creates a rule that adds two action groups to all Sev0 and Sev1 alerts
 
 ## PARAMETERS
 
-### -ResourceGroupName
-Resource Group Name
+### -ActionGroupId
+Action Group Ids which are to be notified, Comma separated list of values
+Required only if alert processing rule type is AddActionGroups.
+
 
 ```yaml
 Type: System.String
-Parameter Sets: BySimplifiedFormatActionGroupAlertProcessingRule, BySimplifiedFormatSuppressionAlertProcessingRule
+Parameter Sets: BySimplifiedFormatActionGroupActionRule
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Name
-Alert Processing Rule Name
-
-```yaml
-Type: System.String
-Parameter Sets: BySimplifiedFormatActionGroupAlertProcessingRule, BySimplifiedFormatSuppressionAlertProcessingRule
-Aliases: ResourceId
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Description
-Description of Alert Processing Rule
-
-```yaml
-Type: System.String
-Parameter Sets: BySimplifiedFormatActionGroupAlertProcessingRule, BySimplifiedFormatSuppressionAlertProcessingRule
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -121,7 +95,7 @@ Alert Processing rule Type. Allowed values: AddActionGroups, RemoveAllActionGrou
 
 ```yaml
 Type: System.String
-Parameter Sets: BySimplifiedFormatActionGroupAlertProcessingRule, BySimplifiedFormatSuppressionAlertProcessingRule
+Parameter Sets: BySimplifiedFormatSuppressionActionRule, BySimplifiedFormatActionGroupActionRule
 Aliases:
 
 Required: True
@@ -131,33 +105,30 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Scope
-List of resource IDs, Comma separated list of values
-The rule will apply to alerts that fired on resources within that scope
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: System.Collections.Generic.List`1[System.String]
-Parameter Sets: BySimplifiedFormatActionGroupActionRule, BySimplifiedFormatSuppressionAlertProcessingRule
-Aliases:
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzContext, AzureRmContext, AzureCredential
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ActionGroupId
-Action Group Ids which are to be notified, Comma separated list of values
-Required only if alert processing rule type is AddActionGroups.
-
+### -Description
+Description of Alert Processing Rule
 
 ```yaml
 Type: System.String
-Parameter Sets: BySimplifiedFormatActionGroupAlertProcessingRule
+Parameter Sets: BySimplifiedFormatSuppressionActionRule, BySimplifiedFormatActionGroupActionRule
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -169,25 +140,7 @@ Indicate if the given alert processing rule is enabled or disabled (default is e
 
 ```yaml
 Type: System.String
-Parameter Sets: BySimplifiedFormatActionGroupActionRule, BySimplifiedFormatSuppressionAlertProcessingRule
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Tag
-Alert Processing rule tags.
-For eg.
-@{"tag1" = "key1";"tag2" = "key2"}
-Use {} to clear existing tags. 
-
-```yaml
-Type: System.String
-Parameter Sets: BySimplifiedFormatActionGroupActionRule, BySimplifiedFormatSuppressionAlertProcessingRule
+Parameter Sets: BySimplifiedFormatSuppressionActionRule, BySimplifiedFormatActionGroupActionRule
 Aliases:
 
 Required: False
@@ -204,7 +157,7 @@ Contains:smartgroups
 
 ```yaml
 Type: System.String
-Parameter Sets: BySimplifiedFormatActionGroupAlertProcessingRule, BySimplifiedFormatSuppressionAlertProcessingRule
+Parameter Sets: BySimplifiedFormatSuppressionActionRule, BySimplifiedFormatActionGroupActionRule
 Aliases:
 
 Required: False
@@ -221,7 +174,7 @@ Equals:/subscriptions/MySubscriptionId/resourceGroups/abvarma/providers/microsof
 
 ```yaml
 Type: System.String
-Parameter Sets: BySimplifiedFormatActionGroupAlertProcessingRule, BySimplifiedFormatSuppressionAlertProcessingRule
+Parameter Sets: BySimplifiedFormatSuppressionActionRule, BySimplifiedFormatActionGroupActionRule
 Aliases:
 
 Required: False
@@ -235,9 +188,11 @@ Accept wildcard characters: False
 Expected format - {\<operation\>:\<comma separated list of values\>}  operation: one of <Equals, NotEquals, Contains, DoesNotContain>
 For eg.
 Equals:ARM Name Test1,ARM Name Test2
+
+
 ```yaml
 Type: System.String
-Parameter Sets: BySimplifiedFormatActionGroupAlertProcessingRule, BySimplifiedFormatSuppressionAlertProcessingRule
+Parameter Sets: BySimplifiedFormatSuppressionActionRule, BySimplifiedFormatActionGroupActionRule
 Aliases:
 
 Required: False
@@ -254,7 +209,7 @@ Contains:Test Alert
 
 ```yaml
 Type: System.String
-Parameter Sets: BySimplifiedFormatActionGroupAlertProcessingRule, BySimplifiedFormatSuppressionAlertProcessingRule
+Parameter Sets: BySimplifiedFormatSuppressionActionRule, BySimplifiedFormatActionGroupActionRule
 Aliases:
 
 Required: False
@@ -271,7 +226,7 @@ NotEquals:Resolved
 
 ```yaml
 Type: System.String
-Parameter Sets: BySimplifiedFormatActionGroupAlertProcessingRule, BySimplifiedFormatSuppressionAlertProcessingRule
+Parameter Sets: BySimplifiedFormatSuppressionActionRule, BySimplifiedFormatActionGroupActionRule
 Aliases:
 
 Required: False
@@ -288,7 +243,7 @@ Equals:Platform,Log Analytics
 
 ```yaml
 Type: System.String
-Parameter Sets: BySimplifiedFormatActionGroupAlertProcessingRule, BySimplifiedFormatSuppressionAlertProcessingRule
+Parameter Sets: BySimplifiedFormatSuppressionActionRule, BySimplifiedFormatActionGroupActionRule
 Aliases:
 
 Required: False
@@ -305,58 +260,7 @@ Equals:Sev0,Sev1
 
 ```yaml
 Type: System.String
-Parameter Sets: BySimplifiedFormatActionGroupActionRule, BySimplifiedFormatSuppressionAlertProcessingRule
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -FilterTargetResource
-Expected format - {\<operation\>:\<comma separated list of values\>}  operation: one of <Equals, NotEquals, Contains, DoesNotContain>
-For eg.
-Equals:mySQLDataBaseName
-
-```yaml
-Type: System.String
-Parameter Sets: BySimplifiedFormatActionGroupActionRule, BySimplifiedFormatSuppressionAlertProcessingRule
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -FilterTargetResourceType
-Expected format - {\<operation\>:\<comma separated list of values\>}  operation: one of <Equals, NotEquals, Contains, DoesNotContain>
-For eg.
-Contains:Virtual Machines,Storage Account
-
-```yaml
-Type: System.String
-Parameter Sets: BySimplifiedFormatActionGroupActionRule, BySimplifiedFormatSuppressionAlertProcessingRule
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -FilterTargetResourceGroup
-Expected format - {\<operation\>:\<comma separated list of values\>}  operation: one of <Equals, NotEquals, Contains, DoesNotContain>
-For eg.
-NotEquals:/subscriptions/\<subscriptionID\>/resourceGroups/test
-
-```yaml
-Type: System.String
-Parameter Sets: BySimplifiedFormatActionGroupActionRule, BySimplifiedFormatSuppressionAlertProcessingRule
+Parameter Sets: BySimplifiedFormatSuppressionActionRule, BySimplifiedFormatActionGroupActionRule
 Aliases:
 
 Required: False
@@ -373,7 +277,7 @@ Equals:Metric
 
 ```yaml
 Type: System.String
-Parameter Sets: BySimplifiedFormatActionGroupActionRule, BySimplifiedFormatSuppressionAlertProcessingRule
+Parameter Sets: BySimplifiedFormatSuppressionActionRule, BySimplifiedFormatActionGroupActionRule
 Aliases:
 
 Required: False
@@ -383,13 +287,14 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ScheduleStartDateTime
-Start Date Time. Format 2022-09-21 06:00:00
-Should be mentioned in case of Reccurent  Schedule - Daily, Weekly or Monthly.
+### -FilterTargetResource
+Expected format - {\<operation\>:\<comma separated list of values\>}  operation: one of <Equals, NotEquals, Contains, DoesNotContain>
+For eg.
+Equals:mySQLDataBaseName
 
 ```yaml
 Type: System.String
-Parameter Sets: BySimplifiedFormatActionGroupAlertProcessingRule, BySimplifiedFormatSuppressionAlertProcessingRule
+Parameter Sets: BySimplifiedFormatSuppressionActionRule, BySimplifiedFormatActionGroupActionRule
 Aliases:
 
 Required: False
@@ -399,13 +304,14 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ScheduleEndDateTime
-End Date Time. Format 2022-09-21 06:00:00
-Should be mentioned in case of Reccurent  Schedule - Daily, Weekly or Monthly.
+### -FilterTargetResourceGroup
+Expected format - {\<operation\>:\<comma separated list of values\>}  operation: one of <Equals, NotEquals, Contains, DoesNotContain>
+For eg.
+NotEquals:/subscriptions/\<subscriptionID\>/resourceGroups/test
 
 ```yaml
 Type: System.String
-Parameter Sets: BySimplifiedFormatActionGroupAlertProcessingRule, BySimplifiedFormatSuppressionAlertProcessingRule
+Parameter Sets: BySimplifiedFormatSuppressionActionRule, BySimplifiedFormatActionGroupActionRule
 Aliases:
 
 Required: False
@@ -415,173 +321,14 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-
-### -ScheduleTimeZone
-Schedule time zone.  Default: UTC.
-
-```yaml
-Type: System.String
-Parameter Sets: BySimplifiedFormatActionGroupAlertProcessingRule, BySimplifiedFormatSuppressionAlertProcessingRule
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ScheduleReccurenceType
-Specifies when the processing rule should be applied.
-Allowed values: Daily, Monthly, Weekly.
+### -FilterTargetResourceType
+Expected format - {\<operation\>:\<comma separated list of values\>}  operation: one of <Equals, NotEquals, Contains, DoesNotContain>
+For eg.
+Contains:Virtual Machines,Storage Account
 
 ```yaml
 Type: System.String
-Parameter Sets: BySimplifiedFormatActionGroupAlertProcessingRule, BySimplifiedFormatSuppressionAlertProcessingRule
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ScheduleReccurenceDaysOfWeek
-List of recurrence pattern values Expected format For a weekly recurrence type.
-comma separated list of values For eg. Monday,Saturday
-
-```yaml
-Type: System.String
-Parameter Sets: BySimplifiedFormatActionGroupAlertProcessingRule, BySimplifiedFormatSuppressionAlertProcessingRule
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ScheduleReccurenceDaysOfMonth
-List of recurrence pattern values Expected format For a monthly recurrence type.
-comma separated list of values  For eg. 1,3,12
-
-```yaml
-Type: System.String
-Parameter Sets: BySimplifiedFormatActionGroupAlertProcessingRule, BySimplifiedFormatSuppressionAlertProcessingRule
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ScheduleReccurenceStartTime
-Reccurence Start Time in the timezone of ScheduleTimeZone parameter. Format 06:00:00
-Should be mentioned in case of Reccurent  Schedule - Daily, Weekly or Monthly.
-
-```yaml
-Type: System.String
-Parameter Sets: BySimplifiedFormatActionGroupAlertProcessingRule, BySimplifiedFormatSuppressionAlertProcessingRule
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ScheduleReccurenceEndTime
-Reccurence Start Time in the timezone of ScheduleTimeZone parameter. Format 06:00:00
-Should be mentioned in case of Reccurent  Schedule - Daily, Weekly or Monthly.
-
-```yaml
-Type: System.String
-Parameter Sets: BySimplifiedFormatActionGroupAlertProcessingRule, BySimplifiedFormatSuppressionAlertProcessingRule
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ScheduleReccurence2Type
-Specifies when the processing rule should be applied.
-Allowed values: Daily, Monthly, Weekly.
-
-```yaml
-Type: System.String
-Parameter Sets: BySimplifiedFormatActionGroupAlertProcessingRule, BySimplifiedFormatSuppressionAlertProcessingRule
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ScheduleReccurence2DaysOfWeek
-List of recurrence pattern values Expected format For a weekly recurrence type.
-comma separated list of values For eg. Monday,Saturday
-
-```yaml
-Type: System.String
-Parameter Sets: BySimplifiedFormatActionGroupAlertProcessingRule, BySimplifiedFormatSuppressionAlertProcessingRule
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ScheduleReccurence2DaysOfMonth
-List of recurrence pattern values Expected format For a monthly recurrence type.
-comma separated list of values  For eg. 1,3,12
-
-```yaml
-Type: System.String
-Parameter Sets: BySimplifiedFormatActionGroupAlertProcessingRule, BySimplifiedFormatSuppressionAlertProcessingRule
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ScheduleReccurence2StartTime
-Reccurence Start Time in the timezone of ScheduleTimeZone parameter. Format 06:00:00
-Should be mentioned in case of Reccurent  Schedule - Daily, Weekly or Monthly.
-
-```yaml
-Type: System.String
-Parameter Sets: BySimplifiedFormatActionGroupAlertProcessingRule, BySimplifiedFormatSuppressionAlertProcessingRule
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ScheduleReccurence2EndTime
-Reccurence Start Time in the timezone of ScheduleTimeZone parameter. Format 06:00:00
-Should be mentioned in case of Reccurent  Schedule - Daily, Weekly or Monthly.
-
-```yaml
-Type: System.String
-Parameter Sets: BySimplifiedFormatActionGroupAlertProcessingRule, BySimplifiedFormatSuppressionAlertProcessingRule
+Parameter Sets: BySimplifiedFormatSuppressionActionRule, BySimplifiedFormatActionGroupActionRule
 Aliases:
 
 Required: False
@@ -606,13 +353,44 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+### -Name
+Alert Processing Rule Name
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
-Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Type: System.String
+Parameter Sets: BySimplifiedFormatSuppressionActionRule, BySimplifiedFormatActionGroupActionRule
+Aliases: ResourceId
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+Resource Group Name
+
+```yaml
+Type: System.String
+Parameter Sets: BySimplifiedFormatSuppressionActionRule, BySimplifiedFormatActionGroupActionRule
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ScheduleEndDateTime
+End Date Time. Format 2022-09-21 06:00:00
+Should be mentioned in case of Reccurent  Schedule - Daily, Weekly or Monthly.
+
+```yaml
+Type: System.String
+Parameter Sets: BySimplifiedFormatSuppressionActionRule, BySimplifiedFormatActionGroupActionRule
+Aliases:
 
 Required: False
 Position: Named
@@ -621,6 +399,230 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ScheduleReccurence2DaysOfMonth
+List of recurrence pattern values Expected format For a monthly recurrence type.
+comma separated list of values  For eg. 1,3,12
+
+```yaml
+Type: System.String
+Parameter Sets: BySimplifiedFormatSuppressionActionRule, BySimplifiedFormatActionGroupActionRule
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ScheduleReccurence2DaysOfWeek
+List of recurrence pattern values Expected format For a weekly recurrence type.
+comma separated list of values For eg. Monday,Saturday
+
+```yaml
+Type: System.String
+Parameter Sets: BySimplifiedFormatSuppressionActionRule, BySimplifiedFormatActionGroupActionRule
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ScheduleReccurence2EndTime
+Reccurence Start Time in the timezone of ScheduleTimeZone parameter. Format 06:00:00
+Should be mentioned in case of Reccurent  Schedule - Daily, Weekly or Monthly.
+
+```yaml
+Type: System.String
+Parameter Sets: BySimplifiedFormatSuppressionActionRule, BySimplifiedFormatActionGroupActionRule
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ScheduleReccurence2StartTime
+Reccurence Start Time in the timezone of ScheduleTimeZone parameter. Format 06:00:00
+Should be mentioned in case of Reccurent  Schedule - Daily, Weekly or Monthly.
+
+```yaml
+Type: System.String
+Parameter Sets: BySimplifiedFormatSuppressionActionRule, BySimplifiedFormatActionGroupActionRule
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ScheduleReccurence2Type
+Specifies when the processing rule should be applied.
+Allowed values: Daily, Monthly, Weekly.
+
+```yaml
+Type: System.String
+Parameter Sets: BySimplifiedFormatSuppressionActionRule, BySimplifiedFormatActionGroupActionRule
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ScheduleReccurenceDaysOfMonth
+List of recurrence pattern values Expected format For a monthly recurrence type.
+comma separated list of values  For eg. 1,3,12
+
+```yaml
+Type: System.String
+Parameter Sets: BySimplifiedFormatSuppressionActionRule, BySimplifiedFormatActionGroupActionRule
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ScheduleReccurenceDaysOfWeek
+List of recurrence pattern values Expected format For a weekly recurrence type.
+comma separated list of values For eg. Monday,Saturday
+
+```yaml
+Type: System.String
+Parameter Sets: BySimplifiedFormatSuppressionActionRule, BySimplifiedFormatActionGroupActionRule
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ScheduleReccurenceEndTime
+Reccurence Start Time in the timezone of ScheduleTimeZone parameter. Format 06:00:00
+Should be mentioned in case of Reccurent  Schedule - Daily, Weekly or Monthly.
+
+```yaml
+Type: System.String
+Parameter Sets: BySimplifiedFormatSuppressionActionRule, BySimplifiedFormatActionGroupActionRule
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ScheduleReccurenceStartTime
+Reccurence Start Time in the timezone of ScheduleTimeZone parameter. Format 06:00:00
+Should be mentioned in case of Reccurent  Schedule - Daily, Weekly or Monthly.
+
+```yaml
+Type: System.String
+Parameter Sets: BySimplifiedFormatSuppressionActionRule, BySimplifiedFormatActionGroupActionRule
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ScheduleReccurenceType
+Specifies when the processing rule should be applied.
+Allowed values: Daily, Monthly, Weekly.
+
+```yaml
+Type: System.String
+Parameter Sets: BySimplifiedFormatSuppressionActionRule, BySimplifiedFormatActionGroupActionRule
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ScheduleStartDateTime
+Start Date Time. Format 2022-09-21 06:00:00
+Should be mentioned in case of Reccurent  Schedule - Daily, Weekly or Monthly.
+
+```yaml
+Type: System.String
+Parameter Sets: BySimplifiedFormatSuppressionActionRule, BySimplifiedFormatActionGroupActionRule
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ScheduleTimeZone
+Schedule time zone.  Default: UTC.
+
+```yaml
+Type: System.String
+Parameter Sets: BySimplifiedFormatSuppressionActionRule, BySimplifiedFormatActionGroupActionRule
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Scope
+List of resource IDs, Comma separated list of values
+The rule will apply to alerts that fired on resources within that scope
+
+```yaml
+Type: System.Collections.Generic.List`1[System.String]
+Parameter Sets: BySimplifiedFormatSuppressionActionRule, BySimplifiedFormatActionGroupActionRule
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Tag
+Alert Processing rule tags.
+For eg.
+@{"tag1" = "key1";"tag2" = "key2"}
+Use {} to clear existing tags. 
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: BySimplifiedFormatSuppressionActionRule, BySimplifiedFormatActionGroupActionRule
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.

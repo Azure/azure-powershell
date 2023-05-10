@@ -130,7 +130,7 @@ namespace Microsoft.Azure.Commands.Management.Search.SearchService
                             ResourceGroupName,
                             ServiceName,
                             Name, 
-                            resource).Result;
+                            resource.Properties).Result;
 
                     WriteSharedPrivateLinkResource(response.Body);
                 });

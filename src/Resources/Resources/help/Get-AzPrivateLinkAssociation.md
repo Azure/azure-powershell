@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Resources.dll-Help.xml
 Module Name: Az.Resources
-online version: https://docs.microsoft.com/powershell/module/az.resources/get-azprivatelinkassociation
+online version: https://learn.microsoft.com/powershell/module/az.resources/get-azprivatelinkassociation
 schema: 2.0.0
 ---
 
@@ -24,10 +24,10 @@ The Get-AzPrivateLinkAssociation cmdlet gets all of resource management private 
 
 ### Example 1
 ```powershell
-PS C:\>  Get-AzPrivateLinkAssociation -ManagementGroupId fc096d27-0434-4460-a3ea-110df0422a2d | fl
+Get-AzPrivateLinkAssociation -ManagementGroupId fc096d27-0434-4460-a3ea-110df0422a2d | Format-List
+```
 
-
-
+```output
 Id         : /providers/Microsoft.Management/managementGroups/fc096d27-0434-4460-a3ea-110df0422a2d/providers/Microsoft.
              Authorization/privateLinkAssociations/7afcb623-ff23-591c-8cdd-57f5357711f4
 Type       : Microsoft.Authorization/privateLinkAssociations
@@ -51,10 +51,10 @@ Get all the private link associations at the managment group scope.
 
 ### Example 2
 ```powershell
-PS C:\>  Get-AzPrivateLinkAssociation -ManagementGroupId fc096d27-0434-4460-a3ea-110df0422a2d -Name 1d7942d1-288b-48de-8d0f-2d2aa8e03ad4 | fl
+Get-AzPrivateLinkAssociation -ManagementGroupId fc096d27-0434-4460-a3ea-110df0422a2d -Name 1d7942d1-288b-48de-8d0f-2d2aa8e03ad4 | Format-List
+```
 
-
-
+```output
 Id         : /providers/Microsoft.Management/managementGroups/fc096d27-0434-4460-a3ea-110df0422a2d/providers/Microsoft.
              Authorization/privateLinkAssociations/1d7942d1-288b-48de-8d0f-2d2aa8e03ad4
 Type       : Microsoft.Authorization/privateLinkAssociations

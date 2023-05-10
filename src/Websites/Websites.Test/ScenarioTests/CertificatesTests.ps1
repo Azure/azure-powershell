@@ -11,17 +11,27 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 # ----------------------------------------------------------------------------------
-
+#Global variables
+$rgname = "RG-PS-UnitTesting"
+$appname = "AppService-PS-UnitTesting"
+$certName = "psunittesting"
+$prodHostname = "psunittesting.com"	
+$slot = "testslot"	
+$slotHostname = "testslot.psunittesting.com"
+$thumbprint=""
+$wname = "PS-AppServices-UnitTesting"
+$keyvaultname =	"PS-UnitTesting-Keyvault"
+$keyvaultcertname =	"psunittesting9d3d0603-5c4a-4414-a6e6-8ed93f5dde71"
 <#
 .SYNOPSIS
 Tests creating a new managed cert for app.
 #>
 function Test-NewAzWebAppCertificate
 {
-	$rgname = "lketmtestantps10"
-	$appname = "lketmtestantps10"
-	$certName = "adorenowcert"
-	$prodHostname = "www.adorenow.net"	
+	$rgname = "RG-PS-UnitTesting"
+	$appname = "AppService-PS-UnitTesting"
+	$certName = "psunittesting"
+	$prodHostname = "psunittesting.com"	
 	$thumbprint=""
 
 	try{		
@@ -46,12 +56,6 @@ Tests creating a new managed cert for app with SSL binding.
 #>
 function Test-NewAzWebAppCertificateWithSSLBinding
 {
-	$rgname = "lketmtestantps10"
-	$appname = "lketmtestantps10"	
-	$prodHostname = "www.adorenow.net"
-	$certName = "adorenowcert"
-	$thumbprint=""
-
 	try{		
 
 		$cert=New-AzWebAppCertificate -ResourceGroupName $rgname -Name $certName -WebAppName $appname -HostName $prodHostname -AddBinding
@@ -84,13 +88,6 @@ Tests creating a new managed certfor slot.
 function Test-NewAzWebAppCertificateForSlot
 {
 
-	$rgname = "lketmtestantps10"
-	$appname = "lketmtestantps10"	
-	$slot = "testslot"	
-	$slotHostname = "testslot.adorenow.net"
-	$certName = "adorenowcert"
-	$thumbprint=""
-
 	try{
 		
 		$cert=New-AzWebAppCertificate -ResourceGroupName $rgname -Name $certName -WebAppName $appname -HostName $slotHostname -Slot $slot
@@ -113,13 +110,6 @@ Tests removing a managed cert.
 #>
 function Test-RemoveAzWebAppCertificate
 {
-
-	$rgname = "lketmtestantps10"
-	$appname = "lketmtestantps10"	
-	$prodHostname = "www.adorenow.net"	
-	$certName = "adorenowcert"
-	$thumbprint=""
-
 	try{		
 
 		$cert=New-AzWebAppCertificate -ResourceGroupName $rgname -Name $certName -WebAppName $appname -HostName $prodHostname
@@ -147,10 +137,6 @@ Tests for importing a keyvaultcertificate to appservice
 #>
 function Test-ImportAzWebAppKeyVaultCertificate
 {
-	$rgname = "lketmtestantps10"
-	$wname = "lketmtestantps10"
-	$keyvaultname =	"testkv1611"
-	$keyvaultcertname =	"testcertname1611"
 	try
 	{		
 		#Setup

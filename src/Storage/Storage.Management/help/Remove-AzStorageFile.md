@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
 ms.assetid: 811671E9-592E-4E58-8174-34D665206A65
-online version: https://docs.microsoft.com/powershell/module/az.storage/remove-azstoragefile
+online version: https://learn.microsoft.com/powershell/module/az.storage/remove-azstoragefile
 schema: 2.0.0
 ---
 
@@ -49,15 +49,15 @@ The **Remove-AzStorageFile** cmdlet deletes a file.
 ## EXAMPLES
 
 ### Example 1: Delete a file from a file share
-```
-PS C:\>Remove-AzStorageFile -ShareName "ContosoShare06" -Path "ContosoFile22"
+```powershell
+Remove-AzStorageFile -ShareName "ContosoShare06" -Path "ContosoFile22"
 ```
 
 This command deletes the file that is named ContosoFile22 from the file share named ContosoShare06.
 
 ### Example 2: Get a file from a file share by using a file share object
-```
-PS C:\>Get-AzStorageShare -Name "ContosoShare06" | Remove-AzStorageFile -Path "ContosoFile22"
+```powershell
+Get-AzStorageShare -Name "ContosoShare06" | Remove-AzStorageFile -Path "ContosoFile22"
 ```
 
 This command uses the **Get-AzStorageShare** cmdlet to get the file share named ContosoShare06, and then passes that object to the current cmdlet by using the pipeline operator.

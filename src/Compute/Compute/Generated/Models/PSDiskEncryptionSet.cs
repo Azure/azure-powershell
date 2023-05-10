@@ -51,6 +51,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
         public IDictionary<string, string> Tags { get; set; }
         public string EncryptionType { get; set; }
         public bool? RotationToLatestKeyVersionEnabled { get; set; }
+        public string FederatedClientId { get; set; }
 
     }
 }

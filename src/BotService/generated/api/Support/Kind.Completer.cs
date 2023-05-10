@@ -42,6 +42,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService.Support
             {
                 yield return new global::System.Management.Automation.CompletionResult("'function'", "function", global::System.Management.Automation.CompletionResultType.ParameterValue, "function");
             }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "azurebot".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'azurebot'", "azurebot", global::System.Management.Automation.CompletionResultType.ParameterValue, "azurebot");
+            }
         }
     }
 }

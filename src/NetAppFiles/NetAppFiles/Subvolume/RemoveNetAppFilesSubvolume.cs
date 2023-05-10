@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Backup
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Return whether the specified backup was successfully removed")]
+            HelpMessage = "Return whether the specified subvolume was successfully removed")]
         public SwitchParameter PassThru { get; set; }
 
         public override void ExecuteCmdlet()

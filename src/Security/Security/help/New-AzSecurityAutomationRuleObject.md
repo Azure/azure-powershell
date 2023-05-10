@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Security.dll-Help.xml
 Module Name: Az.Security
-online version:
+online version: https://learn.microsoft.com/powershell/module/az.security/new-azsecurityautomationruleobject
 schema: 2.0.0
 ---
 
@@ -24,7 +24,7 @@ Creates security automation rule object
 
 ### Example 1
 ```powershell
-PS C:\> New-AzSecurityAutomationRuleObject -PropertyJPath 'properties.metadata.severity'  -PropertyType 'String' -Operator 'Equals'  -ExpectedValue 'High'
+New-AzSecurityAutomationRuleObject -PropertyJPath 'properties.metadata.severity'  -PropertyType 'String' -Operator 'Equals'  -ExpectedValue 'High'
 ```
 
 Creates security automation rule object that filters messages that with "High" severity

@@ -14,4 +14,6 @@
     <PackageReference Include="Microsoft.Azure.Management.Subscription" Version="2.0.0" />
   </ItemGroup>
 
+  <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.Post.props" />
+
 </Project>

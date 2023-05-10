@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.EventHub.Models
             if (clusterSku != null)
             {
                 Capacity = clusterSku.Capacity;
-                Name = ClusterSku.Name;
+                Name = "Dedicated";
             }
         }
 
@@ -43,6 +43,6 @@ namespace Microsoft.Azure.Commands.EventHub.Models
         /// <summary>
         /// Name of this SKU.
         /// </summary>
-        public static string Name { get; set; }
+        public string Name { get; set; }
     }
 }

@@ -6,8 +6,13 @@ using System.Collections.Generic;
 namespace Microsoft.Azure.Management.Compute.Models
 {
 
-    public class PSVirtualMachineRunCommand : Resource
-    {
+    public class PSVirtualMachineRunCommand
+    { 
+        public string Name { get; set; }
+        public string Location { get; set; }
+        public string Id { get; set; }
+        public string Type { get; set; }
+        public IDictionary<string, string> Tags { get; set; }
         public VirtualMachineRunCommandScriptSource Source { get; set; }
         public IList<RunCommandInputParameter> Parameters { get; set; }
         public IList<RunCommandInputParameter> ProtectedParameters { get; set; }
@@ -17,7 +22,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         public int? TimeoutInSeconds { get; set; }
         public string OutputBlobUri { get; set; }
         public string ErrorBlobUri { get; set; }
-        public string ProvisioningState { get; }
+        public string ProvisioningState { get; set; }
         public VirtualMachineRunCommandInstanceView InstanceView { get; set; }
     }
 }

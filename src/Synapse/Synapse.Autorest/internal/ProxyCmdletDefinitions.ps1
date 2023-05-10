@@ -31,7 +31,7 @@ PS C:\> {{ Add code here }}
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IOperation
 .Link
-https://docs.microsoft.com/powershell/module/az.synapse/get-azsynapsekustooperation
+https://learn.microsoft.com/powershell/module/az.synapse/get-azsynapsekustooperation
 #>
 function Get-AzSynapseKustoOperation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IOperation])]
@@ -153,7 +153,7 @@ PARAMETER <IDatabase>: Class representing a Kusto database.
   [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
   [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
 .Link
-https://docs.microsoft.com/powershell/module/az.synapse/new-azsynapsekustopooldatabase
+https://learn.microsoft.com/powershell/module/az.synapse/new-azsynapsekustopooldatabase
 #>
 function New-AzSynapseKustoPoolDatabase {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IDatabase])]
@@ -355,7 +355,7 @@ PARAMETER <IDataConnection>: Class representing a data connection.
   [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
   [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
 .Link
-https://docs.microsoft.com/powershell/module/az.synapse/new-azsynapsekustopooldataconnection
+https://learn.microsoft.com/powershell/module/az.synapse/new-azsynapsekustopooldataconnection
 #>
 function New-AzSynapseKustoPoolDataConnection {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IDataConnection])]
@@ -564,7 +564,7 @@ PARAMETER <IKustoPool>: Class representing a Kusto kusto pool.
   [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
   [WorkspaceUid <String>]: The workspace unique identifier.
 .Link
-https://docs.microsoft.com/powershell/module/az.synapse/new-azsynapsekustopool
+https://learn.microsoft.com/powershell/module/az.synapse/new-azsynapsekustopool
 #>
 function New-AzSynapseKustoPool {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPool])]
@@ -851,7 +851,7 @@ PARAMETER <IDatabase>: Class representing a Kusto database.
   [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
   [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
 .Link
-https://docs.microsoft.com/powershell/module/az.synapse/update-azsynapsekustopooldatabase
+https://learn.microsoft.com/powershell/module/az.synapse/update-azsynapsekustopooldatabase
 #>
 function Update-AzSynapseKustoPoolDatabase {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IDatabase])]
@@ -1106,7 +1106,7 @@ PARAMETER <IDataConnection>: Class representing a data connection.
   [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
   [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
 .Link
-https://docs.microsoft.com/powershell/module/az.synapse/update-azsynapsekustopooldataconnection
+https://learn.microsoft.com/powershell/module/az.synapse/update-azsynapsekustopooldataconnection
 #>
 function Update-AzSynapseKustoPoolDataConnection {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IDataConnection])]

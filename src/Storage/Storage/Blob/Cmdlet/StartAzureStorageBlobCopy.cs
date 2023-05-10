@@ -210,28 +210,35 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         }
         private PremiumPageBlobTier? pageBlobTier = null;
 
-        [Parameter(HelpMessage = "Block Blob Tier, valid values are Hot/Cool/Archive. See detail in https://docs.microsoft.com/en-us/azure/storage/blobs/storage-blob-storage-tiers", Mandatory = false)]
+        [Parameter(HelpMessage = "Block Blob Tier, valid values are Hot/Cool/Archive. See detail in https://learn.microsoft.com/en-us/azure/storage/blobs/storage-blob-storage-tiers", Mandatory = false)]
+        [ValidateNotNullOrEmpty]
         [PSArgumentCompleter("Hot", "Cool", "Archive")]
-        [ValidateSet("Hot", "Cool", "Archive", IgnoreCase = true)]
         public string StandardBlobTier
         {
             get
             {
-                return standardBlobTier is null ? null : standardBlobTier.Value.ToString();
+                return accesstier?.ToString();
             }
 
             set
             {
                 if (value != null)
                 {
-                    standardBlobTier = ((StandardBlobTier)Enum.Parse(typeof(StandardBlobTier), value, true));
+                    accesstier = new Track2Models.AccessTier(value);
+                    isBlockBlobAccessTier = true;
+                    if(accesstier.Value == Track2Models.AccessTier.Hot || accesstier.Value == Track2Models.AccessTier.Cool || accesstier.Value == Track2Models.AccessTier.Archive)
+                    {
+                        standardBlobTier = ((StandardBlobTier)Enum.Parse(typeof(StandardBlobTier), value, true));
+                    }
                 }
                 else
                 {
-                    standardBlobTier = null;
+                    accesstier = null;
                 }
             }
         }
+        private bool? isBlockBlobAccessTier = null;
+        private Track2Models.AccessTier? accesstier = null;
         private StandardBlobTier? standardBlobTier = null;
 
         [Parameter(HelpMessage = "Block Blob RehydratePriority. Indicates the priority with which to rehydrate an archived blob. Valid values are High/Standard.", Mandatory = false)]
@@ -481,13 +488,14 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         /// <summary>
         /// Start copy operation by source and destination CloudBlob object
         /// </summary>
+        /// <param name="destChannel">IStorageBlobManagement channel object</param>
         /// <param name="srcCloudBlob">Source CloudBlob object</param>
         /// <param name="destCloudBlob">Destination CloudBlob object</param>
         /// <returns>Destination CloudBlob object</returns>
         private void StartCopyBlob(IStorageBlobManagement destChannel, CloudBlob srcCloudBlob, CloudBlob destCloudBlob)
         {
             ValidateBlobType(srcCloudBlob);
-            ValidateBlobTier(srcCloudBlob.BlobType, pageBlobTier, standardBlobTier, rehydratePriority);
+            ValidateBlobTier(srcCloudBlob.BlobType, pageBlobTier, this.isBlockBlobAccessTier, rehydratePriority);
 
             Func<long, Task> taskGenerator = (taskId) => StartCopyAsync(taskId, destChannel, srcCloudBlob, destCloudBlob);
             RunTask(taskGenerator);
@@ -504,7 +512,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             {
                 destCloudBlob = Util.GetTrack2BlobClientWithType(destCloudBlob, destChannel.StorageContext, srcBlobType);
             }
-            ValidateBlobTier(Util.convertBlobType_Track2ToTrack1(srcBlobType), pageBlobTier, standardBlobTier, rehydratePriority);
+            ValidateBlobTier(Util.convertBlobType_Track2ToTrack1(srcBlobType), pageBlobTier, this.isBlockBlobAccessTier, rehydratePriority);
 
             Func<long, Task> taskGenerator = (taskId) => StartCopyAsync(taskId, destChannel, srcCloudBlob, destCloudBlob);
             RunTask(taskGenerator);
@@ -513,6 +521,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         /// <summary>
         /// Start copy operation by source CloudBlob object
         /// </summary>
+        /// <param name="destChannel">IStorageBlobManagement channel object</param>
         /// <param name="srcCloudBlob">Source CloudBlob object</param>
         /// <param name="destContainer">Destinaion container name</param>
         /// <param name="destBlobName">Destination blob name</param>
@@ -544,9 +553,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         /// <summary>
         /// Start copy operation by source uri
         /// </summary>
-        /// <param name="srcCloudBlob">Source uri</param>
+        /// <param name="destChannel">IStorageBlobManagement channel object</param>
+        /// <param name="srcUri">Source uri</param>
         /// <param name="destContainer">Destinaion container name</param>
         /// <param name="destBlobName">Destination blob name</param>
+        /// <param name="context">a cloud blob object</param>
         /// <returns>Destination CloudBlob object</returns>
         private void StartCopyBlob(IStorageBlobManagement destChannel, string srcUri, string destContainer, string destBlobName, AzureStorageContext context)
         {
@@ -592,9 +603,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         /// <summary>
         /// Start copy operation by container name and blob name
         /// </summary>
+        /// <param name="SrcChannel"></param>
+        /// <param name="destChannel"></param>
         /// <param name="srcContainerName">Source container name</param>
         /// <param name="srcBlobName">Source blob name</param>
-        /// <param name="destContainer">Destinaion container name</param>
+        /// <param name="destContainerName">Destinaion container name</param>
         /// <param name="destBlobName">Destination blob name</param>
         /// <returns>Destination CloudBlob object</returns>
         private void StartCopyBlob(IStorageBlobManagement SrcChannel, IStorageBlobManagement destChannel, string srcContainerName, string srcBlobName, string destContainerName, string destBlobName)
@@ -753,13 +766,13 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                     }
                 }
 
-                ValidateBlobTier(destBlob.BlobType, pageBlobTier, standardBlobTier, rehydratePriority);
+                ValidateBlobTier(destBlob.BlobType, pageBlobTier, this.isBlockBlobAccessTier, rehydratePriority);
 
                 if (!destExist || this.ConfirmOverwrite(srcUri.AbsoluteUri.ToString(), destBlob.Uri.ToString()))
                 {
                     string copyId;
 
-                    //Clean the Metadata of the destination Blob object, or the source metadata won't overwirte the dest blob metadata. See https://docs.microsoft.com/en-us/rest/api/storageservices/copy-blob
+                    //Clean the Metadata of the destination Blob object, or the source metadata won't overwirte the dest blob metadata. See https://learn.microsoft.com/en-us/rest/api/storageservices/copy-blob
                     destBlob.Metadata.Clear();
 
                     // The Blob Type and Blob Tier must match, since already checked they are match at the begin of ExecuteCmdlet().
@@ -799,7 +812,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             }
             if (destBlobType != null)
             {
-                ValidateBlobTier(Util.convertBlobType_Track2ToTrack1(destBlobType), pageBlobTier, standardBlobTier, rehydratePriority);
+                ValidateBlobTier(Util.convertBlobType_Track2ToTrack1(destBlobType), pageBlobTier, this.isBlockBlobAccessTier, rehydratePriority);
             }
 
             if (!destExist || this.ConfirmOverwrite(srcUri.AbsoluteUri.ToString(), destBlob.Uri.ToString()))
@@ -811,9 +824,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                 {
                     options.AccessTier = Util.ConvertAccessTier_Track1ToTrack2(pageBlobTier);
                 }
-                else if (standardBlobTier != null || rehydratePriority != null)
+                else if (accesstier != null || rehydratePriority != null)
                 {
-                    options.AccessTier = Util.ConvertAccessTier_Track1ToTrack2(standardBlobTier);
+                    options.AccessTier = accesstier;
                     options.RehydratePriority = Util.ConvertRehydratePriority_Track1ToTrack2(rehydratePriority);
                 }
                 if (this.BlobTag != null)
@@ -878,9 +891,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         /// <summary>
         /// Start copy using transfer mangager by source CloudBlob object
         /// </summary>
-        /// <param name="blob">Source CloudBlob object</param>
-        /// <param name="destContainer">Destination CloudBlobContainer object</param>
-        /// <param name="destBlobName">Destination blob name</param>
+        /// <param name="taskId">Task id</param>
+        /// <param name="destChannel">IStorageBlobManagement channel object</param>
+        /// <param name="sourceBlob">Source CloudBlob object</param>
+        /// <param name="destBlob">Destination CloudBlob object</param>
         /// <returns>Destination CloudBlob object</returns>
         private async Task StartCopyAsync(long taskId, IStorageBlobManagement destChannel, CloudBlob sourceBlob, CloudBlob destBlob)
         {
@@ -903,6 +917,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         /// <summary>
         /// Start copy using transfer mangager by source uri
         /// </summary>
+        /// <param name="taskId">Task id</param>
+        /// <param name="destChannel">IStorageBlobManagement channel object</param>
         /// <param name="uri">source uri</param>
         /// <param name="destContainer">Destination CloudBlobContainer object</param>
         /// <param name="destBlobName">Destination blob name</param>
@@ -935,9 +951,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         /// <summary>
         /// Get DestinationBlob with specified copy id
         /// </summary>
+        /// <param name="destChannel">IStorageBlobManagement channel object</param>
         /// <param name="container">CloudBlobContainer object</param>
         /// <param name="blobName">Blob name</param>
-        /// <param name="copyId">Current CopyId</param>
         /// <returns>Destination CloudBlob object</returns>
         private CloudBlob GetDestinationBlobWithCopyId(IStorageBlobManagement destChannel, CloudBlobContainer container, string blobName)
         {

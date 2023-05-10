@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric.dll-Help.xml
 Module Name: Az.ServiceFabric
-online version: https://docs.microsoft.com/powershell/module/az.servicefabric/set-azservicefabricmanagedclusterapplicationtype
+online version: https://learn.microsoft.com/powershell/module/az.servicefabric/set-azservicefabricmanagedclusterapplicationtype
 schema: 2.0.0
 ---
 

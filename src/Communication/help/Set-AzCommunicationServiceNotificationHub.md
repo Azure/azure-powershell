@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Communication
-online version: https://docs.microsoft.com/powershell/module/az.communication/set-azcommunicationservicenotificationhub
+online version: https://learn.microsoft.com/powershell/module/az.communication/set-azcommunicationservicenotificationhub
 schema: 2.0.0
 ---
 
@@ -198,7 +198,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-LINKNOTIFICATIONHUBPARAMETER <ILinkNotificationHubParameters>: Description of an Azure Notification Hub to link to the communication service
+LINKNOTIFICATIONHUBPARAMETER `<ILinkNotificationHubParameters>`: Description of an Azure Notification Hub to link to the communication service
   - `ConnectionString <String>`: Connection string for the notification hub
   - `ResourceId <String>`: The resource ID of the notification hub
 

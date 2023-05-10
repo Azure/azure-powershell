@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.DataBox
-online version: https://docs.microsoft.com/powershell/module/az.DataBox/new-AzDataBoxKeyEncryptionKeyObject
+online version: https://learn.microsoft.com/powershell/module/az.DataBox/new-AzDataBoxKeyEncryptionKeyObject
 schema: 2.0.0
 ---
 
@@ -118,7 +118,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-IDENTITYPROPERTY <IIdentityProperties>: Managed identity properties used for key encryption.
+IDENTITYPROPERTY `<IIdentityProperties>`: Managed identity properties used for key encryption.
   - `[Type <String>]`: Managed service identity type.
   - `[UserAssignedResourceId <String>]`: Arm resource id for user assigned identity to be used to fetch MSI token.
 

@@ -100,7 +100,7 @@ function Create-ProjectToFullPathMappings
             {
                 throw ($CsprojFile.FullName + " is conflicts with " + $Mappings[$CsprojFile.BaseName])
             }
-            $Mappings[$CsprojFile.BaseName] = $CsprojFile.FullName
+            $Mappings[$CsprojFile.BaseName] = [IO.Path]::GetRelativePath([IO.Path]::Combine($PSScriptRoot, ".."), $CsprojFile.FullName)
         }
     }
 

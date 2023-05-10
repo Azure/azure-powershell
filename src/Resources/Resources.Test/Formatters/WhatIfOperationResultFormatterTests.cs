@@ -19,6 +19,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Formatters
     using ResourceManager.Cmdlets.SdkModels.Deployments;
     using System;
     using System.Collections.Generic;
+    using System.IO;
     using WindowsAzure.Commands.ScenarioTest;
     using Xunit;
 
@@ -433,6 +434,104 @@ Scope: /subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/rg1
                 .Replace(@"""bar""", bar)
                 .Replace(@"""yes""", yes)
                 .Replace("\r\n", Environment.NewLine);
+
+            // Act.
+            string result = WhatIfOperationResultFormatter.Format(
+                new PSWhatIfOperationResult(new WhatIfOperationResult(changes: whatIfChanges)));
+
+            // Assert.
+            Assert.Contains(expected, result);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void Format_nested_array_changes_does_not_throw()
+        {
+            // Arrange.
+            var whatIfChanges = new List<WhatIfChange>
+            {
+                new WhatIfChange
+                {
+                    ResourceId = "/subscriptions/00000000-0000-0000-0000-000000000004/resourceGroups/rg4/providers/Microsoft.DocumentDB/databaseAccounts/myaccount/sqlDatabases/accesscontrol/containers/workflows",
+                    ChangeType = ChangeType.Modify,
+                    Delta = new List<WhatIfPropertyChange>
+                    {
+                        new WhatIfPropertyChange
+                        {
+                            Path = "properties.resource.indexingPolicy.compositeIndexes",
+                            PropertyChangeType = PropertyChangeType.Array,
+                            Children = new List<WhatIfPropertyChange>
+                            {
+                                new WhatIfPropertyChange
+                                {
+                                    Path = "0",
+                                    PropertyChangeType = PropertyChangeType.Modify,
+                                    Children = new List<WhatIfPropertyChange>
+                                    {
+                                        new WhatIfPropertyChange
+                                        {
+                                            Path = null,
+                                            PropertyChangeType = PropertyChangeType.Array,
+                                            Children = new List<WhatIfPropertyChange>
+                                            {
+                                                new WhatIfPropertyChange
+                                                {
+                                                    Path = "0",
+                                                    PropertyChangeType = PropertyChangeType.Modify,
+                                                    Children = new List<WhatIfPropertyChange>
+                                                    {
+                                                        new WhatIfPropertyChange
+                                                        {
+                                                            Path = "order",
+                                                            PropertyChangeType = PropertyChangeType.Delete,
+                                                            Before = "ascending",
+                                                        }
+                                                    }
+                                                },
+                                                new WhatIfPropertyChange
+                                                {
+                                                    Path = "1",
+                                                    PropertyChangeType = PropertyChangeType.Modify,
+                                                    Children = new List<WhatIfPropertyChange>
+                                                    {
+                                                        new WhatIfPropertyChange
+                                                        {
+                                                            Path = "order",
+                                                            PropertyChangeType = PropertyChangeType.Delete,
+                                                            Before = "ascending",
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                    }
+                }
+            };
+
+            string expected = $@"
+Scope: /subscriptions/00000000-0000-0000-0000-000000000004/resourceGroups/rg4
+{Color.Purple}
+  ~ Microsoft.DocumentDB/databaseAccounts/myaccount/sqlDatabases/accesscontrol/containers/workflows{Color.Reset}
+    {Color.Purple}~{Color.Reset} properties.resource.indexingPolicy.compositeIndexes{Color.Reset}:{Color.Reset} [
+      {Color.Purple}~{Color.Reset} 0{Color.Reset}:{Color.Reset}
+
+        [
+        {Color.Purple}~{Color.Reset} 0{Color.Reset}:{Color.Reset}
+
+          {Color.Orange}-{Color.Reset} order{Color.Reset}:{Color.Reset} {Color.Orange}""ascending""{Color.Reset}
+
+        {Color.Purple}~{Color.Reset} 1{Color.Reset}:{Color.Reset}
+
+          {Color.Orange}-{Color.Reset} order{Color.Reset}:{Color.Reset} {Color.Orange}""ascending""{Color.Reset}
+
+        ]
+
+      ]
+".Replace("\r\n", Environment.NewLine);
 
             // Act.
             string result = WhatIfOperationResultFormatter.Format(

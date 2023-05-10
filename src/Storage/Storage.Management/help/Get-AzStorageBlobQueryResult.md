@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
-online version: https://docs.microsoft.com/powershell/module/Az.storage/get-azstorageblobqueryresult
+online version: https://learn.microsoft.com/powershell/module/Az.storage/get-azstorageblobqueryresult
 schema: 2.0.0
 ---
 
@@ -51,16 +51,18 @@ The **Get-AzStorageBlobQueryResult** cmdlet applies a simple Structured Query La
 
 ### Example 1: Query a blob
 ```powershell
-PS C:\> $inputconfig = New-AzStorageBlobQueryConfig -AsCsv -HasHeader
+$inputconfig = New-AzStorageBlobQueryConfig -AsCsv -HasHeader
 
-PS C:\> $outputconfig = New-AzStorageBlobQueryConfig -AsJson
+$outputconfig = New-AzStorageBlobQueryConfig -AsJson
 
-PS C:\> $queryString = "SELECT * FROM BlobStorage WHERE Name = 'a'"
+$queryString = "SELECT * FROM BlobStorage WHERE Name = 'a'"
 
-PS C:\> $result = Get-AzStorageBlobQueryResult -Container $containerName -Blob $blobName -QueryString $queryString -ResultFile "c:\resultfile.json" -InputTextConfiguration $inputconfig -OutputTextConfiguration $outputconfig -Context $ctx
+$result = Get-AzStorageBlobQueryResult -Container $containerName -Blob $blobName -QueryString $queryString -ResultFile "c:\resultfile.json" -InputTextConfiguration $inputconfig -OutputTextConfiguration $outputconfig -Context $ctx
 
-PS C:\> $result
+$result
+```
 
+```output
 BytesScanned FailureCount BlobQueryError
 ------------ ------------ --------------
          449            0
@@ -69,6 +71,7 @@ BytesScanned FailureCount BlobQueryError
 This command querys a blob succsssfully with input config as csv, and output config as json, and save the output to local file "c:\resultfile.json".
 
 ### Example 2: Query a blob snapshot
+<!-- Skip: Output cannot be splitted from code -->
 ```powershell
 PS C:\> $blob = Get-AzStorageBlob -Container $containerName -Blob $blobName -SnapshotTime "2020-07-29T11:08:21.1097874Z" -Context $ctx
 
@@ -281,7 +284,7 @@ Accept wildcard characters: False
 ```
 
 ### -QueryString
-Query string, see more details in: https://docs.microsoft.com/azure/storage/blobs/query-acceleration-sql-reference
+Query string, see more details in: https://learn.microsoft.com/azure/storage/blobs/query-acceleration-sql-reference
 
 ```yaml
 Type: System.String

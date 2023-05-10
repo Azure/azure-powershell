@@ -54,6 +54,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
             this.ModifiedDate = workspace.ModifiedDate;
             this.ForceCmkForQuery = workspace.ForceCmkForQuery;
             this.WorkspaceFeatures = new PSWorkspaceFeatures(workspace.Features);
+            this.DefaultDataCollectionRuleResourceId = workspace.DefaultDataCollectionRuleResourceId;
         }
 
         public string Name { get; set; }
@@ -93,5 +94,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
         public bool? ForceCmkForQuery { get; set; }
 
         public PSWorkspaceFeatures WorkspaceFeatures { get; set; }
+
+        public string DefaultDataCollectionRuleResourceId { get; set; }
     }
 }

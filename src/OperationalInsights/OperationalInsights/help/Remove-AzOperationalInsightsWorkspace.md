@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights.dll-Help.xml
 Module Name: Az.OperationalInsights
 ms.assetid: 0C35E679-B991-49A8-890F-C8DAB68A8240
-online version: https://docs.microsoft.com/powershell/module/az.operationalinsights/remove-azoperationalinsightsworkspace
+online version: https://learn.microsoft.com/powershell/module/az.operationalinsights/remove-azoperationalinsightsworkspace
 schema: 2.0.0
 ---
 
@@ -41,7 +41,7 @@ Since the *Force* parameter is specified, the command does not prompt you before
 
 ### Example 3: Force delete workspace (cannot be recovered)
 ```powershell
-$workspace = New-AzOperationalInsightsWorkspace -ResourceGroupName $rgname -Name $wsname -Location $wslocation
+$workspace = New-AzOperationalInsightsWorkspace -ResourceGroupName "RG-NAME" -Name "WORKSPACE-NAME" -Location "REGION-VALUE"
 $workspace | Remove-AzOperationalInsightsWorkspace -ForceDelete
 ```
 

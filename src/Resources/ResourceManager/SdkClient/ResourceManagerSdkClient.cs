@@ -355,7 +355,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                 }
 
                 //If nested deployment, get the operations under those deployments as well
-                if (operation.Properties.TargetResource != null && operation.Properties.TargetResource.ResourceType.Equals(Constants.MicrosoftResourcesDeploymentType, StringComparison.OrdinalIgnoreCase))
+                if (operation.Properties.TargetResource?.ResourceType?.Equals(Constants.MicrosoftResourcesDeploymentType, StringComparison.OrdinalIgnoreCase) == true)
                 {
                     HttpStatusCode statusCode;
                     Enum.TryParse<HttpStatusCode>(operation.Properties.StatusCode, out statusCode);
@@ -909,7 +909,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             {
                 try
                 {
-                    result.Add(ResourceManagementClient.ResourceGroups.Get(name).ToPSResourceGroup());
+                    PSResourceGroup resourceGroup = ResourceManagementClient.ResourceGroups.Get(name).ToPSResourceGroup();
+                    if (string.IsNullOrEmpty(location) || resourceGroup.Location.EqualsAsLocation(location))
+                    {
+                        result.Add(resourceGroup);
+                    }
                 }
                 catch (CloudException)
                 {
@@ -1371,6 +1375,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
         /// Executes deployment What-If at the specified scope.
         /// </summary>
         /// <param name="parameters"></param>
+        /// <param name="excludeChangeTypeNames"></param>
         /// <returns></returns>
         public virtual PSWhatIfOperationResult ExecuteDeploymentWhatIf(PSDeploymentWhatIfCmdletParameters parameters, string[] excludeChangeTypeNames)
         {
@@ -1673,7 +1678,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
         /// Validates a given deployment.
         /// </summary>
         /// <param name="parameters">The deployment create options</param>
-        /// <param name="deploymentMode">The deployment mode</param>
         /// <returns>The validation errors if there's any, or empty list otherwise.</returns>
         public virtual List<PSResourceManagerError> ValidateDeployment(PSDeploymentCmdletParameters parameters)
         {

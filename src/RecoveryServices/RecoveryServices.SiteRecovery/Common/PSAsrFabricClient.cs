@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             var op = this.GetSiteRecoveryClient()
                 .ReplicationFabrics.BeginCreateWithHttpMessagesAsync(
                     fabricName,
-                    input,
+                    input.Properties,
                     this.GetRequestHeaders(true))
                 .GetAwaiter()
                 .GetResult();
@@ -134,7 +134,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             var op = this.GetSiteRecoveryClient()
                 .ReplicationFabrics.BeginReassociateGatewayWithHttpMessagesAsync(
                     fabricName,
-                    input,
+                    input.Properties,
                     this.GetRequestHeaders(true))
                 .GetAwaiter()
                 .GetResult();

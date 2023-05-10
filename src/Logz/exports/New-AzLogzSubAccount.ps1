@@ -31,7 +31,7 @@ logz-pwshsub01 Enabled          westus2  logz-rg-test
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogzMonitorResource
 .Link
-https://docs.microsoft.com/powershell/module/az.logz/new-azlogzsubaccount
+https://learn.microsoft.com/powershell/module/az.logz/new-azlogzsubaccount
 #>
 function New-AzLogzSubAccount {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogzMonitorResource])]

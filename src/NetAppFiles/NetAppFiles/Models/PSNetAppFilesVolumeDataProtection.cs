@@ -40,5 +40,13 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         /// Volume Backup properties
         /// </remark>                
         public PSNetAppFilesVolumeBackupProperties Backup { get; set; }
+
+        /// <summary>
+        /// Gets or sets VolumeBackupProperties 
+        /// </summary>
+        /// <remark>
+        /// Volume Backup properties
+        /// </remark>                
+        public PSNetAppFilesVolumeRelocationProperties VolumeRelocation { get; set; }
     }
 }

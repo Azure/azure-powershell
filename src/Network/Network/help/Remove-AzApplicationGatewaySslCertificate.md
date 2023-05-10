@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 5D788B84-0179-4A35-AC35-27C6F5FECB39
-online version: https://docs.microsoft.com/powershell/module/az.network/remove-azapplicationgatewaysslcertificate
+online version: https://learn.microsoft.com/powershell/module/az.network/remove-azapplicationgatewaysslcertificate
 schema: 2.0.0
 ---
 
@@ -25,14 +25,14 @@ The **Remove-AzApplicationGatewaySslCertificate** cmdlet removes a Secure Socket
 
 ### Example 1: Remove an SSL certificate from an application gateway
 ```powershell
-$AppGW = Get-AzApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
-Remove-AzApplicationGatewaySslCertificate -ApplicationGateway $AppGW -Name "Cert02"
+$AppGw = Get-AzApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
+Remove-AzApplicationGatewaySslCertificate -ApplicationGateway $AppGw -Name "Cert02"
 Set-AzApplicationGateway -ApplicationGateway $AppGw
 ```
 
-The first command gets the application gateway named ApplicationGateway01 and stores the result in the variable named $AppGW.
-The second command removes the SSL certificate named Cert02 from the application gateway stored in the $AppGW variable.
-The last command updates the application gateway.
+The first command gets the application gateway named ApplicationGateway01 and stores the result in the variable named $AppGw.
+The second command removes the SSL certificate named Cert02 from the application gateway stored in the $AppGw variable.
+The last command "Set-AzApplicationGateway" updates the application gateway configuration changes to the $AppGw variable that holds the current configuration of Application gateway.
 
 ## PARAMETERS
 
@@ -82,7 +82,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

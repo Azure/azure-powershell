@@ -72,7 +72,7 @@ INPUTOBJECT <IManagedServicesIdentity>: Identity Parameter
   [RegistrationDefinitionId <String>]: The GUID of the registration definition.
   [Scope <String>]: The scope of the resource.
 .Link
-https://docs.microsoft.com/powershell/module/az.managedservices/get-azmanagedservicesassignment
+https://learn.microsoft.com/powershell/module/az.managedservices/get-azmanagedservicesassignment
 #>
 function Get-AzManagedServicesAssignment {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IRegistrationAssignment])]
@@ -251,7 +251,7 @@ INPUTOBJECT <IManagedServicesIdentity>: Identity Parameter
   [RegistrationDefinitionId <String>]: The GUID of the registration definition.
   [Scope <String>]: The scope of the resource.
 .Link
-https://docs.microsoft.com/powershell/module/az.managedservices/get-azmanagedservicesdefinition
+https://learn.microsoft.com/powershell/module/az.managedservices/get-azmanagedservicesdefinition
 #>
 function Get-AzManagedServicesDefinition {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IRegistrationDefinition])]
@@ -391,7 +391,7 @@ xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx Microsoft.ManagedServices/registrationAssig
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IRegistrationAssignment
 .Link
-https://docs.microsoft.com/powershell/module/az.managedservices/new-azmanagedservicesassignment
+https://learn.microsoft.com/powershell/module/az.managedservices/new-azmanagedservicesassignment
 #>
 function New-AzManagedServicesAssignment {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IRegistrationAssignment])]
@@ -565,7 +565,7 @@ ELIGIBLEAUTHORIZATION <IEligibleAuthorization[]>: The collection of eligible aut
   [JustInTimeAccessPolicyMultiFactorAuthProvider <MultiFactorAuthProvider?>]: The multi-factor authorization provider to be used for just-in-time access requests.
   [PrincipalIdDisplayName <String>]: The display name of the Azure Active Directory principal.
 .Link
-https://docs.microsoft.com/powershell/module/az.managedservices/new-azmanagedservicesdefinition
+https://learn.microsoft.com/powershell/module/az.managedservices/new-azmanagedservicesdefinition
 #>
 function New-AzManagedServicesDefinition {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IRegistrationDefinition])]
@@ -772,7 +772,7 @@ INPUTOBJECT <IManagedServicesIdentity>: Identity Parameter
   [RegistrationDefinitionId <String>]: The GUID of the registration definition.
   [Scope <String>]: The scope of the resource.
 .Link
-https://docs.microsoft.com/powershell/module/az.managedservices/remove-azmanagedservicesassignment
+https://learn.microsoft.com/powershell/module/az.managedservices/remove-azmanagedservicesassignment
 #>
 function Remove-AzManagedServicesAssignment {
 [OutputType([System.Boolean])]
@@ -932,7 +932,7 @@ INPUTOBJECT <IManagedServicesIdentity>: Identity Parameter
   [RegistrationDefinitionId <String>]: The GUID of the registration definition.
   [Scope <String>]: The scope of the resource.
 .Link
-https://docs.microsoft.com/powershell/module/az.managedservices/remove-azmanagedservicesdefinition
+https://learn.microsoft.com/powershell/module/az.managedservices/remove-azmanagedservicesdefinition
 #>
 function Remove-AzManagedServicesDefinition {
 [OutputType([System.Boolean])]
@@ -1085,7 +1085,7 @@ INPUTOBJECT <IManagedServicesIdentity>: Identity Parameter
   [RegistrationDefinitionId <String>]: The GUID of the registration definition.
   [Scope <String>]: The scope of the resource.
 .Link
-https://docs.microsoft.com/powershell/module/az.managedservices/get-azmanagedservicesmarketplacedefinition
+https://learn.microsoft.com/powershell/module/az.managedservices/get-azmanagedservicesmarketplacedefinition
 #>
 function Get-AzManagedServicesMarketplaceDefinition {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IMarketplaceRegistrationDefinition])]
@@ -1242,7 +1242,7 @@ DelegatedRoleDefinitionId                                                    Pri
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.Authorization
 .Link
-https://docs.microsoft.com/powershell/module/az.ManagedServices/new-AzManagedServicesAuthorizationObject
+https://learn.microsoft.com/powershell/module/az.ManagedServices/new-AzManagedServicesAuthorizationObject
 #>
 function New-AzManagedServicesAuthorizationObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.Authorization])]
@@ -1327,7 +1327,7 @@ xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx Approvers group
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.EligibleApprover
 .Link
-https://docs.microsoft.com/powershell/module/az.ManagedServices/new-AzManagedServicesEligibleApproverObject
+https://learn.microsoft.com/powershell/module/az.ManagedServices/new-AzManagedServicesEligibleApproverObject
 #>
 function New-AzManagedServicesEligibleApproverObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.EligibleApprover])]
@@ -1420,7 +1420,7 @@ JUSTINTIMEACCESSPOLICYMANAGEDBYTENANTAPPROVER <IEligibleApprover[]>: The list of
   PrincipalId <String>: The identifier of the Azure Active Directory principal.
   [PrincipalIdDisplayName <String>]: The display name of the Azure Active Directory principal.
 .Link
-https://docs.microsoft.com/powershell/module/az.ManagedServices/new-AzManagedServicesEligibleAuthorizationObject
+https://learn.microsoft.com/powershell/module/az.ManagedServices/new-AzManagedServicesEligibleAuthorizationObject
 #>
 function New-AzManagedServicesEligibleAuthorizationObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.EligibleAuthorization])]

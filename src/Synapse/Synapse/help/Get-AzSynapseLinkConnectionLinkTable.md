@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Synapse.dll-Help.xml
 Module Name: Az.Synapse
-online version: https://docs.microsoft.com/powershell/module/az.synapse/get-azsynapselinkconnectionlinktable
+online version: https://learn.microsoft.com/powershell/module/az.synapse/get-azsynapselinkconnectionlinktable
 schema: 2.0.0
 ---
 
@@ -52,7 +52,7 @@ This command gets information about link tables under link connection ContosoLin
 
 ### Example 3
 ```powershell
-$lc = Get-AzSynpaseLinkConnection -WorkspaceName ContosoWorkspace -Name ContosoLinkConnection
+$lc = Get-AzSynapseLinkConnection -WorkspaceName ContosoWorkspace -Name ContosoLinkConnection
 $lc | Get-AzSynapseLinkConnectionLinkTable
 ```
 

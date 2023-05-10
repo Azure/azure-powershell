@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
-online version: https://docs.microsoft.com/powershell/module/az.compute/update-azgallery
+online version: https://learn.microsoft.com/powershell/module/az.compute/update-azgallery
 schema: 2.0.0
 ---
 
@@ -16,7 +16,8 @@ Update a gallery.
 ```
 Update-AzGallery [-ResourceGroupName] <String> [-Name] <String> [-AsJob] [-Description <String>]
  [-Tag <Hashtable>] [-Permission <String>] [-Subscription <String[]>] [-Tenant <String[]>]
- [-RemoveSubscription <String[]>] [-RemoveTenant <String[]>] [-Share] [-Reset]
+ [-RemoveSubscription <String[]>] [-RemoveTenant <String[]>] [-Share] [-Community] [-Reset]
+ [-PublisherUri <String>] [-PublisherContact <String>] [-Eula <String>] [-PublicNamePrefix <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -24,16 +25,18 @@ Update-AzGallery [-ResourceGroupName] <String> [-Name] <String> [-AsJob] [-Descr
 ```
 Update-AzGallery [-ResourceId] <String> [-AsJob] [-Description <String>] [-Tag <Hashtable>]
  [-Permission <String>] [-Subscription <String[]>] [-Tenant <String[]>] [-RemoveSubscription <String[]>]
- [-RemoveTenant <String[]>] [-Share] [-Reset] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-RemoveTenant <String[]>] [-Share] [-Community] [-Reset] [-PublisherUri <String>]
+ [-PublisherContact <String>] [-Eula <String>] [-PublicNamePrefix <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ObjectParameter
 ```
 Update-AzGallery [-InputObject] <PSGallery> [-AsJob] [-Description <String>] [-Tag <Hashtable>]
  [-Permission <String>] [-Subscription <String[]>] [-Tenant <String[]>] [-RemoveSubscription <String[]>]
- [-RemoveTenant <String[]>] [-Share] [-Reset] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-RemoveTenant <String[]>] [-Share] [-Community] [-Reset] [-PublisherUri <String>]
+ [-PublisherContact <String>] [-Eula <String>] [-PublicNamePrefix <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -50,11 +53,10 @@ Update a gallery.
 
 ### Example 2
 ```powershell
-PS C:\> Update-AzGallery -ResourceGroupName $rgname -Name $galleryName -Permission Groups -Share -Tenant xxxxxxxx-xxx-xxxxxxx,zzzzzz-zzzzzzz-zzzzzz
+Update-AzGallery -ResourceGroupName $rgname -Name $galleryName -Permission Groups -Share -Tenant xxxxxxxx-xxx-xxxxxxx,zzzzzz-zzzzzzz-zzzzzz
 ```
 
 Update a gallery to be shared and add two subscriptions it is to be shared with.
-
 
 ## PARAMETERS
 
@@ -70,6 +72,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Community
+Update sharing profile of the gallery to community.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -90,6 +107,21 @@ Accept wildcard characters: False
 
 ### -Description
 The description of the gallery resource.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Eula
+Gets or sets end-user license agreement for community gallery image.
 
 ```yaml
 Type: System.String
@@ -135,6 +167,51 @@ Accept wildcard characters: False
 
 ### -Permission
 This property allows you to specify the permission of the sharing gallery. Possible values are: 'Private' and 'Groups'.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -PublicNamePrefix
+Gets or sets the prefix of the gallery name that will be displayed publicly. Visible to all users.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -PublisherContact
+Gets or sets community gallery publisher support email. The email address of the publisher. Visible to all users.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -PublisherUri
+Gets or sets the link to the publisher website. Visible to all users.
 
 ```yaml
 Type: System.String

@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.DataProtection
-online version: https://docs.microsoft.com/powershell/module/az.dataprotection/sync-azdataprotectionbackupinstance
+online version: https://learn.microsoft.com/powershell/module/az.dataprotection/sync-azdataprotectionbackupinstance
 schema: 2.0.0
 ---
 
@@ -25,7 +25,7 @@ Sync backup instance again in case of failure\r\nThis action will retry last fai
 
 ### Example 1: Sync backup instance again in case of failure
 ```powershell
-PS C:\> Sync-AzDataProtectionBackupInstance -ResourceGroupName "rgName" -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxxxxxxxxxx" -VaultName "vaultName" -BackupInstanceName $backupInstance.BackupInstanceName
+Sync-AzDataProtectionBackupInstance -ResourceGroupName "rgName" -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxxxxxxxxxx" -VaultName "vaultName" -BackupInstanceName $backupInstance.BackupInstanceName
 ```
 
 The above command is used to sync backup instance again in case of failure.
@@ -49,7 +49,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -64,7 +65,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-.
+The name of the backup instance.
 
 ```yaml
 Type: System.String
@@ -109,7 +110,8 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The name of the resource group where the backup vault is present.
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
@@ -124,7 +126,8 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-The subscription Id.
+The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String

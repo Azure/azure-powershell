@@ -223,7 +223,7 @@ function Test-EditAndGetWebAppBackupConfiguration
             -ResourceGroupName $rgName -Name $wName -StorageAccountUrl $sasUri `
             -FrequencyInterval $frequencyInterval -FrequencyUnit $frequencyUnit `
             -RetentionPeriodInDays $retentionPeriod -StartTime $startTime `
-            -KeepAtLeastOneBackup 
+            -KeepAtLeastOneBackup -Enabled
 
         # Assert
         Assert-True { $config.Enabled }
@@ -349,10 +349,7 @@ function Test-GetWebAppSnapshot
 		while ($snap -eq $null)
 		{
 			$snap = Get-AzWebAppSnapshot $app
-			if ($isRecordMode)
-			{
-				Start-Sleep -Seconds 60
-			}
+			Start-TestSleep -Seconds 60
 		}
 
 		# Test named parameters
@@ -418,38 +415,26 @@ function Test-RestoreWebAppSnapshot
 		while ($snap -eq $null)
 		{
 			$snap = Get-AzWebAppSnapshot $app
-			if ($isRecordMode)
-			{
-				Start-Sleep -Seconds 60
-			}
+			Start-TestSleep -Seconds 60
 		}
 
 		# Test overwrite
 		$snapshot = (Get-AzWebAppSnapshot $rgname $wname)[0]
 		Restore-AzWebAppSnapshot -ResourceGroupName $rgname -Name $wname -InputObject $snapshot -Force -RecoverConfiguration
 
-		if ($isRecordMode)
-		{
-			Start-Sleep -Seconds 600
-		}
+		Start-TestSleep -Seconds 600
 
 		# Test restore to target slot
 		# -UseDisasterRecovery is throwing an error. Rising a bug to investigate further.
 		Restore-AzWebAppSnapshot $rgname $wname $slotName $snapshot -RecoverConfiguration  -Force
 
-		if ($isRecordMode)
-		{
-			Start-Sleep -Seconds 600
-		}
+		Start-TestSleep -Seconds 600
 
 		# Test piping and background job
 		$job = $snapshot | Restore-AzWebAppSnapshot -Force -AsJob
 		$job | Wait-Job
 
-		if ($isRecordMode)
-		{
-			Start-Sleep -Seconds 600
-		}
+		Start-TestSleep -Seconds 600
 	}
 	finally
 	{
@@ -528,10 +513,7 @@ function Test-RestoreDeletedWebAppToExisting
 		while ($snap -eq $null)
 		{
 			$snap = Get-AzWebAppSnapshot $tmpApp
-			if ($isRecordMode)
-			{
-				Start-Sleep -Seconds 60
-			}
+			Start-TestSleep -Seconds 60
 		}
 
 		Remove-AzWebAppSlot -ResourceGroupName $rgname -Name $delName -Slot $delSlot -Force
@@ -541,18 +523,11 @@ function Test-RestoreDeletedWebAppToExisting
 
 		# Test the InputObject parameter set
 		$restoredApp = Restore-AzDeletedWebApp $deletedApp -TargetResourceGroupName $rgname -TargetName $wname -Force
-		if ($isRecordMode) 
-		{
-			# Need extra time for restore operation to resolve globally
-			Start-Sleep -Seconds 900
-		}
+		Start-TestSleep -Seconds 900
 
 		# Test the FromDeletedResourceName parameter set
 		$restoredSlot = Restore-AzDeletedWebApp -ResourceGroupName $rgname -Name $delName -Slot $delSlot -TargetResourceGroupName $rgname -TargetName $wname -TargetSlot $slotName -Force
-		if ($isRecordMode) 
-		{
-			Start-Sleep -Seconds 900
-		}
+		Start-TestSleep -Seconds 900
 
 		Assert-NotNull $restoredApp
 		Assert-AreEqual $rgname $restoredApp.ResourceGroup
@@ -593,10 +568,7 @@ function Test-RestoreDeletedWebAppToNew
 		while ($snap -eq $null)
 		{
 			$snap = Get-AzWebAppSnapshot $tmpApp
-			if ($isRecordMode)
-			{
-				Start-Sleep -Seconds 60
-			}
+			Start-TestSleep -Seconds 60
 		}
 
 		Remove-AzWebApp -ResourceGroupName $rgname -Name $delName -Force
@@ -615,11 +587,7 @@ function Test-RestoreDeletedWebAppToNew
 		Assert-AreEqual $rgname $restoredApp.ResourceGroup
 		Assert-AreEqual $delName $restoredApp.Name
 
-		if ($isRecordMode) 
-		{
-			# Need extra time for restore operation to resolve globally, or cleanup will be blocked
-			Start-Sleep -Seconds 900
-		}
+		Start-TestSleep -Seconds 900
 	}
 	finally
 	{

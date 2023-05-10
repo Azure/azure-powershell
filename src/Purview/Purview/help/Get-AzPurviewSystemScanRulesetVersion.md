@@ -1,7 +1,7 @@
 ---
 external help file: Az.Purview-help.xml
 Module Name: Az.Purview
-online version: https://docs.microsoft.com/powershell/module/az.purview/get-azpurviewsystemscanrulesetversion
+online version: https://learn.microsoft.com/powershell/module/az.purview/get-azpurviewsystemscanrulesetversion
 schema: 2.0.0
 ---
 
@@ -24,8 +24,10 @@ List system scan ruleset versions in Data catalog
 
 ### Example 1: Get all versions of system scanruleset available for a data source
 ```powershell
-PS C:\> Get-AzPurviewSystemScanRulesetVersion -Endpoint https://parv-brs-2.purview.azure.com/ -DataSourceType 'AzureStorage'
+Get-AzPurviewSystemScanRulesetVersion -Endpoint https://parv-brs-2.purview.azure.com/ -DataSourceType 'AzureStorage'
+```
 
+```output
 Id                : systemscanrulesets/AzureStorage
 Kind              : AzureStorage
 Name              : AzureStorage

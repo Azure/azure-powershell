@@ -25,12 +25,12 @@ BitLockerKey                                            DriveId
 238810-662376-448998-450120-652806-203390-606320-483076 9CA995BA
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.IDriveBitLockerKey
+Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api202101.IDriveBitLockerKey
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.importexport/get-azimportexportbitlockerkey
+https://learn.microsoft.com/powershell/module/az.importexport/get-azimportexportbitlockerkey
 #>
 function Get-AzImportExportBitLockerKey {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.IDriveBitLockerKey])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api202101.IDriveBitLockerKey])]
     [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false, ConfirmImpact='Medium')]
     param(
         [Parameter(Mandatory, HelpMessage="The name of the import/export job.")]

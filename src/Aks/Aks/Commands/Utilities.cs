@@ -13,7 +13,8 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-
+using System.Collections;
+using System.Collections.Generic;
 using Microsoft.Azure.Commands.Common.Exceptions;
 
 namespace Microsoft.Azure.Commands.Aks.Commands
@@ -31,6 +32,25 @@ namespace Microsoft.Azure.Commands.Aks.Commands
             var items = parentResource.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
 
             return items.Length > 0 ? items[items.Length - 1] : null;
+        }
+
+        public static Dictionary<string, List<string>> HashtableToDictionary(Hashtable table)
+        {
+            Dictionary<string, List<string>> dict = new Dictionary<string, List<string>>();
+            if (table == null)
+            {
+                return dict;
+            }
+            foreach (var key in table.Keys)
+            {
+                List<string> values = new List<string>();
+                foreach (var value in (object[])table[key])
+                {
+                    values.Add(value.ToString());
+                }
+                dict.Add(key.ToString(), values);
+            }
+            return dict;
         }
     }
 }

@@ -65,7 +65,7 @@ True         Microsoft.Maps/accounts/services/analytics/write
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.Api20210201.IOperationDetail
 .Link
-https://docs.microsoft.com/powershell/module/az.maps/get-azmapssubscriptionoperation
+https://learn.microsoft.com/powershell/module/az.maps/get-azmapssubscriptionoperation
 #>
 function Get-AzMapsSubscriptionOperation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.Api20210201.IOperationDetail])]

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.Management.dll-Help.xml
 Module Name: Az.Storage
-online version: https://docs.microsoft.com/powershell/module/Az.storage/new-Azstorageaccountmanagementpolicyrule
+online version: https://learn.microsoft.com/powershell/module/Az.storage/new-Azstorageaccountmanagementpolicyrule
 schema: 2.0.0
 ---
 
@@ -23,6 +23,7 @@ The **New-AzStorageAccountManagementPolicyRule** cmdlet creates a ManagementPoli
 ## EXAMPLES
 
 ### Example 1: Creates a ManagementPolicy rule object, then set to a Storage Account
+<!-- Skip: Output cannot be splitted from code -->
 ```
 PS C:\>$action = Add-AzStorageAccountManagementPolicyAction -BaseBlobAction Delete -daysAfterModificationGreaterThan 100
 PS C:\>$action = Add-AzStorageAccountManagementPolicyAction -BaseBlobAction TierToArchive -daysAfterModificationGreaterThan 50  -InputObject $action

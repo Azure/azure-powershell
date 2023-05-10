@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/get-aznetworkwatchertopology
+online version: https://learn.microsoft.com/powershell/module/az.network/get-aznetworkwatchertopology
 schema: 2.0.0
 ---
 
@@ -39,7 +39,7 @@ Note: If resources from multiple regions reside in the resource group, only the 
 ### Example 1: Get an Azure Topology
 ```powershell
 $networkWatcher = Get-AzNetworkWatcher -Name NetworkWatcher_westcentralus -ResourceGroupName NetworkWatcherRG 
-Get-AzNetworkWatcherTopology -NetworkWatcher $networkWatcher -ResourceGroupName testresourcegroup
+Get-AzNetworkWatcherTopology -NetworkWatcher $networkWatcher -TargetResourceGroupName testresourcegroup
 ```
 
 ```output

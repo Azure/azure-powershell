@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Security.dll-Help.xml
 Module Name: Az.Security
-online version:
+online version: https://learn.microsoft.com/powershell/module/az.security/get-azsecurityautomation
 schema: 2.0.0
 ---
 
@@ -41,7 +41,7 @@ Gets security automations
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzSecurityAutomation
+Get-AzSecurityAutomation
 ```
 
 Gets all security automations under the subscription

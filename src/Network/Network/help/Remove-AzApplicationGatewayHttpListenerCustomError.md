@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/remove-azapplicationgatewayhttplistenercustomerror
+online version: https://learn.microsoft.com/powershell/module/az.network/remove-azapplicationgatewayhttplistenercustomerror
 schema: 2.0.0
 ---
 
@@ -19,13 +19,13 @@ Remove-AzApplicationGatewayHttpListenerCustomError -StatusCode <String>
 ```
 
 ## DESCRIPTION
-The **Remove-AzApplicationGatewayCustomError** cmdlet removes a custom error from a http listener of an application gateway.
+The **Remove-AzApplicationGatewayHttpListenerCustomError** cmdlet removes a custom error from a http listener of an application gateway.
 
 ## EXAMPLES
 
 ### Example 1: Removes custom error from a http listener
 ```powershell
-$updatedlistener = Remove-AzApplicationGatewayCustomError -HttpListener $listener01 -StatusCode HttpStatus502
+Remove-AzApplicationGatewayHttpListenerCustomError -HttpListener $listener01 -StatusCode HttpStatus502
 ```
 
 This command removes the custom error of http status code 502 from the http listener $listener01, and return the updated listener.
@@ -78,7 +78,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

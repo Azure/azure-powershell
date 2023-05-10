@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Namespace
     /// <para> If Namespace name provided, a single Namespace detials will be returned</para>
     /// <para> If Namespace name not provided, list of Namespace will be returned</para>
     /// </summary>
-    [CmdletOutputBreakingChange(typeof(PSNamespaceAttributes), DeprecatedOutputProperties = new string[] { "ResourceGroup" }, NewOutputProperties = new string[] { "ResourceGroupName"})]
+    [GenericBreakingChange("Output type of the cmdlet would change to `Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.ISbNamespace`. This cmdlet would henceforth be alias cmdlet with Get-AzServiceBusNamespaceV2.", deprecateByVersion: DeprecateByVersion, changeInEfectByDate: ChangeInEffectByDate)]
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ServiceBusNamespace"), OutputType(typeof(PSNamespaceAttributes))]
     public class GetAzureRmServiceBusNamespace : AzureServiceBusCmdletBase
     {

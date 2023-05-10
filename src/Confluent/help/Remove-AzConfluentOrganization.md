@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Confluent
-online version: https://docs.microsoft.com/powershell/module/az.confluent/remove-azconfluentorganization
+online version: https://learn.microsoft.com/powershell/module/az.confluent/remove-azconfluentorganization
 schema: 2.0.0
 ---
 
@@ -231,7 +231,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IConfluentIdentity>: Identity Parameter
+INPUTOBJECT `<IConfluentIdentity>`: Identity Parameter
   - `[Id <String>]`: Resource identity path
   - `[OrganizationName <String>]`: Organization resource name
   - `[ResourceGroupName <String>]`: Resource group name

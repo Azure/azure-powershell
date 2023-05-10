@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.dll-Help.xml
 Module Name: Az.EventGrid
-online version: https://docs.microsoft.com/powershell/module/az.eventgrid/get-azeventgriddomaintopic
+online version: https://learn.microsoft.com/powershell/module/az.eventgrid/get-azeventgriddomaintopic
 schema: 2.0.0
 ---
 
@@ -78,7 +78,7 @@ List all the Event Grid domain topics under Event Grid domain \`Domain1\` in res
 
 ```powershell
 $result=Get-AzEventGridDomainTopic -ResourceGroup MyResourceGroupName -DomainName Domain1
-echo $result.PsDomainTopicsList
+Write-Output $result.PsDomainTopicsList
 ```
 
 ```output
@@ -112,7 +112,7 @@ List all the Event Grid domain topics under Event Grid domain \`Domain1\` in res
 
 ```powershell
 $result=Get-AzEventGridDomainTopic -ResourceId "/subscriptions/$subscriptionId/resourceGroups/MyResourceGroupName/providers/Microsoft.EventGrid/domains/Domain1"
-echo $result.PsDomainTopicsList
+Write-Output $result.PsDomainTopicsList
 ```
 
 ```output
@@ -155,7 +155,7 @@ while ($result.NextLink -ne $Null)
         $total += $result.Count
     }
 
-echo "Total number of domain topics is $Total"
+Write-Output "Total number of domain topics is $Total"
 ```
 
 ## PARAMETERS

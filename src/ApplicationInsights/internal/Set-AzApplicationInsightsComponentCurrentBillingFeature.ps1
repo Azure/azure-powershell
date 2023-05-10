@@ -24,10 +24,23 @@ Update current billing features for an Application Insights component.
 .Example
 {{ Add code here }}
 
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20150501.IApplicationInsightsComponentBillingFeatures
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20150501.IApplicationInsightsComponentBillingFeatures
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+BILLINGFEATURESPROPERTY <IApplicationInsightsComponentBillingFeatures>: An Application Insights component billing features
+  [CurrentBillingFeature <String[]>]: Current enabled pricing plan. When the component is in the Enterprise plan, this will list both 'Basic' and 'Application Insights Enterprise'.
+  [DataVolumeCapCap <Single?>]: Daily data volume cap in GB.
+  [DataVolumeCapStopSendNotificationWhenHitCap <Boolean?>]: Do not send a notification email when the daily data volume cap is met.
+  [DataVolumeCapStopSendNotificationWhenHitThreshold <Boolean?>]: Reserved, not used for now.
+  [DataVolumeCapWarningThreshold <Int32?>]: Reserved, not used for now.
 .Link
-https://docs.microsoft.com/powershell/module/az.applicationinsights/set-azapplicationinsightscomponentcurrentbillingfeature
+https://learn.microsoft.com/powershell/module/az.applicationinsights/set-azapplicationinsightscomponentcurrentbillingfeature
 #>
 function Set-AzApplicationInsightsComponentCurrentBillingFeature {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20150501.IApplicationInsightsComponentBillingFeatures])]
@@ -54,7 +67,14 @@ param(
     # The ID of the target subscription.
     ${SubscriptionId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='Update', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20150501.IApplicationInsightsComponentBillingFeatures]
+    # An Application Insights component billing features
+    # To construct, see NOTES section for BILLINGFEATURESPROPERTY properties and create a hash table.
+    ${BillingFeaturesProperty},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Body')]
     [System.String[]]
@@ -62,25 +82,25 @@ param(
     # When the component is in the Enterprise plan, this will list both 'Basic' and 'Application Insights Enterprise'.
     ${CurrentBillingFeature},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Body')]
     [System.Single]
     # Daily data volume cap in GB.
     ${DataVolumeCap},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # Do not send a notification email when the daily data volume cap is met.
     ${DataVolumeCapStopSendNotificationWhenHitCap},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # Reserved, not used for now.
     ${DataVolumeCapStopSendNotificationWhenHitThreshold},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Body')]
     [System.Int32]
     # Reserved, not used for now.
@@ -143,9 +163,10 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         $mapping = @{
+            Update = 'Az.ApplicationInsights.private\Set-AzApplicationInsightsComponentCurrentBillingFeature_Update';
             UpdateExpanded = 'Az.ApplicationInsights.private\Set-AzApplicationInsightsComponentCurrentBillingFeature_UpdateExpanded';
         }
-        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('Update', 'UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
 

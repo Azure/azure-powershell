@@ -58,7 +58,7 @@ function New-ModulePsm1 {
     PROCESS {
         $manifestDir = Get-Item -Path $ModulePath
         $moduleName = $manifestDir.Name + ".psd1"
-        $manifestPath = Get-ChildItem -Path $manifestDir -Filter $moduleName -Recurse
+        $manifestPath = (Get-Item "$manifestDir/$moduleName").FullName
         $file = Get-Item $manifestPath
         Import-LocalizedData -BindingVariable ModuleMetadata -BaseDirectory $file.DirectoryName -FileName $file.Name
 
@@ -146,6 +146,19 @@ if (%ISAZMODULE% -and (`$PSEdition -eq 'Core'))
         {
             $template = $template -replace "%AZORAZURERM%", "`Az"
             $template = $template -replace "%ISAZMODULE%", "`$false"
+        }
+
+        # Register CommandNotFound event in Az.Accounts
+        if ($IsNetcore -and $file.BaseName -ieq 'Az.Accounts')
+        {
+            $template = $template -replace "%COMMAND-NOT-FOUND%",
+@"
+[Microsoft.Azure.Commands.Profile.Utilities.CommandNotFoundHelper]::RegisterCommandNotFoundAction(`$ExecutionContext.InvokeCommand)
+"@
+        }
+        else
+        {
+            $template = $template -replace "%COMMAND-NOT-FOUND%"
         }
 
         # Handle

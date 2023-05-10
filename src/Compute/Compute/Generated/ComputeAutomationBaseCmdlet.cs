@@ -168,6 +168,30 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             }
         }
 
+        public ICommunityGalleriesOperations CommunityGalleriesClient
+        {
+            get
+            {
+                return ComputeClient.ComputeManagementClient.CommunityGalleries;
+            }
+        }
+
+        public ICommunityGalleryImagesOperations CommunityGalleryImagesClient
+        {
+            get
+            {
+                return ComputeClient.ComputeManagementClient.CommunityGalleryImages;
+            }
+        }
+
+        public ICommunityGalleryImageVersionsOperations CommunityGalleryImageVersionsClient
+        {
+            get
+            {
+                return ComputeClient.ComputeManagementClient.CommunityGalleryImageVersions;
+            }
+        }
+
         public ISharedGalleryImagesOperations SharedGalleryImagesClient
         {
             get

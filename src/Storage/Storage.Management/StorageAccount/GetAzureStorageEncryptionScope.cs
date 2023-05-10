@@ -68,6 +68,24 @@ namespace Microsoft.Azure.Commands.Management.Storage
         [ValidateNotNullOrEmpty]
         public string EncryptionScopeName { get; set; }
 
+        [Parameter(Mandatory = false,
+            HelpMessage = "The maximum number of encryption scopes that will be included in the list response")]
+        [ValidateNotNullOrEmpty]
+        public int? MaxPageSize { get; set; }
+
+        [Parameter(Mandatory = false,
+            HelpMessage = "The filter of encryption scope name. When specified, only encryption scope names starting with the filter will be listed. The filter must be in format: startswith(name, <prefix>)")]
+        [ValidateNotNullOrEmpty]
+        public string Filter { get; set; }
+
+        [Parameter(Mandatory = false,
+            HelpMessage = "Optional, when specified, will list encryption scopes with the specific state. Defaults to All.")]
+        [ValidateSet(ListEncryptionScopesInclude.All,
+            ListEncryptionScopesInclude.Enabled,
+            ListEncryptionScopesInclude.Disabled)]
+        [ValidateNotNullOrEmpty]
+        public string Include { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -87,7 +105,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
             {
                 IPage<EncryptionScope> scopes = this.StorageClient.EncryptionScopes.List(
                         this.ResourceGroupName,
-                        this.StorageAccountName);
+                        this.StorageAccountName, this.MaxPageSize, this.Filter, this.Include);
                 WriteEncryptionScopeList(scopes);
 
                 while (scopes.NextPageLink != null)

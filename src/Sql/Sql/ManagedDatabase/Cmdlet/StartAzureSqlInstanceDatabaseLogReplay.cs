@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
         /// <summary>
         /// Gets or sets the Sas token of the storage container.
         /// </summary>
-        [Parameter(Mandatory = true,
+        [Parameter(Mandatory = false,
             HelpMessage = "The storage container Sas token.")]
         [Alias("SasToken")]
         [ValidateNotNullOrEmpty]
@@ -68,6 +68,16 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
         [ValidateNotNullOrEmpty]
         [PSArgumentCompleter("SQL_Latin1_General_CP1_CI_AS", "Latin1_General_100_CS_AS_SC")]
         public string Collation { get; set; }
+
+        /// <summary>
+        /// Gets or sets the identity
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "The identity type to use for storage container.")]
+        [ValidateNotNullOrEmpty]
+        [PSArgumentCompleter("SharedAccessSignature", "ManagedIdentity")]
+        [PSDefaultValue(Value = "SharedAccessSignature")]
+        public string StorageContainerIdentity { get; set; }
 
         /// <summary>
         /// Gets or sets whether or not to run this cmdlet in the background as a job
@@ -118,7 +128,8 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
                 Name = Name,
                 StorageContainerUri = StorageContainerUri,
                 StorageContainerSasToken = StorageContainerSasToken,
-                Collation = Collation
+                Collation = Collation,
+                StorageContainerIdentity = StorageContainerIdentity,
             };
 
             if (AutoCompleteRestore.IsPresent && string.IsNullOrEmpty(LastBackupName))

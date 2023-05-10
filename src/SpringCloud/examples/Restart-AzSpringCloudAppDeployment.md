@@ -1,13 +1,13 @@
-### Example 1: Restart Spring Cloud Service by name.
+### Example 1: Restart Spring Cloud Service by name
 ```powershell
-PS C:\> Restart-AzSpringCloudAppDeployment -ResourceGroupName spring-cloud-rg -ServiceName spring-cloud-service -AppName gateway -DeploymentName default
+Restart-AzSpringCloudAppDeployment -ResourceGroupName spring-cloud-rg -ServiceName spring-cloud-service -AppName gateway -DeploymentName default 
 ```
 
 Restart Spring Cloud Service by name.
 
-### Example 2: Restart Spring Cloud Service from pipe.
+### Example 2: Restart Spring Cloud Service by pipeline
 ```powershell
-PS C:\> Get-AzSpringCloudAppDeployment -ResourceGroupName spring-cloud-rg -ServiceName spring-cloud-service -AppName gateway -DeploymentName default | Restart-AzSpringCloud
+Get-AzSpringCloudAppDeployment -ResourceGroupName spring-cloud-rg -ServiceName spring-cloud-service -AppName gateway -DeploymentName default | Restart-AzSpringCloudAppDeployment
 ```
 
-Restart Spring Cloud Service from pipe.
+Restart Spring Cloud Service by pipeline.

@@ -30,7 +30,7 @@ Commercial  San Francisco             US      94107      CA              101 TOW
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ShippingAddress
 .Link
-https://docs.microsoft.com/powershell/module/az.DataBox/new-AzDataBoxShippingAddressObject
+https://learn.microsoft.com/powershell/module/az.DataBox/new-AzDataBoxShippingAddressObject
 #>
 function New-AzDataBoxShippingAddressObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ShippingAddress])]

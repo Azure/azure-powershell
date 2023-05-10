@@ -136,7 +136,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
                     PublicNetworkAccess = this.PublicNetworkAccess
                 };
 
-                this.WriteObject(KeyVaultManagementClient.CreateNewManagedHsm(vaultCreationParameter, GraphClient));
+                this.WriteObject(KeyVaultManagementClient.CreateOrRecoverManagedHsm(vaultCreationParameter, GraphClient));
             }
         }
 

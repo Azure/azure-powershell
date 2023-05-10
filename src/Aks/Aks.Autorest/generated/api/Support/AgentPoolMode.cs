@@ -6,18 +6,26 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Support
 {
 
-    /// <summary>AgentPoolMode represents mode of an agent pool.</summary>
+    /// <summary>
+    /// A cluster must have at least one 'System' Agent Pool at all times. For additional information on agent pool restrictions
+    /// and best practices, see: https://docs.microsoft.com/azure/aks/use-system-pools
+    /// </summary>
     public partial struct AgentPoolMode :
         System.IEquatable<AgentPoolMode>
     {
+        /// <summary>
+        /// System agent pools are primarily for hosting critical system pods such as CoreDNS and metrics-server. System agent pools
+        /// osType must be Linux. System agent pools VM SKU must have at least 2vCPUs and 4GB of memory.
+        /// </summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.AgentPoolMode System = @"System";
 
+        /// <summary>User agent pools are primarily for hosting your application pods.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.AgentPoolMode User = @"User";
 
         /// <summary>the value for an instance of the <see cref="AgentPoolMode" /> Enum.</summary>
         private string _value { get; set; }
 
-        /// <summary>Creates an instance of the <see cref="AgentPoolMode" Enum class./></summary>
+        /// <summary>Creates an instance of the <see cref="AgentPoolMode"/> Enum class.</summary>
         /// <param name="underlyingValue">the value to create an instance for.</param>
         private AgentPoolMode(string underlyingValue)
         {
@@ -78,8 +86,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Support
         }
 
         /// <summary>Overriding != operator for enum AgentPoolMode</summary>
-        /// <param name="e1">the value to compare against <see cref="e2" /></param>
-        /// <param name="e2">the value to compare against <see cref="e1" /></param>
+        /// <param name="e1">the value to compare against <paramref name="e2" /></param>
+        /// <param name="e2">the value to compare against <paramref name="e1" /></param>
         /// <returns><c>true</c> if the two instances are not equal to the same value</returns>
         public static bool operator !=(Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.AgentPoolMode e1, Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.AgentPoolMode e2)
         {
@@ -87,8 +95,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Support
         }
 
         /// <summary>Overriding == operator for enum AgentPoolMode</summary>
-        /// <param name="e1">the value to compare against <see cref="e2" /></param>
-        /// <param name="e2">the value to compare against <see cref="e1" /></param>
+        /// <param name="e1">the value to compare against <paramref name="e2" /></param>
+        /// <param name="e2">the value to compare against <paramref name="e1" /></param>
         /// <returns><c>true</c> if the two instances are equal to the same value</returns>
         public static bool operator ==(Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.AgentPoolMode e1, Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.AgentPoolMode e2)
         {

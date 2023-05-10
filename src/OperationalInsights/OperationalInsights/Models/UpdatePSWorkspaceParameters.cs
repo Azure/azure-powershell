@@ -34,5 +34,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights
         public bool? ForceCmkForQuery { get; set; }
 
         public PSWorkspaceFeatures WsFeatures { get; set; }
+
+        public string DefaultDataCollectionRuleResourceId { get; set; }
     }
 }

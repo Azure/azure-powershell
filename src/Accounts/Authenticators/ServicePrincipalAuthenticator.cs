@@ -30,7 +30,7 @@ namespace Microsoft.Azure.PowerShell.Authenticators
     {
         private const string AuthenticationFailedMessage = "No certificate thumbprint or secret provided for the given service principal '{0}'.";
 
-        //MSAL doesn't cache Service Principal into msal.cache
+        // MSAL doesn't cache the secret of Service Principal, but it caches access tokens
         public override Task<IAccessToken> Authenticate(AuthenticationParameters parameters, CancellationToken cancellationToken)
         {
             var spParameters = parameters as ServicePrincipalParameters;
@@ -43,10 +43,14 @@ namespace Microsoft.Azure.PowerShell.Authenticators
             var authority = spParameters.Environment.ActiveDirectoryAuthority;
 
             var requestContext = new TokenRequestContext(scopes);
+            // var tokenCachePersistenceOptions = spParameters.TokenCacheProvider.GetTokenCachePersistenceOptions();
             AzureSession.Instance.TryGetComponent(nameof(AzureCredentialFactory), out AzureCredentialFactory azureCredentialFactory);
 
             var options = new ClientCertificateCredentialOptions()
             {
+                // commented due to https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/3218
+                // todo: investigate splitting user token cache and app token cache
+                // TokenCachePersistenceOptions = tokenCachePersistenceOptions, // allows MSAL to cache access tokens
                 AuthorityHost = new Uri(authority),
                 SendCertificateChain = spParameters.SendCertificateChain ?? default(bool)
             };
@@ -63,10 +67,15 @@ namespace Microsoft.Azure.PowerShell.Authenticators
             else if (spParameters.Secret != null)
             {
                 //Service principal with secret
-                tokenCredential = azureCredentialFactory.CreateClientSecretCredential(tenantId, spParameters.ApplicationId, spParameters.Secret, options);
-                parametersLog = $"- ApplicationId:'{spParameters.ApplicationId}', TenantId:'{tenantId}', Scopes:'{string.Join(",", scopes)}', AuthorityHost:'{options.AuthorityHost}'";
+                var csOptions = new ClientSecretCredentialOptions()
+                {
+                    // TokenCachePersistenceOptions = tokenCachePersistenceOptions, // allows MSAL to cache access tokens
+                    AuthorityHost = new Uri(authority)
+                };
+                tokenCredential = azureCredentialFactory.CreateClientSecretCredential(tenantId, spParameters.ApplicationId, spParameters.Secret, csOptions);
+                parametersLog = $"- ApplicationId:'{spParameters.ApplicationId}', TenantId:'{tenantId}', Scopes:'{string.Join(",", scopes)}', AuthorityHost:'{csOptions.AuthorityHost}'";
             }
-            else if(!string.IsNullOrEmpty(spParameters.CertificatePath))
+            else if (!string.IsNullOrEmpty(spParameters.CertificatePath))
             {
                 if (spParameters.CertificateSecret != null)
                 {
@@ -86,6 +95,7 @@ namespace Microsoft.Azure.PowerShell.Authenticators
             {
                 throw new MsalException(MsalError.AuthenticationFailed, string.Format(AuthenticationFailedMessage, clientId));
             }
+
             return MsalAccessToken.GetAccessTokenAsync(
                 nameof(ServicePrincipalAuthenticator),
                 parametersLog,

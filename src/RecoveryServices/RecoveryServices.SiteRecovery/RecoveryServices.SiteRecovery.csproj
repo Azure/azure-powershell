@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <PsModuleName>RecoveryServices</PsModuleName>
@@ -12,12 +12,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="AutoMapper" Version="6.2.2" />
-    <PackageReference Include="Microsoft.Azure.Management.RecoveryServices" Version="4.3.2-preview" />
-    <PackageReference Include="Microsoft.Azure.Management.RecoveryServices.SiteRecovery" Version="2.2.0-preview" />
+    <PackageReference Include="Microsoft.Azure.PowerShell.AutoMapper" Version="6.2.2" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\RecoveryServices.Management.Sdk\RecoveryServices.Management.Sdk.csproj" />
+    <ProjectReference Include="..\RecoveryServices.SiteRecovery.Management.Sdk\RecoveryServices.SiteRecovery.Management.Sdk.csproj" />
     <ProjectReference Include="..\RecoveryServices\RecoveryServices.csproj" />
   </ItemGroup>
 
@@ -35,5 +35,7 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
+
+  <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.Post.props" />
 
 </Project>

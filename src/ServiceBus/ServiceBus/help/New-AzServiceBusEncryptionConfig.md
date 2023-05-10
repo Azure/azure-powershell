@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.dll-Help.xml
 Module Name: Az.ServiceBus
-online version:
+online version: https://learn.microsoft.com/powershell/module/az.servicebus/new-azservicebusencryptionconfig
 schema: 2.0.0
 ---
 
@@ -24,7 +24,7 @@ The **New-AzServiceBusEncryptionConfig** creates an in memory object. This comma
 
 ### Example 1
 ```powershell
-New-AzServiceBusEncryptionConfig -KeyName key1 -KeyVaultUri https://myvaultname.vault.azure.net -UserAssignedIdentity /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/MSIName2
+New-AzServiceBusEncryptionConfig -KeyName key1 -KeyVaultUri https://myvaultname.vault.azure.net -UserAssignedIdentity '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/MSIName2'
 ```
 
 Refer the doc for New-AzServiceBusNamespace and Set-AzServiceBusNamespace on how to use this further

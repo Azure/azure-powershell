@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.ServiceLinker
-online version: https://docs.microsoft.com/powershell/module/az.servicelinker/test-azservicelinkerforspringcloud
+online version: https://learn.microsoft.com/powershell/module/az.servicelinker/test-azservicelinkerforspringcloud
 schema: 2.0.0
 ---
 
@@ -32,7 +32,7 @@ Validate a link in spring cloud.
 
 ### Example 1: Test Linker
 ```powershell
-Test-AzServiceLinkerForSpringCloud -ServiceName servicelinker-springcloud -AppName appconfiguration -DeploymentName "default" -ResourceGroupName servicelinker-test-group -Name postgresql_connection  | fl
+Test-AzServiceLinkerForSpringCloud -ServiceName servicelinker-springcloud -AppName appconfiguration -DeploymentName "default" -ResourceGroupName servicelinker-test-group -Name postgresql_connection  | Format-List
 ```
 
 ```output
@@ -264,7 +264,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20220501.IValidateResult
+### Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.IValidateResult
 
 ## NOTES
 
@@ -275,10 +275,15 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IServiceLinkerIdentity>: Identity Parameter
+`INPUTOBJECT <IServiceLinkerIdentity>`: Identity Parameter
+  - `[ConnectorName <String>]`: The name of resource.
+  - `[DryrunName <String>]`: The name of dryrun.
   - `[Id <String>]`: Resource identity path
   - `[LinkerName <String>]`: The name Linker resource.
+  - `[Location <String>]`: The name of Azure region.
+  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
   - `[ResourceUri <String>]`: The fully qualified Azure Resource manager identifier of the resource to be connected.
+  - `[SubscriptionId <String>]`: The ID of the target subscription.
 
 ## RELATED LINKS
 

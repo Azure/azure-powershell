@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
-online version: https://docs.microsoft.com/powershell/module/az.compute/set-azsnapshotupdatekeyencryptionkey
+online version: https://learn.microsoft.com/powershell/module/az.compute/set-azsnapshotupdatekeyencryptionkey
 schema: 2.0.0
 ---
 
@@ -26,9 +26,9 @@ The **Set-AzSnapshotUpdateKeyEncryptionKey** cmdlet sets the key encryption key 
 ### Example 1
 ```powershell
 $snapshotupdateconfig = New-AzSnapshotUpdateConfig -DiskSizeGB 10 -AccountType PremiumLRS -OsType Windows -EncryptionSettingsEnabled $true;
-$secretUrl = https://myvault.vault-int.azure-int.net/secrets/123/;
+$secretUrl = 'https://myvault.vault-int.azure-int.net/secrets/123/';
 $secretId = '/subscriptions/0000000-0000-0000-0000-000000000000/resourceGroups/ResourceGroup01/providers/Microsoft.KeyVault/vaults/TestVault123';
-$keyUrl = https://myvault.vault-int.azure-int.net/keys/456;
+$keyUrl = 'https://myvault.vault-int.azure-int.net/keys/456';
 $keyId = '/subscriptions/0000000-0000-0000-0000-000000000000/resourceGroups/ResourceGroup01/providers/Microsoft.KeyVault/vaults/TestVault456';
 $snapshotupdateconfig = Set-AzSnapshotUpdateDiskEncryptionKey -SnapshotUpdate $snapshotupdateconfig -SecretUrl $secretUrl -SourceVaultId $secretId;
 $snapshotupdateconfig = Set-AzSnapshotUpdateKeyEncryptionKey -SnapshotUpdate $snapshotupdateconfig -KeyUrl $keyUrl -SourceVaultId $keyId;

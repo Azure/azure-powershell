@@ -1,7 +1,7 @@
 ---
 external help file: Az.Purview-help.xml
 Module Name: Az.Purview
-online version: https://docs.microsoft.com/powershell/module/az.purview/get-azpurviewscanresultscanhistory
+online version: https://learn.microsoft.com/powershell/module/az.purview/get-azpurviewscanresultscanhistory
 schema: 2.0.0
 ---
 
@@ -24,8 +24,10 @@ Lists the scan history of a scan
 
 ### Example 1: List all scan runs within a scan instance of a data source
 ```powershell
-PS C:\> Get-AzPurviewScanResultScanHistory -Endpoint 'https://parv-brs-2.purview.azure.com/' -DataSourceName 'DataScanTestData-Parv' -ScanName 'Scan1ForDemo' | fl
+Get-AzPurviewScanResultScanHistory -Endpoint 'https://parv-brs-2.purview.azure.com/' -DataSourceName 'DataScanTestData-Parv' -ScanName 'Scan1ForDemo' | Format-List
+```
 
+```output
 AssetsClassified            : 62
 AssetsDiscovered            : 97
 Code                        :

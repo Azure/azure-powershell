@@ -1,4 +1,4 @@
-"AssemblyFileName","ClassName","Target","Severity","ProblemId","Description","Remediation"
+"Module","ClassName","Target","Severity","ProblemId","Description","Remediation"
 "Az.DigitalTwins","Get-AzDigitalTwinsEndpoint","Get-AzDigitalTwinsEndpoint","1","8410","Parameter ProxyUseDefaultCredentials of cmdlet Get-AzDigitalTwinsEndpoint does not follow the enforced naming convention of using a singular noun for a parameter name.","Consider using a singular noun for the parameter name."
 "Az.DigitalTwins","Get-AzDigitalTwinsInstance","Get-AzDigitalTwinsInstance","1","8410","Parameter ProxyUseDefaultCredentials of cmdlet Get-AzDigitalTwinsInstance does not follow the enforced naming convention of using a singular noun for a parameter name.","Consider using a singular noun for the parameter name."
 "Az.DigitalTwins","New-AzDigitalTwinsCheckNameRequestObject","New-AzDigitalTwinsCheckNameRequestObject","1","8100","New-AzDigitalTwinsCheckNameRequestObject Does not support ShouldProcess but the cmdlet verb New indicates that it should.","Determine if the cmdlet should implement ShouldProcess and if so determine if it should implement Force / ShouldContinue"

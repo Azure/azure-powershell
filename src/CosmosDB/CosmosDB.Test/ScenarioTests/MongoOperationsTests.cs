@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Castle.Core.Logging;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
@@ -49,6 +50,13 @@ namespace Microsoft.Azure.Commands.CosmosDB.Test.ScenarioTests.ScenarioTest
         public void TestMongoMigrateThroughputCmdlets()
         {
             TestRunner.RunTestScript("Test-MongoMigrateThroughputCmdlets");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestMongoRBACCmdlets()
+        {
+            TestRunner.RunTestScript("Test-MongoRBACCmdlets");
         }
     }
 }

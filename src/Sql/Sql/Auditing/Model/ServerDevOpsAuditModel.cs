@@ -19,6 +19,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Sql.Auditing.Model
 {
     public enum AuditStateType { Enabled, Disabled };
+    public enum BoolType { False, True };
 
     public class ServerDevOpsAuditModel
     {
@@ -40,6 +41,8 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Model
 
         public string WorkspaceResourceId { get; set; }
 
+        public BoolType UseIdentity { get; set; }
+
         [Hidden]
         internal bool? IsAzureMonitorTargetEnabled { get; set; }
 
@@ -48,5 +51,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Model
 
         [Hidden]
         internal string NextDiagnosticSettingsName { get; set; }
+
+        public bool? IsManagedIdentityInUse { get; set; }
     }
 }

@@ -51,7 +51,8 @@ namespace Microsoft.Azure.Commands.EventGrid.Test.ScenarioTests
                         {"Microsoft.Resources", null},
                         {"Microsoft.Features", null},
                         {"Microsoft.Authorization", null},
-                        {"Microsoft.EventHub", null}
+                        {"Microsoft.EventHub", null},
+                        {"Microsoft.ServiceBus", null}
                     }
                 )
                 .Build();

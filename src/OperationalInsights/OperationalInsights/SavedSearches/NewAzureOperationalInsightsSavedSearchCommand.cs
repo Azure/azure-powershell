@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights
         public string FunctionAlias { get; set; }
 
         [Parameter(Position = 9, Mandatory = false,
-            HelpMessage = "The optional function parameters if query serves as a function. Value should be in the following format: 'param-name1:type1 = default_value1, param-name2:type2 = default_value2'. For more examples and proper syntax please refer to https://docs.microsoft.com/en-us/azure/kusto/query/functions/user-defined-functions.")]
+            HelpMessage = "The optional function parameters if query serves as a function. Value should be in the following format: 'param-name1:type1 = default_value1, param-name2:type2 = default_value2'. For more examples and proper syntax please refer to https://learn.microsoft.com/en-us/azure/kusto/query/functions/user-defined-functions.")]
         [ValidateNotNull]
         [Alias("FunctionParameters")]
         public string FunctionParameter { get; set; }

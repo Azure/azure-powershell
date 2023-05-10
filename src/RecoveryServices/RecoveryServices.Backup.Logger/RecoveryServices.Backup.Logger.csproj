@@ -11,4 +11,6 @@
     <RootNamespace>$(LegacyAssemblyPrefix)$(PsModuleName).Backup</RootNamespace>
   </PropertyGroup>
 
+  <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.Post.props" />
+
 </Project>

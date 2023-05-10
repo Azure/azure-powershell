@@ -1,22 +1,14 @@
-### Example 1: {{ Add title here }}
+### Example 1: List resource useages of an AzureFrontDoor origin group under the profile
 ```powershell
-{{ Add code here }}
+Get-AzFrontDoorCdnOriginGroupResourceUsage -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -OriginGroupName org001
 ```
 
 ```output
-{{ Add output here }}
+CurrentValue Limit Unit
+------------ ----- ----
+1            50    count
 ```
 
-{{ Add description here }}
+List resource useages of an AzureFrontDoor origin group under the profile
 
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
 

@@ -87,7 +87,7 @@ Version                : 1
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IClassificationRule
 .Link
-https://docs.microsoft.com/powershell/module/az.purview/get-azpurviewclassificationrule
+https://learn.microsoft.com/powershell/module/az.purview/get-azpurviewclassificationrule
 #>
 function Get-AzPurviewClassificationRule {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IClassificationRule])]

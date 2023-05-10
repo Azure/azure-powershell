@@ -187,6 +187,13 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The list of egress  NAT rules that are associated with this Connection.")]
         public PSResourceId[] EgressNatRule { get; set; }
 
+        [Parameter(
+           Mandatory = false,
+           ValueFromPipelineByPropertyName = true,
+           HelpMessage = "The GatewayCustomBgpIpAddress of Virtual network gateway used in this connection.")]
+        [ValidateNotNullOrEmpty]
+        public PSGatewayCustomBgpIpConfiguration[] GatewayCustomBgpIpAddress { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
@@ -195,6 +202,13 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Whether to use accelerated virtual network access by bypassing gateway")]
         public SwitchParameter ExpressRouteGatewayBypass { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Bypass the ExpressRoute gateway when accessing private-links. " +
+                          "ExpressRoute FastPath (ExpressRouteGatewayBypass) must be enabled.")]
+        public SwitchParameter EnablePrivateLinkFastPath { get; set; }
 
         public override void Execute()
         {
@@ -231,6 +245,7 @@ namespace Microsoft.Azure.Commands.Network
             vnetGatewayConnection.UseLocalAzureIpAddress = this.UseLocalAzureIpAddress.IsPresent;
             vnetGatewayConnection.UsePolicyBasedTrafficSelectors = this.UsePolicyBasedTrafficSelectors;
             vnetGatewayConnection.ExpressRouteGatewayBypass = this.ExpressRouteGatewayBypass.IsPresent;
+            vnetGatewayConnection.EnablePrivateLinkFastPath = this.EnablePrivateLinkFastPath.IsPresent;
 
             if (!string.IsNullOrWhiteSpace(this.ConnectionProtocol))
             {
@@ -289,6 +304,16 @@ namespace Microsoft.Azure.Commands.Network
                         {
                             Id = resource.Id
                         });
+                }
+            }
+
+            if (this.GatewayCustomBgpIpAddress != null)
+            {
+                vnetGatewayConnection.GatewayCustomBgpIpAddresses = new List<PSGatewayCustomBgpIpConfiguration>();
+
+                foreach (var reqaddress in this.GatewayCustomBgpIpAddress)
+                {
+                    vnetGatewayConnection.GatewayCustomBgpIpAddresses.Add(reqaddress);
                 }
             }
 

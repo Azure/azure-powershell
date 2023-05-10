@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Synapse.dll-Help.xml
 Module Name: Az.Synapse
-online version: https://docs.microsoft.com/powershell/module/az.synapse/get-azsynapselinkconnection
+online version: https://learn.microsoft.com/powershell/module/az.synapse/get-azsynapselinkconnection
 schema: 2.0.0
 ---
 
@@ -31,22 +31,22 @@ The **Get-AzSynapseLinkConnection** cmdlet gets information about link connectio
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzSynapseLinkConnection -WorkspaceName ContosoWorkspace
+Get-AzSynapseLinkConnection -WorkspaceName ContosoWorkspace
 ```
 
 Gets a list of all link connections in the workspace ContosoWorkspace.
 
 ### Example 2
 ```powershell
-PS C:\> Get-AzSynapseLinkConnection -WorkspaceName ContosoWorkspace -Name ContosoLinkConnection
+Get-AzSynapseLinkConnection -WorkspaceName ContosoWorkspace -Name ContosoLinkConnection
 ```
 
 Gets a single link connection named ContosoLinkConnection in the workspace ContosoWorkspace.
 
 ### Example 3
 ```powershell
-PS C:\> $ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
-PS C:\> $ws | Get-AzSynapseLinkConnection
+$ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
+$ws | Get-AzSynapseLinkConnection
 ```
 
 This command gets all link connections under a workspace through pipeline.

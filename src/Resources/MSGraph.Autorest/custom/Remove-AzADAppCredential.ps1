@@ -19,7 +19,7 @@ Removes key credentials or password credentials for an application.
 .Description
 Removes key credentials or password credentials for an application.
 .Link
-https://docs.microsoft.com/powershell/module/az.resources/Remove-azadappcredential
+https://learn.microsoft.com/powershell/module/az.resources/Remove-azadappcredential
 #>
 
 function Remove-AzADAppCredential {

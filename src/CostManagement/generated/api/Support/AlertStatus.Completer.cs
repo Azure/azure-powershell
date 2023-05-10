@@ -28,23 +28,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "None".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("None", "None", global::System.Management.Automation.CompletionResultType.ParameterValue, "None");
+                yield return new global::System.Management.Automation.CompletionResult("'None'", "None", global::System.Management.Automation.CompletionResultType.ParameterValue, "None");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Active".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Active", "Active", global::System.Management.Automation.CompletionResultType.ParameterValue, "Active");
+                yield return new global::System.Management.Automation.CompletionResult("'Active'", "Active", global::System.Management.Automation.CompletionResultType.ParameterValue, "Active");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Overridden".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Overridden", "Overridden", global::System.Management.Automation.CompletionResultType.ParameterValue, "Overridden");
+                yield return new global::System.Management.Automation.CompletionResult("'Overridden'", "Overridden", global::System.Management.Automation.CompletionResultType.ParameterValue, "Overridden");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Resolved".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Resolved", "Resolved", global::System.Management.Automation.CompletionResultType.ParameterValue, "Resolved");
+                yield return new global::System.Management.Automation.CompletionResult("'Resolved'", "Resolved", global::System.Management.Automation.CompletionResultType.ParameterValue, "Resolved");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Dismissed".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Dismissed", "Dismissed", global::System.Management.Automation.CompletionResultType.ParameterValue, "Dismissed");
+                yield return new global::System.Management.Automation.CompletionResult("'Dismissed'", "Dismissed", global::System.Management.Automation.CompletionResultType.ParameterValue, "Dismissed");
             }
         }
     }

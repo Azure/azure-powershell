@@ -29,7 +29,7 @@ azps_test_extension microsoft.arcdataservices 1.0.16701001 Succeeded         Tru
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.IExtension
 .Link
-https://docs.microsoft.com/powershell/module/az.kubernetesconfiguration/new-azkubernetesextension
+https://learn.microsoft.com/powershell/module/az.kubernetesconfiguration/new-azkubernetesextension
 #>
 function New-AzKubernetesExtension {
     [Alias('New-AzK8sExtension')]

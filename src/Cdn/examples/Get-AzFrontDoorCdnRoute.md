@@ -1,22 +1,28 @@
-### Example 1: {{ Add title here }}
+### Example 1: List AzureFrontDoor routes under the AzureFrontDoor profile
 ```powershell
-{{ Add code here }}
+Get-AzFrontDoorCdnRoute -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -EndpointName end001
 ```
 
 ```output
-{{ Add output here }}
+Name     ResourceGroupName
+----     -----------------
+route001 testps-rg-da16jm
+route002 testps-rg-da16jm
+route003 testps-rg-da16jm
+route004 testps-rg-da16jm
 ```
 
-{{ Add description here }}
+List AzureFrontDoor routes under the AzureFrontDoor profile
 
-### Example 2: {{ Add title here }}
+### Example 2: Get an AzureFrontDoor route under the AzureFrontDoor profile
 ```powershell
-{{ Add code here }}
+Get-AzFrontDoorCdnRoute -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -EndpointName end001 -Name route001
 ```
 
 ```output
-{{ Add output here }}
+Name     ResourceGroupName
+----     -----------------
+route001 testps-rg-da16jm
 ```
 
-{{ Add description here }}
-
+Get an AzureFrontDoor route under the AzureFrontDoor profile

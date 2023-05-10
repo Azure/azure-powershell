@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.dll-Help.xml
 Module Name: Az.ContainerRegistry
-online version: https://docs.microsoft.com/powershell/module/az.containerregistry/import-azcontainerregistryimage
+online version: https://learn.microsoft.com/powershell/module/az.containerregistry/import-azcontainerregistryimage
 schema: 2.0.0
 ---
 
@@ -60,7 +60,7 @@ Note:
 
 ### Example 2
 ```powershell
-Import-AzContainerRegistryImage -SourceImage $SourceRegistry.azurecr.io/busybox:latest -ResourceGroupName $resourceGroupName -RegistryName $RegistryName -SourceRegistryResourceId $SourceACRID -TargetTag busybox:latest
+Import-AzContainerRegistryImage -SourceImage "$SourceRegistry.azurecr.io/busybox:latest" -ResourceGroupName $resourceGroupName -RegistryName $RegistryName -SourceRegistryResourceId $SourceACRID -TargetTag busybox:latest
 ```
 
 Import busybox from source ACR to target ACR. 

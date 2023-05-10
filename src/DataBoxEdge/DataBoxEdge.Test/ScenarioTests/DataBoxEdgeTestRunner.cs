@@ -17,7 +17,6 @@ using Microsoft.Azure.Management.DataBoxEdge;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using ResourceManagementClient = Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient;
 using StorageManagementClient = Microsoft.Azure.Management.Storage.Version2017_10_01.StorageManagementClient;
-using TestEnvironmentFactory = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory;
 using Microsoft.Azure.Commands.TestFx;
 using Xunit.Abstractions;
 

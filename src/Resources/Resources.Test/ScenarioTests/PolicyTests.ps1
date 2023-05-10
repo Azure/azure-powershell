@@ -2045,7 +2045,6 @@ function Test-GetPolicyDefinitionParameters
     Assert-ThrowsContains { Get-AzPolicyDefinition -Name $someName -Id $someId -Custom } $parameterSetError
 
     # validate remaining parameter combinations starting with -Id
-    $ok = Get-AzureRmPolicyDefinition -Id $goodId
     Assert-ThrowsContains { Get-AzPolicyDefinition -Id $goodId -ManagementGroupName $someManagementGroup } $parameterSetError
     Assert-ThrowsContains { Get-AzPolicyDefinition -Id $goodId -SubscriptionId $subscriptionId } $parameterSetError
     Assert-ThrowsContains { Get-AzPolicyDefinition -Id $goodId -BuiltIn } $parameterSetError

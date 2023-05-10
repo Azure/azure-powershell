@@ -117,7 +117,9 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Services
         /// <summary>
         /// Convert a Management.Sql.Models.DistributedAvailabilityGroup to AzureSqlManagedInstanceLinkModel
         /// </summary>
-        /// <param name="resp">The management client distributed availiability group response to convert</param>
+        /// <param name="resourceGroupName">Resource group used by the managed instance</param>
+        /// <param name="instanceName">Name of the managed instance</param>
+        /// <param name="managedInstanceLink">The management client distributed availiability group response to convert</param>
         /// <returns>The converted managed instance link model</returns>
         private static AzureSqlManagedInstanceLinkModel CreateManagedInstanceLinkModelFromResponse(string resourceGroupName, string instanceName, Management.Sql.Models.DistributedAvailabilityGroup managedInstanceLink)
         {

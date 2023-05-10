@@ -27,7 +27,7 @@ Lists all the available Domain Services operations.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.IOperationEntity
 .Link
-https://docs.microsoft.com/powershell/module/az.addomainservices/get-azaddomainserviceoperation
+https://learn.microsoft.com/powershell/module/az.addomainservices/get-azaddomainserviceoperation
 #>
 function Get-AzADDomainServiceOperation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.IOperationEntity])]
@@ -160,7 +160,7 @@ REPLICASET <IReplicaSet[]>: List of ReplicaSets
   [Location <String>]: Virtual network location
   [SubnetId <String>]: The name of the virtual network that Domain Services will be deployed on. The id of the subnet that Domain Services will be deployed on. /virtualNetwork/vnetName/subnets/subnetName.
 .Link
-https://docs.microsoft.com/powershell/module/az.addomainservices/new-azaddomainservice
+https://learn.microsoft.com/powershell/module/az.addomainservices/new-azaddomainservice
 #>
 function New-AzADDomainService {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.IDomainService])]

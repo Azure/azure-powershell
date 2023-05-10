@@ -27,7 +27,7 @@ The **Get-AzDiskAccess** cmdlet gets the properties of Disk Accesses
 
 ## EXAMPLES
 
-### Example 1: Using Default Parameter Set 
+### Example 1: Using Default Parameter Set
 ```powershell
 Get-AzDiskAccess -ResourceGroupName 'ResourceGroup01' -Name 'DiskAccess01'
 ```
@@ -71,7 +71,6 @@ Tags                       : {}
 ```
 
 This command gets the properties of all disk accesses in the resource group 'ResourceGroup01'.
-
 
 ### Example 3: Getting all Disk Access
 ```powershell
@@ -153,7 +152,6 @@ Tags                       : {}
 ```
 
 This command gets the properties of a Disk Access with the given ResourceId.
-
 
 ## PARAMETERS
 

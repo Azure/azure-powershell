@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Resources.dll-Help.xml
 Module Name: Az.Resources
-online version: https://docs.microsoft.com/powershell/module/az.resources/new-azresourcemanagementprivatelink
+online version: https://learn.microsoft.com/powershell/module/az.resources/new-azresourcemanagementprivatelink
 schema: 2.0.0
 ---
 
@@ -24,9 +24,10 @@ The New-AzResourceManagementPrivateLink cmdlet create a specific resource manage
 
 ### Example 1
 ```powershell
-PS C:\> New-AzResourceManagementPrivateLink -ResourceGroupName PrivateLinkTestRG -Name NewPL
+New-AzResourceManagementPrivateLink -ResourceGroupName PrivateLinkTestRG -Name NewPL
+```
 
-
+```output
 Id                         : /subscriptions/aeb49941-36c3-4e7c-9ffd-16ba89d33ec4/resourceGroups/PrivateLinkTestRG/provi
                              ders/Microsoft.Authorization/resourceManagementPrivateLinks/NewPL
 Type                       : Microsoft.Authorization/resourceManagementPrivateLinks

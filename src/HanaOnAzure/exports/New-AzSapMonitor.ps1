@@ -30,7 +30,7 @@ westus2  ps-sapmonitor-t01 Microsoft.HanaOnAzure/sapMonitors
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.Api20200207Preview.ISapMonitor
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.hanaonazure/new-azsapmonitor
+https://learn.microsoft.com/en-us/powershell/module/az.hanaonazure/new-azsapmonitor
 #>
 function New-AzSapMonitor {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.Api20200207Preview.ISapMonitor])]

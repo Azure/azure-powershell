@@ -141,6 +141,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
         /// <summary>
         /// list azure table clients by full name or simple regular expression
         /// </summary>
+        /// <param name="localChannel">IStorageTableManagement channel object</param>
         /// <param name="tableName">table name or simple regular expression</param>
         /// <returns></returns>
         internal IEnumerable<AzureStorageTable> ListTablesByNameV2(IStorageTableManagement localChannel, string tableName)
@@ -185,6 +186,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
         /// <summary>
         /// list azure table clients by prefix using track2 sdk
         /// </summary>
+        /// <param name="localChannel">IStorageTableManagement channel object</param>
         /// <param name="prefix">table prefix</param>
         /// <returns></returns>
         internal IEnumerable<AzureStorageTable> ListTablesByPrefixV2(IStorageTableManagement localChannel, string prefix)
@@ -202,7 +204,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
         /// <summary>
         /// list azure table clients by query
         /// </summary>
-        /// <param name="localChannel"></param>
+        /// <param name="localChannel">IStorageTableManagement channel object</param>
         /// <param name="query">table query string</param>
         /// <returns></returns>
         internal IEnumerable<AzureStorageTable> ListTablesByQueryV2(IStorageTableManagement localChannel, string query)

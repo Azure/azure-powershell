@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataMigration.dll-Help.xml
 Module Name: Az.DataMigration
-online version: https://docs.microsoft.com/powershell/module/az.datamigration/New-AzDataMigrationConnectionInfo
+online version: https://learn.microsoft.com/powershell/module/az.datamigration/New-AzDataMigrationConnectionInfo
 schema: 2.0.0
 ---
 
@@ -24,7 +24,7 @@ The New-AzDataMigrationConnectionInfo cmdlet creates new a Connection Info objec
 
 ### Example 1
 ```powershell
-New-AzDataMigrationConnectionInfo -ServerType SQL -DataSource mySourceServer -AuthType SqlAuthentication -TrustServerCertificate:$true
+New-AzDataMigrationConnectionInfo -ServerType SQL
 ```
 
 The preceding example creates a new Connection Info object providing SQL as ServerType parameter.

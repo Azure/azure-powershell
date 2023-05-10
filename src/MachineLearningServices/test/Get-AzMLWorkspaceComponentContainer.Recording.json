@@ -1,0 +1,92 @@
+{
+  "Get-AzMLWorkspaceComponentContainer+[NoContext]+List+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-cli01/components?api-version=2022-05-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-cli01/components?api-version=2022-05-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "12" ],
+        "x-ms-client-request-id": [ "b781ca23-ee6e-4d38-87f0-84c930ba1efa" ],
+        "CommandName": [ "Get-AzMLWorkspaceComponentContainer" ],
+        "FullCommandName": [ "Get-AzMLWorkspaceComponentContainer_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.4", "Az.MachineLearningWorkspaces/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-request-id": [ "08a8d313-96de-4d0e-9a95-6d58f43bcffd" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11988" ],
+        "Request-Context": [ "appId=cid-v1:2d2e8e63-272e-4b3c-8598-4ee570a0e70d" ],
+        "x-ms-response-type": [ "standard" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-aml-cluster": [ "vienna-eastus-01" ],
+        "x-request-time": [ "0.377" ],
+        "x-ms-correlation-request-id": [ "08a8d313-96de-4d0e-9a95-6d58f43bcffd" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220605T094013Z:08a8d313-96de-4d0e-9a95-6d58f43bcffd" ],
+        "Date": [ "Sun, 05 Jun 2022 09:40:12 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "894" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\n  \"value\": [\n    {\n      \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-cli01/components/train_data_component\",\n      \"name\": \"train_data_component\",\n      \"type\": \"Microsoft.MachineLearningServices/workspaces/components\",\n      \"properties\": {\n        \"description\": \"\",\n        \"tags\": {},\n        \"properties\": {},\n        \"isArchived\": false,\n        \"latestVersion\": null,\n        \"nextVersion\": \"2022-06-05-09-40-13-2163322\"\n      },\n      \"systemData\": {\n        \"createdAt\": \"2022-05-24T07:23:25.3105486Z\",\n        \"createdBy\": \"Lucas Yao (Wicresoft North America)\",\n        \"createdByType\": \"User\",\n        \"lastModifiedAt\": \"2022-05-24T07:23:25.5758536Z\",\n        \"lastModifiedBy\": \"Lucas Yao (Wicresoft North America)\",\n        \"lastModifiedByType\": \"User\"\n      }\n    }\n  ]\n}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzMLWorkspaceComponentContainer+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-cli01/components/train_data_component?api-version=2022-05-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-cli01/components/train_data_component?api-version=2022-05-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "13" ],
+        "x-ms-client-request-id": [ "49e0518c-b4aa-4bb6-97a5-8c28f537a387" ],
+        "CommandName": [ "Get-AzMLWorkspaceComponentContainer" ],
+        "FullCommandName": [ "Get-AzMLWorkspaceComponentContainer_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.4", "Az.MachineLearningWorkspaces/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-request-id": [ "23ab4c0c-646a-4743-9dc0-f7544999c539" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11987" ],
+        "Request-Context": [ "appId=cid-v1:2d2e8e63-272e-4b3c-8598-4ee570a0e70d" ],
+        "x-ms-response-type": [ "standard" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-aml-cluster": [ "vienna-eastus-01" ],
+        "x-request-time": [ "0.125" ],
+        "x-ms-correlation-request-id": [ "23ab4c0c-646a-4743-9dc0-f7544999c539" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220605T094015Z:23ab4c0c-646a-4743-9dc0-f7544999c539" ],
+        "Date": [ "Sun, 05 Jun 2022 09:40:15 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "606" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\n  \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-cli01/components/train_data_component\",\n  \"name\": \"train_data_component\",\n  \"type\": \"Microsoft.MachineLearningServices/workspaces/components\",\n  \"properties\": {\n    \"description\": \"\",\n    \"tags\": {},\n    \"properties\": {},\n    \"isArchived\": false,\n    \"latestVersion\": null,\n    \"nextVersion\": \"2022-06-05-09-40-15-2861408\"\n  },\n  \"systemData\": {\n    \"createdAt\": \"2022-05-24T07:23:25.24329Z\",\n    \"lastModifiedAt\": \"2022-05-24T07:23:25.432293Z\"\n  }\n}",
+      "isContentBase64": false
+    }
+  }
+}

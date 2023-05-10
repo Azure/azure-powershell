@@ -74,6 +74,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Origin(Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.PropertyOrigin.Owned)]
         public string ResourceName { get => this._resourceName; set => this._resourceName = value; }
 
+        /// <summary>Backing field for <see cref="RevisionId" /> property.</summary>
+        private string _revisionId;
+
+        /// <summary>The id of the workbook's revision.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Origin(Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.PropertyOrigin.Owned)]
+        public string RevisionId { get => this._revisionId; set => this._revisionId = value; }
+
         /// <summary>Backing field for <see cref="StorageType" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Support.StorageType? _storageType;
 
@@ -176,6 +183,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models
         SerializedName = @"resourceName",
         PossibleTypes = new [] { typeof(string) })]
         string ResourceName { get; set; }
+        /// <summary>The id of the workbook's revision.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The id of the workbook's revision.",
+        SerializedName = @"revisionId",
+        PossibleTypes = new [] { typeof(string) })]
+        string RevisionId { get; set; }
         /// <summary>
         /// The type of the Application Insights component data source for the linked storage account.
         /// </summary>
@@ -229,6 +244,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models
         string ResourceGroupName { get; set; }
         /// <summary>The name of the Application Insights component resource.</summary>
         string ResourceName { get; set; }
+        /// <summary>The id of the workbook's revision.</summary>
+        string RevisionId { get; set; }
         /// <summary>
         /// The type of the Application Insights component data source for the linked storage account.
         /// </summary>

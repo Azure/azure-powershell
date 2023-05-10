@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement.dll-Help.xml
 Module Name: Az.AlertsManagement
-online version: https://docs.microsoft.com/powershell/module/az.alertsmanagement/remove-azactionrule
+online version: https://learn.microsoft.com/powershell/module/az.alertsmanagement/remove-azalertprocessingrule
 schema: 2.0.0
 ---
 
@@ -14,20 +14,20 @@ Deletes an alert processing rule
 
 ### ByName (Default)
 ```
-Remove-AzAlertProcessingRule -ResourceGroupName <String> -Name <String> [-DefaultProfile <IAzureContextContainer>]
- [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzAlertProcessingRule -ResourceGroupName <String> -Name <String>
+ [-DefaultProfile <IAzureContextContainer>] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByResourceId
 ```
-Remove-AzAlertProcessingRule -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [-PassThru] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Remove-AzAlertProcessingRule -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByInputObject
 ```
-Remove-AzAlertProcessingRule -InputObject <PSActionRule> [-DefaultProfile <IAzureContextContainer>] [-PassThru]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzAlertProcessingRule -InputObject <PSAlertProcessingRule> [-DefaultProfile <IAzureContextContainer>]
+ [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -37,7 +37,7 @@ Remove-AzAlertProcessingRule -InputObject <PSActionRule> [-DefaultProfile <IAzur
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzAlertProcessingRule -ResourceGroupName "test-rg" -Name "AlertProcessingRuleName"
+Remove-AzAlertProcessingRule -ResourceGroupName "test-rg" -Name "AlertProcessingRuleName"
 ```
 
 This cmdlet deletes the alert processing rule with name AlertProcessingRuleName in resource group test-rg
@@ -63,7 +63,7 @@ Accept wildcard characters: False
 The alert processing rule resource
 
 ```yaml
-Type: Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSActionRule
+Type: Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSAlertProcessingRule
 Parameter Sets: ByInputObject
 Aliases:
 

@@ -163,7 +163,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.PowerShell
 
                 if (previewVersion != null)
                 {
-                    sb.AppendLine($@"{Indent}{Indent}{Indent}Prerelease = {previewVersion}");
+                    sb.AppendLine($@"{Indent}{Indent}{Indent}Prerelease = '{previewVersion}'");
                 }
                 sb.AppendLine($@"{Indent}{Indent}{Indent}Tags = {"Azure ResourceManager ARM PSModule CloudService".Split(' ').ToPsList().NullIfEmpty() ?? "''"}");
                 sb.AppendLine($@"{Indent}{Indent}{Indent}LicenseUri = '{"https://aka.ms/azps-license"}'");

@@ -23,7 +23,7 @@ Validate a link in container app.
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.IServiceLinkerIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20220501.IValidateResult
+Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.IValidateResult
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -34,10 +34,10 @@ INPUTOBJECT <IServiceLinkerIdentity>: Identity Parameter
   [LinkerName <String>]: The name Linker resource.
   [ResourceUri <String>]: The fully qualified Azure Resource manager identifier of the resource to be connected.
 .Link
-https://docs.microsoft.com/powershell/module/az.servicelinker/test-azservicelinkerforcontainerapp
+https://learn.microsoft.com/powershell/module/az.servicelinker/test-azservicelinkerforcontainerapp
 #>
 function Test-AzServiceLinkerForContainerApp {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20220501.IValidateResult])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.IValidateResult])]
 [CmdletBinding(DefaultParameterSetName='Validate', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Validate', Mandatory)]

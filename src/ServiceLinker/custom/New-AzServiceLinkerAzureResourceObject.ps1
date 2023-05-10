@@ -21,12 +21,12 @@ Create an in-memory object for AzureResource.
 Create an in-memory object for AzureResource.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20220501.AzureResource
+Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.AzureResource
 .Link
-https://docs.microsoft.com/powershell/module/az.ServiceLinker/new-azservicelinkerazureresourceobject
+https://learn.microsoft.com/powershell/module/az.ServiceLinker/new-azservicelinkerazureresourceobject
 #>
 function New-AzServiceLinkerAzureResourceObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20220501.AzureResource')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.AzureResource')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -34,7 +34,7 @@ function New-AzServiceLinkerAzureResourceObject {
         [string]
         $Id,
         # [Parameter(HelpMessage="The azure resource connection related properties.")]
-        # [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20220501.IAzureResourcePropertiesBase]
+        # [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.IAzureResourcePropertiesBase]
         # $ResourceProperty,
         [Parameter(HelpMessage="True if connect via Kubernetes CSI Driver. Source must be AKS and target must be KeyVault.")]
         [bool]
@@ -47,7 +47,7 @@ function New-AzServiceLinkerAzureResourceObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20220501.AzureResource]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.AzureResource]::New()
 
         if ($PSBoundParameters.ContainsKey('Id')) {
             $Pattern = "/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/(?<resourceProvider>[^/]+)(/(?<resourceType>[^/]+)/(?<resourceName>[^/]+))+"
@@ -57,7 +57,7 @@ function New-AzServiceLinkerAzureResourceObject {
             $Object.Id = $Id
         }
         if ($PSBoundParameters.ContainsKey('ConnectAsKubernetesCsiDriver')) {
-            $ResourceProperty = [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20220501.AzureKeyVaultProperties]::New()
+            $ResourceProperty = [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.AzureKeyVaultProperties]::New()
             $ResourceProperty.ConnectAsKubernetesCsiDriver = $ConnectAsKubernetesCsiDriver
             $Object.ResourceProperty = $ResourceProperty
         }

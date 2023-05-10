@@ -196,6 +196,17 @@ namespace Microsoft.Azure.Commands.Insights.Test.ActionGroups
             };
         }
 
+        public static TestNotificationDetailsResponse CreateTestNotificationDetailsResponse()
+        {
+            return new TestNotificationDetailsResponse()
+            {
+                ActionDetails = new List<ActionDetail>() { new ActionDetail { MechanismType = "Email", Detail = "This is a test message.", Name = "Name", SendTime = DateTime.Now.ToString(), Status = "Completed", SubState = null } },
+                CompletedTime = DateTime.Now.ToString(),
+                CreatedTime = DateTime.Now.ToString(),
+                State = "Complete",
+                Context = new Context() { ContextType = "Test", NotificationSource = "Test Source" }
+            };
+        }
 
         public static ActionGroupResource CreateActionGroupResource(
             string name,

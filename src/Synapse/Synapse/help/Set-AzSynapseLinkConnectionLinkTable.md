@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Synapse.dll-Help.xml
 Module Name: Az.Synapse
-online version: https://docs.microsoft.com/powershell/module/az.synapse/set-azsynapselinkconnectionlinktables
+online version: https://learn.microsoft.com/powershell/module/az.synapse/set-azsynapselinkconnectionlinktables
 schema: 2.0.0
 ---
 
@@ -39,7 +39,30 @@ The **Set-AzSynapseLinkConnectionLinkTables** cmdlet edits link tables under a l
 
 ### Example 1
 ```powershell
-Set-AzSynapseLinkConnectionLinkTables -WorkspaceName ContosoWorkspace -LinkConnectionName ContosoLinkConnection -EditTablesRequestFile "C:\\samples\\edittables.json"
+<#
+edittables.json
+{ 
+  "linkTables": [ 
+    { 
+      "id": "00000000000000000000000000000000", // please change to your link table Id: a uuid
+      "source": { 
+        "tableName": "sampleSourceTable", // please change to your source table name
+        "schemaName": "sampleSourceSchema" // please change to your source database schema name
+      }, 
+      "target": { 
+        "tableName": "sampleTargetTable", // please change to your target table name
+        "schemaName": "sampleTargetSchema", // please change to your target database schema name
+        "distributionOptions": { 
+          "type": "Round_RoBin", // please choose a type from Hash, Round_RoBin, Replicate
+          "distributionColumn": "sampleColumn" // please change to the column name
+        }
+      }, 
+      "operationType": "add" // please choose a value from add, update, remove
+    }
+  ]
+}
+#>
+Set-AzSynapseLinkConnectionLinkTable -WorkspaceName ContosoWorkspace -LinkConnectionName ContosoLinkConnection -EditTablesRequestFile "C:\samples\edittables.json"
 ```
 
 This command edits link tables under link connection ContosoLinkConnection in workspace ContosoWorkspace.
@@ -49,7 +72,7 @@ This file includes information about edited link table.
 ### Example 2
 ```powershell
 $ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
-$ws | Set-AzSynapseLinkConnectionLinkTables -LinkConnectionName ContosoLinkConnection -EditTablesRequestFile "C:\\samples\\edittables.json"
+$ws | Set-AzSynapseLinkConnectionLinkTable -LinkConnectionName ContosoLinkConnection -EditTablesRequestFile "C:\samples\edittables.json"
 ```
 
 This command edits link tables under link connection ContosoLinkConnection in workspace ContosoWorkspace through pipeline.
@@ -58,8 +81,8 @@ This file includes information about edited link table.
 
 ### Example 3
 ```powershell
-$lc = Get-AzSynpaseLinkConnection -WorkspaceName ContosoWorkspace -Name ContosoLinkConnection
-$lc | Set-AzSynapseLinkConnectionLinkTables -EditTablesRequestFile "C:\\samples\\edittables.json"
+$lc = Get-AzSynapseLinkConnection -WorkspaceName ContosoWorkspace -Name ContosoLinkConnection
+$lc | Set-AzSynapseLinkConnectionLinkTable -EditTablesRequestFile "C:\samples\edittables.json"
 ```
 
 This command edits link tables under a link connection through pipeline.

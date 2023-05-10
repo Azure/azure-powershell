@@ -44,7 +44,7 @@ INPUTOBJECT <IDatadogIdentity>: Identity Parameter
   [RuleSetName <String>]: Rule set name
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.datadog/update-azdatadogmonitorsetpasswordlink
+https://learn.microsoft.com/powershell/module/az.datadog/update-azdatadogmonitorsetpasswordlink
 #>
 function Update-AzDatadogMonitorSetPasswordLink {
 [OutputType([System.String])]

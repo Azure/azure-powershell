@@ -1,0 +1,40 @@
+{
+  "Test-AzSpringCloudNameAvailability+[NoContext]+CheckExpanded+$POST+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.AppPlatform/locations/EastUS/checkNameAvailability?api-version=2022-04-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.AppPlatform/locations/EastUS/checkNameAvailability?api-version=2022-04-01",
+      "Content": "{\r\n  \"type\": \"Microsoft.AppPlatform/Spring\",\r\n  \"name\": \"springcloud-service\"\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "80" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "Request-Context": [ "appId=cid-v1:797d7e4e-8180-497e-a254-780fbd39ba4d" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-client-request-id": [ "b7f5ac6c-acb5-4e58-b4e0-6a9d348a915b" ],
+        "x-rp-server-mvid": [ "b4692fb5-75b2-4001-b951-6c09037b5614" ],
+        "x-ms-request-id": [ "1a796eff-217d-4803-a634-d35871630d95" ],
+        "x-ms-correlation-request-id": [ "1a796eff-217d-4803-a634-d35871630d95" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220729T103435Z:1a796eff-217d-4803-a634-d35871630d95" ],
+        "Date": [ "Fri, 29 Jul 2022 10:34:34 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "22" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"nameAvailable\":true}",
+      "isContentBase64": false
+    }
+  }
+}

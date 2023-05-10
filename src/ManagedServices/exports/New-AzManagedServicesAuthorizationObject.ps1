@@ -35,7 +35,7 @@ DelegatedRoleDefinitionId                                                    Pri
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.Authorization
 .Link
-https://docs.microsoft.com/powershell/module/az.ManagedServices/new-AzManagedServicesAuthorizationObject
+https://learn.microsoft.com/powershell/module/az.ManagedServices/new-AzManagedServicesAuthorizationObject
 #>
 function New-AzManagedServicesAuthorizationObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.Authorization])]

@@ -248,6 +248,20 @@ namespace CognitiveServices.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSharedCommitmentPlan()
+        {
+            TestRunner.RunTestScript("Test-SharedCommitmentPlan");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestMultiRegionSettings()
+        {
+            TestRunner.RunTestScript("Test-MultiRegionSettings");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDeployment()
         {
             TestRunner.RunTestScript("Test-Deployment");

@@ -43,8 +43,7 @@ namespace Microsoft.Azure.Commands.Sql.Service
         /// <summary>
         /// Constructs adapter
         /// </summary>
-        /// <param name="profile">The current azure profile</param>
-        /// <param name="subscription">The current azure subscription</param>
+        /// <param name="context">The current azure context</param>
         public AzureSqlDatabaseIndexRecommendationAdapter(IAzureContext context)
         {
             Context = context;

@@ -456,4 +456,7 @@
   <data name="NeedEnableManagedIdentity" xml:space="preserve">
     <value>Please set '-EnableManagedIdentity' first if you want to set 'AssignIdentity'.</value>
   </data>
+  <data name="UpdatingNodePoolLabels" xml:space="preserve">
+    <value>Updating node pool labels</value>
+  </data>
 </root>

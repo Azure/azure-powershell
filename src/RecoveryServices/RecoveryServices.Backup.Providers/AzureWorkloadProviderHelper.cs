@@ -26,6 +26,7 @@ using ScheduleRunType = Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 using ServiceClientModel = Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 using CrrModel = Microsoft.Azure.Management.RecoveryServices.Backup.CrossRegionRestore.Models;
 using SystemNet = System.Net;
+using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 {
@@ -340,28 +341,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         {
             string vaultName = (string)providerData[CmdletModel.VaultParams.VaultName];
             string vaultResourceGroupName = (string)providerData[CmdletModel.VaultParams.ResourceGroupName];
-            string friendlyName = (string)providerData[CmdletModel.ContainerParams.FriendlyName];
-            CmdletModel.ContainerRegistrationStatus status =
-                (CmdletModel.ContainerRegistrationStatus)providerData[CmdletModel.ContainerParams.Status];
+            string friendlyName = (string)providerData[CmdletModel.ContainerParams.FriendlyName];            
 
             string nameQueryFilter = friendlyName;
-
-            ODataQuery<ServiceClientModel.BMSContainerQueryObject> queryParams = null;
-            if (status == 0)
-            {
-                queryParams = new ODataQuery<ServiceClientModel.BMSContainerQueryObject>(
+            ODataQuery<ServiceClientModel.BMSContainerQueryObject> queryParams = new ODataQuery<ServiceClientModel.BMSContainerQueryObject>(
                 q => q.FriendlyName == nameQueryFilter &&
                 q.BackupManagementType == backupManagementType);
-            }
-            else
-            {
-                var statusString = status.ToString();
-                queryParams = new ODataQuery<ServiceClientModel.BMSContainerQueryObject>(
-                q => q.FriendlyName == nameQueryFilter &&
-                q.BackupManagementType == backupManagementType &&
-                q.Status == statusString);
-            }
-
+            
             var listResponse = ServiceClientAdapter.ListContainers(
                 queryParams,
                 vaultName: vaultName,
@@ -452,8 +438,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             {
                 CmdletModel.SimpleSchedulePolicyV2 simpleSchedulePolicyV2 = (CmdletModel.SimpleSchedulePolicyV2)policy;
                 if (simpleSchedulePolicyV2.ScheduleRunFrequency == ScheduleRunType.Hourly)
-                {
-                    // throw new ArgumentException("Enhanced Hourly policy is currently not supported for WorkloadType AzureIaasVM. This will be supported soon");                    
+                {                                      
                     List<int> AllowedScheduleIntervals = new List<int> { 4, 6, 8, 12 };
                     if (!(AllowedScheduleIntervals.Contains((int)simpleSchedulePolicyV2.HourlySchedule.Interval)))
                     {
@@ -463,7 +448,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                     // duration should be multiple of Interval and less than or equal to 24
                     if (simpleSchedulePolicyV2.HourlySchedule.WindowDuration > 24 || simpleSchedulePolicyV2.HourlySchedule.WindowDuration % simpleSchedulePolicyV2.HourlySchedule.Interval != 0)
                     {
-                        throw new ArgumentException("Hourly policy ScheduleWindowDuration should be multiple of ScheduleInterval and less than or equal to 24 Hrs. for WorkloadType AzureVM");
+                        throw new ArgumentException(Resources.InvalidScheduleWindow);
                     }
                 }
             }
@@ -532,7 +517,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         {
             return newSubProtectionPolicies.Where(
                 newSubProtectionPolicy =>
-                {                   
+                {
                     return (newSubProtectionPolicy.PolicyType == policyType);
                 }).ToList();
         }
@@ -546,8 +531,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         /// checks if daily retention is reduced first, then weekly, then monthly and then yearly; breaks and return true whenever it finds retention is reduced in any schedule.
         /// if retention is not reduced in any schedule, returns false at the end.
         /// </summary>
-        /// <param name="oldRetentionSchedule"></param>
-        /// <param name="newRetentionSchedule"></param>
+        /// <param name="oldRetentionPolicy"></param>
+        /// <param name="newRetentionPolicy"></param>
         /// <returns></returns>
         public bool checkMUAForLongTermRetentionPolicy(ServiceClientModel.LongTermRetentionPolicy oldRetentionPolicy, ServiceClientModel.LongTermRetentionPolicy newRetentionPolicy)
         {
@@ -578,7 +563,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 {
                     return true;
                 }
-            }            
+            }
 
             return false;
         }
@@ -596,17 +581,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         /// checks if daily retention is reduced first, then weekly, then monthly and then yearly; breaks and return true whenever it finds retention is reduced in any schedule.
         /// if retention is not reduced in any schedule, returns false at the end.
         /// </summary>
-        /// <param name="oldRetentionSchedule"></param>
-        /// <param name="newRetentionSchedule"></param>
+        /// <param name="oldRetentionPolicy"></param>
+        /// <param name="newRetentionPolicy"></param>
         /// <returns></returns>
         public bool checkMUAForMSSQLPolicy(ServiceClientModel.AzureVmWorkloadProtectionPolicy oldRetentionPolicy, ServiceClientModel.AzureVmWorkloadProtectionPolicy newRetentionPolicy)
-        {            
+        {
             IList<SubProtectionPolicy> oldSubProtectionPolicies = oldRetentionPolicy.SubProtectionPolicy;
             IList<SubProtectionPolicy> newSubProtectionPolicies = newRetentionPolicy.SubProtectionPolicy;
 
             foreach (SubProtectionPolicy oldSubProtectionPolicy in oldSubProtectionPolicies)
             {
-                string policyType = oldSubProtectionPolicy.PolicyType;                
+                string policyType = oldSubProtectionPolicy.PolicyType;
                 List<SubProtectionPolicy> newSubProtectionPolicy = GetSubProtectionPolicyOfType(newSubProtectionPolicies, policyType);
                 if(newSubProtectionPolicy == null || newSubProtectionPolicy.Count == 0) return true;
                 else
@@ -616,7 +601,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                         if(checkMUAForSimpleRetentionPolicy((ServiceClientModel.SimpleRetentionPolicy)oldSubProtectionPolicy.RetentionPolicy, (ServiceClientModel.SimpleRetentionPolicy)newSubProtectionPolicy[0].RetentionPolicy))
                         {
                             return true;
-                        }                        
+                        }
                     }
                     else if (oldSubProtectionPolicy.RetentionPolicy.GetType() == typeof(ServiceClientModel.LongTermRetentionPolicy))
                     {
@@ -654,7 +639,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             }
 
             else if (newPolicy.Properties.GetType() == typeof(ServiceClientModel.AzureVmWorkloadProtectionPolicy))
-            {                   
+            {
                 return checkMUAForMSSQLPolicy((ServiceClientModel.AzureVmWorkloadProtectionPolicy)oldPolicy.Properties, (ServiceClientModel.AzureVmWorkloadProtectionPolicy)newPolicy.Properties);                                
             }
 
@@ -662,7 +647,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         }
 
         public bool checkMUAForModifyPolicy(ProtectionPolicyResource oldPolicy, ProtectionPolicyResource newPolicy, bool enableMUA = false)
-        {            
+        {
             if( enableMUA && (checkMUAForSchedulePolicy(oldPolicy, newPolicy) || checkMUAForRetentionPolicy(oldPolicy, newPolicy)))
             {
                 return true;
@@ -706,7 +691,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
                 // schedule runTimes is already validated if in UTC/not during validate()
                 // now copy times from schedule to retention policy
-                
+
                 List<DateTime> hourlyWindowStartTime = (schPolicyV2.HourlySchedule != null) ? new List<DateTime>{(DateTime)schPolicyV2.HourlySchedule.WindowStartTime} : null;
 
                 if (retPolicy.IsDailyScheduleEnabled && retPolicy.DailySchedule != null)
@@ -792,7 +777,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             {
                 ODataQuery<BMSRPQueryObject> queryFilter = new ODataQuery<BMSRPQueryObject>();
                 queryFilter.Filter = queryFilterString;
-
+                                
                 List<RecoveryPointResource> rpListResponse;
                 rpListResponse = ServiceClientAdapter.GetRecoveryPoints(
                 containerUri,
@@ -985,6 +970,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             ((CmdletModel.AzureVmWorkloadPolicy)policy).FullBackupRetentionPolicy = retPolicy.FullBackupRetentionPolicy;
             ((CmdletModel.AzureVmWorkloadPolicy)policy).DifferentialBackupRetentionPolicy = retPolicy.DifferentialBackupRetentionPolicy;
             ((CmdletModel.AzureVmWorkloadPolicy)policy).LogBackupRetentionPolicy = retPolicy.LogBackupRetentionPolicy;
+        }
+
+        public void GetUpdatedTieringPolicy(CmdletModel.PolicyBase policy, CmdletModel.TieringPolicy tieringDetails)
+        {
+            ((CmdletModel.AzureVmWorkloadPolicy)policy).FullBackupTieringPolicy = tieringDetails;
         }
 
         public void TriggerInquiry(string vaultName, string vaultResourceGroupName,

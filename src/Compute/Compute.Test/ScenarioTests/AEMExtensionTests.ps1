@@ -82,11 +82,6 @@ Remove Test:
 		tested by: Test-WithUserAssignedIdentity
 #>
 
-function Log($test, $message)
-{
-    Out-File -FilePath "$test.log" -Append -InputObject $message
-}
-
 function Assert-NewExtension($ResourceGroupName, $VMName, $IdentityType) {
 	
 	$newPublisher = "Microsoft.AzureCAT.AzureEnhancedMonitoring"
@@ -123,14 +118,15 @@ function Assert-OldExtension($ResourceGroupName, $VMName) {
 }
 
 function Test-WithUserAssignedIdentity() {
-	
+	InitTest "Test-WithUserAssignedIdentity"
+
 	Write-Verbose "Test: Test with UserAssigned Identity -> Result must be SystemAssignedUserAssigned"
 	$rgname = Get-CustomResourceGroupName
 	try
     {
 		$loc = Get-LocationForNewExtension
 		$vm = Create-AdvancedVM -rgname $rgname -loc $loc -useMD -vmsize Standard_E4s_v3 -stotype Premium_LRS
-		$ident = Create-IdentityForNewExtension -ResourceGroupName $rgname -TestName "Test-WithUserAssignedIdentity"
+		$ident = Create-IdentityForNewExtension -ResourceGroupName $rgname -TestName "Test-WithUserAssignedIdentity" -location $loc
 	
 		Remove-AzVMAEMExtension -ResourceGroupName $rgname -VMName $vm.Name
 		$vm = Get-AzVM -ResourceGroupName $rgname -Name $vm.Name
@@ -155,6 +151,7 @@ function Test-WithUserAssignedIdentity() {
 }
 
 function Test-WithoutIdentity() {
+	InitTest "Test-WithoutIdentity"
 
 	Write-Verbose "Test: Test with No Identity -> Result must be SystemAssigned"
 	$rgname = Get-CustomResourceGroupName
@@ -185,6 +182,7 @@ function Test-WithoutIdentity() {
 }
 
 function Test-WithSystemAssignedIdentity() {
+	InitTest "Test-WithSystemAssignedIdentity"
 	
 	Write-Verbose "Test: Test with SystemAssigned Identity -> Result must be SystemAssigned"
 	$rgname = Get-CustomResourceGroupName
@@ -216,6 +214,7 @@ function Test-WithSystemAssignedIdentity() {
 }
 
 function Test-ExtensionReinstall() {
+	InitTest "Test-ExtensionReinstall"
 
 	Write-Verbose "Test: new Extension re-install -> must work"
 	$rgname = Get-CustomResourceGroupName
@@ -248,6 +247,7 @@ function Test-ExtensionReinstall() {
 }
 
 function Test-OldExtensionReinstall() {
+	InitTest "Test-OldExtensionReinstall"
 
 	Write-Verbose "Test: old Extension re-install -> must work"
 	$rgname = Get-CustomResourceGroupName
@@ -282,6 +282,7 @@ function Test-OldExtensionReinstall() {
 }
 
 function Test-ExtensionDowngrade() {
+	InitTest "Test-ExtensionDowngrade"
 
 	Write-Verbose "Test: Extension downgrade should still install the new extension"
 	$rgname = Get-CustomResourceGroupName
@@ -318,6 +319,7 @@ function Test-ExtensionDowngrade() {
 }
 
 function Test-ExtensionUpgrade() {
+	InitTest "Test-ExtensionUpgrade"
 
 	Write-Verbose "Test: Extension upgrade should fail"
 	$rgname = Get-CustomResourceGroupName
@@ -355,6 +357,7 @@ function Test-ExtensionUpgrade() {
 }
 
 function Test-NewExtensionDiskAdd() {
+	InitTest "Test-NewExtensionDiskAdd"
 
 	Write-Verbose "Test: Add Data Disk after extension installation"
 	$rgname = Get-CustomResourceGroupName
@@ -393,6 +396,8 @@ function Test-NewExtensionDiskAdd() {
 
 function Test-ExtensionProxyDebug
 {
+	InitTest "Test-ExtensionProxyDebug"
+   
     Write-Verbose "Test: VM Extension with proxy and debug mode"
 	$rgname = Get-CustomResourceGroupName
 	try
@@ -431,6 +436,8 @@ function Test-ExtensionProxyDebug
 
 function Test-AEMExtensionBasicWindowsWAD
 {
+	InitTest "Test-AEMExtensionBasicWindowsWAD"
+    
     $rgname = Get-ComputeTestResourceName
     $loc = Get-ComputeVMLocation
 
@@ -477,6 +484,8 @@ function Test-AEMExtensionBasicWindowsWAD
 
 function Test-AEMExtensionBasicWindows
 {
+	InitTest "Test-AEMExtensionBasicWindows"
+    
     $rgname = Get-ComputeTestResourceName
     $loc = Get-ComputeVMLocation
 
@@ -523,6 +532,8 @@ function Test-AEMExtensionBasicWindows
 
 function Test-AEMExtensionAdvancedWindowsWAD
 {
+	InitTest "Test-AEMExtensionAdvancedWindowsWAD"
+    
     $rgname = Get-ComputeTestResourceName
     $loc = Get-ComputeVMLocation
 
@@ -590,6 +601,8 @@ function Test-AEMExtensionAdvancedWindowsWAD
 
 function Test-AEMExtensionAdvancedWindows
 {
+	InitTest "Test-AEMExtensionAdvancedWindows"
+    
     $rgname = Get-ComputeTestResourceName
     $loc = Get-ComputeVMLocation
 
@@ -657,6 +670,8 @@ function Test-AEMExtensionAdvancedWindows
 
 function Test-AEMExtensionAdvancedWindowsMD
 {
+	InitTest "Test-AEMExtensionAdvancedWindowsMD"
+    
     $rgname = Get-ComputeTestResourceName
     $loc = Get-ComputeVMLocation
 
@@ -725,6 +740,8 @@ function Test-AEMExtensionAdvancedWindowsMD
 
 function Test-AEMExtensionAdvancedLinuxMD
 {
+	InitTest "Test-AEMExtensionAdvancedLinuxMD"
+    
     $rgname = Get-ComputeTestResourceName
     $loc = Get-ComputeVMLocation
 
@@ -797,6 +814,8 @@ function Test-AEMExtensionAdvancedLinuxMD
 
 function Test-AEMExtensionBasicLinuxWAD
 {
+	InitTest "Test-AEMExtensionBasicLinuxWAD"
+    
     $rgname = Get-ComputeTestResourceName
     $loc = Get-ComputeVMLocation
 
@@ -843,6 +862,8 @@ function Test-AEMExtensionBasicLinuxWAD
 
 function Test-AEMExtensionBasicLinux
 {
+	InitTest "Test-AEMExtensionBasicLinux"
+    
     $rgname = Get-ComputeTestResourceName
     $loc = Get-ComputeVMLocation
 
@@ -889,6 +910,8 @@ function Test-AEMExtensionBasicLinux
 
 function Test-AEMExtensionAdvancedLinuxWAD
 {
+	InitTest "Test-AEMExtensionAdvancedLinuxWAD"
+    
     $rgname = Get-ComputeTestResourceName
     $loc = Get-ComputeVMLocation
 
@@ -957,6 +980,8 @@ function Test-AEMExtensionAdvancedLinuxWAD
 
 function Test-AEMExtensionAdvancedLinux
 {
+	InitTest "Test-AEMExtensionAdvancedLinux"
+    
     $rgname = Get-ComputeTestResourceName
     $loc = Get-ComputeVMLocation
 
@@ -1025,6 +1050,8 @@ function Test-AEMExtensionAdvancedLinux
 
 function Test-AEMExtensionAdvancedLinuxMD_E
 {
+	InitTest "Test-AEMExtensionAdvancedLinuxMD_E"
+    
     $rgname = Get-ComputeTestResourceName
     [string]$loc = Get-ComputeVMLocation;
     $loc = $loc.Replace(' ', '');
@@ -1135,43 +1162,45 @@ function Test-AEMExtensionAdvancedLinuxMD_E
 
 function Test-AEMExtensionAdvancedLinuxMD_D
 {
+	InitTest "Test-AEMExtensionAdvancedLinuxMD_D"
+    
     $rgname = Get-ComputeTestResourceName
     [string]$loc = Get-ComputeVMLocation;
     $loc = $loc.Replace(' ', '');
 
     try
     {
-        Log "Test-AEMExtensionAdvancedLinuxMD_D" "Start the test Test-AEMExtensionAdvancedLinuxMD"
+        Write-Host "Start the test Test-AEMExtensionAdvancedLinuxMD"
         # Setup
         $vm = Create-AdvancedVM -rgname $rgname -loc $loc -vmsize 'Standard_D2s_v3' -stotype 'Premium_LRS' -nicCount 2 -useMD -imageType "SLES"
 
-        Log "Test-AEMExtensionAdvancedLinuxMD_D" "VM created"
+        Write-Host "VM created"
         $vmname = $vm.Name
         $vm = Get-AzVM -ResourceGroupName $rgname -Name $vmname
         Add-AzVMDataDisk -VM $vm -StorageAccountType Premium_LRS -Lun (($vm.StorageProfile.DataDisks | select -ExpandProperty Lun | Measure-Object -Maximum).Maximum + 1) -CreateOption Empty -DiskSizeInGB 2059 | Update-AzVM
         
-        Log "Test-AEMExtensionAdvancedLinuxMD_D" "Test-AEMExtensionAdvancedLinuxMD: VM created"
+        Write-Host "Test-AEMExtensionAdvancedLinuxMD: VM created"
 
         # Get with not extension
-        Log "Test-AEMExtensionAdvancedLinuxMD_D" "Test-AEMExtensionAdvancedLinuxMD: Get with no extension"
+        Write-Host "Test-AEMExtensionAdvancedLinuxMD: Get with no extension"
         $extension = Get-AzVMAEMExtension -ResourceGroupName $rgname -VMName $vmname
         $nul = Assert-Null $extension "Extension is not null" "Extension is not null"
 
         # Test with not extension
-        Log "Test-AEMExtensionAdvancedLinuxMD_D" "Test-AEMExtensionAdvancedLinuxMD: Test with no extension"
+        Write-Host "Test-AEMExtensionAdvancedLinuxMD: Test with no extension"
         $res = Test-AzVMAEMExtension -ResourceGroupName $rgname -VMName $vmname -SkipStorageCheck
         $tmp = $res;$out = &{while ($true) { if ($tmp) { foreach ($tmpRes in $tmp) {($tmpRes.TestName  + " " + $tmpRes.Result)};$tmp = @($tmp.PartialResults)} else {break}}};
         $nul = Assert-False { $res.Result } "Test result is not false $out"
-        Log "Test-AEMExtensionAdvancedLinuxMD_D" "Test-AEMExtensionAdvancedLinuxMD: Test done"
+        Write-Host "Test-AEMExtensionAdvancedLinuxMD: Test done"
 
         $stoname = 'sto' + $rgname + "2";
         New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type 'Standard_LRS';
 
         # Set and Get command.
-        Log "Test-AEMExtensionAdvancedLinuxMD_D" "Test-AEMExtensionAdvancedLinuxMD: Set with no extension"
+        Write-Host "Test-AEMExtensionAdvancedLinuxMD: Set with no extension"
         Set-AzVMAEMExtension -ResourceGroupName $rgname -VMName $vmname -WADStorageAccountName $stoname -SkipStorage
-        Log "Test-AEMExtensionAdvancedLinuxMD_D" "Test-AEMExtensionAdvancedLinuxMD: Set done"
-        Log "Test-AEMExtensionAdvancedLinuxMD_D" "Test-AEMExtensionAdvancedLinuxMD: Get with extension"
+        Write-Host "Test-AEMExtensionAdvancedLinuxMD: Set done"
+        Write-Host "Test-AEMExtensionAdvancedLinuxMD: Get with extension"
         $extension = Get-AzVMAEMExtension -ResourceGroupName $rgname -VMName $vmname
         
 
@@ -1181,25 +1210,25 @@ function Test-AEMExtensionAdvancedLinuxMD_D
         $nul = Assert-AreEqual $extension.Name 'AzureEnhancedMonitorForLinux'
         $settings = $extension.PublicSettings | ConvertFrom-Json
         $nul = Assert-NotNull $settings.cfg
-        Log "Test-AEMExtensionAdvancedLinuxMD_D" "Test-AEMExtensionAdvancedLinuxMD: Get done"
+        Write-Host "Test-AEMExtensionAdvancedLinuxMD: Get done"
 
         # Test command.
-        Log "Test-AEMExtensionAdvancedLinuxMD_D" "Test-AEMExtensionAdvancedLinuxMD: Test with extension"
+        Write-Host "Test-AEMExtensionAdvancedLinuxMD: Test with extension"
         $res = Test-AzVMAEMExtension -ResourceGroupName $rgname -VMName $vmname -SkipStorageCheck
         $tmp = $res;$out = &{while ($true) { if ($tmp) { foreach ($tmpRes in $tmp) {($tmpRes.TestName  + " " + $tmpRes.Result)};$tmp = @($tmp.PartialResults)} else {break}}};
         $nul = Assert-True { $res.Result } "Test result is not false $out"
         $nul = Assert-True { ($res.PartialResults.Count -gt 0) }
-        Log "Test-AEMExtensionAdvancedLinuxMD_D" "Test-AEMExtensionAdvancedLinuxMD: Test done"
+        Write-Host "Test-AEMExtensionAdvancedLinuxMD: Test done"
 
         # Remove command.
-        Log "Test-AEMExtensionAdvancedLinuxMD_D" "Test-AEMExtensionAdvancedLinuxMD: Remove with extension"
+        Write-Host "Test-AEMExtensionAdvancedLinuxMD: Remove with extension"
         Remove-AzVMAEMExtension -ResourceGroupName $rgname -VMName $vmname
-        Log "Test-AEMExtensionAdvancedLinuxMD_D" "Test-AEMExtensionAdvancedLinuxMD: Remove done"
+        Write-Host "Test-AEMExtensionAdvancedLinuxMD: Remove done"
 
-        Log "Test-AEMExtensionAdvancedLinuxMD_D" "Test-AEMExtensionAdvancedLinuxMD: Get after remove"
+        Write-Host "Test-AEMExtensionAdvancedLinuxMD: Get after remove"
         $extension = Get-AzVMAEMExtension -ResourceGroupName $rgname -VMName $vmname
         $nul = Assert-Null $extension "Extension is not null"
-        Log "Test-AEMExtensionAdvancedLinuxMD_D" "Test-AEMExtensionAdvancedLinuxMD: Get after remove done"
+        Write-Host "Test-AEMExtensionAdvancedLinuxMD: Get after remove done"
     }
     finally
     {
@@ -1221,9 +1250,9 @@ function Get-LocationForNewExtension {
 	return $loc
 }
 
-function Create-IdentityForNewExtension($ResourceGroupName, $TestName) {
+function Create-IdentityForNewExtension($ResourceGroupName, $TestName, $location) {
     $assetName = [Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::GetAssetName($TestName, "crptestps");
-	$ident = New-AzUserAssignedIdentity -ResourceGroupName $ResourceGroupName -Name $assetName
+	$ident = New-AzUserAssignedIdentity -ResourceGroupName $ResourceGroupName -Name $assetName -Location $location
 
 	return $ident
 }
@@ -1394,17 +1423,17 @@ function Is-LinuxImageType($imageType) {
 
 function Get-LinuxImage($imageType) {
 
-	if ($imageType -eq "RHEL 7") {
-		return Create-ComputeVMImageObject 'RedHat' 'RHEL' '7.7' 'latest';
-	} elseif ($imageType -eq "RHEL 8") {
-		return Create-ComputeVMImageObject 'RedHat' 'RHEL' '8' 'latest';
-	} elseif ($imageType -eq "SLES 12") {
-		return Create-ComputeVMImageObject 'SUSE' 'SLES' '12-SP4' 'latest';
-	} elseif ($imageType -eq "SLES 15") {
-		return Create-ComputeVMImageObject 'SUSE' 'sles-15-sp1' 'gen1' 'latest';
-	} else {
-		return Create-ComputeVMImageObject 'SUSE' 'SLES' '12-SP4' 'latest';
-	}
+    if ($imageType -eq "RHEL 7") {
+        return Create-ComputeVMImageObject 'RedHat' 'rhel' '7.8' 'latest';
+    } elseif ($imageType -eq "RHEL 8") {
+        return Create-ComputeVMImageObject 'RedHat' 'rhel' '8_6' 'latest';
+    } elseif ($imageType -eq "SLES 12") {
+        return Create-ComputeVMImageObject 'SUSE' 'sles-12-sp5' 'gen1' 'latest';
+    } elseif ($imageType -eq "SLES 15") {
+        return Create-ComputeVMImageObject 'SUSE' 'sles-15-sp4' 'gen1' 'latest';
+    } else {
+        return Create-ComputeVMImageObject 'SUSE' 'sles-12-sp5' 'gen1' 'latest';
+    }
 }
 
 function Get-WindowsImage($imageType) {
@@ -1429,4 +1458,170 @@ function GetWrongTestResult($TestResult, $searchFor, $level)
     }
 
     return $result
+}
+
+
+function InitTest($testName) 
+{
+    Start-Transcript -Path "$($testName).log"
+}
+
+function Test-SkipIdentity
+{
+    InitTest "Test-SkipIdentity"
+
+    Write-Host "Starting Test"
+	$rgname = Get-CustomResourceGroupName
+	try
+    {
+		#$loc = Get-LocationForNewExtension
+		$loc = "southcentralus"
+        Write-Host "Creating VM...."
+		$vm = Create-AdvancedVM -rgname $rgname -loc $loc -useMD -vmsize Standard_E4s_v3 -stotype Premium_LRS
+	    Write-Host "Creating VM done"
+
+		Write-Host "`tInstalling new extension - skipping identity"
+		Set-AzVMAEMExtension -ResourceGroupName $rgname -VMName $vm.Name -InstallNewExtension -IsTest -SkipIdentity
+        $vm = Get-azvm -ResourceGroupName $rgname -Name $vm.Name
+        # VM should not have a system managed Identity
+        Write-Host "Testing if Identity is null"
+        Assert-Null $vm.Identity
+
+        # Extension should not work since it does not have read access to Azure resources
+        Write-Host "Checking health status of extension"
+        Write-Host "Waiting a bit before asking for extension status"
+        [Microsoft.WindowsAzure.Commands.Utilities.Common.TestMockSupport]::Delay(60000)
+        $status = Get-AzVMExtension -ResourceGroupName $rgname -VMName $vm.Name -Name MonitorX64Windows -Status
+        $healthStatusNode = select-xml -XPath "/metrics/metric[@category='config' and name='Provider Health Status']/value" -Xml ([xml] $status.SubStatuses.Message)
+        Write-Host "Health status of extension is $($healthStatusNode.Node.InnerText)"
+        Assert-AreEqual $healthStatusNode.Node.InnerText 0
+	}
+    finally
+    {
+        # Cleanup
+        Write-Host "Test done. Cleaning up. Test Error (if any): $($_.Exception)"
+        Clean-ResourceGroup $rgname
+    }
+}
+
+function Test-UserIdentityOnlyWin
+{
+    InitTest "Test-UserIdentityOnlyWin"
+
+    Write-Host "Starting Test"
+	$rgname = Get-CustomResourceGroupName
+	try
+    {
+		#$loc = Get-LocationForNewExtension
+		$loc = "southcentralus"
+        Write-Host "Creating VM...."
+		$vm = Create-AdvancedVM -rgname $rgname -loc $loc -useMD -vmsize Standard_E4s_v3 -stotype Premium_LRS
+	    Write-Host "Creating VM done"
+
+        Write-Host "`tInstalling new extension"
+        $userIdentity = New-AzUserAssignedIdentity -ResourceGroupName $rgname -Name aemident -Location $loc
+        Set-AzVMAEMExtension -ResourceGroupName $rgname -VMName $vm.Name -InstallNewExtension -IsTest -PathUserIdentity $userIdentity.Id
+        $vm = Get-azvm -ResourceGroupName $rgname -Name $vm.Name
+
+        # verify that the user assigned Identity is attached to the VM
+        Write-Host "Testing if Identity is user assigned - current type is $($vm.Identity.Type)"
+        Assert-AreEqual $vm.Identity.Type "UserAssigned"
+        Assert-NotNull $vm.Identity.UserAssignedIdentities[$userIdentity.Id]
+
+        # verify the extension is working
+        Write-Host "Waiting a bit before asking for extension status"
+        [Microsoft.WindowsAzure.Commands.Utilities.Common.TestMockSupport]::Delay(60000)
+        $status = Get-AzVMExtension -ResourceGroupName $rgname -VMName $vm.Name -Name MonitorX64Windows -Status
+        $healthStatusNode = select-xml -XPath "/metrics/metric[@category='config' and name='Provider Health Status']/value" -Xml ([xml] $status.SubStatuses.Message)
+        Write-Host "Health status of extension is $($healthStatusNode.Node.InnerText)"
+        Assert-AreEqual $healthStatusNode.Node.InnerText 8
+	}
+    finally
+    {
+        # Cleanup
+        Write-Host "Test done. Cleaning up. Test Error (if any): $($_.Exception)"
+        Clean-ResourceGroup $rgname
+    }
+}
+
+function Test-UserIdentityOnlyLnx
+{
+    InitTest "Test-UserIdentityOnlyLnx"
+
+    Write-Host "Starting Test"
+	$rgname = Get-CustomResourceGroupName
+	try
+    {
+		#$loc = Get-LocationForNewExtension
+		$loc = "southcentralus"
+        Write-Host "Creating VM...."
+		$vm = Create-AdvancedVM -rgname $rgname -loc $loc -useMD -vmsize Standard_E4s_v3 -stotype Premium_LRS -imageType "SLES 15"
+	    Write-Host "Creating VM done"
+
+        Write-Host "`tInstalling new extension"
+        $userIdentity = New-AzUserAssignedIdentity -ResourceGroupName $rgname -Name aemident -Location $loc
+        Set-AzVMAEMExtension -ResourceGroupName $rgname -VMName $vm.Name -InstallNewExtension -IsTest -PathUserIdentity $userIdentity.Id
+        $vm = Get-azvm -ResourceGroupName $rgname -Name $vm.Name
+
+        # verify that the user assigned Identity is attached to the VM
+        Write-Host "Testing if Identity is user assigned - current type is $($vm.Identity.Type)"
+        Assert-AreEqual $vm.Identity.Type "UserAssigned"
+        Assert-NotNull $vm.Identity.UserAssignedIdentities[$userIdentity.Id]
+
+        # verify the extension is working
+        Write-Host "Waiting a bit before asking for extension status"
+        [Microsoft.WindowsAzure.Commands.Utilities.Common.TestMockSupport]::Delay(60000)
+        $status = Get-AzVMExtension -ResourceGroupName $rgname -VMName $vm.Name -Name MonitorX64Linux -Status
+        $healthStatusNode = select-xml -XPath "/metrics/metric[@category='config' and name='Provider Health Status']/value" -Xml ([xml] $status.SubStatuses.Message)
+        Write-Host "Health status of extension is $($healthStatusNode.Node.InnerText)"
+        Assert-AreEqual $healthStatusNode.Node.InnerText 8
+	}
+    finally
+    {
+        # Cleanup
+        Write-Host "Test done. Cleaning up. Test Error (if any): $($_.Exception)"
+        Clean-ResourceGroup $rgname
+    }
+}
+
+function Test-UserIdentityWithSystemLnx
+{
+    InitTest "Test-UserIdentityWithSystemLnx"
+
+    Write-Host "Starting Test"
+	$rgname = Get-CustomResourceGroupName
+	try
+    {
+		#$loc = Get-LocationForNewExtension
+		$loc = "southcentralus"
+        Write-Host "Creating VM...."
+		$vm = Create-AdvancedVM -rgname $rgname -loc $loc -useMD -vmsize Standard_E4s_v3 -stotype Premium_LRS -imageType "SLES 15"
+	    
+        Write-Host "Creating VM done - setting system assigned"
+        $vmUpd = Update-AzVM -ResourceGroupName $rgname -VM $vm -IdentityType SystemAssigned
+
+        Write-Host "`tInstalling new extension"
+        $userIdentity = New-AzUserAssignedIdentity -ResourceGroupName $rgname -Name aemident -Location $loc
+        Set-AzVMAEMExtension -ResourceGroupName $rgname -VMName $vm.Name -InstallNewExtension -IsTest -PathUserIdentity $userIdentity.Id
+        $vm = Get-AzVM -ResourceGroupName $rgname -Name $vm.Name
+
+        # verify that the user assigned Identity is attached to the VM
+        Write-Host "Testing if Identity is SystemAssignedUserAssigned - current type is $($vm.Identity.Type)"
+        Assert-AreEqual $vm.Identity.Type "SystemAssignedUserAssigned"
+        Assert-NotNull $vm.Identity.UserAssignedIdentities[$userIdentity.Id]
+
+        # verify the extension is working
+        Write-Host "Waiting a bit before asking for extension status"
+        [Microsoft.WindowsAzure.Commands.Utilities.Common.TestMockSupport]::Delay(60000)
+        $status = Get-AzVMExtension -ResourceGroupName $rgname -VMName $vm.Name -Name MonitorX64Linux -Status
+        $healthStatusNode = select-xml -XPath "/metrics/metric[@category='config' and name='Provider Health Status']/value" -Xml ([xml] $status.SubStatuses.Message)
+        Write-Host "Health status of extension is $($healthStatusNode.Node.InnerText)"
+        Assert-AreEqual $healthStatusNode.Node.InnerText 8
+	}
+    finally
+    {
+        # Cleanup
+        Write-Host "Test done. Cleaning up. Test Error (if any): $($_.Exception)"
+        Clean-ResourceGroup $rgname
+    }
 }

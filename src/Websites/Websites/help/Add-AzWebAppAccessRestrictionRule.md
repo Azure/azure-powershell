@@ -50,7 +50,7 @@ The **Add-AzWebAppAccessRestrictionRule** cmdlet adds an Access Restriction rule
 
 ### Example 1: Add IpAddress Access Restriction rule to a Web App
 ```powershell
-Add-AzWebAppAccessRestrictionRule -ResourceGroupName "Default-Web-WestUS" -WebAppName "ContosoSite" 
+Add-AzWebAppAccessRestrictionRule -ResourceGroupName "Default-Web-WestUS" -WebAppName "ContosoSite" `
 -Name IpRule -Priority 200 -Action Allow -IpAddress 10.10.0.0/8
 ```
 
@@ -58,7 +58,7 @@ This command adds an access restriction rule with priority 200 and ip range to a
 
 ### Example 2: Add Subnet Service Endpoint Access Restriction rule to a Web App
 ```powershell
-Add-AzWebAppAccessRestrictionRule -ResourceGroupName "Default-Web-WestUS" -WebAppName "ContosoSite" 
+Add-AzWebAppAccessRestrictionRule -ResourceGroupName "Default-Web-WestUS" -WebAppName "ContosoSite" `
 -Name SubnetRule -Priority 300 -Action Allow -SubnetName appgw-subnet -VirtualNetworkName corp-vnet
 ```
 
@@ -66,7 +66,7 @@ This command adds an access restriction rule with priority 300 and with subnet a
 
 ### Example 3: Add ServiceTag Access Restriction rule to a Web App
 ```powershell
-Add-AzWebAppAccessRestrictionRule -ResourceGroupName "Default-Web-WestUS" -WebAppName "ContosoSite" 
+Add-AzWebAppAccessRestrictionRule -ResourceGroupName "Default-Web-WestUS" -WebAppName "ContosoSite" `
 -Name ServiceTagRule -Priority 200 -Action Allow -ServiceTag AzureFrontDoor.Backend
 ```
 
@@ -74,7 +74,7 @@ This command adds an access restriction rule with priority 200 and a Service Tag
 
 ### Example 4: Add multi-address Access Restriction rule to a Web App
 ```powershell
-Add-AzWebAppAccessRestrictionRule -ResourceGroupName "Default-Web-WestUS" -WebAppName "ContosoSite" 
+Add-AzWebAppAccessRestrictionRule -ResourceGroupName "Default-Web-WestUS" -WebAppName "ContosoSite" `
 -Name MultipleIpRule -Priority 200 -Action Allow -IpAddress "10.10.0.0/8,192.168.0.0/16"
 ```
 
@@ -82,8 +82,8 @@ This command adds an access restriction rule with priority 200 and two ip ranges
 
 ### Example 5: Add Access Restriction rule with http header to a Web App
 ```powershell
-Add-AzWebAppAccessRestrictionRule -ResourceGroupName "Default-Web-WestUS" -WebAppName "ContosoSite" 
--Name MultipleIpRule -Priority 400 -Action Allow -ServiceTag AzureFrontDoor.Backend
+Add-AzWebAppAccessRestrictionRule -ResourceGroupName "Default-Web-WestUS" -WebAppName "ContosoSite" `
+-Name MultipleIpRule -Priority 400 -Action Allow -ServiceTag AzureFrontDoor.Backend `
 -HttpHeader @{'x-forwarded-host' = 'www.contoso.com', 'app.contoso.com'; 'x-azure-fdid' = '355deb06-47c4-4ba4-9641-c7d7a98b913e'}
 ```
 

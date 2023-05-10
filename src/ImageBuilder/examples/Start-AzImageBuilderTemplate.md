@@ -1,16 +1,19 @@
 ### Example 1: Start an image template
 ```powershell
-PS C:\> Start-AzImageBuilderTemplate -ResourceGroupName wyunchi-imagebuilder -Name template-name-sn78hg
+Start-AzImageBuilderTemplate -Name bez-test-img-temp12 -ResourceGroupName bez-rg
+```
 
+```output
+Id     Name            PSJobTypeName   State         HasMoreData     Location             Command
+--     ----            -------------   -----         -----------     --------             -------
+1      Start-AzImageB…                 Running       True            localhost            Start-AzImageBuilderTemp…
 ```
 
 This command starts an image template.
 
 ### Example 2: Start an image template
 ```powershell
-PS C:\> $template = Get-AzImageBuilderTemplate -ResourceGroupName wyunchi-imagebuilder -Name template-name-sn78hg
-PS C:\> Start-AzImageBuilderTemplate -InputObject $template
-
+Get-AzImageBuilderTemplate -Name bez-test-img-temp12 -ResourceGroupName bez-rg | Start-AzImageBuilderTemplate
 ```
 
 This command starts an image template.

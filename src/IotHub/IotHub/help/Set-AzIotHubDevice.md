@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.IotHub.dll-Help.xml
 Module Name: Az.IotHub
-online version: https://docs.microsoft.com/powershell/module/az.iothub/set-aziothubdevice
+online version: https://learn.microsoft.com/powershell/module/az.iothub/set-aziothubdevice
 schema: 2.0.0
 ---
 
@@ -75,7 +75,7 @@ Update an IoT Hub device.
 
 ### Example 1
 ```powershell
-Set-AzIotHubDevice -ResourceGroupName "myresourcegroup" -IotHubName "myiothub" -DeviceId "myDevice1" -EdgeEnabled
+Set-AzIotHubDevice -ResourceGroupName "myresourcegroup" -IotHubName "myiothub" -DeviceId "myDevice1" -EdgeEnabled $true
 ```
 
 Turn on edge capabilities for device.

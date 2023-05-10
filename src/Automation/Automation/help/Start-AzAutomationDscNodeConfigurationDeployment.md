@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Automation.dll-Help.xml
 Module Name: Az.Automation
 ms.assetid: 32CF9BF7-519F-4B5D-9F2B-3CC556A77A48
-online version: https://docs.microsoft.com/powershell/module/az.automation/start-azautomationdscnodeconfigurationdeployment
+online version: https://learn.microsoft.com/powershell/module/az.automation/start-azautomationdscnodeconfigurationdeployment
 schema: 2.0.0
 ---
 
@@ -43,6 +43,7 @@ Start-AzAutomationDscNodeConfigurationDeployment `
             -ResourceGroupName "ResourceGroup01" `
             -NodeName $nodes
 ```
+
 ```output
 Starting a node configuration deployment.
 Starting a node configuration deployment. It will override any existing node configurations assigned to the node.
@@ -78,6 +79,7 @@ Start-AzAutomationDscNodeConfigurationDeployment `
             -NodeName $nodes `
             -Schedule $sched
 ```
+
 ```output
 Starting a node configuration deployment.
 Starting a node configuration deployment. It will override any existing node configurations assigned to the node.
@@ -262,7 +264,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

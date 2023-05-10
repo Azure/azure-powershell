@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 ServiceClientAdapter.BmsAdapter.Client.SubscriptionId = targetSub;
                 
                 // Check if the Target vault is empty
-                /// Check the containers count in target vault                
+                // Check the containers count in target vault                
                 var protectionContainersCount = BackupUtils.GetProtectionContainersCount(TargetVault.Name, TargetVault.ResourceGroupName, ServiceClientAdapter);
 
                 Logger.Instance.WriteDebug("Protection Containers within vault: " + TargetVault.Name + " and resource Group: "
@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     throw new ArgumentException(string.Format(Resources.TargetVaultNotEmptyException));
                 }
 
-                /// check the count for VM backupItems 
+                // check the count for VM backupItems 
                 int vmItemsCount = BackupUtils.GetProtectedItems(TargetVault.Name, TargetVault.ResourceGroupName,
                     BackupManagementType.AzureIaasVM, WorkloadType.VM, ServiceClientAdapter).Count;
 
@@ -138,7 +138,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                             prepareMoveRequest.TargetResourceId = TargetVault.ID;
                             prepareMoveRequest.TargetRegion = TargetVault.Location;
 
-                            /// currently only allowing vault level data move
+                            // currently only allowing vault level data move
                             prepareMoveRequest.DataMoveLevel = "Vault";
 
                             if (RetryOnlyFailed.IsPresent)
@@ -166,7 +166,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                         triggerMoveRequest.SourceResourceId = SourceVault.ID;
                         triggerMoveRequest.SourceRegion = SourceVault.Location;
 
-                        /// currently only allowing vault level data move
+                        // currently only allowing vault level data move
                         triggerMoveRequest.DataMoveLevel = "Vault";
                         triggerMoveRequest.CorrelationId = correlationId;
                         triggerMoveRequest.PauseGC = false;

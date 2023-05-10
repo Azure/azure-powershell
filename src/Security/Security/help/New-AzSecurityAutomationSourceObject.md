@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Security.dll-Help.xml
 Module Name: Az.Security
-online version:
+online version: https://learn.microsoft.com/powershell/module/az.security/new-azsecurityautomationsourceobject
 schema: 2.0.0
 ---
 
@@ -30,7 +30,7 @@ Creates security automation source object
 
 ### Example 1
 ```powershell
-PS C:\> New-AzSecurityAutomationSourceObject -EventSource 'Assessments' -RuleSet $ruleSet
+New-AzSecurityAutomationSourceObject -EventSource 'Assessments' -RuleSet $ruleSet
 ```
 
 Creates security automation source object

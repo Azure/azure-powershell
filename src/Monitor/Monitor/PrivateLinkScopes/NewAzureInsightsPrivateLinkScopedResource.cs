@@ -15,7 +15,6 @@
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Insights.OutputClasses;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.Azure.Commands.Insights.Utils;
 using Microsoft.Azure.Management.Monitor.Models;
 
 namespace Microsoft.Azure.Commands.Insights.PrivateLinkScopes
@@ -56,7 +55,7 @@ namespace Microsoft.Azure.Commands.Insights.PrivateLinkScopes
                                        .PrivateLinkScopedResources
                                        .CreateOrUpdateWithHttpMessagesAsync(this.ResourceGroupName, this.ScopeName, this.Name, this.LinkedResourceId)
                                        .Result;
-                WriteObject(PSMapper.Instance.Map<PSMonitorPrivateLinkScopedResource>(response.Body));
+                WriteObject(PSMonitorPrivateLinkScopedResource.ToPSMonitorPrivateLinkScopedResource(response.Body));
             }
         }
 

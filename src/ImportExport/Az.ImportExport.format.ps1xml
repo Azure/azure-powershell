@@ -42,9 +42,101 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.DriveBitLockerKey</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20.SystemData</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.DriveBitLockerKey</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20.SystemData</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>CreatedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>CreatedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>CreatedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>LastModifiedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>LastModifiedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>LastModifiedByType</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>CreatedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>CreatedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>CreatedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>LastModifiedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>LastModifiedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>LastModifiedByType</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api202101.DeliveryPackageInformation</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api202101.DeliveryPackageInformation</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>CarrierName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>DriveCount</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ShipDate</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>TrackingNumber</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>CarrierName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>DriveCount</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ShipDate</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>TrackingNumber</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api202101.DriveBitLockerKey</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api202101.DriveBitLockerKey</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -70,9 +162,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.DriveStatus</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api202101.DriveStatus</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.DriveStatus</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api202101.DriveStatus</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -158,9 +250,43 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.ErrorResponseError</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api202101.EncryptionKeyDetails</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.ErrorResponseError</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api202101.EncryptionKeyDetails</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>KekType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>KekUrl</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>KekVaultResourceId</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>KekType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>KekUrl</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>KekVaultResourceId</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api202101.ErrorResponseError</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api202101.ErrorResponseError</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -192,9 +318,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.ErrorResponseErrorDetailsItem</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api202101.ErrorResponseErrorDetailsItem</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.ErrorResponseErrorDetailsItem</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api202101.ErrorResponseErrorDetailsItem</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -226,21 +352,21 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.Export</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api202101.Export</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.Export</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api202101.Export</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
-            <Label>BlobListblobPath</Label>
+            <Label>BlobListBlobPath</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
-                <PropertyName>BlobListblobPath</PropertyName>
+                <PropertyName>BlobListBlobPath</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -248,9 +374,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.ExportBlobList</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api202101.ExportBlobList</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.ExportBlobList</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api202101.ExportBlobList</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -276,9 +402,37 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.JobDetails</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api202101.IdentityDetails</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.JobDetails</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api202101.IdentityDetails</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>PrincipalId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>TenantId</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>PrincipalId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>TenantId</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api202101.JobDetails</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api202101.JobDetails</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -352,9 +506,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.JobResponse</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api202101.JobResponse</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.JobResponse</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api202101.JobResponse</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -363,9 +517,6 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>Name</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Type</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -377,18 +528,15 @@
               <TableColumnItem>
                 <PropertyName>Name</PropertyName>
               </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Type</PropertyName>
-              </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
         </TableRowEntries>
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.ListJobsResponse</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api202101.ListJobsResponse</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.ListJobsResponse</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api202101.ListJobsResponse</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -408,17 +556,14 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.Location</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api202101.Location</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.Location</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api202101.Location</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
             <Label>Name</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Type</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -427,21 +572,21 @@
               <TableColumnItem>
                 <PropertyName>Name</PropertyName>
               </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Type</PropertyName>
-              </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
         </TableRowEntries>
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.LocationProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api202101.LocationProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.LocationProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api202101.LocationProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
+          <TableColumnHeader>
+            <Label>AdditionalShippingInformation</Label>
+          </TableColumnHeader>
           <TableColumnHeader>
             <Label>AlternateLocation</Label>
           </TableColumnHeader>
@@ -476,6 +621,9 @@
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>AdditionalShippingInformation</PropertyName>
+              </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>AlternateLocation</PropertyName>
               </TableColumnItem>
@@ -512,9 +660,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.Operation</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api202101.Operation</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.Operation</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api202101.Operation</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -534,9 +682,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.OperationDisplay</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api202101.OperationDisplay</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.OperationDisplay</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api202101.OperationDisplay</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -574,9 +722,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.PackageInfomation</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api202101.PackageInformation</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.PackageInfomation</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api202101.PackageInformation</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -614,9 +762,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.PutJobParameters</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api202101.PutJobParameters</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.PutJobParameters</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api202101.PutJobParameters</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -636,9 +784,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.ReturnAddress</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api202101.ReturnAddress</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.ReturnAddress</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api202101.ReturnAddress</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -706,9 +854,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.ReturnShipping</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api202101.ReturnShipping</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.ReturnShipping</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api202101.ReturnShipping</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -734,12 +882,15 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.ShippingInformation</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api202101.ShippingInformation</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.ShippingInformation</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api202101.ShippingInformation</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
+          <TableColumnHeader>
+            <Label>AdditionalInformation</Label>
+          </TableColumnHeader>
           <TableColumnHeader>
             <Label>City</Label>
           </TableColumnHeader>
@@ -768,6 +919,9 @@
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>AdditionalInformation</PropertyName>
+              </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>City</PropertyName>
               </TableColumnItem>
@@ -798,9 +952,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.UpdateJobParametersProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api202101.UpdateJobParametersProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.UpdateJobParametersProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api202101.UpdateJobParametersProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>

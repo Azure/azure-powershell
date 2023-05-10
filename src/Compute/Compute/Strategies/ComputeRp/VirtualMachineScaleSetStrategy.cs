@@ -69,7 +69,9 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             string capacityReservationId,
             string userData,
             string imageReferenceId,
-            Dictionary<string, List<string>> auxAuthHeader
+            Dictionary<string, List<string>> auxAuthHeader,
+            string diskControllerType,
+            string sharedImageGalleryId
             )
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
@@ -105,12 +107,18 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                             },
                             StorageProfile = new VirtualMachineScaleSetStorageProfile
                             {
-                                ImageReference = (imageReferenceId == null) ? imageAndOsType?.Image : new ImageReference
+                                ImageReference = (imageReferenceId == null) ? imageAndOsType?.Image : (imageReferenceId.ToLower().StartsWith("/communitygalleries/") ? new ImageReference
                                 {
-                                    Id = imageReferenceId
-                                },
+                                    CommunityGalleryImageId = imageReferenceId,
+                                    SharedGalleryImageId = sharedImageGalleryId
+                                } : new ImageReference
+                                {
+                                    Id = imageReferenceId,
+                                    SharedGalleryImageId = sharedImageGalleryId
+                                }),
                                 DataDisks = DataDiskStrategy.CreateVmssDataDisks(
-                                    imageAndOsType?.DataDiskLuns, dataDisks)
+                                    imageAndOsType?.DataDiskLuns, dataDisks),
+                                DiskControllerType = diskControllerType
                             },
                             NetworkProfile = new VirtualMachineScaleSetNetworkProfile
                             {

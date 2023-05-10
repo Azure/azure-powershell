@@ -30,7 +30,7 @@ PS C:\> {{ Add code here }}
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Models.Api20151101Preview.IOperation
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.monitoringsolutions/get-azmonitorloganalyticsoperation
+https://learn.microsoft.com/en-us/powershell/module/az.monitoringsolutions/get-azmonitorloganalyticsoperation
 #>
 function Get-AzMonitorLogAnalyticsOperation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Models.Api20151101Preview.IOperation])]

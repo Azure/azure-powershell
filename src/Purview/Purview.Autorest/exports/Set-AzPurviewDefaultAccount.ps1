@@ -25,7 +25,7 @@ Set-AzPurviewDefaultAccount -AccountName test-pa -ResourceGroupName test-rg -Sco
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.IDefaultAccountPayload
 .Link
-https://docs.microsoft.com/powershell/module/az.purview/set-azpurviewdefaultaccount
+https://learn.microsoft.com/powershell/module/az.purview/set-azpurviewdefaultaccount
 #>
 function Set-AzPurviewDefaultAccount {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.IDefaultAccountPayload])]

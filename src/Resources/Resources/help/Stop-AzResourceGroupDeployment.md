@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ResourceManager.dll-Help.xml
 Module Name: Az.Resources
 ms.assetid: 089954C3-7F3E-46C2-AA93-C0151EACDA2F
-online version: https://docs.microsoft.com/powershell/module/az.resources/stop-azresourcegroupdeployment
+online version: https://learn.microsoft.com/powershell/module/az.resources/stop-azresourcegroupdeployment
 schema: 2.0.0
 ---
 
@@ -40,6 +40,7 @@ If the cmdlet finds more than one running deployment, the command fails.
 ## EXAMPLES
 
 ### Example 1: Starting and stopping a resource group deployment
+<!-- Skip: Output cannot be splitted from code -->
 
 ```powershell
 New-AzResourceGroupDeployment -Name mynewstorageaccount -ResourceGroupName myrg -TemplateFile .\storage-account-create-azdeploy.json -TemplateParameterFile .\storage-account-create-azdeploy.parameters.json -AsJob
@@ -48,7 +49,8 @@ Id     Name            PSJobTypeName   State         HasMoreData     Location   
 --     ----            -------------   -----         -----------     --------             -------
 1      Long Running... AzureLongRun... Running       True            localhost            New-AzResourceGro...
 
- Stop-AzResourceGroupDeployment -Name mynewstorageaccount -ResourceGroupName myrg
+Stop-AzResourceGroupDeployment -Name mynewstorageaccount -ResourceGroupName myrg
+
 True
 
 Get-Job 1
