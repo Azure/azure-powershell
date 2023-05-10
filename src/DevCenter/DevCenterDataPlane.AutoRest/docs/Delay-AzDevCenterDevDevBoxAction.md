@@ -25,6 +25,19 @@ Delay-AzDevCenterDevDevBoxAction -Endpoint <String> -ActionName <String> -DevBox
  [<CommonParameters>]
 ```
 
+### Delay1ByDevCenter
+```
+Delay-AzDevCenterDevDevBoxAction -DevCenter <String> -DevBoxName <String> -ProjectName <String>
+ -UserId <String> -Until <DateTime> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### DelayByDevCenter
+```
+Delay-AzDevCenterDevDevBoxAction -DevCenter <String> -ActionName <String> -DevBoxName <String>
+ -ProjectName <String> -UserId <String> -Until <DateTime> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
 ### DelayViaIdentity
 ```
 Delay-AzDevCenterDevDevBoxAction -Endpoint <String> -InputObject <IDevCenterIdentity> -Until <DateTime>
@@ -34,6 +47,18 @@ Delay-AzDevCenterDevDevBoxAction -Endpoint <String> -InputObject <IDevCenterIden
 ### DelayViaIdentity1
 ```
 Delay-AzDevCenterDevDevBoxAction -Endpoint <String> -InputObject <IDevCenterIdentity> -Until <DateTime>
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### DelayViaIdentity1ByDevCenter
+```
+Delay-AzDevCenterDevDevBoxAction -DevCenter <String> -InputObject <IDevCenterIdentity> -Until <DateTime>
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### DelayViaIdentityByDevCenter
+```
+Delay-AzDevCenterDevDevBoxAction -DevCenter <String> -InputObject <IDevCenterIdentity> -Until <DateTime>
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -71,7 +96,7 @@ The name of an action that will take place on a Dev Box.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delay
+Parameter Sets: Delay, DelayByDevCenter
 Aliases:
 
 Required: True
@@ -102,7 +127,22 @@ The name of a Dev Box.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delay, Delay1
+Parameter Sets: Delay, Delay1, Delay1ByDevCenter, DelayByDevCenter
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DevCenter
+The DevCenter upon which to execute operations.
+
+```yaml
+Type: System.String
+Parameter Sets: Delay1ByDevCenter, DelayByDevCenter, DelayViaIdentity1ByDevCenter, DelayViaIdentityByDevCenter
 Aliases:
 
 Required: True
@@ -117,7 +157,7 @@ The DevCenter-specific URI to operate on.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Delay, Delay1, DelayViaIdentity, DelayViaIdentity1
 Aliases:
 
 Required: True
@@ -133,7 +173,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
-Parameter Sets: DelayViaIdentity, DelayViaIdentity1
+Parameter Sets: DelayViaIdentity, DelayViaIdentity1, DelayViaIdentity1ByDevCenter, DelayViaIdentityByDevCenter
 Aliases:
 
 Required: True
@@ -148,7 +188,7 @@ The DevCenter Project upon which to execute operations.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delay, Delay1
+Parameter Sets: Delay, Delay1, Delay1ByDevCenter, DelayByDevCenter
 Aliases:
 
 Required: True
@@ -179,7 +219,7 @@ If value is 'me', the identity is taken from the authentication context.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delay, Delay1
+Parameter Sets: Delay, Delay1, Delay1ByDevCenter, DelayByDevCenter
 Aliases:
 
 Required: True

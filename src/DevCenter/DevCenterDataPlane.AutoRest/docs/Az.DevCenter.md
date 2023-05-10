@@ -29,9 +29,6 @@ Gets an action.
 ### [Get-AzDevCenterDevDevBoxRemoteConnection](Get-AzDevCenterDevDevBoxRemoteConnection.md)
 Gets RDP Connection info
 
-### [Get-AzDevCenterDevDevCenterDevBox](Get-AzDevCenterDevDevCenterDevBox.md)
-Lists Dev Boxes that the caller has access to in the DevCenter.
-
 ### [Get-AzDevCenterDevEnvironment](Get-AzDevCenterDevEnvironment.md)
 Gets an environment
 
@@ -64,6 +61,9 @@ Deletes an environment and all its associated resources
 
 ### [Restart-AzDevCenterDevDevBox](Restart-AzDevCenterDevDevBox.md)
 Restarts a Dev Box
+
+### [Set-AzDevCenterDevEnvironment](Set-AzDevCenterDevEnvironment.md)
+Creates or updates an environment.
 
 ### [Skip-AzDevCenterDevDevBoxAction](Skip-AzDevCenterDevDevBoxAction.md)
 Skips an occurrence of an action.

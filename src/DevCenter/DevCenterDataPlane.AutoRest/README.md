@@ -36,9 +36,9 @@ require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
-  - $(repo)/specification/devcenter/data-plane/Microsoft.DevCenter/stable/2023-04-01/devbox.json
-  - $(repo)/specification/devcenter/data-plane/Microsoft.DevCenter/stable/2023-04-01/devcenter.json
-  - $(repo)/specification/devcenter/data-plane/Microsoft.DevCenter/stable/2023-04-01/environments.json
+  - $(this-folder)/../..//specification/devcenter/data-plane/Microsoft.DevCenter/stable/2023-04-01/devbox.json
+  - $(this-folder)/../..//specification/devcenter/data-plane/Microsoft.DevCenter/stable/2023-04-01/devcenter.json
+  - $(this-folder)/../..//specification/devcenter/data-plane/Microsoft.DevCenter/stable/2023-04-01/environments.json
 title: DevCenterData
 subject-prefix: DevCenter
 endpoint-resource-id-key-name: https://devcenter.azure.com
@@ -64,10 +64,6 @@ directive:
     set: 
       verb: Delay
       subject: DevBoxAction
-  - where:
-      subject: ^(.*)(DevCenterDevBox)(.*)$
-    set:
-      subject: DevBox
   - where:
       verb: Get
       subject: ^(.*)

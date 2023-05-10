@@ -24,9 +24,27 @@ Get-AzDevCenterDevCatalog -Endpoint <String> -CatalogName <String> -ProjectName 
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+### GetByDevCenter
+```
+Get-AzDevCenterDevCatalog -DevCenter <String> -CatalogName <String> -ProjectName <String>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ### GetViaIdentity
 ```
 Get-AzDevCenterDevCatalog -Endpoint <String> -InputObject <IDevCenterIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### GetViaIdentityByDevCenter
+```
+Get-AzDevCenterDevCatalog -DevCenter <String> -InputObject <IDevCenterIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### ListByDevCenter
+```
+Get-AzDevCenterDevCatalog -DevCenter <String> -ProjectName <String> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -64,7 +82,7 @@ The name of the catalog
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, GetByDevCenter
 Aliases:
 
 Required: True
@@ -90,12 +108,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DevCenter
+The DevCenter upon which to execute operations.
+
+```yaml
+Type: System.String
+Parameter Sets: GetByDevCenter, GetViaIdentityByDevCenter, ListByDevCenter
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Endpoint
 The DevCenter-specific URI to operate on.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Get, GetViaIdentity, List
 Aliases:
 
 Required: True
@@ -111,7 +144,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
-Parameter Sets: GetViaIdentity
+Parameter Sets: GetViaIdentity, GetViaIdentityByDevCenter
 Aliases:
 
 Required: True
@@ -126,7 +159,7 @@ The DevCenter Project upon which to execute operations.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: Get, GetByDevCenter, List, ListByDevCenter
 Aliases:
 
 Required: True
