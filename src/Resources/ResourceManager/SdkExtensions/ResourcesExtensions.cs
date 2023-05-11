@@ -153,6 +153,40 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkExtensions
             return resourcesTable.ToString();
         }
 
+        // TODO: This function and the above tags contruction function could be combined into one function.
+        // Leaving for now to avoid introducing problems in existing code.
+        public static string ConstructTagsTableFromIDictionary(IDictionary<string, string> tags)
+        {
+            if (tags == null || tags.Count == 0)
+            {
+                return null;
+            }
+
+            StringBuilder resourcesTable = new StringBuilder();
+
+            int maxNameLength = Math.Max("Name".Length, tags.Max(tag => tag.Key.Length));
+            int maxValueLength = Math.Max("Value".Length, tags.Max(tag => tag.Value.Length));
+
+            string rowFormat = "{0, -" + maxNameLength + "}  {1, -" + maxValueLength + "}\r\n";
+            resourcesTable.AppendLine();
+            resourcesTable.AppendFormat(rowFormat, "Name", "Value");
+            resourcesTable.AppendFormat(rowFormat,
+                GeneralUtilities.GenerateSeparator(maxNameLength, "="),
+                GeneralUtilities.GenerateSeparator(maxValueLength, "="));
+
+            foreach (var tag in tags)
+            {
+                if (tag.Key.StartsWith(TagsClient.ExecludedTagPrefix))
+                {
+                    continue;
+                }
+
+                resourcesTable.AppendFormat(rowFormat, tag.Key, tag.Value);
+            }
+
+            return resourcesTable.ToString();
+        }
+
         private static string ConstructTemplateLinkView(TemplateLink templateLink)
         {
             if (templateLink == null)
@@ -266,6 +300,53 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkExtensions
                 Name = feature.Name,
                 Properties = feature.Properties
             };
+        }
+
+        public static string GetStackResourcesAsString(IList<ManagedResourceReference> list)
+        {
+            StringBuilder result = new StringBuilder();
+            int listElement = 0;
+            while (listElement < list.Count - 1)
+            {
+                result.AppendLine(list[listElement].Id);
+                listElement += 1;
+            }
+            result.Append(list[listElement].Id);
+
+            return result.ToString();
+        }
+
+        public static string GetStackResourcesAsString(IList<ResourceReference> list)
+        {
+            StringBuilder result = new StringBuilder();
+            int listElement = 0;
+            while (listElement < list.Count - 1)
+            {
+                result.AppendLine(list[listElement].Id);
+                listElement += 1;
+            }
+            result.Append(list[listElement].Id);
+
+            return result.ToString();
+        }
+
+        public static string GetStackResourcesAsString(IList<ResourceReferenceExtended> list)
+        {
+            StringBuilder result = new StringBuilder();
+            int listElement = 0;
+            string rowFormat = "{0, -" + 4 + "}  {1, -" + 4 + "}\r\n";
+            string lastRowFormat = "{0, -" + 4 + "}  {1, -" + 4 + "}";
+            while (listElement < list.Count - 1)
+            {
+                result.AppendFormat(rowFormat, "Id:", list[listElement].Id);
+                result.AppendFormat(rowFormat, "Error:", list[listElement].Error.Message);
+                result.AppendLine();
+                listElement += 1;
+            }
+            result.AppendFormat(rowFormat, "Id:", list[listElement].Id);
+            result.AppendFormat(lastRowFormat, "Error:", list[listElement].Error.Message);
+
+            return result.ToString();
         }
     }
 }

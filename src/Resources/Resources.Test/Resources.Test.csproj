@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <PsModuleName>Resources</PsModuleName>
+    <Configurations>Debug;Release;Powershell</Configurations>
   </PropertyGroup>
 
   <Import Project="$(MSBuildThisFileDirectory)..\..\Az.Test.props" />
