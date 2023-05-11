@@ -89,7 +89,7 @@
       "phases": [
         "build:module",
         "help:module",
-        "example:module"
+        "help-example:module"
       ]
     },
     {

@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Management.NetApp
         /// List all Backups for a Netapp Account
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
         /// The name of the NetApp account
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Management.NetApp
         /// Gets the specified backup for a Netapp Account
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
         /// The name of the NetApp account
@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Management.NetApp
         /// Delete the specified Backup for a Netapp Account
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
         /// The name of the NetApp account
@@ -117,7 +117,7 @@ namespace Microsoft.Azure.Management.NetApp
         /// Delete the specified Backup for a Netapp Account
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
         /// The name of the NetApp account

@@ -60,6 +60,13 @@ param(
     # The ID of the target subscription.
     ${SubscriptionId},
 
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
+    [System.String]
+    # New-AzMobileNetworkDataNetwork
+    # The name of the data network.
+    ${DataNetworkName},
+
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
     [System.String]
@@ -72,6 +79,157 @@ param(
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
+
+    [Parameter()]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.PlatformType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.PlatformType]
+    # New-AzMobileNetworkPacketCoreControlPlane
+    # The platform type where packet core is deployed.
+    ${PlatformType},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.String]
+    # The logical name for this interface.
+    # This should match one of the interfaces configured on your Azure Stack Edge device.
+    ${ControlPlaneAccessInterfaceName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.String]
+    # The IPv4 address.
+    ${ControlPlaneAccessInterfaceIpv4Address},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.String]
+    # The default IPv4 gateway (router).
+    ${ControlPlaneAccessInterfaceIpv4Gateway},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.String]
+    # The IPv4 subnet.
+    ${ControlPlaneAccessInterfaceIpv4Subnet},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.String]
+    # Azure Arc custom location resource ID.
+    ${CustomLocationId},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.String]
+    # Azure Stack Edge device resource ID.
+    ${AzureStackEdgeDeviceId},
+
+    [Parameter()]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.AuthenticationType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.AuthenticationType]
+    # How to authenticate users who access local diagnostics APIs.
+    ${LocalDiagnosticAccessAuthenticationType},
+
+    [Parameter()]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.CoreNetworkType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.CoreNetworkType]
+    # The core network technology generation (5G core or EPC / 4G core).
+    ${CoreNetworkTechnology},
+
+    [Parameter()]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.BillingSku])]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.BillingSku]
+    # The SKU defining the throughput and SIM allowances for this packet core control plane deployment.
+    ${Sku},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.String]
+    # New-AzMobileNetworkPacketCoreDataPlane
+    # The IPv4 address.
+    ${UserPlaneAccessInterfaceIpv4Address},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.String]
+    # The default IPv4 gateway (router).
+    ${UserPlaneAccessInterfaceIpv4Gateway},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.String]
+    # The IPv4 subnet.
+    ${UserPlaneAccessInterfaceIpv4Subnet},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.String]
+    # The logical name for this interface.
+    # This should match one of the interfaces configured on your Azure Stack Edge device.
+    ${UserPlaneAccessInterfaceName},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.String[]]
+    # New-AzMobileNetworkAttachedDataNetwork
+    # The DNS servers to signal to UEs to use for this attached data network.
+    # This configuration is mandatory - if you don't want DNS servers, you must provide an empty array.
+    ${DnsAddress},
+
+    [Parameter()]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.NaptEnabled])]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.NaptEnabled]
+    # Whether NAPT is enabled for connections to this attached data network.
+    ${NaptConfigurationEnabled},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.String]
+    # The IPv4 address.
+    ${UserPlaneDataInterfaceIpv4Address},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.String]
+    # The default IPv4 gateway (router).
+    ${UserPlaneDataInterfaceIpv4Gateway},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.String]
+    # The IPv4 subnet.
+    ${UserPlaneDataInterfaceIpv4Subnet},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.String]
+    # The logical name for this interface.
+    # This should match one of the interfaces configured on your Azure Stack Edge device.
+    ${UserPlaneDataInterfaceName},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.String[]]
+    # The user equipment (UE) address pool prefixes for the attached data network from which the packet core instance will dynamically assign IP addresses to UEs.The packet core instance assigns an IP address to a UE when the UE sets up a PDU session.
+    # You must define at least one of userEquipmentAddressPoolPrefix and userEquipmentStaticAddressPoolPrefix.
+    # If you define both, they must be of the same size.
+    ${UserEquipmentAddressPoolPrefix},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.String[]]
+    # The user equipment (UE) address pool prefixes for the attached data network from which the packet core instance will assign static IP addresses to UEs.The packet core instance assigns an IP address to a UE when the UE sets up a PDU session.
+    # The static IP address for a specific UE is set in StaticIPConfiguration on the corresponding SIM resource.At least one of userEquipmentAddressPoolPrefix and userEquipmentStaticAddressPoolPrefix must be defined.
+    # If both are defined, they must be of the same size.
+    ${UserEquipmentStaticAddressPoolPrefix},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -160,7 +318,7 @@ begin {
         }
 
         $mapping = @{
-            CreateExpanded = 'Az.MobileNetwork.private\New-AzMobileNetworkSite_CreateExpanded';
+            CreateExpanded = 'Az.MobileNetwork.custom\New-AzMobileNetworkSite';
         }
         if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id

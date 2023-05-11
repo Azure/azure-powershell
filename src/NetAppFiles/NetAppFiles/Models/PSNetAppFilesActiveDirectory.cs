@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         public string ActiveDirectoryId { get; set; }
 
         /// <summary>
-        /// Username of a Active Directory domain administrator
+        /// A domain user account with permission to create machine accounts
         /// </summary>
         /// <value>Username of a Active Directory domain administrator</value>
         public string Username { get; set; }
@@ -185,6 +185,11 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         /// </value>
         public PSNetAppFilesLdapSearchScopeOpt LdapSearchScope { get; set; }
 
-
+        /// <summary>
+        /// Comma separated list of
+        /// IPv4 addresses of preferred servers for LDAP client. At most two
+        /// comma separated IPv4 addresses can be passed.
+        /// </summary>
+        public List<string> PreferredServersForLdapClient { get; set; }
     }
 }

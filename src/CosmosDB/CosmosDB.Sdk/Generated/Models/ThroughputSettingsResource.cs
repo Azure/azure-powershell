@@ -40,12 +40,19 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// resource</param>
         /// <param name="offerReplacePending">The throughput replace is
         /// pending</param>
-        public ThroughputSettingsResource(int? throughput = default(int?), AutoscaleSettingsResource autoscaleSettings = default(AutoscaleSettingsResource), string minimumThroughput = default(string), string offerReplacePending = default(string))
+        /// <param name="instantMaximumThroughput">The offer throughput value
+        /// to instantly scale up without triggering splits</param>
+        /// <param name="softAllowedMaximumThroughput">The maximum throughput
+        /// value or the maximum maxThroughput value (for autoscale) that can
+        /// be specified</param>
+        public ThroughputSettingsResource(int? throughput = default(int?), AutoscaleSettingsResource autoscaleSettings = default(AutoscaleSettingsResource), string minimumThroughput = default(string), string offerReplacePending = default(string), string instantMaximumThroughput = default(string), string softAllowedMaximumThroughput = default(string))
         {
             Throughput = throughput;
             AutoscaleSettings = autoscaleSettings;
             MinimumThroughput = minimumThroughput;
             OfferReplacePending = offerReplacePending;
+            InstantMaximumThroughput = instantMaximumThroughput;
+            SoftAllowedMaximumThroughput = softAllowedMaximumThroughput;
             CustomInit();
         }
 
@@ -81,6 +88,20 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// </summary>
         [JsonProperty(PropertyName = "offerReplacePending")]
         public string OfferReplacePending { get; private set; }
+
+        /// <summary>
+        /// Gets the offer throughput value to instantly scale up without
+        /// triggering splits
+        /// </summary>
+        [JsonProperty(PropertyName = "instantMaximumThroughput")]
+        public string InstantMaximumThroughput { get; private set; }
+
+        /// <summary>
+        /// Gets the maximum throughput value or the maximum maxThroughput
+        /// value (for autoscale) that can be specified
+        /// </summary>
+        [JsonProperty(PropertyName = "softAllowedMaximumThroughput")]
+        public string SoftAllowedMaximumThroughput { get; private set; }
 
         /// <summary>
         /// Validate the object.

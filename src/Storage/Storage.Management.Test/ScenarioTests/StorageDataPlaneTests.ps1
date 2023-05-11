@@ -110,12 +110,25 @@ function Test-File
             Assert-AreEqual $localFileProperties.Attributes.ToString() $file[0].FileProperties.SmbProperties.FileAttributes.ToString()
         }
 
-        Remove-AzStorageFile -ShareName $shareName -Path $objectName1 -Context $storageContext
+        $fileName1 = "new" + $objectName1
+        $file = Get-AzStorageFile -ShareName $shareName -Path $objectName1 -Context $storageContext
+
+        $file2 = Rename-AzStorageFile -ShareName $shareName -SourcePath $objectName1 -DestinationPath $fileName1 -Context $storageContext
+        Assert-AreEqual $file2.Name $fileName1 
+        Assert-AreEqual $file.FileProperties.ContentType $file2.FileProperties.ContentType
+        Assert-AreEqual $file.FileProperties.ContentLength $file2.FileProperties.ContentLength
+
+        $file3 = $file2 | Rename-AzStorageFile -DestinationPath $fileName1 -Context $storageContext -Force
+        Assert-AreEqual $file3.Name $fileName1 
+        Assert-AreEqual $file2.FileProperties.ContentType $file3.FileProperties.ContentType
+        Assert-AreEqual $file2.FileProperties.ContentLength $file3.FileProperties.ContentLength
+        
+        Remove-AzStorageFile -ShareName $shareName -Path $fileName1 -Context $storageContext
         $file = Get-AzStorageFile -ShareName $shareName -Context $storageContext
         Assert-AreEqual $file.Count 1
         Assert-AreEqual $file[0].Name $objectName2
 
-         $dirName = "filetestdir"
+        $dirName = "filetestdir"
         New-AzStorageDirectory -ShareName $shareName -Path $dirName -Context $storageContext    
         $file = Get-AzStorageShare -Name $shareName -Context $storageContext | Get-AzStorageFile -ExcludeExtendedInfo
         Assert-AreEqual $file.Count 2
@@ -125,11 +138,25 @@ function Test-File
         Assert-AreEqual $file[1].Name $objectName2
         Assert-AreEqual $file[1].GetType().Name "AzureStorageFile"
         Assert-Null $file[1].ListFileProperties.Properties.ETag
-        Get-AzStorageFile -ShareName $shareName -Path $dirName -Context $storageContext | Remove-AzStorageDirectory
+
+        $newDir = "new" + $dirName
+        $dir = Get-AzStorageFile -ShareName $shareName -Path $dirName -Context $storageContext
+        $dir2 = Rename-AzStorageDirectory -ShareName $shareName -SourcePath $dirName -DestinationPath $newDir -Context $storageContext
+        Assert-AreEqual $newDir $dir2.Name
+        Assert-AreEqual $dir.ListFileProperties.IsDirectory $dir2.ListFileProperties.IsDirectory
+        Assert-AreEqual $dir.ListFileProperties.FileAttributes $dir2.ListFileProperties.FileAttributes
+
+        $newDir2 = "new2" + $dirName
+        $dir3 = $dir2 | Rename-AzStorageDirectory -DestinationPath $newDir2 -Context $storageContext
+        Assert-AreEqual $newDir2 $dir3.Name
+        Assert-AreEqual $dir2.ListFileProperties.IsDirectory $dir3.ListFileProperties.IsDirectory
+        Assert-AreEqual $dir2.ListFileProperties.FileAttributes $dir3.ListFileProperties.FileAttributes
+
+        $dir3 | Remove-AzStorageDirectory
         $file = Get-AzStorageFile -ShareName $shareName -Context $storageContext
         Assert-AreEqual $file.Count 1
         Assert-AreEqual $file[0].Name $objectName2
-        Assert-AreEqual $file[0].GetType().Name "AzureStorageFile"   
+        Assert-AreEqual $file[0].GetType().Name "AzureStorageFile"
 
         # Clean Storage Account
         Remove-AzStorageShare -Name $shareName -Force -Context $storageContext

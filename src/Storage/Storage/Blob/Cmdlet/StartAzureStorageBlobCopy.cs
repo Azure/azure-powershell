@@ -677,6 +677,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                 if (Channel!=null && destChannel != null && 
                     Channel.StorageContext!= null && destChannel.StorageContext != null 
                     && Channel.StorageContext.StorageAccountName == destChannel.StorageContext.StorageAccountName
+                    && Channel.StorageContext.StorageAccount != null 
+                    && Channel.StorageContext.StorageAccount.Credentials != null
                     && Channel.StorageContext.StorageAccount.Credentials.IsToken)
                 {
                     // if inside same account, source blob can be anonumous
@@ -712,6 +714,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                 if (Channel != null && destChannel != null &&
                     Channel.StorageContext != null && destChannel.StorageContext != null
                     && Channel.StorageContext.StorageAccountName == destChannel.StorageContext.StorageAccountName
+                    && Channel.StorageContext.StorageAccount != null
+                    && Channel.StorageContext.StorageAccount.Credentials != null
                     && Channel.StorageContext.StorageAccount.Credentials.IsToken)
                 {
                     // if inside same account, source blob can be anonumous

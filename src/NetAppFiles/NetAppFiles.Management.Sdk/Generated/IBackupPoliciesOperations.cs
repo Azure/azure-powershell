@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Management.NetApp
         /// List backup policies for Netapp Account
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
         /// The name of the NetApp account
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Management.NetApp
         /// Get a particular backup Policy
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
         /// The name of the NetApp account
@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Management.NetApp
         /// Create a backup policy for Netapp Account
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
         /// The name of the NetApp account
@@ -123,7 +123,7 @@ namespace Microsoft.Azure.Management.NetApp
         /// Patch a backup policy for Netapp Account
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
         /// The name of the NetApp account
@@ -157,7 +157,7 @@ namespace Microsoft.Azure.Management.NetApp
         /// Delete backup policy
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
         /// The name of the NetApp account
@@ -185,7 +185,7 @@ namespace Microsoft.Azure.Management.NetApp
         /// Create a backup policy for Netapp Account
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
         /// The name of the NetApp account
@@ -219,7 +219,7 @@ namespace Microsoft.Azure.Management.NetApp
         /// Patch a backup policy for Netapp Account
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
         /// The name of the NetApp account
@@ -253,7 +253,7 @@ namespace Microsoft.Azure.Management.NetApp
         /// Delete backup policy
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
         /// The name of the NetApp account

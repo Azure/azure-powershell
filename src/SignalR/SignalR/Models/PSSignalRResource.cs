@@ -23,8 +23,6 @@ namespace Microsoft.Azure.Commands.SignalR.Models
 
         public string HostName { get; }
 
-        public string HostNamePrefix { get; }
-
         public string ProvisioningState { get; }
 
         public int? PublicPort { get; }

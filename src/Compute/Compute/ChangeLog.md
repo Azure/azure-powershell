@@ -20,6 +20,9 @@
 
 -->
 ## Upcoming Release
+* Added new switch parameter `OSImageScheduledEventEnabled` and string parameter `OSImageScheduledEventNotBeforeTimeoutInMinutes` to the cmdlets `New-AzVmssConfig` and `Update-AzVmss`.
+
+## Version 5.7.1
 * Added a breaking change warning to the `Get-AzVM` cmdlet to show that the `NextLink` parameter and parameter set will be removed in June 2023. The parameter has been non-functional for a long time. 
 * Updated the breaking change warning in `New-AzVM` and `New-AzVmss` regarding using the new versioned image aliases to indicate that certain aliases will be removed next breaking change release.
 * Updated the `Get-AzVMRunCommand` to include the `ProvisioningState` value. Fix [#21473]

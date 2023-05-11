@@ -58,6 +58,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
 
         /// <summary>
         /// Deserializes a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonNode"/> into an instance of Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphStsPolicy.
+        /// Note: the Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphStsPolicy interface is polymorphic,
+        /// and the precise model class that will get deserialized is determined at runtime based on the payload.
         /// </summary>
         /// <param name="node">a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonNode" /> to deserialize from.</param>
         /// <returns>
@@ -65,7 +67,32 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
         /// </returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphStsPolicy FromJson(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonNode node)
         {
-            return node is Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonObject json ? new MicrosoftGraphStsPolicy(json, new global::System.Collections.Generic.HashSet<string>(){ @"id",@"deletedDateTime",@"displayName",@"@odata.type",@"@odata.id",@"description",@"definition",@"isOrganizationDefault",@"appliesTo" }) : null;
+            if (!(node is Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonObject json))
+            {
+                return null;
+            }
+            // Polymorphic type -- select the appropriate constructor using the discriminator
+
+            switch ( json.StringProperty("@odata.type") )
+            {
+                case "microsoft.graph.homeRealmDiscoveryPolicy":
+                {
+                    return new MicrosoftGraphHomeRealmDiscoveryPolicy(json);
+                }
+                case "microsoft.graph.tokenIssuancePolicy":
+                {
+                    return new MicrosoftGraphTokenIssuancePolicy(json);
+                }
+                case "microsoft.graph.tokenLifetimePolicy":
+                {
+                    return new MicrosoftGraphTokenLifetimePolicy(json);
+                }
+                case "microsoft.graph.claimsMappingPolicy":
+                {
+                    return new MicrosoftGraphClaimsMappingPolicy(json);
+                }
+            }
+            return new MicrosoftGraphStsPolicy(json, new global::System.Collections.Generic.HashSet<string>(){ @"id",@"deletedDateTime",@"displayName",@"@odata.type",@"@odata.id",@"description",@"definition",@"isOrganizationDefault",@"appliesTo" });
         }
 
         /// <summary>

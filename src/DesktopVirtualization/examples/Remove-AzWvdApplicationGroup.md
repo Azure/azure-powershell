@@ -4,4 +4,3 @@ Remove-AzWvdApplicationGroup -ResourceGroupName ResourceGroupName -Name Applicat
 ```
 
 This command deletes a Windows Virtual Desktop ApplicationGroup in a Resource Group.
-

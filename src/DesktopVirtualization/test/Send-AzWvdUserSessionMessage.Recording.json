@@ -1,12 +1,11 @@
 {
-  "Send-AzWvdUserSessionMessage+[NoContext]+Send+$POST+https://management.azure.com/subscriptions/292d7caa-a878-4de8-b774-689097666272/resourceGroups/datr-canadaeast/providers/Microsoft.DesktopVirtualization/hostPools/HostPoolPowershell1/sessionHosts/PowershellVM-1.wvdarmtest1.net/userSessions/4/sendMessage?api-version=2021-07-12+1": {
+  "Send-AzWvdUserSessionMessage+[NoContext]+Send+$POST+https://management.azure.com/subscriptions/dbedef25-184c-430f-b383-0eeb87c3205d/resourceGroups/alecbUserSessionTests/providers/Microsoft.DesktopVirtualization/hostPools/alecbUserSessionHP/sessionHosts/pwsh-0/userSessions/3/sendMessage?api-version=2022-09-09+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/292d7caa-a878-4de8-b774-689097666272/resourceGroups/datr-canadaeast/providers/Microsoft.DesktopVirtualization/hostPools/HostPoolPowershell1/sessionHosts/PowershellVM-1.wvdarmtest1.net/userSessions/4/sendMessage?api-version=2021-07-12",
-      "Content": "{\r\n  \"messageBody\": \"apple\",\r\n  \"messageTitle\": \"title\"\r\n}",
+      "RequestUri": "https://management.azure.com/subscriptions/dbedef25-184c-430f-b383-0eeb87c3205d/resourceGroups/alecbUserSessionTests/providers/Microsoft.DesktopVirtualization/hostPools/alecbUserSessionHP/sessionHosts/pwsh-0/userSessions/3/sendMessage?api-version=2022-09-09",
+      "Content": "{\r\n  \"messageTitle\": \"title\",\r\n  \"messageBody\": \"apple\"\r\n}",
+      "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "6" ],
-        "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
@@ -18,24 +17,29 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-lamport-ts": [ "12028" ],
-        "x-ms-correlation-id": [ "dad5b78d-f30b-4457-b068-371556193161" ],
-        "Set-Cookie": [ "ARRAffinity=218fc26d5a5724cc6bc574acd210aa679c146900b859248acf92586a73677e6d;Path=/;HttpOnly;Domain=rdarmprovider.dev05.avdtest.net" ],
+        "X-Rate-Limit-Limit": [ "0" ],
+        "X-Rate-Limit-Remaining": [ "9223372036854775807" ],
+        "X-Rate-Limit-Reset": [ "0" ],
+        "x-ms-opsarmpath64": [ "L3N1YnNjcmlwdGlvbnMvZGJlZGVmMjUtMTg0Yy00MzBmLWIzODMtMGVlYjg3YzMyMDVkL3Jlc291cmNlR3JvdXBzL2FsZWNiVXNlclNlc3Npb25UZXN0cy9wcm92aWRlcnMvTWljcm9zb2Z0LkRlc2t0b3BWaXJ0dWFsaXphdGlvbi9ob3N0UG9vbHMvYWxlY2JVc2VyU2Vzc2lvbkhQL3Nlc3Npb25Ib3N0cy9wd3NoLTAvdXNlclNlc3Npb25zLzM=" ],
+        "x-ms-lamport-ts": [ "95357378" ],
+        "x-ms-correlation-id": [ "d6e3718f-a14d-4383-baaf-36dbba091d10" ],
+        "x-ms-request-id": [ "b022527c-9d0f-4bee-b4ce-1bb041210661" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Set-Cookie": [ "ARRAffinity=7bf5a65c9ab6652b7e960fdced88dd5501d933c0715fe792714d5d958b2e56fd;Path=/;HttpOnly;Secure;Domain=rdarmprovider-g-us-r0.wvdselfhost.microsoft.com", "ARRAffinitySameSite=7bf5a65c9ab6652b7e960fdced88dd5501d933c0715fe792714d5d958b2e56fd;Path=/;HttpOnly;SameSite=None;Secure;Domain=rdarmprovider-g-us-r0.wvdselfhost.microsoft.com" ],
         "Server": [ "Microsoft-IIS/10.0" ],
         "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
-        "x-ms-request-id": [ "dad5b78d-f30b-4457-b068-371556193161" ],
-        "x-ms-correlation-request-id": [ "dad5b78d-f30b-4457-b068-371556193161" ],
-        "x-ms-routing-request-id": [ "WESTUS:20191105T234252Z:dad5b78d-f30b-4457-b068-371556193161" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1193" ],
+        "x-ms-correlation-request-id": [ "82692bb8-b30b-43fc-a62c-722b15d5da04" ],
+        "x-ms-routing-request-id": [ "WESTUS:20230320T185349Z:82692bb8-b30b-43fc-a62c-722b15d5da04" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 05 Nov 2019 23:42:52 GMT" ]
+        "Date": [ "Mon, 20 Mar 2023 18:53:49 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ],
         "Content-Length": [ "0" ]
       },
-      "Content": null
+      "Content": null,
+      "isContentBase64": false
     }
   }
 }

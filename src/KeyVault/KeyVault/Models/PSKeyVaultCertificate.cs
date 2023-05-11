@@ -30,6 +30,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         public string SecretId { get; internal set; }
         public string Thumbprint { get; set; }
 
+        public PSKeyVaultCertificatePolicy Policy { get; set; }
         public string RecoveryLevel { get; private set; }
 
         internal PSKeyVaultCertificate(CertificateBundle certificateBundle, VaultUriHelper vaultUriHelper)
@@ -156,6 +157,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
             KeyId = keyVaultCertificate.KeyId?.ToString();
             SecretId = keyVaultCertificate.SecretId?.ToString();
+            Policy = PSKeyVaultCertificatePolicy.FromTrack2CertificatePolicy(keyVaultCertificate.Policy);
 
             if (keyVaultCertificate.Properties != null)
             {

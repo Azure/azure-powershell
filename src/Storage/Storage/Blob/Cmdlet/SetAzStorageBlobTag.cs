@@ -74,7 +74,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
         private string ContainerName = String.Empty;
 
         [Parameter(HelpMessage = "Blob Tags", Mandatory = true)]
-        [ValidateNotNullOrEmpty]
+        [ValidateNotNull]
         public Hashtable Tag
         {
             get

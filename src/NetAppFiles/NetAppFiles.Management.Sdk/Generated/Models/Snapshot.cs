@@ -11,7 +11,6 @@
 namespace Microsoft.Azure.Management.NetApp.Models
 {
     using Microsoft.Rest;
-    using Microsoft.Rest.Azure;
     using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
     using System.Linq;
@@ -20,7 +19,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
     /// Snapshot of a Volume
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class Snapshot : IResource
+    public partial class Snapshot : ProxyResource
     {
         /// <summary>
         /// Initializes a new instance of the Snapshot class.
@@ -34,18 +33,21 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// Initializes a new instance of the Snapshot class.
         /// </summary>
         /// <param name="location">Resource location</param>
-        /// <param name="id">Resource Id</param>
-        /// <param name="name">Resource name</param>
-        /// <param name="type">Resource type</param>
+        /// <param name="id">Fully qualified resource ID for the resource. Ex -
+        /// /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}</param>
+        /// <param name="name">The name of the resource</param>
+        /// <param name="type">The type of the resource. E.g.
+        /// "Microsoft.Compute/virtualMachines" or
+        /// "Microsoft.Storage/storageAccounts"</param>
+        /// <param name="systemData">Azure Resource Manager metadata containing
+        /// createdBy and modifiedBy information.</param>
         /// <param name="snapshotId">snapshotId</param>
         /// <param name="created">name</param>
         /// <param name="provisioningState">Azure lifecycle management</param>
-        public Snapshot(string location, string id = default(string), string name = default(string), string type = default(string), string snapshotId = default(string), System.DateTime? created = default(System.DateTime?), string provisioningState = default(string))
+        public Snapshot(string location, string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), string snapshotId = default(string), System.DateTime? created = default(System.DateTime?), string provisioningState = default(string))
+            : base(id, name, type, systemData)
         {
             Location = location;
-            Id = id;
-            Name = name;
-            Type = type;
             SnapshotId = snapshotId;
             Created = created;
             ProvisioningState = provisioningState;
@@ -62,24 +64,6 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// </summary>
         [JsonProperty(PropertyName = "location")]
         public string Location { get; set; }
-
-        /// <summary>
-        /// Gets resource Id
-        /// </summary>
-        [JsonProperty(PropertyName = "id")]
-        public string Id { get; private set; }
-
-        /// <summary>
-        /// Gets resource name
-        /// </summary>
-        [JsonProperty(PropertyName = "name")]
-        public string Name { get; private set; }
-
-        /// <summary>
-        /// Gets resource type
-        /// </summary>
-        [JsonProperty(PropertyName = "type")]
-        public string Type { get; private set; }
 
         /// <summary>
         /// Gets snapshotId
