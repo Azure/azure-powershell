@@ -1,0 +1,94 @@
+{
+  "Get-AzSelfHelpDiagnostic+[NoContext]+Get+$PUT+https://management.azure.com//subscriptions/6bded6d5-a6af-43e1-96d3-bf71f6f5f8ba/resourcegroups/kdvfm9coi3/providers/Microsoft.Storage/storageAccounts/teststorageforselfhelp/providers/Microsoft.Help/diagnostics/ez1nr93pbw?api-version=2023-01-01-preview+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com//subscriptions/6bded6d5-a6af-43e1-96d3-bf71f6f5f8ba/resourcegroups/kdvfm9coi3/providers/Microsoft.Storage/storageAccounts/teststorageforselfhelp/providers/Microsoft.Help/diagnostics/ez1nr93pbw?api-version=2023-01-01-preview",
+      "Content": "{\r\n  \"properties\": {\r\n    \"insights\": [\r\n      {\r\n        \"solutionId\": \"Demo2InsightV2\"\r\n      }\r\n    ]\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {},
+      "ContentHeaders": {
+        "Content-Type": ["application/json"],
+        "Content-Length": ["112"]
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Cache-Control": ["no-cache"],
+        "Pragma": ["no-cache"],
+        "Location": [
+          "https://management.azure.com/subscriptions/6bded6d5-a6af-43e1-96d3-bf71f6f5f8ba/providers/Microsoft.Help/Diagnostics/ez1nr93pbw/operationResults/8df4aa79-3cf0-4da6-91d5-8538466b5e0c?api-version=2023-01-01-preview"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": ["74"],
+        "Azure-AsyncOperation": [
+          "https://management.azure.com/subscriptions/6bded6d5-a6af-43e1-96d3-bf71f6f5f8ba/providers/Microsoft.Help/Diagnostics/ez1nr93pbw/operationResults/8df4aa79-3cf0-4da6-91d5-8538466b5e0c?api-version=2023-01-01-preview"
+        ],
+        "Server": ["Microsoft-IIS/10.0"],
+        "X-Powered-By": ["ASP.NET"],
+        "x-ms-request-id": ["8e3ce4f2-2d27-4611-a891-8644906989a6"],
+        "x-ms-correlation-request-id": ["8e3ce4f2-2d27-4611-a891-8644906989a6"],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20230510T233521Z:8e3ce4f2-2d27-4611-a891-8644906989a6"
+        ],
+        "Strict-Transport-Security": ["max-age=31536000; includeSubDomains"],
+        "X-Content-Type-Options": ["nosniff"],
+        "Date": ["Wed, 10 May 2023 23:35:21 GMT"]
+      },
+      "ContentHeaders": {
+        "Content-Length": ["346"],
+        "Content-Type": ["application/json; charset=utf-8"],
+        "Expires": ["-1"]
+      },
+      "Content": "{\"id\":\"/subscriptions/6bded6d5-a6af-43e1-96d3-bf71f6f5f8ba/resourcegroups/kdvfm9coi3/providers/Microsoft.Storage/storageAccounts/teststorageforselfhelp/providers/Microsoft.Help/diagnostics/ez1nr93pbw\",\"name\":\"ez1nr93pbw\",\"type\":\"Microsoft.Help/Diagnostics\",\"properties\":{\"provisioningState\":\"Running\",\"acceptedAt\":\"2023-05-10T23:35:21.1642885Z\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzSelfHelpDiagnostic+[NoContext]+Get+$GET+https://management.azure.com//subscriptions/6bded6d5-a6af-43e1-96d3-bf71f6f5f8ba/resourcegroups/kdvfm9coi3/providers/Microsoft.Storage/storageAccounts/teststorageforselfhelp/providers/Microsoft.Help/diagnostics/ez1nr93pbw?api-version=2023-01-01-preview+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com//subscriptions/6bded6d5-a6af-43e1-96d3-bf71f6f5f8ba/resourcegroups/kdvfm9coi3/providers/Microsoft.Storage/storageAccounts/teststorageforselfhelp/providers/Microsoft.Help/diagnostics/ez1nr93pbw?api-version=2023-01-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": ["2"],
+        "x-ms-client-request-id": ["505f0141-4a1d-45e2-9d72-d1c9f8e21ea9"],
+        "CommandName": ["Get-AzSelfHelpDiagnostic"],
+        "FullCommandName": ["Get-AzSelfHelpDiagnostic_Get"],
+        "ParameterSetName": ["__AllParameterSets"],
+        "User-Agent": [
+          "AzurePowershell/v0.0.0",
+          "PSVersion/v7.3.4",
+          "Az.SelfHelp/0.1.0"
+        ],
+        "Authorization": ["[Filtered]"]
+      },
+      "ContentHeaders": {}
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": ["no-cache"],
+        "Pragma": ["no-cache"],
+        "Vary": ["Accept-Encoding"],
+        "x-ms-request-id": ["7ed4c07a-2932-48bb-9174-b1130d2eaf4d"],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": ["73"],
+        "Server": ["Microsoft-IIS/10.0"],
+        "X-Powered-By": ["ASP.NET"],
+        "x-ms-correlation-request-id": ["7ed4c07a-2932-48bb-9174-b1130d2eaf4d"],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20230510T233521Z:7ed4c07a-2932-48bb-9174-b1130d2eaf4d"
+        ],
+        "Strict-Transport-Security": ["max-age=31536000; includeSubDomains"],
+        "X-Content-Type-Options": ["nosniff"],
+        "Date": ["Wed, 10 May 2023 23:35:21 GMT"]
+      },
+      "ContentHeaders": {
+        "Content-Length": ["2289"],
+        "Content-Type": ["application/json; charset=utf-8"],
+        "Expires": ["-1"]
+      },
+      "Content": "{\"id\":\"/subscriptions/6bded6d5-a6af-43e1-96d3-bf71f6f5f8ba/resourcegroups/kdvfm9coi3/providers/Microsoft.Storage/storageAccounts/teststorageforselfhelp/providers/Microsoft.Help/diagnostics/ez1nr93pbw\",\"name\":\"ez1nr93pbw\",\"type\":\"Microsoft.Help/Diagnostics\",\"properties\":{\"provisioningState\":\"Succeeded\",\"acceptedAt\":\"2023-05-10T23:35:21.1642885Z\",\"diagnostics\":[{\"solutionId\":\"Demo2InsightV2\",\"status\":\"Succeeded\",\"insights\":[{\"id\":\"perfinsights-available-linux\",\"title\":\"Windows Unable to Boot Test hardcoded string for unknown resource (Demo Insight)\",\"results\":\"\u003c!--issueDescription--\u003e\\n\u003cp\u003eWe have detected that PerfInsights is already installed on your VM. You can run PerfInsights on-demand through the Portal and view reports for your analysis.\u003c/p\u003e\\n\u003c!--/issueDescription--\u003e\\n\u003cp\u003ePerfInsights is a diagnostics tool that can help you analyze operating system level metrics such as:\u003c/p\u003e\\n\u003cul\u003e\\n\u003cli\u003eBest Practices recommendations for Linux\u003c/li\u003e\\n\u003cli\u003eTop CPU consumers\u003c/li\u003e\\n\u003cli\u003eTop Memory consumers\u003c/li\u003e\\n\u003cli\u003eStorage/RAID/LVM layout\u003c/li\u003e\\n\u003c/ul\u003e\\n\u003ch2\u003e\u003cstrong\u003eRecommended Steps\u003c/strong\u003e\u003c/h2\u003e\\n\u003cp\u003e\u003ca data-blade=\\\"Microsoft_Azure_Compute.PerformanceDiagnosticsBlade.resourceId.$resourceId\\\" button-data-blade=\\\"button-data-blade\\\"\u003eRun PerfInsights\u003c/a\u003e\u003c/p\u003e\\n\u003cp\u003eFor the machine \u003c!--$vmname--\u003e[vmname]\u003c!--/$vmname--\u003e, you can \u003ca href=\\\"https://portal.azure.com/#@microsoft.onmicrosoft.com/resource/{$resourceIdDecoded}/performanceDiagnostics\\\"\u003eaccess PerfInsights here\u003c/a\u003e and review results directly in the Azure portal.\u003c/p\u003e\\n\u003cp\u003eYou may also \u003ca href=\\\"https://docs.microsoft.com/azure/virtual-machines/troubleshooting/performance-diagnostics#install-and-run-performance-diagnostics-on-your-vm\\\"\u003edownload PerfInsights\u003c/a\u003e and run it on your virtual machine.\u003c/p\u003e\\n\u003cp\u003eIf you open a support case, attach the PerfInsights report for the Support Engineer to analyze.\u003c/p\u003e\\n\u003ch2\u003e\u003cstrong\u003eRecommended Documents\u003c/strong\u003e\u003c/h2\u003e\\n\u003cul\u003e\\n\u003cli\u003e\u003ca href=\\\"https://docs.microsoft.com/azure/virtual-machines/troubleshooting/how-to-use-perfinsights\\\"\u003eHow to use PerfInsights\u003c/a\u003e\u003c/li\u003e\\n\u003cli\u003e\u003ca href=\\\"https://docs.microsoft.com/troubleshoot/azure/virtual-machines/troubleshoot-performance-bottlenecks-linux\\\"\u003eTroubleshoot performance and isolate bottlenecks in Linux\u003c/a\u003e\u003c/li\u003e\\n\u003c/ul\u003e\\n\",\"importanceLevel\":\"Warning\"}]}]}}",
+      "isContentBase64": false
+    }
+  }
+}
