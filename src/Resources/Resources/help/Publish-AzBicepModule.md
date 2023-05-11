@@ -13,7 +13,7 @@ Publishes a Bicep file to a registry.
 ## SYNTAX
 
 ```
-Publish-AzBicepModule -FilePath <String> -Target <String> [-DocumentationUri <String>] [-PassThru]
+Publish-AzBicepModule -FilePath <String> -Target <String> [-DocumentationUri <String>] [-Force] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -28,6 +28,13 @@ Publish-AzBicepModule -FilePath 'main.bicep' -Target 'br:{registry}/{moduleName}
 ```
 
 Publishes `main.bicep` to `br:{registry}/{moduleName}:{tag}`.
+
+### Example 2
+```powershell
+Publish-AzBicepModule -FilePath 'main.bicep' -Target 'br:{registry}/{moduleName}:{tag}' -Force
+```
+
+Publishes `main.bicep` to `br:{registry}/{moduleName}:{tag}`, overwriting existing version.
 
 ## PARAMETERS
 
@@ -73,6 +80,20 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+### -Force
+Allows overwriting of existing module.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
