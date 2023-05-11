@@ -19,7 +19,6 @@
 -->
 
 ## Upcoming Release
-* Updated help doc of `New-AzSynapseRoleAssignment` cmdlet
 * Remove the unnecessary breaking change of parameter '-SparkConfigFilePath' for `New-AzSynapseSparkPool` and `Update-AzSynapseSparkPool` cmdlets
 
 ## Version 2.3.1
