@@ -29,6 +29,7 @@
 * Fixed `New-AzADApplication` when multiple redirect url types are provided. [#21108]
 * Fixed `Update-AzADServicePrincipal` when empty array passed for `IdentifierUri` [#21345]
 * Fixed an issue where location header was missing in the response from the service for New-AzManagedApplication.
+* Fixed `Get-AzResourceGroup` on -Id requires `Set-AzContext` to given subscription first [#21725]
 
 ## Version 6.6.1
 * Added support for Azure resources deployment with parameters file using Bicep parameters syntax
