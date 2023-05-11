@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added cmdlets for Prometheus rule group
 
 ## Version 0.5.0
 * Added parameter `comment` for `Update-AzAlerteState`

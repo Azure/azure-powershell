@@ -14,20 +14,20 @@ Deletes an alert processing rule
 
 ### ByName (Default)
 ```
-Remove-AzAlertProcessingRule -ResourceGroupName <String> -Name <String> [-DefaultProfile <IAzureContextContainer>]
- [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzAlertProcessingRule -ResourceGroupName <String> -Name <String>
+ [-DefaultProfile <IAzureContextContainer>] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByResourceId
 ```
-Remove-AzAlertProcessingRule -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [-PassThru] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Remove-AzAlertProcessingRule -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByInputObject
 ```
-Remove-AzAlertProcessingRule -InputObject <PSActionRule> [-DefaultProfile <IAzureContextContainer>] [-PassThru]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzAlertProcessingRule -InputObject <PSAlertProcessingRule> [-DefaultProfile <IAzureContextContainer>]
+ [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -63,7 +63,7 @@ Accept wildcard characters: False
 The alert processing rule resource
 
 ```yaml
-Type: Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSActionRule
+Type: Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSAlertProcessingRule
 Parameter Sets: ByInputObject
 Aliases:
 

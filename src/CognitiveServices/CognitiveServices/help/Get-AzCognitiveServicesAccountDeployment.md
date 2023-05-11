@@ -34,6 +34,15 @@ Get Deployment of a Cognitive Services account
 Get-AzCognitiveServicesAccountDeployment -ResourceGroupName cognitive-services-resource-group -AccountName resource-name
 ```
 
+```output
+SystemData : Microsoft.Azure.Management.CognitiveServices.Models.SystemData
+Etag       : "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+Properties : Microsoft.Azure.Management.CognitiveServices.Models.DeploymentProperties
+Id         : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourceGroupName/providers/Microsoft.CognitiveServices/accounts/accountName/deployments/deploymentName
+Name       : deploymentName
+Type       : Microsoft.CognitiveServices/accounts/deployments
+```
+
 Get Deployment of a Cognitive Services account
 
 ## PARAMETERS

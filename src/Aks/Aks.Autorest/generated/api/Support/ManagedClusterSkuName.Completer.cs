@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Support
 {
 
-    /// <summary>Name of a managed cluster SKU.</summary>
+    /// <summary>The name of a managed cluster SKU.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.ManagedClusterSkuNameTypeConverter))]
     public partial struct ManagedClusterSkuName :
         System.Management.Automation.IArgumentCompleter
@@ -26,9 +26,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Support
         /// </returns>
         public global::System.Collections.Generic.IEnumerable<global::System.Management.Automation.CompletionResult> CompleteArgument(global::System.String commandName, global::System.String parameterName, global::System.String wordToComplete, global::System.Management.Automation.Language.CommandAst commandAst, global::System.Collections.IDictionary fakeBoundParameters)
         {
-            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Basic".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Base".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("'Basic'", "Basic", global::System.Management.Automation.CompletionResultType.ParameterValue, "Basic");
+                yield return new global::System.Management.Automation.CompletionResult("'Base'", "Base", global::System.Management.Automation.CompletionResultType.ParameterValue, "Base");
             }
         }
     }

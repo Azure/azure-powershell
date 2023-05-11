@@ -83,9 +83,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         [ValidatePattern("([r-][w-][x-]){3}")]
         public string Umask { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Sets POSIX access permissions for the file owner, the file owning group, and others. Each class may be granted read, write, or execute permission. Symbolic (rwxrw-rw-) is supported. ")]
+        [Parameter(Mandatory = false, HelpMessage = "Sets POSIX access permissions for the file owner, the file owning group, and others. Each class may be granted read, write, or execute permission. Symbolic (rwxrw-rw-) is supported. " +
+            "The sticky bit is also supported and its represented either by the letter t or T in the final character-place depending on whether the execution bit for the others category is set or unset respectively, absence of t or T indicates sticky bit not set.")]
         [ValidateNotNullOrEmpty]
-        [ValidatePattern("([r-][w-][x-]){3}")]
+        [ValidatePattern("([r-][w-][x-]){2}([r-][w-][xtT-])")]
         public string Permission { get; set; }
 
 
@@ -384,13 +385,34 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             string blobPermission = string.Empty;
             for (int i = 0; i < permission.Length; i++)
             {
-                if (umask[i] != '-')
+                if (Char.ToLower(permission[i]) == 't')
                 {
-                    blobPermission += '-';
+                    if (permission[i] == 'T')
+                    {
+                        blobPermission += permission[i];
+                    }
+                    else
+                    {
+                        if (umask[i] == '-')
+                        {
+                            blobPermission += 't';
+                        }
+                        else
+                        {
+                            blobPermission += 'T';
+                        }
+                    }
                 }
                 else
                 {
-                    blobPermission += permission[i];
+                    if (umask[i] != '-')
+                    {
+                        blobPermission += '-';
+                    }
+                    else
+                    {
+                        blobPermission += permission[i];
+                    }
                 }
             }
 

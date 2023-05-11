@@ -12,19 +12,22 @@ Retrieves a routing intent resource associated with a VirtualHub.
 
 ## SYNTAX
 
-### ByRoutingIntentName (Default)
-```powershell
-Get-AzRoutingIntent -ResourceGroupName <String> -ParentResourceName <String> -Name <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+### ByVirtualHubName (Default)
+```
+Get-AzRoutingIntent -ResourceGroupName <String> -HubName <String> [-Name <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByVirtualHubObject
-```powershell
-Get-AzRoutingIntent -Name <String> -VirtualHub <PSVirtualHub> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+Get-AzRoutingIntent -VirtualHub <PSVirtualHub> [-Name <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
-### ByRoutingIntentResourceId
-```powershell
-Get-AzRoutingIntent -ResourceId <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+### ByVirtualHubResourceId
+```
+Get-AzRoutingIntent -ParentResourceId <String> [-Name <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -80,7 +83,6 @@ RoutingPoliciesText : [
 Name                : testRoutingIntent
 Etag                : W/"etag"
 Id                  : /subscriptions/testSub/resourceGroups/testRg/providers/Microsoft.Network/virtualHubs/testHub/routingIntent/testRoutingIntent
-
 ```
 
 This command gets the routing intent of the virtual hub.
@@ -119,33 +121,17 @@ RoutingPoliciesText : [
 Name                : testRoutingIntent
 Etag                : W/"etag"
 Id                  : /subscriptions/testSub/resourceGroups/testRg/providers/Microsoft.Network/virtualHubs/testHub/routingIntent/testRoutingIntent
-
 ```
 
 This command get the routing intent in the specified VirtualHub.
 
 ## PARAMETERS
 
-### -AsJob
-Run cmdlet in the background
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -156,48 +142,48 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -HubName
+The parent resource name.
+
+```yaml
+Type: System.String
+Parameter Sets: ByVirtualHubName
+Aliases: VirtualHubName, ParentVirtualHubName, ParentResourceName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 The resource name.
 
 ```yaml
-Type: String
-Parameter Sets: ByRoutingIntentName, ByVirtualHubObject
+Type: System.String
+Parameter Sets: (All)
 Aliases: ResourceName, RoutingIntentName
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
-### -ParentObject
-The parent virtual hub object of this resource.
+### -ParentResourceId
+The parent resource id.
 
 ```yaml
-Type: PSVirtualHub
-Parameter Sets: ByVirtualHubObject
-Aliases: ParentVirtualHub, VirtualHub
+Type: System.String
+Parameter Sets: ByVirtualHubResourceId
+Aliases: VirtualHubId, ParentVirtualHubId
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -ParentResourceName
-The parent resource name.
-
-```yaml
-Type: String
-Parameter Sets: ByRoutingIntentName
-Aliases: VirtualHubName, ParentVirtualHubName
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -205,8 +191,8 @@ Accept wildcard characters: False
 The resource group name.
 
 ```yaml
-Type: String
-Parameter Sets: ByRoutingIntentName
+Type: System.String
+Parameter Sets: ByVirtualHubName
 Aliases:
 
 Required: True
@@ -216,49 +202,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceId
-The resource id of the RoutingIntent resource to Get.
+### -VirtualHub
+The parent resource.
 
 ```yaml
-Type: String
-Parameter Sets: ByRoutingIntentResourceId
-Aliases: RoutingIntentId
+Type: Microsoft.Azure.Commands.Network.Models.PSVirtualHub
+Parameter Sets: ByVirtualHubObject
+Aliases: ParentObject, ParentVirtualHub
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

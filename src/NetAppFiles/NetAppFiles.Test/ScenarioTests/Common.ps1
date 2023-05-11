@@ -46,17 +46,17 @@ function Get-ProviderLocation($provider)
   
             if ($location -eq $null) 
             {  
-                return "westcentralus"
+                return "eastus"
             } else 
             {  
                 return $location.Locations[0]  
             }  
         }
         
-        return "westcentralus"
+        return "eastus"
     }
 
-    return "westcentralus"
+    return "eastus"
 }
 
 <#

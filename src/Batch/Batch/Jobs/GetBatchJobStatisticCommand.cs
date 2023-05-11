@@ -20,7 +20,7 @@ using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch
 {
-    [GenericBreakingChange("Get-AzBatchJobStatistics alias will be removed in an upcoming breaking change release", "2.0.0")]
+    [GenericBreakingChange("Get-AzBatchJobStatistics alias will be removed in an upcoming breaking change release")]
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzurePrefix + "BatchJobStatistic"), OutputType(typeof(PSJobStatistics))]
     [Alias("Get-AzBatchJobStatistics")]
     public class GetBatchJobStatisticCommand : BatchObjectModelCmdletBase

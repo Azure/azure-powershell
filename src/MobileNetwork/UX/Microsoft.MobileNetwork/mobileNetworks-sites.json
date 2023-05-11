@@ -1,0 +1,95 @@
+{
+  "resourceType": "mobileNetworks/sites",
+  "apiVersion": "2022-11-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.mobilenetwork"
+  },
+  "commands": [
+    {
+      "name": "Get-AzMobileNetworkSite",
+      "description": "Gets information about the specified mobile network site.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MobileNetwork/mobileNetworks/{mobileNetworkName}/sites/{siteName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.mobilenetwork/get-azmobilenetworksite"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-MobileNetworkName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Gets information about the specified mobile network site.",
+          "parameters": [
+            {
+              "name": "-MobileNetworkName",
+              "value": "[Path.mobileNetworkName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.siteName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzMobileNetworkSite",
+      "description": "Deletes the specified mobile network site.\nThis will also delete any network functions that are a part of this site.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MobileNetwork/mobileNetworks/{mobileNetworkName}/sites/{siteName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.mobilenetwork/remove-azmobilenetworksite"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-MobileNetworkName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Deletes the specified mobile network site. This will also delete any network functions that are a part of this site.",
+          "parameters": [
+            {
+              "name": "-MobileNetworkName",
+              "value": "[Path.mobileNetworkName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.siteName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
