@@ -54,11 +54,10 @@ Result    : iVlA6rHicEm6F9vtU3jARzxWughOcRK9htj4UMy0ijd4a4hHwYrSy4lSXhiQTKSMpX+Q
             4wDQAAVZAUvOxHcpCQf3CrlvQK3XfsZeddeiD9laiUU3iB2Ivh3trX0G/Y29gL54THKsmlwXh5mBhxcXHaUv0erDzEVAGnC73FHlJoHCTdm
             7eUMWvsnfhtd/BhcuBb/CeMy1QzHgoBTrByWms4KsTODBEZt41aVkdYxJDREsC8X6a/1vp9EeV+7jm3sZLl+Dm7XOpUjbR+/BUU7HKaw09i
             BRQJGhXf7oyZOf3g6EPEQ==
-RawResult : {137, 89, 64, 234...}
 Algorithm : RSA1_5
 ```
 
-Encrypts string "test" using test-key stored in test-kv. `RawResult` is encrpyted result in byte array format. The `Result` is Base64 string format converted from `RawResult`.
+Encrypts string "test" using test-key stored in test-kv. The `Result` is Base64 string format.
 
 ### Example 2: Decrypt encrypted data
 ```powershell
@@ -70,11 +69,10 @@ $result | Format-List
 ```output
 KeyId     : https://test-kv.vault.azure.net/keys/test-key/bd8b77352a2443d4983bd70e9f660bc6
 Result    : test
-RawResult : {116, 101, 115, 116}
 Algorithm : RSA1_5
 ```
 
-Decrypts encrypted data that is encrypted using test-key stored in test-kv. `RawResult` is decrpyted result in byte array format with UTF8 encoding. The `Result` is plain string converted from `RawResult`.
+Decrypts encrypted data that is encrypted using test-key stored in test-kv. The `Result` is a plain string.
 
 ### Example 3: Wraps a symmetric key using a specified key
 ```powershell
@@ -89,11 +87,10 @@ Result    : imHceWcmB5jufcz+qS+HwaXOvPiaeOQ2dF1Bh+2DByuw+AOyoL3wtwDSilP5BlR3DAB3
             +e54Gtv/sfJD0CcMg+89mssi7hgU0u1IaaowzgSmP7ViRrSVGu8FniAR6hdf7j0JL7ON8IIFMy/+7yq00aJs/dspcESGjcZDry5pLzYphel
             x7VAEbjuv1TuiHwu8cJYH/GsvROErOQbQ+aKcKlYTMzZRGdCA07xXltvFrTiCIvzeKE/lTJVIHH/Nv4aRne/ENRC2cx92r9XFhEBID6o5Td
             kN09Wdjejo8nLDRw9XbtQ==
-RawResult : {138, 97, 220, 121...}
 Algorithm : RSA1_5
 ```
 
-Wraps a symmetric key using key named test-key stored in test-kv. `RawResult` is wrapped result in byte array format. The `Result` is Base64 string format converted from `RawResult`.
+Wraps a symmetric key using key named test-key stored in test-kv. The `Result` is wrapped result in Base64 string format.
 
 ### Example 4: Unwraps a symmetric key using a specified key
 ```powershell
@@ -103,11 +100,10 @@ Invoke-AzKeyVaultKeyOperation -Operation Unwrap -Algorithm RSA1_5 -VaultName tes
 ```output
 KeyId     : https://test-kv.vault.azure.net/keys/test-key/375cdf20252043b79c8ca0c57b6c7679
 Result    : ovQIlbB0DgWhZA7sgkPxbg9H-Ly-VlNGPSgGrrZvlIo
-RawResult : {111, 118, 81, 73...}
 Algorithm : RSA1_5
 ```
 
- Unwraps a symmetric key using a specified key test-key stored in test-kv. `RawResult` is unwrapped result in byte array format with UTF8 encoding. The `Result` is plain string converted from `RawResult`.
+Unwraps a symmetric key using a specified key test-key stored in test-kv. The `Result` is a plain string.
 
 ## PARAMETERS
 
