@@ -218,16 +218,23 @@ directive:
       property-name: IdentityTenantId
     set:
       property-name: TenantId
-  
-  - where:
-      subject: Namespace
-    set:
-      subject: NamespaceV2
     
   - where:
       verb: New
-      subject: NamespaceV2
+      subject: Namespace
     hide: true
+
+  - where:
+      verb: Get
+      subject: Namespace
+    set:
+      alias: Get-AzEventHubNamespaceV2
+
+  - where:
+      verb: Remove
+      subject: Namespace
+    set:
+      alias: Remove-AzEventHubNamespaceV2
 
   - where:
       model-name: KeyVaultProperties

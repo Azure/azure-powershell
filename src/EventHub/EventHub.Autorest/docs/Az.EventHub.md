@@ -44,7 +44,7 @@ Retrieves Alias(Disaster Recovery configuration) for primary or secondary namesp
 ### [Get-AzEventHubKey](Get-AzEventHubKey.md)
 Gets an EventHub SAS key
 
-### [Get-AzEventHubNamespaceV2](Get-AzEventHubNamespaceV2.md)
+### [Get-AzEventHubNamespace](Get-AzEventHubNamespace.md)
 Gets the description of the specified namespace.
 
 ### [Get-AzEventHubNetworkRuleSet](Get-AzEventHubNetworkRuleSet.md)
@@ -86,7 +86,7 @@ Regenerates an EventHub SAS key
 ### [New-AzEventHubKeyVaultPropertiesObject](New-AzEventHubKeyVaultPropertiesObject.md)
 Create an in-memory object for KeyVaultProperties.
 
-### [New-AzEventHubNamespaceV2](New-AzEventHubNamespaceV2.md)
+### [New-AzEventHubNamespace](New-AzEventHubNamespace.md)
 Creates an EventHub Namespace
 
 ### [New-AzEventHubSchemaGroup](New-AzEventHubSchemaGroup.md)
@@ -117,7 +117,7 @@ Deletes a consumer group from the specified Event Hub and resource group.
 ### [Remove-AzEventHubGeoDRConfiguration](Remove-AzEventHubGeoDRConfiguration.md)
 Deletes an Alias(Disaster Recovery configuration)
 
-### [Remove-AzEventHubNamespaceV2](Remove-AzEventHubNamespaceV2.md)
+### [Remove-AzEventHubNamespace](Remove-AzEventHubNamespace.md)
 Deletes an existing namespace.
 This operation also removes all associated resources under the namespace.
 
@@ -149,7 +149,7 @@ This operation disables the Disaster Recovery and stops replicating changes from
 ### [Set-AzEventHubGeoDRConfigurationFailOver](Set-AzEventHubGeoDRConfigurationFailOver.md)
 Invokes GEO DR failover and reconfigure the alias to point to the secondary namespace
 
-### [Set-AzEventHubNamespaceV2](Set-AzEventHubNamespaceV2.md)
+### [Set-AzEventHubNamespace](Set-AzEventHubNamespace.md)
 Updates an EventHub Namespace
 
 ### [Set-AzEventHubNetworkRuleSet](Set-AzEventHubNetworkRuleSet.md)

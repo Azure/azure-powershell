@@ -14,37 +14,31 @@
 
 <#
 .Synopsis
-Updates an EventHub Namespace
+Creates an EventHub Namespace
 .Description
-Updates an EventHub Namespace
+Creates an EventHub Namespace
 #>
 
-function Set-AzEventHubNamespaceV2{
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.IEhNamespace])]    
-    [CmdletBinding(DefaultParameterSetName = 'SetExpanded', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
+function New-AzEventHubNamespace{
+    [Alias("New-AzEventHubNamespaceV2")]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.IEhNamespace])]
+    [CmdletBinding(PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
     param(
 
-        [Parameter(ParameterSetName = 'SetExpanded', Mandatory, HelpMessage = "The name of EventHub namespace.")]
+        [Parameter(Mandatory, HelpMessage = "The name of EventHub namespace.")]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
         [System.String]
         # The name of EventHub namespace
         ${Name},
 
-        [Parameter(ParameterSetName = 'SetExpanded', Mandatory, HelpMessage = "The name of the resource group. The name is case insensitive.")]
+        [Parameter(Mandatory, HelpMessage = "The name of the resource group. The name is case insensitive.")]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
         [System.String]
         # The name of the resource group.
         # The name is case insensitive.
         ${ResourceGroupName},
 
-        [Parameter(ParameterSetName = 'SetViaIdentityExpanded', Mandatory, ValueFromPipeline, HelpMessage = "Identity parameter. To construct, see NOTES section for INPUTOBJECT properties and create a hash table.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubIdentity]
-        # Identity Parameter
-        # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-        ${InputObject},
-
-        [Parameter(ParameterSetName = 'SetExpanded', HelpMessage = "The ID of the target subscription.")]
+        [Parameter(HelpMessage = "The ID of the target subscription.")]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.DefaultInfo(Script = '(Get-AzContext).Subscription.Id')]
         [System.String]
@@ -56,20 +50,35 @@ function Set-AzEventHubNamespaceV2{
         [System.String]
         ${AlternateName},
 
+        [Parameter(HelpMessage = "Cluster ARM ID of the Namespace.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
+        [System.String]
+        ${ClusterArmId},
+
         [Parameter(HelpMessage = "This property disables SAS authentication for the Event Hubs namespace.")]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
         [System.Management.Automation.SwitchParameter]
         ${DisableLocalAuth},
 
-        [Parameter(HelpMessage = "Properties to configure Encryption")]
-        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.IKeyVaultProperties[]]
-        ${KeyVaultProperty},
-
         [Parameter(HelpMessage = "Enable Infrastructure Encryption (Double Encryption)")]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
         [System.Management.Automation.SwitchParameter]
         ${RequireInfrastructureEncryption},
+
+        [Parameter(Mandatory, HelpMessage = "Cluster ARM ID of the Namespace.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
+        [System.String]
+        ${Location},
+
+        [Parameter(HelpMessage = "Enabling this property creates a Standard Event Hubs Namespace in regions supported availability zones.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
+        [System.Management.Automation.SwitchParameter]
+        ${ZoneRedundant},
+
+        [Parameter(HelpMessage = "Properties to configure Encryption")]
+        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
+        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.IKeyVaultProperties[]]
+        ${KeyVaultProperty},
 
         [Parameter(HelpMessage = "Type of managed service identity.")]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
@@ -89,15 +98,18 @@ function Set-AzEventHubNamespaceV2{
 
         [Parameter(HelpMessage = "Upper limit of throughput units when AutoInflate is enabled, value should be within 0 to 20 throughput units. ( '0' if AutoInflateEnabled = true)")]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
-        [System.Int32]
-        # Upper limit of throughput units when AutoInflate is enabled, value should be within 0 to 20 throughput units. ( '0' if AutoInflateEnabled = true)
+        [System.Int64]
         ${MaximumThroughputUnit},
 
         [Parameter(HelpMessage = "The minimum TLS version for the cluster to support, e.g. '1.2'")]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
         [System.String]
-        # The minimum TLS version for the cluster to support, e.g. '1.2'
         ${MinimumTlsVersion},
+
+        [Parameter(HelpMessage = "The minimum TLS version for the cluster to support, e.g. '1.2'")]
+        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
+        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.SkuName]
+        ${SkuName},
 
         [Parameter(HelpMessage = "This determines if traffic is allowed over public network. By default it is enabled.")]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
@@ -106,7 +118,7 @@ function Set-AzEventHubNamespaceV2{
 
         [Parameter(HelpMessage = "The Event Hubs throughput units for Basic or Standard tiers, where value should be 0 to 20 throughput units. The Event Hubs premium units for Premium tier, where value should be 0 to 10 premium units.")]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
-        [System.Int32]
+        [System.Int64]
         ${SkuCapacity},
 
         [Parameter(HelpMessage = "Tag of EventHub Namespace.")]
@@ -174,85 +186,32 @@ function Set-AzEventHubNamespaceV2{
     )
     process{
         try{
-            $hasAlternateName = $PSBoundParameters.Remove('AlternateName')
-            $hasDisableLocalAuth = $PSBoundParameters.Remove('DisableLocalAuth')
-            $hasKeyVaultProperty = $PSBoundParameters.Remove('KeyVaultProperty')
-            $hasUserAssignedIdentityId = $PSBoundParameters.Remove('UserAssignedIdentityId')
-            $hasIdentityType = $PSBoundParameters.Remove('IdentityType')
-            $hasEnableAutoInflate = $PSBoundParameters.Remove('EnableAutoInflate')
-            $hasMaximumThroughputUnit = $PSBoundParameters.Remove('MaximumThroughputUnit')
-            $hasMinimumTlsVersion = $PSBoundParameters.Remove('MinimumTlsVersion')
-            $hasRequireInfrastructureEncryption = $PSBoundParameters.Remove('RequireInfrastructureEncryption') 
-            $hasPublicNetworkAccess = $PSBoundParameters.Remove('PublicNetworkAccess')
-            $hasSkuCapacity = $PSBoundParameters.Remove('SkuCapacity')
-            $hasTag = $PSBoundParameters.Remove('Tag')
-            $hasAsJob = $PSBoundParameters.Remove('AsJob')
-            $null = $PSBoundParameters.Remove('WhatIf')
+       	    $null = $PSBoundParameters.Remove('WhatIf')
             $null = $PSBoundParameters.Remove('Confirm')
+            if($PSBoundParameters.ContainsKey('SkuName')){
+                $PSBoundParameters.Add('SkuTier', $SkuName)
+            }
 
-            $eventHubNamespace = Get-AzEventHubNamespaceV2 @PSBoundParameters
-
-            # 2. PUT
-            $null = $PSBoundParameters.Remove('InputObject')
-            $null = $PSBoundParameters.Remove('ResourceGroupName')
-            $null = $PSBoundParameters.Remove('NamespaceName')
-            $null = $PSBoundParameters.Remove('Name')
-            $null = $PSBoundParameters.Remove('SubscriptionId')
-
-            if ($hasAlternateName) {
-                $eventHubNamespace.AlternateName = $AlternateName
+            if($PSBoundParameters.ContainsKey('KeyVaultProperty')){
+                $PSBoundParameters.Add('KeySource', 'Microsoft.KeyVault')
             }
-            if ($hasDisableLocalAuth) {
-                $eventHubNamespace.DisableLocalAuth = $DisableLocalAuth
-            }
-            if ($hasKeyVaultProperty) {
-                $eventHubNamespace.KeyVaultProperty = $KeyVaultProperty
-                $eventHubNamespace.KeySource = 'Microsoft.KeyVault'
-            }
-            if ($hasIdentityType) {
-                $eventHubNamespace.IdentityType = $IdentityType
-            }
-            if ($RequireInfrastructureEncryption){
-                $eventHubNamespace.RequireInfrastructureEncryption = $RequireInfrastructureEncryption
-            }
-            if ($hasUserAssignedIdentityId) {
+            
+            if($PSBoundParameters.ContainsKey('UserAssignedIdentityId')){
                 $identityHashTable = @{}
 
                 foreach ($resourceID in $UserAssignedIdentityId){
                     $identityHashTable.Add($resourceID, [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.UserAssignedIdentity]::new())
                 }
 
-                $eventHubNamespace.UserAssignedIdentity = $identityHashTable
+                $PSBoundParameters.Add("UserAssignedIdentity", $identityHashTable)
+                $null = $PSBoundParameters.Remove("UserAssignedIdentityId")
             }
-            if ($hasEnableAutoInflate) {
-                $eventHubNamespace.EnableAutoInflate = $EnableAutoInflate
+            if ($PSCmdlet.ShouldProcess("EventHub Namespace $($Name)", "Create or update")) {
+                Az.EventHub.private\New-AzEventHubNamespace_CreateExpanded @PSBoundParameters
             }
-            if ($hasMaximumThroughputUnit) {
-                $eventHubNamespace.MaximumThroughputUnit = $MaximumThroughputUnit
-            }
-            if ($hasMinimumTlsVersion) {
-                $eventHubNamespace.MinimumTlsVersion = $MinimumTlsVersion
-            }
-            if ($hasPublicNetworkAccess) {
-                $eventHubNamespace.PublicNetworkAccess = $PublicNetworkAccess
-            }
-            if ($hasSkuCapacity) {
-                $eventHubNamespace.SkuCapacity = $SkuCapacity
-            }
-            if ($hasTag) {
-                $eventHubNamespace.Tag = $Tag
-            }
-            if ($hasAsJob) {
-                $PSBoundParameters.Add('AsJob', $true)
-            }
-
-            if ($PSCmdlet.ShouldProcess("EventHubNamespace $($eventHubNamespace.Name)", "Create or update")) {
-                Az.EventHub.private\New-AzEventHubNamespaceV2_CreateViaIdentity -InputObject $eventHubNamespace -Parameter $eventHubNamespace @PSBoundParameters
-            }
-        }
-        catch{
-            #throw exception
-            throw
-        }
+	}
+	catch{
+	    throw
+	}
     }
 }

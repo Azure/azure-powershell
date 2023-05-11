@@ -1,6 +1,6 @@
 ### Example 1: Gets a description for the specified namespace.
 ```powershell
-$namespace = Get-AzServiceBusNamespaceV2 -ResourceGroupName myResourceGroup -Name myNamespace
+$namespace = Get-AzServiceBusNamespace -ResourceGroupName myResourceGroup -Name myNamespace
 ```
 
 ```output
@@ -63,13 +63,13 @@ Get namespaces description from ResourceGroup.
 
 ### Example 2: List all ServiceBus namespaces in a resource group.
 ```powershell
-Get-AzServiceBusNamespaceV2 -ResourceGroupName myResourceGroup
+Get-AzServiceBusNamespace -ResourceGroupName myResourceGroup
 ```
 Lists all ServiceBus namespaces under resource group `myResourceGroup`.
 
 ### Example 3: List all ServiceBus namespaces in a subscription
 ```powershell
-Get-AzServiceBusNamespaceV2
+Get-AzServiceBusNamespace
 ```
 
 Lists all ServiceBus namespaces in the current subscription context.

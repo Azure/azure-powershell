@@ -1,6 +1,6 @@
 ### Example 1: Get an EventHub namespace
 ```powershell
-Get-AzEventHubNamespaceV2 -ResourceGroupName myResourceGroup -Name myNamespace
+Get-AzEventHubNamespace -ResourceGroupName myResourceGroup -Name myNamespace
 ```
 
 ```output
@@ -44,14 +44,14 @@ Gets details of an EventHub namespace `myNamespace` in resource group `myResourc
 
 ### Example 2: List all EventHub namespaces in a resource group
 ```powershell
-Get-AzEventHubNamespaceV2 -ResourceGroupName myResourceGroup
+Get-AzEventHubNamespace -ResourceGroupName myResourceGroup
 ```
 
 Lists all EventHub namespaces under resource group `myResourceGroup`.
 
 ### Example 3: List all EventHub namespaces in a subscription
 ```powershell
-Get-AzEventHubNamespaceV2
+Get-AzEventHubNamespace
 ```
 
 Lists all EventHub namespaces in the current subscription context.

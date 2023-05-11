@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.ServiceBus
-online version: https://learn.microsoft.com/powershell/module/az.servicebus/get-azservicebusnamespacev2
+online version: https://learn.microsoft.com/powershell/module/az.servicebus/get-azservicebusnamespace
 schema: 2.0.0
 ---
 
-# Get-AzServiceBusNamespaceV2
+# Get-AzServiceBusNamespace
 
 ## SYNOPSIS
 Gets a description for the specified namespace.
@@ -14,24 +14,23 @@ Gets a description for the specified namespace.
 
 ### List (Default)
 ```
-Get-AzServiceBusNamespaceV2 [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzServiceBusNamespace [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzServiceBusNamespaceV2 -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+Get-AzServiceBusNamespace -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzServiceBusNamespaceV2 -InputObject <IServiceBusIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzServiceBusNamespace -InputObject <IServiceBusIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### List1
 ```
-Get-AzServiceBusNamespaceV2 -ResourceGroupName <String> [-SubscriptionId <String[]>]
+Get-AzServiceBusNamespace -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -42,7 +41,7 @@ Gets a description for the specified namespace.
 
 ### Example 1: Gets a description for the specified namespace.
 ```powershell
-$namespace = Get-AzServiceBusNamespaceV2 -ResourceGroupName myResourceGroup -Name myNamespace
+$namespace = Get-AzServiceBusNamespace -ResourceGroupName myResourceGroup -Name myNamespace
 ```
 
 ```output
@@ -105,14 +104,14 @@ Get namespaces description from ResourceGroup.
 
 ### Example 2: List all ServiceBus namespaces in a resource group.
 ```powershell
-Get-AzServiceBusNamespaceV2 -ResourceGroupName myResourceGroup
+Get-AzServiceBusNamespace -ResourceGroupName myResourceGroup
 ```
 
 Lists all ServiceBus namespaces under resource group `myResourceGroup`.
 
 ### Example 3: List all ServiceBus namespaces in a subscription
 ```powershell
-Get-AzServiceBusNamespaceV2
+Get-AzServiceBusNamespace
 ```
 
 Lists all ServiceBus namespaces in the current subscription context.
@@ -120,7 +119,8 @@ Lists all ServiceBus namespaces in the current subscription context.
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -210,6 +210,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ALIASES
+
+Get-AzServiceBusNamespaceV2
 
 COMPLEX PARAMETER PROPERTIES
 

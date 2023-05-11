@@ -19,7 +19,8 @@ Creates a new ServiceBus namespace.
 Creates a new ServiceBus namespace.
 #>
 
-function New-AzServiceBusNamespaceV2{
+function New-AzServiceBusNamespace{
+    [Alias("New-AzServiceBusNamespaceV2")]
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.ISbNamespace])]
     [CmdletBinding(PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
 	param(
@@ -191,7 +192,7 @@ function New-AzServiceBusNamespaceV2{
                     $null = $PSBoundParameters.Remove("UserAssignedIdentityId")
                 }
                 if ($PSCmdlet.ShouldProcess("ServiceBusNamespace $($serviceBusNamespace.Name)", "Create or update")) {
-                    Az.ServiceBus.private\New-AzServiceBusNamespaceV2_CreateExpanded @PSBoundParameters
+                    Az.ServiceBus.private\New-AzServiceBusNamespace_CreateExpanded @PSBoundParameters
                 }
 	    }
 	    catch{

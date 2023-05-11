@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.EventHub
-online version: https://learn.microsoft.com/powershell/module/az.eventhub/get-azeventhubnamespacev2
+online version: https://learn.microsoft.com/powershell/module/az.eventhub/get-azeventhubnamespace
 schema: 2.0.0
 ---
 
-# Get-AzEventHubNamespaceV2
+# Get-AzEventHubNamespace
 
 ## SYNOPSIS
 Gets the description of the specified namespace.
@@ -14,24 +14,24 @@ Gets the description of the specified namespace.
 
 ### List (Default)
 ```
-Get-AzEventHubNamespaceV2 [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzEventHubNamespace [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzEventHubNamespaceV2 -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+Get-AzEventHubNamespace -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzEventHubNamespaceV2 -InputObject <IEventHubIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzEventHubNamespace -InputObject <IEventHubIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### List1
 ```
-Get-AzEventHubNamespaceV2 -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzEventHubNamespace -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -41,7 +41,7 @@ Gets the description of the specified namespace.
 
 ### Example 1: Get an EventHub namespace
 ```powershell
-Get-AzEventHubNamespaceV2 -ResourceGroupName myResourceGroup -Name myNamespace
+Get-AzEventHubNamespace -ResourceGroupName myResourceGroup -Name myNamespace
 ```
 
 ```output
@@ -85,14 +85,14 @@ Gets details of an EventHub namespace `myNamespace` in resource group `myResourc
 
 ### Example 2: List all EventHub namespaces in a resource group
 ```powershell
-Get-AzEventHubNamespaceV2 -ResourceGroupName myResourceGroup
+Get-AzEventHubNamespace -ResourceGroupName myResourceGroup
 ```
 
 Lists all EventHub namespaces under resource group `myResourceGroup`.
 
 ### Example 3: List all EventHub namespaces in a subscription
 ```powershell
-Get-AzEventHubNamespaceV2
+Get-AzEventHubNamespace
 ```
 
 Lists all EventHub namespaces in the current subscription context.
@@ -191,6 +191,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ALIASES
+
+Get-AzEventHubNamespaceV2
 
 COMPLEX PARAMETER PROPERTIES
 

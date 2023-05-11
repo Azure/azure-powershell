@@ -1,11 +1,11 @@
 ---
 external help file:
-Module Name: Az.EventHub
-online version: https://learn.microsoft.com/powershell/module/az.eventhub/remove-azeventhubnamespacev2
+Module Name: Az.ServiceBus
+online version: https://learn.microsoft.com/powershell/module/az.servicebus/remove-azservicebusnamespace
 schema: 2.0.0
 ---
 
-# Remove-AzEventHubNamespaceV2
+# Remove-AzServiceBusNamespace
 
 ## SYNOPSIS
 Deletes an existing namespace.
@@ -15,14 +15,14 @@ This operation also removes all associated resources under the namespace.
 
 ### Delete (Default)
 ```
-Remove-AzEventHubNamespaceV2 -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+Remove-AzServiceBusNamespace -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
-Remove-AzEventHubNamespaceV2 -InputObject <IEventHubIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzServiceBusNamespace -InputObject <IServiceBusIdentity> [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -31,20 +31,20 @@ This operation also removes all associated resources under the namespace.
 
 ## EXAMPLES
 
-### Example 1: Delete an EventHub namespace
+### Example 1: Deletes an existing namespace.
 ```powershell
-Remove-AzEventHubNamespaceV2 -ResourceGroupName myResourceGroup -Name myNamespace
+Remove-AzServiceBusNamespace -ResourceGroupName myResourceGroup -Name myNamespace
 ```
 
-Deletes an EventHub namespace `myNamespace` under resource group `myResourceGroup`.
+Deletes an ServiceBus namespace `myNamespace` under resource group `myResourceGroup`.
 
-### Example 2: Delete an EventHub namespace using InputObject parameter set
+### Example 2: Delete an ServiceBus namespace using InputObject parameter set
 ```powershell
-$namespace = Get-AzEventHubNamespaceV2 -ResourceGroupName myResourceGroup -Name myNamespace
-Remove-AzEventHubNamespaceV2 -InputObject $namespace
+$namespace = Get-AzServiceBusNamespace -ResourceGroupName myResourceGroup -Name myNamespace
+Remove-AzServiceBusNamespace -InputObject $namespace
 ```
 
-Deletes an EventHub namespace `myNamespace` under resource group `myResourceGroup` using InputObject parameter set.
+Deletes an ServiceBus namespace `myNamespace` under resource group `myResourceGroup` using InputObject parameter set.
 
 ## PARAMETERS
 
@@ -84,7 +84,7 @@ Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentity
 Parameter Sets: DeleteViaIdentity
 Aliases:
 
@@ -96,7 +96,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The Namespace name
+The namespace name
 
 ```yaml
 Type: System.String
@@ -141,7 +141,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Name of the resource group within the azure subscription.
+Name of the Resource group within the Azure subscription.
 
 ```yaml
 Type: System.String
@@ -207,7 +207,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentity
 
 ## OUTPUTS
 
@@ -217,25 +217,26 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ALIASES
 
+Remove-AzServiceBusNamespaceV2
+
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-`INPUTOBJECT <IEventHubIdentity>`: Identity Parameter
+`INPUTOBJECT <IServiceBusIdentity>`: Identity Parameter
   - `[Alias <String>]`: The Disaster Recovery configuration name
-  - `[ApplicationGroupName <String>]`: The Application Group name 
   - `[AuthorizationRuleName <String>]`: The authorization rule name.
-  - `[ClusterName <String>]`: The name of the Event Hubs Cluster.
-  - `[ConsumerGroupName <String>]`: The consumer group name
-  - `[EventHubName <String>]`: The Event Hub name
+  - `[ConfigName <MigrationConfigurationName?>]`: The configuration name. Should always be "$default".
   - `[Id <String>]`: Resource identity path
-  - `[NamespaceName <String>]`: The Namespace name
+  - `[NamespaceName <String>]`: The namespace name
   - `[PrivateEndpointConnectionName <String>]`: The PrivateEndpointConnection name
-  - `[ResourceAssociationName <String>]`: The ResourceAssociation Name
-  - `[ResourceGroupName <String>]`: Name of the resource group within the azure subscription.
-  - `[SchemaGroupName <String>]`: The Schema Group name 
+  - `[QueueName <String>]`: The queue name.
+  - `[ResourceGroupName <String>]`: Name of the Resource group within the Azure subscription.
+  - `[RuleName <String>]`: The rule name.
   - `[SubscriptionId <String>]`: Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  - `[SubscriptionName <String>]`: The subscription name.
+  - `[TopicName <String>]`: The topic name.
 
 ## RELATED LINKS
 
