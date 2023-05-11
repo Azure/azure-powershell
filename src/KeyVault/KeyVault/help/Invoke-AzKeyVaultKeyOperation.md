@@ -57,7 +57,7 @@ Result    : iVlA6rHicEm6F9vtU3jARzxWughOcRK9htj4UMy0ijd4a4hHwYrSy4lSXhiQTKSMpX+Q
 Algorithm : RSA1_5
 ```
 
-Encrypts string "test" using test-key stored in test-kv. The `Result` is Base64 string format.
+Encrypts string "test" using test-key stored in test-kv. The `Result` is encrypted result in Base64 string format.
 
 ### Example 2: Decrypt encrypted data
 ```powershell
