@@ -446,7 +446,7 @@ namespace Microsoft.Azure.Commands.Ssh
         protected internal EndpointAccessResource GetRelayInformation()
         {
             SetResourceId();
-            EndpointAccessResource cred = null;
+            EndpointAccessResource cred;
                 
             try
             {
@@ -465,28 +465,91 @@ namespace Microsoft.Azure.Commands.Ssh
                     {
                         if (createEndpointException.Response.StatusCode == HttpStatusCode.Forbidden)
                         {
-                            throw new AzPSCloudException("Unable to create default endpoint. Unauthorized.");
+                            throw new AzPSCloudException(Resources.FailedToCreateDefaultEndpointUnauthorized);
                         }
-                        throw;
+                        throw new AzPSCloudException(String.Format(Resources.FailedToCreateDefaultEndpoint, createEndpointException));
                     }
 
                     try
                     {
                         cred = EndpointsClient.ListCredentials(ResourceId, "default", 3600);
                     }
-                    catch (Exception e)
+                    catch (Exception listCredException)
                     {
-                        throw new AzPSCloudException($"Failed to get credentials with error: {e.ToString()}");
+                        throw new AzPSCloudException(String.Format(Resources.FailedToListCredentials, listCredException));
                     }
 
                 }
                 else
                 {
-                    throw new AzPSCloudException($"Failed to get credentials with error: {exception.ToString()}");
+                    throw new AzPSCloudException(String.Format(Resources.FailedToListCredentials, exception));
                 }
             }
             return cred;
         }
+
+        protected internal string ConvertEndpointAccessToBase64String(EndpointAccessResource cred)
+        {
+            if (cred == null) { return null; }
+
+            string relayString = "{\"relay\": {" +
+                $"\"namespaceName\": \"{cred.NamespaceName}\", " +
+                $"\"namespaceNameSuffix\": \"{cred.NamespaceNameSuffix}\", " +
+                $"\"hybridConnectionName\": \"{cred.HybridConnectionName}\", " +
+                $"\"accessKey\": \"{cred.AccessKey}\", " +
+                $"\"expiresOn\": {cred.ExpiresOn}" +
+                "}}";
+
+            var bytes = Encoding.UTF8.GetBytes(relayString);
+            var encodedString = Convert.ToBase64String(bytes);
+
+            return encodedString;
+        }
+
+        protected internal string GetInstalledProxyModulePath()
+        {
+            var results = InvokeCommand.InvokeScript(
+                script: "(Get-module -ListAvailable -Name Az.Ssh.ArcProxy).Path");
+
+            foreach (var result in results)
+            {
+                if (result?.BaseObject is string tempPath)
+                {
+                    string proxyPath = GetProxyPath(tempPath);
+
+                    if (!File.Exists(proxyPath) || !ValidateSshProxy(proxyPath))
+                    {
+                        continue;
+                    }
+
+                    if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+                    {
+                        if (!SetExecutePermissionForProxyOnLinux(proxyPath))
+                        {
+                            WriteWarning($"Unable to add Execute permission to SSH Proxy {proxyPath}. The SSH connection will fail if the current user doesn't have permission to execute the SSH proxy file.");
+                        }
+                    }
+
+                    return proxyPath;
+                }
+            }
+
+
+            System.Collections.ObjectModel.Collection<ChoiceDescription> choices = new System.Collections.ObjectModel.Collection<ChoiceDescription> { new ChoiceDescription("N"), new ChoiceDescription("Y") };
+            int userChoice = this.Host.UI.PromptForChoice(
+                caption:$"You currently don't have the required Az.Ssh.ArcProxy module installed in this machine. Would you like us to attempt to install this module for the current user?",
+                message: "You must have the Az.Ssh.Proxy PowerShell module installed in the client machine in order to connect to Azure Arc resources. You can find the module in the PowerShell Gallery <Link>.",
+                choices: choices,
+                defaultChoice: 0);
+            if (userChoice == 1)
+            {
+                var installationResults = InvokeCommand.InvokeScript(
+                    script: "Install-module blabl -Repository PsGallery -Scope CurrentUser");
+            }
+
+            throw new AzPSApplicationException("Failed to find the module Az.Ssh.ArcProxy installed in this machine. You must have the Az.Ssh.Proxy PowerShell module installed in the client machine in order to connect to Azure Arc resources. You can find the module in the PowerShell Gallery <Link>.");
+        }
+
 
         protected internal void GetVmIpAddress()
         {
@@ -554,53 +617,6 @@ namespace Microsoft.Azure.Commands.Ssh
             return appInfo.Path;
         }
 
-        protected internal string GetClientSideProxy()
-        {
-            string proxyPath = null;
-            string oldProxyPattern = null;
-            string requestUrl = null;
-
-            GetProxyUrlAndFilename(ref proxyPath, ref oldProxyPattern, ref requestUrl);
-
-            if (!File.Exists(proxyPath))
-            {
-                string proxyDir = Path.GetDirectoryName(proxyPath);
-
-                if (!Directory.Exists(proxyDir))
-                {
-                    Directory.CreateDirectory(proxyDir);
-                }
-                else
-                {
-                    var files = Directory.GetFiles(proxyDir, oldProxyPattern);
-                    foreach (string file in files)
-                    {
-                        try
-                        {
-                            File.Delete(file);
-                        }
-                        catch (Exception exception)
-                        {
-                            WriteWarning(String.Format(Resources.FailedToDeleteOldProxy, file, exception.Message));
-                        }
-                    }
-                }
-
-                try
-                {
-                    WebClient wc = new WebClient();
-                    wc.DownloadFile(new Uri(requestUrl), proxyPath);
-                }
-                catch (Exception exception)
-                {
-                    string errorMessage = String.Format(Resources.FailedToDownloadProxy, requestUrl, exception.Message);
-                    throw new AzPSApplicationException(errorMessage);
-                }
-
-                ValidateSshProxy(proxyPath);
-            }
-            return proxyPath;
-        }
 
         protected internal void DeleteFile(string fileName, string warningMessage = null)
         {
@@ -662,6 +678,24 @@ namespace Microsoft.Azure.Commands.Ssh
 
         #region Private Methods
 
+        protected internal bool SetExecutePermissionForProxyOnLinux(string path)
+        {
+            string cmd = $"chmod +x {path}";
+            try
+            {
+                using (Process p = Process.Start("/bin/bash", $"-c \"{cmd}\""))
+                {
+                    p.WaitForExit();
+                    return p.ExitCode == 0;
+                }
+
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
         private void SetResourceId()
         {
             if (ResourceId == null)
@@ -676,24 +710,6 @@ namespace Microsoft.Azure.Commands.Ssh
             }
         }
 
-
-        private string ConvertEndpointAccessToBase64String(EndpointAccessResource cred)
-        {
-            if (cred == null) { return null; }
-
-            string relayString = "{\"relay\": {" +
-                $"\"namespaceName\": \"{cred.NamespaceName}\", " +
-                $"\"namespaceNameSuffix\": \"{cred.NamespaceNameSuffix}\", " +
-                $"\"hybridConnectionName\": \"{cred.HybridConnectionName}\", " +
-                $"\"accessKey\": \"{cred.AccessKey}\", " +
-                $"\"expiresOn\": {cred.ExpiresOn}" +
-                "}}";
-
-            var bytes = Encoding.UTF8.GetBytes(relayString);
-            var encodedString = Convert.ToBase64String(bytes);
-
-            return encodedString;
-        }
 
         /* This method gets the full path of items that already exist. It checks if the file exist and fails if it doesn't*/
         private string GetResolvedPath(string path, string paramName)
@@ -876,14 +892,10 @@ namespace Microsoft.Azure.Commands.Ssh
             return dirname;
         }
 
-        private void GetProxyUrlAndFilename(
-            ref string proxyPath,
-            ref string oldProxyPattern,
-            ref string requestUrl)
+        private string GetProxyPath(string modulePath)
         {
             string os;
             string architecture;
-
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
                 os = "windows";
@@ -900,7 +912,6 @@ namespace Microsoft.Azure.Commands.Ssh
             {
                 throw new AzPSApplicationException("Operating System not supported.");
             }
-
             // Environment.Is64BitOperatingSystem?
             if (Environment.Is64BitProcess)
             {
@@ -911,23 +922,19 @@ namespace Microsoft.Azure.Commands.Ssh
                 architecture = "386";
             }
 
-            string proxyName = "sshProxy_" + os + "_" + architecture;
-            requestUrl = clientProxyStorageUrl + "/" + clientProxyRelease + "/" + proxyName + "_" + clientProxyVersion;
-
-            string installPath = proxyName + "_" + clientProxyVersion.Replace('.', '_');
-            oldProxyPattern = proxyName + "*";
+            string proxyName = $"sshProxy_{os}_{architecture}_{clientProxyVersion}";
 
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
-                requestUrl = requestUrl + ".exe";
-                installPath = installPath + ".exe";
-                oldProxyPattern = oldProxyPattern + ".exe";
+                proxyName += ".exe";
             }
 
-            proxyPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), Path.Combine(".clientsshproxy", installPath));
+            string parentDirectory = Directory.GetParent(modulePath).FullName;
+
+            return Path.Combine(parentDirectory, proxyName);
         }
 
-        private void ValidateSshProxy(string path)
+        private bool ValidateSshProxy(string path)
         
         {
             string hashString;
@@ -962,12 +969,7 @@ namespace Microsoft.Azure.Commands.Ssh
                     break;
             }
 
-            if (!isValid)
-            {
-                WriteWarning($"Validation of SSH Proxy {path} failed. Removing file from system.");
-                DeleteFile(path);
-                throw new AzPSApplicationException("Failed to download valid SSH Proxy. Unable to continue cmdlet execution.");
-            }
+            return isValid;
         }
 #endregion
 
