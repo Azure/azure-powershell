@@ -57,7 +57,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         /// </summary>
         private const string SingleBlobVersionIDParameterSet = "SingleBlobVersionID";
 
-        [CmdletParameterBreakingChange("Blob", ChangeDescription = "Leading and trailing slashes will not be trimmed in a future release.")]
         [Parameter(Position = 0, HelpMessage = "Blob name", ParameterSetName = NameParameterSet)]
         [Parameter(Position = 0, Mandatory = true, HelpMessage = "Blob name", ParameterSetName = SingleBlobSnapshotTimeParameterSet)]
         [Parameter(Position = 0, Mandatory = true, HelpMessage = "Blob name", ParameterSetName = SingleBlobVersionIDParameterSet)]
