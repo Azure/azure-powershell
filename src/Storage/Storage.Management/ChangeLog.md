@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed issue of getting a single blob with leading slashes
+    - `Get-AzStorageBlob`
 * Added "$blobchangefeed" to be a valid container name
 
 ## Version 5.6.0
