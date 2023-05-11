@@ -51,7 +51,7 @@ Retrieves Alias(Disaster Recovery configuration) for primary or secondary namesp
 Gets an EventHub SAS key
 
 ### [Get-AzEventHubNamespace](Get-AzEventHubNamespace.md)
-Gets the details of an Event Hubs namespace, or gets a list of all Event Hubs namespaces in the current Azure subscription.
+Gets the description of the specified namespace.
 
 ### [Get-AzEventHubNamespaceV2](Get-AzEventHubNamespaceV2.md)
 Gets the description of the specified namespace.
@@ -102,7 +102,7 @@ Regenerates an EventHub SAS key
 Create an in-memory object for KeyVaultProperties.
 
 ### [New-AzEventHubNamespace](New-AzEventHubNamespace.md)
-Creates an Event Hubs namespace.
+Creates an EventHub Namespace
 
 ### [New-AzEventHubNamespaceV2](New-AzEventHubNamespaceV2.md)
 Creates an EventHub Namespace
@@ -139,7 +139,8 @@ Deletes an Alias(Disaster Recovery configuration)
 Remove a single IP rule to the NetworkRuleSet of the given Namespace
 
 ### [Remove-AzEventHubNamespace](Remove-AzEventHubNamespace.md)
-Removes the specified Event Hubs namespace.
+Deletes an existing namespace.
+This operation also removes all associated resources under the namespace.
 
 ### [Remove-AzEventHubNamespaceV2](Remove-AzEventHubNamespaceV2.md)
 Deletes an existing namespace.
@@ -149,7 +150,8 @@ This operation also removes all associated resources under the namespace.
 Removes the NetworkRuleSet for the Given Namespace
 
 ### [Remove-AzEventHubPrivateEndpointConnection](Remove-AzEventHubPrivateEndpointConnection.md)
-Deletes a Private Endpoint Connection.
+Deletes an existing namespace.
+This operation also removes all associated resources under the namespace.
 
 ### [Remove-AzEventHubSchemaGroup](Remove-AzEventHubSchemaGroup.md)
 Deletes an EventHub schema group.
@@ -179,7 +181,7 @@ This operation disables the Disaster Recovery and stops replicating changes from
 Invokes GEO DR failover and reconfigure the alias to point to the secondary namespace
 
 ### [Set-AzEventHubNamespace](Set-AzEventHubNamespace.md)
-Updates the specified Event Hubs namespace.
+Updates an EventHub Namespace
 
 ### [Set-AzEventHubNamespaceV2](Set-AzEventHubNamespaceV2.md)
 Updates an EventHub Namespace

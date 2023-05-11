@@ -152,14 +152,17 @@
     },
     {
       "type": "Microsoft.EventHub/namespaces/eventhubs",
-      "apiVersion": "2022-01-01-preview",
+      "apiVersion": "2022-10-01-preview",
       "name": "[variables('eventHubResourceName')]",
       "location": "eastus",
       "dependsOn": [
         "[resourceId('Microsoft.EventHub/namespaces', parameters('namespace_name'))]"
       ],
       "properties": {
-        "messageRetentionInDays": 1,
+        "retentionDescription": {
+          "cleanupPolicy": "Delete",
+          "retentionTimeInHours":  24
+        },
         "partitionCount": 1,
         "status": "Active"
       }
