@@ -83,16 +83,14 @@ function New-AzSynapseKustoPool {
         ${Location},
 
         [Parameter(Mandatory)]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Synapse.Support.SkuName])]
         [Microsoft.Azure.PowerShell.Cmdlets.Synapse.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Synapse.Support.SkuName]
+        [System.String]
         # SKU name.
         ${SkuName},
 
         [Parameter(Mandatory)]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Synapse.Support.SkuSize])]
         [Microsoft.Azure.PowerShell.Cmdlets.Synapse.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Synapse.Support.SkuSize]
+        [System.String]
         # SKU size.
         ${SkuSize},
 

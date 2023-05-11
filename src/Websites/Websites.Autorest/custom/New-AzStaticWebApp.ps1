@@ -127,9 +127,9 @@ param(
     ${GithubActionSecretNameOverride},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Websites.Support.ManagedServiceIdentityType])]
+    
     [Microsoft.Azure.PowerShell.Cmdlets.Websites.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Websites.Support.ManagedServiceIdentityType]
+    [System.String]
     # Type of managed service identity.
     ${IdentityType},
 
@@ -179,9 +179,9 @@ param(
     ${SkuName},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Websites.Support.StagingEnvironmentPolicy])]
+    
     [Microsoft.Azure.PowerShell.Cmdlets.Websites.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Websites.Support.StagingEnvironmentPolicy]
+    [System.String]
     # State indicating whether staging environments are allowed or not allowed for a static web app.
     ${StagingEnvironmentPolicy},
 

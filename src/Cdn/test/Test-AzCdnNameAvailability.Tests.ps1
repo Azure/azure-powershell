@@ -35,7 +35,7 @@ Describe 'Test-AzCdnNameAvailability' -Tag 'LiveOnly' {
                     HostName = "host1.hello.com"
                 };
                 $location = "westus"
-                $resourceType = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.ResourceType]::MicrosoftCdnProfilesEndpoints
+                $resourceType = "MicrosoftCdnProfilesEndpoints"
                 Write-Host -ForegroundColor Green "Create endpointName : $($endpointName), origin.Name : $($origin.Name), origin.HostName : $($origin.HostName)"
                 
                 $nameAvailability = Test-AzCdnNameAvailability -Name $endpointName -Type $resourceType
@@ -72,7 +72,7 @@ Describe 'Test-AzCdnNameAvailability' -Tag 'LiveOnly' {
                     HostName = "host1.hello.com"
                 };
                 $location = "westus"
-                $resourceType = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.ResourceType]::MicrosoftCdnProfilesEndpoints
+                $resourceType = "MicrosoftCdnProfilesEndpoints"
                 Write-Host -ForegroundColor Green "Create endpointName : $($endpointName), origin.Name : $($origin.Name), origin.HostName : $($origin.HostName)"
                 
                 $nameAvailability = Test-AzCdnNameAvailability -Name $endpointName -Type $resourceType -SubscriptionId $subId

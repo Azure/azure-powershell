@@ -136,9 +136,9 @@ function New-AzWebPubSub
     ${EnableTlsClientCert},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.ManagedIdentityType])]
+    
     [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.ManagedIdentityType]
+    [System.String]
     # Represent the identity type: systemAssigned, userAssigned, None
     ${IdentityType},
 
@@ -165,9 +165,9 @@ function New-AzWebPubSub
     ${Location},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.AclAction])]
+    
     [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.AclAction]
+    [System.String]
     # Default action when no other rule matches
     ${NetworkAcLDefaultAction},
 
@@ -188,18 +188,18 @@ function New-AzWebPubSub
 
     [Parameter()]
     [AllowEmptyCollection()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType])]
+    
     [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType[]]
+    [System.String[]]
     # Allowed request types.
     # The value can be one or more of: ClientConnection, ServerConnection, RESTAPI.
     ${PublicNetworkAllow},
 
     [Parameter()]
     [AllowEmptyCollection()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType])]
+    
     [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType[]]
+    [System.String[]]
     # Denied request types.
     # The value can be one or more of: ClientConnection, ServerConnection, RESTAPI.
     ${PublicNetworkDeny},
@@ -228,9 +228,9 @@ function New-AzWebPubSub
     ${SkuName},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubSkuTier])]
+    
     [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubSkuTier]
+    [System.String]
     # Optional tier of this particular SKU.
     # 'Standard' or 'Free'.
     # `Basic` is deprecated, use `Standard` instead.

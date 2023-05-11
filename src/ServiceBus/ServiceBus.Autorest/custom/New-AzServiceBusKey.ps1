@@ -73,7 +73,7 @@ function New-AzServiceBusKey{
         [Parameter(Mandatory, HelpMessage = "The access key to regenerate.")]
         [Alias('RegenerateKey')]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.KeyType]
+        [System.String]
         # The access key to regenerate.
         ${KeyType},
 

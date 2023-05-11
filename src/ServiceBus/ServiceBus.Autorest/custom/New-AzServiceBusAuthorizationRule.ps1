@@ -66,7 +66,7 @@ function New-AzServiceBusAuthorizationRule{
 
         [Parameter(Mandatory, HelpMessage = "The rights associated with the rule.")]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.AccessRights[]]
+        [System.String[]]
         # The rights associated with the rule.
         ${Rights},
 		

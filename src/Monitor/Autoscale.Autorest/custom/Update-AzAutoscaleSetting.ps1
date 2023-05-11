@@ -142,9 +142,8 @@ function Update-AzAutoscaleSetting {
         ${PredictiveAutoscalePolicyScaleLookAheadTime},
     
         [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Support.PredictiveAutoscalePolicyScaleMode])]
         [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Support.PredictiveAutoscalePolicyScaleMode]
+        [System.String]
         # the predictive autoscale mode
         ${PredictiveAutoscalePolicyScaleMode},
     

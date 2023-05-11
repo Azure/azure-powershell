@@ -95,7 +95,7 @@ function Set-AzServiceBusSubscription{
 
         [Parameter(HelpMessage = "Enumerates the possible values for the status of a messaging entity.")]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.EntityStatus]
+        [System.String]
         # Enumerates the possible values for the status of a messaging entity.
         ${Status},
 

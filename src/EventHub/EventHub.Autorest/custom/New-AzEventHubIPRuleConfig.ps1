@@ -28,7 +28,7 @@ function New-AzEventHubIPRuleConfig{
         ${IPMask},
 
 		[Parameter(HelpMessage = "The IP Filter Action")]
-        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.NetworkRuleIPAction]
+        [System.String]
 		# The IP Filter Action
         ${Action}
 	)

@@ -72,7 +72,7 @@ function New-AzServiceBusNamespaceV2{
 
         [Parameter(HelpMessage = "Type of managed service identity.")]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.ManagedServiceIdentityType]
+        [System.String]
         ${IdentityType},
 
         [Parameter(HelpMessage = "Enabling this property creates a Premium Service Bus Namespace in regions supported availability zones.")]
@@ -87,18 +87,18 @@ function New-AzServiceBusNamespaceV2{
 
         [Parameter(HelpMessage = "The minimum TLS version for the cluster to support, e.g. '1.2'")]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
-        #[Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.TlsVersion]
+        #[System.String]
         [System.String]
         ${MinimumTlsVersion},
 
         [Parameter(HelpMessage = "This determines if traffic is allowed over public network. By default it is enabled.")]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.PublicNetworkAccess]
+        [System.String]
         ${PublicNetworkAccess},
 
         [Parameter(HelpMessage = "Name of this SKU.")]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.SkuName]
+        [System.String]
         ${SkuName},
 
         [Parameter(HelpMessage = "The specified messaging units for the tier. For Premium tier, capacity are 1,2 and 4.")]

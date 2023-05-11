@@ -40,8 +40,7 @@ function New-AzPurviewTriggerObject {
         [System.DateTime]
         $RecurrenceEndTime,
         [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.TriggerFrequency])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.TriggerFrequency]
+        [System.String]
         $RecurrenceFrequency,
         [Parameter()]
         [string]
@@ -53,8 +52,7 @@ function New-AzPurviewTriggerObject {
         [string]
         $RecurrenceTimeZone,
         [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanLevelType])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanLevelType]
+        [System.String]
         $ScanLevel,
         [Parameter(HelpMessage="Dictionary of <any>.")]
         [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IRecurrenceScheduleAdditionalProperties]
@@ -72,8 +70,7 @@ function New-AzPurviewTriggerObject {
         [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IRecurrenceScheduleOccurrence[]]
         $ScheduleMonthlyOccurrence,
         [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DaysOfWeek])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DaysOfWeek[]]
+        [System.String[]]
         $ScheduleWeekDay
     )
 

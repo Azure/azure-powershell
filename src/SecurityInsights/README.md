@@ -240,7 +240,7 @@ directive:
     hide: true
   - where:
       subject: ^AlertRule$|^DataConnector$|^EntityQuery$
-      variant: ^Create$|^CreateExpanded$|^Update$|^UpdateExpanded$|^UpdateViaIdentity$|^UpdateViaIdentityExpanded$
+      variant: ^Create$|^CreateExpanded$|^Update.*$
     hide: true
   - where:
       verb: ^Update$|^Remove$
@@ -330,11 +330,11 @@ directive:
     hide: true
   # Hide UpdateViaId and Update
   - where:
-      variant: ^Update$|^UpdateViaIdentity$
+      variant: ^Update$|^UpdateViaIdentity$| ^UpdateViaIdentity(?!.*?Expanded)
     hide: true
   # Remove the unexpanded parameter set
   - where:
-      variant: ^Append$|^AppendViaIdentity$|^Connect$|^ConnectViaIdentity$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Expand$|^ExpandViaIdentity$|^ExpandViaIdentityExpanded$|^GetViaIdentityExpanded$|^PostViaIdentity$|^Query$|^QueryViaIdentity$|^QueriesViaIdentity$|^Replace$|^ReplaceViaIdentity$
+      variant: ^Append$|^AppendViaIdentity(?!.*?Expanded)|^Connect$|^ConnectViaIdentity(?!.*?Expanded)|^CreateViaIdentity(?!.*?Expanded)|^CreateViaIdentity.*Expanded$|^Expand$|^ExpandViaIdentity(?!.*?Expanded)|^ExpandViaIdentity.*Expanded$|^GetViaIdentity.*Expanded$|^PostViaIdentity(?!.*?Expanded)|^Query$|^QueryViaIdentity(?!.*?Expanded)|^QueriesViaIdentity(?!.*?Expanded)|^Replace$|^ReplaceViaIdentity(?!.*?Expanded)
     remove: true
   # fix Equals that conflicts with inhertied property
   - where:

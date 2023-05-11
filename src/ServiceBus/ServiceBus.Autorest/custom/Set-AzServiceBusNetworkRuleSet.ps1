@@ -52,7 +52,7 @@ function Set-AzServiceBusNetworkRuleSet{
 
         [Parameter(HelpMessage = "This determines if traffic is allowed over public network. By default it is enabled. If value is SecuredByPerimeter then Inbound and Outbound communication is controlled by the network security perimeter and profile's access rules. ")]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.PublicNetworkAccess]
+        [System.String]
         # This determines if traffic is allowed over public network. By default it is enabled. If value is SecuredByPerimeter then Inbound and Outbound communication is controlled by the network security perimeter and profile's access rules. 
         ${PublicNetworkAccess},
 
@@ -64,7 +64,7 @@ function Set-AzServiceBusNetworkRuleSet{
 
         [Parameter(HelpMessage = "Default Action for Network Rule Set")]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.DefaultAction]
+        [System.String]
         #Default Action for Network Rule Set
         ${DefaultAction},
 
