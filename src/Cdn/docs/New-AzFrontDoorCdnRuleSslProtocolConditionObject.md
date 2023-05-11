@@ -33,7 +33,7 @@ Name
 SslProtocol
 ```
 
-
+Create an in-memory object for DeliveryRuleSslProtocolCondition
 
 ## PARAMETERS
 
@@ -104,7 +104,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.DeliveryRuleSslProtocolCondition
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.DeliveryRuleSslProtocolCondition
 
 ## NOTES
 

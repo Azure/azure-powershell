@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.EventHub
-online version: https://learn.microsoft.com/powershell/module/az.EventHub/new-AzEventHubKeyVaultPropertiesObject
+online version: https://learn.microsoft.com/powershell/module/Az.EventHub/new-AzEventHubKeyVaultPropertiesObject
 schema: 2.0.0
 ---
 
@@ -100,7 +100,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.KeyVaultProperties
+### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.KeyVaultProperties
 
 ## NOTES
 

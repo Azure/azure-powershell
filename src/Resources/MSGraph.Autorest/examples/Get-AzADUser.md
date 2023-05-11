@@ -25,3 +25,11 @@ Get-AzADUser -Filter "startsWith(DisplayName,'some-name')"
 ```
 
 Get user with filter
+
+### Example 5: Assign OdataCount to a variable
+```powershell
+Get-AzADUser -First 10 -ConsistencyLevel eventual -Count -CountVariable 'result'
+$result
+```
+
+Assign OdataCount to a variable

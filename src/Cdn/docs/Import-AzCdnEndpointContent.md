@@ -47,10 +47,19 @@ Available for Verizon Profiles.
 
 ### Example 1: Import content of an AzureCDN Endpoint under the AzureCDN profile
 ```powershell
-Import-AzCdnEndpointContent -ResourceGroupName testps-rg-verzion -ProfileName verzioncdn001 -EndpointName verzionendptest001 -ContentPath @("/movies/hello","/pictures/pic1.jpg") 
+Import-AzCdnEndpointContent -ResourceGroupName testps-rg-verizon -ProfileName verzioncdn001 -EndpointName verzionendptest001 -ContentPath @("/movies/hello","/pictures/pic1.jpg") 
 ```
 
 Import content of an AzureCDN Endpoint under the AzureCDN profile, only some skus support this action
+
+### Example 2: Import content of an AzureCDN Endpoint under the AzureCDN profile using contentFilePath parameter
+```powershell
+$contentPath = @("/movies/amazing.mp4","/pictures/pic1.jpg")
+$contentFilePath = New-AzCdnLoadParametersObject -ContentPath $contentPath
+Import-AzCdnEndpointContent -ResourceGroupName testps-rg-verizon -ProfileName verzioncdn001 -EndpointName verzionendptest001 -ContentFilePath $contentFilePath
+```
+
+Import content of an AzureCDN Endpoint under the AzureCDN profile, only some skus support this action using contentFilePath parameter
 
 ## PARAMETERS
 
@@ -74,7 +83,7 @@ Parameters required for content load.
 To construct, see NOTES section for CONTENTFILEPATH properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.ILoadParameters
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.ILoadParameters
 Parameter Sets: Load, LoadViaIdentity
 Aliases:
 
@@ -102,7 +111,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -258,7 +268,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.ILoadParameters
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.ILoadParameters
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
 
@@ -284,7 +294,7 @@ To create the parameters described below, construct a hash table containing the 
   - `[Id <String>]`: Resource identity path
   - `[OriginGroupName <String>]`: Name of the origin group which is unique within the endpoint.
   - `[OriginName <String>]`: Name of the origin which is unique within the profile.
-  - `[ProfileName <String>]`: Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
+  - `[ProfileName <String>]`: Name of the Azure Front Door Standard or Azure Front Door Premium profile which is unique within the resource group.
   - `[ResourceGroupName <String>]`: Name of the Resource group within the Azure subscription.
   - `[RouteName <String>]`: Name of the routing rule.
   - `[RuleName <String>]`: Name of the delivery rule which is unique within the endpoint.

@@ -50,6 +50,20 @@ org001 testps-rg-da16jm
 
 Update an AzureCDN origin group under the AzureCDN endpoint
 
+### Example 2: Update an AzureCDN origin group under the AzureCDN endpoint via identity
+```powershell
+$updateHealthProbeParameters = New-AzCdnHealthProbeParametersObject -ProbeIntervalInSecond 60 -ProbePath "/new-check-health.aspx" -ProbeProtocol "Http" -ProbeRequestType "HEAD"
+Get-AzCdnOriginGroup -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -EndpointName endptest001 -Name org001 | Update-AzCdnOriginGroup -HealthProbeSetting $updateHealthProbeParameters
+```
+
+```output
+Name   ResourceGroupName
+----   -----------------
+org001 testps-rg-da16jm
+```
+
+Update an AzureCDN origin group under the AzureCDN endpoint via identity
+
 ## PARAMETERS
 
 ### -AsJob
@@ -68,7 +82,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -102,7 +117,7 @@ Health probe settings to the origin that is used to determine the health of the 
 To construct, see NOTES section for HEALTHPROBESETTING properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IHealthProbeParameters
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IHealthProbeParameters
 Parameter Sets: (All)
 Aliases:
 
@@ -164,7 +179,7 @@ The source of the content being delivered via CDN within given origin group.
 To construct, see NOTES section for ORIGIN properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IResourceReference[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IResourceReference[]
 Parameter Sets: (All)
 Aliases:
 
@@ -211,7 +226,7 @@ This property is currently not supported.
 To construct, see NOTES section for RESPONSEBASEDORIGINERRORDETECTIONSETTING properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IResponseBasedOriginErrorDetectionParameters
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IResponseBasedOriginErrorDetectionParameters
 Parameter Sets: (All)
 Aliases:
 
@@ -294,7 +309,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IOriginGroup
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IOriginGroup
 
 ## NOTES
 
@@ -317,7 +332,7 @@ To create the parameters described below, construct a hash table containing the 
   - `[Id <String>]`: Resource identity path
   - `[OriginGroupName <String>]`: Name of the origin group which is unique within the endpoint.
   - `[OriginName <String>]`: Name of the origin which is unique within the profile.
-  - `[ProfileName <String>]`: Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
+  - `[ProfileName <String>]`: Name of the Azure Front Door Standard or Azure Front Door Premium profile which is unique within the resource group.
   - `[ResourceGroupName <String>]`: Name of the Resource group within the Azure subscription.
   - `[RouteName <String>]`: Name of the routing rule.
   - `[RuleName <String>]`: Name of the delivery rule which is unique within the endpoint.

@@ -14,140 +14,64 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzFrontDoorCdnRoute'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Remove-AzFrontDoorCdnRoute' -Tag 'LiveOnly' {
+Describe 'Remove-AzFrontDoorCdnRoute'  {
+    BeforeAll {
+        $frontDoorEndpointName = 'end-' + (RandomString -allChars $false -len 6);
+        Write-Host -ForegroundColor Green "Start to create Stand_AzureFrontDoor SKU endpoint domain : $($frontDoorEndpointName)"
+        New-AzFrontDoorCdnEndpoint -EndpointName $frontDoorEndpointName -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Location Global | Out-Null
+
+        $originGroupName = 'org' + (RandomString -allChars $false -len 6);
+        $healthProbeSetting = New-AzFrontDoorCdnOriginGroupHealthProbeSettingObject -ProbeIntervalInSecond 1 -ProbePath "/" `
+            -ProbeProtocol "Https" -ProbeRequestType "GET"
+        $loadBalancingSetting = New-AzFrontDoorCdnOriginGroupLoadBalancingSettingObject -AdditionalLatencyInMillisecond 200 `
+            -SampleSize 5 -SuccessfulSamplesRequired 4
+        $originGroup = New-AzFrontDoorCdnOriginGroup -OriginGroupName $originGroupName -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName `
+            -LoadBalancingSetting $loadBalancingSetting -HealthProbeSetting $healthProbeSetting
+
+        Get-AzFrontDoorCdnOriginGroup -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -OriginGroupName $originGroupName
+
+        $hostName = "en.wikipedia.org";
+        $originName = 'ori' + (RandomString -allChars $false -len 6);
+        New-AzFrontDoorCdnOrigin -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -OriginGroupName $originGroupName `
+            -OriginName $originName -OriginHostHeader $hostName -HostName $hostName `
+            -HttpPort 80 -HttpsPort 443 -Priority 1 -Weight 1000
+
+        $rulesetName = 'rs' + (RandomString -allChars $false -len 6);
+        Write-Host -ForegroundColor Green "Use rulesetName : $($rulesetName)"
+        $ruleSet = New-AzFrontDoorCdnRuleSet -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Name $rulesetName
+        $uriConditon = New-AzFrontDoorCdnRuleRequestUriConditionObject -Name "RequestUri" -ParameterOperator "Any"
+        $conditions = @(
+            $uriConditon
+        );
+        $overrideAction = New-AzFrontDoorCdnRuleRouteConfigurationOverrideActionObject -Name "RouteConfigurationOverride" `
+        -CacheConfigurationQueryStringCachingBehavior "IgnoreSpecifiedQueryStrings" `
+        -CacheConfigurationQueryParameter "a=test" `
+        -CacheConfigurationIsCompressionEnabled "Enabled" `
+        -CacheConfigurationCacheBehavior "HonorOrigin"
+        $actions = @($overrideAction);
+        
+        $ruleName = 'r' + (RandomString -allChars $false -len 6);
+        Write-Host -ForegroundColor Green "Use ruleName : $($ruleName)"
+        New-AzFrontDoorCdnRule -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -RuleSetName $rulesetName -Name $ruleName `
+            -Action $actions -Condition $conditions
+
+        $ruleSetResoure = New-AzFrontDoorCdnResourceReferenceObject -Id $ruleSet.Id
+
+        $routeName = 'route' + (RandomString -allChars $false -len 6);
+        Write-Host -ForegroundColor Green "Use routeName : $($routeName)"
+        New-AzFrontDoorCdnRoute -Name $routeName -EndpointName $frontDoorEndpointName -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName `
+            -OriginGroupId $originGroup.Id -RuleSet @($ruleSetResoure) -PatternsToMatch "/*" -LinkToDefaultDomain "Enabled" -EnabledState "Enabled"
+    }
+
     It 'Delete'  {
-        {
-            $ResourceGroupName = 'testps-rg-' + (RandomString -allChars $false -len 6)
-            try
-            {
-                Write-Host -ForegroundColor Green "Create test group $($ResourceGroupName)"
-                New-AzResourceGroup -Name $ResourceGroupName -Location $env.location
-
-                $frontDoorCdnProfileName = 'fdp-' + (RandomString -allChars $false -len 6);
-                Write-Host -ForegroundColor Green "Use frontDoorCdnProfileName : $($frontDoorCdnProfileName)"
-
-                $profileSku = "Standard_AzureFrontDoor";
-                New-AzFrontDoorCdnProfile -SkuName $profileSku -Name $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName -Location Global
-
-                $endpointName = 'end-' + (RandomString -allChars $false -len 6);
-                Write-Host -ForegroundColor Green "Use frontDoorCdnEndpointName : $($endpointName)"
-                $endpoint = New-AzFrontDoorCdnEndpoint -EndpointName $endpointName -ProfileName $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName -Location Global
-
-                $originGroupName = 'org' + (RandomString -allChars $false -len 6);
-                $healthProbeSetting = New-AzFrontDoorCdnOriginGroupHealthProbeSettingObject -ProbeIntervalInSecond 1 -ProbePath "/" `
-                -ProbeProtocol "Https" -ProbeRequestType "GET"
-                $loadBalancingSetting = New-AzFrontDoorCdnOriginGroupLoadBalancingSettingObject -AdditionalLatencyInMillisecond 200 `
-                -SampleSize 5 -SuccessfulSamplesRequired 4
-                $originGroup = New-AzFrontDoorCdnOriginGroup -OriginGroupName $originGroupName -ProfileName $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName `
-                -LoadBalancingSetting $loadBalancingSetting -HealthProbeSetting $healthProbeSetting
-
-                Get-AzFrontDoorCdnOriginGroup -ResourceGroupName $ResourceGroupName -ProfileName $frontDoorCdnProfileName -OriginGroupName $originGroupName
-
-                $hostName = "en.wikipedia.org";
-                $originName = 'ori' + (RandomString -allChars $false -len 6);
-                New-AzFrontDoorCdnOrigin -ResourceGroupName $ResourceGroupName -ProfileName $frontDoorCdnProfileName -OriginGroupName $originGroupName `
-                -OriginName $originName -OriginHostHeader $hostName -HostName $hostName `
-                -HttpPort 80 -HttpsPort 443 -Priority 1 -Weight 1000
-
-                $rulesetName = 'rs' + (RandomString -allChars $false -len 6);
-                Write-Host -ForegroundColor Green "Use rulesetName : $($rulesetName)"
-                $ruleSet = New-AzFrontDoorCdnRuleSet -ProfileName $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName -Name $rulesetName
-                $uriConditon = New-AzFrontDoorCdnRuleRequestUriConditionObject -Name "RequestUri" -ParameterOperator "Any"
-                $conditions = @(
-                    $uriConditon
-                );
-                $overrideAction = New-AzFrontDoorCdnRuleRouteConfigurationOverrideActionObject -Name "RouteConfigurationOverride" `
-                -CacheConfigurationQueryStringCachingBehavior "IgnoreSpecifiedQueryStrings" `
-                -CacheConfigurationQueryParameter "a=test" `
-                -CacheConfigurationIsCompressionEnabled "Enabled" `
-                -CacheConfigurationCacheBehavior "HonorOrigin"
-                $actions = @($overrideAction);
-                
-                $ruleName = 'r' + (RandomString -allChars $false -len 6);
-                Write-Host -ForegroundColor Green "Use ruleName : $($ruleName)"
-                New-AzFrontDoorCdnRule -ProfileName $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName -RuleSetName $rulesetName -Name $ruleName `
-                -Action $actions -Condition $conditions
-
-                $ruleSetResoure = New-AzFrontDoorCdnResourceReferenceObject -Id $ruleSet.Id
-
-                $routeName = 'route' + (RandomString -allChars $false -len 6);
-                New-AzFrontDoorCdnRoute -Name $routeName -EndpointName $endpointName -ProfileName $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName `
-                -OriginGroupId $originGroup.Id -RuleSet @($ruleSetResoure) -PatternsToMatch "/*" -LinkToDefaultDomain "Enabled" -EnabledState "Enabled"
-            
-                Remove-AzFrontDoorCdnRoute -ResourceGroupName $ResourceGroupName -ProfileName $frontDoorCdnProfileName -EndpointName $endpointName -Name $routeName
-            } Finally
-            {
-                Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
-            }
-        } | Should -Not -Throw
+        Remove-AzFrontDoorCdnRoute -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -EndpointName $frontDoorEndpointName -Name $routeName
     }
 
     It 'DeleteViaIdentity'  {
-        {
-            $PSDefaultParameterValues['Disabled'] = $true
-            $ResourceGroupName = 'testps-rg-' + (RandomString -allChars $false -len 6)
-            try
-            {
-                Write-Host -ForegroundColor Green "Create test group $($ResourceGroupName)"
-                New-AzResourceGroup -Name $ResourceGroupName -Location $env.location
-
-                $frontDoorCdnProfileName = 'fdp-' + (RandomString -allChars $false -len 6);
-                Write-Host -ForegroundColor Green "Use frontDoorCdnProfileName : $($frontDoorCdnProfileName)"
-
-                $profileSku = "Standard_AzureFrontDoor";
-                New-AzFrontDoorCdnProfile -SkuName $profileSku -Name $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName -Location Global
-
-                $endpointName = 'end-' + (RandomString -allChars $false -len 6);
-                Write-Host -ForegroundColor Green "Use frontDoorCdnEndpointName : $($endpointName)"
-                $endpoint = New-AzFrontDoorCdnEndpoint -EndpointName $endpointName -ProfileName $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName -Location Global
-
-                $originGroupName = 'org' + (RandomString -allChars $false -len 6);
-                $healthProbeSetting = New-AzFrontDoorCdnOriginGroupHealthProbeSettingObject -ProbeIntervalInSecond 1 -ProbePath "/" `
-                -ProbeProtocol "Https" -ProbeRequestType "GET"
-                $loadBalancingSetting = New-AzFrontDoorCdnOriginGroupLoadBalancingSettingObject -AdditionalLatencyInMillisecond 200 `
-                -SampleSize 5 -SuccessfulSamplesRequired 4
-                $originGroup = New-AzFrontDoorCdnOriginGroup -OriginGroupName $originGroupName -ProfileName $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName `
-                -LoadBalancingSetting $loadBalancingSetting -HealthProbeSetting $healthProbeSetting
-
-                Get-AzFrontDoorCdnOriginGroup -ResourceGroupName $ResourceGroupName -ProfileName $frontDoorCdnProfileName -OriginGroupName $originGroupName
-
-                $hostName = "en.wikipedia.org";
-                $originName = 'ori' + (RandomString -allChars $false -len 6);
-                New-AzFrontDoorCdnOrigin -ResourceGroupName $ResourceGroupName -ProfileName $frontDoorCdnProfileName -OriginGroupName $originGroupName `
-                -OriginName $originName -OriginHostHeader $hostName -HostName $hostName `
-                -HttpPort 80 -HttpsPort 443 -Priority 1 -Weight 1000
-
-                $rulesetName = 'rs' + (RandomString -allChars $false -len 6);
-                Write-Host -ForegroundColor Green "Use rulesetName : $($rulesetName)"
-                $ruleSet = New-AzFrontDoorCdnRuleSet -ProfileName $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName -Name $rulesetName
-                $uriConditon = New-AzFrontDoorCdnRuleRequestUriConditionObject -Name "RequestUri" -ParameterOperator "Any"
-                $conditions = @(
-                    $uriConditon
-                );
-                $overrideAction = New-AzFrontDoorCdnRuleRouteConfigurationOverrideActionObject -Name "RouteConfigurationOverride" `
-                -CacheConfigurationQueryStringCachingBehavior "IgnoreSpecifiedQueryStrings" `
-                -CacheConfigurationQueryParameter "a=test" `
-                -CacheConfigurationIsCompressionEnabled "Enabled" `
-                -CacheConfigurationCacheBehavior "HonorOrigin"
-                $actions = @($overrideAction);
-                
-                $ruleName = 'r' + (RandomString -allChars $false -len 6);
-                Write-Host -ForegroundColor Green "Use ruleName : $($ruleName)"
-                New-AzFrontDoorCdnRule -ProfileName $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName -RuleSetName $rulesetName -Name $ruleName `
-                -Action $actions -Condition $conditions
-
-                $ruleSetResoure = New-AzFrontDoorCdnResourceReferenceObject -Id $ruleSet.Id
-
-                $routeName = 'route' + (RandomString -allChars $false -len 6);
-                New-AzFrontDoorCdnRoute -Name $routeName -EndpointName $endpointName -ProfileName $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName `
-                -OriginGroupId $originGroup.Id -RuleSet @($ruleSetResoure) -PatternsToMatch "/*" -LinkToDefaultDomain "Enabled" -EnabledState "Enabled"
-        
-                Get-AzFrontDoorCdnRoute -ResourceGroupName $ResourceGroupName -ProfileName $frontDoorCdnProfileName -EndpointName $endpointName -Name $routeName `
-                | Remove-AzFrontDoorCdnRoute
-            } Finally
-            {
-                Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
-            }
-        } | Should -Not -Throw
+        $PSDefaultParameterValues['Disabled'] = $true
+        New-AzFrontDoorCdnRoute -SubscriptionId $env.SubscriptionId -Name $routeName -EndpointName $frontDoorEndpointName -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName `
+            -OriginGroupId $originGroup.Id -RuleSet @($ruleSetResoure) -PatternsToMatch "/*" -LinkToDefaultDomain "Enabled" -EnabledState "Enabled"
+        Get-AzFrontDoorCdnRoute -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -EndpointName $frontDoorEndpointName -Name $routeName `
+        | Remove-AzFrontDoorCdnRoute
     }
 }

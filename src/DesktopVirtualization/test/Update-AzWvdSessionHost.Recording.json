@@ -1,12 +1,11 @@
 {
-  "Update-AzWvdSessionHost+[NoContext]+Update+$PATCH+https://management.azure.com/subscriptions/292d7caa-a878-4de8-b774-689097666272/resourceGroups/datr-canadaeast/providers/Microsoft.DesktopVirtualization/hostPools/HostPoolPowershell1/sessionHosts/PowershellVM-0.wvdarmtest1.net?api-version=2021-07-12+1": {
+  "Update-AzWvdSessionHost+[NoContext]+Update+$PATCH+https://management.azure.com/subscriptions/dbedef25-184c-430f-b383-0eeb87c3205d/resourceGroups/alecbUserSessionTests/providers/Microsoft.DesktopVirtualization/hostPools/alecbUserSessionHP/sessionHosts/pwsh-0?api-version=2022-09-09+1": {
     "Request": {
       "Method": "PATCH",
-      "RequestUri": "https://management.azure.com/subscriptions/292d7caa-a878-4de8-b774-689097666272/resourceGroups/datr-canadaeast/providers/Microsoft.DesktopVirtualization/hostPools/HostPoolPowershell1/sessionHosts/PowershellVM-0.wvdarmtest1.net?api-version=2021-07-12",
+      "RequestUri": "https://management.azure.com/subscriptions/dbedef25-184c-430f-b383-0eeb87c3205d/resourceGroups/alecbUserSessionTests/providers/Microsoft.DesktopVirtualization/hostPools/alecbUserSessionHP/sessionHosts/pwsh-0?api-version=2022-09-09",
       "Content": "{\r\n  \"properties\": {\r\n    \"allowNewSession\": false\r\n  }\r\n}",
+      "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "5" ],
-        "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
@@ -19,34 +18,45 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Vary": [ "Accept-Encoding" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
-        "x-ms-lamport-ts": [ "12048" ],
-        "x-ms-correlation-id": [ "929111fe-6211-4914-923f-c33d401fb9ad" ],
-        "Set-Cookie": [ "ARRAffinity=218fc26d5a5724cc6bc574acd210aa679c146900b859248acf92586a73677e6d;Path=/;HttpOnly;Domain=rdarmprovider.dev05.avdtest.net" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1067" ],
+        "X-Rate-Limit-Limit": [ "0" ],
+        "X-Rate-Limit-Remaining": [ "9223372036854775807" ],
+        "X-Rate-Limit-Reset": [ "0" ],
+        "x-ms-opsarmpath64": [ "L3N1YnNjcmlwdGlvbnMvZGJlZGVmMjUtMTg0Yy00MzBmLWIzODMtMGVlYjg3YzMyMDVkL3Jlc291cmNlR3JvdXBzL2FsZWNiVXNlclNlc3Npb25UZXN0cy9wcm92aWRlcnMvTWljcm9zb2Z0LkRlc2t0b3BWaXJ0dWFsaXphdGlvbi9ob3N0UG9vbHMvYWxlY2JVc2VyU2Vzc2lvbkhQL3Nlc3Npb25Ib3N0cy9wd3NoLTA=" ],
+        "x-ms-lamport-ts": [ "95357231" ],
+        "x-ms-correlation-id": [ "c21189a3-4dd6-4e31-9cb4-84e526d368c7" ],
+        "x-ms-request-id": [ "047a7b72-36ac-4465-b1ae-83a4e3c4acec" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Set-Cookie": [ "ARRAffinity=bd0dfb948b4e67ff60a11cd6e169712e6848609ad034c4789ebdf993fcec41fb;Path=/;HttpOnly;Secure;Domain=rdarmprovider-g-us-r0.wvdselfhost.microsoft.com", "ARRAffinitySameSite=bd0dfb948b4e67ff60a11cd6e169712e6848609ad034c4789ebdf993fcec41fb;Path=/;HttpOnly;SameSite=None;Secure;Domain=rdarmprovider-g-us-r0.wvdselfhost.microsoft.com" ],
         "Server": [ "Microsoft-IIS/10.0" ],
         "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-request-id": [ "929111fe-6211-4914-923f-c33d401fb9ad" ],
-        "x-ms-correlation-request-id": [ "929111fe-6211-4914-923f-c33d401fb9ad" ],
-        "x-ms-routing-request-id": [ "WESTUS:20191105T235316Z:929111fe-6211-4914-923f-c33d401fb9ad" ],
+        "x-ms-correlation-request-id": [ "9c97aa60-c59a-4417-9d3d-6d4bb406795b" ],
+        "x-ms-routing-request-id": [ "WESTUS:20230320T185513Z:9c97aa60-c59a-4417-9d3d-6d4bb406795b" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 05 Nov 2019 23:53:15 GMT" ]
+        "Date": [ "Mon, 20 Mar 2023 18:55:13 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "705" ],
+        "Content-Length": [ "3862" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"name\":\"HostPoolPowershell1/PowershellVM-0.wvdarmtest1.net\",\"id\":\"/subscriptions/292d7caa-a878-4de8-b774-689097666272/resourceGroups/datr-canadaeast/providers/Microsoft.DesktopVirtualization/hostPools/HostPoolPowershell1/sessionHosts/PowershellVM-0.wvdarmtest1.net\",\"type\":\"Microsoft.DesktopVirtualization/hostPools/sessionHosts\",\"properties\":{\"lastHeartBeat\":\"2019-11-04T21:16:04.6900182\",\"sessions\":0,\"agentVersion\":\"1.0.1603.0\",\"allowNewSession\":false,\"assignedUser\":null,\"status\":\"Available\",\"statusTimestamp\":\"2019-11-04T21:16:33.6680089\",\"osVersion\":\"10.0.18362\",\"sxSStackVersion\":\"rdp-sxs191015002\",\"updateState\":\"Succeeded\",\"lastUpdateTime\":\"2019-11-04T21:16:33.6680089\",\"updateErrorMessage\":\"\"}}"
+      "Content": "{\"name\":\"alecbUserSessionHP/pwsh-0\",\"id\":\"/subscriptions/dbedef25-184c-430f-b383-0eeb87c3205d/resourcegroups/alecbUserSessionTests/providers/Microsoft.DesktopVirtualization/hostpools/alecbUserSessionHP/sessionhosts/pwsh-0\",\"type\":\"Microsoft.DesktopVirtualization/hostpools/sessionhosts\",\"properties\":{\"friendlyName\":null,\"lastHeartBeat\":\"2023-03-17T03:25:48.08Z\",\"statusTimestamp\":\"2023-03-17T01:05:37.54Z\",\"lastUpdateTime\":\"2023-03-17T01:05:37.54Z\",\"sessions\":3,\"agentVersion\":\"1.0.6372.0\",\"allowNewSession\":false,\"assignedUser\":null,\"status\":\"Available\",\"osVersion\":\"10.0.19042\",\"sxSStackVersion\":\"rdp-sxs230307184\",\"updateState\":\"Succeeded\",\"updateErrorMessage\":\"\",\"sessionHostHealthCheckResults\":[{\"healthCheckName\":\"DomainJoinedCheck\",\"healthCheckResult\":\"HealthCheckSucceeded\",\"additionalFailureDetails\":{\"message\":\"\",\"errorCode\":0,\"lastHealthCheckDateTime\":\"2023-03-16T17:12:38.4012449Z\"}},{\"healthCheckName\":\"DomainTrustCheck\",\"healthCheckResult\":\"HealthCheckSucceeded\",\"additionalFailureDetails\":{\"message\":\"\",\"errorCode\":0,\"lastHealthCheckDateTime\":\"2023-03-16T17:12:38.4012449Z\"}},{\"healthCheckName\":\"SxSStackListenerCheck\",\"healthCheckResult\":\"HealthCheckSucceeded\",\"additionalFailureDetails\":{\"message\":\"SessionHost healthy: SessionHost healthy: SxS stack listener is ready\",\"errorCode\":0,\"lastHealthCheckDateTime\":\"2023-03-16T17:35:29.7749878Z\"}},{\"healthCheckName\":\"UrlsAccessibleCheck\",\"healthCheckResult\":\"HealthCheckSucceeded\",\"additionalFailureDetails\":{\"message\":\"{\\\"AccessibleUrls\\\":[\\\"11bc4f73-251b-4c14-a94e-0a95f8db9f08.rdbroker-g-us-r1.wvdselfhost.microsoft.com\\\",\\\"11bc4f73-251b-4c14-a94e-0a95f8db9f08.rdbroker.wvdselfhost.microsoft.com\\\",\\\"11bc4f73-251b-4c14-a94e-0a95f8db9f08.rddiagnostics-g-us-r1.wvdselfhost.microsoft.com\\\",\\\"mrsglobalstwus2selfhost.blob.core.windows.net\\\",\\\"gcs.prod.monitoring.core.windows.net\\\",\\\"production.diagnostics.monitoring.core.windows.net\\\",\\\"westus2-shared.prod.warm.ingest.monitor.core.windows.net\\\",\\\"qos.prod.warm.ingest.monitor.core.windows.net\\\"],\\\"NotAccessibleUrls\\\":null,\\\"Context\\\":null}\",\"errorCode\":0,\"lastHealthCheckDateTime\":\"2023-03-16T17:35:31.9937319Z\"}},{\"healthCheckName\":\"MonitoringAgentCheck\",\"healthCheckResult\":\"HealthCheckSucceeded\",\"additionalFailureDetails\":{\"message\":\"Located running process at C:\\\\Program Files\\\\Microsoft RDInfra\\\\RDMonitoringAgent_45.5.2\\\\Agent\\\\MonAgentLauncher.exe\",\"errorCode\":0,\"lastHealthCheckDateTime\":\"2023-03-16T17:20:28.620228Z\"}},{\"healthCheckName\":\"DomainReachable\",\"healthCheckResult\":\"HealthCheckSucceeded\",\"additionalFailureDetails\":{\"message\":\"\",\"errorCode\":0,\"lastHealthCheckDateTime\":\"2023-03-16T17:12:38.4012449Z\"}},{\"healthCheckName\":\"MetaDataServiceCheck\",\"healthCheckResult\":\"HealthCheckSucceeded\",\"additionalFailureDetails\":{\"message\":\"{\\r\\n  \\\"Details\\\": \\\"IMDS pressumed available\\\",\\r\\n  \\\"AzureResourceId\\\": \\\"/subscriptions/dbedef25-184c-430f-b383-0eeb87c3205d/resourceGroups/alecbUserSessionTests/providers/Microsoft.Compute/virtualMachines/pwsh-0\\\",\\r\\n  \\\"VmId\\\": \\\"09ead700-cd4d-433e-96cd-193e627c1576\\\"\\r\\n}\",\"errorCode\":0,\"lastHealthCheckDateTime\":\"2023-03-16T17:35:28.7593631Z\"}},{\"healthCheckName\":\"AppAttachHealthCheck\",\"healthCheckResult\":\"HealthCheckSucceeded\",\"additionalFailureDetails\":{\"message\":\"SessionHost healthy: MSIX packages have been properly staged\",\"errorCode\":0,\"lastHealthCheckDateTime\":\"2023-03-16T17:30:38.7910375Z\"}}],\"resourceId\":\"/subscriptions/dbedef25-184c-430f-b383-0eeb87c3205d/resourceGroups/alecbUserSessionTests/providers/Microsoft.Compute/virtualMachines/pwsh-0\",\"virtualMachineId\":\"09ead700-cd4d-433e-96cd-193e627c1576\",\"objectId\":\"7d58a120-3588-493c-a574-923c98936d90\"},\"systemData\":{\"createdBy\":null,\"createdByType\":null,\"createdAt\":\"2023-03-16T17:04:53.76Z\",\"lastModifiedBy\":\"admin@wvdtesttenant.onmicrosoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-03-20T18:55:13.24Z\"}}",
+      "isContentBase64": false
     }
   },
-  "Update-AzWvdSessionHost+[NoContext]+Update+$GET+https://management.azure.com/subscriptions/292d7caa-a878-4de8-b774-689097666272/resourceGroups/datr-canadaeast/providers/Microsoft.DesktopVirtualization/hostPools/HostPoolPowershell1/sessionHosts/PowershellVM-0.wvdarmtest1.net?api-version=2021-07-12+2": {
+  "Update-AzWvdSessionHost+[NoContext]+Update+$GET+https://management.azure.com/subscriptions/dbedef25-184c-430f-b383-0eeb87c3205d/resourceGroups/alecbUserSessionTests/providers/Microsoft.DesktopVirtualization/hostPools/alecbUserSessionHP/sessionHosts/pwsh-0?api-version=2022-09-09+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/292d7caa-a878-4de8-b774-689097666272/resourceGroups/datr-canadaeast/providers/Microsoft.DesktopVirtualization/hostPools/HostPoolPowershell1/sessionHosts/PowershellVM-0.wvdarmtest1.net?api-version=2021-07-12",
+      "RequestUri": "https://management.azure.com/subscriptions/dbedef25-184c-430f-b383-0eeb87c3205d/resourceGroups/alecbUserSessionTests/providers/Microsoft.DesktopVirtualization/hostPools/alecbUserSessionHP/sessionHosts/pwsh-0?api-version=2022-09-09",
       "Content": null,
+      "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "6" ],
+        "x-ms-unique-id": [ "346" ],
+        "x-ms-client-request-id": [ "97e57c67-26d8-4c34-b01d-ba56cddd3fb3" ],
+        "CommandName": [ "Get-AzWvdSessionHost" ],
+        "FullCommandName": [ "Get-AzWvdSessionHost_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v9.0.1", "PSVersion/v7.2.9", "Az.DesktopVirtualization/2.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -58,35 +68,39 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Vary": [ "Accept-Encoding" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11995" ],
-        "x-ms-lamport-ts": [ "12051" ],
-        "x-ms-correlation-id": [ "ad63d0f9-d63a-4544-853b-4dc5af18427d" ],
-        "Set-Cookie": [ "ARRAffinity=218fc26d5a5724cc6bc574acd210aa679c146900b859248acf92586a73677e6d;Path=/;HttpOnly;Domain=rdarmprovider.dev05.avdtest.net" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11922" ],
+        "X-Rate-Limit-Limit": [ "0" ],
+        "X-Rate-Limit-Remaining": [ "9223372036854775807" ],
+        "X-Rate-Limit-Reset": [ "0" ],
+        "x-ms-opsarmpath64": [ "L3N1YnNjcmlwdGlvbnMvZGJlZGVmMjUtMTg0Yy00MzBmLWIzODMtMGVlYjg3YzMyMDVkL3Jlc291cmNlR3JvdXBzL2FsZWNiVXNlclNlc3Npb25UZXN0cy9wcm92aWRlcnMvTWljcm9zb2Z0LkRlc2t0b3BWaXJ0dWFsaXphdGlvbi9ob3N0UG9vbHMvYWxlY2JVc2VyU2Vzc2lvbkhQL3Nlc3Npb25Ib3N0cy9wd3NoLTA=" ],
+        "x-ms-lamport-ts": [ "95357503" ],
+        "x-ms-correlation-id": [ "c5b3655b-b1d3-4caa-9916-f467374c4f9c" ],
+        "x-ms-request-id": [ "97e57c67-26d8-4c34-b01d-ba56cddd3fb3" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Set-Cookie": [ "ARRAffinity=7bf5a65c9ab6652b7e960fdced88dd5501d933c0715fe792714d5d958b2e56fd;Path=/;HttpOnly;Secure;Domain=rdarmprovider-g-us-r0.wvdselfhost.microsoft.com", "ARRAffinitySameSite=7bf5a65c9ab6652b7e960fdced88dd5501d933c0715fe792714d5d958b2e56fd;Path=/;HttpOnly;SameSite=None;Secure;Domain=rdarmprovider-g-us-r0.wvdselfhost.microsoft.com" ],
         "Server": [ "Microsoft-IIS/10.0" ],
         "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-request-id": [ "ad63d0f9-d63a-4544-853b-4dc5af18427d" ],
-        "x-ms-correlation-request-id": [ "ad63d0f9-d63a-4544-853b-4dc5af18427d" ],
-        "x-ms-routing-request-id": [ "WESTUS:20191105T235316Z:ad63d0f9-d63a-4544-853b-4dc5af18427d" ],
+        "x-ms-correlation-request-id": [ "a4b5f5e2-06ad-4f1b-b68d-4cd589b62397" ],
+        "x-ms-routing-request-id": [ "WESTUS:20230320T185513Z:a4b5f5e2-06ad-4f1b-b68d-4cd589b62397" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 05 Nov 2019 23:53:16 GMT" ]
+        "Date": [ "Mon, 20 Mar 2023 18:55:13 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "705" ],
+        "Content-Length": [ "3862" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"name\":\"HostPoolPowershell1/PowershellVM-0.wvdarmtest1.net\",\"id\":\"/subscriptions/292d7caa-a878-4de8-b774-689097666272/resourceGroups/datr-canadaeast/providers/Microsoft.DesktopVirtualization/hostPools/HostPoolPowershell1/sessionHosts/PowershellVM-0.wvdarmtest1.net\",\"type\":\"Microsoft.DesktopVirtualization/hostPools/sessionHosts\",\"properties\":{\"lastHeartBeat\":\"2019-11-04T21:16:04.6900182\",\"sessions\":0,\"agentVersion\":\"1.0.1603.0\",\"allowNewSession\":false,\"assignedUser\":null,\"status\":\"Available\",\"statusTimestamp\":\"2019-11-04T21:16:33.6680089\",\"osVersion\":\"10.0.18362\",\"sxSStackVersion\":\"rdp-sxs191015002\",\"updateState\":\"Succeeded\",\"lastUpdateTime\":\"2019-11-04T21:16:33.6680089\",\"updateErrorMessage\":\"\"}}"
+      "Content": "{\"name\":\"alecbUserSessionHP/pwsh-0\",\"id\":\"/subscriptions/dbedef25-184c-430f-b383-0eeb87c3205d/resourcegroups/alecbUserSessionTests/providers/Microsoft.DesktopVirtualization/hostpools/alecbUserSessionHP/sessionhosts/pwsh-0\",\"type\":\"Microsoft.DesktopVirtualization/hostpools/sessionhosts\",\"properties\":{\"friendlyName\":null,\"lastHeartBeat\":\"2023-03-17T03:25:48.08Z\",\"statusTimestamp\":\"2023-03-17T01:05:37.54Z\",\"lastUpdateTime\":\"2023-03-17T01:05:37.54Z\",\"sessions\":3,\"agentVersion\":\"1.0.6372.0\",\"allowNewSession\":false,\"assignedUser\":null,\"status\":\"Available\",\"osVersion\":\"10.0.19042\",\"sxSStackVersion\":\"rdp-sxs230307184\",\"updateState\":\"Succeeded\",\"updateErrorMessage\":\"\",\"sessionHostHealthCheckResults\":[{\"healthCheckName\":\"DomainJoinedCheck\",\"healthCheckResult\":\"HealthCheckSucceeded\",\"additionalFailureDetails\":{\"message\":\"\",\"errorCode\":0,\"lastHealthCheckDateTime\":\"2023-03-16T17:12:38.4012449Z\"}},{\"healthCheckName\":\"DomainTrustCheck\",\"healthCheckResult\":\"HealthCheckSucceeded\",\"additionalFailureDetails\":{\"message\":\"\",\"errorCode\":0,\"lastHealthCheckDateTime\":\"2023-03-16T17:12:38.4012449Z\"}},{\"healthCheckName\":\"SxSStackListenerCheck\",\"healthCheckResult\":\"HealthCheckSucceeded\",\"additionalFailureDetails\":{\"message\":\"SessionHost healthy: SessionHost healthy: SxS stack listener is ready\",\"errorCode\":0,\"lastHealthCheckDateTime\":\"2023-03-16T17:35:29.7749878Z\"}},{\"healthCheckName\":\"UrlsAccessibleCheck\",\"healthCheckResult\":\"HealthCheckSucceeded\",\"additionalFailureDetails\":{\"message\":\"{\\\"AccessibleUrls\\\":[\\\"11bc4f73-251b-4c14-a94e-0a95f8db9f08.rdbroker-g-us-r1.wvdselfhost.microsoft.com\\\",\\\"11bc4f73-251b-4c14-a94e-0a95f8db9f08.rdbroker.wvdselfhost.microsoft.com\\\",\\\"11bc4f73-251b-4c14-a94e-0a95f8db9f08.rddiagnostics-g-us-r1.wvdselfhost.microsoft.com\\\",\\\"mrsglobalstwus2selfhost.blob.core.windows.net\\\",\\\"gcs.prod.monitoring.core.windows.net\\\",\\\"production.diagnostics.monitoring.core.windows.net\\\",\\\"westus2-shared.prod.warm.ingest.monitor.core.windows.net\\\",\\\"qos.prod.warm.ingest.monitor.core.windows.net\\\"],\\\"NotAccessibleUrls\\\":null,\\\"Context\\\":null}\",\"errorCode\":0,\"lastHealthCheckDateTime\":\"2023-03-16T17:35:31.9937319Z\"}},{\"healthCheckName\":\"MonitoringAgentCheck\",\"healthCheckResult\":\"HealthCheckSucceeded\",\"additionalFailureDetails\":{\"message\":\"Located running process at C:\\\\Program Files\\\\Microsoft RDInfra\\\\RDMonitoringAgent_45.5.2\\\\Agent\\\\MonAgentLauncher.exe\",\"errorCode\":0,\"lastHealthCheckDateTime\":\"2023-03-16T17:20:28.620228Z\"}},{\"healthCheckName\":\"DomainReachable\",\"healthCheckResult\":\"HealthCheckSucceeded\",\"additionalFailureDetails\":{\"message\":\"\",\"errorCode\":0,\"lastHealthCheckDateTime\":\"2023-03-16T17:12:38.4012449Z\"}},{\"healthCheckName\":\"MetaDataServiceCheck\",\"healthCheckResult\":\"HealthCheckSucceeded\",\"additionalFailureDetails\":{\"message\":\"{\\r\\n  \\\"Details\\\": \\\"IMDS pressumed available\\\",\\r\\n  \\\"AzureResourceId\\\": \\\"/subscriptions/dbedef25-184c-430f-b383-0eeb87c3205d/resourceGroups/alecbUserSessionTests/providers/Microsoft.Compute/virtualMachines/pwsh-0\\\",\\r\\n  \\\"VmId\\\": \\\"09ead700-cd4d-433e-96cd-193e627c1576\\\"\\r\\n}\",\"errorCode\":0,\"lastHealthCheckDateTime\":\"2023-03-16T17:35:28.7593631Z\"}},{\"healthCheckName\":\"AppAttachHealthCheck\",\"healthCheckResult\":\"HealthCheckSucceeded\",\"additionalFailureDetails\":{\"message\":\"SessionHost healthy: MSIX packages have been properly staged\",\"errorCode\":0,\"lastHealthCheckDateTime\":\"2023-03-16T17:30:38.7910375Z\"}}],\"resourceId\":\"/subscriptions/dbedef25-184c-430f-b383-0eeb87c3205d/resourceGroups/alecbUserSessionTests/providers/Microsoft.Compute/virtualMachines/pwsh-0\",\"virtualMachineId\":\"09ead700-cd4d-433e-96cd-193e627c1576\",\"objectId\":\"7d58a120-3588-493c-a574-923c98936d90\"},\"systemData\":{\"createdBy\":null,\"createdByType\":null,\"createdAt\":\"2023-03-16T17:04:53.76Z\",\"lastModifiedBy\":\"admin@wvdtesttenant.onmicrosoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-03-20T18:55:13.24Z\"}}",
+      "isContentBase64": false
     }
   },
-  "Update-AzWvdSessionHost+[NoContext]+Update+$PATCH+https://management.azure.com/subscriptions/292d7caa-a878-4de8-b774-689097666272/resourceGroups/datr-canadaeast/providers/Microsoft.DesktopVirtualization/hostPools/HostPoolPowershell1/sessionHosts/PowershellVM-0.wvdarmtest1.net?api-version=2021-07-12+3": {
+  "Update-AzWvdSessionHost+[NoContext]+Update+$PATCH+https://management.azure.com/subscriptions/dbedef25-184c-430f-b383-0eeb87c3205d/resourceGroups/alecbUserSessionTests/providers/Microsoft.DesktopVirtualization/hostPools/alecbUserSessionHP/sessionHosts/pwsh-0?api-version=2022-09-09+3": {
     "Request": {
       "Method": "PATCH",
-      "RequestUri": "https://management.azure.com/subscriptions/292d7caa-a878-4de8-b774-689097666272/resourceGroups/datr-canadaeast/providers/Microsoft.DesktopVirtualization/hostPools/HostPoolPowershell1/sessionHosts/PowershellVM-0.wvdarmtest1.net?api-version=2021-07-12",
+      "RequestUri": "https://management.azure.com/subscriptions/dbedef25-184c-430f-b383-0eeb87c3205d/resourceGroups/alecbUserSessionTests/providers/Microsoft.DesktopVirtualization/hostPools/alecbUserSessionHP/sessionHosts/pwsh-0?api-version=2022-09-09",
       "Content": "{\r\n  \"properties\": {\r\n    \"allowNewSession\": true\r\n  }\r\n}",
+      "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "7" ],
-        "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
@@ -99,34 +113,45 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Vary": [ "Accept-Encoding" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1197" ],
-        "x-ms-lamport-ts": [ "12054" ],
-        "x-ms-correlation-id": [ "1823ecca-eed7-423b-8885-9910f247aa7a" ],
-        "Set-Cookie": [ "ARRAffinity=218fc26d5a5724cc6bc574acd210aa679c146900b859248acf92586a73677e6d;Path=/;HttpOnly;Domain=rdarmprovider.dev05.avdtest.net" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1066" ],
+        "X-Rate-Limit-Limit": [ "0" ],
+        "X-Rate-Limit-Remaining": [ "9223372036854775807" ],
+        "X-Rate-Limit-Reset": [ "0" ],
+        "x-ms-opsarmpath64": [ "L3N1YnNjcmlwdGlvbnMvZGJlZGVmMjUtMTg0Yy00MzBmLWIzODMtMGVlYjg3YzMyMDVkL3Jlc291cmNlR3JvdXBzL2FsZWNiVXNlclNlc3Npb25UZXN0cy9wcm92aWRlcnMvTWljcm9zb2Z0LkRlc2t0b3BWaXJ0dWFsaXphdGlvbi9ob3N0UG9vbHMvYWxlY2JVc2VyU2Vzc2lvbkhQL3Nlc3Npb25Ib3N0cy9wd3NoLTA=" ],
+        "x-ms-lamport-ts": [ "95357240" ],
+        "x-ms-correlation-id": [ "36de109f-77cb-4868-bdd1-603445a1a442" ],
+        "x-ms-request-id": [ "1ac1a734-0661-4b51-be54-d9e6b0ef1370" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Set-Cookie": [ "ARRAffinity=b34b3aa3b73c20633be4db36b45b4eabb1f2f2707b98216dd9e344acdede2909;Path=/;HttpOnly;Secure;Domain=rdarmprovider-g-us-r0.wvdselfhost.microsoft.com", "ARRAffinitySameSite=b34b3aa3b73c20633be4db36b45b4eabb1f2f2707b98216dd9e344acdede2909;Path=/;HttpOnly;SameSite=None;Secure;Domain=rdarmprovider-g-us-r0.wvdselfhost.microsoft.com" ],
         "Server": [ "Microsoft-IIS/10.0" ],
         "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-request-id": [ "1823ecca-eed7-423b-8885-9910f247aa7a" ],
-        "x-ms-correlation-request-id": [ "1823ecca-eed7-423b-8885-9910f247aa7a" ],
-        "x-ms-routing-request-id": [ "WESTUS:20191105T235316Z:1823ecca-eed7-423b-8885-9910f247aa7a" ],
+        "x-ms-correlation-request-id": [ "0c1541e9-cf2c-41ed-9673-b5640e72d41a" ],
+        "x-ms-routing-request-id": [ "WESTUS:20230320T185514Z:0c1541e9-cf2c-41ed-9673-b5640e72d41a" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 05 Nov 2019 23:53:16 GMT" ]
+        "Date": [ "Mon, 20 Mar 2023 18:55:13 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "704" ],
+        "Content-Length": [ "3861" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"name\":\"HostPoolPowershell1/PowershellVM-0.wvdarmtest1.net\",\"id\":\"/subscriptions/292d7caa-a878-4de8-b774-689097666272/resourceGroups/datr-canadaeast/providers/Microsoft.DesktopVirtualization/hostPools/HostPoolPowershell1/sessionHosts/PowershellVM-0.wvdarmtest1.net\",\"type\":\"Microsoft.DesktopVirtualization/hostPools/sessionHosts\",\"properties\":{\"lastHeartBeat\":\"2019-11-04T21:16:04.6900182\",\"sessions\":0,\"agentVersion\":\"1.0.1603.0\",\"allowNewSession\":true,\"assignedUser\":null,\"status\":\"Available\",\"statusTimestamp\":\"2019-11-04T21:16:33.6680089\",\"osVersion\":\"10.0.18362\",\"sxSStackVersion\":\"rdp-sxs191015002\",\"updateState\":\"Succeeded\",\"lastUpdateTime\":\"2019-11-04T21:16:33.6680089\",\"updateErrorMessage\":\"\"}}"
+      "Content": "{\"name\":\"alecbUserSessionHP/pwsh-0\",\"id\":\"/subscriptions/dbedef25-184c-430f-b383-0eeb87c3205d/resourcegroups/alecbUserSessionTests/providers/Microsoft.DesktopVirtualization/hostpools/alecbUserSessionHP/sessionhosts/pwsh-0\",\"type\":\"Microsoft.DesktopVirtualization/hostpools/sessionhosts\",\"properties\":{\"friendlyName\":null,\"lastHeartBeat\":\"2023-03-17T03:25:48.08Z\",\"statusTimestamp\":\"2023-03-17T01:05:37.54Z\",\"lastUpdateTime\":\"2023-03-17T01:05:37.54Z\",\"sessions\":3,\"agentVersion\":\"1.0.6372.0\",\"allowNewSession\":true,\"assignedUser\":null,\"status\":\"Available\",\"osVersion\":\"10.0.19042\",\"sxSStackVersion\":\"rdp-sxs230307184\",\"updateState\":\"Succeeded\",\"updateErrorMessage\":\"\",\"sessionHostHealthCheckResults\":[{\"healthCheckName\":\"DomainJoinedCheck\",\"healthCheckResult\":\"HealthCheckSucceeded\",\"additionalFailureDetails\":{\"message\":\"\",\"errorCode\":0,\"lastHealthCheckDateTime\":\"2023-03-16T17:12:38.4012449Z\"}},{\"healthCheckName\":\"DomainTrustCheck\",\"healthCheckResult\":\"HealthCheckSucceeded\",\"additionalFailureDetails\":{\"message\":\"\",\"errorCode\":0,\"lastHealthCheckDateTime\":\"2023-03-16T17:12:38.4012449Z\"}},{\"healthCheckName\":\"SxSStackListenerCheck\",\"healthCheckResult\":\"HealthCheckSucceeded\",\"additionalFailureDetails\":{\"message\":\"SessionHost healthy: SessionHost healthy: SxS stack listener is ready\",\"errorCode\":0,\"lastHealthCheckDateTime\":\"2023-03-16T17:35:29.7749878Z\"}},{\"healthCheckName\":\"UrlsAccessibleCheck\",\"healthCheckResult\":\"HealthCheckSucceeded\",\"additionalFailureDetails\":{\"message\":\"{\\\"AccessibleUrls\\\":[\\\"11bc4f73-251b-4c14-a94e-0a95f8db9f08.rdbroker-g-us-r1.wvdselfhost.microsoft.com\\\",\\\"11bc4f73-251b-4c14-a94e-0a95f8db9f08.rdbroker.wvdselfhost.microsoft.com\\\",\\\"11bc4f73-251b-4c14-a94e-0a95f8db9f08.rddiagnostics-g-us-r1.wvdselfhost.microsoft.com\\\",\\\"mrsglobalstwus2selfhost.blob.core.windows.net\\\",\\\"gcs.prod.monitoring.core.windows.net\\\",\\\"production.diagnostics.monitoring.core.windows.net\\\",\\\"westus2-shared.prod.warm.ingest.monitor.core.windows.net\\\",\\\"qos.prod.warm.ingest.monitor.core.windows.net\\\"],\\\"NotAccessibleUrls\\\":null,\\\"Context\\\":null}\",\"errorCode\":0,\"lastHealthCheckDateTime\":\"2023-03-16T17:35:31.9937319Z\"}},{\"healthCheckName\":\"MonitoringAgentCheck\",\"healthCheckResult\":\"HealthCheckSucceeded\",\"additionalFailureDetails\":{\"message\":\"Located running process at C:\\\\Program Files\\\\Microsoft RDInfra\\\\RDMonitoringAgent_45.5.2\\\\Agent\\\\MonAgentLauncher.exe\",\"errorCode\":0,\"lastHealthCheckDateTime\":\"2023-03-16T17:20:28.620228Z\"}},{\"healthCheckName\":\"DomainReachable\",\"healthCheckResult\":\"HealthCheckSucceeded\",\"additionalFailureDetails\":{\"message\":\"\",\"errorCode\":0,\"lastHealthCheckDateTime\":\"2023-03-16T17:12:38.4012449Z\"}},{\"healthCheckName\":\"MetaDataServiceCheck\",\"healthCheckResult\":\"HealthCheckSucceeded\",\"additionalFailureDetails\":{\"message\":\"{\\r\\n  \\\"Details\\\": \\\"IMDS pressumed available\\\",\\r\\n  \\\"AzureResourceId\\\": \\\"/subscriptions/dbedef25-184c-430f-b383-0eeb87c3205d/resourceGroups/alecbUserSessionTests/providers/Microsoft.Compute/virtualMachines/pwsh-0\\\",\\r\\n  \\\"VmId\\\": \\\"09ead700-cd4d-433e-96cd-193e627c1576\\\"\\r\\n}\",\"errorCode\":0,\"lastHealthCheckDateTime\":\"2023-03-16T17:35:28.7593631Z\"}},{\"healthCheckName\":\"AppAttachHealthCheck\",\"healthCheckResult\":\"HealthCheckSucceeded\",\"additionalFailureDetails\":{\"message\":\"SessionHost healthy: MSIX packages have been properly staged\",\"errorCode\":0,\"lastHealthCheckDateTime\":\"2023-03-16T17:30:38.7910375Z\"}}],\"resourceId\":\"/subscriptions/dbedef25-184c-430f-b383-0eeb87c3205d/resourceGroups/alecbUserSessionTests/providers/Microsoft.Compute/virtualMachines/pwsh-0\",\"virtualMachineId\":\"09ead700-cd4d-433e-96cd-193e627c1576\",\"objectId\":\"7d58a120-3588-493c-a574-923c98936d90\"},\"systemData\":{\"createdBy\":null,\"createdByType\":null,\"createdAt\":\"2023-03-16T17:04:53.76Z\",\"lastModifiedBy\":\"admin@wvdtesttenant.onmicrosoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-03-20T18:55:14.09Z\"}}",
+      "isContentBase64": false
     }
   },
-  "Update-AzWvdSessionHost+[NoContext]+Update+$GET+https://management.azure.com/subscriptions/292d7caa-a878-4de8-b774-689097666272/resourceGroups/datr-canadaeast/providers/Microsoft.DesktopVirtualization/hostPools/HostPoolPowershell1/sessionHosts/PowershellVM-0.wvdarmtest1.net?api-version=2021-07-12+4": {
+  "Update-AzWvdSessionHost+[NoContext]+Update+$GET+https://management.azure.com/subscriptions/dbedef25-184c-430f-b383-0eeb87c3205d/resourceGroups/alecbUserSessionTests/providers/Microsoft.DesktopVirtualization/hostPools/alecbUserSessionHP/sessionHosts/pwsh-0?api-version=2022-09-09+4": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/292d7caa-a878-4de8-b774-689097666272/resourceGroups/datr-canadaeast/providers/Microsoft.DesktopVirtualization/hostPools/HostPoolPowershell1/sessionHosts/PowershellVM-0.wvdarmtest1.net?api-version=2021-07-12",
+      "RequestUri": "https://management.azure.com/subscriptions/dbedef25-184c-430f-b383-0eeb87c3205d/resourceGroups/alecbUserSessionTests/providers/Microsoft.DesktopVirtualization/hostPools/alecbUserSessionHP/sessionHosts/pwsh-0?api-version=2022-09-09",
       "Content": null,
+      "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "8" ],
+        "x-ms-unique-id": [ "348" ],
+        "x-ms-client-request-id": [ "8fe097bf-a70d-4f7a-bdcb-8ad73107c535" ],
+        "CommandName": [ "Get-AzWvdSessionHost" ],
+        "FullCommandName": [ "Get-AzWvdSessionHost_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v9.0.1", "PSVersion/v7.2.9", "Az.DesktopVirtualization/2.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -138,25 +163,30 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Vary": [ "Accept-Encoding" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11994" ],
-        "x-ms-lamport-ts": [ "12057" ],
-        "x-ms-correlation-id": [ "e5151869-308e-44c3-adbb-7ff3f923fa80" ],
-        "Set-Cookie": [ "ARRAffinity=218fc26d5a5724cc6bc574acd210aa679c146900b859248acf92586a73677e6d;Path=/;HttpOnly;Domain=rdarmprovider.dev05.avdtest.net" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11921" ],
+        "X-Rate-Limit-Limit": [ "0" ],
+        "X-Rate-Limit-Remaining": [ "9223372036854775807" ],
+        "X-Rate-Limit-Reset": [ "0" ],
+        "x-ms-opsarmpath64": [ "L3N1YnNjcmlwdGlvbnMvZGJlZGVmMjUtMTg0Yy00MzBmLWIzODMtMGVlYjg3YzMyMDVkL3Jlc291cmNlR3JvdXBzL2FsZWNiVXNlclNlc3Npb25UZXN0cy9wcm92aWRlcnMvTWljcm9zb2Z0LkRlc2t0b3BWaXJ0dWFsaXphdGlvbi9ob3N0UG9vbHMvYWxlY2JVc2VyU2Vzc2lvbkhQL3Nlc3Npb25Ib3N0cy9wd3NoLTA=" ],
+        "x-ms-lamport-ts": [ "95357234" ],
+        "x-ms-correlation-id": [ "086a4f78-e402-43e1-a8d8-519e26e08f5c" ],
+        "x-ms-request-id": [ "8fe097bf-a70d-4f7a-bdcb-8ad73107c535" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Set-Cookie": [ "ARRAffinity=bd0dfb948b4e67ff60a11cd6e169712e6848609ad034c4789ebdf993fcec41fb;Path=/;HttpOnly;Secure;Domain=rdarmprovider-g-us-r0.wvdselfhost.microsoft.com", "ARRAffinitySameSite=bd0dfb948b4e67ff60a11cd6e169712e6848609ad034c4789ebdf993fcec41fb;Path=/;HttpOnly;SameSite=None;Secure;Domain=rdarmprovider-g-us-r0.wvdselfhost.microsoft.com" ],
         "Server": [ "Microsoft-IIS/10.0" ],
         "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-request-id": [ "e5151869-308e-44c3-adbb-7ff3f923fa80" ],
-        "x-ms-correlation-request-id": [ "e5151869-308e-44c3-adbb-7ff3f923fa80" ],
-        "x-ms-routing-request-id": [ "WESTUS:20191105T235316Z:e5151869-308e-44c3-adbb-7ff3f923fa80" ],
+        "x-ms-correlation-request-id": [ "67e5fc16-cc8f-4059-8e6a-18222371fbb3" ],
+        "x-ms-routing-request-id": [ "WESTUS:20230320T185514Z:67e5fc16-cc8f-4059-8e6a-18222371fbb3" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 05 Nov 2019 23:53:16 GMT" ]
+        "Date": [ "Mon, 20 Mar 2023 18:55:14 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "704" ],
+        "Content-Length": [ "3861" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"name\":\"HostPoolPowershell1/PowershellVM-0.wvdarmtest1.net\",\"id\":\"/subscriptions/292d7caa-a878-4de8-b774-689097666272/resourceGroups/datr-canadaeast/providers/Microsoft.DesktopVirtualization/hostPools/HostPoolPowershell1/sessionHosts/PowershellVM-0.wvdarmtest1.net\",\"type\":\"Microsoft.DesktopVirtualization/hostPools/sessionHosts\",\"properties\":{\"lastHeartBeat\":\"2019-11-04T21:16:04.6900182\",\"sessions\":0,\"agentVersion\":\"1.0.1603.0\",\"allowNewSession\":true,\"assignedUser\":null,\"status\":\"Available\",\"statusTimestamp\":\"2019-11-04T21:16:33.6680089\",\"osVersion\":\"10.0.18362\",\"sxSStackVersion\":\"rdp-sxs191015002\",\"updateState\":\"Succeeded\",\"lastUpdateTime\":\"2019-11-04T21:16:33.6680089\",\"updateErrorMessage\":\"\"}}"
+      "Content": "{\"name\":\"alecbUserSessionHP/pwsh-0\",\"id\":\"/subscriptions/dbedef25-184c-430f-b383-0eeb87c3205d/resourcegroups/alecbUserSessionTests/providers/Microsoft.DesktopVirtualization/hostpools/alecbUserSessionHP/sessionhosts/pwsh-0\",\"type\":\"Microsoft.DesktopVirtualization/hostpools/sessionhosts\",\"properties\":{\"friendlyName\":null,\"lastHeartBeat\":\"2023-03-17T03:25:48.08Z\",\"statusTimestamp\":\"2023-03-17T01:05:37.54Z\",\"lastUpdateTime\":\"2023-03-17T01:05:37.54Z\",\"sessions\":3,\"agentVersion\":\"1.0.6372.0\",\"allowNewSession\":true,\"assignedUser\":null,\"status\":\"Available\",\"osVersion\":\"10.0.19042\",\"sxSStackVersion\":\"rdp-sxs230307184\",\"updateState\":\"Succeeded\",\"updateErrorMessage\":\"\",\"sessionHostHealthCheckResults\":[{\"healthCheckName\":\"DomainJoinedCheck\",\"healthCheckResult\":\"HealthCheckSucceeded\",\"additionalFailureDetails\":{\"message\":\"\",\"errorCode\":0,\"lastHealthCheckDateTime\":\"2023-03-16T17:12:38.4012449Z\"}},{\"healthCheckName\":\"DomainTrustCheck\",\"healthCheckResult\":\"HealthCheckSucceeded\",\"additionalFailureDetails\":{\"message\":\"\",\"errorCode\":0,\"lastHealthCheckDateTime\":\"2023-03-16T17:12:38.4012449Z\"}},{\"healthCheckName\":\"SxSStackListenerCheck\",\"healthCheckResult\":\"HealthCheckSucceeded\",\"additionalFailureDetails\":{\"message\":\"SessionHost healthy: SessionHost healthy: SxS stack listener is ready\",\"errorCode\":0,\"lastHealthCheckDateTime\":\"2023-03-16T17:35:29.7749878Z\"}},{\"healthCheckName\":\"UrlsAccessibleCheck\",\"healthCheckResult\":\"HealthCheckSucceeded\",\"additionalFailureDetails\":{\"message\":\"{\\\"AccessibleUrls\\\":[\\\"11bc4f73-251b-4c14-a94e-0a95f8db9f08.rdbroker-g-us-r1.wvdselfhost.microsoft.com\\\",\\\"11bc4f73-251b-4c14-a94e-0a95f8db9f08.rdbroker.wvdselfhost.microsoft.com\\\",\\\"11bc4f73-251b-4c14-a94e-0a95f8db9f08.rddiagnostics-g-us-r1.wvdselfhost.microsoft.com\\\",\\\"mrsglobalstwus2selfhost.blob.core.windows.net\\\",\\\"gcs.prod.monitoring.core.windows.net\\\",\\\"production.diagnostics.monitoring.core.windows.net\\\",\\\"westus2-shared.prod.warm.ingest.monitor.core.windows.net\\\",\\\"qos.prod.warm.ingest.monitor.core.windows.net\\\"],\\\"NotAccessibleUrls\\\":null,\\\"Context\\\":null}\",\"errorCode\":0,\"lastHealthCheckDateTime\":\"2023-03-16T17:35:31.9937319Z\"}},{\"healthCheckName\":\"MonitoringAgentCheck\",\"healthCheckResult\":\"HealthCheckSucceeded\",\"additionalFailureDetails\":{\"message\":\"Located running process at C:\\\\Program Files\\\\Microsoft RDInfra\\\\RDMonitoringAgent_45.5.2\\\\Agent\\\\MonAgentLauncher.exe\",\"errorCode\":0,\"lastHealthCheckDateTime\":\"2023-03-16T17:20:28.620228Z\"}},{\"healthCheckName\":\"DomainReachable\",\"healthCheckResult\":\"HealthCheckSucceeded\",\"additionalFailureDetails\":{\"message\":\"\",\"errorCode\":0,\"lastHealthCheckDateTime\":\"2023-03-16T17:12:38.4012449Z\"}},{\"healthCheckName\":\"MetaDataServiceCheck\",\"healthCheckResult\":\"HealthCheckSucceeded\",\"additionalFailureDetails\":{\"message\":\"{\\r\\n  \\\"Details\\\": \\\"IMDS pressumed available\\\",\\r\\n  \\\"AzureResourceId\\\": \\\"/subscriptions/dbedef25-184c-430f-b383-0eeb87c3205d/resourceGroups/alecbUserSessionTests/providers/Microsoft.Compute/virtualMachines/pwsh-0\\\",\\r\\n  \\\"VmId\\\": \\\"09ead700-cd4d-433e-96cd-193e627c1576\\\"\\r\\n}\",\"errorCode\":0,\"lastHealthCheckDateTime\":\"2023-03-16T17:35:28.7593631Z\"}},{\"healthCheckName\":\"AppAttachHealthCheck\",\"healthCheckResult\":\"HealthCheckSucceeded\",\"additionalFailureDetails\":{\"message\":\"SessionHost healthy: MSIX packages have been properly staged\",\"errorCode\":0,\"lastHealthCheckDateTime\":\"2023-03-16T17:30:38.7910375Z\"}}],\"resourceId\":\"/subscriptions/dbedef25-184c-430f-b383-0eeb87c3205d/resourceGroups/alecbUserSessionTests/providers/Microsoft.Compute/virtualMachines/pwsh-0\",\"virtualMachineId\":\"09ead700-cd4d-433e-96cd-193e627c1576\",\"objectId\":\"7d58a120-3588-493c-a574-923c98936d90\"},\"systemData\":{\"createdBy\":null,\"createdByType\":null,\"createdAt\":\"2023-03-16T17:04:53.76Z\",\"lastModifiedBy\":\"admin@wvdtesttenant.onmicrosoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-03-20T18:55:14.09Z\"}}",
+      "isContentBase64": false
     }
   }
 }

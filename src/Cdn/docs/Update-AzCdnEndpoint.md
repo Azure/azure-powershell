@@ -65,6 +65,23 @@ WestUs   endptest001 testps-rg-da16jm
 
 Update an AzureCDN Endpoint under the AzureCDN profile
 
+### Example 2: Update an AzureCDN Endpoint under the AzureCDN profile via identity
+```powershell
+$tags = @{
+    Tag1 = 11
+    Tag2 = 22
+}
+Get-AzCdnEndpoint -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -Name endptest001 | Update-AzCdnEndpoint -Tag $tags -DefaultOriginGroupId $originGroup.Id
+```
+
+```output
+Location Name        ResourceGroupName
+-------- ----        -----------------
+WestUs   endptest001 testps-rg-da16jm
+```
+
+Update an AzureCDN Endpoint under the AzureCDN profile via identity
+
 ## PARAMETERS
 
 ### -AsJob
@@ -114,7 +131,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -148,7 +166,7 @@ A list of the delivery rules.
 To construct, see NOTES section for DELIVERYPOLICYRULE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IDeliveryRule[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IDeliveryRule[]
 Parameter Sets: (All)
 Aliases:
 
@@ -166,7 +184,7 @@ block APAC for path /pictures/
 To construct, see NOTES section for GEOFILTER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IGeoFilter[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IGeoFilter[]
 Parameter Sets: (All)
 Aliases:
 
@@ -423,7 +441,7 @@ List of keys used to validate the signed URL hashes.
 To construct, see NOTES section for URLSIGNINGKEY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IUrlSigningKey[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IUrlSigningKey[]
 Parameter Sets: (All)
 Aliases:
 
@@ -489,7 +507,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IEndpoint
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IEndpoint
 
 ## NOTES
 
@@ -519,7 +537,7 @@ To create the parameters described below, construct a hash table containing the 
   - `[Id <String>]`: Resource identity path
   - `[OriginGroupName <String>]`: Name of the origin group which is unique within the endpoint.
   - `[OriginName <String>]`: Name of the origin which is unique within the profile.
-  - `[ProfileName <String>]`: Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
+  - `[ProfileName <String>]`: Name of the Azure Front Door Standard or Azure Front Door Premium profile which is unique within the resource group.
   - `[ResourceGroupName <String>]`: Name of the Resource group within the Azure subscription.
   - `[RouteName <String>]`: Name of the routing rule.
   - `[RuleName <String>]`: Name of the delivery rule which is unique within the endpoint.

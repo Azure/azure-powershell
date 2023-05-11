@@ -17,9 +17,10 @@ Get-AzOrbitalContactProfile -ResourceGroupName azpstest-gp
 ```
 
 ```output
-Name                        Location ProvisioningState ResourceGroupName
-----                        -------- ----------------- -----------------
-azps-orbital-contactprofile westus2  succeeded         azpstest-gp
+Name                        Location      ProvisioningState ResourceGroupName
+----                        --------      ----------------- -----------------
+azps-orbital-contactprofile westus2       succeeded         azpstest-gp
+Sweden-contactprofile       swedencentral succeeded         azpstest-gp
 ```
 
 Gets the specified contact Profile in a specified resource group.
