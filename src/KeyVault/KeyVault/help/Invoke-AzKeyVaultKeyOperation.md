@@ -54,7 +54,7 @@ Result    : iVlA6rHicEm6F9vtU3jARzxWughOcRK9htj4UMy0ijd4a4hHwYrSy4lSXhiQTKSMpX+Q
             4wDQAAVZAUvOxHcpCQf3CrlvQK3XfsZeddeiD9laiUU3iB2Ivh3trX0G/Y29gL54THKsmlwXh5mBhxcXHaUv0erDzEVAGnC73FHlJoHCTdm
             7eUMWvsnfhtd/BhcuBb/CeMy1QzHgoBTrByWms4KsTODBEZt41aVkdYxJDREsC8X6a/1vp9EeV+7jm3sZLl+Dm7XOpUjbR+/BUU7HKaw09i
             BRQJGhXf7oyZOf3g6EPEQ==
-RawResult : {137, 89, 64, 234…}
+RawResult : {137, 89, 64, 234...}
 Algorithm : RSA1_5
 ```
 
@@ -89,7 +89,7 @@ Result    : imHceWcmB5jufcz+qS+HwaXOvPiaeOQ2dF1Bh+2DByuw+AOyoL3wtwDSilP5BlR3DAB3
             +e54Gtv/sfJD0CcMg+89mssi7hgU0u1IaaowzgSmP7ViRrSVGu8FniAR6hdf7j0JL7ON8IIFMy/+7yq00aJs/dspcESGjcZDry5pLzYphel
             x7VAEbjuv1TuiHwu8cJYH/GsvROErOQbQ+aKcKlYTMzZRGdCA07xXltvFrTiCIvzeKE/lTJVIHH/Nv4aRne/ENRC2cx92r9XFhEBID6o5Td
             kN09Wdjejo8nLDRw9XbtQ==
-RawResult : {138, 97, 220, 121…}
+RawResult : {138, 97, 220, 121...}
 Algorithm : RSA1_5
 ```
 
@@ -103,7 +103,7 @@ Invoke-AzKeyVaultKeyOperation -Operation Unwrap -Algorithm RSA1_5 -VaultName tes
 ```output
 KeyId     : https://test-kv.vault.azure.net/keys/test-key/375cdf20252043b79c8ca0c57b6c7679
 Result    : ovQIlbB0DgWhZA7sgkPxbg9H-Ly-VlNGPSgGrrZvlIo
-RawResult : {111, 118, 81, 73…}
+RawResult : {111, 118, 81, 73...}
 Algorithm : RSA1_5
 ```
 
