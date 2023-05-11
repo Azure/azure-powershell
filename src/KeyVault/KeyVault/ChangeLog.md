@@ -19,7 +19,7 @@
 -->
 ## Upcoming Release
 * Changed the encoding way from a string into byte array in `Invoke-AzKeyVaultKeyOperation` from ASCII to UTF8. UTF8 is backward-compatible with ASCII. [#21269]
-* Bug fix: Changed the decoding way from byte array into a string from system default encoding to UTF8 to match encoded way. [#21269]
+* Bug fix: Changed the decoding way from byte array into a string from system default encoding to UTF8 to match encoding way. [#21269]
 * Added parameter `PolicyPath` and `PolicyObject` in `Import-AzKeyVaultCertificate` to support custom policy [#20780]
 
 ## Version 4.9.3
