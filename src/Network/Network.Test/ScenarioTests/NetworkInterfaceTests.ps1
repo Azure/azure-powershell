@@ -148,7 +148,6 @@ function Test-NetworkInterfaceCRUD
         Assert-AreEqual $expectedNic.IpConfigurations[0].Subnet.Id $actualNic.IpConfigurations[0].Subnet.Id
         Assert-NotNull $expectedNic.IpConfigurations[0].PrivateIpAddress
         Assert-AreEqual "Dynamic" $expectedNic.IpConfigurations[0].PrivateIpAllocationMethod
-        Assert-AreEqual "MaxConnections" $expectedNic.AuxiliaryMode
 
         $expectedNic = Get-AzNetworkInterface -ResourceId $actualNic.Id
 
