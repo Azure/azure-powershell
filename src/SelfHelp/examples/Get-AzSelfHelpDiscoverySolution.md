@@ -1,22 +1,14 @@
-### Example 1: {{ Add title here }}
+### Example 1: Get Solution Metadata by resource id
+
 ```powershell
-{{ Add code here }}
+ Get-AzSelfHelpDiscoverySolution -Scope "subscriptions/6bded6d5-a6df-44e1-96d3-bf71f6f5f8ba/resourceGroups/test-rgName/providers/Microsoft.KeyVault/vaults/testKeyVault"
 ```
 
 ```output
-{{ Add output here }}
+Name        SystemDataCreatedAt SystemDataCreatedBy SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType
+----        ------------------- ------------------- ----------------------- ------------------------ ------------------------ ----------------------------
+KeyVaultUnauthorizedNetworkInsight
+KeyVaultUnauthorizedAclInsight
+
+Get Solution Metadata by resource id
 ```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-

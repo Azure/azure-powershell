@@ -1,22 +1,16 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create Diagnostic for a KeyVault resource.
+
 ```powershell
-{{ Add code here }}
+$insightsToInvoke = [ordered]@{
+                "solutionId" = "Demo2InsightV2"
+            }
+New-AzSelfHelpDiagnostic -Scope "/subscriptions/6bded6d5-a6af-43e1-96d3-bf71f6f5f8ba/resourceGroups/aravind-test-resources/providers/Microsoft.KeyVault/vaults/ab-tests-kv-an" -SResourceName ab-test-973 -Insight $insightsToInvoke
 ```
 
 ```output
-{{ Add output here }}
+Name        SystemDataCreatedAt SystemDataCreatedBy SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType ResourceGroupName
+----        ------------------- ------------------- ----------------------- ------------------------ ------------------------ ---------------------------- -----------------
+ab-test-973                                                                                                                                                aravind-test-reso…
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+Creates a diagnostic for a KeyVault resource.

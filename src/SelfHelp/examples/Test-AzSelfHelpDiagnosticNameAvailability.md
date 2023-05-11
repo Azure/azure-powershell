@@ -1,22 +1,28 @@
-### Example 1: {{ Add title here }}
+### Example 1: Example when the diagnostic resource name is available
+
 ```powershell
-{{ Add code here }}
+Test-AzSelfHelpDiagnosticNameAvailability -Name test-diagnostics-resource -Type microsoft.help/diagnostics -Scope "subscriptions/6bded6d5-a6af-43e1-96d3-bf71f6f5f8ba"
 ```
 
 ```output
-{{ Add output here }}
+Message NameAvailable Reason
+------- ------------- ------
+        True
+
 ```
 
-{{ Add description here }}
+Example when the diagnostic resource name is available
 
-### Example 2: {{ Add title here }}
+### Example 2: Example when the diagnostic resource name is available
+
 ```powershell
-{{ Add code here }}
+Test-AzSelfHelpDiagnosticNameAvailability -Name test-diagnostics-resource -Type microsoft.help/diagnostics -Scope "subscriptions/6bded6d5-a6af-43e1-96d3-bf71f6f5f8ba"
 ```
 
 ```output
-{{ Add output here }}
+Message                            NameAvailable   Reason
+-------                            -------------   ------
+Resource name is currently in use. False           Resource name already exisits/unavailable
 ```
 
-{{ Add description here }}
-
+Example when the diagnostic resource name is not available
