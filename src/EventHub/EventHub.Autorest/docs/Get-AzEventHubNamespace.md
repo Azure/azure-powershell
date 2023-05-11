@@ -192,7 +192,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ALIASES
 
-NamespaceV2
+Get-AzEventHubNamespaceV2
 
 COMPLEX PARAMETER PROPERTIES
 

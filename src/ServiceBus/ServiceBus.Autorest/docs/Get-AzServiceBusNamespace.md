@@ -211,7 +211,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ALIASES
 
-NamespaceV2
+Get-AzServiceBusNamespaceV2
 
 COMPLEX PARAMETER PROPERTIES
 

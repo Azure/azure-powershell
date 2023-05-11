@@ -225,9 +225,16 @@ directive:
     hide: true
 
   - where:
+      verb: Get
       subject: Namespace
     set:
-      alias: NamespaceV2
+      alias: Get-AzEventHubNamespaceV2
+
+  - where:
+      verb: Remove
+      subject: Namespace
+    set:
+      alias: Remove-AzEventHubNamespaceV2
 
   - where:
       model-name: KeyVaultProperties

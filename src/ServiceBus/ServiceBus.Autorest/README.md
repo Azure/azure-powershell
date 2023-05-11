@@ -177,9 +177,16 @@ directive:
     hide: true
 
   - where:
+      verb: Get
       subject: Namespace
     set:
-      alias: NamespaceV2
+      alias: Get-AzServiceBusNamespaceV2
+
+  - where:
+      verb: Remove
+      subject: Namespace
+    set:
+      alias: Remove-AzServiceBusNamespaceV2
 
 # Rules
   - where:
