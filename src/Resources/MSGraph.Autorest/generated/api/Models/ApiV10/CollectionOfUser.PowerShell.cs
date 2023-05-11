@@ -84,6 +84,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.ICollectionOfUserInternal)this).OdataNextLink = (string) content.GetValueForProperty("OdataNextLink",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.ICollectionOfUserInternal)this).OdataNextLink, global::System.Convert.ToString);
             }
+            if (content.Contains("OdataCount"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.ICollectionOfUserInternal)this).OdataCount = (int?) content.GetValueForProperty("OdataCount",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.ICollectionOfUserInternal)this).OdataCount, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
             // this type is a dictionary; copy elements from source to here.
             CopyFrom(content);
             AfterDeserializeDictionary(content);
@@ -110,6 +114,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
             if (content.Contains("OdataNextLink"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.ICollectionOfUserInternal)this).OdataNextLink = (string) content.GetValueForProperty("OdataNextLink",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.ICollectionOfUserInternal)this).OdataNextLink, global::System.Convert.ToString);
+            }
+            if (content.Contains("OdataCount"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.ICollectionOfUserInternal)this).OdataCount = (int?) content.GetValueForProperty("OdataCount",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.ICollectionOfUserInternal)this).OdataCount, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             // this type is a dictionary; copy elements from source to here.
             CopyFrom(content);
