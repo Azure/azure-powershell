@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Remove New-AzWebAppContainerPSSession and Enter-AzWebAppContainerPSSession cmdlets
 
 ## Version 2.15.1
 * Used AAD Auth instead of Basic Auth for PublishAzureWebApps
