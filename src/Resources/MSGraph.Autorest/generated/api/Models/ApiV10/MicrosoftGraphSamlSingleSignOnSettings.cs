@@ -39,6 +39,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The relative URI the service provider would redirect to after completion of the single sign-on flow.",
         SerializedName = @"relayState",
         PossibleTypes = new [] { typeof(string) })]

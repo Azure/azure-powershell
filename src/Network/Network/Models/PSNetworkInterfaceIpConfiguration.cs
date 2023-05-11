@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         [JsonProperty(Order = 2)]
         [Ps1Xml(Target = ViewControl.Table)]
-        public PSFrontendIPConfiguration GatewayLoadBalancer { get; set; }
+        public PSResourceId GatewayLoadBalancer { get; set; }
 
         [JsonIgnore]
         public string LoadBalancerBackendAddressPoolsText
@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Commands.Network.Models
         [JsonIgnore]
         public string GatewayLoadBalancerText
         {
-            get { return JsonConvert.SerializeObject(PrivateLinkConnectionProperties, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+            get { return JsonConvert.SerializeObject(GatewayLoadBalancer, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
 
         public bool ShouldSerializeLoadBalancerBackendAddressPools()
