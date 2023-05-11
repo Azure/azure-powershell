@@ -7,6 +7,9 @@ Below is description of the various types of Breaking Change Attributes (custom 
 
 ## The different types of attributes
 
+
+## Sadding a new one 
+
 - [Common stuff and The generic breaking change attribute](#common-aspects-and-properties)
 - [Cmdlet deprecation attribute](#cmdletdeprecationattribute)
 - [Cmdlet output breaking change attribute](#cmdletoutputbreakingchangeattribute)
