@@ -250,6 +250,8 @@ paths:
                       $ref: '#/components/schemas/microsoft.graph.group'
                   '@odata.nextLink':
                     type: string
+                  '@odata.count':
+                    type: integer
                 additionalProperties:
                   type: object
         default:

@@ -13,14 +13,14 @@ Create or update a scaling plan.
 ## SYNTAX
 
 ```
-New-AzWvdScalingPlan -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+New-AzWvdScalingPlan -Name <String> -ResourceGroupName <String> -TimeZone <String> [-SubscriptionId <String>]
  [-Description <String>] [-ExclusionTag <String>] [-FriendlyName <String>]
- [-HostPoolReference <IScalingHostPoolReference[]>] [-HostPoolType <HostPoolType>]
+ [-HostPoolReference <IScalingHostPoolReference[]>] [-HostPoolType <ScalingHostPoolType>]
  [-IdentityType <ResourceIdentityType>] [-Kind <String>] [-Location <String>] [-ManagedBy <String>]
  [-PlanName <String>] [-PlanProduct <String>] [-PlanPromotionCode <String>] [-PlanPublisher <String>]
  [-PlanVersion <String>] [-Schedule <IScalingSchedule[]>] [-SkuCapacity <Int32>] [-SkuFamily <String>]
- [-SkuName <String>] [-SkuSize <String>] [-SkuTier <SkuTier>] [-Tag <Hashtable>] [-TimeZone <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SkuName <String>] [-SkuSize <String>] [-SkuTier <SkuTier>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -79,7 +79,8 @@ This command creates a new Windows Virtual Desktop Scaling Plan in a Resource Gr
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -143,7 +144,7 @@ List of ScalingHostPoolReference definitions.
 To construct, see NOTES section for HOSTPOOLREFERENCE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IScalingHostPoolReference[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.IScalingHostPoolReference[]
 Parameter Sets: (All)
 Aliases:
 
@@ -158,7 +159,7 @@ Accept wildcard characters: False
 HostPool type for desktop.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.HostPoolType
+Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.ScalingHostPoolType
 Parameter Sets: (All)
 Aliases:
 
@@ -345,11 +346,11 @@ Accept wildcard characters: False
 ```
 
 ### -Schedule
-List of ScalingSchedule definitions.
+List of ScalingPlanPooledSchedule definitions.
 To construct, see NOTES section for SCHEDULE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IScalingSchedule[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.IScalingSchedule[]
 Parameter Sets: (All)
 Aliases:
 
@@ -477,7 +478,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -522,7 +523,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IScalingPlan
+### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.IScalingPlan
 
 ## NOTES
 
@@ -537,25 +538,29 @@ To create the parameters described below, construct a hash table containing the 
   - `[HostPoolArmPath <String>]`: Arm path of referenced hostpool.
   - `[ScalingPlanEnabled <Boolean?>]`: Is the scaling plan enabled for this hostpool.
 
-`SCHEDULE <IScalingSchedule[]>`: List of ScalingSchedule definitions.
+`SCHEDULE <IScalingSchedule[]>`: List of ScalingPlanPooledSchedule definitions.
   - `[DaysOfWeek <String[]>]`: Set of days of the week on which this schedule is active.
-  - `[Name <String>]`: Name of the scaling schedule.
+  - `[Name <String>]`: Name of the ScalingPlanPooledSchedule.
   - `[OffPeakLoadBalancingAlgorithm <SessionHostLoadBalancingAlgorithm?>]`: Load balancing algorithm for off-peak period.
-  - `[OffPeakStartTime <DateTime?>]`: Starting time for off-peak period.
+  - `[OffPeakStartTimeHour <Int32?>]`: The hour.
+  - `[OffPeakStartTimeMinute <Int32?>]`: The minute.
   - `[PeakLoadBalancingAlgorithm <SessionHostLoadBalancingAlgorithm?>]`: Load balancing algorithm for peak period.
-  - `[PeakStartTime <DateTime?>]`: Starting time for peak period.
+  - `[PeakStartTimeHour <Int32?>]`: The hour.
+  - `[PeakStartTimeMinute <Int32?>]`: The minute.
   - `[RampDownCapacityThresholdPct <Int32?>]`: Capacity threshold for ramp down period.
   - `[RampDownForceLogoffUser <Boolean?>]`: Should users be logged off forcefully from hosts.
   - `[RampDownLoadBalancingAlgorithm <SessionHostLoadBalancingAlgorithm?>]`: Load balancing algorithm for ramp down period.
   - `[RampDownMinimumHostsPct <Int32?>]`: Minimum host percentage for ramp down period.
   - `[RampDownNotificationMessage <String>]`: Notification message for users during ramp down period.
-  - `[RampDownStartTime <DateTime?>]`: Starting time for ramp down period.
+  - `[RampDownStartTimeHour <Int32?>]`: The hour.
+  - `[RampDownStartTimeMinute <Int32?>]`: The minute.
   - `[RampDownStopHostsWhen <StopHostsWhen?>]`: Specifies when to stop hosts during ramp down period.
   - `[RampDownWaitTimeMinute <Int32?>]`: Number of minutes to wait to stop hosts during ramp down period.
   - `[RampUpCapacityThresholdPct <Int32?>]`: Capacity threshold for ramp up period.
   - `[RampUpLoadBalancingAlgorithm <SessionHostLoadBalancingAlgorithm?>]`: Load balancing algorithm for ramp up period.
   - `[RampUpMinimumHostsPct <Int32?>]`: Minimum host percentage for ramp up period.
-  - `[RampUpStartTime <DateTime?>]`: Starting time for ramp up period.
+  - `[RampUpStartTimeHour <Int32?>]`: The hour.
+  - `[RampUpStartTimeMinute <Int32?>]`: The minute.
 
 ## RELATED LINKS
 

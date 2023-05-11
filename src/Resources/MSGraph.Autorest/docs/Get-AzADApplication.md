@@ -16,7 +16,7 @@ Lists entities from applications or get entity from applications by key
 ```
 Get-AzADApplication [-Count] [-Filter <String>] [-Orderby <String[]>] [-Search <String>] [-Select <String[]>]
  [-ConsistencyLevel <String>] [-AppendSelected] [-First <UInt64>] [-Skip <UInt64>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-CountVariable <String>] [<CommonParameters>]
 ```
 
 ### ApplicationIdentifierUriParameterSet
@@ -102,6 +102,14 @@ Get-AzADApplication -Filter "startsWith(DisplayName,'some-name')"
 
 Get applications with filter
 
+### Example 7: Assign OdataCount to a variable
+```powershell
+Get-AzADApplication -First 10 -ConsistencyLevel eventual -Count -CountVariable 'result'
+$result
+```
+
+Assign OdataCount to a variable
+
 ## PARAMETERS
 
 ### -AppendSelected
@@ -155,6 +163,22 @@ Include count of items
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: EmptyParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CountVariable
+Specifies a count of the total number of items in a collection.
+By default, this variable will be set in the global scope.
+
+```yaml
+Type: System.String
 Parameter Sets: EmptyParameterSet
 Aliases:
 

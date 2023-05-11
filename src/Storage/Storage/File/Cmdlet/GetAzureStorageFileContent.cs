@@ -225,7 +225,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                         Resources.PrepareDownloadingFile);
 
                     // If not Oauth, use DMlib
-                    if (!(this.Channel != null && this.Channel.StorageContext != null && this.Channel.StorageContext.StorageAccount != null && this.Channel.StorageContext.StorageAccount.Credentials.IsToken))
+                    if (!(this.Channel != null && this.Channel.StorageContext != null && this.Channel.StorageContext.StorageAccount != null && 
+                    this.Channel.StorageContext.StorageAccount.Credentials != null && this.Channel.StorageContext.StorageAccount.Credentials.IsToken))
                     {
                         await DataMovementTransferHelper.DoTransfer(() =>
                         {

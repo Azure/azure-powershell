@@ -366,6 +366,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.PowerShel
 
         public string OnlineVersion { get; }
         public string[] RelatedLinks { get; }
+        public string[] ExternalUrls { get; }
 
         private const string HelpLinkPrefix = @"https://learn.microsoft.com/powershell/module/";
 
@@ -391,6 +392,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.PowerShel
             var moduleName = variantGroup.RootModuleName == "" ? variantGroup.ModuleName.ToLowerInvariant() : variantGroup.RootModuleName.ToLowerInvariant();
             OnlineVersion = helpInfo.OnlineVersion?.Uri.NullIfEmpty() ?? $@"{HelpLinkPrefix}{moduleName}/{variantGroup.CmdletName.ToLowerInvariant()}";
             RelatedLinks = helpInfo.RelatedLinks.Select(rl => rl.Text).ToArray();
+
+            // Get external urls from attribute
+            ExternalUrls = variantGroup.Variants.SelectMany(v => v.Attributes).OfType<ExternalDocsAttribute>()?.Select(e => e.Url)?.Distinct()?.ToArray();
         }
     }
 
@@ -425,6 +429,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.PowerShel
         public string Name { get; }
         public string Description { get; }
         public string Script { get; }
+        public string SetCondition { get; }
         public ParameterGroup ParameterGroup { get; }
 
         public DefaultInfo(DefaultInfoAttribute infoAttribute, ParameterGroup parameterGroup)
@@ -432,6 +437,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.PowerShel
             Name = infoAttribute.Name;
             Description = infoAttribute.Description;
             Script = infoAttribute.Script;
+            SetCondition = infoAttribute.SetCondition;
             ParameterGroup = parameterGroup;
         }
 

@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Management.Sql
                 new Tuple<string, string, string>("Sql", "ElasticPoolDatabaseActivities", "2014-04-01"),
                 new Tuple<string, string, string>("Sql", "ElasticPoolOperations", "2020-11-01-preview"),
                 new Tuple<string, string, string>("Sql", "ElasticPools", "2014-04-01"),
-                new Tuple<string, string, string>("Sql", "ElasticPools", "2021-08-01-preview"),
+                new Tuple<string, string, string>("Sql", "ElasticPools", "2022-08-01-preview"),
                 new Tuple<string, string, string>("Sql", "EncryptionProtectors", "2020-11-01-preview"),
                 new Tuple<string, string, string>("Sql", "EndpointCertificates", "2021-11-01-preview"),
                 new Tuple<string, string, string>("Sql", "ExtendedDatabaseBlobAuditingPolicies", "2021-11-01-preview"),
