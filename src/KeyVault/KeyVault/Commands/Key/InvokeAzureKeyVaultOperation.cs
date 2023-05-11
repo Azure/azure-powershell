@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands.Key
                     case Operations.Encrypt:
                         this.WriteObject(
                             this.Track2DataClient.Encrypt(VaultName, Name, Version,
-                                Encoding.ASCII.GetBytes(Value.ConvertToString()), Algorithm));
+                                Encoding.UTF8.GetBytes(Value.ConvertToString()), Algorithm));
                         break;
                     case Operations.Decrypt:
                         this.WriteObject(
@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands.Key
                     case Operations.Wrap:
                         this.WriteObject(
                             this.Track2DataClient.WrapKey(VaultName, Name, Version,
-                                Encoding.ASCII.GetBytes(Value.ConvertToString()), Algorithm));
+                                Encoding.UTF8.GetBytes(Value.ConvertToString()), Algorithm));
                         break;
                     case Operations.Unwrap:
                         this.WriteObject(
