@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
     [Cmdlet(VerbsCommon.Add, ResourceManager.Common.AzureRMConstants.AzurePrefix + Constants.ServiceFabricPrefix + "ManagedClusterNetworkSecurityRule", DefaultParameterSetName = ByObj, SupportsShouldProcess = true), OutputType(typeof(PSManagedCluster))]
 	public class AddAzServiceFabricManagedClusterNetworkSecurityRule : ServiceFabricManagedCmdletBase
 	{   
-        protected const string ByName = "ByName";
+		protected const string ByName = "ByName";
 		protected const string ByObj = "ByObj";
 		protected const string AnyTrueValue = "*";
 
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 		#endregion
 
 		[Parameter(Mandatory = true, HelpMessage = "Gets or sets the network traffic is allowed or denied. Possible values include: Allow, Deny ")]
-        public NetworkSecurityAccess Access { get; set; }
+		public NetworkSecurityAccess Access { get; set; }
 
 		[Parameter(Mandatory = false, HelpMessage = "Gets or sets network security rule description.")]
 		public string Description { get; set; }
