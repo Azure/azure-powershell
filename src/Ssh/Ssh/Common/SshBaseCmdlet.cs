@@ -38,33 +38,20 @@ using Microsoft.Azure.Management.Internal.ResourceManager.Version2018_05_01;
 using Microsoft.Rest.Azure.OData;
 using Microsoft.Azure.Management.Internal.ResourceManager.Version2018_05_01.Models;
 using Microsoft.Rest.Azure;
-
 using Microsoft.Azure.PowerShell.Cmdlets.Ssh.AzureClients;
 using Microsoft.Azure.PowerShell.Ssh.Helpers.HybridConnectivity;
 using System.Management.Automation.Host;
-using Microsoft.Azure.PowerShell.Ssh.Helpers.HybridCompute;
-using Microsoft.Azure.PowerShell.Ssh.Helpers.HybridCompute.Models;
+using System.Management.Automation.Runspaces;
 
 
 namespace Microsoft.Azure.Commands.Ssh
+
 {
 
     public abstract class SshBaseCmdlet : AzureRMCmdlet
     {
 
         #region Constants
-        // Version and checksum values of the proxy are hardcoded for now only for the initial preview.
-        // Moving forward we will ship the proxy as part of the module, and this will be deprecated.
-        private const string clientProxyStorageUrl = "https://sshproxysa.blob.core.windows.net";
-        private const string clientProxyRelease = "release01-11-21";
-        private const string clientProxyVersion = "1.3.017634";
-
-        private const string sshproxy_windows_amd64_sha256_hash = "E345920FBBD1073F36DF78C619F646FD22CEFFE2B47391558969856C4FEC1F2F";
-        private const string sshproxy_windows_386_sha256_hash = "24AFD216D75D165B526F9B5AC8DD775E128F8963DA4D7FAE7B009139A784C5E2";
-        private const string sshproxy_linux_amd64_sha256_hash = "09AF191870C0E79AC9536D8655C3116DB70F131B85DE4BAF0BAE0346C33EE3DD";
-        private const string sshproxy_linux_386_sha256_hash = "E63BE773426109C35891F88B1A460FFDF722731BEAD727954D7724BFCE386CAD";
-        private const string sshproxy_darwin_amd64_sha256_hash = "7A020E92C2E515F1FCF952CDC32931DA38069C3153CFCFD078E054966295E48A";
-
         protected internal const string InteractiveParameterSet = "Interactive";
         protected internal const string ResourceIdParameterSet = "ResourceId";
         protected internal const string IpAddressParameterSet = "IpAddress";
@@ -506,18 +493,55 @@ namespace Microsoft.Azure.Commands.Ssh
             return encodedString;
         }
 
-        protected internal string GetInstalledProxyModulePath()
+        protected internal string GetProxyPath()
+        {
+            string proxyPath = SearchForInstalledProxyPath();
+            
+            if (String.IsNullOrEmpty(proxyPath))
+            {
+                System.Collections.ObjectModel.Collection<ChoiceDescription> choices = new System.Collections.ObjectModel.Collection<ChoiceDescription> { new ChoiceDescription("N", "No"), new ChoiceDescription("Y", "Yes") };
+                int userChoice = this.Host.UI.PromptForChoice(
+                    caption: $"You currently don't have the required Az.Ssh.ArcProxy module installed in this machine. Would you like us to attempt to install this module for the current user?",
+                    message: "You must have the Az.Ssh.Proxy PowerShell module installed in the client machine in order to connect to Azure Arc resources. You can find the module in the PowerShell Gallery <Link>.",
+                    choices: choices,
+                    defaultChoice: 0);
+                if (userChoice == 1)
+                {
+                    var installationResults = InvokeCommand.InvokeScript(
+                        script: "Install-module Az.Ssh.ArcProxy -Repository PsGallery -Scope CurrentUser",
+                        useNewScope: true,
+                        writeToPipeline: PipelineResultTypes.Error,
+                        input: null,
+                        args: null);
+                    
+                    proxyPath = SearchForInstalledProxyPath();
+                }
+                
+            }
+
+            if (!String.IsNullOrEmpty(proxyPath)) { return proxyPath; }
+            
+            throw new AzPSApplicationException("Failed to find the module Az.Ssh.ArcProxy installed in this machine. You must have the Az.Ssh.Proxy PowerShell module installed in the client machine in order to connect to Azure Arc resources. You can find the module in the PowerShell Gallery <Link>.");
+        }
+
+        private string SearchForInstalledProxyPath()
         {
             var results = InvokeCommand.InvokeScript(
-                script: "(Get-module -ListAvailable -Name Az.Ssh.ArcProxy).Path");
+                script: "Get-module -ListAvailable -Name Az.Ssh.ArcProxy");
 
             foreach (var result in results)
             {
-                if (result?.BaseObject is string tempPath)
+                if (result?.BaseObject is PSModuleInfo moduleInfo)
                 {
-                    string proxyPath = GetProxyPath(tempPath);
+                    var proxyPath = GetProxyPathInModuleDirectory(moduleInfo.Path);
 
-                    if (!File.Exists(proxyPath) || !ValidateSshProxy(proxyPath))
+                    if (moduleInfo.Version >= new Version("2.0.0"))
+                    {
+                        WriteWarning("This version of the Az.Ssh extension only supports version 1.x.x of the Az.Ssh.ArcProxy PowerShell Module. Check that this extension is the latest version available");
+                        continue;
+                    }   
+
+                    if (!File.Exists(proxyPath))
                     {
                         continue;
                     }
@@ -532,23 +556,12 @@ namespace Microsoft.Azure.Commands.Ssh
 
                     return proxyPath;
                 }
+               
             }
-
-
-            System.Collections.ObjectModel.Collection<ChoiceDescription> choices = new System.Collections.ObjectModel.Collection<ChoiceDescription> { new ChoiceDescription("N"), new ChoiceDescription("Y") };
-            int userChoice = this.Host.UI.PromptForChoice(
-                caption:$"You currently don't have the required Az.Ssh.ArcProxy module installed in this machine. Would you like us to attempt to install this module for the current user?",
-                message: "You must have the Az.Ssh.Proxy PowerShell module installed in the client machine in order to connect to Azure Arc resources. You can find the module in the PowerShell Gallery <Link>.",
-                choices: choices,
-                defaultChoice: 0);
-            if (userChoice == 1)
-            {
-                var installationResults = InvokeCommand.InvokeScript(
-                    script: "Install-module blabl -Repository PsGallery -Scope CurrentUser");
-            }
-
-            throw new AzPSApplicationException("Failed to find the module Az.Ssh.ArcProxy installed in this machine. You must have the Az.Ssh.Proxy PowerShell module installed in the client machine in order to connect to Azure Arc resources. You can find the module in the PowerShell Gallery <Link>.");
+            return null;
         }
+
+            
 
 
         protected internal void GetVmIpAddress()
@@ -680,20 +693,28 @@ namespace Microsoft.Azure.Commands.Ssh
 
         protected internal bool SetExecutePermissionForProxyOnLinux(string path)
         {
-            string cmd = $"chmod +x {path}";
-            try
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
             {
-                using (Process p = Process.Start("/bin/bash", $"-c \"{cmd}\""))
+                try
                 {
-                    p.WaitForExit();
-                    return p.ExitCode == 0;
+                    var script = $"chmod +x {path}"; // should we just add permission for the owner? Or all users?
+                    var results = InvokeCommand.InvokeScript(
+                        script: script,
+                        useNewScope: true,
+                        writeToPipeline: PipelineResultTypes.Error,
+                        input: null,
+                        args: null);
+                    Console.Write(results);
                 }
-
+                catch
+                {
+                    // If this operation fails we want to warn the user
+                    return false;
+                }
+                return true;
+                //check results somehow?
             }
-            catch
-            {
-                return false;
-            }
+            return true;
         }
 
         private void SetResourceId()
@@ -892,7 +913,7 @@ namespace Microsoft.Azure.Commands.Ssh
             return dirname;
         }
 
-        private string GetProxyPath(string modulePath)
+        private string GetProxyPathInModuleDirectory(string modulePath)
         {
             string os;
             string architecture;
@@ -922,54 +943,23 @@ namespace Microsoft.Azure.Commands.Ssh
                 architecture = "386";
             }
 
-            string proxyName = $"sshProxy_{os}_{architecture}_{clientProxyVersion}";
-
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-            {
-                proxyName += ".exe";
-            }
-
             string parentDirectory = Directory.GetParent(modulePath).FullName;
+            string proxyPattern = $"sshProxy_{os}_{architecture}_*";
 
-            return Path.Combine(parentDirectory, proxyName);
-        }
+            Regex regex = new Regex(proxyPattern);
+            var matches = Directory.EnumerateFiles(parentDirectory).Where(f => regex.IsMatch(f));
 
-        private bool ValidateSshProxy(string path)
-        
-        {
-            string hashString;
-            using (var sha256 = SHA256.Create())
+            if (matches.Count() > 1)
             {
-                using (var filestream = File.OpenRead(path))
-                {
-                    var hash = sha256.ComputeHash(filestream);
-                    hashString = BitConverter.ToString(hash).Replace("-", "");
-                }
+                throw new AzPSApplicationException($"There are more than one sshProxy file for {os} OS and {architecture} architecture in the {parentDirectory} folder ({string.Join(",", matches.ToArray())}). The Az.Ssh.ArcProxy module installed your machine was modified. Please re-install the Az.Ssh.ArcProxy PowerShell module that can be found in the PowerShell Gallery (https://aka.ms/PowerShellGallery-Az.Ssh.ArcProxy).");
             }
 
-            string filename = Path.GetFileName(path);
-            bool isValid = false;
-
-            switch (filename)
+            if (matches.Count() < 1)
             {
-                case "sshProxy_windows_386_1_3_017634.exe":
-                    isValid = hashString.Equals(sshproxy_windows_386_sha256_hash);
-                    break;
-                case "sshProxy_windows_amd64_1_3_017634.exe":
-                    isValid = hashString.Equals(sshproxy_windows_amd64_sha256_hash);
-                    break;
-                case "sshProxy_linux_386_1_3_017634":
-                    isValid = hashString.Equals(sshproxy_linux_386_sha256_hash);
-                    break;
-                case "sshProxy_linux_amd64_1_3_017634":
-                    isValid = hashString.Equals(sshproxy_linux_amd64_sha256_hash);
-                    break;
-                case "sshProxy_darwin_amd64_1_3_017634":
-                    isValid = hashString.Equals(sshproxy_darwin_amd64_sha256_hash);
-                    break;
+                throw new AzPSApplicationException($"Couldn't find the sshProxy file for {os} OS and {architecture} architecture in the {parentDirectory} folder. The Az.Ssh.ArcProxy module installed your machine was modified. Please re-install the Az.Ssh.ArcProxy PowerShell module that can be found in the PowerShell Gallery (https://aka.ms/PowerShellGallery-Az.Ssh.ArcProxy).");
             }
 
-            return isValid;
+            return matches.First().ToString();
         }
 #endregion
 
