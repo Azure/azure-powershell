@@ -106,14 +106,7 @@ FunctionsToExport = 'Approve-AzEventHubPrivateEndpointConnection',
                'Set-AzEventHubNamespaceV2'
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'New-AzEventHubNamespace', 'Get-AzEventHubNamespace', 
-               'Set-AzEventHubNamespace', 'Remove-AzEventHubNamespace', 
-               'Remove-AzEventHubIPRule', 'Add-AzEventHubIPRule', 
-               'Remove-AzEventHubVirtualNetworkRule', 
-               'Add-AzEventHubVirtualNetworkRule', 
-               'Remove-AzEventHubNetworkRuleSet', 
-               'New-AzEventHubAuthorizationRuleSASToken', 
-               'New-AzEventHubEncryptionConfig'
+CmdletsToExport = 'New-AzEventHubAuthorizationRuleSASToken'
 
 # Variables to export from this module
 VariablesToExport = '*'
