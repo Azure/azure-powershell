@@ -30,9 +30,9 @@
   </PropertyGroup>
 
   <ItemGroup>    
-    <PackageReference Include="Moq" Version="4.18.4" />    
-    <PackageReference Include="Polly" Version="7.2.3" />    
-    <PackageReference Include="System.Security.Cryptography.Pkcs" Version="6.0.0" />    
+    <PackageReference Include="Moq" Version="4.18.4" />
+    <PackageReference Include="Polly" Version="7.2.3" />
+    <PackageReference Include="System.Security.Cryptography.Pkcs" Version="6.0.0" />
   </ItemGroup>
 
   <ItemGroup>
