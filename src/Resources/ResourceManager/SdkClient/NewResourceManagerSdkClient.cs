@@ -12,6 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+//This class is split from the ResourceManagerSdkClient class. Since this module has both cmdlets that use the old sdk version and cmdlets that use the new one, we needed clients for both and with this split
+//this class acts as the client for the cmdlets using the newer bits while the ResourceManagerSdkClient class acts as the client for the cmdlets using old sdk
+
 using System;
 using System.Collections;
 using System.Collections.Generic;

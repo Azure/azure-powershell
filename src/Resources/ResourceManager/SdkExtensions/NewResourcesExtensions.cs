@@ -12,6 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+
+//This class is split from the ResourcesExtensions class. Since this module has both cmdlets that use the old sdk version and cmdlets that use the new one, we needed client extension classes for both and with this split
+//this class acts as the client for the cmdlets using the newer bits while the ResourcesExtensions class acts as the client for the cmdlets using old sdk
+
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Resources.Models;
