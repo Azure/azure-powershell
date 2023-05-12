@@ -19,6 +19,9 @@
 -->
 
 ## Upcoming Release
+* The SSH Proxy required for connection to Arc resources must be installed by the user as part of the Az.Ssh.ArcProxy PowerShell module
+    - The Az.Ssh.ArcProxy module can be found in the PowerShell Gallery (https://aka.ms/PowerShellGallery-Az.Ssh.ArcProxy)
+    - The proxy files were previously downloaded by the cmdlet at runtime.
 
 ## Version 0.1.1
 * Added support for the following Resource Types: 

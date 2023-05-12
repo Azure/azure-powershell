@@ -55,36 +55,36 @@ namespace Microsoft.Azure.PowerShell.Ssh.Helpers.HybridCompute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets the status code.
+        /// Gets or sets the status code.
         /// </summary>
         [JsonProperty(PropertyName = "code")]
-        public string Code { get; private set; }
+        public string Code { get; set; }
 
         /// <summary>
-        /// Gets the level code. Possible values include: 'Info', 'Warning',
-        /// 'Error'
+        /// Gets or sets the level code. Possible values include: 'Info',
+        /// 'Warning', 'Error'
         /// </summary>
         [JsonProperty(PropertyName = "level")]
-        public string Level { get; private set; }
+        public string Level { get; set; }
 
         /// <summary>
-        /// Gets the short localizable label for the status.
+        /// Gets or sets the short localizable label for the status.
         /// </summary>
         [JsonProperty(PropertyName = "displayStatus")]
-        public string DisplayStatus { get; private set; }
+        public string DisplayStatus { get; set; }
 
         /// <summary>
-        /// Gets the detailed status message, including for alerts and error
-        /// messages.
+        /// Gets or sets the detailed status message, including for alerts and
+        /// error messages.
         /// </summary>
         [JsonProperty(PropertyName = "message")]
-        public string Message { get; private set; }
+        public string Message { get; set; }
 
         /// <summary>
-        /// Gets the time of the status.
+        /// Gets or sets the time of the status.
         /// </summary>
         [JsonProperty(PropertyName = "time")]
-        public System.DateTime? Time { get; private set; }
+        public System.DateTime? Time { get; set; }
 
     }
 }

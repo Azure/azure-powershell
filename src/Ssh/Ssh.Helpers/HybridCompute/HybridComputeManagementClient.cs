@@ -47,16 +47,14 @@ namespace Microsoft.Azure.PowerShell.Ssh.Helpers.HybridCompute
         public ServiceClientCredentials Credentials { get; private set; }
 
         /// <summary>
-        /// Subscription credentials which uniquely identify Microsoft Azure
-        /// subscription. The subscription ID forms part of the URI for every service
-        /// call.
-        /// </summary>
-        public string SubscriptionId { get; set; }
-
-        /// <summary>
-        /// Client Api Version.
+        /// The API version to use for this operation.
         /// </summary>
         public string ApiVersion { get; private set; }
+
+        /// <summary>
+        /// The ID of the target subscription.
+        /// </summary>
+        public string SubscriptionId { get; set; }
 
         /// <summary>
         /// The preferred language for the response.
@@ -324,7 +322,7 @@ namespace Microsoft.Azure.PowerShell.Ssh.Helpers.HybridCompute
         {
             Machines = new MachinesOperations(this);
             BaseUri = new System.Uri("https://management.azure.com");
-            ApiVersion = "2020-08-02";
+            ApiVersion = "2022-11-10";
             AcceptLanguage = "en-US";
             LongRunningOperationRetryTimeout = 30;
             GenerateClientRequestId = true;

@@ -10,29 +10,31 @@
 
 namespace Microsoft.Azure.PowerShell.Ssh.Helpers.HybridCompute.Models
 {
+    using Newtonsoft.Json;
+    using System.Collections;
+    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
-    /// Specifies the operating system settings for the hybrid machine.
+    /// The Update Resource model definition.
     /// </summary>
-    public partial class MachinePropertiesOsProfile : OSProfile
+    public partial class ResourceUpdate
     {
         /// <summary>
-        /// Initializes a new instance of the MachinePropertiesOsProfile class.
+        /// Initializes a new instance of the ResourceUpdate class.
         /// </summary>
-        public MachinePropertiesOsProfile()
+        public ResourceUpdate()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the MachinePropertiesOsProfile class.
+        /// Initializes a new instance of the ResourceUpdate class.
         /// </summary>
-        /// <param name="computerName">Specifies the host OS name of the hybrid
-        /// machine.</param>
-        public MachinePropertiesOsProfile(string computerName = default(string))
-            : base(computerName)
+        /// <param name="tags">Resource tags</param>
+        public ResourceUpdate(IDictionary<string, string> tags = default(IDictionary<string, string>))
         {
+            Tags = tags;
             CustomInit();
         }
 
@@ -40,6 +42,12 @@ namespace Microsoft.Azure.PowerShell.Ssh.Helpers.HybridCompute.Models
         /// An initialization method that performs custom operations like setting defaults
         /// </summary>
         partial void CustomInit();
+
+        /// <summary>
+        /// Gets or sets resource tags
+        /// </summary>
+        [JsonProperty(PropertyName = "tags")]
+        public IDictionary<string, string> Tags { get; set; }
 
     }
 }

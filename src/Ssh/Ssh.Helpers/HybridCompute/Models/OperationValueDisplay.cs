@@ -16,18 +16,18 @@ namespace Microsoft.Azure.PowerShell.Ssh.Helpers.HybridCompute.Models
     /// <summary>
     /// Describes the properties of a Hybrid Compute Operation Value Display.
     /// </summary>
-    public partial class OperationValueDisplayModel
+    public partial class OperationValueDisplay
     {
         /// <summary>
-        /// Initializes a new instance of the OperationValueDisplayModel class.
+        /// Initializes a new instance of the OperationValueDisplay class.
         /// </summary>
-        public OperationValueDisplayModel()
+        public OperationValueDisplay()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the OperationValueDisplayModel class.
+        /// Initializes a new instance of the OperationValueDisplay class.
         /// </summary>
         /// <param name="operation">The display name of the compute
         /// operation.</param>
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.PowerShell.Ssh.Helpers.HybridCompute.Models
         /// <param name="description">The description of the operation.</param>
         /// <param name="provider">The resource provider for the
         /// operation.</param>
-        public OperationValueDisplayModel(string operation = default(string), string resource = default(string), string description = default(string), string provider = default(string))
+        public OperationValueDisplay(string operation = default(string), string resource = default(string), string description = default(string), string provider = default(string))
         {
             Operation = operation;
             Resource = resource;

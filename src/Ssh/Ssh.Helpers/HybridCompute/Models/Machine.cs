@@ -42,7 +42,16 @@ namespace Microsoft.Azure.PowerShell.Ssh.Helpers.HybridCompute.Models
         /// <param name="type">The type of the resource. E.g.
         /// "Microsoft.Compute/virtualMachines" or
         /// "Microsoft.Storage/storageAccounts"</param>
+        /// <param name="systemData">Azure Resource Manager metadata containing
+        /// createdBy and modifiedBy information.</param>
         /// <param name="tags">Resource tags.</param>
+        /// <param name="agentConfiguration">Configurable properties that the
+        /// user can set locally via the azcmagent config command, or remotely
+        /// via ARM.</param>
+        /// <param name="serviceStatuses">Statuses of dependent services that
+        /// are reported back to ARM.</param>
+        /// <param name="cloudMetadata">The metadata of the cloud environment
+        /// (Azure/GCP/AWS/OCI...).</param>
         /// <param name="osProfile">Specifies the operating system settings for
         /// the hybrid machine.</param>
         /// <param name="provisioningState">The provisioning state, which only
@@ -66,9 +75,12 @@ namespace Microsoft.Azure.PowerShell.Ssh.Helpers.HybridCompute.Models
         /// machine.</param>
         /// <param name="osVersion">The version of Operating System running on
         /// the hybrid machine.</param>
+        /// <param name="osType">The type of Operating System
+        /// (windows/linux).</param>
         /// <param name="vmUuid">Specifies the Arc Machine's unique SMBIOS
         /// ID</param>
-        /// <param name="extensions">Machine Extensions information</param>
+        /// <param name="extensions">Machine Extensions information (deprecated
+        /// field)</param>
         /// <param name="osSku">Specifies the Operating System product
         /// SKU.</param>
         /// <param name="domainName">Specifies the Windows domain name.</param>
@@ -76,10 +88,23 @@ namespace Microsoft.Azure.PowerShell.Ssh.Helpers.HybridCompute.Models
         /// name.</param>
         /// <param name="dnsFqdn">Specifies the DNS fully qualified display
         /// name.</param>
-        public Machine(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), LocationData locationData = default(LocationData), MachinePropertiesOsProfile osProfile = default(MachinePropertiesOsProfile), string provisioningState = default(string), string status = default(string), System.DateTime? lastStatusChange = default(System.DateTime?), IList<ErrorDetail> errorDetails = default(IList<ErrorDetail>), string agentVersion = default(string), string vmId = default(string), string displayName = default(string), string machineFqdn = default(string), string clientPublicKey = default(string), string osName = default(string), string osVersion = default(string), string vmUuid = default(string), IList<MachineExtensionInstanceView> extensions = default(IList<MachineExtensionInstanceView>), string osSku = default(string), string domainName = default(string), string adFqdn = default(string), string dnsFqdn = default(string), MachineIdentity identity = default(MachineIdentity))
-            : base(location, id, name, type, tags)
+        /// <param name="privateLinkScopeResourceId">The resource id of the
+        /// private link scope this machine is assigned to, if any.</param>
+        /// <param name="parentClusterResourceId">The resource id of the parent
+        /// cluster (Azure HCI) this machine is assigned to, if any.</param>
+        /// <param name="mssqlDiscovered">Specifies whether any MS SQL instance
+        /// is discovered on the machine.</param>
+        /// <param name="detectedProperties">Detected properties from the
+        /// machine.</param>
+        /// <param name="resources">The list of extensions affiliated to the
+        /// machine</param>
+        public Machine(string location, string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), IDictionary<string, string> tags = default(IDictionary<string, string>), LocationData locationData = default(LocationData), AgentConfiguration agentConfiguration = default(AgentConfiguration), ServiceStatuses serviceStatuses = default(ServiceStatuses), CloudMetadata cloudMetadata = default(CloudMetadata), OSProfile osProfile = default(OSProfile), string provisioningState = default(string), string status = default(string), System.DateTime? lastStatusChange = default(System.DateTime?), IList<ErrorDetail> errorDetails = default(IList<ErrorDetail>), string agentVersion = default(string), string vmId = default(string), string displayName = default(string), string machineFqdn = default(string), string clientPublicKey = default(string), string osName = default(string), string osVersion = default(string), string osType = default(string), string vmUuid = default(string), IList<MachineExtensionInstanceView> extensions = default(IList<MachineExtensionInstanceView>), string osSku = default(string), string domainName = default(string), string adFqdn = default(string), string dnsFqdn = default(string), string privateLinkScopeResourceId = default(string), string parentClusterResourceId = default(string), string mssqlDiscovered = default(string), IDictionary<string, string> detectedProperties = default(IDictionary<string, string>), IList<MachineExtension> resources = default(IList<MachineExtension>), Identity identity = default(Identity))
+            : base(location, id, name, type, systemData, tags)
         {
             LocationData = locationData;
+            AgentConfiguration = agentConfiguration;
+            ServiceStatuses = serviceStatuses;
+            CloudMetadata = cloudMetadata;
             OsProfile = osProfile;
             ProvisioningState = provisioningState;
             Status = status;
@@ -92,12 +117,18 @@ namespace Microsoft.Azure.PowerShell.Ssh.Helpers.HybridCompute.Models
             ClientPublicKey = clientPublicKey;
             OsName = osName;
             OsVersion = osVersion;
+            OsType = osType;
             VmUuid = vmUuid;
             Extensions = extensions;
             OsSku = osSku;
             DomainName = domainName;
             AdFqdn = adFqdn;
             DnsFqdn = dnsFqdn;
+            PrivateLinkScopeResourceId = privateLinkScopeResourceId;
+            ParentClusterResourceId = parentClusterResourceId;
+            MssqlDiscovered = mssqlDiscovered;
+            DetectedProperties = detectedProperties;
+            Resources = resources;
             Identity = identity;
             CustomInit();
         }
@@ -113,11 +144,32 @@ namespace Microsoft.Azure.PowerShell.Ssh.Helpers.HybridCompute.Models
         public LocationData LocationData { get; set; }
 
         /// <summary>
+        /// Gets or sets configurable properties that the user can set locally
+        /// via the azcmagent config command, or remotely via ARM.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.agentConfiguration")]
+        public AgentConfiguration AgentConfiguration { get; set; }
+
+        /// <summary>
+        /// Gets or sets statuses of dependent services that are reported back
+        /// to ARM.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.serviceStatuses")]
+        public ServiceStatuses ServiceStatuses { get; set; }
+
+        /// <summary>
+        /// Gets or sets the metadata of the cloud environment
+        /// (Azure/GCP/AWS/OCI...).
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.cloudMetadata")]
+        public CloudMetadata CloudMetadata { get; set; }
+
+        /// <summary>
         /// Gets or sets specifies the operating system settings for the hybrid
         /// machine.
         /// </summary>
         [JsonProperty(PropertyName = "properties.osProfile")]
-        public MachinePropertiesOsProfile OsProfile { get; set; }
+        public OSProfile OsProfile { get; set; }
 
         /// <summary>
         /// Gets the provisioning state, which only appears in the response.
@@ -188,16 +240,22 @@ namespace Microsoft.Azure.PowerShell.Ssh.Helpers.HybridCompute.Models
         public string OsVersion { get; private set; }
 
         /// <summary>
+        /// Gets or sets the type of Operating System (windows/linux).
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.osType")]
+        public string OsType { get; set; }
+
+        /// <summary>
         /// Gets specifies the Arc Machine's unique SMBIOS ID
         /// </summary>
         [JsonProperty(PropertyName = "properties.vmUuid")]
         public string VmUuid { get; private set; }
 
         /// <summary>
-        /// Gets machine Extensions information
+        /// Gets or sets machine Extensions information (deprecated field)
         /// </summary>
         [JsonProperty(PropertyName = "properties.extensions")]
-        public IList<MachineExtensionInstanceView> Extensions { get; private set; }
+        public IList<MachineExtensionInstanceView> Extensions { get; set; }
 
         /// <summary>
         /// Gets specifies the Operating System product SKU.
@@ -224,9 +282,42 @@ namespace Microsoft.Azure.PowerShell.Ssh.Helpers.HybridCompute.Models
         public string DnsFqdn { get; private set; }
 
         /// <summary>
+        /// Gets or sets the resource id of the private link scope this machine
+        /// is assigned to, if any.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.privateLinkScopeResourceId")]
+        public string PrivateLinkScopeResourceId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the resource id of the parent cluster (Azure HCI) this
+        /// machine is assigned to, if any.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.parentClusterResourceId")]
+        public string ParentClusterResourceId { get; set; }
+
+        /// <summary>
+        /// Gets or sets specifies whether any MS SQL instance is discovered on
+        /// the machine.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.mssqlDiscovered")]
+        public string MssqlDiscovered { get; set; }
+
+        /// <summary>
+        /// Gets or sets detected properties from the machine.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.detectedProperties")]
+        public IDictionary<string, string> DetectedProperties { get; set; }
+
+        /// <summary>
+        /// Gets the list of extensions affiliated to the machine
+        /// </summary>
+        [JsonProperty(PropertyName = "resources")]
+        public IList<MachineExtension> Resources { get; private set; }
+
+        /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "identity")]
-        public MachineIdentity Identity { get; set; }
+        public Identity Identity { get; set; }
 
         /// <summary>
         /// Validate the object.
@@ -241,9 +332,9 @@ namespace Microsoft.Azure.PowerShell.Ssh.Helpers.HybridCompute.Models
             {
                 LocationData.Validate();
             }
-            if (ErrorDetails != null)
+            if (Resources != null)
             {
-                foreach (var element in ErrorDetails)
+                foreach (var element in Resources)
                 {
                     if (element != null)
                     {

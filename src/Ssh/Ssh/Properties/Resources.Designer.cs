@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Commands.Ssh.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Failed to create default endpoint for the target Arc Server with error: {0}..
+        ///   Looks up a localized string similar to Failed to create default endpoint for the target Arc Server (see: https://aka.ms/ssharc/create-default-endpoint) with error: {0}..
         /// </summary>
         internal static string FailedToCreateDefaultEndpoint {
             get {
