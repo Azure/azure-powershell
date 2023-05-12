@@ -28,6 +28,12 @@ jobs:
         # Wipe any changes from a previous branch
         git clean -xdf
 
+  - task: UseDotNet@2
+    displayName: 'Prepare .NET Core 3.1.0'
+    inputs:
+      packageType: sdk
+      version: 3.1.x
+
   - task: PowerShell@2
     displayName: Prepare Powershell $(PSVersion)
     inputs:
@@ -50,12 +56,6 @@ jobs:
       command: custom
       custom: msbuild
       arguments: 'build.proj /t:"Build" /p:"Configuration=Release;TurnOnTestCoverage=true"'
-
-  - task: UseDotNet@2
-    displayName: 'Prepare .NET Core 3.1.0'
-    inputs:
-      packageType: sdk
-      version: 3.1.x
 
   - task: PowerShell@2
     displayName: 'Bump Version'
