@@ -15,8 +15,8 @@ Set-AzStackHCI modifies resource properties of the Microsoft.AzureStackHCI cloud
 ```
 Set-AzStackHCI [[-ComputerName] <String>] [-AccountId <String>] [-ArmAccessToken <String>]
  [-Credential <PSCredential>] [-DiagnosticLevel <DiagnosticLevel>] [-EnableWSSubscription <Boolean>]
- [-EnvironmentName <String>] [-Force] [-GraphAccessToken <String>] [-ResourceId <String>] [-TenantId <String>]
- [-UseDeviceAuthentication] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-EnvironmentName <String>] [-Force] [-ResourceId <String>] [-TenantId <String>] [-UseDeviceAuthentication]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -164,21 +164,6 @@ Forces the command to run without asking for user confirmation.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -GraphAccessToken
-GraphAccessToken is deprecated.
-
-```yaml
-Type: System.String
 Parameter Sets: (All)
 Aliases:
 
