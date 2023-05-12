@@ -66,11 +66,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         protected override void OnProcessRecord()
         {
             String subscriptionId = null;
-            if (String.IsNullOrEmpty(Name) && !String.IsNullOrEmpty(this.Id)){
-                Name = ResourceIdentifier.FromResourceGroupIdentifier(this.Id).ResourceGroupName;
-                subscriptionId = ResourceIdentifier.FromResourceGroupIdentifier(this.Id).Subscription;
+            if (ParameterSetName == ResourceGroupIdParameterSet){
+                ResourceIdentifier resourceIdentifier = ResourceIdentifier.FromResourceGroupIdentifier(this.Id);
+                Name = resourceIdentifier.ResourceGroupName;
+                subscriptionId = resourceIdentifier.Subscription;
             }
-
             this.WriteObject(ResourceManagerSdkClient.FilterResourceGroups(name: this.Name, tag: this.Tag, detailed: false, location: this.Location, subscriptionId), true);
         }
 
