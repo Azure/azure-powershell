@@ -18,12 +18,14 @@ $DebugPreference = "Continue"
 # } 
 $resource = New-AzDataBoxJob -Name "ImportTest" -SubscriptionId "SubscriptionId" -ResourceGroupName "resourceGroupName" -TransferType "ImportToAzure" -Detail $details -Location "WestUS" -SkuName "DataBox"
 $resource
-
+$resource.Detail
+$resource.Detail.ShippingAddress
+```
+```output
 Name         Location Status        TransferType  SkuName IdentityType DeliveryType Detail
 ----         -------- ------        ------------  ------- ------------ ------------ ------
 ImportTest WestUS   DeviceOrdered ImportToAzure DataBox None         NonScheduled Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.DataBoxJobDetails
 
-$resource.Detail
 
 Action                     :
 ChainOfCustodySasKey       :
@@ -44,7 +46,6 @@ ReverseShipmentLabelSasKey :
 ShippingAddress            : Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ShippingAddress
 Type                       : DataBox
 
-$resource.Detail.ShippingAddress
 
 AddressType City          CompanyName Country PostalCode StateOrProvince StreetAddress1  StreetAddress2 StreetAddress3 ZipExtendedCode
 ----------- ----          ----------- ------- ---------- --------------- --------------  -------------- -------------- ---------------
