@@ -767,15 +767,11 @@ namespace Microsoft.Azure.Commands.Compute
                 this.EnableSecureBoot = this.EnableSecureBoot == null ? true : this.EnableSecureBoot;
             }
             if (shouldGuestAttestationExtBeInstalled()
-                //this.VM != null &&
-                //this.VM.Identity == null
                 && !this.IsParameterBound(c => c.SystemAssignedIdentity)
                 && !this.IsParameterBound(c => c.UserAssignedIdentity)
                     )
             {
-                //this.Identity = new VirtualMachineIdentity(null, null, Microsoft.Azure.Management.Compute.Models.ResourceIdentityType.SystemAssigned);
-                this.SystemAssignedIdentity = true;//new VirtualMachineIdentity(null, null, Microsoft.Azure.Management.Compute.Models.ResourceIdentityType.SystemAssigned);
-                //this.UserAssignedIdentity = "";
+                this.SystemAssignedIdentity = true;
             }
 
             var resourceClient = AzureSession.Instance.ClientFactory.CreateArmClient<ResourceManagementClient>(
@@ -783,42 +779,7 @@ namespace Microsoft.Azure.Commands.Compute
                     AzureEnvironment.Endpoint.ResourceManager);
 
             var parameters = new Parameters(this, client, resourceClient);
-
             
-            /* Create the GuestAttestation extension. NEeds to occur after the vm object exists.
-            if (shouldGuestAttestationExtBeInstalled())
-            {
-                var extensionParams = new VirtualMachineExtension { };
-                if (IsLinuxOs()) //linux
-                {
-                    extensionParams = new VirtualMachineExtension
-                    {
-                        Location = this.Location,
-                        Publisher = "Microsoft.Azure.Security.LinuxAttestation",
-                        VirtualMachineExtensionType = "GuestAttestation",
-                        TypeHandlerVersion = "1.0",
-                    };
-                }
-                else //windows
-                {
-                    extensionParams = new VirtualMachineExtension
-                    {
-                        Location = this.Location,
-                        Publisher = "Microsoft.Azure.Security.WindowsAttestation",
-                        VirtualMachineExtensionType = "GuestAttestation",
-                        TypeHandlerVersion = "1.0",
-                    };
-                }
-                var extClient = ComputeClient.ComputeManagementClient.VirtualMachineExtensions;
-                var op = extClient.BeginCreateOrUpdateWithHttpMessagesAsync
-                    (
-                        this.ResourceGroupName,
-                        this.Name,
-                        "GuestAttestation",
-                        extensionParams
-                    ).GetAwaiter().GetResult();
-            }*/
-
             // Information message if the default Size value is used. 
             if (!this.IsParameterBound(c => c.Size))
             {
@@ -924,7 +885,7 @@ namespace Microsoft.Azure.Commands.Compute
 
 
                 // Guest Attestation extension defaulting behavior
-                /*if (shouldGuestAttestationExtBeInstalled())
+                if (shouldGuestAttestationExtBeInstalled())
                 {
                     var extensionParams = new VirtualMachineExtension { };
 
@@ -957,7 +918,7 @@ namespace Microsoft.Azure.Commands.Compute
                             "GuestAttestation",
                             extensionParams
                         ).GetAwaiter().GetResult();
-                }*/
+                }
             }
 
             

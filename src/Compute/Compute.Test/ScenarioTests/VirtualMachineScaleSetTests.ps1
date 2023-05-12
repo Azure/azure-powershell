@@ -3449,6 +3449,25 @@ function Test-VirtualMachineScaleSetGuestAttestation
         $vmssvm = Get-AzVmssvm -ResourceGroupName $rgname -VMScaleSetName $vmssName -InstanceId $vmssvms[0].InstanceId;
         Assert-AreEqual $extDefaultName $vmssvm.Resources[2].Name;
 
+        # Simple param Set
+        $username = Get-ComputeTestResourceName;
+        $securePassword = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force
+        $credential = New-Object System.Management.Automation.PSCredential ($username, $securePassword);
+        
+        $vmssname2 = "vmss2" + $rgname;
+        $domainNameLabel2 = "dnl" + $rgname;
+        $vmss2 = New-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssname2  -ImageName 'Win2019DatacenterGen2' `
+          -Credential $credential -InstanceCount 1 -DomainNameLabel $domainNameLabel2 -SecurityType "TrustedLaunch" `
+          -EnableSecureBoot $true -EnableVtpm $true;
+        
+        $vmssGet2 = Get-AzVmss -ResourceGroupName $rgname -Name $vmssName2;
+        $output2 = $vmssGet2 | Out-String;
+        Assert-True { $output2.Contains($vmGADefaultIDentity) };
+
+        $vmssvms = Get-AzVmssvm -ResourceGroupName $rgname -VMScaleSetName $vmssName2;
+        Assert-NotNull $vmssvms;
+        $vmssvm = Get-AzVmssvm -ResourceGroupName $rgname -VMScaleSetName $vmssName2 -InstanceId $vmssvms[0].InstanceId;
+        Assert-AreEqual $extDefaultName $vmssvm.Resources[2].Name;
 
     }
     finally
