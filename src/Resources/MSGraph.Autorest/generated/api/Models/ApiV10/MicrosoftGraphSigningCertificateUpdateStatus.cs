@@ -50,6 +50,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Status of the last certificate update. Read-only. For a list of statuses, see certificateUpdateResult status.",
         SerializedName = @"certificateUpdateResult",
         PossibleTypes = new [] { typeof(string) })]
@@ -60,6 +63,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Date and time in ISO 8601 format and in UTC time when the certificate was last updated. Read-only.",
         SerializedName = @"lastRunDateTime",
         PossibleTypes = new [] { typeof(global::System.DateTime) })]

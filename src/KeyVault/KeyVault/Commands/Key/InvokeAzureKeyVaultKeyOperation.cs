@@ -1,6 +1,5 @@
 ﻿using Microsoft.Azure.Commands.KeyVault.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 using System;
 using System.Management.Automation;
@@ -15,7 +14,6 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands.Key
     /// 3. Wraps a symmetric key using a specified key.
     /// 4. Unwraps a symmetric key using the specified key that was initially used for wrapping that key.
     /// </summary>
-    [GenericBreakingChange("The encoded/decoded way between string and bytes will change to UTF8.", "5.0.0", "05/23/2023")]
     [Cmdlet(VerbsLifecycle.Invoke, ResourceManager.Common.AzureRMConstants.AzurePrefix + "KeyVaultKeyOperation", SupportsShouldProcess = true, DefaultParameterSetName = ByVaultNameParameterSet)]
     [OutputType(typeof(PSKeyOperationResult))]
     public class InvokeAzureKeyVaultKeyOperation : KeyVaultKeyCmdletBase
@@ -83,7 +81,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands.Key
                     case Operations.Encrypt:
                         this.WriteObject(
                             this.Track2DataClient.Encrypt(VaultName, Name, Version,
-                                Encoding.ASCII.GetBytes(Value.ConvertToString()), Algorithm));
+                                Encoding.UTF8.GetBytes(Value.ConvertToString()), Algorithm));
                         break;
                     case Operations.Decrypt:
                         this.WriteObject(
@@ -93,7 +91,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands.Key
                     case Operations.Wrap:
                         this.WriteObject(
                             this.Track2DataClient.WrapKey(VaultName, Name, Version,
-                                Encoding.ASCII.GetBytes(Value.ConvertToString()), Algorithm));
+                                Encoding.UTF8.GetBytes(Value.ConvertToString()), Algorithm));
                         break;
                     case Operations.Unwrap:
                         this.WriteObject(
@@ -111,7 +109,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands.Key
                     case Operations.Encrypt:
                         this.WriteObject(
                             this.Track2DataClient.ManagedHsmKeyEncrypt(HsmName, Name, Version,
-                                Encoding.ASCII.GetBytes(Value.ConvertToString()), Algorithm));
+                                Encoding.UTF8.GetBytes(Value.ConvertToString()), Algorithm));
                         break;
                     case Operations.Decrypt:
                         this.WriteObject(
@@ -121,7 +119,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands.Key
                     case Operations.Wrap:
                         this.WriteObject(
                             this.Track2DataClient.ManagedHsmWrapKey(HsmName, Name, Version,
-                                Encoding.ASCII.GetBytes(Value.ConvertToString()), Algorithm));
+                                Encoding.UTF8.GetBytes(Value.ConvertToString()), Algorithm));
                         break;
                     case Operations.Unwrap:
                         this.WriteObject(
