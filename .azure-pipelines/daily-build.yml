@@ -55,7 +55,7 @@ jobs:
     displayName: 'Prepare .NET Core 3.1.0'
     inputs:
       packageType: sdk
-      version: 3.1.0
+      version: 3.1.x
 
   - task: PowerShell@2
     displayName: 'Bump Version'
