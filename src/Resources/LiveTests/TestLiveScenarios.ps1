@@ -15,7 +15,7 @@ Invoke-LiveTestScenario -Name "Test Application" -Description "Test the process 
     
         $app1 = New-AzADApplication -DisplayName $appName1 -ReplyUrls $replyUrl1 -HomePage $homePage1 -AvailableToOtherTenants $true -StartDate (Get-Date)
         $app1 = Get-AzADApplication -DisplayName $appName1
-        Assert-NotNullOrEmpty $app1
+        Assert-NotNullOrEmpty $app1.Id
         Assert-AreEqual $replyUrl1 $app1.Web.RedirectUri
         Assert-AreEqual $homepage1 $app1.Web.HomePageUrl
         Assert-AreEqual 'AzureADMultipleOrgs' $app1.SignInAudience
@@ -29,8 +29,8 @@ Invoke-LiveTestScenario -Name "Test Application" -Description "Test the process 
         Assert-AreEqual $replyUrl2 $app1Update.Web.RedirectUri
         Assert-AreEqual $homepage2 $app1Update.Web.HomePageUrl
         Assert-AreEqual 'AzureADMyOrg' $app1Update.SignInAudience
-        Assert-NotNullOrEmpty (Get-AzADAppCredential -ObjectId $app1.Id)
         $pw = New-AzADAppCredential -ObjectId $app1.Id -StartDate (get-date)
+        Assert-NotNullOrEmpty (Get-AzADAppCredential -ObjectId $app1.Id).KeyId
     
         $certFile = Join-Path $PSScriptRoot 'msgraphtest2.cer'
         $content = get-content $certFile -AsByteStream
@@ -91,6 +91,7 @@ Invoke-LiveTestScenario -Name "Test Group Member" -Description "Test the process
             switch ($member.OdataType) {
                 '#microsoft.graph.user' {
                     Assert-AreEqual $user.Id $member.Id
+                    Assert-AreEqual $userPrincipalName $member.UserPrincipalName
                     Remove-AzADGroupMember -GroupObjectId $group1.Id -MemberObjectId $user.Id
                 }
                 '#microsoft.graph.group' {

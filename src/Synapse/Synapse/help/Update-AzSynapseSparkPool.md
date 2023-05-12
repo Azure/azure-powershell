@@ -19,7 +19,7 @@ Update-AzSynapseSparkPool [-ResourceGroupName <String>] -WorkspaceName <String> 
  [-AutoScaleMaxNodeCount <Int32>] [-EnableAutoPause <Boolean>] [-AutoPauseDelayInMinute <Int32>]
  [-NodeCount <Int32>] [-EnableIsolatedCompute <Boolean>] [-NodeSize <String>]
  [-EnableDynamicExecutorAllocation <Boolean>] [-MinExecutorCount <Int32>] [-MaxExecutorCount <Int32>]
- [-SparkVersion <String>] [-LibraryRequirementsFilePath <String>] [-SparkConfigFilePath <String>]
+ [-SparkVersion <String>] [-LibraryRequirementsFilePath <String>]
  [-SparkConfiguration <PSSparkConfigurationResource>] [-PackageAction <PackageActionType>]
  [-Package <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Synapse.Models.WorkspacePackages.PSSynapseWorkspacePackage]>]
  [-ForceApplySetting] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
@@ -33,8 +33,8 @@ Update-AzSynapseSparkPool -Name <String> -WorkspaceObject <PSSynapseWorkspace> [
  [-EnableAutoPause <Boolean>] [-AutoPauseDelayInMinute <Int32>] [-NodeCount <Int32>]
  [-EnableIsolatedCompute <Boolean>] [-NodeSize <String>] [-EnableDynamicExecutorAllocation <Boolean>]
  [-MinExecutorCount <Int32>] [-MaxExecutorCount <Int32>] [-SparkVersion <String>]
- [-LibraryRequirementsFilePath <String>] [-SparkConfigFilePath <String>]
- [-SparkConfiguration <PSSparkConfigurationResource>] [-PackageAction <PackageActionType>]
+ [-LibraryRequirementsFilePath <String>] [-SparkConfiguration <PSSparkConfigurationResource>]
+ [-PackageAction <PackageActionType>]
  [-Package <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Synapse.Models.WorkspacePackages.PSSynapseWorkspacePackage]>]
  [-ForceApplySetting] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -46,7 +46,7 @@ Update-AzSynapseSparkPool -InputObject <PSSynapseSparkPool> [-Tag <Hashtable>] [
  [-AutoScaleMinNodeCount <Int32>] [-AutoScaleMaxNodeCount <Int32>] [-EnableAutoPause <Boolean>]
  [-AutoPauseDelayInMinute <Int32>] [-NodeCount <Int32>] [-EnableIsolatedCompute <Boolean>] [-NodeSize <String>]
  [-EnableDynamicExecutorAllocation <Boolean>] [-MinExecutorCount <Int32>] [-MaxExecutorCount <Int32>]
- [-SparkVersion <String>] [-LibraryRequirementsFilePath <String>] [-SparkConfigFilePath <String>]
+ [-SparkVersion <String>] [-LibraryRequirementsFilePath <String>]
  [-SparkConfiguration <PSSparkConfigurationResource>] [-PackageAction <PackageActionType>]
  [-Package <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Synapse.Models.WorkspacePackages.PSSynapseWorkspacePackage]>]
  [-ForceApplySetting] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
@@ -59,7 +59,7 @@ Update-AzSynapseSparkPool -ResourceId <String> [-Tag <Hashtable>] [-EnableAutoSc
  [-AutoScaleMinNodeCount <Int32>] [-AutoScaleMaxNodeCount <Int32>] [-EnableAutoPause <Boolean>]
  [-AutoPauseDelayInMinute <Int32>] [-NodeCount <Int32>] [-EnableIsolatedCompute <Boolean>] [-NodeSize <String>]
  [-EnableDynamicExecutorAllocation <Boolean>] [-MinExecutorCount <Int32>] [-MaxExecutorCount <Int32>]
- [-SparkVersion <String>] [-LibraryRequirementsFilePath <String>] [-SparkConfigFilePath <String>]
+ [-SparkVersion <String>] [-LibraryRequirementsFilePath <String>]
  [-SparkConfiguration <PSSparkConfigurationResource>] [-PackageAction <PackageActionType>]
  [-Package <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Synapse.Models.WorkspacePackages.PSSynapseWorkspacePackage]>]
  [-ForceApplySetting] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
@@ -527,21 +527,6 @@ Parameter Sets: SetByResourceIdParameterSet
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SparkConfigFilePath
-[Deprecated] Spark pool properties configuration file. This parameter is deprecated, please use "-SparkConfiguration" instead.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

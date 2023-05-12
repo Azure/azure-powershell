@@ -42,21 +42,24 @@ Invoke-AzKeyVaultKeyOperation cmdlet supports
 
 ## EXAMPLES
 
-### Encrypts using an encryption key
+### Example 1: Encrypts using an encryption key
 ```powershell
 $result = Invoke-AzKeyVaultKeyOperation -Operation Encrypt -Algorithm RSA1_5 -VaultName test-kv -Name test-key -Value (ConvertTo-SecureString -String "test" -AsPlainText -Force)
 $result | Format-List
 ```
 
 ```output
-KeyId     : https://test-kv.vault.azure.net/keys/test-key/375cdf20252043b79c8ca0c57b6c7679
-Result    : e01HmkipqwCZyQd2QZ5XOTSA3rlZ719qqHHadzepFGtvTSoDwr+sBPmODVqScvq5/MBS9YyT+u6AM5hsFKD+h2FJOB6Pj/nwO5MZ/tZ8F974qAxXXT2qvdNm6pHKhREgPlCHmz+L6xK/8KOF+LS1E9wmuAt8ZPsJ7BtcT2bcvR4VmeOaUhvxcuNMV675nsFpwHBv6GWSfQA+RkDCIpmv6msdpK8NG6+la+fSPA6EKMJkmqF3SZ6RhSOjg00S7jXEWncIzdp6RRKYZFKY+QhqLgFVABL876IW4nDGYgdVSG7KnH0K56QqtK5L4MhvU4XYE69I4WiWbZ7rcVLE3cO/9A==
+KeyId     : https://test-kv.vault.azure.net/keys/test-key/bd8b77352a2443d4983bd70e9f660bc6
+Result    : iVlA6rHicEm6F9vtU3jARzxWughOcRK9htj4UMy0ijd4a4hHwYrSy4lSXhiQTKSMpX+Qv3NTaz/fKNWdSoudCAwv2ZX/pYlSqZmDoAHzjUc
+            4wDQAAVZAUvOxHcpCQf3CrlvQK3XfsZeddeiD9laiUU3iB2Ivh3trX0G/Y29gL54THKsmlwXh5mBhxcXHaUv0erDzEVAGnC73FHlJoHCTdm
+            7eUMWvsnfhtd/BhcuBb/CeMy1QzHgoBTrByWms4KsTODBEZt41aVkdYxJDREsC8X6a/1vp9EeV+7jm3sZLl+Dm7XOpUjbR+/BUU7HKaw09i
+            BRQJGhXf7oyZOf3g6EPEQ==
 Algorithm : RSA1_5
 ```
 
-Encrypts string "test" using test-key stored in test-kv. The returned result is Base64 string format.
+Encrypts string "test" using test-key stored in test-kv. The `Result` is encrypted result in Base64 string format.
 
-### Decrypt encrypted data
+### Example 2: Decrypt encrypted data
 ```powershell
 $result
 $result = Invoke-AzKeyVaultKeyOperation -Operation Decrypt -Algorithm RSA1_5 -VaultName test-kv -Name test-key -Value (ConvertTo-SecureString -String $result.Result -AsPlainText -Force)
@@ -64,29 +67,14 @@ $result | Format-List
 ```
 
 ```output
-KeyId     : https://test-kv.vault.azure.net/keys/test-key/375cdf20252043b79c8ca0c57b6c7679
+KeyId     : https://test-kv.vault.azure.net/keys/test-key/bd8b77352a2443d4983bd70e9f660bc6
 Result    : test
 Algorithm : RSA1_5
 ```
 
-Decrypts encrypted data that is encrypted using test-key stored in test-kv. 
+Decrypts encrypted data that is encrypted using test-key stored in test-kv. The `Result` is a plain string.
 
-### Encrypts using an encryption key
-```powershell
-$result = Invoke-AzKeyVaultKeyOperation -Operation Encrypt -Algorithm RSA1_5 -VaultName test-kv -Name test-key -Value (ConvertTo-SecureString -String "test" -AsPlainText -Force) 
-
-$result | Format-List
-```
-
-```output
-KeyId     : https://test-kv.vault.azure.net/keys/test-key/375cdf20252043b79c8ca0c57b6c7679
-Result    : e01HmkipqwCZyQd2QZ5XOTSA3rlZ719qqHHadzepFGtvTSoDwr+sBPmODVqScvq5/MBS9YyT+u6AM5hsFKD+h2FJOB6Pj/nwO5MZ/tZ8F974qAxXXT2qvdNm6pHKhREgPlCHmz+L6xK/8KOF+LS1E9wmuAt8ZPsJ7BtcT2bcvR4VmeOaUhvxcuNMV675nsFpwHBv6GWSfQA+RkDCIpmv6msdpK8NG6+la+fSPA6EKMJkmqF3SZ6RhSOjg00S7jXEWncIzdp6RRKYZFKY+QhqLgFVABL876IW4nDGYgdVSG7KnH0K56QqtK5L4MhvU4XYE69I4WiWbZ7rcVLE3cO/9A==
-Algorithm : RSA1_5
-```
-
-Encrypts string "test" using test-key stored in test-kv. The returned result is Base64 string format.
-
-### Wraps a symmetric key using a specified key
+### Example 3: Wraps a symmetric key using a specified key
 ```powershell
 $result = Invoke-AzKeyVaultKeyOperation -Operation Wrap -Algorithm RSA1_5 -VaultName test-kv -Name test-key -Value (ConvertTo-SecureString -String "ovQIlbB0DgWhZA7sgkPxbg9H-Ly-VlNGPSgGrrZvlIo" -AsPlainText -Force) 
 
@@ -95,13 +83,16 @@ $result | Format-List
 
 ```output
 KeyId     : https://test-kv.vault.azure.net/keys/test-key/375cdf20252043b79c8ca0c57b6c7679
-Result    : e01HmkipqwCZyQd2QZ5XOTSA3rlZ719qqHHadzepFGtvTSoDwr+sBPmODVqScvq5/MBS9YyT+u6AM5hsFKD+h2FJOB6Pj/nwO5MZ/tZ8F974qAxXXT2qvdNm6pHKhREgPlCHmz+L6xK/8KOF+LS1E9wmuAt8ZPsJ7BtcT2bcvR4VmeOaUhvxcuNMV675nsFpwHBv6GWSfQA+RkDCIpmv6msdpK8NG6+la+fSPA6EKMJkmqF3SZ6RhSOjg00S7jXEWncIzdp6RRKYZFKY+QhqLgFVABL876IW4nDGYgdVSG7KnH0K56QqtK5L4MhvU4XYE69I4WiWbZ7rcVLE3cO/9A==
+Result    : imHceWcmB5jufcz+qS+HwaXOvPiaeOQ2dF1Bh+2DByuw+AOyoL3wtwDSilP5BlR3DAB3byj4hlUqkEKcoHJpOGnU53mWeV0yhL+Wx0O4T9n
+            +e54Gtv/sfJD0CcMg+89mssi7hgU0u1IaaowzgSmP7ViRrSVGu8FniAR6hdf7j0JL7ON8IIFMy/+7yq00aJs/dspcESGjcZDry5pLzYphel
+            x7VAEbjuv1TuiHwu8cJYH/GsvROErOQbQ+aKcKlYTMzZRGdCA07xXltvFrTiCIvzeKE/lTJVIHH/Nv4aRne/ENRC2cx92r9XFhEBID6o5Td
+            kN09Wdjejo8nLDRw9XbtQ==
 Algorithm : RSA1_5
 ```
 
-Wraps a symmetric key using key named test-key stored in test-kv. The returned result is Base64 string.
+Wraps a symmetric key using key named test-key stored in test-kv. The `Result` is wrapped result in Base64 string format.
 
-### Unwraps a symmetric key using a specified key
+### Example 4: Unwraps a symmetric key using a specified key
 ```powershell
 Invoke-AzKeyVaultKeyOperation -Operation Unwrap -Algorithm RSA1_5 -VaultName test-kv -Name test-key -Value (ConvertTo-SecureString -String $result.Result -AsPlainText -Force) 
 ```
@@ -112,7 +103,7 @@ Result    : ovQIlbB0DgWhZA7sgkPxbg9H-Ly-VlNGPSgGrrZvlIo
 Algorithm : RSA1_5
 ```
 
- Unwraps a symmetric key using a specified key test-key stored in test-kv. 
+Unwraps a symmetric key using a specified key test-key stored in test-kv. The `Result` is a plain string.
 
 ## PARAMETERS
 

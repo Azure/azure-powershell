@@ -74,6 +74,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"key: id of application",
         SerializedName = @"application-id",
         PossibleTypes = new [] { typeof(string) })]
@@ -82,6 +85,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"key: id of federatedIdentityCredential",
         SerializedName = @"federatedIdentityCredential-id",
         PossibleTypes = new [] { typeof(string) })]
@@ -90,6 +96,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"key: id of group",
         SerializedName = @"group-id",
         PossibleTypes = new [] { typeof(string) })]
@@ -98,6 +107,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Resource identity path",
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
@@ -106,6 +118,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"key: id of member",
         SerializedName = @"member-id",
         PossibleTypes = new [] { typeof(string) })]
@@ -114,6 +129,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"key: id of servicePrincipal",
         SerializedName = @"servicePrincipal-id",
         PossibleTypes = new [] { typeof(string) })]
@@ -122,6 +140,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"key: id of user",
         SerializedName = @"user-id",
         PossibleTypes = new [] { typeof(string) })]

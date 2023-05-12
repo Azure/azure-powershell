@@ -1249,3 +1249,32 @@ function Test-OutboundType {
         Remove-AzResourceGroup -Name $resourceGroupName -Force
     }
 }
+
+function Test-EnableAHUB {
+    # Setup
+    $resourceGroupName = Get-RandomResourceGroupName
+    $kubeClusterName = Get-RandomClusterName
+    $location = 'eastus'
+
+    try {
+        New-AzResourceGroup -Name $resourceGroupName -Location $location
+
+        $SecurePassword = ConvertTo-SecureString 'Abcdefg@123456' -AsPlainText -Force
+        New-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName -NodeCount 1 -WindowsProfileAdminUserName azure -WindowsProfileAdminUserPassword $SecurePassword -EnableAHUB
+        $cluster = Get-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName
+        Assert-AreEqual 'Windows_Server' $cluster.WindowsProfile.LicenseType
+        $cluster = Set-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName -EnableAHUB:$false
+        Assert-AreEqual 'None' $cluster.WindowsProfile.LicenseType
+
+        
+        $kubeClusterName = Get-RandomClusterName
+        New-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName -NodeCount 1
+        $cluster = Get-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName
+        Assert-Null $cluster.WindowsProfile.LicenseType
+        $cluster = $cluster | Set-AzAksCluster -EnableAHUB
+        Assert-AreEqual 'Windows_Server' $cluster.WindowsProfile.LicenseType
+    }
+    finally {
+        Remove-AzResourceGroup -Name $resourceGroupName -Force
+    }
+}

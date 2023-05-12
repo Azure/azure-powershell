@@ -21,7 +21,7 @@ namespace Microsoft.Azure.PowerShell.Ssh.Helpers.HybridCompute.Models
     /// Describes a hybrid machine Update.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class MachineUpdate : UpdateResource
+    public partial class MachineUpdate : ResourceUpdate
     {
         /// <summary>
         /// Initializes a new instance of the MachineUpdate class.
@@ -35,16 +35,21 @@ namespace Microsoft.Azure.PowerShell.Ssh.Helpers.HybridCompute.Models
         /// Initializes a new instance of the MachineUpdate class.
         /// </summary>
         /// <param name="tags">Resource tags</param>
-        /// <param name="type">The identity type.</param>
-        /// <param name="principalId">The identity's principal id.</param>
-        /// <param name="tenantId">The identity's tenant id.</param>
-        public MachineUpdate(IDictionary<string, string> tags = default(IDictionary<string, string>), string type = default(string), string principalId = default(string), string tenantId = default(string), LocationData locationData = default(LocationData))
+        /// <param name="cloudMetadata">The metadata of the cloud environment
+        /// (Azure/GCP/AWS/OCI...).</param>
+        /// <param name="parentClusterResourceId">The resource id of the parent
+        /// cluster (Azure HCI) this machine is assigned to, if any.</param>
+        /// <param name="privateLinkScopeResourceId">The resource id of the
+        /// private link scope this machine is assigned to, if any.</param>
+        public MachineUpdate(IDictionary<string, string> tags = default(IDictionary<string, string>), Identity identity = default(Identity), LocationData locationData = default(LocationData), OSProfile osProfile = default(OSProfile), CloudMetadata cloudMetadata = default(CloudMetadata), string parentClusterResourceId = default(string), string privateLinkScopeResourceId = default(string))
             : base(tags)
         {
-            Type = type;
-            PrincipalId = principalId;
-            TenantId = tenantId;
+            Identity = identity;
             LocationData = locationData;
+            OsProfile = osProfile;
+            CloudMetadata = cloudMetadata;
+            ParentClusterResourceId = parentClusterResourceId;
+            PrivateLinkScopeResourceId = privateLinkScopeResourceId;
             CustomInit();
         }
 
@@ -54,27 +59,40 @@ namespace Microsoft.Azure.PowerShell.Ssh.Helpers.HybridCompute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the identity type.
         /// </summary>
-        [JsonProperty(PropertyName = "identity.type")]
-        public string Type { get; set; }
-
-        /// <summary>
-        /// Gets the identity's principal id.
-        /// </summary>
-        [JsonProperty(PropertyName = "identity.principalId")]
-        public string PrincipalId { get; private set; }
-
-        /// <summary>
-        /// Gets the identity's tenant id.
-        /// </summary>
-        [JsonProperty(PropertyName = "identity.tenantId")]
-        public string TenantId { get; private set; }
+        [JsonProperty(PropertyName = "identity")]
+        public Identity Identity { get; set; }
 
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "properties.locationData")]
         public LocationData LocationData { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.osProfile")]
+        public OSProfile OsProfile { get; set; }
+
+        /// <summary>
+        /// Gets or sets the metadata of the cloud environment
+        /// (Azure/GCP/AWS/OCI...).
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.cloudMetadata")]
+        public CloudMetadata CloudMetadata { get; set; }
+
+        /// <summary>
+        /// Gets or sets the resource id of the parent cluster (Azure HCI) this
+        /// machine is assigned to, if any.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.parentClusterResourceId")]
+        public string ParentClusterResourceId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the resource id of the private link scope this machine
+        /// is assigned to, if any.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.privateLinkScopeResourceId")]
+        public string PrivateLinkScopeResourceId { get; set; }
 
         /// <summary>
         /// Validate the object.

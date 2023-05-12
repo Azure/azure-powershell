@@ -86,6 +86,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"List of email address to send notifications for groups without owners. Multiple email address can be defined by separating email address with a semicolon.",
         SerializedName = @"alternateNotificationEmails",
         PossibleTypes = new [] { typeof(string) })]
@@ -97,6 +100,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Number of days before a group expires and needs to be renewed. Once renewed, the group expiration is extended by the number of days defined.",
         SerializedName = @"groupLifetimeInDays",
         PossibleTypes = new [] { typeof(int) })]
@@ -107,6 +113,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The group type for which the expiration policy applies. Possible values are All, Selected or None.",
         SerializedName = @"managedGroupTypes",
         PossibleTypes = new [] { typeof(string) })]

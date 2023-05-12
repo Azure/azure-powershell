@@ -14,15 +14,18 @@ Deploys an Azure Web App from a ZIP, JAR, or WAR file using zipdeploy.
 
 ### FromWebApp (Default)
 ```
-Publish-AzWebApp -ArchivePath <String> [-Force] [-AsJob] [-Timeout <Double>] [-WebApp] <PSSite>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Publish-AzWebApp -ArchivePath <String> [-Type <String>] [-Clean <Boolean>] [-Async <Boolean>]
+ [-Restart <Boolean>] [-TargetPath <String>] [-IgnoreStack <Boolean>] [-Reset <Boolean>] [-Force] [-AsJob]
+ [-Timeout <Double>] [-WebApp] <PSSite> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### FromResourceName
 ```
-Publish-AzWebApp -ArchivePath <String> [-Force] [-AsJob] [-Timeout <Double>] [-ResourceGroupName] <String>
- [-Name] <String> [[-Slot] <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Publish-AzWebApp -ArchivePath <String> [-Type <String>] [-Clean <Boolean>] [-Async <Boolean>]
+ [-Restart <Boolean>] [-TargetPath <String>] [-IgnoreStack <Boolean>] [-Reset <Boolean>] [-Force] [-AsJob]
+ [-Timeout <Double>] [-ResourceGroupName] <String> [-Name] <String> [[-Slot] <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -106,6 +109,36 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Async
+The artifact is deployed asynchronously. (The command will exit once the artifact is pushed to the web app.)
+
+```yaml
+Type: System.Boolean
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Clean
+Cleans the target directory prior to deploying the file(s).
+
+```yaml
+Type: System.Boolean
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -136,6 +169,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -IgnoreStack
+Disables any language-specific defaults
+
+```yaml
+Type: System.Boolean
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 The name of the web app.
 
@@ -148,6 +196,21 @@ Required: True
 Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Reset
+Reset Java web apps to default parking page
+
+```yaml
+Type: System.Boolean
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -166,6 +229,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -Restart
+The web app will be restarted following the deployment. Set this to false if you are deploying multiple artifacts and do not want to restart the site on the earlier deployments.
+
+```yaml
+Type: System.Boolean
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Slot
 The name of the web app slot.
 
@@ -181,11 +259,41 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -TargetPath
+Absolute path that the artifact should be deployed to.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Timeout
 Sets the timespan in Milliseconds to wait before the request times out.
 
 ```yaml
 Type: System.Double
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Type
+Used to override the type of artifact being deployed.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
