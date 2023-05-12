@@ -48,6 +48,8 @@
 * Onboarded `Microsoft.HardwareSecurityModules/cloudHsmClusters` to private link cmdlets
 * Updated cmdlet to add the property of DisableRequestBodyEnforcement, RequestBodyInspectLimitInKB and DisableFileUploadEnforcement 
     - `New-AzApplicationGatewayFirewallPolicySetting`
+* Added AdminState parameter to Load Balancer Backend Address
+    - `New-AzLoadBalancerBackendAddressConfig`
 * Added optional property 'AuxiliarySku' to cmdlet `New-AzNetworkInterface` to help choose performance on an AuxiliaryMode enabled Network Interface.
 * Added a new value, 'AcceleratedConnections' for existing property 'AuxiliaryMode' for `New-AzNetworkInterface`
 

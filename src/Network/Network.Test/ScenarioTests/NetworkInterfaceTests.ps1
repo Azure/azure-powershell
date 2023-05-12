@@ -365,7 +365,7 @@ function Test-NetworkInterfaceCRUDStaticAllocation
         $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Static
 
         # Create NetworkInterface
-        $actualNic = New-AzNetworkInterface -Name $nicName -ResourceGroupName $rgname -Location $location -PrivateIpAddress "10.0.1.5" -Subnet $vnet.Subnets[0] -PublicIpAddress $publicip
+        $actualNic = New-AzNetworkInterface -Name $nicName -ResourceGroupName $rgname -Location $location -PrivateIpAddress "10.0.1.5" -Subnet $vnet.Subnets[0] -PublicIpAddress $publicip -AuxiliaryMode None
         $expectedNic = Get-AzNetworkInterface -Name $nicName -ResourceGroupName $rgname
 
         Assert-AreEqual $expectedNic.ResourceGroupName $actualNic.ResourceGroupName	

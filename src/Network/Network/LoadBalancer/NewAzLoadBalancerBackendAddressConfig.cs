@@ -74,13 +74,25 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public string LoadBalancerFrontendIPConfigurationId { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The admin state associated with the Backend Address config",
+            ValueFromPipelineByPropertyName = true)]
+        [PSArgumentCompleter(
+            "Up",
+            "Down",
+            "None"
+        )]
+        public string AdminState { get; set; }
+
         public override void Execute()
         {
             base.Execute();
 
             var loadBalancerBackendAddress = new PSLoadBalancerBackendAddress
             {
-                Name = this.Name
+                Name = this.Name,
+                AdminState = this.AdminState
             };
 
             if (string.Equals(ParameterSetName, "SetByIpAndVnet"))
