@@ -19,6 +19,8 @@
 -->
 ## Upcoming Release
 * Updated SDK via autorest.powershell.
+* Supported creationTime filter in Blob Inventory
+    - `New-AzStorageBlobInventoryPolicyRule`
 
 ## Version 5.10.1
 * Added warning messages for an upcoming breaking change that the output Permissions will be changed to a string when creating and updating a Queue access policy
