@@ -20,7 +20,6 @@
 
 ## Upcoming Release
 * Added support for Continuous 7 Days backup mode.
-* New-AzCosmosDBAccount cmdlet was updated with new parameter: EnablePartitionMerge.
 * Added new parameter `EnablePartitionMerg` to `Update-AzCosmosDBAccount` and `New-AzCosmosDBAccount`.
 
 ## Version 1.10.1
