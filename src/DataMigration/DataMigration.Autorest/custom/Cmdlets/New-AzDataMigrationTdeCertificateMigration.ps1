@@ -14,17 +14,17 @@
 # ----------------------------------------------------------------------------------
 <#
 .Synopsis
-Migrate TDE certificate from source SQL Server to the target Azure SQL Server.
+Migrate TDE certificate(s) from source SQL Server to the target Azure SQL Server.
 .Description
-Migrate TDE certificate from source SQL Server to the target Azure SQL Server.
+Migrate TDE certificate(s) from source SQL Server to the target Azure SQL Server.
 #>
 
 
 function New-AzDataMigrationTdeCertificateMigration
 {
     [OutputType([System.Boolean])]
-    [CmdletBinding(PositionalBinding=$false, ConfirmImpact='Medium')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Description('Migrate TDE certificate from source SQL Server to the target Azure SQL Server.')]
+    [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Description('Migrate TDE certificate(s) from source SQL Server to the target Azure SQL Server.')]
 
     param(
         [Parameter(ParameterSetName='CommandLine', Mandatory, HelpMessage='Required. Connection string for the source SQL instance, using the formal connection string format.')]
@@ -73,6 +73,11 @@ function New-AzDataMigrationTdeCertificateMigration
     process
     {
         try {
+            if($PSCmdlet.ShouldProcess("Migrate TDE certificate(s) from source SQL Server.") -eq $false)
+            {
+                return;
+            }
+
             $OSPlatform = Get-OSName
 
             if(-Not $OSPlatform.Contains("Windows"))

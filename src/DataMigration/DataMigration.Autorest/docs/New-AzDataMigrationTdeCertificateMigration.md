@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzDataMigrationTdeCertificateMigration
 
 ## SYNOPSIS
-Migrate TDE certificate from source SQL Server to the target Azure SQL Server.
+Migrate TDE certificate(s) from source SQL Server to the target Azure SQL Server.
 
 ## SYNTAX
 
@@ -16,11 +16,11 @@ Migrate TDE certificate from source SQL Server to the target Azure SQL Server.
 New-AzDataMigrationTdeCertificateMigration -DatabaseName <String[]> -NetworkShareDomain <String>
  -NetworkSharePath <String> -SourceSqlConnectionString <String> -TargetManagedInstanceName <String>
  -TargetResourceGroupName <String> -TargetSubscriptionId <String> [-NetworkSharePassword <String>]
- [-NetworkShareUserName <String>] [-PassThru] [<CommonParameters>]
+ [-NetworkShareUserName <String>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Migrate TDE certificate from source SQL Server to the target Azure SQL Server.
+Migrate TDE certificate(s) from source SQL Server to the target Azure SQL Server.
 
 ## EXAMPLES
 
@@ -186,6 +186,37 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
