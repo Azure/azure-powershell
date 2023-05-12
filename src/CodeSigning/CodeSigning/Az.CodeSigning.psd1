@@ -60,6 +60,8 @@ RequiredAssemblies = 'Azure.CodeSigning.Client.CryptoProvider.dll',
                'Azure.CodeSigning.Client.CryptoProvider.Models.dll', 
                'Azure.CodeSigning.Client.CryptoProvider.Utilities.dll', 
                'Azure.CodeSigning.dll', 
+               "System.Security.Cryptography.Pkcs.dll",
+               "System.Formats.Asn1.dll",
                'Polly.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
