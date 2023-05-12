@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Supported setting CORS rules in management plane cmdlets 
+    - `Update-AzStorageBlobServiceProperty`
+    - `Update-AzStorageFileServiceProperty`
 * Fixed an issue of StorageAccountName field in context object when the context is invalid 
     - `New-AzStorageContext`
 * Fixed an issue when a context does not have Crendentials field 
