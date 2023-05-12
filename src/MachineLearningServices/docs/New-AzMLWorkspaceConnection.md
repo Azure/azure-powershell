@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzMLWorkspaceConnection
 
 ## SYNOPSIS
-
+Creating or updating a new workspace connection
 
 ## SYNTAX
 
@@ -20,7 +20,7 @@ New-AzMLWorkspaceConnection -Name <String> -ResourceGroupName <String> -Workspac
 ```
 
 ## DESCRIPTION
-
+Creating or updating a new workspace connection
 
 ## EXAMPLES
 

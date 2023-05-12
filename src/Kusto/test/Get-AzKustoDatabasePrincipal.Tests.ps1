@@ -17,8 +17,8 @@ Describe 'Get-AzKustoDatabasePrincipal' {
     }
     It 'List' {
         $resourceGroupName = $env.resourceGroupName
-        $clusterName = $env.clusterName
-        $databaseName = $env.databaseName
+        $clusterName = $env.kustoClusterName
+        $databaseName = $env.kustoDatabaseName
 
         [array]$databasePrincipals = Get-AzKustoDatabasePrincipal -ResourceGroupName $resourceGroupName -ClusterName $clusterName -DatabaseName $databaseName
         $databasePrincipals.Count | Should -Be 2

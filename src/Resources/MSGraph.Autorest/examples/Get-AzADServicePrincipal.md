@@ -39,3 +39,11 @@ Get-AzADServicePrincipal -Filter "startsWith(DisplayName,'some-name')"
 ```
 
 Get service principal with filter
+
+### Example 7: Assign OdataCount to a variable
+```powershell
+Get-AzADServicePrincipal -First 10 -ConsistencyLevel eventual -Count -CountVariable 'result'
+$result
+```
+
+Assign OdataCount to a variable

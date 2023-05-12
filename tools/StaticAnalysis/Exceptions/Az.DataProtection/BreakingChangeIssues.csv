@@ -1,0 +1,2 @@
+"Module","ClassName","Target","Severity","ProblemId","Description","Remediation"
+"Az.DataProtection","Initialize-AzDataProtectionRestoreRequest","Initialize-AzDataProtectionRestoreRequest","0","1050","The parameter set '__AllParameterSets' for cmdlet 'Initialize-AzDataProtectionRestoreRequest' has been removed.","Add parameter set '__AllParameterSets' back to cmdlet 'Initialize-AzDataProtectionRestoreRequest'."

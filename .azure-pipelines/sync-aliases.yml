@@ -14,20 +14,29 @@ jobs:
       ./tools/Github/ParseWiki2Json.ps1 -ADOToken $(ADOToken)
     displayName: Update fabricbot.json file locally
       
-  - task: PowerShell@2
+  - pwsh: |
+      $gitStatus = git status -s
+      if (-not $gitStatus) {
+          Write-Host "The wiki has no changes ."
+          Write-Host "##vso[task.setvariable variable=ChangesDetected]false"
+      } else {
+          Write-Host "There are changes in the repository."
+          Write-Host "##vso[task.setvariable variable=ChangesDetected]true"
+      }
+    displayName: Check if Wiki table has any changes
+
+  - pwsh: |
+      git config --global user.email "65331932+azure-powershell-bot@users.noreply.github.com"
+      git config --global user.name "azure-powershell-bot"
+      git checkout -b "internal/sync-fabricbot-json"
+        
+      git add .
+      git commit -m "Sync fabricbot.json"
+        
+      git remote set-url origin https://azure-powershell-bot:$(BotAccessToken)@github.com/Azure/azure-powershell.git;
+      git push origin internal/sync-fabricbot-json --force
     displayName: Git commit and push
-    inputs:
-      targetType: inline
-      script: |
-        git config --global user.email "65331932+azure-powershell-bot@users.noreply.github.com"
-        git config --global user.name "azure-powershell-bot"
-        git checkout -b "internal/sync-fabricbot-json"
-        
-        git add .
-        git commit -m "Sync fabricbot.json"
-        
-        git remote set-url origin https://$(BotAccessToken)@github.com/Azure/azure-powershell.git;
-        git push origin internal/sync-fabricbot-json --force
+    condition: and(succeeded(), eq(variables['ChangesDetected'], 'true'))
   
   - pwsh: |
       $Title = "Sync fabricbot.json According To ADO Wiki Page"
@@ -36,4 +45,4 @@ jobs:
       $Description = "This PR sync taskType: scheduledAndTrigger part of fabricbot.json from table of Service-Team-Label-and-Contact-List in ADO wiki page"
       ./tools/Github/CreatePR.ps1 -Title $Title -HeadBranch $HeadBranch -BaseBranch $BaseBranch -BotAccessToken $(BotAccessToken) -Description $Description
     displayName: Create PR to main branch
-  
+    condition: and(succeeded(), eq(variables['ChangesDetected'], 'true'))

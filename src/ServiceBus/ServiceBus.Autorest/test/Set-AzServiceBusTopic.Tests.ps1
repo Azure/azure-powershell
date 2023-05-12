@@ -25,27 +25,9 @@ function AssertTopicUpdates{
     $expectedTopic.EnablePartitioning | Should -Be $actualTopic.EnablePartitioning
     $expectedTopic.EnableExpress | Should -Be $actualTopic.EnableExpress
     $expectedTopic.SupportOrdering | Should -Be $actualTopic.SupportOrdering
-
-    if ($expectedTopic.DefaultMessageTimeToLive -gt (New-TimeSpan -Days 10675197)){
-        $actualTopic.DefaultMessageTimeToLive | Should -BeGreaterOrEqual (New-TimeSpan -Days 10675197)
-    }
-    else{
-        $actualTopic.DefaultMessageTimeToLive | Should -Be $expectedTopic.DefaultMessageTimeToLive
-    }
-
-    if ($expectedTopic.DuplicateDetectionHistoryTimeWindow -gt (New-TimeSpan -Days 10675197)){
-        $actualTopic.DuplicateDetectionHistoryTimeWindow | Should -BeGreaterOrEqual (New-TimeSpan -Days 10675197)
-    }
-    else{
-        $actualTopic.DuplicateDetectionHistoryTimeWindow | Should -Be $expectedTopic.DuplicateDetectionHistoryTimeWindow
-    }
-
-    if ($expectedTopic.AutoDeleteOnIdle -gt (New-TimeSpan -Days 10675197)){
-        $actualTopic.AutoDeleteOnIdle | Should -BeGreaterOrEqual (New-TimeSpan -Days 10675197)
-    }
-    else{
-        $actualTopic.AutoDeleteOnIdle | Should -Be $expectedTopic.AutoDeleteOnIdle
-    }
+    $expectedTopic.DefaultMessageTimeToLive | Should -Be $actualTopic.DefaultMessageTimeToLive
+    $expectedTopic.DuplicateDetectionHistoryTimeWindow | Should -Be $actualTopic.DuplicateDetectionHistoryTimeWindow
+    $expectedTopic.AutoDeleteOnIdle | Should -Be $actualTopic.AutoDeleteOnIdle
 }
 
 Describe 'Set-AzServiceBusTopic' {

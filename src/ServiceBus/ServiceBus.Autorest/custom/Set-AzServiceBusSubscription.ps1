@@ -271,22 +271,6 @@ function Set-AzServiceBusSubscription{
                 $PSBoundParameters.Add('AsJob', $true)
             }
 
-            if ($subscription.DefaultMessageTimeToLive -gt (New-TimeSpan -Days 10675197)) {
-                $subscription.DefaultMessageTimeToLive = (New-TimeSpan -Days 10675197)
-            }
-
-            if ($subscription.AutoDeleteOnIdle -gt (New-TimeSpan -Days 10675197)) {
-                $subscription.AutoDeleteOnIdle = (New-TimeSpan -Days 10675197)
-            }
-
-            if ($subscription.DuplicateDetectionHistoryTimeWindow -gt (New-TimeSpan -Days 10675197)) {
-                $subscription.DuplicateDetectionHistoryTimeWindow = (New-TimeSpan -Days 10675197)
-            }
-
-            if ($subscription.LockDuration -gt (New-TimeSpan -Days 10675197)) {
-                $subscription.LockDuration = (New-TimeSpan -Days 10675197)
-            }
-
             if ($PSCmdlet.ShouldProcess("ServiceBus Subscription $($subscription.Name)", "Create or update")) {
                 Az.ServiceBus.private\New-AzServiceBusSubscription_CreateViaIdentity -InputObject $subscription -Parameter $subscription @PSBoundParameters
             }

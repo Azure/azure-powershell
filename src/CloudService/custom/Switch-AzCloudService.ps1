@@ -39,7 +39,7 @@ function Switch-AzCloudService {
     
         [Parameter(Mandatory=$true, ParameterSetName="CloudService")]
         [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.CloudService]
+        [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.CloudService]
         ${CloudService},
     
         [Parameter(Mandatory=$true, ParameterSetName="CloudServiceName")]

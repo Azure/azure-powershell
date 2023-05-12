@@ -525,7 +525,7 @@ public static int hashForArtifact(String artifact)
             $policyName = $MigratePrefix + $SiteName + "policy"
             $existingPolicyObject = Get-AzMigrateReplicationPolicy -PolicyName $policyName -ResourceGroupName $ResourceGroupName -ResourceName $VaultName -ErrorVariable notPresent -ErrorAction SilentlyContinue
             if (!$existingPolicyObject) {
-                $providerSpecificPolicy = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.VMwareCbtPolicyCreationInput]::new()
+                $providerSpecificPolicy = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.VMwareCbtPolicyCreationInput]::new()
                 $providerSpecificPolicy.AppConsistentFrequencyInMinute = 240
                 $providerSpecificPolicy.InstanceType = "VMwareCbt"
                 $providerSpecificPolicy.RecoveryPointHistoryInMinute = 360
@@ -549,7 +549,7 @@ public static int hashForArtifact(String artifact)
                         Write-Host $mappingName, " for ", $applianceName, $LogStringSkipping
                     }
                     else {
-                        $providerSpecificInput = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.VMwareCbtContainerMappingInput]::new()
+                        $providerSpecificInput = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.VMwareCbtContainerMappingInput]::new()
                         $providerSpecificInput.InstanceType = "VMwareCbt"
                         $providerSpecificInput.TargetLocation = $TargetRegion
                         if ([string]::IsNullOrEmpty($CacheStorageAccountId)) {

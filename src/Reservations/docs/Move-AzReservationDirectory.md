@@ -71,11 +71,11 @@ Move reservation order from one tenant to another
 ## PARAMETERS
 
 ### -Body
-.
+Request body for change directory of a reservation.
 To construct, see NOTES section for BODY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IChangeDirectoryRequest
+Type: Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IChangeDirectoryRequest
 Parameter Sets: Change, ChangeViaIdentity
 Aliases:
 
@@ -183,13 +183,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IChangeDirectoryRequest
+### Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IChangeDirectoryRequest
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationsIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IChangeDirectoryResponse
+### Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IChangeDirectoryResponse
 
 ## NOTES
 
@@ -200,12 +200,12 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-`BODY <IChangeDirectoryRequest>`: .
+`BODY <IChangeDirectoryRequest>`: Request body for change directory of a reservation.
   - `[DestinationTenantId <String>]`: Tenant id GUID that reservation order is to be transferred to
 
 `INPUTOBJECT <IReservationsIdentity>`: Identity Parameter
   - `[Id <String>]`: Resource identity path
-  - `[ReservationId <String>]`: Id of the Reservation Item
+  - `[ReservationId <String>]`: Id of the reservation item
   - `[ReservationOrderId <String>]`: Order Id of the reservation
   - `[SubscriptionId <String>]`: Id of the subscription
 

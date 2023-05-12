@@ -21,7 +21,7 @@ Describe 'New-AzApplicationInsightsWebTest' {
         $geoLocation += New-AzApplicationInsightsWebTestGeolocationObject -Location $env.geoLocation02
         $webtest = New-AzApplicationInsightsWebTest -ResourceGroup $env.resourceGroup -Name $env.standardWebTest02 -Location $env.location `
         -Tag @{"hidden-link:$($env.appInsights01Id)" = "Resource"} `
-        -RequestUrl "https://docs.microsoft.com/" -RequestHttpVerb "GET" -TestName $env.standardWebTest02 `
+        -RequestUrl "https://learn.microsoft.com/" -RequestHttpVerb "GET" -TestName $env.standardWebTest02 `
         -RuleExpectedHttpStatusCode 200 -Frequency 300 -Enabled -Timeout 120 -Kind 'standard' -RetryEnabled -GeoLocation $geoLocation
         $webtest.ProvisioningState | Should -Be 'Succeeded'
 
@@ -36,7 +36,7 @@ Describe 'New-AzApplicationInsightsWebTest' {
         $geoLocation += New-AzApplicationInsightsWebTestGeolocationObject -Location $env.geoLocation02
         $webtest = New-AzApplicationInsightsWebTest -ResourceGroup $env.resourceGroup -Name $env.basicWebTest03 -Location $env.location `
         -Tag @{"hidden-link:$($env.appInsights01Id)" = "Resource"} `
-        -RequestUrl "https://docs.microsoft.com/" -TestName $env.basicWebTest03 `
+        -RequestUrl "https://learn.microsoft.com/" -TestName $env.basicWebTest03 `
         -RuleExpectedHttpStatusCode 200 -Frequency 300 -Enabled -Timeout 120 -Kind 'ping' -RetryEnabled -GeoLocation $geoLocation
         $webtest.ProvisioningState | Should -Be 'Succeeded'
 

@@ -51,7 +51,7 @@ directive:
       verb: Set
     remove: true
   - where:
-      model-name: StorageMover|JobDefinition|Project|Endpoint|Agent
+      model-name: StorageMover|JobDefinition|Project|Endpoint|Agent|JobRun
     set:
       suppress-format: true
   - no-inline:

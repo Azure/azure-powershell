@@ -188,7 +188,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IMachineLearningServicesIdentity>: Identity Parameter
+`INPUTOBJECT <IMachineLearningServicesIdentity>`: Identity Parameter
   - `[ComputeName <String>]`: Name of the Azure Machine Learning compute.
   - `[ConnectionName <String>]`: Friendly name of the workspace connection
   - `[DeploymentName <String>]`: Inference deployment identifier.
@@ -203,7 +203,7 @@ INPUTOBJECT <IMachineLearningServicesIdentity>: Identity Parameter
   - `[Version <String>]`: Version identifier. This is case-sensitive.
   - `[WorkspaceName <String>]`: Name of Azure Machine Learning workspace.
 
-VALUE <IQuotaBaseProperties[]>: The list for update quota.
+`VALUE <IQuotaBaseProperties[]>`: The list for update quota.
   - `[Id <String>]`: Specifies the resource ID.
   - `[Limit <Int64?>]`: The maximum permitted quota of the resource.
   - `[Type <String>]`: Specifies the resource type.

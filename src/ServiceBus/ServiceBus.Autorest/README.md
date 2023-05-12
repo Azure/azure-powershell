@@ -172,14 +172,21 @@ directive:
       property-name: UserAssignedIdentity
 
   - where:
+      verb: New
       subject: Namespace
-    set:
-      subject: NamespaceV2
+    hide: true
 
   - where:
-      verb: New
-      subject: NamespaceV2
-    hide: true
+      verb: Get
+      subject: Namespace
+    set:
+      alias: Get-AzServiceBusNamespaceV2
+
+  - where:
+      verb: Remove
+      subject: Namespace
+    set:
+      alias: Remove-AzServiceBusNamespaceV2
 
 # Rules
   - where:

@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Monitor
-online version: https://learn.microsoft.com/powershell/module/az.ScheduledQueryRule/new-AzScheduledQueryRuleDimensionObject
+online version: https://learn.microsoft.com/powershell/module/Az.Monitor/new-AzScheduledQueryRuleDimensionObject
 schema: 2.0.0
 ---
 

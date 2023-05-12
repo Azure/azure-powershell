@@ -142,7 +142,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IPolicy
+### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IPolicy
 
 ## NOTES
 

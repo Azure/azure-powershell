@@ -33,7 +33,7 @@ Name
 UrlRewrite
 ```
 
-
+Create an in-memory object for UrlRewriteAction
 
 ## PARAMETERS
 
@@ -106,7 +106,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.UrlRewriteAction
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.UrlRewriteAction
 
 ## NOTES
 

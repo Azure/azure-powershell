@@ -29,34 +29,10 @@ function AssertQueueUpdates{
     $expectedQueue.EnablePartitioning | Should -Be $actualQueue.EnablePartitioning
     $expectedQueue.EnableExpress | Should -Be $actualQueue.EnableExpress
     $expectedQueue.RequiresSession | Should -Be $actualQueue.RequiresSession
-
-    if ($expectedQueue.DefaultMessageTimeToLive -gt (New-TimeSpan -Days 10675197)){
-        $actualQueue.DefaultMessageTimeToLive | Should -BeGreaterOrEqual (New-TimeSpan -Days 10675197)
-    }
-    else{
-        $actualQueue.DefaultMessageTimeToLive | Should -Be $expectedQueue.DefaultMessageTimeToLive
-    }
-
-    if ($expectedQueue.DuplicateDetectionHistoryTimeWindow -gt (New-TimeSpan -Days 10675197)){
-        $actualQueue.DuplicateDetectionHistoryTimeWindow | Should -BeGreaterOrEqual (New-TimeSpan -Days 10675197)
-    }
-    else{
-        $actualQueue.DuplicateDetectionHistoryTimeWindow | Should -Be $expectedQueue.DuplicateDetectionHistoryTimeWindow
-    }
-
-    if ($expectedQueue.LockDuration -gt (New-TimeSpan -Days 10675197)){
-        $actualQueue.LockDuration | Should -BeGreaterOrEqual (New-TimeSpan -Days 10675197)
-    }
-    else{
-        $actualQueue.LockDuration | Should -Be $expectedQueue.LockDuration
-    }
-
-    if ($expectedQueue.AutoDeleteOnIdle -gt (New-TimeSpan -Days 10675197)){
-        $actualQueue.AutoDeleteOnIdle | Should -BeGreaterOrEqual (New-TimeSpan -Days 10675197)
-    }
-    else{
-        $actualQueue.AutoDeleteOnIdle | Should -Be $expectedQueue.AutoDeleteOnIdle
-    }
+    $expectedQueue.DefaultMessageTimeToLive | Should -Be $actualQueue.DefaultMessageTimeToLive
+    $expectedQueue.DuplicateDetectionHistoryTimeWindow | Should -Be $actualQueue.DuplicateDetectionHistoryTimeWindow
+    $expectedQueue.LockDuration | Should -Be $actualQueue.LockDuration
+    $expectedQueue.AutoDeleteOnIdle | Should -Be $actualQueue.AutoDeleteOnIdle
 }
 
 Describe 'Set-AzServiceBusQueue' {

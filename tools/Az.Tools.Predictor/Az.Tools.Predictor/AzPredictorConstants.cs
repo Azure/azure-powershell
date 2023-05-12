@@ -12,6 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Collections.Immutable;
+
 namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 {
     /// <summary>
@@ -20,9 +25,14 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
     internal static class AzPredictorConstants
     {
         /// <summary>
+        /// The substring that an Az cmdlet has.
+        /// </summary>
+        public const string AzCommandMoniker = "Az";
+
+        /// <summary>
         /// The value to check to determine if it's an Az command.
         /// </summary>
-        public const string AzCommandMoniker = "-Az";
+        public const string AzComandSeparator = $"{PowerShellCommandSeparator}{AzCommandMoniker}";
 
         /// <summary>
         /// The value of number of cohort groups.
@@ -57,7 +67,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// <summary>
         /// The character that separates verb and noun in the cmdlet.
         /// </summary>
-        public const string CommandSeparator  = "-";
+        public const string PowerShellCommandSeparator = "-";
 
         /// <summary>
         /// The special parameter name for "-" which is not a parameter name but an indication of a parameter.
@@ -103,6 +113,119 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// </summary>
         // See AzureDirectoryName in https://github.com/Azure/azure-powershell/blob/master/src/Accounts/Authentication/Properties/Resources.resx
         public const string AzureProfileDirectoryName = ".Azure";
+
+        /// <summary>
+        /// The list of the PowerShell verbs that can be used in Az cmdlets.
+        /// See https://learn.microsoft.com/en-us/powershell/scripting/developer/cmdlet/approved-verbs-for-windows-powershell-commands
+        /// </summary>
+        public static IReadOnlySet<string> ApprovedPowerShellVerbs = new HashSet<string>(new string[] {
+            // Common Verbs
+            "Add",
+            "Clear",
+            "Close",
+            "Copy",
+            "Enter",
+            "Exit",
+            "Find",
+            "Format",
+            "Get",
+            "Hide",
+            "Join",
+            "Lock",
+            "Move",
+            "New",
+            "Open",
+            "Optimize",
+            "Pop",
+            "Push",
+            "Redo",
+            "Remove",
+            "Rename",
+            "Reset",
+            "Resize",
+            "Search",
+            "Select",
+            "Set",
+            "Show",
+            "Skip",
+            "Split",
+            "Step",
+            "Switch",
+            "Undo",
+            "Unlock",
+            "Watch",
+            // Communication Verbs
+            "Connect",
+            "Disconnect",
+            "Read",
+            "Receive",
+            "Send",
+            "Write",
+            // Data Verbs
+            "Backup",
+            "Checkpoint",
+            "Compare",
+            "Convert",
+            "ConvertFrom",
+            "ConvertTo",
+            "Dismount",
+            "Edit",
+            "Expand",
+            "Export",
+            "Group",
+            "Import",
+            "Initialize",
+            "Limit",
+            "Merge",
+            "Mount",
+            "Out",
+            "Publish",
+            "Restore",
+            "Save",
+            "Sync",
+            "Unpublish",
+            "Update",
+            // Diagnostic Verbs
+            "Debug",
+            "Measure",
+            "Ping",
+            "Repair",
+            "Resolve",
+            "Test",
+            "Trace",
+            // Lifecycle Verbs
+            "Approve",
+            "Assert",
+            "Build",
+            "Complete",
+            "Confirm",
+            "Deny",
+            "Deploy",
+            "Disable",
+            "Enable",
+            "Install",
+            "Invoke",
+            "Register",
+            "Request",
+            "Restart",
+            "Resume",
+            "Start",
+            "Stop",
+            "Submit",
+            "Suspend",
+            "Uninstall",
+            "Unregister",
+            "Wait",
+            // Security Verbs
+            "Block",
+            "Grant",
+            "Protect",
+            "Revoke",
+            "Unblock",
+            "Unprotect",
+            // Other Verbs
+            "Use"
+        }, StringComparer.OrdinalIgnoreCase);
     }
 }
 

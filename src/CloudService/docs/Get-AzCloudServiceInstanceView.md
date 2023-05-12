@@ -27,11 +27,14 @@ Gets the status of a cloud service.
 $cloudServiceInstanceView = Get-AzCloudServiceInstanceView -ResourceGroupName "ContosOrg" -CloudServiceName "ContosoCS"
 
 $cloudServiceInstanceView
+$cloudServiceInstanceView.ToJsonString()
+```
+
+```output
 RoleInstanceStatusesSummary                                   Statuses
 ---------------------------                                   --------
-{{ProvisioningState/succeeded : 4}, {PowerState/started : 4}} {Provisioning succeeded, Started, Current Upgrade Domain of cloud service is -1., Max Upgrade Domain of cloud service is 1.}
 
-$cloudServiceInstanceView.ToJsonString()
+{{ProvisioningState/succeeded : 4}, {PowerState/started : 4}} {Provisioning succeeded, Started, Current Upgrade Domain of cloud service is -1., Max Upgrade Domain of cloud service is 1.}
 {
   "roleInstance": {
     "statusesSummary": [
@@ -144,7 +147,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudServiceInstanceView
+### Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.ICloudServiceInstanceView
 
 ## NOTES
 

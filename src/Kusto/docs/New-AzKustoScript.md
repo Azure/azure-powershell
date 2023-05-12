@@ -15,9 +15,9 @@ Creates a Kusto database script.
 ### CreateExpanded (Default)
 ```
 New-AzKustoScript -ClusterName <String> -DatabaseName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-ContinueOnError] [-ForceUpdateTag <String>] [-ScriptContent <String>] [-ScriptUrl <String>]
- [-ScriptUrlSasToken <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-SubscriptionId <String>] [-ContinueOnError] [-ForceUpdateTag <String>] [-ScriptContent <String>]
+ [-ScriptUrl <String>] [-ScriptUrlSasToken <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Create
@@ -44,7 +44,6 @@ testnewkustocluster/mykustodatabase/newkustoscript Microsoft.Kusto/Clusters/Data
 ```
 
 The above command creates a Kusto database script named "newkustocript" in the resource group "testrg".
-
 
 ## PARAMETERS
 
@@ -109,7 +108,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -174,7 +174,7 @@ Class representing a database script.
 To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.IScript
+Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IScript
 Parameter Sets: Create
 Aliases:
 
@@ -219,6 +219,7 @@ Accept wildcard characters: False
 
 ### -ScriptUrl
 The url to the KQL script blob file.
+Must not be used together with scriptContent property
 
 ```yaml
 Type: System.String
@@ -233,7 +234,8 @@ Accept wildcard characters: False
 ```
 
 ### -ScriptUrlSasToken
-The SaS token.
+The SaS token that provide read access to the file which contain the script.
+Must be provided when using scriptUrl property.
 
 ```yaml
 Type: System.String
@@ -299,11 +301,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.IScript
+### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IScript
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.IScript
+### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IScript
 
 ## NOTES
 
@@ -314,18 +316,19 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-PARAMETER <IScript>: Class representing a database script.
-- `[ContinueOnError <Boolean?>]`: Flag that indicates whether to continue if one of the command fails.
-- `[Content <String>]`: The script content. This property should be used when the script is provide inline and not through file in a SA. Must not be used together with scriptUrl and scriptUrlSasToken properties.
-- `[ForceUpdateTag <String>]`: A unique string. If changed the script will be applied again.
-- `[SystemDataCreatedAt <DateTime?>]`: The timestamp of resource creation (UTC).
-- `[SystemDataCreatedBy <String>]`: The identity that created the resource.
-- `[SystemDataCreatedByType <CreatedByType?>]`: The type of identity that created the resource.
-- `[SystemDataLastModifiedAt <DateTime?>]`: The timestamp of resource last modification (UTC)
-- `[SystemDataLastModifiedBy <String>]`: The identity that last modified the resource.
-- `[SystemDataLastModifiedByType <CreatedByType?>]`: The type of identity that last modified the resource.
-- `[Url <String>]`: The url to the KQL script blob file. Must not be used together with scriptContent property
-- `[UrlSasToken <String>]`: The SaS token.
+`PARAMETER <IScript>`: Class representing a database script.
+  - `[AzureAsyncOperation <String>]`: 
+  - `[Content <String>]`: The script content. This property should be used when the script is provide inline and not through file in a SA. Must not be used together with scriptUrl and scriptUrlSasToken properties.
+  - `[ContinueOnError <Boolean?>]`: Flag that indicates whether to continue if one of the command fails.
+  - `[ForceUpdateTag <String>]`: A unique string. If changed the script will be applied again.
+  - `[SystemDataCreatedAt <DateTime?>]`: The timestamp of resource creation (UTC).
+  - `[SystemDataCreatedBy <String>]`: The identity that created the resource.
+  - `[SystemDataCreatedByType <CreatedByType?>]`: The type of identity that created the resource.
+  - `[SystemDataLastModifiedAt <DateTime?>]`: The timestamp of resource last modification (UTC)
+  - `[SystemDataLastModifiedBy <String>]`: The identity that last modified the resource.
+  - `[SystemDataLastModifiedByType <CreatedByType?>]`: The type of identity that last modified the resource.
+  - `[Url <String>]`: The url to the KQL script blob file. Must not be used together with scriptContent property
+  - `[UrlSasToken <String>]`: The SaS token that provide read access to the file which contain the script. Must be provided when using scriptUrl property.
 
 ## RELATED LINKS
 

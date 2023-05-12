@@ -64,11 +64,16 @@ function Update-AzADUser {
         [System.Boolean]
         [Alias('EnableAccount')]
         # true for enabling the account; otherwise, false.
+        # Always true when combined with `-Password`.
+        # `-AccountEnabled $false` is ignored when changing the account's password.
         ${AccountEnabled},
         
         [Parameter()]
         [SecureString]
-        # Password for the user. It must meet the tenant's password complexity requirements. It is recommended to set a strong password.
+        # The password for the user. This property is required when a user is created. 
+        # It can be updated, but the user will be required to change the password on the next login. 
+        # The password must satisfy minimum requirements as speci./fied by the user's passwordPolicies property.
+        # By default, a strong password is required. When changing the password using this method, AccountEnabled is set to true.
         ${Password},
 
         [Parameter()]

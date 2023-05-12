@@ -26,6 +26,7 @@ Description for Gets the application settings of a static site.
 ```powershell
 Get-AzStaticWebAppFunctionAppSetting -ResourceGroupName azure-rg-test -Name staticweb-portal04
 ```
+
 ```output
 Kind Name        Type
 ---- ----        ----

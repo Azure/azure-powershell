@@ -15,9 +15,12 @@ Updates the applied scopes of the `Reservation`.
 ### UpdateExpanded (Default)
 ```
 Update-AzReservation -Id <String> -OrderId <String> [-AppliedScope <String[]>]
- [-AppliedScopeType <AppliedScopeType>] [-InstanceFlexibility <InstanceFlexibility>] [-Name <String>] [-Renew]
- [-RenewProperty <IPatchPropertiesRenewProperties>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-AppliedScopePropertyDisplayName <String>] [-AppliedScopePropertyManagementGroupId <String>]
+ [-AppliedScopePropertyResourceGroupId <String>] [-AppliedScopePropertySubscriptionId <String>]
+ [-AppliedScopePropertyTenantId <String>] [-AppliedScopeType <AppliedScopeType>]
+ [-InstanceFlexibility <InstanceFlexibility>] [-Name <String>] [-Renew]
+ [-RenewProperty <IPatchPropertiesRenewProperties>] [-ReviewDateTime <DateTime>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Update
@@ -35,9 +38,12 @@ Update-AzReservation -InputObject <IReservationsIdentity> -Reservation <IPatch> 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzReservation -InputObject <IReservationsIdentity> [-AppliedScope <String[]>]
- [-AppliedScopeType <AppliedScopeType>] [-InstanceFlexibility <InstanceFlexibility>] [-Name <String>] [-Renew]
- [-RenewProperty <IPatchPropertiesRenewProperties>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-AppliedScopePropertyDisplayName <String>] [-AppliedScopePropertyManagementGroupId <String>]
+ [-AppliedScopePropertyResourceGroupId <String>] [-AppliedScopePropertySubscriptionId <String>]
+ [-AppliedScopePropertyTenantId <String>] [-AppliedScopeType <AppliedScopeType>]
+ [-InstanceFlexibility <InstanceFlexibility>] [-Name <String>] [-Renew]
+ [-RenewProperty <IPatchPropertiesRenewProperties>] [-ReviewDateTime <DateTime>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -83,9 +89,85 @@ For Single scope, pass in applied scope id and for Single scope with resource gr
 ### -AppliedScope
 List of the subscriptions that the benefit will be applied.
 Do not specify if AppliedScopeType is Shared.
+This property will be deprecated and replaced by appliedScopeProperties instead for Single AppliedScopeType.
 
 ```yaml
 Type: System.String[]
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AppliedScopePropertyDisplayName
+Display name
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AppliedScopePropertyManagementGroupId
+Fully-qualified identifier of the management group where the benefit must be applied.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AppliedScopePropertyResourceGroupId
+Fully-qualified identifier of the resource group.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AppliedScopePropertySubscriptionId
+Fully-qualified identifier of the subscription.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AppliedScopePropertyTenantId
+Tenant ID where the savings plan should apply benefit.
+
+```yaml
+Type: System.String
 Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
@@ -142,7 +224,7 @@ Accept wildcard characters: False
 ```
 
 ### -Id
-Id of the Reservation Item
+Id of the reservation item
 
 ```yaml
 Type: System.String
@@ -189,7 +271,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name of the Reservation
+Display name of the reservation
 
 ```yaml
 Type: System.String
@@ -253,7 +335,7 @@ Accept wildcard characters: False
 To construct, see NOTES section for RENEWPROPERTY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IPatchPropertiesRenewProperties
+Type: Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IPatchPropertiesRenewProperties
 Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
@@ -265,11 +347,11 @@ Accept wildcard characters: False
 ```
 
 ### -Reservation
-.
+The request for reservation patch
 To construct, see NOTES section for RESERVATION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IPatch
+Type: Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IPatch
 Parameter Sets: Update, UpdateViaIdentity
 Aliases:
 
@@ -277,6 +359,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -ReviewDateTime
+This is the date-time when the Azure hybrid benefit needs to be reviewed.
+
+```yaml
+Type: System.DateTime
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -316,13 +413,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IPatch
+### Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IPatch
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationsIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IReservationResponse
+### Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IReservationResponse
 
 ## NOTES
 
@@ -335,45 +432,63 @@ To create the parameters described below, construct a hash table containing the 
 
 `INPUTOBJECT <IReservationsIdentity>`: Identity Parameter
   - `[Id <String>]`: Resource identity path
-  - `[ReservationId <String>]`: Id of the Reservation Item
+  - `[ReservationId <String>]`: Id of the reservation item
   - `[ReservationOrderId <String>]`: Order Id of the reservation
   - `[SubscriptionId <String>]`: Id of the subscription
 
 `RENEWPROPERTY <IPatchPropertiesRenewProperties>`: .
-  - `[PurchaseProperty <IPurchaseRequest>]`: 
+  - `[PurchaseProperty <IPurchaseRequest>]`: The request for reservation purchase
+    - `[AppliedScopePropertyDisplayName <String>]`: Display name
+    - `[AppliedScopePropertyManagementGroupId <String>]`: Fully-qualified identifier of the management group where the benefit must be applied.
+    - `[AppliedScopePropertyResourceGroupId <String>]`: Fully-qualified identifier of the resource group.
+    - `[AppliedScopePropertySubscriptionId <String>]`: Fully-qualified identifier of the subscription.
+    - `[AppliedScopePropertyTenantId <String>]`: Tenant ID where the savings plan should apply benefit.
     - `[AppliedScopeType <AppliedScopeType?>]`: Type of the Applied Scope.
-    - `[AppliedScopes <String[]>]`: List of the subscriptions that the benefit will be applied. Do not specify if AppliedScopeType is Shared.
+    - `[AppliedScopes <String[]>]`: List of the subscriptions that the benefit will be applied. Do not specify if AppliedScopeType is Shared. This property will be deprecated and replaced by appliedScopeProperties instead for Single AppliedScopeType.
     - `[BillingPlan <ReservationBillingPlan?>]`: Represent the billing plans.
-    - `[BillingScopeId <String>]`: Subscription that will be charged for purchasing Reservation
-    - `[DisplayName <String>]`: Friendly name of the Reservation
+    - `[BillingScopeId <String>]`: Subscription that will be charged for purchasing reservation or savings plan
+    - `[DisplayName <String>]`: Friendly name of the reservation
     - `[InstanceFlexibility <InstanceFlexibility?>]`: Turning this on will apply the reservation discount to other VMs in the same VM size group. Only specify for VirtualMachines reserved resource type.
-    - `[Location <String>]`: The Azure Region where the reserved resource lives.
-    - `[Quantity <Int32?>]`: Quantity of the SKUs that are part of the Reservation.
+    - `[Location <String>]`: The Azure region where the reserved resource lives.
+    - `[Quantity <Int32?>]`: Quantity of the skus that are part of the reservation.
     - `[Renew <Boolean?>]`: Setting this to true will automatically purchase a new reservation on the expiration date time.
     - `[ReservedResourceType <ReservedResourceType?>]`: The type of the resource that is being reserved.
+    - `[ReviewDateTime <DateTime?>]`: This is the date-time when the Azure hybrid benefit needs to be reviewed.
     - `[Sku <String>]`: 
-    - `[Term <ReservationTerm?>]`: Represent the term of Reservation.
+    - `[Term <ReservationTerm?>]`: Represent the term of reservation.
 
-`RESERVATION <IPatch>`: .
-  - `[AppliedScope <String[]>]`: List of the subscriptions that the benefit will be applied. Do not specify if AppliedScopeType is Shared.
+`RESERVATION <IPatch>`: The request for reservation patch
+  - `[AppliedScope <String[]>]`: List of the subscriptions that the benefit will be applied. Do not specify if AppliedScopeType is Shared. This property will be deprecated and replaced by appliedScopeProperties instead for Single AppliedScopeType.
+  - `[AppliedScopePropertyDisplayName <String>]`: Display name
+  - `[AppliedScopePropertyManagementGroupId <String>]`: Fully-qualified identifier of the management group where the benefit must be applied.
+  - `[AppliedScopePropertyResourceGroupId <String>]`: Fully-qualified identifier of the resource group.
+  - `[AppliedScopePropertySubscriptionId <String>]`: Fully-qualified identifier of the subscription.
+  - `[AppliedScopePropertyTenantId <String>]`: Tenant ID where the savings plan should apply benefit.
   - `[AppliedScopeType <AppliedScopeType?>]`: Type of the Applied Scope.
   - `[InstanceFlexibility <InstanceFlexibility?>]`: Turning this on will apply the reservation discount to other VMs in the same VM size group. Only specify for VirtualMachines reserved resource type.
-  - `[Name <String>]`: Name of the Reservation
+  - `[Name <String>]`: Display name of the reservation
   - `[Renew <Boolean?>]`: Setting this to true will automatically purchase a new reservation on the expiration date time.
   - `[RenewProperty <IPatchPropertiesRenewProperties>]`: 
-    - `[PurchaseProperty <IPurchaseRequest>]`: 
+    - `[PurchaseProperty <IPurchaseRequest>]`: The request for reservation purchase
+      - `[AppliedScopePropertyDisplayName <String>]`: Display name
+      - `[AppliedScopePropertyManagementGroupId <String>]`: Fully-qualified identifier of the management group where the benefit must be applied.
+      - `[AppliedScopePropertyResourceGroupId <String>]`: Fully-qualified identifier of the resource group.
+      - `[AppliedScopePropertySubscriptionId <String>]`: Fully-qualified identifier of the subscription.
+      - `[AppliedScopePropertyTenantId <String>]`: Tenant ID where the savings plan should apply benefit.
       - `[AppliedScopeType <AppliedScopeType?>]`: Type of the Applied Scope.
-      - `[AppliedScopes <String[]>]`: List of the subscriptions that the benefit will be applied. Do not specify if AppliedScopeType is Shared.
+      - `[AppliedScopes <String[]>]`: List of the subscriptions that the benefit will be applied. Do not specify if AppliedScopeType is Shared. This property will be deprecated and replaced by appliedScopeProperties instead for Single AppliedScopeType.
       - `[BillingPlan <ReservationBillingPlan?>]`: Represent the billing plans.
-      - `[BillingScopeId <String>]`: Subscription that will be charged for purchasing Reservation
-      - `[DisplayName <String>]`: Friendly name of the Reservation
+      - `[BillingScopeId <String>]`: Subscription that will be charged for purchasing reservation or savings plan
+      - `[DisplayName <String>]`: Friendly name of the reservation
       - `[InstanceFlexibility <InstanceFlexibility?>]`: Turning this on will apply the reservation discount to other VMs in the same VM size group. Only specify for VirtualMachines reserved resource type.
-      - `[Location <String>]`: The Azure Region where the reserved resource lives.
-      - `[Quantity <Int32?>]`: Quantity of the SKUs that are part of the Reservation.
+      - `[Location <String>]`: The Azure region where the reserved resource lives.
+      - `[Quantity <Int32?>]`: Quantity of the skus that are part of the reservation.
       - `[Renew <Boolean?>]`: Setting this to true will automatically purchase a new reservation on the expiration date time.
       - `[ReservedResourceType <ReservedResourceType?>]`: The type of the resource that is being reserved.
+      - `[ReviewDateTime <DateTime?>]`: This is the date-time when the Azure hybrid benefit needs to be reviewed.
       - `[Sku <String>]`: 
-      - `[Term <ReservationTerm?>]`: Represent the term of Reservation.
+      - `[Term <ReservationTerm?>]`: Represent the term of reservation.
+  - `[ReviewDateTime <DateTime?>]`: This is the date-time when the Azure hybrid benefit needs to be reviewed.
 
 ## RELATED LINKS
 

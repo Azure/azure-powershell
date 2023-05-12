@@ -23,7 +23,7 @@ Create an in-memory object for PipelineJob.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.PipelineJob
 .Link
-https://learn.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspacePipelineJobObject
+https://learn.microsoft.com/powershell/module/az.MachineLearningServices/new-AzMLWorkspacePipelineJobObject
 #>
 function New-AzMLWorkspacePipelineJobObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.PipelineJob')]

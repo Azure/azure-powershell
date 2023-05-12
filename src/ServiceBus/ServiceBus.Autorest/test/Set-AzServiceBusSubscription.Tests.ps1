@@ -29,34 +29,10 @@ function AssertSubscriptionUpdates{
     $expectedSub.ClientId | Should -Be $actualSub.ClientId
     $expectedSub.IsShared | Should -Be $actualSub.IsShared
     $expectedSub.IsDurable | Should -Be $actualSub.IsDurable
-
-    if ($expectedSub.DefaultMessageTimeToLive -gt (New-TimeSpan -Days 10675197)){
-        $actualSub.DefaultMessageTimeToLive | Should -BeGreaterOrEqual (New-TimeSpan -Days 10675197)
-    }
-    else{
-        $actualSub.DefaultMessageTimeToLive | Should -Be $expectedSub.DefaultMessageTimeToLive
-    }
-
-    if ($expectedSub.DuplicateDetectionHistoryTimeWindow -gt (New-TimeSpan -Days 10675197)){
-        $actualSub.DuplicateDetectionHistoryTimeWindow | Should -BeGreaterOrEqual (New-TimeSpan -Days 10675197)
-    }
-    else{
-        $actualSub.DuplicateDetectionHistoryTimeWindow | Should -Be $expectedSub.DuplicateDetectionHistoryTimeWindow
-    }
-
-    if ($expectedSub.LockDuration -gt (New-TimeSpan -Days 10675197)){
-        $actualSub.LockDuration | Should -BeGreaterOrEqual (New-TimeSpan -Days 10675197)
-    }
-    else{
-        $actualSub.LockDuration | Should -Be $expectedSub.LockDuration
-    }
-
-    if ($expectedSub.AutoDeleteOnIdle -gt (New-TimeSpan -Days 10675197)){
-        $actualSub.AutoDeleteOnIdle | Should -BeGreaterOrEqual (New-TimeSpan -Days 10675197)
-    }
-    else{
-        $actualSub.AutoDeleteOnIdle | Should -Be $expectedSub.AutoDeleteOnIdle
-    }
+    $expectedSub.DefaultMessageTimeToLive | Should -Be $actualSub.DefaultMessageTimeToLive
+    $expectedSub.DuplicateDetectionHistoryTimeWindow | Should -Be $actualSub.DuplicateDetectionHistoryTimeWindow
+    $expectedSub.LockDuration | Should -Be $actualSub.LockDuration
+    $expectedSub.AutoDeleteOnIdle | Should -Be $actualSub.AutoDeleteOnIdle
 }
 
 Describe 'Set-AzServiceBusSubscription' {

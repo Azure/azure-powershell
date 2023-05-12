@@ -51,6 +51,7 @@ Description for Gets the details of the user provided function app registered wi
 ```powershell
 Get-AzStaticWebAppUserProvidedFunctionApp -ResourceGroupName resourceGroup -Name staticweb00
 ```
+
 ```output
 Kind Name               Type
 ---- ----               ----
@@ -63,6 +64,7 @@ This command lists the details of the user provided function apps registered wit
 ```powershell
 Get-AzStaticWebAppUserProvidedFunctionApp -ResourceGroupName resourceGroup -Name staticweb00 -EnvironmentName 'default'
 ```
+
 ```output
 Kind Name               Type
 ---- ----               ----
@@ -75,6 +77,7 @@ This command lists the details of the user provided function apps registered wit
 ```powershell
 Get-AzStaticWebAppUserProvidedFunctionApp -ResourceGroupName resourceGroup -Name staticweb00 -FunctionAppName $env.functionAppName01
 ```
+
 ```output
 Kind Name               Type
 ---- ----               ----
@@ -87,6 +90,7 @@ This command lists the details of the user provided function apps registered.
 ```powershell
 Get-AzStaticWebAppUserProvidedFunctionApp -ResourceGroupName resourceGroup -Name staticweb00 -EnvironmentName 'default' -FunctionAppName $env.functionAppName01
 ```
+
 ```output
 Kind Name               Type
 ---- ----               ----
@@ -99,6 +103,7 @@ This command gets the details of the user provided function app registered with 
 ```powershell
 Register-AzStaticWebAppUserProvidedFunctionApp -ResourceGroupName lucas-rg-test -Name staticweb-pwsh02 -FunctionAppName functionapp-portal02 -FunctionAppResourceId '/subscriptions/xxxxxx-xx-xxx-xxxx-xxxxx/resourcegroups/xxx-xx-xxxx/providers/Microsoft.Web/sites/functionapp-portal02' -FunctionAppRegion 'Central US' -EnvironmentName 5 | Get-AzStaticWebAppUserProvidedFunctionApp 
 ```
+
 ```output
 Kind Name               Type
 ---- ----               ----
