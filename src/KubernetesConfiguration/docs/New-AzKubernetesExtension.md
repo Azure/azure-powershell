@@ -15,12 +15,12 @@ Create a new Kubernetes Cluster Extension.
 ```
 New-AzKubernetesExtension -ClusterName <String> -ClusterType <String> -Name <String>
  -ResourceGroupName <String> -ExtensionType <String> [-SubscriptionId <String>]
- [-AkAssignedIdentityType <AksIdentityType>] [-AutoUpgradeMinorVersion] [-ClusterReleaseNamespace <String>]
+ [-AkAssignedIdentityType <AksIdentityType>] [-AutoUpgradeMinorVersion]
  [-ConfigurationProtectedSetting <Hashtable>] [-ConfigurationSetting <Hashtable>]
- [-IdentityType <ResourceIdentityType>] [-NamespaceTargetNamespace <String>] [-PlanName <String>]
- [-PlanProduct <String>] [-PlanPromotionCode <String>] [-PlanPublisher <String>] [-PlanVersion <String>]
- [-ReleaseTrain <String>] [-Version <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-IdentityType <ResourceIdentityType>] [-PlanName <String>] [-PlanProduct <String>]
+ [-PlanPromotionCode <String>] [-PlanPublisher <String>] [-PlanVersion <String>] [-ReleaseNamespace <String>]
+ [-ReleaseTrain <String>] [-TargetNamespace <String>] [-Version <String>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -43,7 +43,7 @@ Create a new Kubernetes Cluster Extension.
 
 ### Example 2: Create a Flux Cluster Extension.
 ```powershell
-New-AzKubernetesExtension -ClusterName azpstest_cluster_arc -ClusterType ConnectedClusters -Name flux -ResourceGroupName azps_test_group -ExtensionType microsoft.flux -AutoUpgradeMinorVersion -ClusterReleaseNamespace flux-system -IdentityType 'SystemAssigned'
+New-AzKubernetesExtension -ClusterName azpstest_cluster_arc -ClusterType ConnectedClusters -Name flux -ResourceGroupName azps_test_group -ExtensionType microsoft.flux -AutoUpgradeMinorVersion -ReleaseNamespace flux-system -IdentityType 'SystemAssigned'
 ```
 
 ```output
@@ -110,22 +110,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ClusterReleaseNamespace
-Namespace where the extension Release must be placed, for a Cluster scoped extension.
-If this namespace does not exist, it will be created
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -240,22 +224,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -NamespaceTargetNamespace
-Namespace where the extension will be created for an Namespace scoped extension.
-If this namespace does not exist, it will be created
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -NoWait
 Run the command asynchronously
 
@@ -351,6 +319,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ReleaseNamespace
+Namespace where the extension Release must be placed, for a Cluster scoped extension.
+If this namespace does not exist, it will be created
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ReleaseTrain
 ReleaseTrain this extension participates in for auto-upgrade (e.g.
 Stable, Preview, etc.) - only if autoUpgradeMinorVersion is 'true'.
@@ -394,6 +378,22 @@ Aliases:
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TargetNamespace
+Namespace where the extension will be created for an Namespace scoped extension.
+If this namespace does not exist, it will be created
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

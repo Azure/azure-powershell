@@ -50,48 +50,48 @@ https://learn.microsoft.com/powershell/module/az.kubernetesconfiguration/get-azk
 function Get-AzKubernetesConfigurationFlux {
     [Alias('Get-AzK8sConfigurationFlux')]
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.IFluxConfiguration])]
-    [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
+    [CmdletBinding(DefaultParameterSetName = 'List', PositionalBinding = $false)]
     param(
-        [Parameter(ParameterSetName='Get', Mandatory)]
-        [Parameter(ParameterSetName='List', Mandatory)]
+        [Parameter(ParameterSetName = 'Get', Mandatory)]
+        [Parameter(ParameterSetName = 'List', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Path')]
         [System.String]
         # The name of the kubernetes cluster.
         ${ClusterName},
 
-        [Parameter(ParameterSetName='Get', Mandatory)]
-        [Parameter(ParameterSetName='List', Mandatory)]
-        [ValidateSet('ConnectedClusters', 'ManagedClusters')]
+        [Parameter(ParameterSetName = 'Get', Mandatory)]
+        [Parameter(ParameterSetName = 'List', Mandatory)]
+        [ArgumentCompleter({ 'ManagedClusters', 'ConnectedClusters', 'ProvisionedClusters' })]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Path')]
         [System.String]
         # The Kubernetes cluster resource name - i.e.
         # managedClusters, connectedClusters, provisionedClusters.
         ${ClusterType},
 
-        [Parameter(ParameterSetName='Get', Mandatory)]
+        [Parameter(ParameterSetName = 'Get', Mandatory)]
         [Alias('FluxConfigurationName')]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Path')]
         [System.String]
         # Name of the Flux Configuration.
         ${Name},
 
-        [Parameter(ParameterSetName='Get', Mandatory)]
-        [Parameter(ParameterSetName='List', Mandatory)]
+        [Parameter(ParameterSetName = 'Get', Mandatory)]
+        [Parameter(ParameterSetName = 'List', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Path')]
         [System.String]
         # The name of the resource group.
         # The name is case insensitive.
         ${ResourceGroupName},
 
-        [Parameter(ParameterSetName='Get')]
-        [Parameter(ParameterSetName='List')]
+        [Parameter(ParameterSetName = 'Get')]
+        [Parameter(ParameterSetName = 'List')]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.DefaultInfo(Script = '(Get-AzContext).Subscription.Id')]
         [System.String[]]
         # The ID of the target subscription.
         ${SubscriptionId},
 
-        [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
+        [Parameter(ParameterSetName = 'GetViaIdentity', Mandatory, ValueFromPipeline)]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.IKubernetesConfigurationIdentity]
         # Identity Parameter
@@ -148,13 +148,31 @@ function Get-AzKubernetesConfigurationFlux {
     )
 
     process {
-        if ($ClusterType -eq 'ManagedClusters') {
-            $PSBoundParameters.Add('ClusterRp', 'Microsoft.ContainerService')
-        }
-        elseif ($ClusterType -eq 'ConnectedClusters') {
-            $PSBoundParameters.Add('ClusterRp', 'Microsoft.Kubernetes')
-        }
+        try {
+            $hasInputObject = $PSBoundParameters.Remove('InputObject')
 
-        Az.KubernetesConfiguration.internal\Get-AzKubernetesConfigurationFlux @PSBoundParameters
+            if ($hasInputObject) {
+                $null = $PSBoundParameters.Add('InputObject', $InputObject)
+            }
+            else {
+                if ($ClusterType -eq 'ManagedClusters') {
+                    $PSBoundParameters.Add('ClusterRp', 'Microsoft.ContainerService')
+                }
+                elseif ($ClusterType -eq 'ConnectedClusters') {
+                    $PSBoundParameters.Add('ClusterRp', 'Microsoft.Kubernetes')
+                }
+                elseif ($ClusterType -eq 'ProvisionedClusters') {
+                    $PSBoundParameters.Add('ClusterRp', 'Microsoft.HybridContainerService')
+                }
+                else {
+                    Write-Error "Please select ClusterType from the following three values: 'ManagedClusters', 'ConnectedClusters', 'ProvisionedClusters'"
+                }
+            }
+
+            Az.KubernetesConfiguration.internal\Get-AzKubernetesConfigurationFlux @PSBoundParameters
+        }
+        catch {
+            throw
+        }
     }
 }

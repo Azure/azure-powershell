@@ -14,11 +14,12 @@ Create a new Kubernetes Source Control Configuration.
 
 ```
 New-AzKubernetesConfiguration -ClusterName <String> -ClusterType <String> -Name <String>
- -ResourceGroupName <String> [-SubscriptionId <String>] [-ConfigurationProtectedSetting <Hashtable>]
- [-EnableHelmOperator] [-HelmOperatorChartValue <String>] [-HelmOperatorChartVersion <String>]
- [-OperatorInstanceName <String>] [-OperatorNamespace <String>] [-OperatorParam <String>]
- [-OperatorScope <OperatorScopeType>] [-OperatorType <OperatorType>] [-RepositoryUrl <String>]
- [-SshKnownHost <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -ResourceGroupName <String> [-SubscriptionId <String>] [-ClusterScoped]
+ [-ConfigurationProtectedSetting <Hashtable>] [-EnableHelmOperator] [-HelmOperatorChartValue <String>]
+ [-HelmOperatorChartVersion <String>] [-OperatorInstanceName <String>] [-OperatorNamespace <String>]
+ [-OperatorParam <String>] [-OperatorScope <OperatorScopeType>] [-OperatorType <OperatorType>]
+ [-RepositoryUrl <String>] [-SshKnownHost <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -66,6 +67,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ClusterScoped
+If passed set the scope of the Configuration to Cluster (default is nameSpace).
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

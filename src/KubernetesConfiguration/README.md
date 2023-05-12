@@ -70,7 +70,7 @@ directive:
     transform: >-
       return {
         "200": {
-          "description": "OK",
+          "description": "No update is done to extension so return OK",
           "schema": {
             "$ref": "#/definitions/Extension"
           }
@@ -213,6 +213,14 @@ directive:
       subject: KubernetesExtension
 
   - where:
+      parameter-name: NamespaceTargetNamespace
+    set:
+      parameter-name: TargetNamespace
+  - where:
+      parameter-name: ClusterReleaseNamespace
+    set:
+      parameter-name: ReleaseNamespace
+  - where:
       parameter-name: ClusterResourceName
     set:
       parameter-name: ClusterType
@@ -341,4 +349,10 @@ directive:
           - Name
           - RepositoryUrl
           - ResourceGroupName
+
+  - where:
+      parameter-name: ClusterType
+    set:
+      completer:
+        script: "'ManagedClusters', 'ConnectedClusters', 'ProvisionedClusters'"
 ```

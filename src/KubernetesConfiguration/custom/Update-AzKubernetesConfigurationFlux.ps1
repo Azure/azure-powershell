@@ -50,44 +50,44 @@ https://learn.microsoft.com/powershell/module/az.kubernetesconfiguration/update-
 function Update-AzKubernetesConfigurationFlux {
     [Alias('Update-AzK8sConfigurationFlux')]
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.IFluxConfiguration])]
-    [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+    [CmdletBinding(DefaultParameterSetName = 'UpdateExpanded', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
     param(
-        [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+        [Parameter(ParameterSetName = 'UpdateExpanded', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Path')]
         [System.String]
         # The name of the kubernetes cluster.
         ${ClusterName},
 
-        [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
-        [ValidateSet('ConnectedClusters', 'ManagedClusters')]
+        [Parameter(ParameterSetName = 'UpdateExpanded', Mandatory)]
+        [ArgumentCompleter({ 'ManagedClusters', 'ConnectedClusters', 'ProvisionedClusters' })]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Path')]
         [System.String]
         # The Kubernetes cluster resource name - i.e.
         # managedClusters, connectedClusters, provisionedClusters.
         ${ClusterType},
 
-        [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+        [Parameter(ParameterSetName = 'UpdateExpanded', Mandatory)]
         [Alias('FluxConfigurationName')]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Path')]
         [System.String]
         # Name of the Flux Configuration.
         ${Name},
 
-        [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+        [Parameter(ParameterSetName = 'UpdateExpanded', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Path')]
         [System.String]
         # The name of the resource group.
         # The name is case insensitive.
         ${ResourceGroupName},
 
-        [Parameter(ParameterSetName='UpdateExpanded')]
+        [Parameter(ParameterSetName = 'UpdateExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.DefaultInfo(Script = '(Get-AzContext).Subscription.Id')]
         [System.String]
         # The ID of the target subscription.
         ${SubscriptionId},
 
-        [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+        [Parameter(ParameterSetName = 'UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.IKubernetesConfigurationIdentity]
         # Identity Parameter
@@ -180,7 +180,7 @@ function Update-AzKubernetesConfigurationFlux {
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.IFluxConfigurationPatchPropertiesConfigurationProtectedSettings]))]
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(PossibleTypes = ([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.IFluxConfigurationPatchPropertiesConfigurationProtectedSettings]))]
         [System.Collections.Hashtable]
         # Key-value pairs of protected configuration settings for the configuration
         ${ConfigurationProtectedSetting},
@@ -229,7 +229,7 @@ function Update-AzKubernetesConfigurationFlux {
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.IFluxConfigurationPatchPropertiesKustomizations]))]
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(PossibleTypes = ([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.IFluxConfigurationPatchPropertiesKustomizations]))]
         [System.Collections.Hashtable]
         # Array of kustomizations used to reconcile the artifact pulled by the source type on the cluster.
         ${Kustomization},
@@ -379,13 +379,32 @@ function Update-AzKubernetesConfigurationFlux {
     )
 
     process {
-        if ($ClusterType -eq 'ManagedClusters') {
-            $PSBoundParameters.Add('ClusterRp', 'Microsoft.ContainerService')
-        }
-        elseif ($ClusterType -eq 'ConnectedClusters') {
-            $PSBoundParameters.Add('ClusterRp', 'Microsoft.Kubernetes')
-        }
+        try {
+            $hasInputObject = $PSBoundParameters.Remove('InputObject')
 
-        Az.KubernetesConfiguration.internal\Update-AzKubernetesConfigurationFlux @PSBoundParameters
+            if ($hasInputObject) {
+                $null = $PSBoundParameters.Add('InputObject', $InputObject)
+            }
+            else {
+                if ($ClusterType -eq 'ManagedClusters') {
+                    $PSBoundParameters.Add('ClusterRp', 'Microsoft.ContainerService')
+                }
+                elseif ($ClusterType -eq 'ConnectedClusters') {
+                    $PSBoundParameters.Add('ClusterRp', 'Microsoft.Kubernetes')
+                }
+                elseif ($ClusterType -eq 'ProvisionedClusters') {
+                    $PSBoundParameters.Add('ClusterRp', 'Microsoft.HybridContainerService')
+                }
+                else {
+                    Write-Error "Please select ClusterType from the following three values: 'ManagedClusters', 'ConnectedClusters', 'ProvisionedClusters'"
+                }
+            }
+
+            write-host "Azure Kubernetes Configuration Flux is being updated, need to wait a few minutes..."
+            Az.KubernetesConfiguration.internal\Update-AzKubernetesConfigurationFlux @PSBoundParameters
+        }
+        catch {
+            throw
+        }
     }
 }

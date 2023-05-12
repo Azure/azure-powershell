@@ -32,7 +32,7 @@ https://learn.microsoft.com/powershell/module/az.kubernetesconfiguration/new-azk
 function New-AzKubernetesConfigurationFlux {
     [Alias('New-AzK8sConfigurationFlux')]
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.IFluxConfiguration])]
-    [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+    [CmdletBinding(DefaultParameterSetName = 'CreateExpanded', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
     param(
         [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Path')]
@@ -41,7 +41,7 @@ function New-AzKubernetesConfigurationFlux {
         ${ClusterName},
 
         [Parameter(Mandatory)]
-        [ValidateSet('ConnectedClusters', 'ManagedClusters')]
+        [ArgumentCompleter({ 'ManagedClusters', 'ConnectedClusters', 'ProvisionedClusters' })]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Path')]
         [System.String]
         # The Kubernetes cluster resource name - i.e.
@@ -64,7 +64,7 @@ function New-AzKubernetesConfigurationFlux {
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.DefaultInfo(Script = '(Get-AzContext).Subscription.Id')]
         [System.String]
         # The ID of the target subscription.
         ${SubscriptionId},
@@ -155,7 +155,7 @@ function New-AzKubernetesConfigurationFlux {
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.IFluxConfigurationPropertiesConfigurationProtectedSettings]))]
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(PossibleTypes = ([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.IFluxConfigurationPropertiesConfigurationProtectedSettings]))]
         [System.Collections.Hashtable]
         # Key-value pairs of protected configuration settings for the configuration
         ${ConfigurationProtectedSetting},
@@ -204,7 +204,7 @@ function New-AzKubernetesConfigurationFlux {
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.IFluxConfigurationPropertiesKustomizations]))]
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(PossibleTypes = ([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.IFluxConfigurationPropertiesKustomizations]))]
         [System.Collections.Hashtable]
         # Array of kustomizations used to reconcile the artifact pulled by the source type on the cluster.
         ${Kustomization},
@@ -368,13 +368,25 @@ function New-AzKubernetesConfigurationFlux {
     )
 
     process {
-        if ($ClusterType -eq 'ManagedClusters') {
-            $PSBoundParameters.Add('ClusterRp', 'Microsoft.ContainerService')
-        }
-        elseif ($ClusterType -eq 'ConnectedClusters') {
-            $PSBoundParameters.Add('ClusterRp', 'Microsoft.Kubernetes')
-        }
+        try {
+            if ($ClusterType -eq 'ManagedClusters') {
+                $PSBoundParameters.Add('ClusterRp', 'Microsoft.ContainerService')
+            }
+            elseif ($ClusterType -eq 'ConnectedClusters') {
+                $PSBoundParameters.Add('ClusterRp', 'Microsoft.Kubernetes')
+            }
+            elseif ($ClusterType -eq 'ProvisionedClusters') {
+                $PSBoundParameters.Add('ClusterRp', 'Microsoft.HybridContainerService')
+            }
+            else {
+                Write-Error "Please select ClusterType from the following three values: 'ManagedClusters', 'ConnectedClusters', 'ProvisionedClusters'"
+            }
 
-        Az.KubernetesConfiguration.internal\New-AzKubernetesConfigurationFlux @PSBoundParameters
+            write-host "Azure Kubernetes Configuration Flux is being created, need to wait a few minutes..."
+            Az.KubernetesConfiguration.internal\New-AzKubernetesConfigurationFlux @PSBoundParameters
+        }
+        catch {
+            throw
+        }
     }
 }

@@ -32,7 +32,7 @@ https://learn.microsoft.com/powershell/module/az.kubernetesconfiguration/new-azk
 function New-AzKubernetesConfiguration {
     [Alias('New-AzK8sConfiguration')]
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.ISourceControlConfiguration])]
-    [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+    [CmdletBinding(DefaultParameterSetName = 'CreateExpanded', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
     param(
         [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Path')]
@@ -41,6 +41,7 @@ function New-AzKubernetesConfiguration {
         ${ClusterName},
 
         [Parameter(Mandatory)]
+        [ArgumentCompleter({ 'ManagedClusters', 'ConnectedClusters', 'ProvisionedClusters' })]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Path')]
         [System.String]
         # The Kubernetes cluster resource name - i.e.
@@ -63,14 +64,14 @@ function New-AzKubernetesConfiguration {
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.DefaultInfo(Script = '(Get-AzContext).Subscription.Id')]
         [System.String]
         # The ID of the target subscription.
         ${SubscriptionId},
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.IConfigurationProtectedSettings]))]
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(PossibleTypes = ([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.IConfigurationProtectedSettings]))]
         [System.Collections.Hashtable]
         # Name-value pairs of protected configuration settings for the configuration
         ${ConfigurationProtectedSetting},
@@ -126,6 +127,10 @@ function New-AzKubernetesConfiguration {
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.OperatorType]
         # Type of the operator
         ${OperatorType},
+
+        [Parameter(HelpMessage="If passed set the scope of the Configuration to Cluster (default is nameSpace).")]
+        [switch]
+        ${ClusterScoped},
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
@@ -189,21 +194,34 @@ function New-AzKubernetesConfiguration {
     )
 
     process {
-        if ($PSBoundParameters.ContainsKey('ClusterScoped')) {
-            $PSBoundParameters.OperatorScope = [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.OperatorScopeType]::Cluster
-        } else {
-            $PSBoundParameters.OperatorScope = [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.OperatorScopeType]::Namespace
+        try {
+            if ($PSBoundParameters.ContainsKey('ClusterScoped')) {
+                $PSBoundParameters.OperatorScope = [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.OperatorScopeType]::Cluster
+            }
+            else {
+                $PSBoundParameters.OperatorScope = [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.OperatorScopeType]::Namespace
+            }
+            
+            if ($ClusterType -eq 'ManagedClusters') {
+                $PSBoundParameters.Add('ClusterRp', 'Microsoft.ContainerService')
+            }
+            elseif ($ClusterType -eq 'ConnectedClusters') {
+                $PSBoundParameters.Add('ClusterRp', 'Microsoft.Kubernetes')
+            }
+            elseif ($ClusterType -eq 'ProvisionedClusters') {
+                $PSBoundParameters.Add('ClusterRp', 'Microsoft.HybridContainerService')
+            }
+            else {
+                Write-Error "Please select ClusterType from the following three values: 'ManagedClusters', 'ConnectedClusters', 'ProvisionedClusters'"
+            }
+        
+            $PSBoundParameters.Add('OperatorType', [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.OperatorType]::Flux)
+        
+            write-host "Azure Kubernetes Configuration is being created, need to wait a few minutes..."
+            Az.KubernetesConfiguration.internal\New-AzKubernetesConfiguration @PSBoundParameters
         }
-
-        if ($ClusterType -eq 'ManagedClusters') {
-            $PSBoundParameters.Add('ClusterRp', 'Microsoft.ContainerService')
+        catch {
+            throw
         }
-        elseif ($ClusterType -eq 'ConnectedClusters') {
-            $PSBoundParameters.Add('ClusterRp', 'Microsoft.Kubernetes')
-        }
-
-        $PSBoundParameters.Add('OperatorType', [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.OperatorType]::Flux)
-
-        Az.KubernetesConfiguration.internal\New-AzKubernetesConfiguration @PSBoundParameters
     }
 }

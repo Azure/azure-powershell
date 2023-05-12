@@ -1,25 +1,22 @@
-### Example 1: Create a new Kubernetes Flux Configuration.
+### Example 1: {{ Add title here }}
 ```powershell
-$kustomizations = @{
-    infra=@{
-        Name = "infra"
-        Path = "./infrastructure"
-        Prune = "true"
-    };
-    apps=@{
-        Name = "apps"
-        Path = "./apps/staging"
-        Prune = "true"
-        DependsOn = @("infra")
-    }
-}
-New-AzKubernetesConfigurationFlux -ClusterName azpstest_cluster_arc -ClusterType ConnectedClusters -Name azpstestflux-k8s -ResourceGroupName azps_test_group -Namespace namespace-t01 -Scope 'cluster' -GitRepositoryUrl https://github.com/Azure/gitops-flux2-kustomize-helm-mt -RepositoryRefBranch main -SourceKind 'GitRepository' -GitRepositorySyncIntervalInSecond 600 -GitRepositoryTimeoutInSecond 600 -Suspend:$false -Kustomization $kustomizations
+{{ Add code here }}
 ```
 
 ```output
-Name             ResourceGroupName
-----             -----------------
-azpstestflux-k8s azps_test_group
+{{ Add output here }}
 ```
 
-Create a new Kubernetes Flux Configuration.
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
+
