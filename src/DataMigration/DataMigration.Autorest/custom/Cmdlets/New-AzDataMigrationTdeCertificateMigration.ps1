@@ -28,7 +28,7 @@ function New-AzDataMigrationTdeCertificateMigration
 
     param(
         [Parameter(ParameterSetName='CommandLine', Mandatory, HelpMessage='Required. Connection string for the source SQL instance, using the formal connection string format.')]
-        [System.String]
+        [SecureString]
         ${SourceSqlConnectionString},
 
         [Parameter(ParameterSetName='CommandLine', Mandatory, HelpMessage='Subscription Id of the target Azure SQL server.')]
@@ -56,7 +56,7 @@ function New-AzDataMigrationTdeCertificateMigration
         ${NetworkShareUserName},
 
         [Parameter(ParameterSetName='CommandLine', HelpMessage='Network share password.')]
-        [System.String]
+        [SecureString]
         ${NetworkSharePassword},
 
         [Parameter(ParameterSetName='CommandLine', Mandatory, HelpMessage='Source database name.')]
@@ -196,15 +196,18 @@ function New-AzDataMigrationTdeCertificateMigration
                 return
             }
 
+            $SourceSqlConnectionStringParam = . "$PSScriptRoot/../../utils/Unprotect-SecureString.ps1" $SourceSqlConnectionString
+            $NetworkSharePasswordParam = . "$PSScriptRoot/../../utils/Unprotect-SecureString.ps1" $NetworkSharePassword
+
             [System.Collections.ArrayList] $parameterArray = @(
-                "--sourceSqlConnectionString", $SourceSqlConnectionString,
+                "--sourceSqlConnectionString", $SourceSqlConnectionStringParam,
                 "--targetSubscriptionId", $TargetSubscriptionId,
                 "--targetResourceGroupName", $TargetResourceGroupName,
                 "--targetManagedInstanceName", $TargetManagedInstanceName
                 "--networkSharePath", $NetworkSharePath
                 "--networkShareDomain", $NetworkShareDomain
                 "--networkShareUserName", $NetworkShareUserName
-                "--networkSharePassword", $NetworkSharePassword
+                "--networkSharePassword", $NetworkSharePasswordParam
                 "--databaseName"
             )
 

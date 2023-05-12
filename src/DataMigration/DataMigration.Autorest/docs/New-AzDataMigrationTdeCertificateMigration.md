@@ -14,8 +14,8 @@ Migrate TDE certificate(s) from source SQL Server to the target Azure SQL Server
 
 ```
 New-AzDataMigrationTdeCertificateMigration -DatabaseName <String[]> -NetworkShareDomain <String>
- -NetworkSharePath <String> -SourceSqlConnectionString <String> -TargetManagedInstanceName <String>
- -TargetResourceGroupName <String> -TargetSubscriptionId <String> [-NetworkSharePassword <String>]
+ -NetworkSharePath <String> -SourceSqlConnectionString <SecureString> -TargetManagedInstanceName <String>
+ -TargetResourceGroupName <String> -TargetSubscriptionId <String> [-NetworkSharePassword <SecureString>]
  [-NetworkShareUserName <String>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -75,7 +75,7 @@ Accept wildcard characters: False
 Network share password.
 
 ```yaml
-Type: System.String
+Type: System.Security.SecureString
 Parameter Sets: (All)
 Aliases:
 
@@ -136,7 +136,7 @@ Required.
 Connection string for the source SQL instance, using the formal connection string format.
 
 ```yaml
-Type: System.String
+Type: System.Security.SecureString
 Parameter Sets: (All)
 Aliases:
 
