@@ -36,7 +36,6 @@ namespace Microsoft.Azure.Commands.Compute
     {
         protected const string DefaultParamSet = "DefaultParamSet";
         protected const string GetVirtualMachineInResourceGroupParamSet = "GetVirtualMachineInResourceGroupParamSet";
-        //protected const string ListNextLinkVirtualMachinesParamSet = "ListNextLinkVirtualMachinesParamSet";
         protected const string ListLocationVirtualMachinesParamSet = "ListLocationVirtualMachinesParamSet";
         protected const string GetVirtualMachineById = "GetVirtualMachineById";
         private const string InfoNotAvailable = "Info Not Available";
