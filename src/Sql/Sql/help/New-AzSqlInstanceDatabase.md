@@ -15,7 +15,7 @@ Creates an Azure SQL Managed Instance database.
 ### CreateNewInstanceDatabaseFromInputParameters (Default)
 ```
 New-AzSqlInstanceDatabase [-Name] <String> [-InstanceName] <String> [-ResourceGroupName] <String>
- [-Collation <String>] [-Tag <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Collation <String>] [-Tag <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-EnableLedger]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -58,6 +58,7 @@ RestorePointInTime       :
 DefaultSecondaryLocation : West US 2
 CatalogCollation         :
 CreateMode               :
+EnableLedger             : False
 StorageContainerUri      :
 StorageContainerSasToken :
 SourceDatabaseId         :
@@ -195,6 +196,21 @@ The tags to associate with the Azure Sql Instance Database
 Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases: Tags
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableLedger
+Creates a ledger database, in which the integrity of all data is protected by the ledger feature. All tables in the ledger database must be ledger tables. Note: the value of this property cannot be changed after the database has been created.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
 
 Required: False
 Position: Named
