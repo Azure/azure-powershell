@@ -2219,6 +2219,465 @@
       ]
     },
     {
+      "VerbName": "Enter",
+      "NounName": "AzWebAppContainerPSSession",
+      "Name": "Enter-AzWebAppContainerPSSession",
+      "ClassName": "Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps.EnterAzureRmWebAppContainerPSSession",
+      "SupportsShouldProcess": true,
+      "ConfirmImpact": 2,
+      "SupportsPaging": false,
+      "DefaultParameterSetName": "S1",
+      "OutputTypes": [
+        {
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.Void",
+            "AssemblyQualifiedName": "System.Void, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
+        }
+      ],
+      "Parameters": [
+        {
+          "Name": "PassThru",
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "System.Management.Automation.SwitchParameter",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "Force",
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "System.Management.Automation.SwitchParameter",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "SlotName",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "ResourceGroupName",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "Name",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "WebApp",
+          "Type": {
+            "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
+            "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.15.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {
+              "AzureStoragePath": "Microsoft.Azure.Commands.WebApps.Models.WebAppAzureStoragePath[]",
+              "AzureStorageAccounts": "Microsoft.Azure.Management.WebSites.Models.AzureStoragePropertyDictionaryResource",
+              "CloningInfo": "Microsoft.Azure.Management.WebSites.Models.CloningInfo",
+              "ExtendedLocation": "Microsoft.Azure.Management.WebSites.Models.ExtendedLocation",
+              "HostingEnvironmentProfile": "Microsoft.Azure.Management.WebSites.Models.HostingEnvironmentProfile",
+              "Identity": "Microsoft.Azure.Management.WebSites.Models.ManagedServiceIdentity",
+              "SiteConfig": "Microsoft.Azure.Management.WebSites.Models.SiteConfig",
+              "SlotSwapStatus": "Microsoft.Azure.Management.WebSites.Models.SlotSwapStatus",
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "HostNameSslStates": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.WebSites.Models.HostNameSslState]",
+              "VnetInfo": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.WebSites.Models.VnetInfo]",
+              "HostNames": "System.Collections.Generic.IList`1[System.String]",
+              "TrafficManagerHostNames": "System.Collections.Generic.IList`1[System.String]",
+              "EnabledHostNames": "System.Collections.Generic.IList`1[System.String]",
+              "ClientCertMode": "System.Nullable`1[Microsoft.Azure.Management.WebSites.Models.ClientCertMode]",
+              "RedundancyMode": "System.Nullable`1[Microsoft.Azure.Management.WebSites.Models.RedundancyMode]",
+              "AvailabilityState": "System.Nullable`1[Microsoft.Azure.Management.WebSites.Models.SiteAvailabilityState]",
+              "UsageState": "System.Nullable`1[Microsoft.Azure.Management.WebSites.Models.UsageState]",
+              "IsDefaultContainer": "System.Nullable`1[System.Boolean]",
+              "StorageAccountRequired": "System.Nullable`1[System.Boolean]",
+              "HttpsOnly": "System.Nullable`1[System.Boolean]",
+              "ClientCertEnabled": "System.Nullable`1[System.Boolean]",
+              "ClientAffinityEnabled": "System.Nullable`1[System.Boolean]",
+              "HostNamesDisabled": "System.Nullable`1[System.Boolean]",
+              "ScmSiteAlsoStopped": "System.Nullable`1[System.Boolean]",
+              "Enabled": "System.Nullable`1[System.Boolean]",
+              "Reserved": "System.Nullable`1[System.Boolean]",
+              "IsXenon": "System.Nullable`1[System.Boolean]",
+              "HyperV": "System.Nullable`1[System.Boolean]",
+              "SuspendedTill": "System.Nullable`1[System.DateTime]",
+              "LastModifiedTimeUtc": "System.Nullable`1[System.DateTime]",
+              "InProgressOperationId": "System.Nullable`1[System.Guid]",
+              "MaxNumberOfWorkers": "System.Nullable`1[System.Int32]",
+              "DailyMemoryTimeQuota": "System.Nullable`1[System.Int32]",
+              "ContainerSize": "System.Nullable`1[System.Int32]",
+              "GitRemotePassword": "System.Security.SecureString",
+              "VirtualNetworkSubnetId": "System.String",
+              "GitRemoteUsername": "System.String",
+              "KeyVaultReferenceIdentity": "System.String",
+              "GitRemoteUri": "System.String",
+              "Id": "System.String",
+              "Name": "System.String",
+              "Location": "System.String",
+              "Kind": "System.String",
+              "ServerFarmId": "System.String",
+              "ResourceGroup": "System.String",
+              "State": "System.String",
+              "PossibleOutboundIpAddresses": "System.String",
+              "OutboundIpAddresses": "System.String",
+              "CustomDomainVerificationId": "System.String",
+              "ClientCertExclusionPaths": "System.String",
+              "Type": "System.String",
+              "RepositorySiteName": "System.String",
+              "TargetSwapSlot": "System.String",
+              "DefaultHostName": "System.String",
+              "GitRemoteName": "System.String"
+            }
+          },
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "DefaultProfile",
+          "AliasList": [
+            "AzContext",
+            "AzureRmContext",
+            "AzureCredential"
+          ],
+          "Type": {
+            "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core",
+            "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {
+              "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+              "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+              "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+              "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+            }
+          },
+          "ValidateNotNullOrEmpty": false
+        }
+      ],
+      "ParameterSets": [
+        {
+          "Name": "__AllParameterSets",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "PassThru",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Force",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzContext",
+                  "AzureRmContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {
+                    "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+                    "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+                    "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+                    "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+                  }
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        },
+        {
+          "Name": "S1",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "SlotName",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": 1,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ResourceGroupName",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 0,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Name",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 1,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "PassThru",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Force",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzContext",
+                  "AzureRmContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {
+                    "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+                    "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+                    "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+                    "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+                  }
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        },
+        {
+          "Name": "S2",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "WebApp",
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
+                  "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.15.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {
+                    "AzureStoragePath": "Microsoft.Azure.Commands.WebApps.Models.WebAppAzureStoragePath[]",
+                    "AzureStorageAccounts": "Microsoft.Azure.Management.WebSites.Models.AzureStoragePropertyDictionaryResource",
+                    "CloningInfo": "Microsoft.Azure.Management.WebSites.Models.CloningInfo",
+                    "ExtendedLocation": "Microsoft.Azure.Management.WebSites.Models.ExtendedLocation",
+                    "HostingEnvironmentProfile": "Microsoft.Azure.Management.WebSites.Models.HostingEnvironmentProfile",
+                    "Identity": "Microsoft.Azure.Management.WebSites.Models.ManagedServiceIdentity",
+                    "SiteConfig": "Microsoft.Azure.Management.WebSites.Models.SiteConfig",
+                    "SlotSwapStatus": "Microsoft.Azure.Management.WebSites.Models.SlotSwapStatus",
+                    "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+                    "HostNameSslStates": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.WebSites.Models.HostNameSslState]",
+                    "VnetInfo": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.WebSites.Models.VnetInfo]",
+                    "HostNames": "System.Collections.Generic.IList`1[System.String]",
+                    "TrafficManagerHostNames": "System.Collections.Generic.IList`1[System.String]",
+                    "EnabledHostNames": "System.Collections.Generic.IList`1[System.String]",
+                    "ClientCertMode": "System.Nullable`1[Microsoft.Azure.Management.WebSites.Models.ClientCertMode]",
+                    "RedundancyMode": "System.Nullable`1[Microsoft.Azure.Management.WebSites.Models.RedundancyMode]",
+                    "AvailabilityState": "System.Nullable`1[Microsoft.Azure.Management.WebSites.Models.SiteAvailabilityState]",
+                    "UsageState": "System.Nullable`1[Microsoft.Azure.Management.WebSites.Models.UsageState]",
+                    "IsDefaultContainer": "System.Nullable`1[System.Boolean]",
+                    "StorageAccountRequired": "System.Nullable`1[System.Boolean]",
+                    "HttpsOnly": "System.Nullable`1[System.Boolean]",
+                    "ClientCertEnabled": "System.Nullable`1[System.Boolean]",
+                    "ClientAffinityEnabled": "System.Nullable`1[System.Boolean]",
+                    "HostNamesDisabled": "System.Nullable`1[System.Boolean]",
+                    "ScmSiteAlsoStopped": "System.Nullable`1[System.Boolean]",
+                    "Enabled": "System.Nullable`1[System.Boolean]",
+                    "Reserved": "System.Nullable`1[System.Boolean]",
+                    "IsXenon": "System.Nullable`1[System.Boolean]",
+                    "HyperV": "System.Nullable`1[System.Boolean]",
+                    "SuspendedTill": "System.Nullable`1[System.DateTime]",
+                    "LastModifiedTimeUtc": "System.Nullable`1[System.DateTime]",
+                    "InProgressOperationId": "System.Nullable`1[System.Guid]",
+                    "MaxNumberOfWorkers": "System.Nullable`1[System.Int32]",
+                    "DailyMemoryTimeQuota": "System.Nullable`1[System.Int32]",
+                    "ContainerSize": "System.Nullable`1[System.Int32]",
+                    "GitRemotePassword": "System.Security.SecureString",
+                    "VirtualNetworkSubnetId": "System.String",
+                    "GitRemoteUsername": "System.String",
+                    "KeyVaultReferenceIdentity": "System.String",
+                    "GitRemoteUri": "System.String",
+                    "Id": "System.String",
+                    "Name": "System.String",
+                    "Location": "System.String",
+                    "Kind": "System.String",
+                    "ServerFarmId": "System.String",
+                    "ResourceGroup": "System.String",
+                    "State": "System.String",
+                    "PossibleOutboundIpAddresses": "System.String",
+                    "OutboundIpAddresses": "System.String",
+                    "CustomDomainVerificationId": "System.String",
+                    "ClientCertExclusionPaths": "System.String",
+                    "Type": "System.String",
+                    "RepositorySiteName": "System.String",
+                    "TargetSwapSlot": "System.String",
+                    "DefaultHostName": "System.String",
+                    "GitRemoteName": "System.String"
+                  }
+                },
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 0,
+              "ValueFromPipeline": true,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "PassThru",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Force",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzContext",
+                  "AzureRmContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {
+                    "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+                    "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+                    "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+                    "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+                  }
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        }
+      ]
+    },
+    {
       "VerbName": "Get",
       "NounName": "AzAppServiceEnvironment",
       "Name": "Get-AzAppServiceEnvironment",
@@ -13404,6 +13863,411 @@
         {
           "Name": "__AllParameterSets",
           "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzContext",
+                  "AzureRmContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {
+                    "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+                    "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+                    "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+                    "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+                  }
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "VerbName": "New",
+      "NounName": "AzWebAppContainerPSSession",
+      "Name": "New-AzWebAppContainerPSSession",
+      "ClassName": "Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps.NewAzureRmWebAppContainerPSSession",
+      "SupportsShouldProcess": true,
+      "ConfirmImpact": 2,
+      "SupportsPaging": false,
+      "DefaultParameterSetName": "S1",
+      "OutputTypes": [
+        {
+          "Type": {
+            "Namespace": "System.Management.Automation.Runspaces",
+            "Name": "System.Management.Automation.Runspaces.PSSession",
+            "AssemblyQualifiedName": "System.Management.Automation.Runspaces.PSSession, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+          },
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
+        }
+      ],
+      "Parameters": [
+        {
+          "Name": "SlotName",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "Force",
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "System.Management.Automation.SwitchParameter",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "ResourceGroupName",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "Name",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "WebApp",
+          "Type": {
+            "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
+            "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.15.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {
+              "AzureStoragePath": "Microsoft.Azure.Commands.WebApps.Models.WebAppAzureStoragePath[]",
+              "AzureStorageAccounts": "Microsoft.Azure.Management.WebSites.Models.AzureStoragePropertyDictionaryResource",
+              "CloningInfo": "Microsoft.Azure.Management.WebSites.Models.CloningInfo",
+              "ExtendedLocation": "Microsoft.Azure.Management.WebSites.Models.ExtendedLocation",
+              "HostingEnvironmentProfile": "Microsoft.Azure.Management.WebSites.Models.HostingEnvironmentProfile",
+              "Identity": "Microsoft.Azure.Management.WebSites.Models.ManagedServiceIdentity",
+              "SiteConfig": "Microsoft.Azure.Management.WebSites.Models.SiteConfig",
+              "SlotSwapStatus": "Microsoft.Azure.Management.WebSites.Models.SlotSwapStatus",
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "HostNameSslStates": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.WebSites.Models.HostNameSslState]",
+              "VnetInfo": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.WebSites.Models.VnetInfo]",
+              "HostNames": "System.Collections.Generic.IList`1[System.String]",
+              "TrafficManagerHostNames": "System.Collections.Generic.IList`1[System.String]",
+              "EnabledHostNames": "System.Collections.Generic.IList`1[System.String]",
+              "ClientCertMode": "System.Nullable`1[Microsoft.Azure.Management.WebSites.Models.ClientCertMode]",
+              "RedundancyMode": "System.Nullable`1[Microsoft.Azure.Management.WebSites.Models.RedundancyMode]",
+              "AvailabilityState": "System.Nullable`1[Microsoft.Azure.Management.WebSites.Models.SiteAvailabilityState]",
+              "UsageState": "System.Nullable`1[Microsoft.Azure.Management.WebSites.Models.UsageState]",
+              "IsDefaultContainer": "System.Nullable`1[System.Boolean]",
+              "StorageAccountRequired": "System.Nullable`1[System.Boolean]",
+              "HttpsOnly": "System.Nullable`1[System.Boolean]",
+              "ClientCertEnabled": "System.Nullable`1[System.Boolean]",
+              "ClientAffinityEnabled": "System.Nullable`1[System.Boolean]",
+              "HostNamesDisabled": "System.Nullable`1[System.Boolean]",
+              "ScmSiteAlsoStopped": "System.Nullable`1[System.Boolean]",
+              "Enabled": "System.Nullable`1[System.Boolean]",
+              "Reserved": "System.Nullable`1[System.Boolean]",
+              "IsXenon": "System.Nullable`1[System.Boolean]",
+              "HyperV": "System.Nullable`1[System.Boolean]",
+              "SuspendedTill": "System.Nullable`1[System.DateTime]",
+              "LastModifiedTimeUtc": "System.Nullable`1[System.DateTime]",
+              "InProgressOperationId": "System.Nullable`1[System.Guid]",
+              "MaxNumberOfWorkers": "System.Nullable`1[System.Int32]",
+              "DailyMemoryTimeQuota": "System.Nullable`1[System.Int32]",
+              "ContainerSize": "System.Nullable`1[System.Int32]",
+              "GitRemotePassword": "System.Security.SecureString",
+              "VirtualNetworkSubnetId": "System.String",
+              "GitRemoteUsername": "System.String",
+              "KeyVaultReferenceIdentity": "System.String",
+              "GitRemoteUri": "System.String",
+              "Id": "System.String",
+              "Name": "System.String",
+              "Location": "System.String",
+              "Kind": "System.String",
+              "ServerFarmId": "System.String",
+              "ResourceGroup": "System.String",
+              "State": "System.String",
+              "PossibleOutboundIpAddresses": "System.String",
+              "OutboundIpAddresses": "System.String",
+              "CustomDomainVerificationId": "System.String",
+              "ClientCertExclusionPaths": "System.String",
+              "Type": "System.String",
+              "RepositorySiteName": "System.String",
+              "TargetSwapSlot": "System.String",
+              "DefaultHostName": "System.String",
+              "GitRemoteName": "System.String"
+            }
+          },
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "DefaultProfile",
+          "AliasList": [
+            "AzContext",
+            "AzureRmContext",
+            "AzureCredential"
+          ],
+          "Type": {
+            "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core",
+            "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {
+              "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+              "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+              "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+              "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+            }
+          },
+          "ValidateNotNullOrEmpty": false
+        }
+      ],
+      "ParameterSets": [
+        {
+          "Name": "S1",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "SlotName",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": 1,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ResourceGroupName",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 0,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Name",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 1,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Force",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzContext",
+                  "AzureRmContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {
+                    "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+                    "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+                    "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+                    "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+                  }
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        },
+        {
+          "Name": "__AllParameterSets",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "Force",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzContext",
+                  "AzureRmContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {
+                    "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+                    "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+                    "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+                    "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+                  }
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        },
+        {
+          "Name": "S2",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "WebApp",
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.WebApps.Models",
+                  "Name": "Microsoft.Azure.Commands.WebApps.Models.PSSite",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Models.PSSite, Microsoft.Azure.PowerShell.Cmdlets.Websites, Version=2.15.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {
+                    "AzureStoragePath": "Microsoft.Azure.Commands.WebApps.Models.WebAppAzureStoragePath[]",
+                    "AzureStorageAccounts": "Microsoft.Azure.Management.WebSites.Models.AzureStoragePropertyDictionaryResource",
+                    "CloningInfo": "Microsoft.Azure.Management.WebSites.Models.CloningInfo",
+                    "ExtendedLocation": "Microsoft.Azure.Management.WebSites.Models.ExtendedLocation",
+                    "HostingEnvironmentProfile": "Microsoft.Azure.Management.WebSites.Models.HostingEnvironmentProfile",
+                    "Identity": "Microsoft.Azure.Management.WebSites.Models.ManagedServiceIdentity",
+                    "SiteConfig": "Microsoft.Azure.Management.WebSites.Models.SiteConfig",
+                    "SlotSwapStatus": "Microsoft.Azure.Management.WebSites.Models.SlotSwapStatus",
+                    "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+                    "HostNameSslStates": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.WebSites.Models.HostNameSslState]",
+                    "VnetInfo": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.WebSites.Models.VnetInfo]",
+                    "HostNames": "System.Collections.Generic.IList`1[System.String]",
+                    "TrafficManagerHostNames": "System.Collections.Generic.IList`1[System.String]",
+                    "EnabledHostNames": "System.Collections.Generic.IList`1[System.String]",
+                    "ClientCertMode": "System.Nullable`1[Microsoft.Azure.Management.WebSites.Models.ClientCertMode]",
+                    "RedundancyMode": "System.Nullable`1[Microsoft.Azure.Management.WebSites.Models.RedundancyMode]",
+                    "AvailabilityState": "System.Nullable`1[Microsoft.Azure.Management.WebSites.Models.SiteAvailabilityState]",
+                    "UsageState": "System.Nullable`1[Microsoft.Azure.Management.WebSites.Models.UsageState]",
+                    "IsDefaultContainer": "System.Nullable`1[System.Boolean]",
+                    "StorageAccountRequired": "System.Nullable`1[System.Boolean]",
+                    "HttpsOnly": "System.Nullable`1[System.Boolean]",
+                    "ClientCertEnabled": "System.Nullable`1[System.Boolean]",
+                    "ClientAffinityEnabled": "System.Nullable`1[System.Boolean]",
+                    "HostNamesDisabled": "System.Nullable`1[System.Boolean]",
+                    "ScmSiteAlsoStopped": "System.Nullable`1[System.Boolean]",
+                    "Enabled": "System.Nullable`1[System.Boolean]",
+                    "Reserved": "System.Nullable`1[System.Boolean]",
+                    "IsXenon": "System.Nullable`1[System.Boolean]",
+                    "HyperV": "System.Nullable`1[System.Boolean]",
+                    "SuspendedTill": "System.Nullable`1[System.DateTime]",
+                    "LastModifiedTimeUtc": "System.Nullable`1[System.DateTime]",
+                    "InProgressOperationId": "System.Nullable`1[System.Guid]",
+                    "MaxNumberOfWorkers": "System.Nullable`1[System.Int32]",
+                    "DailyMemoryTimeQuota": "System.Nullable`1[System.Int32]",
+                    "ContainerSize": "System.Nullable`1[System.Int32]",
+                    "GitRemotePassword": "System.Security.SecureString",
+                    "VirtualNetworkSubnetId": "System.String",
+                    "GitRemoteUsername": "System.String",
+                    "KeyVaultReferenceIdentity": "System.String",
+                    "GitRemoteUri": "System.String",
+                    "Id": "System.String",
+                    "Name": "System.String",
+                    "Location": "System.String",
+                    "Kind": "System.String",
+                    "ServerFarmId": "System.String",
+                    "ResourceGroup": "System.String",
+                    "State": "System.String",
+                    "PossibleOutboundIpAddresses": "System.String",
+                    "OutboundIpAddresses": "System.String",
+                    "CustomDomainVerificationId": "System.String",
+                    "ClientCertExclusionPaths": "System.String",
+                    "Type": "System.String",
+                    "RepositorySiteName": "System.String",
+                    "TargetSwapSlot": "System.String",
+                    "DefaultHostName": "System.String",
+                    "GitRemoteName": "System.String"
+                  }
+                },
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 0,
+              "ValueFromPipeline": true,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Force",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
             {
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
