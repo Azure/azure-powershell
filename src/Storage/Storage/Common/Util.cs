@@ -415,6 +415,14 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             {
                 blobUriBuilder.Snapshot = snapshot;
             }
+            if (shouldTrimSlash == false)
+            {
+                if (options == null)
+                {
+                    options = new BlobClientOptions();
+                }
+                options.TrimBlobNameSlashes = shouldTrimSlash;
+            }
 
             return GetTrack2BlobClient(blobUriBuilder.ToUri(), context, options, blobType);
         }

@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed issue of getting a single blob with leading slashes
+    - `Get-AzStorageBlob`
 * Supported setting CORS rules in management plane cmdlets 
     - `Update-AzStorageBlobServiceProperty`
     - `Update-AzStorageFileServiceProperty`
