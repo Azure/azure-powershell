@@ -14,9 +14,8 @@ Creates or updates azure databricks accessConnector.
 
 ```
 New-AzDatabricksAccessConnector -Name <String> -ResourceGroupName <String> -Location <String>
- [-SubscriptionId <String>] [-IdentityType <ManagedServiceIdentityType>] [-Tag <Hashtable>]
- [-UserAssignedIdentity <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-SubscriptionId <String>] [-IdentityType <IdentityType>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,15 +23,15 @@ Creates or updates azure databricks accessConnector.
 
 ## EXAMPLES
 
-### Example 1: Creates or updates azure databricks accessConnector
+### Example 1: Creates or updates azure databricks accessConnector.
 ```powershell
-New-AzDatabricksAccessConnector -ResourceGroupName databricks-rg-xyv4k5 -Name databricks-ac -Location eastus
+New-AzDatabricksAccessConnector -ResourceGroupName azps_test_gp_db -Name azps-databricks-accessconnector -Location eastus -IdentityType 'SystemAssigned'
 ```
 
 ```output
-Location Name          ResourceGroupName
--------- ----          -----------------
-eastus   databricks-ac databricks-rg-xyv4k5
+Location Name                            ResourceGroupName
+-------- ----                            -----------------
+eastus   azps-databricks-accessconnector azps_test_gp_db
 ```
 
 This command creates or updates azure databricks accessConnector.
@@ -55,7 +54,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -70,10 +70,10 @@ Accept wildcard characters: False
 ```
 
 ### -IdentityType
-Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+The identity type.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.ManagedServiceIdentityType
+Type: Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.IdentityType
 Parameter Sets: (All)
 Aliases:
 
@@ -175,23 +175,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -UserAssignedIdentity
-The set of user assigned identities associated with the resource.
-The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
-The dictionary values can be empty objects ({}) in requests.
-
-```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.
 
@@ -230,7 +213,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20221001Preview.IAccessConnector
+### Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20220401Preview.IAccessConnector
 
 ## NOTES
 
