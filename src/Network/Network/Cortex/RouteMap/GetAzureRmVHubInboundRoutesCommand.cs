@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.Network
         [ResourceGroupCompleter]
         public string ResourceGroupName { get; set; }
 
-        [Alias("VirtualHubName", "ParentVirtualHubName", "ParentResourceName")]
+        [Alias("ParentVirtualHubName", "ParentResourceName")]
         [Parameter(
             Mandatory = true,
             ParameterSetName = CortexParameterSetNames.ByVirtualHubName,
@@ -90,13 +90,13 @@ namespace Microsoft.Azure.Commands.Network
                 ResourceGroupName = parsedResourceId.ResourceGroupName;
             }
 
-            GetInboundRoutesParameters pSInboundRoutesParameters = new GetInboundRoutesParameters()
+            GetInboundRoutesParameters inboundRoutesParameters = new GetInboundRoutesParameters()
             {
                 ResourceUri = this.ResourceUri,
                 ConnectionType = this.VirtualWanConnectionType
             };
 
-            WriteObject(VirtualHubClient.GetInboundRoutes(ResourceGroupName, VirtualHubName, pSInboundRoutesParameters));
+            WriteObject(GetVirtualHubInboundRoutes(ResourceGroupName, VirtualHubName, inboundRoutesParameters));
         }
     }
 }

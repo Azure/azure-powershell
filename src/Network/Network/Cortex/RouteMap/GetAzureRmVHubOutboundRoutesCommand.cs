@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.Network
         [ResourceGroupCompleter]
         public string ResourceGroupName { get; set; }
 
-        [Alias("VirtualHubName", "ParentVirtualHubName", "ParentResourceName")]
+        [Alias("ParentVirtualHubName", "ParentResourceName")]
         [Parameter(
             Mandatory = true,
             ParameterSetName = CortexParameterSetNames.ByVirtualHubName,
@@ -90,13 +90,13 @@ namespace Microsoft.Azure.Commands.Network
                 ResourceGroupName = parsedResourceId.ResourceGroupName;
             }
 
-            GetOutboundRoutesParameters pSOutboundRoutesParameters = new GetOutboundRoutesParameters()
+            GetOutboundRoutesParameters outboundRoutesParameters = new GetOutboundRoutesParameters()
             {
                 ResourceUri = this.ResourceUri,
                 ConnectionType = this.VirtualWanConnectionType
             };
 
-            WriteObject(VirtualHubClient.GetOutboundRoutes(ResourceGroupName, VirtualHubName, pSOutboundRoutesParameters));
+            WriteObject(GetVirtualHubOutboundRoutes(ResourceGroupName, VirtualHubName, outboundRoutesParameters));
         }
     }
 }
