@@ -1,0 +1,20 @@
+on:
+  schedule:
+    # trigger every hour
+    - cron: "0 * * * *"
+
+name: Auto Label WORKFLOW
+
+jobs:
+  testGHCli:
+    runs-on: ubuntu-latest    
+    steps:
+    
+    - name: Check out
+      uses: actions/checkout@v3
+      
+    - name: Run GH Cli
+      shell: pwsh
+      run: .github/workflows/auto_label.ps1
+      env:
+        GH_TOKEN: ${{ github.token }}    

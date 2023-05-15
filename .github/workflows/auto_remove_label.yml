@@ -1,0 +1,24 @@
+name: Auto Remove Label Workflow
+
+on:
+  pull_request:
+    types: synchronize
+
+jobs:
+  testOnPR:
+    runs-on: ubuntu-latest    
+    steps:
+
+    - name: Check out
+      uses: actions/checkout@v3
+      
+    - name: Run GH Cli
+      shell: pwsh
+      env:
+        PR_NO: ${{ github.event.pull_request.number }}
+        GH_TOKEN: ${{ github.token }}
+      run: |
+        Write-Host "Remove the 'needs-revision' label for PR Number" $env:PR_NO
+        gh pr edit $env:PR_NO --remove-label "needs-revision"
+        gh pr view $env:PR_NO
+
