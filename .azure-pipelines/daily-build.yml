@@ -29,7 +29,7 @@ jobs:
         git clean -xdf
 
   - task: UseDotNet@2
-    displayName: 'Prepare .NET Core 3.1.0'
+    displayName: 'Prepare .NET Core 3.1.x'
     inputs:
       packageType: sdk
       version: 3.1.x
