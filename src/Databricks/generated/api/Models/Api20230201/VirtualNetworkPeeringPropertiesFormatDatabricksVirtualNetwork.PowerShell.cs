@@ -8,7 +8,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201
     using Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.PowerShell;
 
     /// <summary>
-    /// The remote virtual network should be in the same region. See here to learn more (https://learn.microsoft.com/en-us/azure/databricks/administration-guide/cloud-configurations/azure/vnet-peering).
+    /// The remote virtual network should be in the same region. See here to learn more (https://docs.microsoft.com/en-us/azure/databricks/administration-guide/cloud-configurations/azure/vnet-peering).
     /// </summary>
     [System.ComponentModel.TypeConverter(typeof(VirtualNetworkPeeringPropertiesFormatDatabricksVirtualNetworkTypeConverter))]
     public partial class VirtualNetworkPeeringPropertiesFormatDatabricksVirtualNetwork
@@ -161,7 +161,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201
             AfterDeserializePSObject(content);
         }
     }
-    /// The remote virtual network should be in the same region. See here to learn more (https://learn.microsoft.com/en-us/azure/databricks/administration-guide/cloud-configurations/azure/vnet-peering).
+    /// The remote virtual network should be in the same region. See here to learn more (https://docs.microsoft.com/en-us/azure/databricks/administration-guide/cloud-configurations/azure/vnet-peering).
     [System.ComponentModel.TypeConverter(typeof(VirtualNetworkPeeringPropertiesFormatDatabricksVirtualNetworkTypeConverter))]
     public partial interface IVirtualNetworkPeeringPropertiesFormatDatabricksVirtualNetwork
 
