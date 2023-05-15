@@ -227,7 +227,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-BACKUPCONFIGURATION <IBackupDatasourceParameters>: Backup configuration for backup. Use this parameter to configure protection for AzureKubernetesService.
+`BACKUPCONFIGURATION <IBackupDatasourceParameters>`: Backup configuration for backup. Use this parameter to configure protection for AzureKubernetesService.
   - `ObjectType <String>`: Type of the specific object - used for deserializing
 
 ## RELATED LINKS

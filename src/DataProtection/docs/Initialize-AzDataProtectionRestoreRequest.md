@@ -470,7 +470,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-BACKUPINSTANCE <BackupInstanceResource>: Backup Instance object to trigger original localtion restore.
+`BACKUPINSTANCE <BackupInstanceResource>`: Backup Instance object to trigger original localtion restore.
   - `[Property <IBackupInstance>]`: BackupInstanceResource properties
     - `DataSourceInfo <IDatasource>`: Gets or sets the data source information.
       - `ResourceId <String>`: Full ARM ID of the resource. For azure resources, this is ARM ID. For non azure resources, this will be the ID created by backup service via Fabric/Vault.
@@ -504,7 +504,7 @@ BACKUPINSTANCE <BackupInstanceResource>: Backup Instance object to trigger origi
   - `[Tag <IDppProxyResourceTags>]`: Proxy Resource tags.
     - `[(Any) <String>]`: This indicates any property can be added to this object.
 
-RESTORECONFIGURATION <KubernetesClusterRestoreCriteria>: Restore configuration for restore. Use this parameter to restore with AzureKubernetesService.
+`RESTORECONFIGURATION <KubernetesClusterRestoreCriteria>`: Restore configuration for restore. Use this parameter to restore with AzureKubernetesService.
   - `IncludeClusterScopeResource <Boolean>`: Gets or sets the include cluster resources property. This property if enabled will include cluster scope resources during restore.
   - `ObjectType <String>`: Type of the specific object - used for deserializing
   - `[ConflictPolicy <ExistingResourcePolicy?>]`: Gets or sets the Conflict Policy property. This property sets policy during conflict of resources during restore.
