@@ -10,7 +10,6 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Management.Internal.Resources.Models;
 using System.Runtime.InteropServices;
-using System.Security.AccessControl;
 using System.Diagnostics;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
@@ -117,6 +116,5 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 WriteObject(psObject);
             });
         }
-        
     }
 }
