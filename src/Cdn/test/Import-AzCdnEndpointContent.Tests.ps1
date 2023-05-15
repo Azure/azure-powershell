@@ -14,176 +14,68 @@ if(($null -eq $TestName) -or ($TestName -contains 'Import-AzCdnEndpointContent')
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Import-AzCdnEndpointContent' -Tag 'LiveOnly' {
+Describe 'Import-AzCdnEndpointContent'  {
     It 'LoadExpanded' {
-        {
-            $ResourceGroupName = 'testps-rg-' + (RandomString -allChars $false -len 6)
-            try
-            {
-                Write-Host -ForegroundColor Green "Create test group $($ResourceGroupName)"
-                New-AzResourceGroup -Name $ResourceGroupName -Location $env.location;
+        $contentPath = @("/movies/amazing.mp4","/pictures/pic1.jpg") 
 
-                $cdnProfileName = 'p-' + (RandomString -allChars $false -len 6);
-                Write-Host -ForegroundColor Green "Use cdnProfileName : $($cdnProfileName)"    
-
-                $profileSku = "Standard_Verizon";
-                New-AzCdnProfile -SkuName $profileSku -Name $cdnProfileName -ResourceGroupName $ResourceGroupName -Location Global
-                
-                $endpointName = 'e-' + (RandomString -allChars $false -len 6);
-                $origin = @{
-                    Name = "origin1"
-                    HostName = "host1.hello.com"
-                };
-                $location = "westus"
-                Write-Host -ForegroundColor Green "Create endpointName : $($endpointName), origin.Name : $($origin.Name), origin.HostName : $($origin.HostName)"
-
-                New-AzCdnEndpoint -Name $endpointName -ResourceGroupName $ResourceGroupName -ProfileName $cdnProfileName -IsHttpAllowed -IsHttpsAllowed `
-                    -Location $location -Origin $origin -IsCompressionEnabled -ContentTypesToCompress "text/html","text/css" `
-                    -OriginHostHeader "www.bing.com" -OriginPath "/photos" -QueryStringCachingBehavior "IgnoreQueryString"
-                $contentPath = @("/movies/amazing.mp4","/pictures/pic1.jpg") 
-
-                # Load content on endpoint should succeed
-                Import-AzCdnEndpointContent -EndpointName $endpointName -ProfileName $cdnProfileName -ResourceGroupName $ResourceGroupName -ContentPath $contentPath
-                # Load content on non-existing endpoint should fail
-                { Import-AzCdnEndpointContent -EndpointName "fakeEndpoint" -ProfileName $cdnProfileName -ResourceGroupName $ResourceGroupName -ContentPath $contentPath } | Should -Throw
-                # Load content on endpoint with invalid content paths should fail
-                { Import-AzCdnEndpointContent -EndpointName $endpointName -ProfileName $cdnProfileName -ResourceGroupName $ResourceGroupName -ContentPath "/movies/*" } | Should -Throw
-                # Load content on stopped endpoint should fail
-                Stop-AzCdnEndpoint -Name $endpointName -ResourceGroupName $ResourceGroupName -ProfileName $cdnProfileName 
-                { Import-AzCdnEndpointContent -EndpointName $endpointName -ProfileName $cdnProfileName -ResourceGroupName $ResourceGroupName -ContentPath $contentPath } | Should -Throw
-            } Finally
-            {
-                Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
-            }
-        } | Should -Not -Throw
+        # Load content on endpoint should succeed
+        Import-AzCdnEndpointContent -EndpointName $env.VerizonEndpointName -ProfileName $env.VerizonCdnProfileName -ResourceGroupName $env.ResourceGroupName -ContentPath $contentPath
+        # Load content on non-existing endpoint should fail
+        { Import-AzCdnEndpointContent -EndpointName "fakeEndpoint" -ProfileName $env.VerizonCdnProfileName -ResourceGroupName $env.ResourceGroupName -ContentPath $contentPath } | Should -Throw
+        # Load content on endpoint with invalid content paths should fail
+        { Import-AzCdnEndpointContent -EndpointName $env.VerizonEndpointName -ProfileName $env.VerizonCdnProfileName -ResourceGroupName $env.ResourceGroupName -ContentPath "/movies/*" } | Should -Throw
+        # Load content on stopped endpoint should fail
+        Stop-AzCdnEndpoint -Name $env.VerizonEndpointName -ResourceGroupName $env.ResourceGroupName -ProfileName $env.VerizonCdnProfileName 
+        { Import-AzCdnEndpointContent -EndpointName $env.VerizonEndpointName -ProfileName $env.VerizonCdnProfileName -ResourceGroupName $env.ResourceGroupName -ContentPath $contentPath } | Should -Throw
     }
 
     It 'Load' {
-        {
-            $ResourceGroupName = 'testps-rg-' + (RandomString -allChars $false -len 6)
-            try
-            {
-                Write-Host -ForegroundColor Green "Create test group $($ResourceGroupName)"
-                New-AzResourceGroup -Name $ResourceGroupName -Location $env.location;
+        Start-AzCdnEndpoint -Name $env.VerizonEndpointName -ResourceGroupName $env.ResourceGroupName -ProfileName $env.VerizonCdnProfileName 
+        $contentPath = @{ ContentPath = @("/movies/amazing.mp4","/pictures/pic1.jpg") }
 
-                $cdnProfileName = 'p-' + (RandomString -allChars $false -len 6);
-                Write-Host -ForegroundColor Green "Use cdnProfileName : $($cdnProfileName)"    
-
-                $profileSku = "Standard_Verizon";
-                New-AzCdnProfile -SkuName $profileSku -Name $cdnProfileName -ResourceGroupName $ResourceGroupName -Location Global
-                
-                $endpointName = 'e-' + (RandomString -allChars $false -len 6);
-                $origin = @{
-                    Name = "origin1"
-                    HostName = "host1.hello.com"
-                };
-                $location = "westus"
-                Write-Host -ForegroundColor Green "Create endpointName : $($endpointName), origin.Name : $($origin.Name), origin.HostName : $($origin.HostName)"
-
-                New-AzCdnEndpoint -Name $endpointName -ResourceGroupName $ResourceGroupName -ProfileName $cdnProfileName -IsHttpAllowed -IsHttpsAllowed `
-                    -Location $location -Origin $origin -IsCompressionEnabled -ContentTypesToCompress "text/html","text/css" `
-                    -OriginHostHeader "www.bing.com" -OriginPath "/photos" -QueryStringCachingBehavior "IgnoreQueryString"
-                $contentPath = @{ ContentPath = @("/movies/amazing.mp4","/pictures/pic1.jpg") }
-
-                # Load content on endpoint should succeed
-                Import-AzCdnEndpointContent -EndpointName $endpointName -ProfileName $cdnProfileName -ResourceGroupName $ResourceGroupName -ContentFilePath $contentPath
-                # Load content on non-existing endpoint should fail
-                { Import-AzCdnEndpointContent -EndpointName "fakeEndpoint" -ProfileName $cdnProfileName -ResourceGroupName $ResourceGroupName -ContentFilePath $contentPath } | Should -Throw
-                # Load content on endpoint with invalid content paths should fail
-                { Import-AzCdnEndpointContent -EndpointName $endpointName -ProfileName $cdnProfileName -ResourceGroupName $ResourceGroupName -ContentFilePath @{ ContentPath = "/movies/*" } } | Should -Throw
-                # Load content on stopped endpoint should fail
-                Stop-AzCdnEndpoint -Name $endpointName -ResourceGroupName $ResourceGroupName -ProfileName $cdnProfileName 
-                { Import-AzCdnEndpointContent -EndpointName $endpointName -ProfileName $cdnProfileName -ResourceGroupName $ResourceGroupName -ContentFilePath $contentPath } | Should -Throw
-            } Finally
-            {
-                Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
-            }
-        } | Should -Not -Throw
+        # Load content on endpoint should succeed
+        Import-AzCdnEndpointContent -EndpointName $env.VerizonEndpointName -ProfileName $env.VerizonCdnProfileName -ResourceGroupName $env.ResourceGroupName -ContentFilePath $contentPath
+        # Load content on non-existing endpoint should fail
+        { Import-AzCdnEndpointContent -EndpointName "fakeEndpoint" -ProfileName $env.VerizonCdnProfileName -ResourceGroupName $env.ResourceGroupName -ContentFilePath $contentPath } | Should -Throw
+        # Load content on endpoint with invalid content paths should fail
+        { Import-AzCdnEndpointContent -EndpointName $env.VerizonEndpointName -ProfileName $env.VerizonCdnProfileName -ResourceGroupName $env.ResourceGroupName -ContentFilePath @{ ContentPath = "/movies/*" } } | Should -Throw
+        # Load content on stopped endpoint should fail
+        Stop-AzCdnEndpoint -Name $env.VerizonEndpointName -ResourceGroupName $env.ResourceGroupName -ProfileName $env.VerizonCdnProfileName 
+        { Import-AzCdnEndpointContent -EndpointName $env.VerizonEndpointName -ProfileName $env.VerizonCdnProfileName -ResourceGroupName $env.ResourceGroupName -ContentFilePath $contentPath } | Should -Throw
     }
 
     It 'LoadViaIdentityExpanded' {
-        { 
-            $PSDefaultParameterValues['Disabled'] = $true
-            $ResourceGroupName = 'testps-rg-' + (RandomString -allChars $false -len 6)
-            try
-            {
-                Write-Host -ForegroundColor Green "Create test group $($ResourceGroupName)"
-                New-AzResourceGroup -Name $ResourceGroupName -Location $env.location;
+        $PSDefaultParameterValues['Disabled'] = $true
+        Start-AzCdnEndpoint -SubscriptionId $env.SubscriptionId -Name $env.VerizonEndpointName -ResourceGroupName $env.ResourceGroupName -ProfileName $env.VerizonCdnProfileName 
 
-                $cdnProfileName = 'p-' + (RandomString -allChars $false -len 6);
-                Write-Host -ForegroundColor Green "Use cdnProfileName : $($cdnProfileName)"
+        $contentPath = @("/movies/amazing.mp4","/pictures/pic1.jpg") 
 
-                $profileSku = "Standard_Verizon";
-                New-AzCdnProfile -SkuName $profileSku -Name $cdnProfileName -ResourceGroupName $ResourceGroupName -Location Global
-                
-                $endpointName = 'e-' + (RandomString -allChars $false -len 6);
-                $origin = @{
-                    Name = "origin1"
-                    HostName = "host1.hello.com"
-                };
-                $location = "westus"
-                Write-Host -ForegroundColor Green "Create endpointName : $($endpointName), origin.Name : $($origin.Name), origin.HostName : $($origin.HostName)"
-
-                New-AzCdnEndpoint -Name $endpointName -ResourceGroupName $ResourceGroupName -ProfileName $cdnProfileName -IsHttpAllowed -IsHttpsAllowed `
-                    -Location $location -Origin $origin -IsCompressionEnabled -ContentTypesToCompress "text/html","text/css" `
-                    -OriginHostHeader "www.bing.com" -OriginPath "/photos" -QueryStringCachingBehavior "IgnoreQueryString"
-                $contentPath = @("/movies/amazing.mp4","/pictures/pic1.jpg") 
-
-                # Load content on endpoint should succeed
-                $endpoint = Get-AzCdnEndpoint -Name $endpointName -ProfileName $cdnProfileName -ResourceGroupName $ResourceGroupName
-                $endpoint | Import-AzCdnEndpointContent -ContentPath $contentPath
-                # Load content on endpoint with invalid content paths should fail
-                { $endpoint | Import-AzCdnEndpointContent -ContentPath "/movies/*" } | Should -Throw
-                # Load content on stopped endpoint should fail
-                Stop-AzCdnEndpoint -Name $endpointName -ResourceGroupName $ResourceGroupName -ProfileName $cdnProfileName 
-                { $endpoint | Import-AzCdnEndpointContent -ContentPath $contentPath } | Should -Throw
-            } Finally
-            {
-                Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
-            }
-        } | Should -Not -Throw
+        # Load content on endpoint should succeed
+        $endpoint = Get-AzCdnEndpoint -Name $env.VerizonEndpointName -ProfileName $env.VerizonCdnProfileName -ResourceGroupName $env.ResourceGroupName
+        $endpoint | Import-AzCdnEndpointContent -ContentPath $contentPath
+        # Load content on endpoint with invalid content paths should fail
+        { $endpoint | Import-AzCdnEndpointContent -ContentPath "/movies/*" } | Should -Throw
+        # Load content on stopped endpoint should fail
+        Stop-AzCdnEndpoint -Name $env.VerizonEndpointName -ResourceGroupName $env.ResourceGroupName -ProfileName $env.VerizonCdnProfileName 
+        { $endpoint | Import-AzCdnEndpointContent -ContentPath $contentPath } | Should -Throw
     }
 
     It 'LoadViaIdentity' {
-        { 
-            $PSDefaultParameterValues['Disabled'] = $true
-            $ResourceGroupName = 'testps-rg-' + (RandomString -allChars $false -len 6)
-            try
-            {
-                Write-Host -ForegroundColor Green "Create test group $($ResourceGroupName)"
-                New-AzResourceGroup -Name $ResourceGroupName -Location $env.location;
+        $PSDefaultParameterValues['Disabled'] = $true
+        Start-AzCdnEndpoint -SubscriptionId $env.SubscriptionId -Name $env.VerizonEndpointName -ResourceGroupName $env.ResourceGroupName -ProfileName $env.VerizonCdnProfileName 
 
-                $cdnProfileName = 'p-' + (RandomString -allChars $false -len 6);
-                Write-Host -ForegroundColor Green "Use cdnProfileName : $($cdnProfileName)"
+        $contentPath = @{ ContentPath = @("/movies/amazing.mp4","/pictures/pic1.jpg") }
 
-                $profileSku = "Standard_Verizon";
-                New-AzCdnProfile -SkuName $profileSku -Name $cdnProfileName -ResourceGroupName $ResourceGroupName -Location Global
-                
-                $endpointName = 'e-' + (RandomString -allChars $false -len 6);
-                $origin = @{
-                    Name = "origin1"
-                    HostName = "host1.hello.com"
-                };
-                $location = "westus"
-                Write-Host -ForegroundColor Green "Create endpointName : $($endpointName), origin.Name : $($origin.Name), origin.HostName : $($origin.HostName)"
+        # Load content on endpoint should succeed
+        $endpoint = Get-AzCdnEndpoint -Name $env.VerizonEndpointName -ProfileName $env.VerizonCdnProfileName -ResourceGroupName $env.ResourceGroupName
+        $endpoint | Import-AzCdnEndpointContent -ContentFilePath $contentPath
+        # Load content on endpoint with invalid content paths should fail
+        { $endpoint | Import-AzCdnEndpointContent -ContentFilePath @{ ContentPath = "/movies/*" } } | Should -Throw
+        # Load content on stopped endpoint should fail
+        Stop-AzCdnEndpoint -Name $env.VerizonEndpointName -ResourceGroupName $env.ResourceGroupName -ProfileName $env.VerizonCdnProfileName 
+        { $endpoint | Import-AzCdnEndpointContent -ContentFilePath $contentPath } | Should -Throw
 
-                New-AzCdnEndpoint -Name $endpointName -ResourceGroupName $ResourceGroupName -ProfileName $cdnProfileName -IsHttpAllowed -IsHttpsAllowed `
-                    -Location $location -Origin $origin -IsCompressionEnabled -ContentTypesToCompress "text/html","text/css" `
-                    -OriginHostHeader "www.bing.com" -OriginPath "/photos" -QueryStringCachingBehavior "IgnoreQueryString"
-                $contentPath = @{ ContentPath = @("/movies/amazing.mp4","/pictures/pic1.jpg") }
-
-                # Load content on endpoint should succeed
-                $endpoint = Get-AzCdnEndpoint -Name $endpointName -ProfileName $cdnProfileName -ResourceGroupName $ResourceGroupName
-                $endpoint | Import-AzCdnEndpointContent -ContentFilePath $contentPath
-                # Load content on endpoint with invalid content paths should fail
-                { $endpoint | Import-AzCdnEndpointContent -ContentFilePath @{ ContentPath = "/movies/*" } } | Should -Throw
-                # Load content on stopped endpoint should fail
-                Stop-AzCdnEndpoint -Name $endpointName -ResourceGroupName $ResourceGroupName -ProfileName $cdnProfileName 
-                { $endpoint | Import-AzCdnEndpointContent -ContentFilePath $contentPath } | Should -Throw
-            } Finally
-            {
-                Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
-            }
-        } | Should -Not -Throw
+        # For other tests, need to start the endpoint
+        Start-AzCdnEndpoint -Name $env.VerizonEndpointName -ResourceGroupName $env.ResourceGroupName -ProfileName $env.VerizonCdnProfileName 
     }
 }

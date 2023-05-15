@@ -14,42 +14,41 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzCdnCustomDomain'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'New-AzCdnCustomDomain' -Tag 'LiveOnly' {
+Describe 'New-AzCdnCustomDomain'  {
     It 'CreateExpanded' {
-        { 
-            $subId = "27cafca8-b9a4-4264-b399-45d0c9cca1ab"
-            $ResourceGroupName = 'testps-rg-' + (RandomString -allChars $false -len 6)
-            try
-            {
-                Write-Host -ForegroundColor Green "Create test group $($ResourceGroupName)"
-                New-AzResourceGroup -Name $ResourceGroupName -Location $env.location -SubscriptionId $subId
+        $subId = $env.SubscriptionId
+        # Hard-coding host and endpoint names due to requirement for DNS CNAME
+        $classicCdnEndpointName = 'aa-powershell-20230422-oigr9w'
+        $customDomainHostName = 'aa-powershell-20230422-oigr9w.cdne2e.azfdtest.xyz'
+        $customDomainName = 'cd-' + (RandomString -allChars $false -len 6);
+        $location = "westus"
+        $origin = @{
+            Name = "origin1"
+            HostName = "host1.hello.com"
+        };
+        $originId = "/subscriptions/$subId/resourcegroups/$($env.ResourceGroupName)/providers/Microsoft.Cdn/profiles/$($env.ClassicCdnProfileName)/endpoints/$classicCdnEndpointName/origins/$($origin.Name)"
+        $healthProbeParametersObject = New-AzCdnHealthProbeParametersObject -ProbeIntervalInSecond 240 -ProbePath "/health.aspx" -ProbeProtocol "Https" -ProbeRequestType "GET" 
+        $originGroup = @{
+            Name = "originGroup1"
+            healthProbeSetting = $healthProbeParametersObject 
+            Origin = @(@{
+                Id = $originId
+            })
+        }
+        $defaultOriginGroup = "/subscriptions/$subId/resourcegroups/$($env.ResourceGroupName)/providers/Microsoft.Cdn/profiles/$($env.ClassicCdnProfileName)/endpoints/$classicCdnEndpointName/origingroups/$($originGroup.Name)"
+        
+        Write-Host -ForegroundColor Green "Create endpointName : $($classicCdnEndpointName), origin.Name : $($origin.Name), origin.HostName : $($origin.HostName)"
+        New-AzCdnEndpoint -Name $classicCdnEndpointName -ResourceGroupName $env.ResourceGroupName -ProfileName $env.ClassicCdnProfileName -Location $location `
+            -Origin $origin -OriginGroup $originGroup -DefaultOriginGroupId $defaultOriginGroup | Out-Null
 
-                $cdnProfileName = 'p-' + (RandomString -allChars $false -len 6);
-                Write-Host -ForegroundColor Green "Use cdnProfileName : $($cdnProfileName)"
+        Write-Host -ForegroundColor Green "Create customDomain : $($customDomainName), customDomain HostName : $($customDomainHostName)"
+        $customDomain = New-AzCdnCustomDomain -EndpointName $classicCdnEndpointName -Name $customDomainName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName -HostName $customDomainHostName
 
-                $profileSku = "Standard_Microsoft";
-                New-AzCdnProfile -SkuName $profileSku -Name $cdnProfileName -ResourceGroupName $ResourceGroupName -Location Global -SubscriptionId $subId
-                
-                # Hard-coding host and endpoint names due to requirement for DNS CNAME
-                $endpointName = 'e-20220407-52wg49'
-                $customDomainHostName = 'e-20220407-52wg49.ps.cdne2e.azfdtest.xyz'
-                $customDomainName = 'cd-' + (RandomString -allChars $false -len 6);
-                $origin = @{
-                    Name = "origin1"
-                    HostName = "host1.hello.com"
-                };
-                $location = "westus"
-                Write-Host -ForegroundColor Green "Create endpointName : $($endpointName), origin.Name : $($origin.Name), origin.HostName : $($origin.HostName)"
+        $customDomain.Name | Should -Be $customDomainName
+        $customDomain.HostName | Should -Be $customDomainHostName
 
-                New-AzCdnEndpoint -Name $endpointName -ResourceGroupName $ResourceGroupName -ProfileName $cdnProfileName -Location $location -Origin $origin -SubscriptionId $subId
-                $customDomain = New-AzCdnCustomDomain -EndpointName $endpointName -Name $customDomainName -ProfileName $cdnProfileName -ResourceGroupName $ResourceGroupName -HostName $customDomainHostName -SubscriptionId $subId
-
-                $customDomain.Name | Should -Be $customDomainName
-                $customDomain.HostName | Should -Be $customDomainHostName
-            } Finally
-            {
-                Remove-AzResourceGroup -Name $ResourceGroupName -SubscriptionId $subId -NoWait
-            }
-        } | Should -Not -Throw
+        # /Remove-AzCdnCustomDomain -EndpointName $classicCdnEndpointName -Name $customDomainName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName
     }
 }
+
+

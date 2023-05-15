@@ -14,38 +14,22 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzFrontDoorCdnOrigin'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'New-AzFrontDoorCdnOrigin' -Tag 'LiveOnly' {
+Describe 'New-AzFrontDoorCdnOrigin'  {
     It 'CreateExpanded' {
-        $ResourceGroupName = 'testps-rg-' + (RandomString -allChars $false -len 6)
-        try
-        {
-            Write-Host -ForegroundColor Green "Create test group $($ResourceGroupName)"
-            New-AzResourceGroup -Name $ResourceGroupName -Location $env.location
+        $originGroupName = 'org' + (RandomString -allChars $false -len 6);
+        $healthProbeSetting = New-AzFrontDoorCdnOriginGroupHealthProbeSettingObject -ProbeIntervalInSecond 1 -ProbePath "/" `
+        -ProbeProtocol "Https" -ProbeRequestType "GET"
+        $loadBalancingSetting = New-AzFrontDoorCdnOriginGroupLoadBalancingSettingObject -AdditionalLatencyInMillisecond 200 `
+        -SampleSize 5 -SuccessfulSamplesRequired 4
+        New-AzFrontDoorCdnOriginGroup -OriginGroupName $originGroupName -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName `
+        -LoadBalancingSetting $loadBalancingSetting -HealthProbeSetting $healthProbeSetting
 
-            $frontDoorCdnProfileName = 'fdp-' + (RandomString -allChars $false -len 6);
-            Write-Host -ForegroundColor Green "Use frontDoorCdnProfileName : $($frontDoorCdnProfileName)"
+        Get-AzFrontDoorCdnOriginGroup -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -OriginGroupName $originGroupName
 
-            $profileSku = "Standard_AzureFrontDoor";
-            New-AzFrontDoorCdnProfile -SkuName $profileSku -Name $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName -Location Global
-
-            $originGroupName = 'org' + (RandomString -allChars $false -len 6);
-            $healthProbeSetting = New-AzFrontDoorCdnOriginGroupHealthProbeSettingObject -ProbeIntervalInSecond 1 -ProbePath "/" `
-            -ProbeProtocol "Https" -ProbeRequestType "GET"
-            $loadBalancingSetting = New-AzFrontDoorCdnOriginGroupLoadBalancingSettingObject -AdditionalLatencyInMillisecond 200 `
-            -SampleSize 5 -SuccessfulSamplesRequired 4
-            New-AzFrontDoorCdnOriginGroup -OriginGroupName $originGroupName -ProfileName $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName `
-            -LoadBalancingSetting $loadBalancingSetting -HealthProbeSetting $healthProbeSetting
-
-            Get-AzFrontDoorCdnOriginGroup -ResourceGroupName $ResourceGroupName -ProfileName $frontDoorCdnProfileName -OriginGroupName $originGroupName
-
-            $hostName = "en.wikipedia.org";
-            $originName = 'ori' + (RandomString -allChars $false -len 6);
-            New-AzFrontDoorCdnOrigin -ResourceGroupName $ResourceGroupName -ProfileName $frontDoorCdnProfileName -OriginGroupName $originGroupName `
-            -OriginName $originName -OriginHostHeader $hostName -HostName $hostName `
-            -HttpPort 80 -HttpsPort 443 -Priority 1 -Weight 1000
-        } Finally
-        {
-            Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
-        }
+        $hostName = "en.wikipedia.org";
+        $originName = 'ori' + (RandomString -allChars $false -len 6);
+        New-AzFrontDoorCdnOrigin -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -OriginGroupName $originGroupName `
+        -OriginName $originName -OriginHostHeader $hostName -HostName $hostName `
+        -HttpPort 80 -HttpsPort 443 -Priority 1 -Weight 1000  
     }
 }
