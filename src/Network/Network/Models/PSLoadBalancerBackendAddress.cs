@@ -40,6 +40,9 @@ namespace Microsoft.Azure.Commands.Network.Models
         [JsonProperty(Order = 6)]
         public List<PSNatRulePortMapping> InboundNatRulesPortMapping { get; set; }
 
+        [JsonProperty(Order = 7)]
+        public string AdminState { get; set; }
+
         [JsonIgnore]
         public string NetworkInterfaceIpConfigurationIdText
         {

@@ -18,8 +18,8 @@ Creates a network interface.
 New-AzNetworkInterface -Name <String> -ResourceGroupName <String> -Location <String> [-EdgeZone <String>]
  -IpConfiguration <PSNetworkInterfaceIPConfiguration[]> [-DnsServer <String[]>]
  [-InternalDnsNameLabel <String>] [-DisableTcpStateTracking <String>] [-EnableIPForwarding]
- [-EnableAcceleratedNetworking] [-AuxiliaryMode <String>] [-Tag <Hashtable>] [-Force] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-EnableAcceleratedNetworking] [-AuxiliaryMode <String>] [-AuxiliarySku <String>] [-Tag <Hashtable>] [-Force]
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByIpConfigurationResourceId
@@ -28,8 +28,8 @@ New-AzNetworkInterface -Name <String> -ResourceGroupName <String> -Location <Str
  -IpConfiguration <PSNetworkInterfaceIPConfiguration[]> [-NetworkSecurityGroupId <String>]
  [-NetworkSecurityGroup <PSNetworkSecurityGroup>] [-DnsServer <String[]>] [-InternalDnsNameLabel <String>]
  [-DisableTcpStateTracking <String>] [-EnableIPForwarding] [-EnableAcceleratedNetworking]
- [-AuxiliaryMode <String>] [-Tag <Hashtable>] [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AuxiliaryMode <String>] [-AuxiliarySku <String>] [-Tag <Hashtable>] [-Force] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByResourceId
@@ -40,8 +40,8 @@ New-AzNetworkInterface -Name <String> -ResourceGroupName <String> -Location <Str
  [-ApplicationGatewayBackendAddressPoolId <String[]>] [-ApplicationSecurityGroupId <String[]>]
  [-PrivateIpAddress <String>] [-IpConfigurationName <String>] [-DnsServer <String[]>]
  [-InternalDnsNameLabel <String>] [-DisableTcpStateTracking <String>] [-EnableIPForwarding]
- [-EnableAcceleratedNetworking] [-AuxiliaryMode <String>] [-Tag <Hashtable>] [-Force] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-EnableAcceleratedNetworking] [-AuxiliaryMode <String>] [-AuxiliarySku <String>] [-Tag <Hashtable>] [-Force]
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByResource
@@ -53,8 +53,8 @@ New-AzNetworkInterface -Name <String> -ResourceGroupName <String> -Location <Str
  [-ApplicationSecurityGroup <PSApplicationSecurityGroup[]>] [-PrivateIpAddress <String>]
  [-IpConfigurationName <String>] [-DnsServer <String[]>] [-InternalDnsNameLabel <String>]
  [-DisableTcpStateTracking <String>] [-EnableIPForwarding] [-EnableAcceleratedNetworking]
- [-AuxiliaryMode <String>] [-Tag <Hashtable>] [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AuxiliaryMode <String>] [-AuxiliarySku <String>] [-Tag <Hashtable>] [-Force] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -182,6 +182,23 @@ The auxiliary mode of the Network Interface
 Type: System.String
 Parameter Sets: (All)
 Aliases:
+Accepted values: None, MaxConnections, AcceleratedConnections
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AuxiliarySku
+The auxiliary sku of the Network Interface
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+Accepted values: None, A1, A2, A4, A8
 
 Required: False
 Position: Named
