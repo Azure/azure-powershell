@@ -21,6 +21,10 @@ Creates new backup configuration object
 Creates new backup configuration object
 .Example
 $backupConfig = New-AzDataProtectionBackupConfigurationClientObject -SnapshotVolume $true -IncludeClusterScopeResource $true -DatasourceType AzureKubernetesService -LabelSelector "key=val","foo=bar" -ExcludedNamespace "excludeNS1","excludeNS2"
+.Example
+$storageAccount = Get-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $storageAccountName 
+$containers=Get-AzStorageContainer -Context $storageAccount.Context        
+$backupConfig = New-AzDataProtectionBackupConfigurationClientObject -DatasourceType AzureBlob -VaultedBackupContainer $containers.Name[1,3,4]      
 
 .Outputs
 System.Management.Automation.PSObject
