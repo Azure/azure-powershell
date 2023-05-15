@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         protected override void OnProcessRecord()
         {
             String subscriptionId = null;
-            if (ParameterSetName == ResourceGroupIdParameterSet){
+            if (ResourceGroupIdParameterSet.Equals(ParameterSetName)){
                 ResourceIdentifier resourceIdentifier = ResourceIdentifier.FromResourceGroupIdentifier(this.Id);
                 Name = resourceIdentifier.ResourceGroupName;
                 subscriptionId = resourceIdentifier.Subscription;
