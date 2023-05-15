@@ -139,7 +139,7 @@
     <value>Failed to download client proxy executable from {0}. Error: {1}</value>
   </data>
   <data name="FailedToListCredentials" xml:space="preserve">
-    <value>ListCredentials operation failed with error code '{0}'.</value>
+    <value>ListCredentials operation failed with error: {0}</value>
   </data>
   <data name="KeysDestinationFolderWithKeys" xml:space="preserve">
     <value>KeysDestinationFolder can't be used in conjunction with PublicKeyFile or PrivateKeyFile. All generated keys are saved in the same directory as provided keys.</value>

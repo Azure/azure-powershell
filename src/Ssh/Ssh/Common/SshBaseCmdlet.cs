@@ -454,7 +454,7 @@ namespace Microsoft.Azure.Commands.Ssh
                         {
                             throw new AzPSCloudException(Resources.FailedToCreateDefaultEndpointUnauthorized);
                         }
-                        throw new AzPSCloudException(String.Format(Resources.FailedToCreateDefaultEndpoint, createEndpointException));
+                        throw new AzPSCloudException(String.Format(Resources.FailedToCreateDefaultEndpoint, createEndpointException.Message));
                     }
 
                     try
@@ -463,13 +463,13 @@ namespace Microsoft.Azure.Commands.Ssh
                     }
                     catch (Exception listCredException)
                     {
-                        throw new AzPSCloudException(String.Format(Resources.FailedToListCredentials, listCredException));
+                        throw new AzPSCloudException(String.Format(Resources.FailedToListCredentials, listCredException.Message));
                     }
 
                 }
                 else
                 {
-                    throw new AzPSCloudException(String.Format(Resources.FailedToListCredentials, exception));
+                    throw new AzPSCloudException(String.Format(Resources.FailedToListCredentials, exception.Message));
                 }
             }
             return cred;
@@ -719,7 +719,7 @@ namespace Microsoft.Azure.Commands.Ssh
 
         private void SetResourceId()
         {
-            if (ResourceId == null)
+            if (String.IsNullOrEmpty(ResourceId) && ParameterSetName.Equals(InteractiveParameterSet))
             {
                 ResourceIdentifier id = new ResourceIdentifier();
                 id.ResourceGroupName = ResourceGroupName;

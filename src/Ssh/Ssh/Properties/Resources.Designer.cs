@@ -124,7 +124,7 @@ namespace Microsoft.Azure.Commands.Ssh.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ListCredentials operation failed with error code &apos;{0}&apos;..
+        ///   Looks up a localized string similar to ListCredentials operation failed with error: {0}.
         /// </summary>
         internal static string FailedToListCredentials {
             get {
