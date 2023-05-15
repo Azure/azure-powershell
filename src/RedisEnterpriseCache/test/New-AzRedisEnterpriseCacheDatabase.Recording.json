@@ -1,9 +1,10 @@
 {
-  "New-AzRedisEnterpriseCacheDatabase+[NoContext]+Create+$PUT+https://management.azure.com/subscriptions/6b9ac7d2-7f6d-4de4-962c-43fda44bc3f2/resourceGroups/ps-redisenterprise-rg-gpzvr18i/providers/Microsoft.Cache/redisEnterprise/ps-cache-test2/databases/default?api-version=2022-01-01+1": {
+  "New-AzRedisEnterpriseCacheDatabase+[NoContext]+Create+$PUT+https://management.azure.com/subscriptions/b3e4e86c-59f5-46c5-8b86-e97530eac8fb/resourceGroups/ps-redisenterprise-rg-heap2v5k/providers/Microsoft.Cache/redisEnterprise/ps-cache-test2-zh8bj3fi/databases/default?api-version=2023-03-01-preview+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/6b9ac7d2-7f6d-4de4-962c-43fda44bc3f2/resourceGroups/ps-redisenterprise-rg-gpzvr18i/providers/Microsoft.Cache/redisEnterprise/ps-cache-test2/databases/default?api-version=2022-01-01",
+      "RequestUri": "https://management.azure.com/subscriptions/b3e4e86c-59f5-46c5-8b86-e97530eac8fb/resourceGroups/ps-redisenterprise-rg-heap2v5k/providers/Microsoft.Cache/redisEnterprise/ps-cache-test2-zh8bj3fi/databases/default?api-version=2023-03-01-preview",
       "Content": "{\r\n  \"properties\": {\r\n    \"clientProtocol\": \"Encrypted\",\r\n    \"port\": 10000,\r\n    \"clusteringPolicy\": \"EnterpriseCluster\",\r\n    \"evictionPolicy\": \"NoEviction\"\r\n  }\r\n}",
+      "isContentBase64": false,
       "Headers": {
       },
       "ContentHeaders": {
@@ -16,39 +17,41 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/6b9ac7d2-7f6d-4de4-962c-43fda44bc3f2/resourceGroups/ps-redisenterprise-rg-gpzvr18i/providers/Microsoft.Cache/redisEnterprise/ps-cache-test2/databases/default?api-version=2022-01-01" ],
-        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/6b9ac7d2-7f6d-4de4-962c-43fda44bc3f2/providers/Microsoft.Cache/locations/East%20US/operationsStatus/93704ac5-8dcb-4d5c-b7ab-07d5e66b9eb1?api-version=2022-01-01" ],
-        "x-ms-request-id": [ "2a00928a-0db2-4c27-be07-72c8f3aab8b6" ],
-        "x-rp-server-mvid": [ "a16a8967-ff32-4f76-ad37-63467a1c5564" ],
+        "Location": [ "https://management.azure.com/subscriptions/b3e4e86c-59f5-46c5-8b86-e97530eac8fb/resourceGroups/ps-redisenterprise-rg-heap2v5k/providers/Microsoft.Cache/redisEnterprise/ps-cache-test2-zh8bj3fi/databases/default?api-version=2023-03-01-preview" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/b3e4e86c-59f5-46c5-8b86-e97530eac8fb/providers/Microsoft.Cache/locations/East%20US/operationsStatus/1976feee-86c7-4c6e-b25f-9ba0a783ef8b?api-version=2023-03-01-preview" ],
+        "x-ms-request-id": [ "ded61843-ec0c-4a70-9878-ff4c2a4830f5" ],
+        "x-rp-server-mvid": [ "394d8f0c-0bbe-4942-b962-0ddcd147e40a" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1196" ],
-        "x-ms-correlation-request-id": [ "9fa68f21-0a64-4f41-b5f6-fd9998e3dcb5" ],
-        "x-ms-routing-request-id": [ "JIOINDIACENTRAL:20220710T175938Z:9fa68f21-0a64-4f41-b5f6-fd9998e3dcb5" ],
-        "Date": [ "Sun, 10 Jul 2022 17:59:38 GMT" ]
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1193" ],
+        "x-ms-correlation-request-id": [ "1da080b5-c08e-417f-8be5-0d3a67eb3d1c" ],
+        "x-ms-routing-request-id": [ "JIOINDIACENTRAL:20230406T083628Z:1da080b5-c08e-417f-8be5-0d3a67eb3d1c" ],
+        "Date": [ "Thu, 06 Apr 2023 08:36:28 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "501" ],
+        "Content-Length": [ "510" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\r\n  \"name\": \"default\",\r\n  \"id\": \"/subscriptions/6b9ac7d2-7f6d-4de4-962c-43fda44bc3f2/resourceGroups/ps-redisenterprise-rg-gpzvr18i/providers/Microsoft.Cache/redisEnterprise/ps-cache-test2/databases/default\",\r\n  \"type\": \"Microsoft.Cache/redisEnterprise/databases\",\r\n  \"properties\": {\r\n    \"clientProtocol\": \"Encrypted\",\r\n    \"port\": 10000,\r\n    \"provisioningState\": \"Creating\",\r\n    \"resourceState\": \"Creating\",\r\n    \"clusteringPolicy\": \"EnterpriseCluster\",\r\n    \"evictionPolicy\": \"NoEviction\"\r\n  }\r\n}"
+      "Content": "{\r\n  \"name\": \"default\",\r\n  \"id\": \"/subscriptions/b3e4e86c-59f5-46c5-8b86-e97530eac8fb/resourceGroups/ps-redisenterprise-rg-heap2v5k/providers/Microsoft.Cache/redisEnterprise/ps-cache-test2-zh8bj3fi/databases/default\",\r\n  \"type\": \"Microsoft.Cache/redisEnterprise/databases\",\r\n  \"properties\": {\r\n    \"clientProtocol\": \"Encrypted\",\r\n    \"port\": 10000,\r\n    \"provisioningState\": \"Creating\",\r\n    \"resourceState\": \"Creating\",\r\n    \"clusteringPolicy\": \"EnterpriseCluster\",\r\n    \"evictionPolicy\": \"NoEviction\"\r\n  }\r\n}",
+      "isContentBase64": false
     }
   },
-  "New-AzRedisEnterpriseCacheDatabase+[NoContext]+Create+$GET+https://management.azure.com/subscriptions/6b9ac7d2-7f6d-4de4-962c-43fda44bc3f2/providers/Microsoft.Cache/locations/East US/operationsStatus/93704ac5-8dcb-4d5c-b7ab-07d5e66b9eb1?api-version=2022-01-01+2": {
+  "New-AzRedisEnterpriseCacheDatabase+[NoContext]+Create+$GET+https://management.azure.com/subscriptions/b3e4e86c-59f5-46c5-8b86-e97530eac8fb/providers/Microsoft.Cache/locations/East US/operationsStatus/1976feee-86c7-4c6e-b25f-9ba0a783ef8b?api-version=2023-03-01-preview+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/6b9ac7d2-7f6d-4de4-962c-43fda44bc3f2/providers/Microsoft.Cache/locations/East%20US/operationsStatus/93704ac5-8dcb-4d5c-b7ab-07d5e66b9eb1?api-version=2022-01-01",
+      "RequestUri": "https://management.azure.com/subscriptions/b3e4e86c-59f5-46c5-8b86-e97530eac8fb/providers/Microsoft.Cache/locations/East%20US/operationsStatus/1976feee-86c7-4c6e-b25f-9ba0a783ef8b?api-version=2023-03-01-preview",
       "Content": null,
+      "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "182" ],
-        "x-ms-client-request-id": [ "6536a96d-1719-4347-be3a-92f2747707b0" ],
+        "x-ms-unique-id": [ "84" ],
+        "x-ms-client-request-id": [ "ca7b35bd-d44e-40a6-8f0a-2f3b577d1306" ],
         "CommandName": [ "Az.RedisEnterpriseCache.internal\\New-AzRedisEnterpriseCacheDatabase" ],
         "FullCommandName": [ "New-AzRedisEnterpriseCacheDatabase_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.3", "Az.RedisEnterpriseCache/1.0.0" ]
       },
       "ContentHeaders": {
       }
@@ -58,37 +61,39 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "86c502f9-92da-45c5-a34a-a022cf6c1f9b" ],
-        "x-rp-server-mvid": [ "a16a8967-ff32-4f76-ad37-63467a1c5564" ],
+        "x-ms-request-id": [ "372035aa-c565-43a6-b01c-464ada23ffc2" ],
+        "x-rp-server-mvid": [ "394d8f0c-0bbe-4942-b962-0ddcd147e40a" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11924" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11878" ],
-        "x-ms-correlation-request-id": [ "0d2979e3-ab13-41e9-8af2-16ce4c224632" ],
-        "x-ms-routing-request-id": [ "JIOINDIACENTRAL:20220710T180009Z:0d2979e3-ab13-41e9-8af2-16ce4c224632" ],
-        "Date": [ "Sun, 10 Jul 2022 18:00:09 GMT" ]
+        "x-ms-correlation-request-id": [ "652985b1-fd6a-4dc3-830b-cd224c2a0922" ],
+        "x-ms-routing-request-id": [ "JIOINDIACENTRAL:20230406T083659Z:652985b1-fd6a-4dc3-830b-cd224c2a0922" ],
+        "Date": [ "Thu, 06 Apr 2023 08:36:59 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "319" ],
+        "Content-Length": [ "317" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/6b9ac7d2-7f6d-4de4-962c-43fda44bc3f2/providers/Microsoft.Cache/locations/East US/operationsStatus/93704ac5-8dcb-4d5c-b7ab-07d5e66b9eb1\",\"name\":\"93704ac5-8dcb-4d5c-b7ab-07d5e66b9eb1\",\"status\":\"Succeeded\",\"startTime\":\"2022-07-10T17:59:38.7417263+00:00\",\"endTime\":\"2022-07-10T17:59:51.0558978+00:00\"}"
+      "Content": "{\"id\":\"/subscriptions/b3e4e86c-59f5-46c5-8b86-e97530eac8fb/providers/Microsoft.Cache/locations/East US/operationsStatus/1976feee-86c7-4c6e-b25f-9ba0a783ef8b\",\"name\":\"1976feee-86c7-4c6e-b25f-9ba0a783ef8b\",\"status\":\"Succeeded\",\"startTime\":\"2023-04-06T08:36:28.80083+00:00\",\"endTime\":\"2023-04-06T08:36:47.0461008+00:00\"}",
+      "isContentBase64": false
     }
   },
-  "New-AzRedisEnterpriseCacheDatabase+[NoContext]+Create+$GET+https://management.azure.com/subscriptions/6b9ac7d2-7f6d-4de4-962c-43fda44bc3f2/resourceGroups/ps-redisenterprise-rg-gpzvr18i/providers/Microsoft.Cache/redisEnterprise/ps-cache-test2/databases/default?api-version=2022-01-01+3": {
+  "New-AzRedisEnterpriseCacheDatabase+[NoContext]+Create+$GET+https://management.azure.com/subscriptions/b3e4e86c-59f5-46c5-8b86-e97530eac8fb/resourceGroups/ps-redisenterprise-rg-heap2v5k/providers/Microsoft.Cache/redisEnterprise/ps-cache-test2-zh8bj3fi/databases/default?api-version=2023-03-01-preview+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/6b9ac7d2-7f6d-4de4-962c-43fda44bc3f2/resourceGroups/ps-redisenterprise-rg-gpzvr18i/providers/Microsoft.Cache/redisEnterprise/ps-cache-test2/databases/default?api-version=2022-01-01",
+      "RequestUri": "https://management.azure.com/subscriptions/b3e4e86c-59f5-46c5-8b86-e97530eac8fb/resourceGroups/ps-redisenterprise-rg-heap2v5k/providers/Microsoft.Cache/redisEnterprise/ps-cache-test2-zh8bj3fi/databases/default?api-version=2023-03-01-preview",
       "Content": null,
+      "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "183" ],
-        "x-ms-client-request-id": [ "6536a96d-1719-4347-be3a-92f2747707b0" ],
+        "x-ms-unique-id": [ "85" ],
+        "x-ms-client-request-id": [ "ca7b35bd-d44e-40a6-8f0a-2f3b577d1306" ],
         "CommandName": [ "Az.RedisEnterpriseCache.internal\\New-AzRedisEnterpriseCacheDatabase" ],
         "FullCommandName": [ "New-AzRedisEnterpriseCacheDatabase_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.3", "Az.RedisEnterpriseCache/1.0.0" ]
       },
       "ContentHeaders": {
       }
@@ -98,34 +103,36 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "fda645d7-f7d0-4837-8e9b-8d9c92f0ffa1" ],
-        "x-rp-server-mvid": [ "a16a8967-ff32-4f76-ad37-63467a1c5564" ],
+        "x-ms-request-id": [ "4e887cb4-f87f-4841-84ff-25bb8c6bb583" ],
+        "x-rp-server-mvid": [ "394d8f0c-0bbe-4942-b962-0ddcd147e40a" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11877" ],
-        "x-ms-correlation-request-id": [ "6908bc9b-7f36-46b8-8669-1ba150c4d6b8" ],
-        "x-ms-routing-request-id": [ "JIOINDIACENTRAL:20220710T180009Z:6908bc9b-7f36-46b8-8669-1ba150c4d6b8" ],
-        "Date": [ "Sun, 10 Jul 2022 18:00:09 GMT" ]
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11923" ],
+        "x-ms-correlation-request-id": [ "5099bc91-0381-465d-82c6-3aadf39311cd" ],
+        "x-ms-routing-request-id": [ "JIOINDIACENTRAL:20230406T083700Z:5099bc91-0381-465d-82c6-3aadf39311cd" ],
+        "Date": [ "Thu, 06 Apr 2023 08:37:00 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "433" ],
+        "Content-Length": [ "442" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"name\":\"default\",\"id\":\"/subscriptions/6b9ac7d2-7f6d-4de4-962c-43fda44bc3f2/resourceGroups/ps-redisenterprise-rg-gpzvr18i/providers/Microsoft.Cache/redisEnterprise/ps-cache-test2/databases/default\",\"type\":\"Microsoft.Cache/redisEnterprise/databases\",\"properties\":{\"clientProtocol\":\"Encrypted\",\"port\":10000,\"provisioningState\":\"Succeeded\",\"resourceState\":\"Running\",\"clusteringPolicy\":\"EnterpriseCluster\",\"evictionPolicy\":\"NoEviction\"}}"
+      "Content": "{\"name\":\"default\",\"id\":\"/subscriptions/b3e4e86c-59f5-46c5-8b86-e97530eac8fb/resourceGroups/ps-redisenterprise-rg-heap2v5k/providers/Microsoft.Cache/redisEnterprise/ps-cache-test2-zh8bj3fi/databases/default\",\"type\":\"Microsoft.Cache/redisEnterprise/databases\",\"properties\":{\"clientProtocol\":\"Encrypted\",\"port\":10000,\"provisioningState\":\"Succeeded\",\"resourceState\":\"Running\",\"clusteringPolicy\":\"EnterpriseCluster\",\"evictionPolicy\":\"NoEviction\"}}",
+      "isContentBase64": false
     }
   },
-  "New-AzRedisEnterpriseCacheDatabase+[NoContext]+Create a georeplicated database+$PUT+https://management.azure.com/subscriptions/6b9ac7d2-7f6d-4de4-962c-43fda44bc3f2/resourceGroups/ps-redisenterprise-rg-gpzvr18i/providers/Microsoft.Cache/redisEnterprise/ps-cache-test3/databases/default?api-version=2022-01-01+1": {
+  "New-AzRedisEnterpriseCacheDatabase+[NoContext]+Create a georeplicated database+$PUT+https://management.azure.com/subscriptions/b3e4e86c-59f5-46c5-8b86-e97530eac8fb/resourceGroups/ps-redisenterprise-rg-heap2v5k/providers/Microsoft.Cache/redisEnterprise/ps-cache-test3-v35tcip9/databases/default?api-version=2023-03-01-preview+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/6b9ac7d2-7f6d-4de4-962c-43fda44bc3f2/resourceGroups/ps-redisenterprise-rg-gpzvr18i/providers/Microsoft.Cache/redisEnterprise/ps-cache-test3/databases/default?api-version=2022-01-01",
-      "Content": "{\r\n  \"properties\": {\r\n    \"geoReplication\": {\r\n      \"groupNickname\": \"GroupName\",\r\n      \"linkedDatabases\": [\r\n        {\r\n          \"id\": \"/subscriptions/6b9ac7d2-7f6d-4de4-962c-43fda44bc3f2/resourceGroups/ps-redisenterprise-rg-gpzvr18i/providers/Microsoft.Cache/redisEnterprise/ps-cache-test3/databases/default\"\r\n        }\r\n      ]\r\n    },\r\n    \"clientProtocol\": \"Encrypted\",\r\n    \"clusteringPolicy\": \"EnterpriseCluster\",\r\n    \"evictionPolicy\": \"NoEviction\"\r\n  }\r\n}",
+      "RequestUri": "https://management.azure.com/subscriptions/b3e4e86c-59f5-46c5-8b86-e97530eac8fb/resourceGroups/ps-redisenterprise-rg-heap2v5k/providers/Microsoft.Cache/redisEnterprise/ps-cache-test3-v35tcip9/databases/default?api-version=2023-03-01-preview",
+      "Content": "{\r\n  \"properties\": {\r\n    \"geoReplication\": {\r\n      \"groupNickname\": \"GroupName\",\r\n      \"linkedDatabases\": [\r\n        {\r\n          \"id\": \"/subscriptions/b3e4e86c-59f5-46c5-8b86-e97530eac8fb/resourceGroups/ps-redisenterprise-rg-heap2v5k/providers/Microsoft.Cache/redisEnterprise/ps-cache-test3-v35tcip9/databases/default\"\r\n        }\r\n      ]\r\n    },\r\n    \"clientProtocol\": \"Encrypted\",\r\n    \"clusteringPolicy\": \"EnterpriseCluster\",\r\n    \"evictionPolicy\": \"NoEviction\"\r\n  }\r\n}",
+      "isContentBase64": false,
       "Headers": {
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
-        "Content-Length": [ "467" ]
+        "Content-Length": [ "476" ]
       }
     },
     "Response": {
@@ -133,39 +140,41 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/6b9ac7d2-7f6d-4de4-962c-43fda44bc3f2/resourceGroups/ps-redisenterprise-rg-gpzvr18i/providers/Microsoft.Cache/redisEnterprise/ps-cache-test3/databases/default?api-version=2022-01-01" ],
-        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/6b9ac7d2-7f6d-4de4-962c-43fda44bc3f2/providers/Microsoft.Cache/locations/East%20US/operationsStatus/8437e213-fbed-4ec3-b0e2-4b4ec95274ff?api-version=2022-01-01" ],
-        "x-ms-request-id": [ "6301c7e8-267f-4bc5-8009-54a080e70392" ],
-        "x-rp-server-mvid": [ "a16a8967-ff32-4f76-ad37-63467a1c5564" ],
+        "Location": [ "https://management.azure.com/subscriptions/b3e4e86c-59f5-46c5-8b86-e97530eac8fb/resourceGroups/ps-redisenterprise-rg-heap2v5k/providers/Microsoft.Cache/redisEnterprise/ps-cache-test3-v35tcip9/databases/default?api-version=2023-03-01-preview" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/b3e4e86c-59f5-46c5-8b86-e97530eac8fb/providers/Microsoft.Cache/locations/East%20US/operationsStatus/6fda4f89-be63-40ca-9cfa-cacbb9372fe1?api-version=2023-03-01-preview" ],
+        "x-ms-request-id": [ "62f61d7f-d43c-41c9-bbc9-51ae1598e9e7" ],
+        "x-rp-server-mvid": [ "394d8f0c-0bbe-4942-b962-0ddcd147e40a" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
-        "x-ms-correlation-request-id": [ "993d387c-bc15-4af1-b15e-792f53380967" ],
-        "x-ms-routing-request-id": [ "CENTRALINDIA:20220710T180243Z:993d387c-bc15-4af1-b15e-792f53380967" ],
-        "Date": [ "Sun, 10 Jul 2022 18:02:43 GMT" ]
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1192" ],
+        "x-ms-correlation-request-id": [ "1ed39143-279f-4b33-ac47-a0c66abac4ce" ],
+        "x-ms-routing-request-id": [ "JIOINDIACENTRAL:20230406T083703Z:1ed39143-279f-4b33-ac47-a0c66abac4ce" ],
+        "Date": [ "Thu, 06 Apr 2023 08:37:02 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "853" ],
+        "Content-Length": [ "871" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\r\n  \"name\": \"default\",\r\n  \"id\": \"/subscriptions/6b9ac7d2-7f6d-4de4-962c-43fda44bc3f2/resourceGroups/ps-redisenterprise-rg-gpzvr18i/providers/Microsoft.Cache/redisEnterprise/ps-cache-test3/databases/default\",\r\n  \"type\": \"Microsoft.Cache/redisEnterprise/databases\",\r\n  \"properties\": {\r\n    \"clientProtocol\": \"Encrypted\",\r\n    \"port\": 10000,\r\n    \"provisioningState\": \"Creating\",\r\n    \"resourceState\": \"Creating\",\r\n    \"clusteringPolicy\": \"EnterpriseCluster\",\r\n    \"evictionPolicy\": \"NoEviction\",\r\n    \"geoReplication\": {\r\n      \"linkedDatabases\": [\r\n        {\r\n          \"id\": \"/subscriptions/6b9ac7d2-7f6d-4de4-962c-43fda44bc3f2/resourceGroups/ps-redisenterprise-rg-gpzvr18i/providers/Microsoft.Cache/redisEnterprise/ps-cache-test3/databases/default\",\r\n          \"state\": \"Linking\"\r\n        }\r\n      ],\r\n      \"groupNickname\": \"GroupName\"\r\n    }\r\n  }\r\n}"
+      "Content": "{\r\n  \"name\": \"default\",\r\n  \"id\": \"/subscriptions/b3e4e86c-59f5-46c5-8b86-e97530eac8fb/resourceGroups/ps-redisenterprise-rg-heap2v5k/providers/Microsoft.Cache/redisEnterprise/ps-cache-test3-v35tcip9/databases/default\",\r\n  \"type\": \"Microsoft.Cache/redisEnterprise/databases\",\r\n  \"properties\": {\r\n    \"clientProtocol\": \"Encrypted\",\r\n    \"port\": 10000,\r\n    \"provisioningState\": \"Creating\",\r\n    \"resourceState\": \"Creating\",\r\n    \"clusteringPolicy\": \"EnterpriseCluster\",\r\n    \"evictionPolicy\": \"NoEviction\",\r\n    \"geoReplication\": {\r\n      \"linkedDatabases\": [\r\n        {\r\n          \"id\": \"/subscriptions/b3e4e86c-59f5-46c5-8b86-e97530eac8fb/resourceGroups/ps-redisenterprise-rg-heap2v5k/providers/Microsoft.Cache/redisEnterprise/ps-cache-test3-v35tcip9/databases/default\",\r\n          \"state\": \"Linking\"\r\n        }\r\n      ],\r\n      \"groupNickname\": \"GroupName\"\r\n    }\r\n  }\r\n}",
+      "isContentBase64": false
     }
   },
-  "New-AzRedisEnterpriseCacheDatabase+[NoContext]+Create a georeplicated database+$GET+https://management.azure.com/subscriptions/6b9ac7d2-7f6d-4de4-962c-43fda44bc3f2/providers/Microsoft.Cache/locations/East US/operationsStatus/8437e213-fbed-4ec3-b0e2-4b4ec95274ff?api-version=2022-01-01+2": {
+  "New-AzRedisEnterpriseCacheDatabase+[NoContext]+Create a georeplicated database+$GET+https://management.azure.com/subscriptions/b3e4e86c-59f5-46c5-8b86-e97530eac8fb/providers/Microsoft.Cache/locations/East US/operationsStatus/6fda4f89-be63-40ca-9cfa-cacbb9372fe1?api-version=2023-03-01-preview+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/6b9ac7d2-7f6d-4de4-962c-43fda44bc3f2/providers/Microsoft.Cache/locations/East%20US/operationsStatus/8437e213-fbed-4ec3-b0e2-4b4ec95274ff?api-version=2022-01-01",
+      "RequestUri": "https://management.azure.com/subscriptions/b3e4e86c-59f5-46c5-8b86-e97530eac8fb/providers/Microsoft.Cache/locations/East%20US/operationsStatus/6fda4f89-be63-40ca-9cfa-cacbb9372fe1?api-version=2023-03-01-preview",
       "Content": null,
+      "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "185" ],
-        "x-ms-client-request-id": [ "69ab7b87-e841-4841-a150-ff90d81c4575" ],
+        "x-ms-unique-id": [ "87" ],
+        "x-ms-client-request-id": [ "773cec29-53e1-488e-a849-dac494200997" ],
         "CommandName": [ "Az.RedisEnterpriseCache.internal\\New-AzRedisEnterpriseCacheDatabase" ],
         "FullCommandName": [ "New-AzRedisEnterpriseCacheDatabase_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.3", "Az.RedisEnterpriseCache/1.0.0" ]
       },
       "ContentHeaders": {
       }
@@ -175,37 +184,39 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "52b38495-12ee-4984-a7c6-059af6cdf9e7" ],
-        "x-rp-server-mvid": [ "a16a8967-ff32-4f76-ad37-63467a1c5564" ],
+        "x-ms-request-id": [ "6c2c6424-cd9d-49ef-9848-0454bc9678e8" ],
+        "x-rp-server-mvid": [ "394d8f0c-0bbe-4942-b962-0ddcd147e40a" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
-        "x-ms-correlation-request-id": [ "012d9e56-2b5b-4928-a579-4011da3b5df8" ],
-        "x-ms-routing-request-id": [ "CENTRALINDIA:20220710T180313Z:012d9e56-2b5b-4928-a579-4011da3b5df8" ],
-        "Date": [ "Sun, 10 Jul 2022 18:03:13 GMT" ]
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11922" ],
+        "x-ms-correlation-request-id": [ "a35ad571-97fe-46c1-a63b-adf82d02843d" ],
+        "x-ms-routing-request-id": [ "JIOINDIACENTRAL:20230406T083733Z:a35ad571-97fe-46c1-a63b-adf82d02843d" ],
+        "Date": [ "Thu, 06 Apr 2023 08:37:33 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "320" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/6b9ac7d2-7f6d-4de4-962c-43fda44bc3f2/providers/Microsoft.Cache/locations/East US/operationsStatus/8437e213-fbed-4ec3-b0e2-4b4ec95274ff\",\"name\":\"8437e213-fbed-4ec3-b0e2-4b4ec95274ff\",\"status\":\"InProgress\",\"startTime\":\"2022-07-10T18:02:43.4019345+00:00\",\"endTime\":\"2022-07-10T18:02:44.6117585+00:00\"}"
+      "Content": "{\"id\":\"/subscriptions/b3e4e86c-59f5-46c5-8b86-e97530eac8fb/providers/Microsoft.Cache/locations/East US/operationsStatus/6fda4f89-be63-40ca-9cfa-cacbb9372fe1\",\"name\":\"6fda4f89-be63-40ca-9cfa-cacbb9372fe1\",\"status\":\"InProgress\",\"startTime\":\"2023-04-06T08:37:03.1079027+00:00\",\"endTime\":\"2023-04-06T08:37:06.5301514+00:00\"}",
+      "isContentBase64": false
     }
   },
-  "New-AzRedisEnterpriseCacheDatabase+[NoContext]+Create a georeplicated database+$GET+https://management.azure.com/subscriptions/6b9ac7d2-7f6d-4de4-962c-43fda44bc3f2/providers/Microsoft.Cache/locations/East US/operationsStatus/8437e213-fbed-4ec3-b0e2-4b4ec95274ff?api-version=2022-01-01+3": {
+  "New-AzRedisEnterpriseCacheDatabase+[NoContext]+Create a georeplicated database+$GET+https://management.azure.com/subscriptions/b3e4e86c-59f5-46c5-8b86-e97530eac8fb/providers/Microsoft.Cache/locations/East US/operationsStatus/6fda4f89-be63-40ca-9cfa-cacbb9372fe1?api-version=2023-03-01-preview+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/6b9ac7d2-7f6d-4de4-962c-43fda44bc3f2/providers/Microsoft.Cache/locations/East%20US/operationsStatus/8437e213-fbed-4ec3-b0e2-4b4ec95274ff?api-version=2022-01-01",
+      "RequestUri": "https://management.azure.com/subscriptions/b3e4e86c-59f5-46c5-8b86-e97530eac8fb/providers/Microsoft.Cache/locations/East%20US/operationsStatus/6fda4f89-be63-40ca-9cfa-cacbb9372fe1?api-version=2023-03-01-preview",
       "Content": null,
+      "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "186" ],
-        "x-ms-client-request-id": [ "69ab7b87-e841-4841-a150-ff90d81c4575" ],
+        "x-ms-unique-id": [ "88" ],
+        "x-ms-client-request-id": [ "773cec29-53e1-488e-a849-dac494200997" ],
         "CommandName": [ "Az.RedisEnterpriseCache.internal\\New-AzRedisEnterpriseCacheDatabase" ],
         "FullCommandName": [ "New-AzRedisEnterpriseCacheDatabase_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.3", "Az.RedisEnterpriseCache/1.0.0" ]
       },
       "ContentHeaders": {
       }
@@ -215,37 +226,39 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "1dfa31e2-1f52-4390-85d1-d57754d4b167" ],
-        "x-rp-server-mvid": [ "a16a8967-ff32-4f76-ad37-63467a1c5564" ],
+        "x-ms-request-id": [ "7a6d7ad9-aebe-428e-a86c-0928e6d3d167" ],
+        "x-rp-server-mvid": [ "394d8f0c-0bbe-4942-b962-0ddcd147e40a" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11998" ],
-        "x-ms-correlation-request-id": [ "8c7224cf-45d5-4e9e-a04b-f6be234cb428" ],
-        "x-ms-routing-request-id": [ "CENTRALINDIA:20220710T180344Z:8c7224cf-45d5-4e9e-a04b-f6be234cb428" ],
-        "Date": [ "Sun, 10 Jul 2022 18:03:44 GMT" ]
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11921" ],
+        "x-ms-correlation-request-id": [ "d4c9acf8-efc1-4474-b303-749ed8722dfc" ],
+        "x-ms-routing-request-id": [ "JIOINDIACENTRAL:20230406T083803Z:d4c9acf8-efc1-4474-b303-749ed8722dfc" ],
+        "Date": [ "Thu, 06 Apr 2023 08:38:02 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "320" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/6b9ac7d2-7f6d-4de4-962c-43fda44bc3f2/providers/Microsoft.Cache/locations/East US/operationsStatus/8437e213-fbed-4ec3-b0e2-4b4ec95274ff\",\"name\":\"8437e213-fbed-4ec3-b0e2-4b4ec95274ff\",\"status\":\"InProgress\",\"startTime\":\"2022-07-10T18:02:43.4019345+00:00\",\"endTime\":\"2022-07-10T18:02:44.6117585+00:00\"}"
+      "Content": "{\"id\":\"/subscriptions/b3e4e86c-59f5-46c5-8b86-e97530eac8fb/providers/Microsoft.Cache/locations/East US/operationsStatus/6fda4f89-be63-40ca-9cfa-cacbb9372fe1\",\"name\":\"6fda4f89-be63-40ca-9cfa-cacbb9372fe1\",\"status\":\"InProgress\",\"startTime\":\"2023-04-06T08:37:03.1079027+00:00\",\"endTime\":\"2023-04-06T08:37:06.5301514+00:00\"}",
+      "isContentBase64": false
     }
   },
-  "New-AzRedisEnterpriseCacheDatabase+[NoContext]+Create a georeplicated database+$GET+https://management.azure.com/subscriptions/6b9ac7d2-7f6d-4de4-962c-43fda44bc3f2/providers/Microsoft.Cache/locations/East US/operationsStatus/8437e213-fbed-4ec3-b0e2-4b4ec95274ff?api-version=2022-01-01+4": {
+  "New-AzRedisEnterpriseCacheDatabase+[NoContext]+Create a georeplicated database+$GET+https://management.azure.com/subscriptions/b3e4e86c-59f5-46c5-8b86-e97530eac8fb/providers/Microsoft.Cache/locations/East US/operationsStatus/6fda4f89-be63-40ca-9cfa-cacbb9372fe1?api-version=2023-03-01-preview+4": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/6b9ac7d2-7f6d-4de4-962c-43fda44bc3f2/providers/Microsoft.Cache/locations/East%20US/operationsStatus/8437e213-fbed-4ec3-b0e2-4b4ec95274ff?api-version=2022-01-01",
+      "RequestUri": "https://management.azure.com/subscriptions/b3e4e86c-59f5-46c5-8b86-e97530eac8fb/providers/Microsoft.Cache/locations/East%20US/operationsStatus/6fda4f89-be63-40ca-9cfa-cacbb9372fe1?api-version=2023-03-01-preview",
       "Content": null,
+      "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "187" ],
-        "x-ms-client-request-id": [ "69ab7b87-e841-4841-a150-ff90d81c4575" ],
+        "x-ms-unique-id": [ "89" ],
+        "x-ms-client-request-id": [ "773cec29-53e1-488e-a849-dac494200997" ],
         "CommandName": [ "Az.RedisEnterpriseCache.internal\\New-AzRedisEnterpriseCacheDatabase" ],
         "FullCommandName": [ "New-AzRedisEnterpriseCacheDatabase_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.3", "Az.RedisEnterpriseCache/1.0.0" ]
       },
       "ContentHeaders": {
       }
@@ -255,37 +268,81 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "9797d49a-9c68-4d04-8880-16280b70a6e6" ],
-        "x-rp-server-mvid": [ "a16a8967-ff32-4f76-ad37-63467a1c5564" ],
+        "x-ms-request-id": [ "420fa120-e31a-4812-9a22-412565639ad4" ],
+        "x-rp-server-mvid": [ "394d8f0c-0bbe-4942-b962-0ddcd147e40a" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11997" ],
-        "x-ms-correlation-request-id": [ "3d8dc48e-0fb1-41c4-938f-b8b0a7053bfd" ],
-        "x-ms-routing-request-id": [ "CENTRALINDIA:20220710T180414Z:3d8dc48e-0fb1-41c4-938f-b8b0a7053bfd" ],
-        "Date": [ "Sun, 10 Jul 2022 18:04:13 GMT" ]
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11920" ],
+        "x-ms-correlation-request-id": [ "1124538b-bcd4-4201-97f0-3fd2f2e991b4" ],
+        "x-ms-routing-request-id": [ "JIOINDIACENTRAL:20230406T083834Z:1124538b-bcd4-4201-97f0-3fd2f2e991b4" ],
+        "Date": [ "Thu, 06 Apr 2023 08:38:34 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "320" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/b3e4e86c-59f5-46c5-8b86-e97530eac8fb/providers/Microsoft.Cache/locations/East US/operationsStatus/6fda4f89-be63-40ca-9cfa-cacbb9372fe1\",\"name\":\"6fda4f89-be63-40ca-9cfa-cacbb9372fe1\",\"status\":\"InProgress\",\"startTime\":\"2023-04-06T08:37:03.1079027+00:00\",\"endTime\":\"2023-04-06T08:37:06.5301514+00:00\"}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzRedisEnterpriseCacheDatabase+[NoContext]+Create a georeplicated database+$GET+https://management.azure.com/subscriptions/b3e4e86c-59f5-46c5-8b86-e97530eac8fb/providers/Microsoft.Cache/locations/East US/operationsStatus/6fda4f89-be63-40ca-9cfa-cacbb9372fe1?api-version=2023-03-01-preview+5": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/b3e4e86c-59f5-46c5-8b86-e97530eac8fb/providers/Microsoft.Cache/locations/East%20US/operationsStatus/6fda4f89-be63-40ca-9cfa-cacbb9372fe1?api-version=2023-03-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "90" ],
+        "x-ms-client-request-id": [ "773cec29-53e1-488e-a849-dac494200997" ],
+        "CommandName": [ "Az.RedisEnterpriseCache.internal\\New-AzRedisEnterpriseCacheDatabase" ],
+        "FullCommandName": [ "New-AzRedisEnterpriseCacheDatabase_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.3", "Az.RedisEnterpriseCache/1.0.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "958b7775-f993-4d4f-9a97-409a0fbf6bcd" ],
+        "x-rp-server-mvid": [ "394d8f0c-0bbe-4942-b962-0ddcd147e40a" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11919" ],
+        "x-ms-correlation-request-id": [ "a04392ee-de6a-4519-bdf5-9a92deef43f4" ],
+        "x-ms-routing-request-id": [ "JIOINDIACENTRAL:20230406T083904Z:a04392ee-de6a-4519-bdf5-9a92deef43f4" ],
+        "Date": [ "Thu, 06 Apr 2023 08:39:03 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "319" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/6b9ac7d2-7f6d-4de4-962c-43fda44bc3f2/providers/Microsoft.Cache/locations/East US/operationsStatus/8437e213-fbed-4ec3-b0e2-4b4ec95274ff\",\"name\":\"8437e213-fbed-4ec3-b0e2-4b4ec95274ff\",\"status\":\"Succeeded\",\"startTime\":\"2022-07-10T18:02:43.4019345+00:00\",\"endTime\":\"2022-07-10T18:04:09.8129679+00:00\"}"
+      "Content": "{\"id\":\"/subscriptions/b3e4e86c-59f5-46c5-8b86-e97530eac8fb/providers/Microsoft.Cache/locations/East US/operationsStatus/6fda4f89-be63-40ca-9cfa-cacbb9372fe1\",\"name\":\"6fda4f89-be63-40ca-9cfa-cacbb9372fe1\",\"status\":\"Succeeded\",\"startTime\":\"2023-04-06T08:37:03.1079027+00:00\",\"endTime\":\"2023-04-06T08:38:36.0558888+00:00\"}",
+      "isContentBase64": false
     }
   },
-  "New-AzRedisEnterpriseCacheDatabase+[NoContext]+Create a georeplicated database+$GET+https://management.azure.com/subscriptions/6b9ac7d2-7f6d-4de4-962c-43fda44bc3f2/resourceGroups/ps-redisenterprise-rg-gpzvr18i/providers/Microsoft.Cache/redisEnterprise/ps-cache-test3/databases/default?api-version=2022-01-01+5": {
+  "New-AzRedisEnterpriseCacheDatabase+[NoContext]+Create a georeplicated database+$GET+https://management.azure.com/subscriptions/b3e4e86c-59f5-46c5-8b86-e97530eac8fb/resourceGroups/ps-redisenterprise-rg-heap2v5k/providers/Microsoft.Cache/redisEnterprise/ps-cache-test3-v35tcip9/databases/default?api-version=2023-03-01-preview+6": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/6b9ac7d2-7f6d-4de4-962c-43fda44bc3f2/resourceGroups/ps-redisenterprise-rg-gpzvr18i/providers/Microsoft.Cache/redisEnterprise/ps-cache-test3/databases/default?api-version=2022-01-01",
+      "RequestUri": "https://management.azure.com/subscriptions/b3e4e86c-59f5-46c5-8b86-e97530eac8fb/resourceGroups/ps-redisenterprise-rg-heap2v5k/providers/Microsoft.Cache/redisEnterprise/ps-cache-test3-v35tcip9/databases/default?api-version=2023-03-01-preview",
       "Content": null,
+      "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "188" ],
-        "x-ms-client-request-id": [ "69ab7b87-e841-4841-a150-ff90d81c4575" ],
+        "x-ms-unique-id": [ "91" ],
+        "x-ms-client-request-id": [ "773cec29-53e1-488e-a849-dac494200997" ],
         "CommandName": [ "Az.RedisEnterpriseCache.internal\\New-AzRedisEnterpriseCacheDatabase" ],
         "FullCommandName": [ "New-AzRedisEnterpriseCacheDatabase_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.3", "Az.RedisEnterpriseCache/1.0.0" ]
       },
       "ContentHeaders": {
       }
@@ -295,22 +352,23 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "b91e8c2b-cc6b-4156-b0a5-ce5ef2da0d8f" ],
-        "x-rp-server-mvid": [ "a16a8967-ff32-4f76-ad37-63467a1c5564" ],
+        "x-ms-request-id": [ "5575c79f-7b28-41b3-9b24-8b70da0b23cb" ],
+        "x-rp-server-mvid": [ "394d8f0c-0bbe-4942-b962-0ddcd147e40a" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11996" ],
-        "x-ms-correlation-request-id": [ "6db29061-e2a0-47c0-971d-8d872eef72b0" ],
-        "x-ms-routing-request-id": [ "CENTRALINDIA:20220710T180415Z:6db29061-e2a0-47c0-971d-8d872eef72b0" ],
-        "Date": [ "Sun, 10 Jul 2022 18:04:14 GMT" ]
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11918" ],
+        "x-ms-correlation-request-id": [ "54c67cc0-766a-4dbc-8955-25dace5cb73e" ],
+        "x-ms-routing-request-id": [ "JIOINDIACENTRAL:20230406T083905Z:54c67cc0-766a-4dbc-8955-25dace5cb73e" ],
+        "Date": [ "Thu, 06 Apr 2023 08:39:04 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "699" ],
+        "Content-Length": [ "717" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"name\":\"default\",\"id\":\"/subscriptions/6b9ac7d2-7f6d-4de4-962c-43fda44bc3f2/resourceGroups/ps-redisenterprise-rg-gpzvr18i/providers/Microsoft.Cache/redisEnterprise/ps-cache-test3/databases/default\",\"type\":\"Microsoft.Cache/redisEnterprise/databases\",\"properties\":{\"clientProtocol\":\"Encrypted\",\"port\":10000,\"provisioningState\":\"Succeeded\",\"resourceState\":\"Running\",\"clusteringPolicy\":\"EnterpriseCluster\",\"evictionPolicy\":\"NoEviction\",\"geoReplication\":{\"linkedDatabases\":[{\"id\":\"/subscriptions/6b9ac7d2-7f6d-4de4-962c-43fda44bc3f2/resourceGroups/ps-redisenterprise-rg-gpzvr18i/providers/Microsoft.Cache/redisEnterprise/ps-cache-test3/databases/default\",\"state\":\"Linked\"}],\"groupNickname\":\"GroupName\"}}}"
+      "Content": "{\"name\":\"default\",\"id\":\"/subscriptions/b3e4e86c-59f5-46c5-8b86-e97530eac8fb/resourceGroups/ps-redisenterprise-rg-heap2v5k/providers/Microsoft.Cache/redisEnterprise/ps-cache-test3-v35tcip9/databases/default\",\"type\":\"Microsoft.Cache/redisEnterprise/databases\",\"properties\":{\"clientProtocol\":\"Encrypted\",\"port\":10000,\"provisioningState\":\"Succeeded\",\"resourceState\":\"Running\",\"clusteringPolicy\":\"EnterpriseCluster\",\"evictionPolicy\":\"NoEviction\",\"geoReplication\":{\"linkedDatabases\":[{\"id\":\"/subscriptions/b3e4e86c-59f5-46c5-8b86-e97530eac8fb/resourceGroups/ps-redisenterprise-rg-heap2v5k/providers/Microsoft.Cache/redisEnterprise/ps-cache-test3-v35tcip9/databases/default\",\"state\":\"Linked\"}],\"groupNickname\":\"GroupName\"}}}",
+      "isContentBase64": false
     }
   }
 }

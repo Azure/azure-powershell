@@ -18,9 +18,12 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Changed the encoding way from a string into byte array in `Invoke-AzKeyVaultKeyOperation` from ASCII to UTF8. UTF8 is backward-compatible with ASCII. [#21269]
+* Bug fix: Changed the decoding way from byte array into a string from system default encoding to UTF8 to match encoding way. [#21269]
+* Added parameter `PolicyPath` and `PolicyObject` in `Import-AzKeyVaultCertificate` to support custom policy [#20780]
 
 ## Version 4.9.3
-* Added breaking changes for `Invoke-AzKeyVaultKeyOperation`. The encoded/decoded way between string and bytes in `Invoke-AzKeyVaultKeyOperation` will change to UTF8. 
+* Added breaking change announcement for `Invoke-AzKeyVaultKeyOperation`. The encoded/decoded way between string and bytes in `Invoke-AzKeyVaultKeyOperation` will change to UTF8. 
     - This change will take effect on 5/23/2023
     - The change is expected to take effect from the version 5.0.0
 * Updated Azure.Core to 1.31.0.

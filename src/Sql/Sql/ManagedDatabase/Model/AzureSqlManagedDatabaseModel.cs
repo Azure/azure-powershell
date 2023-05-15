@@ -132,6 +132,11 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Model
         public string CrossSubscriptionTargetManagedInstanceId { get; set; }
 
         /// <summary>
+        /// Gets or sets the ledger property for the database
+        /// </summary>
+        public bool? EnableLedger { get; set; }
+
+        /// <summary>
         /// Construct AzureSqlManagedDatabaseModel
         /// </summary>
         public AzureSqlManagedDatabaseModel()
@@ -173,6 +178,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Model
             CrossSubscriptionRestorableDroppedDatabaseId = database.CrossSubscriptionRestorableDroppedDatabaseId;
             CrossSubscriptionSourceDatabaseId = database.CrossSubscriptionSourceDatabaseId;
             CrossSubscriptionTargetManagedInstanceId = database.CrossSubscriptionTargetManagedInstanceId;
+            EnableLedger = database.IsLedgerOn;
         }
     }
 }

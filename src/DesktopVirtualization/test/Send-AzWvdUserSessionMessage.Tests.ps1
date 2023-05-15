@@ -14,10 +14,10 @@ while(-not $mockingPath) {
 Describe 'Send-AzWvdUserSessionMessage' {
     It 'Send' {
         Send-AzWvdUserSessionMessage -SubscriptionId $env.SubscriptionId `
-                                     -ResourceGroupName $env.ResourceGroup `
-                                     -HostPoolName 'HostPoolPowershell1' `
-                                     -SessionHostName 'PowershellVM-1.wvdarmtest1.net' `
-                                     -UserSessionId 4 `
+                                     -ResourceGroupName $env.ResourceGroupPersistent `
+                                     -HostPoolName $env.HostPoolPersistent `
+                                     -SessionHostName $env.SessionHostName `
+                                     -UserSessionId 3 `
                                      -MessageBody 'apple' `
                                      -MessageTitle 'title'
     }

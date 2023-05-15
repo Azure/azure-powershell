@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Remove the unnecessary breaking change of parameter '-SparkConfigFilePath' for `New-AzSynapseSparkPool` and `Update-AzSynapseSparkPool` cmdlets
 
 ## Version 2.3.1
 * Updated Azure.Core to 1.31.0.

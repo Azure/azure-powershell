@@ -17,7 +17,7 @@ namespace Microsoft.Azure.PowerShell.Ssh.Helpers.Compute.Models
     /// Specifies the Linux operating system settings on the virtual machine.
     /// &lt;br&gt;&lt;br&gt;For a list of supported Linux distributions, see
     /// [Linux on Azure-Endorsed
-    /// Distributions](https://learn.microsoft.com/azure/virtual-machines/linux/endorsed-distros).
+    /// Distributions](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros).
     /// </summary>
     public partial class LinuxConfiguration
     {
@@ -44,12 +44,16 @@ namespace Microsoft.Azure.PowerShell.Ssh.Helpers.Compute.Models
         /// be added to the VM later.</param>
         /// <param name="patchSettings">[Preview Feature] Specifies settings
         /// related to VM Guest Patching on Linux.</param>
-        public LinuxConfiguration(bool? disablePasswordAuthentication = default(bool?), SshConfiguration ssh = default(SshConfiguration), bool? provisionVMAgent = default(bool?), LinuxPatchSettings patchSettings = default(LinuxPatchSettings))
+        /// <param name="enableVMAgentPlatformUpdates">Indicates whether
+        /// VMAgent Platform Updates is enabled for the Linux virtual machine.
+        /// Default value is false.</param>
+        public LinuxConfiguration(bool? disablePasswordAuthentication = default(bool?), SshConfiguration ssh = default(SshConfiguration), bool? provisionVMAgent = default(bool?), LinuxPatchSettings patchSettings = default(LinuxPatchSettings), bool? enableVMAgentPlatformUpdates = default(bool?))
         {
             DisablePasswordAuthentication = disablePasswordAuthentication;
             Ssh = ssh;
             ProvisionVMAgent = provisionVMAgent;
             PatchSettings = patchSettings;
+            EnableVMAgentPlatformUpdates = enableVMAgentPlatformUpdates;
             CustomInit();
         }
 
@@ -88,6 +92,13 @@ namespace Microsoft.Azure.PowerShell.Ssh.Helpers.Compute.Models
         /// </summary>
         [JsonProperty(PropertyName = "patchSettings")]
         public LinuxPatchSettings PatchSettings { get; set; }
+
+        /// <summary>
+        /// Gets or sets indicates whether VMAgent Platform Updates is enabled
+        /// for the Linux virtual machine. Default value is false.
+        /// </summary>
+        [JsonProperty(PropertyName = "enableVMAgentPlatformUpdates")]
+        public bool? EnableVMAgentPlatformUpdates { get; set; }
 
     }
 }

@@ -117,7 +117,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
 
             // When the input context is Oauth bases, can't generate normal SAS, but UserDelegationSas
             bool generateUserDelegationSas = false;
-            if (Channel != null && Channel.StorageContext != null && Channel.StorageContext.StorageAccount.Credentials.IsToken)
+            if (Channel != null && Channel.StorageContext != null && Channel.StorageContext.StorageAccount != null && 
+                Channel.StorageContext.StorageAccount.Credentials != null &&  Channel.StorageContext.StorageAccount.Credentials.IsToken)
             {
                 if (ShouldProcess(this.Path, "Generate User Delegation SAS, since input Storage Context is OAuth based."))
                 {

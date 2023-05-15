@@ -32,6 +32,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities
 
         private const string MinimalVersionRequirementForBicepPublishWithOptionalDocumentationUriParameter = "0.14.46";
 
+        private const string MinimalVersionRequirementForBicepPublishWithOptionalForceParameter = "0.17.1";
+
         private const string MinimalVersionRequirementForBicepparamFileBuild = "0.16.1";
 
         public delegate void OutputCallback(string msg);
@@ -84,24 +86,26 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities
             return buildResultPath;
         }
 
-        public static void PublishFile(string bicepFilePath, string target, string documentationUri = null, OutputCallback writeVerbose = null, OutputCallback writeWarning = null)
+        public static void PublishFile(string bicepFilePath, string target, string documentationUri = null, bool force = false, OutputCallback writeVerbose = null, OutputCallback writeWarning = null)
         {
             if (!FileUtilities.DataStore.FileExists(bicepFilePath))
             {
                 throw new AzPSArgumentException(Properties.Resources.InvalidBicepFilePath, "File");
             }
 
-            string bicepPublishCommand;
-
+            string bicepPublishCommand = $"bicep publish '{bicepFilePath}' --target '{target}'";
             if (!string.IsNullOrWhiteSpace(documentationUri))
             {
                 CheckMinimalVersionRequirement(MinimalVersionRequirementForBicepPublishWithOptionalDocumentationUriParameter);
-                bicepPublishCommand = $"bicep publish '{bicepFilePath}' --target '{target}' --documentationUri '{documentationUri}'";
+                bicepPublishCommand += $" --documentationUri '{documentationUri}'";
             }
-            else
+
+            if (force)
             {
-                bicepPublishCommand = $"bicep publish '{bicepFilePath}' --target '{target}'";
+                CheckMinimalVersionRequirement(MinimalVersionRequirementForBicepPublishWithOptionalForceParameter);
+                bicepPublishCommand += $" --force";
             }
+            
 
             RunBicepCommand(bicepPublishCommand, MinimalVersionRequirementForBicepPublish, writeVerbose, writeWarning);
         }

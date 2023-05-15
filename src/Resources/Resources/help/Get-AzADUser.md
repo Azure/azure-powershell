@@ -16,7 +16,7 @@ Lists entities from users or get entity from users by key
 ```
 Get-AzADUser [-Count] [-Expand <String[]>] [-Select <String[]>] [-First <UInt64>] [-Skip <UInt64>]
  [-AppendSelected] [-Filter <String>] [-Orderby <String[]>] [-Search <String>] [-ConsistencyLevel <String>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-CountVariable <String>] [<CommonParameters>]
 ```
 
 ### MailParameterSet
@@ -88,6 +88,14 @@ Get-AzADUser -Filter "startsWith(DisplayName,'some-name')"
 
 Get user with filter
 
+### Example 5: Assign OdataCount to a variable
+```powershell
+Get-AzADUser -First 10 -ConsistencyLevel eventual -Count -CountVariable 'result'
+$result
+```
+
+Assign OdataCount to a variable
+
 ## PARAMETERS
 
 ### -AppendSelected
@@ -126,6 +134,22 @@ Include count of items
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: List
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CountVariable
+Specifies a count of the total number of items in a collection.
+By default, this variable will be set in the global scope.
+
+```yaml
+Type: System.String
 Parameter Sets: List
 Aliases:
 

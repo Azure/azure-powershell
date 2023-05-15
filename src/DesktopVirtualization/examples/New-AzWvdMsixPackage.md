@@ -11,6 +11,8 @@ This command adds MSIX package from specified image path to HostPool
 
 ### Example 2: Creates New MSIX Package in the HostPool
 ```powershell
+$apps = "<PackagedApplication>"
+$deps = "<PackageDependencies>"
 New-AzWvdMsixPackage -FullName PackageFullName `
                      -HostPoolName HostPoolName `
                      -ResourceGroupName ResourceGroupName `

@@ -11,7 +11,7 @@ function setupEnv() {
     # as default. You could change them if needed.
     $env.SubscriptionId = (Get-AzContext).Subscription.Id
     $env.Tenant = (Get-AzContext).Tenant.Id
-    $env.RecordDate = (Get-Date -Year 2023 -Month 03 -Day 20 -Hour 11 -Minute 25 -Second 11).ToString('dd-MM-yyyy-h-m-s')
+    $env.RecordDate = (Get-Date -Year 2023 -Month 05 -Day 10 -Hour 15 -Minute 11 -Second 11).ToString('dd-MM-yyyy-h-m-s')
     # For any resources you created for test, you should add it to $env here.
         
     $BackupInstanceTestVariables = @{
@@ -40,8 +40,8 @@ function setupEnv() {
         VaultName = "sarath-vault"
     }
 
-    $newPolicyName = "newdiskpolicy-" + $randomstring
-    $restoreDiskId ="/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-restore-disk-rg/providers/Microsoft.Compute/disks/sarathdisk2-restored" + $randomstring
+    $newPolicyName = "newdiskpolicy-" + $env.RecordDate
+    $restoreDiskId ="/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-restore-disk-rg/providers/Microsoft.Compute/disks/sarathdisk2-restored" + $env.RecordDate
     $DiskE2ETestVariables = @{
         SubscriptionId = "62b829ee-7936-40c9-a1c9-47a93f9f3965"
         ResourceGroupName = "sarath-rg"
@@ -54,10 +54,10 @@ function setupEnv() {
     }
 
     $TriggerBackupTestVariables = @{
-        SubscriptionId = "62b829ee-7936-40c9-a1c9-47a93f9f3965"
-        ResourceGroupName = "sarath-rg"
-        VaultName = "sarath-vault"
-        DiskId = "/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.Compute/disks/sarathdisk"
+        SubscriptionId = "38304e13-357e-405e-9e9a-220351dcce8c"
+        ResourceGroupName = "pstest-diskrg"
+        VaultName = "pstest-disk-vault"
+        DiskId = "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/pstest-diskrg/providers/Microsoft.Compute/disks/pstest-disk"
         BackupRuleName = "BackupHourly"
     }
 
@@ -124,6 +124,35 @@ function setupEnv() {
         FriendlyName = "pstest-aks-cluster"        
     }
 
+    $BlobHardeningVariables = @{
+        SubscriptionId = "38304e13-357e-405e-9e9a-220351dcce8c"
+        CrossSubscriptionId = "62b829ee-7936-40c9-a1c9-47a93f9f3965"
+        Location = "eastus"
+        ResourceGroupName = "blob-eus-pstest-rg"
+        VaultName = "blob-eus-pstest-vault"
+        PolicyName = "operational-vaulted-policy"
+        StorageAccountName = "blobeuspstestsa"
+        OperationalPolicyName = "op-pstest-policy"
+        VaultPolicyName = "vaulted-pstest-policy"
+        OperationalVaultedPolicyName = "op-vault-pstest-policy"
+        StorageAccId = "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/blob-eus-pstest-rg/providers/Microsoft.Storage/storageAccounts/blobeuspstestsa"
+        TargetStorageAccId = "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Storage/storageAccounts/hiagaeussa"
+        TargetStorageAccountName = "hiagaeussa"
+        TargetStorageAccountRGName = "hiagarg"
+        TargetCrossSubStorageAccId = "/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/hiagaTestRG/providers/Microsoft.Storage/storageAccounts/hiagatestsa"
+        TargetCrossSubStorageAccountName = "hiagatestsa"
+        TargetCrossSubStorageAccountRGName = "hiagaTestRG"
+    }
+
+    $CrossSubscriptionRestoreVariables = @{
+        ResourceGroupName = "CSRTestRg"
+        VaultName = "CSRPortalTestVault"
+        SubscriptionId = "62b829ee-7936-40c9-a1c9-47a93f9f3965"
+        TargetContainerArmId = "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Storage/storageAccounts/akneemasaecy/blobServices/default/containers/oss-csr-container"
+        TargetContainerURI =  "https://akneemasaecy.blob.core.windows.net/oss-csr-container"
+        FileNamePrefix = "oss-csr-pstest-restoreasfiles"
+    }
+
     $env.add("TestBackupInstance", $BackupInstanceTestVariables) | Out-Null
     $env.add("TestBackupPolicy", $BackupPolicyTestVariables) | Out-Null
     $env.add("TestBackupVault", $BackupVaultTestVariables) | Out-Null
@@ -135,6 +164,8 @@ function setupEnv() {
     $env.add("TestResourceGuard", $ResourceGuardVariables) | Out-Null
     $env.add("TestGrantPermission", $GrantPermissionVariables) | Out-Null
     $env.add("TestAksBackupScenario", $AksVariables) | Out-Null
+    $env.add("TestBlobHardeningScenario", $BlobHardeningVariables) | Out-Null
+    $env.add("TestCrossSubscriptionRestoreScenario", $CrossSubscriptionRestoreVariables) | Out-Null
 
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {

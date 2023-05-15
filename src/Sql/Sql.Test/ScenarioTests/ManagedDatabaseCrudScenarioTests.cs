@@ -97,5 +97,12 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-CrossSubscriptionRestoreDeletedManagedDatabase");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestManagedDatabaseCreationWithLedgerEnabled()
+        {
+            TestRunner.RunTestScript("Test-ManagedDatabaseCreationWithLedgerEnabled");
+        }
     }
 }
