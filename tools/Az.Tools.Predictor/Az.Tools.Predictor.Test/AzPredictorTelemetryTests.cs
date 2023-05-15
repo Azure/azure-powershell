@@ -55,12 +55,6 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         [InlineData(@"C:\Users\MyName\exe")]
         [InlineData(@"az storage")]
         [InlineData(@"get")]
-        [InlineData(@"-StorageAccountKey""xxx""NewAzStorageContainer -context xxx")]
-        [InlineData(@"-StorageAccountKey\""xxx\""NewAzStorageContainer -context xxx")]
-        [InlineData(@"-StorageAccountKey""xxx""New-AzStorageContainer -context xxx")]
-        [InlineData(@"New-AzureStorageContext-StorageAccountName ""xxx"" -StorageAccountKey ""xxx""")]
-        [InlineData(@"sig=xxxxxxxxxxx/Sensor-Azure")]
-        [InlineData(@"sig=Signature/Test-Sensor-Azu")]
         public async Task VerifyOnCommandLineAcceptedForOneUnsupportedCommandHistory(string inputData)
         {
             var expectedTelemetryCount = 2;
@@ -157,7 +151,6 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         [InlineData("Get-AzRoleAssignment -ObjectId ***", "Remove-AzRoleAssignment -RoleDefinitionId (Get-AzRoleAssignment -ObjectId xxxx)")]
         [InlineData("Get-AzResourceGroup -Location:***", "Get-AzResourceGroup rg1 -Location:WestUS3")]
         [InlineData("Get-AzResourceGroup", "Get-AzResourceGroup rg1 WestUS3")]
-        [InlineData("New-AzureStorageContext -StorageAccountKey *** -StorageAccountName ***", @"New-AzureStorageContext -StorageAccountName ""accountName"" -StorageAccountKey ""accountKey""")]
         public async Task VerifyOnCommandLineAcceptedForOneSupportedCommandWithParameter(string expectedValue, string inputData)
         {
             var expectedTelemetryCount = 2;
@@ -563,15 +556,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         [InlineData("Set-Az", "Set-Az")]
         [InlineData("Get-azR", "Get-azR")]
         [InlineData("start_of_snippet", "NonVerb-AzResource")]
-        [InlineData("Get", "Get")]
-        [InlineData("Set-", "Set-")]
-        [InlineData("New-AzureStorageContext -StorageAccountKey *** -StorageAccountName ***", @"New-AzureStorageContext -StorageAccountName ""accountName"" -StorageAccountKey ""accountKey""")]
-        [InlineData("start_of_snippet", @"-StorageAccountKey""xxx""NewAzStorageContainer -context xxx")]
-        [InlineData("start_of_snippet", @"-StorageAccountKey\""xxx\""NewAzStorageContainer -context xxx")]
-        [InlineData("start_of_snippet", @"-StorageAccountKey""xxx""New-AzStorageContainer -context xxx")]
-        [InlineData("start_of_snippet", @"New-AzureStorageContext-StorageAccountName ""xxx"" -StorageAccountKey ""xxx""")]
-        [InlineData("start_of_snippet", @"sig=xxxxxxxxxxx/Sensor-Azure")]
-        [InlineData("start_of_snippet", @"sig=Signature/Test-Sensor-Azu")]
+        [InlineData("start_of_snippet", "Get")]
+        [InlineData("start_of_snippet", "Set-")]
         public void VerifyUserInputInGetSuggestionEvent(string expectedUserInput, string input)
         {
             var expectedTelemetryCount = 1;

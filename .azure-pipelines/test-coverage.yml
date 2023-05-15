@@ -1,8 +1,8 @@
 parameters:
-- name: poolName
-  displayName: Pool Name
+- name: windowsImage
+  displayName: Windows Image
   type: string
-  default: pool-windows-2019
+  default: windows-2019
 - name: dotnet_sdk_3_1
   displayName: .NET Core 3.1
   default: 3.1.x
@@ -30,7 +30,7 @@ jobs:
 - job: TestCoverage
   timeoutInMinutes: 600
   pool:
-    name: ${{ parameters.poolName }}
+    vmImage: ${{ parameters.windowsImage }}
 
   steps:
   - task: UseDotNet@2
@@ -102,7 +102,7 @@ jobs:
       pwsh: true
       targetType: filePath
       filePath: ./tools/TestFx/Coverage/SaveTestCoverageResult.ps1
-      arguments: CITest $(KustoServicePrincipalTenantId) $(KustoServicePrincipalId) $(KustoServicePrincipalSecret) $(KustoClusterName) $(KustoClusterRegion)
+      arguments: CITest $(Build.BuildId) $(KustoServicePrincipalTenantId) $(KustoServicePrincipalId) $(KustoServicePrincipalSecret) $(KustoClusterName) $(KustoClusterRegion) $(TestCoverageDatabaseName) $(TestCoverageTableName) $(TestCoverageLocation)
 
   - task: PowerShell@2
     displayName: Update Test Coverage Baseline

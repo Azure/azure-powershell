@@ -1,4 +1,5 @@
 ### Thanks to our community contributors
-* @geologyrocks
-  * Update IsCustom property on example role defintion (#21514)
-  * Fix Assignment/Definition typo in Output (#21442)
+* Arun Sabale (@Ar-Sa), Fix example 1 in Set-AzVirtualNetworkPeering.md (#20588)
+* Hiroshi Yoshioka (@hyoshioka0128)
+  * Fixed typo "resouce group"→"resource group" (#20664)
+  * Typo "resouce group"→"resource group" (#20713)

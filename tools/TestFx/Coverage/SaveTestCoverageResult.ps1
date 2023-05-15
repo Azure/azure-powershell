@@ -5,39 +5,55 @@ param (
 
     [Parameter(Mandatory, Position = 1)]
     [ValidateNotNullOrEmpty()]
-    [guid] $KustoServicePrincipalTenantId,
+    [string] $BuildId,
 
     [Parameter(Mandatory, Position = 2)]
     [ValidateNotNullOrEmpty()]
-    [guid] $KustoServicePrincipalId,
+    [guid] $KustoServicePrincipalTenantId,
 
     [Parameter(Mandatory, Position = 3)]
     [ValidateNotNullOrEmpty()]
-    [string] $KustoServicePrincipalSecret,
+    [guid] $KustoServicePrincipalId,
 
     [Parameter(Mandatory, Position = 4)]
     [ValidateNotNullOrEmpty()]
-    [string] $ClusterName,
+    [string] $KustoServicePrincipalSecret,
 
     [Parameter(Mandatory, Position = 5)]
     [ValidateNotNullOrEmpty()]
-    [string] $ClusterRegion
+    [string] $ClusterName,
+
+    [Parameter(Mandatory, Position = 6)]
+    [ValidateNotNullOrEmpty()]
+    [string] $ClusterRegion,
+
+    [Parameter(Mandatory, Position = 7)]
+    [ValidateNotNullOrEmpty()]
+    [string] $DatabaseName,
+
+    [Parameter(Mandatory, Position = 8)]
+    [ValidateNotNullOrEmpty()]
+    [string] $TableName,
+
+    [Parameter(Mandatory, Position = 9)]
+    [ValidateNotNull()]
+    [ValidateScript({ Test-Path -LiteralPath $_ -PathType Container })]
+    [string] $DataLocation
 )
 
 $script:AzPSCommonParameters = @("-Break", "-Confirm", "-Debug", "-DefaultProfile", "-ErrorAction", "-ErrorVariable", "-HttpPipelineAppend", "-HttpPipelinePrepend", "-InformationAction", "-InformationVariable",
     "-OutBuffer", "-OutVariable", "-PassThru", "-PipelineVariable", "-Proxy", "-ProxyCredential", "-ProxyUseDefaultCredentials", "-Verbose", "-WarningAction", "-WarningVariable", "-WhatIf")
 
-$cvgDir = Join-Path -Path ${env:TESTCOVERAGELOCATION} -ChildPath "TestCoverageAnalysis" | Join-Path -ChildPath "Raw"
+$cvgDir = Join-Path -Path $DataLocation -ChildPath "TestCoverageAnalysis" | Join-Path -ChildPath "Raw"
 if (Test-Path -LiteralPath $cvgDir -PathType Container) {
-    $kustoUtil = Join-Path -Path ($PSScriptRoot | Split-Path) -ChildPath "Utilities" | Join-Path -ChildPath "KustoUtility.psd1"
-    Import-Module $kustoUtil -ArgumentList $KustoServicePrincipalTenantId, $KustoServicePrincipalId, $KustoServicePrincipalSecret, $ClusterName, $ClusterRegion -Force
+    Import-Module (Join-Path -Path ($PSScriptRoot | Split-Path) -ChildPath "Utilities" | Join-Path -ChildPath "KustoUtility.psd1") -Force
 
     $cvgRawCsv = Get-ChildItem -Path $cvgDir -Filter "*.csv" -File | Select-Object -ExpandProperty FullName
     $cvgRawCsv | ForEach-Object {
         (Import-Csv -Path $_) |
         Select-Object `
         @{ Name = "Source"; Expression = { $Source } }, `
-        @{ Name = "BuildId"; Expression = { ${env:BUILD_BUILDID} } }, `
+        @{ Name = "BuildId"; Expression = { $BuildId } }, `
         @{ Name = "Module"; Expression = { $_.Module } }, `
         @{ Name = "CommandName"; Expression = { $_.CommandName } }, `
         @{ Name = "TotalCommands"; Expression = { $_.TotalCommands } }, `
@@ -53,7 +69,15 @@ if (Test-Path -LiteralPath $cvgDir -PathType Container) {
         Export-Csv -Path $_ -Encoding utf8 -NoTypeInformation -Force
     }
 
-    Import-KustoDataFromCsv -DatabaseName ${env:TESTCOVERAGEDATABASENAME} -TableName ${env:TESTCOVERAGETABLENAME} -CsvFile $cvgRawCsv
+    Import-KustoDataFromCsv `
+        -ServicePrincipalTenantId $KustoServicePrincipalTenantId `
+        -ServicePrincipalId $KustoServicePrincipalId `
+        -ServicePrincipalSecret $KustoServicePrincipalSecret `
+        -ClusterName $ClusterName `
+        -ClusterRegion $ClusterRegion `
+        -DatabaseName $DatabaseName `
+        -TableName $TableName `
+        -CsvFile $cvgRawCsv
 }
 else {
     Write-Host "##[warning]No test coverage data was found." -ForegroundColor Yellow
