@@ -137,7 +137,7 @@ Domains referenced by this endpoint.
 To construct, see NOTES section for CUSTOMDOMAIN properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IActivatedResourceReference[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IActivatedResourceReference[]
 Parameter Sets: (All)
 Aliases:
 
@@ -149,7 +149,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -351,7 +352,7 @@ rule sets referenced by this endpoint.
 To construct, see NOTES section for RULESET properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IResourceReference[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IResourceReference[]
 Parameter Sets: (All)
 Aliases:
 
@@ -430,7 +431,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IRoute
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IRoute
 
 ## NOTES
 
@@ -441,10 +442,10 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-CUSTOMDOMAIN <IActivatedResourceReference[]>: Domains referenced by this endpoint.
+`CUSTOMDOMAIN <IActivatedResourceReference[]>`: Domains referenced by this endpoint.
   - `[Id <String>]`: Resource ID.
 
-RULESET <IResourceReference[]>: rule sets referenced by this endpoint.
+`RULESET <IResourceReference[]>`: rule sets referenced by this endpoint.
   - `[Id <String>]`: Resource ID.
 
 ## RELATED LINKS
