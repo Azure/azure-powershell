@@ -38,6 +38,21 @@ KubernetesClusterBackupDatasourceParameters {excludeNS1, excludeNS2}            
 
 This command can be used to create a backup configuration client object used for configuring backup for a Kubernetes cluster
 
+### Example 2: Create a BackupConfiguration to select specific containers for configuring vaulted backups for AzureBlob. 
+```powershell
+$storageAccount = Get-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $storageAccountName 
+$containers=Get-AzStorageContainer -Context $storageAccount.Context        
+$backupConfig = New-AzDataProtectionBackupConfigurationClientObject -DatasourceType AzureBlob -VaultedBackupContainer $containers.Name[1,3,4]      
+```
+
+```output
+ObjectType                     ContainersList
+----------                     --------------
+BlobBackupDatasourceParameters {conabb, conwxy, conzzz}
+```
+
+This command can be used to create a backup configuration client object used for configuring backup for vaulted Blob backup containers.
+
 ## PARAMETERS
 
 ### -DatasourceType
