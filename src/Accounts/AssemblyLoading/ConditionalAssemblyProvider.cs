@@ -58,9 +58,9 @@ namespace Microsoft.Azure.PowerShell.AssemblyLoading
                 CreateAssembly("netstandard2.0", "System.Memory", "4.0.1.1").WithWindowsPowerShell(),
                 CreateAssembly("netstandard2.0", "System.Net.Http.WinHttpHandler", "4.0.2.0").WithWindowsPowerShell(),
                 CreateAssembly("netstandard2.0", "System.Private.ServiceModel", "4.7.0.0").WithWindowsPowerShell(),
-                CreateAssembly("netstandard2.0", "System.Security.AccessControl", "4.1.1.0").WithWindowsPowerShell(),
-                CreateAssembly("netstandard2.0", "System.Security.Permissions", "4.0.1.0").WithWindowsPowerShell(),
-                CreateAssembly("netstandard2.0", "System.Security.Principal.Windows", "4.1.1.0").WithWindowsPowerShell(),
+                CreateAssembly("netstandard2.0", "System.Security.AccessControl", "4.1.3.0").WithWindowsPowerShell(),
+                CreateAssembly("netstandard2.0", "System.Security.Permissions", "4.0.3.0").WithWindowsPowerShell(),
+                CreateAssembly("netstandard2.0", "System.Security.Principal.Windows", "4.1.3.0").WithWindowsPowerShell(),
                 CreateAssembly("netstandard2.0", "System.ServiceModel.Primitives", "4.7.0.0").WithWindowsPowerShell(),
                 CreateAssembly("netstandard2.0", "System.Threading.Tasks.Extensions", "4.2.0.1").WithWindowsPowerShell(),
 

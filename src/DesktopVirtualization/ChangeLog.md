@@ -18,6 +18,30 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Upgraded API version to 2022-09-09
+* Added cmdlet:
+    - `Get-AzWvdScalingPlanPooledSchedule`
+    - `New-AzWvdScalingPlanPooledSchedule`
+    - `Remove-AzWvdScalingPlanPooledSchedule`
+    - `Update-AzWvdScalingPlanPooledSchedule`
+* Added parameters `pageSize`, `isDescending` and `initialSkip` to:
+    - `Get-AzWvdApplication`
+    - `Get-AzWvdApplicationGroup`
+    - `Get-AzWvdDesktop`
+    - `Get-AzWvdHostPool`
+    - `Get-AzWvdMsixPackage`
+    - `Get-AzWvdScalingPlan`
+    - `Get-AzWvdSessionHost`
+    - `Get-AzWvdStartMenuItem`
+    - `Get-AzWvdUserSession`
+    - `Get-AzWvdWorkspace`
+* Added parameters `AgentUpdateMaintenanceWindow`, `AgentUpdateMaintenanceWindowTimeZone`, `AgentUpdateType`, `AgentUpdateUseSessionHostLocalTime` to:
+    - `New-AzWvdHostPool`
+    - `Update-AzWvdHostPool`
+* Added parameter `FriendlyName` to:
+    - `New-AzWvdHostPool`
+    - `Update-AzWvdHostPool`
+    - `Update-AzWvdSessionHost`
 
 ## Version 3.1.1
 * Corrected parameter description of `-Force` in `Remove-AzWvdUserSession`.

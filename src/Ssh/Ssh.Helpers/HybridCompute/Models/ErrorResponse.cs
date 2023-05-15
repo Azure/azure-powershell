@@ -10,15 +10,16 @@
 
 namespace Microsoft.Azure.PowerShell.Ssh.Helpers.HybridCompute.Models
 {
-    using Microsoft.Rest;
     using Newtonsoft.Json;
     using System.Linq;
 
     /// <summary>
-    /// Error response.
+    /// Error response
     /// </summary>
     /// <remarks>
-    /// Contains details when the response code indicates an error.
+    /// Common error response for all Azure Resource Manager APIs to return
+    /// error details for failed operations. (This also follows the OData error
+    /// response format.).
     /// </remarks>
     public partial class ErrorResponse
     {
@@ -33,8 +34,8 @@ namespace Microsoft.Azure.PowerShell.Ssh.Helpers.HybridCompute.Models
         /// <summary>
         /// Initializes a new instance of the ErrorResponse class.
         /// </summary>
-        /// <param name="error">The error details.</param>
-        public ErrorResponse(ErrorDetail error)
+        /// <param name="error">The error object.</param>
+        public ErrorResponse(ErrorDetail error = default(ErrorDetail))
         {
             Error = error;
             CustomInit();
@@ -46,27 +47,10 @@ namespace Microsoft.Azure.PowerShell.Ssh.Helpers.HybridCompute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the error details.
+        /// Gets or sets the error object.
         /// </summary>
         [JsonProperty(PropertyName = "error")]
         public ErrorDetail Error { get; set; }
 
-        /// <summary>
-        /// Validate the object.
-        /// </summary>
-        /// <exception cref="ValidationException">
-        /// Thrown if validation fails
-        /// </exception>
-        public virtual void Validate()
-        {
-            if (Error == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Error");
-            }
-            if (Error != null)
-            {
-                Error.Validate();
-            }
-        }
     }
 }

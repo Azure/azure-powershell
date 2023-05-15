@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.ServiceBus
-online version: https://learn.microsoft.com/powershell/module/az.ServiceBus/new-AzServiceBusKeyVaultPropertiesObject
+online version: https://learn.microsoft.com/powershell/module/Az.ServiceBus/new-AzServiceBusKeyVaultPropertiesObject
 schema: 2.0.0
 ---
 

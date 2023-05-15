@@ -39,3 +39,11 @@ Get-AzADApplication -Filter "startsWith(DisplayName,'some-name')"
 ```
 
 Get applications with filter
+
+### Example 7: Assign OdataCount to a variable
+```powershell
+Get-AzADApplication -First 10 -ConsistencyLevel eventual -Count -CountVariable 'result'
+$result
+```
+
+Assign OdataCount to a variable

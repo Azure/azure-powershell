@@ -20,17 +20,19 @@ Creates or updates a new Event Hub as a nested resource within a Namespace.
 .Description
 Creates or updates a new Event Hub as a nested resource within a Namespace.
 .Example
-New-AzEventHub -Name myEventHub -ResourceGroupName myResourceGroup -NamespaceName myNamespace -MessageRetentionInDays 6 -PartitionCount 5
+New-AzEventHub -Name myEventHub -ResourceGroupName myResourceGroup -NamespaceName myNamespace -RetentionTimeInHour 168 -PartitionCount 5 -CleanupPolicy Delete
 .Example
-New-AzEventHub -Name myEventHub -ResourceGroupName myResourceGroup -NamespaceName myNamespace -ArchiveNameFormat "{Namespace}/{EventHub}/{PartitionId}/{Year}/{Month}/{Day}/{Hour}/{Minute}/{Second}" -BlobContainer container -CaptureEnabled -DestinationName EventHubArchive.AzureBlockBlob -Encoding Avro -IntervalInSeconds 600 -SizeLimitInBytes 11000000 -SkipEmptyArchive -StorageAccountResourceId "/subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.Storage/storageAccounts/myStorageAccount"
+New-AzEventHub -Name myEventHub -ResourceGroupName myResourceGroup -NamespaceName myNamespace -ArchiveNameFormat "{Namespace}/{EventHub}/{PartitionId}/{Year}/{Month}/{Day}/{Hour}/{Minute}/{Second}" -BlobContainer container -CaptureEnabled -DestinationName EventHubArchive.AzureBlockBlob -Encoding Avro -IntervalInSeconds 600 -SizeLimitInBytes 11000000 -SkipEmptyArchive -StorageAccountResourceId "/subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.Storage/storageAccounts/myStorageAccount -CleanupPolicy Delete"
+.Example
+New-AzEventHub -Name myEventHub -ResourceGroupName myResourceGroup -NamespaceName myNamespace -CleanupPolicy Compact
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEventhub
+Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.IEventhub
 .Link
 https://learn.microsoft.com/powershell/module/az.eventhub/new-azeventhub
 #>
 function New-AzEventHub {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEventhub])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.IEventhub])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -82,6 +84,13 @@ param(
     ${CaptureEnabled},
 
     [Parameter()]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.CleanupPolicyRetentionDescription])]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.CleanupPolicyRetentionDescription]
+    # Enumerates the possible values for cleanup policy
+    ${CleanupPolicy},
+
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
     [System.String]
     # Name for capture destination
@@ -104,14 +113,16 @@ param(
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
     [System.Int64]
-    # Number of days to retain the events for this Event Hub, value should be 1 to 7 days
-    ${MessageRetentionInDays},
+    # Number of partitions created for the Event Hub, allowed values are from 1 to 32 partitions.
+    ${PartitionCount},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
     [System.Int64]
-    # Number of partitions created for the Event Hub, allowed values are from 1 to 32 partitions.
-    ${PartitionCount},
+    # Number of hours to retain the events for this Event Hub.
+    # This value is only used when cleanupPolicy is Delete.
+    # If cleanupPolicy is Compaction the returned value of this property is Long.MaxValue
+    ${RetentionTimeInHour},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
@@ -139,11 +150,20 @@ param(
     ${StorageAccountResourceId},
 
     [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
+    [System.Int32]
+    # Number of hours to retain the tombstone markers of a compacted Event Hub.
+    # This value is only used when cleanupPolicy is Compaction.
+    # Consumer must complete reading the tombstone marker within this specified amount of time if consumer begins from starting offset to ensure they get a valid snapshot for the specific key described by the tombstone marker within the compacted Event Hub
+    ${TombstoneRetentionTimeInHour},
+
+    [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -195,7 +215,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
         }         
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {

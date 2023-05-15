@@ -65,8 +65,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
         protected override void OnProcessRecord()
         {
-            Name = Name ?? ResourceIdentifier.FromResourceGroupIdentifier(this.Id).ResourceGroupName;
-            this.WriteObject(ResourceManagerSdkClient.FilterResourceGroups(name: this.Name, tag: this.Tag, detailed: false, location: this.Location), true);
+            String subscriptionId = null;
+            if (ResourceGroupIdParameterSet.Equals(ParameterSetName)){
+                ResourceIdentifier resourceIdentifier = ResourceIdentifier.FromResourceGroupIdentifier(this.Id);
+                Name = resourceIdentifier.ResourceGroupName;
+                subscriptionId = resourceIdentifier.Subscription;
+            }
+            this.WriteObject(ResourceManagerSdkClient.FilterResourceGroups(name: this.Name, tag: this.Tag, detailed: false, location: this.Location, subscriptionId), true);
         }
 
     }

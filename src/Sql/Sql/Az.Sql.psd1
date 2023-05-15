@@ -300,7 +300,10 @@ CmdletsToExport = 'Invoke-AzSqlServerExternalGovernanceStatusRefresh',
                'Invoke-AzSqlServerTransparentDataEncryptionProtectorRevalidation', 
                'Invoke-AzSqlInstanceTransparentDataEncryptionProtectorRevalidation', 
                'Get-AzSqlServerConfigurationOption', 
-               'Set-AzSqlServerConfigurationOption'
+               'Set-AzSqlServerConfigurationOption',
+               'Enable-AzSqlInstanceDatabaseLedgerDigestUpload',
+               'Disable-AzSqlInstanceDatabaseLedgerDigestUpload',
+               'Get-AzSqlInstanceDatabaseLedgerDigestUpload'
 
 # Variables to export from this module
 # VariablesToExport = @()

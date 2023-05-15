@@ -201,13 +201,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Owned)]
         public string ReplicatedProtectedItemName { get => this._replicatedProtectedItemName; set => this._replicatedProtectedItemName = value; }
 
-        /// <summary>Backing field for <see cref="ReplicationProtectedItemName" /> property.</summary>
-        private string _replicationProtectedItemName;
-
-        /// <summary>The name of the protected item on which the agent is to be updated.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Owned)]
-        public string ReplicationProtectedItemName { get => this._replicationProtectedItemName; set => this._replicationProtectedItemName = value; }
-
         /// <summary>Backing field for <see cref="ResourceGroupName" /> property.</summary>
         private string _resourceGroupName;
 
@@ -503,14 +496,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         SerializedName = @"replicatedProtectedItemName",
         PossibleTypes = new [] { typeof(string) })]
         string ReplicatedProtectedItemName { get; set; }
-        /// <summary>The name of the protected item on which the agent is to be updated.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"The name of the protected item on which the agent is to be updated.",
-        SerializedName = @"replicationProtectedItemName",
-        PossibleTypes = new [] { typeof(string) })]
-        string ReplicationProtectedItemName { get; set; }
         /// <summary>The name of the resource group. The name is case insensitive.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
         Required = false,
@@ -650,8 +635,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         string RecoveryPointName { get; set; }
         /// <summary>Replication protected item name.</summary>
         string ReplicatedProtectedItemName { get; set; }
-        /// <summary>The name of the protected item on which the agent is to be updated.</summary>
-        string ReplicationProtectedItemName { get; set; }
         /// <summary>The name of the resource group. The name is case insensitive.</summary>
         string ResourceGroupName { get; set; }
         /// <summary>The name of the recovery services vault.</summary>

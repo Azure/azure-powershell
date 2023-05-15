@@ -23,12 +23,12 @@ Constructs an IThrottlingPolicy object that can be fed as input to New-AzEventHu
 New-AzEventHubThrottlingPolicyConfig -Name t1 -RateLimitThreshold 10000 -MetricId IncomingBytes
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IThrottlingPolicy
+Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.IThrottlingPolicy
 .Link
 https://learn.microsoft.com/powershell/module/az.eventhub/new-azeventhubthrottlingpolicyconfig
 #>
 function New-AzEventHubThrottlingPolicyConfig {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IThrottlingPolicy])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.IThrottlingPolicy])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -59,7 +59,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
         }         
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {

@@ -45,9 +45,9 @@ namespace Microsoft.Azure.PowerShell.Ssh.Helpers.Compute.Models
         /// <param name="timeZone">Specifies the time zone of the virtual
         /// machine. e.g. "Pacific Standard Time". &lt;br&gt;&lt;br&gt;
         /// Possible values can be
-        /// [TimeZoneInfo.Id](https://learn.microsoft.com/dotnet/api/system.timezoneinfo.id?#System_TimeZoneInfo_Id)
+        /// [TimeZoneInfo.Id](https://docs.microsoft.com/dotnet/api/system.timezoneinfo.id?#System_TimeZoneInfo_Id)
         /// value from time zones returned by
-        /// [TimeZoneInfo.GetSystemTimeZones](https://learn.microsoft.com/dotnet/api/system.timezoneinfo.getsystemtimezones).</param>
+        /// [TimeZoneInfo.GetSystemTimeZones](https://docs.microsoft.com/dotnet/api/system.timezoneinfo.getsystemtimezones).</param>
         /// <param name="additionalUnattendContent">Specifies additional
         /// base-64 encoded XML formatted information that can be included in
         /// the Unattend.xml file, which is used by Windows Setup.</param>
@@ -55,7 +55,10 @@ namespace Microsoft.Azure.PowerShell.Ssh.Helpers.Compute.Models
         /// related to VM Guest Patching on Windows.</param>
         /// <param name="winRM">Specifies the Windows Remote Management
         /// listeners. This enables remote Windows PowerShell.</param>
-        public WindowsConfiguration(bool? provisionVMAgent = default(bool?), bool? enableAutomaticUpdates = default(bool?), string timeZone = default(string), IList<AdditionalUnattendContent> additionalUnattendContent = default(IList<AdditionalUnattendContent>), PatchSettings patchSettings = default(PatchSettings), WinRMConfiguration winRM = default(WinRMConfiguration))
+        /// <param name="enableVMAgentPlatformUpdates">Indicates whether
+        /// VMAgent Platform Updates is enabled for the Windows virtual
+        /// machine. Default value is false.</param>
+        public WindowsConfiguration(bool? provisionVMAgent = default(bool?), bool? enableAutomaticUpdates = default(bool?), string timeZone = default(string), IList<AdditionalUnattendContent> additionalUnattendContent = default(IList<AdditionalUnattendContent>), PatchSettings patchSettings = default(PatchSettings), WinRMConfiguration winRM = default(WinRMConfiguration), bool? enableVMAgentPlatformUpdates = default(bool?))
         {
             ProvisionVMAgent = provisionVMAgent;
             EnableAutomaticUpdates = enableAutomaticUpdates;
@@ -63,6 +66,7 @@ namespace Microsoft.Azure.PowerShell.Ssh.Helpers.Compute.Models
             AdditionalUnattendContent = additionalUnattendContent;
             PatchSettings = patchSettings;
             WinRM = winRM;
+            EnableVMAgentPlatformUpdates = enableVMAgentPlatformUpdates;
             CustomInit();
         }
 
@@ -96,9 +100,9 @@ namespace Microsoft.Azure.PowerShell.Ssh.Helpers.Compute.Models
         /// Gets or sets specifies the time zone of the virtual machine. e.g.
         /// "Pacific Standard Time". &amp;lt;br&amp;gt;&amp;lt;br&amp;gt;
         /// Possible values can be
-        /// [TimeZoneInfo.Id](https://learn.microsoft.com/dotnet/api/system.timezoneinfo.id?#System_TimeZoneInfo_Id)
+        /// [TimeZoneInfo.Id](https://docs.microsoft.com/dotnet/api/system.timezoneinfo.id?#System_TimeZoneInfo_Id)
         /// value from time zones returned by
-        /// [TimeZoneInfo.GetSystemTimeZones](https://learn.microsoft.com/dotnet/api/system.timezoneinfo.getsystemtimezones).
+        /// [TimeZoneInfo.GetSystemTimeZones](https://docs.microsoft.com/dotnet/api/system.timezoneinfo.getsystemtimezones).
         /// </summary>
         [JsonProperty(PropertyName = "timeZone")]
         public string TimeZone { get; set; }
@@ -124,6 +128,13 @@ namespace Microsoft.Azure.PowerShell.Ssh.Helpers.Compute.Models
         /// </summary>
         [JsonProperty(PropertyName = "winRM")]
         public WinRMConfiguration WinRM { get; set; }
+
+        /// <summary>
+        /// Gets or sets indicates whether VMAgent Platform Updates is enabled
+        /// for the Windows virtual machine. Default value is false.
+        /// </summary>
+        [JsonProperty(PropertyName = "enableVMAgentPlatformUpdates")]
+        public bool? EnableVMAgentPlatformUpdates { get; set; }
 
     }
 }

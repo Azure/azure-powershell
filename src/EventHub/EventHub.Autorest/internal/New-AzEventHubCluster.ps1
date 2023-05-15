@@ -25,11 +25,11 @@ New-AzEventHubCluster -ResourceGroupName myResourceGroup -Name myEventHubsCluste
 New-AzEventHubCluster -ResourceGroupName myResourceGroup -Name myEventHubsCluster -Location "eastasia"
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.ICluster
+Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.ICluster
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.ICluster
+Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.ICluster
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -66,7 +66,7 @@ PARAMETER <ICluster>: Single Event Hubs Cluster resource in List or Get operatio
 https://learn.microsoft.com/powershell/module/az.eventhub/new-azeventhubcluster
 #>
 function New-AzEventHubCluster {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.ICluster])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.ICluster])]
 [CmdletBinding(DefaultParameterSetName='CreateViaIdentity', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory, ValueFromPipeline)]
@@ -78,7 +78,7 @@ param(
 
     [Parameter(Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.ICluster]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.ICluster]
     # Single Event Hubs Cluster resource in List or Get operations.
     # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
@@ -88,7 +88,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter()]

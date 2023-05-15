@@ -12,6 +12,12 @@ Updates Backup schedule of an existing backup policy.
 
 ## SYNTAX
 
+### RemoveBackupSchedule (Default)
+```
+Edit-AzDataProtectionPolicyTriggerClientObject -Policy <IBackupPolicy> -RemoveSchedule [<CommonParameters>]
+```
+
+### ModifyBackupSchedule
 ```
 Edit-AzDataProtectionPolicyTriggerClientObject -Policy <IBackupPolicy> -Schedule <String[]>
  [<CommonParameters>]
@@ -54,12 +60,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -RemoveSchedule
+Specifies whether to remove the backup Schedule.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: RemoveBackupSchedule
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Schedule
 Schedule to be associated to backup policy.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
+Parameter Sets: ModifyBackupSchedule
 Aliases:
 
 Required: True

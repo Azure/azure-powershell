@@ -40,6 +40,8 @@ using Microsoft.Azure.Commands.Common.MSGraph.Version1_0.Applications;
 using Microsoft.Azure.Commands.Common.MSGraph.Version1_0;
 using ResourceIdentityType = Microsoft.Azure.Management.ContainerService.Models.ResourceIdentityType;
 using Microsoft.Azure.Commands.Aks.Commands;
+using Microsoft.Azure.Commands.Aks.Utils;
+using System.Security;
 
 namespace Microsoft.Azure.Commands.Aks
 {
@@ -196,6 +198,14 @@ namespace Microsoft.Azure.Commands.Aks
 
         [Parameter(Mandatory = false, HelpMessage = "The Azure Active Directory configuration.")]
         public ManagedClusterAADProfile AadProfile { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The administrator password to use for Windows VMs. Password requirement:"
+          + "At least one lower case, one upper case, one special character !@#$%^&*(), the minimum lenth is 12.")]
+        [ValidateSecureString(RegularExpression = "^(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%\\^&\\*\\(\\)])[a-zA-Z\\d!@#$%\\^&\\*\\(\\)]{12,123}$", ParameterName = nameof(WindowsProfileAdminUserPassword))]
+        public SecureString WindowsProfileAdminUserPassword { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Whether to enable Azure Hybrid User Benefits (AHUB) for Windows VMs.")]
+        public SwitchParameter EnableAHUB { get; set; }
 
         protected void BeforeBuildNewCluster()
         {

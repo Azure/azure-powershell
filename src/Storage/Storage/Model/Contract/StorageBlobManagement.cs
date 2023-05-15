@@ -166,11 +166,13 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         {
             if (blobServiceClient == null)
             {
-                if (this.StorageContext.StorageAccount.Credentials.IsToken) //Oauth
+                if (this.StorageContext != null && this.StorageContext.StorageAccount != null && 
+                    this.StorageContext.StorageAccount.Credentials != null && this.StorageContext.StorageAccount.Credentials.IsToken) //Oauth
                 {
                     blobServiceClient = new BlobServiceClient(this.StorageContext.StorageAccount.BlobEndpoint, this.StorageContext.Track2OauthToken, options);
                 }
-                else if (this.StorageContext.StorageAccount.Credentials.IsSharedKey) //Shared Key
+                else if (this.StorageContext != null && this.StorageContext.StorageAccount != null &&
+                     this.StorageContext.StorageAccount.Credentials != null &&  this.StorageContext.StorageAccount.Credentials.IsSharedKey) //Shared Key
                 {
                     blobServiceClient = new BlobServiceClient(this.StorageContext.StorageAccount.BlobEndpoint,
                         new StorageSharedKeyCredential(this.StorageContext.StorageAccountName, this.StorageContext.StorageAccount.Credentials.ExportBase64EncodedKey()), options);

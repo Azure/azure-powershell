@@ -130,7 +130,8 @@ param(
     [Parameter(ParameterSetName='AlternateLocationFullRecovery', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
     [System.String]
-    # Target resource Id to which backup data will be restored.
+    # Specify the target resource ID for restoring backup data in an alternate location.
+    # For instance, provide the target database ARM ID that you want to restore to, for workloadType AzureDatabaseForPostgreSQL.
     ${TargetResourceId},
 
     [Parameter(ParameterSetName='AlternateLocationILR', Mandatory)]
@@ -145,6 +146,13 @@ param(
     [System.String]
     # Id of the recovery point to be restored.
     ${RecoveryPoint},
+
+    [Parameter(ParameterSetName='AlternateLocationILR')]
+    [Parameter(ParameterSetName='OriginalLocationILR')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
+    [System.String[]]
+    # Container names for Item Level Recovery.
+    ${ContainersList},
 
     [Parameter(ParameterSetName='AlternateLocationILR')]
     [Parameter(ParameterSetName='OriginalLocationILR')]
@@ -189,6 +197,13 @@ param(
     ${RehydrationPriority},
 
     [Parameter(ParameterSetName='RestoreAsFiles')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
+    [System.String]
+    # Target storage account container ARM Id to which backup data will be restored as files.
+    # This parameter is required for restoring as files to another subscription.
+    ${TargetResourceIdForRestoreAsFile},
+
+    [Parameter(ParameterSetName='RestoreAsFiles')]
     [Parameter(ParameterSetName='OriginalLocationILR')]
     [Parameter(ParameterSetName='AlternateLocationFullRecovery')]
     [Parameter(ParameterSetName='OriginalLocationFullRecovery')]
@@ -223,12 +238,6 @@ param(
     [System.DateTime]
     # Point In Time for restore.
     ${PointInTime},
-
-    [Parameter(ParameterSetName='OriginalLocationILR')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [System.String[]]
-    # Container names for Item Level Recovery.
-    ${ContainersList},
 
     [Parameter(ParameterSetName='OriginalLocationILR')]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]

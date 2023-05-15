@@ -33,7 +33,7 @@ Gets the SASKey of a ServiceBus namespace, queue or topic.
 ### [Get-AzServiceBusMigration](Get-AzServiceBusMigration.md)
 Retrieves Migration Config
 
-### [Get-AzServiceBusNamespaceV2](Get-AzServiceBusNamespaceV2.md)
+### [Get-AzServiceBusNamespace](Get-AzServiceBusNamespace.md)
 Gets a description for the specified namespace.
 
 ### [Get-AzServiceBusNetworkRuleSet](Get-AzServiceBusNetworkRuleSet.md)
@@ -72,7 +72,7 @@ Regenerates the SASKey of a ServiceBus namespace, queue or topic.
 ### [New-AzServiceBusKeyVaultPropertiesObject](New-AzServiceBusKeyVaultPropertiesObject.md)
 Create an in-memory object for KeyVaultProperties.
 
-### [New-AzServiceBusNamespaceV2](New-AzServiceBusNamespaceV2.md)
+### [New-AzServiceBusNamespace](New-AzServiceBusNamespace.md)
 Creates a new ServiceBus namespace.
 
 ### [New-AzServiceBusQueue](New-AzServiceBusQueue.md)
@@ -100,7 +100,7 @@ Deletes an Alias(Disaster Recovery configuration)
 ### [Remove-AzServiceBusMigration](Remove-AzServiceBusMigration.md)
 Deletes a MigrationConfiguration
 
-### [Remove-AzServiceBusNamespaceV2](Remove-AzServiceBusNamespaceV2.md)
+### [Remove-AzServiceBusNamespace](Remove-AzServiceBusNamespace.md)
 Deletes an existing namespace.
 This operation also removes all associated resources under the namespace.
 
@@ -128,7 +128,7 @@ This operation disables the Disaster Recovery and stops replicating changes from
 ### [Set-AzServiceBusGeoDRConfigurationFailOver](Set-AzServiceBusGeoDRConfigurationFailOver.md)
 Invokes GEO DR failover and reconfigure the alias to point to the secondary namespace
 
-### [Set-AzServiceBusNamespaceV2](Set-AzServiceBusNamespaceV2.md)
+### [Set-AzServiceBusNamespace](Set-AzServiceBusNamespace.md)
 Updates a ServiceBus namespace
 
 ### [Set-AzServiceBusNetworkRuleSet](Set-AzServiceBusNetworkRuleSet.md)

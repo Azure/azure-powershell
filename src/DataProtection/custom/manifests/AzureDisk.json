@@ -12,6 +12,7 @@
   "allowedRestoreTargetTypes": [ "AlternateLocation" ],
   "itemLevelRecoveyEnabled": false,
   "addBackupDatasourceParametersList": false,
+  "backupConfigurationRequired": false,
   "addDataStoreParametersList": true,
   "friendlyNameRequired": false,
   "supportSecretStoreAuthentication": false,

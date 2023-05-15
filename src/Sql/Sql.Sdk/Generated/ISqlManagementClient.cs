@@ -469,11 +469,6 @@ namespace Microsoft.Azure.Management.Sql
         IManagedInstanceDtcsOperations ManagedInstanceDtcs { get; }
 
         /// <summary>
-        /// Gets the IManagedDatabasesOperations.
-        /// </summary>
-        IManagedDatabasesOperations ManagedDatabases { get; }
-
-        /// <summary>
         /// Gets the IManagedDatabaseRestoreDetailsOperations.
         /// </summary>
         IManagedDatabaseRestoreDetailsOperations ManagedDatabaseRestoreDetails { get; }
@@ -507,6 +502,16 @@ namespace Microsoft.Azure.Management.Sql
         /// Gets the IServerConfigurationOptionsOperations.
         /// </summary>
         IServerConfigurationOptionsOperations ServerConfigurationOptions { get; }
+
+        /// <summary>
+        /// Gets the IManagedLedgerDigestUploadsOperations.
+        /// </summary>
+        IManagedLedgerDigestUploadsOperations ManagedLedgerDigestUploads { get; }
+
+        /// <summary>
+        /// Gets the IManagedDatabasesOperations.
+        /// </summary>
+        IManagedDatabasesOperations ManagedDatabases { get; }
 
     }
 }

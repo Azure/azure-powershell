@@ -103,8 +103,12 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// this managed database.</param>
         /// <param name="crossSubscriptionTargetManagedInstanceId">Target
         /// managed instance id used in cross-subscription restore.</param>
+        /// <param name="isLedgerOn">Whether or not this database is a ledger
+        /// database, which means all tables in the database are ledger tables.
+        /// Note: the value of this property cannot be changed after the
+        /// database has been created.</param>
         /// <param name="tags">Resource tags.</param>
-        public ManagedDatabaseUpdate(string collation = default(string), string status = default(string), System.DateTime? creationDate = default(System.DateTime?), System.DateTime? earliestRestorePoint = default(System.DateTime?), System.DateTime? restorePointInTime = default(System.DateTime?), string defaultSecondaryLocation = default(string), string catalogCollation = default(string), string createMode = default(string), string storageContainerUri = default(string), string sourceDatabaseId = default(string), string crossSubscriptionSourceDatabaseId = default(string), string restorableDroppedDatabaseId = default(string), string crossSubscriptionRestorableDroppedDatabaseId = default(string), string storageContainerIdentity = default(string), string storageContainerSasToken = default(string), string failoverGroupId = default(string), string recoverableDatabaseId = default(string), string longTermRetentionBackupResourceId = default(string), bool? autoCompleteRestore = default(bool?), string lastBackupName = default(string), string crossSubscriptionTargetManagedInstanceId = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>))
+        public ManagedDatabaseUpdate(string collation = default(string), string status = default(string), System.DateTime? creationDate = default(System.DateTime?), System.DateTime? earliestRestorePoint = default(System.DateTime?), System.DateTime? restorePointInTime = default(System.DateTime?), string defaultSecondaryLocation = default(string), string catalogCollation = default(string), string createMode = default(string), string storageContainerUri = default(string), string sourceDatabaseId = default(string), string crossSubscriptionSourceDatabaseId = default(string), string restorableDroppedDatabaseId = default(string), string crossSubscriptionRestorableDroppedDatabaseId = default(string), string storageContainerIdentity = default(string), string storageContainerSasToken = default(string), string failoverGroupId = default(string), string recoverableDatabaseId = default(string), string longTermRetentionBackupResourceId = default(string), bool? autoCompleteRestore = default(bool?), string lastBackupName = default(string), string crossSubscriptionTargetManagedInstanceId = default(string), bool? isLedgerOn = default(bool?), IDictionary<string, string> tags = default(IDictionary<string, string>))
         {
             Collation = collation;
             Status = status;
@@ -127,6 +131,7 @@ namespace Microsoft.Azure.Management.Sql.Models
             AutoCompleteRestore = autoCompleteRestore;
             LastBackupName = lastBackupName;
             CrossSubscriptionTargetManagedInstanceId = crossSubscriptionTargetManagedInstanceId;
+            IsLedgerOn = isLedgerOn;
             Tags = tags;
             CustomInit();
         }
@@ -298,6 +303,15 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.crossSubscriptionTargetManagedInstanceId")]
         public string CrossSubscriptionTargetManagedInstanceId { get; set; }
+
+        /// <summary>
+        /// Gets or sets whether or not this database is a ledger database,
+        /// which means all tables in the database are ledger tables. Note: the
+        /// value of this property cannot be changed after the database has
+        /// been created.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.isLedgerOn")]
+        public bool? IsLedgerOn { get; set; }
 
         /// <summary>
         /// Gets or sets resource tags.

@@ -96,6 +96,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Services
                 Location = model.Location,
                 Tags = model.Tags,
                 Collation = model.Collation,
+                IsLedgerOn = model.EnableLedger
             });
 
             return CreateManagedDatabaseModelFromResponse(resourceGroup, managedInstanceName, resp);

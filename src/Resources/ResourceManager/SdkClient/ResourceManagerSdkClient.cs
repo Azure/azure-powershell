@@ -860,8 +860,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
         /// <param name="tag">The resource group tag.</param>
         /// <param name="detailed">Whether the  return is detailed or not.</param>
         /// <param name="location">The resource group location.</param>
+        /// <param name="subscriptionId"></param>
         /// <returns>The filtered resource groups</returns>
-        public virtual List<PSResourceGroup> FilterResourceGroups(string name, Hashtable tag, bool detailed, string location = null)
+        public virtual List<PSResourceGroup> FilterResourceGroups(string name,Hashtable tag, bool detailed, string location = null, string subscriptionId = null)
         {
             List<PSResourceGroup> result = new List<PSResourceGroup>();
 
@@ -909,6 +910,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             {
                 try
                 {
+                    if (!String.IsNullOrEmpty(subscriptionId)) {
+                        ResourceManagementClient.SubscriptionId = subscriptionId;
+                    }
                     PSResourceGroup resourceGroup = ResourceManagementClient.ResourceGroups.Get(name).ToPSResourceGroup();
                     if (string.IsNullOrEmpty(location) || resourceGroup.Location.EqualsAsLocation(location))
                     {

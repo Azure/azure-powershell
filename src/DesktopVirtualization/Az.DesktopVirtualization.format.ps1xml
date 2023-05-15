@@ -30,6 +30,9 @@
             <Label>ScalingPlanName</Label>
           </TableColumnHeader>
           <TableColumnHeader>
+            <Label>ScalingPlanScheduleName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>SessionHostName</Label>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -67,6 +70,9 @@
                 <PropertyName>ScalingPlanName</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
+                <PropertyName>ScalingPlanScheduleName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>SessionHostName</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
@@ -84,9 +90,117 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.Application</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20.SystemData</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.Application</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20.SystemData</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>CreatedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>CreatedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>CreatedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>LastModifiedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>LastModifiedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>LastModifiedByType</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>CreatedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>CreatedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>CreatedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>LastModifiedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>LastModifiedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>LastModifiedByType</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.AgentUpdatePatchProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.AgentUpdatePatchProperties</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>MaintenanceWindowTimeZone</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>UseSessionHostLocalTime</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>MaintenanceWindowTimeZone</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>UseSessionHostLocalTime</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.AgentUpdateProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.AgentUpdateProperties</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>MaintenanceWindowTimeZone</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>UseSessionHostLocalTime</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>MaintenanceWindowTimeZone</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>UseSessionHostLocalTime</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.Application</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.Application</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -106,9 +220,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ApplicationGroup</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.ApplicationGroup</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ApplicationGroup</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.ApplicationGroup</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -230,9 +344,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ApplicationGroupList</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.ApplicationGroupList</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ApplicationGroupList</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.ApplicationGroupList</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -252,9 +366,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ApplicationGroupPatch</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.ApplicationGroupPatch</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ApplicationGroupPatch</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.ApplicationGroupPatch</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -274,9 +388,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ApplicationGroupPatchProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.ApplicationGroupPatchProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ApplicationGroupPatchProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.ApplicationGroupPatchProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -302,9 +416,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ApplicationGroupPatchTags</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.ApplicationGroupPatchTags</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ApplicationGroupPatchTags</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.ApplicationGroupPatchTags</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -324,9 +438,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ApplicationGroupProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.ApplicationGroupProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ApplicationGroupProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.ApplicationGroupProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -382,9 +496,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ApplicationList</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.ApplicationList</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ApplicationList</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.ApplicationList</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -404,9 +518,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ApplicationPatchProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.ApplicationPatchProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ApplicationPatchProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.ApplicationPatchProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -486,9 +600,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ApplicationPatchTags</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.ApplicationPatchTags</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ApplicationPatchTags</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.ApplicationPatchTags</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -508,9 +622,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ApplicationProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.ApplicationProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ApplicationProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.ApplicationProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -608,9 +722,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.CloudErrorProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.CloudErrorProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.CloudErrorProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.CloudErrorProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -636,9 +750,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.Desktop</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.Desktop</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.Desktop</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.Desktop</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -658,9 +772,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.DesktopList</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.DesktopList</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.DesktopList</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.DesktopList</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -680,9 +794,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.DesktopPatchProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.DesktopPatchProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.DesktopPatchProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.DesktopPatchProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -708,9 +822,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.DesktopPatchTags</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.DesktopPatchTags</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.DesktopPatchTags</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.DesktopPatchTags</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -730,9 +844,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.DesktopProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.DesktopProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.DesktopProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.DesktopProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -776,9 +890,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ExpandMsixImage</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.ExpandMsixImage</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ExpandMsixImage</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.ExpandMsixImage</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -798,9 +912,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ExpandMsixImageList</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.ExpandMsixImageList</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ExpandMsixImageList</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.ExpandMsixImageList</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -820,9 +934,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ExpandMsixImageProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.ExpandMsixImageProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ExpandMsixImageProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.ExpandMsixImageProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -902,9 +1016,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.HostPool</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.HostPool</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.HostPool</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.HostPool</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1026,9 +1140,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.HostPoolList</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.HostPoolList</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.HostPoolList</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.HostPoolList</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1048,9 +1162,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.HostPoolPatch</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.HostPoolPatch</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.HostPoolPatch</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.HostPoolPatch</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1070,9 +1184,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.HostPoolPatchProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.HostPoolPatchProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.HostPoolPatchProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.HostPoolPatchProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1176,9 +1290,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.HostPoolPatchTags</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.HostPoolPatchTags</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.HostPoolPatchTags</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.HostPoolPatchTags</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1198,9 +1312,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.HostPoolProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.HostPoolProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.HostPoolProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.HostPoolProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1328,9 +1442,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.LogSpecification</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.LogSpecification</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.LogSpecification</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.LogSpecification</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1362,27 +1476,27 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.MigrationRequestProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.MaintenanceWindowPatchProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.MigrationRequestProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.MaintenanceWindowPatchProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
-            <Label>MigrationPath</Label>
+            <Label>DayOfWeek</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>Operation</Label>
+            <Label>Hour</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
-                <PropertyName>MigrationPath</PropertyName>
+                <PropertyName>DayOfWeek</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>Operation</PropertyName>
+                <PropertyName>Hour</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -1390,9 +1504,37 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.MsixImageUri</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.MaintenanceWindowProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.MsixImageUri</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.MaintenanceWindowProperties</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>DayOfWeek</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Hour</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>DayOfWeek</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Hour</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.MsixImageUri</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.MsixImageUri</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1412,9 +1554,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.MsixPackage</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.MsixPackage</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.MsixPackage</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.MsixPackage</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1434,9 +1576,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.MsixPackageApplications</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.MsixPackageApplications</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.MsixPackageApplications</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.MsixPackageApplications</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1492,9 +1634,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.MsixPackageDependencies</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.MsixPackageDependencies</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.MsixPackageDependencies</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.MsixPackageDependencies</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1526,9 +1668,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.MsixPackageList</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.MsixPackageList</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.MsixPackageList</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.MsixPackageList</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1548,9 +1690,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.MsixPackagePatch</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.MsixPackagePatch</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.MsixPackagePatch</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.MsixPackagePatch</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1570,9 +1712,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.MsixPackagePatchProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.MsixPackagePatchProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.MsixPackagePatchProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.MsixPackagePatchProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1604,9 +1746,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.MsixPackageProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.MsixPackageProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.MsixPackageProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.MsixPackageProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1674,9 +1816,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.RegistrationInfo</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.RegistrationInfo</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.RegistrationInfo</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.RegistrationInfo</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1708,9 +1850,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.RegistrationInfoPatch</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.RegistrationInfoPatch</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.RegistrationInfoPatch</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.RegistrationInfoPatch</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1736,9 +1878,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ResourceProviderOperation</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.ResourceProviderOperation</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ResourceProviderOperation</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.ResourceProviderOperation</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1764,9 +1906,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ResourceProviderOperationDisplay</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.ResourceProviderOperationDisplay</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ResourceProviderOperationDisplay</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.ResourceProviderOperationDisplay</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1804,9 +1946,31 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ScalingHostPoolReference</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.ResourceProviderOperationList</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ScalingHostPoolReference</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.ResourceProviderOperationList</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>NextLink</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>NextLink</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.ScalingHostPoolReference</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.ScalingHostPoolReference</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1832,9 +1996,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ScalingPlan</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.ScalingPlan</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ScalingPlan</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.ScalingPlan</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1956,9 +2120,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ScalingPlanList</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.ScalingPlanList</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ScalingPlanList</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.ScalingPlanList</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1978,9 +2142,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ScalingPlanPatchProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.ScalingPlanPatchProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ScalingPlanPatchProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.ScalingPlanPatchProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1992,9 +2156,6 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>FriendlyName</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>HostPoolType</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>TimeZone</Label>
@@ -2013,9 +2174,6 @@
                 <PropertyName>FriendlyName</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>HostPoolType</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
                 <PropertyName>TimeZone</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
@@ -2024,9 +2182,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ScalingPlanPatchTags</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.ScalingPlanPatchTags</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ScalingPlanPatchTags</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.ScalingPlanPatchTags</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2046,9 +2204,169 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ScalingPlanProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.ScalingPlanPooledSchedule</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ScalingPlanProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.ScalingPlanPooledSchedule</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.ScalingPlanPooledScheduleList</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.ScalingPlanPooledScheduleList</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>NextLink</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>NextLink</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.ScalingPlanPooledSchedulePatch</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.ScalingPlanPooledSchedulePatch</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.ScalingPlanPooledScheduleProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.ScalingPlanPooledScheduleProperties</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>DaysOfWeek</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>OffPeakLoadBalancingAlgorithm</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>PeakLoadBalancingAlgorithm</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>RampDownCapacityThresholdPct</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>RampDownForceLogoffUser</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>RampDownLoadBalancingAlgorithm</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>RampDownMinimumHostsPct</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>RampDownNotificationMessage</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>RampDownStopHostsWhen</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>RampDownWaitTimeMinute</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>RampUpCapacityThresholdPct</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>RampUpLoadBalancingAlgorithm</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>RampUpMinimumHostsPct</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>DaysOfWeek</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>OffPeakLoadBalancingAlgorithm</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>PeakLoadBalancingAlgorithm</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>RampDownCapacityThresholdPct</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>RampDownForceLogoffUser</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>RampDownLoadBalancingAlgorithm</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>RampDownMinimumHostsPct</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>RampDownNotificationMessage</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>RampDownStopHostsWhen</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>RampDownWaitTimeMinute</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>RampUpCapacityThresholdPct</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>RampUpLoadBalancingAlgorithm</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>RampUpMinimumHostsPct</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.ScalingPlanProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.ScalingPlanProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2098,9 +2416,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ScalingSchedule</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.ScalingSchedule</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ScalingSchedule</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.ScalingSchedule</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2114,13 +2432,7 @@
             <Label>OffPeakLoadBalancingAlgorithm</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>OffPeakStartTime</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
             <Label>PeakLoadBalancingAlgorithm</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>PeakStartTime</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>RampDownCapacityThresholdPct</Label>
@@ -2138,9 +2450,6 @@
             <Label>RampDownNotificationMessage</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>RampDownStartTime</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
             <Label>RampDownStopHostsWhen</Label>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -2154,9 +2463,6 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>RampUpMinimumHostsPct</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>RampUpStartTime</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -2172,13 +2478,7 @@
                 <PropertyName>OffPeakLoadBalancingAlgorithm</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>OffPeakStartTime</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
                 <PropertyName>PeakLoadBalancingAlgorithm</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>PeakStartTime</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>RampDownCapacityThresholdPct</PropertyName>
@@ -2196,9 +2496,6 @@
                 <PropertyName>RampDownNotificationMessage</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>RampDownStartTime</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
                 <PropertyName>RampDownStopHostsWhen</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
@@ -2213,18 +2510,15 @@
               <TableColumnItem>
                 <PropertyName>RampUpMinimumHostsPct</PropertyName>
               </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>RampUpStartTime</PropertyName>
-              </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
         </TableRowEntries>
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.SendMessage</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.SendMessage</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.SendMessage</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.SendMessage</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2250,9 +2544,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.SessionHost</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.SessionHost</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.SessionHost</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.SessionHost</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2272,9 +2566,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.SessionHostHealthCheckFailureDetails</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.SessionHostHealthCheckFailureDetails</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.SessionHostHealthCheckFailureDetails</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.SessionHostHealthCheckFailureDetails</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2306,9 +2600,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.SessionHostHealthCheckReport</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.SessionHostHealthCheckReport</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.SessionHostHealthCheckReport</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.SessionHostHealthCheckReport</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2334,9 +2628,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.SessionHostList</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.SessionHostList</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.SessionHostList</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.SessionHostList</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2356,9 +2650,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.SessionHostPatch</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.SessionHostPatch</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.SessionHostPatch</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.SessionHostPatch</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2378,9 +2672,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.SessionHostPatchProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.SessionHostPatchProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.SessionHostPatchProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.SessionHostPatchProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2389,6 +2683,9 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>AssignedUser</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>FriendlyName</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -2400,15 +2697,18 @@
               <TableColumnItem>
                 <PropertyName>AssignedUser</PropertyName>
               </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>FriendlyName</PropertyName>
+              </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
         </TableRowEntries>
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.SessionHostProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.SessionHostProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.SessionHostProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.SessionHostProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2420,6 +2720,9 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>AssignedUser</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>FriendlyName</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>LastHeartBeat</Label>
@@ -2471,6 +2774,9 @@
                 <PropertyName>AssignedUser</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
+                <PropertyName>FriendlyName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>LastHeartBeat</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
@@ -2512,9 +2818,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.StartMenuItem</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.StartMenuItem</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.StartMenuItem</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.StartMenuItem</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2534,9 +2840,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.StartMenuItemList</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.StartMenuItemList</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.StartMenuItemList</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.StartMenuItemList</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2556,9 +2862,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.StartMenuItemProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.StartMenuItemProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.StartMenuItemProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.StartMenuItemProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2602,9 +2908,37 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.UserSession</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.Time</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.UserSession</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.Time</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Hour</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Minute</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Hour</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Minute</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.UserSession</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.UserSession</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2624,9 +2958,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.UserSessionList</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.UserSessionList</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.UserSessionList</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.UserSessionList</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2646,9 +2980,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.UserSessionProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.UserSessionProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.UserSessionProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.UserSessionProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2698,9 +3032,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.Workspace</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.Workspace</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.Workspace</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.Workspace</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2822,9 +3156,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.WorkspaceList</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.WorkspaceList</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.WorkspaceList</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.WorkspaceList</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2844,9 +3178,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.WorkspacePatchProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.WorkspacePatchProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.WorkspacePatchProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.WorkspacePatchProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2878,9 +3212,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.WorkspacePatchTags</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.WorkspacePatchTags</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.WorkspacePatchTags</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.WorkspacePatchTags</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2900,9 +3234,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.WorkspaceProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.WorkspaceProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.WorkspaceProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.WorkspaceProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
