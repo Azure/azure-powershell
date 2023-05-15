@@ -461,7 +461,7 @@ namespace Microsoft.Azure.Commands.Compute
                 }
             }
 
-            switch (ParameterSetName) //Add guest attestation logic here now that it works for both parameter sets? 
+            switch (ParameterSetName)
             {
                 case SimpleParameterSet:
                     this.StartAndWait(StrategyExecuteCmdletAsync);
@@ -660,8 +660,7 @@ namespace Microsoft.Azure.Commands.Compute
                 }
 
                 if (_cmdlet.DiskFile == null)
-                { //Adam: GuestAttestation will need to be added here, cmdlet seems to end after this return.
-                    //var vmReturn =  
+                { 
                     return resourceGroup.CreateVirtualMachineConfig(
                         name: _cmdlet.Name,
                         networkInterface: networkInterface,
@@ -701,10 +700,6 @@ namespace Microsoft.Azure.Commands.Compute
                         enableVtpm: _cmdlet.EnableVtpm,
                         enableSecureBoot: _cmdlet.EnableSecureBoot
                         );
-
-                    // add GuestAttestation extension to the vm taht was just made? 
-
-
                 }
                 else
                 {
