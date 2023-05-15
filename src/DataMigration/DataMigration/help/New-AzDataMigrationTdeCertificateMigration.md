@@ -1,78 +1,64 @@
 ---
-external help file:
+external help file: Az.DataMigration-help.xml
 Module Name: Az.DataMigration
-online version: https://learn.microsoft.com/powershell/module/az.datamigration/invoke-azdatamigrationcutovertosqlmanagedinstance
+online version: https://learn.microsoft.com/powershell/module/az.datamigration/new-azdatamigrationtdecertificatemigration
 schema: 2.0.0
 ---
 
-# Invoke-AzDataMigrationCutoverToSqlManagedInstance
+# New-AzDataMigrationTdeCertificateMigration
 
 ## SYNOPSIS
-Initiate cutover for in-progress online database migration to SQL Managed Instance.
+Migrate TDE certificate(s) from source SQL Server to the target Azure SQL Server.
 
 ## SYNTAX
 
 ```
-Invoke-AzDataMigrationCutoverToSqlManagedInstance -ManagedInstanceName <String> -ResourceGroupName <String>
- -TargetDbName <String> -MigrationOperationId <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzDataMigrationTdeCertificateMigration -SourceSqlConnectionString <SecureString>
+ -TargetSubscriptionId <String> -TargetResourceGroupName <String> -TargetManagedInstanceName <String>
+ -NetworkSharePath <String> -NetworkShareDomain <String> -DatabaseName <String[]>
+ [-NetworkShareUserName <String>] [-NetworkSharePassword <SecureString>] [-PassThru] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Initiate cutover for in-progress online database migration to SQL Managed Instance.
+Migrate TDE certificate(s) from source SQL Server to the target Azure SQL Server.
 
 ## EXAMPLES
 
-### Example 1: Initiate cutover for the specified in-progress online migration to SQL Managed Instance
+### Example 1: Run TDE certificate migration from a source SQL Server to a target Azure SQL Server.
 ```powershell
-$miMigration = Get-AzDataMigrationToSqlManagedInstance -ResourceGroupName "MyResourceGroup" -ManagedInstanceName "MyManagedInstance" -TargetDbName "MyDatabase"
-Invoke-AzDataMigrationCutoverToSqlManagedInstance -ResourceGroupName "MyResourceGroup" -ManagedInstanceName "MyManagedInstance" -TargetDbName "MyDatabase" -MigrationOperationId $miMigration.MigrationOperationId
-Get-AzDataMigrationToSqlManagedInstance -InputObject $miMigration 
+New-AzDataMigrationTdeCertificateMigration -SourceSqlConnectionString $SourceSqlConnectionString -TargetSubscriptionId "00000000-0000-0000-0000-000000000000" -TargetResourceGroupName "ResourceGroupName" -TargetManagedInstanceName "TargetManagedInstanceName" -NetworkSharePath "\\NetworkShare\Folder" -NetworkShareDomain "NetworkShare" -NetworkShareUserName "NetworkShareUserName" -NetworkSharePassword $NetworkSharePassword -DatabaseName "TdeDb_0", "TdeDb_1", "TdeDb_2"
 ```
 
 ```output
-Name               Type                                       Kind  ProvisioningState MigrationStatus
-----               ----                                       ----  ----------------- ---------------
-MyDatabase         Microsoft.DataMigration/databaseMigrations SqlMi Completing        Completing
+Beginning TDE certificate migration
+TdeDb_0: TDE certificate migrated successfully.
+TdeDb_1: TDE certificate migrated successfully.
+TdeDb_2: TDE certificate migrated successfully.
+Certificate migration completed
 ```
 
-This command initiates cutover for the specified in-progress online migration to SQL Managed Instance.
+This command runs TDE certificate migration from a source SQL Server to a target Azure SQL Server.
 
 ## PARAMETERS
 
-### -AsJob
-Run the command as a job
+### -DatabaseName
+Source database name.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DefaultProfile
-The DefaultProfile parameter is not functional.
-Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
-
-```yaml
-Type: System.Management.Automation.PSObject
-Parameter Sets: (All)
-Aliases: AzureRMContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ManagedInstanceName
-.
+### -NetworkShareDomain
+Network share domain.
 
 ```yaml
 Type: System.String
@@ -86,8 +72,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -MigrationOperationId
-ID tracking migration operation.
+### -NetworkSharePassword
+Network share password.
+
+```yaml
+Type: System.Security.SecureString
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NetworkSharePath
+Network share path.
 
 ```yaml
 Type: System.String
@@ -101,11 +102,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -NoWait
-Run the command asynchronously
+### -NetworkShareUserName
+Network share user name.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -117,7 +118,6 @@ Accept wildcard characters: False
 ```
 
 ### -PassThru
-Returns true when the command succeeds
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -131,9 +131,24 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
-Name of the resource group that contains the resource.
-You can obtain this value from the Azure Resource Manager API or the portal.
+### -SourceSqlConnectionString
+Required.
+Connection string for the source SQL instance, using the formal connection string format.
+
+```yaml
+Type: System.Security.SecureString
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TargetManagedInstanceName
+Name of the Azure SQL Server.
 
 ```yaml
 Type: System.String
@@ -147,23 +162,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SubscriptionId
-Subscription ID that identifies an Azure subscription.
+### -TargetResourceGroupName
+Resource group name of the target Azure SQL server.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
-Default value: (Get-AzContext).Subscription.Id
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -TargetDbName
-The name of the target database.
+### -TargetSubscriptionId
+Subscription Id of the target Azure SQL server.
 
 ```yaml
 Type: System.String
@@ -222,4 +237,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ALIASES
 
 ## RELATED LINKS
-
