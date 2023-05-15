@@ -30,7 +30,6 @@ function CreateModelCmdlet {
     } else {
         $ModuleName = 'Az.MSGraph'
     }
-
     $CsFiles = Get-ChildItem -Path $ModelCsPath -Recurse -Filter *.cs
     $Content = ''
     $null = $CsFiles | ForEach-Object -Process { if ($_.Name.Split('.').count -eq 2 )
@@ -85,6 +84,7 @@ function CreateModelCmdlet {
                 $Required = $false
                 $Description = ""
                 $Readonly = $False
+                $mutability = @{Read = $true; Create = $true; Update = $true}
                 foreach ($Argument in $Arguments)
                 {
                     if ($Argument.NameEquals.Name.Identifier.Value -eq "Required")
@@ -99,6 +99,18 @@ function CreateModelCmdlet {
                     {
                         $Readonly = $Argument.Expression.Token.Value
                     }
+                    if ($Argument.NameEquals.Name.Identifier.Value -eq "Read")
+                    {
+                        $mutability.Read = $Argument.Expression.Token.Value
+                    }
+                    if ($Argument.NameEquals.Name.Identifier.Value -eq "Create")
+                    {
+                        $mutability.Create = $Argument.Expression.Token.Value
+                    }
+                    if ($Argument.NameEquals.Name.Identifier.Value -eq "Update")
+                    {
+                        $mutability.Update = $Argument.Expression.Token.Value
+                    }
                 }
                 if ($Readonly)
                 {
@@ -107,7 +119,7 @@ function CreateModelCmdlet {
                 $Identifier = $Member.Identifier.Value
                 $Type = $Member.Type.ToString().replace('?', '').Split("::")[-1]
                 $ParameterDefinePropertyList = New-Object System.Collections.Generic.List[string]
-                if ($Required)
+                if ($Required -and $mutability.Create -and $mutability.Update)
                 {
                     $ParameterDefinePropertyList.Add("Mandatory")
                 }

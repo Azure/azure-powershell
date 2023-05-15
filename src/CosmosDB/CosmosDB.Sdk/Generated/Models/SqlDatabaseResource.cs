@@ -31,15 +31,9 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// Initializes a new instance of the SqlDatabaseResource class.
         /// </summary>
         /// <param name="id">Name of the Cosmos DB SQL database</param>
-        /// <param name="restoreParameters">Parameters to indicate the
-        /// information about the restore</param>
-        /// <param name="createMode">Enum to indicate the mode of resource
-        /// creation. Possible values include: 'Default', 'Restore'</param>
-        public SqlDatabaseResource(string id, ResourceRestoreParameters restoreParameters = default(ResourceRestoreParameters), string createMode = default(string))
+        public SqlDatabaseResource(string id)
         {
             Id = id;
-            RestoreParameters = restoreParameters;
-            CreateMode = createMode;
             CustomInit();
         }
 
@@ -53,20 +47,6 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// </summary>
         [JsonProperty(PropertyName = "id")]
         public string Id { get; set; }
-
-        /// <summary>
-        /// Gets or sets parameters to indicate the information about the
-        /// restore
-        /// </summary>
-        [JsonProperty(PropertyName = "restoreParameters")]
-        public ResourceRestoreParameters RestoreParameters { get; set; }
-
-        /// <summary>
-        /// Gets or sets enum to indicate the mode of resource creation.
-        /// Possible values include: 'Default', 'Restore'
-        /// </summary>
-        [JsonProperty(PropertyName = "createMode")]
-        public string CreateMode { get; set; }
 
         /// <summary>
         /// Validate the object.

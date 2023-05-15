@@ -135,6 +135,11 @@ namespace Microsoft.Azure.Commands.Management.Storage
         }
         private bool? isVersioningEnabled = null;
 
+        [Parameter(Mandatory = false,
+            HelpMessage = "Specifies CORS rules for the Blob service.")]
+        [ValidateNotNull]
+        public PSCorsRule[] CorsRule { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -180,6 +185,15 @@ namespace Microsoft.Azure.Commands.Management.Storage
                 if (isVersioningEnabled != null)
                 {
                     serviceProperties.IsVersioningEnabled = isVersioningEnabled;
+                }
+
+                if (this.CorsRule != null)
+                {
+                    PSCorsRules corsRules = new PSCorsRules
+                    {
+                        CorsRulesProperty = this.CorsRule
+                    };
+                    serviceProperties.Cors = corsRules.ParseCorsRules();
                 }
 
                 serviceProperties = this.StorageClient.BlobServices.SetServiceProperties(this.ResourceGroupName, this.StorageAccountName, serviceProperties);

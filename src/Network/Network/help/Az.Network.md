@@ -1007,9 +1007,6 @@ Creates a new Azure Firewall Policy
 ### [New-AzFirewallPolicyApplicationRule](New-AzFirewallPolicyApplicationRule.md)
 Create a new Azure Firewall Policy Application Rule
 
-### [New-AzFirewallPolicyApplicationRuleCustomHttpHeader](New-AzFirewallPolicyApplicationRuleCustomHttpHeader.md)
-Create a new Azure Firewall Policy Application Rule Custom Http Header
-
 ### [New-AzFirewallPolicyDnsSetting](New-AzFirewallPolicyDnsSetting.md)
 Creates a new DNS Setting for Azure Firewall Policy
 

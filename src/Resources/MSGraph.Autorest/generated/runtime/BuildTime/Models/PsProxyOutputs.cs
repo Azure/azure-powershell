@@ -262,7 +262,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.PowerShel
                 var variantListString = defaultInfo.ParameterGroup.VariantNames.ToPsList();
                 var parameterName = defaultInfo.ParameterGroup.ParameterName;
                 sb.AppendLine();
-                sb.AppendLine($"{Indent}{Indent}if (({variantListString}) -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('{parameterName}')) {{");
+                var setCondition = " ";
+                if (!String.IsNullOrEmpty(defaultInfo.SetCondition)) {
+                    setCondition = $" -and {defaultInfo.SetCondition}";
+                }
+                sb.AppendLine($"{Indent}{Indent}if (({variantListString}) -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('{parameterName}'){setCondition}) {{");
                 sb.AppendLine($"{Indent}{Indent}{Indent}$PSBoundParameters['{parameterName}'] = {defaultInfo.Script}");
                 sb.Append($"{Indent}{Indent}}}");
             }
@@ -357,6 +361,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.PowerShel
             var notesText = !String.IsNullOrEmpty(notes) ? $"{Environment.NewLine}.Notes{Environment.NewLine}{ComplexParameterHeader}{notes}" : String.Empty;
             var relatedLinks = String.Join(Environment.NewLine, CommentInfo.RelatedLinks.Select(l => $".Link{Environment.NewLine}{l}"));
             var relatedLinksText = !String.IsNullOrEmpty(relatedLinks) ? $"{Environment.NewLine}{relatedLinks}" : String.Empty;
+            var externalUrls = String.Join(Environment.NewLine, CommentInfo.ExternalUrls.Select(l => $".Link{Environment.NewLine}{l}"));
+            var externalUrlsText = !String.IsNullOrEmpty(externalUrls) ? $"{Environment.NewLine}{externalUrls}" : String.Empty;
             var examples = "";
             foreach (var example in VariantGroup.HelpInfo.Examples)
             {
@@ -369,7 +375,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.PowerShel
 {CommentInfo.Description.ToDescriptionFormat(false)}
 {examples}{inputsText}{outputsText}{notesText}
 .Link
-{CommentInfo.OnlineVersion}{relatedLinksText}
+{CommentInfo.OnlineVersion}{relatedLinksText}{externalUrlsText}
 #>
 ";
         }
@@ -604,7 +610,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.PowerShel
                 return ni.IsComplexInterface
                     ? ni.ToNoteOutput(nestedIndent, includeDashes, includeBackticks, false)
                     : RenderProperty(ni, nestedIndent, includeDashes, includeBackticks);
-            }).Prepend(RenderProperty(complexInterfaceInfo, currentIndent, !isFirst && includeDashes, includeBackticks));
+            }).Prepend(RenderProperty(complexInterfaceInfo, currentIndent, !isFirst && includeDashes, !isFirst && includeBackticks));
             return String.Join(Environment.NewLine, nested);
         }
     }

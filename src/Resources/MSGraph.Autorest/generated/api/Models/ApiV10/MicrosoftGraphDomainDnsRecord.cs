@@ -99,6 +99,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"If false, this record must be configured by the customer at the DNS host for Microsoft Online Services to operate correctly with the domain.",
         SerializedName = @"isOptional",
         PossibleTypes = new [] { typeof(bool) })]
@@ -107,6 +110,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Value used when configuring the name of the DNS record at the DNS host.",
         SerializedName = @"label",
         PossibleTypes = new [] { typeof(string) })]
@@ -117,6 +123,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Indicates what type of DNS record this entity represents.The value can be one of the following: CName, Mx, Srv, Txt.",
         SerializedName = @"recordType",
         PossibleTypes = new [] { typeof(string) })]
@@ -129,6 +138,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Microsoft Online Service or feature that has a dependency on this DNS record.Can be one of the following values: null, Email, Sharepoint, EmailInternalRelayOnly, OfficeCommunicationsOnline, SharePointDefaultDomain, FullRedelegation, SharePointPublic, OrgIdAuthentication, Yammer, Intune.",
         SerializedName = @"supportedService",
         PossibleTypes = new [] { typeof(string) })]
@@ -139,6 +151,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Value to use when configuring the time-to-live (ttl) property of the DNS record at the DNS host. Not nullable.",
         SerializedName = @"ttl",
         PossibleTypes = new [] { typeof(int) })]

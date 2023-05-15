@@ -448,7 +448,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         /// </summary>
         public static string GetFileSharedAccessSignature(AzureStorageContext context, ShareSasBuilder sasBuilder, CancellationToken cancelToken)
         {
-            if (context != null && context.StorageAccount.Credentials.IsSharedKey)
+            if (context != null && context.StorageAccount != null && context.StorageAccount.Credentials != null && context.StorageAccount.Credentials.IsSharedKey)
             {
                 return sasBuilder.ToSasQueryParameters(new StorageSharedKeyCredential(context.StorageAccountName, context.StorageAccount.Credentials.ExportBase64EncodedKey())).ToString();
             }
@@ -687,7 +687,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         /// </summary>
         public static string GetBlobSharedAccessSignature(AzureStorageContext context, BlobSasBuilder sasBuilder, bool generateUserDelegationSas, BlobClientOptions ClientOptions, CancellationToken cancelToken)
         {
-            if (context != null && context.StorageAccount.Credentials.IsSharedKey)
+            if (context != null && context.StorageAccount != null && context.StorageAccount.Credentials != null && context.StorageAccount.Credentials.IsSharedKey)
             {
                 return sasBuilder.ToSasQueryParameters(new StorageSharedKeyCredential(context.StorageAccountName, context.StorageAccount.Credentials.ExportBase64EncodedKey())).ToString();
             }
@@ -716,7 +716,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         /// </summary>
         public static string GetDatalakeGen2SharedAccessSignature(AzureStorageContext context, DataLakeSasBuilder sasBuilder, bool generateUserDelegationSas, DataLakeClientOptions clientOptions, CancellationToken cancelToken)
         {
-            if (context != null && context.StorageAccount.Credentials.IsSharedKey)
+            if (context != null && context.StorageAccount != null && context.StorageAccount.Credentials != null && context.StorageAccount.Credentials.IsSharedKey)
             {
                 return sasBuilder.ToSasQueryParameters(new StorageSharedKeyCredential(context.StorageAccountName, context.StorageAccount.Credentials.ExportBase64EncodedKey())).ToString();
             }

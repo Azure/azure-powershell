@@ -20,7 +20,7 @@ Removes an EventHub Authorization Rule
 #>
 
 function Remove-AzEventHubAuthorizationRule{
-	[OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IAuthorizationRule])]
+	[OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.IAuthorizationRule])]
     [CmdletBinding(DefaultParameterSetName = 'RemoveExpandedNamespace', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
 	param(
         [Parameter(ParameterSetName = 'RemoveExpandedEntity', HelpMessage = "The name of the Authorization Rule")]

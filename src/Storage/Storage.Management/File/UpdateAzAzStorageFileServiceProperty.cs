@@ -162,6 +162,11 @@ namespace Microsoft.Azure.Commands.Management.Storage
             IgnoreCase = true)]
         public string[] SmbKerberosTicketEncryption { get; set; }
 
+        [Parameter(Mandatory = false,
+            HelpMessage = "Specifies CORS rules for the File service.")]
+        [ValidateNotNull]
+        public PSCorsRule[] CorsRule { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -200,6 +205,9 @@ namespace Microsoft.Azure.Commands.Management.Storage
                         // For AccountNameParameterSet, the ResourceGroupName and StorageAccountName can get from input directly
                         break;
                 }
+                
+                FileServiceProperties fileServiceProperties = new FileServiceProperties();
+
                 DeleteRetentionPolicy deleteRetentionPolicy = null;
                 if (this.enableShareDeleteRetentionPolicy != null)
                 {
@@ -210,6 +218,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
                         deleteRetentionPolicy.Days = ShareRetentionDays;
                     }
                 }
+                fileServiceProperties.ShareDeleteRetentionPolicy = deleteRetentionPolicy;
 
                 ProtocolSettings protocolSettings = null;
                 if(this.SmbProtocolVersion != null ||
@@ -242,9 +251,18 @@ namespace Microsoft.Azure.Commands.Management.Storage
                         protocolSettings.Smb.Multichannel.Enabled = this.enableSmbMultichannel;
                     }
                 }
+                fileServiceProperties.ProtocolSettings = protocolSettings;
 
-                FileServiceProperties serviceProperties = this.StorageClient.FileServices.SetServiceProperties(this.ResourceGroupName, this.StorageAccountName, 
-                    new FileServiceProperties(shareDeleteRetentionPolicy: deleteRetentionPolicy, protocolSettings: protocolSettings));
+                if (this.CorsRule != null)
+                {
+                    PSCorsRules corsRules = new PSCorsRules
+                    {
+                        CorsRulesProperty = this.CorsRule
+                    };
+                    fileServiceProperties.Cors = corsRules.ParseCorsRules();
+                }
+
+                FileServiceProperties serviceProperties = this.StorageClient.FileServices.SetServiceProperties(this.ResourceGroupName, this.StorageAccountName, fileServiceProperties);
 
                 // Get all File service properties from server for output
                 serviceProperties = this.StorageClient.FileServices.GetServiceProperties(this.ResourceGroupName, this.StorageAccountName);

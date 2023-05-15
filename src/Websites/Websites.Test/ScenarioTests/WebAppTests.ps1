@@ -723,296 +723,6 @@ function Test-EnableContainerContinuousDeploymentAndGetUrl
 	}
 }
 
-<#
-.SYNOPSIS
-Tests issuing an EnterPsSession command to a Windows container web app.
-.DESCRIPTION
-SmokeTest
-#>
-function Test-WindowsContainerCanIssueWebAppPSSession
-{
-	# Setup
-	$rgname = Get-ResourceGroupName
-	$wname = Get-WebsiteName
-	$location = Get-WebLocation
-	$whpName = Get-WebHostPlanName
-	$tier = "PremiumContainer"
-	$apiversion = "2015-08-01"
-	$resourceType = "Microsoft.Web/sites"
-    $containerImageName = "dotnetsdktesting.azurecr.io/webapplication3:latest"
-    $containerRegistryUrl = "https://dotnetsdktesting.azurecr.io"
-    $containerRegistryUser ="DotNetSDKTesting"
-    $pass = "NuO4xVus40R/wukMM9i1OdMIohADB=oR"
-    $containerRegistryPassword = ConvertTo-SecureString -String $pass -AsPlainText -Force
-	$dockerPrefix = "DOCKER|"
-
- 	try
-	{
-
-		Write-Debug "Creating app service plan..."
-
-		#Setup
-		New-AzResourceGroup -Name $rgname -Location $location
-		$serverFarm = New-AzAppServicePlan -ResourceGroupName $rgname -Name  $whpName -Location  $location -Tier $tier -WorkerSize Large -HyperV
-
-		Write-Debug "App service plan created"
-
-		Write-Debug "Creating web app plan..."
-
-		# Create new web app
-		$job = New-AzWebApp -ResourceGroupName $rgname -Name $wname -Location $location -AppServicePlan $whpName -ContainerImageName $containerImageName -ContainerRegistryUrl $containerRegistryUrl -ContainerRegistryUser $containerRegistryUser -ContainerRegistryPassword $containerRegistryPassword -AsJob
-		$job | Wait-Job
-		$actual = $job | Receive-Job
-		
-		Write-Debug "Webapp created"
-
-		# Assert
-		Assert-AreEqual $wname $actual.Name
-		Assert-AreEqual $serverFarm.Id $actual.ServerFarmId
- 		# Get new web app
-		$result = Get-AzWebApp -ResourceGroupName $rgname -Name $wname
-
-		Write-Debug "Webapp retrieved"
-
-		Write-Debug "Validating web app properties..."
-
-		# Assert
-		Assert-AreEqual $wname $result.Name
-		Assert-AreEqual $serverFarm.Id $result.ServerFarmId
-        Assert-AreEqual $true $result.IsXenon
-        Assert-AreEqual ($dockerPrefix + $containerImageName)  $result.SiteConfig.WindowsFxVersion
-
-		$actualAppSettings = @{}
-
-		foreach ($kvp in $result.SiteConfig.AppSettings)
-		{
-			$actualAppSettings[$kvp.Name] = $kvp.Value
-		}
-
-		# Validate Appsettings
-
-		$expectedAppSettings = @{}
-		$expectedAppSettings["DOCKER_REGISTRY_SERVER_URL"] = $containerRegistryUrl;
-		$expectedAppSettings["DOCKER_REGISTRY_SERVER_USERNAME"] = $containerRegistryUser;
-		$expectedAppSettings["DOCKER_REGISTRY_SERVER_PASSWORD"] = $pass;
-
-		foreach ($key in $expectedAppSettings.Keys)
-		{
-			Assert-True {$actualAppSettings.Keys -contains $key}
-			Assert-AreEqual $actualAppSettings[$key] $expectedAppSettings[$key]
-		}
-
-		Write-Debug "Enabling Win-RM..."
-
-		# Adding Appsetting: enabling WinRM
-		$actualAppSettings["CONTAINER_WINRM_ENABLED"] = "1"
-        $webApp = Set-AzWebApp -ResourceGroupName $rgname -Name $wName -AppSettings $actualAppSettings
-
-		# Validating that the client can at least issue the EnterPsSession command.
-		# This will validate that this cmdlet will run succesfully in Cloud Shell.
-		# If the current Operating System is Windows and the current WSMAN settings will not allow the user
-		# to connect (for example: invalid Trusted Hosts, Basic Auth not enabled) this command will issue a Warning instructing the user
-		# to fix WSMAN settings. It will not attempt to run EnterPsSession.
-		#
-		# If the current is not Windows, this command will not attempt to validate WSMAN settings and 
-		# just try to run EnterPsSession if the current PsCore version is 6.1.0.0 or subsequent. EnterPsSession using WinRM is available in Cloud Shell
-		#
-		# We need a real Windows Container app running to fully validate the returned PsSession object, which is not 
-		# possible in 'Playback' mode.
-		#
-		# This assert at least verifies that the EnterPsSession command is attempted and that the behavior is the expected
-		New-AzWebAppContainerPSSession -ResourceGroupName $rgname -Name $wname -WarningVariable wv -WarningAction SilentlyContinue -ErrorAction SilentlyContinue -Force
-		
-
-		if ((Get-WebsitesTestMode) -ne 'Playback') 
-		{
-			# Message for Recording mode
-			$message = "Connecting to remote server $wname.azurewebsites.net failed with the following error message : The connection to the specified remote host was refused."
-			$resultError = $Error[0] -like "*$($message)*"
-			Write-Debug "Expected Message: $message"
-		}
-		else
-		{
-			# Three possible error messages in Playback mode.
-			$messageDNS = "Connecting to remote server $wname.azurewebsites.net failed with the following error message : The WinRM client cannot process the request because the server name cannot be resolved"
-			$messageUnavailable = "Connecting to remote server $wname.azurewebsites.net failed with the following error message : The WinRM client sent a request to an HTTP server and got a response saying the requested HTTP URL was not available."
-			$messagePsVersionNotSupported = "Remote Powershell sessions into Windows Containers on App Service from this version of PowerShell is not supported.";
-			$messageMIResulFailed = "Connecting to remote server $wname.azurewebsites.net failed with the following error message : MI_RESULT_FAILED";
-			$messageWSManNotInstalled = "This parameter set requires WSMan, and no supported WSMan client library was found. WSMan is either not installed or unavailable for this system";
-
-			# One possible warning message in Playback mode.
-			$messageWSMANNotConfigured = "Your current WSMAN Trusted Hosts settings will prevent you from connecting to your Container Web App";
-
-			$resultError = ($Error[0] -like "*$($messageDNS)*") -or 
-				($Error[0] -like "*$($messageUnavailable)*") -or 
-				($Error[0] -like "*$($messageWSMANNotConfigured)*") -or
-				($Error[0] -like "*$($messagePsVersionNotSupported)*") -or
-				($Error[0] -like "*$($messageMIResulFailed)*") -or
-				($Error[0] -like "*$($messageWSManNotInstalled)*")
-				
-			$resultWarning = ($wv[0] -like "*$($messageWSMANNotConfigured)*")
-
-			Write-Debug "Expected error message 1: $messageDNS"
-			Write-Debug "Expected error message 2: $messageUnavailable"
-			Write-Debug "Expected error message 3: $messagePsVersionNotSupported"
-			Write-Debug "Expected error message 4: $messageMIResulFailed"
-			Write-Debug "Expected error message 5: $messageWSManNotInstalled"
-
-			Write-Debug "Expected Warning message 1: $messageWSMANNotConfigured"
-
-
-		}
-		
-		Write-Debug "Error: $Error[0]"
-		Write-Debug "Warnings: $wv"
-		
-		Write-Debug "Printing PsVersion"
-		foreach ($key in $PsVersionTable.Keys)
-		{
-			Write-Debug "$key"
-			foreach($v in $PsVersionTable[$key])
-			{
-				Write-Debug "   $v"
-			}
-		}
-
-		
-		If(!$resultError -or !$resultWarning)
-		{
-			Write-Output "expected error $($message), actual error $($Error[0])"
-			Write-Output "Warnings: $wv"
-		}
-		Assert-True {$resultError -or $resultWarning}
- 	}
-	finally
-	{
-		# Cleanup
-		Remove-AzWebApp -ResourceGroupName $rgname -Name $wname -Force
-		Remove-AzAppServicePlan -ResourceGroupName $rgname -Name  $whpName -Force
-		Remove-AzResourceGroup -Name $rgname -Force
-	}
-}
-
-<#
-.SYNOPSIS
-Tests that a PsSession can be established to a Windows Container App. It is expected to fail in Playback mode
-.DESCRIPTION
-SmokeTest
-#>
-function Test-WindowsContainerWebAppPSSessionOpened
-{
-	# Setup
-	$rgname = Get-ResourceGroupName
-	$wname = Get-WebsiteName
-	$location = Get-WebLocation
-	$whpName = Get-WebHostPlanName
-	$tier = "PremiumContainer"
-	$apiversion = "2015-08-01"
-	$resourceType = "Microsoft.Web/sites"
-    $containerImageName = "mcr.microsoft.com/azure-app-service/samples/aspnethelloworld:latest"
-    $containerRegistryUrl = "https://mcr.microsoft.com"
-	$containerRegistryUser = "testregistry"
-    $pass = "7Dxo9p79Ins2K3ZU"
-    $containerRegistryPassword = ConvertTo-SecureString -String $pass -AsPlainText -Force
-	$dockerPrefix = "DOCKER|"
-
- 	try
-	{
-
-		Write-Debug "Creating app service plan..."
-
-		#Setup
-		New-AzResourceGroup -Name $rgname -Location $location
-		$serverFarm = New-AzAppServicePlan -ResourceGroupName $rgname -Name  $whpName -Location  $location -Tier $tier -WorkerSize Large -HyperV
-
-		Write-Debug "App service plan created"
-
-		Write-Debug "Creating web app plan..."
-
-		# Create new web app
-		$job = New-AzWebApp -ResourceGroupName $rgname -Name $wname -Location $location -AppServicePlan $whpName -ContainerImageName $containerImageName -ContainerRegistryUrl $containerRegistryUrl -ContainerRegistryUser $containerRegistryUser -ContainerRegistryPassword $containerRegistryPassword -AsJob
-		$job | Wait-Job
-		$actual = $job | Receive-Job
-		
-		Write-Debug "Webapp created"
-
-		# Assert
-		Assert-AreEqual $wname $actual.Name
-		Assert-AreEqual $serverFarm.Id $actual.ServerFarmId
- 		# Get new web app
-		$result = Get-AzWebApp -ResourceGroupName $rgname -Name $wname
-
-		Write-Debug "Webapp retrieved"
-
-		Write-Debug "Validating web app properties..."
-
-		# Assert
-		Assert-AreEqual $wname $result.Name
-		Assert-AreEqual $serverFarm.Id $result.ServerFarmId
-        Assert-AreEqual $true $result.IsXenon
-        Assert-AreEqual ($dockerPrefix + $containerImageName)  $result.SiteConfig.WindowsFxVersion
-
-		$actualAppSettings = @{}
-
-		foreach ($kvp in $result.SiteConfig.AppSettings)
-		{
-			$actualAppSettings[$kvp.Name] = $kvp.Value
-		}
-
-		# Validate Appsettings
-
-		$expectedAppSettings = @{}
-		$expectedAppSettings["DOCKER_REGISTRY_SERVER_URL"] = $containerRegistryUrl;
-		$expectedAppSettings["DOCKER_REGISTRY_SERVER_USERNAME"] = $containerRegistryUser;
-		$expectedAppSettings["DOCKER_REGISTRY_SERVER_PASSWORD"] = $pass;
-
-		foreach ($key in $expectedAppSettings.Keys)
-		{
-			Assert-True {$actualAppSettings.Keys -contains $key}
-			Assert-AreEqual $actualAppSettings[$key] $expectedAppSettings[$key]
-		}
-
-		Write-Debug "Enabling Win-RM..."
-
-		# Adding Appsetting: enabling WinRM
-		$actualAppSettings["CONTAINER_WINRM_ENABLED"] = "1"
-        $webApp = Set-AzWebApp -ResourceGroupName $rgname -Name $wName -AppSettings $actualAppSettings
-
-		$status = PingWebApp($webApp)
-		Write-Debug "Just pinged the web app"
-		Write-Debug "Status: $status"
-
-		# Wait for the container app to return 200.
-		# Windows Container apps return 503 when starting up. Usualy takes 8-9 minutes.
-		# Timing out at 15 minutes
-
-		$count=0
-		while (($status -like "ServiceUnavailable") -and $count -le 15)
-		{
-			Wait-Seconds 60
-		    $status = PingWebApp($webApp)
-			Write-Debug $count
-			$count++
-		}
-
-		# Asserting status of the last ping to the web app
-		Assert-AreEqual $status "200"
-
-		$ps_session = New-AzWebAppContainerPSSession -ResourceGroupName $rgname -Name $wname -Force
-
-		Write-Debug "After PSSession"
-
-		Assert-AreEqual $ps_session.ComputerName $wname".azurewebsites.net"
-		Assert-AreEqual $ps_session.State "Opened"
- 	}
-	finally
-	{
-		# Cleanup
-		Remove-AzWebApp -ResourceGroupName $rgname -Name $wname -Force
-		Remove-AzAppServicePlan -ResourceGroupName $rgname -Name  $whpName -Force
-		Remove-AzResourceGroup -Name $rgname -Force
-	}
-}
 
 <#
 .SYNOPSIS
@@ -1464,6 +1174,7 @@ function Test-WebAppPublishingProfile
 	}
 }
 
+# Keep existing test to ensure backwards compatibility with existing behavior
 function Test-PublishAzureWebAppFromZip
 {
 	# Setup
@@ -1494,6 +1205,7 @@ function Test-PublishAzureWebAppFromZip
 	}
 }
 
+# Keep existing test to ensure backwards compatibility with existing behavior
 function Test-PublishAzureWebAppFromWar
 {
 	# Setup
@@ -1523,6 +1235,46 @@ function Test-PublishAzureWebAppFromWar
 
 		$warPath = Join-Path $ResourcesPath "HelloJava.war"
 		$publishedApp = Publish-AzWebApp -ResourceGroupName $rgname -Name $appName -ArchivePath $warPath -Force
+
+		Assert-NotNull $publishedApp
+	}
+	finally
+	{
+		# Cleanup
+		Remove-AzureRmResourceGroup -Name $rgname -Force
+	}
+}
+
+# New tests for PublishAzureWebApp to test deploying against newer Onedeploy endpoint
+function Test-PublishAzureWebAppOnedeploy
+{
+	# Setup
+	$rgname = Get-ResourceGroupName
+	$appName = Get-WebsiteName
+	$location = Get-WebLocation
+	$planName = Get-WebHostPlanName
+	$tier = "Shared"
+
+	try
+	{
+		#Setup
+		New-AzureRmResourceGroup -Name $rgname -Location $location
+		$serverFarm = New-AzureRmAppServicePlan -ResourceGroupName $rgname -Name  $planName -Location  $location -Tier $tier
+		
+		# Create new web app
+		$webapp = New-AzureRmWebApp -ResourceGroupName $rgname -Name $appName -Location $location -AppServicePlan $planName 
+		
+		#Configuring jdk and web container
+        # Set Java runtime to 1.8 | Tomcat. In order to deploy war, site should be configured to run with stack = TOMCAT 
+		# or JBOSSEAP (only availble on Linux). In this test case, it creates Windows app. 
+		$javaVersion="1.8"
+        $javaContainer="TOMCAT"
+        $javaContainerVersion="8.5"
+        $PropertiesObject = @{javaVersion = $javaVersion;javaContainer = $javaContainer;javaContainerVersion = $javaContainerVersion}
+        New-AzResource -PropertyObject $PropertiesObject -ResourceGroupName $rgname -ResourceType Microsoft.Web/sites/config -ResourceName "$appName/web" -ApiVersion 2018-02-01 -Force
+
+		$warPath = Join-Path $ResourcesPath "HelloJava.war"
+		$publishedApp = Publish-AzWebApp -ResourceGroupName $rgname -Name $appName -ArchivePath $warPath -Type war -Clean $true -TargetPath /home/site/wwwroot/webapps/ROOT -Force
 
 		Assert-NotNull $publishedApp
 	}

@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// <summary>
         /// Initializes a new instance of the ContinuousModeProperties class.
         /// </summary>
-        /// <param name="tier">Enum to indicate type of Continuos backup mode.
+        /// <param name="tier">Enum to indicate type of Continuous backup mode.
         /// Possible values include: 'Continuous7Days',
         /// 'Continuous30Days'</param>
         public ContinuousModeProperties(string tier = default(string))
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets enum to indicate type of Continuos backup mode.
+        /// Gets or sets enum to indicate type of Continuous backup mode.
         /// Possible values include: 'Continuous7Days', 'Continuous30Days'
         /// </summary>
         [JsonProperty(PropertyName = "tier")]

@@ -25,7 +25,6 @@ Update-AzWvdScalingPlan `
             -Name 'scalingPlan1' `
             -Description 'Description' `
             -FriendlyName 'Friendly Name' `
-            -HostPoolType 'Pooled' `
             -TimeZone '(UTC-08:00) Pacific Time (US & Canada)' `
             -Schedule @(
                 @{
@@ -64,7 +63,7 @@ Update-AzWvdScalingPlan `
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IScalingPlan
+Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.IScalingPlan
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -83,6 +82,7 @@ INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
   [MsixPackageFullName <String>]: The version specific package full name of the MSIX package within specified hostpool
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScalingPlanName <String>]: The name of the scaling plan.
+  [ScalingPlanScheduleName <String>]: The name of the ScalingPlanSchedule
   [SessionHostName <String>]: The name of the session host within the specified host pool
   [SubscriptionId <String>]: The ID of the target subscription.
   [UserSessionId <String>]: The name of the user session within the specified session host
@@ -90,28 +90,32 @@ INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
 
 SCHEDULE <IScalingSchedule[]>: List of ScalingSchedule definitions.
   [DaysOfWeek <String[]>]: Set of days of the week on which this schedule is active.
-  [Name <String>]: Name of the scaling schedule.
+  [Name <String>]: Name of the ScalingPlanPooledSchedule.
   [OffPeakLoadBalancingAlgorithm <SessionHostLoadBalancingAlgorithm?>]: Load balancing algorithm for off-peak period.
-  [OffPeakStartTime <DateTime?>]: Starting time for off-peak period.
+  [OffPeakStartTimeHour <Int32?>]: The hour.
+  [OffPeakStartTimeMinute <Int32?>]: The minute.
   [PeakLoadBalancingAlgorithm <SessionHostLoadBalancingAlgorithm?>]: Load balancing algorithm for peak period.
-  [PeakStartTime <DateTime?>]: Starting time for peak period.
+  [PeakStartTimeHour <Int32?>]: The hour.
+  [PeakStartTimeMinute <Int32?>]: The minute.
   [RampDownCapacityThresholdPct <Int32?>]: Capacity threshold for ramp down period.
   [RampDownForceLogoffUser <Boolean?>]: Should users be logged off forcefully from hosts.
   [RampDownLoadBalancingAlgorithm <SessionHostLoadBalancingAlgorithm?>]: Load balancing algorithm for ramp down period.
   [RampDownMinimumHostsPct <Int32?>]: Minimum host percentage for ramp down period.
   [RampDownNotificationMessage <String>]: Notification message for users during ramp down period.
-  [RampDownStartTime <DateTime?>]: Starting time for ramp down period.
+  [RampDownStartTimeHour <Int32?>]: The hour.
+  [RampDownStartTimeMinute <Int32?>]: The minute.
   [RampDownStopHostsWhen <StopHostsWhen?>]: Specifies when to stop hosts during ramp down period.
   [RampDownWaitTimeMinute <Int32?>]: Number of minutes to wait to stop hosts during ramp down period.
   [RampUpCapacityThresholdPct <Int32?>]: Capacity threshold for ramp up period.
   [RampUpLoadBalancingAlgorithm <SessionHostLoadBalancingAlgorithm?>]: Load balancing algorithm for ramp up period.
   [RampUpMinimumHostsPct <Int32?>]: Minimum host percentage for ramp up period.
-  [RampUpStartTime <DateTime?>]: Starting time for ramp up period.
+  [RampUpStartTimeHour <Int32?>]: The hour.
+  [RampUpStartTimeMinute <Int32?>]: The minute.
 .Link
 https://learn.microsoft.com/powershell/module/az.desktopvirtualization/update-azwvdscalingplan
 #>
 function Update-AzWvdScalingPlan {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IScalingPlan])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.IScalingPlan])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -163,29 +167,22 @@ param(
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IScalingHostPoolReference[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.IScalingHostPoolReference[]]
     # List of ScalingHostPoolReference definitions.
     # To construct, see NOTES section for HOSTPOOLREFERENCE properties and create a hash table.
     ${HostPoolReference},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.HostPoolType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.HostPoolType]
-    # HostPool type for desktop.
-    ${HostPoolType},
-
-    [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IScalingSchedule[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.IScalingSchedule[]]
     # List of ScalingSchedule definitions.
     # To construct, see NOTES section for SCHEDULE properties and create a hash table.
     ${Schedule},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IScalingPlanPatchTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.IScalingPlanPatchTags]))]
     [System.Collections.Hashtable]
     # tags to be updated
     ${Tag},
@@ -201,7 +198,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -253,7 +251,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
         }         
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {
