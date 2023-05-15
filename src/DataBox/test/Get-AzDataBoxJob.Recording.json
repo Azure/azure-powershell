@@ -1,8 +1,8 @@
 {
-  "Get-AzDataBoxJob+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/databox-pwsh-rg-7h/providers/Microsoft.DataBox/jobs/powershellRandomm32r?api-version=2021-03-01+1": {
+  "Get-AzDataBoxJob+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/databox-pwsh-rg-7h/providers/Microsoft.DataBox/jobs/powershellRandomm32r?api-version=2022-12-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/databox-pwsh-rg-7h/providers/Microsoft.DataBox/jobs/powershellRandomm32r?api-version=2021-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/databox-pwsh-rg-7h/providers/Microsoft.DataBox/jobs/powershellRandomm32r?api-version=2022-12-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
