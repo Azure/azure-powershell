@@ -20,12 +20,10 @@ Create an in-memory object for UrlSigningAction.
 .Description
 Create an in-memory object for UrlSigningAction.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+New-AzFrontDoorCdnRuleUrlSigningActionObject -Name rule01
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.UrlSigningAction
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.UrlSigningAction
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -38,7 +36,7 @@ PARAMETERNAMEOVERRIDE <IUrlSigningParamIdentifier[]>: Defines which query string
 https://learn.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnRuleUrlSigningActionObject
 #>
 function New-AzFrontDoorCdnRuleUrlSigningActionObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.UrlSigningAction])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.UrlSigningAction])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -57,7 +55,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IUrlSigningParamIdentifier[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IUrlSigningParamIdentifier[]]
     # Defines which query string parameters in the url to be considered for expires, key id etc.
     # .
     # To construct, see NOTES section for PARAMETERNAMEOVERRIDE properties and create a hash table.
@@ -73,7 +71,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
         }         
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {

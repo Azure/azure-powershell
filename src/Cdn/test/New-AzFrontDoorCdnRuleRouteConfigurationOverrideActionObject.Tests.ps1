@@ -14,7 +14,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzFrontDoorCdnRuleRouteCo
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'New-AzFrontDoorCdnRuleRouteConfigurationOverrideActionObject' -Tag 'LiveOnly' {
+Describe 'New-AzFrontDoorCdnRuleRouteConfigurationOverrideActionObject'  {
     It '__AllParameterSets' {
         { 
             # ignore 
