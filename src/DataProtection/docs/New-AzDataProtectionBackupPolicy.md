@@ -254,7 +254,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-`POLICY <IBackupPolicy>`: Policy Request Object
+POLICY <IBackupPolicy>: Policy Request Object
   - `DatasourceType <String[]>`: Type of datasource for the backup management
   - `ObjectType <String>`: 
   - `PolicyRule <IBasePolicyRule[]>`: Policy rule dictionary that contains rules for each backuptype i.e Full/Incremental/Logs etc

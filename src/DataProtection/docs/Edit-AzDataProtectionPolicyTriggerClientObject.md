@@ -12,6 +12,12 @@ Updates Backup schedule of an existing backup policy.
 
 ## SYNTAX
 
+### RemoveBackupSchedule (Default)
+```
+Edit-AzDataProtectionPolicyTriggerClientObject -Policy <IBackupPolicy> -RemoveSchedule [<CommonParameters>]
+```
+
+### ModifyBackupSchedule
 ```
 Edit-AzDataProtectionPolicyTriggerClientObject -Policy <IBackupPolicy> -Schedule <String[]>
  [<CommonParameters>]
@@ -54,12 +60,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -RemoveSchedule
+Specifies whether to remove the backup Schedule.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: RemoveBackupSchedule
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Schedule
 Schedule to be associated to backup policy.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
+Parameter Sets: ModifyBackupSchedule
 Aliases:
 
 Required: True
@@ -87,7 +108,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-`POLICY <IBackupPolicy>`: Backup Policy object.
+POLICY <IBackupPolicy>: Backup Policy object.
   - `DatasourceType <String[]>`: Type of datasource for the backup management
   - `ObjectType <String>`: 
   - `PolicyRule <IBasePolicyRule[]>`: Policy rule dictionary that contains rules for each backuptype i.e Full/Incremental/Logs etc

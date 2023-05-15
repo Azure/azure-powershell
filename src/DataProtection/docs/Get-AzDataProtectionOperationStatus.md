@@ -1,66 +1,55 @@
 ---
 external help file:
 Module Name: Az.DataProtection
-online version: https://learn.microsoft.com/powershell/module/az.dataprotection/get-azdataprotectionbackupinstance
+online version: https://learn.microsoft.com/powershell/module/az.dataprotection/get-azdataprotectionoperationstatus
 schema: 2.0.0
 ---
 
-# Get-AzDataProtectionBackupInstance
+# Get-AzDataProtectionOperationStatus
 
 ## SYNOPSIS
-Gets a backup instance with name in a backup vault
+Gets the operation status for a resource.
 
 ## SYNTAX
 
-### List (Default)
+### Get (Default)
 ```
-Get-AzDataProtectionBackupInstance -ResourceGroupName <String> -VaultName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### Get
-```
-Get-AzDataProtectionBackupInstance -Name <String> -ResourceGroupName <String> -VaultName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzDataProtectionOperationStatus -Location <String> -OperationId <String> [-SubscriptionId <String[]>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzDataProtectionBackupInstance -InputObject <IDataProtectionIdentity> [-DefaultProfile <PSObject>]
+Get-AzDataProtectionOperationStatus -InputObject <IDataProtectionIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Gets a backup instance with name in a backup vault
+Gets the operation status for a resource.
 
 ## EXAMPLES
 
-### Example 1: Get all the backup instances protected in a specified backup vault.
+### Example 1: Get operation status for a long running operation
 ```powershell
-Get-AzDataProtectionBackupInstance -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxxxxxxxxxx" -ResourceGroupName "MyResourceGroup" -VaultName "MyVault"
+$operationResponse = Test-AzDataProtectionBackupInstanceReadiness -ResourceGroupName $resourceGroupName -VaultName $vaultName -SubscriptionId $subId -BackupInstance $backupInstanceClientObject.Property -NoWait
+$operationId = $operationResponse.Target.Split("/")[-1].Split("?")[0]
+Get-AzDataProtectionOperationStatus -OperationId $operationId -Location $vault.Location -SubscriptionId $subId
+While((Get-AzDataProtectionOperationStatus -OperationId $operationId -Location $vault.Location -SubscriptionId $subId).Status -eq "Inprogress"){
+	Start-Sleep -Seconds 10
+}
 ```
 
 ```output
-Name                                                         Type                                                  BackupInstanceName
-----                                                         ----                                                  ------------------
-sarathdisk-sarathdisk-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx   Microsoft.DataProtection/backupVaults/backupInstances sarathdisk-sarathdisk-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
-sarathdisk2-sarathdisk2-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxcc Microsoft.DataProtection/backupVaults/backupInstances sarathdisk2-sarathdisk2-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+EndTime              Name                                                                                                 StartTime            Status
+-------              ----                                                                                                 ---------            ------
+5/6/2023 11:44:42 AM N2E2NGU0YzItMzZjNC00MDUwLTlmZGYtMGNlZTFjMmI4MWRhO2U3MjRiMGExLTM3NGItNGYwYS05ZDRlLTQxZWQ5Nzg5MzhkZg== 5/6/2023 11:44:21 AM Succeeded
 ```
 
-This command gets all the backup instances in a vault.
-
-### Example 2: Get a backup instance by name.
-```powershell
-Get-AzDataProtectionBackupInstance -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxxxxxxxxxx" -ResourceGroupName "MyResourceGroup" -VaultName "MyVault" -Name "BackupInstanceName"
-```
-
-```output
-Name                                                       Type                                                  BackupInstanceName
-----                                                       ----                                                  ------------------
-sarathdisk-sarathdisk-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx Microsoft.DataProtection/backupVaults/backupInstances sarathdisk-sarathdisk-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
-```
-
-This command gets a specific backup instance protected in a backup vault.
+First command fetches the operation response for a long running operation, using the the parameter -NoWait.
+This is to run the operation in async mode.
+Second command splits the operationResponse to get the operationId.
+Third command fetches the operation status in async way.
+Fourth command fetches the operation status in a loop until it succeeds, while waiting 10 seconds before each iteration.
 
 ## PARAMETERS
 
@@ -95,13 +84,13 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Name
-The name of the backup instance.
+### -Location
+Azure region where the operation is triggered.
 
 ```yaml
 Type: System.String
 Parameter Sets: Get
-Aliases: BackupInstanceName
+Aliases:
 
 Required: True
 Position: Named
@@ -110,13 +99,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
-The name of the resource group.
-The name is case insensitive.
+### -OperationId
+Operation Id to track the operation status.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: Get
 Aliases:
 
 Required: True
@@ -132,27 +120,12 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List
+Parameter Sets: Get
 Aliases:
 
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -VaultName
-The name of the backup vault.
-
-```yaml
-Type: System.String
-Parameter Sets: Get, List
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -166,7 +139,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202301.IBackupInstanceResource
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202301.IOperationResource
 
 ## NOTES
 

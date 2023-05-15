@@ -8,31 +8,63 @@
   "resourceType": "Microsoft.Storage/storageAccounts",
   "parentResourceType": "Microsoft.Storage/storageAccounts",
   "datasourceType": "Microsoft.Storage/storageAccounts/blobServices",
-  "allowedRestoreModes": [ "PointInTimeBased" ],
-  "allowedRestoreTargetTypes": [ "OriginalLocation" ],
+  "allowedRestoreModes": [ "PointInTimeBased", "RecoveryPointBased" ],
+  "allowedRestoreTargetTypes": [ "OriginalLocation", "AlternateLocation" ],
   "itemLevelRecoveyEnabled": true,
-  "addBackupDatasourceParametersList": false,
+  "addBackupDatasourceParametersList": true,
+  "backupConfigurationRequired": false,
   "addDataStoreParametersList": false,
   "friendlyNameRequired": false,
   "supportSecretStoreAuthentication": false,
   "policySettings": {
-    "supportedRetentionTags": [],
-    "supportedDatastoreTypes": [ "OperationalStore" ],
-    "disableAddRetentionRule": true,
-    "disableCustomRetentionTag": true,
-    "backupScheduleSupported": false,
-    "supportedBackupFrequency": [],
+    "supportedRetentionTags": [ "Weekly", "Monthly", "Yearly" ],
+    "supportedDatastoreTypes": [ "OperationalStore", "VaultStore" ],
+    "disableAddRetentionRule": false,
+    "disableCustomRetentionTag": false,
+    "backupScheduleSupported": true,
+    "supportedBackupFrequency": [ "Daily", "Weekly" ],
     "defaultPolicy": {
       "policyRules": [
+        {
+          "backupParameters": {
+            "backupType": "Discrete",
+            "objectType": "AzureBackupParams"
+          },
+          "trigger": {
+            "schedule": {
+              "repeatingTimeIntervals": [
+                "R/2023-03-26T13:00:00+00:00/P1W"
+              ],
+              "timeZone": "UTC"
+            },
+            "taggingCriteria": [
+              {
+                "tagInfo": {
+                  "tagName": "Default",
+                  "id": "Default_"
+                },
+                "taggingPriority": 99,
+                "isDefault": true
+              }
+            ],
+            "objectType": "ScheduleBasedTriggerContext"
+          },
+          "dataStore": {
+            "dataStoreType": "VaultStore",
+            "objectType": "DataStoreInfoBase"
+          },
+          "name": "BackupWeekly",
+          "objectType": "AzureBackupRule"
+        },
         {
           "lifecycles": [
             {
               "deleteAfter": {
                 "objectType": "AbsoluteDeleteOption",
-                "duration": "P30D"
+                "duration": "P7D"
               },
               "sourceDataStore": {
-                "dataStoreType": "OperationalStore",
+                "dataStoreType": "VaultStore",
                 "objectType": "DataStoreInfoBase"
               }
             }

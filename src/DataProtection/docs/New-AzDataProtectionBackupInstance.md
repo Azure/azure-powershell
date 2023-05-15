@@ -263,7 +263,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-`BACKUPINSTANCE <IBackupInstanceResource>`: Backup instance request object which will be used to configure backup
+BACKUPINSTANCE <IBackupInstanceResource>: Backup instance request object which will be used to configure backup
   - `[Tag <IDppProxyResourceTags>]`: Proxy Resource tags.
     - `[(Any) <String>]`: This indicates any property can be added to this object.
   - `[Property <IBackupInstance>]`: BackupInstanceResource properties
