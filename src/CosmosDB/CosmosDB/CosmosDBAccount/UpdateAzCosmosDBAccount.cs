@@ -106,6 +106,10 @@ namespace Microsoft.Azure.Commands.CosmosDB
             {
                 databaseAccountUpdateParameters.EnableMaterializedViews = EnableMaterializedViews;
             }
+            if (EnablePartitionMerge != null)
+            {
+                databaseAccountUpdateParameters.EnablePartitionMerge = EnablePartitionMerge;
+            }
             if (NetworkAclBypass != null)
             {
                 databaseAccountUpdateParameters.NetworkAclBypass =

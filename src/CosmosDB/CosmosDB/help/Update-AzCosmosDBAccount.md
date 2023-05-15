@@ -338,6 +338,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EnablePartitionMerge
+Enable Partition Merge on Account
+Accepted values: false, true
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -EnableMultipleWriteLocations
 Enable Multiple Write Locations.
 Accepted values: false, true

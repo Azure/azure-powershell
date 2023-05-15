@@ -24,6 +24,7 @@
 * Locations show response now includes status, isSubscriptionRegionAccessAllowedForRegular and isSubscriptionRegionAccessAllowedForAz properties
 * Added new paramater `MinimalTlsVersion` to `Update-AzCosmosDBAccount` and `New-AzCosmosDBAccount`.
 * Added new property `CustomerManagedKeyStatus` to `Get-AzCosmosDBAccount`.
+* Added new parameter `EnablePartitionMerge` to `Update-AzCosmosDBAccount` and `New-AzCosmosDBAccount`.
 
 ## Version 2.0.5
 * Added PublicNetworkAccess parameter to `Restore-AzCosmosDBAccount`.
