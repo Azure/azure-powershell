@@ -43,29 +43,18 @@ New-AzVirtualWan -ResourceGroupName "testRg" -Name "testWan" -Location "westcent
 $virtualWan = Get-AzVirtualWan -ResourceGroupName "testRg" -Name "testWan"
 New-AzVirtualHub -ResourceGroupName "testRg" -Name "testHub" -Location "westcentralus" -AddressPrefix "10.0.0.0/16" -VirtualWan $virtualWan
 $virtualHub = Get-AzVirtualHub -ResourceGroupName "testRg" -Name "testHub"
-$hubRouteTableId = "/subscriptions/testSub/resourceGroups/testRg/providers/Microsoft.Network/virtualHubs/testHub/hubRouteTables/defaultRouteTable"
-Get-AzVHubRouteTable -VirtualHub $virtualHub -ResourceId $hubRouteTableId -VirtualWanResourceType "RouteTable"
+$hubVnetConnectionId = "/subscriptions/testSub/resourceGroups/testRg/providers/Microsoft.Network/virtualHubs/testHub/hubVirtualNetworkConnections/testCon"
+Get-AzVHubInboundRoutes -VirtualHub $virtualHub -ResourceUri $hubVnetConnectionId -VirtualWanConnectionType "HubVirtualNetworkConnection"
 ``` 
 
 ```output
-Name                   : testRouteTable
-Id                     : /subscriptions/testSub/resourceGroups/testRg/providers/Microsoft.Network/virtualHubs/testHub/hubRouteTables/testRouteTable
-ProvisioningState      : Succeeded
-Labels                 : {testLabel}
-Routes                 : [
-                           {
-                             "Name": "private-traffic",
-                             "DestinationType": "CIDR",
-                             "Destinations": [
-                               "10.30.0.0/16",
-                               "10.40.0.0/16"
-                             ],
-                             "NextHopType": "ResourceId",
-                             "NextHop": "/subscriptions/testSub/resourceGroups/testRg/providers/Microsoft.Network/azureFirewalls/testFirewall"
-                           }
-                         ]
-AssociatedConnections  : []
-PropagatingConnections : []
+Value : [
+          {
+            "Prefix": "10.2.0.0/16",
+            "BgpCommunities": "4293853166",
+            "AsPath": ""
+          }
+        ]
 ```
 
 This command gets the inbound routes of the virtual hub spoke vnet connection.
@@ -87,8 +76,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceId
-The resource id of a virtual wan resource.
+### -ResourceUri
+The resource uri of a virtual wan connection resource.
 
 ```yaml
 Type: System.String
@@ -158,8 +147,8 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -VirtualWanResourceType
-The virtual wan resource type.
+### -VirtualWanConnectionType
+The virtual wan connection type.
 
 ```yaml
 Type: System.String
@@ -180,7 +169,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Network.Models.PSVirtualHubEffectiveRouteList
+### Microsoft.Azure.Commands.Network.Models.PSVirtualHubEffectiveRouteMapRouteList
 
 ## NOTES
 
