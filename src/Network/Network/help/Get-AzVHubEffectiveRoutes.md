@@ -21,7 +21,7 @@ Get-AzVHubEffectiveRoutes -ResourceGroupName <String> -VirtualHubName <String> -
 
 ### ByVirtualHubObject
 ```
-Get-AzVHubEffectiveRoutes -VirtualHub <PSVirtualHub> -ResourceId <String> -VirtualWanResourceType <String> [-DefaultProfile <IAzureContextContainer>]
+Get-AzVHubEffectiveRoutes -VirtualHubObject <PSVirtualHub> -ResourceId <String> -VirtualWanResourceType <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -44,7 +44,7 @@ $virtualWan = Get-AzVirtualWan -ResourceGroupName "testRg" -Name "testWan"
 New-AzVirtualHub -ResourceGroupName "testRg" -Name "testHub" -Location "westcentralus" -AddressPrefix "10.0.0.0/16" -VirtualWan $virtualWan
 $virtualHub = Get-AzVirtualHub -ResourceGroupName "testRg" -Name "testHub"
 $hubRouteTableId = "/subscriptions/testSub/resourceGroups/testRg/providers/Microsoft.Network/virtualHubs/testHub/hubRouteTables/defaultRouteTable"
-Get-AzVHubEffectiveRoutes -VirtualHub $virtualHub -ResourceId $hubRouteTableId -VirtualWanResourceType "RouteTable"
+Get-AzVHubEffectiveRoutes -VirtualHubObject $virtualHub -ResourceId $hubRouteTableId -VirtualWanResourceType "RouteTable"
 ``` 
 
 ```output
@@ -109,7 +109,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -VirtualHub
+### -VirtualHubObject
 The parent resource.
 
 ```yaml
