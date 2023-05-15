@@ -102,10 +102,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         process.Start();
                         process.WaitForExit();
                     }
-                    using (StreamWriter writer = new StreamWriter(publicKeyFilePath))
-                    {
-                        writer.WriteLine(keypair.PublicKey);
-                    }
 
                     WriteWarning("Private key is saved to " + privateKeyFilePath);
                     
@@ -121,22 +117,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 WriteObject(psObject);
             });
         }
-
-        [DllImport("libc", SetLastError = true)]
-        static extern int chmod(string path, int mode);
-
-        static int NativeChmod(string path, int mode)
-        {
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
-            {
-                // On macOS, use the BSD-style chmod
-                return chmod(path, (CommonObjectSecurity.Unix.Native.FilePermissions)mode);
-            }
-            else
-            {
-                // On Linux, use the GNU-style chmod
-                return chmod(path, mode);
-            }
-        }
+        
     }
 }
