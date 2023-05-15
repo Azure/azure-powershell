@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.dll-Help.xml
+external help file: Az.ServiceBus-help.xml
 Module Name: Az.ServiceBus
 online version: https://learn.microsoft.com/powershell/module/az.servicebus/set-azservicebusnamespace
 schema: 2.0.0
@@ -8,141 +8,292 @@ schema: 2.0.0
 # Set-AzServiceBusNamespace
 
 ## SYNOPSIS
-Updates the description of an existing Service Bus namespace.
+Updates a ServiceBus namespace
 
 ## SYNTAX
 
+### SetExpanded (Default)
 ```
-Set-AzServiceBusNamespace [-ResourceGroupName] <String> [[-Location] <String>] [-Name] <String>
- [-SkuName <String>] [-SkuCapacity <Int32>] [-Tag <Hashtable>] [-DisableLocalAuth] [-IdentityType <String>]
- [-IdentityId <String[]>] [-EncryptionConfig <PSEncryptionConfigAttributes[]>] [-MinimumTlsVersion <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzServiceBusNamespace -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-AlternateName <String>] [-DisableLocalAuth] [-KeyVaultProperty <IKeyVaultProperties[]>]
+ [-RequireInfrastructureEncryption] [-IdentityType <ManagedServiceIdentityType>]
+ [-UserAssignedIdentityId <String[]>] [-MinimumTlsVersion <String>]
+ [-PublicNetworkAccess <PublicNetworkAccess>] [-SkuName <SkuName>] [-SkuCapacity <Int32>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### SetViaIdentityExpanded
+```
+Set-AzServiceBusNamespace [-InputObject <IServiceBusIdentity>] [-AlternateName <String>] [-DisableLocalAuth]
+ [-KeyVaultProperty <IKeyVaultProperties[]>] [-RequireInfrastructureEncryption]
+ [-IdentityType <ManagedServiceIdentityType>] [-UserAssignedIdentityId <String[]>]
+ [-MinimumTlsVersion <String>] [-PublicNetworkAccess <PublicNetworkAccess>] [-SkuName <SkuName>]
+ [-SkuCapacity <Int32>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzServiceBusNamespace** cmdlet updates the description of the specified Service Bus namespace within the resource group.
+Updates a ServiceBus namespace
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Add a KeyVaultProperty to an existing ServiceBus Namespace
 ```powershell
-Set-AzServiceBusNamespace -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -Location WestUs -SkuName Premium -SkuCapacity 1 -Tag @{Tag2="Tag2Value"} -MinimumTlsVersion 1.1
+$serviceBusNamespace = Get-AzServiceBusNamespace -ResourceGroupName myResourceGroup -NamespaceName myNamespace
+$newKeyVaultProperty = New-AzServiceBusKeyVaultPropertiesObject -KeyName key6 -KeyVaultUri https://testkeyvault.vault.azure.net -UserAssignedIdentity "/subscriptions/000000000000/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myFirstIdentity"
+$serviceBusNamespace.KeyVaultProperty += $newKeyVaultProperty
+Set-AzServiceBusNamespace -InputObject $serviceBusNamespace -KeyVaultProperty $serviceBusNamespace.KeyVaultProperty
 ```
 
 ```output
-Name               : SB-Example1
-Id                 : /subscriptions/{subscription id}/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.ServiceBus/namespaces/SB-Example1
-ResourceGroupName  : Default-ServiceBus-WestUS
-Location           : West US
-Tags               : {Tag2, Tag2Value}
-Sku                : Name : Premium , Tier : Premium, Capacity : 1
-ProvisioningState  : Succeeded
-CreatedAt          :
-UpdatedAt          :
-ServiceBusEndpoint :
-MinimumTlsVersion  : 1.1
+AlternateName                   :
+CreatedAt                       : 11/17/2022 5:51:52 AM
+DisableLocalAuth                : False
+Id                              : /subscriptions/000000000000/resourceGroups/myResourceGroup/providers/Microsoft.ServiceBus/namespaces/myNamespace
+IdentityType                    :
+KeySource                       :
+KeyVaultProperty                : {{
+                                    "identity": {
+                                      "userAssignedIdentity": "/subscriptions/000000000000/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/use
+                                  rAssignedIdentities/myFirstIdentity"
+                                    },
+                                    "keyName": "key4",
+                                    "keyVaultUri": "https://testkeyvault.vault.azure.net",
+                                    "keyVersion": ""
+                                  }, {
+                                    "identity": {
+                                      "userAssignedIdentity": "/subscriptions/000000000000/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/use
+                                  rAssignedIdentities/myFirstIdentity"
+                                    },
+                                    "keyName": "key5",
+                                    "keyVaultUri": "https://testkeyvault.vault.azure.net",
+                                    "keyVersion": ""
+                                  }, {
+                                    "identity": {
+                                      "userAssignedIdentity": "/subscriptions/000000000000/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/use
+                                  rAssignedIdentities/myFirstIdentity"
+                                    },
+                                    "keyName": "key6",
+                                    "keyVaultUri": "https://testkeyvault.vault.azure.net",
+                                    "keyVersion": ""
+                                  }}
+Location                        : North Europe
+MetricId                        : 000000000000:myNamespace
+MinimumTlsVersion               : 1.1
+Name                            : myNamespace
+PrincipalId                     :
+PrivateEndpointConnection       :
+ProvisioningState               : Succeeded
+PublicNetworkAccess             : Enabled
+RequireInfrastructureEncryption :
+ResourceGroupName               : myResourceGroup
+ServiceBusEndpoint              : https://myNamespace.servicebus.windows.net:443/
+SkuCapacity                     : 16
+SkuName                         : Premium
+SkuTier                         : Premium
+Status                          : Active
+SystemDataCreatedAt             :
+SystemDataCreatedBy             :
+SystemDataCreatedByType         :
+SystemDataLastModifiedAt        :
+SystemDataLastModifiedBy        :
+SystemDataLastModifiedByType    :
+Tag                             : {
+                                  }
+TenantId                        :
+Type                            : Microsoft.ServiceBus/Namespaces
+UpdatedAt                       : 11/21/2022 5:01:22 AM
+UserAssignedIdentity            : {
+                                  }
+ZoneRedundant                   : False
 ```
 
-Updates the Service Bus namespace with a new description.
+Adds a new KeyVaultProperty to ServiceBus namespace `myNamespace`.
 
-### Example 2
+### Example 2: Remove a KeyVaultProperty from an existing ServiceBus Namespace
 ```powershell
-Set-AzServiceBusNamespace -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -Location WestUs -SkuName Premium -SkuCapacity 1 -Tag @{Tag2="Tag2Value"} -DisableLocalAuth
+$serviceBusNamespace = Get-AzServiceBusNamespace -ResourceGroupName myResourceGroup -NamespaceName myNamespace
+$serviceBusNamespace.KeyVaultProperty = $serviceBusNamespace.KeyVaultProperty[0,2]
+Set-AzServiceBusNamespace -InputObject $serviceBusNamespace -KeyVaultProperty $serviceBusNamespace.KeyVaultProperty
 ```
 
 ```output
-Name               : SB-Example1
-Id                 : /subscriptions/{subscription id}/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.ServiceBus/namespaces/SB-Example1
-ResourceGroupName  : Default-ServiceBus-WestUS
-Location           : West US
-Tags               : {Tag2, Tag2Value}
-Sku                : Name : Premium , Tier : Premium, Capacity : 1
-ProvisioningState  : Succeeded
-CreatedAt          :
-UpdatedAt          :
-ServiceBusEndpoint :
+AlternateName                   :
+CreatedAt                       : 11/21/2022 5:15:41 AM
+DisableLocalAuth                : False
+Id                              : /subscriptions/000000000000/resourceGroups/myResourceGroup/providers/Microsoft.ServiceBus/namespaces/myNamespace
+IdentityType                    : UserAssigned
+KeySource                       : Microsoft.KeyVault
+KeyVaultProperty                : {{
+                                    "identity": {
+                                      "userAssignedIdentity": "/subscriptions/000000000000/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/
+                                      userAssignedIdentities/myFirstIdentity"
+                                    },
+                                    "keyName": "key4",
+                                    "keyVaultUri": "https://testkeyvault.vault.azure.net",
+                                    "keyVersion": ""
+                                  }, {
+                                    "identity": {
+                                      "userAssignedIdentity": "/subscriptions/000000000000/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/
+                                      userAssignedIdentities/myFirstIdentity"
+                                    },
+                                    "keyName": "key6",
+                                    "keyVaultUri": "https://testkeyvault.vault.azure.net",
+                                    "keyVersion": ""
+                                  }}
+Location                        : North Europe
+MetricId                        : 000000000000:myNamespace
+MinimumTlsVersion               : 1.2
+Name                            : myNamespace
+PrincipalId                     :
+PrivateEndpointConnection       :
+ProvisioningState               : Succeeded
+PublicNetworkAccess             : Enabled
+RequireInfrastructureEncryption : False
+ResourceGroupName               : myResourceGroup
+ServiceBusEndpoint              : https://myNamespace.servicebus.windows.net:443/
+SkuCapacity                     : 1
+SkuName                         : Premium
+SkuTier                         : Premium
+Status                          : Active
+SystemDataCreatedAt             :
+SystemDataCreatedBy             :
+SystemDataCreatedByType         :
+SystemDataLastModifiedAt        :
+SystemDataLastModifiedBy        :
+SystemDataLastModifiedByType    :
+Tag                             : {
+                                  }
+TenantId                        :
+Type                            : Microsoft.ServiceBus/Namespaces
+UpdatedAt                       : 11/21/2022 8:52:02 AM
+UserAssignedIdentity            : {
+                                    "/subscriptions/000000000000/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/
+                                    userAssignedIdentities/myFirstIdentity": {
+                                    },
+                                    "/subscriptions/000000000000/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/
+                                    userAssignedIdentities/mySecondIdentity": {
+                                    }
+                                  }
+ZoneRedundant                   : False
 ```
 
-Updates the Service Bus namespace with a new description.
+Remove the second KeyVaultProperty from the list of KeyVaultProperties.
 
-### Example 3
+### Example 3: Add UserAssigned Identity to Namespace with IdentityType SystemAssigned to test for SystemAssigned and UserAssigned
 ```powershell
-Set-AzServiceBusNamespace -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -IdentityType SystemAssigned
+$serviceBusNamespace = Get-AzServiceBusNamespace -ResourceGroupName myResourceGroup -NamespaceName myNamespace
+$id1 = "/subscriptions/000000000000/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myFirstIdentity"
+$id2 = "/subscriptions/000000000000/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/mySecondIdentity"
+Set-AzServiceBusNamespace -InputObject $serviceBusNamespace -IdentityType "SystemAssigned, UserAssigned" -UserAssignedIdentityId $id1, $id2
 ```
 
 ```output
-Name               : SB-Example1
-Id                 : /subscriptions/{subscription id}/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.ServiceBus/namespaces/SB-Example1
-ResourceGroupName  : Default-ServiceBus-WestUS
-Location           : West US
-Tags               : {Tag2, Tag2Value}
-Sku                : Name : Premium , Tier : Premium, Capacity : 1
-ProvisioningState  : Succeeded
-CreatedAt          :
-UpdatedAt          :
-ServiceBusEndpoint :
-ZoneRedundant      : False
-DisableLocalAuth   : False
-Identity           : PrinicipalId : 000000000, TenantId: 00000000
-IdentityType       : SystemAssigned
-IdentityId         :
-EncryptionConfigs  :
+AlternateName                   :
+CreatedAt                       : 11/17/2022 3:54:50 AM
+DisableLocalAuth                : False
+Id                              : /subscriptions/000000000000/resourceGroups/myResourceGroup/providers/Microsoft.ServiceBus/namespaces/myNamespace
+IdentityType                    : SystemAssigned, UserAssigned
+KeySource                       :
+KeyVaultProperty                :
+Location                        : North Europe
+MetricId                        : 000000000000:myNamespace
+MinimumTlsVersion               : 1.2
+Name                            : myNamespace
+PrincipalId                     : 000000000000000
+PrivateEndpointConnection       :
+ProvisioningState               : Succeeded
+PublicNetworkAccess             : Enabled
+RequireInfrastructureEncryption :
+ResourceGroupName               : myResourceGroup
+ServiceBusEndpoint              : https://myNamespace.servicebus.windows.net:443/
+SkuCapacity                     :
+SkuName                         : Standard
+SkuTier                         : Standard
+Status                          : Active
+SystemDataCreatedAt             :
+SystemDataCreatedBy             :
+SystemDataCreatedByType         :
+SystemDataLastModifiedAt        :
+SystemDataLastModifiedBy        :
+SystemDataLastModifiedByType    :
+Tag                             : {
+                                  }
+TenantId                        : 0000000000000000
+Type                            : Microsoft.ServiceBus/Namespaces
+UpdatedAt                       : 11/21/2022 9:15:53 AM
+UserAssignedIdentity            : {
+                                    "/subscriptions/000000000000/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/
+                                    userAssignedIdentities/mySecondIdentity": {
+                                    },
+                                    "/subscriptions/000000000000/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/
+                                    userAssignedIdentities/myFirstIdentity": {
+                                    }
+                                  }
+ZoneRedundant                   : False
 ```
 
-Updates the Service Bus namespace to enable system assigned identity.
+Added UserAssigned Identity to Namespace with IdentityType SystemAssigned to test for SystemAssigned and UserAssigned.
 
-### Example 4
+### Example 4: # Create a namespace with UserAssignedIdentity and use Set-Az cmdlet to set IdentityType to None.
 ```powershell
-$config1 = New-AzServiceBusEncryptionConfig -KeyName key1 -KeyVaultUri https://myvaultname.vault.azure.net -UserAssignedIdentity '/subscriptions/{subscriptionId}/resourceGroups/{resourcegroup}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/MSIName'
-
-$config2 = New-AzServiceBusEncryptionConfig -KeyName key2 -KeyVaultUri https://myvaultname.vault.azure.net -UserAssignedIdentity '/subscriptions/{subscriptionId}/resourceGroups/{resourcegroup}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/MSIName'
-
-$id1 = '/subscriptions/{subscriptionId}/resourceGroups/{resourcegroup}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/MSIName'
-
-$id2 = '/subscriptions/{subscriptionId}/resourceGroups/{resourcegroup}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/MSIName2'
-
-Set-AzServiceBusNamespace -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -Location WestUs -IdentityType UserAssigned -IdentityId $id1,$id2 -EncryptionConfig $config1,$config2
+$id1 = "/subscriptions/000000000000/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myFirstIdentity" 
+$id2 = "/subscriptions/000000000000/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/mySecondIdentity"
+$serviceBusNamespace = New-AzServiceBusNamespace -ResourceGroupName myResourceGroup -Name myNamespace -SkuName Premium -Location northeurope -IdentityType UserAssigned -UserAssignedIdentityId $id1,$id2
+$serviceBusNamespace = Set-AzServiceBusNamespace -ResourceGroupName myResourceGroup -Name myNamespace -IdentityType None -UserAssignedIdentityId @()
 ```
 
 ```output
-Name               : SB-Example1
-Id                 : /subscriptions/{subscription id}/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.ServiceBus/namespaces/SB-Example1
-ResourceGroupName  : Default-ServiceBus-WestUS
-Location           : West US
-Tags               : {Tag2, Tag2Value}
-Sku                : Name : Premium , Tier : Premium, Capacity : 1
-ProvisioningState  : Succeeded
-CreatedAt          :
-UpdatedAt          :
-ServiceBusEndpoint :
-Identity           : PrinicipalId : , TenantId:
-IdentityType       : UserAssigned
-IdentityId         : /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/MSIName,
-                     /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/MSIName2
-EncryptionConfigs  : {{ KeyName: key1,
-                     KeyVaultUri: https://myvaultname.vault.azure.net,
-                     KeyVersion: ,
-                     UserAssignedIdentity: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/MSIName
-                     },
-                     {
-                     KeyName: key2,
-                     KeyVaultUri: https://myvaultname.vault.azure.net,
-                     KeyVersion: ,
-                     UserAssignedIdentity: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/MSIName2
-                     }}
+AlternateName                   :
+CreatedAt                       : 11/17/2022 3:54:50 AM
+DisableLocalAuth                : False
+Id                              : /subscriptions/000000000000/resourceGroups/myResourceGroup/providers/M
+                                  icrosoft.ServiceBus/namespaces/myNamespace
+IdentityType                    :
+KeySource                       :
+KeyVaultProperty                :
+Location                        : North Europe
+MetricId                        : 000000000000:myNamespace
+MinimumTlsVersion               : 1.2
+Name                            : myNamespace
+PrincipalId                     :
+PrivateEndpointConnection       :
+ProvisioningState               : Succeeded
+PublicNetworkAccess             : Enabled
+RequireInfrastructureEncryption :
+ResourceGroupName               : myResourceGroup
+ServiceBusEndpoint              : https://myNamespace.servicebus.windows.net:443/
+SkuCapacity                     :
+SkuName                         : Standard
+SkuTier                         : Standard
+Status                          : Active
+SystemDataCreatedAt             :
+SystemDataCreatedBy             :
+SystemDataCreatedByType         :
+SystemDataLastModifiedAt        :
+SystemDataLastModifiedBy        :
+SystemDataLastModifiedByType    :
+Tag                             : {
+                                  }
+TenantId                        :
+Type                            : Microsoft.ServiceBus/Namespaces
+UpdatedAt                       : 11/21/2022 9:42:32 AM
+UserAssignedIdentity            : {
+                                  }
+ZoneRedundant                   : False
 ```
 
-Updates the Service Bus namespace to enable User Assigned Identity encryption.
+Created a namespace with UserAssignedIdentity and use Set-Az cmdlet to set IdentityType to None.
 
 ## PARAMETERS
 
-### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+### -AlternateName
+Alternate name for namespace
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.String
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases:
 
 Required: False
 Position: Named
@@ -151,8 +302,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DisableLocalAuth
-enabling or disabling SAS authentication for the Service Bus namespace
+### -AsJob
+Run the command as a job
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -162,151 +313,227 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -EncryptionConfig
-Key Property
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.ServiceBus.Models.PSEncryptionConfigAttributes[]
+Type: System.Management.Automation.PSObject
+Parameter Sets: (All)
+Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DisableLocalAuth
+This property disables SAS authentication for the Service Bus namespace.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -IdentityId
-List of user assigned Identity Ids
-
-```yaml
-Type: System.String[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -IdentityType
-Identity Type
+Type of managed service identity.
 
 ```yaml
-Type: System.String
+Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.ManagedServiceIdentityType
 Parameter Sets: (All)
 Aliases:
-Accepted values: SystemAssigned, UserAssigned, SystemAssigned, UserAssigned, None
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Location
-ServiceBus Namespace Location
+### -InputObject
+Identity parameter.
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: System.String
+Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentity
+Parameter Sets: SetViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -KeyVaultProperty
+Properties of KeyVault
+To construct, see NOTES section for KEYVAULTPROPERTY properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.IKeyVaultProperties[]
 Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 1
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -MinimumTlsVersion
-The minimum TLS version for the namespace to support, e.g.
+The minimum TLS version for the cluster to support, e.g.
 '1.2'
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: 1.0, 1.1, 1.2
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -Name
-ServiceBus Namespace Name
+The name of ServiceBusNamespace
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
-Aliases: NamespaceName
+Parameter Sets: SetExpanded
+Aliases:
 
 Required: True
-Position: 2
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PublicNetworkAccess
+This determines if traffic is allowed over public network.
+By default it is enabled.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.PublicNetworkAccess
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RequireInfrastructureEncryption
+Enable Infrastructure Encryption (Double Encryption)
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Resource Group Name
+The name of the ResourceGroupName.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
-Aliases: ResourceGroup
+Parameter Sets: SetExpanded
+Aliases:
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -SkuCapacity
-Namespace Sku Capacity.
+The specified messaging units for the tier.
+For Premium tier, capacity are 1,2 and 4.
 
 ```yaml
-Type: System.Nullable`1[System.Int32]
+Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -SkuName
-Namespace Sku Name
+Name of this SKU.
 
 ```yaml
-Type: System.String
+Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.SkuName
 Parameter Sets: (All)
 Aliases:
-Accepted values: Basic, Standard, Premium
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+The ID of the target subscription.
+
+```yaml
+Type: System.String
+Parameter Sets: SetExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -Tag
-Hashtables which represents resource Tags
+Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
@@ -316,7 +543,22 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UserAssignedIdentityId
+Properties for User Assigned Identities
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -356,22 +598,39 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
-
-### System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
-
-### System.Collections.Hashtable
-
-### System.Management.Automation.SwitchParameter
-
-### System.String[]
-
-### Microsoft.Azure.Commands.ServiceBus.Models.PSEncryptionConfigAttributes[]
-
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.ServiceBus.Models.PSNamespaceAttributes
+### Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.ISbNamespace
 
 ## NOTES
+
+ALIASES
+
+Set-AzServiceBusNamespaceV2
+
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+
+`INPUTOBJECT <IServiceBusIdentity>`: Identity parameter.
+  - `[Alias <String>]`: The Disaster Recovery configuration name
+  - `[AuthorizationRuleName <String>]`: The authorization rule name.
+  - `[ConfigName <MigrationConfigurationName?>]`: The configuration name. Should always be "$default".
+  - `[Id <String>]`: Resource identity path
+  - `[NamespaceName <String>]`: The namespace name
+  - `[PrivateEndpointConnectionName <String>]`: The PrivateEndpointConnection name
+  - `[QueueName <String>]`: The queue name.
+  - `[ResourceGroupName <String>]`: Name of the Resource group within the Azure subscription.
+  - `[RuleName <String>]`: The rule name.
+  - `[SubscriptionId <String>]`: Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  - `[SubscriptionName <String>]`: The subscription name.
+  - `[TopicName <String>]`: The topic name.
+
+`KEYVAULTPROPERTY <IKeyVaultProperties[]>`: Properties of KeyVault
+  - `[KeyName <String>]`: Name of the Key from KeyVault
+  - `[KeyVaultUri <String>]`: Uri of KeyVault
+  - `[KeyVersion <String>]`: Version of KeyVault
+  - `[UserAssignedIdentity <String>]`: ARM ID of user Identity selected for encryption
 
 ## RELATED LINKS
