@@ -75,17 +75,11 @@ param(
     [Parameter(Position=5)]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Body')]
     [System.String]
-    # GraphAccessToken is deprecated.
-    ${GraphAccessToken},
-
-    [Parameter(Position=6)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Body')]
-    [System.String]
     # Specifies the AccoundId.
     # Specifying this along with ArmAccessToken will avoid Azure interactive logon.
     ${AccountId},
 
-    [Parameter(Position=7)]
+    [Parameter(Position=6)]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Body')]
     [System.String]
     # Specifies the Azure Environment.
@@ -93,13 +87,13 @@ param(
     # Valid values are AzureCloud, AzureChinaCloud, AzurePPE, AzureCanary, AzureUSGovernment
     ${EnvironmentName},
 
-    [Parameter(Position=8)]
+    [Parameter(Position=7)]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Body')]
     [System.String]
     # Specifies the Region the resource is created in Azure.
     ${Region},
 
-    [Parameter(Position=9)]
+    [Parameter(Position=8)]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Body')]
     [System.String]
     # Specifies one of the cluster node in on-premise cluster that is being registered to Azure.
@@ -117,7 +111,7 @@ param(
     # Specifying this parameter to $true will only unregister the cluster nodes with Arc for servers and Azure Stack HCI registration will not be altered.
     ${DisableOnlyAzureArcServer},
 
-    [Parameter(Position=10)]
+    [Parameter(Position=9)]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Body')]
     [System.Management.Automation.PSCredential]
     # Specifies the credential for the ComputerName.
