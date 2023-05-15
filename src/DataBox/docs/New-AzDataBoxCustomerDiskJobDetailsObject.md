@@ -1,45 +1,43 @@
 ---
 external help file:
 Module Name: Az.DataBox
-online version: https://learn.microsoft.com/powershell/module/Az.DataBox/new-AzDataBoxDiskJobDetailsObject
+online version: https://learn.microsoft.com/powershell/module/Az.DataBox/new-AzDataBoxCustomerDiskJobDetailsObject
 schema: 2.0.0
 ---
 
-# New-AzDataBoxDiskJobDetailsObject
+# New-AzDataBoxCustomerDiskJobDetailsObject
 
 ## SYNOPSIS
-Create an in-memory object for DataBoxDiskJobDetails.
+Create an in-memory object for DataBoxCustomerDiskJobDetails.
 
 ## SYNTAX
 
 ```
-New-AzDataBoxDiskJobDetailsObject -ContactDetail <IContactDetails> -Type <ClassDiscriminator>
+New-AzDataBoxCustomerDiskJobDetailsObject -ContactDetail <IContactDetails> -Type <ClassDiscriminator>
  [-DataExportDetail <IDataExportDetails[]>] [-DataImportDetail <IDataImportDetails[]>]
- [-ExpectedDataSizeInTeraByte <Int32>] [-KeyEncryptionKey <IKeyEncryptionKey>] [-Passkey <String>]
- [-Preference <IPreferences>] [-PreferredDisk <IDataBoxDiskJobDetailsPreferredDisks>]
+ [-ExpectedDataSizeInTeraByte <Int32>]
+ [-ExportDiskDetailsCollection <IDataBoxCustomerDiskJobDetailsExportDiskDetailsCollection>]
+ [-ImportDiskDetailsCollection <IDataBoxCustomerDiskJobDetailsImportDiskDetailsCollection>]
+ [-KeyEncryptionKey <IKeyEncryptionKey>] [-Preference <IPreferences>]
+ [-ReturnToCustomerPackageDetailCarrierAccountNumber <String>]
  [-ReverseShippingDetail <IReverseShippingDetails>] [-ShippingAddress <IShippingAddress>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create an in-memory object for DataBoxDiskJobDetails.
+Create an in-memory object for DataBoxCustomerDiskJobDetails.
 
 ## EXAMPLES
 
-### Example 1: DataBoxDisk details in-memory object 
+### Example 1: DataBoxCustomerDisk details in-memory object
 ```powershell
-$contactDetail = New-AzDataBoxContactDetailsObject -ContactName "random" -EmailList @("emailId") -Phone "1234567891"
-$ShippingDetails = New-AzDataBoxShippingAddressObject -StreetAddress1 "101 TOWNSEND ST" -StateOrProvince "CA" -Country "US" -City "San Francisco" -PostalCode "94107" -AddressType "Commercial"
+$dataAccount = New-AzDataBoxStorageAccountDetailsObject -DataAccountType "StorageAccount" -StorageAccountId "/subscriptions/YourSubscriptionId/resourceGroups/YourResourceGroup/providers/Microsoft.Storage/storageAccounts/YourStorageAccount"
+$contactDetail = New-AzDataBoxContactDetailsObject -ContactName "XXXX XXXX" -EmailList @("emailId") -Phone "0000000000"
+$ShippingDetails = New-AzDataBoxShippingAddressObject -StreetAddress1 "XXXX XXXX" -StateOrProvince "XX" -Country "XX" -City "XXXX XXXX" -PostalCode "00000" -AddressType "Commercial"
 
-New-AzDataBoxDiskJobDetailsObject -Type "DataBoxDisk"  -DataImportDetail  @(@{AccountDetail=$dataAccount; AccountDetailDataAccountType = "StorageAccount"} ) -ContactDetail $contactDetail -ShippingAddress $ShippingDetails -Passkey "randm@423jarABC" -PreferredDisk @{"8" = 8; "4" = 2} -ExpectedDataSizeInTeraByte 18
+New-AzDataBoxCustomerDiskJobDetailsObject -Type "DataBoxCustomerDisk" -DataImportDetail  @(@{AccountDetail=$dataAccount; AccountDetailDataAccountType = "StorageAccount"} ) -ContactDetail $contactDetail -ShippingAddress $ShippingDetails -ImportDiskDetailsCollection $importDiskDetailsCollection -ReturnToCustomerPackageDetailCarrierAccountNumber "00000"
 ```
 
-```output
-Action ChainOfCustodySasKey ExpectedDataSizeInTeraByte ReverseShipmentLabelSasKey Type        Passkey        
------- -------------------- -------------------------- -------------------------- ----        -------        
-                            18                                                    DataBoxDisk randm@423jarABC
-```
-
-DataBoxDisk details in-memory object
+DataBoxCustomerDisk details in-memory object
 
 ## PARAMETERS
 
@@ -106,12 +104,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -KeyEncryptionKey
-Details about which key encryption type is being used.
-To construct, see NOTES section for KEYENCRYPTIONKEY properties and create a hash table.
+### -ExportDiskDetailsCollection
+Contains the map of disk serial number to the disk details for export jobs.
+To construct, see NOTES section for EXPORTDISKDETAILSCOLLECTION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IKeyEncryptionKey
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IDataBoxCustomerDiskJobDetailsExportDiskDetailsCollection
 Parameter Sets: (All)
 Aliases:
 
@@ -122,11 +120,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Passkey
-User entered passkey for DataBox Disk job.
+### -ImportDiskDetailsCollection
+Contains the map of disk serial number to the disk details for import jobs.
+To construct, see NOTES section for IMPORTDISKDETAILSCOLLECTION properties and create a hash table.
 
 ```yaml
-Type: System.String
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IDataBoxCustomerDiskJobDetailsImportDiskDetailsCollection
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -KeyEncryptionKey
+Details about which key encryption type is being used.
+To construct, see NOTES section for KEYENCRYPTIONKEY properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IKeyEncryptionKey
 Parameter Sets: (All)
 Aliases:
 
@@ -153,16 +168,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PreferredDisk
-User preference on what size disks are needed for the job.
-The map is from the disk size in TB to the count.
-Eg.
-{2,5} means 5 disks of 2 TB size.
-Key is string but will be checked against an int.
-To construct, see NOTES section for PREFERREDDISK properties and create a hash table.
+### -ReturnToCustomerPackageDetailCarrierAccountNumber
+Carrier Account Number of customer for customer disk.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IDataBoxDiskJobDetailsPreferredDisks
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -227,7 +237,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.DataBoxDiskJobDetails
+### Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.DataBoxCustomerDiskJobDetails
 
 ## NOTES
 
@@ -275,6 +285,12 @@ To create the parameters described below, construct a hash table containing the 
   - `[AccountDetailSharePassword <String>]`: Password for all the shares to be created on the device. Should not be passed for TransferType:ExportFromAzure jobs. If this is not passed, the service will generate password itself. This will not be returned in Get Call. Password Requirements :  Password must be minimum of 12 and maximum of 64 characters. Password must have at least one uppercase alphabet, one number and one special character. Password cannot have the following characters : IilLoO0 Password can have only alphabets, numbers and these characters : @#\-$%^!+=;:_()]+
   - `[LogCollectionLevel <LogCollectionLevel?>]`: Level of the logs to be collected.
 
+`EXPORTDISKDETAILSCOLLECTION <IDataBoxCustomerDiskJobDetailsExportDiskDetailsCollection>`: Contains the map of disk serial number to the disk details for export jobs.
+  - `[(Any) <IExportDiskDetails>]`: This indicates any property can be added to this object.
+
+`IMPORTDISKDETAILSCOLLECTION <IDataBoxCustomerDiskJobDetailsImportDiskDetailsCollection>`: Contains the map of disk serial number to the disk details for import jobs.
+  - `[(Any) <IImportDiskDetails>]`: This indicates any property can be added to this object.
+
 `KEYENCRYPTIONKEY <IKeyEncryptionKey>`: Details about which key encryption type is being used.
   - `KekType <KekType>`: Type of encryption key used for key encryption.
   - `[IdentityProperty <IIdentityProperties>]`: Managed identity properties used for key encryption.
@@ -290,9 +306,6 @@ To create the parameters described below, construct a hash table containing the 
   - `[ReverseTransportPreferencePreferredShipmentType <TransportShipmentTypes?>]`: Indicates Shipment Logistics type that the customer preferred.
   - `[StorageAccountAccessTierPreference <StorageAccountAccessTier[]>]`: Preferences related to the Access Tier of storage accounts.
   - `[TransportPreferencePreferredShipmentType <TransportShipmentTypes?>]`: Indicates Shipment Logistics type that the customer preferred.
-
-`PREFERREDDISK <IDataBoxDiskJobDetailsPreferredDisks>`: User preference on what size disks are needed for the job. The map is from the disk size in TB to the count. Eg. {2,5} means 5 disks of 2 TB size. Key is string but will be checked against an int.
-  - `[(Any) <Int32>]`: This indicates any property can be added to this object.
 
 `REVERSESHIPPINGDETAIL <IReverseShippingDetails>`: Optional Reverse Shipping details for order.
   - `[ContactDetailContactName <String>]`: Contact name of the person.
