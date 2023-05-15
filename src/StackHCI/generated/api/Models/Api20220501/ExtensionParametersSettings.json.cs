@@ -7,10 +7,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.Extensions;
 
-    /// <summary>
-    /// Describes the properties of a Machine Extension. This object mirrors the definition in HybridCompute.
-    /// </summary>
-    public partial class ExtensionParameters
+    /// <summary>Json formatted public settings for the extension.</summary>
+    public partial class ExtensionParametersSettings
     {
 
         /// <summary>
@@ -56,10 +54,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501
         partial void BeforeToJson(ref Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.Json.JsonObject container, ref bool returnNow);
 
         /// <summary>
-        /// Deserializes a Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.Json.JsonObject into a new instance of <see cref="ExtensionParameters" />.
+        /// Deserializes a Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.Json.JsonObject into a new instance of <see cref="ExtensionParametersSettings" />.
         /// </summary>
         /// <param name="json">A Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.Json.JsonObject instance to deserialize from.</param>
-        internal ExtensionParameters(Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.Json.JsonObject json)
+        /// <param name="exclusions"></param>
+        internal ExtensionParametersSettings(Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.Json.JsonObject json, global::System.Collections.Generic.HashSet<string> exclusions = null)
         {
             bool returnNow = false;
             BeforeFromJson(json, ref returnNow);
@@ -67,36 +66,30 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501
             {
                 return;
             }
-            {_forceUpdateTag = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.Json.JsonString>("forceUpdateTag"), out var __jsonForceUpdateTag) ? (string)__jsonForceUpdateTag : (string)ForceUpdateTag;}
-            {_publisher = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.Json.JsonString>("publisher"), out var __jsonPublisher) ? (string)__jsonPublisher : (string)Publisher;}
-            {_type = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.Json.JsonString>("type"), out var __jsonType) ? (string)__jsonType : (string)Type;}
-            {_typeHandlerVersion = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.Json.JsonString>("typeHandlerVersion"), out var __jsonTypeHandlerVersion) ? (string)__jsonTypeHandlerVersion : (string)TypeHandlerVersion;}
-            {_autoUpgradeMinorVersion = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.Json.JsonBoolean>("autoUpgradeMinorVersion"), out var __jsonAutoUpgradeMinorVersion) ? (bool?)__jsonAutoUpgradeMinorVersion : AutoUpgradeMinorVersion;}
-            {_setting = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.Json.JsonObject>("settings"), out var __jsonSettings) ? Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.ExtensionParametersSettings.FromJson(__jsonSettings) : Setting;}
-            {_protectedSetting = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.Json.JsonObject>("protectedSettings"), out var __jsonProtectedSettings) ? Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.ExtensionParametersProtectedSettings.FromJson(__jsonProtectedSettings) : ProtectedSetting;}
+            Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.JsonSerializable.FromJson( json, ((Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.IAssociativeArray<global::System.Object>)this).AdditionalProperties, Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.JsonSerializable.DeserializeDictionary(()=>new global::System.Collections.Generic.Dictionary<global::System.String,global::System.Object>()),exclusions );
             AfterFromJson(json);
         }
 
         /// <summary>
-        /// Deserializes a <see cref="Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.Json.JsonNode"/> into an instance of Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IExtensionParameters.
+        /// Deserializes a <see cref="Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.Json.JsonNode"/> into an instance of Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IExtensionParametersSettings.
         /// </summary>
         /// <param name="node">a <see cref="Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.Json.JsonNode" /> to deserialize from.</param>
         /// <returns>
-        /// an instance of Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IExtensionParameters.
+        /// an instance of Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IExtensionParametersSettings.
         /// </returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IExtensionParameters FromJson(Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.Json.JsonNode node)
+        public static Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IExtensionParametersSettings FromJson(Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.Json.JsonNode node)
         {
-            return node is Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.Json.JsonObject json ? new ExtensionParameters(json) : null;
+            return node is Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.Json.JsonObject json ? new ExtensionParametersSettings(json) : null;
         }
 
         /// <summary>
-        /// Serializes this instance of <see cref="ExtensionParameters" /> into a <see cref="Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.Json.JsonNode" />.
+        /// Serializes this instance of <see cref="ExtensionParametersSettings" /> into a <see cref="Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.Json.JsonNode" />.
         /// </summary>
         /// <param name="container">The <see cref="Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.Json.JsonObject"/> container to serialize this object into. If the caller
         /// passes in <c>null</c>, a new instance will be created and returned to the caller.</param>
         /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SerializationMode"/>.</param>
         /// <returns>
-        /// a serialized instance of <see cref="ExtensionParameters" /> as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.Json.JsonNode" />.
+        /// a serialized instance of <see cref="ExtensionParametersSettings" /> as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.Json.JsonNode" />.
         /// </returns>
         public Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.Json.JsonNode ToJson(Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.Json.JsonObject container, Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SerializationMode serializationMode)
         {
@@ -108,13 +101,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501
             {
                 return container;
             }
-            AddIf( null != (((object)this._forceUpdateTag)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.Json.JsonString(this._forceUpdateTag.ToString()) : null, "forceUpdateTag" ,container.Add );
-            AddIf( null != (((object)this._publisher)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.Json.JsonString(this._publisher.ToString()) : null, "publisher" ,container.Add );
-            AddIf( null != (((object)this._type)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.Json.JsonString(this._type.ToString()) : null, "type" ,container.Add );
-            AddIf( null != (((object)this._typeHandlerVersion)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.Json.JsonString(this._typeHandlerVersion.ToString()) : null, "typeHandlerVersion" ,container.Add );
-            AddIf( null != this._autoUpgradeMinorVersion ? (Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.Json.JsonBoolean((bool)this._autoUpgradeMinorVersion) : null, "autoUpgradeMinorVersion" ,container.Add );
-            AddIf( null != this._setting ? (Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.Json.JsonNode) this._setting.ToJson(null,serializationMode) : null, "settings" ,container.Add );
-            AddIf( null != this._protectedSetting ? (Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.Json.JsonNode) this._protectedSetting.ToJson(null,serializationMode) : null, "protectedSettings" ,container.Add );
+            Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.JsonSerializable.ToJson( ((Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.IAssociativeArray<global::System.Object>)this).AdditionalProperties, container);
             AfterToJson(ref container);
             return container;
         }
