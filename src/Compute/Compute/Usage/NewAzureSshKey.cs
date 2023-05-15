@@ -9,6 +9,9 @@ using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Management.Internal.Resources.Models;
+using System.Runtime.InteropServices;
+using System.Security.AccessControl;
+using System.Diagnostics;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
@@ -79,6 +82,31 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     {
                         writer.WriteLine(keypair.PrivateKey);
                     }
+
+                    if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+                    {
+                        // On Windows, set the file attributes to Normal to remove read-only attribute
+                        File.SetAttributes(privateKeyFilePath, FileAttributes.Normal);
+                    }
+                    else
+                    {
+                        var processStartInfo = new ProcessStartInfo
+                        {
+                            FileName = "/bin/bash",
+                            Arguments = $"-c \"chmod 600 {privateKeyFilePath}\"",
+                            RedirectStandardOutput = true,
+                            UseShellExecute = false,
+                            CreateNoWindow = true,
+                        };
+                        Process process = new Process { StartInfo = processStartInfo };
+                        process.Start();
+                        process.WaitForExit();
+                    }
+                    using (StreamWriter writer = new StreamWriter(publicKeyFilePath))
+                    {
+                        writer.WriteLine(keypair.PublicKey);
+                    }
+
                     WriteWarning("Private key is saved to " + privateKeyFilePath);
                     
                     using (StreamWriter writer = new StreamWriter(publicKeyFilePath))
@@ -92,6 +120,23 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 ComputeAutomationAutoMapperProfile.Mapper.Map<SshPublicKeyResource, PSSshPublicKeyResource>(result, psObject);
                 WriteObject(psObject);
             });
+        }
+
+        [DllImport("libc", SetLastError = true)]
+        static extern int chmod(string path, int mode);
+
+        static int NativeChmod(string path, int mode)
+        {
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+            {
+                // On macOS, use the BSD-style chmod
+                return chmod(path, (CommonObjectSecurity.Unix.Native.FilePermissions)mode);
+            }
+            else
+            {
+                // On Linux, use the GNU-style chmod
+                return chmod(path, mode);
+            }
         }
     }
 }
