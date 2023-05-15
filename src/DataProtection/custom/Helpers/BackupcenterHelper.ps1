@@ -167,6 +167,19 @@ function CheckAksModuleDependency {
     }
 }
 
+function CheckStorageModuleDependency {
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.DoNotExportAttribute()]
+    param() 
+
+    process {
+        $module = Get-Module -ListAvailable | Where-Object { $_.Name -eq "Az.Storage" }
+        if ($module -eq $null) {
+            $message = "Az.Storage Module must be installed to run this command. Please run 'Install-Module -Name Az.Storage' to install and continue."
+            throw $message
+        }
+    }
+}
+
 function AssignMissingRolesHelper {
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.DoNotExportAttribute()]
     param(
