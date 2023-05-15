@@ -5,13 +5,20 @@
   </PropertyGroup>
 
   <Import Project="$(MSBuildThisFileDirectory)..\..\Az.props" />
+  <Import Project="$(MSBuildThisFileDirectory)..\..\psm1.props" />
 
-  <PropertyGroup>    
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>    
-    <OutputType>Library</OutputType>
+  <PropertyGroup>   
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>$(AzAssemblyPrefix)$(PsModuleName)</AssemblyName>
+    <RootNamespace>$(AzAssemblyPrefix)$(PsModuleName)</RootNamespace>
+    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <OutputPath>$(RepoArtifacts)$(Configuration)\Az.$(PsModuleName)\</OutputPath>
+    <PublishDir>$(OutputPath)</PublishDir>
+    
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>
-    <SignAssembly>False</SignAssembly>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -23,9 +30,9 @@
   </PropertyGroup>
 
   <ItemGroup>    
-    <PackageReference Include="Moq" Version="4.18.4" />    
-    <PackageReference Include="Polly" Version="7.2.3" />    
-    <PackageReference Include="System.Security.Cryptography.Pkcs" Version="6.0.0" />    
+    <PackageReference Include="Moq" Version="4.18.4" />
+    <PackageReference Include="Polly" Version="7.2.3" />
+    <PackageReference Include="System.Security.Cryptography.Pkcs" Version="6.0.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -53,11 +60,6 @@
     <Compile Update="Properties\Resources.Designer.cs">
       <DesignTime>True</DesignTime>
     </Compile>
-  </ItemGroup>
-  
-  <ItemGroup>
-    <PackageReference Update="Azure.Core" Version="1.28.0" />
-    <PackageReference Update="Newtonsoft.Json" Version="10.0.3" />
   </ItemGroup>
 
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.Post.props" />
