@@ -110,6 +110,26 @@ directive:
       parameter-name: UserAssignedIdentity
 
   - where:
+      parameter-name: PreferenceStorageAccountAccessTierPreference
+    set:
+      parameter-name: StorageAccountAccessTierPreference
+      
+  - where:
+      parameter-name: ReverseShippingDetailShippingAddress
+    set:
+      parameter-name: ReverseShippingDetail
+
+  - where:
+      parameter-name: ReverseTransportPreferencePreferredShipmentType
+    set:
+      parameter-name: ReverseTransportPreferredShipmentType
+
+  - where:
+      parameter-name: TransportPreferencePreferredShipmentType
+    set:
+      parameter-name: TransportPreferredShipmentType
+
+  - where:
       model-name: JobResource 
     set:
       format-table:

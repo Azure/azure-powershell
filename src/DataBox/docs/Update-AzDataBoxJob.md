@@ -19,14 +19,13 @@ Update-AzDataBoxJob -Name <String> -ResourceGroupName <String> [-SubscriptionId 
  [-EncryptionPreferenceDoubleEncryption <DoubleEncryption>]
  [-EncryptionPreferenceHardwareEncryption <HardwareEncryption>] [-IdentityType <String>]
  [-KeyEncryptionKey <IKeyEncryptionKey>] [-PreferencePreferredDataCenterRegion <String[]>]
- [-PreferenceStorageAccountAccessTierPreference <StorageAccountAccessTier[]>]
  [-ReturnToCustomerPackageDetailCarrierAccountNumber <String>]
  [-ReturnToCustomerPackageDetailCarrierName <String>] [-ReturnToCustomerPackageDetailTrackingId <String>]
- [-ReverseShippingDetailShippingAddress <IShippingAddress>]
- [-ReverseTransportPreferencePreferredShipmentType <TransportShipmentTypes>]
- [-ShippingAddress <IShippingAddress>] [-Tag <Hashtable>]
- [-TransportPreferencePreferredShipmentType <TransportShipmentTypes>] [-UserAssignedIdentity <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-ReverseShippingDetail <IShippingAddress>] [-ReverseTransportPreferredShipmentType <TransportShipmentTypes>]
+ [-ShippingAddress <IShippingAddress>] [-StorageAccountAccessTierPreference <StorageAccountAccessTier[]>]
+ [-Tag <Hashtable>] [-TransportPreferredShipmentType <TransportShipmentTypes>]
+ [-UserAssignedIdentity <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -344,21 +343,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PreferenceStorageAccountAccessTierPreference
-Preferences related to the Access Tier of storage accounts.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.StorageAccountAccessTier[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 The Resource Group Name
 
@@ -419,9 +403,9 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ReverseShippingDetailShippingAddress
+### -ReverseShippingDetail
 Shipping address where customer wishes to receive the device.
-To construct, see NOTES section for REVERSESHIPPINGDETAILSHIPPINGADDRESS properties and create a hash table.
+To construct, see NOTES section for REVERSESHIPPINGDETAIL properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IShippingAddress
@@ -435,7 +419,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ReverseTransportPreferencePreferredShipmentType
+### -ReverseTransportPreferredShipmentType
 Indicates Shipment Logistics type that the customer preferred.
 
 ```yaml
@@ -456,6 +440,21 @@ To construct, see NOTES section for SHIPPINGADDRESS properties and create a hash
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IShippingAddress
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -StorageAccountAccessTierPreference
+Preferences related to the Access Tier of storage accounts.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.StorageAccountAccessTier[]
 Parameter Sets: (All)
 Aliases:
 
@@ -497,7 +496,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -TransportPreferencePreferredShipmentType
+### -TransportPreferredShipmentType
 Indicates Shipment Logistics type that the customer preferred.
 
 ```yaml
@@ -594,7 +593,7 @@ To create the parameters described below, construct a hash table containing the 
   - `[KekUrl <String>]`: Key encryption key. It is required in case of Customer managed KekType.
   - `[KekVaultResourceId <String>]`: Kek vault resource id. It is required in case of Customer managed KekType.
 
-`REVERSESHIPPINGDETAILSHIPPINGADDRESS <IShippingAddress>`: Shipping address where customer wishes to receive the device.
+`REVERSESHIPPINGDETAIL <IShippingAddress>`: Shipping address where customer wishes to receive the device.
   - `Country <String>`: Name of the Country.
   - `StreetAddress1 <String>`: Street Address line 1.
   - `[AddressType <AddressType?>]`: Type of address.
