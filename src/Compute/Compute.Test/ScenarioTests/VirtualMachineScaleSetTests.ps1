@@ -4498,8 +4498,8 @@ function Test-VirtualMachineScaleSetSecurityTypeWithoutConfig
         $disable = $false;
         $enable = $true;
         $securityType = "TrustedLaunch";
-        $adminUsername = 'usertest';#Get-ComputeTestResourceName;
-        $adminPassword = "Testing1234567" | ConvertTo-SecureString -AsPlainText -Force;
+        $adminUsername = Get-ComputeTestResourceName;
+        $adminPassword = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force;
         $vmCred = New-Object System.Management.Automation.PSCredential ($adminUsername, $adminPassword);
 
         # Requirements for the TrustedLaunch default behavior.
@@ -4525,14 +4525,13 @@ function Test-VirtualMachineScaleSetSecurityTypeWithoutConfig
 
         # Guest Attestation test
         # Validate
-        # no GA for non config here
-        $vmGADefaultIDentity = "SystemAssigned";
-        $vmssGet = Get-AzVmss -ResourceGroupName $rgname -Name $vmssName;
+        $vmGADefaultIDentity = "SystemAssignedUserAssigned"; # New defaulting behavior that was unexpected but feature team says go with it.
+        $vmssGet = Get-AzVmss -ResourceGroupName $rgname -Name $vmssName1;
         Assert-AreEqual $vmGADefaultIDentity $vmssGet.Identity.Type;
 
-        $vmssvms = Get-AzVmssvm -ResourceGroupName $rgname -VMScaleSetName $vmssName;
+        $vmssvms = Get-AzVmssvm -ResourceGroupName $rgname -VMScaleSetName $vmssName1;
         Assert-NotNull $vmssvms;
-        $vmssvm = Get-AzVmssvm -ResourceGroupName $rgname -VMScaleSetName $vmssName -InstanceId $vmssvms[0].InstanceId;
+        $vmssvm = Get-AzVmssvm -ResourceGroupName $rgname -VMScaleSetName $vmssName1 -InstanceId $vmssvms[0].InstanceId;
         Assert-AreEqual $extDefaultName $vmssvm.Resources[2].Name;
     }
     finally

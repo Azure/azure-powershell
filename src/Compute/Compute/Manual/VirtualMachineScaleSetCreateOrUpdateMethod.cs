@@ -641,6 +641,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             }
 
             //Guest Attestation IDentity stuff
+            if (this.IsParameterBound(c => c.SecurityType) && (this.SecurityType == "TrustedLaunch" || this.SecurityType == "ConfidentialVM"))
+            {
+                this.SecurityType = this.SecurityType;
+                this.EnableVtpm = this.EnableVtpm == null ? true : this.EnableVtpm;
+                this.EnableSecureBoot = this.EnableSecureBoot == null ? true : this.EnableSecureBoot;
+            }
             if (shouldGuestAttestationExtBeInstalledSimple()
                 && !this.IsParameterBound(c => c.SystemAssignedIdentity)
                 && !this.IsParameterBound(c => c.UserAssignedIdentity)
@@ -648,7 +654,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             {
                 this.SystemAssignedIdentity = true;//new VirtualMachineIdentity(null, null, Microsoft.Azure.Management.Compute.Models.ResourceIdentityType.SystemAssigned);
             }
-
+            
             var parameters = new Parameters(this, client);
 
             if (parameters?.ImageAndOsType?.Image?.Version?.ToLower() != "latest")
