@@ -21,7 +21,7 @@ Get-AzVHubOutboundRoutes -ResourceGroupName <String> -VirtualHubName <String> -R
 
 ### ByVirtualHubObject
 ```
-Get-AzVHubOutboundRoutes -VirtualHub <PSVirtualHub> -ResourceUri <String> -VirtualWanConnectionType <String> [-DefaultProfile <IAzureContextContainer>]
+Get-AzVHubOutboundRoutes -VirtualHubObject <PSVirtualHub> -ResourceUri <String> -VirtualWanConnectionType <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -44,7 +44,7 @@ $virtualWan = Get-AzVirtualWan -ResourceGroupName "testRg" -Name "testWan"
 New-AzVirtualHub -ResourceGroupName "testRg" -Name "testHub" -Location "westcentralus" -AddressPrefix "10.0.0.0/16" -VirtualWan $virtualWan
 $virtualHub = Get-AzVirtualHub -ResourceGroupName "testRg" -Name "testHub"
 $hubVnetConnectionId = "/subscriptions/testSub/resourceGroups/testRg/providers/Microsoft.Network/virtualHubs/testHub/hubVirtualNetworkConnections/testCon"
-Get-AzVHubOutboundRoutes -VirtualHub $virtualHub -ResourceUri $hubVnetConnectionId -VirtualWanConnectionType "HubVirtualNetworkConnection"
+Get-AzVHubOutboundRoutes -VirtualHubObject $virtualHub -ResourceUri $hubVnetConnectionId -VirtualWanConnectionType "HubVirtualNetworkConnection"
 ``` 
 
 ```output
@@ -102,7 +102,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -VirtualHub
+### -VirtualHubObject
 The parent resource.
 
 ```yaml
