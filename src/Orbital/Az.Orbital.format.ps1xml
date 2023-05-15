@@ -103,9 +103,6 @@
             <Label>ContactProfileName</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>GroundStationName</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
             <Label>Location</Label>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -129,9 +126,6 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>ContactProfileName</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>GroundStationName</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>Location</PropertyName>
@@ -213,6 +207,40 @@
             <TableColumnItems>
               <TableColumnItem>
                 <PropertyName>Location</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api30.ErrorDetail</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api30.ErrorDetail</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Code</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Message</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Target</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Code</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Message</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Target</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -540,9 +568,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.AuthorizedGroundstation</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.AuthorizedGroundstation</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.AuthorizedGroundstation</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.AuthorizedGroundstation</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -568,9 +596,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.AvailableContacts</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.AvailableContacts</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.AvailableContacts</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.AvailableContacts</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -632,9 +660,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.AvailableContactsListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.AvailableContactsListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.AvailableContactsListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.AvailableContactsListResult</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -654,9 +682,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.AvailableContactsProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.AvailableContactsProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.AvailableContactsProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.AvailableContactsProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -724,9 +752,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.AvailableGroundStation</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.AvailableGroundStation</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.AvailableGroundStation</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.AvailableGroundStation</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -764,9 +792,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.AvailableGroundStationListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.AvailableGroundStationListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.AvailableGroundStationListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.AvailableGroundStationListResult</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -786,9 +814,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.AvailableGroundStationProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.AvailableGroundStationProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.AvailableGroundStationProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.AvailableGroundStationProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -838,9 +866,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.AvailableGroundStationPropertiesAutoGenerated</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.AvailableGroundStationPropertiesAutoGenerated</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.AvailableGroundStationPropertiesAutoGenerated</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.AvailableGroundStationPropertiesAutoGenerated</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -890,43 +918,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.CloudErrorBody</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.Contact</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.CloudErrorBody</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Code</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Message</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Target</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Code</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Message</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Target</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.Contact</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.Contact</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.Contact</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -976,9 +970,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ContactInstanceProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.ContactInstanceProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ContactInstanceProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.ContactInstanceProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1046,9 +1040,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ContactListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.ContactListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ContactListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.ContactListResult</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1068,9 +1062,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ContactParameters</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.ContactParameters</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ContactParameters</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.ContactParameters</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1102,9 +1096,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ContactProfile</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.ContactProfile</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ContactProfile</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.ContactProfile</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1142,9 +1136,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ContactProfileLink</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.ContactProfileLink</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ContactProfileLink</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.ContactProfileLink</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1188,9 +1182,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ContactProfileLinkChannel</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.ContactProfileLinkChannel</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ContactProfileLinkChannel</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.ContactProfileLinkChannel</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1246,9 +1240,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ContactProfileListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.ContactProfileListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ContactProfileListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.ContactProfileListResult</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1268,9 +1262,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ContactProfileProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.ContactProfileProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ContactProfileProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.ContactProfileProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1320,9 +1314,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ContactProfilesProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.ContactProfilesProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ContactProfilesProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.ContactProfilesProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1366,9 +1360,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ContactProfilesPropertiesNetworkConfiguration</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.ContactProfilesPropertiesNetworkConfiguration</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ContactProfilesPropertiesNetworkConfiguration</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.ContactProfilesPropertiesNetworkConfiguration</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1388,9 +1382,37 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ContactsProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.ContactProfileThirdPartyConfiguration</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ContactsProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.ContactProfileThirdPartyConfiguration</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>MissionConfiguration</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ProviderName</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>MissionConfiguration</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ProviderName</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.ContactsProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.ContactsProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1494,9 +1516,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ContactsPropertiesAntennaConfiguration</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.ContactsPropertiesAntennaConfiguration</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ContactsPropertiesAntennaConfiguration</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.ContactsPropertiesAntennaConfiguration</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1522,9 +1544,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.EndPoint</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.EndPoint</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.EndPoint</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.EndPoint</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1562,9 +1584,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.OperationResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.OperationResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.OperationResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.OperationResult</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1573,6 +1595,9 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>NextLink</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>PercentComplete</Label>
@@ -1597,6 +1622,9 @@
                 <PropertyName>Name</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
+                <PropertyName>NextLink</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>PercentComplete</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
@@ -1614,9 +1642,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.OperationResultErrorProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.OperationResultErrorProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.OperationResultErrorProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.OperationResultErrorProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1642,9 +1670,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ResourceIdListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.ResourceIdListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ResourceIdListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.ResourceIdListResult</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1664,9 +1692,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.Spacecraft</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.Spacecraft</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.Spacecraft</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.Spacecraft</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1710,9 +1738,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.SpacecraftLink</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.SpacecraftLink</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.SpacecraftLink</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.SpacecraftLink</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1756,9 +1784,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.SpacecraftListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.SpacecraftListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.SpacecraftListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.SpacecraftListResult</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1778,9 +1806,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.SpacecraftsProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.SpacecraftsProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.SpacecraftsProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.SpacecraftsProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1824,9 +1852,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.TagsObjectTags</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.TagsObjectTags</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.TagsObjectTags</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.TagsObjectTags</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>

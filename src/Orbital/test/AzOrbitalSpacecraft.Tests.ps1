@@ -15,6 +15,13 @@ if(($null -eq $TestName) -or ($TestName -contains 'AzOrbitalSpacecraft'))
 }
 
 Describe 'AzOrbitalSpacecraft' {
+    It 'CreateExpanded' {
+        {
+            $linkObject = New-AzOrbitalSpacecraftLinkObject -BandwidthMHz 15 -CenterFrequencyMHz 8160 -Direction 'Downlink' -Name spacecraftlink -Polarization 'RHCP'
+            $config = New-AzOrbitalSpacecraft -Name $env.spacecraftName -ResourceGroupName $env.resourceGroup -Location $env.location -Link $linkObject -NoradId 27424 -TitleLine "AQUA" -TleLine1 "1 27424U 02022A   21259.45143715  .00000131  00000-0  39210-4 0  9998" -TleLine2 "2 27424  98.2138 199.4906 0001886  51.3958  60.0011 14.57112434 30322"
+            $config.Name | Should -Be $env.spacecraftName
+        } | Should -Not -Throw
+    }
     It 'List' {
         {
             $config = Get-AzOrbitalSpacecraft
@@ -46,8 +53,11 @@ Describe 'AzOrbitalSpacecraft' {
     It 'UpdateViaIdentityExpanded' {
         {
             $spacecraftObject = Get-AzOrbitalSpacecraft -ResourceGroupName $env.resourceGroup -Name $env.spacecraftName
-            $config = Update-AzOrbitalSpacecraft -InputObject $spacecraftObject -Tag @{"123"="abc"}
+            $config = Update-AzOrbitalSpacecraft -InputObject $spacecraftObject -Tag @{"456"="def"}
             $config.Name | Should -Be $env.spacecraftName
         } | Should -Not -Throw
+    }
+    It 'Delete' {
+        Remove-AzOrbitalSpacecraft -ResourceGroupName $env.resourceGroup -Name $env.spacecraftName
     }
 }
