@@ -19,6 +19,8 @@
 -->
 ## Upcoming Release
 * Fixed the issue of `Enable-AzAksAddon` when there are no addons. [#21665]
+* Added parameter `-EnableAHUB` for `New-AzAksCluster` and `Set-AzAksCluster`
+* Added parameter `-WindowsProfileAdminUserPassword` for `Set-AzAksCluster`
 
 ## Version 5.4.0
 * Added cmdlet `New-AzAksMaintenanceConfiguration`, `Get-AzAksMaintenanceConfiguration`, `Remove-AzAksMaintenanceConfiguration`, `New-AzAksSnapshot`, `Get-AzAksSnapshot`, `Remove-AzAksSnapshot`, `Get-AzAksManagedClusterCommandResult`, `Get-AzAksManagedClusterOSOption`, `Get-AzAksManagedClusterOutboundNetworkDependencyEndpoint`, `Invoke-AzAksAbortAgentPoolLatestOperation`, `Invoke-AzAksAbortManagedClusterLatestOperation`, `Invoke-AzAksRotateManagedClusterServiceAccountSigningKey`, `Start-AzAksManagedClusterCommand`, `New-AzAksTimeInWeekObject`, `New-AzAksTimeSpanObject`.

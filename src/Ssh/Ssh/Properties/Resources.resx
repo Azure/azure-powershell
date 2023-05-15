@@ -127,7 +127,7 @@
     <value>Config file destination folder {0} does not exist.</value>
   </data>
   <data name="FailedToCreateDefaultEndpoint" xml:space="preserve">
-    <value>Failed to create default endpoint for the target Arc Server with error: {0}.</value>
+    <value>Failed to create default endpoint for the target Arc Server (see: https://aka.ms/ssharc/create-default-endpoint) with error: {0}.</value>
   </data>
   <data name="FailedToCreateDefaultEndpointUnauthorized" xml:space="preserve">
     <value>Failed to create default connectivty endpoint for target resource with an Authorization failure. This is a one time operation that must be performed by someone with Owner or Contributor role before anyone can connect to this resource. Contact the owner of the resource to create the connectivity endpoint. Instructions here: https://aka.ms/ssharc/create-default-endpoint</value>

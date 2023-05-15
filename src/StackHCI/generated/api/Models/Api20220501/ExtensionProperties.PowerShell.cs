@@ -118,6 +118,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IExtensionPropertiesInternal)this).ExtensionParameterType = (string) content.GetValueForProperty("ExtensionParameterType",((Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IExtensionPropertiesInternal)this).ExtensionParameterType, global::System.Convert.ToString);
             }
+            if (content.Contains("ExtensionParameterSetting"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IExtensionPropertiesInternal)this).ExtensionParameterSetting = (Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IExtensionParametersSettings) content.GetValueForProperty("ExtensionParameterSetting",((Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IExtensionPropertiesInternal)this).ExtensionParameterSetting, Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.ExtensionParametersSettingsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("ExtensionParameterProtectedSetting"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IExtensionPropertiesInternal)this).ExtensionParameterProtectedSetting = (Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IExtensionParametersProtectedSettings) content.GetValueForProperty("ExtensionParameterProtectedSetting",((Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IExtensionPropertiesInternal)this).ExtensionParameterProtectedSetting, Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.ExtensionParametersProtectedSettingsTypeConverter.ConvertFrom);
+            }
             if (content.Contains("ExtensionParameterForceUpdateTag"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IExtensionPropertiesInternal)this).ExtensionParameterForceUpdateTag = (string) content.GetValueForProperty("ExtensionParameterForceUpdateTag",((Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IExtensionPropertiesInternal)this).ExtensionParameterForceUpdateTag, global::System.Convert.ToString);
@@ -129,14 +137,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501
             if (content.Contains("ExtensionParameterAutoUpgradeMinorVersion"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IExtensionPropertiesInternal)this).ExtensionParameterAutoUpgradeMinorVersion = (bool?) content.GetValueForProperty("ExtensionParameterAutoUpgradeMinorVersion",((Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IExtensionPropertiesInternal)this).ExtensionParameterAutoUpgradeMinorVersion, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            }
-            if (content.Contains("ExtensionParameterSetting"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IExtensionPropertiesInternal)this).ExtensionParameterSetting = (Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IAny) content.GetValueForProperty("ExtensionParameterSetting",((Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IExtensionPropertiesInternal)this).ExtensionParameterSetting, Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.AnyTypeConverter.ConvertFrom);
-            }
-            if (content.Contains("ExtensionParameterProtectedSetting"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IExtensionPropertiesInternal)this).ExtensionParameterProtectedSetting = (Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IAny) content.GetValueForProperty("ExtensionParameterProtectedSetting",((Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IExtensionPropertiesInternal)this).ExtensionParameterProtectedSetting, Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.AnyTypeConverter.ConvertFrom);
             }
             AfterDeserializeDictionary(content);
         }
@@ -179,6 +179,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IExtensionPropertiesInternal)this).ExtensionParameterType = (string) content.GetValueForProperty("ExtensionParameterType",((Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IExtensionPropertiesInternal)this).ExtensionParameterType, global::System.Convert.ToString);
             }
+            if (content.Contains("ExtensionParameterSetting"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IExtensionPropertiesInternal)this).ExtensionParameterSetting = (Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IExtensionParametersSettings) content.GetValueForProperty("ExtensionParameterSetting",((Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IExtensionPropertiesInternal)this).ExtensionParameterSetting, Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.ExtensionParametersSettingsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("ExtensionParameterProtectedSetting"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IExtensionPropertiesInternal)this).ExtensionParameterProtectedSetting = (Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IExtensionParametersProtectedSettings) content.GetValueForProperty("ExtensionParameterProtectedSetting",((Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IExtensionPropertiesInternal)this).ExtensionParameterProtectedSetting, Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.ExtensionParametersProtectedSettingsTypeConverter.ConvertFrom);
+            }
             if (content.Contains("ExtensionParameterForceUpdateTag"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IExtensionPropertiesInternal)this).ExtensionParameterForceUpdateTag = (string) content.GetValueForProperty("ExtensionParameterForceUpdateTag",((Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IExtensionPropertiesInternal)this).ExtensionParameterForceUpdateTag, global::System.Convert.ToString);
@@ -190,14 +198,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501
             if (content.Contains("ExtensionParameterAutoUpgradeMinorVersion"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IExtensionPropertiesInternal)this).ExtensionParameterAutoUpgradeMinorVersion = (bool?) content.GetValueForProperty("ExtensionParameterAutoUpgradeMinorVersion",((Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IExtensionPropertiesInternal)this).ExtensionParameterAutoUpgradeMinorVersion, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            }
-            if (content.Contains("ExtensionParameterSetting"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IExtensionPropertiesInternal)this).ExtensionParameterSetting = (Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IAny) content.GetValueForProperty("ExtensionParameterSetting",((Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IExtensionPropertiesInternal)this).ExtensionParameterSetting, Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.AnyTypeConverter.ConvertFrom);
-            }
-            if (content.Contains("ExtensionParameterProtectedSetting"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IExtensionPropertiesInternal)this).ExtensionParameterProtectedSetting = (Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IAny) content.GetValueForProperty("ExtensionParameterProtectedSetting",((Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IExtensionPropertiesInternal)this).ExtensionParameterProtectedSetting, Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.AnyTypeConverter.ConvertFrom);
             }
             AfterDeserializePSObject(content);
         }

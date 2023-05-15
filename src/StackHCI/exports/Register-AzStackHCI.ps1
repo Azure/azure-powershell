@@ -43,14 +43,14 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Body')]
     [System.String]
     # Specifies the Azure Subscription to create the resource.
-    # This is the only Mandatory parameter.
+    # SubscriptionId is a Mandatory parameter.
     ${SubscriptionId},
 
-    [Parameter(Position=1)]
+    [Parameter(Position=1, Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Body')]
     [System.String]
     # Specifies the Region to create the resource.
-    # Default is EastUS.
+    # Region is a Mandatory parameter.
     ${Region},
 
     [Parameter(Position=2)]
@@ -90,17 +90,11 @@ param(
     [Parameter(Position=7)]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Body')]
     [System.String]
-    # GraphAccessToken is deprecated.
-    ${GraphAccessToken},
-
-    [Parameter(Position=8)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Body')]
-    [System.String]
     # Specifies the Account Id.
     # Specifying this along with ArmAccessToken will avoid Azure interactive logon.
     ${AccountId},
 
-    [Parameter(Position=9)]
+    [Parameter(Position=8)]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Body')]
     [System.String]
     # Specifies the Azure Environment.
@@ -108,13 +102,13 @@ param(
     # Valid values are AzureCloud, AzureChinaCloud, AzurePPE, AzureCanary, AzureUSGovernment
     ${EnvironmentName},
 
-    [Parameter(Position=10)]
+    [Parameter(Position=9)]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Body')]
     [System.String]
     # Specifies the cluster name or one of the cluster node in on-premise cluster that is being registered to Azure.
     ${ComputerName},
 
-    [Parameter(Position=11)]
+    [Parameter(Position=10)]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Body')]
     [System.String]
     # Specifies the thumbprint of the certificate available on all the nodes.
@@ -135,14 +129,7 @@ param(
     # Use device code authentication instead of an interactive browser prompt.
     ${UseDeviceAuthentication},
 
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Body')]
-    [System.Management.Automation.SwitchParameter]
-    # EnableAzureArcServer needs to be specified $true in all the environments except AzureChinaCloud.
-    # Specifying this parameter to $false in environments except AzureChinaCloud will terminate the registration cmdlet.
-    ${EnableAzureArcServer},
-
-    [Parameter(Position=12)]
+    [Parameter(Position=11)]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Body')]
     [System.Management.Automation.PSCredential]
     # Specifies the credential for the ComputerName.
@@ -155,14 +142,14 @@ param(
     # Registrations through Windows Admin Center specifies this parameter to true.
     ${IsWAC},
 
-    [Parameter(Position=13)]
+    [Parameter(Position=12)]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Body')]
     [System.String]
     # Specifies the Arc Resource Group name.
     # If not specified, cluster resource group name will be used.
     ${ArcServerResourceGroupName},
 
-    [Parameter(Position=14)]
+    [Parameter(Position=13)]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Body')]
     [System.Management.Automation.PSCredential]
     # Specifies the credentials to be used for onboarding ARC agent.

@@ -40,9 +40,9 @@ namespace Microsoft.Azure.PowerShell.Ssh.Helpers.Compute.Models
         /// is configured for the VM size otherwise **ResourceDisk** is
         /// used.&lt;br&gt;&lt;br&gt; Refer to VM size documentation for
         /// Windows VM at
-        /// https://learn.microsoft.com/azure/virtual-machines/windows/sizes and
+        /// https://docs.microsoft.com/azure/virtual-machines/windows/sizes and
         /// Linux VM at
-        /// https://learn.microsoft.com/azure/virtual-machines/linux/sizes to
+        /// https://docs.microsoft.com/azure/virtual-machines/linux/sizes to
         /// check which VM sizes exposes a cache disk. Possible values include:
         /// 'CacheDisk', 'ResourceDisk'</param>
         public DiffDiskSettings(string option = default(string), string placement = default(string))
@@ -73,9 +73,9 @@ namespace Microsoft.Azure.PowerShell.Ssh.Helpers.Compute.Models
         /// is configured for the VM size otherwise **ResourceDisk** is
         /// used.&amp;lt;br&amp;gt;&amp;lt;br&amp;gt; Refer to VM size
         /// documentation for Windows VM at
-        /// https://learn.microsoft.com/azure/virtual-machines/windows/sizes and
+        /// https://docs.microsoft.com/azure/virtual-machines/windows/sizes and
         /// Linux VM at
-        /// https://learn.microsoft.com/azure/virtual-machines/linux/sizes to
+        /// https://docs.microsoft.com/azure/virtual-machines/linux/sizes to
         /// check which VM sizes exposes a cache disk. Possible values include:
         /// 'CacheDisk', 'ResourceDisk'
         /// </summary>

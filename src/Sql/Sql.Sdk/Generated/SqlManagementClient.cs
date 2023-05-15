@@ -472,11 +472,6 @@ namespace Microsoft.Azure.Management.Sql
         public virtual IManagedInstanceDtcsOperations ManagedInstanceDtcs { get; private set; }
 
         /// <summary>
-        /// Gets the IManagedDatabasesOperations.
-        /// </summary>
-        public virtual IManagedDatabasesOperations ManagedDatabases { get; private set; }
-
-        /// <summary>
         /// Gets the IManagedDatabaseRestoreDetailsOperations.
         /// </summary>
         public virtual IManagedDatabaseRestoreDetailsOperations ManagedDatabaseRestoreDetails { get; private set; }
@@ -510,6 +505,16 @@ namespace Microsoft.Azure.Management.Sql
         /// Gets the IServerConfigurationOptionsOperations.
         /// </summary>
         public virtual IServerConfigurationOptionsOperations ServerConfigurationOptions { get; private set; }
+
+        /// <summary>
+        /// Gets the IManagedLedgerDigestUploadsOperations.
+        /// </summary>
+        public virtual IManagedLedgerDigestUploadsOperations ManagedLedgerDigestUploads { get; private set; }
+
+        /// <summary>
+        /// Gets the IManagedDatabasesOperations.
+        /// </summary>
+        public virtual IManagedDatabasesOperations ManagedDatabases { get; private set; }
 
         /// <summary>
         /// Initializes a new instance of the SqlManagementClient class.
@@ -833,7 +838,6 @@ namespace Microsoft.Azure.Management.Sql
             ServerAdvancedThreatProtectionSettings = new ServerAdvancedThreatProtectionSettingsOperations(this);
             ManagedServerDnsAliases = new ManagedServerDnsAliasesOperations(this);
             ManagedInstanceDtcs = new ManagedInstanceDtcsOperations(this);
-            ManagedDatabases = new ManagedDatabasesOperations(this);
             ManagedDatabaseRestoreDetails = new ManagedDatabaseRestoreDetailsOperations(this);
             DatabaseEncryptionProtectors = new DatabaseEncryptionProtectorsOperations(this);
             RecoverableDatabases = new RecoverableDatabasesOperations(this);
@@ -841,6 +845,8 @@ namespace Microsoft.Azure.Management.Sql
             InstanceFailoverGroups = new InstanceFailoverGroupsOperations(this);
             Servers = new ServersOperations(this);
             ServerConfigurationOptions = new ServerConfigurationOptionsOperations(this);
+            ManagedLedgerDigestUploads = new ManagedLedgerDigestUploadsOperations(this);
+            ManagedDatabases = new ManagedDatabasesOperations(this);
             BaseUri = new System.Uri("https://management.azure.com");
             AcceptLanguage = "en-US";
             LongRunningOperationRetryTimeout = 30;
