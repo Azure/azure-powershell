@@ -1,20 +1,20 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-	<PropertyGroup>
-		<PsModuleName>Resources</PsModuleName>
-	</PropertyGroup>
+  <PropertyGroup>
+	<PsModuleName>Resources</PsModuleName>
+  </PropertyGroup>
 
-	<Import Project="$(MSBuildThisFileDirectory)..\..\Az.props" />
+  <Import Project="$(MSBuildThisFileDirectory)..\..\Az.props" />
 
-	<PropertyGroup>
-		<AssemblyName>$(AzAssemblyPrefix)Tags</AssemblyName>
-		<RootNamespace>$(LegacyAssemblyPrefix)Tags</RootNamespace>
-	</PropertyGroup>
+  <PropertyGroup>
+	<AssemblyName>$(AzAssemblyPrefix)Tags</AssemblyName>
+	<RootNamespace>$(LegacyAssemblyPrefix)Tags</RootNamespace>
+  </PropertyGroup>
 
-	<ItemGroup>
-		<PackageReference Include="Microsoft.Azure.Management.ResourceManager" Version="3.17.3-preview" />
-	</ItemGroup>
+  <ItemGroup>
+	<PackageReference Include="Microsoft.Azure.Management.ResourceManager" Version="3.17.3-preview" />
+  </ItemGroup>
 
-	<Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.Post.props" />
+  <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.Post.props" />
 
 </Project>
