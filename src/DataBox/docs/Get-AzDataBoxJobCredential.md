@@ -28,7 +28,11 @@ Get-AzDataBoxJobCredential -Name "DtbxPowershell" -ResourceGroupName "resourceGr
 
 $obj = Get-AzDataBoxJobCredential -Name TJy-637522091284252285 -ResourceGroupName bvttoolrg12-Wednesday
 $obj | Format-List
+$obj.JobSecret | Format-List
+$cabinetJobSecret = $obj.JobSecret.CabinetPodSecret | Format-List
+```
 
+```output
 AdditionalInfo                          :
 Code                                    :
 DcAccessSecurityCodeForwardDcAccessCode :
@@ -41,8 +45,6 @@ Message                                 :
 Target                                  :
 
 
-$obj.JobSecret | Format-List
-
 AdditionalInfo                          :
 CabinetPodSecret                        : {, }
 Code                                    :
@@ -54,8 +56,6 @@ Error                                   : Microsoft.Azure.PowerShell.Cmdlets.Dat
 Message                                 :
 Target                                  :
 Type                                    : DataBoxHeavy
-
-$cabinetJobSecret = $obj.JobSecret.CabinetPodSecret | Format-List
 ```
 
 Get databoxHeavy job credential

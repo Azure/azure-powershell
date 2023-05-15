@@ -38,7 +38,7 @@ Updates the properties of an existing job.
 ```powershell
 $keyEncryptionDetails = New-AzDataBoxKeyEncryptionKeyObject -KekType "CustomerManaged" -IdentityProperty @{Type = "UserAssigned"; UserAssignedResourceId = "/subscriptions/SubscriptionId/resourceGroups/resourceGroupName/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identityName"} -KekUrl "keyIdentifier" -KekVaultResourceId "/subscriptions/SubscriptionId/resourceGroups/resourceGroupName/providers/Microsoft.KeyVault/vaults/keyVaultName"
 
-$keyEncryptionDetails
+$DebugPreference = "Continue"
 
 # You can use `$DebugPreference = "Continue"`, with any example/usecase to get exact details of error in below format when update command fails.
 # {
@@ -51,14 +51,16 @@ $keyEncryptionDetails
 #     "Target": null
 #   }
 # } 
+
 Update-AzDataBoxJob -Name "powershell10" -ResourceGroupName "resourceGroupName" -KeyEncryptionKey $keyEncryptionDetails -ContactDetail $contactDetail -ShippingAddress $ShippingDetails  -IdentityType "UserAssigned" -UserAssignedIdentity @{"/subscriptions/SubscriptionId/resourceGroups/resourceGroupName/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identityName" = @{}}
+
+$keyEncryptionDetails
 ```
 
 ```output
 KekType         KekUrl                                           KekVaultResourceId
 -------         ------                                           ------------------
 CustomerManaged keyIdentifier /subscriptions/SubscriptionId/resourceGroups/resourceGroupName/providers/Microsoft.KeyVault/vaults/keyVaultName
-$DebugPreference = "Continue"
 
 Name         Location Status        TransferType  SkuName IdentityType DeliveryType Detail
 ----         -------- ------        ------------  ------- ------------ ------------ ------
@@ -90,7 +92,6 @@ PrincipalId                          TenantId                             Type
 PrincipalId                          TenantId                             Type
 -----------                          --------                             ----
 920850f5-9b6b-4017-a81a-3dcafe348be7 72f988bf-86f1-41af-91ab-2d7cd011db47 SystemAssigned
-
 
 KekType         KekUrl                                           KekVaultResourceId
 -------         ------                                           ------------------
