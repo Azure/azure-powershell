@@ -117,14 +117,14 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AADLoginForServicePrincipal" xml:space="preserve">
-    <value>Azure PowerShell doesn't currently support AAD login for Service Principal accounts. Provide a -LocalUser.</value>
-  </data>
   <data name="ConfigFilePathIsDirectory" xml:space="preserve">
     <value>{0} is a directory, unable to write config file in that path. Provide a valid path for a file.</value>
   </data>
   <data name="ConfigFolderDoesNotExist" xml:space="preserve">
     <value>Config file destination folder {0} does not exist.</value>
+  </data>
+  <data name="FailedToAADUnsupportedAccountType" xml:space="preserve">
+    <value>Failed to generate AAD certificate. AAD Login is currently not supported for accounts of type {0} in Azure PowerShell. Try connecting to a Local Account instead.</value>
   </data>
   <data name="FailedToCreateDefaultEndpoint" xml:space="preserve">
     <value>Failed to create default endpoint for the target Arc Server (see: https://aka.ms/ssharc/create-default-endpoint) with error: {0}.</value>

@@ -793,7 +793,7 @@ namespace Microsoft.Azure.Commands.Ssh
             {
                 if (context.Account.Type != AzureAccount.AccountType.User)
                 {
-                    throw new AzPSApplicationException($"Failed to generate AAD certificate. AAD Login is currently not supported for accounts of type {context.Account.Type} in Azure PowerShell. Try connecting to a Local Account instead.");
+                    throw new AzPSApplicationException(String.Format(Resources.FailedToAADUnsupportedAccountType, context.Account.Type));
                 }
 
                 throw new AzPSApplicationException($"Failed to generate AAD certificate with exception: {exception.Message}.");

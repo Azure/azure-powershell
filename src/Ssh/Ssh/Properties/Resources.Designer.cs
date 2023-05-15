@@ -61,15 +61,6 @@ namespace Microsoft.Azure.Commands.Ssh.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Azure PowerShell doesn&apos;t currently support AAD login for Service Principal accounts. Provide a -LocalUser..
-        /// </summary>
-        internal static string AADLoginForServicePrincipal {
-            get {
-                return ResourceManager.GetString("AADLoginForServicePrincipal", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to {0} is a directory, unable to write config file in that path. Provide a valid path for a file..
         /// </summary>
         internal static string ConfigFilePathIsDirectory {
@@ -84,6 +75,15 @@ namespace Microsoft.Azure.Commands.Ssh.Properties {
         internal static string ConfigFolderDoesNotExist {
             get {
                 return ResourceManager.GetString("ConfigFolderDoesNotExist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failed to generate AAD certificate. AAD Login is currently not supported for accounts of type {0} in Azure PowerShell. Try connecting to a Local Account instead..
+        /// </summary>
+        internal static string FailedToAADUnsupportedAccountType {
+            get {
+                return ResourceManager.GetString("FailedToAADUnsupportedAccountType", resourceCulture);
             }
         }
         
