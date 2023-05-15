@@ -5599,6 +5599,7 @@
       "Set-AzServiceFabricManagedCluster": {},
       "Remove-AzServiceFabricManagedCluster": {},
       "Add-AzServiceFabricManagedClusterClientCertificate": {},
+      "Add-AzServiceFabricManagedClusterNetworkSecurityRule": {},
       "Remove-AzServiceFabricManagedClusterClientCertificate": {},
       "New-AzServiceFabricManagedNodeType": {},
       "Get-AzServiceFabricManagedNodeType": {},
