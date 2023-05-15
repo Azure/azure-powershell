@@ -12,11 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.ServiceFabric.Models
+
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace Microsoft.Azure.Commands.Network
 {
-    public enum NetworkSecurityDirection
+    public class VirtualApplianceAdditionalNicPropertiesBaseCmdlet : NetworkBaseCmdlet
     {
-        Inbound,
-        Outbound
+        // Empty class for future development of Get/Set/Update commands.
     }
 }

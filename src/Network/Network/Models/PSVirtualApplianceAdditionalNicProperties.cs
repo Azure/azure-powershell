@@ -12,11 +12,17 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.ServiceFabric.Models
+
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace Microsoft.Azure.Commands.Network.Models
 {
-    public enum NetworkSecurityAccess
+    public class PSVirtualApplianceAdditionalNicProperties
     {
-        Allow,
-        Deny
+        public string Name { get; set; }
+        public bool HasPublicIP { get; set; }
+        public string AddressFamily { get; set; }
     }
 }

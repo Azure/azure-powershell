@@ -106,7 +106,6 @@ function Test-LoadBalancerBackendPoolCreate
     $testIpAddress1 = "10.0.0.5"
     $testIpAddress2 = "10.0.1.6"
     $testIpAddress3 = "10.0.0.7"
-    $adminState = "Up"
 
     $backendAddressConfigName1 = Get-ResourceName
     $backendAddressConfigName2 = Get-ResourceName
@@ -131,7 +130,7 @@ function Test-LoadBalancerBackendPoolCreate
 
         $ip1 = New-AzLoadBalancerBackendAddressConfig -IpAddress $testIpAddress1 -Name $backendAddressConfigName1 -VirtualNetworkId $vnet.Id
         $ip2 = New-AzLoadBalancerBackendAddressConfig -IpAddress $testIpAddress2 -Name $backendAddressConfigName2 -SubnetId $vnet.Subnets[0].Id 
-        $ip3 = New-AzLoadBalancerBackendAddressConfig -IpAddress $testIpAddress3 -Name $backendAddressConfigName3 -VirtualNetworkId $vnet.Id -AdminState $adminState
+        $ip3 = New-AzLoadBalancerBackendAddressConfig -IpAddress $testIpAddress3 -Name $backendAddressConfigName3 -VirtualNetworkId $vnet.Id
 
         $ips = @($ip1, $ip2)
 
@@ -503,8 +502,6 @@ function Test-LoadBalancerBackendAddressConfig
     $validIpAddress = "10.0.0.5"
     $invalidIpAddress2 = "xxxxx"
 
-    $adminState = "Up"
-
     $backendAddressConfigName1 = Get-ResourceName
     $backendAddressConfigName2 = Get-ResourceName
 
@@ -517,12 +514,11 @@ function Test-LoadBalancerBackendAddressConfig
         $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
         $virtualNetwork = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
 
-        $ipconfig1 = New-AzLoadBalancerBackendAddressConfig -IpAddress $validIpAddress -Name $backendAddressConfigName1 -VirtualNetworkId $virtualNetwork.Id -AdminState $adminState
+        $ipconfig1 = New-AzLoadBalancerBackendAddressConfig -IpAddress $validIpAddress -Name $backendAddressConfigName1 -VirtualNetworkId $virtualNetwork.Id
 
         Assert-AreEqual $ipconfig1.Name $backendAddressConfigName1
         Assert-AreEqual $ipconfig1.IpAddress $validIpAddress
         Assert-AreEqual $ipconfig1.VirtualNetwork.Id $virtualNetwork.Id
-        Assert-AreEqual $ipconfig1.AdminState $adminState
 
         $ipconfig2 = New-AzLoadBalancerBackendAddressConfig -IpAddress $validIpAddress -Name $backendAddressConfigName1 -SubnetId virtualNetwork.Subnets[0].Id
 

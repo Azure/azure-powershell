@@ -55,7 +55,7 @@ function Test-InvalidName
         New-AzResourceGroup -Name $rgName -Location $rgLocation
 
         # Create PublicIpAddress with incorrect name
-        $scriptBlock = { New-AzPublicIpAddress -ResourceGroupName $rgName -Name $invalidName -Location $location -AllocationMethod Static }
+        $scriptBlock = { New-AzPublicIpAddress -ResourceGroupName $rgName -Name $invalidName -Location $location -AllocationMethod Dynamic }
         Assert-ThrowsLike $scriptBlock "*InvalidResourceName*Resource name ${invalidName} is invalid*"
     }
     finally

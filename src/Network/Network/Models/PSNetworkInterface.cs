@@ -61,9 +61,6 @@ namespace Microsoft.Azure.Commands.Network.Models
         [Ps1Xml(Target = ViewControl.Table)]
         public string AuxiliaryMode { get; set; }
 
-        [Ps1Xml(Target = ViewControl.Table)]
-        public string AuxiliarySku { get; set; }
-
         [JsonIgnore]
         public string VirtualMachineText
         {

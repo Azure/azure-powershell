@@ -76,13 +76,5 @@ namespace Commands.Network.Test.ScenarioTests
         {
             TestRunner.RunTestScript(string.Format("Test-NetworkInterfaceGetEffectiveRouteTable -baseDir '{0}'", System.AppDomain.CurrentDomain.BaseDirectory));
         }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.slbdev)]
-        public void TestNetworkInterfaceGatewayLoadBalancerConsumer()
-        {
-            TestRunner.RunTestScript(string.Format("Test-NetworkInterfaceGatewayLoadBalancerConsumer"));
-        }
     }
 }
