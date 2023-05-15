@@ -21,12 +21,12 @@ Create an in-memory object for AzureFirstPartyManagedCertificateParameters.
 Create an in-memory object for AzureFirstPartyManagedCertificateParameters.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.AzureFirstPartyManagedCertificateParameters
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.AzureFirstPartyManagedCertificateParameters
 .Link
 https://learn.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnSecretFirstPartyManagedCertificateParametersObject
 #>
 function New-AzFrontDoorCdnSecretFirstPartyManagedCertificateParametersObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.AzureFirstPartyManagedCertificateParameters')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.AzureFirstPartyManagedCertificateParameters')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -37,7 +37,7 @@ function New-AzFrontDoorCdnSecretFirstPartyManagedCertificateParametersObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.AzureFirstPartyManagedCertificateParameters]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.AzureFirstPartyManagedCertificateParameters]::New()
 
         if ($PSBoundParameters.ContainsKey('Type')) {
             $Object.Type = $Type

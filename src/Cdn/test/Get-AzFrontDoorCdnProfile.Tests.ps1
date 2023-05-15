@@ -14,99 +14,31 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzFrontDoorCdnProfile'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Get-AzFrontDoorCdnProfile' -Tag 'LiveOnly' {
+Describe 'Get-AzFrontDoorCdnProfile'  {
     It 'List' {
-        $ResourceGroupName = 'testps-rg-' + (RandomString -allChars $false -len 6)
-        try
-        {
-            Write-Host -ForegroundColor Green "Create test group $($ResourceGroupName)"
-            New-AzResourceGroup -Name $ResourceGroupName -Location $env.location
-
-            $frontDoorCdnProfileName = 'fdp-' + (RandomString -allChars $false -len 6);
-            Write-Host -ForegroundColor Green "Use frontDoorCdnProfileName : $($frontDoorCdnProfileName)"
-
-            $profileSku = "Standard_AzureFrontDoor";
-            New-AzFrontDoorCdnProfile -SkuName $profileSku -Name $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName -Location Global
-
-            $frontDoorCdnProfiles = Get-AzFrontDoorCdnProfile -ResourceGroupName $ResourceGroupName
-
-            $frontDoorCdnProfiles.Count | Should -BeGreaterOrEqual 1
-        } Finally
-        {
-            Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
-        }
+        $frontDoorCdnProfiles = Get-AzFrontDoorCdnProfile -ResourceGroupName $env.ResourceGroupName
+        $frontDoorCdnProfiles.Count | Should -BeGreaterOrEqual 1
     }
 
     It 'Get' {
-        $ResourceGroupName = 'testps-rg-' + (RandomString -allChars $false -len 6)
-        try
-        {
-            Write-Host -ForegroundColor Green "Create test group $($ResourceGroupName)"
-            New-AzResourceGroup -Name $ResourceGroupName -Location $env.location
+        $frontDoorCdnProfile = Get-AzFrontDoorCdnProfile -ResourceGroupName $env.ResourceGroupName -Name $env.FrontDoorCdnProfileName
 
-            $frontDoorCdnProfileName = 'fdp-' + (RandomString -allChars $false -len 6);
-            Write-Host -ForegroundColor Green "Use frontDoorCdnProfileName : $($frontDoorCdnProfileName)"
-
-            $profileSku = "Standard_AzureFrontDoor";
-            New-AzFrontDoorCdnProfile -SkuName $profileSku -Name $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName -Location Global
-
-            $frontDoorCdnProfile = Get-AzFrontDoorCdnProfile -ResourceGroupName $ResourceGroupName -Name $frontDoorCdnProfileName
-
-            $frontDoorCdnProfile.Name | Should -Be $frontDoorCdnProfileName
-            $frontDoorCdnProfile.SkuName | Should -Be $profileSku
-            $frontDoorCdnProfile.Location | Should -Be "Global"
-        } Finally
-        {
-            Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
-        }
+        $frontDoorCdnProfile.Name | Should -Be $env.FrontDoorCdnProfileName
+        $frontDoorCdnProfile.SkuName | Should -Be "Standard_AzureFrontDoor"
+        $frontDoorCdnProfile.Location | Should -Be "Global"
     }
 
     It 'List1' {
-        $ResourceGroupName = 'testps-rg-' + (RandomString -allChars $false -len 6)
-        try
-        {
-            Write-Host -ForegroundColor Green "Create test group $($ResourceGroupName)"
-            New-AzResourceGroup -Name $ResourceGroupName -Location $env.location
-
-            $frontDoorCdnProfileName = 'fdp-' + (RandomString -allChars $false -len 6);
-            Write-Host -ForegroundColor Green "Use frontDoorCdnProfileName : $($frontDoorCdnProfileName)"
-
-            $profileSku = "Standard_AzureFrontDoor";
-            New-AzFrontDoorCdnProfile -SkuName $profileSku -Name $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName -Location Global
-
-            $frontDoorCdnProfiles = Get-AzFrontDoorCdnProfile -ResourceGroupName $ResourceGroupName
-
-            $frontDoorCdnProfiles.Count | Should -Be 1
-        } Finally
-        {
-            Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
-        }
+        $frontDoorCdnProfiles = Get-AzFrontDoorCdnProfile -ResourceGroupName $env.ResourceGroupName
+        $frontDoorCdnProfiles.Count | Should -BeGreaterOrEqual 1
     }
 
     It 'GetViaIdentity' {
-        { 
-            $PSDefaultParameterValues['Disabled'] = $true
-            $ResourceGroupName = 'testps-rg-' + (RandomString -allChars $false -len 6)
-            try
-            {
-                Write-Host -ForegroundColor Green "Create test group $($ResourceGroupName)"
-                New-AzResourceGroup -Name $ResourceGroupName -Location $env.location
+        $PSDefaultParameterValues['Disabled'] = $true
+        $frontDoorCdnProfile = Get-AzFrontDoorCdnProfile -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.ResourceGroupName -Name $env.FrontDoorCdnProfileName | Get-AzFrontDoorCdnProfile
 
-                $frontDoorCdnProfileName = 'fdp-' + (RandomString -allChars $false -len 6);
-                Write-Host -ForegroundColor Green "Use frontDoorCdnProfileName : $($frontDoorCdnProfileName)"
-
-                $profileSku = "Standard_AzureFrontDoor";
-                New-AzFrontDoorCdnProfile -SkuName $profileSku -Name $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName -Location Global
-
-                $frontDoorCdnProfile = Get-AzFrontDoorCdnProfile -ResourceGroupName $ResourceGroupName -Name $frontDoorCdnProfileName | Get-AzFrontDoorCdnProfile
-
-                $frontDoorCdnProfile.Name | Should -Be $frontDoorCdnProfileName
-                $frontDoorCdnProfile.SkuName | Should -Be $profileSku
-                $frontDoorCdnProfile.Location | Should -Be "Global"
-            } Finally
-            {
-                Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
-            }
-        } | Should -Not -Throw
+        $frontDoorCdnProfile.Name | Should -Be $env.FrontDoorCdnProfileName
+        $frontDoorCdnProfile.SkuName | Should -Be "Standard_AzureFrontDoor"
+        $frontDoorCdnProfile.Location | Should -Be "Global"
     }
 }
