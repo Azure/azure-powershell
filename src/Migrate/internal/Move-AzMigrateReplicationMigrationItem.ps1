@@ -25,7 +25,7 @@ The operation to initiate migration of the item.
 {{ Add code here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IMigrationItem
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IMigrationItem
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -37,7 +37,7 @@ PROVIDERSPECIFICDETAIL <IMigrateProviderSpecificInput>: The provider specific de
 https://learn.microsoft.com/powershell/module/az.migrate/move-azmigratereplicationmigrationitem
 #>
 function Move-AzMigrateReplicationMigrationItem {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IMigrationItem])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IMigrationItem])]
 [CmdletBinding(DefaultParameterSetName='MigrateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -79,7 +79,7 @@ param(
 
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IMigrateProviderSpecificInput]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IMigrateProviderSpecificInput]
     # The provider specific details.
     # To construct, see NOTES section for PROVIDERSPECIFICDETAIL properties and create a hash table.
     ${ProviderSpecificDetail},
@@ -89,7 +89,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter()]

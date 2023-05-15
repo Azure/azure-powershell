@@ -98,6 +98,10 @@ namespace Microsoft.Azure.Commands.CosmosDB
             {
                 databaseAccountUpdateParameters.EnableAnalyticalStorage = EnableAnalyticalStorage;
             }
+            if (EnablePartitionMerge != null)
+            {
+                databaseAccountUpdateParameters.EnablePartitionMerge = EnablePartitionMerge;
+            }
             if (NetworkAclBypass != null)
             {
                 databaseAccountUpdateParameters.NetworkAclBypass =

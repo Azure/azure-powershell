@@ -67,6 +67,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"For example, Email, OfficeCommunicationsOnline.",
         SerializedName = @"capabilities",
         PossibleTypes = new [] { typeof(string) })]
@@ -77,6 +80,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"true if this is the default domain associated with the tenant; otherwise, false.",
         SerializedName = @"isDefault",
         PossibleTypes = new [] { typeof(bool) })]
@@ -87,6 +93,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"true if this is the initial domain associated with the tenant; otherwise, false.",
         SerializedName = @"isInitial",
         PossibleTypes = new [] { typeof(bool) })]
@@ -95,6 +104,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The domain name; for example, contoso.onmicrosoft.com.",
         SerializedName = @"name",
         PossibleTypes = new [] { typeof(string) })]
@@ -103,6 +115,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"For example, Managed.",
         SerializedName = @"type",
         PossibleTypes = new [] { typeof(string) })]

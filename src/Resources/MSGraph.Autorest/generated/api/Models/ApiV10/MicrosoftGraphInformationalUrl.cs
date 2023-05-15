@@ -74,6 +74,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Info(
         Required = false,
         ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
         Description = @"CDN URL to the application's logo, Read-only.",
         SerializedName = @"logoUrl",
         PossibleTypes = new [] { typeof(string) })]
@@ -84,6 +87,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Link to the application's marketing page. For example, https://www.contoso.com/app/marketing",
         SerializedName = @"marketingUrl",
         PossibleTypes = new [] { typeof(string) })]
@@ -94,6 +100,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Link to the application's privacy statement. For example, https://www.contoso.com/app/privacy",
         SerializedName = @"privacyStatementUrl",
         PossibleTypes = new [] { typeof(string) })]
@@ -104,6 +113,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Link to the application's support page. For example, https://www.contoso.com/app/support",
         SerializedName = @"supportUrl",
         PossibleTypes = new [] { typeof(string) })]
@@ -114,6 +126,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Link to the application's terms of service statement. For example, https://www.contoso.com/app/termsofservice",
         SerializedName = @"termsOfServiceUrl",
         PossibleTypes = new [] { typeof(string) })]

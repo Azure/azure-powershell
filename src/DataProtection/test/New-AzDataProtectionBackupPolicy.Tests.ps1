@@ -47,7 +47,7 @@ Describe 'New-AzDataProtectionBackupPolicy' {
         $trigger =  New-AzDataProtectionPolicyTriggerScheduleClientObject -ScheduleDays $schDates -IntervalType Weekly -IntervalCount 1
 
         Edit-AzDataProtectionPolicyTriggerClientObject -Schedule $trigger -Policy $pol   
-                  
+
         $tagCriteria = New-AzDataProtectionPolicyTagCriteriaClientObject -AbsoluteCriteria FirstOfMonth
 
         Edit-AzDataProtectionPolicyTagClientObject -Policy $pol -Name Monthly -Criteria $tagCriteria
@@ -108,5 +108,126 @@ Describe 'New-AzDataProtectionBackupPolicy' {
         Remove-AzDataProtectionBackupPolicy -Name $newPolicyName -ResourceGroupName $rgName -SubscriptionId $sub -VaultName $vaultName
         $policy = Get-AzDataProtectionBackupPolicy -SubscriptionId $sub -VaultName $vaultName -ResourceGroupName $rgName | where {$_.Name -eq $newPolicyName}
         $policy | Should be $null
+    }
+
+    It 'BlobHardeningOperationalPolicy' {
+        $subId = $env.TestBlobHardeningScenario.SubscriptionId
+        $resourceGroupName = $env.TestBlobHardeningScenario.ResourceGroupName
+        $vaultName = $env.TestBlobHardeningScenario.VaultName
+        $operationalPolicyName = $env.TestBlobHardeningScenario.OperationalPolicyName        
+        
+        # Create operational policy 
+        $defaultPol = Get-AzDataProtectionPolicyTemplate -DatasourceType AzureBlob
+
+        # Remove schedule 
+        Edit-AzDataProtectionPolicyTriggerClientObject -Policy $defaultPol -RemoveSchedule 
+
+        $lifeCycleOperationalTier = New-AzDataProtectionRetentionLifeCycleClientObject -SourceDataStore OperationalStore -SourceRetentionDurationType Days -SourceRetentionDurationCount 30 
+ 
+        Edit-AzDataProtectionPolicyRetentionRuleClientObject -Policy $defaultPol -Name Default -LifeCycles $lifeCycleOperationalTier -IsDefault $true -OverwriteLifeCycle $true
+
+        $opPolicy = New-AzDataProtectionBackupPolicy -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName -Name $operationalPolicyName -Policy $defaultPol 
+        
+        # get operational policy - verify name 
+        $opPolicy = Get-AzDataProtectionBackupPolicy -ResourceGroupName $resourceGroupName -VaultName $vaultName -SubscriptionId $subId -Name $operationalPolicyName
+
+        $opPolicy.Name | Should be $operationalPolicyName
+        $opPolicy.Property.PolicyRule.Count | Should be 1
+        $opPolicy.Property.PolicyRule[0].Lifecycle[0].SourceDataStoreType | Should be "OperationalStore"
+
+        #Remove policy
+        Remove-AzDataProtectionBackupPolicy -Name $operationalPolicyName -ResourceGroupName $resourceGroupName -SubscriptionId $subId -VaultName $vaultName
+        $opPolicy = Get-AzDataProtectionBackupPolicy -ResourceGroupName $resourceGroupName -VaultName $vaultName -SubscriptionId $subId | Where { $_.Name -match $operationalPolicyName }
+        $opPolicy | Should be $null
+    }
+
+    It 'BlobHardeningVaultedPolicy' {
+        $subId = $env.TestBlobHardeningScenario.SubscriptionId
+        $resourceGroupName = $env.TestBlobHardeningScenario.ResourceGroupName
+        $vaultName = $env.TestBlobHardeningScenario.VaultName
+        $vaultedPolicyName = $env.TestBlobHardeningScenario.VaultPolicyName
+        
+        # get default 
+        $defaultPol = Get-AzDataProtectionPolicyTemplate -DatasourceType AzureBlob
+
+        # add retention rule weekly 
+        $lifeCycleVaultTierWeekly = New-AzDataProtectionRetentionLifeCycleClientObject -SourceDataStore VaultStore -SourceRetentionDurationType Weeks -SourceRetentionDurationCount 4
+        Edit-AzDataProtectionPolicyRetentionRuleClientObject -Policy $defaultPol -Name Weekly -LifeCycles $lifeCycleVaultTierWeekly -IsDefault $false
+
+        # add weekly tag criteria
+        $tagCriteria = New-AzDataProtectionPolicyTagCriteriaClientObject -AbsoluteCriteria FirstOfWeek
+        Edit-AzDataProtectionPolicyTagClientObject -Policy $defaultPol -Name Weekly -Criteria $tagCriteria
+
+        # create policy
+        $vaultedPolicy = New-AzDataProtectionBackupPolicy -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName -Name $vaultedPolicyName -Policy $defaultPol
+        $vaultedPolicy = Get-AzDataProtectionBackupPolicy -ResourceGroupName $resourceGroupName -VaultName $vaultName -SubscriptionId $subId -Name $vaultedPolicyName
+
+        # Verify 
+        $vaultedPolicy.Name | Should be $vaultedPolicyName        
+        $vaultedPolicy.Property.PolicyRule[-1].Lifecycle[0].SourceDataStoreType | Should be "VaultStore"
+
+        #Remove policy
+        Remove-AzDataProtectionBackupPolicy -Name $vaultedPolicyName -ResourceGroupName $resourceGroupName -SubscriptionId $subId -VaultName $vaultName
+        $pol = Get-AzDataProtectionBackupPolicy -ResourceGroupName $resourceGroupName -VaultName $vaultName -SubscriptionId $subId | Where { $_.Name -match $vaultedPolicyName }
+        $pol | Should be $null
+    }
+
+    It 'BlobHardeningHybridPolicy' {
+        $subId = $env.TestBlobHardeningScenario.SubscriptionId
+        $resourceGroupName = $env.TestBlobHardeningScenario.ResourceGroupName
+        $vaultName = $env.TestBlobHardeningScenario.VaultName
+        $operationalVaultedPolicyName = $env.TestBlobHardeningScenario.OperationalVaultedPolicyName
+
+        # Create op + vault
+        $defaultPol = Get-AzDataProtectionPolicyTemplate -DatasourceType AzureBlob
+
+        $lifeCycleOperationalTier = New-AzDataProtectionRetentionLifeCycleClientObject -SourceDataStore OperationalStore -SourceRetentionDurationType Days -SourceRetentionDurationCount 30
+        Edit-AzDataProtectionPolicyRetentionRuleClientObject -Policy $defaultPol -Name Default -LifeCycles $lifeCycleOperationalTier -IsDefault $true -OverwriteLifeCycle $false  
+
+        # Weekly - 7W
+        $lifeCycleVaultTierWeekly = New-AzDataProtectionRetentionLifeCycleClientObject -SourceDataStore VaultStore -SourceRetentionDurationType Weeks -SourceRetentionDurationCount 7
+        Edit-AzDataProtectionPolicyRetentionRuleClientObject -Policy $defaultPol -Name Weekly -LifeCycles $lifeCycleVaultTierWeekly -IsDefault $false
+
+        # Add weekly tag criteria
+        $tagCriteria = New-AzDataProtectionPolicyTagCriteriaClientObject -AbsoluteCriteria FirstOfWeek
+        Edit-AzDataProtectionPolicyTagClientObject -Policy $defaultPol -Name Weekly -Criteria $tagCriteria
+
+        # Monthly - 5 Months
+        $lifeCycleVaultTierMonthly = New-AzDataProtectionRetentionLifeCycleClientObject -SourceDataStore VaultStore -SourceRetentionDurationType Months -SourceRetentionDurationCount 5
+        Edit-AzDataProtectionPolicyRetentionRuleClientObject -Policy $defaultPol -Name Monthly -LifeCycles $lifeCycleVaultTierMonthly -IsDefault $false
+
+        $tagCriteria = New-AzDataProtectionPolicyTagCriteriaClientObject -AbsoluteCriteria FirstOfMonth
+        Edit-AzDataProtectionPolicyTagClientObject -Policy $defaultPol -Name Monthly -Criteria $tagCriteria
+
+        # Yearly - 1 Year
+        $lifeCycleVaultTierYearly = New-AzDataProtectionRetentionLifeCycleClientObject -SourceDataStore VaultStore -SourceRetentionDurationType Years -SourceRetentionDurationCount 1
+        Edit-AzDataProtectionPolicyRetentionRuleClientObject -Policy $defaultPol -Name Yearly -LifeCycles $lifeCycleVaultTierYearly -IsDefault $false
+
+        $tagCriteria = New-AzDataProtectionPolicyTagCriteriaClientObject -AbsoluteCriteria FirstOfYear
+        Edit-AzDataProtectionPolicyTagClientObject -Policy $defaultPol -Name Yearly -Criteria $tagCriteria
+
+        # Schedule - Weekly, Sunday 2.30 am, West Europe Standard time 
+        $scheduleDate = Get-Date
+        $trigger =  New-AzDataProtectionPolicyTriggerScheduleClientObject -ScheduleDays $scheduleDate -IntervalType Weekly -IntervalCount 1
+        Edit-AzDataProtectionPolicyTriggerClientObject -Schedule $trigger -Policy $defaultPol
+        
+        $defaultPol.PolicyRule[0].Trigger.ScheduleRepeatingTimeInterval[0] = "R/2023-05-09T02:30:00+01:00/P1W"
+
+        $timeZone = Get-TimeZone -ListAvailable | Where-Object { $_.Id -match "Europe" }
+        $defaultPol.PolicyRule[0].Trigger.ScheduleTimeZone = $timeZone[0].Id
+
+        # create policy
+        $operationalVaultedPolicy = New-AzDataProtectionBackupPolicy -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName -Name $operationalVaultedPolicyName -Policy $defaultPol 
+        $operationalVaultedPolicy = Get-AzDataProtectionBackupPolicy -ResourceGroupName $resourceGroupName -VaultName $vaultName -SubscriptionId $subId -Name $operationalVaultedPolicyName
+
+        # Verify 
+        $operationalVaultedPolicy.Name | Should be $operationalVaultedPolicyName        
+        $operationalVaultedPolicy.Property.PolicyRule[-1].Lifecycle[0].SourceDataStoreType | Should be "VaultStore"
+        $operationalVaultedPolicy.Property.PolicyRule.Lifecycle.SourceDataStoreType -contains "OperationalStore" | Should be $true
+
+        #Remove policy
+        Remove-AzDataProtectionBackupPolicy -Name $operationalVaultedPolicy -ResourceGroupName $resourceGroupName -SubscriptionId $subId -VaultName $vaultName
+        $pol = Get-AzDataProtectionBackupPolicy -ResourceGroupName $resourceGroupName -VaultName $vaultName -SubscriptionId $subId | Where { $_.Name -match $operationalVaultedPolicy }
+        $pol | Should be $null
     }
 }

@@ -49,6 +49,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"For example, 'Enabled'.",
         SerializedName = @"capabilityStatus",
         PossibleTypes = new [] { typeof(string) })]
@@ -57,6 +60,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"For example, 'Success'.",
         SerializedName = @"provisioningStatus",
         PossibleTypes = new [] { typeof(string) })]
@@ -65,6 +71,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the service; for example, 'AccessControlS2S'",
         SerializedName = @"service",
         PossibleTypes = new [] { typeof(string) })]

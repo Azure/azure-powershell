@@ -18,9 +18,11 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Removed New-AzWebAppContainerPSSession and Enter-AzWebAppContainerPSSession cmdlets
 
 ## Version 2.15.1
 * Used AAD Auth instead of Basic Auth for PublishAzureWebApps
+* Add support for OneDeploy API in PublishAzureWebApps while maintaining backwards compatibility with existing behavior
 
 ## Version 2.15.0
 * Fixed Tag parameter issues with ASE for `New-AzWebApp`

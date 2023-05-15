@@ -14,7 +14,7 @@ namespace Microsoft.Azure.PowerShell.Ssh.Helpers.HybridCompute.Models
     using System.Linq;
 
     /// <summary>
-    /// Managed Identity.
+    /// Identity for the resource.
     /// </summary>
     public partial class Identity
     {
@@ -29,14 +29,16 @@ namespace Microsoft.Azure.PowerShell.Ssh.Helpers.HybridCompute.Models
         /// <summary>
         /// Initializes a new instance of the Identity class.
         /// </summary>
-        /// <param name="type">The identity type.</param>
-        /// <param name="principalId">The identity's principal id.</param>
-        /// <param name="tenantId">The identity's tenant id.</param>
-        public Identity(string type = default(string), string principalId = default(string), string tenantId = default(string))
+        /// <param name="principalId">The principal ID of resource
+        /// identity.</param>
+        /// <param name="tenantId">The tenant ID of resource.</param>
+        /// <param name="type">The identity type. Possible values include:
+        /// 'SystemAssigned'</param>
+        public Identity(string principalId = default(string), string tenantId = default(string), ResourceIdentityType? type = default(ResourceIdentityType?))
         {
-            Type = type;
             PrincipalId = principalId;
             TenantId = tenantId;
+            Type = type;
             CustomInit();
         }
 
@@ -46,22 +48,23 @@ namespace Microsoft.Azure.PowerShell.Ssh.Helpers.HybridCompute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the identity type.
-        /// </summary>
-        [JsonProperty(PropertyName = "type")]
-        public string Type { get; set; }
-
-        /// <summary>
-        /// Gets the identity's principal id.
+        /// Gets the principal ID of resource identity.
         /// </summary>
         [JsonProperty(PropertyName = "principalId")]
         public string PrincipalId { get; private set; }
 
         /// <summary>
-        /// Gets the identity's tenant id.
+        /// Gets the tenant ID of resource.
         /// </summary>
         [JsonProperty(PropertyName = "tenantId")]
         public string TenantId { get; private set; }
+
+        /// <summary>
+        /// Gets or sets the identity type. Possible values include:
+        /// 'SystemAssigned'
+        /// </summary>
+        [JsonProperty(PropertyName = "type")]
+        public ResourceIdentityType? Type { get; set; }
 
     }
 }

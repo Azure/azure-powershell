@@ -20,12 +20,11 @@ The cmdlet may call below Microsoft Graph API according to input parameters:
 New-AzAksCluster [-NodeVmSetType <String>] [-NodeVnetSubnetID <String>] [-NodeMaxPodCount <Int32>]
  [-NodeSetPriority <String>] [-NodePoolMode <String>] [-NodeOsSKU <String>]
  [-NodeScaleSetEvictionPolicy <String>] [-AddOnNameToBeEnabled <String[]>] [-WorkspaceResourceId <String>]
- [-SubnetName <String>] [-EnableRbac] [-WindowsProfileAdminUserName <String>]
- [-WindowsProfileAdminUserPassword <SecureString>] [-NetworkPlugin <String>] [-NetworkPolicy <String>]
- [-PodCidr <String>] [-ServiceCidr <String>] [-DnsServiceIP <String>] [-DockerBridgeCidr <String>]
- [-OutboundType <String>] [-LoadBalancerSku <String>] [-Force] [-GenerateSshKey] [-EnableNodePublicIp]
- [-NodePublicIPPrefixID <String>] [-AvailabilityZone <String[]>] [-NodeResourceGroup <String>]
- [-EnableEncryptionAtHost] [-EnableUltraSSD] [-NodeLinuxOSConfig <LinuxOSConfig>]
+ [-SubnetName <String>] [-EnableRbac] [-WindowsProfileAdminUserName <String>] [-NetworkPlugin <String>]
+ [-NetworkPolicy <String>] [-PodCidr <String>] [-ServiceCidr <String>] [-DnsServiceIP <String>]
+ [-DockerBridgeCidr <String>] [-OutboundType <String>] [-LoadBalancerSku <String>] [-Force] [-GenerateSshKey]
+ [-EnableNodePublicIp] [-NodePublicIPPrefixID <String>] [-AvailabilityZone <String[]>]
+ [-NodeResourceGroup <String>] [-EnableEncryptionAtHost] [-EnableUltraSSD] [-NodeLinuxOSConfig <LinuxOSConfig>]
  [-NodeKubeletConfig <KubeletConfig>] [-NodeMaxSurge <String>] [-PPG <String>] [-EnableFIPS]
  [-AutoScalerProfile <ManagedClusterPropertiesAutoScalerProfile>] [-GpuInstanceProfile <String>]
  [-EnableUptimeSLA] [-EdgeZone <String>] [-NodeHostGroupID <String>] [-NodePodSubnetID <String>]
@@ -43,8 +42,8 @@ New-AzAksCluster [-NodeVmSetType <String>] [-NodeVnetSubnetID <String>] [-NodeMa
  [-DiskEncryptionSetID <String>] [-DisableLocalAccount] [-HttpProxy <String>] [-HttpsProxy <String>]
  [-HttpProxyConfigNoProxyEndpoint <String[]>] [-HttpProxyConfigTrustedCa <String>]
  [-AksCustomHeader <Hashtable>] [-AadProfile <ManagedClusterAADProfile>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [-SubscriptionId <String>]
- [<CommonParameters>]
+ [-WindowsProfileAdminUserPassword <SecureString>] [-EnableAHUB] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [-SubscriptionId <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -387,6 +386,21 @@ The name of the Edge Zone.
 
 ```yaml
 Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableAHUB
+Whether to enable Azure Hybrid User Benefits (AHUB) for Windows VMs.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 

@@ -48,6 +48,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The cost center associated with the user. Returned only on $select. Supports $filter.",
         SerializedName = @"costCenter",
         PossibleTypes = new [] { typeof(string) })]
@@ -58,6 +61,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the division in which the user works. Returned only on $select. Supports $filter.",
         SerializedName = @"division",
         PossibleTypes = new [] { typeof(string) })]
