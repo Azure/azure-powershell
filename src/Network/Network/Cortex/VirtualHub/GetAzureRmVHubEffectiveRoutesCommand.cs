@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.Network
         [ResourceGroupCompleter]
         public string ResourceGroupName { get; set; }
 
-        [Alias("VirtualHubName", "ParentVirtualHubName", "ParentResourceName")]
+        [Alias("ParentVirtualHubName", "ParentResourceName")]
         [Parameter(
             Mandatory = true,
             ParameterSetName = CortexParameterSetNames.ByVirtualHubName,
@@ -90,13 +90,13 @@ namespace Microsoft.Azure.Commands.Network
                 ResourceGroupName = parsedResourceId.ResourceGroupName;
             }
 
-            EffectiveRoutesParameters pSEffectiveRoutesParameters = new EffectiveRoutesParameters()
+            EffectiveRoutesParameters effectiveRoutesParameters = new EffectiveRoutesParameters()
             {
                 ResourceId = this.ResourceId,
                 VirtualWanResourceType = this.VirtualWanResourceType
             };
 
-            WriteObject(VirtualHubClient.GetEffectiveVirtualHubRoutes(ResourceGroupName, VirtualHubName, pSEffectiveRoutesParameters));
+            WriteObject(GetVirtualHubEffectiveRouteList(ResourceGroupName, VirtualHubName, effectiveRoutesParameters));
         }
     }
 }
