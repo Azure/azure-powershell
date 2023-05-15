@@ -33,6 +33,8 @@ Describe 'New-AzFunctionApp, Update-AzFunctionApp, and Remove-AzFunctionApp E2E'
                               -PlanName $env.planNameWorkerTypeWindows `
                               -StorageAccount $env.storageAccountWindows  `
                               -Runtime PowerShell `
+                              -RuntimeVersion "7.2" `
+                              -FunctionsVersion 4 `
                               -IdentityType SystemAssigned `
                               -Tag $tags
 
@@ -137,8 +139,8 @@ Describe 'New-AzFunctionApp, Update-AzFunctionApp, and Remove-AzFunctionApp E2E'
                                                 -StorageAccount $env.storageAccountWindows `
                                                 -OSType "Windows" `
                                                 -Runtime "PowerShell" `
-                                                -RuntimeVersion 7.0 `
-                                                -FunctionsVersion 3 `
+                                                -RuntimeVersion 7.2 `
+                                                -FunctionsVersion 4 `
                                                 -AsJob
 
             Write-Verbose "Job completed. Validating result" -Verbose
@@ -193,8 +195,8 @@ Describe 'New-AzFunctionApp, Update-AzFunctionApp, and Remove-AzFunctionApp E2E'
                               -StorageAccount $env.storageAccountWindows `
                               -OSType "Windows" `
                               -Runtime "PowerShell" `
-                              -RuntimeVersion 7.0 `
-                              -FunctionsVersion 3
+                              -RuntimeVersion 7.2 `
+                              -FunctionsVersion 4
 
             $functionApp = Get-AzFunctionApp -Name $functionName -ResourceGroupName $env.resourceGroupNameWindowsPremium
             $functionApp.OSType | Should -Be "Windows"
