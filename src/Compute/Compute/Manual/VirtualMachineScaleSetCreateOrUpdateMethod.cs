@@ -652,7 +652,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 && !this.IsParameterBound(c => c.UserAssignedIdentity)
                     )
             {
-                this.SystemAssignedIdentity = true;//new VirtualMachineIdentity(null, null, Microsoft.Azure.Management.Compute.Models.ResourceIdentityType.SystemAssigned);
+                this.SystemAssignedIdentity = true;
             }
             
             var parameters = new Parameters(this, client);
