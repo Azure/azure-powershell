@@ -261,6 +261,36 @@ FederatedClientId                :
 
 This command gets a database configured with TDE CMK keys with filter as 'current'
 
+### Example 7: Get a database configured with preferred enclave type as VBS
+
+```powershell
+Get-AzSqlDatabase -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database02"
+```
+
+```output
+ResourceGroupName             : ResourceGroup01
+ServerName                    : Server01
+DatabaseName                  : Database02
+Location                      : Central US
+DatabaseId                    : 34d9d561-42a7-484e-bf05-62ddef8000ab
+Edition                       : GeneralPurpose
+CollationName                 : SQL_Latin1_General_CP1_CI_AS
+CatalogCollation              :
+MaxSizeBytes                  : 268435456000
+Status                        : Online
+CreationDate                  : 8/26/2015 10:04:29 PM
+CurrentServiceObjectiveName   : GP_Gen5_2
+RequestedServiceObjectiveName :
+ElasticPoolName               :
+EarliestRestoreDate           :
+LicenseType                   : LicenseIncluded
+Tags                          :
+EnableLedger                  : False
+PreferredEnclaveType          : VBS
+```
+
+This command gets a database configured with VBS enclave
+
 ## PARAMETERS
 
 ### -DatabaseName

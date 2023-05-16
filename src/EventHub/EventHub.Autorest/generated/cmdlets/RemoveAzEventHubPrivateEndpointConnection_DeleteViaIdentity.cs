@@ -8,13 +8,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Cmdlets
     using static Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Extensions;
     using System;
 
-    /// <summary>Deletes a Private Endpoint Connection.</summary>
+    /// <summary>
+    /// Deletes an existing namespace. This operation also removes all associated resources under the namespace.
+    /// </summary>
     /// <remarks>
     /// [OpenAPI] Delete=>DELETE:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/privateEndpointConnections/{privateEndpointConnectionName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Remove, @"AzEventHubPrivateEndpointConnection_DeleteViaIdentity", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(bool))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.Description(@"Deletes a Private Endpoint Connection.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.Description(@"Deletes an existing namespace. This operation also removes all associated resources under the namespace.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.Generated]
     public partial class RemoveAzEventHubPrivateEndpointConnection_DeleteViaIdentity : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.IEventListener
@@ -47,9 +49,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Cmdlets
         public Microsoft.Azure.PowerShell.Cmdlets.EventHub.EventHub Client => Microsoft.Azure.PowerShell.Cmdlets.EventHub.Module.Instance.ClientAPI;
 
         /// <summary>
-        /// The credentials, account, tenant, and subscription used for communication with Azure
+        /// The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet
+        /// against a different subscription
         /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The credentials, account, tenant, and subscription used for communication with Azure.")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.")]
         [global::System.Management.Automation.ValidateNotNull]
         [global::System.Management.Automation.Alias("AzureRMContext", "AzureCredential")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category(global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.ParameterCategory.Azure)]

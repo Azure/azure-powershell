@@ -269,7 +269,7 @@ Function Move-Generation2MasterHybrid {
             if (-not (Test-Path (Join-Path -Path (Join-Path -Path $DestPath -ChildPath $ModuleName) -ChildPath "Az.$ModuleName.psd1"))) {
                 $Psd1FolderPostfix = '.Management'
             }
-            Copy-Item -Path ("$SourcePath\{0}\docs\*" -f $submoduleDir.Name) -Destination "$DestPath\$ModuleName$Psd1FolderPostfix\help" -Filter *-*
+            Copy-Item -Path ("$SourcePath\{0}\docs\*" -f $submoduleDir.Name) -Destination "$DestPath\$ModuleName$Psd1FolderPostfix\help" -Filter *-* -Force
 
             #Region generate-info.json Here have a issue that user may not use latest version to generate the code.
             $generateInfo = @{}

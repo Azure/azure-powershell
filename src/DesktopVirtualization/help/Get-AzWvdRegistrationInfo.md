@@ -22,18 +22,32 @@ Get the Windows virtual desktop registration info.
 
 ## EXAMPLES
 
-### Example 1: Get a Windows Virtual Desktop Registration Token	
+### Example 1: Get Existing Registration Info from Hostpool
 ```powershell
-Get-AzWvdRegistrationInfo -ResourceGroupName ResourceGroupName -HostPoolName HostPoolName
+Get-AzWvdRegistrationInfo -ResourceGroupName rgName -HostPoolName hpName
 ```
 
 ```output
-ExpirationTime       RegistrationTokenOperation Token	
---------------       -------------------------- -----	
-4/1/2020 10:19:33 PM None                       eyJhbGciOiJSUzI1NiIsImtpZCI6IkMyRjU1RUYxNzg0MEFCNzkzMDk2RUYzRjdEMkNBRDk0NThGNDhEOTQiLCJ0eXAiOiJKV1QifQ.eyJSZWdpc3RyYXRpb25JZCI6IjU5NGJjZWUwLTk5MjQtNDg3ZC1iOW...	
+ExpirationTime        RegistrationTokenOperation Token
+--------------        -------------------------- -----
+5/10/2023 12:00:00 PM None                       <base64 encoded string>
+
 ```
 
-This command gets a Windows Virtual Desktop Registration Token in a Host Pool.
+Retrieves Registration Info for the chosen hostpool.
+
+### Example 2: Get Empty Registration Info from HostPool 
+```powershell
+Get-AzWvdRegistrationInfo -ResourceGroupName rgName -HostPoolname hpName
+```
+
+```output
+ExpirationTime RegistrationTokenOperation Token
+-------------- -------------------------- -----
+               None
+```
+
+Returns an empty Registration Info for the chosen Hostpool if the Hostpool doesn't have any Registration Info.
 
 ## PARAMETERS
 
@@ -104,7 +118,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.RegistrationInfo
+### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.RegistrationInfo
 
 ## NOTES
 

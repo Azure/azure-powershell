@@ -12,22 +12,26 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Sql.Common;
-using Microsoft.Azure.Commands.Sql.ServerConfigurationOptions.Model;
-using Microsoft.Azure.Commands.Sql.ServerConfigurationOptions.Services;
-using System.Collections.Generic;
+using Newtonsoft.Json;
 
-namespace Microsoft.Azure.Commands.Sql.ServerConfigurationOptions.Cmdlet
+namespace Microsoft.Azure.Commands.NetAppFiles.Models
 {
-    public abstract class ServerConfigurationOptionsCmdletBase : AzureSqlCmdletBase<IEnumerable<ServerConfigurationOptionsModel>, ServerConfigurationOptionsAdapter>
+    public class PSNetAppFilesVolumeRelocationProperties
     {
         /// <summary>
-        /// Intializes the model adapter
+        /// Gets or sets RelocationRequested
         /// </summary>
-        /// <returns></returns>
-        protected override ServerConfigurationOptionsAdapter InitModelAdapter()
-        {
-            return new ServerConfigurationOptionsAdapter(DefaultContext);
-        }
+        /// <remark>
+        /// Has relocation been requested for this volume
+        /// </remark>                
+        public bool? RelocationRequested { get; set; }
+
+        /// <summary>
+        /// Gets or sets ReadyToBeFinalized
+        /// </summary>
+        /// <remark>
+        /// Has relocation been requested for this volume
+        /// </remark>                
+        public bool? ReadyToBeFinalized { get; set; }
     }
 }

@@ -317,7 +317,7 @@ namespace Microsoft.Azure.PowerShell.Ssh.Helpers.HybridConnectivity
         {
             Endpoints = new EndpointsOperations(this);
             BaseUri = new System.Uri("https://management.azure.com");
-            ApiVersion = "2021-10-06-preview";
+            ApiVersion = "2022-05-01-preview";
             AcceptLanguage = "en-US";
             LongRunningOperationRetryTimeout = 30;
             GenerateClientRequestId = true;

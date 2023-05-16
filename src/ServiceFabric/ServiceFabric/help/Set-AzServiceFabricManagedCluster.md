@@ -84,7 +84,7 @@ Port used for client connections to the cluster. Default: 19000.
 
 ```yaml
 Type: System.Nullable`1[System.Int32]
-Parameter Sets: WithPramsByName, ByNameById
+Parameter Sets: WithParamsByName, ByNameById
 Aliases:
 
 Required: False
@@ -99,7 +99,7 @@ Cluster code version. Only use if upgrade mode is Manual.
 
 ```yaml
 Type: System.String
-Parameter Sets: WithPramsByName, ByNameById
+Parameter Sets: WithParamsByName, ByNameById
 Aliases:
 
 Required: False
@@ -129,7 +129,7 @@ Cluster's dns name.
 
 ```yaml
 Type: System.String
-Parameter Sets: WithPramsByName, ByNameById
+Parameter Sets: WithParamsByName, ByNameById
 Aliases:
 
 Required: False
@@ -144,7 +144,7 @@ Port used for http connections to the cluster. Default: 19080.
 
 ```yaml
 Type: System.Nullable`1[System.Int32]
-Parameter Sets: WithPramsByName, ByNameById
+Parameter Sets: WithParamsByName, ByNameById
 Aliases:
 
 Required: False
@@ -174,7 +174,7 @@ Specify the name of the cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: WithPramsByName
+Parameter Sets: WithParamsByName
 Aliases: ClusterName
 
 Required: True
@@ -189,7 +189,7 @@ Specify the name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: WithPramsByName
+Parameter Sets: WithParamsByName
 Aliases:
 
 Required: True
@@ -219,7 +219,7 @@ Specify the tags as key/value pairs.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: WithPramsByName, ByNameById
+Parameter Sets: WithParamsByName, ByNameById
 Aliases:
 
 Required: False
@@ -234,7 +234,7 @@ Cluster code version upgrade mode. Automatic or Manual.
 
 ```yaml
 Type: System.Nullable`1[Microsoft.Azure.Commands.ServiceFabric.Models.ClusterUpgradeMode]
-Parameter Sets: WithPramsByName, ByNameById
+Parameter Sets: WithParamsByName, ByNameById
 Aliases:
 Accepted values: Automatic, Manual
 

@@ -12,31 +12,22 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.ScenarioTest.SqlTests;
-using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Xunit;
-using Xunit.Abstractions;
+using Microsoft.Azure.Commands.Sql.Common;
+using Microsoft.Azure.Commands.Sql.ServerConfigurationOptions.Model;
+using Microsoft.Azure.Commands.Sql.ServerConfigurationOptions.Services;
+using System.Collections.Generic;
 
-namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
+namespace Microsoft.Azure.Commands.Sql.ServerConfigurationOptions.Cmdlet
 {
-	public class ServerConfigurationOptionTests : SqlTestRunner
-	{
-		public ServerConfigurationOptionTests(ITestOutputHelper output) : base(output)
-		{
-		}
-
-		[Fact]
-		[Trait(Category.AcceptanceType, Category.CheckIn)]
-		public void TestServerConfigurationOption()
-		{
-			TestRunner.RunTestScript("Test-ServerConfigurationOption");
-		}
-
-		[Fact]
-		[Trait(Category.AcceptanceType, Category.CheckIn)]
-		public void TestServerConfigurationOptionPiping()
-		{
-			TestRunner.RunTestScript("Test-ServerConfigurationOptionPiping");
-		}
-	}
+    public abstract class ServerConfigurationOptionsCmdletBase : AzureSqlCmdletBase<IEnumerable<ServerConfigurationOptionsModel>, ServerConfigurationOptionsAdapter>
+    {
+        /// <summary>
+        /// Intializes the model adapter
+        /// </summary>
+        /// <returns></returns>
+        protected override ServerConfigurationOptionsAdapter InitModelAdapter()
+        {
+            return new ServerConfigurationOptionsAdapter(DefaultContext);
+        }
+    }
 }

@@ -7,9 +7,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201
 {
     using Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.PowerShell;
 
-    /// <summary>The OS option profile.</summary>
-    [System.ComponentModel.TypeConverter(typeof(OSOptionProfileTypeConverter))]
-    public partial class OSOptionProfile
+    /// <summary>The results of a run command</summary>
+    [System.ComponentModel.TypeConverter(typeof(CommandResultPropertiesTypeConverter))]
+    public partial class CommandResultProperties
     {
 
         /// <summary>
@@ -55,44 +55,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201
         partial void BeforeDeserializePSObject(global::System.Management.Automation.PSObject content, ref bool returnNow);
 
         /// <summary>
-        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.OSOptionProfile"
+        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.CommandResultProperties"
         /// />.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
-        /// <returns>
-        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.IOSOptionProfile" />.
-        /// </returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.IOSOptionProfile DeserializeFromDictionary(global::System.Collections.IDictionary content)
-        {
-            return new OSOptionProfile(content);
-        }
-
-        /// <summary>
-        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.OSOptionProfile"
-        /// />.
-        /// </summary>
-        /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
-        /// <returns>
-        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.IOSOptionProfile" />.
-        /// </returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.IOSOptionProfile DeserializeFromPSObject(global::System.Management.Automation.PSObject content)
-        {
-            return new OSOptionProfile(content);
-        }
-
-        /// <summary>
-        /// Creates a new instance of <see cref="OSOptionProfile" />, deserializing the content from a json string.
-        /// </summary>
-        /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="OSOptionProfile" /> model class.</returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.IOSOptionProfile FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonNode.Parse(jsonText));
-
-        /// <summary>
-        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.OSOptionProfile"
-        /// />.
-        /// </summary>
-        /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
-        internal OSOptionProfile(global::System.Collections.IDictionary content)
+        internal CommandResultProperties(global::System.Collections.IDictionary content)
         {
             bool returnNow = false;
             BeforeDeserializeDictionary(content, ref returnNow);
@@ -101,35 +68,39 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201
                 return;
             }
             // actually deserialize
-            if (content.Contains("Property"))
+            if (content.Contains("ProvisioningState"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.IOSOptionProfileInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.IOSOptionPropertyList) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.IOSOptionProfileInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.OSOptionPropertyListTypeConverter.ConvertFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ICommandResultPropertiesInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ICommandResultPropertiesInternal)this).ProvisioningState, global::System.Convert.ToString);
             }
-            if (content.Contains("Id"))
+            if (content.Contains("ExitCode"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.IOSOptionProfileInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.IOSOptionProfileInternal)this).Id, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ICommandResultPropertiesInternal)this).ExitCode = (int?) content.GetValueForProperty("ExitCode",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ICommandResultPropertiesInternal)this).ExitCode, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
-            if (content.Contains("Name"))
+            if (content.Contains("StartedAt"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.IOSOptionProfileInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.IOSOptionProfileInternal)this).Name, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ICommandResultPropertiesInternal)this).StartedAt = (global::System.DateTime?) content.GetValueForProperty("StartedAt",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ICommandResultPropertiesInternal)this).StartedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
             }
-            if (content.Contains("Type"))
+            if (content.Contains("FinishedAt"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.IOSOptionProfileInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.IOSOptionProfileInternal)this).Type, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ICommandResultPropertiesInternal)this).FinishedAt = (global::System.DateTime?) content.GetValueForProperty("FinishedAt",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ICommandResultPropertiesInternal)this).FinishedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
             }
-            if (content.Contains("OSOptionPropertyList"))
+            if (content.Contains("Log"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.IOSOptionProfileInternal)this).OSOptionPropertyList = (Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.IOSOptionProperty[]) content.GetValueForProperty("OSOptionPropertyList",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.IOSOptionProfileInternal)this).OSOptionPropertyList, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.IOSOptionProperty>(__y, Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.OSOptionPropertyTypeConverter.ConvertFrom));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ICommandResultPropertiesInternal)this).Log = (string) content.GetValueForProperty("Log",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ICommandResultPropertiesInternal)this).Log, global::System.Convert.ToString);
+            }
+            if (content.Contains("Reason"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ICommandResultPropertiesInternal)this).Reason = (string) content.GetValueForProperty("Reason",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ICommandResultPropertiesInternal)this).Reason, global::System.Convert.ToString);
             }
             AfterDeserializeDictionary(content);
         }
 
         /// <summary>
-        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.OSOptionProfile"
+        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.CommandResultProperties"
         /// />.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
-        internal OSOptionProfile(global::System.Management.Automation.PSObject content)
+        internal CommandResultProperties(global::System.Management.Automation.PSObject content)
         {
             bool returnNow = false;
             BeforeDeserializePSObject(content, ref returnNow);
@@ -138,37 +109,74 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201
                 return;
             }
             // actually deserialize
-            if (content.Contains("Property"))
+            if (content.Contains("ProvisioningState"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.IOSOptionProfileInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.IOSOptionPropertyList) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.IOSOptionProfileInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.OSOptionPropertyListTypeConverter.ConvertFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ICommandResultPropertiesInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ICommandResultPropertiesInternal)this).ProvisioningState, global::System.Convert.ToString);
             }
-            if (content.Contains("Id"))
+            if (content.Contains("ExitCode"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.IOSOptionProfileInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.IOSOptionProfileInternal)this).Id, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ICommandResultPropertiesInternal)this).ExitCode = (int?) content.GetValueForProperty("ExitCode",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ICommandResultPropertiesInternal)this).ExitCode, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
-            if (content.Contains("Name"))
+            if (content.Contains("StartedAt"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.IOSOptionProfileInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.IOSOptionProfileInternal)this).Name, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ICommandResultPropertiesInternal)this).StartedAt = (global::System.DateTime?) content.GetValueForProperty("StartedAt",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ICommandResultPropertiesInternal)this).StartedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
             }
-            if (content.Contains("Type"))
+            if (content.Contains("FinishedAt"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.IOSOptionProfileInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.IOSOptionProfileInternal)this).Type, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ICommandResultPropertiesInternal)this).FinishedAt = (global::System.DateTime?) content.GetValueForProperty("FinishedAt",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ICommandResultPropertiesInternal)this).FinishedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
             }
-            if (content.Contains("OSOptionPropertyList"))
+            if (content.Contains("Log"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.IOSOptionProfileInternal)this).OSOptionPropertyList = (Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.IOSOptionProperty[]) content.GetValueForProperty("OSOptionPropertyList",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.IOSOptionProfileInternal)this).OSOptionPropertyList, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.IOSOptionProperty>(__y, Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.OSOptionPropertyTypeConverter.ConvertFrom));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ICommandResultPropertiesInternal)this).Log = (string) content.GetValueForProperty("Log",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ICommandResultPropertiesInternal)this).Log, global::System.Convert.ToString);
+            }
+            if (content.Contains("Reason"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ICommandResultPropertiesInternal)this).Reason = (string) content.GetValueForProperty("Reason",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ICommandResultPropertiesInternal)this).Reason, global::System.Convert.ToString);
             }
             AfterDeserializePSObject(content);
         }
+
+        /// <summary>
+        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.CommandResultProperties"
+        /// />.
+        /// </summary>
+        /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
+        /// <returns>
+        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ICommandResultProperties" />.
+        /// </returns>
+        public static Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ICommandResultProperties DeserializeFromDictionary(global::System.Collections.IDictionary content)
+        {
+            return new CommandResultProperties(content);
+        }
+
+        /// <summary>
+        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.CommandResultProperties"
+        /// />.
+        /// </summary>
+        /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
+        /// <returns>
+        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ICommandResultProperties" />.
+        /// </returns>
+        public static Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ICommandResultProperties DeserializeFromPSObject(global::System.Management.Automation.PSObject content)
+        {
+            return new CommandResultProperties(content);
+        }
+
+        /// <summary>
+        /// Creates a new instance of <see cref="CommandResultProperties" />, deserializing the content from a json string.
+        /// </summary>
+        /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
+        /// <returns>an instance of the <see cref="CommandResultProperties" /> model class.</returns>
+        public static Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ICommandResultProperties FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>Serializes this instance to a json string.</summary>
 
         /// <returns>a <see cref="System.String" /> containing this model serialized to JSON text.</returns>
         public string ToJsonString() => ToJson(null, Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SerializationMode.IncludeAll)?.ToString();
     }
-    /// The OS option profile.
-    [System.ComponentModel.TypeConverter(typeof(OSOptionProfileTypeConverter))]
-    public partial interface IOSOptionProfile
+    /// The results of a run command
+    [System.ComponentModel.TypeConverter(typeof(CommandResultPropertiesTypeConverter))]
+    public partial interface ICommandResultProperties
 
     {
 

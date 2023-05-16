@@ -10,15 +10,12 @@
 
 namespace Microsoft.Azure.PowerShell.Ssh.Helpers.HybridCompute.Models
 {
-    using Microsoft.Rest;
-    using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
     using System.Linq;
 
     /// <summary>
     /// Describes the properties of a Compute Operation value.
     /// </summary>
-    [Rest.Serialization.JsonTransformation]
     public partial class OperationValue
     {
         /// <summary>
@@ -34,21 +31,15 @@ namespace Microsoft.Azure.PowerShell.Ssh.Helpers.HybridCompute.Models
         /// </summary>
         /// <param name="origin">The origin of the compute operation.</param>
         /// <param name="name">The name of the compute operation.</param>
-        /// <param name="operation">The display name of the compute
-        /// operation.</param>
-        /// <param name="resource">The display name of the resource the
-        /// operation applies to.</param>
-        /// <param name="description">The description of the operation.</param>
-        /// <param name="provider">The resource provider for the
-        /// operation.</param>
-        public OperationValue(string origin = default(string), string name = default(string), string operation = default(string), string resource = default(string), string description = default(string), string provider = default(string))
+        /// <param name="display">Display properties</param>
+        /// <param name="isDataAction">This property indicates if the operation
+        /// is an action or a data action</param>
+        public OperationValue(string origin = default(string), string name = default(string), OperationValueDisplay display = default(OperationValueDisplay), bool? isDataAction = default(bool?))
         {
             Origin = origin;
             Name = name;
-            Operation = operation;
-            Resource = resource;
-            Description = description;
-            Provider = provider;
+            Display = display;
+            IsDataAction = isDataAction;
             CustomInit();
         }
 
@@ -70,28 +61,17 @@ namespace Microsoft.Azure.PowerShell.Ssh.Helpers.HybridCompute.Models
         public string Name { get; private set; }
 
         /// <summary>
-        /// Gets the display name of the compute operation.
+        /// Gets or sets display properties
         /// </summary>
-        [JsonProperty(PropertyName = "display.operation")]
-        public string Operation { get; private set; }
+        [JsonProperty(PropertyName = "display")]
+        public OperationValueDisplay Display { get; set; }
 
         /// <summary>
-        /// Gets the display name of the resource the operation applies to.
+        /// Gets this property indicates if the operation is an action or a
+        /// data action
         /// </summary>
-        [JsonProperty(PropertyName = "display.resource")]
-        public string Resource { get; private set; }
-
-        /// <summary>
-        /// Gets the description of the operation.
-        /// </summary>
-        [JsonProperty(PropertyName = "display.description")]
-        public string Description { get; private set; }
-
-        /// <summary>
-        /// Gets the resource provider for the operation.
-        /// </summary>
-        [JsonProperty(PropertyName = "display.provider")]
-        public string Provider { get; private set; }
+        [JsonProperty(PropertyName = "isDataAction")]
+        public bool? IsDataAction { get; private set; }
 
     }
 }

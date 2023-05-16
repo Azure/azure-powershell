@@ -56,6 +56,8 @@ namespace Microsoft.Azure.PowerShell.Ssh.Helpers.HybridConnectivity.Models
         /// modification (UTC)</param>
         /// <param name="resourceId">The resource Id of the connectivity
         /// endpoint (optional).</param>
+        /// <param name="provisioningState">The resource provisioning
+        /// state.</param>
         public EndpointResource(string endpointResourceType, string id = default(string), string name = default(string), string type = default(string), string createdBy = default(string), string createdByType = default(string), System.DateTime? createdAt = default(System.DateTime?), string lastModifiedBy = default(string), string lastModifiedByType = default(string), System.DateTime? lastModifiedAt = default(System.DateTime?), string resourceId = default(string), string provisioningState = default(string))
             : base(id, name, type)
         {
@@ -131,6 +133,7 @@ namespace Microsoft.Azure.PowerShell.Ssh.Helpers.HybridConnectivity.Models
         public string ResourceId { get; set; }
 
         /// <summary>
+        /// Gets the resource provisioning state.
         /// </summary>
         [JsonProperty(PropertyName = "properties.provisioningState")]
         public string ProvisioningState { get; private set; }

@@ -33,7 +33,7 @@ namespace Microsoft.Azure.PowerShell.Ssh.Helpers.Compute.Models
         /// <param name="certificateUrl">This is the URL of a certificate that
         /// has been uploaded to Key Vault as a secret. For adding a secret to
         /// the Key Vault, see [Add a key or secret to the key
-        /// vault](https://learn.microsoft.com/azure/key-vault/key-vault-get-started/#add).
+        /// vault](https://docs.microsoft.com/azure/key-vault/key-vault-get-started/#add).
         /// In this case, your certificate needs to be It is the Base64
         /// encoding of the following JSON Object which is encoded in UTF-8:
         /// &lt;br&gt;&lt;br&gt; {&lt;br&gt;
@@ -42,9 +42,9 @@ namespace Microsoft.Azure.PowerShell.Ssh.Helpers.Compute.Models
         /// "password":"&lt;pfx-file-password&gt;"&lt;br&gt;} &lt;br&gt; To
         /// install certificates on a virtual machine it is recommended to use
         /// the [Azure Key Vault virtual machine extension for
-        /// Linux](https://learn.microsoft.com/azure/virtual-machines/extensions/key-vault-linux)
+        /// Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-linux)
         /// or the [Azure Key Vault virtual machine extension for
-        /// Windows](https://learn.microsoft.com/azure/virtual-machines/extensions/key-vault-windows).</param>
+        /// Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-windows).</param>
         /// <param name="certificateStore">For Windows VMs, specifies the
         /// certificate store on the Virtual Machine to which the certificate
         /// should be added. The specified certificate store is implicitly in
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.PowerShell.Ssh.Helpers.Compute.Models
         /// Gets or sets this is the URL of a certificate that has been
         /// uploaded to Key Vault as a secret. For adding a secret to the Key
         /// Vault, see [Add a key or secret to the key
-        /// vault](https://learn.microsoft.com/azure/key-vault/key-vault-get-started/#add).
+        /// vault](https://docs.microsoft.com/azure/key-vault/key-vault-get-started/#add).
         /// In this case, your certificate needs to be It is the Base64
         /// encoding of the following JSON Object which is encoded in UTF-8:
         /// &amp;lt;br&amp;gt;&amp;lt;br&amp;gt; {&amp;lt;br&amp;gt;
@@ -79,9 +79,9 @@ namespace Microsoft.Azure.PowerShell.Ssh.Helpers.Compute.Models
         /// &amp;lt;br&amp;gt; To install certificates on a virtual machine it
         /// is recommended to use the [Azure Key Vault virtual machine
         /// extension for
-        /// Linux](https://learn.microsoft.com/azure/virtual-machines/extensions/key-vault-linux)
+        /// Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-linux)
         /// or the [Azure Key Vault virtual machine extension for
-        /// Windows](https://learn.microsoft.com/azure/virtual-machines/extensions/key-vault-windows).
+        /// Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-windows).
         /// </summary>
         [JsonProperty(PropertyName = "certificateUrl")]
         public string CertificateUrl { get; set; }
