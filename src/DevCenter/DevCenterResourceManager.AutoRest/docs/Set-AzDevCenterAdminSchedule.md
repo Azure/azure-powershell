@@ -14,17 +14,16 @@ Creates or updates a Schedule.
 
 ### UpdateExpanded (Default)
 ```
-Set-AzDevCenterAdminSchedule -Name <String> -PoolName <String> -ProjectName <String>
- -ResourceGroupName <String> [-SubscriptionId <String>] [-Top <Int32>] [-Frequency <ScheduledFrequency>]
- [-PropertiesType <ScheduledType>] [-State <ScheduleEnableStatus>] [-Time <String>] [-TimeZone <String>]
+Set-AzDevCenterAdminSchedule -PoolName <String> -ProjectName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-State <ScheduleEnableStatus>] [-Time <String>] [-TimeZone <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Update
 ```
-Set-AzDevCenterAdminSchedule -Name <String> -PoolName <String> -ProjectName <String>
- -ResourceGroupName <String> -Body <ISchedule> [-SubscriptionId <String>] [-Top <Int32>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Set-AzDevCenterAdminSchedule -PoolName <String> -ProjectName <String> -ResourceGroupName <String>
+ -Body <ISchedule> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -103,36 +102,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Frequency
-The frequency of this scheduled task.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.ScheduledFrequency
-Parameter Sets: UpdateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Name
-The name of the schedule that uniquely identifies it.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases: ScheduleName
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -NoWait
 Run the command asynchronously
 
@@ -172,21 +141,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PropertiesType
-Supported type this scheduled task represents.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.ScheduledType
-Parameter Sets: UpdateExpanded
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -261,22 +215,6 @@ The IANA timezone id at which the schedule should execute.
 ```yaml
 Type: System.String
 Parameter Sets: UpdateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Top
-The maximum number of resources to return from the operation.
-Example: '$top=10'.
-
-```yaml
-Type: System.Int32
-Parameter Sets: (All)
 Aliases:
 
 Required: False

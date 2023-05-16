@@ -14,13 +14,13 @@ Starts a Dev Box
 
 ### Start (Default)
 ```
-Start-AzDevCenterDevDevBox -Endpoint <String> -Name <String> -ProjectName <String> -UserId <String>
+Start-AzDevCenterDevDevBox -Endpoint <String> -Name <String> -ProjectName <String> [-UserId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### StartByDevCenter
 ```
-Start-AzDevCenterDevDevBox -DevCenter <String> -Name <String> -ProjectName <String> -UserId <String>
+Start-AzDevCenterDevDevBox -DevCenter <String> -Name <String> -ProjectName <String> [-UserId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -198,7 +198,7 @@ Aliases:
 
 Required: True
 Position: Named
-Default value: None
+Default value: "me"
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

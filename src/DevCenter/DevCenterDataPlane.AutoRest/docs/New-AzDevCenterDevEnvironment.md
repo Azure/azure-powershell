@@ -14,29 +14,27 @@ Creates or updates an environment.
 
 ### CreateExpanded (Default)
 ```
-New-AzDevCenterDevEnvironment -Endpoint <String> -Name <String> -ProjectName <String> -UserId <String>
- -CatalogName <String> -EnvironmentDefinitionName <String> -EnvironmentType <String> [-Parameter <IAny>]
+New-AzDevCenterDevEnvironment -Endpoint <String> -Name <String> -ProjectName <String> -CatalogName <String>
+ -EnvironmentDefinitionName <String> -EnvironmentType <String> [-UserId <String>] [-Parameter <IAny>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Create
 ```
-New-AzDevCenterDevEnvironment -Endpoint <String> -Name <String> -ProjectName <String> -UserId <String>
- -Body <IEnvironment> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+New-AzDevCenterDevEnvironment -Endpoint <String> -Name <String> -ProjectName <String> -Body <IEnvironment>
+ [-UserId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateByDevCenter
 ```
-New-AzDevCenterDevEnvironment -DevCenter <String> -Name <String> -ProjectName <String> -UserId <String>
- -Body <IEnvironment> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+New-AzDevCenterDevEnvironment -DevCenter <String> -Name <String> -ProjectName <String> -Body <IEnvironment>
+ [-UserId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateExpandedByDevCenter
 ```
-New-AzDevCenterDevEnvironment -DevCenter <String> -Name <String> -ProjectName <String> -UserId <String>
- -CatalogName <String> -EnvironmentDefinitionName <String> -EnvironmentType <String> [-Parameter <IAny>]
+New-AzDevCenterDevEnvironment -DevCenter <String> -Name <String> -ProjectName <String> -CatalogName <String>
+ -EnvironmentDefinitionName <String> -EnvironmentType <String> [-UserId <String>] [-Parameter <IAny>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -304,7 +302,7 @@ Aliases:
 
 Required: True
 Position: Named
-Default value: None
+Default value: "me"
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

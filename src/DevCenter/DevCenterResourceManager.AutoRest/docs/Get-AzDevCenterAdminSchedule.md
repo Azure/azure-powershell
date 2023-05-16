@@ -12,16 +12,10 @@ Gets a schedule resource.
 
 ## SYNTAX
 
-### List (Default)
+### GetWithDefault (Default)
 ```
 Get-AzDevCenterAdminSchedule -PoolName <String> -ProjectName <String> -ResourceGroupName <String>
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### Get
-```
-Get-AzDevCenterAdminSchedule -Name <String> -PoolName <String> -ProjectName <String>
- -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
@@ -91,27 +85,12 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Name
-The name of the schedule that uniquely identifies it.
-
-```yaml
-Type: System.String
-Parameter Sets: Get
-Aliases: ScheduleName
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -PoolName
 Name of the pool.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: GetWithDefault
 Aliases:
 
 Required: True
@@ -126,7 +105,7 @@ The name of the project.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: GetWithDefault
 Aliases:
 
 Required: True
@@ -142,7 +121,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: GetWithDefault
 Aliases:
 
 Required: True
@@ -157,7 +136,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List
+Parameter Sets: GetWithDefault
 Aliases:
 
 Required: False

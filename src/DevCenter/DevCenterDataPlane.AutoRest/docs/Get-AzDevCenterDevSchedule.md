@@ -12,21 +12,15 @@ Gets a schedule.
 
 ## SYNTAX
 
-### List (Default)
+### Get (Default)
 ```
 Get-AzDevCenterDevSchedule -Endpoint <String> -PoolName <String> -ProjectName <String>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### Get
-```
-Get-AzDevCenterDevSchedule -Endpoint <String> -PoolName <String> -ProjectName <String> -ScheduleName <String>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
 ### GetByDevCenter
 ```
-Get-AzDevCenterDevSchedule -DevCenter <String> -PoolName <String> -ProjectName <String> -ScheduleName <String>
+Get-AzDevCenterDevSchedule -DevCenter <String> -PoolName <String> -ProjectName <String>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -40,12 +34,6 @@ Get-AzDevCenterDevSchedule -Endpoint <String> -InputObject <IDevCenterIdentity> 
 ```
 Get-AzDevCenterDevSchedule -DevCenter <String> -InputObject <IDevCenterIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
-```
-
-### ListByDevCenter
-```
-Get-AzDevCenterDevSchedule -DevCenter <String> -PoolName <String> -ProjectName <String>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -98,7 +86,7 @@ The DevCenter upon which to execute operations.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetByDevCenter, GetViaIdentityByDevCenter, ListByDevCenter
+Parameter Sets: GetByDevCenter, GetViaIdentityByDevCenter
 Aliases:
 
 Required: True
@@ -113,7 +101,7 @@ The DevCenter-specific URI to operate on.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetViaIdentity, List
+Parameter Sets: Get, GetViaIdentity
 Aliases:
 
 Required: True
@@ -144,7 +132,7 @@ The name of a pool of Dev Boxes.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetByDevCenter, List, ListByDevCenter
+Parameter Sets: Get, GetByDevCenter
 Aliases:
 
 Required: True
@@ -156,21 +144,6 @@ Accept wildcard characters: False
 
 ### -ProjectName
 The DevCenter Project upon which to execute operations.
-
-```yaml
-Type: System.String
-Parameter Sets: Get, GetByDevCenter, List, ListByDevCenter
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ScheduleName
-The name of a schedule.
 
 ```yaml
 Type: System.String

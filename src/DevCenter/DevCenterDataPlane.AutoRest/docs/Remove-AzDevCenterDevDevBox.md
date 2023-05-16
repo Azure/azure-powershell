@@ -14,13 +14,13 @@ Deletes a Dev Box.
 
 ### Delete (Default)
 ```
-Remove-AzDevCenterDevDevBox -Endpoint <String> -Name <String> -ProjectName <String> -UserId <String>
+Remove-AzDevCenterDevDevBox -Endpoint <String> -Name <String> -ProjectName <String> [-UserId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DeleteByDevCenter
 ```
-Remove-AzDevCenterDevDevBox -DevCenter <String> -Name <String> -ProjectName <String> -UserId <String>
+Remove-AzDevCenterDevDevBox -DevCenter <String> -Name <String> -ProjectName <String> [-UserId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -213,7 +213,7 @@ Aliases:
 
 Required: True
 Position: Named
-Default value: None
+Default value: "me"
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

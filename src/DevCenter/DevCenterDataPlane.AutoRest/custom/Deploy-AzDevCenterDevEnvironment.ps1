@@ -66,79 +66,74 @@ https://learn.microsoft.com/powershell/module/az.devcenter/deploy-azdevcenterdev
 #>
 function Deploy-AzDevCenterDevEnvironment {
   [OutputType([System.Boolean])]
-  [CmdletBinding(PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
+  [CmdletBinding(DefaultParameterSetName='ReplaceExpanded', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
   param(
-    [Parameter(ParameterSetName = 'ReplaceByDevCenter', Mandatory)]
-    [Parameter(ParameterSetName = 'ReplaceExpandedByDevCenter', Mandatory)]
-    [Parameter(ParameterSetName = 'ReplaceViaIdentityByDevCenter', Mandatory)]
-    [Parameter(ParameterSetName = 'ReplaceViaIdentityExpandedByDevCenter', Mandatory)]
+    [Parameter(ParameterSetName='Replace', Mandatory)]
+    [Parameter(ParameterSetName='ReplaceExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Uri')]
+    [System.String]
+    # The DevCenter-specific URI to operate on.
+    ${Endpoint},
+
+    [Parameter(ParameterSetName='ReplaceExpandedByDevCenter', Mandatory)]
+    [Parameter(ParameterSetName='ReplaceByDevCenter', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Uri')]
     [System.String]
     # The DevCenter upon which to execute operations.
     ${DevCenter},
 
-    [Parameter(ParameterSetName = 'ReplaceByDevCenter', Mandatory)]
-    [Parameter(ParameterSetName = 'ReplaceExpandedByDevCenter', Mandatory)]
+    [Parameter(Mandatory)]
     [Alias('EnvironmentName')]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
     [System.String]
     # The name of the environment.
     ${Name},
 
-    [Parameter(ParameterSetName = 'ReplaceByDevCenter', Mandatory)]
-    [Parameter(ParameterSetName = 'ReplaceExpandedByDevCenter', Mandatory)]
+    [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
     [System.String]
     # The DevCenter Project upon which to execute operations.
     ${ProjectName},
 
-    [Parameter(ParameterSetName = 'ReplaceByDevCenter', Mandatory)]
-    [Parameter(ParameterSetName = 'ReplaceExpandedByDevCenter', Mandatory)]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.DefaultInfo(Script='"me"')]
     [System.String]
     # The AAD object id of the user.
     # If value is 'me', the identity is taken from the authentication context.
     ${UserId},
 
-    [Parameter(ParameterSetName = 'ReplaceViaIdentityByDevCenter', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName = 'ReplaceViaIdentityExpandedByDevCenter', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity]
-    # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-    ${InputObject},
-
-    [Parameter(ParameterSetName = 'ReplaceByDevCenter', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName = 'ReplaceViaIdentityByDevCenter', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='Replace', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='ReplaceByDevCenter', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.IEnvironment]
     # Properties of an environment.
     # To construct, see NOTES section for BODY properties and create a hash table.
     ${Body},
 
-    [Parameter(ParameterSetName = 'ReplaceExpandedByDevCenter', Mandatory)]
-    [Parameter(ParameterSetName = 'ReplaceViaIdentityExpandedByDevCenter', Mandatory)]
+    [Parameter(ParameterSetName='ReplaceExpanded', Mandatory)]
+    [Parameter(ParameterSetName='ReplaceExpandedByDevCenter', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
     [System.String]
     # Name of the catalog.
     ${CatalogName},
 
-    [Parameter(ParameterSetName = 'ReplaceExpandedByDevCenter', Mandatory)]
-    [Parameter(ParameterSetName = 'ReplaceViaIdentityExpandedByDevCenter', Mandatory)]
+    [Parameter(ParameterSetName='ReplaceExpanded', Mandatory)]
+    [Parameter(ParameterSetName='ReplaceExpandedByDevCenter', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
     [System.String]
     # Name of the environment definition.
     ${EnvironmentDefinitionName},
 
-    [Parameter(ParameterSetName = 'ReplaceExpandedByDevCenter', Mandatory)]
-    [Parameter(ParameterSetName = 'ReplaceViaIdentityExpandedByDevCenter', Mandatory)]
+    [Parameter(ParameterSetName='ReplaceExpanded', Mandatory)]
+    [Parameter(ParameterSetName='ReplaceExpandedByDevCenter', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
     [System.String]
     # Environment type.
     ${EnvironmentType},
 
-    [Parameter(ParameterSetName = 'ReplaceExpandedByDevCenter')]
-    [Parameter(ParameterSetName = 'ReplaceViaIdentityExpandedByDevCenter')]
+    [Parameter(ParameterSetName='ReplaceExpanded')]
+    [Parameter(ParameterSetName='ReplaceExpandedByDevCenter')]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IAny]
     # Parameters object for the environment.
@@ -203,9 +198,7 @@ function Deploy-AzDevCenterDevEnvironment {
     [System.Management.Automation.SwitchParameter]
     # Use the default credentials for the proxy
     ${ProxyUseDefaultCredentials}
-  )
-
-
+)
 
   process {
     $Endpoint = GetEndpointFromResourceGraph -DevCenter $DevCenter -Project $ProjectName
