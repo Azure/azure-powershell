@@ -14,13 +14,13 @@ Stops a Dev Box
 
 ### Stop (Default)
 ```
-Stop-AzDevCenterDevDevBox -Endpoint <String> -Name <String> -ProjectName <String> -UserId <String>
+Stop-AzDevCenterDevDevBox -Endpoint <String> -Name <String> -ProjectName <String> [-UserId <String>]
  [-Hibernate] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### StopByDevCenter
 ```
-Stop-AzDevCenterDevDevBox -DevCenter <String> -Name <String> -ProjectName <String> -UserId <String>
+Stop-AzDevCenterDevDevBox -DevCenter <String> -Name <String> -ProjectName <String> [-UserId <String>]
  [-Hibernate] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -213,7 +213,7 @@ Aliases:
 
 Required: True
 Position: Named
-Default value: None
+Default value: "me"
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

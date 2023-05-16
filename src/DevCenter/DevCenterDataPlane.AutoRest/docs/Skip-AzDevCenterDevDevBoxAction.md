@@ -15,14 +15,14 @@ Skips an occurrence of an action.
 ### Skip (Default)
 ```
 Skip-AzDevCenterDevDevBoxAction -Endpoint <String> -ActionName <String> -DevBoxName <String>
- -ProjectName <String> -UserId <String> [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf]
+ -ProjectName <String> [-UserId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### SkipByDevCenter
 ```
 Skip-AzDevCenterDevDevBoxAction -DevCenter <String> -ActionName <String> -DevBoxName <String>
- -ProjectName <String> -UserId <String> [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf]
+ -ProjectName <String> [-UserId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -200,7 +200,7 @@ Aliases:
 
 Required: True
 Position: Named
-Default value: None
+Default value: "me"
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

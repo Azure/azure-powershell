@@ -14,20 +14,20 @@ Gets an action.
 
 ### List (Default)
 ```
-Get-AzDevCenterDevDevBoxAction -Endpoint <String> -DevBoxName <String> -ProjectName <String> -UserId <String>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzDevCenterDevDevBoxAction -Endpoint <String> -DevBoxName <String> -ProjectName <String>
+ [-UserId <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzDevCenterDevDevBoxAction -Endpoint <String> -ActionName <String> -DevBoxName <String>
- -ProjectName <String> -UserId <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+ -ProjectName <String> [-UserId <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetByDevCenter
 ```
 Get-AzDevCenterDevDevBoxAction -DevCenter <String> -ActionName <String> -DevBoxName <String>
- -ProjectName <String> -UserId <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+ -ProjectName <String> [-UserId <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
@@ -44,8 +44,8 @@ Get-AzDevCenterDevDevBoxAction -DevCenter <String> -InputObject <IDevCenterIdent
 
 ### ListByDevCenter
 ```
-Get-AzDevCenterDevDevBoxAction -DevCenter <String> -DevBoxName <String> -ProjectName <String> -UserId <String>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzDevCenterDevDevBoxAction -DevCenter <String> -DevBoxName <String> -ProjectName <String>
+ [-UserId <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -195,7 +195,7 @@ Aliases:
 
 Required: True
 Position: Named
-Default value: None
+Default value: "me"
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

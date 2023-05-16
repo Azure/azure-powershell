@@ -65,12 +65,29 @@ directive:
       verb: Delay
       subject: DevBoxAction
   - where:
+      subject: ^(?!DevBox$|Environment$).*
+      parameter-name: UserId
+    set:
+      default:
+        script: '"me"'
+  - where:
+      verb: ^(?!Get$)
+      subject: ^(DevBox|Environment)$
+      parameter-name: UserId
+    set:
+      default:
+        script: '"me"'
+  - where:
       subject: ^(.*)
       parameter-name: Top
     hide: true
   - where:
       subject: ^(.*)
       parameter-name: Filter
+    hide: true
+  - where:
+      verb: Get
+      subject: Schedule
     hide: true
   - where:
       subject: ^(.*)

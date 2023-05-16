@@ -15,26 +15,26 @@ Delays the occurrence of an action.
 ### Delay1 (Default)
 ```
 Delay-AzDevCenterDevDevBoxAction -Endpoint <String> -DevBoxName <String> -ProjectName <String>
- -UserId <String> -Until <DateTime> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -Until <DateTime> [-UserId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Delay
 ```
 Delay-AzDevCenterDevDevBoxAction -Endpoint <String> -ActionName <String> -DevBoxName <String>
- -ProjectName <String> -UserId <String> -Until <DateTime> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ -ProjectName <String> -Until <DateTime> [-UserId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### Delay1ByDevCenter
 ```
 Delay-AzDevCenterDevDevBoxAction -DevCenter <String> -DevBoxName <String> -ProjectName <String>
- -UserId <String> -Until <DateTime> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -Until <DateTime> [-UserId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DelayByDevCenter
 ```
 Delay-AzDevCenterDevDevBoxAction -DevCenter <String> -ActionName <String> -DevBoxName <String>
- -ProjectName <String> -UserId <String> -Until <DateTime> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ -ProjectName <String> -Until <DateTime> [-UserId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -224,7 +224,7 @@ Aliases:
 
 Required: True
 Position: Named
-Default value: None
+Default value: "me"
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

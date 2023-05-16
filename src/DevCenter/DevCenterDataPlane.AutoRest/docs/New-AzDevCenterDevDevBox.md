@@ -14,27 +14,27 @@ Creates or replaces a Dev Box.
 
 ### CreateExpanded (Default)
 ```
-New-AzDevCenterDevDevBox -Endpoint <String> -Name <String> -ProjectName <String> -UserId <String>
- -PoolName <String> [-LocalAdministrator <LocalAdminStatus>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+New-AzDevCenterDevDevBox -Endpoint <String> -Name <String> -ProjectName <String> -PoolName <String>
+ [-UserId <String>] [-LocalAdministrator <LocalAdminStatus>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Create
 ```
-New-AzDevCenterDevDevBox -Endpoint <String> -Name <String> -ProjectName <String> -UserId <String>
- -Body <IDevBox> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzDevCenterDevDevBox -Endpoint <String> -Name <String> -ProjectName <String> -Body <IDevBox>
+ [-UserId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateByDevCenter
 ```
-New-AzDevCenterDevDevBox -DevCenter <String> -Name <String> -ProjectName <String> -UserId <String>
- -Body <IDevBox> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzDevCenterDevDevBox -DevCenter <String> -Name <String> -ProjectName <String> -Body <IDevBox>
+ [-UserId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateExpandedByDevCenter
 ```
-New-AzDevCenterDevDevBox -DevCenter <String> -Name <String> -ProjectName <String> -UserId <String>
- -PoolName <String> [-LocalAdministrator <LocalAdminStatus>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+New-AzDevCenterDevDevBox -DevCenter <String> -Name <String> -ProjectName <String> -PoolName <String>
+ [-UserId <String>] [-LocalAdministrator <LocalAdminStatus>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -272,7 +272,7 @@ Aliases:
 
 Required: True
 Position: Named
-Default value: None
+Default value: "me"
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

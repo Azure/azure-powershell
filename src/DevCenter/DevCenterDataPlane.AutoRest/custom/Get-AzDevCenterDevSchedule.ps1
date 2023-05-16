@@ -51,34 +51,35 @@ function Get-AzDevCenterDevSchedule {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.ISchedule])]
     [CmdletBinding(PositionalBinding = $false)]
     param(
+        [Parameter(ParameterSetName='Get', Mandatory)]
+        [Parameter(ParameterSetName='GetViaIdentity', Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Uri')]
+        [System.String]
+        # The DevCenter-specific URI to operate on.
+        ${Endpoint},
+    
         [Parameter(ParameterSetName = 'GetByDevCenter', Mandatory)]
-        [Parameter(ParameterSetName = 'ListByDevCenter', Mandatory)]
         [Parameter(ParameterSetName = 'GetViaIdentityByDevCenter', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Uri')]
         [System.String]
         # The DevCenter upon which to execute operations.
         ${DevCenter},
 
+        [Parameter(ParameterSetName='Get', Mandatory)]
         [Parameter(ParameterSetName = 'GetByDevCenter', Mandatory)]
-        [Parameter(ParameterSetName = 'ListByDevCenter', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
         [System.String]
         # The name of a pool of Dev Boxes.
         ${PoolName},
 
+        [Parameter(ParameterSetName='Get', Mandatory)]
         [Parameter(ParameterSetName = 'GetByDevCenter', Mandatory)]
-        [Parameter(ParameterSetName = 'ListByDevCenter', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
         [System.String]
         # The DevCenter Project upon which to execute operations.
         ${ProjectName},
 
-        [Parameter(ParameterSetName = 'GetByDevCenter', Mandatory)]
-        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
-        [System.String]
-        # The name of a schedule.
-        ${ScheduleName},
-
+        [Parameter(ParameterSetName = 'GetViaIdentity', Mandatory, ValueFromPipeline)]
         [Parameter(ParameterSetName = 'GetViaIdentityByDevCenter', Mandatory, ValueFromPipeline)]
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity]
@@ -140,6 +141,9 @@ function Get-AzDevCenterDevSchedule {
         $null = $PSBoundParameters.Add("Endpoint", $Endpoint)
         $null = $PSBoundParameters.Remove("DevCenter")
 
-        Az.DevCenter\Get-AzDevCenterDevSchedule @PSBoundParameters
+        $Default = "default"
+        $null = $PSBoundParameters.Add("ScheduleName", $Default)
+
+        Az.DevCenter.internal\Get-AzDevCenterDevSchedule @PSBoundParameters
     } 
 }

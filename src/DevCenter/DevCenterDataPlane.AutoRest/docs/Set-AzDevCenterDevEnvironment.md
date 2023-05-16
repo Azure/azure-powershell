@@ -14,29 +14,27 @@ Creates or updates an environment.
 
 ### ReplaceExpanded (Default)
 ```
-Set-AzDevCenterDevEnvironment -Endpoint <String> -Name <String> -ProjectName <String> -UserId <String>
- -CatalogName <String> -EnvironmentDefinitionName <String> -EnvironmentType <String> [-Parameter <IAny>]
+Set-AzDevCenterDevEnvironment -Endpoint <String> -Name <String> -ProjectName <String> -CatalogName <String>
+ -EnvironmentDefinitionName <String> -EnvironmentType <String> [-UserId <String>] [-Parameter <IAny>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Replace
 ```
-Set-AzDevCenterDevEnvironment -Endpoint <String> -Name <String> -ProjectName <String> -UserId <String>
- -Body <IEnvironment> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Set-AzDevCenterDevEnvironment -Endpoint <String> -Name <String> -ProjectName <String> -Body <IEnvironment>
+ [-UserId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ReplaceByDevCenter
 ```
-Set-AzDevCenterDevEnvironment -DevCenter <String> -Name <String> -ProjectName <String> -UserId <String>
- -Body <IEnvironment> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Set-AzDevCenterDevEnvironment -DevCenter <String> -Name <String> -ProjectName <String> -Body <IEnvironment>
+ [-UserId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ReplaceExpandedByDevCenter
 ```
-Set-AzDevCenterDevEnvironment -DevCenter <String> -Name <String> -ProjectName <String> -UserId <String>
- -CatalogName <String> -EnvironmentDefinitionName <String> -EnvironmentType <String> [-Parameter <IAny>]
+Set-AzDevCenterDevEnvironment -DevCenter <String> -Name <String> -ProjectName <String> -CatalogName <String>
+ -EnvironmentDefinitionName <String> -EnvironmentType <String> [-UserId <String>] [-Parameter <IAny>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -262,7 +260,7 @@ Aliases:
 
 Required: True
 Position: Named
-Default value: None
+Default value: "me"
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

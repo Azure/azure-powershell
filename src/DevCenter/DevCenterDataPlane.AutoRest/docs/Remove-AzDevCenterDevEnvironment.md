@@ -14,13 +14,13 @@ Deletes an environment and all its associated resources
 
 ### Delete (Default)
 ```
-Remove-AzDevCenterDevEnvironment -Endpoint <String> -Name <String> -ProjectName <String> -UserId <String>
+Remove-AzDevCenterDevEnvironment -Endpoint <String> -Name <String> -ProjectName <String> [-UserId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DeleteByDevCenter
 ```
-Remove-AzDevCenterDevEnvironment -DevCenter <String> -Name <String> -ProjectName <String> -UserId <String>
+Remove-AzDevCenterDevEnvironment -DevCenter <String> -Name <String> -ProjectName <String> [-UserId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -213,7 +213,7 @@ Aliases:
 
 Required: True
 Position: Named
-Default value: None
+Default value: "me"
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

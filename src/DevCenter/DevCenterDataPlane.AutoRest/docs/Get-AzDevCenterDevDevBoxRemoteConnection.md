@@ -15,13 +15,13 @@ Gets RDP Connection info
 ### Get (Default)
 ```
 Get-AzDevCenterDevDevBoxRemoteConnection -Endpoint <String> -DevBoxName <String> -ProjectName <String>
- -UserId <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-UserId <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetByDevCenter
 ```
 Get-AzDevCenterDevDevBoxRemoteConnection -DevCenter <String> -DevBoxName <String> -ProjectName <String>
- -UserId <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-UserId <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
@@ -168,7 +168,7 @@ Aliases:
 
 Required: True
 Position: Named
-Default value: None
+Default value: "me"
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
