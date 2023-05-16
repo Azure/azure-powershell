@@ -69,16 +69,8 @@ if (![string]::IsNullOrWhiteSpace($liveTestResults)) {
         Export-Csv -Path $_ -Encoding utf8 -NoTypeInformation -Force
     }
 
-    Import-Module "./tools/TestFx/Utilities/KustoUtility.psd1" -Force
-    Import-KustoDataFromCsv `
-        -ServicePrincipalTenantId $ServicePrincipalTenantId `
-        -ServicePrincipalId $ServicePrincipalId `
-        -ServicePrincipalSecret $ServicePrincipalSecret `
-        -ClusterName $ClusterName `
-        -ClusterRegion $ClusterRegion `
-        -DatabaseName $DatabaseName `
-        -TableName $TableName `
-        -CsvFile $liveTestResults
+    Import-Module "./tools/TestFx/Utilities/KustoUtility.psd1" -ArgumentList $ServicePrincipalTenantId, $ServicePrincipalId, $ServicePrincipalSecret, $ClusterName, $ClusterRegion -Force
+    Import-KustoDataFromCsv -DatabaseName $DatabaseName -TableName $TableName -CsvFile $liveTestResults
 }
 else {
     Write-Host "##[warning]No live test data was found."

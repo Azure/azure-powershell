@@ -6,7 +6,10 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Support
 {
 
-    /// <summary>TypeConverter implementation for Expander.</summary>
+    /// <summary>
+    /// If not specified, the default is 'random'. See [expanders](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#what-are-expanders)
+    /// for more information.
+    /// </summary>
     public partial class ExpanderTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

@@ -54,9 +54,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Cmdlets
         public Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.MobileNetwork Client => Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Module.Instance.ClientAPI;
 
         /// <summary>
-        /// The credentials, account, tenant, and subscription used for communication with Azure
+        /// The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet
+        /// against a different subscription
         /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The credentials, account, tenant, and subscription used for communication with Azure.")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.")]
         [global::System.Management.Automation.ValidateNotNull]
         [global::System.Management.Automation.Alias("AzureRMContext", "AzureCredential")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category(global::Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.ParameterCategory.Azure)]
@@ -235,17 +236,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Cmdlets
         public int ServiceQoPolicyAllocationAndRetentionPriorityLevel { get => _parametersBody.QoPolicyAllocationAndRetentionPriorityLevel ?? default(int); set => _parametersBody.QoPolicyAllocationAndRetentionPriorityLevel = value; }
 
         /// <summary>
-        /// QoS Flow 5G QoS Indicator value. The 5QI identifies a specific QoS forwarding treatment to be provided to a flow. This
-        /// must not be a standardized 5QI value corresponding to a GBR (guaranteed bit rate) QoS Flow. The illegal GBR 5QI values
-        /// are: 1, 2, 3, 4, 65, 66, 67, 71, 72, 73, 74, 75, 76, 82, 83, 84, and 85. See 3GPP TS23.501 section 5.7.2.1 for a full
-        /// description of the 5QI parameter, and table 5.7.4-1 for the definition of which are the GBR 5QI values.
+        /// 5G QoS Flow Indicator value. The 5QI identifies a specific QoS forwarding treatment to be provided to a flow. See 3GPP
+        /// TS23.501 section 5.7.2.1 for a full description of the 5QI parameter, and table 5.7.4-1 for the definition the 5QI values.
         /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "QoS Flow 5G QoS Indicator value. The 5QI identifies a specific QoS forwarding treatment to be provided to a flow. This must not be a standardized 5QI value corresponding to a GBR (guaranteed bit rate) QoS Flow. The illegal GBR 5QI values are: 1, 2, 3, 4, 65, 66, 67, 71, 72, 73, 74, 75, 76, 82, 83, 84, and 85. See 3GPP TS23.501 section 5.7.2.1 for a full description of the 5QI parameter, and table 5.7.4-1 for the definition of which are the GBR 5QI values.")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "5G QoS Flow Indicator value. The 5QI identifies a specific QoS forwarding treatment to be provided to a flow. See 3GPP TS23.501 section 5.7.2.1 for a full description of the 5QI parameter, and table 5.7.4-1 for the definition the 5QI values.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category(global::Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"QoS Flow 5G QoS Indicator value. The 5QI identifies a specific QoS forwarding treatment to be provided to a flow. This must not be a standardized 5QI value corresponding to a GBR (guaranteed bit rate) QoS Flow. The illegal GBR 5QI values are: 1, 2, 3, 4, 65, 66, 67, 71, 72, 73, 74, 75, 76, 82, 83, 84, and 85. See 3GPP TS23.501 section 5.7.2.1 for a full description of the 5QI parameter, and table 5.7.4-1 for the definition of which are the GBR 5QI values.",
+        Description = @"5G QoS Flow Indicator value. The 5QI identifies a specific QoS forwarding treatment to be provided to a flow. See 3GPP TS23.501 section 5.7.2.1 for a full description of the 5QI parameter, and table 5.7.4-1 for the definition the 5QI values.",
         SerializedName = @"5qi",
         PossibleTypes = new [] { typeof(int) })]
         public int ServiceQoPolicyFiveQi { get => _parametersBody.QoPolicyFiveQi ?? default(int); set => _parametersBody.QoPolicyFiveQi = value; }

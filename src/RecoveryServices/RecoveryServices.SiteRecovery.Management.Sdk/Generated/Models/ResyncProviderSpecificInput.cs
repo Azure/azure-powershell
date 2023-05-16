@@ -10,11 +10,13 @@
 
 namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
 {
+    using Newtonsoft.Json;
     using System.Linq;
 
     /// <summary>
     /// Resync provider specific input.
     /// </summary>
+    [Newtonsoft.Json.JsonObject("ResyncProviderSpecificInput")]
     public partial class ResyncProviderSpecificInput
     {
         /// <summary>

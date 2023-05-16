@@ -20,7 +20,7 @@ using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch
 {
-    [GenericBreakingChange("Get-AzBatchLocationQuotas alias will be removed in an upcoming breaking change release", "2.0.0")]
+    [GenericBreakingChange("Get-AzBatchLocationQuotas alias will be removed in an upcoming breaking change release")]
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "BatchLocationQuota"), OutputType(typeof(PSBatchLocationQuotas))]
     // This alias was added in 10/2016 for backwards compatibility
     [Alias("Get-" + ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "BatchSubscriptionQuotas", "Get-AzBatchLocationQuotas")]

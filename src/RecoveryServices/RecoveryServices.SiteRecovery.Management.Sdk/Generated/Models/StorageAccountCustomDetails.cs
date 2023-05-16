@@ -10,11 +10,13 @@
 
 namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
 {
+    using Newtonsoft.Json;
     using System.Linq;
 
     /// <summary>
     /// Storage account custom input.
     /// </summary>
+    [Newtonsoft.Json.JsonObject("StorageAccountCustomDetails")]
     public partial class StorageAccountCustomDetails
     {
         /// <summary>

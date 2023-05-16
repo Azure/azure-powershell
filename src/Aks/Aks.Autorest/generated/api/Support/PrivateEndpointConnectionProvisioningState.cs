@@ -10,6 +10,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Support
     public partial struct PrivateEndpointConnectionProvisioningState :
         System.IEquatable<PrivateEndpointConnectionProvisioningState>
     {
+        public static Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.PrivateEndpointConnectionProvisioningState Canceled = @"Canceled";
+
         public static Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.PrivateEndpointConnectionProvisioningState Creating = @"Creating";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.PrivateEndpointConnectionProvisioningState Deleting = @"Deleting";

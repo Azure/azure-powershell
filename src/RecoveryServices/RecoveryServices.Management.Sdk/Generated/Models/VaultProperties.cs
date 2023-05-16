@@ -55,11 +55,12 @@ namespace Microsoft.Azure.Management.RecoveryServices.Models
         /// Possible values include: 'Enabled', 'Disabled'</param>
         /// <param name="monitoringSettings">Monitoring Settings of the
         /// vault</param>
+        /// <param name="restoreSettings">Restore Settings of the vault</param>
         /// <param name="redundancySettings">The redundancy Settings of a
         /// Vault</param>
         /// <param name="securitySettings">Security Settings of the
         /// vault</param>
-        public VaultProperties(string provisioningState = default(string), UpgradeDetails upgradeDetails = default(UpgradeDetails), IList<PrivateEndpointConnectionVaultProperties> privateEndpointConnections = default(IList<PrivateEndpointConnectionVaultProperties>), string privateEndpointStateForBackup = default(string), string privateEndpointStateForSiteRecovery = default(string), VaultPropertiesEncryption encryption = default(VaultPropertiesEncryption), VaultPropertiesMoveDetails moveDetails = default(VaultPropertiesMoveDetails), string moveState = default(string), string backupStorageVersion = default(string), string publicNetworkAccess = default(string), MonitoringSettings monitoringSettings = default(MonitoringSettings), VaultPropertiesRedundancySettings redundancySettings = default(VaultPropertiesRedundancySettings), SecuritySettings securitySettings = default(SecuritySettings))
+        public VaultProperties(string provisioningState = default(string), UpgradeDetails upgradeDetails = default(UpgradeDetails), IList<PrivateEndpointConnectionVaultProperties> privateEndpointConnections = default(IList<PrivateEndpointConnectionVaultProperties>), string privateEndpointStateForBackup = default(string), string privateEndpointStateForSiteRecovery = default(string), VaultPropertiesEncryption encryption = default(VaultPropertiesEncryption), VaultPropertiesMoveDetails moveDetails = default(VaultPropertiesMoveDetails), string moveState = default(string), string backupStorageVersion = default(string), string publicNetworkAccess = default(string), MonitoringSettings monitoringSettings = default(MonitoringSettings), RestoreSettings restoreSettings = default(RestoreSettings), VaultPropertiesRedundancySettings redundancySettings = default(VaultPropertiesRedundancySettings), SecuritySettings securitySettings = default(SecuritySettings))
         {
             ProvisioningState = provisioningState;
             UpgradeDetails = upgradeDetails;
@@ -72,6 +73,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.Models
             BackupStorageVersion = backupStorageVersion;
             PublicNetworkAccess = publicNetworkAccess;
             MonitoringSettings = monitoringSettings;
+            RestoreSettings = restoreSettings;
             RedundancySettings = redundancySettings;
             SecuritySettings = securitySettings;
             CustomInit();
@@ -155,6 +157,12 @@ namespace Microsoft.Azure.Management.RecoveryServices.Models
         /// </summary>
         [JsonProperty(PropertyName = "monitoringSettings")]
         public MonitoringSettings MonitoringSettings { get; set; }
+
+        /// <summary>
+        /// Gets or sets restore Settings of the vault
+        /// </summary>
+        [JsonProperty(PropertyName = "restoreSettings")]
+        public RestoreSettings RestoreSettings { get; set; }
 
         /// <summary>
         /// Gets or sets the redundancy Settings of a Vault

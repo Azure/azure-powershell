@@ -1,4 +1,4 @@
-### Example 1: List available version for creating managed Kubernetes cluster.
+### Example 1: List available version for creating managed Kubernetes cluster
 ```powershell
 Get-AzAksVersion -location eastus
 ```
@@ -17,4 +17,5 @@ True              Kubernetes       1.20.9
 ```
 
 List available version for creating managed Kubernetes cluster.
+
 

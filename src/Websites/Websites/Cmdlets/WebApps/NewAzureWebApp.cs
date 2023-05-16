@@ -137,7 +137,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
         [Parameter(Mandatory = false, HelpMessage = "Path to the GitHub repository containign the web application to deploy.", ParameterSetName = SimpleParameterSet)]
         public string GitRepositoryPath { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Tags are name/value pairs that enable you to categorize resources", ParameterSetName = SimpleParameterSet)]
+        [Parameter(Mandatory = false, HelpMessage = "Tags are name/value pairs that enable you to categorize resources")]
         public Hashtable Tag { get; set; }
 
         protected override void ProcessRecord()
@@ -236,7 +236,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
 
             try
             {
-                WriteObject(new PSSite(WebsitesClient.CreateWebApp(ResourceGroupName, Name, null, Location, AppServicePlan, cloningInfo, AseName, AseResourceGroupName)));
+                WriteObject(new PSSite(WebsitesClient.CreateWebApp(ResourceGroupName, Name, null, Location, AppServicePlan, cloningInfo, AseName, AseResourceGroupName, (IDictionary<string, string>)CmdletHelpers.ConvertToStringDictionary(Tag))));
             }
             catch (Exception e)
             {

@@ -19,7 +19,7 @@ using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch
 {
-    [GenericBreakingChange("Get-AzBatchAccountKeys alias will be removed in an upcoming breaking change release", "2.0.0")]
+    [GenericBreakingChange("Get-AzBatchAccountKeys alias will be removed in an upcoming breaking change release")]
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "BatchAccountKey"), OutputType(typeof(BatchAccountContext))]
     [Alias("Get-AzBatchAccountKeys")]
     public class GetBatchAccountKeyCommand : BatchCmdletBase

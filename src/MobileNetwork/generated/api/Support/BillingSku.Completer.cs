@@ -41,14 +41,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support
             {
                 yield return new global::System.Management.Automation.CompletionResult("'G2'", "G2", global::System.Management.Automation.CompletionResultType.ParameterValue, "G2");
             }
-            if (global::System.String.IsNullOrEmpty(wordToComplete) || "G3".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
-            {
-                yield return new global::System.Management.Automation.CompletionResult("'G3'", "G3", global::System.Management.Automation.CompletionResultType.ParameterValue, "G3");
-            }
-            if (global::System.String.IsNullOrEmpty(wordToComplete) || "G4".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
-            {
-                yield return new global::System.Management.Automation.CompletionResult("'G4'", "G4", global::System.Management.Automation.CompletionResultType.ParameterValue, "G4");
-            }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "G5".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
                 yield return new global::System.Management.Automation.CompletionResult("'G5'", "G5", global::System.Management.Automation.CompletionResultType.ParameterValue, "G5");

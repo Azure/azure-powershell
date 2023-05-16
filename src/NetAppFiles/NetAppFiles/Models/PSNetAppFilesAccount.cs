@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         /// <summary>
         /// Gets or sets the identity of the resource.
         /// </summary>
-        public PSIdentity Identity { get; set; }
+        public PSManagedServiceIdentity Identity { get; set; }
 
         /// <summary>
         /// Gets or sets System Data

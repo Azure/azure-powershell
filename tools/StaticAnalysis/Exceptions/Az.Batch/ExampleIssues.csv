@@ -1,0 +1,2 @@
+"Module","Cmdlet","Example","Line","RuleName","ProblemId","Severity","Description","Extent","Remediation"
+"Az.Batch","Remove-AzBatchJob","3","10","Unbinded_Expression","5014","1","Write-Host $element.Id is not explicitly assigned to a parameter.","$element.Id","Assign $element.Id explicitly to the parameter."

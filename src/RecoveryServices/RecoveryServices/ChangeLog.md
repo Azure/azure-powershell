@@ -19,6 +19,10 @@
 -->
 ## Upcoming Release
 
+## Version 6.4.0
+* Added support for updating CrossSubscriptionRestoreState of the vault
+* Added Cross subscription restore support for workload type MSSQL
+
 ## Version 6.3.0
 * Supported using managed disks for replication for HyperV to Azure provider in Azure Site Recovery
 
