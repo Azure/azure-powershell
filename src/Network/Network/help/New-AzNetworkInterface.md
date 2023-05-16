@@ -18,8 +18,7 @@ Creates a network interface.
 New-AzNetworkInterface -Name <String> -ResourceGroupName <String> -Location <String> [-EdgeZone <String>]
  -IpConfiguration <PSNetworkInterfaceIPConfiguration[]> [-DnsServer <String[]>]
  [-InternalDnsNameLabel <String>] [-DisableTcpStateTracking <String>] [-EnableIPForwarding]
- [-EnableAcceleratedNetworking] [-AuxiliaryMode <String>] [-Tag <Hashtable>] [-Force] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-EnableAcceleratedNetworking] [-AuxiliaryMode <String>] [-AuxiliarySku <String>] [-Tag <Hashtable>] [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByIpConfigurationResourceId
