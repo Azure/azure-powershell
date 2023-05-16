@@ -29,6 +29,9 @@ Gets the status of operation.
 ### [Import-AzRedisEnterpriseCache](Import-AzRedisEnterpriseCache.md)
 Imports a database file to target database.
 
+### [Invoke-AzRedisEnterpriseCacheDatabaseFlush](Invoke-AzRedisEnterpriseCacheDatabaseFlush.md)
+Flushes all the keys in this database and also from its linked databases.
+
 ### [Invoke-AzRedisEnterpriseCacheForceDatabaseUnlink](Invoke-AzRedisEnterpriseCacheForceDatabaseUnlink.md)
 Forcibly removes the link to the specified database resource.
 

@@ -74,10 +74,16 @@
         [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202301.BackupInstanceResource]
         ${BackupInstance},
 
-        [Parameter(ParameterSetName="AlternateLocationFullRecovery", Mandatory, HelpMessage='Target resource Id to which backup data will be restored.')]
-        [Parameter(ParameterSetName="AlternateLocationILR", Mandatory, HelpMessage='Target resource Id to which backup data will be restored.')]
+        # this is applicable to all workloads wherever ALR supported.
+        [Parameter(ParameterSetName="AlternateLocationFullRecovery", Mandatory, HelpMessage='Specify the target resource ID for restoring backup data in an alternate location. For instance, provide the target database ARM ID that you want to restore to, for workloadType AzureDatabaseForPostgreSQL.')]
+        [Parameter(ParameterSetName="AlternateLocationILR", Mandatory, HelpMessage='Specify the target resource ID for restoring backup data in an alternate location. For instance, provide the target database ARM ID that you want to restore to, for workloadType AzureDatabaseForPostgreSQL.')]
         [System.String]
         ${TargetResourceId},
+
+        # this parameter is being used in OSS cross subscription restore as files
+        [Parameter(ParameterSetName="RestoreAsFiles", Mandatory=$false, HelpMessage='Target storage account container ARM Id to which backup data will be restored as files. This parameter is required for restoring as files to another subscription.')]
+        [System.String]
+        ${TargetResourceIdForRestoreAsFile},
 
         [Parameter(ParameterSetName="RestoreAsFiles", Mandatory, HelpMessage='Target storage account container Id to which backup data will be restored as files.')]
         [System.String]
@@ -87,13 +93,13 @@
         [System.String]
         ${FileNamePrefix},
 
-        [Parameter(ParameterSetName="OriginalLocationILR", Mandatory, HelpMessage='Switch Parameter to enable item level recovery.')]
+        [Parameter(ParameterSetName="OriginalLocationILR", Mandatory, HelpMessage='Switch parameter to enable item level recovery.')]
         [Parameter(ParameterSetName="AlternateLocationILR", Mandatory, HelpMessage='Switch parameter to enable item level recovery.')]
         [Switch]
         ${ItemLevelRecovery},
-
+                
         [Parameter(ParameterSetName="OriginalLocationILR", Mandatory=$false, HelpMessage='Container names for Item Level Recovery.')]
-        # [Parameter(ParameterSetName="AlternateLocationILR", Mandatory=$false, HelpMessage='Container names for Item Level Recovery.')]
+        [Parameter(ParameterSetName="AlternateLocationILR", Mandatory=$false, HelpMessage='Container names for Item Level Recovery.')]
         [System.String[]]
         ${ContainersList},
 
@@ -194,6 +200,11 @@
            $restoreRequest.RestoreTargetInfo.TargetDetail.FilePrefix = $FileNamePrefix
            $restoreRequest.RestoreTargetInfo.TargetDetail.RestoreTargetLocationType = "AzureBlobs"
            $restoreRequest.RestoreTargetInfo.TargetDetail.Url = $TargetContainerURI
+
+           # mandatory for Cross Subscription restore scenario for OSS
+           if(($PSBoundParameters.ContainsKey("TargetResourceIdForRestoreAsFile"))){
+               $restoreRequest.RestoreTargetInfo.TargetDetail.TargetResourceArmId = $TargetResourceIdForRestoreAsFile                
+           }
         }
         elseif(!($ItemLevelRecovery))
         {   
@@ -226,14 +237,28 @@
             $restoreRequest.RestoreTargetInfo = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202301.ItemLevelRestoreTargetInfo]::new()
             $restoreRequest.RestoreTargetInfo.ObjectType = "itemLevelRestoreTargetInfo"
 
-            $restoreCriteriaList = @()            
+            $restoreCriteriaList = @()
             
             # can generalise this condition to manifest level if needed
             if($DatasourceType -ne "AzureKubernetesService"){
-                if($ContainersList.length -gt 0){
+                
+                if(($RecoveryPoint -ne $null) -and ($RecoveryPoint -ne "") -and $ContainersList.length -gt 0){
                     for($i = 0; $i -lt $ContainersList.length; $i++){
                                 
-                        $restoreCriteria =  [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202301.RangeBasedItemLevelRestoreCriteria]::new()
+                        $restoreCriteria = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202301.ItemPathBasedRestoreCriteria]::new()
+
+                        $restoreCriteria.ObjectType = "ItemPathBasedRestoreCriteria"
+                        $restoreCriteria.ItemPath = $ContainersList[$i]
+                        $restoreCriteria.IsPathRelativeToBackupItem = $true
+
+                        # adding a criteria for each container given
+                        $restoreCriteriaList += ($restoreCriteria)
+                    }
+                }
+                elseif($ContainersList.length -gt 0){
+                    for($i = 0; $i -lt $ContainersList.length; $i++){
+                                
+                        $restoreCriteria = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202301.RangeBasedItemLevelRestoreCriteria]::new()
 
                         $restoreCriteria.ObjectType = "RangeBasedItemLevelRestoreCriteria"
                         $restoreCriteria.MinMatchingValue = $ContainersList[$i]

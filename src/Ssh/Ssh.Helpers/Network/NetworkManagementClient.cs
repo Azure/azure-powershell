@@ -334,7 +334,7 @@ namespace Microsoft.Azure.PowerShell.Ssh.Helpers.Network
             NetworkInterfaces = new NetworkInterfacesOperations(this);
             PublicIPAddresses = new PublicIPAddressesOperations(this);
             BaseUri = new System.Uri("https://management.azure.com");
-            ApiVersion = "2021-08-01";
+            ApiVersion = "2022-09-01";
             AcceptLanguage = "en-US";
             LongRunningOperationRetryTimeout = 30;
             GenerateClientRequestId = true;

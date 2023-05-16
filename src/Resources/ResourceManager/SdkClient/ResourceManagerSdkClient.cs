@@ -861,7 +861,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
         /// <param name="detailed">Whether the  return is detailed or not.</param>
         /// <param name="location">The resource group location.</param>
         /// <param name="subscriptionId"></param>
-
         /// <returns>The filtered resource groups</returns>
         public virtual List<PSResourceGroup> FilterResourceGroups(string name,Hashtable tag, bool detailed, string location = null, string subscriptionId = null)
         {

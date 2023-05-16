@@ -1,0 +1,141 @@
+{
+  "resourceType": "diagnosticSettings",
+  "apiVersion": "2021-05-01-preview",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.monitor"
+  },
+  "commands": [
+    {
+      "name": "Get-AzDiagnosticSetting",
+      "description": "Gets the active diagnostic settings for the specified resource.",
+      "path": "/{resourceUri}/providers/Microsoft.Insights/diagnosticSettings/{name}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.monitor/get-azdiagnosticsetting"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceId <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Gets the active diagnostic settings for the specified resource.",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.name]"
+            },
+            {
+              "name": "-ResourceId",
+              "value": "[Path.resourceUri]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Get-AzSubscriptionDiagnosticSetting",
+      "description": "Gets the active subscription diagnostic settings for the specified resource.",
+      "path": "/subscriptions/{subscriptionId}/providers/Microsoft.Insights/diagnosticSettings/{name}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.monitor/get-azsubscriptiondiagnosticsetting"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Gets the active subscription diagnostic settings for the specified resource.",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.name]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzDiagnosticSetting",
+      "description": "Deletes existing diagnostic settings for the specified resource.",
+      "path": "/{resourceUri}/providers/Microsoft.Insights/diagnosticSettings/{name}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.monitor/remove-azdiagnosticsetting"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceId <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Deletes existing diagnostic settings for the specified resource.",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.name]"
+            },
+            {
+              "name": "-ResourceId",
+              "value": "[Path.resourceUri]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzSubscriptionDiagnosticSetting",
+      "description": "Deletes existing subscription diagnostic settings for the specified resource.",
+      "path": "/subscriptions/{subscriptionId}/providers/Microsoft.Insights/diagnosticSettings/{name}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.monitor/remove-azsubscriptiondiagnosticsetting"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Deletes existing subscription diagnostic settings for the specified resource.",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.name]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

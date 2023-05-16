@@ -42,6 +42,8 @@ namespace Microsoft.Azure.PowerShell.Ssh.Helpers.HybridCompute.Models
         /// <param name="type">The type of the resource. E.g.
         /// "Microsoft.Compute/virtualMachines" or
         /// "Microsoft.Storage/storageAccounts"</param>
+        /// <param name="systemData">Azure Resource Manager metadata containing
+        /// createdBy and modifiedBy information.</param>
         /// <param name="tags">Resource tags.</param>
         /// <param name="forceUpdateTag">How the extension handler should be
         /// forced to update even if the extension configuration has not
@@ -52,6 +54,9 @@ namespace Microsoft.Azure.PowerShell.Ssh.Helpers.HybridCompute.Models
         /// extension; an example is "CustomScriptExtension".</param>
         /// <param name="typeHandlerVersion">Specifies the version of the
         /// script handler.</param>
+        /// <param name="enableAutomaticUpgrade">Indicates whether the
+        /// extension should be automatically upgraded by the platform if there
+        /// is a newer version available.</param>
         /// <param name="autoUpgradeMinorVersion">Indicates whether the
         /// extension should use a newer minor version if one is available at
         /// deployment time. Once deployed, however, the extension will not
@@ -66,13 +71,14 @@ namespace Microsoft.Azure.PowerShell.Ssh.Helpers.HybridCompute.Models
         /// appears in the response.</param>
         /// <param name="instanceView">The machine extension instance
         /// view.</param>
-        public MachineExtension(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string forceUpdateTag = default(string), string publisher = default(string), string machineExtensionType = default(string), string typeHandlerVersion = default(string), bool? autoUpgradeMinorVersion = default(bool?), object settings = default(object), object protectedSettings = default(object), string provisioningState = default(string), MachineExtensionPropertiesInstanceView instanceView = default(MachineExtensionPropertiesInstanceView))
-            : base(location, id, name, type, tags)
+        public MachineExtension(string location, string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), IDictionary<string, string> tags = default(IDictionary<string, string>), string forceUpdateTag = default(string), string publisher = default(string), string machineExtensionType = default(string), string typeHandlerVersion = default(string), bool? enableAutomaticUpgrade = default(bool?), bool? autoUpgradeMinorVersion = default(bool?), IDictionary<string, object> settings = default(IDictionary<string, object>), IDictionary<string, object> protectedSettings = default(IDictionary<string, object>), string provisioningState = default(string), MachineExtensionInstanceView instanceView = default(MachineExtensionInstanceView))
+            : base(location, id, name, type, systemData, tags)
         {
             ForceUpdateTag = forceUpdateTag;
             Publisher = publisher;
             MachineExtensionType = machineExtensionType;
             TypeHandlerVersion = typeHandlerVersion;
+            EnableAutomaticUpgrade = enableAutomaticUpgrade;
             AutoUpgradeMinorVersion = autoUpgradeMinorVersion;
             Settings = settings;
             ProtectedSettings = protectedSettings;
@@ -113,6 +119,14 @@ namespace Microsoft.Azure.PowerShell.Ssh.Helpers.HybridCompute.Models
         public string TypeHandlerVersion { get; set; }
 
         /// <summary>
+        /// Gets or sets indicates whether the extension should be
+        /// automatically upgraded by the platform if there is a newer version
+        /// available.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.enableAutomaticUpgrade")]
+        public bool? EnableAutomaticUpgrade { get; set; }
+
+        /// <summary>
         /// Gets or sets indicates whether the extension should use a newer
         /// minor version if one is available at deployment time. Once
         /// deployed, however, the extension will not upgrade minor versions
@@ -125,14 +139,14 @@ namespace Microsoft.Azure.PowerShell.Ssh.Helpers.HybridCompute.Models
         /// Gets or sets json formatted public settings for the extension.
         /// </summary>
         [JsonProperty(PropertyName = "properties.settings")]
-        public object Settings { get; set; }
+        public IDictionary<string, object> Settings { get; set; }
 
         /// <summary>
         /// Gets or sets the extension can contain either protectedSettings or
         /// protectedSettingsFromKeyVault or no protected settings at all.
         /// </summary>
         [JsonProperty(PropertyName = "properties.protectedSettings")]
-        public object ProtectedSettings { get; set; }
+        public IDictionary<string, object> ProtectedSettings { get; set; }
 
         /// <summary>
         /// Gets the provisioning state, which only appears in the response.
@@ -144,7 +158,7 @@ namespace Microsoft.Azure.PowerShell.Ssh.Helpers.HybridCompute.Models
         /// Gets or sets the machine extension instance view.
         /// </summary>
         [JsonProperty(PropertyName = "properties.instanceView")]
-        public MachineExtensionPropertiesInstanceView InstanceView { get; set; }
+        public MachineExtensionInstanceView InstanceView { get; set; }
 
         /// <summary>
         /// Validate the object.
