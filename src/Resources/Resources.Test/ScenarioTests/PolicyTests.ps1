@@ -1503,6 +1503,7 @@ function Test-PolicyExemptionCRUD
     Assert-NotNull $exemption.Properties.Metadata
     Assert-AreEqual $metadataValue $exemption.Properties.Metadata.$metadataName
     Assert-Null $exemption.Properties.ExpiresOn
+    Assert-NotNull $exemption.SystemData
 
     # get the exemption by name
     $exemption = Get-AzPolicyExemption -Name testExemption -Scope $rg.ResourceId
@@ -1516,6 +1517,7 @@ function Test-PolicyExemptionCRUD
     Assert-NotNull $exemption.Properties.Metadata
     Assert-AreEqual $metadataValue $exemption.Properties.Metadata.$metadataName
     Assert-Null $exemption.Properties.ExpiresOn
+    Assert-NotNull $exemption.SystemData
 
     # get the exemption by id
     $exemption = Get-AzPolicyExemption -Id $exemption.ResourceId
@@ -1529,6 +1531,7 @@ function Test-PolicyExemptionCRUD
     Assert-NotNull $exemption.Properties.Metadata
     Assert-AreEqual $metadataValue $exemption.Properties.Metadata.$metadataName
     Assert-Null $exemption.Properties.ExpiresOn
+    Assert-NotNull $exemption.SystemData
 
     # update the policy exemption, validate the result
     $future1 = [DateTime]::Parse('3021-03-09T07:30:10Z').ToUniversalTime()
@@ -1600,6 +1603,7 @@ function Test-PolicyExemptionCRUDOnPolicySet
     Assert-Null $exemption.Properties.Metadata
     Assert-Null $exemption.Properties.PolicyDefinitionReferenceIds
     Assert-AreEqual $future1 $exemption.Properties.ExpiresOn.ToUniversalTime()
+    Assert-NotNull $exemption.SystemData
 
     # update the policy exemption set policy definition reference Id using piping, validate the result
     $future2 = $future1.AddDays(1).ToUniversalTime()
@@ -1614,6 +1618,7 @@ function Test-PolicyExemptionCRUDOnPolicySet
     Assert-NotNull $exemption.Properties.PolicyDefinitionReferenceIds
     Assert-AreEqual 1 $exemption.Properties.PolicyDefinitionReferenceIds.Count
     Assert-AreEqual $policySet.Properties.PolicyDefinitions[0].policyDefinitionReferenceId $exemption.Properties.PolicyDefinitionReferenceIds[0]
+    Assert-NotNull $exemption.SystemData
 
     # update the policy exemption set policy definition reference Id using parameters, validate the result
     $exemption = Set-AzPolicyExemption -Name testExemption -DisplayName 'testDisplay1' -ExemptionCategory Waiver -PolicyDefinitionReferenceId @($policySet.Properties.PolicyDefinitions[0].policyDefinitionReferenceId)
@@ -1623,10 +1628,19 @@ function Test-PolicyExemptionCRUDOnPolicySet
     Assert-NotNull $exemption.Properties.PolicyDefinitionReferenceIds
     Assert-AreEqual 1 $exemption.Properties.PolicyDefinitionReferenceIds.Count
     Assert-AreEqual $policySet.Properties.PolicyDefinitions[0].policyDefinitionReferenceId $exemption.Properties.PolicyDefinitionReferenceIds[0]
+    Assert-NotNull $exemption.SystemData
 
     # update the exemption to clear the expiration
     $exemption.Properties.PolicyDefinitionReferenceIds = @()
     $exemption = $exemption | Set-AzPolicyExemption 
+    Assert-AreEqual 0 @($exemption.Properties.PolicyDefinitionReferenceIds).Count
+
+    # update the exemption without pipeline input
+    $exemption = Set-AzPolicyExemption -Name testExemption -ExpiresOn $future1
+    Assert-AreEqual $future1 $exemption.Properties.ExpiresOn.ToUniversalTime()
+
+    # update policy definition reference Ids with empty array
+    $exemption = Set-AzPolicyExemption -Name testExemption -policyDefinitionReferenceId @()
     Assert-AreEqual 0 @($exemption.Properties.PolicyDefinitionReferenceIds).Count
 
     # make another policy exemption, ensure both are present
