@@ -1806,6 +1806,14 @@ function ParseMinorVersion
         $RuntimeVersion = $version
     }
 
+    # For Java function app, the version from the Stacks API is 8.0, 11.0, and 17.0. However, this is a breaking change which cannot be supported in the current release.
+    # We will convert the version to 8, 11, and 17. This change will be reverted for the November 2023 breaking release.
+    if ($RuntimeName -eq "Java")
+    {
+        $RuntimeVersion = [int]$RuntimeVersion
+        Write-Debug "$DEBUG_PREFIX Runtime version for Java is modified to be compatible with the current release. Current version '$RuntimeVersion'"
+    }
+
     # When $env:FunctionsDisplayHiddenRuntimes is set to true, we will display all runtimes
     if ($RuntimeSettings.IsHidden -and (-not $env:FunctionsDisplayHiddenRuntimes))
     {
