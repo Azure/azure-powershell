@@ -69,13 +69,22 @@ $nic | Set-AzNetworkInterfaceIpConfig -Name ipconfig1 -PrivateIpAddress 10.0.0.1
 
 $nic | Set-AzNetworkInterface
 ```
-
 In this example, the variable $asg contains a reference to an application security group.
     The fourth command gets the network interface nic1 associated with the IP
     configuration that needs to be updated. The Set-AzNetworkInterfaceIpConfig sets the private IP address of the primary IP
     configuration ipconfig1 to 10.0.0.11 and creates an association with the retrieved application security group.
     Finally, the last command updates the network interface ensuring the changes
     have been made successfully.
+
+### 3: Disassociating an IP configuration with an application gateway backend address pool
+```powershell
+$nic = Get-AzNetworkInterface -Name nic1 -ResourceGroupName myrg
+
+$nic | Set-AzNetworkInterfaceIpConfig -Name ipconfig1 -ApplicationGatewayBackendAddressPool $null
+
+$nic | Set-AzNetworkInterface
+```
+The Set-AzNetworkInterfaceIpConfig sets the application gateway backend address pool of the IP configuration ipconfig1 to null and disassociate with the network interface. Finally, the last command updates the network interface ensuring the changes have been made successfully.
 
 ## PARAMETERS
 
