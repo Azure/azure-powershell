@@ -1,4 +1,12 @@
 ### Thanks to our community contributors
-* @geologyrocks
-  * Update IsCustom property on example role defintion (#21514)
-  * Fix Assignment/Definition typo in Output (#21442)
+* Gitanjali Verma (@gitanjali1993), Update Set-AzApplicationGatewayBackendAddressPool.md (#21458)
+* Jeremiah Mathers (@jeremiahmathers), Update Set-AzApplicationGatewayConnectionDraining.md (#21601)
+* Morris Janatzek (@morrisjdev), Added PackageAction `Set` for `Update-AzSynapseSparkPool` to support removing and adding packages in one action (#21579)
+* Adam Myatt (@myatt83)
+  * Update Set-AzNetworkManagerSubscriptionConnection.md (#21621)
+  * Update Get-AzApiManagementAuthorizationServerClientSecret.md (#21619)
+* Noah Koontz (@prototypicalpro)
+  * Regenerate help for Az.Network (#21533)
+  * feat: add autoscale support for virtual hub and update network formatting (#21518)
+* Simon Wåhlin (@SimonWahlin), Add -Force parameter on Publish-AzBicepModule (#21713)
+* Steve Matney (@stevematney), Fix typo in Update-AzWebAppTrafficRouting.md (#21667)

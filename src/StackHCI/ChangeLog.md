@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.0.0
 * Made Region parameter mandatory in `Register-AzStackHCI` cmdlet.
 * Removed EnableAzureArcServer parameter from `Register-AzStackHCI` cmdlet.
 * Removed `Test-AzStackHCIConnection` cmdlet. Customers can use `Invoke-AzStackHciConnectivityValidation` from AzStackHCI.EnvironmentChecker module for enhanced connectivity verification tests.
