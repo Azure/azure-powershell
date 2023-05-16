@@ -7,8 +7,6 @@ using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
 using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.Azure.Management.ResourceManager;
-using Microsoft.Azure.Management.ResourceManager.Models;
 using Newtonsoft.Json.Linq;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Json;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
@@ -16,6 +14,8 @@ using System.Management.Automation;
 using System.Linq;
 using Microsoft.Rest.Azure;
 using System.Threading.Tasks;
+using Microsoft.Azure.Management.Resources;
+using Microsoft.Azure.Management.Resources.Models;
 using ProjectResources = Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties.Resources;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.Deployments;
 
@@ -43,18 +43,18 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
         /// <summary>
         /// Field that holds the resource client instance
         /// </summary>
-        private ResourceManagerSdkClient resourceManagerSdkClient;
+        private NewResourceManagerSdkClient resourceManagerSdkClient;
 
         /// <summary>
         /// Gets or sets the resource manager sdk client
         /// </summary>
-        private ResourceManagerSdkClient ResourceManagerSdkClient
+        private NewResourceManagerSdkClient ResourceManagerSdkClient
         {
             get
             {
                 if (this.resourceManagerSdkClient == null)
                 {
-                    this.resourceManagerSdkClient = new ResourceManagerSdkClient(azureContext);
+                    this.resourceManagerSdkClient = new NewResourceManagerSdkClient(azureContext);
                 }
 
                 this.resourceManagerSdkClient.VerboseLogger = WriteVerbose;

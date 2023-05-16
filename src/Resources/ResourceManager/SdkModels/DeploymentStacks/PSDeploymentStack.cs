@@ -1,5 +1,5 @@
 ﻿using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkExtensions;
-using Microsoft.Azure.Management.ResourceManager.Models;
+using Microsoft.Azure.Management.Resources.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
             this.provisioningState = deploymentStack.ProvisioningState;
             this.deploymentScope = deploymentStack.DeploymentScope;
             this.description = deploymentStack.Description;
-            this.resources = deploymentStack.Resources;
+            this.resources = deploymentStack.ResourcesProperty;
             this.denySettings = deploymentStack.DenySettings;
             this.detachedResources = deploymentStack.DetachedResources;
             this.deletedResources = deploymentStack.DeletedResources;

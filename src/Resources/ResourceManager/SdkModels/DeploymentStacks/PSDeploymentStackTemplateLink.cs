@@ -1,4 +1,4 @@
-﻿using Microsoft.Azure.Management.ResourceManager.Models;
+﻿using Microsoft.Azure.Management.Resources.Models;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
 {
