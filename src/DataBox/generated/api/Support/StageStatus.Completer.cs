@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support
 {
 
-    /// <summary>Status of the job stage.</summary>
+    /// <summary>Holds the device erasure completion status</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.StageStatusTypeConverter))]
     public partial struct StageStatus :
         System.Management.Automation.IArgumentCompleter
@@ -61,6 +61,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "SucceededWithWarnings".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
                 yield return new global::System.Management.Automation.CompletionResult("'SucceededWithWarnings'", "SucceededWithWarnings", global::System.Management.Automation.CompletionResultType.ParameterValue, "SucceededWithWarnings");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "WaitingForCustomerActionForKek".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'WaitingForCustomerActionForKek'", "WaitingForCustomerActionForKek", global::System.Management.Automation.CompletionResultType.ParameterValue, "WaitingForCustomerActionForKek");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "WaitingForCustomerActionForCleanUp".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'WaitingForCustomerActionForCleanUp'", "WaitingForCustomerActionForCleanUp", global::System.Management.Automation.CompletionResultType.ParameterValue, "WaitingForCustomerActionForCleanUp");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "CustomerActionPerformedForCleanUp".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'CustomerActionPerformedForCleanUp'", "CustomerActionPerformedForCleanUp", global::System.Management.Automation.CompletionResultType.ParameterValue, "CustomerActionPerformedForCleanUp");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "CustomerActionPerformed".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'CustomerActionPerformed'", "CustomerActionPerformed", global::System.Management.Automation.CompletionResultType.ParameterValue, "CustomerActionPerformed");
             }
         }
     }

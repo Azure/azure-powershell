@@ -84,9 +84,13 @@ namespace Microsoft.Azure.Commands.Network
         internal const string ByHubBgpConnectionObject = "ByHubBgpConnectionObject";
         internal const string ByHubBgpConnectionResourceId = "ByHubBgpConnectionResourceId";
 
-        internal const string ByRoutingIntentName = "ByRoutingInctentName";
-        internal const string ByRoutingIntentResourceId = "ByRoutingInctentResourceId";
-        internal const string ByRoutingIntentObject = "ByRoutingInctentObject";
+        internal const string ByRoutingIntentName = "ByRoutingIntentName";
+        internal const string ByRoutingIntentResourceId = "ByRoutingIntentResourceId";
+        internal const string ByRoutingIntentObject = "ByRoutingIntentObject";
+
+        internal const string ByRouteMapName = "ByRouteMapName";
+        internal const string ByRouteMapResourceId = "ByRouteMapResourceId";
+        internal const string ByRouteMapObject = "ByRouteMapObject";
 
     }
 }

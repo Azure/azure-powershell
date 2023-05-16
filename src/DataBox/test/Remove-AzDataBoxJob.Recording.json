@@ -1,8 +1,8 @@
 {
-  "Remove-AzDataBoxJob+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/databox-pwsh-rg-7h/providers/Microsoft.DataBox/jobs/powershellnsgk?api-version=2021-03-01+1": {
+  "Remove-AzDataBoxJob+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/databox-pwsh-rg-7h/providers/Microsoft.DataBox/jobs/powershellnsgk?api-version=2022-12-01+1": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/databox-pwsh-rg-7h/providers/Microsoft.DataBox/jobs/powershellnsgk?api-version=2021-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/databox-pwsh-rg-7h/providers/Microsoft.DataBox/jobs/powershellnsgk?api-version=2022-12-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -22,7 +22,7 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/providers/Microsoft.DataBox/locations/WestUS/operationResults/5a75e017-1d53-4d18-9000-9bc4429a01e4-deleteorder?api-version=2021-03-01" ],
+        "Location": [ "https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/providers/Microsoft.DataBox/locations/WestUS/operationResults/5a75e017-1d53-4d18-9000-9bc4429a01e4-deleteorder?api-version=2022-12-01" ],
         "Retry-After": [ "10" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
@@ -42,10 +42,10 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzDataBoxJob+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/providers/Microsoft.DataBox/locations/WestUS/operationResults/5a75e017-1d53-4d18-9000-9bc4429a01e4-deleteorder?api-version=2021-03-01+2": {
+  "Remove-AzDataBoxJob+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/providers/Microsoft.DataBox/locations/WestUS/operationResults/5a75e017-1d53-4d18-9000-9bc4429a01e4-deleteorder?api-version=2022-12-01+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/providers/Microsoft.DataBox/locations/WestUS/operationResults/5a75e017-1d53-4d18-9000-9bc4429a01e4-deleteorder?api-version=2021-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/providers/Microsoft.DataBox/locations/WestUS/operationResults/5a75e017-1d53-4d18-9000-9bc4429a01e4-deleteorder?api-version=2022-12-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -82,10 +82,10 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzDataBoxJob+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/providers/Microsoft.DataBox/locations/WestUS/operationResults/5a75e017-1d53-4d18-9000-9bc4429a01e4-deleteorder?api-version=2021-03-01+3": {
+  "Remove-AzDataBoxJob+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/providers/Microsoft.DataBox/locations/WestUS/operationResults/5a75e017-1d53-4d18-9000-9bc4429a01e4-deleteorder?api-version=2022-12-01+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/providers/Microsoft.DataBox/locations/WestUS/operationResults/5a75e017-1d53-4d18-9000-9bc4429a01e4-deleteorder?api-version=2021-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/providers/Microsoft.DataBox/locations/WestUS/operationResults/5a75e017-1d53-4d18-9000-9bc4429a01e4-deleteorder?api-version=2022-12-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -122,10 +122,10 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzDataBoxJob+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/databox-pwsh-rg-7h/providers/Microsoft.DataBox/jobs/powershellUAIlsr5?api-version=2021-03-01+4": {
+  "Remove-AzDataBoxJob+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/databox-pwsh-rg-7h/providers/Microsoft.DataBox/jobs/powershellUAIlsr5?api-version=2022-12-01+4": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/databox-pwsh-rg-7h/providers/Microsoft.DataBox/jobs/powershellUAIlsr5?api-version=2021-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/databox-pwsh-rg-7h/providers/Microsoft.DataBox/jobs/powershellUAIlsr5?api-version=2022-12-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -145,7 +145,7 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/providers/Microsoft.DataBox/locations/WestUS/operationResults/20638179-450d-4012-9365-6f1f9b2b7a05-deleteorder?api-version=2021-03-01" ],
+        "Location": [ "https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/providers/Microsoft.DataBox/locations/WestUS/operationResults/20638179-450d-4012-9365-6f1f9b2b7a05-deleteorder?api-version=2022-12-01" ],
         "Retry-After": [ "10" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
@@ -165,10 +165,10 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzDataBoxJob+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/providers/Microsoft.DataBox/locations/WestUS/operationResults/20638179-450d-4012-9365-6f1f9b2b7a05-deleteorder?api-version=2021-03-01+5": {
+  "Remove-AzDataBoxJob+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/providers/Microsoft.DataBox/locations/WestUS/operationResults/20638179-450d-4012-9365-6f1f9b2b7a05-deleteorder?api-version=2022-12-01+5": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/providers/Microsoft.DataBox/locations/WestUS/operationResults/20638179-450d-4012-9365-6f1f9b2b7a05-deleteorder?api-version=2021-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/providers/Microsoft.DataBox/locations/WestUS/operationResults/20638179-450d-4012-9365-6f1f9b2b7a05-deleteorder?api-version=2022-12-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -205,10 +205,10 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzDataBoxJob+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/providers/Microsoft.DataBox/locations/WestUS/operationResults/20638179-450d-4012-9365-6f1f9b2b7a05-deleteorder?api-version=2021-03-01+6": {
+  "Remove-AzDataBoxJob+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/providers/Microsoft.DataBox/locations/WestUS/operationResults/20638179-450d-4012-9365-6f1f9b2b7a05-deleteorder?api-version=2022-12-01+6": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/providers/Microsoft.DataBox/locations/WestUS/operationResults/20638179-450d-4012-9365-6f1f9b2b7a05-deleteorder?api-version=2021-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/providers/Microsoft.DataBox/locations/WestUS/operationResults/20638179-450d-4012-9365-6f1f9b2b7a05-deleteorder?api-version=2022-12-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -245,10 +245,10 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzDataBoxJob+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/databox-pwsh-rg-7h/providers/Microsoft.DataBox/jobs/powershellExport81o9?api-version=2021-03-01+7": {
+  "Remove-AzDataBoxJob+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/databox-pwsh-rg-7h/providers/Microsoft.DataBox/jobs/powershellExport81o9?api-version=2022-12-01+7": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/databox-pwsh-rg-7h/providers/Microsoft.DataBox/jobs/powershellExport81o9?api-version=2021-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/databox-pwsh-rg-7h/providers/Microsoft.DataBox/jobs/powershellExport81o9?api-version=2022-12-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -268,7 +268,7 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/providers/Microsoft.DataBox/locations/WestUS/operationResults/a42a9558-dd42-4556-ad80-c5d6ef740750-deleteorder?api-version=2021-03-01" ],
+        "Location": [ "https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/providers/Microsoft.DataBox/locations/WestUS/operationResults/a42a9558-dd42-4556-ad80-c5d6ef740750-deleteorder?api-version=2022-12-01" ],
         "Retry-After": [ "10" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
@@ -288,10 +288,10 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzDataBoxJob+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/providers/Microsoft.DataBox/locations/WestUS/operationResults/a42a9558-dd42-4556-ad80-c5d6ef740750-deleteorder?api-version=2021-03-01+8": {
+  "Remove-AzDataBoxJob+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/providers/Microsoft.DataBox/locations/WestUS/operationResults/a42a9558-dd42-4556-ad80-c5d6ef740750-deleteorder?api-version=2022-12-01+8": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/providers/Microsoft.DataBox/locations/WestUS/operationResults/a42a9558-dd42-4556-ad80-c5d6ef740750-deleteorder?api-version=2021-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/providers/Microsoft.DataBox/locations/WestUS/operationResults/a42a9558-dd42-4556-ad80-c5d6ef740750-deleteorder?api-version=2022-12-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -328,10 +328,10 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzDataBoxJob+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/providers/Microsoft.DataBox/locations/WestUS/operationResults/a42a9558-dd42-4556-ad80-c5d6ef740750-deleteorder?api-version=2021-03-01+9": {
+  "Remove-AzDataBoxJob+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/providers/Microsoft.DataBox/locations/WestUS/operationResults/a42a9558-dd42-4556-ad80-c5d6ef740750-deleteorder?api-version=2022-12-01+9": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/providers/Microsoft.DataBox/locations/WestUS/operationResults/a42a9558-dd42-4556-ad80-c5d6ef740750-deleteorder?api-version=2021-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/providers/Microsoft.DataBox/locations/WestUS/operationResults/a42a9558-dd42-4556-ad80-c5d6ef740750-deleteorder?api-version=2022-12-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -368,10 +368,10 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzDataBoxJob+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/databox-pwsh-rg-7h/providers/Microsoft.DataBox/jobs/powershellScheduleeq1n?api-version=2021-03-01+10": {
+  "Remove-AzDataBoxJob+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/databox-pwsh-rg-7h/providers/Microsoft.DataBox/jobs/powershellScheduleeq1n?api-version=2022-12-01+10": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/databox-pwsh-rg-7h/providers/Microsoft.DataBox/jobs/powershellScheduleeq1n?api-version=2021-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/databox-pwsh-rg-7h/providers/Microsoft.DataBox/jobs/powershellScheduleeq1n?api-version=2022-12-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -391,7 +391,7 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/providers/Microsoft.DataBox/locations/WestUS/operationResults/59576900-5144-40ee-8c20-8573390d23c6-deleteorder?api-version=2021-03-01" ],
+        "Location": [ "https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/providers/Microsoft.DataBox/locations/WestUS/operationResults/59576900-5144-40ee-8c20-8573390d23c6-deleteorder?api-version=2022-12-01" ],
         "Retry-After": [ "10" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
@@ -411,10 +411,10 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzDataBoxJob+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/providers/Microsoft.DataBox/locations/WestUS/operationResults/59576900-5144-40ee-8c20-8573390d23c6-deleteorder?api-version=2021-03-01+11": {
+  "Remove-AzDataBoxJob+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/providers/Microsoft.DataBox/locations/WestUS/operationResults/59576900-5144-40ee-8c20-8573390d23c6-deleteorder?api-version=2022-12-01+11": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/providers/Microsoft.DataBox/locations/WestUS/operationResults/59576900-5144-40ee-8c20-8573390d23c6-deleteorder?api-version=2021-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/providers/Microsoft.DataBox/locations/WestUS/operationResults/59576900-5144-40ee-8c20-8573390d23c6-deleteorder?api-version=2022-12-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -451,10 +451,10 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzDataBoxJob+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/providers/Microsoft.DataBox/locations/WestUS/operationResults/59576900-5144-40ee-8c20-8573390d23c6-deleteorder?api-version=2021-03-01+12": {
+  "Remove-AzDataBoxJob+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/providers/Microsoft.DataBox/locations/WestUS/operationResults/59576900-5144-40ee-8c20-8573390d23c6-deleteorder?api-version=2022-12-01+12": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/providers/Microsoft.DataBox/locations/WestUS/operationResults/59576900-5144-40ee-8c20-8573390d23c6-deleteorder?api-version=2021-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/providers/Microsoft.DataBox/locations/WestUS/operationResults/59576900-5144-40ee-8c20-8573390d23c6-deleteorder?api-version=2022-12-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -491,10 +491,10 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzDataBoxJob+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/databox-pwsh-rg-7h/providers/Microsoft.DataBox/jobs/PwshHeavyl1zu?api-version=2021-03-01+13": {
+  "Remove-AzDataBoxJob+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/databox-pwsh-rg-7h/providers/Microsoft.DataBox/jobs/PwshHeavyl1zu?api-version=2022-12-01+13": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/databox-pwsh-rg-7h/providers/Microsoft.DataBox/jobs/PwshHeavyl1zu?api-version=2021-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/databox-pwsh-rg-7h/providers/Microsoft.DataBox/jobs/PwshHeavyl1zu?api-version=2022-12-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -514,7 +514,7 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/providers/Microsoft.DataBox/locations/WestUS/operationResults/40918b6e-4d3f-4b56-9608-f7f12239cc44-deleteorder?api-version=2021-03-01" ],
+        "Location": [ "https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/providers/Microsoft.DataBox/locations/WestUS/operationResults/40918b6e-4d3f-4b56-9608-f7f12239cc44-deleteorder?api-version=2022-12-01" ],
         "Retry-After": [ "10" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
@@ -534,10 +534,10 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzDataBoxJob+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/providers/Microsoft.DataBox/locations/WestUS/operationResults/40918b6e-4d3f-4b56-9608-f7f12239cc44-deleteorder?api-version=2021-03-01+14": {
+  "Remove-AzDataBoxJob+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/providers/Microsoft.DataBox/locations/WestUS/operationResults/40918b6e-4d3f-4b56-9608-f7f12239cc44-deleteorder?api-version=2022-12-01+14": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/providers/Microsoft.DataBox/locations/WestUS/operationResults/40918b6e-4d3f-4b56-9608-f7f12239cc44-deleteorder?api-version=2021-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/providers/Microsoft.DataBox/locations/WestUS/operationResults/40918b6e-4d3f-4b56-9608-f7f12239cc44-deleteorder?api-version=2022-12-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -574,10 +574,10 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzDataBoxJob+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/providers/Microsoft.DataBox/locations/WestUS/operationResults/40918b6e-4d3f-4b56-9608-f7f12239cc44-deleteorder?api-version=2021-03-01+15": {
+  "Remove-AzDataBoxJob+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/providers/Microsoft.DataBox/locations/WestUS/operationResults/40918b6e-4d3f-4b56-9608-f7f12239cc44-deleteorder?api-version=2022-12-01+15": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/providers/Microsoft.DataBox/locations/WestUS/operationResults/40918b6e-4d3f-4b56-9608-f7f12239cc44-deleteorder?api-version=2021-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/providers/Microsoft.DataBox/locations/WestUS/operationResults/40918b6e-4d3f-4b56-9608-f7f12239cc44-deleteorder?api-version=2022-12-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -614,10 +614,10 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzDataBoxJob+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/databox-pwsh-rg-7h/providers/Microsoft.DataBox/jobs/PwshDiskc2sx?api-version=2021-03-01+16": {
+  "Remove-AzDataBoxJob+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/databox-pwsh-rg-7h/providers/Microsoft.DataBox/jobs/PwshDiskc2sx?api-version=2022-12-01+16": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/databox-pwsh-rg-7h/providers/Microsoft.DataBox/jobs/PwshDiskc2sx?api-version=2021-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/databox-pwsh-rg-7h/providers/Microsoft.DataBox/jobs/PwshDiskc2sx?api-version=2022-12-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -637,7 +637,7 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/providers/Microsoft.DataBox/locations/WestUS/operationResults/868d5e3e-1493-4ceb-b393-cd514fe5d223-deleteorder?api-version=2021-03-01" ],
+        "Location": [ "https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/providers/Microsoft.DataBox/locations/WestUS/operationResults/868d5e3e-1493-4ceb-b393-cd514fe5d223-deleteorder?api-version=2022-12-01" ],
         "Retry-After": [ "10" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
@@ -657,10 +657,10 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzDataBoxJob+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/providers/Microsoft.DataBox/locations/WestUS/operationResults/868d5e3e-1493-4ceb-b393-cd514fe5d223-deleteorder?api-version=2021-03-01+17": {
+  "Remove-AzDataBoxJob+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/providers/Microsoft.DataBox/locations/WestUS/operationResults/868d5e3e-1493-4ceb-b393-cd514fe5d223-deleteorder?api-version=2022-12-01+17": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/providers/Microsoft.DataBox/locations/WestUS/operationResults/868d5e3e-1493-4ceb-b393-cd514fe5d223-deleteorder?api-version=2021-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/providers/Microsoft.DataBox/locations/WestUS/operationResults/868d5e3e-1493-4ceb-b393-cd514fe5d223-deleteorder?api-version=2022-12-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -680,7 +680,7 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/providers/Microsoft.DataBox/locations/WestUS/operationResults/868d5e3e-1493-4ceb-b393-cd514fe5d223-deleteorder?api-version=2021-03-01" ],
+        "Location": [ "https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/providers/Microsoft.DataBox/locations/WestUS/operationResults/868d5e3e-1493-4ceb-b393-cd514fe5d223-deleteorder?api-version=2022-12-01" ],
         "Retry-After": [ "10" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
@@ -700,10 +700,10 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzDataBoxJob+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/providers/Microsoft.DataBox/locations/WestUS/operationResults/868d5e3e-1493-4ceb-b393-cd514fe5d223-deleteorder?api-version=2021-03-01+18": {
+  "Remove-AzDataBoxJob+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/providers/Microsoft.DataBox/locations/WestUS/operationResults/868d5e3e-1493-4ceb-b393-cd514fe5d223-deleteorder?api-version=2022-12-01+18": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/providers/Microsoft.DataBox/locations/WestUS/operationResults/868d5e3e-1493-4ceb-b393-cd514fe5d223-deleteorder?api-version=2021-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/providers/Microsoft.DataBox/locations/WestUS/operationResults/868d5e3e-1493-4ceb-b393-cd514fe5d223-deleteorder?api-version=2022-12-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -723,7 +723,7 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/providers/Microsoft.DataBox/locations/WestUS/operationResults/868d5e3e-1493-4ceb-b393-cd514fe5d223-deleteorder?api-version=2021-03-01" ],
+        "Location": [ "https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/providers/Microsoft.DataBox/locations/WestUS/operationResults/868d5e3e-1493-4ceb-b393-cd514fe5d223-deleteorder?api-version=2022-12-01" ],
         "Retry-After": [ "10" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
@@ -743,10 +743,10 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzDataBoxJob+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/providers/Microsoft.DataBox/locations/WestUS/operationResults/868d5e3e-1493-4ceb-b393-cd514fe5d223-deleteorder?api-version=2021-03-01+19": {
+  "Remove-AzDataBoxJob+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/providers/Microsoft.DataBox/locations/WestUS/operationResults/868d5e3e-1493-4ceb-b393-cd514fe5d223-deleteorder?api-version=2022-12-01+19": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/providers/Microsoft.DataBox/locations/WestUS/operationResults/868d5e3e-1493-4ceb-b393-cd514fe5d223-deleteorder?api-version=2021-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/providers/Microsoft.DataBox/locations/WestUS/operationResults/868d5e3e-1493-4ceb-b393-cd514fe5d223-deleteorder?api-version=2022-12-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -766,7 +766,7 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/providers/Microsoft.DataBox/locations/WestUS/operationResults/868d5e3e-1493-4ceb-b393-cd514fe5d223-deleteorder?api-version=2021-03-01" ],
+        "Location": [ "https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/providers/Microsoft.DataBox/locations/WestUS/operationResults/868d5e3e-1493-4ceb-b393-cd514fe5d223-deleteorder?api-version=2022-12-01" ],
         "Retry-After": [ "10" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
@@ -786,10 +786,10 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzDataBoxJob+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/providers/Microsoft.DataBox/locations/WestUS/operationResults/868d5e3e-1493-4ceb-b393-cd514fe5d223-deleteorder?api-version=2021-03-01+20": {
+  "Remove-AzDataBoxJob+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/providers/Microsoft.DataBox/locations/WestUS/operationResults/868d5e3e-1493-4ceb-b393-cd514fe5d223-deleteorder?api-version=2022-12-01+20": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/providers/Microsoft.DataBox/locations/WestUS/operationResults/868d5e3e-1493-4ceb-b393-cd514fe5d223-deleteorder?api-version=2021-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/providers/Microsoft.DataBox/locations/WestUS/operationResults/868d5e3e-1493-4ceb-b393-cd514fe5d223-deleteorder?api-version=2022-12-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -809,7 +809,7 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/providers/Microsoft.DataBox/locations/WestUS/operationResults/868d5e3e-1493-4ceb-b393-cd514fe5d223-deleteorder?api-version=2021-03-01" ],
+        "Location": [ "https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/providers/Microsoft.DataBox/locations/WestUS/operationResults/868d5e3e-1493-4ceb-b393-cd514fe5d223-deleteorder?api-version=2022-12-01" ],
         "Retry-After": [ "10" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
@@ -829,10 +829,10 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzDataBoxJob+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/providers/Microsoft.DataBox/locations/WestUS/operationResults/868d5e3e-1493-4ceb-b393-cd514fe5d223-deleteorder?api-version=2021-03-01+21": {
+  "Remove-AzDataBoxJob+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/providers/Microsoft.DataBox/locations/WestUS/operationResults/868d5e3e-1493-4ceb-b393-cd514fe5d223-deleteorder?api-version=2022-12-01+21": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/providers/Microsoft.DataBox/locations/WestUS/operationResults/868d5e3e-1493-4ceb-b393-cd514fe5d223-deleteorder?api-version=2021-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/providers/Microsoft.DataBox/locations/WestUS/operationResults/868d5e3e-1493-4ceb-b393-cd514fe5d223-deleteorder?api-version=2022-12-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -852,7 +852,7 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/providers/Microsoft.DataBox/locations/WestUS/operationResults/868d5e3e-1493-4ceb-b393-cd514fe5d223-deleteorder?api-version=2021-03-01" ],
+        "Location": [ "https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/providers/Microsoft.DataBox/locations/WestUS/operationResults/868d5e3e-1493-4ceb-b393-cd514fe5d223-deleteorder?api-version=2022-12-01" ],
         "Retry-After": [ "10" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
@@ -872,10 +872,10 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzDataBoxJob+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/providers/Microsoft.DataBox/locations/WestUS/operationResults/868d5e3e-1493-4ceb-b393-cd514fe5d223-deleteorder?api-version=2021-03-01+22": {
+  "Remove-AzDataBoxJob+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/providers/Microsoft.DataBox/locations/WestUS/operationResults/868d5e3e-1493-4ceb-b393-cd514fe5d223-deleteorder?api-version=2022-12-01+22": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/providers/Microsoft.DataBox/locations/WestUS/operationResults/868d5e3e-1493-4ceb-b393-cd514fe5d223-deleteorder?api-version=2021-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/providers/Microsoft.DataBox/locations/WestUS/operationResults/868d5e3e-1493-4ceb-b393-cd514fe5d223-deleteorder?api-version=2022-12-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -912,10 +912,10 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzDataBoxJob+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/providers/Microsoft.DataBox/locations/WestUS/operationResults/868d5e3e-1493-4ceb-b393-cd514fe5d223-deleteorder?api-version=2021-03-01+23": {
+  "Remove-AzDataBoxJob+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/providers/Microsoft.DataBox/locations/WestUS/operationResults/868d5e3e-1493-4ceb-b393-cd514fe5d223-deleteorder?api-version=2022-12-01+23": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/providers/Microsoft.DataBox/locations/WestUS/operationResults/868d5e3e-1493-4ceb-b393-cd514fe5d223-deleteorder?api-version=2021-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/providers/Microsoft.DataBox/locations/WestUS/operationResults/868d5e3e-1493-4ceb-b393-cd514fe5d223-deleteorder?api-version=2022-12-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
