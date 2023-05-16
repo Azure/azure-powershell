@@ -157,19 +157,19 @@ function Update-AzDatabricksWorkspace {
         [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
         [System.String]
         # The name of KeyVault key.
-        ${ManagedDiskKeyVaultPropertiesName},
+        ${ManagedDiskKeyVaultPropertiesKeyName},
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
         [System.String]
         # The URI of KeyVault.
-        ${ManagedDiskKeyVaultPropertiesUri},
+        ${ManagedDiskKeyVaultPropertiesKeyVaultUri},
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
         [System.String]
         # The version of KeyVault key.
-        ${ManagedDiskKeyVaultPropertiesVersion},
+        ${ManagedDiskKeyVaultPropertiesKeyVersion},
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
@@ -181,19 +181,19 @@ function Update-AzDatabricksWorkspace {
         [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
         [System.String]
         # The name of KeyVault key.
-        ${ManagedServicesKeyVaultPropertiesName},
+        ${ManagedServicesKeyVaultPropertiesKeyName},
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
         [System.String]
         # The Uri of KeyVault.
-        ${ManagedServicesKeyVaultPropertiesUri},
+        ${ManagedServicesKeyVaultPropertiesKeyVaultUri},
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
         [System.String]
         # The version of KeyVault key.
-        ${ManagedServicesKeyVaultPropertiesVersion},
+        ${ManagedServicesKeyVaultPropertiesKeyVersion},
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
@@ -292,13 +292,13 @@ function Update-AzDatabricksWorkspace {
             $hasAmlWorkspaceId = $PSBoundParameters.Remove('AmlWorkspaceId')
             $hasSkuTier = $PSBoundParameters.Remove('SkuTier')
             $hasAuthorization = $PSBoundParameters.Remove('Authorization')
-            $hasManagedDiskKeyVaultPropertiesName = $PSBoundParameters.Remove('ManagedDiskKeyVaultPropertiesName')
-            $hasManagedDiskKeyVaultPropertiesUri = $PSBoundParameters.Remove('ManagedDiskKeyVaultPropertiesUri')
-            $hasManagedDiskKeyVaultPropertiesVersion = $PSBoundParameters.Remove('ManagedDiskKeyVaultPropertiesVersion')
+            $hasManagedDiskKeyVaultPropertiesKeyName = $PSBoundParameters.Remove('ManagedDiskKeyVaultPropertiesKeyName')
+            $hasManagedDiskKeyVaultPropertiesKeyVaultUri = $PSBoundParameters.Remove('ManagedDiskKeyVaultPropertiesKeyVaultUri')
+            $hasManagedDiskKeyVaultPropertiesKeyVersion = $PSBoundParameters.Remove('ManagedDiskKeyVaultPropertiesKeyVersion')
             $hasManagedDiskRotationToLatestKeyVersionEnabled = $PSBoundParameters.Remove('ManagedDiskRotationToLatestKeyVersionEnabled')
-            $hasManagedServicesKeyVaultPropertiesName = $PSBoundParameters.Remove('ManagedServicesKeyVaultPropertiesName')
-            $hasManagedServicesKeyVaultPropertiesUri = $PSBoundParameters.Remove('ManagedServicesKeyVaultPropertiesUri')
-            $hasManagedServicesKeyVaultPropertiesVersion = $PSBoundParameters.Remove('ManagedServicesKeyVaultPropertiesVersion')
+            $hasManagedServicesKeyVaultPropertiesKeyName = $PSBoundParameters.Remove('ManagedServicesKeyVaultPropertiesKeyName')
+            $hasManagedServicesKeyVaultPropertiesKeyVaultUri = $PSBoundParameters.Remove('ManagedServicesKeyVaultPropertiesKeyVaultUri')
+            $hasManagedServicesKeyVaultPropertiesKeyVersion = $PSBoundParameters.Remove('ManagedServicesKeyVaultPropertiesKeyVersion')
             $hasUiDefinitionUri = $PSBoundParameters.Remove('UiDefinitionUri')
             $hasTag = $PSBoundParameters.Remove('Tag')
             $hasRequiredNsgRule = $PSBoundParameters.Remove('RequiredNsgRule')
@@ -307,7 +307,6 @@ function Update-AzDatabricksWorkspace {
             $null = $PSBoundParameters.Remove('Confirm')
 
             $workspace = Get-AzDatabricksWorkspace @PSBoundParameters
-            $workspace | fl
 
             # 2. PUT
             $null = $PSBoundParameters.Remove('InputObject')
@@ -356,26 +355,26 @@ function Update-AzDatabricksWorkspace {
             if ($hasAuthorization) {
                 $workspace.Authorization = $Authorization
             }
-            if ($hasManagedDiskKeyVaultPropertiesName) {
-                $workspace.ManagedDiskKeyVaultPropertiesName = $ManagedDiskKeyVaultPropertiesName
+            if ($hasManagedDiskKeyVaultPropertiesKeyName) {
+                $workspace.ManagedDiskKeyVaultPropertiesKeyName = $ManagedDiskKeyVaultPropertiesKeyName
             }
-            if ($hasManagedDiskKeyVaultPropertiesUri) {
-                $workspace.ManagedDiskKeyVaultPropertiesUri = $ManagedDiskKeyVaultPropertiesUri
+            if ($hasManagedDiskKeyVaultPropertiesKeyVaultUri) {
+                $workspace.ManagedDiskKeyVaultPropertiesKeyVaultUri = $ManagedDiskKeyVaultPropertiesKeyVaultUri
             }
-            if ($hasManagedDiskKeyVaultPropertiesVersion) {
-                $workspace.ManagedDiskKeyVaultPropertiesVersion = $ManagedDiskKeyVaultPropertiesVersion
+            if ($hasManagedDiskKeyVaultPropertiesKeyVersion) {
+                $workspace.ManagedDiskKeyVaultPropertiesKeyVersion = $ManagedDiskKeyVaultPropertiesKeyVersion
             }
             if ($hasManagedDiskRotationToLatestKeyVersionEnabled) {
                 $workspace.ManagedDiskRotationToLatestKeyVersionEnabled = $ManagedDiskRotationToLatestKeyVersionEnabled
             }
-            if ($hasManagedServicesKeyVaultPropertiesName) {
-                $workspace.ManagedServicesKeyVaultPropertiesName = $ManagedServicesKeyVaultPropertiesName
+            if ($hasManagedServicesKeyVaultPropertiesKeyName) {
+                $workspace.ManagedServicesKeyVaultPropertiesKeyName = $ManagedServicesKeyVaultPropertiesKeyName
             }
-            if ($hasManagedServicesKeyVaultPropertiesUri) {
-                $workspace.ManagedServicesKeyVaultPropertiesUri = $ManagedServicesKeyVaultPropertiesUri
+            if ($hasManagedServicesKeyVaultPropertiesKeyVaultUri) {
+                $workspace.ManagedServicesKeyVaultPropertiesKeyVaultUri = $ManagedServicesKeyVaultPropertiesKeyVaultUri
             }
-            if ($hasManagedServicesKeyVaultPropertiesVersion) {
-                $workspace.ManagedServicesKeyVaultPropertiesVersion = $ManagedServicesKeyVaultPropertiesVersion
+            if ($hasManagedServicesKeyVaultPropertiesKeyVersion) {
+                $workspace.ManagedServicesKeyVaultPropertiesKeyVersion = $ManagedServicesKeyVaultPropertiesKeyVersion
             }
             if ($hasUiDefinitionUri) {
                 $workspace.UiDefinitionUri = $UiDefinitionUri

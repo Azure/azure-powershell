@@ -18,10 +18,10 @@ Update-AzDatabricksWorkspace -Name <String> -ResourceGroupName <String> [-Subscr
  [-AmlWorkspaceId <String>] [-Authorization <IWorkspaceProviderAuthorization[]>] [-EncryptionKeyName <String>]
  [-EncryptionKeySource <KeySource>] [-EncryptionKeyVaultUri <String>] [-EncryptionKeyVersion <String>]
  [-KeyVaultKeyName <String>] [-KeyVaultKeyVersion <String>] [-KeyVaultUri <String>]
- [-ManagedDiskKeyVaultPropertiesName <String>] [-ManagedDiskKeyVaultPropertiesUri <String>]
- [-ManagedDiskKeyVaultPropertiesVersion <String>] [-ManagedDiskRotationToLatestKeyVersionEnabled]
- [-ManagedServicesKeyVaultPropertiesName <String>] [-ManagedServicesKeyVaultPropertiesUri <String>]
- [-ManagedServicesKeyVaultPropertiesVersion <String>] [-PrepareEncryption]
+ [-ManagedDiskKeyVaultPropertiesKeyName <String>] [-ManagedDiskKeyVaultPropertiesKeyVaultUri <String>]
+ [-ManagedDiskKeyVaultPropertiesKeyVersion <String>] [-ManagedDiskRotationToLatestKeyVersionEnabled]
+ [-ManagedServicesKeyVaultPropertiesKeyName <String>] [-ManagedServicesKeyVaultPropertiesKeyVaultUri <String>]
+ [-ManagedServicesKeyVaultPropertiesKeyVersion <String>] [-PrepareEncryption]
  [-RequiredNsgRule <RequiredNsgRules>] [-SkuTier <String>] [-Tag <Hashtable>] [-UiDefinitionUri <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -32,10 +32,10 @@ Update-AzDatabricksWorkspace -InputObject <IDatabricksIdentity> [-AmlWorkspaceId
  [-Authorization <IWorkspaceProviderAuthorization[]>] [-EncryptionKeyName <String>]
  [-EncryptionKeySource <KeySource>] [-EncryptionKeyVaultUri <String>] [-EncryptionKeyVersion <String>]
  [-KeyVaultKeyName <String>] [-KeyVaultKeyVersion <String>] [-KeyVaultUri <String>]
- [-ManagedDiskKeyVaultPropertiesName <String>] [-ManagedDiskKeyVaultPropertiesUri <String>]
- [-ManagedDiskKeyVaultPropertiesVersion <String>] [-ManagedDiskRotationToLatestKeyVersionEnabled]
- [-ManagedServicesKeyVaultPropertiesName <String>] [-ManagedServicesKeyVaultPropertiesUri <String>]
- [-ManagedServicesKeyVaultPropertiesVersion <String>] [-PrepareEncryption]
+ [-ManagedDiskKeyVaultPropertiesKeyName <String>] [-ManagedDiskKeyVaultPropertiesKeyVaultUri <String>]
+ [-ManagedDiskKeyVaultPropertiesKeyVersion <String>] [-ManagedDiskRotationToLatestKeyVersionEnabled]
+ [-ManagedServicesKeyVaultPropertiesKeyName <String>] [-ManagedServicesKeyVaultPropertiesKeyVaultUri <String>]
+ [-ManagedServicesKeyVaultPropertiesKeyVersion <String>] [-PrepareEncryption]
  [-RequiredNsgRule <RequiredNsgRules>] [-SkuTier <String>] [-Tag <Hashtable>] [-UiDefinitionUri <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -295,7 +295,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ManagedDiskKeyVaultPropertiesName
+### -ManagedDiskKeyVaultPropertiesKeyName
 The name of KeyVault key.
 
 ```yaml
@@ -310,7 +310,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ManagedDiskKeyVaultPropertiesUri
+### -ManagedDiskKeyVaultPropertiesKeyVaultUri
 The URI of KeyVault.
 
 ```yaml
@@ -325,7 +325,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ManagedDiskKeyVaultPropertiesVersion
+### -ManagedDiskKeyVaultPropertiesKeyVersion
 The version of KeyVault key.
 
 ```yaml
@@ -355,7 +355,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ManagedServicesKeyVaultPropertiesName
+### -ManagedServicesKeyVaultPropertiesKeyName
 The name of KeyVault key.
 
 ```yaml
@@ -370,7 +370,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ManagedServicesKeyVaultPropertiesUri
+### -ManagedServicesKeyVaultPropertiesKeyVaultUri
 The Uri of KeyVault.
 
 ```yaml
@@ -385,7 +385,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ManagedServicesKeyVaultPropertiesVersion
+### -ManagedServicesKeyVaultPropertiesKeyVersion
 The version of KeyVault key.
 
 ```yaml

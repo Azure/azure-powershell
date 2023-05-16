@@ -17,11 +17,11 @@ New-AzDatabricksWorkspace -Name <String> -ResourceGroupName <String> -Location <
  [-SubscriptionId <String>] [-AmlWorkspaceId <String>] [-Authorization <IWorkspaceProviderAuthorization[]>]
  [-EnableNoPublicIP] [-EncryptionKeyName <String>] [-EncryptionKeySource <KeySource>]
  [-EncryptionKeyVaultUri <String>] [-EncryptionKeyVersion <String>] [-LoadBalancerBackendPoolName <String>]
- [-LoadBalancerId <String>] [-ManagedDiskKeyVaultPropertiesName <String>]
- [-ManagedDiskKeyVaultPropertiesUri <String>] [-ManagedDiskKeyVaultPropertiesVersion <String>]
+ [-LoadBalancerId <String>] [-ManagedDiskKeyVaultPropertiesKeyName <String>]
+ [-ManagedDiskKeyVaultPropertiesKeyVaultUri <String>] [-ManagedDiskKeyVaultPropertiesKeyVersion <String>]
  [-ManagedDiskRotationToLatestKeyVersionEnabled] [-ManagedResourceGroupName <String>]
- [-ManagedServicesKeyVaultPropertiesName <String>] [-ManagedServicesKeyVaultPropertiesUri <String>]
- [-ManagedServicesKeyVaultPropertiesVersion <String>] [-NatGatewayName <String>] [-PrepareEncryption]
+ [-ManagedServicesKeyVaultPropertiesKeyName <String>] [-ManagedServicesKeyVaultPropertiesKeyVaultUri <String>]
+ [-ManagedServicesKeyVaultPropertiesKeyVersion <String>] [-NatGatewayName <String>] [-PrepareEncryption]
  [-PrivateSubnetName <String>] [-PublicIPName <String>] [-PublicNetworkAccess <PublicNetworkAccess>]
  [-PublicSubnetName <String>] [-RequiredNsgRule <RequiredNsgRules>] [-RequireInfrastructureEncryption]
  [-Sku <String>] [-SkuTier <String>] [-StorageAccountName <String>] [-StorageAccountSku <String>]
@@ -58,7 +58,7 @@ $pubSubnet = New-AzVirtualNetworkSubnetConfig -Name azps-vnetwork-sub-pub -Addre
 $testVN = New-AzVirtualNetwork -Name azps-virtual-network -ResourceGroupName azps_test_gp_db -Location eastus -AddressPrefix "110.0.0.0/16" -Subnet $kvSubnet,$priSubnet,$pubSubnet
 $vNetResId = (Get-AzVirtualNetwork -Name azps-virtual-network -ResourceGroupName azps_test_gp_db).Subnets[0].Id
 $ruleSet = New-AzKeyVaultNetworkRuleSetObject -DefaultAction Allow -Bypass AzureServices -IpAddressRange "110.0.1.0/24" -VirtualNetworkResourceId $vNetResId
-New-AzKeyVault -ResourceGroupName azps_test_gp_db -VaultName azps-keyvault -NetworkRuleSet $ruleSet -Location eastus -Sku 'Premium'
+New-AzKeyVault -ResourceGroupName azps_test_gp_db -VaultName azps-keyvault -NetworkRuleSet $ruleSet -Location eastus -Sku 'Premium' -EnablePurgeProtection
 New-AzDatabricksWorkspace -Name azps-databricks-workspace-t2 -ResourceGroupName azps_test_gp_db -Location eastus -ManagedResourceGroupName azps_test_gp_kv_t2 -VirtualNetworkId $testVN.Id -PrivateSubnetName $priSubnet.Name -PublicSubnetName $pubSubnet.Name -Sku Premium
 ```
 
@@ -269,7 +269,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ManagedDiskKeyVaultPropertiesName
+### -ManagedDiskKeyVaultPropertiesKeyName
 The name of KeyVault key.
 
 ```yaml
@@ -284,7 +284,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ManagedDiskKeyVaultPropertiesUri
+### -ManagedDiskKeyVaultPropertiesKeyVaultUri
 The URI of KeyVault.
 
 ```yaml
@@ -299,7 +299,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ManagedDiskKeyVaultPropertiesVersion
+### -ManagedDiskKeyVaultPropertiesKeyVersion
 The version of KeyVault key.
 
 ```yaml
@@ -344,7 +344,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ManagedServicesKeyVaultPropertiesName
+### -ManagedServicesKeyVaultPropertiesKeyName
 The name of KeyVault key.
 
 ```yaml
@@ -359,7 +359,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ManagedServicesKeyVaultPropertiesUri
+### -ManagedServicesKeyVaultPropertiesKeyVaultUri
 The Uri of KeyVault.
 
 ```yaml
@@ -374,7 +374,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ManagedServicesKeyVaultPropertiesVersion
+### -ManagedServicesKeyVaultPropertiesKeyVersion
 The version of KeyVault key.
 
 ```yaml

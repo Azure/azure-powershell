@@ -111,30 +111,6 @@ directive:
       parameter-name: AmlWorkspaceIdValue
     set:
       parameter-name: AmlWorkspaceId
-  - where:
-      parameter-name: ManagedDiskKeyVaultPropertiesKeyName
-    set:
-      parameter-name: ManagedDiskKeyVaultPropertiesName
-  - where:
-      parameter-name: ManagedDiskKeyVaultPropertiesKeyVaultUri
-    set:
-      parameter-name: ManagedDiskKeyVaultPropertiesUri
-  - where:
-      parameter-name: ManagedDiskKeyVaultPropertiesKeyVersion
-    set:
-      parameter-name: ManagedDiskKeyVaultPropertiesVersion
-  - where:
-      parameter-name: ManagedServicesKeyVaultPropertiesKeyVaultUri
-    set:
-      parameter-name: ManagedServicesKeyVaultPropertiesUri
-  - where:
-      parameter-name: ManagedServicesKeyVaultPropertiesKeyName
-    set:
-      parameter-name: ManagedServicesKeyVaultPropertiesName
-  - where:
-      parameter-name: ManagedServicesKeyVaultPropertiesKeyVersion
-    set:
-      parameter-name: ManagedServicesKeyVaultPropertiesVersion
 
   - where:
       parameter-name: EnableNoPublicIPValue
@@ -236,37 +212,6 @@ directive:
       property-name: EnableNoPublicIPValue
     set:
       property-name: EnableNoPublicIP
-
-  - where:
-      model-name: Workspace
-      property-name: ManagedDiskKeyVaultPropertiesKeyName
-    set:
-      property-name: ManagedDiskKeyVaultPropertiesName
-  - where:
-      model-name: Workspace
-      property-name: ManagedDiskKeyVaultPropertiesKeyVaultUri
-    set:
-      property-name: ManagedDiskKeyVaultPropertiesUri
-  - where:
-      model-name: Workspace
-      property-name: ManagedDiskKeyVaultPropertiesKeyVersion
-    set:
-      property-name: ManagedDiskKeyVaultPropertiesVersion
-  - where:
-      model-name: Workspace
-      property-name: ManagedServicesKeyVaultPropertiesKeyVaultUri
-    set:
-      property-name: ManagedServicesKeyVaultPropertiesUri
-  - where:
-      model-name: Workspace
-      property-name: ManagedServicesKeyVaultPropertiesKeyName
-    set:
-      property-name: ManagedServicesKeyVaultPropertiesName
-  - where:
-      model-name: Workspace
-      property-name: ManagedServicesKeyVaultPropertiesKeyVersion
-    set:
-      property-name: ManagedServicesKeyVaultPropertiesVersion
 
   # Rename parameters of Set VNetPeering cmdlet
   - where:

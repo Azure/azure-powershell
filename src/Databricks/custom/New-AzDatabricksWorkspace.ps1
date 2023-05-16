@@ -140,19 +140,19 @@ function New-AzDatabricksWorkspace {
         [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
         [System.String]
         # The name of KeyVault key.
-        ${ManagedDiskKeyVaultPropertiesName},
+        ${ManagedDiskKeyVaultPropertiesKeyName},
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
         [System.String]
         # The URI of KeyVault.
-        ${ManagedDiskKeyVaultPropertiesUri},
+        ${ManagedDiskKeyVaultPropertiesKeyVaultUri},
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
         [System.String]
         # The version of KeyVault key.
-        ${ManagedDiskKeyVaultPropertiesVersion},
+        ${ManagedDiskKeyVaultPropertiesKeyVersion},
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
@@ -164,19 +164,19 @@ function New-AzDatabricksWorkspace {
         [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
         [System.String]
         # The name of KeyVault key.
-        ${ManagedServicesKeyVaultPropertiesName},
+        ${ManagedServicesKeyVaultPropertiesKeyName},
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
         [System.String]
         # The Uri of KeyVault.
-        ${ManagedServicesKeyVaultPropertiesUri},
+        ${ManagedServicesKeyVaultPropertiesKeyVaultUri},
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
         [System.String]
         # The version of KeyVault key.
-        ${ManagedServicesKeyVaultPropertiesVersion},
+        ${ManagedServicesKeyVaultPropertiesKeyVersion},
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
