@@ -155,7 +155,7 @@ namespace Microsoft.Azure.Commands.Ssh
             RelayInfoPath = Path.Combine(relayInfoDir, relayInfoFilename);
             DeleteFile(RelayInfoPath);
             StreamWriter relaySW = new StreamWriter(RelayInfoPath);
-            relaySW.WriteLine(relayInfo);
+            relaySW.WriteLine(ConvertEndpointAccessToBase64String(relayInfo));
             relaySW.Close();
 
             string expiration = GetRelayInfoExpiration(relayInfo);
