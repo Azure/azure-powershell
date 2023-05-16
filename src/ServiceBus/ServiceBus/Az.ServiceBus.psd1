@@ -102,10 +102,8 @@ FunctionsToExport = 'Approve-AzServiceBusPrivateEndpointConnection',
                'Set-AzServiceBusRule', 'Set-AzServiceBusSubscription', 
                'Set-AzServiceBusTopic', 'Start-AzServiceBusMigration', 
                'Stop-AzServiceBusMigration', 'Test-AzServiceBusName', 
-               'Get-AzServiceBusNamespaceV2', 
                'New-AzServiceBusKeyVaultPropertiesObject', 
-               'New-AzServiceBusNamespaceV2', 'Remove-AzServiceBusNamespaceV2', 
-               'Set-AzServiceBusNamespaceV2', 'Get-AzServiceBusNamespace', 
+               'Get-AzServiceBusNamespace', 
                'New-AzServiceBusNamespace', 'Remove-AzServiceBusNamespace', 
                'Set-AzServiceBusNamespace'
 
