@@ -65,12 +65,10 @@ directive:
       verb: Delay
       subject: DevBoxAction
   - where:
-      verb: Get
       subject: ^(.*)
       parameter-name: Top
     hide: true
   - where:
-      verb: Get
       subject: ^(.*)
       parameter-name: Filter
     hide: true

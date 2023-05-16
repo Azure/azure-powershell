@@ -15,10 +15,10 @@ Creates or updates a machine pool
 ### UpdateExpanded (Default)
 ```
 Set-AzDevCenterAdminPool -Name <String> -ProjectName <String> -ResourceGroupName <String> -Location <String>
- [-SubscriptionId <String>] [-DevBoxDefinitionName <String>] [-LicenseType <LicenseType>]
- [-LocalAdministrator <LocalAdminStatus>] [-NetworkConnectionName <String>]
- [-StopOnDisconnectGracePeriodMinute <Int32>] [-StopOnDisconnectStatus <StopOnDisconnectEnableStatus>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] [-DevBoxDefinitionName <String>] [-LocalAdministrator <LocalAdminStatus>]
+ [-NetworkConnectionName <String>] [-StopOnDisconnectGracePeriodMinute <Int32>]
+ [-StopOnDisconnectStatus <StopOnDisconnectEnableStatus>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Update
@@ -109,21 +109,6 @@ Name of a Dev Box definition in parent Project of this Pool
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -LicenseType
-Specifies the license type indicating the caller has already acquired licenses for the Dev Boxes that will be created.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.LicenseType
 Parameter Sets: UpdateExpanded
 Aliases:
 

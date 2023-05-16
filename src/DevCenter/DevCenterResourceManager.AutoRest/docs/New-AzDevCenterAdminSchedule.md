@@ -14,29 +14,27 @@ Creates or updates a Schedule.
 
 ### CreateExpanded (Default)
 ```
-New-AzDevCenterAdminSchedule -Name <String> -PoolName <String> -ProjectName <String>
- -ResourceGroupName <String> [-SubscriptionId <String>] [-Top <Int32>] [-Frequency <ScheduledFrequency>]
- [-PropertiesType <ScheduledType>] [-State <ScheduleEnableStatus>] [-Time <String>] [-TimeZone <String>]
+New-AzDevCenterAdminSchedule -PoolName <String> -ProjectName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-State <ScheduleEnableStatus>] [-Time <String>] [-TimeZone <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Create
 ```
-New-AzDevCenterAdminSchedule -Name <String> -PoolName <String> -ProjectName <String>
- -ResourceGroupName <String> -Body <ISchedule> [-SubscriptionId <String>] [-Top <Int32>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzDevCenterAdminSchedule -PoolName <String> -ProjectName <String> -ResourceGroupName <String>
+ -Body <ISchedule> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentity
 ```
-New-AzDevCenterAdminSchedule -InputObject <IDevCenterIdentity> -Body <ISchedule> [-Top <Int32>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzDevCenterAdminSchedule -InputObject <IDevCenterIdentity> -Body <ISchedule> [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
-New-AzDevCenterAdminSchedule -InputObject <IDevCenterIdentity> [-Top <Int32>]
- [-Frequency <ScheduledFrequency>] [-PropertiesType <ScheduledType>] [-State <ScheduleEnableStatus>]
+New-AzDevCenterAdminSchedule -InputObject <IDevCenterIdentity> [-State <ScheduleEnableStatus>]
  [-Time <String>] [-TimeZone <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
@@ -117,21 +115,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Frequency
-The frequency of this scheduled task.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.ScheduledFrequency
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -InputObject
 Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
@@ -145,21 +128,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -Name
-The name of the schedule that uniquely identifies it.
-
-```yaml
-Type: System.String
-Parameter Sets: Create, CreateExpanded
-Aliases: ScheduleName
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -202,21 +170,6 @@ Parameter Sets: Create, CreateExpanded
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PropertiesType
-Supported type this scheduled task represents.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.ScheduledType
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -291,22 +244,6 @@ The IANA timezone id at which the schedule should execute.
 ```yaml
 Type: System.String
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Top
-The maximum number of resources to return from the operation.
-Example: '$top=10'.
-
-```yaml
-Type: System.Int32
-Parameter Sets: (All)
 Aliases:
 
 Required: False

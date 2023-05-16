@@ -14,32 +14,31 @@ Partially updates a Scheduled.
 
 ### UpdateExpanded (Default)
 ```
-Update-AzDevCenterAdminSchedule -Name <String> -PoolName <String> -ProjectName <String>
- -ResourceGroupName <String> [-SubscriptionId <String>] [-Top <Int32>] [-Frequency <ScheduledFrequency>]
- [-Location <String>] [-State <ScheduleEnableStatus>] [-Tag <Hashtable>] [-Time <String>] [-TimeZone <String>]
- [-Type <ScheduledType>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Update-AzDevCenterAdminSchedule -PoolName <String> -ProjectName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-Location <String>] [-State <ScheduleEnableStatus>] [-Tag <Hashtable>]
+ [-Time <String>] [-TimeZone <String>] [-Type <ScheduledType>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Update
 ```
-Update-AzDevCenterAdminSchedule -Name <String> -PoolName <String> -ProjectName <String>
- -ResourceGroupName <String> -Body <IScheduleUpdate> [-SubscriptionId <String>] [-Top <Int32>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzDevCenterAdminSchedule -PoolName <String> -ProjectName <String> -ResourceGroupName <String>
+ -Body <IScheduleUpdate> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentity
 ```
-Update-AzDevCenterAdminSchedule -InputObject <IDevCenterIdentity> -Body <IScheduleUpdate> [-Top <Int32>]
+Update-AzDevCenterAdminSchedule -InputObject <IDevCenterIdentity> -Body <IScheduleUpdate>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzDevCenterAdminSchedule -InputObject <IDevCenterIdentity> [-Top <Int32>]
- [-Frequency <ScheduledFrequency>] [-Location <String>] [-State <ScheduleEnableStatus>] [-Tag <Hashtable>]
- [-Time <String>] [-TimeZone <String>] [-Type <ScheduledType>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzDevCenterAdminSchedule -InputObject <IDevCenterIdentity> [-Location <String>]
+ [-State <ScheduleEnableStatus>] [-Tag <Hashtable>] [-Time <String>] [-TimeZone <String>]
+ [-Type <ScheduledType>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -119,21 +118,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Frequency
-The frequency of this scheduled task.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.ScheduledFrequency
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -InputObject
 Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
@@ -159,21 +143,6 @@ Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Name
-The name of the schedule that uniquely identifies it.
-
-```yaml
-Type: System.String
-Parameter Sets: Update, UpdateExpanded
-Aliases: ScheduleName
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -308,22 +277,6 @@ The IANA timezone id at which the schedule should execute.
 ```yaml
 Type: System.String
 Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Top
-The maximum number of resources to return from the operation.
-Example: '$top=10'.
-
-```yaml
-Type: System.Int32
-Parameter Sets: (All)
 Aliases:
 
 Required: False
