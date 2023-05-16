@@ -19,6 +19,7 @@
 -->
 ## Upcoming Release
 * Removed New-AzWebAppContainerPSSession and Enter-AzWebAppContainerPSSession cmdlets
+* Increased timeout for Publish-AzWebApp command
 
 ## Version 2.15.1
 * Used AAD Auth instead of Basic Auth for PublishAzureWebApps
