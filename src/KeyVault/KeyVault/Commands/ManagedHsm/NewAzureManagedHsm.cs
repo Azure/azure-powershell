@@ -16,6 +16,7 @@ using Microsoft.Azure.Commands.KeyVault.Models;
 using Microsoft.Azure.Commands.KeyVault.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.KeyVault.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 using System;
@@ -27,6 +28,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
     /// <summary>
     /// Create a new managed HSM.
     /// </summary>
+    [GenericBreakingChange("The parameter 'SoftDeleteRetentionInDays' is becoming mandatory", "6.0.0")]
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "KeyVaultManagedHsm", SupportsShouldProcess = true)]
     [OutputType(typeof(PSManagedHsm))]
     public class NewAzureManagedHsm : KeyVaultManagementCmdletBase
