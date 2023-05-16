@@ -546,7 +546,7 @@ function Test-RouteMapCRUD
 		$remoteVirtualNetwork = New-AzVirtualNetwork -Name $virtualNetworkName -ResourceGroupName $rgName -Location $rglocation -AddressPrefix "10.2.0.0/16" -Subnet $frontendSubnet,$backendSubnet
 		$hubVnetCon1 = New-AzVirtualHubVnetConnection -ResourceGroupName $rgName -VirtualHubName $virtualHubName -Name $virtualNetworkConnectionName -RemoteVirtualNetwork $remoteVirtualNetwork -RoutingConfiguration $testRoutingConfiguration
 
-		$effectiveRoutes = Get-AzVHubEffectiveRoutes -ResourceGroupName $rgName -VirtualHubName $virtualHubName -ResourceId $rt1.Id -VirtualWanResourceType 'Routetable'
+		$effectiveRoutes = Get-AzVHubEffectiveRoutes -ResourceGroupName $rgName -VirtualHubName $virtualHubName -ResourceId $rt1.Id -VirtualWanResourceType 'RouteTable'
 		Assert-AreEqual $effectiveRoutes.Value.Count 1
 
 		$inboundRoutes = Get-AzVHubInboundRoutes -ResourceGroupName $rgName -VirtualHubName $virtualHubName -ResourceUri $hubVnetCon1.Id -VirtualWanConnectionType 'HubVirtualNetworkConnection'
