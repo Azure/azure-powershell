@@ -18,12 +18,12 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Made Region parameter mandatory in Register-AzStackHCI cmdlet.
-* Removed EnableAzureArcServer parameter from Register-AzStackHCI cmdlet.
-* Removed Test-AzStackHCIConnection cmdlet. Customers can use Invoke-AzStackHciConnectivityValidation from AzStackHCI.EnvironmentChecker module for enhanced connectivity verification tests.
+* Made Region parameter mandatory in `Register-AzStackHCI` cmdlet.
+* Removed EnableAzureArcServer parameter from `Register-AzStackHCI` cmdlet.
+* Removed `Test-AzStackHCIConnection` cmdlet. Customers can use `Invoke-AzStackHciConnectivityValidation` from AzStackHCI.EnvironmentChecker module for enhanced connectivity verification tests.
 * Added support for Managed Service identity (MSI) in Azure China Cloud.
 * Added support for Mandatory extensions, for OS versions starting 23H2.
-* Added parameter validations for Register-AzStackHCI cmdlet.
+* Added parameter validations for `Register-AzStackHCI` cmdlet.
 * Improved Error logging in Registration and Unregistration.
 
 ## Version 1.4.3

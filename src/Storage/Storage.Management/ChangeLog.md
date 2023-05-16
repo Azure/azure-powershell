@@ -23,10 +23,10 @@
 * Supported setting CORS rules in management plane cmdlets 
     - `Update-AzStorageBlobServiceProperty`
     - `Update-AzStorageFileServiceProperty`
-* Fixed an issue of StorageAccountName field in context object when the context is invalid 
+* Fixed an issue of `StorageAccountName` field in context object when the context is invalid 
     - `New-AzStorageContext`
 * Fixed an issue when a context does not have Crendentials field 
-* Added "$blobchangefeed" to be a valid container name
+* Added `$blobchangefeed` to be a valid container name
 
 ## Version 5.6.0
 * Supported rename file and directory

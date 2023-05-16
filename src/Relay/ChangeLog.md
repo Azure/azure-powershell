@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Updated api version to 2021-11-01
+* Updated API version to 2021-11-01
 
 ## Version 1.0.4
 * Added breaking change message for cmdlets.
