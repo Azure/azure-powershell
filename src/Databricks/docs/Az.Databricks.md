@@ -17,7 +17,7 @@ Gets an azure databricks accessConnector.
 ### [Get-AzDatabricksOutboundNetworkDependenciesEndpoint](Get-AzDatabricksOutboundNetworkDependenciesEndpoint.md)
 Gets the list of endpoints that VNET Injected Workspace calls Azure Databricks Control Plane.
 You must configure outbound access with these endpoints.
-For more information, see https://docs.microsoft.com/en-us/azure/databricks/administration-guide/cloud-configurations/azure/udr
+For more information, see https://learn.microsoft.com/en-us/azure/databricks/administration-guide/cloud-configurations/azure/udr
 
 ### [Get-AzDatabricksVNetPeering](Get-AzDatabricksVNetPeering.md)
 Gets the workspace vNet Peering.
