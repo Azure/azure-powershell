@@ -6,8 +6,8 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "160" ],
-        "x-ms-client-request-id": [ "88bbd042-ff31-49b2-8364-89580e51334d" ],
+        "x-ms-unique-id": [ "161" ],
+        "x-ms-client-request-id": [ "6b3878d1-e5f1-4972-bdb2-b0392e97faaa" ],
         "CommandName": [ "Get-AzCdnSubscriptionResourceUsage" ],
         "FullCommandName": [ "Get-AzCdnSubscriptionResourceUsage_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -23,14 +23,14 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "f2760f7c-5477-4649-9b2c-2f263a681c42" ],
-        "x-ms-client-request-id": [ "88bbd042-ff31-49b2-8364-89580e51334d" ],
+        "x-ms-request-id": [ "6be734b1-132b-4f12-aca7-0deb95688696" ],
+        "x-ms-client-request-id": [ "6b3878d1-e5f1-4972-bdb2-b0392e97faaa" ],
         "Server": [ "Kestrel" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "1193" ],
-        "x-ms-correlation-request-id": [ "6b9ce98d-eecc-4427-9271-2ec4a6e3cf82" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230428T033932Z:6b9ce98d-eecc-4427-9271-2ec4a6e3cf82" ],
+        "x-ms-correlation-request-id": [ "af1834b2-4613-4510-8890-8429f53b0bd4" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230517T063019Z:af1834b2-4613-4510-8890-8429f53b0bd4" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Fri, 28 Apr 2023 03:39:32 GMT" ]
+        "Date": [ "Wed, 17 May 2023 06:30:19 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "157" ],

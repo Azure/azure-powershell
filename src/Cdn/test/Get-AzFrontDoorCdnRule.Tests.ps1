@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzFrontDoorCdnRule'))
 
 Describe 'Get-AzFrontDoorCdnRule'  {
     BeforeAll {
-        $rulesetName = 'rs' + (RandomString -allChars $false -len 6);
+        $rulesetName = 'rsName020'
         Write-Host -ForegroundColor Green "Use rulesetName : $($rulesetName)"
         New-AzFrontDoorCdnRuleSet -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Name $rulesetName
         $uriConditon = New-AzFrontDoorCdnRuleRequestUriConditionObject -Name "RequestUri" -ParameterOperator "Any"
@@ -30,7 +30,7 @@ Describe 'Get-AzFrontDoorCdnRule'  {
         -CacheConfigurationCacheBehavior "HonorOrigin"
         $actions = @($overrideAction);
         
-        $ruleName = 'r' + (RandomString -allChars $false -len 6);
+        $ruleName = 'ruleName020'
         Write-Host -ForegroundColor Green "Use ruleName : $($ruleName)"
         New-AzFrontDoorCdnRule -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -RuleSetName $rulesetName -Name $ruleName `
         -Action $actions -Condition $conditions
@@ -47,8 +47,9 @@ Describe 'Get-AzFrontDoorCdnRule'  {
     }
 
     It 'GetViaIdentity' {
-        $PSDefaultParameterValues['Disabled'] = $true
-        $rule = Get-AzFrontDoorCdnRule -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -RuleSetName $rulesetName -Name $ruleName | Get-AzFrontDoorCdnRule
+        $ruleObject = Get-AzFrontDoorCdnRule -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -RuleSetName $rulesetName -Name $ruleName
+        $rule = Get-AzFrontDoorCdnRule -InputObject $ruleObject
+        
         $rule.Name | Should -Be $ruleName   
     }
 }

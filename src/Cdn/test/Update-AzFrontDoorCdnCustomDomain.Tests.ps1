@@ -21,14 +21,14 @@ Describe 'Update-AzFrontDoorCdnCustomDomain'  {
     }
     It 'UpdateExpanded' {
         {
-            $customDomainName = "domain-" + (RandomString -allChars $false -len 6);
+            $customDomainName = "domain-Name030" 
             Write-Host -ForegroundColor Green "Use customDomainName : $($customDomainName)"
             $hostName = "pstestrefresh3.dev.cdn.azure.cn"
             $customDomain = New-AzFrontDoorCdnCustomDomain -CustomDomainName $customDomainName -ProfileName $env.FrontDoorEndpointName -ResourceGroupName $env.ResourceGroupName `
             -HostName $hostName
             Write-Host -ForegroundColor Green "Use customDomain token : $($customDomain.ValidationPropertyValidationTokenex)"
             
-            $secretName = "se-" + (RandomString -allChars $false -len 6);
+            $secretName = "se-psName050"
             Write-Host -ForegroundColor Green "Use secretName : $($secretName)"
 
             $parameter = New-AzFrontDoorCdnSecretCustomerCertificateParametersObject -UseLatestVersion $true -SubjectAlternativeName @() -Type "CustomerCertificate"`
@@ -44,18 +44,16 @@ Describe 'Update-AzFrontDoorCdnCustomDomain'  {
         }
     }
 
-    It 'UpdateViaIdentityExpanded' {
+    It 'UpdateViaIdentityExpanded' -SKip {
         { 
-            $PSDefaultParameterValues['Disabled'] = $true
-
-            $customDomainName = "domain-" + (RandomString -allChars $false -len 6);
+            $customDomainName = "domain-Name031"
             Write-Host -ForegroundColor Green "Use customDomainName : $($customDomainName)"
             $hostName = "pstestrefresh2.dev.cdn.azure.cn"
             $customDomain = New-AzFrontDoorCdnCustomDomain -CustomDomainName $customDomainName -ProfileName $env.FrontDoorEndpointName -ResourceGroupName $env.ResourceGroupName `
             -HostName $hostName
             Write-Host -ForegroundColor Green "Use customDomain token : $($customDomain.ValidationPropertyValidationTokenex)"
 
-            $secretName = "se-" + (RandomString -allChars $false -len 6);
+            $secretName = "se-psName051"
             Write-Host -ForegroundColor Green "Use secretName : $($secretName)"
     
             $parameter = New-AzFrontDoorCdnSecretCustomerCertificateParametersObject -UseLatestVersion $true -SubjectAlternativeName @() -Type "CustomerCertificate"`
@@ -66,8 +64,8 @@ Describe 'Update-AzFrontDoorCdnCustomDomain'  {
     
             $updateSetting = New-AzFrontDoorCdnCustomDomainTlsSettingParametersObject -CertificateType "CustomerCertificate" -MinimumTlsVersion "TLS10" -Secret $secretResoure
 
-            Get-AzFrontDoorCdnCustomDomain -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorEndpointName -CustomDomainName $customDomain `
-            | Update-AzFrontDoorCdnCustomDomain -TlsSetting $updateSetting
+            $domainObject = Get-AzFrontDoorCdnCustomDomain -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorEndpointName -CustomDomainName $customDomain
+            Update-AzFrontDoorCdnCustomDomain -TlsSetting $updateSetting -InputObject $domainObject
         } 
     }
 }

@@ -1,9 +1,9 @@
 {
-  "Test-AzFrontDoorCdnProfileMigration+[NoContext]+CanExpanded+$POST+https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-1p9h/providers/Microsoft.Cdn/canMigrate?api-version=2022-11-01-preview+1": {
+  "Test-AzFrontDoorCdnProfileMigration+[NoContext]+CanExpanded+$POST+https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-457k/providers/Microsoft.Cdn/canMigrate?api-version=2022-11-01-preview+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-1p9h/providers/Microsoft.Cdn/canMigrate?api-version=2022-11-01-preview",
-      "Content": "{\r\n  \"classicResourceReference\": {\r\n    \"id\": \"/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourcegroups/testps-rg-1p9h/providers/Microsoft.Network/Frontdoors/fdp-3atp0k\"\r\n  }\r\n}",
+      "RequestUri": "https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-457k/providers/Microsoft.Cdn/canMigrate?api-version=2022-11-01-preview",
+      "Content": "{\r\n  \"classicResourceReference\": {\r\n    \"id\": \"/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourcegroups/testps-rg-457k/providers/Microsoft.Network/Frontdoors/fdp-cmf87w\"\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
       },
@@ -17,15 +17,15 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1184" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "49fb824d-1b66-465e-924d-315c20cef38a" ],
-        "x-ms-client-request-id": [ "f9d62393-35ed-41d6-8840-bf511127391d" ],
+        "x-ms-request-id": [ "bde25bae-8049-4d8f-9875-e3e24a0dab4e" ],
+        "x-ms-client-request-id": [ "e5f7c383-c0b6-4a3b-ae7b-ef650511ca0f" ],
         "Server": [ "Kestrel" ],
-        "x-ms-correlation-request-id": [ "6dde87a0-a1a4-4f9c-a50c-de7843437cd3" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230428T045337Z:6dde87a0-a1a4-4f9c-a50c-de7843437cd3" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1184" ],
+        "x-ms-correlation-request-id": [ "d632efe8-b35b-4675-a34f-efeb9bc296b7" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230517T074435Z:d632efe8-b35b-4675-a34f-efeb9bc296b7" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Fri, 28 Apr 2023 04:53:37 GMT" ]
+        "Date": [ "Wed, 17 May 2023 07:44:35 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "70" ],

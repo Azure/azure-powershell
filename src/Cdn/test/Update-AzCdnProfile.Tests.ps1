@@ -20,7 +20,11 @@ Describe 'Update-AzCdnProfile'  {
             Tag1 = 11
             Tag2  = 22
         }
+
+        Write-Host -ForegroundColor Green "Update ClassicCdnProfileName"
         Update-AzCdnProfile -Name $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName -Tag $tags
+
+        Write-Host -ForegroundColor Green "Get ClassicCdnProfileName"
         $updatedProfile = Get-AzCdnProfile -Name $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName
         
         $updatedProfile.Tag["Tag1"] | Should -Be "11"
@@ -28,15 +32,20 @@ Describe 'Update-AzCdnProfile'  {
     }
 
     It 'UpdateViaIdentityExpanded' {
-            $PSDefaultParameterValues['Disabled'] = $true
-            $tags = @{
-                Tag1 = 33
-                Tag2  = 44
-            }
-            Get-AzCdnProfile -Name $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName | Update-AzCdnProfile -Tag $tags
-            $updatedProfile = Get-AzCdnProfile -Name $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName
-            
-            $updatedProfile.Tag["Tag1"] | Should -Be "33"
-            $updatedProfile.Tag["Tag2"] | Should -Be "44"
+        $tags = @{
+            Tag1 = 33
+            Tag2  = 44
+        }
+        Write-Host -ForegroundColor Green "Get ClassicCdnProfileName"
+        $profileObject = Get-AzCdnProfile -Name $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName
+
+        Write-Host -ForegroundColor Green "Update ClassicCdnProfileName"
+        Update-AzCdnProfile -Tag $tags -InputObject $profileObject
+
+        Write-Host -ForegroundColor Green "Get ClassicCdnProfileName"
+        $updatedProfile = Get-AzCdnProfile -Name $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName
+        
+        $updatedProfile.Tag["Tag1"] | Should -Be "33"
+        $updatedProfile.Tag["Tag2"] | Should -Be "44"
     }
 }

@@ -16,7 +16,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzFrontDoorCdnProfile'
 
 Describe 'Update-AzFrontDoorCdnProfile'  {
     BeforeAll {
-        $frontDoorCdnProfileName = 'fdp-' + (RandomString -allChars $false -len 6);
+        $subId = $env.SubscriptionId
+        $frontDoorCdnProfileName = 'fdp-pstest050'
         Write-Host -ForegroundColor Green "Use frontDoorCdnProfileName : $($frontDoorCdnProfileName)"
 
         $profileSku = "Standard_AzureFrontDoor"
@@ -32,20 +33,30 @@ Describe 'Update-AzFrontDoorCdnProfile'  {
             Tag1 = 11
             Tag2  = 22
         }
-        Update-AzFrontDoorCdnProfile -Name $frontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Tag $tags
-        $updatedProfile = Get-AzFrontDoorCdnProfile -Name $frontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName
+
+        Write-Host -ForegroundColor Green "Update AzFrontDoorCdnProfile"
+        $profileObject = Update-AzFrontDoorCdnProfile -Name $frontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Tag $tags
+
+        Write-Host -ForegroundColor Green "Get AzFrontDoorCdnProfile"
+        $updatedProfile = Get-AzFrontDoorCdnProfile -InputObject $profileObject
         
         $updatedProfile.Tag["Tag1"] | Should -Be "11"
         $updatedProfile.Tag["Tag2"] | Should -Be "22"
     }
 
     It 'UpdateViaIdentityExpanded' {
-        $PSDefaultParameterValues['Disabled'] = $true
         $tags = @{
             Tag1 = 33
             Tag2  = 44
         }
-        Get-AzFrontDoorCdnProfile -Name $frontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName | Update-AzFrontDoorCdnProfile -Tag $tags
+
+        Write-Host -ForegroundColor Green "Get AzFrontDoorCdnProfile"
+        $profileObject = Get-AzFrontDoorCdnProfile -Name $frontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName
+
+        Write-Host -ForegroundColor Green "Update AzFrontDoorCdnProfile"
+        Update-AzFrontDoorCdnProfile -Tag $tags -InputObject $profileObject
+
+        Write-Host -ForegroundColor Green "get AzFrontDoorCdnProfile"
         $updatedProfile = Get-AzFrontDoorCdnProfile -Name $frontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName
         
         $updatedProfile.Tag["Tag1"] | Should -Be "33"

@@ -17,10 +17,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'Stop-AzFrontDoorCdnProfileMig
 Describe 'Stop-AzFrontDoorCdnProfileMigration'  {
     It 'Delete' {
         $subId = $env.SubscriptionId
-        $Name = 'fdp-' + (RandomString -allChars $false -len 6);
-        Write-Host -ForegroundColor Green "Use frontDoorName : $($Name)"
 
-        $frontDoorCdnProfileName = 'fdp-' + (RandomString -allChars $false -len 6);
+        $frontDoorCdnProfileName = 'fdp-pstest030'
         Write-Host -ForegroundColor Green "Use frontDoorCdnProfileName : $($frontDoorCdnProfileName)"
 
         $profileSku = "Standard_AzureFrontDoor";

@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzFrontDoorCdnProfileS
 
 Describe 'Update-AzFrontDoorCdnProfileSku'  {
     It 'Upgrade' {
-        $frontDoorCdnProfileName = 'fdp-' + (RandomString -allChars $false -len 6);
+        $frontDoorCdnProfileName = 'fdp-pstest060'
         Write-Host -ForegroundColor Green "Use frontDoorCdnProfileName : $($frontDoorCdnProfileName)"
 
         $profileSku = "Standard_AzureFrontDoor";

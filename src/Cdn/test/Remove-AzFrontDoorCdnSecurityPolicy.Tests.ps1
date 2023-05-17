@@ -18,11 +18,11 @@ Describe 'Remove-AzFrontDoorCdnSecurityPolicy'  {
     It 'Delete'  {
         $subId = $env.SubscriptionId
 
-        $endpointName = 'end-' + (RandomString -allChars $false -len 6);
+        $endpointName = 'end-pstest080'
         Write-Host -ForegroundColor Green "Use frontDoorCdnEndpointName : $($endpointName)"
         $endpoint = New-AzFrontDoorCdnEndpoint -EndpointName $endpointName -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Location Global
 
-        $policyName = "pol-" + (RandomString -allChars $false -len 6);
+        $policyName = "pol-psName030"
         Write-Host -ForegroundColor Green "Use policyName : $($policyName)"
 
         $association = New-AzFrontDoorCdnSecurityPolicyWebApplicationFirewallAssociationObject -PatternsToMatch @("/*") -Domain @(@{"Id"=$($endpoint.Id)})
@@ -36,14 +36,13 @@ Describe 'Remove-AzFrontDoorCdnSecurityPolicy'  {
     }
 
     It 'DeleteViaIdentity' {
-        $PSDefaultParameterValues['Disabled'] = $true
         $subId = $env.SubscriptionId
 
-        $endpointName = 'end-' + (RandomString -allChars $false -len 6);
+        $endpointName = 'end-pstest081'
         Write-Host -ForegroundColor Green "Use frontDoorCdnEndpointName : $($endpointName)"
         $endpoint = New-AzFrontDoorCdnEndpoint -EndpointName $endpointName -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Location Global
 
-        $policyName = "pol-" + (RandomString -allChars $false -len 6);
+        $policyName = "pol-psName031"
         Write-Host -ForegroundColor Green "Use policyName : $($policyName)"
 
         $association = New-AzFrontDoorCdnSecurityPolicyWebApplicationFirewallAssociationObject -PatternsToMatch @("/*") -Domain @(@{"Id"=$($endpoint.Id)})
@@ -52,8 +51,7 @@ Describe 'Remove-AzFrontDoorCdnSecurityPolicy'  {
 
         New-AzFrontDoorCdnSecurityPolicy -Name $policyName -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Parameter $parameter
 
-        Get-AzFrontDoorCdnSecurityPolicy -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Name $policyName `
-        | Remove-AzFrontDoorCdnSecurityPolicy
-        Write-Host -ForegroundColor Green "Delete policName : $($policyName)"
+        $securityObject = Get-AzFrontDoorCdnSecurityPolicy -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Name $policyName
+        Remove-AzFrontDoorCdnSecurityPolicy -InputObject $securityObject
     }
 }
