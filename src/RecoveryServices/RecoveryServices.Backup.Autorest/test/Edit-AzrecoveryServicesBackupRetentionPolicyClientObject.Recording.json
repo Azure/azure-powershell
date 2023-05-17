@@ -1,0 +1,698 @@
+{
+  "Edit-AzrecoveryServicesBackupRetentionPolicyClientObject+[NoContext]+CommonCommandToUpdateAllRetentions+$PUT+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/arohijain-rg/providers/Microsoft.RecoveryServices/vaults/arohijain-vault/backupPolicies/arohijain-p-1?api-version=2023-02-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/arohijain-rg/providers/Microsoft.RecoveryServices/vaults/arohijain-vault/backupPolicies/arohijain-p-1?api-version=2023-02-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"protectedItemsCount\": 0,\r\n    \"backupManagementType\": \"AzureIaasVM\",\r\n    \"schedulePolicy\": {\r\n      \"schedulePolicyType\": \"SimpleSchedulePolicy\",\r\n      \"scheduleRunFrequency\": \"Daily\",\r\n      \"scheduleRunTimes\": [ \"2023-05-22T14:00:00.0000000Z\" ],\r\n      \"scheduleWeeklyFrequency\": 0\r\n    },\r\n    \"retentionPolicy\": {\r\n      \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n      \"dailySchedule\": {\r\n        \"retentionTimes\": [ \"2023-05-22T14:00:00.0000000Z\" ],\r\n        \"retentionDuration\": {\r\n          \"count\": 56,\r\n          \"durationType\": \"Days\"\r\n        }\r\n      },\r\n      \"weeklySchedule\": {\r\n        \"daysOfTheWeek\": [ \"Sunday\" ],\r\n        \"retentionTimes\": [ \"2023-05-22T14:00:00.0000000Z\" ],\r\n        \"retentionDuration\": {\r\n          \"count\": 34,\r\n          \"durationType\": \"Weeks\"\r\n        }\r\n      },\r\n      \"monthlySchedule\": {\r\n        \"retentionScheduleFormatType\": \"Daily\",\r\n        \"retentionScheduleDaily\": {\r\n          \"daysOfTheMonth\": [\r\n            {\r\n              \"date\": 1\r\n            },\r\n            {\r\n              \"date\": 2\r\n            },\r\n            {\r\n              \"date\": 3\r\n            }\r\n          ]\r\n        },\r\n        \"retentionScheduleWeekly\": {\r\n          \"daysOfTheWeek\": [ \"Sunday\" ],\r\n          \"weeksOfTheMonth\": [ \"First\" ]\r\n        },\r\n        \"retentionTimes\": [ \"2023-05-22T14:00:00.0000000Z\" ],\r\n        \"retentionDuration\": {\r\n          \"count\": 54,\r\n          \"durationType\": \"Months\"\r\n        }\r\n      },\r\n      \"yearlySchedule\": {\r\n        \"retentionScheduleFormatType\": \"Daily\",\r\n        \"monthsOfYear\": [ \"March\", \"April\" ],\r\n        \"retentionScheduleDaily\": {\r\n          \"daysOfTheMonth\": [\r\n            {\r\n              \"date\": 2\r\n            },\r\n            {\r\n              \"date\": 4\r\n            },\r\n            {\r\n              \"date\": 5\r\n            }\r\n          ]\r\n        },\r\n        \"retentionScheduleWeekly\": {\r\n          \"daysOfTheWeek\": [ \"Sunday\" ],\r\n          \"weeksOfTheMonth\": [ \"First\" ]\r\n        },\r\n        \"retentionTimes\": [ \"2023-05-22T14:00:00.0000000Z\" ],\r\n        \"retentionDuration\": {\r\n          \"count\": 47,\r\n          \"durationType\": \"Years\"\r\n        }\r\n      }\r\n    },\r\n    \"tieringPolicy\": {\r\n      \"ArchivedRP\": {\r\n        \"tieringMode\": \"DoNotTier\",\r\n        \"duration\": 0,\r\n        \"durationType\": \"Invalid\"\r\n      }\r\n    },\r\n    \"instantRpRetentionRangeInDays\": 2,\r\n    \"timeZone\": \"UTC\",\r\n    \"policyType\": \"V1\"\r\n  }\r\n}",
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "2448" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "20e38c32-7740-4795-b830-a949b7e6e264" ],
+        "x-ms-client-request-id": [ "e38dc23c-5e65-4e5c-b195-e202244c9160", "e38dc23c-5e65-4e5c-b195-e202244c9160" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-correlation-request-id": [ "20e38c32-7740-4795-b830-a949b7e6e264" ],
+        "x-ms-routing-request-id": [ "JIOINDIACENTRAL:20230626T160342Z:20e38c32-7740-4795-b830-a949b7e6e264" ],
+        "Date": [ "Mon, 26 Jun 2023 16:03:42 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1774" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/arohijain-rg/providers/Microsoft.RecoveryServices/vaults/arohijain-vault/backupPolicies/arohijain-p-1\",\"name\":\"arohijain-p-1\",\"type\":\"Microsoft.RecoveryServices/vaults/backupPolicies\",\"properties\":{\"backupManagementType\":\"AzureIaasVM\",\"policyType\":\"V1\",\"instantRPDetails\":{},\"schedulePolicy\":{\"schedulePolicyType\":\"SimpleSchedulePolicy\",\"scheduleRunFrequency\":\"Daily\",\"scheduleRunTimes\":[\"2023-05-22T14:00:00Z\"],\"scheduleWeeklyFrequency\":0},\"retentionPolicy\":{\"retentionPolicyType\":\"LongTermRetentionPolicy\",\"dailySchedule\":{\"retentionTimes\":[\"2023-05-22T14:00:00Z\"],\"retentionDuration\":{\"count\":56,\"durationType\":\"Days\"}},\"weeklySchedule\":{\"daysOfTheWeek\":[\"Sunday\"],\"retentionTimes\":[\"2023-05-22T14:00:00Z\"],\"retentionDuration\":{\"count\":34,\"durationType\":\"Weeks\"}},\"monthlySchedule\":{\"retentionScheduleFormatType\":\"Daily\",\"retentionScheduleDaily\":{\"daysOfTheMonth\":[{\"date\":1,\"isLast\":false},{\"date\":2,\"isLast\":false},{\"date\":3,\"isLast\":false}]},\"retentionScheduleWeekly\":{\"daysOfTheWeek\":[\"Sunday\"],\"weeksOfTheMonth\":[\"First\"]},\"retentionTimes\":[\"2023-05-22T14:00:00Z\"],\"retentionDuration\":{\"count\":54,\"durationType\":\"Months\"}},\"yearlySchedule\":{\"retentionScheduleFormatType\":\"Daily\",\"monthsOfYear\":[\"March\",\"April\"],\"retentionScheduleDaily\":{\"daysOfTheMonth\":[{\"date\":2,\"isLast\":false},{\"date\":4,\"isLast\":false},{\"date\":5,\"isLast\":false}]},\"retentionScheduleWeekly\":{\"daysOfTheWeek\":[\"Sunday\"],\"weeksOfTheMonth\":[\"First\"]},\"retentionTimes\":[\"2023-05-22T14:00:00Z\"],\"retentionDuration\":{\"count\":47,\"durationType\":\"Years\"}}},\"tieringPolicy\":{\"ArchivedRP\":{\"tieringMode\":\"DoNotTier\",\"duration\":0,\"durationType\":\"Invalid\"}},\"instantRpRetentionRangeInDays\":2,\"timeZone\":\"UTC\",\"protectedItemsCount\":0}}"
+    }
+  },
+  "Edit-AzrecoveryServicesBackupRetentionPolicyClientObject+[NoContext]+CommonCommandToUpdateAllRetentions+$GET+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/arohijain-rg/providers/Microsoft.RecoveryServices/vaults/arohijain-vault/backupPolicies/arohijain-p-1?api-version=2023-02-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/arohijain-rg/providers/Microsoft.RecoveryServices/vaults/arohijain-vault/backupPolicies/arohijain-p-1?api-version=2023-02-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "2" ],
+        "x-ms-client-request-id": [ "95e7dc6c-a10f-41ae-8b9c-073513eafade" ],
+        "CommandName": [ "Get-AzRecoveryServicesBackupPolicy" ],
+        "FullCommandName": [ "Get-AzRecoveryServicesBackupPolicy_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "3da9064d-c755-46ab-86ce-652fbab9ad70" ],
+        "x-ms-client-request-id": [ "95e7dc6c-a10f-41ae-8b9c-073513eafade", "95e7dc6c-a10f-41ae-8b9c-073513eafade" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "299" ],
+        "x-ms-correlation-request-id": [ "3da9064d-c755-46ab-86ce-652fbab9ad70" ],
+        "x-ms-routing-request-id": [ "JIOINDIACENTRAL:20230626T160344Z:3da9064d-c755-46ab-86ce-652fbab9ad70" ],
+        "Date": [ "Mon, 26 Jun 2023 16:03:44 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1774" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/arohijain-rg/providers/Microsoft.RecoveryServices/vaults/arohijain-vault/backupPolicies/arohijain-p-1\",\"name\":\"arohijain-p-1\",\"type\":\"Microsoft.RecoveryServices/vaults/backupPolicies\",\"properties\":{\"backupManagementType\":\"AzureIaasVM\",\"policyType\":\"V1\",\"instantRPDetails\":{},\"schedulePolicy\":{\"schedulePolicyType\":\"SimpleSchedulePolicy\",\"scheduleRunFrequency\":\"Daily\",\"scheduleRunTimes\":[\"2023-05-22T14:00:00Z\"],\"scheduleWeeklyFrequency\":0},\"retentionPolicy\":{\"retentionPolicyType\":\"LongTermRetentionPolicy\",\"dailySchedule\":{\"retentionTimes\":[\"2023-05-22T14:00:00Z\"],\"retentionDuration\":{\"count\":56,\"durationType\":\"Days\"}},\"weeklySchedule\":{\"daysOfTheWeek\":[\"Sunday\"],\"retentionTimes\":[\"2023-05-22T14:00:00Z\"],\"retentionDuration\":{\"count\":34,\"durationType\":\"Weeks\"}},\"monthlySchedule\":{\"retentionScheduleFormatType\":\"Daily\",\"retentionScheduleDaily\":{\"daysOfTheMonth\":[{\"date\":1,\"isLast\":false},{\"date\":2,\"isLast\":false},{\"date\":3,\"isLast\":false}]},\"retentionScheduleWeekly\":{\"daysOfTheWeek\":[\"Sunday\"],\"weeksOfTheMonth\":[\"First\"]},\"retentionTimes\":[\"2023-05-22T14:00:00Z\"],\"retentionDuration\":{\"count\":54,\"durationType\":\"Months\"}},\"yearlySchedule\":{\"retentionScheduleFormatType\":\"Daily\",\"monthsOfYear\":[\"March\",\"April\"],\"retentionScheduleDaily\":{\"daysOfTheMonth\":[{\"date\":2,\"isLast\":false},{\"date\":4,\"isLast\":false},{\"date\":5,\"isLast\":false}]},\"retentionScheduleWeekly\":{\"daysOfTheWeek\":[\"Sunday\"],\"weeksOfTheMonth\":[\"First\"]},\"retentionTimes\":[\"2023-05-22T14:00:00Z\"],\"retentionDuration\":{\"count\":47,\"durationType\":\"Years\"}}},\"tieringPolicy\":{\"ArchivedRP\":{\"tieringMode\":\"DoNotTier\",\"duration\":0,\"durationType\":\"Invalid\"}},\"instantRpRetentionRangeInDays\":2,\"timeZone\":\"UTC\",\"protectedItemsCount\":0}}"
+    }
+  },
+  "Edit-AzrecoveryServicesBackupRetentionPolicyClientObject+[NoContext]+CommonCommandToUpdateAllRetentions+$DELETE+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/arohijain-rg/providers/Microsoft.RecoveryServices/vaults/arohijain-vault/backupPolicies/arohijain-p-1?api-version=2023-02-01+3": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/arohijain-rg/providers/Microsoft.RecoveryServices/vaults/arohijain-vault/backupPolicies/arohijain-p-1?api-version=2023-02-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "3" ],
+        "x-ms-client-request-id": [ "649da149-cb04-4f9d-b5ba-cdcc1b69488c" ],
+        "CommandName": [ "Remove-AzRecoveryServicesBackupPolicy" ],
+        "FullCommandName": [ "Remove-AzRecoveryServicesBackupPolicy_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "4f38041c-fca9-4da7-ab24-94e53ed1927d" ],
+        "x-ms-client-request-id": [ "649da149-cb04-4f9d-b5ba-cdcc1b69488c", "649da149-cb04-4f9d-b5ba-cdcc1b69488c" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14999" ],
+        "x-ms-correlation-request-id": [ "4f38041c-fca9-4da7-ab24-94e53ed1927d" ],
+        "x-ms-routing-request-id": [ "JIOINDIACENTRAL:20230626T160345Z:4f38041c-fca9-4da7-ab24-94e53ed1927d" ],
+        "Date": [ "Mon, 26 Jun 2023 16:03:45 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null
+    }
+  },
+  "Edit-AzrecoveryServicesBackupRetentionPolicyClientObject+[NoContext]+DailyScheduleWithWeeklyRetention-AzureVM+$PUT+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/arohijain-rg/providers/Microsoft.RecoveryServices/vaults/arohijain-vault/backupPolicies/arohijain-p-1?api-version=2023-02-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/arohijain-rg/providers/Microsoft.RecoveryServices/vaults/arohijain-vault/backupPolicies/arohijain-p-1?api-version=2023-02-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"protectedItemsCount\": 0,\r\n    \"backupManagementType\": \"AzureIaasVM\",\r\n    \"schedulePolicy\": {\r\n      \"schedulePolicyType\": \"SimpleSchedulePolicy\",\r\n      \"scheduleRunFrequency\": \"Daily\",\r\n      \"scheduleRunTimes\": [ \"2023-05-22T14:00:00.0000000Z\" ],\r\n      \"scheduleWeeklyFrequency\": 0\r\n    },\r\n    \"retentionPolicy\": {\r\n      \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n      \"dailySchedule\": {\r\n        \"retentionTimes\": [ \"2023-05-22T14:00:00.0000000Z\" ],\r\n        \"retentionDuration\": {\r\n          \"count\": 56,\r\n          \"durationType\": \"Days\"\r\n        }\r\n      },\r\n      \"weeklySchedule\": {\r\n        \"daysOfTheWeek\": [ \"Sunday\", \"Monday\" ],\r\n        \"retentionTimes\": [ \"2023-05-22T14:00:00.0000000Z\" ],\r\n        \"retentionDuration\": {\r\n          \"count\": 34,\r\n          \"durationType\": \"Weeks\"\r\n        }\r\n      },\r\n      \"monthlySchedule\": {\r\n        \"retentionScheduleFormatType\": \"Weekly\",\r\n        \"retentionScheduleWeekly\": {\r\n          \"daysOfTheWeek\": [ \"Monday\", \"Tuesday\" ],\r\n          \"weeksOfTheMonth\": [ \"Second\", \"Fourth\" ]\r\n        },\r\n        \"retentionTimes\": [ \"2023-05-22T14:00:00.0000000Z\" ],\r\n        \"retentionDuration\": {\r\n          \"count\": 36,\r\n          \"durationType\": \"Months\"\r\n        }\r\n      },\r\n      \"yearlySchedule\": {\r\n        \"retentionScheduleFormatType\": \"Weekly\",\r\n        \"monthsOfYear\": [ \"May\", \"June\" ],\r\n        \"retentionScheduleWeekly\": {\r\n          \"daysOfTheWeek\": [ \"Monday\", \"Tuesday\" ],\r\n          \"weeksOfTheMonth\": [ \"First\", \"Third\" ]\r\n        },\r\n        \"retentionTimes\": [ \"2023-05-22T14:00:00.0000000Z\" ],\r\n        \"retentionDuration\": {\r\n          \"count\": 67,\r\n          \"durationType\": \"Years\"\r\n        }\r\n      }\r\n    },\r\n    \"tieringPolicy\": {\r\n      \"ArchivedRP\": {\r\n        \"tieringMode\": \"DoNotTier\",\r\n        \"duration\": 0,\r\n        \"durationType\": \"Invalid\"\r\n      }\r\n    },\r\n    \"instantRpRetentionRangeInDays\": 2,\r\n    \"timeZone\": \"UTC\",\r\n    \"policyType\": \"V1\"\r\n  }\r\n}",
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "1979" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "6364d40e-c8d7-447c-af2e-6892f3c68654" ],
+        "x-ms-client-request-id": [ "1fbd5353-c6c3-4e50-9e79-b19767a8bbf9", "1fbd5353-c6c3-4e50-9e79-b19767a8bbf9" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
+        "x-ms-correlation-request-id": [ "6364d40e-c8d7-447c-af2e-6892f3c68654" ],
+        "x-ms-routing-request-id": [ "JIOINDIACENTRAL:20230626T160347Z:6364d40e-c8d7-447c-af2e-6892f3c68654" ],
+        "Date": [ "Mon, 26 Jun 2023 16:03:46 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1572" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/arohijain-rg/providers/Microsoft.RecoveryServices/vaults/arohijain-vault/backupPolicies/arohijain-p-1\",\"name\":\"arohijain-p-1\",\"type\":\"Microsoft.RecoveryServices/vaults/backupPolicies\",\"properties\":{\"backupManagementType\":\"AzureIaasVM\",\"policyType\":\"V1\",\"instantRPDetails\":{},\"schedulePolicy\":{\"schedulePolicyType\":\"SimpleSchedulePolicy\",\"scheduleRunFrequency\":\"Daily\",\"scheduleRunTimes\":[\"2023-05-22T14:00:00Z\"],\"scheduleWeeklyFrequency\":0},\"retentionPolicy\":{\"retentionPolicyType\":\"LongTermRetentionPolicy\",\"dailySchedule\":{\"retentionTimes\":[\"2023-05-22T14:00:00Z\"],\"retentionDuration\":{\"count\":56,\"durationType\":\"Days\"}},\"weeklySchedule\":{\"daysOfTheWeek\":[\"Sunday\",\"Monday\"],\"retentionTimes\":[\"2023-05-22T14:00:00Z\"],\"retentionDuration\":{\"count\":34,\"durationType\":\"Weeks\"}},\"monthlySchedule\":{\"retentionScheduleFormatType\":\"Weekly\",\"retentionScheduleWeekly\":{\"daysOfTheWeek\":[\"Monday\",\"Tuesday\"],\"weeksOfTheMonth\":[\"Second\",\"Fourth\"]},\"retentionTimes\":[\"2023-05-22T14:00:00Z\"],\"retentionDuration\":{\"count\":36,\"durationType\":\"Months\"}},\"yearlySchedule\":{\"retentionScheduleFormatType\":\"Weekly\",\"monthsOfYear\":[\"May\",\"June\"],\"retentionScheduleWeekly\":{\"daysOfTheWeek\":[\"Monday\",\"Tuesday\"],\"weeksOfTheMonth\":[\"First\",\"Third\"]},\"retentionTimes\":[\"2023-05-22T14:00:00Z\"],\"retentionDuration\":{\"count\":67,\"durationType\":\"Years\"}}},\"tieringPolicy\":{\"ArchivedRP\":{\"tieringMode\":\"DoNotTier\",\"duration\":0,\"durationType\":\"Invalid\"}},\"instantRpRetentionRangeInDays\":2,\"timeZone\":\"UTC\",\"protectedItemsCount\":0}}"
+    }
+  },
+  "Edit-AzrecoveryServicesBackupRetentionPolicyClientObject+[NoContext]+DailyScheduleWithWeeklyRetention-AzureVM+$GET+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/arohijain-rg/providers/Microsoft.RecoveryServices/vaults/arohijain-vault/backupPolicies/arohijain-p-1?api-version=2023-02-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/arohijain-rg/providers/Microsoft.RecoveryServices/vaults/arohijain-vault/backupPolicies/arohijain-p-1?api-version=2023-02-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "5" ],
+        "x-ms-client-request-id": [ "f7b57465-4490-4cdc-900e-13c14424ae4c" ],
+        "CommandName": [ "Get-AzRecoveryServicesBackupPolicy" ],
+        "FullCommandName": [ "Get-AzRecoveryServicesBackupPolicy_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "74a4b758-229a-4c74-a2de-15ff46b0c080" ],
+        "x-ms-client-request-id": [ "f7b57465-4490-4cdc-900e-13c14424ae4c", "f7b57465-4490-4cdc-900e-13c14424ae4c" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "298" ],
+        "x-ms-correlation-request-id": [ "74a4b758-229a-4c74-a2de-15ff46b0c080" ],
+        "x-ms-routing-request-id": [ "JIOINDIACENTRAL:20230626T160348Z:74a4b758-229a-4c74-a2de-15ff46b0c080" ],
+        "Date": [ "Mon, 26 Jun 2023 16:03:47 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1572" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/arohijain-rg/providers/Microsoft.RecoveryServices/vaults/arohijain-vault/backupPolicies/arohijain-p-1\",\"name\":\"arohijain-p-1\",\"type\":\"Microsoft.RecoveryServices/vaults/backupPolicies\",\"properties\":{\"backupManagementType\":\"AzureIaasVM\",\"policyType\":\"V1\",\"instantRPDetails\":{},\"schedulePolicy\":{\"schedulePolicyType\":\"SimpleSchedulePolicy\",\"scheduleRunFrequency\":\"Daily\",\"scheduleRunTimes\":[\"2023-05-22T14:00:00Z\"],\"scheduleWeeklyFrequency\":0},\"retentionPolicy\":{\"retentionPolicyType\":\"LongTermRetentionPolicy\",\"dailySchedule\":{\"retentionTimes\":[\"2023-05-22T14:00:00Z\"],\"retentionDuration\":{\"count\":56,\"durationType\":\"Days\"}},\"weeklySchedule\":{\"daysOfTheWeek\":[\"Sunday\",\"Monday\"],\"retentionTimes\":[\"2023-05-22T14:00:00Z\"],\"retentionDuration\":{\"count\":34,\"durationType\":\"Weeks\"}},\"monthlySchedule\":{\"retentionScheduleFormatType\":\"Weekly\",\"retentionScheduleWeekly\":{\"daysOfTheWeek\":[\"Monday\",\"Tuesday\"],\"weeksOfTheMonth\":[\"Second\",\"Fourth\"]},\"retentionTimes\":[\"2023-05-22T14:00:00Z\"],\"retentionDuration\":{\"count\":36,\"durationType\":\"Months\"}},\"yearlySchedule\":{\"retentionScheduleFormatType\":\"Weekly\",\"monthsOfYear\":[\"May\",\"June\"],\"retentionScheduleWeekly\":{\"daysOfTheWeek\":[\"Monday\",\"Tuesday\"],\"weeksOfTheMonth\":[\"First\",\"Third\"]},\"retentionTimes\":[\"2023-05-22T14:00:00Z\"],\"retentionDuration\":{\"count\":67,\"durationType\":\"Years\"}}},\"tieringPolicy\":{\"ArchivedRP\":{\"tieringMode\":\"DoNotTier\",\"duration\":0,\"durationType\":\"Invalid\"}},\"instantRpRetentionRangeInDays\":2,\"timeZone\":\"UTC\",\"protectedItemsCount\":0}}"
+    }
+  },
+  "Edit-AzrecoveryServicesBackupRetentionPolicyClientObject+[NoContext]+DailyScheduleWithWeeklyRetention-AzureVM+$DELETE+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/arohijain-rg/providers/Microsoft.RecoveryServices/vaults/arohijain-vault/backupPolicies/arohijain-p-1?api-version=2023-02-01+3": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/arohijain-rg/providers/Microsoft.RecoveryServices/vaults/arohijain-vault/backupPolicies/arohijain-p-1?api-version=2023-02-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "6" ],
+        "x-ms-client-request-id": [ "5fae2d46-8e0b-43b8-bac4-839a6afd9524" ],
+        "CommandName": [ "Remove-AzRecoveryServicesBackupPolicy" ],
+        "FullCommandName": [ "Remove-AzRecoveryServicesBackupPolicy_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "84d49a7b-c854-4514-8da1-8d60ab6635e0" ],
+        "x-ms-client-request-id": [ "5fae2d46-8e0b-43b8-bac4-839a6afd9524", "5fae2d46-8e0b-43b8-bac4-839a6afd9524" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14998" ],
+        "x-ms-correlation-request-id": [ "84d49a7b-c854-4514-8da1-8d60ab6635e0" ],
+        "x-ms-routing-request-id": [ "JIOINDIACENTRAL:20230626T160349Z:84d49a7b-c854-4514-8da1-8d60ab6635e0" ],
+        "Date": [ "Mon, 26 Jun 2023 16:03:48 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null
+    }
+  },
+  "Edit-AzrecoveryServicesBackupRetentionPolicyClientObject+[NoContext]+DailyScheduleWithDailyRetention-AzureVM+$PUT+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/arohijain-rg/providers/Microsoft.RecoveryServices/vaults/arohijain-vault/backupPolicies/arohijain-p-1?api-version=2023-02-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/arohijain-rg/providers/Microsoft.RecoveryServices/vaults/arohijain-vault/backupPolicies/arohijain-p-1?api-version=2023-02-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"protectedItemsCount\": 0,\r\n    \"backupManagementType\": \"AzureIaasVM\",\r\n    \"schedulePolicy\": {\r\n      \"schedulePolicyType\": \"SimpleSchedulePolicy\",\r\n      \"scheduleRunFrequency\": \"Daily\",\r\n      \"scheduleRunDays\": [ \"Monday\", \"Tuesday\", \"Wednesday\" ],\r\n      \"scheduleRunTimes\": [ \"2023-05-22T14:00:00.0000000Z\" ],\r\n      \"scheduleWeeklyFrequency\": 0\r\n    },\r\n    \"retentionPolicy\": {\r\n      \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n      \"dailySchedule\": {\r\n        \"retentionTimes\": [ \"2023-05-22T14:00:00.0000000Z\" ],\r\n        \"retentionDuration\": {\r\n          \"count\": 56,\r\n          \"durationType\": \"Days\"\r\n        }\r\n      },\r\n      \"weeklySchedule\": {\r\n        \"daysOfTheWeek\": [ \"Sunday\", \"Monday\" ],\r\n        \"retentionTimes\": [ \"2023-05-22T14:00:00.0000000Z\" ],\r\n        \"retentionDuration\": {\r\n          \"count\": 34,\r\n          \"durationType\": \"Weeks\"\r\n        }\r\n      },\r\n      \"monthlySchedule\": {\r\n        \"retentionScheduleFormatType\": \"Daily\",\r\n        \"retentionScheduleDaily\": {\r\n          \"daysOfTheMonth\": [\r\n            {\r\n              \"date\": 1\r\n            },\r\n            {\r\n              \"date\": 6\r\n            },\r\n            {\r\n              \"date\": 28\r\n            }\r\n          ]\r\n        },\r\n        \"retentionScheduleWeekly\": {\r\n          \"daysOfTheWeek\": [ \"Sunday\" ],\r\n          \"weeksOfTheMonth\": [ \"First\" ]\r\n        },\r\n        \"retentionTimes\": [ \"2023-05-22T14:00:00.0000000Z\" ],\r\n        \"retentionDuration\": {\r\n          \"count\": 45,\r\n          \"durationType\": \"Months\"\r\n        }\r\n      },\r\n      \"yearlySchedule\": {\r\n        \"retentionScheduleFormatType\": \"Daily\",\r\n        \"monthsOfYear\": [ \"May\", \"April\" ],\r\n        \"retentionScheduleDaily\": {\r\n          \"daysOfTheMonth\": [\r\n            {\r\n              \"date\": 1\r\n            },\r\n            {\r\n              \"date\": 2\r\n            },\r\n            {\r\n              \"date\": 3\r\n            }\r\n          ]\r\n        },\r\n        \"retentionScheduleWeekly\": {\r\n          \"daysOfTheWeek\": [ \"Sunday\" ],\r\n          \"weeksOfTheMonth\": [ \"First\" ]\r\n        },\r\n        \"retentionTimes\": [ \"2023-05-22T14:00:00.0000000Z\" ],\r\n        \"retentionDuration\": {\r\n          \"count\": 43,\r\n          \"durationType\": \"Years\"\r\n        }\r\n      }\r\n    },\r\n    \"tieringPolicy\": {\r\n      \"ArchivedRP\": {\r\n        \"tieringMode\": \"DoNotTier\",\r\n        \"duration\": 0,\r\n        \"durationType\": \"Invalid\"\r\n      }\r\n    },\r\n    \"instantRpRetentionRangeInDays\": 2,\r\n    \"timeZone\": \"UTC\",\r\n    \"policyType\": \"V1\"\r\n  }\r\n}",
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "2521" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "e90e7eff-2138-40c1-81d9-6afc50f947c2" ],
+        "x-ms-client-request-id": [ "5786ce66-a6d9-4bca-8e0c-9dfb39d8dc3a", "5786ce66-a6d9-4bca-8e0c-9dfb39d8dc3a" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1197" ],
+        "x-ms-correlation-request-id": [ "e90e7eff-2138-40c1-81d9-6afc50f947c2" ],
+        "x-ms-routing-request-id": [ "JIOINDIACENTRAL:20230626T160350Z:e90e7eff-2138-40c1-81d9-6afc50f947c2" ],
+        "Date": [ "Mon, 26 Jun 2023 16:03:50 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1833" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/arohijain-rg/providers/Microsoft.RecoveryServices/vaults/arohijain-vault/backupPolicies/arohijain-p-1\",\"name\":\"arohijain-p-1\",\"type\":\"Microsoft.RecoveryServices/vaults/backupPolicies\",\"properties\":{\"backupManagementType\":\"AzureIaasVM\",\"policyType\":\"V1\",\"instantRPDetails\":{},\"schedulePolicy\":{\"schedulePolicyType\":\"SimpleSchedulePolicy\",\"scheduleRunFrequency\":\"Daily\",\"scheduleRunDays\":[\"Monday\",\"Tuesday\",\"Wednesday\"],\"scheduleRunTimes\":[\"2023-05-22T14:00:00Z\"],\"scheduleWeeklyFrequency\":0},\"retentionPolicy\":{\"retentionPolicyType\":\"LongTermRetentionPolicy\",\"dailySchedule\":{\"retentionTimes\":[\"2023-05-22T14:00:00Z\"],\"retentionDuration\":{\"count\":56,\"durationType\":\"Days\"}},\"weeklySchedule\":{\"daysOfTheWeek\":[\"Sunday\",\"Monday\"],\"retentionTimes\":[\"2023-05-22T14:00:00Z\"],\"retentionDuration\":{\"count\":34,\"durationType\":\"Weeks\"}},\"monthlySchedule\":{\"retentionScheduleFormatType\":\"Daily\",\"retentionScheduleDaily\":{\"daysOfTheMonth\":[{\"date\":1,\"isLast\":false},{\"date\":6,\"isLast\":false},{\"date\":28,\"isLast\":false}]},\"retentionScheduleWeekly\":{\"daysOfTheWeek\":[\"Sunday\"],\"weeksOfTheMonth\":[\"First\"]},\"retentionTimes\":[\"2023-05-22T14:00:00Z\"],\"retentionDuration\":{\"count\":45,\"durationType\":\"Months\"}},\"yearlySchedule\":{\"retentionScheduleFormatType\":\"Daily\",\"monthsOfYear\":[\"May\",\"April\"],\"retentionScheduleDaily\":{\"daysOfTheMonth\":[{\"date\":1,\"isLast\":false},{\"date\":2,\"isLast\":false},{\"date\":3,\"isLast\":false}]},\"retentionScheduleWeekly\":{\"daysOfTheWeek\":[\"Sunday\"],\"weeksOfTheMonth\":[\"First\"]},\"retentionTimes\":[\"2023-05-22T14:00:00Z\"],\"retentionDuration\":{\"count\":43,\"durationType\":\"Years\"}}},\"tieringPolicy\":{\"ArchivedRP\":{\"tieringMode\":\"DoNotTier\",\"duration\":0,\"durationType\":\"Invalid\"}},\"instantRpRetentionRangeInDays\":2,\"timeZone\":\"UTC\",\"protectedItemsCount\":0}}"
+    }
+  },
+  "Edit-AzrecoveryServicesBackupRetentionPolicyClientObject+[NoContext]+DailyScheduleWithDailyRetention-AzureVM+$GET+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/arohijain-rg/providers/Microsoft.RecoveryServices/vaults/arohijain-vault/backupPolicies/arohijain-p-1?api-version=2023-02-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/arohijain-rg/providers/Microsoft.RecoveryServices/vaults/arohijain-vault/backupPolicies/arohijain-p-1?api-version=2023-02-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "8" ],
+        "x-ms-client-request-id": [ "78e2cf4a-9592-4644-8c7b-3b54034b8346" ],
+        "CommandName": [ "Get-AzRecoveryServicesBackupPolicy" ],
+        "FullCommandName": [ "Get-AzRecoveryServicesBackupPolicy_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "7124b081-157d-4872-b128-241a2a434ad1" ],
+        "x-ms-client-request-id": [ "78e2cf4a-9592-4644-8c7b-3b54034b8346", "78e2cf4a-9592-4644-8c7b-3b54034b8346" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "297" ],
+        "x-ms-correlation-request-id": [ "7124b081-157d-4872-b128-241a2a434ad1" ],
+        "x-ms-routing-request-id": [ "JIOINDIACENTRAL:20230626T160351Z:7124b081-157d-4872-b128-241a2a434ad1" ],
+        "Date": [ "Mon, 26 Jun 2023 16:03:51 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1833" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/arohijain-rg/providers/Microsoft.RecoveryServices/vaults/arohijain-vault/backupPolicies/arohijain-p-1\",\"name\":\"arohijain-p-1\",\"type\":\"Microsoft.RecoveryServices/vaults/backupPolicies\",\"properties\":{\"backupManagementType\":\"AzureIaasVM\",\"policyType\":\"V1\",\"instantRPDetails\":{},\"schedulePolicy\":{\"schedulePolicyType\":\"SimpleSchedulePolicy\",\"scheduleRunFrequency\":\"Daily\",\"scheduleRunDays\":[\"Monday\",\"Tuesday\",\"Wednesday\"],\"scheduleRunTimes\":[\"2023-05-22T14:00:00Z\"],\"scheduleWeeklyFrequency\":0},\"retentionPolicy\":{\"retentionPolicyType\":\"LongTermRetentionPolicy\",\"dailySchedule\":{\"retentionTimes\":[\"2023-05-22T14:00:00Z\"],\"retentionDuration\":{\"count\":56,\"durationType\":\"Days\"}},\"weeklySchedule\":{\"daysOfTheWeek\":[\"Sunday\",\"Monday\"],\"retentionTimes\":[\"2023-05-22T14:00:00Z\"],\"retentionDuration\":{\"count\":34,\"durationType\":\"Weeks\"}},\"monthlySchedule\":{\"retentionScheduleFormatType\":\"Daily\",\"retentionScheduleDaily\":{\"daysOfTheMonth\":[{\"date\":1,\"isLast\":false},{\"date\":6,\"isLast\":false},{\"date\":28,\"isLast\":false}]},\"retentionScheduleWeekly\":{\"daysOfTheWeek\":[\"Sunday\"],\"weeksOfTheMonth\":[\"First\"]},\"retentionTimes\":[\"2023-05-22T14:00:00Z\"],\"retentionDuration\":{\"count\":45,\"durationType\":\"Months\"}},\"yearlySchedule\":{\"retentionScheduleFormatType\":\"Daily\",\"monthsOfYear\":[\"May\",\"April\"],\"retentionScheduleDaily\":{\"daysOfTheMonth\":[{\"date\":1,\"isLast\":false},{\"date\":2,\"isLast\":false},{\"date\":3,\"isLast\":false}]},\"retentionScheduleWeekly\":{\"daysOfTheWeek\":[\"Sunday\"],\"weeksOfTheMonth\":[\"First\"]},\"retentionTimes\":[\"2023-05-22T14:00:00Z\"],\"retentionDuration\":{\"count\":43,\"durationType\":\"Years\"}}},\"tieringPolicy\":{\"ArchivedRP\":{\"tieringMode\":\"DoNotTier\",\"duration\":0,\"durationType\":\"Invalid\"}},\"instantRpRetentionRangeInDays\":2,\"timeZone\":\"UTC\",\"protectedItemsCount\":0}}"
+    }
+  },
+  "Edit-AzrecoveryServicesBackupRetentionPolicyClientObject+[NoContext]+DailyScheduleWithDailyRetention-AzureVM+$DELETE+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/arohijain-rg/providers/Microsoft.RecoveryServices/vaults/arohijain-vault/backupPolicies/arohijain-p-1?api-version=2023-02-01+3": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/arohijain-rg/providers/Microsoft.RecoveryServices/vaults/arohijain-vault/backupPolicies/arohijain-p-1?api-version=2023-02-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "9" ],
+        "x-ms-client-request-id": [ "222ad7d1-53b2-488d-b8a3-191c4d05c4db" ],
+        "CommandName": [ "Remove-AzRecoveryServicesBackupPolicy" ],
+        "FullCommandName": [ "Remove-AzRecoveryServicesBackupPolicy_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "f092c146-1635-4efc-9953-d07bd93cc201" ],
+        "x-ms-client-request-id": [ "222ad7d1-53b2-488d-b8a3-191c4d05c4db", "222ad7d1-53b2-488d-b8a3-191c4d05c4db" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14997" ],
+        "x-ms-correlation-request-id": [ "f092c146-1635-4efc-9953-d07bd93cc201" ],
+        "x-ms-routing-request-id": [ "JIOINDIACENTRAL:20230626T160352Z:f092c146-1635-4efc-9953-d07bd93cc201" ],
+        "Date": [ "Mon, 26 Jun 2023 16:03:52 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null
+    }
+  },
+  "Edit-AzrecoveryServicesBackupRetentionPolicyClientObject+[NoContext]+WeeklyScheduleWithWeeklyRetention-SAPHANA+$PUT+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/arohijain-rg/providers/Microsoft.RecoveryServices/vaults/arohijain-vault/backupPolicies/arohijain-p-1?api-version=2023-02-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/arohijain-rg/providers/Microsoft.RecoveryServices/vaults/arohijain-vault/backupPolicies/arohijain-p-1?api-version=2023-02-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"backupManagementType\": \"AzureWorkload\",\r\n    \"workLoadType\": \"SAPHanaDatabase\",\r\n    \"settings\": {\r\n      \"timeZone\": \"Tokyo Standard Time\",\r\n      \"issqlcompression\": false,\r\n      \"isCompression\": false\r\n    },\r\n    \"subProtectionPolicy\": [\r\n      {\r\n        \"schedulePolicy\": {\r\n          \"schedulePolicyType\": \"SimpleSchedulePolicy\",\r\n          \"scheduleRunFrequency\": \"Weekly\",\r\n          \"scheduleRunDays\": [ \"Monday\", \"Tuesday\" ],\r\n          \"scheduleRunTimes\": [ \"2023-06-26T13:30:00.0000000Z\" ],\r\n          \"scheduleWeeklyFrequency\": 0\r\n        },\r\n        \"retentionPolicy\": {\r\n          \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n          \"weeklySchedule\": {\r\n            \"daysOfTheWeek\": [ \"Monday\", \"Tuesday\" ],\r\n            \"retentionTimes\": [ \"2023-06-26T13:30:00.0000000Z\" ],\r\n            \"retentionDuration\": {\r\n              \"count\": 11,\r\n              \"durationType\": \"Weeks\"\r\n            }\r\n          },\r\n          \"monthlySchedule\": {\r\n            \"retentionScheduleFormatType\": \"Weekly\",\r\n            \"retentionScheduleWeekly\": {\r\n              \"daysOfTheWeek\": [ \"Monday\", \"Tuesday\" ],\r\n              \"weeksOfTheMonth\": [ \"First\", \"Last\" ]\r\n            },\r\n            \"retentionTimes\": [ \"2023-06-26T13:30:00.0000000Z\" ],\r\n            \"retentionDuration\": {\r\n              \"count\": 34,\r\n              \"durationType\": \"Months\"\r\n            }\r\n          },\r\n          \"yearlySchedule\": {\r\n            \"retentionScheduleFormatType\": \"Weekly\",\r\n            \"monthsOfYear\": [ \"May\", \"June\" ],\r\n            \"retentionScheduleWeekly\": {\r\n              \"daysOfTheWeek\": [ \"Monday\", \"Tuesday\" ],\r\n              \"weeksOfTheMonth\": [ \"Last\", \"First\" ]\r\n            },\r\n            \"retentionTimes\": [ \"2023-06-26T13:30:00.0000000Z\" ],\r\n            \"retentionDuration\": {\r\n              \"count\": 47,\r\n              \"durationType\": \"Years\"\r\n            }\r\n          }\r\n        },\r\n        \"policyType\": \"Full\",\r\n        \"tieringPolicy\": {\r\n          \"ArchivedRP\": {\r\n            \"tieringMode\": \"DoNotTier\",\r\n            \"duration\": 0,\r\n            \"durationType\": \"Invalid\"\r\n          }\r\n        }\r\n      },\r\n      {\r\n        \"schedulePolicy\": {\r\n          \"schedulePolicyType\": \"LogSchedulePolicy\",\r\n          \"scheduleFrequencyInMins\": 120\r\n        },\r\n        \"retentionPolicy\": {\r\n          \"retentionPolicyType\": \"SimpleRetentionPolicy\",\r\n          \"retentionDuration\": {\r\n            \"count\": 23,\r\n            \"durationType\": \"Days\"\r\n          }\r\n        },\r\n        \"policyType\": \"Log\"\r\n      },\r\n      {\r\n        \"schedulePolicy\": {\r\n          \"schedulePolicyType\": \"SimpleSchedulePolicy\",\r\n          \"scheduleRunFrequency\": \"Weekly\",\r\n          \"scheduleRunDays\": [ \"Sunday\" ],\r\n          \"scheduleRunTimes\": [ \"2023-06-26T02:00:00.0000000Z\" ],\r\n          \"scheduleWeeklyFrequency\": 0\r\n        },\r\n        \"retentionPolicy\": {\r\n          \"retentionPolicyType\": \"SimpleRetentionPolicy\",\r\n          \"retentionDuration\": {\r\n            \"count\": 64,\r\n            \"durationType\": \"Days\"\r\n          }\r\n        },\r\n        \"policyType\": \"Incremental\"\r\n      }\r\n    ]\r\n  }\r\n}",
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "3123" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "31e6108b-f6e3-44ba-b43e-29b3cd136f24" ],
+        "x-ms-client-request-id": [ "c42f9f4a-ecdf-4749-830a-4c8ab22a20a9", "c42f9f4a-ecdf-4749-830a-4c8ab22a20a9" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1196" ],
+        "x-ms-correlation-request-id": [ "31e6108b-f6e3-44ba-b43e-29b3cd136f24" ],
+        "x-ms-routing-request-id": [ "JIOINDIACENTRAL:20230626T160354Z:31e6108b-f6e3-44ba-b43e-29b3cd136f24" ],
+        "Date": [ "Mon, 26 Jun 2023 16:03:53 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "2155" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/arohijain-rg/providers/Microsoft.RecoveryServices/vaults/arohijain-vault/backupPolicies/arohijain-p-1\",\"name\":\"arohijain-p-1\",\"type\":\"Microsoft.RecoveryServices/vaults/backupPolicies\",\"properties\":{\"backupManagementType\":\"AzureWorkload\",\"workLoadType\":\"SAPHanaDatabase\",\"settings\":{\"timeZone\":\"Tokyo Standard Time\",\"issqlcompression\":false,\"isCompression\":false},\"subProtectionPolicy\":[{\"policyType\":\"Full\",\"schedulePolicy\":{\"schedulePolicyType\":\"SimpleSchedulePolicy\",\"scheduleRunFrequency\":\"Weekly\",\"scheduleRunDays\":[\"Monday\",\"Tuesday\"],\"scheduleRunTimes\":[\"2023-06-26T13:30:00Z\"],\"scheduleWeeklyFrequency\":0},\"retentionPolicy\":{\"retentionPolicyType\":\"LongTermRetentionPolicy\",\"weeklySchedule\":{\"daysOfTheWeek\":[\"Monday\",\"Tuesday\"],\"retentionTimes\":[\"2023-06-26T13:30:00Z\"],\"retentionDuration\":{\"count\":11,\"durationType\":\"Weeks\"}},\"monthlySchedule\":{\"retentionScheduleFormatType\":\"Weekly\",\"retentionScheduleWeekly\":{\"daysOfTheWeek\":[\"Monday\",\"Tuesday\"],\"weeksOfTheMonth\":[\"First\",\"Last\"]},\"retentionTimes\":[\"2023-06-26T13:30:00Z\"],\"retentionDuration\":{\"count\":34,\"durationType\":\"Months\"}},\"yearlySchedule\":{\"retentionScheduleFormatType\":\"Weekly\",\"monthsOfYear\":[\"May\",\"June\"],\"retentionScheduleWeekly\":{\"daysOfTheWeek\":[\"Monday\",\"Tuesday\"],\"weeksOfTheMonth\":[\"Last\",\"First\"]},\"retentionTimes\":[\"2023-06-26T13:30:00Z\"],\"retentionDuration\":{\"count\":47,\"durationType\":\"Years\"}}},\"tieringPolicy\":{\"ArchivedRP\":{\"tieringMode\":\"DoNotTier\",\"duration\":0,\"durationType\":\"Invalid\"}}},{\"policyType\":\"Incremental\",\"schedulePolicy\":{\"schedulePolicyType\":\"SimpleSchedulePolicy\",\"scheduleRunFrequency\":\"Weekly\",\"scheduleRunDays\":[\"Sunday\"],\"scheduleRunTimes\":[\"2023-06-26T02:00:00Z\"],\"scheduleWeeklyFrequency\":0},\"retentionPolicy\":{\"retentionPolicyType\":\"SimpleRetentionPolicy\",\"retentionDuration\":{\"count\":64,\"durationType\":\"Days\"}}},{\"policyType\":\"Log\",\"schedulePolicy\":{\"schedulePolicyType\":\"LogSchedulePolicy\",\"scheduleFrequencyInMins\":120},\"retentionPolicy\":{\"retentionPolicyType\":\"SimpleRetentionPolicy\",\"retentionDuration\":{\"count\":23,\"durationType\":\"Days\"}}}],\"protectedItemsCount\":0}}"
+    }
+  },
+  "Edit-AzrecoveryServicesBackupRetentionPolicyClientObject+[NoContext]+WeeklyScheduleWithWeeklyRetention-SAPHANA+$GET+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/arohijain-rg/providers/Microsoft.RecoveryServices/vaults/arohijain-vault/backupPolicies/arohijain-p-1?api-version=2023-02-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/arohijain-rg/providers/Microsoft.RecoveryServices/vaults/arohijain-vault/backupPolicies/arohijain-p-1?api-version=2023-02-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "11" ],
+        "x-ms-client-request-id": [ "c10d9e75-1d32-4d7f-9858-0082787eef36" ],
+        "CommandName": [ "Get-AzRecoveryServicesBackupPolicy" ],
+        "FullCommandName": [ "Get-AzRecoveryServicesBackupPolicy_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "20359bfa-935b-48cd-952a-1b04a87a83c5" ],
+        "x-ms-client-request-id": [ "c10d9e75-1d32-4d7f-9858-0082787eef36", "c10d9e75-1d32-4d7f-9858-0082787eef36" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "296" ],
+        "x-ms-correlation-request-id": [ "20359bfa-935b-48cd-952a-1b04a87a83c5" ],
+        "x-ms-routing-request-id": [ "JIOINDIACENTRAL:20230626T160354Z:20359bfa-935b-48cd-952a-1b04a87a83c5" ],
+        "Date": [ "Mon, 26 Jun 2023 16:03:54 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "2155" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/arohijain-rg/providers/Microsoft.RecoveryServices/vaults/arohijain-vault/backupPolicies/arohijain-p-1\",\"name\":\"arohijain-p-1\",\"type\":\"Microsoft.RecoveryServices/vaults/backupPolicies\",\"properties\":{\"backupManagementType\":\"AzureWorkload\",\"workLoadType\":\"SAPHanaDatabase\",\"settings\":{\"timeZone\":\"Tokyo Standard Time\",\"issqlcompression\":false,\"isCompression\":false},\"subProtectionPolicy\":[{\"policyType\":\"Full\",\"schedulePolicy\":{\"schedulePolicyType\":\"SimpleSchedulePolicy\",\"scheduleRunFrequency\":\"Weekly\",\"scheduleRunDays\":[\"Monday\",\"Tuesday\"],\"scheduleRunTimes\":[\"2023-06-26T13:30:00Z\"],\"scheduleWeeklyFrequency\":0},\"retentionPolicy\":{\"retentionPolicyType\":\"LongTermRetentionPolicy\",\"weeklySchedule\":{\"daysOfTheWeek\":[\"Monday\",\"Tuesday\"],\"retentionTimes\":[\"2023-06-26T13:30:00Z\"],\"retentionDuration\":{\"count\":11,\"durationType\":\"Weeks\"}},\"monthlySchedule\":{\"retentionScheduleFormatType\":\"Weekly\",\"retentionScheduleWeekly\":{\"daysOfTheWeek\":[\"Monday\",\"Tuesday\"],\"weeksOfTheMonth\":[\"First\",\"Last\"]},\"retentionTimes\":[\"2023-06-26T13:30:00Z\"],\"retentionDuration\":{\"count\":34,\"durationType\":\"Months\"}},\"yearlySchedule\":{\"retentionScheduleFormatType\":\"Weekly\",\"monthsOfYear\":[\"May\",\"June\"],\"retentionScheduleWeekly\":{\"daysOfTheWeek\":[\"Monday\",\"Tuesday\"],\"weeksOfTheMonth\":[\"Last\",\"First\"]},\"retentionTimes\":[\"2023-06-26T13:30:00Z\"],\"retentionDuration\":{\"count\":47,\"durationType\":\"Years\"}}},\"tieringPolicy\":{\"ArchivedRP\":{\"tieringMode\":\"DoNotTier\",\"duration\":0,\"durationType\":\"Invalid\"}}},{\"policyType\":\"Incremental\",\"schedulePolicy\":{\"schedulePolicyType\":\"SimpleSchedulePolicy\",\"scheduleRunFrequency\":\"Weekly\",\"scheduleRunDays\":[\"Sunday\"],\"scheduleRunTimes\":[\"2023-06-26T02:00:00Z\"],\"scheduleWeeklyFrequency\":0},\"retentionPolicy\":{\"retentionPolicyType\":\"SimpleRetentionPolicy\",\"retentionDuration\":{\"count\":64,\"durationType\":\"Days\"}}},{\"policyType\":\"Log\",\"schedulePolicy\":{\"schedulePolicyType\":\"LogSchedulePolicy\",\"scheduleFrequencyInMins\":120},\"retentionPolicy\":{\"retentionPolicyType\":\"SimpleRetentionPolicy\",\"retentionDuration\":{\"count\":23,\"durationType\":\"Days\"}}}],\"protectedItemsCount\":0}}"
+    }
+  },
+  "Edit-AzrecoveryServicesBackupRetentionPolicyClientObject+[NoContext]+WeeklyScheduleWithWeeklyRetention-SAPHANA+$DELETE+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/arohijain-rg/providers/Microsoft.RecoveryServices/vaults/arohijain-vault/backupPolicies/arohijain-p-1?api-version=2023-02-01+3": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/arohijain-rg/providers/Microsoft.RecoveryServices/vaults/arohijain-vault/backupPolicies/arohijain-p-1?api-version=2023-02-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "12" ],
+        "x-ms-client-request-id": [ "b09da6fc-86d7-468f-bc5f-5381bafb2b99" ],
+        "CommandName": [ "Remove-AzRecoveryServicesBackupPolicy" ],
+        "FullCommandName": [ "Remove-AzRecoveryServicesBackupPolicy_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "bc9a964a-75c5-4bdd-94db-0044b97b324f" ],
+        "x-ms-client-request-id": [ "b09da6fc-86d7-468f-bc5f-5381bafb2b99", "b09da6fc-86d7-468f-bc5f-5381bafb2b99" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14996" ],
+        "x-ms-correlation-request-id": [ "bc9a964a-75c5-4bdd-94db-0044b97b324f" ],
+        "x-ms-routing-request-id": [ "JIOINDIACENTRAL:20230626T160355Z:bc9a964a-75c5-4bdd-94db-0044b97b324f" ],
+        "Date": [ "Mon, 26 Jun 2023 16:03:55 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null
+    }
+  },
+  "Edit-AzrecoveryServicesBackupRetentionPolicyClientObject+[NoContext]+TierAfter-SAPHANA+$PUT+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/arohijain-rg/providers/Microsoft.RecoveryServices/vaults/arohijain-vault/backupPolicies/arohijain-p-1?api-version=2023-02-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/arohijain-rg/providers/Microsoft.RecoveryServices/vaults/arohijain-vault/backupPolicies/arohijain-p-1?api-version=2023-02-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"backupManagementType\": \"AzureWorkload\",\r\n    \"workLoadType\": \"SAPHanaDatabase\",\r\n    \"settings\": {\r\n      \"timeZone\": \"UTC\",\r\n      \"issqlcompression\": false,\r\n      \"isCompression\": false\r\n    },\r\n    \"subProtectionPolicy\": [\r\n      {\r\n        \"schedulePolicy\": {\r\n          \"schedulePolicyType\": \"SimpleSchedulePolicy\",\r\n          \"scheduleRunFrequency\": \"Daily\",\r\n          \"scheduleRunTimes\": [ \"2020-09-30T19:30:00.0000000Z\" ],\r\n          \"scheduleWeeklyFrequency\": 0\r\n        },\r\n        \"retentionPolicy\": {\r\n          \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n          \"dailySchedule\": {\r\n            \"retentionTimes\": [ \"2020-09-30T19:30:00.0000000Z\" ],\r\n            \"retentionDuration\": {\r\n              \"count\": 180,\r\n              \"durationType\": \"Days\"\r\n            }\r\n          },\r\n          \"weeklySchedule\": {\r\n            \"daysOfTheWeek\": [ \"Sunday\" ],\r\n            \"retentionTimes\": [ \"2020-09-30T19:30:00.0000000Z\" ],\r\n            \"retentionDuration\": {\r\n              \"count\": 104,\r\n              \"durationType\": \"Weeks\"\r\n            }\r\n          },\r\n          \"monthlySchedule\": {\r\n            \"retentionScheduleFormatType\": \"Weekly\",\r\n            \"retentionScheduleWeekly\": {\r\n              \"daysOfTheWeek\": [ \"Sunday\" ],\r\n              \"weeksOfTheMonth\": [ \"First\" ]\r\n            },\r\n            \"retentionTimes\": [ \"2020-09-30T19:30:00.0000000Z\" ],\r\n            \"retentionDuration\": {\r\n              \"count\": 60,\r\n              \"durationType\": \"Months\"\r\n            }\r\n          },\r\n          \"yearlySchedule\": {\r\n            \"retentionScheduleFormatType\": \"Weekly\",\r\n            \"monthsOfYear\": [ \"January\" ],\r\n            \"retentionScheduleWeekly\": {\r\n              \"daysOfTheWeek\": [ \"Sunday\" ],\r\n              \"weeksOfTheMonth\": [ \"First\" ]\r\n            },\r\n            \"retentionTimes\": [ \"2020-09-30T19:30:00.0000000Z\" ],\r\n            \"retentionDuration\": {\r\n              \"count\": 10,\r\n              \"durationType\": \"Years\"\r\n            }\r\n          }\r\n        },\r\n        \"policyType\": \"Full\",\r\n        \"tieringPolicy\": {\r\n          \"ArchivedRP\": {\r\n            \"tieringMode\": \"TierAfter\",\r\n            \"duration\": 54,\r\n            \"durationType\": \"Days\"\r\n          }\r\n        }\r\n      },\r\n      {\r\n        \"schedulePolicy\": {\r\n          \"schedulePolicyType\": \"LogSchedulePolicy\",\r\n          \"scheduleFrequencyInMins\": 120\r\n        },\r\n        \"retentionPolicy\": {\r\n          \"retentionPolicyType\": \"SimpleRetentionPolicy\",\r\n          \"retentionDuration\": {\r\n            \"count\": 15,\r\n            \"durationType\": \"Days\"\r\n          }\r\n        },\r\n        \"policyType\": \"Log\"\r\n      }\r\n    ]\r\n  }\r\n}",
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "2666" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "5d0e1227-6f2d-46c4-9868-910992bb5550" ],
+        "x-ms-client-request-id": [ "a0285ce4-72df-4acc-b49c-77963f06641b", "a0285ce4-72df-4acc-b49c-77963f06641b" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1195" ],
+        "x-ms-correlation-request-id": [ "5d0e1227-6f2d-46c4-9868-910992bb5550" ],
+        "x-ms-routing-request-id": [ "JIOINDIACENTRAL:20230626T160357Z:5d0e1227-6f2d-46c4-9868-910992bb5550" ],
+        "Date": [ "Mon, 26 Jun 2023 16:03:56 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1821" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/arohijain-rg/providers/Microsoft.RecoveryServices/vaults/arohijain-vault/backupPolicies/arohijain-p-1\",\"name\":\"arohijain-p-1\",\"type\":\"Microsoft.RecoveryServices/vaults/backupPolicies\",\"properties\":{\"backupManagementType\":\"AzureWorkload\",\"workLoadType\":\"SAPHanaDatabase\",\"settings\":{\"timeZone\":\"UTC\",\"issqlcompression\":false,\"isCompression\":false},\"subProtectionPolicy\":[{\"policyType\":\"Full\",\"schedulePolicy\":{\"schedulePolicyType\":\"SimpleSchedulePolicy\",\"scheduleRunFrequency\":\"Daily\",\"scheduleRunTimes\":[\"2020-09-30T19:30:00Z\"],\"scheduleWeeklyFrequency\":0},\"retentionPolicy\":{\"retentionPolicyType\":\"LongTermRetentionPolicy\",\"dailySchedule\":{\"retentionTimes\":[\"2020-09-30T19:30:00Z\"],\"retentionDuration\":{\"count\":180,\"durationType\":\"Days\"}},\"weeklySchedule\":{\"daysOfTheWeek\":[\"Sunday\"],\"retentionTimes\":[\"2020-09-30T19:30:00Z\"],\"retentionDuration\":{\"count\":104,\"durationType\":\"Weeks\"}},\"monthlySchedule\":{\"retentionScheduleFormatType\":\"Weekly\",\"retentionScheduleWeekly\":{\"daysOfTheWeek\":[\"Sunday\"],\"weeksOfTheMonth\":[\"First\"]},\"retentionTimes\":[\"2020-09-30T19:30:00Z\"],\"retentionDuration\":{\"count\":60,\"durationType\":\"Months\"}},\"yearlySchedule\":{\"retentionScheduleFormatType\":\"Weekly\",\"monthsOfYear\":[\"January\"],\"retentionScheduleWeekly\":{\"daysOfTheWeek\":[\"Sunday\"],\"weeksOfTheMonth\":[\"First\"]},\"retentionTimes\":[\"2020-09-30T19:30:00Z\"],\"retentionDuration\":{\"count\":10,\"durationType\":\"Years\"}}},\"tieringPolicy\":{\"ArchivedRP\":{\"tieringMode\":\"TierAfter\",\"duration\":54,\"durationType\":\"Days\"}}},{\"policyType\":\"Log\",\"schedulePolicy\":{\"schedulePolicyType\":\"LogSchedulePolicy\",\"scheduleFrequencyInMins\":120},\"retentionPolicy\":{\"retentionPolicyType\":\"SimpleRetentionPolicy\",\"retentionDuration\":{\"count\":15,\"durationType\":\"Days\"}}}],\"protectedItemsCount\":0}}"
+    }
+  },
+  "Edit-AzrecoveryServicesBackupRetentionPolicyClientObject+[NoContext]+TierAfter-SAPHANA+$GET+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/arohijain-rg/providers/Microsoft.RecoveryServices/vaults/arohijain-vault/backupPolicies/arohijain-p-1?api-version=2023-02-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/arohijain-rg/providers/Microsoft.RecoveryServices/vaults/arohijain-vault/backupPolicies/arohijain-p-1?api-version=2023-02-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "14" ],
+        "x-ms-client-request-id": [ "1712fd82-6161-4c93-8a38-849ee9ee6f67" ],
+        "CommandName": [ "Get-AzRecoveryServicesBackupPolicy" ],
+        "FullCommandName": [ "Get-AzRecoveryServicesBackupPolicy_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "9610037d-023b-49d2-9c69-b78fa7b1b538" ],
+        "x-ms-client-request-id": [ "1712fd82-6161-4c93-8a38-849ee9ee6f67", "1712fd82-6161-4c93-8a38-849ee9ee6f67" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "295" ],
+        "x-ms-correlation-request-id": [ "9610037d-023b-49d2-9c69-b78fa7b1b538" ],
+        "x-ms-routing-request-id": [ "JIOINDIACENTRAL:20230626T160358Z:9610037d-023b-49d2-9c69-b78fa7b1b538" ],
+        "Date": [ "Mon, 26 Jun 2023 16:03:57 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1821" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/arohijain-rg/providers/Microsoft.RecoveryServices/vaults/arohijain-vault/backupPolicies/arohijain-p-1\",\"name\":\"arohijain-p-1\",\"type\":\"Microsoft.RecoveryServices/vaults/backupPolicies\",\"properties\":{\"backupManagementType\":\"AzureWorkload\",\"workLoadType\":\"SAPHanaDatabase\",\"settings\":{\"timeZone\":\"UTC\",\"issqlcompression\":false,\"isCompression\":false},\"subProtectionPolicy\":[{\"policyType\":\"Full\",\"schedulePolicy\":{\"schedulePolicyType\":\"SimpleSchedulePolicy\",\"scheduleRunFrequency\":\"Daily\",\"scheduleRunTimes\":[\"2020-09-30T19:30:00Z\"],\"scheduleWeeklyFrequency\":0},\"retentionPolicy\":{\"retentionPolicyType\":\"LongTermRetentionPolicy\",\"dailySchedule\":{\"retentionTimes\":[\"2020-09-30T19:30:00Z\"],\"retentionDuration\":{\"count\":180,\"durationType\":\"Days\"}},\"weeklySchedule\":{\"daysOfTheWeek\":[\"Sunday\"],\"retentionTimes\":[\"2020-09-30T19:30:00Z\"],\"retentionDuration\":{\"count\":104,\"durationType\":\"Weeks\"}},\"monthlySchedule\":{\"retentionScheduleFormatType\":\"Weekly\",\"retentionScheduleWeekly\":{\"daysOfTheWeek\":[\"Sunday\"],\"weeksOfTheMonth\":[\"First\"]},\"retentionTimes\":[\"2020-09-30T19:30:00Z\"],\"retentionDuration\":{\"count\":60,\"durationType\":\"Months\"}},\"yearlySchedule\":{\"retentionScheduleFormatType\":\"Weekly\",\"monthsOfYear\":[\"January\"],\"retentionScheduleWeekly\":{\"daysOfTheWeek\":[\"Sunday\"],\"weeksOfTheMonth\":[\"First\"]},\"retentionTimes\":[\"2020-09-30T19:30:00Z\"],\"retentionDuration\":{\"count\":10,\"durationType\":\"Years\"}}},\"tieringPolicy\":{\"ArchivedRP\":{\"tieringMode\":\"TierAfter\",\"duration\":54,\"durationType\":\"Days\"}}},{\"policyType\":\"Log\",\"schedulePolicy\":{\"schedulePolicyType\":\"LogSchedulePolicy\",\"scheduleFrequencyInMins\":120},\"retentionPolicy\":{\"retentionPolicyType\":\"SimpleRetentionPolicy\",\"retentionDuration\":{\"count\":15,\"durationType\":\"Days\"}}}],\"protectedItemsCount\":0}}"
+    }
+  },
+  "Edit-AzrecoveryServicesBackupRetentionPolicyClientObject+[NoContext]+TierAfter-SAPHANA+$DELETE+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/arohijain-rg/providers/Microsoft.RecoveryServices/vaults/arohijain-vault/backupPolicies/arohijain-p-1?api-version=2023-02-01+3": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/arohijain-rg/providers/Microsoft.RecoveryServices/vaults/arohijain-vault/backupPolicies/arohijain-p-1?api-version=2023-02-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "15" ],
+        "x-ms-client-request-id": [ "6265981d-bc10-459b-ac14-7617d7893221" ],
+        "CommandName": [ "Remove-AzRecoveryServicesBackupPolicy" ],
+        "FullCommandName": [ "Remove-AzRecoveryServicesBackupPolicy_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "b36cf375-432b-4f7b-a71c-5dd70a1592fa" ],
+        "x-ms-client-request-id": [ "6265981d-bc10-459b-ac14-7617d7893221", "6265981d-bc10-459b-ac14-7617d7893221" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14995" ],
+        "x-ms-correlation-request-id": [ "b36cf375-432b-4f7b-a71c-5dd70a1592fa" ],
+        "x-ms-routing-request-id": [ "JIOINDIACENTRAL:20230626T160359Z:b36cf375-432b-4f7b-a71c-5dd70a1592fa" ],
+        "Date": [ "Mon, 26 Jun 2023 16:03:58 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null
+    }
+  },
+  "Edit-AzrecoveryServicesBackupRetentionPolicyClientObject+[NoContext]+TierRecommended-AzureVM+$PUT+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/arohijain-rg/providers/Microsoft.RecoveryServices/vaults/arohijain-vault/backupPolicies/arohijain-p-1?api-version=2023-02-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/arohijain-rg/providers/Microsoft.RecoveryServices/vaults/arohijain-vault/backupPolicies/arohijain-p-1?api-version=2023-02-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"protectedItemsCount\": 0,\r\n    \"backupManagementType\": \"AzureIaasVM\",\r\n    \"schedulePolicy\": {\r\n      \"schedulePolicyType\": \"SimpleSchedulePolicy\",\r\n      \"scheduleRunFrequency\": \"Daily\",\r\n      \"scheduleRunTimes\": [ \"2023-05-22T14:00:00.0000000Z\" ],\r\n      \"scheduleWeeklyFrequency\": 0\r\n    },\r\n    \"retentionPolicy\": {\r\n      \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n      \"dailySchedule\": {\r\n        \"retentionTimes\": [ \"2023-05-22T14:00:00.0000000Z\" ],\r\n        \"retentionDuration\": {\r\n          \"count\": 180,\r\n          \"durationType\": \"Days\"\r\n        }\r\n      },\r\n      \"weeklySchedule\": {\r\n        \"daysOfTheWeek\": [ \"Sunday\" ],\r\n        \"retentionTimes\": [ \"2023-05-22T14:00:00.0000000Z\" ],\r\n        \"retentionDuration\": {\r\n          \"count\": 12,\r\n          \"durationType\": \"Weeks\"\r\n        }\r\n      },\r\n      \"monthlySchedule\": {\r\n        \"retentionScheduleFormatType\": \"Weekly\",\r\n        \"retentionScheduleWeekly\": {\r\n          \"daysOfTheWeek\": [ \"Sunday\" ],\r\n          \"weeksOfTheMonth\": [ \"First\" ]\r\n        },\r\n        \"retentionTimes\": [ \"2023-05-22T14:00:00.0000000Z\" ],\r\n        \"retentionDuration\": {\r\n          \"count\": 60,\r\n          \"durationType\": \"Months\"\r\n        }\r\n      },\r\n      \"yearlySchedule\": {\r\n        \"retentionScheduleFormatType\": \"Weekly\",\r\n        \"monthsOfYear\": [ \"January\" ],\r\n        \"retentionScheduleWeekly\": {\r\n          \"daysOfTheWeek\": [ \"Sunday\" ],\r\n          \"weeksOfTheMonth\": [ \"First\" ]\r\n        },\r\n        \"retentionTimes\": [ \"2023-05-22T14:00:00.0000000Z\" ],\r\n        \"retentionDuration\": {\r\n          \"count\": 10,\r\n          \"durationType\": \"Years\"\r\n        }\r\n      }\r\n    },\r\n    \"tieringPolicy\": {\r\n      \"ArchivedRP\": {\r\n        \"tieringMode\": \"TierRecommended\",\r\n        \"duration\": 0,\r\n        \"durationType\": \"Invalid\"\r\n      }\r\n    },\r\n    \"instantRpRetentionRangeInDays\": 2,\r\n    \"timeZone\": \"UTC\",\r\n    \"policyType\": \"V1\"\r\n  }\r\n}",
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "1930" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "eb698e32-fe54-44e4-a73b-ba6cf92a3c39" ],
+        "x-ms-client-request-id": [ "89cd4f07-2bc1-449a-9133-ad7cdbb53ccc", "89cd4f07-2bc1-449a-9133-ad7cdbb53ccc" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1194" ],
+        "x-ms-correlation-request-id": [ "eb698e32-fe54-44e4-a73b-ba6cf92a3c39" ],
+        "x-ms-routing-request-id": [ "JIOINDIACENTRAL:20230626T160400Z:eb698e32-fe54-44e4-a73b-ba6cf92a3c39" ],
+        "Date": [ "Mon, 26 Jun 2023 16:03:59 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1529" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/arohijain-rg/providers/Microsoft.RecoveryServices/vaults/arohijain-vault/backupPolicies/arohijain-p-1\",\"name\":\"arohijain-p-1\",\"type\":\"Microsoft.RecoveryServices/vaults/backupPolicies\",\"properties\":{\"backupManagementType\":\"AzureIaasVM\",\"policyType\":\"V1\",\"instantRPDetails\":{},\"schedulePolicy\":{\"schedulePolicyType\":\"SimpleSchedulePolicy\",\"scheduleRunFrequency\":\"Daily\",\"scheduleRunTimes\":[\"2023-05-22T14:00:00Z\"],\"scheduleWeeklyFrequency\":0},\"retentionPolicy\":{\"retentionPolicyType\":\"LongTermRetentionPolicy\",\"dailySchedule\":{\"retentionTimes\":[\"2023-05-22T14:00:00Z\"],\"retentionDuration\":{\"count\":180,\"durationType\":\"Days\"}},\"weeklySchedule\":{\"daysOfTheWeek\":[\"Sunday\"],\"retentionTimes\":[\"2023-05-22T14:00:00Z\"],\"retentionDuration\":{\"count\":12,\"durationType\":\"Weeks\"}},\"monthlySchedule\":{\"retentionScheduleFormatType\":\"Weekly\",\"retentionScheduleWeekly\":{\"daysOfTheWeek\":[\"Sunday\"],\"weeksOfTheMonth\":[\"First\"]},\"retentionTimes\":[\"2023-05-22T14:00:00Z\"],\"retentionDuration\":{\"count\":60,\"durationType\":\"Months\"}},\"yearlySchedule\":{\"retentionScheduleFormatType\":\"Weekly\",\"monthsOfYear\":[\"January\"],\"retentionScheduleWeekly\":{\"daysOfTheWeek\":[\"Sunday\"],\"weeksOfTheMonth\":[\"First\"]},\"retentionTimes\":[\"2023-05-22T14:00:00Z\"],\"retentionDuration\":{\"count\":10,\"durationType\":\"Years\"}}},\"tieringPolicy\":{\"ArchivedRP\":{\"tieringMode\":\"TierRecommended\",\"duration\":0,\"durationType\":\"Invalid\"}},\"instantRpRetentionRangeInDays\":2,\"timeZone\":\"UTC\",\"protectedItemsCount\":0}}"
+    }
+  },
+  "Edit-AzrecoveryServicesBackupRetentionPolicyClientObject+[NoContext]+TierRecommended-AzureVM+$GET+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/arohijain-rg/providers/Microsoft.RecoveryServices/vaults/arohijain-vault/backupPolicies/arohijain-p-1?api-version=2023-02-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/arohijain-rg/providers/Microsoft.RecoveryServices/vaults/arohijain-vault/backupPolicies/arohijain-p-1?api-version=2023-02-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "17" ],
+        "x-ms-client-request-id": [ "95a153bc-242f-441a-a440-a2bd7419b836" ],
+        "CommandName": [ "Get-AzRecoveryServicesBackupPolicy" ],
+        "FullCommandName": [ "Get-AzRecoveryServicesBackupPolicy_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "0b666200-5e76-4fe9-bc72-56666f9647d0" ],
+        "x-ms-client-request-id": [ "95a153bc-242f-441a-a440-a2bd7419b836", "95a153bc-242f-441a-a440-a2bd7419b836" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "294" ],
+        "x-ms-correlation-request-id": [ "0b666200-5e76-4fe9-bc72-56666f9647d0" ],
+        "x-ms-routing-request-id": [ "JIOINDIACENTRAL:20230626T160401Z:0b666200-5e76-4fe9-bc72-56666f9647d0" ],
+        "Date": [ "Mon, 26 Jun 2023 16:04:00 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1529" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/arohijain-rg/providers/Microsoft.RecoveryServices/vaults/arohijain-vault/backupPolicies/arohijain-p-1\",\"name\":\"arohijain-p-1\",\"type\":\"Microsoft.RecoveryServices/vaults/backupPolicies\",\"properties\":{\"backupManagementType\":\"AzureIaasVM\",\"policyType\":\"V1\",\"instantRPDetails\":{},\"schedulePolicy\":{\"schedulePolicyType\":\"SimpleSchedulePolicy\",\"scheduleRunFrequency\":\"Daily\",\"scheduleRunTimes\":[\"2023-05-22T14:00:00Z\"],\"scheduleWeeklyFrequency\":0},\"retentionPolicy\":{\"retentionPolicyType\":\"LongTermRetentionPolicy\",\"dailySchedule\":{\"retentionTimes\":[\"2023-05-22T14:00:00Z\"],\"retentionDuration\":{\"count\":180,\"durationType\":\"Days\"}},\"weeklySchedule\":{\"daysOfTheWeek\":[\"Sunday\"],\"retentionTimes\":[\"2023-05-22T14:00:00Z\"],\"retentionDuration\":{\"count\":12,\"durationType\":\"Weeks\"}},\"monthlySchedule\":{\"retentionScheduleFormatType\":\"Weekly\",\"retentionScheduleWeekly\":{\"daysOfTheWeek\":[\"Sunday\"],\"weeksOfTheMonth\":[\"First\"]},\"retentionTimes\":[\"2023-05-22T14:00:00Z\"],\"retentionDuration\":{\"count\":60,\"durationType\":\"Months\"}},\"yearlySchedule\":{\"retentionScheduleFormatType\":\"Weekly\",\"monthsOfYear\":[\"January\"],\"retentionScheduleWeekly\":{\"daysOfTheWeek\":[\"Sunday\"],\"weeksOfTheMonth\":[\"First\"]},\"retentionTimes\":[\"2023-05-22T14:00:00Z\"],\"retentionDuration\":{\"count\":10,\"durationType\":\"Years\"}}},\"tieringPolicy\":{\"ArchivedRP\":{\"tieringMode\":\"TierRecommended\",\"duration\":0,\"durationType\":\"Invalid\"}},\"instantRpRetentionRangeInDays\":2,\"timeZone\":\"UTC\",\"protectedItemsCount\":0}}"
+    }
+  },
+  "Edit-AzrecoveryServicesBackupRetentionPolicyClientObject+[NoContext]+TierRecommended-AzureVM+$DELETE+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/arohijain-rg/providers/Microsoft.RecoveryServices/vaults/arohijain-vault/backupPolicies/arohijain-p-1?api-version=2023-02-01+3": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/arohijain-rg/providers/Microsoft.RecoveryServices/vaults/arohijain-vault/backupPolicies/arohijain-p-1?api-version=2023-02-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "18" ],
+        "x-ms-client-request-id": [ "bcddca30-cdab-47d2-a32f-6fe120231ffa" ],
+        "CommandName": [ "Remove-AzRecoveryServicesBackupPolicy" ],
+        "FullCommandName": [ "Remove-AzRecoveryServicesBackupPolicy_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "822fd8d8-223f-49ec-9e97-ac6dff9dbbbe" ],
+        "x-ms-client-request-id": [ "bcddca30-cdab-47d2-a32f-6fe120231ffa", "bcddca30-cdab-47d2-a32f-6fe120231ffa" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14994" ],
+        "x-ms-correlation-request-id": [ "822fd8d8-223f-49ec-9e97-ac6dff9dbbbe" ],
+        "x-ms-routing-request-id": [ "JIOINDIACENTRAL:20230626T160402Z:822fd8d8-223f-49ec-9e97-ac6dff9dbbbe" ],
+        "Date": [ "Mon, 26 Jun 2023 16:04:02 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null
+    }
+  }
+}
