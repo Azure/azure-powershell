@@ -2,6 +2,7 @@
 {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IProtectionPolicyResource')]
     [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess)]
+    [Alias("Set-AzRecoveryServicesBackupprotectionPolicy")]
     [Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Description('Creates a new backup policy in a given recovery services vault')]
 
 	param(

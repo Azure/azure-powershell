@@ -1,6 +1,4 @@
-# AzureVM Policies
-
-### Example 1: Edit the daily retention
+### Example 1: Edit the daily retention for AzureVM
 ```powershell
 $pol1=Get-AzRecoveryServicesPolicyTemplate -DatasourceType AzureVM
 Edit-AzRecoveryServicesBackupRetentionPolicyClientObject -Policy $pol1 -DatasourceType AzureVM -EnableDailyRetention $true -DailyRetentionDurationInDays 56
@@ -15,7 +13,7 @@ DurationType : Days
 
 The first command gets the default policy template for a given DatasourceType. The second command modifies daily retention parameter in the obtained policy. The third command is to display the modified policy.
 
-### Example 2: Disable the daily retention
+### Example 2: Disable the daily retention for AzureVM
 ```powershell
 $pol1.SchedulePolicy.ScheduleRunFrequency="Weekly"
 Edit-AzRecoveryServicesBackupRetentionPolicyClientObject -Policy $pol1 -DatasourceType AzureVM -EnableDailyRetention $false
@@ -30,7 +28,7 @@ DurationType :
 
 The first command sets the Schedule run frequency to Weekly. The second command disables the daily retention. The third command is to display the modified policy.
 
-### Example 3: Edit the weekly retention
+### Example 3: Edit the weekly retention for AzureVM
 ```powershell
 $pol1.SchedulePolicy.ScheduleRunDay="Monday", "Tuesday", "Wednesday"
 Edit-AzRecoveryServicesBackupRetentionPolicyClientObject -Policy $pol1 -DatasourceType AzureVM -EnableWeeklyRetention $true -WeeklyRetentionDurationInWeeks 34 -WeeklyRetentionDaysOfTheWeek Sunday,Monday
@@ -53,7 +51,7 @@ RetentionTime     : {5/22/2023 2:00:00 PM}
 
 The first command sets the schedule run days. The second command is used to modify the weekly retention fields in the policy. Note that WeeklyRetentionDaysOfTheWeek can't modify days of the week for weekly schedule but parameter needs to be passed. The 3-4 command is to display the modified policy.
 
-### Example 4: Disable the weekly retention
+### Example 4: Disable the weekly retention for AzureVM
 ```powershell
 $pol1.SchedulePolicy.ScheduleRunFrequency="Daily"
 Edit-AzRecoveryServicesBackupRetentionPolicyClientObject -Policy $pol1 -DatasourceType AzureVM -EnableWeeklyRetention $false
@@ -75,7 +73,7 @@ RetentionTime     :
 
 The first command sets the schedule run frequency to daily. The second command disables the weekly retention. The 3-4 command is to display the modified policy.
 
-### Example 5: Edit the week based monthly retention when schedule run frequency is weekly
+### Example 5: Edit the week based monthly retention when schedule run frequency is weekly for AzureVM
 ```powershell
 $pol1.SchedulePolicy.ScheduleRunDay
 Edit-AzRecoveryServicesBackupRetentionPolicyClientObject -Policy $pol1 -DatasourceType AzureVM -EnableMonthlyRetention $true -MonthlyRetentionScheduleType Weekly -MonthlyRetentionDurationInMonths 34 -MonthlyRetentionDaysOfTheWeek "Monday","Tuesday" -MonthlyRetentionWeeksOfTheMonth Second, Fourth
@@ -105,7 +103,7 @@ WeeksOfTheMonth : {Second, Fourth}
 
 The first command fetches the schedule run days for assigning values to days of week. The second command edits the week based monthly retention policy. The 3-5 command is to display the modified policy.
 
-### Example 6: Edit the week based monthly retention when schedule run frequency is daily
+### Example 6: Edit the week based monthly retention when schedule run frequency is daily for AzureVM
 ```powershell
 Edit-AzRecoveryServicesBackupRetentionPolicyClientObject -Policy $pol1 -DatasourceType AzureVM -EnableMonthlyRetention $true -MonthlyRetentionScheduleType Weekly -MonthlyRetentionDurationInMonths 34 -MonthlyRetentionDaysOfTheWeek "Monday","Saturday" -MonthlyRetentionWeeksOfTheMonth Second, Fourth
 $pol1.RetentionPolicy.MonthlySchedule | fl
@@ -134,7 +132,7 @@ WeeksOfTheMonth : {Second, Fourth}
 
 This command edits the week based monthly retention policy. The 2-4 command is to display the modified policy.
 
-### Example 7: Edit the day based monthly retention
+### Example 7: Edit the day based monthly retention for AzureVM
 ```powershell
 $pol1.SchedulePolicy.ScheduleRunFrequency="Daily"
 Edit-AzRecoveryServicesBackupRetentionPolicyClientObject -Policy $pol1 -DatasourceType AzureVM -EnableMonthlyRetention $true -MonthlyRetentionScheduleType Daily -MonthlyRetentionDurationInMonths 45 -MonthlyRetentionDaysOfTheMonth 1,6,28
@@ -170,7 +168,7 @@ IsLast :
 
 The first command changes the schedule run frequency to daily. The second command edits the day based monthly retention policy. The 3-5 command is to display the modified policy.
 
-### Example 8: Disable the monthly retention
+### Example 8: Disable the monthly retention for AzureVM
 ```powershell
 Edit-AzRecoveryServicesBackupRetentionPolicyClientObject -Policy $pol1 -DatasourceType AzureVM -EnableMonthlyRetention $false
 $pol1.RetentionPolicy.MonthlySchedule | fl
@@ -193,7 +191,7 @@ DurationType :
 
 This command disables the monthly retention. The 2-3 command is to display the modified policy.
 
-### Example 9: Edit the week based yearly retention when schedule run frequency is weekly
+### Example 9: Edit the week based yearly retention when schedule run frequency is weekly for AzureVM
 ```powershell
 $pol1.SchedulePolicy.ScheduleRunDay
 Edit-AzRecoveryServicesBackupRetentionPolicyClientObject -Policy $pol1 -DatasourceType AzureVM -EnableYearlyRetention $true -YearlyRetentionScheduleType Weekly -YearlyRetentionDurationInYears 34 -YearlyRetentionMonthsOfTheYear @("May", "June") -YearlyRetentionDaysOfTheWeek Monday, Tuesday -YearlyRetentionWeeksOfTheMonth First, Third
@@ -224,7 +222,7 @@ WeeksOfTheMonth : {First, Third}
 
 The first command fetches the schedule run days for assigning values to days of week. The second command edits the week based yearly retention policy when schedule run frequency is weekly. The 3-5 command is to display the modified policy.
 
-### Example 10: Edit the week based yearly retention when schedule run frequency is daily
+### Example 10: Edit the week based yearly retention when schedule run frequency is daily for AzureVM
 ```powershell
 Edit-AzRecoveryServicesBackupRetentionPolicyClientObject -Policy $pol1 -DatasourceType AzureVM -EnableYearlyRetention $true -YearlyRetentionScheduleType Weekly -YearlyRetentionDurationInYears 67 -YearlyRetentionMonthsOfTheYear @("May", "June") -YearlyRetentionDaysOfTheWeek Monday, Saturday -YearlyRetentionWeeksOfTheMonth First, Third
 $pol1.RetentionPolicy.YearlySchedule | fl
@@ -254,7 +252,7 @@ WeeksOfTheMonth : {First, Third}
 
 This command edits the week based yearly retention policy when schedule run frequency is daily. The 2-4 command is to display the modified policy.
 
-### Example 11: Edit the day based yearly retention
+### Example 11: Edit the day based yearly retention for AzureVM
 ```powershell
 $pol1.SchedulePolicy.ScheduleRunFrequency="Daily"
 Edit-AzRecoveryServicesBackupRetentionPolicyClientObject -Policy $pol1 -DatasourceType AzureVM -EnableYearlyRetention $true -YearlyRetentionScheduleType Daily -YearlyRetentionMonthsOfTheYear May,April -YearlyRetentionDaysOfTheMonth 1,2,3 -YearlyRetentionDurationInYears 43
@@ -291,7 +289,7 @@ IsLast :
 
 The first command changes the schedule run frequency to daily. The second command edits the day based yearly retention policy. The 3-5 command is to display the modified policy.
 
-### Example 12: Disable the yearly retention
+### Example 12: Disable the yearly retention for AzureVM
 ```powershell
 Edit-AzRecoveryServicesBackupRetentionPolicyClientObject -Policy $pol1 -DatasourceType AzureVM -EnableYearlyRetention $false
 $pol1.RetentionPolicy.YearlySchedule | fl
@@ -315,10 +313,7 @@ DurationType :
 
 This command disables the yearly retention. The 2-3 command is to display the modified policy.
 
-
-# SAPHANA Policies
-
-### Example 1: Edit the Full Backup daily retention
+### Example 13: Edit the Full Backup daily retention for SAPHANA
 ```powershell
 $pol1=Get-AzRecoveryServicesPolicyTemplate -DatasourceType SAPHANA
 Edit-AzRecoveryServicesBackupRetentionPolicyClientObject -Policy $pol1 -DatasourceType SAPHANA -ModifyFullBackup -EnableDailyRetention $true -DailyRetentionDurationInDays 32
@@ -333,7 +328,7 @@ DurationType : Days
 
 The first command gets the default policy template for a given DatasourceType. The second command modifies the full backup daily retention parameter in the obtained policy. The third command is to display the modified policy.
 
-### Example 2: Disable the full backup daily retention
+### Example 14: Disable the full backup daily retention for SAPHANA
 ```powershell
 $pol1.SubProtectionPolicy[0].SchedulePolicy.ScheduleRunFrequency="Weekly"
 Edit-AzRecoveryServicesBackupRetentionPolicyClientObject -Policy $pol1 -DatasourceType SAPHANA -ModifyFullBackup -EnableDailyRetention $false
@@ -348,7 +343,7 @@ DurationType :
 
 The first command sets the Schedule run frequency to Weekly. The second command disables the daily retention for full backup. The third command is to display the modified policy.
 
-### Example 3: Edit the full backup weekly retention
+### Example 15: Edit the full backup weekly retention for SAPHANA
 ```powershell
 $pol1.SubProtectionPolicy[0].SchedulePolicy.ScheduleRunDay="Monday","Tuesday","Wednesday"
 Edit-AzRecoveryServicesBackupRetentionPolicyClientObject -Policy $pol1 -DatasourceType SAPHANA -ModifyFullBackup -EnableWeeklyRetention $true -WeeklyRetentionDurationInWeeks 11 -WeeklyRetentionDaysOfTheWeek Sunday
@@ -370,7 +365,7 @@ DurationType : Weeks
 
 This command is used to modify the full backup weekly retention fields in the policy. Note that WeeklyRetentionDaysOfTheWeek can't modify days of week for weekly schedule but parameter needs to be passed. The 3-4 command is to display the modified policy.
 
-### Example 4: Disable the weekly retention
+### Example 16: Disable the weekly retention for SAPHANA
 ```powershell
 $pol1.SubProtectionPolicy[0].SchedulePolicy.ScheduleRunFrequency="Daily"
 Edit-AzRecoveryServicesBackupRetentionPolicyClientObject -Policy $pol1 -DatasourceType SAPHANA -ModifyFullBackup -EnableWeeklyRetention $false
@@ -392,7 +387,7 @@ RetentionTime     :
 
 This command disables the full backup weekly retention. The 3-4 command is to display the modified policy.
 
-### Example 5: Edit the week based monthly retention when schedule run frequency is weekly
+### Example 17: Edit the week based monthly retention when schedule run frequency is weekly for SAPHANA
 ```powershell
 $pol1.SubProtectionPolicy[0].SchedulePolicy.ScheduleRunDay
 Edit-AzRecoveryServicesBackupRetentionPolicyClientObject -Policy $pol1 -DatasourceType SAPHANA -ModifyFullBackup -EnableMonthlyRetention $true -MonthlyRetentionScheduleType Weekly -MonthlyRetentionDurationInMonths 34 -MonthlyRetentionDaysOfTheWeek Monday -MonthlyRetentionWeeksOfTheMonth First, Last
@@ -422,7 +417,7 @@ WeeksOfTheMonth : {First, Last}
 
 The first command fetches the schedule run days for assigning values to days of week. The second command edits the full backup week based monthly retention policy. The 3-5 command is to display the modified policy.
 
-### Example 6: Edit the week based monthly retention when schedule run frequency is daily
+### Example 18: Edit the week based monthly retention when schedule run frequency is daily for SAPHANA
 ```powershell
 Edit-AzRecoveryServicesBackupRetentionPolicyClientObject -Policy $pol1 -DatasourceType SAPHANA -ModifyFullBackup -EnableMonthlyRetention $true -MonthlyRetentionScheduleType Weekly -MonthlyRetentionDurationInMonths 34 -MonthlyRetentionDaysOfTheWeek Monday,Sunday
 $pol1.SubProtectionPolicy[0].RetentionPolicy.MonthlySchedule | fl
@@ -451,7 +446,7 @@ WeeksOfTheMonth : {First, Last}
 
 This command edits the full backup week based monthly retention policy. The 2-4 command is to display the modified policy.
 
-### Example 7: Edit the day based monthly retention
+### Example 19: Edit the day based monthly retention for SAPHANA
 ```powershell
 $pol1.SubProtectionPolicy[0].SchedulePolicy.ScheduleRunFrequency="Daily"
 Edit-AzRecoveryServicesBackupRetentionPolicyClientObject -Policy $pol1 -DatasourceType SAPHANA -ModifyFullBackup -EnableMonthlyRetention $true -MonthlyRetentionScheduleType Daily -MonthlyRetentionDaysOfTheMonth 1,2,3 -MonthlyRetentionDurationInMonths 67
@@ -487,7 +482,7 @@ IsLast :
 
 The first command changes the full backup schedule run frequency to daily. The second command edits the day based monthly retention policy. The 3-5 command is to display the modified policy.
 
-### Example 8: Disable the full backup monthly retention
+### Example 20: Disable the full backup monthly retention for SAPHANA
 ```powershell
 Edit-AzRecoveryServicesBackupRetentionPolicyClientObject -Policy $pol1 -DatasourceType SAPHANA -ModifyFullBackup -EnableMonthlyRetention $false
 $pol1.SubProtectionPolicy[0].RetentionPolicy.MonthlySchedule | fl
@@ -510,7 +505,7 @@ DurationType :
 
 This command disables the full backup monthly retention. The 2-3 command is to display the modified policy.
 
-### Example 9: Edit the full backup week based yearly retention when schedule run frequency is weekly
+### Example 21: Edit the full backup week based yearly retention when schedule run frequency is weekly for SAPHANA
 ```powershell
 $pol1.SubProtectionPolicy[0].SchedulePolicy.ScheduleRunDay
 Edit-AzRecoveryServicesBackupRetentionPolicyClientObject -Policy $pol1 -DatasourceType SAPHANA -ModifyFullBackup -EnableYearlyRetention $true -YearlyRetentionScheduleType Weekly -YearlyRetentionDurationInYears 47 -YearlyRetentionMonthsOfTheYear May,June -YearlyRetentionDaysOfTheWeek Monday -YearlyRetentionWeeksOfTheMonth Last,First
@@ -541,7 +536,7 @@ WeeksOfTheMonth : {Last, First}
 
 The first command fetches the schedule run days for assigning values to days of week. The second command edits the full backup week based yearly retention policy when schedule run frequency is weekly. The 3-5 command is to display the modified policy.
 
-### Example 10: Edit the full backup week based yearly retention when schedule run frequency is daily
+### Example 22: Edit the full backup week based yearly retention when schedule run frequency is daily for SAPHANA
 ```powershell
 Edit-AzRecoveryServicesBackupRetentionPolicyClientObject -Policy $pol1 -DatasourceType SAPHANA -ModifyFullBackup -EnableYearlyRetention $true -YearlyRetentionScheduleType Weekly -YearlyRetentionDurationInYears 47 -YearlyRetentionMonthsOfTheYear May,June -YearlyRetentionDaysOfTheWeek Monday -YearlyRetentionWeeksOfTheMonth Last,First
 $pol1.SubProtectionPolicy[0].RetentionPolicy.YearlySchedule | fl
@@ -571,7 +566,7 @@ WeeksOfTheMonth : {Last, First}
 
 This command edits the full backup week based yearly retention policy when schedule run frequency is daily. The 2-4 command is to display the modified policy.
 
-### Example 11: Edit the full backup day based yearly retention
+### Example 23: Edit the full backup day based yearly retention for SAPHANA
 ```powershell
 $pol1.SubProtectionPolicy[0].SchedulePolicy.ScheduleRunFrequency="Daily"
 Edit-AzRecoveryServicesBackupRetentionPolicyClientObject -Policy $pol1 -DatasourceType SAPHANA -ModifyFullBackup -EnableYearlyRetention $true -YearlyRetentionScheduleType Daily -YearlyRetentionDurationInYears 76 -YearlyRetentionMonthsOfTheYear May,July -YearlyRetentionDaysOfTheMonth 7,17,27
@@ -608,7 +603,7 @@ IsLast :
 
 The first command changes the full backup schedule run frequency to daily. The second command edits the day based yearly retention policy. The 3-5 command is to display the modified policy.
 
-### Example 12: Disable the yearly retention
+### Example 24: Disable the yearly retention for SAPHANA
 ```powershell
 Edit-AzRecoveryServicesBackupRetentionPolicyClientObject -Policy $pol1 -DatasourceType SAPHANA -ModifyFullBackup -EnableYearlyRetention $false
 $pol1.SubProtectionPolicy[0].RetentionPolicy.YearlySchedule | fl
@@ -632,7 +627,7 @@ DurationType :
 
 This command disables the full backup yearly retention. The 2-3 command is to display the modified policy.
 
-### Example 13: Modify Differential backup retention policy
+### Example 25: Modify Differential backup retention policy for SAPHANA
 ```powershell
 $pol1.SubProtectionPolicy[0].SchedulePolicy.ScheduleRunFrequency="Weekly"
 Edit-AzRecoveryServicesBackupRetentionPolicyClientObject -Policy $pol1 -DatasourceType SAPHANA -ModifyDifferentialBackup -DifferentialRetentionPeriodInDays 23 
@@ -648,7 +643,7 @@ Type                   : SimpleRetentionPolicy
 
 This command modifies the differential backup retention policy. The third command is to display the modified policy.
 
-### Example 14: Modify Incremental backup retention policy
+### Example 26: Modify Incremental backup retention policy for SAPHANA
 ```powershell
 $pol1.SubProtectionPolicy[0].SchedulePolicy.ScheduleRunFrequency="Weekly"
 Edit-AzRecoveryServicesBackupRetentionPolicyClientObject -Policy $pol1 -DatasourceType SAPHANA -IncrementalRetentionPeriodInDays 64 -ModifyIncrementalBackup
@@ -664,7 +659,7 @@ Type                   : SimpleRetentionPolicy
 
 This command modifies the incremental backup retention policy. The third command is to display the modified policy.
 
-### Example 15: Modify Log backup retention policy
+### Example 27: Modify Log backup retention policy for SAPHANA
 ```powershell
 Edit-AzRecoveryServicesBackupRetentionPolicyClientObject -Policy $pol1 -DatasourceType SAPHANA -LogRetentionPeriodInDays 23 -ModifyLogBackup
 $pol1.SubProtectionPolicy[1].RetentionPolicy | fl
