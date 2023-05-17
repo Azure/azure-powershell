@@ -48,7 +48,7 @@ steps:
   displayName: Show PowerShell Version
   inputs:
     targetType: inline
-    script: "Write-Host $PSVersionTable"
+    script: "Write-Host $PSVersionTable.PSVersion"
     pwsh: true
     
 - task: DotNetCoreCLI@2
