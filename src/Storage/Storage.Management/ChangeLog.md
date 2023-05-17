@@ -25,7 +25,7 @@
     - `Update-AzStorageFileServiceProperty`
 * Fixed an issue of `StorageAccountName` field in context object when the context is invalid 
     - `New-AzStorageContext`
-* Fixed an issue when a context does not have Crendentials field 
+* Fixed an issue when a context does not have Credentials field
 * Added `$blobchangefeed` to be a valid container name
 
 ## Version 5.6.0
