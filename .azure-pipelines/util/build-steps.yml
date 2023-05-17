@@ -17,7 +17,9 @@ steps:
   displayName: Setup environment for Autorest
   inputs:
     targetType: inline
-    script: "$env:NODE_OPTIONS=\"--max-old-space-size=65536\""
+    script: |
+      $env:NODE_OPTIONS=\"--max-old-space-size=65536\"
+      Write-Host `$PSVersionTable
     pwsh: true
 - task: PowerShell@2
   displayName: 'Check Ignored File'
