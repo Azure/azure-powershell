@@ -1665,7 +1665,7 @@ function GetFunctionAppStackDefinition
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.DoNotExportAttribute()]
     param ()
 
-    if ($env:FunctionsTestMode)
+    if ($null -ne $env:SYSTEM_DEFINITIONID -or $null -ne $env:Release_DefinitionId -or $null -ne $env:AZUREPS_HOST_ENVIRONMENT)
     {
         Write-Debug "$DEBUG_PREFIX Running on test mode. Using built in json file definition."
         $json = GetBuiltInFunctionAppStacksDefinition -DoNotShowWarning
