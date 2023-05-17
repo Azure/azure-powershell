@@ -15,50 +15,52 @@ Delays the occurrence of an action.
 ### Delay1 (Default)
 ```
 Delay-AzDevCenterDevDevBoxAction -Endpoint <String> -DevBoxName <String> -ProjectName <String>
- -Until <DateTime> [-UserId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -DelayTime <TimeSpan> [-UserId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### Delay
 ```
 Delay-AzDevCenterDevDevBoxAction -Endpoint <String> -ActionName <String> -DevBoxName <String>
- -ProjectName <String> -Until <DateTime> [-UserId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ -ProjectName <String> -DelayTime <TimeSpan> [-UserId <String>] [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### Delay1ByDevCenter
 ```
 Delay-AzDevCenterDevDevBoxAction -DevCenter <String> -DevBoxName <String> -ProjectName <String>
- -Until <DateTime> [-UserId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -DelayTime <TimeSpan> [-UserId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### DelayByDevCenter
 ```
 Delay-AzDevCenterDevDevBoxAction -DevCenter <String> -ActionName <String> -DevBoxName <String>
- -ProjectName <String> -Until <DateTime> [-UserId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ -ProjectName <String> -DelayTime <TimeSpan> [-UserId <String>] [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### DelayViaIdentity
 ```
-Delay-AzDevCenterDevDevBoxAction -Endpoint <String> -InputObject <IDevCenterIdentity> -Until <DateTime>
+Delay-AzDevCenterDevDevBoxAction -Endpoint <String> -InputObject <IDevCenterIdentity> -DelayTime <TimeSpan>
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DelayViaIdentity1
 ```
-Delay-AzDevCenterDevDevBoxAction -Endpoint <String> -InputObject <IDevCenterIdentity> -Until <DateTime>
+Delay-AzDevCenterDevDevBoxAction -Endpoint <String> -InputObject <IDevCenterIdentity> -DelayTime <TimeSpan>
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DelayViaIdentity1ByDevCenter
 ```
-Delay-AzDevCenterDevDevBoxAction -DevCenter <String> -InputObject <IDevCenterIdentity> -Until <DateTime>
+Delay-AzDevCenterDevDevBoxAction -DevCenter <String> -InputObject <IDevCenterIdentity> -DelayTime <TimeSpan>
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DelayViaIdentityByDevCenter
 ```
-Delay-AzDevCenterDevDevBoxAction -DevCenter <String> -InputObject <IDevCenterIdentity> -Until <DateTime>
+Delay-AzDevCenterDevDevBoxAction -DevCenter <String> -InputObject <IDevCenterIdentity> -DelayTime <TimeSpan>
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -116,6 +118,22 @@ Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DelayTime
+The delayed timespan from the scheduled action time.
+Format HH:MM.
+
+```yaml
+Type: System.TimeSpan
+Parameter Sets: (All)
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -198,21 +216,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Until
-The time to delay the Dev Box action or actions until.
-
-```yaml
-Type: System.DateTime
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -UserId
 The AAD object id of the user.
 If value is 'me', the identity is taken from the authentication context.
@@ -222,7 +225,7 @@ Type: System.String
 Parameter Sets: Delay, Delay1, Delay1ByDevCenter, DelayByDevCenter
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: "me"
 Accept pipeline input: False
