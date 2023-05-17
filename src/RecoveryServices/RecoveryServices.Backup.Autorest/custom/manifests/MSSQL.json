@@ -1,4 +1,5 @@
 ﻿{
+  "filterPolicyBasedonWorkloadType": true,
   "allowedSubProtectionPolicyTypes": [ "Full", "Differential", "Log" ],
   "allowedBackupFrequencies": [ "Daily", "Weekly" ],
   "supportsEnhanced": false,
@@ -9,6 +10,8 @@
   "allowedMonthsOfTheYear": [ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ],
   "allowedWeeksOfTheMonth": [ "First", "Second", "Third", "Fourth", "Last" ],
   "IsSmartTieringSupported": true,
+  "containerInquiryType": "SQL",
+  "protectedItemType": "AzureVMWorkloadSqlDatabaseProtectedItem",
   "policySettings": {
     "defaultPolicy": {
       "backupManagementType": "AzureWorkload",

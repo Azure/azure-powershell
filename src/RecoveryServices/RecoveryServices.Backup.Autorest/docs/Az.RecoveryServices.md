@@ -17,16 +17,28 @@ Edits the retention settings for the policy client object
 ### [Edit-AzRecoveryServicesBackupSchedulePolicyClientObject](Edit-AzRecoveryServicesBackupSchedulePolicyClientObject.md)
 Edits the schedule policy in the specified backup policy object.
 
-### [Get-AzRecoveryServicesBackupPolicy](Get-AzRecoveryServicesBackupPolicy.md)
-Provides the details of the backup policies associated to Recovery Services Vault.
-This is an asynchronous\r\noperation.
-Status of the operation can be fetched using GetPolicyOperationResult API.
+### [Get-AzRecoveryServicesBackupContainer](Get-AzRecoveryServicesBackupContainer.md)
+Gets list of backup containers registered with a recovery services vault
+
+### [Get-AzRecoveryServicesBackupItem](Get-AzRecoveryServicesBackupItem.md)
+Gets list of backup items protected with a recovery services vault
+
+### [Get-AzRecoveryServicesBackupProtectableItem](Get-AzRecoveryServicesBackupProtectableItem.md)
+This command will retrieve all protectable items within a certain container or across all registered containers.
+It will consist of all the elements of the hierarchy of the application.
+Returns DBs and their upper tier entities like Instance, AvailabilityGroup etc.
+
+### [Get-AzRecoveryServicesBackupProtectionPolicy](Get-AzRecoveryServicesBackupProtectionPolicy.md)
+Gets backup protection policies for a recovery services vault.
 
 ### [Get-AzRecoveryServicesPolicyTemplate](Get-AzRecoveryServicesPolicyTemplate.md)
 Gets default policy template for a selected datasource type.
 
 ### [New-AzRecoveryServicesBackupPolicy](New-AzRecoveryServicesBackupPolicy.md)
 Creates a new backup policy in a given recovery services vault
+
+### [Register-AzRecoveryServicesBackupContainer](Register-AzRecoveryServicesBackupContainer.md)
+The Register-AzRecoveryServicesBackupContainer cmdlet registers an Azure VM for AzureWorkloads with specific DatasourceType.
 
 ### [Remove-AzRecoveryServicesBackupPolicy](Remove-AzRecoveryServicesBackupPolicy.md)
 Deletes specified backup policy from your Recovery Services Vault.

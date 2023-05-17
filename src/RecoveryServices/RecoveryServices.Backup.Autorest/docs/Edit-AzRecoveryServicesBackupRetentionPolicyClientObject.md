@@ -894,7 +894,7 @@ Accept wildcard characters: False
 
 ### -ModifyDifferentialBackup
 Switch parameter to modify differential backup retention policy.
-You can use this parameter for DataSourceType: MSSQL, SAPHANA
+You can use this parameter for DatasourceType: MSSQL, SAPHANA
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -910,7 +910,7 @@ Accept wildcard characters: False
 
 ### -ModifyFullBackup
 Switch parameter to modify FullBackup retention policy.
-You can use this parameter for DataSourceType: MSSQL, SAPHANA
+You can use this parameter for DatasourceType: MSSQL, SAPHANA
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -926,7 +926,7 @@ Accept wildcard characters: False
 
 ### -ModifyIncrementalBackup
 Switch parameter to modify incremental backup retention policy.
-You can use this parameter for DataSourceType: MSSQL, SAPHANA
+You can use this parameter for DatasourceType: MSSQL, SAPHANA
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -942,7 +942,7 @@ Accept wildcard characters: False
 
 ### -ModifyLogBackup
 Switch parameter to modify log backup retention policy.
-You can use this parameter for DataSourceType: MSSQL, SAPHANA
+You can use this parameter for DatasourceType: MSSQL, SAPHANA
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

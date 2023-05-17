@@ -14,19 +14,19 @@ function Edit-AzRecoveryServicesBackupRetentionPolicyClientObject {
         [Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Support.DatasourceTypes]
         ${DatasourceType},
 
-        [Parameter(ParameterSetName="ModifyRetentionPolicy", HelpMessage='Switch parameter to modify FullBackup retention policy. You can use this parameter for DataSourceType: MSSQL, SAPHANA')]
+        [Parameter(ParameterSetName="ModifyRetentionPolicy", HelpMessage='Switch parameter to modify FullBackup retention policy. You can use this parameter for DatasourceType: MSSQL, SAPHANA')]
         [switch]
         ${ModifyFullBackup},  
         
-        [Parameter(ParameterSetName="ModifyRetentionPolicy",  HelpMessage='Switch parameter to modify differential backup retention policy. You can use this parameter for DataSourceType: MSSQL, SAPHANA')]
+        [Parameter(ParameterSetName="ModifyRetentionPolicy",  HelpMessage='Switch parameter to modify differential backup retention policy. You can use this parameter for DatasourceType: MSSQL, SAPHANA')]
         [switch]
         ${ModifyDifferentialBackup},  
 
-        [Parameter(ParameterSetName="ModifyRetentionPolicy",  HelpMessage='Switch parameter to modify incremental backup retention policy. You can use this parameter for DataSourceType: MSSQL, SAPHANA')]
+        [Parameter(ParameterSetName="ModifyRetentionPolicy",  HelpMessage='Switch parameter to modify incremental backup retention policy. You can use this parameter for DatasourceType: MSSQL, SAPHANA')]
         [switch]
         ${ModifyIncrementalBackup},
 
-        [Parameter(ParameterSetName="ModifyRetentionPolicy",  HelpMessage='Switch parameter to modify log backup retention policy. You can use this parameter for DataSourceType: MSSQL, SAPHANA')]
+        [Parameter(ParameterSetName="ModifyRetentionPolicy",  HelpMessage='Switch parameter to modify log backup retention policy. You can use this parameter for DatasourceType: MSSQL, SAPHANA')]
         [switch]
         ${ModifyLogBackup},
 
@@ -283,7 +283,6 @@ function Edit-AzRecoveryServicesBackupRetentionPolicyClientObject {
               {
                    $policyObject.RetentionPolicy.WeeklySchedule.RetentionTime=$scheduletime
               }
-
 
               if($EnableMonthlyRetention -eq $false )
               {

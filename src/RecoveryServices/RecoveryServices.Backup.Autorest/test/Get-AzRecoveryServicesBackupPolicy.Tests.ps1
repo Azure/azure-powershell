@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzRecoveryServicesBackupP
 }
 
 Describe 'Get-AzRecoveryServicesBackupPolicy' {
-    It 'List' -skip {        
+    It 'List' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

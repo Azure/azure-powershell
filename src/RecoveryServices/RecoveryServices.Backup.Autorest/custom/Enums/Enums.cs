@@ -6,9 +6,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Support
     {
         AzureVM = 0,
         MSSQL,
-        SAPHANA
-        /* AzureFiles,
-        */
+        SAPHANA,
+        AzureFiles /*,
+        MAB */
+    }
+
+    public enum BackupContainerType
+    {
+        AzureVM = 0,
+        Windows,
+        AzureStorage,
+        AzureVMAppContainer
     }
 
     public enum StorageSettingType

@@ -41,6 +41,18 @@ input-file:
   - $(repo)/specification/recoveryservicesbackup/resource-manager/Microsoft.RecoveryServices/stable/2023-02-01/bms.json
 title: RecoveryServices
 directive:
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}"].put
+    transform: $["x-ms-long-running-operation"] = true
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}"].delete
+    transform: $["x-ms-long-running-operation"] = true
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/refreshContainers"].post
+    transform: $["x-ms-long-running-operation"] = true
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}"].put
+    transform: $["x-ms-long-running-operation"] = true
   - where:
       verb: New
       subject: ProtectionPolicy
@@ -71,7 +83,7 @@ directive:
     set:
       subject: BackupPolicy
   - where:      
-      subject: Job|BackupEngine|OperationResult|OperationStatuses|ProtectableItem|Item|ProtectionContainer|ProtectionIntent|EncryptionConfig|StorageConfigsNonCrr|VaultConfig|BackupStatus|BackupUsageSummary|JobDetail|OperationStatus|PrivateEndpointConnection|RecoveryPoint|RecommendedForMove|ResourceGuardProxy|SecurityPiN|ItemLevelRecoveryConnection|Restore|Cancellation|ValidateOperation|ResourceGuardProxyDelete|ProtectableContainer|Prepare|FeatureSupport
+      subject: Job|BackupEngine|OperationResult|OperationStatuses|EncryptionConfig|StorageConfigsNonCrr|VaultConfig|BackupStatus|BackupUsageSummary|JobDetail|PrivateEndpointConnection|RecoveryPoint|RecommendedForMove|ResourceGuardProxy|SecurityPiN|ItemLevelRecoveryConnection|Restore|Cancellation|ValidateOperation|ResourceGuardProxyDelete|Prepare|FeatureSupport|WorkloadItem|DeletedProtectionContainer|InquireProtectionContainer|PrivateEndpointOperationStatus|^ProtectionIntent
     remove: true
   - where:      
       verb: Start
@@ -80,9 +92,33 @@ directive:
       verb: Set
       subject: BackupPolicy
     remove: true
+  - where:      
+      verb: Get
+      subject: BackupPolicy
+    hide: true
+  - where:
+      subject: BackupProtectableItem
+    hide: true
+  - where:
+      verb: Unregister
+      subject: ProtectionContainer
+    remove: true
+  - where:      
+      verb: New|Remove|Set
+      subject: ProtectedItem
+    remove: true
+  - where:
+      subject: ProtectedItem|ProtectionIntent|OperationStatus|ProtectionContainer|ProtectableContainer
+    hide: true
   - no-inline:
     - DailyRetentionSchedule
+    - DiskExclusionProperty
+    - DiskLunList
+    - ExtendedInfo
     - HourlySchedule
+    - InquiryInfo
+    - InstantRpDetail
+    - IsInclusionList
     - MonthlyRetentionSchedule
     - Settings
     - SubProtectionPolicyTieringPolicy
@@ -98,4 +134,19 @@ directive:
   - from: source-file-csharp
     where: $
     transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.ISchedulePolicy SchedulePolicy', 'public Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.ISchedulePolicy SchedulePolicy'); 
+  - from: source-file-csharp
+    where: $
+    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IProtectionContainer Property', 'public Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IProtectionContainer Property');
+  - from: source-file-csharp
+    where: $
+    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IProtectedItem Property', 'public Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IProtectedItem Property');
+  - from: source-file-csharp
+    where: $
+    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IExtendedProperties ExtendedProperty', 'public Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IExtendedProperties ExtendedProperty');
+  - from: source-file-csharp
+    where: $
+    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IWorkloadProtectableItem Property', 'public Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IWorkloadProtectableItem Property');  
+  - from: source-file-csharp
+    where: $
+    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IRecoveryPoint Property', 'public Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IRecoveryPoint Property');
 ```

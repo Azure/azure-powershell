@@ -27,17 +27,54 @@ function setupEnv() {
         NewPolicyName = "anssingh-testPolicy"                                                                              
     }
 
-    $env.add("TestBackupSchedulePolicy", $TestBackupSchedulePolicyVariables) | Out-Null                                                                
-
     $BackupRetentionPolicyTestVariables = @{                                                                                                     
         SubscriptionId = "38304e13-357e-405e-9e9a-220351dcce8c"
         ResourceGroupName = "arohijain-rg"
         VaultName = "arohijain-vault"
-        NewPolicyName = "arohijain-p-1"                                                                              # confirm what to keep
+        NewPolicyName = "arohijain-p-1"                                                                              
+        # confirm what to keep
     }
 
-    $env.add("TestBackupPolicy", $BackupRetentionPolicyTestVariables) | Out-Null                                                                
-    
+    $BackupTestVariables = @{
+        SubscriptionId = "38304e13-357e-405e-9e9a-220351dcce8c"
+        ResourceGroupName = "arohijain-rg"
+        VaultName = "arohijain-backupvault"
+        VirtualMachineName = "arohijain-vm"
+    }
+
+    $CommonTestVariables = @{
+        SubscriptionId = "38304e13-357e-405e-9e9a-220351dcce8c"
+        ResourceGroupName = "hiagarg"
+        VaultName = "hiagaVault"
+        Location = "centraluseuap"
+        VaultId = "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiagaVault"        
+    }
+
+    $RegisterContainerVariables = @{
+        ResourceId = "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/virtualMachines/sql-migration-vm2"
+        SQLVMName = "sql-migration-vm2"        
+    }
+
+    $ProtectableItemVariables = @{        
+        ServerName = "sql-migration-v"
+        ProtectableItemName = "sqldatabase;mssqlserver;msdb"
+    }
+
+    $BackupItemVariables = @{        
+        ContainerFriendlyName = "sql-pstest-vm1"  # "sql-migration-vm2"
+        PolicyId = "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiagaVault/backupPolicies/HourlyLogBackup"
+
+        # /subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiagaVault/backupPolicies/NewSQLPolicy
+    }
+
+    $env.add("TestBackupSchedulePolicy", $TestBackupSchedulePolicyVariables) | Out-Null          
+    $env.add("TestBackupPolicy", $BackupRetentionPolicyTestVariables) | Out-Null     
+    $env.add("TestBackup", $BackupTestVariables) | Out-Null
+    $env.add("TestCommon", $CommonTestVariables) | Out-Null
+    $env.add("TestRegisterContainer", $RegisterContainerVariables) | Out-Null
+    $env.add("TestProtectableItem", $ProtectableItemVariables) | Out-Null
+    $env.add("TestBackupItem", $BackupItemVariables) | Out-Null
+
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {
         $envFile = 'localEnv.json'

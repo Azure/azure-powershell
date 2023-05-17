@@ -247,7 +247,7 @@ function ValidateRetentionParameters {
                     $Policy.SubProtectionPolicy[$Index].RetentionPolicy.MonthlySchedule.RetentionScheduleFormatType=$MonthlyRetentionScheduleType
                 }
             }
-            if(($MonthlyRetentionScheduleType -eq "Weekly") -or ($DataSourceType -eq "AzureVM" -and $Policy.RetentionPolicy.MonthlySchedule.RetentionScheduleFormatType -eq "Weekly") -or ((($DatasourceType -eq "SAPHANA") -or ($DatasourceType -eq "MSSQL")) -and ($Policy.SubProtectionPolicy[$Index].RetentionPolicy.MonthlySchedule.RetentionScheduleFormatType -eq "Weekly")))
+            if(($MonthlyRetentionScheduleType -eq "Weekly") -or ($DatasourceType -eq "AzureVM" -and $Policy.RetentionPolicy.MonthlySchedule.RetentionScheduleFormatType -eq "Weekly") -or ((($DatasourceType -eq "SAPHANA") -or ($DatasourceType -eq "MSSQL")) -and ($Policy.SubProtectionPolicy[$Index].RetentionPolicy.MonthlySchedule.RetentionScheduleFormatType -eq "Weekly")))
             {
                 $parametersEntered = [System.Collections.ArrayList]::new()
                 if ($MonthlyRetentionDaysOfTheMonth) 
@@ -268,7 +268,7 @@ function ValidateRetentionParameters {
 			    	throw $errormsg
 			    }  
             }
-            elseif( ($MonthlyRetentionScheduleType -eq "Daily") -or ($DataSourceType -eq "AzureVM" -and $Policy.RetentionPolicy.MonthlySchedule.RetentionScheduleFormatType -eq "Daily") -or ((($DatasourceType -eq "SAPHANA") -or ($DatasourceType -eq "MSSQL")) -and ($Policy.SubProtectionPolicy[$Index].RetentionPolicy.MonthlySchedule.RetentionScheduleFormatType -eq "Daily")))
+            elseif( ($MonthlyRetentionScheduleType -eq "Daily") -or ($DatasourceType -eq "AzureVM" -and $Policy.RetentionPolicy.MonthlySchedule.RetentionScheduleFormatType -eq "Daily") -or ((($DatasourceType -eq "SAPHANA") -or ($DatasourceType -eq "MSSQL")) -and ($Policy.SubProtectionPolicy[$Index].RetentionPolicy.MonthlySchedule.RetentionScheduleFormatType -eq "Daily")))
             {
                 $parametersEntered = [System.Collections.ArrayList]::new()
                 if ($MonthlyRetentionDaysOfTheWeek) 
@@ -336,7 +336,7 @@ function ValidateRetentionParameters {
                 }
                 
             }
-            if( ($YearlyRetentionScheduleType -eq "Weekly") -or ($DataSourceType -eq "AzureVM" -and $Policy.RetentionPolicy.YearlySchedule.RetentionScheduleFormatType -eq "Weekly" ) -or ((($DatasourceType -eq "SAPHANA") -or ($DatasourceType -eq "MSSQL")) -and ($Policy.SubProtectionPolicy[$Index].RetentionPolicy.YearlySchedule.RetentionScheduleFormatType -eq "Weekly")))
+            if( ($YearlyRetentionScheduleType -eq "Weekly") -or ($DatasourceType -eq "AzureVM" -and $Policy.RetentionPolicy.YearlySchedule.RetentionScheduleFormatType -eq "Weekly" ) -or ((($DatasourceType -eq "SAPHANA") -or ($DatasourceType -eq "MSSQL")) -and ($Policy.SubProtectionPolicy[$Index].RetentionPolicy.YearlySchedule.RetentionScheduleFormatType -eq "Weekly")))
             {
                 $parametersEntered = [System.Collections.ArrayList]::new()
                 if ($YearlyRetentionDaysOfTheMonth) 
@@ -357,7 +357,7 @@ function ValidateRetentionParameters {
 			    	throw $errormsg
 			    }                
             }
-            elseif(($YearlyRetentionScheduleType -eq "Daily") -or ($DataSourceType -eq "AzureVM" -and $Policy.RetentionPolicy.YearlySchedule.RetentionScheduleFormatType -eq "Daily") -or ((($DatasourceType -eq "SAPHANA") -or ($DatasourceType -eq "MSSQL")) -and ($Policy.SubProtectionPolicy[$Index].RetentionPolicy.YearlySchedule.RetentionScheduleFormatType -eq "Daily")))
+            elseif(($YearlyRetentionScheduleType -eq "Daily") -or ($DatasourceType -eq "AzureVM" -and $Policy.RetentionPolicy.YearlySchedule.RetentionScheduleFormatType -eq "Daily") -or ((($DatasourceType -eq "SAPHANA") -or ($DatasourceType -eq "MSSQL")) -and ($Policy.SubProtectionPolicy[$Index].RetentionPolicy.YearlySchedule.RetentionScheduleFormatType -eq "Daily")))
             {
                 $parametersEntered = [System.Collections.ArrayList]::new()
                 if ($YearlyRetentionDaysOfTheWeek) 
@@ -563,7 +563,6 @@ function ValidateMandatoryFields {
 			         $errormsg = "Daily retention duration in days must not be empty "
 			         throw $errormsg
                  }
-                 #Write-Host "Daily retention duration in days: $($policy.RetentionPolicy.DailySchedule.RetentionDuration.Count)"
              }
 		}
 
@@ -593,19 +592,18 @@ function ValidateMandatoryFields {
 			         $errormsg = "Weekly retention days of the week must not be empty"
 			         throw $errormsg
                  }
-                 if($Policy.RetentionPolicy.WeeklySchedule.RetentionDuration.Count -eq ($null -or 0)) 
+                 if(($Policy.RetentionPolicy.WeeklySchedule.RetentionDuration.Count -eq 0) -or ($Policy.RetentionPolicy.WeeklySchedule.RetentionDuration.Count -eq $null))
                  {
 			          $errormsg = "Weekly retention duration in weeks must not be empty "
 			          throw $errormsg
                  }
-                 #Write-Host "Weekly retention duration in weeks: $($Policy.RetentionPolicy.WeeklySchedule.RetentionDuration.Count)"
-                 #Write-Host "Weekly retention days of the week: $($Policy.RetentionPolicy.WeeklySchedule.DaysOfTheWeek)"
              }
 		}
 		
         # Validate Monthly Retention Parameters
         if ($EnableMonthlyRetention -eq $true) 
         { 
+
             if($manifest.allowedSubProtectionPolicyTypes.Count -gt 2)   #SAPHANA/MSSQL
 			{
                 if(($Policy.SubProtectionPolicy[$Index].RetentionPolicy.MonthlySchedule.RetentionDuration[0].Count -eq $null) -or ($Policy.SubProtectionPolicy[$Index].RetentionPolicy.MonthlySchedule.RetentionDuration[0].Count -eq 0)) 
@@ -703,7 +701,7 @@ function ValidateMandatoryFields {
                     {
                         $errormsg = "Months of the year must not be empty for week based Yearly retention."
 				        throw $errormsg
-                    }                   
+                    }                  
                 }
                 elseif($Policy.SubProtectionPolicy[$Index].RetentionPolicy.YearlySchedule.RetentionScheduleFormatType -eq "Daily")
                 {
@@ -723,6 +721,7 @@ function ValidateMandatoryFields {
                     $errormsg="RetentionScheduleFormatType cannot be null. Please specify the type: daily/weekly"
                     throw $errormsg
                 }
+
 			}
             else    #AzureVM
             {

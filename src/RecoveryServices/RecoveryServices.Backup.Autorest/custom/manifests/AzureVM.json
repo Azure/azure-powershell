@@ -1,4 +1,5 @@
 ﻿{
+  "filterPolicyBasedonWorkloadType": false,
   "allowedSubProtectionPolicyTypes": [ "Full" ],
   "allowedBackupFrequencies": [ "Daily", "Weekly", "Hourly" ],
   "supportsEnhanced": true,
@@ -9,6 +10,8 @@
   "allowedMonthsOfTheYear": [ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ],
   "allowedWeeksOfTheMonth": [ "First", "Second", "Third", "Fourth", "Last" ],
   "IsSmartTieringSupported": true,
+  "containerInquiryType": null,
+  "protectedItemType": "AzureIaaSvmProtectedItem",
   "policySettings": {
     "defaultPolicy": {
       "backupManagementType": "AzureIaasVM",
