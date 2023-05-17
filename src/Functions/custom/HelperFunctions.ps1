@@ -1637,11 +1637,20 @@ Class Runtime
 function GetBuiltInFunctionAppStacksDefinition
 {
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.DoNotExportAttribute()]
-    param ()
-    $warmingMessage = "Failed to get Function App Stack definitions from ARM API. "
-    $warmingMessage += "Please open an issue at https://github.com/Azure/azure-powershell/issues with the following title: "
-    $warmingMessage += "[Az.Functions] Failed to get Function App Stack definitions from ARM API."
-    Write-Warning $warmingMessage
+    param
+    (
+        [Parameter(Mandatory=$false)]
+        [Switch]
+        $DoNotShowWarning
+    )
+
+    if (-not $DoNotShowWarning)
+    {
+        $warmingMessage = "Failed to get Function App Stack definitions from ARM API. "
+        $warmingMessage += "Please open an issue at https://github.com/Azure/azure-powershell/issues with the following title: "
+        $warmingMessage += "[Az.Functions] Failed to get Function App Stack definitions from ARM API."
+        Write-Warning $warmingMessage
+    }
 
     $filePath = "$PSScriptRoot/FunctionsStack/functionAppStacks.json"
     $json = Get-Content -Path $filePath -Raw
@@ -1655,6 +1664,13 @@ function GetFunctionAppStackDefinition
 {
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.DoNotExportAttribute()]
     param ()
+
+    if ($env:FunctionsTestMode)
+    {
+        Write-Debug "$DEBUG_PREFIX Running on test mode. Using built in json file definition."
+        $json = GetBuiltInFunctionAppStacksDefinition -DoNotShowWarning
+        return $json
+    }
 
     # Make sure there is an active Azure session
     $context = Get-AzContext -ErrorAction SilentlyContinue
