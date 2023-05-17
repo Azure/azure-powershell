@@ -51,61 +51,77 @@ https://learn.microsoft.com/powershell/module/az.devcenter/delay-azdevcenterdevd
 #>
 function Delay-AzDevCenterDevDevBoxAction {
   [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.IDevBoxAction], [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.IDevBoxActionDelayResult])]
-  [CmdletBinding(PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
+  [CmdletBinding(DefaultParameterSetName = 'Delay1', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
   param(
-    [Parameter(ParameterSetName = 'DelayByDevCenter', Mandatory)]
-    [Parameter(ParameterSetName = 'Delay1ByDevCenter', Mandatory)]
-    [Parameter(ParameterSetName = 'DelayViaIdentityByDevCenter', Mandatory)]
+    [Parameter(ParameterSetName = 'Delay', Mandatory)]
+    [Parameter(ParameterSetName = 'Delay1', Mandatory)]
+    [Parameter(ParameterSetName = 'DelayViaIdentity', Mandatory)]
+    [Parameter(ParameterSetName = 'DelayViaIdentity1', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Uri')]
+    [System.String]
+    # The DevCenter-specific URI to operate on.
+    ${Endpoint},
+
     [Parameter(ParameterSetName = 'DelayViaIdentity1ByDevCenter', Mandatory)]
+    [Parameter(ParameterSetName = 'DelayViaIdentityByDevCenter', Mandatory)]
+    [Parameter(ParameterSetName = 'Delay1ByDevCenter', Mandatory)]
+    [Parameter(ParameterSetName = 'DelayByDevCenter', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Uri')]
     [System.String]
     # The DevCenter upon which to execute operations.
     ${DevCenter},
 
+    [Parameter(ParameterSetName = 'Delay', Mandatory)]
     [Parameter(ParameterSetName = 'DelayByDevCenter', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
     [System.String]
     # The name of an action that will take place on a Dev Box.
     ${ActionName},
 
-    [Parameter(ParameterSetName = 'DelayByDevCenter', Mandatory)]
+    [Parameter(ParameterSetName = 'Delay', Mandatory)]
+    [Parameter(ParameterSetName = 'Delay1', Mandatory)]
     [Parameter(ParameterSetName = 'Delay1ByDevCenter', Mandatory)]
+    [Parameter(ParameterSetName = 'DelayByDevCenter', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
     [System.String]
     # The name of a Dev Box.
     ${DevBoxName},
 
-    [Parameter(ParameterSetName = 'DelayByDevCenter', Mandatory)]
+    [Parameter(ParameterSetName = 'Delay', Mandatory)]
+    [Parameter(ParameterSetName = 'Delay1', Mandatory)]
     [Parameter(ParameterSetName = 'Delay1ByDevCenter', Mandatory)]
+    [Parameter(ParameterSetName = 'DelayByDevCenter', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
     [System.String]
     # The DevCenter Project upon which to execute operations.
     ${ProjectName},
 
-    [Parameter(ParameterSetName = 'DelayByDevCenter', Mandatory)]
-    [Parameter(ParameterSetName = 'Delay1ByDevCenter', Mandatory)]
+    [Parameter(ParameterSetName = 'Delay')]
+    [Parameter(ParameterSetName = 'Delay1')]
+    [Parameter(ParameterSetName = 'Delay1ByDevCenter')]
+    [Parameter(ParameterSetName = 'DelayByDevCenter')]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.DefaultInfo(Script = '"me"')]
     [System.String]
     # The AAD object id of the user.
     # If value is 'me', the identity is taken from the authentication context.
     ${UserId},
 
-    [Parameter(ParameterSetName = 'DelayViaIdentityByDevCenter', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName = 'DelayViaIdentity', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName = 'DelayViaIdentity1', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName = 'DelayViaIdentity1ByDevCenter', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName = 'DelayViaIdentityByDevCenter', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity]
     # Identity Parameter
     # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
-    [Parameter(ParameterSetName = 'DelayByDevCenter', Mandatory)]
-    [Parameter(ParameterSetName = 'Delay1ByDevCenter', Mandatory)]
-    [Parameter(ParameterSetName = 'DelayViaIdentityByDevCenter', Mandatory)]
-    [Parameter(ParameterSetName = 'DelayViaIdentity1ByDevCenter', Mandatory)]
+    [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Query')]
-    [System.DateTime]
-    # The time to delay the Dev Box action or actions until.
-    ${Until},
+    [System.TimeSpan]
+    # The delayed timespan from the scheduled action time. Format HH:MM.
+    ${DelayTime},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -155,12 +171,26 @@ function Delay-AzDevCenterDevDevBoxAction {
     # Use the default credentials for the proxy
     ${ProxyUseDefaultCredentials}
   )
-
   process {
-    $Endpoint = GetEndpointFromResourceGraph -DevCenter $DevCenter -Project $ProjectName
-    $null = $PSBoundParameters.Add("Endpoint", $Endpoint)
-    $null = $PSBoundParameters.Remove("DevCenter")
+    if (-not $PSBoundParameters.ContainsKey('Endpoint')) {
+      $Endpoint = GetEndpointFromResourceGraph -DevCenter $DevCenter -Project $ProjectName
+      $null = $PSBoundParameters.Add("Endpoint", $Endpoint)
+      $null = $PSBoundParameters.Remove("DevCenter")
 
-    Az.DevCenter\Delay-AzDevCenterDevDevBoxAction @PSBoundParameters
+    }
+
+    if (-not $PSBoundParameters.ContainsKey('ActionName')) {
+      $Until = GetDelayedActionTimeFromAllActions -Endpoint $Endpoint -Project $ProjectName `
+        -DevBoxName $DevBoxName -DelayTime $DelayTime -UserId $UserId
+    }
+    else {
+      $Until = GetDelayedActionTimeFromActionName -ActionName $ActionName -Endpoint $Endpoint `
+        -Project $ProjectName -DevBoxName $DevBoxName -DelayTime $DelayTime -UserId $UserId
+    }
+
+    $null = $PSBoundParameters.Add("Until", $Until)
+    $null = $PSBoundParameters.Remove("DelayTime")
+
+    Az.DevCenter.internal\Delay-AzDevCenterDevDevBoxAction @PSBoundParameters
   }
 }

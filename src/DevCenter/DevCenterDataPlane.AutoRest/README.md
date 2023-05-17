@@ -90,6 +90,10 @@ directive:
       subject: Schedule
     hide: true
   - where:
+      verb: Delay
+      subject: DevBoxAction
+    hide: true
+  - where:
       subject: ^(.*)
     set:
       subject-prefix: DevCenterDev
