@@ -72,7 +72,7 @@
     )
 
     process
-    {
+    {           
         $parameterSetName = $PsCmdlet.ParameterSetName
         
         $containerName = ""
@@ -82,7 +82,7 @@
         else{
             $containerName = ($ResourceId -split "/")[-1]
         }
-
+        
         # confirm:$false/ force  
         #$containerType - workload type 
         #$backupManagementType
@@ -131,7 +131,7 @@
         $PSBoundParameters.Add('VaultName', $VaultName)
 
         $protectableContainers = Az.RecoveryServices.Internal\Get-AzRecoveryServicesProtectableContainer @PSBoundParameters | Where-Object { ($_.Name -split ";")[-1] -eq $containerName -or $_.Name -eq $containerName }
-        
+
         $null = $PSBoundParameters.Remove('Filter')
 
         if($protectableContainers -ne $null -or $Container -ne $null){
@@ -151,39 +151,44 @@
             $protectionContainerResource.Property = $property
 
             # register container
-            $registerOperationResponse = $null            
+            $registerOperationResponse = $null
             $PSBoundParameters.Add('ContainerName', $containerFullName)
             $PSBoundParameters.Add('Parameter', $protectionContainerResource)
             $PSBoundParameters.Add('NoWait', $true)
 
+            # TODO: remove
+            Write-Debug "ContainerType: $($protectionContainerResource.ContainerType)"
+            Write-Debug "Type: $($protectionContainerResource.Property.GetType())"
+            Write-Debug "ContainerType: $($protectionContainerResource.Property.ContainerType)"
+            
             $registerOperationResponse = Az.RecoveryServices.Internal\Register-AzRecoveryServicesProtectionContainer @PSBoundParameters
 
-            $null = $PSBoundParameters.Remove('ContainerName')
-            $null = $PSBoundParameters.Remove('FabricName')
+            $null = $PSBoundParameters.Remove('ContainerName')            
             $null = $PSBoundParameters.Remove('Parameter')
             $null = $PSBoundParameters.Remove('NoWait')
+            $null = $PSBoundParameters.Remove('FabricName')
 
-             $null = $PSBoundParameters.Remove('SubscriptionId')
+            $null = $PSBoundParameters.Remove('SubscriptionId')
             $null = $PSBoundParameters.Remove('ResourceGroupName')
             $null = $PSBoundParameters.Remove('VaultName')
             $PSBoundParameters.Add('Target', $registerOperationResponse.Target)
             $PSBoundParameters.Add('RefreshAfter', 30)
 
-            $operationStatus = GetOperationStatus @PSBoundParameters    
+            $operationStatus = GetOperationStatus @PSBoundParameters
 
             if($operationStatus -ne "Succeeded"){
-                $errormsg= "Register container operation failed with operationStatus: $operationStatus"
+                $errormsg= "Register container operation failed with Status: $operationStatus"
                 throw $errormsg
             }
         }
         else{
-            # throw error
+            # throw error 
             $errormsg= "The specified datasource is already registered with the given recovery services vault"
             throw $errormsg
         }
 
         # List containers
-        $registeredContainer = $null        
+        $registeredContainer = $null
         $PSBoundParameters.Add('ContainerType', 'AzureVMAppContainer')
         $PSBoundParameters.Add('DatasourceType', $DatasourceType)
 
@@ -193,11 +198,12 @@
         if($hasSubscriptionId){
             $PSBoundParameters.Add('SubscriptionId', $SubscriptionId)
         }
+
         $PSBoundParameters.Add('ResourceGroupName', $ResourceGroupName)
         $PSBoundParameters.Add('VaultName', $VaultName)
 
         $registeredContainer = Get-AzRecoveryServicesBackupContainer @PSBoundParameters | Where-Object { $_.Name -eq $containerFullName }
-
+                
         $registeredContainer
     }
 }

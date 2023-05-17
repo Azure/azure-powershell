@@ -1,0 +1,42 @@
+{
+  "resourceType": "locations",
+  "apiVersion": "2023-02-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.recoveryservices"
+  },
+  "commands": [
+    {
+      "name": "Get-AzRecoveryServicesBackupStatus",
+      "description": "Get the container backup status",
+      "path": "/Subscriptions/{subscriptionId}/providers/Microsoft.RecoveryServices/locations/{azureRegion}/backupStatus",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupstatus"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-AzureRegion <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get the container backup status",
+          "parameters": [
+            {
+              "name": "-AzureRegion",
+              "value": "[Path.azureRegion]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

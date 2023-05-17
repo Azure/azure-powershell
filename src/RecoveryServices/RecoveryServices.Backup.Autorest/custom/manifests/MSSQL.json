@@ -12,6 +12,10 @@
   "IsSmartTieringSupported": true,
   "containerInquiryType": "SQL",
   "protectedItemType": "AzureVMWorkloadSqlDatabaseProtectedItem",
+  "protectedItemResourceType": "Microsoft.Compute/virtualMachines",
+  "classicComputeProtectedItemResourceType": "Microsoft.ClassicCompute/virtualMachines",
+  "allowSelectiveDiskBackup": false,
+  "validateProtectedItemsCount": false,
   "policySettings": {
     "defaultPolicy": {
       "backupManagementType": "AzureWorkload",

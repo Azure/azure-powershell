@@ -11,7 +11,7 @@ function Get-DatasourceType {
         if ($WorkloadType -eq "SAPHanaDatabase") {
             return "SAPHANA"
         }
-        elseif ($WorkloadType -eq "SQLDataBase") {
+        elseif ($WorkloadType -match "SQL") { # -eq "SQLDataBase") {
             return "MSSQL"
         }
     }
@@ -109,7 +109,7 @@ function GetDatasourceTypeFromPolicy {
     }
 }
 
-# Summary: takes OerationRepsonse.Target as input, tracks the operationStatus to Success/Failure
+# Summary: takes OerationRepsonse.Target as input, tracks the /backupstorageconfig/vaultstorageconfig/operationStatus to Success/Failure
 function GetOperationStatus {
     [Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.DoNotExportAttribute()]
 
@@ -148,5 +148,56 @@ function GetOperationStatus {
         $operationStatus = (Get-AzRecoveryServicesOperationStatus @PSBoundParameters).Status
 
         return $operationStatus
+    }
+}
+
+# Summary: takes OerationRepsonse.Target as input, tracks the backupOperations operationStatus to Success/Failure
+function GetProtectedItemOperationStatus {
+    [Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.DoNotExportAttribute()]
+
+    param(
+        [Parameter(Mandatory=$true)]
+        [System.String]
+        $Target,
+
+        [Parameter(Mandatory=$false)]
+        [System.String]
+        $RefreshAfter = 10,
+
+        [Parameter(Mandatory=$false)]
+        [ref]$JobId
+    )
+
+    process {
+        
+        $operationId = $Target.Split("/")[-1].Split("?")[0]
+        $resourceGroupName = Get-ResourceGroupNameFromArmId -Id $Target
+        $vaultName = Get-VaultNameFromArmId -Id $Target
+        $subscriptionId = Get-SbscriptionIdFromArmId -Id $Target
+
+        $null = $PSBoundParameters.Remove('Target')
+        $null = $PSBoundParameters.Remove('RefreshAfter')
+        $hasJobId = $PSBoundParameters.Remove('JobId')
+
+        $PSBoundParameters.Add('OperationId', $operationId)
+        $PSBoundParameters.Add('ResourceGroupName', $resourceGroupName)
+        $PSBoundParameters.Add('SubscriptionId', $subscriptionId)
+        $PSBoundParameters.Add('VaultName', $vaultName)
+
+        # operationStatus
+        While((Get-AzRecoveryServicesBackupOperationStatuses @PSBoundParameters).Status -eq "InProgress"){
+
+            Write-Debug "Polling after $RefreshAfter seconds"
+	        Start-Sleep -Seconds $RefreshAfter
+        }
+
+        $operationStatus = (Get-AzRecoveryServicesBackupOperationStatuses @PSBoundParameters)
+
+        if($hasJobId){
+            Write-Debug "JobId : $($operationStatus.Property.JobId)"
+            $JobId.Value = $operationStatus.Property.JobId
+        }
+
+        return $operationStatus.Status
     }
 }

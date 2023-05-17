@@ -31,3 +31,47 @@ function GetBackupManagementTypeFromContainerType {
         return $null
     }    
 }
+
+# Summary: Invokes the refresh operation on protection container
+function Invoke-AzRecoveryServicesRefreshContainer {
+    [Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.DoNotExportAttribute()]
+
+    param(
+        [Parameter(Mandatory=$false)]
+        [System.String]
+        $SubscriptionId,
+
+        [Parameter(Mandatory=$true)]
+        [System.String]
+        $ResourceGroupName,
+
+        [Parameter(Mandatory=$true)]
+        [System.String]
+        $VaultName,
+
+        [Parameter(Mandatory=$true)]
+        [System.String]
+        $Filter
+    )
+
+    process {
+        $PSBoundParameters.Add('FabricName', 'Azure')
+        $PSBoundParameters.Add('NoWait', $true)
+        $refreshOperationResponse = Az.RecoveryServices.Internal\Update-AzRecoveryServicesProtectionContainer @PSBoundParameters
+        
+        $null = $PSBoundParameters.Remove('NoWait')
+        $null = $PSBoundParameters.Remove('FabricName')
+        $null = $PSBoundParameters.Remove('Filter')
+        $null = $PSBoundParameters.Remove('VaultName')
+        $null = $PSBoundParameters.Remove('ResourceGroupName')
+        $null = $PSBoundParameters.Remove('SubscriptionId')
+        $PSBoundParameters.Add('Target', $refreshOperationResponse.Target)
+        $operationStatus = GetOperationStatus @PSBoundParameters
+        if($operationStatus -ne "Succeeded"){
+            $errormsg= "Refresh container operation failed with operationStatus: $operationStatus"
+            throw $errormsg
+        }
+
+        return $operationStatus
+    }
+}

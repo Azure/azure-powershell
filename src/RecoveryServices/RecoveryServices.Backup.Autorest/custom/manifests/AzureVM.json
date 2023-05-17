@@ -11,7 +11,11 @@
   "allowedWeeksOfTheMonth": [ "First", "Second", "Third", "Fourth", "Last" ],
   "IsSmartTieringSupported": true,
   "containerInquiryType": null,
-  "protectedItemType": "AzureIaaSvmProtectedItem",
+  "protectedItemType": "AzureIaaSComputeVmprotectedItem",
+  "protectedItemResourceType": "Microsoft.Compute/virtualMachines",
+  "classicComputeProtectedItemResourceType": "Microsoft.ClassicCompute/virtualMachines",
+  "allowSelectiveDiskBackup": true,
+  "validateProtectedItemsCount": true,
   "policySettings": {
     "defaultPolicy": {
       "backupManagementType": "AzureIaasVM",

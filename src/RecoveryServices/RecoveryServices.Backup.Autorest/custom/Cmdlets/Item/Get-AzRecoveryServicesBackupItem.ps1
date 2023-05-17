@@ -37,7 +37,7 @@
         [Parameter(Mandatory=$false, HelpMessage='Specifies the name of backup item. For file share, specify the unique ID of protected file share.')]
         [System.String]
         ${Name},
-                
+
         [Parameter(Mandatory=$false, HelpMessage='Specifies the overall protection status of an item in the container. The acceptable values for this parameter are: Healthy, Unhealthy')]
         [ValidateSet("Healthy", "Unhealthy", ErrorMessage = "Invalid value for ProtectionStatus. Please provide a valid protection status. Valid values are 'Healthy' and 'Unhealthy'.")]
         [System.String]
@@ -130,7 +130,8 @@
             $itemsList = $itemsList | Where-Object { $_.PolicyId.ToLower() -match $Policy.Id.ToLower() }
         }
         elseif($parameterSetName -eq "GetItemsForContainer"){
-            $itemsList = $itemsList | Where-Object { $_.ContainerName.ToLower() -match $Container.Name.ToLower() }
+            $containerNameLower = $Container.Name.ToLower()
+            $itemsList = $itemsList | Where-Object { $_.ContainerName.ToLower() -match $containerNameLower -or $containerNameLower -match $_.ContainerName.ToLower()}
         }
         
         # Item Name filter - match with protected item URI
@@ -173,7 +174,7 @@
             $PSBoundParameters.Add('FabricName', 'Azure')
             $PSBoundParameters.Add('Name', $item.Name)
             $PSBoundParameters.Add('Filter', "expand eq 'extendedinfo'")
-
+            
             foreach($item in $itemsList){
                 $containerName = Get-ContainerNameFromArmId -Id $item.Id
 
@@ -190,7 +191,7 @@
             # filter : BackupManagementType = MAB 
             # fetch from service 
             # fetch the container name from ITEM ARM Id and match with the given container name       
-        
+                    
         $itemsList
     }
 }

@@ -1,0 +1,57 @@
+{
+  "resourceType": "vaults/backupPolicies/operationResults",
+  "apiVersion": "2023-02-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.recoveryservices"
+  },
+  "commands": [
+    {
+      "name": "Get-AzRecoveryServicesProtectionPolicyOperationResult",
+      "description": "Provides the result of an operation.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupPolicies/{policyName}/operationResults/{operationId}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesprotectionpolicyoperationresult"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-OperationId <String>",
+              "-PolicyName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]",
+              "-VaultName <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Provides the result of an operation.",
+          "parameters": [
+            {
+              "name": "-OperationId",
+              "value": "[Path.operationId]"
+            },
+            {
+              "name": "-PolicyName",
+              "value": "[Path.policyName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            },
+            {
+              "name": "-VaultName",
+              "value": "[Path.vaultName]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

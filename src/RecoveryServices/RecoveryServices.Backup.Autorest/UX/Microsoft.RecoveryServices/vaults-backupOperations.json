@@ -1,0 +1,52 @@
+{
+  "resourceType": "vaults/backupOperations",
+  "apiVersion": "2023-02-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.recoveryservices"
+  },
+  "commands": [
+    {
+      "name": "Get-AzRecoveryServicesBackupOperationStatuses",
+      "description": "Fetches the status of an operation such as triggering a backup, restore.\nThe status can be in progress, completed\\r\\nor failed.\nYou can refer to the OperationStatus enum for all the possible states of an operation.\nSome operations\\r\\ncreate jobs.\nThis method returns the list of jobs when the operation is complete.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupOperations/{operationId}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupoperationstatuses"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-OperationId <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]",
+              "-VaultName <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Fetches the status of an operation such as triggering a backup, restore. The status can be in progress, completed\\r\\nor failed. You can refer to the OperationStatus enum for all the possible states of an operation. Some operations\\r\\ncreate jobs. This method returns the list of jobs when the operation is complete.",
+          "parameters": [
+            {
+              "name": "-OperationId",
+              "value": "[Path.operationId]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            },
+            {
+              "name": "-VaultName",
+              "value": "[Path.vaultName]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
