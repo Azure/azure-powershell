@@ -22,7 +22,7 @@
 ## Upcoming Release
 * Added new switch parameter `OSImageScheduledEventEnabled` and string parameter `OSImageScheduledEventNotBeforeTimeoutInMinutes` to the cmdlets `New-AzVmssConfig` and `Update-AzVmss`.
 * Fixed an issue that `Add-AzVhd` throws `FileNotFoundException` on Windows PowerShell. [#21321]
-* Removed the `NextLink` parameter and parameter set from the `Get-AzVM` cmdelt.
+* Removed the `NextLink` parameter and parameter set from the `Get-AzVM` cmdlet.
 
 
 ## Version 5.7.1
