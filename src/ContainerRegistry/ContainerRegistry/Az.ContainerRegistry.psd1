@@ -76,22 +76,7 @@ NestedModules = @('Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.dll')
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'New-AzContainerRegistry', 'Get-AzContainerRegistry', 
-               'Update-AzContainerRegistry', 'Remove-AzContainerRegistry', 
-               'Get-AzContainerRegistryCredential', 
-               'Update-AzContainerRegistryCredential', 
-               'Test-AzContainerRegistryNameAvailability', 
-               'Get-AzContainerRegistryReplication', 
-               'New-AzContainerRegistryReplication', 
-               'Remove-AzContainerRegistryReplication', 
-               'New-AzContainerRegistryWebhook', 'Get-AzContainerRegistryWebhook', 
-               'Update-AzContainerRegistryWebhook', 
-               'Test-AzContainerRegistryWebhook', 
-               'Remove-AzContainerRegistryWebhook', 
-               'Get-AzContainerRegistryWebhookEvent', 
-               'Import-AzContainerRegistryImage', 'Get-AzContainerRegistryUsage', 
-               'Set-AzContainerRegistryNetworkRuleSet', 
-               'New-AzContainerRegistryNetworkRule', 'Connect-AzContainerRegistry', 
+CmdletsToExport = 'Connect-AzContainerRegistry', 
                'Get-AzContainerRegistryRepository', 
                'Remove-AzContainerRegistryRepository', 
                'Update-AzContainerRegistryRepository', 
