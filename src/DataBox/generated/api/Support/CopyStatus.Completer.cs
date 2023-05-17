@@ -70,6 +70,34 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support
             {
                 yield return new global::System.Management.Automation.CompletionResult("'UnsupportedData'", "UnsupportedData", global::System.Management.Automation.CompletionResultType.ParameterValue, "UnsupportedData");
             }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "DriveNotReceived".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'DriveNotReceived'", "DriveNotReceived", global::System.Management.Automation.CompletionResultType.ParameterValue, "DriveNotReceived");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "UnsupportedDrive".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'UnsupportedDrive'", "UnsupportedDrive", global::System.Management.Automation.CompletionResultType.ParameterValue, "UnsupportedDrive");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "OtherServiceError".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'OtherServiceError'", "OtherServiceError", global::System.Management.Automation.CompletionResultType.ParameterValue, "OtherServiceError");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "OtherUserError".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'OtherUserError'", "OtherUserError", global::System.Management.Automation.CompletionResultType.ParameterValue, "OtherUserError");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "DriveNotDetected".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'DriveNotDetected'", "DriveNotDetected", global::System.Management.Automation.CompletionResultType.ParameterValue, "DriveNotDetected");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "DriveCorrupted".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'DriveCorrupted'", "DriveCorrupted", global::System.Management.Automation.CompletionResultType.ParameterValue, "DriveCorrupted");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "MetadataFilesModifiedOrRemoved".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'MetadataFilesModifiedOrRemoved'", "MetadataFilesModifiedOrRemoved", global::System.Management.Automation.CompletionResultType.ParameterValue, "MetadataFilesModifiedOrRemoved");
+            }
         }
     }
 }

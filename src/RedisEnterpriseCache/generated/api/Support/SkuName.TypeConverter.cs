@@ -6,9 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support
 {
 
-    /// <summary>
-    /// The type of RedisEnterprise cluster to deploy. Possible values: (Enterprise_E10, EnterpriseFlash_F300 etc.)
-    /// </summary>
+    /// <summary>TypeConverter implementation for SkuName.</summary>
     public partial class SkuNameTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

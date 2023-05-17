@@ -55,7 +55,7 @@ https://learn.microsoft.com/powershell/module/az.dataprotection/edit-azdataprote
 #>
 function Edit-AzDataProtectionPolicyTriggerClientObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202301.IBackupPolicy])]
-[CmdletBinding(PositionalBinding=$false)]
+[CmdletBinding(DefaultParameterSetName='RemoveBackupSchedule', PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
@@ -64,7 +64,13 @@ param(
     # To construct, see NOTES section for POLICY properties and create a hash table.
     ${Policy},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='RemoveBackupSchedule', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Specifies whether to remove the backup Schedule.
+    ${RemoveSchedule},
+
+    [Parameter(ParameterSetName='ModifyBackupSchedule', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
     [System.String[]]
     # Schedule to be associated to backup policy.
@@ -97,7 +103,8 @@ begin {
         }
 
         $mapping = @{
-            __AllParameterSets = 'Az.DataProtection.custom\Edit-AzDataProtectionPolicyTriggerClientObject';
+            RemoveBackupSchedule = 'Az.DataProtection.custom\Edit-AzDataProtectionPolicyTriggerClientObject';
+            ModifyBackupSchedule = 'Az.DataProtection.custom\Edit-AzDataProtectionPolicyTriggerClientObject';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
