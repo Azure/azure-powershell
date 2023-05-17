@@ -41,9 +41,14 @@ steps:
   displayName: Setup global.json
   inputs:
     targetType: inline
-    script: |
-      $SdkVersion=(dotnet --list-sdks | Select-String '[3,4,5].\\d.\\d{3}').Matches[0].Value; dotnet new globaljson --sdk-version $SdkVersion --force
-      Write-Host `$PSVersionTable
+    script: "$SdkVersion=(dotnet --list-sdks | Select-String '[3,4,5].\\d.\\d{3}').Matches[0].Value; dotnet new globaljson --sdk-version $SdkVersion --force"
+    pwsh: true
+
+- task: PowerShell@2
+  displayName: Show PowerShell Version
+  inputs:
+    targetType: inline
+    script: "Write-Host $PSVersionTable"
     pwsh: true
     
 - task: DotNetCoreCLI@2
