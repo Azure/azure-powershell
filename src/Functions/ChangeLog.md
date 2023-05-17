@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Removed support to create v3 function apps (Functions v3 reached EOL on December, 2022) [#20838]
+* Enabled using ARM API to get stacks information for function app creation [#14682][#20009]
+* Added support to create dotnet-isolated function apps [#16349]
+* Added support for custom handler function apps [#12542]
 
 ## Version 4.0.6
 * Added warning logs to detect Az context switching in Get-AzFunctionApp
