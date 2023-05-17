@@ -31,7 +31,7 @@ For information on how to develop for `Az.Databricks`, see [how-to.md](how-to.md
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: e0a8a42064db5ad298a3f660805d65283c07aca2
+branch: 96c583e9d5d09c51fe8a21843180c51b98b4a7db
 require:
   - $(this-folder)/../readme.azure.noprofile.md
   - $(repo)/specification/databricks/resource-manager/readme.md
@@ -163,19 +163,6 @@ directive:
     set:
       parameter-name: VnetAddressPrefix
 
-  - where:
-      parameter-name: DatabrickAddressSpaceAddressPrefix
-    set:
-      parameter-name: DatabricksAddressSpacePrefix
-  - where:
-      parameter-name: RemoteAddressSpaceAddressPrefix
-    set:
-      parameter-name: RemoteAddressSpacePrefix
-  - where:
-      parameter-name: DatabrickVirtualNetworkId
-    set:
-      parameter-name: DatabricksVirtualNetworkId
-
   # Update property names related to CMK
   - where:
       model-name: Workspace
@@ -213,22 +200,19 @@ directive:
     set:
       property-name: EnableNoPublicIP
 
-  # Rename parameters of Set VNetPeering cmdlet
+  # Rename parameters of VNetPeering cmdlet
   - where:
-      model-name: VirtualNetworkPeering
-      property-name: DatabrickAddressSpaceAddressPrefix
+      parameter-name: DatabrickAddressSpaceAddressPrefix
     set:
-      property-name: DatabricksAddressSpacePrefix
+      parameter-name: DatabricksAddressSpacePrefix
   - where:
-      model-name: VirtualNetworkPeering
-      property-name: RemoteAddressSpaceAddressPrefix
+      parameter-name: RemoteAddressSpaceAddressPrefix
     set:
-      property-name: RemoteAddressSpacePrefix
+      parameter-name: RemoteAddressSpacePrefix
   - where:
-      model-name: VirtualNetworkPeering
-      property-name: DatabrickVirtualNetworkId
+      parameter-name: DatabrickVirtualNetworkId
     set:
-      property-name: DatabricksVirtualNetworkId
+      parameter-name: DatabricksVirtualNetworkId
 
   - where:
       subject: AccessConnector

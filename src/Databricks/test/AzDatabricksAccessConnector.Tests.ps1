@@ -44,7 +44,7 @@ Describe 'AzDatabricksAccessConnector' {
 
     It 'UpdateExpanded' {
         { 
-            $config = Update-AzDatabricksAccessConnector -ResourceGroupName $env.resourceGroup -Name $env.accessConnectorName1 -Tag @{'key'='value'}
+            $config = Update-AzDatabricksAccessConnector -ResourceGroupName $env.resourceGroup -Name $env.accessConnectorName1 -Tag @{'key' = 'value' }
             $config.Name | Should -Be $env.accessConnectorName1
         } | Should -Not -Throw
     }

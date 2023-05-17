@@ -44,7 +44,7 @@ Describe 'AzDatabricksWorkspace' {
 
     It 'UpdateExpanded' {
         {
-            $config = Update-AzDatabricksWorkspace -Name $env.workSpaceName2 -ResourceGroupName $env.resourceGroup -Tag @{"key"="value"}
+            $config = Update-AzDatabricksWorkspace -Name $env.workSpaceName2 -ResourceGroupName $env.resourceGroup -Tag @{"key" = "value" }
             $config.Name | Should -Be $env.workSpaceName2
         } | Should -Not -Throw
     }
@@ -52,7 +52,7 @@ Describe 'AzDatabricksWorkspace' {
     It 'UpdateViaIdentityExpanded' {
         {
             $config = Get-AzDatabricksWorkspace -Name $env.workSpaceName2 -ResourceGroupName $env.resourceGroup
-            $config = Update-AzDatabricksWorkspace -InputObject $config -Tag @{"key"="value"}
+            $config = Update-AzDatabricksWorkspace -InputObject $config -Tag @{"key" = "value" }
             $config.Name | Should -Be $env.workSpaceName2
         } | Should -Not -Throw
     }

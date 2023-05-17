@@ -6,14 +6,19 @@ function RandomString([bool]$allChars, [int32]$len) {
     }
 }
 $env = @{}
+if ($UsePreviousConfigForRecord) {
+    $previousEnv = Get-Content (Join-Path $PSScriptRoot 'env.json') | ConvertFrom-Json
+    $previousEnv.psobject.properties | Foreach-Object { $env[$_.Name] = $_.Value }
+}
+# Add script method called AddWithCache to $env, when useCache is set true, it will try to get the value from the $env first.
+# example: $val = $env.AddWithCache('key', $val, $true)
+$env | Add-Member -Type ScriptMethod -Value { param( [string]$key, [object]$val, [bool]$useCache) if ($this.Contains($key) -and $useCache) { return $this[$key] } else { $this[$key] = $val; return $val } } -Name 'AddWithCache'
 function setupEnv() {
-    Write-Host -ForegroundColor Yellow "WARNING: Need to use Az.KeyVault module, Please check if installed Az.KeyVault(2.0.0 or Greater)."
-    Import-Module -Name Az.KeyVault
     # Preload subscriptionId and tenant from context, which will be used in test
     # as default. You could change them if needed.
     $env.SubscriptionId = (Get-AzContext).Subscription.Id
     $env.Tenant = (Get-AzContext).Tenant.Id
-    
+
     $workSpaceName1 = RandomString -allChars $false -len 6
     $workSpaceName2 = RandomString -allChars $false -len 6
     $workSpaceName3 = RandomString -allChars $false -len 6
@@ -71,6 +76,7 @@ function setupEnv() {
     write-host "start to create Databricks env"
     New-AzDatabricksWorkspace -Name $env.workSpaceName3 -ResourceGroupName $env.resourceGroup -Location $env.location -Sku premium
 
+    # For any resources you created for test, you should add it to $env here.
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {
         $envFile = 'localEnv.json'
@@ -79,7 +85,5 @@ function setupEnv() {
 }
 function cleanupEnv() {
     # Clean resources you create for testing
-    # Removing resourcegroup will clean all the resources created for testing.
     # Remove-AzResourceGroup -Name $env.resourceGroup
 }
-

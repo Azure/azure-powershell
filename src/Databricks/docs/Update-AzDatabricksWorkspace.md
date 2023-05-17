@@ -73,16 +73,14 @@ azps-databricks-workspace-t2 azps_test_gp_db   eastus   /subscriptions/{subId}/r
 ```
 
 Enabling encryption on a Databricks workspace takes three steps:
-```
 1.Please make sure that KeyVault has Purge protection enabled.
 2.Update the workspace with `-PrepareEncryption` (if it was not created so).
 3.Find `StorageAccountIdentityPrincipalId` in the output of the last step and grant key permissions to the principal.
 4.Update the workspace again to fill in information about the encryption key:
-    - `-EncryptionKeySource`
-    - `-EncryptionKeyVaultUri`
-    - `-EncryptionKeyName`
-    - `-EncryptionKeyVersion`
-```
+   - `-EncryptionKeySource`
+   - `-EncryptionKeyVaultUri`
+   - `-EncryptionKeyName`
+   - `-EncryptionKeyVersion`
 
 ### Example 3: Disable encryption on a Databricks workspace.
 ```powershell

@@ -222,13 +222,13 @@ function Update-AzDatabricksVNetPeering {
                 $vnetPeering.AllowVirtualNetworkAccess = $AllowVirtualNetworkAccess
             }
             if ($hasDatabricksAddressSpacePrefix) {
-                $vnetPeering.DatabricksAddressSpacePrefix = $DatabricksAddressSpacePrefix
+                $vnetPeering.DatabrickAddressSpaceAddressPrefix = $DatabricksAddressSpacePrefix
             }
             if ($hasDatabricksVirtualNetworkId) {
-                $vnetPeering.DatabricksVirtualNetworkId = $DatabricksVirtualNetworkId
+                $vnetPeering.DatabrickVirtualNetworkId = $DatabricksVirtualNetworkId
             }
             if ($hasRemoteAddressSpacePrefix) {
-                $vnetPeering.RemoteAddressSpacePrefix = $RemoteAddressSpacePrefix
+                $vnetPeering.RemoteAddressSpaceAddressPrefix = $RemoteAddressSpacePrefix
             }
             if ($hasRemoteVirtualNetworkId) {
                 $vnetPeering.RemoteVirtualNetworkId = $RemoteVirtualNetworkId
