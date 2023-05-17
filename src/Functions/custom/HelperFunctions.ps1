@@ -1662,7 +1662,7 @@ function GetFunctionAppStackDefinition
     {
         $errorMessage = "There is no active Azure PowerShell session. Please run 'Connect-AzAccount'"
         $exception = [System.InvalidOperationException]::New($errorMessage)
-        ThrowTerminatingError -ErrorId "LoginToAzureViaConnectAzAccount"
+        ThrowTerminatingError -ErrorId "LoginToAzureViaConnectAzAccount" `
                               -ErrorMessage $errorMessage `
                               -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
                               -Exception $exception
