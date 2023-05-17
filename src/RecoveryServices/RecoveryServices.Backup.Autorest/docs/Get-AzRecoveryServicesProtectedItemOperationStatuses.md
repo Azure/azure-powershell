@@ -1,0 +1,241 @@
+---
+external help file:
+Module Name: Az.RecoveryServices
+online version: https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesprotecteditemoperationstatuses
+schema: 2.0.0
+---
+
+# Get-AzRecoveryServicesProtectedItemOperationStatuses
+
+## SYNOPSIS
+Fetches the status of an operation such as triggering a backup, restore.
+The status can be in progress, completed\r\nor failed.
+You can refer to the OperationStatus enum for all the possible states of the operation.
+Some operations\r\ncreate jobs.
+This method returns the list of jobs associated with the operation.
+
+## SYNTAX
+
+### Get (Default)
+```
+Get-AzRecoveryServicesProtectedItemOperationStatuses -ContainerName <String> -FabricName <String>
+ -OperationId <String> -ProtectedItemName <String> -ResourceGroupName <String> -VaultName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetViaIdentity
+```
+Get-AzRecoveryServicesProtectedItemOperationStatuses -InputObject <IRecoveryServicesIdentity>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+## DESCRIPTION
+Fetches the status of an operation such as triggering a backup, restore.
+The status can be in progress, completed\r\nor failed.
+You can refer to the OperationStatus enum for all the possible states of the operation.
+Some operations\r\ncreate jobs.
+This method returns the list of jobs associated with the operation.
+
+## EXAMPLES
+
+### Example 1: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
+
+## PARAMETERS
+
+### -ContainerName
+Container name associated with the backup item.
+
+```yaml
+Type: System.String
+Parameter Sets: Get
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+
+```yaml
+Type: System.Management.Automation.PSObject
+Parameter Sets: (All)
+Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FabricName
+Fabric name associated with the backup item.
+
+```yaml
+Type: System.String
+Parameter Sets: Get
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.IRecoveryServicesIdentity
+Parameter Sets: GetViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -OperationId
+OperationID represents the operation whose status needs to be fetched.
+
+```yaml
+Type: System.String
+Parameter Sets: Get
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProtectedItemName
+Backup item name whose details are to be fetched.
+
+```yaml
+Type: System.String
+Parameter Sets: Get
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+The name of the resource group where the recovery services vault is present.
+
+```yaml
+Type: System.String
+Parameter Sets: Get
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+The subscription Id.
+
+```yaml
+Type: System.String[]
+Parameter Sets: Get
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -VaultName
+The name of the recovery services vault.
+
+```yaml
+Type: System.String
+Parameter Sets: Get
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+
+## INPUTS
+
+### Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.IRecoveryServicesIdentity
+
+## OUTPUTS
+
+### Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IOperationStatus
+
+## NOTES
+
+ALIASES
+
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+
+`INPUTOBJECT <IRecoveryServicesIdentity>`: Identity Parameter
+  - `[AzureRegion <String>]`: Azure region to hit Api
+  - `[BackupEngineName <String>]`: Name of the backup management server.
+  - `[ContainerName <String>]`: 
+  - `[FabricName <String>]`: Fabric name associated with the backed up item.
+  - `[Id <String>]`: Resource identity path
+  - `[IntentObjectName <String>]`: Backed up item name whose details are to be fetched.
+  - `[JobName <String>]`: Name of the job whose details are to be fetched.
+  - `[OperationId <String>]`: Operation id
+  - `[PolicyName <String>]`: Backup policy information to be fetched.
+  - `[PrivateEndpointConnectionName <String>]`: The name of the private endpoint connection.
+  - `[ProtectedItemName <String>]`: 
+  - `[RecoveryPointId <String>]`: 
+  - `[ResourceGroupName <String>]`: The name of the resource group where the recovery services vault is present.
+  - `[ResourceGuardProxyName <String>]`: 
+  - `[SubscriptionId <String>]`: The subscription Id.
+  - `[VaultName <String>]`: The name of the recovery services vault.
+
+## RELATED LINKS
+
