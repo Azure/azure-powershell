@@ -153,16 +153,12 @@ function Remove-AzFrontDoorCdnProfile {
         # Use the default credentials for the proxy
         ${ProxyUseDefaultCredentials}
     )
-    
+
     process {
         if ($PSCmdlet.ParameterSetName -eq 'Delete') {
-            if(${SubscriptionId}) {
-                $frontDoorCdnProfile = Get-AzFrontDoorCdnProfile -ResourceGroupName ${ResourceGroupName} -Name ${Name} -SubscriptionId ${SubscriptionId}
-            } else {
-                $frontDoorCdnProfile = Get-AzFrontDoorCdnProfile -ResourceGroupName ${ResourceGroupName} -Name ${Name}
-            }
+            $frontDoorCdnProfile = Get-AzFrontDoorCdnProfile @PSBoundParameters
         } elseif ($PSCmdlet.ParameterSetName -eq 'DeleteViaIdentity') {
-            $frontDoorCdnProfile = Get-AzFrontDoorCdnProfile -InputObject $InputObject
+            $frontDoorCdnProfile = Get-AzFrontDoorCdnProfile @PSBoundParameters
         }else {
             throw "Not supported ParameterSetName."
         }

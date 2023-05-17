@@ -14,7 +14,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Stop-AzFrontDoorCdnProfileMig
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Stop-AzFrontDoorCdnProfileMigration'  {
+Describe 'Stop-AzFrontDoorCdnProfileMigration' -Tag 'LiveOnly' {
     It 'Delete' {
         $subId = $env.SubscriptionId
 

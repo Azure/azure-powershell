@@ -14,7 +14,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Start-AzFrontDoorCdnProfilePr
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Start-AzFrontDoorCdnProfilePrepareMigration' {
+Describe 'Start-AzFrontDoorCdnProfilePrepareMigration'  -Tag 'LiveOnly' {
     It 'MigrateExpanded' {
         $profileSku = "Standard_AzureFrontDoor"
         $migratedProfileName = 'migrated-pstest011'

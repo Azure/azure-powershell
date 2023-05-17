@@ -140,8 +140,10 @@ function Update-AzFrontDoorCdnProfileSku {
     )
     
     process {
-        if(!(Get-Module -ListAvailable -Name Az.FrontDoor)) {
-            throw 'Please install Az.FrontDoor module by entering "Install-Module -Name Az.FrontDoor"'
+        if (!(Get-Module -ListAvailable -Name Az.FrontDoor)) {
+            Write-Host("Starting the install Az.FrontDoor module.")
+            Install-Module -Name Az.FrontDoor
+            # throw 'Please install Az.FrontDoor module by entering "Install-Module -Name Az.FrontDoor".'
         }
         Import-Module -Name Az.FrontDoor
 

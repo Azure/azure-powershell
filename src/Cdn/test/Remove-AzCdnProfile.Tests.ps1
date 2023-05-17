@@ -33,7 +33,7 @@ Describe 'Remove-AzCdnProfile'  {
         $profileSku = "Standard_Microsoft"
         
         Write-Host -ForegroundColor Green "New cdnProfileName"
-        New-AzCdnProfile -SubscriptionId $env.SubscriptionId -SkuName $profileSku -Name $cdnProfileName -ResourceGroupName $env.ResourceGroupName -Location Global
+        New-AzCdnProfile -SkuName $profileSku -Name $cdnProfileName -ResourceGroupName $env.ResourceGroupName -Location Global
 
         Write-Host -ForegroundColor Green "Get cdnProfileName"
         $profileObject = Get-AzCdnProfile -ResourceGroupName $env.ResourceGroupName -Name $cdnProfileName
