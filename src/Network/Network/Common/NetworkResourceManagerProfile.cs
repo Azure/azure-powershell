@@ -1018,9 +1018,13 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<CNM.PSApplicationGatewayWebApplicationFirewallConfiguration, MNM.ApplicationGatewayWebApplicationFirewallConfiguration>();
                 cfg.CreateMap<CNM.PSApplicationGatewayFirewallCondition, MNM.MatchCondition>();
                 cfg.CreateMap<CNM.PSApplicationGatewayFirewallCustomRule, MNM.WebApplicationFirewallCustomRule>();
+                cfg.CreateMap<CNM.PSApplicationGatewayFirewallCustomRuleGroupByUserSession, MNM.GroupByUserSession>();
+                cfg.CreateMap<CNM.PSApplicationGatewayFirewallCustomRuleGroupByVariable, MNM.GroupByVariable>();
                 cfg.CreateMap<CNM.PSApplicationGatewayFirewallMatchVariable, MNM.MatchVariable>();
                 cfg.CreateMap<CNM.PSApplicationGatewayWebApplicationFirewallPolicy, MNM.WebApplicationFirewallPolicy>();
                 cfg.CreateMap<CNM.PSApplicationGatewayFirewallPolicySettings, MNM.PolicySettings>();
+                cfg.CreateMap<CNM.PSApplicationGatewayFirewallPolicyLogScrubbingConfiguration, MNM.PolicySettingsLogScrubbing>();
+                cfg.CreateMap<CNM.PSApplicationGatewayFirewallPolicyLogScrubbingRule, MNM.WebApplicationFirewallScrubbingRules>();
                 cfg.CreateMap<CNM.PSApplicationGatewayFirewallPolicyManagedRules, MNM.ManagedRulesDefinition>();
                 cfg.CreateMap<CNM.PSApplicationGatewayFirewallPolicyManagedRuleSet, MNM.ManagedRuleSet>();
                 cfg.CreateMap<CNM.PSApplicationGatewayFirewallPolicyManagedRuleGroupOverride, MNM.ManagedRuleGroupOverride>();
@@ -1094,9 +1098,13 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<MNM.ApplicationGatewayWebApplicationFirewallConfiguration, CNM.PSApplicationGatewayWebApplicationFirewallConfiguration>();
                 cfg.CreateMap<MNM.MatchCondition, CNM.PSApplicationGatewayFirewallCondition>();
                 cfg.CreateMap<MNM.WebApplicationFirewallCustomRule, CNM.PSApplicationGatewayFirewallCustomRule>();
+                cfg.CreateMap<MNM.GroupByUserSession, CNM.PSApplicationGatewayFirewallCustomRuleGroupByUserSession>();
+                cfg.CreateMap<MNM.GroupByVariable, CNM.PSApplicationGatewayFirewallCustomRuleGroupByVariable>();
                 cfg.CreateMap<MNM.MatchVariable, CNM.PSApplicationGatewayFirewallMatchVariable>();
                 cfg.CreateMap<MNM.WebApplicationFirewallPolicy, CNM.PSApplicationGatewayWebApplicationFirewallPolicy>();
                 cfg.CreateMap<MNM.PolicySettings, CNM.PSApplicationGatewayFirewallPolicySettings>();
+                cfg.CreateMap<MNM.PolicySettingsLogScrubbing, CNM.PSApplicationGatewayFirewallPolicyLogScrubbingConfiguration>();
+                cfg.CreateMap<MNM.WebApplicationFirewallScrubbingRules, CNM.PSApplicationGatewayFirewallPolicyLogScrubbingRule>();
                 cfg.CreateMap<MNM.ManagedRulesDefinition, CNM.PSApplicationGatewayFirewallPolicyManagedRules>();
                 cfg.CreateMap<MNM.ManagedRuleSet, CNM.PSApplicationGatewayFirewallPolicyManagedRuleSet>();
                 cfg.CreateMap<MNM.ManagedRuleGroupOverride, CNM.PSApplicationGatewayFirewallPolicyManagedRuleGroupOverride>();
@@ -1276,6 +1284,21 @@ namespace Microsoft.Azure.Commands.Network
                 // MNM to CNM
                 cfg.CreateMap<MNM.RoutingIntent, CNM.PSRoutingIntent>();
                 cfg.CreateMap<MNM.RoutingPolicy, CNM.PSRoutingPolicy>();
+
+                //// Virtual Hub Route Map
+                // CNM to MNM
+                cfg.CreateMap<CNM.PSRouteMap, MNM.RouteMap>();
+                cfg.CreateMap<CNM.PSRouteMapRule, MNM.RouteMapRule>();
+                cfg.CreateMap<CNM.PSRouteMapRuleCriterion, MNM.Criterion>();
+                cfg.CreateMap<CNM.PSRouteMapRuleAction, MNM.Action>();
+                cfg.CreateMap<CNM.PSRouteMapRuleActionParameter, MNM.Parameter>();
+
+                // MNM to CNM
+                cfg.CreateMap<MNM.RouteMap, CNM.PSRouteMap>();
+                cfg.CreateMap<MNM.RouteMapRule, CNM.PSRouteMapRule>();
+                cfg.CreateMap<MNM.Criterion, CNM.PSRouteMapRuleCriterion>();
+                cfg.CreateMap<MNM.Action, CNM.PSRouteMapRuleAction > ();
+                cfg.CreateMap<MNM.Parameter, CNM.PSRouteMapRuleActionParameter> ();
 
                 // Virtual wan Point to site
                 // MNM to CNM
@@ -1534,6 +1557,8 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<CNM.PSVirtualApplianceSkuProperties, MNM.VirtualApplianceSkuProperties>();
 
                 // MNM to CNM
+                // Where CNM - models from Powershell
+                //       MNM - models from Sdk
                 cfg.CreateMap<MNM.NetworkVirtualAppliance, CNM.PSNetworkVirtualAppliance>();
                 cfg.CreateMap<MNM.NetworkVirtualApplianceSku, CNM.PSNetworkVirtualApplianceSku>();
                 cfg.CreateMap<MNM.NetworkVirtualApplianceSkuInstances, CNM.PSNetworkVirtualApplianceSkuInstances>();
@@ -1542,6 +1567,7 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<MNM.VirtualApplianceNicProperties, CNM.PSVirtualApplianceNicProperties>();
                 cfg.CreateMap<MNM.VirtualApplianceSite, CNM.PSVirtualApplianceSite>();
                 cfg.CreateMap<MNM.VirtualApplianceSkuProperties, CNM.PSVirtualApplianceSkuProperties>();
+                cfg.CreateMap<MNM.VirtualApplianceAdditionalNicProperties, CNM.PSVirtualApplianceAdditionalNicProperties>();
 
                 // NetworkManager
                 // CNM to MNMs

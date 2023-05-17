@@ -219,5 +219,12 @@ namespace Commands.Aks.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-OutboundType");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestEnableAHUB()
+        {
+            TestRunner.RunTestScript("Test-EnableAHUB");
+        }
     }
 }

@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+* Generated powershell cmdlets from latest swagger
+* Added support for customer disk job creation
 
 ## Version 0.2.0
 * Switched folowing cmdlets to generated

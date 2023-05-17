@@ -61,15 +61,6 @@ namespace Microsoft.Azure.Commands.Ssh.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Azure PowerShell doesn&apos;t currently support AAD login for Service Principal accounts. Provide a -LocalUser..
-        /// </summary>
-        internal static string AADLoginForServicePrincipal {
-            get {
-                return ResourceManager.GetString("AADLoginForServicePrincipal", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to {0} is a directory, unable to write config file in that path. Provide a valid path for a file..
         /// </summary>
         internal static string ConfigFilePathIsDirectory {
@@ -88,7 +79,16 @@ namespace Microsoft.Azure.Commands.Ssh.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Failed to create default endpoint for the target Arc Server with error: {0}..
+        ///   Looks up a localized string similar to Failed to generate AAD certificate. AAD Login is currently not supported for accounts of type {0} in Azure PowerShell. Try connecting to a Local Account instead..
+        /// </summary>
+        internal static string FailedToAADUnsupportedAccountType {
+            get {
+                return ResourceManager.GetString("FailedToAADUnsupportedAccountType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failed to create default endpoint for the target Arc Server (see: https://aka.ms/ssharc/create-default-endpoint) with error: {0}..
         /// </summary>
         internal static string FailedToCreateDefaultEndpoint {
             get {
@@ -106,29 +106,38 @@ namespace Microsoft.Azure.Commands.Ssh.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Couldn&apos;t delete old version of the Proxy File: {0}. Error: {1}.
+        ///   Looks up a localized string similar to Failed to find the PowerShell module Az.Ssh.ArcProxy installed in this machine. You must have the Az.Ssh.Proxy PowerShell module installed in the client machine in order to connect to Azure Arc resources. You can find the module in the PowerShell Gallery (see: https://aka.ms/PowerShellGallery-Az.Ssh.ArcProxy)..
         /// </summary>
-        internal static string FailedToDeleteOldProxy {
+        internal static string FailedToFindProxyModule {
             get {
-                return ResourceManager.GetString("FailedToDeleteOldProxy", resourceCulture);
+                return ResourceManager.GetString("FailedToFindProxyModule", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Failed to download client proxy executable from {0}. Error: {1}.
-        /// </summary>
-        internal static string FailedToDownloadProxy {
-            get {
-                return ResourceManager.GetString("FailedToDownloadProxy", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to ListCredentials operation failed with error code &apos;{0}&apos;..
+        ///   Looks up a localized string similar to ListCredentials operation failed with error: {0}.
         /// </summary>
         internal static string FailedToListCredentials {
             get {
                 return ResourceManager.GetString("FailedToListCredentials", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You currently don&apos;t have the required Az.Ssh.ArcProxy module installed in this machine. Would you like this cmdlet to attempt to install the Az.Ssh.ArcProxy module from the PowerShell Gallery in the current user scope?.
+        /// </summary>
+        internal static string InstallProxyModuleCaption {
+            get {
+                return ResourceManager.GetString("InstallProxyModuleCaption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You must have the Az.Ssh.Proxy PowerShell module installed in the client machine in order to connect to Azure Arc resources. Installing the module to this machine is a one time operation, and you can choose to do it manually. You can find the module in the PowerShell Gallery (see: https://aka.ms/PowerShellGallery-Az.Ssh.ArcProxy)..
+        /// </summary>
+        internal static string InstallProxyModuleMessage {
+            get {
+                return ResourceManager.GetString("InstallProxyModuleMessage", resourceCulture);
             }
         }
         
@@ -219,6 +228,15 @@ namespace Microsoft.Azure.Commands.Ssh.Properties {
         internal static string ResourceNotFoundTypeProvided {
             get {
                 return ResourceManager.GetString("ResourceNotFoundTypeProvided", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This version of Az.Ssh only supports version 1.x.x of the Az.Ssh.ArcProxy PowerShell Module. The Az.Ssh.ArcProxy module {0} version is {1}, and it is not supported by this version of the Az.Ssh module. Check that this version of Az.Ssh is the latest available..
+        /// </summary>
+        internal static string UnsuportedVersionProxyModule {
+            get {
+                return ResourceManager.GetString("UnsuportedVersionProxyModule", resourceCulture);
             }
         }
         

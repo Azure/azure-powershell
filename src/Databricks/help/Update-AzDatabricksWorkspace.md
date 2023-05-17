@@ -63,13 +63,10 @@ workspace3miaeb databricks-rg-rqb2yo eastus   /subscriptions/00000000-0000-0000-
 ```
 
 Enabling encryption on a Databricks workspace takes three steps:
-1.
-Update the workspace with `-PrepareEncryption` (if it was not created so).
-1.
-Find `StorageAccountIdentityPrincipalId` in the output of the last step.
-Grant key permissions to the principal.
-1.
-Update the workspace again to fill in information about the encryption key:
+1.Please make sure that KeyVault has Purge protection enabled.
+2.Update the workspace with `-PrepareEncryption` (if it was not created so).
+3.Find `StorageAccountIdentityPrincipalId` in the output of the last step and grant key permissions to the principal.
+4.Update the workspace again to fill in information about the encryption key:
     - `-EncryptionKeySource`
     - `-EncryptionKeyVaultUri`
     - `-EncryptionKeyName`

@@ -31,12 +31,6 @@ Get-AzVM -Location <String> [-Status] [-UserData] [-DefaultProfile <IAzureContex
  [<CommonParameters>]
 ```
 
-### ListNextLinkVirtualMachinesParamSet
-```
-Get-AzVM [-Status] [-NextLink] <Uri> [-UserData] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
-```
-
 ### GetVirtualMachineById
 ```
 Get-AzVM [-Status] -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
@@ -344,21 +338,6 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: True
 ```
 
-### -NextLink
-Specifies the next link.
-
-```yaml
-Type: System.Uri
-Parameter Sets: ListNextLinkVirtualMachinesParamSet
-Aliases:
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 Specifies the name of a resource group.
 
@@ -421,7 +400,7 @@ UserData for the VM, which will be base-64 encoded. Customer should not pass any
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: DefaultParamSet, GetVirtualMachineInResourceGroupParamSet, ListLocationVirtualMachinesParamSet, ListNextLinkVirtualMachinesParamSet
+Parameter Sets: DefaultParamSet, GetVirtualMachineInResourceGroupParamSet, ListLocationVirtualMachinesParamSet
 Aliases:
 
 Required: False

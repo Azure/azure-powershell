@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
     [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzurePrefix + Constants.ServiceFabricPrefix + "ManagedCluster", DefaultParameterSetName = ByObj, SupportsShouldProcess = true), OutputType(typeof(PSManagedCluster))]
     public class SetAzServiceFabricManagedCluster : ServiceFabricManagedCmdletBase
     {
-        protected const string WithParamsByName = "WithPramsByName";
+        protected const string WithParamsByName = "WithParamsByName";
         protected const string WithParamsById = "ByNameById";
         protected const string ByObj = "ByObj";
 

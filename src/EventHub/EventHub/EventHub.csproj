@@ -11,11 +11,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Cmdlets\NetworkRuleSet\NewAzureEventHubVNetRule.cs" />
-    <Compile Remove="Cmdlets\NetworkRuleSet\SetAzureEventHubVNetRule.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Microsoft.Azure.Management.EventHub" Version="5.0.0" />
   </ItemGroup>
 

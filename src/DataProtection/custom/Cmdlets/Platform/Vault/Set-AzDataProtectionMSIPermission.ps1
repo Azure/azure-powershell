@@ -143,6 +143,7 @@
                   }
               }
           }
+
           elseif($PsCmdlet.ParameterSetName -eq "SetPermissionsForBackup"){
               $DatasourceId = $BackupInstance.Property.DataSourceInfo.ResourceId
               $DatasourceType =  GetClientDatasourceType -ServiceDatasourceType $BackupInstance.Property.DataSourceInfo.Type 

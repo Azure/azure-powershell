@@ -6,7 +6,7 @@ Resume-AzMigrateServerReplication -TargetObjectID "/Subscriptions/xxx-xxx-xxxxxx
 ```output
 ActivityId                       : 0b810233-b0aa-4a4c-a44e-bea4589c0513 ActivityId: ccb4889b-b9ec-4a76-af4d-4eb59c76ebac
 AllowedAction                    : {}
-CustomDetailAffectedObjectDetail : Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.JobDetailsAffectedObjectDetails
+CustomDetailAffectedObjectDetail : Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.JobDetailsAffectedObjectDetails
 CustomDetailInstanceType         : AsrJobDetails
 EndTime                          :
 Error                            : {}
@@ -36,7 +36,7 @@ Resume-AzMigrateServerReplication -InputObject $obj
 ```output
 ActivityId                       : 0b810233-b0aa-4a4c-a44e-bea4589c0513 ActivityId: ccb4889b-b9ec-4a76-af4d-4eb59c76ebac
 AllowedAction                    : {}
-CustomDetailAffectedObjectDetail : Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.JobDetailsAffectedObjectDetails
+CustomDetailAffectedObjectDetail : Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.JobDetailsAffectedObjectDetails
 CustomDetailInstanceType         : AsrJobDetails
 EndTime                          :
 Error                            : {}
