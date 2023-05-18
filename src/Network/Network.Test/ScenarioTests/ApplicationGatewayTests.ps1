@@ -3469,7 +3469,7 @@ function Test-ApplicationGatewayFirewallPolicyManagedRuleGroupOverrideEmptyRule
 		$policy = Get-AzApplicationGatewayFirewallPolicy -Name $wafPolicy -ResourceGroupName $rgname
 		Assert-AreEqual $policy.ManagedRules.ManagedRuleSets.Count 1
 		Assert-AreEqual $policy.ManagedRules.ManagedRuleSets[0].RuleGroupOverrides.Count 1
-		Assert-AreEqual $policy.ManagedRules.ManagedRuleSets[0].RuleGroupOverrides[0].Rules[0].RuleId $managedRules.ManagedRuleSets[0].RuleGroupOverrides[0].Rules[0].RuleId
+		Assert-AreEqual $policy.ManagedRules.ManagedRuleSets[0].RuleGroupOverrides[0].Rules.Count 0
 		Assert-AreEqual $policy.PolicySettings.FileUploadLimitInMb $policySettings.FileUploadLimitInMb
 		Assert-AreEqual $policy.PolicySettings.MaxRequestBodySizeInKb $policySettings.MaxRequestBodySizeInKb
 		Assert-AreEqual $policy.PolicySettings.RequestBodyCheck $policySettings.RequestBodyCheck

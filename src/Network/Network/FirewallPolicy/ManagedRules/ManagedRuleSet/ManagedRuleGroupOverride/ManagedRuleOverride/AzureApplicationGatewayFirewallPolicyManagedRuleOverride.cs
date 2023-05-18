@@ -43,11 +43,6 @@ namespace Microsoft.Azure.Commands.Network
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
-
-            if (!this.MyInvocation.BoundParameters.ContainsKey("RuleId"))
-            {
-                this.RuleId = "";
-            }
         }
 
         protected PSApplicationGatewayFirewallPolicyManagedRuleOverride NewObject()
