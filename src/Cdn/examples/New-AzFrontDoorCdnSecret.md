@@ -11,3 +11,4 @@ Name      ResourceGroupName
 secret001 testps-rg-da16jm
 ```
 
+Create an AzureFrontDoor Secret within the specified AzureFrontDoor profile
