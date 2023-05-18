@@ -12,7 +12,7 @@
 RootModule = './Az.Cdn.psm1'
 
 # Version number of this module.
-ModuleVersion = '2.1.0'
+ModuleVersion = '3.0.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -51,7 +51,7 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.8.0'; })
+RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.12.3'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = './bin/Az.Cdn.private.dll'
@@ -226,7 +226,9 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        # ReleaseNotes = ''
+        ReleaseNotes = '* Upgraded API version to 2022-11-01-preview
+* Added support to migrate from Azure Front Door (classic) to Azure Front Door Standard and Premium.
+* Added support for AFDX upgrade from Standard tier to Premium tier.'
 
         # Prerelease string of this module
         # Prerelease = ''
