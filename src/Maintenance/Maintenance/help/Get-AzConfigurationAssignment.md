@@ -13,9 +13,10 @@ List configurationAssignments for resource.
 ## SYNTAX
 
 ```
-Get-AzConfigurationAssignment [-ResourceGroupName] <String> [-ProviderName] <String>
- [-ResourceParentType <String>] [-ResourceParentName <String>] [-ResourceType] <String>
- [-ResourceName] <String> [-DefaultProfile <IAzureContextContainer>]  [-ConfigurationAssignmentName <String>] [<CommonParameters>]
+Get-AzConfigurationAssignment [[-ResourceGroupName] <String>] [[-ProviderName] <String>]
+ [-ResourceParentType <String>] [-ResourceParentName <String>] [[-ResourceType] <String>]
+ [[-ResourceName] <String>] [[-ConfigurationAssignmentName] <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -49,7 +50,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
+Position: 4
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
