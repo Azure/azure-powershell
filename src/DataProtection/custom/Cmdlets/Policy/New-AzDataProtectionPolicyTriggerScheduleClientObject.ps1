@@ -19,6 +19,8 @@ function New-AzDataProtectionPolicyTriggerScheduleClientObject{
     )
 
     process {
+        # DppRef: can add a TimeZone parameter to control the timezone and offset 
+
         # Validation for Interval Type and Interval count
 
         if(($IntervalType.ToString() -eq "Daily") -or ($IntervalType.ToString() -eq "Weekly"))

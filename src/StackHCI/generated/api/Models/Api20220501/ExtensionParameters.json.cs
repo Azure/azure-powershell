@@ -72,8 +72,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501
             {_type = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.Json.JsonString>("type"), out var __jsonType) ? (string)__jsonType : (string)Type;}
             {_typeHandlerVersion = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.Json.JsonString>("typeHandlerVersion"), out var __jsonTypeHandlerVersion) ? (string)__jsonTypeHandlerVersion : (string)TypeHandlerVersion;}
             {_autoUpgradeMinorVersion = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.Json.JsonBoolean>("autoUpgradeMinorVersion"), out var __jsonAutoUpgradeMinorVersion) ? (bool?)__jsonAutoUpgradeMinorVersion : AutoUpgradeMinorVersion;}
-            {_setting = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.Json.JsonObject>("settings"), out var __jsonSettings) ? Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Any.FromJson(__jsonSettings) : Setting;}
-            {_protectedSetting = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.Json.JsonObject>("protectedSettings"), out var __jsonProtectedSettings) ? Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Any.FromJson(__jsonProtectedSettings) : ProtectedSetting;}
+            {_setting = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.Json.JsonObject>("settings"), out var __jsonSettings) ? Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.ExtensionParametersSettings.FromJson(__jsonSettings) : Setting;}
+            {_protectedSetting = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.Json.JsonObject>("protectedSettings"), out var __jsonProtectedSettings) ? Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.ExtensionParametersProtectedSettings.FromJson(__jsonProtectedSettings) : ProtectedSetting;}
             AfterFromJson(json);
         }
 

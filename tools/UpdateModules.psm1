@@ -92,11 +92,30 @@ function New-ModulePsm1 {
             }
         }
 
+        # Scripts to preload dependency assemblies on Windows PowerShell
+        # https://stackoverflow.com/a/60068470
+        $preloadAssemblies = ""
+        $isAzAccounts = $file.BaseName -ieq 'Az.Accounts'
+        if ($isAzAccounts) {
+            $preloadAssemblies += 'if ($PSEdition -eq "Desktop") {
+    [Microsoft.Azure.PowerShell.AssemblyLoading.ConditionalAssemblyProvider]::GetAssemblies().Values | ForEach-Object {
+        $path = $$_.Item1
+        try {
+            Add-Type -Path $path -ErrorAction Ignore | Out-Null
+        }
+        catch {
+            Write-Verbose "Could not preload $path"
+        }
+    }
+}'
+        }
+
         # Grab the template and replace with information.
         $template = Get-Content -Path $TemplatePath
         $template = $template -replace "%MODULE-NAME%", $file.BaseName
         $template = $template -replace "%DATE%", [string](Get-Date)
         $template = $template -replace "%IMPORTED-DEPENDENCIES%", $importedModules
+        $template = $template -replace "%PRELOAD-ASSEMBLY%", $preloadAssemblies
 
         #Az.Storage is using Azure.Core, so need to check PS version
         if ($IsNetcore)
@@ -107,7 +126,7 @@ function New-ModulePsm1 {
             }
             elseif($file.BaseName -ieq 'Az.Accounts')
             {
-                $template = $template -replace "%AZURECOREPREREQUISITE%", 
+                $template = $template -replace "%AZURECOREPREREQUISITE%",
 @"
 if (%ISAZMODULE% -and (`$PSEdition -eq 'Core'))
 {
@@ -124,7 +143,7 @@ if (%ISAZMODULE% -and (`$PSEdition -eq 'Core'))
             }
             else
             {
-                $template = $template -replace "%AZURECOREPREREQUISITE%", 
+                $template = $template -replace "%AZURECOREPREREQUISITE%",
 @"
 if (%ISAZMODULE% -and (`$PSEdition -eq 'Core'))
 {
@@ -191,7 +210,7 @@ function Get-Cmdlets {
     $nestedModules = $ModuleMetadata.NestedModules
     $cmdlets = @()
     foreach ($module in $nestedModules) {
-        if('.dll' -ne [System.IO.Path]::GetExtension($module)) 
+        if('.dll' -ne [System.IO.Path]::GetExtension($module))
         {
             continue;
         }

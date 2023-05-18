@@ -15,7 +15,7 @@ function Test-DotNet
     {
         if ((Get-PSDrive 'HKLM' -ErrorAction Ignore) -and (-not (Get-ChildItem 'HKLM:\SOFTWARE\Microsoft\NET Framework Setup\NDP\v4\Full\' -ErrorAction Stop | Get-ItemPropertyValue -ErrorAction Stop -Name Release | Where-Object { $_ -ge 461808 })))
         {
-            throw ".NET Framework versions lower than 4.7.2 are not supported in Az.  Please upgrade to .NET Framework 4.7.2 or higher."
+            throw ".NET Framework versions lower than 4.7.2 are not supported in Az. Please upgrade to .NET Framework 4.7.2 or higher."
         }
     }
     catch [System.Management.Automation.DriveNotFoundException]
@@ -65,6 +65,13 @@ if (Test-Path -Path "$PSScriptRoot\StartupScripts" -ErrorAction Ignore)
         . $_.FullName
     }
 }
+
+# [windows powershell] preload assemblies
+%PRELOAD-ASSEMBLY%
+
+# [windows powershell] preload module alc assemblies
+$preloadPath = (Join-Path $PSScriptRoot -ChildPath "ModuleAlcAssemblies")
+Preload-Assembly -AssemblyDirectory $preloadPath
 
 if (Get-Module %AZORAZURERM%.profile -ErrorAction Ignore)
 {

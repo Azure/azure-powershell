@@ -28,6 +28,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Cmdlets
         /// <summary>A unique id generatd for the this cmdlet when ProcessRecord() is called.</summary>
         private string __processRecordId;
 
+        /// <summary>Reason for cancellation.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.ICancellationReason _cancellationReasonBody = new Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.CancellationReason();
+
         /// <summary>
         /// The <see cref="global::System.Threading.CancellationTokenSource" /> for this operation.
         /// </summary>
@@ -38,19 +41,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.DataBox.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DataBox.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter Break { get; set; }
 
-        /// <summary>Backing field for <see cref="CancellationReasonBody" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICancellationReason _cancellationReasonBody= new Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.CancellationReason();
-
-        /// <summary>Reason for cancellation.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ICancellationReason CancellationReasonBody { get => this._cancellationReasonBody; set => this._cancellationReasonBody = value; }
-
         /// <summary>The reference to the client API class.</summary>
         public Microsoft.Azure.PowerShell.Cmdlets.DataBox.DataBox Client => Microsoft.Azure.PowerShell.Cmdlets.DataBox.Module.Instance.ClientAPI;
 
         /// <summary>
-        /// The credentials, account, tenant, and subscription used for communication with Azure
+        /// The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet
+        /// against a different subscription
         /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The credentials, account, tenant, and subscription used for communication with Azure.")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.")]
         [global::System.Management.Automation.ValidateNotNull]
         [global::System.Management.Automation.Alias("AzureRMContext", "AzureCredential")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.DataBox.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DataBox.ParameterCategory.Azure)]
@@ -72,11 +70,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Cmdlets
         public global::System.Management.Automation.InvocationInfo InvocationInformation { get => __invocationInfo = __invocationInfo ?? this.MyInvocation ; set { __invocationInfo = value; } }
 
         /// <summary>
-        /// <see cref="IEventListener" /> cancellation delegate. Stops the cmdlet when called.
+        /// <see cref="Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener" /> cancellation delegate. Stops the cmdlet when called.
         /// </summary>
         global::System.Action Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener.Cancel => _cancellationTokenSource.Cancel;
 
-        /// <summary><see cref="IEventListener" /> cancellation token.</summary>
+        /// <summary><see cref="Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener" /> cancellation token.</summary>
         global::System.Threading.CancellationToken Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener.Token => _cancellationTokenSource.Token;
 
         /// <summary>Backing field for <see cref="Name" /> property.</summary>
@@ -134,7 +132,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Cmdlets
         Description = @"Reason for cancellation.",
         SerializedName = @"reason",
         PossibleTypes = new [] { typeof(string) })]
-        public string Reason { get => CancellationReasonBody.Reason ?? null; set => CancellationReasonBody.Reason = value; }
+        public string Reason { get => _cancellationReasonBody.Reason ?? null; set => _cancellationReasonBody.Reason = value; }
 
         /// <summary>Backing field for <see cref="ResourceGroupName" /> property.</summary>
         private string _resourceGroupName;
@@ -173,12 +171,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Cmdlets
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IApiError"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IApiError">Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IApiError</see>
+        /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onDefault method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IApiError> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IApiError> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// <c>overrideOnNoContent</c> will be called before the regular onNoContent has been processed, allowing customization of
@@ -195,6 +193,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Cmdlets
         /// </summary>
         protected override void BeginProcessing()
         {
+            var telemetryId = Microsoft.Azure.PowerShell.Cmdlets.DataBox.Module.Instance.GetTelemetryId.Invoke();
+            if (telemetryId != "" && telemetryId != "internal")
+            {
+                __correlationId = telemetryId;
+            }
             Module.Instance.SetProxyConfiguration(Proxy, ProxyCredential, ProxyUseDefaultCredentials);
             if (Break)
             {
@@ -206,7 +209,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Cmdlets
         /// <summary>Performs clean-up after the command execution</summary>
         protected override void EndProcessing()
         {
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.Events.CmdletEndProcessing).Wait(); if( ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
+
         }
 
         /// <summary>Handles/Dispatches events during the call to the REST service.</summary>
@@ -309,7 +312,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Cmdlets
         {
             using( NoSynchronizationContext )
             {
-                await ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.Events.CmdletProcessRecordAsyncStart); if( ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 await ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.Events.CmdletGetPipeline); if( ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 Pipeline = Microsoft.Azure.PowerShell.Cmdlets.DataBox.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName);
                 if (null != HttpPipelinePrepend)
@@ -324,12 +326,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Cmdlets
                 try
                 {
                     await ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                    await this.Client.JobsCancel(SubscriptionId, ResourceGroupName, Name, CancellationReasonBody, onNoContent, onDefault, this, Pipeline);
+                    await this.Client.JobsCancel(SubscriptionId, ResourceGroupName, Name, _cancellationReasonBody, onNoContent, onDefault, this, Pipeline);
                     await ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,Name=Name,body=CancellationReasonBody})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,Name=Name,body=_cancellationReasonBody})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -360,12 +362,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Cmdlets
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IApiError"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IApiError">Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IApiError</see>
+        /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IApiError> response)
+        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IApiError> response)
         {
             using( NoSynchronizationContext )
             {
@@ -382,15 +384,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Cmdlets
                 if ((null == code || null == message))
                 {
                     // Unrecognized Response. Create an error record based on what we have.
-                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IApiError>(responseMessage, await response);
-                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, Name=Name, body=CancellationReasonBody })
+                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IApiError>(responseMessage, await response);
+                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, Name=Name, body=_cancellationReasonBody })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
                     });
                 }
                 else
                 {
-                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, Name=Name, body=CancellationReasonBody })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, Name=Name, body=_cancellationReasonBody })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(message) { RecommendedAction = global::System.String.Empty }
                     });
