@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzFrontDoorCdnRuleSet'))
 
 Describe 'Get-AzFrontDoorCdnRuleSet'  {
     BeforeAll {
-        $rulesetName = 'rs' + (RandomString -allChars $false -len 6);
+        $rulesetName = 'rsName030'
         New-AzFrontDoorCdnRuleSet -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Name $rulesetName
     }
 
@@ -31,8 +31,9 @@ Describe 'Get-AzFrontDoorCdnRuleSet'  {
     }
 
     It 'GetViaIdentity' {
-        $PSDefaultParameterValues['Disabled'] = $true
-        $ruleset = Get-AzFrontDoorCdnRuleSet -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Name $rulesetName | Get-AzFrontDoorCdnRuleSet
+        $rulesetObject = Get-AzFrontDoorCdnRuleSet -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Name $rulesetName
+        $ruleset = Get-AzFrontDoorCdnRuleSet -InputObject $rulesetObject
+        
         $ruleset.Name | Should -Be $rulesetName
     }
 }

@@ -18,7 +18,7 @@ Describe 'Test-AzFrontDoorCdnEndpointNameAvailability'  {
     It 'CheckExpanded' {
         $resourceType = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.ResourceType]::MicrosoftCdnProfilesAfdEndpoints
         
-        $endpointName = 'end-' + (RandomString -allChars $false -len 6);
+        $endpointName = 'end-pstest090'
         Write-Host -ForegroundColor Green "Use frontDoorCdnEndpointName : $($endpointName)"
 
         $nameAvailability = Test-AzFrontDoorCdnEndpointNameAvailability -ResourceGroupName $env.ResourceGroupName -Name $endpointName -Type $resourceType

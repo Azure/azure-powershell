@@ -161,10 +161,13 @@ function Update-AzCdnProfile {
     )
     
     process {
+        $hasTag = $PSBoundParameters.Remove('Tag')
+        $hasOriginResponseTimeout = $PSBoundParameters.Remove('OriginResponseTimeoutSecond')
+
         if ($PSCmdlet.ParameterSetName -eq 'UpdateExpanded') {
-            $cdnProfile = Get-AzCdnProfile -ResourceGroupName ${ResourceGroupName} -Name ${Name}
+            $cdnProfile = Get-AzCdnProfile @PSBoundParameters
         } elseif ($PSCmdlet.ParameterSetName -eq 'UpdateViaIdentityExpanded') {
-            $cdnProfile = Get-AzCdnProfile -InputObject $InputObject
+            $cdnProfile = Get-AzCdnProfile @PSBoundParameters
         }else {
             throw "Not supported ParameterSetName."
         }
@@ -173,6 +176,16 @@ function Update-AzCdnProfile {
         {
             throw "Provided cdnProfile does not exist."
         }else{
+            if ($hasTag)
+            {
+                $PSBoundParameters.Add('Tag', ${Tag})
+            }
+
+            if ($hasOriginResponseTimeout)
+            {
+                $PSBoundParameters.Add('OriginResponseTimeoutSecond', ${OriginResponseTimeoutSecond})
+            }
+
             if(-Not (ISFrontDoorCdnProfile($cdnProfile.SkuName))){
                 Az.Cdn.internal\Update-AzCdnProfile @PSBoundParameters
             }else{

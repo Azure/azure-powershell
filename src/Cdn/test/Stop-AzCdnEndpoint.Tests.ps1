@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Stop-AzCdnEndpoint'))
 
 Describe 'Stop-AzCdnEndpoint'  {
     BeforeAll {
-        $endpointName = 'e-' + (RandomString -allChars $false -len 6);
+        $endpointName = 'e-ndpstest100'
         $origin = @{
             Name = "origin1"
             HostName = "host1.hello.com"
@@ -34,10 +34,10 @@ Describe 'Stop-AzCdnEndpoint'  {
     }
 
     It 'StopViaIdentity' {
-        $PSDefaultParameterValues['Disabled'] = $true
         $endpoint1 =  Start-AzCdnEndpoint -Name $endpointName -ResourceGroupName $env.ResourceGroupName -ProfileName $env.ClassicCdnProfileName 
         Write-Host -ForegroundColor Green "Endpoint status: $($endpoint1.ResourceState)" 
-        $res = Get-AzCdnEndpoint -Name $endpointName -ResourceGroupName $env.ResourceGroupName -ProfileName $env.ClassicCdnProfileName | Stop-AzCdnEndpoint
+        $resObject = Get-AzCdnEndpoint -Name $endpointName -ResourceGroupName $env.ResourceGroupName -ProfileName $env.ClassicCdnProfileName
+        $res = Stop-AzCdnEndpoint -InputObject $resObject
 
         $res.ResourceState | Should -Be "Stopped"
     }

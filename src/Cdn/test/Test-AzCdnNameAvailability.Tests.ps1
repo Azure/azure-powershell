@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Test-AzCdnNameAvailability'))
 
 Describe 'Test-AzCdnNameAvailability'  {
     It 'CheckExpanded' {
-        $endpointName = 'e-' + (RandomString -allChars $false -len 6);
+        $endpointName = 'e-ndpstest110'
         $resourceType = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.ResourceType]::MicrosoftCdnProfilesEndpoints
         
         $nameAvailability = Test-AzCdnNameAvailability -Name $endpointName -Type $resourceType
@@ -27,7 +27,7 @@ Describe 'Test-AzCdnNameAvailability'  {
     }
 
     It 'CheckExpanded1' {
-        $endpointName = 'e-' + (RandomString -allChars $false -len 6);
+        $endpointName = 'e-ndpstest111'
         $resourceType = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.ResourceType]::MicrosoftCdnProfilesEndpoints
         
         $nameAvailability = Test-AzCdnNameAvailability -Name $endpointName -Type $resourceType

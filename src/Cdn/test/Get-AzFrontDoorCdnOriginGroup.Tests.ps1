@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzFrontDoorCdnOriginGroup
 
 Describe 'Get-AzFrontDoorCdnOriginGroup'  {
     BeforeAll {
-        $originGroupName = 'org' + (RandomString -allChars $false -len 6);
+        $originGroupName = 'org-pstest020'
         $healthProbeSetting = New-AzFrontDoorCdnOriginGroupHealthProbeSettingObject -ProbeIntervalInSecond 1 -ProbePath "/" `
         -ProbeProtocol "Https" -ProbeRequestType "GET"
         $loadBalancingSetting = New-AzFrontDoorCdnOriginGroupLoadBalancingSettingObject -AdditionalLatencyInMillisecond 200 `
@@ -37,8 +37,9 @@ Describe 'Get-AzFrontDoorCdnOriginGroup'  {
     }
 
     It 'GetViaIdentity' {
-        $PSDefaultParameterValues['Disabled'] = $true
-        $originGroup = Get-AzFrontDoorCdnOriginGroup -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -OriginGroupName $originGroupName | Get-AzFrontDoorCdnOriginGroup
+        $originGroupObject = Get-AzFrontDoorCdnOriginGroup -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -OriginGroupName $originGroupName
+        $originGroup = Get-AzFrontDoorCdnOriginGroup -InputObject $originGroupObject
+
         $originGroup.Name | Should -Be $originGroupName
     }
 }

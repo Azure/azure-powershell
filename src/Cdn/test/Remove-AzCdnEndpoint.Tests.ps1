@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzCdnEndpoint'))
 
 Describe 'Remove-AzCdnEndpoint'  {
     It 'Delete' { 
-        $endpointName = 'e-' + (RandomString -allChars $false -len 6);
+        $endpointName = 'e-ndpstest070'
         $origin = @{
             Name = "origin1"
             HostName = "host1.hello.com"
@@ -29,8 +29,7 @@ Describe 'Remove-AzCdnEndpoint'  {
     }
 
     It 'DeleteViaIdentity' {
-        $PSDefaultParameterValues['Disabled'] = $true
-        $endpointName = 'e-' + (RandomString -allChars $false -len 6);
+        $endpointName = 'e-ndpstest071'
         $origin = @{
             Name = "origin1"
             HostName = "host1.hello.com"
@@ -39,6 +38,7 @@ Describe 'Remove-AzCdnEndpoint'  {
         Write-Host -ForegroundColor Green "Create endpointName : $($endpointName), origin.Name : $($origin.Name), origin.HostName : $($origin.HostName)"
 
         New-AzCdnEndpoint -SubscriptionId $env.SubscriptionId -Name $endpointName -ResourceGroupName $env.ResourceGroupName -ProfileName $env.ClassicCdnProfileName -Location $location -Origin $origin
-        Get-AzCdnEndpoint -Name $endpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName | Remove-AzCdnEndpoint
+        $endpointObject = Get-AzCdnEndpoint -Name $endpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName
+        Remove-AzCdnEndpoint -InputObject $endpointObject
     }
 }

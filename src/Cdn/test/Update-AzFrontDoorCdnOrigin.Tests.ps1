@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzFrontDoorCdnOrigin')
 
 Describe 'Update-AzFrontDoorCdnOrigin'  {
     BeforeAll {
-        $originGroupName = 'org' + (RandomString -allChars $false -len 6);
+        $originGroupName = 'org-pstest110'
         $healthProbeSetting = New-AzFrontDoorCdnOriginGroupHealthProbeSettingObject -ProbeIntervalInSecond 1 -ProbePath "/" `
         -ProbeProtocol "Https" -ProbeRequestType "GET"
         $loadBalancingSetting = New-AzFrontDoorCdnOriginGroupLoadBalancingSettingObject -AdditionalLatencyInMillisecond 200 `
@@ -27,7 +27,7 @@ Describe 'Update-AzFrontDoorCdnOrigin'  {
         Get-AzFrontDoorCdnOriginGroup -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -OriginGroupName $originGroupName
 
         $hostName = "en.wikipedia.org";
-        $originName = 'ori' + (RandomString -allChars $false -len 6);
+        $originName = 'ori-psName070' 
         New-AzFrontDoorCdnOrigin -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -OriginGroupName $originGroupName `
         -OriginName $originName -OriginHostHeader $hostName -HostName $hostName `
         -HttpPort 80 -HttpsPort 443 -Priority 1 -Weight 1000    
@@ -43,9 +43,8 @@ Describe 'Update-AzFrontDoorCdnOrigin'  {
     }
 
     It 'UpdateViaIdentityExpanded' {
-        $PSDefaultParameterValues['Disabled'] = $true
-        Get-AzFrontDoorCdnOrigin -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -OriginGroupName $originGroupName -OriginName $originName | `
-        Update-AzFrontDoorCdnOrigin -Weight 999
+        $originObject = Get-AzFrontDoorCdnOrigin -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -OriginGroupName $originGroupName -OriginName $originName
+        Update-AzFrontDoorCdnOrigin -Weight 999 -InputObject $originObject
         $origin = Get-AzFrontDoorCdnOrigin -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -OriginGroupName $originGroupName -OriginName $originName
         $origin.Weight | Should -Be 999
     }

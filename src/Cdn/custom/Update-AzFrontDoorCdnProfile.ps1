@@ -177,10 +177,13 @@ function Update-AzFrontDoorCdnProfile {
     )
     
     process {
+        $hasTag = $PSBoundParameters.Remove('Tag')
+        $hasOriginResponseTimeout = $PSBoundParameters.Remove('OriginResponseTimeoutSecond')
+
         if ($PSCmdlet.ParameterSetName -eq 'UpdateExpanded') {
-            $frontDoorCdnProfile = Get-AzFrontDoorCdnProfile -ResourceGroupName ${ResourceGroupName} -Name ${Name}
+            $frontDoorCdnProfile = Get-AzFrontDoorCdnProfile @PSBoundParameters
         } elseif ($PSCmdlet.ParameterSetName -eq 'UpdateViaIdentityExpanded') {
-            $frontDoorCdnProfile = Get-AzFrontDoorCdnProfile -InputObject $InputObject
+            $frontDoorCdnProfile = Get-AzFrontDoorCdnProfile @PSBoundParameters
         }else {
             throw "Not supported ParameterSetName."
         }
@@ -191,6 +194,16 @@ function Update-AzFrontDoorCdnProfile {
         }
         else
         {
+            if ($hasTag)
+            {
+                $PSBoundParameters.Add('Tag', ${Tag})
+            }
+
+            if ($hasOriginResponseTimeout)
+            {
+                $PSBoundParameters.Add('OriginResponseTimeoutSecond', ${OriginResponseTimeoutSecond})
+            }
+            
             if(ISFrontDoorCdnProfile($frontDoorCdnProfile.SkuName))
             {
                 Az.Cdn.internal\Update-AzCdnProfile @PSBoundParameters

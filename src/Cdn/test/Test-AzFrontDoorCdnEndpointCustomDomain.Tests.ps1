@@ -21,9 +21,8 @@ Describe 'Test-AzFrontDoorCdnEndpointCustomDomain'  {
     }
 
     It 'ValidateViaIdentityExpanded' {
-        $PSDefaultParameterValues['Disabled'] = $true
         $hostName = "test.dev.cdn.azure.cn"
-        Get-AzFrontdoorCdnEndpoint -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -EndpointName $env.FrontDoorEndpointName `
-        | Test-AzFrontDoorCdnEndpointCustomDomain -HostName $hostName
+        $endpointObject = Get-AzFrontdoorCdnEndpoint -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -EndpointName $env.FrontDoorEndpointName 
+        Test-AzFrontDoorCdnEndpointCustomDomain -HostName $hostName -InputObject $endpointObject
     }
 }

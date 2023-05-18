@@ -16,11 +16,11 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzFrontDoorCdnRoute'))
 
 Describe 'New-AzFrontDoorCdnRoute'  {
     It 'CreateExpanded' {
-        $endpointName = 'end-' + (RandomString -allChars $false -len 6);
+        $endpointName = 'end-pstest050'
         Write-Host -ForegroundColor Green "Use frontDoorCdnEndpointName : $($endpointName)"
         $endpoint = New-AzFrontDoorCdnEndpoint -EndpointName $endpointName -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Location Global
 
-        $originGroupName = 'org' + (RandomString -allChars $false -len 6);
+        $originGroupName = 'org-pstest070'
         $healthProbeSetting = New-AzFrontDoorCdnOriginGroupHealthProbeSettingObject -ProbeIntervalInSecond 1 -ProbePath "/" `
         -ProbeProtocol "Https" -ProbeRequestType "GET"
         $loadBalancingSetting = New-AzFrontDoorCdnOriginGroupLoadBalancingSettingObject -AdditionalLatencyInMillisecond 200 `
@@ -31,12 +31,12 @@ Describe 'New-AzFrontDoorCdnRoute'  {
         Get-AzFrontDoorCdnOriginGroup -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -OriginGroupName $originGroupName
 
         $hostName = "en.wikipedia.org";
-        $originName = 'ori' + (RandomString -allChars $false -len 6);
+        $originName = 'ori-psName040'
         New-AzFrontDoorCdnOrigin -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -OriginGroupName $originGroupName `
             -OriginName $originName -OriginHostHeader $hostName -HostName $hostName `
             -HttpPort 80 -HttpsPort 443 -Priority 1 -Weight 1000
 
-        $rulesetName = 'rs' + (RandomString -allChars $false -len 6);
+        $rulesetName = 'rsName050'
         Write-Host -ForegroundColor Green "Use rulesetName : $($rulesetName)"
         $ruleSet = New-AzFrontDoorCdnRuleSet -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Name $rulesetName
         $uriConditon = New-AzFrontDoorCdnRuleRequestUriConditionObject -Name "RequestUri" -ParameterOperator "Any"
@@ -50,14 +50,14 @@ Describe 'New-AzFrontDoorCdnRoute'  {
         -CacheConfigurationCacheBehavior "HonorOrigin"
         $actions = @($overrideAction);
         
-        $ruleName = 'r' + (RandomString -allChars $false -len 6);
+        $ruleName = 'ruleName030'
         Write-Host -ForegroundColor Green "Use ruleName : $($ruleName)"
         New-AzFrontDoorCdnRule -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -RuleSetName $rulesetName -Name $ruleName `
             -Action $actions -Condition $conditions
 
         $ruleSetResoure = New-AzFrontDoorCdnResourceReferenceObject -Id $ruleSet.Id
 
-        $routeName = 'route' + (RandomString -allChars $false -len 6);
+        $routeName = 'routeName020'
         Write-Host -ForegroundColor Green "Use routeName : $($routeName)"
         New-AzFrontDoorCdnRoute -Name $routeName -EndpointName $endpointName -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName `
             -OriginGroupId $originGroup.Id -RuleSet @($ruleSetResoure) -PatternsToMatch "/*" -LinkToDefaultDomain "Enabled" -EnabledState "Enabled"

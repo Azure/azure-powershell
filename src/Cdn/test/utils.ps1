@@ -14,6 +14,10 @@ if ($UsePreviousConfigForRecord) {
 # example: $val = $env.AddWithCache('key', $val, $true)
 $env | Add-Member -Type ScriptMethod -Value { param( [string]$key, [object]$val, [bool]$useCache) if ($this.Contains($key) -and $useCache) { return $this[$key] } else { $this[$key] = $val; return $val } } -Name 'AddWithCache'
 function setupEnv() {
+    Write-Host -ForegroundColor Green "Start to import module."
+    Import-Module -Name Az.FrontDoor
+    Import-Module -Name Az.KeyVault
+    
     # Preload subscriptionId and tenant from context, which will be used in test
     # as default. You could change them if needed.
     $env.SubscriptionId = (Get-AzContext).Subscription.Id
@@ -29,7 +33,7 @@ function setupEnv() {
 
     $env.Add("ResourceGroupName", $resourceGroupName)
 
-    # Create profile, Standard Verizon SKU
+    ## Create profile, Standard Verizon SKU
     $verizonCdnProfileName = 'p-' + (RandomString -allChars $false -len 6);
     Write-Host -ForegroundColor Green "Start to create Standard_Verizon SKU profile : $($verizonCdnProfileName)"    
     New-AzCdnProfile -SkuName "Standard_Verizon" -Name $verizonCdnProfileName -ResourceGroupName $resourceGroupName -Location Global | Out-Null
@@ -104,7 +108,62 @@ function setupEnv() {
     $env.Add("FrontDoorCustomDomainName", $frontDoorCustomDomainName)
     $env.Add("FrontDoorEndpointName", $frontDoorEndpointName)
     Write-Host -ForegroundColor Green "Standard_AzureFrontDoor SKU resources have been added to the environment." 
-        
+    
+    $classicFDName01 = 'fdp-' + (RandomString -allChars $false -len 6);
+    Write-Host -ForegroundColor Green "Use frontDoorName : $($classicFDName01)"
+
+    $tags = @{"tag1" = "value1"; "tag2" = "value2"}
+    $hostName = "$classicFDName01.azurefd.net"
+    $routingrule1 = New-AzFrontDoorRoutingRuleObject -Name "routingrule1" -FrontDoorName $classicFDName01 -ResourceGroupName $env.ResourceGroupName -FrontendEndpointName "frontendEndpoint1" -BackendPoolName "backendPool1"
+    $backend1 = New-AzFrontDoorBackendObject -Address "contoso1.azurewebsites.net" 
+    $healthProbeSetting1 = New-AzFrontDoorHealthProbeSettingObject -Name "healthProbeSetting1" -HealthProbeMethod "Head" -EnabledState "Disabled"
+    $loadBalancingSetting1 = New-AzFrontDoorLoadBalancingSettingObject -Name "loadbalancingsetting1" 
+    $frontendEndpoint1 = New-AzFrontDoorFrontendEndpointObject -Name "frontendendpoint1" -HostName $hostName
+    $backendpool1 = New-AzFrontDoorBackendPoolObject -Name "backendpool1" -FrontDoorName $classicFDName01 -ResourceGroupName $env.ResourceGroupName -Backend $backend1 -HealthProbeSettingsName "healthProbeSetting1" -LoadBalancingSettingsName "loadBalancingSetting1"
+    $backendPoolsSetting1 = New-AzFrontDoorBackendPoolsSettingObject -SendRecvTimeoutInSeconds 33 -EnforceCertificateNameCheck "Enabled"
+    
+    New-AzFrontDoor -Name $classicFDName01 -ResourceGroupName $resourceGroupName -RoutingRule $routingrule1 -BackendPool $backendpool1 -BackendPoolsSetting $backendPoolsSetting1 -FrontendEndpoint $frontendEndpoint1 -LoadBalancingSetting $loadBalancingSetting1 -HealthProbeSetting $healthProbeSetting1 -Tag $tags | Out-Null
+    $classicResourceId01 = "/subscriptions/$subId/resourcegroups/$resourceGroupName/providers/Microsoft.Network/Frontdoors/$classicFDName01"
+
+
+    $classicFDName02 = 'fdp-' + (RandomString -allChars $false -len 6);
+    Write-Host -ForegroundColor Green "Use frontDoorName : $($classicFDName02)"
+
+    $tags = @{"tag1" = "value1"; "tag2" = "value2"}
+    $hostName = "$classicFDName02.azurefd.net"
+    $routingrule1 = New-AzFrontDoorRoutingRuleObject -Name "routingrule1" -FrontDoorName $classicFDName02 -ResourceGroupName $env.ResourceGroupName -FrontendEndpointName "frontendEndpoint1" -BackendPoolName "backendPool1"
+    $backend1 = New-AzFrontDoorBackendObject -Address "contoso1.azurewebsites.net" 
+    $healthProbeSetting1 = New-AzFrontDoorHealthProbeSettingObject -Name "healthProbeSetting1" -HealthProbeMethod "Head" -EnabledState "Disabled"
+    $loadBalancingSetting1 = New-AzFrontDoorLoadBalancingSettingObject -Name "loadbalancingsetting1" 
+    $frontendEndpoint1 = New-AzFrontDoorFrontendEndpointObject -Name "frontendendpoint1" -HostName $hostName
+    $backendpool1 = New-AzFrontDoorBackendPoolObject -Name "backendpool1" -FrontDoorName $classicFDName02 -ResourceGroupName $env.ResourceGroupName -Backend $backend1 -HealthProbeSettingsName "healthProbeSetting1" -LoadBalancingSettingsName "loadBalancingSetting1"
+    $backendPoolsSetting1 = New-AzFrontDoorBackendPoolsSettingObject -SendRecvTimeoutInSeconds 33 -EnforceCertificateNameCheck "Enabled"
+    
+    New-AzFrontDoor -Name $classicFDName02 -ResourceGroupName $resourceGroupName -RoutingRule $routingrule1 -BackendPool $backendpool1 -BackendPoolsSetting $backendPoolsSetting1 -FrontendEndpoint $frontendEndpoint1 -LoadBalancingSetting $loadBalancingSetting1 -HealthProbeSetting $healthProbeSetting1 -Tag $tags | Out-Null
+    $classicResourceId02 = "/subscriptions/$subId/resourcegroups/$resourceGroupName/providers/Microsoft.Network/Frontdoors/$classicFDName02"
+
+    $classicFDName03 = 'fdp-' + (RandomString -allChars $false -len 6);
+    Write-Host -ForegroundColor Green "Use frontDoorName : $($classicFDName03)"
+
+    $tags = @{"tag1" = "value1"; "tag2" = "value2"}
+    $hostName = "$classicFDName03.azurefd.net"
+    $routingrule1 = New-AzFrontDoorRoutingRuleObject -Name "routingrule1" -FrontDoorName $classicFDName03 -ResourceGroupName $env.ResourceGroupName -FrontendEndpointName "frontendEndpoint1" -BackendPoolName "backendPool1"
+    $backend1 = New-AzFrontDoorBackendObject -Address "contoso1.azurewebsites.net" 
+    $healthProbeSetting1 = New-AzFrontDoorHealthProbeSettingObject -Name "healthProbeSetting1" -HealthProbeMethod "Head" -EnabledState "Disabled"
+    $loadBalancingSetting1 = New-AzFrontDoorLoadBalancingSettingObject -Name "loadbalancingsetting1" 
+    $frontendEndpoint1 = New-AzFrontDoorFrontendEndpointObject -Name "frontendendpoint1" -HostName $hostName
+    $backendpool1 = New-AzFrontDoorBackendPoolObject -Name "backendpool1" -FrontDoorName $classicFDName03 -ResourceGroupName $env.ResourceGroupName -Backend $backend1 -HealthProbeSettingsName "healthProbeSetting1" -LoadBalancingSettingsName "loadBalancingSetting1"
+    $backendPoolsSetting1 = New-AzFrontDoorBackendPoolsSettingObject -SendRecvTimeoutInSeconds 33 -EnforceCertificateNameCheck "Enabled"
+    
+    New-AzFrontDoor -Name $classicFDName03 -ResourceGroupName $resourceGroupName -RoutingRule $routingrule1 -BackendPool $backendpool1 -BackendPoolsSetting $backendPoolsSetting1 -FrontendEndpoint $frontendEndpoint1 -LoadBalancingSetting $loadBalancingSetting1 -HealthProbeSetting $healthProbeSetting1 -Tag $tags | Out-Null
+    $classicResourceId03 = "/subscriptions/$subId/resourcegroups/$resourceGroupName/providers/Microsoft.Network/Frontdoors/$classicFDName03"
+
+    $env.Add("ClassicResourceId01", $classicResourceId01)
+    $env.Add("ClassicResourceId02", $classicResourceId02)
+    $env.Add("ClassicResourceId03", $classicResourceId03)
+
+    Write-Host -ForegroundColor Green "Classic Afd resources have been added to the environment." 
+
     # Create 
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {

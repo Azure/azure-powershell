@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzFrontDoorCdnOrigin'))
 
 Describe 'New-AzFrontDoorCdnOrigin'  {
     It 'CreateExpanded' {
-        $originGroupName = 'org' + (RandomString -allChars $false -len 6);
+        $originGroupName = 'org-pstest050'
         $healthProbeSetting = New-AzFrontDoorCdnOriginGroupHealthProbeSettingObject -ProbeIntervalInSecond 1 -ProbePath "/" `
         -ProbeProtocol "Https" -ProbeRequestType "GET"
         $loadBalancingSetting = New-AzFrontDoorCdnOriginGroupLoadBalancingSettingObject -AdditionalLatencyInMillisecond 200 `
@@ -27,7 +27,7 @@ Describe 'New-AzFrontDoorCdnOrigin'  {
         Get-AzFrontDoorCdnOriginGroup -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -OriginGroupName $originGroupName
 
         $hostName = "en.wikipedia.org";
-        $originName = 'ori' + (RandomString -allChars $false -len 6);
+        $originName = 'ori-psName030'
         New-AzFrontDoorCdnOrigin -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -OriginGroupName $originGroupName `
         -OriginName $originName -OriginHostHeader $hostName -HostName $hostName `
         -HttpPort 80 -HttpsPort 443 -Priority 1 -Weight 1000  

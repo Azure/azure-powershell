@@ -14,9 +14,9 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzFrontDoorCdnProfileS
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Update-AzFrontDoorCdnProfileSku'  {
+Describe 'Update-AzFrontDoorCdnProfileSku' -Tag 'LiveOnly' {
     It 'Upgrade' {
-        $frontDoorCdnProfileName = 'fdp-' + (RandomString -allChars $false -len 6);
+        $frontDoorCdnProfileName = 'fdp-pstest060'
         Write-Host -ForegroundColor Green "Use frontDoorCdnProfileName : $($frontDoorCdnProfileName)"
 
         $profileSku = "Standard_AzureFrontDoor";
