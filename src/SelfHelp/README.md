@@ -32,13 +32,13 @@ For information on how to develop for `Az.SelfHelp`, see [how-to.md](how-to.md).
 
 ```yaml
 # pin the swagger version by using the commit id instead of branch name
-branch: f9d72b807dd04fb7c606e9810bfdb9ad6a74b91e
+branch: c2c2f7a359c217380a5ae047e153bac36c404a0c
 require:
   # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../readme.azure.noprofile.md
-  #  - $(repo)/specification/xxx/resource-manager/readme.md
+  - https://github.com/Azure/azure-rest-api-specs/blob/main/specification/help/resource-manager/readme.md
   # If the swagger has not been put in the repo, you may uncomment the following line and refer to it locally
-  - $(this-folder)/azure-rest-api-specs/specification/help/resource-manager/readme.md
+  # - $(this-folder)/azure-rest-api-specs/specification/help/resource-manager/readme.md
 
 try-require:
   - $(repo)/src\resource-manager\readme.md

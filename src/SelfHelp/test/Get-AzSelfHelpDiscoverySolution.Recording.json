@@ -1,8 +1,8 @@
 {
-  "Get-AzSelfHelpDiscoverySolution+[NoContext]+List+$GET+https://management.azure.com//subscriptions/6bded6d5-a6af-43e1-96d3-bf71f6f5f8ba/resourcegroups/nbz6t0k2xj/providers/Microsoft.Storage/storageAccounts/teststorageforselfhelp/providers/Microsoft.Help/discoverySolutions?api-version=2023-01-01-preview+1": {
+  "Get-AzSelfHelpDiscoverySolution+[NoContext]+List+$GET+https://management.azure.com//subscriptions/6bded6d5-a6af-43e1-96d3-bf71f6f5f8ba/resourcegroups/nbz6t0k2xj/providers/Microsoft.Storage/storageAccounts/teststorageforselfhelp/providers/Microsoft.Help/discoverySolutions?api-version=2023-06-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com//subscriptions/6bded6d5-a6af-43e1-96d3-bf71f6f5f8ba/resourcegroups/nbz6t0k2xj/providers/Microsoft.Storage/storageAccounts/teststorageforselfhelp/providers/Microsoft.Help/discoverySolutions?api-version=2023-01-01-preview",
+      "RequestUri": "https://management.azure.com//subscriptions/6bded6d5-a6af-43e1-96d3-bf71f6f5f8ba/resourcegroups/nbz6t0k2xj/providers/Microsoft.Storage/storageAccounts/teststorageforselfhelp/providers/Microsoft.Help/discoverySolutions?api-version=2023-06-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {

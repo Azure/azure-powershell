@@ -1,5 +1,5 @@
 @{
-  GUID = '8ec16498-5aaf-4546-a6c5-5d2962fcbebe'
+  GUID = '2705ffd2-39d8-491f-b0c6-14fca2dc3727'
   RootModule = './Az.SelfHelp.psm1'
   ModuleVersion = '0.1.0'
   CompatiblePSEditions = 'Core', 'Desktop'
