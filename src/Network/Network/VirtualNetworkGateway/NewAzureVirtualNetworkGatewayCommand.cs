@@ -81,9 +81,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The extended location of this virtual network gateway")]
-        [ValidateSet(
-            "MicrosoftRRDCLab3",
-            IgnoreCase = true)]
+        [ValidateNotNullOrEmpty]
         public string ExtendedLocation { get; set; }
 
         [Parameter(
