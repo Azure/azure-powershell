@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Deprecated "RegisteredServer" alias for InputObject parameter for Set-AzStorageSyncServerEndpoint
 
 ## Version 1.7.0
 * Migrated Azure AD features in Az.StorageSync to MSGraph APIs. The cmdlets will call MSGraph API according to input parameters: New-AzStorageSyncCloudEndpoint

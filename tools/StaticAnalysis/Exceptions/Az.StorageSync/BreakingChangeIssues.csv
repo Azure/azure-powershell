@@ -1,0 +1,2 @@
+"Module","ClassName","Target","Severity","ProblemId","Description","Remediation"
+"Az.StorageSync","Microsoft.Azure.Commands.StorageSync.Cmdlets.SetServerEndpointCommand","Set-AzStorageSyncServerEndpoint","0","2010","The cmdlet 'Set-AzStorageSyncServerEndpoint' no longer supports the alias 'RegisteredServer' for parameter 'InputObject'.","Add the alias 'RegisteredServer' back to parameter 'InputObject'."
