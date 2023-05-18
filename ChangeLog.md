@@ -1,7 +1,3 @@
-## Upcoming Release
-#### Az.SelfHelp
-* Init cmdlets support for the api-version 2023-03-01-preview.
-
 ## 1.6.0 - March 2019
 ### Highlights since the last major release
 * General availability of `Az` module
