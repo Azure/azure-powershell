@@ -16,22 +16,24 @@ Modifies the service properties for the Azure Storage Blob service.
 ```
 Update-AzStorageBlobServiceProperty [-ResourceGroupName] <String> [-StorageAccountName] <String>
  [-DefaultServiceVersion <String>] [-EnableChangeFeed <Boolean>] [-ChangeFeedRetentionInDays <Int32>]
- [-IsVersioningEnabled <Boolean>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-IsVersioningEnabled <Boolean>] [-CorsRule <PSCorsRule[]>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### AccountObject
 ```
 Update-AzStorageBlobServiceProperty -StorageAccount <PSStorageAccount> [-DefaultServiceVersion <String>]
  [-EnableChangeFeed <Boolean>] [-ChangeFeedRetentionInDays <Int32>] [-IsVersioningEnabled <Boolean>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-CorsRule <PSCorsRule[]>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### BlobServicePropertiesResourceId
 ```
 Update-AzStorageBlobServiceProperty [-ResourceId] <String> [-DefaultServiceVersion <String>]
  [-EnableChangeFeed <Boolean>] [-ChangeFeedRetentionInDays <Int32>] [-IsVersioningEnabled <Boolean>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-CorsRule <PSCorsRule[]>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -41,7 +43,7 @@ The **Update-AzStorageBlobServiceProperty** cmdlet modifies the service properti
 
 ### Example 1: Set Blob service DefaultServiceVersion to 2018-03-28
 ```powershell
-Update-AzStorageBlobServiceProperty -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -DefaultServiceVersion 2018-03-28 
+Update-AzStorageBlobServiceProperty -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -DefaultServiceVersion 2018-03-28
 ```
 
 ```output
@@ -103,6 +105,48 @@ IsVersioningEnabled           : True
 
 This command enables Versioning on Blob service of a Storage account
 
+### Example 4: Update CORS rules
+```powershell
+$CorsRules = (@{
+    AllowedHeaders=@("x-ms-blob-content-type","x-ms-blob-content-disposition");
+    ExposedHeaders=@(); 
+    AllowedOrigins=@("*");
+    AllowedMethods=@("TRACE","CONNECT")},
+    @{
+    AllowedOrigins=@("http://www.fabrikam.com","http://www.contoso.com"); 
+    ExposedHeaders=@("x-ms-meta-data*","x-ms-meta-customheader"); 
+    AllowedHeaders=@("x-ms-meta-target*","x-ms-meta-customheader");
+    MaxAgeInSeconds=30;
+    AllowedMethods=@("PUT")})
+
+$property = Update-AzStorageBlobServiceProperty -ResourceGroupName myresourcegroup -StorageAccountName mystorageaccount -CorsRule $CorsRules
+$property.Cors.CorsRulesProperty
+```
+
+```output
+AllowedOrigins  : {*}
+AllowedMethods  : {TRACE, CONNECT}
+MaxAgeInSeconds : 0
+ExposedHeaders  : {}
+AllowedHeaders  : {x-ms-blob-content-type, x-ms-blob-content-disposition}
+
+AllowedOrigins  : {http://www.fabrikam.com, http://www.contoso.com}
+AllowedMethods  : {PUT}
+MaxAgeInSeconds : 30
+ExposedHeaders  : {x-ms-meta-customheader, x-ms-meta-data*}
+AllowedHeaders  : {x-ms-meta-customheader, x-ms-meta-target*}
+```
+
+The first command assigns an array of rules to the $CorsRules variable. This command uses standard extends over several lines in this code block.
+The second command sets the rules in $CorsRules to the Blob service of a Storage account.
+
+### Example 5: Clean up CORS rules 
+```powershell
+Update-AzStorageBlobServiceProperty -ResourceGroupName myresourcegroup -StorageAccountName mystorageaccount -CorsRule @()
+```
+This command cleans up the CORS rules of a Storage account by inputting @() to parameter CorsRule
+
+
 ## PARAMETERS
 
 ### -ChangeFeedRetentionInDays
@@ -111,6 +155,21 @@ Never specify it when enabled changeFeed will get null value in service properti
 
 ```yaml
 Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CorsRule
+Specifies CORS rules for the Blob service.
+
+```yaml
+Type: Microsoft.Azure.Commands.Management.Storage.Models.PSCorsRule[]
 Parameter Sets: (All)
 Aliases:
 
@@ -273,7 +332,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

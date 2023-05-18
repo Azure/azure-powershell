@@ -427,6 +427,24 @@ namespace Microsoft.Azure.Commands.Aks
                     {
                         cluster.OidcIssuerProfile = new ManagedClusterOIDCIssuerProfile(enabled: true);
                     }
+                    if (cluster.WindowsProfile != null)
+                    {
+                        if (this.IsParameterBound(c => c.WindowsProfileAdminUserPassword) && WindowsProfileAdminUserPassword != null)
+                        {
+                            cluster.WindowsProfile.AdminPassword = WindowsProfileAdminUserPassword.ConvertToString();
+                        }
+                        if (this.IsParameterBound(c => c.EnableAHUB))
+                        {
+                            if (EnableAHUB.ToBool())
+                            {
+                                cluster.WindowsProfile.LicenseType = "Windows_Server";
+                            }
+                            else
+                            {
+                                cluster.WindowsProfile.LicenseType = "None";
+                            }
+                        }
+                    }
                     SetIdentity(cluster);
 
                     var kubeCluster = this.CreateOrUpdate(ResourceGroupName, Name, cluster);
@@ -439,7 +457,7 @@ namespace Microsoft.Azure.Commands.Aks
                     {
                         cluster.DisableLocalAccounts = DisableLocalAccount;
                     }
-                    
+
                     WriteObject(AdapterHelper<ManagedCluster, PSKubernetesCluster>.Adapt(kubeCluster));
                 });
             }

@@ -589,3 +589,31 @@ function Test-CrossSubscriptionRestoreDeletedManagedDatabase
 		Remove-ResourceGroupForTest $targetRg
 	}
 }
+
+<#
+	.SYNOPSIS
+	Tests setting of EnableLedger while creating a managed database
+#>
+function Test-ManagedDatabaseCreationWithLedgerEnabled
+{
+	# Setup
+	$rg = Create-ResourceGroupForTest
+
+	$managedInstance = Create-ManagedInstanceForTest $rg
+	try
+	{
+		# Create with all EnableLedger
+		$managedDatabaseName = Get-ManagedDatabaseName
+		$collation = "SQL_Latin1_General_CP1_CI_AS"
+		$job1 = New-AzSqlInstanceDatabase -ResourceGroupName $rg.ResourceGroupName -InstanceName $managedInstance.ManagedInstanceName -Name $managedDatabaseName -Collation $collation -EnableLedger -AsJob
+		$job1 | Wait-Job
+		$db = $job1.Output
+
+		Assert-AreEqual $db.Name $managedDatabaseName
+		Assert-AreEqual True $db.EnableLedger
+	}
+	finally
+	{
+		Remove-ResourceGroupForTest $targetRg
+	}
+}

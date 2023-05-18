@@ -21,7 +21,7 @@ Updates an EventHub Entity
 
 function Set-AzEventHub{
 
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEventHub])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.IEventHub])]
     [CmdletBinding(DefaultParameterSetName = 'SetExpanded', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
 	param(
         [Parameter(ParameterSetName = 'SetExpanded', Mandatory, HelpMessage = "The name of EventHub Entity.")]
@@ -88,12 +88,16 @@ function Set-AzEventHub{
         # A value that indicates whether to Skip Empty Archives
         ${SkipEmptyArchive},
 
-        [Parameter(HelpMessage = "Number of days to retain the events for this Event Hub, value should be 1 to 7 days")]
-        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.ParameterBreakingChangeAttribute("MessageRetentionInDays", "4.0.0", "", ChangeDescription = "-MessageRetentionInDays would be deprecated and would be replaced by -RetentionTimeInHours")]
-        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
-        [System.Int64]
-        # Number of days to retain the events for this Event Hub, value should be 1 to 7 days
-        ${MessageRetentionInDays},
+        [Parameter(HelpMessage = "Number of hours to retain the events for this Event Hub. This value is only used when cleanupPolicy is Delete. If cleanupPolicy is Compaction the returned value of this property is Long.MaxValue")]
+		[Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
+		[System.Int64]
+		# Number of hours to retain the events for this Event Hub. This value is only used when cleanupPolicy is Delete. If cleanupPolicy is Compaction the returned value of this property is Long.MaxValue
+		${RetentionTimeInHour},
+
+        [Parameter(HelpMessage = "Number of hours to retain the tombstone markers of a compacted Event Hub. This value is only used when cleanupPolicy is Compaction. Consumer must complete reading the tombstone marker within this specified amount of time if consumer begins from starting offset to ensure they get a valid snapshot for the specific key described by the tombstone marker within the compacted Event Hub")]
+		[Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
+		[System.Int32]
+        ${TombstoneRetentionTimeInHour},
 
         [Parameter(HelpMessage = "Enumerates the possible values for the status of the Event Hub.")]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
@@ -191,7 +195,8 @@ function Set-AzEventHub{
             $hasIntervalInSeconds = $PSBoundParameters.Remove('IntervalInSeconds')
             $hasSizeLimitInBytes = $PSBoundParameters.Remove('SizeLimitInBytes')
             $hasSkipEmptyArchive = $PSBoundParameters.Remove('SkipEmptyArchive')
-            $hasMessageRetentionInDays = $PSBoundParameters.Remove('MessageRetentionInDays')
+            $hasRetentionTimeInHour = $PSBoundParameters.Remove('RetentionTimeInHour')
+            $hasTombstoneRetentionTimeInHour = $PSBoundParameters.Remove('TombstoneRetentionTimeInHour')
             $hasStatus = $PSBoundParameters.Remove('Status')
             $hasDestinationName = $PSBoundParameters.Remove('DestinationName')
             $hasStorageAccountResourceId = $PSBoundParameters.Remove('StorageAccountResourceId')
@@ -237,8 +242,13 @@ function Set-AzEventHub{
                 $hasProperty = $true
             }
 
-            if ($hasMessageRetentionInDays) {
-                $eventHub.MessageRetentionInDays = $MessageRetentionInDays
+            if($hasTombstoneRetentionTimeInHour) {
+                $eventHub.TombstoneRetentionTimeInHour = $TombstoneRetentionTimeInHour
+                $hasProperty = $true
+            }
+
+            if ($hasRetentionTimeInHour) {
+                $eventHub.RetentionTimeInHour = $RetentionTimeInHour
                 $hasProperty = $true
             }
 

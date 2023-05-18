@@ -48,6 +48,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The unique identifier for one of the oauth2PermissionScopes or appRole instances that the resource application exposes.",
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
@@ -58,6 +61,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Specifies whether the id property references an oauth2PermissionScopes or an appRole. Possible values are Scope or Role.",
         SerializedName = @"type",
         PossibleTypes = new [] { typeof(string) })]

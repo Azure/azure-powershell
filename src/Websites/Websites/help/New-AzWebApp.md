@@ -1,6 +1,6 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Websites.dll-Help.xml
-Module Name: Az.WebSites
+Module Name: Az.Websites
 ms.assetid: D6D4E733-31AE-4ABE-8C78-583EC48C56B8
 online version: https://learn.microsoft.com/powershell/module/az.websites/new-azwebapp
 schema: 2.0.0
@@ -24,8 +24,8 @@ New-AzWebApp [[-ResourceGroupName] <String>] [-Name] <String> [[-Location] <Stri
 ### PrivateRegistry
 ```
 New-AzWebApp [-ResourceGroupName] <String> [-Name] <String> [[-Location] <String>] [[-AppServicePlan] <String>]
- -ContainerImageName <String> -ContainerRegistryUrl <String> -ContainerRegistryUser <String> [-Tag <Hashtable>]
- -ContainerRegistryPassword <SecureString> [-EnableContainerContinuousDeployment] [-AsJob]
+ -ContainerImageName <String> -ContainerRegistryUrl <String> -ContainerRegistryUser <String>
+ -ContainerRegistryPassword <SecureString> [-EnableContainerContinuousDeployment] [-AsJob] [-Tag <Hashtable>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
