@@ -10,13 +10,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support
     public partial struct ProfileResourceState :
         System.IEquatable<ProfileResourceState>
     {
+        public static Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.ProfileResourceState AbortingMigration = @"AbortingMigration";
+
         public static Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.ProfileResourceState Active = @"Active";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.ProfileResourceState CommittingMigration = @"CommittingMigration";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.ProfileResourceState Creating = @"Creating";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.ProfileResourceState Deleting = @"Deleting";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.ProfileResourceState Disabled = @"Disabled";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.ProfileResourceState Migrated = @"Migrated";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.ProfileResourceState Migrating = @"Migrating";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.ProfileResourceState PendingMigrationCommit = @"PendingMigrationCommit";
 
         /// <summary>the value for an instance of the <see cref="ProfileResourceState" /> Enum.</summary>
         private string _value { get; set; }

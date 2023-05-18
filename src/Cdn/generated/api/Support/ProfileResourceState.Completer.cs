@@ -42,6 +42,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support
             {
                 yield return new global::System.Management.Automation.CompletionResult("'Disabled'", "Disabled", global::System.Management.Automation.CompletionResultType.ParameterValue, "Disabled");
             }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Migrating".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'Migrating'", "Migrating", global::System.Management.Automation.CompletionResultType.ParameterValue, "Migrating");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Migrated".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'Migrated'", "Migrated", global::System.Management.Automation.CompletionResultType.ParameterValue, "Migrated");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "PendingMigrationCommit".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'PendingMigrationCommit'", "PendingMigrationCommit", global::System.Management.Automation.CompletionResultType.ParameterValue, "PendingMigrationCommit");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "CommittingMigration".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'CommittingMigration'", "CommittingMigration", global::System.Management.Automation.CompletionResultType.ParameterValue, "CommittingMigration");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "AbortingMigration".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'AbortingMigration'", "AbortingMigration", global::System.Management.Automation.CompletionResultType.ParameterValue, "AbortingMigration");
+            }
         }
     }
 }

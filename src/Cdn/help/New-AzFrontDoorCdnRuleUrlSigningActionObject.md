@@ -22,27 +22,18 @@ Create an in-memory object for UrlSigningAction.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create an in-memory object for UrlSigningAction
 ```powershell
-{{ Add code here }}
+New-AzFrontDoorCdnRuleUrlSigningActionObject -Name rule01
 ```
 
 ```output
-{{ Add output here }}
+Name
+----
+rule01
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Create an in-memory object for UrlSigningAction
 
 ## PARAMETERS
 
@@ -82,7 +73,7 @@ Defines which query string parameters in the url to be considered for expires, k
 To construct, see NOTES section for PARAMETERNAMEOVERRIDE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IUrlSigningParamIdentifier[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IUrlSigningParamIdentifier[]
 Parameter Sets: (All)
 Aliases:
 
@@ -100,7 +91,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.UrlSigningAction
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.UrlSigningAction
 
 ## NOTES
 
@@ -111,7 +102,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-PARAMETERNAMEOVERRIDE <IUrlSigningParamIdentifier[]>: Defines which query string parameters in the url to be considered for expires, key id etc. .
+`PARAMETERNAMEOVERRIDE <IUrlSigningParamIdentifier[]>`: Defines which query string parameters in the url to be considered for expires, key id etc. .
   - `ParamIndicator <ParamIndicator>`: Indicates the purpose of the parameter
   - `ParamName <String>`: Parameter name
 

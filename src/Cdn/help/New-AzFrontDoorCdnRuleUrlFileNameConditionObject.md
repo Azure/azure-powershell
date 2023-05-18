@@ -34,7 +34,7 @@ Name
 UrlFileName
 ```
 
-
+Create an in-memory object for DeliveryRuleUrlFileNameCondition
 
 ## PARAMETERS
 
@@ -120,7 +120,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.DeliveryRuleUrlFileNameCondition
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.DeliveryRuleUrlFileNameCondition
 
 ## NOTES
 

@@ -14,47 +14,31 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzCdnProfile'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Remove-AzCdnProfile' -Tag 'LiveOnly' {
+Describe 'Remove-AzCdnProfile'  {
     It 'Delete' {
-        { 
-            $ResourceGroupName = 'testps-rg-' + (RandomString -allChars $false -len 6)
-            try
-            {
-                Write-Host -ForegroundColor Green "Create test group $($ResourceGroupName)"
-                New-AzResourceGroup -Name $ResourceGroupName -Location $env.location
+        $cdnProfileName = 'p-psName010'
+        Write-Host -ForegroundColor Green "Use cdnProfileName : $($cdnProfileName)"
+        $profileSku = "Standard_Microsoft"
+        
+        Write-Host -ForegroundColor Green "New cdnProfileName"
+        New-AzCdnProfile -SkuName $profileSku -Name $cdnProfileName -ResourceGroupName $env.ResourceGroupName -Location Global
 
-                $cdnProfileName = 'p-' + (RandomString -allChars $false -len 6);
-                Write-Host -ForegroundColor Green "Use cdnProfileName : $($cdnProfileName)"
-
-                $profileSku = "Standard_Microsoft";
-                New-AzCdnProfile -SkuName $profileSku -Name $cdnProfileName -ResourceGroupName $ResourceGroupName -Location Global
-                Remove-AzCdnProfile -Name $cdnProfileName -ResourceGroupName $ResourceGroupName
-            } Finally
-            {
-                Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
-            }
-        } | Should -Not -Throw
+        Write-Host -ForegroundColor Green "Remove cdnProfileName"
+        Remove-AzCdnProfile -Name $cdnProfileName -ResourceGroupName $env.ResourceGroupName
     }
 
     It 'DeleteViaIdentity' {
-        { 
-            $PSDefaultParameterValues['Disabled'] = $true
-            $ResourceGroupName = 'testps-rg-' + (RandomString -allChars $false -len 6)
-            try
-            {
-                Write-Host -ForegroundColor Green "Create test group $($ResourceGroupName)"
-                New-AzResourceGroup -Name $ResourceGroupName -Location $env.location
+        $cdnProfileName = 'p-psName020'
+        Write-Host -ForegroundColor Green "Use cdnProfileName : $($cdnProfileName)"
+        $profileSku = "Standard_Microsoft"
+        
+        Write-Host -ForegroundColor Green "New cdnProfileName"
+        New-AzCdnProfile -SkuName $profileSku -Name $cdnProfileName -ResourceGroupName $env.ResourceGroupName -Location Global
 
-                $cdnProfileName = 'p-' + (RandomString -allChars $false -len 6);
-                Write-Host -ForegroundColor Green "Use cdnProfileName : $($cdnProfileName)"
+        Write-Host -ForegroundColor Green "Get cdnProfileName"
+        $profileObject = Get-AzCdnProfile -ResourceGroupName $env.ResourceGroupName -Name $cdnProfileName
 
-                $profileSku = "Standard_Microsoft";
-                New-AzCdnProfile -SkuName $profileSku -Name $cdnProfileName -ResourceGroupName $ResourceGroupName -Location Global
-                Get-AzCdnProfile -ResourceGroupName $ResourceGroupName -Name $cdnProfileName | Remove-AzCdnProfile
-            } Finally
-            {
-                Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
-            }
-        } | Should -Not -Throw
+        Write-Host -ForegroundColor Green "Remove cdnProfileName"
+        Remove-AzCdnProfile -InputObject $profileObject
     }
 }
