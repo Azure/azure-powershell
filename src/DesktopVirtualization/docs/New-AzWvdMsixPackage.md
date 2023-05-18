@@ -47,6 +47,8 @@ This command adds MSIX package from specified image path to HostPool
 
 ### Example 2: Creates New MSIX Package in the HostPool
 ```powershell
+$apps = "<PackagedApplication>"
+$deps = "<PackageDependencies>"
 New-AzWvdMsixPackage -FullName PackageFullName `
                      -HostPoolName HostPoolName `
                      -ResourceGroupName ResourceGroupName `
@@ -76,7 +78,8 @@ This command adds MSIX Package in the specified HostPool
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -216,7 +219,7 @@ List of package applications.
 To construct, see NOTES section for PACKAGEAPPLICATION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IMsixPackageApplications[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.IMsixPackageApplications[]
 Parameter Sets: CreateExpanded
 Aliases:
 
@@ -233,7 +236,7 @@ List of package dependencies.
 To construct, see NOTES section for PACKAGEDEPENDENCY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IMsixPackageDependencies[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.IMsixPackageDependencies[]
 Parameter Sets: CreateExpanded
 Aliases:
 
@@ -374,7 +377,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IMsixPackage
+### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.IMsixPackage
 
 ## NOTES
 

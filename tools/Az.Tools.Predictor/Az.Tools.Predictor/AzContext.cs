@@ -127,7 +127,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         }
 
         /// <inheritdoc/>
-        public bool IsInternal { get; internal set; }
+        public bool IsInternal { get; private set; }
 
         public AzContext(IPowerShellRuntime powerShellRuntime) => _powerShellRuntime
              = powerShellRuntime;
@@ -138,11 +138,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             AzVersion = GetAzVersion();
             RawUserId = GetUserAccountId();
             HashUserId = GenerateSha256HashString(RawUserId);
-
-            if (!IsInternal)
-            {
-                IsInternal = RawUserId.EndsWith(AzContext.InternalUserSuffix, StringComparison.OrdinalIgnoreCase);
-            }
+            IsInternal = RawUserId.EndsWith(AzContext.InternalUserSuffix, StringComparison.OrdinalIgnoreCase);
         }
 
         internal string RawUserId { get; set; }

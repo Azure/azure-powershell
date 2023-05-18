@@ -1,8 +1,8 @@
 {
-  "New-AzStorageMoverProject+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testStorageMover/providers/Microsoft.StorageMover/storageMovers/testStoMover14068b735/projects/testProject4068b735?api-version=2022-07-01-preview+1": {
+  "New-AzStorageMoverProject+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testStorageMover/providers/Microsoft.StorageMover/storageMovers/testStoMover14068b735/projects/testProject4068b735?api-version=2023-03-01+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testStorageMover/providers/Microsoft.StorageMover/storageMovers/testStoMover14068b735/projects/testProject4068b735?api-version=2022-07-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testStorageMover/providers/Microsoft.StorageMover/storageMovers/testStoMover14068b735/projects/testProject4068b735?api-version=2023-03-01",
       "Content": "{\r\n  \"properties\": {\r\n    \"description\": \"test project description\"\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -37,10 +37,10 @@
       "isContentBase64": false
     }
   },
-  "New-AzStorageMoverProject+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testStorageMover/providers/Microsoft.StorageMover/storageMovers/testStoMover14068b735/projects/testProject4068b735?api-version=2022-07-01-preview+2": {
+  "New-AzStorageMoverProject+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testStorageMover/providers/Microsoft.StorageMover/storageMovers/testStoMover14068b735/projects/testProject4068b735?api-version=2023-03-01+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testStorageMover/providers/Microsoft.StorageMover/storageMovers/testStoMover14068b735/projects/testProject4068b735?api-version=2022-07-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testStorageMover/providers/Microsoft.StorageMover/storageMovers/testStoMover14068b735/projects/testProject4068b735?api-version=2023-03-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {

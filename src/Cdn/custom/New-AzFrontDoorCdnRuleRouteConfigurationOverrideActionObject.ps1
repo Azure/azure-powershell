@@ -21,12 +21,12 @@ Create an in-memory object for DeliveryRuleRouteConfigurationOverrideAction.
 Create an in-memory object for DeliveryRuleRouteConfigurationOverrideAction.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.DeliveryRuleRouteConfigurationOverrideAction
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.DeliveryRuleRouteConfigurationOverrideAction
 .Link
 https://learn.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnRuleRouteConfigurationOverrideActionObject
 #>
 function New-AzFrontDoorCdnRuleRouteConfigurationOverrideActionObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.DeliveryRuleRouteConfigurationOverrideAction')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.DeliveryRuleRouteConfigurationOverrideAction')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -62,7 +62,7 @@ function New-AzFrontDoorCdnRuleRouteConfigurationOverrideActionObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.DeliveryRuleRouteConfigurationOverrideAction]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.DeliveryRuleRouteConfigurationOverrideAction]::New()
 
         if ($PSBoundParameters.ContainsKey('CacheConfigurationCacheBehavior')) {
             $Object.CacheConfigurationCacheBehavior = $CacheConfigurationCacheBehavior

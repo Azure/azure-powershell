@@ -33,4 +33,22 @@ Describe 'New-AzNetworkSecurityPerimeterAccessRule' {
 
         } | Should -Not -Throw
     }
+
+    It 'CreateExpandedWithEmailAddresses' {
+        {
+            $emails = @("test123@microsoft.com", "test321@microsoft.com")
+
+            New-AzNetworkSecurityPerimeterAccessRule -Name $env.accessRule2 -ProfileName $env.tmpProfile2 -ResourceGroupName $env.rgname -SecurityPerimeterName $env.tmpNsp1 -EmailAddress $emails -Direction 'Outbound' -Location $env.location
+
+        } | Should -Not -Throw
+    }
+
+    It 'CreateExpandedWithPhoneNumbers' {
+        {
+            $phones = @("+919898989898", "+919898989898")
+
+            New-AzNetworkSecurityPerimeterAccessRule -Name $env.accessRule2 -ProfileName $env.tmpProfile2 -ResourceGroupName $env.rgname -SecurityPerimeterName $env.tmpNsp1 -PhoneNumber $phones -Direction 'Outbound' -Location $env.location
+
+        } | Should -Not -Throw
+    }
 }

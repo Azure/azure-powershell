@@ -86,7 +86,7 @@ The authentication type.
 To construct, see NOTES section for AUTHINFO properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20220501.IAuthInfoBase
+Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.IAuthInfoBase
 Parameter Sets: (All)
 Aliases:
 
@@ -284,7 +284,7 @@ The target service properties
 To construct, see NOTES section for TARGETSERVICE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20220501.ITargetServiceBase
+Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.ITargetServiceBase
 Parameter Sets: (All)
 Aliases:
 
@@ -350,7 +350,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20220501.ILinkerResource
+### Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.ILinkerResource
 
 ## NOTES
 
@@ -365,9 +365,14 @@ AUTHINFO <IAuthInfoBase>: The authentication type.
   - `AuthType <AuthType>`: The authentication type.
 
 INPUTOBJECT <IServiceLinkerIdentity>: Identity Parameter
+  - `[ConnectorName <String>]`: The name of resource.
+  - `[DryrunName <String>]`: The name of dryrun.
   - `[Id <String>]`: Resource identity path
   - `[LinkerName <String>]`: The name Linker resource.
+  - `[Location <String>]`: The name of Azure region.
+  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
   - `[ResourceUri <String>]`: The fully qualified Azure Resource manager identifier of the resource to be connected.
+  - `[SubscriptionId <String>]`: The ID of the target subscription.
 
 TARGETSERVICE <ITargetServiceBase>: The target service properties
   - `Type <TargetServiceType>`: The target service type.

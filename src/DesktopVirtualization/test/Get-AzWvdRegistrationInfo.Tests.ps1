@@ -13,27 +13,34 @@ while(-not $mockingPath) {
 
 Describe 'Get-AzWvdRegistrationInfo' {	
     It 'Get RegInfo' {	
-        New-AzWvdHostPool -SubscriptionId $env.SubscriptionId `
-        -ResourceGroupName $env.ResourceGroup `
-        -Name 'HostPoolPowershellContained1' `
-        -Location $env.Location `
-        -HostPoolType 'Shared' `
-        -LoadBalancerType 'DepthFirst' `
-        -RegistrationTokenOperation 'Update' `
-        -ExpirationTime $((get-date).ToUniversalTime().AddDays(1).ToString('yyyy-MM-ddTHH:mm:ss.fffffffZ')) `
-        -Description 'des' `
-        -FriendlyName 'fri' `
-        -MaxSessionLimit 5 `
-        -VMTemplate $null `
-        -CustomRdpProperty $null `
-        -Ring $null `
-        -ValidationEnvironment:$false `
-        -PreferredAppGroupType 'Desktop'
+        try{
+            New-AzWvdHostPool -SubscriptionId $env.SubscriptionId `
+            -ResourceGroupName $env.ResourceGroup `
+            -Name $env.HostPool `
+            -Location $env.Location `
+            -HostPoolType 'Shared' `
+            -LoadBalancerType 'DepthFirst' `
+            -RegistrationTokenOperation 'Update' `
+            -ExpirationTime $((get-date).ToUniversalTime().AddDays(1).ToString('yyyy-MM-ddTHH:mm:ss.fffffffZ')) `
+            -Description 'des' `
+            -FriendlyName 'fri' `
+            -MaxSessionLimit 5 `
+            -VMTemplate $null `
+            -CustomRdpProperty $null `
+            -Ring $null `
+            -ValidationEnvironment:$false `
+            -PreferredAppGroupType 'Desktop'
 
-        $regToken = Get-AzWvdRegistrationInfo -SubscriptionId $env.SubscriptionId `
-        -ResourceGroupName $env.ResourceGroup `
-        -HostPoolName 'HostPoolPowershellContained1' `
+            $regToken = Get-AzWvdRegistrationInfo -SubscriptionId $env.SubscriptionId `
+            -ResourceGroupName $env.ResourceGroup `
+            -HostPoolName $env.HostPool `
 
-        $regToken.Token | Should -Be 'token'
+            $regToken.Token | Should -Not -BeNullOrEmpty
+        }
+        finally{
+            $hostPool = Remove-AzWvdHostPool -SubscriptionId $env.SubscriptionId `
+                                -ResourceGroupName $env.ResourceGroup `
+                                -Name $env.HostPool
+        }
     }	
 }

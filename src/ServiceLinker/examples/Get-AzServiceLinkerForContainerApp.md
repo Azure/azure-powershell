@@ -21,7 +21,7 @@ Get-AzServiceLinkerForContainerApp -ContainerApp servicelinker-app -ResourceGrou
 
 ```output
 AuthInfo                     : Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Model
-                               s.Api20220501.SecretAuthInfo
+                               s.Api20221101Preview.SecretAuthInfo
 ClientType                   : dotnet
 Id                           : /subscriptions/00000000-0000-0000-0000-000000000000/re 
                                sourceGroups/servicelinker-test-group/providers/ 
@@ -38,7 +38,7 @@ SystemDataLastModifiedAt     :
 SystemDataLastModifiedBy     :
 SystemDataLastModifiedByType :
 TargetService                : Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Model 
-                               s.Api20220501.AzureResource
+                               s.Api20221101Preview.AzureResource
 Type                         : microsoft.servicelinker/linkers
 VNetSolutionType             : serviceEndpoint
 
@@ -57,7 +57,7 @@ $identity | Get-AzServiceLinkerForContainerApp  | Format-List
 
 ```output
 AuthInfo                     : Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Model
-                               s.Api20220501.SecretAuthInfo
+                               s.Api20221101Preview.SecretAuthInfo
 ClientType                   : dotnet
 Id                           : /subscriptions/00000000-0000-0000-0000-000000000000/re 
                                sourceGroups/servicelinker-test-group/providers/ 
@@ -74,7 +74,7 @@ SystemDataLastModifiedAt     :
 SystemDataLastModifiedBy     :
 SystemDataLastModifiedByType :
 TargetService                : Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Model 
-                               s.Api20220501.AzureResource
+                               s.Api20221101Preview.AzureResource
 Type                         : microsoft.servicelinker/linkers
 VNetSolutionType             : serviceEndpoint
 

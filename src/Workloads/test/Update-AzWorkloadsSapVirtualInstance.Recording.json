@@ -1,0 +1,82 @@
+{
+  "Update-AzWorkloadsSapVirtualInstance+[NoContext]+UpdateExpanded+$PATCH+https://management.azure.com/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/db0-vis-rg/providers/Microsoft.Workloads/sapVirtualInstances/DB0?api-version=2023-04-01+1": {
+    "Request": {
+      "Method": "PATCH",
+      "RequestUri": "https://management.azure.com/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/db0-vis-rg/providers/Microsoft.Workloads/sapVirtualInstances/DB0?api-version=2023-04-01",
+      "Content": "{\r\n  \"tags\": {\r\n    \"TestType\": \"PS\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "44" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"01009b22-0000-3400-0000-640f14770000\"" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "mise-correlation-id": [ "0a94f092-6f24-47c0-b091-6412bdf75cb7" ],
+        "Azure-AsyncOperation": [ "subscriptions/49d64d54-e966-4c46-a868-1999802b762c/providers/Microsoft.Workloads/locations/CENTRALUSEUAP/operationStatuses/04cb5ee9-b758-4ca7-accf-fdf0a69617a9*D9A8F8EF15D6E75CE64E8F442A39F1D7AF307793D262CE855530D335419055E3?api-version=2023-04-01" ],
+        "api-supported-versions": [ "2021-12-01-preview, 2022-10-15-preview, 2022-11-01-preview, 2023-04-01" ],
+        "x-ms-request-id": [ "04cb5ee9-b758-4ca7-accf-fdf0a69617a9" ],
+        "x-ms-correlation-request-id": [ "3d64d5b8-4c1d-4f77-929e-7cba2275c704" ],
+        "x-ms-routing-request-id": [ "JIOINDIAWEST:20230313T121801Z:3d64d5b8-4c1d-4f77-929e-7cba2275c704" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 13 Mar 2023 12:18:00 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "2772" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/db0-vis-rg/providers/Microsoft.Workloads/sapVirtualInstances/DB0\",\"name\":\"DB0\",\"type\":\"microsoft.workloads/sapvirtualinstances\",\"location\":\"centraluseuap\",\"tags\":{\"TestType\":\"PS\"},\"systemData\":{\"createdBy\":\"radhafogla@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-02-22T14:10:56.7801642Z\",\"lastModifiedBy\":\"mohitaneja@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-03-13T12:17:57.4496668Z\"},\"identity\":{\"type\":\"UserAssigned\",\"userAssignedIdentities\":{\"/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourcegroups/db0-vis-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/db0-vis-msi\":{\"principalId\":\"251720a5-cb01-4773-87aa-24a4ce1120ba\",\"clientId\":\"6b2ae741-7432-47c2-ae94-23b474014f97\"}}},\"properties\":{\"environment\":\"NonProd\",\"sapProduct\":\"S4HANA\",\"configuration\":{\"configurationType\":\"DeploymentWithOSConfig\",\"appLocation\":\"eastus\",\"infrastructureConfiguration\":{\"deploymentType\":\"SingleServer\",\"subnetId\":\"/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/t-shasarkar-vnet-rg/providers/Microsoft.Network/virtualNetworks/t-shasarkar-eus-vnet/subnets/dbe2e-subnet\",\"virtualMachineConfiguration\":{\"vmSize\":\"Standard_M32ts\",\"imageReference\":{\"sku\":\"82sapha-gen2\",\"publisher\":\"RedHat\",\"version\":\"latest\",\"offer\":\"RHEL-SAP-HA\"},\"osProfile\":{\"adminUsername\":\"azureuser\",\"osConfiguration\":{\"osType\":\"Linux\",\"disablePasswordAuthentication\":true,\"sshKeyPair\":{\"publicKey\":\"ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDiumxKUGxBySO7DPMRsF1tKNJ+00AchN6SpK9POxT3CTTrmxh79VI8WYh62aCQg8xYptiXjkDXkGRLPDXC0LSR0eQpNFC6uOWIf1VNnkPX8x0mWJlkehvEF3p/gvUXd8joS7Pc7+HfZjVTkIUGhqI0pNbJ9q4JNqWHN575J56yFF/Z1/zzuIRGXVhDsgMWs/BGeHLlwUPRQHBx8vCc9oj9CS/9RmqNlX8enfLOuyj8H6hoG+34PNyTQUSaaQ2YjKNgagYOVZu2UNaElA7W/gVENmgWEtUTjRnIjRRvbs/mlBNhKXATsbrYYUiH8MNyZR9KPXG7y2ms2f5rXOG+rtsPApOdEEsf4Ya285iiDHGO+hIMlrWnsPAB3Ep8F1fxO1KU4Cy5BALde4lhur0WvYGNY6SKlr3OudFJ0/26JcDdpL4MyR7v3uvhYH8Xt4nr+zwq2ZWvEgYB4ARs7gB5IOArdhFroCfGDG29USqXBaoG0d6nMEr3q/odtgnKIdc57p0= generated-by-azure\"}}}},\"appResourceGroup\":\"db0-vis-rg\"},\"softwareConfiguration\":{\"softwareInstallationType\":\"SAPInstallWithoutOSConfig\",\"bomUrl\":\"https://radhastorageaccount.blob.core.windows.net/sapbits1909/sapfiles/boms/S41909SPS03_v0011ms/S41909SPS03_v0011ms.yaml\",\"softwareVersion\":\"SAP S/4HANA 1909 SPS 03\",\"sapBitsStorageAccountId\":\"/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/radha_ire_rg/providers/Microsoft.Storage/storageAccounts/radhastorageaccount\"},\"osSapConfiguration\":{\"sapFqdn\":\"redmond.microsoft.corp.net\"}},\"managedResourceGroupConfiguration\":{\"name\":\"mrg-DB0-ce6a8a\"},\"status\":\"Running\",\"health\":\"Healthy\",\"state\":\"RegistrationComplete\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzWorkloadsSapVirtualInstance+[NoContext]+UpdateViaIdentityExpanded+$PATCH+https://management.azure.com/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/db0-vis-rg/providers/Microsoft.Workloads/sapVirtualInstances/DB0?api-version=2023-04-01+1": {
+    "Request": {
+      "Method": "PATCH",
+      "RequestUri": "https://management.azure.com/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/db0-vis-rg/providers/Microsoft.Workloads/sapVirtualInstances/DB0?api-version=2023-04-01",
+      "Content": "{\r\n  \"tags\": {\r\n    \"TestType\": \"PS\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "44" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"01009e22-0000-3400-0000-640f147c0000\"" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "mise-correlation-id": [ "0ab1f6c1-1317-46d4-9320-cdceac0218a0" ],
+        "Azure-AsyncOperation": [ "subscriptions/49d64d54-e966-4c46-a868-1999802b762c/providers/Microsoft.Workloads/locations/CENTRALUSEUAP/operationStatuses/615ca8f8-9fef-4918-a0d7-6a4bb46282e7*D9A8F8EF15D6E75CE64E8F442A39F1D7AF307793D262CE855530D335419055E3?api-version=2023-04-01" ],
+        "api-supported-versions": [ "2021-12-01-preview, 2022-10-15-preview, 2022-11-01-preview, 2023-04-01" ],
+        "x-ms-request-id": [ "615ca8f8-9fef-4918-a0d7-6a4bb46282e7" ],
+        "x-ms-correlation-request-id": [ "b88a075f-e49d-4004-be5c-20dc42023951" ],
+        "x-ms-routing-request-id": [ "JIOINDIAWEST:20230313T121806Z:b88a075f-e49d-4004-be5c-20dc42023951" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 13 Mar 2023 12:18:05 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "2772" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/db0-vis-rg/providers/Microsoft.Workloads/sapVirtualInstances/DB0\",\"name\":\"DB0\",\"type\":\"microsoft.workloads/sapvirtualinstances\",\"location\":\"centraluseuap\",\"tags\":{\"TestType\":\"PS\"},\"systemData\":{\"createdBy\":\"radhafogla@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-02-22T14:10:56.7801642Z\",\"lastModifiedBy\":\"mohitaneja@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-03-13T12:18:02.9184305Z\"},\"identity\":{\"type\":\"UserAssigned\",\"userAssignedIdentities\":{\"/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourcegroups/db0-vis-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/db0-vis-msi\":{\"principalId\":\"251720a5-cb01-4773-87aa-24a4ce1120ba\",\"clientId\":\"6b2ae741-7432-47c2-ae94-23b474014f97\"}}},\"properties\":{\"environment\":\"NonProd\",\"sapProduct\":\"S4HANA\",\"configuration\":{\"configurationType\":\"DeploymentWithOSConfig\",\"appLocation\":\"eastus\",\"infrastructureConfiguration\":{\"deploymentType\":\"SingleServer\",\"subnetId\":\"/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/t-shasarkar-vnet-rg/providers/Microsoft.Network/virtualNetworks/t-shasarkar-eus-vnet/subnets/dbe2e-subnet\",\"virtualMachineConfiguration\":{\"vmSize\":\"Standard_M32ts\",\"imageReference\":{\"sku\":\"82sapha-gen2\",\"publisher\":\"RedHat\",\"version\":\"latest\",\"offer\":\"RHEL-SAP-HA\"},\"osProfile\":{\"adminUsername\":\"azureuser\",\"osConfiguration\":{\"osType\":\"Linux\",\"disablePasswordAuthentication\":true,\"sshKeyPair\":{\"publicKey\":\"ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDiumxKUGxBySO7DPMRsF1tKNJ+00AchN6SpK9POxT3CTTrmxh79VI8WYh62aCQg8xYptiXjkDXkGRLPDXC0LSR0eQpNFC6uOWIf1VNnkPX8x0mWJlkehvEF3p/gvUXd8joS7Pc7+HfZjVTkIUGhqI0pNbJ9q4JNqWHN575J56yFF/Z1/zzuIRGXVhDsgMWs/BGeHLlwUPRQHBx8vCc9oj9CS/9RmqNlX8enfLOuyj8H6hoG+34PNyTQUSaaQ2YjKNgagYOVZu2UNaElA7W/gVENmgWEtUTjRnIjRRvbs/mlBNhKXATsbrYYUiH8MNyZR9KPXG7y2ms2f5rXOG+rtsPApOdEEsf4Ya285iiDHGO+hIMlrWnsPAB3Ep8F1fxO1KU4Cy5BALde4lhur0WvYGNY6SKlr3OudFJ0/26JcDdpL4MyR7v3uvhYH8Xt4nr+zwq2ZWvEgYB4ARs7gB5IOArdhFroCfGDG29USqXBaoG0d6nMEr3q/odtgnKIdc57p0= generated-by-azure\"}}}},\"appResourceGroup\":\"db0-vis-rg\"},\"softwareConfiguration\":{\"softwareInstallationType\":\"SAPInstallWithoutOSConfig\",\"bomUrl\":\"https://radhastorageaccount.blob.core.windows.net/sapbits1909/sapfiles/boms/S41909SPS03_v0011ms/S41909SPS03_v0011ms.yaml\",\"softwareVersion\":\"SAP S/4HANA 1909 SPS 03\",\"sapBitsStorageAccountId\":\"/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/radha_ire_rg/providers/Microsoft.Storage/storageAccounts/radhastorageaccount\"},\"osSapConfiguration\":{\"sapFqdn\":\"redmond.microsoft.corp.net\"}},\"managedResourceGroupConfiguration\":{\"name\":\"mrg-DB0-ce6a8a\"},\"status\":\"Running\",\"health\":\"Healthy\",\"state\":\"RegistrationComplete\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  }
+}

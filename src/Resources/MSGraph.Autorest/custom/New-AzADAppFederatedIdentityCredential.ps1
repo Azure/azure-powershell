@@ -20,7 +20,7 @@ Create federatedIdentityCredential for applications.
 .Description
 Create federatedIdentityCredential for applications.
 .Link
-https://learn.microsoft.com/powershell/module/az.resources/new-azadappfederatedidentitycredential
+https://learn.microsoft.com/powershell/module/az.resources/new-azadappfederatedcredential
 #>
 function New-AzADAppFederatedCredential {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphFederatedIdentityCredential])]

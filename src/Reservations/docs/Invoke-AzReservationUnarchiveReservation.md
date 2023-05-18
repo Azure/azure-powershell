@@ -8,7 +8,7 @@ schema: 2.0.0
 # Invoke-AzReservationUnarchiveReservation
 
 ## SYNOPSIS
-Unarchiving a `Reservation` moves it to the state it was before archiving.\n
+Restores a `Reservation` to the state it was before archiving.\n
 
 ## SYNTAX
 
@@ -25,7 +25,7 @@ Invoke-AzReservationUnarchiveReservation -InputObject <IReservationsIdentity> [-
 ```
 
 ## DESCRIPTION
-Unarchiving a `Reservation` moves it to the state it was before archiving.\n
+Restores a `Reservation` to the state it was before archiving.\n
 
 ## EXAMPLES
 
@@ -37,6 +37,7 @@ Invoke-AzReservationUnarchiveReservation -ReservationId "50000000-aaaa-bbbb-cccc
 ```output
 200
 ```
+
 Unarchive Reservation which is in cancelled/expired/failed state
 
 ## PARAMETERS
@@ -88,7 +89,7 @@ Accept wildcard characters: False
 ```
 
 ### -ReservationId
-Id of the Reservation Item
+Id of the reservation item
 
 ```yaml
 Type: System.String
@@ -170,7 +171,7 @@ To create the parameters described below, construct a hash table containing the 
 
 `INPUTOBJECT <IReservationsIdentity>`: Identity Parameter
   - `[Id <String>]`: Resource identity path
-  - `[ReservationId <String>]`: Id of the Reservation Item
+  - `[ReservationId <String>]`: Id of the reservation item
   - `[ReservationOrderId <String>]`: Order Id of the reservation
   - `[SubscriptionId <String>]`: Id of the subscription
 

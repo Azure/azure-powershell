@@ -42,6 +42,7 @@ Describe 'Remove-AzFunctionApp' {
                               -PlanName $planName `
                               -StorageAccount $env.storageAccountWindows  `
                               -Runtime PowerShell `
+                              -RuntimeVersion 7.2 `
                               -FunctionsVersion 4
 
             Write-Verbose "Validate function app properties" -Verbose

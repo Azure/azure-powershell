@@ -229,7 +229,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             Assert.Equal(0, actual.Count);
 
             actual = this._noPredictorService.GetSuggestion(predictionContext, 1, 1, CancellationToken.None);
-            Assert.Null(actual);
+            Assert.Empty(actual.PredictiveSuggestions);
         }
 
         /// <summary>

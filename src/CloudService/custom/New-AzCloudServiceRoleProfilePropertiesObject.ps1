@@ -20,7 +20,7 @@ Create a in-memory object for CloudServiceRoleProfileProperties
 Create a in-memory object for CloudServiceRoleProfileProperties
 #>
 function New-AzCloudServiceRoleProfilePropertiesObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.CloudServiceRoleProfileProperties')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.CloudServiceRoleProfileProperties')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -39,7 +39,7 @@ function New-AzCloudServiceRoleProfilePropertiesObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.CloudServiceRoleProfileProperties]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.CloudServiceRoleProfileProperties]::New()
 
         $Object.Name = $Name
         $Object.SkuCapacity = $SkuCapacity

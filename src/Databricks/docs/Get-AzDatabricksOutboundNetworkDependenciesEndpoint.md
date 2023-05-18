@@ -10,7 +10,7 @@ schema: 2.0.0
 ## SYNOPSIS
 Gets the list of endpoints that VNET Injected Workspace calls Azure Databricks Control Plane.
 You must configure outbound access with these endpoints.
-For more information, see https://docs.microsoft.com/en-us/azure/databricks/administration-guide/cloud-configurations/azure/udr
+For more information, see https://learn.microsoft.com/en-us/azure/databricks/administration-guide/cloud-configurations/azure/udr
 
 ## SYNTAX
 
@@ -22,7 +22,7 @@ Get-AzDatabricksOutboundNetworkDependenciesEndpoint -ResourceGroupName <String> 
 ## DESCRIPTION
 Gets the list of endpoints that VNET Injected Workspace calls Azure Databricks Control Plane.
 You must configure outbound access with these endpoints.
-For more information, see https://docs.microsoft.com/en-us/azure/databricks/administration-guide/cloud-configurations/azure/udr
+For more information, see https://learn.microsoft.com/en-us/azure/databricks/administration-guide/cloud-configurations/azure/udr
 
 ## EXAMPLES
 
@@ -81,12 +81,13 @@ Endpoint : {{
 
 This command gets the list of endpoints that VNET Injected Workspace calls Azure Databricks Control Plane.
 You must configure outbound access with these endpoints.
-For more information, see https://docs.microsoft.com/en-us/azure/databricks/administration-guide/cloud-configurations/azure/udr
+For more information, see https://learn.microsoft.com/en-us/azure/databricks/administration-guide/cloud-configurations/azure/udr
 
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -153,7 +154,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20220401Preview.IOutboundEnvironmentEndpoint
+### Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IOutboundEnvironmentEndpoint
 
 ## NOTES
 

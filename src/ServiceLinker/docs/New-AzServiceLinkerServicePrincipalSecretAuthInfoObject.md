@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.ServiceLinker
-online version: https://learn.microsoft.com/powershell/module/az.ServiceLinker/new-AzServiceLinkerServicePrincipalSecretAuthInfoObject
+online version: https://learn.microsoft.com/powershell/module/az.ServiceLinker/new-azservicelinkerserviceprincipalsecretauthinfoobject
 schema: 2.0.0
 ---
 
@@ -91,7 +91,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20220501.ServicePrincipalSecretAuthInfo
+### Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.ServicePrincipalSecretAuthInfo
 
 ## NOTES
 

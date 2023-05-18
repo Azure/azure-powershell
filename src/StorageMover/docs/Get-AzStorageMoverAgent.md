@@ -201,7 +201,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20220701Preview.IAgent
+### Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20230301.IAgent
 
 ## NOTES
 

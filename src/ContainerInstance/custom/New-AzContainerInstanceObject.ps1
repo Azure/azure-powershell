@@ -22,7 +22,7 @@ Create a in-memory object for Container
 https://learn.microsoft.com/powershell/module/az.ContainerInstance/new-AzContainerInstanceObject
 #>
 function New-AzContainerInstanceObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.Container')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.Container')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -30,7 +30,7 @@ function New-AzContainerInstanceObject {
         [string[]]
         $Command,
         [Parameter(HelpMessage="The environment variables to set in the container instance.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.IEnvironmentVariable[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IEnvironmentVariable[]]
         $EnvironmentVariable,
         [Parameter(Mandatory, HelpMessage="The name of the image used to create the container instance.")]
         [string]
@@ -55,7 +55,7 @@ function New-AzContainerInstanceObject {
         [int]
         $LivenessProbeFailureThreshold,
         [Parameter(HelpMessage="The HTTP headers for liveness probe.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.IHttpHeader[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IHttpHeader[]]
         $LivenessProbeHttpGetHttpHeader,
         [Parameter(HelpMessage="The path to probe.")]
         [string]
@@ -83,7 +83,7 @@ function New-AzContainerInstanceObject {
         [string]
         $Name,
         [Parameter(HelpMessage="The exposed ports on the container instance.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.IContainerPort[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IContainerPort[]]
         $Port,
         [Parameter(HelpMessage="The commands to execute within the container.")]
         [string[]]
@@ -92,7 +92,7 @@ function New-AzContainerInstanceObject {
         [int]
         $ReadinessProbeFailureThreshold,
         [Parameter(HelpMessage="The HTTP headers for readiness probe.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.IHttpHeader[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IHttpHeader[]]
         $ReadinessProbeHttpGetHttpHeader,
         [Parameter(HelpMessage="The path to probe.")]
         [string]
@@ -130,12 +130,12 @@ function New-AzContainerInstanceObject {
         [string]
         $RequestsGpuSku,
         [Parameter(HelpMessage="The volume mounts available to the container instance.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.IVolumeMount[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IVolumeMount[]]
         $VolumeMount
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.Container]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.Container]::New()
 
         $Object.Command = $Command
         $Object.EnvironmentVariable = $EnvironmentVariable

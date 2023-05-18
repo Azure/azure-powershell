@@ -22,7 +22,7 @@ The Restart-AzMigrateServerReplication cmdlet repairs the replication for the sp
 https://learn.microsoft.com/powershell/module/az.migrate/restart-azmigrateserverreplication
 #>
 function Restart-AzMigrateServerReplication {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IJob])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IJob])]
     [CmdletBinding(DefaultParameterSetName = 'ByIDVMwareCbt', PositionalBinding = $false)]
     param(
         [Parameter(ParameterSetName = 'ByIDVMwareCbt', Mandatory)]
@@ -33,7 +33,7 @@ function Restart-AzMigrateServerReplication {
 
         [Parameter(ParameterSetName = 'ByInputObjectVMwareCbt', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IMigrationItem]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IMigrationItem]
         # Specifies the machine object of the replicating server.
         ${InputObject},
 
@@ -119,7 +119,7 @@ function Restart-AzMigrateServerReplication {
             
         $ReplicationMigrationItem = Az.Migrate.internal\Get-AzMigrateReplicationMigrationItem @PSBoundParameters
         if ($ReplicationMigrationItem -and ($ReplicationMigrationItem.ProviderSpecificDetail.InstanceType -eq 'VMwarecbt')) {
-            $ProviderSepcificDetail = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.VMwareCbtResyncInput]::new()
+            $ProviderSepcificDetail = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.VMwareCbtResyncInput]::new()
             $ProviderSepcificDetail.InstanceType = 'VMwareCbt'
             $ProviderSepcificDetail.SkipCbtReset = 'true'
             $null = $PSBoundParameters.Add('ProviderSpecificDetail', $ProviderSepcificDetail)

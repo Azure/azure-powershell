@@ -631,7 +631,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-SHAREDPRIVATELINKRESOURCE <ISharedPrivateLinkResource[]>: The list of shared private link resources in this workspace.
+`SHAREDPRIVATELINKRESOURCE <ISharedPrivateLinkResource[]>`: The list of shared private link resources in this workspace.
   - `[GroupId <String>]`: The private link resource group id.
   - `[Name <String>]`: Unique name of the private link.
   - `[PrivateLinkResourceId <String>]`: The resource id that private link links to.

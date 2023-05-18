@@ -139,6 +139,10 @@ namespace StaticAnalysis
                         {
                             Analyzers.Add(new SignatureVerifier.SignatureVerifier());
                         }
+                        if (analyzerName.ToLower().Equals("cmdlet-diff"))
+                        {
+                            Analyzers.Add(new CmdletDiffAnalyzer.CmdletDiffAnalyzer());
+                        }
                         if (analyzerName.ToLower().Equals("help"))
                         {
                             Analyzers.Add(new HelpAnalyzer.HelpAnalyzer());
@@ -158,6 +162,7 @@ namespace StaticAnalysis
                     Analyzers.Add(new BreakingChangeAnalyzer.BreakingChangeAnalyzer());
                     Analyzers.Add(new DependencyAnalyzer.DependencyAnalyzer());
                     Analyzers.Add(new SignatureVerifier.SignatureVerifier());
+                    Analyzers.Add(new CmdletDiffAnalyzer.CmdletDiffAnalyzer());
                     Analyzers.Add(new HelpAnalyzer.HelpAnalyzer());
                     Analyzers.Add(new UXMetadataAnalyzer.UXMetadataAnalyzer());
                     needToCheckIssue = true;

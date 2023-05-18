@@ -8,7 +8,7 @@ function RandomString([bool]$allChars, [int32]$len) {
 $env = @{}
 function setupEnv() {
     # NOTE:Need manually steps.
-    # 1. create the domain for use in the test before runing test. Help link:https://docs.microsoft.com/en-us/azure/static-web-apps/custom-domain#configure-dns-provider
+    # 1. create the domain for use in the test before runing test. Help link:https://learn.microsoft.com/en-us/azure/static-web-apps/custom-domain#configure-dns-provider
     # 2. Invite user join static web domian.
 
     # Preload subscriptionId and tenant from context, which will be used in test
@@ -86,9 +86,9 @@ function setupEnv() {
     # Test for web jobs of the app service.
     # Cannot deploy use resource template json. We have to create resource for use in test via the azure portal.
     # 1. create resource group.
-    # 2. create  App Service plan. ref:https://docs.microsoft.com/en-us/azure/app-service/overview-hosting-plans
-    # 3. create  App Service. ref:https://docs.microsoft.com/en-us/azure/app-service/
-    # 4. deployment slot. ref: https://docs.microsoft.com/en-us/azure/app-service/deploy-staging-slots
+    # 2. create  App Service plan. ref:https://learn.microsoft.com/en-us/azure/app-service/overview-hosting-plans
+    # 3. create  App Service. ref:https://learn.microsoft.com/en-us/azure/app-service/
+    # 4. deployment slot. ref: https://learn.microsoft.com/en-us/azure/app-service/deploy-staging-slots
     # 5. Create webjob for app and slot.
     
     Write-Host -ForegroundColor Green "start to create test group"

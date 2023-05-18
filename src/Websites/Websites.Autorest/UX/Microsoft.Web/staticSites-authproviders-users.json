@@ -1,0 +1,57 @@
+{
+  "resourceType": "staticSites/authproviders/users",
+  "apiVersion": "2020-12-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.websites"
+  },
+  "commands": [
+    {
+      "name": "Remove-AzStaticWebAppUser",
+      "description": "Description for Deletes the user entry from the static site.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}/authproviders/{authprovider}/users/{userid}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.websites/remove-azstaticwebappuser"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-AuthProvider <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]",
+              "-UserId <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Description for Deletes the user entry from the static site.",
+          "parameters": [
+            {
+              "name": "-AuthProvider",
+              "value": "[Path.authprovider]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.name]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            },
+            {
+              "name": "-UserId",
+              "value": "[Path.userid]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

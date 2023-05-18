@@ -14,4 +14,3 @@ Remove-AzStaticWebAppUser -InputObject $userList
 ```
 
 This command deletes all users from the static site.
-

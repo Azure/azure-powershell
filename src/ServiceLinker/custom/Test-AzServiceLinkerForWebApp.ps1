@@ -35,7 +35,7 @@ INPUTOBJECT <IServiceLinkerIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.servicelinker/test-azservicelinkerforwebapp
 #>
 function Test-AzServiceLinkerForWebApp {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20220501.IValidateResult])]
+  [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.IValidateResult])]
 [CmdletBinding(DefaultParameterSetName='Validate', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Validate', Mandatory)]

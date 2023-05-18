@@ -24,13 +24,12 @@ Describe 'Get-AzReservation'{
     It 'Get' {
         $res = Get-AzReservation -ReservationOrderId "10000000-aaaa-bbbb-cccc-100000000001" -ReservationId "50000000-aaaa-bbbb-cccc-100000000003"
         $res | Should -Not -Be $null
-        $res.Location | Should -Be "westeurope"
+        $res.Location | Should -Be "global"
         $res.Id | Should -Be "/providers/microsoft.capacity/reservationOrders/10000000-aaaa-bbbb-cccc-100000000001/reservations/50000000-aaaa-bbbb-cccc-100000000003"
-        $res.Name | Should -Be "10000000-aaaa-bbbb-cccc-100000000001/50000000-aaaa-bbbb-cccc-100000000003"
-        $res.Name | Should -Be "10000000-aaaa-bbbb-cccc-100000000001/50000000-aaaa-bbbb-cccc-100000000003"
-        $res.Sku | Should -Be "Standard_B1ls"
+        $res.Name | Should -Be "50000000-aaaa-bbbb-cccc-100000000003"
+        $res.SkuName | Should -Be "sles_standard_1-2_vcpu_vm"
         $res.ProvisioningState | Should -Be "Succeeded"
-        $res.SkuDescription | Should -Be "Reserved VM Instance, Standard_B1ls, EU West, 3 Years"
+        $res.SkuDescription | Should -Be "SUSE Linux Enterprise Server Standard - 1-2 vCPU VM"
     }
 
     It 'List' {
@@ -45,11 +44,10 @@ Describe 'Get-AzReservation'{
                 }
         $res = Get-AzReservation -InputObject $param
         $res | Should -Not -Be $null
-        $res.Location | Should -Be "westeurope"
+        $res.Location | Should -Be "global"
         $res.Id | Should -Be "/providers/microsoft.capacity/reservationOrders/10000000-aaaa-bbbb-cccc-100000000001/reservations/50000000-aaaa-bbbb-cccc-100000000003"
-        $res.Name | Should -Be "10000000-aaaa-bbbb-cccc-100000000001/50000000-aaaa-bbbb-cccc-100000000003"
-        $res.Name | Should -Be "10000000-aaaa-bbbb-cccc-100000000001/50000000-aaaa-bbbb-cccc-100000000003"
-        $res.Sku | Should -Be "Standard_B1ls"
-        $res.SkuDescription | Should -Be "Reserved VM Instance, Standard_B1ls, EU West, 3 Years"
+        $res.Name | Should -Be "50000000-aaaa-bbbb-cccc-100000000003"
+        $res.SkuName | Should -Be "sles_standard_1-2_vcpu_vm"
+        $res.SkuDescription | Should -Be "SUSE Linux Enterprise Server Standard - 1-2 vCPU VM"
     }
 }
