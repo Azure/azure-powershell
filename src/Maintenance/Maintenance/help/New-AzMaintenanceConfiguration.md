@@ -19,7 +19,7 @@ New-AzMaintenanceConfiguration [-ResourceGroupName] <string> [-Name] <string> [-
     [-LinuxParameterPackageNameMaskToInclude <HashSet[string]>] [-LinuxParameterPackageNameMaskToExclude <HashSet[string]>]
     [-LinuxParameterClassificationToInclude <HashSet[string]>] [-WindowParameterKbNumberToInclude <HashSet[string]>]
     [-WindowParameterKbNumberToExclude <HashSet[string]>] [-WindowParameterClassificationToInclude <HashSet[string]>]
-    [-WindowParameterExcludeKbRequiringReboot <bool>] [-InstallPatchRebootSetting
+    [-WindowParameterExcludeKbRequiringReboot <bool>] [-PreTask <string>] [-PostTask <string>] [-InstallPatchRebootSetting]
     <string>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -232,6 +232,34 @@ Required: True
 Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -PreTask
+List of tasks executed before schedule. e.g. [{'source' :'runbook', 'taskScope': 'Resource', 'parameters': { 'arg1': 'value1'}}]. This parameter is used to specify a command or script that should be run before the maintenance tasks are performed. This can be used to perform any necessary preparations or cleanup actions before the maintenance tasks are run. This parameter accepts a string value that specifies the command or script to be run. The command or script can be specified as a simple string or as an array of strings. If an array of strings is specified, each element in the array will be treated as a separate command or script.
+
+```yaml
+Type: string
+Parameter Sets: (All)
+Aliases:
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PostTask
+List of tasks executed after schedule. e.g. [{'source' :'runbook', 'taskScope': 'Resource', 'parameters': { 'arg1': 'value1'}}]. This parameter is used to specify a command or script that should be run after the maintenance tasks are performed. This can be used to perform any necessary follow-up actions after the maintenance tasks are completed. This parameter accepts a string value that specifies the command or script to be run. The command or script can be specified as a simple string or as an array of strings. If an array of strings is specified, each element in the array will be treated as a separate command or script.
+
+```yaml
+Type: string
+Parameter Sets: (All)
+Aliases:
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
