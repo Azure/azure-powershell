@@ -2,7 +2,6 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 online version: https://learn.microsoft.com/powershell/module/az.network/get-azVHubInboundRoute
-
 schema: 2.0.0
 ---
 
@@ -15,20 +14,20 @@ Retrieves the inbound routes of a virtual hub connection
 
 ### ByVirtualHubName (Default)
 ```
-Get-AzVHubInboundRoute -ResourceGroupName <String> -VirtualHubName <String> -ResourceUri <String> -VirtualWanConnectionType <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzVHubInboundRoute -ResourceGroupName <String> -VirtualHubName <String> [-ResourceUri <String>]
+ [-VirtualWanConnectionType <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByVirtualHubObject
 ```
-Get-AzVHubInboundRoute -VirtualHubObject <PSVirtualHub> -ResourceUri <String> -VirtualWanConnectionType <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzVHubInboundRoute -VirtualHubObject <PSVirtualHub> [-ResourceUri <String>]
+ [-VirtualWanConnectionType <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByVirtualHubResourceId
 ```
-Get-AzVHubInboundRoute -VirtualHubResourceId <String> -ResourceUri <String> -VirtualWanConnectionType <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzVHubInboundRoute -VirtualHubResourceId <String> [-ResourceUri <String>]
+ [-VirtualWanConnectionType <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -45,7 +44,7 @@ New-AzVirtualHub -ResourceGroupName "testRg" -Name "testHub" -Location "westcent
 $virtualHub = Get-AzVirtualHub -ResourceGroupName "testRg" -Name "testHub"
 $hubVnetConnectionId = "/subscriptions/testSub/resourceGroups/testRg/providers/Microsoft.Network/virtualHubs/testHub/hubVirtualNetworkConnections/testCon"
 Get-AzVHubInboundRoute -VirtualHubObject $virtualHub -ResourceUri $hubVnetConnectionId -VirtualWanConnectionType "HubVirtualNetworkConnection"
-``` 
+```
 
 ```output
 Value : [
@@ -76,17 +75,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceUri
-The resource uri of a virtual wan connection resource.
-
-```yaml
-Type: System.String
-
-Required: True
-Accept pipeline input: False (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 The resource group name.
 
@@ -95,7 +83,37 @@ Type: System.String
 Parameter Sets: ByVirtualHubName
 Aliases:
 
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceUri
+The resource uri of a virtual wan connection resource.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -VirtualHubName
+The virtual hub resource name.
+
+```yaml
+Type: System.String
+Parameter Sets: ByVirtualHubName
+Aliases: ParentVirtualHubName, ParentResourceName
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -110,25 +128,10 @@ Type: Microsoft.Azure.Commands.Network.Models.PSVirtualHub
 Parameter Sets: ByVirtualHubObject
 Aliases: ParentObject, ParentVirtualHub
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -VirtualHubName
-The virtual hub resource name.
-
-```yaml
-Type: System.String
-Parameter Sets: ByVirtualHubName
-Aliases: VirtualHubName, ParentVirtualHubName, ParentResourceName
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -140,7 +143,7 @@ Type: System.String
 Parameter Sets: ByVirtualHubResourceId
 Aliases: VirtualHubId, ParentVirtualHubId
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -152,9 +155,13 @@ The virtual wan connection type.
 
 ```yaml
 Type: System.String
+Parameter Sets: (All)
+Aliases:
 
-Required: True
-Accept pipeline input: False (ByPropertyName)
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

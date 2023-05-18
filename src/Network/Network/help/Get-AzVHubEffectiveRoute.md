@@ -2,7 +2,6 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 online version: https://learn.microsoft.com/powershell/module/az.network/get-azVHubEffectiveRoute
-
 schema: 2.0.0
 ---
 
@@ -15,20 +14,20 @@ Retrieves the effective routes of a virtual hub resource
 
 ### ByVirtualHubName (Default)
 ```
-Get-AzVHubEffectiveRoute -ResourceGroupName <String> -VirtualHubName <String> -ResourceId <String> -VirtualWanResourceType <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzVHubEffectiveRoute -ResourceGroupName <String> -VirtualHubName <String> [-ResourceId <String>]
+ [-VirtualWanResourceType <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByVirtualHubObject
 ```
-Get-AzVHubEffectiveRoute -VirtualHubObject <PSVirtualHub> -ResourceId <String> -VirtualWanResourceType <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzVHubEffectiveRoute -VirtualHubObject <PSVirtualHub> [-ResourceId <String>]
+ [-VirtualWanResourceType <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByVirtualHubResourceId
 ```
-Get-AzVHubEffectiveRoute -VirtualHubResourceId <String> -ResourceId <String> -VirtualWanResourceType <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzVHubEffectiveRoute -VirtualHubResourceId <String> [-ResourceId <String>]
+ [-VirtualWanResourceType <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -45,7 +44,7 @@ New-AzVirtualHub -ResourceGroupName "testRg" -Name "testHub" -Location "westcent
 $virtualHub = Get-AzVirtualHub -ResourceGroupName "testRg" -Name "testHub"
 $hubRouteTableId = "/subscriptions/testSub/resourceGroups/testRg/providers/Microsoft.Network/virtualHubs/testHub/hubRouteTables/defaultRouteTable"
 Get-AzVHubEffectiveRoute -VirtualHubObject $virtualHub -ResourceId $hubRouteTableId -VirtualWanResourceType "RouteTable"
-``` 
+```
 
 ```output
 Value : [
@@ -83,17 +82,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceId
-The resource id of a virtual wan resource.
-
-```yaml
-Type: System.String
-
-Required: True
-Accept pipeline input: False (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 The resource group name.
 
@@ -102,7 +90,37 @@ Type: System.String
 Parameter Sets: ByVirtualHubName
 Aliases:
 
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceId
+The resource id of a virtual wan resource.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -VirtualHubName
+The virtual hub resource name.
+
+```yaml
+Type: System.String
+Parameter Sets: ByVirtualHubName
+Aliases: ParentVirtualHubName, ParentResourceName
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -117,25 +135,10 @@ Type: Microsoft.Azure.Commands.Network.Models.PSVirtualHub
 Parameter Sets: ByVirtualHubObject
 Aliases: ParentObject, ParentVirtualHub
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -VirtualHubName
-The virtual hub resource name.
-
-```yaml
-Type: System.String
-Parameter Sets: ByVirtualHubName
-Aliases: VirtualHubName, ParentVirtualHubName, ParentResourceName
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -147,7 +150,7 @@ Type: System.String
 Parameter Sets: ByVirtualHubResourceId
 Aliases: VirtualHubId, ParentVirtualHubId
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -159,9 +162,13 @@ The virtual wan resource type.
 
 ```yaml
 Type: System.String
+Parameter Sets: (All)
+Aliases:
 
-Required: True
-Accept pipeline input: False (ByPropertyName)
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

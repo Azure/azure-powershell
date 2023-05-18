@@ -14,9 +14,8 @@ Creates a RoutingConfiguration object.
 
 ```
 New-AzRoutingConfiguration -AssociatedRouteTable <String> -Label <String[]> -Id <String[]>
- -InboundRouteMap <String> -OutboundRouteMap <String>
- [-StaticRoute <PSStaticRoute[]>] [-VnetLocalRouteOverrideCriteria <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-StaticRoute <PSStaticRoute[]>] [-VnetLocalRouteOverrideCriteria <String>] [-InboundRouteMap <String>]
+ [-OutboundRouteMap <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
