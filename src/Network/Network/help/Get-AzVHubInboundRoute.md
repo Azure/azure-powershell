@@ -1,38 +1,38 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://learn.microsoft.com/powershell/module/az.network/get-azvhubeffectiveroutes
+online version: https://learn.microsoft.com/powershell/module/az.network/get-azVHubInboundRoute
 
 schema: 2.0.0
 ---
 
-# Get-AzVHubEffectiveRoutes
+# Get-AzVHubInboundRoute
 
 ## SYNOPSIS
-Retrieves the effective routes of a virtual hub resource
+Retrieves the inbound routes of a virtual hub connection
 
 ## SYNTAX
 
 ### ByVirtualHubName (Default)
 ```
-Get-AzVHubEffectiveRoutes -ResourceGroupName <String> -VirtualHubName <String> -ResourceId <String> -VirtualWanResourceType <String>
+Get-AzVHubInboundRoute -ResourceGroupName <String> -VirtualHubName <String> -ResourceUri <String> -VirtualWanConnectionType <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByVirtualHubObject
 ```
-Get-AzVHubEffectiveRoutes -VirtualHubObject <PSVirtualHub> -ResourceId <String> -VirtualWanResourceType <String> [-DefaultProfile <IAzureContextContainer>]
+Get-AzVHubInboundRoute -VirtualHubObject <PSVirtualHub> -ResourceUri <String> -VirtualWanConnectionType <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ### ByVirtualHubResourceId
 ```
-Get-AzVHubEffectiveRoutes -VirtualHubResourceId <String> -ResourceId <String> -VirtualWanResourceType <String> [-DefaultProfile <IAzureContextContainer>]
+Get-AzVHubInboundRoute -VirtualHubResourceId <String> -ResourceUri <String> -VirtualWanConnectionType <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Gets the effective routes of the given virtual hub resource
+Gets the inbound routes of the given virtual hub connection
 
 ## EXAMPLES
 
@@ -43,28 +43,21 @@ New-AzVirtualWan -ResourceGroupName "testRg" -Name "testWan" -Location "westcent
 $virtualWan = Get-AzVirtualWan -ResourceGroupName "testRg" -Name "testWan"
 New-AzVirtualHub -ResourceGroupName "testRg" -Name "testHub" -Location "westcentralus" -AddressPrefix "10.0.0.0/16" -VirtualWan $virtualWan
 $virtualHub = Get-AzVirtualHub -ResourceGroupName "testRg" -Name "testHub"
-$hubRouteTableId = "/subscriptions/testSub/resourceGroups/testRg/providers/Microsoft.Network/virtualHubs/testHub/hubRouteTables/defaultRouteTable"
-Get-AzVHubEffectiveRoutes -VirtualHubObject $virtualHub -ResourceId $hubRouteTableId -VirtualWanResourceType "RouteTable"
+$hubVnetConnectionId = "/subscriptions/testSub/resourceGroups/testRg/providers/Microsoft.Network/virtualHubs/testHub/hubVirtualNetworkConnections/testCon"
+Get-AzVHubInboundRoute -VirtualHubObject $virtualHub -ResourceUri $hubVnetConnectionId -VirtualWanConnectionType "HubVirtualNetworkConnection"
 ``` 
 
 ```output
 Value : [
           {
-            "AddressPrefixes": [
-              "10.2.0.0/16"
-            ],
-            "NextHops": [
-              "/subscriptions/testSub/resourceGroups/testRg/providers/Microsoft.Network/virtu
-        alHubs/testHub/hubVirtualNetworkConnections/testConnection"
-            ],
-            "NextHopType": "Virtual Network Connection",
-            "RouteOrigin": "/subscriptions/testSub/resourceGroups/testRg/providers/Microsoft.
-        Network/virtualHubs/testHub/hubVirtualNetworkConnections/testConnection"
+            "Prefix": "10.2.0.0/16",
+            "BgpCommunities": "4293853166",
+            "AsPath": ""
           }
         ]
 ```
 
-This command gets the effective routes of the virtual hub default route table.
+This command gets the inbound routes of the virtual hub spoke vnet connection.
 
 ## PARAMETERS
 
@@ -83,8 +76,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceId
-The resource id of a virtual wan resource.
+### -ResourceUri
+The resource uri of a virtual wan connection resource.
 
 ```yaml
 Type: System.String
@@ -154,8 +147,8 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -VirtualWanResourceType
-The virtual wan resource type.
+### -VirtualWanConnectionType
+The virtual wan connection type.
 
 ```yaml
 Type: System.String
@@ -176,7 +169,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Network.Models.PSVirtualHubEffectiveRouteList
+### Microsoft.Azure.Commands.Network.Models.PSVirtualHubEffectiveRouteMapRouteList
 
 ## NOTES
 

@@ -51,9 +51,11 @@
 * Added optional property 'AuxiliarySku' to cmdlet `New-AzNetworkInterface` to help choose performance on an AuxiliaryMode enabled Network Interface.
 * Added a new value, 'AcceleratedConnections' for existing property 'AuxiliaryMode' for `New-AzNetworkInterface`
 * Add new cmdlets to get virtual hub effective routes and in/outbound routes 
-    - `Get-AzVHubEffectiveRoutes`
-    - `Get-AzVHubInboundRoutes`
-    - `Get-AzVHubOutboundRoutes`
+    - `Get-AzVHubEffectiveRoute`
+    - `Get-AzVHubInboundRoute`
+    - `Get-AzVHubOutboundRoute`
+* Added optional property `AuxiliarySku` to cmdlet `New-AzNetworkInterface` to help choose performance on an `AuxiliaryMode` enabled Network Interface.
+* Added a new value `AcceleratedConnections` for existing property `AuxiliaryMode` for `New-AzNetworkInterface`
 
 ## Version 5.7.0
 * Onboarded `Microsoft.HardwareSecurityModules/cloudHsmClusters` to private link cmdlets

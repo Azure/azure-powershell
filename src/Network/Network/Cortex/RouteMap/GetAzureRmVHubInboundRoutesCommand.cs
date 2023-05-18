@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Network
     using System.Management.Automation;
 
     [Cmdlet(VerbsCommon.Get,
-        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VHubInboundRoutes",
+        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VHubInboundRoute",
         DefaultParameterSetName = CortexParameterSetNames.ByVirtualHubName),
         OutputType(typeof(PSVirtualHubEffectiveRouteMapRouteList))]
     public class GetAzureRmVHubInboundRoutesCommand : VirtualHubBaseCmdlet

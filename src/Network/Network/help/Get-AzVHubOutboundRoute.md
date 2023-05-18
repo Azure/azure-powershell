@@ -1,38 +1,38 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://learn.microsoft.com/powershell/module/az.network/get-azvhubinboundroutes
+online version: https://learn.microsoft.com/powershell/module/az.network/get-azVHubOutboundRoute
 
 schema: 2.0.0
 ---
 
-# Get-AzVHubInboundRoutes
+# Get-AzVHubOutboundRoute
 
 ## SYNOPSIS
-Retrieves the inbound routes of a virtual hub connection
+Retrieves the outbound routes of a virtual hub connection
 
 ## SYNTAX
 
 ### ByVirtualHubName (Default)
 ```
-Get-AzVHubInboundRoutes -ResourceGroupName <String> -VirtualHubName <String> -ResourceUri <String> -VirtualWanConnectionType <String>
+Get-AzVHubOutboundRoute -ResourceGroupName <String> -VirtualHubName <String> -ResourceUri <String> -VirtualWanConnectionType <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByVirtualHubObject
 ```
-Get-AzVHubInboundRoutes -VirtualHubObject <PSVirtualHub> -ResourceUri <String> -VirtualWanConnectionType <String> [-DefaultProfile <IAzureContextContainer>]
+Get-AzVHubOutboundRoute -VirtualHubObject <PSVirtualHub> -ResourceUri <String> -VirtualWanConnectionType <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ### ByVirtualHubResourceId
 ```
-Get-AzVHubInboundRoutes -VirtualHubResourceId <String> -ResourceUri <String> -VirtualWanConnectionType <String> [-DefaultProfile <IAzureContextContainer>]
+Get-AzVHubOutboundRoute -VirtualHubResourceId <String> -ResourceUri <String> -VirtualWanConnectionType <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Gets the inbound routes of the given virtual hub connection
+Gets the outbound routes of the given virtual hub connection
 
 ## EXAMPLES
 
@@ -44,7 +44,7 @@ $virtualWan = Get-AzVirtualWan -ResourceGroupName "testRg" -Name "testWan"
 New-AzVirtualHub -ResourceGroupName "testRg" -Name "testHub" -Location "westcentralus" -AddressPrefix "10.0.0.0/16" -VirtualWan $virtualWan
 $virtualHub = Get-AzVirtualHub -ResourceGroupName "testRg" -Name "testHub"
 $hubVnetConnectionId = "/subscriptions/testSub/resourceGroups/testRg/providers/Microsoft.Network/virtualHubs/testHub/hubVirtualNetworkConnections/testCon"
-Get-AzVHubInboundRoutes -VirtualHubObject $virtualHub -ResourceUri $hubVnetConnectionId -VirtualWanConnectionType "HubVirtualNetworkConnection"
+Get-AzVHubOutboundRoute -VirtualHubObject $virtualHub -ResourceUri $hubVnetConnectionId -VirtualWanConnectionType "HubVirtualNetworkConnection"
 ``` 
 
 ```output
@@ -57,7 +57,7 @@ Value : [
         ]
 ```
 
-This command gets the inbound routes of the virtual hub spoke vnet connection.
+This command gets the outbound routes of the virtual hub spoke vnet connection.
 
 ## PARAMETERS
 
