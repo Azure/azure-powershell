@@ -41,15 +41,23 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
         protected string ResolveBicepFile(string TemplateFile)
         {
-            string filePath = "";
             if (BicepUtility.IsBicepFile(TemplateFile))
             {
-                filePath = BicepUtility.BuildFile(this.ResolvePath(TemplateFile), this.WriteVerbose, this.WriteWarning);
-                return filePath;
+                return BicepUtility.BuildFile(this.ResolvePath(TemplateFile), this.WriteVerbose, this.WriteWarning);
             }
             else
                 return TemplateFile;
             
+        }
+
+        protected string ResolveBicepParameterFile(string TemplateParameterFile)
+        {
+            if (BicepUtility.IsBicepparamFile(TemplateParameterFile))
+            {
+                return BicepUtility.BuildParamFile(this.ResolvePath(TemplateParameterFile), this.WriteVerbose, this.WriteWarning);
+            }
+            else
+                return TemplateParameterFile;
         }
 
         protected Hashtable GetParameterObject(string parameterFile)

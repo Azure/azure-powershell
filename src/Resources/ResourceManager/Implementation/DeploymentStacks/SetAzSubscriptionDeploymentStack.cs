@@ -15,6 +15,7 @@
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities;
     using Microsoft.Azure.Management.ResourceManager.Models;
     using Microsoft.WindowsAzure.Commands.Utilities.Common;
     using System;
@@ -144,6 +145,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [ValidateNotNullOrEmpty]
         public Hashtable Tag { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "The query string (for example, a SAS token) to be used with the TemplateUri parameter. Would be used in case of linked templates")]
+        public string QueryString { get; set; }
+
+        private string protectedTemplateUri { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation when overwriting an existing stack.")]
         public SwitchParameter Force { get; set; }
 
@@ -161,6 +167,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 Hashtable parameters = new Hashtable();
                 string filePath = "";
                 string parameterFilePath = "";
+
+                if (BicepUtility.IsBicepparamFile(TemplateParameterFile) && !BicepUtility.IsBicepFile(TemplateFile))
+                {
+                    throw new NotSupportedException($"Bicepparam file {TemplateParameterFile} is only supported with a Bicep template file");
+                }
+
                 switch (ParameterSetName)
                 {
                     case ParameterlessTemplateFileParameterSetName:
@@ -183,6 +195,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                                 string.Format(ProjectResources.InvalidFilePath, TemplateParameterFile));
                         }
                         parameters = this.GetParameterObject(parameterFilePath);
+
+                        // contruct the protected template URI if a query string was provided
+                        if (!string.IsNullOrEmpty(QueryString))
+                        {
+                            if (QueryString.Substring(0, 1) == "?")
+                                protectedTemplateUri = TemplateUri + QueryString;
+                            else
+                                protectedTemplateUri = TemplateUri + "?" + QueryString;
+                        }
                         break;
                     case ParameterFileTemplateFileParameterSetName:
                         filePath = this.TryResolvePath(TemplateFile);
@@ -199,7 +220,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                             throw new PSInvalidOperationException(
                                 string.Format(ProjectResources.InvalidFilePath, TemplateParameterFile));
                         }
-                        parameters = this.GetParameterObject(parameterFilePath);
+                        parameters = this.GetParameterObject(ResolveBicepParameterFile(parameterFilePath));
                         TemplateUri = filePath;
                         break;
                     case ParameterObjectTemplateFileParameterSetName:
@@ -216,6 +237,25 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     case ParameterObjectTemplateSpecParameterSetName:
                     case ParameterObjectTemplateUriParameterSetName:
                         parameters = GetTemplateParameterObject(TemplateParameterObject);
+                        
+                        // contruct the protected template URI if a query string was provided
+                        if (!string.IsNullOrEmpty(QueryString))
+                        {
+                            if (QueryString.Substring(0, 1) == "?")
+                                protectedTemplateUri = TemplateUri + QueryString;
+                            else
+                                protectedTemplateUri = TemplateUri + "?" + QueryString;
+                        }
+                        break;
+                    case ParameterlessTemplateUriParameterSetName:
+                        // contruct the protected template URI if a query string was provided
+                        if (!string.IsNullOrEmpty(QueryString))
+                        {
+                            if (QueryString.Substring(0, 1) == "?")
+                                protectedTemplateUri = TemplateUri + QueryString;
+                            else
+                                protectedTemplateUri = TemplateUri + "?" + QueryString;
+                        }
                         break;
                 }
 
@@ -231,7 +271,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     var deploymentStack = DeploymentStacksSdkClient.SubscriptionCreateOrUpdateDeploymentStack(
                             Name,
                             Location,
-                            TemplateUri,
+                            !string.IsNullOrEmpty(protectedTemplateUri) ? protectedTemplateUri : TemplateUri,
                             TemplateSpecId,
                             TemplateParameterUri,
                             parameters,
