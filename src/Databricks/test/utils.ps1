@@ -37,7 +37,7 @@ function setupEnv() {
     $vNetSubnetName2 = RandomString -allChars $false -len 6
     $vNetSubnetName3 = RandomString -allChars $false -len 6
     $vNetName = RandomString -allChars $false -len 6
-    $keyVaultName = RandomString -allChars $false -len 6
+    $keyVaultName = "azps" + (RandomString -allChars $false -len 6)
 
     $env.Add("networkSecurityRuleName", $networkSecurityRuleName)
     $env.Add("networkSecurityGroupName", $networkSecurityGroupName)
