@@ -958,8 +958,8 @@ function GetStackDefinitionForRuntime
     {
         # Try to get the default version
         $defaultVersionFound = $false
-        $RuntimeVersion = $supportedRuntimes[$Runtime]
-                            | ForEach-Object { if ($_.IsDefault -and ($_.SupportedFunctionsExtensionVersions -contains $functionsExtensionVersion)) { $_.Version } }
+        $RuntimeVersion = $supportedRuntimes[$Runtime] |
+                            ForEach-Object { if ($_.IsDefault -and ($_.SupportedFunctionsExtensionVersions -contains $functionsExtensionVersion)) { $_.Version } }
 
         if ($RuntimeVersion)
         {
@@ -971,10 +971,10 @@ function GetStackDefinitionForRuntime
             Write-Debug "$DEBUG_PREFIX Runtime '$Runtime' does not have a default version. Finding the latest version."
 
             # Iterate through the list to find the latest non preview version
-            $latestVersion = $supportedRuntimes[$Runtime]
-                                | Sort-Object -Property Version -Descending
-                                | Where-Object { $_.SupportedFunctionsExtensionVersions -contains $functionsExtensionVersion -and (-not $_.IsPreview) }
-                                | Select-Object -First 1 -ExpandProperty Version
+            $latestVersion = $supportedRuntimes[$Runtime] |
+                                Sort-Object -Property Version -Descending |
+                                Where-Object { $_.SupportedFunctionsExtensionVersions -contains $functionsExtensionVersion -and (-not $_.IsPreview) } |
+                                Select-Object -First 1 -ExpandProperty Version
 
             if ($latestVersion)
             {
@@ -1007,10 +1007,10 @@ function GetStackDefinitionForRuntime
     {
         $errorMessage = "Runtime '$Runtime' version '$RuntimeVersion' in Functions version '$FunctionsVersion' on '$OSType' is not supported."
 
-        $supporedVersions = @($supportedRuntimes[$Runtime]
-                                | Sort-Object -Property Version -Descending
-                                | Where-Object { $_.SupportedFunctionsExtensionVersions -contains $functionsExtensionVersion }
-                                | Select-Object -ExpandProperty Version)
+        $supporedVersions = @($supportedRuntimes[$Runtime] |
+                                Sort-Object -Property Version -Descending |
+                                Where-Object { $_.SupportedFunctionsExtensionVersions -contains $functionsExtensionVersion } |
+                                Select-Object -ExpandProperty Version)
 
         if ($supporedVersions.Count -gt 0)
         {
@@ -1665,7 +1665,7 @@ function GetFunctionAppStackDefinition
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.DoNotExportAttribute()]
     param ()
 
-    if ($null -ne $env:SYSTEM_DEFINITIONID -or $null -ne $env:Release_DefinitionId -or $null -ne $env:AZUREPS_HOST_ENVIRONMENT)
+    if ($env:FunctionsTestMode -or ($null -ne $env:SYSTEM_DEFINITIONID -or $null -ne $env:Release_DefinitionId -or $null -ne $env:AZUREPS_HOST_ENVIRONMENT))
     {
         Write-Debug "$DEBUG_PREFIX Running on test mode. Using built in json file definition."
         $json = GetBuiltInFunctionAppStacksDefinition -DoNotShowWarning
