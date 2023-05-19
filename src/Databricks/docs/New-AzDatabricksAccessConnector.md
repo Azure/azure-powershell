@@ -24,15 +24,15 @@ Creates or updates azure databricks accessConnector.
 
 ## EXAMPLES
 
-### Example 1: Creates or updates azure databricks accessConnector
+### Example 1: Creates or updates azure databricks accessConnector.
 ```powershell
-New-AzDatabricksAccessConnector -ResourceGroupName databricks-rg-xyv4k5 -Name databricks-ac -Location eastus
+New-AzDatabricksAccessConnector -ResourceGroupName azps_test_gp_db -Name azps-databricks-accessconnector -Location eastus -IdentityType 'SystemAssigned'
 ```
 
 ```output
-Location Name          ResourceGroupName
--------- ----          -----------------
-eastus   databricks-ac databricks-rg-xyv4k5
+Location Name                            ResourceGroupName
+-------- ----                            -----------------
+eastus   azps-databricks-accessconnector azps_test_gp_db
 ```
 
 This command creates or updates azure databricks accessConnector.
