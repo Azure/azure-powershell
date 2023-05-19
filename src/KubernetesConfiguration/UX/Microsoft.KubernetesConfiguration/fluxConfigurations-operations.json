@@ -1,0 +1,67 @@
+{
+  "resourceType": "fluxConfigurations/operations",
+  "apiVersion": "2022-11-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.kubernetesconfiguration"
+  },
+  "commands": [
+    {
+      "name": "Get-AzKubernetesConfigFluxOperationStatus",
+      "description": "Get Async Operation status",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{clusterRp}/{clusterResourceName}/{clusterName}/providers/Microsoft.KubernetesConfiguration/fluxConfigurations/{fluxConfigurationName}/operations/{operationId}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.kubernetesconfiguration/get-azkubernetesconfigfluxoperationstatus"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-ClusterName <String>",
+              "-ClusterRp <String>",
+              "-ClusterType <String>",
+              "-FluxConfigurationName <String>",
+              "-OperationId <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get Async Operation status",
+          "parameters": [
+            {
+              "name": "-ClusterName",
+              "value": "[Path.clusterName]"
+            },
+            {
+              "name": "-ClusterRp",
+              "value": "[Path.clusterRp]"
+            },
+            {
+              "name": "-ClusterType",
+              "value": "[Path.clusterResourceName]"
+            },
+            {
+              "name": "-FluxConfigurationName",
+              "value": "[Path.fluxConfigurationName]"
+            },
+            {
+              "name": "-OperationId",
+              "value": "[Path.operationId]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,62 @@
+{
+  "resourceType": "extensions",
+  "apiVersion": "2022-11-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.kubernetesconfiguration"
+  },
+  "commands": [
+    {
+      "name": "Get-AzKubernetesExtension",
+      "description": "Gets Kubernetes Cluster Extension.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{clusterRp}/{clusterResourceName}/{clusterName}/providers/Microsoft.KubernetesConfiguration/extensions/{extensionName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.kubernetesconfiguration/get-azkubernetesextension"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-ClusterName <String>",
+              "-ClusterRp <String>",
+              "-ClusterType <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Gets Kubernetes Cluster Extension.",
+          "parameters": [
+            {
+              "name": "-ClusterName",
+              "value": "[Path.clusterName]"
+            },
+            {
+              "name": "-ClusterRp",
+              "value": "[Path.clusterRp]"
+            },
+            {
+              "name": "-ClusterType",
+              "value": "[Path.clusterResourceName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.extensionName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

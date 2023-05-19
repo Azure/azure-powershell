@@ -1,0 +1,115 @@
+{
+  "resourceType": "sourceControlConfigurations",
+  "apiVersion": "2022-11-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.kubernetesconfiguration"
+  },
+  "commands": [
+    {
+      "name": "Get-AzKubernetesConfiguration",
+      "description": "Gets details of the Source Control Configuration.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{clusterRp}/{clusterResourceName}/{clusterName}/providers/Microsoft.KubernetesConfiguration/sourceControlConfigurations/{sourceControlConfigurationName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.kubernetesconfiguration/get-azkubernetesconfiguration"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-ClusterName <String>",
+              "-ClusterRp <String>",
+              "-ClusterType <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Gets details of the Source Control Configuration.",
+          "parameters": [
+            {
+              "name": "-ClusterName",
+              "value": "[Path.clusterName]"
+            },
+            {
+              "name": "-ClusterRp",
+              "value": "[Path.clusterRp]"
+            },
+            {
+              "name": "-ClusterType",
+              "value": "[Path.clusterResourceName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.sourceControlConfigurationName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzKubernetesConfiguration",
+      "description": "This will delete the YAML file used to set up the Source control configuration, thus stopping future sync from the source repo.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{clusterRp}/{clusterResourceName}/{clusterName}/providers/Microsoft.KubernetesConfiguration/sourceControlConfigurations/{sourceControlConfigurationName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.kubernetesconfiguration/remove-azkubernetesconfiguration"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-ClusterName <String>",
+              "-ClusterRp <String>",
+              "-ClusterType <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "This will delete the YAML file used to set up the Source control configuration, thus stopping future sync from the source repo.",
+          "parameters": [
+            {
+              "name": "-ClusterName",
+              "value": "[Path.clusterName]"
+            },
+            {
+              "name": "-ClusterRp",
+              "value": "[Path.clusterRp]"
+            },
+            {
+              "name": "-ClusterType",
+              "value": "[Path.clusterResourceName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.sourceControlConfigurationName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
