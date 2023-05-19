@@ -50,6 +50,7 @@
     - `New-AzApplicationGatewayFirewallPolicySetting`
 * Added optional property 'AuxiliarySku' to cmdlet `New-AzNetworkInterface` to help choose performance on an AuxiliaryMode enabled Network Interface.
 * Added a new value, 'AcceleratedConnections' for existing property 'AuxiliaryMode' for `New-AzNetworkInterface`
+* Allowed not to provide `Rules` in `PSApplicationGatewayFirewallPolicyManagedRuleGroupOverride`, which would return an empty `RuleID` to be passed to NRP.
 
 ## Version 5.7.0
 * Onboarded `Microsoft.HardwareSecurityModules/cloudHsmClusters` to private link cmdlets
