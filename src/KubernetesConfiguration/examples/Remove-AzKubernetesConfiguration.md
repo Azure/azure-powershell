@@ -7,8 +7,7 @@ This command removes a configuation of Kubernetes Cluster by name.
 
 ### Example 2: Remove a configuation of Kubernetes Cluster by object
 ```powershell
-$kubConf = Get-AzKubernetesConfiguration -ClusterName azpstest_cluster_arc -ClusterType ConnectedClusters -ResourceGroupName azps_test_group -Name azpstestk8s-operator
-Remove-AzKubernetesConfiguration -InputObject $kubConf
+Get-AzKubernetesConfiguration -ClusterName azpstest_cluster_arc -ClusterType ConnectedClusters -ResourceGroupName azps_test_group -Name azpstestk8s-operator | Remove-AzKubernetesConfiguration
 ```
 
 This command removes a configuation of Kubernetes Cluster by object.
