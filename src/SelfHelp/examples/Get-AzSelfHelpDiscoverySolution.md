@@ -5,10 +5,9 @@
 ```
 
 ```output
-Name        SystemDataCreatedAt SystemDataCreatedBy SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType
-----        ------------------- ------------------- ----------------------- ------------------------ ------------------------ ----------------------------
+Name
+----
 KeyVaultUnauthorizedNetworkInsight
-KeyVaultUnauthorizedAclInsight
+```
 
 Get Solution Metadata by resource id
-```
