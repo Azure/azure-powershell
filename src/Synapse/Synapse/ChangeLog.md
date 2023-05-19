@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 3.0.0
 * Removed the unnecessary breaking change of parameter `-SparkConfigFilePath` for `New-AzSynapseSparkPool` and `Update-AzSynapseSparkPool` cmdlets
 
 ## Version 2.3.1

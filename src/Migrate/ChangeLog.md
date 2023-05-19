@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.2.0
 * Added support for Windows Server OS upgrade while migrating the server to Azure using Azure Migrate
 * Added fix for keyvault SPN Id coming as null for some users
 
