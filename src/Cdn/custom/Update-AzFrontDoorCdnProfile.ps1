@@ -179,6 +179,11 @@ function Update-AzFrontDoorCdnProfile {
     process {
         $hasTag = $PSBoundParameters.Remove('Tag')
         $hasOriginResponseTimeout = $PSBoundParameters.Remove('OriginResponseTimeoutSecond')
+        $hasIdentityType = $PSBoundParameters.Remove('IdentityType')
+        $hasIdentityUserAssignedIdentity = $PSBoundParameters.Remove('IdentityUserAssignedIdentity')
+        $hasAsJob = $PSBoundParameters.Remove('AsJob')
+        $hasNoWait = $PSBoundParameters.Remove('NoWait')
+        
 
         if ($PSCmdlet.ParameterSetName -eq 'UpdateExpanded') {
             $frontDoorCdnProfile = Get-AzFrontDoorCdnProfile @PSBoundParameters
@@ -202,6 +207,26 @@ function Update-AzFrontDoorCdnProfile {
             if ($hasOriginResponseTimeout)
             {
                 $PSBoundParameters.Add('OriginResponseTimeoutSecond', ${OriginResponseTimeoutSecond})
+            }
+
+            if ($hasIdentityType)
+            {
+                $PSBoundParameters.Add('IdentityType', ${IdentityType})
+            }
+
+            if ($hasIdentityUserAssignedIdentity)
+            {
+                $PSBoundParameters.Add('IdentityUserAssignedIdentity', ${IdentityUserAssignedIdentity})
+            }
+
+            if ($hasAsJob)
+            {
+                $PSBoundParameters.Add('AsJob', ${AsJob})
+            }
+
+            if ($hasNoWait)
+            {
+                $PSBoundParameters.Add('NoWait', ${NoWait})
             }
             
             if(ISFrontDoorCdnProfile($frontDoorCdnProfile.SkuName))

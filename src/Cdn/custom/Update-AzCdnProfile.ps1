@@ -163,6 +163,8 @@ function Update-AzCdnProfile {
     process {
         $hasTag = $PSBoundParameters.Remove('Tag')
         $hasOriginResponseTimeout = $PSBoundParameters.Remove('OriginResponseTimeoutSecond')
+        $hasAsJob = $PSBoundParameters.Remove('AsJob')
+        $hasNoWait = $PSBoundParameters.Remove('NoWait')
 
         if ($PSCmdlet.ParameterSetName -eq 'UpdateExpanded') {
             $cdnProfile = Get-AzCdnProfile @PSBoundParameters
@@ -184,6 +186,16 @@ function Update-AzCdnProfile {
             if ($hasOriginResponseTimeout)
             {
                 $PSBoundParameters.Add('OriginResponseTimeoutSecond', ${OriginResponseTimeoutSecond})
+            }
+
+            if ($hasAsJob)
+            {
+                $PSBoundParameters.Add('AsJob', ${AsJob})
+            }
+
+            if ($hasNoWait)
+            {
+                $PSBoundParameters.Add('NoWait', ${NoWait})
             }
 
             if(-Not (ISFrontDoorCdnProfile($cdnProfile.SkuName))){
