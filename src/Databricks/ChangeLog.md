@@ -27,7 +27,13 @@
     - `ManagedServicesKeyVaultPropertiesKeyName`
     - `ManagedServicesKeyVaultPropertiesKeyVaultUri`
     - `ManagedServicesKeyVaultPropertiesKeyVersion`
-    - `Authorization`  
+    - `Authorization`
+    - `UiDefinitionUri`
+* Added some parameters in the `Update-AzDatabricksVNetPeering`.
+    - `DatabricksAddressSpacePrefix`
+    - `DatabricksVirtualNetworkId`
+    - `RemoteAddressSpacePrefix`
+    - `RemoteVirtualNetworkId` 
 
 ## Version 1.5.0
 * Upgraded API version to 2023-02-01
