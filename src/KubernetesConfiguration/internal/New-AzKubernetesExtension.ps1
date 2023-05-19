@@ -20,26 +20,18 @@ Create a new Kubernetes Cluster Extension.
 .Description
 Create a new Kubernetes Cluster Extension.
 .Example
-PS C:\> New-AzKubernetesExtension -ClusterName azpstest_cluster_arc -ClusterType ConnectedClusters -Name azpstest-extension -ResourceGroupName azpstest_gp -ExtensionType azuremonitor-containers
-
-Name               ExtensionType           Version ProvisioningState AutoUpgradeMinorVersion ReleaseTrain
-----               -------------           ------- ----------------- ----------------------- ------------
-azpstest-extension azuremonitor-containers 2.9.2   Succeeded         True                    Stable
+New-AzKubernetesExtension -ClusterName azpstest_cluster_arc -ClusterType ConnectedClusters -Name azpstest-extension -ResourceGroupName azps_test_group -ExtensionType azuremonitor-containers
 .Example
-PS C:\> New-AzKubernetesExtension -ClusterName azpstest_cluster_arc -ClusterType ConnectedClusters -Name flux -ResourceGroupName azpstest_gp -ExtensionType microsoft.flux -AutoUpgradeMinorVersion -ClusterReleaseNamespace flux-system -IdentityType 'SystemAssigned'
-
-Name ExtensionType  Version ProvisioningState AutoUpgradeMinorVersion ReleaseTrain
----- -------------  ------- ----------------- ----------------------- ------------
-flux microsoft.flux 1.0.0   Succeeded         True                    Stable
+New-AzKubernetesExtension -ClusterName azpstest_cluster_arc -ClusterType ConnectedClusters -Name flux -ResourceGroupName azps_test_group -ExtensionType microsoft.flux -AutoUpgradeMinorVersion -ReleaseNamespace flux-system -IdentityType 'SystemAssigned'
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.IExtension
+Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.IExtension
 .Link
 https://learn.microsoft.com/powershell/module/az.kubernetesconfiguration/new-azkubernetesextension
 #>
 function New-AzKubernetesExtension {
 [Alias('New-AzK8sExtension')]
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.IExtension])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.IExtension])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -56,6 +48,7 @@ param(
     ${ClusterRp},
 
     [Parameter(Mandatory)]
+    [ArgumentCompleter({'ManagedClusters', 'ConnectedClusters', 'ProvisionedClusters'})]
     [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Path')]
     [System.String]
     # The Kubernetes cluster resource name - i.e.
@@ -98,21 +91,14 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
-    [System.String]
-    # Namespace where the extension Release must be placed, for a Cluster scoped extension.
-    # If this namespace does not exist, it will be created
-    ${ClusterReleaseNamespace},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.IExtensionPropertiesConfigurationProtectedSettings]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.IExtensionPropertiesConfigurationProtectedSettings]))]
     [System.Collections.Hashtable]
     # Configuration settings that are sensitive, as name-value pairs for configuring this extension.
     ${ConfigurationProtectedSetting},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.IExtensionPropertiesConfigurationSettings]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.IExtensionPropertiesConfigurationSettings]))]
     [System.Collections.Hashtable]
     # Configuration settings, as name-value pairs for configuring this extension.
     ${ConfigurationSetting},
@@ -134,9 +120,44 @@ param(
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
     [System.String]
-    # Namespace where the extension will be created for an Namespace scoped extension.
+    # A user defined name of the 3rd Party Artifact that is being procured.
+    ${PlanName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
+    [System.String]
+    # The 3rd Party artifact that is being procured.
+    # E.g.
+    # NewRelic.
+    # Product maps to the OfferID specified for the artifact at the time of Data Market onboarding.
+    ${PlanProduct},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
+    [System.String]
+    # A publisher provided promotion code as provisioned in Data Market for the said product/artifact.
+    ${PlanPromotionCode},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
+    [System.String]
+    # The publisher of the 3rd Party Artifact that is being bought.
+    # E.g.
+    # NewRelic
+    ${PlanPublisher},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
+    [System.String]
+    # The version of the desired product/artifact.
+    ${PlanVersion},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
+    [System.String]
+    # Namespace where the extension Release must be placed, for a Cluster scoped extension.
     # If this namespace does not exist, it will be created
-    ${NamespaceTargetNamespace},
+    ${ReleaseNamespace},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
@@ -144,6 +165,13 @@ param(
     # ReleaseTrain this extension participates in for auto-upgrade (e.g.
     # Stable, Preview, etc.) - only if autoUpgradeMinorVersion is 'true'.
     ${ReleaseTrain},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
+    [System.String]
+    # Namespace where the extension will be created for an Namespace scoped extension.
+    # If this namespace does not exist, it will be created
+    ${TargetNamespace},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
@@ -157,7 +185,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter()]
