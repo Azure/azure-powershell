@@ -19,6 +19,15 @@
 -->
 ## Upcoming Release
 * Fixed an issue that Update-AzDatabricksWorkspace doesn't work as expected while enabling encryption. [#21324]
+* Added some parameters in the `New-AzDatabricksWorkspace` and `Update-AzDatabricksWorkspace`.
+    - `ManagedDiskKeyVaultPropertiesKeyName`
+    - `ManagedDiskKeyVaultPropertiesKeyVaultUri`
+    - `ManagedDiskKeyVaultPropertiesKeyVersion`
+    - `ManagedDiskRotationToLatestKeyVersionEnabled`
+    - `ManagedServicesKeyVaultPropertiesKeyName`
+    - `ManagedServicesKeyVaultPropertiesKeyVaultUri`
+    - `ManagedServicesKeyVaultPropertiesKeyVersion`
+    - `Authorization`  
 
 ## Version 1.5.0
 * Upgraded API version to 2023-02-01
