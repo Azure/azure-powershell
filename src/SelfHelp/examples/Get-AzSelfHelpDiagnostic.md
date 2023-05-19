@@ -10,4 +10,4 @@ Name
 ab-test-983
 ```
 
-Get diagnostic by resource id and diagnostic
+Get diagnostic by resource id and diagnostic name
