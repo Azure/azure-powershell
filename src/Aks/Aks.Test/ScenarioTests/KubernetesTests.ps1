@@ -1045,7 +1045,7 @@ function Test-AadProfile {
         #New-AzADGroup -DisplayName $AdGroupName -MailNickname $AdGroupName
         #$adGroup = Get-AzADGroup -DisplayName $AdGroupName
         #$adGroupId = $adGroup.Id
-        $adGroupId = 'e74a0087-33b6-4144-977d-f9802b0031d4'
+        $adGroupId = '1e1dad09-f44e-4ec3-9bdd-6c92d2099c63'
         $AadProfile=@{
             managed=$true
             enableAzureRBAC=$false
@@ -1054,18 +1054,22 @@ function Test-AadProfile {
         $AadProfile=[Microsoft.Azure.Management.ContainerService.Models.ManagedClusterAADProfile]$AadProfile
 
         # create aks cluster with AadProfile
-        New-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName -NodeCount 1 -AadProfile $AadProfile
+        New-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName -NodeCount 1 -AadProfile $AadProfile -DisableLocalAccount
         $cluster = Get-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName
         Assert-ObjectEquals $AadProfile.managed $cluster.AadProfile.managed
         Assert-ObjectEquals $AadProfile.enableAzureRBAC $cluster.AadProfile.enableAzureRBAC
         Assert-ObjectEquals $AadProfile.adminGroupObjectIDs $cluster.AadProfile.adminGroupObjectIDs
         Assert-ObjectEquals '54826b22-38d6-4fb2-bad9-b7b93a3e9c5a' $cluster.AadProfile.TenantID
+        Assert-ObjectEquals $true $cluster.DisableLocalAccounts
+        $cluster = $cluster | Set-AzAksCluster -DisableLocalAccount:$false
+        Assert-ObjectEquals $false $cluster.DisableLocalAccounts
         $cluster | Remove-AzAksCluster -Force
 
         # create aks cluster without AadProfile
         New-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName -NodeCount 1
         $cluster = Get-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName
         Assert-Null $cluster.AadProfile
+        Assert-Null $cluster.DisableLocalAccounts
         # update the aks cluster with AadProfile
         Set-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName -AadProfile $AadProfile
         $cluster = Get-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName
@@ -1074,6 +1078,9 @@ function Test-AadProfile {
         Assert-ObjectEquals "" $cluster.AadProfile.enableAzureRBAC
         Assert-ObjectEquals $AadProfile.adminGroupObjectIDs $cluster.AadProfile.adminGroupObjectIDs
         Assert-ObjectEquals '54826b22-38d6-4fb2-bad9-b7b93a3e9c5a' $cluster.AadProfile.TenantID
+        Assert-Null $cluster.DisableLocalAccounts
+        $cluster = $cluster | Set-AzAksCluster -DisableLocalAccount
+        Assert-ObjectEquals $true $cluster.DisableLocalAccounts
         $cluster | Remove-AzAksCluster -Force
     }
     finally {
