@@ -56,8 +56,9 @@ DotNetFrameworkVersion = '4.7.2'
 RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.12.0'; })
 
 # Assemblies that must be loaded prior to importing this module
-RequiredAssemblies = 'Microsoft.Azure.KeyVault.dll', 
-               'Microsoft.Azure.KeyVault.WebKey.dll', 
+RequiredAssemblies = 'Azure.Security.KeyVault.Secrets.dll',
+                'Azure.Security.KeyVault.Certificates.dll',
+                'Azure.Security.KeyVault.keys.dll',
                'Microsoft.Azure.Management.ServiceFabric.dll', 
                'Microsoft.Azure.Management.ServiceFabricManagedClusters.dll'
 
