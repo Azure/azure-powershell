@@ -1763,6 +1763,26 @@ function GetFunctionAppStackDefinition
     return $json
 }
 
+function ContainsProperty
+{
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.DoNotExportAttribute()]
+    param
+    (
+        [Parameter(Mandatory=$true)]
+        [ValidateNotNullOrEmpty()]
+        [System.Object]
+        $Object,
+
+        [Parameter(Mandatory=$true)]
+        [ValidateNotNullOrEmpty()]
+        [System.String]
+        $PropertyName
+    )
+
+    $result = $Object | Get-Member -MemberType Properties | Where-Object { $_.Name -eq $PropertyName }
+    return ($null -ne $result)
+}
+
 function ParseMinorVersion
 {
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.DoNotExportAttribute()]
@@ -1830,22 +1850,28 @@ function ParseMinorVersion
         Write-Debug "$DEBUG_PREFIX Runtime version for Java is modified to be compatible with the current release. Current version '$RuntimeVersion'"
     }
 
-    # When $env:FunctionsDisplayHiddenRuntimes is set to true, we will display all runtimes
-    if ($RuntimeSettings.IsHidden -and (-not $env:FunctionsDisplayHiddenRuntimes))
-    {
-        Write-Debug "$DEBUG_PREFIX Runtime $runtimeName is hidden. Skipping..."
-        return
-    }
-
     $runtime = [Runtime]::new()
     $runtime.Name = $runtimeName
-    $runtime.IsDefault = $RuntimeSettings.IsDefault
-    $runtime.IsPreview = $RuntimeSettings.IsPreview
-    $runtime.IsHidden = $RuntimeSettings.IsHidden
     $runtime.AppSettingsDictionary = GetDictionary -SettingsDictionary $RuntimeSettings.AppSettingsDictionary
     $runtime.SiteConfigPropertiesDictionary = GetDictionary -SettingsDictionary $RuntimeSettings.SiteConfigPropertiesDictionary
     $runtime.AppInsightsSettings = GetDictionary -SettingsDictionary $RuntimeSettings.AppInsightsSettings
     $runtime.SupportedFunctionsExtensionVersions = GetSupportedFunctionsExtensionVersion -SupportedFunctionsExtensionVersions $RuntimeSettings.SupportedFunctionsExtensionVersions
+
+    foreach ($propertyName in @("isPreview", "isHidden", "isDefault"))
+    {
+        if (ContainsProperty -Object $RuntimeSettings -PropertyName $propertyName)
+        {
+            Write-Debug "$DEBUG_PREFIX Runtime setting contains '$propertyName'"
+            $runtime.$propertyName = $RuntimeSettings.$propertyName
+        }
+    }
+
+    # When $env:FunctionsDisplayHiddenRuntimes is set to true, we will display all runtimes
+    if ($runtime.IsHidden -and (-not $env:FunctionsDisplayHiddenRuntimes))
+    {
+        Write-Debug "$DEBUG_PREFIX Runtime $runtimeName is hidden. Skipping..."
+        return
+    }
 
     if ($RuntimeVersion -and ($runtimeName -ne "custom"))
     {
@@ -2057,13 +2083,12 @@ function SetLinuxandWindowsSupportedRuntimes
                 Write-Debug "$DEBUG_PREFIX runtime full name: $runtimeFullName"
                 Write-Debug "$DEBUG_PREFIX runtime version: $runtimeVersion"
 
-                $windowsRuntimeSettings = $minorVersion.stackSettings.windowsRuntimeSettings
-                $linuxRuntimeSettings = $minorVersion.stackSettings.linuxRuntimeSettings
+                $runtime = $null
 
-                if ($windowsRuntimeSettings)
+                if (ContainsProperty -Object $minorVersion.stackSettings -PropertyName "windowsRuntimeSettings")
                 {
                     $runtime = ParseMinorVersion -RuntimeVersion $runtimeVersion `
-                                                 -RuntimeSettings $windowsRuntimeSettings `
+                                                 -RuntimeSettings $minorVersion.stackSettings.windowsRuntimeSettings `
                                                  -RuntimeFullName $runtimeFullName `
                                                  -PreferredOs $preferredOs
 
@@ -2073,10 +2098,10 @@ function SetLinuxandWindowsSupportedRuntimes
                     }
                 }
 
-                if ($linuxRuntimeSettings)
+                if (ContainsProperty -Object $minorVersion.stackSettings -PropertyName "linuxRuntimeSettings")
                 {
                     $runtime = ParseMinorVersion -RuntimeVersion $runtimeVersion `
-                                                 -RuntimeSettings $linuxRuntimeSettings `
+                                                 -RuntimeSettings $minorVersion.stackSettings.linuxRuntimeSettings `
                                                  -RuntimeFullName $runtimeFullName `
                                                  -PreferredOs $preferredOs `
                                                  -StackIsLinux
