@@ -19,6 +19,8 @@
 --->
 
 ## Upcoming Release
+
+## Version 6.0.0
 * Added new cmdlets for RouteMap child resource of VirtualHub.
     -`Get-AzRouteMap`
     -`New-AzRouteMapRuleCriterion`
