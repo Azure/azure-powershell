@@ -22,6 +22,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Az.ScheduledQueryRule", "..
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Az.Autoscale", "..\Monitor\Autoscale.Autorest\Az.Autoscale.csproj", "{201512D5-675A-40E1-A5BB-ACC091E98DE5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.MonitorWorkspace", "..\Monitor\MonitorWorkspace.Autorest\Az.MonitorWorkspace.csproj", "{755C9328-3DF6-4A7B-AA3B-4135F217F703}"
+EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Compute", "..\Compute\Compute\Compute.csproj", "{52643BD5-6378-49BD-9F6E-DAC9DD8A867B}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OperationalInsights", "..\OperationalInsights\OperationalInsights\OperationalInsights.csproj", "{5BE35A94-C20F-4659-AA29-9B9AEBCFAF36}"
@@ -166,6 +168,10 @@ Global
 		{2A6C5569-1A46-4024-82C5-6218905FC120}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2A6C5569-1A46-4024-82C5-6218905FC120}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2A6C5569-1A46-4024-82C5-6218905FC120}.Release|Any CPU.Build.0 = Release|Any CPU
+		{755C9328-3DF6-4A7B-AA3B-4135F217F703}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{755C9328-3DF6-4A7B-AA3B-4135F217F703}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{755C9328-3DF6-4A7B-AA3B-4135F217F703}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{755C9328-3DF6-4A7B-AA3B-4135F217F703}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
