@@ -227,38 +227,17 @@ Az.DataProtection
 
 Az.DesktopVirtualization
 * Upgraded API version to 2022-09-09
-* Added cmdlet:
-    - ''Get-AzWvdScalingPlanPooledSchedule''
-    - ''New-AzWvdScalingPlanPooledSchedule''
-    - ''Remove-AzWvdScalingPlanPooledSchedule''
-    - ''Update-AzWvdScalingPlanPooledSchedule''
-* Added parameters ''pageSize'', ''isDescending'' and ''initialSkip'' to:
-    - ''Get-AzWvdApplication''
-    - ''Get-AzWvdApplicationGroup''
-    - ''Get-AzWvdDesktop''
-    - ''Get-AzWvdHostPool''
-    - ''Get-AzWvdMsixPackage''
-    - ''Get-AzWvdScalingPlan''
-    - ''Get-AzWvdSessionHost''
-    - ''Get-AzWvdStartMenuItem''
-    - ''Get-AzWvdUserSession''
-    - ''Get-AzWvdWorkspace''
-* Added parameters ''AgentUpdateMaintenanceWindow'', ''AgentUpdateMaintenanceWindowTimeZone'', ''AgentUpdateType'', ''AgentUpdateUseSessionHostLocalTime'' to:
-    - ''New-AzWvdHostPool''
-    - ''Update-AzWvdHostPool''
-* Added parameter ''FriendlyName'' to:
-    - ''New-AzWvdHostPool''
-    - ''Update-AzWvdHostPool''
-    - ''Update-AzWvdSessionHost''
+* Added cmdlets to support scaling plan pooled schedules
+* Supported pagination for Get cmdlets
+* Supported agent update for host pools
+* Supported ''FriendlyName'' for host pools and session hosts
 
 Az.EventHub
-* Aliased ''New-AzEventHubNamespace'', ''Remove-AzEventHubNamespace'', ''Set-AzEventHubNamespace'', ''Get-AzEventHubNamespace'' with ''New-AzEventHubNamespaceV2'', ''Remove-AzEventHubNamespaceV2'', ''Set-AzEventHubNamespaceV2'', ''Get-AzEventHubNamespaceV2'' respectively
+* Added aliases for namespace cmdlets
 * Replaced ''New-AzEventHubEncryptionConfig'' by ''New-AzEventHubKeyVaultPropertiesObject''
 
 Az.HDInsight
-* Breaking Change:
-  - Removed the parameter ''-RdpAccessExpiry'' which has been marked as deprecated for a long time from cmdlet ''New-AzHDInsightCluster''
-  - Removed the parameter ''-RdpCredential'' which has been marked as deprecated for a long time from cmdlet ''New-AzHDInsightCluster''
+* Breaking Change: removed the parameter ''-RdpAccessExpiry'' and ''-RdpCredential'' from cmdlet ''New-AzHDInsightCluster''
 
 Az.KeyVault
 * Added breaking change announcement for parameter ''SoftDeleteRetentionInDays'' in ''New-AzKeyVaultManagedHsm''. The parameter ''SoftDeleteRetentionInDays'' is becoming mandatory
@@ -271,48 +250,25 @@ Az.MachineLearningServices
 * General availability for module Az.MachineLearningServices
 
 Az.Monitor
-* Added cmdlets for monitor workspace: 
-    - ''Get-AzMonitorWorkspace''
-    - ''New-AzMonitorWorkspace''
-    - ''Update-AzMonitorWorkspace''
-    - ''Remove-AzMonitorWorkspace''
+* Added cmdlets for monitor workspace
 
 Az.Network
-* Added new cmdlets for RouteMap child resource of VirtualHub.
-    -''Get-AzRouteMap''
-    -''New-AzRouteMapRuleCriterion''
-    -''New-AzRouteMapRuleActionParameter''
-    -''New-AzRouteMapRuleAction''
-    -''New-AzRouteMapRule''
-    -''New-AzRouteMap''
-    -''Set-AzRouteMap''
-    -''Remove-AzRouteMap''
+* Added new cmdlets for RouteMap child resource of VirtualHub
 * Updated cmdlets to add inbound/outbound route maps in routingConfiguration
-    -''New-AzRoutingConfiguration''
 * Added the command ''New-AzFirewallPolicyApplicationRuleCustomHttpHeader''
 * Added the method ''AddCustomHttpHeaderToInsert'' to ''PSAzureFirewallPolicyApplicationRule''
 * Added new cmdlets to support Rate Limiting Rule for Application Gateway WAF
-    - ''New-AzApplicationGatewayFirewallCustomRuleGroupByUserSession'',
-    - ''New-AzApplicationGatewayFirewallCustomRuleGroupByVariable'',
     - Also updated cmdlet to add the property of ''RateLimitDuration'', ''RateLimitThreshold'' and ''GroupByUserSession''
-    - ''New-AzureApplicationGatewayFirewallCustomRule''
 * Added support of ''AdditionalNic'' Property in ''New-AzNetworkVirtualAppliance''
 * Added the new cmdlet for supporting ''AdditionalNic'' Property
-    - ''New-AzVirtualApplianceAdditionalNicProperty''
 * Added new cmdlets to support Log Scrubbing Feature for Application Gateway WAF Firewall Policy
-    - ''New-AzApplicationGatewayFirewallPolicyLogScrubbingConfiguration'',
-    - ''New-AzApplicationGatewayFirewallPolicyLogScrubbingRule'',
-    - Also updated cmdlet to add the property of ''LogScrubbing'' 
-    - ''New-AzApplicationGatewayFirewallPolicySetting''
+    - Also updated cmdlet to add the property of ''LogScrubbing''
 * Onboarded ''Microsoft.HardwareSecurityModules/cloudHsmClusters'' to private link cmdlets
 * Updated cmdlet to add the property of ''DisableRequestBodyEnforcement'', ''RequestBodyInspectLimitInKB'' and ''DisableFileUploadEnforcement'' 
     - ''New-AzApplicationGatewayFirewallPolicySetting''
 * Added optional property ''AuxiliarySku'' to cmdlet ''New-AzNetworkInterface'' to help choose performance on an ''AuxiliaryMode'' enabled Network Interface.
 * Added a new value ''AcceleratedConnections'' for existing property ''AuxiliaryMode'' for ''New-AzNetworkInterface''
 * Added new cmdlets to get virtual hub effective routes and in/outbound routes
-    - ''Get-AzVHubEffectiveRoute''
-    - ''Get-AzVHubInboundRoute''
-    - ''Get-AzVHubOutboundRoute''
 
 Az.RedisEnterpriseCache
 * Upgraded API version to 2023-03-01-preview
@@ -322,10 +278,6 @@ Az.Relay
 
 Az.Resources
 * Added parameter ''-CountVariable'' for list operations, ''odataCount'' can now be assigned to this variable [#20982]
-    - ''Get-AzADApplication''
-    - ''Get-AzADServicePrincipal''
-    - ''Get-AzADUser''
-    - ''Get-AzADGroup''
 * Supported polymorphism for ''Get-AzADGroupMember'', output of this cmdlet was now ''Application'' ''ServicePrincipal'', ''User'' and ''Group'' based on the ''odataType'' [#19728]
 * Added ''-Force'' parameter on ''Publish-AzBicepModule'' for supporting overwriting existing modules. 
 * Fixed ''New-AzADApplication'' when multiple redirect url types were provided. [#21108]
@@ -341,14 +293,10 @@ Az.ServiceFabric
 * Added new cmdlet ''Add-AzServiceFabricManagedClusterNetworkSecurityRule'' to update network security rules in managed cluster resource
 
 Az.SignalR
-* Breaking change:
-    - Removed ''HostNamePrefix'' property of output type ''PSSignalRResource'' of following cmdlets:
-        - ''Get-AzSignalR''
-        - ''New-AzSignalR''
-        - ''Update-AzSignalR''
+* Breaking change: removed ''HostNamePrefix'' property of output type ''PSSignalRResource''
 
 Az.Sql
-* Added new cmdlets ''Get-AzSqlInstanceDatabaseLedgerDigestUpload'', ''Disable-AzSqlInstanceDatabaseLedgerDigestUpload'', and ''Enable-AzSqlInstanceDatabaseLedgerDigestUpload''
+* Added new ledger digest upload cmdlets
 * Added ''EnableLedger'' parameter to ''New-AzSqlInstanceDatabase''
 * Added ''PreferredEnclaveType'' parameter to ''NewAzureSqlElasticPool'' and ''SetAzureSqlElasticPool'' cmdlet
 
@@ -379,7 +327,7 @@ Az.StorageSync
 * Deprecated ''RegisteredServer'' alias for InputObject parameter for Set-AzStorageSyncServerEndpoint
 
 Az.Synapse
-* Removed the unnecessary breaking change of parameter ''-SparkConfigFilePath'' for ''New-AzSynapseSparkPool'' and ''Update-AzSynapseSparkPool'' cmdlets
+* Removed the unnecessary breaking change announcement
 
 Az.Websites
 * Removed ''New-AzWebAppContainerPSSession'' and ''Enter-AzWebAppContainerPSSession'' cmdlets
