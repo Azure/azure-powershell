@@ -5853,7 +5853,6 @@ function Test-VirtualMachinePlatformFaultDomain
         $SKU = "2019-Datacenter";
 
 
-
         # Creating a VM using Simple parameterset
         $securePassword = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force;  
         $user = "admin01";

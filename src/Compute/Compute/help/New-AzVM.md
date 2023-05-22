@@ -340,33 +340,43 @@ $vm = Get-AzVM -ResourceGroupName $rgname -Name $vmname
 
 This example creates a new VM using the -Image parameter, providing many default values to the VM. 
 
-### Example 8: Creating a VM for Trusted Launch SecurityType, then enabling/diasbling SecureBoot and Vtpm flags.
+### Example 9: Creating a VM for Trusted Launch SecurityType.
 ```powershell
-$rgname = "rgname";
+$rgname = <Resource Group Name>;
 $loc = "eastus";
  
 New-AzResourceGroup -Name $rgname -Location $loc -Force;    
 # VM Profile & Hardware       
-$domainNameLabel1 = "d1" + $rgname;
+$domainNameLabel1 = 'd1' + $rgname;
 $vmsize = 'Standard_D4s_v3';
-$vmname1 = $rgname + 'V';
+$vmname1 = 'v' + $rgname;
 $imageName = "Win2016DataCenterGenSecond";
 $disable = $false;
 $enable = $true;
-$password = "Password123";
+$securityType = "TrustedLaunch";
+
+$password = <Password>;
 $securePassword = $password | ConvertTo-SecureString -AsPlainText -Force;  
-$user = "admin01";
+$user = <Username>;
 $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
+
 # VM creation using Simple parameterset
-New-AzVM -ResourceGroupName $rgname -Location $loc -Name $vmname1 -Credential $cred -Size $vmsize -Image $imageName -DomainNameLabel $domainNameLabel1 -SecurityType "TrustedLaunch";
+New-AzVM -ResourceGroupName $rgname -Location $loc -Name $vmname1 -Credential $cred -Size $vmsize -Image $imageName -DomainNameLabel $domainNameLabel1 -SecurityType $securityType;
 $vm1 = Get-AzVM -ResourceGroupName $rgname -Name $vmname1;
+
 # Verify Values
 #$vm1.SecurityProfile.SecurityType "TrustedLaunch";
 #$vm1.SecurityProfile.UefiSettings.VTpmEnabled $true;
 #$vm1.SecurityProfile.UefiSettings.SecureBootEnabled $true;
+
+# Verify the GuestAttestation extension is installed.
+# $vm = Get-AzVm -ResourceGroupName $rgname -Name $vmname1;
+# $extDefaultName = "GuestAttestation";
+# $vmExt = Get-AzVMExtension -ResourceGroupName $rgname -VMName $vmname1 -Name $extDefaultName;
+# $vmExt.Name "GuestAttestation";
 ```
 
-This example Creates a new VM (Simple Parameterset) with the Trusted Launch Security Type and sets flags SecureBoot and Vtpm as True by default.
+This example Creates a new VM with the Trusted Launch Security Type and sets flags SecureBoot and Vtpm as True by default.
 
 ## PARAMETERS
 

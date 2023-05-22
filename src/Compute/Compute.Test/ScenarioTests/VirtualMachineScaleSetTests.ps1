@@ -4473,7 +4473,8 @@ function Test-VirtualMachineScaleSetSecurityType
 <#
 .SYNOPSIS
 Test Virtual Machine Scale Set VtpmEabled and SecureBootEnabled 
-for the certain Trusted Launch feature setup. 
+for the Trusted Launch feature setup. 
+Tests that GuestAttestation extension is also installed.
 #>
 function Test-VirtualMachineScaleSetSecurityTypeWithoutConfig
 {

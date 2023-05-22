@@ -61,7 +61,7 @@ The second command creates a virtual machine object, and then stores it in the $
 The command assigns a name and size to the virtual machine.
 The virtual machine belongs to the availability set stored in $AvailabilitySet.
 
-### Example 2: Create a VM using Virtual Machine Config object for TrustedLaunch Secuirty Type, flags Vtpm  and Secure Boot are set to True by default.
+### Example 2: Create a VM using Virtual Machine Config object for TrustedLaunch Secuirty Type, flags Vtpm and Secure Boot are set to True by default.
 ```powershell
 $rgname = "rgname";
 $loc = "eastus";
@@ -88,9 +88,9 @@ $enable = $true;
 $extDefaultName = "GuestAttestation";
 $vmGADefaultIDentity = "SystemAssigned";
 # Credential
-$password = "Password123";
+$password = <Password>;
 $securePassword = $password | ConvertTo-SecureString -AsPlainText -Force;  
-$user = "admin01";
+$user = <Username>;
 $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
 # Network resources
 $frontendSubnet = New-AzVirtualNetworkSubnetConfig -Name $subnetname -AddressPrefix $subnetAddress;
@@ -108,12 +108,12 @@ Add-AzVMNetworkInterface -VM $vmConfig -Id $nic.Id;
 $vmConfig = Set-AzVMSecurityProfile -VM $vmConfig -SecurityType $securityType_TL;
 New-AzVM -ResourceGroupName $rgname -Location $loc -VM $vmConfig;
 $vm = Get-AzVM -ResourceGroupName $rgname -Name $vmname;
-# Validate that for -SecurityType "TrustedLaunch" "-Vtpm" and -"SecureBoot" are "Enabled/true"
+# Validate that for -SecurityType "TrustedLaunch", "-Vtpm" and "-SecureBoot" are "Enabled/true"
 #$vm.SecurityProfile.UefiSettings.VTpmEnabled $true;
 #$vm.SecurityProfile.UefiSettings.SecureBootEnabled $true;
 ```
 
-This example creats a VM using VmConfig object for Trusted Launch SecurityType and vlaidates flags Vtpm and SecureBoot to be true (under this setting by default)
+This example creates a VM using a VMConfig object for the TrustedLaunch Security Type and validates flags VtpmEnabled and SecureBootEnabled are true by default.
 
 ## PARAMETERS
 
