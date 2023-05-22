@@ -51,7 +51,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.AzureStackHCI.Category('Body')]
     [System.String]
     # NetworkInterfaces - list of network interfaces to be attached to the virtual machine
-    ${NicNames}
+    ${NicResourceGroup}
 )
 
   
@@ -110,6 +110,6 @@ param(
         $null = $PSBoundParameters.Remove("NicResourceGroup")
         $PSBoundParameters.Add('NetworkProfileNetworkInterface',  $NetworkProfileNetworkInterface)
     }
-    
+
     return Az.AzureStackHCI\Update-AzAzureStackHciVirtualMachine @PSBoundParameters
 }

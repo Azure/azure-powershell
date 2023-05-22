@@ -51,7 +51,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.AzureStackHCI.Category('Body')]
     [System.String]
     # 
-    ${DataDiskResourceGroup},
+    ${DataDiskResourceGroup}
 )
 
   
@@ -91,7 +91,7 @@ param(
 
         $PSBoundParameters.Add('StorageProfileDataDisk',  $StorageProfileDataDisk)
 
-    } elseif $DataDiskNames{
+    } elseif ($DataDiskNames){
         $rg = $ResourceGroupName
         if($DataDiskResourceGroup){
           $rg = $DataDiskResourceGroup
@@ -101,7 +101,7 @@ param(
         $StorageProfileDataDisk =  $VM.StorageProfileDataDisk
 
         foreach ($DataDiskName in $DataDiskNames){
-          $DataDiskId = "/subscriptions/$SubscriptionId/resourceGroups/$rg/providers/Microsoft.AzureStackHCI/virtualharddisks/$DataDiskName"
+            $DataDiskId = "/subscriptions/$SubscriptionId/resourceGroups/$rg/providers/Microsoft.AzureStackHCI/virtualharddisks/$DataDiskName"
             if ($DataDiskId -in $StorageProfileDataDisk){
                 $StorageProfileDataDisk.Remove($DataDiskId)
             } else {
