@@ -132,11 +132,23 @@ param(
     # The identity type.
     ${IdentityType},
 
-    [Parameter(ParameterSetName='ByImage', Mandatory)]
+    [Parameter(ParameterSetName='ByImageId', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.AzureStackHCI.Category('Body')]
     [System.String]
     # Resource ID of the image
-    ${ImageId},
+    ${ImageId}, 
+
+    [Parameter(ParameterSetName='ByImageName',Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.AzureStackHCI.Category('Body')]
+    [System.String]
+    # 
+    ${ImageName},
+
+    [Parameter(ParameterSetName='ByImageName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.AzureStackHCI.Category('Body')]
+    [System.String]
+    # 
+    ${ImageResourceGroup},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.AzureStackHCI.Category('Body')]
@@ -170,23 +182,53 @@ param(
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.AzureStackHCI.Category('Body')]
     [System.String[]]
+    # NetworkInterfaces - list of network interfaces to be attached to the virtual machine
+    # To construct, see NOTES section for NETWORKPROFILENETWORKINTERFACE properties and create a hash table.
+    ${NicNames},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.AzureStackHCI.Category('Body')]
+    [System.String]
+    # NetworkInterfaces - list of network interfaces to be attached to the virtual machine
+    # To construct, see NOTES section for NETWORKPROFILENETWORKINTERFACE properties and create a hash table.
+    ${NicResourceGroup},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.AzureStackHCI.Category('Body')]
+    [System.String[]]
     # 
     #
     ${DataDiskIds},
 
-    [Parameter(ParameterSetName='ByOsDisk')]
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.AzureStackHCI.Category('Body')]
+    [System.String[]]
+    # 
+    ${DataDiskNames},
+
+     [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.AzureStackHCI.Category('Body')]
+    [System.String]
+    # 
+    ${DataDiskResourceGroup},
+
+    [Parameter(ParameterSetName='ByOsDiskId',Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.AzureStackHCI.Category('Body')]
     [System.String]
     # Resource ID of the OS disk
     ${OSDiskId},
 
-    [Parameter(ParameterSetName='ByOsDisk')]
+    [Parameter(ParameterSetName='ByOsDiskName',Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.AzureStackHCI.Category('Body')]
     [System.String]
     # Resource ID of the OS disk
     ${OSDiskName},
 
-    [Parameter(ParameterSetName='ByOsDisk')]
+    [Parameter(ParameterSetName='ByOsDiskName')]
     [Microsoft.Azure.PowerShell.Cmdlets.AzureStackHCI.Category('Body')]
     [System.String]
     # Resource ID of the OS disk
@@ -343,25 +385,55 @@ param(
         Write-Error "Invalid CustomLocationId: $CustomLocationId" -ErrorAction Stop
     }
     
-    if ($PSCmdlet.ParameterSetName -eq "ByImage"){
-      if($ImageId -notmatch $marketplaceGalImageRegex -and $ImageId -notmatch $galImageRegex){
-        Write-Error "Invalid ImageId: $ImageId" -ErrorAction Stop
-      }
-    } else if ($PSCmdlet.ParameterSetName -eq "ByOsDisk"){
-        if($OSDiskId){
-          if($OSDiskId -notmatch $vhdRegex){
-            Write-Error "Invalid OSDiskId : $OSDiskId" -ErrorAction Stop
-          }
-        } elseif ($OSDiskName){
-            if ($OSDiskResourceGroup){
-                $OSDiskId = "/subscriptions/$SubscriptionId/resourceGroups/$OSDiskResourceGroup/providers/Microsoft.AzureStackHCI/virtualharddisks/$OSDiskName"
-            } else {
-                $OSDiskId = "/subscriptions/$SubscriptionId/resourceGroups/$ResourceGroupName/providers/Microsoft.AzureStackHCI/virtualharddisks/$OSDiskName"
-            }
-            $PSBoundParameters.Add('OSDiskId', $OSDiskId)
-            $null = $PSBoundParameters.Remove("OSDiskResourceGroup")
-            $null = $PSBoundParameters.Remove("OSDiskName")
+    if ($PSCmdlet.ParameterSetName -eq "ByImageId"){
+      
+        if($ImageId -notmatch $marketplaceGalImageRegex -and $ImageId -notmatch $galImageRegex){
+          Write-Error "Invalid ImageId: $ImageId" -ErrorAction Stop
         }
+    } elseif ($PSCmdlet.ParameterSetName -eq "ByImageName"){
+          $rg = $ResourceGroupName
+          if($ImageResourceGroup){
+            $rg = $ImageResourceGroup
+          }
+          $isGalleryImage = $false
+          $isMarketplaceGalleryImage = $false
+          try {
+              $galImage = Az.AzureStackHci\Get-AzAzureStackHciGalleryImage -Name $ImageName -ResourceGroupName $rg -SubscriptionId $subscriptionId
+              $isGalleryImage = $true 
+          }
+          catch {
+              try {
+                  $marketplaceGalImage = Az.AzureStackHci\Get-AzAzureStackHciMarketplaceGalleryImage -Name $ImageName -ResourceGroupName $rg -SubscriptionId $subscriptionId
+                  $isMarketplaceGalleryImage = $true 
+              }
+              catch {
+                  Write-Error "An Image with name: $ImageName does not exist in Resource Group: $rg"
+              }
+          }
+          if ($isGalleryImage){
+            $ImageId = "/subscriptions/$SubscriptionId/resourceGroups/$rg/providers/Microsoft.AzureStackHCI/galleryimages/$ImageName"
+          } else {
+            $ImageId = "/subscriptions/$SubscriptionId/resourceGroups/$rg/providers/Microsoft.AzureStackHCI/marketplacegalleryimages/$ImageName"
+          }
+
+          $PSBoundParameters.Add('ImageId', $ImageId)
+          $null = $PSBoundParameters.Remove("ImageResourceGroup")
+          $null = $PSBoundParameters.Remove("ImageName")
+
+    } elseif ($PSCmdlet.ParameterSetName -eq "ByOsDiskId"){      
+        if($OSDiskId -notmatch $vhdRegex){
+          Write-Error "Invalid OSDiskId : $OSDiskId" -ErrorAction Stop
+        }
+    } elseif ($PSCmdlet.ParameterSetName -eq "ByOsDiskName"){
+        if ($OSDiskResourceGroup){
+            $OSDiskId = "/subscriptions/$SubscriptionId/resourceGroups/$OSDiskResourceGroup/providers/Microsoft.AzureStackHCI/virtualharddisks/$OSDiskName"
+        } else {
+            $OSDiskId = "/subscriptions/$SubscriptionId/resourceGroups/$ResourceGroupName/providers/Microsoft.AzureStackHCI/virtualharddisks/$OSDiskName"
+        }
+        $PSBoundParameters.Add('OSDiskId', $OSDiskId)
+        $null = $PSBoundParameters.Remove("OSDiskResourceGroup")
+        $null = $PSBoundParameters.Remove("OSDiskName")
+        
     } else {
         Write-Error "Either Image or OS Disk is required. " -ErrorAction Stop
     }
@@ -392,6 +464,21 @@ param(
       }
       $null = $PSBoundParameters.Remove("NicIds")
       $PSBoundParameters.Add('NetworkProfileNetworkInterface', $NetworkProfileNetworkInterface)
+    } elseif ($NicNames){
+        $rg = $ResourceGroupName
+        if($NicResourceGroup){
+          $rg = $NicResourceGroup
+        }
+
+        $NetworkProfileNetworkInterface =  [System.Collections.ArrayList]::new()
+        foreach ($NicName in $NicNames){
+          $NicId = "/subscriptions/$SubscriptionId/resourceGroups/$rg/providers/Microsoft.AzureStackHCI/networkinterfaces/$NicName"
+          $NetworkInterface = @{Id = $NicId}
+          [void]$NetworkProfileNetworkInterface.Add($NetworkInterface)
+        }
+        $null = $PSBoundParameters.Remove("NicNames")
+        $null = $PSBoundParameters.Remove("NicResourceGroup")
+        $PSBoundParameters.Add('NetworkProfileNetworkInterface', $NetworkProfileNetworkInterface)
     }
 
     if ($OsType.ToString().ToLower() -eq "windows"){
@@ -448,6 +535,21 @@ param(
       }
       $null = $PSBoundParameters.Remove("DataDiskIds")
       $PSBoundParameters.Add('StorageProfileDataDisk',  $StorageProfileDataDisk)
+    } elseif ($DataDiskNames){
+        $rg = $ResourceGroupName
+        if($DataDiskResourceGroup){
+          $rg = $DataDiskResourceGroup
+        }
+       
+        $StorageProfileDataDisk =  [System.Collections.ArrayList]::new()
+        foreach ($DataDiskName in $DataDiskNames){
+          $DataDiskId = "/subscriptions/$SubscriptionId/resourceGroups/$rg/providers/Microsoft.AzureStackHCI/virtualharddisks/$DataDiskName"
+          $DataDisk = @{Id = $DataDiskId}
+          [void]$StorageProfileDataDisk.Add($DataDisk)
+        }
+        $null = $PSBoundParameters.Remove("DataDiskNames")
+        $null = $PSBoundParameters.Remove("DataDiskResourceGroup")
+        $PSBoundParameters.Add('StorageProfileDataDisk',  $StorageProfileDataDisk)
     }
 
     return Az.AzureStackHCI.internal\New-AzAzureStackHciVirtualMachine @PSBoundParameters
