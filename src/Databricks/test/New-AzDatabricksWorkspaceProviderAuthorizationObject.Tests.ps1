@@ -1,11 +1,11 @@
-if(($null -eq $TestName) -or ($TestName -contains 'Get-AzDatabricksVNetPeering'))
+if(($null -eq $TestName) -or ($TestName -contains 'New-AzDatabricksWorkspaceProviderAuthorizationObject'))
 {
   $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
   if (-Not (Test-Path -Path $loadEnvPath)) {
       $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
   }
   . ($loadEnvPath)
-  $TestRecordingFile = Join-Path $PSScriptRoot 'Get-AzDatabricksVNetPeering.Recording.json'
+  $TestRecordingFile = Join-Path $PSScriptRoot 'New-AzDatabricksWorkspaceProviderAuthorizationObject.Recording.json'
   $currentPath = $PSScriptRoot
   while(-not $mockingPath) {
       $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
@@ -14,16 +14,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzDatabricksVNetPeering')
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Get-AzDatabricksVNetPeering' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'GetViaIdentity' -skip {
+Describe 'New-AzDatabricksWorkspaceProviderAuthorizationObject' {
+    It '__AllParameterSets' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

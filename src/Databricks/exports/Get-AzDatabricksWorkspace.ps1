@@ -20,11 +20,11 @@ Gets the workspace.
 .Description
 Gets the workspace.
 .Example
-Get-AzDatabricksWorkspace -Name databricks-test -ResourceGroupName databricks-rg-rqb2yo
+Get-AzDatabricksWorkspace -ResourceGroupName azps_test_gp_db -Name azps-databricks-workspace-t3
 .Example
 Get-AzDatabricksWorkspace
 .Example
-Get-AzDatabricksWorkspace -ResourceGroupName databricks-rg-rqb2yo
+Get-AzDatabricksWorkspace -ResourceGroupName azps_test_gp_db
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IDatabricksIdentity

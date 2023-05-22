@@ -1493,7 +1493,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks
 
         /// <summary>
         /// Gets the list of endpoints that VNET Injected Workspace calls Azure Databricks Control Plane. You must configure outbound
-        /// access with these endpoints. For more information, see https://learn.microsoft.com/en-us/azure/databricks/administration-guide/cloud-configurations/azure/udr
+        /// access with these endpoints. For more information, see https://docs.microsoft.com/en-us/azure/databricks/administration-guide/cloud-configurations/azure/udr
         /// </summary>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="workspaceName">The name of the workspace.</param>
@@ -1540,7 +1540,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks
 
         /// <summary>
         /// Gets the list of endpoints that VNET Injected Workspace calls Azure Databricks Control Plane. You must configure outbound
-        /// access with these endpoints. For more information, see https://learn.microsoft.com/en-us/azure/databricks/administration-guide/cloud-configurations/azure/udr
+        /// access with these endpoints. For more information, see https://docs.microsoft.com/en-us/azure/databricks/administration-guide/cloud-configurations/azure/udr
         /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
