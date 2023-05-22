@@ -244,10 +244,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         public string[] DefaultDocument { get => _siteConfigBody.DefaultDocument ?? null /* arrayOf */; set => _siteConfigBody.DefaultDocument = value; }
 
         /// <summary>
-        /// The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet
-        /// against a different subscription
+        /// The credentials, account, tenant, and subscription used for communication with Azure
         /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The credentials, account, tenant, and subscription used for communication with Azure.")]
         [global::System.Management.Automation.ValidateNotNull]
         [global::System.Management.Automation.Alias("AzureRMContext", "AzureCredential")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Functions.ParameterCategory.Azure)]
@@ -870,14 +869,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         public string SubscriptionId { get => this._subscriptionId; set => this._subscriptionId = value; }
 
         /// <summary>
-        /// Gets or sets a JSON string containing a list of tags that are in the allowed list for use by the push registration endpoint.
+        /// Gets or sets a JSON string containing a list of tags that are whitelisted for use by the push registration endpoint.
         /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Gets or sets a JSON string containing a list of tags that are in the allowed list for use by the push registration endpoint.")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Gets or sets a JSON string containing a list of tags that are whitelisted for use by the push registration endpoint.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Functions.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"Gets or sets a JSON string containing a list of tags that are in the allowed list for use by the push registration endpoint.",
+        Description = @"Gets or sets a JSON string containing a list of tags that are whitelisted for use by the push registration endpoint.",
         SerializedName = @"tagWhitelistJson",
         PossibleTypes = new [] { typeof(string) })]
         public string TagWhitelistJson { get => _siteConfigBody.TagWhitelistJson ?? null; set => _siteConfigBody.TagWhitelistJson = value; }
