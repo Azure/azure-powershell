@@ -19,8 +19,6 @@
 -->
 
 ## Upcoming Release
-
-## Version 6.7.0
 * Added parameter `-CountVariable` for list operations, `odataCount` can now be assigned to this variable [#20982]
     - `Get-AzADApplication`
     - `Get-AzADServicePrincipal`
