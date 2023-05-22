@@ -29,44 +29,79 @@ param(
     # The ID of the target subscription.
     ${SubscriptionId},
 
-    [Parameter(ParameterSetName='ByResourceId', Mandatory)]
-    [Parameter(ParameterSetName='ByName', Mandatory)]
+    [Parameter(ParameterSetName='ByResourceId')]
+    [Parameter(ParameterSetName='ByName')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.AzureStackHCI.Category('Body')]
     [System.String[]]
     # Data Disks - list of data disks to be attached to the virtual machine
-    ${DataDiskIds}
+    ${DataDiskIds},
+
+    [Parameter(ParameterSetName='ByResourceId')]
+    [Parameter(ParameterSetName='ByName')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.AzureStackHCI.Category('Body')]
+    [System.String[]]
+    # 
+    ${DataDiskNames},
+
+    [Parameter(ParameterSetName='ByResourceId')]
+    [Parameter(ParameterSetName='ByName')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.AzureStackHCI.Category('Body')]
+    [System.String]
+    # 
+    ${DataDiskResourceGroup}
 )
 
   
-  if ($PSCmdlet.Parameter -eq "ByResourceId"){
-    if ($ResourceId -match $vmRegex){
-        
-        $subscriptionId = $($Matches['subscriptionId'])
-        $resourceGroupName = $($Matches['resourceGroupName'])
-        $resourceName = $($Matches['vmName'])
-        $null = $PSBoundParameters.Remove("ResourceId")
-        $PSBoundParameters.Add("Name", $resourceName)
-        $PSBoundParameters.Add("ResourceGroupName", $resourceGroupName)
-        $null = $PSBoundParameters.Remove("SubscriptionId")
-        $PSBoundParameters.Add("SubscriptionId", $subscriptionId)
+    if ($PSCmdlet.Parameter -eq "ByResourceId"){
+        if ($ResourceId -match $vmRegex){
+            
+            $subscriptionId = $($Matches['subscriptionId'])
+            $resourceGroupName = $($Matches['resourceGroupName'])
+            $resourceName = $($Matches['vmName'])
+            $null = $PSBoundParameters.Remove("ResourceId")
+            $PSBoundParameters.Add("Name", $resourceName)
+            $PSBoundParameters.Add("ResourceGroupName", $resourceGroupName)
+            $null = $PSBoundParameters.Remove("SubscriptionId")
+            $PSBoundParameters.Add("SubscriptionId", $subscriptionId)
 
-    } else {             
-        Write-Error "Virtual Machine Resource ID is invalid: $ResourceId"
-    }
-  }
-
-    $StorageProfileDataDisk =  [System.Collections.ArrayList]::new()
-    foreach ($DataDiskId in $DataDiskIds){
-        if ($DataDiskId -notmatch $vhdRegex){
-            Write-Error "Invalid Data Disk Id provided: $DataDiskId." -ErrorAction Stop
+        } else {             
+            Write-Error "Virtual Machine Resource ID is invalid: $ResourceId"
         }
-        $DataDisk = @{Id = $DataDiskId}
-        [void]$StorageProfileDataDisk.Add($DataDisk)
     }
 
-    $null = $PSBoundParameters.Remove("DataDiskIds")
-    $PSBoundParameters.Add('StorageProfileDataDisk',  $StorageProfileDataDisk)
+    if($DataDiskIds){
+        $StorageProfileDataDisk =  [System.Collections.ArrayList]::new()
+        foreach ($DataDiskId in $DataDiskIds){
+            if ($DataDiskId -notmatch $vhdRegex){
+                Write-Error "Invalid Data Disk Id provided: $DataDiskId." -ErrorAction Stop
+            }
+            $DataDisk = @{Id = $DataDiskId}
+            [void]$StorageProfileDataDisk.Add($DataDisk)
+        }
+
+        $null = $PSBoundParameters.Remove("DataDiskIds")
+        $PSBoundParameters.Add('StorageProfileDataDisk',  $StorageProfileDataDisk)
+    } elseif ($DataDiskNames){
+        $rg = $ResourceGroupName
+        if($DataDiskResourceGroup){
+          $rg = $DataDiskResourceGroup
+        }
+
+        $StorageProfileDataDisk =  [System.Collections.ArrayList]::new()
+
+        foreach ($DataDiskName in $DataDiskNames){
+            $DataDiskId = "/subscriptions/$SubscriptionId/resourceGroups/$rg/providers/Microsoft.AzureStackHCI/virtualharddisks/$DataDiskName"
+            $DataDisk = @{Id = $DataDiskId}
+            [void]$StorageProfileDataDisk.Add($DataDisk)
+        }
+
+        $null = $PSBoundParameters.Remove("DataDiskNames")
+        $null = $PSBoundParameters.Remove("DataDiskResourceGroup")
+        $PSBoundParameters.Add('StorageProfileDataDisk',  $StorageProfileDataDisk)
+    }
 
     return Az.AzureStackHCI\Update-AzAzureStackHciVirtualMachine @PSBoundParameters
 }
