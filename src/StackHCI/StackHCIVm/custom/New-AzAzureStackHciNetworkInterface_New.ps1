@@ -229,7 +229,11 @@ param(
       }
   }
   if ($SubnetName){
-    $SubnetId = "/subscriptions/$SubscriptionId/resourceGroups/$ResourceGroupName/providers/Microsoft.AzureStackHCI/virtualNetworks/$SubnetName"
+    $rg = $ResourceGroupName
+    if ($SubnetResourceGroup){
+      $rg = $SubnetResourceGroup
+    }
+    $SubnetId = "/subscriptions/$SubscriptionId/resourceGroups/$rg/providers/Microsoft.AzureStackHCI/virtualNetworks/$SubnetName"
     $null = $PSBoundParameters.Remove("SubnetName")
   }
 

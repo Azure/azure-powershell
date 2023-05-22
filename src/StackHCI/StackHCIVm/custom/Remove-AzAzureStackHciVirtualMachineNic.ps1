@@ -29,13 +29,29 @@ param(
     # The ID of the target subscription.
     ${SubscriptionId},
 
-    [Parameter(ParameterSetName='ByResourceId', Mandatory)]
-    [Parameter(ParameterSetName='ByName', Mandatory)]
+    [Parameter(ParameterSetName='ByResourceId')]
+    [Parameter(ParameterSetName='ByName')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.AzureStackHCI.Category('Body')]
     [System.String[]]
     # NetworkInterfaces - list of network interfaces to be attached to the virtual machine
-    ${NicIds}
+    ${NicIds},
+
+    [Parameter(ParameterSetName='ByResourceId')]
+    [Parameter(ParameterSetName='ByName')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.AzureStackHCI.Category('Body')]
+    [System.String[]]
+    # NetworkInterfaces - list of network interfaces to be attached to the virtual machine
+    ${NicNames},
+
+    [Parameter(ParameterSetName='ByResourceId')]
+    [Parameter(ParameterSetName='ByName')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.AzureStackHCI.Category('Body')]
+    [System.String]
+    # NetworkInterfaces - list of network interfaces to be attached to the virtual machine
+    ${NicNames}
 )
 
   
@@ -55,23 +71,45 @@ param(
             Write-Error "Virtual Machine Resource ID is invalid: $ResourceId"
         }
     }
-
-    $NicIds = $PSBoundParameters['NicIds']
-    $null = $PSBoundParameters.Remove("NicIds")
-
-    $VM = Az.AzureStackHci\Get-AzAzureStackHciVirtualMachine @PSBoundParameters
     
+    if ($NicIds){
+        $NicIds = $PSBoundParameters['NicIds']
+        $null = $PSBoundParameters.Remove("NicIds")
 
-    $NetworkProfileNetworkInterface =  $VM.NetworkProfileNetworkInterface
-    foreach ($NicId in $NicIds){
-        if ($NicId -in $NetworkProfileNetworkInterface){
-            $NetworkProfileNetworkInterface.Remove($NicId)
-        } else {
-            Write-Error "Network Interface not currently attached: $NicId"
+        $VM = Az.AzureStackHci\Get-AzAzureStackHciVirtualMachine @PSBoundParameters
+        $NetworkProfileNetworkInterface =  $VM.NetworkProfileNetworkInterface
+        
+        foreach ($NicId in $NicIds){
+            if ($NicId -in $NetworkProfileNetworkInterface){
+                $NetworkProfileNetworkInterface.Remove($NicId)
+            } else {
+                Write-Error "Network Interface not currently attached: $NicId"
+            }
         }
+
+        $PSBoundParameters.Add('NetworkProfileNetworkInterface',  $NetworkProfileNetworkInterface)
+    } elseif ($NicNames){
+        $rg = $ResourceGroupName
+        if($NicResourceGroup){
+          $rg = $NicResourceGroup
+        }
+
+        $VM = Az.AzureStackHci\Get-AzAzureStackHciVirtualMachine @PSBoundParameters
+        $NetworkProfileNetworkInterface =  $VM.NetworkProfileNetworkInterface
+        
+        foreach ($NicName in $NicNames){
+            $NicId = "/subscriptions/$SubscriptionId/resourceGroups/$rg/providers/Microsoft.AzureStackHCI/networkinterfaces/$NicName"
+            if ($NicId -in $NetworkProfileNetworkInterface){
+                $NetworkProfileNetworkInterface.Remove($NicId)
+            } else {
+                Write-Error "Network Interface not currently attached: $NicId"
+            }
+        }
+
+        $null = $PSBoundParameters.Remove("NicNames")
+        $null = $PSBoundParameters.Remove("NicResourceGroup")
+        $PSBoundParameters.Add('NetworkProfileNetworkInterface',  $NetworkProfileNetworkInterface)
     }
-
-    $PSBoundParameters.Add('NetworkProfileNetworkInterface',  $NetworkProfileNetworkInterface)
-
+    
     return Az.AzureStackHCI\Update-AzAzureStackHciVirtualMachine @PSBoundParameters
 }

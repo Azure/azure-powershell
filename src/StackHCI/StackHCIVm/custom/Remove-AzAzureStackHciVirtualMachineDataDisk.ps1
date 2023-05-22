@@ -29,13 +29,29 @@ param(
     # The ID of the target subscription.
     ${SubscriptionId},
 
-    [Parameter(ParameterSetName='ByResourceId', Mandatory)]
-    [Parameter(ParameterSetName='ByName', Mandatory)]
+    [Parameter(ParameterSetName='ByResourceId')]
+    [Parameter(ParameterSetName='ByName')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.AzureStackHCI.Category('Body')]
     [System.String[]]
     # Data Disks - list of data disks to be attached to the virtual machine
-    ${DataDiskIds}
+    ${DataDiskIds},
+
+    [Parameter(ParameterSetName='ByResourceId')]
+    [Parameter(ParameterSetName='ByName')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.AzureStackHCI.Category('Body')]
+    [System.String[]]
+    # 
+    ${DataDiskNames},
+
+    [Parameter(ParameterSetName='ByResourceId')]
+    [Parameter(ParameterSetName='ByName')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.AzureStackHCI.Category('Body')]
+    [System.String]
+    # 
+    ${DataDiskResourceGroup},
 )
 
   
@@ -55,23 +71,48 @@ param(
             Write-Error "Virtual Machine Resource ID is invalid: $ResourceId"
         }
     }
-    $DataDisks = $PSBoundParameters['DataDiskIds']
-    $null = $PSBoundParameters.Remove("DataDiskIds")
 
     $VM = Az.AzureStackHci\Get-AzAzureStackHciVirtualMachine @PSBoundParameters
-    
-
     $StorageProfileDataDisk =  $VM.StorageProfileDataDisk
-    foreach ($DataDisk in $DataDisks){
-        if ($DataDisk -in $StorageProfileDataDisk){
-            $StorageProfileDataDisk.Remove($DataDisk)
-        } else {
-            Write-Error "Data Disk is not currently attached: $DataDisk"
-        }
-    }
+    if ($DataDiskIds){
+        $DataDisks = $PSBoundParameters['DataDiskIds']
+        $null = $PSBoundParameters.Remove("DataDiskIds")
 
-  
-    $PSBoundParameters.Add('StorageProfileDataDisk',  $StorageProfileDataDisk)
+        $VM = Az.AzureStackHci\Get-AzAzureStackHciVirtualMachine @PSBoundParameters
+        $StorageProfileDataDisk =  $VM.StorageProfileDataDisk
+      
+        foreach ($DataDisk in $DataDisks){
+            if ($DataDisk -in $StorageProfileDataDisk){
+                $StorageProfileDataDisk.Remove($DataDisk)
+            } else {
+                Write-Error "Data Disk is not currently attached: $DataDisk"
+            }
+        }
+
+        $PSBoundParameters.Add('StorageProfileDataDisk',  $StorageProfileDataDisk)
+
+    } elseif $DataDiskNames{
+        $rg = $ResourceGroupName
+        if($DataDiskResourceGroup){
+          $rg = $DataDiskResourceGroup
+        }
+
+        $VM = Az.AzureStackHci\Get-AzAzureStackHciVirtualMachine @PSBoundParameters
+        $StorageProfileDataDisk =  $VM.StorageProfileDataDisk
+
+        foreach ($DataDiskName in $DataDiskNames){
+          $DataDiskId = "/subscriptions/$SubscriptionId/resourceGroups/$rg/providers/Microsoft.AzureStackHCI/virtualharddisks/$DataDiskName"
+            if ($DataDiskId -in $StorageProfileDataDisk){
+                $StorageProfileDataDisk.Remove($DataDiskId)
+            } else {
+                Write-Error "Data Disk is not currently attached: $DataDisk"
+            }
+        }
+
+        $null = $PSBoundParameters.Remove("DataDiskNames")
+        $null = $PSBoundParameters.Remove("DataDiskResourceGroup")
+        $PSBoundParameters.Add('StorageProfileDataDisk',  $StorageProfileDataDisk)
+    }
 
     return Az.AzureStackHCI\Update-AzAzureStackHciVirtualMachine @PSBoundParameters
 }
