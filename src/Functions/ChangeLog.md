@@ -18,8 +18,6 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-
-## Version 4.0.7
 * Removed support to create v3 function apps (Functions v3 reached EOL on December, 2022) [#20838]
 * Enabled using ARM API to get stacks information for function app creation [#14682][#20009]
 * Added support to create dotnet-isolated function apps [#16349]
