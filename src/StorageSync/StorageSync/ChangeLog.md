@@ -18,8 +18,6 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-
-## Version 2.0.0
 * Deprecated "RegisteredServer" alias for InputObject parameter for Set-AzStorageSyncServerEndpoint
 
 ## Version 1.7.0
