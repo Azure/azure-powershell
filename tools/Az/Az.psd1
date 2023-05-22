@@ -188,7 +188,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '10.0.0 - May 2023
+        ReleaseNotes = '10.0.0 - June 2023
 Az.Accounts
 * Updated System.Security.Permissions to 4.7.0.
 

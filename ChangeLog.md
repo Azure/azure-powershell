@@ -1,4 +1,4 @@
-## 10.0.0 - May 2023
+## 10.0.0 - June 2023
 #### Az.Accounts 2.12.3
 * Updated System.Security.Permissions to 4.7.0.
 
