@@ -376,7 +376,8 @@ $vm1 = Get-AzVM -ResourceGroupName $rgname -Name $vmname1;
 # $vmExt.Name "GuestAttestation";
 ```
 
-This example Creates a new VM with the Trusted Launch Security Type and sets flags SecureBoot and Vtpm as True by default.
+This example Creates a new VM with the TrustedLaunch Security Type and sets flags EnableSecureBoot and EnableVtpm as True by default. 
+It also checks that the GuestAttestation extension is installed by default when using TrustedLaunch and the EnableSecureBoot and EnableVtpm are True.
 
 ## PARAMETERS
 
