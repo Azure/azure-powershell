@@ -262,7 +262,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Inlined)]
         public int? UpgradeDomain { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAppServiceEnvironmentInternal)Property).UpgradeDomain; }
 
-        /// <summary>User added list of IP Ranges allowed on ASE db</summary>
+        /// <summary>User added ip ranges to whitelist on ASE db</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Inlined)]
         public string[] UserWhitelistedIPRange { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAppServiceEnvironmentInternal)Property).UserWhitelistedIPRange; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAppServiceEnvironmentInternal)Property).UserWhitelistedIPRange = value ?? null /* arrayOf */; }
 
@@ -605,11 +605,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
         SerializedName = @"upgradeDomains",
         PossibleTypes = new [] { typeof(int) })]
         int? UpgradeDomain { get;  }
-        /// <summary>User added list of IP Ranges allowed on ASE db</summary>
+        /// <summary>User added ip ranges to whitelist on ASE db</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"User added list of IP Ranges allowed on ASE db",
+        Description = @"User added ip ranges to whitelist on ASE db",
         SerializedName = @"userWhitelistedIpRanges",
         PossibleTypes = new [] { typeof(string) })]
         string[] UserWhitelistedIPRange { get; set; }
@@ -779,7 +779,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
         bool? Suspended { get; set; }
         /// <summary>Number of upgrade domains of the App Service Environment.</summary>
         int? UpgradeDomain { get; set; }
-        /// <summary>User added list of IP Ranges allowed on ASE db</summary>
+        /// <summary>User added ip ranges to whitelist on ASE db</summary>
         string[] UserWhitelistedIPRange { get; set; }
         /// <summary>Description of IP SSL mapping for the App Service Environment.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVirtualIPMapping[] VipMapping { get; set; }
