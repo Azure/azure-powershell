@@ -23,13 +23,9 @@ function CreateModelCmdlet {
     }
 
     $ModelCsPath = Join-Path (Join-Path $PSScriptRoot 'generated\api') 'Models'
+    $ModuleName = 'Migrate'
     $OutputDir = Join-Path $PSScriptRoot 'custom\autogen-model-cmdlets'
     $null = New-Item -ItemType Directory -Force -Path $OutputDir
-    if (''.length -gt 0) {
-        $ModuleName = ''
-    } else {
-        $ModuleName = 'Az.Migrate'
-    }
 
     $CsFiles = Get-ChildItem -Path $ModelCsPath -Recurse -Filter *.cs
     $Content = ''
@@ -68,10 +64,10 @@ function CreateModelCmdlet {
         $ObjectType = $Model
         $ObjectTypeWithNamespace = "${Namespace}.${ObjectType}"
         # remove duplicated module name
-        if ($ObjectType.StartsWith('Migrate')) {
+        if ($ObjectType.StartsWith($ModuleName)) {
             $ModulePrefix = ''
         } else {
-            $ModulePrefix = 'Migrate'
+            $ModulePrefix = $ModuleName
         }
         $OutputPath = Join-Path -ChildPath "New-Az${ModulePrefix}${ObjectType}Object.ps1" -Path $OutputDir
 
@@ -162,7 +158,7 @@ Create an in-memory object for ${ObjectType}.
 .Outputs
 ${ObjectTypeWithNamespace}
 .Link
-https://learn.microsoft.com/powershell/module/${ModuleName}/new-Az${ModulePrefix}${ObjectType}Object
+https://learn.microsoft.com/powershell/module/az.${ModuleName}/new-Az${ModulePrefix}${ObjectType}Object
 #>
 function New-Az${ModulePrefix}${ObjectType}Object {
     [OutputType('${ObjectTypeWithNamespace}')]
