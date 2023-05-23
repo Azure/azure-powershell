@@ -1,24 +1,11 @@
-﻿using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
-using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities;
-using Microsoft.Azure.Management.ResourceManager.Models;
-using Microsoft.Azure.Management.ResourceManager;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Newtonsoft.Json.Linq;
-using System;
-using System.Collections;
-using System.Linq;
+﻿using System.Collections;
 using System.Management.Automation;
-using System.Net;
-using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.CmdletBase
 {
     public class DeploymentStacksCreateCmdletBase : DeploymentStacksCmdletBase
     {
         #region Cmdlet Parameters and Parameter Set Definitions
-
-        protected RuntimeDefinedParameterDictionary dynamicParameters;
 
         protected string protectedTemplateUri;
 
@@ -102,18 +89,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Cmdlet
                                             "to provide a better error message in the case where not all required parameters are satisfied.")]
         public SwitchParameter SkipTemplateParameterPrompt { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "The query string (for example, a SAS token) to be used with the TemplateUri parameter. Would be used in case of linked templates")]
+        public string QueryString { get; set; }
+
         #endregion
-
-        protected override void OnBeginProcessing()
-        {
-            TemplateFile = this.TryResolvePath(TemplateFile);
-            TemplateParameterFile = this.TryResolvePath(TemplateParameterFile);
-            base.OnBeginProcessing();
-        }
-
-        protected void BuildAndUseBicepTemplate()
-        {
-            TemplateFile = BicepUtility.BuildFile(this.ResolvePath(TemplateFile), this.WriteVerbose, this.WriteWarning);
-        }
     }
 }

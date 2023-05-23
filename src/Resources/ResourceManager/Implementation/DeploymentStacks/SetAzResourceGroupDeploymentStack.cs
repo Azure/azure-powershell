@@ -74,11 +74,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [ValidateNotNullOrEmpty]
         public Hashtable Tag { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "The query string (for example, a SAS token) to be used with the TemplateUri parameter. Would be used in case of linked templates")]
-        public string QueryString { get; set; }
-
-        //private string protectedTemplateUri { get; set; }
-
         [Parameter(Mandatory = false,
         HelpMessage = "Do not ask for confirmation when overwriting an existing stack.")]
         public SwitchParameter Force { get; set; }
@@ -195,21 +190,21 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 Action createOrUpdateAction = () =>
                     {
                     var deploymentStack = DeploymentStacksSdkClient.ResourceGroupCreateOrUpdateDeploymentStack(
-                        Name,
-                        ResourceGroupName,
-                        !string.IsNullOrEmpty(protectedTemplateUri) ? protectedTemplateUri : TemplateUri,
-                        TemplateSpecId,
-                        TemplateParameterUri,
-                        parameters,
-                        Description,
+                        deploymentStackName: Name,
+                        resourceGroupName: ResourceGroupName,
+                        templateUri: !string.IsNullOrEmpty(protectedTemplateUri) ? protectedTemplateUri : TemplateUri,
+                        templateSpec: TemplateSpecId,
+                        parameterUri: TemplateParameterUri,
+                        parameters: parameters,
+                        description: Description,
                         resourcesCleanupAction: shouldDeleteResources ? "delete" : "detach",
                         resourceGroupsCleanupAction: shouldDeleteResourceGroups ? "delete" : "detach",
                         managementGroupsCleanupAction: "detach",
-                        DenySettingsMode.ToString(),
-                        DenySettingsExcludedPrincipals,
-                        DenySettingsExcludedActions,
-                        DenySettingsApplyToChildScopes.IsPresent,
-                        Tag
+                        denySettingsMode: DenySettingsMode.ToString(),
+                        denySettingsExcludedPrincipals: DenySettingsExcludedPrincipals,
+                        denySettingsExcludedActions: DenySettingsExcludedActions,
+                        denySettingsApplyToChildScopes: DenySettingsApplyToChildScopes.IsPresent,
+                        tags: Tag
                     );
 
                     WriteObject(deploymentStack);

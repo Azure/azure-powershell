@@ -388,7 +388,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             string resourceGroupsCleanupAction,
             string managementGroupsCleanupAction,
             string denySettingsMode,
-            string[] denySettingsExcludedPrincipales,
+            string[] denySettingsExcludedPrincipals,
             string[] denySettingsExcludedActions,
             bool denySettingsApplyToChildScopes,
             Hashtable tags
@@ -404,7 +404,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             var denySettings = new DenySettings
             {
                 Mode = denySettingsMode,
-                ExcludedPrincipals = denySettingsExcludedPrincipales,
+                ExcludedPrincipals = denySettingsExcludedPrincipals,
                 ExcludedActions = denySettingsExcludedActions,
                 ApplyToChildScopes = denySettingsApplyToChildScopes
             };
@@ -513,7 +513,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             string managementGroupsCleanupAction,
             string deploymentScope,
             string denySettingsMode,
-            string[] denySettingsExcludedPrincipales,
+            string[] denySettingsExcludedPrincipals,
             string[] denySettingsExcludedActions,
             bool denySettingsApplyToChildScopes,
             Hashtable tags
@@ -529,7 +529,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             var denySettings = new DenySettings
             {
                 Mode = denySettingsMode,
-                ExcludedPrincipals = denySettingsExcludedPrincipales,
+                ExcludedPrincipals = denySettingsExcludedPrincipals,
                 ExcludedActions = denySettingsExcludedActions,
                 ApplyToChildScopes = denySettingsApplyToChildScopes
             };
@@ -624,7 +624,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             string managementGroupsCleanupAction,
             string deploymentScope,
             string denySettingsMode,
-            string[] denySettingsExcludedPrincipales,
+            string[] denySettingsExcludedPrincipals,
             string[] denySettingsExcludedActions,
             bool denySettingsApplyToChildScopes,
             Hashtable tags
@@ -639,7 +639,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             var denySettings = new DenySettings
             {
                 Mode = denySettingsMode,
-                ExcludedPrincipals = denySettingsExcludedPrincipales,
+                ExcludedPrincipals = denySettingsExcludedPrincipals,
                 ExcludedActions = denySettingsExcludedActions,
                 ApplyToChildScopes = denySettingsApplyToChildScopes
             };
