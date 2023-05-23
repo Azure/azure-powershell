@@ -92,7 +92,7 @@ AliasesToExport = 'Get-AzK8sConfigFluxOperationStatus', 'Get-AzK8sConfiguration'
                'New-AzK8sConfiguration', 'New-AzK8sConfigurationFlux', 
                'New-AzK8sExtension', 'Remove-AzK8sConfiguration', 
                'Remove-AzK8sConfigurationFlux', 'Remove-AzK8sExtension', 
-               'Update-AzK8sConfigurationFlux', 'Update-AzK8sExtension', '*'
+               'Update-AzK8sConfigurationFlux', 'Update-AzK8sExtension'
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()
