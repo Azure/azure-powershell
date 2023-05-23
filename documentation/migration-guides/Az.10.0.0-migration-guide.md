@@ -3,73 +3,73 @@
 ## Az.Cdn
 
 ### `Update-AzFrontDoorCdnProfile`
-The output type is changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IProfile' to'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IProfile' without properties changed.
+- The output type is changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IProfile' to'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IProfile' without properties changed.
 
 ### `Update-AzCdnProfile`
-The output type is changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IProfile' to'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IProfile' without properties changed.
+- The output type is changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IProfile' to'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IProfile' without properties changed.
 
 ### `Update-AzCdnOriginGroup`
-The output type is changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IProfile' to'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IProfile' without properties changed.
+- The output type is changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IProfile' to'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IProfile' without properties changed.
 
 ### `Update-AzCdnOrigin`
-The output type is changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IProfile' to'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IProfile' without properties changed.
+- The output type is changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IProfile' to'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IProfile' without properties changed.
 
 ### `Update-AzCdnEndpoint`
-The output type is changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IProfile' to'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IProfile' without properties changed.
+- The output type is changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IProfile' to'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IProfile' without properties changed.
 
 ### `Stop-AzCdnEndpoint`
-The output type is changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IProfile' to'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IProfile' without properties changed.
+- The output type is changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IProfile' to'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IProfile' without properties changed.
 
 ### `Start-AzCdnEndpoint`
-The output type is changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IProfile' to'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IProfile' without properties changed.
+- The output type is changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IProfile' to'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IProfile' without properties changed.
 
 ### `New-AzFrontDoorCdnProfile`
-The output type is changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IProfile' to'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IProfile' without properties changed.
+- The output type is changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IProfile' to'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IProfile' without properties changed.
 
 ### `New-AzCdnProfile`
-The output type is changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IProfile' to'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IProfile' without properties changed.
+- The output type is changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IProfile' to'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IProfile' without properties changed.
 
 ### `New-AzCdnOriginGroup`
-The output type is changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IProfile' to'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IProfile' without properties changed.
+- The output type is changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IProfile' to'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IProfile' without properties changed.
 
 ### `New-AzCdnOrigin`
-The output type is changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IProfile' to'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IProfile' without properties changed.
+- The output type is changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IProfile' to'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IProfile' without properties changed.
 
 ### `New-AzCdnEndpoint`
-The output type is changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IProfile' to'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IProfile' without properties changed.
+- The output type is changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IProfile' to'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IProfile' without properties changed.
 
 ### `New-AzCdnCustomDomain`
-The output type is changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IProfile' to'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IProfile' without properties changed.
+- The output type is changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IProfile' to'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IProfile' without properties changed.
 
 ### `Get-AzFrontDoorCdnProfile`
-The output type is changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IProfile' to'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IProfile' without properties changed.
+- The output type is changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IProfile' to'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IProfile' without properties changed.
 
 ### `Get-AzCdnSubscriptionResourceUsage`
-The output type is changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IProfile' to'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IProfile' without properties changed.
+- The output type is changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IProfile' to'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IProfile' without properties changed.
 
 ### `Get-AzCdnProfileResourceUsage`
-The output type is changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IProfile' to'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IProfile' without properties changed.
+- The output type is changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IProfile' to'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IProfile' without properties changed.
 
 ### `Get-AzCdnProfile`
-The output type is changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IProfile' to'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IProfile' without properties changed.
+- The output type is changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IProfile' to'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IProfile' without properties changed.
 
 ### `Get-AzCdnOriginGroup`
-The output type is changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IProfile' to'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IProfile' without properties changed.
+- The output type is changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IProfile' to'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IProfile' without properties changed.
 
 ### `Get-AzCdnOrigin`
-The output type is changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IProfile' to'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IProfile' without properties changed.
+- The output type is changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IProfile' to'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IProfile' without properties changed.
 
 ### `Get-AzCdnEndpointResourceUsage`
-The output type is changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IProfile' to'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IProfile' without properties changed.
+- The output type is changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IProfile' to'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IProfile' without properties changed.
 
 ### `Get-AzCdnEndpoint`
-The output type is changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IProfile' to'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IProfile' without properties changed.
+- The output type is changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IProfile' to'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IProfile' without properties changed.
 
 ### `Get-AzCdnCustomDomain`
-The output type is changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IProfile' to'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IProfile' without properties changed.
+- The output type is changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IProfile' to'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IProfile' without properties changed.
 
 ### `Enable-AzCdnCustomDomainCustomHttps`
-The cmdlet 'Enable-AzCdnCustomDomainCustomHttps' no longer supports the parameter 'PassThru' and no alias was found for the original parameter name.
+- The cmdlet 'Enable-AzCdnCustomDomainCustomHttps' no longer supports the parameter 'PassThru' and no alias was found for the original parameter name.
 
 #### Before
 ```powershell
@@ -90,7 +90,7 @@ Null
 
 
 ### `Disable-AzCdnCustomDomainCustomHttps`
-The cmdlet 'Disable-AzCdnCustomDomainCustomHttps' no longer supports the parameter 'PassThru' and no alias was found for the original parameter name.
+- The cmdlet 'Disable-AzCdnCustomDomainCustomHttps' no longer supports the parameter 'PassThru' and no alias was found for the original parameter name.
 
 #### Before
 ```powershell
@@ -111,7 +111,7 @@ Null
 ## Az.Compute
 
 ### `Get-AzVM`
-The cmdlet 'Get-AzVM' no longer supports the parameter 'NextLink' and no alias was found for the original parameter name.
+- The cmdlet 'Get-AzVM' no longer supports the parameter 'NextLink' and no alias was found for the original parameter name.
 
 #### Before
 ```powershell
@@ -126,15 +126,15 @@ Get-AzVM -ResourceGroupName $rgname -Name $vmName
 ## Az.ContainerRegistry
 
 ### `Update-AzContainerRegistryWebhook`
-The cmdlet 'Update-AzContainerRegistryWebhook' no longer supports the alias 'WebhookUri' for parameter 'Uri'.
-The cmdlet 'Update-AzContainerRegistryWebhook' no longer supports the alias 'WebhookActions' for parameter 'Action'.
-The cmdlet 'Update-AzContainerRegistryWebhook' no longer supports the alias 'WebhookHeaders' for parameter 'Header'.
-The cmdlet 'Update-AzContainerRegistryWebhook' no longer supports the alias 'WebhookStatus' for parameter 'Status'.
-The cmdlet 'Update-AzContainerRegistryWebhook' no longer supports the alias 'WebhookScope' for parameter 'Scope'.
-The cmdlet 'Update-AzContainerRegistryWebhook' no longer supports the parameter 'ResourceId' and no alias was found for the original parameter name.
-The cmdlet 'Update-AzContainerRegistryWebhook' no longer supports the type 'Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer' for parameter 'DefaultProfile'.
-The cmdlet 'Update-AzContainerRegistryWebhook' no longer supports the alias 'AzContext' for parameter 'DefaultProfile'.
-The cmdlet 'Update-AzContainerRegistryWebhook' no longer supports the alias 'AzureRmContext' for parameter 'DefaultProfile'.
+- The cmdlet 'Update-AzContainerRegistryWebhook' no longer supports the alias 'WebhookUri' for parameter 'Uri'.
+- The cmdlet 'Update-AzContainerRegistryWebhook' no longer supports the alias 'WebhookActions' for parameter 'Action'.
+- The cmdlet 'Update-AzContainerRegistryWebhook' no longer supports the alias 'WebhookHeaders' for parameter 'Header'.
+- The cmdlet 'Update-AzContainerRegistryWebhook' no longer supports the alias 'WebhookStatus' for parameter 'Status'.
+- The cmdlet 'Update-AzContainerRegistryWebhook' no longer supports the alias 'WebhookScope' for parameter 'Scope'.
+- The cmdlet 'Update-AzContainerRegistryWebhook' no longer supports the parameter 'ResourceId' and no alias was found for the original parameter name.
+- The cmdlet 'Update-AzContainerRegistryWebhook' no longer supports the type 'Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer' for parameter 'DefaultProfile'.
+- The cmdlet 'Update-AzContainerRegistryWebhook' no longer supports the alias 'AzContext' for parameter 'DefaultProfile'.
+- The cmdlet 'Update-AzContainerRegistryWebhook' no longer supports the alias 'AzureRmContext' for parameter 'DefaultProfile'.
 
 #### Before
 ```powershell
@@ -147,13 +147,13 @@ Update-AzContainerRegistryWebhook -ResourceGroupName "MyResourceGroup" -Registry
 
 
 ### `Update-AzContainerRegistryCredential`
-The cmdlet 'Update-AzContainerRegistryCredential' no longer supports the alias 'RegistryName' for parameter 'Name'.
-The cmdlet 'Update-AzContainerRegistryCredential' no longer supports the type 'Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry' for parameter 'Registry'.
-The cmdlet 'Update-AzContainerRegistryCredential' no longer supports the type 'Microsoft.Azure.Management.ContainerRegistry.Models.PasswordName' for parameter 'PasswordName'.
-The cmdlet 'Update-AzContainerRegistryCredential' no longer supports the parameter 'ResourceId' and no alias was found for the original parameter name.
-The cmdlet 'Update-AzContainerRegistryCredential' no longer supports the type 'Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer' for parameter 'DefaultProfile'.
-The cmdlet 'Update-AzContainerRegistryCredential' no longer supports the alias 'AzContext' for parameter 'DefaultProfile'.
-The cmdlet 'Update-AzContainerRegistryCredential' no longer supports the alias 'AzureRmContext' for parameter 'DefaultProfile'.
+- The cmdlet 'Update-AzContainerRegistryCredential' no longer supports the alias 'RegistryName' for parameter 'Name'.
+- The cmdlet 'Update-AzContainerRegistryCredential' no longer supports the type 'Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry' for parameter 'Registry'.
+- The cmdlet 'Update-AzContainerRegistryCredential' no longer supports the type 'Microsoft.Azure.Management.ContainerRegistry.Models.PasswordName' for parameter 'PasswordName'.
+- The cmdlet 'Update-AzContainerRegistryCredential' no longer supports the parameter 'ResourceId' and no alias was found for the original parameter name.
+- The cmdlet 'Update-AzContainerRegistryCredential' no longer supports the type 'Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer' for parameter 'DefaultProfile'.
+- The cmdlet 'Update-AzContainerRegistryCredential' no longer supports the alias 'AzContext' for parameter 'DefaultProfile'.
+- The cmdlet 'Update-AzContainerRegistryCredential' no longer supports the alias 'AzureRmContext' for parameter 'DefaultProfile'.
 
 #### Before
 ```powershell
@@ -167,17 +167,17 @@ Update-AzContainerRegistryCredential -ResourceGroupName "MyResourceGroup" -Regis
 
 
 ### `Update-AzContainerRegistry`
-The cmdlet 'Update-AzContainerRegistry' no longer has output type 'Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry'.
-The cmdlet 'Update-AzContainerRegistry' no longer supports the alias 'EnableAdmin' for parameter 'EnableAdminUser'.
-The cmdlet 'Update-AzContainerRegistry' no longer supports the parameter 'DisableAdminUser' and no alias was found for the original parameter name.
-The cmdlet 'Update-AzContainerRegistry' no longer supports the parameter 'StorageAccountName' and no alias was found for the original parameter name.
-The cmdlet 'Update-AzContainerRegistry' no longer supports the parameter 'NetworkRuleSet' and no alias was found for the original parameter name.
-The cmdlet 'Update-AzContainerRegistry' no longer supports the alias 'ContainerRegistrySku' for parameter 'Sku'.
-The cmdlet 'Update-AzContainerRegistry' no longer supports the alias 'RegistrySku' for parameter 'Sku'.
-The cmdlet 'Update-AzContainerRegistry' no longer supports the parameter 'ResourceId' and no alias was found for the original parameter name.
-The cmdlet 'Update-AzContainerRegistry' no longer supports the type 'Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer' for parameter 'DefaultProfile'.
-The cmdlet 'Update-AzContainerRegistry' no longer supports the alias 'AzContext' for parameter 'DefaultProfile'.
-The cmdlet 'Update-AzContainerRegistry' no longer supports the alias 'AzureRmContext' for parameter 'DefaultProfile'.
+- The cmdlet 'Update-AzContainerRegistry' no longer has output type 'Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry'.
+- The cmdlet 'Update-AzContainerRegistry' no longer supports the alias 'EnableAdmin' for parameter 'EnableAdminUser'.
+- The cmdlet 'Update-AzContainerRegistry' no longer supports the parameter 'DisableAdminUser' and no alias was found for the original parameter name.
+- The cmdlet 'Update-AzContainerRegistry' no longer supports the parameter 'StorageAccountName' and no alias was found for the original parameter name.
+- The cmdlet 'Update-AzContainerRegistry' no longer supports the parameter 'NetworkRuleSet' and no alias was found for the original parameter name.
+- The cmdlet 'Update-AzContainerRegistry' no longer supports the alias 'ContainerRegistrySku' for parameter 'Sku'.
+- The cmdlet 'Update-AzContainerRegistry' no longer supports the alias 'RegistrySku' for parameter 'Sku'.
+- The cmdlet 'Update-AzContainerRegistry' no longer supports the parameter 'ResourceId' and no alias was found for the original parameter name.
+- The cmdlet 'Update-AzContainerRegistry' no longer supports the type 'Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer' for parameter 'DefaultProfile'.
+- The cmdlet 'Update-AzContainerRegistry' no longer supports the alias 'AzContext' for parameter 'DefaultProfile'.
+- The cmdlet 'Update-AzContainerRegistry' no longer supports the alias 'AzureRmContext' for parameter 'DefaultProfile'.
 
 #### Before
 ```powershell
@@ -190,12 +190,12 @@ Update-AzContainerRegistry -ResourceGroupName "MyResourceGroup" -Name "RegistryE
 
 
 ### `Test-AzContainerRegistryWebhook`
-The cmdlet 'Test-AzContainerRegistryWebhook' no longer has output type 'Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryEventInfo'.
-The cmdlet 'Test-AzContainerRegistryWebhook' no longer supports the type 'Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryWebhook' for parameter 'Webhook'.
-The cmdlet 'Test-AzContainerRegistryWebhook' no longer supports the parameter 'ResourceId' and no alias was found for the original parameter name.
-The cmdlet 'Test-AzContainerRegistryWebhook' no longer supports the type 'Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer' for parameter 'DefaultProfile'.
-The cmdlet 'Test-AzContainerRegistryWebhook' no longer supports the alias 'AzContext' for parameter 'DefaultProfile'.
-The cmdlet 'Test-AzContainerRegistryWebhook' no longer supports the alias 'AzureRmContext' for parameter 'DefaultProfile'.
+- The cmdlet 'Test-AzContainerRegistryWebhook' no longer has output type 'Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryEventInfo'.
+- The cmdlet 'Test-AzContainerRegistryWebhook' no longer supports the type 'Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryWebhook' for parameter 'Webhook'.
+- The cmdlet 'Test-AzContainerRegistryWebhook' no longer supports the parameter 'ResourceId' and no alias was found for the original parameter name.
+- The cmdlet 'Test-AzContainerRegistryWebhook' no longer supports the type 'Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer' for parameter 'DefaultProfile'.
+- The cmdlet 'Test-AzContainerRegistryWebhook' no longer supports the alias 'AzContext' for parameter 'DefaultProfile'.
+- The cmdlet 'Test-AzContainerRegistryWebhook' no longer supports the alias 'AzureRmContext' for parameter 'DefaultProfile'.
 
 #### Before
 ```powershell
@@ -208,12 +208,12 @@ Test-AzContainerRegistryWebhook -ResourceGroupName "MyResourceGroup" -RegistryNa
 
 
 ### `Test-AzContainerRegistryNameAvailability`
-The cmdlet 'Test-AzContainerRegistryNameAvailability' no longer supports the alias 'ContainerRegistryName' for parameter 'Name'.
-The cmdlet 'Test-AzContainerRegistryNameAvailability' no longer supports the alias 'RegistryName' for parameter 'Name'.
-The cmdlet 'Test-AzContainerRegistryNameAvailability' no longer supports the alias 'ResourceName' for parameter 'Name'.
-The cmdlet 'Test-AzContainerRegistryNameAvailability' no longer supports the type 'Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer' for parameter 'DefaultProfile'.
-The cmdlet 'Test-AzContainerRegistryNameAvailability' no longer supports the alias 'AzContext' for parameter 'DefaultProfile'.
-The cmdlet 'Test-AzContainerRegistryNameAvailability' no longer supports the alias 'AzureRmContext' for parameter 'DefaultProfile'.
+- The cmdlet 'Test-AzContainerRegistryNameAvailability' no longer supports the alias 'ContainerRegistryName' for parameter 'Name'.
+- The cmdlet 'Test-AzContainerRegistryNameAvailability' no longer supports the alias 'RegistryName' for parameter 'Name'.
+- The cmdlet 'Test-AzContainerRegistryNameAvailability' no longer supports the alias 'ResourceName' for parameter 'Name'.
+- The cmdlet 'Test-AzContainerRegistryNameAvailability' no longer supports the type 'Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer' for parameter 'DefaultProfile'.
+- The cmdlet 'Test-AzContainerRegistryNameAvailability' no longer supports the alias 'AzContext' for parameter 'DefaultProfile'.
+- The cmdlet 'Test-AzContainerRegistryNameAvailability' no longer supports the alias 'AzureRmContext' for parameter 'DefaultProfile'.
 
 #### Before
 ```powershell
@@ -226,14 +226,14 @@ Test-AzContainerRegistryNameAvailability -Name 'SomeRegistryName'
 
 
 ### `Set-AzContainerRegistryNetworkRuleSet`
-The cmdlet 'Set-AzContainerRegistryNetworkRuleSet' has been removed and no alias was found for the original cmdlet name.
+- The cmdlet 'Set-AzContainerRegistryNetworkRuleSet' has been removed and no alias was found for the original cmdlet name.
 
 ### `Remove-AzContainerRegistryWebhook`
-The cmdlet 'Remove-AzContainerRegistryWebhook' no longer supports the parameter 'Webhook' and no alias was found for the original parameter name.
-The cmdlet 'Remove-AzContainerRegistryWebhook' no longer supports the parameter 'ResourceId' and no alias was found for the original parameter name.
-The cmdlet 'Remove-AzContainerRegistryWebhook' no longer supports the type 'Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer' for parameter 'DefaultProfile'.
-The cmdlet 'Remove-AzContainerRegistryWebhook' no longer supports the alias 'AzContext' for parameter 'DefaultProfile'.
-The cmdlet 'Remove-AzContainerRegistryWebhook' no longer supports the alias 'AzureRmContext' for parameter 'DefaultProfile'.
+- The cmdlet 'Remove-AzContainerRegistryWebhook' no longer supports the parameter 'Webhook' and no alias was found for the original parameter name.
+- The cmdlet 'Remove-AzContainerRegistryWebhook' no longer supports the parameter 'ResourceId' and no alias was found for the original parameter name.
+- The cmdlet 'Remove-AzContainerRegistryWebhook' no longer supports the type 'Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer' for parameter 'DefaultProfile'.
+- The cmdlet 'Remove-AzContainerRegistryWebhook' no longer supports the alias 'AzContext' for parameter 'DefaultProfile'.
+- The cmdlet 'Remove-AzContainerRegistryWebhook' no longer supports the alias 'AzureRmContext' for parameter 'DefaultProfile'.
 
 #### Before
 ```powershell
@@ -246,11 +246,11 @@ Remove-AzContainerRegistryWebhook -ResourceGroupName "MyResourceGroup" -Registry
 
 
 ### `Remove-AzContainerRegistryReplication`
-The cmdlet 'Remove-AzContainerRegistryReplication' no longer supports the parameter 'Replication' and no alias was found for the original parameter name.
-The cmdlet 'Remove-AzContainerRegistryReplication' no longer supports the parameter 'ResourceId' and no alias was found for the original parameter name.
-The cmdlet 'Remove-AzContainerRegistryReplication' no longer supports the type 'Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer' for parameter 'DefaultProfile'.
-The cmdlet 'Remove-AzContainerRegistryReplication' no longer supports the alias 'AzContext' for parameter 'DefaultProfile'.
-The cmdlet 'Remove-AzContainerRegistryReplication' no longer supports the alias 'AzureRmContext' for parameter 'DefaultProfile'.
+- The cmdlet 'Remove-AzContainerRegistryReplication' no longer supports the parameter 'Replication' and no alias was found for the original parameter name.
+- The cmdlet 'Remove-AzContainerRegistryReplication' no longer supports the parameter 'ResourceId' and no alias was found for the original parameter name.
+- The cmdlet 'Remove-AzContainerRegistryReplication' no longer supports the type 'Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer' for parameter 'DefaultProfile'.
+- The cmdlet 'Remove-AzContainerRegistryReplication' no longer supports the alias 'AzContext' for parameter 'DefaultProfile'.
+- The cmdlet 'Remove-AzContainerRegistryReplication' no longer supports the alias 'AzureRmContext' for parameter 'DefaultProfile'.
 
 #### Before
 ```powershell
@@ -263,11 +263,11 @@ Remove-AzContainerRegistryReplication -Name "NewReplication" -ResourceGroupName 
 
 
 ### `Remove-AzContainerRegistry`
-The cmdlet 'Remove-AzContainerRegistry' no longer supports the parameter 'Registry' and no alias was found for the original parameter name.
-The cmdlet 'Remove-AzContainerRegistry' no longer supports the parameter 'ResourceId' and no alias was found for the original parameter name.
-The cmdlet 'Remove-AzContainerRegistry' no longer supports the type 'Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer' for parameter 'DefaultProfile'.
-The cmdlet 'Remove-AzContainerRegistry' no longer supports the alias 'AzContext' for parameter 'DefaultProfile'.
-The cmdlet 'Remove-AzContainerRegistry' no longer supports the alias 'AzureRmContext' for parameter 'DefaultProfile'.
+- The cmdlet 'Remove-AzContainerRegistry' no longer supports the parameter 'Registry' and no alias was found for the original parameter name.
+- The cmdlet 'Remove-AzContainerRegistry' no longer supports the parameter 'ResourceId' and no alias was found for the original parameter name.
+- The cmdlet 'Remove-AzContainerRegistry' no longer supports the type 'Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer' for parameter 'DefaultProfile'.
+- The cmdlet 'Remove-AzContainerRegistry' no longer supports the alias 'AzContext' for parameter 'DefaultProfile'.
+- The cmdlet 'Remove-AzContainerRegistry' no longer supports the alias 'AzureRmContext' for parameter 'DefaultProfile'.
 
 #### Before
 ```powershell
@@ -280,17 +280,17 @@ Remove-AzContainerRegistry -ResourceGroupName "MyResourceGroup" -Name "MyRegistr
 
 
 ### `New-AzContainerRegistryWebhook`
-The cmdlet 'New-AzContainerRegistryWebhook' no longer has output type 'Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryWebhook'.
-The cmdlet 'New-AzContainerRegistryWebhook' no longer supports the alias 'WebhookUri' for parameter 'Uri'.
-The cmdlet 'New-AzContainerRegistryWebhook' no longer supports the alias 'WebhookActions' for parameter 'Action'.
-The cmdlet 'New-AzContainerRegistryWebhook' no longer supports the alias 'WebhookHeaders' for parameter 'Header'.
-The cmdlet 'New-AzContainerRegistryWebhook' no longer supports the alias 'WebhookStatus' for parameter 'Status'.
-The cmdlet 'New-AzContainerRegistryWebhook' no longer supports the alias 'WebhookScope' for parameter 'Scope'.
-The cmdlet 'New-AzContainerRegistryWebhook' no longer supports the alias 'WebhookLocation' for parameter 'Location'.
-The cmdlet 'New-AzContainerRegistryWebhook' no longer supports the parameter 'ResourceId' and no alias was found for the original parameter name.
-The cmdlet 'New-AzContainerRegistryWebhook' no longer supports the type 'Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer' for parameter 'DefaultProfile'.
-The cmdlet 'New-AzContainerRegistryWebhook' no longer supports the alias 'AzContext' for parameter 'DefaultProfile'.
-The cmdlet 'New-AzContainerRegistryWebhook' no longer supports the alias 'AzureRmContext' for parameter 'DefaultProfile'.
+- The cmdlet 'New-AzContainerRegistryWebhook' no longer has output type 'Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryWebhook'.
+- The cmdlet 'New-AzContainerRegistryWebhook' no longer supports the alias 'WebhookUri' for parameter 'Uri'.
+- The cmdlet 'New-AzContainerRegistryWebhook' no longer supports the alias 'WebhookActions' for parameter 'Action'.
+- The cmdlet 'New-AzContainerRegistryWebhook' no longer supports the alias 'WebhookHeaders' for parameter 'Header'.
+- The cmdlet 'New-AzContainerRegistryWebhook' no longer supports the alias 'WebhookStatus' for parameter 'Status'.
+- The cmdlet 'New-AzContainerRegistryWebhook' no longer supports the alias 'WebhookScope' for parameter 'Scope'.
+- The cmdlet 'New-AzContainerRegistryWebhook' no longer supports the alias 'WebhookLocation' for parameter 'Location'.
+- The cmdlet 'New-AzContainerRegistryWebhook' no longer supports the parameter 'ResourceId' and no alias was found for the original parameter name.
+- The cmdlet 'New-AzContainerRegistryWebhook' no longer supports the type 'Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer' for parameter 'DefaultProfile'.
+- The cmdlet 'New-AzContainerRegistryWebhook' no longer supports the alias 'AzContext' for parameter 'DefaultProfile'.
+- The cmdlet 'New-AzContainerRegistryWebhook' no longer supports the alias 'AzureRmContext' for parameter 'DefaultProfile'.
 
 #### Before
 ```powershell
@@ -303,12 +303,12 @@ New-AzContainerRegistryWebhook -ResourceGroupName "MyResourceGroup" -RegistryNam
 
 
 ### `New-AzContainerRegistryReplication`
-The cmdlet 'New-AzContainerRegistryReplication' no longer has output type 'Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryReplication'.
-The cmdlet 'New-AzContainerRegistryReplication' no longer supports the type 'Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry' for parameter 'Registry'.
-The cmdlet 'New-AzContainerRegistryReplication' no longer supports the parameter 'ResourceId' and no alias was found for the original parameter name.
-The cmdlet 'New-AzContainerRegistryReplication' no longer supports the type 'Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer' for parameter 'DefaultProfile'.
-The cmdlet 'New-AzContainerRegistryReplication' no longer supports the alias 'AzContext' for parameter 'DefaultProfile'.
-The cmdlet 'New-AzContainerRegistryReplication' no longer supports the alias 'AzureRmContext' for parameter 'DefaultProfile'.
+- The cmdlet 'New-AzContainerRegistryReplication' no longer has output type 'Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryReplication'.
+- The cmdlet 'New-AzContainerRegistryReplication' no longer supports the type 'Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry' for parameter 'Registry'.
+- The cmdlet 'New-AzContainerRegistryReplication' no longer supports the parameter 'ResourceId' and no alias was found for the original parameter name.
+- The cmdlet 'New-AzContainerRegistryReplication' no longer supports the type 'Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer' for parameter 'DefaultProfile'.
+- The cmdlet 'New-AzContainerRegistryReplication' no longer supports the alias 'AzContext' for parameter 'DefaultProfile'.
+- The cmdlet 'New-AzContainerRegistryReplication' no longer supports the alias 'AzureRmContext' for parameter 'DefaultProfile'.
 
 #### Before
 ```powershell
@@ -321,16 +321,16 @@ New-AzContainerRegistryReplication -ResourceGroupName "MyResourceGroup" -Registr
 
 
 ### `New-AzContainerRegistryNetworkRule`
-The cmdlet 'New-AzContainerRegistryNetworkRule' has been removed and no alias was found for the original cmdlet name.
+- The cmdlet 'New-AzContainerRegistryNetworkRule' has been removed and no alias was found for the original cmdlet name.
 
 ### `New-AzContainerRegistry`
-The cmdlet 'New-AzContainerRegistry' no longer has output type 'Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry'.
-The cmdlet 'New-AzContainerRegistry' no longer supports the alias 'ContainerRegistrySku' for parameter 'Sku'.
-The cmdlet 'New-AzContainerRegistry' no longer supports the alias 'RegistrySku' for parameter 'Sku'.
-The cmdlet 'New-AzContainerRegistry' no longer supports the alias 'EnableAdmin' for parameter 'EnableAdminUser'.
-The cmdlet 'New-AzContainerRegistry' no longer supports the type 'Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer' for parameter 'DefaultProfile'.
-The cmdlet 'New-AzContainerRegistry' no longer supports the alias 'AzContext' for parameter 'DefaultProfile'.
-The cmdlet 'New-AzContainerRegistry' no longer supports the alias 'AzureRmContext' for parameter 'DefaultProfile'.
+- The cmdlet 'New-AzContainerRegistry' no longer has output type 'Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry'.
+- The cmdlet 'New-AzContainerRegistry' no longer supports the alias 'ContainerRegistrySku' for parameter 'Sku'.
+- The cmdlet 'New-AzContainerRegistry' no longer supports the alias 'RegistrySku' for parameter 'Sku'.
+- The cmdlet 'New-AzContainerRegistry' no longer supports the alias 'EnableAdmin' for parameter 'EnableAdminUser'.
+- The cmdlet 'New-AzContainerRegistry' no longer supports the type 'Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer' for parameter 'DefaultProfile'.
+- The cmdlet 'New-AzContainerRegistry' no longer supports the alias 'AzContext' for parameter 'DefaultProfile'.
+- The cmdlet 'New-AzContainerRegistry' no longer supports the alias 'AzureRmContext' for parameter 'DefaultProfile'.
 
 #### Before
 ```powershell
@@ -343,17 +343,17 @@ The cmdlet 'New-AzContainerRegistry' no longer supports the alias 'AzureRmContex
 
 
 ### `Import-AzContainerRegistryImage`
-The cmdlet 'Import-AzContainerRegistryImage' no longer supports the type 'Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer' for parameter 'DefaultProfile'.
-The cmdlet 'Import-AzContainerRegistryImage' no longer supports the alias 'AzContext' for parameter 'DefaultProfile'.
-The cmdlet 'Import-AzContainerRegistryImage' no longer supports the alias 'AzureRmContext' for parameter 'DefaultProfile'.
+- The cmdlet 'Import-AzContainerRegistryImage' no longer supports the type 'Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer' for parameter 'DefaultProfile'.
+- The cmdlet 'Import-AzContainerRegistryImage' no longer supports the alias 'AzContext' for parameter 'DefaultProfile'.
+- The cmdlet 'Import-AzContainerRegistryImage' no longer supports the alias 'AzureRmContext' for parameter 'DefaultProfile'.
 
 ### `Get-AzContainerRegistryWebhookEvent`
-The cmdlet 'Get-AzContainerRegistryWebhookEvent' no longer has output type 'Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryWebhookEvent'.
-The cmdlet 'Get-AzContainerRegistryWebhookEvent' no longer supports the type 'Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryWebhook' for parameter 'Webhook'.
-The cmdlet 'Get-AzContainerRegistryWebhookEvent' no longer supports the parameter 'ResourceId' and no alias was found for the original parameter name.
-The cmdlet 'Get-AzContainerRegistryWebhookEvent' no longer supports the type 'Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer' for parameter 'DefaultProfile'.
-The cmdlet 'Get-AzContainerRegistryWebhookEvent' no longer supports the alias 'AzContext' for parameter 'DefaultProfile'.
-The cmdlet 'Get-AzContainerRegistryWebhookEvent' no longer supports the alias 'AzureRmContext' for parameter 'DefaultProfile'.
+- The cmdlet 'Get-AzContainerRegistryWebhookEvent' no longer has output type 'Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryWebhookEvent'.
+- The cmdlet 'Get-AzContainerRegistryWebhookEvent' no longer supports the type 'Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryWebhook' for parameter 'Webhook'.
+- The cmdlet 'Get-AzContainerRegistryWebhookEvent' no longer supports the parameter 'ResourceId' and no alias was found for the original parameter name.
+- The cmdlet 'Get-AzContainerRegistryWebhookEvent' no longer supports the type 'Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer' for parameter 'DefaultProfile'.
+- The cmdlet 'Get-AzContainerRegistryWebhookEvent' no longer supports the alias 'AzContext' for parameter 'DefaultProfile'.
+- The cmdlet 'Get-AzContainerRegistryWebhookEvent' no longer supports the alias 'AzureRmContext' for parameter 'DefaultProfile'.
 
 #### Before
 ```powershell
@@ -366,13 +366,13 @@ Get-AzContainerRegistryWebhookEvent  -ResourceGroupName MyResourceGroup -Registr
 
 
 ### `Get-AzContainerRegistryWebhook`
-The cmdlet 'Get-AzContainerRegistryWebhook' no longer has output type 'Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryWebhook'.
-The cmdlet 'Get-AzContainerRegistryWebhook' no longer supports the type 'Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry' for parameter 'Registry'.
-The cmdlet 'Get-AzContainerRegistryWebhook' no longer supports the parameter 'IncludeConfiguration' and no alias was found for the original parameter name.
-The cmdlet 'Get-AzContainerRegistryWebhook' no longer supports the parameter 'ResourceId' and no alias was found for the original parameter name.
-The cmdlet 'Get-AzContainerRegistryWebhook' no longer supports the type 'Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer' for parameter 'DefaultProfile'.
-The cmdlet 'Get-AzContainerRegistryWebhook' no longer supports the alias 'AzContext' for parameter 'DefaultProfile'.
-The cmdlet 'Get-AzContainerRegistryWebhook' no longer supports the alias 'AzureRmContext' for parameter 'DefaultProfile'.
+- The cmdlet 'Get-AzContainerRegistryWebhook' no longer has output type 'Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryWebhook'.
+- The cmdlet 'Get-AzContainerRegistryWebhook' no longer supports the type 'Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry' for parameter 'Registry'.
+- The cmdlet 'Get-AzContainerRegistryWebhook' no longer supports the parameter 'IncludeConfiguration' and no alias was found for the original parameter name.
+- The cmdlet 'Get-AzContainerRegistryWebhook' no longer supports the parameter 'ResourceId' and no alias was found for the original parameter name.
+- The cmdlet 'Get-AzContainerRegistryWebhook' no longer supports the type 'Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer' for parameter 'DefaultProfile'.
+- The cmdlet 'Get-AzContainerRegistryWebhook' no longer supports the alias 'AzContext' for parameter 'DefaultProfile'.
+- The cmdlet 'Get-AzContainerRegistryWebhook' no longer supports the alias 'AzureRmContext' for parameter 'DefaultProfile'.
 
 #### Before
 ```powershell
@@ -385,11 +385,11 @@ Get-AzContainerRegistryWebhook  -ResourceGroupName "MyResourceGroup" -RegistryNa
 
 
 ### `Get-AzContainerRegistryUsage`
-The cmdlet 'Get-AzContainerRegistryUsage' no longer has output type 'Microsoft.Azure.Commands.ContainerRegistry.Models.PSRegistryUsage'.
-The cmdlet 'Get-AzContainerRegistryUsage' no longer supports the alias 'RegistryName' for parameter 'Name'.
-The cmdlet 'Get-AzContainerRegistryUsage' no longer supports the type 'Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer' for parameter 'DefaultProfile'.
-The cmdlet 'Get-AzContainerRegistryUsage' no longer supports the alias 'AzContext' for parameter 'DefaultProfile'.
-The cmdlet 'Get-AzContainerRegistryUsage' no longer supports the alias 'AzureRmContext' for parameter 'DefaultProfile'.
+- The cmdlet 'Get-AzContainerRegistryUsage' no longer has output type 'Microsoft.Azure.Commands.ContainerRegistry.Models.PSRegistryUsage'.
+- The cmdlet 'Get-AzContainerRegistryUsage' no longer supports the alias 'RegistryName' for parameter 'Name'.
+- The cmdlet 'Get-AzContainerRegistryUsage' no longer supports the type 'Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer' for parameter 'DefaultProfile'.
+- The cmdlet 'Get-AzContainerRegistryUsage' no longer supports the alias 'AzContext' for parameter 'DefaultProfile'.
+- The cmdlet 'Get-AzContainerRegistryUsage' no longer supports the alias 'AzureRmContext' for parameter 'DefaultProfile'.
 
 #### Before
 ```powershell
@@ -402,11 +402,11 @@ Get-AzContainerRegistryUsage -ResourceGroupName "MyResourceGroup" -Name "MyRegis
 
 
 ### `Get-AzContainerRegistryReplication`
-The cmdlet 'Get-AzContainerRegistryReplication' no longer has output type 'Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryReplication'.
-The cmdlet 'Get-AzContainerRegistryReplication' no longer supports the parameter 'ResourceId' and no alias was found for the original parameter name.
-The cmdlet 'Get-AzContainerRegistryReplication' no longer supports the type 'Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer' for parameter 'DefaultProfile'.
-The cmdlet 'Get-AzContainerRegistryReplication' no longer supports the alias 'AzContext' for parameter 'DefaultProfile'.
-The cmdlet 'Get-AzContainerRegistryReplication' no longer supports the alias 'AzureRmContext' for parameter 'DefaultProfile'.
+- The cmdlet 'Get-AzContainerRegistryReplication' no longer has output type 'Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryReplication'.
+- The cmdlet 'Get-AzContainerRegistryReplication' no longer supports the parameter 'ResourceId' and no alias was found for the original parameter name.
+- The cmdlet 'Get-AzContainerRegistryReplication' no longer supports the type 'Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer' for parameter 'DefaultProfile'.
+- The cmdlet 'Get-AzContainerRegistryReplication' no longer supports the alias 'AzContext' for parameter 'DefaultProfile'.
+- The cmdlet 'Get-AzContainerRegistryReplication' no longer supports the alias 'AzureRmContext' for parameter 'DefaultProfile'.
 
 #### Before
 ```powershell
@@ -419,13 +419,13 @@ Get-AzContainerRegistryReplication  -ResourceId /subscriptions/{subscriptionID}/
 
 
 ### `Get-AzContainerRegistryCredential`
-The cmdlet 'Get-AzContainerRegistryCredential' no longer supports the alias 'ContainerRegistryName' for parameter 'Name'.
-The cmdlet 'Get-AzContainerRegistryCredential' no longer supports the alias 'RegistryName' for parameter 'Name'.
-The cmdlet 'Get-AzContainerRegistryCredential' no longer supports the alias 'ResourceName' for parameter 'Name'.
-The cmdlet 'Get-AzContainerRegistryCredential' no longer supports the parameter 'ResourceId' and no alias was found for the original parameter name.
-The cmdlet 'Get-AzContainerRegistryCredential' no longer supports the type 'Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer' for parameter 'DefaultProfile'.
-The cmdlet 'Get-AzContainerRegistryCredential' no longer supports the alias 'AzContext' for parameter 'DefaultProfile'.
-The cmdlet 'Get-AzContainerRegistryCredential' no longer supports the alias 'AzureRmContext' for parameter 'DefaultProfile'.
+- The cmdlet 'Get-AzContainerRegistryCredential' no longer supports the alias 'ContainerRegistryName' for parameter 'Name'.
+- The cmdlet 'Get-AzContainerRegistryCredential' no longer supports the alias 'RegistryName' for parameter 'Name'.
+- The cmdlet 'Get-AzContainerRegistryCredential' no longer supports the alias 'ResourceName' for parameter 'Name'.
+- The cmdlet 'Get-AzContainerRegistryCredential' no longer supports the parameter 'ResourceId' and no alias was found for the original parameter name.
+- The cmdlet 'Get-AzContainerRegistryCredential' no longer supports the type 'Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer' for parameter 'DefaultProfile'.
+- The cmdlet 'Get-AzContainerRegistryCredential' no longer supports the alias 'AzContext' for parameter 'DefaultProfile'.
+- The cmdlet 'Get-AzContainerRegistryCredential' no longer supports the alias 'AzureRmContext' for parameter 'DefaultProfile'.
 
 #### Before
 ```powershell
@@ -438,11 +438,11 @@ The cmdlet 'Get-AzContainerRegistryCredential' no longer supports the alias 'Azu
 
 
 ### `Get-AzContainerRegistry`
-The cmdlet 'Get-AzContainerRegistry' no longer has output type 'Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry'.
-The cmdlet 'Get-AzContainerRegistry' no longer supports the parameter 'ResourceId' and no alias was found for the original parameter name.
-The cmdlet 'Get-AzContainerRegistry' no longer supports the type 'Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer' for parameter 'DefaultProfile'.
-The cmdlet 'Get-AzContainerRegistry' no longer supports the alias 'AzContext' for parameter 'DefaultProfile'.
-The cmdlet 'Get-AzContainerRegistry' no longer supports the alias 'AzureRmContext' for parameter 'DefaultProfile'.
+- The cmdlet 'Get-AzContainerRegistry' no longer has output type 'Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry'.
+- The cmdlet 'Get-AzContainerRegistry' no longer supports the parameter 'ResourceId' and no alias was found for the original parameter name.
+- The cmdlet 'Get-AzContainerRegistry' no longer supports the type 'Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer' for parameter 'DefaultProfile'.
+- The cmdlet 'Get-AzContainerRegistry' no longer supports the alias 'AzContext' for parameter 'DefaultProfile'.
+- The cmdlet 'Get-AzContainerRegistry' no longer supports the alias 'AzureRmContext' for parameter 'DefaultProfile'.
 
 #### Before
 ```powershell
@@ -457,12 +457,12 @@ Get-AzContainerRegistry -ResourceGroupName "MyResourceGroup" -Name "MyRegistry"
 ## Az.DataProtection
 
 ### `Initialize-AzDataProtectionBackupInstance`
-The parameter 'BackupConfiguration' is changed from 'Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202301.KubernetesClusterBackupDatasourceParameters' to its base class type 'Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202301.IBackupDatasourceParameters'. The usage remains unchanged.
+- The parameter 'BackupConfiguration' is changed from 'Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202301.KubernetesClusterBackupDatasourceParameters' to its base class type 'Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202301.IBackupDatasourceParameters'. The usage remains unchanged.
 
 ## Az.DesktopVirtualization
 
 ### `Update-AzWvdScalingPlan`
-The cmdlet 'Update-AzWvdScalingPlan' no longer supports the parameter 'HostPoolType' and no alias was found for the original parameter name.
+- The cmdlet 'Update-AzWvdScalingPlan' no longer supports the parameter 'HostPoolType' and no alias was found for the original parameter name.
 
 #### Before
 ```powershell
@@ -555,7 +555,7 @@ Update-AzWvdScalingPlan `
 We upgraded the API version of the Az.DesktopVirtualization module from 2021-07-12 to 2022-09-09. It caused breaking changes as we include the version in the namespace of the models, for example, 'Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IHostPool'. If your script depends on the namespace, please replace "Api20210712" with "Api202209".
 
 ### `New-AzWvdScalingPlan`
-The cmdlet 'New-AzWvdScalingPlan' no longer supports the type 'Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.HostPoolType' for parameter 'HostPoolType'.
+- The cmdlet 'New-AzWvdScalingPlan' no longer supports the type 'Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.HostPoolType' for parameter 'HostPoolType'.
 
 #### Before
 ```powershell
@@ -637,8 +637,8 @@ New-AzWvdScalingPlan `
 
 
 ### `New-AzWvdHostPool`
-The cmdlet 'New-AzWvdHostPool' no longer supports the parameter 'MigrationRequestMigrationPath' and no alias was found for the original parameter name.
-The cmdlet 'New-AzWvdHostPool' no longer supports the parameter 'MigrationRequestOperation' and no alias was found for the original parameter name.
+- The cmdlet 'New-AzWvdHostPool' no longer supports the parameter 'MigrationRequestMigrationPath' and no alias was found for the original parameter name.
+- The cmdlet 'New-AzWvdHostPool' no longer supports the parameter 'MigrationRequestOperation' and no alias was found for the original parameter name.
 
 #### Before
 ```powershell
@@ -681,8 +681,8 @@ New-AzWvdHostpool -hostpoolName  hpName -location westus -resourceGroupName rgNa
 
 
 ### `New-AzWvdApplicationGroup`
-The cmdlet 'New-AzWvdApplicationGroup' no longer supports the parameter 'MigrationRequestMigrationPath' and no alias was found for the original parameter name.
-The cmdlet 'New-AzWvdApplicationGroup' no longer supports the parameter 'MigrationRequestOperation' and no alias was found for the original parameter name.
+- The cmdlet 'New-AzWvdApplicationGroup' no longer supports the parameter 'MigrationRequestMigrationPath' and no alias was found for the original parameter name.
+- The cmdlet 'New-AzWvdApplicationGroup' no longer supports the parameter 'MigrationRequestOperation' and no alias was found for the original parameter name.
 
 #### Before
 ```powershell
@@ -709,10 +709,12 @@ New-AzWvdApplicationGroup -resourceGroupName -applicationGroupName -applicationG
 ## Az.EventHub
 
 ### `Set-AzEventHubNamespace`
-The cmdlet 'Set-AzEventHubNamespace' has undergone several changes, including changes to the output type and default parameter set. The cmdlet no longer supports certain aliases and parameter types, including 'NamespaceName', 'System.String' for 'SkuName', and 'System.Nullable`1[System.Int32]' for 'SkuCapacity'. Additionally, the parameters 'MaximumThroughputUnits', 'EnableKafka', 'ClusterARMId', 'IdentityId', and 'EncryptionConfig' are no longer supported, and no aliases were found for the original parameter names. The cmdlet also no longer supports the 'IAzureContextContainer' type for the 'DefaultProfile' parameter, and the 'AzContext' and 'AzureRmContext' aliases for 'DefaultProfile' are no longer supported. Finally, several parameter sets, including '__AllParameterSets', 'NamespaceParameterSet', and 'AutoInflateParameterSet', have been removed.
+- The cmdlet 'Set-AzEventHubNamespace' has undergone several changes, including changes to the output type and default parameter set. 
+- The cmdlet no longer supports certain aliases and parameter types, including 'NamespaceName', 'System.String' for 'SkuName', and 'System.Nullable`1[System.Int32]' for 'SkuCapacity'. Additionally, the parameters 'MaximumThroughputUnits', 'EnableKafka', 'ClusterARMId', 'IdentityId', and 'EncryptionConfig' are no longer supported, and no aliases were found for the original parameter names. 
+- The cmdlet also no longer supports the 'IAzureContextContainer' type for the 'DefaultProfile' parameter, and the 'AzContext' and 'AzureRmContext' aliases for 'DefaultProfile' are no longer supported. Finally, several parameter sets, including '__AllParameterSets', 'NamespaceParameterSet', and 'AutoInflateParameterSet', have been removed.
 
 ### `Set-AzEventHub`
--MessageRetentionInDays' has been deprecated and replaced by '-RetentionTimeInHours'.
+- MessageRetentionInDays' has been deprecated and replaced by '-RetentionTimeInHours'.
 
 #### Before
 ```powershell
@@ -728,7 +730,7 @@ Set-AzEventHub -Name myEventHub -ResourceGroupName myResourceGroup -NamespaceNam
 
 
 ### `Remove-AzEventHubVirtualNetworkRule`
-The cmdlet 'Remove-AzEventHubVirtualNetworkRule' has been removed. Please use 'Set-AzEventHubNetworkRuleSet'.
+- The cmdlet 'Remove-AzEventHubVirtualNetworkRule' has been removed. Please use 'Set-AzEventHubNetworkRuleSet'.
 
 #### Before
 ```powershell
@@ -742,7 +744,7 @@ Set-AzEventHubNetworkRuleSet -ResourceGroupName myResourceGroup -NamespaceName m
 
 
 ### `Remove-AzEventHubNetworkRuleSet`
-The cmdlet 'Remove-AzEventHubNetworkRuleSet' has been removed. Please use 'Set-AzEventHubNetworkRuleSet'.
+- The cmdlet 'Remove-AzEventHubNetworkRuleSet' has been removed. Please use 'Set-AzEventHubNetworkRuleSet'.
 
 #### Before
 ```powershell
@@ -755,10 +757,10 @@ Set-AzEventHubNetworkRuleSet -ResourceGroupName myResourceGroup -NamespaceName m
 
 
 ### `Remove-AzEventHubNamespace`
-The cmdlet 'Remove-AzEventHubNamespace' has undergone several changes, including type change for parameter 'InputObject' and 'DefaultProfile', but the usage remains the same, including piping.
+- The cmdlet 'Remove-AzEventHubNamespace' has undergone several changes, including type change for parameter 'InputObject' and 'DefaultProfile', but the usage remains the same, including piping.
 
 ### `Remove-AzEventHubIPRule`
-The cmdlet 'Remove-AzEventHubIPRule' has been removed. Please use 'Set-AzEventHubNetworkRuleSet'.
+- The cmdlet 'Remove-AzEventHubIPRule' has been removed. Please use 'Set-AzEventHubNetworkRuleSet'.
 
 #### Before
 ```powershell
@@ -773,10 +775,12 @@ Set-AzEventHubNetworkRuleSet -ResourceGroupName myResourceGroup -NamespaceName m
 
 
 ### `New-AzEventHubNamespace`
-The cmdlet 'New-AzEventHubNamespace' has undergone several changes, including changes to the output type and default parameter set. The cmdlet no longer supports certain aliases and parameter types, including 'NamespaceName', 'System.String' for 'SkuName', and 'System.Nullable`1[System.Int32]' for 'SkuCapacity'. Additionally, the parameters 'MaximumThroughputUnits', 'EnableKafka', 'ClusterARMId', 'IdentityId', and 'EncryptionConfig' are no longer supported, and no aliases were found for the original parameter names. The cmdlet also no longer supports the 'IAzureContextContainer' type for the 'DefaultProfile' parameter, and the 'AzContext' and 'AzureRmContext' aliases for 'DefaultProfile' are no longer supported. Finally, several parameter sets, including '__AllParameterSets', 'NamespaceParameterSet', and 'AutoInflateParameterSet', have been removed.
+- The cmdlet 'New-AzEventHubNamespace' has undergone several changes, including changes to the output type and default parameter set. 
+- The cmdlet no longer supports certain aliases and parameter types, including 'NamespaceName', 'System.String' for 'SkuName', and 'System.Nullable`1[System.Int32]' for 'SkuCapacity'. Additionally, the parameters 'MaximumThroughputUnits', 'EnableKafka', 'ClusterARMId', 'IdentityId', and 'EncryptionConfig' are no longer supported, and no aliases were found for the original parameter names. 
+- The cmdlet also no longer supports the 'IAzureContextContainer' type for the 'DefaultProfile' parameter, and the 'AzContext' and 'AzureRmContext' aliases for 'DefaultProfile' are no longer supported. Finally, several parameter sets, including '__AllParameterSets', 'NamespaceParameterSet', and 'AutoInflateParameterSet', have been removed.
 
 ### `New-AzEventHubEncryptionConfig`
-The cmdlet 'New-AzEventHubEncryptionConfig' has been replaced by 'New-AzEventHubKeyVaultPropertiesObject'.
+- The cmdlet 'New-AzEventHubEncryptionConfig' has been replaced by 'New-AzEventHubKeyVaultPropertiesObject'.
 
 #### Before
 ```powershell
@@ -805,7 +809,7 @@ New-AzEventHub -Name myEventHub -ResourceGroupName myResourceGroup -NamespaceNam
 
 
 ### `Get-AzEventHubNamespace`
-The output type and the properties has been changed. See the example for more information.
+- The output type and the properties has been changed. See the example for more information.
 
 #### Before
 ```powershell
@@ -865,11 +869,11 @@ ZoneRedundant                   : True
 
 
 ### `Get-AzEventHub`
-The cmdlet 'Get-AzEventHub' no longer has output type 'Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEventhub'.
+- The cmdlet 'Get-AzEventHub' no longer has output type 'Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEventhub'.
 (Yeming: namespace changed, not considered a breaking change. should be removed)
 
 ### `Add-AzEventHubVirtualNetworkRule`
-The cmdlet 'Add-AzEventHubVirtualNetworkRule' has been removed. Please use 'Set-AzEventHubNetworkRuleSet'.
+- The cmdlet 'Add-AzEventHubVirtualNetworkRule' has been removed. Please use 'Set-AzEventHubNetworkRuleSet'.
 
 #### Before
 ```powershell
@@ -883,7 +887,7 @@ Set-AzEventHubNetworkRuleSet -ResourceGroupName myResourceGroup -NamespaceName m
 
 
 ### `Add-AzEventHubIPRule`
-The cmdlet 'Add-AzEventHubIPRule' has been removed. Please use 'Set-AzEventHubNetworkRuleSet'.
+- The cmdlet 'Add-AzEventHubIPRule' has been removed. Please use 'Set-AzEventHubNetworkRuleSet'.
 
 #### Before
 ```powershell
@@ -900,8 +904,8 @@ Set-AzEventHubNetworkRuleSet -ResourceGroupName myResourceGroup -NamespaceName m
 ## Az.HDInsight
 
 ### `New-AzHDInsightCluster`
-The cmdlet 'New-AzHDInsightCluster' no longer supports the parameter 'RdpCredential' and no alias was found for the original parameter name.
-The cmdlet 'New-AzHDInsightCluster' no longer supports the parameter 'RdpAccessExpiry' and no alias was found for the original parameter name.
+- The cmdlet 'New-AzHDInsightCluster' no longer supports the parameter 'RdpCredential' and no alias was found for the original parameter name.
+- The cmdlet 'New-AzHDInsightCluster' no longer supports the parameter 'RdpAccessExpiry' and no alias was found for the original parameter name.
 
 #### Before
 ```powershell
@@ -916,19 +920,19 @@ Don’t use the two parameters any more.
 ## Az.Relay
 
 ### `Test-AzRelayName`
-The cmdlet 'Test-AzRelayName' no longer supports the type 'Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer' for parameter 'DefaultProfile'.
-The cmdlet 'Test-AzRelayName' no longer supports the alias 'AzContext' for parameter 'DefaultProfile'.
-The cmdlet 'Test-AzRelayName' no longer supports the alias 'AzureRmContext' for parameter 'DefaultProfile'.
+- The cmdlet 'Test-AzRelayName' no longer supports the type 'Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer' for parameter 'DefaultProfile'.
+- The cmdlet 'Test-AzRelayName' no longer supports the alias 'AzContext' for parameter 'DefaultProfile'.
+- The cmdlet 'Test-AzRelayName' no longer supports the alias 'AzureRmContext' for parameter 'DefaultProfile'.
 
 ### `Set-AzWcfRelay`
-The cmdlet 'Set-AzWcfRelay' no longer has output type 'Microsoft.Azure.Commands.Relay.Models.PSWcfRelayAttributes'.
-The cmdlet 'Set-AzWcfRelay' no longer supports the type 'Microsoft.Azure.Commands.Relay.Models.PSWcfRelayAttributes' for parameter 'InputObject'.
-The cmdlet 'Set-AzWcfRelay' no longer supports the type 'Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer' for parameter 'DefaultProfile'.
-The cmdlet 'Set-AzWcfRelay' no longer supports the alias 'AzContext' for parameter 'DefaultProfile'.
-The cmdlet 'Set-AzWcfRelay' no longer supports the alias 'AzureRmContext' for parameter 'DefaultProfile'.
+- The cmdlet 'Set-AzWcfRelay' no longer has output type 'Microsoft.Azure.Commands.Relay.Models.PSWcfRelayAttributes'.
+- The cmdlet 'Set-AzWcfRelay' no longer supports the type 'Microsoft.Azure.Commands.Relay.Models.PSWcfRelayAttributes' for parameter 'InputObject'.
+- The cmdlet 'Set-AzWcfRelay' no longer supports the type 'Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer' for parameter 'DefaultProfile'.
+- The cmdlet 'Set-AzWcfRelay' no longer supports the alias 'AzContext' for parameter 'DefaultProfile'.
+- The cmdlet 'Set-AzWcfRelay' no longer supports the alias 'AzureRmContext' for parameter 'DefaultProfile'.
 
 ### `Set-AzRelayNamespace`
-The cmdlet 'Set-AzRelayNamespace' has been removed and no alias was found for the original cmdlet name.
+- The cmdlet 'Set-AzRelayNamespace' has been removed and no alias was found for the original cmdlet name.
 
 #### Before
 ```powershell
@@ -941,7 +945,7 @@ Update-AzRelayNamespace -ResourceGroupName Default-ServiceBus-WestUS -Name TestN
 
 
 ### `Set-AzRelayNamespace`
-The cmdlet 'Set-AzRelayNamespace' has been removed and no alias was found for the original cmdlet name.
+- The cmdlet 'Set-AzRelayNamespace' has been removed and no alias was found for the original cmdlet name.
 
 #### Before
 ```powershell
@@ -956,20 +960,20 @@ Update-AzRelayNamespace -InputObject $relayNamespace -Tag @{'k'='v'}
 
 
 ### `Set-AzRelayHybridConnection`
-The cmdlet 'Set-AzRelayHybridConnection' no longer has output type 'Microsoft.Azure.Commands.Relay.Models.PSHybridConnectionAttributes'.
-The cmdlet 'Set-AzRelayHybridConnection' no longer supports the type 'Microsoft.Azure.Commands.Relay.Models.PSHybridConnectionAttributes' for parameter 'InputObject'.
-The cmdlet 'Set-AzRelayHybridConnection' no longer supports the type 'Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer' for parameter 'DefaultProfile'.
-The cmdlet 'Set-AzRelayHybridConnection' no longer supports the alias 'AzContext' for parameter 'DefaultProfile'.
-The cmdlet 'Set-AzRelayHybridConnection' no longer supports the alias 'AzureRmContext' for parameter 'DefaultProfile'.
+- The cmdlet 'Set-AzRelayHybridConnection' no longer has output type 'Microsoft.Azure.Commands.Relay.Models.PSHybridConnectionAttributes'.
+- The cmdlet 'Set-AzRelayHybridConnection' no longer supports the type 'Microsoft.Azure.Commands.Relay.Models.PSHybridConnectionAttributes' for parameter 'InputObject'.
+- The cmdlet 'Set-AzRelayHybridConnection' no longer supports the type 'Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer' for parameter 'DefaultProfile'.
+- The cmdlet 'Set-AzRelayHybridConnection' no longer supports the alias 'AzContext' for parameter 'DefaultProfile'.
+- The cmdlet 'Set-AzRelayHybridConnection' no longer supports the alias 'AzureRmContext' for parameter 'DefaultProfile'.
 
 ### `Set-AzRelayAuthorizationRule`
-The cmdlet 'Set-AzRelayAuthorizationRule' no longer has output type 'Microsoft.Azure.Commands.Relay.Models.PSAuthorizationRuleAttributes'.
+- The cmdlet 'Set-AzRelayAuthorizationRule' no longer has output type 'Microsoft.Azure.Commands.Relay.Models.PSAuthorizationRuleAttributes'.
 The parameter set 'NamespaceAuthorizationRuleSet' for cmdlet 'Set-AzRelayAuthorizationRule' is no longer the default parameter set.
-The cmdlet 'Set-AzRelayAuthorizationRule' no longer supports the type 'Microsoft.Azure.Commands.Relay.Models.PSAuthorizationRuleAttributes' for parameter 'InputObject'.
+- The cmdlet 'Set-AzRelayAuthorizationRule' no longer supports the type 'Microsoft.Azure.Commands.Relay.Models.PSAuthorizationRuleAttributes' for parameter 'InputObject'.
 The element type for parameter 'Rights' has been changed from 'System.String' to 'Microsoft.Azure.PowerShell.Cmdlets.Relay.Support.AccessRights'.
-The cmdlet 'Set-AzRelayAuthorizationRule' no longer supports the type 'Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer' for parameter 'DefaultProfile'.
-The cmdlet 'Set-AzRelayAuthorizationRule' no longer supports the alias 'AzContext' for parameter 'DefaultProfile'.
-The cmdlet 'Set-AzRelayAuthorizationRule' no longer supports the alias 'AzureRmContext' for parameter 'DefaultProfile'.
+- The cmdlet 'Set-AzRelayAuthorizationRule' no longer supports the type 'Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer' for parameter 'DefaultProfile'.
+- The cmdlet 'Set-AzRelayAuthorizationRule' no longer supports the alias 'AzContext' for parameter 'DefaultProfile'.
+- The cmdlet 'Set-AzRelayAuthorizationRule' no longer supports the alias 'AzureRmContext' for parameter 'DefaultProfile'.
 
 #### Before
 ```powershell
@@ -982,12 +986,12 @@ Set-AzRelayAuthorizationRule -ResourceGroupName Default-ServiceBus-WestUS -Names
 
 
 ### `Set-AzRelayAuthorizationRule`
-The cmdlet 'Set-AzRelayAuthorizationRule' no longer has output type 'Microsoft.Azure.Commands.Relay.Models.PSAuthorizationRuleAttributes'.
-The cmdlet 'Set-AzRelayAuthorizationRule' no longer supports the type 'Microsoft.Azure.Commands.Relay.Models.PSAuthorizationRuleAttributes' for parameter 'InputObject'.
+- The cmdlet 'Set-AzRelayAuthorizationRule' no longer has output type 'Microsoft.Azure.Commands.Relay.Models.PSAuthorizationRuleAttributes'.
+- The cmdlet 'Set-AzRelayAuthorizationRule' no longer supports the type 'Microsoft.Azure.Commands.Relay.Models.PSAuthorizationRuleAttributes' for parameter 'InputObject'.
 The element type for parameter 'Rights' has been changed from 'System.String' to 'Microsoft.Azure.PowerShell.Cmdlets.Relay.Support.AccessRights'.
-The cmdlet 'Set-AzRelayAuthorizationRule' no longer supports the type 'Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer' for parameter 'DefaultProfile'.
-The cmdlet 'Set-AzRelayAuthorizationRule' no longer supports the alias 'AzContext' for parameter 'DefaultProfile'.
-The cmdlet 'Set-AzRelayAuthorizationRule' no longer supports the alias 'AzureRmContext' for parameter 'DefaultProfile'.
+- The cmdlet 'Set-AzRelayAuthorizationRule' no longer supports the type 'Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer' for parameter 'DefaultProfile'.
+- The cmdlet 'Set-AzRelayAuthorizationRule' no longer supports the alias 'AzContext' for parameter 'DefaultProfile'.
+- The cmdlet 'Set-AzRelayAuthorizationRule' no longer supports the alias 'AzureRmContext' for parameter 'DefaultProfile'.
 
 #### Before
 ```powershell
@@ -1003,25 +1007,25 @@ Set-AzRelayAuthorizationRule -ResourceGroupName Default-ServiceBus-WestUS -Names
 
 
 ### `Remove-AzWcfRelay`
-The cmdlet 'Remove-AzWcfRelay' no longer supports the type 'Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer' for parameter 'DefaultProfile'.
-The cmdlet 'Remove-AzWcfRelay' no longer supports the alias 'AzContext' for parameter 'DefaultProfile'.
-The cmdlet 'Remove-AzWcfRelay' no longer supports the alias 'AzureRmContext' for parameter 'DefaultProfile'.
+- The cmdlet 'Remove-AzWcfRelay' no longer supports the type 'Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer' for parameter 'DefaultProfile'.
+- The cmdlet 'Remove-AzWcfRelay' no longer supports the alias 'AzContext' for parameter 'DefaultProfile'.
+- The cmdlet 'Remove-AzWcfRelay' no longer supports the alias 'AzureRmContext' for parameter 'DefaultProfile'.
 
 ### `Remove-AzRelayNamespace`
-The cmdlet 'Remove-AzRelayNamespace' no longer supports the type 'Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer' for parameter 'DefaultProfile'.
-The cmdlet 'Remove-AzRelayNamespace' no longer supports the alias 'AzContext' for parameter 'DefaultProfile'.
-The cmdlet 'Remove-AzRelayNamespace' no longer supports the alias 'AzureRmContext' for parameter 'DefaultProfile'.
+- The cmdlet 'Remove-AzRelayNamespace' no longer supports the type 'Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer' for parameter 'DefaultProfile'.
+- The cmdlet 'Remove-AzRelayNamespace' no longer supports the alias 'AzContext' for parameter 'DefaultProfile'.
+- The cmdlet 'Remove-AzRelayNamespace' no longer supports the alias 'AzureRmContext' for parameter 'DefaultProfile'.
 
 ### `Remove-AzRelayHybridConnection`
-The cmdlet 'Remove-AzRelayHybridConnection' no longer supports the type 'Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer' for parameter 'DefaultProfile'.
-The cmdlet 'Remove-AzRelayHybridConnection' no longer supports the alias 'AzContext' for parameter 'DefaultProfile'.
-The cmdlet 'Remove-AzRelayHybridConnection' no longer supports the alias 'AzureRmContext' for parameter 'DefaultProfile'.
+- The cmdlet 'Remove-AzRelayHybridConnection' no longer supports the type 'Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer' for parameter 'DefaultProfile'.
+- The cmdlet 'Remove-AzRelayHybridConnection' no longer supports the alias 'AzContext' for parameter 'DefaultProfile'.
+- The cmdlet 'Remove-AzRelayHybridConnection' no longer supports the alias 'AzureRmContext' for parameter 'DefaultProfile'.
 
 ### `Remove-AzRelayAuthorizationRule`
-The cmdlet 'Remove-AzRelayAuthorizationRule' no longer supports the parameter 'Force' and no alias was found for the original parameter name.
-The cmdlet 'Remove-AzRelayAuthorizationRule' no longer supports the type 'Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer' for parameter 'DefaultProfile'.
-The cmdlet 'Remove-AzRelayAuthorizationRule' no longer supports the alias 'AzContext' for parameter 'DefaultProfile'.
-The cmdlet 'Remove-AzRelayAuthorizationRule' no longer supports the alias 'AzureRmContext' for parameter 'DefaultProfile'.
+- The cmdlet 'Remove-AzRelayAuthorizationRule' no longer supports the parameter 'Force' and no alias was found for the original parameter name.
+- The cmdlet 'Remove-AzRelayAuthorizationRule' no longer supports the type 'Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer' for parameter 'DefaultProfile'.
+- The cmdlet 'Remove-AzRelayAuthorizationRule' no longer supports the alias 'AzContext' for parameter 'DefaultProfile'.
+- The cmdlet 'Remove-AzRelayAuthorizationRule' no longer supports the alias 'AzureRmContext' for parameter 'DefaultProfile'.
 
 #### Before
 ```powershell
@@ -1034,26 +1038,26 @@ Remove-AzRelayAuthorizationRule -ResourceGroupName Default-ServiceBus-WestUS -Na
 
 
 ### `New-AzWcfRelay`
-The cmdlet 'New-AzWcfRelay' no longer has output type 'Microsoft.Azure.Commands.Relay.Models.PSWcfRelayAttributes'.
-The cmdlet 'New-AzWcfRelay' no longer supports the type 'Microsoft.Azure.Commands.Relay.Models.PSWcfRelayAttributes' for parameter 'InputObject'.
-The cmdlet 'New-AzWcfRelay' no longer supports the type 'System.String' for parameter 'WcfRelayType'.
-The cmdlet 'New-AzWcfRelay' no longer supports the type 'System.Nullable`1[System.Boolean]' for parameter 'RequiresClientAuthorization'.
-The cmdlet 'New-AzWcfRelay' no longer supports the type 'System.Nullable`1[System.Boolean]' for parameter 'RequiresTransportSecurity'.
-The cmdlet 'New-AzWcfRelay' no longer supports the type 'Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer' for parameter 'DefaultProfile'.
-The cmdlet 'New-AzWcfRelay' no longer supports the alias 'AzContext' for parameter 'DefaultProfile'.
-The cmdlet 'New-AzWcfRelay' no longer supports the alias 'AzureRmContext' for parameter 'DefaultProfile'.
+- The cmdlet 'New-AzWcfRelay' no longer has output type 'Microsoft.Azure.Commands.Relay.Models.PSWcfRelayAttributes'.
+- The cmdlet 'New-AzWcfRelay' no longer supports the type 'Microsoft.Azure.Commands.Relay.Models.PSWcfRelayAttributes' for parameter 'InputObject'.
+- The cmdlet 'New-AzWcfRelay' no longer supports the type 'System.String' for parameter 'WcfRelayType'.
+- The cmdlet 'New-AzWcfRelay' no longer supports the type 'System.Nullable`1[System.Boolean]' for parameter 'RequiresClientAuthorization'.
+- The cmdlet 'New-AzWcfRelay' no longer supports the type 'System.Nullable`1[System.Boolean]' for parameter 'RequiresTransportSecurity'.
+- The cmdlet 'New-AzWcfRelay' no longer supports the type 'Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer' for parameter 'DefaultProfile'.
+- The cmdlet 'New-AzWcfRelay' no longer supports the alias 'AzContext' for parameter 'DefaultProfile'.
+- The cmdlet 'New-AzWcfRelay' no longer supports the alias 'AzureRmContext' for parameter 'DefaultProfile'.
 
 ### `New-AzRelayNamespace`
-The cmdlet 'New-AzRelayNamespace' no longer has output type 'Microsoft.Azure.Commands.Relay.Models.PSRelayNamespaceAttributes'.
-The cmdlet 'New-AzRelayNamespace' no longer supports the type 'Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer' for parameter 'DefaultProfile'.
-The cmdlet 'New-AzRelayNamespace' no longer supports the alias 'AzContext' for parameter 'DefaultProfile'.
-The cmdlet 'New-AzRelayNamespace' no longer supports the alias 'AzureRmContext' for parameter 'DefaultProfile'.
+- The cmdlet 'New-AzRelayNamespace' no longer has output type 'Microsoft.Azure.Commands.Relay.Models.PSRelayNamespaceAttributes'.
+- The cmdlet 'New-AzRelayNamespace' no longer supports the type 'Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer' for parameter 'DefaultProfile'.
+- The cmdlet 'New-AzRelayNamespace' no longer supports the alias 'AzContext' for parameter 'DefaultProfile'.
+- The cmdlet 'New-AzRelayNamespace' no longer supports the alias 'AzureRmContext' for parameter 'DefaultProfile'.
 
 ### `New-AzRelayKey`
-The cmdlet 'New-AzRelayKey' no longer supports the type 'System.String' for parameter 'RegenerateKey'.
-The cmdlet 'New-AzRelayKey' no longer supports the type 'Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer' for parameter 'DefaultProfile'.
-The cmdlet 'New-AzRelayKey' no longer supports the alias 'AzContext' for parameter 'DefaultProfile'.
-The cmdlet 'New-AzRelayKey' no longer supports the alias 'AzureRmContext' for parameter 'DefaultProfile'.
+- The cmdlet 'New-AzRelayKey' no longer supports the type 'System.String' for parameter 'RegenerateKey'.
+- The cmdlet 'New-AzRelayKey' no longer supports the type 'Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer' for parameter 'DefaultProfile'.
+- The cmdlet 'New-AzRelayKey' no longer supports the alias 'AzContext' for parameter 'DefaultProfile'.
+- The cmdlet 'New-AzRelayKey' no longer supports the alias 'AzureRmContext' for parameter 'DefaultProfile'.
 
 #### Before
 ```powershell
@@ -1066,19 +1070,19 @@ New-AzRelayKey -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameS
 
 
 ### `New-AzRelayHybridConnection`
-The cmdlet 'New-AzRelayHybridConnection' no longer has output type 'Microsoft.Azure.Commands.Relay.Models.PSHybridConnectionAttributes'.
-The cmdlet 'New-AzRelayHybridConnection' no longer supports the type 'Microsoft.Azure.Commands.Relay.Models.PSHybridConnectionAttributes' for parameter 'InputObject'.
-The cmdlet 'New-AzRelayHybridConnection' no longer supports the type 'System.Nullable`1[System.Boolean]' for parameter 'RequiresClientAuthorization'.
-The cmdlet 'New-AzRelayHybridConnection' no longer supports the type 'Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer' for parameter 'DefaultProfile'.
-The cmdlet 'New-AzRelayHybridConnection' no longer supports the alias 'AzContext' for parameter 'DefaultProfile'.
-The cmdlet 'New-AzRelayHybridConnection' no longer supports the alias 'AzureRmContext' for parameter 'DefaultProfile'.
+- The cmdlet 'New-AzRelayHybridConnection' no longer has output type 'Microsoft.Azure.Commands.Relay.Models.PSHybridConnectionAttributes'.
+- The cmdlet 'New-AzRelayHybridConnection' no longer supports the type 'Microsoft.Azure.Commands.Relay.Models.PSHybridConnectionAttributes' for parameter 'InputObject'.
+- The cmdlet 'New-AzRelayHybridConnection' no longer supports the type 'System.Nullable`1[System.Boolean]' for parameter 'RequiresClientAuthorization'.
+- The cmdlet 'New-AzRelayHybridConnection' no longer supports the type 'Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer' for parameter 'DefaultProfile'.
+- The cmdlet 'New-AzRelayHybridConnection' no longer supports the alias 'AzContext' for parameter 'DefaultProfile'.
+- The cmdlet 'New-AzRelayHybridConnection' no longer supports the alias 'AzureRmContext' for parameter 'DefaultProfile'.
 
 ### `New-AzRelayAuthorizationRule`
-The cmdlet 'New-AzRelayAuthorizationRule' no longer has output type 'Microsoft.Azure.Commands.Relay.Models.PSAuthorizationRuleAttributes'.
+- The cmdlet 'New-AzRelayAuthorizationRule' no longer has output type 'Microsoft.Azure.Commands.Relay.Models.PSAuthorizationRuleAttributes'.
 The element type for parameter 'Rights' has been changed from 'System.String' to 'Microsoft.Azure.PowerShell.Cmdlets.Relay.Support.AccessRights'.
-The cmdlet 'New-AzRelayAuthorizationRule' no longer supports the type 'Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer' for parameter 'DefaultProfile'.
-The cmdlet 'New-AzRelayAuthorizationRule' no longer supports the alias 'AzContext' for parameter 'DefaultProfile'.
-The cmdlet 'New-AzRelayAuthorizationRule' no longer supports the alias 'AzureRmContext' for parameter 'DefaultProfile'.
+- The cmdlet 'New-AzRelayAuthorizationRule' no longer supports the type 'Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer' for parameter 'DefaultProfile'.
+- The cmdlet 'New-AzRelayAuthorizationRule' no longer supports the alias 'AzContext' for parameter 'DefaultProfile'.
+- The cmdlet 'New-AzRelayAuthorizationRule' no longer supports the alias 'AzureRmContext' for parameter 'DefaultProfile'.
 
 #### Before
 ```powershell
@@ -1091,24 +1095,24 @@ New-AzRelayAuthorizationRule -ResourceGroupName Default-ServiceBus-WestUS -Names
 
 
 ### `Get-AzWcfRelay`
-The cmdlet 'Get-AzWcfRelay' no longer has output type 'Microsoft.Azure.Commands.Relay.Models.PSWcfRelayAttributes'.
-The cmdlet 'Get-AzWcfRelay' no longer supports the type 'Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer' for parameter 'DefaultProfile'.
-The cmdlet 'Get-AzWcfRelay' no longer supports the alias 'AzContext' for parameter 'DefaultProfile'.
-The cmdlet 'Get-AzWcfRelay' no longer supports the alias 'AzureRmContext' for parameter 'DefaultProfile'.
+- The cmdlet 'Get-AzWcfRelay' no longer has output type 'Microsoft.Azure.Commands.Relay.Models.PSWcfRelayAttributes'.
+- The cmdlet 'Get-AzWcfRelay' no longer supports the type 'Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer' for parameter 'DefaultProfile'.
+- The cmdlet 'Get-AzWcfRelay' no longer supports the alias 'AzContext' for parameter 'DefaultProfile'.
+- The cmdlet 'Get-AzWcfRelay' no longer supports the alias 'AzureRmContext' for parameter 'DefaultProfile'.
 
 ### `Get-AzRelayOperation`
-The cmdlet 'Get-AzRelayOperation' has been removed and no alias was found for the original cmdlet name.
+- The cmdlet 'Get-AzRelayOperation' has been removed and no alias was found for the original cmdlet name.
 
 ### `Get-AzRelayNamespace`
-The cmdlet 'Get-AzRelayNamespace' no longer has output type 'Microsoft.Azure.Commands.Relay.Models.PSRelayNamespaceAttributes'.
-The cmdlet 'Get-AzRelayNamespace' no longer supports the type 'Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer' for parameter 'DefaultProfile'.
-The cmdlet 'Get-AzRelayNamespace' no longer supports the alias 'AzContext' for parameter 'DefaultProfile'.
-The cmdlet 'Get-AzRelayNamespace' no longer supports the alias 'AzureRmContext' for parameter 'DefaultProfile'.
+- The cmdlet 'Get-AzRelayNamespace' no longer has output type 'Microsoft.Azure.Commands.Relay.Models.PSRelayNamespaceAttributes'.
+- The cmdlet 'Get-AzRelayNamespace' no longer supports the type 'Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer' for parameter 'DefaultProfile'.
+- The cmdlet 'Get-AzRelayNamespace' no longer supports the alias 'AzContext' for parameter 'DefaultProfile'.
+- The cmdlet 'Get-AzRelayNamespace' no longer supports the alias 'AzureRmContext' for parameter 'DefaultProfile'.
 
 ### `Get-AzRelayKey`
-The cmdlet 'Get-AzRelayKey' no longer supports the type 'Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer' for parameter 'DefaultProfile'.
-The cmdlet 'Get-AzRelayKey' no longer supports the alias 'AzContext' for parameter 'DefaultProfile'.
-The cmdlet 'Get-AzRelayKey' no longer supports the alias 'AzureRmContext' for parameter 'DefaultProfile'.
+- The cmdlet 'Get-AzRelayKey' no longer supports the type 'Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer' for parameter 'DefaultProfile'.
+- The cmdlet 'Get-AzRelayKey' no longer supports the alias 'AzContext' for parameter 'DefaultProfile'.
+- The cmdlet 'Get-AzRelayKey' no longer supports the alias 'AzureRmContext' for parameter 'DefaultProfile'.
 
 #### Before
 ```powershell
@@ -1121,24 +1125,26 @@ Get-AzRelayKey -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameS
 
 
 ### `Get-AzRelayHybridConnection`
-The cmdlet 'Get-AzRelayHybridConnection' no longer has output type 'Microsoft.Azure.Commands.Relay.Models.PSHybridConnectionAttributes'.
-The cmdlet 'Get-AzRelayHybridConnection' no longer supports the type 'Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer' for parameter 'DefaultProfile'.
-The cmdlet 'Get-AzRelayHybridConnection' no longer supports the alias 'AzContext' for parameter 'DefaultProfile'.
-The cmdlet 'Get-AzRelayHybridConnection' no longer supports the alias 'AzureRmContext' for parameter 'DefaultProfile'.
+- The cmdlet 'Get-AzRelayHybridConnection' no longer has output type 'Microsoft.Azure.Commands.Relay.Models.PSHybridConnectionAttributes'.
+- The cmdlet 'Get-AzRelayHybridConnection' no longer supports the type 'Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer' for parameter 'DefaultProfile'.
+- The cmdlet 'Get-AzRelayHybridConnection' no longer supports the alias 'AzContext' for parameter 'DefaultProfile'.
+- The cmdlet 'Get-AzRelayHybridConnection' no longer supports the alias 'AzureRmContext' for parameter 'DefaultProfile'.
 
 ### `Get-AzRelayAuthorizationRule`
-The cmdlet 'Get-AzRelayAuthorizationRule' no longer has output type 'Microsoft.Azure.Commands.Relay.Models.PSAuthorizationRuleAttributes'.
-The cmdlet 'Get-AzRelayAuthorizationRule' no longer supports the type 'Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer' for parameter 'DefaultProfile'.
-The cmdlet 'Get-AzRelayAuthorizationRule' no longer supports the alias 'AzContext' for parameter 'DefaultProfile'.
-The cmdlet 'Get-AzRelayAuthorizationRule' no longer supports the alias 'AzureRmContext' for parameter 'DefaultProfile'.
+- The cmdlet 'Get-AzRelayAuthorizationRule' no longer has output type 'Microsoft.Azure.Commands.Relay.Models.PSAuthorizationRuleAttributes'.
+- The cmdlet 'Get-AzRelayAuthorizationRule' no longer supports the type 'Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer' for parameter 'DefaultProfile'.
+- The cmdlet 'Get-AzRelayAuthorizationRule' no longer supports the alias 'AzContext' for parameter 'DefaultProfile'.
+- The cmdlet 'Get-AzRelayAuthorizationRule' no longer supports the alias 'AzureRmContext' for parameter 'DefaultProfile'.
 
 ## Az.ServiceBus
 
 ### `Set-AzServiceBusNamespace`
-The cmdlet 'Set-AzServiceBusNamespace' has undergone several changes, including changes to the output type and default parameter set. The cmdlet no longer supports certain aliases and parameter types, including 'NamespaceName', 'System.String' for 'SkuName', and 'System.Nullable`1[System.Int32]' for 'SkuCapacity'. Additionally, the parameters 'MaximumThroughputUnits', 'EnableKafka', 'ClusterARMId', 'IdentityId', and 'EncryptionConfig' are no longer supported, and no aliases were found for the original parameter names. The cmdlet also no longer supports the 'IAzureContextContainer' type for the 'DefaultProfile' parameter, and the 'AzContext' and 'AzureRmContext' aliases for 'DefaultProfile' are no longer supported.
+- The cmdlet 'Set-AzServiceBusNamespace' has undergone several changes, including changes to the output type and default parameter set. 
+- The cmdlet no longer supports certain aliases and parameter types, including 'NamespaceName', 'System.String' for 'SkuName', and 'System.Nullable`1[System.Int32]' for 'SkuCapacity'. Additionally, the parameters 'MaximumThroughputUnits', 'EnableKafka', 'ClusterARMId', 'IdentityId', and 'EncryptionConfig' are no longer supported, and no aliases were found for the original parameter names. 
+- The cmdlet also no longer supports the 'IAzureContextContainer' type for the 'DefaultProfile' parameter, and the 'AzContext' and 'AzureRmContext' aliases for 'DefaultProfile' are no longer supported.
 
 ### `Remove-AzServiceBusVirtualNetworkRule`
-The cmdlet 'Remove-AzServiceBusVirtualNetworkRule' has been removed. Use 'Set-AzServiceBusNetworkRuleSet' instead.
+- The cmdlet 'Remove-AzServiceBusVirtualNetworkRule' has been removed. Use 'Set-AzServiceBusNetworkRuleSet' instead.
 
 #### Before
 ```powershell
@@ -1152,7 +1158,7 @@ Set-AzServiceBusNetworkRuleSet -ResourceGroupName myResourceGroup -NamespaceName
 
 
 ### `Remove-AzServiceBusNetworkRuleSet`
-The cmdlet 'Remove-AzServiceBusNetworkRuleSet' has been removed. Use 'Set-AzServiceBusNetworkRuleSet' instead.
+- The cmdlet 'Remove-AzServiceBusNetworkRuleSet' has been removed. Use 'Set-AzServiceBusNetworkRuleSet' instead.
 
 #### Before
 ```powershell
@@ -1165,7 +1171,7 @@ Set-AzServiceBusNetworkRuleSet -ResourceGroupName myResourceGroup -NamespaceName
 
 
 ### `Remove-AzServiceBusNamespace`
-The cmdlet 'Remove-AzServiceBusNamespace' no longer supports the alias 'ResourceGroup' for parameter 'ResourceGroupName'.
+- The cmdlet 'Remove-AzServiceBusNamespace' no longer supports the alias 'ResourceGroup' for parameter 'ResourceGroupName'.
 
 #### Before
 ```powershell
@@ -1178,7 +1184,7 @@ Remove-AzServiceBusNamespace -ResourceGroupName Default-ServiceBus-WestUS -Names
 
 
 ### `Remove-AzServiceBusIPRule`
-The cmdlet 'Remove-AzServiceBusIPRule' has been removed. Use 'Set-AzServiceBusNetworkRuleSet' instead.
+- The cmdlet 'Remove-AzServiceBusIPRule' has been removed. Use 'Set-AzServiceBusNetworkRuleSet' instead.
 
 #### Before
 ```powershell
@@ -1191,10 +1197,12 @@ Set-AzServiceBusNetworkRuleSet -ResourceGroupName myResourceGroup -NamespaceName
 
 
 ### `New-AzServiceBusNamespace`
-The cmdlet 'New-AzServiceBusNamespace' has undergone several changes. The cmdlet no longer supports certain aliases and parameter types, including 'NamespaceName', 'System.String' for 'SkuName', and 'System.Nullable`1[System.Int32]' for 'SkuCapacity'. Additionally, the parameters 'MaximumThroughputUnits', 'EnableKafka', 'ClusterARMId', 'IdentityId', and 'EncryptionConfig' are no longer supported, and no aliases were found for the original parameter names. The cmdlet also no longer supports the 'IAzureContextContainer' type for the 'DefaultProfile' parameter, and the 'AzContext' and 'AzureRmContext' aliases for 'DefaultProfile' are no longer supported.
+- The cmdlet 'New-AzServiceBusNamespace' has undergone several changes. 
+- The cmdlet no longer supports certain aliases and parameter types, including 'NamespaceName', 'System.String' for 'SkuName', and 'System.Nullable`1[System.Int32]' for 'SkuCapacity'. Additionally, the parameters 'MaximumThroughputUnits', 'EnableKafka', 'ClusterARMId', 'IdentityId', and 'EncryptionConfig' are no longer supported, and no aliases were found for the original parameter names. 
+- The cmdlet also no longer supports the 'IAzureContextContainer' type for the 'DefaultProfile' parameter, and the 'AzContext' and 'AzureRmContext' aliases for 'DefaultProfile' are no longer supported.
 
 ### `New-AzServiceBusGeoDRConfiguration`
-The cmdlet 'New-AzServiceBusGeoDRConfiguration' no longer supports the parameter 'PassThru' and no alias was found for the original parameter name.
+- The cmdlet 'New-AzServiceBusGeoDRConfiguration' no longer supports the parameter 'PassThru' and no alias was found for the original parameter name.
 
 #### Before
 ```powershell
@@ -1207,7 +1215,7 @@ New-AzServiceBusGeoDRConfiguration -Name myAlias -ResourceGroupName myResourceGr
 
 
 ### `New-AzServiceBusEncryptionConfig`
-The cmdlet 'New-AzServiceBusEncryptionConfig' has been removed. Use 'New-AzServiceBusNamespace' and 'Set-AzServiceBusNamespace' to enable encryption.
+- The cmdlet 'New-AzServiceBusEncryptionConfig' has been removed. Use 'New-AzServiceBusNamespace' and 'Set-AzServiceBusNamespace' to enable encryption.
 
 #### Before
 ```powershell
@@ -1225,10 +1233,10 @@ New-AzServiceBusNamespace -ResourceGroupName myResourceGroup -Name myNamespace -
 
 
 ### `Get-AzServiceBusOperation`
-The cmdlet 'Get-AzServiceBusOperation' has been removed.
+- The cmdlet 'Get-AzServiceBusOperation' has been removed.
 
 ### `Get-AzServiceBusNamespace`
-The cmdlet 'Get-AzServiceBusNamespace' no longer supports the alias 'ResourceGroup' for parameter 'ResourceGroupName'.
+- The cmdlet 'Get-AzServiceBusNamespace' no longer supports the alias 'ResourceGroup' for parameter 'ResourceGroupName'.
 
 #### Before
 ```powershell
@@ -1241,7 +1249,7 @@ Get-AzServiceBusNamespace -ResourceGroupName Default-ServiceBus-WestUS -Namespac
 
 
 ### `Add-AzServiceBusVirtualNetworkRule`
-The cmdlet 'Add-AzServiceBusVirtualNetworkRule' has been removed. Use 'Set-AzServiceBusNetworkRuleSet' instead.
+- The cmdlet 'Add-AzServiceBusVirtualNetworkRule' has been removed. Use 'Set-AzServiceBusNetworkRuleSet' instead.
 
 #### Before
 ```powershell
@@ -1255,7 +1263,7 @@ Set-AzServiceBusNetworkRuleSet -ResourceGroupName myResourceGroup -NamespaceName
 
 
 ### `Add-AzServiceBusIPRule`
-The cmdlet 'Add-AzServiceBusIPRule' has been removed. Use 'Set-AzServiceBusNetworkRuleSet' instead.
+- The cmdlet 'Add-AzServiceBusIPRule' has been removed. Use 'Set-AzServiceBusNetworkRuleSet' instead.
 
 #### Before
 ```powershell
@@ -1272,11 +1280,11 @@ Set-AzServiceBusNetworkRuleSet -ResourceGroupName myResourceGroup -NamespaceName
 ## Az.SignalR
 
 ### `Update-AzSignalRNetworkAcl`
-The property 'HostNamePrefix' of type 'Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource' has been removed.
+- The property 'HostNamePrefix' of type 'Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource' has been removed.
 
 ### `Update-AzSignalR`
-The property 'HostNamePrefix' of type 'Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource' has been removed.
-The property 'HostNamePrefix' of type 'Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource' has been removed.
+- The property 'HostNamePrefix' of type 'Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource' has been removed.
+- The property 'HostNamePrefix' of type 'Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource' has been removed.
 
 #### Before
 ```powershell
@@ -1289,19 +1297,19 @@ $hostNamePrefix = $(Update-AzSignalR -ResourceGroupName myResourceGroup -Name my
 
 
 ### `Set-AzSignalRUpstream`
-The property 'HostNamePrefix' of type 'Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource' has been removed.
+- The property 'HostNamePrefix' of type 'Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource' has been removed.
 
 ### `Restart-AzSignalR`
-The property 'HostNamePrefix' of type 'Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource' has been removed.
+- The property 'HostNamePrefix' of type 'Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource' has been removed.
 
 ### `Remove-AzSignalR`
-The property 'HostNamePrefix' of type 'Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource' has been removed.
+- The property 'HostNamePrefix' of type 'Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource' has been removed.
 
 ### `New-AzSignalRKey`
-The property 'HostNamePrefix' of type 'Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource' has been removed.
+- The property 'HostNamePrefix' of type 'Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource' has been removed.
 
 ### `New-AzSignalR`
-The property 'HostNamePrefix' of type 'Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource' has been removed.
+- The property 'HostNamePrefix' of type 'Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource' has been removed.
 
 #### Before
 ```powershell
@@ -1314,10 +1322,10 @@ $hostNamePrefix = $(New-AzSignalR -ResourceGroupName myResourceGroup1 -Name mysi
 
 
 ### `Get-AzSignalRKey`
-The property 'HostNamePrefix' of type 'Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource' has been removed.
+- The property 'HostNamePrefix' of type 'Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource' has been removed.
 
 ### `Get-AzSignalR`
-The property 'HostNamePrefix' of type 'Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource' has been removed.
+- The property 'HostNamePrefix' of type 'Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource' has been removed.
 
 #### Before
 ```powershell
@@ -1332,13 +1340,13 @@ $hostNamePrefix = $(Get-AzSignalR -ResourceGroupName myResourceGroup -Name mysig
 ## Az.SqlVirtualMachine
 
 ### `Update-AzSqlVMGroup`
-The cmdlet 'Update-AzSqlVMGroup' no longer has output type 'Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureSqlVMGroupModel'.
-The cmdlet 'Update-AzSqlVMGroup' no longer supports the type 'Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureSqlVMGroupModel' for parameter 'InputObject'.
-The cmdlet 'Update-AzSqlVMGroup' no longer supports the alias 'SqlVMGroup' for parameter 'InputObject'.
-The cmdlet 'Update-AzSqlVMGroup' no longer supports the parameter 'ResourceId' and no alias was found for the original parameter name.
-The cmdlet 'Update-AzSqlVMGroup' no longer supports the type 'Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer' for parameter 'DefaultProfile'.
-The cmdlet 'Update-AzSqlVMGroup' no longer supports the alias 'AzContext' for parameter 'DefaultProfile'.
-The cmdlet 'Update-AzSqlVMGroup' no longer supports the alias 'AzureRmContext' for parameter 'DefaultProfile'.
+- The cmdlet 'Update-AzSqlVMGroup' no longer has output type 'Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureSqlVMGroupModel'.
+- The cmdlet 'Update-AzSqlVMGroup' no longer supports the type 'Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureSqlVMGroupModel' for parameter 'InputObject'.
+- The cmdlet 'Update-AzSqlVMGroup' no longer supports the alias 'SqlVMGroup' for parameter 'InputObject'.
+- The cmdlet 'Update-AzSqlVMGroup' no longer supports the parameter 'ResourceId' and no alias was found for the original parameter name.
+- The cmdlet 'Update-AzSqlVMGroup' no longer supports the type 'Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer' for parameter 'DefaultProfile'.
+- The cmdlet 'Update-AzSqlVMGroup' no longer supports the alias 'AzContext' for parameter 'DefaultProfile'.
+- The cmdlet 'Update-AzSqlVMGroup' no longer supports the alias 'AzureRmContext' for parameter 'DefaultProfile'.
 
 #### Before
 ```powershell
@@ -1353,22 +1361,22 @@ $group | Update-AzSqlVMGroup -Tag @{'key'='value'}
 
 
 ### `Update-AzSqlVM`
-The cmdlet 'Update-AzSqlVM' no longer has output type 'Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureSqlVMModel'.
-The cmdlet 'Update-AzSqlVM' no longer supports the type 'Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureSqlVMModel' for parameter 'InputObject'.
-The cmdlet 'Update-AzSqlVM' no longer supports the alias 'SqlVM' for parameter 'InputObject'.
-The cmdlet 'Update-AzSqlVM' no longer supports the parameter 'ResourceId' and no alias was found for the original parameter name.
-The cmdlet 'Update-AzSqlVM' no longer supports the type 'Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer' for parameter 'DefaultProfile'.
-The cmdlet 'Update-AzSqlVM' no longer supports the alias 'AzContext' for parameter 'DefaultProfile'.
-The cmdlet 'Update-AzSqlVM' no longer supports the alias 'AzureRmContext' for parameter 'DefaultProfile'.
+- The cmdlet 'Update-AzSqlVM' no longer has output type 'Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureSqlVMModel'.
+- The cmdlet 'Update-AzSqlVM' no longer supports the type 'Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureSqlVMModel' for parameter 'InputObject'.
+- The cmdlet 'Update-AzSqlVM' no longer supports the alias 'SqlVM' for parameter 'InputObject'.
+- The cmdlet 'Update-AzSqlVM' no longer supports the parameter 'ResourceId' and no alias was found for the original parameter name.
+- The cmdlet 'Update-AzSqlVM' no longer supports the type 'Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer' for parameter 'DefaultProfile'.
+- The cmdlet 'Update-AzSqlVM' no longer supports the alias 'AzContext' for parameter 'DefaultProfile'.
+- The cmdlet 'Update-AzSqlVM' no longer supports the alias 'AzureRmContext' for parameter 'DefaultProfile'.
 
 ### `Update-AzAvailabilityGroupListener`
-The cmdlet 'Update-AzAvailabilityGroupListener' has been removed and no alias was found for the original cmdlet name.
+- The cmdlet 'Update-AzAvailabilityGroupListener' has been removed and no alias was found for the original cmdlet name.
 
 ### `Set-AzSqlVMConfigGroup`
-The cmdlet 'Set-AzSqlVMConfigGroup' has been removed and no alias was found for the original cmdlet name.
+- The cmdlet 'Set-AzSqlVMConfigGroup' has been removed and no alias was found for the original cmdlet name.
 
 ### `Remove-AzSqlVMGroup`
-The cmdlet 'Remove-AzSqlVMGroup' has undergone changes and no longer supports certain parameters and output types. Specifically, the 'InputObject' parameter no longer supports the 'AzureSqlVMGroupModel' type or its 'SqlVMGroup' alias, and the 'ResourceId' parameter has been removed entirely. Additionally, the 'DefaultProfile' parameter no longer supports the 'IAzureContextContainer' type, and its aliases 'AzContext' and 'AzureRmContext'.
+- The cmdlet 'Remove-AzSqlVMGroup' has undergone changes and no longer supports certain parameters and output types. Specifically, the 'InputObject' parameter no longer supports the 'AzureSqlVMGroupModel' type or its 'SqlVMGroup' alias, and the 'ResourceId' parameter has been removed entirely. Additionally, the 'DefaultProfile' parameter no longer supports the 'IAzureContextContainer' type, and its aliases 'AzContext' and 'AzureRmContext'.
 
 #### Before
 ```powershell
@@ -1383,13 +1391,13 @@ $group | Remove-AzSqlVMGroup
 
 
 ### `Remove-AzSqlVM`
-The cmdlet 'Remove-AzSqlVM' no longer has output type 'Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureSqlVMModel'.
-The cmdlet 'Remove-AzSqlVM' no longer supports the type 'Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureSqlVMModel' for parameter 'InputObject'.
-The cmdlet 'Remove-AzSqlVM' no longer supports the alias 'SqlVM' for parameter 'InputObject'.
-The cmdlet 'Remove-AzSqlVM' no longer supports the parameter 'ResourceId' and no alias was found for the original parameter name.
-The cmdlet 'Remove-AzSqlVM' no longer supports the type 'Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer' for parameter 'DefaultProfile'.
-The cmdlet 'Remove-AzSqlVM' no longer supports the alias 'AzContext' for parameter 'DefaultProfile'.
-The cmdlet 'Remove-AzSqlVM' no longer supports the alias 'AzureRmContext' for parameter 'DefaultProfile'.
+- The cmdlet 'Remove-AzSqlVM' no longer has output type 'Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureSqlVMModel'.
+- The cmdlet 'Remove-AzSqlVM' no longer supports the type 'Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureSqlVMModel' for parameter 'InputObject'.
+- The cmdlet 'Remove-AzSqlVM' no longer supports the alias 'SqlVM' for parameter 'InputObject'.
+- The cmdlet 'Remove-AzSqlVM' no longer supports the parameter 'ResourceId' and no alias was found for the original parameter name.
+- The cmdlet 'Remove-AzSqlVM' no longer supports the type 'Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer' for parameter 'DefaultProfile'.
+- The cmdlet 'Remove-AzSqlVM' no longer supports the alias 'AzContext' for parameter 'DefaultProfile'.
+- The cmdlet 'Remove-AzSqlVM' no longer supports the alias 'AzureRmContext' for parameter 'DefaultProfile'.
 
 #### Before
 ```powershell
@@ -1404,7 +1412,7 @@ $sqlVM | Remove-AzSqlVM
 
 
 ### `Remove-AzAvailabilityGroupListener`
-The cmdlet 'Remove-AzAvailabilityGroupListener' has undergone changes and some features have been removed. Specifically, the output type 'Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureAvailabilityGroupListenerModel' is no longer supported. Additionally, the parameter 'InputObject' no longer supports this type. The 'ResourceId' and 'SqlVMGroupObject' parameters have also been removed without any alias found. The 'DefaultProfile' parameter no longer supports the type 'Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer' and its aliases 'AzContext' and 'AzureRmContext'. 
+- The cmdlet 'Remove-AzAvailabilityGroupListener' has undergone changes and some features have been removed. Specifically, the output type 'Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureAvailabilityGroupListenerModel' is no longer supported. Additionally, the parameter 'InputObject' no longer supports this type. The 'ResourceId' and 'SqlVMGroupObject' parameters have also been removed without any alias found. The 'DefaultProfile' parameter no longer supports the type 'Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer' and its aliases 'AzContext' and 'AzureRmContext'. 
 
 #### Before
 ```powershell
@@ -1418,14 +1426,14 @@ Remove-AzAvailabilityGroupListener -ResourceGroupName 'ResourceGroup01' -SqlVMGr
 
 
 ### `New-AzSqlVMGroup`
-The cmdlet 'New-AzSqlVMGroup' no longer has output type 'Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureSqlVMGroupModel'.
-The cmdlet 'New-AzSqlVMGroup' no longer supports the type 'System.String' for parameter 'Sku'.
-The cmdlet 'New-AzSqlVMGroup' no longer supports the type 'Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer' for parameter 'DefaultProfile'.
-The cmdlet 'New-AzSqlVMGroup' no longer supports the alias 'AzContext' for parameter 'DefaultProfile'.
-The cmdlet 'New-AzSqlVMGroup' no longer supports the alias 'AzureRmContext' for parameter 'DefaultProfile'.
+- The cmdlet 'New-AzSqlVMGroup' no longer has output type 'Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureSqlVMGroupModel'.
+- The cmdlet 'New-AzSqlVMGroup' no longer supports the type 'System.String' for parameter 'Sku'.
+- The cmdlet 'New-AzSqlVMGroup' no longer supports the type 'Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer' for parameter 'DefaultProfile'.
+- The cmdlet 'New-AzSqlVMGroup' no longer supports the alias 'AzContext' for parameter 'DefaultProfile'.
+- The cmdlet 'New-AzSqlVMGroup' no longer supports the alias 'AzureRmContext' for parameter 'DefaultProfile'.
 
 ### `New-AzSqlVMConfig`
-The cmdlet 'New-AzSqlVMConfig' has been removed and no alias was found for the original cmdlet name.
+- The cmdlet 'New-AzSqlVMConfig' has been removed and no alias was found for the original cmdlet name.
 
 #### Before
 ```powershell
@@ -1439,14 +1447,14 @@ New-AzSqlVM -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1' -Location 'eastu
 
 
 ### `New-AzSqlVM`
-The cmdlet 'New-AzSqlVM' no longer has output type 'Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureSqlVMModel'.
-The cmdlet 'New-AzSqlVM' no longer supports the parameter 'SqlVM' and no alias was found for the original parameter name.
-The cmdlet 'New-AzSqlVM' no longer supports the type 'System.String' for parameter 'LicenseType'.
-The cmdlet 'New-AzSqlVM' no longer supports the type 'System.String' for parameter 'Sku'.
-The cmdlet 'New-AzSqlVM' no longer supports the type 'System.String' for parameter 'SqlManagementType'.
-The cmdlet 'New-AzSqlVM' no longer supports the type 'Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer' for parameter 'DefaultProfile'.
-The cmdlet 'New-AzSqlVM' no longer supports the alias 'AzContext' for parameter 'DefaultProfile'.
-The cmdlet 'New-AzSqlVM' no longer supports the alias 'AzureRmContext' for parameter 'DefaultProfile'.
+- The cmdlet 'New-AzSqlVM' no longer has output type 'Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureSqlVMModel'.
+- The cmdlet 'New-AzSqlVM' no longer supports the parameter 'SqlVM' and no alias was found for the original parameter name.
+- The cmdlet 'New-AzSqlVM' no longer supports the type 'System.String' for parameter 'LicenseType'.
+- The cmdlet 'New-AzSqlVM' no longer supports the type 'System.String' for parameter 'Sku'.
+- The cmdlet 'New-AzSqlVM' no longer supports the type 'System.String' for parameter 'SqlManagementType'.
+- The cmdlet 'New-AzSqlVM' no longer supports the type 'Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer' for parameter 'DefaultProfile'.
+- The cmdlet 'New-AzSqlVM' no longer supports the alias 'AzContext' for parameter 'DefaultProfile'.
+- The cmdlet 'New-AzSqlVM' no longer supports the alias 'AzureRmContext' for parameter 'DefaultProfile'.
 
 #### Before
 ```powershell
@@ -1460,30 +1468,31 @@ New-AzSqlVM -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1' -Location 'eastu
 
 
 ### `New-AzAvailabilityGroupListener`
-The cmdlet 'New-AzAvailabilityGroupListener' no longer has output type 'Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureAvailabilityGroupListenerModel'.
-The cmdlet 'New-AzAvailabilityGroupListener' no longer supports the type 'System.Nullable`1[System.Int32]' for parameter 'Port'.
-The cmdlet 'New-AzAvailabilityGroupListener' no longer supports the type 'System.Nullable`1[System.Int32]' for parameter 'ProbePort'.
-The cmdlet 'New-AzAvailabilityGroupListener' no longer supports the parameter 'SqlVMGroupObject' and no alias was found for the original parameter name.
-The cmdlet 'New-AzAvailabilityGroupListener' no longer supports the type 'Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer' for parameter 'DefaultProfile'.
-The cmdlet 'New-AzAvailabilityGroupListener' no longer supports the alias 'AzContext' for parameter 'DefaultProfile'.
-The cmdlet 'New-AzAvailabilityGroupListener' no longer supports the alias 'AzureRmContext' for parameter 'DefaultProfile'.
+- The cmdlet 'New-AzAvailabilityGroupListener' no longer has output type 'Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureAvailabilityGroupListenerModel'.
+- The cmdlet 'New-AzAvailabilityGroupListener' no longer supports the type 'System.Nullable`1[System.Int32]' for parameter 'Port'.
+- The cmdlet 'New-AzAvailabilityGroupListener' no longer supports the type 'System.Nullable`1[System.Int32]' for parameter 'ProbePort'.
+- The cmdlet 'New-AzAvailabilityGroupListener' no longer supports the parameter 'SqlVMGroupObject' and no alias was found for the original parameter name.
+- The cmdlet 'New-AzAvailabilityGroupListener' no longer supports the type 'Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer' for parameter 'DefaultProfile'.
+- The cmdlet 'New-AzAvailabilityGroupListener' no longer supports the alias 'AzContext' for parameter 'DefaultProfile'.
+- The cmdlet 'New-AzAvailabilityGroupListener' no longer supports the alias 'AzureRmContext' for parameter 'DefaultProfile'.
 
 ### `Get-AzSqlVMGroup`
-The cmdlet 'Get-AzSqlVMGroup' no longer has output type 'Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureSqlVMGroupModel'.
-The cmdlet 'Get-AzSqlVMGroup' no longer supports the parameter 'ResourceId' and no alias was found for the original parameter name.
-The cmdlet 'Get-AzSqlVMGroup' no longer supports the type 'Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer' for parameter 'DefaultProfile'.
-The cmdlet 'Get-AzSqlVMGroup' no longer supports the alias 'AzContext' for parameter 'DefaultProfile'.
-The cmdlet 'Get-AzSqlVMGroup' no longer supports the alias 'AzureRmContext' for parameter 'DefaultProfile'.
+- The cmdlet 'Get-AzSqlVMGroup' no longer has output type 'Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureSqlVMGroupModel'.
+- The cmdlet 'Get-AzSqlVMGroup' no longer supports the parameter 'ResourceId' and no alias was found for the original parameter name.
+- The cmdlet 'Get-AzSqlVMGroup' no longer supports the type 'Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer' for parameter 'DefaultProfile'.
+- The cmdlet 'Get-AzSqlVMGroup' no longer supports the alias 'AzContext' for parameter 'DefaultProfile'.
+- The cmdlet 'Get-AzSqlVMGroup' no longer supports the alias 'AzureRmContext' for parameter 'DefaultProfile'.
 
 ### `Get-AzSqlVM`
-The cmdlet 'Get-AzSqlVM' no longer has output type 'Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureSqlVMModel'.
-The cmdlet 'Get-AzSqlVM' no longer supports the parameter 'ResourceId' and no alias was found for the original parameter name.
-The cmdlet 'Get-AzSqlVM' no longer supports the type 'Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer' for parameter 'DefaultProfile'.
-The cmdlet 'Get-AzSqlVM' no longer supports the alias 'AzContext' for parameter 'DefaultProfile'.
-The cmdlet 'Get-AzSqlVM' no longer supports the alias 'AzureRmContext' for parameter 'DefaultProfile'.
+- The cmdlet 'Get-AzSqlVM' no longer has output type 'Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureSqlVMModel'.
+- The cmdlet 'Get-AzSqlVM' no longer supports the parameter 'ResourceId' and no alias was found for the original parameter name.
+- The cmdlet 'Get-AzSqlVM' no longer supports the type 'Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer' for parameter 'DefaultProfile'.
+- The cmdlet 'Get-AzSqlVM' no longer supports the alias 'AzContext' for parameter 'DefaultProfile'.
+- The cmdlet 'Get-AzSqlVM' no longer supports the alias 'AzureRmContext' for parameter 'DefaultProfile'.
 
 ### `Get-AzAvailabilityGroupListener`
-The cmdlet 'Get-AzAvailabilityGroupListener' has been updated and some features have been removed. The cmdlet 'Get-AzAvailabilityGroupListener' no longer has output type 'Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureAvailabilityGroupListenerModel'. The 'ResourceId' and 'SqlVMGroupObject' parameters have been removed without any alias found. The 'DefaultProfile' parameter no longer supports the type 'Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer' and its aliases 'AzContext' and 'AzureRmContext'.
+- The cmdlet 'Get-AzAvailabilityGroupListener' has been updated and some features have been removed. 
+- The cmdlet 'Get-AzAvailabilityGroupListener' no longer has output type 'Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureAvailabilityGroupListenerModel'. The 'ResourceId' and 'SqlVMGroupObject' parameters have been removed without any alias found. The 'DefaultProfile' parameter no longer supports the type 'Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer' and its aliases 'AzContext' and 'AzureRmContext'.
 
 #### Before
 ```powershell
@@ -1499,7 +1508,7 @@ Get-AzAvailabilityGroupListener -ResourceGroupName 'ResourceGroup01' -SqlVMGroup
 ## Az.StackHCI
 
 ### `Unregister-AzStackHCI`
-The cmdlet 'Unregister-AzStackHCI' no longer supports the parameter 'GraphAccessToken' and no alias was found for the original parameter name.
+- The cmdlet 'Unregister-AzStackHCI' no longer supports the parameter 'GraphAccessToken' and no alias was found for the original parameter name.
 
 #### Before
 ```powershell
@@ -1512,7 +1521,7 @@ Unregister-AzStackHCI  won’t support GraphAccessToken as a parameter
 
 
 ### `Test-AzStackHCIConnection`
-The cmdlet 'Test-AzStackHCIConnection' has been removed and no alias was found for the original cmdlet name.
+- The cmdlet 'Test-AzStackHCIConnection' has been removed and no alias was found for the original cmdlet name.
 
 #### Before
 ```powershell
@@ -1525,7 +1534,7 @@ Customers can use Invoke-AzStackHciConnectivityValidation from AzStackHCI.Enviro
 
 
 ### `Set-AzStackHCI`
-The cmdlet 'Set-AzStackHCI' no longer supports the parameter 'GraphAccessToken' and no alias was found for the original parameter name.
+- The cmdlet 'Set-AzStackHCI' no longer supports the parameter 'GraphAccessToken' and no alias was found for the original parameter name.
 
 #### Before
 ```powershell
@@ -1538,8 +1547,8 @@ Set-AzStackHCI won’t support GraphAccessToken as a parameter
 
 
 ### `Register-AzStackHCI`
-The cmdlet 'Register-AzStackHCI' no longer supports the parameter 'GraphAccessToken' and no alias was found for the original parameter name.
-The cmdlet 'Register-AzStackHCI' no longer supports the parameter 'EnableAzureArcServer' and no alias was found for the original parameter name.
+- The cmdlet 'Register-AzStackHCI' no longer supports the parameter 'GraphAccessToken' and no alias was found for the original parameter name.
+- The cmdlet 'Register-AzStackHCI' no longer supports the parameter 'EnableAzureArcServer' and no alias was found for the original parameter name.
 
 #### Before
 ```powershell
@@ -1550,15 +1559,10 @@ Customers had an option to pass GraphAccessToken parameter in Register-AzStackHC
 Register-AzStackHCI won’t support GraphAccessToken and EnableAzureArcServer as parameters, and will make Region parameter as mandatory.
 ```
 
-
-### `Get-AzStackHciExtension`
-The type of property 'ParameterProtectedSetting' of type 'Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IExtension' has changed from 'Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IAny' to 'Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IExtensionParametersProtectedSettings'.
-The type of property 'ParameterSetting' of type 'Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IExtension' has changed from 'Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IAny' to 'Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IExtensionParametersSettings'.
-
 ## Az.StorageSync
 
 ### `Set-AzStorageSyncServerEndpoint`
-The cmdlet 'Set-AzStorageSyncServerEndpoint' no longer supports the alias 'RegisteredServer' for parameter 'InputObject'.
+- The cmdlet 'Set-AzStorageSyncServerEndpoint' no longer supports the alias 'RegisteredServer' for parameter 'InputObject'.
 
 #### Before
 ```powershell
@@ -1573,7 +1577,7 @@ Set-AzStorageSyncServerEndpoint -ServerEndpoint $inputObject
 ## Az.Synapse
 
 ### `Update-AzSynapseSparkPool`
-The cmdlet 'Update-AzSynapseSparkPool' no longer supports the parameter 'SparkConfigFilePath' and no alias was found for the original parameter name.
+- The cmdlet 'Update-AzSynapseSparkPool' no longer supports the parameter 'SparkConfigFilePath' and no alias was found for the original parameter name.
 
 
 #### Before
@@ -1587,7 +1591,7 @@ Update-AzSynapseSparkPool -WorkspaceName $wsname -Name $sparkpoolname -SparkConf
 
 
 ### `New-AzSynapseSparkPool`
-The cmdlet 'New-AzSynapseSparkPool' no longer supports the parameter 'SparkConfigFilePath' and no alias was found for the original parameter name.
+- The cmdlet 'New-AzSynapseSparkPool' no longer supports the parameter 'SparkConfigFilePath' and no alias was found for the original parameter name.
 
 #### Before
 ```powershell
@@ -1602,7 +1606,7 @@ New-AzSynapseSparkPool -WorkspaceName $wsname -Name $sparkpoolname -SparkConfigu
 ## Az.Websites
 
 ### `New-AzWebAppContainerPSSession`
-The cmdlet 'New-AzWebAppContainerPSSession' has been removed and no alias was found for the original cmdlet name.
+- The cmdlet 'New-AzWebAppContainerPSSession' has been removed and no alias was found for the original cmdlet name.
 
 #### Before
 ```powershell
@@ -1615,7 +1619,7 @@ N/A
 
 
 ### `Enter-AzWebAppContainerPSSession`
-The cmdlet 'Enter-AzWebAppContainerPSSession' has been removed and no alias was found for the original cmdlet name.
+- The cmdlet 'Enter-AzWebAppContainerPSSession' has been removed and no alias was found for the original cmdlet name.
 
 #### Before
 ```powershell
