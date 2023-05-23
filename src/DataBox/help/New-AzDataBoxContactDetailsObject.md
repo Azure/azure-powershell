@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.DataBox
-online version: https://learn.microsoft.com/powershell/module/az.DataBox/new-AzDataBoxContactDetailsObject
+online version: https://learn.microsoft.com/powershell/module/Az.DataBox/new-AzDataBoxContactDetailsObject
 schema: 2.0.0
 ---
 
@@ -88,7 +88,7 @@ Notification preference for a job stage.
 To construct, see NOTES section for NOTIFICATIONPREFERENCE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.INotificationPreference[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.INotificationPreference[]
 Parameter Sets: (All)
 Aliases:
 
@@ -136,7 +136,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ContactDetails
+### Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.ContactDetails
 
 ## NOTES
 
@@ -147,7 +147,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-NOTIFICATIONPREFERENCE <INotificationPreference[]>: Notification preference for a job stage.
+`NOTIFICATIONPREFERENCE <INotificationPreference[]>`: Notification preference for a job stage.
   - `SendNotification <Boolean>`: Notification is required or not.
   - `StageName <NotificationStageName>`: Name of the stage.
 

@@ -14,71 +14,52 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzFrontDoorCdnProfile'
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Update-AzFrontDoorCdnProfile' -Tag 'LiveOnly' {
+Describe 'Update-AzFrontDoorCdnProfile'  {
+    BeforeAll {
+        $subId = $env.SubscriptionId
+        $frontDoorCdnProfileName = 'fdp-pstest050'
+        Write-Host -ForegroundColor Green "Use frontDoorCdnProfileName : $($frontDoorCdnProfileName)"
+
+        $profileSku = "Standard_AzureFrontDoor"
+        $tags = @{
+            Tag1 = 1
+            Tag2  = 2
+        }
+        New-AzFrontDoorCdnProfile -SkuName $profileSku -Name $frontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Location Global -Tag $tags
+
+    }
     It 'UpdateExpanded' {
-        { 
-            $ResourceGroupName = 'testps-rg-' + (RandomString -allChars $false -len 6)
-            try
-            {
-                Write-Host -ForegroundColor Green "Create test group $($ResourceGroupName)"
-                New-AzResourceGroup -Name $ResourceGroupName -Location $env.location
+        $tags = @{
+            Tag1 = 11
+            Tag2  = 22
+        }
 
-                $frontDoorCdnProfileName = 'fdp-' + (RandomString -allChars $false -len 6);
-                Write-Host -ForegroundColor Green "Use frontDoorCdnProfileName : $($frontDoorCdnProfileName)"
+        Write-Host -ForegroundColor Green "Update AzFrontDoorCdnProfile"
+        $profileObject = Update-AzFrontDoorCdnProfile -Name $frontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Tag $tags
 
-                $profileSku = "Standard_AzureFrontDoor";
-                $tags = @{
-                    Tag1 = 1
-                    Tag2  = 2
-                }
-                New-AzFrontDoorCdnProfile -SkuName $profileSku -Name $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName -Location Global -Tag $tags
-                $tags = @{
-                    Tag1 = 11
-                    Tag2  = 22
-                }
-                Update-AzFrontDoorCdnProfile -Name $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName -Tag $tags
-                $updatedProfile = Get-AzFrontDoorCdnProfile -Name $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName
-                
-                $updatedProfile.Tag["Tag1"] | Should -Be "11"
-                $updatedProfile.Tag["Tag2"] | Should -Be "22"
-            } Finally
-            {
-                Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
-            }
-        } | Should -Not -Throw
+        Write-Host -ForegroundColor Green "Get AzFrontDoorCdnProfile"
+        $updatedProfile = Get-AzFrontDoorCdnProfile -InputObject $profileObject
+        
+        $updatedProfile.Tag["Tag1"] | Should -Be "11"
+        $updatedProfile.Tag["Tag2"] | Should -Be "22"
     }
 
     It 'UpdateViaIdentityExpanded' {
-        { 
-            $PSDefaultParameterValues['Disabled'] = $true
-            $ResourceGroupName = 'testps-rg-' + (RandomString -allChars $false -len 6)
-            try
-            {
-                Write-Host -ForegroundColor Green "Create test group $($ResourceGroupName)"
-                New-AzResourceGroup -Name $ResourceGroupName -Location $env.location
+        $tags = @{
+            Tag1 = 33
+            Tag2  = 44
+        }
 
-                $frontDoorCdnProfileName = 'fdp-' + (RandomString -allChars $false -len 6);
-                Write-Host -ForegroundColor Green "Use frontDoorCdnProfileName : $($frontDoorCdnProfileName)"
+        Write-Host -ForegroundColor Green "Get AzFrontDoorCdnProfile"
+        $profileObject = Get-AzFrontDoorCdnProfile -Name $frontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName
 
-                $profileSku = "Standard_AzureFrontDoor";
-                $tags = @{
-                    Tag1 = 1
-                    Tag2  = 2
-                }
-                New-AzFrontDoorCdnProfile -SkuName $profileSku -Name $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName -Location Global -Tag $tags
-                $tags = @{
-                    Tag1 = 11
-                    Tag2  = 22
-                }
-                Get-AzFrontDoorCdnProfile -Name $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName | Update-AzFrontDoorCdnProfile -Tag $tags
-                $updatedProfile = Get-AzFrontDoorCdnProfile -Name $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName
-                
-                $updatedProfile.Tag["Tag1"] | Should -Be "11"
-                $updatedProfile.Tag["Tag2"] | Should -Be "22"
-            } Finally
-            {
-                Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
-            }
-        } | Should -Not -Throw
+        Write-Host -ForegroundColor Green "Update AzFrontDoorCdnProfile"
+        Update-AzFrontDoorCdnProfile -Tag $tags -InputObject $profileObject
+
+        Write-Host -ForegroundColor Green "get AzFrontDoorCdnProfile"
+        $updatedProfile = Get-AzFrontDoorCdnProfile -Name $frontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName
+        
+        $updatedProfile.Tag["Tag1"] | Should -Be "33"
+        $updatedProfile.Tag["Tag2"] | Should -Be "44"
     }
 }

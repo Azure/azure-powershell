@@ -42,7 +42,7 @@ using Microsoft.Azure.PowerShell.Cmdlets.Ssh.AzureClients;
 using Microsoft.Azure.PowerShell.Ssh.Helpers.HybridConnectivity;
 using System.Management.Automation.Host;
 using System.Management.Automation.Runspaces;
-
+using System.Collections.ObjectModel;
 
 namespace Microsoft.Azure.Commands.Ssh
 
@@ -311,12 +311,6 @@ namespace Microsoft.Azure.Commands.Ssh
 
         protected internal void ValidateParameters()
         {
-            var context = DefaultProfile.DefaultContext;
-            if (LocalUser == null && context.Account.Type == AzureAccount.AccountType.ServicePrincipal)
-            {
-                throw new AzPSArgumentException(Resources.AADLoginForServicePrincipal, nameof(LocalUser));
-            }
-
             if (Rdp && !RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
                 throw new AzPSArgumentException(Resources.RDPOnNonWindowsClient, nameof(Rdp));
@@ -454,7 +448,7 @@ namespace Microsoft.Azure.Commands.Ssh
                         {
                             throw new AzPSCloudException(Resources.FailedToCreateDefaultEndpointUnauthorized);
                         }
-                        throw new AzPSCloudException(String.Format(Resources.FailedToCreateDefaultEndpoint, createEndpointException));
+                        throw new AzPSCloudException(String.Format(Resources.FailedToCreateDefaultEndpoint, createEndpointException.Message));
                     }
 
                     try
@@ -463,13 +457,13 @@ namespace Microsoft.Azure.Commands.Ssh
                     }
                     catch (Exception listCredException)
                     {
-                        throw new AzPSCloudException(String.Format(Resources.FailedToListCredentials, listCredException));
+                        throw new AzPSCloudException(String.Format(Resources.FailedToListCredentials, listCredException.Message));
                     }
 
                 }
                 else
                 {
-                    throw new AzPSCloudException(String.Format(Resources.FailedToListCredentials, exception));
+                    throw new AzPSCloudException(String.Format(Resources.FailedToListCredentials, exception.Message));
                 }
             }
             return cred;
@@ -499,16 +493,20 @@ namespace Microsoft.Azure.Commands.Ssh
             
             if (String.IsNullOrEmpty(proxyPath))
             {
-                System.Collections.ObjectModel.Collection<ChoiceDescription> choices = new System.Collections.ObjectModel.Collection<ChoiceDescription> { new ChoiceDescription("N", "No"), new ChoiceDescription("Y", "Yes") };
+                Collection<ChoiceDescription> choices = new Collection<ChoiceDescription> { 
+                    new ChoiceDescription("N", "No"),
+                    new ChoiceDescription("Y", "Yes")
+                };
+
                 int userChoice = this.Host.UI.PromptForChoice(
-                    caption: $"You currently don't have the required Az.Ssh.ArcProxy module installed in this machine. Would you like us to attempt to install this module for the current user?",
-                    message: "You must have the Az.Ssh.Proxy PowerShell module installed in the client machine in order to connect to Azure Arc resources. You can find the module in the PowerShell Gallery <Link>.",
+                    caption: Resources.InstallProxyModuleCaption,
+                    message: Resources.InstallProxyModuleMessage,
                     choices: choices,
                     defaultChoice: 0);
                 if (userChoice == 1)
                 {
                     var installationResults = InvokeCommand.InvokeScript(
-                        script: "Install-module Az.Ssh.ArcProxy -Repository PsGallery -Scope CurrentUser",
+                        script: "Install-module Az.Ssh.ArcProxy -Repository PsGallery -Scope CurrentUser -MaximumVersion 1.9.9 -AllowClobber",
                         useNewScope: true,
                         writeToPipeline: PipelineResultTypes.Error,
                         input: null,
@@ -521,47 +519,8 @@ namespace Microsoft.Azure.Commands.Ssh
 
             if (!String.IsNullOrEmpty(proxyPath)) { return proxyPath; }
             
-            throw new AzPSApplicationException("Failed to find the module Az.Ssh.ArcProxy installed in this machine. You must have the Az.Ssh.Proxy PowerShell module installed in the client machine in order to connect to Azure Arc resources. You can find the module in the PowerShell Gallery <Link>.");
+            throw new AzPSApplicationException(Resources.FailedToFindProxyModule);
         }
-
-        private string SearchForInstalledProxyPath()
-        {
-            var results = InvokeCommand.InvokeScript(
-                script: "Get-module -ListAvailable -Name Az.Ssh.ArcProxy");
-
-            foreach (var result in results)
-            {
-                if (result?.BaseObject is PSModuleInfo moduleInfo)
-                {
-                    var proxyPath = GetProxyPathInModuleDirectory(moduleInfo.Path);
-
-                    if (moduleInfo.Version >= new Version("2.0.0"))
-                    {
-                        WriteWarning("This version of the Az.Ssh extension only supports version 1.x.x of the Az.Ssh.ArcProxy PowerShell Module. Check that this extension is the latest version available");
-                        continue;
-                    }   
-
-                    if (!File.Exists(proxyPath))
-                    {
-                        continue;
-                    }
-
-                    if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
-                    {
-                        if (!SetExecutePermissionForProxyOnLinux(proxyPath))
-                        {
-                            WriteWarning($"Unable to add Execute permission to SSH Proxy {proxyPath}. The SSH connection will fail if the current user doesn't have permission to execute the SSH proxy file.");
-                        }
-                    }
-
-                    return proxyPath;
-                }
-               
-            }
-            return null;
-        }
-
-            
 
 
         protected internal void GetVmIpAddress()
@@ -691,13 +650,51 @@ namespace Microsoft.Azure.Commands.Ssh
 
         #region Private Methods
 
-        protected internal bool SetExecutePermissionForProxyOnLinux(string path)
+        private string SearchForInstalledProxyPath()
+        {
+            var results = InvokeCommand.InvokeScript(
+                script: "Get-module -ListAvailable -Name Az.Ssh.ArcProxy");
+
+            foreach (var result in results)
+            {
+                if (result?.BaseObject is PSModuleInfo moduleInfo)
+                {
+                    var proxyPath = GetProxyPathInModuleDirectory(moduleInfo.Path);
+
+                    if (moduleInfo.Version >= new Version("2.0.0"))
+                    {
+                        WriteWarning(String.Format(Resources.UnsuportedVersionProxyModule, moduleInfo.Path, moduleInfo.Version));
+                        continue;
+                    }
+
+                    if (!File.Exists(proxyPath))
+                    {
+                        continue;
+                    }
+
+                    if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+                    {
+                        // does this check even work?
+                        if (!SetExecutePermissionForProxyOnLinux(proxyPath))
+                        {
+                            WriteWarning($"Unable to add Execute permission to SSH Proxy {proxyPath}. The SSH connection will fail if the current user doesn't have permission to execute the SSH proxy file.");
+                        }
+                    }
+
+                    return proxyPath;
+                }
+
+            }
+            return null;
+        }
+
+        private bool SetExecutePermissionForProxyOnLinux(string path)
         {
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
             {
                 try
                 {
-                    var script = $"chmod +x {path}"; // should we just add permission for the owner? Or all users?
+                    var script = $"chmod +x {path}";
                     var results = InvokeCommand.InvokeScript(
                         script: script,
                         useNewScope: true,
@@ -708,18 +705,16 @@ namespace Microsoft.Azure.Commands.Ssh
                 }
                 catch
                 {
-                    // If this operation fails we want to warn the user
                     return false;
                 }
                 return true;
-                //check results somehow?
             }
             return true;
         }
 
         private void SetResourceId()
         {
-            if (ResourceId == null)
+            if (String.IsNullOrEmpty(ResourceId) && ParameterSetName.Equals(InteractiveParameterSet))
             {
                 ResourceIdentifier id = new ResourceIdentifier();
                 id.ResourceGroupName = ResourceGroupName;
@@ -787,7 +782,23 @@ namespace Microsoft.Azure.Commands.Ssh
             {
                 throw new AzPSApplicationException("Cannot load SshCredentialFactory instance from context.");
             }
-            var token = factory.GetSshCredential(context, parameters);
+
+            SshCredential token = null;
+
+            try
+            {
+                token = factory.GetSshCredential(context, parameters);
+            }
+            catch (KeyNotFoundException exception)
+            {
+                if (context.Account.Type != AzureAccount.AccountType.User)
+                {
+                    throw new AzPSApplicationException(String.Format(Resources.FailedToAADUnsupportedAccountType, context.Account.Type));
+                }
+
+                throw new AzPSApplicationException($"Failed to generate AAD certificate with exception: {exception.Message}.");
+            }
+
             return token;
         }
 
@@ -812,6 +823,11 @@ namespace Microsoft.Azure.Commands.Ssh
                 {
                     principals.Add(line.Trim());
                 }
+            }
+
+            if (!principals.Any())
+            {
+                throw new AzPSInvalidOperationException("Unable to find Principals in generated AAD Certificate.");
             }
             return principals;
         }

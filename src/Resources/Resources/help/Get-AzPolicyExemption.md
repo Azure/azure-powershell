@@ -112,6 +112,7 @@ Accept wildcard characters: False
 
 ### -IncludeDescendent
 Causes the list of returned policy exemptions to include all exemptions related to the given scope, including those from ancestor scopes and those from descendent scopes.
+This parameter doesn't work when the requested scope is a management group scope.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Upgraded API version to 2022-11-01.
 
 ## Version 0.6.0
  * Added cmdlets:
