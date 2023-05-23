@@ -239,7 +239,7 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// subscription, “x-ms-authorization-auxiliary” header must contain
         /// authentication token for the source tenant. For more details about
         /// “x-ms-authorization-auxiliary” header see
-        /// https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/authenticate-multi-tenant
+        /// https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/authenticate-multi-tenant
         /// </param>
         /// <param name="manualCutover">Whether or not customer controlled
         /// manual cutover needs to be done during Update Database operation to
@@ -731,7 +731,7 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// subscription, “x-ms-authorization-auxiliary” header must contain
         /// authentication token for the source tenant. For more details about
         /// “x-ms-authorization-auxiliary” header see
-        /// https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/authenticate-multi-tenant
+        /// https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/authenticate-multi-tenant
         /// </summary>
         [JsonProperty(PropertyName = "properties.sourceResourceId")]
         public string SourceResourceId { get; set; }
