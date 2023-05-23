@@ -56,13 +56,11 @@ function Delay-AzDevCenterDevDevBoxAction {
     [Parameter(ParameterSetName = 'Delay', Mandatory)]
     [Parameter(ParameterSetName = 'Delay1', Mandatory)]
     [Parameter(ParameterSetName = 'DelayViaIdentity', Mandatory)]
-    [Parameter(ParameterSetName = 'DelayViaIdentity1', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Uri')]
     [System.String]
     # The DevCenter-specific URI to operate on.
     ${Endpoint},
 
-    [Parameter(ParameterSetName = 'DelayViaIdentity1ByDevCenter', Mandatory)]
     [Parameter(ParameterSetName = 'DelayViaIdentityByDevCenter', Mandatory)]
     [Parameter(ParameterSetName = 'Delay1ByDevCenter', Mandatory)]
     [Parameter(ParameterSetName = 'DelayByDevCenter', Mandatory)]
@@ -108,8 +106,6 @@ function Delay-AzDevCenterDevDevBoxAction {
     ${UserId},
 
     [Parameter(ParameterSetName = 'DelayViaIdentity', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName = 'DelayViaIdentity1', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName = 'DelayViaIdentity1ByDevCenter', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName = 'DelayViaIdentityByDevCenter', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity]
@@ -177,6 +173,10 @@ function Delay-AzDevCenterDevDevBoxAction {
       $null = $PSBoundParameters.Add("Endpoint", $Endpoint)
       $null = $PSBoundParameters.Remove("DevCenter")
 
+    }
+    else {
+      $Endpoint = ValidateAndProcessEndpoint -Endpoint $Endpoint
+      $PSBoundParameters["Endpoint"] = $Endpoint
     }
 
     if (-not $PSBoundParameters.ContainsKey('ActionName')) {

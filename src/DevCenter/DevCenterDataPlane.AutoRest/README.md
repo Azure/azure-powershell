@@ -86,12 +86,7 @@ directive:
       parameter-name: Filter
     hide: true
   - where:
-      verb: Get
-      subject: Schedule
-    hide: true
-  - where:
-      verb: Delay
-      subject: DevBoxAction
+      subject: ^(.*)
     hide: true
   - where:
       subject: ^(.*)

@@ -48,22 +48,33 @@ https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenterdevpoo
 #>
 function Get-AzDevCenterDevPool {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.IPool])]
-    [CmdletBinding(PositionalBinding = $false)]
+    [CmdletBinding(DefaultParameterSetName = 'List', PositionalBinding = $false)]
     param(
-        [Parameter(ParameterSetName = 'ListByDevCenter', Mandatory)]
-        [Parameter(ParameterSetName = 'GetByDevCenter', Mandatory)]
+        [Parameter(ParameterSetName = 'Get', Mandatory)]
+        [Parameter(ParameterSetName = 'GetViaIdentity', Mandatory)]
+        [Parameter(ParameterSetName = 'List', Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Uri')]
+        [System.String]
+        # The DevCenter-specific URI to operate on.
+        ${Endpoint},
+    
         [Parameter(ParameterSetName = 'GetViaIdentityByDevCenter', Mandatory)]
+        [Parameter(ParameterSetName = 'GetByDevCenter', Mandatory)]
+        [Parameter(ParameterSetName = 'ListByDevCenter', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Uri')]
         [System.String]
         # The DevCenter upon which to execute operations.
         ${DevCenter},
     
+        [Parameter(ParameterSetName = 'Get', Mandatory)]
         [Parameter(ParameterSetName = 'GetByDevCenter', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
         [System.String]
         # The name of a pool of Dev Boxes.
         ${PoolName},
     
+        [Parameter(ParameterSetName = 'Get', Mandatory)]
+        [Parameter(ParameterSetName = 'List', Mandatory)]
         [Parameter(ParameterSetName = 'GetByDevCenter', Mandatory)]
         [Parameter(ParameterSetName = 'ListByDevCenter', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
@@ -71,6 +82,7 @@ function Get-AzDevCenterDevPool {
         # The DevCenter Project upon which to execute operations.
         ${ProjectName},
     
+        [Parameter(ParameterSetName = 'GetViaIdentity', Mandatory, ValueFromPipeline)]
         [Parameter(ParameterSetName = 'GetViaIdentityByDevCenter', Mandatory, ValueFromPipeline)]
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity]
@@ -129,11 +141,18 @@ function Get-AzDevCenterDevPool {
     
     
     process {
-        $Endpoint = GetEndpointFromResourceGraph -DevCenter $DevCenter -Project $ProjectName
-        $null = $PSBoundParameters.Add("Endpoint", $Endpoint)
-        $null = $PSBoundParameters.Remove("DevCenter")
+        if (-not $PSBoundParameters.ContainsKey('Endpoint')) {
+            $Endpoint = GetEndpointFromResourceGraph -DevCenter $DevCenter -Project $ProjectName
+            $null = $PSBoundParameters.Add("Endpoint", $Endpoint)
+            $null = $PSBoundParameters.Remove("DevCenter")
+      
+        }
+        else {
+            $Endpoint = ValidateAndProcessEndpoint -Endpoint $Endpoint
+            $PSBoundParameters["Endpoint"] = $Endpoint
+        }
 
-        Az.DevCenter\Get-AzDevCenterDevPool @PSBoundParameters
+        Az.DevCenter.internal\Get-AzDevCenterDevPool @PSBoundParameters
     }
 }
     

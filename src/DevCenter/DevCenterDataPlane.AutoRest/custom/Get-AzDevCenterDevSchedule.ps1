@@ -51,8 +51,8 @@ function Get-AzDevCenterDevSchedule {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.ISchedule])]
     [CmdletBinding(PositionalBinding = $false)]
     param(
-        [Parameter(ParameterSetName='Get', Mandatory)]
-        [Parameter(ParameterSetName='GetViaIdentity', Mandatory)]
+        [Parameter(ParameterSetName = 'Get', Mandatory)]
+        [Parameter(ParameterSetName = 'GetViaIdentity', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Uri')]
         [System.String]
         # The DevCenter-specific URI to operate on.
@@ -65,14 +65,14 @@ function Get-AzDevCenterDevSchedule {
         # The DevCenter upon which to execute operations.
         ${DevCenter},
 
-        [Parameter(ParameterSetName='Get', Mandatory)]
+        [Parameter(ParameterSetName = 'Get', Mandatory)]
         [Parameter(ParameterSetName = 'GetByDevCenter', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
         [System.String]
         # The name of a pool of Dev Boxes.
         ${PoolName},
 
-        [Parameter(ParameterSetName='Get', Mandatory)]
+        [Parameter(ParameterSetName = 'Get', Mandatory)]
         [Parameter(ParameterSetName = 'GetByDevCenter', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
         [System.String]
@@ -137,9 +137,16 @@ function Get-AzDevCenterDevSchedule {
     )
 
     process {
-        $Endpoint = GetEndpointFromResourceGraph -DevCenter $DevCenter -Project $ProjectName
-        $null = $PSBoundParameters.Add("Endpoint", $Endpoint)
-        $null = $PSBoundParameters.Remove("DevCenter")
+        if (-not $PSBoundParameters.ContainsKey('Endpoint')) {
+            $Endpoint = GetEndpointFromResourceGraph -DevCenter $DevCenter -Project $ProjectName
+            $null = $PSBoundParameters.Add("Endpoint", $Endpoint)
+            $null = $PSBoundParameters.Remove("DevCenter")
+      
+        }
+        else {
+            $Endpoint = ValidateAndProcessEndpoint -Endpoint $Endpoint
+            $PSBoundParameters["Endpoint"] = $Endpoint
+        }
 
         $Default = "default"
         $null = $PSBoundParameters.Add("ScheduleName", $Default)

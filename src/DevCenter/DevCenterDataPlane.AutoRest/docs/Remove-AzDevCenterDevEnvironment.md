@@ -211,7 +211,7 @@ Type: System.String
 Parameter Sets: Delete, DeleteByDevCenter
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: "me"
 Accept pipeline input: False

@@ -41,6 +41,11 @@ Get-AzDevCenterDevProject -DevCenter <String> -InputObject <IDevCenterIdentity> 
  [<CommonParameters>]
 ```
 
+### ListByDevCenter
+```
+Get-AzDevCenterDevProject -DevCenter <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Gets a project.
 
@@ -91,7 +96,7 @@ The DevCenter upon which to execute operations.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetByDevCenter, GetViaIdentityByDevCenter
+Parameter Sets: GetByDevCenter, GetViaIdentityByDevCenter, ListByDevCenter
 Aliases:
 
 Required: True

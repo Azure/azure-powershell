@@ -51,11 +51,18 @@ BODY <IEnvironment>: Properties of an environment.
 https://learn.microsoft.com/powershell/module/az.devcenter/set-azdevcenterdevenvironment
 #>
 function Set-AzDevCenterDevEnvironment {
-[OutputType([System.Boolean])]
-[CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-param(
-    [Parameter(ParameterSetName='ReplaceByDevCenter', Mandatory)]
-    [Parameter(ParameterSetName='ReplaceExpandedByDevCenter', Mandatory)]
+  [OutputType([System.Boolean])]
+  [CmdletBinding(DefaultParameterSetName = 'ReplaceExpanded', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
+  param(
+    [Parameter(ParameterSetName = 'Replace', Mandatory)]
+    [Parameter(ParameterSetName = 'ReplaceExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Uri')]
+    [System.String]
+    # The DevCenter-specific URI to operate on.
+    ${Endpoint},
+
+    [Parameter(ParameterSetName = 'ReplaceExpandedByDevCenter', Mandatory)]
+    [Parameter(ParameterSetName = 'ReplaceByDevCenter', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Uri')]
     [System.String]
     # The DevCenter upon which to execute operations.
@@ -74,39 +81,45 @@ param(
     # The DevCenter Project upon which to execute operations.
     ${ProjectName},
 
-    [Parameter(Mandatory)]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.DefaultInfo(Script = '"me"')]
     [System.String]
     # The AAD object id of the user.
     # If value is 'me', the identity is taken from the authentication context.
     ${UserId},
 
-    [Parameter(ParameterSetName='ReplaceByDevCenter', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName = 'Replace', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName = 'ReplaceByDevCenter', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.IEnvironment]
     # Properties of an environment.
     # To construct, see NOTES section for BODY properties and create a hash table.
     ${Body},
 
-    [Parameter(ParameterSetName='ReplaceExpandedByDevCenter', Mandatory)]
+    [Parameter(ParameterSetName = 'ReplaceExpanded', Mandatory)]
+    [Parameter(ParameterSetName = 'ReplaceExpandedByDevCenter', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
     [System.String]
     # Name of the catalog.
     ${CatalogName},
 
-    [Parameter(ParameterSetName='ReplaceExpandedByDevCenter', Mandatory)]
+    [Parameter(ParameterSetName = 'ReplaceExpanded', Mandatory)]
+    [Parameter(ParameterSetName = 'ReplaceExpandedByDevCenter', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
     [System.String]
     # Name of the environment definition.
     ${EnvironmentDefinitionName},
 
-    [Parameter(ParameterSetName='ReplaceExpandedByDevCenter', Mandatory)]
+    [Parameter(ParameterSetName = 'ReplaceExpanded', Mandatory)]
+    [Parameter(ParameterSetName = 'ReplaceExpandedByDevCenter', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
     [System.String]
     # Environment type.
     ${EnvironmentType},
 
-    [Parameter(ParameterSetName='ReplaceExpandedByDevCenter')]
+    [Parameter(ParameterSetName = 'ReplaceExpanded')]
+    [Parameter(ParameterSetName = 'ReplaceExpandedByDevCenter')]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IAny]
     # Parameters object for the environment.
@@ -171,13 +184,20 @@ param(
     [System.Management.Automation.SwitchParameter]
     # Use the default credentials for the proxy
     ${ProxyUseDefaultCredentials}
-)
+  )
 
-process {
-    $Endpoint = GetEndpointFromResourceGraph -DevCenter $DevCenter -Project $ProjectName
-    $null = $PSBoundParameters.Add("Endpoint", $Endpoint)
-    $null = $PSBoundParameters.Remove("DevCenter")
+  process {
+    if (-not $PSBoundParameters.ContainsKey('Endpoint')) {
+      $Endpoint = GetEndpointFromResourceGraph -DevCenter $DevCenter -Project $ProjectName
+      $null = $PSBoundParameters.Add("Endpoint", $Endpoint)
+      $null = $PSBoundParameters.Remove("DevCenter")
 
-    Az.DevCenter\Set-AzDevCenterDevEnvironment @PSBoundParameters
-}
+    }
+    else {
+      $Endpoint = ValidateAndProcessEndpoint -Endpoint $Endpoint
+      $PSBoundParameters["Endpoint"] = $Endpoint
+    }
+
+    Az.DevCenter.internal\Set-AzDevCenterDevEnvironment @PSBoundParameters
+  }
 }
