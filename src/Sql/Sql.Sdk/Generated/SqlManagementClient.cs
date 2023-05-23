@@ -517,6 +517,11 @@ namespace Microsoft.Azure.Management.Sql
         public virtual IManagedDatabasesOperations ManagedDatabases { get; private set; }
 
         /// <summary>
+        /// Gets the IManagedDatabaseMoveOperations.
+        /// </summary>
+        public virtual IManagedDatabaseMoveOperations ManagedDatabaseMoveOperations { get; private set; }
+
+        /// <summary>
         /// Initializes a new instance of the SqlManagementClient class.
         /// </summary>
         /// <param name='httpClient'>
@@ -847,6 +852,7 @@ namespace Microsoft.Azure.Management.Sql
             ServerConfigurationOptions = new ServerConfigurationOptionsOperations(this);
             ManagedLedgerDigestUploads = new ManagedLedgerDigestUploadsOperations(this);
             ManagedDatabases = new ManagedDatabasesOperations(this);
+            ManagedDatabaseMoveOperations = new ManagedDatabaseMoveOperations(this);
             BaseUri = new System.Uri("https://management.azure.com");
             AcceptLanguage = "en-US";
             LongRunningOperationRetryTimeout = 30;

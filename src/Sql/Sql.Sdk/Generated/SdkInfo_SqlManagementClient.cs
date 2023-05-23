@@ -60,6 +60,7 @@ namespace Microsoft.Azure.Management.Sql
                 new Tuple<string, string, string>("Sql", "LongTermRetentionPolicies", "2020-11-01-preview"),
                 new Tuple<string, string, string>("Sql", "ManagedBackupShortTermRetentionPolicies", "2020-11-01-preview"),
                 new Tuple<string, string, string>("Sql", "ManagedDatabaseAdvancedThreatProtectionSettings", "2022-02-01-preview"),
+                new Tuple<string, string, string>("Sql", "ManagedDatabaseMoveOperations", "2022-08-01-preview"),
                 new Tuple<string, string, string>("Sql", "ManagedDatabaseRecommendedSensitivityLabels", "2020-11-01-preview"),
                 new Tuple<string, string, string>("Sql", "ManagedDatabaseRestoreDetails", "2022-05-01-preview"),
                 new Tuple<string, string, string>("Sql", "ManagedDatabaseSensitivityLabels", "2020-11-01-preview"),
