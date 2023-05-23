@@ -20,7 +20,6 @@ Creates a new delivery rule within the specified rule set.
 .Description
 Creates a new delivery rule within the specified rule set.
 .Example
-
 $conditions = @(
     New-AzFrontDoorCdnRuleClientPortConditionObject -Name ClientPort -ParameterOperator Equal -ParameterMatchValue 80,81
     New-AzFrontDoorCdnRuleIsDeviceConditionObject -Name IsDevice -ParameterMatchValue Mobile
@@ -37,7 +36,7 @@ $actions = @(
 New-AzFrontDoorCdnRule -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -RuleSetName ruleset001 -Name rule1 -Action $actions -Condition $conditions
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IRule
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IRule
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -52,7 +51,7 @@ CONDITION <IDeliveryRuleCondition[]>: A list of conditions that must be matched 
 https://learn.microsoft.com/powershell/module/az.cdn/new-azfrontdoorcdnrule
 #>
 function New-AzFrontDoorCdnRule {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IRule])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IRule])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -91,7 +90,7 @@ param(
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IDeliveryRuleAction1[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IDeliveryRuleAction1[]]
     # A list of actions that are executed when all the conditions of a rule are satisfied.
     # To construct, see NOTES section for ACTION properties and create a hash table.
     ${Action},
@@ -99,7 +98,7 @@ param(
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IDeliveryRuleCondition[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IDeliveryRuleCondition[]]
     # A list of conditions that must be matched for the actions to be executed
     # To construct, see NOTES section for CONDITION properties and create a hash table.
     ${Condition},
@@ -127,7 +126,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter()]
@@ -191,7 +191,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
         }         
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {

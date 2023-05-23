@@ -35,7 +35,7 @@ Name
 UrlRedirect
 ```
 
-
+Create an in-memory object for UrlRedirectAction
 
 ## PARAMETERS
 
@@ -160,7 +160,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.UrlRedirectAction
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.UrlRedirectAction
 
 ## NOTES
 

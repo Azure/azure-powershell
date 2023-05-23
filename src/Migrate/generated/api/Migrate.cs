@@ -1432,7 +1432,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.Accepted:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onAccepted(_response,null /* deserializeFromResponse doesn't support '-header-' C:\Users\cloudtest\.autorest\@autorest_powershell@3.0.504\node_modules\@autorest\powershell\dist\llcsharp\schema\object.js*/);
+                            await onAccepted(_response,null /* deserializeFromResponse doesn't support '-header-' C:\Users\cloudtest\.autorest\@autorest_powershell@3.0.497\node_modules\@autorest\powershell\dist\llcsharp\schema\object.js*/);
                             break;
                         }
                         default:
@@ -1945,7 +1945,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.Accepted:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onAccepted(_response,null /* deserializeFromResponse doesn't support '-header-' C:\Users\cloudtest\.autorest\@autorest_powershell@3.0.504\node_modules\@autorest\powershell\dist\llcsharp\schema\object.js*/);
+                            await onAccepted(_response,null /* deserializeFromResponse doesn't support '-header-' C:\Users\cloudtest\.autorest\@autorest_powershell@3.0.497\node_modules\@autorest\powershell\dist\llcsharp\schema\object.js*/);
                             break;
                         }
                         default:
@@ -4443,7 +4443,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.Accepted:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onAccepted(_response,null /* deserializeFromResponse doesn't support '-header-' C:\Users\cloudtest\.autorest\@autorest_powershell@3.0.504\node_modules\@autorest\powershell\dist\llcsharp\schema\object.js*/);
+                            await onAccepted(_response,null /* deserializeFromResponse doesn't support '-header-' C:\Users\cloudtest\.autorest\@autorest_powershell@3.0.497\node_modules\@autorest\powershell\dist\llcsharp\schema\object.js*/);
                             break;
                         }
                         default:
@@ -5815,7 +5815,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.Accepted:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onAccepted(_response,null /* deserializeFromResponse doesn't support '-header-' C:\Users\cloudtest\.autorest\@autorest_powershell@3.0.504\node_modules\@autorest\powershell\dist\llcsharp\schema\object.js*/);
+                            await onAccepted(_response,null /* deserializeFromResponse doesn't support '-header-' C:\Users\cloudtest\.autorest\@autorest_powershell@3.0.497\node_modules\@autorest\powershell\dist\llcsharp\schema\object.js*/);
                             break;
                         }
                         default:
@@ -5983,7 +5983,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.Accepted:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onAccepted(_response,null /* deserializeFromResponse doesn't support '-header-' C:\Users\cloudtest\.autorest\@autorest_powershell@3.0.504\node_modules\@autorest\powershell\dist\llcsharp\schema\object.js*/);
+                            await onAccepted(_response,null /* deserializeFromResponse doesn't support '-header-' C:\Users\cloudtest\.autorest\@autorest_powershell@3.0.497\node_modules\@autorest\powershell\dist\llcsharp\schema\object.js*/);
                             break;
                         }
                         default:
@@ -7122,9 +7122,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task MigrationRecoveryPointsGet(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, string migrationItemName, string migrationRecoveryPointName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IMigrationRecoveryPoint>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task MigrationRecoveryPointsGet(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, string migrationItemName, string migrationRecoveryPointName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IMigrationRecoveryPoint>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7169,9 +7169,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task MigrationRecoveryPointsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IMigrationRecoveryPoint>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task MigrationRecoveryPointsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IMigrationRecoveryPoint>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7232,7 +7232,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task MigrationRecoveryPointsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IMigrationRecoveryPoint>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task MigrationRecoveryPointsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IMigrationRecoveryPoint>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -7250,7 +7250,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.MigrationRecoveryPoint.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.MigrationRecoveryPoint.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -7311,9 +7311,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task MigrationRecoveryPointsListByReplicationMigrationItems(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, string migrationItemName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IMigrationRecoveryPointCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task MigrationRecoveryPointsListByReplicationMigrationItems(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, string migrationItemName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IMigrationRecoveryPointCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7357,9 +7357,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task MigrationRecoveryPointsListByReplicationMigrationItemsViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IMigrationRecoveryPointCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task MigrationRecoveryPointsListByReplicationMigrationItemsViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IMigrationRecoveryPointCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7420,7 +7420,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task MigrationRecoveryPointsListByReplicationMigrationItems_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IMigrationRecoveryPointCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task MigrationRecoveryPointsListByReplicationMigrationItems_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IMigrationRecoveryPointCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -7438,7 +7438,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.MigrationRecoveryPointCollection.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.MigrationRecoveryPointCollection.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -7618,9 +7618,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task OperationsList2(string resourceGroupName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IOperationsDiscoveryCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task OperationsList2(string resourceGroupName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IOperationsDiscoveryCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7656,9 +7656,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task OperationsList2ViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IOperationsDiscoveryCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task OperationsList2ViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IOperationsDiscoveryCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7705,7 +7705,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task OperationsList2_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IOperationsDiscoveryCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task OperationsList2_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IOperationsDiscoveryCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -7723,7 +7723,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.OperationsDiscoveryCollection.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.OperationsDiscoveryCollection.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -7879,9 +7879,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task RecoveryPointsGet(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, string replicatedProtectedItemName, string recoveryPointName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IRecoveryPoint>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task RecoveryPointsGet(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, string replicatedProtectedItemName, string recoveryPointName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IRecoveryPoint>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7926,9 +7926,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task RecoveryPointsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IRecoveryPoint>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task RecoveryPointsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IRecoveryPoint>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7989,7 +7989,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task RecoveryPointsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IRecoveryPoint>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task RecoveryPointsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IRecoveryPoint>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -8007,7 +8007,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.RecoveryPoint.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.RecoveryPoint.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -8068,9 +8068,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task RecoveryPointsListByReplicationProtectedItems(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, string replicatedProtectedItemName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IRecoveryPointCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task RecoveryPointsListByReplicationProtectedItems(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, string replicatedProtectedItemName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IRecoveryPointCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8114,9 +8114,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task RecoveryPointsListByReplicationProtectedItemsViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IRecoveryPointCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task RecoveryPointsListByReplicationProtectedItemsViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IRecoveryPointCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8177,7 +8177,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task RecoveryPointsListByReplicationProtectedItems_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IRecoveryPointCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task RecoveryPointsListByReplicationProtectedItems_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IRecoveryPointCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -8195,7 +8195,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.RecoveryPointCollection.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.RecoveryPointCollection.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -8253,9 +8253,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationAlertSettingsCreate(string resourceName, string resourceGroupName, string subscriptionId, string alertSettingName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IConfigureAlertRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IAlert>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationAlertSettingsCreate(string resourceName, string resourceGroupName, string subscriptionId, string alertSettingName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IConfigureAlertRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IAlert>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8299,9 +8299,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationAlertSettingsCreateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IConfigureAlertRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IAlert>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationAlertSettingsCreateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IConfigureAlertRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IAlert>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8357,7 +8357,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationAlertSettingsCreate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IAlert>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ReplicationAlertSettingsCreate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IAlert>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -8375,7 +8375,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.Alert.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.Alert.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -8407,7 +8407,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationAlertSettingsCreate_Validate(string resourceName, string resourceGroupName, string subscriptionId, string alertSettingName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IConfigureAlertRequest body, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task ReplicationAlertSettingsCreate_Validate(string resourceName, string resourceGroupName, string subscriptionId, string alertSettingName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IConfigureAlertRequest body, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -8431,9 +8431,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationAlertSettingsGet(string resourceName, string resourceGroupName, string subscriptionId, string alertSettingName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IAlert>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationAlertSettingsGet(string resourceName, string resourceGroupName, string subscriptionId, string alertSettingName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IAlert>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8472,9 +8472,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationAlertSettingsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IAlert>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationAlertSettingsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IAlert>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8526,7 +8526,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationAlertSettingsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IAlert>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ReplicationAlertSettingsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IAlert>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -8544,7 +8544,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.Alert.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.Alert.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -8596,9 +8596,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationAlertSettingsList(string resourceName, string resourceGroupName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IAlertCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationAlertSettingsList(string resourceName, string resourceGroupName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IAlertCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8636,9 +8636,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationAlertSettingsListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IAlertCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationAlertSettingsListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IAlertCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8688,7 +8688,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationAlertSettingsList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IAlertCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ReplicationAlertSettingsList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IAlertCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -8706,7 +8706,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.AlertCollection.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.AlertCollection.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -8757,9 +8757,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationAppliancesList(string resourceName, string resourceGroupName, string subscriptionId, string Filter, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IApplianceCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationAppliancesList(string resourceName, string resourceGroupName, string subscriptionId, string Filter, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IApplianceCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8800,9 +8800,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationAppliancesListViaIdentity(global::System.String viaIdentity, string Filter, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IApplianceCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationAppliancesListViaIdentity(global::System.String viaIdentity, string Filter, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IApplianceCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8854,7 +8854,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationAppliancesList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IApplianceCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ReplicationAppliancesList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IApplianceCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -8872,7 +8872,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.ApplianceCollection.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.ApplianceCollection.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -8926,9 +8926,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationEligibilityResultsGet(string resourceGroupName, string subscriptionId, string virtualMachineName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IReplicationEligibilityResults>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationEligibilityResultsGet(string resourceGroupName, string subscriptionId, string virtualMachineName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IReplicationEligibilityResults>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8968,9 +8968,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationEligibilityResultsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IReplicationEligibilityResults>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationEligibilityResultsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IReplicationEligibilityResults>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9020,7 +9020,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationEligibilityResultsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IReplicationEligibilityResults>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ReplicationEligibilityResultsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IReplicationEligibilityResults>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -9038,7 +9038,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.ReplicationEligibilityResults.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.ReplicationEligibilityResults.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -9090,9 +9090,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationEligibilityResultsList(string resourceGroupName, string subscriptionId, string virtualMachineName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IReplicationEligibilityResultsCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationEligibilityResultsList(string resourceGroupName, string subscriptionId, string virtualMachineName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IReplicationEligibilityResultsCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9132,9 +9132,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationEligibilityResultsListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IReplicationEligibilityResultsCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationEligibilityResultsListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IReplicationEligibilityResultsCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9184,7 +9184,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationEligibilityResultsList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IReplicationEligibilityResultsCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ReplicationEligibilityResultsList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IReplicationEligibilityResultsCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -9202,7 +9202,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.ReplicationEligibilityResultsCollection.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.ReplicationEligibilityResultsCollection.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -9253,9 +9253,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationEventsGet(string resourceName, string resourceGroupName, string subscriptionId, string eventName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IEvent>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationEventsGet(string resourceName, string resourceGroupName, string subscriptionId, string eventName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IEvent>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9294,9 +9294,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationEventsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IEvent>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationEventsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IEvent>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9348,7 +9348,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationEventsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IEvent>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ReplicationEventsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IEvent>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -9366,7 +9366,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.Event.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.Event.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -9419,9 +9419,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationEventsList(string resourceName, string resourceGroupName, string subscriptionId, string Filter, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IEventCollectionAutoGenerated>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationEventsList(string resourceName, string resourceGroupName, string subscriptionId, string Filter, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IEventCollectionAutoGenerated>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9462,9 +9462,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationEventsListViaIdentity(global::System.String viaIdentity, string Filter, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IEventCollectionAutoGenerated>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationEventsListViaIdentity(global::System.String viaIdentity, string Filter, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IEventCollectionAutoGenerated>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9516,7 +9516,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationEventsList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IEventCollectionAutoGenerated>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ReplicationEventsList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IEventCollectionAutoGenerated>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -9534,7 +9534,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.EventCollectionAutoGenerated.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.EventCollectionAutoGenerated.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -9587,9 +9587,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationFabricsCheckConsistency(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IFabric>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationFabricsCheckConsistency(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IFabric>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9629,9 +9629,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationFabricsCheckConsistencyViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IFabric>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationFabricsCheckConsistencyViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IFabric>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9684,7 +9684,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationFabricsCheckConsistency_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IFabric>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ReplicationFabricsCheckConsistency_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IFabric>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -9802,7 +9802,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.Fabric.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.Fabric.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -9856,9 +9856,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationFabricsCreate(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IFabricCreationInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IFabric>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationFabricsCreate(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IFabricCreationInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IFabric>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9902,9 +9902,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationFabricsCreateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IFabricCreationInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IFabric>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationFabricsCreateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IFabricCreationInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IFabric>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9960,7 +9960,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationFabricsCreate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IFabric>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ReplicationFabricsCreate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IFabric>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -10077,7 +10077,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.Fabric.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.Fabric.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -10109,7 +10109,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationFabricsCreate_Validate(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IFabricCreationInput body, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task ReplicationFabricsCreate_Validate(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IFabricCreationInput body, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -10135,7 +10135,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </returns>
         public async global::System.Threading.Tasks.Task ReplicationFabricsDelete(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10177,7 +10177,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </returns>
         public async global::System.Threading.Tasks.Task ReplicationFabricsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10402,9 +10402,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationFabricsGet(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string Filter, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IFabric>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationFabricsGet(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string Filter, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IFabric>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10446,9 +10446,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationFabricsGetViaIdentity(global::System.String viaIdentity, string Filter, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IFabric>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationFabricsGetViaIdentity(global::System.String viaIdentity, string Filter, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IFabric>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10502,7 +10502,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationFabricsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IFabric>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ReplicationFabricsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IFabric>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -10520,7 +10520,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.Fabric.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.Fabric.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -10574,9 +10574,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationFabricsList(string resourceName, string resourceGroupName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IFabricCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationFabricsList(string resourceName, string resourceGroupName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IFabricCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10614,9 +10614,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationFabricsListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IFabricCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationFabricsListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IFabricCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10666,7 +10666,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationFabricsList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IFabricCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ReplicationFabricsList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IFabricCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -10684,7 +10684,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.FabricCollection.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.FabricCollection.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -10737,7 +10737,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </returns>
         public async global::System.Threading.Tasks.Task ReplicationFabricsMigrateToAad(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10779,7 +10779,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </returns>
         public async global::System.Threading.Tasks.Task ReplicationFabricsMigrateToAadViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11005,7 +11005,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </returns>
         public async global::System.Threading.Tasks.Task ReplicationFabricsPurge(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11046,7 +11046,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </returns>
         public async global::System.Threading.Tasks.Task ReplicationFabricsPurgeViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11272,9 +11272,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationFabricsReassociateGateway(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IFailoverProcessServerRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IFabric>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationFabricsReassociateGateway(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IFailoverProcessServerRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IFabric>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11321,9 +11321,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationFabricsReassociateGatewayViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IFailoverProcessServerRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IFabric>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationFabricsReassociateGatewayViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IFailoverProcessServerRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IFabric>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11382,7 +11382,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationFabricsReassociateGateway_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IFabric>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ReplicationFabricsReassociateGateway_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IFabric>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -11500,7 +11500,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.Fabric.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.Fabric.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -11532,7 +11532,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationFabricsReassociateGateway_Validate(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IFailoverProcessServerRequest body, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task ReplicationFabricsReassociateGateway_Validate(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IFailoverProcessServerRequest body, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -11557,9 +11557,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationFabricsRenewCertificate(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IRenewCertificateInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IFabric>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationFabricsRenewCertificate(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IRenewCertificateInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IFabric>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11604,9 +11604,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationFabricsRenewCertificateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IRenewCertificateInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IFabric>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationFabricsRenewCertificateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IRenewCertificateInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IFabric>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11663,7 +11663,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationFabricsRenewCertificate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IFabric>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ReplicationFabricsRenewCertificate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IFabric>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -11781,7 +11781,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.Fabric.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.Fabric.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -11813,7 +11813,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationFabricsRenewCertificate_Validate(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IRenewCertificateInput body, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task ReplicationFabricsRenewCertificate_Validate(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IRenewCertificateInput body, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -11837,9 +11837,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationJobsCancel(string resourceName, string resourceGroupName, string subscriptionId, string jobName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IJob>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationJobsCancel(string resourceName, string resourceGroupName, string subscriptionId, string jobName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IJob>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11879,9 +11879,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationJobsCancelViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IJob>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationJobsCancelViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IJob>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11934,7 +11934,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationJobsCancel_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IJob>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ReplicationJobsCancel_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IJob>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -12052,7 +12052,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.Job.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.Job.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -12107,9 +12107,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationJobsExport(string resourceName, string resourceGroupName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IJobQueryParameter body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IJob>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationJobsExport(string resourceName, string resourceGroupName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IJobQueryParameter body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IJob>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12154,9 +12154,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationJobsExportViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IJobQueryParameter body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IJob>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationJobsExportViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IJobQueryParameter body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IJob>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12210,7 +12210,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationJobsExport_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IJob>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ReplicationJobsExport_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IJob>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -12328,7 +12328,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.Job.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.Job.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -12359,7 +12359,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationJobsExport_Validate(string resourceName, string resourceGroupName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IJobQueryParameter body, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task ReplicationJobsExport_Validate(string resourceName, string resourceGroupName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IJobQueryParameter body, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -12382,9 +12382,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationJobsGet(string resourceName, string resourceGroupName, string subscriptionId, string jobName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IJob>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationJobsGet(string resourceName, string resourceGroupName, string subscriptionId, string jobName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IJob>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12423,9 +12423,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationJobsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IJob>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationJobsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IJob>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12477,7 +12477,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationJobsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IJob>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ReplicationJobsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IJob>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -12495,7 +12495,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.Job.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.Job.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -12548,9 +12548,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationJobsList(string resourceName, string resourceGroupName, string subscriptionId, string Filter, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IJobCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationJobsList(string resourceName, string resourceGroupName, string subscriptionId, string Filter, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IJobCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12591,9 +12591,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationJobsListViaIdentity(global::System.String viaIdentity, string Filter, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IJobCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationJobsListViaIdentity(global::System.String viaIdentity, string Filter, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IJobCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12645,7 +12645,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationJobsList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IJobCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ReplicationJobsList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IJobCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -12663,7 +12663,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.JobCollection.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.JobCollection.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -12716,9 +12716,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationJobsRestart(string resourceName, string resourceGroupName, string subscriptionId, string jobName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IJob>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationJobsRestart(string resourceName, string resourceGroupName, string subscriptionId, string jobName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IJob>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12758,9 +12758,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationJobsRestartViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IJob>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationJobsRestartViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IJob>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12813,7 +12813,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationJobsRestart_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IJob>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ReplicationJobsRestart_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IJob>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -12931,7 +12931,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.Job.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.Job.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -12985,9 +12985,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationJobsResume(string resourceName, string resourceGroupName, string subscriptionId, string jobName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IResumeJobParams body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IJob>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationJobsResume(string resourceName, string resourceGroupName, string subscriptionId, string jobName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IResumeJobParams body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IJob>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -13032,9 +13032,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationJobsResumeViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IResumeJobParams body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IJob>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationJobsResumeViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IResumeJobParams body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IJob>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -13091,7 +13091,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationJobsResume_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IJob>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ReplicationJobsResume_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IJob>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -13209,7 +13209,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.Job.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.Job.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -13241,7 +13241,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationJobsResume_Validate(string resourceName, string resourceGroupName, string subscriptionId, string jobName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IResumeJobParams body, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task ReplicationJobsResume_Validate(string resourceName, string resourceGroupName, string subscriptionId, string jobName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IResumeJobParams body, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -13266,9 +13266,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationLogicalNetworksGet(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string logicalNetworkName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.ILogicalNetwork>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationLogicalNetworksGet(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string logicalNetworkName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.ILogicalNetwork>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -13309,9 +13309,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationLogicalNetworksGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.ILogicalNetwork>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationLogicalNetworksGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.ILogicalNetwork>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -13366,7 +13366,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationLogicalNetworksGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.ILogicalNetwork>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ReplicationLogicalNetworksGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.ILogicalNetwork>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -13384,7 +13384,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.LogicalNetwork.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.LogicalNetwork.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -13439,9 +13439,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationLogicalNetworksListByReplicationFabrics(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.ILogicalNetworkCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationLogicalNetworksListByReplicationFabrics(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.ILogicalNetworkCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -13481,9 +13481,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationLogicalNetworksListByReplicationFabricsViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.ILogicalNetworkCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationLogicalNetworksListByReplicationFabricsViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.ILogicalNetworkCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -13538,7 +13538,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationLogicalNetworksListByReplicationFabrics_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.ILogicalNetworkCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ReplicationLogicalNetworksListByReplicationFabrics_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.ILogicalNetworkCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -13556,7 +13556,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.LogicalNetworkCollection.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.LogicalNetworkCollection.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -13612,9 +13612,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationMigrationItemsCreate(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, string migrationItemName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IEnableMigrationInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IMigrationItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationMigrationItemsCreate(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, string migrationItemName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IEnableMigrationInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IMigrationItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -13662,9 +13662,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationMigrationItemsCreateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IEnableMigrationInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IMigrationItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationMigrationItemsCreateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IEnableMigrationInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IMigrationItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -13726,7 +13726,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationMigrationItemsCreate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IMigrationItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ReplicationMigrationItemsCreate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IMigrationItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -13843,7 +13843,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.MigrationItem.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.MigrationItem.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -13877,7 +13877,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationMigrationItemsCreate_Validate(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, string migrationItemName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IEnableMigrationInput body, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task ReplicationMigrationItemsCreate_Validate(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, string migrationItemName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IEnableMigrationInput body, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -13908,7 +13908,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </returns>
         public async global::System.Threading.Tasks.Task ReplicationMigrationItemsDelete(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, string migrationItemName, string deleteOption, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -13956,7 +13956,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </returns>
         public async global::System.Threading.Tasks.Task ReplicationMigrationItemsDeleteViaIdentity(global::System.String viaIdentity, string deleteOption, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -14195,9 +14195,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationMigrationItemsGet(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, string migrationItemName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IMigrationItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationMigrationItemsGet(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, string migrationItemName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IMigrationItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -14240,9 +14240,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationMigrationItemsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IMigrationItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationMigrationItemsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IMigrationItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -14300,7 +14300,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationMigrationItemsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IMigrationItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ReplicationMigrationItemsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IMigrationItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -14318,7 +14318,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.MigrationItem.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.MigrationItem.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -14377,9 +14377,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationMigrationItemsList(string resourceName, string resourceGroupName, string subscriptionId, string skipToken, string takeToken, string Filter, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IMigrationItemCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationMigrationItemsList(string resourceName, string resourceGroupName, string subscriptionId, string skipToken, string takeToken, string Filter, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IMigrationItemCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -14430,9 +14430,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationMigrationItemsListByReplicationProtectionContainers(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, string skipToken, string takeToken, string Filter, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IMigrationItemCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationMigrationItemsListByReplicationProtectionContainers(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, string skipToken, string takeToken, string Filter, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IMigrationItemCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -14483,9 +14483,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationMigrationItemsListByReplicationProtectionContainersViaIdentity(global::System.String viaIdentity, string skipToken, string takeToken, string Filter, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IMigrationItemCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationMigrationItemsListByReplicationProtectionContainersViaIdentity(global::System.String viaIdentity, string skipToken, string takeToken, string Filter, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IMigrationItemCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -14549,7 +14549,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationMigrationItemsListByReplicationProtectionContainers_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IMigrationItemCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ReplicationMigrationItemsListByReplicationProtectionContainers_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IMigrationItemCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -14567,7 +14567,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.MigrationItemCollection.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.MigrationItemCollection.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -14628,9 +14628,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationMigrationItemsListViaIdentity(global::System.String viaIdentity, string skipToken, string takeToken, string Filter, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IMigrationItemCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationMigrationItemsListViaIdentity(global::System.String viaIdentity, string skipToken, string takeToken, string Filter, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IMigrationItemCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -14686,7 +14686,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationMigrationItemsList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IMigrationItemCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ReplicationMigrationItemsList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IMigrationItemCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -14704,7 +14704,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.MigrationItemCollection.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.MigrationItemCollection.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -14764,9 +14764,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationMigrationItemsMigrate(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, string migrationItemName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IMigrateInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IMigrationItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationMigrationItemsMigrate(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, string migrationItemName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IMigrateInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IMigrationItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -14815,9 +14815,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationMigrationItemsMigrateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IMigrateInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IMigrationItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationMigrationItemsMigrateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IMigrateInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IMigrationItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -14880,7 +14880,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationMigrationItemsMigrate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IMigrationItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ReplicationMigrationItemsMigrate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IMigrationItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -14998,7 +14998,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.MigrationItem.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.MigrationItem.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -15032,7 +15032,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationMigrationItemsMigrate_Validate(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, string migrationItemName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IMigrateInput body, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task ReplicationMigrationItemsMigrate_Validate(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, string migrationItemName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IMigrateInput body, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -15061,9 +15061,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationMigrationItemsPauseReplication(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, string migrationItemName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IPauseReplicationInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IMigrationItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationMigrationItemsPauseReplication(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, string migrationItemName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IPauseReplicationInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IMigrationItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -15112,9 +15112,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationMigrationItemsPauseReplicationViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IPauseReplicationInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IMigrationItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationMigrationItemsPauseReplicationViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IPauseReplicationInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IMigrationItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -15179,7 +15179,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationMigrationItemsPauseReplication_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IMigrationItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ReplicationMigrationItemsPauseReplication_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IMigrationItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -15297,7 +15297,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.MigrationItem.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.MigrationItem.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -15331,7 +15331,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationMigrationItemsPauseReplication_Validate(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, string migrationItemName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IPauseReplicationInput body, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task ReplicationMigrationItemsPauseReplication_Validate(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, string migrationItemName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IPauseReplicationInput body, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -15360,9 +15360,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationMigrationItemsResumeReplication(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, string migrationItemName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IResumeReplicationInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IMigrationItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationMigrationItemsResumeReplication(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, string migrationItemName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IResumeReplicationInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IMigrationItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -15411,9 +15411,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationMigrationItemsResumeReplicationViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IResumeReplicationInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IMigrationItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationMigrationItemsResumeReplicationViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IResumeReplicationInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IMigrationItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -15478,7 +15478,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationMigrationItemsResumeReplication_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IMigrationItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ReplicationMigrationItemsResumeReplication_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IMigrationItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -15596,7 +15596,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.MigrationItem.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.MigrationItem.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -15630,7 +15630,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationMigrationItemsResumeReplication_Validate(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, string migrationItemName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IResumeReplicationInput body, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task ReplicationMigrationItemsResumeReplication_Validate(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, string migrationItemName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IResumeReplicationInput body, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -15659,9 +15659,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationMigrationItemsResync(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, string migrationItemName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IResyncInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IMigrationItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationMigrationItemsResync(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, string migrationItemName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IResyncInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IMigrationItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -15710,9 +15710,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationMigrationItemsResyncViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IResyncInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IMigrationItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationMigrationItemsResyncViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IResyncInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IMigrationItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -15775,7 +15775,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationMigrationItemsResync_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IMigrationItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ReplicationMigrationItemsResync_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IMigrationItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -15893,7 +15893,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.MigrationItem.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.MigrationItem.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -15927,7 +15927,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationMigrationItemsResync_Validate(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, string migrationItemName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IResyncInput body, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task ReplicationMigrationItemsResync_Validate(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, string migrationItemName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IResyncInput body, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -15956,9 +15956,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationMigrationItemsTestMigrate(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, string migrationItemName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.ITestMigrateInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IMigrationItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationMigrationItemsTestMigrate(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, string migrationItemName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.ITestMigrateInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IMigrationItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -16012,9 +16012,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationMigrationItemsTestMigrateCleanup(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, string migrationItemName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.ITestMigrateCleanupInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IMigrationItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationMigrationItemsTestMigrateCleanup(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, string migrationItemName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.ITestMigrateCleanupInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IMigrationItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -16063,9 +16063,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationMigrationItemsTestMigrateCleanupViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.ITestMigrateCleanupInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IMigrationItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationMigrationItemsTestMigrateCleanupViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.ITestMigrateCleanupInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IMigrationItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -16130,7 +16130,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationMigrationItemsTestMigrateCleanup_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IMigrationItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ReplicationMigrationItemsTestMigrateCleanup_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IMigrationItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -16248,7 +16248,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.MigrationItem.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.MigrationItem.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -16282,7 +16282,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationMigrationItemsTestMigrateCleanup_Validate(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, string migrationItemName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.ITestMigrateCleanupInput body, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task ReplicationMigrationItemsTestMigrateCleanup_Validate(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, string migrationItemName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.ITestMigrateCleanupInput body, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -16306,9 +16306,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationMigrationItemsTestMigrateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.ITestMigrateInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IMigrationItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationMigrationItemsTestMigrateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.ITestMigrateInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IMigrationItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -16373,7 +16373,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationMigrationItemsTestMigrate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IMigrationItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ReplicationMigrationItemsTestMigrate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IMigrationItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -16491,7 +16491,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.MigrationItem.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.MigrationItem.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -16525,7 +16525,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationMigrationItemsTestMigrate_Validate(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, string migrationItemName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.ITestMigrateInput body, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task ReplicationMigrationItemsTestMigrate_Validate(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, string migrationItemName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.ITestMigrateInput body, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -16554,9 +16554,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationMigrationItemsUpdate(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, string migrationItemName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IUpdateMigrationItemInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IMigrationItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationMigrationItemsUpdate(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, string migrationItemName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IUpdateMigrationItemInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IMigrationItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -16604,9 +16604,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationMigrationItemsUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IUpdateMigrationItemInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IMigrationItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationMigrationItemsUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IUpdateMigrationItemInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IMigrationItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -16668,7 +16668,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationMigrationItemsUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IMigrationItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ReplicationMigrationItemsUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IMigrationItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -16785,7 +16785,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.MigrationItem.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.MigrationItem.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -16819,7 +16819,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationMigrationItemsUpdate_Validate(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, string migrationItemName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IUpdateMigrationItemInput body, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task ReplicationMigrationItemsUpdate_Validate(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, string migrationItemName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IUpdateMigrationItemInput body, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -16848,9 +16848,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationNetworkMappingsCreate(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string networkName, string networkMappingName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.ICreateNetworkMappingInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.INetworkMapping>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationNetworkMappingsCreate(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string networkName, string networkMappingName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.ICreateNetworkMappingInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.INetworkMapping>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -16898,9 +16898,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationNetworkMappingsCreateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.ICreateNetworkMappingInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.INetworkMapping>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationNetworkMappingsCreateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.ICreateNetworkMappingInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.INetworkMapping>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -16962,7 +16962,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationNetworkMappingsCreate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.INetworkMapping>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ReplicationNetworkMappingsCreate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.INetworkMapping>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -17079,7 +17079,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.NetworkMapping.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.NetworkMapping.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -17113,7 +17113,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationNetworkMappingsCreate_Validate(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string networkName, string networkMappingName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.ICreateNetworkMappingInput body, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task ReplicationNetworkMappingsCreate_Validate(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string networkName, string networkMappingName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.ICreateNetworkMappingInput body, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -17143,7 +17143,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </returns>
         public async global::System.Threading.Tasks.Task ReplicationNetworkMappingsDelete(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string networkName, string networkMappingName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -17188,7 +17188,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </returns>
         public async global::System.Threading.Tasks.Task ReplicationNetworkMappingsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -17423,9 +17423,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationNetworkMappingsGet(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string networkName, string networkMappingName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.INetworkMapping>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationNetworkMappingsGet(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string networkName, string networkMappingName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.INetworkMapping>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -17468,9 +17468,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationNetworkMappingsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.INetworkMapping>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationNetworkMappingsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.INetworkMapping>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -17528,7 +17528,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationNetworkMappingsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.INetworkMapping>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ReplicationNetworkMappingsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.INetworkMapping>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -17546,7 +17546,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.NetworkMapping.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.NetworkMapping.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -17602,9 +17602,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationNetworkMappingsList(string resourceName, string resourceGroupName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.INetworkMappingCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationNetworkMappingsList(string resourceName, string resourceGroupName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.INetworkMappingCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -17646,9 +17646,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationNetworkMappingsListByReplicationNetworks(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string networkName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.INetworkMappingCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationNetworkMappingsListByReplicationNetworks(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string networkName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.INetworkMappingCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -17690,9 +17690,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationNetworkMappingsListByReplicationNetworksViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.INetworkMappingCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationNetworkMappingsListByReplicationNetworksViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.INetworkMappingCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -17750,7 +17750,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationNetworkMappingsListByReplicationNetworks_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.INetworkMappingCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ReplicationNetworkMappingsListByReplicationNetworks_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.INetworkMappingCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -17768,7 +17768,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.NetworkMappingCollection.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.NetworkMappingCollection.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -17820,9 +17820,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationNetworkMappingsListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.INetworkMappingCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationNetworkMappingsListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.INetworkMappingCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -17872,7 +17872,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationNetworkMappingsList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.INetworkMappingCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ReplicationNetworkMappingsList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.INetworkMappingCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -17890,7 +17890,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.NetworkMappingCollection.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.NetworkMappingCollection.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -17944,9 +17944,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationNetworkMappingsUpdate(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string networkName, string networkMappingName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IUpdateNetworkMappingInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.INetworkMapping>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationNetworkMappingsUpdate(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string networkName, string networkMappingName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IUpdateNetworkMappingInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.INetworkMapping>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -17994,9 +17994,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationNetworkMappingsUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IUpdateNetworkMappingInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.INetworkMapping>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationNetworkMappingsUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IUpdateNetworkMappingInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.INetworkMapping>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -18058,7 +18058,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationNetworkMappingsUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.INetworkMapping>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ReplicationNetworkMappingsUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.INetworkMapping>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -18175,7 +18175,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.NetworkMapping.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.NetworkMapping.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -18209,7 +18209,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationNetworkMappingsUpdate_Validate(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string networkName, string networkMappingName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IUpdateNetworkMappingInput body, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task ReplicationNetworkMappingsUpdate_Validate(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string networkName, string networkMappingName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IUpdateNetworkMappingInput body, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -18236,9 +18236,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationNetworksGet(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string networkName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.INetwork>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationNetworksGet(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string networkName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.INetwork>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -18279,9 +18279,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationNetworksGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.INetwork>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationNetworksGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.INetwork>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -18336,7 +18336,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationNetworksGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.INetwork>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ReplicationNetworksGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.INetwork>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -18354,7 +18354,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.Network.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.Network.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -18408,9 +18408,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationNetworksList(string resourceName, string resourceGroupName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.INetworkCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationNetworksList(string resourceName, string resourceGroupName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.INetworkCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -18451,9 +18451,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationNetworksListByReplicationFabrics(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.INetworkCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationNetworksListByReplicationFabrics(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.INetworkCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -18493,9 +18493,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationNetworksListByReplicationFabricsViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.INetworkCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationNetworksListByReplicationFabricsViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.INetworkCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -18550,7 +18550,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationNetworksListByReplicationFabrics_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.INetworkCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ReplicationNetworksListByReplicationFabrics_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.INetworkCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -18568,7 +18568,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.NetworkCollection.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.NetworkCollection.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -18618,9 +18618,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationNetworksListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.INetworkCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationNetworksListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.INetworkCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -18670,7 +18670,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationNetworksList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.INetworkCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ReplicationNetworksList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.INetworkCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -18688,7 +18688,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.NetworkCollection.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.NetworkCollection.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -18740,9 +18740,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationPoliciesCreate(string resourceName, string resourceGroupName, string subscriptionId, string policyName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.ICreatePolicyInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IPolicy>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationPoliciesCreate(string resourceName, string resourceGroupName, string subscriptionId, string policyName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.ICreatePolicyInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IPolicy>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -18786,9 +18786,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationPoliciesCreateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.ICreatePolicyInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IPolicy>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationPoliciesCreateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.ICreatePolicyInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IPolicy>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -18844,7 +18844,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationPoliciesCreate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IPolicy>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ReplicationPoliciesCreate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IPolicy>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -18961,7 +18961,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.Policy.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.Policy.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -18993,7 +18993,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationPoliciesCreate_Validate(string resourceName, string resourceGroupName, string subscriptionId, string policyName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.ICreatePolicyInput body, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task ReplicationPoliciesCreate_Validate(string resourceName, string resourceGroupName, string subscriptionId, string policyName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.ICreatePolicyInput body, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -19019,7 +19019,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </returns>
         public async global::System.Threading.Tasks.Task ReplicationPoliciesDelete(string resourceName, string resourceGroupName, string subscriptionId, string policyName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -19060,7 +19060,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </returns>
         public async global::System.Threading.Tasks.Task ReplicationPoliciesDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -19283,9 +19283,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationPoliciesGet(string resourceName, string resourceGroupName, string subscriptionId, string policyName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IPolicy>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationPoliciesGet(string resourceName, string resourceGroupName, string subscriptionId, string policyName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IPolicy>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -19324,9 +19324,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationPoliciesGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IPolicy>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationPoliciesGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IPolicy>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -19378,7 +19378,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationPoliciesGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IPolicy>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ReplicationPoliciesGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IPolicy>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -19396,7 +19396,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.Policy.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.Policy.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -19448,9 +19448,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationPoliciesList(string resourceName, string resourceGroupName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IPolicyCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationPoliciesList(string resourceName, string resourceGroupName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IPolicyCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -19488,9 +19488,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationPoliciesListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IPolicyCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationPoliciesListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IPolicyCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -19540,7 +19540,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationPoliciesList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IPolicyCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ReplicationPoliciesList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IPolicyCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -19558,7 +19558,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.PolicyCollection.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.PolicyCollection.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -19610,9 +19610,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationPoliciesUpdate(string resourceName, string resourceGroupName, string subscriptionId, string policyName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IUpdatePolicyInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IPolicy>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationPoliciesUpdate(string resourceName, string resourceGroupName, string subscriptionId, string policyName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IUpdatePolicyInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IPolicy>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -19656,9 +19656,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationPoliciesUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IUpdatePolicyInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IPolicy>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationPoliciesUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IUpdatePolicyInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IPolicy>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -19714,7 +19714,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationPoliciesUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IPolicy>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ReplicationPoliciesUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IPolicy>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -19831,7 +19831,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.Policy.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.Policy.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -19863,7 +19863,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationPoliciesUpdate_Validate(string resourceName, string resourceGroupName, string subscriptionId, string policyName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IUpdatePolicyInput body, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task ReplicationPoliciesUpdate_Validate(string resourceName, string resourceGroupName, string subscriptionId, string policyName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IUpdatePolicyInput body, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -19889,9 +19889,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationProtectableItemsGet(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, string protectableItemName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IProtectableItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationProtectableItemsGet(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, string protectableItemName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IProtectableItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -19934,9 +19934,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationProtectableItemsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IProtectableItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationProtectableItemsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IProtectableItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -19994,7 +19994,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationProtectableItemsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IProtectableItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ReplicationProtectableItemsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IProtectableItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -20012,7 +20012,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.ProtectableItem.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.ProtectableItem.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -20073,9 +20073,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationProtectableItemsListByReplicationProtectionContainers(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, string Filter, string Take, string SkipToken, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IProtectableItemCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationProtectableItemsListByReplicationProtectionContainers(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, string Filter, string Take, string SkipToken, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IProtectableItemCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -20126,9 +20126,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationProtectableItemsListByReplicationProtectionContainersViaIdentity(global::System.String viaIdentity, string Filter, string Take, string SkipToken, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IProtectableItemCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationProtectableItemsListByReplicationProtectionContainersViaIdentity(global::System.String viaIdentity, string Filter, string Take, string SkipToken, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IProtectableItemCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -20192,7 +20192,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationProtectableItemsListByReplicationProtectionContainers_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IProtectableItemCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ReplicationProtectableItemsListByReplicationProtectionContainers_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IProtectableItemCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -20210,7 +20210,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.ProtectableItemCollection.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.ProtectableItemCollection.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -20274,9 +20274,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationProtectedItemsAddDisks(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, string replicatedProtectedItemName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IAddDisksInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IReplicationProtectedItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationProtectedItemsAddDisks(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, string replicatedProtectedItemName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IAddDisksInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IReplicationProtectedItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -20325,9 +20325,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationProtectedItemsAddDisksViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IAddDisksInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IReplicationProtectedItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationProtectedItemsAddDisksViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IAddDisksInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IReplicationProtectedItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -20390,7 +20390,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationProtectedItemsAddDisks_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IReplicationProtectedItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ReplicationProtectedItemsAddDisks_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IReplicationProtectedItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -20508,7 +20508,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.ReplicationProtectedItem.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.ReplicationProtectedItem.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -20542,7 +20542,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationProtectedItemsAddDisks_Validate(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, string replicatedProtectedItemName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IAddDisksInput body, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task ReplicationProtectedItemsAddDisks_Validate(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, string replicatedProtectedItemName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IAddDisksInput body, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -20573,9 +20573,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationProtectedItemsApplyRecoveryPoint(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, string replicatedProtectedItemName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IApplyRecoveryPointInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IReplicationProtectedItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationProtectedItemsApplyRecoveryPoint(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, string replicatedProtectedItemName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IApplyRecoveryPointInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IReplicationProtectedItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -20626,9 +20626,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationProtectedItemsApplyRecoveryPointViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IApplyRecoveryPointInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IReplicationProtectedItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationProtectedItemsApplyRecoveryPointViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IApplyRecoveryPointInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IReplicationProtectedItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -20693,7 +20693,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationProtectedItemsApplyRecoveryPoint_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IReplicationProtectedItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ReplicationProtectedItemsApplyRecoveryPoint_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IReplicationProtectedItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -20811,7 +20811,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.ReplicationProtectedItem.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.ReplicationProtectedItem.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -20845,7 +20845,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationProtectedItemsApplyRecoveryPoint_Validate(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, string replicatedProtectedItemName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IApplyRecoveryPointInput body, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task ReplicationProtectedItemsApplyRecoveryPoint_Validate(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, string replicatedProtectedItemName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IApplyRecoveryPointInput body, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -20874,9 +20874,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationProtectedItemsCreate(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, string replicatedProtectedItemName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IEnableProtectionInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IReplicationProtectedItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationProtectedItemsCreate(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, string replicatedProtectedItemName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IEnableProtectionInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IReplicationProtectedItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -20924,9 +20924,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationProtectedItemsCreateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IEnableProtectionInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IReplicationProtectedItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationProtectedItemsCreateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IEnableProtectionInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IReplicationProtectedItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -20988,7 +20988,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationProtectedItemsCreate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IReplicationProtectedItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ReplicationProtectedItemsCreate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IReplicationProtectedItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -21105,7 +21105,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.ReplicationProtectedItem.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.ReplicationProtectedItem.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -21139,7 +21139,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationProtectedItemsCreate_Validate(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, string replicatedProtectedItemName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IEnableProtectionInput body, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task ReplicationProtectedItemsCreate_Validate(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, string replicatedProtectedItemName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IEnableProtectionInput body, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -21170,9 +21170,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationProtectedItemsDelete(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, string replicatedProtectedItemName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IDisableProtectionInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationProtectedItemsDelete(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, string replicatedProtectedItemName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IDisableProtectionInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -21223,9 +21223,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationProtectedItemsDeleteViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IDisableProtectionInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationProtectedItemsDeleteViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IDisableProtectionInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -21440,7 +21440,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationProtectedItemsDelete_Validate(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, string replicatedProtectedItemName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IDisableProtectionInput body, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task ReplicationProtectedItemsDelete_Validate(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, string replicatedProtectedItemName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IDisableProtectionInput body, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -21468,9 +21468,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationProtectedItemsFailoverCancel(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, string replicatedProtectedItemName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IReplicationProtectedItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationProtectedItemsFailoverCancel(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, string replicatedProtectedItemName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IReplicationProtectedItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -21514,9 +21514,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationProtectedItemsFailoverCancelViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IReplicationProtectedItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationProtectedItemsFailoverCancelViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IReplicationProtectedItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -21577,7 +21577,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationProtectedItemsFailoverCancel_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IReplicationProtectedItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ReplicationProtectedItemsFailoverCancel_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IReplicationProtectedItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -21695,7 +21695,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.ReplicationProtectedItem.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.ReplicationProtectedItem.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -21754,9 +21754,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationProtectedItemsFailoverCommit(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, string replicatedProtectedItemName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IReplicationProtectedItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationProtectedItemsFailoverCommit(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, string replicatedProtectedItemName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IReplicationProtectedItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -21800,9 +21800,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationProtectedItemsFailoverCommitViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IReplicationProtectedItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationProtectedItemsFailoverCommitViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IReplicationProtectedItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -21863,7 +21863,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationProtectedItemsFailoverCommit_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IReplicationProtectedItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ReplicationProtectedItemsFailoverCommit_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IReplicationProtectedItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -21981,7 +21981,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.ReplicationProtectedItem.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.ReplicationProtectedItem.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -22040,9 +22040,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationProtectedItemsGet(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, string replicatedProtectedItemName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IReplicationProtectedItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationProtectedItemsGet(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, string replicatedProtectedItemName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IReplicationProtectedItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -22085,9 +22085,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationProtectedItemsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IReplicationProtectedItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationProtectedItemsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IReplicationProtectedItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -22145,7 +22145,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationProtectedItemsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IReplicationProtectedItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ReplicationProtectedItemsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IReplicationProtectedItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -22163,7 +22163,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.ReplicationProtectedItem.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.ReplicationProtectedItem.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -22221,9 +22221,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationProtectedItemsList(string resourceName, string resourceGroupName, string subscriptionId, string skipToken, string Filter, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IReplicationProtectedItemCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationProtectedItemsList(string resourceName, string resourceGroupName, string subscriptionId, string skipToken, string Filter, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IReplicationProtectedItemCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -22269,9 +22269,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationProtectedItemsListByReplicationProtectionContainers(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IReplicationProtectedItemCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationProtectedItemsListByReplicationProtectionContainers(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IReplicationProtectedItemCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -22313,9 +22313,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationProtectedItemsListByReplicationProtectionContainersViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IReplicationProtectedItemCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationProtectedItemsListByReplicationProtectionContainersViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IReplicationProtectedItemCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -22373,7 +22373,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationProtectedItemsListByReplicationProtectionContainers_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IReplicationProtectedItemCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ReplicationProtectedItemsListByReplicationProtectionContainers_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IReplicationProtectedItemCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -22391,7 +22391,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.ReplicationProtectedItemCollection.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.ReplicationProtectedItemCollection.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -22445,9 +22445,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationProtectedItemsListViaIdentity(global::System.String viaIdentity, string skipToken, string Filter, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IReplicationProtectedItemCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationProtectedItemsListViaIdentity(global::System.String viaIdentity, string skipToken, string Filter, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IReplicationProtectedItemCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -22501,7 +22501,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationProtectedItemsList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IReplicationProtectedItemCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ReplicationProtectedItemsList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IReplicationProtectedItemCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -22519,7 +22519,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.ReplicationProtectedItemCollection.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.ReplicationProtectedItemCollection.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -22577,9 +22577,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationProtectedItemsPlannedFailover(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, string replicatedProtectedItemName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IPlannedFailoverInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IReplicationProtectedItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationProtectedItemsPlannedFailover(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, string replicatedProtectedItemName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IPlannedFailoverInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IReplicationProtectedItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -22628,9 +22628,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationProtectedItemsPlannedFailoverViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IPlannedFailoverInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IReplicationProtectedItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationProtectedItemsPlannedFailoverViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IPlannedFailoverInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IReplicationProtectedItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -22695,7 +22695,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationProtectedItemsPlannedFailover_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IReplicationProtectedItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ReplicationProtectedItemsPlannedFailover_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IReplicationProtectedItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -22813,7 +22813,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.ReplicationProtectedItem.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.ReplicationProtectedItem.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -22847,7 +22847,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationProtectedItemsPlannedFailover_Validate(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, string replicatedProtectedItemName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IPlannedFailoverInput body, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task ReplicationProtectedItemsPlannedFailover_Validate(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, string replicatedProtectedItemName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IPlannedFailoverInput body, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -22880,7 +22880,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </returns>
         public async global::System.Threading.Tasks.Task ReplicationProtectedItemsPurge(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, string replicatedProtectedItemName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -22928,7 +22928,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </returns>
         public async global::System.Threading.Tasks.Task ReplicationProtectedItemsPurgeViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -23164,9 +23164,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationProtectedItemsRemoveDisks(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, string replicatedProtectedItemName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IRemoveDisksInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IReplicationProtectedItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationProtectedItemsRemoveDisks(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, string replicatedProtectedItemName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IRemoveDisksInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IReplicationProtectedItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -23215,9 +23215,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationProtectedItemsRemoveDisksViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IRemoveDisksInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IReplicationProtectedItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationProtectedItemsRemoveDisksViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IRemoveDisksInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IReplicationProtectedItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -23282,7 +23282,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationProtectedItemsRemoveDisks_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IReplicationProtectedItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ReplicationProtectedItemsRemoveDisks_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IReplicationProtectedItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -23400,7 +23400,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.ReplicationProtectedItem.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.ReplicationProtectedItem.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -23434,7 +23434,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationProtectedItemsRemoveDisks_Validate(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, string replicatedProtectedItemName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IRemoveDisksInput body, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task ReplicationProtectedItemsRemoveDisks_Validate(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, string replicatedProtectedItemName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IRemoveDisksInput body, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -23464,9 +23464,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationProtectedItemsRepairReplication(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, string replicatedProtectedItemName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IReplicationProtectedItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationProtectedItemsRepairReplication(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, string replicatedProtectedItemName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IReplicationProtectedItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -23512,9 +23512,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationProtectedItemsRepairReplicationViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IReplicationProtectedItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationProtectedItemsRepairReplicationViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IReplicationProtectedItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -23575,7 +23575,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationProtectedItemsRepairReplication_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IReplicationProtectedItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ReplicationProtectedItemsRepairReplication_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IReplicationProtectedItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -23693,7 +23693,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.ReplicationProtectedItem.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.ReplicationProtectedItem.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -23755,9 +23755,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationProtectedItemsReprotect(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, string replicatedProtectedItemName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IReverseReplicationInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IReplicationProtectedItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationProtectedItemsReprotect(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, string replicatedProtectedItemName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IReverseReplicationInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IReplicationProtectedItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -23808,9 +23808,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationProtectedItemsReprotectViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IReverseReplicationInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IReplicationProtectedItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationProtectedItemsReprotectViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IReverseReplicationInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IReplicationProtectedItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -23873,7 +23873,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationProtectedItemsReprotect_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IReplicationProtectedItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ReplicationProtectedItemsReprotect_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IReplicationProtectedItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -23991,7 +23991,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.ReplicationProtectedItem.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.ReplicationProtectedItem.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -24025,7 +24025,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationProtectedItemsReprotect_Validate(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, string replicatedProtectedItemName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IReverseReplicationInput body, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task ReplicationProtectedItemsReprotect_Validate(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, string replicatedProtectedItemName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IReverseReplicationInput body, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -24054,9 +24054,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationProtectedItemsResolveHealthErrors(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, string replicatedProtectedItemName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IResolveHealthInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IReplicationProtectedItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationProtectedItemsResolveHealthErrors(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, string replicatedProtectedItemName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IResolveHealthInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IReplicationProtectedItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -24105,9 +24105,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationProtectedItemsResolveHealthErrorsViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IResolveHealthInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IReplicationProtectedItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationProtectedItemsResolveHealthErrorsViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IResolveHealthInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IReplicationProtectedItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -24172,7 +24172,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationProtectedItemsResolveHealthErrors_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IReplicationProtectedItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ReplicationProtectedItemsResolveHealthErrors_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IReplicationProtectedItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -24290,7 +24290,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.ReplicationProtectedItem.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.ReplicationProtectedItem.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -24324,7 +24324,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationProtectedItemsResolveHealthErrors_Validate(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, string replicatedProtectedItemName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IResolveHealthInput body, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task ReplicationProtectedItemsResolveHealthErrors_Validate(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, string replicatedProtectedItemName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IResolveHealthInput body, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -24353,9 +24353,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationProtectedItemsSwitchProvider(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, string replicatedProtectedItemName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.ISwitchProviderInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IReplicationProtectedItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationProtectedItemsSwitchProvider(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, string replicatedProtectedItemName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.ISwitchProviderInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IReplicationProtectedItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -24404,9 +24404,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationProtectedItemsSwitchProviderViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.ISwitchProviderInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IReplicationProtectedItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationProtectedItemsSwitchProviderViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.ISwitchProviderInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IReplicationProtectedItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -24471,7 +24471,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationProtectedItemsSwitchProvider_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IReplicationProtectedItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ReplicationProtectedItemsSwitchProvider_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IReplicationProtectedItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -24586,7 +24586,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.ReplicationProtectedItem.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.ReplicationProtectedItem.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -24620,7 +24620,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationProtectedItemsSwitchProvider_Validate(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, string replicatedProtectedItemName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.ISwitchProviderInput body, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task ReplicationProtectedItemsSwitchProvider_Validate(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, string replicatedProtectedItemName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.ISwitchProviderInput body, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -24649,9 +24649,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationProtectedItemsTestFailover(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, string replicatedProtectedItemName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.ITestFailoverInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IReplicationProtectedItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationProtectedItemsTestFailover(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, string replicatedProtectedItemName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.ITestFailoverInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IReplicationProtectedItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -24705,9 +24705,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationProtectedItemsTestFailoverCleanup(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, string replicatedProtectedItemName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.ITestFailoverCleanupInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IReplicationProtectedItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationProtectedItemsTestFailoverCleanup(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, string replicatedProtectedItemName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.ITestFailoverCleanupInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IReplicationProtectedItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -24756,9 +24756,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationProtectedItemsTestFailoverCleanupViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.ITestFailoverCleanupInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IReplicationProtectedItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationProtectedItemsTestFailoverCleanupViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.ITestFailoverCleanupInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IReplicationProtectedItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -24823,7 +24823,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationProtectedItemsTestFailoverCleanup_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IReplicationProtectedItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ReplicationProtectedItemsTestFailoverCleanup_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IReplicationProtectedItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -24941,7 +24941,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.ReplicationProtectedItem.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.ReplicationProtectedItem.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -24975,7 +24975,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationProtectedItemsTestFailoverCleanup_Validate(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, string replicatedProtectedItemName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.ITestFailoverCleanupInput body, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task ReplicationProtectedItemsTestFailoverCleanup_Validate(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, string replicatedProtectedItemName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.ITestFailoverCleanupInput body, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -24999,9 +24999,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationProtectedItemsTestFailoverViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.ITestFailoverInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IReplicationProtectedItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationProtectedItemsTestFailoverViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.ITestFailoverInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IReplicationProtectedItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -25066,7 +25066,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationProtectedItemsTestFailover_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IReplicationProtectedItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ReplicationProtectedItemsTestFailover_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IReplicationProtectedItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -25184,7 +25184,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.ReplicationProtectedItem.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.ReplicationProtectedItem.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -25218,7 +25218,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationProtectedItemsTestFailover_Validate(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, string replicatedProtectedItemName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.ITestFailoverInput body, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task ReplicationProtectedItemsTestFailover_Validate(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, string replicatedProtectedItemName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.ITestFailoverInput body, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -25247,9 +25247,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationProtectedItemsUnplannedFailover(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, string replicatedProtectedItemName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IUnplannedFailoverInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IReplicationProtectedItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationProtectedItemsUnplannedFailover(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, string replicatedProtectedItemName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IUnplannedFailoverInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IReplicationProtectedItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -25298,9 +25298,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationProtectedItemsUnplannedFailoverViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IUnplannedFailoverInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IReplicationProtectedItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationProtectedItemsUnplannedFailoverViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IUnplannedFailoverInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IReplicationProtectedItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -25365,7 +25365,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationProtectedItemsUnplannedFailover_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IReplicationProtectedItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ReplicationProtectedItemsUnplannedFailover_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IReplicationProtectedItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -25483,7 +25483,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.ReplicationProtectedItem.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.ReplicationProtectedItem.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -25517,7 +25517,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationProtectedItemsUnplannedFailover_Validate(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, string replicatedProtectedItemName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IUnplannedFailoverInput body, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task ReplicationProtectedItemsUnplannedFailover_Validate(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, string replicatedProtectedItemName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IUnplannedFailoverInput body, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -25548,9 +25548,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationProtectedItemsUpdate(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, string replicatedProtectedItemName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IUpdateReplicationProtectedItemInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IReplicationProtectedItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationProtectedItemsUpdate(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, string replicatedProtectedItemName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IUpdateReplicationProtectedItemInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IReplicationProtectedItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -25603,9 +25603,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationProtectedItemsUpdateAppliance(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, string replicatedProtectedItemName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IUpdateApplianceForReplicationProtectedItemInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IReplicationProtectedItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationProtectedItemsUpdateAppliance(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, string replicatedProtectedItemName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IUpdateApplianceForReplicationProtectedItemInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IReplicationProtectedItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -25654,9 +25654,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationProtectedItemsUpdateApplianceViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IUpdateApplianceForReplicationProtectedItemInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IReplicationProtectedItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationProtectedItemsUpdateApplianceViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IUpdateApplianceForReplicationProtectedItemInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IReplicationProtectedItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -25721,7 +25721,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationProtectedItemsUpdateAppliance_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IReplicationProtectedItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ReplicationProtectedItemsUpdateAppliance_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IReplicationProtectedItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -25839,7 +25839,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.ReplicationProtectedItem.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.ReplicationProtectedItem.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -25873,7 +25873,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationProtectedItemsUpdateAppliance_Validate(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, string replicatedProtectedItemName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IUpdateApplianceForReplicationProtectedItemInput body, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task ReplicationProtectedItemsUpdateAppliance_Validate(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, string replicatedProtectedItemName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IUpdateApplianceForReplicationProtectedItemInput body, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -25897,7 +25897,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">The name of the fabric containing the protected item.</param>
         /// <param name="protectionContainerName">The name of the container containing the protected item.</param>
-        /// <param name="replicatedProtectedItemName">The name of the protected item on which the agent is to be updated.</param>
+        /// <param name="replicationProtectedItemName">The name of the protected item on which the agent is to be updated.</param>
         /// <param name="body">Request to update the mobility service on the protected item.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -25905,9 +25905,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationProtectedItemsUpdateMobilityService(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, string replicatedProtectedItemName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IUpdateMobilityServiceRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IReplicationProtectedItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationProtectedItemsUpdateMobilityService(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, string replicationProtectedItemName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IUpdateMobilityServiceRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IReplicationProtectedItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -25924,7 +25924,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         + "/replicationProtectionContainers/"
                         + global::System.Uri.EscapeDataString(protectionContainerName)
                         + "/replicationProtectedItems/"
-                        + global::System.Uri.EscapeDataString(replicatedProtectedItemName)
+                        + global::System.Uri.EscapeDataString(replicationProtectedItemName)
                         + "/updateMobilityService"
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
@@ -25959,18 +25959,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationProtectedItemsUpdateMobilityServiceViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IUpdateMobilityServiceRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IReplicationProtectedItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationProtectedItemsUpdateMobilityServiceViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IUpdateMobilityServiceRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IReplicationProtectedItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationProtectionContainers/(?<protectionContainerName>[^/]+)/replicationProtectedItems/(?<replicatedProtectedItemName>[^/]+)/updateMobilityService$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationProtectionContainers/(?<protectionContainerName>[^/]+)/replicationProtectedItems/(?<replicationProtectedItemName>[^/]+)/updateMobilityService$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
-                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectedItems/{replicatedProtectedItemName}/updateMobilityService'");
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectedItems/{replicationProtectedItemName}/updateMobilityService'");
                 }
 
                 // replace URI parameters with values from identity
@@ -25979,7 +25979,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                 var subscriptionId = _match.Groups["subscriptionId"].Value;
                 var fabricName = _match.Groups["fabricName"].Value;
                 var protectionContainerName = _match.Groups["protectionContainerName"].Value;
-                var replicatedProtectedItemName = _match.Groups["replicatedProtectedItemName"].Value;
+                var replicationProtectedItemName = _match.Groups["replicationProtectedItemName"].Value;
                 // construct URL
                 var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
                         "/subscriptions/"
@@ -25993,7 +25993,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         + "/replicationProtectionContainers/"
                         + protectionContainerName
                         + "/replicationProtectedItems/"
-                        + replicatedProtectedItemName
+                        + replicationProtectedItemName
                         + "/updateMobilityService"
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
@@ -26026,7 +26026,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationProtectedItemsUpdateMobilityService_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IReplicationProtectedItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ReplicationProtectedItemsUpdateMobilityService_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IReplicationProtectedItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -26039,7 +26039,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                     // this operation supports x-ms-long-running-operation
                     var _originalUri = request.RequestUri.AbsoluteUri;
-                    // declared final-state-via: location
+                    // declared final-state-via: default
                     var _finalUri = _response.GetFirstHeader(@"Location");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
@@ -26123,16 +26123,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                             continue;
                         }
                         // we are done polling, do a request on final target?
-                        // create a new request with the final uri
-                        request = request.CloneAndDispose(new global::System.Uri(_finalUri), Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Method.Get);
+                        if (!string.IsNullOrWhiteSpace(_finalUri))
+                        {
+                            // create a new request with the final uri
+                            request = request.CloneAndDispose(new global::System.Uri(_finalUri), Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Method.Get);
 
-                        // drop the old response
-                        _response?.Dispose();
+                            // drop the old response
+                            _response?.Dispose();
 
-                        // make the final call
-                        _response = await sender.SendAsync(request,  eventListener);
-                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                        break;
+                            // make the final call
+                            _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            break;
+                        }
                     }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
 
@@ -26141,7 +26144,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.ReplicationProtectedItem.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.ReplicationProtectedItem.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -26169,13 +26172,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <param name="subscriptionId">Azure Subscription Id in which migrate project was created.</param>
         /// <param name="fabricName">The name of the fabric containing the protected item.</param>
         /// <param name="protectionContainerName">The name of the container containing the protected item.</param>
-        /// <param name="replicatedProtectedItemName">The name of the protected item on which the agent is to be updated.</param>
+        /// <param name="replicationProtectedItemName">The name of the protected item on which the agent is to be updated.</param>
         /// <param name="body">Request to update the mobility service on the protected item.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationProtectedItemsUpdateMobilityService_Validate(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, string replicatedProtectedItemName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IUpdateMobilityServiceRequest body, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task ReplicationProtectedItemsUpdateMobilityService_Validate(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, string replicationProtectedItemName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IUpdateMobilityServiceRequest body, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -26184,7 +26187,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
                 await eventListener.AssertNotNull(nameof(fabricName),fabricName);
                 await eventListener.AssertNotNull(nameof(protectionContainerName),protectionContainerName);
-                await eventListener.AssertNotNull(nameof(replicatedProtectedItemName),replicatedProtectedItemName);
+                await eventListener.AssertNotNull(nameof(replicationProtectedItemName),replicationProtectedItemName);
                 await eventListener.AssertNotNull(nameof(body), body);
                 await eventListener.AssertObjectIsValid(nameof(body), body);
             }
@@ -26201,9 +26204,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationProtectedItemsUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IUpdateReplicationProtectedItemInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IReplicationProtectedItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationProtectedItemsUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IUpdateReplicationProtectedItemInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IReplicationProtectedItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -26265,7 +26268,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationProtectedItemsUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IReplicationProtectedItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ReplicationProtectedItemsUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IReplicationProtectedItem>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -26382,7 +26385,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.ReplicationProtectedItem.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.ReplicationProtectedItem.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -26416,7 +26419,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationProtectedItemsUpdate_Validate(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, string replicatedProtectedItemName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IUpdateReplicationProtectedItemInput body, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task ReplicationProtectedItemsUpdate_Validate(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, string replicatedProtectedItemName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IUpdateReplicationProtectedItemInput body, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -26445,9 +26448,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationProtectionContainerMappingsCreate(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, string mappingName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.ICreateProtectionContainerMappingInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IProtectionContainerMapping>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationProtectionContainerMappingsCreate(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, string mappingName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.ICreateProtectionContainerMappingInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IProtectionContainerMapping>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -26495,9 +26498,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationProtectionContainerMappingsCreateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.ICreateProtectionContainerMappingInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IProtectionContainerMapping>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationProtectionContainerMappingsCreateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.ICreateProtectionContainerMappingInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IProtectionContainerMapping>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -26561,7 +26564,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationProtectionContainerMappingsCreate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IProtectionContainerMapping>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ReplicationProtectionContainerMappingsCreate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IProtectionContainerMapping>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -26678,7 +26681,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.ProtectionContainerMapping.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.ProtectionContainerMapping.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -26712,7 +26715,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationProtectionContainerMappingsCreate_Validate(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, string mappingName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.ICreateProtectionContainerMappingInput body, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task ReplicationProtectionContainerMappingsCreate_Validate(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, string mappingName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.ICreateProtectionContainerMappingInput body, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -26741,9 +26744,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationProtectionContainerMappingsDelete(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, string mappingName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IRemoveProtectionContainerMappingInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationProtectionContainerMappingsDelete(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, string mappingName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IRemoveProtectionContainerMappingInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -26792,9 +26795,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationProtectionContainerMappingsDeleteViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IRemoveProtectionContainerMappingInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationProtectionContainerMappingsDeleteViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IRemoveProtectionContainerMappingInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -27011,7 +27014,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationProtectionContainerMappingsDelete_Validate(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, string mappingName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IRemoveProtectionContainerMappingInput body, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task ReplicationProtectionContainerMappingsDelete_Validate(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, string mappingName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IRemoveProtectionContainerMappingInput body, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -27039,9 +27042,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationProtectionContainerMappingsGet(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, string mappingName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IProtectionContainerMapping>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationProtectionContainerMappingsGet(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, string mappingName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IProtectionContainerMapping>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -27084,9 +27087,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationProtectionContainerMappingsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IProtectionContainerMapping>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationProtectionContainerMappingsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IProtectionContainerMapping>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -27146,7 +27149,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationProtectionContainerMappingsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IProtectionContainerMapping>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ReplicationProtectionContainerMappingsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IProtectionContainerMapping>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -27164,7 +27167,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.ProtectionContainerMapping.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.ProtectionContainerMapping.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -27220,9 +27223,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationProtectionContainerMappingsList(string resourceName, string resourceGroupName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IProtectionContainerMappingCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationProtectionContainerMappingsList(string resourceName, string resourceGroupName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IProtectionContainerMappingCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -27264,9 +27267,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationProtectionContainerMappingsListByReplicationProtectionContainers(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IProtectionContainerMappingCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationProtectionContainerMappingsListByReplicationProtectionContainers(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IProtectionContainerMappingCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -27308,9 +27311,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationProtectionContainerMappingsListByReplicationProtectionContainersViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IProtectionContainerMappingCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationProtectionContainerMappingsListByReplicationProtectionContainersViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IProtectionContainerMappingCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -27368,7 +27371,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationProtectionContainerMappingsListByReplicationProtectionContainers_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IProtectionContainerMappingCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ReplicationProtectionContainerMappingsListByReplicationProtectionContainers_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IProtectionContainerMappingCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -27386,7 +27389,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.ProtectionContainerMappingCollection.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.ProtectionContainerMappingCollection.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -27438,9 +27441,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationProtectionContainerMappingsListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IProtectionContainerMappingCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationProtectionContainerMappingsListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IProtectionContainerMappingCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -27492,7 +27495,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationProtectionContainerMappingsList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IProtectionContainerMappingCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ReplicationProtectionContainerMappingsList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IProtectionContainerMappingCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -27510,7 +27513,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.ProtectionContainerMappingCollection.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.ProtectionContainerMappingCollection.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -27565,7 +27568,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </returns>
         public async global::System.Threading.Tasks.Task ReplicationProtectionContainerMappingsPurge(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, string mappingName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -27610,7 +27613,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </returns>
         public async global::System.Threading.Tasks.Task ReplicationProtectionContainerMappingsPurgeViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -27848,9 +27851,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationProtectionContainerMappingsUpdate(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, string mappingName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IUpdateProtectionContainerMappingInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IProtectionContainerMapping>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationProtectionContainerMappingsUpdate(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, string mappingName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IUpdateProtectionContainerMappingInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IProtectionContainerMapping>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -27898,9 +27901,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationProtectionContainerMappingsUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IUpdateProtectionContainerMappingInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IProtectionContainerMapping>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationProtectionContainerMappingsUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IUpdateProtectionContainerMappingInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IProtectionContainerMapping>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -27964,7 +27967,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationProtectionContainerMappingsUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IProtectionContainerMapping>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ReplicationProtectionContainerMappingsUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IProtectionContainerMapping>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -28081,7 +28084,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.ProtectionContainerMapping.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.ProtectionContainerMapping.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -28115,7 +28118,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationProtectionContainerMappingsUpdate_Validate(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, string mappingName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IUpdateProtectionContainerMappingInput body, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task ReplicationProtectionContainerMappingsUpdate_Validate(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, string mappingName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IUpdateProtectionContainerMappingInput body, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -28143,9 +28146,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationProtectionContainersCreate(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.ICreateProtectionContainerInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IProtectionContainer>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationProtectionContainersCreate(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.ICreateProtectionContainerInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IProtectionContainer>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -28191,9 +28194,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationProtectionContainersCreateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.ICreateProtectionContainerInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IProtectionContainer>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationProtectionContainersCreateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.ICreateProtectionContainerInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IProtectionContainer>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -28254,7 +28257,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationProtectionContainersCreate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IProtectionContainer>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ReplicationProtectionContainersCreate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IProtectionContainer>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -28371,7 +28374,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.ProtectionContainer.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.ProtectionContainer.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -28404,7 +28407,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationProtectionContainersCreate_Validate(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.ICreateProtectionContainerInput body, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task ReplicationProtectionContainersCreate_Validate(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.ICreateProtectionContainerInput body, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -28432,7 +28435,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </returns>
         public async global::System.Threading.Tasks.Task ReplicationProtectionContainersDelete(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -28476,7 +28479,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </returns>
         public async global::System.Threading.Tasks.Task ReplicationProtectionContainersDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -28711,9 +28714,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationProtectionContainersDiscoverProtectableItem(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IDiscoverProtectableItemRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IProtectionContainer>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationProtectionContainersDiscoverProtectableItem(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IDiscoverProtectableItemRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IProtectionContainer>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -28762,9 +28765,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationProtectionContainersDiscoverProtectableItemViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IDiscoverProtectableItemRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IProtectionContainer>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationProtectionContainersDiscoverProtectableItemViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IDiscoverProtectableItemRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IProtectionContainer>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -28826,7 +28829,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationProtectionContainersDiscoverProtectableItem_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IProtectionContainer>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ReplicationProtectionContainersDiscoverProtectableItem_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IProtectionContainer>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -28944,7 +28947,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.ProtectionContainer.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.ProtectionContainer.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -28977,7 +28980,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationProtectionContainersDiscoverProtectableItem_Validate(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IDiscoverProtectableItemRequest body, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task ReplicationProtectionContainersDiscoverProtectableItem_Validate(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IDiscoverProtectableItemRequest body, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -29003,9 +29006,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationProtectionContainersGet(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IProtectionContainer>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationProtectionContainersGet(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IProtectionContainer>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -29046,9 +29049,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationProtectionContainersGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IProtectionContainer>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationProtectionContainersGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IProtectionContainer>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -29103,7 +29106,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationProtectionContainersGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IProtectionContainer>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ReplicationProtectionContainersGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IProtectionContainer>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -29121,7 +29124,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.ProtectionContainer.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.ProtectionContainer.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -29175,9 +29178,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationProtectionContainersList(string resourceName, string resourceGroupName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IProtectionContainerCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationProtectionContainersList(string resourceName, string resourceGroupName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IProtectionContainerCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -29218,9 +29221,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationProtectionContainersListByReplicationFabrics(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IProtectionContainerCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationProtectionContainersListByReplicationFabrics(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IProtectionContainerCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -29260,9 +29263,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationProtectionContainersListByReplicationFabricsViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IProtectionContainerCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationProtectionContainersListByReplicationFabricsViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IProtectionContainerCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -29317,7 +29320,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationProtectionContainersListByReplicationFabrics_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IProtectionContainerCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ReplicationProtectionContainersListByReplicationFabrics_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IProtectionContainerCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -29335,7 +29338,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.ProtectionContainerCollection.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.ProtectionContainerCollection.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -29385,9 +29388,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationProtectionContainersListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IProtectionContainerCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationProtectionContainersListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IProtectionContainerCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -29437,7 +29440,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationProtectionContainersList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IProtectionContainerCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ReplicationProtectionContainersList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IProtectionContainerCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -29455,7 +29458,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.ProtectionContainerCollection.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.ProtectionContainerCollection.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -29510,9 +29513,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationProtectionContainersSwitchProtection(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.ISwitchProtectionInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IProtectionContainer>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationProtectionContainersSwitchProtection(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.ISwitchProtectionInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IProtectionContainer>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -29561,9 +29564,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationProtectionContainersSwitchProtectionViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.ISwitchProtectionInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IProtectionContainer>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationProtectionContainersSwitchProtectionViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.ISwitchProtectionInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IProtectionContainer>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -29625,7 +29628,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationProtectionContainersSwitchProtection_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IProtectionContainer>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ReplicationProtectionContainersSwitchProtection_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IProtectionContainer>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -29743,7 +29746,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.ProtectionContainer.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.ProtectionContainer.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -29776,7 +29779,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationProtectionContainersSwitchProtection_Validate(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.ISwitchProtectionInput body, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task ReplicationProtectionContainersSwitchProtection_Validate(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.ISwitchProtectionInput body, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -29802,9 +29805,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationProtectionIntentsCreate(string resourceName, string resourceGroupName, string subscriptionId, string intentObjectName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.ICreateProtectionIntentInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IReplicationProtectionIntent>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationProtectionIntentsCreate(string resourceName, string resourceGroupName, string subscriptionId, string intentObjectName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.ICreateProtectionIntentInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IReplicationProtectionIntent>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -29848,9 +29851,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationProtectionIntentsCreateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.ICreateProtectionIntentInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IReplicationProtectionIntent>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationProtectionIntentsCreateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.ICreateProtectionIntentInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IReplicationProtectionIntent>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -29906,7 +29909,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationProtectionIntentsCreate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IReplicationProtectionIntent>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ReplicationProtectionIntentsCreate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IReplicationProtectionIntent>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -29924,7 +29927,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.ReplicationProtectionIntent.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.ReplicationProtectionIntent.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -29956,7 +29959,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationProtectionIntentsCreate_Validate(string resourceName, string resourceGroupName, string subscriptionId, string intentObjectName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.ICreateProtectionIntentInput body, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task ReplicationProtectionIntentsCreate_Validate(string resourceName, string resourceGroupName, string subscriptionId, string intentObjectName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.ICreateProtectionIntentInput body, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -29980,9 +29983,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationProtectionIntentsGet(string resourceName, string resourceGroupName, string subscriptionId, string intentObjectName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IReplicationProtectionIntent>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationProtectionIntentsGet(string resourceName, string resourceGroupName, string subscriptionId, string intentObjectName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IReplicationProtectionIntent>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -30021,9 +30024,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationProtectionIntentsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IReplicationProtectionIntent>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationProtectionIntentsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IReplicationProtectionIntent>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -30075,7 +30078,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationProtectionIntentsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IReplicationProtectionIntent>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ReplicationProtectionIntentsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IReplicationProtectionIntent>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -30093,7 +30096,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.ReplicationProtectionIntent.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.ReplicationProtectionIntent.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -30147,9 +30150,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationProtectionIntentsList(string resourceName, string resourceGroupName, string subscriptionId, string skipToken, string takeToken, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IReplicationProtectionIntentCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationProtectionIntentsList(string resourceName, string resourceGroupName, string subscriptionId, string skipToken, string takeToken, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IReplicationProtectionIntentCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -30193,9 +30196,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationProtectionIntentsListViaIdentity(global::System.String viaIdentity, string skipToken, string takeToken, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IReplicationProtectionIntentCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationProtectionIntentsListViaIdentity(global::System.String viaIdentity, string skipToken, string takeToken, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IReplicationProtectionIntentCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -30249,7 +30252,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationProtectionIntentsList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IReplicationProtectionIntentCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ReplicationProtectionIntentsList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IReplicationProtectionIntentCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -30267,7 +30270,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.ReplicationProtectionIntentCollection.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.ReplicationProtectionIntentCollection.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -30323,9 +30326,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationRecoveryPlansCreate(string resourceName, string resourceGroupName, string subscriptionId, string recoveryPlanName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.ICreateRecoveryPlanInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IRecoveryPlan>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationRecoveryPlansCreate(string resourceName, string resourceGroupName, string subscriptionId, string recoveryPlanName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.ICreateRecoveryPlanInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IRecoveryPlan>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -30369,9 +30372,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationRecoveryPlansCreateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.ICreateRecoveryPlanInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IRecoveryPlan>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationRecoveryPlansCreateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.ICreateRecoveryPlanInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IRecoveryPlan>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -30427,7 +30430,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationRecoveryPlansCreate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IRecoveryPlan>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ReplicationRecoveryPlansCreate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IRecoveryPlan>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -30544,7 +30547,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.RecoveryPlan.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.RecoveryPlan.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -30576,7 +30579,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationRecoveryPlansCreate_Validate(string resourceName, string resourceGroupName, string subscriptionId, string recoveryPlanName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.ICreateRecoveryPlanInput body, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task ReplicationRecoveryPlansCreate_Validate(string resourceName, string resourceGroupName, string subscriptionId, string recoveryPlanName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.ICreateRecoveryPlanInput body, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -30602,7 +30605,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </returns>
         public async global::System.Threading.Tasks.Task ReplicationRecoveryPlansDelete(string resourceName, string resourceGroupName, string subscriptionId, string recoveryPlanName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -30643,7 +30646,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </returns>
         public async global::System.Threading.Tasks.Task ReplicationRecoveryPlansDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -30866,9 +30869,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationRecoveryPlansFailoverCancel(string resourceName, string resourceGroupName, string subscriptionId, string recoveryPlanName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IRecoveryPlan>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationRecoveryPlansFailoverCancel(string resourceName, string resourceGroupName, string subscriptionId, string recoveryPlanName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IRecoveryPlan>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -30908,9 +30911,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationRecoveryPlansFailoverCancelViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IRecoveryPlan>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationRecoveryPlansFailoverCancelViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IRecoveryPlan>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -30965,7 +30968,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationRecoveryPlansFailoverCancel_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IRecoveryPlan>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ReplicationRecoveryPlansFailoverCancel_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IRecoveryPlan>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -31083,7 +31086,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.RecoveryPlan.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.RecoveryPlan.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -31136,9 +31139,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationRecoveryPlansFailoverCommit(string resourceName, string resourceGroupName, string subscriptionId, string recoveryPlanName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IRecoveryPlan>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationRecoveryPlansFailoverCommit(string resourceName, string resourceGroupName, string subscriptionId, string recoveryPlanName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IRecoveryPlan>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -31178,9 +31181,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationRecoveryPlansFailoverCommitViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IRecoveryPlan>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationRecoveryPlansFailoverCommitViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IRecoveryPlan>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -31235,7 +31238,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationRecoveryPlansFailoverCommit_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IRecoveryPlan>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ReplicationRecoveryPlansFailoverCommit_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IRecoveryPlan>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -31353,7 +31356,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.RecoveryPlan.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.RecoveryPlan.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -31406,9 +31409,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationRecoveryPlansGet(string resourceName, string resourceGroupName, string subscriptionId, string recoveryPlanName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IRecoveryPlan>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationRecoveryPlansGet(string resourceName, string resourceGroupName, string subscriptionId, string recoveryPlanName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IRecoveryPlan>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -31447,9 +31450,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationRecoveryPlansGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IRecoveryPlan>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationRecoveryPlansGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IRecoveryPlan>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -31501,7 +31504,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationRecoveryPlansGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IRecoveryPlan>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ReplicationRecoveryPlansGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IRecoveryPlan>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -31519,7 +31522,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.RecoveryPlan.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.RecoveryPlan.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -31571,9 +31574,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationRecoveryPlansList(string resourceName, string resourceGroupName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IRecoveryPlanCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationRecoveryPlansList(string resourceName, string resourceGroupName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IRecoveryPlanCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -31611,9 +31614,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationRecoveryPlansListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IRecoveryPlanCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationRecoveryPlansListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IRecoveryPlanCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -31663,7 +31666,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationRecoveryPlansList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IRecoveryPlanCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ReplicationRecoveryPlansList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IRecoveryPlanCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -31681,7 +31684,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.RecoveryPlanCollection.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.RecoveryPlanCollection.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -31733,9 +31736,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationRecoveryPlansPlannedFailover(string resourceName, string resourceGroupName, string subscriptionId, string recoveryPlanName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IRecoveryPlanPlannedFailoverInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IRecoveryPlan>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationRecoveryPlansPlannedFailover(string resourceName, string resourceGroupName, string subscriptionId, string recoveryPlanName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IRecoveryPlanPlannedFailoverInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IRecoveryPlan>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -31780,9 +31783,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationRecoveryPlansPlannedFailoverViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IRecoveryPlanPlannedFailoverInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IRecoveryPlan>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationRecoveryPlansPlannedFailoverViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IRecoveryPlanPlannedFailoverInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IRecoveryPlan>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -31841,7 +31844,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationRecoveryPlansPlannedFailover_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IRecoveryPlan>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ReplicationRecoveryPlansPlannedFailover_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IRecoveryPlan>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -31959,7 +31962,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.RecoveryPlan.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.RecoveryPlan.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -31991,7 +31994,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationRecoveryPlansPlannedFailover_Validate(string resourceName, string resourceGroupName, string subscriptionId, string recoveryPlanName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IRecoveryPlanPlannedFailoverInput body, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task ReplicationRecoveryPlansPlannedFailover_Validate(string resourceName, string resourceGroupName, string subscriptionId, string recoveryPlanName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IRecoveryPlanPlannedFailoverInput body, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -32015,9 +32018,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationRecoveryPlansReprotect(string resourceName, string resourceGroupName, string subscriptionId, string recoveryPlanName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IRecoveryPlan>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationRecoveryPlansReprotect(string resourceName, string resourceGroupName, string subscriptionId, string recoveryPlanName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IRecoveryPlan>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -32057,9 +32060,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationRecoveryPlansReprotectViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IRecoveryPlan>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationRecoveryPlansReprotectViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IRecoveryPlan>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -32112,7 +32115,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationRecoveryPlansReprotect_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IRecoveryPlan>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ReplicationRecoveryPlansReprotect_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IRecoveryPlan>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -32230,7 +32233,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.RecoveryPlan.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.RecoveryPlan.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -32284,9 +32287,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationRecoveryPlansTestFailover(string resourceName, string resourceGroupName, string subscriptionId, string recoveryPlanName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IRecoveryPlanTestFailoverInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IRecoveryPlan>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationRecoveryPlansTestFailover(string resourceName, string resourceGroupName, string subscriptionId, string recoveryPlanName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IRecoveryPlanTestFailoverInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IRecoveryPlan>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -32334,9 +32337,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationRecoveryPlansTestFailoverCleanup(string resourceName, string resourceGroupName, string subscriptionId, string recoveryPlanName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IRecoveryPlanTestFailoverCleanupInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IRecoveryPlan>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationRecoveryPlansTestFailoverCleanup(string resourceName, string resourceGroupName, string subscriptionId, string recoveryPlanName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IRecoveryPlanTestFailoverCleanupInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IRecoveryPlan>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -32381,9 +32384,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationRecoveryPlansTestFailoverCleanupViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IRecoveryPlanTestFailoverCleanupInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IRecoveryPlan>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationRecoveryPlansTestFailoverCleanupViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IRecoveryPlanTestFailoverCleanupInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IRecoveryPlan>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -32442,7 +32445,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationRecoveryPlansTestFailoverCleanup_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IRecoveryPlan>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ReplicationRecoveryPlansTestFailoverCleanup_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IRecoveryPlan>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -32560,7 +32563,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.RecoveryPlan.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.RecoveryPlan.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -32592,7 +32595,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationRecoveryPlansTestFailoverCleanup_Validate(string resourceName, string resourceGroupName, string subscriptionId, string recoveryPlanName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IRecoveryPlanTestFailoverCleanupInput body, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task ReplicationRecoveryPlansTestFailoverCleanup_Validate(string resourceName, string resourceGroupName, string subscriptionId, string recoveryPlanName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IRecoveryPlanTestFailoverCleanupInput body, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -32614,9 +32617,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationRecoveryPlansTestFailoverViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IRecoveryPlanTestFailoverInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IRecoveryPlan>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationRecoveryPlansTestFailoverViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IRecoveryPlanTestFailoverInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IRecoveryPlan>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -32675,7 +32678,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationRecoveryPlansTestFailover_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IRecoveryPlan>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ReplicationRecoveryPlansTestFailover_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IRecoveryPlan>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -32793,7 +32796,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.RecoveryPlan.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.RecoveryPlan.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -32825,7 +32828,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationRecoveryPlansTestFailover_Validate(string resourceName, string resourceGroupName, string subscriptionId, string recoveryPlanName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IRecoveryPlanTestFailoverInput body, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task ReplicationRecoveryPlansTestFailover_Validate(string resourceName, string resourceGroupName, string subscriptionId, string recoveryPlanName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IRecoveryPlanTestFailoverInput body, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -32850,9 +32853,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationRecoveryPlansUnplannedFailover(string resourceName, string resourceGroupName, string subscriptionId, string recoveryPlanName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IRecoveryPlanUnplannedFailoverInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IRecoveryPlan>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationRecoveryPlansUnplannedFailover(string resourceName, string resourceGroupName, string subscriptionId, string recoveryPlanName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IRecoveryPlanUnplannedFailoverInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IRecoveryPlan>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -32897,9 +32900,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationRecoveryPlansUnplannedFailoverViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IRecoveryPlanUnplannedFailoverInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IRecoveryPlan>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationRecoveryPlansUnplannedFailoverViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IRecoveryPlanUnplannedFailoverInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IRecoveryPlan>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -32958,7 +32961,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationRecoveryPlansUnplannedFailover_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IRecoveryPlan>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ReplicationRecoveryPlansUnplannedFailover_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IRecoveryPlan>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -33076,7 +33079,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.RecoveryPlan.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.RecoveryPlan.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -33108,7 +33111,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationRecoveryPlansUnplannedFailover_Validate(string resourceName, string resourceGroupName, string subscriptionId, string recoveryPlanName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IRecoveryPlanUnplannedFailoverInput body, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task ReplicationRecoveryPlansUnplannedFailover_Validate(string resourceName, string resourceGroupName, string subscriptionId, string recoveryPlanName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IRecoveryPlanUnplannedFailoverInput body, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -33133,9 +33136,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationRecoveryPlansUpdate(string resourceName, string resourceGroupName, string subscriptionId, string recoveryPlanName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IUpdateRecoveryPlanInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IRecoveryPlan>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationRecoveryPlansUpdate(string resourceName, string resourceGroupName, string subscriptionId, string recoveryPlanName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IUpdateRecoveryPlanInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IRecoveryPlan>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -33179,9 +33182,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationRecoveryPlansUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IUpdateRecoveryPlanInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IRecoveryPlan>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationRecoveryPlansUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IUpdateRecoveryPlanInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IRecoveryPlan>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -33237,7 +33240,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationRecoveryPlansUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IRecoveryPlan>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ReplicationRecoveryPlansUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IRecoveryPlan>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -33354,7 +33357,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.RecoveryPlan.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.RecoveryPlan.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -33386,7 +33389,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationRecoveryPlansUpdate_Validate(string resourceName, string resourceGroupName, string subscriptionId, string recoveryPlanName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IUpdateRecoveryPlanInput body, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task ReplicationRecoveryPlansUpdate_Validate(string resourceName, string resourceGroupName, string subscriptionId, string recoveryPlanName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IUpdateRecoveryPlanInput body, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -33412,9 +33415,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationRecoveryServicesProvidersCreate(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string providerName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IAddRecoveryServicesProviderInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IRecoveryServicesProvider>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationRecoveryServicesProvidersCreate(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string providerName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IAddRecoveryServicesProviderInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IRecoveryServicesProvider>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -33460,9 +33463,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationRecoveryServicesProvidersCreateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IAddRecoveryServicesProviderInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IRecoveryServicesProvider>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationRecoveryServicesProvidersCreateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IAddRecoveryServicesProviderInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IRecoveryServicesProvider>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -33523,7 +33526,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationRecoveryServicesProvidersCreate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IRecoveryServicesProvider>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ReplicationRecoveryServicesProvidersCreate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IRecoveryServicesProvider>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -33640,7 +33643,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.RecoveryServicesProvider.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.RecoveryServicesProvider.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -33673,7 +33676,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationRecoveryServicesProvidersCreate_Validate(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string providerName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IAddRecoveryServicesProviderInput body, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task ReplicationRecoveryServicesProvidersCreate_Validate(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string providerName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IAddRecoveryServicesProviderInput body, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -33703,7 +33706,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </returns>
         public async global::System.Threading.Tasks.Task ReplicationRecoveryServicesProvidersDelete(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string providerName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -33749,7 +33752,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </returns>
         public async global::System.Threading.Tasks.Task ReplicationRecoveryServicesProvidersDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -33981,9 +33984,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationRecoveryServicesProvidersGet(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string providerName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IRecoveryServicesProvider>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationRecoveryServicesProvidersGet(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string providerName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IRecoveryServicesProvider>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -34024,9 +34027,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationRecoveryServicesProvidersGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IRecoveryServicesProvider>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationRecoveryServicesProvidersGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IRecoveryServicesProvider>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -34083,7 +34086,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationRecoveryServicesProvidersGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IRecoveryServicesProvider>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ReplicationRecoveryServicesProvidersGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IRecoveryServicesProvider>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -34101,7 +34104,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.RecoveryServicesProvider.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.RecoveryServicesProvider.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -34155,9 +34158,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationRecoveryServicesProvidersList(string resourceName, string resourceGroupName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IRecoveryServicesProviderCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationRecoveryServicesProvidersList(string resourceName, string resourceGroupName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IRecoveryServicesProviderCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -34198,9 +34201,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationRecoveryServicesProvidersListByReplicationFabrics(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IRecoveryServicesProviderCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationRecoveryServicesProvidersListByReplicationFabrics(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IRecoveryServicesProviderCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -34240,9 +34243,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationRecoveryServicesProvidersListByReplicationFabricsViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IRecoveryServicesProviderCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationRecoveryServicesProvidersListByReplicationFabricsViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IRecoveryServicesProviderCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -34297,7 +34300,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationRecoveryServicesProvidersListByReplicationFabrics_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IRecoveryServicesProviderCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ReplicationRecoveryServicesProvidersListByReplicationFabrics_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IRecoveryServicesProviderCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -34315,7 +34318,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.RecoveryServicesProviderCollection.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.RecoveryServicesProviderCollection.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -34365,9 +34368,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationRecoveryServicesProvidersListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IRecoveryServicesProviderCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationRecoveryServicesProvidersListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IRecoveryServicesProviderCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -34419,7 +34422,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationRecoveryServicesProvidersList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IRecoveryServicesProviderCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ReplicationRecoveryServicesProvidersList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IRecoveryServicesProviderCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -34437,7 +34440,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.RecoveryServicesProviderCollection.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.RecoveryServicesProviderCollection.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -34493,7 +34496,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </returns>
         public async global::System.Threading.Tasks.Task ReplicationRecoveryServicesProvidersPurge(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string providerName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -34538,7 +34541,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </returns>
         public async global::System.Threading.Tasks.Task ReplicationRecoveryServicesProvidersPurgeViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -34769,9 +34772,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationRecoveryServicesProvidersRefreshProvider(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string providerName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IRecoveryServicesProvider>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationRecoveryServicesProvidersRefreshProvider(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string providerName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IRecoveryServicesProvider>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -34813,9 +34816,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationRecoveryServicesProvidersRefreshProviderViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IRecoveryServicesProvider>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationRecoveryServicesProvidersRefreshProviderViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IRecoveryServicesProvider>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -34873,7 +34876,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationRecoveryServicesProvidersRefreshProvider_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IRecoveryServicesProvider>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ReplicationRecoveryServicesProvidersRefreshProvider_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IRecoveryServicesProvider>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -34991,7 +34994,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.RecoveryServicesProvider.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.RecoveryServicesProvider.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -35049,9 +35052,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationStorageClassificationMappingsCreate(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string storageClassificationName, string storageClassificationMappingName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IStorageClassificationMappingInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IStorageClassificationMapping>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationStorageClassificationMappingsCreate(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string storageClassificationName, string storageClassificationMappingName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IStorageClassificationMappingInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IStorageClassificationMapping>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -35099,9 +35102,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationStorageClassificationMappingsCreateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IStorageClassificationMappingInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IStorageClassificationMapping>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationStorageClassificationMappingsCreateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IStorageClassificationMappingInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IStorageClassificationMapping>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -35165,7 +35168,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationStorageClassificationMappingsCreate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IStorageClassificationMapping>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ReplicationStorageClassificationMappingsCreate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IStorageClassificationMapping>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -35282,7 +35285,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.StorageClassificationMapping.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.StorageClassificationMapping.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -35316,7 +35319,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationStorageClassificationMappingsCreate_Validate(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string storageClassificationName, string storageClassificationMappingName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IStorageClassificationMappingInput body, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task ReplicationStorageClassificationMappingsCreate_Validate(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string storageClassificationName, string storageClassificationMappingName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IStorageClassificationMappingInput body, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -35346,7 +35349,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </returns>
         public async global::System.Threading.Tasks.Task ReplicationStorageClassificationMappingsDelete(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string storageClassificationName, string storageClassificationMappingName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -35391,7 +35394,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </returns>
         public async global::System.Threading.Tasks.Task ReplicationStorageClassificationMappingsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -35628,9 +35631,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationStorageClassificationMappingsGet(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string storageClassificationName, string storageClassificationMappingName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IStorageClassificationMapping>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationStorageClassificationMappingsGet(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string storageClassificationName, string storageClassificationMappingName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IStorageClassificationMapping>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -35673,9 +35676,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationStorageClassificationMappingsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IStorageClassificationMapping>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationStorageClassificationMappingsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IStorageClassificationMapping>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -35735,7 +35738,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationStorageClassificationMappingsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IStorageClassificationMapping>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ReplicationStorageClassificationMappingsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IStorageClassificationMapping>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -35753,7 +35756,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.StorageClassificationMapping.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.StorageClassificationMapping.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -35809,9 +35812,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationStorageClassificationMappingsList(string resourceName, string resourceGroupName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IStorageClassificationMappingCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationStorageClassificationMappingsList(string resourceName, string resourceGroupName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IStorageClassificationMappingCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -35853,9 +35856,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationStorageClassificationMappingsListByReplicationStorageClassifications(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string storageClassificationName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IStorageClassificationMappingCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationStorageClassificationMappingsListByReplicationStorageClassifications(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string storageClassificationName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IStorageClassificationMappingCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -35897,9 +35900,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationStorageClassificationMappingsListByReplicationStorageClassificationsViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IStorageClassificationMappingCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationStorageClassificationMappingsListByReplicationStorageClassificationsViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IStorageClassificationMappingCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -35957,7 +35960,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationStorageClassificationMappingsListByReplicationStorageClassifications_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IStorageClassificationMappingCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ReplicationStorageClassificationMappingsListByReplicationStorageClassifications_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IStorageClassificationMappingCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -35975,7 +35978,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.StorageClassificationMappingCollection.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.StorageClassificationMappingCollection.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -36027,9 +36030,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationStorageClassificationMappingsListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IStorageClassificationMappingCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationStorageClassificationMappingsListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IStorageClassificationMappingCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -36081,7 +36084,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationStorageClassificationMappingsList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IStorageClassificationMappingCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ReplicationStorageClassificationMappingsList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IStorageClassificationMappingCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -36099,7 +36102,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.StorageClassificationMappingCollection.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.StorageClassificationMappingCollection.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -36151,9 +36154,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationStorageClassificationsGet(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string storageClassificationName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IStorageClassification>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationStorageClassificationsGet(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string storageClassificationName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IStorageClassification>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -36194,9 +36197,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationStorageClassificationsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IStorageClassification>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationStorageClassificationsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IStorageClassification>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -36253,7 +36256,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationStorageClassificationsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IStorageClassification>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ReplicationStorageClassificationsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IStorageClassification>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -36271,7 +36274,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.StorageClassification.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.StorageClassification.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -36325,9 +36328,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationStorageClassificationsList(string resourceName, string resourceGroupName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IStorageClassificationCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationStorageClassificationsList(string resourceName, string resourceGroupName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IStorageClassificationCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -36368,9 +36371,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationStorageClassificationsListByReplicationFabrics(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IStorageClassificationCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationStorageClassificationsListByReplicationFabrics(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IStorageClassificationCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -36410,9 +36413,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationStorageClassificationsListByReplicationFabricsViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IStorageClassificationCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationStorageClassificationsListByReplicationFabricsViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IStorageClassificationCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -36467,7 +36470,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationStorageClassificationsListByReplicationFabrics_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IStorageClassificationCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ReplicationStorageClassificationsListByReplicationFabrics_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IStorageClassificationCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -36485,7 +36488,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.StorageClassificationCollection.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.StorageClassificationCollection.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -36535,9 +36538,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationStorageClassificationsListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IStorageClassificationCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationStorageClassificationsListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IStorageClassificationCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -36589,7 +36592,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationStorageClassificationsList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IStorageClassificationCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ReplicationStorageClassificationsList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IStorageClassificationCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -36607,7 +36610,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.StorageClassificationCollection.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.StorageClassificationCollection.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -36657,9 +36660,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationVaultHealthGet(string resourceName, string resourceGroupName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IVaultHealthDetails>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationVaultHealthGet(string resourceName, string resourceGroupName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IVaultHealthDetails>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -36697,9 +36700,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationVaultHealthGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IVaultHealthDetails>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationVaultHealthGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IVaultHealthDetails>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -36749,7 +36752,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationVaultHealthGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IVaultHealthDetails>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ReplicationVaultHealthGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IVaultHealthDetails>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -36767,7 +36770,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.VaultHealthDetails.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.VaultHealthDetails.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -36817,9 +36820,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationVaultHealthRefresh(string resourceName, string resourceGroupName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IVaultHealthDetails>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationVaultHealthRefresh(string resourceName, string resourceGroupName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IVaultHealthDetails>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -36857,9 +36860,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationVaultHealthRefreshViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IVaultHealthDetails>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationVaultHealthRefreshViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IVaultHealthDetails>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -36909,7 +36912,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationVaultHealthRefresh_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IVaultHealthDetails>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ReplicationVaultHealthRefresh_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IVaultHealthDetails>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -37027,7 +37030,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.VaultHealthDetails.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.VaultHealthDetails.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -37079,9 +37082,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationVaultSettingCreate(string resourceName, string resourceGroupName, string subscriptionId, string vaultSettingName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IVaultSettingCreationInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IVaultSetting>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationVaultSettingCreate(string resourceName, string resourceGroupName, string subscriptionId, string vaultSettingName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IVaultSettingCreationInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IVaultSetting>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -37125,9 +37128,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationVaultSettingCreateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IVaultSettingCreationInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IVaultSetting>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationVaultSettingCreateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IVaultSettingCreationInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IVaultSetting>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -37183,7 +37186,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationVaultSettingCreate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IVaultSetting>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ReplicationVaultSettingCreate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IVaultSetting>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -37300,7 +37303,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.VaultSetting.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.VaultSetting.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -37332,7 +37335,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationVaultSettingCreate_Validate(string resourceName, string resourceGroupName, string subscriptionId, string vaultSettingName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IVaultSettingCreationInput body, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task ReplicationVaultSettingCreate_Validate(string resourceName, string resourceGroupName, string subscriptionId, string vaultSettingName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IVaultSettingCreationInput body, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -37356,9 +37359,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationVaultSettingGet(string resourceName, string resourceGroupName, string subscriptionId, string vaultSettingName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IVaultSetting>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationVaultSettingGet(string resourceName, string resourceGroupName, string subscriptionId, string vaultSettingName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IVaultSetting>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -37397,9 +37400,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationVaultSettingGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IVaultSetting>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationVaultSettingGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IVaultSetting>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -37451,7 +37454,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationVaultSettingGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IVaultSetting>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ReplicationVaultSettingGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IVaultSetting>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -37469,7 +37472,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.VaultSetting.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.VaultSetting.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -37523,9 +37526,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationVaultSettingList(string resourceName, string resourceGroupName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IVaultSettingCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationVaultSettingList(string resourceName, string resourceGroupName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IVaultSettingCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -37565,9 +37568,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationVaultSettingListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IVaultSettingCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationVaultSettingListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IVaultSettingCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -37617,7 +37620,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationVaultSettingList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IVaultSettingCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ReplicationVaultSettingList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IVaultSettingCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -37635,7 +37638,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.VaultSettingCollection.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.VaultSettingCollection.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -37688,9 +37691,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationvCentersCreate(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string vcenterName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IAddVCenterRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IVCenterAutoGenerated>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationvCentersCreate(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string vcenterName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IAddVCenterRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IVCenterAutoGenerated>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -37736,9 +37739,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationvCentersCreateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IAddVCenterRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IVCenterAutoGenerated>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationvCentersCreateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IAddVCenterRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IVCenterAutoGenerated>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -37797,7 +37800,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationvCentersCreate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IVCenterAutoGenerated>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ReplicationvCentersCreate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IVCenterAutoGenerated>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -37914,7 +37917,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.VCenterAutoGenerated.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.VCenterAutoGenerated.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -37947,7 +37950,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationvCentersCreate_Validate(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string vcenterName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IAddVCenterRequest body, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task ReplicationvCentersCreate_Validate(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string vcenterName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IAddVCenterRequest body, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -37975,7 +37978,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </returns>
         public async global::System.Threading.Tasks.Task ReplicationvCentersDelete(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string vcenterName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -38018,7 +38021,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// </returns>
         public async global::System.Threading.Tasks.Task ReplicationvCentersDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -38247,9 +38250,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationvCentersGet(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string vcenterName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IVCenterAutoGenerated>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationvCentersGet(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string vcenterName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IVCenterAutoGenerated>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -38290,9 +38293,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationvCentersGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IVCenterAutoGenerated>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationvCentersGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IVCenterAutoGenerated>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -38347,7 +38350,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationvCentersGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IVCenterAutoGenerated>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ReplicationvCentersGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IVCenterAutoGenerated>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -38365,7 +38368,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.VCenterAutoGenerated.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.VCenterAutoGenerated.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -38419,9 +38422,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationvCentersList(string resourceName, string resourceGroupName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IVCenterCollectionAutoGenerated>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationvCentersList(string resourceName, string resourceGroupName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IVCenterCollectionAutoGenerated>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -38462,9 +38465,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationvCentersListByReplicationFabrics(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IVCenterCollectionAutoGenerated>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationvCentersListByReplicationFabrics(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IVCenterCollectionAutoGenerated>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -38504,9 +38507,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationvCentersListByReplicationFabricsViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IVCenterCollectionAutoGenerated>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationvCentersListByReplicationFabricsViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IVCenterCollectionAutoGenerated>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -38561,7 +38564,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationvCentersListByReplicationFabrics_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IVCenterCollectionAutoGenerated>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ReplicationvCentersListByReplicationFabrics_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IVCenterCollectionAutoGenerated>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -38579,7 +38582,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.VCenterCollectionAutoGenerated.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.VCenterCollectionAutoGenerated.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -38629,9 +38632,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationvCentersListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IVCenterCollectionAutoGenerated>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationvCentersListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IVCenterCollectionAutoGenerated>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -38681,7 +38684,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationvCentersList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IVCenterCollectionAutoGenerated>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ReplicationvCentersList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IVCenterCollectionAutoGenerated>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -38699,7 +38702,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.VCenterCollectionAutoGenerated.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.VCenterCollectionAutoGenerated.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -38752,9 +38755,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationvCentersUpdate(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string vcenterName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IUpdateVCenterRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IVCenterAutoGenerated>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationvCentersUpdate(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string vcenterName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IUpdateVCenterRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IVCenterAutoGenerated>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -38800,9 +38803,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicationvCentersUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IUpdateVCenterRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IVCenterAutoGenerated>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicationvCentersUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IUpdateVCenterRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IVCenterAutoGenerated>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -38861,7 +38864,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationvCentersUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IVCenterAutoGenerated>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ReplicationvCentersUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IVCenterAutoGenerated>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -38978,7 +38981,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.VCenterAutoGenerated.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.VCenterAutoGenerated.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -39011,7 +39014,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicationvCentersUpdate_Validate(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string vcenterName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IUpdateVCenterRequest body, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task ReplicationvCentersUpdate_Validate(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string vcenterName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IUpdateVCenterRequest body, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -40296,7 +40299,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.Accepted:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onAccepted(_response,null /* deserializeFromResponse doesn't support '-header-' C:\Users\cloudtest\.autorest\@autorest_powershell@3.0.504\node_modules\@autorest\powershell\dist\llcsharp\schema\object.js*/);
+                            await onAccepted(_response,null /* deserializeFromResponse doesn't support '-header-' C:\Users\cloudtest\.autorest\@autorest_powershell@3.0.497\node_modules\@autorest\powershell\dist\llcsharp\schema\object.js*/);
                             break;
                         }
                         default:
@@ -41742,9 +41745,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task SupportedOperatingSystemsGet(string resourceName, string resourceGroupName, string subscriptionId, string instanceType, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.ISupportedOperatingSystems>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task SupportedOperatingSystemsGet(string resourceName, string resourceGroupName, string subscriptionId, string instanceType, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.ISupportedOperatingSystems>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -41785,9 +41788,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task SupportedOperatingSystemsGetViaIdentity(global::System.String viaIdentity, string instanceType, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.ISupportedOperatingSystems>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task SupportedOperatingSystemsGetViaIdentity(global::System.String viaIdentity, string instanceType, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.ISupportedOperatingSystems>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -41839,7 +41842,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task SupportedOperatingSystemsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.ISupportedOperatingSystems>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task SupportedOperatingSystemsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.ISupportedOperatingSystems>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -41857,7 +41860,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.SupportedOperatingSystems.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.SupportedOperatingSystems.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -41912,9 +41915,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task TargetComputeSizesListByReplicationProtectedItems(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, string replicatedProtectedItemName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.ITargetComputeSizeCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task TargetComputeSizesListByReplicationProtectedItems(string resourceName, string resourceGroupName, string subscriptionId, string fabricName, string protectionContainerName, string replicatedProtectedItemName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.ITargetComputeSizeCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -41958,9 +41961,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task TargetComputeSizesListByReplicationProtectedItemsViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.ITargetComputeSizeCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task TargetComputeSizesListByReplicationProtectedItemsViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.ITargetComputeSizeCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-01-01";
+            var apiVersion = @"2022-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -42021,7 +42024,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task TargetComputeSizesListByReplicationProtectedItems_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.ITargetComputeSizeCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task TargetComputeSizesListByReplicationProtectedItems_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.ITargetComputeSizeCollection>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -42039,7 +42042,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.TargetComputeSizeCollection.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.TargetComputeSizeCollection.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -42219,7 +42222,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.Accepted:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onAccepted(_response,null /* deserializeFromResponse doesn't support '-header-' C:\Users\cloudtest\.autorest\@autorest_powershell@3.0.504\node_modules\@autorest\powershell\dist\llcsharp\schema\object.js*/);
+                            await onAccepted(_response,null /* deserializeFromResponse doesn't support '-header-' C:\Users\cloudtest\.autorest\@autorest_powershell@3.0.497\node_modules\@autorest\powershell\dist\llcsharp\schema\object.js*/);
                             break;
                         }
                         default:

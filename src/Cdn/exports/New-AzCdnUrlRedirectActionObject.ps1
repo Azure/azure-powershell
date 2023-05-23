@@ -20,17 +20,15 @@ Create an in-memory object for UrlRedirectAction.
 .Description
 Create an in-memory object for UrlRedirectAction.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+New-AzCdnUrlRedirectActionObject -Name rule01 -ParameterRedirectType redirect
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.UrlRedirectAction
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.UrlRedirectAction
 .Link
-https://learn.microsoft.com/powershell/module/az.Cdn/new-AzCdnUrlRedirectActionObject
+https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzCdnUrlRedirectActionObject
 #>
 function New-AzCdnUrlRedirectActionObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.UrlRedirectAction])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.UrlRedirectAction])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -97,7 +95,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
         }         
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {

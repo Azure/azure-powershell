@@ -12,8 +12,10 @@ Create a route map rule.
 
 ## SYNTAX
 
-```powershell
-New-AzRouteMapRule -MatchCriteria <PSRouteMapRuleCriterion[]> -RouteMapRuleAction <PSRouteMapRuleAction[]> -NextStepIfMatched <String> -Name <String>
+```
+New-AzRouteMapRule [-MatchCriteria <PSRouteMapRuleCriterion[]>] -RouteMapRuleAction <PSRouteMapRuleAction[]>
+ -NextStepIfMatched <String> -Name <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -29,7 +31,6 @@ $routeMapMatchCriterion1 = New-AzRouteMapRuleCriterion -MatchCondition "Contains
 $routeMapRuleActionParameter1 = New-AzRouteMapRuleActionParameter -AsPath @("12345")
 $routeMapRuleAction1 = New-AzRouteMapRuleAction -Type "Add" -Parameter @($routeMapRuleActionParameter1)
 New-AzRouteMapRule -Name "rule1" -MatchCriteria @($routeMapMatchCriterion1) -RouteMapRuleAction @($routeMapRuleAction1) -NextStepIfMatched "Continue"
-
 ```
 
 ```output
@@ -59,16 +60,30 @@ ActionsText       : [
 Name              : rule1
 Etag              :
 Id                :
-
 ```
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with Azure.
+
+```yaml
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzContext, AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -MatchCriteria
 The route map rule Match Criteria. If not providing, will match all
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSRouteMapRuleCriterion
+Type: Microsoft.Azure.Commands.Network.Models.PSRouteMapRuleCriterion[]
 Parameter Sets: (All)
 Aliases:
 
@@ -113,11 +128,41 @@ Accept wildcard characters: False
 The route map rule actions.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSRouteMapRuleAction
+Type: Microsoft.Azure.Commands.Network.Models.PSRouteMapRuleAction[]
 Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
