@@ -16,21 +16,29 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzFrontDoorCdnProfile'
 
 Describe 'Remove-AzFrontDoorCdnProfile'  {
     It 'Delete' {
-        $frontDoorCdnProfileName = 'fdp-' + (RandomString -allChars $false -len 6);
+        $frontDoorCdnProfileName = 'fdp-pstest020'
         Write-Host -ForegroundColor Green "Use frontDoorCdnProfileName : $($frontDoorCdnProfileName)"
 
         $profileSku = "Standard_AzureFrontDoor"
+        Write-Host -ForegroundColor Green "New frontDoorCdnProfileName"
         New-AzFrontDoorCdnProfile -SkuName $profileSku -Name $frontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Location Global
+
+        Write-Host -ForegroundColor Green "Remove frontDoorCdnProfileName"
         Remove-AzFrontDoorCdnProfile -Name $frontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName
     }
 
     It 'DeleteViaIdentity' {
-        $PSDefaultParameterValues['Disabled'] = $true
-        $frontDoorCdnProfileName = 'fdp-' + (RandomString -allChars $false -len 6);
+        $frontDoorCdnProfileName = 'fdp-pstest021'
         Write-Host -ForegroundColor Green "Use frontDoorCdnProfileName : $($frontDoorCdnProfileName)"
 
         $profileSku = "Standard_AzureFrontDoor"
+        Write-Host -ForegroundColor Green "New frontDoorCdnProfileName"
         New-AzFrontDoorCdnProfile -SubscriptionId $env.SubscriptionId -SkuName $profileSku -Name $frontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Location Global
-        Get-AzFrontDoorCdnProfile -ResourceGroupName $env.ResourceGroupName -Name $frontDoorCdnProfileName | Remove-AzFrontDoorCdnProfile
+
+        Write-Host -ForegroundColor Green "Get frontDoorCdnProfileName"
+        $profileObject = Get-AzFrontDoorCdnProfile -ResourceGroupName $env.ResourceGroupName -Name $frontDoorCdnProfileName
+
+        Write-Host -ForegroundColor Green "Remove frontDoorCdnProfileName"
+        Remove-AzFrontDoorCdnProfile -InputObject $profileObject
     }
 }

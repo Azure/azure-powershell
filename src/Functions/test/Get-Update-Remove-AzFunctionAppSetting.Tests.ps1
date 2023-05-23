@@ -31,7 +31,9 @@ Describe 'Get-AzFunctionAppSetting, Update-AzFunctionAppSetting, and Remove-AzFu
                               -ResourceGroupName $env.resourceGroupNameWindowsPremium `
                               -PlanName $env.planNameWorkerTypeWindows `
                               -StorageAccount $env.storageAccountWindows  `
-                              -Runtime PowerShell
+                              -Runtime PowerShell `
+                              -RuntimeVersion 7.2 `
+                              -FunctionsVersion 4
 
             # We can get the application setting in two different ways:
             # 1) (Get-AzFunctionApp).ApplicationSettings 

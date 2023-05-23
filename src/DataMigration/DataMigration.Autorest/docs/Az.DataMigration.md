@@ -56,6 +56,9 @@ Create or Update Database Migration Service.
 ### [New-AzDataMigrationSqlServiceAuthKey](New-AzDataMigrationSqlServiceAuthKey.md)
 Regenerate a new set of Authentication Keys for Self Hosted Integration Runtime.
 
+### [New-AzDataMigrationTdeCertificateMigration](New-AzDataMigrationTdeCertificateMigration.md)
+Migrate TDE certificate from source SQL Server to the target Azure SQL Server.
+
 ### [New-AzDataMigrationToSqlDb](New-AzDataMigrationToSqlDb.md)
 Create a new database migration to a given SQL Db.
 

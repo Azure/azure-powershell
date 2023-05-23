@@ -156,9 +156,9 @@ function Remove-AzCdnProfile {
     
     process {
         if ($PSCmdlet.ParameterSetName -eq 'Delete') {
-            $cdnProfile = Get-AzCdnProfile -ResourceGroupName ${ResourceGroupName} -Name ${Name}
+            $cdnProfile = Get-AzCdnProfile @PSBoundParameters
         } elseif ($PSCmdlet.ParameterSetName -eq 'DeleteViaIdentity') {
-            $cdnProfile = Get-AzCdnProfile -InputObject $InputObject
+            $cdnProfile = Get-AzCdnProfile @PSBoundParameters
         }else {
             throw "Not supported ParameterSetName."
         }

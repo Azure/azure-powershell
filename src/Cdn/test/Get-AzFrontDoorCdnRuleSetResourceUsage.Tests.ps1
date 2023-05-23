@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzFrontDoorCdnRuleSetReso
 
 Describe 'Get-AzFrontDoorCdnRuleSetResourceUsage'  {
     It 'List' {
-        $rulesetName = 'rs' + (RandomString -allChars $false -len 6);
+        $rulesetName = 'rsName040'
         New-AzFrontDoorCdnRuleSet -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Name $rulesetName
         $rulesetUsage = Get-AzFrontDoorCdnRuleSetResourceUsage -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -RuleSetName $rulesetName
         $rulesetUsage | Should -not -BeNullOrEmpty 

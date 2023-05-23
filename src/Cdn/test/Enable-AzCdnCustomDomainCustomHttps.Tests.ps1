@@ -16,7 +16,6 @@ if(($null -eq $TestName) -or ($TestName -contains 'Enable-AzCdnCustomDomainCusto
 
 Describe 'Enable-AzCdnCustomDomainCustomHttps'  {
     It 'Enable'  {
-        $subId = $env.SubscriptionId
         $httpsParameter = New-AzCdnManagedHttpsParametersObject -CertificateSource "Cdn" -CertificateSourceParameterCertificateType "Dedicated" -ProtocolType "ServerNameIndication"
 
         $customDomain = Enable-AzCdnCustomDomainCustomHttps -CustomDomainName $env.ClassicCustomDomainName -EndpointName $env.ClassicEndpointName `

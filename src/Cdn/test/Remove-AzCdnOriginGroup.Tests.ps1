@@ -17,7 +17,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzCdnOriginGroup'))
 Describe 'Remove-AzCdnOriginGroup'  {
     It 'Delete' {
         $subId = $env.SubscriptionId
-        $endpointName = 'e-' + (RandomString -allChars $false -len 6);
+        $endpointName = 'e-ndpstest090'
         Write-Host -ForegroundColor Green "Create endpointName : $($endpointName)"
         
         $location = "westus"
@@ -53,9 +53,8 @@ Describe 'Remove-AzCdnOriginGroup'  {
     }
 
     It 'DeleteViaIdentity' {
-        $PSDefaultParameterValues['Disabled'] = $true
         $subId = $env.SubscriptionId
-        $endpointName2 = 'e-' + (RandomString -allChars $false -len 6);
+        $endpointName2 = 'e-ndpstest082'
         Write-Host -ForegroundColor Green "Create endpointName : $($endpointName2)"
         
         $location = "westus"
@@ -87,6 +86,7 @@ Describe 'Remove-AzCdnOriginGroup'  {
         New-AzCdnOriginGroup -EndpointName $endpointName2 -Name $originGroupName2 -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName `
             -HealthProbeSetting $healthProbeParametersObject2 -Origin @(@{ Id = $originId2 })
         
-        Get-AzCdnOriginGroup -EndpointName $endpointName2 -Name $originGroupName2 -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName | Remove-AzCdnOriginGroup
+        $orObject = Get-AzCdnOriginGroup -EndpointName $endpointName2 -Name $originGroupName2 -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName
+        Remove-AzCdnOriginGroup -InputObject $orObject
     }
 }

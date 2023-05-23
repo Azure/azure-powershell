@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzFrontDoorCdnOrigin'))
 
 Describe 'Get-AzFrontDoorCdnOrigin'  {
     BeforeAll {
-        $originGroupName = 'org' + (RandomString -allChars $false -len 6);
+        $originGroupName = 'org-pstest010'
         $healthProbeSetting = New-AzFrontDoorCdnOriginGroupHealthProbeSettingObject -ProbeIntervalInSecond 1 -ProbePath "/" `
         -ProbeProtocol "Https" -ProbeRequestType "GET"
         $loadBalancingSetting = New-AzFrontDoorCdnOriginGroupLoadBalancingSettingObject -AdditionalLatencyInMillisecond 200 `
@@ -26,8 +26,8 @@ Describe 'Get-AzFrontDoorCdnOrigin'  {
 
         Get-AzFrontDoorCdnOriginGroup -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -OriginGroupName $originGroupName
 
-        $hostName = "en.wikipedia.org";
-        $originName = 'ori' + (RandomString -allChars $false -len 6);
+        $hostName = "en.wikipedia.org"
+        $originName = 'ori-psName010'
 
         Write-Host -ForegroundColor Green "Start to create origin."    
         New-AzFrontDoorCdnOrigin -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -OriginGroupName $originGroupName `
@@ -47,8 +47,9 @@ Describe 'Get-AzFrontDoorCdnOrigin'  {
     }
 
     It 'GetViaIdentity' {
-        $PSDefaultParameterValues['Disabled'] = $true
-        $origin = Get-AzFrontDoorCdnOrigin -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -OriginGroupName $originGroupName -OriginName $originName | Get-AzFrontDoorCdnOrigin
+        $originObject = Get-AzFrontDoorCdnOrigin -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -OriginGroupName $originGroupName -OriginName $originName
+        $origin = Get-AzFrontDoorCdnOrigin -InputObject $originObject
+        
         $origin.Name | Should -Be $originName
     }
 }
