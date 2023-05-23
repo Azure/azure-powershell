@@ -445,19 +445,17 @@ namespace Microsoft.Azure.Commands.Aks
                             }
                         }
                     }
-                    SetIdentity(cluster);
-
-                    var kubeCluster = this.CreateOrUpdate(ResourceGroupName, Name, cluster);
-
                     if (this.IsParameterBound(c => c.DiskEncryptionSetID))
                     {
                         cluster.DiskEncryptionSetID = DiskEncryptionSetID;
                     }
-                    if (DisableLocalAccount.IsPresent)
+                    if (this.IsParameterBound(c => c.DisableLocalAccount))
                     {
-                        cluster.DisableLocalAccounts = DisableLocalAccount;
+                        cluster.DisableLocalAccounts = DisableLocalAccount.ToBool();
                     }
+                    SetIdentity(cluster);
 
+                    var kubeCluster = this.CreateOrUpdate(ResourceGroupName, Name, cluster);
                     WriteObject(AdapterHelper<ManagedCluster, PSKubernetesCluster>.Adapt(kubeCluster));
                 });
             }
