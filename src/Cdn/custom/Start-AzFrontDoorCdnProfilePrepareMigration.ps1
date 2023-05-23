@@ -297,13 +297,11 @@ function Start-AzFrontDoorCdnProfilePrepareMigration {
         
         # Deal with MSI parameter
         # if ($PSBoundParameters.ContainsKey('IdentityType')) {
-        if ($allPoliciesWithVault.count -gt 0) {
-            $vaultsLen = $allPoliciesWithVault.count
-            Write-Debug("valuts lens: $vaultsLen")
+        if ($allPoliciesWithVault.count -gt 0) { 
             Write-Host("Starting to enable managed identity.")
 
             # Waiting for results of profile created return
-            Start-Sleep(10)
+            Start-Sleep(20)
 
             # 1. Enable MSI: get "principalId" from RP
             $commandArgs = @{ ResourceGroupName = ${ResourceGroupName}; Name = ${ProfileName}; IdentityType = ${IdentityType}; ErrorAction = 'Stop'}
@@ -317,20 +315,20 @@ function Start-AzFrontDoorCdnProfilePrepareMigration {
             $profileIdentity = RetryCommand -Command 'Update-AzFrontDoorCdnProfile' -CommandArgs $commandArgs -RetryTimes 6 -SecondsDelay 20 -SuccessMessage $enableMSISuccessMessage -RetryMessage $enableMSIRetryMessage -ErrorMessage $enableMSIErrorMessage
             $identity = [System.Collections.ArrayList]@()
             foreach ($id in $profileIdentity.IdentityUserAssignedIdentity.Values.PrincipalId) {
-                $identity.Add($id) | Out-Null
+                if ($id) {
+                    $identity.Add($id) | Out-Null
+                }
             }
-            $identity.Add($profileIdentity.IdentityPrincipalId) | Out-Null
 
-            $identityLens = $identity.Count
-            Write-debug "Identity count: $identityLens"
+            if ($profileIdentity.IdentityPrincipalId){
+                $identity.Add($profileIdentity.IdentityPrincipalId) | Out-Null
+            }
 
             # Waiting for MSI granted access...
-            Start-Sleep(10)
+            Start-Sleep(20)
             Write-Host("Starting to grant managed identity to key vault.")
             foreach ($vault in $allPoliciesWithVault) {
-                Write-Debug "a vault cycle..."
                 foreach ($principal in $identity) {
-                    Write-Debug "id: $principal"
                     $grantAccessSuccessMessage = 'Granting managed identity to key vault succeeded.'
                     $grantAccessRetryMessage = 'Retrying to grant managed identity to key vault...'
                     $grantAccessErrorMessage = 'Granting managed identity to key vault failed.'

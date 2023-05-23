@@ -163,32 +163,29 @@ function Remove-AzCdnProfile {
             $cdnProfile = Get-AzCdnProfile @PSBoundParameters
         } elseif ($PSCmdlet.ParameterSetName -eq 'DeleteViaIdentity') {
             $cdnProfile = Get-AzCdnProfile @PSBoundParameters
-        }else {
+        } else {
             throw "Not supported ParameterSetName."
         }
 
-        if($null -eq $cdnProfile)
+        if ($null -eq $cdnProfile)
         {
             throw "Provided CdnProfile does not exist."
-        }else{
-            if ($hasAsJob)
-            {
+        } else {
+            if ($hasAsJob) {
                 $PSBoundParameters.Add('AsJob', ${AsJob})
             }
 
-            if ($hasNoWait)
-            {
+            if ($hasNoWait) {
                 $PSBoundParameters.Add('NoWait', ${NoWait})
             }
 
-            if ($hasPassThru)
-            {
+            if ($hasPassThru) {
                 $PSBoundParameters.Add('PassThru', ${PassThru})
             }
 
-            if(-Not (ISFrontDoorCdnProfile($frontDoorCdnProfile.SkuName))){
+            if (-Not (ISFrontDoorCdnProfile($frontDoorCdnProfile.SkuName))){
                 Az.Cdn.internal\Remove-AzCdnProfile @PSBoundParameters
-            }else{
+            } else {
                 throw "Provided CdnProfile does not exist."
             }
         }

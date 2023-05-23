@@ -170,37 +170,32 @@ function Update-AzCdnProfile {
             $cdnProfile = Get-AzCdnProfile @PSBoundParameters
         } elseif ($PSCmdlet.ParameterSetName -eq 'UpdateViaIdentityExpanded') {
             $cdnProfile = Get-AzCdnProfile @PSBoundParameters
-        }else {
+        } else {
             throw "Not supported ParameterSetName."
         }
 
-        if($null -eq $cdnProfile)
-        {
+        if ($null -eq $cdnProfile) {
             throw "Provided cdnProfile does not exist."
-        }else{
-            if ($hasTag)
-            {
+        } else {
+            if ($hasTag) {
                 $PSBoundParameters.Add('Tag', ${Tag})
             }
 
-            if ($hasOriginResponseTimeout)
-            {
+            if ($hasOriginResponseTimeout) {
                 $PSBoundParameters.Add('OriginResponseTimeoutSecond', ${OriginResponseTimeoutSecond})
             }
 
-            if ($hasAsJob)
-            {
+            if ($hasAsJob) {
                 $PSBoundParameters.Add('AsJob', ${AsJob})
             }
 
-            if ($hasNoWait)
-            {
+            if ($hasNoWait) {
                 $PSBoundParameters.Add('NoWait', ${NoWait})
             }
 
-            if(-Not (ISFrontDoorCdnProfile($cdnProfile.SkuName))){
+            if (-Not (ISFrontDoorCdnProfile($cdnProfile.SkuName))){
                 Az.Cdn.internal\Update-AzCdnProfile @PSBoundParameters
-            }else{
+            } else {
                 throw "Provided cdnProfile does not exist."
             }
         }

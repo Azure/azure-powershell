@@ -189,52 +189,41 @@ function Update-AzFrontDoorCdnProfile {
             $frontDoorCdnProfile = Get-AzFrontDoorCdnProfile @PSBoundParameters
         } elseif ($PSCmdlet.ParameterSetName -eq 'UpdateViaIdentityExpanded') {
             $frontDoorCdnProfile = Get-AzFrontDoorCdnProfile @PSBoundParameters
-        }else {
+        } else {
             throw "Not supported ParameterSetName."
         }
 
-        if($null -eq $frontDoorCdnProfile)
-        {
+        if($null -eq $frontDoorCdnProfile) {
             throw "Provided FrontDoorCdnProfile does not exist."
         }
-        else
-        {
-            if ($hasTag)
-            {
+        else {
+            if ($hasTag) {
                 $PSBoundParameters.Add('Tag', ${Tag})
             }
 
-            if ($hasOriginResponseTimeout)
-            {
+            if ($hasOriginResponseTimeout) {
                 $PSBoundParameters.Add('OriginResponseTimeoutSecond', ${OriginResponseTimeoutSecond})
             }
 
-            if ($hasIdentityType)
-            {
+            if ($hasIdentityType) {
                 $PSBoundParameters.Add('IdentityType', ${IdentityType})
             }
 
-            if ($hasIdentityUserAssignedIdentity)
-            {
+            if ($hasIdentityUserAssignedIdentity) {
                 $PSBoundParameters.Add('IdentityUserAssignedIdentity', ${IdentityUserAssignedIdentity})
             }
 
-            if ($hasAsJob)
-            {
+            if ($hasAsJob) {
                 $PSBoundParameters.Add('AsJob', ${AsJob})
             }
 
-            if ($hasNoWait)
-            {
+            if ($hasNoWait) {
                 $PSBoundParameters.Add('NoWait', ${NoWait})
             }
             
-            if(ISFrontDoorCdnProfile($frontDoorCdnProfile.SkuName))
-            {
+            if (ISFrontDoorCdnProfile($frontDoorCdnProfile.SkuName)) {
                 Az.Cdn.internal\Update-AzCdnProfile @PSBoundParameters
-            }
-            else
-            {
+            } else {
                 throw "Provided FrontDoorCdnProfile does not exist."
             }
         }
