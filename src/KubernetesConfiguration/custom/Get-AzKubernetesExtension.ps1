@@ -20,22 +20,14 @@ Gets Kubernetes Cluster Extension.
 .Description
 Gets Kubernetes Cluster Extension.
 .Example
-PS C:\> Get-AzKubernetesExtension -ClusterName azps_test_cluster -ClusterType ConnectedClusters -Name azps_test_extension -ResourceGroupName azps_test_group
-
-Name                ExtensionType             Version      ProvisioningState AutoUpgradeMinorVersion ReleaseTrain ResourceGroupName
-----                -------------             -------      ----------------- ----------------------- ------------ -----------------
-azps_test_extension microsoft.arcdataservices 1.0.16701001 Succeeded         True                    Stable       azps_test_group
+{{ Add code here }}
 .Example
-PS C:\> Get-AzKubernetesExtension -ClusterName azps_test_cluster -ClusterType ConnectedClusters -ResourceGroupName azps_test_group
-
-Name                ExtensionType             Version      ProvisioningState AutoUpgradeMinorVersion ReleaseTrain ResourceGroupName
-----                -------------             -------      ----------------- ----------------------- ------------ -----------------
-azps_test_extension microsoft.arcdataservices 1.0.16701001 Succeeded         True                    Stable       azps_test_group
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.IKubernetesConfigurationIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.IExtension
+Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.IExtension
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -57,49 +49,49 @@ https://learn.microsoft.com/powershell/module/az.kubernetesconfiguration/get-azk
 #>
 function Get-AzKubernetesExtension {
     [Alias('Get-AzK8sExtension')]
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.IExtension])]
-    [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.IExtension])]
+    [CmdletBinding(DefaultParameterSetName = 'List', PositionalBinding = $false)]
     param(
-        [Parameter(ParameterSetName='Get', Mandatory)]
-        [Parameter(ParameterSetName='List', Mandatory)]
+        [Parameter(ParameterSetName = 'Get', Mandatory)]
+        [Parameter(ParameterSetName = 'List', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Path')]
         [System.String]
         # The name of the kubernetes cluster.
         ${ClusterName},
 
-        [Parameter(ParameterSetName='Get', Mandatory)]
-        [Parameter(ParameterSetName='List', Mandatory)]
-        [ValidateSet('ConnectedClusters', 'ManagedClusters')]
+        [Parameter(ParameterSetName = 'Get', Mandatory)]
+        [Parameter(ParameterSetName = 'List', Mandatory)]
+        [ArgumentCompleter({ 'ManagedClusters', 'ConnectedClusters', 'ProvisionedClusters' })]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Path')]
         [System.String]
         # The Kubernetes cluster resource name - i.e.
         # managedClusters, connectedClusters, provisionedClusters.
         ${ClusterType},
 
-        [Parameter(ParameterSetName='Get', Mandatory)]
+        [Parameter(ParameterSetName = 'Get', Mandatory)]
         [Alias('ExtensionName')]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Path')]
         [System.String]
         # Name of the Extension.
         ${Name},
 
-        [Parameter(ParameterSetName='Get', Mandatory)]
-        [Parameter(ParameterSetName='List', Mandatory)]
+        [Parameter(ParameterSetName = 'Get', Mandatory)]
+        [Parameter(ParameterSetName = 'List', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Path')]
         [System.String]
         # The name of the resource group.
         # The name is case insensitive.
         ${ResourceGroupName},
 
-        [Parameter(ParameterSetName='Get')]
-        [Parameter(ParameterSetName='List')]
+        [Parameter(ParameterSetName = 'Get')]
+        [Parameter(ParameterSetName = 'List')]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.DefaultInfo(Script = '(Get-AzContext).Subscription.Id')]
         [System.String[]]
         # The ID of the target subscription.
         ${SubscriptionId},
 
-        [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
+        [Parameter(ParameterSetName = 'GetViaIdentity', Mandatory, ValueFromPipeline)]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.IKubernetesConfigurationIdentity]
         # Identity Parameter
@@ -111,7 +103,8 @@ function Get-AzKubernetesExtension {
         [ValidateNotNull()]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Azure')]
         [System.Management.Automation.PSObject]
-        # The credentials, account, tenant, and subscription used for communication with Azure.
+        # The DefaultProfile parameter is not functional.
+        # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
         ${DefaultProfile},
 
         [Parameter(DontShow)]
@@ -155,13 +148,31 @@ function Get-AzKubernetesExtension {
     )
 
     process {
-        if ($ClusterType -eq 'ManagedClusters') {
-            $PSBoundParameters.Add('ClusterRp', 'Microsoft.ContainerService')
-        }
-        elseif ($ClusterType -eq 'ConnectedClusters') {
-            $PSBoundParameters.Add('ClusterRp', 'Microsoft.Kubernetes')
-        }
+        try {
+            $hasInputObject = $PSBoundParameters.Remove('InputObject')
 
-        Az.KubernetesConfiguration.internal\Get-AzKubernetesExtension @PSBoundParameters
+            if ($hasInputObject) {
+                $null = $PSBoundParameters.Add('InputObject', $InputObject)
+            }
+            else {
+                if ($ClusterType -eq 'ManagedClusters') {
+                    $PSBoundParameters.Add('ClusterRp', 'Microsoft.ContainerService')
+                }
+                elseif ($ClusterType -eq 'ConnectedClusters') {
+                    $PSBoundParameters.Add('ClusterRp', 'Microsoft.Kubernetes')
+                }
+                elseif ($ClusterType -eq 'ProvisionedClusters') {
+                    $PSBoundParameters.Add('ClusterRp', 'Microsoft.HybridContainerService')
+                }
+                else {
+                    Write-Error "Please select ClusterType from the following three values: 'ManagedClusters', 'ConnectedClusters', 'ProvisionedClusters'"
+                }
+            }
+
+            Az.KubernetesConfiguration.internal\Get-AzKubernetesExtension @PSBoundParameters
+        }
+        catch {
+            throw
+        }
     }
 }
