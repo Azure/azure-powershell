@@ -461,10 +461,6 @@ namespace Microsoft.Azure.Commands.Aks
             {
                 networkProfile.DnsServiceIP = DnsServiceIP;
             }
-            if (this.IsParameterBound(c => c.DockerBridgeCidr))
-            {
-                networkProfile.DockerBridgeCidr = DockerBridgeCidr;
-            }
             if (this.IsParameterBound(c => c.OutboundType))
             {
                 networkProfile.OutboundType = OutboundType;
