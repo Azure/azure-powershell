@@ -15,9 +15,9 @@
 
 <#
 .Synopsis
-Commit the migrated Azure Frontdoor(Standard/Premium) profile.
+Commit the migrated Azure Front Door(Standard/Premium) profile..
 .Description
-Commit the migrated Azure Frontdoor(Standard/Premium) profile.
+Commit the migrated Azure Front Door(Standard/Premium) profile..
 .Example
 PS C:\> {{ Add code here }}
 {{ Add output here }}

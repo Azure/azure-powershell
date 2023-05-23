@@ -15,11 +15,11 @@
 
 <#
 .Synopsis
-Migrate the CDN profile to Azure Frontdoor(Standard/Premium) profile.
-MigrationWebApplicationFirewallMapping should be associated if the front door has WAF policy. MSI Identity should be associated if the frontdoor has Customer Certificates.
+Migrate the classic AFD instance to Azure Front Door(Standard/Premium) profile.
+MigrationWebApplicationFirewallMapping should be associated if the front door has WAF policy. Managed Identity should be associated if the frontdoor has Customer Certificates.
 The change need to be committed after this.
 .Description
-Migrate the CDN profile to Azure Frontdoor(Standard/Premium) profile.
+Migrate the classic AFD instance to Azure Front Door(Standard/Premium) profile.
 The change need to be committed after this.
 .Example
 PS C:\> {{ Add code here }}
@@ -298,6 +298,8 @@ function Start-AzFrontDoorCdnProfilePrepareMigration {
         # Deal with MSI parameter
         # if ($PSBoundParameters.ContainsKey('IdentityType')) {
         if ($allPoliciesWithVault.count -gt 0) {
+            $vaultsLen = $allPoliciesWithVault.count
+            Write-Debug("valuts lens: $vaultsLen")
             Write-Host("Starting to enable managed identity.")
 
             # Waiting for results of profile created return
@@ -319,11 +321,16 @@ function Start-AzFrontDoorCdnProfilePrepareMigration {
             }
             $identity.Add($profileIdentity.IdentityPrincipalId) | Out-Null
 
+            $identityLens = $identity.Count
+            Write-debug "Identity count: $identityLens"
+
             # Waiting for MSI granted access...
             Start-Sleep(10)
             Write-Host("Starting to grant managed identity to key vault.")
             foreach ($vault in $allPoliciesWithVault) {
+                Write-Debug "a vault cycle..."
                 foreach ($principal in $identity) {
+                    Write-Debug "id: $principal"
                     $grantAccessSuccessMessage = 'Granting managed identity to key vault succeeded.'
                     $grantAccessRetryMessage = 'Retrying to grant managed identity to key vault...'
                     $grantAccessErrorMessage = 'Granting managed identity to key vault failed.'

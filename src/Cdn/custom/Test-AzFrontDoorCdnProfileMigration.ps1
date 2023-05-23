@@ -15,9 +15,9 @@
 
 <#
 .Synopsis
-Checks if CDN profile can be migrated to Azure Frontdoor(Standard/Premium) profile.
+Check if a classic AFD instance can be migrated to Azure Front Door(Standard/Premium) profile.
 .Description
-Checks if CDN profile can be migrated to Azure Frontdoor(Standard/Premium) profile.
+Check if a classic AFD instance can be migrated to Azure Front Door(Standard/Premium) profile.
 .Example
 PS C:\> {{ Add code here }}
 {{ Add output here }}
