@@ -46,18 +46,6 @@ Delay-AzDevCenterDevDevBoxAction -Endpoint <String> -InputObject <IDevCenterIden
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### DelayViaIdentity1
-```
-Delay-AzDevCenterDevDevBoxAction -Endpoint <String> -InputObject <IDevCenterIdentity> -DelayTime <TimeSpan>
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### DelayViaIdentity1ByDevCenter
-```
-Delay-AzDevCenterDevDevBoxAction -DevCenter <String> -InputObject <IDevCenterIdentity> -DelayTime <TimeSpan>
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ### DelayViaIdentityByDevCenter
 ```
 Delay-AzDevCenterDevDevBoxAction -DevCenter <String> -InputObject <IDevCenterIdentity> -DelayTime <TimeSpan>
@@ -160,7 +148,7 @@ The DevCenter upon which to execute operations.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delay1ByDevCenter, DelayByDevCenter, DelayViaIdentity1ByDevCenter, DelayViaIdentityByDevCenter
+Parameter Sets: Delay1ByDevCenter, DelayByDevCenter, DelayViaIdentityByDevCenter
 Aliases:
 
 Required: True
@@ -175,7 +163,7 @@ The DevCenter-specific URI to operate on.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delay, Delay1, DelayViaIdentity, DelayViaIdentity1
+Parameter Sets: Delay, Delay1, DelayViaIdentity
 Aliases:
 
 Required: True
@@ -191,7 +179,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
-Parameter Sets: DelayViaIdentity, DelayViaIdentity1, DelayViaIdentity1ByDevCenter, DelayViaIdentityByDevCenter
+Parameter Sets: DelayViaIdentity, DelayViaIdentityByDevCenter
 Aliases:
 
 Required: True
