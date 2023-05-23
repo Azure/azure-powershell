@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -22,7 +22,6 @@ using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.ContainerRegistry
 {
-    [GenericBreakingChange("The Az.ContainerRegistry module is upgrading. The output properties may have some changes", "4.0.0.0")]
     [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ContainerRegistry", DefaultParameterSetName = NameResourceGroupParameterSet, SupportsShouldProcess = true)]
     [OutputType(typeof(PSContainerRegistry))]
     public class UpdateAzureContainerRegistry : ContainerRegistryCmdletBase
@@ -59,12 +58,10 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
         public Hashtable Tag { get; set; }
 
         public const string ChangeDesc = "Parameter is being deprecated without being replaced"; 
-        [CmdletParameterBreakingChange("NetworkRuleSet", "4.0.0.0", "05/23/2023", ChangeDescription = ChangeDesc)]
         [Parameter(Mandatory = false, HelpMessage = "The name of an existing storage account.")]
         [ValidateNotNullOrEmpty]
         public string StorageAccountName { get; set; }
 
-        [CmdletParameterBreakingChange("NetworkRuleSet","4.0.0.0", "05/23/2023", ChangeDescription = ChangeDesc)]
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The network rule set for a container registry.")]
         [ValidateNotNullOrEmpty]
         public PSNetworkRuleSet NetworkRuleSet { get; set; }
@@ -74,7 +71,6 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
         [ValidateSet(SkuTier.Classic, SkuTier.Basic, SkuTier.Premium, SkuTier.Standard, IgnoreCase = false)]
         public string Sku { get; set; }
 
-        [CmdletParameterBreakingChange("ResourceId", "4.0.0.0", "05/23/2023", ChangeDescription = ChangeDesc)]
         [Parameter(Mandatory = true, ParameterSetName = ResourceIdParameterSet, ValueFromPipelineByPropertyName = true, HelpMessage = "The container registry resource id")]
         [Parameter(Mandatory = true, ParameterSetName = DisableAdminUserByResourceIdParameterSet, ValueFromPipelineByPropertyName = true, HelpMessage = "The container registry resource id")]
         [Parameter(Mandatory = true, ParameterSetName = EnableAdminUserByResourceIdParameterSet, ValueFromPipelineByPropertyName = true, HelpMessage = "The container registry resource id")]

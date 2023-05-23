@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,7 +20,6 @@ using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.ContainerRegistry
 {
-    [GenericBreakingChange("The Az.ContainerRegistry module is upgrading. The output properties may have some changes", "4.0.0.0")]
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ContainerRegistryWebhook", DefaultParameterSetName = ListWebhookByNameResourceGroupParameterSet)]
     [OutputType(typeof(PSContainerRegistryWebhook))]
     public class GetAzureContainerRegistryWebhook : ContainerRegistryCmdletBase
@@ -50,11 +49,9 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
         public PSContainerRegistry Registry { get; set; }
 
 
-        [CmdletParameterBreakingChange("IncludeConfiguration", "4.0.0.0", "05/23/2023", ChangeDescription = ChangeDesc)]
         [Parameter(Mandatory = false, HelpMessage = "Get the configuration information for a webhook.")]
         public SwitchParameter IncludeConfiguration { get; set; }
 
-        [CmdletParameterBreakingChange("ResourceId", "4.0.0.0", "05/23/2023", ChangeDescription = ChangeDesc)]
         [Parameter(Mandatory = true, ParameterSetName = ResourceIdParameterSet, ValueFromPipelineByPropertyName = true, HelpMessage = "The container registry Webhook resource id")]
         [ValidateNotNullOrEmpty]
         [Alias(ResourceIdAlias)]

@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -44,7 +44,6 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
         public PSContainerRegistryReplication Replication { get; set; }
         
         public const string ChangeDesc = "Parameter is being deprecated without being replaced"; 
-        [CmdletParameterBreakingChange("ResourceId", "4.0.0.0", "05/23/2023", ChangeDescription = ChangeDesc)]
         [Parameter(Mandatory = true, ParameterSetName = ResourceIdParameterSet, ValueFromPipelineByPropertyName = true, HelpMessage = "The container registry replication resource id")]
         [ValidateNotNullOrEmpty]
         [Alias(ResourceIdAlias)]
