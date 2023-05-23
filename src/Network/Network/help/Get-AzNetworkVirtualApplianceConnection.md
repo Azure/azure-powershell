@@ -14,17 +14,17 @@ Get or List Network Virtual Appliances connections connected to a Network Virtua
 
 ### ResourceNameParameterSet (Default)
 ```
-Get-AzNetworkVirtualApplianceConnection -ResourceGroupName <String> -ParentResourceName <String> [-Name <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzNetworkVirtualApplianceConnection -ResourceGroupName <String> -VirtualApplianceName <String> [-Name <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ResourceObjectParameterSet
 ```
-Get-AzNetworkVirtualApplianceConnection -ParentObject <PSNetworkVirtualAppliance> [-Name <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzNetworkVirtualApplianceConnection -VirtualAppliance <PSNetworkVirtualAppliance> [-Name <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
 ```
-Get-AzNetworkVirtualApplianceConnection -ParentResourceId <String> [-Name <String>] [-DefaultProfile <IAzureContextContainer>]  [<CommonParameters>]
+Get-AzNetworkVirtualApplianceConnection -VirtualApplianceResourceId <String> [-Name <String>] [-DefaultProfile <IAzureContextContainer>]  [<CommonParameters>]
 ```
 
 ## DESCRIPTION

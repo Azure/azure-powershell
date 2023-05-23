@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The parent Network Virtual Appliance name.")]
         [ResourceNameCompleter("Microsoft.Network/networkVirtualAppliances", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
-        public string ParentResourceName { get; set; }
+        public string VirtualApplianceName { get; set; }
 
         [Alias("ParentNva", "NetworkVirtualAppliance")]
         [Parameter(
@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Commands.Network
             ParameterSetName = ResourceObjectParameterSet,
             HelpMessage = "The parent Network Virtual Appliance object for this connection.")]
         [ValidateNotNullOrEmpty]
-        public PSNetworkVirtualAppliance ParentObject { get; set; }
+        public PSNetworkVirtualAppliance VirtualAppliance { get; set; }
 
         [Alias("ParentNvaId", "NetworkVirtualApplianceId")]
         [Parameter(
@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The resource id of the parent Network Virtual Appliance for this connection.")]
         [ValidateNotNullOrEmpty]
         [ResourceIdCompleter("Microsoft.Network/networkVirtualAppliances")]
-        public string ParentResourceId { get; set; }
+        public string VirtualApplianceResourceId { get; set; }
 
         [Alias("ResourceName", "NetworkVirtualApplianceConnectionName")]
         [Parameter(
@@ -91,23 +91,23 @@ namespace Microsoft.Azure.Commands.Network
 
             if (ParameterSetName.Equals(ResourceObjectParameterSet, StringComparison.OrdinalIgnoreCase))
             {
-                this.ResourceGroupName = this.ParentObject.ResourceGroupName;
-                this.ParentResourceName = this.ParentObject.Name;
+                this.ResourceGroupName = this.VirtualAppliance.ResourceGroupName;
+                this.VirtualApplianceName = this.VirtualAppliance.Name;
             }
             else if (ParameterSetName.Equals(ResourceIdParameterSet, StringComparison.OrdinalIgnoreCase))
             {
-                var parsedResourceId = new ResourceIdentifier(this.ParentResourceId);
+                var parsedResourceId = new ResourceIdentifier(this.VirtualApplianceResourceId);
                 this.ResourceGroupName = parsedResourceId.ResourceGroupName;
-                this.ParentResourceName = parsedResourceId.ResourceName;
+                this.VirtualApplianceName = parsedResourceId.ResourceName;
             }
 
             if (ShouldGetByName(ResourceGroupName, Name))
             {
-                WriteObject(this.GetNvaConnection(this.ResourceGroupName, this.ParentResourceName, this.Name));
+                WriteObject(this.GetNvaConnection(this.ResourceGroupName, this.VirtualApplianceName, this.Name));
             }
             else
             {
-                WriteObject(SubResourceWildcardFilter(Name, this.ListNvaConnections(this.ResourceGroupName, this.ParentResourceName)), true);
+                WriteObject(SubResourceWildcardFilter(Name, this.ListNvaConnections(this.ResourceGroupName, this.VirtualApplianceName)), true);
             }
         }
     }
