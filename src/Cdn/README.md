@@ -202,16 +202,16 @@ directive:
       subject: SubscriptionResourceUsage
 
   # https://github.com/Azure/autorest.powershell/issues/906
-  - where:
-      model-name: AfdDomainUpdatePropertiesParameters
-      property-name: PreValidatedCustomDomainResourceId
-    set:
-      property-name: AfdDomainUpdatePropertiesParametersPreValidatedCustomDomainResourceId
-  - where:
-      model-name: AfdDomainUpdatePropertiesParameters
-      property-name: PreValidatedCustomDomainResourceIdId
-    set:
-      property-name: PreValidatedCustomDomainResourceId
+  # - where:
+  #     model-name: AfdDomainUpdatePropertiesParameters
+  #     property-name: PreValidatedCustomDomainResourceId
+  #   set:
+  #     property-name: AfdDomainUpdatePropertiesParametersPreValidatedCustomDomainResourceId
+  # - where:
+  #     model-name: AfdDomainUpdatePropertiesParameters
+  #     property-name: PreValidatedCustomDomainResourceIdId
+  #   set:
+  #     property-name: PreValidatedCustomDomainResourceId
 
   # Delete 404
   - from: swagger-document
