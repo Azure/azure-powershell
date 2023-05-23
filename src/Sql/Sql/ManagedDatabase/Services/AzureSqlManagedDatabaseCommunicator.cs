@@ -178,6 +178,50 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Services
                 databaseName);
         }
 
+        public void Move(string resourceGroupName, string managedInstanceName, string databaseName, string targetManagedDatabaseId)
+        {
+            GetCurrentSqlClient().ManagedDatabases.BeginStartMove(resourceGroupName, managedInstanceName, databaseName, new ManagedDatabaseStartMoveDefinition()
+            {
+                DestinationManagedDatabaseId = targetManagedDatabaseId,
+                OperationMode = "Move"
+            });
+        }
+
+
+        public void Copy(string resourceGroupName, string managedInstanceName, string databaseName, string targetManagedDatabaseId)
+        {
+            GetCurrentSqlClient().ManagedDatabases.BeginStartMove(resourceGroupName, managedInstanceName, databaseName, new ManagedDatabaseStartMoveDefinition()
+            {
+                DestinationManagedDatabaseId = targetManagedDatabaseId,
+                OperationMode = "Copy"
+            });
+        }
+
+        public void CompleteMoveCopy(string resourceGroupName, string managedInstanceName, string databaseName, string targetManagedDatabaseId)
+        {
+            GetCurrentSqlClient().ManagedDatabases.CompleteMove(resourceGroupName, managedInstanceName, databaseName, new ManagedDatabaseMoveDefinition() 
+            {
+                DestinationManagedDatabaseId = targetManagedDatabaseId
+            });
+        }
+
+        public void CancelMoveCopy(string resourceGroupName, string managedInstanceName, string databaseName, string targetManagedDatabaseId)
+        {
+            GetCurrentSqlClient().ManagedDatabases.CancelMove(resourceGroupName, managedInstanceName, databaseName, new ManagedDatabaseMoveDefinition()
+            {
+                DestinationManagedDatabaseId = targetManagedDatabaseId
+            });
+        }
+
+        public void GetMoveStatus(string resourceGroupName, string location)
+        {
+            GetCurrentSqlClient().ManagedDatabaseMoveOperations.ListByLocation(
+                resourceGroupName, location, new Rest.Azure.OData.ODataQuery<ManagedDatabaseMoveOperationResult>()
+                {
+                    Filter = $"Properties/SourceManagedInstanceName eq _"
+                });
+        }
+
         /// <summary>
         /// Retrieve the SQL Management client for the currently selected subscription, adding the session and request
         /// id tracing headers for the current cmdlet invocation.

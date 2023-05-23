@@ -260,6 +260,28 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Services
             }
         }
 
+        public void MoveManagedDatabase(MoveCopyManagedDatabaseModel model)
+        {
+            if (OperationMode.COPY.Equals(model.OperationMode))
+            {
+                Communicator.Copy(model.ResourceGroupName, model.ManagedInstanceName, model.Name, model.getDestinationManagedDatabaseId());
+            }
+            else
+            {
+                Communicator.Move(model.ResourceGroupName, model.ManagedInstanceName, model.Name, model.getDestinationManagedDatabaseId());
+            }
+        }
+
+        public void CompleteMove(MoveCopyManagedDatabaseModel model)
+        {
+            Communicator.CompleteMoveCopy(model.ResourceGroupName, model.ManagedInstanceName, model.Name, model.getDestinationManagedDatabaseId());
+        }
+
+        public void CancelMove(MoveCopyManagedDatabaseModel model)
+        {
+            Communicator.CancelMoveCopy(model.ResourceGroupName, model.ManagedInstanceName, model.Name, model.getDestinationManagedDatabaseId());
+        }
+
         /// <summary>
         /// Converts the response from the service to a powershell managed database object
         /// </summary>
