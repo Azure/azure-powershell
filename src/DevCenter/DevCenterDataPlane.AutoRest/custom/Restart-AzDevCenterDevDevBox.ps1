@@ -48,37 +48,49 @@ INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.devcenter/restart-azdevcenterdevdevbox
 #>
 function Restart-AzDevCenterDevDevBox {
-[OutputType([System.Boolean])]
-[CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-param(
-    [Parameter(ParameterSetName='RestartByDevCenter', Mandatory)]
-    [Parameter(ParameterSetName='RestartViaIdentityByDevCenter', Mandatory)]
+  [OutputType([System.Boolean])]
+  [CmdletBinding(DefaultParameterSetName = 'Restart', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
+  param(
+    [Parameter(ParameterSetName = 'Restart', Mandatory)]
+    [Parameter(ParameterSetName = 'RestartViaIdentity', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Uri')]
+    [System.String]
+    # The DevCenter-specific URI to operate on.
+    ${Endpoint},
+
+    [Parameter(ParameterSetName = 'RestartViaIdentityByDevCenter', Mandatory)]
+    [Parameter(ParameterSetName = 'RestartByDevCenter', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Uri')]
     [System.String]
     # The DevCenter upon which to execute operations.
     ${DevCenter},
 
-    [Parameter(ParameterSetName='RestartByDevCenter', Mandatory)]
+    [Parameter(ParameterSetName = 'Restart', Mandatory)]
+    [Parameter(ParameterSetName = 'RestartByDevCenter', Mandatory)]
     [Alias('DevBoxName')]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
     [System.String]
     # The name of a Dev Box.
     ${Name},
 
-    [Parameter(ParameterSetName='RestartByDevCenter', Mandatory)]
+    [Parameter(ParameterSetName = 'Restart', Mandatory)]
+    [Parameter(ParameterSetName = 'RestartByDevCenter', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
     [System.String]
     # The DevCenter Project upon which to execute operations.
     ${ProjectName},
 
-    [Parameter(ParameterSetName='RestartByDevCenter', Mandatory)]
+    [Parameter(ParameterSetName = 'Restart')]
+    [Parameter(ParameterSetName = 'RestartByDevCenter')]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.DefaultInfo(Script = '"me"')]
     [System.String]
     # The AAD object id of the user.
     # If value is 'me', the identity is taken from the authentication context.
     ${UserId},
 
-    [Parameter(ParameterSetName='RestartViaIdentityByDevCenter', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName = 'RestartViaIdentity', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName = 'RestartViaIdentityByDevCenter', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity]
     # Identity Parameter
@@ -144,13 +156,20 @@ param(
     [System.Management.Automation.SwitchParameter]
     # Use the default credentials for the proxy
     ${ProxyUseDefaultCredentials}
-)
+  )
 
-process {
-    $Endpoint = GetEndpointFromResourceGraph -DevCenter $DevCenter -Project $ProjectName
-    $null = $PSBoundParameters.Add("Endpoint", $Endpoint)
-    $null = $PSBoundParameters.Remove("DevCenter")
+  process {
+    if (-not $PSBoundParameters.ContainsKey('Endpoint')) {
+      $Endpoint = GetEndpointFromResourceGraph -DevCenter $DevCenter -Project $ProjectName
+      $null = $PSBoundParameters.Add("Endpoint", $Endpoint)
+      $null = $PSBoundParameters.Remove("DevCenter")
 
-    Az.DevCenter\Restart-AzDevCenterDevDevBox @PSBoundParameters
-}
+    }
+    else {
+      $Endpoint = ValidateAndProcessEndpoint -Endpoint $Endpoint
+      $PSBoundParameters["Endpoint"] = $Endpoint
+    }
+
+    Az.DevCenter.internal\Restart-AzDevCenterDevDevBox @PSBoundParameters
+  }
 }
