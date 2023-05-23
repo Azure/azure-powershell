@@ -71,7 +71,6 @@ Verify client certificate revocation status.
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
-Accepted values: None, OCSP
 
 Required: False
 Position: Named
@@ -87,6 +86,7 @@ Verify client certificate issuer name.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
+Accepted values: None, OCSP
 
 Required: False
 Position: Named

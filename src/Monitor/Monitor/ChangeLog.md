@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 4.5.0
 * Added cmdlets for monitor workspace: 
     - `Get-AzMonitorWorkspace`
     - `New-AzMonitorWorkspace`

@@ -34,7 +34,7 @@ Name
 HostName
 ```
 
-
+Create an in-memory object for DeliveryRuleHostNameCondition
 
 ## PARAMETERS
 
@@ -120,7 +120,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.DeliveryRuleHostNameCondition
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.DeliveryRuleHostNameCondition
 
 ## NOTES
 

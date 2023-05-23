@@ -18,7 +18,6 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Fixed an issue that Update-AzDatabricksWorkspace doesn't work as expected while enabling encryption. [#21324]
 * Added some parameters in the `New-AzDatabricksWorkspace` and `Update-AzDatabricksWorkspace`.
     - `ManagedDiskKeyVaultPropertiesKeyName`
     - `ManagedDiskKeyVaultPropertiesKeyVaultUri`
@@ -34,6 +33,9 @@
     - `DatabricksVirtualNetworkId`
     - `RemoteAddressSpacePrefix`
     - `RemoteVirtualNetworkId` 
+
+## Version 1.5.1
+* Fixed an issue that `Update-AzDatabricksWorkspace` doesn't work as expected while enabling encryption. [#21324]
 
 ## Version 1.5.0
 * Upgraded API version to 2023-02-01

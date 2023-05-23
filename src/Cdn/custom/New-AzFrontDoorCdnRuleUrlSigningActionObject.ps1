@@ -21,12 +21,12 @@ Create an in-memory object for UrlSigningAction.
 Create an in-memory object for UrlSigningAction.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.UrlSigningAction
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.UrlSigningAction
 .Link
 https://learn.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnRuleUrlSigningActionObject
 #>
 function New-AzFrontDoorCdnRuleUrlSigningActionObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.UrlSigningAction')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.UrlSigningAction')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -35,7 +35,7 @@ function New-AzFrontDoorCdnRuleUrlSigningActionObject {
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.Algorithm]
         $ParameterAlgorithm,
         [Parameter(HelpMessage="Defines which query string parameters in the url to be considered for expires, key id etc. .")]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IUrlSigningParamIdentifier[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IUrlSigningParamIdentifier[]]
         $ParameterNameOverride,
         [Parameter(Mandatory, HelpMessage="The name of the action for the delivery rule.")]
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.DeliveryRuleAction])]
@@ -44,7 +44,7 @@ function New-AzFrontDoorCdnRuleUrlSigningActionObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.UrlSigningAction]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.UrlSigningAction]::New()
 
         if ($PSBoundParameters.ContainsKey('ParameterAlgorithm')) {
             $Object.ParameterAlgorithm = $ParameterAlgorithm

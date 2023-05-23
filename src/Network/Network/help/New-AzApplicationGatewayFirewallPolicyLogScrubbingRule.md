@@ -13,7 +13,9 @@ Creates a log scrubbing rule for firewall policy
 ## SYNTAX
 
 ```
-New-AzApplicationGatewayFirewallPolicyLogScrubbingRule -State <String> -MatchVariable <String> -SelectorMatchOperator <String> [-Selector <String> ] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+New-AzApplicationGatewayFirewallPolicyLogScrubbingRule -State <String> -MatchVariable <String>
+ -SelectorMatchOperator <String> [-Selector <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -31,7 +33,7 @@ The new log scrubbing rule is stored to $logScrubbingRuleConfig1.
 
 ### Example 2
 ```powershell
-$logScrubbingRuleConfig2 = New-AzApplicationGatewayFirewallPolicyLogScrubbingRule -State Enabled -MatchVariable RequestIPAddress -SelectorMatchOperator EqualsAny 
+$logScrubbingRuleConfig2 = New-AzApplicationGatewayFirewallPolicyLogScrubbingRule -State Enabled -MatchVariable RequestIPAddress -SelectorMatchOperator EqualsAny
 ```
 
 The command creates a log scrubbing rule configuration with state as enable, MatchVariable as RequestIPAddress, SelectorMatchOperator as EqualsAny
@@ -39,18 +41,17 @@ The new log scrubbing rule is stored to $logScrubbingRuleConfig2.
 
 ## PARAMETERS
 
-### -State
-Defines the state of log scrubbing rule. Default value is Enabled.
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: System.String
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases:
-Accepted values: Disabled, Enabled
+Aliases: AzContext, AzureRmContext, AzureCredential
 
-Required: True
+Required: False
 Position: Named
-Default value: Enabled
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -65,6 +66,21 @@ Aliases:
 Accepted values: RequestHeaderNames, RequestCookieNames, RequestArgNames, RequestPostArgNames, RequestJSONArgNames, RequestIPAddress
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Selector
+When matchVariable is a collection, operator used to specify which elements in the collection this rule applies to.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -87,17 +103,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Selector
-When matchVariable is a collection, operator used to specify which elements in the collection this rule applies to.
+### -State
+Defines the state of log scrubbing rule. Default value is Enabled.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
+Accepted values: Enabled, Disabled
 
-Required: False
+Required: True
 Position: Named
-Default value: None
+Default value: Enabled
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

@@ -233,7 +233,7 @@ The acceptable values for this parameter are:
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: Tcp, Udp, *
+Accepted values: Tcp, Udp, Icmp, Esp, Ah, *
 
 Required: False
 Position: Named
