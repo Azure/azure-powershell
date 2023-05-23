@@ -13,18 +13,21 @@ Retrieves a route map of a VirtualHub.
 ## SYNTAX
 
 ### ByVirtualHubName (Default)
-```powershell
-Get-AzRouteMap -Name <String> -ResourceGroupName <String> -VirtualHubName <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+Get-AzRouteMap [-ResourceGroupName <String>] [-VirtualHubName <String>] [-Name <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByVirtualHubObject
-```powershell
-Get-AzRouteMap -Name <String> -VirtualHubObject <PSVirtualHub> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+Get-AzRouteMap [-VirtualHubObject <PSVirtualHub>] [-Name <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ByVirtualHubResourceId
-```powershell
-Get-AzRouteMap -Name <String> -VirtualHubResourceId <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+Get-AzRouteMap [-VirtualHubResourceId <String>] [-Name <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -53,7 +56,6 @@ $routeMapRule2 = New-AzRouteMapRule -Name "rule2" -MatchCriteria @($routeMapMatc
 
 New-AzRouteMap -ResourceGroupName "testRg" -VirtualHubName "testHub" -Name "testRouteMap" -RouteMapRule @($routeMapRule1, $routeMapRule2)
 Get-AzRouteMap -ResourceGroupName "testRg" -VirtualHubName "testHub" -Name "testRouteMap"
-
 ```
 
 ```output
@@ -112,25 +114,9 @@ RouteMapRules                 : [
                                 ]
 AssociatedInboundConnections  : []
 AssociatedOutboundConnections : []
-
 ```
 
 ## PARAMETERS
-
-### -AsJob
-Run cmdlet in the background
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -155,11 +141,11 @@ Type: System.String
 Parameter Sets: (All)
 Aliases: ResourceName, RouteMapName
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
 ### -ResourceGroupName
@@ -170,7 +156,7 @@ Type: System.String
 Parameter Sets: ByVirtualHubName
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -203,7 +189,7 @@ Aliases: ParentObject, ParentVirtualHub
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

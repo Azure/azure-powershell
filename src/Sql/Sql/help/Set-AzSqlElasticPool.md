@@ -100,7 +100,7 @@ Set-AzSqlElasticPool -Dtu 1000 -Edition 'GeneralPurpose' -ElasticPoolName 'Elast
 ### Example 4: Modify the preferred enclave type of an elastic pool to VBS
 
 ```powershell
-Set-AzSqlElasticPool -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -ElasticPoolName "ElasticPool01" -PreferredEnclaveType VBS
+Set-AzSqlElasticPool -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -ElasticPoolName "ElasticPool01" -PreferredEnclaveType "VBS"
 ```
 
 ```output

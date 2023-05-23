@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 4.0.0
 * Upgraded API version to 2022-09-09
 * Added cmdlet:
     - `Get-AzWvdScalingPlanPooledSchedule`

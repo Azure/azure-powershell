@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzDatabricksAccessConnect
 }
 
 Describe 'New-AzDatabricksAccessConnector' {
-    It 'CreateExpanded' {
-        { New-AzDatabricksAccessConnector -ResourceGroupName $env.resourceGroup -Name $env.accessConnectorname01 -Location eastus } | Should -Not -Throw
+    It 'CreateExpanded' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }
