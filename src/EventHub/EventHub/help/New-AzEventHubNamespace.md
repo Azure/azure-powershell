@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.EventHub.dll-Help.xml
+external help file: Az.EventHub-help.xml
 Module Name: Az.EventHub
 online version: https://learn.microsoft.com/powershell/module/az.eventhub/new-azeventhubnamespace
 schema: 2.0.0
@@ -8,259 +8,182 @@ schema: 2.0.0
 # New-AzEventHubNamespace
 
 ## SYNOPSIS
-Creates an Event Hubs namespace.
+Creates an EventHub Namespace
 
 ## SYNTAX
 
-### NamespaceParameterSet (Default)
 ```
-New-AzEventHubNamespace [-ResourceGroupName] <String> [-Name] <String> [-Location] <String>
- [[-SkuName] <String>] [[-SkuCapacity] <Int32>] [[-Tag] <Hashtable>] [-EnableKafka] [-ZoneRedundant]
- [[-ClusterARMId] <String>] [-DisableLocalAuth] [-IdentityType <String>] [-IdentityId <String[]>]
- [-EncryptionConfig <PSEncryptionConfigAttributes[]>] [-MinimumTlsVersion <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### AutoInflateParameterSet
-```
-New-AzEventHubNamespace [-ResourceGroupName] <String> [-Name] <String> [-Location] <String>
- [[-SkuName] <String>] [[-SkuCapacity] <Int32>] [[-Tag] <Hashtable>] [-EnableAutoInflate]
- [[-MaximumThroughputUnits] <Int32>] [-EnableKafka] [-ZoneRedundant] [[-ClusterARMId] <String>]
- [-DisableLocalAuth] [-IdentityType <String>] [-IdentityId <String[]>]
- [-EncryptionConfig <PSEncryptionConfigAttributes[]>] [-MinimumTlsVersion <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzEventHubNamespace -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -Location <String> [-AlternateName <String>] [-ClusterArmId <String>] [-DisableLocalAuth]
+ [-RequireInfrastructureEncryption] [-ZoneRedundant] [-KeyVaultProperty <IKeyVaultProperties[]>]
+ [-IdentityType <ManagedServiceIdentityType>] [-UserAssignedIdentityId <String[]>] [-EnableAutoInflate]
+ [-MaximumThroughputUnit <Int64>] [-MinimumTlsVersion <String>] [-SkuName <SkuName>]
+ [-PublicNetworkAccess <PublicNetworkAccess>] [-SkuCapacity <Int64>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The New-AzEventHubNamespace cmdlet creates a new namespace of type Event Hubs.
+Creates an EventHub Namespace
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Create a new EventHub namespace with UserAssignedIdentity Encryption
 ```powershell
-New-AzEventHubNamespace -ResourceGroupName MyResourceGroupName -NamespaceName MyNamespaceName -Location MyLocation
+$keyVaultProperty1 = New-AzEventHubKeyVaultPropertiesObject -KeyName key1 -KeyVaultUri https://testkeyvault.vault.azure.net -UserAssignedIdentity "/subscriptions/000000000000000/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myFirstIdentity"
+$keyVaultProperty2 = New-AzEventHubKeyVaultPropertiesObject -KeyName key2 -KeyVaultUri https://testkeyvault.vault.azure.net -UserAssignedIdentity "/subscriptions/000000000000000/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/mySecondIdentity"
+
+New-AzEventHubNamespace -ResourceGroupName myResourceGroup -Name myNamespace -SkuName Premium -Location northeurope -IdentityType UserAssigned -UserAssignedIdentityId "/subscriptions/000000000000000/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myFirstIdentity","/subscriptions/000000000000000/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/mySecondIdentity" -KeyVaultProperty $keyVaultProperty1,$keyVaultProperty2
 ```
 
 ```output
-Name                          : MyNamespaceName
-Id                            : /subscriptions/{subscriptionId}/resourceGroups/Default-EventHub-WestCentralUS/providers/Microsoft.EventHub/namespaces/MyNamespaceName
-ResourceGroupName             : Default-EventHub-WestCentralUS
-Location                      : West US
-Sku                           : Name : Standard , Capacity : 1 , Tier : Standard
-Tags                          :
-ProvisioningState             : Succeeded
-Status                        : Active
-CreatedAt                     : 6/14/2020 9:02:16 PM
-UpdatedAt                     : 6/14/2020 9:03:04 PM
-ServiceBusEndpoint            : https://testingnew2018.servicebus.windows.net:443/
-Enabled                       : True
-KafkaEnabled                  : True
-IsAutoInflateEnabled          : False
-MaximumThroughputUnits        : 0
-ZoneRedundant                 : False
-ClusterArmId                  :
-Identity                      : Microsoft.Azure.Commands.EventHub.Models.PSIdentityAttributes
-Identity.PrincipalId          :
-Identity.TenantId             :
-Identity.Type                 :
-Encryption                    : Microsoft.Azure.Commands.EventHub.Models.PSEncryptionAttributes
-Encryption.KeySource          :
-Encryption.KeyVaultProperties :
+AlternateName                   :
+ClusterArmId                    :
+CreatedAt                       : 11/17/2022 2:56:32 PM
+DisableLocalAuth                : False
+EnableAutoInflate               : False
+Id                              : /subscriptions/000000000000000/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/namespaces/myNamespace
+IdentityType                    : UserAssigned
+KafkaEnabled                    : True
+KeySource                       : Microsoft.KeyVault
+KeyVaultProperty                : {{
+                                    "identity": {
+                                      "userAssignedIdentity": "/subscriptions/000000000000000/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myFirstIdentity"
+                                    },
+                                    "keyName": "key1",
+                                    "keyVaultUri": "https://testkeyvault.vault.azure.net/",
+                                    "keyVersion": ""
+                                  }, {
+                                    "identity": {
+                                      "userAssignedIdentity": "/subscriptions/000000000000000/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myFirstIdentity"
+                                    },
+                                    "keyName": "key2",
+                                    "keyVaultUri": "https://testkeyvault.vault.azure.net/",
+                                    "keyVersion": ""
+                                  }}
+Location                        : North Europe
+MaximumThroughputUnit          : 0
+MetricId                        : 000000000000000:myNamespace
+MinimumTlsVersion               : 1.2
+Name                            : myNamespace
+PrincipalId                     :
+PrivateEndpointConnection       :
+ProvisioningState               : Succeeded
+PublicNetworkAccess             : Enabled
+RequireInfrastructureEncryption : False
+ResourceGroupName               : myResourceGroup
+ServiceBusEndpoint              : https://myNamespace.servicebus.windows.net:443/
+SkuCapacity                     : 1
+SkuName                         : Premium
+SkuTier                         : Premium
+Status                          : Active
+Tag                             : {
+                                  }
+TenantId                        :
+Type                            : Microsoft.EventHub/Namespaces
+UpdatedAt                       : 11/17/2022 3:03:50 PM
+UserAssignedIdentity            : {
+                                    "/subscriptions/000000000000000/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myFirstIdentity": {
+                                    },
+                                    "/subscriptions/000000000000000/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/mySecondIdentity": {
+                                    }
+                                  }
+ZoneRedundant                   : True
 ```
 
-Creates an Event Hubs namespace \`MyNamespaceName\` in the specified geographic location \`MyLocation\`, in resource group \`MyResourceGroupName\`.
+Creates a new Premium EventHub namespace with UserAssignedIdentity encryption
 
-### Example 2
+### Example 2: Create a new EventHub namespace with System Assigned Identity enabled
 ```powershell
-New-AzEventHubNamespace -ResourceGroupName MyResourceGroupName -NamespaceName MyNamespaceName -Location MyLocation -EnableAutoInflate -MaximumThroughputUnits 10
+New-AzEventHubNamespace -ResourceGroupName myResourceGroup -Name myNamespace -SkuName Premium -Location northeurope -IdentityType SystemAssigned
 ```
 
 ```output
-Name                          : MyNamespaceName
-Id                            : /subscriptions/{subscriptionId}/resourceGroups/Default-EventHub-WestCentralUS/providers/Microsoft.EventHub/namespaces/MyNamespaceName
-ResourceGroupName             : Default-EventHub-WestCentralUS
-Location                      : West US
-Sku                           : Name : Standard , Capacity : 1 , Tier : Standard
-Tags                          :
-ProvisioningState             : Succeeded
-Status                        : Active
-CreatedAt                     : 5/24/2019 12:47:27 AM
-UpdatedAt                     : 5/24/2019 12:48:14 AM
-ServiceBusEndpoint            : #########
-Enabled                       : True
-IsAutoInflateEnabled          : True
-MaximumThroughputUnits        : 10
-ZoneRedundant                 : False
-ClusterArmId                  :
-Identity                      : Microsoft.Azure.Commands.EventHub.Models.PSIdentityAttributes
-Identity.PrincipalId          :
-Identity.TenantId             :
-Identity.Type                 :
-Encryption                    : Microsoft.Azure.Commands.EventHub.Models.PSEncryptionAttributes
-Encryption.KeySource          :
-Encryption.KeyVaultProperties :
+AlternateName                   :
+ClusterArmId                    :
+CreatedAt                       : 11/17/2022 3:14:09 PM
+DisableLocalAuth                : False
+EnableAutoInflate               : False
+Id                              : /subscriptions/000000000000000/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/namespaces/myNamespace
+IdentityType                    : SystemAssigned
+KafkaEnabled                    : True
+KeySource                       :
+KeyVaultProperty                :
+Location                        : North Europe
+MaximumThroughputUnit           : 0
+MetricId                        : 000000000000000:myNamespace
+MinimumTlsVersion               : 1.2
+Name                            : myNamespace
+PrincipalId                     : 000000000000000000
+PrivateEndpointConnection       :
+ProvisioningState               : Succeeded
+PublicNetworkAccess             : Enabled
+RequireInfrastructureEncryption :
+ResourceGroupName               : myResourceGroup
+ServiceBusEndpoint              : https://myNamespace.servicebus.windows.net:443/
+SkuCapacity                     : 1
+SkuName                         : Premium
+SkuTier                         : Premium
+Status                          : Active
+Tag                             : {
+                                  }
+TenantId                        : 00000000000
+Type                            : Microsoft.EventHub/Namespaces
+UpdatedAt                       : 11/17/2022 3:21:19 PM
+UserAssignedIdentity            : {
+                                  }
+ZoneRedundant                   : True
 ```
 
-Creates an Event Hubs namespace \`MyNamespaceName\` in the specified geographic location \`MyLocation\`, in resource group \`MyResourceGroupName\` and AutoInflate is enabled with MaximumThroughputUnits 10.
+Create an EventHub namespace with SystemAssigned identity.
 
-### Example 3: Kafka enabled namespace
+### Example 3: Create a new Standard EventHub namespace with AutoInflate enabled
 ```powershell
-New-AzEventHubNamespace -ResourceGroupName MyResourceGroupName -NamespaceName MyNamespaceName -Location MyLocation -EnableAutoInflate -EnableKafka
+New-AzEventHubNamespace -ResourceGroupName myResourceGroup -Name myNamespace -SkuCapacity 10 -MaximumThroughputUnit 18 -SkuName Standard -Location southcentralus -Tag @{k1='v1'; k2='v2'} -EnableAutoInflate -DisableLocalAuth
 ```
 
 ```output
-Name                          : MyNamespaceName
-Id                            : /subscriptions/{subscriptionId}/resourceGroups/Default-EventHub-WestCentralUS/providers/Microsoft.EventHub/namespaces/MyNamespaceName
-ResourceGroupName             : Default-EventHub-WestCentralUS
-Location                      : West US
-Sku                           : Name : Standard , Capacity : 1 , Tier : Standard
-Tags                          :
-ProvisioningState             : Succeeded
-Status                        : Active
-CreatedAt                     : 5/24/2019 12:47:27 AM
-UpdatedAt                     : 5/24/2019 12:48:14 AM
-ServiceBusEndpoint            : #########
-Enabled                       : True
-IsAutoInflateEnabled          : True
-MaximumThroughputUnits        : 10
-ZoneRedundant                 : False
-ClusterArmId                  :
-Identity                      : Microsoft.Azure.Commands.EventHub.Models.PSIdentityAttributes
-Identity.PrincipalId          :
-Identity.TenantId             :
-Identity.Type                 :
-Encryption                    : Microsoft.Azure.Commands.EventHub.Models.PSEncryptionAttributes
-Encryption.KeySource          :
-Encryption.KeyVaultProperties :
+AlternateName                   :
+ClusterArmId                    :
+CreatedAt                       : 11/17/2022 3:14:09 PM
+DisableLocalAuth                : True
+EnableAutoInflate               : True
+Id                              : /subscriptions/000000000000000/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/namespaces/myNamespace
+IdentityType                    :
+KafkaEnabled                    : True
+KeySource                       :
+KeyVaultProperty                :
+Location                        : South Central US
+MaximumThroughputUnit           : 0
+MetricId                        : 000000000000000:myNamespace
+MinimumTlsVersion               : 1.2
+Name                            : myNamespace
+PrincipalId                     : 000000000000000000
+PrivateEndpointConnection       :
+ProvisioningState               : Succeeded
+PublicNetworkAccess             : Enabled
+RequireInfrastructureEncryption :
+ResourceGroupName               : myResourceGroup
+ServiceBusEndpoint              : https://myNamespace.servicebus.windows.net:443/
+SkuCapacity                     : 1
+SkuName                         : Standard
+SkuTier                         : Standard
+Status                          : Active
+Tag                             : {
+                                  }
+TenantId                        : 00000000000
+Type                            : Microsoft.EventHub/Namespaces
+UpdatedAt                       : 11/17/2022 3:21:19 PM
+UserAssignedIdentity            : {
+                                  }
+ZoneRedundant                   : True
 ```
 
-Creates an Event Hubs namespace \`MyNamespaceName\` in the specified geographic location \`MyLocation\`, in resource group \`MyResourceGroupName\` with Kafka and  AutoInflate enabled.
-
-### Example 4: ZoneRedundant enabled namespace
-```powershell
-New-AzEventHubNamespace -ResourceGroupName MyResourceGroupName -NamespaceName MyNamespaceName -Location MyLocation -EnableAutoInflate -ZoneRedundant
-```
-
-```output
-Name                          : MyNamespaceName
-Id                            : /subscriptions/{subscriptionId}/resourceGroups/Default-EventHub-WestCentralUS/providers/Microsoft.EventHub/namespaces/MyNamespaceName
-ResourceGroupName             : Default-EventHub-WestCentralUS
-Location                      : West US
-Sku                           : Name : Standard , Capacity : 1 , Tier : Standard
-Tags                          :
-ProvisioningState             : Succeeded
-Status                        : Active
-CreatedAt                     : 5/24/2019 12:47:27 AM
-UpdatedAt                     : 5/24/2019 12:48:14 AM
-ServiceBusEndpoint            : #########
-Enabled                       : True
-IsAutoInflateEnabled          : True
-MaximumThroughputUnits        : 10
-ZoneRedundant                 : True
-ClusterArmId                  :
-Identity                      : Microsoft.Azure.Commands.EventHub.Models.PSIdentityAttributes
-Identity.PrincipalId          :
-Identity.TenantId             :
-Identity.Type                 :
-Encryption                    : Microsoft.Azure.Commands.EventHub.Models.PSEncryptionAttributes
-Encryption.KeySource          :
-Encryption.KeyVaultProperties :
-```
-
-Creates an Event Hubs namespace \`MyNamespaceName\` in the specified geographic location \`MyLocation\`, in resource group \`MyResourceGroupName\` with Kafka and  AutoInflate enabled.
-
-### Example 5: Creating Namespace with Manage Identity in a cluster
-```powershell
-New-AzEventHubNamespace -ResourceGroupName MyResourceGroupName -NamespaceName MyNamespaceName -Location MyLocation -EnableAutoInflate -MaximumThroughputUnits 12 -EnableKafka -ZoneRedundant -IdentityType SystemAssigned
-```
-
-```output
-Name                          : MyNamespaceName
-Id                            : /subscriptions/{subscriptionId}/resourceGroups/Default-EventHub-WestCentralUS/providers/Microsoft.EventHub/namespaces/MyNamespaceName
-ResourceGroupName             : Default-EventHub-WestCentralUS
-Location                      : West US
-Sku                           : Name : Standard , Capacity : 1 , Tier : Standard
-Tags                          :
-ProvisioningState             : Succeeded
-Status                        : Active
-CreatedAt                     : 5/24/2019 12:47:27 AM
-UpdatedAt                     : 5/24/2019 12:48:14 AM
-ServiceBusEndpoint            : #########
-Enabled                       : True
-IsAutoInflateEnabled          : True
-MaximumThroughputUnits        : 12
-ZoneRedundant                 : True
-ClusterArmId                  : /subscriptions/{subscriptionId}/resourceGroups/Default-EventHub-WestCentralUS/providers/Microsoft.EventHub/clusters/TestCluster
-Identity.PrincipalId          : ##########
-Identity.TenantId             : ##########
-Identity.Type                 : SystemAssigned
-Encryption                    : Microsoft.Azure.Commands.EventHub.Models.PSEncryptionAttributes
-Encryption.KeySource          :
-Encryption.KeyVaultProperties :
-```
-
-### Example 6: Creating Namespace with UserAssigned identity encryption enabled
-
-```powershell
-# Create encryption config that will create an in memory config object
-$config1 = New-AzEventHubEncryptionConfig -KeyName key1 -KeyVaultUri https://myvaultname.vault.azure.net -UserAssignedIdentity '/subscriptions/{subscriptionId}/resourceGroups/{resourcegroup}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/MSIName'
-
-# Create encryption config that will create an in memory config object
-$config2 = New-AzEventHubEncryptionConfig -KeyName key2 -KeyVaultUri https://myvaultname.vault.azure.net -UserAssignedIdentity '/subscriptions/{subscriptionId}/resourceGroups/{resourcegroup}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/MSIName'
-
-$id1 = '/subscriptions/{subscriptionId}/resourceGroups/{resourcegroup}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/MSIName'
-
-$id2 = '/subscriptions/{subscriptionId}/resourceGroups/{resourcegroup}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/MSIName'
-
-# Update Namespace with KeyVault properties
-New-AzEventHubNamespace -ResourceGroupName MyResourceGroupName -Name MyNamespaceName -Location westus -IdentityType "UserAssigned" -IdentityId $id1,$id2 -EncryptionConfig $config1,$config2
-```
-
-```output
-Name                          : MyNamespaceName
-Id                            : /subscriptions/{subscriptionId}/resourceGroups/Default-EventHub-WestCentralUS/providers/Microsoft.EventHub/namespaces/MyNamespaceName
-ResourceGroupName             : Default-EventHub-WestCentralUS
-Location                      : West US
-Sku                           : Name : Standard , Capacity : 1 , Tier : Standard
-Tags                          :
-ProvisioningState             : Succeeded
-Status                        : Active
-CreatedAt                     : 6/12/2020 4:00:29 AM
-UpdatedAt                     : 6/14/2020 11:33:12 PM
-ServiceBusEndpoint            : #########
-Enabled                       : True
-KafkaEnabled                  : True
-IsAutoInflateEnabled          : True
-MaximumThroughputUnits        : 10
-ZoneRedundant                 : False
-ClusterArmId                  : /subscriptions/{subscriptionId}/resourceGroups/Default-EventHub-WestCentralUS/providers/Microsoft.EventHub/clusters/TestCluster
-Encryption                    : Microsoft.Azure.Commands.EventHub.Models.PSEncryptionAttributes
-Encryption.KeySource          : MicrosoftKeyVault
-Identity                      : PrinicipalId : ,
-                                TenantId: ,
-                                Type: UserAssigned,
-                                UserAssignedIdentity: /subscriptions/{subscriptionId}/resourceGroups/{resourcegroup}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/MSIName 
-                                                      /subscriptions/{subscriptionId}/resourceGroups/{resourcegroup}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/MSIName2
-IdentityType                  : UserAssigned
-IdentityId                    : /subscriptions/{subscriptionId}/resourceGroups/{resourcegroup}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/MSIName
-                                /subscriptions/{subscriptionId}/resourceGroups/{resourcegroup}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/MSIName2
-EncryptionConfig              : {{ KeyName: key1,
-                                   KeyVaultUri: https://myvaultname.vault.azure.net,
-                                   KeyVersion: ,
-                                   UserAssignedIdentity: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/MSIName
-                                 },
-                                 {
-                                   KeyName: key2,
-                                   KeyVaultUri: https://myvaultname.vault.azure.net,
-                                   KeyVersion: ,
-                                   UserAssignedIdentity: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/MSIName2
-                                 }}
-```
+Create a standard EventHub namespace `myNamespace` with Auto Inflate enabled.
 
 ## PARAMETERS
 
-### -ClusterARMId
-ARM ID of Cluster where namespace is to be created
+### -AlternateName
+Alternate name specified when alias and namespace names are same
 
 ```yaml
 Type: System.String
@@ -268,9 +191,39 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 1
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AsJob
+Run the command as a job
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ClusterArmId
+Cluster ARM ID of the Namespace.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -278,9 +231,9 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRMContext, AzureCredential
 
 Required: False
 Position: Named
@@ -290,7 +243,7 @@ Accept wildcard characters: False
 ```
 
 ### -DisableLocalAuth
-enabling or disabling  SAS authentication for namespace
+This property disables SAS authentication for the Event Hubs namespace.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -305,11 +258,57 @@ Accept wildcard characters: False
 ```
 
 ### -EnableAutoInflate
-Indicates whether AutoInflate is enabled
+Value that indicates whether AutoInflate is enabled for eventhub namespace.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: AutoInflateParameterSet
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IdentityType
+Type of managed service identity.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.ManagedServiceIdentityType
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -KeyVaultProperty
+Properties to configure Encryption
+To construct, see NOTES section for KEYVAULTPROPERTY properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.IKeyVaultProperties[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Location
+Cluster ARM ID of the Namespace.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -319,8 +318,71 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -EnableKafka
-enabling or disabling Kafka for namespace
+### -MaximumThroughputUnit
+Upper limit of throughput units when AutoInflate is enabled, value should be within 0 to 20 throughput units.
+( '0' if AutoInflateEnabled = true)
+
+```yaml
+Type: System.Int64
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MinimumTlsVersion
+The minimum TLS version for the cluster to support, e.g.
+'1.2'
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+The name of EventHub namespace.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PublicNetworkAccess
+This determines if traffic is allowed over public network.
+By default it is enabled.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.PublicNetworkAccess
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RequireInfrastructureEncryption
+Enable Infrastructure Encryption (Double Encryption)
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -334,23 +396,86 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -EncryptionConfig
-Key Property
+### -ResourceGroupName
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
-Type: Microsoft.Azure.Commands.EventHub.Models.PSEncryptionConfigAttributes[]
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SkuCapacity
+The Event Hubs throughput units for Basic or Standard tiers, where value should be 0 to 20 throughput units.
+The Event Hubs premium units for Premium tier, where value should be 0 to 10 premium units.
+
+```yaml
+Type: System.Int64
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IdentityId
-List of user assigned Identity Ids
+### -SkuName
+The minimum TLS version for the cluster to support, e.g.
+'1.2'
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.SkuName
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+The ID of the target subscription.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Tag
+Tag of EventHub Namespace.
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UserAssignedIdentityId
+Properties for User Assigned Identities
 
 ```yaml
 Type: System.String[]
@@ -360,150 +485,12 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -IdentityType
-Identity Type ('SystemAssigned', 'UserAssigned', 'SystemAssigned', 'UserAssigned', 'None')
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-Accepted values: SystemAssigned, UserAssigned, SystemAssigned, UserAssigned, None
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Location
-EventHub Namespace Location.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 2
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -MaximumThroughputUnits
-Upper limit of throughput units when AutoInflate is enabled, value should be within 0 to 20 throughput units.
-
-```yaml
-Type: System.Nullable`1[System.Int32]
-Parameter Sets: AutoInflateParameterSet
-Aliases:
-
-Required: False
-Position: 6
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -MinimumTlsVersion
-The minimum TLS version for the namespace to support, e.g. '1.2'
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-Accepted values: 1.0, 1.1, 1.2
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Name
-EventHub Namespace Name.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases: NamespaceName
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ResourceGroupName
-Resource Group Name
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -SkuCapacity
-The eventhub throughput units.
-
-```yaml
-Type: System.Nullable`1[System.Int32]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 4
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -SkuName
-Namespace Sku Name.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-Accepted values: Basic, Standard, Premium
-
-Required: False
-Position: 3
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Tag
-Hashtables which represents resource Tags.
-
-```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 5
-Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -ZoneRedundant
-enabling or disabling Zone Redundant for namespace
+Enabling this property creates a Standard Event Hubs Namespace in regions supported availability zones.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -553,20 +540,25 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
-
-### System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
-
-### System.Collections.Hashtable
-
-### System.String[]
-
-### Microsoft.Azure.Commands.EventHub.Models.PSEncryptionConfigAttributes[]
-
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.EventHub.Models.PSNamespaceAttributes
+### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.IEhNamespace
 
 ## NOTES
+
+ALIASES
+
+New-AzEventHubNamespaceV2
+
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+
+`KEYVAULTPROPERTY <IKeyVaultProperties[]>`: Properties to configure Encryption
+  - `[KeyName <String>]`: Name of the Key from KeyVault
+  - `[KeyVaultUri <String>]`: Uri of KeyVault
+  - `[KeyVersion <String>]`: Key Version
+  - `[UserAssignedIdentity <String>]`: ARM ID of user Identity selected for encryption
 
 ## RELATED LINKS

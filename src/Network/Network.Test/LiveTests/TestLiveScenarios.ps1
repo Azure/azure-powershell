@@ -13,7 +13,7 @@ Invoke-LiveTestScenario -Name "Network interface CRUD with public IP address" -D
 
     $snet = New-AzVirtualNetworkSubnetConfig -Name $snetName -AddressPrefix 10.0.1.0/24
     $vnet = New-AzVirtualNetwork -ResourceGroupName $rgName -Name $vnetName -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $snet
-    $pip = New-AzPublicIpAddress -ResourceGroupName $rgName -Name $pipName -Location $location -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel
+    $pip = New-AzPublicIpAddress -ResourceGroupName $rgName -Name $pipName -Location $location -AllocationMethod Static -DomainNameLabel $domainNameLabel
     $ipcfg = New-AzNetworkInterfaceIpConfig -Name $ipcfgName -Subnet $vnet.Subnets[0] -PublicIpAddress $pip
     New-AzNetworkInterface -ResourceGroupName $rgName -Name $nicName -Location $location -IpConfiguration $ipcfg
     $actualNic = Get-AzNetworkInterface -ResourceGroupName $rgName -Name $nicName
@@ -33,7 +33,7 @@ Invoke-LiveTestScenario -Name "Network interface CRUD with public IP address" -D
     $actualPip = Get-AzPublicIpAddress -ResourceGroupName $rgName -Name $pipName
     Assert-AreEqual $rgName $actualPip.ResourceGroupName
     Assert-AreEqual $pipName $actualPip.Name
-    Assert-AreEqual "Dynamic" $actualPip.PublicIpAllocationMethod
+    Assert-AreEqual "Static" $actualPip.PublicIpAllocationMethod
     Assert-AreEqual $actualPip.Id $actualNic.IpConfigurations[0].PublicIpAddress.Id
 
     $actualVnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgName
@@ -96,7 +96,7 @@ Invoke-LiveTestScenario -Name "Network interface CRUD with IP configuration" -De
     $snet = New-AzVirtualNetworkSubnetConfig -Name $snetName -AddressPrefix 10.0.1.0/24
     $vnet = New-AzVirtualNetwork -ResourceGroupName $rgName -Name $vnetName -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $snet
 
-    $pip = New-AzPublicIpAddress -ResourceGroupName $rgName -Name $pipName -Location $location -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel
+    $pip = New-AzPublicIpAddress -ResourceGroupName $rgName -Name $pipName -Location $location -AllocationMethod Static -DomainNameLabel $domainNameLabel
     $ipconfig1 = New-AzNetworkInterfaceIpConfig -Name $ipconfig1Name -Subnet $vnet.Subnets[0] -PublicIpAddress $pip
     $ipconfig2 = New-AzNetworkInterfaceIpConfig -Name $ipconfig2Name -PrivateIpAddressVersion IPv6
 
@@ -110,7 +110,7 @@ Invoke-LiveTestScenario -Name "Network interface CRUD with IP configuration" -De
     $actualPip = Get-AzPublicIpAddress -ResourceGroupName $rgName -Name $pipName
     Assert-AreEqual $rgName $actualPip.ResourceGroupName
     Assert-AreEqual $pipName $actualPip.Name
-    Assert-AreEqual "Dynamic" $actualPip.PublicIpAllocationMethod
+    Assert-AreEqual "Static" $actualPip.PublicIpAllocationMethod
     Assert-AreEqual $actualPip.Id $actualNic.IpConfigurations[0].PublicIpAddress.Id
 
     $actualVnet = Get-AzVirtualNetwork -ResourceGroupName $rgName -Name $vnetName
@@ -123,7 +123,6 @@ Invoke-LiveTestScenario -Name "Network interface CRUD with IP configuration" -De
     Assert-AreEqual $ipconfig1Name $actualNic.IpConfigurations[0].Name
     Assert-AreEqual $pip.Id $actualNic.IpConfigurations[0].PublicIpAddress.Id
     Assert-AreEqual $actualVnet.Subnets[0].Id $actualNic.IpConfigurations[0].Subnet.Id
-    Assert-AreEqual "Dynamic" $actualNic.IpConfigurations[0].PrivateIpAllocationMethod
     Assert-AreEqual IPv4 $actualNic.IpConfigurations[0].PrivateIpAddressVersion
 
     Assert-AreEqual $ipconfig2Name $actualNic.IpConfigurations[1].Name
@@ -150,7 +149,7 @@ Invoke-LiveTestScenario -Name "Network interface CRUD with accelerated networkin
 
     $snet = New-AzVirtualNetworkSubnetConfig -Name $snetName -AddressPrefix 10.0.1.0/24
     $vnet = New-AzVirtualNetwork -ResourceGroupName $rgName -Name $vnetName -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $snet
-    $pip = New-AzPublicIpAddress -ResourceGroupName $rgName -Name $pipName -Location $location -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel
+    $pip = New-AzPublicIpAddress -ResourceGroupName $rgName -Name $pipName -Location $location -AllocationMethod Static -DomainNameLabel $domainNameLabel
     $ipcfg = New-AzNetworkInterfaceIpConfig -Name $ipcfgName -Subnet $vnet.Subnets[0] -PublicIpAddress $pip
     New-AzNetworkInterface -ResourceGroupName $rgName -Name $nicName -Location $location -IpConfiguration $ipcfg -EnableAcceleratedNetworking
 
@@ -166,7 +165,7 @@ Invoke-LiveTestScenario -Name "Network interface CRUD with accelerated networkin
     $actualPip = Get-AzPublicIpAddress -ResourceGroupName $rgname -name $pipName
     Assert-AreEqual $rgName $actualPip.ResourceGroupName
     Assert-AreEqual $pipName $actualPip.Name
-    Assert-AreEqual "Dynamic" $actualPip.PublicIpAllocationMethod
+    Assert-AreEqual "Static" $actualPip.PublicIpAllocationMethod
     Assert-AreEqual $actualPip.Id $actualNic.IpConfigurations[0].PublicIpAddress.Id
 
     $actualVnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgName
@@ -230,7 +229,7 @@ Invoke-LiveTestScenario -Name "Create network load balancer" -Description "Test 
     $lbRuleName = New-LiveTestResourceName
     $lbName = New-LiveTestResourceName
 
-    $publicIp = New-AzPublicIpAddress -ResourceGroupName $rgName -Name $publicIpName -Location $location -AllocationMethod Dynamic
+    $publicIp = New-AzPublicIpAddress -ResourceGroupName $rgName -Name $publicIpName -Location $location -AllocationMethod Static
     $feIpCfg = New-AzLoadBalancerFrontendIpConfig -Name $feIpCfgName -PublicIpAddress $publicIp
     $bePoolCfg = New-AzLoadBalancerBackendAddressPoolConfig -Name $bePoolCfgName
     $probe = New-AzLoadBalancerProbeConfig -Name $probeName -Protocol "Http" -Port 80 -RequestPath "healthcheck.aspx" -IntervalInSeconds 15 -ProbeCount 5 -ProbeThreshold 5
@@ -269,7 +268,7 @@ Invoke-LiveTestScenario -Name "Update network load balancer" -Description "Test 
     $lbName = New-LiveTestResourceName
     $natRuleName = New-LiveTestResourceName
 
-    $publicIp = New-AzPublicIpAddress -ResourceGroupName $rgName -Name $publicIpName -Location $location -AllocationMethod Dynamic
+    $publicIp = New-AzPublicIpAddress -ResourceGroupName $rgName -Name $publicIpName -Location $location -AllocationMethod Static
     $feIpCfg = New-AzLoadBalancerFrontendIpConfig -Name $feIpCfgName -PublicIpAddress $publicIp
     $bePoolCfg = New-AzLoadBalancerBackendAddressPoolConfig -Name $bePoolCfgName
     $probe = New-AzLoadBalancerProbeConfig -Name $probeName1 -Protocol "Http" -Port 80 -RequestPath "healthcheck80.aspx" -IntervalInSeconds 15 -ProbeCount 5 -ProbeThreshold 5
@@ -315,7 +314,7 @@ Invoke-LiveTestScenario -Name "Remove network load balancer" -Description "Test 
     $lbRuleName = New-LiveTestResourceName
     $lbName = New-LiveTestResourceName
 
-    $publicIp = New-AzPublicIpAddress -ResourceGroupName $rgName -Name $publicIpName -Location $location -AllocationMethod Dynamic
+    $publicIp = New-AzPublicIpAddress -ResourceGroupName $rgName -Name $publicIpName -Location $location -AllocationMethod Static
     $feIpCfg = New-AzLoadBalancerFrontendIpConfig -Name $feIpCfgName -PublicIpAddress $publicIp
     $bePoolCfg = New-AzLoadBalancerBackendAddressPoolConfig -Name $bePoolCfgName
     $probe = New-AzLoadBalancerProbeConfig -Name $probeName -Protocol "Http" -Port 80 -RequestPath "healthcheck.aspx" -IntervalInSeconds 15 -ProbeCount 5 -ProbeThreshold 5

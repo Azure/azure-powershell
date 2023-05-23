@@ -11,12 +11,6 @@ Locale: en-US
 This topic displays help topics for the Azure Service Bus cmdlets.
 
 ## Az.ServiceBus Cmdlets
-### [Add-AzServiceBusIPRule](Add-AzServiceBusIPRule.md)
-Add a single IP rule to the NetworkRuleSet of the given Namespace
-
-### [Add-AzServiceBusVirtualNetworkRule](Add-AzServiceBusVirtualNetworkRule.md)
-Add a single VirtualNetworkRule to NetworkRuleSet for the given Namespace
-
 ### [Approve-AzServiceBusPrivateEndpointConnection](Approve-AzServiceBusPrivateEndpointConnection.md)
 Approves a ServiceBus PrivateEndpointConnection
 
@@ -40,16 +34,10 @@ Gets the SASKey of a ServiceBus namespace, queue or topic.
 Retrieves Migration Config
 
 ### [Get-AzServiceBusNamespace](Get-AzServiceBusNamespace.md)
-Gets a description for the specified Service Bus namespace within the resource group.
-
-### [Get-AzServiceBusNamespaceV2](Get-AzServiceBusNamespaceV2.md)
 Gets a description for the specified namespace.
 
 ### [Get-AzServiceBusNetworkRuleSet](Get-AzServiceBusNetworkRuleSet.md)
 Gets NetworkRuleSet for a Namespace.
-
-### [Get-AzServiceBusOperation](Get-AzServiceBusOperation.md)
-List supported ServiceBus Operations
 
 ### [Get-AzServiceBusPrivateEndpointConnection](Get-AzServiceBusPrivateEndpointConnection.md)
 Gets a description for the specified Private Endpoint Connection.
@@ -75,9 +63,6 @@ Creates a ServiceBus Namespace, Queue, Topic Authorization Rule
 ### [New-AzServiceBusAuthorizationRuleSASToken](New-AzServiceBusAuthorizationRuleSASToken.md)
 Generates a SAS token for Azure servicebus authorization rule of namespace/queue/topic. 
 
-### [New-AzServiceBusEncryptionConfig](New-AzServiceBusEncryptionConfig.md)
-Creates an in memory object instance of PSEncryptionConfigAttributes which can then be given as input to New-AzServiceBusNamespace and Set-AzServiceBusNamespace to enable encryption 
-
 ### [New-AzServiceBusGeoDRConfiguration](New-AzServiceBusGeoDRConfiguration.md)
 Creates or updates a new Alias(Disaster Recovery configuration)
 
@@ -91,9 +76,6 @@ Regenerates the SASKey of a ServiceBus namespace, queue or topic.
 Create an in-memory object for KeyVaultProperties.
 
 ### [New-AzServiceBusNamespace](New-AzServiceBusNamespace.md)
-Creates a new Service Bus namespace.
-
-### [New-AzServiceBusNamespaceV2](New-AzServiceBusNamespaceV2.md)
 Creates a new ServiceBus namespace.
 
 ### [New-AzServiceBusQueue](New-AzServiceBusQueue.md)
@@ -118,21 +100,12 @@ Removes the Authorization Rule of a ServiceBus Namespace, Queue or Topic
 ### [Remove-AzServiceBusGeoDRConfiguration](Remove-AzServiceBusGeoDRConfiguration.md)
 Deletes an Alias(Disaster Recovery configuration)
 
-### [Remove-AzServiceBusIPRule](Remove-AzServiceBusIPRule.md)
-Remove a single IP rule to the NetworkRuleSet of the given Namespace
-
 ### [Remove-AzServiceBusMigration](Remove-AzServiceBusMigration.md)
 Deletes a MigrationConfiguration
 
 ### [Remove-AzServiceBusNamespace](Remove-AzServiceBusNamespace.md)
-Removes the namespace from the specified resource group. 
-
-### [Remove-AzServiceBusNamespaceV2](Remove-AzServiceBusNamespaceV2.md)
 Deletes an existing namespace.
 This operation also removes all associated resources under the namespace.
-
-### [Remove-AzServiceBusNetworkRuleSet](Remove-AzServiceBusNetworkRuleSet.md)
-Removes the NetworkRuleSet for the Given Namespace
 
 ### [Remove-AzServiceBusPrivateEndpointConnection](Remove-AzServiceBusPrivateEndpointConnection.md)
 Deletes an existing Private Endpoint Connection.
@@ -149,9 +122,6 @@ Deletes a subscription from the specified topic.
 ### [Remove-AzServiceBusTopic](Remove-AzServiceBusTopic.md)
 Deletes a topic from the specified namespace and resource group.
 
-### [Remove-AzServiceBusVirtualNetworkRule](Remove-AzServiceBusVirtualNetworkRule.md)
-Removes the single given VirtualNetworkRule for the NetworkRuleSet of the Namespace
-
 ### [Set-AzServiceBusAuthorizationRule](Set-AzServiceBusAuthorizationRule.md)
 Updates the authorization rule of a ServiceBus namespace, queue or topic.
 
@@ -162,9 +132,6 @@ This operation disables the Disaster Recovery and stops replicating changes from
 Invokes GEO DR failover and reconfigure the alias to point to the secondary namespace
 
 ### [Set-AzServiceBusNamespace](Set-AzServiceBusNamespace.md)
-Updates the description of an existing Service Bus namespace.
-
-### [Set-AzServiceBusNamespaceV2](Set-AzServiceBusNamespaceV2.md)
 Updates a ServiceBus namespace
 
 ### [Set-AzServiceBusNetworkRuleSet](Set-AzServiceBusNetworkRuleSet.md)

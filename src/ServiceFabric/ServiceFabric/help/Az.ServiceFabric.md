@@ -17,6 +17,9 @@ Add common name or thumbprint to the cluster for client authentication purposes.
 ### [Add-AzServiceFabricManagedClusterClientCertificate](Add-AzServiceFabricManagedClusterClientCertificate.md)
 Add certificate common name or thumbprint to the cluster. This will register the certificate agains the cluster for client authentication purposes.
 
+### [Add-AzServiceFabricManagedClusterNetworkSecurityRule](Add-AzServiceFabricManagedClusterNetworkSecurityRule.md)
+Add network security rule to cluster resource.
+
 ### [Add-AzServiceFabricManagedNodeTypeVMExtension](Add-AzServiceFabricManagedNodeTypeVMExtension.md)
 Add vm extension to the node type.
 

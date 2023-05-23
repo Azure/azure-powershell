@@ -90,6 +90,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support
             {
                 yield return new global::System.Management.Automation.CompletionResult("'ReadyToReceiveAtAzureDC'", "ReadyToReceiveAtAzureDC", global::System.Management.Automation.CompletionResultType.ParameterValue, "ReadyToReceiveAtAzureDC");
             }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Created".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'Created'", "Created", global::System.Management.Automation.CompletionResultType.ParameterValue, "Created");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "ShippedToAzureDC".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'ShippedToAzureDC'", "ShippedToAzureDC", global::System.Management.Automation.CompletionResultType.ParameterValue, "ShippedToAzureDC");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "AwaitingShipmentDetails".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'AwaitingShipmentDetails'", "AwaitingShipmentDetails", global::System.Management.Automation.CompletionResultType.ParameterValue, "AwaitingShipmentDetails");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "PreparingToShipFromAzureDC".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'PreparingToShipFromAzureDC'", "PreparingToShipFromAzureDC", global::System.Management.Automation.CompletionResultType.ParameterValue, "PreparingToShipFromAzureDC");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "ShippedToCustomer".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'ShippedToCustomer'", "ShippedToCustomer", global::System.Management.Automation.CompletionResultType.ParameterValue, "ShippedToCustomer");
+            }
         }
     }
 }

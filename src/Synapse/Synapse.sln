@@ -40,6 +40,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.ScheduledQueryRule", "..
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Autoscale", "..\Monitor\Autoscale.Autorest\Az.Autoscale.csproj", "{201512D5-675A-40E1-A5BB-ACC091E98DE5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.MonitorWorkspace", "..\Monitor\MonitorWorkspace.Autorest\Az.MonitorWorkspace.csproj", "{755C9328-3DF6-4A7B-AA3B-4135F217F703}"
+EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Az.Synapse", "Synapse.Autorest\Az.Synapse.csproj", "{9C271BA4-C9F6-4736-995F-3D606FBCFDCC}"
 EndProject
 Global
@@ -124,6 +126,10 @@ Global
 		{2EE2E9E5-E25E-41C6-B186-4D38D6DD9201}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2EE2E9E5-E25E-41C6-B186-4D38D6DD9201}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2EE2E9E5-E25E-41C6-B186-4D38D6DD9201}.Release|Any CPU.Build.0 = Release|Any CPU
+		{755C9328-3DF6-4A7B-AA3B-4135F217F703}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{755C9328-3DF6-4A7B-AA3B-4135F217F703}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{755C9328-3DF6-4A7B-AA3B-4135F217F703}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{755C9328-3DF6-4A7B-AA3B-4135F217F703}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

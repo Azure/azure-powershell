@@ -38,6 +38,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support
             {
                 yield return new global::System.Management.Automation.CompletionResult("'Resume'", "Resume", global::System.Management.Automation.CompletionResultType.ParameterValue, "Resume");
             }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Restart".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'Restart'", "Restart", global::System.Management.Automation.CompletionResultType.ParameterValue, "Restart");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "ReachOutToOperation".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'ReachOutToOperation'", "ReachOutToOperation", global::System.Management.Automation.CompletionResultType.ParameterValue, "ReachOutToOperation");
+            }
         }
     }
 }

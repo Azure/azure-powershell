@@ -20,6 +20,13 @@
 
 ## Upcoming Release
 
+## Version 4.5.0
+* Added cmdlets for monitor workspace: 
+    - `Get-AzMonitorWorkspace`
+    - `New-AzMonitorWorkspace`
+    - `Update-AzMonitorWorkspace`
+    - `Remove-AzMonitorWorkspace`
+
 ## Version 4.4.1
 * Removed default value for time window for autoscale profile [#20660]
   * `Get-AzAutoscaleSetting`

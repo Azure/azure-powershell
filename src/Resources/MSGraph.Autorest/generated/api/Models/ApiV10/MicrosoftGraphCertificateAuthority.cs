@@ -78,6 +78,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Required. The base64 encoded string representing the public certificate.",
         SerializedName = @"certificate",
         PossibleTypes = new [] { typeof(byte[]) })]
@@ -86,6 +89,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The URL of the certificate revocation list.",
         SerializedName = @"certificateRevocationListUrl",
         PossibleTypes = new [] { typeof(string) })]
@@ -96,6 +102,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The URL contains the list of all revoked certificates since the last time a full certificate revocaton list was created.",
         SerializedName = @"deltaCertificateRevocationListUrl",
         PossibleTypes = new [] { typeof(string) })]
@@ -106,6 +115,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Required. true if the trusted certificate is a root authority, false if the trusted certificate is an intermediate authority.",
         SerializedName = @"isRootAuthority",
         PossibleTypes = new [] { typeof(bool) })]
@@ -116,6 +128,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The issuer of the certificate, calculated from the certificate value. Read-only.",
         SerializedName = @"issuer",
         PossibleTypes = new [] { typeof(string) })]
@@ -126,6 +141,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The subject key identifier of the certificate, calculated from the certificate value. Read-only.",
         SerializedName = @"issuerSki",
         PossibleTypes = new [] { typeof(string) })]

@@ -29,10 +29,19 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string Mode { get; set; }
 
         [Ps1Xml(Target = ViewControl.Table)]
+        public bool? RequestBodyEnforcement { get; set; }
+
+        [Ps1Xml(Target = ViewControl.Table)]
+        public int? RequestBodyInspectLimitInKB { get; set; }
+
+        [Ps1Xml(Target = ViewControl.Table)]
         public bool RequestBodyCheck { get; set; }
 
         [Ps1Xml(Target = ViewControl.Table)]
         public int MaxRequestBodySizeInKb { get; set; }
+
+        [Ps1Xml(Target = ViewControl.Table)]
+        public bool? FileUploadEnforcement { get; set; }
 
         [Ps1Xml(Target = ViewControl.Table)]
         public int FileUploadLimitInMb { get; set; }
@@ -42,5 +51,8 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         [Ps1Xml(Target = ViewControl.Table)]
         public int? CustomBlockResponseStatusCode { get; set; }
+
+        [Ps1Xml(Target = ViewControl.Table)]
+        public PSApplicationGatewayFirewallPolicyLogScrubbingConfiguration LogScrubbing { get; set; }
     }
 }

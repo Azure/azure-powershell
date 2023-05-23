@@ -104,6 +104,13 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
         }
 
         [Fact]
+        [Trait(Category.RunType, Category.LiveOnly)]
+        public void TestPublishWebAppOneDeploy()
+        {
+            TestRunner.RunTestScript("Test-PublishAzureWebAppOneDeploy");
+        }
+
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCloneNewWebApp()
         {

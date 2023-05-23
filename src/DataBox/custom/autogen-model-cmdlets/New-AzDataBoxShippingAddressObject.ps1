@@ -21,12 +21,12 @@ Create an in-memory object for ShippingAddress.
 Create an in-memory object for ShippingAddress.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ShippingAddress
+Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.ShippingAddress
 .Link
-https://learn.microsoft.com/powershell/module/az.DataBox/new-AzDataBoxShippingAddressObject
+https://learn.microsoft.com/powershell/module/Az.DataBox/new-AzDataBoxShippingAddressObject
 #>
 function New-AzDataBoxShippingAddressObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ShippingAddress')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.ShippingAddress')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -46,6 +46,9 @@ function New-AzDataBoxShippingAddressObject {
         [Parameter(HelpMessage="Postal code.")]
         [string]
         $PostalCode,
+        [Parameter(HelpMessage="Flag to indicate if customer has chosen to skip default address validation.")]
+        [bool]
+        $SkipAddressValidation,
         [Parameter(HelpMessage="Name of the State or Province.")]
         [string]
         $StateOrProvince,
@@ -58,13 +61,16 @@ function New-AzDataBoxShippingAddressObject {
         [Parameter(HelpMessage="Street Address line 3.")]
         [string]
         $StreetAddress3,
+        [Parameter(HelpMessage="Tax Identification Number.")]
+        [string]
+        $TaxIdentificationNumber,
         [Parameter(HelpMessage="Extended Zip Code.")]
         [string]
         $ZipExtendedCode
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ShippingAddress]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.ShippingAddress]::New()
 
         if ($PSBoundParameters.ContainsKey('AddressType')) {
             $Object.AddressType = $AddressType
@@ -81,6 +87,9 @@ function New-AzDataBoxShippingAddressObject {
         if ($PSBoundParameters.ContainsKey('PostalCode')) {
             $Object.PostalCode = $PostalCode
         }
+        if ($PSBoundParameters.ContainsKey('SkipAddressValidation')) {
+            $Object.SkipAddressValidation = $SkipAddressValidation
+        }
         if ($PSBoundParameters.ContainsKey('StateOrProvince')) {
             $Object.StateOrProvince = $StateOrProvince
         }
@@ -92,6 +101,9 @@ function New-AzDataBoxShippingAddressObject {
         }
         if ($PSBoundParameters.ContainsKey('StreetAddress3')) {
             $Object.StreetAddress3 = $StreetAddress3
+        }
+        if ($PSBoundParameters.ContainsKey('TaxIdentificationNumber')) {
+            $Object.TaxIdentificationNumber = $TaxIdentificationNumber
         }
         if ($PSBoundParameters.ContainsKey('ZipExtendedCode')) {
             $Object.ZipExtendedCode = $ZipExtendedCode

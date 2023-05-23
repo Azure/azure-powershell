@@ -15,6 +15,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support
         /// <summary>No Resolution Yet</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.CustomerResolutionCode None = @"None";
 
+        /// <summary>Reach out to operation for further action.</summary>
+        public static Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.CustomerResolutionCode ReachOutToOperation = @"ReachOutToOperation";
+
+        /// <summary>Restart whole action.</summary>
+        public static Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.CustomerResolutionCode Restart = @"Restart";
+
         /// <summary>Resume the job to same stage</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.CustomerResolutionCode Resume = @"Resume";
 
@@ -28,7 +34,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support
             return new CustomerResolutionCode(global::System.Convert.ToString(value));
         }
 
-        /// <summary>Creates an instance of the <see cref="CustomerResolutionCode" Enum class./></summary>
+        /// <summary>Creates an instance of the <see cref="CustomerResolutionCode"/> Enum class.</summary>
         /// <param name="underlyingValue">the value to create an instance for.</param>
         private CustomerResolutionCode(string underlyingValue)
         {
@@ -82,8 +88,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support
         }
 
         /// <summary>Overriding != operator for enum CustomerResolutionCode</summary>
-        /// <param name="e1">the value to compare against <see cref="e2" /></param>
-        /// <param name="e2">the value to compare against <see cref="e1" /></param>
+        /// <param name="e1">the value to compare against <paramref name="e2" /></param>
+        /// <param name="e2">the value to compare against <paramref name="e1" /></param>
         /// <returns><c>true</c> if the two instances are not equal to the same value</returns>
         public static bool operator !=(Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.CustomerResolutionCode e1, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.CustomerResolutionCode e2)
         {
@@ -91,8 +97,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support
         }
 
         /// <summary>Overriding == operator for enum CustomerResolutionCode</summary>
-        /// <param name="e1">the value to compare against <see cref="e2" /></param>
-        /// <param name="e2">the value to compare against <see cref="e1" /></param>
+        /// <param name="e1">the value to compare against <paramref name="e2" /></param>
+        /// <param name="e2">the value to compare against <paramref name="e1" /></param>
         /// <returns><c>true</c> if the two instances are equal to the same value</returns>
         public static bool operator ==(Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.CustomerResolutionCode e1, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.CustomerResolutionCode e2)
         {

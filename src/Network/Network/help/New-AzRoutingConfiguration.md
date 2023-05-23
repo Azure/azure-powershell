@@ -14,8 +14,8 @@ Creates a RoutingConfiguration object.
 
 ```
 New-AzRoutingConfiguration -AssociatedRouteTable <String> -Label <String[]> -Id <String[]>
- [-StaticRoute <PSStaticRoute[]>] [-VnetLocalRouteOverrideCriteria <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-StaticRoute <PSStaticRoute[]>] [-VnetLocalRouteOverrideCriteria <String>] [-InboundRouteMap <String>]
+ [-OutboundRouteMap <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -27,10 +27,11 @@ Creates a RoutingConfiguration object.
 ```powershell
 $rgName = "testRg"
 $virtualHubName = "testHub"
+$inboundRouteMap = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRg/providers/Microsoft.Network/virtualHubs/testHub/routeMaps/testRouteMap"
 $rt1 = Get-AzVHubRouteTable -ResourceGroupName $rgName -VirtualHubName $virtualHubName -Name "defaultRouteTable"
 $rt2 = Get-AzVHubRouteTable -ResourceGroupName $rgName -VirtualHubName $virtualHubName -Name "noneRouteTable"
 $route1 = New-AzStaticRoute -Name "route1" -AddressPrefix @("10.20.0.0/16", "10.30.0.0/16")-NextHopIpAddress "10.90.0.5"
-New-AzRoutingConfiguration -AssociatedRouteTable $rt1.Id -Label @("testLabel") -Id @($rt2.Id) -StaticRoute @($route1)
+New-AzRoutingConfiguration -AssociatedRouteTable $rt1.Id -Label @("testLabel") -Id @($rt2.Id) -StaticRoute @($route1) -InboundRouteMap $inboundRouteMap
 ```
 
 ```output
@@ -43,7 +44,8 @@ PropagatedRouteTables : {
                             {
                               "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRg/providers/Microsoft.Network/virtualHubs/testHub/hubRouteTables/noneRouteTable"
                             }
-                          ]
+                          ],
+                          "InboundRouteMap": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRg/providers/Microsoft.Network/virtualHubs/testHub/routeMaps/testRouteMap"
                         }
 VnetRoutes            : {
                           "StaticRoutes": [
@@ -108,6 +110,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InboundRouteMap
+The inbound route maps of this routing configuration.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Label
 The list of labels for the PropagatedRouteTables property.
 
@@ -117,6 +134,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -OutboundRouteMap
+The outbound route maps of this routing configuration.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

@@ -116,8 +116,6 @@ Add means to add user assigned managed identities for workspace, Remove means to
 
         public const string LibraryRequirementsFilePath = "Environment configuration file (\"PIP freeze\" output).";
 
-        public const string SparkConfigPropertiesFilePath = "[Deprecated] Spark pool properties configuration file. This parameter is deprecated, please use \"-SparkConfiguration\" instead.";
-
         public const string SparkConfigurationResource = "Apache Spark configuration. When a job is submitted to the pool, the properties specified in the selected configuration will be referenced.";
 
         public const string Batch = "Indicates Spark batch.";

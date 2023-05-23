@@ -39,6 +39,8 @@ The exported SSH configuration file can be used to connect to Azure Resources by
 For example:
 rsync -e 'ssh -F /path/to/config'.
 Users can create ssh config files that use AAD issued certificates or local user credentials.
+Important note: When connecting to Azure Arc resources, this cmdlet requires the Az.Ssh.ArcProxy module to also be installed in the client machine. The cmdlet will attempt to install the module from the PowerShell Gallery, but the user also has the option to install it themselves. It is important that the user also has permission to execute the Proxy files in the Az.Ssh.ArcProxy module, or the connection will fail. You can find the Az.Ssh.ArcServer module in the PowerShell Gallery: https://aka.ms/PowerShellGallery-Az.Ssh.ArcProxy.
+
 
 ## EXAMPLES
 

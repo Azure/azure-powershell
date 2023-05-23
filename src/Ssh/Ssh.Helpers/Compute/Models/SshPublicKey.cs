@@ -38,7 +38,7 @@ namespace Microsoft.Azure.PowerShell.Ssh.Helpers.Compute.Models
         /// authenticate with the VM through ssh. The key needs to be at least
         /// 2048-bit and in ssh-rsa format. &lt;br&gt;&lt;br&gt; For creating
         /// ssh keys, see [Create SSH keys on Linux and Mac for Linux VMs in
-        /// Azure]https://learn.microsoft.com/azure/virtual-machines/linux/create-ssh-keys-detailed).</param>
+        /// Azure]https://docs.microsoft.com/azure/virtual-machines/linux/create-ssh-keys-detailed).</param>
         public SshPublicKey(string path = default(string), string keyData = default(string))
         {
             Path = path;
@@ -64,7 +64,7 @@ namespace Microsoft.Azure.PowerShell.Ssh.Helpers.Compute.Models
         /// the VM through ssh. The key needs to be at least 2048-bit and in
         /// ssh-rsa format. &amp;lt;br&amp;gt;&amp;lt;br&amp;gt; For creating
         /// ssh keys, see [Create SSH keys on Linux and Mac for Linux VMs in
-        /// Azure]https://learn.microsoft.com/azure/virtual-machines/linux/create-ssh-keys-detailed).
+        /// Azure]https://docs.microsoft.com/azure/virtual-machines/linux/create-ssh-keys-detailed).
         /// </summary>
         [JsonProperty(PropertyName = "keyData")]
         public string KeyData { get; set; }

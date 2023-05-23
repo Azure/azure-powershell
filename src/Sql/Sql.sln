@@ -40,6 +40,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Az.ScheduledQueryRule", "..
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Az.Autoscale", "..\Monitor\Autoscale.Autorest\Az.Autoscale.csproj", "{201512D5-675A-40E1-A5BB-ACC091E98DE5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.MonitorWorkspace", "..\Monitor\MonitorWorkspace.Autorest\Az.MonitorWorkspace.csproj", "{755C9328-3DF6-4A7B-AA3B-4135F217F703}"
+EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KeyVault", "..\KeyVault\KeyVault\KeyVault.csproj", "{9BDC0965-CC31-4767-9D8C-BAF4C0DB3C06}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sql.Sdk", "Sql.Sdk\Sql.Sdk.csproj", "{EEFA7E00-46FE-445B-8CE9-10DBDB46CA05}"
@@ -211,6 +213,10 @@ Global
 		{EEFA7E00-46FE-445B-8CE9-10DBDB46CA05}.Release|Any CPU.Build.0 = Release|Any CPU
 		{EEFA7E00-46FE-445B-8CE9-10DBDB46CA05}.Release|x64.ActiveCfg = Release|Any CPU
 		{EEFA7E00-46FE-445B-8CE9-10DBDB46CA05}.Release|x64.Build.0 = Release|Any CPU
+		{755C9328-3DF6-4A7B-AA3B-4135F217F703}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{755C9328-3DF6-4A7B-AA3B-4135F217F703}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{755C9328-3DF6-4A7B-AA3B-4135F217F703}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{755C9328-3DF6-4A7B-AA3B-4135F217F703}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

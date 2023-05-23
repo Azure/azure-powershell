@@ -42,247 +42,304 @@ AUTHORIZATION <IWorkspaceProviderAuthorization[]>: The workspace provider author
 https://learn.microsoft.com/powershell/module/az.databricks/new-azdatabricksworkspace
 #>
 function New-AzDatabricksWorkspace {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IWorkspace])]
-[CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-param(
-    [Parameter(Mandatory)]
-    [Alias('WorkspaceName')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Path')]
-    [System.String]
-    # The name of the workspace.
-    ${Name},
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IWorkspace])]
+    [CmdletBinding(DefaultParameterSetName = 'CreateExpanded', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
+    param(
+        [Parameter(Mandatory)]
+        [Alias('WorkspaceName')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Path')]
+        [System.String]
+        # The name of the workspace.
+        ${Name},
 
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Path')]
-    [System.String]
-    # The name of the resource group.
-    # The name is case insensitive.
-    ${ResourceGroupName},
+        [Parameter(Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Path')]
+        [System.String]
+        # The name of the resource group.
+        # The name is case insensitive.
+        ${ResourceGroupName},
 
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String]
-    # The ID of the target subscription.
-    ${SubscriptionId},
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Path')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.DefaultInfo(Script = '(Get-AzContext).Subscription.Id')]
+        [System.String]
+        # The ID of the target subscription.
+        ${SubscriptionId},
 
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
-    [System.String]
-    # The geo-location where the resource lives
-    ${Location},
+        [Parameter(Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
+        [System.String]
+        # The geo-location where the resource lives
+        ${Location},
 
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
-    [System.String]
-    # The managed resource group Id.
-    ${ManagedResourceGroupName},
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
+        [System.String]
+        # The managed resource group Id.
+        ${ManagedResourceGroupName},
 
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
-    [System.String]
-    # The value which should be used for this field.
-    ${AmlWorkspaceId},
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
+        [System.String]
+        # The value which should be used for this field.
+        ${AmlWorkspaceId},
 
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
-    [System.Management.Automation.SwitchParameter]
-    # Should the Public IP be Disabled?
-    ${EnableNoPublicIP},
+        [Parameter()]
+        [AllowEmptyCollection()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IWorkspaceProviderAuthorization[]]
+        # The workspace provider authorizations.
+        # To construct, see NOTES section for AUTHORIZATION properties and create a hash table.
+        ${Authorization},
 
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
-    [System.String]
-    # The name of KeyVault key.
-    ${EncryptionKeyName},
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
+        [System.Management.Automation.SwitchParameter]
+        # The value which should be used for this field.
+        ${EnableNoPublicIP},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.KeySource])]
-    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.KeySource]
-    # The encryption keySource (provider).
-    # Possible values (case-insensitive): Default, Microsoft.Keyvault
-    ${EncryptionKeySource},
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
+        [System.String]
+        # The name of KeyVault key.
+        ${EncryptionKeyName},
 
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
-    [System.String]
-    # The Uri of KeyVault.
-    ${EncryptionKeyVaultUri},
+        [Parameter()]
+        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.KeySource])]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.KeySource]
+        # The encryption keySource (provider).
+        # Possible values (case-insensitive): Default, Microsoft.Keyvault
+        ${EncryptionKeySource},
 
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
-    [System.String]
-    # The version of KeyVault key.
-    ${EncryptionKeyVersion},
-    
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
-    [System.String]
-    # The value which should be used for this field.
-    ${LoadBalancerBackendPoolName},
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
+        [System.String]
+        # The Uri of KeyVault.
+        ${EncryptionKeyVaultUri},
 
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
-    [System.String]
-    # The value which should be used for this field.
-    ${LoadBalancerId},
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
+        [System.String]
+        # The version of KeyVault key.
+        ${EncryptionKeyVersion},
 
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
-    [System.String]
-    # The value which should be used for this field.
-    ${NatGatewayName},
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
+        [System.String]
+        # The value which should be used for this field.
+        ${LoadBalancerBackendPoolName},
 
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
-    [System.Management.Automation.SwitchParameter]
-    # The value which should be used for this field.
-    ${PrepareEncryption},
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
+        [System.String]
+        # The value which should be used for this field.
+        ${LoadBalancerId},
 
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
-    [System.String]
-    # The value which should be used for this field.
-    ${PrivateSubnetName},
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
+        [System.String]
+        # The name of KeyVault key.
+        ${ManagedDiskKeyVaultPropertiesKeyName},
 
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
-    [System.String]
-    # The value which should be used for this field.
-    ${PublicIPName},
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
+        [System.String]
+        # The URI of KeyVault.
+        ${ManagedDiskKeyVaultPropertiesKeyVaultUri},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.PublicNetworkAccess])]
-    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.PublicNetworkAccess]
-    # The network access type for accessing workspace.
-    # Set value to disabled to access workspace only via private link.
-    ${PublicNetworkAccess},
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
+        [System.String]
+        # The version of KeyVault key.
+        ${ManagedDiskKeyVaultPropertiesKeyVersion},
 
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
-    [System.String]
-    # The value which should be used for this field.
-    ${PublicSubnetName},
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
+        [System.Management.Automation.SwitchParameter]
+        # Indicate whether the latest key version should be automatically used for Managed Disk Encryption.
+        ${ManagedDiskRotationToLatestKeyVersionEnabled},
 
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
-    [System.Management.Automation.SwitchParameter]
-    # The value which should be used for this field.
-    ${RequireInfrastructureEncryption},
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
+        [System.String]
+        # The name of KeyVault key.
+        ${ManagedServicesKeyVaultPropertiesKeyName},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.RequiredNsgRules])]
-    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.RequiredNsgRules]
-    # Gets or sets a value indicating whether data plane (clusters) to control plane communication happen over private endpoint.
-    # Supported values are 'AllRules' and 'NoAzureDatabricksRules'.
-    # 'NoAzureServiceRules' value is for internal use only.
-    ${RequiredNsgRule},
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
+        [System.String]
+        # The Uri of KeyVault.
+        ${ManagedServicesKeyVaultPropertiesKeyVaultUri},
 
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
-    [System.String]
-    # The SKU name.
-    ${Sku},
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
+        [System.String]
+        # The version of KeyVault key.
+        ${ManagedServicesKeyVaultPropertiesKeyVersion},
 
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
-    [System.String]
-    # The SKU tier.
-    ${SkuTier},
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
+        [System.String]
+        # The value which should be used for this field.
+        ${NatGatewayName},
 
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
-    [System.String]
-    # The value which should be used for this field.
-    ${StorageAccountName},
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
+        [System.Management.Automation.SwitchParameter]
+        # The value which should be used for this field.
+        ${PrepareEncryption},
 
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
-    [System.String]
-    # The value which should be used for this field.
-    ${StorageAccountSku},
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
+        [System.String]
+        # The value which should be used for this field.
+        ${PrivateSubnetName},
 
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20220401Preview.ITrackedResourceTags]))]
-    [System.Collections.Hashtable]
-    # Resource tags.
-    ${Tag},
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
+        [System.String]
+        # The value which should be used for this field.
+        ${PublicIPName},
 
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
-    [System.String]
-    # The value which should be used for this field.
-    ${VirtualNetworkId},
+        [Parameter()]
+        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.PublicNetworkAccess])]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.PublicNetworkAccess]
+        # The network access type for accessing workspace.
+        # Set value to disabled to access workspace only via private link.
+        ${PublicNetworkAccess},
 
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
-    [System.String]
-    # The value which should be used for this field.
-    ${VnetAddressPrefix},
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
+        [System.String]
+        # The value which should be used for this field.
+        ${PublicSubnetName},
 
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
-    ${DefaultProfile},
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
+        [System.Management.Automation.SwitchParameter]
+        # The value which should be used for this field.
+        ${RequireInfrastructureEncryption},
 
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command as a job
-    ${AsJob},
+        [Parameter()]
+        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.RequiredNsgRules])]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.RequiredNsgRules]
+        # Gets or sets a value indicating whether data plane (clusters) to control plane communication happen over private endpoint.
+        # Supported values are 'AllRules' and 'NoAzureDatabricksRules'.
+        # 'NoAzureServiceRules' value is for internal use only.
+        ${RequiredNsgRule},
 
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
+        [System.String]
+        # The SKU name.
+        ${Sku},
 
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
+        [System.String]
+        # The SKU tier.
+        ${SkuTier},
 
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
+        [System.String]
+        # The value which should be used for this field.
+        ${StorageAccountName},
 
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command asynchronously
-    ${NoWait},
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
+        [System.String]
+        # The value which should be used for this field.
+        ${StorageAccountSku},
 
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Info(PossibleTypes = ([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20220401Preview.ITrackedResourceTags]))]
+        [System.Collections.Hashtable]
+        # Resource tags.
+        ${Tag},
 
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
+        [System.String]
+        # The blob URI where the UI definition file is located.
+        ${UiDefinitionUri},
 
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
+        [System.String]
+        # The value which should be used for this field.
+        ${VirtualNetworkId},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
+        [System.String]
+        # The value which should be used for this field.
+        ${VnetAddressPrefix},
+
+        [Parameter()]
+        [Alias('AzureRMContext', 'AzureCredential')]
+        [ValidateNotNull()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Azure')]
+        [System.Management.Automation.PSObject]
+        # The DefaultProfile parameter is not functional.
+        # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+        ${DefaultProfile},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Runtime')]
+        [System.Management.Automation.SwitchParameter]
+        # Run the command as a job
+        ${AsJob},
+
+        [Parameter(DontShow)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Runtime')]
+        [System.Management.Automation.SwitchParameter]
+        # Wait for .NET debugger to attach
+        ${Break},
+
+        [Parameter(DontShow)]
+        [ValidateNotNull()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Runtime')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[]]
+        # SendAsync Pipeline Steps to be appended to the front of the pipeline
+        ${HttpPipelineAppend},
+
+        [Parameter(DontShow)]
+        [ValidateNotNull()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Runtime')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[]]
+        # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+        ${HttpPipelinePrepend},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Runtime')]
+        [System.Management.Automation.SwitchParameter]
+        # Run the command asynchronously
+        ${NoWait},
+
+        [Parameter(DontShow)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Runtime')]
+        [System.Uri]
+        # The URI for the proxy server to use
+        ${Proxy},
+
+        [Parameter(DontShow)]
+        [ValidateNotNull()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Runtime')]
+        [System.Management.Automation.PSCredential]
+        # Credentials for a proxy server to use for the remote call
+        ${ProxyCredential},
+
+        [Parameter(DontShow)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Runtime')]
+        [System.Management.Automation.SwitchParameter]
+        # Use the default credentials for the proxy
+        ${ProxyUseDefaultCredentials}
+    )
 
     process {
         try {

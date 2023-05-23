@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 4.7.0
+* Added new cmdlets `Get-AzSqlInstanceDatabaseLedgerDigestUpload`, `Disable-AzSqlInstanceDatabaseLedgerDigestUpload`, and `Enable-AzSqlInstanceDatabaseLedgerDigestUpload`
+* Added `EnableLedger` parameter to `New-AzSqlInstanceDatabase`
 * Added `PreferredEnclaveType` parameter to `NewAzureSqlElasticPool` and `SetAzureSqlElasticPool` cmdlet
 
 ## Version 4.6.0

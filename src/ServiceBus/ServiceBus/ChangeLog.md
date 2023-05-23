@@ -20,6 +20,10 @@
 -->
 ## Upcoming Release
 
+## Version 3.0.0
+* Aliased `New-AzServiceBusNamespace`, `Remove-AzServiceBusNamespace`, `Set-AzServiceBusNamespace`, `Get-AzServiceBusNamespace` with `New-AzServiceBusNamespaceV2`, `Remove-AzServiceBusNamespaceV2`, `Set-AzServiceBusNamespaceV2`, `Get-AzServiceBusNamespaceV2` respectively.
+* Replaced `New-AzServiceBusEncryptionConfig` by `New-AzServiceBusKeyVaultPropertiesObject`
+
 ## Version 2.2.1
 * Added upcoming breaking change notifications for Az.ServiceBus module.
 

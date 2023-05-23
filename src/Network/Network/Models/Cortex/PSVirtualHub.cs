@@ -44,6 +44,8 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public List<PSBgpConnection> BgpConnections { get; set; }
 
+        public List<PSRouteMap> RouteMaps { get; set; }
+
         public uint VirtualRouterAsn { get; set; }
 
         public List<string> VirtualRouterIps { get; set; }

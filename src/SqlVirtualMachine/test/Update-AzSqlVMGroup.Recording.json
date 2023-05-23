@@ -1,0 +1,982 @@
+{
+  "Update-AzSqlVMGroup+[NoContext]+UpdateExpanded+$PUT+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/azpstest-sqlvm-gp/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups/updateGroup1?api-version=2022-08-01-preview+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/azpstest-sqlvm-gp/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups/updateGroup1?api-version=2022-08-01-preview",
+      "Content": "{\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"wsfcDomainProfile\": {\r\n      \"domainFqdn\": \"azpstestsqlvm.com\",\r\n      \"clusterSubnetType\": \"SingleSubnet\"\r\n    },\r\n    \"sqlImageOffer\": \"SQL2022-WS2022\",\r\n    \"sqlImageSku\": \"Developer\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "246" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "15" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.SqlVirtualMachine/locations/eastus/operationTypes/createsqlvirtualmachinegroup/operationResults/835d28a8-642c-4699-9684-fb548f1a1ec1?api-version=2022-08-01-preview" ],
+        "x-ms-request-id": [ "cbfe6430-8bcc-4700-972f-3ecdd22be8e6" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-correlation-request-id": [ "832d883d-581f-4db3-ba94-a4818f7e4587" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230315T110159Z:832d883d-581f-4db3-ba94-a4818f7e4587" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 15 Mar 2023 11:01:59 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "412" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"provisioningState\":\"ProvisioningDomainful\",\"sqlImageOffer\":\"SQL2022-WS2022\",\"sqlImageSku\":\"Developer\",\"wsfcDomainProfile\":{}},\"location\":\"eastus\",\"id\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/azpstest-sqlvm-gp/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups/updateGroup1\",\"name\":\"updateGroup1\",\"type\":\"Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups\"}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzSqlVMGroup+[NoContext]+UpdateExpanded+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.SqlVirtualMachine/locations/eastus/operationTypes/createsqlvirtualmachinegroup/operationResults/835d28a8-642c-4699-9684-fb548f1a1ec1?api-version=2022-08-01-preview+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.SqlVirtualMachine/locations/eastus/operationTypes/createsqlvirtualmachinegroup/operationResults/835d28a8-642c-4699-9684-fb548f1a1ec1?api-version=2022-08-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "2" ],
+        "x-ms-client-request-id": [ "936d9d40-f736-4411-aea0-60dc0bb6c7a6" ],
+        "CommandName": [ "New-AzSqlVMGroup" ],
+        "FullCommandName": [ "New-AzSqlVMGroup_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.9", "Az.SqlVirtualMachine/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "15" ],
+        "x-ms-request-id": [ "2452dd37-48cd-4b98-8521-41a0ff85c5a1" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11993" ],
+        "x-ms-correlation-request-id": [ "621f3c4f-1efb-4e19-97bf-70339b710293" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230315T110214Z:621f3c4f-1efb-4e19-97bf-70339b710293" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 15 Mar 2023 11:02:14 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "107" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"name\":\"835d28a8-642c-4699-9684-fb548f1a1ec1\",\"status\":\"Succeeded\",\"startTime\":\"2023-03-15T11:01:57.407Z\"}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzSqlVMGroup+[NoContext]+UpdateExpanded+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/azpstest-sqlvm-gp/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups/updateGroup1?api-version=2022-08-01-preview+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/azpstest-sqlvm-gp/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups/updateGroup1?api-version=2022-08-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "3" ],
+        "x-ms-client-request-id": [ "936d9d40-f736-4411-aea0-60dc0bb6c7a6" ],
+        "CommandName": [ "New-AzSqlVMGroup" ],
+        "FullCommandName": [ "New-AzSqlVMGroup_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.9", "Az.SqlVirtualMachine/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "d0e28761-4b48-41a6-b759-0365567bb72b" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11992" ],
+        "x-ms-correlation-request-id": [ "0bc2de08-3d81-4080-a195-773751bc427d" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230315T110215Z:0bc2de08-3d81-4080-a195-773751bc427d" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 15 Mar 2023 11:02:14 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "467" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"provisioningState\":\"Succeeded\",\"sqlImageOffer\":\"SQL2022-WS2022\",\"sqlImageSku\":\"Developer\",\"wsfcDomainProfile\":{\"domainFqdn\":\"azpstestsqlvm.com\",\"clusterSubnetType\":\"SingleSubnet\"}},\"location\":\"eastus\",\"id\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/azpstest-sqlvm-gp/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups/updateGroup1\",\"name\":\"updateGroup1\",\"type\":\"Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups\"}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzSqlVMGroup+[NoContext]+UpdateExpanded+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/azpstest-sqlvm-gp/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups/updateGroup1?api-version=2022-08-01-preview+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/azpstest-sqlvm-gp/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups/updateGroup1?api-version=2022-08-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "4" ],
+        "x-ms-client-request-id": [ "b25ea30c-5625-43bc-9963-387beff58980" ],
+        "CommandName": [ "Get-AzSqlVMGroup" ],
+        "FullCommandName": [ "Get-AzSqlVMGroup_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.9", "Az.SqlVirtualMachine/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "30e38903-3a50-4396-925d-1b2c6a548bfe" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11991" ],
+        "x-ms-correlation-request-id": [ "e6c85f40-5da5-4ab5-be98-feadbd74d4f5" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230315T110216Z:e6c85f40-5da5-4ab5-be98-feadbd74d4f5" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 15 Mar 2023 11:02:15 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "467" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"provisioningState\":\"Succeeded\",\"sqlImageOffer\":\"SQL2022-WS2022\",\"sqlImageSku\":\"Developer\",\"wsfcDomainProfile\":{\"domainFqdn\":\"azpstestsqlvm.com\",\"clusterSubnetType\":\"SingleSubnet\"}},\"location\":\"eastus\",\"id\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/azpstest-sqlvm-gp/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups/updateGroup1\",\"name\":\"updateGroup1\",\"type\":\"Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups\"}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzSqlVMGroup+[NoContext]+UpdateExpanded+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/azpstest-sqlvm-gp/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups/updateGroup1?api-version=2022-08-01-preview+5": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/azpstest-sqlvm-gp/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups/updateGroup1?api-version=2022-08-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "5" ],
+        "x-ms-client-request-id": [ "2c207069-82a5-4f3e-85c1-df9db0be4f74" ],
+        "CommandName": [ "Get-AzSqlVMGroup" ],
+        "FullCommandName": [ "Get-AzSqlVMGroup_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.9", "Az.SqlVirtualMachine/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "84b0f976-270f-4bb7-8a21-5e04830adc34" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11990" ],
+        "x-ms-correlation-request-id": [ "c4e1b6fb-dfe3-444a-9948-63caa25ed67d" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230315T110216Z:c4e1b6fb-dfe3-444a-9948-63caa25ed67d" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 15 Mar 2023 11:02:16 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "467" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"provisioningState\":\"Succeeded\",\"sqlImageOffer\":\"SQL2022-WS2022\",\"sqlImageSku\":\"Developer\",\"wsfcDomainProfile\":{\"domainFqdn\":\"azpstestsqlvm.com\",\"clusterSubnetType\":\"SingleSubnet\"}},\"location\":\"eastus\",\"id\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/azpstest-sqlvm-gp/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups/updateGroup1\",\"name\":\"updateGroup1\",\"type\":\"Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups\"}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzSqlVMGroup+[NoContext]+UpdateExpanded+$PUT+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/azpstest-sqlvm-gp/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups/updateGroup1?api-version=2022-08-01-preview+6": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/azpstest-sqlvm-gp/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups/updateGroup1?api-version=2022-08-01-preview",
+      "Content": "{\r\n  \"location\": \"eastus\",\r\n  \"tags\": {\r\n    \"IT\": \"8888\"\r\n  },\r\n  \"properties\": {\r\n    \"wsfcDomainProfile\": {\r\n      \"domainFqdn\": \"azpstestsqlvm2.com\",\r\n      \"ouPath\": \"OU=path1,DC=azpstestsqlvm2,DC=com\",\r\n      \"clusterBootstrapAccount\": \"boostrapuser@azpstestsqlvm2.com\",\r\n      \"clusterOperatorAccount\": \"operatoruser@azpstestsqlvm2.com\",\r\n      \"sqlServiceAccount\": \"sqluser@azpstestsqlvm2.com\",\r\n      \"storageAccountUrl\": \"https://azpstestsqlvmstorage.blob.core.windows.net/\",\r\n      \"storageAccountPrimaryKey\": \"akeyvalue\",\r\n      \"clusterSubnetType\": \"MultiSubnet\"\r\n    },\r\n    \"sqlImageOffer\": \"SQL2022-WS2022\",\r\n    \"sqlImageSku\": \"Developer\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "663" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "15" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.SqlVirtualMachine/locations/eastus/operationTypes/updatesqlvirtualmachinegroup/operationResults/51336aff-e61b-42d0-8652-4e96989c40ef?api-version=2022-08-01-preview" ],
+        "x-ms-request-id": [ "537e68fa-084f-4e10-b5a7-54121e141469" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
+        "x-ms-correlation-request-id": [ "e56fd574-6ca7-4e5a-bac6-48b34d72e771" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230315T110219Z:e56fd574-6ca7-4e5a-bac6-48b34d72e771" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 15 Mar 2023 11:02:18 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "502" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"provisioningState\":\"UpdatingDomainful\",\"sqlImageOffer\":\"SQL2022-WS2022\",\"sqlImageSku\":\"Developer\",\"wsfcDomainProfile\":{\"storageAccountUrl\":\"https://azpstestsqlvmstorage.blob.core.windows.net/\"}},\"location\":\"eastus\",\"tags\":{\"IT\":\"8888\"},\"id\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/azpstest-sqlvm-gp/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups/updateGroup1\",\"name\":\"updateGroup1\",\"type\":\"Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups\"}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzSqlVMGroup+[NoContext]+UpdateExpanded+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.SqlVirtualMachine/locations/eastus/operationTypes/updatesqlvirtualmachinegroup/operationResults/51336aff-e61b-42d0-8652-4e96989c40ef?api-version=2022-08-01-preview+7": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.SqlVirtualMachine/locations/eastus/operationTypes/updatesqlvirtualmachinegroup/operationResults/51336aff-e61b-42d0-8652-4e96989c40ef?api-version=2022-08-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "7" ],
+        "x-ms-client-request-id": [ "3853d087-b2ae-4ecf-8c36-5270f390ec36" ],
+        "CommandName": [ "New-AzSqlVMGroup" ],
+        "FullCommandName": [ "New-AzSqlVMGroup_CreateViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.9", "Az.SqlVirtualMachine/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "15" ],
+        "x-ms-request-id": [ "057e6925-4bc2-46b6-94ac-bfd68f352d7b" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11989" ],
+        "x-ms-correlation-request-id": [ "072d1275-73e4-4f32-9798-eaba7756b037" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230315T110235Z:072d1275-73e4-4f32-9798-eaba7756b037" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 15 Mar 2023 11:02:35 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "107" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"name\":\"51336aff-e61b-42d0-8652-4e96989c40ef\",\"status\":\"Succeeded\",\"startTime\":\"2023-03-15T11:02:17.423Z\"}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzSqlVMGroup+[NoContext]+UpdateExpanded+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/azpstest-sqlvm-gp/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups/updateGroup1?api-version=2022-08-01-preview+8": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/azpstest-sqlvm-gp/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups/updateGroup1?api-version=2022-08-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "8" ],
+        "x-ms-client-request-id": [ "3853d087-b2ae-4ecf-8c36-5270f390ec36" ],
+        "CommandName": [ "New-AzSqlVMGroup" ],
+        "FullCommandName": [ "New-AzSqlVMGroup_CreateViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.9", "Az.SqlVirtualMachine/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "192bca93-4fc2-43db-8294-f9b4765b6050" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11988" ],
+        "x-ms-correlation-request-id": [ "eeb60ed6-918f-46af-99f2-e163be93b29c" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230315T110236Z:eeb60ed6-918f-46af-99f2-e163be93b29c" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 15 Mar 2023 11:02:36 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "776" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"provisioningState\":\"Succeeded\",\"sqlImageOffer\":\"SQL2022-WS2022\",\"sqlImageSku\":\"Developer\",\"wsfcDomainProfile\":{\"domainFqdn\":\"azpstestsqlvm2.com\",\"ouPath\":\"OU=path1,DC=azpstestsqlvm2,DC=com\",\"clusterBootstrapAccount\":\"boostrapuser@azpstestsqlvm2.com\",\"clusterOperatorAccount\":\"operatoruser@azpstestsqlvm2.com\",\"sqlServiceAccount\":\"sqluser@azpstestsqlvm2.com\",\"storageAccountUrl\":\"https://azpstestsqlvmstorage.blob.core.windows.net/\",\"clusterSubnetType\":\"SingleSubnet\"}},\"location\":\"eastus\",\"tags\":{\"IT\":\"8888\"},\"id\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/azpstest-sqlvm-gp/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups/updateGroup1\",\"name\":\"updateGroup1\",\"type\":\"Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups\"}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzSqlVMGroup+[NoContext]+UpdateExpanded+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/azpstest-sqlvm-gp/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups/updateGroup1?api-version=2022-08-01-preview+9": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/azpstest-sqlvm-gp/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups/updateGroup1?api-version=2022-08-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "9" ],
+        "x-ms-client-request-id": [ "76bb5fd8-c422-40b5-b9e9-8ef329a2e412" ],
+        "CommandName": [ "Get-AzSqlVMGroup" ],
+        "FullCommandName": [ "Get-AzSqlVMGroup_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.9", "Az.SqlVirtualMachine/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "26ad7318-4b46-4308-9aed-52cc868d5702" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11987" ],
+        "x-ms-correlation-request-id": [ "d714e693-7bcc-4622-bb94-fb9a09218392" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230315T110236Z:d714e693-7bcc-4622-bb94-fb9a09218392" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 15 Mar 2023 11:02:36 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "776" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"provisioningState\":\"Succeeded\",\"sqlImageOffer\":\"SQL2022-WS2022\",\"sqlImageSku\":\"Developer\",\"wsfcDomainProfile\":{\"domainFqdn\":\"azpstestsqlvm2.com\",\"ouPath\":\"OU=path1,DC=azpstestsqlvm2,DC=com\",\"clusterBootstrapAccount\":\"boostrapuser@azpstestsqlvm2.com\",\"clusterOperatorAccount\":\"operatoruser@azpstestsqlvm2.com\",\"sqlServiceAccount\":\"sqluser@azpstestsqlvm2.com\",\"storageAccountUrl\":\"https://azpstestsqlvmstorage.blob.core.windows.net/\",\"clusterSubnetType\":\"SingleSubnet\"}},\"location\":\"eastus\",\"tags\":{\"IT\":\"8888\"},\"id\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/azpstest-sqlvm-gp/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups/updateGroup1\",\"name\":\"updateGroup1\",\"type\":\"Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups\"}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzSqlVMGroup+[NoContext]+UpdateExpanded+$DELETE+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/azpstest-sqlvm-gp/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups/updateGroup1?api-version=2022-08-01-preview+10": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/azpstest-sqlvm-gp/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups/updateGroup1?api-version=2022-08-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "10" ],
+        "x-ms-client-request-id": [ "79265068-1324-48ba-8693-0a7139831be6" ],
+        "CommandName": [ "Remove-AzSqlVMGroup" ],
+        "FullCommandName": [ "Remove-AzSqlVMGroup_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.9", "Az.SqlVirtualMachine/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.SqlVirtualMachine/locations/eastus/sqlVirtualMachineGroupOperationResults/0020018c-e4c4-429a-a2e1-9af4f7609131?api-version=2022-08-01-preview" ],
+        "Retry-After": [ "15" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.SqlVirtualMachine/locations/eastus/operationTypes/deletesqlvirtualmachinegroup/operationResults/0020018c-e4c4-429a-a2e1-9af4f7609131?api-version=2022-08-01-preview" ],
+        "x-ms-request-id": [ "20db47e2-3669-4455-8211-a50fa38d14e5" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14999" ],
+        "x-ms-correlation-request-id": [ "7cd0feaa-aad8-4d5b-864f-5345d85d762c" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230315T110238Z:7cd0feaa-aad8-4d5b-864f-5345d85d762c" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 15 Mar 2023 11:02:38 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "Update-AzSqlVMGroup+[NoContext]+UpdateExpanded+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.SqlVirtualMachine/locations/eastus/operationTypes/deletesqlvirtualmachinegroup/operationResults/0020018c-e4c4-429a-a2e1-9af4f7609131?api-version=2022-08-01-preview+11": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.SqlVirtualMachine/locations/eastus/operationTypes/deletesqlvirtualmachinegroup/operationResults/0020018c-e4c4-429a-a2e1-9af4f7609131?api-version=2022-08-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "11" ],
+        "x-ms-client-request-id": [ "79265068-1324-48ba-8693-0a7139831be6" ],
+        "CommandName": [ "Remove-AzSqlVMGroup" ],
+        "FullCommandName": [ "Remove-AzSqlVMGroup_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.9", "Az.SqlVirtualMachine/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "15" ],
+        "x-ms-request-id": [ "999a231a-3da4-405f-ac60-00579a79dc9b" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11986" ],
+        "x-ms-correlation-request-id": [ "c452ba1e-3a2b-4243-b544-9bea2a3fb6ad" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230315T110254Z:c452ba1e-3a2b-4243-b544-9bea2a3fb6ad" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 15 Mar 2023 11:02:53 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "107" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"name\":\"0020018c-e4c4-429a-a2e1-9af4f7609131\",\"status\":\"Succeeded\",\"startTime\":\"2023-03-15T11:02:37.547Z\"}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzSqlVMGroup+[NoContext]+UpdateExpanded+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.SqlVirtualMachine/locations/eastus/sqlVirtualMachineGroupOperationResults/0020018c-e4c4-429a-a2e1-9af4f7609131?api-version=2022-08-01-preview+12": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.SqlVirtualMachine/locations/eastus/sqlVirtualMachineGroupOperationResults/0020018c-e4c4-429a-a2e1-9af4f7609131?api-version=2022-08-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "12" ],
+        "x-ms-client-request-id": [ "79265068-1324-48ba-8693-0a7139831be6" ],
+        "CommandName": [ "Remove-AzSqlVMGroup" ],
+        "FullCommandName": [ "Remove-AzSqlVMGroup_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.9", "Az.SqlVirtualMachine/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 204,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "15" ],
+        "x-ms-request-id": [ "245357b0-a843-4a63-ba5f-8e467c90c156" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11985" ],
+        "x-ms-correlation-request-id": [ "dee28ec2-42f1-4e0e-9d54-9b42ec0ed571" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230315T110254Z:dee28ec2-42f1-4e0e-9d54-9b42ec0ed571" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 15 Mar 2023 11:02:53 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "Update-AzSqlVMGroup+[NoContext]+UpdateViaIdentityExpanded+$PUT+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/azpstest-sqlvm-gp/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups/updateGroup2?api-version=2022-08-01-preview+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/azpstest-sqlvm-gp/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups/updateGroup2?api-version=2022-08-01-preview",
+      "Content": "{\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"wsfcDomainProfile\": {\r\n      \"domainFqdn\": \"azpstestsqlvm.com\",\r\n      \"clusterSubnetType\": \"SingleSubnet\"\r\n    },\r\n    \"sqlImageOffer\": \"SQL2022-WS2022\",\r\n    \"sqlImageSku\": \"Developer\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "246" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "15" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.SqlVirtualMachine/locations/eastus/operationTypes/createsqlvirtualmachinegroup/operationResults/23344911-c4a8-4517-8ea9-e0c964123461?api-version=2022-08-01-preview" ],
+        "x-ms-request-id": [ "1191d0c8-bd56-4bd4-99cf-d2664d89078f" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1197" ],
+        "x-ms-correlation-request-id": [ "aa7cb1cc-6271-4a59-a9cd-390dd974959b" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230315T110259Z:aa7cb1cc-6271-4a59-a9cd-390dd974959b" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 15 Mar 2023 11:02:58 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "412" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"provisioningState\":\"ProvisioningDomainful\",\"sqlImageOffer\":\"SQL2022-WS2022\",\"sqlImageSku\":\"Developer\",\"wsfcDomainProfile\":{}},\"location\":\"eastus\",\"id\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/azpstest-sqlvm-gp/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups/updateGroup2\",\"name\":\"updateGroup2\",\"type\":\"Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups\"}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzSqlVMGroup+[NoContext]+UpdateViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.SqlVirtualMachine/locations/eastus/operationTypes/createsqlvirtualmachinegroup/operationResults/23344911-c4a8-4517-8ea9-e0c964123461?api-version=2022-08-01-preview+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.SqlVirtualMachine/locations/eastus/operationTypes/createsqlvirtualmachinegroup/operationResults/23344911-c4a8-4517-8ea9-e0c964123461?api-version=2022-08-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "14" ],
+        "x-ms-client-request-id": [ "256d796e-5f11-49f5-a9e3-a24e2c343aa6" ],
+        "CommandName": [ "New-AzSqlVMGroup" ],
+        "FullCommandName": [ "New-AzSqlVMGroup_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.9", "Az.SqlVirtualMachine/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "15" ],
+        "x-ms-request-id": [ "40d873ab-60fa-49f3-a128-8f4735abd7a1" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11984" ],
+        "x-ms-correlation-request-id": [ "724b7344-9cbb-4f7a-a868-ad47cd4c5118" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230315T110314Z:724b7344-9cbb-4f7a-a868-ad47cd4c5118" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 15 Mar 2023 11:03:13 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "107" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"name\":\"23344911-c4a8-4517-8ea9-e0c964123461\",\"status\":\"Succeeded\",\"startTime\":\"2023-03-15T11:02:56.673Z\"}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzSqlVMGroup+[NoContext]+UpdateViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/azpstest-sqlvm-gp/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups/updateGroup2?api-version=2022-08-01-preview+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/azpstest-sqlvm-gp/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups/updateGroup2?api-version=2022-08-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "15" ],
+        "x-ms-client-request-id": [ "256d796e-5f11-49f5-a9e3-a24e2c343aa6" ],
+        "CommandName": [ "New-AzSqlVMGroup" ],
+        "FullCommandName": [ "New-AzSqlVMGroup_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.9", "Az.SqlVirtualMachine/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "21f850b2-684b-4b67-a17c-a2ad2d2c6100" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11983" ],
+        "x-ms-correlation-request-id": [ "ad26ba2e-d4a1-4239-9b39-c22ce8788bb5" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230315T110314Z:ad26ba2e-d4a1-4239-9b39-c22ce8788bb5" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 15 Mar 2023 11:03:14 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "467" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"provisioningState\":\"Succeeded\",\"sqlImageOffer\":\"SQL2022-WS2022\",\"sqlImageSku\":\"Developer\",\"wsfcDomainProfile\":{\"domainFqdn\":\"azpstestsqlvm.com\",\"clusterSubnetType\":\"SingleSubnet\"}},\"location\":\"eastus\",\"id\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/azpstest-sqlvm-gp/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups/updateGroup2\",\"name\":\"updateGroup2\",\"type\":\"Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups\"}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzSqlVMGroup+[NoContext]+UpdateViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/azpstest-sqlvm-gp/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups/updateGroup2?api-version=2022-08-01-preview+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/azpstest-sqlvm-gp/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups/updateGroup2?api-version=2022-08-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "16" ],
+        "x-ms-client-request-id": [ "a3dc0aec-3e51-4f70-b29d-ef844d4c5a78" ],
+        "CommandName": [ "Get-AzSqlVMGroup" ],
+        "FullCommandName": [ "Get-AzSqlVMGroup_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.9", "Az.SqlVirtualMachine/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "9cd11b60-67f4-4922-abb6-39c0eab14ae4" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11982" ],
+        "x-ms-correlation-request-id": [ "2b0d972f-04f6-4884-b2a6-5ee7410e38f2" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230315T110315Z:2b0d972f-04f6-4884-b2a6-5ee7410e38f2" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 15 Mar 2023 11:03:14 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "467" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"provisioningState\":\"Succeeded\",\"sqlImageOffer\":\"SQL2022-WS2022\",\"sqlImageSku\":\"Developer\",\"wsfcDomainProfile\":{\"domainFqdn\":\"azpstestsqlvm.com\",\"clusterSubnetType\":\"SingleSubnet\"}},\"location\":\"eastus\",\"id\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/azpstest-sqlvm-gp/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups/updateGroup2\",\"name\":\"updateGroup2\",\"type\":\"Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups\"}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzSqlVMGroup+[NoContext]+UpdateViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/azpstest-sqlvm-gp/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups/updateGroup2?api-version=2022-08-01-preview+5": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/azpstest-sqlvm-gp/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups/updateGroup2?api-version=2022-08-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "17" ],
+        "x-ms-client-request-id": [ "f1efcb4e-0043-4b09-bd6f-6f81140c8d8a" ],
+        "CommandName": [ "Get-AzSqlVMGroup" ],
+        "FullCommandName": [ "Get-AzSqlVMGroup_GetViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.9", "Az.SqlVirtualMachine/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "7cbf0fbb-654a-4f37-9b12-7b4d53d79a46" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11981" ],
+        "x-ms-correlation-request-id": [ "fc0a7293-41fe-43f9-8468-ced634026688" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230315T110316Z:fc0a7293-41fe-43f9-8468-ced634026688" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 15 Mar 2023 11:03:15 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "467" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"provisioningState\":\"Succeeded\",\"sqlImageOffer\":\"SQL2022-WS2022\",\"sqlImageSku\":\"Developer\",\"wsfcDomainProfile\":{\"domainFqdn\":\"azpstestsqlvm.com\",\"clusterSubnetType\":\"SingleSubnet\"}},\"location\":\"eastus\",\"id\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/azpstest-sqlvm-gp/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups/updateGroup2\",\"name\":\"updateGroup2\",\"type\":\"Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups\"}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzSqlVMGroup+[NoContext]+UpdateViaIdentityExpanded+$PUT+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/azpstest-sqlvm-gp/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups/updateGroup2?api-version=2022-08-01-preview+6": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/azpstest-sqlvm-gp/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups/updateGroup2?api-version=2022-08-01-preview",
+      "Content": "{\r\n  \"location\": \"eastus\",\r\n  \"tags\": {\r\n    \"IT\": \"8888\"\r\n  },\r\n  \"properties\": {\r\n    \"wsfcDomainProfile\": {\r\n      \"domainFqdn\": \"azpstestsqlvm2.com\",\r\n      \"ouPath\": \"OU=path1,DC=azpstestsqlvm2,DC=com\",\r\n      \"clusterBootstrapAccount\": \"boostrapuser@azpstestsqlvm2.com\",\r\n      \"clusterOperatorAccount\": \"operatoruser@azpstestsqlvm2.com\",\r\n      \"sqlServiceAccount\": \"sqluser@azpstestsqlvm2.com\",\r\n      \"storageAccountUrl\": \"https://azpstestsqlvmstorage.blob.core.windows.net/\",\r\n      \"storageAccountPrimaryKey\": \"akeyvalue\",\r\n      \"clusterSubnetType\": \"MultiSubnet\"\r\n    },\r\n    \"sqlImageOffer\": \"SQL2022-WS2022\",\r\n    \"sqlImageSku\": \"Developer\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "663" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "15" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.SqlVirtualMachine/locations/eastus/operationTypes/updatesqlvirtualmachinegroup/operationResults/07f10f90-00eb-4679-a667-4aa33fc0e32d?api-version=2022-08-01-preview" ],
+        "x-ms-request-id": [ "df60af49-06b9-4a2b-a782-c7caea1b6103" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1196" ],
+        "x-ms-correlation-request-id": [ "7fc30fc0-44bc-49e6-a4d7-48f9aaf169dd" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230315T110319Z:7fc30fc0-44bc-49e6-a4d7-48f9aaf169dd" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 15 Mar 2023 11:03:19 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "502" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"provisioningState\":\"UpdatingDomainful\",\"sqlImageOffer\":\"SQL2022-WS2022\",\"sqlImageSku\":\"Developer\",\"wsfcDomainProfile\":{\"storageAccountUrl\":\"https://azpstestsqlvmstorage.blob.core.windows.net/\"}},\"location\":\"eastus\",\"tags\":{\"IT\":\"8888\"},\"id\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/azpstest-sqlvm-gp/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups/updateGroup2\",\"name\":\"updateGroup2\",\"type\":\"Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups\"}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzSqlVMGroup+[NoContext]+UpdateViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.SqlVirtualMachine/locations/eastus/operationTypes/updatesqlvirtualmachinegroup/operationResults/07f10f90-00eb-4679-a667-4aa33fc0e32d?api-version=2022-08-01-preview+7": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.SqlVirtualMachine/locations/eastus/operationTypes/updatesqlvirtualmachinegroup/operationResults/07f10f90-00eb-4679-a667-4aa33fc0e32d?api-version=2022-08-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "19" ],
+        "x-ms-client-request-id": [ "b411e666-0f64-44b9-80d5-2ace700b31f0" ],
+        "CommandName": [ "New-AzSqlVMGroup" ],
+        "FullCommandName": [ "New-AzSqlVMGroup_CreateViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.9", "Az.SqlVirtualMachine/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "15" ],
+        "x-ms-request-id": [ "96ca1671-eda3-443f-991e-30f2126e7a11" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11980" ],
+        "x-ms-correlation-request-id": [ "2cfb33ef-1f24-4c16-bc06-ea9e1df4ae55" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230315T110335Z:2cfb33ef-1f24-4c16-bc06-ea9e1df4ae55" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 15 Mar 2023 11:03:35 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "106" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"name\":\"07f10f90-00eb-4679-a667-4aa33fc0e32d\",\"status\":\"Succeeded\",\"startTime\":\"2023-03-15T11:03:16.69Z\"}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzSqlVMGroup+[NoContext]+UpdateViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/azpstest-sqlvm-gp/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups/updateGroup2?api-version=2022-08-01-preview+8": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/azpstest-sqlvm-gp/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups/updateGroup2?api-version=2022-08-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "20" ],
+        "x-ms-client-request-id": [ "b411e666-0f64-44b9-80d5-2ace700b31f0" ],
+        "CommandName": [ "New-AzSqlVMGroup" ],
+        "FullCommandName": [ "New-AzSqlVMGroup_CreateViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.9", "Az.SqlVirtualMachine/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "94a8050f-1df9-405f-8bb7-fd4f56d56c00" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11979" ],
+        "x-ms-correlation-request-id": [ "0429ee71-70fb-437e-8b7a-38d43b2f575d" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230315T110335Z:0429ee71-70fb-437e-8b7a-38d43b2f575d" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 15 Mar 2023 11:03:35 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "776" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"provisioningState\":\"Succeeded\",\"sqlImageOffer\":\"SQL2022-WS2022\",\"sqlImageSku\":\"Developer\",\"wsfcDomainProfile\":{\"domainFqdn\":\"azpstestsqlvm2.com\",\"ouPath\":\"OU=path1,DC=azpstestsqlvm2,DC=com\",\"clusterBootstrapAccount\":\"boostrapuser@azpstestsqlvm2.com\",\"clusterOperatorAccount\":\"operatoruser@azpstestsqlvm2.com\",\"sqlServiceAccount\":\"sqluser@azpstestsqlvm2.com\",\"storageAccountUrl\":\"https://azpstestsqlvmstorage.blob.core.windows.net/\",\"clusterSubnetType\":\"SingleSubnet\"}},\"location\":\"eastus\",\"tags\":{\"IT\":\"8888\"},\"id\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/azpstest-sqlvm-gp/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups/updateGroup2\",\"name\":\"updateGroup2\",\"type\":\"Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups\"}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzSqlVMGroup+[NoContext]+UpdateViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/azpstest-sqlvm-gp/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups/updateGroup2?api-version=2022-08-01-preview+9": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/azpstest-sqlvm-gp/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups/updateGroup2?api-version=2022-08-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "21" ],
+        "x-ms-client-request-id": [ "d4f5c0a0-4bb0-4ae9-a919-a2ab1ec70d8e" ],
+        "CommandName": [ "Get-AzSqlVMGroup" ],
+        "FullCommandName": [ "Get-AzSqlVMGroup_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.9", "Az.SqlVirtualMachine/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "215a82ca-227c-4820-b7c6-3822a0783755" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11978" ],
+        "x-ms-correlation-request-id": [ "a0bef935-f10c-4495-a503-339f07301973" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230315T110336Z:a0bef935-f10c-4495-a503-339f07301973" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 15 Mar 2023 11:03:36 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "776" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"provisioningState\":\"Succeeded\",\"sqlImageOffer\":\"SQL2022-WS2022\",\"sqlImageSku\":\"Developer\",\"wsfcDomainProfile\":{\"domainFqdn\":\"azpstestsqlvm2.com\",\"ouPath\":\"OU=path1,DC=azpstestsqlvm2,DC=com\",\"clusterBootstrapAccount\":\"boostrapuser@azpstestsqlvm2.com\",\"clusterOperatorAccount\":\"operatoruser@azpstestsqlvm2.com\",\"sqlServiceAccount\":\"sqluser@azpstestsqlvm2.com\",\"storageAccountUrl\":\"https://azpstestsqlvmstorage.blob.core.windows.net/\",\"clusterSubnetType\":\"SingleSubnet\"}},\"location\":\"eastus\",\"tags\":{\"IT\":\"8888\"},\"id\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/azpstest-sqlvm-gp/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups/updateGroup2\",\"name\":\"updateGroup2\",\"type\":\"Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups\"}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzSqlVMGroup+[NoContext]+UpdateViaIdentityExpanded+$DELETE+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/azpstest-sqlvm-gp/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups/updateGroup2?api-version=2022-08-01-preview+10": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/azpstest-sqlvm-gp/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups/updateGroup2?api-version=2022-08-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "22" ],
+        "x-ms-client-request-id": [ "bf084258-824b-4bae-a0fa-0eac964ce7da" ],
+        "CommandName": [ "Remove-AzSqlVMGroup" ],
+        "FullCommandName": [ "Remove-AzSqlVMGroup_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.9", "Az.SqlVirtualMachine/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.SqlVirtualMachine/locations/eastus/sqlVirtualMachineGroupOperationResults/13e1ce7f-9199-49bb-a450-a0b0fc205616?api-version=2022-08-01-preview" ],
+        "Retry-After": [ "15" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.SqlVirtualMachine/locations/eastus/operationTypes/deletesqlvirtualmachinegroup/operationResults/13e1ce7f-9199-49bb-a450-a0b0fc205616?api-version=2022-08-01-preview" ],
+        "x-ms-request-id": [ "9d88632e-9f1c-4eab-b895-603f0f825452" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14998" ],
+        "x-ms-correlation-request-id": [ "314421f0-17af-4497-82e4-0e11800ab087" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230315T110338Z:314421f0-17af-4497-82e4-0e11800ab087" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 15 Mar 2023 11:03:38 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "Update-AzSqlVMGroup+[NoContext]+UpdateViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.SqlVirtualMachine/locations/eastus/operationTypes/deletesqlvirtualmachinegroup/operationResults/13e1ce7f-9199-49bb-a450-a0b0fc205616?api-version=2022-08-01-preview+11": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.SqlVirtualMachine/locations/eastus/operationTypes/deletesqlvirtualmachinegroup/operationResults/13e1ce7f-9199-49bb-a450-a0b0fc205616?api-version=2022-08-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "23" ],
+        "x-ms-client-request-id": [ "bf084258-824b-4bae-a0fa-0eac964ce7da" ],
+        "CommandName": [ "Remove-AzSqlVMGroup" ],
+        "FullCommandName": [ "Remove-AzSqlVMGroup_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.9", "Az.SqlVirtualMachine/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "15" ],
+        "x-ms-request-id": [ "6303c6ad-e039-46c4-9bda-30ff71c75a92" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11977" ],
+        "x-ms-correlation-request-id": [ "8933527c-ce17-4012-9e3b-df41b0fe3e87" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230315T110353Z:8933527c-ce17-4012-9e3b-df41b0fe3e87" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 15 Mar 2023 11:03:53 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "107" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"name\":\"13e1ce7f-9199-49bb-a450-a0b0fc205616\",\"status\":\"Succeeded\",\"startTime\":\"2023-03-15T11:03:37.067Z\"}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzSqlVMGroup+[NoContext]+UpdateViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.SqlVirtualMachine/locations/eastus/sqlVirtualMachineGroupOperationResults/13e1ce7f-9199-49bb-a450-a0b0fc205616?api-version=2022-08-01-preview+12": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.SqlVirtualMachine/locations/eastus/sqlVirtualMachineGroupOperationResults/13e1ce7f-9199-49bb-a450-a0b0fc205616?api-version=2022-08-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "24" ],
+        "x-ms-client-request-id": [ "bf084258-824b-4bae-a0fa-0eac964ce7da" ],
+        "CommandName": [ "Remove-AzSqlVMGroup" ],
+        "FullCommandName": [ "Remove-AzSqlVMGroup_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.9", "Az.SqlVirtualMachine/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 204,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "15" ],
+        "x-ms-request-id": [ "33c277fe-e44c-4f18-83e3-0518ef5af8ac" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11976" ],
+        "x-ms-correlation-request-id": [ "2f3a5737-2faa-4954-9d0d-e0e18ac9c7b9" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230315T110353Z:2f3a5737-2faa-4954-9d0d-e0e18ac9c7b9" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 15 Mar 2023 11:03:53 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  }
+}
