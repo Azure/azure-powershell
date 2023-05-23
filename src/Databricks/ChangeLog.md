@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.5.1
 * Fixed an issue that `Update-AzDatabricksWorkspace` doesn't work as expected while enabling encryption. [#21324]
 
 ## Version 1.5.0

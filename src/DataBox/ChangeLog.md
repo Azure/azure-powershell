@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 0.3.0
 * Generated powershell cmdlets from latest swagger
 * Added support for customer disk job creation
 
