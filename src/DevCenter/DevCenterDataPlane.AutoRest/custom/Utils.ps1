@@ -75,8 +75,12 @@ function GetDelayedActionTimeFromAllActions {
     process {
         $action = Az.DevCenter\Get-AzDevCenterDevDevBoxAction -Endpoint $Endpoint -ProjectName `
             $Project -DevBoxName $DevBoxName -UserId $UserId | ConvertTo-Json | ConvertFrom-Json
-        $actionWithEarliestScheduledTime = $action | Where-Object { $null -ne $_.NextScheduledTime } |
+        
+        $excludedDate = [DateTime]::ParseExact("0001-01-01T00:00:00.0000000", "yyyy-MM-ddTHH:mm:ss.fffffff", $null)
+        $actionWithEarliestScheduledTime = $action |
+        Where-Object {$null -ne $_.NextScheduledTime -and $_.NextScheduledTime -ne $excludedDate } |
         Sort-Object NextScheduledTime | Select-Object -First 1
+ 
         $newScheduledTime = $actionWithEarliestScheduledTime.NextScheduledTime + $DelayTime
 
         return $newScheduledTime
@@ -117,5 +121,33 @@ function GetDelayedActionTimeFromActionName {
         $newScheduledTime = $action.NextScheduledTime + $DelayTime
 
         return $newScheduledTime
+    }
+}
+
+function ValidateAndProcessEndpoint {
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.DoNotExportAttribute()]
+    param(
+        [Parameter(Mandatory = $true, HelpMessage = 'Endpoint URL')]
+        [System.String]
+        ${Endpoint}     
+    ) 
+
+    process {
+        $regex = "(https)://.+.*\.(devcenter.azure-test.net|devcenter.azure.com)[/]?$"
+        if ($Endpoint -notmatch $regex) {
+            $incorrectEndpoint = "The endpoint $Endpoint is invalid. Please ensure that the " `
+            + "endpoint starts with 'https' and is properly formatted. Use " +
+             "'Get-AzDevCenterAdminProject' to view the endpoint of a specific project. " +
+             "Contact your admin for further assistance."
+
+            Write-Error $incorrectEndpoint -ErrorAction Stop
+        }
+
+        if ($Endpoint.EndsWith("/")) {
+            return $Endpoint.Substring(0, $Endpoint.Length - 1)
+        }
+
+        return $Endpoint
+
     }
 }

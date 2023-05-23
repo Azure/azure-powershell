@@ -177,6 +177,9 @@ function Delay-AzDevCenterDevDevBoxAction {
       $null = $PSBoundParameters.Add("Endpoint", $Endpoint)
       $null = $PSBoundParameters.Remove("DevCenter")
 
+    } else {
+      $Endpoint = ValidateAndProcessEndpoint -Endpoint $Endpoint
+      $PSBoundParameters["Endpoint"] = $Endpoint
     }
 
     if (-not $PSBoundParameters.ContainsKey('ActionName')) {
