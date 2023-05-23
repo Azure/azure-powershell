@@ -1,35 +1,36 @@
 ---
 external help file:
 Module Name: Az.MobileNetwork
-online version: https://learn.microsoft.com/powershell/module/az.mobilenetwork/update-azmobilenetworkcollectpacketcorecontrolplanediagnosticpackage
+online version: https://learn.microsoft.com/powershell/module/az.mobilenetwork/deploy-azmobilenetworkreinstallpacketcorecontrolplane
 schema: 2.0.0
 ---
 
-# Update-AzMobileNetworkCollectPacketCoreControlPlaneDiagnosticPackage
+# Deploy-AzMobileNetworkReinstallPacketCoreControlPlane
 
 ## SYNOPSIS
-Collect a diagnostics package for the specified packet core control plane.
-This action will upload the diagnostics to a storage account.
+Reinstall the specified packet core control plane.
+This action will remove any transaction state from the packet core to return it to a known state.
+This action will cause a service outage.
 
 ## SYNTAX
 
-### CollectExpanded (Default)
+### Reinstall (Default)
 ```
-Update-AzMobileNetworkCollectPacketCoreControlPlaneDiagnosticPackage -PacketCoreControlPlaneName <String>
- -ResourceGroupName <String> -StorageAccountBlobUrl <String> [-SubscriptionId <String>]
+Deploy-AzMobileNetworkReinstallPacketCoreControlPlane -PacketCoreControlPlaneName <String>
+ -ResourceGroupName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### ReinstallViaIdentity
+```
+Deploy-AzMobileNetworkReinstallPacketCoreControlPlane -InputObject <IMobileNetworkIdentity>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### CollectViaIdentityExpanded
-```
-Update-AzMobileNetworkCollectPacketCoreControlPlaneDiagnosticPackage -InputObject <IMobileNetworkIdentity>
- -StorageAccountBlobUrl <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
 ## DESCRIPTION
-Collect a diagnostics package for the specified packet core control plane.
-This action will upload the diagnostics to a storage account.
+Reinstall the specified packet core control plane.
+This action will remove any transaction state from the packet core to return it to a known state.
+This action will cause a service outage.
 
 ## EXAMPLES
 
@@ -94,7 +95,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity
-Parameter Sets: CollectViaIdentityExpanded
+Parameter Sets: ReinstallViaIdentity
 Aliases:
 
 Required: True
@@ -124,7 +125,7 @@ The name of the packet core control plane.
 
 ```yaml
 Type: System.String
-Parameter Sets: CollectExpanded
+Parameter Sets: Reinstall
 Aliases:
 
 Required: True
@@ -140,22 +141,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: CollectExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -StorageAccountBlobUrl
-The Storage Account Blob URL to upload the diagnostics package to.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Reinstall
 Aliases:
 
 Required: True
@@ -170,7 +156,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: CollectExpanded
+Parameter Sets: Reinstall
 Aliases:
 
 Required: False

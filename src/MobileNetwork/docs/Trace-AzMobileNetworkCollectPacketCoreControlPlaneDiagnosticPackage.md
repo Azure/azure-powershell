@@ -1,36 +1,35 @@
 ---
 external help file:
 Module Name: Az.MobileNetwork
-online version: https://learn.microsoft.com/powershell/module/az.mobilenetwork/revoke-azmobilenetworkrollbackpacketcorecontrolplane
+online version: https://learn.microsoft.com/powershell/module/az.mobilenetwork/trace-azmobilenetworkcollectpacketcorecontrolplanediagnosticpackage
 schema: 2.0.0
 ---
 
-# Revoke-AzMobileNetworkRollbackPacketCoreControlPlane
+# Trace-AzMobileNetworkCollectPacketCoreControlPlaneDiagnosticPackage
 
 ## SYNOPSIS
-Roll back the specified packet core control plane to the previous version, \"rollbackVersion\".
-Multiple consecutive rollbacks are not possible.
-This action may cause a service outage.
+Collect a diagnostics package for the specified packet core control plane.
+This action will upload the diagnostics to a storage account.
 
 ## SYNTAX
 
-### Rollback (Default)
+### CollectExpanded (Default)
 ```
-Revoke-AzMobileNetworkRollbackPacketCoreControlPlane -PacketCoreControlPlaneName <String>
- -ResourceGroupName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### RollbackViaIdentity
-```
-Revoke-AzMobileNetworkRollbackPacketCoreControlPlane -InputObject <IMobileNetworkIdentity>
+Trace-AzMobileNetworkCollectPacketCoreControlPlaneDiagnosticPackage -PacketCoreControlPlaneName <String>
+ -ResourceGroupName <String> -StorageAccountBlobUrl <String> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### CollectViaIdentityExpanded
+```
+Trace-AzMobileNetworkCollectPacketCoreControlPlaneDiagnosticPackage -InputObject <IMobileNetworkIdentity>
+ -StorageAccountBlobUrl <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
 ## DESCRIPTION
-Roll back the specified packet core control plane to the previous version, \"rollbackVersion\".
-Multiple consecutive rollbacks are not possible.
-This action may cause a service outage.
+Collect a diagnostics package for the specified packet core control plane.
+This action will upload the diagnostics to a storage account.
 
 ## EXAMPLES
 
@@ -95,7 +94,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity
-Parameter Sets: RollbackViaIdentity
+Parameter Sets: CollectViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -125,7 +124,7 @@ The name of the packet core control plane.
 
 ```yaml
 Type: System.String
-Parameter Sets: Rollback
+Parameter Sets: CollectExpanded
 Aliases:
 
 Required: True
@@ -141,7 +140,22 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Rollback
+Parameter Sets: CollectExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -StorageAccountBlobUrl
+The Storage Account Blob URL to upload the diagnostics package to.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -156,7 +170,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Rollback
+Parameter Sets: CollectExpanded
 Aliases:
 
 Required: False

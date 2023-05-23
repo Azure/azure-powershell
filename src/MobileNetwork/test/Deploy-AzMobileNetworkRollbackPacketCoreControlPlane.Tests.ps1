@@ -1,11 +1,11 @@
-if(($null -eq $TestName) -or ($TestName -contains 'Reset-AzMobileNetworkReinstallPacketCoreControlPlane'))
+if(($null -eq $TestName) -or ($TestName -contains 'Deploy-AzMobileNetworkRollbackPacketCoreControlPlane'))
 {
   $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
   if (-Not (Test-Path -Path $loadEnvPath)) {
       $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
   }
   . ($loadEnvPath)
-  $TestRecordingFile = Join-Path $PSScriptRoot 'Reset-AzMobileNetworkReinstallPacketCoreControlPlane.Recording.json'
+  $TestRecordingFile = Join-Path $PSScriptRoot 'Deploy-AzMobileNetworkRollbackPacketCoreControlPlane.Recording.json'
   $currentPath = $PSScriptRoot
   while(-not $mockingPath) {
       $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
@@ -14,12 +14,12 @@ if(($null -eq $TestName) -or ($TestName -contains 'Reset-AzMobileNetworkReinstal
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Reset-AzMobileNetworkReinstallPacketCoreControlPlane' {
-    It 'Reinstall' -skip {
+Describe 'Deploy-AzMobileNetworkRollbackPacketCoreControlPlane' {
+    It 'Rollback' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'ReinstallViaIdentity' -skip {
+    It 'RollbackViaIdentity' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

@@ -1,36 +1,36 @@
 ---
 external help file:
 Module Name: Az.MobileNetwork
-online version: https://learn.microsoft.com/powershell/module/az.mobilenetwork/reset-azmobilenetworkreinstallpacketcorecontrolplane
+online version: https://learn.microsoft.com/powershell/module/az.mobilenetwork/deploy-azmobilenetworkrollbackpacketcorecontrolplane
 schema: 2.0.0
 ---
 
-# Reset-AzMobileNetworkReinstallPacketCoreControlPlane
+# Deploy-AzMobileNetworkRollbackPacketCoreControlPlane
 
 ## SYNOPSIS
-Reinstall the specified packet core control plane.
-This action will remove any transaction state from the packet core to return it to a known state.
-This action will cause a service outage.
+Roll back the specified packet core control plane to the previous version, \"rollbackVersion\".
+Multiple consecutive rollbacks are not possible.
+This action may cause a service outage.
 
 ## SYNTAX
 
-### Reinstall (Default)
+### Rollback (Default)
 ```
-Reset-AzMobileNetworkReinstallPacketCoreControlPlane -PacketCoreControlPlaneName <String>
+Deploy-AzMobileNetworkRollbackPacketCoreControlPlane -PacketCoreControlPlaneName <String>
  -ResourceGroupName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### ReinstallViaIdentity
+### RollbackViaIdentity
 ```
-Reset-AzMobileNetworkReinstallPacketCoreControlPlane -InputObject <IMobileNetworkIdentity>
+Deploy-AzMobileNetworkRollbackPacketCoreControlPlane -InputObject <IMobileNetworkIdentity>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Reinstall the specified packet core control plane.
-This action will remove any transaction state from the packet core to return it to a known state.
-This action will cause a service outage.
+Roll back the specified packet core control plane to the previous version, \"rollbackVersion\".
+Multiple consecutive rollbacks are not possible.
+This action may cause a service outage.
 
 ## EXAMPLES
 
@@ -95,7 +95,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity
-Parameter Sets: ReinstallViaIdentity
+Parameter Sets: RollbackViaIdentity
 Aliases:
 
 Required: True
@@ -125,7 +125,7 @@ The name of the packet core control plane.
 
 ```yaml
 Type: System.String
-Parameter Sets: Reinstall
+Parameter Sets: Rollback
 Aliases:
 
 Required: True
@@ -141,7 +141,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Reinstall
+Parameter Sets: Rollback
 Aliases:
 
 Required: True
@@ -156,7 +156,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Reinstall
+Parameter Sets: Rollback
 Aliases:
 
 Required: False

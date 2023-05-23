@@ -198,17 +198,17 @@ directive:
       verb: Invoke
       subject: ^CollectPacketCoreControlPlaneDiagnosticPackage$
     set:
-      verb: Update
+      verb: Trace
   - where:
       verb: Invoke
       subject: ^ReinstallPacketCoreControlPlane$
     set:
-      verb: Reset
+      verb: Deploy
   - where:
       verb: Invoke
       subject: ^RollbackPacketCoreControlPlane$
     set:
-      verb: Revoke
+      verb: Deploy
 
   # Some of the parameters are of type Object and need to be expanded into a command for the convenience of the user
   # The following are commented out and their generated cmdlets may be renamed and custom logic
