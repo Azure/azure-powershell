@@ -53,6 +53,7 @@ function Get-AzDevCenterDevProject {
     param(
         [Parameter(ParameterSetName = 'GetByDevCenter', Mandatory)]
         [Parameter(ParameterSetName = 'GetViaIdentityByDevCenter', Mandatory)]
+        [Parameter(ParameterSetName='ListByDevCenter', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Uri')]
         [System.String]
         # The DevCenter upon which to execute operations.

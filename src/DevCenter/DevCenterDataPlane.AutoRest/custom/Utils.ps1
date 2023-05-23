@@ -14,22 +14,35 @@ function GetEndpointFromResourceGraph {
 
     process {
         $module = Get-Module -ListAvailable | Where-Object { $_.Name -eq "Az.ResourceGraph" }
-        if ($null -eq $module) {
-            $message = "Az.ResourceGraph Module must be installed to run this command. " `
+        if (!$module) {
+            $noModuleFoundMessage = "Az.ResourceGraph Module must be installed to run this command. " `
                 + "Please run 'Install-Module -Name Az.ResourceGraph' to install and continue."
-            throw $message
+            Write-Error $noModuleFoundMessage -ErrorAction Stop
         }
 
         $query = "Resources |where type =~'Microsoft.devcenter/projects' "
-        if ($null -ne $Project) {
+        if ($Project) {
             $query += "| where name =~ '$Project' "
         }
         $query += "| extend devCenterArr = split(properties.devCenterId, '/') " `
             + "| extend devCenterName = devCenterArr[array_length(devCenterArr) -1]  "`
             + "| where devCenterName =~ '$DevCenter' | take 1 "`
             + "| extend devCenterUri = properties.devCenterUri | project devCenterUri"
-        $argResponse = Az.ResourceGraph\Search-AzGraph $query | ConvertTo-Json | ConvertFrom-Json
+        $argResponse = Az.ResourceGraph\Search-AzGraph $query
         $devCenterUri = $argResponse.devCenterUri
+        if (!$devCenterUri) {
+            $azContext = Get-AzContext
+            $tenantId = $azContext.Tenant.Id
+            $errorHelp = "under the current tenant '$tenantId'. Please contact your admin to gain access to specific projects or " +
+            "use a different tenant where you have access to projects."
+            if (!$Project) {
+                $noProjectFound = "No projects were found in the dev center '$DevCenter' " + $errorHelp
+                Write-Error $noProjectFound -ErrorAction Stop
+            } else {
+                $noProjectFound = "No project '$Project' was found in the dev center '$DevCenter' " + $errorHelp
+                Write-Error $noProjectFound -ErrorAction Stop
+            }
+        }
         return $devCenterUri.Substring(0, $devCenterUri.Length - 1)
     }
 }
