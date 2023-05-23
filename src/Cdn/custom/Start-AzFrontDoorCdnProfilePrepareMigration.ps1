@@ -318,7 +318,7 @@ function Start-AzFrontDoorCdnProfilePrepareMigration {
                 $identity.Add($id) | Out-Null
             }
             $identity.Add($profileIdentity.IdentityPrincipalId) | Out-Null
-            
+
             # Waiting for MSI granted access...
             Start-Sleep(10)
             Write-Host("Starting to grant managed identity to key vault.")
@@ -341,9 +341,6 @@ function Start-AzFrontDoorCdnProfilePrepareMigration {
 }
 
 function ValidateInputType {
-    # if (-not (${SubscriptionId} -is [guid])) {
-    #     throw "The SubscriptionId must be of type [guid]"
-    # }
     $validateResourceIdReg = "^/subscriptions/[A-Fa-f0-9]{8}(?:-[A-Fa-f0-9]{4}){3}-[A-Fa-f0-9]{12}/resourcegroups/(?<resourceGroupName>[^/]+)/providers/microsoft.network/frontdoors/(?<frontDoorName>[^/]+)$"
     if (${ClassicResourceReferenceId} -notmatch $validateResourceIdReg) {
         throw "The format of ClassicResourceReferenceId: '${ClassicResourceReferenceId}', supposed to be like $validateResourceIdReg"
