@@ -54,7 +54,7 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ```yaml
-branch: f53edd7d36f4bc7886cd522b2aff751a42a57352
+#branch: f53edd7d36f4bc7886cd522b2aff751a42a57352
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
 repo: azure-rest-api-specs-pr
@@ -78,7 +78,32 @@ subject-prefix: $(service-name)
 inlining-threshold: 50
 resourcegroup-append: true
 
-directive:
+directive:  
+ -  from: swagger-document 
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/virtualHardDisks/{virtualHardDiskName}"].delete.responses
+    transform: >-
+      return {
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "../../../../../common-types/resource-management/v3/types.json#/definitions/ErrorResponse"
+            }
+          },
+          "200": {
+            "description": "OK"
+          },
+          "202": {
+            "description": "Accepted"
+          },
+          "204": {
+            "description": "No content"
+          }
+      }
+ -  from: swagger-document 
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/virtualHardDisks/{virtualHardDiskName}"].delete
+    transform: >- 
+      $["x-ms-long-running-operation"] = true
+   
   # Remove the unexpanded parameter set
  -  where:
       variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
