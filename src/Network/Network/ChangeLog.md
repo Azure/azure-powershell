@@ -19,6 +19,7 @@
 --->
 
 ## Upcoming Release
+* Updated `New-AzVirtualNetworkGateway` to remove validation for `ExtendedLocation` parameter
 
 ## Version 6.0.0
 * Added new cmdlets for RouteMap child resource of VirtualHub.
