@@ -1,6 +1,6 @@
 {
   "ModuleName": "Az.StackHCI",
-  "ModuleVersion": "1.4.3",
+  "ModuleVersion": "2.0.0",
   "Cmdlets": [
     {
       "VerbName": "Add",
@@ -610,7 +610,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IArcSetting",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IArcSetting, Az.StackHCI.private, Version=1.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IArcSetting, Az.StackHCI.private, Version=1.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "PerNodeDetail": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IPerNodeState[]",
               "ConnectivityProperty": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IAny",
@@ -680,7 +680,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IStackHciIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IStackHciIdentity, Az.StackHCI.private, Version=1.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IStackHciIdentity, Az.StackHCI.private, Version=1.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ArcSettingName": "System.String",
               "ClusterName": "System.String",
@@ -719,7 +719,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -729,7 +729,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -852,7 +852,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -868,7 +868,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -1032,7 +1032,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -1048,7 +1048,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -1114,7 +1114,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IStackHciIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IStackHciIdentity, Az.StackHCI.private, Version=1.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IStackHciIdentity, Az.StackHCI.private, Version=1.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "ArcSettingName": "System.String",
                     "ClusterName": "System.String",
@@ -1171,7 +1171,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -1187,7 +1187,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -1287,7 +1287,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -1303,7 +1303,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -1376,7 +1376,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.ICluster",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.ICluster, Az.StackHCI.private, Version=1.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.ICluster, Az.StackHCI.private, Version=1.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ReportedPropertyNode": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IClusterNode[]",
               "SystemDataCreatedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.CreatedByType]",
@@ -1451,7 +1451,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IStackHciIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IStackHciIdentity, Az.StackHCI.private, Version=1.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IStackHciIdentity, Az.StackHCI.private, Version=1.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ArcSettingName": "System.String",
               "ClusterName": "System.String",
@@ -1490,7 +1490,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -1500,7 +1500,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -1626,7 +1626,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -1642,7 +1642,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -1773,7 +1773,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -1789,7 +1789,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -1905,7 +1905,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -1921,7 +1921,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -1987,7 +1987,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IStackHciIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IStackHciIdentity, Az.StackHCI.private, Version=1.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IStackHciIdentity, Az.StackHCI.private, Version=1.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "ArcSettingName": "System.String",
                     "ClusterName": "System.String",
@@ -2044,7 +2044,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -2060,7 +2060,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -2160,7 +2160,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -2176,7 +2176,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -2249,11 +2249,11 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IExtension",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IExtension, Az.StackHCI.private, Version=1.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IExtension, Az.StackHCI.private, Version=1.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
+              "ParameterProtectedSetting": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IExtensionParametersProtectedSettings",
+              "ParameterSetting": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IExtensionParametersSettings",
               "PerNodeExtensionDetail": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IPerNodeExtensionState[]",
-              "ParameterProtectedSetting": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IAny",
-              "ParameterSetting": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IAny",
               "SystemDataCreatedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.CreatedByType]",
               "SystemDataLastModifiedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.CreatedByType]",
               "AggregateState": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.ExtensionAggregateState]",
@@ -2329,7 +2329,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IStackHciIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IStackHciIdentity, Az.StackHCI.private, Version=1.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IStackHciIdentity, Az.StackHCI.private, Version=1.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ArcSettingName": "System.String",
               "ClusterName": "System.String",
@@ -2368,7 +2368,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -2378,7 +2378,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -2516,7 +2516,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -2532,7 +2532,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -2711,7 +2711,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -2727,7 +2727,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -2793,7 +2793,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IStackHciIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IStackHciIdentity, Az.StackHCI.private, Version=1.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IStackHciIdentity, Az.StackHCI.private, Version=1.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "ArcSettingName": "System.String",
                     "ClusterName": "System.String",
@@ -2850,7 +2850,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -2866,7 +2866,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -2966,7 +2966,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -2982,7 +2982,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -3314,7 +3314,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IArcSetting",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IArcSetting, Az.StackHCI.private, Version=1.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IArcSetting, Az.StackHCI.private, Version=1.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "PerNodeDetail": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IPerNodeState[]",
               "ConnectivityProperty": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IAny",
@@ -3416,7 +3416,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IAny",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IAny, Az.StackHCI.private, Version=1.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IAny, Az.StackHCI.private, Version=1.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -3447,7 +3447,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -3457,7 +3457,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -3620,7 +3620,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IAny",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IAny, Az.StackHCI.private, Version=1.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IAny, Az.StackHCI.private, Version=1.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -3669,7 +3669,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -3685,7 +3685,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -3758,7 +3758,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.ICluster",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.ICluster, Az.StackHCI.private, Version=1.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.ICluster, Az.StackHCI.private, Version=1.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ReportedPropertyNode": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IClusterNode[]",
               "SystemDataCreatedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.CreatedByType]",
@@ -3886,7 +3886,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.DiagnosticLevel",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.DiagnosticLevel, Az.StackHCI.private, Version=1.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.DiagnosticLevel, Az.StackHCI.private, Version=1.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -3895,7 +3895,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.WindowsServerSubscription",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.WindowsServerSubscription, Az.StackHCI.private, Version=1.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.WindowsServerSubscription, Az.StackHCI.private, Version=1.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -3935,7 +3935,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -3945,7 +3945,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -4126,7 +4126,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.DiagnosticLevel",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.DiagnosticLevel, Az.StackHCI.private, Version=1.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.DiagnosticLevel, Az.StackHCI.private, Version=1.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -4141,7 +4141,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.WindowsServerSubscription",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.WindowsServerSubscription, Az.StackHCI.private, Version=1.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.WindowsServerSubscription, Az.StackHCI.private, Version=1.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -4205,7 +4205,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -4221,7 +4221,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -4294,11 +4294,11 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IExtension",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IExtension, Az.StackHCI.private, Version=1.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IExtension, Az.StackHCI.private, Version=1.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
+              "ParameterProtectedSetting": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IExtensionParametersProtectedSettings",
+              "ParameterSetting": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IExtensionParametersSettings",
               "PerNodeExtensionDetail": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IPerNodeExtensionState[]",
-              "ParameterProtectedSetting": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IAny",
-              "ParameterSetting": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IAny",
               "SystemDataCreatedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.CreatedByType]",
               "SystemDataLastModifiedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.CreatedByType]",
               "AggregateState": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.ExtensionAggregateState]",
@@ -4389,9 +4389,9 @@
         {
           "Name": "ExtensionParameterProtectedSetting",
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IAny",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IAny, Az.StackHCI.private, Version=1.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "Namespace": "System.Collections",
+            "Name": "System.Collections.Hashtable",
+            "AssemblyQualifiedName": "System.Collections.Hashtable, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -4407,9 +4407,9 @@
         {
           "Name": "ExtensionParameterSetting",
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IAny",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IAny, Az.StackHCI.private, Version=1.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "Namespace": "System.Collections",
+            "Name": "System.Collections.Hashtable",
+            "AssemblyQualifiedName": "System.Collections.Hashtable, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -4467,7 +4467,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -4477,7 +4477,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -4635,9 +4635,9 @@
               "ParameterMetadata": {
                 "Name": "ExtensionParameterProtectedSetting",
                 "Type": {
-                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models",
-                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IAny",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IAny, Az.StackHCI.private, Version=1.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "Namespace": "System.Collections",
+                  "Name": "System.Collections.Hashtable",
+                  "AssemblyQualifiedName": "System.Collections.Hashtable, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -4665,9 +4665,9 @@
               "ParameterMetadata": {
                 "Name": "ExtensionParameterSetting",
                 "Type": {
-                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models",
-                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IAny",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IAny, Az.StackHCI.private, Version=1.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "Namespace": "System.Collections",
+                  "Name": "System.Collections.Hashtable",
+                  "AssemblyQualifiedName": "System.Collections.Hashtable, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -4761,7 +4761,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -4777,7 +4777,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -4925,15 +4925,6 @@
           "ValidateNotNullOrEmpty": false
         },
         {
-          "Name": "GraphAccessToken",
-          "Type": {
-            "Namespace": "System",
-            "Name": "System.String",
-            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
-          },
-          "ValidateNotNullOrEmpty": false
-        },
-        {
           "Name": "AccountId",
           "Type": {
             "Namespace": "System",
@@ -4980,15 +4971,6 @@
         },
         {
           "Name": "UseDeviceAuthentication",
-          "Type": {
-            "Namespace": "System.Management.Automation",
-            "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
-          },
-          "ValidateNotNullOrEmpty": false
-        },
-        {
-          "Name": "EnableAzureArcServer",
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
@@ -5062,7 +5044,7 @@
                 },
                 "ValidateNotNullOrEmpty": false
               },
-              "Mandatory": false,
+              "Mandatory": true,
               "Position": 1,
               "ValueFromPipeline": false,
               "ValueFromPipelineByPropertyName": false
@@ -5144,7 +5126,7 @@
             },
             {
               "ParameterMetadata": {
-                "Name": "GraphAccessToken",
+                "Name": "AccountId",
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
@@ -5159,7 +5141,7 @@
             },
             {
               "ParameterMetadata": {
-                "Name": "AccountId",
+                "Name": "EnvironmentName",
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
@@ -5174,7 +5156,7 @@
             },
             {
               "ParameterMetadata": {
-                "Name": "EnvironmentName",
+                "Name": "ComputerName",
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
@@ -5189,21 +5171,6 @@
             },
             {
               "ParameterMetadata": {
-                "Name": "ComputerName",
-                "Type": {
-                  "Namespace": "System",
-                  "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": 10,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
                 "Name": "CertificateThumbprint",
                 "Type": {
                   "Namespace": "System",
@@ -5213,7 +5180,7 @@
                 "ValidateNotNullOrEmpty": false
               },
               "Mandatory": false,
-              "Position": 11,
+              "Position": 10,
               "ValueFromPipeline": false,
               "ValueFromPipelineByPropertyName": false
             },
@@ -5249,21 +5216,6 @@
             },
             {
               "ParameterMetadata": {
-                "Name": "EnableAzureArcServer",
-                "Type": {
-                  "Namespace": "System.Management.Automation",
-                  "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
                 "Name": "Credential",
                 "Type": {
                   "Namespace": "System.Management.Automation",
@@ -5273,7 +5225,7 @@
                 "ValidateNotNullOrEmpty": false
               },
               "Mandatory": false,
-              "Position": 12,
+              "Position": 11,
               "ValueFromPipeline": false,
               "ValueFromPipelineByPropertyName": false
             },
@@ -5303,7 +5255,7 @@
                 "ValidateNotNullOrEmpty": false
               },
               "Mandatory": false,
-              "Position": 13,
+              "Position": 12,
               "ValueFromPipeline": false,
               "ValueFromPipelineByPropertyName": false
             },
@@ -5318,7 +5270,7 @@
                 "ValidateNotNullOrEmpty": false
               },
               "Mandatory": false,
-              "Position": 14,
+              "Position": 13,
               "ValueFromPipeline": false,
               "ValueFromPipelineByPropertyName": false
             }
@@ -5392,7 +5344,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IStackHciIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IStackHciIdentity, Az.StackHCI.private, Version=1.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IStackHciIdentity, Az.StackHCI.private, Version=1.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ArcSettingName": "System.String",
               "ClusterName": "System.String",
@@ -5440,7 +5392,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -5450,7 +5402,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -5623,7 +5575,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -5639,7 +5591,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -5735,7 +5687,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IStackHciIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IStackHciIdentity, Az.StackHCI.private, Version=1.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IStackHciIdentity, Az.StackHCI.private, Version=1.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "ArcSettingName": "System.String",
                     "ClusterName": "System.String",
@@ -5807,7 +5759,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -5823,7 +5775,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -5968,7 +5920,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -5984,7 +5936,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -6130,7 +6082,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IStackHciIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IStackHciIdentity, Az.StackHCI.private, Version=1.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IStackHciIdentity, Az.StackHCI.private, Version=1.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ArcSettingName": "System.String",
               "ClusterName": "System.String",
@@ -6178,7 +6130,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -6188,7 +6140,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -6346,7 +6298,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -6362,7 +6314,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -6458,7 +6410,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IStackHciIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IStackHciIdentity, Az.StackHCI.private, Version=1.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IStackHciIdentity, Az.StackHCI.private, Version=1.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "ArcSettingName": "System.String",
                     "ClusterName": "System.String",
@@ -6530,7 +6482,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -6546,7 +6498,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -6691,7 +6643,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -6707,7 +6659,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -6871,7 +6823,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IStackHciIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IStackHciIdentity, Az.StackHCI.private, Version=1.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IStackHciIdentity, Az.StackHCI.private, Version=1.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ArcSettingName": "System.String",
               "ClusterName": "System.String",
@@ -6919,7 +6871,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -6929,7 +6881,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -7117,7 +7069,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -7133,7 +7085,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -7229,7 +7181,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IStackHciIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IStackHciIdentity, Az.StackHCI.private, Version=1.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IStackHciIdentity, Az.StackHCI.private, Version=1.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "ArcSettingName": "System.String",
                     "ClusterName": "System.String",
@@ -7301,7 +7253,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -7317,7 +7269,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -7462,7 +7414,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -7478,7 +7430,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -7843,7 +7795,7 @@
           "Type": {
             "Namespace": "",
             "Name": "DiagnosticLevel",
-            "AssemblyQualifiedName": "DiagnosticLevel, Az.StackHCI.private, Version=1.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "DiagnosticLevel, Az.StackHCI.private, Version=1.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -7858,15 +7810,6 @@
         },
         {
           "Name": "ArmAccessToken",
-          "Type": {
-            "Namespace": "System",
-            "Name": "System.String",
-            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
-          },
-          "ValidateNotNullOrEmpty": false
-        },
-        {
-          "Name": "GraphAccessToken",
           "Type": {
             "Namespace": "System",
             "Name": "System.String",
@@ -7981,7 +7924,7 @@
                 "Type": {
                   "Namespace": "",
                   "Name": "DiagnosticLevel",
-                  "AssemblyQualifiedName": "DiagnosticLevel, Az.StackHCI.private, Version=1.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "DiagnosticLevel, Az.StackHCI.private, Version=1.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -8008,21 +7951,6 @@
             {
               "ParameterMetadata": {
                 "Name": "ArmAccessToken",
-                "Type": {
-                  "Namespace": "System",
-                  "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "GraphAccessToken",
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
@@ -8100,121 +8028,6 @@
       ]
     },
     {
-      "VerbName": "Test",
-      "NounName": "AzStackHCIConnection",
-      "Name": "Test-AzStackHCIConnection",
-      "ClassName": "Test-AzStackHCIConnection",
-      "SupportsShouldProcess": false,
-      "ConfirmImpact": 0,
-      "SupportsPaging": false,
-      "DefaultParameterSetName": "__AllParameterSets",
-      "Parameters": [
-        {
-          "Name": "EnvironmentName",
-          "Type": {
-            "Namespace": "System",
-            "Name": "System.String",
-            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
-          },
-          "ValidateNotNullOrEmpty": false
-        },
-        {
-          "Name": "Region",
-          "Type": {
-            "Namespace": "System",
-            "Name": "System.String",
-            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
-          },
-          "ValidateNotNullOrEmpty": false
-        },
-        {
-          "Name": "ComputerName",
-          "Type": {
-            "Namespace": "System",
-            "Name": "System.String",
-            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
-          },
-          "ValidateNotNullOrEmpty": false
-        },
-        {
-          "Name": "Credential",
-          "Type": {
-            "Namespace": "System.Management.Automation",
-            "Name": "System.Management.Automation.PSCredential",
-            "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
-          },
-          "ValidateNotNullOrEmpty": false
-        }
-      ],
-      "ParameterSets": [
-        {
-          "Name": "__AllParameterSets",
-          "Parameters": [
-            {
-              "ParameterMetadata": {
-                "Name": "EnvironmentName",
-                "Type": {
-                  "Namespace": "System",
-                  "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": 0,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "Region",
-                "Type": {
-                  "Namespace": "System",
-                  "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": 1,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "ComputerName",
-                "Type": {
-                  "Namespace": "System",
-                  "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": 2,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "Credential",
-                "Type": {
-                  "Namespace": "System.Management.Automation",
-                  "Name": "System.Management.Automation.PSCredential",
-                  "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": 3,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            }
-          ]
-        }
-      ]
-    },
-    {
       "VerbName": "Unregister",
       "NounName": "AzStackHCI",
       "Name": "Unregister-AzStackHCI",
@@ -8262,15 +8075,6 @@
         },
         {
           "Name": "ArmAccessToken",
-          "Type": {
-            "Namespace": "System",
-            "Name": "System.String",
-            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
-          },
-          "ValidateNotNullOrEmpty": false
-        },
-        {
-          "Name": "GraphAccessToken",
           "Type": {
             "Namespace": "System",
             "Name": "System.String",
@@ -8432,7 +8236,7 @@
             },
             {
               "ParameterMetadata": {
-                "Name": "GraphAccessToken",
+                "Name": "AccountId",
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
@@ -8447,7 +8251,7 @@
             },
             {
               "ParameterMetadata": {
-                "Name": "AccountId",
+                "Name": "EnvironmentName",
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
@@ -8462,7 +8266,7 @@
             },
             {
               "ParameterMetadata": {
-                "Name": "EnvironmentName",
+                "Name": "Region",
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
@@ -8477,21 +8281,6 @@
             },
             {
               "ParameterMetadata": {
-                "Name": "Region",
-                "Type": {
-                  "Namespace": "System",
-                  "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": 8,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
                 "Name": "ComputerName",
                 "Type": {
                   "Namespace": "System",
@@ -8501,7 +8290,7 @@
                 "ValidateNotNullOrEmpty": false
               },
               "Mandatory": false,
-              "Position": 9,
+              "Position": 8,
               "ValueFromPipeline": false,
               "ValueFromPipelineByPropertyName": false
             },
@@ -8546,7 +8335,7 @@
                 "ValidateNotNullOrEmpty": false
               },
               "Mandatory": false,
-              "Position": 10,
+              "Position": 9,
               "ValueFromPipeline": false,
               "ValueFromPipelineByPropertyName": false
             },
@@ -8583,7 +8372,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.ICluster",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.ICluster, Az.StackHCI.private, Version=1.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.ICluster, Az.StackHCI.private, Version=1.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ReportedPropertyNode": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IClusterNode[]",
               "SystemDataCreatedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.CreatedByType]",
@@ -8657,7 +8446,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IStackHciIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IStackHciIdentity, Az.StackHCI.private, Version=1.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IStackHciIdentity, Az.StackHCI.private, Version=1.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ArcSettingName": "System.String",
               "ClusterName": "System.String",
@@ -8692,7 +8481,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.DiagnosticLevel",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.DiagnosticLevel, Az.StackHCI.private, Version=1.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.DiagnosticLevel, Az.StackHCI.private, Version=1.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -8701,7 +8490,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.WindowsServerSubscription",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.WindowsServerSubscription, Az.StackHCI.private, Version=1.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.WindowsServerSubscription, Az.StackHCI.private, Version=1.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -8741,7 +8530,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -8751,7 +8540,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -8872,7 +8661,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.DiagnosticLevel",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.DiagnosticLevel, Az.StackHCI.private, Version=1.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.DiagnosticLevel, Az.StackHCI.private, Version=1.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -8887,7 +8676,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.WindowsServerSubscription",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.WindowsServerSubscription, Az.StackHCI.private, Version=1.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.WindowsServerSubscription, Az.StackHCI.private, Version=1.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -8951,7 +8740,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -8967,7 +8756,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -9033,7 +8822,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IStackHciIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IStackHciIdentity, Az.StackHCI.private, Version=1.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IStackHciIdentity, Az.StackHCI.private, Version=1.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "ArcSettingName": "System.String",
                     "ClusterName": "System.String",
@@ -9086,7 +8875,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.DiagnosticLevel",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.DiagnosticLevel, Az.StackHCI.private, Version=1.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.DiagnosticLevel, Az.StackHCI.private, Version=1.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -9101,7 +8890,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.WindowsServerSubscription",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.WindowsServerSubscription, Az.StackHCI.private, Version=1.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.WindowsServerSubscription, Az.StackHCI.private, Version=1.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -9165,7 +8954,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -9181,7 +8970,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -9277,7 +9066,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.DiagnosticLevel",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.DiagnosticLevel, Az.StackHCI.private, Version=1.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.DiagnosticLevel, Az.StackHCI.private, Version=1.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -9292,7 +9081,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.WindowsServerSubscription",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.WindowsServerSubscription, Az.StackHCI.private, Version=1.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.WindowsServerSubscription, Az.StackHCI.private, Version=1.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -9356,7 +9145,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -9372,7 +9161,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[], Az.StackHCI.private, Version=1.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -9483,13 +9272,13 @@
     "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IPerNodeState[]": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IPerNodeState[]",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IPerNodeState[], Az.StackHCI.private, Version=1.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IPerNodeState[], Az.StackHCI.private, Version=1.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IPerNodeState"
     },
     "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IPerNodeState": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IPerNodeState",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IPerNodeState, Az.StackHCI.private, Version=1.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IPerNodeState, Az.StackHCI.private, Version=1.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "State": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.NodeArcState]",
         "Name": "System.String",
@@ -9499,7 +9288,7 @@
     "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.NodeArcState]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.NodeArcState]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.NodeArcState, Az.StackHCI.private, Version=1.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.NodeArcState, Az.StackHCI.private, Version=1.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.NodeArcState"
       ]
@@ -9507,7 +9296,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.NodeArcState": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.NodeArcState",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.NodeArcState, Az.StackHCI.private, Version=1.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.NodeArcState, Az.StackHCI.private, Version=1.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Methods": [
         {
           "Name": "CompleteArgument",
@@ -9590,12 +9379,12 @@
     "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IAny": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IAny",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IAny, Az.StackHCI.private, Version=1.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IAny, Az.StackHCI.private, Version=1.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
     },
     "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.ArcSettingAggregateState]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.ArcSettingAggregateState]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.ArcSettingAggregateState, Az.StackHCI.private, Version=1.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.ArcSettingAggregateState, Az.StackHCI.private, Version=1.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.ArcSettingAggregateState"
       ]
@@ -9603,7 +9392,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.ArcSettingAggregateState": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.ArcSettingAggregateState",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.ArcSettingAggregateState, Az.StackHCI.private, Version=1.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.ArcSettingAggregateState, Az.StackHCI.private, Version=1.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Methods": [
         {
           "Name": "CompleteArgument",
@@ -9668,7 +9457,7 @@
     "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.CreatedByType]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.CreatedByType]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.CreatedByType, Az.StackHCI.private, Version=1.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.CreatedByType, Az.StackHCI.private, Version=1.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.CreatedByType"
       ]
@@ -9676,7 +9465,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.CreatedByType": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.CreatedByType",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.CreatedByType, Az.StackHCI.private, Version=1.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.CreatedByType, Az.StackHCI.private, Version=1.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Methods": [
         {
           "Name": "CompleteArgument",
@@ -9741,7 +9530,7 @@
     "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.ProvisioningState]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.ProvisioningState]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.ProvisioningState, Az.StackHCI.private, Version=1.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.ProvisioningState, Az.StackHCI.private, Version=1.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.ProvisioningState"
       ]
@@ -9749,7 +9538,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.ProvisioningState": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.ProvisioningState",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.ProvisioningState, Az.StackHCI.private, Version=1.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.ProvisioningState, Az.StackHCI.private, Version=1.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Methods": [
         {
           "Name": "CompleteArgument",
@@ -9827,7 +9616,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep, Az.StackHCI.private, Version=1.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep, Az.StackHCI.private, Version=1.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Target": "System.Object",
         "Method": "System.Reflection.MethodInfo"
@@ -10000,13 +9789,13 @@
     "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IClusterNode[]": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IClusterNode[]",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IClusterNode[], Az.StackHCI.private, Version=1.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IClusterNode[], Az.StackHCI.private, Version=1.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IClusterNode"
     },
     "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IClusterNode": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IClusterNode",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IClusterNode, Az.StackHCI.private, Version=1.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IClusterNode, Az.StackHCI.private, Version=1.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "WindowsServerSubscription": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.WindowsServerSubscription]",
         "CoreCount": "System.Nullable`1[System.Single]",
@@ -10023,7 +9812,7 @@
     "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.WindowsServerSubscription]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.WindowsServerSubscription]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.WindowsServerSubscription, Az.StackHCI.private, Version=1.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.WindowsServerSubscription, Az.StackHCI.private, Version=1.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.WindowsServerSubscription"
       ]
@@ -10031,7 +9820,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.WindowsServerSubscription": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.WindowsServerSubscription",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.WindowsServerSubscription, Az.StackHCI.private, Version=1.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.WindowsServerSubscription, Az.StackHCI.private, Version=1.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Methods": [
         {
           "Name": "CompleteArgument",
@@ -10104,7 +9893,7 @@
     "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.DiagnosticLevel]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.DiagnosticLevel]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.DiagnosticLevel, Az.StackHCI.private, Version=1.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.DiagnosticLevel, Az.StackHCI.private, Version=1.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.DiagnosticLevel"
       ]
@@ -10112,7 +9901,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.DiagnosticLevel": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.DiagnosticLevel",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.DiagnosticLevel, Az.StackHCI.private, Version=1.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.DiagnosticLevel, Az.StackHCI.private, Version=1.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Methods": [
         {
           "Name": "CompleteArgument",
@@ -10177,7 +9966,7 @@
     "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.ImdsAttestation]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.ImdsAttestation]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.ImdsAttestation, Az.StackHCI.private, Version=1.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.ImdsAttestation, Az.StackHCI.private, Version=1.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.ImdsAttestation"
       ]
@@ -10185,7 +9974,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.ImdsAttestation": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.ImdsAttestation",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.ImdsAttestation, Az.StackHCI.private, Version=1.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.ImdsAttestation, Az.StackHCI.private, Version=1.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Methods": [
         {
           "Name": "CompleteArgument",
@@ -10250,7 +10039,7 @@
     "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.Status]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.Status]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.Status, Az.StackHCI.private, Version=1.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.Status, Az.StackHCI.private, Version=1.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.Status"
       ]
@@ -10258,7 +10047,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.Status": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.Status",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.Status, Az.StackHCI.private, Version=1.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.Status, Az.StackHCI.private, Version=1.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Methods": [
         {
           "Name": "CompleteArgument",
@@ -10320,16 +10109,26 @@
         }
       ]
     },
+    "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IExtensionParametersProtectedSettings": {
+      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501",
+      "Name": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IExtensionParametersProtectedSettings",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IExtensionParametersProtectedSettings, Az.StackHCI.private, Version=1.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+    },
+    "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IExtensionParametersSettings": {
+      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501",
+      "Name": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IExtensionParametersSettings",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IExtensionParametersSettings, Az.StackHCI.private, Version=1.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+    },
     "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IPerNodeExtensionState[]": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IPerNodeExtensionState[]",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IPerNodeExtensionState[], Az.StackHCI.private, Version=1.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IPerNodeExtensionState[], Az.StackHCI.private, Version=1.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IPerNodeExtensionState"
     },
     "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IPerNodeExtensionState": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IPerNodeExtensionState",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IPerNodeExtensionState, Az.StackHCI.private, Version=1.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IPerNodeExtensionState, Az.StackHCI.private, Version=1.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "State": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.NodeExtensionState]",
         "Name": "System.String",
@@ -10339,7 +10138,7 @@
     "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.NodeExtensionState]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.NodeExtensionState]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.NodeExtensionState, Az.StackHCI.private, Version=1.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.NodeExtensionState, Az.StackHCI.private, Version=1.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.NodeExtensionState"
       ]
@@ -10347,7 +10146,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.NodeExtensionState": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.NodeExtensionState",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.NodeExtensionState, Az.StackHCI.private, Version=1.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.NodeExtensionState, Az.StackHCI.private, Version=1.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Methods": [
         {
           "Name": "CompleteArgument",
@@ -10412,7 +10211,7 @@
     "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.ExtensionAggregateState]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.ExtensionAggregateState]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.ExtensionAggregateState, Az.StackHCI.private, Version=1.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.ExtensionAggregateState, Az.StackHCI.private, Version=1.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.ExtensionAggregateState"
       ]
@@ -10420,7 +10219,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.ExtensionAggregateState": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.ExtensionAggregateState",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.ExtensionAggregateState, Az.StackHCI.private, Version=1.4.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.ExtensionAggregateState, Az.StackHCI.private, Version=1.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Methods": [
         {
           "Name": "CompleteArgument",
