@@ -152,8 +152,6 @@ $vm = Get-AzVM -ResourceGroupName $rgname -Name $vmName;
         
 ```
 
-
-
 ## PARAMETERS
 
 ### -AvailabilitySetId
