@@ -254,12 +254,11 @@ New-AzResourceGroup -Name $rgname -Location $loc
 $vmssSize = 'Standard_D4s_v3';
 $vmssName1 = 'vmss1' + $rgname;
 $imageName = "Win2019Datacenter";
-$domainNameLabel1 = "d1" + $rgname;
-$adminUsername = Get-ComputeTestResourceName;
-$adminPassword = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force;
+$adminUsername = <Username>;
+$adminPassword = <Password> | ConvertTo-SecureString -AsPlainText -Force;
 $cred = New-Object System.Management.Automation.PSCredential($adminUsername, $adminPassword);
 
-$result = New-AzVmss -ResourceGroupName $rgname -Credential $cred -VMScaleSetName $vmssName1 -ImageName $imageName -DomainNameLabel $domainNameLabel;
+$result = New-AzVmss -ResourceGroupName $rgname -Credential $cred -VMScaleSetName $vmssName1 -ImageName $imageName;
 
 $vmss = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName1;
 $vmssId = $vmss.Id;
