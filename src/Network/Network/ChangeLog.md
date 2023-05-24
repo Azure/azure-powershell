@@ -54,6 +54,7 @@
     -`Get-AzNetworkVirtualApplianceConnection`
 * Update cmdlets to return connections in Network Virtual Appliance
     -`Network Virtual Appliance`
+* Allowed not to provide `Rules` in `PSApplicationGatewayFirewallPolicyManagedRuleGroupOverride`, which would return an empty `RuleID` to be passed to NRP.
 
 ## Version 5.7.0
 * Onboarded `Microsoft.HardwareSecurityModules/cloudHsmClusters` to private link cmdlets
