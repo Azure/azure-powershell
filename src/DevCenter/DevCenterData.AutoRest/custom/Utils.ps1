@@ -38,7 +38,8 @@ function GetEndpointFromResourceGraph {
             if (!$Project) {
                 $noProjectFound = "No projects were found in the dev center '$DevCenter' " + $errorHelp
                 Write-Error $noProjectFound -ErrorAction Stop
-            } else {
+            }
+            else {
                 $noProjectFound = "No project '$Project' was found in the dev center '$DevCenter' " + $errorHelp
                 Write-Error $noProjectFound -ErrorAction Stop
             }
@@ -73,12 +74,12 @@ function GetDelayedActionTimeFromAllActions {
     ) 
 
     process {
-        $action =  Az.DevCenterdata.internal\Get-AzDevCenterDevDevBoxAction -Endpoint $Endpoint -ProjectName `
+        $action = Az.DevCenterdata.internal\Get-AzDevCenterDevDevBoxAction -Endpoint $Endpoint -ProjectName `
             $Project -DevBoxName $DevBoxName -UserId $UserId | ConvertTo-Json | ConvertFrom-Json
         
         $excludedDate = [DateTime]::ParseExact("0001-01-01T00:00:00.0000000", "yyyy-MM-ddTHH:mm:ss.fffffff", $null)
         $actionWithEarliestScheduledTime = $action |
-        Where-Object {$null -ne $_.NextScheduledTime -and $_.NextScheduledTime -ne $excludedDate } |
+        Where-Object { $null -ne $_.NextScheduledTime -and $_.NextScheduledTime -ne $excludedDate } |
         Sort-Object NextScheduledTime | Select-Object -First 1
  
         $newScheduledTime = $actionWithEarliestScheduledTime.NextScheduledTime + $DelayTime
@@ -136,9 +137,9 @@ function ValidateAndProcessEndpoint {
         $regex = "(https)://.+.*\.(devcenter.azure-test.net|devcenter.azure.com)[/]?$"
         if ($Endpoint -notmatch $regex) {
             $incorrectEndpoint = "The endpoint $Endpoint is invalid. Please ensure that the " `
-            + "endpoint starts with 'https' and is properly formatted. Use " +
-             "'Get-AzDevCenterAdminProject' to view the endpoint of a specific project. " +
-             "Contact your admin for further assistance."
+                + "endpoint starts with 'https' and is properly formatted. Use " +
+            "'Get-AzDevCenterAdminProject' to view the endpoint of a specific project. " +
+            "Contact your admin for further assistance."
 
             Write-Error $incorrectEndpoint -ErrorAction Stop
         }
