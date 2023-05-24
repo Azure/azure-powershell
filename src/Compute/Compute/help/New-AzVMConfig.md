@@ -52,8 +52,8 @@ See [Quickstart: Create a Windows virtual machine in Azure with PowerShell](http
 
 ### Example 1: Create a virtual machine resource
 ```powershell
-$rgname = "resourceGroupName"
-$loc = "eastus"
+$rgname = "resourceGroupName";
+$loc = "eastus";
 
 New-AzResourceGroup -Name $rgname -Location $loc -Force;
 
@@ -63,7 +63,7 @@ $domainNameLabel = "d1" + $rgname;
 $vmSize = 'Standard_DS3_v2';
 $computerName = "c" + $rgname;
         
-# Credentials. Input Username and Password values
+# Credential. Input Username and Password values
 $user = "";
 $securePassword = "" | ConvertTo-SecureString -AsPlainText -Force;  
 $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
@@ -100,9 +100,9 @@ $vm = Get-AzVM -ResourceGroupName $rgname -Name $vmname;
 
 ### Example 2: Create a virtual machine object in a virtual machine scale set with fault domains setup
 ```powershell
-$rgname = "resourceGroupName"
-$loc = "eastus"
-$vmname = "vm" + $rgname
+$rgname = "resourceGroupName";
+$loc = "eastus";
+$vmname = "vm" + $rgname;
 
 New-AzResourceGroup -Name $rgname -Location $loc -Force;
 
@@ -125,16 +125,16 @@ $PublisherName = "MicrosoftWindowsServer";
 $Offer = "WindowsServer";
 $SKU = "2019-Datacenter";
         
-# Creating a VM using Simple parameterset
-$securePassword = "" | ConvertTo-SecureString -AsPlainText -Force;  
+# Credential. Input Username and Password values.
 $user = "";
+$securePassword = "" | ConvertTo-SecureString -AsPlainText -Force;  
 $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
 
 $frontendSubnet = New-AzVirtualNetworkSubnetConfig -Name $subnetname -AddressPrefix $subnetAddress;
 $vnet = New-AzVirtualNetwork -Name $vnetname -ResourceGroupName $rgname -Location $loc -AddressPrefix $vnetAddress -Subnet $frontendSubnet;
 
 $vmssConfig = New-AzVmssConfig -Location $loc -PlatformFaultDomainCount $vmssFaultDomain;
-$vmss = New-AzVmss -ResourceGroupName $RGName -Name $VMSSName -VirtualMachineScaleSet $vmssConfig -Verbose;
+$vmss = New-AzVmss -ResourceGroupName $RGName -Name $VMSSName -VirtualMachineScaleSet $vmssConfig;
 
 $nsgRuleRDP = New-AzNetworkSecurityRuleConfig -Name RDP  -Protocol Tcp  -Direction Inbound -Priority 1001 -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix * -DestinationPortRange 3389 -Access Allow;
 $nsg = New-AzNetworkSecurityGroup -ResourceGroupName $RGName -Location $loc -Name $NSGName  -SecurityRules $nsgRuleRDP;
@@ -147,7 +147,7 @@ Set-AzVMOSDisk -VM $vmConfig -StorageAccountType "Premium_LRS" -Caching ReadWrit
 Set-AzVMSourceImage -VM $vmConfig -PublisherName $PublisherName -Offer $Offer -Skus $SKU -Version latest ;
 Add-AzVMNetworkInterface -VM $vmConfig -Id $nic.Id;
 
-New-AzVM -ResourceGroupName $RGName -Location $loc -VM $vmConfig ;
+New-AzVM -ResourceGroupName $RGName -Location $loc -VM $vmConfig;
 $vm = Get-AzVM -ResourceGroupName $rgname -Name $vmName;
         
 ```
