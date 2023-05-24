@@ -45,7 +45,7 @@ module-version: 0.1.0
 # Normally, title is the service name
 title: Cdn
 subject-prefix: $(service-name)
-branch: 19f2135503a64970e1ecc841b88d717c101e5200
+branch: 61c04ab5495e259114bc427cdd77c3ab8ce8ec81
 
 # If there are post APIs for some kinds of actions in the RP, you may need to 
 # uncomment following line to support viaIdentity for these post APIs
@@ -126,7 +126,7 @@ directive:
           - SystemDataLastModifiedAt
           - SystemDataLastModifiedBy
           - SystemDataLastModifiedByType
-          
+        
   # Following is two common directive which are normally required in all the RPs
   # 1. Remove the unexpanded parameter set
   # 2. For New-* cmdlets, ViaIdentity is not required, so CreateViaIdentityExpanded is removed as well
@@ -252,6 +252,25 @@ directive:
       property-name: PreValidatedCustomDomainResourceIdId
     set:
       property-name: PreValidatedCustomDomainResourceId
+
+  # Customize the output table formatting
+  - where:
+      model-name: CanMigrateResult
+    set:
+      format-table:
+        properties:
+          - CanMigrate
+          - DefaultSku
+          - Error
+
+  - where:
+      model-name: MigrateResult
+    set:
+      format-table:
+        properties:
+          - PropertiesMigratedProfileResourceIdId
+        labels:
+          PropertiesMigratedProfileResourceIdId: MigratedProfileResourceId
 
   # Delete 404
   - from: swagger-document

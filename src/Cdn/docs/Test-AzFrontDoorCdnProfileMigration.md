@@ -14,7 +14,8 @@ Check if a classic AFD instance can be migrated to Azure Front Door(Standard/Pre
 
 ```
 Test-AzFrontDoorCdnProfileMigration -ResourceGroupName <String> -ClassicResourceReferenceId <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -28,9 +29,9 @@ Test-AzFrontDoorCdnProfileMigration -ResourceGroupName testrg -ClassicResourceRe
 ```
 
 ```output
-CanMigrate DefaultSku
----------- ----------
-True       Standard_AzureFrontDoor
+CanMigrate DefaultSku              Error
+---------- ----------              -----
+True       Standard_AzureFrontDoor {}
 ```
 
 Checks if a classic AFD instance can be migrated to Azure Front Door(Standard/Premium) profile.
@@ -41,9 +42,9 @@ Test-AzFrontDoorCdnProfileMigration -ResourceGroupName testrg -ClassicResourceRe
 ```
 
 ```output
-CanMigrate DefaultSku
----------- ----------
-True       Standard_AzureFrontDoor
+CanMigrate DefaultSku              Error
+---------- ----------              -----
+True       Standard_AzureFrontDoor {}
 ```
 
 Checks if a classic AFD instance can be migrated to Azure Front Door(Standard/Premium) profile, when the subscription of the CDN profile is different from the local subscrition.
@@ -51,6 +52,21 @@ Checks if a classic AFD instance can be migrated to Azure Front Door(Standard/Pr
 You need to set the value of the subscription parameter.
 
 ## PARAMETERS
+
+### -AsJob
+Run the command as a job
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -ClassicResourceReferenceId
 Resource ID of the classic front door instance.
@@ -74,6 +90,21 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named

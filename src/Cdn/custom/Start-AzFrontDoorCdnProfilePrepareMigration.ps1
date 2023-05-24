@@ -342,6 +342,8 @@ function Start-AzFrontDoorCdnProfilePrepareMigration {
 
             Write-Host("Your have successfully granted managed identity to key vault.")
         }
+
+        Write-Host("The change need to be committed after this.")
     }
 }
 

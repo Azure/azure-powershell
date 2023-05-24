@@ -93,6 +93,12 @@ function Enable-AzFrontDoorCdnProfileMigration {
         # Run the command asynchronously
         ${NoWait},
 
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Runtime')]
+        [System.Management.Automation.SwitchParameter]
+        # Returns true when the command succeeds
+        ${PassThru},
+
         [Parameter(DontShow)]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Runtime')]
         [System.Uri]
@@ -117,6 +123,5 @@ function Enable-AzFrontDoorCdnProfileMigration {
         Write-Host("Start to migrate.")
         Write-Host("This process will disable your Front Door (classic) profile and move all your traffic and configurations to the new Front Door profile.")
         Az.Cdn.internal\Invoke-AzCdnCommitProfileMigration @PSBoundParameters
-        Write-Host("Migrate succeeded.")
     }
 }

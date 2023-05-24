@@ -4,9 +4,9 @@ Test-AzFrontDoorCdnProfileMigration -ResourceGroupName testrg -ClassicResourceRe
 ```
 
 ```output
-CanMigrate DefaultSku
----------- ----------
-True       Standard_AzureFrontDoor
+CanMigrate DefaultSku              Error
+---------- ----------              -----
+True       Standard_AzureFrontDoor {}
 ```
 
 Checks if a classic AFD instance can be migrated to Azure Front Door(Standard/Premium) profile.
@@ -18,9 +18,9 @@ Test-AzFrontDoorCdnProfileMigration -ResourceGroupName testrg -ClassicResourceRe
 ```
 
 ```output
-CanMigrate DefaultSku
----------- ----------
-True       Standard_AzureFrontDoor
+CanMigrate DefaultSku              Error
+---------- ----------              -----
+True       Standard_AzureFrontDoor {}
 ```
 
 Checks if a classic AFD instance can be migrated to Azure Front Door(Standard/Premium) profile, when the subscription of the CDN profile is different from the local subscrition. 

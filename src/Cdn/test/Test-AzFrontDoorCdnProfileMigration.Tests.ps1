@@ -14,10 +14,11 @@ if(($null -eq $TestName) -or ($TestName -contains 'Test-AzFrontDoorCdnProfileMig
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Test-AzFrontDoorCdnProfileMigration'{
+Describe 'Test-AzFrontDoorCdnProfileMigration' {
     It 'CanExpanded' {
         $subId = $env.SubscriptionId
         $canMigrate = Test-AzFrontDoorCdnProfileMigration -SubscriptionId $subId -ResourceGroupName $env.ResourceGroupName -ClassicResourceReferenceId $env.ClassicResourceId03
-        $canMigrate.CanMigrate | Should -BeTrue
+    
+        $canMigrate.CanMigrate | Should -Be "True"
     }
 }

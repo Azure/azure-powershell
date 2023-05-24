@@ -44,6 +44,16 @@ Describe 'Update-AzFrontDoorCdnProfile'  {
         $updatedProfile.Tag["Tag2"] | Should -Be "22"
     }
 
+    It 'UpdateExpanded' {
+        Write-Host -ForegroundColor Green "Update AzFrontDoorCdnProfile: Enable managed identity"
+        $profileObject = Update-AzFrontDoorCdnProfile -Name $frontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -IdentityType SystemAssigned
+
+        Write-Host -ForegroundColor Green "Get AzFrontDoorCdnProfile"
+        $updatedProfile = Get-AzFrontDoorCdnProfile -InputObject $profileObject
+
+        $updatedProfile.IdentityType | Should -Be "SystemAssigned"
+    }
+
     It 'UpdateViaIdentityExpanded' {
         $tags = @{
             Tag1 = 33
