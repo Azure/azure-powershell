@@ -23,11 +23,26 @@ Gets an existing delivery rule within a rule set.
 Get-AzFrontDoorCdnRule -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -RuleSetName ruleset001
 .Example
 Get-AzFrontDoorCdnRule -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -RuleSetName ruleset001 -Name rule1
+.Example
+$conditions = @(
+    New-AzFrontDoorCdnRuleClientPortConditionObject -Name ClientPort -ParameterOperator Equal -ParameterMatchValue 80,81
+    New-AzFrontDoorCdnRuleIsDeviceConditionObject -Name IsDevice -ParameterMatchValue Mobile
+    New-AzFrontDoorCdnRuleSslProtocolConditionObject -Name SslProtocol -ParameterMatchValue TLSv1.2
+);
+
+       
+$actions = @(
+    New-AzFrontDoorCdnRuleRequestHeaderActionObject -Name ModifyRequestHeader -ParameterHeaderAction Append -ParameterHeaderName a1 -ParameterValue a1
+    New-AzFrontDoorCdnRuleResponseHeaderActionObject -Name ModifyResponseHeader -ParameterHeaderAction Append -ParameterHeaderName a1 -ParameterValue a1
+    New-AzFrontDoorCdnRuleUrlRedirectActionObject -Name UrlRedirect -ParameterRedirectType Moved -ParameterDestinationProtocol MatchRequest
+);
+
+New-AzFrontDoorCdnRule -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -RuleSetName ruleset001 -Name rule1 -Action $actions -Condition $conditions | Get-AzFrontDoorCdnRule
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IRule
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IRule
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -39,7 +54,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
   [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
   [OriginName <String>]: Name of the origin which is unique within the profile.
-  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
+  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium profile which is unique within the resource group.
   [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
   [RouteName <String>]: Name of the routing rule.
   [RuleName <String>]: Name of the delivery rule which is unique within the endpoint.
@@ -51,7 +66,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.cdn/get-azfrontdoorcdnrule
 #>
 function Get-AzFrontDoorCdnRule {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IRule])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IRule])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -103,7 +118,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -155,7 +171,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
         }         
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {

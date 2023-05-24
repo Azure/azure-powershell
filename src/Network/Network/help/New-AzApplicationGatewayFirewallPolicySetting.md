@@ -13,9 +13,12 @@ Creates a policy setting for the firewall policy
 ## SYNTAX
 
 ```
-New-AzApplicationGatewayFirewallPolicySetting [-Mode <String>] [-State <String>] [-DisableRequestBodyEnforcement <Boolean>] [-RequestBodyInspectLimitInKB <Int32>] [-DisableRequestBodyCheck] 
- [-MaxRequestBodySizeInKb <Int32>] [-MaxFileUploadInMb <Int32>] [-DisableFileUploadEnforcement <Boolean>] [-CustomBlockResponseStatusCode <Int32>]
- [-CustomBlockResponseBody <String>] [-LogScrubbing <PSApplicationGatewayFirewallPolicyLogScrubbingConfiguration>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+New-AzApplicationGatewayFirewallPolicySetting [-Mode <String>] [-State <String>]
+ [-DisableRequestBodyEnforcement <Boolean>] [-RequestBodyInspectLimitInKB <Int32>] [-DisableRequestBodyCheck]
+ [-MaxRequestBodySizeInKb <Int32>] [-DisableFileUploadEnforcement <Boolean>] [-MaxFileUploadInMb <Int32>]
+ [-CustomBlockResponseStatusCode <Int32>] [-CustomBlockResponseBody <String>]
+ [-LogScrubbing <PSApplicationGatewayFirewallPolicyLogScrubbingConfiguration>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -48,51 +51,6 @@ The command creates a policy setting with state as $enabledState, mode as $enabl
 
 ## PARAMETERS
 
-### -DisableRequestBodyEnforcement 
-Disable request body enforcement limits for WAF.
-
-```yaml
-Type: System.Nullable`1[System.Boolean]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -RequestBodyInspectLimitInKB  
-Max inspection limit in KB for request body inspection.
-
-```yaml
-Type: System.Nullable`1[System.Int32]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DisableFileUploadEnforcement  
-Disable file upload enforcement limits for WAF.
-
-```yaml
-Type: System.Nullable`1[System.Boolean]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -CustomBlockResponseBody
 Custom Block Response Body in policy settings of the firewall policy.
 
@@ -123,21 +81,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -LogScrubbingConfig 
-Allow certain variables to be scrubbed on WAF logs.
-
-```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayFirewallPolicyLogScrubbingConfiguration
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -153,11 +96,56 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DisableFileUploadEnforcement
+Disable file upload enforcement limits for WAF.
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DisableRequestBodyCheck
 Diables the requestBodyCheck in policy settings of the firewall policy.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DisableRequestBodyEnforcement
+Disable request body enforcement limits for WAF.
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -LogScrubbing
+To scrub sensitive log fields
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayFirewallPolicyLogScrubbingConfiguration
 Parameter Sets: (All)
 Aliases:
 
@@ -210,6 +198,21 @@ Accepted values: Prevention, Detection
 Required: False
 Position: Named
 Default value: Detection
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RequestBodyInspectLimitInKB
+Max inspection limit in KB for request body inspection.
+
+```yaml
+Type: System.Nullable`1[System.Int32]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

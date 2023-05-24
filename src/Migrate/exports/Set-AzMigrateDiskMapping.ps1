@@ -23,12 +23,12 @@ The Set-AzMigrateDiskMapping cmdlet updates a mapping of the source disk attache
 Set-AzMigrateDiskMapping -DiskID "6000C294-1217-dec3-bc18-81f117220424" -DiskName "ContosoDisk_1" -IsOSDisk "True"
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IVMwareCbtUpdateDiskInput
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IVMwareCbtUpdateDiskInput
 .Link
 https://learn.microsoft.com/powershell/module/az.migrate/set-azmigratediskmapping
 #>
 function Set-AzMigrateDiskMapping {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IVMwareCbtUpdateDiskInput])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IVMwareCbtUpdateDiskInput])]
 [CmdletBinding(DefaultParameterSetName='VMwareCbt', PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -60,7 +60,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
         }         
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {

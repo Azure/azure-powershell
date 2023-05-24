@@ -20,10 +20,9 @@ Deletes the workspace.
 .Description
 Deletes the workspace.
 .Example
-Remove-AzDatabricksWorkspace -ResourceGroupName testgroup -Name databricks-test
+Remove-AzDatabricksWorkspace -Name azps-databricks-workspace -ResourceGroupName azps_test_gp_db
 .Example
-$dbr = Get-AzDatabricksWorkspace -ResourceGroupName testgroup -Name databricks-test02
-Remove-AzDatabricksWorkspace -InputObject $dbr
+Get-AzDatabricksWorkspace -ResourceGroupName azps_test_gp_db -Name azps-databricks-workspace-t3 | Remove-AzDatabricksWorkspace
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IDatabricksIdentity

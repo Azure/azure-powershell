@@ -19,17 +19,21 @@
 -->
 
 ## Upcoming Release
-* Added parameter `-CountVariable` for list operations, 'odataCount' can now be assigned to this variable [#20982]
+
+## Version 6.7.0
+* Added parameter `-CountVariable` for list operations, `odataCount` can now be assigned to this variable [#20982]
     - `Get-AzADApplication`
     - `Get-AzADServicePrincipal`
     - `Get-AzADUser`
     - `Get-AzADGroup`
-* Supported polymorphism for `Get-AzADGroupMember`, output of this cmdlet is now 'Application', 'ServicePrincipal', 'User' and 'Group' based on the 'odataType' [#19728]
+* Supported polymorphism for `Get-AzADGroupMember`, output of this cmdlet was now `Application` `ServicePrincipal`, `User` and `Group` based on the `odataType` [#19728]
 * Added `-Force` parameter on `Publish-AzBicepModule` for supporting overwriting existing modules. 
-* Fixed `New-AzADApplication` when multiple redirect url types are provided. [#21108]
+* Fixed `New-AzADApplication` when multiple redirect url types were provided. [#21108]
 * Fixed `Update-AzADServicePrincipal` when empty array passed for `IdentifierUri` [#21345]
-* Fixed an issue where location header was missing in the response from the service for New-AzManagedApplication.
+* Fixed an issue where location header was missing in the response from the service for `New-AzManagedApplication`.
 * Fixed `Get-AzResourceGroup` ignored the subscription ID in `-Id` [#21725]
+* Fixed `Set-AzPolicyExemption` parameter PolicyDefinitionReferenceId not accept empty array.
+* Fixed `Get-AzPolicyExemption` output not contain system data.
 
 ## Version 6.6.1
 * Added support for Azure resources deployment with parameters file using Bicep parameters syntax

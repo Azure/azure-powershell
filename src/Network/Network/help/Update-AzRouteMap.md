@@ -13,18 +13,28 @@ Update a route map of a VirtualHub.
 ## SYNTAX
 
 ### ByRouteMapName (Default)
-```powershell
-Update-AzRouteMap -Name <String> -ResourceGroupName <String> -VirtualHubName <String> -RouteMapRule <PSRouteMapRule[]> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+Update-AzRouteMap [-ResourceGroupName <String>] [-VirtualHubName <String>] [-Name <String>]
+ [-RouteMapRule <PSRouteMapRule[]>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### ByVirtualHubObject
+```
+Update-AzRouteMap [-Name <String>] [-VirtualHubObject <PSVirtualHub>] [-RouteMapRule <PSRouteMapRule[]>]
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByRouteMapObject
-```powershell
-Update-AzRouteMap -InputObject <PSRouteMap> -RouteMapRule <PSRouteMapRule[]> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+Update-AzRouteMap [-InputObject <PSRouteMap>] [-RouteMapRule <PSRouteMapRule[]>] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByRouteMapResourceId
-```powershell
-Update-AzRouteMap -ResourceId <String> -RouteMapRule <PSRouteMapRule[]> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+Update-AzRouteMap [-ResourceId <String>] [-RouteMapRule <PSRouteMapRule[]>] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -53,7 +63,6 @@ $routeMapRule2 = New-AzRouteMapRule -Name "rule2" -MatchCriteria @($routeMapMatc
 
 New-AzRouteMap -ResourceGroupName "testRg" -VirtualHubName "testHub" -Name "testRouteMap" -RouteMapRule @($routeMapRule1, $routeMapRule2)
 Update-AzRouteMap -ResourceGroupName "testRg" -VirtualHubName "testHub" -Name "testRouteMap" -RouteMapRule @($routeMapRule2)
-
 ```
 
 ```output
@@ -85,7 +94,6 @@ RouteMapRules                 : [
                                 ]
 AssociatedInboundConnections  : []
 AssociatedOutboundConnections : []
-
 ```
 
 ## PARAMETERS
@@ -94,7 +102,7 @@ AssociatedOutboundConnections : []
 Run cmdlet in the background
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -131,7 +139,7 @@ Aliases: RouteMap
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -184,8 +192,8 @@ Accept wildcard characters: False
 List of route map rules in the route map. 
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSRouteMapRule
-Parameter Sets:
+Type: Microsoft.Azure.Commands.Network.Models.PSRouteMapRule[]
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -216,12 +224,42 @@ The Virtual Hub Object.
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSVirtualHub
 Parameter Sets: ByVirtualHubObject
-Aliases: ParentObject, ParentVirtualHub
+Aliases: VirtualHub, ParentVirtualHub
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

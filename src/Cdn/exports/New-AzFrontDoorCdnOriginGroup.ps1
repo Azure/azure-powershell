@@ -25,7 +25,7 @@ $loadBalancingSetting = New-AzFrontDoorCdnOriginGroupLoadBalancingSettingObject 
 New-AzFrontDoorCdnOriginGroup -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -OriginGroupName org001 -LoadBalancingSetting $loadBalancingSetting -HealthProbeSetting $healthProbeSetting
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IAfdOriginGroup
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IAfdOriginGroup
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -45,7 +45,7 @@ LOADBALANCINGSETTING <ILoadBalancingSettingsParameters>: Load balancing settings
 https://learn.microsoft.com/powershell/module/az.cdn/new-azfrontdoorcdnorigingroup
 #>
 function New-AzFrontDoorCdnOriginGroup {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IAfdOriginGroup])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IAfdOriginGroup])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -75,14 +75,14 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IHealthProbeParameters]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IHealthProbeParameters]
     # Health probe settings to the origin that is used to determine the health of the origin.
     # To construct, see NOTES section for HEALTHPROBESETTING properties and create a hash table.
     ${HealthProbeSetting},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.ILoadBalancingSettingsParameters]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.ILoadBalancingSettingsParameters]
     # Load balancing settings for a backend pool
     # To construct, see NOTES section for LOADBALANCINGSETTING properties and create a hash table.
     ${LoadBalancingSetting},
@@ -108,7 +108,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter()]
@@ -172,7 +173,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
         }         
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {

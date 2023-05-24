@@ -20,9 +20,9 @@ Deletes the workspace vNetPeering.
 .Description
 Deletes the workspace vNetPeering.
 .Example
-Remove-AzDatabricksVNetPeering -WorkspaceName databricks-test01 -ResourceGroupName lucas-manual-test -Name vnetpeering-t01
+Remove-AzDatabricksVNetPeering -Name vnet-peering-t1 -WorkspaceName azps-databricks-workspace-t1 -ResourceGroupName azps_test_gp_db 
 .Example
-Get-AzDatabricksVNetPeering -ResourceGroupName lucas-manual-test -WorkspaceName databricks-test01 -Name MyPeering-test01 | Remove-AzDatabricksVNetPeering
+Get-AzDatabricksVNetPeering -Name vnet-peering-t1 -WorkspaceName azps-databricks-workspace-t1 -ResourceGroupName azps_test_gp_db  | Remove-AzDatabricksVNetPeering
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IDatabricksIdentity

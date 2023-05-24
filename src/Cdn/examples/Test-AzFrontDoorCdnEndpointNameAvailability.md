@@ -9,4 +9,4 @@ AvailableHostname Message            NameAvailable Reason
                   Name not available False         Name is already in use
 ```
 
-
+Test the availability of a endpoint name under the AzureFrontDoor profile

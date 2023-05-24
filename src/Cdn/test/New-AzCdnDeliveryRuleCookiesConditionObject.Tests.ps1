@@ -14,7 +14,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzCdnDeliveryRuleCookiesC
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'New-AzCdnDeliveryRuleCookiesConditionObject' -Tag 'LiveOnly' {
+Describe 'New-AzCdnDeliveryRuleCookiesConditionObject'  {
     It '__AllParameterSets' {
         { 
             # ignore 
