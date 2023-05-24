@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Commands.Aks
         public string NodePoolMode { get; set; } = "System";
 
         [Parameter(Mandatory = false, HelpMessage = "The default OS sku for the node pools.")]
-        [PSArgumentCompleter("Ubuntu", "CBLMariner")]
+        [PSArgumentCompleter("Ubuntu", "CBLMariner", "AzureLinux", "Windows2019", "Windows2022")]
         public string NodeOsSKU { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "ScaleSetEvictionPolicy to be used to specify eviction policy for low priority virtual machine scale set. Default to Delete.")]
@@ -500,6 +500,9 @@ namespace Microsoft.Azure.Commands.Aks
             if (this.IsParameterBound(c => c.NodeOsSKU))
             {
                 defaultAgentPoolProfile.OsSKU = NodeOsSKU;
+                if (NodeOsSKU.ToLower().Equals("cblmariner") || NodeOsSKU.ToLower().Equals("mariner")) {
+                    WriteWarning("The NodeOsSKU 'AzureLinux' should be used going forward instead of 'CBLMariner' or 'Mariner'. The NodeOsSKU 'CBLMariner' and 'Mariner' will eventually be deprecated.");
+                }
             }
             if (this.IsParameterBound(c => c.NodeMaxPodCount))
             {
