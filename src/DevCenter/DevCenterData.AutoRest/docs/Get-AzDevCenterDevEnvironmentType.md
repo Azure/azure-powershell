@@ -1,6 +1,6 @@
 ---
 external help file:
-Module Name: Az.DevCenter
+Module Name: Az.DevCenterdata
 online version: https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenterdevenvironmenttype
 schema: 2.0.0
 ---
@@ -121,7 +121,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.IEnvironmentType
+### Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IEnvironmentType
 
 ## NOTES
 

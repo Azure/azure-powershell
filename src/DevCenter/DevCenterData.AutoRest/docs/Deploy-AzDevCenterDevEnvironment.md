@@ -1,6 +1,6 @@
 ---
 external help file:
-Module Name: Az.DevCenter
+Module Name: Az.DevCenterdata
 online version: https://learn.microsoft.com/powershell/module/az.devcenter/deploy-azdevcenterdevenvironment
 schema: 2.0.0
 ---
@@ -87,7 +87,7 @@ Properties of an environment.
 To construct, see NOTES section for BODY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.IEnvironment
+Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IEnvironment
 Parameter Sets: Replace, ReplaceByDevCenter
 Aliases:
 
@@ -223,7 +223,7 @@ Accept wildcard characters: False
 Parameters object for the environment.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IAny
+Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IAny
 Parameter Sets: ReplaceExpanded, ReplaceExpandedByDevCenter
 Aliases:
 
@@ -301,7 +301,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.IEnvironment
+### Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IEnvironment
 
 ## OUTPUTS
 

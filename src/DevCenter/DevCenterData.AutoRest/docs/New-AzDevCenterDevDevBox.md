@@ -1,6 +1,6 @@
 ---
 external help file:
-Module Name: Az.DevCenter
+Module Name: Az.DevCenterdata
 online version: https://learn.microsoft.com/powershell/module/az.devcenter/new-azdevcenterdevdevbox
 schema: 2.0.0
 ---
@@ -40,26 +40,26 @@ New-AzDevCenterDevDevBox -DevCenter <String> -Name <String> -ProjectName <String
 
 ### CreateViaIdentity
 ```
-New-AzDevCenterDevDevBox -Endpoint <String> -InputObject <IDevCenterIdentity> -Body <IDevBox>
+New-AzDevCenterDevDevBox -Endpoint <String> -InputObject <IDevCenterdataIdentity> -Body <IDevBox>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityByDevCenter
 ```
-New-AzDevCenterDevDevBox -DevCenter <String> -InputObject <IDevCenterIdentity> -Body <IDevBox>
+New-AzDevCenterDevDevBox -DevCenter <String> -InputObject <IDevCenterdataIdentity> -Body <IDevBox>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
-New-AzDevCenterDevDevBox -Endpoint <String> -InputObject <IDevCenterIdentity> -PoolName <String>
+New-AzDevCenterDevDevBox -Endpoint <String> -InputObject <IDevCenterdataIdentity> -PoolName <String>
  [-LocalAdministrator <LocalAdminStatus>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpandedByDevCenter
 ```
-New-AzDevCenterDevDevBox -DevCenter <String> -InputObject <IDevCenterIdentity> -PoolName <String>
+New-AzDevCenterDevDevBox -DevCenter <String> -InputObject <IDevCenterdataIdentity> -PoolName <String>
  [-LocalAdministrator <LocalAdminStatus>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
@@ -113,7 +113,7 @@ A Dev Box
 To construct, see NOTES section for BODY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.IDevBox
+Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IDevBox
 Parameter Sets: Create, CreateByDevCenter, CreateViaIdentity, CreateViaIdentityByDevCenter
 Aliases:
 
@@ -175,7 +175,7 @@ Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity
 Parameter Sets: CreateViaIdentity, CreateViaIdentityByDevCenter, CreateViaIdentityExpanded, CreateViaIdentityExpandedByDevCenter
 Aliases:
 
@@ -190,7 +190,7 @@ Accept wildcard characters: False
 Indicates whether the owner of the Dev Box is a local administrator.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.LocalAdminStatus
+Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Support.LocalAdminStatus
 Parameter Sets: CreateExpanded, CreateExpandedByDevCenter, CreateViaIdentityExpanded, CreateViaIdentityExpandedByDevCenter
 Aliases:
 
@@ -313,13 +313,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.IDevBox
+### Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IDevBox
 
-### Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.IDevBox
+### Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IDevBox
 
 ## NOTES
 
@@ -342,7 +342,7 @@ To create the parameters described below, construct a hash table containing the 
   - `[Message <String>]`: A message describing the error, intended to be suitable for display in a user interface.
   - `[Target <String>]`: The target of the particular error. For example, the name of the property in error.
 
-`INPUTOBJECT <IDevCenterIdentity>`: Identity Parameter
+`INPUTOBJECT <IDevCenterdataIdentity>`: Identity Parameter
   - `[ActionName <String>]`: The name of an action that will take place on a Dev Box.
   - `[CatalogName <String>]`: The name of the catalog
   - `[DefinitionName <String>]`: The name of the environment definition

@@ -1,5 +1,5 @@
 function GetEndpointFromResourceGraph {
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.DoNotExportAttribute()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.DoNotExportAttribute()]
     param(
         [Parameter(Mandatory = $true, HelpMessage = 'Name of the dev center')]
         [System.String]
@@ -48,7 +48,7 @@ function GetEndpointFromResourceGraph {
 }
 
 function GetDelayedActionTimeFromAllActions {
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.DoNotExportAttribute()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.DoNotExportAttribute()]
     param(
         [Parameter(Mandatory = $true, HelpMessage = 'Endpoint URL')]
         [System.String]
@@ -73,7 +73,7 @@ function GetDelayedActionTimeFromAllActions {
     ) 
 
     process {
-        $action = Az.DevCenter\Get-AzDevCenterDevDevBoxAction -Endpoint $Endpoint -ProjectName `
+        $action =  Az.DevCenterdata.internal\Get-AzDevCenterDevDevBoxAction -Endpoint $Endpoint -ProjectName `
             $Project -DevBoxName $DevBoxName -UserId $UserId | ConvertTo-Json | ConvertFrom-Json
         
         $excludedDate = [DateTime]::ParseExact("0001-01-01T00:00:00.0000000", "yyyy-MM-ddTHH:mm:ss.fffffff", $null)
@@ -87,7 +87,7 @@ function GetDelayedActionTimeFromAllActions {
     }
 }
 function GetDelayedActionTimeFromActionName {
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.DoNotExportAttribute()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.DoNotExportAttribute()]
     param(
         [Parameter(Mandatory = $true, HelpMessage = 'Name of the action')]
         [System.String]
@@ -116,7 +116,7 @@ function GetDelayedActionTimeFromActionName {
     ) 
 
     process {
-        $action = Az.DevCenter\Get-AzDevCenterDevDevBoxAction -Endpoint $Endpoint -ActionName $ActionName `
+        $action = Az.DevCenterdata.internal\Get-AzDevCenterDevDevBoxAction -Endpoint $Endpoint -ActionName $ActionName `
             -ProjectName $Project -DevBoxName $DevBoxName -UserId $UserId | ConvertTo-Json | ConvertFrom-Json
         $newScheduledTime = $action.NextScheduledTime + $DelayTime
 
@@ -125,7 +125,7 @@ function GetDelayedActionTimeFromActionName {
 }
 
 function ValidateAndProcessEndpoint {
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.DoNotExportAttribute()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.DoNotExportAttribute()]
     param(
         [Parameter(Mandatory = $true, HelpMessage = 'Endpoint URL')]
         [System.String]

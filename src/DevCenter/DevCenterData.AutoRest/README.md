@@ -1,10 +1,10 @@
 <!-- region Generated -->
-# Az.DevCenter
-This directory contains the PowerShell module for the DevCenter service.
+# Az.DevCenterdata
+This directory contains the PowerShell module for the DevCenterdata service.
 
 ---
 ## Status
-[![Az.DevCenter](https://img.shields.io/powershellgallery/v/Az.DevCenter.svg?style=flat-square&label=Az.DevCenter "Az.DevCenter")](https://www.powershellgallery.com/packages/Az.DevCenter/)
+[![Az.DevCenterdata](https://img.shields.io/powershellgallery/v/Az.DevCenterdata.svg?style=flat-square&label=Az.DevCenterdata "Az.DevCenterdata")](https://www.powershellgallery.com/packages/Az.DevCenterdata/)
 
 ## Info
 - Modifiable: yes
@@ -23,7 +23,7 @@ This module was primarily generated via [AutoRest](https://github.com/Azure/auto
 AutoRest does not generate authentication code for the module. Authentication is handled via Az.Accounts by altering the HTTP payload before it is sent.
 
 ## Development
-For information on how to develop for `Az.DevCenter`, see [how-to.md](how-to.md).
+For information on how to develop for `Az.DevCenterdata`, see [how-to.md](how-to.md).
 <!-- endregion -->
 
 ### AutoRest Configuration
@@ -39,7 +39,7 @@ input-file:
   - $(this-folder)/../..//specification/devcenter/data-plane/Microsoft.DevCenter/stable/2023-04-01/devbox.json
   - $(this-folder)/../..//specification/devcenter/data-plane/Microsoft.DevCenter/stable/2023-04-01/devcenter.json
   - $(this-folder)/../..//specification/devcenter/data-plane/Microsoft.DevCenter/stable/2023-04-01/environments.json
-title: DevCenterData
+title: DevCenterdata
 subject-prefix: DevCenter
 endpoint-resource-id-key-name: https://devcenter.azure.com
 directive:

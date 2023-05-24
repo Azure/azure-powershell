@@ -25,28 +25,28 @@ Lists all environment types configured for a project.
 {{ Add code here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.IEnvironmentType
+Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IEnvironmentType
 .Link
 https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenterdevenvironmenttype
 #>
 function Get-AzDevCenterDevEnvironmentType {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.IEnvironmentType])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IEnvironmentType])]
     [CmdletBinding(DefaultParameterSetName = 'List', PositionalBinding = $false)]
     param(
         [Parameter(ParameterSetName = 'List', Mandatory)]
-        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Uri')]
+        [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Uri')]
         [System.String]
         # The DevCenter-specific URI to operate on.
         ${Endpoint},
     
         [Parameter(ParameterSetName = 'ListByDevCenter', Mandatory)]
-        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Uri')]
+        [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Uri')]
         [System.String]
         # The DevCenter upon which to execute operations.
         ${DevCenter},
     
         [Parameter(Mandatory)]
-        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
+        [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
         [System.String]
         # The DevCenter Project upon which to execute operations.
         ${ProjectName},
@@ -54,47 +54,47 @@ function Get-AzDevCenterDevEnvironmentType {
         [Parameter()]
         [Alias('AzureRMContext', 'AzureCredential')]
         [ValidateNotNull()]
-        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Azure')]
+        [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Azure')]
         [System.Management.Automation.PSObject]
         # The DefaultProfile parameter is not functional.
         # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
         ${DefaultProfile},
     
         [Parameter(DontShow)]
-        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+        [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
         [System.Management.Automation.SwitchParameter]
         # Wait for .NET debugger to attach
         ${Break},
     
         [Parameter(DontShow)]
         [ValidateNotNull()]
-        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.SendAsyncStep[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
+        [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.SendAsyncStep[]]
         # SendAsync Pipeline Steps to be appended to the front of the pipeline
         ${HttpPipelineAppend},
     
         [Parameter(DontShow)]
         [ValidateNotNull()]
-        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.SendAsyncStep[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
+        [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.SendAsyncStep[]]
         # SendAsync Pipeline Steps to be prepended to the front of the pipeline
         ${HttpPipelinePrepend},
     
         [Parameter(DontShow)]
-        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+        [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
         [System.Uri]
         # The URI for the proxy server to use
         ${Proxy},
     
         [Parameter(DontShow)]
         [ValidateNotNull()]
-        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+        [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
         [System.Management.Automation.PSCredential]
         # Credentials for a proxy server to use for the remote call
         ${ProxyCredential},
     
         [Parameter(DontShow)]
-        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+        [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
         [System.Management.Automation.SwitchParameter]
         # Use the default credentials for the proxy
         ${ProxyUseDefaultCredentials}
@@ -112,7 +112,7 @@ function Get-AzDevCenterDevEnvironmentType {
             $PSBoundParameters["Endpoint"] = $Endpoint
         }
 
-        Az.DevCenter.internal\Get-AzDevCenterDevEnvironmentType @PSBoundParameters
+        Az.DevCenterdata.internal\Get-AzDevCenterDevEnvironmentType @PSBoundParameters
 
     }
 }
