@@ -265,7 +265,7 @@ $vmssId = $vmss.Id;
 $vmssGet = Get-AzVmss -ResourceId $vmssId;
 ```
 
-Get all Vmss in subscription that start with "VMSS00".
+Make a Vmss then get that same Vmss via its ARM resource Id. 
 
 ## PARAMETERS
 
