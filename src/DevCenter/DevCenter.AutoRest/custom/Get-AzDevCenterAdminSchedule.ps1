@@ -144,6 +144,6 @@ process {
     $Default = "default"
     $null = $PSBoundParameters.Add("Name", $Default)
 
-    Az.DevCenter.internal\Get-AzDevCenterAdminSchedule @PSBoundParameters
+    Az.DevCenterdata.internal\Get-AzDevCenterAdminSchedule @PSBoundParameters
   }
 }

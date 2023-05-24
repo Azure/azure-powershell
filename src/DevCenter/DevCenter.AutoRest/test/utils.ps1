@@ -23,9 +23,14 @@ function setupEnv() {
     if ($TestMode -eq 'live') {
         $envFile = 'localEnv.json'
     }
+    New-AzResourceGroup -Name $resourceGroup -Location canadacentral
+
+    $env.Add("resourceGroup", $resourceGroup)
+
     set-content -Path (Join-Path $PSScriptRoot $envFile) -Value (ConvertTo-Json $env)
 }
 function cleanupEnv() {
     # Clean resources you create for testing
+    Remove-AzResourceGroup -Name $env.resourceGroup
 }
 

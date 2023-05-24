@@ -1,6 +1,6 @@
 ---
 external help file:
-Module Name: Az.DevCenter
+Module Name: Az.DevCenterdata
 online version: https://learn.microsoft.com/powershell/module/az.devcenter/new-azdevcenterdevenvironment
 schema: 2.0.0
 ---
@@ -40,26 +40,26 @@ New-AzDevCenterDevEnvironment -DevCenter <String> -Name <String> -ProjectName <S
 
 ### CreateViaIdentity
 ```
-New-AzDevCenterDevEnvironment -Endpoint <String> -InputObject <IDevCenterIdentity> -Body <IEnvironment>
+New-AzDevCenterDevEnvironment -Endpoint <String> -InputObject <IDevCenterdataIdentity> -Body <IEnvironment>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityByDevCenter
 ```
-New-AzDevCenterDevEnvironment -DevCenter <String> -InputObject <IDevCenterIdentity> -Body <IEnvironment>
+New-AzDevCenterDevEnvironment -DevCenter <String> -InputObject <IDevCenterdataIdentity> -Body <IEnvironment>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
-New-AzDevCenterDevEnvironment -Endpoint <String> -InputObject <IDevCenterIdentity> -CatalogName <String>
+New-AzDevCenterDevEnvironment -Endpoint <String> -InputObject <IDevCenterdataIdentity> -CatalogName <String>
  -EnvironmentDefinitionName <String> -EnvironmentType <String> [-Parameter <IAny>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpandedByDevCenter
 ```
-New-AzDevCenterDevEnvironment -DevCenter <String> -InputObject <IDevCenterIdentity> -CatalogName <String>
+New-AzDevCenterDevEnvironment -DevCenter <String> -InputObject <IDevCenterdataIdentity> -CatalogName <String>
  -EnvironmentDefinitionName <String> -EnvironmentType <String> [-Parameter <IAny>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -113,7 +113,7 @@ Properties of an environment.
 To construct, see NOTES section for BODY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.IEnvironment
+Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IEnvironment
 Parameter Sets: Create, CreateByDevCenter, CreateViaIdentity, CreateViaIdentityByDevCenter
 Aliases:
 
@@ -220,7 +220,7 @@ Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity
 Parameter Sets: CreateViaIdentity, CreateViaIdentityByDevCenter, CreateViaIdentityExpanded, CreateViaIdentityExpandedByDevCenter
 Aliases:
 
@@ -265,7 +265,7 @@ Accept wildcard characters: False
 Parameters object for the environment.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IAny
+Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IAny
 Parameter Sets: CreateExpanded, CreateExpandedByDevCenter, CreateViaIdentityExpanded, CreateViaIdentityExpandedByDevCenter
 Aliases:
 
@@ -343,9 +343,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.IEnvironment
+### Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IEnvironment
 
-### Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity
 
 ## OUTPUTS
 
@@ -375,7 +375,7 @@ To create the parameters described below, construct a hash table containing the 
   - `[OperationLocation <String>]`: 
   - `[Target <String>]`: The target of the particular error. For example, the name of the property in error.
 
-`INPUTOBJECT <IDevCenterIdentity>`: Identity Parameter
+`INPUTOBJECT <IDevCenterdataIdentity>`: Identity Parameter
   - `[ActionName <String>]`: The name of an action that will take place on a Dev Box.
   - `[CatalogName <String>]`: The name of the catalog
   - `[DefinitionName <String>]`: The name of the environment definition

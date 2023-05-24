@@ -1,6 +1,6 @@
 ---
 external help file:
-Module Name: Az.DevCenter
+Module Name: Az.DevCenterdata
 online version: https://learn.microsoft.com/powershell/module/az.devcenter/start-azdevcenterdevdevbox
 schema: 2.0.0
 ---
@@ -26,14 +26,14 @@ Start-AzDevCenterDevDevBox -DevCenter <String> -Name <String> -ProjectName <Stri
 
 ### StartViaIdentity
 ```
-Start-AzDevCenterDevDevBox -Endpoint <String> -InputObject <IDevCenterIdentity> [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Start-AzDevCenterDevDevBox -Endpoint <String> -InputObject <IDevCenterdataIdentity>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### StartViaIdentityByDevCenter
 ```
-Start-AzDevCenterDevDevBox -DevCenter <String> -InputObject <IDevCenterIdentity> [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Start-AzDevCenterDevDevBox -DevCenter <String> -InputObject <IDevCenterdataIdentity>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -131,7 +131,7 @@ Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity
 Parameter Sets: StartViaIdentity, StartViaIdentityByDevCenter
 Aliases:
 
@@ -239,7 +239,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity
 
 ## OUTPUTS
 
@@ -254,7 +254,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-`INPUTOBJECT <IDevCenterIdentity>`: Identity Parameter
+`INPUTOBJECT <IDevCenterdataIdentity>`: Identity Parameter
   - `[ActionName <String>]`: The name of an action that will take place on a Dev Box.
   - `[CatalogName <String>]`: The name of the catalog
   - `[DefinitionName <String>]`: The name of the environment definition

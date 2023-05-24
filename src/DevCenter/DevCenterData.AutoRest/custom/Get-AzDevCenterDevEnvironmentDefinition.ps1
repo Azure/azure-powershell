@@ -25,15 +25,15 @@ Get an environment definition from a catalog.
 {{ Add code here }}
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
+Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.IEnvironmentDefinition
+Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IEnvironmentDefinition
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
+INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
   [ActionName <String>]: The name of an action that will take place on a Dev Box.
   [CatalogName <String>]: The name of the catalog
   [DefinitionName <String>]: The name of the environment definition
@@ -48,14 +48,14 @@ INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenterdevenvironmentdefinition
 #>
 function Get-AzDevCenterDevEnvironmentDefinition {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.IEnvironmentDefinition])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IEnvironmentDefinition])]
     [CmdletBinding(DefaultParameterSetName = 'List', PositionalBinding = $false)]
     param(
         [Parameter(ParameterSetName = 'Get', Mandatory)]
         [Parameter(ParameterSetName = 'GetViaIdentity', Mandatory)]
         [Parameter(ParameterSetName = 'List', Mandatory)]
         [Parameter(ParameterSetName = 'List1', Mandatory)]
-        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Uri')]
+        [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Uri')]
         [System.String]
         # The DevCenter-specific URI to operate on.
         ${Endpoint},
@@ -64,7 +64,7 @@ function Get-AzDevCenterDevEnvironmentDefinition {
         [Parameter(ParameterSetName = 'List1ByDevCenter', Mandatory)]
         [Parameter(ParameterSetName = 'ListByDevCenter', Mandatory)]
         [Parameter(ParameterSetName = 'GetByDevCenter', Mandatory)]
-        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Uri')]
+        [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Uri')]
         [System.String]
         # The DevCenter upon which to execute operations.
         ${DevCenter},
@@ -73,14 +73,14 @@ function Get-AzDevCenterDevEnvironmentDefinition {
         [Parameter(ParameterSetName = 'List1', Mandatory)]
         [Parameter(ParameterSetName = 'List1ByDevCenter', Mandatory)]
         [Parameter(ParameterSetName = 'GetByDevCenter', Mandatory)]
-        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
+        [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
         [System.String]
         # The name of the catalog
         ${CatalogName},
     
         [Parameter(ParameterSetName = 'Get', Mandatory)]
         [Parameter(ParameterSetName = 'GetByDevCenter', Mandatory)]
-        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
+        [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
         [System.String]
         # The name of the environment definition
         ${DefinitionName},
@@ -91,15 +91,15 @@ function Get-AzDevCenterDevEnvironmentDefinition {
         [Parameter(ParameterSetName = 'List1ByDevCenter', Mandatory)]
         [Parameter(ParameterSetName = 'ListByDevCenter', Mandatory)]
         [Parameter(ParameterSetName = 'GetByDevCenter', Mandatory)]
-        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
+        [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
         [System.String]
         # The DevCenter Project upon which to execute operations.
         ${ProjectName},
     
         [Parameter(ParameterSetName = 'GetViaIdentity', Mandatory, ValueFromPipeline)]
         [Parameter(ParameterSetName = 'GetViaIdentityByDevCenter', Mandatory, ValueFromPipeline)]
-        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity]
+        [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
+        [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity]
         # Identity Parameter
         # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
         ${InputObject},
@@ -107,47 +107,47 @@ function Get-AzDevCenterDevEnvironmentDefinition {
         [Parameter()]
         [Alias('AzureRMContext', 'AzureCredential')]
         [ValidateNotNull()]
-        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Azure')]
+        [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Azure')]
         [System.Management.Automation.PSObject]
         # The DefaultProfile parameter is not functional.
         # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
         ${DefaultProfile},
     
         [Parameter(DontShow)]
-        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+        [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
         [System.Management.Automation.SwitchParameter]
         # Wait for .NET debugger to attach
         ${Break},
     
         [Parameter(DontShow)]
         [ValidateNotNull()]
-        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.SendAsyncStep[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
+        [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.SendAsyncStep[]]
         # SendAsync Pipeline Steps to be appended to the front of the pipeline
         ${HttpPipelineAppend},
     
         [Parameter(DontShow)]
         [ValidateNotNull()]
-        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.SendAsyncStep[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
+        [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.SendAsyncStep[]]
         # SendAsync Pipeline Steps to be prepended to the front of the pipeline
         ${HttpPipelinePrepend},
     
         [Parameter(DontShow)]
-        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+        [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
         [System.Uri]
         # The URI for the proxy server to use
         ${Proxy},
     
         [Parameter(DontShow)]
         [ValidateNotNull()]
-        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+        [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
         [System.Management.Automation.PSCredential]
         # Credentials for a proxy server to use for the remote call
         ${ProxyCredential},
     
         [Parameter(DontShow)]
-        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+        [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
         [System.Management.Automation.SwitchParameter]
         # Use the default credentials for the proxy
         ${ProxyUseDefaultCredentials}
@@ -165,6 +165,6 @@ function Get-AzDevCenterDevEnvironmentDefinition {
             $PSBoundParameters["Endpoint"] = $Endpoint
         }
 
-        Az.DevCenter.internal\Get-AzDevCenterDevEnvironmentDefinition @PSBoundParameters
+        Az.DevCenterdata.internal\Get-AzDevCenterDevEnvironmentDefinition @PSBoundParameters
     }
 }

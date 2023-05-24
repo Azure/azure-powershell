@@ -1,16 +1,16 @@
 ---
-Module Name: Az.DevCenter
-Module Guid: 3cfc7165-158b-4c84-a966-01e1f1c829bc
-Download Help Link: https://learn.microsoft.com/powershell/module/az.devcenter
+Module Name: Az.DevCenterdata
+Module Guid: a5a2a512-ec9f-44e2-9943-c4cc9c42a4ad
+Download Help Link: https://learn.microsoft.com/powershell/module/az.devcenterdata
 Help Version: 1.0.0.0
 Locale: en-US
 ---
 
-# Az.DevCenter Module
+# Az.DevCenterdata Module
 ## Description
-Microsoft Azure PowerShell: DevCenter cmdlets
+Microsoft Azure PowerShell: DevCenterdata cmdlets
 
-## Az.DevCenter Cmdlets
+## Az.DevCenterdata Cmdlets
 ### [Deploy-AzDevCenterDevEnvironment](Deploy-AzDevCenterDevEnvironment.md)
 Creates or updates an environment.
 
