@@ -69,7 +69,7 @@ $securePassword = "" | ConvertTo-SecureString -AsPlainText -Force;
 $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
         
 # Creating a VMConfig 
-$vmconfig = New-AzVMConfig -VMName $vmname -vmsize $vmsize
+$vmconfig = New-AzVMConfig -VMName $vmname -vmsize $vmsize;
 
 # Set source image values
 $publisherName = "MicrosoftWindowsServer";
