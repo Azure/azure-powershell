@@ -110,7 +110,7 @@ New-AzSqlElasticPool -ComputeGeneration Gen5 -Edition 'GeneralPurpose' -ElasticP
 ### Example 4: Creates an elastic pool with preferred enclave type as VBS
 
 ```powershell
-New-AzSqlElasticPool -ComputeGeneration Gen5 -Edition 'GeneralPurpose' -ElasticPoolName 'ElasticPool01' -ResourceGroupName 'ResourceGroup01' -ServerName 'Server01' -VCore 2 -PreferredEnclaveType VBS
+New-AzSqlElasticPool -ComputeGeneration Gen5 -Edition 'GeneralPurpose' -ElasticPoolName 'ElasticPool01' -ResourceGroupName 'ResourceGroup01' -ServerName 'Server01' -VCore 2 -PreferredEnclaveType 'VBS'
 ```
 
 ```output

@@ -38,7 +38,7 @@ Name   ResourceGroupName
 org001 testps-rg-da16jm
 ```
 
-
+Create an AzureFrontDoor origin group under the AzureFrontDoor profile
 
 ## PARAMETERS
 
@@ -58,7 +58,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -77,7 +78,7 @@ Health probe settings to the origin that is used to determine the health of the 
 To construct, see NOTES section for HEALTHPROBESETTING properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IHealthProbeParameters
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IHealthProbeParameters
 Parameter Sets: (All)
 Aliases:
 
@@ -93,7 +94,7 @@ Load balancing settings for a backend pool
 To construct, see NOTES section for LOADBALANCINGSETTING properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.ILoadBalancingSettingsParameters
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.ILoadBalancingSettingsParameters
 Parameter Sets: (All)
 Aliases:
 
@@ -250,7 +251,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IAfdOriginGroup
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IAfdOriginGroup
 
 ## NOTES
 
@@ -261,13 +262,13 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-HEALTHPROBESETTING `<IHealthProbeParameters>`: Health probe settings to the origin that is used to determine the health of the origin.
+`HEALTHPROBESETTING <IHealthProbeParameters>`: Health probe settings to the origin that is used to determine the health of the origin.
   - `[ProbeIntervalInSecond <Int32?>]`: The number of seconds between health probes.Default is 240sec.
   - `[ProbePath <String>]`: The path relative to the origin that is used to determine the health of the origin.
   - `[ProbeProtocol <ProbeProtocol?>]`: Protocol to use for health probe.
   - `[ProbeRequestType <HealthProbeRequestType?>]`: The type of health probe request that is made.
 
-LOADBALANCINGSETTING `<ILoadBalancingSettingsParameters>`: Load balancing settings for a backend pool
+`LOADBALANCINGSETTING <ILoadBalancingSettingsParameters>`: Load balancing settings for a backend pool
   - `[AdditionalLatencyInMillisecond <Int32?>]`: The additional latency in milliseconds for probes to fall into the lowest latency bucket
   - `[SampleSize <Int32?>]`: The number of samples to consider for load balancing decisions
   - `[SuccessfulSamplesRequired <Int32?>]`: The number of samples within the sample period that must succeed

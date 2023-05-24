@@ -17,8 +17,9 @@ New-AzKubernetesConfiguration -ClusterName <String> -ClusterType <String> -Name 
  -ResourceGroupName <String> [-SubscriptionId <String>] [-ClusterScoped]
  [-ConfigurationProtectedSetting <Hashtable>] [-EnableHelmOperator] [-HelmOperatorChartValue <String>]
  [-HelmOperatorChartVersion <String>] [-OperatorInstanceName <String>] [-OperatorNamespace <String>]
- [-OperatorParam <String>] [-RepositoryUrl <String>] [-SshKnownHost <String>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-OperatorParam <String>] [-OperatorScope <OperatorScopeType>] [-OperatorType <OperatorType>]
+ [-RepositoryUrl <String>] [-SshKnownHost <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -28,28 +29,28 @@ Create a new Kubernetes Source Control Configuration.
 
 ### Example 1: Create a configuration for Kubernetes Cluster
 ```powershell
-New-AzConnectedKubernetes -ClusterName azpstest_cluster_arc -ResourceGroupName azpstest_gp -Location eastus
-New-AzKubernetesConfiguration -ResourceGroupName azpstest_gp -ClusterName azpstest_cluster_arc -Name azpstestk8s -RepositoryUrl http://github.com/xxxx -ClusterType ConnectedClusters
+New-AzConnectedKubernetes -ClusterName azpstest_cluster_arc -ResourceGroupName azps_test_group -Location eastus -KubeConfig $HOME\.kube\config -KubeContext azps_aks_t01
+New-AzKubernetesConfiguration -ResourceGroupName azps_test_group -ClusterName azpstest_cluster_arc -Name azpstestk8s -RepositoryUrl http://github.com/xxxx -ClusterType ConnectedClusters
 ```
 
 ```output
 Name        RepositoryUrl          ResourceGroupName
 ----        -------------          -----------------
-azpstestk8s http://github.com/xxxx azpstest_gp
+azpstestk8s http://github.com/xxxx azps_test_group
 ```
 
 This command creates a configuration for Kubernetes Cluster.
 
 ### Example 2: Create a configuration for Kubernetes Cluster with specify paramter OperatorNamespace
 ```powershell
-New-AzConnectedKubernetes -ClusterName azpstest_cluster_arc -ResourceGroupName azpstest_gp -Location eastus
-New-AzKubernetesConfiguration -ResourceGroupName azpstest_gp -ClusterName azpstest_cluster_arc -Name azpstestk8s-operator -RepositoryUrl http://github.com/xxxx -OperatorNamespace namespace-t01 -ClusterType ConnectedClusters
+New-AzConnectedKubernetes -ClusterName azpstest_cluster_arc -ResourceGroupName azps_test_group -Location eastus -KubeConfig $HOME\.kube\config -KubeContext azps_aks_t01
+New-AzKubernetesConfiguration -ResourceGroupName azps_test_group -ClusterName azpstest_cluster_arc -Name azpstestk8s-operator -RepositoryUrl http://github.com/xxxx -OperatorScope 'cluster' -ClusterType ConnectedClusters
 ```
 
 ```output
 Name                 RepositoryUrl          ResourceGroupName
 ----                 -------------          -----------------
-azpstestk8s-operator http://github.com/xxxx azpstest_gp
+azpstestk8s-operator http://github.com/xxxx azps_test_group
 ```
 
 This command creates a configuration in the new operator namespace for Kubernetes Cluster.
@@ -119,7 +120,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -239,6 +241,36 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -OperatorScope
+Scope at which the operator will be installed.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.OperatorScopeType
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -OperatorType
+Type of the operator
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.OperatorType
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -RepositoryUrl
 Url of the SourceControl Repository.
 
@@ -338,7 +370,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.ISourceControlConfiguration
+### Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.ISourceControlConfiguration
 
 ## NOTES
 

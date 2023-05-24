@@ -99,7 +99,7 @@ ApplyOnNetworkIntentPolicyBasedServices.
 Type: Microsoft.Azure.Commands.Network.NewAzNetworkManagerSecurityAdminConfigurationCommand+NetworkIntentPolicyBasedServiceType[]
 Parameter Sets: (All)
 Aliases:
-Accepted values: None, All, and AllowRulesOnly
+Accepted values: None, All, AllowRulesOnly
 
 Required: False
 Position: Named

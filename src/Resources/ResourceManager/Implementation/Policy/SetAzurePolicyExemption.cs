@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// Gets or sets the policy definition reference ID list when the associated policy assignment is for a policy set (initiative).
         /// </summary>
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.SetPolicyExemptionPolicyDefinitionReferenceIdHelp)]
-        [ValidateNotNullOrEmpty]
+        [ValidateNotNull]
         public string[] PolicyDefinitionReferenceId { get; set; }
 
         /// <summary>
@@ -144,7 +144,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// </summary>
         private JToken GetResource(string resourceId, string apiVersion)
         {
-            var resource = this.GetExistingResource(resourceId, apiVersion).Result.ToResource();
+            var resource = this.GetExistingResource(resourceId, apiVersion).Result.ToResource<PolicyExemptionProperties>();
 
             // get incoming object properties if present
             JObject inputMetadata = null;
@@ -154,25 +154,19 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 inputMetadata = newProperties["metadata"] as JObject;
             }
 
-            DateTime? existingExpiration = null;
-            if (DateTime.TryParse(resource.Properties["expiresOn"]?.ToString(), out var expiresOn))
-            {
-                existingExpiration = expiresOn;
-            }
-
             var parameterMetadata = this.Metadata == null ? null : this.GetObjectFromParameter(this.Metadata, nameof(this.Metadata));
             var policyExemption = new PolicyExemption
             {
                 Name = this.Name ?? this.InputObject?.Name ?? resource.Name,
                 Properties = new PolicyExemptionProperties
                 {
-                    DisplayName = this.DisplayName ?? this.InputObject?.Properties?.DisplayName ?? resource.Properties["displayName"]?.ToString(),
-                    Description = this.Description ?? this.InputObject?.Properties?.Description ?? resource.Properties["description"]?.ToString(),
-                    ExemptionCategory = this.ExemptionCategory ?? this.InputObject?.Properties?.ExemptionCategory ?? resource.Properties["exemptionCategory"]?.ToString(),
-                    PolicyAssignmentId = resource.Properties["policyAssignmentId"]?.ToString(),
-                    PolicyDefinitionReferenceIds = this.PolicyDefinitionReferenceId ?? this.InputObject?.Properties?.PolicyDefinitionReferenceIds ?? resource.Properties["policyDefinitionReferenceIds"]?.ToString()?.Split(','),
-                    ExpiresOn = this.ClearExpiration.IsPresent ? null : this.ExpiresOn?.ToUniversalTime() ?? this.InputObject?.Properties?.ExpiresOn ?? existingExpiration,
-                    Metadata = parameterMetadata ?? inputMetadata ?? resource.Properties["metadata"] as JObject,
+                    DisplayName = this.DisplayName ?? this.InputObject?.Properties?.DisplayName ?? resource.Properties.DisplayName,
+                    Description = this.Description ?? this.InputObject?.Properties?.Description ?? resource.Properties.Description,
+                    ExemptionCategory = this.ExemptionCategory ?? this.InputObject?.Properties?.ExemptionCategory ?? resource.Properties.ExemptionCategory,
+                    PolicyAssignmentId = resource.Properties.PolicyAssignmentId,
+                    PolicyDefinitionReferenceIds = this.PolicyDefinitionReferenceId ?? this.InputObject?.Properties?.PolicyDefinitionReferenceIds ?? resource.Properties.PolicyDefinitionReferenceIds,
+                    ExpiresOn = this.ClearExpiration.IsPresent ? null : this.ExpiresOn?.ToUniversalTime() ?? this.InputObject?.Properties?.ExpiresOn ?? resource.Properties.ExpiresOn,
+                    Metadata = parameterMetadata ?? inputMetadata ?? resource.Properties.Metadata,
                 }
             };
 

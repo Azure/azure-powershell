@@ -208,6 +208,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).ReplicatedProtectedItemName = (string) content.GetValueForProperty("ReplicatedProtectedItemName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).ReplicatedProtectedItemName, global::System.Convert.ToString);
             }
+            if (content.Contains("ReplicationProtectedItemName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).ReplicationProtectedItemName = (string) content.GetValueForProperty("ReplicationProtectedItemName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).ReplicationProtectedItemName, global::System.Convert.ToString);
+            }
             if (content.Contains("RecoveryPointName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).RecoveryPointName = (string) content.GetValueForProperty("RecoveryPointName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).RecoveryPointName, global::System.Convert.ToString);
@@ -372,6 +376,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
             if (content.Contains("ReplicatedProtectedItemName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).ReplicatedProtectedItemName = (string) content.GetValueForProperty("ReplicatedProtectedItemName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).ReplicatedProtectedItemName, global::System.Convert.ToString);
+            }
+            if (content.Contains("ReplicationProtectedItemName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).ReplicationProtectedItemName = (string) content.GetValueForProperty("ReplicationProtectedItemName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).ReplicationProtectedItemName, global::System.Convert.ToString);
             }
             if (content.Contains("RecoveryPointName"))
             {

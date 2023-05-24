@@ -20,22 +20,14 @@ Update an existing Kubernetes Flux Configuration.
 .Description
 Update an existing Kubernetes Flux Configuration.
 .Example
-PS C:\> Update-AzKubernetesConfigurationFlux -ClusterName azpstest_cluster_arc -ClusterType ConnectedClusters -Name azpstestflux-k8s -ResourceGroupName azpstest_gp -GitRepositoryUrl https://github.com/fluxcd/flux2-kustomize-helm-example -RepositoryRefBranch main -SourceKind 'GitRepository' -GitRepositorySyncIntervalInSecond 600 -GitRepositoryTimeoutInSecond 600 -Suspend:$false
-
-Name             ResourceGroupName
-----             -----------------
-azpstestflux-k8s azpstest_gp
+Update-AzKubernetesConfigurationFlux -ClusterName azpstest_cluster_arc -ClusterType ConnectedClusters -Name azpstestflux-k8s -ResourceGroupName azps_test_group -GitRepositoryUrl https://github.com/fluxcd/flux2-kustomize-helm-example -RepositoryRefBranch main -SourceKind 'GitRepository' -GitRepositorySyncIntervalInSecond 600 -GitRepositoryTimeoutInSecond 600 -Suspend:$false
 .Example
-PS C:\> Get-AzKubernetesConfigurationFlux -ClusterName azpstest_cluster_arc -ClusterType ConnectedClusters -Name azpstestflux-k8s -ResourceGroupName azpstest_gp | Update-AzKubernetesConfigurationFlux -GitRepositoryUrl https://github.com/fluxcd/flux2-kustomize-helm-example -RepositoryRefBranch main -SourceKind 'GitRepository' -GitRepositorySyncIntervalInSecond 600 -GitRepositoryTimeoutInSecond 600 -Suspend:$false
-
-Name             ResourceGroupName
-----             -----------------
-azpstestflux-k8s azpstest_gp
+Get-AzKubernetesConfigurationFlux -ClusterName azpstest_cluster_arc -ClusterType ConnectedClusters -Name azpstestflux-k8s -ResourceGroupName azps_test_group | Update-AzKubernetesConfigurationFlux -GitRepositoryUrl https://github.com/fluxcd/flux2-kustomize-helm-example -RepositoryRefBranch main -SourceKind 'GitRepository' -GitRepositorySyncIntervalInSecond 600 -GitRepositoryTimeoutInSecond 600 -Suspend:$false
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.IKubernetesConfigurationIdentity
 .Outputs
-System.Boolean
+Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.IFluxConfiguration
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -57,7 +49,7 @@ https://learn.microsoft.com/powershell/module/az.kubernetesconfiguration/update-
 #>
 function Update-AzKubernetesConfigurationFlux {
 [Alias('Update-AzK8sConfigurationFlux')]
-[OutputType([System.Boolean])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.IFluxConfiguration])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -67,6 +59,7 @@ param(
     ${ClusterName},
 
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [ArgumentCompleter({ 'ManagedClusters', 'ConnectedClusters', 'ProvisionedClusters' })]
     [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Path')]
     [System.String]
     # The Kubernetes cluster resource name - i.e.
@@ -103,6 +96,48 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
+    [System.String]
+    # The account key (shared key) to access the storage account
+    ${AzureBlobAccountKey},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
+    [System.String]
+    # The Azure Blob container name to sync from the url endpoint for the flux configuration.
+    ${AzureBlobContainerName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
+    [System.String]
+    # Name of a local secret on the Kubernetes cluster to use as the authentication secret rather than the managed or user-provided configuration secrets.
+    ${AzureBlobLocalAuthRef},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
+    [System.String]
+    # The Shared Access token to access the storage container
+    ${AzureBlobSasToken},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
+    [System.Int64]
+    # The interval at which to re-reconcile the cluster Azure Blob source with the remote.
+    ${AzureBlobSyncIntervalInSecond},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
+    [System.Int64]
+    # The maximum time to attempt to reconcile the cluster Azure Blob source with the remote.
+    ${AzureBlobTimeoutInSecond},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
+    [System.String]
+    # The URL to sync for the flux configuration Azure Blob storage account.
+    ${AzureBlobUrl},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
     [System.Security.SecureString]
     # Plaintext access key used to securely access the S3 bucket
     ${BucketAccessKey},
@@ -128,13 +163,13 @@ param(
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
     [System.Int64]
-    # The interval at which to re-reconcile the cluster git repository source with the remote.
+    # The interval at which to re-reconcile the cluster bucket source with the remote.
     ${BucketSyncIntervalInSecond},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
     [System.Int64]
-    # The maximum time to attempt to reconcile the cluster git repository source with the remote.
+    # The maximum time to attempt to reconcile the cluster bucket source with the remote.
     ${BucketTimeoutInSecond},
 
     [Parameter()]
@@ -145,7 +180,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.IFluxConfigurationPatchPropertiesConfigurationProtectedSettings]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.IFluxConfigurationPatchPropertiesConfigurationProtectedSettings]))]
     [System.Collections.Hashtable]
     # Key-value pairs of protected configuration settings for the configuration
     ${ConfigurationProtectedSetting},
@@ -194,10 +229,16 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.IFluxConfigurationPatchPropertiesKustomizations]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.IFluxConfigurationPatchPropertiesKustomizations]))]
     [System.Collections.Hashtable]
     # Array of kustomizations used to reconcile the artifact pulled by the source type on the cluster.
     ${Kustomization},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
+    [System.String]
+    # The client Id for authenticating a Managed Identity.
+    ${ManagedIdentityClientId},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
@@ -228,6 +269,42 @@ param(
     ${RepositoryRefTag},
 
     [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
+    [System.String]
+    # Base64-encoded certificate used to authenticate a Service Principal
+    ${ServicePrincipalClientCertificate},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
+    [System.String]
+    # The password for the certificate used to authenticate a Service Principal
+    ${ServicePrincipalClientCertificatePassword},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Specifies whether to include x5c header in client claims when acquiring a token to enable subject name / issuer based authentication for the Client Certificate
+    ${ServicePrincipalClientCertificateSendChain},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
+    [System.String]
+    # The client Id for authenticating a Service Principal.
+    ${ServicePrincipalClientId},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
+    [System.String]
+    # The client secret for authenticating a Service Principal
+    ${ServicePrincipalClientSecret},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
+    [System.String]
+    # The tenant Id for authenticating a Service Principal
+    ${ServicePrincipalTenantId},
+
+    [Parameter()]
     [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.SourceKindType])]
     [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.SourceKindType]
@@ -245,7 +322,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter()]
@@ -309,7 +387,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Runspace.Version.ToString()
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
         }         
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {

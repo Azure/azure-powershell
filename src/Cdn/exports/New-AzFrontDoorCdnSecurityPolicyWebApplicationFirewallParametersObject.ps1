@@ -26,7 +26,7 @@ New-AzFrontDoorCdnSecurityPolicyWebApplicationFirewallParametersObject  -Associa
             -WafPolicyId $wafPolicyId
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.SecurityPolicyWebApplicationFirewallParameters
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.SecurityPolicyWebApplicationFirewallParameters
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -37,15 +37,15 @@ ASSOCIATION <ISecurityPolicyWebApplicationFirewallAssociation[]>: Waf associatio
     [Id <String>]: Resource ID.
   [PatternsToMatch <String[]>]: List of paths
 .Link
-https://learn.microsoft.com/powershell/module/az.Cdn/new-AzCdnFrontDoorSecurityPolicyWebApplicationFirewallParametersObject
+https://learn.microsoft.com/powershell/module/az.Cdn/new-azfrontdoorcdnsecuritypolicywebapplicationfirewallparametersobject
 #>
 function New-AzFrontDoorCdnSecurityPolicyWebApplicationFirewallParametersObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.SecurityPolicyWebApplicationFirewallParameters])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.SecurityPolicyWebApplicationFirewallParameters])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.ISecurityPolicyWebApplicationFirewallAssociation[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.ISecurityPolicyWebApplicationFirewallAssociation[]]
     # Waf associations.
     # To construct, see NOTES section for ASSOCIATION properties and create a hash table.
     ${Association},
@@ -66,7 +66,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
         }         
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {
