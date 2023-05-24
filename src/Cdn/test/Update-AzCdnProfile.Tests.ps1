@@ -14,71 +14,38 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzCdnProfile'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Update-AzCdnProfile' -Tag 'LiveOnly' {
+Describe 'Update-AzCdnProfile'  {
     It 'UpdateExpanded' {
-        { 
-            $ResourceGroupName = 'testps-rg-' + (RandomString -allChars $false -len 6)
-            try
-            {
-                Write-Host -ForegroundColor Green "Create test group $($ResourceGroupName)"
-                New-AzResourceGroup -Name $ResourceGroupName -Location $env.location
+        $tags = @{
+            Tag1 = 11
+            Tag2  = 22
+        }
 
-                $cdnProfileName = 'p-' + (RandomString -allChars $false -len 6);
-                Write-Host -ForegroundColor Green "Use cdnProfileName : $($cdnProfileName)"
+        Write-Host -ForegroundColor Green "Update ClassicCdnProfileName"
+        Update-AzCdnProfile -Name $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName -Tag $tags
 
-                $profileSku = "Standard_Microsoft";
-                $tags = @{
-                    Tag1 = 1
-                    Tag2  = 2
-                }
-                New-AzCdnProfile -SkuName $profileSku -Name $cdnProfileName -ResourceGroupName $ResourceGroupName -Location Global -Tag $tags
-                $tags = @{
-                    Tag1 = 11
-                    Tag2  = 22
-                }
-                Update-AzCdnProfile -Name $cdnProfileName -ResourceGroupName $ResourceGroupName -Tag $tags
-                $updatedProfile = Get-AzCdnProfile -Name $cdnProfileName -ResourceGroupName $ResourceGroupName
-                
-                $updatedProfile.Tag["Tag1"] | Should -Be "11"
-                $updatedProfile.Tag["Tag2"] | Should -Be "22"
-            } Finally
-            {
-                Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
-            }
-        } | Should -Not -Throw
+        Write-Host -ForegroundColor Green "Get ClassicCdnProfileName"
+        $updatedProfile = Get-AzCdnProfile -Name $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName
+        
+        $updatedProfile.Tag["Tag1"] | Should -Be "11"
+        $updatedProfile.Tag["Tag2"] | Should -Be "22"
     }
 
     It 'UpdateViaIdentityExpanded' {
-        { 
-            $PSDefaultParameterValues['Disabled'] = $true
-            $ResourceGroupName = 'testps-rg-' + (RandomString -allChars $false -len 6)
-            try
-            {
-                Write-Host -ForegroundColor Green "Create test group $($ResourceGroupName)"
-                New-AzResourceGroup -Name $ResourceGroupName -Location $env.location
+        $tags = @{
+            Tag1 = 33
+            Tag2  = 44
+        }
+        Write-Host -ForegroundColor Green "Get ClassicCdnProfileName"
+        $profileObject = Get-AzCdnProfile -Name $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName
 
-                $cdnProfileName = 'p-' + (RandomString -allChars $false -len 6);
-                Write-Host -ForegroundColor Green "Use cdnProfileName : $($cdnProfileName)"
+        Write-Host -ForegroundColor Green "Update ClassicCdnProfileName"
+        Update-AzCdnProfile -Tag $tags -InputObject $profileObject
 
-                $profileSku = "Standard_Microsoft";
-                $tags = @{
-                    Tag1 = 1
-                    Tag2  = 2
-                }
-                New-AzCdnProfile -SkuName $profileSku -Name $cdnProfileName -ResourceGroupName $ResourceGroupName -Location Global -Tag $tags
-                $tags = @{
-                    Tag1 = 11
-                    Tag2  = 22
-                }
-                Get-AzCdnProfile -Name $cdnProfileName -ResourceGroupName $ResourceGroupName | Update-AzCdnProfile -Tag $tags
-                $updatedProfile = Get-AzCdnProfile -Name $cdnProfileName -ResourceGroupName $ResourceGroupName
-                
-                $updatedProfile.Tag["Tag1"] | Should -Be "11"
-                $updatedProfile.Tag["Tag2"] | Should -Be "22"
-            } Finally
-            {
-                Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
-            }
-        } | Should -Not -Throw
+        Write-Host -ForegroundColor Green "Get ClassicCdnProfileName"
+        $updatedProfile = Get-AzCdnProfile -Name $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName
+        
+        $updatedProfile.Tag["Tag1"] | Should -Be "33"
+        $updatedProfile.Tag["Tag2"] | Should -Be "44"
     }
 }

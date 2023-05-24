@@ -10,14 +10,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Cmdlets
 
     /// <summary>
     /// Gets the list of endpoints that VNET Injected Workspace calls Azure Databricks Control Plane. You must configure outbound
-    /// access with these endpoints. For more information, see https://learn.microsoft.com/en-us/azure/databricks/administration-guide/cloud-configurations/azure/udr
+    /// access with these endpoints. For more information, see https://docs.microsoft.com/en-us/azure/databricks/administration-guide/cloud-configurations/azure/udr
     /// </summary>
     /// <remarks>
     /// [OpenAPI] List=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Databricks/workspaces/{workspaceName}/outboundNetworkDependenciesEndpoints"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzDatabricksOutboundNetworkDependenciesEndpoint_List")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IOutboundEnvironmentEndpoint))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.Description(@"Gets the list of endpoints that VNET Injected Workspace calls Azure Databricks Control Plane. You must configure outbound access with these endpoints. For more information, see https://learn.microsoft.com/en-us/azure/databricks/administration-guide/cloud-configurations/azure/udr")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.Description(@"Gets the list of endpoints that VNET Injected Workspace calls Azure Databricks Control Plane. You must configure outbound access with these endpoints. For more information, see https://docs.microsoft.com/en-us/azure/databricks/administration-guide/cloud-configurations/azure/udr")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.Generated]
     public partial class GetAzDatabricksOutboundNetworkDependenciesEndpoint_List : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.IEventListener
@@ -45,9 +45,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Cmdlets
         public Microsoft.Azure.PowerShell.Cmdlets.Databricks.Databricks Client => Microsoft.Azure.PowerShell.Cmdlets.Databricks.Module.Instance.ClientAPI;
 
         /// <summary>
-        /// The credentials, account, tenant, and subscription used for communication with Azure
+        /// The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet
+        /// against a different subscription
         /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The credentials, account, tenant, and subscription used for communication with Azure.")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.")]
         [global::System.Management.Automation.ValidateNotNull]
         [global::System.Management.Automation.Alias("AzureRMContext", "AzureCredential")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.ParameterCategory.Azure)]

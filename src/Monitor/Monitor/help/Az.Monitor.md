@@ -82,6 +82,9 @@ Gets V2 (non-classic) metric alert rules
 ### [Get-AzMetricDefinition](Get-AzMetricDefinition.md)
 Gets metric definitions.
 
+### [Get-AzMonitorWorkspace](Get-AzMonitorWorkspace.md)
+Returns the specific Azure Monitor workspace
+
 ### [Get-AzScheduledQueryRule](Get-AzScheduledQueryRule.md)
 Retrieve an scheduled query rule definition.
 
@@ -160,6 +163,9 @@ Creates a local dimension selection object that can be used to construct a metri
 ### [New-AzMetricFilter](New-AzMetricFilter.md)
 Creates a metric dimension filter that can be used to query metrics.
 
+### [New-AzMonitorWorkspace](New-AzMonitorWorkspace.md)
+Create or update a workspace
+
 ### [New-AzScheduledQueryRule](New-AzScheduledQueryRule.md)
 Creates or updates a scheduled query rule.
 
@@ -205,6 +211,9 @@ Removes a log profile.
 ### [Remove-AzMetricAlertRuleV2](Remove-AzMetricAlertRuleV2.md)
 Removes a V2 (non-classic) metric alert rule.
 
+### [Remove-AzMonitorWorkspace](Remove-AzMonitorWorkspace.md)
+Delete a workspace
+
 ### [Remove-AzScheduledQueryRule](Remove-AzScheduledQueryRule.md)
 Deletes a scheduled query rule.
 
@@ -234,6 +243,9 @@ Updates a data collection rule tags property.
 
 ### [Update-AzInsightsPrivateLinkScope](Update-AzInsightsPrivateLinkScope.md)
 Update for private link scope
+
+### [Update-AzMonitorWorkspace](Update-AzMonitorWorkspace.md)
+Updates part of a workspace
 
 ### [Update-AzScheduledQueryRule](Update-AzScheduledQueryRule.md)
 Update a scheduled query rule.

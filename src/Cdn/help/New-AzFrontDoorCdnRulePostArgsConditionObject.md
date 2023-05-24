@@ -34,7 +34,7 @@ Name
 PostArgs
 ```
 
-
+Create an in-memory object for DeliveryRulePostArgsCondition
 
 ## PARAMETERS
 
@@ -135,7 +135,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.DeliveryRulePostArgsCondition
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.DeliveryRulePostArgsCondition
 
 ## NOTES
 

@@ -1,0 +1,85 @@
+{
+  "resourceType": "autoscalesettings",
+  "apiVersion": "2022-10-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.monitor"
+  },
+  "commands": [
+    {
+      "name": "Get-AzAutoscaleSetting",
+      "description": "Gets an autoscale setting",
+      "path": "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Insights/autoscalesettings/{autoscaleSettingName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.monitor/get-azautoscalesetting"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Gets an autoscale setting",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.autoscaleSettingName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzAutoscaleSetting",
+      "description": "Deletes and autoscale setting",
+      "path": "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Insights/autoscalesettings/{autoscaleSettingName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.monitor/remove-azautoscalesetting"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Deletes and autoscale setting",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.autoscaleSettingName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -49,9 +49,10 @@
   <ItemGroup>
     <Folder Include="SessionRecords\Commands.Network.Test.ScenarioTests.NetworkManagerTests\" />
   </ItemGroup>
-  
+
   <ItemGroup>
     <ProjectReference Include="..\Network.Management.Sdk\Network.Management.Sdk.csproj" />
   </ItemGroup>
 
 </Project>
+

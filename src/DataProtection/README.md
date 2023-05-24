@@ -164,14 +164,6 @@ directive:
       variant: Sync$|SyncViaIdentity$|SyncViaIdentityExpanded$
     remove: true
   - where:
-      verb: Get
-      subject: OperationResult
-    remove: true
-  - where:
-      verb: Get
-      subject: OperationStatus
-    remove: true
-  - where:
       verb: Start
       subject: BackupInstanceRehydrate
     remove: true
@@ -269,6 +261,16 @@ directive:
       property-name: SoftDeleteSettingState
     set:
       property-name: SoftDeleteState
+  - where:
+      subject: OperationStatus
+      parameter-name: Location
+    set:      
+      parameter-description: Azure region where the operation is triggered.
+  - where:
+      subject: OperationStatus
+      parameter-name: OperationId
+    set:      
+      parameter-description: Operation Id to track the operation status.
   - where:
       model-name: BackupVaultResource
     set:

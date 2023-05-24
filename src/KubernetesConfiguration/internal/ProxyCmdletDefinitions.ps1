@@ -20,11 +20,7 @@ Get Async Operation status
 .Description
 Get Async Operation status
 .Example
-PS C:\> Get-AzKubernetesConfigFluxOperationStatus -ClusterName azpstest_cluster_arc -ClusterType ConnectedClusters -FluxConfigurationName azpstestflux-k8s -ResourceGroupName azpstest_gp -OperationId e9871335-7ba8-4100-8cb4-73b3464eb863
-
-Name                                 ResourceGroupName Status
-----                                 ----------------- ------
-e9871335-7ba8-4100-8cb4-73b3464eb863 azpstest_gp       Succeeded
+Get-AzKubernetesConfigFluxOperationStatus -ClusterName azpstest_cluster_arc -ClusterType ConnectedClusters -FluxConfigurationName azpstestflux-k8s -ResourceGroupName azps_test_group -OperationId e9871335-7ba8-4100-8cb4-73b3464eb863
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.IKubernetesConfigurationIdentity
@@ -68,6 +64,7 @@ param(
     ${ClusterRp},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [ArgumentCompleter({'ManagedClusters', 'ConnectedClusters', 'ProvisionedClusters'})]
     [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Path')]
     [System.String]
     # The Kubernetes cluster resource name - i.e.
@@ -112,7 +109,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -207,22 +205,14 @@ Gets details of the Flux Configuration.
 .Description
 Gets details of the Flux Configuration.
 .Example
-PS C:\> Get-AzKubernetesConfigurationFlux -ClusterName azpstest_cluster_arc -ClusterType ConnectedClusters -ResourceGroupName azpstest_gp
-
-Name             ResourceGroupName
-----             -----------------
-azpstestflux-k8s azpstest_gp
+Get-AzKubernetesConfigurationFlux -ClusterName azpstest_cluster_arc -ClusterType ConnectedClusters -ResourceGroupName azps_test_group
 .Example
-PS C:\> Get-AzKubernetesConfigurationFlux -ClusterName azpstest_cluster_arc -ClusterType ConnectedClusters -Name azpstestflux-k8s -ResourceGroupName azpstest_gp
-
-Name             ResourceGroupName
-----             -----------------
-azpstestflux-k8s azpstest_gp
+Get-AzKubernetesConfigurationFlux -ClusterName azpstest_cluster_arc -ClusterType ConnectedClusters -Name azpstestflux-k8s -ResourceGroupName azps_test_group
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.IKubernetesConfigurationIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.IFluxConfiguration
+Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.IFluxConfiguration
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -244,7 +234,7 @@ https://learn.microsoft.com/powershell/module/az.kubernetesconfiguration/get-azk
 #>
 function Get-AzKubernetesConfigurationFlux {
 [Alias('Get-AzK8sConfigurationFlux')]
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.IFluxConfiguration])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.IFluxConfiguration])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -264,6 +254,7 @@ param(
 
     [Parameter(ParameterSetName='Get', Mandatory)]
     [Parameter(ParameterSetName='List', Mandatory)]
+    [ArgumentCompleter({'ManagedClusters', 'ConnectedClusters', 'ProvisionedClusters'})]
     [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Path')]
     [System.String]
     # The Kubernetes cluster resource name - i.e.
@@ -305,7 +296,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -401,23 +393,14 @@ Gets details of the Source Control Configuration.
 .Description
 Gets details of the Source Control Configuration.
 .Example
-PS C:\> Get-AzKubernetesConfiguration -ResourceGroupName azpstest_gp -ClusterName azpstest_cluster_arc -ClusterType ConnectedClusters
-
-Name                 RepositoryUrl          ResourceGroupName
-----                 -------------          -----------------
-azpstestk8s          http://github.com/xxxx azpstest_gp
-azpstestk8s-operator http://github.com/xxxx azpstest_gp
+Get-AzKubernetesConfiguration -ResourceGroupName azps_test_group -ClusterName azpstest_cluster_arc -ClusterType ConnectedClusters
 .Example
-PS C:\> Get-AzKubernetesConfiguration -ResourceGroupName azpstest_gp -ClusterName azpstest_cluster_arc -ClusterType ConnectedClusters -Name azpstestk8s
-
-Name        RepositoryUrl          ResourceGroupName
-----        -------------          -----------------
-azpstestk8s http://github.com/xxxx azpstest_gp
+Get-AzKubernetesConfiguration -ResourceGroupName azps_test_group -ClusterName azpstest_cluster_arc -ClusterType ConnectedClusters -Name azpstestk8s
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.IKubernetesConfigurationIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.ISourceControlConfiguration
+Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.ISourceControlConfiguration
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -439,7 +422,7 @@ https://learn.microsoft.com/powershell/module/az.kubernetesconfiguration/get-azk
 #>
 function Get-AzKubernetesConfiguration {
 [Alias('Get-AzK8sConfiguration')]
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.ISourceControlConfiguration])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.ISourceControlConfiguration])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -459,6 +442,7 @@ param(
 
     [Parameter(ParameterSetName='Get', Mandatory)]
     [Parameter(ParameterSetName='List', Mandatory)]
+    [ArgumentCompleter({'ManagedClusters', 'ConnectedClusters', 'ProvisionedClusters'})]
     [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Path')]
     [System.String]
     # The Kubernetes cluster resource name - i.e.
@@ -500,7 +484,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -596,23 +581,14 @@ Gets Kubernetes Cluster Extension.
 .Description
 Gets Kubernetes Cluster Extension.
 .Example
-PS C:\> Get-AzKubernetesExtension -ClusterName azpstest_cluster_arc -ClusterType ConnectedClusters -Name azpstest-extension -ResourceGroupName azpstest_gp
-
-Name               ExtensionType           Version ProvisioningState AutoUpgradeMinorVersion ReleaseTrain
-----               -------------           ------- ----------------- ----------------------- ------------
-azpstest-extension azuremonitor-containers 2.9.2   Succeeded         True                    Stable
+Get-AzKubernetesExtension -ClusterName azpstest_cluster_arc -ClusterType ConnectedClusters -Name azpstest-extension -ResourceGroupName azps_test_group
 .Example
-PS C:\> Get-AzKubernetesExtension -ClusterName azpstest_cluster_arc -ClusterType ConnectedClusters -ResourceGroupName azpstest_gp
-
-Name               ExtensionType           Version ProvisioningState AutoUpgradeMinorVersion ReleaseTrain
-----               -------------           ------- ----------------- ----------------------- ------------
-azpstest-extension azuremonitor-containers 2.9.2   Succeeded         True                    Stable
-flux               microsoft.flux          1.0.0   Succeeded         True                    Stable
+Get-AzKubernetesExtension -ClusterName azpstest_cluster_arc -ClusterType ConnectedClusters -ResourceGroupName azps_test_group
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.IKubernetesConfigurationIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.IExtension
+Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.IExtension
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -634,7 +610,7 @@ https://learn.microsoft.com/powershell/module/az.kubernetesconfiguration/get-azk
 #>
 function Get-AzKubernetesExtension {
 [Alias('Get-AzK8sExtension')]
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.IExtension])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.IExtension])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -654,6 +630,7 @@ param(
 
     [Parameter(ParameterSetName='Get', Mandatory)]
     [Parameter(ParameterSetName='List', Mandatory)]
+    [ArgumentCompleter({'ManagedClusters', 'ConnectedClusters', 'ProvisionedClusters'})]
     [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Path')]
     [System.String]
     # The Kubernetes cluster resource name - i.e.
@@ -695,7 +672,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -809,7 +787,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -900,7 +879,7 @@ Create a new Kubernetes Flux Configuration.
 .Description
 Create a new Kubernetes Flux Configuration.
 .Example
-PS C:\> $kustomizations = @{
+$kustomizations = @{
     infra=@{
         Name = "infra"
         Path = "./infrastructure"
@@ -913,20 +892,16 @@ PS C:\> $kustomizations = @{
         DependsOn = @("infra")
     }
 }
-PS C:\> New-AzKubernetesConfigurationFlux -ClusterName azpstest_cluster_arc -ClusterType ConnectedClusters -Name azpstestflux-k8s -ResourceGroupName azpstest_gp -Namespace namespace-t01 -Scope 'cluster' -GitRepositoryUrl https://github.com/Azure/gitops-flux2-kustomize-helm-mt -RepositoryRefBranch main -SourceKind 'GitRepository' -GitRepositorySyncIntervalInSecond 600 -GitRepositoryTimeoutInSecond 600 -Suspend:$false -Kustomization $kustomizations
-
-Name             ResourceGroupName
-----             -----------------
-azpstestflux-k8s azpstest_gp
+New-AzKubernetesConfigurationFlux -ClusterName azpstest_cluster_arc -ClusterType ConnectedClusters -Name azpstestflux-k8s -ResourceGroupName azpstest_gp -Namespace namespace-t01 -Scope 'cluster' -GitRepositoryUrl https://github.com/Azure/gitops-flux2-kustomize-helm-mt -RepositoryRefBranch main -SourceKind 'GitRepository' -GitRepositorySyncIntervalInSecond 600 -GitRepositoryTimeoutInSecond 600 -Suspend:$false -Kustomization $kustomizations
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.IFluxConfiguration
+Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.IFluxConfiguration
 .Link
 https://learn.microsoft.com/powershell/module/az.kubernetesconfiguration/new-azkubernetesconfigurationflux
 #>
 function New-AzKubernetesConfigurationFlux {
 [Alias('New-AzK8sConfigurationFlux')]
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.IFluxConfiguration])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.IFluxConfiguration])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -943,6 +918,7 @@ param(
     ${ClusterRp},
 
     [Parameter(Mandatory)]
+    [ArgumentCompleter({'ManagedClusters', 'ConnectedClusters', 'ProvisionedClusters'})]
     [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Path')]
     [System.String]
     # The Kubernetes cluster resource name - i.e.
@@ -972,6 +948,48 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
+    [System.String]
+    # The account key (shared key) to access the storage account
+    ${AzureBlobAccountKey},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
+    [System.String]
+    # The Azure Blob container name to sync from the url endpoint for the flux configuration.
+    ${AzureBlobContainerName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
+    [System.String]
+    # Name of a local secret on the Kubernetes cluster to use as the authentication secret rather than the managed or user-provided configuration secrets.
+    ${AzureBlobLocalAuthRef},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
+    [System.String]
+    # The Shared Access token to access the storage container
+    ${AzureBlobSasToken},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
+    [System.Int64]
+    # The interval at which to re-reconcile the cluster Azure Blob source with the remote.
+    ${AzureBlobSyncIntervalInSecond},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
+    [System.Int64]
+    # The maximum time to attempt to reconcile the cluster Azure Blob source with the remote.
+    ${AzureBlobTimeoutInSecond},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
+    [System.String]
+    # The URL to sync for the flux configuration Azure Blob storage account.
+    ${AzureBlobUrl},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
     [System.Security.SecureString]
     # Plaintext access key used to securely access the S3 bucket
     ${BucketAccessKey},
@@ -997,13 +1015,13 @@ param(
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
     [System.Int64]
-    # The interval at which to re-reconcile the cluster git repository source with the remote.
+    # The interval at which to re-reconcile the cluster bucket source with the remote.
     ${BucketSyncIntervalInSecond},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
     [System.Int64]
-    # The maximum time to attempt to reconcile the cluster git repository source with the remote.
+    # The maximum time to attempt to reconcile the cluster bucket source with the remote.
     ${BucketTimeoutInSecond},
 
     [Parameter()]
@@ -1014,7 +1032,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.IFluxConfigurationPropertiesConfigurationProtectedSettings]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.IFluxConfigurationPropertiesConfigurationProtectedSettings]))]
     [System.Collections.Hashtable]
     # Key-value pairs of protected configuration settings for the configuration
     ${ConfigurationProtectedSetting},
@@ -1063,10 +1081,16 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.IFluxConfigurationPropertiesKustomizations]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.IFluxConfigurationPropertiesKustomizations]))]
     [System.Collections.Hashtable]
     # Array of kustomizations used to reconcile the artifact pulled by the source type on the cluster.
     ${Kustomization},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
+    [System.String]
+    # The client Id for authenticating a Managed Identity.
+    ${ManagedIdentityClientId},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
@@ -1111,6 +1135,42 @@ param(
     ${Scope},
 
     [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
+    [System.String]
+    # Base64-encoded certificate used to authenticate a Service Principal
+    ${ServicePrincipalClientCertificate},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
+    [System.String]
+    # The password for the certificate used to authenticate a Service Principal
+    ${ServicePrincipalClientCertificatePassword},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Specifies whether to include x5c header in client claims when acquiring a token to enable subject name / issuer based authentication for the Client Certificate
+    ${ServicePrincipalClientCertificateSendChain},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
+    [System.String]
+    # The client Id for authenticating a Service Principal.
+    ${ServicePrincipalClientId},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
+    [System.String]
+    # The client secret for authenticating a Service Principal
+    ${ServicePrincipalClientSecret},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
+    [System.String]
+    # The tenant Id for authenticating a Service Principal
+    ${ServicePrincipalTenantId},
+
+    [Parameter()]
     [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.SourceKindType])]
     [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.SourceKindType]
@@ -1128,7 +1188,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter()]
@@ -1234,28 +1295,20 @@ Create a new Kubernetes Source Control Configuration.
 .Description
 Create a new Kubernetes Source Control Configuration.
 .Example
-PS C:\> New-AzConnectedKubernetes -ClusterName azpstest_cluster_arc -ResourceGroupName azpstest_gp -Location eastus
-PS C:\> New-AzKubernetesConfiguration -ResourceGroupName azpstest_gp -ClusterName azpstest_cluster_arc -Name azpstestk8s -RepositoryUrl http://github.com/xxxx -ClusterType ConnectedClusters
-
-Name        RepositoryUrl          ResourceGroupName
-----        -------------          -----------------
-azpstestk8s http://github.com/xxxx azpstest_gp
+New-AzConnectedKubernetes -ClusterName azpstest_cluster_arc -ResourceGroupName azps_test_group -Location eastus -KubeConfig $HOME\.kube\config -KubeContext azps_aks_t01
+New-AzKubernetesConfiguration -ResourceGroupName azps_test_group -ClusterName azpstest_cluster_arc -Name azpstestk8s -RepositoryUrl http://github.com/xxxx -ClusterType ConnectedClusters
 .Example
-PS C:\> New-AzConnectedKubernetes -ClusterName azpstest_cluster_arc -ResourceGroupName azpstest_gp -Location eastus
-PS C:\> New-AzKubernetesConfiguration -ResourceGroupName azpstest_gp -ClusterName azpstest_cluster_arc -Name azpstestk8s-operator -RepositoryUrl http://github.com/xxxx -OperatorNamespace namespace-t01 -ClusterType ConnectedClusters
-
-Name                 RepositoryUrl          ResourceGroupName
-----                 -------------          -----------------
-azpstestk8s-operator http://github.com/xxxx azpstest_gp
+New-AzConnectedKubernetes -ClusterName azpstest_cluster_arc -ResourceGroupName azps_test_group -Location eastus -KubeConfig $HOME\.kube\config -KubeContext azps_aks_t01
+New-AzKubernetesConfiguration -ResourceGroupName azps_test_group -ClusterName azpstest_cluster_arc -Name azpstestk8s-operator -RepositoryUrl http://github.com/xxxx -OperatorScope 'cluster' -ClusterType ConnectedClusters
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.ISourceControlConfiguration
+Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.ISourceControlConfiguration
 .Link
 https://learn.microsoft.com/powershell/module/az.kubernetesconfiguration/new-azkubernetesconfiguration
 #>
 function New-AzKubernetesConfiguration {
 [Alias('New-AzK8sConfiguration')]
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.ISourceControlConfiguration])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.ISourceControlConfiguration])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -1272,6 +1325,7 @@ param(
     ${ClusterRp},
 
     [Parameter(Mandatory)]
+    [ArgumentCompleter({'ManagedClusters', 'ConnectedClusters', 'ProvisionedClusters'})]
     [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Path')]
     [System.String]
     # The Kubernetes cluster resource name - i.e.
@@ -1301,7 +1355,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.IConfigurationProtectedSettings]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.IConfigurationProtectedSettings]))]
     [System.Collections.Hashtable]
     # Name-value pairs of protected configuration settings for the configuration
     ${ConfigurationProtectedSetting},
@@ -1374,7 +1428,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -1468,26 +1523,18 @@ Create a new Kubernetes Cluster Extension.
 .Description
 Create a new Kubernetes Cluster Extension.
 .Example
-PS C:\> New-AzKubernetesExtension -ClusterName azpstest_cluster_arc -ClusterType ConnectedClusters -Name azpstest-extension -ResourceGroupName azpstest_gp -ExtensionType azuremonitor-containers
-
-Name               ExtensionType           Version ProvisioningState AutoUpgradeMinorVersion ReleaseTrain
-----               -------------           ------- ----------------- ----------------------- ------------
-azpstest-extension azuremonitor-containers 2.9.2   Succeeded         True                    Stable
+New-AzKubernetesExtension -ClusterName azpstest_cluster_arc -ClusterType ConnectedClusters -Name azpstest-extension -ResourceGroupName azps_test_group -ExtensionType azuremonitor-containers
 .Example
-PS C:\> New-AzKubernetesExtension -ClusterName azpstest_cluster_arc -ClusterType ConnectedClusters -Name flux -ResourceGroupName azpstest_gp -ExtensionType microsoft.flux -AutoUpgradeMinorVersion -ClusterReleaseNamespace flux-system -IdentityType 'SystemAssigned'
-
-Name ExtensionType  Version ProvisioningState AutoUpgradeMinorVersion ReleaseTrain
----- -------------  ------- ----------------- ----------------------- ------------
-flux microsoft.flux 1.0.0   Succeeded         True                    Stable
+New-AzKubernetesExtension -ClusterName azpstest_cluster_arc -ClusterType ConnectedClusters -Name flux -ResourceGroupName azps_test_group -ExtensionType microsoft.flux -AutoUpgradeMinorVersion -ReleaseNamespace flux-system -IdentityType 'SystemAssigned'
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.IExtension
+Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.IExtension
 .Link
 https://learn.microsoft.com/powershell/module/az.kubernetesconfiguration/new-azkubernetesextension
 #>
 function New-AzKubernetesExtension {
 [Alias('New-AzK8sExtension')]
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.IExtension])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.IExtension])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -1504,6 +1551,7 @@ param(
     ${ClusterRp},
 
     [Parameter(Mandatory)]
+    [ArgumentCompleter({'ManagedClusters', 'ConnectedClusters', 'ProvisionedClusters'})]
     [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Path')]
     [System.String]
     # The Kubernetes cluster resource name - i.e.
@@ -1546,21 +1594,14 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
-    [System.String]
-    # Namespace where the extension Release must be placed, for a Cluster scoped extension.
-    # If this namespace does not exist, it will be created
-    ${ClusterReleaseNamespace},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.IExtensionPropertiesConfigurationProtectedSettings]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.IExtensionPropertiesConfigurationProtectedSettings]))]
     [System.Collections.Hashtable]
     # Configuration settings that are sensitive, as name-value pairs for configuring this extension.
     ${ConfigurationProtectedSetting},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.IExtensionPropertiesConfigurationSettings]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.IExtensionPropertiesConfigurationSettings]))]
     [System.Collections.Hashtable]
     # Configuration settings, as name-value pairs for configuring this extension.
     ${ConfigurationSetting},
@@ -1582,9 +1623,44 @@ param(
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
     [System.String]
-    # Namespace where the extension will be created for an Namespace scoped extension.
+    # A user defined name of the 3rd Party Artifact that is being procured.
+    ${PlanName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
+    [System.String]
+    # The 3rd Party artifact that is being procured.
+    # E.g.
+    # NewRelic.
+    # Product maps to the OfferID specified for the artifact at the time of Data Market onboarding.
+    ${PlanProduct},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
+    [System.String]
+    # A publisher provided promotion code as provisioned in Data Market for the said product/artifact.
+    ${PlanPromotionCode},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
+    [System.String]
+    # The publisher of the 3rd Party Artifact that is being bought.
+    # E.g.
+    # NewRelic
+    ${PlanPublisher},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
+    [System.String]
+    # The version of the desired product/artifact.
+    ${PlanVersion},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
+    [System.String]
+    # Namespace where the extension Release must be placed, for a Cluster scoped extension.
     # If this namespace does not exist, it will be created
-    ${NamespaceTargetNamespace},
+    ${ReleaseNamespace},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
@@ -1592,6 +1668,13 @@ param(
     # ReleaseTrain this extension participates in for auto-upgrade (e.g.
     # Stable, Preview, etc.) - only if autoUpgradeMinorVersion is 'true'.
     ${ReleaseTrain},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
+    [System.String]
+    # Namespace where the extension will be created for an Namespace scoped extension.
+    # If this namespace does not exist, it will be created
+    ${TargetNamespace},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
@@ -1605,7 +1688,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter()]
@@ -1711,11 +1795,9 @@ This will delete the YAML file used to set up the Flux Configuration, thus stopp
 .Description
 This will delete the YAML file used to set up the Flux Configuration, thus stopping future sync from the source repo.
 .Example
-PS C:\> Remove-AzKubernetesConfigurationFlux -ClusterName azpstest_cluster_arc -ClusterType ConnectedClusters -Name azpstestflux-k8s -ResourceGroupName azpstest_gp
-
+Remove-AzKubernetesConfigurationFlux -ClusterName azpstest_cluster_arc -ClusterType ConnectedClusters -Name azpstestflux-k8s -ResourceGroupName azps_test_group
 .Example
-PS C:\> Get-AzKubernetesConfigurationFlux -ClusterName azpstest_cluster_arc -ClusterType ConnectedClusters -Name azpstestflux-k8s -ResourceGroupName azpstest_gp | Remove-AzKubernetesConfigurationFlux
-
+Get-AzKubernetesConfigurationFlux -ClusterName azpstest_cluster_arc -ClusterType ConnectedClusters -Name azpstestflux-k8s -ResourceGroupName azps_test_group | Remove-AzKubernetesConfigurationFlux
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.IKubernetesConfigurationIdentity
@@ -1759,6 +1841,7 @@ param(
     ${ClusterRp},
 
     [Parameter(ParameterSetName='Delete', Mandatory)]
+    [ArgumentCompleter({'ManagedClusters', 'ConnectedClusters', 'ProvisionedClusters'})]
     [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Path')]
     [System.String]
     # The Kubernetes cluster resource name - i.e.
@@ -1804,7 +1887,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter()]
@@ -1917,12 +2001,9 @@ This will delete the YAML file used to set up the Source control configuration, 
 .Description
 This will delete the YAML file used to set up the Source control configuration, thus stopping future sync from the source repo.
 .Example
-PS C:\> Remove-AzKubernetesConfiguration -ResourceGroupName azpstest_gp -ClusterName azpstest_cluster_arc -Name  azpstestk8s -ClusterType ConnectedClusters
-
+Remove-AzKubernetesConfiguration -ResourceGroupName azps_test_group -ClusterName azpstest_cluster_arc -Name  azpstestk8s -ClusterType ConnectedClusters
 .Example
-PS C:\> $kubConf = Get-AzKubernetesConfiguration -ClusterName azpstest_cluster_arc -ClusterType ConnectedClusters -ResourceGroupName azpstest_gp -Name azpstestk8s-operator
-Remove-AzKubernetesConfiguration -InputObject $kubConf
-
+Get-AzKubernetesConfiguration -ClusterName azpstest_cluster_arc -ClusterType ConnectedClusters -ResourceGroupName azps_test_group -Name azpstestk8s-operator | Remove-AzKubernetesConfiguration
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.IKubernetesConfigurationIdentity
@@ -1966,6 +2047,7 @@ param(
     ${ClusterRp},
 
     [Parameter(ParameterSetName='Delete', Mandatory)]
+    [ArgumentCompleter({'ManagedClusters', 'ConnectedClusters', 'ProvisionedClusters'})]
     [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Path')]
     [System.String]
     # The Kubernetes cluster resource name - i.e.
@@ -2005,7 +2087,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter()]
@@ -2120,8 +2203,7 @@ This will cause the Agent to Uninstall the extension from the cluster.
 Delete a Kubernetes Cluster Extension.
 This will cause the Agent to Uninstall the extension from the cluster.
 .Example
-PS C:\> Remove-AzKubernetesExtension -ClusterName azpstest_cluster_arc -ClusterType ConnectedClusters -Name azpstest-extension -ResourceGroupName azpstest_gp
-
+Remove-AzKubernetesExtension -ClusterName azpstest_cluster_arc -ClusterType ConnectedClusters -Name azpstest-extension -ResourceGroupName azps_test_group
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.IKubernetesConfigurationIdentity
@@ -2165,6 +2247,7 @@ param(
     ${ClusterRp},
 
     [Parameter(ParameterSetName='Delete', Mandatory)]
+    [ArgumentCompleter({'ManagedClusters', 'ConnectedClusters', 'ProvisionedClusters'})]
     [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Path')]
     [System.String]
     # The Kubernetes cluster resource name - i.e.
@@ -2210,7 +2293,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter()]
@@ -2319,344 +2403,18 @@ end {
 
 <#
 .Synopsis
-Create a new Kubernetes Flux Configuration.
-.Description
-Create a new Kubernetes Flux Configuration.
-.Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
-
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.IFluxConfiguration
-.Link
-https://learn.microsoft.com/powershell/module/az.kubernetesconfiguration/set-azkubernetesconfigurationflux
-#>
-function Set-AzKubernetesConfigurationFlux {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.IFluxConfiguration])]
-[CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-param(
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Path')]
-    [System.String]
-    # The name of the kubernetes cluster.
-    ${ClusterName},
-
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Path')]
-    [System.String]
-    # The Kubernetes cluster RP - i.e.
-    # Microsoft.ContainerService, Microsoft.Kubernetes, Microsoft.HybridContainerService.
-    ${ClusterRp},
-
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Path')]
-    [System.String]
-    # The Kubernetes cluster resource name - i.e.
-    # managedClusters, connectedClusters, provisionedClusters.
-    ${ClusterType},
-
-    [Parameter(Mandatory)]
-    [Alias('FluxConfigurationName')]
-    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Path')]
-    [System.String]
-    # Name of the Flux Configuration.
-    ${Name},
-
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Path')]
-    [System.String]
-    # The name of the resource group.
-    # The name is case insensitive.
-    ${ResourceGroupName},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String]
-    # The ID of the target subscription.
-    ${SubscriptionId},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
-    [System.Security.SecureString]
-    # Plaintext access key used to securely access the S3 bucket
-    ${BucketAccessKey},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
-    [System.Management.Automation.SwitchParameter]
-    # Specify whether to use insecure communication when puling data from the S3 bucket.
-    ${BucketInsecure},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
-    [System.String]
-    # Name of a local secret on the Kubernetes cluster to use as the authentication secret rather than the managed or user-provided configuration secrets.
-    ${BucketLocalAuthRef},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
-    [System.String]
-    # The bucket name to sync from the url endpoint for the flux configuration.
-    ${BucketName},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
-    [System.Int64]
-    # The interval at which to re-reconcile the cluster git repository source with the remote.
-    ${BucketSyncIntervalInSecond},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
-    [System.Int64]
-    # The maximum time to attempt to reconcile the cluster git repository source with the remote.
-    ${BucketTimeoutInSecond},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
-    [System.String]
-    # The URL to sync for the flux configuration S3 bucket.
-    ${BucketUrl},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.IFluxConfigurationPropertiesConfigurationProtectedSettings]))]
-    [System.Collections.Hashtable]
-    # Key-value pairs of protected configuration settings for the configuration
-    ${ConfigurationProtectedSetting},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
-    [System.String]
-    # Base64-encoded HTTPS certificate authority contents used to access git private git repositories over HTTPS
-    ${GitRepositoryHttpsCaCert},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
-    [System.String]
-    # Plaintext HTTPS username used to access private git repositories over HTTPS
-    ${GitRepositoryHttpsUser},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
-    [System.String]
-    # Name of a local secret on the Kubernetes cluster to use as the authentication secret rather than the managed or user-provided configuration secrets.
-    ${GitRepositoryLocalAuthRef},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
-    [System.String]
-    # Base64-encoded known_hosts value containing public SSH keys required to access private git repositories over SSH
-    ${GitRepositorySshKnownHost},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
-    [System.Int64]
-    # The interval at which to re-reconcile the cluster git repository source with the remote.
-    ${GitRepositorySyncIntervalInSecond},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
-    [System.Int64]
-    # The maximum time to attempt to reconcile the cluster git repository source with the remote.
-    ${GitRepositoryTimeoutInSecond},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
-    [System.String]
-    # The URL to sync for the flux configuration git repository.
-    ${GitRepositoryUrl},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.IFluxConfigurationPropertiesKustomizations]))]
-    [System.Collections.Hashtable]
-    # Array of kustomizations used to reconcile the artifact pulled by the source type on the cluster.
-    ${Kustomization},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
-    [System.String]
-    # The namespace to which this configuration is installed to.
-    # Maximum of 253 lower case alphanumeric characters, hyphen and period only.
-    ${Namespace},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
-    [System.String]
-    # The git repository branch name to checkout.
-    ${RepositoryRefBranch},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
-    [System.String]
-    # The commit SHA to checkout.
-    # This value must be combined with the branch name to be valid.
-    # This takes precedence over semver.
-    ${RepositoryRefCommit},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
-    [System.String]
-    # The semver range used to match against git repository tags.
-    # This takes precedence over tag.
-    ${RepositoryRefSemver},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
-    [System.String]
-    # The git repository tag name to checkout.
-    # This takes precedence over branch.
-    ${RepositoryRefTag},
-
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.ScopeType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.ScopeType]
-    # Scope at which the operator will be installed.
-    ${Scope},
-
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.SourceKindType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.SourceKindType]
-    # Source Kind to pull the configuration data from.
-    ${SourceKind},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
-    [System.Management.Automation.SwitchParameter]
-    # Whether this configuration should suspend its reconciliation of its kustomizations and sources.
-    ${Suspend},
-
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
-    ${DefaultProfile},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command as a job
-    ${AsJob},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command asynchronously
-    ${NoWait},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-
-        $mapping = @{
-            UpdateExpanded = 'Az.KubernetesConfiguration.private\Set-AzKubernetesConfigurationFlux_UpdateExpanded';
-        }
-        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-        }
-
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-
-        throw
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-    } catch {
-
-        throw
-    }
-} 
-}
-
-<#
-.Synopsis
 Update an existing Kubernetes Flux Configuration.
 .Description
 Update an existing Kubernetes Flux Configuration.
 .Example
-PS C:\> Update-AzKubernetesConfigurationFlux -ClusterName azpstest_cluster_arc -ClusterType ConnectedClusters -Name azpstestflux-k8s -ResourceGroupName azpstest_gp -GitRepositoryUrl https://github.com/fluxcd/flux2-kustomize-helm-example -RepositoryRefBranch main -SourceKind 'GitRepository' -GitRepositorySyncIntervalInSecond 600 -GitRepositoryTimeoutInSecond 600 -Suspend:$false
-
-Name             ResourceGroupName
-----             -----------------
-azpstestflux-k8s azpstest_gp
+Update-AzKubernetesConfigurationFlux -ClusterName azpstest_cluster_arc -ClusterType ConnectedClusters -Name azpstestflux-k8s -ResourceGroupName azps_test_group -GitRepositoryUrl https://github.com/fluxcd/flux2-kustomize-helm-example -RepositoryRefBranch main -SourceKind 'GitRepository' -GitRepositorySyncIntervalInSecond 600 -GitRepositoryTimeoutInSecond 600 -Suspend:$false
 .Example
-PS C:\> Get-AzKubernetesConfigurationFlux -ClusterName azpstest_cluster_arc -ClusterType ConnectedClusters -Name azpstestflux-k8s -ResourceGroupName azpstest_gp | Update-AzKubernetesConfigurationFlux -GitRepositoryUrl https://github.com/fluxcd/flux2-kustomize-helm-example -RepositoryRefBranch main -SourceKind 'GitRepository' -GitRepositorySyncIntervalInSecond 600 -GitRepositoryTimeoutInSecond 600 -Suspend:$false
-
-Name             ResourceGroupName
-----             -----------------
-azpstestflux-k8s azpstest_gp
+Get-AzKubernetesConfigurationFlux -ClusterName azpstest_cluster_arc -ClusterType ConnectedClusters -Name azpstestflux-k8s -ResourceGroupName azps_test_group | Update-AzKubernetesConfigurationFlux -GitRepositoryUrl https://github.com/fluxcd/flux2-kustomize-helm-example -RepositoryRefBranch main -SourceKind 'GitRepository' -GitRepositorySyncIntervalInSecond 600 -GitRepositoryTimeoutInSecond 600 -Suspend:$false
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.IKubernetesConfigurationIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.IFluxConfiguration
+Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.IFluxConfiguration
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -2678,7 +2436,7 @@ https://learn.microsoft.com/powershell/module/az.kubernetesconfiguration/update-
 #>
 function Update-AzKubernetesConfigurationFlux {
 [Alias('Update-AzK8sConfigurationFlux')]
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.IFluxConfiguration])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.IFluxConfiguration])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -2695,6 +2453,7 @@ param(
     ${ClusterRp},
 
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [ArgumentCompleter({'ManagedClusters', 'ConnectedClusters', 'ProvisionedClusters'})]
     [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Path')]
     [System.String]
     # The Kubernetes cluster resource name - i.e.
@@ -2731,6 +2490,48 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
+    [System.String]
+    # The account key (shared key) to access the storage account
+    ${AzureBlobAccountKey},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
+    [System.String]
+    # The Azure Blob container name to sync from the url endpoint for the flux configuration.
+    ${AzureBlobContainerName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
+    [System.String]
+    # Name of a local secret on the Kubernetes cluster to use as the authentication secret rather than the managed or user-provided configuration secrets.
+    ${AzureBlobLocalAuthRef},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
+    [System.String]
+    # The Shared Access token to access the storage container
+    ${AzureBlobSasToken},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
+    [System.Int64]
+    # The interval at which to re-reconcile the cluster Azure Blob source with the remote.
+    ${AzureBlobSyncIntervalInSecond},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
+    [System.Int64]
+    # The maximum time to attempt to reconcile the cluster Azure Blob source with the remote.
+    ${AzureBlobTimeoutInSecond},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
+    [System.String]
+    # The URL to sync for the flux configuration Azure Blob storage account.
+    ${AzureBlobUrl},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
     [System.Security.SecureString]
     # Plaintext access key used to securely access the S3 bucket
     ${BucketAccessKey},
@@ -2756,13 +2557,13 @@ param(
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
     [System.Int64]
-    # The interval at which to re-reconcile the cluster git repository source with the remote.
+    # The interval at which to re-reconcile the cluster bucket source with the remote.
     ${BucketSyncIntervalInSecond},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
     [System.Int64]
-    # The maximum time to attempt to reconcile the cluster git repository source with the remote.
+    # The maximum time to attempt to reconcile the cluster bucket source with the remote.
     ${BucketTimeoutInSecond},
 
     [Parameter()]
@@ -2773,7 +2574,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.IFluxConfigurationPatchPropertiesConfigurationProtectedSettings]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.IFluxConfigurationPatchPropertiesConfigurationProtectedSettings]))]
     [System.Collections.Hashtable]
     # Key-value pairs of protected configuration settings for the configuration
     ${ConfigurationProtectedSetting},
@@ -2822,10 +2623,16 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.IFluxConfigurationPatchPropertiesKustomizations]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.IFluxConfigurationPatchPropertiesKustomizations]))]
     [System.Collections.Hashtable]
     # Array of kustomizations used to reconcile the artifact pulled by the source type on the cluster.
     ${Kustomization},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
+    [System.String]
+    # The client Id for authenticating a Managed Identity.
+    ${ManagedIdentityClientId},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
@@ -2856,6 +2663,42 @@ param(
     ${RepositoryRefTag},
 
     [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
+    [System.String]
+    # Base64-encoded certificate used to authenticate a Service Principal
+    ${ServicePrincipalClientCertificate},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
+    [System.String]
+    # The password for the certificate used to authenticate a Service Principal
+    ${ServicePrincipalClientCertificatePassword},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Specifies whether to include x5c header in client claims when acquiring a token to enable subject name / issuer based authentication for the Client Certificate
+    ${ServicePrincipalClientCertificateSendChain},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
+    [System.String]
+    # The client Id for authenticating a Service Principal.
+    ${ServicePrincipalClientId},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
+    [System.String]
+    # The client secret for authenticating a Service Principal
+    ${ServicePrincipalClientSecret},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
+    [System.String]
+    # The tenant Id for authenticating a Service Principal
+    ${ServicePrincipalTenantId},
+
+    [Parameter()]
     [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.SourceKindType])]
     [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.SourceKindType]
@@ -2873,7 +2716,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter()]
@@ -2980,16 +2824,12 @@ Patch an existing Kubernetes Cluster Extension.
 .Description
 Patch an existing Kubernetes Cluster Extension.
 .Example
-PS C:\> Update-AzKubernetesExtension -ClusterName azpstest_cluster_arc -ClusterType ConnectedClusters -Name azpstest-extension -ResourceGroupName azpstest_gp -ConfigurationProtectedSetting @{"aa"="bb"}
-
-Name               ExtensionType           Version ProvisioningState AutoUpgradeMinorVersion ReleaseTrain
-----               -------------           ------- ----------------- ----------------------- ------------
-azpstest-extension azuremonitor-containers 2.9.2   Succeeded         True                    Stable
+Update-AzKubernetesExtension -ClusterName azpstest_cluster_arc -ClusterType ConnectedClusters -Name azpstest-extension -ResourceGroupName azps_test_group -ConfigurationProtectedSetting @{"aa"="bb"}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.IKubernetesConfigurationIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.IExtension
+Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.IExtension
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -3011,7 +2851,7 @@ https://learn.microsoft.com/powershell/module/az.kubernetesconfiguration/update-
 #>
 function Update-AzKubernetesExtension {
 [Alias('Update-AzK8sExtension')]
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.IExtension])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.IExtension])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -3028,6 +2868,7 @@ param(
     ${ClusterRp},
 
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [ArgumentCompleter({'ManagedClusters', 'ConnectedClusters', 'ProvisionedClusters'})]
     [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Path')]
     [System.String]
     # The Kubernetes cluster resource name - i.e.
@@ -3070,14 +2911,14 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.IPatchExtensionPropertiesConfigurationProtectedSettings]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.IPatchExtensionPropertiesConfigurationProtectedSettings]))]
     [System.Collections.Hashtable]
     # Configuration settings that are sensitive, as name-value pairs for configuring this extension.
     ${ConfigurationProtectedSetting},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.IPatchExtensionPropertiesConfigurationSettings]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.IPatchExtensionPropertiesConfigurationSettings]))]
     [System.Collections.Hashtable]
     # Configuration settings, as name-value pairs for configuring this extension.
     ${ConfigurationSetting},
@@ -3101,7 +2942,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter()]

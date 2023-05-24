@@ -3479,6 +3479,55 @@ function Test-ApplicationGatewayFirewallPolicyWithPerRuleExclusions
 
 <#
 .SYNOPSIS
+Application gateway v2 waf policy with log scrubbing
+#>
+function Test-ApplicationGatewayFirewallPolicyWithLogScrubbing
+{
+	# Setup
+	$location = Get-ProviderLocation "Microsoft.Network/applicationGateways" "West US 2"
+
+	$rgname = Get-ResourceGroupName
+	$wafPolicyName = Get-ResourceName
+
+	try
+	{
+		$resourceGroup = New-AzResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "APPGw tag"}
+		
+		# WAF Policy and Custom Rule
+		$variable = New-AzApplicationGatewayFirewallMatchVariable -VariableName RequestHeaders -Selector Content-Length
+		$condition =  New-AzApplicationGatewayFirewallCondition -MatchVariable $variable -Operator GreaterThan -MatchValue 1000 -Transform Lowercase -NegationCondition $False
+		$logScrubbingRule1 = New-AzApplicationGatewayFirewallPolicyLogScrubbingRule -State Enabled -MatchVariable RequestArgNames -SelectorMatchOperator Equals -Selector test
+		$logScrubbingRule2 = New-AzApplicationGatewayFirewallPolicyLogScrubbingRule -State Enabled -MatchVariable RequestIPAddress -SelectorMatchOperator EqualsAny
+		$logScrubbingRuleConfig = New-AzApplicationGatewayFirewallPolicyLogScrubbingConfiguration -State Enabled -ScrubbingRule $logScrubbingRule1, $logScrubbingRule2
+		$policySettings = New-AzApplicationGatewayFirewallPolicySetting -Mode Prevention -State Enabled -MaxFileUploadInMb 4000 -MaxRequestBodySizeInKb 2000 -LogScrubbing $logScrubbingRuleConfig
+		$managedRuleSet = New-AzApplicationGatewayFirewallPolicyManagedRuleSet -RuleSetType "OWASP" -RuleSetVersion "3.2"
+		$managedRule = New-AzApplicationGatewayFirewallPolicyManagedRule -ManagedRuleSet $managedRuleSet
+		New-AzApplicationGatewayFirewallPolicy -Name $wafPolicyName -ResourceGroupName $rgname -Location $location -ManagedRule $managedRule -PolicySetting $policySettings
+	
+		$policy = Get-AzApplicationGatewayFirewallPolicy -Name $wafPolicyName -ResourceGroupName $rgname
+
+		# Check firewall policy
+		Assert-AreEqual $policy.PolicySettings.FileUploadLimitInMb $policySettings.FileUploadLimitInMb
+		Assert-AreEqual $policy.PolicySettings.MaxRequestBodySizeInKb $policySettings.MaxRequestBodySizeInKb
+		Assert-AreEqual $policy.PolicySettings.RequestBodyCheck $policySettings.RequestBodyCheck
+		Assert-AreEqual $policy.PolicySettings.Mode $policySettings.Mode
+		Assert-AreEqual $policy.PolicySettings.State $policySettings.State
+		Assert-AreEqual $policy.PolicySettings.LogScrubbing.ScrubbingRules.Count 2
+		Assert-AreEqual $policy.PolicySettings.LogScrubbing.ScrubbingRules[0].State $policySettings.LogScrubbing.ScrubbingRules[0].State
+		Assert-AreEqual $policy.PolicySettings.LogScrubbing.ScrubbingRules[0].MatchVariable $policySettings.LogScrubbing.ScrubbingRules[0].MatchVariable
+		Assert-AreEqual $policy.PolicySettings.LogScrubbing.ScrubbingRules[0].SelectorMatchOperator $policySettings.LogScrubbing.ScrubbingRules[0].SelectorMatchOperator
+		Assert-AreEqual $policy.PolicySettings.LogScrubbing.ScrubbingRules[0].Selector $policySettings.LogScrubbing.ScrubbingRules[0].Selector
+
+	}
+	finally
+	{
+		# Cleanup
+		Clean-ResourceGroup $rgname
+	}
+}
+
+<#
+.SYNOPSIS
 This case tests the per-listener HostNames feature.
 #>
 function Test-ApplicationGatewayWithListenerHostNames
@@ -4245,6 +4294,62 @@ function Test-ApplicationGatewayFirewallPolicyWithCustomRules
 	}
 }
 
+function Test-ApplicationGatewayFirewallPolicyWithRateLimitRule
+{
+	# Setup
+	$location = Get-ProviderLocation "Microsoft.Network/applicationGateways" "West US 2"
+	$rgname = Get-ResourceGroupName
+	$wafPolicyName = "wafPolicy1"
+
+	try {
+		
+		$resourceGroup = New-AzResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "APPGw tag"}
+
+		# WAF Policy with rate limiting rule custom Rule
+		$variable = New-AzApplicationGatewayFirewallMatchVariable -VariableName RequestHeaders -Selector Malicious-Header
+		$condition =  New-AzApplicationGatewayFirewallCondition -MatchVariable $variable -Operator Any -NegationCondition $False
+		$groupbyVar = New-AzApplicationGatewayFirewallCustomRuleGroupByVariable -VariableName ClientAddr 
+		$groupbyUserSes = New-AzApplicationGatewayFirewallCustomRuleGroupByUserSession -GroupByVariable $groupbyVar
+		$customRule = New-AzApplicationGatewayFirewallCustomRule -Name example -Priority 2 -RateLimitDuration OneMin -RateLimitThreshold 10 -RuleType RateLimitRule -MatchCondition $condition -GroupByUserSession $groupbyUserSes -Action Block
+
+		$policySettings = New-AzApplicationGatewayFirewallPolicySetting -Mode Prevention -State Enabled -MaxFileUploadInMb 70 -MaxRequestBodySizeInKb 70
+		$managedRuleSet = New-AzApplicationGatewayFirewallPolicyManagedRuleSet -RuleSetType "OWASP" -RuleSetVersion "3.2"
+		$managedRule = New-AzApplicationGatewayFirewallPolicyManagedRule -ManagedRuleSet $managedRuleSet 
+		New-AzApplicationGatewayFirewallPolicy -Name $wafPolicyName -ResourceGroupName $rgname -Location $location -ManagedRule $managedRule -PolicySetting $policySettings -CustomRule $customRule
+
+		$policy = Get-AzApplicationGatewayFirewallPolicy -Name $wafPolicyName -ResourceGroupName $rgname
+
+		# Check WAF policy
+		Assert-AreEqual $policy.CustomRules[0].Name $customRule.Name
+		Assert-AreEqual $policy.CustomRules[0].RuleType $customRule.RuleType
+		Assert-AreEqual $policy.CustomRules[0].Action $customRule.Action
+		Assert-AreEqual $policy.CustomRules[0].Priority $customRule.Priority
+		Assert-AreEqual $policy.CustomRules[0].RateLimitDuration $customRule.RateLimitDuration
+		Assert-AreEqual $policy.CustomRules[0].RateLimitThreshold $customRule.RateLimitThreshold
+		Assert-AreEqual $policy.CustomRules[0].State "Enabled"
+		Assert-AreEqual $policy.CustomRules[0].MatchConditions[0].OperatorProperty $customRule.MatchConditions[0].OperatorProperty
+		Assert-AreEqual $policy.CustomRules[0].MatchConditions[0].NegationConditon $customRule.MatchConditions[0].NegationConditon
+		Assert-AreEqual $policy.CustomRules[0].MatchConditions[0].MatchVariables[0].VariableName $customRule.MatchConditions[0].MatchVariables[0].VariableName
+		Assert-AreEqual $policy.CustomRules[0].MatchConditions[0].MatchVariables[0].Selector $customRule.MatchConditions[0].MatchVariables[0].Selector
+		Assert-AreEqual $policy.CustomRules[0].GroupByUserSession[0].GroupByVariables[0].VariableName $customRule.GroupByUserSession[0].GroupByVariables[0].VariableName
+		Assert-AreEqual $policy.PolicySettings.FileUploadLimitInMb $policySettings.FileUploadLimitInMb
+		Assert-AreEqual $policy.PolicySettings.MaxRequestBodySizeInKb $policySettings.MaxRequestBodySizeInKb
+		Assert-AreEqual $policy.PolicySettings.RequestBodyCheck $policySettings.RequestBodyCheck
+		Assert-AreEqual $policy.PolicySettings.Mode $policySettings.Mode
+		Assert-AreEqual $policy.PolicySettings.State $policySettings.State
+
+		$policy.CustomRules[0].State = "Disabled"
+		Set-AzApplicationGatewayFirewallPolicy -InputObject $policy
+		$policy1 = Get-AzApplicationGatewayFirewallPolicy -Name $wafPolicyName -ResourceGroupName $rgname
+		Assert-AreEqual $policy1.CustomRules[0].State "Disabled"
+	}
+	finally
+	{
+		# Cleanup
+		Clean-ResourceGroup $rgname
+	}
+}
+
 function Test-ApplicationGatewayFirewallPolicyWithUppercaseTransform
 {
 	# Setup
@@ -4288,6 +4393,60 @@ function Test-ApplicationGatewayFirewallPolicyWithUppercaseTransform
 		Assert-AreEqual $policy.PolicySettings.RequestBodyCheck $policySettings.RequestBodyCheck
 		Assert-AreEqual $policy.PolicySettings.Mode $policySettings.Mode
 		Assert-AreEqual $policy.PolicySettings.State $policySettings.State
+	}
+	finally
+	{
+		# Cleanup
+		Clean-ResourceGroup $rgname
+	}
+}
+
+function Test-ApplicationGatewayFirewallPolicyWithInspectionLimit
+{
+	# Setup
+	$location = Get-ProviderLocation "Microsoft.Network/applicationGateways" "West US 2"
+
+	$rgname = Get-ResourceGroupName
+	$wafPolicy = Get-ResourceName
+
+	try
+	{
+		$resourceGroup = New-AzResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "APPGw tag"}
+
+		# WAF Policy and Custom Rule
+		$variable = New-AzApplicationGatewayFirewallMatchVariable -VariableName RequestHeaders -Selector Content-Length
+		$condition =  New-AzApplicationGatewayFirewallCondition -MatchVariable $variable -Operator GreaterThan -MatchValue 1000 -Transform Uppercase -NegationCondition $False
+		$rule = New-AzApplicationGatewayFirewallCustomRule -Name example -Priority 2 -RuleType MatchRule -MatchCondition $condition -Action Block
+		$policySettings = New-AzApplicationGatewayFirewallPolicySetting -Mode Prevention -State Enabled -DisableRequestBodyEnforcement $True -RequestBodyInspectLimitInKB 2000 -MaxFileUploadInMb 70 -DisableFileUploadEnforcement $True -MaxRequestBodySizeInKb 70
+		$managedRuleSet = New-AzApplicationGatewayFirewallPolicyManagedRuleSet -RuleSetType "OWASP" -RuleSetVersion "3.2"
+		$managedRule = New-AzApplicationGatewayFirewallPolicyManagedRule -ManagedRuleSet $managedRuleSet
+		New-AzApplicationGatewayFirewallPolicy -Name $wafPolicy -ResourceGroupName $rgname -Location $location -ManagedRule $managedRule -PolicySetting $policySettings
+
+		$policy = Get-AzApplicationGatewayFirewallPolicy -Name $wafPolicy -ResourceGroupName $rgname
+		$policy.CustomRules = $rule
+		Set-AzApplicationGatewayFirewallPolicy -InputObject $policy
+
+		$policy = Get-AzApplicationGatewayFirewallPolicy -Name $wafPolicy -ResourceGroupName $rgname
+
+		# Check firewall policy
+		Assert-AreEqual $policy.CustomRules[0].Name $rule.Name
+		Assert-AreEqual $policy.CustomRules[0].RuleType $rule.RuleType
+		Assert-AreEqual $policy.CustomRules[0].Action $rule.Action
+		Assert-AreEqual $policy.CustomRules[0].Priority $rule.Priority
+		Assert-AreEqual $policy.CustomRules[0].MatchConditions[0].OperatorProperty $rule.MatchConditions[0].OperatorProperty
+		Assert-AreEqual $policy.CustomRules[0].MatchConditions[0].Transforms[0] $rule.MatchConditions[0].Transforms[0]
+		Assert-AreEqual $policy.CustomRules[0].MatchConditions[0].NegationConditon $rule.MatchConditions[0].NegationConditon
+		Assert-AreEqual $policy.CustomRules[0].MatchConditions[0].MatchValues[0] $rule.MatchConditions[0].MatchValues[0]
+		Assert-AreEqual $policy.CustomRules[0].MatchConditions[0].MatchVariables[0].VariableName $rule.MatchConditions[0].MatchVariables[0].VariableName
+		Assert-AreEqual $policy.CustomRules[0].MatchConditions[0].MatchVariables[0].Selector $rule.MatchConditions[0].MatchVariables[0].Selector
+		Assert-AreEqual $policy.PolicySettings.FileUploadLimitInMb $policySettings.FileUploadLimitInMb
+		Assert-AreEqual $policy.PolicySettings.MaxRequestBodySizeInKb $policySettings.MaxRequestBodySizeInKb
+		Assert-AreEqual $policy.PolicySettings.RequestBodyCheck $policySettings.RequestBodyCheck
+		Assert-AreEqual $policy.PolicySettings.Mode $policySettings.Mode
+		Assert-AreEqual $policy.PolicySettings.State $policySettings.State
+		Assert-AreEqual $False $policySettings.RequestBodyEnforcement
+		Assert-AreEqual $policy.PolicySettings.RequestBodyInspectLimitInKB $policySettings.RequestBodyInspectLimitInKB
+		Assert-AreEqual $False $policySettings.FileUploadEnforcement
 	}
 	finally
 	{
