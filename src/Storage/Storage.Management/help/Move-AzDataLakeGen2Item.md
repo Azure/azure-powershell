@@ -8,7 +8,7 @@ schema: 2.0.0
 # Move-AzDataLakeGen2Item
 
 ## SYNOPSIS
-Move a file or directory to another a file or directory in same Storage account.
+Move a file or directory to another file name or directory location within the same Storage account. The full destination directory must already exist. Any missing parent directories are not created.
 
 ## SYNTAX
 
