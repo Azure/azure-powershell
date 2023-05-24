@@ -5,7 +5,7 @@ online version: https://learn.microsoft.com/powershell/module/az.devcenter/delay
 schema: 2.0.0
 ---
 
-# Delay-AzDevCenterDevDevBoxAction
+# Invoke-AzDevCenterDevDelayDevBoxAction
 
 ## SYNOPSIS
 Delays the occurrence of an action.
@@ -14,42 +14,42 @@ Delays the occurrence of an action.
 
 ### Delay1 (Default)
 ```
-Delay-AzDevCenterDevDevBoxAction -Endpoint <String> -DevBoxName <String> -ProjectName <String>
+Invoke-AzDevCenterDevDelayDevBoxAction -Endpoint <String> -DevBoxName <String> -ProjectName <String>
  -DelayTime <TimeSpan> [-UserId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### Delay
 ```
-Delay-AzDevCenterDevDevBoxAction -Endpoint <String> -ActionName <String> -DevBoxName <String>
+Invoke-AzDevCenterDevDelayDevBoxAction -Endpoint <String> -ActionName <String> -DevBoxName <String>
  -ProjectName <String> -DelayTime <TimeSpan> [-UserId <String>] [-DefaultProfile <PSObject>] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 
 ### Delay1ByDevCenter
 ```
-Delay-AzDevCenterDevDevBoxAction -DevCenter <String> -DevBoxName <String> -ProjectName <String>
+Invoke-AzDevCenterDevDelayDevBoxAction -DevCenter <String> -DevBoxName <String> -ProjectName <String>
  -DelayTime <TimeSpan> [-UserId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### DelayByDevCenter
 ```
-Delay-AzDevCenterDevDevBoxAction -DevCenter <String> -ActionName <String> -DevBoxName <String>
+Invoke-AzDevCenterDevDelayDevBoxAction -DevCenter <String> -ActionName <String> -DevBoxName <String>
  -ProjectName <String> -DelayTime <TimeSpan> [-UserId <String>] [-DefaultProfile <PSObject>] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 
 ### DelayViaIdentity
 ```
-Delay-AzDevCenterDevDevBoxAction -Endpoint <String> -InputObject <IDevCenterIdentity> -DelayTime <TimeSpan>
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Invoke-AzDevCenterDevDelayDevBoxAction -Endpoint <String> -InputObject <IDevCenterIdentity>
+ -DelayTime <TimeSpan> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DelayViaIdentityByDevCenter
 ```
-Delay-AzDevCenterDevDevBoxAction -DevCenter <String> -InputObject <IDevCenterIdentity> -DelayTime <TimeSpan>
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Invoke-AzDevCenterDevDelayDevBoxAction -DevCenter <String> -InputObject <IDevCenterIdentity>
+ -DelayTime <TimeSpan> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

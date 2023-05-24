@@ -60,11 +60,6 @@ directive:
     set:
       subject: Catalog
   - where:
-      subject: ^(.*)(DelayDevBoxAction)(.*)$
-    set: 
-      verb: Delay
-      subject: DevBoxAction
-  - where:
       subject: ^(?!DevBox$|Environment$).*
       parameter-name: UserId
     set:

@@ -49,7 +49,7 @@ INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
 .Link
 https://learn.microsoft.com/powershell/module/az.devcenter/delay-azdevcenterdevdevboxaction
 #>
-function Delay-AzDevCenterDevDevBoxAction {
+function Invoke-AzDevCenterDevDelayDevBoxAction {
   [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.IDevBoxAction], [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.IDevBoxActionDelayResult])]
   [CmdletBinding(DefaultParameterSetName = 'Delay1', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
   param(
@@ -191,6 +191,6 @@ function Delay-AzDevCenterDevDevBoxAction {
     $null = $PSBoundParameters.Add("Until", $Until)
     $null = $PSBoundParameters.Remove("DelayTime")
 
-    Az.DevCenter.internal\Delay-AzDevCenterDevDevBoxAction @PSBoundParameters
+    Az.DevCenter.internal\Invoke-AzDevCenterDevDelayDevBoxAction @PSBoundParameters
   }
 }
