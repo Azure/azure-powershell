@@ -81,7 +81,6 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The extended location of this virtual network gateway")]
-        [ValidateNotNullOrEmpty]
         public string ExtendedLocation { get; set; }
 
         [Parameter(
