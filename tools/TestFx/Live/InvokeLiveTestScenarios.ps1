@@ -18,7 +18,7 @@ $liveScenarios = Get-ChildItem -Path $srcDir -Directory -Exclude "Accounts" -Err
 $maxRunspaces = 9
 [void][int]::TryParse(${env:RSPTHROTTLE}, [ref]$maxRunspaces)
 $rsp = [runspacefactory]::CreateRunspacePool(1, $maxRunspaces)
-$rsp.CleanupInterval = [timespan]::FromHours(10)
+$rsp.CleanupInterval = [timespan]::FromHours(10) # By default is 15 minutes. Set to 10 hours to avoid the disposal of the idle runspaces when waiting for resource removal.
 [void]$rsp.Open()
 
 $liveJobs = $liveScenarios | ForEach-Object {
