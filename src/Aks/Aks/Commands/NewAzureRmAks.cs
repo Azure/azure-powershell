@@ -29,6 +29,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.ContainerService.Models;
 using Microsoft.Rest;
 using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Aks
@@ -102,6 +103,7 @@ namespace Microsoft.Azure.Commands.Aks
         [Parameter(Mandatory = false, HelpMessage = "DNS service IP used for building Kubernetes network.")]
         public string DnsServiceIP { get; set; }
 
+        [CmdletParameterBreakingChange("DockerBridgeCidr", ChangeDescription = "DockerBridgeCidr parameter is being deprecated without being replaced.")]
         [Parameter(Mandatory = false, HelpMessage = "Docker bridge cidr used for building Kubernetes network.")]
         public string DockerBridgeCidr { get; set; }
 
