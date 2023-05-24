@@ -11,9 +11,6 @@ Locale: en-US
 Microsoft Azure PowerShell: DevCenter cmdlets
 
 ## Az.DevCenter Cmdlets
-### [Delay-AzDevCenterDevDevBoxAction](Delay-AzDevCenterDevDevBoxAction.md)
-Delays the occurrence of an action.
-
 ### [Deploy-AzDevCenterDevEnvironment](Deploy-AzDevCenterDevEnvironment.md)
 Creates or updates an environment.
 
@@ -46,6 +43,9 @@ Gets a project.
 
 ### [Get-AzDevCenterDevSchedule](Get-AzDevCenterDevSchedule.md)
 Gets a schedule.
+
+### [Invoke-AzDevCenterDevDelayDevBoxAction](Invoke-AzDevCenterDevDelayDevBoxAction.md)
+Delays the occurrence of an action.
 
 ### [New-AzDevCenterDevDevBox](New-AzDevCenterDevDevBox.md)
 Creates or replaces a Dev Box.
