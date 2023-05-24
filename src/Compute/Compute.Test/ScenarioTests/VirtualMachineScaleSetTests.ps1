@@ -4363,3 +4363,42 @@ function Test-VirtualMachineScaleSetOSImageScheduledEvents
         Clean-ResourceGroup $rgname;
     }
 }
+
+<#
+.SYNOPSIS
+Test the Get-AzVmss ResourceId parameter set. 
+This uses an ARM Resource Id to get an existing Vmss. 
+#>
+function Test-VirtualMachineScaleSetGetById
+{
+
+    # Setup
+    $rgname = Get-ComputeTestResourceName;
+    $loc = Get-ComputeVMLocation;
+
+    try
+    {
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+        
+        $vmssSize = 'Standard_D4s_v3';
+        $vmssName1 = 'vmss1' + $rgname;
+        $imageName = "Win2019Datacenter";
+        $domainNameLabel1 = "d1" + $rgname;
+        $adminUsername = Get-ComputeTestResourceName;
+        $adminPassword = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force;
+        $vmCred = New-Object System.Management.Automation.PSCredential($adminUsername, $adminPassword);
+
+        $result = New-AzVmss -ResourceGroupName $rgname -Credential $vmCred -VMScaleSetName $vmssName1 -ImageName $imageName -DomainNameLabel $domainNameLabel ;
+
+        $vmss = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName1;
+        $vmssId = $vmss.Id;
+        $vmssGet = Get-AzVmss -ResourceId $vmssId;
+        
+        Assert-AreEqual $vmss.Id $vmssGet.Id;
+    } 
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname;
+    }
+}
