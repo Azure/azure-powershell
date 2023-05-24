@@ -63,13 +63,13 @@ $domainNameLabel = "d1" + $rgname;
 $vmSize = 'Standard_DS3_v2';
 $computerName = "c" + $rgname;
         
-# Credential
-$user = Username;
-$securePassword = Password | ConvertTo-SecureString -AsPlainText -Force;  
+# Credentials. Input Username and Password values
+$user = "";
+$securePassword = "" | ConvertTo-SecureString -AsPlainText -Force;  
 $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
         
 # Creating a VMConfig 
-$vmconfig = New-AzVmConfig -VMName $vmname -vmsize $vmsize
+$vmconfig = New-AzVMConfig -VMName $vmname -vmsize $vmsize
 
 # Set source image values
 $publisherName = "MicrosoftWindowsServer";
@@ -94,7 +94,7 @@ $vmconfig = Set-AzVMOperatingSystem -VM $vmconfig -Windows -ComputerName $comput
 
 # Create the VM
 New-AzVM -ResourceGroupName $rgname -Location $loc -Vm $vmconfig;
-$vm = Get-AzVm -ResourceGroupName $rgname -Name $vmname;
+$vm = Get-AzVM -ResourceGroupName $rgname -Name $vmname;
         
 ```
 
@@ -126,8 +126,8 @@ $Offer = "WindowsServer";
 $SKU = "2019-Datacenter";
         
 # Creating a VM using Simple parameterset
-$securePassword = Password | ConvertTo-SecureString -AsPlainText -Force;  
-$user = Username;
+$securePassword = "" | ConvertTo-SecureString -AsPlainText -Force;  
+$user = "";
 $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
 
 $frontendSubnet = New-AzVirtualNetworkSubnetConfig -Name $subnetname -AddressPrefix $subnetAddress;
@@ -148,7 +148,7 @@ Set-AzVMSourceImage -VM $vmConfig -PublisherName $PublisherName -Offer $Offer -S
 Add-AzVMNetworkInterface -VM $vmConfig -Id $nic.Id;
 
 New-AzVM -ResourceGroupName $RGName -Location $loc -VM $vmConfig ;
-$vm = Get-AzVm -ResourceGroupName $rgname -Name $vmName;
+$vm = Get-AzVM -ResourceGroupName $rgname -Name $vmName;
         
 ```
 
