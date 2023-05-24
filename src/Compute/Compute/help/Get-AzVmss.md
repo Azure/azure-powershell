@@ -247,14 +247,14 @@ The UserData value must be Base64 encoded. This command assumes you have created
 
 ### Example 6: Get a Virtual Machine Scale Set via its ResourceId.
 ```powershell
-$rgname = <Resource Group Name>;
-$loc = <Azure Region>;
+$rgname = "ResourceGroupName";
+$loc = "eastus";
 New-AzResourceGroup -Name $rgname -Location $loc
 
 $vmssSize = 'Standard_D4s_v3';
 $vmssName1 = 'vmss1' + $rgname;
 $imageName = "Win2019Datacenter";
-$adminUsername = <Username>;
+$adminUsername = "username";
 $adminPassword = <Password> | ConvertTo-SecureString -AsPlainText -Force;
 $cred = New-Object System.Management.Automation.PSCredential($adminUsername, $adminPassword);
 
