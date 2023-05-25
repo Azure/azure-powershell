@@ -36,7 +36,7 @@ branch: c2c2f7a359c217380a5ae047e153bac36c404a0c
 require:
   # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../readme.azure.noprofile.md
-  - https://github.com/Azure/azure-rest-api-specs/blob/main/specification/help/resource-manager/readme.md
+  - $(repo)/specification/help/resource-manager/readme.md
   # If the swagger has not been put in the repo, you may uncomment the following line and refer to it locally
   # - $(this-folder)/azure-rest-api-specs/specification/help/resource-manager/readme.md
 
