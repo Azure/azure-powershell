@@ -23,5 +23,4 @@ $allDigitsRegex = "^[0-9]$"
 $invalidCharactersComputerName =  "[`~!@#$%^&*()=+_\[\]\{\}\\|;:.'`"<>/?]"
 
 
-
-
+$urnRegex = "(?i)^(?<publisher>[-._a-zA-Z0-9]+):(?<offer>[-._a-zA-Z0-9]+):(?<sku>[-._a-zA-Z0-9]+):(?<version>[-._a-zA-Z0-9]+)$"

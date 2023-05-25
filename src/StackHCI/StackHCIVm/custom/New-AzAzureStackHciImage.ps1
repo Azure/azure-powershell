@@ -104,6 +104,12 @@ function New-AzAzureStackHciImage{
     # Resource tags.
     ${Tag},
 
+    [Parameter(ParameterSetName='MarketplaceURN', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.AzureStackHCI.Category('Body')]
+    [System.String]
+    # The name of the gallery image definition SKU.
+    ${URN},
+
     [Parameter(ParameterSetName='Marketplace', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.AzureStackHCI.Category('Body')]
     [System.String]
@@ -173,6 +179,23 @@ function New-AzAzureStackHciImage{
         if ($PSCmdlet.ParameterSetName -eq "Marketplace")
         {
             return Az.AzureStackHci\New-AzAzureStackHciMarketplaceGalleryImage @PSBoundParameters
+
+        } elseif ($PSCmdlet.ParameterSetName -eq "MarketplaceURN") {
+            if ($URN -match $urnRegex){
+                $publisher = $Matches.publisher.ToLower()
+                $offer = $Matches.offer.ToLower()
+                $sku = $Matches.sku.ToLower()
+                $version = $Matches.version.ToLower()
+                
+                $null = $PSBoundParameters.Remove("URN")           
+                $PSBoundParameters.Add('Publisher', $publisher)
+                $PSBoundParameters.Add('Offer', $offer)
+                $PSBoundParameters.Add('Sku', $sku)
+                $PSBoundParameters.Add('Version', $version)
+            } else {
+                Write-Error "Invalid URN provided: $URN. Valid URN format is Publisher:Offer:Sku:Version ."
+            }
+
         }
 
         if ($PSCmdlet.ParameterSetName -eq "GalleryImage")
