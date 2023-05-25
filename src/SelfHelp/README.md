@@ -41,7 +41,7 @@ require:
   # - $(this-folder)/azure-rest-api-specs/specification/help/resource-manager/readme.md
 
 try-require:
-  - $(repo)/src\resource-manager\readme.md
+  - $(repo)/specification/help/resource-manager/readme.powershell.md
 
 # For new RP, the version is 0.1.0
 module-version: 0.1.0
