@@ -1,70 +1,82 @@
 ---
 external help file:
 Module Name: Az.DesktopVirtualization
-online version: https://learn.microsoft.com/powershell/module/az.desktopvirtualization/update-azwvdworkspace
+online version: https://learn.microsoft.com/powershell/module/az.desktopvirtualization/get-azwvdprivateendpointconnection
 schema: 2.0.0
 ---
 
-# Update-AzWvdWorkspace
+# Get-AzWvdPrivateEndpointConnection
 
 ## SYNOPSIS
-Update a workspace.
+Get a private endpoint connection.
 
 ## SYNTAX
 
-### UpdateExpanded (Default)
+### List (Default)
 ```
-Update-AzWvdWorkspace -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-ApplicationGroupReference <String[]>] [-Description <String>] [-FriendlyName <String>]
- [-PublicNetworkAccess <PublicNetworkAccess>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Get-AzWvdPrivateEndpointConnection -ResourceGroupName <String> -WorkspaceName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### UpdateViaIdentityExpanded
+### Get
 ```
-Update-AzWvdWorkspace -InputObject <IDesktopVirtualizationIdentity> [-ApplicationGroupReference <String[]>]
- [-Description <String>] [-FriendlyName <String>] [-PublicNetworkAccess <PublicNetworkAccess>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Get-AzWvdPrivateEndpointConnection -Name <String> -ResourceGroupName <String> -WorkspaceName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### Get1
+```
+Get-AzWvdPrivateEndpointConnection -HostPoolName <String> -Name <String> -ResourceGroupName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetViaIdentity
+```
+Get-AzWvdPrivateEndpointConnection -InputObject <IDesktopVirtualizationIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### GetViaIdentity1
+```
+Get-AzWvdPrivateEndpointConnection -InputObject <IDesktopVirtualizationIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### List1
+```
+Get-AzWvdPrivateEndpointConnection -HostPoolName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String[]>] [-InitialSkip <Int32>] [-IsDescending] [-PageSize <Int32>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Update a workspace.
+Get a private endpoint connection.
 
 ## EXAMPLES
 
-### Example 1: Update a Windows Virtual Desktop Workspace by name
+### Example 1: {{ Add title here }}
 ```powershell
-Update-AzWvdWorkspace -ResourceGroupName ResourceGroupName `
-                        -Name WorkspaceName `
-                        -FriendlyName 'Friendly Name' `
-                        -ApplicationGroupReference "/subscriptions/SubscriptionId/resourceGroups/ResourceGroupName/providers/Microsoft.DesktopVirtualization/applicationGroups/ApplicationGroupName1","/subscriptions/SubscriptionId/resourceGroups/ResourceGroupName/providers/Microsoft.DesktopVirtualization/applicationGroups/ApplicationGroupName2" `
-                        -Description 'Description'
+{{ Add code here }}
 ```
 
 ```output
-Location   Name                 Type
---------   ----                 ----
-eastus     WorkspaceName Microsoft.DesktopVirtualization/workspaces
+{{ Add output here }}
 ```
 
-This command updates a Windows Virtual Desktop Workspace in a Resource Group.
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
-
-### -ApplicationGroupReference
-List of applicationGroup links.
-
-```yaml
-Type: System.String[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
@@ -82,27 +94,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Description
-Description of Workspace.
+### -HostPoolName
+The name of the host pool within the specified resource group
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Get1, List1
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -FriendlyName
-Friendly name of Workspace.
+### -InitialSkip
+Initial number of items to skip.
 
 ```yaml
-Type: System.String
-Parameter Sets: (All)
+Type: System.Int32
+Parameter Sets: List1
 Aliases:
 
 Required: False
@@ -118,7 +130,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity
-Parameter Sets: UpdateViaIdentityExpanded
+Parameter Sets: GetViaIdentity, GetViaIdentity1
 Aliases:
 
 Required: True
@@ -128,13 +140,28 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -IsDescending
+Indicates whether the collection is descending.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: List1
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
-The name of the workspace
+The name of the private endpoint connection associated with the Azure resource
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
-Aliases: WorkspaceName
+Parameter Sets: Get, Get1
+Aliases: PrivateEndpointConnectionName
 
 Required: True
 Position: Named
@@ -143,12 +170,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PublicNetworkAccess
-Enabled to allow this resource to be access from the public network
+### -PageSize
+Number of items per page.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.PublicNetworkAccess
-Parameter Sets: (All)
+Type: System.Int32
+Parameter Sets: List1
 Aliases:
 
 Required: False
@@ -164,7 +191,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: Get, Get1, List, List1
 Aliases:
 
 Required: True
@@ -178,8 +205,8 @@ Accept wildcard characters: False
 The ID of the target subscription.
 
 ```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded
+Type: System.String[]
+Parameter Sets: Get, Get1, List, List1
 Aliases:
 
 Required: False
@@ -189,46 +216,15 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Tag
-tags to be updated
+### -WorkspaceName
+The name of the workspace
 
 ```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: Get, List
 Aliases:
 
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
-
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -244,7 +240,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20221014Preview.IWorkspace
+### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20221014Preview.IPrivateEndpointConnectionWithSystemData
 
 ## NOTES
 

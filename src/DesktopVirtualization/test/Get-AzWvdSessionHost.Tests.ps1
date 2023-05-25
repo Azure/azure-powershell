@@ -17,7 +17,7 @@ Describe 'Get-AzWvdSessionHost' {
     It 'Get' {
         $sessionHost = Get-AzWvdSessionHost -SubscriptionId $env.SubscriptionId `
                             -ResourceGroupName $env.ResourceGroupPersistent `
-                            -HostPoolName $env.HostPoolPersistent `
+                            -HostPoolName $env.HostPoolPersistent2 `
                             -Name $env.SessionHostName
             $sessionHost.Name | Should -Be $sessionHostPath
     }
@@ -28,7 +28,7 @@ Describe 'Get-AzWvdSessionHost' {
                             -HostPoolName $env.HostPoolPersistent `
                             | Sort-Object -Property Name 
         
-            $sessionHosts[0].Name | Should -Be $sessionHostPath
+            $sessionHosts[0].Name | Should -Be $sessionHostPath2
             $sessionHosts[1].Name | Should -Be $sessionHostPath2
     }
 }

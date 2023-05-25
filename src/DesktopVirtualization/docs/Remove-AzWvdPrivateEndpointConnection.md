@@ -1,70 +1,69 @@
 ---
 external help file:
 Module Name: Az.DesktopVirtualization
-online version: https://learn.microsoft.com/powershell/module/az.desktopvirtualization/update-azwvdworkspace
+online version: https://learn.microsoft.com/powershell/module/az.desktopvirtualization/remove-azwvdprivateendpointconnection
 schema: 2.0.0
 ---
 
-# Update-AzWvdWorkspace
+# Remove-AzWvdPrivateEndpointConnection
 
 ## SYNOPSIS
-Update a workspace.
+Remove a connection.
 
 ## SYNTAX
 
-### UpdateExpanded (Default)
+### Delete (Default)
 ```
-Update-AzWvdWorkspace -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-ApplicationGroupReference <String[]>] [-Description <String>] [-FriendlyName <String>]
- [-PublicNetworkAccess <PublicNetworkAccess>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Remove-AzWvdPrivateEndpointConnection -Name <String> -ResourceGroupName <String> -WorkspaceName <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### UpdateViaIdentityExpanded
+### Delete1
 ```
-Update-AzWvdWorkspace -InputObject <IDesktopVirtualizationIdentity> [-ApplicationGroupReference <String[]>]
- [-Description <String>] [-FriendlyName <String>] [-PublicNetworkAccess <PublicNetworkAccess>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzWvdPrivateEndpointConnection -HostPoolName <String> -Name <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### DeleteViaIdentity
+```
+Remove-AzWvdPrivateEndpointConnection -InputObject <IDesktopVirtualizationIdentity>
+ [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### DeleteViaIdentity1
+```
+Remove-AzWvdPrivateEndpointConnection -InputObject <IDesktopVirtualizationIdentity>
+ [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Update a workspace.
+Remove a connection.
 
 ## EXAMPLES
 
-### Example 1: Update a Windows Virtual Desktop Workspace by name
+### Example 1: {{ Add title here }}
 ```powershell
-Update-AzWvdWorkspace -ResourceGroupName ResourceGroupName `
-                        -Name WorkspaceName `
-                        -FriendlyName 'Friendly Name' `
-                        -ApplicationGroupReference "/subscriptions/SubscriptionId/resourceGroups/ResourceGroupName/providers/Microsoft.DesktopVirtualization/applicationGroups/ApplicationGroupName1","/subscriptions/SubscriptionId/resourceGroups/ResourceGroupName/providers/Microsoft.DesktopVirtualization/applicationGroups/ApplicationGroupName2" `
-                        -Description 'Description'
+{{ Add code here }}
 ```
 
 ```output
-Location   Name                 Type
---------   ----                 ----
-eastus     WorkspaceName Microsoft.DesktopVirtualization/workspaces
+{{ Add output here }}
 ```
 
-This command updates a Windows Virtual Desktop Workspace in a Resource Group.
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
-
-### -ApplicationGroupReference
-List of applicationGroup links.
-
-```yaml
-Type: System.String[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
@@ -82,30 +81,15 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Description
-Description of Workspace.
+### -HostPoolName
+The name of the host pool within the specified resource group
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Delete1
 Aliases:
 
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -FriendlyName
-Friendly name of Workspace.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -118,7 +102,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity
-Parameter Sets: UpdateViaIdentityExpanded
+Parameter Sets: DeleteViaIdentity, DeleteViaIdentity1
 Aliases:
 
 Required: True
@@ -129,12 +113,12 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the workspace
+The name of the private endpoint connection associated with the Azure resource
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
-Aliases: WorkspaceName
+Parameter Sets: Delete, Delete1
+Aliases: PrivateEndpointConnectionName
 
 Required: True
 Position: Named
@@ -143,11 +127,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PublicNetworkAccess
-Enabled to allow this resource to be access from the public network
+### -PassThru
+Returns true when the command succeeds
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.PublicNetworkAccess
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -164,7 +148,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: Delete, Delete1
 Aliases:
 
 Required: True
@@ -179,7 +163,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: Delete, Delete1
 Aliases:
 
 Required: False
@@ -189,15 +173,15 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Tag
-tags to be updated
+### -WorkspaceName
+The name of the workspace
 
 ```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: Delete
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -244,7 +228,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20221014Preview.IWorkspace
+### System.Boolean
 
 ## NOTES
 
