@@ -29,7 +29,7 @@ New-AzRedisCacheKey -ResourceGroupName "ResourceGroup03" -Name "myCache" -KeyTyp
 ```
 
 ```output
-        PrimaryKey        : pJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=
+          PrimaryKey        : pJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=
 
           SecondaryKey      : sJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=
 ```
@@ -42,7 +42,7 @@ New-AzRedisCacheKey -ResourceGroupName "ResourceGroup03" -Name "myCache" -KeyTyp
 ```
 
 ```output
-        PrimaryKey        : pJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=
+          PrimaryKey        : pJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=
 
           SecondaryKey      : sJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=
 ```
