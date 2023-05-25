@@ -12,16 +12,8 @@ Executes a failover of an Azure SQL Database Failover Group.
 
 ## SYNTAX
 
-### AllowDataLoss
 ```
 Switch-AzSqlDatabaseFailoverGroup [-ServerName] <String> [[-FailoverGroupName] <String>] [-AllowDataLoss]
- [-AsJob] [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
-### TryPlannedBeforeForcedFailover
-```
-Switch-AzSqlDatabaseFailoverGroup [-ServerName] <String> [[-FailoverGroupName] <String>]
  [-TryPlannedBeforeForcedFailover] [-AsJob] [-ResourceGroupName] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -54,7 +46,7 @@ Complete the failover even if doing so may result in data loss. This will allow 
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: AllowDataLoss
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -144,7 +136,7 @@ Performs planned failover as first step and if it fails for any reason than forc
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: TryPlannedBeforeForcedFailover
+Parameter Sets: (All)
 Aliases:
 
 Required: False
