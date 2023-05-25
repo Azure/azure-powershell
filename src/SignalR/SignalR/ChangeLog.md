@@ -19,6 +19,13 @@
 -->
 ## Upcoming Release
 
+## Version 2.0.0
+* Breaking change:
+    - Removed `HostNamePrefix` property of output type `PSSignalRResource` of following cmdlets:
+        - `Get-AzSignalR`
+        - `New-AzSignalR`
+        - `Update-AzSignalR`
+
 ## Version 1.5.0
 * Updated to API version 2022-08-01-preview
   - Added support for custom domain. Added new cmdlets New-AzWebPubSubCustomCertificate, Get-AzWebPubSubCustomCertificate, Remove-AzWebPubSubCustomCertificate, New-AzWebPubSubCustomDomain, Get-AzWebPubSubCustomDomain, Remove-AzWebPubSubCustomDomain.

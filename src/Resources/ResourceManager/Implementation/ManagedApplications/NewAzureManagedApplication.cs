@@ -119,6 +119,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                         odataQuery: null)
                     .Result;
 
+                // Update location in the operation result if its not present. RPaaS does not populate it for us.
+                operationResult.LocationUri = operationResult.LocationUri ?? operationResult.AzureAsyncOperationUri;
+
                 var managementUri = this.GetResourcesClient()
                   .GetResourceManagementRequestUri(
                       resourceId: resourceId,

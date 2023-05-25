@@ -19,6 +19,17 @@
 -->
 ## Upcoming Release
 
+## Version 5.7.0
+* Fixed issue of getting a single blob with leading slashes
+    - `Get-AzStorageBlob`
+* Supported setting CORS rules in management plane cmdlets 
+    - `Update-AzStorageBlobServiceProperty`
+    - `Update-AzStorageFileServiceProperty`
+* Fixed an issue of `StorageAccountName` field in context object when the context is invalid 
+    - `New-AzStorageContext`
+* Fixed an issue when a context does not have Credentials field
+* Added `$blobchangefeed` to be a valid container name
+
 ## Version 5.6.0
 * Supported rename file and directory
     - `Rename-AzStorageFile`

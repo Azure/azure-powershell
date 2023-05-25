@@ -197,7 +197,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             {
                 throw new ArgumentNullException("blob");
             }
-            else if (context.StorageAccount.Credentials.IsSAS)
+            else if (context != null && context.StorageAccount != null && context.StorageAccount.Credentials != null && context.StorageAccount.Credentials.IsSAS)
             {
                 return blob.Uri;
             }

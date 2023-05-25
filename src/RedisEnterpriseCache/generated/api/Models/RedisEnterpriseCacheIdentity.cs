@@ -36,14 +36,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models
         /// <summary>Backing field for <see cref="Location" /> property.</summary>
         private string _location;
 
-        /// <summary>The region the operation is in.</summary>
+        /// <summary>The name of Azure region.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Origin(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.PropertyOrigin.Owned)]
         public string Location { get => this._location; set => this._location = value; }
 
         /// <summary>Backing field for <see cref="OperationId" /> property.</summary>
         private string _operationId;
 
-        /// <summary>The operation's unique identifier.</summary>
+        /// <summary>The ID of an ongoing async operation.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Origin(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.PropertyOrigin.Owned)]
         public string OperationId { get => this._operationId; set => this._operationId = value; }
 
@@ -101,19 +101,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
         string Id { get; set; }
-        /// <summary>The region the operation is in.</summary>
+        /// <summary>The name of Azure region.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"The region the operation is in.",
+        Description = @"The name of Azure region.",
         SerializedName = @"location",
         PossibleTypes = new [] { typeof(string) })]
         string Location { get; set; }
-        /// <summary>The operation's unique identifier.</summary>
+        /// <summary>The ID of an ongoing async operation.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"The operation's unique identifier.",
+        Description = @"The ID of an ongoing async operation.",
         SerializedName = @"operationId",
         PossibleTypes = new [] { typeof(string) })]
         string OperationId { get; set; }
@@ -152,9 +152,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models
         string DatabaseName { get; set; }
         /// <summary>Resource identity path</summary>
         string Id { get; set; }
-        /// <summary>The region the operation is in.</summary>
+        /// <summary>The name of Azure region.</summary>
         string Location { get; set; }
-        /// <summary>The operation's unique identifier.</summary>
+        /// <summary>The ID of an ongoing async operation.</summary>
         string OperationId { get; set; }
         /// <summary>The name of the private endpoint connection associated with the Azure resource</summary>
         string PrivateEndpointConnectionName { get; set; }

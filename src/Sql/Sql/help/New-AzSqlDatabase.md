@@ -173,6 +173,36 @@ MinimumCapacity          : 0.5
 
 This command creates a Serverless database named Database04 on server Server01.
 
+### Example 5: Create a database configured with preferred enclave type as VBS
+
+```powershell
+New-AzSqlDatabase -ResourceGroupName "ResourceGroup01" -DatabaseName "Database01" -ServerName "Server01" -Edition "GeneralPurpose" -Vcore 2 -ComputeGeneration "Gen5" -PreferredEnclaveType "VBS"
+```
+
+```output
+ResourceGroupName             : ResourceGroup01
+ServerName                    : Server01
+DatabaseName                  : Database01
+Location                      : Central US
+DatabaseId                    : 34d9d561-42a7-484e-bf05-62ddef8000ab
+Edition                       : GeneralPurpose
+CollationName                 : SQL_Latin1_General_CP1_CI_AS
+CatalogCollation              :
+MaxSizeBytes                  : 268435456000
+Status                        : Online
+CreationDate                  : 8/26/2015 10:04:29 PM
+CurrentServiceObjectiveName   : GP_Gen5_2
+RequestedServiceObjectiveName :
+ElasticPoolName               :
+EarliestRestoreDate           :
+LicenseType                   : LicenseIncluded
+Tags                          :
+EnableLedger                  : False
+PreferredEnclaveType          : VBS
+```
+
+This command creates a database configured with VBS enclave
+
 ## PARAMETERS
 
 ### -AsJob

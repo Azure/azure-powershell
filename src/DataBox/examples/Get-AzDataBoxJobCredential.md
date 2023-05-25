@@ -1,10 +1,13 @@
 ### Example 1: Get databoxHeavy job credential
 ```powershell
-PS C:\> Get-AzDataBoxJobCredential -Name "DtbxPowershell" -ResourceGroupName "resourceGroupName"
+Get-AzDataBoxJobCredential -Name "DtbxPowershell" -ResourceGroupName "resourceGroupName"
 
-PS C:\> $obj = Get-AzDataBoxJobCredential -Name TJy-637522091284252285 -ResourceGroupName bvttoolrg12-Wednesday
-PS C:\> $obj | Format-List
-
+$obj = Get-AzDataBoxJobCredential -Name TJy-637522091284252285 -ResourceGroupName bvttoolrg12-Wednesday
+$obj | Format-List
+$obj.JobSecret | Format-List
+$cabinetJobSecret = $obj.JobSecret.CabinetPodSecret | Format-List
+```
+```output
 AdditionalInfo                          :
 Code                                    :
 DcAccessSecurityCodeForwardDcAccessCode :
@@ -17,8 +20,6 @@ Message                                 :
 Target                                  :
 
 
-PS C:\> $obj.JobSecret | Format-List
-
 AdditionalInfo                          :
 CabinetPodSecret                        : {, }
 Code                                    :
@@ -30,8 +31,6 @@ Error                                   : Microsoft.Azure.PowerShell.Cmdlets.Dat
 Message                                 :
 Target                                  :
 Type                                    : DataBoxHeavy
-
-PS C:\> $cabinetJobSecret = $obj.JobSecret.CabinetPodSecret | Format-List
 ```
 
 Get databoxHeavy job credential 

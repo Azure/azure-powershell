@@ -214,8 +214,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                 if (ShouldProcess(GetDataLakeItemUriWithoutSas(fileClient), "Create File: "))
                 {
                     // Use SDK to upload directly when use SAS credential, and need set permission, since set permission after upload will fail with SAS
-                    if (Channel.StorageContext.StorageAccount.Credentials.IsSAS
-                        && (!string.IsNullOrEmpty(this.Permission) || !string.IsNullOrEmpty(this.Umask)))
+                    if (Channel.StorageContext.StorageAccount != null && Channel.StorageContext.StorageAccount.Credentials != null &&
+                        Channel.StorageContext.StorageAccount.Credentials.IsSAS && (!string.IsNullOrEmpty(this.Permission) || !string.IsNullOrEmpty(this.Umask)))
                     {
                         Func<long, Task> taskGenerator = (taskId) => UploadDataLakeFile(taskId, fileClient, ResolvedFileName);
                         RunTask(taskGenerator);

@@ -713,15 +713,15 @@ namespace Microsoft.WindowsAzure.Commands.Storage
             Uri fileSystemUri = localChannel.StorageContext.StorageAccount.CreateCloudBlobClient().GetContainerReference(fileSystemName).Uri;
             DataLakeFileSystemClient fileSystem;
 
-            if (localChannel.StorageContext.StorageAccount.Credentials.IsToken) //Oauth
+            if (localChannel.StorageContext.StorageAccount.Credentials != null && localChannel.StorageContext.StorageAccount.Credentials.IsToken) //Oauth
             {
                 fileSystem = new DataLakeFileSystemClient(fileSystemUri, localChannel.StorageContext.Track2OauthToken, this.DataLakeClientOptions);
             }
-            else if (localChannel.StorageContext.StorageAccount.Credentials.IsSAS) //SAS
+            else if (localChannel.StorageContext.StorageAccount.Credentials != null && localChannel.StorageContext.StorageAccount.Credentials.IsSAS) //SAS
             {
                 fileSystem = new DataLakeFileSystemClient(new Uri (fileSystemUri.ToString() + "?" + Util.GetSASStringWithoutQuestionMark(localChannel.StorageContext.StorageAccount.Credentials.SASToken)), this.DataLakeClientOptions);
             }
-            else if (localChannel.StorageContext.StorageAccount.Credentials.IsSharedKey) //Shared Key
+            else if (localChannel.StorageContext.StorageAccount.Credentials != null && localChannel.StorageContext.StorageAccount.Credentials.IsSharedKey) //Shared Key
             {
                 fileSystem = new DataLakeFileSystemClient(fileSystemUri,
                      new StorageSharedKeyCredential(localChannel.StorageContext.StorageAccountName, localChannel.StorageContext.StorageAccount.Credentials.ExportBase64EncodedKey()), this.DataLakeClientOptions);

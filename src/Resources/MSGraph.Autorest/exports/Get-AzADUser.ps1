@@ -27,6 +27,9 @@ Get-AzADUser -First 10 -Select 'City' -AppendSelected
 Get-AzADUser -DisplayName $name
 .Example
 Get-AzADUser -Filter "startsWith(DisplayName,'some-name')"
+.Example
+Get-AzADUser -First 10 -ConsistencyLevel eventual -Count -CountVariable 'result'
+$result
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUser
@@ -190,7 +193,14 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # user mail address
-    ${SignedIn}
+    ${SignedIn},
+
+    [Parameter(ParameterSetName='List')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Runtime')]
+    [System.String]
+    # Specifies a count of the total number of items in a collection.
+    # By default, this variable will be set in the global scope.
+    ${CountVariable}
 )
 
 begin {

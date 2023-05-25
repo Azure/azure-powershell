@@ -21,7 +21,7 @@ Edit-AzDataProtectionPolicyRetentionRuleClientObject -Name <RetentionRuleName> -
 ### AddRetention
 ```
 Edit-AzDataProtectionPolicyRetentionRuleClientObject -IsDefault <Boolean> -LifeCycles <ISourceLifeCycle[]>
- -Name <RetentionRuleName> -Policy <IBackupPolicy> [<CommonParameters>]
+ -Name <RetentionRuleName> -Policy <IBackupPolicy> [-OverwriteLifeCycle <Boolean?>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -101,6 +101,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -OverwriteLifeCycle
+Specifies whether to modify an existing LifeCycle.
+
+```yaml
+Type: System.Nullable`1[[System.Boolean, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
+Parameter Sets: AddRetention
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

@@ -198,6 +198,42 @@ function Test-NewAzAksAddons
     }
 }
 
+function Test-EnableAndDisableAzAksAddons
+{
+    # Setup
+    $resourceGroupName = Get-RandomResourceGroupName
+    $kubeClusterName = Get-RandomClusterName
+    $kubeClusterName2 = Get-RandomClusterName
+
+    try
+    {
+        New-AzResourceGroup -Name $resourceGroupName -Location 'eastus'
+
+        $cluster = New-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName
+        Assert-Null $cluster.AddonProfiles
+
+        $cluster = $cluster | Enable-AzAksAddon -Name HttpApplicationRouting
+        Assert-AreEqual $true $cluster.AddonProfiles['httpapplicationrouting'].Enabled
+        $cluster = $cluster | Disable-AzAksAddon -Name HttpApplicationRouting
+        Assert-AreEqual $false $cluster.AddonProfiles['httpapplicationrouting'].Enabled
+
+        $cluster2 = New-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName2
+        Assert-Null $cluster2.AddonProfiles
+        #$workspace = New-AzOperationalInsightsWorkspace -Location $location -Name 'akstestws' -ResourceGroupName $resourceGroupName
+        #$workspaceId = $workspace.ResourceId
+        $workspaceId = '/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/akstestgroup/providers/Microsoft.OperationalInsights/workspaces/akstestws'
+
+        $cluster2 = Enable-AzAksAddon -Name 'Monitoring' -WorkspaceResourceId $workspaceId -ResourceGroupName $resourceGroupName -ClusterName $kubeClusterName2
+        Assert-AreEqual $true $cluster2.AddonProfiles['omsagent'].Enabled
+        $cluster2 = Disable-AzAksAddon -Name 'Monitoring' -ResourceGroupName $resourceGroupName -ClusterName $kubeClusterName2
+        Assert-AreEqual $false $cluster2.AddonProfiles['omsagent'].Enabled
+    }
+    finally
+    {
+        Remove-AzResourceGroup -Name $resourceGroupName -Force
+    }
+}
+
 
 <#
 .SYNOPSIS
@@ -1009,7 +1045,7 @@ function Test-AadProfile {
         #New-AzADGroup -DisplayName $AdGroupName -MailNickname $AdGroupName
         #$adGroup = Get-AzADGroup -DisplayName $AdGroupName
         #$adGroupId = $adGroup.Id
-        $adGroupId = 'e74a0087-33b6-4144-977d-f9802b0031d4'
+        $adGroupId = '1e1dad09-f44e-4ec3-9bdd-6c92d2099c63'
         $AadProfile=@{
             managed=$true
             enableAzureRBAC=$false
@@ -1018,18 +1054,22 @@ function Test-AadProfile {
         $AadProfile=[Microsoft.Azure.Management.ContainerService.Models.ManagedClusterAADProfile]$AadProfile
 
         # create aks cluster with AadProfile
-        New-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName -NodeCount 1 -AadProfile $AadProfile
+        New-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName -NodeCount 1 -AadProfile $AadProfile -DisableLocalAccount
         $cluster = Get-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName
         Assert-ObjectEquals $AadProfile.managed $cluster.AadProfile.managed
         Assert-ObjectEquals $AadProfile.enableAzureRBAC $cluster.AadProfile.enableAzureRBAC
         Assert-ObjectEquals $AadProfile.adminGroupObjectIDs $cluster.AadProfile.adminGroupObjectIDs
         Assert-ObjectEquals '54826b22-38d6-4fb2-bad9-b7b93a3e9c5a' $cluster.AadProfile.TenantID
+        Assert-ObjectEquals $true $cluster.DisableLocalAccounts
+        $cluster = $cluster | Set-AzAksCluster -DisableLocalAccount:$false
+        Assert-ObjectEquals $false $cluster.DisableLocalAccounts
         $cluster | Remove-AzAksCluster -Force
 
         # create aks cluster without AadProfile
         New-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName -NodeCount 1
         $cluster = Get-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName
         Assert-Null $cluster.AadProfile
+        Assert-Null $cluster.DisableLocalAccounts
         # update the aks cluster with AadProfile
         Set-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName -AadProfile $AadProfile
         $cluster = Get-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName
@@ -1038,6 +1078,9 @@ function Test-AadProfile {
         Assert-ObjectEquals "" $cluster.AadProfile.enableAzureRBAC
         Assert-ObjectEquals $AadProfile.adminGroupObjectIDs $cluster.AadProfile.adminGroupObjectIDs
         Assert-ObjectEquals '54826b22-38d6-4fb2-bad9-b7b93a3e9c5a' $cluster.AadProfile.TenantID
+        Assert-Null $cluster.DisableLocalAccounts
+        $cluster = $cluster | Set-AzAksCluster -DisableLocalAccount
+        Assert-ObjectEquals $true $cluster.DisableLocalAccounts
         $cluster | Remove-AzAksCluster -Force
     }
     finally {
@@ -1208,6 +1251,35 @@ function Test-OutboundType {
         New-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName -NodeVmSize $nodeVmSize -NodeCount 1 -OutboundType managedNATGateway
         $cluster = Get-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName
         Assert-AreEqual 'managedNATGateway' $cluster.NetworkProfile.OutboundType
+    }
+    finally {
+        Remove-AzResourceGroup -Name $resourceGroupName -Force
+    }
+}
+
+function Test-EnableAHUB {
+    # Setup
+    $resourceGroupName = Get-RandomResourceGroupName
+    $kubeClusterName = Get-RandomClusterName
+    $location = 'eastus'
+
+    try {
+        New-AzResourceGroup -Name $resourceGroupName -Location $location
+
+        $SecurePassword = ConvertTo-SecureString 'Abcdefg@123456' -AsPlainText -Force
+        New-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName -NodeCount 1 -WindowsProfileAdminUserName azure -WindowsProfileAdminUserPassword $SecurePassword -EnableAHUB
+        $cluster = Get-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName
+        Assert-AreEqual 'Windows_Server' $cluster.WindowsProfile.LicenseType
+        $cluster = Set-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName -EnableAHUB:$false
+        Assert-AreEqual 'None' $cluster.WindowsProfile.LicenseType
+
+        
+        $kubeClusterName = Get-RandomClusterName
+        New-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName -NodeCount 1
+        $cluster = Get-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName
+        Assert-Null $cluster.WindowsProfile.LicenseType
+        $cluster = $cluster | Set-AzAksCluster -EnableAHUB
+        Assert-AreEqual 'Windows_Server' $cluster.WindowsProfile.LicenseType
     }
     finally {
         Remove-AzResourceGroup -Name $resourceGroupName -Force

@@ -20,6 +20,7 @@ using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Rest.Azure;
 using System.Management.Automation;
 using System.Collections;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
 {
@@ -121,6 +122,11 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
+        [Parameter(Mandatory = false,
+            HelpMessage = "Creates a ledger database, in which the integrity of all data is protected by the ledger feature." +
+            "All tables in the ledger database must be ledger tables. Note: the value of this property cannot be changed after the database has been created.")]
+        public SwitchParameter EnableLedger { get; set; }
+
         /// <summary>
         /// Executes the cmdlet.
         /// </summary>
@@ -188,6 +194,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
                 Name = Name,
                 CreateMode = "Default",
                 Tags = TagsConversionHelper.CreateTagDictionary(Tag, validate: true),
+                EnableLedger = this.IsParameterBound(p => p.EnableLedger) ? EnableLedger.ToBool() : (bool?)null,
             };
         }
 

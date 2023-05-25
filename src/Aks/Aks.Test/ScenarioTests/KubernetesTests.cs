@@ -38,6 +38,13 @@ namespace Commands.Aks.Test.ScenarioTests
             TestRunner.RunTestScript("Test-NewAzAksAddons");
         }
 
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAzureKubernetesAddonsEnableAndDisable()
+        {
+            TestRunner.RunTestScript("Test-EnableAndDisableAzAksAddons");
+        }
+
         [Fact(Skip = "Please make sure you have graph directory.read permission which is required for grant acrpull permission.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewAzAksWithAcr()
@@ -211,6 +218,13 @@ namespace Commands.Aks.Test.ScenarioTests
         public void TestOutboundType()
         {
             TestRunner.RunTestScript("Test-OutboundType");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestEnableAHUB()
+        {
+            TestRunner.RunTestScript("Test-EnableAHUB");
         }
     }
 }

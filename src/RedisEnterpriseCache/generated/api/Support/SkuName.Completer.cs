@@ -6,9 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support
 {
 
-    /// <summary>
-    /// The type of RedisEnterprise cluster to deploy. Possible values: (Enterprise_E10, EnterpriseFlash_F300 etc.)
-    /// </summary>
+    /// <summary>Argument completer implementation for SkuName.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.SkuNameTypeConverter))]
     public partial struct SkuName :
         System.Management.Automation.IArgumentCompleter

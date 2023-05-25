@@ -8,7 +8,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201
     using static Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Extensions;
 
     /// <summary>
-    /// The remote virtual network should be in the same region. See here to learn more (https://learn.microsoft.com/en-us/azure/databricks/administration-guide/cloud-configurations/azure/vnet-peering).
+    /// The remote virtual network should be in the same region. See here to learn more (https://docs.microsoft.com/en-us/azure/databricks/administration-guide/cloud-configurations/azure/vnet-peering).
     /// </summary>
     public partial class VirtualNetworkPeeringPropertiesFormatRemoteVirtualNetwork
     {

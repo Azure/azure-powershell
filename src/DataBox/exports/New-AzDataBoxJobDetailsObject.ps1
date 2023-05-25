@@ -20,30 +20,13 @@ Create an in-memory object for DataBoxJobDetails.
 .Description
 Create an in-memory object for DataBoxJobDetails.
 .Example
-PS C:\> $details = New-AzDataBoxJobDetailsObject -Type "DataBox"  -DataImportDetail  @(@{AccountDetail=$dataAccount; AccountDetailDataAccountType = "StorageAccount"} ) -ContactDetail $contactDetail -ShippingAddress $ShippingDetails
-PS C:\> $details
+$contactDetail = New-AzDataBoxContactDetailsObject -ContactName "random" -EmailList @("emailId") -Phone "1234567891"
+$ShippingDetails = New-AzDataBoxShippingAddressObject -StreetAddress1 "101 TOWNSEND ST" -StateOrProvince "CA" -Country "US" -City "San Francisco" -PostalCode "94107" -AddressType "Commercial"
 
-Action                     :
-ChainOfCustodySasKey       :
-ContactDetail              : Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ContactDetails
-CopyLogDetail              :
-CopyProgress               :
-DataExportDetail           :
-DataImportDetail           : {Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.DataImportDetails}
-DeliveryPackage            : Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.PackageShippingDetails
-DevicePassword             :
-ExpectedDataSizeInTeraByte : 0
-JobStage                   :
-KeyEncryptionKey           : Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.KeyEncryptionKey
-LastMitigationActionOnJob  : Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.LastMitigationActionOnJob
-Preference                 : Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.Preferences
-ReturnPackage              : Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.PackageShippingDetails
-ReverseShipmentLabelSasKey :
-ShippingAddress            : Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ShippingAddress
-Type                       : DataBox
+New-AzDataBoxJobDetailsObject -Type "DataBox"  -DataImportDetail  @(@{AccountDetail=$dataAccount; AccountDetailDataAccountType = "StorageAccount"} ) -ContactDetail $contactDetail -ShippingAddress $ShippingDetails
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.DataBoxJobDetails
+Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.DataBoxJobDetails
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -84,6 +67,7 @@ DATAEXPORTDETAIL <IDataExportDetails[]>: Details of the data to be exported from
 DATAIMPORTDETAIL <IDataImportDetails[]>: Details of the data to be imported into azure.
   AccountDetailDataAccountType <DataAccountType>: Account Type of the data to be transferred.
   [AccountDetailSharePassword <String>]: Password for all the shares to be created on the device. Should not be passed for TransferType:ExportFromAzure jobs. If this is not passed, the service will generate password itself. This will not be returned in Get Call. Password Requirements :  Password must be minimum of 12 and maximum of 64 characters. Password must have at least one uppercase alphabet, one number and one special character. Password cannot have the following characters : IilLoO0 Password can have only alphabets, numbers and these characters : @#\-$%^!+=;:_()]+
+  [LogCollectionLevel <LogCollectionLevel?>]: Level of the logs to be collected.
 
 KEYENCRYPTIONKEY <IKeyEncryptionKey>: Details about which key encryption type is being used.
   KekType <KekType>: Type of encryption key used for key encryption.
@@ -95,8 +79,30 @@ KEYENCRYPTIONKEY <IKeyEncryptionKey>: Details about which key encryption type is
 
 PREFERENCE <IPreferences>: Preferences for the order.
   [EncryptionPreferenceDoubleEncryption <DoubleEncryption?>]: Defines secondary layer of software-based encryption enablement.
+  [EncryptionPreferenceHardwareEncryption <HardwareEncryption?>]: Defines Hardware level encryption (Only for disk)
   [PreferredDataCenterRegion <String[]>]: Preferred data center region.
+  [ReverseTransportPreferencePreferredShipmentType <TransportShipmentTypes?>]: Indicates Shipment Logistics type that the customer preferred.
+  [StorageAccountAccessTierPreference <StorageAccountAccessTier[]>]: Preferences related to the Access Tier of storage accounts.
   [TransportPreferencePreferredShipmentType <TransportShipmentTypes?>]: Indicates Shipment Logistics type that the customer preferred.
+
+REVERSESHIPPINGDETAIL <IReverseShippingDetails>: Optional Reverse Shipping details for order.
+  [ContactDetailContactName <String>]: Contact name of the person.
+  [ContactDetailMobile <String>]: Mobile number of the contact person.
+  [ContactDetailPhone <String>]: Phone number of the contact person.
+  [ContactDetailPhoneExtension <String>]: Phone extension number of the contact person.
+  [ShippingAddress <IShippingAddress>]: Shipping address where customer wishes to receive the device.
+    Country <String>: Name of the Country.
+    StreetAddress1 <String>: Street Address line 1.
+    [AddressType <AddressType?>]: Type of address.
+    [City <String>]: Name of the City.
+    [CompanyName <String>]: Name of the company.
+    [PostalCode <String>]: Postal code.
+    [SkipAddressValidation <Boolean?>]: Flag to indicate if customer has chosen to skip default address validation
+    [StateOrProvince <String>]: Name of the State or Province.
+    [StreetAddress2 <String>]: Street Address line 2.
+    [StreetAddress3 <String>]: Street Address line 3.
+    [TaxIdentificationNumber <String>]: Tax Identification Number
+    [ZipExtendedCode <String>]: Extended Zip Code.
 
 SHIPPINGADDRESS <IShippingAddress>: Shipping address of the customer.
   Country <String>: Name of the Country.
@@ -105,20 +111,22 @@ SHIPPINGADDRESS <IShippingAddress>: Shipping address of the customer.
   [City <String>]: Name of the City.
   [CompanyName <String>]: Name of the company.
   [PostalCode <String>]: Postal code.
+  [SkipAddressValidation <Boolean?>]: Flag to indicate if customer has chosen to skip default address validation
   [StateOrProvince <String>]: Name of the State or Province.
   [StreetAddress2 <String>]: Street Address line 2.
   [StreetAddress3 <String>]: Street Address line 3.
+  [TaxIdentificationNumber <String>]: Tax Identification Number
   [ZipExtendedCode <String>]: Extended Zip Code.
 .Link
-https://learn.microsoft.com/powershell/module/az.DataBox/new-AzDataBoxJobDetailsObject
+https://learn.microsoft.com/powershell/module/Az.DataBox/new-AzDataBoxJobDetailsObject
 #>
 function New-AzDataBoxJobDetailsObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.DataBoxJobDetails])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.DataBoxJobDetails])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IContactDetails]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IContactDetails]
     # Contact details for notification and shipping.
     # To construct, see NOTES section for CONTACTDETAIL properties and create a hash table.
     ${ContactDetail},
@@ -144,14 +152,14 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataExportDetails[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IDataExportDetails[]]
     # Details of the data to be exported from azure.
     # To construct, see NOTES section for DATAEXPORTDETAIL properties and create a hash table.
     ${DataExportDetail},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IDataImportDetails[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IDataImportDetails[]]
     # Details of the data to be imported into azure.
     # To construct, see NOTES section for DATAIMPORTDETAIL properties and create a hash table.
     ${DataImportDetail},
@@ -164,21 +172,28 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IKeyEncryptionKey]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IKeyEncryptionKey]
     # Details about which key encryption type is being used.
     # To construct, see NOTES section for KEYENCRYPTIONKEY properties and create a hash table.
     ${KeyEncryptionKey},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IPreferences]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IPreferences]
     # Preferences for the order.
     # To construct, see NOTES section for PREFERENCE properties and create a hash table.
     ${Preference},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShippingAddress]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IReverseShippingDetails]
+    # Optional Reverse Shipping details for order.
+    # To construct, see NOTES section for REVERSESHIPPINGDETAIL properties and create a hash table.
+    ${ReverseShippingDetail},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IShippingAddress]
     # Shipping address of the customer.
     # To construct, see NOTES section for SHIPPINGADDRESS properties and create a hash table.
     ${ShippingAddress}
@@ -191,6 +206,24 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.DataBox.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
         $mapping = @{
             __AllParameterSets = 'Az.DataBox.custom\New-AzDataBoxJobDetailsObject';
         }
@@ -201,6 +234,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
         throw
     }
 }
@@ -209,15 +243,32 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
         throw
     }
-}
 
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
 end {
     try {
         $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.DataBox.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
     } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
         throw
     }
-}
+} 
 }

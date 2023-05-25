@@ -39,7 +39,8 @@ This command gets the status of an operation.
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -54,7 +55,7 @@ Accept wildcard characters: False
 ```
 
 ### -Location
-The region the operation is in.
+The name of Azure region.
 
 ```yaml
 Type: System.String
@@ -69,7 +70,7 @@ Accept wildcard characters: False
 ```
 
 ### -OperationId
-The operation's unique identifier.
+The ID of an ongoing async operation.
 
 ```yaml
 Type: System.String
@@ -105,7 +106,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api202201.IOperationStatus
+### Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20230301Preview.IOperationStatus
 
 ## NOTES
 

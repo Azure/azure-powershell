@@ -66,7 +66,7 @@ Create a new instance DataMigration Azure ActiveDirectory Application details.
 Creates a new Connection Info object specifying the server type and name for connection.
 
 ### [New-AzDataMigrationDatabaseInfo](New-AzDataMigrationDatabaseInfo.md)
-Creates the DatabaseInfo object for the Azure Database Migration Service (classic), which specifies the database source for migration.
+Creates the DatabaseInfo object for the Azure Database Migration Service, which specifies the database source for migration.
 
 ### [New-AzDataMigrationFileShare](New-AzDataMigrationFileShare.md)
 Creates the FileShare object for the Azure Database Migration Service (classic), which specifies the local network share to take the source database backups to.
@@ -100,6 +100,9 @@ Creates a database info object specific to the sync scenario to be used for a mi
 
 ### [New-AzDataMigrationTask](New-AzDataMigrationTask.md)
 Creates and starts a data migration task in the Azure Database Migration Service (classic).
+
+### [New-AzDataMigrationTdeCertificateMigration](New-AzDataMigrationTdeCertificateMigration.md)
+Migrate TDE certificate(s) from source SQL Server to the target Azure SQL Server.
 
 ### [New-AzDataMigrationToSqlDb](New-AzDataMigrationToSqlDb.md)
 Create a new database migration to a given SQL Db.
@@ -135,7 +138,7 @@ Remove the specified database migration for a given SQL Db.
 Starts an instance of the Azure Database Migration Service (classic) in a stopped state. 
 
 ### [Stop-AzDataMigrationService](Stop-AzDataMigrationService.md)
-Starts an instance of the Azure Database Migration Service (classic) in a stopped state. 
+Stops an instance of the Azure Database Migration Service (classic) that is in a running state.
 
 ### [Stop-AzDataMigrationTask](Stop-AzDataMigrationTask.md)
 Stops an  Azure Database Migration Service (classic) task that is in a running state.

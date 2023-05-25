@@ -12,7 +12,7 @@ Updates a routing intent resource associated with a VirtualHub.
 
 ## SYNTAX
 
-### ByRoutingInctentName (Default)
+### ByRoutingIntentName (Default)
 ```
 Set-AzRoutingIntent -ResourceGroupName <String> -ParentResourceName <String> -Name <String>
  [-RoutingPolicy <PSRoutingPolicy[]>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
@@ -25,13 +25,13 @@ Set-AzRoutingIntent -Name <String> -ParentObject <PSVirtualHub> [-RoutingPolicy 
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### ByRoutingInctentObject
+### ByRoutingIntentObject
 ```
 Set-AzRoutingIntent -InputObject <PSRoutingIntent> [-RoutingPolicy <PSRoutingPolicy[]>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### ByRoutingInctentResourceId
+### ByRoutingIntentResourceId
 ```
 Set-AzRoutingIntent -ResourceId <String> [-RoutingPolicy <PSRoutingPolicy[]>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -121,7 +121,7 @@ The RoutingIntent resource to Set.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSRoutingIntent
-Parameter Sets: ByRoutingInctentObject
+Parameter Sets: ByRoutingIntentObject
 Aliases: RoutingIntent
 
 Required: True
@@ -136,7 +136,7 @@ The resource name.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByRoutingInctentName, ByVirtualHubObject
+Parameter Sets: ByRoutingIntentName, ByVirtualHubObject
 Aliases: ResourceName, RoutingIntentName, RouteTableName
 
 Required: True
@@ -166,7 +166,7 @@ The parent resource name.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByRoutingInctentName
+Parameter Sets: ByRoutingIntentName
 Aliases: VirtualHubName, ParentVirtualHubName
 
 Required: True
@@ -181,7 +181,7 @@ The resource group name.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByRoutingInctentName
+Parameter Sets: ByRoutingIntentName
 Aliases:
 
 Required: True
@@ -196,7 +196,7 @@ The resource id of the RoutingIntent resource to Set.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByRoutingInctentResourceId
+Parameter Sets: ByRoutingIntentResourceId
 Aliases: RoutingIntentId
 
 Required: True
