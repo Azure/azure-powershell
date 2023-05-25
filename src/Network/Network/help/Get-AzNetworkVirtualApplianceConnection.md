@@ -35,7 +35,7 @@ The Get-AzNetworkVirtualApplianceConnection commands gets or lists connections c
 ### Example 1
 
 ```powershell
-Get-AzNetworkVirtualApplianceConnection -ResourceGroupName testrg -ParentResourceName nva
+Get-AzNetworkVirtualApplianceConnection -ResourceGroupName testrg -VirtualApplianceName nva
 ```
 
 ```output
@@ -74,7 +74,7 @@ The above will gets the connection from "testRG" resource group using Resource g
 
 ```powershell
 $nva = Get-AzNetworkVirtualAppliance -ResourceGroupName testrg -Name nva
-Get-AzNetworkVirtualApplianceConnection -ParentObject $nva
+Get-AzNetworkVirtualApplianceConnection -VirtualAppliance $nva
 ```
 
 ```output
@@ -140,7 +140,7 @@ Accept pipeline input: False
 Accept wildcard characters: True
 ```
 
-### -ParentObject
+### -VirtualAppliance
 The parent Network Virtual Appliance for this connection.
 
 ```yaml
@@ -155,7 +155,7 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -ParentResourceId
+### -VirtualApplianceResourceId
 The resource id of the parent Network Virtual Appliance for this connection.
 
 ```yaml
@@ -170,8 +170,8 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ParentResourceName
-The parent resource name.
+### -VirtualApplianceName
+The parent virtual appliance resource name.
 
 ```yaml
 Type: System.String
