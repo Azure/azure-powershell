@@ -34,27 +34,14 @@ This action will cause a service outage.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Reinstall the specified packet core control plane.
 ```powershell
-{{ Add code here }}
+Deploy-AzMobileNetworkReinstallPacketCoreControlPlane -PacketCoreControlPlaneName azps-mn-pccp -ResourceGroupName azps_test_group
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Reinstall the specified packet core control plane.
+This action will remove any transaction state from the packet core to return it to a known state.
+This action will cause a service outage.
 
 ## PARAMETERS
 

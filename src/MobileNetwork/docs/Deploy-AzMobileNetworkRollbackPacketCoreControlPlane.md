@@ -34,27 +34,14 @@ This action may cause a service outage.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Roll back the specified packet core control plane to the previous version, \"rollbackVersion\".
 ```powershell
-{{ Add code here }}
+Deploy-AzMobileNetworkRollbackPacketCoreControlPlane -PacketCoreControlPlaneName azps-mn-pccp -ResourceGroupName azps_test_group
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Roll back the specified packet core control plane to the previous version, \"rollbackVersion\".
+Multiple consecutive rollbacks are not possible.
+This action may cause a service outage.
 
 ## PARAMETERS
 
