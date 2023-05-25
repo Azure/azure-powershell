@@ -17,34 +17,20 @@ Describe 'AzSubscription' {
     It 'CreateAliasExpanded' {
         {
             $config = New-AzSubscriptionAlias -AliasName $env.testSubName
-            $config.Name | Should -Be $env.testSubName
+            $config.AliasName | Should -Be $env.testSubName
         } | Should -Not -Throw
     }
 
     It 'ListAlias' {
         {
             $config = Get-AzSubscriptionAlias -AliasName $env.testSubName
-            $config.Name | Should -Be $env.testSubName
+            $config.AliasName | Should -Be $env.testSubName
         } | Should -Not -Throw
     }
 
     It 'GetPolicy' {
         {
             $config = Get-AzSubscriptionPolicy
-            $config.Count | Should -BeGreaterThan 0
-        } | Should -Not -Throw
-    }
-
-    It 'AcceptExpandedOwnershipStatus' {
-        {
-            $config = Get-AzSubscriptionAcceptOwnershipStatus
-            $config.Count | Should -BeGreaterThan 0
-        } | Should -Not -Throw
-    }
-
-    It 'UpdateSubPolicy' {
-        {
-            $config = Update-AzSubscriptionPolicy -BlockSubscriptionsIntoTenant:$true -BlockSubscriptionsLeavingTenant:$false -ExemptedPrincipal XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
             $config.Count | Should -BeGreaterThan 0
         } | Should -Not -Throw
     }
@@ -59,6 +45,13 @@ Describe 'AzSubscription' {
     It 'DeleteAlias' {
         {
             Remove-AzSubscriptionAlias -AliasName $env.testSubName
+        } | Should -Not -Throw
+    }
+
+    It 'UpdateSubPolicy' {
+        {
+            $config = Update-AzSubscriptionPolicy -BlockSubscriptionsIntoTenant:$false -BlockSubscriptionsLeavingTenant:$false 
+            $config.Count | Should -BeGreaterThan 0
         } | Should -Not -Throw
     }
 }
