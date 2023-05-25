@@ -25,7 +25,7 @@ $ltResults = Get-ChildItem -Path $ltDir -Filter "*.csv" -File -ErrorAction Silen
 
 if (![string]::IsNullOrEmpty($ltResults)) {
     Import-Module "./tools/TestFx/Utilities/KustoUtility.psd1" -ArgumentList $ServicePrincipalTenantId, $ServicePrincipalId, $ServicePrincipalSecret, $ClusterName, $ClusterRegion -Force
-    Import-KustoDataFromCsv -DatabaseName ${env:LIVETESTDATABASENAME} -TableName ${env:LIVETESTTABLENAME} -CsvFile $ltResults
+    Add-KustoData -DatabaseName ${env:LIVETESTDATABASENAME} -TableName ${env:LIVETESTTABLENAME} -CsvFile $ltResults
 }
 else {
     Write-Host "##[warning]No live test data was found."
