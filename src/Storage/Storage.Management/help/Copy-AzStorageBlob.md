@@ -37,7 +37,7 @@ Copy-AzStorageBlob -AbsoluteUri <String> -DestContainer <String> -DestBlob <Stri
 ```
 
 ## DESCRIPTION
-The **Copy-AzStorageBlob** cmdlet copies a blob synchronously, currently only support block blob.
+The **Copy-AzStorageBlob** cmdlet copies a blob synchronously, currently only support block blob. This will create any missing parent folders in the DestBlob parameter.
 
 ## EXAMPLES
 
@@ -255,7 +255,9 @@ Accept wildcard characters: False
 ```
 
 ### -Force
-Force to overwrite the existing blob or file
+Answers 'yes' to any confirmation prompts.
+Force 'yes' to overwrite the existing blob or file.
+Force 'yes' to "Can't get source blob Tags, so source blob tags won't be copied to dest blob. Do you want to continue the blob copy?" when there is an HTML status error 401, 403, or 404 when reading Tags from the blob or file.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
