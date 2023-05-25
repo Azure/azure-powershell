@@ -408,8 +408,8 @@ function Test-SwitchFailoverGroupTryPlannedBeforeForcedFailover()
 	Handle-FailoverGroupTestWithFailoverGroup {
 		Param($fg)
 
-		$foGroup = Get-AzSqlDatabaseFailoverGroup $fg.PartnerResourceGroupName $fg.PartnerServerName $fg.FailoverGroupName -TryPlannedBeforeForcedFailover
-		$job = $foGroup | Switch-AzSqlDatabaseFailoverGroup -AsJob
+		$foGroup = Get-AzSqlDatabaseFailoverGroup $fg.PartnerResourceGroupName $fg.PartnerServerName $fg.FailoverGroupName
+		$job = $foGroup | Switch-AzSqlDatabaseFailoverGroup -TryPlannedBeforeForcedFailover -AsJob
 		$job | Wait-Job
 
 		$newSecondaryFg = $fg | Get-AzSqlDatabaseFailoverGroup

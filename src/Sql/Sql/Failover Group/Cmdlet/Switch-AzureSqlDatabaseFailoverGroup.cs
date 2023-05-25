@@ -51,15 +51,17 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
         /// </summary>
         [Parameter(Mandatory = false,
             HelpMessage = "Complete the failover even if doing so may result in data loss. "
-                + "This will allow the failover to proceed even if a primary database is unavailable.")]
+                + "This will allow the failover to proceed even if a primary database is unavailable.",
+            ParameterSetName = "AllowDataLoss")]
         public SwitchParameter AllowDataLoss { get; set; }
 
         /// <summary>
         /// Switch parameter indicating whether this failover operation will try planned before forced failover.
         /// </summary>
         [Parameter(Mandatory = false,
-            HelpMessage = "Try planned failover before completing the failover even if doing so may result in data loss. "
-                + "This will allow the failover to proceed even if a primary database is unavailable.")]
+            HelpMessage = "Performs planned failover as first step and if it fails for any reason than forced failover with potential data loss is initiated. "
+                + "This will allow the failover to proceed even if a primary database is unavailable.",
+            ParameterSetName = "TryPlannedBeforeForcedFailover")]
         public SwitchParameter TryPlannedBeforeForcedFailover { get; set; }
 
         /// <summary>
