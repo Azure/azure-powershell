@@ -70,7 +70,7 @@ function InitializeKustoPackages {
     }
 }
 
-function Import-KustoDataFromCsv {
+function Add-KustoData {
     [CmdletBinding()]
     param (
         [Parameter(Mandatory)]
