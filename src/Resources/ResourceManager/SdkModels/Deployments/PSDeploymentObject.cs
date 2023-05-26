@@ -14,7 +14,7 @@
 
 using System;
 using System.Collections.Generic;
-using Microsoft.Azure.Management.ResourceManager.Models;
+using Microsoft.Azure.Management.Resources.Models;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkExtensions;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
