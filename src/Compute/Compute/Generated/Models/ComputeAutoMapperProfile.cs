@@ -56,6 +56,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
         {
             var config = new MapperConfiguration(cfg =>
             {
+                cfg.AllowNullCollections = true;
+                
                 cfg.CreateMap<FROM.DedicatedHostGroup, TO.PSHostGroupList>();
                 cfg.CreateMap<TO.PSHostGroupList, TO.PSHostGroup>();
                 cfg.CreateMap<TO.PSHostGroup, TO.PSHostGroupList>();
