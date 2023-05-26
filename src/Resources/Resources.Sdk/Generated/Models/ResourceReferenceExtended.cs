@@ -14,26 +14,27 @@ namespace Microsoft.Azure.Management.Resources.Models
     using System.Linq;
 
     /// <summary>
-    /// The resource Id model.
+    /// The resource Id extended model.
     /// </summary>
-    public partial class ResourceReference
+    public partial class ResourceReferenceExtended
     {
         /// <summary>
-        /// Initializes a new instance of the ResourceReference class.
+        /// Initializes a new instance of the ResourceReferenceExtended class.
         /// </summary>
-        public ResourceReference()
+        public ResourceReferenceExtended()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the ResourceReference class.
+        /// Initializes a new instance of the ResourceReferenceExtended class.
         /// </summary>
         /// <param name="id">The resourceId of a resource managed by the
         /// deployment stack.</param>
-        public ResourceReference(string id = default(string))
+        public ResourceReferenceExtended(string id = default(string), ErrorResponse error = default(ErrorResponse))
         {
             Id = id;
+            Error = error;
             CustomInit();
         }
 
@@ -47,6 +48,11 @@ namespace Microsoft.Azure.Management.Resources.Models
         /// </summary>
         [JsonProperty(PropertyName = "id")]
         public string Id { get; private set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "error")]
+        public ErrorResponse Error { get; set; }
 
     }
 }

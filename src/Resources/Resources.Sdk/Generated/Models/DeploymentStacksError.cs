@@ -14,26 +14,24 @@ namespace Microsoft.Azure.Management.Resources.Models
     using System.Linq;
 
     /// <summary>
-    /// The resource Id model.
+    /// Deployment Stacks error response.
     /// </summary>
-    public partial class ResourceReference
+    public partial class DeploymentStacksError
     {
         /// <summary>
-        /// Initializes a new instance of the ResourceReference class.
+        /// Initializes a new instance of the DeploymentStacksError class.
         /// </summary>
-        public ResourceReference()
+        public DeploymentStacksError()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the ResourceReference class.
+        /// Initializes a new instance of the DeploymentStacksError class.
         /// </summary>
-        /// <param name="id">The resourceId of a resource managed by the
-        /// deployment stack.</param>
-        public ResourceReference(string id = default(string))
+        public DeploymentStacksError(ErrorResponse error = default(ErrorResponse))
         {
-            Id = id;
+            Error = error;
             CustomInit();
         }
 
@@ -43,10 +41,9 @@ namespace Microsoft.Azure.Management.Resources.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets the resourceId of a resource managed by the deployment stack.
         /// </summary>
-        [JsonProperty(PropertyName = "id")]
-        public string Id { get; private set; }
+        [JsonProperty(PropertyName = "error")]
+        public ErrorResponse Error { get; set; }
 
     }
 }

@@ -14,26 +14,26 @@ namespace Microsoft.Azure.Management.Resources.Models
     using System.Linq;
 
     /// <summary>
-    /// The resource Id model.
+    /// Defines headers for DeleteAtSubscription operation.
     /// </summary>
-    public partial class ResourceReference
+    public partial class DeploymentStacksDeleteAtSubscriptionHeaders
     {
         /// <summary>
-        /// Initializes a new instance of the ResourceReference class.
+        /// Initializes a new instance of the
+        /// DeploymentStacksDeleteAtSubscriptionHeaders class.
         /// </summary>
-        public ResourceReference()
+        public DeploymentStacksDeleteAtSubscriptionHeaders()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the ResourceReference class.
+        /// Initializes a new instance of the
+        /// DeploymentStacksDeleteAtSubscriptionHeaders class.
         /// </summary>
-        /// <param name="id">The resourceId of a resource managed by the
-        /// deployment stack.</param>
-        public ResourceReference(string id = default(string))
+        public DeploymentStacksDeleteAtSubscriptionHeaders(string location = default(string))
         {
-            Id = id;
+            Location = location;
             CustomInit();
         }
 
@@ -43,10 +43,9 @@ namespace Microsoft.Azure.Management.Resources.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets the resourceId of a resource managed by the deployment stack.
         /// </summary>
-        [JsonProperty(PropertyName = "id")]
-        public string Id { get; private set; }
+        [JsonProperty(PropertyName = "Location")]
+        public string Location { get; set; }
 
     }
 }
