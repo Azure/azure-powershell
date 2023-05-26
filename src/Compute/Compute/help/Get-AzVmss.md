@@ -247,7 +247,7 @@ The UserData value must be Base64 encoded. This command assumes you have created
 
 ### Example 6: Get a Virtual Machine Scale Set via its ResourceId.
 ```powershell
-$rgname = "ResourceGroupName";
+$rgname = "ResourceGroupName";
 $loc = "eastus";
 New-AzResourceGroup -Name $rgname -Location $loc
 
