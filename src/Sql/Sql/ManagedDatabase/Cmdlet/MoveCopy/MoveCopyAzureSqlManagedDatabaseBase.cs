@@ -15,11 +15,8 @@
 using Microsoft.Azure.Commands.Sql.ManagedDatabase.Model;
 using Microsoft.Azure.Commands.Sql.ManagedInstance.Model;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
-using Microsoft.Rest.Azure;
 using System.Management.Automation;
-using System.Collections;
 
 namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
 {
@@ -34,6 +31,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
         [Parameter(Mandatory = true, HelpMessage = "The managed instance object", ParameterSetName = MoveCopyManagedDatabaseByInstanceObjectParameterSet)]
         [ValidateNotNullOrEmpty]
         [Alias("Name")]
+        [ResourceNameCompleter("Microsoft.Sql/managedInstances/databases", nameof(ResourceGroupName), nameof(InstanceName))]
         public string DatabaseName { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "The name of the target resource group.", ParameterSetName = MoveCopyManagedDatabaseByNameParameterSet)]
@@ -52,11 +50,8 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
 
         [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = MoveCopyManagedDatabaseByInputObjectParameterSet)]
         [ValidateNotNull]
-        public AzureSqlManagedDatabaseModel InputObject { get; set; }
+        public AzureSqlManagedDatabaseModel DatabaseObject { get; set; }
 
-        /// <summary>
-        /// Gets or sets the instance object
-        /// </summary>
         [Parameter(Mandatory = true, ParameterSetName = MoveCopyManagedDatabaseByInstanceObjectParameterSet, ValueFromPipeline = true, HelpMessage = "The managed instance object")]
         [ValidateNotNullOrEmpty]
         [Alias("ParentObject")]
@@ -69,14 +64,20 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
+
+        [Parameter(Mandatory = false, HelpMessage = "Signal to receive output from a cmdlet which does not return anything")]
+        public SwitchParameter PassThru { get; set; }
+
+        protected abstract string ShouldProcessConfirmationMessage { get; }
+
         protected override MoveCopyManagedDatabaseModel GetEntity()
         {
             switch (ParameterSetName)
             {
                 case MoveCopyManagedDatabaseByInputObjectParameterSet:
-                    ResourceGroupName = InputObject.ResourceGroupName;
-                    InstanceName = InputObject.ManagedInstanceName;
-                    DatabaseName = InputObject.Name;
+                    ResourceGroupName = DatabaseObject.ResourceGroupName;
+                    InstanceName = DatabaseObject.ManagedInstanceName;
+                    DatabaseName = DatabaseObject.Name;
                     break;
                 case MoveCopyManagedDatabaseByResourceIdParameterSet:
                     var resourceInfo = new ResourceIdentifier(ResourceId);
@@ -91,8 +92,6 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
                     break;
             }
 
-            var sourceManagedDatabase = ModelAdapter.GetManagedDatabase(ResourceGroupName, InstanceName, DatabaseName);
-
             return new MoveCopyManagedDatabaseModel()
             {
                 ManagedInstanceName = InstanceName,
@@ -101,8 +100,41 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
                 SubscriptionId = ModelAdapter.Context.Subscription.Id,
                 TargetManagedInstanceName = TargetInstanceName,
                 TargetResourceGroupName = TargetResourceGroupName ?? ResourceGroupName,
-                Location = sourceManagedDatabase.Location
             };
+        }
+
+        protected override bool WriteResult()
+        {
+            return PassThru.IsPresent;
+        }
+
+        /// <summary>
+        /// Always return true because APIs for moving/copying doesn't return anything
+        /// </summary>
+        /// <param name="model">Ignored param</param>
+        /// <returns></returns>
+        protected override object TransformModelToOutputObject(MoveCopyManagedDatabaseModel model)
+        {
+            return true;
+        }
+
+        protected override string GetResourceId(MoveCopyManagedDatabaseModel model)
+        {
+            var sourceDatabase = new ResourceIdentifier()
+            {
+                Subscription = model.SubscriptionId,
+                ResourceGroupName = model.ResourceGroupName,
+                ParentResource = $"managedInstances/{model.ManagedInstanceName}",
+                ResourceType = "Microsoft.Sql/managedInstances/databases",
+                ResourceName = model.Name,
+            };
+
+            return sourceDatabase.ToString();
+        }
+
+        protected override string GetConfirmActionProcessMessage()
+        {
+            return ShouldProcessConfirmationMessage;
         }
     }
 }

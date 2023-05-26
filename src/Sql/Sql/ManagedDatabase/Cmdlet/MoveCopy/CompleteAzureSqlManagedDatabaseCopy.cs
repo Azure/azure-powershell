@@ -17,25 +17,30 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
 {
-    [Cmdlet(VerbsCommon.Move, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlInstanceDatabase",
+    [Cmdlet(VerbsLifecycle.Complete, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlInstanceDatabaseCopy",
         SupportsShouldProcess = true,
         DefaultParameterSetName = MoveCopyManagedDatabaseByNameParameterSet),
-        OutputType(typeof(MoveCopyManagedDatabaseModel))]
-    public class MoveAzureSqlManagedDatabase : MoveCopyAzureSqlManagedDatabaseBase
+        OutputType(typeof(bool))]
+    public class CompleteAzureSqlManagedDatabaseCopy : MoveCopyAzureSqlManagedDatabaseBase
     {
-        protected override string ShouldProcessConfirmationMessage => "Moving managed database from one managed instance to another";
+        protected override string ShouldProcessConfirmationMessage => "Complete ongoing managed database copy operation";
+
+        [Parameter(Mandatory = true, ParameterSetName = "CompleteManagedDatabaseCopyByCopyModelObject", HelpMessage = "Object that is returned from start copy operation.")]
+        [ValidateNotNullOrEmpty]
+        public MoveCopyManagedDatabaseModel CopyModelObject { get; set; }
 
         protected override MoveCopyManagedDatabaseModel PersistChanges(MoveCopyManagedDatabaseModel model)
         {
-            model.OperationMode = OperationMode.MOVE;
-            ModelAdapter.MoveManagedDatabase(model);
-
-            return model;
-        }
-
-        protected override object TransformModelToOutputObject(MoveCopyManagedDatabaseModel model)
-        {
-            return model;
+            if (CopyModelObject != null)
+            {
+                ModelAdapter.CompleteMove(CopyModelObject);
+                return CopyModelObject;
+            }
+            else
+            {
+                ModelAdapter.CompleteMove(model);
+                return model;
+            }
         }
     }
 }

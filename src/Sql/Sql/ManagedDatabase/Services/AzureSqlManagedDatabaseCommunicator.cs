@@ -180,7 +180,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Services
 
         public void Move(string resourceGroupName, string managedInstanceName, string databaseName, string targetManagedDatabaseId)
         {
-            GetCurrentSqlClient().ManagedDatabases.BeginStartMove(resourceGroupName, managedInstanceName, databaseName, new ManagedDatabaseStartMoveDefinition()
+            GetCurrentSqlClient().ManagedDatabases.StartMove(resourceGroupName, managedInstanceName, databaseName, new ManagedDatabaseStartMoveDefinition()
             {
                 DestinationManagedDatabaseId = targetManagedDatabaseId,
                 OperationMode = "Move"
@@ -190,7 +190,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Services
 
         public void Copy(string resourceGroupName, string managedInstanceName, string databaseName, string targetManagedDatabaseId)
         {
-            GetCurrentSqlClient().ManagedDatabases.BeginStartMove(resourceGroupName, managedInstanceName, databaseName, new ManagedDatabaseStartMoveDefinition()
+            GetCurrentSqlClient().ManagedDatabases.StartMove(resourceGroupName, managedInstanceName, databaseName, new ManagedDatabaseStartMoveDefinition()
             {
                 DestinationManagedDatabaseId = targetManagedDatabaseId,
                 OperationMode = "Copy"
@@ -213,13 +213,32 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Services
             });
         }
 
-        public void GetMoveStatus(string resourceGroupName, string location)
+        public IList<ManagedDatabaseMoveOperationResult> GetMoveOperations(string resourceGroupName, string location, string managedInstanceName, string databaseName, string targetManagedInstanceName, OperationMode mode, bool onlyLatestPerDatabase)
         {
-            GetCurrentSqlClient().ManagedDatabaseMoveOperations.ListByLocation(
+            var operationMode = mode == OperationMode.MOVE ? "Move" : "Copy";
+            string filter = $"Properties/OperationMode eq '{operationMode}' and (Properties/SourceManagedInstanceName eq '{managedInstanceName}'";
+
+            if (targetManagedInstanceName.Equals(managedInstanceName))
+            {
+                filter += $" or Properties/TargetManagedInstanceName eq '{targetManagedInstanceName}')";
+            }
+            else
+            {
+                filter += $" and Properties/TargetManagedInstanceName eq '{targetManagedInstanceName}')";
+            }
+
+            if (!string.IsNullOrEmpty(databaseName))
+            {
+                // We currently do not support rename of database, so source and target db have same name
+                filter += $" and (Properties/SourceDatabaseName eq '{databaseName}' or Properties/TargetDatabaseName eq '{databaseName}')";
+            }
+
+            return new List<ManagedDatabaseMoveOperationResult>(GetCurrentSqlClient().ManagedDatabaseMoveOperations.ListByLocation(
                 resourceGroupName, location, new Rest.Azure.OData.ODataQuery<ManagedDatabaseMoveOperationResult>()
                 {
-                    Filter = $"Properties/SourceManagedInstanceName eq _"
-                });
+                    Filter = filter
+                },
+                onlyLatestPerDatabase));
         }
 
         /// <summary>

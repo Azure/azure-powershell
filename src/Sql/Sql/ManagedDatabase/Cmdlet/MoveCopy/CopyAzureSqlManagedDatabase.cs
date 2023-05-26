@@ -20,18 +20,22 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
     [Cmdlet(VerbsCommon.Copy, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlInstanceDatabase",
         SupportsShouldProcess = true,
         DefaultParameterSetName = MoveCopyManagedDatabaseByNameParameterSet),
-        OutputType(typeof(void))]
+        OutputType(typeof(MoveCopyManagedDatabaseModel))]
     public class CopyAzureSqlManagedDatabase : MoveCopyAzureSqlManagedDatabaseBase
     {
+        protected override string ShouldProcessConfirmationMessage => "Copy managed database from one managed instance to another";
+
         protected override MoveCopyManagedDatabaseModel PersistChanges(MoveCopyManagedDatabaseModel model)
         {
-            if (ShouldProcess(DatabaseName, $"Copying database to managed instance {model.TargetManagedInstanceName} in resource group {model.TargetResourceGroupName}"))
-            {
-                model.OperationMode = OperationMode.COPY;
-                ModelAdapter.MoveManagedDatabase(model);
-            }
+            model.OperationMode = OperationMode.COPY;
+            ModelAdapter.MoveManagedDatabase(model);
             
-            return null;
+            return model;
+        }
+
+        protected override object TransformModelToOutputObject(MoveCopyManagedDatabaseModel model)
+        {
+            return model;
         }
     }
 }

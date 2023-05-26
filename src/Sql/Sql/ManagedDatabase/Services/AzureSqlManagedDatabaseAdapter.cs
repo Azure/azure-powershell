@@ -265,22 +265,36 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Services
         {
             if (OperationMode.COPY.Equals(model.OperationMode))
             {
-                Communicator.Copy(model.ResourceGroupName, model.ManagedInstanceName, model.Name, model.getDestinationManagedDatabaseId());
+                Communicator.Copy(model.ResourceGroupName, model.ManagedInstanceName, model.Name, model.getTargetManagedDatabaseId());
             }
             else
             {
-                Communicator.Move(model.ResourceGroupName, model.ManagedInstanceName, model.Name, model.getDestinationManagedDatabaseId());
+                Communicator.Move(model.ResourceGroupName, model.ManagedInstanceName, model.Name, model.getTargetManagedDatabaseId());
             }
         }
 
         public void CompleteMove(MoveCopyManagedDatabaseModel model)
         {
-            Communicator.CompleteMoveCopy(model.ResourceGroupName, model.ManagedInstanceName, model.Name, model.getDestinationManagedDatabaseId());
+            Communicator.CompleteMoveCopy(model.ResourceGroupName, model.ManagedInstanceName, model.Name, model.getTargetManagedDatabaseId());
         }
 
         public void CancelMove(MoveCopyManagedDatabaseModel model)
         {
-            Communicator.CancelMoveCopy(model.ResourceGroupName, model.ManagedInstanceName, model.Name, model.getDestinationManagedDatabaseId());
+            Communicator.CancelMoveCopy(model.ResourceGroupName, model.ManagedInstanceName, model.Name, model.getTargetManagedDatabaseId());
+        }
+
+        public IList<ManagedDatabaseMoveCopyOperation> ListMoveCopyOperations(MoveCopyManagedDatabaseModel model, bool onlyLatestPerDatabase)
+        {
+            return Communicator.GetMoveOperations(
+                model.ResourceGroupName,
+                model.Location,
+                model.ManagedInstanceName,
+                model.Name,
+                model.TargetManagedInstanceName,
+                model.OperationMode,
+                onlyLatestPerDatabase)
+                .Select(operation => new ManagedDatabaseMoveCopyOperation(operation))
+                .ToList();
         }
 
         /// <summary>

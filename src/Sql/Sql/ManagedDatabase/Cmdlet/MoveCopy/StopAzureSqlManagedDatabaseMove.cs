@@ -17,24 +17,26 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
 {
-    [Cmdlet(VerbsCommon.Move, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlInstanceDatabase",
+    [Cmdlet(VerbsLifecycle.Stop, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlInstanceDatabaseMove",
         SupportsShouldProcess = true,
         DefaultParameterSetName = MoveCopyManagedDatabaseByNameParameterSet),
-        OutputType(typeof(MoveCopyManagedDatabaseModel))]
-    public class MoveAzureSqlManagedDatabase : MoveCopyAzureSqlManagedDatabaseBase
+        OutputType(typeof(bool))]
+    public class StopAzureSqlManagedDatabaseMove : MoveCopyAzureSqlManagedDatabaseBase
     {
-        protected override string ShouldProcessConfirmationMessage => "Moving managed database from one managed instance to another";
+        protected override string ShouldProcessConfirmationMessage => "Stop ongoing managed database move operation";
+
+        [Parameter(Mandatory = true, ParameterSetName = "CancelManagedDatabaseMoveByMoveModelObject", HelpMessage = "Object that is returned from start move operation.")]
+        [ValidateNotNullOrEmpty]
+        public MoveCopyManagedDatabaseModel MoveModelObject { get; set; }
 
         protected override MoveCopyManagedDatabaseModel PersistChanges(MoveCopyManagedDatabaseModel model)
         {
-            model.OperationMode = OperationMode.MOVE;
-            ModelAdapter.MoveManagedDatabase(model);
-
-            return model;
-        }
-
-        protected override object TransformModelToOutputObject(MoveCopyManagedDatabaseModel model)
-        {
+            if (MoveModelObject != null)
+            {
+                ModelAdapter.CancelMove(MoveModelObject);
+                return MoveModelObject;
+            }
+            ModelAdapter.CancelMove(model);
             return model;
         }
     }

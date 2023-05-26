@@ -61,13 +61,13 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Model
         /// </summary>
         public string Location { get; set; }
 
-        public string getDestinationManagedDatabaseId()
+        public string getTargetManagedDatabaseId()
         {
             var managedDatabaseResourceId = new ResourceIdentifier()
             {
                 Subscription = SubscriptionId,
-                ResourceGroupName = ResourceGroupName,
-                ParentResource = $"managedInstances/{ManagedInstanceName}",
+                ResourceGroupName = TargetResourceGroupName,
+                ParentResource = $"managedInstances/{TargetManagedInstanceName}",
                 ResourceType = "Microsoft.Sql/managedInstances/databases",
                 ResourceName = Name,
             };

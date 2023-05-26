@@ -17,25 +17,14 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
 {
-    [Cmdlet(VerbsCommon.Move, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlInstanceDatabase",
-        SupportsShouldProcess = true,
-        DefaultParameterSetName = MoveCopyManagedDatabaseByNameParameterSet),
-        OutputType(typeof(MoveCopyManagedDatabaseModel))]
-    public class MoveAzureSqlManagedDatabase : MoveCopyAzureSqlManagedDatabaseBase
+    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlInstanceDatabaseCopyOperation",
+        DefaultParameterSetName = GetMoveCopyManagedDatabaseOperationsByNameParameterSet),
+        OutputType(typeof(ManagedDatabaseMoveCopyOperation))]
+    public class GetAzureSqlManagedDatabaseCopyOperation : GetMoveCopyAzureSqlManagedDatabaseOperationsBase
     {
-        protected override string ShouldProcessConfirmationMessage => "Moving managed database from one managed instance to another";
-
-        protected override MoveCopyManagedDatabaseModel PersistChanges(MoveCopyManagedDatabaseModel model)
+        protected override OperationMode GetOperationMode()
         {
-            model.OperationMode = OperationMode.MOVE;
-            ModelAdapter.MoveManagedDatabase(model);
-
-            return model;
-        }
-
-        protected override object TransformModelToOutputObject(MoveCopyManagedDatabaseModel model)
-        {
-            return model;
+            return OperationMode.COPY;
         }
     }
 }
