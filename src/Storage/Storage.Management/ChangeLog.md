@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Add a warning message for an upcoming breaking change when creating a storage account 
+    - `New-AzStorageAccount`
 
 ## Version 5.7.0
 * Fixed issue of getting a single blob with leading slashes
