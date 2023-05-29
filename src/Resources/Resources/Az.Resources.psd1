@@ -66,7 +66,8 @@ RequiredAssemblies = 'Microsoft.Azure.Management.Authorization.dll',
                'Microsoft.Extensions.Primitives.dll', 
                'System.Runtime.CompilerServices.Unsafe.dll', 
                'MSGraph.Autorest\bin\Az.MSGraph.private.dll', 
-               'Authorization.Autorest\bin\Az.Authorization.private.dll'
+               'Authorization.Autorest\bin\Az.Authorization.private.dll',
+               'Microsoft.Azure.PowerShell.Resources.Management.Sdk.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()
