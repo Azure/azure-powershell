@@ -489,6 +489,91 @@ function Test-RoutingIntentCRUD
 	}
 }
 
+function Test-RouteMapCRUD
+{
+ # Setup
+    $rgName = Get-ResourceName
+    $rglocation = Get-ProviderLocation ResourceManagement "centraluseuap"
+	$virtualWanName = Get-ResourceName
+	$virtualHubName = Get-ResourceName
+	$routeMapName = "testRouteMap"
+	$virtualNetworkName = "testVirtualNetwork"
+	$virtualNetworkConnectionName = "testVirtualNetworkConnection"
+    
+	try
+	{
+		# Create the resource group
+		$resourceGroup = New-AzResourceGroup -Name $rgName -Location $rglocation
+
+		# Create the Virtual Wan
+		$createdVirtualWan = New-AzVirtualWan -ResourceGroupName $rgName -Name $virtualWanName -Location $rglocation -AllowVnetToVnetTraffic -AllowBranchToBranchTraffic
+		$virtualWan = Get-AzVirtualWan -ResourceGroupName $rgName -Name $virtualWanName
+		Assert-AreEqual $rgName $virtualWan.ResourceGroupName
+		Assert-AreEqual $virtualWanName $virtualWan.Name
+
+		# Create the Virtual Hub
+		$createdVirtualHub = New-AzVirtualHub -ResourceGroupName $rgName -Name $virtualHubName -Location $rglocation -AddressPrefix "192.168.1.0/24" -VirtualWan $virtualWan -HubRoutingPreference "ASPath"
+		$virtualHub = Get-AzVirtualHub -ResourceGroupName $rgName -Name $virtualHubName
+		Assert-AreEqual $rgName $virtualHub.ResourceGroupName
+		Assert-AreEqual $virtualHubName $virtualHub.Name
+		Assert-AreEqual "192.168.1.0/24" $virtualHub.AddressPrefix
+
+		# Create a route map in the Virtual hub
+		$routeMapMatchCriterion1 = New-AzRouteMapRuleCriterion -MatchCondition "Contains" -RoutePrefix @("10.0.0.0/16")
+		$routeMapActionParameter1 = New-AzRouteMapRuleActionParameter -AsPath @("12345")
+		$routeMapAction1 = New-AzRouteMapRuleAction -Type "Add" -Parameter @($routeMapActionParameter1)
+		$routeMapRule1 = New-AzRouteMapRule -Name "rule1" -MatchCriteria @($routeMapMatchCriterion1) -RouteMapRuleAction @($routeMapAction1) -NextStepIfMatched "Continue"
+
+		$routeMapMatchCriterion2 = New-AzRouteMapRuleCriterion -MatchCondition "Equals" -AsPath @("12345")
+		$routeMapAction2 = New-AzRouteMapRuleAction -Type "Drop"
+		$routeMapRule2 = New-AzRouteMapRule -Name "rule2" -MatchCriteria @($routeMapMatchCriterion2) -RouteMapRuleAction @($routeMapAction2) -NextStepIfMatched "Terminate"
+
+		New-AzRouteMap -ResourceGroupName $rgName -VirtualHubName $virtualHubName -Name $routeMapName -RouteMapRule @($routeMapRule1, $routeMapRule2)
+		$routeMap = Get-AzRouteMap -ResourceGroupName $rgName -VirtualHubName $virtualHubName -Name $routeMapName
+		Assert-AreEqual $routeMap.Rules.Count 2
+
+		Update-AzRouteMap -ResourceGroupName $rgName -VirtualHubName $virtualHubName -Name $routeMapName -RouteMapRule @($routeMapRule2)
+		$routeMap = Get-AzRouteMap -ResourceGroupName $rgName -VirtualHubName $virtualHubName -Name $routeMapName
+		Assert-AreEqual $routeMap.Rules.Count 1
+		Assert-AreEqual $routeMap.AssociatedInboundConnections.Count 0
+
+		$rt1 = Get-AzVHubRouteTable -ResourceGroupName $rgName -VirtualHubName $virtualHubName -Name "defaultRouteTable"
+		$testRoutingConfiguration =New-AzRoutingConfiguration -AssociatedRouteTable $rt1.Id -Label @("testLabel") -Id @($rt1.Id) -InboundRouteMap $routeMap.Id
+
+		# creating virtual network and a virtual hub vnet connection resource
+		$frontendSubnet = New-AzVirtualNetworkSubnetConfig -Name frontendSubnet -AddressPrefix "10.2.1.0/24"
+		$backendSubnet  = New-AzVirtualNetworkSubnetConfig -Name backendSubnet  -AddressPrefix "10.2.2.0/24"
+		$remoteVirtualNetwork = New-AzVirtualNetwork -Name $virtualNetworkName -ResourceGroupName $rgName -Location $rglocation -AddressPrefix "10.2.0.0/16" -Subnet $frontendSubnet,$backendSubnet
+		$hubVnetCon1 = New-AzVirtualHubVnetConnection -ResourceGroupName $rgName -VirtualHubName $virtualHubName -Name $virtualNetworkConnectionName -RemoteVirtualNetwork $remoteVirtualNetwork -RoutingConfiguration $testRoutingConfiguration
+
+		$effectiveRoutes = Get-AzVHubEffectiveRoute -ResourceGroupName $rgName -VirtualHubName $virtualHubName -ResourceId $rt1.Id -VirtualWanResourceType 'RouteTable'
+		Assert-AreEqual $effectiveRoutes.Value.Count 1
+
+		$inboundRoutes = Get-AzVHubInboundRoute -ResourceGroupName $rgName -VirtualHubName $virtualHubName -ResourceUri $hubVnetCon1.Id -VirtualWanConnectionType 'HubVirtualNetworkConnection'
+		Assert-AreEqual $inboundRoutes.Value.Count 1
+		Assert-AreEqual "10.2.0.0/16" $inboundRoutes.Value.Prefix
+
+		$routeMap = Get-AzRouteMap -ResourceGroupName $rgName -VirtualHubName $virtualHubName -Name $routeMapName
+		Assert-AreEqual $routeMap.AssociatedInboundConnections.Count 1
+
+		$delete = Remove-AzVirtualHubVnetConnection -ResourceGroupName $rgName -VirtualHubName $virtualHubName -Name $virtualNetworkConnectionName -Force -PassThru
+		Assert-AreEqual $True $delete
+
+		$delete = Remove-AzRouteMap -ResourceGroupName $rgName -VirtualHubName $virtualHubName -Name $routeMapName -Force -PassThru
+		Assert-AreEqual $True $delete
+
+		$delete = Remove-AzVirtualHub -ResourceGroupName $rgName -Name $virtualHubName -Force -PassThru
+		Assert-AreEqual $True $delete
+
+		$delete = Remove-AzVirtualWan -ResourceGroupName $rgName -Name $virtualWanName -Force -PassThru
+		Assert-AreEqual $True $delete
+	}
+	finally
+	{
+		Clean-ResourceGroup $rgname
+	}
+}
+
 <#
 .SYNOPSIS
 VpnSiteIsSecurity

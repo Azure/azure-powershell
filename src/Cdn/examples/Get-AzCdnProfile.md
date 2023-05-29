@@ -29,7 +29,6 @@ Global   cdn002 cdn  testps-rg-da16jm
 List AzureCDN profiles under the resource group
 
 
-
 ### Example 3: Get an AzureCDN profile under the resource group
 ```powershell
 Get-AzCdnProfile -ResourceGroupName testps-rg-da16jm -Name cdn001
@@ -43,3 +42,16 @@ Global   cdn001 cdn  testps-rg-da16jm
 
 Get an AzureCDN profile under the resource group
 
+
+### Example 4: Get an AzureCDN profile under the resource group via identity
+```powershell
+New-AzCdnProfile -ResourceGroupName testps-rg-da16jm -Name cdn001 -SkuName Standard_Microsoft -Location Global | Get-AzCdnProfile
+```
+
+```output
+Location Name   Kind ResourceGroupName
+-------- ----   ---- -----------------
+Global   cdn001 cdn  testps-rg-da16jm
+```
+
+Get an AzureCDN profile under the resource group via identity

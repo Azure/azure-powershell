@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// "FirstPartyIdentity", "SystemAssignedIdentity" and more.</param>
         /// <param name="publicNetworkAccess">Whether requests from Public
         /// Network are allowed. Possible values include: 'Enabled',
-        /// 'Disabled'</param>
+        /// 'Disabled', 'SecuredByPerimeter'</param>
         /// <param name="enableFreeTier">Flag to indicate whether Free Tier is
         /// enabled.</param>
         /// <param name="apiProperties">API specific properties. Currently,
@@ -90,16 +90,11 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// <param name="networkAclBypassResourceIds">An array that contains
         /// the Resource Ids for Network Acl Bypass for the Cosmos DB
         /// account.</param>
-        /// <param name="diagnosticLogSettings">The Object representing the
-        /// different Diagnostic log settings for the Cosmos DB
-        /// Account.</param>
         /// <param name="disableLocalAuth">Opt-out of local authentication and
         /// ensure only MSI and AAD can be used exclusively for
         /// authentication.</param>
         /// <param name="capacity">The object that represents all properties
         /// related to capacity enforcement on an account.</param>
-        /// <param name="enableMaterializedViews">Flag to indicate whether to
-        /// enable MaterializedViews on the Cosmos DB account</param>
         /// <param name="keysMetadata">This property is ignored during the
         /// update operation, as the metadata is read-only. The object
         /// represents the metadata for the Account Keys of the Cosmos DB
@@ -107,7 +102,11 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// <param name="enablePartitionMerge">Flag to indicate
         /// enabling/disabling of Partition Merge feature on the
         /// account</param>
-        public DatabaseAccountUpdateParameters(IDictionary<string, string> tags = default(IDictionary<string, string>), string location = default(string), ManagedServiceIdentity identity = default(ManagedServiceIdentity), ConsistencyPolicy consistencyPolicy = default(ConsistencyPolicy), IList<Location> locations = default(IList<Location>), IList<IpAddressOrRange> ipRules = default(IList<IpAddressOrRange>), bool? isVirtualNetworkFilterEnabled = default(bool?), bool? enableAutomaticFailover = default(bool?), IList<Capability> capabilities = default(IList<Capability>), IList<VirtualNetworkRule> virtualNetworkRules = default(IList<VirtualNetworkRule>), bool? enableMultipleWriteLocations = default(bool?), bool? enableCassandraConnector = default(bool?), string connectorOffer = default(string), bool? disableKeyBasedMetadataWriteAccess = default(bool?), string keyVaultKeyUri = default(string), string defaultIdentity = default(string), string publicNetworkAccess = default(string), bool? enableFreeTier = default(bool?), ApiProperties apiProperties = default(ApiProperties), bool? enableAnalyticalStorage = default(bool?), AnalyticalStorageConfiguration analyticalStorageConfiguration = default(AnalyticalStorageConfiguration), BackupPolicy backupPolicy = default(BackupPolicy), IList<CorsPolicy> cors = default(IList<CorsPolicy>), NetworkAclBypass? networkAclBypass = default(NetworkAclBypass?), IList<string> networkAclBypassResourceIds = default(IList<string>), DiagnosticLogSettings diagnosticLogSettings = default(DiagnosticLogSettings), bool? disableLocalAuth = default(bool?), Capacity capacity = default(Capacity), bool? enableMaterializedViews = default(bool?), DatabaseAccountKeysMetadata keysMetadata = default(DatabaseAccountKeysMetadata), bool? enablePartitionMerge = default(bool?))
+        /// <param name="minimalTlsVersion">Indicates the minimum allowed Tls
+        /// version. The default is Tls 1.0, except for Cassandra and Mongo
+        /// API's, which only work with Tls 1.2. Possible values include:
+        /// 'Tls', 'Tls11', 'Tls12'</param>
+        public DatabaseAccountUpdateParameters(IDictionary<string, string> tags = default(IDictionary<string, string>), string location = default(string), ManagedServiceIdentity identity = default(ManagedServiceIdentity), ConsistencyPolicy consistencyPolicy = default(ConsistencyPolicy), IList<Location> locations = default(IList<Location>), IList<IpAddressOrRange> ipRules = default(IList<IpAddressOrRange>), bool? isVirtualNetworkFilterEnabled = default(bool?), bool? enableAutomaticFailover = default(bool?), IList<Capability> capabilities = default(IList<Capability>), IList<VirtualNetworkRule> virtualNetworkRules = default(IList<VirtualNetworkRule>), bool? enableMultipleWriteLocations = default(bool?), bool? enableCassandraConnector = default(bool?), string connectorOffer = default(string), bool? disableKeyBasedMetadataWriteAccess = default(bool?), string keyVaultKeyUri = default(string), string defaultIdentity = default(string), string publicNetworkAccess = default(string), bool? enableFreeTier = default(bool?), ApiProperties apiProperties = default(ApiProperties), bool? enableAnalyticalStorage = default(bool?), AnalyticalStorageConfiguration analyticalStorageConfiguration = default(AnalyticalStorageConfiguration), BackupPolicy backupPolicy = default(BackupPolicy), IList<CorsPolicy> cors = default(IList<CorsPolicy>), NetworkAclBypass? networkAclBypass = default(NetworkAclBypass?), IList<string> networkAclBypassResourceIds = default(IList<string>), bool? disableLocalAuth = default(bool?), Capacity capacity = default(Capacity), DatabaseAccountKeysMetadata keysMetadata = default(DatabaseAccountKeysMetadata), bool? enablePartitionMerge = default(bool?), string minimalTlsVersion = default(string))
         {
             Tags = tags;
             Location = location;
@@ -134,12 +133,11 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
             Cors = cors;
             NetworkAclBypass = networkAclBypass;
             NetworkAclBypassResourceIds = networkAclBypassResourceIds;
-            DiagnosticLogSettings = diagnosticLogSettings;
             DisableLocalAuth = disableLocalAuth;
             Capacity = capacity;
-            EnableMaterializedViews = enableMaterializedViews;
             KeysMetadata = keysMetadata;
             EnablePartitionMerge = enablePartitionMerge;
+            MinimalTlsVersion = minimalTlsVersion;
             CustomInit();
         }
 
@@ -258,7 +256,8 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
 
         /// <summary>
         /// Gets or sets whether requests from Public Network are allowed.
-        /// Possible values include: 'Enabled', 'Disabled'
+        /// Possible values include: 'Enabled', 'Disabled',
+        /// 'SecuredByPerimeter'
         /// </summary>
         [JsonProperty(PropertyName = "properties.publicNetworkAccess")]
         public string PublicNetworkAccess { get; set; }
@@ -316,13 +315,6 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         public IList<string> NetworkAclBypassResourceIds { get; set; }
 
         /// <summary>
-        /// Gets or sets the Object representing the different Diagnostic log
-        /// settings for the Cosmos DB Account.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.diagnosticLogSettings")]
-        public DiagnosticLogSettings DiagnosticLogSettings { get; set; }
-
-        /// <summary>
         /// Gets or sets opt-out of local authentication and ensure only MSI
         /// and AAD can be used exclusively for authentication.
         /// </summary>
@@ -335,13 +327,6 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.capacity")]
         public Capacity Capacity { get; set; }
-
-        /// <summary>
-        /// Gets or sets flag to indicate whether to enable MaterializedViews
-        /// on the Cosmos DB account
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.enableMaterializedViews")]
-        public bool? EnableMaterializedViews { get; set; }
 
         /// <summary>
         /// Gets or sets this property is ignored during the update operation,
@@ -357,6 +342,14 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.enablePartitionMerge")]
         public bool? EnablePartitionMerge { get; set; }
+
+        /// <summary>
+        /// Gets or sets indicates the minimum allowed Tls version. The default
+        /// is Tls 1.0, except for Cassandra and Mongo API's, which only work
+        /// with Tls 1.2. Possible values include: 'Tls', 'Tls11', 'Tls12'
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.minimalTlsVersion")]
+        public string MinimalTlsVersion { get; set; }
 
         /// <summary>
         /// Validate the object.

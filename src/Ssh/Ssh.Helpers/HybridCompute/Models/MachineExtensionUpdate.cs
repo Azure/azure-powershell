@@ -21,7 +21,7 @@ namespace Microsoft.Azure.PowerShell.Ssh.Helpers.HybridCompute.Models
     /// Describes a Machine Extension Update.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class MachineExtensionUpdate : UpdateResource
+    public partial class MachineExtensionUpdate : ResourceUpdate
     {
         /// <summary>
         /// Initializes a new instance of the MachineExtensionUpdate class.
@@ -44,6 +44,9 @@ namespace Microsoft.Azure.PowerShell.Ssh.Helpers.HybridCompute.Models
         /// is "CustomScriptExtension".</param>
         /// <param name="typeHandlerVersion">Specifies the version of the
         /// script handler.</param>
+        /// <param name="enableAutomaticUpgrade">Indicates whether the
+        /// extension should be automatically upgraded by the platform if there
+        /// is a newer version available.</param>
         /// <param name="autoUpgradeMinorVersion">Indicates whether the
         /// extension should use a newer minor version if one is available at
         /// deployment time. Once deployed, however, the extension will not
@@ -54,13 +57,14 @@ namespace Microsoft.Azure.PowerShell.Ssh.Helpers.HybridCompute.Models
         /// <param name="protectedSettings">The extension can contain either
         /// protectedSettings or protectedSettingsFromKeyVault or no protected
         /// settings at all.</param>
-        public MachineExtensionUpdate(IDictionary<string, string> tags = default(IDictionary<string, string>), string forceUpdateTag = default(string), string publisher = default(string), string type = default(string), string typeHandlerVersion = default(string), bool? autoUpgradeMinorVersion = default(bool?), object settings = default(object), object protectedSettings = default(object))
+        public MachineExtensionUpdate(IDictionary<string, string> tags = default(IDictionary<string, string>), string forceUpdateTag = default(string), string publisher = default(string), string type = default(string), string typeHandlerVersion = default(string), bool? enableAutomaticUpgrade = default(bool?), bool? autoUpgradeMinorVersion = default(bool?), IDictionary<string, object> settings = default(IDictionary<string, object>), IDictionary<string, object> protectedSettings = default(IDictionary<string, object>))
             : base(tags)
         {
             ForceUpdateTag = forceUpdateTag;
             Publisher = publisher;
             Type = type;
             TypeHandlerVersion = typeHandlerVersion;
+            EnableAutomaticUpgrade = enableAutomaticUpgrade;
             AutoUpgradeMinorVersion = autoUpgradeMinorVersion;
             Settings = settings;
             ProtectedSettings = protectedSettings;
@@ -99,6 +103,14 @@ namespace Microsoft.Azure.PowerShell.Ssh.Helpers.HybridCompute.Models
         public string TypeHandlerVersion { get; set; }
 
         /// <summary>
+        /// Gets or sets indicates whether the extension should be
+        /// automatically upgraded by the platform if there is a newer version
+        /// available.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.enableAutomaticUpgrade")]
+        public bool? EnableAutomaticUpgrade { get; set; }
+
+        /// <summary>
         /// Gets or sets indicates whether the extension should use a newer
         /// minor version if one is available at deployment time. Once
         /// deployed, however, the extension will not upgrade minor versions
@@ -111,14 +123,14 @@ namespace Microsoft.Azure.PowerShell.Ssh.Helpers.HybridCompute.Models
         /// Gets or sets json formatted public settings for the extension.
         /// </summary>
         [JsonProperty(PropertyName = "properties.settings")]
-        public object Settings { get; set; }
+        public IDictionary<string, object> Settings { get; set; }
 
         /// <summary>
         /// Gets or sets the extension can contain either protectedSettings or
         /// protectedSettingsFromKeyVault or no protected settings at all.
         /// </summary>
         [JsonProperty(PropertyName = "properties.protectedSettings")]
-        public object ProtectedSettings { get; set; }
+        public IDictionary<string, object> ProtectedSettings { get; set; }
 
     }
 }

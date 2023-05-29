@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         public PSKeyOperationResult(UnwrapResult unwrapResult)
         {
             this.KeyId = unwrapResult.KeyId;
-            this.Result = System.Text.Encoding.Default.GetString(unwrapResult.Key);
+            this.Result = System.Text.Encoding.UTF8.GetString(unwrapResult.Key);
             this.Algorithm = unwrapResult.Algorithm.ToString();
         }
 
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         public PSKeyOperationResult(DecryptResult decryptResult)
         {
             this.KeyId = decryptResult.KeyId;
-            this.Result = System.Text.Encoding.Default.GetString(decryptResult.Plaintext);
+            this.Result = System.Text.Encoding.UTF8.GetString(decryptResult.Plaintext);
             this.Algorithm = decryptResult.Algorithm.ToString();
         }
     }

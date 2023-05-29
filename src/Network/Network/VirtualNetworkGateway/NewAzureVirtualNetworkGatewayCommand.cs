@@ -81,9 +81,6 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The extended location of this virtual network gateway")]
-        [ValidateSet(
-            "MicrosoftRRDCLab3",
-            IgnoreCase = true)]
         public string ExtendedLocation { get; set; }
 
         [Parameter(
@@ -409,7 +406,7 @@ namespace Microsoft.Azure.Commands.Network
 
             }
             vnetGateway.GatewayType = this.GatewayType;
-            if(vnetGateway.GatewayType == "LocalGateway")
+            if (vnetGateway.GatewayType == "LocalGateway" || vnetGateway.GatewayType == "ExpressRoute")
             {
                 vnetGateway.ExtendedLocation = new PSExtendedLocation(this.ExtendedLocation);
                 vnetGateway.VNetExtendedLocationResourceId = this.VNetExtendedLocationResourceId;

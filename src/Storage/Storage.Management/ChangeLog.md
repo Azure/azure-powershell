@@ -19,17 +19,17 @@
 -->
 ## Upcoming Release
 
-## Version 5.6.2
-* Removed the API version limitation on File cmdlets
-
-## Version 5.6.1
-* Support OAuth authentication on File service cmdlets
+## Version 5.7.0
+* Fixed issue of getting a single blob with leading slashes
+    - `Get-AzStorageBlob`
+* Supported setting CORS rules in management plane cmdlets 
+    - `Update-AzStorageBlobServiceProperty`
+    - `Update-AzStorageFileServiceProperty`
+* Fixed an issue of `StorageAccountName` field in context object when the context is invalid 
     - `New-AzStorageContext`
-    - `Get-AzStorageFile`
-    - `Get-AzStorageFileContent`
-    - `Get-AzStorageFileCopyState`
-    - `New-AzStorageDirectory`
-    - `Remove-AzStorageDirectory`
+* Fixed an issue when a context does not have Credentials field
+* Added `$blobchangefeed` to be a valid container name
+
     - `Remove-AzStorageFile`
     - `Set-AzStorageFileContent`
     - `Start-AzStorageFileCopy`

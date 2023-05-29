@@ -108,7 +108,11 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// this managed database.</param>
         /// <param name="crossSubscriptionTargetManagedInstanceId">Target
         /// managed instance id used in cross-subscription restore.</param>
-        public ManagedDatabase(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string collation = default(string), string status = default(string), System.DateTime? creationDate = default(System.DateTime?), System.DateTime? earliestRestorePoint = default(System.DateTime?), System.DateTime? restorePointInTime = default(System.DateTime?), string defaultSecondaryLocation = default(string), string catalogCollation = default(string), string createMode = default(string), string storageContainerUri = default(string), string sourceDatabaseId = default(string), string crossSubscriptionSourceDatabaseId = default(string), string restorableDroppedDatabaseId = default(string), string crossSubscriptionRestorableDroppedDatabaseId = default(string), string storageContainerIdentity = default(string), string storageContainerSasToken = default(string), string failoverGroupId = default(string), string recoverableDatabaseId = default(string), string longTermRetentionBackupResourceId = default(string), bool? autoCompleteRestore = default(bool?), string lastBackupName = default(string), string crossSubscriptionTargetManagedInstanceId = default(string))
+        /// <param name="isLedgerOn">Whether or not this database is a ledger
+        /// database, which means all tables in the database are ledger tables.
+        /// Note: the value of this property cannot be changed after the
+        /// database has been created.</param>
+        public ManagedDatabase(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string collation = default(string), string status = default(string), System.DateTime? creationDate = default(System.DateTime?), System.DateTime? earliestRestorePoint = default(System.DateTime?), System.DateTime? restorePointInTime = default(System.DateTime?), string defaultSecondaryLocation = default(string), string catalogCollation = default(string), string createMode = default(string), string storageContainerUri = default(string), string sourceDatabaseId = default(string), string crossSubscriptionSourceDatabaseId = default(string), string restorableDroppedDatabaseId = default(string), string crossSubscriptionRestorableDroppedDatabaseId = default(string), string storageContainerIdentity = default(string), string storageContainerSasToken = default(string), string failoverGroupId = default(string), string recoverableDatabaseId = default(string), string longTermRetentionBackupResourceId = default(string), bool? autoCompleteRestore = default(bool?), string lastBackupName = default(string), string crossSubscriptionTargetManagedInstanceId = default(string), bool? isLedgerOn = default(bool?))
             : base(location, id, name, type, tags)
         {
             Collation = collation;
@@ -132,6 +136,7 @@ namespace Microsoft.Azure.Management.Sql.Models
             AutoCompleteRestore = autoCompleteRestore;
             LastBackupName = lastBackupName;
             CrossSubscriptionTargetManagedInstanceId = crossSubscriptionTargetManagedInstanceId;
+            IsLedgerOn = isLedgerOn;
             CustomInit();
         }
 
@@ -302,6 +307,15 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.crossSubscriptionTargetManagedInstanceId")]
         public string CrossSubscriptionTargetManagedInstanceId { get; set; }
+
+        /// <summary>
+        /// Gets or sets whether or not this database is a ledger database,
+        /// which means all tables in the database are ledger tables. Note: the
+        /// value of this property cannot be changed after the database has
+        /// been created.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.isLedgerOn")]
+        public bool? IsLedgerOn { get; set; }
 
         /// <summary>
         /// Validate the object.

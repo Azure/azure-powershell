@@ -183,6 +183,36 @@ BackupStorageRedundancy       : Geo
 
 This command updates a database named Database01 from General Purpose to Hyperscale service tier.
 
+### Example 5: Update the preferred enclave type of a database to VBS
+
+```powershell
+Set-AzSqlDatabase -ResourceGroupName "ResourceGroup01" -DatabaseName "Database01" -ServerName "Server01" -PreferredEnclaveType "VBS"
+```
+
+```output
+ResourceGroupName             : ResourceGroup01
+ServerName                    : Server01
+DatabaseName                  : Database01
+Location                      : Central US
+DatabaseId                    : a1e6bd1a-735a-4d48-8b98-afead5ef1218
+Edition                       : Standard
+CollationName                 : SQL_Latin1_General_CP1_CI_AS
+CatalogCollation              :
+MaxSizeBytes                  : 1099511627776
+Status                        : Online
+CreationDate                  : 8/24/2017 9:00:37 AM
+CurrentServiceObjectiveId     : 789681b8-ca10-4eb0-bdf2-e0b050601b40
+CurrentServiceObjectiveName   : S3
+RequestedServiceObjectiveId   : 789681b8-ca10-4eb0-bdf2-e0b050601b40
+PreferredEnclaveType          : VBS
+RequestedServiceObjectiveName :
+ElasticPoolName               :
+EarliestRestoreDate           :
+Tags                          :
+```
+
+This command updates a database to configure VBS enclave on it
+
 ## PARAMETERS
 
 ### -AsJob

@@ -8,7 +8,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>Microsoft.Azure.PowerShell.CosmosDB.Sdk</AssemblyName>
+    <AssemblyName>Microsoft.Azure.PowerShell.CosmosDB.Management.Sdk</AssemblyName>
     <RootNamespace>Microsoft.Azure.Management.CosmosDB</RootNamespace>
     <NoWarn>$(NoWarn);CS0108;CS1573</NoWarn>
   </PropertyGroup>

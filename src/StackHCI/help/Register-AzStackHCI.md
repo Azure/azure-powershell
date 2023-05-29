@@ -13,12 +13,12 @@ Register-AzStackHCI creates a Microsoft.AzureStackHCI cloud resource representin
 ## SYNTAX
 
 ```
-Register-AzStackHCI [-SubscriptionId] <String> [[-Region] <String>] [[-ResourceName] <String>]
+Register-AzStackHCI [-SubscriptionId] <String> [-Region] <String> [[-ResourceName] <String>]
  [[-Tag] <Hashtable>] [[-TenantId] <String>] [[-ResourceGroupName] <String>] [[-ArmAccessToken] <String>]
- [[-GraphAccessToken] <String>] [[-AccountId] <String>] [[-EnvironmentName] <String>]
- [[-ComputerName] <String>] [[-CertificateThumbprint] <String>] [[-Credential] <PSCredential>]
- [[-ArcServerResourceGroupName] <String>] [[-ArcSpnCredential] <PSCredential>] [-EnableAzureArcServer]
- [-IsWAC] [-RepairRegistration] [-UseDeviceAuthentication] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [[-AccountId] <String>] [[-EnvironmentName] <String>] [[-ComputerName] <String>]
+ [[-CertificateThumbprint] <String>] [[-Credential] <PSCredential>] [[-ArcServerResourceGroupName] <String>]
+ [[-ArcSpnCredential] <PSCredential>] [-IsWAC] [-RepairRegistration] [-UseDeviceAuthentication] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -94,7 +94,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 8
+Position: 7
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -110,7 +110,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 13
+Position: 12
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -126,7 +126,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 14
+Position: 13
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -158,7 +158,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 11
+Position: 10
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -173,7 +173,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 10
+Position: 9
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -189,23 +189,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 12
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -EnableAzureArcServer
-EnableAzureArcServer needs to be specified $true in all the environments except AzureChinaCloud.
-Specifying this parameter to $false in environments except AzureChinaCloud will terminate the registration cmdlet.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
+Position: 11
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -222,22 +206,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 9
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -GraphAccessToken
-GraphAccessToken is deprecated.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 7
+Position: 8
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -260,14 +229,14 @@ Accept wildcard characters: False
 
 ### -Region
 Specifies the Region to create the resource.
-Default is EastUS.
+Region is a Mandatory parameter.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: 1
 Default value: None
 Accept pipeline input: False
@@ -325,7 +294,7 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 Specifies the Azure Subscription to create the resource.
-This is the only Mandatory parameter.
+SubscriptionId is a Mandatory parameter.
 
 ```yaml
 Type: System.String

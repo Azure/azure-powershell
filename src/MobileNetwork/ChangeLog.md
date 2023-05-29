@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 0.2.0
+* Extended the function of the cmdlet `New-AzMobileNetworkSite` -- allowed users to quickly deploy a new site under an existing mobile network using optional parameters, reducing the number of commands they need to execute.
+
 ## Version 0.1.1
 * The `Update-AzMobileNetwork*` cmdlets has been improved to support more parameter changes.
 

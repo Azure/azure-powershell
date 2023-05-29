@@ -101,7 +101,7 @@ Access of Rule.
 Type: System.String
 Parameter Sets: Custom
 Aliases:
-Accepted values: Allow, Deny, and AlwaysAllow
+Accepted values: Allow, Deny, AlwaysAllow
 
 Required: True
 Position: Named

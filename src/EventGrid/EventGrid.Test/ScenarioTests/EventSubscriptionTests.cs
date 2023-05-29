@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Commands.EventGrid.Tests.ScenarioTests
             TestRunner.RunTestScript("EventSubscriptionTests_ResourceGroup2");
         }
 
-        [Fact]
+        [Fact(Skip = "Test case fails due to the New-AzEventHubNamespace migration to autorest")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void EventGrid_EventSubscription_ResourceCRUD()
         {

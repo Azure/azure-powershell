@@ -95,6 +95,13 @@ function Get-AzADUser {
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
         [System.Management.Automation.SwitchParameter]
         ${AppendSelected},
+
+        [Parameter(ParameterSetName='List')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Runtime')]
+        [System.String]
+        # Specifies a count of the total number of items in a collection.
+        # By default, this variable will be set in the global scope.
+        ${CountVariable},
     
         [Parameter(ParameterSetName='List')]
         [System.String]

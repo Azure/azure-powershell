@@ -14,7 +14,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzCdnUrlRewriteActionObje
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'New-AzCdnUrlRewriteActionObject' -Tag 'LiveOnly' {
+Describe 'New-AzCdnUrlRewriteActionObject'  {
     It '__AllParameterSets' {
         { 
             # ignore 

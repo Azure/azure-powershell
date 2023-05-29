@@ -12,6 +12,40 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Start-AzDataProtectionBackupInstanceRestore' {
+    It 'CrossSubscriptionRestore' {
+        $recordDate = $env.RecordDate
+        $resourceGroupName  = $env.TestCrossSubscriptionRestoreScenario.ResourceGroupName
+        $vaultName = $env.TestCrossSubscriptionRestoreScenario.VaultName
+        $subscriptionId = $env.TestCrossSubscriptionRestoreScenario.SubscriptionId
+        $targetContainerArmId = $env.TestCrossSubscriptionRestoreScenario.TargetContainerArmId
+        $targetContainerURI = $env.TestCrossSubscriptionRestoreScenario.TargetContainerURI
+        $fileNamePrefix = $env.TestCrossSubscriptionRestoreScenario.FileNamePrefix + "-" + $recordDate
+        
+        $vault = Get-AzDataProtectionBackupVault -SubscriptionId $subscriptionId -ResourceGroupName $resourceGroupName -VaultName $vaultName
+        $instance = Get-AzDataProtectionBackupInstance -SubscriptionId $subscriptionId -ResourceGroupName $resourceGroupName -VaultName $vaultName | Where { $_.Property.DataSourceInfo.ResourceType -match "Postgre" }
+
+        $rp = Get-AzDataProtectionRecoveryPoint -BackupInstanceName $instance[0].BackupInstanceName -ResourceGroupName $resourceGroupName -SubscriptionId $subscriptionId -VaultName $vaultName
+
+        $ossRestoreReqFiles = Initialize-AzDataProtectionRestoreRequest -DatasourceType AzureDatabaseForPostgreSQL -SourceDataStore VaultStore -RestoreLocation $vault.Location -RestoreType RestoreAsFiles -RecoveryPoint $rp[0].Property.RecoveryPointId -TargetContainerURI $targetContainerURI -FileNamePrefix $fileNamePrefix -TargetResourceIdForRestoreAsFile $targetContainerArmId
+
+        # assumes permissions are preassigned
+        $validateRestore = Test-AzDataProtectionBackupInstanceRestore -Name $instance[0].Name -ResourceGroupName $resourceGroupName -SubscriptionId $subscriptionId -VaultName $vaultName -RestoreRequest $ossRestoreReqFiles
+        $validateRestore.ObjectType | Should be "OperationJobExtendedInfo"
+
+        $restoreJobCSR = Start-AzDataProtectionBackupInstanceRestore -SubscriptionId $subscriptionId -ResourceGroupName $resourceGroupName -VaultName $vaultName -BackupInstanceName $instance.BackupInstanceName -Parameter $ossRestoreReqFiles
+
+        $jobid = $restoreJobCSR.JobId.Split("/")[-1]
+        ($jobid -ne $null) | Should be $true
+
+        $jobstatus = "InProgress"
+        while($jobstatus -ne "Completed")
+        {
+            Start-Sleep -Seconds 10
+            $currentjob = Get-AzDataProtectionJob -Id $jobid -SubscriptionId $subscriptionId -ResourceGroupName $resourceGroupName -VaultName $vaultName
+            $jobstatus = $currentjob.Status
+        }
+    }
+
     It 'OssRestore' {
         # Test trigger Backup for Oss DB
         $recordDate = $env.RecordDate
