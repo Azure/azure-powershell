@@ -53,6 +53,14 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.virtualwan)]
+        public void TestRouteMapCRUD()
+        {
+            TestRunner.RunTestScript("Test-RouteMapCRUD");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.brooklynft)]
         public void TestVpnSiteIsSecurity()
         {
@@ -101,7 +109,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.exrdev)]
+        [Trait(Category.Owner, NrpTeamAlias.virtualwan)]
         public void TestCortexVirtualHubCRUD()
         {
             TestRunner.RunTestScript("Test-CortexVirtualHubCRUD");

@@ -51,6 +51,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             {"chinaeast", "chinanorth"},
             {"chinanorth2", "chinaeast2"},
             {"chinaeast2", "chinanorth2"},
+            {"chinanorth3", "chinaeast3"},
+            {"chinaeast3", "chinanorth3"},
             {"northeurope", "westeurope"},
             {"westeurope", "northeurope"},
             {"francecentral", "francesouth"},
@@ -87,7 +89,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             {"usgovarizona", "usgovtexas"},
             {"usgovtexas", "usgovarizona"},
             {"usgoviowa", "usgovvirginia"},
-            {"usgovvirginia", "usgovtexas"}
+            {"usgovvirginia", "usgovtexas"},
+            {"malaysiasouth", "japanwest"},
+            {"jioindiacentral", "jioindiawest"},
+            {"jioindiawest", "jioindiacentral"}
         };
 
         /// <summary>

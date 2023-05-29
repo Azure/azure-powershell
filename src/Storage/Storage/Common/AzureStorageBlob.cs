@@ -313,7 +313,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
                 BlobName = blob.BlobName
             };
             Uri blobUri = uriBuilder.ToUri();
-            if (storageContext.StorageAccount.Credentials.IsSAS)
+            if (storageContext.StorageAccount != null && storageContext.StorageAccount.Credentials != null && storageContext.StorageAccount.Credentials.IsSAS)
             {
                 blobUri= new Uri(blobUri.ToString() + storageContext.StorageAccount.Credentials.SASToken);
             }
@@ -497,12 +497,12 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
                 return (BlobClient)blobBaseClient;
             }
             BlobClient blobClient;
-            if (context.StorageAccount.Credentials.IsToken) //Oauth
+            if (context.StorageAccount != null && context.StorageAccount.Credentials != null && context.StorageAccount.Credentials.IsToken) //Oauth
             {
                 blobClient = new BlobClient(blobBaseClient.Uri, context.Track2OauthToken, options);
 
             }
-            else if (context.StorageAccount.Credentials.IsSharedKey) //Shared Key
+            else if (context.StorageAccount != null && context.StorageAccount.Credentials != null && context.StorageAccount.Credentials.IsSharedKey) //Shared Key
             {
                 blobClient = new BlobClient(blobBaseClient.Uri,
                     new StorageSharedKeyCredential(context.StorageAccountName, context.StorageAccount.Credentials.ExportBase64EncodedKey()), options);

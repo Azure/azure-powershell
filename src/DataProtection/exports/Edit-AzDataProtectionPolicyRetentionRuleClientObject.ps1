@@ -100,7 +100,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202301.ISourceLifeCycle[]]
     # Life cycles associated with the retention rule.
     # To construct, see NOTES section for LIFECYCLES properties and create a hash table.
-    ${LifeCycles}
+    ${LifeCycles},
+
+    [Parameter(ParameterSetName='AddRetention')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
+    [System.Nullable[System.Boolean]]
+    # Specifies whether to modify an existing LifeCycle.
+    ${OverwriteLifeCycle}
 )
 
 begin {

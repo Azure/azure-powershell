@@ -21,6 +21,10 @@ Creates new backup configuration object
 Creates new backup configuration object
 .Example
 $backupConfig = New-AzDataProtectionBackupConfigurationClientObject -SnapshotVolume $true -IncludeClusterScopeResource $true -DatasourceType AzureKubernetesService -LabelSelector "key=val","foo=bar" -ExcludedNamespace "excludeNS1","excludeNS2"
+.Example
+$storageAccount = Get-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $storageAccountName 
+$containers=Get-AzStorageContainer -Context $storageAccount.Context        
+$backupConfig = New-AzDataProtectionBackupConfigurationClientObject -DatasourceType AzureBlob -VaultedBackupContainer $containers.Name[1,3,4]      
 
 .Outputs
 System.Management.Automation.PSObject
@@ -79,7 +83,35 @@ param(
     [System.Nullable[System.Boolean]]
     # Boolean parameter to decide whether cluster scope resources are included for backup.
     # By default this is taken as true.
-    ${IncludeClusterScopeResource}
+    ${IncludeClusterScopeResource},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
+    [System.String[]]
+    # List of containers to be backed up inside the VaultStore.
+    # Use this parameter for DatasourceType AzureBlob.
+    ${VaultedBackupContainer},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Switch parameter to include all containers to be backed up inside the VaultStore.
+    # Use this parameter for DatasourceType AzureBlob.
+    ${IncludeAllContainer},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
+    [System.String]
+    # Storage account where the Datasource is present.
+    # Use this parameter for DatasourceType AzureBlob.
+    ${StorageAccountName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
+    [System.String]
+    # Storage account resource group name where the Datasource is present.
+    # Use this parameter for DatasourceType AzureBlob.
+    ${StorageAccountResourceGroupName}
 )
 
 begin {

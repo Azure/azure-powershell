@@ -19,7 +19,7 @@ namespace Microsoft.Azure.PowerShell.Ssh.Helpers.Compute
           {
               return new Tuple<string, string, string>[]
               {
-                new Tuple<string, string, string>("Compute", "VirtualMachines", "2022-03-01"),
+                new Tuple<string, string, string>("Compute", "VirtualMachines", "2022-08-01"),
               }.AsEnumerable();
           }
       }

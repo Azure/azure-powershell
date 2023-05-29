@@ -29,8 +29,8 @@ using Microsoft.Azure.Commands.Resources.Models;
 using Microsoft.Azure.Commands.ScenarioTest;
 using Microsoft.Azure.Commands.TestFx;
 using Microsoft.Azure.Management.Authorization;
-using Microsoft.Azure.Management.ResourceManager;
-using Microsoft.Azure.Management.ResourceManager.Models;
+using Microsoft.Azure.Management.Resources;
+using Microsoft.Azure.Management.Resources.Models;
 using Microsoft.Rest.Azure;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
 
         private Mock<Action<string>> errorLoggerMock;
 
-        private ResourceManagerSdkClient resourcesClient;
+        private NewResourceManagerSdkClient resourcesClient;
 
         private string resourceGroupName = "myResourceGroup";
 
@@ -172,7 +172,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
             resourceOperationsMock = new Mock<IResourcesOperations>();
             deploymentOperationsMock = new Mock<IDeploymentOperations>();
             providersMock = new Mock<IProvidersOperations>();
-            providersMock.Setup(f => f.ListWithHttpMessagesAsync(null, null, null, new CancellationToken()))
+            providersMock.Setup(f => f.ListWithHttpMessagesAsync(null, null, new CancellationToken()))
                 .Returns(Task.Factory.StartNew(() =>
                 new AzureOperationResponse<IPage<Provider>>()
                 {
@@ -186,7 +186,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
             resourceManagementClientMock.Setup(f => f.DeploymentOperations).Returns(deploymentOperationsMock.Object);
             resourceManagementClientMock.Setup(f => f.Providers).Returns(providersMock.Object);
             resourceManagementClientMock.Setup(f => f.ApiVersion).Returns("11-01-2015");
-            resourcesClient = new ResourceManagerSdkClient(
+            resourcesClient = new NewResourceManagerSdkClient(
                 resourceManagementClientMock.Object)
             {
                 VerboseLogger = progressLoggerMock.Object,
@@ -1112,12 +1112,12 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
                         Body = true
                     }));
 
-            resourceGroupMock.Setup(f => f.DeleteWithHttpMessagesAsync(resourceGroupName, null, new CancellationToken()))
+            resourceGroupMock.Setup(f => f.DeleteWithHttpMessagesAsync(resourceGroupName, null, null, new CancellationToken()))
                 .Returns(Task.Factory.StartNew(() => new Rest.Azure.AzureOperationResponse()));
 
             resourcesClient.DeleteResourceGroup(resourceGroupName);
 
-            resourceGroupMock.Verify(f => f.DeleteWithHttpMessagesAsync(resourceGroupName, null, It.IsAny<CancellationToken>()), Times.Once());
+            resourceGroupMock.Verify(f => f.DeleteWithHttpMessagesAsync(resourceGroupName, null, null, It.IsAny<CancellationToken>()), Times.Once());
         }
 
         [Fact]

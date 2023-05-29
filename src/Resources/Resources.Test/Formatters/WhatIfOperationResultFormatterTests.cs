@@ -14,7 +14,7 @@
 
 namespace Microsoft.Azure.Commands.Resources.Test.Formatters
 {
-    using Management.ResourceManager.Models;
+    using Management.Resources.Models;
     using ResourceManager.Cmdlets.Formatters;
     using ResourceManager.Cmdlets.SdkModels.Deployments;
     using System;

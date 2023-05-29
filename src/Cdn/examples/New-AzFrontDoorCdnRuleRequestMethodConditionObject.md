@@ -9,5 +9,5 @@ Name
 RequestMethod
 ```
 
-
+Create an in-memory object for DeliveryRuleRequestMethodCondition
 

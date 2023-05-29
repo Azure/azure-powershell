@@ -35,15 +35,15 @@ namespace Microsoft.Azure.PowerShell.Ssh.Helpers.Compute.Models
         /// Recommended way to get the list of available sizes is using these
         /// APIs: &lt;br&gt;&lt;br&gt; [List all available virtual machine
         /// sizes in an availability
-        /// set](https://learn.microsoft.com/rest/api/compute/availabilitysets/listavailablesizes)
+        /// set](https://docs.microsoft.com/rest/api/compute/availabilitysets/listavailablesizes)
         /// &lt;br&gt;&lt;br&gt; [List all available virtual machine sizes in a
         /// region](
-        /// https://learn.microsoft.com/rest/api/compute/resourceskus/list)
+        /// https://docs.microsoft.com/rest/api/compute/resourceskus/list)
         /// &lt;br&gt;&lt;br&gt; [List all available virtual machine sizes for
-        /// resizing](https://learn.microsoft.com/rest/api/compute/virtualmachines/listavailablesizes).
+        /// resizing](https://docs.microsoft.com/rest/api/compute/virtualmachines/listavailablesizes).
         /// For more information about virtual machine sizes, see [Sizes for
         /// virtual
-        /// machines](https://learn.microsoft.com/azure/virtual-machines/sizes).
+        /// machines](https://docs.microsoft.com/azure/virtual-machines/sizes).
         /// &lt;br&gt;&lt;br&gt; The available VM sizes depend on region and
         /// availability set. Possible values include: 'Basic_A0', 'Basic_A1',
         /// 'Basic_A2', 'Basic_A3', 'Basic_A4', 'Standard_A0', 'Standard_A1',
@@ -122,16 +122,16 @@ namespace Microsoft.Azure.PowerShell.Ssh.Helpers.Compute.Models
         /// list of available sizes is using these APIs:
         /// &amp;lt;br&amp;gt;&amp;lt;br&amp;gt; [List all available virtual
         /// machine sizes in an availability
-        /// set](https://learn.microsoft.com/rest/api/compute/availabilitysets/listavailablesizes)
+        /// set](https://docs.microsoft.com/rest/api/compute/availabilitysets/listavailablesizes)
         /// &amp;lt;br&amp;gt;&amp;lt;br&amp;gt; [List all available virtual
         /// machine sizes in a region](
-        /// https://learn.microsoft.com/rest/api/compute/resourceskus/list)
+        /// https://docs.microsoft.com/rest/api/compute/resourceskus/list)
         /// &amp;lt;br&amp;gt;&amp;lt;br&amp;gt; [List all available virtual
         /// machine sizes for
-        /// resizing](https://learn.microsoft.com/rest/api/compute/virtualmachines/listavailablesizes).
+        /// resizing](https://docs.microsoft.com/rest/api/compute/virtualmachines/listavailablesizes).
         /// For more information about virtual machine sizes, see [Sizes for
         /// virtual
-        /// machines](https://learn.microsoft.com/azure/virtual-machines/sizes).
+        /// machines](https://docs.microsoft.com/azure/virtual-machines/sizes).
         /// &amp;lt;br&amp;gt;&amp;lt;br&amp;gt; The available VM sizes depend
         /// on region and availability set. Possible values include:
         /// 'Basic_A0', 'Basic_A1', 'Basic_A2', 'Basic_A3', 'Basic_A4',

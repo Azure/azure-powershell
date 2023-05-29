@@ -38,6 +38,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support
             {
                 yield return new global::System.Management.Automation.CompletionResult("'DataBoxHeavy'", "DataBoxHeavy", global::System.Management.Automation.CompletionResultType.ParameterValue, "DataBoxHeavy");
             }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "DataBoxCustomerDisk".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'DataBoxCustomerDisk'", "DataBoxCustomerDisk", global::System.Management.Automation.CompletionResultType.ParameterValue, "DataBoxCustomerDisk");
+            }
         }
     }
 }

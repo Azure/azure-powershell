@@ -31,9 +31,15 @@ namespace Microsoft.Azure.PowerShell.Ssh.Helpers.HybridCompute.Models
         /// </summary>
         /// <param name="computerName">Specifies the host OS name of the hybrid
         /// machine.</param>
-        public OSProfile(string computerName = default(string))
+        /// <param name="windowsConfiguration">Specifies the windows
+        /// configuration for update management.</param>
+        /// <param name="linuxConfiguration">Specifies the linux configuration
+        /// for update management.</param>
+        public OSProfile(string computerName = default(string), OSProfileWindowsConfiguration windowsConfiguration = default(OSProfileWindowsConfiguration), OSProfileLinuxConfiguration linuxConfiguration = default(OSProfileLinuxConfiguration))
         {
             ComputerName = computerName;
+            WindowsConfiguration = windowsConfiguration;
+            LinuxConfiguration = linuxConfiguration;
             CustomInit();
         }
 
@@ -47,6 +53,20 @@ namespace Microsoft.Azure.PowerShell.Ssh.Helpers.HybridCompute.Models
         /// </summary>
         [JsonProperty(PropertyName = "computerName")]
         public string ComputerName { get; private set; }
+
+        /// <summary>
+        /// Gets or sets specifies the windows configuration for update
+        /// management.
+        /// </summary>
+        [JsonProperty(PropertyName = "windowsConfiguration")]
+        public OSProfileWindowsConfiguration WindowsConfiguration { get; set; }
+
+        /// <summary>
+        /// Gets or sets specifies the linux configuration for update
+        /// management.
+        /// </summary>
+        [JsonProperty(PropertyName = "linuxConfiguration")]
+        public OSProfileLinuxConfiguration LinuxConfiguration { get; set; }
 
     }
 }

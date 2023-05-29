@@ -37,6 +37,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Info(
         Required = false,
         ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
         Description = @"Read-only.",
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]

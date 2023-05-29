@@ -28,9 +28,9 @@ namespace Microsoft.Azure.PowerShell.Ssh.Helpers.HybridCompute
         /// a hybrid machine.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
-        /// <param name='name'>
+        /// <param name='machineName'>
         /// The name of the hybrid machine.
         /// </param>
         /// <param name='expand'>
@@ -52,6 +52,6 @@ namespace Microsoft.Azure.PowerShell.Ssh.Helpers.HybridCompute
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<Machine>> GetWithHttpMessagesAsync(string resourceGroupName, string name, string expand = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<Machine>> GetWithHttpMessagesAsync(string resourceGroupName, string machineName, string expand = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
     }
 }

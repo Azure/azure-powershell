@@ -29,18 +29,18 @@ namespace Microsoft.Azure.PowerShell.Ssh.Helpers.HybridCompute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
-            /// <param name='name'>
+            /// <param name='machineName'>
             /// The name of the hybrid machine.
             /// </param>
             /// <param name='expand'>
             /// The expand expression to apply on the operation. Possible values include:
             /// 'instanceView'
             /// </param>
-            public static Machine Get(this IMachinesOperations operations, string resourceGroupName, string name, string expand = default(string))
+            public static Machine Get(this IMachinesOperations operations, string resourceGroupName, string machineName, string expand = default(string))
             {
-                return operations.GetAsync(resourceGroupName, name, expand).GetAwaiter().GetResult();
+                return operations.GetAsync(resourceGroupName, machineName, expand).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -51,9 +51,9 @@ namespace Microsoft.Azure.PowerShell.Ssh.Helpers.HybridCompute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
-            /// <param name='name'>
+            /// <param name='machineName'>
             /// The name of the hybrid machine.
             /// </param>
             /// <param name='expand'>
@@ -63,9 +63,9 @@ namespace Microsoft.Azure.PowerShell.Ssh.Helpers.HybridCompute
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<Machine> GetAsync(this IMachinesOperations operations, string resourceGroupName, string name, string expand = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<Machine> GetAsync(this IMachinesOperations operations, string resourceGroupName, string machineName, string expand = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, name, expand, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, machineName, expand, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

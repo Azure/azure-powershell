@@ -39,7 +39,7 @@ namespace Microsoft.Azure.PowerShell.Ssh.Helpers.Compute.Models
         /// (Linux):** 64 characters. &lt;br&gt;&lt;br&gt; For naming
         /// conventions and restrictions see [Azure infrastructure services
         /// implementation
-        /// guidelines](https://learn.microsoft.com/azure/azure-resource-manager/management/resource-name-rules).</param>
+        /// guidelines](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-name-rules).</param>
         /// <param name="adminUsername">Specifies the name of the administrator
         /// account. &lt;br&gt;&lt;br&gt; This property cannot be updated after
         /// the VM is created. &lt;br&gt;&lt;br&gt; **Windows-only
@@ -67,11 +67,11 @@ namespace Microsoft.Azure.PowerShell.Ssh.Helpers.Compute.Models
         /// "Password!", "Password1", "Password22", "iloveyou!"
         /// &lt;br&gt;&lt;br&gt; For resetting the password, see [How to reset
         /// the Remote Desktop service or its login password in a Windows
-        /// VM](https://learn.microsoft.com/troubleshoot/azure/virtual-machines/reset-rdp)
+        /// VM](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/reset-rdp)
         /// &lt;br&gt;&lt;br&gt; For resetting root password, see [Manage
         /// users, SSH, and check or repair disks on Azure Linux VMs using the
         /// VMAccess
-        /// Extension](https://learn.microsoft.com/troubleshoot/azure/virtual-machines/troubleshoot-ssh-connection)</param>
+        /// Extension](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/troubleshoot-ssh-connection)</param>
         /// <param name="customData">Specifies a base-64 encoded string of
         /// custom data. The base-64 encoded string is decoded to a binary
         /// array that is saved as a file on the Virtual Machine. The maximum
@@ -84,20 +84,20 @@ namespace Microsoft.Azure.PowerShell.Ssh.Helpers.Compute.Models
         /// VMs](https://azure.microsoft.com/blog/custom-data-and-cloud-init-on-windows-azure/)
         /// &lt;br&gt;&lt;br&gt; For using cloud-init for your Linux VM, see
         /// [Using cloud-init to customize a Linux VM during
-        /// creation](https://learn.microsoft.com/azure/virtual-machines/linux/using-cloud-init)</param>
+        /// creation](https://docs.microsoft.com/azure/virtual-machines/linux/using-cloud-init)</param>
         /// <param name="windowsConfiguration">Specifies Windows operating
         /// system settings on the virtual machine.</param>
         /// <param name="linuxConfiguration">Specifies the Linux operating
         /// system settings on the virtual machine. &lt;br&gt;&lt;br&gt;For a
         /// list of supported Linux distributions, see [Linux on Azure-Endorsed
-        /// Distributions](https://learn.microsoft.com/azure/virtual-machines/linux/endorsed-distros).</param>
+        /// Distributions](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros).</param>
         /// <param name="secrets">Specifies set of certificates that should be
         /// installed onto the virtual machine. To install certificates on a
         /// virtual machine it is recommended to use the [Azure Key Vault
         /// virtual machine extension for
-        /// Linux](https://learn.microsoft.com/azure/virtual-machines/extensions/key-vault-linux)
+        /// Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-linux)
         /// or the [Azure Key Vault virtual machine extension for
-        /// Windows](https://learn.microsoft.com/azure/virtual-machines/extensions/key-vault-windows).</param>
+        /// Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-windows).</param>
         /// <param name="allowExtensionOperations">Specifies whether extension
         /// operations should be allowed on the virtual machine.
         /// &lt;br&gt;&lt;br&gt;This may only be set to False when no
@@ -132,7 +132,7 @@ namespace Microsoft.Azure.PowerShell.Ssh.Helpers.Compute.Models
         /// characters. &amp;lt;br&amp;gt;&amp;lt;br&amp;gt; For naming
         /// conventions and restrictions see [Azure infrastructure services
         /// implementation
-        /// guidelines](https://learn.microsoft.com/azure/azure-resource-manager/management/resource-name-rules).
+        /// guidelines](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-name-rules).
         /// </summary>
         [JsonProperty(PropertyName = "computerName")]
         public string ComputerName { get; set; }
@@ -174,11 +174,11 @@ namespace Microsoft.Azure.PowerShell.Ssh.Helpers.Compute.Models
         /// &amp;lt;br&amp;gt;&amp;lt;br&amp;gt; For resetting the password,
         /// see [How to reset the Remote Desktop service or its login password
         /// in a Windows
-        /// VM](https://learn.microsoft.com/troubleshoot/azure/virtual-machines/reset-rdp)
+        /// VM](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/reset-rdp)
         /// &amp;lt;br&amp;gt;&amp;lt;br&amp;gt; For resetting root password,
         /// see [Manage users, SSH, and check or repair disks on Azure Linux
         /// VMs using the VMAccess
-        /// Extension](https://learn.microsoft.com/troubleshoot/azure/virtual-machines/troubleshoot-ssh-connection)
+        /// Extension](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/troubleshoot-ssh-connection)
         /// </summary>
         [JsonProperty(PropertyName = "adminPassword")]
         public string AdminPassword { get; set; }
@@ -197,7 +197,7 @@ namespace Microsoft.Azure.PowerShell.Ssh.Helpers.Compute.Models
         /// VMs](https://azure.microsoft.com/blog/custom-data-and-cloud-init-on-windows-azure/)
         /// &amp;lt;br&amp;gt;&amp;lt;br&amp;gt; For using cloud-init for your
         /// Linux VM, see [Using cloud-init to customize a Linux VM during
-        /// creation](https://learn.microsoft.com/azure/virtual-machines/linux/using-cloud-init)
+        /// creation](https://docs.microsoft.com/azure/virtual-machines/linux/using-cloud-init)
         /// </summary>
         [JsonProperty(PropertyName = "customData")]
         public string CustomData { get; set; }
@@ -213,7 +213,7 @@ namespace Microsoft.Azure.PowerShell.Ssh.Helpers.Compute.Models
         /// Gets or sets specifies the Linux operating system settings on the
         /// virtual machine. &amp;lt;br&amp;gt;&amp;lt;br&amp;gt;For a list of
         /// supported Linux distributions, see [Linux on Azure-Endorsed
-        /// Distributions](https://learn.microsoft.com/azure/virtual-machines/linux/endorsed-distros).
+        /// Distributions](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros).
         /// </summary>
         [JsonProperty(PropertyName = "linuxConfiguration")]
         public LinuxConfiguration LinuxConfiguration { get; set; }
@@ -223,9 +223,9 @@ namespace Microsoft.Azure.PowerShell.Ssh.Helpers.Compute.Models
         /// onto the virtual machine. To install certificates on a virtual
         /// machine it is recommended to use the [Azure Key Vault virtual
         /// machine extension for
-        /// Linux](https://learn.microsoft.com/azure/virtual-machines/extensions/key-vault-linux)
+        /// Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-linux)
         /// or the [Azure Key Vault virtual machine extension for
-        /// Windows](https://learn.microsoft.com/azure/virtual-machines/extensions/key-vault-windows).
+        /// Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-windows).
         /// </summary>
         [JsonProperty(PropertyName = "secrets")]
         public IList<VaultSecretGroup> Secrets { get; set; }

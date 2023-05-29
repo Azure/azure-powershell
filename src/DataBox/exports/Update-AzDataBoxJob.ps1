@@ -20,14 +20,10 @@ Updates the properties of an existing job.
 .Description
 Updates the properties of an existing job.
 .Example
-PS C:\>  $keyEncryptionDetails = New-AzDataBoxKeyEncryptionKeyObject -KekType "CustomerManaged" -IdentityProperty @{Type = "UserAssigned"; UserAssignedResourceId = "/subscriptions/SubscriptionId/resourceGroups/resourceGroupName/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identityName"} -KekUrl "keyIdentifier" -KekVaultResourceId "/subscriptions/SubscriptionId/resourceGroups/resourceGroupName/providers/Microsoft.KeyVault/vaults/keyVaultName"
+$keyEncryptionDetails = New-AzDataBoxKeyEncryptionKeyObject -KekType "CustomerManaged" -IdentityProperty @{Type = "UserAssigned"; UserAssignedResourceId = "/subscriptions/SubscriptionId/resourceGroups/resourceGroupName/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identityName"} -KekUrl "keyIdentifier" -KekVaultResourceId "/subscriptions/SubscriptionId/resourceGroups/resourceGroupName/providers/Microsoft.KeyVault/vaults/keyVaultName"
 
-PS C:\> $keyEncryptionDetails
+$DebugPreference = "Continue"
 
-KekType         KekUrl                                           KekVaultResourceId
--------         ------                                           ------------------
-CustomerManaged keyIdentifier /subscriptions/SubscriptionId/resourceGroups/resourceGroupName/providers/Microsoft.KeyVault/vaults/keyVaultName
-PS C:\> $DebugPreference = "Continue"
 # You can use `$DebugPreference = "Continue"`, with any example/usecase to get exact details of error in below format when update command fails.
 # {
 #   "Error": {
@@ -39,41 +35,30 @@ PS C:\> $DebugPreference = "Continue"
 #     "Target": null
 #   }
 # } 
-PS C:\> Update-AzDataBoxJob -Name "powershell10" -ResourceGroupName "resourceGroupName" -KeyEncryptionKey $keyEncryptionDetails -ContactDetail $contactDetail -ShippingAddress $ShippingDetails  -IdentityType "UserAssigned" -UserAssignedIdentity @{"/subscriptions/SubscriptionId/resourceGroups/resourceGroupName/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identityName" = @{}}
 
-Name         Location Status        TransferType  SkuName IdentityType DeliveryType Detail
-----         -------- ------        ------------  ------- ------------ ------------ ------
-Powershell10 WestUS   DeviceOrdered ImportToAzure DataBox UserAssigned NonScheduled Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.DataBoxJobDetails
+Update-AzDataBoxJob -Name "powershell10" -ResourceGroupName "resourceGroupName" -KeyEncryptionKey $keyEncryptionDetails -ContactDetail $contactDetail -ShippingAddress $ShippingDetails  -IdentityType "UserAssigned" -UserAssignedIdentity @{"/subscriptions/SubscriptionId/resourceGroups/resourceGroupName/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identityName" = @{}}
+
+$keyEncryptionDetails
 .Example
-PS C:\>   $databoxUpdate = Update-AzDataBoxJob -Name "pwshTestSAssigned" -ResourceGroupName "resourceGroupName" -ContactDetail $contactDetail -ShippingAddress $ShippingDetails  -IdentityType "SystemAssigned"
+$databoxUpdate = Update-AzDataBoxJob -Name "pwshTestSAssigned" -ResourceGroupName "resourceGroupName" -ContactDetail $contactDetail -ShippingAddress $ShippingDetails  -IdentityType "SystemAssigned"
 
-PS C:\> $databoxUpdate.Identity
+$databoxUpdate.Identity
 
-PrincipalId                          TenantId                             Type
------------                          --------                             ----
-920850f5-9b6b-4017-a81a-3dcafe348be7 72f988bf-86f1-41af-91ab-2d7cd011db47 SystemAssigned
+$keyEncryptionDetails = New-AzDataBoxKeyEncryptionKeyObject -KekType "CustomerManaged" -IdentityProperty @{Type = "SystemAssigned"} -KekUrl "keyIdentifier" -KekVaultResourceId "/subscriptions/SubscriptionId/resourceGroups/resourceGroupName/providers/Microsoft.KeyVault/vaults/keyVaultName"
 
-PS C:\> $keyEncryptionDetails = New-AzDataBoxKeyEncryptionKeyObject -KekType "CustomerManaged" -IdentityProperty @{Type = "SystemAssigned"} -KekUrl "keyIdentifier" -KekVaultResourceId "/subscriptions/SubscriptionId/resourceGroups/resourceGroupName/providers/Microsoft.KeyVault/vaults/keyVaultName"
+$databoxUpdateWithCMK = Update-AzDataBoxJob -Name "pwshTestSAssigned" -ResourceGroupName "resourceGroupName" -ContactDetail $contactDetail -ShippingAddress $ShippingDetails  -KeyEncryptionKey $keyEncryptionDetails
 
-PS C:\> $databoxUpdateWithCMK = Update-AzDataBoxJob -Name "pwshTestSAssigned" -ResourceGroupName "resourceGroupName" -ContactDetail $contactDetail -ShippingAddress $ShippingDetails  -KeyEncryptionKey $keyEncryptionDetails
+$databoxUpdateWithCMK.Identity
 
-PS C:\> $databoxUpdateWithCMK.Identity
-
-PrincipalId                          TenantId                             Type
------------                          --------                             ----
-920850f5-9b6b-4017-a81a-3dcafe348be7 72f988bf-86f1-41af-91ab-2d7cd011db47 SystemAssigned
-
-PS C:\> $databoxUpdateWithCMK.Detail.KeyEncryptionKey
-
-KekType         KekUrl                                           KekVaultResourceId
--------         ------                                           ------------------
-CustomerManaged keyIdentifier /subscriptions/SubscriptionId/resourceGroups/resourceGroupName/providers/Microsoft.KeyVault/vaults/keyVaultName
+$databoxUpdateWithCMK.Detail.KeyEncryptionKey
 .Example
-PS C:\>   $keyEncryptionDetails = New-AzDataBoxKeyEncryptionKeyObject -KekType "CustomerManaged" -IdentityProperty @{Type = "UserAssigned"; UserAssignedResourceId = "/subscriptions/SubscriptionId/resourceGroups/resourceGroupName/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identityName"} -KekUrl "keyIdentifier" -KekVaultResourceId "/subscriptions/SubscriptionId/resourceGroups/resourceGroupName/providers/Microsoft.KeyVault/vaults/keyVaultName"
-PS C:\>   $updateSystemToUserAssigned = Update-AzDataBoxJob -Name "pwshTestSAssigned" -ResourceGroupName "resourceGroupName" -KeyEncryptionKey $keyEncryptionDetails -ContactDetail $contactDetail -ShippingAddress $ShippingDetails  -IdentityType "SystemAssigned,UserAssigned" -IdentityUserAssignedIdentity @{"/subscriptions/SubscriptionId/resourceGroups/resourceGroupName/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identityName" = @{}}
+$contactDetail = New-AzDataBoxContactDetailsObject -ContactName "random" -EmailList @("emailId") -Phone "1234567891"
+$ShippingDetails = New-AzDataBoxShippingAddressObject -StreetAddress1 "101 TOWNSEND ST" -StateOrProvince "CA" -Country "US" -City "San Francisco" -PostalCode "94107" -AddressType "Commercial"
+
+Update-AzDataBoxJob -Name "pwshTestSAssigned" -ResourceGroupName "resourceGroupName" -KeyEncryptionKey $keyEncryptionDetails -ContactDetail $contactDetail -ShippingAddress $ShippingDetails  -IdentityType "SystemAssigned,UserAssigned" -UserAssignedIdentity @{"/subscriptions/SubscriptionId/resourceGroups/resourceGroupName/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identityName" = @{}}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobResource
+Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IJobResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -97,6 +82,20 @@ KEYENCRYPTIONKEY <IKeyEncryptionKey>: Key encryption key for the job.
   [KekUrl <String>]: Key encryption key. It is required in case of Customer managed KekType.
   [KekVaultResourceId <String>]: Kek vault resource id. It is required in case of Customer managed KekType.
 
+REVERSESHIPPINGDETAIL <IShippingAddress>: Shipping address where customer wishes to receive the device.
+  Country <String>: Name of the Country.
+  StreetAddress1 <String>: Street Address line 1.
+  [AddressType <AddressType?>]: Type of address.
+  [City <String>]: Name of the City.
+  [CompanyName <String>]: Name of the company.
+  [PostalCode <String>]: Postal code.
+  [SkipAddressValidation <Boolean?>]: Flag to indicate if customer has chosen to skip default address validation
+  [StateOrProvince <String>]: Name of the State or Province.
+  [StreetAddress2 <String>]: Street Address line 2.
+  [StreetAddress3 <String>]: Street Address line 3.
+  [TaxIdentificationNumber <String>]: Tax Identification Number
+  [ZipExtendedCode <String>]: Extended Zip Code.
+
 SHIPPINGADDRESS <IShippingAddress>: Shipping address of the customer.
   Country <String>: Name of the Country.
   StreetAddress1 <String>: Street Address line 1.
@@ -104,15 +103,17 @@ SHIPPINGADDRESS <IShippingAddress>: Shipping address of the customer.
   [City <String>]: Name of the City.
   [CompanyName <String>]: Name of the company.
   [PostalCode <String>]: Postal code.
+  [SkipAddressValidation <Boolean?>]: Flag to indicate if customer has chosen to skip default address validation
   [StateOrProvince <String>]: Name of the State or Province.
   [StreetAddress2 <String>]: Street Address line 2.
   [StreetAddress3 <String>]: Street Address line 3.
+  [TaxIdentificationNumber <String>]: Tax Identification Number
   [ZipExtendedCode <String>]: Extended Zip Code.
 .Link
 https://learn.microsoft.com/powershell/module/az.databox/update-azdataboxjob
 #>
 function Update-AzDataBoxJob {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IJobResource])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -145,10 +146,48 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IContactDetails]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IContactDetails]
     # Contact details for notification and shipping.
     # To construct, see NOTES section for CONTACTDETAIL properties and create a hash table.
     ${ContactDetail},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Category('Body')]
+    [System.String]
+    # Contact name of the person.
+    ${ContactDetailContactName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Category('Body')]
+    [System.String]
+    # Mobile number of the contact person.
+    ${ContactDetailMobile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Category('Body')]
+    [System.String]
+    # Phone number of the contact person.
+    ${ContactDetailPhone},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Category('Body')]
+    [System.String]
+    # Phone extension number of the contact person.
+    ${ContactDetailPhoneExtension},
+
+    [Parameter()]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.DoubleEncryption])]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.DoubleEncryption]
+    # Defines secondary layer of software-based encryption enablement.
+    ${EncryptionPreferenceDoubleEncryption},
+
+    [Parameter()]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.HardwareEncryption])]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.HardwareEncryption]
+    # Defines Hardware level encryption (Only for disk)
+    ${EncryptionPreferenceHardwareEncryption},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Category('Body')]
@@ -158,29 +197,83 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IKeyEncryptionKey]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IKeyEncryptionKey]
     # Key encryption key for the job.
     # To construct, see NOTES section for KEYENCRYPTIONKEY properties and create a hash table.
     ${KeyEncryptionKey},
 
     [Parameter()]
+    [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShippingAddress]
+    [System.String[]]
+    # Preferred data center region.
+    ${PreferencePreferredDataCenterRegion},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Category('Body')]
+    [System.String]
+    # Carrier Account Number of customer for customer disk.
+    ${ReturnToCustomerPackageDetailCarrierAccountNumber},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Category('Body')]
+    [System.String]
+    # Name of the carrier.
+    ${ReturnToCustomerPackageDetailCarrierName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Category('Body')]
+    [System.String]
+    # Tracking Id of shipment.
+    ${ReturnToCustomerPackageDetailTrackingId},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IShippingAddress]
+    # Shipping address where customer wishes to receive the device.
+    # To construct, see NOTES section for REVERSESHIPPINGDETAIL properties and create a hash table.
+    ${ReverseShippingDetail},
+
+    [Parameter()]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.TransportShipmentTypes])]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.TransportShipmentTypes]
+    # Indicates Shipment Logistics type that the customer preferred.
+    ${ReverseTransportPreferredShipmentType},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IShippingAddress]
     # Shipping address of the customer.
     # To construct, see NOTES section for SHIPPINGADDRESS properties and create a hash table.
     ${ShippingAddress},
 
     [Parameter()]
+    [AllowEmptyCollection()]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.StorageAccountAccessTier])]
     [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobResourceUpdateParameterTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.StorageAccountAccessTier[]]
+    # Preferences related to the Access Tier of storage accounts.
+    ${StorageAccountAccessTierPreference},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IJobResourceUpdateParameterTags]))]
     [System.Collections.Hashtable]
     # The list of key value pairs that describe the resource.
     # These tags can be used in viewing and grouping this resource (across resource groups).
     ${Tag},
 
     [Parameter()]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.TransportShipmentTypes])]
     [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IResourceIdentityUserAssignedIdentities]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.TransportShipmentTypes]
+    # Indicates Shipment Logistics type that the customer preferred.
+    ${TransportPreferredShipmentType},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IResourceIdentityUserAssignedIdentities]))]
     [System.Collections.Hashtable]
     # User Assigned Identities
     ${UserAssignedIdentity},
@@ -190,7 +283,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter()]
@@ -252,6 +346,24 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.DataBox.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
         $mapping = @{
             UpdateExpanded = 'Az.DataBox.private\Update-AzDataBoxJob_UpdateExpanded';
         }
@@ -265,6 +377,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
         throw
     }
 }
@@ -273,15 +386,32 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
         throw
     }
-}
 
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
 end {
     try {
         $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.DataBox.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
     } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
         throw
     }
-}
+} 
 }

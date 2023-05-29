@@ -19,7 +19,6 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Management.Automation;
-using System.Security;
 using Microsoft.Azure.Commands.Aks.Models;
 using Microsoft.Azure.Commands.Aks.Properties;
 using Microsoft.Azure.Commands.Aks.Utils;
@@ -31,7 +30,6 @@ using Microsoft.Azure.Management.ContainerService.Models;
 using Microsoft.Rest;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.Aks
 {
@@ -87,11 +85,6 @@ namespace Microsoft.Azure.Commands.Aks
 
         [Parameter(Mandatory = false, HelpMessage = "The administrator username to use for Windows VMs.")]
         public string WindowsProfileAdminUserName { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = "The administrator password to use for Windows VMs. Password requirement:"
-          + "At least one lower case, one upper case, one special character !@#$%^&*(), the minimum lenth is 12.")]
-        [ValidateSecureString(RegularExpression = "^(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%\\^&\\*\\(\\)])[a-zA-Z\\d!@#$%\\^&\\*\\(\\)]{12,123}$", ParameterName = nameof(WindowsProfileAdminUserPassword))]
-        public SecureString WindowsProfileAdminUserPassword { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Network plugin used for building Kubernetes network.")]
         [PSArgumentCompleter("azure", "kubenet")]
@@ -490,6 +483,10 @@ namespace Microsoft.Azure.Commands.Aks
             {
                 windowsProfile = new ManagedClusterWindowsProfile(WindowsProfileAdminUserName,
                     WindowsProfileAdminUserPassword?.ConvertToString());
+                if (this.IsParameterBound(c => c.EnableAHUB) && EnableAHUB.ToBool()) 
+                {
+                    windowsProfile.LicenseType = "Windows_Server";
+                }
             }
             return windowsProfile;
         }

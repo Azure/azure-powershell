@@ -20,6 +20,9 @@
 
 ## Upcoming Release
 
+## Version 2.12.3
+* Updated System.Security.Permissions to 4.7.0.
+
 ## Version 2.12.2
 * Fixed `AzureSynapseAnalyticsEndpointResourceId` of `USGovernment` environment.
 * Updated Azure.Core to 1.31.0.

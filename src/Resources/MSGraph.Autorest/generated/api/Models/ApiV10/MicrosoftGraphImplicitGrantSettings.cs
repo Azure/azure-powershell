@@ -48,6 +48,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Specifies whether this web application can request an access token using the OAuth 2.0 implicit flow.",
         SerializedName = @"enableAccessTokenIssuance",
         PossibleTypes = new [] { typeof(bool) })]
@@ -58,6 +61,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Specifies whether this web application can request an ID token using the OAuth 2.0 implicit flow.",
         SerializedName = @"enableIdTokenIssuance",
         PossibleTypes = new [] { typeof(bool) })]

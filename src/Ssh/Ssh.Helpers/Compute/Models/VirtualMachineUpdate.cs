@@ -63,10 +63,10 @@ namespace Microsoft.Azure.PowerShell.Ssh.Helpers.Compute.Models
         /// Virtual machines specified in the same availability set are
         /// allocated to different nodes to maximize availability. For more
         /// information about availability sets, see [Availability sets
-        /// overview](https://learn.microsoft.com/azure/virtual-machines/availability-set-overview).
+        /// overview](https://docs.microsoft.com/azure/virtual-machines/availability-set-overview).
         /// &lt;br&gt;&lt;br&gt; For more information on Azure planned
         /// maintenance, see [Maintenance and updates for Virtual Machines in
-        /// Azure](https://learn.microsoft.com/azure/virtual-machines/maintenance-and-updates)
+        /// Azure](https://docs.microsoft.com/azure/virtual-machines/maintenance-and-updates)
         /// &lt;br&gt;&lt;br&gt; Currently, a VM can only be added to
         /// availability set at creation time. The availability set to which
         /// the VM is being added should be under the same resource group as
@@ -122,9 +122,9 @@ namespace Microsoft.Azure.PowerShell.Ssh.Helpers.Compute.Models
         /// RHEL) &lt;br&gt;&lt;br&gt; SLES_BYOS (for SUSE)
         /// &lt;br&gt;&lt;br&gt; For more information, see [Azure Hybrid Use
         /// Benefit for Windows
-        /// Server](https://learn.microsoft.com/azure/virtual-machines/windows/hybrid-use-benefit-licensing)
+        /// Server](https://docs.microsoft.com/azure/virtual-machines/windows/hybrid-use-benefit-licensing)
         /// &lt;br&gt;&lt;br&gt; [Azure Hybrid Use Benefit for Linux
-        /// Server](https://learn.microsoft.com/azure/virtual-machines/linux/azure-hybrid-benefit-linux)
+        /// Server](https://docs.microsoft.com/azure/virtual-machines/linux/azure-hybrid-benefit-linux)
         /// &lt;br&gt;&lt;br&gt; Minimum api-version: 2015-06-15</param>
         /// <param name="vmId">Specifies the VM unique ID which is a 128-bits
         /// identifier that is encoded and stored in all Azure IaaS VMs SMBIOS
@@ -158,7 +158,7 @@ namespace Microsoft.Azure.PowerShell.Ssh.Helpers.Compute.Models
         /// that should be made available to the VM/VMSS</param>
         /// <param name="timeCreated">Specifies the time at which the Virtual
         /// Machine resource was created.&lt;br&gt;&lt;br&gt;Minimum
-        /// api-version: 2022-03-01.</param>
+        /// api-version: 2021-11-01.</param>
         /// <param name="identity">The identity of the virtual machine, if
         /// configured.</param>
         /// <param name="zones">The virtual machine zones.</param>
@@ -271,11 +271,11 @@ namespace Microsoft.Azure.PowerShell.Ssh.Helpers.Compute.Models
         /// specified in the same availability set are allocated to different
         /// nodes to maximize availability. For more information about
         /// availability sets, see [Availability sets
-        /// overview](https://learn.microsoft.com/azure/virtual-machines/availability-set-overview).
+        /// overview](https://docs.microsoft.com/azure/virtual-machines/availability-set-overview).
         /// &amp;lt;br&amp;gt;&amp;lt;br&amp;gt; For more information on Azure
         /// planned maintenance, see [Maintenance and updates for Virtual
         /// Machines in
-        /// Azure](https://learn.microsoft.com/azure/virtual-machines/maintenance-and-updates)
+        /// Azure](https://docs.microsoft.com/azure/virtual-machines/maintenance-and-updates)
         /// &amp;lt;br&amp;gt;&amp;lt;br&amp;gt; Currently, a VM can only be
         /// added to availability set at creation time. The availability set to
         /// which the VM is being added should be under the same resource group
@@ -382,10 +382,10 @@ namespace Microsoft.Azure.PowerShell.Ssh.Helpers.Compute.Models
         /// RHEL_BYOS (for RHEL) &amp;lt;br&amp;gt;&amp;lt;br&amp;gt; SLES_BYOS
         /// (for SUSE) &amp;lt;br&amp;gt;&amp;lt;br&amp;gt; For more
         /// information, see [Azure Hybrid Use Benefit for Windows
-        /// Server](https://learn.microsoft.com/azure/virtual-machines/windows/hybrid-use-benefit-licensing)
+        /// Server](https://docs.microsoft.com/azure/virtual-machines/windows/hybrid-use-benefit-licensing)
         /// &amp;lt;br&amp;gt;&amp;lt;br&amp;gt; [Azure Hybrid Use Benefit for
         /// Linux
-        /// Server](https://learn.microsoft.com/azure/virtual-machines/linux/azure-hybrid-benefit-linux)
+        /// Server](https://docs.microsoft.com/azure/virtual-machines/linux/azure-hybrid-benefit-linux)
         /// &amp;lt;br&amp;gt;&amp;lt;br&amp;gt; Minimum api-version:
         /// 2015-06-15
         /// </summary>
@@ -462,7 +462,7 @@ namespace Microsoft.Azure.PowerShell.Ssh.Helpers.Compute.Models
         /// <summary>
         /// Gets specifies the time at which the Virtual Machine resource was
         /// created.&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Minimum api-version:
-        /// 2022-03-01.
+        /// 2021-11-01.
         /// </summary>
         [JsonProperty(PropertyName = "properties.timeCreated")]
         public System.DateTime? TimeCreated { get; private set; }

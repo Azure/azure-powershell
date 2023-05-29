@@ -109,6 +109,21 @@ namespace Microsoft.Azure.Commands.KeyVault
         public SecureString Password { get; set; }
 
         /// <summary>
+        /// File Path
+        /// </summary>
+        [Parameter(Mandatory = false,
+                   HelpMessage = "A file path to specify management policy for the certificate that contains JSON encoded policy definition. Mutual-exclusive to PolicyObject.")]
+        public string PolicyPath { get; set; }
+
+        /// <summary>
+        /// File Path
+        /// </summary>
+        [Parameter(Mandatory = false,
+                    ValueFromPipeline = true,
+                    HelpMessage = "An in-memory object to specify management policy for the certificate. Mutual-exclusive to PolicyPath.")]
+        public PSKeyVaultCertificatePolicy PolicyObject { get; set; }
+
+        /// <summary>
         /// Certificate Collection
         /// </summary>
         [Parameter(Mandatory = true,
@@ -131,6 +146,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         protected override void BeginProcessing()
         {
             FilePath = this.TryResolvePath(FilePath);
+            PolicyPath = this.TryResolvePath(PolicyPath);
             base.BeginProcessing();
         }
 
@@ -143,6 +159,34 @@ namespace Microsoft.Azure.Commands.KeyVault
                 {
                     throw new AzPSArgumentException(string.Format(Resources.FileNotFound, this.FilePath), nameof(FilePath));
                 }
+                if (IsPemFile(FilePath))
+                {
+                    ContentType = Constants.PemContentType;
+                }
+                else
+                {
+                    ContentType = Constants.Pkcs12ContentType;
+                }
+            }
+            if (this.IsParameterBound(c => c.CertificateCollection))
+            {
+                ContentType = Constants.Pkcs12ContentType;
+            }
+            if (this.IsParameterBound(c => c.PolicyPath) && this.IsParameterBound(c => c.PolicyObject))
+            {
+                throw new AzPSArgumentException($"Parameter {nameof(PolicyPath)} conflicts with Parameter {nameof(PolicyObject)}. Only one of these 2 parameters could be imported at once.", nameof(PolicyPath));
+            }
+            if (this.IsParameterBound(c => c.PolicyPath))
+            {
+                if (!File.Exists(PolicyPath))
+                {
+                    throw new AzPSArgumentException(string.Format(Resources.FileNotFound, this.PolicyPath), nameof(PolicyPath));
+                }
+                PolicyObject = PSKeyVaultCertificatePolicy.FromJsonFile(PolicyPath);
+            }
+            if (PolicyObject != null && PolicyObject.SecretContentType != ContentType)
+            {
+                throw new AzPSArgumentException($"User input {ContentType} conflicts with the ContentType stated as {PolicyObject.SecretContentType} in Certificate Policy.", ContentType);
             }
         }
 
@@ -162,7 +206,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                         if (IsPemFile(FilePath))
                         {
                             byte[] pemBytes = File.ReadAllBytes(FilePath);
-                            certBundle = this.Track2DataClient.ImportCertificate(VaultName, Name, pemBytes, Password, Tag?.ConvertToDictionary(), Constants.PemContentType);
+                            certBundle = this.Track2DataClient.ImportCertificate(VaultName, Name, pemBytes, Password, Tag?.ConvertToDictionary(), Constants.PemContentType, certPolicy: PolicyObject);
                         }
                         else
                         {
@@ -179,8 +223,9 @@ namespace Microsoft.Azure.Commands.KeyVault
 
                             if (doImport)
                             {
+                                
                                 byte[] base64Bytes = userProvidedCertColl.Export(X509ContentType.Pfx, Password?.ConvertToString());
-                                certBundle = this.Track2DataClient.ImportCertificate(VaultName, Name, base64Bytes, Password, Tag?.ConvertToDictionary());
+                                certBundle = this.Track2DataClient.ImportCertificate(VaultName, Name, base64Bytes, Password, Tag?.ConvertToDictionary(), certPolicy: PolicyObject);
                             }
                             else
                             {
@@ -194,12 +239,11 @@ namespace Microsoft.Azure.Commands.KeyVault
                         break;
 
                     case ImportWithPrivateKeyFromCollectionParameterSet:
-                        certBundle = this.DataServiceClient.ImportCertificate(VaultName, Name, CertificateCollection, Tag?.ConvertToDictionary());
-
+                        certBundle = this.Track2DataClient.ImportCertificate(VaultName, Name, CertificateCollection, null, Tag?.ConvertToDictionary(), certPolicy: PolicyObject);
                         break;
 
                     case ImportWithPrivateKeyFromStringParameterSet:
-                        certBundle = this.Track2DataClient.ImportCertificate(VaultName, Name, CertificateString, Password, Tag?.ConvertToDictionary(), ContentType);
+                        certBundle = this.Track2DataClient.ImportCertificate(VaultName, Name, CertificateString, Password, Tag?.ConvertToDictionary(), ContentType, certPolicy: PolicyObject);
 
                         break;
                 }

@@ -20,12 +20,14 @@ using Microsoft.Azure.Management.WebSites.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.IO;
+using System.Linq;
 using System.Management.Automation;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Threading;
+using System.Web;
 
 namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
 {
@@ -35,12 +37,34 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
     [Cmdlet("Publish", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "WebApp", SupportsShouldProcess = true, DefaultParameterSetName = ParameterSet2Name), OutputType(typeof(PSSite))]
     public class PublishAzureWebAppCmdlet : WebAppOptionalSlotBaseCmdlet
     {
-        // Poll status for a maximum of 20 minutes (1200 seconds / 2 seconds per status check)
-        private const int NumStatusChecks = 600;
+        // Poll status for a maximum of 35 minutes (2100 seconds / 2 seconds per status check)
+        private const int NumStatusChecks = 1050;
 
         [Parameter(Mandatory = true, HelpMessage = "The path of the archive file. ZIP, WAR, and JAR are supported.")]
         [ValidateNotNullOrEmpty]
         public string ArchivePath { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Used to override the type of artifact being deployed.")]
+        [ValidateSet("war", "jar", "ear", "zip", "static")]
+        public string Type { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Cleans the target directory prior to deploying the file(s).")]
+        public SwitchParameter Clean { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The artifact is deployed asynchronously. (The command will exit once the artifact is pushed to the web app.)")]
+        public SwitchParameter Async { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The web app will be restarted following the deployment. Set this to false if you are deploying multiple artifacts and do not want to restart the site on the earlier deployments.")]
+        public SwitchParameter Restart { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Absolute path that the artifact should be deployed to.")]
+        public string TargetPath { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Disables any language-specific defaults")]
+        public SwitchParameter IgnoreStack { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Reset Java web apps to default parking page")]
+        public SwitchParameter Reset { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Deploy the web app without prompting for confirmation.")]
         public SwitchParameter Force { get; set; }
@@ -58,21 +82,51 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
             User user = WebsitesClient.GetPublishingCredentials(ResourceGroupName, Name, Slot);
 
             HttpResponseMessage r;
-            string deployUrl;
             string deploymentStatusUrl = user.ScmUri + "/api/deployments/latest";
 
-            if (ArchivePath.ToLower().EndsWith("war"))
+            string apiPath = "/api/publish";
+            var scmUrl = new Uri(user.ScmUri);
+            var deployUri = new Uri(scmUrl, apiPath);
+
+            var uriBuilder = new UriBuilder(deployUri);
+            var paramValues = HttpUtility.ParseQueryString(uriBuilder.Query);
+
+            string fileExtention = Path.GetExtension(ArchivePath);
+            string[] validTypes = { "war", "jar", "ear", "zip", "static" };
+
+            if (!string.IsNullOrEmpty(Type))
             {
-                deployUrl = user.ScmUri + "/api/publish?type=war";
+                paramValues["type"] = Type;
             }
-            else if (ArchivePath.ToLower().EndsWith("zip") || ArchivePath.ToLower().EndsWith("jar"))
+
+            else if (!string.IsNullOrEmpty(fileExtention))
             {
-                deployUrl = user.ScmUri + "/api/zipdeploy?isAsync=true";
+                if (validTypes.Contains(fileExtention.Substring(1)))
+                {
+                    paramValues["type"] = fileExtention.Substring(1);
+                }
+
+                else
+                {
+                    paramValues["type"] = "static";
+                }
             }
+
             else
             {
-                throw new Exception("Unknown archive type.");
+                throw new Exception("Unknown artifact type.");
             }
+
+            paramValues.Add("path", TargetPath);
+            paramValues.Add("isasync", Async.IsPresent.ToString());
+            paramValues.Add("restart", Restart.IsPresent.ToString());
+            paramValues.Add("clean", Clean.IsPresent.ToString());
+            paramValues.Add("ignorestack", IgnoreStack.IsPresent.ToString());
+            paramValues.Add("reset", Reset.IsPresent.ToString());
+
+            uriBuilder.Query = paramValues.ToString();
+
+            string deployUrl = uriBuilder.Uri.ToString();
 
             Action zipDeployAction = () =>
             {

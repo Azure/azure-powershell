@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
     /// <summary>
     /// Wrapper of SDK type BlobServiceProperties
     /// </summary>
-    public class PSBlobServiceProperties
+    public class PSBlobServiceProperties 
     {
         [Ps1Xml(Label = "ResourceGroupName", Target = ViewControl.Table, Position = 0)]
         public string ResourceGroupName { get; set; }
@@ -275,14 +275,24 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
 
         public CorsRule ParseCorsRule()
         {
-            return new CorsRule
+            CorsRule corsRule = new CorsRule
             {
-                AllowedOrigins = this.AllowedOrigins,
-                AllowedMethods = this.AllowedMethods,
+                AllowedOrigins = ArrayToList(this.AllowedOrigins),
                 MaxAgeInSeconds = this.MaxAgeInSeconds,
-                ExposedHeaders = this.ExposedHeaders,
-                AllowedHeaders = this.AllowedHeaders
+                ExposedHeaders = ArrayToList(this.ExposedHeaders),
+                AllowedHeaders = ArrayToList(this.AllowedHeaders),
+                AllowedMethods = new List<string>(),
             };
+            
+            if (this.AllowedMethods != null)
+            {
+                foreach(string method in this.AllowedMethods)
+                {
+                    corsRule.AllowedMethods.Add(method.ToUpper());
+                }
+            }
+
+            return corsRule;
         }
 
         /// <summary>
@@ -300,6 +310,11 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             string[] stringArray = new string[stringList.Count];
             stringList.CopyTo(stringArray, 0);
             return stringArray;
+        }
+
+        private List<string> ArrayToList(string[] stringArray)
+        {
+            return stringArray == null ? new List<string>() : new List<string>(stringArray);
         }
     }
 

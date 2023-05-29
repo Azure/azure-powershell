@@ -37,6 +37,7 @@ Enter-AzVM -ResourceId <String> [-PublicKeyFile <String>] [-PrivateKeyFile <Stri
 ## DESCRIPTION
 Start interactive SSH session to an Azure Resource (currently supports Azure VMs and Arc Servers).
 Users can login using AAD issued certificates or using local user credentials. We recommend login using AAD issued certificates when possible.
+Important note: When connecting to Azure Arc resources, this cmdlet requires the Az.Ssh.ArcProxy module to also be installed in the client machine. The cmdlet will attempt to install the module from the PowerShell Gallery, but the user also has the option to install it themselves. It is important that the user also has permission to execute the Proxy files in the Az.Ssh.ArcProxy module, or the connection will fail. You can find the Az.Ssh.ArcServer module in the PowerShell Gallery: https://aka.ms/PowerShellGallery-Az.Ssh.ArcProxy.
 
 ## EXAMPLES
 

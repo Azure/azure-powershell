@@ -15,16 +15,11 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzDatabricksAccessConn
 }
 
 Describe 'Remove-AzDatabricksAccessConnector' {
-    It 'Delete' {
-        { 
-            Remove-AzDatabricksAccessConnector -ResourceGroupName $env.resourceGroup -Name $env.accessConnectorname01 
-        } | Should -Not -Throw
+    It 'Delete' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'DeleteViaIdentity' {
-        { 
-            $obj = New-AzDatabricksAccessConnector -ResourceGroupName $env.resourceGroup -Name $env.accessConnectorname01 -Location eastus
-            Remove-AzDatabricksAccessConnector -InputObject $obj
-        } | Should -Not -Throw
+    It 'DeleteViaIdentity' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

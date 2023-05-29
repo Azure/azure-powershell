@@ -216,6 +216,35 @@ function Remove-LedgerTestEnvironment ($testSuffix)
 
 <#
 .SYNOPSIS
+Creates the basic test environment used for the ledger tests - creates resource group, server, and database
+#>
+function Create-ManagedInstanceLedgerTestEnvironment ()
+{
+	$dbSuffix = getAssetName
+	$collation = "SQL_Latin1_General_CP1_CI_AS"
+	$dbName = "ledger-cmdlet-mi-db" + $dbSuffix
+	$rg = Create-ResourceGroupForTest
+	$managedInstance = Create-ManagedInstanceForTest $rg
+	$db = New-AzSqlInstanceDatabase -ResourceGroupName $managedInstance.ResourceGroupName -InstanceName $managedInstance.ManagedInstanceName -Name $dbName -Collation $collation
+
+	return @{
+		serverName = $managedInstance.ManagedInstanceName;
+		databaseName = $dbName;
+		rgName = $managedInstance.ResourceGroupName
+	}
+}
+
+<#
+.SYNOPSIS
+Removes the test environment that was needed to perform the ledger digest upload tests
+#>
+function Remove-LedgerTestEnvironmentForMi ($rg)
+{
+	Remove-AzResourceGroup -Name $rg -Force
+}
+
+<#
+.SYNOPSIS
 Creates the basic test environment needed to perform the Sql data security tests - resource group, managed instance and managed database
 #>
 function Create-BasicManagedTestEnvironmentWithParams ($params, $location)
