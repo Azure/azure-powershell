@@ -35,13 +35,6 @@ steps:
   inputs:
     packageType: sdk
     version: 6.0.x
-
-- task: PowerShell@2
-  displayName: Setup global.json
-  inputs:
-    targetType: inline
-    script: "$SdkVersion=(dotnet --list-sdks | Select-String '[3,4,5].\\d.\\d{3}').Matches[0].Value; dotnet new globaljson --sdk-version $SdkVersion --force"
-    pwsh: true
     
 - task: DotNetCoreCLI@2
   displayName: Build
@@ -58,7 +51,7 @@ steps:
   condition: eq(variables.BuildAzPredictor, 'true')
   inputs:
     targetType: inline
-    script: "$SdkVersion=(dotnet --list-sdks | Select-String '6.0.\\d{3}').Matches[0].Value; dotnet new globaljson --sdk-version $SdkVersion --force;dotnet msbuild tools/Az.Tools.Predictor/build.proj /t:\"clean;build;test\""
+    script: "dotnet msbuild tools/Az.Tools.Predictor/build.proj /t:\"clean;build;test\""
     pwsh: true
   continueOnError: true
 
