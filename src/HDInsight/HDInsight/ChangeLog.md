@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 6.0.0
 * Breaking Change:
   - Removed the parameter `-RdpAccessExpiry` which has been marked as deprecated for a long time from cmdlet `New-AzHDInsightCluster`
   - Removed the parameter `-RdpCredential` which has been marked as deprecated for a long time from cmdlet `New-AzHDInsightCluster`

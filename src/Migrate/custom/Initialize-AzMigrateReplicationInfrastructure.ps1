@@ -356,7 +356,7 @@ public static int hashForArtifact(String artifact)
                     if ($CloudEnvironMent -eq "AzureUSGovernment") {
                         $HyperVManagerAppId = "AFAE2AF7-62E0-4AA4-8F66-B11F74F56326"
                     }
-                    $hyperVManagerObject = Get-AzADServicePrincipal -ApplicationID $HyperVManagerAppId
+                    $hyperVManagerObject = Get-AzADServicePrincipal -ApplicationID $HyperVManagerAppId				
                     $accessPolicies = @()
                     $userAccessPolicy = @{
                         "tenantId"    = $tenantID;
@@ -449,24 +449,7 @@ public static int hashForArtifact(String artifact)
                 # RoleAssignments
             
                 $roleDefinitionId = "81a9662b-bebf-436f-a333-f67b29880f12"
-                $kvspnid = Get-AzADServicePrincipal -DisplayName "Azure Key Vault"
-                $Id = ""
-                if($kvspnid -ne $null){
-                    $type = $kvspnid.GetType().BaseType
-                    Write-Host $type.Name
-                    if ($type.Name -eq "Array"){
-                        $Id = $kvspnid[0].Id
-                    }
-                    else{
-                         $Id = $kvspnid.Id
-                    }
-                }
-                else{
-                    Write-Host "Unable to retrieve KV SPN Id"
-                }
-                Write-Host $Id
-
-                $kvspnid = $Id
+                $kvspnid = (Get-AzADServicePrincipal -DisplayName "Azure Key Vault" )[0].Id
                 $gwyStorageAccount = Get-AzResource -ResourceName $GateWayStorageAcName -ResourceGroupName $ResourceGroupName 
                 $lsaStorageAccount = Get-AzResource -ResourceName $LogStorageAcName -ResourceGroupName $ResourceGroupName
                 $gwyRoleAssignments = Get-AzRoleAssignment -ObjectId $kvspnid -Scope $gwyStorageAccount.Id -ErrorVariable notPresent -ErrorAction SilentlyContinue
@@ -542,7 +525,7 @@ public static int hashForArtifact(String artifact)
             $policyName = $MigratePrefix + $SiteName + "policy"
             $existingPolicyObject = Get-AzMigrateReplicationPolicy -PolicyName $policyName -ResourceGroupName $ResourceGroupName -ResourceName $VaultName -ErrorVariable notPresent -ErrorAction SilentlyContinue
             if (!$existingPolicyObject) {
-                $providerSpecificPolicy = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.VMwareCbtPolicyCreationInput]::new()
+                $providerSpecificPolicy = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.VMwareCbtPolicyCreationInput]::new()
                 $providerSpecificPolicy.AppConsistentFrequencyInMinute = 240
                 $providerSpecificPolicy.InstanceType = "VMwareCbt"
                 $providerSpecificPolicy.RecoveryPointHistoryInMinute = 360
@@ -566,7 +549,7 @@ public static int hashForArtifact(String artifact)
                         Write-Host $mappingName, " for ", $applianceName, $LogStringSkipping
                     }
                     else {
-                        $providerSpecificInput = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.VMwareCbtContainerMappingInput]::new()
+                        $providerSpecificInput = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.VMwareCbtContainerMappingInput]::new()
                         $providerSpecificInput.InstanceType = "VMwareCbt"
                         $providerSpecificInput.TargetLocation = $TargetRegion
                         if ([string]::IsNullOrEmpty($CacheStorageAccountId)) {

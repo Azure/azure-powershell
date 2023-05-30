@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// <param name="osType">Possible values include: 'Linux',
         /// 'Windows'</param>
         /// <param name="osSku">Possible values include: 'Ubuntu',
-        /// 'CBLMariner', 'Windows2019', 'Windows2022'</param>
+        /// 'AzureLinux', 'CBLMariner', 'Windows2019', 'Windows2022'</param>
         /// <param name="vmSize">The size of the VM.</param>
         /// <param name="enableFIPS">Whether to use a FIPS-enabled OS.</param>
         public Snapshot(string location, string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), IDictionary<string, string> tags = default(IDictionary<string, string>), CreationData creationData = default(CreationData), string snapshotType = default(string), string kubernetesVersion = default(string), string nodeImageVersion = default(string), string osType = default(string), string osSku = default(string), string vmSize = default(string), bool? enableFIPS = default(bool?))
@@ -108,7 +108,7 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         public string OsType { get; private set; }
 
         /// <summary>
-        /// Gets possible values include: 'Ubuntu', 'CBLMariner',
+        /// Gets possible values include: 'Ubuntu', 'AzureLinux', 'CBLMariner',
         /// 'Windows2019', 'Windows2022'
         /// </summary>
         [JsonProperty(PropertyName = "properties.osSku")]

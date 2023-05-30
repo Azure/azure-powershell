@@ -42,6 +42,7 @@ Name              : subConnection
 Etag              :
 Id                : /subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/providers/Microsoft.Network/networkManagerConnections/subConnection
 ```
+
 Updates a network manager subscription connection description.
 
 ## PARAMETERS

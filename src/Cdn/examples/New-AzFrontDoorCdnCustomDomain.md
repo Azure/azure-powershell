@@ -13,4 +13,3 @@ domain001 testps-rg-da16jm
 ```
 
 Creates an AzureFrontDoor domain within the specified AzureFrontDoor profile
-

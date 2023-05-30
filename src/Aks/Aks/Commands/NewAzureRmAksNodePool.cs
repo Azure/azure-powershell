@@ -67,8 +67,8 @@ namespace Microsoft.Azure.Commands.Aks
         [PSArgumentCompleter("Linux", "Windows")]
         public string OsType { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "OsSKU to be used to specify os SKU. Choose from Ubuntu, CBLMariner, Windows2019, Windows2022. The default is Ubuntu if OSType is Linux. The default is Windows2019 when Kubernetes <= 1.24 or Windows2022 when Kubernetes >= 1.25 if OSType is Windows.")]
-        [PSArgumentCompleter("Ubuntu", "CBLMariner", "Windows2019", "Windows2022")]
+        [Parameter(Mandatory = false, HelpMessage = "OsSKU to be used to specify OS SKU. The default is Ubuntu if OSType is Linux. The default is Windows2019 when Kubernetes <= 1.24 or Windows2022 when Kubernetes >= 1.25 if OSType is Windows.")]
+        [PSArgumentCompleter("Ubuntu", "CBLMariner", "AzureLinux", "Windows2019", "Windows2022")]
         public string OsSKU { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Whether to enable public IP for nodes.")]
@@ -190,6 +190,10 @@ namespace Microsoft.Azure.Commands.Aks
             if (this.IsParameterBound(c => c.OsSKU))
             {
                 agentPool.OsSKU = OsSKU;
+                if (OsSKU.ToLower().Equals("cblmariner") || OsSKU.ToLower().Equals("mariner"))
+                {
+                    WriteWarning("The OsSKU 'AzureLinux' should be used going forward instead of 'CBLMariner' or 'Mariner'. The OsSKU 'CBLMariner' and 'Mariner' will eventually be deprecated.");
+                }
             }
             if (this.IsParameterBound(c => c.MaxPodCount))
             {

@@ -20,6 +20,11 @@
 
 ## Upcoming Release
 
+## Version 3.0.0
+* Upgraded API version to 2022-11-01-preview
+* Added support to migrate from Azure Front Door (classic) to Azure Front Door Standard and Premium.
+* Added support for AFDX upgrade from Standard tier to Premium tier.
+
 ## Version 2.1.0
 * Upgraded API version to 2021-06-01
 * Removed deprecated cmdlets

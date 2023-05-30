@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             ConfirmAction(
                 ProjectResources.CancelDeploymentMessage,
                 this.Name,
-                () => ResourceManagerSdkClient.CancelDeployment(options));
+                () => NewResourceManagerSdkClient.CancelDeployment(options));
 
             if (this.PassThru.IsPresent)
             {

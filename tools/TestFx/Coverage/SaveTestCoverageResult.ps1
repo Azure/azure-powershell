@@ -53,7 +53,7 @@ if (Test-Path -LiteralPath $cvgDir -PathType Container) {
         Export-Csv -Path $_ -Encoding utf8 -NoTypeInformation -Force
     }
 
-    Import-KustoDataFromCsv -DatabaseName ${env:TESTCOVERAGEDATABASENAME} -TableName ${env:TESTCOVERAGETABLENAME} -CsvFile $cvgRawCsv
+    Add-KustoData -DatabaseName ${env:TESTCOVERAGEDATABASENAME} -TableName ${env:TESTCOVERAGETABLENAME} -CsvFile $cvgRawCsv
 }
 else {
     Write-Host "##[warning]No test coverage data was found." -ForegroundColor Yellow
