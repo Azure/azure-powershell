@@ -19,6 +19,9 @@
 -->
 
 ## Upcoming Release
+* ListConnectionStrings response now includes keyKind and type properties
+* Locations show response now includes status, isSubscriptionRegionAccessAllowedForRegular and isSubscriptionRegionAccessAllowedForAz properties
+* Ldap moved to GA and add sku update support
 
 ## Version 1.11.0
 * Added support for Continuous 7 Days backup mode.

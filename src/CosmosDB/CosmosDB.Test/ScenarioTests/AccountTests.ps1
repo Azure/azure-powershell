@@ -89,6 +89,8 @@ function Test-AccountRelatedCmdlets
 
   $cosmosDBAccountConnectionStrings = Get-AzCosmosDBAccountKey -Name $cosmosDBAccountName -ResourceGroupName $rgname -Type "ConnectionStrings"
   Assert-NotNull $cosmosDBAccountConnectionStrings
+  Assert-NotNull $cosmosDBAccountConnectionStrings.ConnectionStrings[0].KeyKind
+  Assert-NotNull $cosmosDBAccountConnectionStrings.ConnectionStrings[0].Type
 
   $cosmosDBAccountReadOnlyKeys = Get-AzCosmosDBAccountKey -Name $cosmosDBAccountName -ResourceGroupName $rgname -Type "ReadOnlyKeys"
   Assert-NotNull $cosmosDBAccountReadOnlyKeys
