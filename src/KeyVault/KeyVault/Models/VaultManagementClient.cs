@@ -148,8 +148,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             parameters.Location = null;
             var existed = ResourceManagementClient.Deployments.CheckExistence(parameters.ResourceGroupName, parameters.Name);
 
-            //WriteInfo("Validating KeyVault creation...", cmdlet);
-            this.RunDeploymentValidation(parameters, deployment, cmdlet);
+            // WriteInfo("Validating KeyVault creation...", cmdlet);
+            // this.RunDeploymentValidation(parameters, deployment, cmdlet);
             this.BeginDeployment(parameters, deployment, cmdlet);
             var dep = ProvisionDeploymentStatus(parameters, deployment, cmdlet, existed).ToPSDeployment(resourceGroupName: parameters.ResourceGroupName);
             
@@ -186,8 +186,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             var deploymentOperationError = new DeploymentOperationErrorInfo();
             Action writeProgressAction = () => this.WriteDeploymentProgress(parameters, deploymentOperationError);
 
-            int progressBarTimeSpan = 220;
-            if (existed) { progressBarTimeSpan = 20; }
+            int progressBarTimeSpan = 170;
+            // if (existed) { progressBarTimeSpan = 20; }
             int step = 5;
             int phaseOne = 400;
             var downloadStatus = new ProgressStatus(0, progressBarTimeSpan);
@@ -524,6 +524,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             var jsonInfo = JObject.Parse(templateContent);
 
             jsonInfo["resources"][0]["name"] = parameters.Name;
+            jsonInfo["resources"][0]["apiVersion"] = parameters.ApiVersion;
             jsonInfo["resources"][0]["location"] = parameters.Location;
             if (string.IsNullOrWhiteSpace(parameters.SkuFamilyName))
                 throw new ArgumentNullException("parameters.SkuFamilyName");

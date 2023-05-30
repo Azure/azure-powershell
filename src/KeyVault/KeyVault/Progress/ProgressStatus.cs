@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Progress
         {
             //double computeAvg = ThrougputStats.ComputeAvg(ThroughputMBs());
             //double avtThroughputMbps = 8.0 * computeAvg;
-            double remainingSeconds = ( 1 - PercentComplete() / 100 ) * TotalLength / 9;
+            double remainingSeconds = ( 1 - PercentComplete() / 100 ) * TotalLength;
             var pr = new ProgressRecord
             {
                 PercentComplete = PercentComplete(),
@@ -83,6 +83,10 @@ namespace Microsoft.Azure.Commands.KeyVault.Progress
 
         double PercentComplete()
         {
+            if (100.0 * this.BytesProcessed / ((double)this.TotalLength)>100)
+            {
+                this.BytesProcessed = 0;
+            }
             return 100.0 * this.BytesProcessed / ((double)this.TotalLength);
         }
     }

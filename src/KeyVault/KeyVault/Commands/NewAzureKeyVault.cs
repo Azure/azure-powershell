@@ -37,6 +37,10 @@ namespace Microsoft.Azure.Commands.KeyVault
     [OutputType(typeof(PSKeyVault))]
     public class NewAzureKeyVault : KeyVaultManagementCmdletBase
     {
+        // #region Parameter Set Names
+        // private const string SdkParameterSet = "Sdk";
+        // private const string ArmParameterSet = "Arm";
+
         #region Input Parameter Definitions
 
         /// <summary>
@@ -121,12 +125,26 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Parameter(Mandatory = false, HelpMessage = "Specifies the network rule set of the vault. It governs the accessibility of the key vault from specific network locations. Created by `New-AzKeyVaultNetworkRuleSetObject`.")]
         public PSKeyVaultNetworkRuleSet NetworkRuleSet { get; set; }
 
+        /// <summary>
+        /// ApiVersion
+        /// </summary>
+        [Parameter(Mandatory = false,
+                   HelpMessage = "Specifies the SDK api version. Default value is '2019-09-01'.")]
+        public string ApiVersion { get; set; } = "2019-09-01";
+
+        /// <summary>
+        /// FailOnExist
+        /// </summary>
+        [Parameter(Mandatory = false,
+                   HelpMessage = "Specifies whether the key vault will be created when existed. Default value: true. If set yes, the key vault will be overwritten incrementally.")]
+        public bool FailOnExist { get; set; } = true;
+
         #endregion
         protected PSDeploymentWhatIfCmdletParameters WhatIfParameters => new PSDeploymentWhatIfCmdletParameters(
             deploymentName: this.Name,
             resourceGroupName: this.ResourceGroupName
             // templateUri: Path.GetDirectoryName(new System.Uri(Assembly.GetExecutingAssembly().CodeBase).LocalPath)
-            //Assembly.GetExecutingAssembly().GetManifestResourceNames().FirstOrDefault(r => r.Contains("Template"))
+            // Assembly.GetExecutingAssembly().GetManifestResourceNames().FirstOrDefault(r => r.Contains("Template"))
             );
         protected PSWhatIfOperationResult ExecuteWhatIf(VaultCreationOrUpdateParameters VaultCreationParameter)
         {
@@ -140,20 +158,13 @@ namespace Microsoft.Azure.Commands.KeyVault
             {
                 // Write status message.
                 this.WriteInformation(information, tags);
+                
                 PSWhatIfOperationResult whatIfResult;
                 // this.WhatIfParameters
-                if (NetworkRuleSet != null)
-                {
-                    whatIfResult = KeyVaultCreationClient.ExecuteDeploymentWhatIf(this.WhatIfParameters, VaultCreationParameter, NetworkRuleSet);
-                }
-                else
-                {
-                    whatIfResult = KeyVaultCreationClient.ExecuteDeploymentWhatIf(this.WhatIfParameters, VaultCreationParameter);
-                }
-                
+                whatIfResult = KeyVaultCreationClient.ExecuteDeploymentWhatIf(this.WhatIfParameters, VaultCreationParameter, NetworkRuleSet);
+
                 // Clear status before returning result.
                 this.WriteInformation(clearInformation, tags);
-
                 return whatIfResult;
             }
             catch (Exception)
@@ -239,9 +250,13 @@ namespace Microsoft.Azure.Commands.KeyVault
                 // New key-vault takes in default network rule set
                 NetworkAcls = new NetworkRuleSet(),
                 PublicNetworkAccess = this.PublicNetworkAccess,
-                Tags = this.Tag
-
+                Tags = this.Tag,
+                ApiVersion = this.ApiVersion
             };
+            if (FailOnExist && VaultExistsInCurrentSubscription(VaultCreationParameter.Name))
+            {
+                throw new ArgumentException(Resources.VaultAlreadyExists);
+            }
             if (ShouldProcess(Name, Properties.Resources.CreateKeyVault))
             {
                 var newVault = KeyVaultCreationClient.CreateNewVault(VaultCreationParameter,
@@ -257,6 +272,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             }
             else
             {
+                
                 string whatIfMessage = null;
                 string warningMessage = null;
                 string captionMessage = null;

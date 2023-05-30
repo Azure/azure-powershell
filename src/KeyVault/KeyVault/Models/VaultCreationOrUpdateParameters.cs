@@ -51,6 +51,6 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         public string ParameterUri { get; set; }
         public string DeploymentDebugLogLevel { get; set; }
         public OnErrorDeployment OnErrorDeployment { get; set; }
-        // public IDictionary<string, string> Tags { get; set; }
+        public string ApiVersion { get; set; }
     }
 }
