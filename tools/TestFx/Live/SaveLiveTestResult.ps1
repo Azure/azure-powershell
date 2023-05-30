@@ -1,7 +1,7 @@
 param (
     [Parameter(Mandatory, Position = 0)]
     [ValidateNotNullOrEmpty()]
-    [guid] $ServicePrincipalTenantId,
+    [guid] $TenantId,
 
     [Parameter(Mandatory, Position = 1)]
     [ValidateNotNullOrEmpty()]
@@ -24,7 +24,7 @@ $ltDir = Join-Path -Path ${env:DATALOCATION} -ChildPath "LiveTestAnalysis" | Joi
 $ltResults = Get-ChildItem -Path $ltDir -Filter "*.csv" -File -ErrorAction SilentlyContinue | Select-Object -ExpandProperty FullName
 
 if (![string]::IsNullOrEmpty($ltResults)) {
-    Import-Module "./tools/TestFx/Utilities/KustoUtility.psd1" -ArgumentList $ServicePrincipalTenantId, $ServicePrincipalId, $ServicePrincipalSecret, $ClusterName, $ClusterRegion -Force
+    Import-Module "./tools/TestFx/Utilities/KustoUtility.psd1" -ArgumentList $TenantId, $ServicePrincipalId, $ServicePrincipalSecret, $ClusterName, $ClusterRegion -Force
     Add-KustoData -DatabaseName ${env:LIVETESTDATABASENAME} -TableName ${env:LIVETESTTABLENAME} -CsvFile $ltResults
 }
 else {

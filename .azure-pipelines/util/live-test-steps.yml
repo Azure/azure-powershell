@@ -113,7 +113,7 @@ jobs:
       pwsh: true
       targetType: filePath
       filePath: ./tools/TestFx/Live/InvokeLiveTestCITask.ps1
-      arguments: -UseWindowsPowerShell ('${{ parameters.psVersion }}' -eq '5.1') -ScriptFile './tools/TestFx/Live/ConnectLiveTestServicePrincipal.ps1 $(LiveTestServicePrincipalSubscriptionId) $(LiveTestServicePrincipalTenantId) $(LiveTestServicePrincipalId) $(LiveTestServicePrincipalSecret)'
+      arguments: -UseWindowsPowerShell ('${{ parameters.psVersion }}' -eq '5.1') -ScriptFile './tools/TestFx/Live/ConnectLiveTestServicePrincipal.ps1 $(LiveTestSubscriptionId) $(LiveTestTenantId) $(LiveTestServicePrincipalId) $(LiveTestServicePrincipalSecret)'
       failOnStderr: true
     retryCountOnTaskFailure: 3
 
@@ -133,7 +133,7 @@ jobs:
       pwsh: true
       targetType: filePath
       filePath: ./tools/TestFx/Live/SaveLiveTestResult.ps1
-      arguments: $(KustoServicePrincipalTenantId) $(KustoServicePrincipalId) $(KustoServicePrincipalSecret) $(KustoClusterName) $(KustoClusterRegion)
+      arguments: $(LiveTestTenantId) $(KustoServicePrincipalId) $(KustoServicePrincipalSecret) $(KustoClusterName) $(KustoClusterRegion)
 
   - task: PublishPipelineArtifact@1
     displayName: Publish live test results to pipeline artifact
