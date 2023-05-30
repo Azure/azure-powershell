@@ -1,4 +1,4 @@
-$files = Get-ChildItem -Path . -Filter "*.cs" -Recurse
+$files = Get-ChildItem -Path $PSScriptRoot/../../src/ -Filter "*.cs" -Recurse
 
 foreach ($file in $files) {
     $content = Get-Content $file.FullName
