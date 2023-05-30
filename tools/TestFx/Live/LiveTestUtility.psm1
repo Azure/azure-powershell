@@ -354,7 +354,7 @@ function Invoke-LiveTestScenario {
     }
     catch {
         $snrErrorMessage = $_.Exception.Message
-        Write-Error "##[error]Error occurred when executing the live scenario `"$Name`" with error details `"$snrErrorDetails`"." -ErrorAction Continue
+        Write-Error "##[error]Error occurred when executing the live scenario `"$Name`" with error details `"$snrErrorMessage`"." -ErrorAction Continue
         $snrCsvData.IsSuccess = $false
         $snrCsvData.Errors = ConvertToLiveTestJsonErrors -Errors $snrErrorMessage
     }
