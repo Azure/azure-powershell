@@ -20,23 +20,14 @@ Gets details of the Source Control Configuration.
 .Description
 Gets details of the Source Control Configuration.
 .Example
-PS C:\> Get-AzKubernetesConfiguration -ResourceGroupName azpstest_gp -ClusterName azpstest_cluster_arc -ClusterType ConnectedClusters
-
-Name                 RepositoryUrl          ResourceGroupName
-----                 -------------          -----------------
-azpstestk8s          http://github.com/xxxx azpstest_gp
-azpstestk8s-operator http://github.com/xxxx azpstest_gp
+Get-AzKubernetesConfiguration -ResourceGroupName azps_test_group -ClusterName azpstest_cluster_arc -ClusterType ConnectedClusters
 .Example
-PS C:\> Get-AzKubernetesConfiguration -ResourceGroupName azpstest_gp -ClusterName azpstest_cluster_arc -ClusterType ConnectedClusters -Name azpstestk8s
-
-Name        RepositoryUrl          ResourceGroupName
-----        -------------          -----------------
-azpstestk8s http://github.com/xxxx azpstest_gp
+Get-AzKubernetesConfiguration -ResourceGroupName azps_test_group -ClusterName azpstest_cluster_arc -ClusterType ConnectedClusters -Name azpstestk8s
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.IKubernetesConfigurationIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.ISourceControlConfiguration
+Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.ISourceControlConfiguration
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -58,7 +49,7 @@ https://learn.microsoft.com/powershell/module/az.kubernetesconfiguration/get-azk
 #>
 function Get-AzKubernetesConfiguration {
 [Alias('Get-AzK8sConfiguration')]
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.ISourceControlConfiguration])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.ISourceControlConfiguration])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -78,6 +69,7 @@ param(
 
     [Parameter(ParameterSetName='Get', Mandatory)]
     [Parameter(ParameterSetName='List', Mandatory)]
+    [ArgumentCompleter({'ManagedClusters', 'ConnectedClusters', 'ProvisionedClusters'})]
     [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Path')]
     [System.String]
     # The Kubernetes cluster resource name - i.e.
@@ -119,7 +111,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]

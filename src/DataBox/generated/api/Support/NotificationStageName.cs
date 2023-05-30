@@ -13,6 +13,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support
         /// <summary>Notification at device received at Azure datacenter stage.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.NotificationStageName AtAzureDc = @"AtAzureDC";
 
+        /// <summary>Notification at job created stage.</summary>
+        public static Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.NotificationStageName Created = @"Created";
+
         /// <summary>Notification at data copy started stage.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.NotificationStageName DataCopy = @"DataCopy";
 
@@ -27,6 +30,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support
 
         /// <summary>Notification at device picked up from user stage.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.NotificationStageName PickedUp = @"PickedUp";
+
+        /// <summary>Notification at shipped devices to customer stage.</summary>
+        public static Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.NotificationStageName ShippedToCustomer = @"ShippedToCustomer";
 
         /// <summary>the value for an instance of the <see cref="NotificationStageName" /> Enum.</summary>
         private string _value { get; set; }
@@ -61,7 +67,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support
             return this._value.GetHashCode();
         }
 
-        /// <summary>Creates an instance of the <see cref="NotificationStageName" Enum class./></summary>
+        /// <summary>Creates an instance of the <see cref="NotificationStageName"/> Enum class.</summary>
         /// <param name="underlyingValue">the value to create an instance for.</param>
         private NotificationStageName(string underlyingValue)
         {
@@ -92,8 +98,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support
         }
 
         /// <summary>Overriding != operator for enum NotificationStageName</summary>
-        /// <param name="e1">the value to compare against <see cref="e2" /></param>
-        /// <param name="e2">the value to compare against <see cref="e1" /></param>
+        /// <param name="e1">the value to compare against <paramref name="e2" /></param>
+        /// <param name="e2">the value to compare against <paramref name="e1" /></param>
         /// <returns><c>true</c> if the two instances are not equal to the same value</returns>
         public static bool operator !=(Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.NotificationStageName e1, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.NotificationStageName e2)
         {
@@ -101,8 +107,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support
         }
 
         /// <summary>Overriding == operator for enum NotificationStageName</summary>
-        /// <param name="e1">the value to compare against <see cref="e2" /></param>
-        /// <param name="e2">the value to compare against <see cref="e1" /></param>
+        /// <param name="e1">the value to compare against <paramref name="e2" /></param>
+        /// <param name="e2">the value to compare against <paramref name="e1" /></param>
         /// <returns><c>true</c> if the two instances are equal to the same value</returns>
         public static bool operator ==(Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.NotificationStageName e1, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.NotificationStageName e2)
         {

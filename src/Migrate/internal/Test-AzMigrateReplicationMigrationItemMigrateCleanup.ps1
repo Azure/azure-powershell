@@ -25,12 +25,12 @@ The operation to initiate test migrate cleanup.
 {{ Add code here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IMigrationItem
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IMigrationItem
 .Link
 https://learn.microsoft.com/powershell/module/az.migrate/test-azmigratereplicationmigrationitemmigratecleanup
 #>
 function Test-AzMigrateReplicationMigrationItemMigrateCleanup {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IMigrationItem])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IMigrationItem])]
 [CmdletBinding(DefaultParameterSetName='TestExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -81,8 +81,7 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The DefaultProfile parameter is not functional.
-    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    # The credentials, account, tenant, and subscription used for communication with Azure.
     ${DefaultProfile},
 
     [Parameter()]

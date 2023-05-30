@@ -21,7 +21,7 @@ Set-AzApplicationGatewayBackendAddressPool -ApplicationGateway <PSApplicationGat
 
 ## DESCRIPTION
 The **Set-AzApplicationGatewayBackendAddressPool** cmdlet updates a back-end address pool for an Azure application gateway.
-Back-end addresses can be specified as IP addresses, fully-qualified domain names (FQDN) or IP configurations IDs.
+Back-end addresses can be specified as IP addresses or fully-qualified domain names (FQDN).
 
 ## EXAMPLES
 

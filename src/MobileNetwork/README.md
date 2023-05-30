@@ -164,30 +164,51 @@ directive:
     hide: true
 
   # Due to business needs, some commands are deleted and not exposed to the public
+  # - where:
+  #     verb: Invoke
+  #     subject: ^BulkSimDelete$
+  #   set:
+  #     verb: Remove
   - where:
       verb: Invoke
       subject: ^BulkSimDelete$
     remove: true
+
+# - where:
+  #     verb: Invoke
+  #     subject: ^BulkSimUpload$
+  #   set:
+  #     verb: Update
   - where:
       verb: Invoke
       subject: ^BulkSimUpload$
     remove: true
+
+  # - where:
+  #     verb: Invoke
+  #     subject: ^BulkSimUploadEncrypted$
+  #   set:
+  #     verb: Update
   - where:
       verb: Invoke
       subject: ^BulkSimUploadEncrypted$
     remove: true
+
   - where:
       verb: Invoke
       subject: ^CollectPacketCoreControlPlaneDiagnosticPackage$
-    remove: true
+    set:
+      verb: Trace
   - where:
       verb: Invoke
       subject: ^ReinstallPacketCoreControlPlane$
-    remove: true
+    set:
+      verb: Deploy
   - where:
       verb: Invoke
       subject: ^RollbackPacketCoreControlPlane$
-    remove: true
+    set:
+      verb: Deploy
 
   # Some of the parameters are of type Object and need to be expanded into a command for the convenience of the user
   # The following are commented out and their generated cmdlets may be renamed and custom logic

@@ -388,7 +388,6 @@ The extended location of this virtual network gateway
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: MicrosoftRRDCLab3
 
 Required: False
 Position: Named

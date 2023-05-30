@@ -1204,6 +1204,15 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Removing this Route Map resource may affect the routing in your VirtualHub.
+        /// </summary>
+        internal static string RemoveRouteMapWarning {
+            get {
+                return ResourceManager.GetString("RemoveRouteMapWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Removing a Route Server will also remove all peerings associated with it. Are you sure you want to remove resource &apos;{0}&apos;.
         /// </summary>
         internal static string RemoveRouteServerWarning {
@@ -1344,6 +1353,15 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         internal static string ResourceNotFound {
             get {
                 return ResourceManager.GetString("ResourceNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The route map resource could not be found.
+        /// </summary>
+        internal static string RouteMapNotFound {
+            get {
+                return ResourceManager.GetString("RouteMapNotFound", resourceCulture);
             }
         }
         
@@ -1677,6 +1695,15 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         internal static string UpdatingLongRunningOperationMessage {
             get {
                 return ResourceManager.GetString("UpdatingLongRunningOperationMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A valid VHub RouteMap reference is required.
+        /// </summary>
+        internal static string VHubRouteMapReferenceNotFound {
+            get {
+                return ResourceManager.GetString("VHubRouteMapReferenceNotFound", resourceCulture);
             }
         }
         

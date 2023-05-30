@@ -2,7 +2,7 @@
     Please leave this section at the top of the change log.
 
     Changes for the upcoming release should go under the section titled "Upcoming Release", and should adhere to the following format:
-    
+
     ## Upcoming Release
     * Overview of change #1
         - Additional information about change #1
@@ -12,14 +12,51 @@
     * Overview of change #3
     * Overview of change #4
         - Additional information about change #4
-    
+
     ## YYYY.MM.DD - Version X.Y.Z (Previous Release)
     * Overview of change #1
         - Additional information about change #1
 --->
 
 ## Upcoming Release
+* Updated `New-AzVirtualNetworkGateway` to remove validation for `ExtendedLocation` parameter
+
+## Version 6.0.0
+* Added new cmdlets for RouteMap child resource of VirtualHub.
+    -`Get-AzRouteMap`
+    -`New-AzRouteMapRuleCriterion`
+    -`New-AzRouteMapRuleActionParameter`
+    -`New-AzRouteMapRuleAction`
+    -`New-AzRouteMapRule`
+    -`New-AzRouteMap`
+    -`Set-AzRouteMap`
+    -`Remove-AzRouteMap`
+* Updated cmdlets to add inbound/outbound route maps in routingConfiguration
+    -`New-AzRoutingConfiguration`
+* Added the command `New-AzFirewallPolicyApplicationRuleCustomHttpHeader`
+* Added the method `AddCustomHttpHeaderToInsert` to `PSAzureFirewallPolicyApplicationRule`
+* Added new cmdlets to support Rate Limiting Rule for Application Gateway WAF
+    - `New-AzApplicationGatewayFirewallCustomRuleGroupByUserSession`,
+    - `New-AzApplicationGatewayFirewallCustomRuleGroupByVariable`,
+    - Also updated cmdlet to add the property of `RateLimitDuration`, `RateLimitThreshold` and `GroupByUserSession`
+    - `New-AzureApplicationGatewayFirewallCustomRule`
+* Added support of `AdditionalNic` Property in `New-AzNetworkVirtualAppliance`
+* Added the new cmdlet for supporting `AdditionalNic` Property
+    - `New-AzVirtualApplianceAdditionalNicProperty`
+* Added new cmdlets to support Log Scrubbing Feature for Application Gateway WAF Firewall Policy
+    - `New-AzApplicationGatewayFirewallPolicyLogScrubbingConfiguration`,
+    - `New-AzApplicationGatewayFirewallPolicyLogScrubbingRule`,
+    - Also updated cmdlet to add the property of `LogScrubbing` 
+    - `New-AzApplicationGatewayFirewallPolicySetting`
 * Onboarded `Microsoft.HardwareSecurityModules/cloudHsmClusters` to private link cmdlets
+* Updated cmdlet to add the property of `DisableRequestBodyEnforcement`, `RequestBodyInspectLimitInKB` and `DisableFileUploadEnforcement` 
+    - `New-AzApplicationGatewayFirewallPolicySetting`
+* Added optional property `AuxiliarySku` to cmdlet `New-AzNetworkInterface` to help choose performance on an `AuxiliaryMode` enabled Network Interface.
+* Added a new value `AcceleratedConnections` for existing property `AuxiliaryMode` for `New-AzNetworkInterface`
+* Added new cmdlets to get virtual hub effective routes and in/outbound routes
+    - `Get-AzVHubEffectiveRoute`
+    - `Get-AzVHubInboundRoute`
+    - `Get-AzVHubOutboundRoute`
 
 ## Version 5.7.0
 * Onboarded `Microsoft.HardwareSecurityModules/cloudHsmClusters` to private link cmdlets

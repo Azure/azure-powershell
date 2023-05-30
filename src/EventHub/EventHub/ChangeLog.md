@@ -19,6 +19,10 @@
 -->
 ## Upcoming Release
 
+## Version 4.0.0
+* Aliased `New-AzEventHubNamespace`, `Remove-AzEventHubNamespace`, `Set-AzEventHubNamespace`, `Get-AzEventHubNamespace` with `New-AzEventHubNamespaceV2`, `Remove-AzEventHubNamespaceV2`, `Set-AzEventHubNamespaceV2`, `Get-AzEventHubNamespaceV2` respectively
+* Replaced `New-AzEventHubEncryptionConfig` by `New-AzEventHubKeyVaultPropertiesObject`
+
 ## Version 3.2.3
 * Added upcoming breaking change notifications for Az.EventHub module.
 

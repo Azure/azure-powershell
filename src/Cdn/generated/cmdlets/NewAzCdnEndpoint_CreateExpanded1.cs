@@ -15,7 +15,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Cmdlets
     /// [OpenAPI] Create=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzCdnEndpoint_CreateExpanded1", SupportsShouldProcess = true)]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IEndpoint))]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IEndpoint))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.Description(@"Creates a new CDN endpoint with the specified endpoint name under the specified subscription, resource group and profile.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.Generated]
     public partial class NewAzCdnEndpoint_CreateExpanded1 : global::System.Management.Automation.PSCmdlet,
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Cmdlets
         /// CDN endpoint is the entity within a CDN profile containing configuration information such as origin, protocol, content
         /// caching and delivery behavior. The CDN endpoint uses the URL format <endpointname>.azureedge.net.
         /// </summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IEndpoint _endpointBody = new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.Endpoint();
+        private Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IEndpoint _endpointBody = new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.Endpoint();
 
         /// <summary>when specified, runs this cmdlet as a PowerShell job</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Run the command as a job")]
@@ -80,9 +80,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Cmdlets
         public string DefaultOriginGroupId { get => _endpointBody.DefaultOriginGroupId ?? null; set => _endpointBody.DefaultOriginGroupId = value; }
 
         /// <summary>
-        /// The credentials, account, tenant, and subscription used for communication with Azure
+        /// The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet
+        /// against a different subscription
         /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The credentials, account, tenant, and subscription used for communication with Azure.")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.")]
         [global::System.Management.Automation.ValidateNotNull]
         [global::System.Management.Automation.Alias("AzureRMContext", "AzureCredential")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.ParameterCategory.Azure)]
@@ -108,8 +109,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Cmdlets
         ReadOnly = false,
         Description = @"A list of the delivery rules.",
         SerializedName = @"rules",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IDeliveryRule) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IDeliveryRule[] DeliveryPolicyRule { get => _endpointBody.DeliveryPolicyRule ?? null /* arrayOf */; set => _endpointBody.DeliveryPolicyRule = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IDeliveryRule) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IDeliveryRule[] DeliveryPolicyRule { get => _endpointBody.DeliveryPolicyRule ?? null /* arrayOf */; set => _endpointBody.DeliveryPolicyRule = value; }
 
         /// <summary>
         /// List of rules defining the user's geo access within a CDN endpoint. Each geo filter defines an access rule to a specified
@@ -123,8 +124,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Cmdlets
         ReadOnly = false,
         Description = @"List of rules defining the user's geo access within a CDN endpoint. Each geo filter defines an access rule to a specified path or content, e.g. block APAC for path /pictures/",
         SerializedName = @"geoFilters",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IGeoFilter) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IGeoFilter[] GeoFilter { get => _endpointBody.GeoFilter ?? null /* arrayOf */; set => _endpointBody.GeoFilter = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IGeoFilter) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IGeoFilter[] GeoFilter { get => _endpointBody.GeoFilter ?? null /* arrayOf */; set => _endpointBody.GeoFilter = value; }
 
         /// <summary>SendAsync Pipeline Steps to be appended to the front of the pipeline</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "SendAsync Pipeline Steps to be appended to the front of the pipeline")]
@@ -250,8 +251,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Cmdlets
         ReadOnly = false,
         Description = @"The source of the content being delivered via CDN.",
         SerializedName = @"origins",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IDeepCreatedOrigin) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IDeepCreatedOrigin[] Origin { get => _endpointBody.Origin ?? null /* arrayOf */; set => _endpointBody.Origin = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IDeepCreatedOrigin) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IDeepCreatedOrigin[] Origin { get => _endpointBody.Origin ?? null /* arrayOf */; set => _endpointBody.Origin = value; }
 
         /// <summary>
         /// The origin groups comprising of origins that are used for load balancing the traffic based on availability.
@@ -264,8 +265,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Cmdlets
         ReadOnly = false,
         Description = @"The origin groups comprising of origins that are used for load balancing the traffic based on availability.",
         SerializedName = @"originGroups",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IDeepCreatedOriginGroup) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IDeepCreatedOriginGroup[] OriginGroup { get => _endpointBody.OriginGroup ?? null /* arrayOf */; set => _endpointBody.OriginGroup = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IDeepCreatedOriginGroup) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IDeepCreatedOriginGroup[] OriginGroup { get => _endpointBody.OriginGroup ?? null /* arrayOf */; set => _endpointBody.OriginGroup = value; }
 
         /// <summary>
         /// The host header value sent to the origin with each request. This property at Endpoint is only allowed when endpoint uses
@@ -401,8 +402,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Cmdlets
         ReadOnly = false,
         Description = @"Resource tags.",
         SerializedName = @"tags",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.ITrackedResourceTags) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.ITrackedResourceTags Tag { get => _endpointBody.Tag ?? null /* object */; set => _endpointBody.Tag = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.ITrackedResourceTags) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.ITrackedResourceTags Tag { get => _endpointBody.Tag ?? null /* object */; set => _endpointBody.Tag = value; }
 
         /// <summary>List of keys used to validate the signed URL hashes.</summary>
         [global::System.Management.Automation.AllowEmptyCollection]
@@ -413,8 +414,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Cmdlets
         ReadOnly = false,
         Description = @"List of keys used to validate the signed URL hashes.",
         SerializedName = @"urlSigningKeys",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IUrlSigningKey) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IUrlSigningKey[] UrlSigningKey { get => _endpointBody.UrlSigningKey ?? null /* arrayOf */; set => _endpointBody.UrlSigningKey = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IUrlSigningKey) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IUrlSigningKey[] UrlSigningKey { get => _endpointBody.UrlSigningKey ?? null /* arrayOf */; set => _endpointBody.UrlSigningKey = value; }
 
         /// <summary>Resource ID.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Resource ID.")]
@@ -432,24 +433,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Cmdlets
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IErrorResponse</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IErrorResponse</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onDefault method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// <c>overrideOnOk</c> will be called before the regular onOk has been processed, allowing customization of what happens
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IEndpoint">Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IEndpoint</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IEndpoint">Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IEndpoint</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IEndpoint> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IEndpoint> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -680,12 +681,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Cmdlets
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IErrorResponse</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IErrorResponse</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IErrorResponse> response)
+        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IErrorResponse> response)
         {
             using( NoSynchronizationContext )
             {
@@ -702,7 +703,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Cmdlets
                 if ((null == code || null == message))
                 {
                     // Unrecognized Response. Create an error record based on what we have.
-                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IErrorResponse>(responseMessage, await response);
+                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IErrorResponse>(responseMessage, await response);
                     WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { ResourceGroupName=ResourceGroupName, ProfileName=ProfileName, Name=Name, SubscriptionId=SubscriptionId, body=_endpointBody })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
@@ -720,12 +721,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IEndpoint">Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IEndpoint</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IEndpoint">Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IEndpoint</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IEndpoint> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IEndpoint> response)
         {
             using( NoSynchronizationContext )
             {
@@ -737,7 +738,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IEndpoint
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IEndpoint
                 WriteObject((await response));
             }
         }

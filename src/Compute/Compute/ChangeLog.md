@@ -20,10 +20,14 @@
 
 -->
 ## Upcoming Release
+
+## Version 6.0.0
 * Added new switch parameter `OSImageScheduledEventEnabled` and string parameter `OSImageScheduledEventNotBeforeTimeoutInMinutes` to the cmdlets `New-AzVmssConfig` and `Update-AzVmss`.
 * Added `-SecurityType`, `-EnableSecureBoot` and `-EnableVtpm` parameters to `New-AzVm`,`New-AzVmConfig`, `New-AzVmss`, `New-AzVmssConfig`, `Update-AzVm` and `Update-AzVmss` cmdlets.
 * Configured flags `-EnableSecureBoot` and `-EnableVtpm` to default to True for TrustedLaunch,ConfidentialVM SecurityType to `New-AzVm`,`New-AzVmConfig`, `New-AzVmss`, `New-AzVmssConfig`, `Update-AzVm` and `Update-AzVmss` cmdlets.
 * Fixed an issue that `Add-AzVhd` throws `FileNotFoundException` on Windows PowerShell. [#21321]
+* Removed the `NextLink` parameter and parameter set from the `Get-AzVM` cmdlet.
+
 
 
 ## Version 5.7.1

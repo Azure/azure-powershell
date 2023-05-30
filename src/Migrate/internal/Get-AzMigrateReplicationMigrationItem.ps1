@@ -25,12 +25,12 @@ Gets the details of a migration item.
 {{ Add code here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IMigrationItem
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IMigrationItem
 .Link
 https://learn.microsoft.com/powershell/module/az.migrate/get-azmigratereplicationmigrationitem
 #>
 function Get-AzMigrateReplicationMigrationItem {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IMigrationItem])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IMigrationItem])]
 [CmdletBinding(DefaultParameterSetName='List1', PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -98,8 +98,7 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The DefaultProfile parameter is not functional.
-    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    # The credentials, account, tenant, and subscription used for communication with Azure.
     ${DefaultProfile},
 
     [Parameter(DontShow)]

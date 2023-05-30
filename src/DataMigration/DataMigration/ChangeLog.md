@@ -18,7 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Added the custom cmdlet for TDE Migration: New-AzDataMigrationTdeCertificateMigration
+
+## Version 0.13.0
+* Added the custom cmdlet for TDE Migration: `New-AzDataMigrationTdeCertificateMigration`
 
 ## Version 0.12.1
 * Updated the link of storage account for users to download LoginsMigration.zip file.

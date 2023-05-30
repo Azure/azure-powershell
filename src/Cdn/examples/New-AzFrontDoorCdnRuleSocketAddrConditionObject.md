@@ -9,3 +9,4 @@ Name
 SocketAddr
 ```
 
+Create an in-memory object for DeliveryRuleSocketAddrCondition

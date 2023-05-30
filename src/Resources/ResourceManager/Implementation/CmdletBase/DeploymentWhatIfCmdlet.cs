@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Cmdlet
                 // Write status message.
                 this.WriteInformation(information, tags);
 
-                PSWhatIfOperationResult whatIfResult = ResourceManagerSdkClient.ExecuteDeploymentWhatIf(this.WhatIfParameters);
+                PSWhatIfOperationResult whatIfResult = NewResourceManagerSdkClient.ExecuteDeploymentWhatIf(this.WhatIfParameters);
 
                 // Clear status before returning result.
                 this.WriteInformation(clearInformation, tags);

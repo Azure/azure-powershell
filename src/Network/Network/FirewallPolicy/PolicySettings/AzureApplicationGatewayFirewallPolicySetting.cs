@@ -33,7 +33,15 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateSet("Disabled", "Enabled", IgnoreCase = true)]
         [ValidateNotNullOrEmpty]
         public string State { get; set; }
-        
+
+        [Parameter(Mandatory = false, HelpMessage = "Disable request body enforcement limits for WAF.")]
+        [ValidateNotNullOrEmpty]
+        public bool? DisableRequestBodyEnforcement { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Max inspection limit in KB for request body inspection.")]
+        [ValidateNotNullOrEmpty]
+        public int? RequestBodyInspectLimitInKB { get; set; }
+
         [Parameter(
             HelpMessage = "Disable Request Body check.")]
         public SwitchParameter DisableRequestBodyCheck { get; set; }
@@ -42,6 +50,10 @@ namespace Microsoft.Azure.Commands.Network
            HelpMessage = "Maximum request body size in KB.")]
         [ValidateNotNullOrEmpty]
         public int MaxRequestBodySizeInKb { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Disable file upload enforcement limits for WAF.")]
+        [ValidateNotNullOrEmpty]
+        public bool? DisableFileUploadEnforcement { get; set; }
 
         [Parameter(
            HelpMessage = "Maximum fileUpload size in MB.")]
@@ -55,6 +67,10 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(Mandatory = false, HelpMessage = "Custom Response Body")]
         [ValidateNotNullOrEmpty]
         public string CustomBlockResponseBody { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "To scrub sensitive log fields")]
+        [ValidateNotNullOrEmpty]
+        public PSApplicationGatewayFirewallPolicyLogScrubbingConfiguration LogScrubbing { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -85,6 +101,21 @@ namespace Microsoft.Azure.Commands.Network
                 this.CustomBlockResponseStatusCode = (int?)null;
             }
 
+            if (!this.MyInvocation.BoundParameters.ContainsKey("RequestBodyInspectLimitInKB"))
+            {
+                this.RequestBodyInspectLimitInKB = (int?)null;
+            }
+
+            if (!this.MyInvocation.BoundParameters.ContainsKey("DisableFileUploadEnforcement"))
+            {
+                this.DisableFileUploadEnforcement = (bool?)null;
+            }
+
+            if (!this.MyInvocation.BoundParameters.ContainsKey("DisableRequestBodyEnforcement"))
+            {
+                this.DisableRequestBodyEnforcement = (bool?)null;
+            }
+
             if (this.MyInvocation.BoundParameters.ContainsKey("CustomBlockResponseBody"))
             {
                 this.CustomBlockResponseBody = System.Convert.ToBase64String(Encoding.UTF8.GetBytes(CustomBlockResponseBody));
@@ -98,15 +129,38 @@ namespace Microsoft.Azure.Commands.Network
 
         protected PSApplicationGatewayFirewallPolicySettings NewObject()
         {
+            bool? RequestBodyEnforcementVal = null;
+            if (this.DisableRequestBodyEnforcement != null)
+            {
+                RequestBodyEnforcementVal = true;
+                if (this.DisableRequestBodyEnforcement == true)
+                {
+                    RequestBodyEnforcementVal = false;
+                }
+            }
+            bool? FileUploadEnforcementVal = null;
+            if (this.DisableFileUploadEnforcement != null)
+            {
+                FileUploadEnforcementVal = true;
+                if (this.DisableFileUploadEnforcement == true)
+                {
+                    FileUploadEnforcementVal = false;
+                }
+            }
+
             return new PSApplicationGatewayFirewallPolicySettings()
             {
                 Mode = this.Mode,
                 State = this.State,
+                RequestBodyEnforcement = RequestBodyEnforcementVal,
+                RequestBodyInspectLimitInKB = this.RequestBodyInspectLimitInKB,
                 RequestBodyCheck = this.DisableRequestBodyCheck.IsPresent ? false : true,
                 MaxRequestBodySizeInKb = this.MaxRequestBodySizeInKb,
+                FileUploadEnforcement = FileUploadEnforcementVal,
                 FileUploadLimitInMb = this.MaxFileUploadInMb,
                 CustomBlockResponseBody = this.CustomBlockResponseBody,
                 CustomBlockResponseStatusCode = this.CustomBlockResponseStatusCode,
+                LogScrubbing = this.LogScrubbing
             };
         }
     }
