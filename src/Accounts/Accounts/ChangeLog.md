@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Enabled customers to login with an valid domain using Service Principal [#20728]
 
 ## Version 2.12.3
 * Updated System.Security.Permissions to 4.7.0.
