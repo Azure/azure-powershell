@@ -1,5 +1,5 @@
 pool:
-  name: pool-windows-2019
+  name: $(AgentPool)
   demands: npm
 
   timeoutInMinutes: 180
