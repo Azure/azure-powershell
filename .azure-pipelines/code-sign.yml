@@ -1,6 +1,6 @@
 jobs:
 - job: Test
-  timeoutInMinutes: 180
+  timeoutInMinutes: 1
   pool:
     name: $(AgentPool)
     demands: npm
