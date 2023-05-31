@@ -25,7 +25,7 @@ Describe 'Get-AzStorageMoverJobRun' {
     }
 
     It 'Get' {
-        $jobRunName = $job.Split("/")[-1]
+        $jobRunName = $job.JobRunResourceId1.Split("/")[-1]
         $jobRun = Get-AzStorageMoverJobRun -Name $jobRunName -JobDefinitionName $env.JobDefinitionName -ResourceGroupName $env.ResourceGroupName -StorageMoverName $env.StorageMoverNameWithAgent -ProjectName $env.ProjectName
         $jobRun.AgentName | Should -Be $env.AgentName 
         $jobRun.SourceName | Should -Be $env.NfsEndpointName 

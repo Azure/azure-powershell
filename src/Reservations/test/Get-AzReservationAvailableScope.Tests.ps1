@@ -16,8 +16,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzReservationAvailableSco
 
  function ExecuteTestCases([object]$response) {
     $response | Should -Not -Be $null
-    $response.Scope | Should -Be "/subscriptions/40000000-aaaa-bbbb-cccc-100000000003"
-    $response.Valid | Should -Be "True"
+    $response.Scope.Scope | Should -Be "/subscriptions/40000000-aaaa-bbbb-cccc-100000000003"
+    $response.Scope.Valid | Should -Be "True"
 }
 
 Describe 'Get-AzReservationAvailableScope' {

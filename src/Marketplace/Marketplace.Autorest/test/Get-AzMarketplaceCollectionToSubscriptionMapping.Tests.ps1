@@ -17,6 +17,6 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzMarketplaceCollectionTo
 Describe 'Get-AzMarketplaceCollectionToSubscriptionMapping' {
     It 'CollectionsExpanded' {
          $res = Get-AzMarketplaceCollectionToSubscriptionMapping -PrivateStoreId a260d38c-96cf-492d-a340-404d0c4b3ad6 -Payload @{SubscriptionId = "1052ff5a-aa43-4ca1-bd18-010399494ce5"}
-        $res.keys.Count | Should -BeGreaterOrEqual 1
+        $res.Detail.keys.Count | Should -BeGreaterOrEqual 1
     }
 }
