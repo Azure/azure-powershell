@@ -118,3 +118,5 @@ directive:
     where: $.definitions.ExtensionParameters.properties.protectedSettings
     transform: $["additionalProperties"] = true
 ```
+
+

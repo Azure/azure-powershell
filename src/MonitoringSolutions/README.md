@@ -94,3 +94,5 @@ directive:
     where: $.paths["/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.OperationsManagement/solutions/{solutionName}"].patch.description
     transform: return "Update the tags of a solution."
 ```
+
+

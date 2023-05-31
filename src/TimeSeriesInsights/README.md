@@ -146,3 +146,5 @@ directive:
     where: $
     transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IIoTHubEventSourceCreationProperties Property', 'public Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IIoTHubEventSourceCreationProperties Property');
 ```
+
+
