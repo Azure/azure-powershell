@@ -44,12 +44,14 @@ namespace Microsoft.Azure.Management.TrafficManager
         public ServiceClientCredentials Credentials { get; private set; }
 
         /// <summary>
-        /// The ID of the target subscription.
+        /// Gets subscription credentials which uniquely identify Microsoft Azure
+        /// subscription. The subscription ID forms part of the URI for every service
+        /// call.
         /// </summary>
         public string SubscriptionId { get; set; }
 
         /// <summary>
-        /// The API version to use for this operation.
+        /// Client Api Version.
         /// </summary>
         public string ApiVersion { get; private set; }
 
@@ -343,7 +345,7 @@ namespace Microsoft.Azure.Management.TrafficManager
             HeatMap = new HeatMapOperations(this);
             TrafficManagerUserMetricsKeys = new TrafficManagerUserMetricsKeysOperations(this);
             BaseUri = new System.Uri("https://management.azure.com");
-            ApiVersion = "2022-04-01-preview";
+            ApiVersion = "2022-04-01";
             AcceptLanguage = "en-US";
             LongRunningOperationRetryTimeout = 30;
             GenerateClientRequestId = true;
