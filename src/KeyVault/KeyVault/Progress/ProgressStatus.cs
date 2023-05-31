@@ -76,11 +76,6 @@ namespace Microsoft.Azure.Commands.KeyVault.Progress
             return pr;
         }
 
-        TimeSpan ProcessTime()
-        {
-            return DateTime.UtcNow - this.StartTime;
-        }
-
         double PercentComplete()
         {
             if (100.0 * this.BytesProcessed / ((double)this.TotalLength)>100)

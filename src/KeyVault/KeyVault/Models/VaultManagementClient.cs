@@ -55,6 +55,7 @@ using System.Management.Automation;
 using Microsoft.Azure.Commands.Common.Strategies;
 using System.Threading;
 using Microsoft.Azure.Commands.KeyVault.Utilities;
+using System.Runtime.CompilerServices;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
@@ -146,12 +147,12 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             parameters.Name = GenerateDeploymentName(parameters);
             Deployment deployment = CreateBasicDeployment(parameters, parameters.DeploymentMode, parameters.DeploymentDebugLogLevel, networkRuleSet);
             parameters.Location = null;
-            var existed = ResourceManagementClient.Deployments.CheckExistence(parameters.ResourceGroupName, parameters.Name);
+            // var existed = ResourceManagementClient.Deployments.CheckExistence(parameters.ResourceGroupName, parameters.Name);
 
             // WriteInfo("Validating KeyVault creation...", cmdlet);
             // this.RunDeploymentValidation(parameters, deployment, cmdlet);
             this.BeginDeployment(parameters, deployment, cmdlet);
-            var dep = ProvisionDeploymentStatus(parameters, deployment, cmdlet, existed).ToPSDeployment(resourceGroupName: parameters.ResourceGroupName);
+            var dep = ProvisionDeploymentStatus(parameters, deployment, cmdlet).ToPSDeployment(resourceGroupName: parameters.ResourceGroupName);
             
             return GetVault(parameters.Name, parameters.ResourceGroupName);
         }
@@ -178,7 +179,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 }
             }
         }
-        public DeploymentExtended ProvisionDeploymentStatus(VaultCreationOrUpdateParameters parameters, Deployment deployment, KeyVaultManagementCmdletBase cmdlet = null, bool existed = false)
+        public DeploymentExtended ProvisionDeploymentStatus(VaultCreationOrUpdateParameters parameters, Deployment deployment, KeyVaultManagementCmdletBase cmdlet = null)
         {
             operations = new List<DeploymentOperation>();
             ProvisioningState[] status = new ProvisioningState[] { ProvisioningState.Canceled, ProvisioningState.Succeeded, ProvisioningState.Failed };
@@ -186,16 +187,17 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             var deploymentOperationError = new DeploymentOperationErrorInfo();
             Action writeProgressAction = () => this.WriteDeploymentProgress(parameters, deploymentOperationError);
 
-            int progressBarTimeSpan = 170;
-            // if (existed) { progressBarTimeSpan = 20; }
+            int progressBarTimeSpan = 25;
             int step = 5;
-            int phaseOne = 400;
+            int phaseOne = 10;
             var downloadStatus = new ProgressStatus(0, progressBarTimeSpan);
             Program.SyncOutput = new PSSyncOutputEvents(cmdlet);
 
             DeploymentExtended deploymentExtended = null;
 
             ProgressTracker progressTracker = new ProgressTracker(downloadStatus, Program.SyncOutput.ProgressOperationStatus, Program.SyncOutput.ProgressOperationComplete);
+            
+            
             do
             {
                 if (writeProgressAction != null)
@@ -214,9 +216,13 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 }
                 else
                 {
-                    step = phaseOne > 0 ? 5 : 60;
+                    step = phaseOne-- > 0 ? 5 : 60;
                 }
-                progressTracker.Update(actionName);
+                for ( var i = 0; i < step; ++i)
+                {
+                    progressTracker.Update(actionName);
+                    System.Threading.Thread.Sleep(1000);
+                }
             } while (!status.Any(s => s.ToString().Equals(deploymentExtended.Properties.ProvisioningState, StringComparison.OrdinalIgnoreCase))); 
 
             if (deploymentOperationError.ErrorMessages.Count > 0)
@@ -603,8 +609,9 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         /// <param name="parameters"></param>
         /// <param name="kvParameters"></param>
         /// <param name="networkRuleSet"></param>
+        /// <param name="cmdlet"></param>
         /// <returns></returns>
-        public virtual PSWhatIfOperationResult ExecuteDeploymentWhatIf(PSDeploymentWhatIfCmdletParameters parameters, VaultCreationOrUpdateParameters kvParameters, PSKeyVaultNetworkRuleSet networkRuleSet = null)
+        public virtual PSWhatIfOperationResult ExecuteDeploymentWhatIf(PSDeploymentWhatIfCmdletParameters parameters, VaultCreationOrUpdateParameters kvParameters, PSKeyVaultNetworkRuleSet networkRuleSet = null, KeyVaultManagementCmdletBase cmdlet = null)
         {
             IDeploymentsOperations deployments = this.ResourceManagementClient.Deployments;
             DeploymentWhatIf deploymentWhatIf = parameters.ToDeploymentWhatIf(parameters, kvParameters, networkRuleSet);
@@ -613,9 +620,40 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             try
             {
                 WhatIfOperationResult whatIfOperationResult = null;
-                whatIfOperationResult = deployments.WhatIf(parameters.ResourceGroupName, parameters.DeploymentName, deploymentWhatIf.Properties);
+                bool threadCompleted = false;
+                var progressBarTimeSpan = 25;
+                Program.SyncOutput = new PSSyncOutputEvents(cmdlet);
+                var creationStatus = new ProgressStatus(0, progressBarTimeSpan);
+                var actionName = "Checking what will happen if execute...";
+                Action onComplete = () =>
+                {
+                    threadCompleted = true;
+                };
+                var creationThread = new Thread(
+                    () =>
+                    {
+                        try
+                        {
+                            whatIfOperationResult = deployments.WhatIf(parameters.ResourceGroupName, parameters.DeploymentName, deploymentWhatIf.Properties);
+                        }
+                        finally
+                        {
+                            onComplete();
+                        }
+                    });
+                creationThread.Start();
+                // validationResult = this.GetTemplateValidationResult(parameters, deployment);
+                ProgressTracker progressTracker = new ProgressTracker(creationStatus, Program.SyncOutput.ProgressOperationStatus, Program.SyncOutput.ProgressOperationComplete);
+                while (!threadCompleted)
+                {
+                    progressTracker.Update(actionName);
+                    Thread.Sleep(500);
+                }
 
-               if (parameters.ExcludeChangeTypes != null)
+
+                // whatIfOperationResult = deployments.WhatIf(parameters.ResourceGroupName, parameters.DeploymentName, deploymentWhatIf.Properties);
+
+                if (parameters.ExcludeChangeTypes != null)
                 {
                     whatIfOperationResult.Changes = whatIfOperationResult.Changes
                         .Where(change => parameters.ExcludeChangeTypes.All(changeType => changeType != change.ChangeType))

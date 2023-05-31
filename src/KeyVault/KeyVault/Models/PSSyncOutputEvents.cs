@@ -28,15 +28,15 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         }
 
 
-        private void LogProgress(int activityId, string activity, double precentComplete, TimeSpan remainingTime)
+        private void LogProgress(int activityId, string activity, double precentComplete)
         {
-            
+
             var message = string.Format(activity,
-                                        precentComplete,
-                                        FormatDuration(remainingTime));
+                                        precentComplete);
+                                        //FormatDuration(remainingTime));
             
             ProgressRecord progressRecord = new ProgressRecord(activityId, "In Progress", message);
-            progressRecord.SecondsRemaining = (int)remainingTime.TotalSeconds;
+            // progressRecord.SecondsRemaining = (int)remainingTime.TotalSeconds;
             progressRecord.PercentComplete = (int)precentComplete < 100 ? (int)precentComplete : 100;
 
             cmdlet.WriteProgress(progressRecord);
@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
         public void ProgressOperationStatus(double percentComplete, TimeSpan remainingTime, string actionName)
         {
-            LogProgress(1, actionName, percentComplete, remainingTime);
+            LogProgress(1, actionName, percentComplete);
         }
 
         public void ProgressOperationComplete(TimeSpan elapsed)
