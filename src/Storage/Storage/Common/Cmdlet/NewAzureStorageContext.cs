@@ -150,6 +150,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
         public string StorageAccountKey { get; set; }
 
         private const string SasTokenHelpMessage = "Azure Storage SAS Token";
+        [CmdletParameterBreakingChange("SasToken", ChangeDescription = "SAS token created in context will not have the leading question mark ?")]
         [Parameter(HelpMessage = SasTokenHelpMessage,
             Mandatory = true, ParameterSetName = SasTokenParameterSet)]
         [Parameter(HelpMessage = SasTokenHelpMessage,

@@ -28,7 +28,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
     using global::Azure.Storage.Blobs;
     using System.Collections.Generic;
     using global::Azure.Storage;
+    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
+    [GenericBreakingChange("SAS token created will not contain a leading question mark ? in a future release.")]
     [Cmdlet("New", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageBlobSASToken", DefaultParameterSetName = BlobNamePipelineParmeterSetWithPermission, SupportsShouldProcess = true), OutputType(typeof(String))]
     public class NewAzureStorageBlobSasTokenCommand : StorageCloudBlobCmdletBase
     {

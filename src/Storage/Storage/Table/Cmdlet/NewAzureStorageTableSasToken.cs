@@ -21,7 +21,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
     using System;
     using System.Management.Automation;
     using System.Security.Permissions;
+    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
+    [GenericBreakingChange("SAS token created will not contain a leading question mark ? in a future release.")]
     [Cmdlet("New", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageTableSASToken"), OutputType(typeof(String))]
     public class NewAzureStorageTableSasTokenCommand : StorageCloudTableCmdletBase
     {
