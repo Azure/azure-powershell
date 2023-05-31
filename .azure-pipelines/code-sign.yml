@@ -37,7 +37,7 @@ jobs:
       Copy-Item .\tools\Installer\InstallModule.ps1 -Destination $Env:RepoArtifacts/$Env:Configuration
       Copy-Item .\setup\InstallerChecks.dll -Destination $Env:RepoArtifacts/
       Copy-Item .\setup\Microsoft.Deployment.WindowsInstaller.dll -Destination $Env:RepoArtifacts/
-      displayName: 'Before Signing'
+    displayName: 'Before Signing'
   - task: SFP.build-tasks.custom-build-task-1.EsrpCodeSigning@1
     displayName: 'Sign Dll [Authenticode + Strong Name]'
     inputs:
@@ -209,9 +209,9 @@ jobs:
       Copy-Item $Env:RepoArtifacts/$Env:Configuration/AzPreview.psm1 -Destination ./tools/AzPreview
       Copy-Item $Env:RepoArtifacts/InstallerChecks.dll -Destination .\setup
       Copy-Item $Env:RepoArtifacts/Microsoft.Deployment.WindowsInstaller.dll -Destination .\setup
-      displayName: 'After Signing'
-      env:
-        CheckPsd1: True
+    displayName: 'After Signing'
+    env:
+      CheckPsd1: True
 
   - task: securedevelopmentteam.vss-secure-development-tools.build-task-codesignvalidation.CodeSign@1
     displayName: 'Run Codesign Validation'
@@ -287,8 +287,8 @@ jobs:
       Move-Item -Path $eventhub.FullName -Destination "artifacts\non_release_artifacts"
       Move-Item -Path $databoxedge.FullName -Destination "artifacts\non_release_artifacts"
       Move-Item -Path $monitor.FullName -Destination "artifacts\non_release_artifacts"
-      displayName: 'AzureStack (hide Az.Accounts/Az.IotHub/Az.EventHub/DataboxEdge/Monitor)'
-      condition: and(succeeded(), ne(variables['AzureStack'], 'false'))
+    displayName: 'AzureStack (hide Az.Accounts/Az.IotHub/Az.EventHub/DataboxEdge/Monitor)'
+    condition: and(succeeded(), ne(variables['AzureStack'], 'false'))
 
   - pwsh: './tools/ExpandModules -Artifacts artifacts'
     displayName: 'Expand modules'
@@ -343,7 +343,7 @@ jobs:
       Register-PSRepository -Name MSIcreationrepository -SourceLocation $Env:RepoArtifacts -InstallationPolicy Trusted
       ./setup/generate.ps1 -repository MSIcreationrepository
       Unregister-PSRepository -Name MSIcreationrepository
-      displayName: 'Build Installer'
+    displayName: 'Build Installer'
 
   - task: SFP.build-tasks.custom-build-task-1.EsrpCodeSigning@1
     displayName: 'Installer Signing [Authenticode]'
