@@ -133,7 +133,7 @@ jobs:
       pwsh: true
       targetType: filePath
       filePath: ./tools/TestFx/Live/SaveLiveTestResult.ps1
-      arguments: $(LiveTestTenantId) $(KustoServicePrincipalId) $(KustoServicePrincipalSecret) $(KustoClusterName) $(KustoClusterRegion)
+      arguments: $(KustoTenantId) $(KustoServicePrincipalId) $(KustoServicePrincipalSecret) $(KustoClusterName) $(KustoClusterRegion)
 
   - task: PublishPipelineArtifact@1
     displayName: Publish live test results to pipeline artifact
