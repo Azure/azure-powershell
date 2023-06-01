@@ -1,0 +1,17 @@
+jobs:
+- job: OOBRelease
+  timeoutInMinutes: 180
+  pool:
+    name: $(AgentPool)
+    demands: npm
+  steps:
+  - task: DotNetCoreCLI@2
+    displayName: Build
+    inputs:
+      command: custom
+      custom: msbuild
+      arguments: 'build.proj /t:Clean;Build /p:Configuration=Release'
+  - pwsh: |
+      .\tools\RunVersionController.ps1 -ModuleName Az.
+    displayName: 'Bump up version'
+  
