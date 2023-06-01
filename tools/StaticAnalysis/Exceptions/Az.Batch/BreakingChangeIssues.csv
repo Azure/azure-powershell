@@ -1,2 +1,0 @@
-"Module","ClassName","Target","Severity","ProblemId","Description","Remediation"
-"Az.Batch","Microsoft.Azure.Commands.Batch.DisableBatchAutoScaleCommand","Disable-AzBatchAutoScale","0","3010","The property 'ActionRequired' of type 'Microsoft.Azure.Management.Batch.Models.PrivateLinkServiceConnectionState' has been removed.","Add the property 'ActionRequired' back to type 'Microsoft.Azure.Management.Batch.Models.PrivateLinkServiceConnectionState'."

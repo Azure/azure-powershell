@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Management.Sql
                 new Tuple<string, string, string>("Sql", "EndpointCertificates", "2021-11-01-preview"),
                 new Tuple<string, string, string>("Sql", "ExtendedDatabaseBlobAuditingPolicies", "2021-11-01-preview"),
                 new Tuple<string, string, string>("Sql", "ExtendedServerBlobAuditingPolicies", "2021-11-01-preview"),
-                new Tuple<string, string, string>("Sql", "FailoverGroups", "2020-11-01-preview"),
+                new Tuple<string, string, string>("Sql", "FailoverGroups", "2022-11-01-preview"),
                 new Tuple<string, string, string>("Sql", "IPv6FirewallRules", "2021-11-01-preview"),
                 new Tuple<string, string, string>("Sql", "InstanceFailoverGroups", "2022-05-01-preview"),
                 new Tuple<string, string, string>("Sql", "InstancePools", "2020-11-01-preview"),

@@ -23,7 +23,7 @@ function Test-NewNodePool
     {
         New-AzResourceGroup -Name $resourceGroupName -Location $location
         
-        $cred = $(createTestCredential "a6148f60-19b8-49b8-a5a5-54945aec926e" "oRh8Q~QRN2jzB0_9wItnngmXK3vJINg_YCSQEc5p")
+        $cred = $(createTestCredential "a6148f60-19b8-49b8-a5a5-54945aec926e" "EmN8Q~mLAb~WBrSOQPvaY3FX4RA~4l5-KDEC6cR8")
         New-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName -ServicePrincipalIdAndSecret $cred -NetworkPlugin $networkPlugin `
             -KubernetesVersion $kubeVersion -NodeVmSetType $nodeVmSetType -WindowsProfileAdminUserName $winAdminUser `
             -WindowsProfileAdminUserPassword $winPassword

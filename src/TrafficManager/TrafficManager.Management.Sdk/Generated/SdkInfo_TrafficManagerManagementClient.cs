@@ -19,11 +19,11 @@ namespace Microsoft.Azure.Management.TrafficManager
           {
               return new Tuple<string, string, string>[]
               {
-                new Tuple<string, string, string>("Network", "Endpoints", "2022-04-01-preview"),
-                new Tuple<string, string, string>("Network", "GeographicHierarchies", "2022-04-01-preview"),
-                new Tuple<string, string, string>("Network", "HeatMap", "2022-04-01-preview"),
-                new Tuple<string, string, string>("Network", "Profiles", "2022-04-01-preview"),
-                new Tuple<string, string, string>("Network", "TrafficManagerUserMetricsKeys", "2022-04-01-preview"),
+                new Tuple<string, string, string>("Network", "Endpoints", "2022-04-01"),
+                new Tuple<string, string, string>("Network", "GeographicHierarchies", "2022-04-01"),
+                new Tuple<string, string, string>("Network", "HeatMap", "2022-04-01"),
+                new Tuple<string, string, string>("Network", "Profiles", "2022-04-01"),
+                new Tuple<string, string, string>("Network", "TrafficManagerUserMetricsKeys", "2022-04-01"),
               }.AsEnumerable();
           }
       }

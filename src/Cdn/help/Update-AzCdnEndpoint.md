@@ -65,6 +65,23 @@ WestUs   endptest001 testps-rg-da16jm
 
 Update an AzureCDN Endpoint under the AzureCDN profile
 
+### Example 2: Update an AzureCDN Endpoint under the AzureCDN profile via identity
+```powershell
+$tags = @{
+    Tag1 = 11
+    Tag2 = 22
+}
+Get-AzCdnEndpoint -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -Name endptest001 | Update-AzCdnEndpoint -Tag $tags -DefaultOriginGroupId $originGroup.Id
+```
+
+```output
+Location Name        ResourceGroupName
+-------- ----        -----------------
+WestUs   endptest001 testps-rg-da16jm
+```
+
+Update an AzureCDN Endpoint under the AzureCDN profile via identity
+
 ## PARAMETERS
 
 ### -AsJob
@@ -114,7 +131,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -148,7 +166,7 @@ A list of the delivery rules.
 To construct, see NOTES section for DELIVERYPOLICYRULE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IDeliveryRule[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IDeliveryRule[]
 Parameter Sets: (All)
 Aliases:
 
@@ -166,7 +184,7 @@ block APAC for path /pictures/
 To construct, see NOTES section for GEOFILTER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IGeoFilter[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IGeoFilter[]
 Parameter Sets: (All)
 Aliases:
 
@@ -423,7 +441,7 @@ List of keys used to validate the signed URL hashes.
 To construct, see NOTES section for URLSIGNINGKEY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IUrlSigningKey[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IUrlSigningKey[]
 Parameter Sets: (All)
 Aliases:
 
@@ -489,7 +507,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IEndpoint
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IEndpoint
 
 ## NOTES
 
@@ -500,7 +518,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-DELIVERYPOLICYRULE <IDeliveryRule[]>: A list of the delivery rules.
+`DELIVERYPOLICYRULE <IDeliveryRule[]>`: A list of the delivery rules.
   - `Action <IDeliveryRuleAction1[]>`: A list of actions that are executed when all the conditions of a rule are satisfied.
     - `Name <DeliveryRuleAction>`: The name of the action for the delivery rule.
   - `Order <Int32>`: The order in which the rules are applied for the endpoint. Possible values {0,1,2,3,………}. A rule with a lesser order will be applied before a rule with a greater order. Rule with order 0 is a special rule. It does not require any condition and actions listed in it will always be applied.
@@ -508,18 +526,18 @@ DELIVERYPOLICYRULE <IDeliveryRule[]>: A list of the delivery rules.
     - `Name <MatchVariable>`: The name of the condition for the delivery rule.
   - `[Name <String>]`: Name of the rule
 
-GEOFILTER <IGeoFilter[]>: List of rules defining the user's geo access within a CDN endpoint. Each geo filter defines an access rule to a specified path or content, e.g. block APAC for path /pictures/
+`GEOFILTER <IGeoFilter[]>`: List of rules defining the user's geo access within a CDN endpoint. Each geo filter defines an access rule to a specified path or content, e.g. block APAC for path /pictures/
   - `Action <GeoFilterActions>`: Action of the geo filter, i.e. allow or block access.
   - `CountryCode <String[]>`: Two letter country or region codes defining user country or region access in a geo filter, e.g. AU, MX, US.
   - `RelativePath <String>`: Relative path applicable to geo filter. (e.g. '/mypictures', '/mypicture/kitty.jpg', and etc.)
 
-INPUTOBJECT `<ICdnIdentity>`: Identity Parameter
+`INPUTOBJECT <ICdnIdentity>`: Identity Parameter
   - `[CustomDomainName <String>]`: Name of the domain under the profile which is unique globally.
   - `[EndpointName <String>]`: Name of the endpoint under the profile which is unique globally.
   - `[Id <String>]`: Resource identity path
   - `[OriginGroupName <String>]`: Name of the origin group which is unique within the endpoint.
   - `[OriginName <String>]`: Name of the origin which is unique within the profile.
-  - `[ProfileName <String>]`: Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
+  - `[ProfileName <String>]`: Name of the Azure Front Door Standard or Azure Front Door Premium profile which is unique within the resource group.
   - `[ResourceGroupName <String>]`: Name of the Resource group within the Azure subscription.
   - `[RouteName <String>]`: Name of the routing rule.
   - `[RuleName <String>]`: Name of the delivery rule which is unique within the endpoint.
@@ -528,7 +546,7 @@ INPUTOBJECT `<ICdnIdentity>`: Identity Parameter
   - `[SecurityPolicyName <String>]`: Name of the security policy under the profile.
   - `[SubscriptionId <String>]`: Azure Subscription ID.
 
-URLSIGNINGKEY <IUrlSigningKey[]>: List of keys used to validate the signed URL hashes.
+`URLSIGNINGKEY <IUrlSigningKey[]>`: List of keys used to validate the signed URL hashes.
   - `KeyId <String>`: Defines the customer defined key Id. This id will exist in the incoming request to indicate the key used to form the hash.
   - `KeySourceParameterResourceGroupName <String>`: Resource group of the user's Key Vault containing the secret
   - `KeySourceParameterSecretName <String>`: The name of secret in Key Vault.
