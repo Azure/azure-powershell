@@ -4,7 +4,7 @@
       "patterns": [
         "src/{ModuleName}/README.md",
         "src/{ModuleName}[a-zA-Z`.`/]*/README.md",
-        "src/{ModuleName}/*/README.md$"
+        "src/{ModuleName}/*/[README|readme].md"
       ],
       "phases": [
         "build:related-module",
