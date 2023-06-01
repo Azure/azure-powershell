@@ -18,10 +18,12 @@ jobs:
       command: custom
       custom: msbuild
       arguments: 'build.proj /t:Clean;Build /p:Configuration=Release'
+      buildProperties: 
   - task: AzurePowerShell@5
     inputs:
       azureSubscription: 'lnxtest'
       ScriptType: InlineScript
+      azurePowerShellVersion: 'LatestVersion'
       Inline: |
         .\tools\RunVersionController.ps1 -ModuleName  ${{ parameters.ServiceName }}
     displayName: 'Bump up version'
