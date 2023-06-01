@@ -36,7 +36,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Helpers.Resources.Models
         /// <param name="location">The location to store the deployment
         /// data.</param>
         /// <param name="tags">Deployment tags</param>
-        public Deployment(DeploymentProperties properties, string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>))
+        public Deployment(DeploymentProperties properties, string location = default(string), Hashtable tags = default(Hashtable))
         {
             Location = location;
             Properties = properties;
@@ -65,7 +65,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Helpers.Resources.Models
         /// Gets or sets deployment tags
         /// </summary>
         [JsonProperty(PropertyName = "tags")]
-        public IDictionary<string, string> Tags { get; set; }
+        public Hashtable Tags { get; set; }
 
         /// <summary>
         /// Validate the object.

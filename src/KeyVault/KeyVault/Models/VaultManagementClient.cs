@@ -56,6 +56,7 @@ using Microsoft.Azure.Commands.Common.Strategies;
 using System.Threading;
 using Microsoft.Azure.Commands.KeyVault.Utilities;
 using System.Runtime.CompilerServices;
+using Org.BouncyCastle.Utilities.Net;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
@@ -540,7 +541,9 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             {
                 if (Enum.TryParse(parameters.SkuName, true, out SkuName _))
                 {
-                    jsonInfo["resources"][0]["properties"]["sku"]["skuName"] = parameters.SkuName;
+                    TextInfo myTI = new CultureInfo("en-US", false).TextInfo;
+                    jsonInfo["resources"][0]["properties"]["sku"]["skuName"] = myTI.ToTitleCase(parameters.SkuName);
+                    jsonInfo["parameters"]["skuName"]["defaultValue"] = myTI.ToTitleCase(parameters.SkuName);
                 }
                 else
                 {
@@ -558,7 +561,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             jsonInfo["resources"][0]["properties"]["softDeleteRetentionInDays"] = parameters.SoftDeleteRetentionInDays;
             if (parameters.EnabledForDeployment is true)
                 jsonInfo["resources"][0]["properties"]["enabledForDeployment"] = parameters.EnabledForDeployment;
-            jsonInfo["resources"][0]["properties"]["publicNetworkAccess"] = parameters.PublicNetworkAccess;
+            if (parameters.EnablePurgeProtection is true)
+                jsonInfo["resources"][0]["properties"]["enablePurgeProtection"] = parameters.EnablePurgeProtection;
             if (networkRuleSet != null)
             {
                 jsonInfo["resources"][0]["properties"]["networkAcls"]["bypass"] = networkRuleSet.Bypass.ToString();
@@ -573,6 +577,11 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                     var virtualNetworkIds = JToken.FromObject(networkRuleSet.VirtualNetworkResourceIds);
                     jsonInfo["parameters"]["virtualNetworkRules"]["defaultValue"] = virtualNetworkIds;
                 }
+            }
+            if (parameters.Tags != null)
+            {
+                var tags = JToken.FromObject(parameters.Tags);
+                jsonInfo["parameters"]["tags"]["defaultValue"] = tags;
             }
 
             deployment.Properties.Template = jsonInfo;
@@ -597,7 +606,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                     : null;
             }
 
-            deployment.Tags = parameters?.Tags == null ? null : new Dictionary<string, string>((IDictionary<string, string>)parameters.Tags);
+            deployment.Tags = parameters?.Tags == null ? null : parameters.Tags;
             deployment.Properties.OnErrorDeployment = parameters.OnErrorDeployment;
 
             return deployment;
