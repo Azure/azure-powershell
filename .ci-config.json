@@ -2,8 +2,9 @@
   "rules": [
     {
       "patterns": [
-        "src/{ModuleName}/readme.md",
-        "src/{ModuleName}[a-zA-Z`.`/]*/readme.md"
+        "src/{ModuleName}/README.md",
+        "src/{ModuleName}[a-zA-Z`.`/]*/README.md",
+        "src/{ModuleName}/*/README.md$"
       ],
       "phases": [
         "build:related-module",
