@@ -10,9 +10,7 @@ parameters:
 jobs:
 - job: OOBRelease
   timeoutInMinutes: 180
-  pool:
-    name: $(AgentPool)
-    demands: npm
+  pool: pool-windows-2019
   steps:
   - task: DotNetCoreCLI@2
     displayName: Build
