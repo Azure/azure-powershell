@@ -60,6 +60,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         private ResourceManagerSdkClient resourceManagerSdkClient;
 
         /// <summary>
+        /// Field that holds the resource client instance with newer APIVersion
+        /// </summary>
+        private NewResourceManagerSdkClient newResourceManagerSdkClient;
+
+        /// <summary>
         /// Field that holds the subscriptions client instance
         /// </summary>
         private SubscriptionSdkClient subscriptionSdkClient;
@@ -260,6 +265,28 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             }
 
             set { this.resourceManagerSdkClient = value; }
+        }
+
+        /// <summary>
+        /// Gets or sets the resource manager sdk client
+        /// </summary>
+        public NewResourceManagerSdkClient NewResourceManagerSdkClient
+        {
+            get
+            {
+                if (this.newResourceManagerSdkClient == null)
+                {
+                    this.newResourceManagerSdkClient = new NewResourceManagerSdkClient(DefaultContext);
+                }
+
+                this.newResourceManagerSdkClient.VerboseLogger = WriteVerboseWithTimestamp;
+                this.newResourceManagerSdkClient.ErrorLogger = WriteErrorWithTimestamp;
+                this.newResourceManagerSdkClient.WarningLogger = WriteWarningWithTimestamp;
+
+                return this.newResourceManagerSdkClient;
+            }
+
+            set { this.newResourceManagerSdkClient = value; }
         }
 
         /// <summary>

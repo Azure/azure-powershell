@@ -55,9 +55,6 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// <param name="dnsServiceIP">An IP address assigned to the Kubernetes
         /// DNS service. It must be within the Kubernetes service address range
         /// specified in serviceCidr.</param>
-        /// <param name="dockerBridgeCidr">A CIDR notation IP range assigned to
-        /// the Docker bridge network. It must not overlap with any Subnet IP
-        /// ranges or the Kubernetes service address range.</param>
         /// <param name="outboundType">The outbound (egress) routing
         /// method.</param>
         /// <param name="loadBalancerSku">The load balancer sku for the managed
@@ -72,7 +69,7 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// to assign service cluster IPs.</param>
         /// <param name="ipFamilies">The IP families used to specify IP
         /// versions available to the cluster.</param>
-        public ContainerServiceNetworkProfile(string networkPlugin = default(string), string networkPluginMode = default(string), string networkPolicy = default(string), string networkMode = default(string), string networkDataplane = default(string), string podCidr = default(string), string serviceCidr = default(string), string dnsServiceIP = default(string), string dockerBridgeCidr = default(string), string outboundType = default(string), string loadBalancerSku = default(string), ManagedClusterLoadBalancerProfile loadBalancerProfile = default(ManagedClusterLoadBalancerProfile), ManagedClusterNATGatewayProfile natGatewayProfile = default(ManagedClusterNATGatewayProfile), IList<string> podCidrs = default(IList<string>), IList<string> serviceCidrs = default(IList<string>), IList<string> ipFamilies = default(IList<string>))
+        public ContainerServiceNetworkProfile(string networkPlugin = default(string), string networkPluginMode = default(string), string networkPolicy = default(string), string networkMode = default(string), string networkDataplane = default(string), string podCidr = default(string), string serviceCidr = default(string), string dnsServiceIP = default(string), string outboundType = default(string), string loadBalancerSku = default(string), ManagedClusterLoadBalancerProfile loadBalancerProfile = default(ManagedClusterLoadBalancerProfile), ManagedClusterNATGatewayProfile natGatewayProfile = default(ManagedClusterNATGatewayProfile), IList<string> podCidrs = default(IList<string>), IList<string> serviceCidrs = default(IList<string>), IList<string> ipFamilies = default(IList<string>))
         {
             NetworkPlugin = networkPlugin;
             NetworkPluginMode = networkPluginMode;
@@ -82,7 +79,6 @@ namespace Microsoft.Azure.Management.ContainerService.Models
             PodCidr = podCidr;
             ServiceCidr = serviceCidr;
             DnsServiceIP = dnsServiceIP;
-            DockerBridgeCidr = dockerBridgeCidr;
             OutboundType = outboundType;
             LoadBalancerSku = loadBalancerSku;
             LoadBalancerProfile = loadBalancerProfile;
@@ -157,14 +153,6 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// </summary>
         [JsonProperty(PropertyName = "dnsServiceIP")]
         public string DnsServiceIP { get; set; }
-
-        /// <summary>
-        /// Gets or sets a CIDR notation IP range assigned to the Docker bridge
-        /// network. It must not overlap with any Subnet IP ranges or the
-        /// Kubernetes service address range.
-        /// </summary>
-        [JsonProperty(PropertyName = "dockerBridgeCidr")]
-        public string DockerBridgeCidr { get; set; }
 
         /// <summary>
         /// Gets or sets the outbound (egress) routing method.
@@ -266,13 +254,6 @@ namespace Microsoft.Azure.Management.ContainerService.Models
                 if (!System.Text.RegularExpressions.Regex.IsMatch(DnsServiceIP, "^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$"))
                 {
                     throw new ValidationException(ValidationRules.Pattern, "DnsServiceIP", "^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$");
-                }
-            }
-            if (DockerBridgeCidr != null)
-            {
-                if (!System.Text.RegularExpressions.Regex.IsMatch(DockerBridgeCidr, "^([0-9]{1,3}\\.){3}[0-9]{1,3}(\\/([0-9]|[1-2][0-9]|3[0-2]))?$"))
-                {
-                    throw new ValidationException(ValidationRules.Pattern, "DockerBridgeCidr", "^([0-9]{1,3}\\.){3}[0-9]{1,3}(\\/([0-9]|[1-2][0-9]|3[0-2]))?$");
                 }
             }
             if (LoadBalancerProfile != null)

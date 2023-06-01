@@ -340,6 +340,7 @@ function Test-CreateandUpdateServerWithMinimalTlsVersion
 		$credentials = new-object System.Management.Automation.PSCredential($serverLogin, ($serverPassword | ConvertTo-SecureString -asPlainText -Force))
 		$tls1_1 = "1.1"
 		$tls1_2 = "1.2"
+		$tlsNone = "None"
 
 		# With all parameters
 		$job = New-AzSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $serverName `
@@ -351,6 +352,9 @@ function Test-CreateandUpdateServerWithMinimalTlsVersion
 
 		$server2 = Set-AzSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $serverName -MinimalTlsVersion $tls1_1
 		Assert-AreEqual $server2.MinimalTlsVersion $tls1_1
+		
+		$server3 = Set-AzSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $serverName -MinimalTlsVersion $tlsNone
+		Assert-AreEqual $server3.MinimalTlsVersion $tlsNone
 	}
 	finally
 	{
