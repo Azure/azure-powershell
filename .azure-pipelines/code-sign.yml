@@ -55,9 +55,9 @@ jobs:
         Release/**/Microsoft.Azure.Commands.*.AlcWrapper.dll
         InstallerChecks.dll
         !Release/**/Microsoft*Azure*PowerShell*Cmdlets*.Test.dll
-        UseMinimatch: true
-        signConfigType: inlineSignParams
-        inlineOperation: |
+      UseMinimatch: true
+      signConfigType: inlineSignParams
+      inlineOperation: |
         [
           {
             "KeyCode": "CP-233863-SN",
@@ -105,9 +105,9 @@ jobs:
         Release/**/*.psm1
         Release/**/*.ps1xml
         Release/**/*.js
-        UseMinimatch: true
-        signConfigType: inlineSignParams
-        inlineOperation: |
+      UseMinimatch: true
+      signConfigType: inlineSignParams
+      inlineOperation: |
         [
           {
             "KeyCode": "CP-230012",
@@ -170,32 +170,32 @@ jobs:
         Release/**/*BouncyCastle.Crypto*.dll
         Release/**/FuzzySharp.dll
         Microsoft.Deployment.WindowsInstaller.dll
-        UseMinimatch: true
-        signConfigType: inlineSignParams
-        inlineOperation: |
-          [
-            {
-              "KeyCode": "CP-231522",
-              "OperationCode": "SigntoolSign",
-              "Parameters": {
-                "OpusName": "Microsoft",
-                "OpusInfo": "http://www.microsoft.com",
-                "FileDigest": "/fd \"SHA256\"",
-                "PageHash": "/NPH",
-                "Append" : "/as",
-                "TimeStamp": "/tr \"http://rfc3161.gtm.corp.microsoft.com/TSS/HttpTspServer\" /td sha256"
-              },
-              "ToolName": "sign",
-              "ToolVersion": "1.0"
+      UseMinimatch: true
+      signConfigType: inlineSignParams
+      inlineOperation: |
+        [
+          {
+            "KeyCode": "CP-231522",
+            "OperationCode": "SigntoolSign",
+            "Parameters": {
+              "OpusName": "Microsoft",
+              "OpusInfo": "http://www.microsoft.com",
+              "FileDigest": "/fd \"SHA256\"",
+              "PageHash": "/NPH",
+              "Append" : "/as",
+              "TimeStamp": "/tr \"http://rfc3161.gtm.corp.microsoft.com/TSS/HttpTspServer\" /td sha256"
             },
-            {
-              "KeyCode": "CP-231522",
-              "OperationCode": "SigntoolVerify",
-              "Parameters": {},
-              "ToolName": "sign",
-              "ToolVersion": "1.0"
-            }
-          ]
+            "ToolName": "sign",
+            "ToolVersion": "1.0"
+          },
+          {
+            "KeyCode": "CP-231522",
+            "OperationCode": "SigntoolVerify",
+            "Parameters": {},
+            "ToolName": "sign",
+            "ToolVersion": "1.0"
+          }
+        ]
 
   - pwsh: |
       # Check Signature
@@ -203,7 +203,6 @@ jobs:
       # Do not check psd1
       $Env:CheckPsd1 = "False"
       ./tools/CheckSignature.ps1 -CustomPath $Env:RepoArtifacts/$Env:Configuration
-      
       # Copy files back after signing
       Copy-Item $Env:RepoArtifacts/$Env:Configuration/Az.psm1 -Destination ./tools/Az
       Copy-Item $Env:RepoArtifacts/$Env:Configuration/AzPreview.psm1 -Destination ./tools/AzPreview
