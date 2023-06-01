@@ -108,11 +108,14 @@ This command runs Deploy TSQL script to the target Azure SQL Database on given S
 New-AzDataMigrationSqlServerSchema -ConfigFilePath "C:\configfile.json"
 ```
 
-```configfile.json example
+```output
+configfile.json example
 {
   "Action": "GenerateScript",
   "sourceConnectionString": "Server=;Initial Catalog=;User ID=;Password=",
-  "targetConnectionString": "Server=;Initial Catalog=;User ID=;Password="
+  "targetConnectionString": "Server=;Initial Catalog=;User ID=;Password=",
+  "inputScriptFilePath": "C:\OutputFolder\script.sql",
+  "outputFolder": "C:\OutputFolder"
 }
 ```
 
