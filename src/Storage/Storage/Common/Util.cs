@@ -798,7 +798,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             }
         }
 
-        public static QueueClient GetTrack2QueueClient(string queueName, AzureStorageContext context)
+        public static QueueClient GetTrack2QueueClient(string queueName, AzureStorageContext context, QueueClientOptions options)
         {
             if (context == null || string.IsNullOrEmpty(context.ConnectionString))
             {
@@ -813,7 +813,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
 
             QueueClient queueClient;
 
-            queueClient = new QueueClient(connectionString, queueName);
+            queueClient = new QueueClient(connectionString, queueName, options);
             return queueClient;
         }
 

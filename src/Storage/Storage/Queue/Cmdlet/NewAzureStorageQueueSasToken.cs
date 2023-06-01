@@ -110,7 +110,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Queue.Cmdlet
         {
             if (String.IsNullOrEmpty(Name)) return;
 
-            QueueClient queueClient = Util.GetTrack2QueueClient(this.Name, (AzureStorageContext)this.Context);
+            QueueClient queueClient = Util.GetTrack2QueueClient(this.Name, (AzureStorageContext)this.Context, ClientOptions);
             QueueSignedIdentifier identifier = null;
             if (!string.IsNullOrEmpty(this.Policy))
             {

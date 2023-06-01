@@ -433,20 +433,20 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
                         sasBuilder.ExpiresOn = DateTimeOffset.UtcNow.AddHours(1);
                     }
                 }
-                if (iPAddressOrRange != null)
+            }
+            if (iPAddressOrRange != null)
+            {
+                sasBuilder.IPRange = Util.SetupIPAddressOrRangeForSASTrack2(iPAddressOrRange);
+            }
+            if (protocol != null)
+            {
+                if (protocol.Value == SharedAccessProtocol.HttpsOrHttp)
                 {
-                    sasBuilder.IPRange = Util.SetupIPAddressOrRangeForSASTrack2(iPAddressOrRange);
+                    sasBuilder.Protocol = SasProtocol.HttpsAndHttp;
                 }
-                if (protocol != null)
+                else //HttpsOnly
                 {
-                    if (protocol.Value == SharedAccessProtocol.HttpsOrHttp)
-                    {
-                        sasBuilder.Protocol = SasProtocol.HttpsAndHttp;
-                    }
-                    else //HttpsOnly
-                    {
-                        sasBuilder.Protocol = SasProtocol.Https;
-                    }
+                    sasBuilder.Protocol = SasProtocol.Https;
                 }
             }
             return sasBuilder;
