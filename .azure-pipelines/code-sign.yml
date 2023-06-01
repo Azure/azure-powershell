@@ -422,3 +422,34 @@ jobs:
     inputs:
       PathtoPublish: setup
       ArtifactName: setup
+
+  - task: AzurePowerShell@5
+    displayName: 'Push packages to storage account'
+    inputs:
+      azureSubscription: 'azureps-infra-sp'
+      ScriptType: InlineScript
+      Inline: |
+        $context = New-AzStorageContext -StorageAccountName "$(StorageAccountName)"
+        
+        # Push MSIs
+        $msi = Get-Item .\setup\*.msi
+        $msi | Set-AzStorageBlobContent -Container $(ContainerName) -Context $context -Force
+        
+        # Push tarball
+        $tarball = Get-Item .\setup\*.tar.gz
+        $tarball | Set-AzStorageBlobContent -Container $(ContainerName) -Context $context -Force
+        
+        # Push Az.Cmdlet-preview.zip
+        if($msi.Count -lt 1)
+        {
+        throw "No msi available"
+        }
+        elseif($msi.Count -gt 1)
+        {
+        $msi = $msi[0]
+        }
+        $buildName = $msi.BaseName.Substring(0,$msi.BaseName.Length-4)
+        Get-ChildItem -Path $Env:RepoArtifacts -Filter Az.*.0.*.*.nupkg | Compress-Archive -DestinationPath "$buildName-preview.zip" -PassThru | Set-AzStorageBlobContent -Container $(ContainerName) -Context $context -Force
+      azurePowerShellVersion: LatestVersion
+      pwsh: true
+    condition: and(succeeded(), eq(variables['PushPackageToStorageAccount'], 'true'))
