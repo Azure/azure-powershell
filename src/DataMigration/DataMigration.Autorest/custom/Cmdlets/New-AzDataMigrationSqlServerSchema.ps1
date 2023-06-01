@@ -62,7 +62,7 @@ function New-AzDataMigrationSqlServerSchema
     {
         try 
         {
-
+            return $true;
         }
         catch 
         {
