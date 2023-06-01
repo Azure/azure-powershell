@@ -24,18 +24,23 @@ jobs:
   - pwsh: |
         .\tools\RunVersionController.ps1 -ModuleName  ${{ parameters.ServiceName }}
     displayName: 'Bump up version'
-  - pwsh: |
-      Set-AzContext -Tenant 72f988bf-86f1-41af-91ab-2d7cd011db47 -SubscriptionId 6b085460-5f21-477e-ba44-1035046e9101
-      $Token = Get-AzKeyVaultSecret -VaultName azurepsdev -Name azpsbot-github-pat -AsPlainText
-      git config user.email "65331932+azure-powershell-bot@users.noreply.github.com";
-      git config user.name "azure-powershell-bot";
-      git add -A
-      git commit -m "Bump up version for  ${{ parameters.ServiceName }}"
-      git remote set-url origin https://azure-powershell-bot:$Token@github.com/Azure/azure-powershell.git;
-      git push origin codeoob/ ${{ parameters.ServiceName }} --force;
-      $Title = "Migrate  ${{ parameters.ServiceName }} from oob to main"
-      $HeadBranch = "codeoob/ ${{ parameters.ServiceName }}"
-      $BaseBranch = "main"
-      $Description = "Migrate  ${{ parameters.ServiceName }} from generation to main"
-      ./tools/Github/CreatePR.ps1 -Title $Title -HeadBranch $HeadBranch -BaseBranch $BaseBranch $Token -BotAccessToken  -Description $Description
+  - task: AzurePowerShell@5
+    inputs:
+        azureSubscription: 'azureps-infra-sp'
+        ScriptType: 'InlineScript'
+        azurePowerShellVersion: 'LatestVersion'
+        inline: |
+            Set-AzContext -Tenant 72f988bf-86f1-41af-91ab-2d7cd011db47 -SubscriptionId 6b085460-5f21-477e-ba44-1035046e9101
+            $Token = Get-AzKeyVaultSecret -VaultName azurepsdev -Name azpsbot-github-pat -AsPlainText
+            git config user.email "65331932+azure-powershell-bot@users.noreply.github.com";
+            git config user.name "azure-powershell-bot";
+            git add -A
+            git commit -m "Bump up version for  ${{ parameters.ServiceName }}"
+            git remote set-url origin https://azure-powershell-bot:$Token@github.com/Azure/azure-powershell.git;
+            git push origin codeoob/ ${{ parameters.ServiceName }} --force;
+            $Title = "Migrate  ${{ parameters.ServiceName }} from oob to main"
+            $HeadBranch = "codeoob/ ${{ parameters.ServiceName }}"
+            $BaseBranch = "main"
+            $Description = "Migrate  ${{ parameters.ServiceName }} from generation to main"
+            ./tools/Github/CreatePR.ps1 -Title $Title -HeadBranch $HeadBranch -BaseBranch $BaseBranch $Token -BotAccessToken  -Description $Description
     displayName: Create PR to main branch
