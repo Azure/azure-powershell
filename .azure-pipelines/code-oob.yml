@@ -18,8 +18,12 @@ jobs:
       command: custom
       custom: msbuild
       arguments: 'build.proj /t:Clean;Build /p:Configuration=Release'
-  - pwsh: |
-      .\tools\RunVersionController.ps1 -ModuleName  ${{ parameters.ServiceName }}
+  - task: AzurePowerShell@5
+    inputs:
+      azureSubscription: 'lnxtest'
+      ScriptType: InlineScript
+      Inline: |
+        .\tools\RunVersionController.ps1 -ModuleName  ${{ parameters.ServiceName }}
     displayName: 'Bump up version'
   - pwsh: |
       Set-AzContext -Tenant 72f988bf-86f1-41af-91ab-2d7cd011db47 -SubscriptionId 6b085460-5f21-477e-ba44-1035046e9101
