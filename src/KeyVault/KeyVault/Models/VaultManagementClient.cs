@@ -362,6 +362,10 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                     {
                         ResourceManagementClient.Deployments.BeginCreateOrUpdate(parameters.ResourceGroupName, parameters.Name, deployment);
                     }
+                    catch(Exception ex)
+                    {
+                        throw new AzPSArgumentException(string.Format(PSKeyVaultPropertiesResources.FileNotFound, ex.Message), "BeginDeploment");
+                    }
                     finally
                     {
                         onComplete();
