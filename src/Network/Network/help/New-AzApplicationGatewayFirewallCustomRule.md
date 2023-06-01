@@ -13,9 +13,10 @@ Creates a new custom rule for the application gateway firewall policy.
 ## SYNTAX
 
 ```
-New-AzApplicationGatewayFirewallCustomRule -Name <String> -Priority <Int32> [-RateLimitDuration<String>] [-RateLimitThreshold<Int32>] -RuleType <String>
- -MatchCondition <PSApplicationGatewayFirewallCondition[]> [-GroupByUserSession<PSApplicationGatewayFirewallCustomRuleGroupByUserSession[]>] -Action <String> [-State <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+New-AzApplicationGatewayFirewallCustomRule -Name <String> -Priority <Int32> [-RateLimitDuration <String>]
+ [-RateLimitThreshold <Int32>] -RuleType <String> -MatchCondition <PSApplicationGatewayFirewallCondition[]>
+ [-GroupByUserSession <PSApplicationGatewayFirewallCustomRuleGroupByUserSession[]>] -Action <String>
+ [-State <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -152,6 +153,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -GroupByUserSession
+List of match conditions.
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayFirewallCustomRuleGroupByUserSession[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -MatchCondition
 List of match conditions.
 
@@ -239,21 +255,6 @@ Aliases:
 Accepted values: MatchRule, RateLimitRule
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -GroupByUserSession
-List of match conditions.
-
-```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayFirewallCustomRuleGroupByUserSession[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

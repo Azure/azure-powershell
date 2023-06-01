@@ -14,7 +14,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzFrontDoorCdnRuleSslProt
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'New-AzFrontDoorCdnRuleSslProtocolConditionObject' -Tag 'LiveOnly' {
+Describe 'New-AzFrontDoorCdnRuleSslProtocolConditionObject'  {
     It '__AllParameterSets' {
         { 
             # ignore 

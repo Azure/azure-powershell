@@ -20,17 +20,15 @@ Create an in-memory object for ResourceReference.
 .Description
 Create an in-memory object for ResourceReference.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+New-AzCdnResourceReferenceObject -Id Idtest
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.ResourceReference
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.ResourceReference
 .Link
-https://learn.microsoft.com/powershell/module/az.Cdn/new-AzCdnResourceReferenceObject
+https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzCdnResourceReferenceObject
 #>
 function New-AzCdnResourceReferenceObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.ResourceReference])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.ResourceReference])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter()]
@@ -49,7 +47,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
         }         
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {

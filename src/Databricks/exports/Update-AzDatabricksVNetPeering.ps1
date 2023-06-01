@@ -20,9 +20,9 @@ Update vNet Peering for workspace.
 .Description
 Update vNet Peering for workspace.
 .Example
-Update-AzDatabricksVNetPeering -WorkspaceName databricks-test01 -ResourceGroupName lucas-manual-test -Name vnetpeering-t01 -AllowForwardedTraffic $True
+Update-AzDatabricksVNetPeering -Name vnet-peering-t1 -WorkspaceName azps-databricks-workspace-t1 -ResourceGroupName azps_test_gp_db -AllowForwardedTraffic $True
 .Example
-Get-AzDatabricksVNetPeering -WorkspaceName databricks-test01 -ResourceGroupName lucas-manual-test -Name vnetpeering-t01 | Update-AzDatabricksVNetPeering -AllowGatewayTransit $true
+Get-AzDatabricksVNetPeering -WorkspaceName azps-databricks-workspace-t1 -ResourceGroupName azps_test_gp_db -Name vnet-peering-t1 | Update-AzDatabricksVNetPeering -AllowGatewayTransit $true
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IDatabricksIdentity
@@ -105,6 +105,32 @@ param(
     ${AllowVirtualNetworkAccess},
 
     [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
+    [System.String[]]
+    # A list of address blocks reserved for this virtual network in CIDR notation.
+    ${DatabricksAddressSpacePrefix},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
+    [System.String]
+    # The Id of the databricks virtual network.
+    ${DatabricksVirtualNetworkId},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
+    [System.String[]]
+    # A list of address blocks reserved for this virtual network in CIDR notation.
+    ${RemoteAddressSpacePrefix},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
+    [System.String]
+    # The Id of the remote virtual network.
+    ${RemoteVirtualNetworkId},
+
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
     [System.Boolean]
     # [System.Management.Automation.SwitchParameter]
@@ -119,7 +145,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter()]

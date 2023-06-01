@@ -64,6 +64,46 @@ namespace Microsoft.Azure.Management.TrafficManager
             }
 
             /// <summary>
+            /// Checks the availability of a Traffic Manager Relative DNS name.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='name'>
+            /// The name of the resource.
+            /// </param>
+            /// <param name='type'>
+            /// The type of the resource.
+            /// </param>
+            public static TrafficManagerNameAvailability CheckTrafficManagerNameAvailabilityV2(this IProfilesOperations operations, string name = default(string), string type = default(string))
+            {
+                return operations.CheckTrafficManagerNameAvailabilityV2Async(name, type).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Checks the availability of a Traffic Manager Relative DNS name.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='name'>
+            /// The name of the resource.
+            /// </param>
+            /// <param name='type'>
+            /// The type of the resource.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<TrafficManagerNameAvailability> CheckTrafficManagerNameAvailabilityV2Async(this IProfilesOperations operations, string name = default(string), string type = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.CheckTrafficManagerNameAvailabilityV2WithHttpMessagesAsync(name, type, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
             /// Lists all Traffic Manager profiles within a resource group.
             /// </summary>
             /// <param name='operations'>

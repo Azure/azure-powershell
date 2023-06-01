@@ -108,6 +108,9 @@ function Get-AzAksVersion {
         if ($PSBoundParameters.ContainsKey('ProxyUseDefaultCredentials')) {
             $EnvPSBoundParameters['ProxyUseDefaultCredentials'] = $ProxyUseDefaultCredentials
         }
+        if ($PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $EnvPSBoundParameters['SubscriptionId'] = $SubscriptionId
+        }
 
         return (Az.Aks.internal\Get-AzAksContainerServiceOrchestrator -Location $Location -ResourceType 'managedClusters' @EnvPSBoundParameters).Orchestrator
     }

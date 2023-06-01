@@ -23,12 +23,12 @@ Checks the quota and usage of geo filters and custom domains under the given end
 Get-AzCdnEndpointResourceUsage -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -EndpointName endptest001
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IResourceUsage
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IResourceUsage
 .Link
 https://learn.microsoft.com/powershell/module/az.cdn/get-azcdnendpointresourceusage
 #>
 function Get-AzCdnEndpointResourceUsage {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IResourceUsage])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IResourceUsage])]
 [CmdletBinding(DefaultParameterSetName='List1', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -61,7 +61,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -113,7 +114,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
         }         
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {

@@ -82,20 +82,20 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
     [System.String[]]
     # A list of address blocks reserved for this virtual network in CIDR notation.
-    ${DatabrickAddressSpaceAddressPrefix},
+    ${DatabricksAddressSpacePrefix},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
     [System.String]
     # The Id of the databricks virtual network.
-    ${DatabrickVirtualNetworkId},
+    ${DatabricksVirtualNetworkId},
 
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
     [System.String[]]
     # A list of address blocks reserved for this virtual network in CIDR notation.
-    ${RemoteAddressSpaceAddressPrefix},
+    ${RemoteAddressSpacePrefix},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]

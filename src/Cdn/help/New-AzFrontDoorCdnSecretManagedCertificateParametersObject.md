@@ -21,16 +21,17 @@ Create an in-memory object for ManagedCertificateParameters.
 
 ## EXAMPLES
 
-### Example 1: Add title here
+### Example 1: Create an in-memory object for ManagedCertificateParameters
 ```powershell
-Add code here
+New-AzFrontDoorCdnSecretManagedCertificateParametersObject -Type ManagedCert
 ```
 
 ```output
-Add output here
+ExpirationDate Subject
+-------------- -------
 ```
 
-
+Create an in-memory object for ManagedCertificateParameters.
 
 ## PARAMETERS
 
@@ -56,7 +57,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.ManagedCertificateParameters
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.ManagedCertificateParameters
 
 ## NOTES
 

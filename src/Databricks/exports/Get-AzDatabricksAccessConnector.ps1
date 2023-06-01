@@ -22,11 +22,9 @@ Gets an azure databricks accessConnector.
 .Example
 Get-AzDatabricksAccessConnector
 .Example
-Get-AzDatabricksAccessConnector -ResourceGroupName databricks-rg-xyv4k5
+Get-AzDatabricksAccessConnector -ResourceGroupName azps_test_gp_db
 .Example
-Get-AzDatabricksAccessConnector -ResourceGroupName databricks-rg-xyv4k5 -Name databricks-ac
-.Example
-New-AzDatabricksAccessConnector -ResourceGroupName databricks-rg-xyv4k5 -Name databricks-ac -Location eastus | Get-AzDatabricksAccessConnector
+Get-AzDatabricksAccessConnector -ResourceGroupName azps_test_gp_db -Name azps-databricks-accessconnector
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IDatabricksIdentity

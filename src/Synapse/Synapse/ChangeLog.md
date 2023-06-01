@@ -19,7 +19,10 @@
 -->
 
 ## Upcoming Release
-* Remove the unnecessary breaking change of parameter '-SparkConfigFilePath' for `New-AzSynapseSparkPool` and `Update-AzSynapseSparkPool` cmdlets
+* Fixed the issue for "Start-AzSynapseTrigger/Stop-AzSynapseTrigger" to not throw exception when Request Status is 202
+
+## Version 3.0.0
+* Removed the unnecessary breaking change of parameter `-SparkConfigFilePath` for `New-AzSynapseSparkPool` and `Update-AzSynapseSparkPool` cmdlets
 
 ## Version 2.3.1
 * Updated Azure.Core to 1.31.0.

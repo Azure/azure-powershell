@@ -8,13 +8,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Cmdlets
     using static Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Extensions;
     using System;
 
-    /// <summary>Check the name availability of a host name.</summary>
+    /// <summary>
+    /// Validates the custom domain mapping to ensure it maps to the correct Azure Front Door endpoint in DNS.
+    /// </summary>
     /// <remarks>
     /// [OpenAPI] CheckHostNameAvailability=>POST:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/checkHostNameAvailability"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsDiagnostic.Test, @"AzFrontDoorCdnProfileHostNameAvailability_CheckExpanded", SupportsShouldProcess = true)]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.ICheckNameAvailabilityOutput))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.Description(@"Check the name availability of a host name.")]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.ICheckNameAvailabilityOutput))]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.Description(@"Validates the custom domain mapping to ensure it maps to the correct Azure Front Door endpoint in DNS.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.Generated]
     public partial class TestAzFrontDoorCdnProfileHostNameAvailability_CheckExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener
@@ -34,7 +36,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Cmdlets
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
 
         /// <summary>Input of CheckHostNameAvailability API.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.ICheckHostNameAvailabilityInput _checkHostNameAvailabilityInputBody = new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.CheckHostNameAvailabilityInput();
+        private Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.ICheckHostNameAvailabilityInput _checkHostNameAvailabilityInputBody = new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.CheckHostNameAvailabilityInput();
 
         /// <summary>Wait for .NET debugger to attach</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "Wait for .NET debugger to attach")]
@@ -45,9 +47,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Cmdlets
         public Microsoft.Azure.PowerShell.Cmdlets.Cdn.Cdn Client => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Module.Instance.ClientAPI;
 
         /// <summary>
-        /// The credentials, account, tenant, and subscription used for communication with Azure
+        /// The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet
+        /// against a different subscription
         /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The credentials, account, tenant, and subscription used for communication with Azure.")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.")]
         [global::System.Management.Automation.ValidateNotNull]
         [global::System.Management.Automation.Alias("AzureRMContext", "AzureCredential")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.ParameterCategory.Azure)]
@@ -96,13 +99,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Cmdlets
         private string _profileName;
 
         /// <summary>
-        /// Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
+        /// Name of the Azure Front Door Standard or Azure Front Door Premium profile which is unique within the resource group.
         /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.")]
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "Name of the Azure Front Door Standard or Azure Front Door Premium profile which is unique within the resource group.")]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
         Required = true,
         ReadOnly = false,
-        Description = @"Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.",
+        Description = @"Name of the Azure Front Door Standard or Azure Front Door Premium profile which is unique within the resource group.",
         SerializedName = @"profileName",
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.ParameterCategory.Path)]
@@ -161,24 +164,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Cmdlets
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IAfdErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IAfdErrorResponse</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IAfdErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IAfdErrorResponse</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onDefault method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IAfdErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IAfdErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// <c>overrideOnOk</c> will be called before the regular onOk has been processed, allowing customization of what happens
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.ICheckNameAvailabilityOutput">Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.ICheckNameAvailabilityOutput</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.ICheckNameAvailabilityOutput">Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.ICheckNameAvailabilityOutput</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.ICheckNameAvailabilityOutput> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.ICheckNameAvailabilityOutput> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -354,12 +357,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Cmdlets
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IAfdErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IAfdErrorResponse</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IAfdErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IAfdErrorResponse</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IAfdErrorResponse> response)
+        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IAfdErrorResponse> response)
         {
             using( NoSynchronizationContext )
             {
@@ -376,7 +379,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Cmdlets
                 if ((null == code || null == message))
                 {
                     // Unrecognized Response. Create an error record based on what we have.
-                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IAfdErrorResponse>(responseMessage, await response);
+                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IAfdErrorResponse>(responseMessage, await response);
                     WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { ResourceGroupName=ResourceGroupName, ProfileName=ProfileName, SubscriptionId=SubscriptionId, body=_checkHostNameAvailabilityInputBody })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
@@ -394,12 +397,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.ICheckNameAvailabilityOutput">Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.ICheckNameAvailabilityOutput</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.ICheckNameAvailabilityOutput">Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.ICheckNameAvailabilityOutput</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.ICheckNameAvailabilityOutput> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.ICheckNameAvailabilityOutput> response)
         {
             using( NoSynchronizationContext )
             {
@@ -411,7 +414,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.ICheckNameAvailabilityOutput
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.ICheckNameAvailabilityOutput
                 WriteObject((await response));
             }
         }

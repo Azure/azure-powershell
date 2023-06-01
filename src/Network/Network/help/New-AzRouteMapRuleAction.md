@@ -12,8 +12,9 @@ Create a route map rule action.
 
 ## SYNTAX
 
-```powershell
-New-AzRouteMapRuleAction -Type <String> -Parameter <PSRouteMapRuleActionParameter[]>
+```
+New-AzRouteMapRuleAction -Type <String> [-Parameter <PSRouteMapRuleActionParameter[]>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -27,7 +28,6 @@ Create a route map rule action.
 # creating new route map rule action
 $routeMapRuleActionParameter1 = New-AzRouteMapRuleActionParameter -AsPath @("12345")
 New-AzRouteMapRuleAction -Type "Add" -Parameter @($routeMapRuleActionParameter1)
-
 ```
 
 ```output
@@ -43,16 +43,30 @@ ParametersText : [
 Name           :
 Etag           :
 Id             :
-
 ```
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with Azure.
+
+```yaml
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzContext, AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Parameter
 The route map rule action parameter.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSRouteMapRuleActionParameter
+Type: Microsoft.Azure.Commands.Network.Models.PSRouteMapRuleActionParameter[]
 Parameter Sets: (All)
 Aliases:
 
@@ -72,6 +86,36 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

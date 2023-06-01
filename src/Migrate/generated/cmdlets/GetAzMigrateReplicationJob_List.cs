@@ -14,7 +14,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Cmdlets
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.Migrate.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzMigrateReplicationJob_List")]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IJob))]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IJob))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Migrate.Description(@"Gets the list of Azure Site Recovery Jobs for the vault.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Migrate.Generated]
     public partial class GetAzMigrateReplicationJob_List : global::System.Management.Automation.PSCmdlet,
@@ -49,10 +49,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Cmdlets
         public Microsoft.Azure.PowerShell.Cmdlets.Migrate.Migrate Client => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Module.Instance.ClientAPI;
 
         /// <summary>
-        /// The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet
-        /// against a different subscription
+        /// The credentials, account, tenant, and subscription used for communication with Azure
         /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The credentials, account, tenant, and subscription used for communication with Azure.")]
         [global::System.Management.Automation.ValidateNotNull]
         [global::System.Management.Automation.Alias("AzureRMContext", "AzureCredential")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Migrate.ParameterCategory.Azure)]
@@ -167,12 +166,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Cmdlets
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IJobCollection">Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IJobCollection</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IJobCollection">Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IJobCollection</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IJobCollection> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IJobCollection> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -346,12 +345,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IJobCollection">Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IJobCollection</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IJobCollection">Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IJobCollection</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IJobCollection> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IJobCollection> response)
         {
             using( NoSynchronizationContext )
             {

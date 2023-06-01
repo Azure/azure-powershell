@@ -10,6 +10,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support
     public partial struct SourceKindType :
         System.IEquatable<SourceKindType>
     {
+        public static Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.SourceKindType AzureBlob = @"AzureBlob";
+
         public static Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.SourceKindType Bucket = @"Bucket";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.SourceKindType GitRepository = @"GitRepository";
