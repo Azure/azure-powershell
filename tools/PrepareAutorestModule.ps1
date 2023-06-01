@@ -57,6 +57,13 @@ else
     $ModuleList = $ModuleSet | Where-Object { $SKIP_MODULES -notcontains $_ }
 }
 #EndRegion
+$CIPlanPath = "$PSScriptRoot/../artifacts/PipelineResult/CIPlan.json"
+$CIPlan = @{}
+foreach ($Phase in @("build", "breaking-change", "help-example", "help", "signature", "ux", "test"))
+{
+    $CIPlan[$Phase] = $ModuleList
+}
+$CIPlan | ConvertTo-Json -Depth 100 | Out-File $CIPlanPath -Force
 
 Install-Module -Name platyPS -RequiredVersion 0.14.2 -Force
 
