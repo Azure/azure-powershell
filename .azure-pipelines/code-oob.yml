@@ -6,7 +6,7 @@ parameters:
 - name: ServiceName
   displayName: Service to OOB release
   type: string
-  default: Databricks
+  default: Az.Databricks
 jobs:
 - job: OOBRelease
   timeoutInMinutes: 180
