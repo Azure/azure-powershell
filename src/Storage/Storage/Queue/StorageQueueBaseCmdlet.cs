@@ -60,12 +60,12 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         {
             get
             {
-                if (ClientOptions == null)
+                if (clientOptions == null)
                 {
                     clientOptions = new QueueClientOptions();
                     clientOptions.AddPolicy(new UserAgentPolicy(ApiConstants.UserAgentHeaderValue), HttpPipelinePosition.PerCall);
                 }
-                return ClientOptions;
+                return clientOptions;
             }
         }
         private QueueClientOptions clientOptions = null;
