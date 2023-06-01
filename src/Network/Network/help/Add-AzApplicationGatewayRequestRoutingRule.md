@@ -190,7 +190,6 @@ The priority of the rule
 Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
 Aliases:
-Accepted Values: 1-20000
 
 Required: False
 Position: Named

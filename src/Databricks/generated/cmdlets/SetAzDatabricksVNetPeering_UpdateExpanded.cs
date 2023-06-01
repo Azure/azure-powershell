@@ -99,7 +99,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Cmdlets
         Description = @"A list of address blocks reserved for this virtual network in CIDR notation.",
         SerializedName = @"addressPrefixes",
         PossibleTypes = new [] { typeof(string) })]
-        public string[] DatabrickAddressSpaceAddressPrefix { get => _virtualNetworkPeeringParametersBody.DatabrickAddressSpaceAddressPrefix ?? null /* arrayOf */; set => _virtualNetworkPeeringParametersBody.DatabrickAddressSpaceAddressPrefix = value; }
+        public string[] DatabricksAddressSpacePrefix { get => _virtualNetworkPeeringParametersBody.DatabrickAddressSpaceAddressPrefix ?? null /* arrayOf */; set => _virtualNetworkPeeringParametersBody.DatabrickAddressSpaceAddressPrefix = value; }
 
         /// <summary>The Id of the databricks virtual network.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The Id of the databricks virtual network.")]
@@ -110,12 +110,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Cmdlets
         Description = @"The Id of the databricks virtual network.",
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
-        public string DatabrickVirtualNetworkId { get => _virtualNetworkPeeringParametersBody.DatabrickVirtualNetworkId ?? null; set => _virtualNetworkPeeringParametersBody.DatabrickVirtualNetworkId = value; }
+        public string DatabricksVirtualNetworkId { get => _virtualNetworkPeeringParametersBody.DatabrickVirtualNetworkId ?? null; set => _virtualNetworkPeeringParametersBody.DatabrickVirtualNetworkId = value; }
 
         /// <summary>
-        /// The credentials, account, tenant, and subscription used for communication with Azure
+        /// The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet
+        /// against a different subscription
         /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The credentials, account, tenant, and subscription used for communication with Azure.")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.")]
         [global::System.Management.Automation.ValidateNotNull]
         [global::System.Management.Automation.Alias("AzureRMContext", "AzureCredential")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.ParameterCategory.Azure)]
@@ -197,7 +198,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Cmdlets
         Description = @"A list of address blocks reserved for this virtual network in CIDR notation.",
         SerializedName = @"addressPrefixes",
         PossibleTypes = new [] { typeof(string) })]
-        public string[] RemoteAddressSpaceAddressPrefix { get => _virtualNetworkPeeringParametersBody.RemoteAddressSpaceAddressPrefix ?? null /* arrayOf */; set => _virtualNetworkPeeringParametersBody.RemoteAddressSpaceAddressPrefix = value; }
+        public string[] RemoteAddressSpacePrefix { get => _virtualNetworkPeeringParametersBody.RemoteAddressSpaceAddressPrefix ?? null /* arrayOf */; set => _virtualNetworkPeeringParametersBody.RemoteAddressSpaceAddressPrefix = value; }
 
         /// <summary>The Id of the remote virtual network.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The Id of the remote virtual network.")]

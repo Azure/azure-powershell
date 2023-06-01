@@ -331,11 +331,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
                 string secondaryRegion = "";
                 if (RestoreToSecondaryRegion.IsPresent)
-                {
-                    if(TargetSubscriptionId != null)
-                    {                        
-                        throw new ArgumentException(Resources.CRRNotSupportedWIthCSR);
-                    }
+                {                    
                     if(VaultLocation != null)
                     {
                         secondaryRegion = BackupUtils.regionMap[VaultLocation];

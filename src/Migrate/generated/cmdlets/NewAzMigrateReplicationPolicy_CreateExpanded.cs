@@ -13,7 +13,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Cmdlets
     /// [OpenAPI] Create=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationPolicies/{policyName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzMigrateReplicationPolicy_CreateExpanded", SupportsShouldProcess = true)]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IPolicy))]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IPolicy))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Migrate.Description(@"The operation to create a replication policy.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Migrate.Generated]
     public partial class NewAzMigrateReplicationPolicy_CreateExpanded : global::System.Management.Automation.PSCmdlet,
@@ -34,7 +34,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Cmdlets
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
 
         /// <summary>Protection Policy input.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.ICreatePolicyInput _inputBody = new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.CreatePolicyInput();
+        private Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.ICreatePolicyInput _inputBody = new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.CreatePolicyInput();
 
         /// <summary>when specified, runs this cmdlet as a PowerShell job</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Run the command as a job")]
@@ -50,10 +50,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Cmdlets
         public Microsoft.Azure.PowerShell.Cmdlets.Migrate.Migrate Client => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Module.Instance.ClientAPI;
 
         /// <summary>
-        /// The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet
-        /// against a different subscription
+        /// The credentials, account, tenant, and subscription used for communication with Azure
         /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The credentials, account, tenant, and subscription used for communication with Azure.")]
         [global::System.Management.Automation.ValidateNotNull]
         [global::System.Management.Automation.Alias("AzureRMContext", "AzureCredential")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Migrate.ParameterCategory.Azure)]
@@ -117,8 +116,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Cmdlets
         ReadOnly = false,
         Description = @"The ReplicationProviderSettings.",
         SerializedName = @"providerSpecificInput",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IPolicyProviderSpecificInput) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IPolicyProviderSpecificInput ProviderSpecificInput { get => _inputBody.ProviderSpecificInput ?? null /* object */; set => _inputBody.ProviderSpecificInput = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IPolicyProviderSpecificInput) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IPolicyProviderSpecificInput ProviderSpecificInput { get => _inputBody.ProviderSpecificInput ?? null /* object */; set => _inputBody.ProviderSpecificInput = value; }
 
         /// <summary>The URI for the proxy server to use</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "The URI for the proxy server to use")]
@@ -187,12 +186,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Cmdlets
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IPolicy">Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IPolicy</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IPolicy">Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IPolicy</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IPolicy> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IPolicy> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -421,12 +420,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IPolicy">Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IPolicy</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IPolicy">Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IPolicy</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IPolicy> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IPolicy> response)
         {
             using( NoSynchronizationContext )
             {
@@ -438,7 +437,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IPolicy
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IPolicy
                 WriteObject((await response));
             }
         }

@@ -43,6 +43,7 @@ parameters:
 variables:
   ArtifactsName: LiveTestArtifacts
   DataLocation: $(Pipeline.Workspace)/$(ArtifactsName)
+  SuppressAzurePowerShellBreakingChangeWarnings: true
 
 schedules:
 - cron: "0 19 * * *"
@@ -173,15 +174,28 @@ stages:
 
 - stage: Report
   displayName: Send Report
-  dependsOn: Test
   jobs:
   - job:
     displayName: Send Live Test Status Report
     steps:
+    - task: PowerShell@2
+      displayName: Create data location directory
+      inputs:
+        pwsh: true
+        targetType: inline
+        script:
+          New-Item -Name $(ArtifactsName) -Path $(Pipeline.Workspace) -ItemType Directory -Force
+
+    - task: DownloadPipelineArtifact@2
+      displayName: Download live test results
+      inputs:
+        buildType: 'current'
+        targetPath: $(Pipeline.Workspace)/$(ArtifactsName)
+
     - task: PowerShell@2
       displayName: Send live test report
       inputs:
         pwsh: true
         targetType: filePath
         filePath: ./tools/TestFx/Live/SendLiveTestReport.ps1
-        arguments: $(KustoServicePrincipalTenantId) $(KustoServicePrincipalId) $(KustoServicePrincipalSecret) $(KustoClusterName) $(KustoClusterRegion) $(LiveTestDatabaseName) $(LiveTestTableName) $(Build.BuildId) "$(EmailServiceConnectionString)" "$(EmailFrom)" "$(EmailTo)"
+        arguments: -EmailServiceConnectionString '$(EmailServiceConnectionString)' -EmailFrom '$(EmailFrom)'

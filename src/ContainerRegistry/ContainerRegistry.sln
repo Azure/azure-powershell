@@ -1,4 +1,4 @@
-Microsoft Visual Studio Solution File, Format Version 12.00
+﻿Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32901.215
 MinimumVisualStudioVersion = 10.0.40219.1
@@ -23,6 +23,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestFx", "..\..\tools\TestFx\TestFx.csproj", "{BC80A1D0-FFA4-43D9-AA74-799F5CB54B58}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ContainerRegistry.Sdk", "ContainerRegistry.Sdk\ContainerRegistry.Sdk.csproj", "{20C09324-A651-41C7-B0E3-C8972C990642}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.ContainerRegistry", "ContainerRegistry.Autorest\Az.ContainerRegistry.csproj", "{72E5C46D-1176-429E-B3D0-F47C2CB8EF3F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -70,6 +72,10 @@ Global
 		{20C09324-A651-41C7-B0E3-C8972C990642}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{20C09324-A651-41C7-B0E3-C8972C990642}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{20C09324-A651-41C7-B0E3-C8972C990642}.Release|Any CPU.Build.0 = Release|Any CPU
+		{72E5C46D-1176-429E-B3D0-F47C2CB8EF3F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{72E5C46D-1176-429E-B3D0-F47C2CB8EF3F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{72E5C46D-1176-429E-B3D0-F47C2CB8EF3F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{72E5C46D-1176-429E-B3D0-F47C2CB8EF3F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

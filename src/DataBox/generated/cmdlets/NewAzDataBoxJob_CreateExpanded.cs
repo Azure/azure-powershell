@@ -16,7 +16,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Cmdlets
     /// [OpenAPI] Create=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBox/jobs/{jobName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzDataBoxJob_CreateExpanded", SupportsShouldProcess = true)]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobResource))]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IJobResource))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DataBox.Description(@"Creates a new job with the specified parameters. Existing job cannot be updated with this API and should instead be updated with the Update job API.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DataBox.Generated]
     public partial class NewAzDataBoxJob_CreateExpanded : global::System.Management.Automation.PSCmdlet,
@@ -36,6 +36,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Cmdlets
         /// </summary>
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
 
+        /// <summary>Job Resource.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IJobResource _jobResourceBody = new Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.JobResource();
+
         /// <summary>when specified, runs this cmdlet as a PowerShell job</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Run the command as a job")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.DataBox.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DataBox.ParameterCategory.Runtime)]
@@ -50,9 +53,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Cmdlets
         public Microsoft.Azure.PowerShell.Cmdlets.DataBox.DataBox Client => Microsoft.Azure.PowerShell.Cmdlets.DataBox.Module.Instance.ClientAPI;
 
         /// <summary>
-        /// The credentials, account, tenant, and subscription used for communication with Azure
+        /// The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet
+        /// against a different subscription
         /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The credentials, account, tenant, and subscription used for communication with Azure.")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.")]
         [global::System.Management.Automation.ValidateNotNull]
         [global::System.Management.Automation.Alias("AzureRMContext", "AzureCredential")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.DataBox.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DataBox.ParameterCategory.Azure)]
@@ -67,7 +71,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Cmdlets
         Description = @"Scheduled date time.",
         SerializedName = @"scheduledDateTime",
         PossibleTypes = new [] { typeof(global::System.DateTime) })]
-        public global::System.DateTime DeliveryInfoScheduledDateTime { get => JobResourceBody.DeliveryInfoScheduledDateTime ?? default(global::System.DateTime); set => JobResourceBody.DeliveryInfoScheduledDateTime = value; }
+        public global::System.DateTime DeliveryInfoScheduledDateTime { get => _jobResourceBody.DeliveryInfoScheduledDateTime ?? default(global::System.DateTime); set => _jobResourceBody.DeliveryInfoScheduledDateTime = value; }
 
         /// <summary>Delivery type of Job.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Delivery type of Job.")]
@@ -79,7 +83,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Cmdlets
         SerializedName = @"deliveryType",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.JobDeliveryType) })]
         [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.JobDeliveryType))]
-        public Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.JobDeliveryType DeliveryType { get => JobResourceBody.DeliveryType ?? ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.JobDeliveryType)""); set => JobResourceBody.DeliveryType = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.JobDeliveryType DeliveryType { get => _jobResourceBody.DeliveryType ?? ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.JobDeliveryType)""); set => _jobResourceBody.DeliveryType = value; }
 
         /// <summary>Details of a job run. This field will only be sent for expand details filter.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Details of a job run. This field will only be sent for expand details filter.")]
@@ -89,8 +93,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Cmdlets
         ReadOnly = false,
         Description = @"Details of a job run. This field will only be sent for expand details filter.",
         SerializedName = @"details",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobDetails) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobDetails Detail { get => JobResourceBody.Detail ?? null /* object */; set => JobResourceBody.Detail = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IJobDetails) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IJobDetails Detail { get => _jobResourceBody.Detail ?? null /* object */; set => _jobResourceBody.Detail = value; }
 
         /// <summary>SendAsync Pipeline Steps to be appended to the front of the pipeline</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "SendAsync Pipeline Steps to be appended to the front of the pipeline")]
@@ -113,16 +117,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Cmdlets
         Description = @"Identity type",
         SerializedName = @"type",
         PossibleTypes = new [] { typeof(string) })]
-        public string IdentityType { get => JobResourceBody.IdentityType ?? null; set => JobResourceBody.IdentityType = value; }
+        public string IdentityType { get => _jobResourceBody.IdentityType ?? null; set => _jobResourceBody.IdentityType = value; }
 
         /// <summary>Accessor for our copy of the InvocationInfo.</summary>
         public global::System.Management.Automation.InvocationInfo InvocationInformation { get => __invocationInfo = __invocationInfo ?? this.MyInvocation ; set { __invocationInfo = value; } }
-
-        /// <summary>Backing field for <see cref="JobResourceBody" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobResource _jobResourceBody= new Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.JobResource();
-
-        /// <summary>Job Resource.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobResource JobResourceBody { get => this._jobResourceBody; set => this._jobResourceBody = value; }
 
         /// <summary>
         /// The location of the resource. This will be one of the supported and registered Azure Regions (e.g. West US, East US, Southeast
@@ -137,14 +135,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Cmdlets
         Description = @"The location of the resource. This will be one of the supported and registered Azure Regions (e.g. West US, East US, Southeast Asia, etc.). The region of a resource cannot be changed once it is created, but if an identical region is specified on update the request will succeed.",
         SerializedName = @"location",
         PossibleTypes = new [] { typeof(string) })]
-        public string Location { get => JobResourceBody.Location ?? null; set => JobResourceBody.Location = value; }
+        public string Location { get => _jobResourceBody.Location ?? null; set => _jobResourceBody.Location = value; }
 
         /// <summary>
-        /// <see cref="IEventListener" /> cancellation delegate. Stops the cmdlet when called.
+        /// <see cref="Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener" /> cancellation delegate. Stops the cmdlet when called.
         /// </summary>
         global::System.Action Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener.Cancel => _cancellationTokenSource.Cancel;
 
-        /// <summary><see cref="IEventListener" /> cancellation token.</summary>
+        /// <summary><see cref="Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener" /> cancellation token.</summary>
         global::System.Threading.CancellationToken Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener.Token => _cancellationTokenSource.Token;
 
         /// <summary>Backing field for <see cref="Name" /> property.</summary>
@@ -217,7 +215,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Cmdlets
         Description = @"The display name of the sku.",
         SerializedName = @"displayName",
         PossibleTypes = new [] { typeof(string) })]
-        public string SkuDisplayName { get => JobResourceBody.SkuDisplayName ?? null; set => JobResourceBody.SkuDisplayName = value; }
+        public string SkuDisplayName { get => _jobResourceBody.SkuDisplayName ?? null; set => _jobResourceBody.SkuDisplayName = value; }
 
         /// <summary>The sku family.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The sku family.")]
@@ -228,7 +226,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Cmdlets
         Description = @"The sku family.",
         SerializedName = @"family",
         PossibleTypes = new [] { typeof(string) })]
-        public string SkuFamily { get => JobResourceBody.SkuFamily ?? null; set => JobResourceBody.SkuFamily = value; }
+        public string SkuFamily { get => _jobResourceBody.SkuFamily ?? null; set => _jobResourceBody.SkuFamily = value; }
 
         /// <summary>The sku name.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The sku name.")]
@@ -240,7 +238,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Cmdlets
         SerializedName = @"name",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.SkuName) })]
         [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.SkuName))]
-        public Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.SkuName SkuName { get => JobResourceBody.SkuName; set => JobResourceBody.SkuName = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.SkuName SkuName { get => _jobResourceBody.SkuName; set => _jobResourceBody.SkuName = value; }
 
         /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
         private string _subscriptionId;
@@ -272,8 +270,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Cmdlets
         ReadOnly = false,
         Description = @"The list of key value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups).",
         SerializedName = @"tags",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IResourceTags) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IResourceTags Tag { get => JobResourceBody.Tag ?? null /* object */; set => JobResourceBody.Tag = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IResourceTags) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IResourceTags Tag { get => _jobResourceBody.Tag ?? null /* object */; set => _jobResourceBody.Tag = value; }
 
         /// <summary>Type of the data transfer.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "Type of the data transfer.")]
@@ -285,7 +283,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Cmdlets
         SerializedName = @"transferType",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.TransferType) })]
         [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.TransferType))]
-        public Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.TransferType TransferType { get => JobResourceBody.TransferType; set => JobResourceBody.TransferType = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.TransferType TransferType { get => _jobResourceBody.TransferType; set => _jobResourceBody.TransferType = value; }
 
         /// <summary>User Assigned Identities</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.DataBox.ExportAs(typeof(global::System.Collections.Hashtable))]
@@ -296,38 +294,43 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Cmdlets
         ReadOnly = false,
         Description = @"User Assigned Identities",
         SerializedName = @"userAssignedIdentities",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IResourceIdentityUserAssignedIdentities) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IResourceIdentityUserAssignedIdentities UserAssignedIdentity { get => JobResourceBody.IdentityUserAssignedIdentity ?? null /* object */; set => JobResourceBody.IdentityUserAssignedIdentity = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IResourceIdentityUserAssignedIdentities) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IResourceIdentityUserAssignedIdentities UserAssignedIdentity { get => _jobResourceBody.IdentityUserAssignedIdentity ?? null /* object */; set => _jobResourceBody.IdentityUserAssignedIdentity = value; }
 
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IApiError"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IApiError">Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IApiError</see>
+        /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onDefault method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IApiError> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IApiError> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// <c>overrideOnOk</c> will be called before the regular onOk has been processed, allowing customization of what happens
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobResource"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IJobResource">Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IJobResource</see>
+        /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobResource> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IJobResource> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
         /// </summary>
         protected override void BeginProcessing()
         {
+            var telemetryId = Microsoft.Azure.PowerShell.Cmdlets.DataBox.Module.Instance.GetTelemetryId.Invoke();
+            if (telemetryId != "" && telemetryId != "internal")
+            {
+                __correlationId = telemetryId;
+            }
             Module.Instance.SetProxyConfiguration(Proxy, ProxyCredential, ProxyUseDefaultCredentials);
             if (Break)
             {
@@ -353,7 +356,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Cmdlets
             clone.ProxyUseDefaultCredentials = this.ProxyUseDefaultCredentials;
             clone.HttpPipelinePrepend = this.HttpPipelinePrepend;
             clone.HttpPipelineAppend = this.HttpPipelineAppend;
-            clone.JobResourceBody = this.JobResourceBody;
+            clone._jobResourceBody = this._jobResourceBody;
             clone.SubscriptionId = this.SubscriptionId;
             clone.ResourceGroupName = this.ResourceGroupName;
             clone.Name = this.Name;
@@ -363,7 +366,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Cmdlets
         /// <summary>Performs clean-up after the command execution</summary>
         protected override void EndProcessing()
         {
-            ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.Events.CmdletEndProcessing).Wait(); if( ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
+
         }
 
         /// <summary>Handles/Dispatches events during the call to the REST service.</summary>
@@ -504,7 +507,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Cmdlets
         {
             using( NoSynchronizationContext )
             {
-                await ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.Events.CmdletProcessRecordAsyncStart); if( ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 await ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.Events.CmdletGetPipeline); if( ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 Pipeline = Microsoft.Azure.PowerShell.Cmdlets.DataBox.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName);
                 if (null != HttpPipelinePrepend)
@@ -519,12 +521,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Cmdlets
                 try
                 {
                     await ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                    await this.Client.JobsCreate(SubscriptionId, ResourceGroupName, Name, JobResourceBody, onOk, onDefault, this, Pipeline);
+                    await this.Client.JobsCreate(SubscriptionId, ResourceGroupName, Name, _jobResourceBody, onOk, onDefault, this, Pipeline);
                     await ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,Name=Name,body=JobResourceBody})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,Name=Name,body=_jobResourceBody})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -547,12 +549,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Cmdlets
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IApiError"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IApiError">Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IApiError</see>
+        /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IApiError> response)
+        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IApiError> response)
         {
             using( NoSynchronizationContext )
             {
@@ -569,15 +571,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Cmdlets
                 if ((null == code || null == message))
                 {
                     // Unrecognized Response. Create an error record based on what we have.
-                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IApiError>(responseMessage, await response);
-                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, Name=Name, body=JobResourceBody })
+                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IApiError>(responseMessage, await response);
+                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, Name=Name, body=_jobResourceBody })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
                     });
                 }
                 else
                 {
-                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, Name=Name, body=JobResourceBody })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, Name=Name, body=_jobResourceBody })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(message) { RecommendedAction = global::System.String.Empty }
                     });
@@ -587,12 +589,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobResource"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IJobResource">Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IJobResource</see>
+        /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobResource> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IJobResource> response)
         {
             using( NoSynchronizationContext )
             {
@@ -604,7 +606,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobResource
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IJobResource
                 WriteObject((await response));
             }
         }

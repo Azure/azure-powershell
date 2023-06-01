@@ -21,17 +21,17 @@ Create an in-memory object for ResponseBasedOriginErrorDetectionParameters.
 Create an in-memory object for ResponseBasedOriginErrorDetectionParameters.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.ResponseBasedOriginErrorDetectionParameters
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.ResponseBasedOriginErrorDetectionParameters
 .Link
-https://learn.microsoft.com/powershell/module/az.Cdn/new-AzCdnResponseBasedOriginErrorDetectionParametersObject
+https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzCdnResponseBasedOriginErrorDetectionParametersObject
 #>
 function New-AzCdnResponseBasedOriginErrorDetectionParametersObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.ResponseBasedOriginErrorDetectionParameters')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.ResponseBasedOriginErrorDetectionParameters')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
         [Parameter(HelpMessage="The list of Http status code ranges that are considered as server errors for origin and it is marked as unhealthy.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IHttpErrorRangeParameters[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IHttpErrorRangeParameters[]]
         $HttpErrorRange,
         [Parameter(HelpMessage="Type of response errors for real user requests for which origin will be deemed unhealthy.")]
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.ResponseBasedDetectedErrorTypes])]
@@ -43,7 +43,7 @@ function New-AzCdnResponseBasedOriginErrorDetectionParametersObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.ResponseBasedOriginErrorDetectionParameters]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.ResponseBasedOriginErrorDetectionParameters]::New()
 
         if ($PSBoundParameters.ContainsKey('HttpErrorRange')) {
             $Object.HttpErrorRange = $HttpErrorRange

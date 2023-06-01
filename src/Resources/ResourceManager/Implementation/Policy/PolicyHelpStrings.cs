@@ -135,7 +135,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy
         public const string GetPolicyExemptionScopeHelp = "The scope of the policy exemption to get, e.g. /providers/managementGroups/{managementGroupName}, defaults to current subscription.";
         public const string GetPolicyExemptionIdHelp = "The fully qualified policy exemption ID to get, including the scope, e.g. /subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Authorization/policyExemptions/{policyExemptionName}.";
         public const string GetPolicyExemptionFilterHelp = "Limits the list of returned policy exemptions to those assigning the policy assignment identified by this fully qualified Id.";
-        public const string GetPolicyExemptionIncludeDescendentsHelp = "Causes the list of returned policy exemptions to include all exemptions related to the given scope, including those from ancestor scopes and those from descendent scopes.";
+        public const string GetPolicyExemptionIncludeDescendentsHelp = "Causes the list of returned policy exemptions to include all exemptions related to the given scope, including those from ancestor scopes and those from descendent scopes. This parameter doesn't work when the requested scope is a management group scope.";
         public const string GetPolicyExemptionDoesNothingHelp = "This parameter is ignored if provided with -Name or -Id parameters.";
         public const string NewPolicyExemptionNameHelp = "The name of the new policy exemption.";
         public const string NewPolicyExemptionScopeHelp = "The scope of the new policy exemption, e.g. /providers/managementGroups/{managementGroupName}, defaults to current subscription.";

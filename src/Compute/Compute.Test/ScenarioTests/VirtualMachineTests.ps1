@@ -629,7 +629,6 @@ function Test-VirtualMachineList
     {
         Assert-NotNull $s2[0].Id;
     }
-    Assert-ThrowsContains { $s3 = Get-AzVM -NextLink "https://www.test.com/test"; } "Unable to deserialize the response"
 }
 
 <#

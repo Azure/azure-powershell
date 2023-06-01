@@ -1,0 +1,708 @@
+{
+  "AzDatabricksVNetPeering+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/auto-test-databricks-6c/providers/Microsoft.Databricks/workspaces/icknzs/virtualNetworkPeerings/vjmtfn?api-version=2023-02-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/auto-test-databricks-6c/providers/Microsoft.Databricks/workspaces/icknzs/virtualNetworkPeerings/vjmtfn?api-version=2023-02-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"remoteVirtualNetwork\": {\r\n      \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/auto-test-databricks-6c/providers/Microsoft.Network/virtualNetworks/2s4nmk\"\r\n    }\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "223" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-Frame-Options": [ "SAMEORIGIN" ],
+        "X-XSS-Protection": [ "1; mode=block" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-correlation-request-id": [ "45f6af62-111a-4bb0-91ff-47310e9dab9c" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20230519T081552Z:45f6af62-111a-4bb0-91ff-47310e9dab9c" ],
+        "Date": [ "Fri, 19 May 2023 08:15:51 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "875" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "eyJpZCI6Ii9zdWJzY3JpcHRpb25zLzllMjIzZGJlLTMzOTktNGUxOS04OGViLTA5NzVmMDJhYzg3Zi9yZXNvdXJjZUdyb3Vwcy9hdXRvLXRlc3QtZGF0YWJyaWNrcy02Yy9wcm92aWRlcnMvTWljcm9zb2Z0LkRhdGFicmlja3Mvd29ya3NwYWNlcy9pY2tuenMvdmlydHVhbE5ldHdvcmtQZWVyaW5ncy92am10Zm4iLCJuYW1lIjoidmptdGZuIiwicHJvcGVydGllcyI6eyJhbGxvd1ZpcnR1YWxOZXR3b3JrQWNjZXNzIjp0cnVlLCJhbGxvd0ZvcndhcmRlZFRyYWZmaWMiOmZhbHNlLCJhbGxvd0dhdGV3YXlUcmFuc2l0IjpmYWxzZSwidXNlUmVtb3RlR2F0ZXdheXMiOmZhbHNlLCJyZW1vdGVWaXJ0dWFsTmV0d29yayI6eyJpZCI6Ii9zdWJzY3JpcHRpb25zLzllMjIzZGJlLTMzOTktNGUxOS04OGViLTA5NzVmMDJhYzg3Zi9yZXNvdXJjZUdyb3Vwcy9hdXRvLXRlc3QtZGF0YWJyaWNrcy02Yy9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvdmlydHVhbE5ldHdvcmtzLzJzNG5tayJ9LCJyZW1vdGVBZGRyZXNzU3BhY2UiOnsiYWRkcmVzc1ByZWZpeGVzIjpbIjExMC4wLjAuMC8xNiJdfSwiZGF0YWJyaWNrc1ZpcnR1YWxOZXR3b3JrIjp7ImlkIjoiL3N1YnNjcmlwdGlvbnMvOWUyMjNkYmUtMzM5OS00ZTE5LTg4ZWItMDk3NWYwMmFjODdmL3Jlc291cmNlR3JvdXBzL2RhdGFicmlja3MtcmctaWNrbnpzLTJ3MDE3bmltNno0eHMvcHJvdmlkZXJzL01pY3Jvc29mdC5OZXR3b3JrL3ZpcnR1YWxOZXR3b3Jrcy93b3JrZXJzLXZuZXQifSwiZGF0YWJyaWNrc0FkZHJlc3NTcGFjZSI6eyJhZGRyZXNzUHJlZml4ZXMiOlsiMTAuMTM5LjAuMC8xNiJdfSwicGVlcmluZ1N0YXRlIjoiSW5pdGlhdGVkIiwicHJvdmlzaW9uaW5nU3RhdGUiOiJVcGRhdGluZyJ9fQo=",
+      "isContentBase64": false
+    }
+  },
+  "AzDatabricksVNetPeering+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/auto-test-databricks-6c/providers/Microsoft.Databricks/workspaces/icknzs/virtualNetworkPeerings/vjmtfn?api-version=2023-02-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/auto-test-databricks-6c/providers/Microsoft.Databricks/workspaces/icknzs/virtualNetworkPeerings/vjmtfn?api-version=2023-02-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "35" ],
+        "x-ms-client-request-id": [ "0e07d8f6-d696-4825-904b-361c13b2be19" ],
+        "CommandName": [ "New-AzDatabricksVNetPeering" ],
+        "FullCommandName": [ "New-AzDatabricksVNetPeering_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.4", "Az.Databricks/1.2.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-Frame-Options": [ "SAMEORIGIN" ],
+        "X-XSS-Protection": [ "1; mode=block" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11981" ],
+        "x-ms-correlation-request-id": [ "01135450-cf54-4cc1-8fac-8b1e8c6cd390" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20230519T081622Z:01135450-cf54-4cc1-8fac-8b1e8c6cd390" ],
+        "Date": [ "Fri, 19 May 2023 08:16:22 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "876" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "eyJpZCI6Ii9zdWJzY3JpcHRpb25zLzllMjIzZGJlLTMzOTktNGUxOS04OGViLTA5NzVmMDJhYzg3Zi9yZXNvdXJjZUdyb3Vwcy9hdXRvLXRlc3QtZGF0YWJyaWNrcy02Yy9wcm92aWRlcnMvTWljcm9zb2Z0LkRhdGFicmlja3Mvd29ya3NwYWNlcy9pY2tuenMvdmlydHVhbE5ldHdvcmtQZWVyaW5ncy92am10Zm4iLCJuYW1lIjoidmptdGZuIiwicHJvcGVydGllcyI6eyJhbGxvd1ZpcnR1YWxOZXR3b3JrQWNjZXNzIjp0cnVlLCJhbGxvd0ZvcndhcmRlZFRyYWZmaWMiOmZhbHNlLCJhbGxvd0dhdGV3YXlUcmFuc2l0IjpmYWxzZSwidXNlUmVtb3RlR2F0ZXdheXMiOmZhbHNlLCJyZW1vdGVWaXJ0dWFsTmV0d29yayI6eyJpZCI6Ii9zdWJzY3JpcHRpb25zLzllMjIzZGJlLTMzOTktNGUxOS04OGViLTA5NzVmMDJhYzg3Zi9yZXNvdXJjZUdyb3Vwcy9hdXRvLXRlc3QtZGF0YWJyaWNrcy02Yy9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvdmlydHVhbE5ldHdvcmtzLzJzNG5tayJ9LCJyZW1vdGVBZGRyZXNzU3BhY2UiOnsiYWRkcmVzc1ByZWZpeGVzIjpbIjExMC4wLjAuMC8xNiJdfSwiZGF0YWJyaWNrc1ZpcnR1YWxOZXR3b3JrIjp7ImlkIjoiL3N1YnNjcmlwdGlvbnMvOWUyMjNkYmUtMzM5OS00ZTE5LTg4ZWItMDk3NWYwMmFjODdmL3Jlc291cmNlR3JvdXBzL2RhdGFicmlja3MtcmctaWNrbnpzLTJ3MDE3bmltNno0eHMvcHJvdmlkZXJzL01pY3Jvc29mdC5OZXR3b3JrL3ZpcnR1YWxOZXR3b3Jrcy93b3JrZXJzLXZuZXQifSwiZGF0YWJyaWNrc0FkZHJlc3NTcGFjZSI6eyJhZGRyZXNzUHJlZml4ZXMiOlsiMTAuMTM5LjAuMC8xNiJdfSwicGVlcmluZ1N0YXRlIjoiSW5pdGlhdGVkIiwicHJvdmlzaW9uaW5nU3RhdGUiOiJTdWNjZWVkZWQifX0K",
+      "isContentBase64": false
+    }
+  },
+  "AzDatabricksVNetPeering+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/auto-test-databricks-6c/providers/Microsoft.Databricks/workspaces/icknzs/virtualNetworkPeerings/vjmtfn?api-version=2023-02-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/auto-test-databricks-6c/providers/Microsoft.Databricks/workspaces/icknzs/virtualNetworkPeerings/vjmtfn?api-version=2023-02-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "36" ],
+        "x-ms-client-request-id": [ "0e07d8f6-d696-4825-904b-361c13b2be19" ],
+        "CommandName": [ "New-AzDatabricksVNetPeering" ],
+        "FullCommandName": [ "New-AzDatabricksVNetPeering_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.4", "Az.Databricks/1.2.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-Frame-Options": [ "SAMEORIGIN" ],
+        "X-XSS-Protection": [ "1; mode=block" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11980" ],
+        "x-ms-correlation-request-id": [ "9dd5ba5d-1a8f-4f02-a80d-dc9876d8937c" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20230519T081623Z:9dd5ba5d-1a8f-4f02-a80d-dc9876d8937c" ],
+        "Date": [ "Fri, 19 May 2023 08:16:22 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "876" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "eyJpZCI6Ii9zdWJzY3JpcHRpb25zLzllMjIzZGJlLTMzOTktNGUxOS04OGViLTA5NzVmMDJhYzg3Zi9yZXNvdXJjZUdyb3Vwcy9hdXRvLXRlc3QtZGF0YWJyaWNrcy02Yy9wcm92aWRlcnMvTWljcm9zb2Z0LkRhdGFicmlja3Mvd29ya3NwYWNlcy9pY2tuenMvdmlydHVhbE5ldHdvcmtQZWVyaW5ncy92am10Zm4iLCJuYW1lIjoidmptdGZuIiwicHJvcGVydGllcyI6eyJhbGxvd1ZpcnR1YWxOZXR3b3JrQWNjZXNzIjp0cnVlLCJhbGxvd0ZvcndhcmRlZFRyYWZmaWMiOmZhbHNlLCJhbGxvd0dhdGV3YXlUcmFuc2l0IjpmYWxzZSwidXNlUmVtb3RlR2F0ZXdheXMiOmZhbHNlLCJyZW1vdGVWaXJ0dWFsTmV0d29yayI6eyJpZCI6Ii9zdWJzY3JpcHRpb25zLzllMjIzZGJlLTMzOTktNGUxOS04OGViLTA5NzVmMDJhYzg3Zi9yZXNvdXJjZUdyb3Vwcy9hdXRvLXRlc3QtZGF0YWJyaWNrcy02Yy9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvdmlydHVhbE5ldHdvcmtzLzJzNG5tayJ9LCJyZW1vdGVBZGRyZXNzU3BhY2UiOnsiYWRkcmVzc1ByZWZpeGVzIjpbIjExMC4wLjAuMC8xNiJdfSwiZGF0YWJyaWNrc1ZpcnR1YWxOZXR3b3JrIjp7ImlkIjoiL3N1YnNjcmlwdGlvbnMvOWUyMjNkYmUtMzM5OS00ZTE5LTg4ZWItMDk3NWYwMmFjODdmL3Jlc291cmNlR3JvdXBzL2RhdGFicmlja3MtcmctaWNrbnpzLTJ3MDE3bmltNno0eHMvcHJvdmlkZXJzL01pY3Jvc29mdC5OZXR3b3JrL3ZpcnR1YWxOZXR3b3Jrcy93b3JrZXJzLXZuZXQifSwiZGF0YWJyaWNrc0FkZHJlc3NTcGFjZSI6eyJhZGRyZXNzUHJlZml4ZXMiOlsiMTAuMTM5LjAuMC8xNiJdfSwicGVlcmluZ1N0YXRlIjoiSW5pdGlhdGVkIiwicHJvdmlzaW9uaW5nU3RhdGUiOiJTdWNjZWVkZWQifX0K",
+      "isContentBase64": false
+    }
+  },
+  "AzDatabricksVNetPeering+[NoContext]+List+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/auto-test-databricks-6c/providers/Microsoft.Databricks/workspaces/icknzs/virtualNetworkPeerings?api-version=2023-02-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/auto-test-databricks-6c/providers/Microsoft.Databricks/workspaces/icknzs/virtualNetworkPeerings?api-version=2023-02-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "37" ],
+        "x-ms-client-request-id": [ "f0d471ec-78f4-469e-93e4-e11ef3698987" ],
+        "CommandName": [ "Get-AzDatabricksVNetPeering" ],
+        "FullCommandName": [ "Get-AzDatabricksVNetPeering_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.4", "Az.Databricks/1.2.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-Frame-Options": [ "SAMEORIGIN" ],
+        "X-XSS-Protection": [ "1; mode=block" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11979" ],
+        "x-ms-correlation-request-id": [ "2b1ae3be-bb9f-4580-8028-7c2b84ccf3b4" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20230519T081623Z:2b1ae3be-bb9f-4580-8028-7c2b84ccf3b4" ],
+        "Date": [ "Fri, 19 May 2023 08:16:23 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "888" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "eyJ2YWx1ZSI6W3siaWQiOiIvc3Vic2NyaXB0aW9ucy85ZTIyM2RiZS0zMzk5LTRlMTktODhlYi0wOTc1ZjAyYWM4N2YvcmVzb3VyY2VHcm91cHMvYXV0by10ZXN0LWRhdGFicmlja3MtNmMvcHJvdmlkZXJzL01pY3Jvc29mdC5EYXRhYnJpY2tzL3dvcmtzcGFjZXMvaWNrbnpzL3ZpcnR1YWxOZXR3b3JrUGVlcmluZ3MvdmptdGZuIiwibmFtZSI6InZqbXRmbiIsInByb3BlcnRpZXMiOnsiYWxsb3dWaXJ0dWFsTmV0d29ya0FjY2VzcyI6dHJ1ZSwiYWxsb3dGb3J3YXJkZWRUcmFmZmljIjpmYWxzZSwiYWxsb3dHYXRld2F5VHJhbnNpdCI6ZmFsc2UsInVzZVJlbW90ZUdhdGV3YXlzIjpmYWxzZSwicmVtb3RlVmlydHVhbE5ldHdvcmsiOnsiaWQiOiIvc3Vic2NyaXB0aW9ucy85ZTIyM2RiZS0zMzk5LTRlMTktODhlYi0wOTc1ZjAyYWM4N2YvcmVzb3VyY2VHcm91cHMvYXV0by10ZXN0LWRhdGFicmlja3MtNmMvcHJvdmlkZXJzL01pY3Jvc29mdC5OZXR3b3JrL3ZpcnR1YWxOZXR3b3Jrcy8yczRubWsifSwicmVtb3RlQWRkcmVzc1NwYWNlIjp7ImFkZHJlc3NQcmVmaXhlcyI6WyIxMTAuMC4wLjAvMTYiXX0sImRhdGFicmlja3NWaXJ0dWFsTmV0d29yayI6eyJpZCI6Ii9zdWJzY3JpcHRpb25zLzllMjIzZGJlLTMzOTktNGUxOS04OGViLTA5NzVmMDJhYzg3Zi9yZXNvdXJjZUdyb3Vwcy9kYXRhYnJpY2tzLXJnLWlja256cy0ydzAxN25pbTZ6NHhzL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay92aXJ0dWFsTmV0d29ya3Mvd29ya2Vycy12bmV0In0sImRhdGFicmlja3NBZGRyZXNzU3BhY2UiOnsiYWRkcmVzc1ByZWZpeGVzIjpbIjEwLjEzOS4wLjAvMTYiXX0sInBlZXJpbmdTdGF0ZSI6IkluaXRpYXRlZCIsInByb3Zpc2lvbmluZ1N0YXRlIjoiU3VjY2VlZGVkIn19XX0K",
+      "isContentBase64": false
+    }
+  },
+  "AzDatabricksVNetPeering+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/auto-test-databricks-6c/providers/Microsoft.Databricks/workspaces/icknzs/virtualNetworkPeerings/vjmtfn?api-version=2023-02-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/auto-test-databricks-6c/providers/Microsoft.Databricks/workspaces/icknzs/virtualNetworkPeerings/vjmtfn?api-version=2023-02-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "38" ],
+        "x-ms-client-request-id": [ "0b586102-8041-4d1f-9509-bf22ad775918" ],
+        "CommandName": [ "Get-AzDatabricksVNetPeering" ],
+        "FullCommandName": [ "Get-AzDatabricksVNetPeering_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.4", "Az.Databricks/1.2.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-Frame-Options": [ "SAMEORIGIN" ],
+        "X-XSS-Protection": [ "1; mode=block" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11978" ],
+        "x-ms-correlation-request-id": [ "4456888c-fb20-4f6d-81cc-d4870a9ab5e4" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20230519T081624Z:4456888c-fb20-4f6d-81cc-d4870a9ab5e4" ],
+        "Date": [ "Fri, 19 May 2023 08:16:23 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "876" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "eyJpZCI6Ii9zdWJzY3JpcHRpb25zLzllMjIzZGJlLTMzOTktNGUxOS04OGViLTA5NzVmMDJhYzg3Zi9yZXNvdXJjZUdyb3Vwcy9hdXRvLXRlc3QtZGF0YWJyaWNrcy02Yy9wcm92aWRlcnMvTWljcm9zb2Z0LkRhdGFicmlja3Mvd29ya3NwYWNlcy9pY2tuenMvdmlydHVhbE5ldHdvcmtQZWVyaW5ncy92am10Zm4iLCJuYW1lIjoidmptdGZuIiwicHJvcGVydGllcyI6eyJhbGxvd1ZpcnR1YWxOZXR3b3JrQWNjZXNzIjp0cnVlLCJhbGxvd0ZvcndhcmRlZFRyYWZmaWMiOmZhbHNlLCJhbGxvd0dhdGV3YXlUcmFuc2l0IjpmYWxzZSwidXNlUmVtb3RlR2F0ZXdheXMiOmZhbHNlLCJyZW1vdGVWaXJ0dWFsTmV0d29yayI6eyJpZCI6Ii9zdWJzY3JpcHRpb25zLzllMjIzZGJlLTMzOTktNGUxOS04OGViLTA5NzVmMDJhYzg3Zi9yZXNvdXJjZUdyb3Vwcy9hdXRvLXRlc3QtZGF0YWJyaWNrcy02Yy9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvdmlydHVhbE5ldHdvcmtzLzJzNG5tayJ9LCJyZW1vdGVBZGRyZXNzU3BhY2UiOnsiYWRkcmVzc1ByZWZpeGVzIjpbIjExMC4wLjAuMC8xNiJdfSwiZGF0YWJyaWNrc1ZpcnR1YWxOZXR3b3JrIjp7ImlkIjoiL3N1YnNjcmlwdGlvbnMvOWUyMjNkYmUtMzM5OS00ZTE5LTg4ZWItMDk3NWYwMmFjODdmL3Jlc291cmNlR3JvdXBzL2RhdGFicmlja3MtcmctaWNrbnpzLTJ3MDE3bmltNno0eHMvcHJvdmlkZXJzL01pY3Jvc29mdC5OZXR3b3JrL3ZpcnR1YWxOZXR3b3Jrcy93b3JrZXJzLXZuZXQifSwiZGF0YWJyaWNrc0FkZHJlc3NTcGFjZSI6eyJhZGRyZXNzUHJlZml4ZXMiOlsiMTAuMTM5LjAuMC8xNiJdfSwicGVlcmluZ1N0YXRlIjoiSW5pdGlhdGVkIiwicHJvdmlzaW9uaW5nU3RhdGUiOiJTdWNjZWVkZWQifX0K",
+      "isContentBase64": false
+    }
+  },
+  "AzDatabricksVNetPeering+[NoContext]+UpdateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/auto-test-databricks-6c/providers/Microsoft.Databricks/workspaces/icknzs/virtualNetworkPeerings/vjmtfn?api-version=2023-02-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/auto-test-databricks-6c/providers/Microsoft.Databricks/workspaces/icknzs/virtualNetworkPeerings/vjmtfn?api-version=2023-02-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "39" ],
+        "x-ms-client-request-id": [ "c19baf62-b5d8-4896-b08a-9f5f2fc11f30" ],
+        "CommandName": [ "Get-AzDatabricksVNetPeering" ],
+        "FullCommandName": [ "Get-AzDatabricksVNetPeering_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.4", "Az.Databricks/1.2.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-Frame-Options": [ "SAMEORIGIN" ],
+        "X-XSS-Protection": [ "1; mode=block" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11977" ],
+        "x-ms-correlation-request-id": [ "689755c0-8744-4461-9653-0b106a1121e9" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20230519T081625Z:689755c0-8744-4461-9653-0b106a1121e9" ],
+        "Date": [ "Fri, 19 May 2023 08:16:24 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "876" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "eyJpZCI6Ii9zdWJzY3JpcHRpb25zLzllMjIzZGJlLTMzOTktNGUxOS04OGViLTA5NzVmMDJhYzg3Zi9yZXNvdXJjZUdyb3Vwcy9hdXRvLXRlc3QtZGF0YWJyaWNrcy02Yy9wcm92aWRlcnMvTWljcm9zb2Z0LkRhdGFicmlja3Mvd29ya3NwYWNlcy9pY2tuenMvdmlydHVhbE5ldHdvcmtQZWVyaW5ncy92am10Zm4iLCJuYW1lIjoidmptdGZuIiwicHJvcGVydGllcyI6eyJhbGxvd1ZpcnR1YWxOZXR3b3JrQWNjZXNzIjp0cnVlLCJhbGxvd0ZvcndhcmRlZFRyYWZmaWMiOmZhbHNlLCJhbGxvd0dhdGV3YXlUcmFuc2l0IjpmYWxzZSwidXNlUmVtb3RlR2F0ZXdheXMiOmZhbHNlLCJyZW1vdGVWaXJ0dWFsTmV0d29yayI6eyJpZCI6Ii9zdWJzY3JpcHRpb25zLzllMjIzZGJlLTMzOTktNGUxOS04OGViLTA5NzVmMDJhYzg3Zi9yZXNvdXJjZUdyb3Vwcy9hdXRvLXRlc3QtZGF0YWJyaWNrcy02Yy9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvdmlydHVhbE5ldHdvcmtzLzJzNG5tayJ9LCJyZW1vdGVBZGRyZXNzU3BhY2UiOnsiYWRkcmVzc1ByZWZpeGVzIjpbIjExMC4wLjAuMC8xNiJdfSwiZGF0YWJyaWNrc1ZpcnR1YWxOZXR3b3JrIjp7ImlkIjoiL3N1YnNjcmlwdGlvbnMvOWUyMjNkYmUtMzM5OS00ZTE5LTg4ZWItMDk3NWYwMmFjODdmL3Jlc291cmNlR3JvdXBzL2RhdGFicmlja3MtcmctaWNrbnpzLTJ3MDE3bmltNno0eHMvcHJvdmlkZXJzL01pY3Jvc29mdC5OZXR3b3JrL3ZpcnR1YWxOZXR3b3Jrcy93b3JrZXJzLXZuZXQifSwiZGF0YWJyaWNrc0FkZHJlc3NTcGFjZSI6eyJhZGRyZXNzUHJlZml4ZXMiOlsiMTAuMTM5LjAuMC8xNiJdfSwicGVlcmluZ1N0YXRlIjoiSW5pdGlhdGVkIiwicHJvdmlzaW9uaW5nU3RhdGUiOiJTdWNjZWVkZWQifX0K",
+      "isContentBase64": false
+    }
+  },
+  "AzDatabricksVNetPeering+[NoContext]+UpdateExpanded+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/auto-test-databricks-6c/providers/Microsoft.Databricks/workspaces/icknzs/virtualNetworkPeerings/vjmtfn?api-version=2023-02-01+2": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/auto-test-databricks-6c/providers/Microsoft.Databricks/workspaces/icknzs/virtualNetworkPeerings/vjmtfn?api-version=2023-02-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"databricksVirtualNetwork\": {\r\n      \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/databricks-rg-icknzs-2w017nim6z4xs/providers/Microsoft.Network/virtualNetworks/workers-vnet\"\r\n    },\r\n    \"databricksAddressSpace\": {\r\n      \"addressPrefixes\": [ \"10.139.0.0/16\" ]\r\n    },\r\n    \"remoteVirtualNetwork\": {\r\n      \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/auto-test-databricks-6c/providers/Microsoft.Network/virtualNetworks/2s4nmk\"\r\n    },\r\n    \"remoteAddressSpace\": {\r\n      \"addressPrefixes\": [ \"110.0.0.0/16\" ]\r\n    },\r\n    \"allowVirtualNetworkAccess\": true,\r\n    \"allowForwardedTraffic\": true,\r\n    \"allowGatewayTransit\": false,\r\n    \"useRemoteGateways\": false\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "753" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-Frame-Options": [ "SAMEORIGIN" ],
+        "X-XSS-Protection": [ "1; mode=block" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
+        "x-ms-correlation-request-id": [ "e19b1e73-7bcc-451f-b173-80f99700b304" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20230519T081626Z:e19b1e73-7bcc-451f-b173-80f99700b304" ],
+        "Date": [ "Fri, 19 May 2023 08:16:25 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "874" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "eyJpZCI6Ii9zdWJzY3JpcHRpb25zLzllMjIzZGJlLTMzOTktNGUxOS04OGViLTA5NzVmMDJhYzg3Zi9yZXNvdXJjZUdyb3Vwcy9hdXRvLXRlc3QtZGF0YWJyaWNrcy02Yy9wcm92aWRlcnMvTWljcm9zb2Z0LkRhdGFicmlja3Mvd29ya3NwYWNlcy9pY2tuenMvdmlydHVhbE5ldHdvcmtQZWVyaW5ncy92am10Zm4iLCJuYW1lIjoidmptdGZuIiwicHJvcGVydGllcyI6eyJhbGxvd1ZpcnR1YWxOZXR3b3JrQWNjZXNzIjp0cnVlLCJhbGxvd0ZvcndhcmRlZFRyYWZmaWMiOnRydWUsImFsbG93R2F0ZXdheVRyYW5zaXQiOmZhbHNlLCJ1c2VSZW1vdGVHYXRld2F5cyI6ZmFsc2UsInJlbW90ZVZpcnR1YWxOZXR3b3JrIjp7ImlkIjoiL3N1YnNjcmlwdGlvbnMvOWUyMjNkYmUtMzM5OS00ZTE5LTg4ZWItMDk3NWYwMmFjODdmL3Jlc291cmNlR3JvdXBzL2F1dG8tdGVzdC1kYXRhYnJpY2tzLTZjL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay92aXJ0dWFsTmV0d29ya3MvMnM0bm1rIn0sInJlbW90ZUFkZHJlc3NTcGFjZSI6eyJhZGRyZXNzUHJlZml4ZXMiOlsiMTEwLjAuMC4wLzE2Il19LCJkYXRhYnJpY2tzVmlydHVhbE5ldHdvcmsiOnsiaWQiOiIvc3Vic2NyaXB0aW9ucy85ZTIyM2RiZS0zMzk5LTRlMTktODhlYi0wOTc1ZjAyYWM4N2YvcmVzb3VyY2VHcm91cHMvZGF0YWJyaWNrcy1yZy1pY2tuenMtMncwMTduaW02ejR4cy9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvdmlydHVhbE5ldHdvcmtzL3dvcmtlcnMtdm5ldCJ9LCJkYXRhYnJpY2tzQWRkcmVzc1NwYWNlIjp7ImFkZHJlc3NQcmVmaXhlcyI6WyIxMC4xMzkuMC4wLzE2Il19LCJwZWVyaW5nU3RhdGUiOiJJbml0aWF0ZWQiLCJwcm92aXNpb25pbmdTdGF0ZSI6IlVwZGF0aW5nIn19Cg==",
+      "isContentBase64": false
+    }
+  },
+  "AzDatabricksVNetPeering+[NoContext]+UpdateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/auto-test-databricks-6c/providers/Microsoft.Databricks/workspaces/icknzs/virtualNetworkPeerings/vjmtfn?api-version=2023-02-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/auto-test-databricks-6c/providers/Microsoft.Databricks/workspaces/icknzs/virtualNetworkPeerings/vjmtfn?api-version=2023-02-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "41" ],
+        "x-ms-client-request-id": [ "3dcecc89-ad15-4f41-80a5-ab5fa1ad3145" ],
+        "CommandName": [ "Az.Databricks.private\\New-AzDatabricksVNetPeering_CreateViaIdentity" ],
+        "FullCommandName": [ "New-AzDatabricksVNetPeering_CreateViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.4", "Az.Databricks/1.2.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-Frame-Options": [ "SAMEORIGIN" ],
+        "X-XSS-Protection": [ "1; mode=block" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11976" ],
+        "x-ms-correlation-request-id": [ "b46e51c8-3f4e-44a0-b332-93cbc1a3007d" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20230519T081657Z:b46e51c8-3f4e-44a0-b332-93cbc1a3007d" ],
+        "Date": [ "Fri, 19 May 2023 08:16:56 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "875" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "eyJpZCI6Ii9zdWJzY3JpcHRpb25zLzllMjIzZGJlLTMzOTktNGUxOS04OGViLTA5NzVmMDJhYzg3Zi9yZXNvdXJjZUdyb3Vwcy9hdXRvLXRlc3QtZGF0YWJyaWNrcy02Yy9wcm92aWRlcnMvTWljcm9zb2Z0LkRhdGFicmlja3Mvd29ya3NwYWNlcy9pY2tuenMvdmlydHVhbE5ldHdvcmtQZWVyaW5ncy92am10Zm4iLCJuYW1lIjoidmptdGZuIiwicHJvcGVydGllcyI6eyJhbGxvd1ZpcnR1YWxOZXR3b3JrQWNjZXNzIjp0cnVlLCJhbGxvd0ZvcndhcmRlZFRyYWZmaWMiOnRydWUsImFsbG93R2F0ZXdheVRyYW5zaXQiOmZhbHNlLCJ1c2VSZW1vdGVHYXRld2F5cyI6ZmFsc2UsInJlbW90ZVZpcnR1YWxOZXR3b3JrIjp7ImlkIjoiL3N1YnNjcmlwdGlvbnMvOWUyMjNkYmUtMzM5OS00ZTE5LTg4ZWItMDk3NWYwMmFjODdmL3Jlc291cmNlR3JvdXBzL2F1dG8tdGVzdC1kYXRhYnJpY2tzLTZjL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay92aXJ0dWFsTmV0d29ya3MvMnM0bm1rIn0sInJlbW90ZUFkZHJlc3NTcGFjZSI6eyJhZGRyZXNzUHJlZml4ZXMiOlsiMTEwLjAuMC4wLzE2Il19LCJkYXRhYnJpY2tzVmlydHVhbE5ldHdvcmsiOnsiaWQiOiIvc3Vic2NyaXB0aW9ucy85ZTIyM2RiZS0zMzk5LTRlMTktODhlYi0wOTc1ZjAyYWM4N2YvcmVzb3VyY2VHcm91cHMvZGF0YWJyaWNrcy1yZy1pY2tuenMtMncwMTduaW02ejR4cy9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvdmlydHVhbE5ldHdvcmtzL3dvcmtlcnMtdm5ldCJ9LCJkYXRhYnJpY2tzQWRkcmVzc1NwYWNlIjp7ImFkZHJlc3NQcmVmaXhlcyI6WyIxMC4xMzkuMC4wLzE2Il19LCJwZWVyaW5nU3RhdGUiOiJJbml0aWF0ZWQiLCJwcm92aXNpb25pbmdTdGF0ZSI6IlN1Y2NlZWRlZCJ9fQo=",
+      "isContentBase64": false
+    }
+  },
+  "AzDatabricksVNetPeering+[NoContext]+UpdateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/auto-test-databricks-6c/providers/Microsoft.Databricks/workspaces/icknzs/virtualNetworkPeerings/vjmtfn?api-version=2023-02-01+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/auto-test-databricks-6c/providers/Microsoft.Databricks/workspaces/icknzs/virtualNetworkPeerings/vjmtfn?api-version=2023-02-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "42" ],
+        "x-ms-client-request-id": [ "3dcecc89-ad15-4f41-80a5-ab5fa1ad3145" ],
+        "CommandName": [ "Az.Databricks.private\\New-AzDatabricksVNetPeering_CreateViaIdentity" ],
+        "FullCommandName": [ "New-AzDatabricksVNetPeering_CreateViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.4", "Az.Databricks/1.2.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-Frame-Options": [ "SAMEORIGIN" ],
+        "X-XSS-Protection": [ "1; mode=block" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11975" ],
+        "x-ms-correlation-request-id": [ "1bd73be1-f4ba-4fbc-8467-4cf3aa8e10d5" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20230519T081657Z:1bd73be1-f4ba-4fbc-8467-4cf3aa8e10d5" ],
+        "Date": [ "Fri, 19 May 2023 08:16:56 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "875" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "eyJpZCI6Ii9zdWJzY3JpcHRpb25zLzllMjIzZGJlLTMzOTktNGUxOS04OGViLTA5NzVmMDJhYzg3Zi9yZXNvdXJjZUdyb3Vwcy9hdXRvLXRlc3QtZGF0YWJyaWNrcy02Yy9wcm92aWRlcnMvTWljcm9zb2Z0LkRhdGFicmlja3Mvd29ya3NwYWNlcy9pY2tuenMvdmlydHVhbE5ldHdvcmtQZWVyaW5ncy92am10Zm4iLCJuYW1lIjoidmptdGZuIiwicHJvcGVydGllcyI6eyJhbGxvd1ZpcnR1YWxOZXR3b3JrQWNjZXNzIjp0cnVlLCJhbGxvd0ZvcndhcmRlZFRyYWZmaWMiOnRydWUsImFsbG93R2F0ZXdheVRyYW5zaXQiOmZhbHNlLCJ1c2VSZW1vdGVHYXRld2F5cyI6ZmFsc2UsInJlbW90ZVZpcnR1YWxOZXR3b3JrIjp7ImlkIjoiL3N1YnNjcmlwdGlvbnMvOWUyMjNkYmUtMzM5OS00ZTE5LTg4ZWItMDk3NWYwMmFjODdmL3Jlc291cmNlR3JvdXBzL2F1dG8tdGVzdC1kYXRhYnJpY2tzLTZjL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay92aXJ0dWFsTmV0d29ya3MvMnM0bm1rIn0sInJlbW90ZUFkZHJlc3NTcGFjZSI6eyJhZGRyZXNzUHJlZml4ZXMiOlsiMTEwLjAuMC4wLzE2Il19LCJkYXRhYnJpY2tzVmlydHVhbE5ldHdvcmsiOnsiaWQiOiIvc3Vic2NyaXB0aW9ucy85ZTIyM2RiZS0zMzk5LTRlMTktODhlYi0wOTc1ZjAyYWM4N2YvcmVzb3VyY2VHcm91cHMvZGF0YWJyaWNrcy1yZy1pY2tuenMtMncwMTduaW02ejR4cy9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvdmlydHVhbE5ldHdvcmtzL3dvcmtlcnMtdm5ldCJ9LCJkYXRhYnJpY2tzQWRkcmVzc1NwYWNlIjp7ImFkZHJlc3NQcmVmaXhlcyI6WyIxMC4xMzkuMC4wLzE2Il19LCJwZWVyaW5nU3RhdGUiOiJJbml0aWF0ZWQiLCJwcm92aXNpb25pbmdTdGF0ZSI6IlN1Y2NlZWRlZCJ9fQo=",
+      "isContentBase64": false
+    }
+  },
+  "AzDatabricksVNetPeering+[NoContext]+UpdateViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/auto-test-databricks-6c/providers/Microsoft.Databricks/workspaces/icknzs/virtualNetworkPeerings/vjmtfn?api-version=2023-02-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/auto-test-databricks-6c/providers/Microsoft.Databricks/workspaces/icknzs/virtualNetworkPeerings/vjmtfn?api-version=2023-02-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "43" ],
+        "x-ms-client-request-id": [ "db163788-303d-42b1-b646-09e4c05923a5" ],
+        "CommandName": [ "Get-AzDatabricksVNetPeering" ],
+        "FullCommandName": [ "Get-AzDatabricksVNetPeering_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.4", "Az.Databricks/1.2.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-Frame-Options": [ "SAMEORIGIN" ],
+        "X-XSS-Protection": [ "1; mode=block" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11974" ],
+        "x-ms-correlation-request-id": [ "4f040e63-2e49-4d85-9a8d-965fce93100c" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20230519T081658Z:4f040e63-2e49-4d85-9a8d-965fce93100c" ],
+        "Date": [ "Fri, 19 May 2023 08:16:57 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "875" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "eyJpZCI6Ii9zdWJzY3JpcHRpb25zLzllMjIzZGJlLTMzOTktNGUxOS04OGViLTA5NzVmMDJhYzg3Zi9yZXNvdXJjZUdyb3Vwcy9hdXRvLXRlc3QtZGF0YWJyaWNrcy02Yy9wcm92aWRlcnMvTWljcm9zb2Z0LkRhdGFicmlja3Mvd29ya3NwYWNlcy9pY2tuenMvdmlydHVhbE5ldHdvcmtQZWVyaW5ncy92am10Zm4iLCJuYW1lIjoidmptdGZuIiwicHJvcGVydGllcyI6eyJhbGxvd1ZpcnR1YWxOZXR3b3JrQWNjZXNzIjp0cnVlLCJhbGxvd0ZvcndhcmRlZFRyYWZmaWMiOnRydWUsImFsbG93R2F0ZXdheVRyYW5zaXQiOmZhbHNlLCJ1c2VSZW1vdGVHYXRld2F5cyI6ZmFsc2UsInJlbW90ZVZpcnR1YWxOZXR3b3JrIjp7ImlkIjoiL3N1YnNjcmlwdGlvbnMvOWUyMjNkYmUtMzM5OS00ZTE5LTg4ZWItMDk3NWYwMmFjODdmL3Jlc291cmNlR3JvdXBzL2F1dG8tdGVzdC1kYXRhYnJpY2tzLTZjL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay92aXJ0dWFsTmV0d29ya3MvMnM0bm1rIn0sInJlbW90ZUFkZHJlc3NTcGFjZSI6eyJhZGRyZXNzUHJlZml4ZXMiOlsiMTEwLjAuMC4wLzE2Il19LCJkYXRhYnJpY2tzVmlydHVhbE5ldHdvcmsiOnsiaWQiOiIvc3Vic2NyaXB0aW9ucy85ZTIyM2RiZS0zMzk5LTRlMTktODhlYi0wOTc1ZjAyYWM4N2YvcmVzb3VyY2VHcm91cHMvZGF0YWJyaWNrcy1yZy1pY2tuenMtMncwMTduaW02ejR4cy9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvdmlydHVhbE5ldHdvcmtzL3dvcmtlcnMtdm5ldCJ9LCJkYXRhYnJpY2tzQWRkcmVzc1NwYWNlIjp7ImFkZHJlc3NQcmVmaXhlcyI6WyIxMC4xMzkuMC4wLzE2Il19LCJwZWVyaW5nU3RhdGUiOiJJbml0aWF0ZWQiLCJwcm92aXNpb25pbmdTdGF0ZSI6IlN1Y2NlZWRlZCJ9fQo=",
+      "isContentBase64": false
+    }
+  },
+  "AzDatabricksVNetPeering+[NoContext]+UpdateViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/auto-test-databricks-6c/providers/Microsoft.Databricks/workspaces/icknzs/virtualNetworkPeerings/vjmtfn?api-version=2023-02-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/auto-test-databricks-6c/providers/Microsoft.Databricks/workspaces/icknzs/virtualNetworkPeerings/vjmtfn?api-version=2023-02-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "44" ],
+        "x-ms-client-request-id": [ "3a2edaa8-5993-4c0a-b378-4506b725465e" ],
+        "CommandName": [ "Get-AzDatabricksVNetPeering" ],
+        "FullCommandName": [ "Get-AzDatabricksVNetPeering_GetViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.4", "Az.Databricks/1.2.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-Frame-Options": [ "SAMEORIGIN" ],
+        "X-XSS-Protection": [ "1; mode=block" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11973" ],
+        "x-ms-correlation-request-id": [ "93596eea-82da-4b1f-bcab-7664886036f0" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20230519T081658Z:93596eea-82da-4b1f-bcab-7664886036f0" ],
+        "Date": [ "Fri, 19 May 2023 08:16:57 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "875" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "eyJpZCI6Ii9zdWJzY3JpcHRpb25zLzllMjIzZGJlLTMzOTktNGUxOS04OGViLTA5NzVmMDJhYzg3Zi9yZXNvdXJjZUdyb3Vwcy9hdXRvLXRlc3QtZGF0YWJyaWNrcy02Yy9wcm92aWRlcnMvTWljcm9zb2Z0LkRhdGFicmlja3Mvd29ya3NwYWNlcy9pY2tuenMvdmlydHVhbE5ldHdvcmtQZWVyaW5ncy92am10Zm4iLCJuYW1lIjoidmptdGZuIiwicHJvcGVydGllcyI6eyJhbGxvd1ZpcnR1YWxOZXR3b3JrQWNjZXNzIjp0cnVlLCJhbGxvd0ZvcndhcmRlZFRyYWZmaWMiOnRydWUsImFsbG93R2F0ZXdheVRyYW5zaXQiOmZhbHNlLCJ1c2VSZW1vdGVHYXRld2F5cyI6ZmFsc2UsInJlbW90ZVZpcnR1YWxOZXR3b3JrIjp7ImlkIjoiL3N1YnNjcmlwdGlvbnMvOWUyMjNkYmUtMzM5OS00ZTE5LTg4ZWItMDk3NWYwMmFjODdmL3Jlc291cmNlR3JvdXBzL2F1dG8tdGVzdC1kYXRhYnJpY2tzLTZjL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay92aXJ0dWFsTmV0d29ya3MvMnM0bm1rIn0sInJlbW90ZUFkZHJlc3NTcGFjZSI6eyJhZGRyZXNzUHJlZml4ZXMiOlsiMTEwLjAuMC4wLzE2Il19LCJkYXRhYnJpY2tzVmlydHVhbE5ldHdvcmsiOnsiaWQiOiIvc3Vic2NyaXB0aW9ucy85ZTIyM2RiZS0zMzk5LTRlMTktODhlYi0wOTc1ZjAyYWM4N2YvcmVzb3VyY2VHcm91cHMvZGF0YWJyaWNrcy1yZy1pY2tuenMtMncwMTduaW02ejR4cy9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvdmlydHVhbE5ldHdvcmtzL3dvcmtlcnMtdm5ldCJ9LCJkYXRhYnJpY2tzQWRkcmVzc1NwYWNlIjp7ImFkZHJlc3NQcmVmaXhlcyI6WyIxMC4xMzkuMC4wLzE2Il19LCJwZWVyaW5nU3RhdGUiOiJJbml0aWF0ZWQiLCJwcm92aXNpb25pbmdTdGF0ZSI6IlN1Y2NlZWRlZCJ9fQo=",
+      "isContentBase64": false
+    }
+  },
+  "AzDatabricksVNetPeering+[NoContext]+UpdateViaIdentityExpanded+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/auto-test-databricks-6c/providers/Microsoft.Databricks/workspaces/icknzs/virtualNetworkPeerings/vjmtfn?api-version=2023-02-01+3": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/auto-test-databricks-6c/providers/Microsoft.Databricks/workspaces/icknzs/virtualNetworkPeerings/vjmtfn?api-version=2023-02-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"databricksVirtualNetwork\": {\r\n      \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/databricks-rg-icknzs-2w017nim6z4xs/providers/Microsoft.Network/virtualNetworks/workers-vnet\"\r\n    },\r\n    \"databricksAddressSpace\": {\r\n      \"addressPrefixes\": [ \"10.139.0.0/16\" ]\r\n    },\r\n    \"remoteVirtualNetwork\": {\r\n      \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/auto-test-databricks-6c/providers/Microsoft.Network/virtualNetworks/2s4nmk\"\r\n    },\r\n    \"remoteAddressSpace\": {\r\n      \"addressPrefixes\": [ \"110.0.0.0/16\" ]\r\n    },\r\n    \"allowVirtualNetworkAccess\": true,\r\n    \"allowForwardedTraffic\": true,\r\n    \"allowGatewayTransit\": false,\r\n    \"useRemoteGateways\": false\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "753" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-Frame-Options": [ "SAMEORIGIN" ],
+        "X-XSS-Protection": [ "1; mode=block" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1197" ],
+        "x-ms-correlation-request-id": [ "6e530be6-e27c-486d-a200-2b97db711c67" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20230519T081700Z:6e530be6-e27c-486d-a200-2b97db711c67" ],
+        "Date": [ "Fri, 19 May 2023 08:16:59 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "875" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "eyJpZCI6Ii9zdWJzY3JpcHRpb25zLzllMjIzZGJlLTMzOTktNGUxOS04OGViLTA5NzVmMDJhYzg3Zi9yZXNvdXJjZUdyb3Vwcy9hdXRvLXRlc3QtZGF0YWJyaWNrcy02Yy9wcm92aWRlcnMvTWljcm9zb2Z0LkRhdGFicmlja3Mvd29ya3NwYWNlcy9pY2tuenMvdmlydHVhbE5ldHdvcmtQZWVyaW5ncy92am10Zm4iLCJuYW1lIjoidmptdGZuIiwicHJvcGVydGllcyI6eyJhbGxvd1ZpcnR1YWxOZXR3b3JrQWNjZXNzIjp0cnVlLCJhbGxvd0ZvcndhcmRlZFRyYWZmaWMiOnRydWUsImFsbG93R2F0ZXdheVRyYW5zaXQiOmZhbHNlLCJ1c2VSZW1vdGVHYXRld2F5cyI6ZmFsc2UsInJlbW90ZVZpcnR1YWxOZXR3b3JrIjp7ImlkIjoiL3N1YnNjcmlwdGlvbnMvOWUyMjNkYmUtMzM5OS00ZTE5LTg4ZWItMDk3NWYwMmFjODdmL3Jlc291cmNlR3JvdXBzL2F1dG8tdGVzdC1kYXRhYnJpY2tzLTZjL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay92aXJ0dWFsTmV0d29ya3MvMnM0bm1rIn0sInJlbW90ZUFkZHJlc3NTcGFjZSI6eyJhZGRyZXNzUHJlZml4ZXMiOlsiMTEwLjAuMC4wLzE2Il19LCJkYXRhYnJpY2tzVmlydHVhbE5ldHdvcmsiOnsiaWQiOiIvc3Vic2NyaXB0aW9ucy85ZTIyM2RiZS0zMzk5LTRlMTktODhlYi0wOTc1ZjAyYWM4N2YvcmVzb3VyY2VHcm91cHMvZGF0YWJyaWNrcy1yZy1pY2tuenMtMncwMTduaW02ejR4cy9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvdmlydHVhbE5ldHdvcmtzL3dvcmtlcnMtdm5ldCJ9LCJkYXRhYnJpY2tzQWRkcmVzc1NwYWNlIjp7ImFkZHJlc3NQcmVmaXhlcyI6WyIxMC4xMzkuMC4wLzE2Il19LCJwZWVyaW5nU3RhdGUiOiJJbml0aWF0ZWQiLCJwcm92aXNpb25pbmdTdGF0ZSI6IlN1Y2NlZWRlZCJ9fQo=",
+      "isContentBase64": false
+    }
+  },
+  "AzDatabricksVNetPeering+[NoContext]+UpdateViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/auto-test-databricks-6c/providers/Microsoft.Databricks/workspaces/icknzs/virtualNetworkPeerings/vjmtfn?api-version=2023-02-01+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/auto-test-databricks-6c/providers/Microsoft.Databricks/workspaces/icknzs/virtualNetworkPeerings/vjmtfn?api-version=2023-02-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "46" ],
+        "x-ms-client-request-id": [ "c1ef14e8-a6bc-48e7-9a47-1c3e69067d53" ],
+        "CommandName": [ "Az.Databricks.private\\New-AzDatabricksVNetPeering_CreateViaIdentity" ],
+        "FullCommandName": [ "New-AzDatabricksVNetPeering_CreateViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.4", "Az.Databricks/1.2.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-Frame-Options": [ "SAMEORIGIN" ],
+        "X-XSS-Protection": [ "1; mode=block" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11972" ],
+        "x-ms-correlation-request-id": [ "8281b93b-0688-4ae2-93e5-20ba682b16f4" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20230519T081730Z:8281b93b-0688-4ae2-93e5-20ba682b16f4" ],
+        "Date": [ "Fri, 19 May 2023 08:17:30 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "875" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "eyJpZCI6Ii9zdWJzY3JpcHRpb25zLzllMjIzZGJlLTMzOTktNGUxOS04OGViLTA5NzVmMDJhYzg3Zi9yZXNvdXJjZUdyb3Vwcy9hdXRvLXRlc3QtZGF0YWJyaWNrcy02Yy9wcm92aWRlcnMvTWljcm9zb2Z0LkRhdGFicmlja3Mvd29ya3NwYWNlcy9pY2tuenMvdmlydHVhbE5ldHdvcmtQZWVyaW5ncy92am10Zm4iLCJuYW1lIjoidmptdGZuIiwicHJvcGVydGllcyI6eyJhbGxvd1ZpcnR1YWxOZXR3b3JrQWNjZXNzIjp0cnVlLCJhbGxvd0ZvcndhcmRlZFRyYWZmaWMiOnRydWUsImFsbG93R2F0ZXdheVRyYW5zaXQiOmZhbHNlLCJ1c2VSZW1vdGVHYXRld2F5cyI6ZmFsc2UsInJlbW90ZVZpcnR1YWxOZXR3b3JrIjp7ImlkIjoiL3N1YnNjcmlwdGlvbnMvOWUyMjNkYmUtMzM5OS00ZTE5LTg4ZWItMDk3NWYwMmFjODdmL3Jlc291cmNlR3JvdXBzL2F1dG8tdGVzdC1kYXRhYnJpY2tzLTZjL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay92aXJ0dWFsTmV0d29ya3MvMnM0bm1rIn0sInJlbW90ZUFkZHJlc3NTcGFjZSI6eyJhZGRyZXNzUHJlZml4ZXMiOlsiMTEwLjAuMC4wLzE2Il19LCJkYXRhYnJpY2tzVmlydHVhbE5ldHdvcmsiOnsiaWQiOiIvc3Vic2NyaXB0aW9ucy85ZTIyM2RiZS0zMzk5LTRlMTktODhlYi0wOTc1ZjAyYWM4N2YvcmVzb3VyY2VHcm91cHMvZGF0YWJyaWNrcy1yZy1pY2tuenMtMncwMTduaW02ejR4cy9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvdmlydHVhbE5ldHdvcmtzL3dvcmtlcnMtdm5ldCJ9LCJkYXRhYnJpY2tzQWRkcmVzc1NwYWNlIjp7ImFkZHJlc3NQcmVmaXhlcyI6WyIxMC4xMzkuMC4wLzE2Il19LCJwZWVyaW5nU3RhdGUiOiJJbml0aWF0ZWQiLCJwcm92aXNpb25pbmdTdGF0ZSI6IlN1Y2NlZWRlZCJ9fQo=",
+      "isContentBase64": false
+    }
+  },
+  "AzDatabricksVNetPeering+[NoContext]+UpdateViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/auto-test-databricks-6c/providers/Microsoft.Databricks/workspaces/icknzs/virtualNetworkPeerings/vjmtfn?api-version=2023-02-01+5": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/auto-test-databricks-6c/providers/Microsoft.Databricks/workspaces/icknzs/virtualNetworkPeerings/vjmtfn?api-version=2023-02-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "47" ],
+        "x-ms-client-request-id": [ "c1ef14e8-a6bc-48e7-9a47-1c3e69067d53" ],
+        "CommandName": [ "Az.Databricks.private\\New-AzDatabricksVNetPeering_CreateViaIdentity" ],
+        "FullCommandName": [ "New-AzDatabricksVNetPeering_CreateViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.4", "Az.Databricks/1.2.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-Frame-Options": [ "SAMEORIGIN" ],
+        "X-XSS-Protection": [ "1; mode=block" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11971" ],
+        "x-ms-correlation-request-id": [ "346cbd46-115f-4a42-bec0-1c8d39db7068" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20230519T081731Z:346cbd46-115f-4a42-bec0-1c8d39db7068" ],
+        "Date": [ "Fri, 19 May 2023 08:17:31 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "875" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "eyJpZCI6Ii9zdWJzY3JpcHRpb25zLzllMjIzZGJlLTMzOTktNGUxOS04OGViLTA5NzVmMDJhYzg3Zi9yZXNvdXJjZUdyb3Vwcy9hdXRvLXRlc3QtZGF0YWJyaWNrcy02Yy9wcm92aWRlcnMvTWljcm9zb2Z0LkRhdGFicmlja3Mvd29ya3NwYWNlcy9pY2tuenMvdmlydHVhbE5ldHdvcmtQZWVyaW5ncy92am10Zm4iLCJuYW1lIjoidmptdGZuIiwicHJvcGVydGllcyI6eyJhbGxvd1ZpcnR1YWxOZXR3b3JrQWNjZXNzIjp0cnVlLCJhbGxvd0ZvcndhcmRlZFRyYWZmaWMiOnRydWUsImFsbG93R2F0ZXdheVRyYW5zaXQiOmZhbHNlLCJ1c2VSZW1vdGVHYXRld2F5cyI6ZmFsc2UsInJlbW90ZVZpcnR1YWxOZXR3b3JrIjp7ImlkIjoiL3N1YnNjcmlwdGlvbnMvOWUyMjNkYmUtMzM5OS00ZTE5LTg4ZWItMDk3NWYwMmFjODdmL3Jlc291cmNlR3JvdXBzL2F1dG8tdGVzdC1kYXRhYnJpY2tzLTZjL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay92aXJ0dWFsTmV0d29ya3MvMnM0bm1rIn0sInJlbW90ZUFkZHJlc3NTcGFjZSI6eyJhZGRyZXNzUHJlZml4ZXMiOlsiMTEwLjAuMC4wLzE2Il19LCJkYXRhYnJpY2tzVmlydHVhbE5ldHdvcmsiOnsiaWQiOiIvc3Vic2NyaXB0aW9ucy85ZTIyM2RiZS0zMzk5LTRlMTktODhlYi0wOTc1ZjAyYWM4N2YvcmVzb3VyY2VHcm91cHMvZGF0YWJyaWNrcy1yZy1pY2tuenMtMncwMTduaW02ejR4cy9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvdmlydHVhbE5ldHdvcmtzL3dvcmtlcnMtdm5ldCJ9LCJkYXRhYnJpY2tzQWRkcmVzc1NwYWNlIjp7ImFkZHJlc3NQcmVmaXhlcyI6WyIxMC4xMzkuMC4wLzE2Il19LCJwZWVyaW5nU3RhdGUiOiJJbml0aWF0ZWQiLCJwcm92aXNpb25pbmdTdGF0ZSI6IlN1Y2NlZWRlZCJ9fQo=",
+      "isContentBase64": false
+    }
+  },
+  "AzDatabricksVNetPeering+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/auto-test-databricks-6c/providers/Microsoft.Databricks/workspaces/icknzs/virtualNetworkPeerings/vjmtfn?api-version=2023-02-01+1": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/auto-test-databricks-6c/providers/Microsoft.Databricks/workspaces/icknzs/virtualNetworkPeerings/vjmtfn?api-version=2023-02-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "48" ],
+        "x-ms-client-request-id": [ "f013a83e-57b0-4f8d-b3a6-a1fe153c8933" ],
+        "CommandName": [ "Remove-AzDatabricksVNetPeering" ],
+        "FullCommandName": [ "Remove-AzDatabricksVNetPeering_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.4", "Az.Databricks/1.2.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Network/locations/eastus/operationResults/48971a57-3288-40d9-8c1a-bc0d6d283292?api-version=2018-08-01" ],
+        "X-Frame-Options": [ "SAMEORIGIN" ],
+        "X-XSS-Protection": [ "1; mode=block" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14998" ],
+        "x-ms-correlation-request-id": [ "f20ece31-2f72-4fc4-9d9e-40ec7cf69819" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20230519T081732Z:f20ece31-2f72-4fc4-9d9e-40ec7cf69819" ],
+        "Date": [ "Fri, 19 May 2023 08:17:32 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "3" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "IiIK",
+      "isContentBase64": false
+    }
+  },
+  "AzDatabricksVNetPeering+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Network/locations/eastus/operationResults/48971a57-3288-40d9-8c1a-bc0d6d283292?api-version=2018-08-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Network/locations/eastus/operationResults/48971a57-3288-40d9-8c1a-bc0d6d283292?api-version=2018-08-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "49" ],
+        "x-ms-client-request-id": [ "f013a83e-57b0-4f8d-b3a6-a1fe153c8933" ],
+        "CommandName": [ "Remove-AzDatabricksVNetPeering" ],
+        "FullCommandName": [ "Remove-AzDatabricksVNetPeering_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.4", "Az.Databricks/1.2.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 204,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Network/locations/eastus/operationResults/48971a57-3288-40d9-8c1a-bc0d6d283292?api-version=2018-08-01" ],
+        "x-ms-request-id": [ "48971a57-3288-40d9-8c1a-bc0d6d283292" ],
+        "x-ms-client-request-id": [ "f9cd0852-3dcd-4c35-8ac7-e71514ebe735" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Network/locations/eastus/operations/48971a57-3288-40d9-8c1a-bc0d6d283292?api-version=2018-08-01" ],
+        "x-ms-correlation-request-id": [ "6dd33f83-8b4b-44e0-8278-271b44698f9b" ],
+        "Azure-AsyncNotification": [ "Enabled" ],
+        "x-ms-arm-service-request-id": [ "9a7fecbe-883e-4808-8112-7388d5c63453" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0", "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11970" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20230519T081802Z:e3f2d3b3-6588-4706-acc5-c0cd7faa5520" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 19 May 2023 08:18:02 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "AzDatabricksVNetPeering+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Network/locations/eastus/operationResults/48971a57-3288-40d9-8c1a-bc0d6d283292?api-version=2018-08-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Network/locations/eastus/operationResults/48971a57-3288-40d9-8c1a-bc0d6d283292?api-version=2018-08-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "50" ],
+        "x-ms-client-request-id": [ "f013a83e-57b0-4f8d-b3a6-a1fe153c8933" ],
+        "CommandName": [ "Remove-AzDatabricksVNetPeering" ],
+        "FullCommandName": [ "Remove-AzDatabricksVNetPeering_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.4", "Az.Databricks/1.2.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 204,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Network/locations/eastus/operationResults/48971a57-3288-40d9-8c1a-bc0d6d283292?api-version=2018-08-01" ],
+        "x-ms-request-id": [ "48971a57-3288-40d9-8c1a-bc0d6d283292" ],
+        "x-ms-client-request-id": [ "f9cd0852-3dcd-4c35-8ac7-e71514ebe735" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Network/locations/eastus/operations/48971a57-3288-40d9-8c1a-bc0d6d283292?api-version=2018-08-01" ],
+        "x-ms-correlation-request-id": [ "6dd33f83-8b4b-44e0-8278-271b44698f9b" ],
+        "Azure-AsyncNotification": [ "Enabled" ],
+        "x-ms-arm-service-request-id": [ "9a7fecbe-883e-4808-8112-7388d5c63453" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0", "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11969" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20230519T081802Z:58912d0c-e06c-4fc2-9004-c6a16aa74e0f" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 19 May 2023 08:18:02 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  }
+}

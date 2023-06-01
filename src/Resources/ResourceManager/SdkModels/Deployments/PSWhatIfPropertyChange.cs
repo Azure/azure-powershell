@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.Deployments
     using System.Collections.Generic;
     using System.Linq;
     using Extensions;
-    using Microsoft.Azure.Management.ResourceManager.Models;
+    using Microsoft.Azure.Management.Resources.Models;
     using Newtonsoft.Json.Linq;
 
     public class PSWhatIfPropertyChange

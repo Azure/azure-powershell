@@ -9,3 +9,4 @@ Location Name       Kind      ResourceGroupName
 Global   fdp-v542q6 frontdoor testps-rg-da16jm
 ```
 
+Create an AzureFrontDoor profile under the resource group

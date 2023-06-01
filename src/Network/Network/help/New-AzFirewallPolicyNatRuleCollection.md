@@ -40,7 +40,7 @@ The type of the rule action
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: Dnat
+Accepted values: Dnat, Snat
 
 Required: True
 Position: Named

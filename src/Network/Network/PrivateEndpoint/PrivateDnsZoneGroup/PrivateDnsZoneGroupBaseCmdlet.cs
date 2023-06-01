@@ -37,8 +37,9 @@ namespace Microsoft.Azure.Commands.Network
                 var group = GetPrivateDnsZoneGroup(resourceGroupName, privateEndpointName, privateDnsZoneGroupName);
                 return (group != null);
             }
-            catch (ErrorException exception)
+            catch (Rest.RestException ex) when (ex is ErrorException || ex is Rest.Azure.CloudException)
             {
+                dynamic exception = ex;
                 if (exception.Response.StatusCode == HttpStatusCode.NotFound)
                 {
                     return false;
