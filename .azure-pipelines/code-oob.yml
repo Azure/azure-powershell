@@ -18,13 +18,10 @@ jobs:
       command: custom
       custom: msbuild
       arguments: 'build.proj /t:Clean;Build /p:Configuration=Release'
-      buildProperties: 
-  - task: AzurePowerShell@5
+  - task: UseDotNet@2
     inputs:
-      azureSubscription: 'lnxtest'
-      ScriptType: InlineScript
-      azurePowerShellVersion: 'LatestVersion'
-      Inline: |
+      version: '3.1.0'
+  - pwsh: |
         .\tools\RunVersionController.ps1 -ModuleName  ${{ parameters.ServiceName }}
     displayName: 'Bump up version'
   - pwsh: |
