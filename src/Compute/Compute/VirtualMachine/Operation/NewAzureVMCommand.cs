@@ -948,13 +948,7 @@ namespace Microsoft.Azure.Commands.Compute
             }
 
             // Guest Attestation extension defaulting scenario check.
-            // Check if Identity can be defaulted in. 
-            if (shouldGuestAttestationExtBeInstalled() &&
-                this.VM != null &&
-                this.VM.Identity == null)
-            {
-                this.VM.Identity = new VirtualMachineIdentity(null, null, Microsoft.Azure.Management.Compute.Models.ResourceIdentityType.SystemAssigned);
-            }
+            
             
             if (this.VM?.SecurityProfile?.SecurityType == "TrustedLaunch" || this.VM?.SecurityProfile?.SecurityType == "ConfidentialVM")
             {
@@ -970,7 +964,14 @@ namespace Microsoft.Azure.Commands.Compute
                 }
 
             }
-            
+            // Check if Identity can be defaulted in. 
+            if (shouldGuestAttestationExtBeInstalled() &&
+                this.VM != null &&
+                this.VM.Identity == null)
+            {
+                this.VM.Identity = new VirtualMachineIdentity(null, null, Microsoft.Azure.Management.Compute.Models.ResourceIdentityType.SystemAssigned);
+            }
+
             if (ShouldProcess(this.VM.Name, VerbsCommon.New))
             {
                 ExecuteClientAction(() =>

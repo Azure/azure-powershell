@@ -6638,6 +6638,14 @@ function Test-VirtualMachineSecurityType
         Assert-AreEqual $vm.SecurityProfile.UefiSettings.VTpmEnabled $true;
         Assert-AreEqual $vm.SecurityProfile.UefiSettings.SecureBootEnabled $true;
 
+        # validate GA extension
+        $extDefaultName = "GuestAttestation";
+        $vmGADefaultIDentity = "SystemAssigned";
+        $vm = Get-AzVm -ResourceGroupName $rgname -Name $vmName;
+        $vmExt = Get-AzVMExtension -ResourceGroupName $rgname -VMName $vmName -Name $extDefaultName;
+        Assert-AreEqual $extDefaultName $vmExt.Name;
+        Assert-AreEqual $vmGADefaultIDentity $vm.Identity.Type;
+
         #Case 2: -SecurityType = "TrustedLaunch" || "ConfidentialVM" -EnableVtpm $false -EnableSecureBoot $true
         $vmConfig = Set-AzVmUefi -VM $vmConfig -EnableVtpm $disable -EnableSecureBoot $enable;
         New-AzVM -ResourceGroupName $RGName -Location $loc -VM $vmConfig;
@@ -6705,14 +6713,14 @@ function Test-VirtualMachineSecurityTypeWithoutConfig
 
         Assert-AreEqual $updated_vm.SecurityProfile.UefiSettings.VTpmEnabled $true;
 
-        # validate GA estension
+        # validate GA extension
         $extDefaultName = "GuestAttestation";
-        $vmGADefaultIDentity = "SystemAssigned";
+        $vmGADefaultIDentity = "SystemAssignedUserAssigned";
         $vmname = $vmname1;
         $vm = Get-AzVm -ResourceGroupName $rgname -Name $vmName;
         $vmExt = Get-AzVMExtension -ResourceGroupName $rgname -VMName $vmName -Name $extDefaultName;
-        Assert-AreEqual $vmExt.Name $extDefaultName;
-        Assert-AreEqual $vm.Identity.Type $vmGADefaultIDentity;
+        Assert-AreEqual $extDefaultName $vmExt.Name;
+        Assert-AreEqual $vmGADefaultIDentity $vm.Identity.Type;
     }
     finally
     {
