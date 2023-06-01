@@ -98,7 +98,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
         }
 
         // Convert Track1 queue object to Track 2 queue Client
-        protected static QueueClient GetTrack2QueueClient(CloudQueue cloudQueue, AzureStorageContext context)
+        public static QueueClient GetTrack2QueueClient(CloudQueue cloudQueue, AzureStorageContext context)
         {
             QueueClient queueClient;
             if (cloudQueue.ServiceClient.Credentials.IsToken) //Oauth
