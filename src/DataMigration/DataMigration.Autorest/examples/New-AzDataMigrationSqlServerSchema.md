@@ -1,6 +1,6 @@
 ### Example 1: Run Migrate database objects from the source SQL Server to the target Azure SQL Database using Parameters
 ```powershell
-New-AzDataMigrationSqlServerSchema -Action MigrateSchema -SourceConnectionString "Server=;Initial Catalog=;User ID=;Password=" -TargetConnectionString "Server=;Initial Catalog=;User ID=;Password=" 
+New-AzDataMigrationSqlServerSchema -Action "MigrateSchema" -SourceConnectionString "Server=;Initial Catalog=;User ID=;Password=" -TargetConnectionString "Server=;Initial Catalog=;User ID=;Password=" 
 ```
 
 ```output
@@ -31,7 +31,7 @@ This command runs Run SqlServerSchema Migrations on given SQL Server using the c
 
 ### Example 2: Run Generate TSQL schema script from the source SQL Server using Parameters
 ```powershell
-New-AzDataMigrationSqlServerSchema -Action GenerateScript -SourceConnectionString "Server=;Initial Catalog=;User ID=;Password=" -TargetConnectionString "Server=;Initial Catalog=;User ID=;Password=" -OutputFolder "C:\OutputFolder"
+New-AzDataMigrationSqlServerSchema -Action "GenerateScript" -SourceConnectionString "Server=;Initial Catalog=;User ID=;Password=" -TargetConnectionString "Server=;Initial Catalog=;User ID=;Password=" -OutputFolder "C:\OutputFolder"
 ```
 
 ```output
@@ -58,7 +58,7 @@ This command runs Run Generate TSQL schema script on given SQL Server using the 
 
 ### Example 3: Run Deploy TSQL script to the target Azure SQL Database using Parameters
 ```powershell
-New-AzDataMigrationSqlServerSchema -Action DeploySchema -SourceConnectionString "Server=;Initial Catalog=;User ID=;Password=" -TargetConnectionString "Server=;Initial Catalog=;User ID=;Password=" -InputScriptFilePath "C:\OutputFolder\script.sql"
+New-AzDataMigrationSqlServerSchema -Action "DeploySchema" -SourceConnectionString "Server=;Initial Catalog=;User ID=;Password=" -TargetConnectionString "Server=;Initial Catalog=;User ID=;Password=" -InputScriptFilePath "C:\OutputFolder\script.sql"
 ```
 
 ```output
@@ -77,14 +77,11 @@ New-AzDataMigrationSqlServerSchema -ConfigFilePath "C:\configfile.json"
 ```
 
 ```output
-configfile.json example
-{
-  "Action": "GenerateScript",
-  "sourceConnectionString": "Server=;Initial Catalog=;User ID=;Password=",
-  "targetConnectionString": "Server=;Initial Catalog=;User ID=;Password=",
-  "inputScriptFilePath": "C:\OutputFolder\script.sql",
-  "outputFolder": "C:\OutputFolder"
-}
+Starting schema deployment...
+
+The number of deployed script batches: 110/110
+Progress: 100%
+Total elapsed time: 00:00:05.7519257
 ```
 
 This command runs Run SqlServerSchema Command from the source Sql Servers to the target Azure Sql Servers using config file.
