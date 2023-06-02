@@ -7,6 +7,11 @@ parameters:
   displayName: Service to OOB release
   type: string
   default: Az.Databricks
+
+resources:
+  repositories:
+  - repository: self
+    type: git
 jobs:
 - job: OOBRelease
   timeoutInMinutes: 180
