@@ -122,7 +122,11 @@ $examplesFolder = Join-Path $PSScriptRoot 'examples'
 $null = New-Item -ItemType Directory -Force -Path $examplesFolder
 
 Write-Host -ForegroundColor Green 'Creating cmdlets for specified models...'
-$modelCmdlets = @('ResourceReference', 'HealthProbeParameters', 'ResponseBasedOriginErrorDetectionParameters', 'UserManagedHttpsParameters', 'CdnManagedHttpsParameters', 'DeliveryRule', 'DeliveryRuleRemoteAddressCondition', 'DeliveryRuleRequestMethodCondition', 'DeliveryRuleQueryStringCondition', 'DeliveryRulePostArgsCondition', 'DeliveryRuleRequestUriCondition', 'DeliveryRuleRequestHeaderCondition', 'DeliveryRuleRequestBodyCondition', 'DeliveryRuleRequestSchemeCondition', 'DeliveryRuleUrlPathCondition', 'DeliveryRuleUrlFileExtensionCondition', 'DeliveryRuleUrlFileNameCondition', 'DeliveryRuleHttpVersionCondition', 'DeliveryRuleCookiesCondition', 'DeliveryRuleIsDeviceCondition', 'UrlRedirectAction', 'UrlSigningAction', 'UrlRewriteAction', 'DeliveryRuleRequestHeaderAction', 'DeliveryRuleResponseHeaderAction')
+$modelCmdlets = @('ResourceReference', 'HealthProbeParameters', 'ResponseBasedOriginErrorDetectionParameters', 'UserManagedHttpsParameters', 'CdnManagedHttpsParameters', 'DeliveryRule', 'DeliveryRuleRemoteAddressCondition', 'DeliveryRuleRequestMethodCondition', 'DeliveryRuleQueryStringCondition', 'DeliveryRulePostArgsCondition', 'DeliveryRuleRequestUriCondition', 'DeliveryRuleRequestHeaderCondition', 'DeliveryRuleRequestBodyCondition', 'DeliveryRuleRequestSchemeCondition', 'DeliveryRuleUrlPathCondition', 'DeliveryRuleUrlFileExtensionCondition', 'DeliveryRuleUrlFileNameCondition', 'DeliveryRuleHttpVersionCondition', 'DeliveryRuleCookiesCondition', 'DeliveryRuleIsDeviceCondition', 'DeliveryRuleCacheExpirationAction', 'DeliveryRuleCacheKeyQueryStringAction', 'OriginGroupOverrideAction', 'UrlRedirectAction', 'UrlSigningAction', 'UrlRewriteAction', 'DeliveryRuleRequestHeaderAction', 'DeliveryRuleResponseHeaderAction', 'PurgeParameters', 'LoadParameters')
+$modelCmdletFolder = Join-Path (Join-Path $PSScriptRoot './custom') 'autogen-model-cmdlets'
+if (Test-Path $modelCmdletFolder) {
+  $null = Remove-Item -Force -Recurse -Path $modelCmdletFolder
+}
 if ($modelCmdlets.Count -gt 0) {
   . (Join-Path $PSScriptRoot 'create-model-cmdlets.ps1')
   CreateModelCmdlet($modelCmdlets)

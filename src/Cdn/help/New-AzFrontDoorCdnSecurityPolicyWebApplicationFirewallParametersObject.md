@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Cdn
-online version: https://learn.microsoft.com/powershell/module/az.cdn/new-azfrontdoorcdnsecuritypolicywebapplicationfirewallparametersobject
+online version: https://learn.microsoft.com/powershell/module/az.Cdn/new-azfrontdoorcdnsecuritypolicywebapplicationfirewallparametersobject
 schema: 2.0.0
 ---
 
@@ -37,7 +37,7 @@ Association
 {{...
 ```
 
-
+Create an in-memory object for AzureFrontDoor SecurityPolicyWebApplicationFirewallAssociation
 
 ## PARAMETERS
 
@@ -46,7 +46,7 @@ Waf associations.
 To construct, see NOTES section for ASSOCIATION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.ISecurityPolicyWebApplicationFirewallAssociation[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.ISecurityPolicyWebApplicationFirewallAssociation[]
 Parameter Sets: (All)
 Aliases:
 
@@ -79,7 +79,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.SecurityPolicyWebApplicationFirewallParameters
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.SecurityPolicyWebApplicationFirewallParameters
 
 ## NOTES
 
@@ -90,7 +90,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-ASSOCIATION <ISecurityPolicyWebApplicationFirewallAssociation[]>: Waf associations.
+`ASSOCIATION <ISecurityPolicyWebApplicationFirewallAssociation[]>`: Waf associations.
   - `[Domain <IActivatedResourceReference[]>]`: List of domains.
     - `[Id <String>]`: Resource ID.
   - `[PatternsToMatch <String[]>]`: List of paths

@@ -57,7 +57,8 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// <remarks>
         /// If not specified, the default is 'Free'. See [AKS Pricing
         /// Tier](https://learn.microsoft.com/azure/aks/free-standard-pricing-tiers)
-        /// for more details. Possible values include: 'Standard', 'Free'
+        /// for more details. Possible values include: 'Premium', 'Standard',
+        /// 'Free'
         /// </remarks>
         [JsonProperty(PropertyName = "tier")]
         public string Tier { get; set; }

@@ -100,7 +100,7 @@ SyncGroup Object, normally passed through the parameter.
 ```yaml
 Type: Microsoft.Azure.Commands.StorageSync.Models.PSServerEndpoint
 Parameter Sets: ObjectParameterSet
-Aliases: RegisteredServer, ServerEndpoint
+Aliases: ServerEndpoint
 
 Required: True
 Position: 0

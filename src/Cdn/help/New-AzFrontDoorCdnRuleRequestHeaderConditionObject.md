@@ -35,7 +35,7 @@ Name
 RequestHeader
 ```
 
-
+Create an in-memory object for DeliveryRuleRequestHeaderCondition
 
 ## PARAMETERS
 
@@ -136,7 +136,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.DeliveryRuleRequestHeaderCondition
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.DeliveryRuleRequestHeaderCondition
 
 ## NOTES
 

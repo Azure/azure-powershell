@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// <param name="osType">Possible values include: 'Linux',
         /// 'Windows'</param>
         /// <param name="osSKU">Possible values include: 'Ubuntu',
-        /// 'CBLMariner', 'Windows2019', 'Windows2022'</param>
+        /// 'AzureLinux', 'CBLMariner', 'Windows2019', 'Windows2022'</param>
         /// <param name="maxCount">The maximum number of nodes for
         /// auto-scaling</param>
         /// <param name="minCount">The minimum number of nodes for

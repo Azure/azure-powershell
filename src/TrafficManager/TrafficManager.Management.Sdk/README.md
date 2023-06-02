@@ -53,7 +53,7 @@ directive:
     reason: The path parameter endpointType is defined as string in stable version, we can't change it to an enumeration.
  
 input-file:
-  - https://github.com/Azure/azure-rest-api-specs/blob/30deed618795ce9e4a549aa16ef349ae2b03785c/specification/trafficmanager/resource-manager/Microsoft.Network/preview/2022-04-01-preview/trafficmanager.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/4f4073bdb028bc84bc3e6405c1cbaf8e89b83caf/specification/trafficmanager/resource-manager/Microsoft.Network/stable/2022-04-01/trafficmanager.json
 
 output-folder: Generated
 

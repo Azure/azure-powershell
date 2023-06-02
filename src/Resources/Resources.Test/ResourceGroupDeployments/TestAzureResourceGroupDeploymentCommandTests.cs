@@ -15,7 +15,7 @@
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
-using Microsoft.Azure.Management.ResourceManager.Models;
+using Microsoft.Azure.Management.Resources.Models;
 using Moq;
 using System;
 using System.Collections.Generic;
@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Resources
     {
         private TestAzureResourceGroupDeploymentCmdlet cmdlet;
 
-        private Mock<ResourceManagerSdkClient> resourcesClientMock;
+        private Mock<NewResourceManagerSdkClient> resourcesClientMock;
 
         private Mock<ICommandRuntime> commandRuntimeMock;
 
@@ -42,13 +42,13 @@ namespace Microsoft.Azure.Commands.Resources.Test.Resources
 
         public TestAzureResourceGroupDeploymentCommandTests(ITestOutputHelper output)
         {
-            resourcesClientMock = new Mock<ResourceManagerSdkClient>();
+            resourcesClientMock = new Mock<NewResourceManagerSdkClient>();
             XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
             commandRuntimeMock = new Mock<ICommandRuntime>();
             cmdlet = new TestAzureResourceGroupDeploymentCmdlet()
             {
                 CommandRuntime = commandRuntimeMock.Object,
-                ResourceManagerSdkClient = resourcesClientMock.Object
+                NewResourceManagerSdkClient = resourcesClientMock.Object
             };
         }
 
