@@ -19,4 +19,4 @@ Describe 'New-AzDataMigrationTdeCertificateMigration' {
         { New-AzDataMigrationTdeCertificateMigration } | Should -Throw
         { New-AzDataMigrationTdeCertificateMigration -SourceSqlConnectionString "" -TargetSubscriptionId "" -TargetResourceGroupName "" -TargetManagedInstanceName "" -NetworkSharePath "" -NetworkShareDomain "" -NetworkShareUserName "" -NetworkSharePassword "" -DatabaseName "" } | Should -Throw
     }
-} 
+}
