@@ -1,5 +1,6 @@
 function New-AzAzureStackHciImage{
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.AzureStackHCI.Models.Api20221215Preview.IMarketplaceGalleryImages],ParameterSetName='Marketplace' )]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.AzureStackHCI.Models.Api20221215Preview.IMarketplaceGalleryImages],ParameterSetName='MarketplaceURN' )]
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.AzureStackHCI.Models.Api20221215Preview.IGalleryImages],ParameterSetName='GalleryImage' )]
     [CmdletBinding(PositionalBinding=$false)]
    
@@ -7,6 +8,7 @@ function New-AzAzureStackHciImage{
 
     [Parameter(ParameterSetName='Marketplace', Mandatory)]
     [Parameter(ParameterSetName='GalleryImage', Mandatory)]
+    [Parameter(ParameterSetName='MarketplaceURN',Mandatory)]
     [Alias('ImageName')]
     [Microsoft.Azure.PowerShell.Cmdlets.AzureStackHCI.Category('Path')]
     [System.String]
@@ -15,6 +17,7 @@ function New-AzAzureStackHciImage{
 
     [Parameter(ParameterSetName='Marketplace', Mandatory)]
     [Parameter(ParameterSetName='GalleryImage', Mandatory)]
+    [Parameter(ParameterSetName='MarketplaceURN', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.AzureStackHCI.Category('Path')]
     [System.String]
     # The name of the resource group.
@@ -23,6 +26,7 @@ function New-AzAzureStackHciImage{
 
     [Parameter(ParameterSetName='Marketplace')]
     [Parameter(ParameterSetName='GalleryImage')]
+    [Parameter(ParameterSetName='MarketplaceURN')]
     [Microsoft.Azure.PowerShell.Cmdlets.AzureStackHCI.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.AzureStackHCI.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -31,6 +35,7 @@ function New-AzAzureStackHciImage{
 
     [Parameter(ParameterSetName='Marketplace', Mandatory)]
     [Parameter(ParameterSetName='GalleryImage', Mandatory)]
+    [Parameter(ParameterSetName='MarketplaceURN', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.AzureStackHCI.Category('Body')]
     [System.String]
     # The geo-location where the resource lives
@@ -38,6 +43,7 @@ function New-AzAzureStackHciImage{
 
     [Parameter(ParameterSetName='Marketplace')]
     [Parameter(ParameterSetName='GalleryImage')]
+    [Parameter(ParameterSetName='MarketplaceURN')]
     [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.AzureStackHCI.Support.CloudInitDataSource])]
     [Microsoft.Azure.PowerShell.Cmdlets.AzureStackHCI.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.AzureStackHCI.Support.CloudInitDataSource]
@@ -46,6 +52,7 @@ function New-AzAzureStackHciImage{
 
     [Parameter(ParameterSetName='Marketplace')]
     [Parameter(ParameterSetName='GalleryImage')]
+    [Parameter(ParameterSetName='MarketplaceURN')]
     [Microsoft.Azure.PowerShell.Cmdlets.AzureStackHCI.Category('Body')]
     [System.String]
     # Container Name for storage container
@@ -53,6 +60,7 @@ function New-AzAzureStackHciImage{
 
     [Parameter(ParameterSetName='Marketplace', Mandatory)]
     [Parameter(ParameterSetName='GalleryImage', Mandatory)]
+    [Parameter(ParameterSetName='MarketplaceURN', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.AzureStackHCI.Category('Body')]
     [System.String]
     # The name of the extended location.
@@ -60,6 +68,7 @@ function New-AzAzureStackHciImage{
 
     [Parameter(ParameterSetName='Marketplace')]
     [Parameter(ParameterSetName='GalleryImage')]
+    [Parameter(ParameterSetName='MarketplaceURN')]
     [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.AzureStackHCI.Support.HyperVGeneration])]
     [Microsoft.Azure.PowerShell.Cmdlets.AzureStackHCI.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.AzureStackHCI.Support.HyperVGeneration]
@@ -72,7 +81,9 @@ function New-AzAzureStackHciImage{
     # location of the image the gallery image should be created from
     ${ImagePath},
 
-    [Parameter(ParameterSetName='GalleryImage', Mandatory)]
+    [Parameter(ParameterSetName='GalleryImage')]
+    [Parameter(ParameterSetName='Marketplace')]
+    [Parameter(ParameterSetName='MarketplaceURN')]
     [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.AzureStackHCI.Support.OperatingSystemTypes])]
     [Microsoft.Azure.PowerShell.Cmdlets.AzureStackHCI.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.AzureStackHCI.Support.OperatingSystemTypes]
@@ -97,7 +108,9 @@ function New-AzAzureStackHciImage{
     # The name of the gallery image definition SKU.
     ${Sku},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='GalleryImage')]
+    [Parameter(ParameterSetName='Marketplace')]
+    [Parameter(ParameterSetName='MarketplaceURN')]
     [Microsoft.Azure.PowerShell.Cmdlets.AzureStackHCI.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.AzureStackHCI.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.AzureStackHCI.Models.Api30.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
@@ -116,7 +129,9 @@ function New-AzAzureStackHciImage{
     # This is the version of the gallery image.
     ${Version},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='GalleryImage')]
+    [Parameter(ParameterSetName='Marketplace')]
+    [Parameter(ParameterSetName='MarketplaceURN')]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.AzureStackHCI.Category('Azure')]
@@ -134,16 +149,17 @@ function New-AzAzureStackHciImage{
         if ($CustomLocationId -notmatch $customLocationRegex){
             Write-Error "Invalid CustomLocationId: $CustomLocationId" -ErrorAction Stop
         }
+        if ($OsType){
+            if ($OsType.ToString().ToLower() -eq "windows"){
+                $PSBoundParameters['OsType'] = 'Windows'
 
-        if ($OsType.ToString().ToLower() -eq "windows"){
-            $PSBoundParameters['OsType'] = 'Windows'
-
-        }
-        elseif ($OsType.ToString().ToLower() -eq "linux"){
-            $PSBoundParameters['OsType'] = 'Linux'
-        }
-        else {
-            Write-Error "Invalid OsType provided: $OsType. Expected values are 'Windows' or 'Linux'."
+            }
+            elseif ($OsType.ToString().ToLower() -eq "linux"){
+                $PSBoundParameters['OsType'] = 'Linux'
+            }
+            else {
+                Write-Error "Invalid OsType provided: $OsType. Expected values are 'Windows' or 'Linux'."
+            }
         }
 
         #cloudinitdatassouce 
@@ -186,7 +202,7 @@ function New-AzAzureStackHciImage{
                 $offer = $Matches.offer.ToLower()
                 $sku = $Matches.sku.ToLower()
                 $version = $Matches.version.ToLower()
-                
+
                 $null = $PSBoundParameters.Remove("URN")           
                 $PSBoundParameters.Add('Publisher', $publisher)
                 $PSBoundParameters.Add('Offer', $offer)

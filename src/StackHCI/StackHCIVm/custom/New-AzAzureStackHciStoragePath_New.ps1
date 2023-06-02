@@ -149,7 +149,7 @@ param(
     }
     
     if ($Path){
-        if (-not (Test-Path $Path)){
+        if (-not (Test-Path $Path -IsValid)){
             Write-Error "Invalid Path:  $Path." -ErrorAction Stop
         }
     }

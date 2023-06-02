@@ -244,7 +244,7 @@ param(
     $IpConfig = @{}
 
     if (-Not $SubnetId){
-      Write-Error "No SubnetId provided. Either IpConfigurations or SubnetId is required." -ErrorAction Stop
+      Write-Error "No Subnet provided. Either IpConfigurations or SubnetId or SubnetName is required." -ErrorAction Stop
     } else {
       if ($SubnetId -notmatch $vnetRegex){
         Write-Error "Invalid SubnetId: $SubnetId" -ErrorAction Stop

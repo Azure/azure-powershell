@@ -258,7 +258,7 @@ param(
     $validNetworkTypes = @{ics = "ICS"; internal = "Internal"; l2bridge = "L2Bridge"; l2tunnel = "L2Tunnel"; mirrored = "Mirrored"; nat = "NAT"; overlay =  "Overlay"; private = "Private"; transparent =  "Transparent"}
     if ($NetworkType){
       if (-Not $validNetworkTypes.ContainsKey($NetworkType.ToString().ToLower())){
-        Write-Error "Invalid Network Type provided: $NetworkType. Allowed values are 'ics', 'internal', 'l2bridge', 'l2tunnel', 'mirrored', 'nat', 'overlay', 'private', 'transparent'"
+        Write-Error "Invalid Network Type provided: $NetworkType. Allowed values are 'ics', 'internal', 'l2bridge', 'l2tunnel', 'mirrored', 'nat', 'overlay', 'private', 'transparent'" -ErrorAction Stop
       }
       $PSBoundParameters["NetworkType"] = $validNetworkTypes[$NetworkType.ToString().ToLower()]
     }
@@ -279,10 +279,10 @@ param(
           if ($IpAllocationMethod -eq "static"){
             $Subnet["IPAllocationMethod"] = 'Static'
             if(-Not ($IpPools -or ($IpPoolEnd -and $IpPoolStart))){
-                Write-Error "IpPools or IpPoolStart and IpPoolEnd required for IpAllocationMethod Static."
+                Write-Error "Invalid Configuration for Static IpAllocationMethod. IpPools or IpPoolStart and IpPoolEnd are required." -ErrorAction Stop
             } 
             if (-Not $AddressPrefixes){
-              Write-Error "AddressPrefixes required for IpAllocationMethod Static."
+              Write-Error "Invalid Configuration for Static IpAllocationMethod. AddressPrefixes are required for Static IpAllocationMethod." -ErrorAction Stop
             }
           }
         } else {
@@ -290,6 +290,13 @@ param(
         }
 
         if ($IpPoolStart -and $IpPoolEnd){
+          if($IpPoolStart -notmatch $ipv4Regex){
+            Write-Error "Invalid Ip Address provided : $IpPoolStart" -ErrorAction Stop
+          }
+
+          if($IpPoolEnd -notmatch $ipv4Regex){
+            Write-Error "Invalid Ip Address provided : $IpPoolEnd" -ErrorAction Stop
+          }
           $IpPool = @{End = $IpPoolEnd; Start = $IpPoolStart}
           if ($IpPoolType){
             $IpPoolType = $IpPoolType.ToLower()
@@ -308,9 +315,9 @@ param(
           $Subnet["IPPool"] = $IpPools
         }
 
-        if( $Vlan){
+        if($Vlan){
           if ($Vlan -gt 4094 -or $Vlan -lt 1){
-            Write-Error "Invalid value for Vlan : $Vlan. Valid range is 1-4094"
+            Write-Error "Invalid value for Vlan : $Vlan. Valid range is 1-4094" -ErrorAction Stop
           }
           $Subnet["Vlan"] = $Vlan
         }
