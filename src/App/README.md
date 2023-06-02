@@ -112,17 +112,32 @@ directive:
     set:
       subject: ContainerAppCustomHostName
   - where:
-      verb: Initialize
+      verb: Get
+      subject: ContainerAppsRevision
+    set:
       subject: ContainerAppRevision
+  - where:
+      verb: Initialize
+      subject: ContainerAppsRevision
     set:
       verb: Enable
       subject: ContainerAppRevision
   - where:
+      verb: Restart
+      subject: ContainerAppsRevision
+    set:
+      subject: ContainerAppRevision
+  - where:
       verb: Invoke
-      subject: DeactivateContainerAppRevision
+      subject: DeactivateContainerAppsRevision
     set:
       verb: Disable
       subject: ContainerAppRevision
+  - where:
+      verb: New
+      subject: ContainerAppsAuthConfig
+    set:
+      subject: ContainerAppAuthConfig
   - where:
       verb: Get
       subject: ContainerAppsAuthConfig

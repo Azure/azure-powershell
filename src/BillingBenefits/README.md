@@ -67,10 +67,16 @@ directive:
   ### Rename Cmdlet names
   - where:
       verb: Get
-      subject: SavingPlan
+      subject: SavingsPlan
+      variant: List1
     set:
       verb: Get
       subject: SavingsPlanList
+  - where:
+      verb: Invoke
+      subject: ElevateSavingsPlanOrder
+    set:
+      subject: ElevateSavingPlanOrder
   - where:
       verb: Test
       subject: Purchase
@@ -79,7 +85,7 @@ directive:
       subject: SavingsPlanPurchaseValidation
   - where:
       verb: Test
-      subject: SavingPlanUpdate
+      subject: SavingsPlanUpdate
     set:
       verb: Invoke
       subject: SavingsPlanUpdateValidation
