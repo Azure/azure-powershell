@@ -32,12 +32,12 @@ jobs:
         inline: |
             Set-AzContext -Tenant 72f988bf-86f1-41af-91ab-2d7cd011db47 -SubscriptionId 6b085460-5f21-477e-ba44-1035046e9101
             $Token = Get-AzKeyVaultSecret -VaultName azurepsdev -Name azpsbot-github-pat -AsPlainText
-            git config user.email "65331932+azure-powershell-bot@users.noreply.github.com";
-            git config user.name "azure-powershell-bot";
+            git checkout -b codegen/${{ parameters.ServiceName }} origin/${{ parameters.TargetBranch }}  
+            git config user.email "65331932+azure-powershell-bot@users.noreply.github.com"
+            git config user.name "azure-powershell-bot"
             git add -A
             git commit -m "Bump up version for ${{ parameters.ServiceName }}"
             git remote set-url origin https://azure-powershell-bot:$Token@github.com/Azure/azure-powershell.git;
-            git checkout -b codegen/${{ parameters.ServiceName }} origin/${{ parameters.TargetBranch }};
             git push origin codeoob/${{ parameters.ServiceName }} --force;
             $Title = "Migrate  ${{ parameters.ServiceName }} from oob to main"
             $HeadBranch = "codeoob/${{ parameters.ServiceName }}"
