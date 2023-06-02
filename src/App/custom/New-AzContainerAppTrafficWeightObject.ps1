@@ -22,8 +22,6 @@ Create an in-memory object for TrafficWeight.
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.TrafficWeight
-.Link
-https://learn.microsoft.com/powershell/module/az./new-azcontainerapptrafficweightobject
 #>
 function New-AzContainerAppTrafficWeightObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.TrafficWeight')]
