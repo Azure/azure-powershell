@@ -118,7 +118,7 @@ function New-AzDataMigrationSqlServerSchema
                 [System.Collections.ArrayList] $splat = @(
                     '--sourceConnectionString', $SourceConnectionString
                     '--targetConnectionString', $TargetConnectionString
-                    '--InputScriptFilePath', $InputScriptFilePath
+                    '--inputScriptFilePath', $InputScriptFilePath
                     '--outputFolder', $OutputFolder
                 )
 

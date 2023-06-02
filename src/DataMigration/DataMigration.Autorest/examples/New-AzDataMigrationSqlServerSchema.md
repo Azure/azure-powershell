@@ -77,6 +77,15 @@ New-AzDataMigrationSqlServerSchema -ConfigFilePath "C:\configfile.json"
 ```
 
 ```output
+configfile.json example:
+{
+  "Action": "GenerateScript",
+  "sourceConnectionString": "Server=;Initial Catalog=;User ID=;Password=",
+  "targetConnectionString": "Server=;Initial Catalog=;User ID=;Password=",
+  "inputScriptFilePath": "C:\OutputFolder\script.sql",
+  "outputFolder": "C:\OutputFolder\script.sql"
+}
+
 Starting schema deployment...
 
 The number of deployed script batches: 110/110
