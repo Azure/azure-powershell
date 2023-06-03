@@ -26,7 +26,6 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 using System.Linq;
 using System.Collections;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Management.WebSites.Version2016_09_01.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
