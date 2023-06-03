@@ -1000,6 +1000,10 @@
                 <Label>EnableBgpRouteTranslationForNat</Label>
                 <PropertyName>EnableBgpRouteTranslationForNat</PropertyName>
               </ListItem>
+              <ListItem>
+                <Label>AdminState</Label>
+                <PropertyName>AdminState</PropertyName>
+              </ListItem>
             </ListItems>
           </ListEntry>
         </ListEntries>

@@ -25,6 +25,8 @@ using Microsoft.WindowsAzure.Commands.Common;
 using MNM = Microsoft.Azure.Management.Network.Models;
 using System.Linq;
 using System.Collections;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Management.WebSites.Version2016_09_01.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -225,6 +227,19 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "P2S Client Connection Configuration that assiociate between address and policy group")]
         public PSClientConnectionConfiguration[] ClientConnectionConfiguration { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Property to indicate if the Express Route Gateway serves traffic when there are multiple Express Route Gateways in the vnet: Enabled/Disabled")]
+        [ValidateSet(
+            "Enabled",
+            "Disabled",
+            IgnoreCase = true)]
+        [PSArgumentCompleter(
+            "Enabled",
+            "Disabled")]
+        public string AdminState { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -510,6 +525,11 @@ namespace Microsoft.Azure.Commands.Network
             if (this.BgpRouteTranslationForNat.HasValue)
             {
                 this.VirtualNetworkGateway.EnableBgpRouteTranslationForNat = this.BgpRouteTranslationForNat.Value;
+            }
+
+            if (AdminState != null)
+            {
+                this.VirtualNetworkGateway.AdminState = AdminState;
             }
 
             // Map to the sdk object
