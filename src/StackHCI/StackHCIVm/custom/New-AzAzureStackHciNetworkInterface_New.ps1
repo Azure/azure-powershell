@@ -228,26 +228,34 @@ param(
         }
       }
   }
-  if ($SubnetName){
-    $rg = $ResourceGroupName
-    if ($SubnetResourceGroup){
-      $rg = $SubnetResourceGroup
-    }
-    $SubnetId = "/subscriptions/$SubscriptionId/resourceGroups/$rg/providers/Microsoft.AzureStackHCI/virtualNetworks/$SubnetName"
-    $null = $PSBoundParameters.Remove("SubnetName")
-  }
+
 
   if ($IpConfigurations){
     $PSBoundParameters.Add("IPConfiguration", $IpConfigurations)
 
   } else {
     $IpConfig = @{}
+    if ($SubnetName){
+      $rg = $ResourceGroupName
+      if ($SubnetResourceGroup){
+        $rg = $SubnetResourceGroup
+      }
+      $SubnetId = "/subscriptions/$SubscriptionId/resourceGroups/$rg/providers/Microsoft.AzureStackHCI/virtualNetworks/$SubnetName"
+      $null = $PSBoundParameters.Remove("SubnetName")
+    }
 
     if (-Not $SubnetId){
       Write-Error "No Subnet provided. Either IpConfigurations or SubnetId or SubnetName is required." -ErrorAction Stop
     } else {
       if ($SubnetId -notmatch $vnetRegex){
         Write-Error "Invalid SubnetId: $SubnetId" -ErrorAction Stop
+      }
+      
+      try {
+          $subnet = Az.AzureStackHci\Get-AzAzureStackHciVirtualNetwork -ResourceId $SubnetId -SubscriptionId $subscriptionId
+      }
+      catch {
+          Write-Error "A Virtual Network with id : $SubnetId does not exist." -ErrorAction Stop
       }
       $IpConfig["SubnetId"] = $SubnetId
     }
