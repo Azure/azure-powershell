@@ -440,7 +440,7 @@ param(
 
     if ($VmSize){
       if($VmSize.ToString().ToLower() -eq "default"){
-        Write-Error "Invalid Vze provided. 'Default' is not a supported VmSize." -ErrorAction Stop
+        Write-Error "Invalid VM Size provided. 'Default' is not a supported VmSize." -ErrorAction Stop
       }
       if($VmSize.ToString().ToLower() -eq "custom"){
         if (-Not $VmProcessors -and -Not $VmMemory){
@@ -461,6 +461,12 @@ param(
         if ($NicId -notmatch $nicRegex){
           Write-Error "Invalid Nic Id provided: $NicId." -ErrorAction Stop
         }
+        try {
+          $nic = Az.AzureStackHci\Get-AzAzureStackHciNetworkInterface  -ResourceId $NicId -SubscriptionId $subscriptionId
+        }
+        catch {
+          Write-Error "A Network Interface with id: $NicId does not exist." -ErrorAction Stop
+        }
         $NetworkInterface = @{Id = $NicId}
         [void]$NetworkProfileNetworkInterface.Add($NetworkInterface)
       }
@@ -475,6 +481,12 @@ param(
         $NetworkProfileNetworkInterface =  [System.Collections.ArrayList]::new()
         foreach ($NicName in $NicNames){
           $NicId = "/subscriptions/$SubscriptionId/resourceGroups/$rg/providers/Microsoft.AzureStackHCI/networkinterfaces/$NicName"
+          try {
+            $nic = Az.AzureStackHci\Get-AzAzureStackHciNetworkInterface  -ResourceId $NicId -SubscriptionId $subscriptionId
+          }
+          catch {
+            Write-Error "A Network Interface with id: $NicId does not exist." -ErrorAction Stop
+          }
           $NetworkInterface = @{Id = $NicId}
           [void]$NetworkProfileNetworkInterface.Add($NetworkInterface)
         }
