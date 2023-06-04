@@ -66,7 +66,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.AzureStackHCI.Category('Body')]
     [System.Int32]
     # .
-    ${BlockSizeByte},
+    ${BlockSizeBytes},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.AzureStackHCI.Category('Body')]
@@ -122,13 +122,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.AzureStackHCI.Category('Body')]
     [System.Int32]
     # .
-    ${LogicalSectorByte},
+    ${LogicalSectorBytes},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.AzureStackHCI.Category('Body')]
     [System.Int32]
     # .
-    ${PhysicalSectorByte},
+    ${PhysicalSectorBytes},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.AzureStackHCI.Category('Body')]
