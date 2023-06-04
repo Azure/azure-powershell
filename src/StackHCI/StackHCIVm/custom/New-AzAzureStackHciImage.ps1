@@ -212,6 +212,8 @@ function New-AzAzureStackHciImage{
                 Write-Error "Invalid URN provided: $URN. Valid URN format is Publisher:Offer:Sku:Version ."
             }
 
+            return Az.AzureStackHci\New-AzAzureStackHciMarketplaceGalleryImage @PSBoundParameters
+
         }
 
         if ($PSCmdlet.ParameterSetName -eq "GalleryImage")
