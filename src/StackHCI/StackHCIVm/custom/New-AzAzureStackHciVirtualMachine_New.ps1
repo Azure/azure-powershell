@@ -162,13 +162,6 @@ param(
     # Used to indicate whether Arc for Servers agent onboarding should be triggered during the virtual machine creation process.
     ${ProvisionVMAgent},
 
-    [Parameter()]
-    [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.AzureStackHCI.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.AzureStackHCI.Models.Api20221215Preview.IVirtualMachinePropertiesOSProfileLinuxConfigurationSshPublicKeysItem[]]
-    # PublicKeys - The list of SSH public keys used to authenticate with linux based VMs.
-    # To construct, see NOTES section for LINUXCONFIGURATIONSSHPUBLICKEY properties and create a hash table.
-    ${LinuxConfigurationSshPublicKey},
 
     [Parameter()]
     [AllowEmptyCollection()]
@@ -267,6 +260,12 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.AzureStackHCI.Category('Body')]
+    [System.String[]]
+    # Id of the storage container that hosts the VM configuration file
+    ${SshPublicKeys},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.AzureStackHCI.Category('Body')]
     [System.String]
     # Id of the storage container that hosts the VM configuration file
     ${StoragePathId},
@@ -307,14 +306,6 @@ param(
     [System.String]
     # TimeZone for the virtual machine
     ${TimeZone},
-
-    [Parameter()]
-    [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.AzureStackHCI.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.AzureStackHCI.Models.Api20221215Preview.IVirtualMachinePropertiesOSProfileWindowsConfigurationSshPublicKeysItem[]]
-    # PublicKeys - The list of SSH public keys used to authenticate with linux based VMs.
-    # To construct, see NOTES section for WINDOWSCONFIGURATIONSSHPUBLICKEY properties and create a hash table.
-    ${WindowsConfigurationSshPublicKey},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -506,6 +497,18 @@ param(
         $null = $PSBoundParameters.Remove('DisablePasswordAuthentication')
       }
       $PSBoundParameters.Add("WindowConfigurationProvisionVMAgent", $ProvisionVMAgent.IsPresent)
+
+
+      if ($SshPublicKeys){
+        $WindowsConfigurationSshPublicKey = [System.Collections.ArrayList]::new()
+        foreach ($key in $SshPublicKeys){
+          $keyData = Get-Content -Path $key
+          $WindowsKey = @{KeyData = $keyData}
+          [void]$WindowsConfigurationSshPublicKey.Add($WindowsKey)
+        }
+        $null = $PSBoundParameters.Remove('SshPublicKeys')
+        $PSBoundParameters.Add("WindowsConfigurationSshPublicKey", $WindowsConfigurationSshPublicKey)
+      }
     } elseif ($OsType.ToString().ToLower() -eq "linux" -or $ComputerName -match $invalidCharactersComputerName){
         $PSBoundParameters['OsType'] = "Linux"
         if ($ComputerName.length -gt 64 -or $ComputerName -match $allDigitsRegex -or $ComputerName -match $invalidCharactersComputerName){
@@ -518,6 +521,17 @@ param(
           $null = $PSBoundParameters.Remove('TimeZone')
         }
         $PSBoundParameters.Add("LinuxConfigurationProvisionVMAgent", $ProvisionVMAgent.IsPresent)
+        
+        if ($SshPublicKeys){
+          $LinuxConfigurationSshPublicKey = [System.Collections.ArrayList]::new()
+          foreach ($key in $SshPublicKeys){
+            $keyData = Get-Content -Path $key
+            $LinuxKey = @{KeyData = $keyData}
+            [void]$LinuxConfigurationSshPublicKey.Add($LinuxKey)
+          }
+          $null = $PSBoundParameters.Remove('SshPublicKeys')
+          $PSBoundParameters.Add("LinuxConfigurationSshPublicKey", $LinuxConfigurationSshPublicKey)
+        }
     } else {
        Write-Error "Invalid OsType: $OsType. Accepted Values are 'Windows' and 'Linux'" -ErrorAction Stop
     }
