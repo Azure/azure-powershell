@@ -209,7 +209,7 @@ param(
     # 
     ${DataDiskNames},
 
-     [Parameter()]
+    [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.AzureStackHCI.Category('Body')]
     [System.String]
@@ -407,7 +407,7 @@ param(
                   $isMarketplaceGalleryImage = $true 
               }
               catch {
-                  Write-Error "An Image with name: $ImageName does not exist in Resource Group: $rg"
+                  Write-Error "An Image with name: $ImageName does not exist in Resource Group: $rg" -ErrorAction Stop
               }
           }
           if ($isGalleryImage){
@@ -439,7 +439,9 @@ param(
     }
 
     if ($VmSize){
-      #validate vmsize string
+      if($VmSize.ToString().ToLower() -eq "default"){
+        Write-Error "Invalid Vze provided. 'Default' is not a supported VmSize." -ErrorAction Stop
+      }
       if($VmSize.ToString().ToLower() -eq "custom"){
         if (-Not $VmProcessors -and -Not $VmMemory){
           Write-Error "VmMemory and VmProcessors required for Custom VmSize" -ErrorAction Stop

@@ -1,21 +1,81 @@
 function Remove-AzAzureStackHciNetworkInterface_ByResourceId {
 [OutputType([System.Boolean])]
-[CmdletBinding(PositionalBinding=$false)]
+[CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='High')]
 param(
-    [Parameter(ParameterSetName='ByResourceId', Mandatory)]
+
     [Microsoft.Azure.PowerShell.Cmdlets.AzureStackHCI.Category('Path')]
     [System.String]
     # The ID of the target subscription.
     ${ResourceId},
 
-  
-    [Parameter(ParameterSetName='ByResourceId')]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.AzureStackHCI.Category('Azure')]
     [System.Management.Automation.PSObject]
     # The credentials, account, tenant, and subscription used for communication with Azure.
-    ${DefaultProfile}
+    ${DefaultProfile},
+
+    [Microsoft.Azure.PowerShell.Cmdlets.AzureStackHCI.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.AzureStackHCI.Models.IAzureStackHciIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Microsoft.Azure.PowerShell.Cmdlets.AzureStackHCI.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+
+    [Microsoft.Azure.PowerShell.Cmdlets.AzureStackHCI.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.AzureStackHCI.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.AzureStackHCI.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.AzureStackHCI.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.AzureStackHCI.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+
+    [Microsoft.Azure.PowerShell.Cmdlets.AzureStackHCI.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+
+    [Microsoft.Azure.PowerShell.Cmdlets.AzureStackHCI.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Returns true when the command succeeds
+    ${PassThru},
+
+
+    [Microsoft.Azure.PowerShell.Cmdlets.AzureStackHCI.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.AzureStackHCI.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+
+    [Microsoft.Azure.PowerShell.Cmdlets.AzureStackHCI.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
 )
 
     process {

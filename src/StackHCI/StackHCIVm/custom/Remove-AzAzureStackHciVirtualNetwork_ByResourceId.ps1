@@ -1,6 +1,6 @@
 function Remove-AzAzureStackHciVirtualNetwork_ByResourceId {
 [OutputType([System.Boolean])]
-[CmdletBinding(PositionalBinding=$false)]
+[CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='ByResourceId', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.AzureStackHCI.Category('Path')]
