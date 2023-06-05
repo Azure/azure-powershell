@@ -74,7 +74,7 @@ Alternatively, if you prefer creating a service principal by yourself from Azure
 If you would like to use an existing service principal, run the following command with an existing service principal application id and secret:
 
 ```powershell
-Set-TestFxEnvironment -ServicePrincipalId <ServicePrincipalApplicationId> -ServicePrincipalSecret <ServicePrincipalSecret> -SubscriptionId <SubscriptionId> -TenantId <TenantId> -RecordMode "Record"
+Set-TestFxEnvironment -ServicePrincipalId <ServicePrincipalApplicationId> -ServicePrincipalSecret <ServicePrincipalSecret> -SubscriptionId <SubscriptionId> -TenantId <TenantId> -RecorderMode "Record"
 ```
 
 For existing service principal, this command will respect your own settings and won't assign the `Contributor` role automatically.
