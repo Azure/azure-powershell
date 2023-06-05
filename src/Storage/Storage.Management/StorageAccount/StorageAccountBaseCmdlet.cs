@@ -69,6 +69,8 @@ namespace Microsoft.Azure.Commands.Management.Storage
             internal const string TierToCool = "TierToCool";
             internal const string TierToArchive = "TierToArchive";
             internal const string Delete = "Delete";
+            internal const string TierToCold = "TierToCold";
+            internal const string TierToHot = "TierToHot";
         }
 
         protected struct AccountIdentityType
