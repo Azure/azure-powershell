@@ -112,9 +112,11 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
 
             if (siteEnvelope != null)
             {
-                System.Reflection.PropertyInfo property = siteEnvelope.GetType().GetProperty("VnetInfo");
-                if (property != null)
-                    property.SetValue(siteEnvelope, null);
+                if (siteEnvelope is PSSite)
+                {
+                    PSSite site = siteEnvelope as PSSite;
+                    site.VnetInfo = null;
+                }
                 webSiteToUpdate = siteEnvelope;
             }
 
