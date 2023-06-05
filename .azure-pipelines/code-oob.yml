@@ -53,7 +53,9 @@ jobs:
             $Description = "Migrate ${{ parameters.ServiceName }} from oob to ${{parameters.TargetBranch}}"
             ./tools/Github/CreatePR.ps1 -Title $Title -HeadBranch $HeadBranch -BaseBranch $BaseBranch -BotAccessToken $Token -Description $Description
     displayName: Create PR to main branch
-  - template: ./code-sign.yml
+- template: ./code-sign.yml
+- job: Githubrelease
+  steps:
   - task: GitHubRelease@1
     inputs:
       gitHubConnection: 'Nickcandy'
