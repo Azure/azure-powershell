@@ -30,7 +30,7 @@ jobs:
     inputs:
       version: '3.1.x'
   - pwsh: |
-        .\tools\RunVersionController.ps1 -ModuleName  
+        .\tools\RunVersionController.ps1 -ModuleName ${{ parameters.ServiceName }} 
     displayName: 'Bump up version'
   - task: AzurePowerShell@5
     inputs:
