@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added `TryPlannedBeforeForcedFailover` parameter to `Switch-AzSqlDatabaseFailoverGroup`
 
 ## Version 4.7.0
 * Added new cmdlets `Get-AzSqlInstanceDatabaseLedgerDigestUpload`, `Disable-AzSqlInstanceDatabaseLedgerDigestUpload`, and `Enable-AzSqlInstanceDatabaseLedgerDigestUpload`
