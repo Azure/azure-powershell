@@ -257,7 +257,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
     }
 
     
-    public class ResourceIdParser
+    public class ResourceIdParser 
     {
         public int ResourceLevel { get; set; }
 
