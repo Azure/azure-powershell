@@ -71,7 +71,7 @@ $summarySection = @"
         </tr>
         <tr>
             <td><b>Build Number:</b></td>
-            <td>${env:BUILD_BUILDID}</td>
+            <td><a href="${env:LIVETESTPIPELINEURL}/_build/results?buildId=${env:BUILD_BUILDID}">${env:BUILD_BUILDID}</a></td>
         </tr>
         <tr>
             <td><b>Build Reason:</b></td>

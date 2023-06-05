@@ -25,7 +25,7 @@ New-AzContainerAppVolumeMountObject -MountPath "/mountPath" -VolumeName "VolumeN
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.VolumeMount
 .Link
-https://learn.microsoft.com/powershell/module/az./new-azcontainerappvolumemountobject
+https://learn.microsoft.com/powershell/module/az.app/new-azcontainerappvolumemountobject
 #>
 function New-AzContainerAppVolumeMountObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.VolumeMount])]
@@ -53,7 +53,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
         }         
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {

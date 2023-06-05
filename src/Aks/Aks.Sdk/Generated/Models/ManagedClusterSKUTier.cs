@@ -17,6 +17,12 @@ namespace Microsoft.Azure.Management.ContainerService.Models
     public static class ManagedClusterSKUTier
     {
         /// <summary>
+        /// Cluster has premium capabilities in addition to all of the
+        /// capabilities included in 'Standard'. Premium enables selection of
+        /// LongTermSupport (aka.ms/aks/lts) for certain Kubernetes versions.
+        /// </summary>
+        public const string Premium = "Premium";
+        /// <summary>
         /// Recommended for mission-critical and production workloads. Includes
         /// Kubernetes control plane autoscaling, workload-intensive testing,
         /// and up to 5,000 nodes per cluster. Guarantees 99.95% availability
