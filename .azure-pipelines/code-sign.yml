@@ -1,5 +1,11 @@
+parameters:
+- name: DependsOn
+  displayName: The job release depends on
+  type: string
+  default: ''
 jobs:
 - job: Release
+  dependsOn: ${{ parameters.DependsOn }}
   timeoutInMinutes: 180
   pool:
     name: $(AgentPool)
