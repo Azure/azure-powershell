@@ -7,7 +7,10 @@ parameters:
   displayName: Service to OOB release
   type: string
   default: Az.Databricks
-
+- name: version
+  displayName: Update verison to 
+  type: string
+  default: 1.0.0
 resources:
   repositories:
   - repository: self
@@ -27,7 +30,7 @@ jobs:
     inputs:
       version: '3.1.x'
   - pwsh: |
-        .\tools\RunVersionController.ps1 -ModuleName  ${{ parameters.ServiceName }}
+        .\tools\RunVersionController.ps1 -ModuleName  
     displayName: 'Bump up version'
   - task: AzurePowerShell@5
     inputs:
@@ -50,3 +53,19 @@ jobs:
             $Description = "Migrate ${{ parameters.ServiceName }} from oob to ${{parameters.TargetBranch}}"
             ./tools/Github/CreatePR.ps1 -Title $Title -HeadBranch $HeadBranch -BaseBranch $BaseBranch -BotAccessToken $Token -Description $Description
     displayName: Create PR to main branch
+  - template: ./code-sign.yml
+  - task: GitHubRelease@1
+    inputs:
+      gitHubConnection: 'Nickcandy'
+      repositoryName: '$(Build.Repository.Name)'
+      action: 'create'
+      target: '$(Build.SourceVersion)'
+      tagSource: 'userSpecifiedTag'
+      tag: '${{parameters.ServiceName}}'
+      releaseNotesSource: 'inline'
+      releaseNotesInline: |
+        https://www.powershellgallery.com/packages/${{ parameters.ServiceName }}/${{ parameters.version }}
+        ## Version ${{ parameters.version }}
+      assets: 
+      isDraft: true
+      addChangeLog: false
