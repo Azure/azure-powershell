@@ -18,6 +18,12 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Supported TierToCold and TierToHot in Storage account management policy 
+    - `Add-AzStorageAccountManagementPolicyAction`
+* Supported Blob Tier Cold
+    - `Copy-AzStorageBlob`
+    - `Set-AzStorageBlobContent` 
+    - `Start-AzStorageBlobCopy`
 * Add warning messages for an upcoming breaking change when creating SAS token
     - `New-AzStorageBlobSasToken`
     - `New-AzStorageContainerSasToken`
