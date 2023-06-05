@@ -59,7 +59,7 @@ Using a service principal is the preferred option for recording tests because it
 In order to create a new service principal, run the following command with an unused service principal display name:
 
 ```powershell
-Set-TestFxEnvironment -ServicePrincipalDisplayName <DisplayName> -SubscriptionId <SubscriptionId> -TenantId <TenantId> -RecordMode "Record"
+Set-TestFxEnvironment -ServicePrincipalDisplayName <DisplayName> -SubscriptionId <SubscriptionId> -TenantId <TenantId> -RecorderMode "Record"
 ```
 
 This command will first create a new service principal. And then set the `Contributor` role assignment for this service principal based upon the subscription provided. After that, it will place the service principal application id and automatically generated secret into the credentials file.
