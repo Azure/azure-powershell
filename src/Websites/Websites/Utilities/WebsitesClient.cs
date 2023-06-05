@@ -114,8 +114,7 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
             {
                 if (siteEnvelope is PSSite)
                 {
-                    PSSite site = siteEnvelope as PSSite;
-                    site.VnetInfo = null;
+                    ((PSSite)siteEnvelope).VnetInfo = null;
                 }
                 webSiteToUpdate = siteEnvelope;
             }
