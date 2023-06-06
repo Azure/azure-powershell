@@ -12,7 +12,7 @@
 RootModule = './Az.Cdn.psm1'
 
 # Version number of this module.
-ModuleVersion = '3.0.0'
+ModuleVersion = '3.1.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -226,7 +226,8 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        # ReleaseNotes = ''
+        ReleaseNotes = '* Upgraded API version to 2023-05-01
+* Fixed known issue for ''Update-AzCdnProfile'', ''Update-AzFrontDoorCdnProfile'', ''Remove-AzCdnProfile'', ''Remove-AzCdnProfile'''
 
         # Prerelease string of this module
         # Prerelease = ''
