@@ -29,12 +29,12 @@ PS C:\> {{ Add code here }}
 {{ Add output here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IProfile
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IProfile
 .Link
 https://learn.microsoft.com/powershell/module/az.cdn/new-azfrontdoorcdnprofile
 #>
 function New-AzFrontDoorCdnProfile {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IProfile])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IProfile])]
     [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(Mandatory)]
@@ -79,7 +79,7 @@ function New-AzFrontDoorCdnProfile {
     
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.ITrackedResourceTags]))]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ITrackedResourceTags]))]
         [System.Collections.Hashtable]
         # Resource tags.
         ${Tag},

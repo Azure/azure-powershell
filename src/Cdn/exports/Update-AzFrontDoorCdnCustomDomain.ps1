@@ -33,7 +33,7 @@ Get-AzFrontDoorCdnCustomDomain -ResourceGroupName testps-rg-da16jm -ProfileName 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IAfdDomain
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdDomain
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -45,7 +45,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
   [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
   [OriginName <String>]: Name of the origin which is unique within the profile.
-  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium profile which is unique within the resource group.
+  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
   [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
   [RouteName <String>]: Name of the routing rule.
   [RuleName <String>]: Name of the delivery rule which is unique within the endpoint.
@@ -63,7 +63,7 @@ TLSSETTING <IAfdDomainHttpsParameters>: The configuration specifying how to enab
 https://learn.microsoft.com/powershell/module/az.cdn/update-azfrontdoorcdncustomdomain
 #>
 function Update-AzFrontDoorCdnCustomDomain {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IAfdDomain])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdDomain])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -112,7 +112,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IAfdDomainHttpsParameters]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdDomainHttpsParameters]
     # The configuration specifying how to enable HTTPS for the domain - using AzureFrontDoor managed certificate or user's own certificate.
     # If not specified, enabling ssl uses AzureFrontDoor managed certificate by default.
     # To construct, see NOTES section for TLSSETTING properties and create a hash table.

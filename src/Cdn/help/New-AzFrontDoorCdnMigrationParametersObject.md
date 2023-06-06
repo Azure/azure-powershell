@@ -58,7 +58,7 @@ Waf mapping for the migrated profile.
 To construct, see NOTES section for MIGRATIONWEBAPPLICATIONFIREWALLMAPPING properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IMigrationWebApplicationFirewallMapping[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IMigrationWebApplicationFirewallMapping[]
 Parameter Sets: (All)
 Aliases:
 
@@ -106,7 +106,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.MigrationParameters
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.MigrationParameters
 
 ## NOTES
 

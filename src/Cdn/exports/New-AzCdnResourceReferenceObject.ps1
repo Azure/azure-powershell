@@ -23,12 +23,12 @@ Create an in-memory object for ResourceReference.
 New-AzCdnResourceReferenceObject -Id Idtest
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.ResourceReference
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ResourceReference
 .Link
 https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzCdnResourceReferenceObject
 #>
 function New-AzCdnResourceReferenceObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.ResourceReference])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ResourceReference])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter()]

@@ -23,12 +23,12 @@ Create an in-memory object for UrlRedirectAction.
 New-AzFrontDoorCdnRuleUrlRedirectActionObject -Name UrlRedirect -ParameterRedirectType Moved -ParameterDestinationProtocol MatchRequest
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.UrlRedirectAction
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.UrlRedirectAction
 .Link
 https://learn.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnRuleUrlRedirectActionObject
 #>
 function New-AzFrontDoorCdnRuleUrlRedirectActionObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.UrlRedirectAction])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.UrlRedirectAction])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]

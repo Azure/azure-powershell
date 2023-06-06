@@ -25,12 +25,12 @@ Lists all of the available CDN REST API operations.
 {{ Add code here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IOperation
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IOperation
 .Link
 https://learn.microsoft.com/powershell/module/az.cdn/get-azcdnoperation
 #>
 function Get-AzCdnOperation {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IOperation])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IOperation])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter()]

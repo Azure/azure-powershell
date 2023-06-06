@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Commit the migrated Azure Frontdoor(Standard/Premium) profile.
+Commit the migrated Azure Front Door(Standard/Premium) profile..
 .Description
-Commit the migrated Azure Frontdoor(Standard/Premium) profile.
+Commit the migrated Azure Front Door(Standard/Premium) profile..
 .Example
 Enable-AzFrontDoorCdnProfileMigration -ProfileName name-migrated -ResourceGroupName rgName
 .Example
@@ -91,6 +91,12 @@ param(
     [System.Management.Automation.SwitchParameter]
     # Run the command asynchronously
     ${NoWait},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Returns true when the command succeeds
+    ${PassThru},
 
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Runtime')]

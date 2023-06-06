@@ -23,12 +23,12 @@ Create an in-memory object for DeliveryRuleRequestHeaderAction.
 New-AzCdnDeliveryRuleRequestHeaderActionObject -Name ModifyRequestHeader -ParameterHeaderAction Append -ParameterHeaderName a1 -ParameterValue a1
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.DeliveryRuleRequestHeaderAction
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.DeliveryRuleRequestHeaderAction
 .Link
 https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzCdnDeliveryRuleRequestHeaderActionObject
 #>
 function New-AzCdnDeliveryRuleRequestHeaderActionObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.DeliveryRuleRequestHeaderAction])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.DeliveryRuleRequestHeaderAction])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
