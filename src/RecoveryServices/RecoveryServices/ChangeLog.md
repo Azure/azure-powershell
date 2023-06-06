@@ -19,6 +19,10 @@
 -->
 ## Upcoming Release
 * Added CRR support for new regions malaysiasouth, chinanorth3, chinaeast3, jioindiacentral, jioindiawest.
+* Regenerated CRR SDK. Fixed issues with SQL CRR.
+* Fixed bug with rp expiry time, making 30 days expiry time for adhoc backup as default from client side.
+* Added example to fetch pruned recovery points after modify policy.
+* Fixed the documentation for suspend backups with immutability.
 
 ## Version 6.4.0
 * Added support for updating CrossSubscriptionRestoreState of the vault
