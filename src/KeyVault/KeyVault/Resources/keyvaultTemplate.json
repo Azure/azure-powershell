@@ -39,6 +39,13 @@
         "Disabled"
       ]
     },
+    "publicNetworkAccess": {
+      "type": "string",
+      "defaultValue": "",
+      "metadata": {
+        "description": "Property that controls permission for data plane traffic coming from public networks while private endpoint is enabled."
+      }
+    },
     "enablePurgeProtection": {
       "type": "bool",
       "defaultValue": false,
@@ -168,6 +175,7 @@
             }
           }
         ],
+        "publicNetworkAccess": "[parameters('publicNetworkAccess')]",
         "enabledForDeployment": "[null()]",
         "enabledForDiskEncryption": "[null()]",
         "enabledForTemplateDeployment": "[if(equals(parameters('enabledForTemplateDeployment'), 'NotSpecified'), null(), if(equals(parameters('enabledForTemplateDeployment'), 'Enabled'), true(), false()))]",

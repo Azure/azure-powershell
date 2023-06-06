@@ -145,7 +145,7 @@ function Test-CreateNewVault {
         Assert-Throws { New-AzKeyVault -VaultName $vault1Name -ResourceGroupName $rgname -Location $vaultLocation }
 
         # Test throws for resourcegroup nonexistent
-        # Assert-Throws { New-AzKeyVault -VaultName $vault5Name -ResourceGroupName $unknownRGName -Location $vaultLocation }
+        Assert-Throws { New-AzKeyVault -VaultName $vault5Name -ResourceGroupName $unknownRGName -Location $vaultLocation }
     }
 
     finally {

@@ -57,6 +57,17 @@ using System.Threading;
 using Microsoft.Azure.Commands.KeyVault.Utilities;
 using System.Runtime.CompilerServices;
 using Org.BouncyCastle.Utilities.Net;
+using Microsoft.Azure.Management.Internal.ResourceManager.Version2018_05_01.Models;
+using Microsoft.Azure.Management.Internal.Resources.Models;
+using Deployment = Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Helpers.Resources.Models.Deployment;
+using DeploymentExtended = Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Helpers.Resources.Models.DeploymentExtended;
+using DeploymentOperation = Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Helpers.Resources.Models.DeploymentOperation;
+using ErrorResponse = Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Helpers.Resources.Models.ErrorResponse;
+using DeploymentValidateResult = Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Helpers.Resources.Models.DeploymentValidateResult;
+using DeploymentProperties = Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Helpers.Resources.Models.DeploymentProperties;
+using DeploymentMode = Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Helpers.Resources.Models.DeploymentMode;
+using DebugSetting = Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Helpers.Resources.Models.DebugSetting;
+using ParametersLink = Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Helpers.Resources.Models.ParametersLink;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
@@ -345,42 +356,37 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             }
         }
         private void BeginDeployment(VaultCreationOrUpdateParameters parameters, Deployment deployment, KeyVaultManagementCmdletBase cmdlet = null)
-        {
+        {/*
             bool threadCompleted = false;
             var progressBarTimeSpan = 65;
             Program.SyncOutput = new PSSyncOutputEvents(cmdlet);
             var creationStatus = new ProgressStatus(0, progressBarTimeSpan);
-            var actionName = "Starting creating KeyVault...";
+            // var actionName = "Starting creating KeyVault...";
             Action onComplete = () =>
             {
                 threadCompleted = true;
             };
-            var creationThread = new Thread(
-                () =>
-                {
-                    try
-                    {
-                        ResourceManagementClient.Deployments.BeginCreateOrUpdate(parameters.ResourceGroupName, parameters.Name, deployment);
-                    }
-                    catch(Exception ex)
-                    {
-                        throw new AzPSArgumentException(string.Format(PSKeyVaultPropertiesResources.FileNotFound, ex.Message), "BeginDeploment");
-                    }
-                    finally
-                    {
-                        onComplete();
-                    }
-                });
-            creationThread.Start();
+            
+            var creationThread = new Task(
+            () =>
+            {
+                var res = ResourceManagementClient.Deployments.BeginCreateOrUpdate(parameters.ResourceGroupName, parameters.Name, deployment);
+                onComplete();
+            });
+            
+            await Task.Run(() =>
+            {
+                var res = ResourceManagementClient.Deployments.BeginCreateOrUpdate(parameters.ResourceGroupName, parameters.Name, deployment);
+                onComplete();
+            });*/
+            var res = ResourceManagementClient.Deployments.BeginCreateOrUpdate(parameters.ResourceGroupName, parameters.Name, deployment);
             // validationResult = this.GetTemplateValidationResult(parameters, deployment);
-            ProgressTracker progressTracker = new ProgressTracker(creationStatus, Program.SyncOutput.ProgressOperationStatus, Program.SyncOutput.ProgressOperationComplete);
+            /*ProgressTracker progressTracker = new ProgressTracker(creationStatus, Program.SyncOutput.ProgressOperationStatus, Program.SyncOutput.ProgressOperationComplete);
             while (!threadCompleted)
             {
                 progressTracker.Update(actionName);
                 Thread.Sleep(500);
-            }
-
-            
+            }*/
         }
 
         
@@ -567,6 +573,13 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 jsonInfo["resources"][0]["properties"]["enabledForDeployment"] = parameters.EnabledForDeployment;
             if (parameters.EnablePurgeProtection is true)
                 jsonInfo["resources"][0]["properties"]["enablePurgeProtection"] = parameters.EnablePurgeProtection;
+            if (!string.IsNullOrWhiteSpace(parameters.PublicNetworkAccess))
+            {
+                TextInfo myTI = new CultureInfo("en-US", false).TextInfo;
+                jsonInfo["resources"][0]["properties"]["publicNetworkAccess"] = myTI.ToTitleCase(parameters.PublicNetworkAccess);
+                jsonInfo["parameters"]["publicNetworkAccess"]["defaultValue"] = myTI.ToTitleCase(parameters.PublicNetworkAccess);
+            }
+                
             if (networkRuleSet != null)
             {
                 jsonInfo["resources"][0]["properties"]["networkAcls"]["bypass"] = networkRuleSet.Bypass.ToString();
@@ -633,6 +646,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             try
             {
                 WhatIfOperationResult whatIfOperationResult = null;
+                /*
                 bool threadCompleted = false;
                 var progressBarTimeSpan = 25;
                 Program.SyncOutput = new PSSyncOutputEvents(cmdlet);
@@ -661,10 +675,10 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 {
                     progressTracker.Update(actionName);
                     Thread.Sleep(500);
-                }
+                }*/
 
 
-                // whatIfOperationResult = deployments.WhatIf(parameters.ResourceGroupName, parameters.DeploymentName, deploymentWhatIf.Properties);
+                whatIfOperationResult = deployments.WhatIf(parameters.ResourceGroupName, parameters.DeploymentName, deploymentWhatIf.Properties);
 
                 if (parameters.ExcludeChangeTypes != null)
                 {

@@ -129,8 +129,8 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// ApiVersion
         /// </summary>
         [Parameter(Mandatory = false,
-                   HelpMessage = "Specifies the SDK api version. Default value is '2019-09-01'.")]
-        public string ApiVersion { get; set; } = "2019-09-01";
+                   HelpMessage = "Specifies the SDK api version. Default value is '2023-02-01'.")]
+        public string ApiVersion { get; set; } = "2023-02-01";
 
         /// <summary>
         /// FailOnExist
