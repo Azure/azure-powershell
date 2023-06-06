@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Net;
 using Microsoft.Azure.Commands.Network.Models;
+using Microsoft.Azure.Commands.Network.Models.Bastion;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Network;
 using MNM = Microsoft.Azure.Management.Network.Models;
@@ -44,17 +45,35 @@ namespace Microsoft.Azure.Commands.Network.Bastion
             {
                 GetBastion(resourceGroupName, name);
             }
-            catch (Microsoft.Rest.Azure.CloudException exception)
+            catch (Rest.Azure.CloudException exception)
             {
                 if (exception.Response.StatusCode == HttpStatusCode.NotFound)
                 {
                     // Resource is not present
                     return false;
                 }
-
                 throw;
             }
 
+            return true;
+        }
+
+        public bool TryGetBastion(string resourceGroupName, string name, out PSBastion psBastion)
+        {
+            psBastion = null;
+            try
+            {
+                psBastion = GetBastion(resourceGroupName, name);
+            }
+            catch (Rest.Azure.CloudException exception)
+            {
+                if (exception.Response.StatusCode == HttpStatusCode.NotFound)
+                {
+                    // Resource is not present
+                    return false;
+                }
+                throw;
+            }
             return true;
         }
 
@@ -67,6 +86,7 @@ namespace Microsoft.Azure.Commands.Network.Bastion
             psBastion.Sku.Name = bastion.Sku.Name;
             psBastion.ScaleUnit = bastion.ScaleUnits;
             psBastion.Tag = TagsConversionHelper.CreateTagHashtable(bastion.Tags);
+            //psBastion.EnableKerberos = bastion.EnableKerberos;
             psBastion.DisableCopyPaste = bastion.DisableCopyPaste;
             psBastion.EnableTunneling = bastion.EnableTunneling;
             psBastion.EnableIpConnect = bastion.EnableIpConnect;
@@ -81,6 +101,7 @@ namespace Microsoft.Azure.Commands.Network.Bastion
             bastion.Sku.Name = host.Sku.Name;
             bastion.ScaleUnit = host.ScaleUnits;
             bastion.Tag = TagsConversionHelper.CreateTagHashtable(host.Tags);
+            //psBastion.EnableKerberos = bastion.EnableKerberos;
             bastion.DisableCopyPaste = host.DisableCopyPaste;
             bastion.EnableTunneling = host.EnableTunneling;
             bastion.EnableIpConnect = host.EnableIpConnect;
@@ -101,7 +122,7 @@ namespace Microsoft.Azure.Commands.Network.Bastion
                 foreach (MNM.BastionHost bastion in bastions)
                 {
                     PSBastion bastionToReturn = ToPsBastion(bastion);
-                    bastionToReturn.ResourceGroupName = NetworkBaseCmdlet.GetResourceGroup(bastion.Id);
+                    bastionToReturn.ResourceGroupName = GetResourceGroup(bastion.Id);
                     bastionsToReturn.Add(bastionToReturn);
                 }
             }
@@ -111,88 +132,92 @@ namespace Microsoft.Azure.Commands.Network.Bastion
 
         public bool IsSkuDowngrade(PSBastion bastion, string sku)
         {
-            return bastion.IsStandard() && sku.Equals(MNM.BastionHostSkuName.Basic);
-        }
-
-        public bool IsSkuDowngrade(PSBastion existingBastion, PSBastion newBastion)
-        {
-            return existingBastion.IsStandard() && newBastion.IsBasic();
-        }
-
-        public void ValidateBastionFeatures(PSBastion bastion, int? scaleUnits = null, bool? enableKerberos = null, bool? disableCopyPaste = null, bool? enableTunneling = null, bool? enableIpConnect = null, bool? enableShareableLink = null)
-        {
-            if (bastion.IsBasic())
+            if (PSBastionSku.TryGetSkuTier(sku, out string newSkuTier)
+                && PSBastionSku.TryGetSkuTier(bastion.Sku.Name, out string existingSkuTier))
             {
-                // Features allowed for Basic SKU
-                // Add after updating schema
-                //if (enableKerberos.HasValue)
-                //{
-                //    bastion.EnableKerberos = enableKerberos;
-                //}
-
-                // Features NOT allowed for Basic SKU
-                if (scaleUnits.HasValue && scaleUnits != PSBastion.MinimumScaleUnits)
+                switch (existingSkuTier)
                 {
-                    throw new ArgumentException("Scale Units cannot be updated with Basic Sku");
-                }
+                    // Standard -> Basic
+                    case PSBastionSku.Standard:
+                        if (newSkuTier == PSBastionSku.Basic)
+                        {
+                            return true;
+                        }
 
-                if (disableCopyPaste.HasValue)
-                {
-                    throw new ArgumentException("Copy/Paste cannot be updated with Basic SKU");
-                }
-
-                if (enableTunneling.HasValue)
-                {
-                    throw new ArgumentException("Native client cannot be updated with Basic SKU");
-                }
-
-                if (enableIpConnect.HasValue)
-                {
-                    throw new ArgumentException("IP connect cannot be updated with Basic SKU");
-                }
-
-                if (enableShareableLink.HasValue)
-                {
-                    throw new ArgumentException("Shareable link cannot be updated with Basic SKU");
+                        return false;
+                    default:
+                        return true;
                 }
             }
-            else if (bastion.IsStandard())
+
+            return true;
+        }
+
+        public void ValidateScaleUnits(PSBastion bastion, int? scaleUnits = 2)
+        {
+            if (PSBastionSku.TryGetSkuTier(bastion.Sku.Name, out string skuTierValue))
             {
-                if (scaleUnits.HasValue)
+                switch (skuTierValue)
                 {
-                    if (scaleUnits < PSBastion.MinimumScaleUnits || scaleUnits > PSBastion.MaximumScaleUnits)
-                    {
-                        throw new ArgumentException($"Please select scale units value between {PSBastion.MinimumScaleUnits} and {PSBastion.MaximumScaleUnits}");
-                    }
+                    case PSBastionSku.Basic:
+                        if (scaleUnits != PSBastion.MinimumScaleUnits)
+                        {
+                            throw new ArgumentException($"Please select scale units value between {PSBastion.MinimumScaleUnits} and {PSBastion.MaximumScaleUnits}");
+                        }
+                        break;
+                    case PSBastionSku.Standard:
+                        if (scaleUnits < PSBastion.MinimumScaleUnits
+                            && scaleUnits > PSBastion.MaximumScaleUnits)
+                        {
+                            throw new ArgumentException($"Please select scale units value between {PSBastion.MinimumScaleUnits} and {PSBastion.MaximumScaleUnits}");
+                        }
 
-                    bastion.ScaleUnit = scaleUnits;
+                        break;
+                    default:
+                        throw new ArgumentException($"Please enter a valid value for Bastion SKU");
                 }
+            }
+            else
+            {
+                throw new ArgumentException($"Please enter a valid value for Bastion SKU");
+            }
+        }
 
-                // Add after updating schema
-                //if (enableKerberos.HasValue)
-                //{
-                //    bastion.EnableKerberos = this.EnableKerberos;
-                //}
-
-                if (disableCopyPaste.HasValue)
+        public void ValidateFeatures(PSBastion bastion,
+            bool? disableCopyPaste = false,
+            bool? enableTunneling = false,
+            bool? enableIpConnect = false,
+            bool? enableShareableLink = false)
+        {
+            if (PSBastionSku.TryGetSkuTier(bastion.Sku.Name, out string skuTierValue))
+            {
+                switch (skuTierValue)
                 {
-                    bastion.DisableCopyPaste = disableCopyPaste;
+                    case PSBastionSku.Basic:
+                        if (disableCopyPaste != false)
+                        {
+                            throw new ArgumentException($"Toggling copy/paste is available on Standard SKU or higher");
+                        }
+                        if (enableTunneling != false)
+                        {
+                            throw new ArgumentException($"Toggling tunneling is available on Standard SKU or higher");
+                        }
+                        if (enableIpConnect != false)
+                        {
+                            throw new ArgumentException($"Toggling IP connect is available on Standard SKU or higher");
+                        }
+                        if (enableShareableLink != false)
+                        {
+                            throw new ArgumentException($"Toggling shareable link is available on Standard SKU or higher");
+                        }
+                        break;
+                    default:
+                        throw new ArgumentException($"Please enter a valid value for Bastion SKU");
                 }
-
-                if (enableTunneling.HasValue)
-                {
-                    bastion.EnableTunneling = enableTunneling;
-                }
-
-                if (enableIpConnect.HasValue)
-                {
-                    bastion.EnableIpConnect = enableIpConnect;
-                }
-
-                if (enableShareableLink.HasValue)
-                {
-                    bastion.EnableShareableLink = enableShareableLink;
-                }
+            }
+            else
+            {
+                throw new ArgumentException($"Please enter a valid value for Bastion SKU");
             }
         }
     }
