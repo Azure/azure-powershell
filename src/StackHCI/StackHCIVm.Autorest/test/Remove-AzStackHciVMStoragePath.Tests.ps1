@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzStackHciVMStoragePat
 }
 
 Describe 'Remove-AzStackHciVMStoragePath' {
-    It 'ByResourceId' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'ByResourceId'  {
+        Remove-AzStackHCIVMStoragePath -ResourceId $env.storagePathResourceId | Should -Not -Throw
     }
 }

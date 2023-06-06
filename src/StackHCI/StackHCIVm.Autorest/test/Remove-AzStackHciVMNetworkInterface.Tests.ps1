@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzStackHciVMNetworkInt
 }
 
 Describe 'Remove-AzStackHciVMNetworkInterface' {
-    It 'ByResourceId' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'ByResourceId'  {
+        Remove-AzStackHCIVMNetworkInterface -ResourceId $env.nicResourceId | Should -Not -Throw
     }
 }

@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzStackHciVMVirtualHar
 }
 
 Describe 'Remove-AzStackHciVMVirtualHardDisk' {
-    It 'ByResourceId' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'ByResourceId'  {
+        Remove-AzStackHCIVMVirtualHardDisk -ResourceId $env.vhdResourceId | Should -Not -Throw
     }
 }

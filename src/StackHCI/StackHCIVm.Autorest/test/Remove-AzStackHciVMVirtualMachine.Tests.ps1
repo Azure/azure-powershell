@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzStackHciVMVirtualMac
 }
 
 Describe 'Remove-AzStackHciVMVirtualMachine' {
-    It 'ByResourceId' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'ByResourceId'  {
+        Remove-AzStackHCIVMVirtualMachine -ResourceId $env.vmResourceId | Should -Not -Throw
     }
 }

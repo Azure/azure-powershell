@@ -15,11 +15,11 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzStackHCIVMImage'))
 }
 
 Describe 'Remove-AzStackHCIVMImage' {
-    It 'ByResourceId' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'ByResourceId'  {
+        Remove-AzStackHCIVMImage -ResourceId $env.imageResourceId | Should -Not -Throw
     }
 
-    It 'ByName' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'ByName'  {
+        Remove-AzStackHCIVMImage -Name $env.ImageName -ResourceGroupName $env.ResourceGroupName | Should -Not -Throw
     }
 }
