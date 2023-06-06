@@ -147,4 +147,7 @@ directive:
   - from: source-file-csharp
     where: $
     transform: $ = $.replace('ShouldProcess($\"Call remote \'AgentsDelete\' operation\")', 'true');
+  - from: PsProxyOutputs.cs
+    where: $
+    transform: $ = $.replace(/\$Host.Version.ToString/g, "(Get-Host).Version.ToString")
 ```
