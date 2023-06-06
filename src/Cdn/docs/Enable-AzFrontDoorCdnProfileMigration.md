@@ -8,34 +8,34 @@ schema: 2.0.0
 # Enable-AzFrontDoorCdnProfileMigration
 
 ## SYNOPSIS
-Commit the migrated Azure Frontdoor(Standard/Premium) profile.
+Commit the migrated Azure Front Door(Standard/Premium) profile..
 
 ## SYNTAX
 
 ```
 Enable-AzFrontDoorCdnProfileMigration -ProfileName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Commit the migrated Azure Frontdoor(Standard/Premium) profile.
+Commit the migrated Azure Front Door(Standard/Premium) profile..
 
 ## EXAMPLES
 
-### Example 1: Commit the migrated Azure Frontdoor(Standard/Premium) profile
+### Example 1: Commit the migrated Azure Front Door(Standard/Premium) profile.
 ```powershell
 Enable-AzFrontDoorCdnProfileMigration -ProfileName name-migrated -ResourceGroupName rgName
 ```
 
-Commit the migrated Azure Frontdoor(Standard/Premium) profile
+Commit the migrated Azure Front Door(Standard/Premium) profile.
 
-### Example 2: Commit the migrated Azure Frontdoor(Standard/Premium) profile, when the subscription of the profile is different from the local subscrition
+### Example 2: Commit the migrated Azure Front Door(Standard/Premium) profile., when the subscription of the profile is different from the local subscrition
 ```powershell
 Enable-AzFrontDoorCdnProfileMigration -ProfileName name-migrated -ResourceGroupName rgName -SubscriptionId testSubId01
 ```
 
-Commit the migrated Azure Frontdoor(Standard/Premium) profile, when the subscription of the profile is different from the local subscrition
+Commit the migrated Azure Front Door(Standard/Premium) profile., when the subscription of the profile is different from the local subscrition
 
 ## PARAMETERS
 
@@ -71,6 +71,21 @@ Accept wildcard characters: False
 
 ### -NoWait
 Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PassThru
+Returns true when the command succeeds
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
