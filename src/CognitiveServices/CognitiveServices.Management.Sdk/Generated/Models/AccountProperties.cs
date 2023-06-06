@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Management.CognitiveServices.Models
         /// Services account.</param>
         /// <param name="commitmentPlanAssociations">The commitment plan
         /// associations of Cognitive Services account.</param>
-        public AccountProperties(string provisioningState = default(string), string endpoint = default(string), string internalId = default(string), IList<SkuCapability> capabilities = default(IList<SkuCapability>), bool? isMigrated = default(bool?), string migrationToken = default(string), SkuChangeInfo skuChangeInfo = default(SkuChangeInfo), string customSubDomainName = default(string), NetworkRuleSet networkAcls = default(NetworkRuleSet), Encryption encryption = default(Encryption), IList<UserOwnedStorage> userOwnedStorage = default(IList<UserOwnedStorage>), IList<PrivateEndpointConnection> privateEndpointConnections = default(IList<PrivateEndpointConnection>), string publicNetworkAccess = default(string), ApiProperties apiProperties = default(ApiProperties), string dateCreated = default(string), CallRateLimit callRateLimit = default(CallRateLimit), bool? dynamicThrottlingEnabled = default(bool?), QuotaLimit quotaLimit = default(QuotaLimit), bool? restrictOutboundNetworkAccess = default(bool?), IList<string> allowedFqdnList = default(IList<string>), bool? disableLocalAuth = default(bool?), IDictionary<string, string> endpoints = default(IDictionary<string, string>), bool? restore = default(bool?), string deletionDate = default(string), string scheduledPurgeDate = default(string), MultiRegionSettings locations = default(MultiRegionSettings), IList<CommitmentPlanAssociation> commitmentPlanAssociations = default(IList<CommitmentPlanAssociation>))
+        public AccountProperties(string provisioningState = default(string), string endpoint = default(string), string internalId = default(string), IList<SkuCapability> capabilities = default(IList<SkuCapability>), bool? isMigrated = default(bool?), string migrationToken = default(string), SkuChangeInfo skuChangeInfo = default(SkuChangeInfo), string customSubDomainName = default(string), NetworkRuleSet networkAcls = default(NetworkRuleSet), Encryption encryption = default(Encryption), IList<UserOwnedStorage> userOwnedStorage = default(IList<UserOwnedStorage>), IList<PrivateEndpointConnection> privateEndpointConnections = default(IList<PrivateEndpointConnection>), string publicNetworkAccess = default(string), ApiProperties apiProperties = default(ApiProperties), string dateCreated = default(string), CallRateLimit callRateLimit = default(CallRateLimit), bool? dynamicThrottlingEnabled = default(bool?), QuotaLimit quotaLimit = default(QuotaLimit), bool? restrictOutboundNetworkAccess = default(bool?), IList<string> allowedFqdnList = default(IList<string>), bool? disableLocalAuth = default(bool?), IDictionary<string, string> endpoints = default(IDictionary<string, string>), bool? restore = default(bool?), string deletionDate = default(string), string scheduledPurgeDate = default(string), MultiRegionSettings locations = default(MultiRegionSettings), IList<CommitmentPlanAssociation> commitmentPlanAssociations = default(IList<CommitmentPlanAssociation>), AbusePenalty abusePenalty = default(AbusePenalty))
         {
             ProvisioningState = provisioningState;
             Endpoint = endpoint;
@@ -101,6 +101,7 @@ namespace Microsoft.Azure.Management.CognitiveServices.Models
             ScheduledPurgeDate = scheduledPurgeDate;
             Locations = locations;
             CommitmentPlanAssociations = commitmentPlanAssociations;
+            AbusePenalty = abusePenalty;
             CustomInit();
         }
 
@@ -275,6 +276,11 @@ namespace Microsoft.Azure.Management.CognitiveServices.Models
         /// </summary>
         [JsonProperty(PropertyName = "commitmentPlanAssociations")]
         public IList<CommitmentPlanAssociation> CommitmentPlanAssociations { get; private set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "abusePenalty")]
+        public AbusePenalty AbusePenalty { get; private set; }
 
         /// <summary>
         /// Validate the object.

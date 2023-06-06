@@ -12,13 +12,11 @@ namespace Microsoft.Azure.Management.CognitiveServices.Models
 {
 
     /// <summary>
-    /// Defines values for HostingModel.
+    /// Defines values for AbusePenaltyAction.
     /// </summary>
-    public static class HostingModel
+    public static class AbusePenaltyAction
     {
-        public const string Web = "Web";
-        public const string ConnectedContainer = "ConnectedContainer";
-        public const string DisconnectedContainer = "DisconnectedContainer";
-        public const string ProvisionedWeb = "ProvisionedWeb";
+        public const string Throttle = "Throttle";
+        public const string Block = "Block";
     }
 }

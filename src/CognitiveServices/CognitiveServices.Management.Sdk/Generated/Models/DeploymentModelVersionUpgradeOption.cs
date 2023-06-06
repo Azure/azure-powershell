@@ -12,13 +12,12 @@ namespace Microsoft.Azure.Management.CognitiveServices.Models
 {
 
     /// <summary>
-    /// Defines values for HostingModel.
+    /// Defines values for DeploymentModelVersionUpgradeOption.
     /// </summary>
-    public static class HostingModel
+    public static class DeploymentModelVersionUpgradeOption
     {
-        public const string Web = "Web";
-        public const string ConnectedContainer = "ConnectedContainer";
-        public const string DisconnectedContainer = "DisconnectedContainer";
-        public const string ProvisionedWeb = "ProvisionedWeb";
+        public const string OnceNewDefaultVersionAvailable = "OnceNewDefaultVersionAvailable";
+        public const string OnceCurrentVersionExpired = "OnceCurrentVersionExpired";
+        public const string NoAutoUpgrade = "NoAutoUpgrade";
     }
 }

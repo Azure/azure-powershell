@@ -19,17 +19,19 @@ namespace Microsoft.Azure.Management.CognitiveServices
           {
               return new Tuple<string, string, string>[]
               {
-                new Tuple<string, string, string>("CognitiveServices", "Accounts", "2022-12-01"),
-                new Tuple<string, string, string>("CognitiveServices", "CheckDomainAvailability", "2022-12-01"),
-                new Tuple<string, string, string>("CognitiveServices", "CheckSkuAvailability", "2022-12-01"),
-                new Tuple<string, string, string>("CognitiveServices", "CommitmentPlans", "2022-12-01"),
-                new Tuple<string, string, string>("CognitiveServices", "CommitmentTiers", "2022-12-01"),
-                new Tuple<string, string, string>("CognitiveServices", "DeletedAccounts", "2022-12-01"),
-                new Tuple<string, string, string>("CognitiveServices", "Deployments", "2022-12-01"),
-                new Tuple<string, string, string>("CognitiveServices", "Operations", "2022-12-01"),
-                new Tuple<string, string, string>("CognitiveServices", "PrivateEndpointConnections", "2022-12-01"),
-                new Tuple<string, string, string>("CognitiveServices", "PrivateLinkResources", "2022-12-01"),
-                new Tuple<string, string, string>("CognitiveServices", "ResourceSkus", "2022-12-01"),
+                new Tuple<string, string, string>("CognitiveServices", "Accounts", "2023-05-01"),
+                new Tuple<string, string, string>("CognitiveServices", "CheckDomainAvailability", "2023-05-01"),
+                new Tuple<string, string, string>("CognitiveServices", "CheckSkuAvailability", "2023-05-01"),
+                new Tuple<string, string, string>("CognitiveServices", "CommitmentPlans", "2023-05-01"),
+                new Tuple<string, string, string>("CognitiveServices", "CommitmentTiers", "2023-05-01"),
+                new Tuple<string, string, string>("CognitiveServices", "DeletedAccounts", "2023-05-01"),
+                new Tuple<string, string, string>("CognitiveServices", "Deployments", "2023-05-01"),
+                new Tuple<string, string, string>("CognitiveServices", "Models", "2023-05-01"),
+                new Tuple<string, string, string>("CognitiveServices", "Operations", "2023-05-01"),
+                new Tuple<string, string, string>("CognitiveServices", "PrivateEndpointConnections", "2023-05-01"),
+                new Tuple<string, string, string>("CognitiveServices", "PrivateLinkResources", "2023-05-01"),
+                new Tuple<string, string, string>("CognitiveServices", "ResourceSkus", "2023-05-01"),
+                new Tuple<string, string, string>("CognitiveServices", "Usages", "2023-05-01"),
               }.AsEnumerable();
           }
       }
