@@ -17,12 +17,12 @@ namespace Microsoft.Azure.PowerShell.Ssh.Helpers.HybridConnectivity
     using System.Threading.Tasks;
 
     /// <summary>
-    /// Extension methods for EndpointsOperations.
+    /// Extension methods for ServiceConfigurationsOperations.
     /// </summary>
-    public static partial class EndpointsOperationsExtensions
+    public static partial class ServiceConfigurationsOperationsExtensions
     {
             /// <summary>
-            /// Create or update the endpoint to the target resource.
+            /// Gets the details about the service to the resource.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -34,16 +34,16 @@ namespace Microsoft.Azure.PowerShell.Ssh.Helpers.HybridConnectivity
             /// <param name='endpointName'>
             /// The endpoint name.
             /// </param>
-            /// <param name='endpointResource'>
-            /// Endpoint details
+            /// <param name='serviceConfigurationName'>
+            /// The service name.
             /// </param>
-            public static EndpointResource CreateOrUpdate(this IEndpointsOperations operations, string resourceUri, string endpointName, EndpointResource endpointResource)
+            public static ServiceConfigurationResource Get(this IServiceConfigurationsOperations operations, string resourceUri, string endpointName, string serviceConfigurationName)
             {
-                return operations.CreateOrUpdateAsync(resourceUri, endpointName, endpointResource).GetAwaiter().GetResult();
+                return operations.GetAsync(resourceUri, endpointName, serviceConfigurationName).GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// Create or update the endpoint to the target resource.
+            /// Gets the details about the service to the resource.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -55,22 +55,23 @@ namespace Microsoft.Azure.PowerShell.Ssh.Helpers.HybridConnectivity
             /// <param name='endpointName'>
             /// The endpoint name.
             /// </param>
-            /// <param name='endpointResource'>
-            /// Endpoint details
+            /// <param name='serviceConfigurationName'>
+            /// The service name.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<EndpointResource> CreateOrUpdateAsync(this IEndpointsOperations operations, string resourceUri, string endpointName, EndpointResource endpointResource, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<ServiceConfigurationResource> GetAsync(this IServiceConfigurationsOperations operations, string resourceUri, string endpointName, string serviceConfigurationName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceUri, endpointName, endpointResource, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.GetWithHttpMessagesAsync(resourceUri, endpointName, serviceConfigurationName, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
             }
 
             /// <summary>
-            /// Gets the endpoint access credentials to the resource.
+            /// Create or update a service in serviceConfiguration for the endpoint
+            /// resource.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -82,19 +83,20 @@ namespace Microsoft.Azure.PowerShell.Ssh.Helpers.HybridConnectivity
             /// <param name='endpointName'>
             /// The endpoint name.
             /// </param>
-            /// <param name='expiresin'>
-            /// The is how long the endpoint access token is valid (in seconds).
+            /// <param name='serviceConfigurationName'>
+            /// The service name.
             /// </param>
-            /// <param name='listCredentialsRequest'>
-            /// Object of type ListCredentialsRequest
+            /// <param name='serviceConfigurationResource'>
+            /// Service details
             /// </param>
-            public static EndpointAccessResource ListCredentials(this IEndpointsOperations operations, string resourceUri, string endpointName, long? expiresin = 10800, ListCredentialsRequest listCredentialsRequest = default(ListCredentialsRequest))
+            public static ServiceConfigurationResource CreateOrupdate(this IServiceConfigurationsOperations operations, string resourceUri, string endpointName, string serviceConfigurationName, ServiceConfigurationResource serviceConfigurationResource)
             {
-                return operations.ListCredentialsAsync(resourceUri, endpointName, expiresin, listCredentialsRequest).GetAwaiter().GetResult();
+                return operations.CreateOrupdateAsync(resourceUri, endpointName, serviceConfigurationName, serviceConfigurationResource).GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// Gets the endpoint access credentials to the resource.
+            /// Create or update a service in serviceConfiguration for the endpoint
+            /// resource.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -106,18 +108,18 @@ namespace Microsoft.Azure.PowerShell.Ssh.Helpers.HybridConnectivity
             /// <param name='endpointName'>
             /// The endpoint name.
             /// </param>
-            /// <param name='expiresin'>
-            /// The is how long the endpoint access token is valid (in seconds).
+            /// <param name='serviceConfigurationName'>
+            /// The service name.
             /// </param>
-            /// <param name='listCredentialsRequest'>
-            /// Object of type ListCredentialsRequest
+            /// <param name='serviceConfigurationResource'>
+            /// Service details
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<EndpointAccessResource> ListCredentialsAsync(this IEndpointsOperations operations, string resourceUri, string endpointName, long? expiresin = 10800, ListCredentialsRequest listCredentialsRequest = default(ListCredentialsRequest), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<ServiceConfigurationResource> CreateOrupdateAsync(this IServiceConfigurationsOperations operations, string resourceUri, string endpointName, string serviceConfigurationName, ServiceConfigurationResource serviceConfigurationResource, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListCredentialsWithHttpMessagesAsync(resourceUri, endpointName, expiresin, listCredentialsRequest, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.CreateOrupdateWithHttpMessagesAsync(resourceUri, endpointName, serviceConfigurationName, serviceConfigurationResource, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

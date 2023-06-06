@@ -19,12 +19,12 @@ namespace Microsoft.Azure.PowerShell.Ssh.Helpers.HybridConnectivity
     using System.Threading.Tasks;
 
     /// <summary>
-    /// EndpointsOperations operations.
+    /// ServiceConfigurationsOperations operations.
     /// </summary>
-    public partial interface IEndpointsOperations
+    public partial interface IServiceConfigurationsOperations
     {
         /// <summary>
-        /// Create or update the endpoint to the target resource.
+        /// Gets the details about the service to the resource.
         /// </summary>
         /// <param name='resourceUri'>
         /// The fully qualified Azure Resource manager identifier of the
@@ -33,8 +33,8 @@ namespace Microsoft.Azure.PowerShell.Ssh.Helpers.HybridConnectivity
         /// <param name='endpointName'>
         /// The endpoint name.
         /// </param>
-        /// <param name='endpointResource'>
-        /// Endpoint details
+        /// <param name='serviceConfigurationName'>
+        /// The service name.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -51,9 +51,10 @@ namespace Microsoft.Azure.PowerShell.Ssh.Helpers.HybridConnectivity
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<EndpointResource>> CreateOrUpdateWithHttpMessagesAsync(string resourceUri, string endpointName, EndpointResource endpointResource, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<ServiceConfigurationResource>> GetWithHttpMessagesAsync(string resourceUri, string endpointName, string serviceConfigurationName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Gets the endpoint access credentials to the resource.
+        /// Create or update a service in serviceConfiguration for the endpoint
+        /// resource.
         /// </summary>
         /// <param name='resourceUri'>
         /// The fully qualified Azure Resource manager identifier of the
@@ -62,11 +63,11 @@ namespace Microsoft.Azure.PowerShell.Ssh.Helpers.HybridConnectivity
         /// <param name='endpointName'>
         /// The endpoint name.
         /// </param>
-        /// <param name='expiresin'>
-        /// The is how long the endpoint access token is valid (in seconds).
+        /// <param name='serviceConfigurationName'>
+        /// The service name.
         /// </param>
-        /// <param name='listCredentialsRequest'>
-        /// Object of type ListCredentialsRequest
+        /// <param name='serviceConfigurationResource'>
+        /// Service details
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -83,6 +84,6 @@ namespace Microsoft.Azure.PowerShell.Ssh.Helpers.HybridConnectivity
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<EndpointAccessResource>> ListCredentialsWithHttpMessagesAsync(string resourceUri, string endpointName, long? expiresin = 10800, ListCredentialsRequest listCredentialsRequest = default(ListCredentialsRequest), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<ServiceConfigurationResource>> CreateOrupdateWithHttpMessagesAsync(string resourceUri, string endpointName, string serviceConfigurationName, ServiceConfigurationResource serviceConfigurationResource, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
     }
 }
