@@ -251,12 +251,13 @@ param(
         Write-Error "Invalid SubnetId: $SubnetId" -ErrorAction Stop
       }
       
-      try {
-          $subnet = Az.StackHCIVM\Get-AzStackHCIVMVirtualNetwork -ResourceId $SubnetId -SubscriptionId $subscriptionId
+      
+      $subnet = Az.StackHCIVM\Get-AzStackHCIVMVirtualNetwork -ResourceId $SubnetId -SubscriptionId $subscriptionId -ErrorAction SilentlyContinue
+
+      if ($subnet -eq $null){
+        Write-Error "A Virtual Network with id : $SubnetId does not exist." -ErrorAction Stop
       }
-      catch {
-          Write-Error "A Virtual Network with id : $SubnetId does not exist." -ErrorAction Stop
-      }
+      
       $IpConfig["SubnetId"] = $SubnetId
     }
 

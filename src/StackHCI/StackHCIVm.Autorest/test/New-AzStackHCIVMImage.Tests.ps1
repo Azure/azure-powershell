@@ -14,16 +14,16 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzStackHCIVMImage'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'New-AzStackHCIVMImage' {
-    It 'MarketplaceURN' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+Describe 'New-AzStackHCIVMImage' { 
+    It 'MarketplaceURN'  {
+        New-AzStackHCIVMImage -Name $env.mkpImageName -SubscriptionId $env.subscriptionId -ResourceGroupName $env.resourceGroupName -CustomLocationId $env.customLocationId -Location $env.location -URN $env.urn | Select-Object -Property ProvisioningState | Should -BeExactly "@{ProvisioningState=Succeeded}"
     }
 
-    It 'GalleryImage' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'GalleryImage'  {
+         New-AzStackHCIVMImage -Name $env.imageName -ImagePath $env.imagePath  -SubscriptionId $env.subscriptionId -ResourceGroupName $env.resourceGroupName -CustomLocationId $env.customLocationId -Location $env.location | Select-Object -Property ProvisioningState | Should -BeExactly "@{ProvisioningState=Succeeded}"
     }
 
-    It 'Marketplace' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Marketplace'  {
+        New-AzStackHCIVMImage -Name $env.mkpImageName2 -SubscriptionId $env.subscriptionId -ResourceGroupName $env.resourceGroupName -CustomLocationId $env.customLocationId -Location $env.location -Offer $env.offer -Publisher $env.publisher -Sku $env.sku -Version $env.version | Select-Object -Property ProvisioningState | Should -BeExactly "@{ProvisioningState=Succeeded}"
     }
 }

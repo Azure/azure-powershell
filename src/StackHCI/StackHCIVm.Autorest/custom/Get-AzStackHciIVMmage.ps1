@@ -91,20 +91,17 @@ function Get-AzStackHCIVMImage{
             $isGalleryImage = $false
             $isMarketplaceGalleryImage = $false
 
-            try {
-                $galImage = Az.StackHCIVM\Get-AzStackHCIVMGalleryImage @PSBoundParameters
+            
+            $galImage = Az.StackHCIVM\Get-AzStackHCIVMGalleryImage @PSBoundParameters -ErrorAction SilentlyContinue
+            if ($galImage -ne $null){
                 $isGalleryImage = $true 
-            }
-            catch {
-                try {
-                    $marketplaceGalImage = Az.StackHCIVM\Get-AzStackHCIVMMarketplaceGalleryImage @PSBoundParameters
+            } else {
+                $marketplaceGalImage = Az.StackHCIVM\Get-AzStackHCIVMMarketplaceGalleryImage @PSBoundParameters
+                if ($marketplaceGalImage -ne $null){
                     $isMarketplaceGalleryImage = $true 
                 }
-                catch {
-                    Write-Error "An Image with name: $Name does not exist in Resource Group: $ResourceGroupName"
-                }
             }
-
+        
             if ($isGalleryImage){
                 return  $galImage
             } 
@@ -112,6 +109,8 @@ function Get-AzStackHCIVMImage{
             if ($isMarketplaceGalleryImage){
                 return  $marketplaceGalImage
             }
+
+            Write-Error "An Image with name: $Name does not exist in Resource Group: $ResourceGroupName" -ErrorAction Stop
 
         }  elseif ($PSCmdlet.ParameterSetName -eq "ByResourceId"){
                          

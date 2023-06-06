@@ -33,7 +33,7 @@ https://learn.microsoft.com/powershell/module/az.StackHCIVM/new-azStackHCIVMvirt
 #>
 function New-AzStackHCIVMVirtualHardDisk {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.Api20221215Preview.IVirtualHardDisks])]
-[CmdletBinding(PositionalBinding=$false)]
+[CmdletBinding(PositionalBinding=$false,SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
     [Alias('VirtualHardDiskName')]

@@ -15,7 +15,9 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzStackHCIVMVirtualNetwor
 }
 
 Describe 'New-AzStackHCIVMVirtualNetwork' {
-    It 'CreateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Create'  {
+        New-AzStackHCIVMVirtualNetwork -Name $env.vnetName -SubscriptionId $env.subscriptionId -ResourceGroupName $env.resourceGroupName -CustomLocationId $env.customLocationId -Location $env.location -VmSwitchName $env.vmSwitchName | Select-Object -Property ProvisioningState | Should -BeExactly "@{ProvisioningState=Succeeded}"
+        Remove-AzStackHCIVMVirtualNetwork -Name $env.vnetName -ResourceGroupName $env.resourceGroupName -SubscriptionId $env.subscriptionId
     }
+
 }

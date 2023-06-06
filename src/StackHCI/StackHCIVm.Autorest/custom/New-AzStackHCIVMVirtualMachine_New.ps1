@@ -388,19 +388,20 @@ param(
           }
           $isGalleryImage = $false
           $isMarketplaceGalleryImage = $false
-          try {
-              $galImage = Az.StackHCIVM\Get-AzStackHCIVMGalleryImage -Name $ImageName -ResourceGroupName $rg -SubscriptionId $subscriptionId
-              $isGalleryImage = $true 
+          
+          $galImage = Az.StackHCIVM\Get-AzStackHCIVMGalleryImage -Name $ImageName -ResourceGroupName $rg -SubscriptionId $subscriptionId
+          if($galImage -eq $null){
+            $marketplaceGalImage = Az.StackHCIVM\Get-AzStackHCIVMMarketplaceGalleryImage -Name $ImageName -ResourceGroupName $rg -SubscriptionId $subscriptionId
+            if ($marketplacegalImage -eq $null){
+              Write-Error "An Image with name: $ImageName does not exist in Resource Group: $rg" -ErrorAction Stop
+            } else {
+              $isMarketplaceGalleryImage = $true
+            }
+
+          } else{
+            $isGalleryImage = $true 
           }
-          catch {
-              try {
-                  $marketplaceGalImage = Az.StackHCIVM\Get-AzStackHCIVMMarketplaceGalleryImage -Name $ImageName -ResourceGroupName $rg -SubscriptionId $subscriptionId
-                  $isMarketplaceGalleryImage = $true 
-              }
-              catch {
-                  Write-Error "An Image with name: $ImageName does not exist in Resource Group: $rg" -ErrorAction Stop
-              }
-          }
+         
           if ($isGalleryImage){
             $ImageId = "/subscriptions/$SubscriptionId/resourceGroups/$rg/providers/Microsoft.StackHCIVM/galleryimages/$ImageName"
           } else {
@@ -452,12 +453,12 @@ param(
         if ($NicId -notmatch $nicRegex){
           Write-Error "Invalid Nic Id provided: $NicId." -ErrorAction Stop
         }
-        try {
-          $nic = Az.StackHCIVM\Get-AzStackHCIVMNetworkInterface  -ResourceId $NicId -SubscriptionId $subscriptionId
-        }
-        catch {
+        
+        $nic = Az.StackHCIVM\Get-AzStackHCIVMNetworkInterface  -ResourceId $NicId -SubscriptionId $subscriptionId -ErrorAction SilentlyContinue
+        if ($nic -eq $null){
           Write-Error "A Network Interface with id: $NicId does not exist." -ErrorAction Stop
         }
+        
         $NetworkInterface = @{Id = $NicId}
         [void]$NetworkProfileNetworkInterface.Add($NetworkInterface)
       }
@@ -472,12 +473,11 @@ param(
         $NetworkProfileNetworkInterface =  [System.Collections.ArrayList]::new()
         foreach ($NicName in $NicNames){
           $NicId = "/subscriptions/$SubscriptionId/resourceGroups/$rg/providers/Microsoft.StackHCIVM/networkinterfaces/$NicName"
-          try {
-            $nic = Az.StackHCIVM\Get-AzStackHCIVMNetworkInterface  -ResourceId $NicId -SubscriptionId $subscriptionId
-          }
-          catch {
+          $nic = Az.StackHCIVM\Get-AzStackHCIVMNetworkInterface  -ResourceId $NicId -SubscriptionId $subscriptionId -ErrorAction SilentlyContinue
+          if ($nic -eq $null){
             Write-Error "A Network Interface with id: $NicId does not exist." -ErrorAction Stop
           }
+        
           $NetworkInterface = @{Id = $NicId}
           [void]$NetworkProfileNetworkInterface.Add($NetworkInterface)
         }
