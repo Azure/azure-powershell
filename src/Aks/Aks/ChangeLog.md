@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed the issue of handling `nextLink` in `Set-AzAksCluster`. [#21846]
+* Fixed the issue of parameter `AcrNameToDetach` in `Set-AzAksCluster` due to role assignment name is a guid.
 * Added breaking change message for parameter `DockerBridgeCidr` in `New-AzAksCluster`.
 * Supported the value `AzureLinux` for parameter `-NodeOsSKU` in `New-AzAksCluster` and parameter `-OsSKU` in `New-AzAksNodePool`.
 * Fixed the issue of `-DisableLocalAccount` for `Set-AzAksCluster`. [#21835]

@@ -356,12 +356,14 @@ namespace Microsoft.Azure.Commands.Aks
             return new AcsServicePrincipal { SpId = app.AppId, ClientSecret = clientSecret, ObjectId = sp.Id };
         }
 
-        protected RoleAssignment GetRoleAssignmentWithRoleDefinitionId(string roleDefinitionId)
+        protected RoleAssignment GetRoleAssignmentWithRoleDefinitionId(string roleDefinitionId, string acrResourceId, string acsServicePrincipalObjectId)
         {
             RoleAssignment roleAssignment = null;
             var actionSuccess = RetryAction(() =>
             {
-                roleAssignment = AuthClient.RoleAssignments.List().Where(x => x.Properties.RoleDefinitionId == roleDefinitionId && x.Name == Name).FirstOrDefault();
+                roleAssignment = AuthClient.RoleAssignments.ListForScope(acrResourceId)
+                    .Where(x => (x.Properties.RoleDefinitionId == roleDefinitionId && (x.Name == Name || x.Properties.PrincipalId == acsServicePrincipalObjectId)))
+                    .FirstOrDefault();
             });
             if (!actionSuccess)
             {
@@ -374,29 +376,33 @@ namespace Microsoft.Azure.Commands.Aks
 
         protected void AddAcrRoleAssignment(string acrName, string acrParameterName, AcsServicePrincipal acsServicePrincipal)
         {
-            string acrResourceId = null;
-            try
-            {
-                //Find Acr resourceId first
-                var acrQuery = new ODataQuery<GenericResourceFilter>($"$filter=resourceType eq 'Microsoft.ContainerRegistry/registries' and name eq '{acrName}'");
-                var acrObjects = RmClient.Resources.List(acrQuery);
-                acrResourceId = acrObjects.First().Id;
-            }
-            catch (Exception)
-            {
-                throw new AzPSArgumentException(
-                    string.Format(Resources.CouldNotFindSpecifiedAcr, acrName),
-                    acrParameterName,
-                    string.Format(Resources.CouldNotFindSpecifiedAcr, "*"));
-            }
+            string acrResourceId = getSpecifiedAcr(acrName, acrParameterName);
 
-            var roleId = GetRoleId("acrpull", acrResourceId);
-            RoleAssignment roleAssignment = GetRoleAssignmentWithRoleDefinitionId(roleId);
+            var roleDefinitionId = GetRoleId("acrpull", acrResourceId);
+            var spObjectId = getSPObjectId(acsServicePrincipal);
+
+            RoleAssignment roleAssignment = GetRoleAssignmentWithRoleDefinitionId(roleDefinitionId, acrResourceId, spObjectId);
             if (roleAssignment != null)
             {
                 WriteWarning(string.Format(Resources.AcrRoleAssignmentIsAlreadyExist, acrResourceId));
                 return;
             }
+
+            var success = RetryAction(() =>
+                AuthClient.RoleAssignments.Create(acrResourceId, Guid.NewGuid().ToString(), new RoleAssignmentCreateParameters()
+                {
+                    Properties = new RoleAssignmentProperties(roleDefinitionId, spObjectId)
+                }), Resources.AddRoleAssignment);
+
+            if (!success)
+            {
+                throw new AzPSInvalidOperationException(
+                    Resources.CouldNotAddAcrRoleAssignment,
+                    desensitizedMessage: Resources.CouldNotAddAcrRoleAssignment);
+            }
+        }
+
+        protected string getSPObjectId(AcsServicePrincipal acsServicePrincipal) {
             var spObjectId = acsServicePrincipal.ObjectId;
             if (spObjectId == null)
             {
@@ -414,17 +420,31 @@ namespace Microsoft.Azure.Commands.Aks
                         string.Format(Resources.CouldNotFindObjectIdForServicePrincipal, "*"));
                 }
             }
-            var success = RetryAction(() =>
-                AuthClient.RoleAssignments.Create(acrResourceId, Guid.NewGuid().ToString(), new RoleAssignmentCreateParameters()
-                {
-                    Properties = new RoleAssignmentProperties(roleId, spObjectId)
-                }), Resources.AddRoleAssignment);
+            return spObjectId;
+        }
 
-            if (!success)
+        protected string getSpecifiedAcr(string acrName, string acrParameterName) {
+            try
             {
-                throw new AzPSInvalidOperationException(
-                    Resources.CouldNotAddAcrRoleAssignment,
-                    desensitizedMessage: Resources.CouldNotAddAcrRoleAssignment);
+                //Find Acr resourceId first
+                var acrQuery = new ODataQuery<GenericResourceFilter>($"$filter=resourceType eq 'Microsoft.ContainerRegistry/registries' and name eq '{acrName}'");
+                var acrObjects = RmClient.Resources.List(acrQuery);
+                while (acrObjects.Count() == 0 && acrObjects.NextPageLink != null)
+                {
+                    acrObjects = RmClient.Resources.ListNext(acrObjects.NextPageLink);
+                }
+                if (acrObjects.Count() == 0)
+                {
+                    throw new AzPSArgumentException(
+                    string.Format(Resources.CouldNotFindSpecifiedAcr, acrName),
+                    acrParameterName,
+                    string.Format(Resources.CouldNotFindSpecifiedAcr, "*"));
+                }
+                return acrObjects.First().Id;
+            }
+            catch (Exception ex)
+            {
+                throw new AzPSArgumentException(string.Format(Resources.CouldNotFindSpecifiedAcr, acrName), ex, string.Format(Resources.CouldNotFindSpecifiedAcr, "*"));
             }
         }
 
