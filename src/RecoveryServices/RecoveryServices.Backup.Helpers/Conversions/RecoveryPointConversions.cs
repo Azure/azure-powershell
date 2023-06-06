@@ -42,7 +42,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             catch (Exception e)
             {
                 Logger.Instance.WriteDebug(e.Message);
-                return ((DateTime?)null);
+                Logger.Instance.WriteDebug(e.StackTrace);               
+
+                // return ((DateTime?)null);
+                throw;
             }
         }
 
