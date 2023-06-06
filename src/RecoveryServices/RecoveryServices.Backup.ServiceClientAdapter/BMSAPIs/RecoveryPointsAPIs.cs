@@ -188,7 +188,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
                 ).Result;
         }
 
-
         /// <summary>
         /// provision item level recovery connection identified by the input parameters
         /// </summary>

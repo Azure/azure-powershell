@@ -18,6 +18,7 @@ using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
+using CrrModel = Microsoft.Azure.Management.RecoveryServices.Backup.CrossRegionRestore.Models;
 using Microsoft.Rest.Azure.OData;
 using System;
 using System.Collections.Generic;
@@ -104,6 +105,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = ParamHelpMsgs.RecoveryPointConfig.FilePath)]
         public string FilePath { get; set; }
+
+        /// <summary>
+        /// Switch parameter to specify fetching resources from Secondary Region.
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = ParamHelpMsgs.Common.UseSecondaryReg)]
+        public SwitchParameter UseSecondaryRegion;
 
         public override void ExecuteCmdlet()
         {
@@ -218,22 +225,44 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                             ((AzureWorkloadProtectableItem)TargetItem).ServerName) == 0)
                         {
                             string itemId = GetItemId(RecoveryPoint.Id);
-                            IList<SQLDataDirectory> dataDirectoryPaths = GetRpDetails(vaultName, resourceGroupName);
-                            foreach (var dataDirectoryPath in dataDirectoryPaths)
+
+                            if (UseSecondaryRegion)
                             {
-                                targetPhysicalPath.Add(new SQLDataDirectoryMapping()
+                                IList<CrrModel.SQLDataDirectory> dataDirectoryPathsCrr = GetRpDetailsFromSecondaryRegion(vaultName, resourceGroupName);
+                                                                
+                                foreach (var dataDirectoryPath in dataDirectoryPathsCrr)
                                 {
-                                    MappingType = dataDirectoryPath.Type,
-                                    SourceLogicalName = dataDirectoryPath.LogicalName,
-                                    SourcePath = dataDirectoryPath.Path,
-                                    TargetPath = GetTargetPath(dataDirectoryPath.Path, dataDirectoryPath.LogicalName, dataDirectoryPath.Type,
-                                    ((AzureVmWorkloadSQLInstanceWorkloadItem)itemResponse.Properties).DataDirectoryPaths
-                                    as List<SQLDataDirectory>, offset)
-                                });
+                                    targetPhysicalPath.Add(new SQLDataDirectoryMapping()
+                                    {
+                                        MappingType = dataDirectoryPath.Type,
+                                        SourceLogicalName = dataDirectoryPath.LogicalName,
+                                        SourcePath = dataDirectoryPath.Path,
+                                        TargetPath = GetTargetPath(dataDirectoryPath.Path, dataDirectoryPath.LogicalName, dataDirectoryPath.Type,
+                                        ((AzureVmWorkloadSQLInstanceWorkloadItem)itemResponse.Properties).DataDirectoryPaths
+                                        as List<SQLDataDirectory>, offset)
+                                    });
+                                }
                             }
+                            else
+                            {
+                                IList<SQLDataDirectory> dataDirectoryPaths = GetRpDetails(vaultName, resourceGroupName);
+                                foreach (var dataDirectoryPath in dataDirectoryPaths)
+                                {
+                                    targetPhysicalPath.Add(new SQLDataDirectoryMapping()
+                                    {
+                                        MappingType = dataDirectoryPath.Type,
+                                        SourceLogicalName = dataDirectoryPath.LogicalName,
+                                        SourcePath = dataDirectoryPath.Path,
+                                        TargetPath = GetTargetPath(dataDirectoryPath.Path, dataDirectoryPath.LogicalName, dataDirectoryPath.Type,
+                                        ((AzureVmWorkloadSQLInstanceWorkloadItem)itemResponse.Properties).DataDirectoryPaths
+                                        as List<SQLDataDirectory>, offset)
+                                    });
+                                }
+                            }                            
                             break;
                         }
                     }
+                    
                     azureWorkloadRecoveryConfig.targetPhysicalPath = targetPhysicalPath;
                     azureWorkloadRecoveryConfig.ContainerId = GetContainerId(TargetItem.Id);
                 }
@@ -282,18 +311,37 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                             string.Compare(((AzureVmWorkloadSQLInstanceWorkloadItem)itemResponse.Properties).ServerName,
                             ((AzureWorkloadProtectableItem)TargetItem).ServerName) == 0)
                         {
-                            List<SQLDataDirectory> dataDirectory = GetDataDirectory(vaultName, resourceGroupName, Item.Id, PointInTime);
-                            foreach (var dataDirectoryPath in dataDirectory)
+                            if (!UseSecondaryRegion)
                             {
-                                targetPhysicalPath.Add(new SQLDataDirectoryMapping()
+                                List<SQLDataDirectory> dataDirectory = GetDataDirectory(vaultName, resourceGroupName, Item.Id, PointInTime);
+                                foreach (var dataDirectoryPath in dataDirectory)
                                 {
-                                    MappingType = dataDirectoryPath.Type,
-                                    SourceLogicalName = dataDirectoryPath.LogicalName,
-                                    SourcePath = dataDirectoryPath.Path,
-                                    TargetPath = GetTargetPath(dataDirectoryPath.Path, dataDirectoryPath.LogicalName, dataDirectoryPath.Type,
-                                    ((AzureVmWorkloadSQLInstanceWorkloadItem)itemResponse.Properties).DataDirectoryPaths
-                                    as List<SQLDataDirectory>, offset)
-                                });
+                                    targetPhysicalPath.Add(new SQLDataDirectoryMapping()
+                                    {
+                                        MappingType = dataDirectoryPath.Type,
+                                        SourceLogicalName = dataDirectoryPath.LogicalName,
+                                        SourcePath = dataDirectoryPath.Path,
+                                        TargetPath = GetTargetPath(dataDirectoryPath.Path, dataDirectoryPath.LogicalName, dataDirectoryPath.Type,
+                                        ((AzureVmWorkloadSQLInstanceWorkloadItem)itemResponse.Properties).DataDirectoryPaths
+                                        as List<SQLDataDirectory>, offset)
+                                    });
+                                }
+                            }
+                            else
+                            {
+                                List<CrrModel.SQLDataDirectory> dataDirectory = GetDataDirectoryFromSecondaryRegion(vaultName, resourceGroupName, Item.Id, PointInTime);
+                                foreach (var dataDirectoryPath in dataDirectory)
+                                {
+                                    targetPhysicalPath.Add(new SQLDataDirectoryMapping()
+                                    {
+                                        MappingType = dataDirectoryPath.Type,
+                                        SourceLogicalName = dataDirectoryPath.LogicalName,
+                                        SourcePath = dataDirectoryPath.Path,
+                                        TargetPath = GetTargetPath(dataDirectoryPath.Path, dataDirectoryPath.LogicalName, dataDirectoryPath.Type,
+                                        ((AzureVmWorkloadSQLInstanceWorkloadItem)itemResponse.Properties).DataDirectoryPaths
+                                        as List<SQLDataDirectory>, offset)
+                                    });
+                                }
                             }
                             break;
                         }
@@ -401,20 +449,114 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             return dataDirectoryPaths;
         }
 
+        public List<CrrModel.SQLDataDirectory> GetDataDirectoryFromSecondaryRegion(string vaultName, string resourceGroupName, string itemId, DateTime pointInTime)
+        {
+            Dictionary<UriEnums, string> uriDict = HelperUtils.ParseUri(itemId);
+            string containerUri = HelperUtils.GetContainerUri(uriDict, itemId);
+            string protectedItemName = HelperUtils.GetProtectedItemUri(uriDict, itemId);
+            var queryFilterString = QueryBuilder.Instance.GetQueryString(new BMSRPQueryObject()
+            {
+                RestorePointQueryType = RestorePointQueryType.Log,
+                ExtendedInfo = true
+            });
+
+            ODataQuery<CrrModel.BMSRPQueryObject> queryFilter = new ODataQuery<CrrModel.BMSRPQueryObject>();
+            queryFilter.Filter = queryFilterString;
+
+            // RsvRef : fetching recovery points from primary region 
+            var rpResponse = ServiceClientAdapter.GetRecoveryPointsFromSecondaryRegion(
+                containerUri,
+                protectedItemName,
+                queryFilter,
+                vaultName: vaultName,
+                resourceGroupName: resourceGroupName);
+
+            List<CrrModel.SQLDataDirectory> dataDirectoryPaths = new List<CrrModel.SQLDataDirectory>();
+            
+            if (rpResponse[0].Properties.GetType() == typeof(CrrModel.AzureWorkloadSQLPointInTimeRecoveryPoint))
+            {
+                CrrModel.AzureWorkloadSQLPointInTimeRecoveryPoint recoveryPoint =
+                    rpResponse[0].Properties as CrrModel.AzureWorkloadSQLPointInTimeRecoveryPoint;
+                if (recoveryPoint.ExtendedInfo != null)
+                {
+                    foreach(CrrModel.SQLDataDirectory dataDirectoryPath in recoveryPoint.ExtendedInfo.DataDirectoryPaths)
+                    {
+                        dataDirectoryPaths.Add(dataDirectoryPath);
+                    }
+                }
+            }
+            return dataDirectoryPaths;
+        }
+
         public IList<SQLDataDirectory> GetRpDetails(string vaultName, string resourceGroupName)
         {
             Dictionary<UriEnums, string> uriDict = HelperUtils.ParseUri(RecoveryPoint.Id);
             string containerUri = HelperUtils.GetContainerUri(uriDict, RecoveryPoint.Id);
             string protectedItemName = HelperUtils.GetProtectedItemUri(uriDict, RecoveryPoint.Id);
 
+            AzureWorkloadSQLRecoveryPoint recoveryPoint = null;
+
             var rpResponse = ServiceClientAdapter.GetRecoveryPointDetails(
-                containerUri,
-                protectedItemName,
-                RecoveryPoint.RecoveryPointId,
-                vaultName: vaultName,
-                resourceGroupName: resourceGroupName);
-            AzureWorkloadSQLRecoveryPoint recoveryPoint = rpResponse.Properties as AzureWorkloadSQLRecoveryPoint;
+            containerUri,
+            protectedItemName,
+            RecoveryPoint.RecoveryPointId,
+            vaultName: vaultName,
+            resourceGroupName: resourceGroupName);
+
+            recoveryPoint = rpResponse.Properties as AzureWorkloadSQLRecoveryPoint;
             return recoveryPoint.ExtendedInfo.DataDirectoryPaths;
+        }
+
+        public IList<CrrModel.SQLDataDirectory> GetRpDetailsFromSecondaryRegion(string vaultName, string resourceGroupName)
+        {
+            Dictionary<UriEnums, string> uriDict = HelperUtils.ParseUri(RecoveryPoint.Id);
+            string containerUri = HelperUtils.GetContainerUri(uriDict, RecoveryPoint.Id);
+            string protectedItemName = HelperUtils.GetProtectedItemUri(uriDict, RecoveryPoint.Id);
+            
+            DateTime rangeEnd = DateTime.UtcNow;
+            DateTime rangeStart = rangeEnd.AddDays(-730);
+            string restorePointQueryType = "FullAndDifferential";
+            string queryFilterString = QueryBuilder.Instance.GetQueryString(new BMSRPQueryObject()
+            {
+                StartDate = rangeStart,
+                EndDate = rangeEnd,
+                RestorePointQueryType = restorePointQueryType,
+                ExtendedInfo = true
+            });
+
+            ODataQuery<CrrModel.BMSRPQueryObject> queryFilter = new ODataQuery<CrrModel.BMSRPQueryObject>();
+            queryFilter.Filter = queryFilterString;
+
+            List<CrrModel.RecoveryPointResource> rpListResponseCrr;
+            rpListResponseCrr = ServiceClientAdapter.GetRecoveryPointsFromSecondaryRegion(
+            containerUri,
+            protectedItemName,
+            queryFilter,
+            vaultName: vaultName,
+            resourceGroupName: resourceGroupName);
+
+            if(rpListResponseCrr.Count > 0)
+            {
+                WriteDebug(rpListResponseCrr[0].Name);
+            }            
+
+            var recoveryPointList = rpListResponseCrr.Where(
+            recoveryPointToFilter =>
+            {
+                return (recoveryPointToFilter.Name == RecoveryPoint.RecoveryPointId);
+            }).ToList();
+            
+            if (recoveryPointList.Count >= 1)
+            {
+                var recoveryPointCrr = recoveryPointList[0].Properties as CrrModel.AzureWorkloadSQLRecoveryPoint;
+                
+                if(recoveryPointCrr.ExtendedInfo != null)
+                {
+                    return recoveryPointCrr.ExtendedInfo.DataDirectoryPaths;
+                }                
+            }
+            
+            return (new List<CrrModel.SQLDataDirectory>());
         }
 
         public string GetRestoredDBName(string itemName, DateTime currentTime)

@@ -334,10 +334,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 {                    
                     if(VaultLocation != null)
                     {
+                        // adding a dummy comment to raise PR
                         secondaryRegion = BackupUtils.regionMap[VaultLocation];
                     }
                     else
-                    {
+                    {                        
                         ARSVault vault = ServiceClientAdapter.GetVault(resourceGroupName, vaultName);
                         secondaryRegion = BackupUtils.regionMap[vault.Location];
                     }
