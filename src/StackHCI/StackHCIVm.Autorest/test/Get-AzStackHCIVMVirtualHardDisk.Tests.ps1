@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzStackHCIVMVirtualHardDi
 }
 
 Describe 'Get-AzStackHCIVMVirtualHardDisk' {
-    It 'ByResourceId' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'ByResourceId' {
+        Get-AzStackHCIVMVirtualHardDisk -ResourceId $env.vhdResourceId | Should -Not -BeNullOrEmpty
     }
 }

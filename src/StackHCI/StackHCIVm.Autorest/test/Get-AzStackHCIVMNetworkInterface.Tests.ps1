@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzStackHCIVMNetworkInterf
 }
 
 Describe 'Get-AzStackHCIVMNetworkInterface' {
-    It 'ByResourceId' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'ByResourceId' {
+        Get-AzStackHCIVMNetworkInterface -ResourceId $env.nicResourceId | Should -Not -BeNullOrEmpty
     }
 }

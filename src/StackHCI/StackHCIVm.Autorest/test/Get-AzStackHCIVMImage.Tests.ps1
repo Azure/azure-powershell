@@ -15,35 +15,19 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzStackHCIVMImage'))
 }
 
 Describe 'Get-AzStackHCIVMImage' {
-    It 'BySubscription' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'BySubscription' {
+        Get-AzStackHCIVMImage -SubscriptionId $env.subscriptionId | Should -Not -BeNullOrEmpty
     }
 
-    It 'ByName' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'ByName' {
+       Get-AzStackHCIVMImage -Name $env.imageName -ResourceGroupName $env.resourceGroupName -SubscriptionId $env.subscriptionId | Should -Not -BeNullOrEmpty
     }
 
-    It 'ByResourceGroup' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'ByResourceGroup' {
+        Get-AzStackHCIVMImage -ResourceGroupName $env.resourceGroupName -SubscriptionId $env.subscriptionId | Should -Not -BeNullOrEmpty
     }
 
-    It 'ListAllSupportedImages' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'ListImagesByOffer' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'ListImagesByPublisher' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'ListImagesBySku' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'ByResourceId' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'ByResourceId' {
+        Get-AzStackHCIVMImage -ResourceId $env.vmImageId  | Should -Not -BeNullOrEmpty
     }
 }

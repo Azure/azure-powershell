@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzStackHCIVMStoragePath')
 }
 
 Describe 'Get-AzStackHCIVMStoragePath' {
-    It 'ByResourceId' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'ByResourceId'  {
+        Get-AzStackHCIVMStoragePath -ResourceId $env.storagePathResourceId | Should -Not -BeNullOrEmpty
     }
 }

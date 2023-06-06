@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzStackHCIVMVirtualNetwor
 }
 
 Describe 'Get-AzStackHCIVMVirtualNetwork' {
-    It 'ByResourceId' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'ByResourceId'  {
+        Get-AzStackHCIVMVirtualNetwork -ResourceId $env.vnetResourceId | Should -Not -BeNullOrEmpty
     }
 }
