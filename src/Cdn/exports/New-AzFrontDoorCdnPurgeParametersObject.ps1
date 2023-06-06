@@ -24,12 +24,12 @@ $contentPath = "/a"
 $content = New-AzFrontDoorCdnPurgeParametersObject -ContentPath $contentPath
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.AfdPurgeParameters
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.AfdPurgeParameters
 .Link
 https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzFrontDoorCdnPurgeParametersObject
 #>
 function New-AzFrontDoorCdnPurgeParametersObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.AfdPurgeParameters])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.AfdPurgeParameters])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]

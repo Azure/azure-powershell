@@ -1,13 +1,13 @@
 {
-  "Get-AzCdnSubscriptionResourceUsage+[NoContext]+List+$POST+https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/providers/Microsoft.Cdn/checkResourceUsage?api-version=2022-11-01-preview+1": {
+  "Get-AzCdnSubscriptionResourceUsage+[NoContext]+List+$POST+https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/providers/Microsoft.Cdn/checkResourceUsage?api-version=2023-05-01+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/providers/Microsoft.Cdn/checkResourceUsage?api-version=2022-11-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/providers/Microsoft.Cdn/checkResourceUsage?api-version=2023-05-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "152" ],
-        "x-ms-client-request-id": [ "f1e85b02-1819-4e14-8d8d-0bc05c661487" ],
+        "x-ms-unique-id": [ "160" ],
+        "x-ms-client-request-id": [ "6fe5d583-5823-4206-8cfe-d6fcd4c3232a" ],
         "CommandName": [ "Get-AzCdnSubscriptionResourceUsage" ],
         "FullCommandName": [ "Get-AzCdnSubscriptionResourceUsage_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -23,14 +23,14 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "fe0f9c37-4880-4727-aac3-4d8aeb3a828b" ],
-        "x-ms-client-request-id": [ "f1e85b02-1819-4e14-8d8d-0bc05c661487" ],
+        "x-ms-request-id": [ "8bf08c20-b5cd-4d3a-80c9-c32ba619e609" ],
+        "x-ms-client-request-id": [ "6fe5d583-5823-4206-8cfe-d6fcd4c3232a" ],
         "Server": [ "Kestrel" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "1195" ],
-        "x-ms-correlation-request-id": [ "6707b9c9-861d-4146-9bf1-c6f7f3166e84" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230517T141507Z:6707b9c9-861d-4146-9bf1-c6f7f3166e84" ],
+        "x-ms-correlation-request-id": [ "6751e5d5-c6da-4020-bdac-7e08b8ab2f67" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230530T014501Z:6751e5d5-c6da-4020-bdac-7e08b8ab2f67" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Wed, 17 May 2023 14:15:06 GMT" ]
+        "Date": [ "Tue, 30 May 2023 01:45:01 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "157" ],

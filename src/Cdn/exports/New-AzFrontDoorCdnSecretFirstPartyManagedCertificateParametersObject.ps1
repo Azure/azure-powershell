@@ -23,12 +23,12 @@ Create an in-memory object for AzureFirstPartyManagedCertificateParameters.
 New-AzFrontDoorCdnSecretFirstPartyManagedCertificateParametersObject -Type BYOC
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.AzureFirstPartyManagedCertificateParameters
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.AzureFirstPartyManagedCertificateParameters
 .Link
 https://learn.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnSecretFirstPartyManagedCertificateParametersObject
 #>
 function New-AzFrontDoorCdnSecretFirstPartyManagedCertificateParametersObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.AzureFirstPartyManagedCertificateParameters])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.AzureFirstPartyManagedCertificateParameters])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]

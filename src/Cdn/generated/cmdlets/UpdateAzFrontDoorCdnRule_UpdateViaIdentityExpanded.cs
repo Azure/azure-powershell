@@ -13,7 +13,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Cmdlets
     /// [OpenAPI] Update=>PATCH:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/ruleSets/{ruleSetName}/rules/{ruleName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzFrontDoorCdnRule_UpdateViaIdentityExpanded", SupportsShouldProcess = true)]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IRule))]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IRule))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.Description(@"Updates an existing delivery rule within a rule set.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.Generated]
     public partial class UpdateAzFrontDoorCdnRule_UpdateViaIdentityExpanded : global::System.Management.Automation.PSCmdlet,
@@ -34,7 +34,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Cmdlets
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
 
         /// <summary>The domain JSON object required for domain creation or update.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IRuleUpdateParameters _ruleUpdatePropertiesBody = new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.RuleUpdateParameters();
+        private Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IRuleUpdateParameters _ruleUpdatePropertiesBody = new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.RuleUpdateParameters();
 
         /// <summary>
         /// A list of actions that are executed when all the conditions of a rule are satisfied.
@@ -47,8 +47,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Cmdlets
         ReadOnly = false,
         Description = @"A list of actions that are executed when all the conditions of a rule are satisfied.",
         SerializedName = @"actions",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IDeliveryRuleAction1) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IDeliveryRuleAction1[] Action { get => _ruleUpdatePropertiesBody.Action ?? null /* arrayOf */; set => _ruleUpdatePropertiesBody.Action = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IDeliveryRuleAction1) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IDeliveryRuleAction1[] Action { get => _ruleUpdatePropertiesBody.Action ?? null /* arrayOf */; set => _ruleUpdatePropertiesBody.Action = value; }
 
         /// <summary>when specified, runs this cmdlet as a PowerShell job</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Run the command as a job")]
@@ -72,8 +72,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Cmdlets
         ReadOnly = false,
         Description = @"A list of conditions that must be matched for the actions to be executed",
         SerializedName = @"conditions",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IDeliveryRuleCondition) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IDeliveryRuleCondition[] Condition { get => _ruleUpdatePropertiesBody.Condition ?? null /* arrayOf */; set => _ruleUpdatePropertiesBody.Condition = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IDeliveryRuleCondition) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IDeliveryRuleCondition[] Condition { get => _ruleUpdatePropertiesBody.Condition ?? null /* arrayOf */; set => _ruleUpdatePropertiesBody.Condition = value; }
 
         /// <summary>
         /// The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet
@@ -180,24 +180,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Cmdlets
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IAfdErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IAfdErrorResponse</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onDefault method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IAfdErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// <c>overrideOnOk</c> will be called before the regular onOk has been processed, allowing customization of what happens
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IRule">Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IRule</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IRule">Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IRule</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IRule> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IRule> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -452,12 +452,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Cmdlets
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IAfdErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IAfdErrorResponse</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IAfdErrorResponse> response)
+        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse> response)
         {
             using( NoSynchronizationContext )
             {
@@ -474,7 +474,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Cmdlets
                 if ((null == code || null == message))
                 {
                     // Unrecognized Response. Create an error record based on what we have.
-                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IAfdErrorResponse>(responseMessage, await response);
+                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>(responseMessage, await response);
                     WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { body=_ruleUpdatePropertiesBody })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
@@ -492,12 +492,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IRule">Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IRule</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IRule">Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IRule</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IRule> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IRule> response)
         {
             using( NoSynchronizationContext )
             {
@@ -509,7 +509,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IRule
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IRule
                 WriteObject((await response));
             }
         }
