@@ -33,3 +33,31 @@ Global   fdp-v542q6 frontdoor testps-rg-da16jm
 
 Update an AzureFrontDoor profile under the resource group via identity
 
+
+### Example 3: Enable managed identity using SystemAssigned type to an AzureFrontDoor profile
+```powershell
+Update-AzFrontDoorCdnProfile -ResourceGroupName testps-rg-da16jm -Name fdp-v542q6 -IdentityType SystemAssigned
+```
+
+```output
+Location Name       Kind      ResourceGroupName
+-------- ----       ----      -----------------
+Global   fdp-v542q6 frontdoor testps-rg-da16jm
+```
+
+Enable managed identity using SystemAssigned type to an AzureFrontDoor profile
+
+
+### Example 4: Enable managed identity using UserAssigned type to an AzureFrontDoor profile
+```powershell
+$userId =  @{"/subscriptions/subId/resourceGroups/testps-rg-da16jm/providers/Microsoft.ManagedIdentity/userAssignedIdentities/testcdnrpaadidentity" = @{}}
+Update-AzFrontDoorCdnProfile -ResourceGroupName testps-rg-da16jm -Name fdp-v542q6 -IdentityType UserAssigned -IdentityUserAssignedIdentity $userId
+```
+
+```output
+Location Name       Kind      ResourceGroupName
+-------- ----       ----      -----------------
+Global   fdp-v542q6 frontdoor testps-rg-da16jm
+```
+
+Enable managed identity using UserAssigned type to an AzureFrontDoor profile
