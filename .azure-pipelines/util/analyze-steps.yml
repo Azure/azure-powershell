@@ -24,10 +24,10 @@ steps:
     pwsh: true
 
 - task: UseDotNet@2
-  displayName: 'Use .NET Core sdk'
+  displayName: 'Use .NET Core sdk 6.0.x'
   inputs:
     packageType: sdk
-    version: 3.1.x
+    version: 6.0.x
 
 - pwsh: 'Install-Module "platyPS", "PSScriptAnalyzer" -Force -Confirm:$false -Scope CurrentUser'
   displayName: 'Install PowerShell Dependencies'

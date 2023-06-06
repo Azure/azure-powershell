@@ -20,6 +20,8 @@
 
 -->
 ## Upcoming Release
+* Added useful examples to the `New-AzVMConfig` help doc.
+* Added new `ResourceId` parameter to the `Get-AzVmss` cmdlet. 
 
 ## Version 6.0.0
 * Added new switch parameter `OSImageScheduledEventEnabled` and string parameter `OSImageScheduledEventNotBeforeTimeoutInMinutes` to the cmdlets `New-AzVmssConfig` and `Update-AzVmss`.

@@ -318,6 +318,13 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-VirtualMachineScaleSetOSImageScheduledEvents");
         }
+        
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineScaleSetGetById()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineScaleSetGetById");
+        }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
