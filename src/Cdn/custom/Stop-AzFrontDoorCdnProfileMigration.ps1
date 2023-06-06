@@ -123,6 +123,6 @@ function Stop-AzFrontDoorCdnProfileMigration {
         else {
             Remove-AzFrontDoorCdnProfile -ResourceGroupName ${ResourceGroupName} -Name ${ProfileName}
         }
-        Write-Host("Abort migration succeeded.")
+        Write-Host("Migration abort succeeded.")
     }
 }

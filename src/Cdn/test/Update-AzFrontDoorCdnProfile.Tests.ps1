@@ -14,7 +14,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzFrontDoorCdnProfile'
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Update-AzFrontDoorCdnProfile'  {
+Describe 'Update-AzFrontDoorCdnProfile' {
     BeforeAll {
         $subId = $env.SubscriptionId
         $frontDoorCdnProfileName = 'fdp-pstest050'
@@ -26,8 +26,8 @@ Describe 'Update-AzFrontDoorCdnProfile'  {
             Tag2  = 2
         }
         New-AzFrontDoorCdnProfile -SkuName $profileSku -Name $frontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Location Global -Tag $tags
-
     }
+
     It 'UpdateExpanded' {
         $tags = @{
             Tag1 = 11
@@ -35,13 +35,14 @@ Describe 'Update-AzFrontDoorCdnProfile'  {
         }
 
         Write-Host -ForegroundColor Green "Update AzFrontDoorCdnProfile"
-        $profileObject = Update-AzFrontDoorCdnProfile -Name $frontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Tag $tags
+        $profileObject = Update-AzFrontDoorCdnProfile -Name $frontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Tag $tags -OriginResponseTimeoutSecond 30
 
         Write-Host -ForegroundColor Green "Get AzFrontDoorCdnProfile"
         $updatedProfile = Get-AzFrontDoorCdnProfile -InputObject $profileObject
         
         $updatedProfile.Tag["Tag1"] | Should -Be "11"
         $updatedProfile.Tag["Tag2"] | Should -Be "22"
+        $updatedProfile.OriginResponseTimeoutSecond | Should -Be "30"
     }
 
     It 'UpdateExpanded' {
@@ -64,12 +65,13 @@ Describe 'Update-AzFrontDoorCdnProfile'  {
         $profileObject = Get-AzFrontDoorCdnProfile -Name $frontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName
 
         Write-Host -ForegroundColor Green "Update AzFrontDoorCdnProfile"
-        Update-AzFrontDoorCdnProfile -Tag $tags -InputObject $profileObject
+        Update-AzFrontDoorCdnProfile -Tag $tags -OriginResponseTimeoutSecond 30 -InputObject $profileObject
 
         Write-Host -ForegroundColor Green "get AzFrontDoorCdnProfile"
         $updatedProfile = Get-AzFrontDoorCdnProfile -Name $frontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName
         
         $updatedProfile.Tag["Tag1"] | Should -Be "33"
         $updatedProfile.Tag["Tag2"] | Should -Be "44"
+        $updatedProfile.OriginResponseTimeoutSecond | Should -Be "30"
     }
 }

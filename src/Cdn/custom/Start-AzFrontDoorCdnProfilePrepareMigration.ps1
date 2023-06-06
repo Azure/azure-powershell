@@ -297,7 +297,7 @@ function Start-AzFrontDoorCdnProfilePrepareMigration {
         
         # Deal with MSI parameter
         # if ($PSBoundParameters.ContainsKey('IdentityType')) {
-        if ($allPoliciesWithVault.count -gt 0) { 
+        if ($allPoliciesWithVault.count -gt 0) {
             Write-Host("Starting to enable managed identity.")
 
             # Waiting for results of profile created return
