@@ -6610,7 +6610,7 @@ function Test-VirtualMachineSecurityType
         # Creating a VM using Simple parameterset
         $password = Get-PasswordForVM;
         $securePassword = $password | ConvertTo-SecureString -AsPlainText -Force;  
-        $user = "admin01";
+        $user = Get-ComputeTestResourceName;
         $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
 
         $frontendSubnet = New-AzVirtualNetworkSubnetConfig -Name $subnetname -AddressPrefix $subnetAddress;
@@ -6639,11 +6639,13 @@ function Test-VirtualMachineSecurityType
 
         # validate GA extension
         $extDefaultName = "GuestAttestation";
-        #$vmGADefaultIDentity = "SystemAssignedUserAssigned";
+        $vmGADefaultIDentity = "SystemAssigned";
         $vm = Get-AzVm -ResourceGroupName $rgname -Name $vmName;
         $vmExt = Get-AzVMExtension -ResourceGroupName $rgname -VMName $vmName -Name $extDefaultName;
         Assert-AreEqual $extDefaultName $vmExt.Name;
         #Assert-AreEqual $vmGADefaultIDentity $vm.Identity.Type;
+        $output2 = $vm.Identity.Type| Out-String;
+        Assert-True { $output2.Contains($vmGADefaultIDentity) };
 
         #Case 2: -SecurityType = "TrustedLaunch" || "ConfidentialVM" -EnableVtpm $false -EnableSecureBoot $true
         $vmname2 = "v2" + $rgname;
@@ -6707,7 +6709,7 @@ function Test-VirtualMachineSecurityTypeWithoutConfig
         # Creating a VM using Simple parameterset
         $password = Get-PasswordForVM;
         $securePassword = $password | ConvertTo-SecureString -AsPlainText -Force;  
-        $user = "admin01";
+        $user = Get-ComputeTestResourceName;
         $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
 
         #Case 1: -SecurityType = TrustedLaunch || ConfidentialVM
