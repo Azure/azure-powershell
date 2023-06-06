@@ -23,7 +23,7 @@ Create an in-memory object for MigrationParameters.
 New-AzFrontDoorCdnMigrationParametersObject -ProfileName test
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.MigrationParameters
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.MigrationParameters
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -36,7 +36,7 @@ MIGRATIONWEBAPPLICATIONFIREWALLMAPPING <IMigrationWebApplicationFirewallMapping[
 https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzFrontDoorCdnMigrationParametersObject
 #>
 function New-AzFrontDoorCdnMigrationParametersObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.MigrationParameters])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.MigrationParameters])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -53,7 +53,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IMigrationWebApplicationFirewallMapping[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IMigrationWebApplicationFirewallMapping[]]
     # Waf mapping for the migrated profile.
     # To construct, see NOTES section for MIGRATIONWEBAPPLICATIONFIREWALLMAPPING properties and create a hash table.
     ${MigrationWebApplicationFirewallMapping},

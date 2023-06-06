@@ -22,7 +22,7 @@ Gets an Azure Front Door Standard or Azure Front Door Premium or CDN profile wit
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IProfile
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IProfile
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -47,7 +47,7 @@ https://learn.microsoft.com/powershell/module/az.cdn/get-azfrontdoorcdnprofile
 #>
 
 function Get-AzFrontDoorCdnProfile {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IProfile])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IProfile])]
     [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
     param(
         [Parameter(ParameterSetName='Get', Mandatory)]

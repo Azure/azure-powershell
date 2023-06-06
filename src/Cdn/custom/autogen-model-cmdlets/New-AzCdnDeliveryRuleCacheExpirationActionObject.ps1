@@ -21,12 +21,12 @@ Create an in-memory object for DeliveryRuleCacheExpirationAction.
 Create an in-memory object for DeliveryRuleCacheExpirationAction.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.DeliveryRuleCacheExpirationAction
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.DeliveryRuleCacheExpirationAction
 .Link
 https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzCdnDeliveryRuleCacheExpirationActionObject
 #>
 function New-AzCdnDeliveryRuleCacheExpirationActionObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.DeliveryRuleCacheExpirationAction')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.DeliveryRuleCacheExpirationAction')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -44,7 +44,7 @@ function New-AzCdnDeliveryRuleCacheExpirationActionObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.DeliveryRuleCacheExpirationAction]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.DeliveryRuleCacheExpirationAction]::New()
 
         if ($PSBoundParameters.ContainsKey('ParameterCacheBehavior')) {
             $Object.ParameterCacheBehavior = $ParameterCacheBehavior

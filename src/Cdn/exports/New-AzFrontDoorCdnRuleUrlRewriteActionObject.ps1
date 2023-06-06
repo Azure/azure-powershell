@@ -23,12 +23,12 @@ Create an in-memory object for UrlRewriteAction.
 New-AzFrontDoorCdnRuleUrlRewriteActionObject -Name UrlRewrite -ParameterDestination /b -ParameterSourcePattern /a -ParameterPreserveUnmatchedPath $False
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.UrlRewriteAction
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.UrlRewriteAction
 .Link
 https://learn.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnRuleUrlRewriteActionObject
 #>
 function New-AzFrontDoorCdnRuleUrlRewriteActionObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.UrlRewriteAction])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.UrlRewriteAction])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]

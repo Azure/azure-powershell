@@ -14,7 +14,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Cmdlets
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzCdnLogAnalyticWafLogAnalyticRanking_Get")]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IWafRankingsResponse))]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IWafRankingsResponse))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.Description(@"Get WAF log analytics charts for AFD profile")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.Generated]
     public partial class GetAzCdnLogAnalyticWafLogAnalyticRanking_Get : global::System.Management.Automation.PSCmdlet,
@@ -249,24 +249,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Cmdlets
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IAfdErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IAfdErrorResponse</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onDefault method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IAfdErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// <c>overrideOnOk</c> will be called before the regular onOk has been processed, allowing customization of what happens
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IWafRankingsResponse">Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IWafRankingsResponse</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IWafRankingsResponse">Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IWafRankingsResponse</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IWafRankingsResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IWafRankingsResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -442,12 +442,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Cmdlets
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IAfdErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IAfdErrorResponse</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IAfdErrorResponse> response)
+        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse> response)
         {
             using( NoSynchronizationContext )
             {
@@ -464,7 +464,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Cmdlets
                 if ((null == code || null == message))
                 {
                     // Unrecognized Response. Create an error record based on what we have.
-                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IAfdErrorResponse>(responseMessage, await response);
+                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>(responseMessage, await response);
                     WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, ProfileName=ProfileName, Metric=Metric, DateTimeBegin=DateTimeBegin, DateTimeEnd=DateTimeEnd, MaxRanking=MaxRanking, Ranking=Ranking, Action=this.InvocationInformation.BoundParameters.ContainsKey("Action") ? Action : null /* arrayOf */, RuleType=this.InvocationInformation.BoundParameters.ContainsKey("RuleType") ? RuleType : null /* arrayOf */ })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
@@ -482,12 +482,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IWafRankingsResponse">Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IWafRankingsResponse</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IWafRankingsResponse">Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IWafRankingsResponse</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IWafRankingsResponse> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IWafRankingsResponse> response)
         {
             using( NoSynchronizationContext )
             {
@@ -499,7 +499,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IWafRankingsResponse
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IWafRankingsResponse
                 WriteObject((await response));
             }
         }

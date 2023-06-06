@@ -27,7 +27,7 @@ $contentFilePath = New-AzCdnPurgeParametersObject -ContentPath $contentPath
 Clear-AzCdnEndpointContent -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -EndpointName endptest001 -ContentFilePath $contentFilePath
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IPurgeParameters
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IPurgeParameters
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
 .Outputs
@@ -46,7 +46,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
   [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
   [OriginName <String>]: Name of the origin which is unique within the profile.
-  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium profile which is unique within the resource group.
+  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
   [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
   [RouteName <String>]: Name of the routing rule.
   [RuleName <String>]: Name of the delivery rule which is unique within the endpoint.
@@ -101,7 +101,7 @@ param(
     [Parameter(ParameterSetName='Purge1', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='PurgeViaIdentity1', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IPurgeParameters]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IPurgeParameters]
     # Parameters required for content purge.
     # To construct, see NOTES section for CONTENTFILEPATH properties and create a hash table.
     ${ContentFilePath},
@@ -275,7 +275,7 @@ $content = New-AzFrontDoorCdnPurgeParametersObject -ContentPath $contentPath
 Clear-AzFrontDoorCdnEndpointContent -ResourceGroupName testps-rg-afdx -ProfileName cdn001 -EndpointName endpointTest001 -Content $content
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IAfdPurgeParameters
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdPurgeParameters
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
 .Outputs
@@ -295,7 +295,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
   [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
   [OriginName <String>]: Name of the origin which is unique within the profile.
-  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium profile which is unique within the resource group.
+  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
   [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
   [RouteName <String>]: Name of the routing rule.
   [RuleName <String>]: Name of the delivery rule which is unique within the endpoint.
@@ -350,7 +350,7 @@ param(
     [Parameter(ParameterSetName='Purge', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='PurgeViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IAfdPurgeParameters]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdPurgeParameters]
     # Parameters required for content purge.
     # To construct, see NOTES section for CONTENT properties and create a hash table.
     ${Content},
@@ -530,7 +530,7 @@ Disable-AzCdnCustomDomainCustomHttps -ResourceGroupName testps-rg-da16jm -Profil
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.ICustomDomain
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ICustomDomain
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -542,7 +542,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
   [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
   [OriginName <String>]: Name of the origin which is unique within the profile.
-  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium profile which is unique within the resource group.
+  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
   [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
   [RouteName <String>]: Name of the routing rule.
   [RuleName <String>]: Name of the delivery rule which is unique within the endpoint.
@@ -554,7 +554,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.cdn/disable-azcdncustomdomaincustomhttps
 #>
 function Disable-AzCdnCustomDomainCustomHttps {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.ICustomDomain])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ICustomDomain])]
 [CmdletBinding(DefaultParameterSetName='Disable', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Disable', Mandatory)]
@@ -744,11 +744,11 @@ $customDomainHttpsParameter = New-AzCdnManagedHttpsParametersObject -Certificate
 Enable-AzCdnCustomDomainCustomHttps -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -EndpointName endptest001 -CustomDomainName customdomain001 -CustomDomainHttpsParameter $customDomainHttpsParameter
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.ICustomDomainHttpsParameters
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ICustomDomainHttpsParameters
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.ICustomDomain
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ICustomDomain
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -765,7 +765,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
   [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
   [OriginName <String>]: Name of the origin which is unique within the profile.
-  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium profile which is unique within the resource group.
+  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
   [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
   [RouteName <String>]: Name of the routing rule.
   [RuleName <String>]: Name of the delivery rule which is unique within the endpoint.
@@ -777,7 +777,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.cdn/enable-azcdncustomdomaincustomhttps
 #>
 function Enable-AzCdnCustomDomainCustomHttps {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.ICustomDomain])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ICustomDomain])]
 [CmdletBinding(DefaultParameterSetName='EnableViaIdentity', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Enable', Mandatory)]
@@ -820,7 +820,7 @@ param(
 
     [Parameter(Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.ICustomDomainHttpsParameters]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ICustomDomainHttpsParameters]
     # The JSON object that contains the properties to secure a custom domain.
     # To construct, see NOTES section for CUSTOMDOMAINHTTPSPARAMETER properties and create a hash table.
     ${CustomDomainHttpsParameter},
@@ -979,7 +979,7 @@ New-AzCdnCustomDomain -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -E
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.ICustomDomain
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ICustomDomain
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -991,7 +991,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
   [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
   [OriginName <String>]: Name of the origin which is unique within the profile.
-  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium profile which is unique within the resource group.
+  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
   [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
   [RouteName <String>]: Name of the routing rule.
   [RuleName <String>]: Name of the delivery rule which is unique within the endpoint.
@@ -1003,7 +1003,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.cdn/get-azcdncustomdomain
 #>
 function Get-AzCdnCustomDomain {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.ICustomDomain])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ICustomDomain])]
 [CmdletBinding(DefaultParameterSetName='List1', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get1', Mandatory)]
@@ -1186,12 +1186,12 @@ Edgenodes are the global Point of Presence (POP) locations used to deliver CDN c
 Get-AzCdnEdgeNode
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IEdgeNode
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IEdgeNode
 .Link
 https://learn.microsoft.com/powershell/module/az.cdn/get-azcdnedgenode
 #>
 function Get-AzCdnEdgeNode {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IEdgeNode])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IEdgeNode])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter()]
@@ -1326,12 +1326,12 @@ Checks the quota and usage of geo filters and custom domains under the given end
 Get-AzCdnEndpointResourceUsage -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -EndpointName endptest001
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IResourceUsage
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IResourceUsage
 .Link
 https://learn.microsoft.com/powershell/module/az.cdn/get-azcdnendpointresourceusage
 #>
 function Get-AzCdnEndpointResourceUsage {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IResourceUsage])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IResourceUsage])]
 [CmdletBinding(DefaultParameterSetName='List1', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -1505,7 +1505,7 @@ New-AzCdnEndpoint -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -Name 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IEndpoint
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IEndpoint
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -1517,7 +1517,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
   [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
   [OriginName <String>]: Name of the origin which is unique within the profile.
-  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium profile which is unique within the resource group.
+  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
   [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
   [RouteName <String>]: Name of the routing rule.
   [RuleName <String>]: Name of the delivery rule which is unique within the endpoint.
@@ -1529,7 +1529,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.cdn/get-azcdnendpoint
 #>
 function Get-AzCdnEndpoint {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IEndpoint])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IEndpoint])]
 [CmdletBinding(DefaultParameterSetName='List1', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get1', Mandatory)]
@@ -1713,7 +1713,7 @@ New-AzCdnOriginGroup -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -En
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IOriginGroup
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IOriginGroup
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -1725,7 +1725,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
   [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
   [OriginName <String>]: Name of the origin which is unique within the profile.
-  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium profile which is unique within the resource group.
+  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
   [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
   [RouteName <String>]: Name of the routing rule.
   [RuleName <String>]: Name of the delivery rule which is unique within the endpoint.
@@ -1737,7 +1737,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.cdn/get-azcdnorigingroup
 #>
 function Get-AzCdnOriginGroup {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IOriginGroup])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IOriginGroup])]
 [CmdletBinding(DefaultParameterSetName='List1', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get1', Mandatory)]
@@ -1926,7 +1926,7 @@ New-AzCdnOrigin -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -Endpoin
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IOrigin
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IOrigin
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -1938,7 +1938,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
   [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
   [OriginName <String>]: Name of the origin which is unique within the profile.
-  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium profile which is unique within the resource group.
+  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
   [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
   [RouteName <String>]: Name of the routing rule.
   [RuleName <String>]: Name of the delivery rule which is unique within the endpoint.
@@ -1950,7 +1950,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.cdn/get-azcdnorigin
 #>
 function Get-AzCdnOrigin {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IOrigin])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IOrigin])]
 [CmdletBinding(DefaultParameterSetName='List1', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get1', Mandatory)]
@@ -2133,12 +2133,12 @@ Checks the quota and actual usage of endpoints under the given Azure Front Door 
 Get-AzCdnProfileResourceUsage -ResourceGroupName testps-rg-da16jm -ProfileName cdn001
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IResourceUsage
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IResourceUsage
 .Link
 https://learn.microsoft.com/powershell/module/az.cdn/get-azcdnprofileresourceusage
 #>
 function Get-AzCdnProfileResourceUsage {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IResourceUsage])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IResourceUsage])]
 [CmdletBinding(DefaultParameterSetName='List1', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -2459,12 +2459,12 @@ Check the quota and actual usage of the CDN profiles under the given subscriptio
 Get-AzCdnSubscriptionResourceUsage
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IResourceUsage
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IResourceUsage
 .Link
 https://learn.microsoft.com/powershell/module/az.cdn/get-azcdnsubscriptionresourceusage
 #>
 function Get-AzCdnSubscriptionResourceUsage {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IResourceUsage])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IResourceUsage])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter()]
@@ -2615,7 +2615,7 @@ New-AzFrontDoorCdnCustomDomain -CustomDomainName domain001 -ProfileName fdp-v542
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IAfdDomain
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdDomain
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -2627,7 +2627,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
   [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
   [OriginName <String>]: Name of the origin which is unique within the profile.
-  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium profile which is unique within the resource group.
+  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
   [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
   [RouteName <String>]: Name of the routing rule.
   [RuleName <String>]: Name of the delivery rule which is unique within the endpoint.
@@ -2639,7 +2639,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.cdn/get-azfrontdoorcdncustomdomain
 #>
 function Get-AzFrontDoorCdnCustomDomain {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IAfdDomain])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdDomain])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -2814,12 +2814,12 @@ Checks the quota and actual usage of endpoints under the given Azure Front Door 
 Get-AzFrontDoorCdnEndpointResourceUsage -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -EndpointName end001
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IUsage
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IUsage
 .Link
 https://learn.microsoft.com/powershell/module/az.cdn/get-azfrontdoorcdnendpointresourceusage
 #>
 function Get-AzFrontDoorCdnEndpointResourceUsage {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IUsage])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IUsage])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -2989,7 +2989,7 @@ New-AzFrontDoorCdnEndpoint -ResourceGroupName testps-rg-da16jm -ProfileName fdp-
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IAfdEndpoint
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdEndpoint
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -3001,7 +3001,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
   [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
   [OriginName <String>]: Name of the origin which is unique within the profile.
-  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium profile which is unique within the resource group.
+  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
   [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
   [RouteName <String>]: Name of the routing rule.
   [RuleName <String>]: Name of the delivery rule which is unique within the endpoint.
@@ -3013,7 +3013,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.cdn/get-azfrontdoorcdnendpoint
 #>
 function Get-AzFrontDoorCdnEndpoint {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IAfdEndpoint])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdEndpoint])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -3188,12 +3188,12 @@ Checks the quota and actual usage of endpoints under the given Azure Front Door 
 Get-AzFrontDoorCdnOriginGroupResourceUsage -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -OriginGroupName org001
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IUsage
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IUsage
 .Link
 https://learn.microsoft.com/powershell/module/az.cdn/get-azfrontdoorcdnorigingroupresourceusage
 #>
 function Get-AzFrontDoorCdnOriginGroupResourceUsage {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IUsage])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IUsage])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -3364,7 +3364,7 @@ New-AzFrontDoorCdnOriginGroup -ResourceGroupName testps-rg-da16jm -ProfileName f
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IAfdOriginGroup
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdOriginGroup
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -3376,7 +3376,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
   [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
   [OriginName <String>]: Name of the origin which is unique within the profile.
-  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium profile which is unique within the resource group.
+  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
   [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
   [RouteName <String>]: Name of the routing rule.
   [RuleName <String>]: Name of the delivery rule which is unique within the endpoint.
@@ -3388,7 +3388,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.cdn/get-azfrontdoorcdnorigingroup
 #>
 function Get-AzFrontDoorCdnOriginGroup {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IAfdOriginGroup])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdOriginGroup])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -3569,7 +3569,7 @@ New-AzFrontDoorCdnOrigin -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v5
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IAfdOrigin
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdOrigin
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -3581,7 +3581,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
   [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
   [OriginName <String>]: Name of the origin which is unique within the profile.
-  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium profile which is unique within the resource group.
+  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
   [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
   [RouteName <String>]: Name of the routing rule.
   [RuleName <String>]: Name of the delivery rule which is unique within the endpoint.
@@ -3593,7 +3593,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.cdn/get-azfrontdoorcdnorigin
 #>
 function Get-AzFrontDoorCdnOrigin {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IAfdOrigin])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdOrigin])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -3775,12 +3775,12 @@ Checks the quota and actual usage of endpoints under the given Azure Front Door 
 Get-AzFrontDoorCdnProfileResourceUsage -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IUsage
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IUsage
 .Link
 https://learn.microsoft.com/powershell/module/az.cdn/get-azfrontdoorcdnprofileresourceusage
 #>
 function Get-AzFrontDoorCdnProfileResourceUsage {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IUsage])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IUsage])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -3950,7 +3950,7 @@ New-AzFrontDoorCdnRoute -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v54
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IRoute
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IRoute
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -3962,7 +3962,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
   [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
   [OriginName <String>]: Name of the origin which is unique within the profile.
-  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium profile which is unique within the resource group.
+  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
   [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
   [RouteName <String>]: Name of the routing rule.
   [RuleName <String>]: Name of the delivery rule which is unique within the endpoint.
@@ -3974,7 +3974,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.cdn/get-azfrontdoorcdnroute
 #>
 function Get-AzFrontDoorCdnRoute {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IRoute])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IRoute])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -4157,12 +4157,12 @@ Checks the quota and actual usage of endpoints under the given Azure Front Door 
 Get-AzFrontDoorCdnRuleSetResourceUsage -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -RuleSetName ruleset001
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IUsage
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IUsage
 .Link
 https://learn.microsoft.com/powershell/module/az.cdn/get-azfrontdoorcdnrulesetresourceusage
 #>
 function Get-AzFrontDoorCdnRuleSetResourceUsage {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IUsage])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IUsage])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -4331,7 +4331,7 @@ New-AzFrontDoorCdnRuleSet -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IRuleSet
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IRuleSet
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -4343,7 +4343,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
   [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
   [OriginName <String>]: Name of the origin which is unique within the profile.
-  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium profile which is unique within the resource group.
+  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
   [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
   [RouteName <String>]: Name of the routing rule.
   [RuleName <String>]: Name of the delivery rule which is unique within the endpoint.
@@ -4355,7 +4355,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.cdn/get-azfrontdoorcdnruleset
 #>
 function Get-AzFrontDoorCdnRuleSet {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IRuleSet])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IRuleSet])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -4550,7 +4550,7 @@ New-AzFrontDoorCdnRule -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IRule
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IRule
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -4562,7 +4562,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
   [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
   [OriginName <String>]: Name of the origin which is unique within the profile.
-  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium profile which is unique within the resource group.
+  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
   [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
   [RouteName <String>]: Name of the routing rule.
   [RuleName <String>]: Name of the delivery rule which is unique within the endpoint.
@@ -4574,7 +4574,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.cdn/get-azfrontdoorcdnrule
 #>
 function Get-AzFrontDoorCdnRule {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IRule])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IRule])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -4766,7 +4766,7 @@ New-AzFrontDoorCdnSecret -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v5
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.ISecret
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ISecret
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -4778,7 +4778,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
   [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
   [OriginName <String>]: Name of the origin which is unique within the profile.
-  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium profile which is unique within the resource group.
+  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
   [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
   [RouteName <String>]: Name of the routing rule.
   [RuleName <String>]: Name of the delivery rule which is unique within the endpoint.
@@ -4790,7 +4790,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.cdn/get-azfrontdoorcdnsecret
 #>
 function Get-AzFrontDoorCdnSecret {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.ISecret])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ISecret])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -4979,7 +4979,7 @@ Update-AzFrontDoorCdnSecurityPolicy -ResourceGroupName testps-rg-da16jm -Profile
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.ISecurityPolicy
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ISecurityPolicy
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -4991,7 +4991,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
   [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
   [OriginName <String>]: Name of the origin which is unique within the profile.
-  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium profile which is unique within the resource group.
+  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
   [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
   [RouteName <String>]: Name of the routing rule.
   [RuleName <String>]: Name of the delivery rule which is unique within the endpoint.
@@ -5003,7 +5003,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.cdn/get-azfrontdoorcdnsecuritypolicy
 #>
 function Get-AzFrontDoorCdnSecurityPolicy {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.ISecurityPolicy])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ISecurityPolicy])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -5185,7 +5185,7 @@ $contentFilePath = New-AzCdnLoadParametersObject -ContentPath $contentPath
 Import-AzCdnEndpointContent -ResourceGroupName testps-rg-verizon -ProfileName verzioncdn001 -EndpointName verzionendptest001 -ContentFilePath $contentFilePath
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.ILoadParameters
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ILoadParameters
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
 .Outputs
@@ -5204,7 +5204,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
   [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
   [OriginName <String>]: Name of the origin which is unique within the profile.
-  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium profile which is unique within the resource group.
+  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
   [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
   [RouteName <String>]: Name of the routing rule.
   [RuleName <String>]: Name of the delivery rule which is unique within the endpoint.
@@ -5259,7 +5259,7 @@ param(
     [Parameter(ParameterSetName='Load', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='LoadViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.ILoadParameters]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ILoadParameters]
     # Parameters required for content load.
     # To construct, see NOTES section for CONTENTFILEPATH properties and create a hash table.
     ${ContentFilePath},
@@ -5429,12 +5429,12 @@ Creates a new custom domain within an endpoint.
 New-AzCdnCustomDomain -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -EndpointName endptest001 -Name customdomain001 -HostName 'testcm.dev.cdn.azure.cn'
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.ICustomDomain
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ICustomDomain
 .Link
 https://learn.microsoft.com/powershell/module/az.cdn/new-azcdncustomdomain
 #>
 function New-AzCdnCustomDomain {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.ICustomDomain])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ICustomDomain])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded1', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -5627,7 +5627,7 @@ $origin = @{
 New-AzCdnEndpoint -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -Name endptest001 -Location westus -Origin $origin             
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IEndpoint
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IEndpoint
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -5688,7 +5688,7 @@ URLSIGNINGKEY <IUrlSigningKey[]>: List of keys used to validate the signed URL h
 https://learn.microsoft.com/powershell/module/az.cdn/new-azcdnendpoint
 #>
 function New-AzCdnEndpoint {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IEndpoint])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IEndpoint])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded1', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -5746,7 +5746,7 @@ param(
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IDeliveryRule[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IDeliveryRule[]]
     # A list of the delivery rules.
     # To construct, see NOTES section for DELIVERYPOLICYRULE properties and create a hash table.
     ${DeliveryPolicyRule},
@@ -5754,7 +5754,7 @@ param(
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IGeoFilter[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IGeoFilter[]]
     # List of rules defining the user's geo access within a CDN endpoint.
     # Each geo filter defines an access rule to a specified path or content, e.g.
     # block APAC for path /pictures/
@@ -5798,7 +5798,7 @@ param(
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IDeepCreatedOrigin[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IDeepCreatedOrigin[]]
     # The source of the content being delivered via CDN.
     # To construct, see NOTES section for ORIGIN properties and create a hash table.
     ${Origin},
@@ -5806,7 +5806,7 @@ param(
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IDeepCreatedOriginGroup[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IDeepCreatedOriginGroup[]]
     # The origin groups comprising of origins that are used for load balancing the traffic based on availability.
     # To construct, see NOTES section for ORIGINGROUP properties and create a hash table.
     ${OriginGroup},
@@ -5844,7 +5844,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.ITrackedResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
@@ -5852,7 +5852,7 @@ param(
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IUrlSigningKey[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IUrlSigningKey[]]
     # List of keys used to validate the signed URL hashes.
     # To construct, see NOTES section for URLSIGNINGKEY properties and create a hash table.
     ${UrlSigningKey},
@@ -6012,7 +6012,7 @@ $origin = Get-AzCdnOrigin -ResourceGroupName testps-rg-da16jm -ProfileName cdn00
 New-AzCdnOriginGroup -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -EndpointName endptest001 -Name org001 -HealthProbeSetting $healthProbeParameters -Origin @(@{ Id = $origin.Id })
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IOriginGroup
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IOriginGroup
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -6037,7 +6037,7 @@ RESPONSEBASEDORIGINERRORDETECTIONSETTING <IResponseBasedOriginErrorDetectionPara
 https://learn.microsoft.com/powershell/module/az.cdn/new-azcdnorigingroup
 #>
 function New-AzCdnOriginGroup {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IOriginGroup])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IOriginGroup])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded1', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -6074,7 +6074,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IHealthProbeParameters]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IHealthProbeParameters]
     # Health probe settings to the origin that is used to determine the health of the origin.
     # To construct, see NOTES section for HEALTHPROBESETTING properties and create a hash table.
     ${HealthProbeSetting},
@@ -6082,14 +6082,14 @@ param(
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IResourceReference[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IResourceReference[]]
     # The source of the content being delivered via CDN within given origin group.
     # To construct, see NOTES section for ORIGIN properties and create a hash table.
     ${Origin},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IResponseBasedOriginErrorDetectionParameters]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IResponseBasedOriginErrorDetectionParameters]
     # The JSON object that contains the properties to determine origin health using real requests/responses.
     # This property is currently not supported.
     # To construct, see NOTES section for RESPONSEBASEDORIGINERRORDETECTIONSETTING properties and create a hash table.
@@ -6250,12 +6250,12 @@ Creates a new origin within the specified endpoint.
 New-AzCdnOrigin -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -EndpointName endptest001 -Name origin1 -HostName "host1.hello.com" 
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IOrigin
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IOrigin
 .Link
 https://learn.microsoft.com/powershell/module/az.cdn/new-azcdnorigin
 #>
 function New-AzCdnOrigin {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IOrigin])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IOrigin])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded1', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -6517,7 +6517,7 @@ $tlsSetting = New-AzFrontDoorCdnCustomDomainTlsSettingParametersObject -Certific
 New-AzFrontDoorCdnCustomDomain -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -CustomDomainName domain001 -HostName "pstest001.dev.cdn.azure.cn" -TlsSetting $tlsSetting
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IAfdDomain
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdDomain
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -6532,7 +6532,7 @@ TLSSETTING <IAfdDomainHttpsParameters>: The configuration specifying how to enab
 https://learn.microsoft.com/powershell/module/az.cdn/new-azfrontdoorcdncustomdomain
 #>
 function New-AzFrontDoorCdnCustomDomain {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IAfdDomain])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdDomain])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -6568,7 +6568,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IAfdDomainPropertiesExtendedProperties]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdDomainPropertiesExtendedProperties]))]
     [System.Collections.Hashtable]
     # Key-Value pair representing migration properties for domains.
     ${ExtendedProperty},
@@ -6588,7 +6588,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IAfdDomainHttpsParameters]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdDomainHttpsParameters]
     # The configuration specifying how to enable HTTPS for the domain - using AzureFrontDoor managed certificate or user's own certificate.
     # If not specified, enabling ssl uses AzureFrontDoor managed certificate by default.
     # To construct, see NOTES section for TLSSETTING properties and create a hash table.
@@ -6741,12 +6741,12 @@ Creates a new AzureFrontDoor endpoint with the specified endpoint name under the
 New-AzFrontDoorCdnEndpoint -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -EndpointName end001 -Location Global -EnabledState Enabled
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IAfdEndpoint
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdEndpoint
 .Link
 https://learn.microsoft.com/powershell/module/az.cdn/new-azfrontdoorcdnendpoint
 #>
 function New-AzFrontDoorCdnEndpoint {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IAfdEndpoint])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdEndpoint])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -6798,7 +6798,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.ITrackedResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
@@ -6952,7 +6952,7 @@ $loadBalancingSetting = New-AzFrontDoorCdnOriginGroupLoadBalancingSettingObject 
 New-AzFrontDoorCdnOriginGroup -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -OriginGroupName org001 -LoadBalancingSetting $loadBalancingSetting -HealthProbeSetting $healthProbeSetting
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IAfdOriginGroup
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdOriginGroup
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -6972,7 +6972,7 @@ LOADBALANCINGSETTING <ILoadBalancingSettingsParameters>: Load balancing settings
 https://learn.microsoft.com/powershell/module/az.cdn/new-azfrontdoorcdnorigingroup
 #>
 function New-AzFrontDoorCdnOriginGroup {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IAfdOriginGroup])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdOriginGroup])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -7002,14 +7002,14 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IHealthProbeParameters]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IHealthProbeParameters]
     # Health probe settings to the origin that is used to determine the health of the origin.
     # To construct, see NOTES section for HEALTHPROBESETTING properties and create a hash table.
     ${HealthProbeSetting},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.ILoadBalancingSettingsParameters]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ILoadBalancingSettingsParameters]
     # Load balancing settings for a backend pool
     # To construct, see NOTES section for LOADBALANCINGSETTING properties and create a hash table.
     ${LoadBalancingSetting},
@@ -7177,12 +7177,12 @@ Creates a new origin within the specified origin group.
  New-AzFrontDoorCdnOrigin -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -OriginGroupName org001 -OriginName ori001 -OriginHostHeader en.wikipedia.org -HostName en.wikipedia.org -HttpPort 80 -HttpsPort 443 -Priority 1 -Weight 1000
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IAfdOrigin
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdOrigin
 .Link
 https://learn.microsoft.com/powershell/module/az.cdn/new-azfrontdoorcdnorigin
 #>
 function New-AzFrontDoorCdnOrigin {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IAfdOrigin])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdOrigin])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -7467,7 +7467,7 @@ New-AzFrontDoorCdnRoute -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v54
      
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IRoute
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IRoute
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -7482,7 +7482,7 @@ RULESET <IResourceReference[]>: rule sets referenced by this endpoint.
 https://learn.microsoft.com/powershell/module/az.cdn/new-azfrontdoorcdnroute
 #>
 function New-AzFrontDoorCdnRoute {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IRoute])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IRoute])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -7551,7 +7551,7 @@ param(
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IActivatedResourceReference[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IActivatedResourceReference[]]
     # Domains referenced by this endpoint.
     # To construct, see NOTES section for CUSTOMDOMAIN properties and create a hash table.
     ${CustomDomain},
@@ -7609,7 +7609,7 @@ param(
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IResourceReference[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IResourceReference[]]
     # rule sets referenced by this endpoint.
     # To construct, see NOTES section for RULESET properties and create a hash table.
     ${RuleSet},
@@ -7769,12 +7769,12 @@ Creates a new rule set within the specified profile.
 New-AzFrontDoorCdnRuleSet -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -RuleSetName ruleset001
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IRuleSet
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IRuleSet
 .Link
 https://learn.microsoft.com/powershell/module/az.cdn/new-azfrontdoorcdnruleset
 #>
 function New-AzFrontDoorCdnRuleSet {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IRuleSet])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IRuleSet])]
 [CmdletBinding(DefaultParameterSetName='Create', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -7951,7 +7951,7 @@ $actions = @(
 New-AzFrontDoorCdnRule -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -RuleSetName ruleset001 -Name rule1 -Action $actions -Condition $conditions
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IRule
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IRule
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -7966,7 +7966,7 @@ CONDITION <IDeliveryRuleCondition[]>: A list of conditions that must be matched 
 https://learn.microsoft.com/powershell/module/az.cdn/new-azfrontdoorcdnrule
 #>
 function New-AzFrontDoorCdnRule {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IRule])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IRule])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -8005,7 +8005,7 @@ param(
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IDeliveryRuleAction1[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IDeliveryRuleAction1[]]
     # A list of actions that are executed when all the conditions of a rule are satisfied.
     # To construct, see NOTES section for ACTION properties and create a hash table.
     ${Action},
@@ -8013,7 +8013,7 @@ param(
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IDeliveryRuleCondition[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IDeliveryRuleCondition[]]
     # A list of conditions that must be matched for the actions to be executed
     # To construct, see NOTES section for CONDITION properties and create a hash table.
     ${Condition},
@@ -8185,7 +8185,7 @@ $certificateParameter = New-AzFrontDoorCdnSecretCustomerCertificateParametersObj
 New-AzFrontDoorCdnSecret -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -Name secret001 -Parameter $certificateParameter           
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.ISecret
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ISecret
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -8197,7 +8197,7 @@ PARAMETER <ISecretParameters>: object which contains secret parameters
 https://learn.microsoft.com/powershell/module/az.cdn/new-azfrontdoorcdnsecret
 #>
 function New-AzFrontDoorCdnSecret {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.ISecret])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ISecret])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -8228,7 +8228,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.ISecretParameters]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ISecretParameters]
     # object which contains secret parameters
     # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
@@ -8385,12 +8385,12 @@ $wafParameter = New-AzFrontDoorCdnSecurityPolicyWebApplicationFirewallParameters
 New-AzFrontDoorCdnSecurityPolicy -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -Name policy001 -Parameter $wafParameter   
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.ISecurityPolicy
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ISecurityPolicy
 .Link
 https://learn.microsoft.com/powershell/module/az.cdn/new-azfrontdoorcdnsecuritypolicy
 #>
 function New-AzFrontDoorCdnSecurityPolicy {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.ISecurityPolicy])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ISecurityPolicy])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -8421,7 +8421,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.ISecurityPolicyPropertiesParameters]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ISecurityPolicyPropertiesParameters]
     # object which contains security policy parameters
     ${Parameter},
 
@@ -8588,7 +8588,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
   [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
   [OriginName <String>]: Name of the origin which is unique within the profile.
-  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium profile which is unique within the resource group.
+  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
   [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
   [RouteName <String>]: Name of the routing rule.
   [RuleName <String>]: Name of the delivery rule which is unique within the endpoint.
@@ -8812,7 +8812,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
   [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
   [OriginName <String>]: Name of the origin which is unique within the profile.
-  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium profile which is unique within the resource group.
+  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
   [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
   [RouteName <String>]: Name of the routing rule.
   [RuleName <String>]: Name of the delivery rule which is unique within the endpoint.
@@ -9030,7 +9030,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
   [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
   [OriginName <String>]: Name of the origin which is unique within the profile.
-  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium profile which is unique within the resource group.
+  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
   [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
   [RouteName <String>]: Name of the routing rule.
   [RuleName <String>]: Name of the delivery rule which is unique within the endpoint.
@@ -9254,7 +9254,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
   [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
   [OriginName <String>]: Name of the origin which is unique within the profile.
-  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium profile which is unique within the resource group.
+  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
   [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
   [RouteName <String>]: Name of the routing rule.
   [RuleName <String>]: Name of the delivery rule which is unique within the endpoint.
@@ -9478,7 +9478,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
   [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
   [OriginName <String>]: Name of the origin which is unique within the profile.
-  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium profile which is unique within the resource group.
+  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
   [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
   [RouteName <String>]: Name of the routing rule.
   [RuleName <String>]: Name of the delivery rule which is unique within the endpoint.
@@ -9695,7 +9695,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
   [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
   [OriginName <String>]: Name of the origin which is unique within the profile.
-  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium profile which is unique within the resource group.
+  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
   [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
   [RouteName <String>]: Name of the routing rule.
   [RuleName <String>]: Name of the delivery rule which is unique within the endpoint.
@@ -9912,7 +9912,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
   [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
   [OriginName <String>]: Name of the origin which is unique within the profile.
-  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium profile which is unique within the resource group.
+  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
   [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
   [RouteName <String>]: Name of the routing rule.
   [RuleName <String>]: Name of the delivery rule which is unique within the endpoint.
@@ -10129,7 +10129,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
   [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
   [OriginName <String>]: Name of the origin which is unique within the profile.
-  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium profile which is unique within the resource group.
+  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
   [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
   [RouteName <String>]: Name of the routing rule.
   [RuleName <String>]: Name of the delivery rule which is unique within the endpoint.
@@ -10352,7 +10352,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
   [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
   [OriginName <String>]: Name of the origin which is unique within the profile.
-  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium profile which is unique within the resource group.
+  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
   [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
   [RouteName <String>]: Name of the routing rule.
   [RuleName <String>]: Name of the delivery rule which is unique within the endpoint.
@@ -10576,7 +10576,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
   [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
   [OriginName <String>]: Name of the origin which is unique within the profile.
-  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium profile which is unique within the resource group.
+  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
   [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
   [RouteName <String>]: Name of the routing rule.
   [RuleName <String>]: Name of the delivery rule which is unique within the endpoint.
@@ -10794,7 +10794,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
   [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
   [OriginName <String>]: Name of the origin which is unique within the profile.
-  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium profile which is unique within the resource group.
+  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
   [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
   [RouteName <String>]: Name of the routing rule.
   [RuleName <String>]: Name of the delivery rule which is unique within the endpoint.
@@ -11019,7 +11019,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
   [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
   [OriginName <String>]: Name of the origin which is unique within the profile.
-  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium profile which is unique within the resource group.
+  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
   [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
   [RouteName <String>]: Name of the routing rule.
   [RuleName <String>]: Name of the delivery rule which is unique within the endpoint.
@@ -11238,7 +11238,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
   [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
   [OriginName <String>]: Name of the origin which is unique within the profile.
-  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium profile which is unique within the resource group.
+  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
   [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
   [RouteName <String>]: Name of the routing rule.
   [RuleName <String>]: Name of the delivery rule which is unique within the endpoint.
@@ -11444,7 +11444,7 @@ Get-AzCdnEndpoint -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -Name 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IEndpoint
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IEndpoint
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -11456,7 +11456,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
   [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
   [OriginName <String>]: Name of the origin which is unique within the profile.
-  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium profile which is unique within the resource group.
+  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
   [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
   [RouteName <String>]: Name of the routing rule.
   [RuleName <String>]: Name of the delivery rule which is unique within the endpoint.
@@ -11468,7 +11468,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.cdn/start-azcdnendpoint
 #>
 function Start-AzCdnEndpoint {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IEndpoint])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IEndpoint])]
 [CmdletBinding(DefaultParameterSetName='Start', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Start', Mandatory)]
@@ -11656,7 +11656,7 @@ Get-AzCdnEndpoint -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -Name 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IEndpoint
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IEndpoint
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -11668,7 +11668,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
   [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
   [OriginName <String>]: Name of the origin which is unique within the profile.
-  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium profile which is unique within the resource group.
+  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
   [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
   [RouteName <String>]: Name of the routing rule.
   [RuleName <String>]: Name of the delivery rule which is unique within the endpoint.
@@ -11680,7 +11680,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.cdn/stop-azcdnendpoint
 #>
 function Stop-AzCdnEndpoint {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IEndpoint])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IEndpoint])]
 [CmdletBinding(DefaultParameterSetName='Stop', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Stop', Mandatory)]
@@ -11868,7 +11868,7 @@ Get-AzCdnEndpoint -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -Name 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IValidateCustomDomainOutput
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IValidateCustomDomainOutput
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -11880,7 +11880,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
   [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
   [OriginName <String>]: Name of the origin which is unique within the profile.
-  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium profile which is unique within the resource group.
+  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
   [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
   [RouteName <String>]: Name of the routing rule.
   [RuleName <String>]: Name of the delivery rule which is unique within the endpoint.
@@ -11892,7 +11892,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.cdn/test-azcdnendpointcustomdomain
 #>
 function Test-AzCdnEndpointCustomDomain {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IValidateCustomDomainOutput])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IValidateCustomDomainOutput])]
 [CmdletBinding(DefaultParameterSetName='ValidateExpanded1', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='ValidateExpanded1', Mandatory)]
@@ -12072,12 +12072,12 @@ This is needed for resources where name is globally unique, such as a CDN endpoi
 Test-AzCdnNameAvailability -Name endptest001 -Type Microsoft.Cdn/Profiles/Endpoints
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.ICheckNameAvailabilityOutput
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ICheckNameAvailabilityOutput
 .Link
 https://learn.microsoft.com/powershell/module/az.cdn/test-azcdnnameavailability
 #>
 function Test-AzCdnNameAvailability {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.ICheckNameAvailabilityOutput])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ICheckNameAvailabilityOutput])]
 [CmdletBinding(DefaultParameterSetName='CheckExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='CheckExpanded1')]
@@ -12240,12 +12240,12 @@ This path is relative to the origin path specified in the endpoint configuration
 Test-AzCdnProbe -ProbeUrl "https://azurecdn-files.azureedge.net/dsa-test/probe-v.txt"
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IValidateProbeOutput
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IValidateProbeOutput
 .Link
 https://learn.microsoft.com/powershell/module/az.cdn/test-azcdnprobe
 #>
 function Test-AzCdnProbe {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IValidateProbeOutput])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IValidateProbeOutput])]
 [CmdletBinding(DefaultParameterSetName='ValidateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter()]
@@ -12400,7 +12400,7 @@ Get-AzFrontDoorCdnEndpoint -ResourceGroupName testps-rg-da16jm -ProfileName fdp-
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IValidateCustomDomainOutput
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IValidateCustomDomainOutput
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -12412,7 +12412,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
   [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
   [OriginName <String>]: Name of the origin which is unique within the profile.
-  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium profile which is unique within the resource group.
+  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
   [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
   [RouteName <String>]: Name of the routing rule.
   [RuleName <String>]: Name of the delivery rule which is unique within the endpoint.
@@ -12424,7 +12424,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.cdn/test-azfrontdoorcdnendpointcustomdomain
 #>
 function Test-AzFrontDoorCdnEndpointCustomDomain {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IValidateCustomDomainOutput])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IValidateCustomDomainOutput])]
 [CmdletBinding(DefaultParameterSetName='ValidateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='ValidateExpanded', Mandatory)]
@@ -12604,12 +12604,12 @@ This is needed for resources where name is globally unique, such as a afdx endpo
 Test-AzFrontDoorCdnEndpointNameAvailability -ResourceGroupName testps-rg-da16jm -Type "Microsoft.Cdn/Profiles/AfdEndpoints" -Name end001
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.ICheckEndpointNameAvailabilityOutput
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ICheckEndpointNameAvailabilityOutput
 .Link
 https://learn.microsoft.com/powershell/module/az.cdn/test-azfrontdoorcdnendpointnameavailability
 #>
 function Test-AzFrontDoorCdnEndpointNameAvailability {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.ICheckEndpointNameAvailabilityOutput])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ICheckEndpointNameAvailabilityOutput])]
 [CmdletBinding(DefaultParameterSetName='CheckExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -12785,7 +12785,7 @@ Get-AzFrontDoorCdnProfile -ResourceGroupName testps-rg-da16jm -Name fdp-v542q6 |
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.ICheckNameAvailabilityOutput
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ICheckNameAvailabilityOutput
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -12797,7 +12797,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
   [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
   [OriginName <String>]: Name of the origin which is unique within the profile.
-  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium profile which is unique within the resource group.
+  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
   [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
   [RouteName <String>]: Name of the routing rule.
   [RuleName <String>]: Name of the delivery rule which is unique within the endpoint.
@@ -12809,7 +12809,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.cdn/test-azfrontdoorcdnprofilehostnameavailability
 #>
 function Test-AzFrontDoorCdnProfileHostNameAvailability {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.ICheckNameAvailabilityOutput])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ICheckNameAvailabilityOutput])]
 [CmdletBinding(DefaultParameterSetName='CheckExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='CheckExpanded', Mandatory)]
@@ -13000,7 +13000,7 @@ Get-AzCdnEndpoint -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -Name 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IEndpoint
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IEndpoint
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -13025,7 +13025,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
   [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
   [OriginName <String>]: Name of the origin which is unique within the profile.
-  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium profile which is unique within the resource group.
+  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
   [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
   [RouteName <String>]: Name of the routing rule.
   [RuleName <String>]: Name of the delivery rule which is unique within the endpoint.
@@ -13045,7 +13045,7 @@ URLSIGNINGKEY <IUrlSigningKey[]>: List of keys used to validate the signed URL h
 https://learn.microsoft.com/powershell/module/az.cdn/update-azcdnendpoint
 #>
 function Update-AzCdnEndpoint {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IEndpoint])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IEndpoint])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded1', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded1', Mandatory)]
@@ -13104,7 +13104,7 @@ param(
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IDeliveryRule[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IDeliveryRule[]]
     # A list of the delivery rules.
     # To construct, see NOTES section for DELIVERYPOLICYRULE properties and create a hash table.
     ${DeliveryPolicyRule},
@@ -13112,7 +13112,7 @@ param(
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IGeoFilter[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IGeoFilter[]]
     # List of rules defining the user's geo access within a CDN endpoint.
     # Each geo filter defines an access rule to a specified path or content, e.g.
     # block APAC for path /pictures/
@@ -13186,7 +13186,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IEndpointUpdateParametersTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IEndpointUpdateParametersTags]))]
     [System.Collections.Hashtable]
     # Endpoint tags.
     ${Tag},
@@ -13194,7 +13194,7 @@ param(
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IUrlSigningKey[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IUrlSigningKey[]]
     # List of keys used to validate the signed URL hashes.
     # To construct, see NOTES section for URLSIGNINGKEY properties and create a hash table.
     ${UrlSigningKey},
@@ -13359,7 +13359,7 @@ Get-AzCdnOriginGroup -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -En
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IOriginGroup
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IOriginGroup
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -13377,7 +13377,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
   [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
   [OriginName <String>]: Name of the origin which is unique within the profile.
-  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium profile which is unique within the resource group.
+  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
   [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
   [RouteName <String>]: Name of the routing rule.
   [RuleName <String>]: Name of the delivery rule which is unique within the endpoint.
@@ -13399,7 +13399,7 @@ RESPONSEBASEDORIGINERRORDETECTIONSETTING <IResponseBasedOriginErrorDetectionPara
 https://learn.microsoft.com/powershell/module/az.cdn/update-azcdnorigingroup
 #>
 function Update-AzCdnOriginGroup {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IOriginGroup])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IOriginGroup])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded1', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded1', Mandatory)]
@@ -13443,7 +13443,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IHealthProbeParameters]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IHealthProbeParameters]
     # Health probe settings to the origin that is used to determine the health of the origin.
     # To construct, see NOTES section for HEALTHPROBESETTING properties and create a hash table.
     ${HealthProbeSetting},
@@ -13451,14 +13451,14 @@ param(
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IResourceReference[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IResourceReference[]]
     # The source of the content being delivered via CDN within given origin group.
     # To construct, see NOTES section for ORIGIN properties and create a hash table.
     ${Origin},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IResponseBasedOriginErrorDetectionParameters]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IResponseBasedOriginErrorDetectionParameters]
     # The JSON object that contains the properties to determine origin health using real requests/responses.
     # This property is currently not supported.
     # To construct, see NOTES section for RESPONSEBASEDORIGINERRORDETECTIONSETTING properties and create a hash table.
@@ -13624,7 +13624,7 @@ Get-AzCdnOrigin -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -Endpoin
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IOrigin
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IOrigin
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -13636,7 +13636,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
   [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
   [OriginName <String>]: Name of the origin which is unique within the profile.
-  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium profile which is unique within the resource group.
+  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
   [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
   [RouteName <String>]: Name of the routing rule.
   [RuleName <String>]: Name of the delivery rule which is unique within the endpoint.
@@ -13648,7 +13648,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.cdn/update-azcdnorigin
 #>
 function Update-AzCdnOrigin {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IOrigin])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IOrigin])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded1', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded1', Mandatory)]
@@ -13931,7 +13931,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
   [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
   [OriginName <String>]: Name of the origin which is unique within the profile.
-  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium profile which is unique within the resource group.
+  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
   [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
   [RouteName <String>]: Name of the routing rule.
   [RuleName <String>]: Name of the delivery rule which is unique within the endpoint.
@@ -14142,7 +14142,7 @@ Get-AzFrontDoorCdnCustomDomain -ResourceGroupName testps-rg-da16jm -ProfileName 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IAfdDomain
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdDomain
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -14154,7 +14154,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
   [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
   [OriginName <String>]: Name of the origin which is unique within the profile.
-  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium profile which is unique within the resource group.
+  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
   [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
   [RouteName <String>]: Name of the routing rule.
   [RuleName <String>]: Name of the delivery rule which is unique within the endpoint.
@@ -14172,7 +14172,7 @@ TLSSETTING <IAfdDomainHttpsParameters>: The configuration specifying how to enab
 https://learn.microsoft.com/powershell/module/az.cdn/update-azfrontdoorcdncustomdomain
 #>
 function Update-AzFrontDoorCdnCustomDomain {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IAfdDomain])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdDomain])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -14221,7 +14221,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IAfdDomainHttpsParameters]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdDomainHttpsParameters]
     # The configuration specifying how to enable HTTPS for the domain - using AzureFrontDoor managed certificate or user's own certificate.
     # If not specified, enabling ssl uses AzureFrontDoor managed certificate by default.
     # To construct, see NOTES section for TLSSETTING properties and create a hash table.
@@ -14387,7 +14387,7 @@ Get-AzFrontDoorCdnEndpoint  -ResourceGroupName testps-rg-da16jm -ProfileName fdp
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IAfdEndpoint
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdEndpoint
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -14399,7 +14399,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
   [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
   [OriginName <String>]: Name of the origin which is unique within the profile.
-  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium profile which is unique within the resource group.
+  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
   [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
   [RouteName <String>]: Name of the routing rule.
   [RuleName <String>]: Name of the delivery rule which is unique within the endpoint.
@@ -14411,7 +14411,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.cdn/update-azfrontdoorcdnendpoint
 #>
 function Update-AzFrontDoorCdnEndpoint {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IAfdEndpoint])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdEndpoint])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -14456,7 +14456,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IAfdEndpointUpdateParametersTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdEndpointUpdateParametersTags]))]
     [System.Collections.Hashtable]
     # Endpoint tags.
     ${Tag},
@@ -14615,7 +14615,7 @@ Get-AzFrontDoorCdnOriginGroup -ResourceGroupName testps-rg-da16jm -ProfileName f
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IAfdOriginGroup
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdOriginGroup
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -14633,7 +14633,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
   [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
   [OriginName <String>]: Name of the origin which is unique within the profile.
-  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium profile which is unique within the resource group.
+  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
   [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
   [RouteName <String>]: Name of the routing rule.
   [RuleName <String>]: Name of the delivery rule which is unique within the endpoint.
@@ -14650,7 +14650,7 @@ LOADBALANCINGSETTING <ILoadBalancingSettingsParameters>: Load balancing settings
 https://learn.microsoft.com/powershell/module/az.cdn/update-azfrontdoorcdnorigingroup
 #>
 function Update-AzFrontDoorCdnOriginGroup {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IAfdOriginGroup])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdOriginGroup])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -14687,14 +14687,14 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IHealthProbeParameters]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IHealthProbeParameters]
     # Health probe settings to the origin that is used to determine the health of the origin.
     # To construct, see NOTES section for HEALTHPROBESETTING properties and create a hash table.
     ${HealthProbeSetting},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.ILoadBalancingSettingsParameters]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ILoadBalancingSettingsParameters]
     # Load balancing settings for a backend pool
     # To construct, see NOTES section for LOADBALANCINGSETTING properties and create a hash table.
     ${LoadBalancingSetting},
@@ -14867,7 +14867,7 @@ Get-AzFrontDoorCdnOrigin -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v5
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IAfdOrigin
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdOrigin
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -14879,7 +14879,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
   [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
   [OriginName <String>]: Name of the origin which is unique within the profile.
-  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium profile which is unique within the resource group.
+  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
   [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
   [RouteName <String>]: Name of the routing rule.
   [RuleName <String>]: Name of the delivery rule which is unique within the endpoint.
@@ -14891,7 +14891,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.cdn/update-azfrontdoorcdnorigin
 #>
 function Update-AzFrontDoorCdnOrigin {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IAfdOrigin])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdOrigin])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -15180,7 +15180,7 @@ Get-AzFrontDoorCdnRoute -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v54
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IRoute
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IRoute
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -15195,7 +15195,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
   [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
   [OriginName <String>]: Name of the origin which is unique within the profile.
-  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium profile which is unique within the resource group.
+  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
   [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
   [RouteName <String>]: Name of the routing rule.
   [RuleName <String>]: Name of the delivery rule which is unique within the endpoint.
@@ -15210,7 +15210,7 @@ RULESET <IResourceReference[]>: rule sets referenced by this endpoint.
 https://learn.microsoft.com/powershell/module/az.cdn/update-azfrontdoorcdnroute
 #>
 function Update-AzFrontDoorCdnRoute {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IRoute])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IRoute])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -15286,7 +15286,7 @@ param(
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IActivatedResourceReference[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IActivatedResourceReference[]]
     # Domains referenced by this endpoint.
     # To construct, see NOTES section for CUSTOMDOMAIN properties and create a hash table.
     ${CustomDomain},
@@ -15344,7 +15344,7 @@ param(
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IResourceReference[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IResourceReference[]]
     # rule sets referenced by this endpoint.
     # To construct, see NOTES section for RULESET properties and create a hash table.
     ${RuleSet},
@@ -15509,7 +15509,7 @@ Get-AzFrontDoorCdnRule -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IRule
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IRule
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -15527,7 +15527,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
   [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
   [OriginName <String>]: Name of the origin which is unique within the profile.
-  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium profile which is unique within the resource group.
+  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
   [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
   [RouteName <String>]: Name of the routing rule.
   [RuleName <String>]: Name of the delivery rule which is unique within the endpoint.
@@ -15539,7 +15539,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.cdn/update-azfrontdoorcdnrule
 #>
 function Update-AzFrontDoorCdnRule {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IRule])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IRule])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -15585,7 +15585,7 @@ param(
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IDeliveryRuleAction1[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IDeliveryRuleAction1[]]
     # A list of actions that are executed when all the conditions of a rule are satisfied.
     # To construct, see NOTES section for ACTION properties and create a hash table.
     ${Action},
@@ -15593,7 +15593,7 @@ param(
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IDeliveryRuleCondition[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IDeliveryRuleCondition[]]
     # A list of conditions that must be matched for the actions to be executed
     # To construct, see NOTES section for CONDITION properties and create a hash table.
     ${Condition},
@@ -15783,7 +15783,7 @@ Get-AzFrontDoorCdnSecurityPolicy -ResourceGroupName testps-rg-da16jm -ProfileNam
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.ISecurityPolicy
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ISecurityPolicy
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -15795,7 +15795,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
   [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
   [OriginName <String>]: Name of the origin which is unique within the profile.
-  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium profile which is unique within the resource group.
+  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
   [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
   [RouteName <String>]: Name of the routing rule.
   [RuleName <String>]: Name of the delivery rule which is unique within the endpoint.
@@ -15807,7 +15807,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.cdn/update-azfrontdoorcdnsecuritypolicy
 #>
 function Update-AzFrontDoorCdnSecurityPolicy {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.ISecurityPolicy])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ISecurityPolicy])]
 [CmdletBinding(DefaultParameterSetName='PatchExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='PatchExpanded', Mandatory)]
@@ -15845,7 +15845,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.ISecurityPolicyPropertiesParameters]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ISecurityPolicyPropertiesParameters]
     # object which contains security policy parameters
     ${Parameter},
 
@@ -15990,9 +15990,9 @@ end {
 
 <#
 .Synopsis
-Commit the migrated Azure Frontdoor(Standard/Premium) profile.
+Commit the migrated Azure Front Door(Standard/Premium) profile..
 .Description
-Commit the migrated Azure Frontdoor(Standard/Premium) profile.
+Commit the migrated Azure Front Door(Standard/Premium) profile..
 .Example
 Enable-AzFrontDoorCdnProfileMigration -ProfileName name-migrated -ResourceGroupName rgName
 .Example
@@ -16065,6 +16065,12 @@ param(
     [System.Management.Automation.SwitchParameter]
     # Run the command asynchronously
     ${NoWait},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Returns true when the command succeeds
+    ${PassThru},
 
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Runtime')]
@@ -16180,7 +16186,7 @@ New-AzCdnProfile -ResourceGroupName testps-rg-da16jm -Name cdn001 -SkuName Stand
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IProfile
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IProfile
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -16192,7 +16198,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
   [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
   [OriginName <String>]: Name of the origin which is unique within the profile.
-  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium profile which is unique within the resource group.
+  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
   [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
   [RouteName <String>]: Name of the routing rule.
   [RuleName <String>]: Name of the delivery rule which is unique within the endpoint.
@@ -16204,7 +16210,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.cdn/get-azcdnprofile
 #>
 function Get-AzCdnProfile {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IProfile])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IProfile])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='List')]
@@ -16382,7 +16388,7 @@ New-AzFrontDoorCdnProfile -ResourceGroupName testps-rg-da16jm -Name fdp-v542q7 -
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IProfile
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IProfile
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -16394,7 +16400,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
   [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
   [OriginName <String>]: Name of the origin which is unique within the profile.
-  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium profile which is unique within the resource group.
+  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
   [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
   [RouteName <String>]: Name of the routing rule.
   [RuleName <String>]: Name of the delivery rule which is unique within the endpoint.
@@ -16406,7 +16412,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.cdn/get-azfrontdoorcdnprofile
 #>
 function Get-AzFrontDoorCdnProfile {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IProfile])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IProfile])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='List')]
@@ -16576,12 +16582,12 @@ Create an in-memory object for DeliveryRuleCacheExpirationAction.
 New-AzCdnDeliveryRuleCacheExpirationActionObject -Name CacheExpiration -ParameterCacheBehavior SetIfMissing -ParameterCacheDuration 0.01:30:00
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.DeliveryRuleCacheExpirationAction
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.DeliveryRuleCacheExpirationAction
 .Link
 https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzCdnDeliveryRuleCacheExpirationActionObject
 #>
 function New-AzCdnDeliveryRuleCacheExpirationActionObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.DeliveryRuleCacheExpirationAction])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.DeliveryRuleCacheExpirationAction])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -16689,12 +16695,12 @@ Create an in-memory object for DeliveryRuleCacheKeyQueryStringAction.
 New-AzCdnDeliveryRuleCacheKeyQueryStringActionObject -Name CacheKeyQueryString -ParameterQueryStringBehavior IncludeAll
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.DeliveryRuleCacheKeyQueryStringAction
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.DeliveryRuleCacheKeyQueryStringAction
 .Link
 https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzCdnDeliveryRuleCacheKeyQueryStringActionObject
 #>
 function New-AzCdnDeliveryRuleCacheKeyQueryStringActionObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.DeliveryRuleCacheKeyQueryStringAction])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.DeliveryRuleCacheKeyQueryStringAction])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -16801,12 +16807,12 @@ Create an in-memory object for DeliveryRuleCookiesCondition.
 New-AzCdnDeliveryRuleCookiesConditionObject -Name Cookies -ParameterOperator Equal -ParameterSelector test -ParameterMatchValue test -ParameterNegateCondition $False -ParameterTransform Lowercase
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.DeliveryRuleCookiesCondition
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.DeliveryRuleCookiesCondition
 .Link
 https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzCdnDeliveryRuleCookiesConditionObject
 #>
 function New-AzCdnDeliveryRuleCookiesConditionObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.DeliveryRuleCookiesCondition])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.DeliveryRuleCookiesCondition])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -16932,12 +16938,12 @@ Create an in-memory object for DeliveryRuleHttpVersionCondition.
 New-AzCdnDeliveryRuleHttpVersionConditionObject -Name HttpVersion -ParameterMatchValue 2.0
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.DeliveryRuleHttpVersionCondition
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.DeliveryRuleHttpVersionCondition
 .Link
 https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzCdnDeliveryRuleHttpVersionConditionObject
 #>
 function New-AzCdnDeliveryRuleHttpVersionConditionObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.DeliveryRuleHttpVersionCondition])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.DeliveryRuleHttpVersionCondition])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -17050,12 +17056,12 @@ Create an in-memory object for DeliveryRuleIsDeviceCondition.
 New-AzCdnDeliveryRuleIsDeviceConditionObject -Name IsDevice -ParameterMatchValue Mobile
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.DeliveryRuleIsDeviceCondition
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.DeliveryRuleIsDeviceCondition
 .Link
 https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzCdnDeliveryRuleIsDeviceConditionObject
 #>
 function New-AzCdnDeliveryRuleIsDeviceConditionObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.DeliveryRuleIsDeviceCondition])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.DeliveryRuleIsDeviceCondition])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -17175,7 +17181,7 @@ $actions = @($action1, $action2)
 New-AzCdnDeliveryRuleObject -Name "Rule1" -Condition $conditions -Action $actions -Order 1
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.DeliveryRule
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.DeliveryRule
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -17190,12 +17196,12 @@ CONDITION <IDeliveryRuleCondition[]>: A list of conditions that must be matched 
 https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzCdnDeliveryRuleObject
 #>
 function New-AzCdnDeliveryRuleObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.DeliveryRule])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.DeliveryRule])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IDeliveryRuleAction1[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IDeliveryRuleAction1[]]
     # A list of actions that are executed when all the conditions of a rule are satisfied.
     # To construct, see NOTES section for ACTION properties and create a hash table.
     ${Action},
@@ -17212,7 +17218,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IDeliveryRuleCondition[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IDeliveryRuleCondition[]]
     # A list of conditions that must be matched for the actions to be executed.
     # To construct, see NOTES section for CONDITION properties and create a hash table.
     ${Condition},
@@ -17307,12 +17313,12 @@ Create an in-memory object for DeliveryRulePostArgsCondition.
 New-AzCdnDeliveryRulePostArgsConditionObject -Name PostArgs -ParameterOperator Equal -ParameterMatchValue test -ParameterNegateCondition $False -ParameterSelector test -ParameterTransform Lowercase
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.DeliveryRulePostArgsCondition
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.DeliveryRulePostArgsCondition
 .Link
 https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzCdnDeliveryRulePostArgsConditionObject
 #>
 function New-AzCdnDeliveryRulePostArgsConditionObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.DeliveryRulePostArgsCondition])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.DeliveryRulePostArgsCondition])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -17438,12 +17444,12 @@ Create an in-memory object for DeliveryRuleQueryStringCondition.
 New-AzCdnDeliveryRuleQueryStringConditionObject -Name QueryString -ParameterOperator Equal -ParameterMatchValue test -ParameterNegateCondition $False -ParameterTransform Lowercase
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.DeliveryRuleQueryStringCondition
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.DeliveryRuleQueryStringCondition
 .Link
 https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzCdnDeliveryRuleQueryStringConditionObject
 #>
 function New-AzCdnDeliveryRuleQueryStringConditionObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.DeliveryRuleQueryStringCondition])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.DeliveryRuleQueryStringCondition])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -17563,12 +17569,12 @@ Create an in-memory object for DeliveryRuleRemoteAddressCondition.
 New-AzCdnDeliveryRuleRemoteAddressConditionObject -Name RemoteAddress -ParameterOperator GeoMatch -ParameterMatchValue BJ -ParameterNegateCondition $False -ParameterTransform Lowercase
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.DeliveryRuleRemoteAddressCondition
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.DeliveryRuleRemoteAddressCondition
 .Link
 https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzCdnDeliveryRuleRemoteAddressConditionObject
 #>
 function New-AzCdnDeliveryRuleRemoteAddressConditionObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.DeliveryRuleRemoteAddressCondition])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.DeliveryRuleRemoteAddressCondition])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -17690,12 +17696,12 @@ Create an in-memory object for DeliveryRuleRequestBodyCondition.
 New-AzCdnDeliveryRuleRequestBodyConditionObject -Name RequestBody -ParameterOperator Equal -ParameterMatchValue test -ParameterNegateCondition $False -ParameterTransform Lowercase
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.DeliveryRuleRequestBodyCondition
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.DeliveryRuleRequestBodyCondition
 .Link
 https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzCdnDeliveryRuleRequestBodyConditionObject
 #>
 function New-AzCdnDeliveryRuleRequestBodyConditionObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.DeliveryRuleRequestBodyCondition])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.DeliveryRuleRequestBodyCondition])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -17815,12 +17821,12 @@ Create an in-memory object for DeliveryRuleRequestHeaderAction.
 New-AzCdnDeliveryRuleRequestHeaderActionObject -Name ModifyRequestHeader -ParameterHeaderAction Append -ParameterHeaderName a1 -ParameterValue a1
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.DeliveryRuleRequestHeaderAction
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.DeliveryRuleRequestHeaderAction
 .Link
 https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzCdnDeliveryRuleRequestHeaderActionObject
 #>
 function New-AzCdnDeliveryRuleRequestHeaderActionObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.DeliveryRuleRequestHeaderAction])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.DeliveryRuleRequestHeaderAction])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -17933,12 +17939,12 @@ Create an in-memory object for DeliveryRuleRequestHeaderCondition.
 New-AzCdnDeliveryRuleRequestHeaderConditionObject  -Name RequestHeader -ParameterOperator Equal -ParameterSelector test -ParameterMatchValue test -ParameterNegateCondition $False -ParameterTransform Lowercase
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.DeliveryRuleRequestHeaderCondition
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.DeliveryRuleRequestHeaderCondition
 .Link
 https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzCdnDeliveryRuleRequestHeaderConditionObject
 #>
 function New-AzCdnDeliveryRuleRequestHeaderConditionObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.DeliveryRuleRequestHeaderCondition])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.DeliveryRuleRequestHeaderCondition])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -18064,12 +18070,12 @@ Create an in-memory object for DeliveryRuleRequestMethodCondition.
 New-AzCdnDeliveryRuleRequestMethodConditionObject -Name RequestMethod -ParameterMatchValue GET
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.DeliveryRuleRequestMethodCondition
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.DeliveryRuleRequestMethodCondition
 .Link
 https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzCdnDeliveryRuleRequestMethodConditionObject
 #>
 function New-AzCdnDeliveryRuleRequestMethodConditionObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.DeliveryRuleRequestMethodCondition])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.DeliveryRuleRequestMethodCondition])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -18182,12 +18188,12 @@ Create an in-memory object for DeliveryRuleRequestSchemeCondition.
 New-AzCdnDeliveryRuleRequestSchemeConditionObject -Name RequestScheme -ParameterMatchValue HTTP
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.DeliveryRuleRequestSchemeCondition
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.DeliveryRuleRequestSchemeCondition
 .Link
 https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzCdnDeliveryRuleRequestSchemeConditionObject
 #>
 function New-AzCdnDeliveryRuleRequestSchemeConditionObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.DeliveryRuleRequestSchemeCondition])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.DeliveryRuleRequestSchemeCondition])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -18300,12 +18306,12 @@ Create an in-memory object for DeliveryRuleRequestUriCondition.
 New-AzCdnDeliveryRuleRequestUriConditionObject -Name RequestUri -ParameterOperator Equal -ParameterMatchValue /test
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.DeliveryRuleRequestUriCondition
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.DeliveryRuleRequestUriCondition
 .Link
 https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzCdnDeliveryRuleRequestUriConditionObject
 #>
 function New-AzCdnDeliveryRuleRequestUriConditionObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.DeliveryRuleRequestUriCondition])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.DeliveryRuleRequestUriCondition])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -18425,12 +18431,12 @@ Create an in-memory object for DeliveryRuleResponseHeaderAction.
 New-AzCdnDeliveryRuleResponseHeaderActionObject -Name ModifyResponseHeader -ParameterHeaderAction Append -ParameterHeaderName a1 -ParameterValue a1
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.DeliveryRuleResponseHeaderAction
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.DeliveryRuleResponseHeaderAction
 .Link
 https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzCdnDeliveryRuleResponseHeaderActionObject
 #>
 function New-AzCdnDeliveryRuleResponseHeaderActionObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.DeliveryRuleResponseHeaderAction])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.DeliveryRuleResponseHeaderAction])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -18543,12 +18549,12 @@ Create an in-memory object for DeliveryRuleUrlFileExtensionCondition.
 New-AzCdnDeliveryRuleUrlFileExtensionConditionObject -Name UrlFileExtension -ParameterOperator Equal -ParameterMatchValue txt -ParameterNegateCondition $False -ParameterTransform Lowercase
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.DeliveryRuleUrlFileExtensionCondition
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.DeliveryRuleUrlFileExtensionCondition
 .Link
 https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzCdnDeliveryRuleUrlFileExtensionConditionObject
 #>
 function New-AzCdnDeliveryRuleUrlFileExtensionConditionObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.DeliveryRuleUrlFileExtensionCondition])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.DeliveryRuleUrlFileExtensionCondition])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -18668,12 +18674,12 @@ Create an in-memory object for DeliveryRuleUrlFileNameCondition.
 New-AzCdnDeliveryRuleUrlFileNameConditionObject -Name UrlFileName -ParameterOperator Equal -ParameterMatchValue test -ParameterNegateCondition $False -ParameterTransform Lowercase
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.DeliveryRuleUrlFileNameCondition
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.DeliveryRuleUrlFileNameCondition
 .Link
 https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzCdnDeliveryRuleUrlFileNameConditionObject
 #>
 function New-AzCdnDeliveryRuleUrlFileNameConditionObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.DeliveryRuleUrlFileNameCondition])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.DeliveryRuleUrlFileNameCondition])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -18793,12 +18799,12 @@ Create an in-memory object for DeliveryRuleUrlPathCondition.
 New-AzCdnDeliveryRuleUrlPathConditionObject -Name UrlPath -ParameterOperator Equal -ParameterMatchValue /a
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.DeliveryRuleUrlPathCondition
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.DeliveryRuleUrlPathCondition
 .Link
 https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzCdnDeliveryRuleUrlPathConditionObject
 #>
 function New-AzCdnDeliveryRuleUrlPathConditionObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.DeliveryRuleUrlPathCondition])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.DeliveryRuleUrlPathCondition])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -18918,12 +18924,12 @@ Create an in-memory object for HealthProbeParameters.
 New-AzCdnHealthProbeParametersObject -ProbeIntervalInSecond 120 -ProbePath "/check-health.aspx" -ProbeProtocol "Http" -ProbeRequestType "HEAD"
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.HealthProbeParameters
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.HealthProbeParameters
 .Link
 https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzCdnHealthProbeParametersObject
 #>
 function New-AzCdnHealthProbeParametersObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.HealthProbeParameters])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.HealthProbeParameters])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter()]
@@ -19037,12 +19043,12 @@ $contentPath = @("/movies/amazing.mp4","/pictures/pic1.jpg")
 New-AzCdnLoadParametersObject -ContentPath $contentPath
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.LoadParameters
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.LoadParameters
 .Link
 https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzCdnLoadParametersObject
 #>
 function New-AzCdnLoadParametersObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.LoadParameters])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.LoadParameters])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -19136,12 +19142,12 @@ Create an in-memory object for CdnManagedHttpsParameters.
 New-AzCdnManagedHttpsParametersObject -CertificateSourceParameterCertificateType Dedicated -CertificateSource Cdn -ProtocolType ServerNameIndication
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.CdnManagedHttpsParameters
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.CdnManagedHttpsParameters
 .Link
 https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzCdnManagedHttpsParametersObject
 #>
 function New-AzCdnManagedHttpsParametersObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.CdnManagedHttpsParameters])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.CdnManagedHttpsParameters])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -19256,12 +19262,12 @@ Create an in-memory object for OriginGroupOverrideAction.
 New-AzCdnOriginGroupOverrideActionObject -Name OriginGroupOverride -OriginGroupId 001
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.OriginGroupOverrideAction
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.OriginGroupOverrideAction
 .Link
 https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzCdnOriginGroupOverrideActionObject
 #>
 function New-AzCdnOriginGroupOverrideActionObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.OriginGroupOverrideAction])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.OriginGroupOverrideAction])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -19361,12 +19367,12 @@ Creates an CDN profile with the specified profile name under the specified subsc
 New-AzCdnProfile -ResourceGroupName testps-rg-da16jm -Name cdn001 -SkuName Standard_Microsoft -Location Global
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IProfile
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IProfile
 .Link
 https://learn.microsoft.com/powershell/module/az.cdn/new-azcdnprofile
 #>
 function New-AzCdnProfile {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IProfile])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IProfile])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -19411,7 +19417,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.ITrackedResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
@@ -19563,12 +19569,12 @@ $contentPath = @("/movies/amazing.mp4","/pictures/pic1.jpg")
 New-AzCdnPurgeParametersObject -ContentPath $contentPath
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.PurgeParameters
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.PurgeParameters
 .Link
 https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzCdnPurgeParametersObject
 #>
 function New-AzCdnPurgeParametersObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.PurgeParameters])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.PurgeParameters])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -19662,12 +19668,12 @@ Create an in-memory object for ResourceReference.
 New-AzCdnResourceReferenceObject -Id Idtest
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.ResourceReference
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ResourceReference
 .Link
 https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzCdnResourceReferenceObject
 #>
 function New-AzCdnResourceReferenceObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.ResourceReference])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ResourceReference])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter()]
@@ -19760,7 +19766,7 @@ Create an in-memory object for ResponseBasedOriginErrorDetectionParameters.
 New-AzCdnResponseBasedOriginErrorDetectionParametersObject -ResponseBasedDetectedErrorType testDetctedError -ResponseBasedFailoverThresholdPercentage 6 
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.ResponseBasedOriginErrorDetectionParameters
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ResponseBasedOriginErrorDetectionParameters
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -19773,12 +19779,12 @@ HTTPERRORRANGE <IHttpErrorRangeParameters[]>: The list of Http status code range
 https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzCdnResponseBasedOriginErrorDetectionParametersObject
 #>
 function New-AzCdnResponseBasedOriginErrorDetectionParametersObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.ResponseBasedOriginErrorDetectionParameters])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ResponseBasedOriginErrorDetectionParameters])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IHttpErrorRangeParameters[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IHttpErrorRangeParameters[]]
     # The list of Http status code ranges that are considered as server errors for origin and it is marked as unhealthy.
     # To construct, see NOTES section for HTTPERRORRANGE properties and create a hash table.
     ${HttpErrorRange},
@@ -19880,12 +19886,12 @@ Create an in-memory object for UrlRedirectAction.
 New-AzCdnUrlRedirectActionObject -Name rule01 -ParameterRedirectType redirect
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.UrlRedirectAction
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.UrlRedirectAction
 .Link
 https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzCdnUrlRedirectActionObject
 #>
 function New-AzCdnUrlRedirectActionObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.UrlRedirectAction])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.UrlRedirectAction])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -20026,12 +20032,12 @@ Create an in-memory object for UrlRewriteAction.
 New-AzCdnUrlRewriteActionObject -Name rewrite01 -ParameterDestination dest01 -ParameterSourcePattern pattern01
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.UrlRewriteAction
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.UrlRewriteAction
 .Link
 https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzCdnUrlRewriteActionObject
 #>
 function New-AzCdnUrlRewriteActionObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.UrlRewriteAction])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.UrlRewriteAction])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -20145,7 +20151,7 @@ Create an in-memory object for UrlSigningAction.
 New-AzCdnUrlSigningActionObject -Name action01
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.UrlSigningAction
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.UrlSigningAction
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -20158,7 +20164,7 @@ PARAMETERNAMEOVERRIDE <IUrlSigningParamIdentifier[]>: Defines which query string
 https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzCdnUrlSigningActionObject
 #>
 function New-AzCdnUrlSigningActionObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.UrlSigningAction])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.UrlSigningAction])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -20177,7 +20183,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IUrlSigningParamIdentifier[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IUrlSigningParamIdentifier[]]
     # Defines which query string parameters in the url to be considered for expires, key id etc.
     # .
     # To construct, see NOTES section for PARAMETERNAMEOVERRIDE properties and create a hash table.
@@ -20267,12 +20273,12 @@ Create an in-memory object for UserManagedHttpsParameters.
 New-AzCdnUserManagedHttpsParametersObject -CertificateSource certSource -CertificateSourceParameterResourceGroupName rgName -CertificateSourceParameterSecretName secretName -CertificateSourceParameterSubscriptionId subId -CertificateSourceParameterVaultName kvName -ProtocolType typeTest
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.UserManagedHttpsParameters
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.UserManagedHttpsParameters
 .Link
 https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzCdnUserManagedHttpsParametersObject
 #>
 function New-AzCdnUserManagedHttpsParametersObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.UserManagedHttpsParameters])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.UserManagedHttpsParameters])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -20412,7 +20418,7 @@ $secretResoure = New-AzFrontDoorCdnResourceReferenceObject -Id $secret.Id
 New-AzFrontDoorCdnCustomDomainTlsSettingParametersObject -CertificateType "CustomerCertificate" -MinimumTlsVersion "TLS12" -Secret $secretResoure
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.AfdDomainHttpsParameters
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.AfdDomainHttpsParameters
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -20424,7 +20430,7 @@ SECRET <IResourceReference>: Resource reference to the secret. ie. subs/rg/profi
 https://learn.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnCustomDomainTlsSettingParametersObject
 #>
 function New-AzFrontDoorCdnCustomDomainTlsSettingParametersObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.AFDDomainHttpsParameters])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.AFDDomainHttpsParameters])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -20443,7 +20449,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IResourceReference]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IResourceReference]
     # Resource reference to the secret.
     # ie.
     # subs/rg/profile/secret.
@@ -20534,7 +20540,7 @@ Create an in-memory object for MigrationParameters.
 New-AzFrontDoorCdnMigrationParametersObject -ProfileName test
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.MigrationParameters
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.MigrationParameters
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -20547,7 +20553,7 @@ MIGRATIONWEBAPPLICATIONFIREWALLMAPPING <IMigrationWebApplicationFirewallMapping[
 https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzFrontDoorCdnMigrationParametersObject
 #>
 function New-AzFrontDoorCdnMigrationParametersObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.MigrationParameters])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.MigrationParameters])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -20564,7 +20570,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IMigrationWebApplicationFirewallMapping[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IMigrationWebApplicationFirewallMapping[]]
     # Waf mapping for the migrated profile.
     # To construct, see NOTES section for MIGRATIONWEBAPPLICATIONFIREWALLMAPPING properties and create a hash table.
     ${MigrationWebApplicationFirewallMapping},
@@ -20660,12 +20666,12 @@ Create an in-memory object for MigrationWebApplicationFirewallMapping.
 New-AzFrontDoorCdnMigrationWebApplicationFirewallMappingObject -MigratedFromId migrateFromId -MigratedToId migrateToId
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.MigrationWebApplicationFirewallMapping
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.MigrationWebApplicationFirewallMapping
 .Link
 https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzFrontDoorCdnMigrationWebApplicationFirewallMappingObject
 #>
 function New-AzFrontDoorCdnMigrationWebApplicationFirewallMappingObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.MigrationWebApplicationFirewallMapping])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.MigrationWebApplicationFirewallMapping])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter()]
@@ -20764,12 +20770,12 @@ Create an in-memory object for HealthProbeParameters.
 New-AzFrontDoorCdnOriginGroupHealthProbeSettingObject -ProbeIntervalInSecond 1 -ProbePath "/" -ProbeProtocol "Https" -ProbeRequestType "GET"
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.HealthProbeParameters
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.HealthProbeParameters
 .Link
 https://learn.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnOriginGroupHealthProbeSettingObject
 #>
 function New-AzFrontDoorCdnOriginGroupHealthProbeSettingObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.HealthProbeParameters])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.HealthProbeParameters])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter()]
@@ -20882,12 +20888,12 @@ Create an in-memory object for LoadBalancingSettingsParameters.
 New-AzFrontDoorCdnOriginGroupLoadBalancingSettingObject -AdditionalLatencyInMillisecond 200  -SampleSize 5 -SuccessfulSamplesRequired 4
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.LoadBalancingSettingsParameters
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.LoadBalancingSettingsParameters
 .Link
 https://learn.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnOriginGroupLoadBalancingSettingObject
 #>
 function New-AzFrontDoorCdnOriginGroupLoadBalancingSettingObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.LoadBalancingSettingsParameters])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.LoadBalancingSettingsParameters])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter()]
@@ -20992,12 +20998,12 @@ Creates a new Azure Front Door Standard or Azure Front Door Premium or CDN profi
 New-AzFrontDoorCdnProfile -ResourceGroupName testps-rg-da16jm -Name fdp-v542q6 -SkuName Standard_AzureFrontDoor -Location Global
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IProfile
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IProfile
 .Link
 https://learn.microsoft.com/powershell/module/az.cdn/new-azfrontdoorcdnprofile
 #>
 function New-AzFrontDoorCdnProfile {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IProfile])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IProfile])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -21042,7 +21048,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.ITrackedResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
@@ -21209,12 +21215,12 @@ Create an in-memory object for ProfileChangeSkuWafMapping.
 New-AzFrontDoorCdnProfileChangeSkuWafMappingObject -SecurityPolicyName policyName -ChangeToWafPolicyId toWafPolicyId
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.ProfileChangeSkuWafMapping
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ProfileChangeSkuWafMapping
 .Link
 https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzFrontDoorCdnProfileChangeSkuWafMappingObject
 #>
 function New-AzFrontDoorCdnProfileChangeSkuWafMappingObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.ProfileChangeSkuWafMapping])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ProfileChangeSkuWafMapping])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -21318,7 +21324,7 @@ $upgrade = New-AzFrontDoorCdnProfileUpgradeParametersObject -WafMappingList $waf
 $upgrade.ToString()
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.ProfileUpgradeParameters
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ProfileUpgradeParameters
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -21331,12 +21337,12 @@ WAFMAPPINGLIST <IProfileChangeSkuWafMapping[]>: Web Application Firewall (WAF) a
 https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzFrontDoorCdnProfileUpgradeParametersObject
 #>
 function New-AzFrontDoorCdnProfileUpgradeParametersObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.ProfileUpgradeParameters])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ProfileUpgradeParameters])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IProfileChangeSkuWafMapping[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IProfileChangeSkuWafMapping[]]
     # Web Application Firewall (WAF) and security policy mapping for the profile upgrade.
     # To construct, see NOTES section for WAFMAPPINGLIST properties and create a hash table.
     ${WafMappingList}
@@ -21426,12 +21432,12 @@ $contentPath = "/a"
 $content = New-AzFrontDoorCdnPurgeParametersObject -ContentPath $contentPath
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.AfdPurgeParameters
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.AfdPurgeParameters
 .Link
 https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzFrontDoorCdnPurgeParametersObject
 #>
 function New-AzFrontDoorCdnPurgeParametersObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.AfdPurgeParameters])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.AfdPurgeParameters])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -21532,12 +21538,12 @@ $secret =  Get-AzFrontDoorCdnSecret -ResourceGroupName testps-rg-da16jm -Profile
 New-AzFrontDoorCdnResourceReferenceObject -Id $secret.Id
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.ResourceReference
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ResourceReference
 .Link
 https://learn.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnResourceReferenceObject
 #>
 function New-AzFrontDoorCdnResourceReferenceObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.ResourceReference])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ResourceReference])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter()]
@@ -21630,12 +21636,12 @@ Create an in-memory object for DeliveryRuleClientPortCondition.
 New-AzFrontDoorCdnRuleClientPortConditionObject -Name ClientPort -ParameterOperator Equal -ParameterMatchValue 80,81
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.DeliveryRuleClientPortCondition
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.DeliveryRuleClientPortCondition
 .Link
 https://learn.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnRuleClientPortConditionObject
 #>
 function New-AzFrontDoorCdnRuleClientPortConditionObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.DeliveryRuleClientPortCondition])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.DeliveryRuleClientPortCondition])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -21755,12 +21761,12 @@ Create an in-memory object for DeliveryRuleCookiesCondition.
 New-AzFrontDoorCdnRuleCookiesConditionObject -Name Cookies -ParameterOperator Equal -ParameterSelector test -ParameterMatchValue test -ParameterNegateCondition $False -ParameterTransform Lowercase
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.DeliveryRuleCookiesCondition
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.DeliveryRuleCookiesCondition
 .Link
 https://learn.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnRuleCookiesConditionObject
 #>
 function New-AzFrontDoorCdnRuleCookiesConditionObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.DeliveryRuleCookiesCondition])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.DeliveryRuleCookiesCondition])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -21886,12 +21892,12 @@ Create an in-memory object for DeliveryRuleHostNameCondition.
 New-AzFrontDoorCdnRuleHostNameConditionObject -Name HostName -ParameterOperator Equal -ParameterMatchValue azure.com
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.DeliveryRuleHostNameCondition
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.DeliveryRuleHostNameCondition
 .Link
 https://learn.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnRuleHostNameConditionObject
 #>
 function New-AzFrontDoorCdnRuleHostNameConditionObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.DeliveryRuleHostNameCondition])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.DeliveryRuleHostNameCondition])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -22011,12 +22017,12 @@ Create an in-memory object for DeliveryRuleHttpVersionCondition.
 New-AzFrontDoorCdnRuleHttpVersionConditionObject -Name HttpVersion -ParameterMatchValue 2.0
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.DeliveryRuleHttpVersionCondition
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.DeliveryRuleHttpVersionCondition
 .Link
 https://learn.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnRuleHttpVersionConditionObject
 #>
 function New-AzFrontDoorCdnRuleHttpVersionConditionObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.DeliveryRuleHttpVersionCondition])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.DeliveryRuleHttpVersionCondition])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -22129,12 +22135,12 @@ Create an in-memory object for DeliveryRuleIsDeviceCondition.
 New-AzFrontDoorCdnRuleIsDeviceConditionObject -Name IsDevice -ParameterMatchValue Mobile
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.DeliveryRuleIsDeviceCondition
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.DeliveryRuleIsDeviceCondition
 .Link
 https://learn.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnRuleIsDeviceConditionObject
 #>
 function New-AzFrontDoorCdnRuleIsDeviceConditionObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.DeliveryRuleIsDeviceCondition])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.DeliveryRuleIsDeviceCondition])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -22247,12 +22253,12 @@ Create an in-memory object for DeliveryRulePostArgsCondition.
 New-AzFrontDoorCdnRulePostArgsConditionObject -Name PostArgs -ParameterOperator Equal -ParameterMatchValue test -ParameterNegateCondition $False -ParameterSelector test -ParameterTransform Lowercase
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.DeliveryRulePostArgsCondition
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.DeliveryRulePostArgsCondition
 .Link
 https://learn.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnRulePostArgsConditionObject
 #>
 function New-AzFrontDoorCdnRulePostArgsConditionObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.DeliveryRulePostArgsCondition])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.DeliveryRulePostArgsCondition])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -22378,12 +22384,12 @@ Create an in-memory object for DeliveryRuleQueryStringCondition.
 New-AzFrontDoorCdnRuleQueryStringConditionObject -Name QueryString -ParameterOperator Equal -ParameterMatchValue test -ParameterNegateCondition $False -ParameterTransform Lowercase
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.DeliveryRuleQueryStringCondition
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.DeliveryRuleQueryStringCondition
 .Link
 https://learn.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnRuleQueryStringConditionObject
 #>
 function New-AzFrontDoorCdnRuleQueryStringConditionObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.DeliveryRuleQueryStringCondition])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.DeliveryRuleQueryStringCondition])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -22503,12 +22509,12 @@ Create an in-memory object for DeliveryRuleRemoteAddressCondition.
 New-AzFrontDoorCdnRuleRemoteAddressConditionObject -Name RemoteAddress -ParameterOperator GeoMatch -ParameterMatchValue BJ -ParameterNegateCondition $False -ParameterTransform Lowercase
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.DeliveryRuleRemoteAddressCondition
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.DeliveryRuleRemoteAddressCondition
 .Link
 https://learn.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnRuleRemoteAddressConditionObject
 #>
 function New-AzFrontDoorCdnRuleRemoteAddressConditionObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.DeliveryRuleRemoteAddressCondition])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.DeliveryRuleRemoteAddressCondition])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -22630,12 +22636,12 @@ Create an in-memory object for DeliveryRuleRequestBodyCondition.
 New-AzFrontDoorCdnRuleRequestBodyConditionObject -Name RequestBody -ParameterOperator Equal -ParameterMatchValue test -ParameterNegateCondition $False -ParameterTransform Lowercase
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.DeliveryRuleRequestBodyCondition
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.DeliveryRuleRequestBodyCondition
 .Link
 https://learn.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnRuleRequestBodyConditionObject
 #>
 function New-AzFrontDoorCdnRuleRequestBodyConditionObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.DeliveryRuleRequestBodyCondition])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.DeliveryRuleRequestBodyCondition])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -22755,12 +22761,12 @@ Create an in-memory object for DeliveryRuleRequestHeaderAction.
 New-AzFrontDoorCdnRuleRequestHeaderActionObject -Name ModifyRequestHeader -ParameterHeaderAction Append -ParameterHeaderName a1 -ParameterValue a1
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.DeliveryRuleRequestHeaderAction
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.DeliveryRuleRequestHeaderAction
 .Link
 https://learn.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnRuleRequestHeaderActionObject
 #>
 function New-AzFrontDoorCdnRuleRequestHeaderActionObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.DeliveryRuleRequestHeaderAction])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.DeliveryRuleRequestHeaderAction])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -22873,12 +22879,12 @@ Create an in-memory object for DeliveryRuleRequestHeaderCondition.
 New-AzFrontDoorCdnRuleRequestHeaderConditionObject -Name RequestHeader -ParameterOperator Equal -ParameterSelector test -ParameterMatchValue test -ParameterNegateCondition $False -ParameterTransform Lowercase
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.DeliveryRuleRequestHeaderCondition
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.DeliveryRuleRequestHeaderCondition
 .Link
 https://learn.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnRuleRequestHeaderConditionObject
 #>
 function New-AzFrontDoorCdnRuleRequestHeaderConditionObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.DeliveryRuleRequestHeaderCondition])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.DeliveryRuleRequestHeaderCondition])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -23004,12 +23010,12 @@ Create an in-memory object for DeliveryRuleRequestMethodCondition.
 New-AzFrontDoorCdnRuleRequestMethodConditionObject -Name RequestMethod -ParameterMatchValue GET
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.DeliveryRuleRequestMethodCondition
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.DeliveryRuleRequestMethodCondition
 .Link
 https://learn.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnRuleRequestMethodConditionObject
 #>
 function New-AzFrontDoorCdnRuleRequestMethodConditionObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.DeliveryRuleRequestMethodCondition])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.DeliveryRuleRequestMethodCondition])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -23122,12 +23128,12 @@ Create an in-memory object for DeliveryRuleRequestSchemeCondition.
 New-AzFrontDoorCdnRuleRequestSchemeConditionObject -Name RequestScheme -ParameterMatchValue HTTP
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.DeliveryRuleRequestSchemeCondition
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.DeliveryRuleRequestSchemeCondition
 .Link
 https://learn.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnRuleRequestSchemeConditionObject
 #>
 function New-AzFrontDoorCdnRuleRequestSchemeConditionObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.DeliveryRuleRequestSchemeCondition])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.DeliveryRuleRequestSchemeCondition])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -23240,12 +23246,12 @@ Create an in-memory object for DeliveryRuleRequestUriCondition.
  New-AzFrontDoorCdnRuleRequestUriConditionObject -Name RequestUri -ParameterOperator Equal -ParameterMatchValue /test
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.DeliveryRuleRequestUriCondition
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.DeliveryRuleRequestUriCondition
 .Link
 https://learn.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnRuleRequestUriConditionObject
 #>
 function New-AzFrontDoorCdnRuleRequestUriConditionObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.DeliveryRuleRequestUriCondition])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.DeliveryRuleRequestUriCondition])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -23365,12 +23371,12 @@ Create an in-memory object for DeliveryRuleResponseHeaderAction.
 New-AzFrontDoorCdnRuleResponseHeaderActionObject -Name ModifyResponseHeader -ParameterHeaderAction Append -ParameterHeaderName a1 -ParameterValue a1
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.DeliveryRuleResponseHeaderAction
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.DeliveryRuleResponseHeaderAction
 .Link
 https://learn.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnRuleResponseHeaderActionObject
 #>
 function New-AzFrontDoorCdnRuleResponseHeaderActionObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.DeliveryRuleResponseHeaderAction])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.DeliveryRuleResponseHeaderAction])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -23484,12 +23490,12 @@ $originGroupId = "xxxx"
 New-AzFrontDoorCdnRuleRouteConfigurationOverrideActionObject -Name RouteConfigurationOverride -OriginGroupOverrideForwardingProtocol HttpOnly -OriginGroupId $originGroupId
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.DeliveryRuleRouteConfigurationOverrideAction
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.DeliveryRuleRouteConfigurationOverrideAction
 .Link
 https://learn.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnRuleRouteConfigurationOverrideActionObject
 #>
 function New-AzFrontDoorCdnRuleRouteConfigurationOverrideActionObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.DeliveryRuleRouteConfigurationOverrideAction])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.DeliveryRuleRouteConfigurationOverrideAction])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -23633,12 +23639,12 @@ Create an in-memory object for DeliveryRuleServerPortCondition.
 New-AzFrontDoorCdnRuleServerPortConditionObject -Name ServerPort -ParameterOperator Equal -ParameterMatchValue 80,81
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.DeliveryRuleServerPortCondition
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.DeliveryRuleServerPortCondition
 .Link
 https://learn.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnRuleServerPortConditionObject
 #>
 function New-AzFrontDoorCdnRuleServerPortConditionObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.DeliveryRuleServerPortCondition])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.DeliveryRuleServerPortCondition])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -23758,12 +23764,12 @@ Create an in-memory object for DeliveryRuleSocketAddrCondition.
  New-AzFrontDoorCdnRuleSocketAddrConditionObject -Name SocketAddr -ParameterOperator IPMatch -ParameterMatchValue 222.10.0.1
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.DeliveryRuleSocketAddrCondition
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.DeliveryRuleSocketAddrCondition
 .Link
 https://learn.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnRuleSocketAddrConditionObject
 #>
 function New-AzFrontDoorCdnRuleSocketAddrConditionObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.DeliveryRuleSocketAddrCondition])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.DeliveryRuleSocketAddrCondition])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -23883,12 +23889,12 @@ Create an in-memory object for DeliveryRuleSslProtocolCondition.
 New-AzFrontDoorCdnRuleSslProtocolConditionObject -Name SslProtocol -ParameterMatchValue TLSv1.2
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.DeliveryRuleSslProtocolCondition
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.DeliveryRuleSslProtocolCondition
 .Link
 https://learn.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnRuleSslProtocolConditionObject
 #>
 function New-AzFrontDoorCdnRuleSslProtocolConditionObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.DeliveryRuleSslProtocolCondition])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.DeliveryRuleSslProtocolCondition])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -24002,12 +24008,12 @@ Create an in-memory object for DeliveryRuleUrlFileExtensionCondition.
 New-AzFrontDoorCdnRuleUrlFileExtensionConditionObject -Name UrlFileExtension -ParameterOperator Equal -ParameterMatchValue txt -ParameterNegateCondition $False -ParameterTransform Lowercase
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.DeliveryRuleUrlFileExtensionCondition
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.DeliveryRuleUrlFileExtensionCondition
 .Link
 https://learn.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnRuleUrlFileExtensionConditionObject
 #>
 function New-AzFrontDoorCdnRuleUrlFileExtensionConditionObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.DeliveryRuleUrlFileExtensionCondition])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.DeliveryRuleUrlFileExtensionCondition])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -24127,12 +24133,12 @@ Create an in-memory object for DeliveryRuleUrlFileNameCondition.
 New-AzFrontDoorCdnRuleUrlFileNameConditionObject -Name UrlFileName -ParameterOperator Equal -ParameterMatchValue test -ParameterNegateCondition $False -ParameterTransform Lowercase
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.DeliveryRuleUrlFileNameCondition
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.DeliveryRuleUrlFileNameCondition
 .Link
 https://learn.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnRuleUrlFileNameConditionObject
 #>
 function New-AzFrontDoorCdnRuleUrlFileNameConditionObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.DeliveryRuleUrlFileNameCondition])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.DeliveryRuleUrlFileNameCondition])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -24252,12 +24258,12 @@ Create an in-memory object for DeliveryRuleUrlPathCondition.
  New-AzFrontDoorCdnRuleUrlPathConditionObject -Name UrlPath -ParameterOperator Equal -ParameterMatchValue /a
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.DeliveryRuleUrlPathCondition
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.DeliveryRuleUrlPathCondition
 .Link
 https://learn.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnRuleUrlPathConditionObject
 #>
 function New-AzFrontDoorCdnRuleUrlPathConditionObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.DeliveryRuleUrlPathCondition])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.DeliveryRuleUrlPathCondition])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -24377,12 +24383,12 @@ Create an in-memory object for UrlRedirectAction.
 New-AzFrontDoorCdnRuleUrlRedirectActionObject -Name UrlRedirect -ParameterRedirectType Moved -ParameterDestinationProtocol MatchRequest
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.UrlRedirectAction
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.UrlRedirectAction
 .Link
 https://learn.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnRuleUrlRedirectActionObject
 #>
 function New-AzFrontDoorCdnRuleUrlRedirectActionObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.UrlRedirectAction])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.UrlRedirectAction])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -24523,12 +24529,12 @@ Create an in-memory object for UrlRewriteAction.
 New-AzFrontDoorCdnRuleUrlRewriteActionObject -Name UrlRewrite -ParameterDestination /b -ParameterSourcePattern /a -ParameterPreserveUnmatchedPath $False
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.UrlRewriteAction
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.UrlRewriteAction
 .Link
 https://learn.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnRuleUrlRewriteActionObject
 #>
 function New-AzFrontDoorCdnRuleUrlRewriteActionObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.UrlRewriteAction])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.UrlRewriteAction])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -24642,7 +24648,7 @@ Create an in-memory object for UrlSigningAction.
 New-AzFrontDoorCdnRuleUrlSigningActionObject -Name rule01
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.UrlSigningAction
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.UrlSigningAction
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -24655,7 +24661,7 @@ PARAMETERNAMEOVERRIDE <IUrlSigningParamIdentifier[]>: Defines which query string
 https://learn.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnRuleUrlSigningActionObject
 #>
 function New-AzFrontDoorCdnRuleUrlSigningActionObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.UrlSigningAction])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.UrlSigningAction])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -24674,7 +24680,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IUrlSigningParamIdentifier[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IUrlSigningParamIdentifier[]]
     # Defines which query string parameters in the url to be considered for expires, key id etc.
     # .
     # To construct, see NOTES section for PARAMETERNAMEOVERRIDE properties and create a hash table.
@@ -24765,12 +24771,12 @@ $secretSourceId = "xxxxxxxx"
 New-AzFrontDoorCdnSecretCustomerCertificateParametersObject -UseLatestVersion $true -SubjectAlternativeName @() -Type "CustomerCertificate" -SecretSourceId $secretSourceId               
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.CustomerCertificateParameters
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.CustomerCertificateParameters
 .Link
 https://learn.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnSecretCustomerCertificateParametersObject
 #>
 function New-AzFrontDoorCdnSecretCustomerCertificateParametersObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.CustomerCertificateParameters])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.CustomerCertificateParameters])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -24888,12 +24894,12 @@ Create an in-memory object for AzureFirstPartyManagedCertificateParameters.
 New-AzFrontDoorCdnSecretFirstPartyManagedCertificateParametersObject -Type BYOC
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.AzureFirstPartyManagedCertificateParameters
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.AzureFirstPartyManagedCertificateParameters
 .Link
 https://learn.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnSecretFirstPartyManagedCertificateParametersObject
 #>
 function New-AzFrontDoorCdnSecretFirstPartyManagedCertificateParametersObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.AzureFirstPartyManagedCertificateParameters])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.AzureFirstPartyManagedCertificateParameters])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -24987,12 +24993,12 @@ Create an in-memory object for ManagedCertificateParameters.
 New-AzFrontDoorCdnSecretManagedCertificateParametersObject -Type ManagedCert
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.ManagedCertificateParameters
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ManagedCertificateParameters
 .Link
 https://learn.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnSecretManagedCertificateParametersObject
 #>
 function New-AzFrontDoorCdnSecretManagedCertificateParametersObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.ManagedCertificateParameters])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ManagedCertificateParameters])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -25086,12 +25092,12 @@ Create an in-memory object for UrlSigningKeyParameters.
 New-AzFrontDoorCdnSecretUrlSigningKeyParametersObject -KeyId keyId01 -Type Byoc -SecretVersion v1.0
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.UrlSigningKeyParameters
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.UrlSigningKeyParameters
 .Link
 https://learn.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnSecretUrlSigningKeyParametersObject
 #>
 function New-AzFrontDoorCdnSecretUrlSigningKeyParametersObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.UrlSigningKeyParameters])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.UrlSigningKeyParameters])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -25205,7 +25211,7 @@ $endpoint = Get-AzFrontDoorCdnEndpoint -ResourceGroupName testps-rg-da16jm -Prof
 New-AzFrontDoorCdnSecurityPolicyWebApplicationFirewallAssociationObject -PatternsToMatch @("/*") -Domain @(@{"Id"=$($endpoint.Id)})
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.SecurityPolicyWebApplicationFirewallAssociation
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.SecurityPolicyWebApplicationFirewallAssociation
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -25217,12 +25223,12 @@ DOMAIN <IActivatedResourceReference[]>: List of domains.
 https://learn.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnSecurityPolicyWebApplicationFirewallAssociationObject
 #>
 function New-AzFrontDoorCdnSecurityPolicyWebApplicationFirewallAssociationObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.SecurityPolicyWebApplicationFirewallAssociation])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.SecurityPolicyWebApplicationFirewallAssociation])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IActivatedResourceReference[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IActivatedResourceReference[]]
     # List of domains.
     # To construct, see NOTES section for DOMAIN properties and create a hash table.
     ${Domain},
@@ -25320,7 +25326,7 @@ New-AzFrontDoorCdnSecurityPolicyWebApplicationFirewallParametersObject  -Associa
             -WafPolicyId $wafPolicyId
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.SecurityPolicyWebApplicationFirewallParameters
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.SecurityPolicyWebApplicationFirewallParameters
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -25334,12 +25340,12 @@ ASSOCIATION <ISecurityPolicyWebApplicationFirewallAssociation[]>: Waf associatio
 https://learn.microsoft.com/powershell/module/az.Cdn/new-azfrontdoorcdnsecuritypolicywebapplicationfirewallparametersobject
 #>
 function New-AzFrontDoorCdnSecurityPolicyWebApplicationFirewallParametersObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.SecurityPolicyWebApplicationFirewallParameters])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.SecurityPolicyWebApplicationFirewallParameters])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.ISecurityPolicyWebApplicationFirewallAssociation[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ISecurityPolicyWebApplicationFirewallAssociation[]]
     # Waf associations.
     # To construct, see NOTES section for ASSOCIATION properties and create a hash table.
     ${Association},
@@ -25452,7 +25458,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
   [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
   [OriginName <String>]: Name of the origin which is unique within the profile.
-  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium profile which is unique within the resource group.
+  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
   [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
   [RouteName <String>]: Name of the routing rule.
   [RuleName <String>]: Name of the delivery rule which is unique within the endpoint.
@@ -25665,7 +25671,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
   [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
   [OriginName <String>]: Name of the origin which is unique within the profile.
-  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium profile which is unique within the resource group.
+  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
   [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
   [RouteName <String>]: Name of the routing rule.
   [RuleName <String>]: Name of the delivery rule which is unique within the endpoint.
@@ -25853,41 +25859,41 @@ end {
 
 <#
 .Synopsis
-Migrate the CDN profile to Azure Frontdoor(Standard/Premium) profile.
+Migrate the classic AFD instance to Azure Front Door(Standard/Premium) profile.
 MigrationWebApplicationFirewallMapping should be associated if the front door has WAF policy.
-MSI Identity should be associated if the frontdoor has Customer Certificates.
+Managed Identity should be associated if the frontdoor has Customer Certificates.
 The change need to be committed after this.
 .Description
-Migrate the CDN profile to Azure Frontdoor(Standard/Premium) profile.
+Migrate the classic AFD instance to Azure Front Door(Standard/Premium) profile.
 The change need to be committed after this.
 .Example
-Start-AzFrontDoorCdnProfilePrepareMigration -ResourceGroupName rgName -ClassicResourceReferenceId /subscriptions/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/resourcegroups/rgName/providers/Microsoft.Network/Frontdoors/name -ProfileName name-migrated -SkuName Standard_AzureFrontDoor
+Start-AzFrontDoorCdnProfilePrepareMigration -ResourceGroupName rgName -ClassicResourceReferenceId /subscriptions/testSubId/resourcegroups/rgName/providers/Microsoft.Network/Frontdoors/name -ProfileName name-migrated -SkuName Standard_AzureFrontDoor
 .Example
-$wafMapping = New-AzFrontDoorCdnMigrationWebApplicationFirewallMappingObject -MigratedFromId /subscriptions/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/resourcegroups/rgName01/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/waf01 -MigratedToId /subscriptions/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/resourcegroups/rgName/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/newWAFName
-Start-AzFrontDoorCdnProfilePrepareMigration -ResourceGroupName rgName -ClassicResourceReferenceId /subscriptions/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/resourcegroups/rgName/providers/Microsoft.Network/Frontdoors/name -ProfileName name-migrated -SkuName Standard_AzureFrontDoor -MigrationWebApplicationFirewallMapping $wafMapping
+$wafMapping = New-AzFrontDoorCdnMigrationWebApplicationFirewallMappingObject -MigratedFromId /subscriptions/testSubId/resourcegroups/rgName01/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/waf01 -MigratedToId /subscriptions/testSubId/resourcegroups/rgName/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/newWAFName
+Start-AzFrontDoorCdnProfilePrepareMigration -ResourceGroupName rgName -ClassicResourceReferenceId /subscriptions/testSubId/resourcegroups/rgName/providers/Microsoft.Network/Frontdoors/name -ProfileName name-migrated -SkuName Standard_AzureFrontDoor -MigrationWebApplicationFirewallMapping $wafMapping
 .Example
-$wafMapping = New-AzFrontDoorCdnMigrationWebApplicationFirewallMappingObject -MigratedFromId /subscriptions/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/resourcegroups/rgName01/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/waf01 -MigratedToId /subscriptions/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/resourcegroups/rgName01/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/existingWAFName
-Start-AzFrontDoorCdnProfilePrepareMigration -ResourceGroupName rgName -ClassicResourceReferenceId /subscriptions/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/resourcegroups/rgName/providers/Microsoft.Network/Frontdoors/name -ProfileName name-migrated -SkuName Standard_AzureFrontDoor -MigrationWebApplicationFirewallMapping $wafMapping
+$wafMapping = New-AzFrontDoorCdnMigrationWebApplicationFirewallMappingObject -MigratedFromId /subscriptions/testSubId/resourcegroups/rgName01/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/waf01 -MigratedToId /subscriptions/testSubId/resourcegroups/rgName02/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/existingWAFName
+Start-AzFrontDoorCdnProfilePrepareMigration -ResourceGroupName rgName -ClassicResourceReferenceId /subscriptions/testSubId/resourcegroups/rgName/providers/Microsoft.Network/Frontdoors/name -ProfileName name-migrated -SkuName Standard_AzureFrontDoor -MigrationWebApplicationFirewallMapping $wafMapping
 .Example
-$wafMapping1 = New-AzFrontDoorCdnMigrationWebApplicationFirewallMappingObject -MigratedFromId /subscriptions/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/resourcegroups/rgName01/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/waf01 -MigratedToId /subscriptions/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/resourcegroups/rgName01/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/waf01test
+$wafMapping1 = New-AzFrontDoorCdnMigrationWebApplicationFirewallMappingObject -MigratedFromId /subscriptions/testSubId/resourcegroups/rgName01/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/waf01 -MigratedToId /subscriptions/testSubId/resourcegroups/rgName01/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/waf01test
 
-$wafMapping2 = New-AzFrontDoorCdnMigrationWebApplicationFirewallMappingObject -MigratedFromId /subscriptions/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/resourcegroups/rgName02/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/waf02 -MigratedToId  /subscriptions/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/resourcegroups/rgName02/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/waf02test
+$wafMapping2 = New-AzFrontDoorCdnMigrationWebApplicationFirewallMappingObject -MigratedFromId /subscriptions/testSubId/resourcegroups/rgName02/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/waf02 -MigratedToId  /subscriptions/testSubId/resourcegroups/rgName02/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/waf02test
 
-# enable MSI via SystemAssigned and UserAssigned
+# enable Managed Identity via SystemAssigned and UserAssigned
 $identityType = "SystemAssigned, UserAssigned"
 
 # UserIdentity information
 $userInfo = @{
-	"/subscriptions/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/resourceGroups/rgName01/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identity01" = @{}
-	"/subscriptions/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/resourceGroups/rgName02/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identity02" = @{}
+	"/subscriptions/testSubId/resourceGroups/rgName01/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identity01" = @{}
+	"/subscriptions/testSubId/resourceGroups/rgName02/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identity02" = @{}
 }
 
-Start-AzFrontDoorCdnProfilePrepareMigration -ResourceGroupName rgName -ClassicResourceReferenceId /subscriptions/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/resourcegroups/rgName/providers/Microsoft.Network/Frontdoors/name -ProfileName name-migrated -SkuName Premium_AzureFrontDoor -MigrationWebApplicationFirewallMapping @($wafMapping1, $wafMapping2) -IdentityType $identityType -IdentityUserAssignedIdentity $userInfo
+Start-AzFrontDoorCdnProfilePrepareMigration -ResourceGroupName rgName -ClassicResourceReferenceId /subscriptions/testSubId/resourcegroups/rgName/providers/Microsoft.Network/Frontdoors/name -ProfileName name-migrated -SkuName Premium_AzureFrontDoor -MigrationWebApplicationFirewallMapping @($wafMapping1, $wafMapping2) -IdentityType $identityType -IdentityUserAssignedIdentity $userInfo
 .Example
 Start-AzFrontDoorCdnProfilePrepareMigration -ResourceGroupName rgName -ClassicResourceReferenceId /subscriptions/testSubId01/resourcegroups/rgName/providers/Microsoft.Network/Frontdoors/name -ProfileName name-migrated -SkuName Standard_AzureFrontDoor -SubscriptionId testSubId01
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IMigrateResult
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IMigrateResult
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -25900,7 +25906,7 @@ MIGRATIONWEBAPPLICATIONFIREWALLMAPPING <IMigrationWebApplicationFirewallMapping[
 https://learn.microsoft.com/powershell/module/az.cdn/start-azfrontdoorcdnprofilepreparemigration
 #>
 function Start-AzFrontDoorCdnProfilePrepareMigration {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IMigrateResult])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IMigrateResult])]
 [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -25939,7 +25945,7 @@ param(
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IMigrationWebApplicationFirewallMapping[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IMigrationWebApplicationFirewallMapping[]]
     # Waf mapping for the migrated profile
     # To construct, see NOTES section for MIGRATIONWEBAPPLICATIONFIREWALLMAPPING properties and create a hash table.
     ${MigrationWebApplicationFirewallMapping},
@@ -26278,21 +26284,21 @@ end {
 
 <#
 .Synopsis
-Checks if CDN profile can be migrated to Azure Frontdoor(Standard/Premium) profile.
+Check if a classic AFD instance can be migrated to Azure Front Door(Standard/Premium) profile.
 .Description
-Checks if CDN profile can be migrated to Azure Frontdoor(Standard/Premium) profile.
+Check if a classic AFD instance can be migrated to Azure Front Door(Standard/Premium) profile.
 .Example
 Test-AzFrontDoorCdnProfileMigration -ResourceGroupName testrg -ClassicResourceReferenceId /subscriptions/testSubId/resourcegroups/testrg/providers/Microsoft.Network/Frontdoors/frontdoorName
 .Example
 Test-AzFrontDoorCdnProfileMigration -ResourceGroupName testrg -ClassicResourceReferenceId /subscriptions/testSubId01/resourcegroups/testrg/providers/Microsoft.Network/Frontdoors/frontdoorName -SubscriptionId testSubId01 
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.ICanMigrateResult
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ICanMigrateResult
 .Link
 https://learn.microsoft.com/powershell/module/az.cdn/test-azfrontdoorcdnprofilemigration
 #>
 function Test-AzFrontDoorCdnProfileMigration {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.ICanMigrateResult])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ICanMigrateResult])]
 [CmdletBinding(DefaultParameterSetName='CanExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -26322,6 +26328,12 @@ param(
     # The credentials, account, tenant, and subscription used for communication with Azure.
     ${DefaultProfile},
 
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
@@ -26341,6 +26353,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SendAsyncStep[]]
     # SendAsync Pipeline Steps to be prepended to the front of the pipeline
     ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
 
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Runtime')]
@@ -26460,7 +26478,7 @@ Get-AzCdnProfile -ResourceGroupName testps-rg-da16jm -Name cdn001 | Update-AzCdn
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IProfile
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IProfile
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -26472,7 +26490,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
   [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
   [OriginName <String>]: Name of the origin which is unique within the profile.
-  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium profile which is unique within the resource group.
+  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
   [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
   [RouteName <String>]: Name of the routing rule.
   [RuleName <String>]: Name of the delivery rule which is unique within the endpoint.
@@ -26484,7 +26502,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.cdn/update-azcdnprofile
 #>
 function Update-AzCdnProfile {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IProfile])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IProfile])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -26523,7 +26541,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IProfileUpdateParametersTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IProfileUpdateParametersTags]))]
     [System.Collections.Hashtable]
     # Profile tags
     ${Tag},
@@ -26683,11 +26701,16 @@ $tags = @{
     Tag2  = 22
 }
 Get-AzFrontDoorCdnProfile -ResourceGroupName testps-rg-da16jm -Name fdp-v542q6 | Update-AzFrontDoorCdnProfile -Tag $tags
+.Example
+Update-AzFrontDoorCdnProfile -ResourceGroupName testps-rg-da16jm -Name fdp-v542q6 -IdentityType SystemAssigned
+.Example
+$userId =  @{"/subscriptions/subId/resourceGroups/testps-rg-da16jm/providers/Microsoft.ManagedIdentity/userAssignedIdentities/testcdnrpaadidentity" = @{}}
+Update-AzFrontDoorCdnProfile -ResourceGroupName testps-rg-da16jm -Name fdp-v542q6 -IdentityType UserAssigned -IdentityUserAssignedIdentity $userId
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IProfile
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IProfile
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -26699,7 +26722,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
   [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
   [OriginName <String>]: Name of the origin which is unique within the profile.
-  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium profile which is unique within the resource group.
+  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
   [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
   [RouteName <String>]: Name of the routing rule.
   [RuleName <String>]: Name of the delivery rule which is unique within the endpoint.
@@ -26711,7 +26734,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.cdn/update-azfrontdoorcdnprofile
 #>
 function Update-AzFrontDoorCdnProfile {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IProfile])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IProfile])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -26750,7 +26773,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IProfileUpdateParametersTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IProfileUpdateParametersTags]))]
     [System.Collections.Hashtable]
     # Profile tags
     ${Tag},
@@ -26935,9 +26958,9 @@ $upgrade = New-AzFrontDoorCdnProfileUpgradeParametersObject -WafMappingList $waf
 Update-AzFrontDoorCdnProfileSku -ProfileName profileName -ResourceGroupName rgName -ProfileUpgradeParameter $upgrade -SubscriptionId testSubId01
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IProfileUpgradeParameters
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IProfileUpgradeParameters
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IProfile
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IProfile
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -26951,7 +26974,7 @@ PROFILEUPGRADEPARAMETER <IProfileUpgradeParameters>: Parameters required for pro
 https://learn.microsoft.com/powershell/module/az.cdn/update-azfrontdoorcdnprofilesku
 #>
 function Update-AzFrontDoorCdnProfileSku {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IProfile])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IProfile])]
 [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -26975,7 +26998,7 @@ param(
 
     [Parameter(Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IProfileUpgradeParameters]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IProfileUpgradeParameters]
     # Parameters required for profile upgrade.
     # To construct, see NOTES section for PROFILEUPGRADEPARAMETER properties and create a hash table.
     ${ProfileUpgradeParameter},
