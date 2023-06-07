@@ -56,10 +56,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [Parameter(Mandatory = false, HelpMessage = "Signal to delete unmanaged stack ResourceGroups after updating stack.")]
         public SwitchParameter DeleteResourceGroups { get; set; }
 
-        // Not Yet Supported.
-        /*[Parameter(Mandatory = false, HelpMessage = "Singal to delete unmanaged stack management groups after updating stack.")]
-        public SwitchParameter DeleteManagementGroups { get; set; }*/
-
         [Parameter(Mandatory = false, HelpMessage = "If set, a boolean will be returned with value dependent on cmdlet success.")]
         public SwitchParameter PassThru { get; set; }
 
