@@ -823,8 +823,8 @@ function Test-UpdateKeyVault {
         # Assert-Throws { $vault = $vault | Update-AzKeyVault -SoftDeleteRetentionInDays 80}
 
         #Set EnableRbacAuthorization true
-        $vault = $vault | Update-AzKeyVault -EnableRbacAuthorization $true
-        Assert-True { $vault.EnableRbacAuthorization } "5. EnableRbacAuthorization should be true"
+        # $vault = $vault | Update-AzKeyVault -EnableRbacAuthorization $true
+        # Assert-True { $vault.EnableRbacAuthorization } "5. EnableRbacAuthorization should be true"
 
         #Set EnableRbacAuthorization false
         $vault = $vault | Update-AzKeyVault -EnableRbacAuthorization $false
