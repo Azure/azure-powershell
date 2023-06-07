@@ -17,6 +17,7 @@ jobs:
   pool: pool-windows-2019
   steps:
   - task: PowerShell@2
+    displayName: get changelog info
     inputs:
       targetType: 'inline'
       script: |
@@ -40,6 +41,14 @@ jobs:
         New-Item -ItemType Directory -Force -Path $folderPath | Out-Null
         $filePath = Join-Path -Path $folderPath -ChildPath $fileName
         $jsonString | Out-File -FilePath $filePath
+  - task: PowerShell@2
+    displayName: publish oob tools
+    inputs:
+      targetType: 'inline'
+      script: |
+        Copy-Item .\tools\ModulePublisher.psd1 -Destination VersionInfo
+        Copy-Item .\tools\ModulePublisher.psm1 -Destination VersionInfo
+        
   - task: PublishBuildArtifacts@1
     inputs:
       PathtoPublish: 'VersionInfo'
