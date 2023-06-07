@@ -45,9 +45,5 @@ jobs:
       PathtoPublish: '$(Build.ArtifactStagingDirectory)'
       ArtifactName: 'VersionInfo'
       publishLocation: 'Container'
-  
-- template: code-sign.yml
-  parameters:
-    DependsOn: OOBRelease
 
   
