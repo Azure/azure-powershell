@@ -24,6 +24,8 @@
     - `Copy-AzStorageBlob`
     - `Set-AzStorageBlobContent` 
     - `Start-AzStorageBlobCopy`
+* Migrated the following Azure Queue dataplane cmdlets from 'Microsoft.Azure.Storage.Queue' to 'Azure.Storage.Queue'
+    - `New-AzStorageQueueSASToken`
 * Add warning messages for an upcoming breaking change when creating SAS token
     - `New-AzStorageBlobSasToken`
     - `New-AzStorageContainerSasToken`
