@@ -36,7 +36,7 @@ jobs:
         }
         $jsonString = $jsonData | ConvertTo-Json
         $jsonString | Out-File -FilePath "VersionInfo.json"
-        $folderPath = "VersionInfo"
+        $folderPath = "OOB"
         $fileName = "VersionInfo.json"
         New-Item -ItemType Directory -Force -Path $folderPath | Out-Null
         $filePath = Join-Path -Path $folderPath -ChildPath $fileName
@@ -46,12 +46,13 @@ jobs:
     inputs:
       targetType: 'inline'
       script: |
-        Copy-Item .\tools\ModulePublisher.psd1 -Destination VersionInfo
-        Copy-Item .\tools\ModulePublisher.psm1 -Destination VersionInfo
+        Copy-Item .\tools\ModulePublisher.psd1 -Destination $folderPath
+        Copy-Item .\tools\ModulePublisher.psm1 -Destination $folderPath
+        Copy-Item .\tools\NuGet.exe -Destination $folderPath
         
   - task: PublishBuildArtifacts@1
     inputs:
-      PathtoPublish: 'VersionInfo'
-      ArtifactName: 'VersionInfo'
+      PathtoPublish: $folderPath
+      ArtifactName: $folderPath
 
   
