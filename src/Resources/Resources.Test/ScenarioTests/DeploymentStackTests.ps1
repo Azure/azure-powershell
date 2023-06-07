@@ -214,9 +214,9 @@ function Test-NewAndSetResourceGroupDeploymentStackDenySettings
 		Assert-AreEqual "DenyDelete" $deployment.DenySettings.Mode
 
 		# Test - SET - DenySettingsMode and ApplyToChildScopes
-		$deployment = Set-AzResourceGroupDeploymentStack -Name $rname -ResourceGroupName $rgname -TemplateFile StacksRGTemplate.json -TemplateParameterFile StacksRGTemplateParams.json -DenySettingsMode DenyDelete -DenySettingsApplyToChildScopes -Force
+		$deployment = Set-AzResourceGroupDeploymentStack -Name $rname -ResourceGroupName $rgname -TemplateFile StacksRGTemplate.json -TemplateParameterFile StacksRGTemplateParams.json -DenySettingsMode DenyWriteAndDelete -DenySettingsApplyToChildScopes -Force
 		Assert-AreEqual "succeeded" $deployment.ProvisioningState
-		Assert-AreEqual "DenyDelete" $deployment.DenySettings.Mode
+		Assert-AreEqual "DenyWriteAndDelete" $deployment.DenySettings.Mode
 	}
 
 	finally
@@ -368,7 +368,7 @@ function Test-NewAndSetResourceGroupDeploymentStackWithBicep
 		New-AzResourceGroup -Name $rgname -Location $rglocation
 
 		# Test - NewByNameAndResourceGroupAndBicepTemplateFile
-		$deployment = New-AzResourceGroupDeploymentStack -Name $rname -ResourceGroupName $rgname -TemplateFile StacksRGTemplate.bicep -TemplateParameterFile StacksRGTemplateParams.json -DenySettingsMode None -Force
+		$deployment = New-AzResourceGroupDeploymentStack -Name $rname -ResourceGroupName $rgname -TemplateFile StacksRGTemplate.bicep -TemplateParameterFile StacksRGTemplateParams.bicepparam -DenySettingsMode None -Force
 		Assert-AreEqual "succeeded" $deployment.ProvisioningState
 
 		# Test - Set-AzResourceGroupDeploymentStacks
@@ -733,9 +733,9 @@ function Test-NewAndSetSubscriptionDeploymentStackDenySettings
 		Assert-AreEqual "DenyDelete" $deployment.DenySettings.Mode
 
 		# Test - SET - DenySettingsMode and ApplyToChildScopes
-		$deployment = Set-AzSubscriptionDeploymentStack -Name $rname -Location $location -TemplateFile StacksSubTemplate.json -TemplateParameterFile StacksSubTemplateParams.json -DenySettingsMode DenyDelete -DenySettingsApplyToChildScopes -Force
+		$deployment = Set-AzSubscriptionDeploymentStack -Name $rname -Location $location -TemplateFile StacksSubTemplate.json -TemplateParameterFile StacksSubTemplateParams.json -DenySettingsMode DenyWriteAndDelete -DenySettingsApplyToChildScopes -Force
 		Assert-AreEqual "succeeded" $deployment.ProvisioningState
-		Assert-AreEqual "DenyDelete" $deployment.DenySettings.Mode
+		Assert-AreEqual "DenyWriteAndDelete" $deployment.DenySettings.Mode
 	}
 
 	finally
@@ -866,7 +866,7 @@ function Test-NewAndSetSubscriptionDeploymentStackWithBicep
 	try 
 	{
 		# Test - NewByNameAndResourceGroupAndBicepTemplateFile
-		$deployment = New-AzSubscriptionDeploymentStack -Name $rname -TemplateFile StacksSubTemplate.bicep -TemplateParameterFile StacksSubTemplateParams.json -Location $location -DenySettingsMode None -Force
+		$deployment = New-AzSubscriptionDeploymentStack -Name $rname -TemplateFile StacksSubTemplate.bicep -TemplateParameterFile StacksSubTemplateParams.bicepparam -Location $location -DenySettingsMode None -Force
 		Assert-AreEqual "succeeded" $deployment.ProvisioningState
 
 		# Test - Set-AzSubscriptionDeploymentStacks
@@ -957,10 +957,9 @@ function Test-RemoveSubscriptionDeploymentStack
 		# --- RemoveByNameParameterSetName --- 
 
 		# Test - Failure - Stack NotFound
-		# TODO: Bug in subscription stack export not returning NotFound
-		# $badStackName = "badstack1928273615"
-		# $exceptionMessage = "DeploymentStack '$badStackName' not found in the curent subscription scope."
-		# Assert-Throws { Remove-AzSubscriptionDeploymentStack -StackName $badStackName -Force } $exceptionMessage
+		$badStackName = "badstack1928273615"
+		$exceptionMessage = "DeploymentStack '$badStackName' not found in the curent subscription scope."
+		Assert-Throws { Remove-AzSubscriptionDeploymentStack -StackName $badStackName -Force } $exceptionMessage
 
 		# Test - Success with PassThru - DeleteResources
 		$deployment = New-AzSubscriptionDeploymentStack -Name $rname -TemplateFile StacksSubTemplate.json -TemplateParameterFile StacksSubTemplateParams.json -Location $location -DenySettingsMode None -Force
@@ -1020,10 +1019,9 @@ function Test-ExportSubscriptionDeploymentStackTemplate
 		# --- ExportByNameParameterSetName ---
 		
 		# Test - Failure - Stack NotFound
-		# TODO: Bug in subscription stack export not returning NotFound
-		#$badStackName = "badStack1928273615"
-		#$exceptionMessage = "DeploymentStack '$badStackName' not found in the curent subscription scope."
-		#Assert-Throws { Export-AzSubscriptionDeploymentStackTemplate -Name $badStackName } $exceptionMessage
+		$badStackName = "badStack1928273615"
+		$exceptionMessage = "DeploymentStack '$badStackName' in active subscription not found."
+		Assert-Throws { Export-AzSubscriptionDeploymentStackTemplate -Name $badStackName } $exceptionMessage
 
 		# Test - Success
 		$deployment = Export-AzSubscriptionDeploymentStackTemplate -Name $rname
@@ -1220,9 +1218,9 @@ function Test-NewAndSetManagementGroupDeploymentStackDenySettings
 		Assert-AreEqual "DenyDelete" $deployment.DenySettings.Mode
 
 		# Test - SET - DenySettingsMode and ApplyToChildScopes
-		$deployment = Set-AzManagementGroupDeploymentStack -Name $rname -ManagementGroupId $mgid -DeploymentSubscriptionId $subId -TemplateFile StacksMGTemplate.json -TemplateParameterFile StacksMGTemplateParams.json -DenySettingsMode DenyDelete -DenySettingsApplyToChildScopes -Location $location -Force
+		$deployment = Set-AzManagementGroupDeploymentStack -Name $rname -ManagementGroupId $mgid -DeploymentSubscriptionId $subId -TemplateFile StacksMGTemplate.json -TemplateParameterFile StacksMGTemplateParams.json -DenySettingsMode DenyWriteAndDelete -DenySettingsApplyToChildScopes -Location $location -Force
 		Assert-AreEqual "succeeded" $deployment.ProvisioningState
-		Assert-AreEqual "DenyDelete" $deployment.DenySettings.Mode
+		Assert-AreEqual "DenyWriteAndDelete" $deployment.DenySettings.Mode
 	}
 
 	finally
@@ -1357,7 +1355,7 @@ function Test-NewAndSetManagementGroupDeploymentStackWithBicep
 	try 
 	{
 		# Test - NewByNameAndManagementGroupAndBicepTemplateFile
-		$deployment = New-AzManagementGroupDeploymentStack -Name $rname -ManagementGroupId $mgid -DeploymentSubscriptionId $subId -TemplateFile StacksMGTemplate.bicep -TemplateParameterFile StacksMGTemplateParams.json -Location $location -DenySettingsMode None -Force
+		$deployment = New-AzManagementGroupDeploymentStack -Name $rname -ManagementGroupId $mgid -DeploymentSubscriptionId $subId -TemplateFile StacksMGTemplate.bicep -TemplateParameterFile StacksMGTemplateParams.bicepparam -Location $location -DenySettingsMode None -Force
 		Assert-AreEqual "succeeded" $deployment.ProvisioningState
 
 		# Test - Set-AzManagementGroupDeploymentStacks
@@ -1513,10 +1511,9 @@ function Test-ExportManagementGroupDeploymentStackTemplate
 		# --- ExportByNameAndManagementGroupId ---
 		
 		# Test - Failure - Stack NotFound
-		# TODO: Bug in management group stack export not returning NotFound
-		# $badStackName = "badStack1928273615"
-		# $exceptionMessage = "DeploymentStack '$badStackName' in Resource Group '$mgid' not found."
-		# Assert-Throws { Export-AzManagementGroupDeploymentStackTemplate -Name $badStackName -ManagementGroupId $mgid } $exceptionMessage
+		$badStackName = "badStack1928273615"
+		$exceptionMessage = "DeploymentStack '$badStackName' in Management Group '$mgid' not found."
+		Assert-Throws { Export-AzManagementGroupDeploymentStackTemplate -Name $badStackName -ManagementGroupId $mgid } $exceptionMessage
 
 		# Test - Success
 		$deployment = Export-AzManagementGroupDeploymentStackTemplate -Name $rname -ManagementGroupId $mgid
