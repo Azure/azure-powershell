@@ -22,7 +22,7 @@
 ## Upcoming Release
 * Added useful examples to the `New-AzVMConfig` help doc.
 * Added new `ResourceId` parameter to the `Get-AzVmss` cmdlet. 
-* Added a message to the user when they provid an outdated image alias to `New-AzVM` via the `-Image` parameter or to `New-AzVmss` via the `-ImageName` parameter.
+* Added a message to the user when they provide an outdated image alias to `New-AzVM` via the `-Image` parameter or to `New-AzVmss` via the `-ImageName` parameter.
   The non-versioned image aliases are being updated to versioned values in October 2023, and this message is to help urge customers to use the newer versioned image alias values. 
 
 ## Version 6.0.0
