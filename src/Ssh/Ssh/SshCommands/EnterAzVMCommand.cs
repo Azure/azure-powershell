@@ -64,20 +64,20 @@ namespace Microsoft.Azure.Commands.Ssh
             ValidateParameters();
             SetResourceType();
  
-            ProgressRecord record = new ProgressRecord(0, "Prepare for starting SSH connection", "Start Preparing");
-            UpdateProgressBar(record, "Start preparing", 0);
+            record = new ProgressRecord(0, "Prepare for starting SSH connection", "Start Preparing");
+            UpdateProgressBar(record, "Setup SSH connection", 0);
 
             string relayInfo = String.Empty;
 
             if (!IsArc() && !ParameterSetName.Equals(IpAddressParameterSet))
             {
                 GetVmIpAddress();
-                UpdateProgressBar(record, "Retrieved the IP address of the target VM", 50);
+                UpdateProgressBar(record, "Retrieved IP address of VM", 50);
             }
             if (IsArc())
             {
                 proxyPath = GetProxyPath();
-                UpdateProgressBar(record, $"Dowloaded SSH Proxy, saved to {proxyPath}", 25);
+                UpdateProgressBar(record, $"Retrieved path to Arc Proxy", 25);
                 relayInfo = ConvertEndpointAccessToBase64String(GetRelayInformation());
                 UpdateProgressBar(record, $"Retrieved Relay Information", 50);
             }

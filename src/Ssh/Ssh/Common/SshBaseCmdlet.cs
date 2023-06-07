@@ -24,6 +24,7 @@ using Microsoft.Azure.Commands.Ssh.Properties;
 using Microsoft.Azure.PowerShell.Ssh.Helpers.HybridConnectivity.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
+using System.Threading;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -55,12 +56,16 @@ namespace Microsoft.Azure.Commands.Ssh
         protected internal const string InteractiveParameterSet = "Interactive";
         protected internal const string ResourceIdParameterSet = "ResourceId";
         protected internal const string IpAddressParameterSet = "IpAddress";
+
+        private const int RelayInfoExpirationInSec = 3600;
+        private const int ServiceConfigDelayInSec = 10;
         #endregion
 
         #region Fields
         protected internal bool deleteKeys;
         protected internal bool deleteCert;
         protected internal string proxyPath;
+        protected internal ProgressRecord record;
 
         protected internal readonly string[] supportedResourceTypes = {
             "Microsoft.HybridCompute/machines",
@@ -103,6 +108,14 @@ namespace Microsoft.Azure.Commands.Ssh
             get
             {
                 return HybridConnectivityClient.HybridConectivityManagementClient.Endpoints;
+            }
+        }
+
+        private IServiceConfigurationsOperations ServiceConfigurationsClient
+        {
+            get
+            {
+                return HybridConnectivityClient.HybridConectivityManagementClient.ServiceConfigurations;
             }
         }
 
@@ -413,7 +426,6 @@ namespace Microsoft.Azure.Commands.Ssh
             ResourceType = types.ElementAt(0);
         }
 
-
         protected internal void UpdateProgressBar(
             ProgressRecord record,
             string statusMessage,
@@ -428,44 +440,40 @@ namespace Microsoft.Azure.Commands.Ssh
         {
             SetResourceId();
             EndpointAccessResource cred;
-                
+
             try
             {
-                cred = EndpointsClient.ListCredentials(ResourceId, "default", 3600);
+                ListCredentialsRequest req = new ListCredentialsRequest(serviceName: "SSH");
+                // put the expires in on a const?
+                cred = EndpointsClient.ListCredentials(ResourceId, "default", RelayInfoExpirationInSec, req);
             }
             catch (PowerShell.Ssh.Helpers.HybridConnectivity.Models.ErrorResponseException exception)
             {
-                if (exception.Response.StatusCode == HttpStatusCode.NotFound)
+                // These operations will not succeed if the user isn't an Owner/Contributor.
+                if (exception.Response.StatusCode == HttpStatusCode.PreconditionFailed)
                 {
-                    try
-                    {
-                        EndpointResource endpoint = new EndpointResource("default", ResourceId);
-                        EndpointsClient.CreateOrUpdate(ResourceId, "default", endpoint);
-                    }
-                    catch (PowerShell.Ssh.Helpers.HybridConnectivity.Models.ErrorResponseException createEndpointException)
-                    {
-                        if (createEndpointException.Response.StatusCode == HttpStatusCode.Forbidden)
-                        {
-                            throw new AzPSCloudException(Resources.FailedToCreateDefaultEndpointUnauthorized);
-                        }
-                        throw new AzPSCloudException(String.Format(Resources.FailedToCreateDefaultEndpoint, createEndpointException.Message));
-                    }
-
-                    try
-                    {
-                        cred = EndpointsClient.ListCredentials(ResourceId, "default", 3600);
-                    }
-                    catch (Exception listCredException)
-                    {
-                        throw new AzPSCloudException(String.Format(Resources.FailedToListCredentials, listCredException.Message));
-                    }
-
+                    // Service Configuration missing. Attempt to create.
+                    CreateServiceConfiguration();
                 }
-                else
+                else if (exception.Response.StatusCode == HttpStatusCode.NotFound)
                 {
-                    throw new AzPSCloudException(String.Format(Resources.FailedToListCredentials, exception.Message));
+                    // Endpoint is not created. Attempt to create default endpoint and Service config for the port
+                    CreateDefaultEndpoint();
+                    CreateServiceConfiguration();
                 }
+                else { throw exception; }
+
+                cred = CallListCredentials();
+                return cred;
             }
+
+            if (!ServiceConfigurationMatchesTargetPort())
+            {
+                // If Service Configuration needs to be updated to match target port, we need to get the relay information again to get an updated service configuration token.
+                CreateServiceConfiguration();
+                cred = CallListCredentials();
+            }
+
             return cred;
         }
 
@@ -479,6 +487,7 @@ namespace Microsoft.Azure.Commands.Ssh
                 $"\"hybridConnectionName\": \"{cred.HybridConnectionName}\", " +
                 $"\"accessKey\": \"{cred.AccessKey}\", " +
                 $"\"expiresOn\": {cred.ExpiresOn}" +
+                $"\"serviceConfigurationToken\": \"{cred.ServiceConfigurationToken}\"" +
                 "}}";
 
             var bytes = Encoding.UTF8.GetBytes(relayString);
@@ -521,7 +530,6 @@ namespace Microsoft.Azure.Commands.Ssh
             
             throw new AzPSApplicationException(Resources.FailedToFindProxyModule);
         }
-
 
         protected internal void GetVmIpAddress()
         {
@@ -650,6 +658,147 @@ namespace Microsoft.Azure.Commands.Ssh
 
         #region Private Methods
 
+        #region Get Relay Information Private Methods
+        /// <summary>
+        /// Checks if the target port matches the service configuration port 
+        /// </summary>
+        /// <returns> False if target port isn't allowed in the service configuration, True if it is or if we don't have permission to determine that.</returns>
+        private bool ServiceConfigurationMatchesTargetPort()
+        {
+            ServiceConfigurationResource result;
+            try
+            {
+                result = ServiceConfigurationsClient.Get(ResourceId, "default", "SSH");
+            }
+            catch (PowerShell.Ssh.Helpers.HybridConnectivity.Models.ErrorResponseException)
+            {
+                // This will more often than not happen when users don't have Owner/Contributor permission.
+                // Do not terminate execution.
+                return true;
+            }
+
+            if (Port == null && result.Port != 22)
+            {
+                // In this case, we assume that the port might be set in a ssh config file.
+                WriteWarning("Port 22 is not set as de connection port. If you want that to change, provide -Port 22 as a parameter on the first connection or set it manually. See: http://aka.ms/ssharc/allow-ports");
+                return true;
+            }
+
+            if (result.Port != Int32.Parse(Port))
+            {
+                return false;
+            }
+            return true;
+        }
+
+        /// <summary>
+        /// Prompts the user if they would like to update the Service Configuration to allow the target port. If they confirm, perform the operation.
+        /// </summary>
+        /// <exception cref="AzPSApplicationException">User might not have permission to create service config. Fail in that case.</exception>
+        private void CreateServiceConfiguration()
+        {
+            // If the user doesn't provide a port, they might be trying to connect to port 22 or a different port set on ssh_config.
+            string caption = "The port 22 is not allowed for SSH connections in this resource. Would you like to update the current Service Confugration in the endpoint to allow connections to port 22? If you would like to update the Service Configuration to allow connections to a different port, please provide the -Port parameter or manually set up the Service Configuration. For more information see: http://aka.ms/ssharc/allow-ports.";
+            if (Port != null)
+            {
+                caption = $"The port {Port} that you are trying to connect to is not allowed for SSH connections for this resource. Would you like to update the current Service Confugration in the endpoint to allow connections to port {Port}?";
+            }
+
+            Collection<ChoiceDescription> choices = new Collection<ChoiceDescription> { 
+                new ChoiceDescription("N", "No"),
+                new ChoiceDescription("Y", "Yes") 
+            };
+            int userChoice = Host.UI.PromptForChoice(
+                caption: caption,
+                message: "You must have owner or contributor roles in this resource to be able to change the service configuration. For more information see: http://aka.ms/ssharc/allow-ports",
+                choices: choices,
+                defaultChoice: 0);
+            
+            if (userChoice == 0)
+            {
+                throw new AzPSApplicationException($"SSH connection is not enabled in the target port {Port}. For more information see: http://aka.ms/ssharc/allow-ports");
+            }
+
+            ServiceConfigurationResource serviceConfigurationResource = new ServiceConfigurationResource(serviceName: "SSH", port: Int32.Parse(Port));
+            try
+            {
+                var result = ServiceConfigurationsClient.CreateOrupdate(ResourceId, "default", "SSH", serviceConfigurationResource);
+            }
+            catch (PowerShell.Ssh.Helpers.HybridConnectivity.Models.ErrorResponseException exception)
+            {
+                // What is the httpcode?
+                if (exception.Body.Error.Code == "AuthorizationFailed")
+                {
+                    throw new AzPSCloudException($"Client is not authorized to create or update Service Configuration in the endpoint for {Name} in the Resource Group {ResourceGroupName}. This is an operation that must be performed by an account with Owner or Contributor role to allow SSH connections to the specified port {Port}. For more information see: https://aka.ms/ssharc/allow-ports.");
+                }
+                throw new AzPSApplicationException($"Failed to create service configuration to allow SSH connections to port {Port} on the endpoint for {Name} in the Resource Group {ResourceGroupName} with error: {exception.Message}");
+            }
+
+            UpdateProgressBar(record, "Service Configuration Setup", 40);
+            Thread.Sleep(ServiceConfigDelayInSec * 1000);
+        }
+
+        /// <summary>
+        /// Create a default endpoint. Throw an AzPSApplicationException if it fails.
+        /// </summary>
+        /// <returns></returns>
+        /// <exception cref="AzPSApplicationException"></exception>
+        private void CreateDefaultEndpoint()
+        {
+            try
+            {
+                EndpointResource endpoint = new EndpointResource("default", ResourceId);
+                var result = EndpointsClient.CreateOrUpdate(ResourceId, "default", endpoint);
+            }
+            catch (PowerShell.Ssh.Helpers.HybridConnectivity.Models.ErrorResponseException exception)
+            {
+                // what is the httpcode?
+                if (exception.Body.Error.Code == "AuthorizationFailed")
+                {
+                    throw new AzPSApplicationException($"Client is not authorized to create a Default connectivity endpoint for {Name} in the Resource Group {ResourceGroupName}. This is a one-time operation that must be performed by an account with Owner or Contributor role to allow connections to target resource. For more information see: https://aka.ms/ssharc/create-endpoint.");
+                }
+                else
+                {
+                    throw new AzPSApplicationException(String.Format(Resources.FailedToCreateDefaultEndpoint, exception));
+                }
+            }
+        }
+
+        /// <summary>
+        /// Make a call to list credentials.
+        /// </summary>
+        /// <returns>The relay information resource.</returns>
+        /// <exception cref="AzPSApplicationException"></exception>
+        private EndpointAccessResource CallListCredentials()
+        {
+            EndpointAccessResource cred = null;
+            try
+            {
+                ListCredentialsRequest req = new ListCredentialsRequest(serviceName: "SSH");
+                cred = EndpointsClient.ListCredentials(ResourceId, "default", RelayInfoExpirationInSec, req);
+            }
+            catch (PowerShell.Ssh.Helpers.HybridConnectivity.Models.ErrorResponseException exception)
+            {
+                throw new AzPSApplicationException($"Unable to retrieve Relay Information. Failed with error: {exception.Message}.");
+            }
+
+            return cred;
+        }
+
+        private string GetRelayInfoExpiration(EndpointAccessResource cred)
+        {
+            if (cred != null && cred.ExpiresOn != null)
+            {
+                long expiresOn = (long)cred.ExpiresOn;
+                string relayExpiration = DateTimeOffset.FromUnixTimeSeconds(expiresOn).DateTime.ToLocalTime().ToString();
+                return relayExpiration;
+            }
+            return null;
+        }
+
+        #endregion
+
+        #region Arc Proxy Private Methods
         private string SearchForInstalledProxyPath()
         {
             var results = InvokeCommand.InvokeScript(
@@ -701,7 +850,6 @@ namespace Microsoft.Azure.Commands.Ssh
                         writeToPipeline: PipelineResultTypes.Error,
                         input: null,
                         args: null);
-                    Console.Write(results);
                 }
                 catch
                 {
@@ -711,6 +859,57 @@ namespace Microsoft.Azure.Commands.Ssh
             }
             return true;
         }
+
+        private string GetProxyPathInModuleDirectory(string modulePath)
+        {
+            string os;
+            string architecture;
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                os = "windows";
+            }
+            else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+            {
+                os = "linux";
+            }
+            else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+            {
+                os = "darwin";
+            }
+            else
+            {
+                throw new AzPSApplicationException("Operating System not supported.");
+            }
+            // Environment.Is64BitOperatingSystem?
+            if (Environment.Is64BitProcess)
+            {
+                architecture = "amd64";
+            }
+            else
+            {
+                architecture = "386";
+            }
+
+            string parentDirectory = Directory.GetParent(modulePath).FullName;
+            string proxyPattern = $"sshProxy_{os}_{architecture}_*";
+
+            Regex regex = new Regex(proxyPattern);
+            var matches = Directory.EnumerateFiles(parentDirectory).Where(f => regex.IsMatch(f));
+
+            if (matches.Count() > 1)
+            {
+                throw new AzPSApplicationException($"There are more than one sshProxy file for {os} OS and {architecture} architecture in the {parentDirectory} folder ({string.Join(",", matches.ToArray())}). The Az.Ssh.ArcProxy module installed your machine was modified. Please re-install the Az.Ssh.ArcProxy PowerShell module that can be found in the PowerShell Gallery (https://aka.ms/PowerShellGallery-Az.Ssh.ArcProxy).");
+            }
+
+            if (matches.Count() < 1)
+            {
+                throw new AzPSApplicationException($"Couldn't find the sshProxy file for {os} OS and {architecture} architecture in the {parentDirectory} folder. The Az.Ssh.ArcProxy module installed your machine was modified. Please re-install the Az.Ssh.ArcProxy PowerShell module that can be found in the PowerShell Gallery (https://aka.ms/PowerShellGallery-Az.Ssh.ArcProxy).");
+            }
+
+            return matches.First().ToString();
+        }
+
+        #endregion
 
         private void SetResourceId()
         {
@@ -725,7 +924,6 @@ namespace Microsoft.Azure.Commands.Ssh
                 ResourceId = id.ToString();
             }
         }
-
 
         /* This method gets the full path of items that already exist. It checks if the file exist and fails if it doesn't*/
         private string GetResolvedPath(string path, string paramName)
@@ -746,7 +944,7 @@ namespace Microsoft.Azure.Commands.Ssh
             }
             return SessionState.Path.GetUnresolvedProviderPathFromPSPath(path);
         }
-
+        #region AAD Certificate Operations
         private string GetAndWriteCertificate(string publicKeyFile)
         {
             SshCredential certificate = GetAccessToken(publicKeyFile);        
@@ -905,7 +1103,6 @@ namespace Microsoft.Azure.Commands.Ssh
             keygen.WaitForExit();
         }
 
-
         private string CreateTempFolder()
         {
             string prefix = "aadsshcert";
@@ -928,56 +1125,9 @@ namespace Microsoft.Azure.Commands.Ssh
 
             return dirname;
         }
+        #endregion
 
-        private string GetProxyPathInModuleDirectory(string modulePath)
-        {
-            string os;
-            string architecture;
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-            {
-                os = "windows";
-            }
-            else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
-            {
-                os = "linux";
-            }
-            else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
-            {
-                os = "darwin";
-            }
-            else
-            {
-                throw new AzPSApplicationException("Operating System not supported.");
-            }
-            // Environment.Is64BitOperatingSystem?
-            if (Environment.Is64BitProcess)
-            {
-                architecture = "amd64";
-            }
-            else
-            {
-                architecture = "386";
-            }
-
-            string parentDirectory = Directory.GetParent(modulePath).FullName;
-            string proxyPattern = $"sshProxy_{os}_{architecture}_*";
-
-            Regex regex = new Regex(proxyPattern);
-            var matches = Directory.EnumerateFiles(parentDirectory).Where(f => regex.IsMatch(f));
-
-            if (matches.Count() > 1)
-            {
-                throw new AzPSApplicationException($"There are more than one sshProxy file for {os} OS and {architecture} architecture in the {parentDirectory} folder ({string.Join(",", matches.ToArray())}). The Az.Ssh.ArcProxy module installed your machine was modified. Please re-install the Az.Ssh.ArcProxy PowerShell module that can be found in the PowerShell Gallery (https://aka.ms/PowerShellGallery-Az.Ssh.ArcProxy).");
-            }
-
-            if (matches.Count() < 1)
-            {
-                throw new AzPSApplicationException($"Couldn't find the sshProxy file for {os} OS and {architecture} architecture in the {parentDirectory} folder. The Az.Ssh.ArcProxy module installed your machine was modified. Please re-install the Az.Ssh.ArcProxy PowerShell module that can be found in the PowerShell Gallery (https://aka.ms/PowerShellGallery-Az.Ssh.ArcProxy).");
-            }
-
-            return matches.First().ToString();
-        }
-#endregion
+    #endregion
 
     }
 
