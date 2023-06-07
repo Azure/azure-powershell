@@ -29,9 +29,9 @@ jobs:
             $versionChanges = $matches.Groups[2].Value.Trim()
         }
         $jsonData = @{
-          ModuleName = ${{ parameters.ServiceName }}
-          VersionNumber = $versionNumber
-          VersionChanges = $versionChanges
+          ModuleName = "${{ parameters.ServiceName }}"
+          VersionNumber = "$versionNumber"
+          VersionChanges = "$versionChanges"
         }
         $jsonString = $jsonData | ConvertTo-Json
         $jsonString | Out-File -FilePath "VersionInfo.json"
