@@ -19,6 +19,7 @@
 -->
 ## Upcoming Release
 * Increased timeout for Publish-AzWebApp command
+* Fixed Set-AzWebApp isue with `Set-AzWebApp` when piping in Get-AzWebApp object [#21820]
 
 ## Version 3.0.0
 * Removed `New-AzWebAppContainerPSSession` and `Enter-AzWebAppContainerPSSession` cmdlets

@@ -45,30 +45,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkExtensions
             return result;
         }
 
-        public static PSResourceGroupDeployment ToPSResourceGroupDeployment(this DeploymentExtended result, string resourceGroup)
-        {
-            PSResourceGroupDeployment deployment = new PSResourceGroupDeployment();
-
-            if (result != null)
-            {
-                deployment = CreatePSResourceGroupDeployment(result, resourceGroup);
-            }
-
-            return deployment;
-        }
-
-        public static PSDeployment ToPSDeployment(this DeploymentExtended result, string managementGroupId = null, string resourceGroupName = null)
-        {
-            PSDeployment deployment = new PSDeployment();
-
-            if (result != null)
-            {
-                deployment = CreatePSDeployment(result, managementGroupId, resourceGroupName);
-            }
-
-            return deployment;
-        }
-
         public static PSDeploymentOperation ToPSDeploymentOperation(this DeploymentOperation result)
         {
             if (result != null)
@@ -262,90 +238,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkExtensions
             }
 
             return result.ToString();
-        }
-
-        private static PSDeployment CreatePSDeployment(
-            DeploymentExtended deployment,
-            string managementGroupId,
-            string resourceGroup)
-        {
-            PSDeployment deploymentObject = new PSDeployment
-            {
-                Id = deployment.Id,
-                DeploymentName = deployment.Name,
-                Location = deployment.Location,
-                ManagementGroupId = managementGroupId,
-                ResourceGroupName = resourceGroup,
-                Tags = deployment.Tags == null ? new Dictionary<string, string>() : new Dictionary<string, string>(deployment.Tags)
-            };
-
-            SetDeploymentProperties(deploymentObject, deployment.Properties);
-
-            return deploymentObject;
-        }
-
-        private static PSResourceGroupDeployment CreatePSResourceGroupDeployment(
-            DeploymentExtended deployment,
-            string resourceGroup)
-        {
-            PSResourceGroupDeployment deploymentObject = new PSResourceGroupDeployment
-            {
-                DeploymentName = deployment.Name,
-                ResourceGroupName = resourceGroup,
-                Tags = deployment.Tags == null ? null : new Dictionary<string, string>(deployment.Tags)
-            };
-
-            SetDeploymentProperties(deploymentObject, deployment.Properties);
-
-            return deploymentObject;
-        }
-
-        private static void SetDeploymentProperties(PSDeploymentObject deploymentObject, DeploymentPropertiesExtended properties)
-        {
-            if (properties != null)
-            {
-                deploymentObject.Mode = properties.Mode.Value;
-                deploymentObject.ProvisioningState = properties.ProvisioningState;
-                deploymentObject.TemplateLink = properties.TemplateLink;
-                deploymentObject.Timestamp = properties.Timestamp == null ? default(DateTime) : properties.Timestamp.Value;
-                deploymentObject.CorrelationId = properties.CorrelationId;
-
-                if (properties.DebugSetting != null && !string.IsNullOrEmpty(properties.DebugSetting.DetailLevel))
-                {
-                    deploymentObject.DeploymentDebugLogLevel = properties.DebugSetting.DetailLevel;
-                }
-
-                if (properties.Outputs != null)
-                {
-                    Dictionary<string, DeploymentVariable> outputs = JsonConvert.DeserializeObject<Dictionary<string, DeploymentVariable>>(properties.Outputs.ToString());
-                    // Continue deserialize if the type of Value in DeploymentVariable is array
-                    outputs?.Values.ForEach(dv => {
-                        if ("Array".Equals(dv?.Type))
-                        {
-                            dv.Value = JsonConvert.DeserializeObject<object[]>(dv.Value.ToString());
-                        }
-                    });
-                    deploymentObject.Outputs = outputs;
-                }
-
-                if (properties.Parameters != null)
-                {
-                    Dictionary<string, DeploymentVariable> parameters = JsonConvert.DeserializeObject<Dictionary<string, DeploymentVariable>>(properties.Parameters.ToString());
-                    // Continue deserialize if the type of Value in DeploymentVariable is array
-                    parameters?.Values.ForEach(dv => {
-                        if ("Array".Equals(dv?.Type))
-                        {
-                            dv.Value = JsonConvert.DeserializeObject<object[]>(dv.Value.ToString());
-                        }
-                    });
-                    deploymentObject.Parameters = parameters;
-                }
-
-                if (properties.TemplateLink != null)
-                {
-                    deploymentObject.TemplateLinkString = ConstructTemplateLinkView(properties.TemplateLink);
-                }
-            }
         }
 
         public static PSProviderFeature ToPSProviderFeature(this FeatureResult feature)

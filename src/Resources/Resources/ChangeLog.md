@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Updated API version to 2022-09-01
 
 ## Version 6.7.0
 * Added parameter `-CountVariable` for list operations, `odataCount` can now be assigned to this variable [#20982]

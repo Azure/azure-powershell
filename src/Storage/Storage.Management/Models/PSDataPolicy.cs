@@ -290,6 +290,8 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         public PSDateAfterModification TierToCool { get; set; }
         public PSDateAfterModification TierToArchive { get; set; }
         public PSDateAfterModification Delete { get; set; }
+        public PSDateAfterModification TierToCold { get; set; }
+        public PSDateAfterModification TierToHot { get; set; }
         public bool? EnableAutoTierToHotFromCool { get; set; }
 
         public PSManagementPolicyBaseBlob()
@@ -300,15 +302,19 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             this.TierToCool = blobAction.TierToCool is null ? null : new PSDateAfterModification(blobAction.TierToCool);
             this.TierToArchive = blobAction.TierToArchive is null ? null : new PSDateAfterModification(blobAction.TierToArchive);
             this.Delete = blobAction.Delete is null ? null : new PSDateAfterModification(blobAction.Delete);
+            this.TierToCold = blobAction.TierToCold is null ? null : new PSDateAfterModification(blobAction.TierToCold);
+            this.TierToHot = blobAction.TierToHot is null ? null : new PSDateAfterModification(blobAction.TierToHot);
             this.EnableAutoTierToHotFromCool = blobAction.EnableAutoTierToHotFromCool;
         }
         public ManagementPolicyBaseBlob ParseManagementPolicyBaseBlob()
         {
             return new ManagementPolicyBaseBlob()
             {
-                TierToCool = this.TierToCool is null ? null : this.TierToCool.ParseDateAfterModification(),
-                TierToArchive = this.TierToArchive is null ? null : this.TierToArchive.ParseDateAfterModification(),
-                Delete = this.Delete is null ? null : this.Delete.ParseDateAfterModification(),
+                TierToCool = this.TierToCool?.ParseDateAfterModification(),
+                TierToArchive = this.TierToArchive?.ParseDateAfterModification(),
+                Delete = this.Delete?.ParseDateAfterModification(),
+                TierToCold = this.TierToCold?.ParseDateAfterModification(),
+                TierToHot = this.TierToHot?.ParseDateAfterModification(),
                 EnableAutoTierToHotFromCool = this.EnableAutoTierToHotFromCool
             };
         }
@@ -322,6 +328,8 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         public PSDateAfterCreation Delete { get; set; }
         public PSDateAfterCreation TierToCool { get; set; }
         public PSDateAfterCreation TierToArchive { get; set; }
+        public PSDateAfterCreation TierToCold { get; set; }
+        public PSDateAfterCreation TierToHot { get; set; }
 
         public PSManagementPolicySnapShot()
         { }
@@ -331,14 +339,18 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             this.Delete = blobAction.Delete is null ? null : new PSDateAfterCreation(blobAction.Delete);
             this.TierToCool = blobAction.TierToCool is null ? null : new PSDateAfterCreation(blobAction.TierToCool);
             this.TierToArchive = blobAction.TierToArchive is null ? null : new PSDateAfterCreation(blobAction.TierToArchive);
+            this.TierToCold = blobAction.TierToCold is null ? null : new PSDateAfterCreation(blobAction.TierToCold);
+            this.TierToHot = blobAction.TierToHot is null ? null : new PSDateAfterCreation(blobAction.TierToHot);
         }
         public ManagementPolicySnapShot ParseManagementPolicySnapShot()
         {
             return new ManagementPolicySnapShot()
             {
-                Delete = this.Delete is null ? null : this.Delete.ParseDateAfterCreation(),
-                TierToCool = this.TierToCool is null ? null : this.TierToCool.ParseDateAfterCreation(),
-                TierToArchive = this.TierToArchive is null ? null : this.TierToArchive.ParseDateAfterCreation()
+                Delete = this.Delete?.ParseDateAfterCreation(),
+                TierToCool = this.TierToCool?.ParseDateAfterCreation(),
+                TierToArchive = this.TierToArchive?.ParseDateAfterCreation(),
+                TierToCold = this.TierToCold?.ParseDateAfterCreation(),
+                TierToHot = this.TierToHot?.ParseDateAfterCreation()
             };
         }
     }
@@ -351,6 +363,8 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         public PSDateAfterCreation Delete { get; set; }
         public PSDateAfterCreation TierToCool { get; set; }
         public PSDateAfterCreation TierToArchive { get; set; }
+        public PSDateAfterCreation TierToCold { get; set; }
+        public PSDateAfterCreation TierToHot { get; set; }
 
         public PSManagementPolicyVersion()
         { }
@@ -360,14 +374,18 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             this.Delete = blobAction.Delete is null ? null : new PSDateAfterCreation(blobAction.Delete);
             this.TierToCool = blobAction.TierToCool is null ? null : new PSDateAfterCreation(blobAction.TierToCool);
             this.TierToArchive = blobAction.TierToArchive is null ? null : new PSDateAfterCreation(blobAction.TierToArchive);
+            this.TierToCold = blobAction.TierToCold is null ? null : new PSDateAfterCreation(blobAction.TierToCold);
+            this.TierToHot = blobAction.TierToHot is null ? null : new PSDateAfterCreation(blobAction.TierToHot);
         }
         public ManagementPolicyVersion ParseManagementPolicyVersion()
         {
             return new ManagementPolicyVersion()
             {
-                Delete = this.Delete is null ? null : this.Delete.ParseDateAfterCreation(),
-                TierToCool = this.TierToCool is null ? null : this.TierToCool.ParseDateAfterCreation(),
-                TierToArchive = this.TierToArchive is null ? null : this.TierToArchive.ParseDateAfterCreation()
+                Delete = this.Delete?.ParseDateAfterCreation(),
+                TierToCool = this.TierToCool?.ParseDateAfterCreation(),
+                TierToArchive = this.TierToArchive?.ParseDateAfterCreation(),
+                TierToCold = this.TierToCold?.ParseDateAfterCreation(),
+                TierToHot = this.TierToHot?.ParseDateAfterCreation()
             };
         }
     }
