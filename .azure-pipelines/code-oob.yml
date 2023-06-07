@@ -79,13 +79,13 @@ jobs:
     inputs:
       targetType: 'inline'
       script: |
-        Copy-Item .\tools\ModulePublisher.psd1 -Destination $folderPath
-        Copy-Item .\tools\ModulePublisher.psm1 -Destination $folderPath
-        Copy-Item .\tools\NuGet.exe -Destination $folderPath
+        Copy-Item .\tools\ModulePublisher.psd1 -Destination OOB
+        Copy-Item .\tools\ModulePublisher.psm1 -Destination OOB
+        Copy-Item .\tools\NuGet.exe -Destination OOB
   - task: PublishBuildArtifacts@1
     inputs:
-      PathtoPublish: $folderPath
-      ArtifactName: $folderPath
+      PathtoPublish: OOB
+      ArtifactName: OOB
 - template: code-sign.yml
   parameters:
     DependsOn: OOBRelease
