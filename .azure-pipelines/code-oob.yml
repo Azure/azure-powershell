@@ -30,7 +30,7 @@ jobs:
     inputs:
       version: '3.1.x'
   - pwsh: |
-        .\tools\RunVersionController.ps1 -ModuleName ${{ parameters.ServiceName }} 
+        .\tools\RunVersionController.ps1 -ModuleName "Az.${{ parameters.ServiceName }}”
     displayName: 'Bump up version'
   - task: AzurePowerShell@5
     inputs:
@@ -53,18 +53,36 @@ jobs:
             $Description = "Migrate ${{ parameters.ServiceName }} from oob to ${{parameters.TargetBranch}}"
             ./tools/Github/CreatePR.ps1 -Title $Title -HeadBranch $HeadBranch -BaseBranch $BaseBranch -BotAccessToken $Token -Description $Description
     displayName: Create PR to main branch
-  - 
-- task: PowerShell@2
-  inputs:
-    targetType: 'inline'
-    script: |
-     $mdContent = Get-Content -Path "src/Databricks/ChangeLog.md" -Raw
-      $pattern = '(?s)## Version (\d+\.\d+\.\d)+[\s\S]*?\n(.*?)(?=\n## Version \d+\.\d+\.\d+|$)'
-      $matches = [regex]::Match($mdcontent, $pattern)
-      if ($matches.Success) {
-          $versionNumber = $matches.Groups[1].Value
-        $versionChanges = $latestVersion.Matches.Groups[2].Value.Trim()
-      }
+  - task: PowerShell@2
+    inputs:
+      targetType: 'inline'
+      script: |
+        $readme = Get-ChildItem -Path "./src/${{ parameters.ServiceName }}" -name ChangeLog.md -Recurse
+        $mdContent = Get-Content -Path "src/${{ parameters.ServiceName }}/$readme" -Raw
+        $pattern = '(?s)## Version (\d+\.\d+\.\d)+[\s\S]*?\n(.*?)(?=\n## Version \d+\.\d+\.\d+|$)'
+        $matches = [regex]::Match($mdcontent, $pattern)
+        if ($matches.Success) {
+            $versionNumber = $matches.Groups[1].Value
+            $versionChanges = $latestVersion.Matches.Groups[2].Value.Trim()
+        }
+        $jsonData = @{
+          ModuleName = ${{ parameters.ServiceName }}
+          VersionNumber = $versionNumber
+          VersionChanges = $versionChanges
+        }
+        $jsonString = $jsonData | ConvertTo-Json
+        $jsonString | Out-File -FilePath "VersionInfo.json"
+        $folderPath = "VersionInfo"
+        $fileName = "VersionInfo.json"
+        New-Item -ItemType Directory -Force -Path $folderPath | Out-Null
+        $filePath = Join-Path -Path $folderPath -ChildPath $fileName
+        $jsonString | Out-File -FilePath $filePath
+  - task: PublishBuildArtifacts@1
+    inputs:
+      PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+      ArtifactName: 'VersionInfo'
+      publishLocation: 'Container'
+  
 - template: code-sign.yml
   parameters:
     DependsOn: OOBRelease
