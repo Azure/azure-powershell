@@ -44,6 +44,8 @@ using Microsoft.Azure.PowerShell.Ssh.Helpers.HybridConnectivity;
 using System.Management.Automation.Host;
 using System.Management.Automation.Runspaces;
 using System.Collections.ObjectModel;
+using Microsoft.Azure.PowerShell.Ssh.Helpers.HybridCompute.Models;
+using Microsoft.Azure.PowerShell.Ssh.Helpers.HybridCompute;
 
 namespace Microsoft.Azure.Commands.Ssh
 
@@ -116,6 +118,27 @@ namespace Microsoft.Azure.Commands.Ssh
             get
             {
                 return HybridConnectivityClient.HybridConectivityManagementClient.ServiceConfigurations;
+            }
+        }
+
+        private HybridComputeClient HybridComputeClient
+        {
+            get
+            {
+                if (_hybridComputeClient == null)
+                {
+                    _hybridComputeClient = new HybridComputeClient(DefaultProfile.DefaultContext);
+                }
+                return _hybridComputeClient;
+            }
+        }
+        private HybridComputeClient _hybridComputeClient;
+
+        private IMachinesOperations ArcServerClient
+        {
+            get
+            {
+                return HybridComputeClient.HybridComputeManagementClient.Machines;
             }
         }
 
@@ -654,6 +677,42 @@ namespace Microsoft.Azure.Commands.Ssh
             return false;
         }
 
+        protected internal void CheckIfAgentIsUpToDate()
+        {
+            // We don't want any exceptions in this method to cause the execution to fail.
+            if (ResourceGroupName == null && Name == null && ResourceId != null)
+            {
+                ResourceIdentifier parsedId = new ResourceIdentifier(ResourceId);
+                ResourceGroupName = parsedId.ResourceGroupName;
+                Name = parsedId.ResourceName;
+            }
+
+            Machine arcServer = null;
+            try
+            {
+                arcServer = ArcServerClient.Get(ResourceGroupName, Name);
+            }
+            catch (Exception)
+            {
+                return;
+            }
+
+            if (!String.IsNullOrEmpty(arcServer?.AgentVersion))
+            {
+                try
+                {
+                    string[] version = arcServer.AgentVersion.Split('.');
+                    if (Int32.Parse(version[0]) < 1 || Int32.Parse(version[1]) < 31)
+                    {
+                        WriteWarning($"The Arc Agent running in the target namchine {Name} on Resource Group {ResourceGroupName} is an old version {arcServer.AgentVersion}. Please update to the latest version. For instructions see: https://aka.ms/update-arc-agent.");
+                    }
+                }
+                catch (Exception)
+                {
+                    return;
+                }
+            }
+        }
         #endregion
 
         #region Private Methods
