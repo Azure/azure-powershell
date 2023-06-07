@@ -42,8 +42,7 @@ jobs:
         $jsonString | Out-File -FilePath $filePath
   - task: PublishBuildArtifacts@1
     inputs:
-      PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+      PathtoPublish: 'VersionInfo'
       ArtifactName: 'VersionInfo'
-      publishLocation: 'Container'
 
   
