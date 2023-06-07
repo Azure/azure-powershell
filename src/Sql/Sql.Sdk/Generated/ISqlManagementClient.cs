@@ -509,15 +509,13 @@ namespace Microsoft.Azure.Management.Sql
         IManagedDatabasesOperations ManagedDatabases { get; }
 
         /// <summary>
-<<<<<<< HEAD
         /// Gets the IManagedDatabaseMoveOperations.
         /// </summary>
         IManagedDatabaseMoveOperations ManagedDatabaseMoveOperations { get; }
-=======
+
+        /// <summary>
         /// Gets the IFailoverGroupsOperations.
         /// </summary>
         IFailoverGroupsOperations FailoverGroups { get; }
->>>>>>> d8ef7602b6089da8b7188d837cf1f189f99e3b31
-
     }
 }
