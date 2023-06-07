@@ -28,6 +28,7 @@ function New-AzDataMigrationSqlServerSchema
 
     param(
         [Parameter(ParameterSetName='CommandLine', Mandatory, HelpMessage='Required. Select one schema migration action. The valid values are: MigrateSchema, GenerateScript, DeploySchema. MigrateSchema is to migrate the database objects to Azure SQL Database target. GenerateScript is to generate an editable TSQL schema script that can be used to run on the target to deploy the objects. DeploySchema is to run the TSQL script generated from -GenerateScript action on the target to deploy the objects.')]
+        [Validateset('MigrateSchema', 'GenerateScript', 'DeploySchema', IgnoreCase = $true)]
         [System.String]
         ${Action},
 
@@ -104,16 +105,8 @@ function New-AzDataMigrationSqlServerSchema
             # }
 
             #Collecting data
-            if(('CommandLine') -contains $PSCmdlet.ParameterSetName)
+            if($PSCmdlet.ParameterSetName -eq 'CommandLine')
             {   
-                # Validate the passed Action
-                $actionList = @('migrateschema','generatescript','deployschema')
-                if(-Not $actionList.Contains($Action.ToLower()))
-                {
-                    throw "Please provide valid action value. The valid values are: MigrateSchema, GenerateScript, DeploySchema."
-                    Break;
-                }
-
                 # The array list $splat contains all the parameters that will be passed to '.\SqlSchemaMigration.exe'
                 [System.Collections.ArrayList] $splat = @(
                     '--sourceConnectionString', $SourceConnectionString
