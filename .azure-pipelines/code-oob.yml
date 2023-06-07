@@ -1,4 +1,4 @@
-·parameters:
+parameters:
 - name: TargetBranch
   displayName: Branch this module will generated to
   type: string
@@ -7,10 +7,6 @@
   displayName: Service to OOB release
   type: string
   default: Databricks
-- name: version
-  displayName: Update verison to 
-  type: string
-  default: 1.0.0
 resources:
   repositories:
   - repository: self
