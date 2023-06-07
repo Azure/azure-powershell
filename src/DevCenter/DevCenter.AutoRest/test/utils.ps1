@@ -18,15 +18,44 @@ function setupEnv() {
     # as default. You could change them if needed.
     $env.SubscriptionId = (Get-AzContext).Subscription.Id
     $env.Tenant = (Get-AzContext).Tenant.Id
+    
+
+    $resourceGroup = "pwshRg" + (RandomString -allChars $false -len 6)
+    $managedIdentityName = "pwshMsi" + (RandomString -allChars $false -len 6)
+    $devCenterName = "pwshDc" + (RandomString -allChars $false -len 6)
+    $devCenterName2 = "pwshDc2" + (RandomString -allChars $false -len 6)
+    $projectName = "pwshProj" + (RandomString -allChars $false -len 6)
+    $location = "canadacentral"
+
+    New-AzResourceGroup -Name $resourceGroup -Location canadacentral
+
+    $env.Add("resourceGroup", $resourceGroup)
+    $env.Add("managedIdentityName", $managedIdentityName)
+    $env.Add("devCenterName", $devCenterName)
+    $env.Add("devCenterName2", $devCenterName2)
+    $env.Add("projectName", $projectName)
+    $env.Add("location", $location)
+
+    $devboxTemplate = Get-Content .\test\deploymentTemplates\parameter.json | ConvertFrom-Json
+    $devboxTemplate.parameters.managedIdentityName.value = $managedIdentityName
+    $devboxTemplate.parameters.subscriptionId.value =  $env.SubscriptionId
+    $devboxTemplate.parameters.resourceGroup.value = $resourceGroup
+    $devboxTemplate.parameters.devCenterName.value = $devCenterName
+    $devboxTemplate.parameters.devCenterName2.value = $devCenterName2
+    $devboxTemplate.parameters.projectName.value = $projectName
+    $devboxTemplate.parameters.location.value = $location
+
+    Set-Content -Path .\test\deploymentTemplates\parameter.json -Value (ConvertTo-Json $devboxTemplate)
+
+    New-AzResourceGroupDeployment -TemplateFile .\test\deploymentTemplates\template.json -TemplateParameterFile .\test\deploymentTemplates\parameter.json -Name devboxTemplate -ResourceGroupName $resourceGroup
+    Write-Host -ForegroundColor Magenta "Deployed dev box template"
+
+
     # For any resources you created for test, you should add it to $env here.
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {
         $envFile = 'localEnv.json'
     }
-    New-AzResourceGroup -Name $resourceGroup -Location canadacentral
-
-    $env.Add("resourceGroup", $resourceGroup)
-
     set-content -Path (Join-Path $PSScriptRoot $envFile) -Value (ConvertTo-Json $env)
 }
 function cleanupEnv() {

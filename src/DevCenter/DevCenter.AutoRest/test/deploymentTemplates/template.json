@@ -1,0 +1,122 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "managedIdentityName": {
+            "type": "string"
+        },
+        "subscriptionId": {
+            "type": "string"
+        },
+        "resourceGroup": {
+            "type": "string"
+        },
+        "devCenterName": {
+            "type": "string"
+        },
+        "devCenterName2": {
+            "type": "string"
+        },
+        "projectName": {
+            "type": "string"
+        },
+        "location": {
+            "type": "string"
+        }
+    },
+    "functions": [],
+    "variables": {},
+    "resources": [
+        {
+            "name": "[parameters('managedIdentityName')]",
+            "type": "Microsoft.ManagedIdentity/userAssignedIdentities",
+            "apiVersion": "2023-01-31",
+            "location": "[parameters('location')]"
+        },
+        {
+            "type": "Microsoft.DevCenter/devcenters",
+            "name": "[parameters('devCenterName2')]",
+            "apiVersion": "2023-04-01",
+            "location": "[parameters('location')]"
+        },
+        {
+            "name": "create-devcenter-and-proj",
+            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2022-09-01",
+            "subscriptionId": "[parameters('subscriptionId')]",
+            "resourceGroup": "[parameters('resourceGroup')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.ManagedIdentity/userAssignedIdentities', parameters('managedIdentityName'))]"
+            ],
+            "properties": {
+                "mode": "Incremental",
+                "template": {
+                    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+                    "contentVersion": "1.0.0.0",
+                    "resources": [
+                        {
+                            "type": "Microsoft.DevCenter/devcenters",
+                            "name": "[parameters('devCenterName')]",
+                            "apiVersion": "2023-04-01",
+                            "location": "[parameters('location')]",
+                            "identity": {
+                                "type": "UserAssigned",
+                                "userAssignedIdentities": {
+                                    "[resourceId('Microsoft.ManagedIdentity/userAssignedIdentities', parameters('managedIdentityName'))]": {}
+                                }
+                            }
+                        },
+                        {
+                            "type": "Microsoft.DevCenter/projects",
+                            "name": "[parameters('projectName')]",
+                            "apiVersion": "2023-04-01",
+                            "location": "[parameters('location')]",
+                            "properties": {
+                                "devCenterId": "[resourceId('Microsoft.DevCenter/devcenters', parameters('devCenterName'))]"
+
+                            },
+                            "dependsOn": [
+                                "[resourceId('Microsoft.DevCenter/devcenters', parameters('devCenterName'))]"
+                            ]
+
+                        }
+
+                    ]
+                }
+            }
+        }
+        // attached network, dev box definition, pool, make it depend on network connection and create-devcenter-and-proj deployment
+        // {
+        //     "name": "create-pool",
+        //     "type": "Microsoft.Resources/deployments",
+        //     "apiVersion": "2022-09-01",
+        //     "subscriptionId": "[parameters('devBoxSubscriptionId')]",
+        //     "resourceGroup": "[parameters('devBoxResourceGroupName')]",
+        //     "dependsOn": [
+        //         "[resourceId('Microsoft.Resources/deployments', 'create-devcenter')]"
+        //     ],
+        //     "properties": {
+        //         "mode": "Incremental",
+        //         "template": {
+        //             "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+        //             "contentVersion": "1.0.0.0",
+        //             "resources": [
+        //                 {
+        //                     "type": "Microsoft.DevCenter/projects",
+        //                     "name": "[parameters('projectName')]",
+        //                     "apiVersion": "2023-04-01",
+        //                     "location": "[parameters('location')]",
+        //                     "properties": {
+        //                         "type": "UserAssigned"
+
+        //                     }
+
+        //                 }
+        //             ]
+        //         }
+        //     }
+        // }
+
+    ],
+    "outputs": {}
+}

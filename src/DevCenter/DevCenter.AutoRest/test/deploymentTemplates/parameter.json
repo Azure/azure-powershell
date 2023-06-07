@@ -1,0 +1,27 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "managedIdentityName": {
+      "value": "pwshMsi5dkye8"
+    },
+    "subscriptionId": {
+      "value": "3de261df-f2d8-4c00-a0ee-a0be30f1e48e"
+    },
+    "resourceGroup": {
+      "value": "pwshRgfzc56j"
+    },
+    "devCenterName": {
+      "value": "pwshDccwt7qh"
+    },
+    "devCenterName2": {
+      "value": "pwshDc23cv75m"
+    },
+    "projectName": {
+      "value": "pwshProj4x3p2h"
+    },
+    "location": {
+      "value": "canadacentral"
+    }
+  }
+}
