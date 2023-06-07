@@ -23,6 +23,11 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
     internal interface IAzContext
     {
         /// <summary>
+        /// Gets the installation id that's associate with an Azure cli command.
+        /// </summary>
+        public string InstallationId { get; }
+
+        /// <summary>
         /// Gets the hashed user account id. A empty string if the user doesn't log in.
         /// </summary>
         public string HashUserId { get; }

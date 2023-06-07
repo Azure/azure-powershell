@@ -16,12 +16,14 @@ using Microsoft.Azure.PowerShell.Tools.AzPredictor.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Management.Automation;
 using System.Management.Automation.Runspaces;
 using System.Net.NetworkInformation;
 using System.Security.Cryptography;
 using System.Text;
+using System.Text.Json;
 
 namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 {
@@ -32,7 +34,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
     {
         private const string InternalUserSuffix = "@microsoft.com";
         private static readonly Version DefaultVersion = new Version("0.0.0.0");
-        private IPowerShellRuntime _powerShellRuntime;
+        private readonly IPowerShellRuntime _powerShellRuntime;
 
         /// <inheritdoc/>
         public Version AzVersion { get; private set; } = DefaultVersion;
@@ -60,6 +62,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                 return _cohort.Value;
             }
         }
+
+        public string InstallationId => new Lazy<string>(GetAzureCLIInstallationId).Value;
 
         /// <inheritdoc/>
         public string HashUserId { get; private set; } = string.Empty;
@@ -244,6 +248,27 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                                                            nic.OperationalStatus == OperationalStatus.Up &&
                                                            !string.IsNullOrWhiteSpace(nic.GetPhysicalAddress()?.ToString()))?
                                     .GetPhysicalAddress()?.ToString();
+        }
+
+        private static string GetAzureCLIInstallationId()
+        {
+            // Check if a file exists.
+            if (File.Exists(AzCLIProfileInfo.AzCLIProfileFile))
+            {
+                try
+                {
+                    AzCLIProfileInfo azInfo = JsonSerializer.Deserialize<AzCLIProfileInfo>(File.ReadAllText(AzCLIProfileInfo.AzCLIProfileFile), JsonUtilities.DefaultSerializerOptions);
+                    if (!string.IsNullOrEmpty(azInfo?.installationId))
+                    {
+                        return azInfo.installationId;
+                    }
+                }
+                catch
+                {
+                }
+            }
+
+            return null;
         }
     }
 }

@@ -54,16 +54,18 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Utilities
         /// <summary>
         /// Creates common telemetry properties.
         /// </summary>
+        /// <param name="azContext">The current Azure PowerShell context.</param>
         public static IDictionary<string, string> CreateCommonProperties(IAzContext azContext) => new Dictionary<string, string>()
             {
-                { "SessionId", TelemetryUtilities.SessionId },
+                { "SessionId", SessionId },
                 { "Cohort", azContext.Cohort.ToString(CultureInfo.InvariantCulture) },
-                { "UserId", azContext.HashUserId },
+                { "InstallationId", azContext.InstallationId },
                 { "IsInternal", azContext.IsInternal.ToString(CultureInfo.InvariantCulture) },
                 { "HashMacAddress", azContext.MacAddress },
                 { "PowerShellVersion", azContext.PowerShellVersion.ToString() },
                 { "ModuleVersion", azContext.ModuleVersion.ToString() },
                 { "OS", azContext.OSVersion },
+                { "AzVersion", azContext.AzVersion.ToString() },
             };
     }
 }

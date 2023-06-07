@@ -19,8 +19,6 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
-using System.Management.Automation.Language;
-using System.Management.Automation.Subsystem.Prediction;
 using System.Text.Json;
 using System.Threading.Tasks.Dataflow;
 
@@ -32,11 +30,17 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
     /// </summary>
     internal class AzPredictorTelemetryClient : ITelemetryClient, IDisposable
     {
-        // The maximum size we can have in the telemetry property
-        // Application Insight has a limit of 8192 (https://github.com/MicrosoftDocs/azure-docs/blob/master/includes/application-insights-limits.md).
-        // Substract (arbitrary but hopefully enough) 100 as the buffer of other properties in the event.
         internal const int MaxAppInsightPropertyValueSize = 8192;
-        internal const int MaxPropertyValueSizeWithBuffer = MaxAppInsightPropertyValueSize - 100;
+
+        /// <summary>
+        /// The maximum size we can have in the telemetry property
+        /// </summary>
+        /// <remarks>
+        /// Application Insight has a limit of 8192 (https://github.com/MicrosoftDocs/azure-docs/blob/master/includes/application-insights-limits.md).
+        /// Substract (arbitrary but hopefully enough) 500 (this should cover the common properties) as the buffer of other properties in the event.
+        /// </remarks>
+        /// <seealso cref="TelemetryUtilities.CreateCommonProperties" />
+        internal const int MaxPropertyValueSizeWithBuffer = MaxAppInsightPropertyValueSize - 500;
 
         /// <inheritdoc/>
         public string RequestId { get; set; } = Guid.NewGuid().ToString();
