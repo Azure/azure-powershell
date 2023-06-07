@@ -1,4 +1,4 @@
-parameters:
+·parameters:
 - name: TargetBranch
   displayName: Branch this module will generated to
   type: string
@@ -30,7 +30,7 @@ jobs:
         $matches = [regex]::Match($mdcontent, $pattern)
         if ($matches.Success) {
             $versionNumber = $matches.Groups[1].Value
-            $versionChanges = $latestVersion.Matches.Groups[2].Value.Trim()
+            $versionChanges = $matches.Groups[2].Value.Trim()
         }
         $jsonData = @{
           ModuleName = ${{ parameters.ServiceName }}
