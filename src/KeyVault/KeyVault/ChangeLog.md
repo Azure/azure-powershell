@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 4.11.0
+* Arm template leveraged for `New-AzKeyvault`.
+
 ## Version 4.10.0
 * Added breaking change announcement for parameter `SoftDeleteRetentionInDays` in `New-AzKeyVaultManagedHsm`. The parameter `SoftDeleteRetentionInDays` is becoming mandatory
     - This change will take effect on version 6.0.0
