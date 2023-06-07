@@ -12,18 +12,6 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
-function Check-CmdletReturnType
-{
-    param($cmdletName, $cmdletReturn)
-
-    $cmdletData = Get-Command $cmdletName
-    Assert-NotNull $cmdletData
-    [array]$cmdletReturnTypes = $cmdletData.OutputType.Name | Foreach-Object { return ($_ -replace "Microsoft.Azure.Commands.Network.Models.","") }
-    [array]$cmdletReturnTypes = $cmdletReturnTypes | Foreach-Object { return ($_ -replace "System.","") }
-    $realReturnType = $cmdletReturn.GetType().Name -replace "Microsoft.Azure.Commands.Network.Models.",""
-    return $cmdletReturnTypes -contains $realReturnType
-}
-
 <#
 .SYNOPSIS
 Test creating new NetworkVirtualApplianceConnection
