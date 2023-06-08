@@ -16,7 +16,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzDevCenterAdminDevCenter
 
 Describe 'Get-AzDevCenterAdminDevCenter' {
     It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        $listOfDevCenters = Get-AzDevCenterAdminDevCenter
+        $listOfDevCenters.Count | Should -BeGreaterOrEqual 2
     }
 
     It 'Get' {

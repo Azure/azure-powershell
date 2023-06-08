@@ -140,10 +140,8 @@ param(
     ${ProxyUseDefaultCredentials}
 )
 
+#Customization to remove "List"
 process {
-    $Default = "default"
-    $null = $PSBoundParameters.Add("Name", $Default)
-
-    Az.DevCenterdata.internal\Get-AzDevCenterAdminSchedule @PSBoundParameters
+    Az.DevCenter.internal\Get-AzDevCenterAdminSchedule @PSBoundParameters
   }
 }

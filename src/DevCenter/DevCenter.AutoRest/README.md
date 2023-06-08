@@ -63,7 +63,6 @@ directive:
       default:
         script: '"StopDevBox"'
   - where:
-      verb: ^(?!Get$)
       subject: Schedule
       parameter-name: Name
     hide: true

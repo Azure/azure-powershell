@@ -16,14 +16,21 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzDevCenterAdminPool'))
 
 Describe 'Get-AzDevCenterAdminPool' {
     It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        $listOfPools = Get-AzDevCenterAdminPool -ResourceGroupName $env.resourceGroup -ProjectName $env.projectName
+        
+        $listOfPools.Count | Should -BeGreaterOrEqual 2
     }
 
     It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        $pool = Get-AzDevCenterAdminPool -ResourceGroupName $env.resourceGroup -Name $env.poolName -ProjectName $env.projectName
+
+        $pool.Name | Should -Be $env.poolName
     }
 
     It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        $pool = Get-AzDevCenterAdminPool -ResourceGroupName $env.resourceGroup -Name $env.poolName -ProjectName $env.projectName
+        $pool = Get-AzDevCenterAdminPool -InputObject $pool
+
+        $pool.Name | Should -Be $env.poolName
     }
 }
