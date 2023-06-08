@@ -27,9 +27,17 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestManagedDatabaseMoveByNameParameterSet()
+        public void TestManagedDatabaseMove()
         {
-            TestRunner.RunTestScript("Test-ManagedDatabaseMoveByNameParameterSet");
+            TestRunner.RunTestScript("Test-ManagedDatabaseMove");
+        }
+
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestManagedDatabaseMoveByPiping()
+        {
+            TestRunner.RunTestScript("Test-ManagedDatabaseMovePiping");
         }
     }
 }
