@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The type of this virtual network gateway: Vpn, ExoressRoute, LocalGateway")]
+            HelpMessage = "The type of this virtual network gateway: Vpn, ExpressRoute, LocalGateway")]
         [ValidateSet(
             MNM.VirtualNetworkGatewayType.Vpn,
             MNM.VirtualNetworkGatewayType.ExpressRoute,
@@ -315,6 +315,19 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Property to indicate if the Express Route Gateway serves traffic when there are multiple Express Route Gateways in the vnet: Enabled/Disabled")]
+        [ValidateSet(
+            "Enabled",
+            "Disabled",
+            IgnoreCase = true)]
+        [PSArgumentCompleter(
+            "Enabled",
+            "Disabled")]
+        public string AdminState  { get; set; }
 
         public override void Execute()
         {
@@ -620,6 +633,16 @@ namespace Microsoft.Azure.Commands.Network
                 vnetGateway.NatRules = this.NatRule?.ToList();
             }
 
+            if (this.AdminState != null)
+            {
+                if (!GatewayType.Equals(MNM.VirtualNetworkGatewayType.ExpressRoute.ToString(), StringComparison.InvariantCultureIgnoreCase))
+                {
+                    throw new ArgumentException("AdminState parameter is only supported for Express Route gateways.");
+                }
+
+                vnetGateway.AdminState = this.AdminState;
+            }
+                
             // Set the EnableBgpRouteTranslationForNat, if it is specified by customer.
             vnetGateway.EnableBgpRouteTranslationForNat = EnableBgpRouteTranslationForNat.IsPresent;
 
