@@ -1,0 +1,163 @@
+---
+Module Name: Az.PaloAltoNetworks
+Module Guid: 787ef00f-9345-469d-9156-0654cdc69286
+Download Help Link: https://learn.microsoft.com/powershell/module/az.paloaltonetworks
+Help Version: 1.0.0.0
+Locale: en-US
+---
+
+# Az.PaloAltoNetworks Module
+## Description
+Microsoft Azure PowerShell: PaloAltoNetworks cmdlets
+
+## Az.PaloAltoNetworks Cmdlets
+### [Get-AzPaloAltoNetworksFirewall](Get-AzPaloAltoNetworksFirewall.md)
+Get a FirewallResource
+
+### [Get-AzPaloAltoNetworksFirewallLogProfile](Get-AzPaloAltoNetworksFirewallLogProfile.md)
+Log Profile for Firewall
+
+### [Get-AzPaloAltoNetworksFirewallStatus](Get-AzPaloAltoNetworksFirewallStatus.md)
+Get a FirewallStatusResource
+
+### [Get-AzPaloAltoNetworksFirewallSupportInfo](Get-AzPaloAltoNetworksFirewallSupportInfo.md)
+support info for firewall.
+
+### [Get-AzPaloAltoNetworksFqdnListLocalRulestack](Get-AzPaloAltoNetworksFqdnListLocalRulestack.md)
+Get a FqdnListLocalRulestackResource
+
+### [Get-AzPaloAltoNetworksLocalRule](Get-AzPaloAltoNetworksLocalRule.md)
+Get a LocalRulesResource
+
+### [Get-AzPaloAltoNetworksLocalRuleCounter](Get-AzPaloAltoNetworksLocalRuleCounter.md)
+Get counters
+
+### [Get-AzPaloAltoNetworksLocalRulestack](Get-AzPaloAltoNetworksLocalRulestack.md)
+Get a LocalRulestackResource
+
+### [Get-AzPaloAltoNetworksLocalRulestackAdvancedSecurityObject](Get-AzPaloAltoNetworksLocalRulestackAdvancedSecurityObject.md)
+Get the list of advanced security objects
+
+### [Get-AzPaloAltoNetworksLocalRulestackAppId](Get-AzPaloAltoNetworksLocalRulestackAppId.md)
+List of AppIds for LocalRulestack ApiVersion
+
+### [Get-AzPaloAltoNetworksLocalRulestackChangeLog](Get-AzPaloAltoNetworksLocalRulestackChangeLog.md)
+Get changelog
+
+### [Get-AzPaloAltoNetworksLocalRulestackCountry](Get-AzPaloAltoNetworksLocalRulestackCountry.md)
+List of countries for Rulestack
+
+### [Get-AzPaloAltoNetworksLocalRulestackFirewall](Get-AzPaloAltoNetworksLocalRulestackFirewall.md)
+List of Firewalls associated with Rulestack
+
+### [Get-AzPaloAltoNetworksLocalRulestackPredefinedUrlCategory](Get-AzPaloAltoNetworksLocalRulestackPredefinedUrlCategory.md)
+List predefined URL categories for rulestack
+
+### [Get-AzPaloAltoNetworksLocalRulestackSecurityService](Get-AzPaloAltoNetworksLocalRulestackSecurityService.md)
+List the security services for rulestack
+
+### [Get-AzPaloAltoNetworksLocalRulestackSupportInfo](Get-AzPaloAltoNetworksLocalRulestackSupportInfo.md)
+support info for rulestack.
+
+### [Get-AzPaloAltoNetworksPostRule](Get-AzPaloAltoNetworksPostRule.md)
+Get a PostRulesResource
+
+### [Get-AzPaloAltoNetworksPostRuleCounter](Get-AzPaloAltoNetworksPostRuleCounter.md)
+Get counters
+
+### [Get-AzPaloAltoNetworksPrefixListLocalRulestack](Get-AzPaloAltoNetworksPrefixListLocalRulestack.md)
+Get a PrefixListResource
+
+### [Get-AzPaloAltoNetworksPreRule](Get-AzPaloAltoNetworksPreRule.md)
+Get a PreRulesResource
+
+### [Get-AzPaloAltoNetworksPreRuleCounter](Get-AzPaloAltoNetworksPreRuleCounter.md)
+Get counters
+
+### [Invoke-AzPaloAltoNetworksCommitLocalRulestack](Invoke-AzPaloAltoNetworksCommitLocalRulestack.md)
+Commit rulestack configuration
+
+### [Invoke-AzPaloAltoNetworksRevertLocalRulestack](Invoke-AzPaloAltoNetworksRevertLocalRulestack.md)
+Revert rulestack configuration
+
+### [New-AzPaloAltoNetworksFirewall](New-AzPaloAltoNetworksFirewall.md)
+Create a FirewallResource
+
+### [New-AzPaloAltoNetworksFqdnListLocalRulestack](New-AzPaloAltoNetworksFqdnListLocalRulestack.md)
+Create a FqdnListLocalRulestackResource
+
+### [New-AzPaloAltoNetworksFrontendSettingObject](New-AzPaloAltoNetworksFrontendSettingObject.md)
+Create an in-memory object for FrontendSetting.
+
+### [New-AzPaloAltoNetworksIPAddressObject](New-AzPaloAltoNetworksIPAddressObject.md)
+Create an in-memory object for IPAddress.
+
+### [New-AzPaloAltoNetworksLocalRule](New-AzPaloAltoNetworksLocalRule.md)
+Create a LocalRulesResource
+
+### [New-AzPaloAltoNetworksLocalRulestack](New-AzPaloAltoNetworksLocalRulestack.md)
+Create a LocalRulestackResource
+
+### [New-AzPaloAltoNetworksLogSettingsObject](New-AzPaloAltoNetworksLogSettingsObject.md)
+Create an in-memory object for LogSettings.
+
+### [New-AzPaloAltoNetworksNetworkProfileObject](New-AzPaloAltoNetworksNetworkProfileObject.md)
+Create an in-memory object for NetworkProfile.
+
+### [New-AzPaloAltoNetworksPostRule](New-AzPaloAltoNetworksPostRule.md)
+Create a PostRulesResource
+
+### [New-AzPaloAltoNetworksPrefixListLocalRulestack](New-AzPaloAltoNetworksPrefixListLocalRulestack.md)
+Create a PrefixListResource
+
+### [New-AzPaloAltoNetworksPreRule](New-AzPaloAltoNetworksPreRule.md)
+Create a PreRulesResource
+
+### [Remove-AzPaloAltoNetworksFirewall](Remove-AzPaloAltoNetworksFirewall.md)
+Delete a FirewallResource
+
+### [Remove-AzPaloAltoNetworksFqdnListLocalRulestack](Remove-AzPaloAltoNetworksFqdnListLocalRulestack.md)
+Delete a FqdnListLocalRulestackResource
+
+### [Remove-AzPaloAltoNetworksLocalRule](Remove-AzPaloAltoNetworksLocalRule.md)
+Delete a LocalRulesResource
+
+### [Remove-AzPaloAltoNetworksLocalRulestack](Remove-AzPaloAltoNetworksLocalRulestack.md)
+Delete a LocalRulestackResource
+
+### [Remove-AzPaloAltoNetworksPostRule](Remove-AzPaloAltoNetworksPostRule.md)
+Delete a PostRulesResource
+
+### [Remove-AzPaloAltoNetworksPrefixListLocalRulestack](Remove-AzPaloAltoNetworksPrefixListLocalRulestack.md)
+Delete a PrefixListResource
+
+### [Remove-AzPaloAltoNetworksPreRule](Remove-AzPaloAltoNetworksPreRule.md)
+Delete a PreRulesResource
+
+### [Reset-AzPaloAltoNetworksLocalRuleCounter](Reset-AzPaloAltoNetworksLocalRuleCounter.md)
+Reset counters
+
+### [Reset-AzPaloAltoNetworksPostRuleCounter](Reset-AzPaloAltoNetworksPostRuleCounter.md)
+Reset counters
+
+### [Reset-AzPaloAltoNetworksPreRuleCounter](Reset-AzPaloAltoNetworksPreRuleCounter.md)
+Reset counters
+
+### [Save-AzPaloAltoNetworksFirewallLogProfile](Save-AzPaloAltoNetworksFirewallLogProfile.md)
+Log Profile for Firewall
+
+### [Update-AzPaloAltoNetworksFirewall](Update-AzPaloAltoNetworksFirewall.md)
+Update a FirewallResource
+
+### [Update-AzPaloAltoNetworksLocalRuleCounter](Update-AzPaloAltoNetworksLocalRuleCounter.md)
+Refresh counters
+
+### [Update-AzPaloAltoNetworksLocalRulestack](Update-AzPaloAltoNetworksLocalRulestack.md)
+Update a LocalRulestackResource
+
+### [Update-AzPaloAltoNetworksPostRuleCounter](Update-AzPaloAltoNetworksPostRuleCounter.md)
+Refresh counters
+
+### [Update-AzPaloAltoNetworksPreRuleCounter](Update-AzPaloAltoNetworksPreRuleCounter.md)
+Refresh counters
+
