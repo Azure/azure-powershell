@@ -86,6 +86,6 @@ jobs:
     inputs:
       PathtoPublish: OOB
       ArtifactName: OOB
-- template: code-sign.yml
+- template: code-sign.yml@refs/heads/codeoob/${{ parameters.ServiceName }}
   parameters:
     DependsOn: OOBRelease
