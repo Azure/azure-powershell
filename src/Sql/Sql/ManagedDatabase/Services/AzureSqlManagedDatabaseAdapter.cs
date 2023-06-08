@@ -265,22 +265,22 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Services
         {
             if (OperationMode.COPY.Equals(model.OperationMode))
             {
-                Communicator.Copy(model.ResourceGroupName, model.ManagedInstanceName, model.Name, model.getTargetManagedDatabaseId());
+                Communicator.Copy(model.ResourceGroupName, model.InstanceName, model.DatabaseName, model.getTargetManagedDatabaseId());
             }
             else
             {
-                Communicator.Move(model.ResourceGroupName, model.ManagedInstanceName, model.Name, model.getTargetManagedDatabaseId());
+                Communicator.Move(model.ResourceGroupName, model.InstanceName, model.DatabaseName, model.getTargetManagedDatabaseId());
             }
         }
 
         public void CompleteMove(MoveCopyManagedDatabaseModel model)
         {
-            Communicator.CompleteMoveCopy(model.ResourceGroupName, model.ManagedInstanceName, model.Name, model.getTargetManagedDatabaseId());
+            Communicator.CompleteMoveCopy(model.ResourceGroupName, model.InstanceName, model.DatabaseName, model.getTargetManagedDatabaseId());
         }
 
         public void CancelMove(MoveCopyManagedDatabaseModel model)
         {
-            Communicator.CancelMoveCopy(model.ResourceGroupName, model.ManagedInstanceName, model.Name, model.getTargetManagedDatabaseId());
+            Communicator.CancelMoveCopy(model.ResourceGroupName, model.InstanceName, model.DatabaseName, model.getTargetManagedDatabaseId());
         }
 
         public IList<ManagedDatabaseMoveCopyOperation> ListMoveCopyOperations(MoveCopyManagedDatabaseModel model, bool onlyLatestPerDatabase)
@@ -288,9 +288,9 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Services
             return Communicator.GetMoveOperations(
                 model.ResourceGroupName,
                 model.Location,
-                model.ManagedInstanceName,
-                model.Name,
-                model.TargetManagedInstanceName,
+                model.InstanceName,
+                model.DatabaseName,
+                model.TargetInstanceName,
                 model.OperationMode,
                 onlyLatestPerDatabase)
                 .Select(operation => new ManagedDatabaseMoveCopyOperation(operation))

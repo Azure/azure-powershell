@@ -34,12 +34,12 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Model
         /// <summary>
         /// Gets or sets the name of the managed instance
         /// </summary>
-        public string ManagedInstanceName { get; set; }
+        public string InstanceName { get; set; }
 
         /// <summary>
         /// Gets or sets the name of the managed database
         /// </summary>
-        public string Name { get; set; }
+        public string DatabaseName { get; set; }
 
         /// <summary>
         /// Gets or sets the name of the target resource group
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Model
         /// <summary>
         /// Gets or sets the name of the target managed instance
         /// </summary>
-        public string TargetManagedInstanceName { get; set; }
+        public string TargetInstanceName { get; set; }
 
         /// <summary>
         /// Gets or sets the operation type
@@ -67,9 +67,9 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Model
             {
                 Subscription = SubscriptionId,
                 ResourceGroupName = TargetResourceGroupName,
-                ParentResource = $"managedInstances/{TargetManagedInstanceName}",
+                ParentResource = $"managedInstances/{TargetInstanceName}",
                 ResourceType = "Microsoft.Sql/managedInstances/databases",
-                ResourceName = Name,
+                ResourceName = DatabaseName,
             };
             return managedDatabaseResourceId.ToString();
         }

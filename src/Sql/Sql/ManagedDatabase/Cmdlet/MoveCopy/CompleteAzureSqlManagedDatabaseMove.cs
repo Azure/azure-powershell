@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
         public SwitchParameter Force { get; set; }
 
 
-        [Parameter(Mandatory = true, ParameterSetName = "CompleteManagedDatabaseMoveByMoveModelObject", HelpMessage = "Object that is returned from start move operation.")]
+        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = "CompleteManagedDatabaseMoveByMoveModelObject", HelpMessage = "Object that is returned from start move operation.")]
         [ValidateNotNullOrEmpty]
         public MoveCopyManagedDatabaseModel MoveModelObject { get; set; }
 

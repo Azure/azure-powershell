@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
     {
         protected override string ShouldProcessConfirmationMessage => "Complete ongoing managed database copy operation";
 
-        [Parameter(Mandatory = true, ParameterSetName = "CompleteManagedDatabaseCopyByCopyModelObject", HelpMessage = "Object that is returned from start copy operation.")]
+        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = "CompleteManagedDatabaseCopyByCopyModelObject", HelpMessage = "Object that is returned from start copy operation.")]
         [ValidateNotNullOrEmpty]
         public MoveCopyManagedDatabaseModel CopyModelObject { get; set; }
 

@@ -28,6 +28,8 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
         protected const string GetMoveCopyManagedDatabaseOperationsByMoveCopyObjectParameterSet = "GetMoveCopyManagedDatabaseOperationsByMoveCopyObjectParameterSet";
 
         [Parameter(Mandatory = false, HelpMessage = "The name of the instance database.", ParameterSetName = GetMoveCopyManagedDatabaseOperationsByNameParameterSet)]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = GetMoveCopyManagedDatabaseOperationsByInputObjectParameterSet, HelpMessage = "The name of the instance database.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = GetMoveCopyManagedDatabaseOperationsByMoveCopyObjectParameterSet, HelpMessage = "The name of the instance database.")]
         [ValidateNotNullOrEmpty]
         [Alias("Name")]
         [ResourceNameCompleter("Microsoft.Sql/managedInstances/databases", nameof(ResourceGroupName), nameof(InstanceName))]
@@ -36,6 +38,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
         [Parameter(Mandatory = false, HelpMessage = "The name of the target resource group.", ParameterSetName = GetMoveCopyManagedDatabaseOperationsByNameParameterSet)]
         [Parameter(Mandatory = false, HelpMessage = "The name of the target resource group.", ParameterSetName = GetMoveCopyManagedDatabaseOperationsByInputObjectParameterSet)]
         [Parameter(Mandatory = false, HelpMessage = "The name of the target resource group.", ParameterSetName = GetMoveCopyManagedDatabaseOperationsByResourceIdParameterSet)]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = GetMoveCopyManagedDatabaseOperationsByMoveCopyObjectParameterSet, HelpMessage = "The name of the target resource group.")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string TargetResourceGroupName { get; set; }
@@ -43,6 +46,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
         [Parameter(Mandatory = false, HelpMessage = "The name of the target managed instance.", ParameterSetName = GetMoveCopyManagedDatabaseOperationsByNameParameterSet)]
         [Parameter(Mandatory = false, HelpMessage = "The name of the target managed instance.", ParameterSetName = GetMoveCopyManagedDatabaseOperationsByInputObjectParameterSet)]
         [Parameter(Mandatory = false, HelpMessage = "The name of the target managed instance.", ParameterSetName = GetMoveCopyManagedDatabaseOperationsByResourceIdParameterSet)]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = GetMoveCopyManagedDatabaseOperationsByMoveCopyObjectParameterSet, HelpMessage = "The name of the target managed instance.")]
         [ValidateNotNullOrEmpty]
         [ResourceNameCompleter("Microsoft.Sql/managedInstances", nameof(TargetResourceGroupName))]
         public string TargetInstanceName { get; set; }
@@ -71,35 +75,23 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
 
         protected override IList<ManagedDatabaseMoveCopyOperation> GetEntity()
         {
-            switch (ParameterSetName)
+            if (ParameterSetName.Equals(GetMoveCopyManagedDatabaseOperationsByResourceIdParameterSet))
             {
-                case GetMoveCopyManagedDatabaseOperationsByInputObjectParameterSet:
-                    ResourceGroupName = DatabaseObject.ResourceGroupName;
-                    InstanceName = DatabaseObject.ManagedInstanceName;
-                    DatabaseName = DatabaseObject.Name;
-                    break;
-                case GetMoveCopyManagedDatabaseOperationsByResourceIdParameterSet:
-                    var resourceInfo = new ResourceIdentifier(ResourceId);
+                var resourceInfo = new ResourceIdentifier(ResourceId);
 
-                    ResourceGroupName = resourceInfo.ResourceGroupName;
-                    InstanceName = resourceInfo.ParentResource.Substring(resourceInfo.ParentResource.LastIndexOf("/") + 1);
-                    DatabaseName = resourceInfo.ResourceName;
-                    break;
-                case GetMoveCopyManagedDatabaseOperationsByMoveCopyObjectParameterSet:
-                    ResourceGroupName = ModelObject.ResourceGroupName;
-                    InstanceName = ModelObject.ManagedInstanceName;
-                    DatabaseName = ModelObject.Name;
-
-                    return ModelAdapter.ListMoveCopyOperations(ModelObject, OnlyLatestPerDatabase.IsPresent);
+                ResourceGroupName = resourceInfo.ResourceGroupName;
+                InstanceName = resourceInfo.ParentResource.Substring(resourceInfo.ParentResource.LastIndexOf("/") + 1);
+                DatabaseName = resourceInfo.ResourceName;
             }
+
             var location = ModelAdapter.GetManagedInstanceLocation(ResourceGroupName, InstanceName);
             var model = new MoveCopyManagedDatabaseModel()
             {
-                ManagedInstanceName = InstanceName,
-                Name = DatabaseName,
+                InstanceName = InstanceName,
+                DatabaseName = DatabaseName,
                 ResourceGroupName = ResourceGroupName,
                 SubscriptionId = ModelAdapter.Context.Subscription.Id,
-                TargetManagedInstanceName = TargetInstanceName ?? InstanceName,
+                TargetInstanceName = TargetInstanceName ?? InstanceName,
                 TargetResourceGroupName = TargetResourceGroupName ?? ResourceGroupName,
                 Location = location,
                 OperationMode = GetOperationMode(),

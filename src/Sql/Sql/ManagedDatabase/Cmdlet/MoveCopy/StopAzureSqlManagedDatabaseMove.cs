@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
     {
         protected override string ShouldProcessConfirmationMessage => "Stop ongoing managed database move operation";
 
-        [Parameter(Mandatory = true, ParameterSetName = "CancelManagedDatabaseMoveByMoveModelObject", HelpMessage = "Object that is returned from start move operation.")]
+        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = "CancelManagedDatabaseMoveByMoveModelObject", HelpMessage = "Object that is returned from start move operation.")]
         [ValidateNotNullOrEmpty]
         public MoveCopyManagedDatabaseModel MoveModelObject { get; set; }
 
