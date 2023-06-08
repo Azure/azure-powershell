@@ -16,75 +16,72 @@
 
 <#
 .Synopsis
-Migrate TDE certificate(s) from source SQL Server to the target Azure SQL Server.
+Migrate Sql Server Schema from the source Sql Servers to the target Azure Sql Servers.
 .Description
-Migrate TDE certificate(s) from source SQL Server to the target Azure SQL Server.
+Migrate Sql Server Schema from the source Sql Servers to the target Azure Sql Servers.
 .Example
-New-AzDataMigrationTdeCertificateMigration -SourceSqlConnectionString "data source=servername;user id=userid;password=;initial catalog=master;TrustServerCertificate=True" -TargetSubscriptionId "00000000-0000-0000-0000-000000000000" -TargetResourceGroupName "ResourceGroupName" -TargetManagedInstanceName "TargetManagedInstanceName" -NetworkSharePath "\\NetworkShare\Folder" -NetworkShareDomain "NetworkShare" -NetworkShareUserName "NetworkShareUserName" -NetworkSharePassword "NetworkSharePassword" -DatabaseName "TdeDb_0", "TdeDb_1", "TdeDb_2"
+New-AzDataMigrationSqlServerSchema -Action "MigrateSchema" -SourceConnectionString "Server=;Initial Catalog=;User ID=;Password=" -TargetConnectionString "Server=;Initial Catalog=;User ID=;Password=" 
+.Example
+New-AzDataMigrationSqlServerSchema -Action "GenerateScript" -SourceConnectionString "Server=;Initial Catalog=;User ID=;Password=" -TargetConnectionString "Server=;Initial Catalog=;User ID=;Password=" -OutputFolder "C:\OutputFolder"
+.Example
+New-AzDataMigrationSqlServerSchema -Action "DeploySchema" -SourceConnectionString "Server=;Initial Catalog=;User ID=;Password=" -TargetConnectionString "Server=;Initial Catalog=;User ID=;Password=" -InputScriptFilePath "C:\OutputFolder\script.sql"
+.Example
+New-AzDataMigrationSqlServerSchema -ConfigFilePath "C:\configfile.json"
 
 .Outputs
 System.Boolean
 .Link
-https://learn.microsoft.com/powershell/module/az.datamigration/new-azdatamigrationtdecertificatemigration
+https://learn.microsoft.com/powershell/module/az.datamigration/new-azdatamigrationsqlserverschema
 #>
-function New-AzDataMigrationTdeCertificateMigration {
+function New-AzDataMigrationSqlServerSchema {
 [OutputType([System.Boolean])]
-[CmdletBinding(DefaultParameterSetName='CommandLine', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+[CmdletBinding(DefaultParameterSetName='ConfigFile', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CommandLine', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Category('Body')]
-    [System.Security.SecureString]
+    [System.String]
+    # Required.
+    # Select one schema migration action.
+    # The valid values are: MigrateSchema, GenerateScript, DeploySchema.
+    # MigrateSchema is to migrate the database objects to Azure SQL Database target.
+    # GenerateScript is to generate an editable TSQL schema script that can be used to run on the target to deploy the objects.
+    # DeploySchema is to run the TSQL script generated from -GenerateScript action on the target to deploy the objects.
+    ${Action},
+
+    [Parameter(ParameterSetName='CommandLine', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Category('Body')]
+    [System.String]
     # Required.
     # Connection string for the source SQL instance, using the formal connection string format.
-    ${SourceSqlConnectionString},
+    ${SourceConnectionString},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CommandLine', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Category('Body')]
     [System.String]
-    # Subscription Id of the target Azure SQL server.
-    ${TargetSubscriptionId},
+    # Required.
+    # Connection string for the target SQL instance, using the formal connection string format.
+    ${TargetConnectionString},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CommandLine')]
     [Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Category('Body')]
     [System.String]
-    # Resource group name of the target Azure SQL server.
-    ${TargetResourceGroupName},
+    # Optional.
+    # Location of an editable TSQL schema script.
+    # Use this parameter only with DeploySchema Action.
+    ${InputScriptFilePath},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CommandLine')]
     [Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Category('Body')]
     [System.String]
-    # Name of the Azure SQL Server.
-    ${TargetManagedInstanceName},
+    # Optional.
+    # Default: %LocalAppData%/Microsoft/SqlSchemaMigrations) Folder where logs will be written and the generated TSQL schema script by GenerateScript Action.
+    ${OutputFolder},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='ConfigFile', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Category('Body')]
     [System.String]
-    # Network share path.
-    ${NetworkSharePath},
-
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Category('Body')]
-    [System.String]
-    # Network share domain.
-    ${NetworkShareDomain},
-
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Category('Body')]
-    [System.String[]]
-    # Source database name.
-    ${DatabaseName},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Category('Body')]
-    [System.String]
-    # Network share user name.
-    ${NetworkShareUserName},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Category('Body')]
-    [System.Security.SecureString]
-    # Network share password.
-    ${NetworkSharePassword},
+    # Path of the ConfigFile
+    ${ConfigFilePath},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Category('Runtime')]
@@ -118,7 +115,8 @@ begin {
         }
 
         $mapping = @{
-            CommandLine = 'Az.DataMigration.custom\New-AzDataMigrationTdeCertificateMigration';
+            CommandLine = 'Az.DataMigration.custom\New-AzDataMigrationSqlServerSchema';
+            ConfigFile = 'Az.DataMigration.custom\New-AzDataMigrationSqlServerSchema';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
