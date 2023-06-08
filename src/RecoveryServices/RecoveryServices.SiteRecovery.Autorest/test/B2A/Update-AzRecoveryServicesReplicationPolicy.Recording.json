@@ -1,0 +1,159 @@
+{
+  "Update-AzRecoveryServicesReplicationPolicy+[NoContext]+UpdateExpanded+$GET+https://management.azure.com/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ASRTesting/providers/Microsoft.RecoveryServices/vaults/HyperV2AzureVault/replicationPolicies/replicapolicy4h2a?api-version=2023-02-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ASRTesting/providers/Microsoft.RecoveryServices/vaults/HyperV2AzureVault/replicationPolicies/replicapolicy4h2a?api-version=2023-02-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "28" ],
+        "x-ms-client-request-id": [ "8a1678b3-c077-48f9-9e26-4d1cdfec02a3" ],
+        "CommandName": [ "Get-AzRecoveryServicesReplicationPolicy" ],
+        "FullCommandName": [ "Get-AzRecoveryServicesReplicationPolicy_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "8a1678b3-c077-48f9-9e26-4d1cdfec02a3 6/6/2023 11:45:34 AM" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-client-request-id": [ "8a1678b3-c077-48f9-9e26-4d1cdfec02a3" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11990" ],
+        "x-ms-correlation-request-id": [ "b0bac34a-bd71-4a9c-82ea-311378191f3f" ],
+        "x-ms-routing-request-id": [ "CENTRALINDIA:20230606T114534Z:b0bac34a-bd71-4a9c-82ea-311378191f3f" ],
+        "Date": [ "Tue, 06 Jun 2023 11:45:34 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "561" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ASRTesting/providers/Microsoft.RecoveryServices/vaults/HyperV2AzureVault/replicationPolicies/replicapolicy4h2a\",\"name\":\"replicapolicy4h2a\",\"type\":\"Microsoft.RecoveryServices/vaults/replicationPolicies\",\"properties\":{\"friendlyName\":\"replicapolicy4h2a\",\"providerSpecificDetails\":{\"instanceType\":\"HyperVReplicaAzure\",\"recoveryPointHistoryDurationInHours\":10,\"applicationConsistentSnapshotFrequencyInHours\":3,\"replicationInterval\":300,\"encryption\":\"Disabled\",\"activeStorageAccountId\":null}}}"
+    }
+  },
+  "Update-AzRecoveryServicesReplicationPolicy+[NoContext]+UpdateExpanded+$PATCH+https://management.azure.com/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ASRTesting/providers/Microsoft.RecoveryServices/vaults/HyperV2AzureVault/replicationPolicies/replicapolicy4h2a?api-version=2023-02-01+2": {
+    "Request": {
+      "Method": "PATCH",
+      "RequestUri": "https://management.azure.com/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ASRTesting/providers/Microsoft.RecoveryServices/vaults/HyperV2AzureVault/replicationPolicies/replicapolicy4h2a?api-version=2023-02-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"replicationProviderSettings\": {\r\n      \"instanceType\": \"HyperVReplicaAzure\",\r\n      \"recoveryPointHistoryDuration\": 10,\r\n      \"applicationConsistentSnapshotFrequencyInHours\": 3,\r\n      \"replicationInterval\": 300\r\n    }\r\n  }\r\n}",
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "254" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ASRTesting/providers/Microsoft.RecoveryServices/vaults/HyperV2AzureVault/replicationPolicies/replicapolicy4h2a/operationresults/3a297bcb-a9a3-48dc-aaa6-ff382cee11a6?api-version=2023-02-01" ],
+        "Retry-After": [ "30" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ASRTesting/providers/Microsoft.RecoveryServices/vaults/HyperV2AzureVault/replicationJobs/3a297bcb-a9a3-48dc-aaa6-ff382cee11a6", "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ASRTesting/providers/Microsoft.RecoveryServices/vaults/HyperV2AzureVault/replicationJobs/3a297bcb-a9a3-48dc-aaa6-ff382cee11a6" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ASRTesting/providers/Microsoft.RecoveryServices/vaults/HyperV2AzureVault/replicationOperationStatus/3a297bcb-a9a3-48dc-aaa6-ff382cee11a6?api-version=2023-02-01" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-client-request-id": [ "8b74fd95-9c1c-4598-97e9-f1e39ba98f15" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1197" ],
+        "x-ms-correlation-request-id": [ "66b92317-7b0e-4a18-ba64-3709ec862336" ],
+        "x-ms-routing-request-id": [ "CENTRALINDIA:20230606T114535Z:66b92317-7b0e-4a18-ba64-3709ec862336" ],
+        "Date": [ "Tue, 06 Jun 2023 11:45:35 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null
+    }
+  },
+  "Update-AzRecoveryServicesReplicationPolicy+[NoContext]+UpdateExpanded+$GET+https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ASRTesting/providers/Microsoft.RecoveryServices/vaults/HyperV2AzureVault/replicationOperationStatus/3a297bcb-a9a3-48dc-aaa6-ff382cee11a6?api-version=2023-02-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ASRTesting/providers/Microsoft.RecoveryServices/vaults/HyperV2AzureVault/replicationOperationStatus/3a297bcb-a9a3-48dc-aaa6-ff382cee11a6?api-version=2023-02-01",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "30" ],
+        "x-ms-client-request-id": [ "8b74fd95-9c1c-4598-97e9-f1e39ba98f15" ],
+        "CommandName": [ "Az.RecoveryServices.internal\\Update-AzRecoveryServicesReplicationPolicy" ],
+        "FullCommandName": [ "Update-AzRecoveryServicesReplicationPolicy_UpdateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ASRTesting/providers/Microsoft.RecoveryServices/vaults/HyperV2AzureVault/replicationJobs/3a297bcb-a9a3-48dc-aaa6-ff382cee11a6" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-client-request-id": [ "8b74fd95-9c1c-4598-97e9-f1e39ba98f15" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11989" ],
+        "x-ms-correlation-request-id": [ "95a0b0bd-71e9-4e4e-9981-9677dfed78b7" ],
+        "x-ms-routing-request-id": [ "CENTRALINDIA:20230606T114605Z:95a0b0bd-71e9-4e4e-9981-9677dfed78b7" ],
+        "Date": [ "Tue, 06 Jun 2023 11:46:05 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "216" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"error\":null,\"id\":null,\"name\":\"3a297bcb-a9a3-48dc-aaa6-ff382cee11a6\",\"properties\":null,\"status\":\"Succeeded\",\"startTime\":\"2023-06-06T11:45:34.6901651Z\",\"endTime\":\"2023-06-06T11:45:35.0000000Z\",\"percentComplete\":null}"
+    }
+  },
+  "Update-AzRecoveryServicesReplicationPolicy+[NoContext]+UpdateExpanded+$GET+https://management.azure.com/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ASRTesting/providers/Microsoft.RecoveryServices/vaults/HyperV2AzureVault/replicationPolicies/replicapolicy4h2a?api-version=2023-02-01+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ASRTesting/providers/Microsoft.RecoveryServices/vaults/HyperV2AzureVault/replicationPolicies/replicapolicy4h2a?api-version=2023-02-01",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "31" ],
+        "x-ms-client-request-id": [ "8b74fd95-9c1c-4598-97e9-f1e39ba98f15" ],
+        "CommandName": [ "Az.RecoveryServices.internal\\Update-AzRecoveryServicesReplicationPolicy" ],
+        "FullCommandName": [ "Update-AzRecoveryServicesReplicationPolicy_UpdateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "8b74fd95-9c1c-4598-97e9-f1e39ba98f15 6/6/2023 11:46:06 AM" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-client-request-id": [ "8b74fd95-9c1c-4598-97e9-f1e39ba98f15" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11988" ],
+        "x-ms-correlation-request-id": [ "babbf404-e63d-434c-8c0d-2ee1291f7df8" ],
+        "x-ms-routing-request-id": [ "CENTRALINDIA:20230606T114606Z:babbf404-e63d-434c-8c0d-2ee1291f7df8" ],
+        "Date": [ "Tue, 06 Jun 2023 11:46:05 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "561" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ASRTesting/providers/Microsoft.RecoveryServices/vaults/HyperV2AzureVault/replicationPolicies/replicapolicy4h2a\",\"name\":\"replicapolicy4h2a\",\"type\":\"Microsoft.RecoveryServices/vaults/replicationPolicies\",\"properties\":{\"friendlyName\":\"replicapolicy4h2a\",\"providerSpecificDetails\":{\"instanceType\":\"HyperVReplicaAzure\",\"recoveryPointHistoryDurationInHours\":10,\"applicationConsistentSnapshotFrequencyInHours\":3,\"replicationInterval\":300,\"encryption\":\"Disabled\",\"activeStorageAccountId\":null}}}"
+    }
+  }
+}

@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzRecoveryServicesReplicationPolicy
 
 ## SYNOPSIS
-The operation to create a replication policy.
+
 
 ## SYNTAX
 
@@ -19,7 +19,7 @@ New-AzRecoveryServicesReplicationPolicy -PolicyName <String> -ResourceGroupName 
 ```
 
 ## DESCRIPTION
-The operation to create a replication policy.
+
 
 ## EXAMPLES
 
@@ -42,10 +42,28 @@ Location Name        Type
 
 Creates an Azure-To-Azure replication policy in the specified vault in the specified resource group.
 
+### Example 2: Create an HyperV-To-Azure replication policy in a recovery services vault
+```powershell
+$providerSpecificPolicy = [Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.HyperVReplicaAzurePolicyInput]::new()
+$providerSpecificPolicy.ApplicationConsistentSnapshotFrequencyInHour = 3
+$providerSpecificPolicy.RecoveryPointHistoryDuration = 10
+$providerSpecificPolicy.ReplicationScenario = "ReplicateHyperVToAzure"
+$providerSpecificPolicy.ReplicationInterval = 300
+New-AzRecoveryServicesReplicationPolicy -ResourceGroupName "ASRTesting" -ResourceName "HyperV2AzureVault" -PolicyName "replicapolicy4h2a" -ProviderSpecificInput $providerSpecificPolicy
+```
+
+```
+Location Name              Type
+-------- ----              ----
+         replicapolicy4h2a Microsoft.RecoveryServices/vaults/replicationPolicies
+```
+
+Creates an HyperV to Azure replication policy in the specified vault in the specified resource group with the given parameters.
+
 ## PARAMETERS
 
 ### -AsJob
-Run the command as a job
+
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -60,7 +78,7 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -75,7 +93,7 @@ Accept wildcard characters: False
 ```
 
 ### -NoWait
-Run the command asynchronously
+
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -105,7 +123,6 @@ Accept wildcard characters: False
 ```
 
 ### -ProviderSpecificInput
-The ReplicationProviderSettings.
 To construct, see NOTES section for PROVIDERSPECIFICINPUT properties and create a hash table.
 
 ```yaml
@@ -214,7 +231,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-PROVIDERSPECIFICINPUT <IPolicyProviderSpecificInput>: The ReplicationProviderSettings.
+PROVIDERSPECIFICINPUT <IPolicyProviderSpecificInput>: 
   - `ReplicationScenario <String>`: The class type.
 
 ## RELATED LINKS

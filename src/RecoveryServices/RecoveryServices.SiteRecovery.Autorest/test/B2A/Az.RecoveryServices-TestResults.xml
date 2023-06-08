@@ -1,0 +1,1028 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<test-results xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="nunit_schema_2.5.xsd" name="Pester" total="5" errors="0" failures="0" not-run="0" inconclusive="0" ignored="182" skipped="0" invalid="0" date="2023-06-06" time="12:00:44">
+  <environment user="Administrator" os-version="10.0.19044" machine-name="MININT-GE817PC" user-domain="MININT-GE817PC" clr-version="Unknown" platform="Microsoft Windows 10 Enterprise|C:\windows|\Device\Harddisk0\Partition4" cwd="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest" nunit-version="2.5.8.0" />
+  <culture-info current-culture="en-US" current-uiculture="en-US" />
+  <test-suite type="TestFixture" name="Pester" executed="True" result="Ignored" success="True" time="274.1425" asserts="0" description="Pester">
+    <results>
+      <test-suite type="TestFixture" name="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Add-AzRecoveryServicesReplicationProtectedItemDisk.Tests.ps1" executed="True" result="Ignored" success="True" time="3.9535" asserts="0" description="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Add-AzRecoveryServicesReplicationProtectedItemDisk.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Add-AzRecoveryServicesReplicationProtectedItemDisk" executed="True" result="Ignored" success="True" time="1.0405" asserts="0" description="Add-AzRecoveryServicesReplicationProtectedItemDisk">
+            <results>
+              <test-case description="AddExpanded" name="Add-AzRecoveryServicesReplicationProtectedItemDisk.AddExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="Add" name="Add-AzRecoveryServicesReplicationProtectedItemDisk.Add" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Add-AzRecoveryServicesReplicationProtectedItemRecoveryPoint.Tests.ps1" executed="True" result="Ignored" success="True" time="3.6022" asserts="0" description="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Add-AzRecoveryServicesReplicationProtectedItemRecoveryPoint.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Add-AzRecoveryServicesReplicationProtectedItemRecoveryPoint" executed="True" result="Ignored" success="True" time="0.4181" asserts="0" description="Add-AzRecoveryServicesReplicationProtectedItemRecoveryPoint">
+            <results>
+              <test-case description="ApplyExpanded" name="Add-AzRecoveryServicesReplicationProtectedItemRecoveryPoint.ApplyExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="Apply" name="Add-AzRecoveryServicesReplicationProtectedItemRecoveryPoint.Apply" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Clear-AzRecoveryServicesReplicationFabric.Tests.ps1" executed="True" result="Ignored" success="True" time="1.9001" asserts="0" description="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Clear-AzRecoveryServicesReplicationFabric.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Clear-AzRecoveryServicesReplicationFabric" executed="True" result="Ignored" success="True" time="0.129" asserts="0" description="Clear-AzRecoveryServicesReplicationFabric">
+            <results>
+              <test-case description="Purge" name="Clear-AzRecoveryServicesReplicationFabric.Purge" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Clear-AzRecoveryServicesReplicationProtectedItem.Tests.ps1" executed="True" result="Ignored" success="True" time="1.8128" asserts="0" description="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Clear-AzRecoveryServicesReplicationProtectedItem.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Clear-AzRecoveryServicesReplicationProtectedItem" executed="True" result="Ignored" success="True" time="0.1446" asserts="0" description="Clear-AzRecoveryServicesReplicationProtectedItem">
+            <results>
+              <test-case description="Purge" name="Clear-AzRecoveryServicesReplicationProtectedItem.Purge" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Clear-AzRecoveryServicesReplicationProtectionContainerMapping.Tests.ps1" executed="True" result="Ignored" success="True" time="2.177" asserts="0" description="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Clear-AzRecoveryServicesReplicationProtectionContainerMapping.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Clear-AzRecoveryServicesReplicationProtectionContainerMapping" executed="True" result="Ignored" success="True" time="0.1411" asserts="0" description="Clear-AzRecoveryServicesReplicationProtectionContainerMapping">
+            <results>
+              <test-case description="Purge" name="Clear-AzRecoveryServicesReplicationProtectionContainerMapping.Purge" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Clear-AzRecoveryServicesReplicationRecoveryServicesProvider.Tests.ps1" executed="True" result="Ignored" success="True" time="2.3081" asserts="0" description="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Clear-AzRecoveryServicesReplicationRecoveryServicesProvider.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Clear-AzRecoveryServicesReplicationRecoveryServicesProvider" executed="True" result="Ignored" success="True" time="0.1918" asserts="0" description="Clear-AzRecoveryServicesReplicationRecoveryServicesProvider">
+            <results>
+              <test-case description="Purge" name="Clear-AzRecoveryServicesReplicationRecoveryServicesProvider.Purge" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Export-AzRecoveryServicesReplicationJob.Tests.ps1" executed="True" result="Ignored" success="True" time="2.3958" asserts="0" description="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Export-AzRecoveryServicesReplicationJob.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Export-AzRecoveryServicesReplicationJob" executed="True" result="Ignored" success="True" time="0.1453" asserts="0" description="Export-AzRecoveryServicesReplicationJob">
+            <results>
+              <test-case description="ExportExpanded" name="Export-AzRecoveryServicesReplicationJob.ExportExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="Export" name="Export-AzRecoveryServicesReplicationJob.Export" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Find-AzRecoveryServicesReplicationProtectionContainerProtectableItem.Tests.ps1" executed="True" result="Ignored" success="True" time="2.1539" asserts="0" description="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Find-AzRecoveryServicesReplicationProtectionContainerProtectableItem.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Find-AzRecoveryServicesReplicationProtectionContainerProtectableItem" executed="True" result="Ignored" success="True" time="0.152" asserts="0" description="Find-AzRecoveryServicesReplicationProtectionContainerProtectableItem">
+            <results>
+              <test-case description="DiscoverExpanded" name="Find-AzRecoveryServicesReplicationProtectionContainerProtectableItem.DiscoverExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="Discover" name="Find-AzRecoveryServicesReplicationProtectionContainerProtectableItem.Discover" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Get-AzRecoveryServicesMigrationRecoveryPoint.Tests.ps1" executed="True" result="Ignored" success="True" time="2.2565" asserts="0" description="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Get-AzRecoveryServicesMigrationRecoveryPoint.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-AzRecoveryServicesMigrationRecoveryPoint" executed="True" result="Ignored" success="True" time="0.1717" asserts="0" description="Get-AzRecoveryServicesMigrationRecoveryPoint">
+            <results>
+              <test-case description="List" name="Get-AzRecoveryServicesMigrationRecoveryPoint.List" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="Get" name="Get-AzRecoveryServicesMigrationRecoveryPoint.Get" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Get-AzRecoveryServicesRecoveryPoint.Tests.ps1" executed="True" result="Ignored" success="True" time="2.5422" asserts="0" description="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Get-AzRecoveryServicesRecoveryPoint.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-AzRecoveryServicesRecoveryPoint" executed="True" result="Ignored" success="True" time="0.446" asserts="0" description="Get-AzRecoveryServicesRecoveryPoint">
+            <results>
+              <test-case description="List" name="Get-AzRecoveryServicesRecoveryPoint.List" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="Get" name="Get-AzRecoveryServicesRecoveryPoint.Get" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Get-AzRecoveryServicesReplicationAlertSetting.Tests.ps1" executed="True" result="Ignored" success="True" time="1.7292" asserts="0" description="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Get-AzRecoveryServicesReplicationAlertSetting.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-AzRecoveryServicesReplicationAlertSetting" executed="True" result="Ignored" success="True" time="0.2243" asserts="0" description="Get-AzRecoveryServicesReplicationAlertSetting">
+            <results>
+              <test-case description="List" name="Get-AzRecoveryServicesReplicationAlertSetting.List" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="Get" name="Get-AzRecoveryServicesReplicationAlertSetting.Get" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Get-AzRecoveryServicesReplicationAppliance.Tests.ps1" executed="True" result="Ignored" success="True" time="1.4501" asserts="0" description="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Get-AzRecoveryServicesReplicationAppliance.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-AzRecoveryServicesReplicationAppliance" executed="True" result="Ignored" success="True" time="0.1252" asserts="0" description="Get-AzRecoveryServicesReplicationAppliance">
+            <results>
+              <test-case description="List" name="Get-AzRecoveryServicesReplicationAppliance.List" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Get-AzRecoveryServicesReplicationEligibilityResult.Tests.ps1" executed="True" result="Ignored" success="True" time="1.2206" asserts="0" description="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Get-AzRecoveryServicesReplicationEligibilityResult.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-AzRecoveryServicesReplicationEligibilityResult" executed="True" result="Ignored" success="True" time="0.1285" asserts="0" description="Get-AzRecoveryServicesReplicationEligibilityResult">
+            <results>
+              <test-case description="Get" name="Get-AzRecoveryServicesReplicationEligibilityResult.Get" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Get-AzRecoveryServicesReplicationEvent.Tests.ps1" executed="True" result="Ignored" success="True" time="1.2356" asserts="0" description="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Get-AzRecoveryServicesReplicationEvent.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-AzRecoveryServicesReplicationEvent" executed="True" result="Ignored" success="True" time="0.1148" asserts="0" description="Get-AzRecoveryServicesReplicationEvent">
+            <results>
+              <test-case description="List" name="Get-AzRecoveryServicesReplicationEvent.List" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="Get" name="Get-AzRecoveryServicesReplicationEvent.Get" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Get-AzRecoveryServicesReplicationFabric.Tests.ps1" executed="True" result="Ignored" success="True" time="1.1812" asserts="0" description="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Get-AzRecoveryServicesReplicationFabric.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-AzRecoveryServicesReplicationFabric" executed="True" result="Ignored" success="True" time="0.0989" asserts="0" description="Get-AzRecoveryServicesReplicationFabric">
+            <results>
+              <test-case description="List" name="Get-AzRecoveryServicesReplicationFabric.List" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="Get" name="Get-AzRecoveryServicesReplicationFabric.Get" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Get-AzRecoveryServicesReplicationJob.Tests.ps1" executed="True" result="Ignored" success="True" time="1.2785" asserts="0" description="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Get-AzRecoveryServicesReplicationJob.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-AzRecoveryServicesReplicationJob" executed="True" result="Ignored" success="True" time="0.1063" asserts="0" description="Get-AzRecoveryServicesReplicationJob">
+            <results>
+              <test-case description="List" name="Get-AzRecoveryServicesReplicationJob.List" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="Get" name="Get-AzRecoveryServicesReplicationJob.Get" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Get-AzRecoveryServicesReplicationLogicalNetwork.Tests.ps1" executed="True" result="Ignored" success="True" time="1.5068" asserts="0" description="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Get-AzRecoveryServicesReplicationLogicalNetwork.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-AzRecoveryServicesReplicationLogicalNetwork" executed="True" result="Ignored" success="True" time="0.1604" asserts="0" description="Get-AzRecoveryServicesReplicationLogicalNetwork">
+            <results>
+              <test-case description="List" name="Get-AzRecoveryServicesReplicationLogicalNetwork.List" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="Get" name="Get-AzRecoveryServicesReplicationLogicalNetwork.Get" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Get-AzRecoveryServicesReplicationMigrationItem.Tests.ps1" executed="True" result="Ignored" success="True" time="1.1972" asserts="0" description="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Get-AzRecoveryServicesReplicationMigrationItem.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-AzRecoveryServicesReplicationMigrationItem" executed="True" result="Ignored" success="True" time="0.1366" asserts="0" description="Get-AzRecoveryServicesReplicationMigrationItem">
+            <results>
+              <test-case description="List1" name="Get-AzRecoveryServicesReplicationMigrationItem.List1" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="List" name="Get-AzRecoveryServicesReplicationMigrationItem.List" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="Get" name="Get-AzRecoveryServicesReplicationMigrationItem.Get" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Get-AzRecoveryServicesReplicationNetwork.Tests.ps1" executed="True" result="Ignored" success="True" time="1.5486" asserts="0" description="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Get-AzRecoveryServicesReplicationNetwork.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-AzRecoveryServicesReplicationNetwork" executed="True" result="Ignored" success="True" time="0.2515" asserts="0" description="Get-AzRecoveryServicesReplicationNetwork">
+            <results>
+              <test-case description="List1" name="Get-AzRecoveryServicesReplicationNetwork.List1" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="List" name="Get-AzRecoveryServicesReplicationNetwork.List" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="Get" name="Get-AzRecoveryServicesReplicationNetwork.Get" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Get-AzRecoveryServicesReplicationNetworkMapping.Tests.ps1" executed="True" result="Ignored" success="True" time="1.4771" asserts="0" description="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Get-AzRecoveryServicesReplicationNetworkMapping.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-AzRecoveryServicesReplicationNetworkMapping" executed="True" result="Ignored" success="True" time="0.1269" asserts="0" description="Get-AzRecoveryServicesReplicationNetworkMapping">
+            <results>
+              <test-case description="List1" name="Get-AzRecoveryServicesReplicationNetworkMapping.List1" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="List" name="Get-AzRecoveryServicesReplicationNetworkMapping.List" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="Get" name="Get-AzRecoveryServicesReplicationNetworkMapping.Get" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Get-AzRecoveryServicesReplicationPolicy.Tests.ps1" executed="True" result="Success" success="True" time="5.1937" asserts="0" description="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Get-AzRecoveryServicesReplicationPolicy.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-AzRecoveryServicesReplicationPolicy" executed="True" result="Success" success="True" time="4.0772" asserts="0" description="Get-AzRecoveryServicesReplicationPolicy">
+            <results>
+              <test-case description="List" name="Get-AzRecoveryServicesReplicationPolicy.List" time="3.1072" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Get" name="Get-AzRecoveryServicesReplicationPolicy.Get" time="0.7368" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Get-AzRecoveryServicesReplicationProtectableItem.Tests.ps1" executed="True" result="Ignored" success="True" time="1.1971" asserts="0" description="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Get-AzRecoveryServicesReplicationProtectableItem.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-AzRecoveryServicesReplicationProtectableItem" executed="True" result="Ignored" success="True" time="0.128" asserts="0" description="Get-AzRecoveryServicesReplicationProtectableItem">
+            <results>
+              <test-case description="List" name="Get-AzRecoveryServicesReplicationProtectableItem.List" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="Get" name="Get-AzRecoveryServicesReplicationProtectableItem.Get" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Get-AzRecoveryServicesReplicationProtectedItem.Tests.ps1" executed="True" result="Ignored" success="True" time="1.3139" asserts="0" description="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Get-AzRecoveryServicesReplicationProtectedItem.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-AzRecoveryServicesReplicationProtectedItem" executed="True" result="Ignored" success="True" time="0.1446" asserts="0" description="Get-AzRecoveryServicesReplicationProtectedItem">
+            <results>
+              <test-case description="List1" name="Get-AzRecoveryServicesReplicationProtectedItem.List1" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="List" name="Get-AzRecoveryServicesReplicationProtectedItem.List" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="Get" name="Get-AzRecoveryServicesReplicationProtectedItem.Get" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Get-AzRecoveryServicesReplicationProtectionContainer.Tests.ps1" executed="True" result="Ignored" success="True" time="1.1901" asserts="0" description="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Get-AzRecoveryServicesReplicationProtectionContainer.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-AzRecoveryServicesReplicationProtectionContainer" executed="True" result="Ignored" success="True" time="0.1111" asserts="0" description="Get-AzRecoveryServicesReplicationProtectionContainer">
+            <results>
+              <test-case description="List1" name="Get-AzRecoveryServicesReplicationProtectionContainer.List1" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="List" name="Get-AzRecoveryServicesReplicationProtectionContainer.List" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="Get" name="Get-AzRecoveryServicesReplicationProtectionContainer.Get" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Get-AzRecoveryServicesReplicationProtectionContainerMapping.Tests.ps1" executed="True" result="Ignored" success="True" time="1.1363" asserts="0" description="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Get-AzRecoveryServicesReplicationProtectionContainerMapping.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-AzRecoveryServicesReplicationProtectionContainerMapping" executed="True" result="Ignored" success="True" time="0.1222" asserts="0" description="Get-AzRecoveryServicesReplicationProtectionContainerMapping">
+            <results>
+              <test-case description="List1" name="Get-AzRecoveryServicesReplicationProtectionContainerMapping.List1" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="List" name="Get-AzRecoveryServicesReplicationProtectionContainerMapping.List" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="Get" name="Get-AzRecoveryServicesReplicationProtectionContainerMapping.Get" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Get-AzRecoveryServicesReplicationProtectionIntent.Tests.ps1" executed="True" result="Ignored" success="True" time="1.1793" asserts="0" description="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Get-AzRecoveryServicesReplicationProtectionIntent.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-AzRecoveryServicesReplicationProtectionIntent" executed="True" result="Ignored" success="True" time="0.1161" asserts="0" description="Get-AzRecoveryServicesReplicationProtectionIntent">
+            <results>
+              <test-case description="List" name="Get-AzRecoveryServicesReplicationProtectionIntent.List" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="Get" name="Get-AzRecoveryServicesReplicationProtectionIntent.Get" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Get-AzRecoveryServicesReplicationRecoveryPlan.Tests.ps1" executed="True" result="Ignored" success="True" time="1.1423" asserts="0" description="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Get-AzRecoveryServicesReplicationRecoveryPlan.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-AzRecoveryServicesReplicationRecoveryPlan" executed="True" result="Ignored" success="True" time="0.1056" asserts="0" description="Get-AzRecoveryServicesReplicationRecoveryPlan">
+            <results>
+              <test-case description="List" name="Get-AzRecoveryServicesReplicationRecoveryPlan.List" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="Get" name="Get-AzRecoveryServicesReplicationRecoveryPlan.Get" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Get-AzRecoveryServicesReplicationRecoveryServiceProvider.Tests.ps1" executed="True" result="Ignored" success="True" time="1.22" asserts="0" description="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Get-AzRecoveryServicesReplicationRecoveryServiceProvider.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-AzRecoveryServicesReplicationRecoveryServiceProvider" executed="True" result="Ignored" success="True" time="0.0977" asserts="0" description="Get-AzRecoveryServicesReplicationRecoveryServiceProvider">
+            <results>
+              <test-case description="List" name="Get-AzRecoveryServicesReplicationRecoveryServiceProvider.List" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Get-AzRecoveryServicesReplicationRecoveryServicesProvider.Tests.ps1" executed="True" result="Ignored" success="True" time="1.1499" asserts="0" description="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Get-AzRecoveryServicesReplicationRecoveryServicesProvider.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-AzRecoveryServicesReplicationRecoveryServicesProvider" executed="True" result="Ignored" success="True" time="0.1083" asserts="0" description="Get-AzRecoveryServicesReplicationRecoveryServicesProvider">
+            <results>
+              <test-case description="List" name="Get-AzRecoveryServicesReplicationRecoveryServicesProvider.List" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="Get" name="Get-AzRecoveryServicesReplicationRecoveryServicesProvider.Get" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Get-AzRecoveryServicesReplicationStorageClassification.Tests.ps1" executed="True" result="Ignored" success="True" time="1.2232" asserts="0" description="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Get-AzRecoveryServicesReplicationStorageClassification.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-AzRecoveryServicesReplicationStorageClassification" executed="True" result="Ignored" success="True" time="0.1312" asserts="0" description="Get-AzRecoveryServicesReplicationStorageClassification">
+            <results>
+              <test-case description="List1" name="Get-AzRecoveryServicesReplicationStorageClassification.List1" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="List" name="Get-AzRecoveryServicesReplicationStorageClassification.List" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="Get" name="Get-AzRecoveryServicesReplicationStorageClassification.Get" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Get-AzRecoveryServicesReplicationStorageClassificationMapping.Tests.ps1" executed="True" result="Ignored" success="True" time="1.2265" asserts="0" description="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Get-AzRecoveryServicesReplicationStorageClassificationMapping.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-AzRecoveryServicesReplicationStorageClassificationMapping" executed="True" result="Ignored" success="True" time="0.1916" asserts="0" description="Get-AzRecoveryServicesReplicationStorageClassificationMapping">
+            <results>
+              <test-case description="List1" name="Get-AzRecoveryServicesReplicationStorageClassificationMapping.List1" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="List" name="Get-AzRecoveryServicesReplicationStorageClassificationMapping.List" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="Get" name="Get-AzRecoveryServicesReplicationStorageClassificationMapping.Get" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Get-AzRecoveryServicesReplicationVaultHealth.Tests.ps1" executed="True" result="Ignored" success="True" time="1.1578" asserts="0" description="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Get-AzRecoveryServicesReplicationVaultHealth.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-AzRecoveryServicesReplicationVaultHealth" executed="True" result="Ignored" success="True" time="0.0981" asserts="0" description="Get-AzRecoveryServicesReplicationVaultHealth">
+            <results>
+              <test-case description="Get" name="Get-AzRecoveryServicesReplicationVaultHealth.Get" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Get-AzRecoveryServicesReplicationVaultSetting.Tests.ps1" executed="True" result="Ignored" success="True" time="1.258" asserts="0" description="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Get-AzRecoveryServicesReplicationVaultSetting.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-AzRecoveryServicesReplicationVaultSetting" executed="True" result="Ignored" success="True" time="0.1837" asserts="0" description="Get-AzRecoveryServicesReplicationVaultSetting">
+            <results>
+              <test-case description="List" name="Get-AzRecoveryServicesReplicationVaultSetting.List" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="Get" name="Get-AzRecoveryServicesReplicationVaultSetting.Get" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Get-AzRecoveryServicesReplicationvCenter.Tests.ps1" executed="True" result="Ignored" success="True" time="1.1484" asserts="0" description="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Get-AzRecoveryServicesReplicationvCenter.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-AzRecoveryServicesReplicationvCenter" executed="True" result="Ignored" success="True" time="0.1232" asserts="0" description="Get-AzRecoveryServicesReplicationvCenter">
+            <results>
+              <test-case description="List1" name="Get-AzRecoveryServicesReplicationvCenter.List1" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="List" name="Get-AzRecoveryServicesReplicationvCenter.List" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="Get" name="Get-AzRecoveryServicesReplicationvCenter.Get" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Get-AzRecoveryServicesSupportedOperatingSystem.Tests.ps1" executed="True" result="Ignored" success="True" time="1.2049" asserts="0" description="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Get-AzRecoveryServicesSupportedOperatingSystem.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-AzRecoveryServicesSupportedOperatingSystem" executed="True" result="Ignored" success="True" time="0.1058" asserts="0" description="Get-AzRecoveryServicesSupportedOperatingSystem">
+            <results>
+              <test-case description="Get" name="Get-AzRecoveryServicesSupportedOperatingSystem.Get" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Get-AzRecoveryServicesTargetComputeSize.Tests.ps1" executed="True" result="Ignored" success="True" time="1.2314" asserts="0" description="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Get-AzRecoveryServicesTargetComputeSize.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-AzRecoveryServicesTargetComputeSize" executed="True" result="Ignored" success="True" time="0.1356" asserts="0" description="Get-AzRecoveryServicesTargetComputeSize">
+            <results>
+              <test-case description="List" name="Get-AzRecoveryServicesTargetComputeSize.List" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Invoke-AzRecoveryServicesCommitReplicationProtectedItemFailover.Tests.ps1" executed="True" result="Ignored" success="True" time="1.2571" asserts="0" description="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Invoke-AzRecoveryServicesCommitReplicationProtectedItemFailover.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Invoke-AzRecoveryServicesCommitReplicationProtectedItemFailover" executed="True" result="Ignored" success="True" time="0.1267" asserts="0" description="Invoke-AzRecoveryServicesCommitReplicationProtectedItemFailover">
+            <results>
+              <test-case description="Commit" name="Invoke-AzRecoveryServicesCommitReplicationProtectedItemFailover.Commit" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Invoke-AzRecoveryServicesCommitReplicationRecoveryPlanFailover.Tests.ps1" executed="True" result="Ignored" success="True" time="1.2965" asserts="0" description="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Invoke-AzRecoveryServicesCommitReplicationRecoveryPlanFailover.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Invoke-AzRecoveryServicesCommitReplicationRecoveryPlanFailover" executed="True" result="Ignored" success="True" time="0.1291" asserts="0" description="Invoke-AzRecoveryServicesCommitReplicationRecoveryPlanFailover">
+            <results>
+              <test-case description="Commit" name="Invoke-AzRecoveryServicesCommitReplicationRecoveryPlanFailover.Commit" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Invoke-AzRecoveryServicesPlannedReplicationProtectedItemFailover.Tests.ps1" executed="True" result="Ignored" success="True" time="1.3784" asserts="0" description="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Invoke-AzRecoveryServicesPlannedReplicationProtectedItemFailover.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Invoke-AzRecoveryServicesPlannedReplicationProtectedItemFailover" executed="True" result="Ignored" success="True" time="0.1472" asserts="0" description="Invoke-AzRecoveryServicesPlannedReplicationProtectedItemFailover">
+            <results>
+              <test-case description="PlannedExpanded" name="Invoke-AzRecoveryServicesPlannedReplicationProtectedItemFailover.PlannedExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="Planned" name="Invoke-AzRecoveryServicesPlannedReplicationProtectedItemFailover.Planned" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Invoke-AzRecoveryServicesPlannedReplicationRecoveryPlanFailover.Tests.ps1" executed="True" result="Ignored" success="True" time="1.2353" asserts="0" description="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Invoke-AzRecoveryServicesPlannedReplicationRecoveryPlanFailover.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Invoke-AzRecoveryServicesPlannedReplicationRecoveryPlanFailover" executed="True" result="Ignored" success="True" time="0.1023" asserts="0" description="Invoke-AzRecoveryServicesPlannedReplicationRecoveryPlanFailover">
+            <results>
+              <test-case description="PlannedExpanded" name="Invoke-AzRecoveryServicesPlannedReplicationRecoveryPlanFailover.PlannedExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="Planned" name="Invoke-AzRecoveryServicesPlannedReplicationRecoveryPlanFailover.Planned" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Invoke-AzRecoveryServicesRenewReplicationFabricCertificate.Tests.ps1" executed="True" result="Ignored" success="True" time="1.1589" asserts="0" description="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Invoke-AzRecoveryServicesRenewReplicationFabricCertificate.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Invoke-AzRecoveryServicesRenewReplicationFabricCertificate" executed="True" result="Ignored" success="True" time="0.1401" asserts="0" description="Invoke-AzRecoveryServicesRenewReplicationFabricCertificate">
+            <results>
+              <test-case description="RenewExpanded" name="Invoke-AzRecoveryServicesRenewReplicationFabricCertificate.RenewExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="Renew" name="Invoke-AzRecoveryServicesRenewReplicationFabricCertificate.Renew" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Invoke-AzRecoveryServicesReprotectReplicationProtectedItem.Tests.ps1" executed="True" result="Ignored" success="True" time="1.1586" asserts="0" description="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Invoke-AzRecoveryServicesReprotectReplicationProtectedItem.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Invoke-AzRecoveryServicesReprotectReplicationProtectedItem" executed="True" result="Ignored" success="True" time="0.1226" asserts="0" description="Invoke-AzRecoveryServicesReprotectReplicationProtectedItem">
+            <results>
+              <test-case description="ReprotectExpanded" name="Invoke-AzRecoveryServicesReprotectReplicationProtectedItem.ReprotectExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="Reprotect" name="Invoke-AzRecoveryServicesReprotectReplicationProtectedItem.Reprotect" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Invoke-AzRecoveryServicesReprotectReplicationRecoveryPlan.Tests.ps1" executed="True" result="Ignored" success="True" time="1.3146" asserts="0" description="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Invoke-AzRecoveryServicesReprotectReplicationRecoveryPlan.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Invoke-AzRecoveryServicesReprotectReplicationRecoveryPlan" executed="True" result="Ignored" success="True" time="0.116" asserts="0" description="Invoke-AzRecoveryServicesReprotectReplicationRecoveryPlan">
+            <results>
+              <test-case description="Reprotect" name="Invoke-AzRecoveryServicesReprotectReplicationRecoveryPlan.Reprotect" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Invoke-AzRecoveryServicesResyncReplicationMigrationItem.Tests.ps1" executed="True" result="Ignored" success="True" time="1.2505" asserts="0" description="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Invoke-AzRecoveryServicesResyncReplicationMigrationItem.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Invoke-AzRecoveryServicesResyncReplicationMigrationItem" executed="True" result="Ignored" success="True" time="0.1379" asserts="0" description="Invoke-AzRecoveryServicesResyncReplicationMigrationItem">
+            <results>
+              <test-case description="ResyncExpanded" name="Invoke-AzRecoveryServicesResyncReplicationMigrationItem.ResyncExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="Resync" name="Invoke-AzRecoveryServicesResyncReplicationMigrationItem.Resync" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Invoke-AzRecoveryServicesUnplannedReplicationProtectedItemFailover.Tests.ps1" executed="True" result="Ignored" success="True" time="1.1869" asserts="0" description="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Invoke-AzRecoveryServicesUnplannedReplicationProtectedItemFailover.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Invoke-AzRecoveryServicesUnplannedReplicationProtectedItemFailover" executed="True" result="Ignored" success="True" time="0.1107" asserts="0" description="Invoke-AzRecoveryServicesUnplannedReplicationProtectedItemFailover">
+            <results>
+              <test-case description="UnplannedExpanded" name="Invoke-AzRecoveryServicesUnplannedReplicationProtectedItemFailover.UnplannedExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="Unplanned" name="Invoke-AzRecoveryServicesUnplannedReplicationProtectedItemFailover.Unplanned" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Invoke-AzRecoveryServicesUnplannedReplicationRecoveryPlanFailover.Tests.ps1" executed="True" result="Ignored" success="True" time="1.2048" asserts="0" description="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Invoke-AzRecoveryServicesUnplannedReplicationRecoveryPlanFailover.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Invoke-AzRecoveryServicesUnplannedReplicationRecoveryPlanFailover" executed="True" result="Ignored" success="True" time="0.1074" asserts="0" description="Invoke-AzRecoveryServicesUnplannedReplicationRecoveryPlanFailover">
+            <results>
+              <test-case description="UnplannedExpanded" name="Invoke-AzRecoveryServicesUnplannedReplicationRecoveryPlanFailover.UnplannedExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="Unplanned" name="Invoke-AzRecoveryServicesUnplannedReplicationRecoveryPlanFailover.Unplanned" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Move-AzRecoveryServicesReplicationFabricGateway.Tests.ps1" executed="True" result="Ignored" success="True" time="1.2149" asserts="0" description="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Move-AzRecoveryServicesReplicationFabricGateway.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Move-AzRecoveryServicesReplicationFabricGateway" executed="True" result="Ignored" success="True" time="0.145" asserts="0" description="Move-AzRecoveryServicesReplicationFabricGateway">
+            <results>
+              <test-case description="ReassociateExpanded" name="Move-AzRecoveryServicesReplicationFabricGateway.ReassociateExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="Reassociate" name="Move-AzRecoveryServicesReplicationFabricGateway.Reassociate" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Move-AzRecoveryServicesReplicationFabricToAad.Tests.ps1" executed="True" result="Ignored" success="True" time="1.2056" asserts="0" description="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Move-AzRecoveryServicesReplicationFabricToAad.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Move-AzRecoveryServicesReplicationFabricToAad" executed="True" result="Ignored" success="True" time="0.1191" asserts="0" description="Move-AzRecoveryServicesReplicationFabricToAad">
+            <results>
+              <test-case description="Migrate" name="Move-AzRecoveryServicesReplicationFabricToAad.Migrate" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Move-AzRecoveryServicesReplicationMigrationItem.Tests.ps1" executed="True" result="Ignored" success="True" time="1.2916" asserts="0" description="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Move-AzRecoveryServicesReplicationMigrationItem.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Move-AzRecoveryServicesReplicationMigrationItem" executed="True" result="Ignored" success="True" time="0.1713" asserts="0" description="Move-AzRecoveryServicesReplicationMigrationItem">
+            <results>
+              <test-case description="MigrateExpanded" name="Move-AzRecoveryServicesReplicationMigrationItem.MigrateExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="Migrate" name="Move-AzRecoveryServicesReplicationMigrationItem.Migrate" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\New-AzRecoveryServicesReplicationAlertSetting.Tests.ps1" executed="True" result="Ignored" success="True" time="1.1806" asserts="0" description="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\New-AzRecoveryServicesReplicationAlertSetting.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="New-AzRecoveryServicesReplicationAlertSetting" executed="True" result="Ignored" success="True" time="0.1451" asserts="0" description="New-AzRecoveryServicesReplicationAlertSetting">
+            <results>
+              <test-case description="CreateExpanded" name="New-AzRecoveryServicesReplicationAlertSetting.CreateExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="Create" name="New-AzRecoveryServicesReplicationAlertSetting.Create" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\New-AzRecoveryServicesReplicationFabric.Tests.ps1" executed="True" result="Ignored" success="True" time="1.1213" asserts="0" description="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\New-AzRecoveryServicesReplicationFabric.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="New-AzRecoveryServicesReplicationFabric" executed="True" result="Ignored" success="True" time="0.1108" asserts="0" description="New-AzRecoveryServicesReplicationFabric">
+            <results>
+              <test-case description="CreateExpanded" name="New-AzRecoveryServicesReplicationFabric.CreateExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="Create" name="New-AzRecoveryServicesReplicationFabric.Create" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\New-AzRecoveryServicesReplicationMigrationItem.Tests.ps1" executed="True" result="Ignored" success="True" time="1.194" asserts="0" description="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\New-AzRecoveryServicesReplicationMigrationItem.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="New-AzRecoveryServicesReplicationMigrationItem" executed="True" result="Ignored" success="True" time="0.1038" asserts="0" description="New-AzRecoveryServicesReplicationMigrationItem">
+            <results>
+              <test-case description="CreateExpanded" name="New-AzRecoveryServicesReplicationMigrationItem.CreateExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="Create" name="New-AzRecoveryServicesReplicationMigrationItem.Create" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\New-AzRecoveryServicesReplicationNetworkMapping.Tests.ps1" executed="True" result="Ignored" success="True" time="1.0919" asserts="0" description="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\New-AzRecoveryServicesReplicationNetworkMapping.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="New-AzRecoveryServicesReplicationNetworkMapping" executed="True" result="Ignored" success="True" time="0.1122" asserts="0" description="New-AzRecoveryServicesReplicationNetworkMapping">
+            <results>
+              <test-case description="CreateExpanded" name="New-AzRecoveryServicesReplicationNetworkMapping.CreateExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="Create" name="New-AzRecoveryServicesReplicationNetworkMapping.Create" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\New-AzRecoveryServicesReplicationPolicy.Tests.ps1" executed="True" result="Ignored" success="True" time="34.0185" asserts="0" description="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\New-AzRecoveryServicesReplicationPolicy.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="New-AzRecoveryServicesReplicationPolicy" executed="True" result="Ignored" success="True" time="32.9979" asserts="0" description="New-AzRecoveryServicesReplicationPolicy">
+            <results>
+              <test-case description="CreateExpanded" name="New-AzRecoveryServicesReplicationPolicy.CreateExpanded" time="32.87" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Create" name="New-AzRecoveryServicesReplicationPolicy.Create" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\New-AzRecoveryServicesReplicationProtectedItem.Tests.ps1" executed="True" result="Ignored" success="True" time="1.1244" asserts="0" description="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\New-AzRecoveryServicesReplicationProtectedItem.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="New-AzRecoveryServicesReplicationProtectedItem" executed="True" result="Ignored" success="True" time="0.1231" asserts="0" description="New-AzRecoveryServicesReplicationProtectedItem">
+            <results>
+              <test-case description="CreateExpanded" name="New-AzRecoveryServicesReplicationProtectedItem.CreateExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="Create" name="New-AzRecoveryServicesReplicationProtectedItem.Create" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\New-AzRecoveryServicesReplicationProtectionContainer.Tests.ps1" executed="True" result="Ignored" success="True" time="1.1344" asserts="0" description="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\New-AzRecoveryServicesReplicationProtectionContainer.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="New-AzRecoveryServicesReplicationProtectionContainer" executed="True" result="Ignored" success="True" time="0.1242" asserts="0" description="New-AzRecoveryServicesReplicationProtectionContainer">
+            <results>
+              <test-case description="CreateExpanded" name="New-AzRecoveryServicesReplicationProtectionContainer.CreateExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="Create" name="New-AzRecoveryServicesReplicationProtectionContainer.Create" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\New-AzRecoveryServicesReplicationProtectionContainerMapping.Tests.ps1" executed="True" result="Ignored" success="True" time="1.247" asserts="0" description="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\New-AzRecoveryServicesReplicationProtectionContainerMapping.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="New-AzRecoveryServicesReplicationProtectionContainerMapping" executed="True" result="Ignored" success="True" time="0.1207" asserts="0" description="New-AzRecoveryServicesReplicationProtectionContainerMapping">
+            <results>
+              <test-case description="CreateExpanded" name="New-AzRecoveryServicesReplicationProtectionContainerMapping.CreateExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="Create" name="New-AzRecoveryServicesReplicationProtectionContainerMapping.Create" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\New-AzRecoveryServicesReplicationProtectionIntent.Tests.ps1" executed="True" result="Ignored" success="True" time="1.2274" asserts="0" description="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\New-AzRecoveryServicesReplicationProtectionIntent.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="New-AzRecoveryServicesReplicationProtectionIntent" executed="True" result="Ignored" success="True" time="0.1108" asserts="0" description="New-AzRecoveryServicesReplicationProtectionIntent">
+            <results>
+              <test-case description="CreateExpanded" name="New-AzRecoveryServicesReplicationProtectionIntent.CreateExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="Create" name="New-AzRecoveryServicesReplicationProtectionIntent.Create" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\New-AzRecoveryServicesReplicationRecoveryPlan.Tests.ps1" executed="True" result="Ignored" success="True" time="1.304" asserts="0" description="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\New-AzRecoveryServicesReplicationRecoveryPlan.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="New-AzRecoveryServicesReplicationRecoveryPlan" executed="True" result="Ignored" success="True" time="0.1888" asserts="0" description="New-AzRecoveryServicesReplicationRecoveryPlan">
+            <results>
+              <test-case description="Create" name="New-AzRecoveryServicesReplicationRecoveryPlan.Create" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="CreateExpanded" name="New-AzRecoveryServicesReplicationRecoveryPlan.CreateExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\New-AzRecoveryServicesReplicationRecoveryServicesProvider.Tests.ps1" executed="True" result="Ignored" success="True" time="1.1526" asserts="0" description="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\New-AzRecoveryServicesReplicationRecoveryServicesProvider.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="New-AzRecoveryServicesReplicationRecoveryServicesProvider" executed="True" result="Ignored" success="True" time="0.1234" asserts="0" description="New-AzRecoveryServicesReplicationRecoveryServicesProvider">
+            <results>
+              <test-case description="CreateExpanded" name="New-AzRecoveryServicesReplicationRecoveryServicesProvider.CreateExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="Create" name="New-AzRecoveryServicesReplicationRecoveryServicesProvider.Create" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\New-AzRecoveryServicesReplicationStorageClassificationMapping.Tests.ps1" executed="True" result="Ignored" success="True" time="1.1805" asserts="0" description="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\New-AzRecoveryServicesReplicationStorageClassificationMapping.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="New-AzRecoveryServicesReplicationStorageClassificationMapping" executed="True" result="Ignored" success="True" time="0.1237" asserts="0" description="New-AzRecoveryServicesReplicationStorageClassificationMapping">
+            <results>
+              <test-case description="CreateExpanded" name="New-AzRecoveryServicesReplicationStorageClassificationMapping.CreateExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="Create" name="New-AzRecoveryServicesReplicationStorageClassificationMapping.Create" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\New-AzRecoveryServicesReplicationVaultSetting.Tests.ps1" executed="True" result="Ignored" success="True" time="1.1137" asserts="0" description="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\New-AzRecoveryServicesReplicationVaultSetting.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="New-AzRecoveryServicesReplicationVaultSetting" executed="True" result="Ignored" success="True" time="0.107" asserts="0" description="New-AzRecoveryServicesReplicationVaultSetting">
+            <results>
+              <test-case description="CreateExpanded" name="New-AzRecoveryServicesReplicationVaultSetting.CreateExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="Create" name="New-AzRecoveryServicesReplicationVaultSetting.Create" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\New-AzRecoveryServicesReplicationvCenter.Tests.ps1" executed="True" result="Ignored" success="True" time="1.1301" asserts="0" description="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\New-AzRecoveryServicesReplicationvCenter.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="New-AzRecoveryServicesReplicationvCenter" executed="True" result="Ignored" success="True" time="0.1116" asserts="0" description="New-AzRecoveryServicesReplicationvCenter">
+            <results>
+              <test-case description="CreateExpanded" name="New-AzRecoveryServicesReplicationvCenter.CreateExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="Create" name="New-AzRecoveryServicesReplicationvCenter.Create" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Remove-AzRecoveryServicesReplicationFabric.Tests.ps1" executed="True" result="Ignored" success="True" time="1.0895" asserts="0" description="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Remove-AzRecoveryServicesReplicationFabric.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Remove-AzRecoveryServicesReplicationFabric" executed="True" result="Ignored" success="True" time="0.1197" asserts="0" description="Remove-AzRecoveryServicesReplicationFabric">
+            <results>
+              <test-case description="Delete" name="Remove-AzRecoveryServicesReplicationFabric.Delete" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Remove-AzRecoveryServicesReplicationMigrationItem.Tests.ps1" executed="True" result="Ignored" success="True" time="1.0734" asserts="0" description="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Remove-AzRecoveryServicesReplicationMigrationItem.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Remove-AzRecoveryServicesReplicationMigrationItem" executed="True" result="Ignored" success="True" time="0.1039" asserts="0" description="Remove-AzRecoveryServicesReplicationMigrationItem">
+            <results>
+              <test-case description="Delete" name="Remove-AzRecoveryServicesReplicationMigrationItem.Delete" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Remove-AzRecoveryServicesReplicationNetworkMapping.Tests.ps1" executed="True" result="Ignored" success="True" time="1.1171" asserts="0" description="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Remove-AzRecoveryServicesReplicationNetworkMapping.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Remove-AzRecoveryServicesReplicationNetworkMapping" executed="True" result="Ignored" success="True" time="0.1008" asserts="0" description="Remove-AzRecoveryServicesReplicationNetworkMapping">
+            <results>
+              <test-case description="Delete" name="Remove-AzRecoveryServicesReplicationNetworkMapping.Delete" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Remove-AzRecoveryServicesReplicationPolicy.Tests.ps1" executed="True" result="Success" success="True" time="66.8966" asserts="0" description="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Remove-AzRecoveryServicesReplicationPolicy.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Remove-AzRecoveryServicesReplicationPolicy" executed="True" result="Success" success="True" time="65.901" asserts="0" description="Remove-AzRecoveryServicesReplicationPolicy">
+            <results>
+              <test-case description="Delete" name="Remove-AzRecoveryServicesReplicationPolicy.Delete" time="65.7514" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Remove-AzRecoveryServicesReplicationProtectedItem.Tests.ps1" executed="True" result="Ignored" success="True" time="1.1369" asserts="0" description="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Remove-AzRecoveryServicesReplicationProtectedItem.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Remove-AzRecoveryServicesReplicationProtectedItem" executed="True" result="Ignored" success="True" time="0.1251" asserts="0" description="Remove-AzRecoveryServicesReplicationProtectedItem">
+            <results>
+              <test-case description="DeleteExpanded" name="Remove-AzRecoveryServicesReplicationProtectedItem.DeleteExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="Delete" name="Remove-AzRecoveryServicesReplicationProtectedItem.Delete" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Remove-AzRecoveryServicesReplicationProtectedItemDisk.Tests.ps1" executed="True" result="Ignored" success="True" time="1.3142" asserts="0" description="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Remove-AzRecoveryServicesReplicationProtectedItemDisk.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Remove-AzRecoveryServicesReplicationProtectedItemDisk" executed="True" result="Ignored" success="True" time="0.1336" asserts="0" description="Remove-AzRecoveryServicesReplicationProtectedItemDisk">
+            <results>
+              <test-case description="RemoveExpanded" name="Remove-AzRecoveryServicesReplicationProtectedItemDisk.RemoveExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="Remove" name="Remove-AzRecoveryServicesReplicationProtectedItemDisk.Remove" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Remove-AzRecoveryServicesReplicationProtectionContainer.Tests.ps1" executed="True" result="Ignored" success="True" time="1.2068" asserts="0" description="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Remove-AzRecoveryServicesReplicationProtectionContainer.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Remove-AzRecoveryServicesReplicationProtectionContainer" executed="True" result="Ignored" success="True" time="0.1167" asserts="0" description="Remove-AzRecoveryServicesReplicationProtectionContainer">
+            <results>
+              <test-case description="Delete" name="Remove-AzRecoveryServicesReplicationProtectionContainer.Delete" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Remove-AzRecoveryServicesReplicationProtectionContainerMapping.Tests.ps1" executed="True" result="Ignored" success="True" time="1.2165" asserts="0" description="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Remove-AzRecoveryServicesReplicationProtectionContainerMapping.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Remove-AzRecoveryServicesReplicationProtectionContainerMapping" executed="True" result="Ignored" success="True" time="0.1324" asserts="0" description="Remove-AzRecoveryServicesReplicationProtectionContainerMapping">
+            <results>
+              <test-case description="DeleteExpanded" name="Remove-AzRecoveryServicesReplicationProtectionContainerMapping.DeleteExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="Delete" name="Remove-AzRecoveryServicesReplicationProtectionContainerMapping.Delete" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Remove-AzRecoveryServicesReplicationRecoveryPlan.Tests.ps1" executed="True" result="Ignored" success="True" time="1.3156" asserts="0" description="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Remove-AzRecoveryServicesReplicationRecoveryPlan.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Remove-AzRecoveryServicesReplicationRecoveryPlan" executed="True" result="Ignored" success="True" time="0.108" asserts="0" description="Remove-AzRecoveryServicesReplicationRecoveryPlan">
+            <results>
+              <test-case description="Delete" name="Remove-AzRecoveryServicesReplicationRecoveryPlan.Delete" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Remove-AzRecoveryServicesReplicationRecoveryServicesProvider.Tests.ps1" executed="True" result="Ignored" success="True" time="1.1679" asserts="0" description="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Remove-AzRecoveryServicesReplicationRecoveryServicesProvider.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Remove-AzRecoveryServicesReplicationRecoveryServicesProvider" executed="True" result="Ignored" success="True" time="0.0935" asserts="0" description="Remove-AzRecoveryServicesReplicationRecoveryServicesProvider">
+            <results>
+              <test-case description="Delete" name="Remove-AzRecoveryServicesReplicationRecoveryServicesProvider.Delete" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Remove-AzRecoveryServicesReplicationStorageClassificationMapping.Tests.ps1" executed="True" result="Ignored" success="True" time="1.2302" asserts="0" description="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Remove-AzRecoveryServicesReplicationStorageClassificationMapping.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Remove-AzRecoveryServicesReplicationStorageClassificationMapping" executed="True" result="Ignored" success="True" time="0.1086" asserts="0" description="Remove-AzRecoveryServicesReplicationStorageClassificationMapping">
+            <results>
+              <test-case description="Delete" name="Remove-AzRecoveryServicesReplicationStorageClassificationMapping.Delete" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Remove-AzRecoveryServicesReplicationvCenter.Tests.ps1" executed="True" result="Ignored" success="True" time="1.1999" asserts="0" description="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Remove-AzRecoveryServicesReplicationvCenter.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Remove-AzRecoveryServicesReplicationvCenter" executed="True" result="Ignored" success="True" time="0.0861" asserts="0" description="Remove-AzRecoveryServicesReplicationvCenter">
+            <results>
+              <test-case description="Delete" name="Remove-AzRecoveryServicesReplicationvCenter.Delete" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Repair-AzRecoveryServicesReplicationProtectedItemReplication.Tests.ps1" executed="True" result="Ignored" success="True" time="1.2554" asserts="0" description="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Repair-AzRecoveryServicesReplicationProtectedItemReplication.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Repair-AzRecoveryServicesReplicationProtectedItemReplication" executed="True" result="Ignored" success="True" time="0.1343" asserts="0" description="Repair-AzRecoveryServicesReplicationProtectedItemReplication">
+            <results>
+              <test-case description="Repair" name="Repair-AzRecoveryServicesReplicationProtectedItemReplication.Repair" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Resolve-AzRecoveryServicesReplicationProtectedItemHealthError.Tests.ps1" executed="True" result="Ignored" success="True" time="1.1515" asserts="0" description="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Resolve-AzRecoveryServicesReplicationProtectedItemHealthError.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Resolve-AzRecoveryServicesReplicationProtectedItemHealthError" executed="True" result="Ignored" success="True" time="0.1319" asserts="0" description="Resolve-AzRecoveryServicesReplicationProtectedItemHealthError">
+            <results>
+              <test-case description="ResolveExpanded" name="Resolve-AzRecoveryServicesReplicationProtectedItemHealthError.ResolveExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="Resolve" name="Resolve-AzRecoveryServicesReplicationProtectedItemHealthError.Resolve" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Restart-AzRecoveryServicesReplicationJob.Tests.ps1" executed="True" result="Ignored" success="True" time="1.157" asserts="0" description="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Restart-AzRecoveryServicesReplicationJob.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Restart-AzRecoveryServicesReplicationJob" executed="True" result="Ignored" success="True" time="0.1136" asserts="0" description="Restart-AzRecoveryServicesReplicationJob">
+            <results>
+              <test-case description="Restart" name="Restart-AzRecoveryServicesReplicationJob.Restart" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Resume-AzRecoveryServicesReplicationJob.Tests.ps1" executed="True" result="Ignored" success="True" time="1.2747" asserts="0" description="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Resume-AzRecoveryServicesReplicationJob.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Resume-AzRecoveryServicesReplicationJob" executed="True" result="Ignored" success="True" time="0.1415" asserts="0" description="Resume-AzRecoveryServicesReplicationJob">
+            <results>
+              <test-case description="ResumeExpanded" name="Resume-AzRecoveryServicesReplicationJob.ResumeExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="Resume" name="Resume-AzRecoveryServicesReplicationJob.Resume" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Resume-AzRecoveryServicesReplicationMigrationItemReplication.Tests.ps1" executed="True" result="Ignored" success="True" time="1.3067" asserts="0" description="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Resume-AzRecoveryServicesReplicationMigrationItemReplication.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Resume-AzRecoveryServicesReplicationMigrationItemReplication" executed="True" result="Ignored" success="True" time="0.1218" asserts="0" description="Resume-AzRecoveryServicesReplicationMigrationItemReplication">
+            <results>
+              <test-case description="ResumeExpanded" name="Resume-AzRecoveryServicesReplicationMigrationItemReplication.ResumeExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="Resume" name="Resume-AzRecoveryServicesReplicationMigrationItemReplication.Resume" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Stop-AzRecoveryServicesReplicationJob.Tests.ps1" executed="True" result="Ignored" success="True" time="1.1717" asserts="0" description="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Stop-AzRecoveryServicesReplicationJob.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Stop-AzRecoveryServicesReplicationJob" executed="True" result="Ignored" success="True" time="0.1233" asserts="0" description="Stop-AzRecoveryServicesReplicationJob">
+            <results>
+              <test-case description="Cancel" name="Stop-AzRecoveryServicesReplicationJob.Cancel" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Stop-AzRecoveryServicesReplicationProtectedItemFailover.Tests.ps1" executed="True" result="Ignored" success="True" time="1.2026" asserts="0" description="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Stop-AzRecoveryServicesReplicationProtectedItemFailover.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Stop-AzRecoveryServicesReplicationProtectedItemFailover" executed="True" result="Ignored" success="True" time="0.1123" asserts="0" description="Stop-AzRecoveryServicesReplicationProtectedItemFailover">
+            <results>
+              <test-case description="Cancel" name="Stop-AzRecoveryServicesReplicationProtectedItemFailover.Cancel" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Stop-AzRecoveryServicesReplicationRecoveryPlanFailover.Tests.ps1" executed="True" result="Ignored" success="True" time="1.2328" asserts="0" description="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Stop-AzRecoveryServicesReplicationRecoveryPlanFailover.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Stop-AzRecoveryServicesReplicationRecoveryPlanFailover" executed="True" result="Ignored" success="True" time="0.0958" asserts="0" description="Stop-AzRecoveryServicesReplicationRecoveryPlanFailover">
+            <results>
+              <test-case description="Cancel" name="Stop-AzRecoveryServicesReplicationRecoveryPlanFailover.Cancel" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Suspend-AzRecoveryServicesReplicationMigrationItemReplication.Tests.ps1" executed="True" result="Ignored" success="True" time="1.127" asserts="0" description="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Suspend-AzRecoveryServicesReplicationMigrationItemReplication.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Suspend-AzRecoveryServicesReplicationMigrationItemReplication" executed="True" result="Ignored" success="True" time="0.1163" asserts="0" description="Suspend-AzRecoveryServicesReplicationMigrationItemReplication">
+            <results>
+              <test-case description="PauseExpanded" name="Suspend-AzRecoveryServicesReplicationMigrationItemReplication.PauseExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="Pause" name="Suspend-AzRecoveryServicesReplicationMigrationItemReplication.Pause" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Switch-AzRecoveryServicesReplicationProtectedItemProvider.Tests.ps1" executed="True" result="Ignored" success="True" time="1.1907" asserts="0" description="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Switch-AzRecoveryServicesReplicationProtectedItemProvider.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Switch-AzRecoveryServicesReplicationProtectedItemProvider" executed="True" result="Ignored" success="True" time="0.1534" asserts="0" description="Switch-AzRecoveryServicesReplicationProtectedItemProvider">
+            <results>
+              <test-case description="SwitchExpanded" name="Switch-AzRecoveryServicesReplicationProtectedItemProvider.SwitchExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="Switch" name="Switch-AzRecoveryServicesReplicationProtectedItemProvider.Switch" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Switch-AzRecoveryServicesReplicationProtectionContainerProtection.Tests.ps1" executed="True" result="Ignored" success="True" time="1.2778" asserts="0" description="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Switch-AzRecoveryServicesReplicationProtectionContainerProtection.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Switch-AzRecoveryServicesReplicationProtectionContainerProtection" executed="True" result="Ignored" success="True" time="0.1146" asserts="0" description="Switch-AzRecoveryServicesReplicationProtectionContainerProtection">
+            <results>
+              <test-case description="SwitchExpanded" name="Switch-AzRecoveryServicesReplicationProtectionContainerProtection.SwitchExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="Switch" name="Switch-AzRecoveryServicesReplicationProtectionContainerProtection.Switch" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Test-AzRecoveryServicesReplicationFabricConsistency.Tests.ps1" executed="True" result="Ignored" success="True" time="1.1188" asserts="0" description="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Test-AzRecoveryServicesReplicationFabricConsistency.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Test-AzRecoveryServicesReplicationFabricConsistency" executed="True" result="Ignored" success="True" time="0.1102" asserts="0" description="Test-AzRecoveryServicesReplicationFabricConsistency">
+            <results>
+              <test-case description="Check" name="Test-AzRecoveryServicesReplicationFabricConsistency.Check" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Test-AzRecoveryServicesReplicationMigrationItemMigrate.Tests.ps1" executed="True" result="Ignored" success="True" time="1.1965" asserts="0" description="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Test-AzRecoveryServicesReplicationMigrationItemMigrate.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Test-AzRecoveryServicesReplicationMigrationItemMigrate" executed="True" result="Ignored" success="True" time="0.1255" asserts="0" description="Test-AzRecoveryServicesReplicationMigrationItemMigrate">
+            <results>
+              <test-case description="TestExpanded" name="Test-AzRecoveryServicesReplicationMigrationItemMigrate.TestExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="Test" name="Test-AzRecoveryServicesReplicationMigrationItemMigrate.Test" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Test-AzRecoveryServicesReplicationMigrationItemMigrateCleanup.Tests.ps1" executed="True" result="Ignored" success="True" time="1.1071" asserts="0" description="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Test-AzRecoveryServicesReplicationMigrationItemMigrateCleanup.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Test-AzRecoveryServicesReplicationMigrationItemMigrateCleanup" executed="True" result="Ignored" success="True" time="0.1131" asserts="0" description="Test-AzRecoveryServicesReplicationMigrationItemMigrateCleanup">
+            <results>
+              <test-case description="TestExpanded" name="Test-AzRecoveryServicesReplicationMigrationItemMigrateCleanup.TestExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="Test" name="Test-AzRecoveryServicesReplicationMigrationItemMigrateCleanup.Test" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Test-AzRecoveryServicesReplicationProtectedItemFailover.Tests.ps1" executed="True" result="Ignored" success="True" time="1.1508" asserts="0" description="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Test-AzRecoveryServicesReplicationProtectedItemFailover.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Test-AzRecoveryServicesReplicationProtectedItemFailover" executed="True" result="Ignored" success="True" time="0.1118" asserts="0" description="Test-AzRecoveryServicesReplicationProtectedItemFailover">
+            <results>
+              <test-case description="TestExpanded" name="Test-AzRecoveryServicesReplicationProtectedItemFailover.TestExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="Test" name="Test-AzRecoveryServicesReplicationProtectedItemFailover.Test" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Test-AzRecoveryServicesReplicationProtectedItemFailoverCleanup.Tests.ps1" executed="True" result="Ignored" success="True" time="1.1482" asserts="0" description="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Test-AzRecoveryServicesReplicationProtectedItemFailoverCleanup.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Test-AzRecoveryServicesReplicationProtectedItemFailoverCleanup" executed="True" result="Ignored" success="True" time="0.1035" asserts="0" description="Test-AzRecoveryServicesReplicationProtectedItemFailoverCleanup">
+            <results>
+              <test-case description="TestExpanded" name="Test-AzRecoveryServicesReplicationProtectedItemFailoverCleanup.TestExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="Test" name="Test-AzRecoveryServicesReplicationProtectedItemFailoverCleanup.Test" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Test-AzRecoveryServicesReplicationRecoveryPlanFailover.Tests.ps1" executed="True" result="Ignored" success="True" time="1.079" asserts="0" description="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Test-AzRecoveryServicesReplicationRecoveryPlanFailover.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Test-AzRecoveryServicesReplicationRecoveryPlanFailover" executed="True" result="Ignored" success="True" time="0.1017" asserts="0" description="Test-AzRecoveryServicesReplicationRecoveryPlanFailover">
+            <results>
+              <test-case description="TestExpanded" name="Test-AzRecoveryServicesReplicationRecoveryPlanFailover.TestExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="Test" name="Test-AzRecoveryServicesReplicationRecoveryPlanFailover.Test" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Test-AzRecoveryServicesReplicationRecoveryPlanFailoverCleanup.Tests.ps1" executed="True" result="Ignored" success="True" time="1.1613" asserts="0" description="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Test-AzRecoveryServicesReplicationRecoveryPlanFailoverCleanup.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Test-AzRecoveryServicesReplicationRecoveryPlanFailoverCleanup" executed="True" result="Ignored" success="True" time="0.1628" asserts="0" description="Test-AzRecoveryServicesReplicationRecoveryPlanFailoverCleanup">
+            <results>
+              <test-case description="TestExpanded" name="Test-AzRecoveryServicesReplicationRecoveryPlanFailoverCleanup.TestExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="Test" name="Test-AzRecoveryServicesReplicationRecoveryPlanFailoverCleanup.Test" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Update-AzRecoveryServicesReplicationMigrationItem.Tests.ps1" executed="True" result="Ignored" success="True" time="1.1821" asserts="0" description="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Update-AzRecoveryServicesReplicationMigrationItem.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Update-AzRecoveryServicesReplicationMigrationItem" executed="True" result="Ignored" success="True" time="0.1519" asserts="0" description="Update-AzRecoveryServicesReplicationMigrationItem">
+            <results>
+              <test-case description="UpdateExpanded" name="Update-AzRecoveryServicesReplicationMigrationItem.UpdateExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="Update" name="Update-AzRecoveryServicesReplicationMigrationItem.Update" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Update-AzRecoveryServicesReplicationNetworkMapping.Tests.ps1" executed="True" result="Ignored" success="True" time="1.1721" asserts="0" description="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Update-AzRecoveryServicesReplicationNetworkMapping.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Update-AzRecoveryServicesReplicationNetworkMapping" executed="True" result="Ignored" success="True" time="0.1118" asserts="0" description="Update-AzRecoveryServicesReplicationNetworkMapping">
+            <results>
+              <test-case description="UpdateExpanded" name="Update-AzRecoveryServicesReplicationNetworkMapping.UpdateExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="Update" name="Update-AzRecoveryServicesReplicationNetworkMapping.Update" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Update-AzRecoveryServicesReplicationPolicy.Tests.ps1" executed="True" result="Ignored" success="True" time="34.1622" asserts="0" description="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Update-AzRecoveryServicesReplicationPolicy.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Update-AzRecoveryServicesReplicationPolicy" executed="True" result="Ignored" success="True" time="33.0958" asserts="0" description="Update-AzRecoveryServicesReplicationPolicy">
+            <results>
+              <test-case description="UpdateExpanded" name="Update-AzRecoveryServicesReplicationPolicy.UpdateExpanded" time="32.9822" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Update" name="Update-AzRecoveryServicesReplicationPolicy.Update" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Update-AzRecoveryServicesReplicationProtectedItem.Tests.ps1" executed="True" result="Ignored" success="True" time="1.0488" asserts="0" description="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Update-AzRecoveryServicesReplicationProtectedItem.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Update-AzRecoveryServicesReplicationProtectedItem" executed="True" result="Ignored" success="True" time="0.0945" asserts="0" description="Update-AzRecoveryServicesReplicationProtectedItem">
+            <results>
+              <test-case description="UpdateExpanded" name="Update-AzRecoveryServicesReplicationProtectedItem.UpdateExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="Update" name="Update-AzRecoveryServicesReplicationProtectedItem.Update" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Update-AzRecoveryServicesReplicationProtectedItemAppliance.Tests.ps1" executed="True" result="Ignored" success="True" time="1.0392" asserts="0" description="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Update-AzRecoveryServicesReplicationProtectedItemAppliance.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Update-AzRecoveryServicesReplicationProtectedItemAppliance" executed="True" result="Ignored" success="True" time="0.1103" asserts="0" description="Update-AzRecoveryServicesReplicationProtectedItemAppliance">
+            <results>
+              <test-case description="UpdateExpanded" name="Update-AzRecoveryServicesReplicationProtectedItemAppliance.UpdateExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="Update" name="Update-AzRecoveryServicesReplicationProtectedItemAppliance.Update" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Update-AzRecoveryServicesReplicationProtectedItemMobilityService.Tests.ps1" executed="True" result="Ignored" success="True" time="1.1868" asserts="0" description="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Update-AzRecoveryServicesReplicationProtectedItemMobilityService.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Update-AzRecoveryServicesReplicationProtectedItemMobilityService" executed="True" result="Ignored" success="True" time="0.1104" asserts="0" description="Update-AzRecoveryServicesReplicationProtectedItemMobilityService">
+            <results>
+              <test-case description="UpdateExpanded" name="Update-AzRecoveryServicesReplicationProtectedItemMobilityService.UpdateExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="Update" name="Update-AzRecoveryServicesReplicationProtectedItemMobilityService.Update" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Update-AzRecoveryServicesReplicationProtectionContainerMapping.Tests.ps1" executed="True" result="Ignored" success="True" time="1.1375" asserts="0" description="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Update-AzRecoveryServicesReplicationProtectionContainerMapping.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Update-AzRecoveryServicesReplicationProtectionContainerMapping" executed="True" result="Ignored" success="True" time="0.132" asserts="0" description="Update-AzRecoveryServicesReplicationProtectionContainerMapping">
+            <results>
+              <test-case description="UpdateExpanded" name="Update-AzRecoveryServicesReplicationProtectionContainerMapping.UpdateExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="Update" name="Update-AzRecoveryServicesReplicationProtectionContainerMapping.Update" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Update-AzRecoveryServicesReplicationRecoveryPlan.Tests.ps1" executed="True" result="Ignored" success="True" time="1.1261" asserts="0" description="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Update-AzRecoveryServicesReplicationRecoveryPlan.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Update-AzRecoveryServicesReplicationRecoveryPlan" executed="True" result="Ignored" success="True" time="0.1053" asserts="0" description="Update-AzRecoveryServicesReplicationRecoveryPlan">
+            <results>
+              <test-case description="UpdateExpanded" name="Update-AzRecoveryServicesReplicationRecoveryPlan.UpdateExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="Update" name="Update-AzRecoveryServicesReplicationRecoveryPlan.Update" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Update-AzRecoveryServicesReplicationRecoveryServiceProvider.Tests.ps1" executed="True" result="Ignored" success="True" time="1.1133" asserts="0" description="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Update-AzRecoveryServicesReplicationRecoveryServiceProvider.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Update-AzRecoveryServicesReplicationRecoveryServiceProvider" executed="True" result="Ignored" success="True" time="0.1152" asserts="0" description="Update-AzRecoveryServicesReplicationRecoveryServiceProvider">
+            <results>
+              <test-case description="Refresh" name="Update-AzRecoveryServicesReplicationRecoveryServiceProvider.Refresh" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="RefreshViaIdentity" name="Update-AzRecoveryServicesReplicationRecoveryServiceProvider.RefreshViaIdentity" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Update-AzRecoveryServicesReplicationVaultHealth.Tests.ps1" executed="True" result="Ignored" success="True" time="1.0844" asserts="0" description="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Update-AzRecoveryServicesReplicationVaultHealth.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Update-AzRecoveryServicesReplicationVaultHealth" executed="True" result="Ignored" success="True" time="0.108" asserts="0" description="Update-AzRecoveryServicesReplicationVaultHealth">
+            <results>
+              <test-case description="Refresh" name="Update-AzRecoveryServicesReplicationVaultHealth.Refresh" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Update-AzRecoveryServicesReplicationvCenter.Tests.ps1" executed="True" result="Ignored" success="True" time="1.1415" asserts="0" description="C:\Users\Administrator\Documents\Backup\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test\Update-AzRecoveryServicesReplicationvCenter.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Update-AzRecoveryServicesReplicationvCenter" executed="True" result="Ignored" success="True" time="0.0989" asserts="0" description="Update-AzRecoveryServicesReplicationvCenter">
+            <results>
+              <test-case description="UpdateExpanded" name="Update-AzRecoveryServicesReplicationvCenter.UpdateExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="Update" name="Update-AzRecoveryServicesReplicationvCenter.Update" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+    </results>
+  </test-suite>
+</test-results>

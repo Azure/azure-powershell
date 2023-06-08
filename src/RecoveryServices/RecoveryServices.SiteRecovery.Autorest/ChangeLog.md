@@ -1,8 +1,6 @@
 <!--
     Please leave this section at the top of the change log.
-
     Changes for the upcoming release should go under the section titled "Upcoming Release", and should adhere to the following format:
-
     ## Upcoming Release
     * Overview of change #1
         - Additional information about change #1
@@ -12,7 +10,6 @@
     * Overview of change #3
     * Overview of change #4
         - Additional information about change #4
-
     ## YYYY.MM.DD - Version X.Y.Z (Previous Release)
     * Overview of change #1
         - Additional information about change #1
@@ -20,8 +17,6 @@
 ## Upcoming Release
 
 ## Version 2.0.0
-* Added a feature of remove and update replication policy using a policy object.
-* Fixed the ICreatePolicyInput object to receive Policy specifications using an object.
-* Changed the Input InstanceType to ReplicationScenario for better understanding of the user.
+* Added a feature of remove and update and new replication policy for H2A scenario using a policy object.
 * Added help examples and test recordings
   * `AzRecoveryServicesReplicationPolicy`

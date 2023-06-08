@@ -1,9 +1,9 @@
 {
+  "a2aResourceGroupName": "a2arecoveryrg",
+  "a2aCreateRemovePolicy": "a2ademoPolicy",
+  "a2aPolicyName": "demopolicy1",
+  "a2aSubscriptionId": "7c943c1b-5122-4097-90c8-861411bdd574",
   "SubscriptionId": "7c943c1b-5122-4097-90c8-861411bdd574",
   "a2aVaultName": "a2arecoveryvault",
-  "a2aSubscriptionId": "7c943c1b-5122-4097-90c8-861411bdd574",
-  "a2aPolicyName": "demopolicy1",
-  "Tenant": "72f988bf-86f1-41af-91ab-2d7cd011db47",
-  "a2aResourceGroupName": "a2arecoveryrg",
-  "a2aCreateRemovePolicy": "a2ademoPolicy"
+  "Tenant": "72f988bf-86f1-41af-91ab-2d7cd011db47"
 }

@@ -1,0 +1,82 @@
+{
+  "Get-AzRecoveryServicesReplicationPolicy+[NoContext]+List+$GET+https://management.azure.com/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ASRTesting/providers/Microsoft.RecoveryServices/vaults/HyperV2AzureVault/replicationPolicies?api-version=2023-02-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ASRTesting/providers/Microsoft.RecoveryServices/vaults/HyperV2AzureVault/replicationPolicies?api-version=2023-02-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "14" ],
+        "x-ms-client-request-id": [ "61024f66-7b73-4a9b-bd96-764907305eca" ],
+        "CommandName": [ "Get-AzRecoveryServicesReplicationPolicy" ],
+        "FullCommandName": [ "Get-AzRecoveryServicesReplicationPolicy_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "61024f66-7b73-4a9b-bd96-764907305eca 6/6/2023 11:40:39 AM" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-client-request-id": [ "61024f66-7b73-4a9b-bd96-764907305eca" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "x-ms-correlation-request-id": [ "a6834049-e1d8-496f-898b-ae578e165ec0" ],
+        "x-ms-routing-request-id": [ "CENTRALINDIA:20230606T114040Z:a6834049-e1d8-496f-898b-ae578e165ec0" ],
+        "Date": [ "Tue, 06 Jun 2023 11:40:39 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "2693" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ASRTesting/providers/Microsoft.RecoveryServices/vaults/HyperV2AzureVault/replicationPolicies/replicapolicy4h2a\",\"name\":\"replicapolicy4h2a\",\"type\":\"Microsoft.RecoveryServices/vaults/replicationPolicies\",\"properties\":{\"friendlyName\":\"replicapolicy4h2a\",\"providerSpecificDetails\":{\"instanceType\":\"HyperVReplicaAzure\",\"recoveryPointHistoryDurationInHours\":10,\"applicationConsistentSnapshotFrequencyInHours\":3,\"replicationInterval\":300,\"encryption\":\"Disabled\",\"activeStorageAccountId\":null}}},{\"id\":\"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ASRTesting/providers/Microsoft.RecoveryServices/vaults/HyperV2AzureVault/replicationPolicies/replicapolicy3h2a\",\"name\":\"replicapolicy3h2a\",\"type\":\"Microsoft.RecoveryServices/vaults/replicationPolicies\",\"properties\":{\"friendlyName\":\"replicapolicy3h2a\",\"providerSpecificDetails\":{\"instanceType\":\"HyperVReplicaAzure\",\"recoveryPointHistoryDurationInHours\":10,\"applicationConsistentSnapshotFrequencyInHours\":0,\"replicationInterval\":5,\"encryption\":\"Disabled\",\"activeStorageAccountId\":\"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ASRTesting/providers/Microsoft.Storage/storageAccounts/hyperv2azurestorageeus\"}}},{\"id\":\"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ASRTesting/providers/Microsoft.RecoveryServices/vaults/HyperV2AzureVault/replicationPolicies/replicapolicy2h2a\",\"name\":\"replicapolicy2h2a\",\"type\":\"Microsoft.RecoveryServices/vaults/replicationPolicies\",\"properties\":{\"friendlyName\":\"replicapolicy2h2a\",\"providerSpecificDetails\":{\"instanceType\":\"HyperVReplicaAzure\",\"recoveryPointHistoryDurationInHours\":10,\"applicationConsistentSnapshotFrequencyInHours\":0,\"replicationInterval\":5,\"encryption\":\"Disabled\",\"activeStorageAccountId\":\"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ASRTesting/providers/Microsoft.Storage/storageAccounts/hyperv2azurestorageeus\"}}},{\"id\":\"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ASRTesting/providers/Microsoft.RecoveryServices/vaults/HyperV2AzureVault/replicationPolicies/replicapolicyh2a\",\"name\":\"replicapolicyh2a\",\"type\":\"Microsoft.RecoveryServices/vaults/replicationPolicies\",\"properties\":{\"friendlyName\":\"replicapolicyh2a\",\"providerSpecificDetails\":{\"instanceType\":\"HyperVReplicaAzure\",\"recoveryPointHistoryDurationInHours\":6,\"applicationConsistentSnapshotFrequencyInHours\":1,\"replicationInterval\":300,\"encryption\":\"Disabled\",\"activeStorageAccountId\":\"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ASRTesting/providers/Microsoft.Storage/storageAccounts/hyperv2azurestorageeus\"}}}],\"nextLink\":null}"
+    }
+  },
+  "Get-AzRecoveryServicesReplicationPolicy+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ASRTesting/providers/Microsoft.RecoveryServices/vaults/HyperV2AzureVault/replicationPolicies/replicapolicyh2a?api-version=2023-02-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ASRTesting/providers/Microsoft.RecoveryServices/vaults/HyperV2AzureVault/replicationPolicies/replicapolicyh2a?api-version=2023-02-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "15" ],
+        "x-ms-client-request-id": [ "9f37db92-d418-4fef-8173-76a4917bbd08" ],
+        "CommandName": [ "Get-AzRecoveryServicesReplicationPolicy" ],
+        "FullCommandName": [ "Get-AzRecoveryServicesReplicationPolicy_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "9f37db92-d418-4fef-8173-76a4917bbd08 6/6/2023 11:40:41 AM" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-client-request-id": [ "9f37db92-d418-4fef-8173-76a4917bbd08" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11998" ],
+        "x-ms-correlation-request-id": [ "3e25857b-80d0-4ddc-b5e2-3a8079a122e9" ],
+        "x-ms-routing-request-id": [ "CENTRALINDIA:20230606T114041Z:3e25857b-80d0-4ddc-b5e2-3a8079a122e9" ],
+        "Date": [ "Tue, 06 Jun 2023 11:40:41 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "699" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ASRTesting/providers/Microsoft.RecoveryServices/vaults/HyperV2AzureVault/replicationPolicies/replicapolicyh2a\",\"name\":\"replicapolicyh2a\",\"type\":\"Microsoft.RecoveryServices/vaults/replicationPolicies\",\"properties\":{\"friendlyName\":\"replicapolicyh2a\",\"providerSpecificDetails\":{\"instanceType\":\"HyperVReplicaAzure\",\"recoveryPointHistoryDurationInHours\":6,\"applicationConsistentSnapshotFrequencyInHours\":1,\"replicationInterval\":300,\"encryption\":\"Disabled\",\"activeStorageAccountId\":\"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ASRTesting/providers/Microsoft.Storage/storageAccounts/hyperv2azurestorageeus\"}}}"
+    }
+  }
+}
