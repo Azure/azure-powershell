@@ -1,15 +1,3 @@
-parameters:
-  - name: Branch
-    displayName: Branch the signing code on
-    type: string
-    default: main
-resources:
-  repositories:
-    - repository: AzurePowerShellRepo
-      type: github
-      name: Azure/azure-powershell
-      endpoint: Azure
-      ref: ${{ parameters.Branch }}
 jobs:
 - job: Release
   timeoutInMinutes: 180
@@ -19,7 +7,6 @@ jobs:
   variables:
     LocalRepoName: 'LocalRepo'
   steps:
-  - checkout: AzurePowerShellRepo
   - pwsh: 'Install-Module platyPS -Force -Confirm:$false -Scope CurrentUser'
     displayName: 'Install platyPS'
 
