@@ -10,7 +10,7 @@ resources:
      type: github
      name: Azure/azure-powershell
      endpoint: Azure
-     ref: 
+     ref: ${{ parameters.Branch }}
 jobs:
 - job: Release
   timeoutInMinutes: 180
@@ -20,7 +20,7 @@ jobs:
   variables:
     LocalRepoName: 'LocalRepo'
   steps:
-  - checkout: AzurePowerShellRepo@${{ parameters.Branch }}
+  - checkout: AzurePowerShellRepo
   - pwsh: 'Install-Module platyPS -Force -Confirm:$false -Scope CurrentUser'
     displayName: 'Install platyPS'
 
