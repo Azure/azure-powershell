@@ -12,18 +12,18 @@ Removes a Management Group scoped Deployment Stack.
 
 ## SYNTAX
 
-### RemoveByName (Default)
+### RemoveByNameAndManagementGroupId (Default)
 ```
 Remove-AzManagementGroupDeploymentStack [-Name] <String> [-ManagementGroupId] <String> [-DeleteAll]
- [-DeleteResources] [-DeleteResourceGroups] [-Force] [-Pre] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DeleteResources] [-DeleteResourceGroups] [-PassThru] [-Force] [-Pre]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### RemoveByResourceId
 ```
-Remove-AzManagementGroupDeploymentStack -ResourceId <String> [-ManagementGroupId] <String> [-DeleteAll]
- [-DeleteResources] [-DeleteResourceGroups] [-Force] [-Pre] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzManagementGroupDeploymentStack -ResourceId <String> [-DeleteAll] [-DeleteResources]
+ [-DeleteResourceGroups] [-PassThru] [-Force] [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -120,7 +120,7 @@ The id of the ManagementGroup where the DeploymentStack is being deleted
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: RemoveByNameAndManagementGroupId
 Aliases:
 
 Required: True
@@ -135,13 +135,28 @@ The name of the DeploymentStack to delete
 
 ```yaml
 Type: System.String
-Parameter Sets: RemoveByName
+Parameter Sets: RemoveByNameAndManagementGroupId
 Aliases: StackName
 
 Required: True
 Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -PassThru
+If set, a boolean will be returned with value dependent on cmdlet success.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

@@ -15,14 +15,15 @@ Removes a Subscription scoped Deployment Stack.
 ### RemoveByName (Default)
 ```
 Remove-AzSubscriptionDeploymentStack [-Name] <String> [-DeleteAll] [-DeleteResources] [-DeleteResourceGroups]
- [-Force] [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-PassThru] [-Force] [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### RemoveByResourceId
 ```
 Remove-AzSubscriptionDeploymentStack -ResourceId <String> [-DeleteAll] [-DeleteResources]
- [-DeleteResourceGroups] [-Force] [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DeleteResourceGroups] [-PassThru] [-Force] [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -126,6 +127,21 @@ Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -PassThru
+If set, a boolean will be returned with value dependent on cmdlet success.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

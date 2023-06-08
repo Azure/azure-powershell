@@ -15,15 +15,15 @@ Removes a Resource Group scoped Deployment Stack.
 ### RemoveByNameAndResourceGroupName (Default)
 ```
 Remove-AzResourceGroupDeploymentStack [-Name] <String> [-ResourceGroupName] <String> [-DeleteAll]
- [-DeleteResources] [-DeleteResourceGroups] [-Force] [-Pre] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DeleteResources] [-DeleteResourceGroups] [-PassThru] [-Force] [-Pre]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### RemoveByResourceId
 ```
 Remove-AzResourceGroupDeploymentStack -ResourceId <String> [-DeleteAll] [-DeleteResources]
- [-DeleteResourceGroups] [-Force] [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DeleteResourceGroups] [-PassThru] [-Force] [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -127,6 +127,21 @@ Required: True
 Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -PassThru
+If set, a boolean will be returned with value dependent on cmdlet success.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
