@@ -4273,6 +4273,7 @@
       "New-AzNetworkVirtualAppliance": {},
       "Remove-AzNetworkVirtualAppliance": {},
       "Update-AzNetworkVirtualAppliance": {},
+      "Get-AzNetworkVirtualApplianceConnection": {},
       "Get-AzVirtualApplianceSite": {},
       "New-AzVirtualApplianceSite": {},
       "Remove-AzVirtualApplianceSite": {},
