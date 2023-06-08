@@ -50,6 +50,10 @@
     - `New-AzApplicationGatewayFirewallPolicySetting`
 * Added optional property 'AuxiliarySku' to cmdlet `New-AzNetworkInterface` to help choose performance on an AuxiliaryMode enabled Network Interface.
 * Added a new value, 'AcceleratedConnections' for existing property 'AuxiliaryMode' for `New-AzNetworkInterface`
+* Added new cmdlets to get Connection child resource of Network Virtual Appliance.
+    -`Get-AzNetworkVirtualApplianceConnection`
+* Update cmdlets to return connections in Network Virtual Appliance
+    -`Network Virtual Appliance`
 * Allowed not to provide `Rules` in `PSApplicationGatewayFirewallPolicyManagedRuleGroupOverride`, which would return an empty `RuleID` to be passed to NRP.
 
 ## Version 5.7.0
