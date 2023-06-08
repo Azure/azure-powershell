@@ -14,8 +14,7 @@ resources:
       type: github
       name: Azure/azure-powershell
       endpoint: Azure
-      ref: codeoob/${{ parameters.ServiceName }}
-      
+
 stages:
 - stage: OOBRelease
   displayName: OOBRelease
@@ -97,4 +96,4 @@ stages:
 - stage: Codesign
   dependsOn: OOBRelease
   jobs:
-  - template: .azure-pipelines/code-sign.yml@AzurePowerShellRepo
+  - template: .azure-pipelines/code-sign.yml
