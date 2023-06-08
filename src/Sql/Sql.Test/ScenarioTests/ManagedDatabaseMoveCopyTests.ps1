@@ -209,7 +209,7 @@ function Test-ManagedDatabaseMovePiping
 			-instanceName $managedInstanceSource.ManagedInstanceName `
 			-databaseName $managedDatabaseName
 
-		$moveObject = Complete-AzSqlInstanceDatabaseMove -Force
+		$moveObject | Complete-AzSqlInstanceDatabaseMove -Force
 				
 		Wait-ForOperationToSucceed `
 			-rgName $sourceRGName `
