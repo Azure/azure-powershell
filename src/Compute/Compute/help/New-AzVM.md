@@ -370,7 +370,7 @@ $vm1 = Get-AzVM -ResourceGroupName $rgname -Name $vmname1;
 #$vm1.SecurityProfile.UefiSettings.SecureBootEnabled $true;
 
 # Verify the GuestAttestation extension is installed.
-$vm = Get-AzVm -ResourceGroupName $rgname -Name $vmname1;
+$vm = Get-AzVM -ResourceGroupName $rgname -Name $vmname1;
 $extDefaultName = "GuestAttestation";
 $vmExt = Get-AzVMExtension -ResourceGroupName $rgname -VMName $vmname1 -Name $extDefaultName;
 # $vmExt.Name "GuestAttestation";
