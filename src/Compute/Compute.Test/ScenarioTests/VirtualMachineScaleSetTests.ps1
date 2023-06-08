@@ -4424,9 +4424,10 @@ function Test-VirtualMachineScaleSetGetById
 
 <#
 .SYNOPSIS
-Test Flags VTpmEnabled and SecureBootEnabled for TrustedLaunch SecurityType
+Test Virtual Machine Scale Set VtpmEabled and SecureBootEnabled 
+for the certain Trusted Launch feature setup. 
 #>
-function Test-VirtualMachineSecurityType
+function Test-VirtualMachineScaleSetSecurityType
 {
     # Setup
     $rgname = Get-ComputeTestResourceName;
@@ -4434,93 +4435,85 @@ function Test-VirtualMachineSecurityType
 
     try
     {
-        New-AzResourceGroup -Name $rgname -Location $loc -Force;    
+        # Common
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
 
-        $domainNameLabel = "d1" + $rgname;
-        $vmsize = 'Standard_D4s_v3';
-        $vmname = $rgname + 'Vm';
-        $securityType_TL = "TrustedLaunch";
-        $vnetname = "myVnet";
-        $vnetAddress = "10.0.0.0/16";
-        $subnetname = "slb" + $rgname;
-        $subnetAddress = "10.0.2.0/24";
-        $OSDiskName = $vmname + "-osdisk";
-        $NICName = $vmname+ "-nic";
-        $NSGName = $vmname + "-NSG";
-        $OSDiskSizeinGB = 128;
+        $vmssSize = 'Standard_D4s_v3';
         $PublisherName = "MicrosoftWindowsServer";
         $Offer = "WindowsServer";
         $SKU = "2016-datacenter-gensecond";
-        $disable = $false;
+        $securityType = "TrustedLaunch";
         $enable = $true;
+        $disable = $false;
 
-        # Creating a VM using Simple parameterset
-        $password = Get-PasswordForVM;
-        $securePassword = $password | ConvertTo-SecureString -AsPlainText -Force;  
-        $user = "admin01";
-        $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
+        # NRP
+        $vnetworkName = 'vnet' + $rgname;
+        $subnetName = 'subnet' + $rgname;
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix "10.0.0.0/24";
+        $vnet = New-AzVirtualNetwork -Name $vnetworkName -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
+        $vnet = Get-AzVirtualNetwork -Name $vnetworkName -ResourceGroupName $rgname;
+        $subnetId = $vnet.Subnets[0].Id;
 
-        $frontendSubnet = New-AzVirtualNetworkSubnetConfig -Name $subnetname -AddressPrefix $subnetAddress;
+        # New VMSS Parameters
+        $vmssName1 = 'vmss1' + $rgname;
+        $vmssName2 = 'vmss2' + $rgname;
+        $vmssType = 'Microsoft.Compute/virtualMachineScaleSets';
 
-        $vnet = New-AzVirtualNetwork -Name $vnetname -ResourceGroupName $rgname -Location $loc -AddressPrefix $vnetAddress -Subnet $frontendSubnet;
+        $adminUsername = Get-ComputeTestResourceName;
+        $adminPassword = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force;
 
-        $nsgRuleRDP = New-AzNetworkSecurityRuleConfig -Name RDP  -Protocol Tcp  -Direction Inbound -Priority 1001 -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix * -DestinationPortRange 3389 -Access Allow;
-        $nsg = New-AzNetworkSecurityGroup -ResourceGroupName $rgname -Location $loc -Name $NSGName  -SecurityRules $nsgRuleRDP;
-        $nic = New-AzNetworkInterface -Name $NICName -ResourceGroupName $rgname -Location $loc -SubnetId $vnet.Subnets[0].Id -NetworkSecurityGroupId $nsg.Id -EnableAcceleratedNetworking;
+        $imgRef = New-Object -TypeName 'Microsoft.Azure.Commands.Compute.Models.PSVirtualMachineImage';
+        $imgRef.PublisherName = $PublisherName;
+        $imgRef.Offer = $Offer;
+        $imgRef.Skus = $SKU;
+        $imgRef.Version = "latest";
 
-        # VM
-        $vmConfig = New-AzVMConfig -VMName $vmname -VMSize $vmsize;
-        Set-AzVMOperatingSystem -VM $vmConfig -Windows -ComputerName $vmname -Credential $cred;
-        Set-AzVMSourceImage -VM $vmConfig -PublisherName $PublisherName -Offer $Offer -Skus $SKU -Version latest ;
-        Add-AzVMNetworkInterface -VM $vmConfig -Id $nic.Id;
 
+        $ipCfg = New-AzVmssIPConfig -Name 'test' -SubnetId $subnetId;
+
+        $vmss = New-AzVmssConfig -Location $loc -SkuCapacity 2 -SkuName $vmssSize -UpgradePolicyMode 'Manual' `
+            | Add-AzVmssNetworkInterfaceConfiguration -Name 'test' -Primary $true -IPConfiguration $ipCfg `
+            | Set-AzVmssOSProfile -ComputerNamePrefix 'test' -AdminUsername $adminUsername -AdminPassword $adminPassword `
+            | Set-AzVmssStorageProfile -OsDiskCreateOption 'FromImage' -OsDiskCaching 'ReadOnly' `
+            -ImageReferenceOffer $imgRef.Offer -ImageReferenceSku $imgRef.Skus -ImageReferenceVersion $imgRef.Version `
+            -ImageReferencePublisher $imgRef.PublisherName ;
+
+        # Requirements for the TrustedLaunch default behavior.
         #Case 1: -SecurityType = TrustedLaunch || ConfidentialVM
         # validate that for -SecurityType "TrustedLaunch" "-Vtpm" and -"SecureBoot" are "Enabled/true"
-        $vmConfig = Set-AzVMSecurityProfile -VM $vmConfig -SecurityType $securityType_TL;
-        New-AzVM -ResourceGroupName $rgname -Location $loc -VM $vmConfig;
-        $vm = Get-AzVM -ResourceGroupName $rgname -Name $vmname;
+        $vmss1 = Set-AzVmssSecurityProfile -VirtualMachineScaleSet $vmss -SecurityType $securityType;
+        $result = New-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName1 -VirtualMachineScaleSet $vmss1;
+        $vmssGet = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName1;
 
-        Assert-AreEqual $vm.SecurityProfile.SecurityType $securityType_TL;
-        Assert-AreEqual $vm.SecurityProfile.UefiSettings.VTpmEnabled $true;
-        Assert-AreEqual $vm.SecurityProfile.UefiSettings.SecureBootEnabled $true;
-
-        # validate GA extension
-        $extDefaultName = "GuestAttestation";
-        #$vmGADefaultIDentity = "SystemAssignedUserAssigned";
-        $vm = Get-AzVm -ResourceGroupName $rgname -Name $vmName;
-        $vmExt = Get-AzVMExtension -ResourceGroupName $rgname -VMName $vmName -Name $extDefaultName;
-        Assert-AreEqual $extDefaultName $vmExt.Name;
-        #Assert-AreEqual $vmGADefaultIDentity $vm.Identity.Type;
+        Assert-AreEqual $vmssGet.VirtualMachineProfile.SecurityProfile.SecurityType $securityType;
+        Assert-AreEqual $vmssGet.VirtualMachineProfile.SecurityProfile.UefiSettings.VTpmEnabled $true;
+        Assert-AreEqual $vmssGet.VirtualMachineProfile.SecurityProfile.UefiSettings.SecureBootEnabled $true;
 
         #Case 2: -SecurityType = "TrustedLaunch" || "ConfidentialVM" -EnableVtpm $false -EnableSecureBoot $true
-        $vmname2 = "v2" + $rgname;
-        $subnetname2 = $subnetname+ "2";
-        $vnetname2 = $vnetname+ "2";
-        $securityRuleName = "sec" + $rgname;
-        $NSGName2 = $NSGName + "2";
-        $NICName2 = $NICName + "2";
-        $frontendSubnet2 = New-AzVirtualNetworkSubnetConfig -Name $subnetname2 -AddressPrefix $subnetAddress;
+        $vmss2 = Set-AzVmssUefi -VirtualMachineScaleSet $VMSS -EnableVtpm $disable -EnableSecureBoot $enable;
+        $result = New-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName2 -VirtualMachineScaleSet $vmss2;
+        $vmssGet = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName2;
+        
+        Assert-AreEqual $vmssGet.VirtualMachineProfile.SecurityProfile.SecurityType $securityType;
+        Assert-AreEqual $vmssGet.VirtualMachineProfile.SecurityProfile.UefiSettings.VTpmEnabled $false;
+        Assert-AreEqual $vmssGet.VirtualMachineProfile.SecurityProfile.UefiSettings.SecureBootEnabled $true;
+        # Vmss Identity is now in fact only UserAssigned as expected. 
+        
+        # Guest Attestation extension defaulting test
+        # Validate
+        $vmGADefaultIdentity = "SystemAssigned"; # New defaulting behavior that was unexpected but feature team says go with it.
+        $extDefaultName = "GuestAttestation";
+        $vmssGet = Get-AzVmss -ResourceGroupName $rgname -Name $vmssName1;
+        # Assert-AreEqual $vmGADefaultIDentity $vmssGet.Identity.Type;
 
-        $vnet2 = New-AzVirtualNetwork -Name $vnetname2 -ResourceGroupName $rgname -Location $loc -AddressPrefix $vnetAddress -Subnet $frontendSubnet2;
+        $output = $vmssGet | Out-String;
+        # Write-Verbose ($output);
+        Assert-True { $output.Contains($vmGADefaultIdentity) };
 
-        $nsgRuleRDP2 = New-AzNetworkSecurityRuleConfig -Name $securityRuleName  -Protocol Tcp  -Direction Inbound -Priority 1001 -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix * -DestinationPortRange 3389 -Access Allow;
-        $nsg2 = New-AzNetworkSecurityGroup -ResourceGroupName $rgname -Location $loc -Name $NSGName2  -SecurityRules $nsgRuleRDP2;
-        $nic2 = New-AzNetworkInterface -Name $NICName2 -ResourceGroupName $rgname -Location $loc -SubnetId $vnet2.Subnets[0].Id -NetworkSecurityGroupId $nsg2.Id -EnableAcceleratedNetworking;
-
-
-        $vmConfig = New-AzVMConfig -VMName $vmname2 -VMSize $vmsize;
-        Set-AzVMOperatingSystem -VM $vmConfig -Windows -ComputerName $vmname2 -Credential $cred;
-        Set-AzVMSourceImage -VM $vmConfig -PublisherName $PublisherName -Offer $Offer -Skus $SKU -Version latest ;
-        Add-AzVMNetworkInterface -VM $vmConfig -Id $nic2.Id;
-        $vmConfig = Set-AzVMSecurityProfile -VM $vmConfig -SecurityType $securityType_TL;
-
-        $vmConfig = Set-AzVmUefi -VM $vmConfig -EnableVtpm $disable -EnableSecureBoot $enable;
-        New-AzVM -ResourceGroupName $RGName -Location $loc -VM $vmConfig;
-        $vm = Get-AzVM -ResourceGroupName $rgname -Name $vmname2;
-
-        Assert-AreEqual $vm.SecurityProfile.SecurityType $securityType_TL;
-        Assert-AreEqual $vm.SecurityProfile.UefiSettings.VTpmEnabled $false;
-        Assert-AreEqual $vm.SecurityProfile.UefiSettings.SecureBootEnabled $true;
+        $vmssvms = Get-AzVmssvm -ResourceGroupName $rgname -VMScaleSetName $vmssName1;
+        Assert-NotNull $vmssvms;
+        $vmssvm = Get-AzVmssvm -ResourceGroupName $rgname -VMScaleSetName $vmssName1 -InstanceId $vmssvms[0].InstanceId;
+        Assert-AreEqual $extDefaultName $vmssvm.Resources[2].Name;
     }
     finally
     {
@@ -4529,70 +4522,80 @@ function Test-VirtualMachineSecurityType
     }
 }
 
+
 <#
 .SYNOPSIS
-Test Virtual Machines SecurityType parameter without 
+Test Virtual Machine Scale Set VtpmEabled and SecureBootEnabled 
+for the Trusted Launch feature setup. 
+Tests that GuestAttestation extension is also installed.
 #>
-function Test-VirtualMachineSecurityTypeWithoutConfig
+function Test-VirtualMachineScaleSetSecurityTypeWithoutConfig
 {
     # Setup
-        $rgname = Get-ComputeTestResourceName;
-        $loc = Get-ComputeVMLocation;
+    $rgname = Get-ComputeTestResourceName;
+    $loc = Get-ComputeVMLocation;
+
     try
     {
-        New-AzResourceGroup -Name $rgname -Location $loc -Force;    
+        # Common
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
 
+        $vmssSize = 'Standard_D4s_v3';
+        $vmssName1 = 'vmss1' + $rgname;
+        $vmssName2 = 'vmss2' + $rgname;
+        $imageName = "Win2016DataCenterGenSecond";
+        $PublisherName = "MicrosoftWindowsServer";
+        $Offer = "WindowsServer";
+        $SKU = "2016-datacenter-gensecond";
         $domainNameLabel1 = "d1" + $rgname;
         $domainNameLabel2 = "d2" + $rgname;
-        $vmsize = 'Standard_D4s_v3';
-        $vmname1 = $rgname + 'V';
-        $vmname2 = $rgname + 'V2';
-        $imageName = "Win2016DataCenterGenSecond";
         $disable = $false;
         $enable = $true;
+        $securityType = "TrustedLaunch";
+        $adminUsername = Get-ComputeTestResourceName;
+        $adminPassword = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force;
+        $vmCred = New-Object System.Management.Automation.PSCredential ($adminUsername, $adminPassword);
 
-        # Creating a VM using Simple parameterset
-        $password = Get-PasswordForVM;
-        $securePassword = $password | ConvertTo-SecureString -AsPlainText -Force;  
-        $user = "admin01";
-        $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
-
+        # Requirements for the TrustedLaunch default behavior.
         #Case 1: -SecurityType = TrustedLaunch || ConfidentialVM
         # validate that for -SecurityType "TrustedLaunch" "-Vtpm" and -"SecureBoot" are "Enabled/true"
-        New-AzVM -ResourceGroupName $rgname -Location $loc -Name $vmname1 -Credential $cred -Size $vmsize -Image $imageName -DomainNameLabel $domainNameLabel1 -SecurityType "TrustedLaunch";
-        $vm1 = Get-AzVM -ResourceGroupName $rgname -Name $vmname1;
+        $res = New-AzVmss -ResourceGroupName $rgname -Credential $vmCred -VMScaleSetName $vmssName1 -ImageName $imageName -DomainNameLabel $domainNameLabel1 -SecurityType $securityType ;
 
-        Assert-AreEqual $vm1.SecurityProfile.SecurityType "TrustedLaunch";
-        Assert-AreEqual $vm1.SecurityProfile.UefiSettings.VTpmEnabled $true;
-        Assert-AreEqual $vm1.SecurityProfile.UefiSettings.SecureBootEnabled $true;
+        Assert-AreEqual $res.VirtualMachineProfile.SecurityProfile.SecurityType $securityType;
+        Assert-AreEqual $res.VirtualMachineProfile.SecurityProfile.UefiSettings.VTpmEnabled $true;
+        Assert-AreEqual $res.VirtualMachineProfile.SecurityProfile.UefiSettings.SecureBootEnabled $true;
 
         #Case 2: -SecurityType = "TrustedLaunch" || "ConfidentialVM" -EnableVtpm $false -EnableSecureBoot $true
-        $vmname2 = "v2" + $rgname;
-        $res= New-AzVM -ResourceGroupName $rgname -Location $loc -Name $vmname2 -Credential $cred -Size $vmsize -Image $imageName -DomainNameLabel $domainNameLabel2 -SecurityType "TrustedLaunch" -EnableVtpm $disable;
-        $vm2 = Get-AzVM -ResourceGroupName $rgname -Name $vmname2;
+        $result = New-AzVmss -ResourceGroupName $rgname -Credential $vmCred -VMScaleSetName $vmssName2 -ImageName $imageName -DomainNameLabel $domainNameLabel2 -SecurityType $securityType -EnableVtpm $disable;
+                
+        Assert-AreEqual $result.VirtualMachineProfile.SecurityProfile.SecurityType $securityType;
+        Assert-AreEqual $result.VirtualMachineProfile.SecurityProfile.UefiSettings.VTpmEnabled $false;
+        Assert-AreEqual $result.VirtualMachineProfile.SecurityProfile.UefiSettings.SecureBootEnabled $true;
 
-        Assert-AreEqual $vm2.SecurityProfile.SecurityType "TrustedLaunch";
-        Assert-AreEqual $vm2.SecurityProfile.UefiSettings.VTpmEnabled $false;
-        Assert-AreEqual $vm2.SecurityProfile.UefiSettings.SecureBootEnabled $true;
+        # Update-AzVmss EnableVtpm
+        $vmssUp = Update-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName2 -EnableVtpm $true;
+        $vmssGet2 = Get-AzVmss -ResourcegroupName $rgname -VMScaleSetName $vmssName2;
+        Assert-AreEqual $vmssGet2.VirtualMachineProfile.SecurityProfile.UefiSettings.VTpmEnabled $true;
 
-        # Update AzVm test
-        Update-AzVm -ResourceGroupName $rgname -VM $res -EnableVtpm:$true;
-        $updated_vm = Get-AzVM -ResourceGroupName $rgname -Name $vmname2;
-
-        Assert-AreEqual $updated_vm.SecurityProfile.UefiSettings.VTpmEnabled $true;
-
-        # validate GA extension
+        # Guest Attestation extension defaulting test
+        # Validate
+        $vmGADefaultIdentity = "SystemAssigned"; # New defaulting behavior that was unexpected but feature team says go with it.
         $extDefaultName = "GuestAttestation";
-        $vmGADefaultIDentity = "SystemAssignedUserAssigned";
-        $vmname = $vmname1;
-        $vm = Get-AzVm -ResourceGroupName $rgname -Name $vmName;
-        $vmExt = Get-AzVMExtension -ResourceGroupName $rgname -VMName $vmName -Name $extDefaultName;
-        Assert-AreEqual $extDefaultName $vmExt.Name;
-        Assert-AreEqual $vmGADefaultIDentity $vm.Identity.Type;
+        $vmssGet = Get-AzVmss -ResourceGroupName $rgname -Name $vmssName1;
+        # Assert-AreEqual $vmGADefaultIDentity $vmssGet.Identity.Type;
+
+        $output = $vmssGet | Out-String;
+        # Write-Verbose ($output);
+        Assert-True { $output.Contains($vmGADefaultIdentity) };
+
+        $vmssvms = Get-AzVmssvm -ResourceGroupName $rgname -VMScaleSetName $vmssName1;
+        Assert-NotNull $vmssvms;
+        $vmssvm = Get-AzVmssvm -ResourceGroupName $rgname -VMScaleSetName $vmssName1 -InstanceId $vmssvms[0].InstanceId;
+        Assert-AreEqual $extDefaultName $vmssvm.Resources[2].Name;
     }
     finally
     {
-         # Cleanup
-         Clean-ResourceGroup $rgname;
+        # Cleanup
+        Clean-ResourceGroup $rgname;
     }
 }

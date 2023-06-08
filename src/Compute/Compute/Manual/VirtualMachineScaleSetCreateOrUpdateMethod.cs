@@ -697,25 +697,26 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             if (shouldGuestAttestationExtBeInstalledSimple())
             {
                 var extensionDirect = new VirtualMachineScaleSetExtension();
-                
+                /*
                 if (result.VirtualMachineProfile == null)
                 {
                     result.VirtualMachineProfile = new VirtualMachineScaleSetVMProfile();
                 }
 
                 // ExtensionProfile
+                
                 if (result.VirtualMachineProfile.ExtensionProfile == null)
                 {
                     result.VirtualMachineProfile.ExtensionProfile = new VirtualMachineScaleSetExtensionProfile();
                 }
-
+                
                 // Extensions
                 if (result.VirtualMachineProfile.ExtensionProfile.Extensions == null)
                 {
                     result.VirtualMachineProfile.ExtensionProfile.Extensions = new List<VirtualMachineScaleSetExtension>();
                 }
-
-                if (result.VirtualMachineProfile.OsProfile != null)
+                */
+                if (result.VirtualMachineProfile?.OsProfile != null)
                 {
                     if (result.VirtualMachineProfile.OsProfile.LinuxConfiguration != null)
                     {
