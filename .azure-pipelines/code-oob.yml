@@ -14,7 +14,7 @@ resources:
       type: github
       name: Azure/azure-powershell
       endpoint: Azure
-      ref: sign
+      ref: codeoob/${{ parameters.ServiceName }}
 stages:
 - stage: OOBRelease
   displayName: OOBRelease
