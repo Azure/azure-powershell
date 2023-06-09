@@ -61,6 +61,10 @@ directive:
   - where:
       variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
     remove: true
+  - where:
+      subject: AccountAndUpdate
+    set:
+      subject: Account
   # Remove the set-* cmdlet
   - where:
       verb: Set
