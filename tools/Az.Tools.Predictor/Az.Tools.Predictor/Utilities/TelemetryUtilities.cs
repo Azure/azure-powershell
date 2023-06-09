@@ -65,7 +65,19 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Utilities
                 { "PowerShellVersion", azContext.PowerShellVersion.ToString() },
                 { "ModuleVersion", azContext.ModuleVersion.ToString() },
                 { "OS", azContext.OSVersion },
-                { "AzVersion", azContext.AzVersion.ToString() },
+                { "UserAgent", CreateUserAgent(azContext) },
             };
+
+        private static string CreateUserAgent(IAzContext azContext)
+        {
+            string result = string.Format("AzurePowerShell/Az{0}", azContext.AzVersion);
+
+            if (!string.IsNullOrWhiteSpace(azContext.HostEnvironment))
+            {
+                result += string.Format(" {0}", azContext.HostEnvironment);
+            }
+
+            return result;
+        }
     }
 }

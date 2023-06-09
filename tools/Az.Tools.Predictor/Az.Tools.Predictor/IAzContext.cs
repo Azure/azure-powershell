@@ -68,6 +68,11 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         public bool IsInternal { get; }
 
         /// <summary>
+        /// Gets the host environment where the module runs.
+        /// </summary>
+        public string HostEnvironment { get; }
+
+        /// <summary>
         /// Gets the minimum PowerShell Runspace. This isn't the necessary the same one as the PowerShell environment that Az
         /// Predictor is running on.
         /// </summary>

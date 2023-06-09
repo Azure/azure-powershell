@@ -27,15 +27,17 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test.Mocks
 
         public string OSVersion => "TestOSVersion";
 
-        public Version PowerShellVersion => Version.Parse("0.0.0.0");
+        public Version PowerShellVersion => default;
 
-        public Version ModuleVersion => Version.Parse("0.0.0.0");
+        public Version ModuleVersion => default;
 
-        public Version AzVersion => Version.Parse("0.0.0.0");
+        public Version AzVersion => default;
 
         public int Cohort { get; set; } = -1;
 
         public bool IsInternal => true;
+
+        public string HostEnvironment => "TestEnvironment";
 
         public Runspace DefaultRunspace => default;
 

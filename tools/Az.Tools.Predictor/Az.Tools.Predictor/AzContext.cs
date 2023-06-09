@@ -133,6 +133,9 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// <inheritdoc/>
         public bool IsInternal { get; private set; }
 
+        /// <inheritdoc/>
+        public string HostEnvironment => new Lazy<string>(() => (Environment.GetEnvironmentVariable("AZUREPS_HOST_ENVIRONMENT") ?? string.Empty).Trim()).Value;
+
         public AzContext(IPowerShellRuntime powerShellRuntime) => _powerShellRuntime
              = powerShellRuntime;
 
@@ -268,7 +271,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                 }
             }
 
-            return null;
+            return string.Empty;
         }
     }
 }
