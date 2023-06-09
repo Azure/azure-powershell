@@ -35,6 +35,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File
 
     public abstract class AzureStorageFileCmdletBase : StorageCloudCmdletBase<IStorageFileManagement>
     {
+        [Parameter(Mandatory = false, HelpMessage = "Disallow trailing dot (.) to suffex directory and file names.", ParameterSetName = Constants.ShareNameParameterSetName)]
+        public virtual SwitchParameter DisAllowTrailingDot { get; set; }
         protected FileRequestOptions RequestOptions
         {
             get
@@ -178,6 +180,15 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File
                 {
                     clientOptions = new ShareClientOptions();
                     clientOptions.AddPolicy(new UserAgentPolicy(ApiConstants.UserAgentHeaderValue), HttpPipelinePosition.PerCall);
+                    if (this.DisAllowTrailingDot.IsPresent)
+                    {
+                        clientOptions.AllowTrailingDot = false;
+                    }
+                    else
+                    {
+                        clientOptions.AllowTrailingDot = true;
+                    }
+                    clientOptions.AllowSourceTrailingDot = true;
                     return clientOptions;
                 }
                 else
@@ -196,8 +207,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File
                 null, //queue Uri
                 null, //talbe Uri
                 fileServiceClient.BaseUri); //file Uri
-            return new AzureStorageContext(account, 
-                fileServiceClient.Credentials.AccountName, 
+            return new AzureStorageContext(account,
+                fileServiceClient.Credentials.AccountName,
                 DefaultContext);
         }
         public static AzureStorageContext GetStorageContextFromTrack1BlobServiceClient(CloudBlobClient blobServiceClient, IAzureContext DefaultContext = null)

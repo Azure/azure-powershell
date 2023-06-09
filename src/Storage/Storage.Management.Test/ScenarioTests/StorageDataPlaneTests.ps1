@@ -39,7 +39,7 @@ function Test-File
         New-Item $localSrcFile -ItemType File -Force
         $localDestFile = "localdestfiletestfile1.txt"    
 
-        $objectName1 = "filetest1.txt" 
+        $objectName1 = "filetest1.txt." 
         $objectName2 = "filetest2.txt"  
         $shareName = "filetestshare" 
 
@@ -49,10 +49,25 @@ function Test-File
         Assert-AreEqual $Share.Count 1
         Assert-AreEqual $Share[0].Name $shareName
 
+        # upload file
         $t = Set-AzStorageFileContent -source $localSrcFile -ShareName $shareName -Path $objectName1 -Force -Context $storageContext -asjob
         $t | wait-job
         Assert-AreEqual $t.State "Completed"
         Assert-AreEqual $t.Error $null
+
+        # upload/remove file/dir with -DisAllowTrailingDot            
+        $dirName1WithTrailingDot = "testdir1.."      
+        $dirName1WithOutTrailingDot = "testdir1" 
+        $objectPathWithoutTrailingDot  = "testdir1/filetest1.txt"    
+        New-AzStorageDirectory -ShareName $shareName -Path $dirName1WithTrailingDot -Context $storageContext -DisAllowTrailingDot
+        $file11 = Set-AzStorageFileContent -source $localSrcFile -ShareName $shareName -Path "$($dirName1WithTrailingDot)/$($objectName1)" -Force -Context $storageContext -DisAllowTrailingDot
+        $file = Get-AzStorageFile -ShareName $shareName -Path $objectPathWithoutTrailingDot -Context $storageContext -DisAllowTrailingDot
+        Assert-AreEqual $file.Count 1
+        Assert-AreEqual $file[0].ShareFileClient.Path $objectPathWithoutTrailingDot
+        Remove-AzStorageFile -ShareName $shareName -Path "$($dirName1WithTrailingDot)/$($objectName1)" -Context $storageContext -DisAllowTrailingDot
+        Remove-AzStorageDirectory -ShareName $shareName -Path $dirName1WithTrailingDot -Context $storageContext -DisAllowTrailingDot
+
+        # list file        
         $file = Get-AzStorageFile -ShareName $shareName -Context $storageContext
         Assert-AreEqual $file.Count 1
         Assert-AreEqual $file[0].Name $objectName1
@@ -72,7 +87,6 @@ function Test-File
         Assert-NotNull $file[0].ListFileProperties.Properties.ETag
         if ($Env:OS -eq "Windows_NT")
         {
-            $file[0].CloudFile.FetchAttributes()
             $localFileProperties = Get-ItemProperty $localSrcFile
             Assert-AreEqual $localFileProperties.CreationTime.ToUniversalTime().Ticks $file[0].ListFileProperties.Properties.CreatedOn.ToUniversalTime().Ticks
             Assert-AreEqual $localFileProperties.LastWriteTime.ToUniversalTime().Ticks $file[0].ListFileProperties.Properties.LastWrittenOn.ToUniversalTime().Ticks
@@ -139,7 +153,7 @@ function Test-File
         Assert-AreEqual $file[1].GetType().Name "AzureStorageFile"
         Assert-Null $file[1].ListFileProperties.Properties.ETag
 
-        $newDir = "new" + $dirName
+        $newDir = "new" + $dirName + ".."
         $dir = Get-AzStorageFile -ShareName $shareName -Path $dirName -Context $storageContext
         $dir2 = Rename-AzStorageDirectory -ShareName $shareName -SourcePath $dirName -DestinationPath $newDir -Context $storageContext
         Assert-AreEqual $newDir $dir2.Name

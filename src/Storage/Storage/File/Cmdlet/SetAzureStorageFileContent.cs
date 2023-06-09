@@ -150,10 +150,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 
             bool isDirectory;
             string[] path = NamingUtil.ValidatePath(this.Path, out isDirectory);
-   
+
             this.RunTask(async taskId =>
             {
-                if (fileSize <= sizeTB && !WithOauthCredential())
+                if (fileSize <= sizeTB && !WithOauthCredential() && (this.DisAllowTrailingDot.IsPresent || !Util.PathContainsTrailingDot(this.Path)))
                 {
                     // Step 2: Build the CloudFile object which pointed to the
                     // destination cloud file.
@@ -313,7 +313,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                         {
                             // TODO: should make sure track1 file object attributes get?
                             ShareFileProperties fileProperties = fileClient.GetProperties(this.CmdletCancellationToken).Value;
-                            OutputStream.WriteObject(taskId, new AzureStorageFile(fileClient, (AzureStorageContext)this.Context, fileProperties, ClientOptions));
+                            OutputStream.WriteObject(taskId, new AzureStorageFile(fileClient, (AzureStorageContext)this.Context, fileProperties, ClientOptions));                            
                         }
                     }
                 }

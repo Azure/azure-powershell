@@ -65,7 +65,7 @@ This command gets a file share snapshot with specific share name and SnapshotTim
 ### Example 5: Get a file share object without fetch share properties with OAuth authentication.
 ```powershell
 New-AzStorageContext -StorageAccountName "myaccountname" -UseConnectedAccount -EnableFileBackupRequestIntent
-$share = Get-AzStorageShare -Name "ContosoShare06" -SkipGetProperty -Context $ctx 
+$share = Get-AzStorageShare -Name "ContosoShare06" -SkipGetProperty -Context $ctx
 ```
 
 This command gets a file share snapshot without get share properties with OAuth authentication. 

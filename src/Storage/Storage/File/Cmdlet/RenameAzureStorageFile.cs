@@ -120,12 +120,29 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             "Default value: Inherit. If SDDL is specified as input, it must have owner, group and dacl.")]
         public string Permission { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Disallow trailing dot (.) to suffex source directory and source file names.", ParameterSetName = ShareNameParameterSet)]
+        public virtual SwitchParameter DisAllowSourceTrailingDot { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Disallow trailing dot (.) to suffex destination directory and destination file names.", ParameterSetName = ShareNameParameterSet)]
+        public virtual SwitchParameter DisAllowDestTrailingDot { get; set; }
+
         public override int? ClientTimeoutPerRequest { get; set; }
         public override int? ServerTimeoutPerRequest { get; set; }
         public override int? ConcurrentTaskCount { get; set; }
+        public override SwitchParameter DisAllowTrailingDot { get; set; }
 
         public override void ExecuteCmdlet()
         {
+
+            if (this.DisAllowSourceTrailingDot)
+            {
+                this.ClientOptions.AllowSourceTrailingDot = false;
+            }
+            if (this.DisAllowDestTrailingDot)
+            {
+                this.ClientOptions.AllowTrailingDot = false;
+            }
+
             ShareFileClient srcFileClient;
             ShareFileClient destFileClient;
 

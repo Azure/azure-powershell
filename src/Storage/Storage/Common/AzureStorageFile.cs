@@ -164,7 +164,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
             this.privateFileClient = shareFileClient;
             if (!storageContext.StorageAccount.Credentials.IsToken) // not oauth
             {
-                privateCloudFile = GetTrack1FileClient(shareFileClient, storageContext.StorageAccount.Credentials);
+                privateCloudFile = GetTrack1FileClient(shareFileClient, storageContext.StorageAccount.Credentials, clientOptions);
             }
             if (shareFileProperties != null)
             {
@@ -177,13 +177,19 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
         }
 
         // Convert Track2 File object to Track 1 file object
-        public static CloudFile GetTrack1FileClient(ShareFileClient shareFileClient, StorageCredentials credentials)
+        public static CloudFile GetTrack1FileClient(ShareFileClient shareFileClient, StorageCredentials credentials, ShareClientOptions clientOptions = null)
         {
+            // Track1 File not support Oauth
+            if (credentials.IsToken)
+            {
+                return new InvalidCloudFile(shareFileClient.Uri, credentials);
+            }
             if (credentials.IsSAS) // the Uri already contains credentail.
             {
                 credentials = null;
             }
-            if (credentials.IsToken)
+            // Track1 File not support Trailing Dot
+            if (Util.PathContainsTrailingDot(shareFileClient.Path) && (clientOptions != null && clientOptions.AllowTrailingDot != null && clientOptions.AllowTrailingDot.Value))
             {
                 return new InvalidCloudFile(shareFileClient.Uri, credentials);
             }
