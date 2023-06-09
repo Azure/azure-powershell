@@ -18,7 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Fixed for OS upgrade migrate
+* Fixed keyvault SPN Id coming as null for some users
+* Added support for Windows Server OS upgrade while migrating the server to Azure using Azure Migrate
 
 ## Version 2.1.0
 * Added parameter `CacheStorageAccountId` to `Initialize-AzMigrateReplicationInfrastructure`
