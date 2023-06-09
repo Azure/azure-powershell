@@ -6901,6 +6901,10 @@
                 <PropertyName>ScaleUnit</PropertyName>
               </ListItem>
 			  <ListItem>
+				  <Label>Kerberos</Label>
+				  <PropertyName>EnableKerberos</PropertyName>
+			  </ListItem>
+			  <ListItem>
 		        <Label>Copy/Paste</Label>
 				<PropertyName>DisableCopyPaste</PropertyName>
 			  </ListItem>

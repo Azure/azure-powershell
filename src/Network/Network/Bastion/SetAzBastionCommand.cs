@@ -137,16 +137,13 @@
                         #endregion
 
                         MNM.BastionHost bastionHostModel = NetworkResourceManagerProfile.Mapper.Map<MNM.BastionHost>(this.InputObject);
-                        // Check if this is required
-                        //bastionHostModel.ScaleUnits = this.InputObject.ScaleUnit;
+                        // PS does not allow plurals which is why there is a mismatch in property name and hence the below line
+                        bastionHostModel.ScaleUnits = this.InputObject.ScaleUnit;
                         bastionHostModel.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true);
-                        WriteObject("After mapping");
-                        WriteObject(bastionHostModel);
 
                         this.BastionClient.CreateOrUpdate(this.InputObject.ResourceGroupName, this.InputObject.Name, bastionHostModel);
 
                         getBastionHost = this.GetBastion(this.InputObject.ResourceGroupName, this.InputObject.Name);
-                        WriteObject("After get");
                         WriteObject(getBastionHost);
                     }
                     else

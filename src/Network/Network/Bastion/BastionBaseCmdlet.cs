@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Commands.Network.Bastion
             psBastion.Sku.Name = bastion.Sku.Name;
             psBastion.ScaleUnit = bastion.ScaleUnits;
             psBastion.Tag = TagsConversionHelper.CreateTagHashtable(bastion.Tags);
-            //psBastion.EnableKerberos = bastion.EnableKerberos;
+            psBastion.EnableKerberos = bastion.EnableKerberos;
             psBastion.DisableCopyPaste = bastion.DisableCopyPaste;
             psBastion.EnableTunneling = bastion.EnableTunneling;
             psBastion.EnableIpConnect = bastion.EnableIpConnect;
@@ -101,7 +101,7 @@ namespace Microsoft.Azure.Commands.Network.Bastion
             bastion.Sku.Name = host.Sku.Name;
             bastion.ScaleUnit = host.ScaleUnits;
             bastion.Tag = TagsConversionHelper.CreateTagHashtable(host.Tags);
-            //psBastion.EnableKerberos = bastion.EnableKerberos;
+            bastion.EnableKerberos = bastion.EnableKerberos;
             bastion.DisableCopyPaste = host.DisableCopyPaste;
             bastion.EnableTunneling = host.EnableTunneling;
             bastion.EnableIpConnect = host.EnableIpConnect;
@@ -143,7 +143,6 @@ namespace Microsoft.Azure.Commands.Network.Bastion
                         {
                             return true;
                         }
-
                         return false;
                     default:
                         return true;
@@ -167,11 +166,10 @@ namespace Microsoft.Azure.Commands.Network.Bastion
                         break;
                     case PSBastionSku.Standard:
                         if (scaleUnits < PSBastion.MinimumScaleUnits
-                            && scaleUnits > PSBastion.MaximumScaleUnits)
+                            || scaleUnits > PSBastion.MaximumScaleUnits)
                         {
                             throw new ArgumentException($"Please select scale units value between {PSBastion.MinimumScaleUnits} and {PSBastion.MaximumScaleUnits}");
                         }
-
                         break;
                     default:
                         throw new ArgumentException($"Please enter a valid value for Bastion SKU");
@@ -210,6 +208,8 @@ namespace Microsoft.Azure.Commands.Network.Bastion
                         {
                             throw new ArgumentException($"Toggling shareable link is available on Standard SKU or higher");
                         }
+                        break;
+                    case PSBastionSku.Standard:
                         break;
                     default:
                         throw new ArgumentException($"Please enter a valid value for Bastion SKU");

@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Commands.Network.Bastion
                 this.ResourceGroupName = parsedResourceId.ResourceGroupName;
                 WriteObject(this.GetBastion(this.ResourceGroupName, this.Name));
             }
-            else 
+            else
             {
                 WriteObject(TopLevelWildcardFilter(ResourceGroupName, Name, this.ListBastions(this.ResourceGroupName)), true);
             }

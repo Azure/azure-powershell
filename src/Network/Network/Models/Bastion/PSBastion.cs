@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.Network.Models
         public PSBastion()
         {
             this.Sku = new PSBastionSku();
-            this.ScaleUnit = 2;
+            this.ScaleUnit = MinimumScaleUnits;
             this.EnableKerberos = false;
             this.DisableCopyPaste = false;
             this.EnableTunneling = false;
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.Network.Models
             this.ResourceGroupName = rgName;
             this.Location = location;
             this.Sku = new PSBastionSku(sku);
-            this.ScaleUnit = 2;
+            this.ScaleUnit = MinimumScaleUnits;
             this.EnableKerberos = false;
             this.DisableCopyPaste = false;
             this.EnableTunneling = false;

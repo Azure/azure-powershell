@@ -280,10 +280,9 @@ namespace Microsoft.Azure.Commands.Network.Bastion
 
             //// Map to the sdk object
             var BastionModel = NetworkResourceManagerProfile.Mapper.Map<MNM.BastionHost>(bastion);
-            // Check if this is required
-            //BastionModel.ScaleUnits = bastion.ScaleUnit;
+            // PS does not allow plurals which is why there is a mismatch in property name and hence the below line
+            BastionModel.ScaleUnits = bastion.ScaleUnit;
             BastionModel.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true);
-            WriteObject(BastionModel);
 
             //// Execute the Create bastion call
             this.BastionClient.CreateOrUpdate(this.ResourceGroupName, this.Name, BastionModel);
@@ -315,7 +314,7 @@ namespace Microsoft.Azure.Commands.Network.Bastion
 
             if (this.PublicIpAddress == null)
             {
-                throw new ArgumentException(string.Format(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound, this.PublicIpAddressName));
+                throw new ArgumentException(string.Format(Properties.Resources.ResourceNotFound, this.PublicIpAddressName));
             }
         }
         
@@ -343,7 +342,7 @@ namespace Microsoft.Azure.Commands.Network.Bastion
 
             if (this.VirtualNetwork == null)
             {
-                throw new ArgumentException(string.Format(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound, this.VirtualNetworkName));
+                throw new ArgumentException(string.Format(Properties.Resources.ResourceNotFound, this.VirtualNetworkName));
             }
         }
     }
