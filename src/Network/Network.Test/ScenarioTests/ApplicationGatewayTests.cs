@@ -77,6 +77,15 @@ namespace Commands.Network.Test.ScenarioTests
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.nvadev)]
+        public void TestApplicationGatewayCRUDWithDefaultPredefinedSslPolicy()
+        {
+            TestRunner.RunTestScript(string.Format("Test-ApplicationGatewayCRUDWithDefaultPredefinedSslPolicy -baseDir '{0}'", AppDomain.CurrentDomain.BaseDirectory));
+        }
+
+
+        [Fact]
         [Trait(Category.AcceptanceType, Category.LiveOnly)]
         [Trait(Category.Owner, NrpTeamAlias.nvadev)]
         public void TestKeyVaultIntegrationTest()
