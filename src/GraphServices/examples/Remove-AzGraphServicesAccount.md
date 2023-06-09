@@ -6,3 +6,4 @@ Remove-AzGraphServicesAccount -ResourceGroupName myRG -ResourceName myGraphAppBi
 ```output
 ```
 
+This command deletes a GraphServices Account resource.

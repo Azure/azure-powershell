@@ -8,3 +8,5 @@ Location Name              ResourceGroupName
 -------- ----              -----------------
 Global   myGraphAppBilling myRG
 ```
+
+This command updates the tags of a GraphServices Account resource.

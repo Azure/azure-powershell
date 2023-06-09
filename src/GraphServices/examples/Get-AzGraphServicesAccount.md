@@ -10,6 +10,8 @@ Global   myGraphAppBilling1 myRG
 Global   myGraphAppBilling2 myRG
 ```
 
+This command gets all the GraphServices Account resources for a resource group. 
+
 ### Example 2: Get resources by ResourceName
 ```powershell
 Get-AzGraphServicesAccount -ResourceGroupName myRG -ResourceName myGraphAppBilling
@@ -21,4 +23,4 @@ Location Name              ResourceGroupName
 Global   myGraphAppBilling myRG
 ```
 
-
+This command gets a GraphServices Account resource. 

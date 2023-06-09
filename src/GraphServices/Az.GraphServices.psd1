@@ -11,7 +11,7 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.GraphServices.private.dll'
   FormatsToProcess = './Az.GraphServices.format.ps1xml'
-  FunctionsToExport = 'Get-AzGraphServicesAccount', 'New-AzGraphServicesAccountAndUpdate', 'Remove-AzGraphServicesAccount', 'Update-AzGraphServicesAccount', '*'
+  FunctionsToExport = 'Get-AzGraphServicesAccount', 'New-AzGraphServicesAccount', 'Remove-AzGraphServicesAccount', 'Update-AzGraphServicesAccount', '*'
   AliasesToExport = '*'
   PrivateData = @{
     PSData = @{
