@@ -1,6 +1,6 @@
 ### Example 1: Remove Resource
 ```powershell
-Remove-AzGraphServicesAccount -ResourceGroupName myRG -ResourceName myGraphAppBilling
+Remove-AzGraphServicesAccount -ResourceGroupName myRG -Name myGraphAppBilling
 ```
 
 ```output

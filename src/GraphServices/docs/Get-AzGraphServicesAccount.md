@@ -19,7 +19,7 @@ Get-AzGraphServicesAccount [-SubscriptionId <String[]>] [-DefaultProfile <PSObje
 
 ### Get
 ```
-Get-AzGraphServicesAccount -ResourceGroupName <String> -ResourceName <String> [-SubscriptionId <String[]>]
+Get-AzGraphServicesAccount -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -52,9 +52,11 @@ Global   myGraphAppBilling1 myRG
 Global   myGraphAppBilling2 myRG
 ```
 
-### Example 2: Get resources by ResourceName
+This command gets all the GraphServices Account resources for a resource group.
+
+### Example 2: Get resources by Name
 ```powershell
-Get-AzGraphServicesAccount -ResourceGroupName myRG -ResourceName myGraphAppBilling
+Get-AzGraphServicesAccount -ResourceGroupName myRG -Name myGraphAppBilling
 ```
 
 ```output
@@ -62,6 +64,8 @@ Location Name              ResourceGroupName
 -------- ----              -----------------
 Global   myGraphAppBilling myRG
 ```
+
+This command gets a GraphServices Account resource.
 
 ## PARAMETERS
 
@@ -97,13 +101,12 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
-The name of the resource group.
-The name is case insensitive.
+### -Name
+The name of the resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: Get
 Aliases:
 
 Required: True
@@ -113,12 +116,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceName
-The name of the resource.
+### -ResourceGroupName
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, List
 Aliases:
 
 Required: True
@@ -146,7 +150,19 @@ Accept wildcard characters: False
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
+## INPUTS
+
+### Microsoft.Azure.PowerShell.Cmdlets.GraphServices.Models.IGraphServicesIdentity
+
+## OUTPUTS
+
+### Microsoft.Azure.PowerShell.Cmdlets.GraphServices.Models.Api20230413.IAccountResource
+
 ## NOTES
+
+ALIASES
+
+COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
@@ -154,6 +170,8 @@ To create the parameters described below, construct a hash table containing the 
 `INPUTOBJECT <IGraphServicesIdentity>`: Identity Parameter
   - `[Id <String>]`: Resource identity path
   - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[ResourceName <String>]`: The name of the resource.
+  - `[Name <String>]`: The name of the resource.
   - `[SubscriptionId <String>]`: The ID of the target subscription.
+
+## RELATED LINKS
 

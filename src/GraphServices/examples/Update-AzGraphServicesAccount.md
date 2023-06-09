@@ -1,10 +1,10 @@
 ### Example 1: Update Resource
 ```powershell
-Update-AzGraphServicesAccount -ResourceGroupName myRG -ResourceName myGraphAppBilling
+Update-AzGraphServicesAccount -Name myRG -ResourceName myGraphAppBilling
 ```
 
 ```output
-Location Name              ResourceGroupName
+Location Name              Name
 -------- ----              -----------------
 Global   myGraphAppBilling myRG
 ```

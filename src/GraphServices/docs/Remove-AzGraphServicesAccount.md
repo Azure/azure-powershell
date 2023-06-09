@@ -14,7 +14,7 @@ Deletes a account resource.
 
 ### Delete (Default)
 ```
-Remove-AzGraphServicesAccount -ResourceGroupName <String> -ResourceName <String> [-SubscriptionId <String>]
+Remove-AzGraphServicesAccount -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -31,11 +31,10 @@ Deletes a account resource.
 
 ### Example 1: Remove Resource
 ```powershell
-Remove-AzGraphServicesAccount -ResourceGroupName myRG -ResourceName myGraphAppBilling
+Remove-AzGraphServicesAccount -ResourceGroupName myRG -Name myGraphAppBilling
 ```
 
-```output
-```
+This command deletes a GraphServices Account resource.
 
 ## PARAMETERS
 
@@ -71,6 +70,21 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -Name
+The name of the resource.
+
+```yaml
+Type: System.String
+Parameter Sets: Delete
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -PassThru
 Returns true when the command succeeds
 
@@ -89,21 +103,6 @@ Accept wildcard characters: False
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
-
-```yaml
-Type: System.String
-Parameter Sets: Delete
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceName
-The name of the resource.
 
 ```yaml
 Type: System.String
@@ -166,7 +165,19 @@ Accept wildcard characters: False
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
+## INPUTS
+
+### Microsoft.Azure.PowerShell.Cmdlets.GraphServices.Models.IGraphServicesIdentity
+
+## OUTPUTS
+
+### System.Boolean
+
 ## NOTES
+
+ALIASES
+
+COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
@@ -174,7 +185,7 @@ To create the parameters described below, construct a hash table containing the 
 `INPUTOBJECT <IGraphServicesIdentity>`: Identity Parameter
   - `[Id <String>]`: Resource identity path
   - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[ResourceName <String>]`: The name of the resource.
+  - `[Name <String>]`: The name of the resource.
   - `[SubscriptionId <String>]`: The ID of the target subscription.
 
 ## RELATED LINKS

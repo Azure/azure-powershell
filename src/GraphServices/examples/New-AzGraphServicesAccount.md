@@ -1,6 +1,6 @@
 ### Example 1: Enable an application
 ```powershell
-New-AzGraphServicesAccount -ResourceGroupName myRG -ResourceName myGraphAppBilling -AppId myGraphAppBilling -SubscriptionId mySubscriptionGUID -Location Global
+New-AzGraphServicesAccount -ResourceGroupName myRG -Name myGraphAppBilling -AppId myAppGUID -SubscriptionId mySubscriptionGUID -Location Global
 ```
 
 ```output

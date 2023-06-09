@@ -65,6 +65,10 @@ directive:
       subject: AccountAndUpdate
     set:
       subject: Account
+  - where:
+      parameter-name: ResourceName
+    set:
+      parameter-name: Name
   # Remove the set-* cmdlet
   - where:
       verb: Set

@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.GraphServices
-online version: https://learn.microsoft.com/powershell/module/az.graphservices/new-azgraphservicesaccountandupdate
+online version: https://learn.microsoft.com/powershell/module/az.graphservices/new-azgraphservicesaccount
 schema: 2.0.0
 ---
 
-# New-AzGraphServicesAccountAndUpdate
+# New-AzGraphServicesAccount
 
 ## SYNOPSIS
 Create or update account resource.
@@ -13,7 +13,7 @@ Create or update account resource.
 ## SYNTAX
 
 ```
-New-AzGraphServicesAccountAndUpdate -ResourceGroupName <String> -ResourceName <String> -AppId <String>
+New-AzGraphServicesAccount -Name <String> -ResourceGroupName <String> -AppId <String>
  [-SubscriptionId <String>] [-Location <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -25,7 +25,7 @@ Create or update account resource.
 
 ### Example 1: Enable an application
 ```powershell
-New-AzGraphServicesAccountAndUpdate -ResourceGroupName myRG -ResourceName myGraphAppBilling -AppId myGraphAppBilling -SubscriptionId mySubscriptionGUID -Location Global
+New-AzGraphServicesAccount -ResourceGroupName myRG -Name myGraphAppBilling -AppId myAppGUID -SubscriptionId mySubscriptionGUID -Location Global
 ```
 
 ```output
@@ -33,6 +33,8 @@ Location Name              ResourceGroupName
 -------- ----              -----------------
 Global   myGraphAppBilling myRG
 ```
+
+This command enables an App for billing.
 
 ## PARAMETERS
 
@@ -97,6 +99,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Name
+The name of the resource.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -NoWait
 Run the command asynchronously
 
@@ -115,21 +132,6 @@ Accept wildcard characters: False
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceName
-The name of the resource.
 
 ```yaml
 Type: System.String
@@ -206,4 +208,16 @@ Accept wildcard characters: False
 
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+
+## INPUTS
+
+## OUTPUTS
+
+### Microsoft.Azure.PowerShell.Cmdlets.GraphServices.Models.Api20230413.IAccountResource
+
+## NOTES
+
+ALIASES
+
+## RELATED LINKS
 
