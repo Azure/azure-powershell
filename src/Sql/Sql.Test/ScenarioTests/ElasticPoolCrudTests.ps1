@@ -816,11 +816,10 @@ function Test-GetElasticPoolWithMaintenanceConfigurationId
 	.SYNOPSIS
 	Tests getting an elastic pool with preferred enclave type
 #>
-function Test-GetElasticPoolWithPreferredEnclaveType
+function Test-GetElasticPoolWithPreferredEnclaveType($location = "eastus2euap")
 {
 	# Setup
-	$location = "eastus2euap"
-	$rg = Create-ResourceGroupForTest
+	$rg = Create-ResourceGroupForTest $location
 	$server = Create-ServerForTest $rg $location
 
 	try
