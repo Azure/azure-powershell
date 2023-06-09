@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed for OS upgrade migrate
 
 ## Version 2.1.0
 * Added parameter `CacheStorageAccountId` to `Initialize-AzMigrateReplicationInfrastructure`
