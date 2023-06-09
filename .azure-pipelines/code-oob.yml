@@ -40,6 +40,7 @@ jobs:
             git config user.name "azure-powershell-bot"
             $branchSource = "$(Build.SourceBranch)"
             $Current = $branchSource -replace "refs/heads/", ""
+            git checkout -b $Current
             git add -A
             git commit -m "Bump up version for ${{ parameters.ServiceName }}"
             git remote set-url origin https://azure-powershell-bot:$Token@github.com/Azure/azure-powershell.git;
