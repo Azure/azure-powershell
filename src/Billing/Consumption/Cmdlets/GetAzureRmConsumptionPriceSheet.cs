@@ -15,6 +15,7 @@
 using System;
 using System.Linq;
 using System.Management.Automation;
+using System.Web;
 using Microsoft.Azure.Commands.Consumption.Common;
 using Microsoft.Azure.Commands.Consumption.Models;
 using Microsoft.Azure.Management.Consumption;
