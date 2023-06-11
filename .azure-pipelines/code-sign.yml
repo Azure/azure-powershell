@@ -12,13 +12,18 @@ jobs:
   variables:
     LocalRepoName: 'LocalRepo'
   steps:
-  - task: PowerShell@2
-    displayName: checkout branch
-    condition: and(succeeded(), ne('${{ parameters.OOBBranch }}', 'none'))
+  - task: AzurePowerShell@5
     inputs:
-      targetType: 'inline'
-      script: |
-        git checkout ${{ parameters.OOBBranch }}
+        azureSubscription: 'azureps-infra-sp'
+        ScriptType: 'InlineScript'
+        azurePowerShellVersion: 'LatestVersion'
+        inline: |
+            Set-AzContext -Tenant 72f988bf-86f1-41af-91ab-2d7cd011db47 -SubscriptionId 6b085460-5f21-477e-ba44-1035046e9101
+            $Token = Get-AzKeyVaultSecret -VaultName azurepsdev -Name azpsbot-github-pat -AsPlainText
+            git config user.email "65331932+azure-powershell-bot@users.noreply.github.com"
+            git config user.name "azure-powershell-bot"
+            git remote set-url origin https://azure-powershell-bot:$Token@github.com/Azure/azure-powershell.git;
+            git checkout ${{ parameters.OOBBranch }} origin/${{ parameters.OOBBranch }}
   - pwsh: 'Install-Module platyPS -Force -Confirm:$false -Scope CurrentUser'
     displayName: 'Install platyPS'
 
