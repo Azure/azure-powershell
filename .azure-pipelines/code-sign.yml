@@ -1,5 +1,5 @@
 parameters:
-- name: Branch
+- name: OOBBranch
   displayName: Branch for OOB pipeline
   type: string
   default: 'none'
