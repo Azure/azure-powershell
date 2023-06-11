@@ -23,7 +23,7 @@ jobs:
             git config user.email "65331932+azure-powershell-bot@users.noreply.github.com"
             git config user.name "azure-powershell-bot"
             git remote set-url origin https://azure-powershell-bot:$Token@github.com/Azure/azure-powershell.git;
-            git checkout ${{ parameters.OOBBranch }} origin/${{ parameters.OOBBranch }}
+            git checkout -b ${{ parameters.OOBBranch }} origin/${{ parameters.OOBBranch }}
   - pwsh: 'Install-Module platyPS -Force -Confirm:$false -Scope CurrentUser'
     displayName: 'Install platyPS'
 
