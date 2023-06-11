@@ -88,6 +88,6 @@ stages:
 - stage: Codesign
   dependsOn: OOBRelease
   jobs:
-  - template: code-sign.yml
+  - template: ./code-sign.yml
     parameters:
-      - branch: 'codeoob/${{ parameters.ServiceName }}'
+      OOBBranch: codeoob/${{ parameters.ServiceName }}
