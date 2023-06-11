@@ -1,3 +1,8 @@
+parameters:
+- name: Branch
+  displayName: Branch for OOB pipeline
+  type: string
+  default: 'none'
 jobs:
 - job: Release
   timeoutInMinutes: 180
@@ -7,6 +12,13 @@ jobs:
   variables:
     LocalRepoName: 'LocalRepo'
   steps:
+  - task: PowerShell@2
+    displayName: checkout branch
+    condition: and(succeeded(), ne('${{ parameters.Branch }}', 'none'))
+    inputs:
+      targetType: 'inline'
+      script: |
+        git checkout ${{ parameters.Branch }}
   - pwsh: 'Install-Module platyPS -Force -Confirm:$false -Scope CurrentUser'
     displayName: 'Install platyPS'
 
