@@ -14,11 +14,11 @@ jobs:
   steps:
   - task: PowerShell@2
     displayName: checkout branch
-    condition: and(succeeded(), ne('${{ parameters.Branch }}', 'none'))
+    condition: and(succeeded(), ne('${{ parameters.OOBBranch }}', 'none'))
     inputs:
       targetType: 'inline'
       script: |
-        git checkout ${{ parameters.Branch }}
+        git checkout ${{ parameters.OOBBranch }}
   - pwsh: 'Install-Module platyPS -Force -Confirm:$false -Scope CurrentUser'
     displayName: 'Install platyPS'
 
