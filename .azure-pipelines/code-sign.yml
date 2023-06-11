@@ -14,7 +14,7 @@ jobs:
   steps:
   - task: AzurePowerShell@5
     displayName: checkout OOBbranch
-    condition: and(succeeded(), ne(${{ parameters.OOBBranch }}, 'none'))
+    condition: and(succeeded(), ne(“${{ parameters.OOBBranch }}”, 'none'))
     inputs:
         azureSubscription: 'azureps-infra-sp'
         ScriptType: 'InlineScript'
