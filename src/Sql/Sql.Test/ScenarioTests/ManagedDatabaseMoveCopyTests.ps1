@@ -127,8 +127,8 @@ function Test-ManagedDatabaseMove
 	finally
 	{
 		try {
-			Remove-ResourceGroupForTest $sourceRg
-			Remove-ResourceGroupForTest $targetRg
+			Clear-LiveTestResources $sourceRGName
+			Clear-LiveTestResources $targetRGName
 		} catch {
 			# Ignore exception on clean up
 		}
@@ -233,8 +233,237 @@ function Test-ManagedDatabaseMovePiping
 	finally
 	{
 		try {
-			Remove-ResourceGroupForTest $sourceRg
-			Remove-ResourceGroupForTest $targetRg
+			Clear-LiveTestResources $sourceRGName
+			Clear-LiveTestResources $targetRGName
+		} catch {
+			# Ignore exception on clean up
+		}
+	}
+}
+
+### COPY TESTS ###
+##################
+
+function Test-ManagedDatabaseCopy
+{
+	$sourceRg = Create-ResourceGroupForTest
+	$targetRg = Create-ResourceGroupForTest
+	$defaultParams = Get-DefaultManagedInstanceParameters
+	$managedDatabaseName = Get-ManagedDatabaseName
+	$collation = "SQL_Latin1_General_CP1_CI_AS"
+
+	try
+	{
+		$managedInstanceSourceJob = Create-ManagedInstanceForTestAsJob $sourceRg
+		$managedInstanceTargetJob = Create-ManagedInstanceForTestAsJob $targetRg
+		
+		$managedInstanceSourceJob | Wait-Job
+		$managedInstanceSource = $managedInstanceSourceJob.Output
+		
+		$managedInstanceTargetJob | Wait-Job
+		$managedInstanceTarget = $managedInstanceTargetJob.Output
+
+		$sourceRGName = $sourceRg.ResourceGroupName
+		$targetRGName = $targetRg.ResourceGroupName
+		$managedInstance = $managedInstanceSource.ManagedInstanceName
+		
+		New-AzSqlInstanceDatabase `
+			-ResourceGroupName $sourceRGName `
+			-InstanceName $managedInstanceSource.ManagedInstanceName `
+			-Name $managedDatabaseName `
+			-Collation $collation
+		
+		# Wait for first backup
+		Start-TestSleep -Seconds 300
+
+		Copy-AzSqlInstanceDatabase `
+			-ResourceGroupName $sourceRGName `
+			-InstanceName $managedInstanceSource.ManagedInstanceName `
+			-Name $managedDatabaseName `
+			-TargetInstanceName $managedInstanceTarget.ManagedInstanceName `
+			-TargetResourceGroupName $targetRGName
+
+		$CopyOperation = Get-AzSqlInstanceDatabaseCopyOperation `
+			-ResourceGroupName $sourceRGName `
+			-InstanceName $managedInstanceSource.ManagedInstanceName `
+			-Name $managedDatabaseName `
+			-OnlyLatestPerDatabase
+
+		Assert-NotNull $CopyOperation
+		Assert-AreEqual $CopyOperation.TargetManagedInstanceName $managedInstanceTarget.ManagedInstanceName
+		Assert-AreEqual $CopyOperation.SourceManagedInstanceName $managedInstanceSource.ManagedInstanceName
+		Assert-AreEqual $CopyOperation.SourceDatabaseName $managedDatabaseName
+		Assert-AreEqual $CopyOperation.OperationMode "Copy"
+
+		while ($CopyOperation.isCancellable -eq $false) {
+			Start-TestSleep -Seconds 30
+
+			$CopyOperation = Get-AzSqlInstanceDatabaseCopyOperation `
+				-ResourceGroupName $sourceRGName `
+				-InstanceName $managedInstanceSource.ManagedInstanceName `
+				-Name $managedDatabaseName `
+				-OnlyLatestPerDatabase
+		}
+
+		Stop-AzSqlInstanceDatabaseCopy `
+			-ResourceGroupName $sourceRGName `
+			-InstanceName $managedInstanceSource.ManagedInstanceName `
+			-Name $managedDatabaseName `
+			-TargetInstanceName $managedInstanceTarget.ManagedInstanceName `
+			-TargetResourceGroupName $targetRGName
+
+		Wait-ForCopyOperationToSucceed `
+			-rgName $sourceRGName `
+			-instanceName $managedInstanceSource.ManagedInstanceName `
+			-databaseName $managedDatabaseName
+
+		Copy-AzSqlInstanceDatabase `
+			-ResourceGroupName $sourceRGName `
+			-InstanceName $managedInstanceSource.ManagedInstanceName `
+			-Name $managedDatabaseName `
+			-TargetInstanceName $managedInstanceTarget.ManagedInstanceName `
+			-TargetResourceGroupName $targetRGName
+
+		Wait-ForCopyOperationToSucceed `
+			-rgName $sourceRGName `
+			-instanceName $managedInstanceSource.ManagedInstanceName `
+			-databaseName $managedDatabaseName
+
+		Complete-AzSqlInstanceDatabaseCopy `
+			-ResourceGroupName $sourceRGName `
+			-InstanceName $managedInstanceSource.ManagedInstanceName `
+			-Name $managedDatabaseName `
+			-TargetInstanceName $managedInstanceTarget.ManagedInstanceName `
+			-TargetResourceGroupName $targetRGName
+				
+		Wait-ForCopyOperationToSucceed `
+			-rgName $sourceRGName `
+			-instanceName $managedInstanceSource.ManagedInstanceName `
+			-databaseName $managedDatabaseName
+
+		$dbOnSource = Get-AzSqlInstanceDatabase `
+			-ResourceGroupName $sourceRGName `
+			-InstanceName $managedInstanceSource.ManagedInstanceName `
+			-Name $managedDatabaseName
+
+		$dbOnTheTarget = Get-AzSqlInstanceDatabase `
+			-ResourceGroupName $targetRGName `
+			-InstanceName $managedInstanceTarget.ManagedInstanceName `
+			-Name $managedDatabaseName
+
+		Assert-NotNull $dbOnSource
+		Assert-NotNull $dbOnTheTarget
+	}
+	finally
+	{
+		try {
+			Clear-LiveTestResources $sourceRGName
+			Clear-LiveTestResources $targetRGName
+		} catch {
+			# Ignore exception on clean up
+		}
+	}
+}
+
+function Test-ManagedDatabaseCopyPiping
+{
+	$sourceRg = Create-ResourceGroupForTest
+	$targetRg = Create-ResourceGroupForTest
+	$defaultParams = Get-DefaultManagedInstanceParameters
+	$managedDatabaseName = Get-ManagedDatabaseName
+	$collation = "SQL_Latin1_General_CP1_CI_AS"
+
+	try
+	{
+		$managedInstanceSourceJob = Create-ManagedInstanceForTestAsJob $sourceRg
+		$managedInstanceTargetJob = Create-ManagedInstanceForTestAsJob $targetRg
+		
+		$managedInstanceSourceJob | Wait-Job
+		$managedInstanceSource = $managedInstanceSourceJob.Output
+		
+		$managedInstanceTargetJob | Wait-Job
+		$managedInstanceTarget = $managedInstanceTargetJob.Output
+
+		$sourceRGName = $sourceRg.ResourceGroupName
+		$targetRGName = $targetRg.ResourceGroupName
+		$managedInstance = $managedInstanceSource.ManagedInstanceName
+		
+		New-AzSqlInstanceDatabase `
+			-ResourceGroupName $sourceRGName `
+			-InstanceName $managedInstanceSource.ManagedInstanceName `
+			-Name $managedDatabaseName `
+			-Collation $collation
+		
+		# Wait for first backup
+		Start-TestSleep -Seconds 300
+
+		$CopyObject = Copy-AzSqlInstanceDatabase `
+			-ResourceGroupName $sourceRGName `
+			-InstanceName $managedInstanceSource.ManagedInstanceName `
+			-Name $managedDatabaseName `
+			-TargetInstanceName $managedInstanceTarget.ManagedInstanceName `
+			-TargetResourceGroupName $targetRGName `
+			-PassThru
+
+		$CopyOperation = $CopyObject | Get-AzSqlInstanceDatabaseCopyOperation -OnlyLatestPerDatabase
+
+		Assert-NotNull $CopyOperation
+		Assert-AreEqual $CopyOperation.TargetManagedInstanceName $managedInstanceTarget.ManagedInstanceName
+		Assert-AreEqual $CopyOperation.SourceManagedInstanceName $managedInstanceSource.ManagedInstanceName
+		Assert-AreEqual $CopyOperation.SourceDatabaseName $managedDatabaseName
+		Assert-AreEqual $CopyOperation.OperationMode "Copy"
+
+		while ($CopyOperation.isCancellable -eq $false) {
+			Start-TestSleep -Seconds 30
+
+			$CopyOperation = $CopyObject | Get-AzSqlInstanceDatabaseCopyOperation -OnlyLatestPerDatabase
+		}
+
+		$CopyObject | Stop-AzSqlInstanceDatabaseCopy
+
+		Wait-ForCopyOperationToSucceed `
+			-rgName $sourceRGName `
+			-instanceName $managedInstanceSource.ManagedInstanceName `
+			-databaseName $managedDatabaseName
+
+		$CopyObject = Copy-AzSqlInstanceDatabase `
+			-ResourceGroupName $sourceRGName `
+			-InstanceName $managedInstanceSource.ManagedInstanceName `
+			-Name $managedDatabaseName `
+			-TargetInstanceName $managedInstanceTarget.ManagedInstanceName `
+			-TargetResourceGroupName $targetRGName `
+			-PassThru
+
+		Wait-ForCopyOperationToSucceed `
+			-rgName $sourceRGName `
+			-instanceName $managedInstanceSource.ManagedInstanceName `
+			-databaseName $managedDatabaseName
+
+		$CopyObject | Complete-AzSqlInstanceDatabaseCopy
+				
+		Wait-ForCopyOperationToSucceed `
+			-rgName $sourceRGName `
+			-instanceName $managedInstanceSource.ManagedInstanceName `
+			-databaseName $managedDatabaseName
+
+		$dbOnSource = Get-AzSqlInstanceDatabase `
+			-ResourceGroupName $sourceRGName `
+			-InstanceName $managedInstanceSource.ManagedInstanceName `
+			-Name $managedDatabaseName
+
+		$dbOnTheTarget = Get-AzSqlInstanceDatabase `
+			-ResourceGroupName $targetRGName `
+			-InstanceName $managedInstanceTarget.ManagedInstanceName `
+			-Name $managedDatabaseName
+
+		Assert-NotNull $dbOnSource
+		Assert-NotNull $dbOnTheTarget
+	}
+	finally
+	{
+		try {
+			Clear-LiveTestResources $sourceRGName
+			Clear-LiveTestResources $targetRGName
 		} catch {
 			# Ignore exception on clean up
 		}
@@ -259,6 +488,32 @@ function Wait-ForOperationToSucceed {
 		Start-TestSleep -Seconds 30
 
 		$moveOperation = Get-AzSqlInstanceDatabaseMoveOperation `
+			-ResourceGroupName $rgName `
+			-InstanceName $instanceName `
+			-Name $databaseName `
+			-OnlyLatestPerDatabase
+	}
+	return $moveOperation
+}
+
+function Wait-ForCopyOperationToSucceed {
+	param
+	(
+		$rgName,
+		$instanceName,
+		$databaseName
+	)
+
+	$moveOperation = Get-AzSqlInstanceDatabaseCopyOperation `
+		-ResourceGroupName $rgName `
+		-InstanceName $instanceName `
+		-Name $databaseName `
+		-OnlyLatestPerDatabase
+
+	while ($moveOperation.state -ne "Succeeded") {
+		Start-TestSleep -Seconds 30
+
+		$moveOperation = Get-AzSqlInstanceDatabaseCopyOperation `
 			-ResourceGroupName $rgName `
 			-InstanceName $instanceName `
 			-Name $databaseName `
