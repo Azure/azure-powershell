@@ -88,6 +88,9 @@ stages:
 - stage: Codesign
   dependsOn: OOBRelease
   jobs:
+  - template: ./code-sign.yml
+    parameters:
+      OOBBranch: codeoob/${{ parameters.ServiceName }}
   - job: PulishForTest
     dependsOn: Release
     steps:
