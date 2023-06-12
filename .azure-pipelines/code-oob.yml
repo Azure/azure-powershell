@@ -15,6 +15,39 @@ stages:
     timeoutInMinutes: 180
     pool: pool-windows-2019
     steps:
+    - task: DotNetCoreCLI@2
+      displayName: Build
+      inputs:
+        command: custom
+        custom: msbuild
+        arguments: 'build.proj /t:Clean;Build /p:Configuration=Release'
+    - task: UseDotNet@2
+      inputs:
+        version: '3.1.x'
+    - pwsh: |
+          .\tools\RunVersionController.ps1 -ModuleName "Az.${{ parameters.ServiceName }}”
+      displayName: 'Bump up version'
+    - task: AzurePowerShell@5
+      inputs:
+          azureSubscription: 'azureps-infra-sp'
+          ScriptType: 'InlineScript'
+          azurePowerShellVersion: 'LatestVersion'
+          inline: |
+              Set-AzContext -Tenant 72f988bf-86f1-41af-91ab-2d7cd011db47 -SubscriptionId 6b085460-5f21-477e-ba44-1035046e9101
+              $Token = Get-AzKeyVaultSecret -VaultName azurepsdev -Name azpsbot-github-pat -AsPlainText
+              git config user.email "65331932+azure-powershell-bot@users.noreply.github.com"
+              git config user.name "azure-powershell-bot"
+              git checkout -b codeoob/${{ parameters.ServiceName }}
+              git add -A
+              git commit -m "Bump up version for ${{ parameters.ServiceName }}"
+              git remote set-url origin https://azure-powershell-bot:$Token@github.com/Azure/azure-powershell.git;
+              git push origin codeoob/${{ parameters.ServiceName }} --force;
+              $Title = "Migrate ${{ parameters.ServiceName }} from oob to main"
+              $HeadBranch = "codeoob/${{ parameters.ServiceName }}"
+              $BaseBranch = "${{ parameters.TargetBranch }}"
+              $Description = "Migrate ${{ parameters.ServiceName }} from oob to ${{parameters.TargetBranch}}"
+              ./tools/Github/CreatePR.ps1 -Title $Title -HeadBranch $HeadBranch -BaseBranch $BaseBranch -BotAccessToken $Token -Description $Description
+      displayName: Create PR to main branch
     - task: PowerShell@2
       displayName: get changelog info
       inputs:
@@ -56,12 +89,19 @@ stages:
   dependsOn: OOBRelease
   jobs:
   - job: PulishForTest
+    dependsOn: Release
     steps:
     - task: DownloadBuildArtifacts@1
       inputs:
         buildType: 'current'
         downloadType: 'single'
         artifactName: 'OOB'
+        downloadPath: '$(System.ArtifactsDirectory)'
+    - task: DownloadBuildArtifacts@1
+      inputs:
+        buildType: 'current'
+        downloadType: 'single'
+        artifactName: 'artifacts'
         downloadPath: '$(System.ArtifactsDirectory)'
     - task: AzurePowerShell@5
       displayName: 'Push packages to storage account'
@@ -78,3 +118,8 @@ stages:
           $versionChanges = $jsonObject.VersionChanges
           $moduleName = $jsonObject.ModuleName
           $context = New-AzStorageContext -StorageAccountName "$(TestStorageAccountName)"
+          $package = Get-Item "$(System.ArtifactsDirectory)/artifacts/Az.$moduleName.$versionNumber.nupkg"
+          $package | Set-AzStorageBlobContent -Container "public" -Context $context -Force
+
+
+
