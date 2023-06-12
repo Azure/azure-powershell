@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
                 ResourceGroupName = ResourceGroupName,
                 SubscriptionId = ModelAdapter.Context.Subscription.Id,
                 TargetInstanceName = TargetInstanceName ?? InstanceName,
-                TargetResourceGroupName = TargetResourceGroupName ?? ResourceGroupName,
+                TargetResourceGroupName = TargetResourceGroupName,
                 Location = location,
                 OperationMode = GetOperationMode(),
             };

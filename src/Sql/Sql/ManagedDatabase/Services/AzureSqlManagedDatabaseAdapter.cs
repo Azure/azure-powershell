@@ -285,7 +285,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Services
 
         public IList<ManagedDatabaseMoveCopyOperation> ListMoveCopyOperations(MoveCopyManagedDatabaseModel model, bool onlyLatestPerDatabase)
         {
-            return Communicator.GetMoveOperations(
+            var operations = Communicator.GetMoveOperations(
                 model.ResourceGroupName,
                 model.Location,
                 model.InstanceName,
@@ -293,8 +293,17 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Services
                 model.TargetInstanceName,
                 model.OperationMode,
                 onlyLatestPerDatabase)
-                .Select(operation => new ManagedDatabaseMoveCopyOperation(operation))
-                .ToList();
+                .Select(operation => new ManagedDatabaseMoveCopyOperation(operation));
+
+            // OData filter does not support 'has' or 'contains', so we do not have ability use Odata for target RG filtration
+            // Instead filteration is done on the client side
+            if (!string.IsNullOrEmpty(model.TargetResourceGroupName))
+            {
+                return operations
+                    .Where(operation => operation.TargetManagedInstanceId.Contains($"resourceGroups/{model.TargetResourceGroupName}/"))
+                    .ToList();
+            }
+            return operations.ToList();
         }
 
         /// <summary>
