@@ -54,5 +54,19 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-ManagedDatabaseCopyPiping");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestManagedDatabaseCopyUsingOperationObject()
+        {
+            TestRunner.RunTestScript("Test-ManagedDatabaseCopyUsingOperationObject");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestManagedDatabaseMoveUsingOperationObject()
+        {
+            TestRunner.RunTestScript("Test-ManagedDatabaseMoveUsingOperationObject");
+        }
     }
 }
