@@ -58,14 +58,14 @@ The **Stop-AzSqlInstanceDatabaseMove** cmdlet stops move operation of a database
 
 ### Example 1: Complete move database to another Managed Instance in the same resource group
 ```powershell
-PS C:\> Stop-AzSqlInstanceDatabaseMove -ResourceGroupName RG1 -InstanceName MI1 -Name database1 -TargetInstanceName MI2
+Stop-AzSqlInstanceDatabaseMove -ResourceGroupName RG1 -InstanceName MI1 -Name database1 -TargetInstanceName MI2
 ```
 
 This command stops move opeartion of database1 on instance MI1 to instance MI2
 
 ### Example 2: Complete move database to another Managed Instance in the different resource group
 ```powershell
-PS C:\> Stop-AzSqlInstanceDatabaseMove -ResourceGroupName RG1 -InstanceName MI1 -Name database1 -TargetResourceGroupName RG2 -TargetInstanceName MI2
+Stop-AzSqlInstanceDatabaseMove -ResourceGroupName RG1 -InstanceName MI1 -Name database1 -TargetResourceGroupName RG2 -TargetInstanceName MI2
 ```
 
 This command stops move opeartion of database1 on instance MI1 in resource group RG1 to instance MI2 in resource group RG2

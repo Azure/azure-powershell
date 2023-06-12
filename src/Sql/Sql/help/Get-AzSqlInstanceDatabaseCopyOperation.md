@@ -49,7 +49,7 @@ The **Get-AzSqlInstanceDatabaseCopyOperation** cmdlet get copy managed database 
 
 ### Example 1: Get all copy operation on single Azure SQL Managed Instance
 ```powershell
-PS C:\> Get-AzSqlInstanceDatabaseCopyOperation -ResourceGroupName RG1 -InstanceName instance1
+Get-AzSqlInstanceDatabaseCopyOperation -ResourceGroupName RG1 -InstanceName instance1
 ```
 
 ```output
@@ -122,7 +122,7 @@ This command will return all copy operations for instance instance1 in resource 
 ### Example 2: Get all copy operations on Azure SQL Managed Instance for one database
 
 ```powershell
-PS C:\> Get-AzSqlInstanceDatabaseCopyOperation -ResourceGroupName RG1 -InstanceName instance1 -DatabaseName db2
+Get-AzSqlInstanceDatabaseCopyOperation -ResourceGroupName RG1 -InstanceName instance1 -DatabaseName db2
 ```
 
 ```output
@@ -175,7 +175,7 @@ This command will return all copy operations for database db2 on instance instan
 ### Example 3: Get only latest copy operation on Azure SQL Managed Instance for one database
 
 ```powershell
-PS C:\> Get-AzSqlInstanceDatabaseCopyOperation -ResourceGroupName RG1 -InstanceName instance1 -DatabaseName db2 -OnlyLatestPerDatabase
+Get-AzSqlInstanceDatabaseCopyOperation -ResourceGroupName RG1 -InstanceName instance1 -DatabaseName db2 -OnlyLatestPerDatabase
 ```
 
 ```output

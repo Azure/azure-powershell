@@ -50,14 +50,14 @@ The **Move-AzSqlInstanceDatabase** cmdlet start online move operation of a datab
 
 ### Example 1: Move database to another Managed Instance in the same resource group
 ```powershell
-PS C:\> Move-AzSqlInstanceDatabase -ResourceGroupName RG1 -InstanceName MI1 -Name database1 -TargetInstanceName MI2
+Move-AzSqlInstanceDatabase -ResourceGroupName RG1 -InstanceName MI1 -Name database1 -TargetInstanceName MI2
 ```
 
 This command moves database1 from instance MI1 to MI2
 
 ### Example 2: Move database to another Managed Instance in the different resource group
 ```powershell
-PS C:\> Move-AzSqlInstanceDatabase -ResourceGroupName RG1 -InstanceName MI1 -Name database1 -TargetResourceGroupName RG2 -TargetInstanceName MI2
+Move-AzSqlInstanceDatabase -ResourceGroupName RG1 -InstanceName MI1 -Name database1 -TargetResourceGroupName RG2 -TargetInstanceName MI2
 ```
 
 This command moves database1 from instance MI1 in resource group RG1 to MI2 in resource group RG2

@@ -49,7 +49,7 @@ The **Get-AzSqlInstanceDatabaseMoveOperation** cmdlet get move managed database 
 
 ### Example 1: Get all move operation on single Azure SQL Managed Instance
 ```powershell
-PS C:\> Get-AzSqlInstanceDatabaseMoveOperation -ResourceGroupName RG1 -InstanceName instance1
+Get-AzSqlInstanceDatabaseMoveOperation -ResourceGroupName RG1 -InstanceName instance1
 ```
 
 ```output
@@ -122,7 +122,7 @@ This command will return all move operations for instance instance1 in resource 
 ### Example 2: Get all move operations on Azure SQL Managed Instance for one database
 
 ```powershell
-PS C:\> Get-AzSqlInstanceDatabaseMoveOperation -ResourceGroupName RG1 -InstanceName instance1 -DatabaseName db2
+Get-AzSqlInstanceDatabaseMoveOperation -ResourceGroupName RG1 -InstanceName instance1 -DatabaseName db2
 ```
 
 ```output
@@ -175,7 +175,7 @@ This command will return all move operations for database db2 on instance instan
 ### Example 3: Get only latest move operation on Azure SQL Managed Instance for one database
 
 ```powershell
-PS C:\> Get-AzSqlInstanceDatabaseMoveOperation -ResourceGroupName RG1 -InstanceName instance1 -DatabaseName db2 -OnlyLatestPerDatabase
+Get-AzSqlInstanceDatabaseMoveOperation -ResourceGroupName RG1 -InstanceName instance1 -DatabaseName db2 -OnlyLatestPerDatabase
 ```
 
 ```output
