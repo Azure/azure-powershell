@@ -56,7 +56,6 @@ stages:
   dependsOn: OOBRelease
   jobs:
   - job: PulishForTest
-    dependsOn: Release
     steps:
     - task: DownloadBuildArtifacts@1
       inputs:
