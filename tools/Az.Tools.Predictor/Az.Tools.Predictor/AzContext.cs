@@ -79,10 +79,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                     _macAddress = string.Empty;
 
                     var macAddress = GetMACAddress();
-                    if (!string.IsNullOrWhiteSpace(macAddress))
-                    {
-                        _macAddress = GenerateSha256HashString(macAddress)?.Replace("-", string.Empty).ToLowerInvariant();
-                    }
+                    _macAddress = GenerateSha256HashString(macAddress).Replace("-", string.Empty).ToLowerInvariant();
                 }
 
                 return _macAddress;
@@ -249,6 +246,9 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             return NetworkInterface.GetAllNetworkInterfaces()?
                                     .FirstOrDefault(nic => nic != null &&
                                                            nic.OperationalStatus == OperationalStatus.Up &&
+                                                           ((nic.NetworkInterfaceType == NetworkInterfaceType.Ethernet) ||
+                                                                (nic.NetworkInterfaceType == NetworkInterfaceType.Wireless80211) ||
+                                                                (nic.NetworkInterfaceType == NetworkInterfaceType.GigabitEthernet)) &&
                                                            !string.IsNullOrWhiteSpace(nic.GetPhysicalAddress()?.ToString()))?
                                     .GetPhysicalAddress()?.ToString();
         }
