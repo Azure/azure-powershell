@@ -13,32 +13,33 @@
       }
     },
     "Response": {
-      "StatusCode": 200,
+      "StatusCode": 404,
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "X-Rate-Limit-Limit": [ "0" ],
-        "X-Rate-Limit-Remaining": [ "9223372036854775807" ],
-        "X-Rate-Limit-Reset": [ "0" ],
+        "X-Rate-Limit-Limit": [ "5m" ],
+        "X-Rate-Limit-Remaining": [ "5975" ],
+        "X-Rate-Limit-Reset": [ "2023-06-12T22:19:34.9836036Z" ],
         "x-ms-opsarmpath64": [ "L3N1YnNjcmlwdGlvbnMvZGJlZGVmMjUtMTg0Yy00MzBmLWIzODMtMGVlYjg3YzMyMDVkL3Jlc291cmNlR3JvdXBzL2FsZWNiVXNlclNlc3Npb25UZXN0cy9wcm92aWRlcnMvTWljcm9zb2Z0LkRlc2t0b3BWaXJ0dWFsaXphdGlvbi9ob3N0UG9vbHMvYWxlY2JVc2VyU2Vzc2lvbkhQL3Nlc3Npb25Ib3N0cy9wd3NoLTAvdXNlclNlc3Npb25zLzM=" ],
-        "x-ms-lamport-ts": [ "97235782" ],
-        "x-ms-correlation-id": [ "feebafa7-e1cf-4396-abce-6cb0b0b81cad" ],
-        "x-ms-request-id": [ "fe97ef22-f34f-437c-bb4a-9ff07d6fd82e" ],
+        "x-ms-lamport-ts": [ "104006263" ],
+        "x-ms-correlation-id": [ "0b0c9624-67cd-4d6a-a258-5d1777430305" ],
+        "x-ms-request-id": [ "6003b4c5-71c2-43c7-90a2-facada674a64" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Set-Cookie": [ "ARRAffinity=bd0dfb948b4e67ff60a11cd6e169712e6848609ad034c4789ebdf993fcec41fb;Path=/;HttpOnly;Secure;Domain=rdarmprovider-g-us-r0.wvdselfhost.microsoft.com", "ARRAffinitySameSite=bd0dfb948b4e67ff60a11cd6e169712e6848609ad034c4789ebdf993fcec41fb;Path=/;HttpOnly;SameSite=None;Secure;Domain=rdarmprovider-g-us-r0.wvdselfhost.microsoft.com" ],
+        "Set-Cookie": [ "ARRAffinity=47e899d5dc0547d5646e3c2c0081ae2cb7fddd55609bf4af48732c4283928a51;Path=/;HttpOnly;Secure;Domain=rdarmprovider-g-us-r0.wvdselfhost.microsoft.com", "ARRAffinitySameSite=47e899d5dc0547d5646e3c2c0081ae2cb7fddd55609bf4af48732c4283928a51;Path=/;HttpOnly;SameSite=None;Secure;Domain=rdarmprovider-g-us-r0.wvdselfhost.microsoft.com" ],
         "Server": [ "Microsoft-IIS/10.0" ],
         "X-Powered-By": [ "ASP.NET" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "1193" ],
-        "x-ms-correlation-request-id": [ "63d8ed79-1736-40d7-9534-10a1ddfe2824" ],
-        "x-ms-routing-request-id": [ "WESTCENTRALUS:20230405T223540Z:63d8ed79-1736-40d7-9534-10a1ddfe2824" ],
+        "x-ms-correlation-request-id": [ "d12da078-7833-4001-ac20-099a190f2378" ],
+        "x-ms-routing-request-id": [ "WESTCENTRALUS:20230612T221711Z:d12da078-7833-4001-ac20-099a190f2378" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "Date": [ "Wed, 05 Apr 2023 22:35:39 GMT" ]
+        "Date": [ "Mon, 12 Jun 2023 22:17:10 GMT" ]
       },
       "ContentHeaders": {
-        "Expires": [ "-1" ],
-        "Content-Length": [ "0" ]
+        "Content-Length": [ "118" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
       },
-      "Content": null,
+      "Content": "{\"error\":{\"code\":\"404\",\"message\":\"ActivityId: 0b0c9624-67cd-4d6a-a258-5d1777430305 Error: User session ID not found\"}}",
       "isContentBase64": false
     }
   }

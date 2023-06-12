@@ -20,9 +20,17 @@ function setupEnv() {
     $null = $env.Add("Location", "westus2")
     $null = $env.Add("HostPool", "HostPoolPowershellContained1")
     $null = $env.Add("HostPool2", "HostPoolPowershellContained2")
+    $null = $env.Add("Workspace", "WorkspacePowershellContained")
     $null = $env.Add("RemoteApplicationGroup", "ApplicationGroupPowershell2")
     $null = $env.Add("DesktopApplicationGroup", "ApplicationGroupPowershell1")
+    #TODO: Need to make this not local
     $null = $env.Add("MSIXImagePath", "C:\AppAttach\Firefox20110.0.1.vhdx")
+    $null = $env.Add("PrivateEndpointConnectionName", "pwshTestPEC")
+    $null = $env.Add("PrivateEndpointConnectionName1", "pwshTestPEC1")
+    $null = $env.Add("PrivateEndpointName", "pwshTestPrivateEndpoint")
+    $null = $env.Add("PrivateEndpointName1", "pwshTestPrivateEndpoint1")
+    $null = $env.Add("PECGroupIdWorkspace", "feed")
+    $null = $env.Add("PECGroupIdHostPool", "connection")
 
     #auto-set based on the values above, do not edit
     $null = $env.Add("HostPoolArmPath", "/subscriptions/"+ $env.SubscriptionId + "/resourcegroups/"+ $env.ResourceGroup + "/providers/Microsoft.DesktopVirtualization/hostpools/"+ $env.HostPool)
@@ -40,6 +48,7 @@ function setupEnv() {
     $null = $env.Add("SessionHostNameRemove", "userSess-sh-3")
     $null = $env.Add("PersistentDesktopAppGroup", "alecbUserSessionHP-DAG")
     $null = $env.Add("PersistentRemoteAppGroup", "alecbRemoteAppHP-RAG")
+    $null = $env.Add("VnetName", "alecbUserSession-vnet")
     # The context in which the tests are run will change the tenant and subscription ID when -record is run. 
     # Currently the scaling tests need to be run in a context with @microsoft, while the other tests are run with a test account
     # Modify the env.json manually after recording the necessary tests to get around this issue.

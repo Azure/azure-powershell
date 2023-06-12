@@ -1,41 +1,62 @@
 ---
 external help file:
 Module Name: Az.DesktopVirtualization
-online version: https://learn.microsoft.com/powershell/module/az.desktopvirtualization/new-azwvdregistrationinfo
+online version: https://learn.microsoft.com/powershell/module/az.desktopvirtualization/register-azwvdapplicationgroup
 schema: 2.0.0
 ---
 
-# New-AzWvdRegistrationInfo
+# Register-AzWvdApplicationGroup
 
 ## SYNOPSIS
-Create Windows virtual desktop registration info.
+Register a Windows virtual desktop application group.
 
 ## SYNTAX
 
 ```
-New-AzWvdRegistrationInfo -ExpirationTime <String> -HostPoolName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Register-AzWvdApplicationGroup -ApplicationGroupPath <String> -ResourceGroupName <String>
+ -WorkspaceName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create Windows virtual desktop registration info.
+Register a Windows virtual desktop application group.
 
 ## EXAMPLES
 
-### Example 1: Create a Registration Info for a HostPool
+### Example 1: Create an Application Group
 ```powershell
-PS C:\> New-AzWvdRegistrationInfo -ResourceGroupName rgName -HostPoolName hpName -ExpirationTime "2050-02-14 12:00"
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
 ```
 
-```output
-ExpirationTime         RegistrationTokenOperation Token
---------------         -------------------------- -----
-02/14/2050 12:00:00 PM Update                     <base64 encoded string>
+{{ Add description here }}
+
+### Example 2: Update an Application Group
+```powershell
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
 ```
 
-Creates a new Registration Info object for the selected HostPool
+{{ Add description here }}
 
 ## PARAMETERS
+
+### -ApplicationGroupPath
+ApplicationGroupPath Path
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -46,36 +67,6 @@ Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ExpirationTime
-Expiration Time
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -HostPoolName
-Host Pool Name
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -108,6 +99,21 @@ Aliases:
 Required: True
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WorkspaceName
+Workspace Name
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -150,7 +156,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20221014Preview.IRegistrationInfo
+### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20221014Preview.IWorkspace
 
 ## NOTES
 

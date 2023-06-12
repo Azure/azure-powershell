@@ -86,6 +86,9 @@ Create or update a ScalingPlanPooledSchedule.
 ### [New-AzWvdWorkspace](New-AzWvdWorkspace.md)
 Create or update a workspace.
 
+### [Register-AzWvdApplicationGroup](Register-AzWvdApplicationGroup.md)
+Register a Windows virtual desktop application group.
+
 ### [Remove-AzWvdApplication](Remove-AzWvdApplication.md)
 Remove an application.
 
