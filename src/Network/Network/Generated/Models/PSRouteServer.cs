@@ -53,6 +53,7 @@ namespace Microsoft.Azure.Commands.Network.Models
             }
             this.AllowBranchToBranchTraffic = virtualHub.AllowBranchToBranchTraffic;
             this.PublicIpAddress = ipconfig.PublicIPAddress.Id;
+            this.HubRoutingPreference = virtualHub.HubRoutingPreference;
         }
 
         [Ps1Xml(Target = ViewControl.Table)]
