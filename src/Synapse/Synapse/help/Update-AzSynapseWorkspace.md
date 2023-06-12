@@ -128,7 +128,7 @@ Update-AzSynapseWorkspace -Name ContosoWorkspace -UserAssignedIdentityAction Set
 ```
 
 
-This commands set the transparent data encryption protector for a workspace.
+This commands set the transparent data encryption protector for a workspace, and it is using System Assigned Managed Identity to access the Azure Key Vault.
 
 ### Example 9
 ```powershell
