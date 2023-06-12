@@ -21,9 +21,18 @@ Get-AzSqlInstanceDatabaseCopyOperation [-DatabaseName <String>] [-TargetResource
 
 ### GetMoveCopyManagedDatabaseOperationsByInputObjectParameterSet
 ```
-Get-AzSqlInstanceDatabaseCopyOperation [-TargetResourceGroupName <String>] [-TargetInstanceName <String>]
- -DatabaseObject <AzureSqlManagedDatabaseModel> [-OnlyLatestPerDatabase] [-InstanceName] <String>
- [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzSqlInstanceDatabaseCopyOperation [-DatabaseName <String>] [-TargetResourceGroupName <String>]
+ [-TargetInstanceName <String>] -DatabaseObject <AzureSqlManagedDatabaseModel> [-OnlyLatestPerDatabase]
+ [-InstanceName] <String> [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
+```
+
+### GetMoveCopyManagedDatabaseOperationsByMoveCopyObjectParameterSet
+```
+Get-AzSqlInstanceDatabaseCopyOperation [-DatabaseName <String>] [-TargetResourceGroupName <String>]
+ [-TargetInstanceName <String>] -ModelObject <MoveCopyManagedDatabaseModel> [-OnlyLatestPerDatabase]
+ [-InstanceName] <String> [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### GetMoveCopyManagedDatabaseOperationsByResourceIdParameterSet
@@ -31,13 +40,6 @@ Get-AzSqlInstanceDatabaseCopyOperation [-TargetResourceGroupName <String>] [-Tar
 Get-AzSqlInstanceDatabaseCopyOperation [-TargetResourceGroupName <String>] [-TargetInstanceName <String>]
  -ResourceId <String> [-OnlyLatestPerDatabase] [-InstanceName] <String> [-ResourceGroupName] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### GetMoveCopyManagedDatabaseOperationsByMoveCopyObjectParameterSet
-```
-Get-AzSqlInstanceDatabaseCopyOperation -ModelObject <MoveCopyManagedDatabaseModel> [-OnlyLatestPerDatabase]
- [-InstanceName] <String> [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -49,6 +51,7 @@ The **Get-AzSqlInstanceDatabaseCopyOperation** cmdlet get copy managed database 
 ```powershell
 PS C:\> Get-AzSqlInstanceDatabaseCopyOperation -ResourceGroupName RG1 -InstanceName instance1
 ```
+
 ```output
 Name                      : 11111111-1111-1111-1111-111111111111
 Id                        : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/RG1/providers/Microso
@@ -116,12 +119,12 @@ IsUserError               :
 
 This command will return all copy operations for instance instance1 in resource group RG1.
 
-
 ### Example 2: Get all copy operations on Azure SQL Managed Instance for one database
 
 ```powershell
 PS C:\> Get-AzSqlInstanceDatabaseCopyOperation -ResourceGroupName RG1 -InstanceName instance1 -DatabaseName db2
 ```
+
 ```output
 Name                      : 22222222-2222-2222-2222-222222222222
 Id                        : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/RG1/providers/Microso
@@ -174,6 +177,7 @@ This command will return all copy operations for database db2 on instance instan
 ```powershell
 PS C:\> Get-AzSqlInstanceDatabaseCopyOperation -ResourceGroupName RG1 -InstanceName instance1 -DatabaseName db2 -OnlyLatestPerDatabase
 ```
+
 ```output
 Name                      : 33333333-3333-3333-3333-333333333333
 Id                        : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/RG1/providers/Microso
@@ -205,8 +209,20 @@ This command will return latest copy operation for database db2 on instance inst
 The name of the instance database.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetMoveCopyManagedDatabaseOperationsByNameParameterSet
+Aliases: Name
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+```yaml
+Type: System.String
+Parameter Sets: GetMoveCopyManagedDatabaseOperationsByInputObjectParameterSet, GetMoveCopyManagedDatabaseOperationsByMoveCopyObjectParameterSet
 Aliases: Name
 
 Required: False
@@ -220,7 +236,7 @@ Accept wildcard characters: False
 Managed database object, for example output of **Get-AzSqlInstanceDatabase** cmdlet
 
 ```yaml
-Type: AzureSqlManagedDatabaseModel
+Type: Microsoft.Azure.Commands.Sql.ManagedDatabase.Model.AzureSqlManagedDatabaseModel
 Parameter Sets: GetMoveCopyManagedDatabaseOperationsByInputObjectParameterSet
 Aliases:
 
@@ -235,7 +251,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -250,7 +266,7 @@ Accept wildcard characters: False
 The name of the instance.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -265,7 +281,7 @@ Accept wildcard characters: False
 Object that is returned from start copy operation.
 
 ```yaml
-Type: MoveCopyManagedDatabaseModel
+Type: Microsoft.Azure.Commands.Sql.ManagedDatabase.Model.MoveCopyManagedDatabaseModel
 Parameter Sets: GetMoveCopyManagedDatabaseOperationsByMoveCopyObjectParameterSet
 Aliases:
 
@@ -280,7 +296,7 @@ Accept wildcard characters: False
 It will return only latest opereation per database
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -295,7 +311,7 @@ Accept wildcard characters: False
 The name of the resource group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -310,7 +326,7 @@ Accept wildcard characters: False
 The resource id of managed database resource.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetMoveCopyManagedDatabaseOperationsByResourceIdParameterSet
 Aliases:
 
@@ -325,8 +341,20 @@ Accept wildcard characters: False
 The name of the target managed instance.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetMoveCopyManagedDatabaseOperationsByNameParameterSet, GetMoveCopyManagedDatabaseOperationsByInputObjectParameterSet, GetMoveCopyManagedDatabaseOperationsByResourceIdParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+```yaml
+Type: System.String
+Parameter Sets: GetMoveCopyManagedDatabaseOperationsByMoveCopyObjectParameterSet
 Aliases:
 
 Required: False
@@ -340,8 +368,20 @@ Accept wildcard characters: False
 The name of the target resource group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetMoveCopyManagedDatabaseOperationsByNameParameterSet, GetMoveCopyManagedDatabaseOperationsByInputObjectParameterSet, GetMoveCopyManagedDatabaseOperationsByResourceIdParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+```yaml
+Type: System.String
+Parameter Sets: GetMoveCopyManagedDatabaseOperationsByMoveCopyObjectParameterSet
 Aliases:
 
 Required: False

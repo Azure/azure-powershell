@@ -21,31 +21,34 @@ Stop-AzSqlInstanceDatabaseCopy -DatabaseName <String> [-TargetResourceGroupName 
 
 ### CancelManagedDatabaseCopyByCopyModelObject
 ```
-Stop-AzSqlInstanceDatabaseCopy -CopyModelObject <MoveCopyManagedDatabaseModel> [-AsJob] [-PassThru]
+Stop-AzSqlInstanceDatabaseCopy -CopyModelObject <MoveCopyManagedDatabaseModel> [-DatabaseName <String>]
+ [-TargetResourceGroupName <String>] [-TargetInstanceName <String>] [-AsJob] [-PassThru]
  [-InstanceName] <String> [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ### MoveCopyManagedDatabaseByInstanceObjectParameterSet
 ```
-Stop-AzSqlInstanceDatabaseCopy -DatabaseName <String> -InstanceObject <AzureSqlManagedInstanceModel> [-AsJob]
- [-PassThru] [-InstanceName] <String> [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Stop-AzSqlInstanceDatabaseCopy -DatabaseName <String> [-TargetResourceGroupName <String>]
+ -TargetInstanceName <String> -InstanceObject <AzureSqlManagedInstanceModel> [-AsJob] [-PassThru]
+ [-InstanceName] <String> [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### MoveCopyManagedDatabaseByInputObjectParameterSet
 ```
-Stop-AzSqlInstanceDatabaseCopy [-TargetResourceGroupName <String>] -TargetInstanceName <String>
- -DatabaseObject <AzureSqlManagedDatabaseModel> [-AsJob] [-PassThru] [-InstanceName] <String>
- [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Stop-AzSqlInstanceDatabaseCopy [-DatabaseName <String>] [-TargetResourceGroupName <String>]
+ -TargetInstanceName <String> -DatabaseObject <AzureSqlManagedDatabaseModel> [-AsJob] [-PassThru]
+ [-InstanceName] <String> [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### MoveCopyManagedDatabaseByResourceIdParameterSet
 ```
-Stop-AzSqlInstanceDatabaseCopy [-TargetResourceGroupName <String>] -TargetInstanceName <String>
- -ResourceId <String> [-AsJob] [-PassThru] [-InstanceName] <String> [-ResourceGroupName] <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Stop-AzSqlInstanceDatabaseCopy [-DatabaseName <String>] [-TargetResourceGroupName <String>]
+ -TargetInstanceName <String> -ResourceId <String> [-AsJob] [-PassThru] [-InstanceName] <String>
+ [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -73,7 +76,7 @@ This command stops copy opeartion of database1 on instance MI1 in resource group
 Run cmdlet in the background
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -88,14 +91,14 @@ Accept wildcard characters: False
 Object that is returned from start copy operation.
 
 ```yaml
-Type: MoveCopyManagedDatabaseModel
+Type: Microsoft.Azure.Commands.Sql.ManagedDatabase.Model.MoveCopyManagedDatabaseModel
 Parameter Sets: CancelManagedDatabaseCopyByCopyModelObject
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -103,8 +106,8 @@ Accept wildcard characters: False
 The name of the instance database.
 
 ```yaml
-Type: String
-Parameter Sets: MoveCopyManagedDatabaseByNameParameterSet
+Type: System.String
+Parameter Sets: MoveCopyManagedDatabaseByNameParameterSet, MoveCopyManagedDatabaseByInstanceObjectParameterSet
 Aliases: Name
 
 Required: True
@@ -115,11 +118,11 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
-Parameter Sets: MoveCopyManagedDatabaseByInstanceObjectParameterSet
+Type: System.String
+Parameter Sets: CancelManagedDatabaseCopyByCopyModelObject, MoveCopyManagedDatabaseByInputObjectParameterSet, MoveCopyManagedDatabaseByResourceIdParameterSet
 Aliases: Name
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -130,7 +133,7 @@ Accept wildcard characters: False
 Managed database object, for example output of **Get-AzSqlInstanceDatabase** cmdlet
 
 ```yaml
-Type: AzureSqlManagedDatabaseModel
+Type: Microsoft.Azure.Commands.Sql.ManagedDatabase.Model.AzureSqlManagedDatabaseModel
 Parameter Sets: MoveCopyManagedDatabaseByInputObjectParameterSet
 Aliases:
 
@@ -145,7 +148,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -160,7 +163,7 @@ Accept wildcard characters: False
 The name of the instance.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -175,7 +178,7 @@ Accept wildcard characters: False
 The managed instance object
 
 ```yaml
-Type: AzureSqlManagedInstanceModel
+Type: Microsoft.Azure.Commands.Sql.ManagedInstance.Model.AzureSqlManagedInstanceModel
 Parameter Sets: MoveCopyManagedDatabaseByInstanceObjectParameterSet
 Aliases: ParentObject
 
@@ -190,7 +193,7 @@ Accept wildcard characters: False
 Signal to receive output from a cmdlet which does not return anything
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -205,7 +208,7 @@ Accept wildcard characters: False
 The name of the resource group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -220,7 +223,7 @@ Accept wildcard characters: False
 The resource id of managed database resource.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: MoveCopyManagedDatabaseByResourceIdParameterSet
 Aliases:
 
@@ -235,11 +238,23 @@ Accept wildcard characters: False
 The name of the target managed instance.
 
 ```yaml
-Type: String
-Parameter Sets: MoveCopyManagedDatabaseByNameParameterSet, MoveCopyManagedDatabaseByInputObjectParameterSet, MoveCopyManagedDatabaseByResourceIdParameterSet
+Type: System.String
+Parameter Sets: MoveCopyManagedDatabaseByNameParameterSet, MoveCopyManagedDatabaseByInstanceObjectParameterSet, MoveCopyManagedDatabaseByInputObjectParameterSet, MoveCopyManagedDatabaseByResourceIdParameterSet
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+```yaml
+Type: System.String
+Parameter Sets: CancelManagedDatabaseCopyByCopyModelObject
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -250,14 +265,14 @@ Accept wildcard characters: False
 The name of the target resource group.
 
 ```yaml
-Type: String
-Parameter Sets: MoveCopyManagedDatabaseByNameParameterSet, MoveCopyManagedDatabaseByInputObjectParameterSet, MoveCopyManagedDatabaseByResourceIdParameterSet
+Type: System.String
+Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -265,7 +280,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -281,7 +296,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

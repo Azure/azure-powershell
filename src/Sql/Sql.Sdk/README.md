@@ -112,11 +112,8 @@ input-file:
   - https://github.com/Azure/azure-rest-api-specs/blob/aeb7bf01df887ea6095e1c3d545c2445c9d8dde7/specification/sql/resource-manager/Microsoft.Sql/preview/2022-08-01-preview/ManagedLedgerDigestUploads.json
   - https://github.com/Azure/azure-rest-api-specs/blob/aeb7bf01df887ea6095e1c3d545c2445c9d8dde7/specification/sql/resource-manager/Microsoft.Sql/preview/2022-08-01-preview/ManagedDatabases.json
   - https://github.com/Azure/azure-rest-api-specs/blob/a67a24b139cab94d66d85546bcdafe6053e71329/specification/sql/resource-manager/Microsoft.Sql/preview/2022-08-01-preview/ElasticPools.json
-<<<<<<< HEAD
   - https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/specification/sql/resource-manager/Microsoft.Sql/preview/2022-08-01-preview/ManagedDatabaseMoveOperations.json
-=======
   - https://github.com/Azure/azure-rest-api-specs/blob/c9fd3070a45da18959192265c0e62dd34b521ab1/specification/sql/resource-manager/Microsoft.Sql/preview/2022-11-01-preview/FailoverGroups.json
->>>>>>> d8ef7602b6089da8b7188d837cf1f189f99e3b31
 
 
 output-folder: Generated
