@@ -127,9 +127,18 @@ foreach($uami in $uamis){
 Update-AzSynapseWorkspace -Name ContosoWorkspace -UserAssignedIdentityAction Set -UserAssignedIdentityId $uamilist
 ```
 
-This commands updates workspace with user assigned managed identites $uamilist that will cover current identities.
+
+This commands set the transparent data encryption protector for a workspace.
 
 ### Example 9
+```powershell
+Update-AzSynapseWorkspace -WorkspaceName ContosoWorkspace -EncryptionKeyName keyName -UseSystemAssignedIdentityInEncryption true
+
+```
+
+This commands updates workspace with user assigned managed identites $uamilist that will cover current identities.
+
+### Example 10
 ```powershell
 $uamis = Get-AzUserAssignedIdentity -ResourceGroupName ContosoResourceGroup
 $identityId = $uamis[0].Id
