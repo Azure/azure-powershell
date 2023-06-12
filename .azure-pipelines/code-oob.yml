@@ -99,6 +99,8 @@ stages:
       inputs:
         azureSubscription: 'azureps-infra-sp'
         ScriptType: InlineScript
+        azurePowerShellVersion: LatestVersion
+        pwsh: true
         Inline: |
           $jsonFilePath = "./OOB/VersionInfo.json"
           $jsonContent = Get-Content -Path $jsonFilePath -Raw
