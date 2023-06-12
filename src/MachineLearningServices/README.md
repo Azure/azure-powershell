@@ -121,7 +121,7 @@ directive:
       subject-prefix: MlWorkspace
     set:
       subject-prefix: MLWorkspace
-      
+
   - where:
       subject-prefix: Ml
     set:
@@ -154,7 +154,7 @@ directive:
       subject: DiagnoseWorkspace
     set:
       subject: Diagnose
-      
+
   - where:
       subject: PrepareWorkspaceNotebook
     set:
@@ -175,7 +175,7 @@ directive:
       subject: OnlineDeploymentLog
       variant: ^Get$|^GetViaIdentity$|^GetViaIdentityExpanded$
     remove: true
-    
+
   - where:
       verb: Update
       variant: ^Update$|^UpdateViaIdentity$
@@ -214,14 +214,14 @@ directive:
       variant: ^CreateViaIdentity$|^Create$|^CreateViaIdentityExpanded$
     remove: true
 
-  # Costom compute cmdlet 
+  # Costom compute cmdlet
   - where:
       verb: New
       subject: Compute
       variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$
     remove: true
 
-  # Costom job cmdlet 
+  # Costom job cmdlet
   - where:
       verb: New
       subject: Job
@@ -267,7 +267,7 @@ directive:
       subject: Diagnose
       parameter-name: ApplicationInsight
     set:
-      parameter-name: ApplicationInsightId 
+      parameter-name: ApplicationInsightId
 
   - where:
       verb: Invoke
@@ -281,14 +281,14 @@ directive:
       subject: Diagnose
       parameter-name: KeyVault
     set:
-      parameter-name: KeyVaultId 
+      parameter-name: KeyVaultId
 
   - where:
       verb: Invoke
       subject: Diagnose
       parameter-name: KeyVault
     set:
-      parameter-name: StorageAccountId 
+      parameter-name: StorageAccountId
 
   - where:
       verb: New
@@ -451,7 +451,7 @@ directive:
       parameter-name: EndpointName
     set:
       parameter-name: Name
-  
+
   - where:
       subject: BatchEndpoint
       parameter-name: KeyPrimaryKey
@@ -475,10 +475,6 @@ directive:
       parameter-name: Others
     set:
       parameter-name: Other
-  # Bug: https://github.com/Azure/autorest.powershell/issues/952
-  - from: source-file-csharp
-    where: $
-    transform: $ = $.replace(/\(await response\)\.SecretsType/g, '\(await response\)')
 
   - no-inline:
 # Datastore
@@ -492,28 +488,28 @@ directive:
 # Compute
     - Compute
 # Job
-    - JobBase    
+    - JobBase
   - model-cmdlet:
 # Compute type: 'AKS', 'Kubernetes', 'AmlCompute', 'ComputeInstance','DataFactory', 'VirtualMachine', 'HDInsight', 'Databricks', 'DataLakeAnalytics', 'SynapseSpark'
-    # - AmlCompute 
+    # - AmlCompute
     # # --> New-AzMLWorkspaceAmlComputeObject
-    # - ComputeInstance 
+    # - ComputeInstance
     # #--> New-AzMLWorkspaceComputeInstanceObject
-    # - Aks 
+    # - Aks
     ##--> New-AzMLWorkspaceAksObject
-    # - Kubernetes 
+    # - Kubernetes
     # #--> New-AzMLWorkspaceKubernetesObject
-    # - VirtualMachine 
+    # - VirtualMachine
     # #--> New-AzMLWorkspaceVirtualMachineObject
-    # - HDInsight 
+    # - HDInsight
     # #--> New-AzMLWorkspaceHDInsightObject
-    # - DataFactory 
+    # - DataFactory
     # #--> New-AzMLWorkspaceDataFactoryObject
-    # - Databricks 
+    # - Databricks
     # # --> New-AzMLWorkspaceDatabricksObject
-    # - DataLakeAnalytics 
+    # - DataLakeAnalytics
     # # --> New-AzMLWorkspaceDataLakeAnalyticsObject
-    # - SynapseSpark 
+    # - SynapseSpark
     # # --> New-AzMLWorkspaceSynapseSparkObject
     - model-name: ComputeStartStopSchedule
 # Datastore
@@ -533,12 +529,12 @@ directive:
     # -> New-AzMLWorkspaceCommandJobObject
     # - PipelineJob
     # # --> New-AzMLWorkspacePipelineJobObject
-    # - SweepJob 
+    # - SweepJob
     ## --> New-AzMLWorkspaceSweepJobObject
 # Job input and output
     - model-name: CustomModelJobInput
     - model-name: CustomModelJobOutput
-    - model-name: LiteralJobInput   
+    - model-name: LiteralJobInput
     - model-name: MLFlowModelJobInput
     - model-name: MLFlowModelJobOutput
     - model-name: MLTableJobInput
