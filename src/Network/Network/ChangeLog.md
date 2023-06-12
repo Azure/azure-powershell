@@ -57,6 +57,8 @@
 * Allowed not to provide `Rules` in `PSApplicationGatewayFirewallPolicyManagedRuleGroupOverride`, which would return an empty `RuleID` to be passed to NRP.
 * Add optional parameter 'AdminState' to Express Route Virtual Network Gateway
 * Added read-only property `DefaultPredefinedSslPolicy` in PSApplicationGateway
+* Updated cmdlet to added optional parameter `DomainNameLabelScope` to Public Ip Address
+    - `New-AzPublicIpAddress`
 
 ## Version 5.7.0
 * Onboarded `Microsoft.HardwareSecurityModules/cloudHsmClusters` to private link cmdlets

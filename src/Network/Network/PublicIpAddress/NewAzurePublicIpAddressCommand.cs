@@ -118,6 +118,12 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The Domain Name label Scope, the value can be TenantReuse or SubscriptionReuse or ResourceGroupReuse or NoReuse. It will decide HashedReusePolicy for FQDN, and can be set only when Domain Name Label has a valid value.")]
+        public string DomainNameLabelScope { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "IpTag List.")]
         public PSPublicIpTag[] IpTag { get; set; }
 
@@ -256,6 +262,10 @@ namespace Microsoft.Azure.Commands.Network
             {
                 publicIp.DnsSettings = new PSPublicIpAddressDnsSettings();
                 publicIp.DnsSettings.DomainNameLabel = this.DomainNameLabel;
+                if (!string.IsNullOrWhiteSpace(this.DomainNameLabelScope)) 
+                {
+                    publicIp.DnsSettings.DomainNameLabelScope = this.DomainNameLabelScope;
+                }
                 publicIp.DnsSettings.ReverseFqdn = this.ReverseFqdn;
             }
 
