@@ -8953,7 +8953,7 @@
               </TableColumnItem>
 			  <TableColumnItem>
 				<Alignment>Left</Alignment>
-				<Label>HubRoutingPreference</Label>
+				<PropertyName>HubRoutingPreference</PropertyName>
 			  </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
