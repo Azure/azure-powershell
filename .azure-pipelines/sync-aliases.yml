@@ -1,4 +1,4 @@
-# Variable 'ADOToken' and 'BotAccessToken' was defined in the Variables tab
+# Variable 'BotAccessToken', 'KeyVaultName' and 'ADOTokenName' was defined in the Variables tab
 schedules:
 - cron: "50 15 * * *"
   displayName: 11:50 PM (UTC + 8:00) China Daily Run
@@ -10,8 +10,15 @@ jobs:
 - job: UpdateJson
   displayName: Update fabricbot.json
   steps:
+  - task: AzureKeyVault@2
+    inputs:
+      azureSubscription: 'Azure SDK Infrastructure'
+      KeyVaultName: '$(KeyVaultName)'
+      SecretsFilter: '$(ADOTokenName)'
+      RunAsPreJob: false
+
   - pwsh: |
-      ./tools/Github/ParseWiki2Json.ps1 -ADOToken $(ADOToken)
+      ./tools/Github/ParseWiki2Json.ps1 -ADOToken $("$(ADOTokenName)")
     displayName: Update fabricbot.json file locally
       
   - pwsh: |
