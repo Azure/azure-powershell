@@ -139,12 +139,7 @@ stages:
               downloadType: 'single'
               artifactName: 'OOB'
               downloadPath: '$(System.ArtifactsDirectory)'
-          - task: DownloadBuildArtifacts@1
-            inputs:
-              buildType: 'current'
-              downloadType: 'single'
-              artifactName: 'artifacts'
-              downloadPath: '$(System.ArtifactsDirectory)'
+
           - powershell: |
               $jsonFilePath = "$(System.ArtifactsDirectory)\OOB\VersionInfo.json"
               $jsonContent = Get-Content -Path $jsonFilePath -Raw
