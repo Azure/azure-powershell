@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.Network
         [ResourceNameCompleter("Microsoft.Network/azureFirewalls", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         [SupportsWildcards]
-        public virtual string Name { get; set; }
+        public virtual string Name { get; set; }s
 
         [Parameter(
             Mandatory = true,
