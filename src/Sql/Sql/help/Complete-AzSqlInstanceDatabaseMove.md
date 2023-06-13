@@ -14,41 +14,37 @@ Complete online move operation of a managed database.
 
 ### MoveCopyManagedDatabaseByNameParameterSet (Default)
 ```
-Complete-AzSqlInstanceDatabaseMove [-Force] -DatabaseName <String> [-TargetResourceGroupName <String>]
- -TargetInstanceName <String> [-AsJob] [-PassThru] [-InstanceName] <String> [-ResourceGroupName] <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Complete-AzSqlInstanceDatabaseMove [-Force] -DatabaseName <String> -InstanceName <String>
+ -ResourceGroupName <String> [-TargetResourceGroupName <String>] -TargetInstanceName <String> [-AsJob]
+ [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CompleteManagedDatabaseMoveByMoveModelObject
 ```
-Complete-AzSqlInstanceDatabaseMove [-Force] -MoveModelObject <MoveCopyManagedDatabaseModel>
- [-DatabaseName <String>] [-TargetResourceGroupName <String>] [-TargetInstanceName <String>] [-AsJob]
- [-PassThru] [-InstanceName] <String> [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Complete-AzSqlInstanceDatabaseMove [-Force] -MoveModelObject <MoveCopyManagedDatabaseModel> [-AsJob]
+ [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### MoveCopyManagedDatabaseByInstanceObjectParameterSet
+### MoveCopyManagedDatabaseByOperationObjectParameterSet
 ```
-Complete-AzSqlInstanceDatabaseMove [-Force] -DatabaseName <String> [-TargetResourceGroupName <String>]
- -TargetInstanceName <String> -InstanceObject <AzureSqlManagedInstanceModel> [-AsJob] [-PassThru]
- [-InstanceName] <String> [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Complete-AzSqlInstanceDatabaseMove [-Force] [-DatabaseName <String>] [-InstanceName <String>]
+ [-ResourceGroupName <String>] -MoveCopyOperationObject <ManagedDatabaseMoveCopyOperation> [-AsJob] [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### MoveCopyManagedDatabaseByInputObjectParameterSet
 ```
-Complete-AzSqlInstanceDatabaseMove [-Force] [-DatabaseName <String>] [-TargetResourceGroupName <String>]
- -TargetInstanceName <String> -DatabaseObject <AzureSqlManagedDatabaseModel> [-AsJob] [-PassThru]
- [-InstanceName] <String> [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Complete-AzSqlInstanceDatabaseMove [-Force] -InstanceName <String> -ResourceGroupName <String>
+ [-TargetResourceGroupName <String>] -TargetInstanceName <String>
+ -DatabaseObject <AzureSqlManagedDatabaseModel> [-AsJob] [-PassThru] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### MoveCopyManagedDatabaseByResourceIdParameterSet
 ```
-Complete-AzSqlInstanceDatabaseMove [-Force] [-DatabaseName <String>] [-TargetResourceGroupName <String>]
- -TargetInstanceName <String> -ResourceId <String> [-AsJob] [-PassThru] [-InstanceName] <String>
- [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Complete-AzSqlInstanceDatabaseMove [-Force] -InstanceName <String> -ResourceGroupName <String>
+ [-TargetResourceGroupName <String>] -TargetInstanceName <String> -ResourceId <String> [-AsJob] [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -92,7 +88,7 @@ The name of the instance database.
 
 ```yaml
 Type: System.String
-Parameter Sets: MoveCopyManagedDatabaseByNameParameterSet, MoveCopyManagedDatabaseByInstanceObjectParameterSet
+Parameter Sets: MoveCopyManagedDatabaseByNameParameterSet
 Aliases: Name
 
 Required: True
@@ -104,7 +100,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String
-Parameter Sets: CompleteManagedDatabaseMoveByMoveModelObject, MoveCopyManagedDatabaseByInputObjectParameterSet, MoveCopyManagedDatabaseByResourceIdParameterSet
+Parameter Sets: MoveCopyManagedDatabaseByOperationObjectParameterSet
 Aliases: Name
 
 Required: False
@@ -164,23 +160,47 @@ The name of the instance.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: MoveCopyManagedDatabaseByNameParameterSet, MoveCopyManagedDatabaseByResourceIdParameterSet
 Aliases:
 
 Required: True
-Position: 1
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InstanceObject
-The managed instance object
+```yaml
+Type: System.String
+Parameter Sets: MoveCopyManagedDatabaseByOperationObjectParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ```yaml
-Type: Microsoft.Azure.Commands.Sql.ManagedInstance.Model.AzureSqlManagedInstanceModel
-Parameter Sets: MoveCopyManagedDatabaseByInstanceObjectParameterSet
-Aliases: ParentObject
+Type: System.String
+Parameter Sets: MoveCopyManagedDatabaseByInputObjectParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MoveCopyOperationObject
+The managed database move or copy operation object.
+
+```yaml
+Type: Microsoft.Azure.Commands.Sql.ManagedDatabase.Model.ManagedDatabaseMoveCopyOperation
+Parameter Sets: MoveCopyManagedDatabaseByOperationObjectParameterSet
+Aliases: Operation
 
 Required: True
 Position: Named
@@ -224,13 +244,37 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: MoveCopyManagedDatabaseByNameParameterSet, MoveCopyManagedDatabaseByResourceIdParameterSet
 Aliases:
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+```yaml
+Type: System.String
+Parameter Sets: MoveCopyManagedDatabaseByOperationObjectParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+```yaml
+Type: System.String
+Parameter Sets: MoveCopyManagedDatabaseByInputObjectParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -254,22 +298,10 @@ The name of the target managed instance.
 
 ```yaml
 Type: System.String
-Parameter Sets: MoveCopyManagedDatabaseByNameParameterSet, MoveCopyManagedDatabaseByInstanceObjectParameterSet, MoveCopyManagedDatabaseByInputObjectParameterSet, MoveCopyManagedDatabaseByResourceIdParameterSet
+Parameter Sets: MoveCopyManagedDatabaseByNameParameterSet, MoveCopyManagedDatabaseByInputObjectParameterSet, MoveCopyManagedDatabaseByResourceIdParameterSet
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-```yaml
-Type: System.String
-Parameter Sets: CompleteManagedDatabaseMoveByMoveModelObject
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -281,13 +313,13 @@ The name of the target resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: MoveCopyManagedDatabaseByNameParameterSet, MoveCopyManagedDatabaseByInputObjectParameterSet, MoveCopyManagedDatabaseByResourceIdParameterSet
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
