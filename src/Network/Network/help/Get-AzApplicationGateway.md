@@ -55,6 +55,7 @@ Zones                               : {}
 OperationalState                    : Running
 ProvisioningState                   : Succeeded
 Identity                            :
+DefaultPredefinedSslPolicy          : AppGwSslPolicy20150501
 GatewayIpConfigurationsText         : []
 AuthenticationCertificatesText      : []
 SslCertificatesText                 : []
@@ -115,6 +116,7 @@ Zones                               : {}
 OperationalState                    : Running
 ProvisioningState                   : Succeeded
 Identity                            :
+DefaultPredefinedSslPolicy          : AppGwSslPolicy20150501
 GatewayIpConfigurationsText         : []
 AuthenticationCertificatesText      : []
 SslCertificatesText                 : []
@@ -175,6 +177,7 @@ Zones                               : {}
 OperationalState                    : Running
 ProvisioningState                   : Succeeded
 Identity                            :
+DefaultPredefinedSslPolicy          : AppGwSslPolicy20150501
 GatewayIpConfigurationsText         : []
 AuthenticationCertificatesText      : []
 SslCertificatesText                 : []
@@ -235,6 +238,7 @@ Zones                               : {}
 OperationalState                    : Running
 ProvisioningState                   : Succeeded
 Identity                            :
+DefaultPredefinedSslPolicy          : AppGwSslPolicy20150501
 GatewayIpConfigurationsText         : []
 AuthenticationCertificatesText      : []
 SslCertificatesText                 : []
