@@ -126,13 +126,14 @@ foreach($uami in $uamis){
 
 Update-AzSynapseWorkspace -Name ContosoWorkspace -UserAssignedIdentityAction Set -UserAssignedIdentityId $uamilist
 ```
+
 This commands updates workspace with user assigned managed identites $uamilist that will cover current identities.
 
 ### Example 9
 ```powershell
 
 ##Add a temp key to the workspace
-New-AzSynapseWorkspaceKey -ResourceGroupName ContosoResourceGroup -WorkspaceName ContosoWorkspace  -Name TempKey -EncryptionKeyIdentifier https://contosoKeyValut.vault.azure.net/keys/TempKey
+New-AzSynapseWorkspaceKey -ResourceGroupName ContosoResourceGroup -WorkspaceName ContosoWorkspace -Name TempKey -EncryptionKeyIdentifier https://contosoKeyVault.vault.azure.net/keys/TempKey
 
 ##Update the workspace and set the temp key as the TDE protector
 Update-AzSynapseWorkspace -WorkspaceName ContosoWorkspace -EncryptionKeyName TempKey -UseSystemAssignedIdentityInEncryption $true
