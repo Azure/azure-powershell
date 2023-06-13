@@ -90,11 +90,9 @@ stages:
         PathtoPublish: OOB
         ArtifactName: OOB
 - stage: Codesign
-  dependsOn: OOBRelease
   jobs:
 
   - job: PulishForTest
-    dependsOn: Release
     steps:
     - task: DownloadBuildArtifacts@1
       inputs:
