@@ -19,7 +19,6 @@
 -->
 ## Upcoming Release
 
-## Version 1.9.2
 * Added `Tags` support to `Import-AzAutomationDscNodeConfiguration`.
 
 ## Version 1.9.1
