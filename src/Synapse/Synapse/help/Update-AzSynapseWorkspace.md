@@ -135,7 +135,7 @@ This commands updates workspace with user assigned managed identites $uamilist t
 New-AzSynapseWorkspaceKey -ResourceGroupName ContosoResourceGroup -WorkspaceName ContosoWorkspace  -Name TempKey -EncryptionKeyIdentifier https://contosoKeyValut.vault.azure.net/keys/TempKey
 
 ##Update the workspace and set the temp key as the TDE protector
-Update-AzSynapseWorkspace -WorkspaceName ContosoWorkspace  -EncryptionKeyName TempKey -UseSystemAssignedIdentityInEncryption true
+Update-AzSynapseWorkspace -WorkspaceName ContosoWorkspace -EncryptionKeyName TempKey -UseSystemAssignedIdentityInEncryption $true
 
 ##Note, we need to create a new key version for the original encrytion key of the Azure key vault before moving to next steps. 
 
