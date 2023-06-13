@@ -15,6 +15,7 @@
 using Microsoft.Azure.Commands.Automation.Model;
 using System.Management.Automation;
 using System.Security.Permissions;
+using System.Collections;
 using Microsoft.Azure.Commands.Automation.Common;
 using Microsoft.Azure.Commands.Automation.Properties;
 
@@ -50,7 +51,13 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
                           "in the form of 'ConfigurationName.MofFileName'")]
         public string ConfigurationName { get; set; }
 
-
+        /// <summary>
+        /// Gets or sets the configuration tags.
+        /// </summary>
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The dsc node configuration tags.")]
+        [Alias("Tag")]
+        public IDictionary Tags { get; set; }
+        
         /// <summary>
         /// Gets or sets switch parameter to confirm overwriting of existing configurations.
         /// </summary>
@@ -101,7 +108,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
                         Resources.NodeConfigurationAlreadyExistsCaption))
                     {
                         var nodeConfiguration = AutomationClient.CreateNodeConfiguration(
-                            ResourceGroupName, AutomationAccountName, Path, ConfigurationName, false, Force);
+                            ResourceGroupName, AutomationAccountName, Path, Tags, ConfigurationName, false, Force);
 
                         WriteObject(nodeConfiguration);
                     }
@@ -112,6 +119,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
                         ResourceGroupName,
                         AutomationAccountName,
                         Path,
+                        Tags,
                         ConfigurationName,
                         IncrementNodeConfigurationBuild.IsPresent,
                         false);
