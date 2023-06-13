@@ -1126,6 +1126,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
             string resourceGroupName,
             string automationAccountName,
             string sourcePath,
+	    IDictionary tags,
             string configurationName,
             bool incrementNodeConfigurationBuild,
             bool overWrite)
@@ -1166,10 +1167,14 @@ namespace Microsoft.Azure.Commands.Automation.Common
                     //create empty configuration if its empty
                     this.CreateConfiguration(resourceGroupName, automationAccountName, configurationName, nodeName);
                 }
+		
+		IDictionary<string, string> configurationTags = null;
+                if (tags != null) configurationTags = tags.Cast<DictionaryEntry>().ToDictionary(kvp => kvp.Key.ToString(), kvp => kvp.Value.ToString());
 
                 var nodeConfigurationCreateParameters = new  DscNodeConfigurationCreateOrUpdateParameters()
                 {
                     Name = nodeConfigurationName,
+                    Tags = configurationTags,
                     Source = new Microsoft.Azure.Management.Automation.Models.ContentSource()
                     {
                         // only embeddedContent supported for now
