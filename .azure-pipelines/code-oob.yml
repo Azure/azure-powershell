@@ -104,7 +104,6 @@ stages:
               downloadType: 'single'
               artifactName: 'OOB'
               downloadPath: '$(System.ArtifactsDirectory)'
-
           - powershell: |
               $jsonFilePath = "$(System.ArtifactsDirectory)\OOB\VersionInfo.json"
               $jsonContent = Get-Content -Path $jsonFilePath -Raw
@@ -115,7 +114,7 @@ stages:
               echo "##vso[task.setvariable variable=versionNumber]$versionNumber"
               echo "##vso[task.setvariable variable=versionChanges]$versionChanges"
               echo "##vso[task.setvariable variable=ModuleName]$ModuleName"
-              displayName: 'Get OOB Info'
+            displayName: 'Get OOB Info'
           - task: GitHubRelease@1
             displayName: 'Create GitHub release '
             inputs:
