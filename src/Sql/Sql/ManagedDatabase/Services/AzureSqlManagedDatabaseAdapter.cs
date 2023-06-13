@@ -300,7 +300,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Services
             if (!string.IsNullOrEmpty(model.TargetResourceGroupName))
             {
                 return operations
-                    .Where(operation => operation.TargetManagedInstanceId.Contains($"resourceGroups/{model.TargetResourceGroupName}/"))
+                    .Where(operation => operation.TargetManagedInstanceId.ToLower().Contains($"resourceGroups/{model.TargetResourceGroupName.ToLower()}/"))
                     .ToList();
             }
             return operations.ToList();

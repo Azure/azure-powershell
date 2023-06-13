@@ -218,11 +218,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Services
             var operationMode = mode == OperationMode.MOVE ? "Move" : "Copy";
             string filter = $"Properties/OperationMode eq '{operationMode}' and (Properties/SourceManagedInstanceName eq '{managedInstanceName}'";
 
-            if (targetManagedInstanceName.Equals(managedInstanceName))
-            {
-                filter += $" or Properties/TargetManagedInstanceName eq '{targetManagedInstanceName}')";
-            }
-            else
+            if (!string.IsNullOrEmpty(targetManagedInstanceName))
             {
                 filter += $" and Properties/TargetManagedInstanceName eq '{targetManagedInstanceName}')";
             }

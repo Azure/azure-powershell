@@ -84,6 +84,13 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
                 DatabaseName = resourceInfo.ResourceName;
             }
 
+            if (ParameterSetName.Equals(GetMoveCopyManagedDatabaseOperationsByInputObjectParameterSet))
+            {
+                ResourceGroupName = DatabaseObject.ResourceGroupName;
+                InstanceName = DatabaseObject.ManagedInstanceName;
+                DatabaseName = DatabaseObject.Name;
+            }
+
             var location = ModelAdapter.GetManagedInstanceLocation(ResourceGroupName, InstanceName);
             var model = new MoveCopyManagedDatabaseModel()
             {
@@ -91,7 +98,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
                 DatabaseName = DatabaseName,
                 ResourceGroupName = ResourceGroupName,
                 SubscriptionId = ModelAdapter.Context.Subscription.Id,
-                TargetInstanceName = TargetInstanceName ?? InstanceName,
+                TargetInstanceName = TargetInstanceName,
                 TargetResourceGroupName = TargetResourceGroupName,
                 Location = location,
                 OperationMode = GetOperationMode(),

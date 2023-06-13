@@ -19,7 +19,7 @@
 -->
 ## Upcoming Release
 * Added `TryPlannedBeforeForcedFailover` parameter to `Switch-AzSqlDatabaseFailoverGroup`
-* Added new cmdlet for managed database move and copy operations
+* Added new cmdlets for managed database move and copy operations
     - 'Copy-AzSqlInstanceDatabase'
     - 'Move-AzSqlInstanceDatabase'
     - 'Complete-AzSqlInstanceDatabaseCopy'
