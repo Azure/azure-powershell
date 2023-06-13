@@ -1,20 +1,20 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/67e11b19-95f8-4d96-a472-5f626c5445ec/resourceGroups/mikeazure/providers/Microsoft.Batch/batchAccounts/mikebatcheast/applications/createPoolWithApplicationPackage/versions/foo?api-version=2022-10-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjdlMTFiMTktOTVmOC00ZDk2LWE0NzItNWY2MjZjNTQ0NWVjL3Jlc291cmNlR3JvdXBzL21pa2VhenVyZS9wcm92aWRlcnMvTWljcm9zb2Z0LkJhdGNoL2JhdGNoQWNjb3VudHMvbWlrZWJhdGNoZWFzdC9hcHBsaWNhdGlvbnMvY3JlYXRlUG9vbFdpdGhBcHBsaWNhdGlvblBhY2thZ2UvdmVyc2lvbnMvZm9vP2FwaS12ZXJzaW9uPTIwMjItMTAtMDE=",
+      "RequestUri": "/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/123/providers/Microsoft.Batch/batchAccounts/hoppeeastasia2/applications/createPoolWithApplicationPackage/versions/foo?api-version=2022-10-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjFhYmQ2NzgtMThjNS00NjYwLTlmZGQtOGM1YmE2YjZmZTFmL3Jlc291cmNlR3JvdXBzLzEyMy9wcm92aWRlcnMvTWljcm9zb2Z0LkJhdGNoL2JhdGNoQWNjb3VudHMvaG9wcGVlYXN0YXNpYTIvYXBwbGljYXRpb25zL2NyZWF0ZVBvb2xXaXRoQXBwbGljYXRpb25QYWNrYWdlL3ZlcnNpb25zL2Zvbz9hcGktdmVyc2lvbj0yMDIyLTEwLTAx",
       "RequestMethod": "PUT",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "7066a92f-8e9c-4951-b013-d312396254e6"
+          "7a93ff9b-25c5-449c-92f5-fd781c1bd4e8"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.700.22.51102",
+          "FxVersion/4.700.22.55902",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19045",
+          "OSVersion/Microsoft.Windows.10.0.22621",
           "Microsoft.Azure.Management.Batch.BatchManagementClient/14.2.0.0"
         ]
       },
@@ -27,13 +27,13 @@
           "no-cache"
         ],
         "ETag": [
-          "W/\"0x8DAD48A2C938179\""
+          "W/\"0x8DB6BEB269362FD\""
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
           "1199"
         ],
         "x-ms-request-id": [
-          "7835d534-6a15-4ee4-bb30-910bb92a5d4f"
+          "52489866-832f-4eb1-85c4-c87850e10215"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -45,16 +45,16 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-correlation-request-id": [
-          "dc42dda5-1d97-4b79-93c8-c3248a363d87"
+          "017d5cfa-d845-4209-b3a6-6e61d679c28e"
         ],
         "x-ms-routing-request-id": [
-          "NORTHCENTRALUS:20221202T172514Z:dc42dda5-1d97-4b79-93c8-c3248a363d87"
+          "SOUTHEASTASIA:20230613T084951Z:017d5cfa-d845-4209-b3a6-6e61d679c28e"
         ],
         "Date": [
-          "Fri, 02 Dec 2022 17:25:13 GMT"
+          "Tue, 13 Jun 2023 08:49:50 GMT"
         ],
         "Content-Length": [
-          "654"
+          "812"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -63,27 +63,27 @@
           "-1"
         ],
         "Last-Modified": [
-          "Fri, 02 Dec 2022 17:25:14 GMT"
+          "Tue, 13 Jun 2023 08:49:51 GMT"
         ]
       },
-      "ResponseBody": "{\r\n  \"type\": \"Microsoft.Batch/batchAccounts/applications/versions\",\r\n  \"id\": \"/subscriptions/67e11b19-95f8-4d96-a472-5f626c5445ec/resourceGroups/mikeazure/providers/Microsoft.Batch/batchAccounts/mikebatcheast/applications/createPoolWithApplicationPackage/versions/foo\",\r\n  \"name\": \"foo\",\r\n  \"etag\": \"W/\\\"0x8DAD48A2C938179\\\"\",\r\n  \"properties\": {\r\n    \"storageUrl\": \"https://mikeazurestorage.blob.core.windows.net/app-createpoolwithapplicationp-091017b2a02a4c809156cdde162176bf/foo?sv=2018-03-28&sr=b&sig=dWV3rXoeQNExWGDCZ%2BfEX%2B7HdqwR9NEFv2TRBLorwC8%3D&st=2022-12-02T17%3A20%3A14Z&se=2022-12-02T21%3A25%3A14Z&sp=rw\",\r\n    \"storageUrlExpiry\": \"2022-12-02T21:25:14.4867733Z\",\r\n    \"state\": \"Pending\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"type\": \"Microsoft.Batch/batchAccounts/applications/versions\",\r\n  \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/123/providers/Microsoft.Batch/batchAccounts/hoppeeastasia2/applications/createPoolWithApplicationPackage/versions/foo\",\r\n  \"name\": \"foo\",\r\n  \"etag\": \"W/\\\"0x8DB6BEB269362FD\\\"\",\r\n  \"properties\": {\r\n    \"storageUrl\": \"https://hoppeeastasia123.blob.core.windows.net/app-createpoolwithapplicationp-d9569256590040fa8b7d0b2466ec46ff/foo?sv=2019-07-07&sr=b&sig=JfTUQ3bdHN4nGS4uST%2FDCHyTfDmKvUDJ5z7G2oCGp8Y%3D&skoid=91248766-5d90-412c-a3a7-792c4ef92a2e&sktid=72f988bf-86f1-41af-91ab-2d7cd011db47&skt=2023-06-13T08%3A44%3A51Z&ske=2023-06-13T12%3A49%3A51Z&sks=b&skv=2019-07-07&st=2023-06-13T08%3A44%3A51Z&se=2023-06-13T12%3A49%3A51Z&sp=rw\",\r\n    \"storageUrlExpiry\": \"2023-06-13T12:49:51.2104199Z\",\r\n    \"state\": \"Pending\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/67e11b19-95f8-4d96-a472-5f626c5445ec/resourceGroups/mikeazure/providers/Microsoft.Batch/batchAccounts/mikebatcheast/applications/createPoolWithApplicationPackage/versions/foo/activate?api-version=2022-10-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjdlMTFiMTktOTVmOC00ZDk2LWE0NzItNWY2MjZjNTQ0NWVjL3Jlc291cmNlR3JvdXBzL21pa2VhenVyZS9wcm92aWRlcnMvTWljcm9zb2Z0LkJhdGNoL2JhdGNoQWNjb3VudHMvbWlrZWJhdGNoZWFzdC9hcHBsaWNhdGlvbnMvY3JlYXRlUG9vbFdpdGhBcHBsaWNhdGlvblBhY2thZ2UvdmVyc2lvbnMvZm9vL2FjdGl2YXRlP2FwaS12ZXJzaW9uPTIwMjItMTAtMDE=",
+      "RequestUri": "/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/123/providers/Microsoft.Batch/batchAccounts/hoppeeastasia2/applications/createPoolWithApplicationPackage/versions/foo/activate?api-version=2022-10-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjFhYmQ2NzgtMThjNS00NjYwLTlmZGQtOGM1YmE2YjZmZTFmL3Jlc291cmNlR3JvdXBzLzEyMy9wcm92aWRlcnMvTWljcm9zb2Z0LkJhdGNoL2JhdGNoQWNjb3VudHMvaG9wcGVlYXN0YXNpYTIvYXBwbGljYXRpb25zL2NyZWF0ZVBvb2xXaXRoQXBwbGljYXRpb25QYWNrYWdlL3ZlcnNpb25zL2Zvby9hY3RpdmF0ZT9hcGktdmVyc2lvbj0yMDIyLTEwLTAx",
       "RequestMethod": "POST",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "15c693cb-f374-4502-9230-be2a30fa77ba"
+          "c954440d-a53f-4eef-bfbd-b03fd70b38f9"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.700.22.51102",
+          "FxVersion/4.700.22.55902",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19045",
+          "OSVersion/Microsoft.Windows.10.0.22621",
           "Microsoft.Azure.Management.Batch.BatchManagementClient/14.2.0.0"
         ],
         "Content-Type": [
@@ -102,13 +102,13 @@
           "no-cache"
         ],
         "ETag": [
-          "W/\"0x8DAD48A2D675443\""
+          "W/\"0x8DB6BEB28247706\""
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
           "1199"
         ],
         "x-ms-request-id": [
-          "0910aa72-2044-4d38-a67a-5cd6cb10046a"
+          "96acf17b-1b9c-4d34-b95a-dc3c8f586a85"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -120,16 +120,16 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-correlation-request-id": [
-          "238d5112-cda2-4e90-8432-bda27ebcbdc9"
+          "62f2f3c0-595f-4240-bc6f-7836688c0f18"
         ],
         "x-ms-routing-request-id": [
-          "NORTHCENTRALUS:20221202T172515Z:238d5112-cda2-4e90-8432-bda27ebcbdc9"
+          "SOUTHEASTASIA:20230613T084953Z:62f2f3c0-595f-4240-bc6f-7836688c0f18"
         ],
         "Date": [
-          "Fri, 02 Dec 2022 17:25:15 GMT"
+          "Tue, 13 Jun 2023 08:49:53 GMT"
         ],
         "Content-Length": [
-          "720"
+          "874"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -138,27 +138,27 @@
           "-1"
         ],
         "Last-Modified": [
-          "Fri, 02 Dec 2022 17:25:15 GMT"
+          "Tue, 13 Jun 2023 08:49:53 GMT"
         ]
       },
-      "ResponseBody": "{\r\n  \"type\": \"Microsoft.Batch/batchAccounts/applications/versions\",\r\n  \"id\": \"/subscriptions/67e11b19-95f8-4d96-a472-5f626c5445ec/resourceGroups/mikeazure/providers/Microsoft.Batch/batchAccounts/mikebatcheast/applications/createPoolWithApplicationPackage/versions/foo\",\r\n  \"name\": \"foo\",\r\n  \"etag\": \"W/\\\"0x8DAD48A2D675443\\\"\",\r\n  \"properties\": {\r\n    \"storageUrl\": \"https://mikeazurestorage.blob.core.windows.net/app-createpoolwithapplicationp-091017b2a02a4c809156cdde162176bf/foo?sv=2018-03-28&sr=b&sig=mV%2BOdpAcn1b0x1VtiIjI7ODJfLY64ihi9sBIEFP%2FUNI%3D&st=2022-12-02T17%3A20%3A15Z&se=2022-12-02T21%3A25%3A15Z&sp=rw\",\r\n    \"storageUrlExpiry\": \"2022-12-02T21:25:15.8936871Z\",\r\n    \"state\": \"Active\",\r\n    \"format\": \"zip\",\r\n    \"lastActivationTime\": \"2022-12-02T17:25:15.8435189Z\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"type\": \"Microsoft.Batch/batchAccounts/applications/versions\",\r\n  \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/123/providers/Microsoft.Batch/batchAccounts/hoppeeastasia2/applications/createPoolWithApplicationPackage/versions/foo\",\r\n  \"name\": \"foo\",\r\n  \"etag\": \"W/\\\"0x8DB6BEB28247706\\\"\",\r\n  \"properties\": {\r\n    \"storageUrl\": \"https://hoppeeastasia123.blob.core.windows.net/app-createpoolwithapplicationp-d9569256590040fa8b7d0b2466ec46ff/foo?sv=2019-07-07&sr=b&sig=Q0Lg7WymSehjFW9GI7AfR6JUnl5jjuUHbkvmbjcYKio%3D&skoid=91248766-5d90-412c-a3a7-792c4ef92a2e&sktid=72f988bf-86f1-41af-91ab-2d7cd011db47&skt=2023-06-13T08%3A44%3A53Z&ske=2023-06-13T12%3A49%3A53Z&sks=b&skv=2019-07-07&st=2023-06-13T08%3A44%3A53Z&se=2023-06-13T12%3A49%3A53Z&sp=rw\",\r\n    \"storageUrlExpiry\": \"2023-06-13T12:49:53.84892Z\",\r\n    \"state\": \"Active\",\r\n    \"format\": \"zip\",\r\n    \"lastActivationTime\": \"2023-06-13T08:49:53.7970717Z\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/67e11b19-95f8-4d96-a472-5f626c5445ec/resourceGroups/mikeazure/providers/Microsoft.Batch/batchAccounts/mikebatcheast/applications/createPoolWithApplicationPackage/versions/foo?api-version=2022-10-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjdlMTFiMTktOTVmOC00ZDk2LWE0NzItNWY2MjZjNTQ0NWVjL3Jlc291cmNlR3JvdXBzL21pa2VhenVyZS9wcm92aWRlcnMvTWljcm9zb2Z0LkJhdGNoL2JhdGNoQWNjb3VudHMvbWlrZWJhdGNoZWFzdC9hcHBsaWNhdGlvbnMvY3JlYXRlUG9vbFdpdGhBcHBsaWNhdGlvblBhY2thZ2UvdmVyc2lvbnMvZm9vP2FwaS12ZXJzaW9uPTIwMjItMTAtMDE=",
+      "RequestUri": "/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/123/providers/Microsoft.Batch/batchAccounts/hoppeeastasia2/applications/createPoolWithApplicationPackage/versions/foo?api-version=2022-10-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjFhYmQ2NzgtMThjNS00NjYwLTlmZGQtOGM1YmE2YjZmZTFmL3Jlc291cmNlR3JvdXBzLzEyMy9wcm92aWRlcnMvTWljcm9zb2Z0LkJhdGNoL2JhdGNoQWNjb3VudHMvaG9wcGVlYXN0YXNpYTIvYXBwbGljYXRpb25zL2NyZWF0ZVBvb2xXaXRoQXBwbGljYXRpb25QYWNrYWdlL3ZlcnNpb25zL2Zvbz9hcGktdmVyc2lvbj0yMDIyLTEwLTAx",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "15c693cb-f374-4502-9230-be2a30fa77ba"
+          "c954440d-a53f-4eef-bfbd-b03fd70b38f9"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.700.22.51102",
+          "FxVersion/4.700.22.55902",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19045",
+          "OSVersion/Microsoft.Windows.10.0.22621",
           "Microsoft.Azure.Management.Batch.BatchManagementClient/14.2.0.0"
         ]
       },
@@ -171,13 +171,13 @@
           "no-cache"
         ],
         "ETag": [
-          "W/\"0x8DAD48A2D675443\""
+          "W/\"0x8DB6BEB28247706\""
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
           "11999"
         ],
         "x-ms-request-id": [
-          "da15b2aa-10ee-482a-a383-cdb055091063"
+          "712f6bff-9d5c-4536-9962-468a27ecd9db"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -189,16 +189,16 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-correlation-request-id": [
-          "a29148f2-27a1-4e58-8f25-7ab389428857"
+          "c8e9dac8-b38e-41f5-8cc6-8c7a4c8311f3"
         ],
         "x-ms-routing-request-id": [
-          "NORTHCENTRALUS:20221202T172516Z:a29148f2-27a1-4e58-8f25-7ab389428857"
+          "SOUTHEASTASIA:20230613T084954Z:c8e9dac8-b38e-41f5-8cc6-8c7a4c8311f3"
         ],
         "Date": [
-          "Fri, 02 Dec 2022 17:25:15 GMT"
+          "Tue, 13 Jun 2023 08:49:53 GMT"
         ],
         "Content-Length": [
-          "719"
+          "876"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -207,10 +207,10 @@
           "-1"
         ],
         "Last-Modified": [
-          "Fri, 02 Dec 2022 17:25:15 GMT"
+          "Tue, 13 Jun 2023 08:49:53 GMT"
         ]
       },
-      "ResponseBody": "{\r\n  \"type\": \"Microsoft.Batch/batchAccounts/applications/versions\",\r\n  \"id\": \"/subscriptions/67e11b19-95f8-4d96-a472-5f626c5445ec/resourceGroups/mikeazure/providers/Microsoft.Batch/batchAccounts/mikebatcheast/applications/createPoolWithApplicationPackage/versions/foo\",\r\n  \"name\": \"foo\",\r\n  \"etag\": \"W/\\\"0x8DAD48A2D675443\\\"\",\r\n  \"properties\": {\r\n    \"storageUrl\": \"https://mikeazurestorage.blob.core.windows.net/app-createpoolwithapplicationp-091017b2a02a4c809156cdde162176bf/foo?sv=2018-03-28&sr=b&sig=ApUYQJ%2BTXRXxZxvDE25pu809s62gllYPylyen%2F5zl9E%3D&st=2022-12-02T17%3A20%3A16Z&se=2022-12-02T21%3A25%3A16Z&sp=rw\",\r\n    \"storageUrlExpiry\": \"2022-12-02T21:25:16.086794Z\",\r\n    \"state\": \"Active\",\r\n    \"format\": \"zip\",\r\n    \"lastActivationTime\": \"2022-12-02T17:25:15.8435189Z\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"type\": \"Microsoft.Batch/batchAccounts/applications/versions\",\r\n  \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/123/providers/Microsoft.Batch/batchAccounts/hoppeeastasia2/applications/createPoolWithApplicationPackage/versions/foo\",\r\n  \"name\": \"foo\",\r\n  \"etag\": \"W/\\\"0x8DB6BEB28247706\\\"\",\r\n  \"properties\": {\r\n    \"storageUrl\": \"https://hoppeeastasia123.blob.core.windows.net/app-createpoolwithapplicationp-d9569256590040fa8b7d0b2466ec46ff/foo?sv=2019-07-07&sr=b&sig=a1yqjL0pU5duqqrDGtuYMnfPbCFRXN6KLQYP7OICiGs%3D&skoid=91248766-5d90-412c-a3a7-792c4ef92a2e&sktid=72f988bf-86f1-41af-91ab-2d7cd011db47&skt=2023-06-13T08%3A44%3A54Z&ske=2023-06-13T12%3A49%3A54Z&sks=b&skv=2019-07-07&st=2023-06-13T08%3A44%3A54Z&se=2023-06-13T12%3A49%3A54Z&sp=rw\",\r\n    \"storageUrlExpiry\": \"2023-06-13T12:49:54.2105786Z\",\r\n    \"state\": \"Active\",\r\n    \"format\": \"zip\",\r\n    \"lastActivationTime\": \"2023-06-13T08:49:53.7970717Z\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -219,21 +219,21 @@
       "RequestMethod": "POST",
       "RequestHeaders": {
         "client-request-id": [
-          "b3d68acf-86dc-4edc-8ec4-edca92aad8fc"
+          "5b3157c0-d4db-4557-a4d2-9c4501797771"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "ocp-date": [
-          "Fri, 02 Dec 2022 17:25:16 GMT"
+          "Tue, 13 Jun 2023 08:49:53 GMT"
         ],
         "x-ms-client-request-id": [
-          "fbf3076c-9fe0-475a-8153-abfad33fe296"
+          "b96b30c9-a43c-4e69-b5a5-ec2d8cf58484"
         ],
         "User-Agent": [
-          "FxVersion/4.700.22.51102",
+          "FxVersion/4.700.22.55902",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19045",
+          "OSVersion/Microsoft.Windows.10.0.22621",
           "Microsoft.Azure.Batch.Protocol.BatchServiceClient/15.400.22.55103",
           "AzurePowershell/Az1.0.0"
         ],
@@ -250,16 +250,16 @@
           "chunked"
         ],
         "ETag": [
-          "0x8DAD48A2DB3672A"
+          "0x8DB6BEB28B2203C"
         ],
         "Location": [
-          "https://mikebatcheast.eastus.batch.azure.com/pools/testCreatePoolWithAppPackages"
+          "https://hoppeeastasia2.eastasia.batch.azure.com/pools/testCreatePoolWithAppPackages"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "3c32e690-16a7-4a32-b044-a900f42adb41"
+          "bf42bfab-acf9-4386-a434-17bc0fe6ab38"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -271,33 +271,33 @@
           "3.0"
         ],
         "DataServiceId": [
-          "https://mikebatcheast.eastus.batch.azure.com/pools/testCreatePoolWithAppPackages"
+          "https://hoppeeastasia2.eastasia.batch.azure.com/pools/testCreatePoolWithAppPackages"
         ],
         "Date": [
-          "Fri, 02 Dec 2022 17:25:16 GMT"
+          "Tue, 13 Jun 2023 08:49:54 GMT"
         ],
         "Last-Modified": [
-          "Fri, 02 Dec 2022 17:25:16 GMT"
+          "Tue, 13 Jun 2023 08:49:54 GMT"
         ]
       },
       "ResponseBody": "",
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/67e11b19-95f8-4d96-a472-5f626c5445ec/resourceGroups/mikeazure/providers/Microsoft.Batch/batchAccounts/mikebatcheast/applications/createPoolWithApplicationPackage/versions/foo?api-version=2022-10-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjdlMTFiMTktOTVmOC00ZDk2LWE0NzItNWY2MjZjNTQ0NWVjL3Jlc291cmNlR3JvdXBzL21pa2VhenVyZS9wcm92aWRlcnMvTWljcm9zb2Z0LkJhdGNoL2JhdGNoQWNjb3VudHMvbWlrZWJhdGNoZWFzdC9hcHBsaWNhdGlvbnMvY3JlYXRlUG9vbFdpdGhBcHBsaWNhdGlvblBhY2thZ2UvdmVyc2lvbnMvZm9vP2FwaS12ZXJzaW9uPTIwMjItMTAtMDE=",
+      "RequestUri": "/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/123/providers/Microsoft.Batch/batchAccounts/hoppeeastasia2/applications/createPoolWithApplicationPackage/versions/foo?api-version=2022-10-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjFhYmQ2NzgtMThjNS00NjYwLTlmZGQtOGM1YmE2YjZmZTFmL3Jlc291cmNlR3JvdXBzLzEyMy9wcm92aWRlcnMvTWljcm9zb2Z0LkJhdGNoL2JhdGNoQWNjb3VudHMvaG9wcGVlYXN0YXNpYTIvYXBwbGljYXRpb25zL2NyZWF0ZVBvb2xXaXRoQXBwbGljYXRpb25QYWNrYWdlL3ZlcnNpb25zL2Zvbz9hcGktdmVyc2lvbj0yMDIyLTEwLTAx",
       "RequestMethod": "DELETE",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "43896ed8-0a24-4d71-ba12-a4d8e0eed4f1"
+          "0934a9e5-cc64-4bff-8e2f-e5361362f5a2"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.700.22.51102",
+          "FxVersion/4.700.22.55902",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19045",
+          "OSVersion/Microsoft.Windows.10.0.22621",
           "Microsoft.Azure.Management.Batch.BatchManagementClient/14.2.0.0"
         ]
       },
@@ -310,7 +310,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "5bfb5b10-56a2-4bc7-b49e-063af3de6620"
+          "c4add593-e683-4d78-b559-fb6b21d6262d"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -325,13 +325,13 @@
           "14999"
         ],
         "x-ms-correlation-request-id": [
-          "a043f05e-5c14-426e-9558-3746af466b8f"
+          "e71cba4a-25dc-4f2c-8dad-c404479d57ea"
         ],
         "x-ms-routing-request-id": [
-          "NORTHCENTRALUS:20221202T172516Z:a043f05e-5c14-426e-9558-3746af466b8f"
+          "SOUTHEASTASIA:20230613T084955Z:e71cba4a-25dc-4f2c-8dad-c404479d57ea"
         ],
         "Date": [
-          "Fri, 02 Dec 2022 17:25:16 GMT"
+          "Tue, 13 Jun 2023 08:49:54 GMT"
         ],
         "Expires": [
           "-1"
@@ -344,20 +344,20 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/67e11b19-95f8-4d96-a472-5f626c5445ec/resourceGroups/mikeazure/providers/Microsoft.Batch/batchAccounts/mikebatcheast/applications/createPoolWithApplicationPackage?api-version=2022-10-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjdlMTFiMTktOTVmOC00ZDk2LWE0NzItNWY2MjZjNTQ0NWVjL3Jlc291cmNlR3JvdXBzL21pa2VhenVyZS9wcm92aWRlcnMvTWljcm9zb2Z0LkJhdGNoL2JhdGNoQWNjb3VudHMvbWlrZWJhdGNoZWFzdC9hcHBsaWNhdGlvbnMvY3JlYXRlUG9vbFdpdGhBcHBsaWNhdGlvblBhY2thZ2U/YXBpLXZlcnNpb249MjAyMi0xMC0wMQ==",
+      "RequestUri": "/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/123/providers/Microsoft.Batch/batchAccounts/hoppeeastasia2/applications/createPoolWithApplicationPackage?api-version=2022-10-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjFhYmQ2NzgtMThjNS00NjYwLTlmZGQtOGM1YmE2YjZmZTFmL3Jlc291cmNlR3JvdXBzLzEyMy9wcm92aWRlcnMvTWljcm9zb2Z0LkJhdGNoL2JhdGNoQWNjb3VudHMvaG9wcGVlYXN0YXNpYTIvYXBwbGljYXRpb25zL2NyZWF0ZVBvb2xXaXRoQXBwbGljYXRpb25QYWNrYWdlP2FwaS12ZXJzaW9uPTIwMjItMTAtMDE=",
       "RequestMethod": "DELETE",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "cbdff818-c74f-4cd5-9e7e-f919935931e1"
+          "f93903d7-0bc8-42e0-89cc-313274849db9"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.700.22.51102",
+          "FxVersion/4.700.22.55902",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19045",
+          "OSVersion/Microsoft.Windows.10.0.22621",
           "Microsoft.Azure.Management.Batch.BatchManagementClient/14.2.0.0"
         ]
       },
@@ -370,7 +370,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "2d09a364-9210-4014-affd-83ecc7642d1e"
+          "f7a2576d-8719-49f3-a3ff-4b7d490add34"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -385,13 +385,13 @@
           "14998"
         ],
         "x-ms-correlation-request-id": [
-          "8d6d6d48-0800-4fad-92dc-42c047a74b27"
+          "51109870-7191-4942-a818-591a3fd0ec9f"
         ],
         "x-ms-routing-request-id": [
-          "NORTHCENTRALUS:20221202T172516Z:8d6d6d48-0800-4fad-92dc-42c047a74b27"
+          "SOUTHEASTASIA:20230613T084955Z:51109870-7191-4942-a818-591a3fd0ec9f"
         ],
         "Date": [
-          "Fri, 02 Dec 2022 17:25:16 GMT"
+          "Tue, 13 Jun 2023 08:49:55 GMT"
         ],
         "Expires": [
           "-1"
@@ -409,21 +409,21 @@
       "RequestMethod": "DELETE",
       "RequestHeaders": {
         "client-request-id": [
-          "d22f7aa4-a034-41a8-aed3-18018b6a7244"
+          "f684bc00-248d-4564-8541-90191d7fd332"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "ocp-date": [
-          "Fri, 02 Dec 2022 17:25:17 GMT"
+          "Tue, 13 Jun 2023 08:49:55 GMT"
         ],
         "x-ms-client-request-id": [
-          "f7b42b2a-0494-4f8f-83e1-2b7b0c6e9e10"
+          "9c92d34f-e82a-45d9-9c8b-e65a23b6f597"
         ],
         "User-Agent": [
-          "FxVersion/4.700.22.51102",
+          "FxVersion/4.700.22.55902",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19045",
+          "OSVersion/Microsoft.Windows.10.0.22621",
           "Microsoft.Azure.Batch.Protocol.BatchServiceClient/15.400.22.55103",
           "AzurePowershell/Az1.0.0"
         ],
@@ -440,7 +440,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "62b6859e-d3c5-45f3-ae21-44e67f95eab7"
+          "f3883d53-0fdd-423d-98ac-4ecdcd7ae2a5"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -452,7 +452,7 @@
           "3.0"
         ],
         "Date": [
-          "Fri, 02 Dec 2022 17:25:17 GMT"
+          "Tue, 13 Jun 2023 08:49:56 GMT"
         ]
       },
       "ResponseBody": "",
@@ -461,9 +461,9 @@
   ],
   "Names": {},
   "Variables": {
-    "SubscriptionId": "67e11b19-95f8-4d96-a472-5f626c5445ec",
-    "AZURE_BATCH_ACCOUNT": "mikebatcheast",
-    "AZURE_BATCH_ENDPOINT": "https://mikebatcheast.eastus.batch.azure.com",
-    "AZURE_BATCH_RESOURCE_GROUP": "mikeazure"
+    "SubscriptionId": "21abd678-18c5-4660-9fdd-8c5ba6b6fe1f",
+    "AZURE_BATCH_ACCOUNT": "hoppeeastasia2",
+    "AZURE_BATCH_ENDPOINT": "https://hoppeeastasia2.eastasia.batch.azure.com",
+    "AZURE_BATCH_RESOURCE_GROUP": "123"
   }
 }

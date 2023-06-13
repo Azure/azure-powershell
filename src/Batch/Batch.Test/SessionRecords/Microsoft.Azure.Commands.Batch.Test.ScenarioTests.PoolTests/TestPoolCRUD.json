@@ -6,21 +6,21 @@
       "RequestMethod": "POST",
       "RequestHeaders": {
         "client-request-id": [
-          "d7e9177f-e491-4aa7-9b4c-eb39e981415a"
+          "38b07dca-924a-46ec-95ea-7dab269e32ee"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "ocp-date": [
-          "Thu, 08 Dec 2022 19:40:43 GMT"
+          "Tue, 13 Jun 2023 08:54:20 GMT"
         ],
         "x-ms-client-request-id": [
-          "16622c4f-0cc2-4410-9084-593b8294633d"
+          "4d23b41e-715d-4595-b10e-3e9d7b25b0f3"
         ],
         "User-Agent": [
-          "FxVersion/4.700.22.51102",
+          "FxVersion/4.700.22.55902",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19045",
+          "OSVersion/Microsoft.Windows.10.0.22621",
           "Microsoft.Azure.Batch.Protocol.BatchServiceClient/15.400.22.55103",
           "AzurePowershell/Az1.0.0"
         ],
@@ -37,16 +37,16 @@
           "chunked"
         ],
         "ETag": [
-          "0x8DAD954183E439A"
+          "0x8DB6BEBC7C370ED"
         ],
         "Location": [
-          "https://mikebatcheast.eastus.batch.azure.com/pools/pool1"
+          "https://hoppeeastasia2.eastasia.batch.azure.com/pools/pool1"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "44fa57ad-15c9-4700-96bb-a5892be9dafa"
+          "29959d9a-bb9c-45cc-a586-52694d1ecb57"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -58,13 +58,13 @@
           "3.0"
         ],
         "DataServiceId": [
-          "https://mikebatcheast.eastus.batch.azure.com/pools/pool1"
+          "https://hoppeeastasia2.eastasia.batch.azure.com/pools/pool1"
         ],
         "Date": [
-          "Thu, 08 Dec 2022 19:40:42 GMT"
+          "Tue, 13 Jun 2023 08:54:21 GMT"
         ],
         "Last-Modified": [
-          "Thu, 08 Dec 2022 19:40:43 GMT"
+          "Tue, 13 Jun 2023 08:54:21 GMT"
         ]
       },
       "ResponseBody": "",
@@ -76,21 +76,21 @@
       "RequestMethod": "POST",
       "RequestHeaders": {
         "client-request-id": [
-          "c2a9b20a-9298-4e16-83f0-6cd9cd34cdef"
+          "df2fad5f-3c16-4f75-aa7a-5a71b2408762"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "ocp-date": [
-          "Thu, 08 Dec 2022 19:40:44 GMT"
+          "Tue, 13 Jun 2023 08:54:21 GMT"
         ],
         "x-ms-client-request-id": [
-          "2f630f5f-f480-45ea-8496-06046800ac80"
+          "7a16fd39-f8db-4e46-bd8b-c218d710e5a6"
         ],
         "User-Agent": [
-          "FxVersion/4.700.22.51102",
+          "FxVersion/4.700.22.55902",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19045",
+          "OSVersion/Microsoft.Windows.10.0.22621",
           "Microsoft.Azure.Batch.Protocol.BatchServiceClient/15.400.22.55103",
           "AzurePowershell/Az1.0.0"
         ],
@@ -107,16 +107,16 @@
           "chunked"
         ],
         "ETag": [
-          "0x8DAD95418700233"
+          "0x8DB6BEBC7FE5754"
         ],
         "Location": [
-          "https://mikebatcheast.eastus.batch.azure.com/pools/pool2"
+          "https://hoppeeastasia2.eastasia.batch.azure.com/pools/pool2"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "42b76bc8-4845-4518-a436-e044b3683d10"
+          "17b7e5d0-aee9-4955-9826-f93455d38277"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -128,13 +128,13 @@
           "3.0"
         ],
         "DataServiceId": [
-          "https://mikebatcheast.eastus.batch.azure.com/pools/pool2"
+          "https://hoppeeastasia2.eastasia.batch.azure.com/pools/pool2"
         ],
         "Date": [
-          "Thu, 08 Dec 2022 19:40:42 GMT"
+          "Tue, 13 Jun 2023 08:54:21 GMT"
         ],
         "Last-Modified": [
-          "Thu, 08 Dec 2022 19:40:43 GMT"
+          "Tue, 13 Jun 2023 08:54:21 GMT"
         ]
       },
       "ResponseBody": "",
@@ -146,21 +146,21 @@
       "RequestMethod": "GET",
       "RequestHeaders": {
         "client-request-id": [
-          "5ae10676-be90-49e1-9485-1f44b826807d"
+          "a1dfbe3e-3a9a-4e3d-befb-b676d4e87351"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "ocp-date": [
-          "Thu, 08 Dec 2022 19:40:44 GMT"
+          "Tue, 13 Jun 2023 08:54:21 GMT"
         ],
         "x-ms-client-request-id": [
-          "be7d8208-d6ef-4b2c-9faa-d1227097b0b5"
+          "9e23c404-15b6-4b4b-8ee4-b9dc8e129a2c"
         ],
         "User-Agent": [
-          "FxVersion/4.700.22.51102",
+          "FxVersion/4.700.22.55902",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19045",
+          "OSVersion/Microsoft.Windows.10.0.22621",
           "Microsoft.Azure.Batch.Protocol.BatchServiceClient/15.400.22.55103",
           "AzurePowershell/Az1.0.0"
         ]
@@ -174,7 +174,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "6b535222-fbb6-47ae-893f-d3b4b49e1c26"
+          "9666413c-b7f2-4fc1-b95a-c168ea858fe2"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -186,13 +186,13 @@
           "3.0"
         ],
         "Date": [
-          "Thu, 08 Dec 2022 19:40:42 GMT"
+          "Tue, 13 Jun 2023 08:54:21 GMT"
         ],
         "Content-Type": [
           "application/json; odata=minimalmetadata"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://mikebatcheast.eastus.batch.azure.com/$metadata#pools\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"pool1\",\r\n      \"url\": \"https://mikebatcheast.eastus.batch.azure.com/pools/pool1\",\r\n      \"eTag\": \"0x8DAD954183E439A\",\r\n      \"lastModified\": \"2022-12-08T19:40:43.3560474Z\",\r\n      \"creationTime\": \"2022-12-08T19:40:43.3560474Z\",\r\n      \"state\": \"active\",\r\n      \"stateTransitionTime\": \"2022-12-08T19:40:43.3560474Z\",\r\n      \"allocationState\": \"resizing\",\r\n      \"allocationStateTransitionTime\": \"2022-12-08T19:40:43.3560474Z\",\r\n      \"vmSize\": \"small\",\r\n      \"resizeTimeout\": \"PT15M\",\r\n      \"currentDedicatedNodes\": 0,\r\n      \"targetDedicatedNodes\": 0,\r\n      \"currentLowPriorityNodes\": 0,\r\n      \"targetLowPriorityNodes\": 0,\r\n      \"enableAutoScale\": false,\r\n      \"enableInterNodeCommunication\": false,\r\n      \"taskSlotsPerNode\": 1,\r\n      \"taskSchedulingPolicy\": {\r\n        \"nodeFillType\": \"Spread\"\r\n      },\r\n      \"cloudServiceConfiguration\": {\r\n        \"osFamily\": \"4\",\r\n        \"osVersion\": \"*\"\r\n      },\r\n      \"targetNodeCommunicationMode\": \"default\"\r\n    },\r\n    {\r\n      \"id\": \"pool2\",\r\n      \"url\": \"https://mikebatcheast.eastus.batch.azure.com/pools/pool2\",\r\n      \"eTag\": \"0x8DAD95418700233\",\r\n      \"lastModified\": \"2022-12-08T19:40:43.6820531Z\",\r\n      \"creationTime\": \"2022-12-08T19:40:43.6820531Z\",\r\n      \"state\": \"active\",\r\n      \"stateTransitionTime\": \"2022-12-08T19:40:43.6820531Z\",\r\n      \"allocationState\": \"resizing\",\r\n      \"allocationStateTransitionTime\": \"2022-12-08T19:40:43.6820531Z\",\r\n      \"vmSize\": \"standard_d1_v2\",\r\n      \"resizeTimeout\": \"PT15M\",\r\n      \"currentDedicatedNodes\": 0,\r\n      \"targetDedicatedNodes\": 0,\r\n      \"currentLowPriorityNodes\": 0,\r\n      \"targetLowPriorityNodes\": 0,\r\n      \"enableAutoScale\": false,\r\n      \"enableInterNodeCommunication\": false,\r\n      \"taskSlotsPerNode\": 1,\r\n      \"taskSchedulingPolicy\": {\r\n        \"nodeFillType\": \"Spread\"\r\n      },\r\n      \"virtualMachineConfiguration\": {\r\n        \"imageReference\": {\r\n          \"publisher\": \"microsoft-azure-batch\",\r\n          \"offer\": \"ubuntu-server-container\",\r\n          \"sku\": \"20-04-lts\",\r\n          \"version\": \"latest\"\r\n        },\r\n        \"nodeAgentSKUId\": \"batch.node.ubuntu 20.04\",\r\n        \"containerConfiguration\": {\r\n          \"type\": \"dockerCompatible\",\r\n          \"containerImageNames\": [\r\n            \"test\"\r\n          ]\r\n        }\r\n      },\r\n      \"targetNodeCommunicationMode\": \"default\"\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://hoppeeastasia2.eastasia.batch.azure.com/$metadata#pools\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"pool1\",\r\n      \"url\": \"https://hoppeeastasia2.eastasia.batch.azure.com/pools/pool1\",\r\n      \"eTag\": \"0x8DB6BEBC7C370ED\",\r\n      \"lastModified\": \"2023-06-13T08:54:21.6018157Z\",\r\n      \"creationTime\": \"2023-06-13T08:54:21.6018157Z\",\r\n      \"state\": \"active\",\r\n      \"stateTransitionTime\": \"2023-06-13T08:54:21.6018157Z\",\r\n      \"allocationState\": \"resizing\",\r\n      \"allocationStateTransitionTime\": \"2023-06-13T08:54:21.6018157Z\",\r\n      \"vmSize\": \"small\",\r\n      \"resizeTimeout\": \"PT15M\",\r\n      \"currentDedicatedNodes\": 0,\r\n      \"targetDedicatedNodes\": 0,\r\n      \"currentLowPriorityNodes\": 0,\r\n      \"targetLowPriorityNodes\": 0,\r\n      \"enableAutoScale\": false,\r\n      \"enableInterNodeCommunication\": false,\r\n      \"taskSlotsPerNode\": 1,\r\n      \"taskSchedulingPolicy\": {\r\n        \"nodeFillType\": \"Spread\"\r\n      },\r\n      \"cloudServiceConfiguration\": {\r\n        \"osFamily\": \"4\",\r\n        \"osVersion\": \"*\"\r\n      },\r\n      \"targetNodeCommunicationMode\": \"default\"\r\n    },\r\n    {\r\n      \"id\": \"pool2\",\r\n      \"url\": \"https://hoppeeastasia2.eastasia.batch.azure.com/pools/pool2\",\r\n      \"eTag\": \"0x8DB6BEBC7FE5754\",\r\n      \"lastModified\": \"2023-06-13T08:54:21.9878228Z\",\r\n      \"creationTime\": \"2023-06-13T08:54:21.9878228Z\",\r\n      \"state\": \"active\",\r\n      \"stateTransitionTime\": \"2023-06-13T08:54:21.9878228Z\",\r\n      \"allocationState\": \"resizing\",\r\n      \"allocationStateTransitionTime\": \"2023-06-13T08:54:21.9878228Z\",\r\n      \"vmSize\": \"standard_d1_v2\",\r\n      \"resizeTimeout\": \"PT15M\",\r\n      \"currentDedicatedNodes\": 0,\r\n      \"targetDedicatedNodes\": 0,\r\n      \"currentLowPriorityNodes\": 0,\r\n      \"targetLowPriorityNodes\": 0,\r\n      \"enableAutoScale\": false,\r\n      \"enableInterNodeCommunication\": false,\r\n      \"taskSlotsPerNode\": 1,\r\n      \"taskSchedulingPolicy\": {\r\n        \"nodeFillType\": \"Spread\"\r\n      },\r\n      \"virtualMachineConfiguration\": {\r\n        \"imageReference\": {\r\n          \"publisher\": \"microsoft-azure-batch\",\r\n          \"offer\": \"ubuntu-server-container\",\r\n          \"sku\": \"20-04-lts\",\r\n          \"version\": \"latest\"\r\n        },\r\n        \"nodeAgentSKUId\": \"batch.node.ubuntu 20.04\",\r\n        \"containerConfiguration\": {\r\n          \"type\": \"dockerCompatible\",\r\n          \"containerImageNames\": [\r\n            \"test\"\r\n          ]\r\n        }\r\n      },\r\n      \"targetNodeCommunicationMode\": \"default\"\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     },
     {
@@ -201,21 +201,21 @@
       "RequestMethod": "POST",
       "RequestHeaders": {
         "client-request-id": [
-          "f289fef8-83ab-4609-adde-2c09bce2bfd7"
+          "c84674c4-f656-4619-aa86-13b054c707bb"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "ocp-date": [
-          "Thu, 08 Dec 2022 19:40:44 GMT"
+          "Tue, 13 Jun 2023 08:54:21 GMT"
         ],
         "x-ms-client-request-id": [
-          "7783f85d-541b-493a-ad9d-57344ff71278"
+          "f72d153b-f9d9-4d32-a1b3-52e0f021fa37"
         ],
         "User-Agent": [
-          "FxVersion/4.700.22.51102",
+          "FxVersion/4.700.22.55902",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19045",
+          "OSVersion/Microsoft.Windows.10.0.22621",
           "Microsoft.Azure.Batch.Protocol.BatchServiceClient/15.400.22.55103",
           "AzurePowershell/Az1.0.0"
         ],
@@ -229,13 +229,13 @@
       "RequestBody": "{\r\n  \"startTask\": {\r\n    \"commandLine\": \"/bin/bash -c 'echo start task'\"\r\n  },\r\n  \"certificateReferences\": [],\r\n  \"applicationPackageReferences\": [],\r\n  \"metadata\": [],\r\n  \"targetNodeCommunicationMode\": \"default\"\r\n}",
       "ResponseHeaders": {
         "ETag": [
-          "0x8DAD9541909AA9C"
+          "0x8DB6BEBC8C5C6AB"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "f8478067-a676-4677-b3ca-2cd574077e7e"
+          "a1170266-06cf-4678-a1c8-cd769728e935"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -247,16 +247,16 @@
           "3.0"
         ],
         "DataServiceId": [
-          "https://mikebatcheast.eastus.batch.azure.com/pools/pool2/updateproperties"
+          "https://hoppeeastasia2.eastasia.batch.azure.com/pools/pool2/updateproperties"
         ],
         "Date": [
-          "Thu, 08 Dec 2022 19:40:43 GMT"
+          "Tue, 13 Jun 2023 08:54:22 GMT"
         ],
         "Content-Length": [
           "0"
         ],
         "Last-Modified": [
-          "Thu, 08 Dec 2022 19:40:44 GMT"
+          "Tue, 13 Jun 2023 08:54:23 GMT"
         ]
       },
       "ResponseBody": "",
@@ -268,21 +268,21 @@
       "RequestMethod": "GET",
       "RequestHeaders": {
         "client-request-id": [
-          "c59e0697-4cde-401d-b85f-59136165bb88"
+          "60e741c2-3d26-467d-82d6-bc22aa9b5cd2"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "ocp-date": [
-          "Thu, 08 Dec 2022 19:40:45 GMT"
+          "Tue, 13 Jun 2023 08:54:22 GMT"
         ],
         "x-ms-client-request-id": [
-          "0bfeaa7f-84c9-4f03-8d99-8284cf50f5ae"
+          "d92fdeea-12b8-4b44-9940-e8b69db588b8"
         ],
         "User-Agent": [
-          "FxVersion/4.700.22.51102",
+          "FxVersion/4.700.22.55902",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19045",
+          "OSVersion/Microsoft.Windows.10.0.22621",
           "Microsoft.Azure.Batch.Protocol.BatchServiceClient/15.400.22.55103",
           "AzurePowershell/Az1.0.0"
         ]
@@ -293,13 +293,13 @@
           "chunked"
         ],
         "ETag": [
-          "0x8DAD9541909AA9C"
+          "0x8DB6BEBC8C5C6AB"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "8f1fbb54-ab28-40f1-87e8-dd481eb68dcb"
+          "e6873845-5775-4a43-b5ed-349e77e047e8"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -311,16 +311,16 @@
           "3.0"
         ],
         "Date": [
-          "Thu, 08 Dec 2022 19:40:43 GMT"
+          "Tue, 13 Jun 2023 08:54:22 GMT"
         ],
         "Content-Type": [
           "application/json; odata=minimalmetadata"
         ],
         "Last-Modified": [
-          "Thu, 08 Dec 2022 19:40:44 GMT"
+          "Tue, 13 Jun 2023 08:54:23 GMT"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://mikebatcheast.eastus.batch.azure.com/$metadata#pools/@Element\",\r\n  \"id\": \"pool2\",\r\n  \"url\": \"https://mikebatcheast.eastus.batch.azure.com/pools/pool2\",\r\n  \"eTag\": \"0x8DAD9541909AA9C\",\r\n  \"lastModified\": \"2022-12-08T19:40:44.6890652Z\",\r\n  \"creationTime\": \"2022-12-08T19:40:43.6820531Z\",\r\n  \"state\": \"active\",\r\n  \"stateTransitionTime\": \"2022-12-08T19:40:43.6820531Z\",\r\n  \"allocationState\": \"steady\",\r\n  \"allocationStateTransitionTime\": \"2022-12-08T19:40:44.6620662Z\",\r\n  \"vmSize\": \"standard_d1_v2\",\r\n  \"resizeTimeout\": \"PT15M\",\r\n  \"currentDedicatedNodes\": 0,\r\n  \"targetDedicatedNodes\": 0,\r\n  \"currentLowPriorityNodes\": 0,\r\n  \"targetLowPriorityNodes\": 0,\r\n  \"enableAutoScale\": false,\r\n  \"enableInterNodeCommunication\": false,\r\n  \"startTask\": {\r\n    \"commandLine\": \"/bin/bash -c 'echo start task'\",\r\n    \"userIdentity\": {\r\n      \"autoUser\": {\r\n        \"scope\": \"pool\",\r\n        \"elevationLevel\": \"nonadmin\"\r\n      }\r\n    },\r\n    \"maxTaskRetryCount\": 0,\r\n    \"waitForSuccess\": true\r\n  },\r\n  \"certificateReferences\": [],\r\n  \"taskSlotsPerNode\": 1,\r\n  \"taskSchedulingPolicy\": {\r\n    \"nodeFillType\": \"Spread\"\r\n  },\r\n  \"virtualMachineConfiguration\": {\r\n    \"imageReference\": {\r\n      \"publisher\": \"microsoft-azure-batch\",\r\n      \"offer\": \"ubuntu-server-container\",\r\n      \"sku\": \"20-04-lts\",\r\n      \"version\": \"latest\"\r\n    },\r\n    \"nodeAgentSKUId\": \"batch.node.ubuntu 20.04\",\r\n    \"containerConfiguration\": {\r\n      \"type\": \"dockerCompatible\",\r\n      \"containerImageNames\": [\r\n        \"test\"\r\n      ]\r\n    }\r\n  },\r\n  \"targetNodeCommunicationMode\": \"default\"\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://hoppeeastasia2.eastasia.batch.azure.com/$metadata#pools/@Element\",\r\n  \"id\": \"pool2\",\r\n  \"url\": \"https://hoppeeastasia2.eastasia.batch.azure.com/pools/pool2\",\r\n  \"eTag\": \"0x8DB6BEBC8C5C6AB\",\r\n  \"lastModified\": \"2023-06-13T08:54:23.2948395Z\",\r\n  \"creationTime\": \"2023-06-13T08:54:21.9878228Z\",\r\n  \"state\": \"active\",\r\n  \"stateTransitionTime\": \"2023-06-13T08:54:21.9878228Z\",\r\n  \"allocationState\": \"steady\",\r\n  \"allocationStateTransitionTime\": \"2023-06-13T08:54:23.2718414Z\",\r\n  \"vmSize\": \"standard_d1_v2\",\r\n  \"resizeTimeout\": \"PT15M\",\r\n  \"currentDedicatedNodes\": 0,\r\n  \"targetDedicatedNodes\": 0,\r\n  \"currentLowPriorityNodes\": 0,\r\n  \"targetLowPriorityNodes\": 0,\r\n  \"enableAutoScale\": false,\r\n  \"enableInterNodeCommunication\": false,\r\n  \"startTask\": {\r\n    \"commandLine\": \"/bin/bash -c 'echo start task'\",\r\n    \"userIdentity\": {\r\n      \"autoUser\": {\r\n        \"scope\": \"pool\",\r\n        \"elevationLevel\": \"nonadmin\"\r\n      }\r\n    },\r\n    \"maxTaskRetryCount\": 0,\r\n    \"waitForSuccess\": true\r\n  },\r\n  \"certificateReferences\": [],\r\n  \"taskSlotsPerNode\": 1,\r\n  \"taskSchedulingPolicy\": {\r\n    \"nodeFillType\": \"Spread\"\r\n  },\r\n  \"virtualMachineConfiguration\": {\r\n    \"imageReference\": {\r\n      \"publisher\": \"microsoft-azure-batch\",\r\n      \"offer\": \"ubuntu-server-container\",\r\n      \"sku\": \"20-04-lts\",\r\n      \"version\": \"latest\"\r\n    },\r\n    \"nodeAgentSKUId\": \"batch.node.ubuntu 20.04\",\r\n    \"containerConfiguration\": {\r\n      \"type\": \"dockerCompatible\",\r\n      \"containerImageNames\": [\r\n        \"test\"\r\n      ]\r\n    }\r\n  },\r\n  \"targetNodeCommunicationMode\": \"default\"\r\n}",
       "StatusCode": 200
     },
     {
@@ -329,21 +329,21 @@
       "RequestMethod": "DELETE",
       "RequestHeaders": {
         "client-request-id": [
-          "1dfaf3a1-fd7d-499b-a457-d1844cb6e560"
+          "71079744-f00e-4837-8f90-ccd6685c42a2"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "ocp-date": [
-          "Thu, 08 Dec 2022 19:40:45 GMT"
+          "Tue, 13 Jun 2023 08:54:22 GMT"
         ],
         "x-ms-client-request-id": [
-          "2e68f863-8cc3-4a0c-b33f-4147747c4860"
+          "211bebd0-7ec2-403f-bbde-637328e822c4"
         ],
         "User-Agent": [
-          "FxVersion/4.700.22.51102",
+          "FxVersion/4.700.22.55902",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19045",
+          "OSVersion/Microsoft.Windows.10.0.22621",
           "Microsoft.Azure.Batch.Protocol.BatchServiceClient/15.400.22.55103",
           "AzurePowershell/Az1.0.0"
         ],
@@ -360,7 +360,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "87973287-8ce6-43d0-82a7-ec45c92a0278"
+          "cb035cab-0f0d-47c8-84ba-f5acf4666f45"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -372,7 +372,7 @@
           "3.0"
         ],
         "Date": [
-          "Thu, 08 Dec 2022 19:40:44 GMT"
+          "Tue, 13 Jun 2023 08:54:23 GMT"
         ]
       },
       "ResponseBody": "",
@@ -384,21 +384,21 @@
       "RequestMethod": "DELETE",
       "RequestHeaders": {
         "client-request-id": [
-          "0057b810-ca95-4203-a782-9dde5f0dd7be"
+          "f5dac201-a75c-4ef1-86fa-c26adacd511e"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "ocp-date": [
-          "Thu, 08 Dec 2022 19:40:45 GMT"
+          "Tue, 13 Jun 2023 08:54:22 GMT"
         ],
         "x-ms-client-request-id": [
-          "64bf7a75-68a3-44d7-9049-e75c3b29552b"
+          "23392064-dba2-4455-b359-8a91c8cd1951"
         ],
         "User-Agent": [
-          "FxVersion/4.700.22.51102",
+          "FxVersion/4.700.22.55902",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19045",
+          "OSVersion/Microsoft.Windows.10.0.22621",
           "Microsoft.Azure.Batch.Protocol.BatchServiceClient/15.400.22.55103",
           "AzurePowershell/Az1.0.0"
         ],
@@ -415,7 +415,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "ac70c420-0631-4e92-922a-3d1baa031084"
+          "06ec0c63-c406-475f-9230-33d1deb6d2a1"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -427,7 +427,7 @@
           "3.0"
         ],
         "Date": [
-          "Thu, 08 Dec 2022 19:40:44 GMT"
+          "Tue, 13 Jun 2023 08:54:23 GMT"
         ]
       },
       "ResponseBody": "",
@@ -439,21 +439,21 @@
       "RequestMethod": "GET",
       "RequestHeaders": {
         "client-request-id": [
-          "545c7e22-5673-4efa-aa4b-3288123e8d41"
+          "f4c4378b-8009-4bed-bc95-4aad7b478f29"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "ocp-date": [
-          "Thu, 08 Dec 2022 19:40:45 GMT"
+          "Tue, 13 Jun 2023 08:54:23 GMT"
         ],
         "x-ms-client-request-id": [
-          "5b52b0f6-98e1-43b0-9301-2d3eb57f0c20"
+          "9aec738f-90ad-4581-bef3-64d814073e5c"
         ],
         "User-Agent": [
-          "FxVersion/4.700.22.51102",
+          "FxVersion/4.700.22.55902",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19045",
+          "OSVersion/Microsoft.Windows.10.0.22621",
           "Microsoft.Azure.Batch.Protocol.BatchServiceClient/15.400.22.55103",
           "AzurePowershell/Az1.0.0"
         ]
@@ -467,7 +467,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "82b26e83-1b22-4730-ae7c-69dd5d2baf8d"
+          "5aad8e6f-b412-4b98-b3ad-a3b98e442a87"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -479,21 +479,21 @@
           "3.0"
         ],
         "Date": [
-          "Thu, 08 Dec 2022 19:40:44 GMT"
+          "Tue, 13 Jun 2023 08:54:23 GMT"
         ],
         "Content-Type": [
           "application/json; odata=minimalmetadata"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://mikebatcheast.eastus.batch.azure.com/$metadata#pools\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"pool1\",\r\n      \"url\": \"https://mikebatcheast.eastus.batch.azure.com/pools/pool1\",\r\n      \"eTag\": \"0x8DAD954192289EB\",\r\n      \"lastModified\": \"2022-12-08T19:40:44.8520683Z\",\r\n      \"creationTime\": \"2022-12-08T19:40:43.3560474Z\",\r\n      \"state\": \"deleting\",\r\n      \"stateTransitionTime\": \"2022-12-08T19:40:44.8520683Z\",\r\n      \"allocationState\": \"resizing\",\r\n      \"allocationStateTransitionTime\": \"2022-12-08T19:40:44.8700679Z\",\r\n      \"vmSize\": \"small\",\r\n      \"resizeTimeout\": \"PT7M9.497S\",\r\n      \"currentDedicatedNodes\": 0,\r\n      \"targetDedicatedNodes\": 0,\r\n      \"currentLowPriorityNodes\": 0,\r\n      \"targetLowPriorityNodes\": 0,\r\n      \"enableAutoScale\": false,\r\n      \"enableInterNodeCommunication\": false,\r\n      \"taskSlotsPerNode\": 1,\r\n      \"taskSchedulingPolicy\": {\r\n        \"nodeFillType\": \"Spread\"\r\n      },\r\n      \"cloudServiceConfiguration\": {\r\n        \"osFamily\": \"4\",\r\n        \"osVersion\": \"*\"\r\n      },\r\n      \"targetNodeCommunicationMode\": \"default\"\r\n    },\r\n    {\r\n      \"id\": \"pool2\",\r\n      \"url\": \"https://mikebatcheast.eastus.batch.azure.com/pools/pool2\",\r\n      \"eTag\": \"0x8DAD954192D112F\",\r\n      \"lastModified\": \"2022-12-08T19:40:44.9210671Z\",\r\n      \"creationTime\": \"2022-12-08T19:40:43.6820531Z\",\r\n      \"state\": \"deleting\",\r\n      \"stateTransitionTime\": \"2022-12-08T19:40:44.9210671Z\",\r\n      \"allocationState\": \"resizing\",\r\n      \"allocationStateTransitionTime\": \"2022-12-08T19:40:44.946069Z\",\r\n      \"vmSize\": \"standard_d1_v2\",\r\n      \"resizeTimeout\": \"PT7M9.497S\",\r\n      \"currentDedicatedNodes\": 0,\r\n      \"targetDedicatedNodes\": 0,\r\n      \"currentLowPriorityNodes\": 0,\r\n      \"targetLowPriorityNodes\": 0,\r\n      \"enableAutoScale\": false,\r\n      \"enableInterNodeCommunication\": false,\r\n      \"startTask\": {\r\n        \"commandLine\": \"/bin/bash -c 'echo start task'\",\r\n        \"userIdentity\": {\r\n          \"autoUser\": {\r\n            \"scope\": \"pool\",\r\n            \"elevationLevel\": \"nonadmin\"\r\n          }\r\n        },\r\n        \"maxTaskRetryCount\": 0,\r\n        \"waitForSuccess\": true\r\n      },\r\n      \"certificateReferences\": [],\r\n      \"taskSlotsPerNode\": 1,\r\n      \"taskSchedulingPolicy\": {\r\n        \"nodeFillType\": \"Spread\"\r\n      },\r\n      \"virtualMachineConfiguration\": {\r\n        \"imageReference\": {\r\n          \"publisher\": \"microsoft-azure-batch\",\r\n          \"offer\": \"ubuntu-server-container\",\r\n          \"sku\": \"20-04-lts\",\r\n          \"version\": \"latest\"\r\n        },\r\n        \"nodeAgentSKUId\": \"batch.node.ubuntu 20.04\",\r\n        \"containerConfiguration\": {\r\n          \"type\": \"dockerCompatible\",\r\n          \"containerImageNames\": [\r\n            \"test\"\r\n          ]\r\n        }\r\n      },\r\n      \"targetNodeCommunicationMode\": \"default\"\r\n    },\r\n    {\r\n      \"id\": \"resizePool\",\r\n      \"url\": \"https://mikebatcheast.eastus.batch.azure.com/pools/resizePool\",\r\n      \"eTag\": \"0x8DAD95416CE5EB7\",\r\n      \"lastModified\": \"2022-12-08T19:40:40.9450167Z\",\r\n      \"creationTime\": \"2022-12-08T19:39:58.0354531Z\",\r\n      \"state\": \"deleting\",\r\n      \"stateTransitionTime\": \"2022-12-08T19:40:40.9450167Z\",\r\n      \"allocationState\": \"resizing\",\r\n      \"allocationStateTransitionTime\": \"2022-12-08T19:40:41.0130179Z\",\r\n      \"vmSize\": \"standard_d1_v2\",\r\n      \"resizeTimeout\": \"PT7M9.497S\",\r\n      \"currentDedicatedNodes\": 0,\r\n      \"targetDedicatedNodes\": 0,\r\n      \"currentLowPriorityNodes\": 0,\r\n      \"targetLowPriorityNodes\": 0,\r\n      \"enableAutoScale\": false,\r\n      \"enableInterNodeCommunication\": true,\r\n      \"taskSlotsPerNode\": 1,\r\n      \"taskSchedulingPolicy\": {\r\n        \"nodeFillType\": \"Spread\"\r\n      },\r\n      \"cloudServiceConfiguration\": {\r\n        \"osFamily\": \"4\",\r\n        \"osVersion\": \"*\"\r\n      },\r\n      \"targetNodeCommunicationMode\": \"classic\"\r\n    },\r\n    {\r\n      \"id\": \"testIaasPool\",\r\n      \"url\": \"https://mikebatcheast.eastus.batch.azure.com/pools/testIaasPool\",\r\n      \"eTag\": \"0x8DAD48323361B33\",\r\n      \"lastModified\": \"2022-12-02T16:34:52.2899251Z\",\r\n      \"creationTime\": \"2022-12-02T16:34:52.2899251Z\",\r\n      \"state\": \"active\",\r\n      \"stateTransitionTime\": \"2022-12-02T16:34:52.2899251Z\",\r\n      \"allocationState\": \"steady\",\r\n      \"allocationStateTransitionTime\": \"2022-12-02T16:36:56.2267937Z\",\r\n      \"vmSize\": \"standard_d1_v2\",\r\n      \"resizeTimeout\": \"PT15M\",\r\n      \"currentDedicatedNodes\": 1,\r\n      \"targetDedicatedNodes\": 1,\r\n      \"currentLowPriorityNodes\": 0,\r\n      \"targetLowPriorityNodes\": 0,\r\n      \"enableAutoScale\": false,\r\n      \"enableInterNodeCommunication\": false,\r\n      \"taskSlotsPerNode\": 1,\r\n      \"taskSchedulingPolicy\": {\r\n        \"nodeFillType\": \"Spread\"\r\n      },\r\n      \"virtualMachineConfiguration\": {\r\n        \"imageReference\": {\r\n          \"publisher\": \"Canonical\",\r\n          \"offer\": \"UbuntuServer\",\r\n          \"sku\": \"18.04-LTS\",\r\n          \"version\": \"latest\"\r\n        },\r\n        \"nodeAgentSKUId\": \"batch.node.ubuntu 18.04\"\r\n      },\r\n      \"currentNodeCommunicationMode\": \"classic\"\r\n    },\r\n    {\r\n      \"id\": \"testPool\",\r\n      \"url\": \"https://mikebatcheast.eastus.batch.azure.com/pools/testPool\",\r\n      \"eTag\": \"0x8DAD8764FBA9569\",\r\n      \"lastModified\": \"2022-12-07T17:13:08.1715049Z\",\r\n      \"creationTime\": \"2022-12-02T16:34:51.9639164Z\",\r\n      \"state\": \"active\",\r\n      \"stateTransitionTime\": \"2022-12-02T16:34:51.9639164Z\",\r\n      \"allocationState\": \"steady\",\r\n      \"allocationStateTransitionTime\": \"2022-12-02T16:38:29.4641928Z\",\r\n      \"vmSize\": \"standard_d1_v2\",\r\n      \"resizeTimeout\": \"PT15M\",\r\n      \"currentDedicatedNodes\": 3,\r\n      \"targetDedicatedNodes\": 3,\r\n      \"currentLowPriorityNodes\": 0,\r\n      \"targetLowPriorityNodes\": 0,\r\n      \"enableAutoScale\": false,\r\n      \"enableInterNodeCommunication\": false,\r\n      \"startTask\": {\r\n        \"commandLine\": \"cmd /c echo hello\",\r\n        \"userIdentity\": {\r\n          \"autoUser\": {\r\n            \"scope\": \"pool\",\r\n            \"elevationLevel\": \"nonadmin\"\r\n          }\r\n        },\r\n        \"maxTaskRetryCount\": 0,\r\n        \"waitForSuccess\": true\r\n      },\r\n      \"certificateReferences\": [],\r\n      \"taskSlotsPerNode\": 1,\r\n      \"taskSchedulingPolicy\": {\r\n        \"nodeFillType\": \"Spread\"\r\n      },\r\n      \"cloudServiceConfiguration\": {\r\n        \"osFamily\": \"4\",\r\n        \"osVersion\": \"*\"\r\n      },\r\n      \"targetNodeCommunicationMode\": \"simplified\",\r\n      \"currentNodeCommunicationMode\": \"classic\"\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://hoppeeastasia2.eastasia.batch.azure.com/$metadata#pools\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"mpiPool\",\r\n      \"url\": \"https://hoppeeastasia2.eastasia.batch.azure.com/pools/mpiPool\",\r\n      \"eTag\": \"0x8DB6BE46833B869\",\r\n      \"lastModified\": \"2023-06-13T08:01:34.7992681Z\",\r\n      \"creationTime\": \"2023-06-13T08:01:34.7992681Z\",\r\n      \"state\": \"active\",\r\n      \"stateTransitionTime\": \"2023-06-13T08:01:34.7992681Z\",\r\n      \"allocationState\": \"steady\",\r\n      \"allocationStateTransitionTime\": \"2023-06-13T08:03:32.0598541Z\",\r\n      \"vmSize\": \"standard_d1_v2\",\r\n      \"resizeTimeout\": \"PT15M\",\r\n      \"currentDedicatedNodes\": 3,\r\n      \"targetDedicatedNodes\": 3,\r\n      \"currentLowPriorityNodes\": 0,\r\n      \"targetLowPriorityNodes\": 0,\r\n      \"enableAutoScale\": false,\r\n      \"enableInterNodeCommunication\": true,\r\n      \"taskSlotsPerNode\": 1,\r\n      \"taskSchedulingPolicy\": {\r\n        \"nodeFillType\": \"Spread\"\r\n      },\r\n      \"cloudServiceConfiguration\": {\r\n        \"osFamily\": \"4\",\r\n        \"osVersion\": \"*\"\r\n      },\r\n      \"targetNodeCommunicationMode\": \"classic\",\r\n      \"currentNodeCommunicationMode\": \"classic\"\r\n    },\r\n    {\r\n      \"id\": \"pool2\",\r\n      \"url\": \"https://hoppeeastasia2.eastasia.batch.azure.com/pools/pool2\",\r\n      \"eTag\": \"0x8DB6BEBC8F9FBBB\",\r\n      \"lastModified\": \"2023-06-13T08:54:23.6369851Z\",\r\n      \"creationTime\": \"2023-06-13T08:54:21.9878228Z\",\r\n      \"state\": \"deleting\",\r\n      \"stateTransitionTime\": \"2023-06-13T08:54:23.6369851Z\",\r\n      \"allocationState\": \"resizing\",\r\n      \"allocationStateTransitionTime\": \"2023-06-13T08:54:23.6609903Z\",\r\n      \"vmSize\": \"standard_d1_v2\",\r\n      \"resizeTimeout\": \"PT7M9.497S\",\r\n      \"currentDedicatedNodes\": 0,\r\n      \"targetDedicatedNodes\": 0,\r\n      \"currentLowPriorityNodes\": 0,\r\n      \"targetLowPriorityNodes\": 0,\r\n      \"enableAutoScale\": false,\r\n      \"enableInterNodeCommunication\": false,\r\n      \"startTask\": {\r\n        \"commandLine\": \"/bin/bash -c 'echo start task'\",\r\n        \"userIdentity\": {\r\n          \"autoUser\": {\r\n            \"scope\": \"pool\",\r\n            \"elevationLevel\": \"nonadmin\"\r\n          }\r\n        },\r\n        \"maxTaskRetryCount\": 0,\r\n        \"waitForSuccess\": true\r\n      },\r\n      \"certificateReferences\": [],\r\n      \"taskSlotsPerNode\": 1,\r\n      \"taskSchedulingPolicy\": {\r\n        \"nodeFillType\": \"Spread\"\r\n      },\r\n      \"virtualMachineConfiguration\": {\r\n        \"imageReference\": {\r\n          \"publisher\": \"microsoft-azure-batch\",\r\n          \"offer\": \"ubuntu-server-container\",\r\n          \"sku\": \"20-04-lts\",\r\n          \"version\": \"latest\"\r\n        },\r\n        \"nodeAgentSKUId\": \"batch.node.ubuntu 20.04\",\r\n        \"containerConfiguration\": {\r\n          \"type\": \"dockerCompatible\",\r\n          \"containerImageNames\": [\r\n            \"test\"\r\n          ]\r\n        }\r\n      },\r\n      \"targetNodeCommunicationMode\": \"default\"\r\n    },\r\n    {\r\n      \"id\": \"resizePool\",\r\n      \"url\": \"https://hoppeeastasia2.eastasia.batch.azure.com/pools/resizePool\",\r\n      \"eTag\": \"0x8DB6BEBC680A63B\",\r\n      \"lastModified\": \"2023-06-13T08:54:19.4863675Z\",\r\n      \"creationTime\": \"2023-06-13T08:48:12.4233317Z\",\r\n      \"state\": \"deleting\",\r\n      \"stateTransitionTime\": \"2023-06-13T08:54:19.4863675Z\",\r\n      \"allocationState\": \"resizing\",\r\n      \"allocationStateTransitionTime\": \"2023-06-13T08:54:19.5033681Z\",\r\n      \"vmSize\": \"standard_d1_v2\",\r\n      \"resizeTimeout\": \"PT7M9.497S\",\r\n      \"currentDedicatedNodes\": 0,\r\n      \"targetDedicatedNodes\": 0,\r\n      \"currentLowPriorityNodes\": 0,\r\n      \"targetLowPriorityNodes\": 0,\r\n      \"enableAutoScale\": false,\r\n      \"enableInterNodeCommunication\": true,\r\n      \"taskSlotsPerNode\": 1,\r\n      \"taskSchedulingPolicy\": {\r\n        \"nodeFillType\": \"Spread\"\r\n      },\r\n      \"cloudServiceConfiguration\": {\r\n        \"osFamily\": \"4\",\r\n        \"osVersion\": \"*\"\r\n      },\r\n      \"targetNodeCommunicationMode\": \"classic\"\r\n    },\r\n    {\r\n      \"id\": \"testIaasPool\",\r\n      \"url\": \"https://hoppeeastasia2.eastasia.batch.azure.com/pools/testIaasPool\",\r\n      \"eTag\": \"0x8DB6BE213BF7BA8\",\r\n      \"lastModified\": \"2023-06-13T07:44:54.1154216Z\",\r\n      \"creationTime\": \"2023-06-13T07:44:54.1154216Z\",\r\n      \"state\": \"active\",\r\n      \"stateTransitionTime\": \"2023-06-13T07:44:54.1154216Z\",\r\n      \"allocationState\": \"steady\",\r\n      \"allocationStateTransitionTime\": \"2023-06-13T07:45:56.7212673Z\",\r\n      \"vmSize\": \"standard_a1_v2\",\r\n      \"resizeTimeout\": \"PT15M\",\r\n      \"currentDedicatedNodes\": 1,\r\n      \"targetDedicatedNodes\": 1,\r\n      \"currentLowPriorityNodes\": 0,\r\n      \"targetLowPriorityNodes\": 0,\r\n      \"enableAutoScale\": false,\r\n      \"enableInterNodeCommunication\": false,\r\n      \"taskSlotsPerNode\": 1,\r\n      \"taskSchedulingPolicy\": {\r\n        \"nodeFillType\": \"Spread\"\r\n      },\r\n      \"virtualMachineConfiguration\": {\r\n        \"imageReference\": {\r\n          \"publisher\": \"canonical\",\r\n          \"offer\": \"0001-com-ubuntu-server-jammy\",\r\n          \"sku\": \"22_04-LTS\",\r\n          \"version\": \"latest\"\r\n        },\r\n        \"nodeAgentSKUId\": \"batch.node.ubuntu 22.04\"\r\n      },\r\n      \"targetNodeCommunicationMode\": \"default\",\r\n      \"currentNodeCommunicationMode\": \"classic\"\r\n    },\r\n    {\r\n      \"id\": \"testPool\",\r\n      \"url\": \"https://hoppeeastasia2.eastasia.batch.azure.com/pools/testPool\",\r\n      \"eTag\": \"0x8DB6BE2138F6AE5\",\r\n      \"lastModified\": \"2023-06-13T07:44:53.8004197Z\",\r\n      \"creationTime\": \"2023-06-13T07:44:53.8004197Z\",\r\n      \"state\": \"active\",\r\n      \"stateTransitionTime\": \"2023-06-13T07:44:53.8004197Z\",\r\n      \"allocationState\": \"steady\",\r\n      \"allocationStateTransitionTime\": \"2023-06-13T07:46:21.6749991Z\",\r\n      \"vmSize\": \"standard_d1_v2\",\r\n      \"resizeTimeout\": \"PT15M\",\r\n      \"currentDedicatedNodes\": 3,\r\n      \"targetDedicatedNodes\": 3,\r\n      \"currentLowPriorityNodes\": 0,\r\n      \"targetLowPriorityNodes\": 0,\r\n      \"enableAutoScale\": false,\r\n      \"enableInterNodeCommunication\": false,\r\n      \"startTask\": {\r\n        \"commandLine\": \"cmd /c echo hello\",\r\n        \"userIdentity\": {\r\n          \"autoUser\": {\r\n            \"scope\": \"pool\",\r\n            \"elevationLevel\": \"nonadmin\"\r\n          }\r\n        },\r\n        \"maxTaskRetryCount\": 0,\r\n        \"waitForSuccess\": true\r\n      },\r\n      \"taskSlotsPerNode\": 1,\r\n      \"taskSchedulingPolicy\": {\r\n        \"nodeFillType\": \"Spread\"\r\n      },\r\n      \"cloudServiceConfiguration\": {\r\n        \"osFamily\": \"4\",\r\n        \"osVersion\": \"*\"\r\n      },\r\n      \"targetNodeCommunicationMode\": \"default\",\r\n      \"currentNodeCommunicationMode\": \"classic\"\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     }
   ],
   "Names": {},
   "Variables": {
-    "SubscriptionId": "67e11b19-95f8-4d96-a472-5f626c5445ec",
-    "AZURE_BATCH_ACCOUNT": "mikebatcheast",
-    "AZURE_BATCH_ENDPOINT": "https://mikebatcheast.eastus.batch.azure.com",
-    "AZURE_BATCH_RESOURCE_GROUP": "mikeazure"
+    "SubscriptionId": "21abd678-18c5-4660-9fdd-8c5ba6b6fe1f",
+    "AZURE_BATCH_ACCOUNT": "hoppeeastasia2",
+    "AZURE_BATCH_ENDPOINT": "https://hoppeeastasia2.eastasia.batch.azure.com",
+    "AZURE_BATCH_RESOURCE_GROUP": "123"
   }
 }

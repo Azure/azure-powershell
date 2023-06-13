@@ -234,9 +234,9 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             }
             catch (BatchException e)
             {
-                if (e.RequestInformation.BatchError.Code != "PoolAlreadyExists")
+                if (e.RequestInformation.BatchError.Code != "PoolExists")
                 {
-                    throw;
+                    throw e;
                 }
             }
         }
