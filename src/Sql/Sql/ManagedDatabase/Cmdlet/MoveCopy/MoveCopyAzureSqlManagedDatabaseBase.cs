@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
         protected const string MoveCopyManagedDatabaseByNameParameterSet = "MoveCopyManagedDatabaseByNameParameterSet";
         protected const string MoveCopyManagedDatabaseByInputObjectParameterSet = "MoveCopyManagedDatabaseByInputObjectParameterSet";
         protected const string MoveCopyManagedDatabaseByResourceIdParameterSet = "MoveCopyManagedDatabaseByResourceIdParameterSet";
-        protected const string MoveCopyManagedDatabaseByOperationsObjectParameterSet = "MoveCopyManagedDatabaseByInstanceObjectParameterSet";
+        protected const string MoveCopyManagedDatabaseByOperationsObjectParameterSet = "MoveCopyManagedDatabaseByOperationObjectParameterSet";
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the instance database.", ParameterSetName = MoveCopyManagedDatabaseByNameParameterSet)]
         [Parameter(Mandatory = false, HelpMessage = "The managed instance object", ParameterSetName = MoveCopyManagedDatabaseByOperationsObjectParameterSet)]
