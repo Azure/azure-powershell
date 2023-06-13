@@ -36,7 +36,7 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"primaryConnectionString\":\"Endpoint=sb://namespacename9ys3v4.servicebus.windows.net/;SharedAccessKeyName=auth-rulepisblj;SharedAccessKey=ov3iFT0NJWqvYVpHZVIqpZLkhr4SrhVni+AEhHeraCE=\",\"secondaryConnectionString\":\"Endpoint=sb://namespacename9ys3v4.servicebus.windows.net/;SharedAccessKeyName=auth-rulepisblj;SharedAccessKey=SLvfVR91ZMMr96vETAkjc4j8TsTuNcvDl+AEhMWqQAs=\",\"primaryKey\":\"ov3iFT0NJWqvYVpHZVIqpZLkhr4SrhVni+AEhHeraCE=\",\"secondaryKey\":\"SLvfVR91ZMMr96vETAkjc4j8TsTuNcvDl+AEhMWqQAs=\",\"keyName\":\"auth-rulepisblj\"}",
+      "Content": "{\"primaryConnectionString\":\"Endpoint=sb://namespacename9ys3v4.servicebus.windows.net/;SharedAccessKeyName=auth-rulepisblj;SharedAccessKey=sanitized19\",\"secondaryConnectionString\":\"Endpoint=sb://namespacename9ys3v4.servicebus.windows.net/;SharedAccessKeyName=auth-rulepisblj;SharedAccessKey=sanitized26\",\"primaryKey\":\"sanitized19\",\"secondaryKey\":\"sanitized26\",\"keyName\":\"auth-rulepisblj\"}",
       "isContentBase64": false
     }
   },
@@ -72,7 +72,7 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"primaryConnectionString\":\"Endpoint=sb://namespacename9ys3v4.servicebus.windows.net/;SharedAccessKeyName=auth-rulepisblj;SharedAccessKey=GBtFCm2AiwSdRe0su5W4INZaik58kT9gc+AEhPbLUX8=\",\"secondaryConnectionString\":\"Endpoint=sb://namespacename9ys3v4.servicebus.windows.net/;SharedAccessKeyName=auth-rulepisblj;SharedAccessKey=SLvfVR91ZMMr96vETAkjc4j8TsTuNcvDl+AEhMWqQAs=\",\"primaryKey\":\"GBtFCm2AiwSdRe0su5W4INZaik58kT9gc+AEhPbLUX8=\",\"secondaryKey\":\"SLvfVR91ZMMr96vETAkjc4j8TsTuNcvDl+AEhMWqQAs=\",\"keyName\":\"auth-rulepisblj\"}",
+      "Content": "{\"primaryConnectionString\":\"Endpoint=sb://namespacename9ys3v4.servicebus.windows.net/;SharedAccessKeyName=auth-rulepisblj;SharedAccessKey=sanitized20\",\"secondaryConnectionString\":\"Endpoint=sb://namespacename9ys3v4.servicebus.windows.net/;SharedAccessKeyName=auth-rulepisblj;SharedAccessKey=sanitized26\",\"primaryKey\":\"sanitized20\",\"secondaryKey\":\"sanitized26\",\"keyName\":\"auth-rulepisblj\"}",
       "isContentBase64": false
     }
   },
@@ -108,7 +108,7 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"primaryConnectionString\":\"Endpoint=sb://namespacename9ys3v4.servicebus.windows.net/;SharedAccessKeyName=auth-rulepisblj;SharedAccessKey=GBtFCm2AiwSdRe0su5W4INZaik58kT9gc+AEhPbLUX8=\",\"secondaryConnectionString\":\"Endpoint=sb://namespacename9ys3v4.servicebus.windows.net/;SharedAccessKeyName=auth-rulepisblj;SharedAccessKey=oAyQr0x9JGD2ck4Lbjk9LHE/79cPaNCtl+AEhOi1Dq0=\",\"primaryKey\":\"GBtFCm2AiwSdRe0su5W4INZaik58kT9gc+AEhPbLUX8=\",\"secondaryKey\":\"oAyQr0x9JGD2ck4Lbjk9LHE/79cPaNCtl+AEhOi1Dq0=\",\"keyName\":\"auth-rulepisblj\"}",
+      "Content": "{\"primaryConnectionString\":\"Endpoint=sb://namespacename9ys3v4.servicebus.windows.net/;SharedAccessKeyName=auth-rulepisblj;SharedAccessKey=sanitized20\",\"secondaryConnectionString\":\"Endpoint=sb://namespacename9ys3v4.servicebus.windows.net/;SharedAccessKeyName=auth-rulepisblj;SharedAccessKey=sanitized27\",\"primaryKey\":\"sanitized20\",\"secondaryKey\":\"sanitized27\",\"keyName\":\"auth-rulepisblj\"}",
       "isContentBase64": false
     }
   },
@@ -116,7 +116,7 @@
     "Request": {
       "Method": "POST",
       "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorest5oibwu/providers/Microsoft.EventHub/namespaces/namespaceName9ys3v4/authorizationRules/auth-rulepisblj/regenerateKeys?api-version=2022-10-01-preview",
-      "Content": "{\n  \"keyType\": \"PrimaryKey\",\n  \"key\": \"iYDN3AnUhVnSBGPn5RJtoYJZoy2Ks7eeR0TW2uM2yCI=\"\n}",
+      "Content": "{\n  \"keyType\": \"PrimaryKey\",\n  \"key\": \"sanitized21\"\n}",
       "isContentBase64": false,
       "Headers": {
       },
@@ -144,7 +144,7 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"primaryConnectionString\":\"Endpoint=sb://namespacename9ys3v4.servicebus.windows.net/;SharedAccessKeyName=auth-rulepisblj;SharedAccessKey=iYDN3AnUhVnSBGPn5RJtoYJZoy2Ks7eeR0TW2uM2yCI=\",\"secondaryConnectionString\":\"Endpoint=sb://namespacename9ys3v4.servicebus.windows.net/;SharedAccessKeyName=auth-rulepisblj;SharedAccessKey=oAyQr0x9JGD2ck4Lbjk9LHE/79cPaNCtl+AEhOi1Dq0=\",\"primaryKey\":\"iYDN3AnUhVnSBGPn5RJtoYJZoy2Ks7eeR0TW2uM2yCI=\",\"secondaryKey\":\"oAyQr0x9JGD2ck4Lbjk9LHE/79cPaNCtl+AEhOi1Dq0=\",\"keyName\":\"auth-rulepisblj\"}",
+      "Content": "{\"primaryConnectionString\":\"Endpoint=sb://namespacename9ys3v4.servicebus.windows.net/;SharedAccessKeyName=auth-rulepisblj;SharedAccessKey=sanitized21\",\"secondaryConnectionString\":\"Endpoint=sb://namespacename9ys3v4.servicebus.windows.net/;SharedAccessKeyName=auth-rulepisblj;SharedAccessKey=sanitized27\",\"primaryKey\":\"sanitized21\",\"secondaryKey\":\"sanitized27\",\"keyName\":\"auth-rulepisblj\"}",
       "isContentBase64": false
     }
   },
@@ -152,7 +152,7 @@
     "Request": {
       "Method": "POST",
       "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorest5oibwu/providers/Microsoft.EventHub/namespaces/namespaceName9ys3v4/authorizationRules/auth-rulepisblj/regenerateKeys?api-version=2022-10-01-preview",
-      "Content": "{\n  \"keyType\": \"SecondaryKey\",\n  \"key\": \"iYDN3AnUhVnSBGPn5RJtoYJZoy2Ks7eeR0TW2uM2yCI=\"\n}",
+      "Content": "{\n  \"keyType\": \"SecondaryKey\",\n  \"key\": \"sanitized21\"\n}",
       "isContentBase64": false,
       "Headers": {
       },
@@ -180,7 +180,7 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"primaryConnectionString\":\"Endpoint=sb://namespacename9ys3v4.servicebus.windows.net/;SharedAccessKeyName=auth-rulepisblj;SharedAccessKey=iYDN3AnUhVnSBGPn5RJtoYJZoy2Ks7eeR0TW2uM2yCI=\",\"secondaryConnectionString\":\"Endpoint=sb://namespacename9ys3v4.servicebus.windows.net/;SharedAccessKeyName=auth-rulepisblj;SharedAccessKey=iYDN3AnUhVnSBGPn5RJtoYJZoy2Ks7eeR0TW2uM2yCI=\",\"primaryKey\":\"iYDN3AnUhVnSBGPn5RJtoYJZoy2Ks7eeR0TW2uM2yCI=\",\"secondaryKey\":\"iYDN3AnUhVnSBGPn5RJtoYJZoy2Ks7eeR0TW2uM2yCI=\",\"keyName\":\"auth-rulepisblj\"}",
+      "Content": "{\"primaryConnectionString\":\"Endpoint=sb://namespacename9ys3v4.servicebus.windows.net/;SharedAccessKeyName=auth-rulepisblj;SharedAccessKey=sanitized21\",\"secondaryConnectionString\":\"Endpoint=sb://namespacename9ys3v4.servicebus.windows.net/;SharedAccessKeyName=auth-rulepisblj;SharedAccessKey=sanitized21\",\"primaryKey\":\"sanitized21\",\"secondaryKey\":\"sanitized21\",\"keyName\":\"auth-rulepisblj\"}",
       "isContentBase64": false
     }
   },
@@ -221,7 +221,7 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"primaryConnectionString\":\"Endpoint=sb://namespacename9ys3v4.servicebus.windows.net/;SharedAccessKeyName=auth-rule61or5h;SharedAccessKey=TL3tqf0lcxNpM9+4awXf6eAhcQtQuECTQ+AEhMqP3TY=;EntityPath=eventHube8fp3c\",\"secondaryConnectionString\":\"Endpoint=sb://namespacename9ys3v4.servicebus.windows.net/;SharedAccessKeyName=auth-rule61or5h;SharedAccessKey=ZMbaAn61PsRGngyHiqQjPdDh0Mz7Oner1+AEhFlOV6o=;EntityPath=eventHube8fp3c\",\"primaryKey\":\"TL3tqf0lcxNpM9+4awXf6eAhcQtQuECTQ+AEhMqP3TY=\",\"secondaryKey\":\"ZMbaAn61PsRGngyHiqQjPdDh0Mz7Oner1+AEhFlOV6o=\",\"keyName\":\"auth-rule61or5h\"}",
+      "Content": "{\"primaryConnectionString\":\"Endpoint=sb://namespacename9ys3v4.servicebus.windows.net/;SharedAccessKeyName=auth-rule61or5h;SharedAccessKey=sanitized22;EntityPath=eventHube8fp3c\",\"secondaryConnectionString\":\"Endpoint=sb://namespacename9ys3v4.servicebus.windows.net/;SharedAccessKeyName=auth-rule61or5h;SharedAccessKey=sanitized234;EntityPath=eventHube8fp3c\",\"primaryKey\":\"sanitized22\",\"secondaryKey\":\"sanitized234\",\"keyName\":\"auth-rule61or5h\"}",
       "isContentBase64": false
     }
   },
@@ -257,7 +257,7 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"primaryConnectionString\":\"Endpoint=sb://namespacename9ys3v4.servicebus.windows.net/;SharedAccessKeyName=auth-rule61or5h;SharedAccessKey=QSziLp3biuoph6XbSUaUNc70lXS5V8KNo+AEhP3Lz9Y=;EntityPath=eventHube8fp3c\",\"secondaryConnectionString\":\"Endpoint=sb://namespacename9ys3v4.servicebus.windows.net/;SharedAccessKeyName=auth-rule61or5h;SharedAccessKey=ZMbaAn61PsRGngyHiqQjPdDh0Mz7Oner1+AEhFlOV6o=;EntityPath=eventHube8fp3c\",\"primaryKey\":\"QSziLp3biuoph6XbSUaUNc70lXS5V8KNo+AEhP3Lz9Y=\",\"secondaryKey\":\"ZMbaAn61PsRGngyHiqQjPdDh0Mz7Oner1+AEhFlOV6o=\",\"keyName\":\"auth-rule61or5h\"}",
+      "Content": "{\"primaryConnectionString\":\"Endpoint=sb://namespacename9ys3v4.servicebus.windows.net/;SharedAccessKeyName=auth-rule61or5h;SharedAccessKey=sanitized23;EntityPath=eventHube8fp3c\",\"secondaryConnectionString\":\"Endpoint=sb://namespacename9ys3v4.servicebus.windows.net/;SharedAccessKeyName=auth-rule61or5h;SharedAccessKey=sanitized234;EntityPath=eventHube8fp3c\",\"primaryKey\":\"sanitized23\",\"secondaryKey\":\"sanitized234\",\"keyName\":\"auth-rule61or5h\"}",
       "isContentBase64": false
     }
   },
@@ -293,7 +293,7 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"primaryConnectionString\":\"Endpoint=sb://namespacename9ys3v4.servicebus.windows.net/;SharedAccessKeyName=auth-rule61or5h;SharedAccessKey=QSziLp3biuoph6XbSUaUNc70lXS5V8KNo+AEhP3Lz9Y=;EntityPath=eventHube8fp3c\",\"secondaryConnectionString\":\"Endpoint=sb://namespacename9ys3v4.servicebus.windows.net/;SharedAccessKeyName=auth-rule61or5h;SharedAccessKey=9SIYtM1toG5bWWPpEYKOVxfmnP0H+Y//5+AEhO3PX3I=;EntityPath=eventHube8fp3c\",\"primaryKey\":\"QSziLp3biuoph6XbSUaUNc70lXS5V8KNo+AEhP3Lz9Y=\",\"secondaryKey\":\"9SIYtM1toG5bWWPpEYKOVxfmnP0H+Y//5+AEhO3PX3I=\",\"keyName\":\"auth-rule61or5h\"}",
+      "Content": "{\"primaryConnectionString\":\"Endpoint=sb://namespacename9ys3v4.servicebus.windows.net/;SharedAccessKeyName=auth-rule61or5h;SharedAccessKey=sanitized23;EntityPath=eventHube8fp3c\",\"secondaryConnectionString\":\"Endpoint=sb://namespacename9ys3v4.servicebus.windows.net/;SharedAccessKeyName=auth-rule61or5h;SharedAccessKey=sanitized25;EntityPath=eventHube8fp3c\",\"primaryKey\":\"sanitized23\",\"secondaryKey\":\"sanitized25\",\"keyName\":\"auth-rule61or5h\"}",
       "isContentBase64": false
     }
   },
@@ -301,7 +301,7 @@
     "Request": {
       "Method": "POST",
       "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorest5oibwu/providers/Microsoft.EventHub/namespaces/namespaceName9ys3v4/eventhubs/eventHube8fp3c/authorizationRules/auth-rule61or5h/regenerateKeys?api-version=2022-10-01-preview",
-      "Content": "{\n  \"keyType\": \"PrimaryKey\",\n  \"key\": \"iYDN3AnUhVnSBGPn5RJtoYJZoy2Ks7eeR0TW2uM2yCI=\"\n}",
+      "Content": "{\n  \"keyType\": \"PrimaryKey\",\n  \"key\": \"sanitized21\"\n}",
       "isContentBase64": false,
       "Headers": {
       },
@@ -329,7 +329,7 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"primaryConnectionString\":\"Endpoint=sb://namespacename9ys3v4.servicebus.windows.net/;SharedAccessKeyName=auth-rule61or5h;SharedAccessKey=iYDN3AnUhVnSBGPn5RJtoYJZoy2Ks7eeR0TW2uM2yCI=;EntityPath=eventHube8fp3c\",\"secondaryConnectionString\":\"Endpoint=sb://namespacename9ys3v4.servicebus.windows.net/;SharedAccessKeyName=auth-rule61or5h;SharedAccessKey=9SIYtM1toG5bWWPpEYKOVxfmnP0H+Y//5+AEhO3PX3I=;EntityPath=eventHube8fp3c\",\"primaryKey\":\"iYDN3AnUhVnSBGPn5RJtoYJZoy2Ks7eeR0TW2uM2yCI=\",\"secondaryKey\":\"9SIYtM1toG5bWWPpEYKOVxfmnP0H+Y//5+AEhO3PX3I=\",\"keyName\":\"auth-rule61or5h\"}",
+      "Content": "{\"primaryConnectionString\":\"Endpoint=sb://namespacename9ys3v4.servicebus.windows.net/;SharedAccessKeyName=auth-rule61or5h;SharedAccessKey=sanitized21;EntityPath=eventHube8fp3c\",\"secondaryConnectionString\":\"Endpoint=sb://namespacename9ys3v4.servicebus.windows.net/;SharedAccessKeyName=auth-rule61or5h;SharedAccessKey=sanitized25;EntityPath=eventHube8fp3c\",\"primaryKey\":\"sanitized21\",\"secondaryKey\":\"sanitized25\",\"keyName\":\"auth-rule61or5h\"}",
       "isContentBase64": false
     }
   },
@@ -337,7 +337,7 @@
     "Request": {
       "Method": "POST",
       "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorest5oibwu/providers/Microsoft.EventHub/namespaces/namespaceName9ys3v4/eventhubs/eventHube8fp3c/authorizationRules/auth-rule61or5h/regenerateKeys?api-version=2022-10-01-preview",
-      "Content": "{\n  \"keyType\": \"SecondaryKey\",\n  \"key\": \"iYDN3AnUhVnSBGPn5RJtoYJZoy2Ks7eeR0TW2uM2yCI=\"\n}",
+      "Content": "{\n  \"keyType\": \"SecondaryKey\",\n  \"key\": \"sanitized21\"\n}",
       "isContentBase64": false,
       "Headers": {
       },
@@ -365,7 +365,7 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"primaryConnectionString\":\"Endpoint=sb://namespacename9ys3v4.servicebus.windows.net/;SharedAccessKeyName=auth-rule61or5h;SharedAccessKey=iYDN3AnUhVnSBGPn5RJtoYJZoy2Ks7eeR0TW2uM2yCI=;EntityPath=eventHube8fp3c\",\"secondaryConnectionString\":\"Endpoint=sb://namespacename9ys3v4.servicebus.windows.net/;SharedAccessKeyName=auth-rule61or5h;SharedAccessKey=iYDN3AnUhVnSBGPn5RJtoYJZoy2Ks7eeR0TW2uM2yCI=;EntityPath=eventHube8fp3c\",\"primaryKey\":\"iYDN3AnUhVnSBGPn5RJtoYJZoy2Ks7eeR0TW2uM2yCI=\",\"secondaryKey\":\"iYDN3AnUhVnSBGPn5RJtoYJZoy2Ks7eeR0TW2uM2yCI=\",\"keyName\":\"auth-rule61or5h\"}",
+      "Content": "{\"primaryConnectionString\":\"Endpoint=sb://namespacename9ys3v4.servicebus.windows.net/;SharedAccessKeyName=auth-rule61or5h;SharedAccessKey=sanitized21;EntityPath=eventHube8fp3c\",\"secondaryConnectionString\":\"Endpoint=sb://namespacename9ys3v4.servicebus.windows.net/;SharedAccessKeyName=auth-rule61or5h;SharedAccessKey=sanitized21;EntityPath=eventHube8fp3c\",\"primaryKey\":\"sanitized21\",\"secondaryKey\":\"sanitized21\",\"keyName\":\"auth-rule61or5h\"}",
       "isContentBase64": false
     }
   }

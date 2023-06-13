@@ -703,7 +703,7 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"aliasPrimaryConnectionString\":\"Endpoint=sb://aliastki2cz.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=f52SnITXHB6U3cxBaK4yl6l9xPviJONlC+AEhPLa97w=\",\"aliasSecondaryConnectionString\":\"Endpoint=sb://aliastki2cz.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=eZ1FCZZQ0fPtLMdPaVnWqBl+YUj+2HTcW+AEhDGFz5E=\",\"primaryKey\":\"f52SnITXHB6U3cxBaK4yl6l9xPviJONlC+AEhPLa97w=\",\"secondaryKey\":\"eZ1FCZZQ0fPtLMdPaVnWqBl+YUj+2HTcW+AEhDGFz5E=\",\"keyName\":\"RootManageSharedAccessKey\"}",
+      "Content": "{\"aliasPrimaryConnectionString\":\"Endpoint=sb://aliastki2cz.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=sanitized1\",\"aliasSecondaryConnectionString\":\"Endpoint=sb://aliastki2cz.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=sanitized2\",\"primaryKey\":\"sanitized1\",\"secondaryKey\":\"sanitized2\",\"keyName\":\"RootManageSharedAccessKey\"}",
       "isContentBase64": false
     }
   },
@@ -744,7 +744,7 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"primaryConnectionString\":\"Endpoint=sb://namespacenamejzobdw.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=f52SnITXHB6U3cxBaK4yl6l9xPviJONlC+AEhPLa97w=\",\"secondaryConnectionString\":\"Endpoint=sb://namespacenamejzobdw.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=eZ1FCZZQ0fPtLMdPaVnWqBl+YUj+2HTcW+AEhDGFz5E=\",\"primaryKey\":\"f52SnITXHB6U3cxBaK4yl6l9xPviJONlC+AEhPLa97w=\",\"secondaryKey\":\"eZ1FCZZQ0fPtLMdPaVnWqBl+YUj+2HTcW+AEhDGFz5E=\",\"keyName\":\"RootManageSharedAccessKey\",\"aliasPrimaryConnectionString\":\"Endpoint=sb://aliastki2cz.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=f52SnITXHB6U3cxBaK4yl6l9xPviJONlC+AEhPLa97w=\",\"aliasSecondaryConnectionString\":\"Endpoint=sb://aliastki2cz.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=eZ1FCZZQ0fPtLMdPaVnWqBl+YUj+2HTcW+AEhDGFz5E=\"}",
+      "Content": "{\"primaryConnectionString\":\"Endpoint=sb://namespacenamejzobdw.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=sanitized1\",\"secondaryConnectionString\":\"Endpoint=sb://namespacenamejzobdw.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=sanitized2\",\"primaryKey\":\"sanitized1\",\"secondaryKey\":\"sanitized2\",\"keyName\":\"RootManageSharedAccessKey\",\"aliasPrimaryConnectionString\":\"Endpoint=sb://aliastki2cz.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=sanitized1\",\"aliasSecondaryConnectionString\":\"Endpoint=sb://aliastki2cz.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=sanitized2\"}",
       "isContentBase64": false
     }
   }
