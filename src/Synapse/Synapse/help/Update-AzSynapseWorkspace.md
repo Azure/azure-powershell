@@ -140,10 +140,10 @@ Update-AzSynapseWorkspace -WorkspaceName ContosoWorkspace -EncryptionKeyName Tem
 ##Note, we need to create a new key version for the original encrytion key of the Azure key vault before moving to next steps. 
 
 ##Update the workspace and set the encryption key back after we created a new key version. 
-Update-AzSynapseWorkspace -WorkspaceName ContosoWorkspace -EncryptionKeyName default -UseSystemAssignedIdentityInEncryption true
+Update-AzSynapseWorkspace -WorkspaceName ContosoWorkspace -EncryptionKeyName default -UseSystemAssignedIdentityInEncryption $true
 
 ##Remove the temp key
-Remove-AzSynapseWorkspaceKey -WorkspaceName new-syn-cpf-udp-prd -Name TempKey
+Remove-AzSynapseWorkspaceKey -WorkspaceName ContosoWorkspace -Name TempKey
 
 ```
 
