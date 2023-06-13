@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
         IEnumerable<NodeConfiguration> ListNodeConfigurations(string resourceGroupName, string automationAccountName, string rollupStatus, ref string nextLink);
 
-        NodeConfiguration CreateNodeConfiguration(string resourceGroupName, string automationAccountName, string sourcePath, string nodeConfiguraionName, bool incrementNodeConfigurationBuild, bool overWrite);
+        NodeConfiguration CreateNodeConfiguration(string resourceGroupName, string automationAccountName, string sourcePath, IDictionary tags, string nodeConfiguraionName, bool incrementNodeConfigurationBuild, bool overWrite);
 
         void DeleteNodeConfiguration(string resourceGroupName, string automationAccountName, string name, bool ignoreNodeMappings);
 
