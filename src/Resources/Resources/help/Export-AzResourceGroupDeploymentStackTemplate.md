@@ -25,16 +25,16 @@ Export-AzResourceGroupDeploymentStackTemplate -ResourceId <String> [-Pre]
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Exports a template (or template link) for a resource group scoped deployment stack.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Export-AzResourceGroupDeploymentStackTemplate -ResourceGroupName MyResourceGroup -Name MyRGStack
 ```
 
-{{ Add example description here }}
+Export a template from a stack named 'MyRGStack' under an RG named 'MyResourceGroup'.
 
 ## PARAMETERS
 

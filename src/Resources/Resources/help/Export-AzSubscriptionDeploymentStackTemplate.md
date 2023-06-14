@@ -25,16 +25,16 @@ Export-AzSubscriptionDeploymentStackTemplate -ResourceId <String> [-Pre]
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Exports a template (or template link) for a subscription scoped deployment stack.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Export-AzSubscriptionDeploymentStackTemplate -Name MySubStack
 ```
 
-{{ Add example description here }}
+Export a template (or template link) for a stack named 'MySubStack' under the default subscription.
 
 ## PARAMETERS
 

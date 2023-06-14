@@ -142,16 +142,16 @@ Set-AzSubscriptionDeploymentStack -Name <String> [-Description <String>] -Locati
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Update a subscription scoped deployment stack.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\>  Set-AzSubscriptionDeploymentStack -Name MySubStack -TemplateFile myTemplate.json -Location westus -DenySettingsMode DenyDelete
 ```
 
-{{ Add example description here }}
+Update a subscription scoped deployment stack named 'MySubStack' in the default subscription, with deny settings being DenyDelete. 
 
 ## PARAMETERS
 

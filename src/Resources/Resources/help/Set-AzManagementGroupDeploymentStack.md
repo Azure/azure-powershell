@@ -142,16 +142,16 @@ Set-AzManagementGroupDeploymentStack -Name <String> -ManagementGroupId <String>
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Update a management group scoped deployment stack.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Set-AzManagementGroupDeploymentStack -Name MyMGStack -ManagementGroupId MyMangementGroup -DeploymentSubscriptionId MySubId -TemplateFile myTemplate.json -Location westus -DenySettingsMode DenyDelete
 ```
 
-{{ Add example description here }}
+Update a management group scoped deployment stack named 'MyMGStack' in management group 'MyManagementGroup,' with the scope of the underlying deployment being MySubId and deny settings being DenyDelete. 
 
 ## PARAMETERS
 

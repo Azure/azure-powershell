@@ -133,16 +133,16 @@ New-AzResourceGroupDeploymentStack -Name <String> -ResourceGroupName <String> [-
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Create a resource group scoped deployment stack.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> New-AzResourceGroupDeploymentStack -Name MyRGStack -ResourceGroupName MyResourceGroup -TemplateFile myTemplate.json -Location westus -DenySettingsMode DenyDelete
 ```
 
-{{ Add example description here }}
+Create a new resource group scoped deployment stack named 'MyRGStack' in management group 'MyResoourceGroup,' with deny settings being DenyDelete. 
 
 ## PARAMETERS
 

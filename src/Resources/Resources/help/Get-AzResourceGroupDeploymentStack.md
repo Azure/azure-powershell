@@ -31,17 +31,16 @@ Get-AzResourceGroupDeploymentStack [-ResourceGroupName] <String> [-Name] <String
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Retrieve a resource group scoped deployment stack.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Get-AzResourceGroupDeploymentStackTemplate -ResourceGroupName MyResourceGroup -Name MyRGStack
 ```
 
-{{ Add example description here }}
-
+Get a deployment stack named 'MyRGStack' under an RG named 'MyResourceGroup'.
 ## PARAMETERS
 
 ### -DefaultProfile

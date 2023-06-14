@@ -25,16 +25,16 @@ Export-AzManagementGroupDeploymentStackTemplate -ResourceId <String> [-Pre]
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Exports a template (or template link) for a management group scoped deployment stack.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Export-AzManagementGroupDeploymentStackTemplate -ManagementGroupId MyManagementGroup -Name MyMGStack
 ```
 
-{{ Add example description here }}
+Export a template (or template link) from a stack named 'MyMGStack' under an MG named 'MyManagementGroup'.
 
 ## PARAMETERS
 

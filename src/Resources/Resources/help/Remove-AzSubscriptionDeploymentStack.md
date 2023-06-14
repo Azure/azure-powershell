@@ -27,16 +27,16 @@ Remove-AzSubscriptionDeploymentStack -ResourceId <String> [-DeleteAll] [-DeleteR
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Delete a subscription scoped deployment stack.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Remove-AzSubscriptionDeploymentStack -Name MySubStack 
 ```
 
-{{ Add example description here }}
+Deletes a subscription scoped deployment stack named 'MySubStack' in default subscription, with unmanaged resources and resource groups being detached on cleanup.
 
 ## PARAMETERS
 

@@ -30,17 +30,16 @@ Get-AzSubscriptionDeploymentStack -ResourceId <String> [-Pre] [-DefaultProfile <
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Retrieve a subscription scoped deployment stack.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Get-AzSubscriptionDeploymentStackTemplate -Name MySubStack
 ```
 
-{{ Add example description here }}
-
+Get a deployment stack named 'MySubStack' under the default subscription.
 ## PARAMETERS
 
 ### -DefaultProfile
