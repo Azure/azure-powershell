@@ -14,7 +14,6 @@
 
 using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
 using System.IO;
 
 // This is copied from src/Accounts/Authentication/Modules/AzCliProfileInfo.cs
@@ -23,7 +22,6 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 {
     /// <summary>
     /// this class defines installation id field in Azure CLI context. This information is shared between Azure CLI and Azure PowerShell
-    /// 
     /// </summary>
     internal class AzCLIProfileInfo
     {
