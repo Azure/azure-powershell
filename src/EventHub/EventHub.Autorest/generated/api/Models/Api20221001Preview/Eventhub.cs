@@ -155,7 +155,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview
 
         /// <summary>
         /// Number of hours to retain the events for this Event Hub. This value is only used when cleanupPolicy is Delete. If cleanupPolicy
-        /// is Compaction the returned value of this property is Long.MaxValue
+        /// is Compact the returned value of this property is Long.MaxValue
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Origin(Microsoft.Azure.PowerShell.Cmdlets.EventHub.PropertyOrigin.Inlined)]
         public long? RetentionTimeInHour { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.IEventhubPropertiesInternal)Property).RetentionDescriptionRetentionTimeInHour; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.IEventhubPropertiesInternal)Property).RetentionDescriptionRetentionTimeInHour = value ?? default(long); }
@@ -212,9 +212,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview
 
         /// <summary>
         /// Number of hours to retain the tombstone markers of a compacted Event Hub. This value is only used when cleanupPolicy is
-        /// Compaction. Consumer must complete reading the tombstone marker within this specified amount of time if consumer begins
-        /// from starting offset to ensure they get a valid snapshot for the specific key described by the tombstone marker within
-        /// the compacted Event Hub
+        /// Compact. Consumer must complete reading the tombstone marker within this specified amount of time if consumer begins from
+        /// starting offset to ensure they get a valid snapshot for the specific key described by the tombstone marker within the
+        /// compacted Event Hub
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Origin(Microsoft.Azure.PowerShell.Cmdlets.EventHub.PropertyOrigin.Inlined)]
         public int? TombstoneRetentionTimeInHour { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.IEventhubPropertiesInternal)Property).RetentionDescriptionTombstoneRetentionTimeInHour; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.IEventhubPropertiesInternal)Property).RetentionDescriptionTombstoneRetentionTimeInHour = value ?? default(int); }
@@ -379,12 +379,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview
         string[] PartitionId { get;  }
         /// <summary>
         /// Number of hours to retain the events for this Event Hub. This value is only used when cleanupPolicy is Delete. If cleanupPolicy
-        /// is Compaction the returned value of this property is Long.MaxValue
+        /// is Compact the returned value of this property is Long.MaxValue
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"Number of hours to retain the events for this Event Hub. This value is only used when cleanupPolicy is Delete. If cleanupPolicy is Compaction the returned value of this property is Long.MaxValue ",
+        Description = @"Number of hours to retain the events for this Event Hub. This value is only used when cleanupPolicy is Delete. If cleanupPolicy is Compact the returned value of this property is Long.MaxValue ",
         SerializedName = @"retentionTimeInHours",
         PossibleTypes = new [] { typeof(long) })]
         long? RetentionTimeInHour { get; set; }
@@ -473,14 +473,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview
         Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.CreatedByType? SystemDataLastModifiedByType { get; set; }
         /// <summary>
         /// Number of hours to retain the tombstone markers of a compacted Event Hub. This value is only used when cleanupPolicy is
-        /// Compaction. Consumer must complete reading the tombstone marker within this specified amount of time if consumer begins
-        /// from starting offset to ensure they get a valid snapshot for the specific key described by the tombstone marker within
-        /// the compacted Event Hub
+        /// Compact. Consumer must complete reading the tombstone marker within this specified amount of time if consumer begins from
+        /// starting offset to ensure they get a valid snapshot for the specific key described by the tombstone marker within the
+        /// compacted Event Hub
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"Number of hours to retain the tombstone markers of a compacted Event Hub. This value is only used when cleanupPolicy is Compaction. Consumer must complete reading the tombstone marker within this specified amount of time if consumer begins from starting offset to ensure they get a valid snapshot for the specific key described by the tombstone marker within the compacted Event Hub",
+        Description = @"Number of hours to retain the tombstone markers of a compacted Event Hub. This value is only used when cleanupPolicy is Compact. Consumer must complete reading the tombstone marker within this specified amount of time if consumer begins from starting offset to ensure they get a valid snapshot for the specific key described by the tombstone marker within the compacted Event Hub",
         SerializedName = @"tombstoneRetentionTimeInHours",
         PossibleTypes = new [] { typeof(int) })]
         int? TombstoneRetentionTimeInHour { get; set; }
@@ -555,7 +555,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview
         Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.IRetentionDescription RetentionDescription { get; set; }
         /// <summary>
         /// Number of hours to retain the events for this Event Hub. This value is only used when cleanupPolicy is Delete. If cleanupPolicy
-        /// is Compaction the returned value of this property is Long.MaxValue
+        /// is Compact the returned value of this property is Long.MaxValue
         /// </summary>
         long? RetentionTimeInHour { get; set; }
         /// <summary>
@@ -585,9 +585,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview
         Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.CreatedByType? SystemDataLastModifiedByType { get; set; }
         /// <summary>
         /// Number of hours to retain the tombstone markers of a compacted Event Hub. This value is only used when cleanupPolicy is
-        /// Compaction. Consumer must complete reading the tombstone marker within this specified amount of time if consumer begins
-        /// from starting offset to ensure they get a valid snapshot for the specific key described by the tombstone marker within
-        /// the compacted Event Hub
+        /// Compact. Consumer must complete reading the tombstone marker within this specified amount of time if consumer begins from
+        /// starting offset to ensure they get a valid snapshot for the specific key described by the tombstone marker within the
+        /// compacted Event Hub
         /// </summary>
         int? TombstoneRetentionTimeInHour { get; set; }
         /// <summary>The exact time the message was updated.</summary>

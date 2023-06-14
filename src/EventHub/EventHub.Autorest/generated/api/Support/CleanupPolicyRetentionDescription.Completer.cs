@@ -30,9 +30,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support
             {
                 yield return new global::System.Management.Automation.CompletionResult("'Delete'", "Delete", global::System.Management.Automation.CompletionResultType.ParameterValue, "Delete");
             }
-            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Compaction".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Compact".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("'Compaction'", "Compaction", global::System.Management.Automation.CompletionResultType.ParameterValue, "Compaction");
+                yield return new global::System.Management.Automation.CompletionResult("'Compact'", "Compact", global::System.Management.Automation.CompletionResultType.ParameterValue, "Compact");
             }
         }
     }

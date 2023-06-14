@@ -332,7 +332,7 @@ Accept wildcard characters: False
 ### -RetentionTimeInHour
 Number of hours to retain the events for this Event Hub.
 This value is only used when cleanupPolicy is Delete.
-If cleanupPolicy is Compaction the returned value of this property is Long.MaxValue
+If cleanupPolicy is Compact the returned value of this property is Long.MaxValue
 
 ```yaml
 Type: System.Int64
@@ -424,7 +424,7 @@ Accept wildcard characters: False
 
 ### -TombstoneRetentionTimeInHour
 Number of hours to retain the tombstone markers of a compacted Event Hub.
-This value is only used when cleanupPolicy is Compaction.
+This value is only used when cleanupPolicy is Compact.
 Consumer must complete reading the tombstone marker within this specified amount of time if consumer begins from starting offset to ensure they get a valid snapshot for the specific key described by the tombstone marker within the compacted Event Hub
 
 ```yaml
