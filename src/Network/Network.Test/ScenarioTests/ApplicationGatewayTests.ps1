@@ -643,7 +643,7 @@ function Test-ApplicationGatewayCRUDRewriteRuleSet
 		$gwSubnet = Get-AzVirtualNetworkSubnetConfig -Name $gwSubnetName -VirtualNetwork $vnet
 
 		# Create public ip
-		$publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Static -sku Standard
+		$publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -Zone 1,2 -location $location -AllocationMethod Static -sku Standard
 
 		# Create ip configuration
 		$gipconfig = New-AzApplicationGatewayIPConfiguration -Name $gipconfigname -Subnet $gwSubnet
@@ -844,7 +844,7 @@ function Test-ApplicationGatewayCRUDRewriteRuleSetWithConditions
 		$gwSubnet = Get-AzVirtualNetworkSubnetConfig -Name $gwSubnetName -VirtualNetwork $vnet
 
 		# Create public ip
-		$publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Static -sku Standard
+		$publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Static -sku Standard -Zone 1,2
 
 		# Create ip configuration
 		$gipconfig = New-AzApplicationGatewayIPConfiguration -Name $gipconfigname -Subnet $gwSubnet
@@ -1700,7 +1700,8 @@ function Test-ApplicationGatewayCRUDSubItems
 	)
 
 	# Setup
-	$location = Get-ProviderLocation "Microsoft.Network/applicationGateways" "West US 2"
+	# Setting location to East US 2 EUAP because FIPS are enabled in the slice subscription
+	$location = Get-ProviderLocation "Microsoft.Network/applicationGateways" "East US 2 EUAP"
 
 	$rgname = Get-ResourceGroupName
 	$appgwName = Get-ResourceName
@@ -1730,7 +1731,7 @@ function Test-ApplicationGatewayCRUDSubItems
 	$probeName = Get-ResourceName
 
 	$customError403Url01 = "https://mycustomerrorpages.blob.core.windows.net/errorpages/403-another.htm"
-	$customError403Url02 = "http://mycustomerrorpages.blob.core.windows.net/errorpages/403-another.htm"
+	$customError403Url02 = "https://mycustomerrorpages.blob.core.windows.net/errorpages/403-another2.htm"
 
 	$redirectName = Get-ResourceName
 	$urlPathMapName = Get-ResourceName
@@ -1767,7 +1768,7 @@ function Test-ApplicationGatewayCRUDSubItems
 		$sslPolicy = New-AzApplicationGatewaySslPolicy -DisabledSslProtocols TLSv1_0, TLSv1_1
 
 		#rule
-		$rule01 = New-AzApplicationGatewayRequestRoutingRule -Name $rule01Name -RuleType basic -Priority 100 -BackendHttpSettings $poolSetting01 -HttpListener $listener01 -BackendAddressPool $pool
+		$rule01 = New-AzApplicationGatewayRequestRoutingRule -Name $rule01Name -RuleType basic -BackendHttpSettings $poolSetting01 -HttpListener $listener01 -BackendAddressPool $pool
 
 		# sku
 		$sku = New-AzApplicationGatewaySku -Name Standard_Medium -Tier Standard -Capacity 2
