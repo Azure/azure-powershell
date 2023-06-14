@@ -116,6 +116,7 @@ function Test-ManagedDatabaseMove
 				-InstanceName $managedInstanceSource.ManagedInstanceName `
 				-Name $managedDatabaseName
 		}
+		Start-TestSleep -Seconds 60
 
 		$dbOnTheTarget = Get-AzSqlInstanceDatabase `
 			-ResourceGroupName $targetRGName `
@@ -154,9 +155,9 @@ function Test-ManagedDatabaseMovePiping
 		$managedInstanceTargetJob | Wait-Job
 		$managedInstanceTarget = $managedInstanceTargetJob.Output
 
+
 		$sourceRGName = $sourceRg.ResourceGroupName
 		$targetRGName = $targetRg.ResourceGroupName
-		$managedInstance = $managedInstanceSource.ManagedInstanceName
 		
 		New-AzSqlInstanceDatabase `
 			-ResourceGroupName $sourceRGName `
@@ -222,6 +223,8 @@ function Test-ManagedDatabaseMovePiping
 				-InstanceName $managedInstanceSource.ManagedInstanceName `
 				-Name $managedDatabaseName
 		}
+		
+		Start-TestSleep -Seconds 60
 
 		$dbOnTheTarget = Get-AzSqlInstanceDatabase `
 			-ResourceGroupName $targetRGName `
@@ -329,6 +332,8 @@ function Test-ManagedDatabaseMoveUsingOperationObject
 				-InstanceName $managedInstanceSource.ManagedInstanceName `
 				-Name $managedDatabaseName
 		}
+
+		Start-TestSleep -Seconds 60
 
 		$dbOnTheTarget = Get-AzSqlInstanceDatabase `
 			-ResourceGroupName $targetRGName `
@@ -453,6 +458,7 @@ function Test-ManagedDatabaseCopy
 			-InstanceName $managedInstanceSource.ManagedInstanceName `
 			-Name $managedDatabaseName
 
+		Start-TestSleep -Seconds 60
 		$dbOnTheTarget = Get-AzSqlInstanceDatabase `
 			-ResourceGroupName $targetRGName `
 			-InstanceName $managedInstanceTarget.ManagedInstanceName `
@@ -558,6 +564,7 @@ function Test-ManagedDatabaseCopyPiping
 			-InstanceName $managedInstanceSource.ManagedInstanceName `
 			-Name $managedDatabaseName
 
+		Start-TestSleep -Seconds 60
 		$dbOnTheTarget = Get-AzSqlInstanceDatabase `
 			-ResourceGroupName $targetRGName `
 			-InstanceName $managedInstanceTarget.ManagedInstanceName `
@@ -664,6 +671,7 @@ function Test-ManagedDatabaseCopyUsingOperationObject
 			-InstanceName $managedInstanceSource.ManagedInstanceName `
 			-Name $managedDatabaseName
 
+		Start-TestSleep -Seconds 60
 		$dbOnTheTarget = Get-AzSqlInstanceDatabase `
 			-ResourceGroupName $targetRGName `
 			-InstanceName $managedInstanceTarget.ManagedInstanceName `
@@ -697,7 +705,7 @@ function Wait-ForOperationToSucceed {
 		-Name $databaseName `
 		-OnlyLatestPerDatabase
 
-	while ($moveOperation.state -ne "Succeeded") {
+	while ($moveOperation.state -ne "Succeeded" -and $moveOperation.state -ne "Cancelled") {
 		Start-TestSleep -Seconds 30
 
 		$moveOperation = Get-AzSqlInstanceDatabaseMoveOperation `
@@ -723,7 +731,7 @@ function Wait-ForCopyOperationToSucceed {
 		-Name $databaseName `
 		-OnlyLatestPerDatabase
 
-	while ($moveOperation.state -ne "Succeeded") {
+	while ($moveOperation.state -ne "Succeeded" -and $moveOperation.state -ne "Cancelled") {
 		Start-TestSleep -Seconds 30
 
 		$moveOperation = Get-AzSqlInstanceDatabaseCopyOperation `
