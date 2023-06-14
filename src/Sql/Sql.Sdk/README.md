@@ -25,9 +25,8 @@ title: SqlManagementClient
 
 
 ### 
-``` yaml 
-# Please replace {placeholder} with the commit id you want to pin the swagger to.
-commit: {placeholder}
+``` yaml
+commit: a405542f9491ba61823b5f4f2e10af700123a9d9
 input-file:
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/sql/resource-manager/Microsoft.Sql/stable/2014-04-01/metrics.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/sql/resource-manager/Microsoft.Sql/stable/2014-04-01-legacy/sql.core_legacy.json
