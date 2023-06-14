@@ -61,6 +61,15 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
             Mandatory = true,
             ParameterSetName = DefaultParameterSet,
             ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Cognitive Services Deployment Sku.")]
+        [ValidateNotNullOrEmpty]
+        public Sku Sku { get; set; }
+
+        [Parameter(
+            Position = 4,
+            Mandatory = true,
+            ParameterSetName = DefaultParameterSet,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Cognitive Services Deployment Properties.")]
         public DeploymentProperties Properties { get; set; }
 
@@ -74,6 +83,7 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
                                     ResourceGroupName,
                                     AccountName,
                                     Name,
+                                    Sku,
                                     Properties);
 
                     WriteObject(createAccountResponse);

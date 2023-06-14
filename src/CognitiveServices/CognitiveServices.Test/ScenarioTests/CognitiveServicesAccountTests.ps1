@@ -160,6 +160,50 @@ function Test-GetAzureCognitiveServiceAccount
 
 <#
 .SYNOPSIS
+Test Get-AzCognitiveServicesModel
+#>
+function Test-GetAzureCognitiveServicesModels
+{
+    # Setup
+    $rgname = Get-CognitiveServicesManagementTestResourceName;
+    try
+    {
+        $loc = Get-Location -providerNamespace "Microsoft.CognitiveServices" -resourceType "accounts" -preferredLocation "West US";
+        New-AzResourceGroup -Name $rgname -Location $loc;
+        # Test
+        Get-AzCognitiveServicesModel -Location eastus
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Test Get-AzCognitiveServicesUsage
+#>
+function Test-GetAzureCognitiveServicesUsages
+{
+    # Setup
+    $rgname = Get-CognitiveServicesManagementTestResourceName;
+    try
+    {
+        $loc = Get-Location -providerNamespace "Microsoft.CognitiveServices" -resourceType "accounts" -preferredLocation "West US";
+        New-AzResourceGroup -Name $rgname -Location $loc;
+        # Test
+        Get-AzCognitiveServicesUsage -Location $loc
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
 Test Set-AzCognitiveServicesAccount
 #>
 function Test-SetAzureRmCognitiveServicesAccount
@@ -788,9 +832,9 @@ function Test-GetWithPaging
 
 <#
 .SYNOPSIS
-Test Test-GetUsages
+Test Test-GetAccountUsages
 #>
-function Test-GetUsages
+function Test-GetAccountUsages
 {
     # Setup
     $rgname = Get-CognitiveServicesManagementTestResourceName;
