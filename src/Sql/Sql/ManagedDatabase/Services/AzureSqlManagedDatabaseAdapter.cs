@@ -263,14 +263,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Services
 
         public void MoveManagedDatabase(MoveCopyManagedDatabaseModel model)
         {
-            if (OperationMode.COPY.Equals(model.OperationMode))
-            {
-                Communicator.Copy(model.ResourceGroupName, model.InstanceName, model.DatabaseName, model.getTargetManagedDatabaseId());
-            }
-            else
-            {
-                Communicator.Move(model.ResourceGroupName, model.InstanceName, model.DatabaseName, model.getTargetManagedDatabaseId());
-            }
+            Communicator.Move(model.ResourceGroupName, model.InstanceName, model.DatabaseName, model.getTargetManagedDatabaseId(), model.OperationMode);
         }
 
         public void CompleteMove(MoveCopyManagedDatabaseModel model)
@@ -300,7 +293,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Services
             if (!string.IsNullOrEmpty(model.TargetResourceGroupName))
             {
                 return operations
-                    .Where(operation => operation.TargetManagedInstanceId.ToLower().Contains($"resourceGroups/{model.TargetResourceGroupName.ToLower()}/"))
+                    .Where(operation => operation.TargetManagedInstanceId.ToLower().Contains($"resourceGroups/{model.TargetResourceGroupName}/".ToLower()))
                     .ToList();
             }
             return operations.ToList();

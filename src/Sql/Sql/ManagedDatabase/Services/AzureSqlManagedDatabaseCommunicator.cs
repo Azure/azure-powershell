@@ -178,24 +178,15 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Services
                 databaseName);
         }
 
-        public void Move(string resourceGroupName, string managedInstanceName, string databaseName, string targetManagedDatabaseId)
+        public void Move(string resourceGroupName, string managedInstanceName, string databaseName, string targetManagedDatabaseId, OperationMode operationMode)
         {
             GetCurrentSqlClient().ManagedDatabases.StartMove(resourceGroupName, managedInstanceName, databaseName, new ManagedDatabaseStartMoveDefinition()
             {
                 DestinationManagedDatabaseId = targetManagedDatabaseId,
-                OperationMode = "Move"
+                OperationMode = operationMode.ToString()
             });
         }
 
-
-        public void Copy(string resourceGroupName, string managedInstanceName, string databaseName, string targetManagedDatabaseId)
-        {
-            GetCurrentSqlClient().ManagedDatabases.StartMove(resourceGroupName, managedInstanceName, databaseName, new ManagedDatabaseStartMoveDefinition()
-            {
-                DestinationManagedDatabaseId = targetManagedDatabaseId,
-                OperationMode = "Copy"
-            });
-        }
 
         public void CompleteMoveCopy(string resourceGroupName, string managedInstanceName, string databaseName, string targetManagedDatabaseId)
         {
@@ -215,18 +206,18 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Services
 
         public IList<ManagedDatabaseMoveOperationResult> GetMoveOperations(string resourceGroupName, string location, string managedInstanceName, string databaseName, string targetManagedInstanceName, OperationMode mode, bool onlyLatestPerDatabase)
         {
-            var operationMode = mode == OperationMode.MOVE ? "Move" : "Copy";
-            string filter = $"Properties/OperationMode eq '{operationMode}' and (Properties/SourceManagedInstanceName eq '{managedInstanceName}'";
+            var operationMode = mode.ToString();
+            string filter = $"Properties/OperationMode eq '{operationMode}' and Properties/SourceManagedInstanceName eq '{managedInstanceName}'";
 
             if (!string.IsNullOrEmpty(targetManagedInstanceName))
             {
-                filter += $" and Properties/TargetManagedInstanceName eq '{targetManagedInstanceName}')";
+                filter += $" and Properties/TargetManagedInstanceName eq '{targetManagedInstanceName}'";
             }
 
             if (!string.IsNullOrEmpty(databaseName))
             {
                 // We currently do not support rename of database, so source and target db have same name
-                filter += $" and (Properties/SourceDatabaseName eq '{databaseName}' or Properties/TargetDatabaseName eq '{databaseName}')";
+                filter += $" and Properties/SourceDatabaseName eq '{databaseName}'";
             }
 
             return new List<ManagedDatabaseMoveOperationResult>(GetCurrentSqlClient().ManagedDatabaseMoveOperations.ListByLocation(

@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
 
         protected override MoveCopyManagedDatabaseModel PersistChanges(MoveCopyManagedDatabaseModel model)
         {
-            model.OperationMode = OperationMode.MOVE;
+            model.OperationMode = OperationMode.Move;
             ModelAdapter.MoveManagedDatabase(model);
 
             return model;

@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
     {
         protected override OperationMode GetOperationMode()
         {
-            return OperationMode.MOVE;
+            return OperationMode.Move;
         }
     }
 }

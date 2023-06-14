@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Model
 
     public enum OperationMode
     {
-        MOVE,
-        COPY
+        Move,
+        Copy
     }
 }

@@ -75,20 +75,28 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
 
         protected override IList<ManagedDatabaseMoveCopyOperation> GetEntity()
         {
-            if (ParameterSetName.Equals(GetMoveCopyManagedDatabaseOperationsByResourceIdParameterSet))
-            {
-                var resourceInfo = new ResourceIdentifier(ResourceId);
 
-                ResourceGroupName = resourceInfo.ResourceGroupName;
-                InstanceName = resourceInfo.ParentResource.Substring(resourceInfo.ParentResource.LastIndexOf("/") + 1);
-                DatabaseName = resourceInfo.ResourceName;
-            }
-
-            if (ParameterSetName.Equals(GetMoveCopyManagedDatabaseOperationsByInputObjectParameterSet))
+            switch (ParameterSetName)
             {
-                ResourceGroupName = DatabaseObject.ResourceGroupName;
-                InstanceName = DatabaseObject.ManagedInstanceName;
-                DatabaseName = DatabaseObject.Name;
+                case GetMoveCopyManagedDatabaseOperationsByResourceIdParameterSet:
+                    var resourceInfo = new ResourceIdentifier(ResourceId);
+
+                    ResourceGroupName = resourceInfo.ResourceGroupName;
+                    InstanceName = resourceInfo.ParentResource.Substring(resourceInfo.ParentResource.LastIndexOf("/") + 1);
+                    DatabaseName = resourceInfo.ResourceName;
+                    break;
+                case GetMoveCopyManagedDatabaseOperationsByInputObjectParameterSet:
+                    ResourceGroupName = DatabaseObject.ResourceGroupName;
+                    InstanceName = DatabaseObject.ManagedInstanceName;
+                    DatabaseName = DatabaseObject.Name;
+                    break;
+                case GetMoveCopyManagedDatabaseOperationsByMoveCopyObjectParameterSet:
+                    ResourceGroupName = ModelObject.ResourceGroupName;
+                    InstanceName = ModelObject.InstanceName;
+                    DatabaseName = ModelObject.DatabaseName;
+                    TargetInstanceName = ModelObject.TargetInstanceName;
+                    TargetResourceGroupName = ModelObject.TargetResourceGroupName;
+                    break;
             }
 
             var location = ModelAdapter.GetManagedInstanceLocation(ResourceGroupName, InstanceName);
