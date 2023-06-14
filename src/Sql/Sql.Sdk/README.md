@@ -102,7 +102,7 @@ input-file:
   - https://raw.githubusercontent.com/Azure/azure-rest-api-specs/$(commit)/specification/sql/resource-manager/Microsoft.Sql/preview/2022-02-01-preview/ServerAdvancedThreatProtectionSettings.json
   - https://raw.githubusercontent.com/Azure/azure-rest-api-specs/$(commit)/specification/sql/resource-manager/Microsoft.Sql/preview/2021-11-01-preview/ManagedServerDnsAliases.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/sql/resource-manager/Microsoft.Sql/preview/2022-05-01-preview/ManagedInstanceDtcs.json
-  - https://github.com/Azure/azure-rest-api-specs/tree/$(commit)/specification/sql/resource-manager/Microsoft.Sql/preview/2022-05-01-preview/ManagedDatabaseRestoreDetails.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/sql/resource-manager/Microsoft.Sql/preview/2022-05-01-preview/ManagedDatabaseRestoreDetails.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/sql/resource-manager/Microsoft.Sql/preview/2022-08-01-preview/DatabaseEncryptionProtectorRevalidate.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/sql/resource-manager/Microsoft.Sql/preview/2022-08-01-preview/DatabaseEncryptionProtectorRevert.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/sql/resource-manager/Microsoft.Sql/preview/2022-08-01-preview/RecoverableDatabases.json
