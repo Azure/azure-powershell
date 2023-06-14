@@ -19,6 +19,16 @@
 -->
 ## Upcoming Release
 
+## Version 4.0.0
+* Removed the following Cmdlet alias
+  - `Get-AzBatchAccountKeys`, use `Get-AzBatchAccountKey` instead.
+  - `Get-AzBatchRemoteLoginSettings`, use `Get-AzBatchRemoteLoginSetting` instead.
+  - `Get-AzBatchJobStatistics`, use `Get-AzBatchJobStatistic` instead.
+  - `Get-AzBatchLocationQuotas`, use `Get-AzBatchLocationQuota` instead.
+  - `Get-AzBatchPoolNodeCounts`, use `Get-AzBatchPoolNodeCount` instead.
+  - `Get-AzBatchPoolStatistics`, use `Get-AzBatchPoolStatistic` instead.
+  - `Get-AzBatchPoolUsageMetrics`, use `Get-AzBatchPoolUsageMetric` instead.
+
 ## Version 3.4.0
 * Added new property `Encryption` of type `EncryptionProperties` to `AccountCreateParameters`.
   - Configures how customer data is encrypted inside the Batch account.

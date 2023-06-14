@@ -14,15 +14,11 @@
 
 using Microsoft.Azure.Batch;
 using Microsoft.Azure.Commands.Batch.Models;
-using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System.Management.Automation;
-using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch
 {
-    [GenericBreakingChange("Get-AzBatchPoolStatistics alias will be removed in an upcoming breaking change release")]
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzurePrefix + "BatchPoolStatistic"), OutputType(typeof(PSPoolStatistics))]
-    [Alias("Get-AzBatchPoolStatistics")]
     public class GetBatchPoolStatisticCommand : BatchObjectModelCmdletBase
     {
         protected override void ExecuteCmdletImpl()

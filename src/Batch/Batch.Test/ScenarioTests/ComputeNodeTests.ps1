@@ -119,7 +119,7 @@ function Test-GetRemoteLoginSettings
     $computeNodes = Get-AzBatchComputeNode -PoolId $poolId -BatchContext $context
     $computeNodeId = $computeNodes[0].Id
 
-    $remoteLoginSettings = Get-AzBatchComputeNode $poolId $computeNodeId -BatchContext $context | Get-AzBatchRemoteLoginSettings -BatchContext $context
+    $remoteLoginSettings = Get-AzBatchComputeNode $poolId $computeNodeId -BatchContext $context | Get-AzBatchRemoteLoginSetting -BatchContext $context
 
     Assert-AreNotEqual $null $remoteLoginSettings.IPAddress
     Assert-AreNotEqual $null $remoteLoginSettings.Port

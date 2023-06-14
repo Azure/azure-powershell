@@ -16,13 +16,10 @@ using System.Collections.Generic;
 using Microsoft.Azure.Commands.Batch.Models;
 using System.Management.Automation;
 using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
-using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Batch
 {
-    [GenericBreakingChange("Get-AzBatchPoolNodeCounts alias will be removed in an upcoming breaking change release")]
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzurePrefix + "BatchPoolNodeCount",DefaultParameterSetName = Constants.AzureBatchPoolNodeCounts),OutputType(typeof(PSPoolNodeCounts))]
-    [Alias("Get-AzBatchPoolNodeCounts")]
     public class GetBatchPoolNodeCountCommand : BatchObjectModelCmdletBase
     {
         private const int defaultMaxCount = 10;

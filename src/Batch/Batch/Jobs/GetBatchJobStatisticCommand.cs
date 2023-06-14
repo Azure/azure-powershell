@@ -14,15 +14,11 @@
 
 using Microsoft.Azure.Batch;
 using Microsoft.Azure.Commands.Batch.Models;
-using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System.Management.Automation;
-using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch
 {
-    [GenericBreakingChange("Get-AzBatchJobStatistics alias will be removed in an upcoming breaking change release")]
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzurePrefix + "BatchJobStatistic"), OutputType(typeof(PSJobStatistics))]
-    [Alias("Get-AzBatchJobStatistics")]
     public class GetBatchJobStatisticCommand : BatchObjectModelCmdletBase
     {
         protected override void ExecuteCmdletImpl()

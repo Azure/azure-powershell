@@ -64,12 +64,12 @@ function Test-BatchAccountEndToEnd
         Assert-AreEqual $newTagValue $updatedAccount.Tags[$newTagName]
 
         # Get the account keys (without resource group)
-        $accountWithKeys = Get-AzBatchAccountKeys -Name $accountName
+        $accountWithKeys = Get-AzBatchAccountKey -Name $accountName
         Assert-NotNull $accountWithKeys.PrimaryAccountKey
         Assert-NotNull $accountWithKeys.SecondaryAccountKey
 
         # Get the account keys (with resource group)
-        $accountWithKeys = Get-AzBatchAccountKeys -Name $accountName -ResourceGroupName $resourceGroup
+        $accountWithKeys = Get-AzBatchAccountKey -Name $accountName -ResourceGroupName $resourceGroup
         Assert-NotNull $accountWithKeys.PrimaryAccountKey
         Assert-NotNull $accountWithKeys.SecondaryAccountKey
 

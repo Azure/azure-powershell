@@ -40,6 +40,15 @@
 
 ## Current Breaking Changes
 
+* Removed the following Cmdlet alias
+  - `Get-AzBatchAccountKeys`, use `Get-AzBatchAccountKey` instead.
+  - `Get-AzBatchRemoteLoginSettings`, use `Get-AzBatchRemoteLoginSetting` instead.
+  - `Get-AzBatchJobStatistics`, use `Get-AzBatchJobStatistic` instead.
+  - `Get-AzBatchLocationQuotas`, use `Get-AzBatchLocationQuota` instead.
+  - `Get-AzBatchPoolNodeCounts`, use `Get-AzBatchPoolNodeCount` instead.
+  - `Get-AzBatchPoolStatistics`, use `Get-AzBatchPoolStatistic` instead.
+  - `Get-AzBatchPoolUsageMetrics`, use `Get-AzBatchPoolUsageMetric` instead.
+
 ### Release Az 1.0.0 - December 2018
 
 The following cmdlets were affected this release:

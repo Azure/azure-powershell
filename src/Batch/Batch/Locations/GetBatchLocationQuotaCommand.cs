@@ -14,16 +14,13 @@
 
 using Microsoft.Azure.Commands.Batch.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System.Management.Automation;
-using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch
 {
-    [GenericBreakingChange("Get-AzBatchLocationQuotas alias will be removed in an upcoming breaking change release")]
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "BatchLocationQuota"), OutputType(typeof(PSBatchLocationQuotas))]
     // This alias was added in 10/2016 for backwards compatibility
-    [Alias("Get-" + ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "BatchSubscriptionQuotas", "Get-AzBatchLocationQuotas")]
+    [Alias("Get-" + ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "BatchSubscriptionQuotas")]
     public class GetBatchLocationQuotaCommand : BatchCmdletBase
     {
         [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true,
