@@ -25,8 +25,7 @@ description: Microsoft NetApp Files Azure Resource Provider specification
 
 ###
 ``` yaml
-# Please replace {placeholder} with the commit id you want to pin the swagger to.
-commit: {placeholder}
+commit: 2b6e1ef17ca3ba9d391d9b13fa79d55577e6a99c
 input-file:
    - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/netapp/resource-manager/Microsoft.NetApp/stable/2022-09-01/netapp.json
 output-folder: Generated
