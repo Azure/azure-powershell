@@ -175,11 +175,20 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 
             try
             {
-                var outputs = _powerShellRuntime.ExecuteScript<PSObject>("Get-Module -Name Az -ListAvailable");
+                var outputs = _powerShellRuntime.ExecuteScript<PSObject>("Get-Module -Name Az -ListAvailable").ToList();
 
-                if (!(outputs?.Any() == true))
+                if (outputs?.Any() == true)
                 {
-                    outputs = _powerShellRuntime.ExecuteScript<PSObject>("Get-Module -Name AzPreview -ListAvailable");
+                    var previewOutputs = _powerShellRuntime.ExecuteScript<PSObject>("Get-Module -Name AzPreview -ListAvailable");
+
+                    if (previewOutputs?.Any() == true)
+                    {
+                        outputs.AddRange(previewOutputs);
+                    }
+                }
+                else
+                {
+                    outputs = _powerShellRuntime.ExecuteScript<PSObject>("Get-Module -Name AzPreview -ListAvailable").ToList();
                 }
 
                 if (outputs?.Any() == true)
@@ -200,6 +209,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                     string versionOutput = psObject.Properties["Version"].Value.ToString();
                     int positionOfVersion = versionOutput.IndexOf('-');
                     Version currentAzVersion = (positionOfVersion == -1) ? new Version(versionOutput) : new Version(versionOutput.Substring(0, positionOfVersion));
+                    string currentSuffix = (positionOfVersion == -1 || positionOfVersion == versionOutput.Length - 1) ? "" : versionOutput.Substring(positionOfVersion + 1);
                     if (currentAzVersion > latestAzVersion)
                     {
                         latestAzVersion = currentAzVersion;
