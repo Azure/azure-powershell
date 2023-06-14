@@ -52,10 +52,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.UnitTests
             string path = "/path/to/configuration";
             string nodeConfigurationName = "runbook.configuration";
             bool incrementNodeConfigBuild = false;
+            var tags = new Dictionary<string, string>();
+            tags.Add("tag1", "tags2");
 
             this.mockAutomationClient.Setup(
                 f =>
-                    f.CreateNodeConfiguration(resourceGroupName, accountName, path, configurationName, incrementNodeConfigBuild, false)
+                    f.CreateNodeConfiguration(resourceGroupName, accountName, path, tags, configurationName, incrementNodeConfigBuild, false)
                 );
 
             this.mockAutomationClient.Setup(
@@ -67,13 +69,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.UnitTests
             this.cmdlet.AutomationAccountName = accountName;
             this.cmdlet.ConfigurationName = configurationName;
             this.cmdlet.Path = path;
+            this.cmdlet.Tag = tags;
             this.cmdlet.IncrementNodeConfigurationBuild = incrementNodeConfigBuild;
             this.cmdlet.Force = false;
 
             this.cmdlet.ExecuteCmdlet();
 
             // Assert
-            this.mockAutomationClient.Verify(f => f.CreateNodeConfiguration(resourceGroupName, accountName, path, configurationName, incrementNodeConfigBuild, false),
+            this.mockAutomationClient.Verify(f => f.CreateNodeConfiguration(resourceGroupName, accountName, path, tags, configurationName, incrementNodeConfigBuild, false),
                 Times.Once());
         }
     }
