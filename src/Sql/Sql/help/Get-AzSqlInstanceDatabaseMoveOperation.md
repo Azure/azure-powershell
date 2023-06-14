@@ -206,7 +206,7 @@ This command will return latest move operation for database db2 on instance inst
 ## PARAMETERS
 
 ### -DatabaseName
-The name of the instance database.
+Name of a database on Azure SQL Managed Instance.
 
 ```yaml
 Type: System.String
@@ -233,7 +233,7 @@ Accept wildcard characters: False
 ```
 
 ### -DatabaseObject
-Managed database object, for example output of **Get-AzSqlInstanceDatabase** cmdlet
+Managed database object.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Sql.ManagedDatabase.Model.AzureSqlManagedDatabaseModel
@@ -278,7 +278,7 @@ Accept wildcard characters: False
 ```
 
 ### -ModelObject
-Object that is returned from start copy operation.
+Object that is returned from start move or copy operation using -PassThru parameter.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Sql.ManagedDatabase.Model.MoveCopyManagedDatabaseModel
@@ -293,7 +293,7 @@ Accept wildcard characters: False
 ```
 
 ### -OnlyLatestPerDatabase
-It will return only latest opereation per database
+Return only latest opereation per managed database
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -323,7 +323,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-The resource id of managed database resource.
+Resource id of managed database.
 
 ```yaml
 Type: System.String
@@ -338,7 +338,7 @@ Accept wildcard characters: False
 ```
 
 ### -TargetInstanceName
-The name of the target managed instance.
+Name of the target Azure SQL Managed Instance.
 
 ```yaml
 Type: System.String
@@ -365,7 +365,7 @@ Accept wildcard characters: False
 ```
 
 ### -TargetResourceGroupName
-The name of the target resource group.
+Name of the target resource group.
 
 ```yaml
 Type: System.String
@@ -396,9 +396,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.Sql.ManagedDatabase.Model.AzureSqlManagedDatabaseModel
-
 ### System.String
+
+### Microsoft.Azure.Commands.Sql.ManagedDatabase.Model.AzureSqlManagedDatabaseModel
 
 ### Microsoft.Azure.Commands.Sql.ManagedDatabase.Model.MoveCopyManagedDatabaseModel
 

@@ -99,7 +99,7 @@ Accept wildcard characters: False
 ```
 
 ### -DatabaseName
-The name of the instance database.
+Name of the instance database.
 
 ```yaml
 Type: System.String
@@ -126,7 +126,7 @@ Accept wildcard characters: False
 ```
 
 ### -DatabaseObject
-Managed database object, for example output of **Get-AzSqlInstanceDatabase** cmdlet
+Managed database object.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Sql.ManagedDatabase.Model.AzureSqlManagedDatabaseModel
@@ -156,7 +156,7 @@ Accept wildcard characters: False
 ```
 
 ### -InstanceName
-The name of the instance.
+Name of the source instance.
 
 ```yaml
 Type: System.String
@@ -195,7 +195,7 @@ Accept wildcard characters: False
 ```
 
 ### -MoveCopyOperationObject
-The managed database move or copy operation object.
+Managed database move or copy operation object.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Sql.ManagedDatabase.Model.ManagedDatabaseMoveCopyOperation
@@ -225,7 +225,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The name of the resource group.
+Name of the source resource group.
 
 ```yaml
 Type: System.String
@@ -264,7 +264,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-The resource id of managed database resource.
+Resource id of managed database.
 
 ```yaml
 Type: System.String
@@ -279,7 +279,7 @@ Accept wildcard characters: False
 ```
 
 ### -TargetInstanceName
-The name of the target managed instance.
+Name of the target Azure SQL Managed Instance.
 
 ```yaml
 Type: System.String
@@ -294,7 +294,7 @@ Accept wildcard characters: False
 ```
 
 ### -TargetResourceGroupName
-The name of the target resource group.
+Name of the target resource group.
 
 ```yaml
 Type: System.String
@@ -324,8 +324,7 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -344,11 +343,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.Commands.Sql.ManagedDatabase.Model.MoveCopyManagedDatabaseModel
+
 ### System.String
 
 ### Microsoft.Azure.Commands.Sql.ManagedDatabase.Model.AzureSqlManagedDatabaseModel
 
-### Microsoft.Azure.Commands.Sql.ManagedInstance.Model.AzureSqlManagedInstanceModel
+### Microsoft.Azure.Commands.Sql.ManagedDatabase.Model.ManagedDatabaseMoveCopyOperation
 
 ## OUTPUTS
 

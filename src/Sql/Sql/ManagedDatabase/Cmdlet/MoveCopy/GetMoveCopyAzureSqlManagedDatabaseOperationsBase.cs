@@ -27,43 +27,43 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
         protected const string GetMoveCopyManagedDatabaseOperationsByResourceIdParameterSet = "GetMoveCopyManagedDatabaseOperationsByResourceIdParameterSet";
         protected const string GetMoveCopyManagedDatabaseOperationsByMoveCopyObjectParameterSet = "GetMoveCopyManagedDatabaseOperationsByMoveCopyObjectParameterSet";
 
-        [Parameter(Mandatory = false, HelpMessage = "The name of the instance database.", ParameterSetName = GetMoveCopyManagedDatabaseOperationsByNameParameterSet)]
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = GetMoveCopyManagedDatabaseOperationsByInputObjectParameterSet, HelpMessage = "The name of the instance database.")]
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = GetMoveCopyManagedDatabaseOperationsByMoveCopyObjectParameterSet, HelpMessage = "The name of the instance database.")]
+        [Parameter(Mandatory = false, HelpMessage = "Name of a database on Azure SQL Managed Instance.", ParameterSetName = GetMoveCopyManagedDatabaseOperationsByNameParameterSet)]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = GetMoveCopyManagedDatabaseOperationsByInputObjectParameterSet, HelpMessage = "Name of a database on Azure SQL Managed Instance.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = GetMoveCopyManagedDatabaseOperationsByMoveCopyObjectParameterSet, HelpMessage = "Name of a database on Azure SQL Managed Instance.")]
         [ValidateNotNullOrEmpty]
         [Alias("Name")]
         [ResourceNameCompleter("Microsoft.Sql/managedInstances/databases", nameof(ResourceGroupName), nameof(InstanceName))]
         public string DatabaseName { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "The name of the target resource group.", ParameterSetName = GetMoveCopyManagedDatabaseOperationsByNameParameterSet)]
-        [Parameter(Mandatory = false, HelpMessage = "The name of the target resource group.", ParameterSetName = GetMoveCopyManagedDatabaseOperationsByInputObjectParameterSet)]
-        [Parameter(Mandatory = false, HelpMessage = "The name of the target resource group.", ParameterSetName = GetMoveCopyManagedDatabaseOperationsByResourceIdParameterSet)]
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = GetMoveCopyManagedDatabaseOperationsByMoveCopyObjectParameterSet, HelpMessage = "The name of the target resource group.")]
+        [Parameter(Mandatory = false, HelpMessage = "Name of the target resource group.", ParameterSetName = GetMoveCopyManagedDatabaseOperationsByNameParameterSet)]
+        [Parameter(Mandatory = false, HelpMessage = "Name of the target resource group.", ParameterSetName = GetMoveCopyManagedDatabaseOperationsByInputObjectParameterSet)]
+        [Parameter(Mandatory = false, HelpMessage = "Name of the target resource group.", ParameterSetName = GetMoveCopyManagedDatabaseOperationsByResourceIdParameterSet)]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = GetMoveCopyManagedDatabaseOperationsByMoveCopyObjectParameterSet, HelpMessage = "Name of the target resource group.")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string TargetResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "The name of the target managed instance.", ParameterSetName = GetMoveCopyManagedDatabaseOperationsByNameParameterSet)]
-        [Parameter(Mandatory = false, HelpMessage = "The name of the target managed instance.", ParameterSetName = GetMoveCopyManagedDatabaseOperationsByInputObjectParameterSet)]
-        [Parameter(Mandatory = false, HelpMessage = "The name of the target managed instance.", ParameterSetName = GetMoveCopyManagedDatabaseOperationsByResourceIdParameterSet)]
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = GetMoveCopyManagedDatabaseOperationsByMoveCopyObjectParameterSet, HelpMessage = "The name of the target managed instance.")]
+        [Parameter(Mandatory = false, HelpMessage = "Name of the target Azure SQL Managed Instance.", ParameterSetName = GetMoveCopyManagedDatabaseOperationsByNameParameterSet)]
+        [Parameter(Mandatory = false, HelpMessage = "Name of the target Azure SQL Managed Instance.", ParameterSetName = GetMoveCopyManagedDatabaseOperationsByInputObjectParameterSet)]
+        [Parameter(Mandatory = false, HelpMessage = "Name of the target Azure SQL Managed Instance.", ParameterSetName = GetMoveCopyManagedDatabaseOperationsByResourceIdParameterSet)]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = GetMoveCopyManagedDatabaseOperationsByMoveCopyObjectParameterSet, HelpMessage = "Name of the target Azure SQL Managed Instance.")]
         [ValidateNotNullOrEmpty]
         [ResourceNameCompleter("Microsoft.Sql/managedInstances", nameof(TargetResourceGroupName))]
         public string TargetInstanceName { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = GetMoveCopyManagedDatabaseOperationsByInputObjectParameterSet)]
+        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = GetMoveCopyManagedDatabaseOperationsByInputObjectParameterSet, HelpMessage = "Managed database object.")]
         [ValidateNotNull]
         public AzureSqlManagedDatabaseModel DatabaseObject { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = GetMoveCopyManagedDatabaseOperationsByResourceIdParameterSet)]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = GetMoveCopyManagedDatabaseOperationsByResourceIdParameterSet, HelpMessage = "Resource id of managed database.")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = GetMoveCopyManagedDatabaseOperationsByMoveCopyObjectParameterSet, HelpMessage = "Object that is returned from start copy operation.")]
+        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = GetMoveCopyManagedDatabaseOperationsByMoveCopyObjectParameterSet, HelpMessage = "Object that is returned from start move or copy operation using -PassThru parameter.")]
         [ValidateNotNullOrEmpty]
         public MoveCopyManagedDatabaseModel ModelObject { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "It will return only latest opereation per database")]
+        [Parameter(Mandatory = false, HelpMessage = "Return only latest opereation per managed database")]
         public SwitchParameter OnlyLatestPerDatabase { get; set; }
 
         /// <summary>
