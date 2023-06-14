@@ -20,8 +20,7 @@ variables:
   EnableTestCoverage: true
   TestCoverageLocation: $(Build.SourcesDirectory)/artifacts
   PowerShellPlatform: PowerShell Core
-  FilesChangedPaths: $(Build.SourcesDirectory)/artifacts/FilesChanged.txt
-
+# FilesChangedPaths: $(Build.SourcesDirectory)/artifacts/FilesChanged.txt
 trigger: none
 
 pr:
@@ -58,7 +57,7 @@ jobs:
       configuration: ${{ variables.Configuration }}
       testFramework: ${{ variables.TestFramework }}
       powerShellPlatform: ${{ variables.PowerShellPlatform }}
-      filesChangedPaths: ${{ variables.FilesChangedPaths }}
+      filesChangedPaths: "$(Build.SourcesDirectory)/artifacts/FilesChanged.txt" # ${{ variables.FilesChangedPaths }}
 
 # - job: Test
 #   displayName: Test
