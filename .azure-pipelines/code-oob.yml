@@ -72,7 +72,7 @@ stages:
             ModuleName = "${{ parameters.ServiceName }}"
             VersionNumber = "$versionNumber"
             VersionChanges = "$versionChanges"
-            IsPreview = ${{ parameters.Preview }}
+            IsPreview = “${{ parameters.Preview }}“
           }
           $jsonString = $jsonData | ConvertTo-Json
           $jsonString | Out-File -FilePath "VersionInfo.json"
