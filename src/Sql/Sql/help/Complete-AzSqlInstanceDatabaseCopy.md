@@ -57,14 +57,14 @@ The **Complete-AzSqlInstanceDatabaseCopy** cmdlet complete copy operation of a d
 Complete-AzSqlInstanceDatabaseCopy -ResourceGroupName RG1 -InstanceName MI1 -Name database1 -TargetInstanceName MI2
 ```
 
-This command complete copy opeartion of database1 on instance MI1 to instance MI2
+This command completes copy operation of database1 on instance MI1 to instance MI2
 
 ### Example 2: Complete copy database to another Managed Instance in the different resource group
 ```powershell
 Complete-AzSqlInstanceDatabaseCopy -ResourceGroupName RG1 -InstanceName MI1 -Name database1 -TargetResourceGroupName RG2 -TargetInstanceName MI2
 ```
 
-This command complete copy opeartion of database1 on instance MI1 in resource group RG1 to instance MI2 in resource group RG2
+This command completes copy operation of database1 on instance MI1 in resource group RG1 to instance MI2 in resource group RG2
 
 ## PARAMETERS
 

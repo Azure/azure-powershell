@@ -51,14 +51,14 @@ The **Copy-AzSqlInstanceDatabase** cmdlet start online copy operation of a datab
 Copy-AzSqlInstanceDatabase -ResourceGroupName RG1 -InstanceName MI1 -Name database1 -TargetInstanceName MI2
 ```
 
-This command copy database1 from instance MI1 to MI2
+This command copies database1 from instance MI1 to MI2
 
 ### Example 2: Copy database to another Managed Instance in the different resource group
 ```powershell
 Copy-AzSqlInstanceDatabase -ResourceGroupName RG1 -InstanceName MI1 -Name database1 -TargetResourceGroupName RG2 -TargetInstanceName MI2
 ```
 
-This command copy database1 from instance MI1 in resource group RG1 to MI2 in resource group RG2
+This command copies database1 from instance MI1 in resource group RG1 to MI2 in resource group RG2
 
 ## PARAMETERS
 
