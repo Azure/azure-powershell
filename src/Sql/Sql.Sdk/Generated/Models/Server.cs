@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// <param name="privateEndpointConnections">List of private endpoint
         /// connections on a server</param>
         /// <param name="minimalTlsVersion">Minimal TLS version. Allowed
-        /// values: '1.0', '1.1', '1.2'</param>
+        /// values: 'None', '1.0', '1.1', '1.2'</param>
         /// <param name="publicNetworkAccess">Whether or not public endpoint
         /// access is allowed for this server.  Value is optional but if passed
         /// in, must be 'Enabled' or 'Disabled' or 'SecuredByPerimeter'.
@@ -160,8 +160,8 @@ namespace Microsoft.Azure.Management.Sql.Models
         public IList<ServerPrivateEndpointConnection> PrivateEndpointConnections { get; private set; }
 
         /// <summary>
-        /// Gets or sets minimal TLS version. Allowed values: '1.0', '1.1',
-        /// '1.2'
+        /// Gets or sets minimal TLS version. Allowed values: 'None', '1.0',
+        /// '1.1', '1.2'
         /// </summary>
         [JsonProperty(PropertyName = "properties.minimalTlsVersion")]
         public string MinimalTlsVersion { get; set; }

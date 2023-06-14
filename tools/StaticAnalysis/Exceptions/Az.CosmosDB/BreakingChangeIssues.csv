@@ -1,2 +1,0 @@
-"Module","ClassName","Target","Severity","ProblemId","Description","Remediation"
-"Az.CosmosDB","Microsoft.Azure.Commands.CosmosDB.GetAzCosmosDBMongoDBRestorableResource","Get-AzCosmosDBMongoDBRestorableResource","0","2020","The cmdlet 'Get-AzCosmosDBMongoDBRestorableResource' no longer supports the type 'System.DateTimeOffset' for parameter 'RestoreTimestampInUtc'.","Change the type for parameter 'RestoreTimestampInUtc' back to 'System.DateTimeOffset'."

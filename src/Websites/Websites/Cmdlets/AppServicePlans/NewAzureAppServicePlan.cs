@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServicePlans
         public string Location { get; set; }
 
         [Parameter(Position = 3, Mandatory = false, HelpMessage = "The App Service plan tier. Allowed values are [Free|Shared|Basic|Standard|Premium|PremiumV2|PremiumV3]. For ASE: [Isolated|IsolatedV2].")]
-        [PSArgumentCompleter("Free", "Shared", "Basic", "Standard", "Premium", "PremiumV2", "PremiumV3", "Isolated", "IsolatedV2", "PremiumContainer")]
+        [PSArgumentCompleter("Free", "Shared", "Basic", "Standard", "Premium", "PremiumV2", "PremiumV3", "PremiumMV3", "Isolated", "IsolatedV2", "PremiumContainer")]
         public string Tier { get; set; }
 
         [Parameter(Position = 4, Mandatory = false, HelpMessage = "Number of Workers to be allocated.")]

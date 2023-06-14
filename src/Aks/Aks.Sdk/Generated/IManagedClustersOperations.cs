@@ -49,6 +49,34 @@ namespace Microsoft.Azure.Management.ContainerService
         /// </exception>
         Task<AzureOperationResponse<OSOptionProfile>> GetOSOptionsWithHttpMessagesAsync(string location, string resourceType = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
+        /// Gets a list of supported Kubernetes versions in the specified
+        /// subscription.
+        /// </summary>
+        /// <remarks>
+        /// Contains extra metadata on the version, including supported patch
+        /// versions, capabilities, available upgrades, and details on preview
+        /// status of the version
+        /// </remarks>
+        /// <param name='location'>
+        /// The name of Azure region.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<KubernetesVersionListResult>> ListKubernetesVersionsWithHttpMessagesAsync(string location, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
         /// Gets a list of managed clusters in the specified subscription.
         /// </summary>
         /// <param name='customHeaders'>

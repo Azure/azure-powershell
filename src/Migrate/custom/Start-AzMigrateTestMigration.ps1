@@ -187,7 +187,7 @@ function Start-AzMigrateTestMigration {
             $ProviderSpecificDetailInput.InstanceType = 'VMwareCbt'
             $ProviderSpecificDetailInput.NetworkId = $TestNetworkID
             if ($OsUpgradeVersion) {
-                $SupportedOSVersions = $ReplicationMigrationItem.ProviderSpecificDetail.SupportedOSVersions
+                $SupportedOSVersions = $ReplicationMigrationItem.ProviderSpecificDetail.SupportedOSVersion
                 if ($null -eq $SupportedOSVersions) {
                     throw "There is no supported target OS available. Please check or remove the OsUpgradeVersion input." 
                 }

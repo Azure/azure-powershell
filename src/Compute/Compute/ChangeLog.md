@@ -20,9 +20,13 @@
 
 -->
 ## Upcoming Release
+* Added useful examples to the `New-AzVMConfig` help doc.
+* Added new `ResourceId` parameter to the `Get-AzVmss` cmdlet. 
+
+## Version 6.0.0
 * Added new switch parameter `OSImageScheduledEventEnabled` and string parameter `OSImageScheduledEventNotBeforeTimeoutInMinutes` to the cmdlets `New-AzVmssConfig` and `Update-AzVmss`.
 * Fixed an issue that `Add-AzVhd` throws `FileNotFoundException` on Windows PowerShell. [#21321]
-* Removed the `NextLink` parameter and parameter set from the `Get-AzVM` cmdelt.
+* Removed the `NextLink` parameter and parameter set from the `Get-AzVM` cmdlet.
 
 
 ## Version 5.7.1
@@ -44,6 +48,7 @@
 * Added `-NetworkAccessPolicy` parameter to `New-AzSnapshotUpdateConfig`.
 * Added `-SharedGalleryImageId` parameter to `New-AzVM`, `New-AzVmConfig`, `New-AzVmss`, `New-AzVmssConfig`, `Update-AzVmss`, and `Set-AzVmssStorageProfile`.
 * Updated `Set-AzVMDiagnosticsExtension` to correct capitalization by passing "StorageAccount" as configuration property instead of "storageAccount".
+* Added condition in Automapper configurations to check for null Tag values for `PSDiskUpdate` and `PSSnapshotUpdate` to fix bug in Update-AzDisk and Update-AzSnapshot.
 
 ## Version 5.5.0
 * Added breaking change message for `New-AzVmss`.

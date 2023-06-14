@@ -1292,6 +1292,10 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<CNM.PSRouteMapRuleCriterion, MNM.Criterion>();
                 cfg.CreateMap<CNM.PSRouteMapRuleAction, MNM.Action>();
                 cfg.CreateMap<CNM.PSRouteMapRuleActionParameter, MNM.Parameter>();
+                cfg.CreateMap<CNM.PSVirtualHubEffectiveRouteList, MNM.VirtualHubEffectiveRouteList>();
+                cfg.CreateMap<CNM.PSVirtualHubEffectiveRoute, MNM.VirtualHubEffectiveRoute>();
+                cfg.CreateMap<CNM.PSVirtualHubEffectiveRouteMapRouteList, MNM.EffectiveRouteMapRouteList>();
+                cfg.CreateMap<CNM.PSVirtualHubEffectiveRouteMapRoute, MNM.EffectiveRouteMapRoute>();
 
                 // MNM to CNM
                 cfg.CreateMap<MNM.RouteMap, CNM.PSRouteMap>();
@@ -1299,6 +1303,10 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<MNM.Criterion, CNM.PSRouteMapRuleCriterion>();
                 cfg.CreateMap<MNM.Action, CNM.PSRouteMapRuleAction > ();
                 cfg.CreateMap<MNM.Parameter, CNM.PSRouteMapRuleActionParameter> ();
+                cfg.CreateMap<MNM.VirtualHubEffectiveRouteList, CNM.PSVirtualHubEffectiveRouteList>();
+                cfg.CreateMap<MNM.VirtualHubEffectiveRoute, CNM.PSVirtualHubEffectiveRoute>();
+                cfg.CreateMap<MNM.EffectiveRouteMapRouteList, CNM.PSVirtualHubEffectiveRouteMapRouteList>();
+                cfg.CreateMap<MNM.EffectiveRouteMapRoute, CNM.PSVirtualHubEffectiveRouteMapRoute>();
 
                 // Virtual wan Point to site
                 // MNM to CNM

@@ -13,22 +13,27 @@ Remove a route map from a VirtualHub.
 ## SYNTAX
 
 ### ByRouteMapName (Default)
-```powershell
-Remove-AzRouteMap -Name <String> -ResourceGroupName <String> -VirtualHubName <String> [-AsJob] [-Force] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+Remove-AzRouteMap [-ResourceGroupName <String>] [-VirtualHubName <String>] [-Name <String>] [-AsJob] [-Force]
+ [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-```powershell
-Remove-AzRouteMap -Name <String> -VirtualHubObject <String> [-AsJob] [-Force] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+### ByVirtualHubObject
+```
+Remove-AzRouteMap [-Name <String>] [-VirtualHubObject <PSVirtualHub>] [-AsJob] [-Force] [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByRouteMapObject
-```powershell
-Remove-AzRouteMap -InputObject <PSRouteMap> [-AsJob] [-Force] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+Remove-AzRouteMap [-InputObject <PSRouteMap>] [-AsJob] [-Force] [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByRouteMapResourceId
-```powershell
-Remove-AzRouteMap -ResourceId <String> [-AsJob] [-Force] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+Remove-AzRouteMap [-ResourceId <String>] [-AsJob] [-Force] [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -58,7 +63,6 @@ $routeMapRule2 = New-AzRouteMapRule -Name "rule2" -MatchCriteria @($routeMapMatc
 New-AzRouteMap -ResourceGroupName "testRg" -VirtualHubName "testHub" -Name "testRouteMap" -RouteMapRule @($routeMapRule1, $routeMapRule2)
 $routeMap1 = Get-AzRouteMap -ResourceGroupName "testRg" -VirtualHubName "testHub" -Name "testRouteMap"
 Remove-AzRouteMap -InputObject $routeMap1
-
 ```
 
 ## PARAMETERS
@@ -67,7 +71,7 @@ Remove-AzRouteMap -InputObject $routeMap1
 Run cmdlet in the background
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -119,7 +123,7 @@ Aliases: RouteMap
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -128,7 +132,7 @@ The route map name.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ByRouteMapName, ByVirtualHubObject
 Aliases: ResourceName, RouteMapName
 
 Required: False
@@ -158,7 +162,7 @@ The resource group name.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByVirtualHubName
+Parameter Sets: ByRouteMapName
 Aliases:
 
 Required: False
@@ -183,27 +187,12 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -RouteMapRule
-List of route map rules in the route map. 
-
-```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSRouteMapRule
-Parameter Sets:
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -VirtualHubName
 The Virtual Hub name. 
 
 ```yaml
 Type: System.String
-Parameter Sets: ByVirtualHubName
+Parameter Sets: ByRouteMapName
 Aliases: ParentVirtualHubName, ParentResourceName
 
 Required: False
@@ -219,7 +208,37 @@ The Virtual Hub Object.
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSVirtualHub
 Parameter Sets: ByVirtualHubObject
-Aliases: ParentObject, ParentVirtualHub
+Aliases: VirtualHub, ParentVirtualHub
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
 
 Required: False
 Position: Named
