@@ -2,6 +2,7 @@ parameters:
   configuration: ''
   testFramework: ''
   powerShellPlatform: ''
+  filesChangedPaths: ''
 
 steps:
 - template: download-build-steps.yml
@@ -65,3 +66,12 @@ steps:
 - template: publish-artifacts-steps.yml
   parameters:
     artifactName: analyze-${{ parameters.testFramework }}
+
+- task: PowerShell@2
+  displayName: "Verify generated code"
+  inputs:
+    filePath: "../../tools/SDKGeneratedCodeVerify.ps1"
+    arguments: >
+      -FilesChangedPaths ${{ parameters.filesChangedPaths }}
+    pwsh: true
+    failOnStderr: false
