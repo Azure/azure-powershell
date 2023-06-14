@@ -406,8 +406,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 if (_cmdlet.IsParameterBound(c => c.SecurityType) && (_cmdlet.SecurityType == "TrustedLaunch" || _cmdlet.SecurityType == "ConfidentialVM"))
                 {
                     _cmdlet.SecurityType = _cmdlet.SecurityType;
-                    _cmdlet.EnableVtpm = _cmdlet.EnableVtpm == null ? true : _cmdlet.EnableVtpm;
-                    _cmdlet.EnableSecureBoot = _cmdlet.EnableSecureBoot == null ? true : _cmdlet.EnableSecureBoot;
+                    _cmdlet.EnableVtpm = _cmdlet.EnableVtpm ?? true;
+                    _cmdlet.EnableSecureBoot = _cmdlet.EnableSecureBoot ?? true;
                 }
 
                 Dictionary<string, List<string>> auxAuthHeader = null;
@@ -554,8 +554,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 if (_cmdlet.IsParameterBound(c => c.SecurityType) && (_cmdlet.SecurityType == "TrustedLaunch" || _cmdlet.SecurityType == "ConfidentialVM"))
                 {
                     _cmdlet.SecurityType = _cmdlet.SecurityType;
-                    _cmdlet.EnableVtpm = _cmdlet.EnableVtpm == null ? true : _cmdlet.EnableVtpm;
-                    _cmdlet.EnableSecureBoot = _cmdlet.EnableSecureBoot == null ? true : _cmdlet.EnableSecureBoot;
+                    _cmdlet.EnableVtpm = _cmdlet.EnableVtpm ?? true;
+                    _cmdlet.EnableSecureBoot = _cmdlet.EnableSecureBoot ?? true;
                 }
 
                 _cmdlet.NatBackendPort = ImageAndOsType.UpdatePorts(_cmdlet.NatBackendPort);
@@ -640,12 +640,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 LoadBalancerStrategy.IgnorePreExistingConfigCheck = false;
             }
 
-            //Guest Attestation IDentity stuff
+            //Guest Attestation Identity stuff
             if (this.IsParameterBound(c => c.SecurityType) && (this.SecurityType == "TrustedLaunch" || this.SecurityType == "ConfidentialVM"))
             {
                 this.SecurityType = this.SecurityType;
-                this.EnableVtpm = this.EnableVtpm == null ? true : this.EnableVtpm;
-                this.EnableSecureBoot = this.EnableSecureBoot == null ? true : this.EnableSecureBoot;
+                this.EnableVtpm = this.EnableVtpm ?? true;
+                this.EnableSecureBoot = this.EnableSecureBoot ?? true;
             }
             if (shouldGuestAttestationExtBeInstalledSimple()
                 && !this.IsParameterBound(c => c.SystemAssignedIdentity)
