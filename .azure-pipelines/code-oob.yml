@@ -7,6 +7,10 @@ parameters:
   displayName: Service to OOB release
   type: string
   default: Databricks
+- name: Preview
+  displayName: Is preview version
+  type: boolean
+  default: false
 stages:
 - stage: OOBRelease
   displayName: OOBRelease
@@ -39,6 +43,9 @@ stages:
               git config user.name "azure-powershell-bot"
               git checkout -b codeoob/${{ parameters.ServiceName }}
               git add -A
+              if (${{ parameters.Preview }} -eq $true) {
+                git reset -- ./tools/Tools.Common/SerializedCmdlets/Az.${{ parameters.ServiceName }}.json
+              }
               git commit -m "Bump up version for ${{ parameters.ServiceName }}"
               git remote set-url origin https://azure-powershell-bot:$Token@github.com/Azure/azure-powershell.git;
               git push origin codeoob/${{ parameters.ServiceName }} --force;
@@ -65,6 +72,7 @@ stages:
             ModuleName = "${{ parameters.ServiceName }}"
             VersionNumber = "$versionNumber"
             VersionChanges = "$versionChanges"
+            IsPreview = ${{ parameters.Preview }}
           }
           $jsonString = $jsonData | ConvertTo-Json
           $jsonString | Out-File -FilePath "VersionInfo.json"
