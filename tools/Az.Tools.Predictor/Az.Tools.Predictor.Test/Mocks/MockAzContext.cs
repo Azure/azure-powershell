@@ -27,11 +27,11 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test.Mocks
 
         public string OSVersion => "TestOSVersion";
 
-        public Version PowerShellVersion => default;
+        public Version PowerShellVersion => new();
 
-        public Version ModuleVersion => default;
+        public Version ModuleVersion => new();
 
-        public Version AzVersion => default;
+        public Version AzVersion => new();
 
         public int Cohort { get; set; } = -1;
 

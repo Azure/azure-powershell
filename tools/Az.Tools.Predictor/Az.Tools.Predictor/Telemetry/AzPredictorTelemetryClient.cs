@@ -37,10 +37,9 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
         /// </summary>
         /// <remarks>
         /// Application Insight has a limit of 8192 (https://github.com/MicrosoftDocs/azure-docs/blob/master/includes/application-insights-limits.md).
-        /// Substract (arbitrary but hopefully enough) 500 (this should cover the common properties) as the buffer of other properties in the event.
+        /// Substract (arbitrary but hopefully enough) 100 as the buffer of other values in the property.
         /// </remarks>
-        /// <seealso cref="TelemetryUtilities.CreateCommonProperties" />
-        internal const int MaxPropertyValueSizeWithBuffer = MaxAppInsightPropertyValueSize - 500;
+        internal const int MaxPropertyValueSizeWithBuffer = MaxAppInsightPropertyValueSize - 100;
 
         /// <inheritdoc/>
         public string RequestId { get; set; } = Guid.NewGuid().ToString();
@@ -392,11 +391,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
                 CachedAggregatedTelemetryData = new AggregatedTelemetryData();
             }
 
-            if (CachedAggregatedTelemetryData.EstimateSuggestionSessionSize >= AzPredictorTelemetryClient.MaxPropertyValueSizeWithBuffer)
-            {
-                var newSuggestionSession = SendAggregateTelemetryDataDuringSuggestionCycle(telemetryData, CachedAggregatedTelemetryData.SuggestionSessions.LastOrDefault().SuggestionSessionId);
-                newSuggestionSession.IsSuggestionComplete = false; // This can correlate to the suggestions in the previous events.
-            }
+            // We check the size of the property and send the telemetry when we process GetSuggestionTelemetryData,
+            // SuggestionDisplayedTelemetryData, and SuggestionAcceptedTelemetryData. So we don't need to check again here.
 
             CachedAggregatedTelemetryData.UpdateFromTelemetryData(telemetryData);
             CachedAggregatedTelemetryData.CommandLine = telemetryData.Command;
@@ -502,13 +498,23 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
                 CachedAggregatedTelemetryData.SuggestionSessions.Add(suggestionSession);
             }
 
+            // Set the values first before getting EstimatedSuggestionSessionSize so that we can know whether we can include
+            // these fields in the same batch
+            suggestionSession.DisplayMode = telemetryData.DisplayMode;
+            suggestionSession.DisplayedSuggestionCountOrIndex = telemetryData.SuggestionCountOrIndex;
+
             // Usually GetSuggestion occurs before SuggestionDisplayTelemetryData. In case the property size becomes too large after GetSuggestion, we send it now.
             if (CachedAggregatedTelemetryData.EstimateSuggestionSessionSize >= AzPredictorTelemetryClient.MaxPropertyValueSizeWithBuffer)
             {
+                // In case we cannot include the fields in the same batch, we set them to null so we won't send them now.
+                suggestionSession.DisplayMode = null;
+                suggestionSession.DisplayedSuggestionCountOrIndex = null;
+
                 suggestionSession = SendAggregateTelemetryDataDuringSuggestionCycle(telemetryData, telemetryData.SuggestionSessionId);
                 suggestionSession.IsSuggestionComplete = false; // This continue from the previous suggestion session. So mark it as incomplete.
             }
 
+            // Let's make sure we always set the values no matter what.
             suggestionSession.DisplayMode = telemetryData.DisplayMode;
             suggestionSession.DisplayedSuggestionCountOrIndex = telemetryData.SuggestionCountOrIndex;
         }
@@ -537,12 +543,20 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
                 CachedAggregatedTelemetryData.SuggestionSessions.Add(suggestionSession);
             }
 
+            // Set AcceptedSuggestion before getting EstimateSuggestionSessionSize so that we can know if we can have the
+            // accepted suggestion in the same batch.
+            suggestionSession.AcceptedSuggestion = suggestion;
+
             if (CachedAggregatedTelemetryData.EstimateSuggestionSessionSize >= AzPredictorTelemetryClient.MaxPropertyValueSizeWithBuffer)
             {
+                // In the case that we cannot have accepted suggestion in the same batch, we set the field to null.
+                suggestionSession.AcceptedSuggestion = null;
+
                 suggestionSession = SendAggregateTelemetryDataDuringSuggestionCycle(telemetryData, telemetryData.SuggestionSessionId);
                 suggestionSession.IsSuggestionComplete = false; // This continue from the previous suggestionsession. So mark it as incomplete.
             }
 
+            // Make sure that AcceptedSuggestion is always set.
             suggestionSession.AcceptedSuggestion = suggestion;
         }
 
