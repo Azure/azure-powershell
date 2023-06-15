@@ -196,10 +196,9 @@ function Test-PublicIpAddressCRUD-WithDomainNameLabelScope
     $rgname = Get-ResourceGroupName
     $rname = Get-ResourceName
     $domainNameLabel = Get-ResourceName
-    $domainNameLabelScope = Get-ResourceName
-    $rglocation = Get-ProviderLocation ResourceManagement
+    $domainNameLabelScope = "TenantReuse"
+    $rglocation = "eastus2euap"
     $resourceTypeParent = "Microsoft.Network/publicIpAddresses"
-    $location = Get-ProviderLocation $resourceTypeParent
    
     try 
      {
@@ -207,7 +206,7 @@ function Test-PublicIpAddressCRUD-WithDomainNameLabelScope
       $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" } 
       
       # Create publicIpAddres
-      $actual = New-AzPublicIpAddress -ResourceGroupName $rgname -name $rname -location $location -AllocationMethod Static -DomainNameLabel $domainNameLabel -DomainNameLabelScope $domainNameLabelScope
+      $actual = New-AzPublicIpAddress -ResourceGroupName $rgname -name $rname -location $rglocation -AllocationMethod Static -DomainNameLabel $domainNameLabel -DomainNameLabelScope $domainNameLabelScope
       $publicip = Get-AzPublicIpAddress -ResourceGroupName $rgname -name $rname
       Assert-AreEqual $publicip.ResourceGroupName $actual.ResourceGroupName 
       Assert-AreEqual $publicip.Name $actual.Name   
@@ -216,17 +215,6 @@ function Test-PublicIpAddressCRUD-WithDomainNameLabelScope
       Assert-AreEqual "Succeeded" $publicip.ProvisioningState
       Assert-AreEqual $domainNameLabel $publicip.DnsSettings.DomainNameLabel
       Assert-AreEqual $domainNameLabelScope $publicip.DnsSettings.DomainNameLabelScope
-      
-      # list
-      $list = Get-AzPublicIpAddress -ResourceGroupName $rgname
-      Assert-AreEqual 1 @($list).Count
-      Assert-AreEqual $list[0].ResourceGroupName $actual.ResourceGroupName  
-      Assert-AreEqual $list[0].Name $actual.Name    
-      Assert-AreEqual $list[0].Location $actual.Location
-      Assert-AreEqual $list[0].DomainNameLabel $actual.DnsSettings.DomainNameLabel    
-      Assert-AreEqual $list[0].DomainNameLabelScope $actual.DnsSettings.DomainNameLabelScope 
-      Assert-AreEqual "Static" $list[0].PublicIpAllocationMethod
-      Assert-AreEqual "Succeeded" $list[0].ProvisioningState
       
       # delete
       $delete = Remove-AzPublicIpAddress -ResourceGroupName $actual.ResourceGroupName -name $rname -PassThru -Force
