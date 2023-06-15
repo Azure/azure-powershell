@@ -252,6 +252,12 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
                 properties.Add(RequestPredictionTelemetryData.PropertyNameHttpRequestSent, aggregatedData.HasSentHttpRequest.Value.ToString(CultureInfo.InvariantCulture));
             }
 
+            if (aggregatedData.PredictorSummary != null)
+            {
+                properties.Add(RequestPredictionTelemetryData.PropertyNameReceivedCommandCount, aggregatedData.PredictorSummary.ReceivedCommandCount.ToString(CultureInfo.InvariantCulture));
+                properties.Add(RequestPredictionTelemetryData.PropertyNameValidCommandCount, aggregatedData.PredictorSummary.ValidCommandCount.ToString(CultureInfo.InvariantCulture));
+            }
+
             var suggestions = new List<Dictionary<string, object>>();
             for (var i = 0; i < aggregatedData.SuggestionSessions.Count; ++i)
             {
@@ -419,6 +425,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
 
             CachedAggregatedTelemetryData.UpdateFromTelemetryData(telemetryData);
             CachedAggregatedTelemetryData.HasSentHttpRequest = telemetryData.HasSentHttpRequest;
+            CachedAggregatedTelemetryData.PredictorSummary = telemetryData.PredictorSummary;
 
             if (telemetryData.Exception != null)
             {

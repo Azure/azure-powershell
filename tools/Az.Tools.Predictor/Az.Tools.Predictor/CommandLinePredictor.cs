@@ -50,6 +50,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         private readonly ParameterValuePredictor _parameterValuePredictor;
         private readonly ITelemetryClient _telemetryClient;
 
+        public CommandLineSummary PredictorSummary { get; init; }
+
         /// <summary>
         /// Creates a new instance of <see cref="CommandLinePredictor"/>.
         /// </summary>
@@ -73,12 +75,13 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                     {
                         this._commandLinePredictions.Add(new CommandLine(modelPredictions[i], azContext));
                     }
-                    catch (Exception e)
+                    catch (Exception)
                     {
-                        _telemetryClient?.OnParseCommandLineFailure(new CommandLineParsingTelemetryData(modelPredictions[i].Command, e));
                     }
                 }
             }
+
+            PredictorSummary = new CommandLineSummary(modelPredictions?.Count ?? 0, this._commandLinePredictions.Count);
         }
 
         /// <summary>
