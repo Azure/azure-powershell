@@ -70,7 +70,8 @@ namespace Microsoft.WindowsAzure.Build.Tasks
 
         private const string BUILD_PHASE = "build";
         private const string TEST_PHASE = "test";
-        private readonly List<string> ANALYSIS_PHASE_LIST = new List<string>() { "breaking-change", "help-example", "help", "dependency", "signature", "file-change", "ux", "verify-generated-sdk" };
+        //private readonly List<string> ANALYSIS_PHASE_LIST = new List<string>() { "breaking-change", "help-example", "help", "dependency", "signature", "file-change", "ux", "verify-gensdk" };
+        private readonly List<string> ANALYSIS_PHASE_LIST = new List<string>() { "file-change", "ux", "verify-gensdk" };
         private readonly List<string> ONLY_AFFECT_MODULE_PHASE_LIST = new List<string>() { "cmdlet-diff" }; // These phases will be triggered only when the module is modified, not when its dependent module is updated.
         private const string ACCOUNT_MODULE_NAME = "Accounts";
 
