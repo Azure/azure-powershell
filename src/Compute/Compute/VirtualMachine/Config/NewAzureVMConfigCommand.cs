@@ -190,11 +190,11 @@ namespace Microsoft.Azure.Commands.Compute
             HelpMessage = "Specified the shared gallery image unique id for vm deployment. This can be fetched from shared gallery image GET call.")]
         public string SharedGalleryImageId { get; set; }
 	
-	[Parameter(
+	    [Parameter(
            HelpMessage = "Specifies the SecurityType of the virtual machine. It has to be set to any specified value to enable UefiSettings. By default, UefiSettings will not be enabled unless this property is set.",
            ValueFromPipelineByPropertyName = true,
            Mandatory = false)]
-        [ValidateNotNullOrEmpty]
+        [ValidateSet(ValidateSetValues.TrustedLaunch, ValidateSetValues.ConfidentialVM, IgnoreCase = true)]
         [PSArgumentCompleter("TrustedLaunch", "ConfidentialVM")]
         public string SecurityType { get; set; }
 
@@ -202,14 +202,12 @@ namespace Microsoft.Azure.Commands.Compute
            HelpMessage = "Specifies whether vTPM should be enabled on the virtual machine.",
            ValueFromPipelineByPropertyName = true,
            Mandatory = false)]
-        [ValidateNotNullOrEmpty]
         public bool? EnableVtpm { get; set; } = null;
 
         [Parameter(
            HelpMessage = "Specifies whether secure boot should be enabled on the virtual machine.",
            ValueFromPipelineByPropertyName = true,
            Mandatory = false)]
-        [ValidateNotNullOrEmpty]
         public bool? EnableSecureBoot { get; set; } = null;
 
         public override void ExecuteCmdlet()

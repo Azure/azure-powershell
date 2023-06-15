@@ -6577,7 +6577,8 @@ function Test-VirtualMachineEdgeZoneSimpleParameterSet
 
 <#
 .SYNOPSIS
-Test Flags VTpmEnabled and SecureBootEnabled for TrustedLaunch SecurityType
+Test Flags VTpmEnabled and SecureBootEnabled for TrustedLaunch SecurityType.
+Verifies that the GuestAttestation extension is installed. 
 #>
 function Test-VirtualMachineSecurityType
 {
@@ -6686,7 +6687,8 @@ function Test-VirtualMachineSecurityType
 
 <#
 .SYNOPSIS
-Test Virtual Machines SecurityType parameter without 
+Test Virtual Machines SecurityType parameter without a config object.
+Verifies that the GuestAttestation extension is installed.
 #>
 function Test-VirtualMachineSecurityTypeWithoutConfig
 {

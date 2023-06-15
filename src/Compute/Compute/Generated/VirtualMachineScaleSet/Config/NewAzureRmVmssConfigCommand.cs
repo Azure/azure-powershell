@@ -329,6 +329,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
            HelpMessage = "Specifies the SecurityType of the virtual machine. It has to be set to any specified value to enable UefiSettings. Default: UefiSettings will not be enabled unless this property is set.",
            ValueFromPipelineByPropertyName = true,
            Mandatory = false)]
+        [ValidateSet(ValidateSetValues.TrustedLaunch, ValidateSetValues.ConfidentialVM, IgnoreCase = true)]
         [PSArgumentCompleter("TrustedLaunch", "ConfidentialVM")]
         public string SecurityType { get; set; }
 

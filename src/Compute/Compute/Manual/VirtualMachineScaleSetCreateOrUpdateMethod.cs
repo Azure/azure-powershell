@@ -243,8 +243,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
            ParameterSetName = SimpleParameterSet,
            ValueFromPipelineByPropertyName = true,
            Mandatory = false)]
-        [ValidateNotNullOrEmpty]
         [PSArgumentCompleter("TrustedLaunch", "ConfidentialVM")]
+        [ValidateSet(ValidateSetValues.TrustedLaunch, ValidateSetValues.ConfidentialVM, IgnoreCase = true)]
         public string SecurityType { get; set; }
 
         [Parameter(
@@ -252,7 +252,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
          ParameterSetName = SimpleParameterSet,
          ValueFromPipelineByPropertyName = true,
          Mandatory = false)]
-        [ValidateNotNullOrEmpty]
         public bool? EnableVtpm { get; set; } = null;
 
         [Parameter(
@@ -260,7 +259,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
            ParameterSetName = SimpleParameterSet,
            ValueFromPipelineByPropertyName = true,
            Mandatory = false)]
-        [ValidateNotNullOrEmpty]
         public bool? EnableSecureBoot { get; set; } = null;
 
         const int FirstPortRangeStart = 50000;
