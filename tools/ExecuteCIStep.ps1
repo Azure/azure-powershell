@@ -519,6 +519,7 @@ If ($StaticAnalysisVerifyGenSdk)
     {
         $VerifyGenSdkModuleList = Join-String -Separator ';' -InputObject $CIPlan.'verify-generated-sdk'
     }
+    Write-Host "VerifyGenSdkModuleList" + $VerifyGenSdkModuleList +"mmm" + $PSScriptRoot + "/StaticAnalysis/GeneratedSdkAnalyzer/SDKGeneratedCodeVerify.ps1"
     If ("" -Ne $VerifyGenSdkModuleList)
     {
         Write-Host "Running static analysis to verify generated sdk..."
