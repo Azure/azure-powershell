@@ -17,11 +17,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
+    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
     using System;
     using System.Management.Automation;
 
     [Cmdlet("Export", Common.AzureRMConstants.AzureRMPrefix + "ManagementGroupDeploymentStackTemplate",
         DefaultParameterSetName = ExportByNameAndManagementGroupIdParameterSetName), OutputType(typeof(PSDeploymentStackTemplateDefinition))]
+    [CmdletPreview("The cmdlet is in preview and under development.")]
     public class ExportAzManagementGroupDeploymentStackTemplate : DeploymentStacksCmdletBase
     {
         #region Cmdlet Parameters and Parameter Set Definitions

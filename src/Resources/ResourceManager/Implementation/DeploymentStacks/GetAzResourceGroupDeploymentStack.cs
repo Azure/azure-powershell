@@ -17,11 +17,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
     using System;
     using System.Management.Automation;
 
     [Cmdlet("Get", Common.AzureRMConstants.AzureRMPrefix + "ResourceGroupDeploymentStack",
         DefaultParameterSetName = ListByResourceGroupNameParameterSetName), OutputType(typeof(PSDeploymentStack))]
+    [CmdletPreview("The cmdlet is in preview and under development.")]
     public class GetAzResourceGroupDeploymentStack : DeploymentStacksCmdletBase
     {
 
