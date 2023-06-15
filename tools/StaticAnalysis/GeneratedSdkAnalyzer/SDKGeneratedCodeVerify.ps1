@@ -79,9 +79,3 @@ finally {
         exit 1
     }
 }
-        LogError "Only accept .txt files."
-    }
-    foreach ($_ in $ChangedModules) {
-        # Filter the .md of overview in "\help\"
-        Write-Host $_
-    }
