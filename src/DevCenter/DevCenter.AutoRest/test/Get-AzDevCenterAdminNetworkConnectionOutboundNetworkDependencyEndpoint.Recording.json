@@ -1,0 +1,46 @@
+{
+  "Get-AzDevCenterAdminNetworkConnectionOutboundNetworkDependencyEndpoint+[NoContext]+List+$GET+https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRgbfptry/providers/Microsoft.DevCenter/networkConnections/qu4rta/outboundNetworkDependenciesEndpoints?api-version=2023-04-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRgbfptry/providers/Microsoft.DevCenter/networkConnections/qu4rta/outboundNetworkDependenciesEndpoints?api-version=2023-04-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "42" ],
+        "x-ms-client-request-id": [ "3188bef5-6599-4e87-b7f8-77c01eea5253" ],
+        "CommandName": [ "Get-AzDevCenterAdminNetworkConnectionOutboundNetworkDependencyEndpoint" ],
+        "FullCommandName": [ "Get-AzDevCenterAdminNetworkConnectionOutboundNetworkDependencyEndpoint_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v9.4.0", "PSVersion/v7.2.11", "Az.DevCenter/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11888" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "X-Rate-Limit-Limit": [ "1m" ],
+        "X-Rate-Limit-Remaining": [ "295" ],
+        "X-Rate-Limit-Reset": [ "2023-06-15T23:53:46.6972611Z" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "06c33a2a-4ff8-4d4f-92d2-fe07defadcd7" ],
+        "x-ms-correlation-request-id": [ "62095570-c875-46d1-8bf5-b8b3d3adcc0a" ],
+        "x-ms-routing-request-id": [ "WESTUS:20230615T235302Z:62095570-c875-46d1-8bf5-b8b3d3adcc0a" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 15 Jun 2023 23:53:02 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "3782" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"category\":\"Azure Virtual Desktop Commercial Cloud\",\"endpoints\":[{\"domainName\":\"*.wvd.microsoft.com\",\"endpointDetails\":[{\"port\":443}]},{\"domainName\":\"gcs.prod.monitoring.core.windows.net\",\"endpointDetails\":[{\"port\":443}]},{\"domainName\":\"production.diagnostics.monitoring.core.windows.net\",\"endpointDetails\":[{\"port\":443}]},{\"domainName\":\"*xt.blob.core.windows.net\",\"endpointDetails\":[{\"port\":443}]},{\"domainName\":\"*eh.servicebus.windows.net\",\"endpointDetails\":[{\"port\":443}]},{\"domainName\":\"*xt.table.core.windows.net\",\"endpointDetails\":[{\"port\":443}]},{\"domainName\":\"*xt.queue.core.windows.net\",\"endpointDetails\":[{\"port\":443}]},{\"domainName\":\"catalogartifact.azureedge.net\",\"endpointDetails\":[{\"port\":443}]},{\"domainName\":\"kms.core.windows.net\",\"endpointDetails\":[{\"port\":1688}]},{\"domainName\":\"mrsglobalsteus2prod.blob.core.windows.net\",\"endpointDetails\":[{\"port\":443}]},{\"domainName\":\"wvdportalstorageblob.blob.core.windows.net\",\"endpointDetails\":[{\"port\":443}]}]},{\"category\":\"Azure Virtual Desktop Optional\",\"endpoints\":[{\"domainName\":\"*.microsoftonline.com\",\"endpointDetails\":[{\"port\":443}]},{\"domainName\":\"*.events.data.microsoft.com\",\"endpointDetails\":[{\"port\":443}]},{\"domainName\":\"www.msftconnecttest.com\",\"endpointDetails\":[{\"port\":443}]},{\"domainName\":\"*.prod.do.dsp.mp.microsoft.com\",\"endpointDetails\":[{\"port\":443}]},{\"domainName\":\"*.sfx.ms\",\"endpointDetails\":[{\"port\":443}]},{\"domainName\":\"*.digicert.com\",\"endpointDetails\":[{\"port\":443}]},{\"domainName\":\"*.azure-dns.com\",\"endpointDetails\":[{\"port\":443}]},{\"domainName\":\"*.azure-dns.net\",\"endpointDetails\":[{\"port\":443}]}]},{\"category\":\"Intune\",\"endpoints\":[{\"domainName\":\"login.microsoftonline.com\",\"endpointDetails\":[{\"port\":443}]},{\"domainName\":\"*.officeconfig.msocdn.com\",\"endpointDetails\":[{\"port\":443}]},{\"domainName\":\"config.office.com\",\"endpointDetails\":[{\"port\":443}]},{\"domainName\":\"graph.windows.net\",\"endpointDetails\":[{\"port\":443}]},{\"domainName\":\"enterpriseregistration.windows.net\",\"endpointDetails\":[{\"port\":443}]},{\"domainName\":\"portal.manage.microsoft.com\",\"endpointDetails\":[{\"port\":443}]},{\"domainName\":\"m.manage.microsoft.com\",\"endpointDetails\":[{\"port\":443}]},{\"domainName\":\"fef.msuc03.manage.microsoft.com\",\"endpointDetails\":[{\"port\":443}]},{\"domainName\":\"wip.mam.manage.microsoft.com\",\"endpointDetails\":[{\"port\":443}]},{\"domainName\":\"mam.manage.microsoft.com\",\"endpointDetails\":[{\"port\":443}]},{\"domainName\":\"*.manage.microsoft.com\",\"endpointDetails\":[{\"port\":443}]}]},{\"category\":\"Cloud PC\",\"endpoints\":[{\"domainName\":\"rdweb.wvd.microsoft.com\",\"endpointDetails\":[{\"port\":443}]},{\"domainName\":\"rdbroker.wvd.microsoft.com\",\"endpointDetails\":[{\"port\":443}]},{\"domainName\":\"cpcsacnrysa1prodprna02.blob.core.windows.net\",\"endpointDetails\":[{\"port\":443}]},{\"domainName\":\"cpcsacnrysa1prodprap01.blob.core.windows.net\",\"endpointDetails\":[{\"port\":443}]},{\"domainName\":\"cpcsacnrysa1prodprau01.blob.core.windows.net\",\"endpointDetails\":[{\"port\":443}]},{\"domainName\":\"cpcsacnrysa1prodpreu01.blob.core.windows.net\",\"endpointDetails\":[{\"port\":443}]},{\"domainName\":\"cpcsacnrysa1prodpreu02.blob.core.windows.net\",\"endpointDetails\":[{\"port\":443}]},{\"domainName\":\"cpcsacnrysa1prodprna01.blob.core.windows.net\",\"endpointDetails\":[{\"port\":443}]},{\"domainName\":\"cpcstprovprodpreu01.blob.core.windows.net\",\"endpointDetails\":[{\"port\":443}]},{\"domainName\":\"cpcstprovprodpreu02.blob.core.windows.net\",\"endpointDetails\":[{\"port\":443}]},{\"domainName\":\"cpcstprovprodprna01.blob.core.windows.net\",\"endpointDetails\":[{\"port\":443}]},{\"domainName\":\"cpcstprovprodprna02.blob.core.windows.net\",\"endpointDetails\":[{\"port\":443}]},{\"domainName\":\"cpcstprovprodprap01.blob.core.windows.net\",\"endpointDetails\":[{\"port\":443}]},{\"domainName\":\"cpcstprovprodprau01.blob.core.windows.net\",\"endpointDetails\":[{\"port\":443}]}]}]}",
+      "isContentBase64": false
+    }
+  }
+}

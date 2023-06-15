@@ -15,19 +15,28 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzDevCenterAdminProject')
 }
 
 Describe 'Get-AzDevCenterAdminProject' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        $listOfProjects = Get-AzDevCenterAdminProject
+        $listOfProjects.Count | Should -BeGreaterOrEqual 2
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        $project = Get-AzDevCenterAdminProject -ResourceGroupName $env.resourceGroup -Name $env.projectName
+        $project.DevCenterId | Should -Be $env.devCenterId
+        $project.Name | Should -Be $env.projectName
+        $project.MaxDevBoxesPerUser | Should -Be 3
     }
 
-    It 'List1' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List1' {
+        $listOfProjects = Get-AzDevCenterAdminProject -ResourceGroupName $env.resourceGroup
+        $listOfProjects.Count | Should -BeGreaterOrEqual 2
     }
 
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'GetViaIdentity' {
+        $project = Get-AzDevCenterAdminProject -ResourceGroupName $env.resourceGroup -Name $env.projectName
+        $project = Get-AzDevCenterAdminProject -InputObject $project
+        $project.DevCenterId | Should -Be $env.devCenterId
+        $project.Name | Should -Be $env.projectName
+        $project.MaxDevBoxesPerUser | Should -Be 3
     }
 }

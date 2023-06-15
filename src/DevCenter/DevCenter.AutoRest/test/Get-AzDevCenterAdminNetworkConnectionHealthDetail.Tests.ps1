@@ -15,15 +15,15 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzDevCenterAdminNetworkCo
 }
 
 Describe 'Get-AzDevCenterAdminNetworkConnectionHealthDetail' {
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        $healthDetail = Get-AzDevCenterAdminNetworkConnectionHealthDetail -NetworkConnectionName $env.networkConnectionName -ResourceGroupName $env.resourceGroup
+        $healthDetail.HealthCheck.Count | Should -Be 7
+        $healthDetail.HealthCheck[0].DisplayName | Should -Be "Azure tenant readiness"
+        $healthDetail.HealthCheck[1].DisplayName | Should -Be "Azure virtual network readiness"
+        $healthDetail.HealthCheck[2].DisplayName | Should -Be "Intune enrollment restrictions allow Windows enrollment"
+        $healthDetail.HealthCheck[3].DisplayName | Should -Be "Azure subnet IP address usage"
+        $healthDetail.HealthCheck[4].DisplayName | Should -Be "Endpoint connectivity"
+        $healthDetail.HealthCheck[5].DisplayName | Should -Be "Localization language package readiness"
+        $healthDetail.HealthCheck[6].DisplayName | Should -Be "UDP connection check"
     }
 }

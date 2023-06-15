@@ -15,8 +15,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzDevCenterAdminNetworkCo
 }
 
 Describe 'Get-AzDevCenterAdminNetworkConnectionOutboundNetworkDependencyEndpoint' {
-    It 'List' -skip {
-        $listOfEndpoints = Get-AzDevCenterAdminPool -ResourceGroupName $env.resourceGroup -NetworkConnectionName $env.networkConnectionName
+    It 'List' {
+        $listOfEndpoints = Get-AzDevCenterAdminNetworkConnectionOutboundNetworkDependencyEndpoint -ResourceGroupName $env.resourceGroup -NetworkConnectionName $env.networkConnectionName
         
         $listOfEndpoints.Count | Should -Be 4
         $listOfEndpoints[0].Category | Should -Be "Azure Virtual Desktop Commercial Cloud"

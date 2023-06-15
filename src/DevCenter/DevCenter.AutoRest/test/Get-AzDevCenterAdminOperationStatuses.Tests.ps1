@@ -15,11 +15,9 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzDevCenterAdminOperation
 }
 
 Describe 'Get-AzDevCenterAdminOperationStatuses' {
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        $operationStatus = Get-AzDevCenterAdminOperationStatuses -Location $env.location  -OperationId "7e9e1394-dad0-4414-8160-21c592e880ef*4699EE32265F9FA5BF00FA169E7D9CF51755378796E32F2D1A198E080CC84614"
+        $operationStatus.Name | Should -Be "7e9e1394-dad0-4414-8160-21c592e880ef*4699EE32265F9FA5BF00FA169E7D9CF51755378796E32F2D1A198E080CC84614"
+        $operationStatus.Status | Should -Be "Succeeded"
     }
 }

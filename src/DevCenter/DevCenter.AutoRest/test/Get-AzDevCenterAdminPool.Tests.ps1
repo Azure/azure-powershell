@@ -15,19 +15,19 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzDevCenterAdminPool'))
 }
 
 Describe 'Get-AzDevCenterAdminPool' {
-    It 'List' -skip {
+    It 'List' {
         $listOfPools = Get-AzDevCenterAdminPool -ResourceGroupName $env.resourceGroup -ProjectName $env.projectName
         
         $listOfPools.Count | Should -BeGreaterOrEqual 2
     }
 
-    It 'Get' -skip {
+    It 'Get' {
         $pool = Get-AzDevCenterAdminPool -ResourceGroupName $env.resourceGroup -Name $env.poolName -ProjectName $env.projectName
 
         $pool.Name | Should -Be $env.poolName
     }
 
-    It 'GetViaIdentity' -skip {
+    It 'GetViaIdentity' {
         $pool = Get-AzDevCenterAdminPool -ResourceGroupName $env.resourceGroup -Name $env.poolName -ProjectName $env.projectName
         $pool = Get-AzDevCenterAdminPool -InputObject $pool
 

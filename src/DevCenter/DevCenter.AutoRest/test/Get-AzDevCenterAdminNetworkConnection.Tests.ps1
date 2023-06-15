@@ -15,19 +15,27 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzDevCenterAdminNetworkCo
 }
 
 Describe 'Get-AzDevCenterAdminNetworkConnection' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        $listOfNcs = Get-AzDevCenterAdminNetworkConnection
+        $listOfNcs.Count | Should -BeGreaterOrEqual 2
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        $nc = Get-AzDevCenterAdminNetworkConnection -ResourceGroupName $env.resourceGroup -Name $env.networkConnectionName
+        $nc.DomainJoinType | Should -Be "AzureADJoin"
+        $nc.Name | Should -Be $env.networkConnectionName
     }
 
-    It 'List1' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+
+    It 'List1' {
+        $listOfNcs = Get-AzDevCenterAdminNetworkConnection -ResourceGroupName $env.resourceGroup
+        $listOfNcs.Count | Should -BeGreaterOrEqual 2
     }
 
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'GetViaIdentity' {
+        $nc = Get-AzDevCenterAdminNetworkConnection -ResourceGroupName $env.resourceGroup -Name $env.networkConnectionName
+        $nc = Get-AzDevCenterAdminNetworkConnection -InputObject $nc
+        $nc.DomainJoinType | Should -Be "AzureADJoin"
+        $nc.Name | Should -Be $env.networkConnectionName
     }
 }

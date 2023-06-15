@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzDevCenterAdminDevCenter
 }
 
 Describe 'Get-AzDevCenterAdminDevCenter' {
-    It 'List' -skip {
+    It 'List' {
         $listOfDevCenters = Get-AzDevCenterAdminDevCenter
         $listOfDevCenters.Count | Should -BeGreaterOrEqual 2
     }
@@ -31,7 +31,7 @@ Describe 'Get-AzDevCenterAdminDevCenter' {
         $listOfDevCenters.Count | Should -BeGreaterOrEqual 2
     }
 
-    It 'GetViaIdentity' -skip {
+    It 'GetViaIdentity' {
         $devCenter = Get-AzDevCenterAdminDevCenter -ResourceGroupName $env.resourceGroup -Name $env.devCenterName
         $devCenter = Get-AzDevCenterAdminDevCenter -InputObject $devCenter
         $devCenter.Name | Should -Be $env.devCenterName

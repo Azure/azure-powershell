@@ -15,19 +15,34 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzDevCenterAdminImage'))
 }
 
 Describe 'Get-AzDevCenterAdminImage' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        $listOfImages = Get-AzDevCenterAdminImage -ResourceGroupName $env.resourceGroup -DevCenterName $env.devCenterName
+        $listOfImages.Count | Should -BeGreaterOrEqual 20
     }
 
-    It 'List1' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List1' {
+        $listOfImages = Get-AzDevCenterAdminImage -ResourceGroupName $env.resourceGroup -DevCenterName $env.devCenterName -GalleryName "Default"
+        $listOfImages.Count | Should -Be 18
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        $image = Get-AzDevCenterAdminImage -ResourceGroupName $env.resourceGroup -DevCenterName $env.devCenterName -GalleryName "Default" -Name $env.imageName
+        $image.Description | Should -Be "Windows 11 Enterprise + OS Optimizations 22H2"
+        $image.HibernateSupport | Should -Be "Enabled"
+        $image.Name | Should -Be "microsoftwindowsdesktop_windows-ent-cpc_win11-22h2-ent-cpc-os"
+        $image.Offer | Should -Be "windows-ent-cpc"
+        $image.Publisher | Should -Be "MicrosoftWindowsDesktop"
+        $image.Sku | Should -Be "win11-22h2-ent-cpc-os"
     }
 
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'GetViaIdentity' {
+        $image = Get-AzDevCenterAdminImage -ResourceGroupName $env.resourceGroup -DevCenterName $env.devCenterName -GalleryName "Default" -Name $env.imageName
+        $image = Get-AzDevCenterAdminImage -InputObject $image
+        $image.Description | Should -Be "Windows 11 Enterprise + OS Optimizations 22H2"
+        $image.HibernateSupport | Should -Be "Enabled"
+        $image.Name | Should -Be "microsoftwindowsdesktop_windows-ent-cpc_win11-22h2-ent-cpc-os"
+        $image.Offer | Should -Be "windows-ent-cpc"
+        $image.Publisher | Should -Be "MicrosoftWindowsDesktop"
+        $image.Sku | Should -Be "win11-22h2-ent-cpc-os"
     }
 }

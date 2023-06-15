@@ -1,0 +1,46 @@
+{
+  "Get-AzDevCenterAdminUsage+[NoContext]+List+$GET+https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/providers/Microsoft.DevCenter/locations/canadacentral/usages?api-version=2023-04-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/providers/Microsoft.DevCenter/locations/canadacentral/usages?api-version=2023-04-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "65" ],
+        "x-ms-client-request-id": [ "19d33239-35a5-40b2-8dd8-fabaf3ac51d8" ],
+        "CommandName": [ "Get-AzDevCenterAdminUsage" ],
+        "FullCommandName": [ "Get-AzDevCenterAdminUsage_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v9.4.0", "PSVersion/v7.2.11", "Az.DevCenter/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11865" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "X-Rate-Limit-Limit": [ "1m" ],
+        "X-Rate-Limit-Remaining": [ "299" ],
+        "X-Rate-Limit-Reset": [ "2023-06-15T23:54:11.9564137Z" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "2ce9030e-5a8c-418b-9dc1-154f53c797d0" ],
+        "x-ms-correlation-request-id": [ "750fb923-1506-42c3-bab2-dfbb57017e28" ],
+        "x-ms-routing-request-id": [ "WESTUS:20230615T235312Z:750fb923-1506-42c3-bab2-dfbb57017e28" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 15 Jun 2023 23:53:12 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "637" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"currentValue\":17,\"limit\":200,\"unit\":\"Count\",\"name\":{\"value\":\"devBoxDefinitions\"}},{\"currentValue\":12,\"limit\":100,\"unit\":\"Count\",\"name\":{\"value\":\"devCenters\"}},{\"currentValue\":40,\"limit\":48,\"unit\":\"Count\",\"name\":{\"value\":\"general_a_v1\"}},{\"currentValue\":8,\"limit\":20,\"unit\":\"Count\",\"name\":{\"value\":\"networkConnections\"}},{\"currentValue\":18,\"limit\":500,\"unit\":\"Count\",\"name\":{\"value\":\"pools\"}},{\"currentValue\":10,\"limit\":500,\"unit\":\"Count\",\"name\":{\"value\":\"projects\"}},{\"currentValue\":40,\"limit\":100,\"unit\":\"Count\",\"name\":{\"value\":\"general_a_v2\"}},{\"currentValue\":48,\"limit\":48,\"unit\":\"Count\",\"name\":{\"value\":\"general_i_v2\"}}]}",
+      "isContentBase64": false
+    }
+  }
+}

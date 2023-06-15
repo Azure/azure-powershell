@@ -15,7 +15,17 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzDevCenterAdminUsage'))
 }
 
 Describe 'Get-AzDevCenterAdminUsage' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        $usage = Get-AzDevCenterAdminUsage -Location $env.location
+        $usage.Count | Should -Be 8
+        $usage[0].NameValue | Should -Be "devBoxDefinitions"
+        $usage[1].NameValue | Should -Be "devCenters"
+        $usage[2].NameValue | Should -Be "general_a_v1"
+        $usage[3].NameValue | Should -Be "networkConnections"
+        $usage[4].NameValue | Should -Be "pools"
+        $usage[5].NameValue | Should -Be "projects"
+        $usage[6].NameValue | Should -Be "general_a_v2"
+        $usage[7].NameValue | Should -Be "general_i_v2"
+
     }
 }
