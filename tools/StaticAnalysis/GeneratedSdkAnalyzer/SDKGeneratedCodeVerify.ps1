@@ -7,6 +7,7 @@ param (
 # the $errors array, which is used in the finally block of the script to determine
 # the return code.
 [string[]] $errors = @()
+
 function LogError([string]$message) {
     Write-Host -f Red "error: $message"
     $script:errors += $message
@@ -16,9 +17,11 @@ function LogError([string]$message) {
 $ErrorActionPreference = 'Stop'
 # $Env:NODE_OPTIONS = "--max-old-space-size=8192"
 Set-StrictMode -Version 1
+
 try{
     # . (Join-Path $PSScriptRoot\..\common\scripts common.ps1)
     # When the input $MarkdownPaths is the path of txt file contained markdown paths
+
     if ((Test-Path $FilesChangedPaths -PathType Leaf) -and $FilesChangedPaths.EndsWith(".txt")) {
         $FilesChanged = Get-Content $FilesChangedPaths | Where-Object { ($_ -match "^src\\.*\.Sdk\\.*Generated.*")}# -and (Test-Path $_) }
         # Write-Host "FilesChanged:" $FilesChanged
@@ -76,4 +79,9 @@ finally {
         exit 1
     }
 }
-
+        LogError "Only accept .txt files."
+    }
+    foreach ($_ in $ChangedModules) {
+        # Filter the .md of overview in "\help\"
+        Write-Host $_
+    }

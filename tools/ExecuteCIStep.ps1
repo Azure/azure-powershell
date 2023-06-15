@@ -523,6 +523,7 @@ If ($StaticAnalysisVerifyGenSdk)
     {
         Write-Host "Running static analysis to verify generated sdk..."
         . .($PSScriptRoot + "/StaticAnalysis/GeneratedSdkAnalyzer/SDKGeneratedCodeVerify.ps1") 
+        
         # dotnet $RepoArtifacts/StaticAnalysis/StaticAnalysis.Netcore.dll -p $RepoArtifacts/$Configuration -r $StaticAnalysisOutputDirectory --analyzers verify-generated-sdk -u -m $VerifyGenSdkModuleList
     }
     Return
