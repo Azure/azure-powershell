@@ -455,7 +455,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 throw new PSArgumentException("Invalid pfx");
             }
 
-            var fileContentEncoded = Convert.ToBase64String(clearBytes);
+            //var fileContentEncoded = Convert.ToBase64String(clearBytes);
 
             WriteVerboseWithTimestamp(string.Format("Importing certificate to Azure KeyVault {0}", certificateName));
 
