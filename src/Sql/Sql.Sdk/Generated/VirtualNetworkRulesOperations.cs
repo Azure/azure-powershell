@@ -94,6 +94,21 @@ namespace Microsoft.Azure.Management.Sql
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "serverName");
             }
+            if (serverName != null)
+            {
+                if (serverName.Length > 63)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "serverName", 63);
+                }
+                if (serverName.Length < 3)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "serverName", 3);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(serverName, "^[a-z][a-z0-9]*$"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "serverName", "^[a-z][a-z0-9]*$");
+                }
+            }
             if (virtualNetworkRuleName == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "virtualNetworkRuleName");
@@ -350,6 +365,21 @@ namespace Microsoft.Azure.Management.Sql
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "serverName");
             }
+            if (serverName != null)
+            {
+                if (serverName.Length > 63)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "serverName", 63);
+                }
+                if (serverName.Length < 3)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "serverName", 3);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(serverName, "^[a-z][a-z0-9]*$"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "serverName", "^[a-z][a-z0-9]*$");
+                }
+            }
             if (Client.SubscriptionId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
@@ -550,6 +580,21 @@ namespace Microsoft.Azure.Management.Sql
             if (serverName == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "serverName");
+            }
+            if (serverName != null)
+            {
+                if (serverName.Length > 63)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "serverName", 63);
+                }
+                if (serverName.Length < 3)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "serverName", 3);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(serverName, "^[a-z][a-z0-9]*$"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "serverName", "^[a-z][a-z0-9]*$");
+                }
             }
             if (virtualNetworkRuleName == null)
             {
@@ -784,6 +829,21 @@ namespace Microsoft.Azure.Management.Sql
             if (serverName == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "serverName");
+            }
+            if (serverName != null)
+            {
+                if (serverName.Length > 63)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "serverName", 63);
+                }
+                if (serverName.Length < 3)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "serverName", 3);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(serverName, "^[a-z][a-z0-9]*$"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "serverName", "^[a-z][a-z0-9]*$");
+                }
             }
             if (virtualNetworkRuleName == null)
             {
