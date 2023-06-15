@@ -397,7 +397,7 @@ If ($StaticAnalysis)
     .("$PSScriptRoot/ExecuteCIStep.ps1") -StaticAnalysisHelp @Parameters
     .("$PSScriptRoot/ExecuteCIStep.ps1") -StaticAnalysisUX @Parameters
     .("$PSScriptRoot/ExecuteCIStep.ps1") -StaticAnalysisCmdletDiff @Parameters
-    .("$PSScriptRoot/ExecuteCIStep.ps1") -StaticAnalysisVerifyGenCode @Parameters
+    .("$PSScriptRoot/ExecuteCIStep.ps1") -StaticAnalysisVerifyGenSdk @Parameters
     Return
 }
 
