@@ -35,6 +35,8 @@ namespace Microsoft.Azure.Commands.Network.Models
         [Ps1Xml(Target = ViewControl.Table)]
         public string DomainNameLabel { get; set; }
         [Ps1Xml(Target = ViewControl.Table)]
+        public string DomainNameLabelScope { get; set; }
+        [Ps1Xml(Target = ViewControl.Table)]
         public string Fqdn { get; set; }
         [Ps1Xml(Target = ViewControl.Table)]
         public string ReverseFqdn { get; set; }
