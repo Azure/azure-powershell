@@ -1,7 +1,7 @@
 [CmdletBinding()]
 param (
     [Parameter(Position=0)]
-    [string] $FilesChangedPaths
+    [string] $FilesChangedPaths = "../../../artifacts/FilesChanged.txt"
 )
 # All errors should be logged using this function, as it tracks the errors in
 # the $errors array, which is used in the finally block of the script to determine

@@ -397,6 +397,7 @@ If ($StaticAnalysis)
     .("$PSScriptRoot/ExecuteCIStep.ps1") -StaticAnalysisHelp @Parameters
     .("$PSScriptRoot/ExecuteCIStep.ps1") -StaticAnalysisUX @Parameters
     .("$PSScriptRoot/ExecuteCIStep.ps1") -StaticAnalysisCmdletDiff @Parameters
+    .("$PSScriptRoot/ExecuteCIStep.ps1") -StaticAnalysisVerifyGenCode @Parameters
     Return
 }
 
@@ -504,6 +505,25 @@ If ($StaticAnalysisCmdletDiff)
     {
         Write-Host "Running static analysis for cmdlet diff..."
         dotnet $RepoArtifacts/StaticAnalysis/StaticAnalysis.Netcore.dll -p $RepoArtifacts/$Configuration -r $StaticAnalysisOutputDirectory --analyzers cmdlet-diff -u -m $CmdletDiffModuleList
+    }
+    Return
+}
+
+If ($StaticAnalysisVerifyGenSdk)
+{
+    If ($PSBoundParameters.ContainsKey("TargetModule"))
+    {
+        $VerifyGenSdkModuleList = $TargetModule
+    }
+    Else
+    {
+        $VerifyGenSdkModuleList = Join-String -Separator ';' -InputObject $CIPlan.'verify-generated-sdk'
+    }
+    If ("" -Ne $VerifyGenSdkModuleList)
+    {
+        Write-Host "Running static analysis to verify generated sdk..."
+        .($PSScriptRoot + "/StaticAnalysis/GeneratedSdkAnalyzer/SDKGeneratedCodeVerify.ps1") 
+        # dotnet $RepoArtifacts/StaticAnalysis/StaticAnalysis.Netcore.dll -p $RepoArtifacts/$Configuration -r $StaticAnalysisOutputDirectory --analyzers verify-generated-sdk -u -m $VerifyGenSdkModuleList
     }
     Return
 }
