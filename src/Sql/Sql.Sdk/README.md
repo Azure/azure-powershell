@@ -30,7 +30,7 @@ commit: a405542f9491ba61823b5f4f2e10af700123a9d9
 input-file:
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/sql/resource-manager/Microsoft.Sql/stable/2014-04-01/metrics.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/sql/resource-manager/Microsoft.Sql/stable/2014-04-01-legacy/sql.core_legacy.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/d6b9d9d7ea3fa4e6c0c2122f7641b9b009ce482e/specification/sql/resource-manager/Microsoft.Sql/preview/2022-05-01-preview/ServerDevOpsAudit.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/sql/resource-manager/Microsoft.Sql/preview/2022-05-01-preview/ServerDevOpsAudit.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/sql/resource-manager/Microsoft.Sql/preview/2021-11-01-preview/BlobAuditing.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/SyncGroups.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/DatabaseSecurityAlertPolicies.json
