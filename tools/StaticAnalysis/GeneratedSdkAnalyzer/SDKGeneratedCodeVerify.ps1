@@ -6,6 +6,7 @@ param (
 # All errors should be logged using this function, as it tracks the errors in
 # the $errors array, which is used in the finally block of the script to determine
 # the return code.
+[string[]] $errors = @()
 function LogError([string]$message) {
     Write-Host -f Red "error: $message"
     $script:errors += $message
@@ -15,9 +16,9 @@ function LogError([string]$message) {
 $ErrorActionPreference = 'Stop'
 # $Env:NODE_OPTIONS = "--max-old-space-size=8192"
 Set-StrictMode -Version 1
-
-# . (Join-Path $PSScriptRoot\..\common\scripts common.ps1)
-# When the input $MarkdownPaths is the path of txt file contained markdown paths
+try{
+    # . (Join-Path $PSScriptRoot\..\common\scripts common.ps1)
+    # When the input $MarkdownPaths is the path of txt file contained markdown paths
     if ((Test-Path $FilesChangedPaths -PathType Leaf) -and $FilesChangedPaths.EndsWith(".txt")) {
         $FilesChanged = Get-Content $FilesChangedPaths | Where-Object { ($_ -match "^src\\.*\.Sdk\\.*Generated.*")}# -and (Test-Path $_) }
         # Write-Host "FilesChanged:" $FilesChanged
@@ -30,9 +31,49 @@ Set-StrictMode -Version 1
     }
     # When the input $MarkdownPaths is the path of a folder
     else {
-        LogError "Only accept .txt files."
+        Write-Error "Only accept .txt files as input."
     }
     foreach ($_ in $ChangedModules) {
-        # Filter the .md of overview in "\help\"
-        Write-Host $_
+        # Direct to the Sdk directory
+        $module = ($_ -split "\/|\\")[1]
+        Write-Host "Directing to " + $PSScriptRoot + "../" + $_
+        cd $PSScriptRoot + "../" + $_
+
+        # Regenerate the Sdk under Generated folder
+        Write-Host "Re-generating SDK under Generated folder for $module..."
+        if( Test-Path -Path "README.md" -PathType Leaf){
+            autorest --reset
+            autorest --use:@microsoft.azure/autorest.csharp@2.3.90
+            autorest.cmd README.md --version=v2
+        }
+        else {
+            LogError "No README file detected."
+        }
+
+        # See if the code is completely the same as we generated
+        $changes = git status --porcelain
+        if (!$changes -eq $null){
+            LogError `
+    "Generated code for $module is not up to date.`
+        You may need to rebase on the latest main, `
+        re-generate code accroding to README.md file under $_`
+        "
+        }
     }
+}
+finally {
+    Write-Host ""
+    Write-Host "Summary:"
+    Write-Host ""
+    Write-Host "   $($errors.Length) error(s)"
+    Write-Host ""
+
+    foreach ($err in $errors) {
+        Write-Host -f Red "error : $err"
+    }
+
+    if ($errors) {
+        exit 1
+    }
+}
+

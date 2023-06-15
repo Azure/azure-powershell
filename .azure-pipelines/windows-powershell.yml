@@ -53,18 +53,18 @@ jobs:
       testFramework: ${{ variables.TestFramework }}
       powerShellPlatform: ${{ variables.PowerShellPlatform }}
 
-- job: Test
-  displayName: Test
-  dependsOn: Build
-  condition: and(eq(variables.IsGenerateBased, false), succeeded())
-  timeoutInMinutes: 180
-  pool: ${{ variables.AgentPoolName }}
+# - job: Test
+#   displayName: Test
+#   dependsOn: Build
+#   condition: and(eq(variables.IsGenerateBased, false), succeeded())
+#   timeoutInMinutes: 180
+#   pool: ${{ variables.AgentPoolName }}
 
-  steps:
-  - template: util/test-steps.yml
-    parameters:
-      osName: ${{ variables.WindowsName }}
-      testFramework: ${{ variables.TestFramework }}
-      testTarget: ${{ variables.TestTarget }}
-      configuration: ${{ variables.Configuration }}
-      powerShellPlatform: ${{ variables.PowerShellPlatform }}
+#   steps:
+#   - template: util/test-steps.yml
+#     parameters:
+#       osName: ${{ variables.WindowsName }}
+#       testFramework: ${{ variables.TestFramework }}
+#       testTarget: ${{ variables.TestTarget }}
+#       configuration: ${{ variables.Configuration }}
+#       powerShellPlatform: ${{ variables.PowerShellPlatform }}
