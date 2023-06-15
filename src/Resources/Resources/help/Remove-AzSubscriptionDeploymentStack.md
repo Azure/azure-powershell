@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ResourceManager.dll-Help.xml
 Module Name: Az.Resources
-online version: https://docs.microsoft.com/powershell/module/az.resources/update-azrolemanagementpolicy
+online version: https://learn.microsoft.com/powershell/module/az.resources/Remove-AzSubscriptionDeploymentStack
 schema: 2.0.0
 ---
 
@@ -33,7 +33,7 @@ Delete a subscription scoped deployment stack.
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzSubscriptionDeploymentStack -Name MySubStack 
+PS C:\> Remove-AzSubscriptionDeploymentStack -Name MySubStack
 ```
 
 Deletes a subscription scoped deployment stack named 'MySubStack' in default subscription, with unmanaged resources and resource groups being detached on cleanup.

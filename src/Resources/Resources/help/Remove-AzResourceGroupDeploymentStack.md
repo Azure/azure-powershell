@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ResourceManager.dll-Help.xml
 Module Name: Az.Resources
-online version: https://docs.microsoft.com/powershell/module/az.resources/update-azrolemanagementpolicy
+online version: https://learn.microsoft.com/powershell/module/az.resources/Remove-AzResourceGroupDeploymentStack
 schema: 2.0.0
 ---
 
@@ -33,7 +33,7 @@ Delete a resource group scoped deployment stack.
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzResourceGroupDeploymentStack -ResourceGroupName MyResourceGroup -Name MyRGStack 
+PS C:\> Remove-AzResourceGroupDeploymentStack -ResourceGroupName MyResourceGroup -Name MyRGStack
 ```
 
 Deletes a resource group scoped deployment stack named 'MyRGStack' in resource group 'MyResourceGroup,' with unmanaged resources and resource groups being detached on cleanup.

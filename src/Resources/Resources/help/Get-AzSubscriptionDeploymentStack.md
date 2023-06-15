@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ResourceManager.dll-Help.xml
 Module Name: Az.Resources
-online version: https://docs.microsoft.com/powershell/module/az.resources/update-azrolemanagementpolicy
+online version: https://learn.microsoft.com/powershell/module/az.resources/Get-AzSubscriptionDeploymentStack
 schema: 2.0.0
 ---
 
@@ -40,6 +40,7 @@ PS C:\> Get-AzSubscriptionDeploymentStackTemplate -Name MySubStack
 ```
 
 Get a deployment stack named 'MySubStack' under the default subscription.
+
 ## PARAMETERS
 
 ### -DefaultProfile
