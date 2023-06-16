@@ -119,7 +119,12 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The Domain Name label Scope, the value can be TenantReuse or SubscriptionReuse or ResourceGroupReuse or NoReuse. It will decide HashedReusePolicy for FQDN, and can be set only when Domain Name Label has a valid value.")]
-        [ValidateSet("TenantReuse", "SubscriptionReuse", "ResourceGroupReuse", "NoReuse", IgnoreCase = true)]
+        [ValidateSet(
+            nameof(PSDomainNameLabelScopeType.TenantReuse),
+            nameof(PSDomainNameLabelScopeType.SubscriptionReuse),
+            nameof(PSDomainNameLabelScopeType.ResourceGroupReuse),
+            nameof(PSDomainNameLabelScopeType.NoReuse), 
+            IgnoreCase = true)]
         public PSDomainNameLabelScopeType DomainNameLabelScope { get; set; }
 
         [Parameter(
