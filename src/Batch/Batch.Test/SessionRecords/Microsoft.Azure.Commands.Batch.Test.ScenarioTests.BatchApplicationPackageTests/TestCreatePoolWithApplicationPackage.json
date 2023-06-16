@@ -6,7 +6,7 @@
       "RequestMethod": "PUT",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "7a93ff9b-25c5-449c-92f5-fd781c1bd4e8"
+          "ac8dcd7f-071e-4b34-878f-cb17f2764396"
         ],
         "Accept-Language": [
           "en-US"
@@ -27,13 +27,13 @@
           "no-cache"
         ],
         "ETag": [
-          "W/\"0x8DB6BEB269362FD\""
+          "W/\"0x8DB6E3A7F37D9C0\""
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1199"
+          "1197"
         ],
         "x-ms-request-id": [
-          "52489866-832f-4eb1-85c4-c87850e10215"
+          "38d64437-ecf3-4284-93d4-d96e526165fb"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -45,13 +45,13 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-correlation-request-id": [
-          "017d5cfa-d845-4209-b3a6-6e61d679c28e"
+          "c2a41c97-6c99-4ddb-965e-09f80b8834e2"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20230613T084951Z:017d5cfa-d845-4209-b3a6-6e61d679c28e"
+          "SOUTHEASTASIA:20230616T072252Z:c2a41c97-6c99-4ddb-965e-09f80b8834e2"
         ],
         "Date": [
-          "Tue, 13 Jun 2023 08:49:50 GMT"
+          "Fri, 16 Jun 2023 07:22:51 GMT"
         ],
         "Content-Length": [
           "812"
@@ -63,10 +63,10 @@
           "-1"
         ],
         "Last-Modified": [
-          "Tue, 13 Jun 2023 08:49:51 GMT"
+          "Fri, 16 Jun 2023 07:22:52 GMT"
         ]
       },
-      "ResponseBody": "{\r\n  \"type\": \"Microsoft.Batch/batchAccounts/applications/versions\",\r\n  \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/123/providers/Microsoft.Batch/batchAccounts/hoppeeastasia2/applications/createPoolWithApplicationPackage/versions/foo\",\r\n  \"name\": \"foo\",\r\n  \"etag\": \"W/\\\"0x8DB6BEB269362FD\\\"\",\r\n  \"properties\": {\r\n    \"storageUrl\": \"https://hoppeeastasia123.blob.core.windows.net/app-createpoolwithapplicationp-d9569256590040fa8b7d0b2466ec46ff/foo?sv=2019-07-07&sr=b&sig=JfTUQ3bdHN4nGS4uST%2FDCHyTfDmKvUDJ5z7G2oCGp8Y%3D&skoid=91248766-5d90-412c-a3a7-792c4ef92a2e&sktid=72f988bf-86f1-41af-91ab-2d7cd011db47&skt=2023-06-13T08%3A44%3A51Z&ske=2023-06-13T12%3A49%3A51Z&sks=b&skv=2019-07-07&st=2023-06-13T08%3A44%3A51Z&se=2023-06-13T12%3A49%3A51Z&sp=rw\",\r\n    \"storageUrlExpiry\": \"2023-06-13T12:49:51.2104199Z\",\r\n    \"state\": \"Pending\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"type\": \"Microsoft.Batch/batchAccounts/applications/versions\",\r\n  \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/123/providers/Microsoft.Batch/batchAccounts/hoppeeastasia2/applications/createPoolWithApplicationPackage/versions/foo\",\r\n  \"name\": \"foo\",\r\n  \"etag\": \"W/\\\"0x8DB6E3A7F37D9C0\\\"\",\r\n  \"properties\": {\r\n    \"storageUrl\": \"https://hoppeeastasia123.blob.core.windows.net/app-createpoolwithapplicationp-cae3c650ad18410c99607bdbc0934c81/foo?sv=2019-07-07&sr=b&sig=y1c53Wj2yy2I5G%2FIp85Ee6pH1voOJ8ZP9ZUwrT6eQiY%3D&skoid=91248766-5d90-412c-a3a7-792c4ef92a2e&sktid=72f988bf-86f1-41af-91ab-2d7cd011db47&skt=2023-06-16T07%3A17%3A52Z&ske=2023-06-16T11%3A22%3A52Z&sks=b&skv=2019-07-07&st=2023-06-16T07%3A17%3A52Z&se=2023-06-16T11%3A22%3A52Z&sp=rw\",\r\n    \"storageUrlExpiry\": \"2023-06-16T11:22:52.4900719Z\",\r\n    \"state\": \"Pending\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -75,7 +75,7 @@
       "RequestMethod": "POST",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "c954440d-a53f-4eef-bfbd-b03fd70b38f9"
+          "e0913b45-720e-4f2a-88e0-e80823be51b7"
         ],
         "Accept-Language": [
           "en-US"
@@ -102,13 +102,13 @@
           "no-cache"
         ],
         "ETag": [
-          "W/\"0x8DB6BEB28247706\""
+          "W/\"0x8DB6E3A80426C57\""
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1199"
+          "1198"
         ],
         "x-ms-request-id": [
-          "96acf17b-1b9c-4d34-b95a-dc3c8f586a85"
+          "e62e9405-fbd6-47ad-9478-dca8038e7c50"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -120,16 +120,16 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-correlation-request-id": [
-          "62f2f3c0-595f-4240-bc6f-7836688c0f18"
+          "8f7bbd52-5fab-485f-a060-66c28418c90f"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20230613T084953Z:62f2f3c0-595f-4240-bc6f-7836688c0f18"
+          "SOUTHEASTASIA:20230616T072254Z:8f7bbd52-5fab-485f-a060-66c28418c90f"
         ],
         "Date": [
-          "Tue, 13 Jun 2023 08:49:53 GMT"
+          "Fri, 16 Jun 2023 07:22:53 GMT"
         ],
         "Content-Length": [
-          "874"
+          "880"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -138,10 +138,10 @@
           "-1"
         ],
         "Last-Modified": [
-          "Tue, 13 Jun 2023 08:49:53 GMT"
+          "Fri, 16 Jun 2023 07:22:54 GMT"
         ]
       },
-      "ResponseBody": "{\r\n  \"type\": \"Microsoft.Batch/batchAccounts/applications/versions\",\r\n  \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/123/providers/Microsoft.Batch/batchAccounts/hoppeeastasia2/applications/createPoolWithApplicationPackage/versions/foo\",\r\n  \"name\": \"foo\",\r\n  \"etag\": \"W/\\\"0x8DB6BEB28247706\\\"\",\r\n  \"properties\": {\r\n    \"storageUrl\": \"https://hoppeeastasia123.blob.core.windows.net/app-createpoolwithapplicationp-d9569256590040fa8b7d0b2466ec46ff/foo?sv=2019-07-07&sr=b&sig=Q0Lg7WymSehjFW9GI7AfR6JUnl5jjuUHbkvmbjcYKio%3D&skoid=91248766-5d90-412c-a3a7-792c4ef92a2e&sktid=72f988bf-86f1-41af-91ab-2d7cd011db47&skt=2023-06-13T08%3A44%3A53Z&ske=2023-06-13T12%3A49%3A53Z&sks=b&skv=2019-07-07&st=2023-06-13T08%3A44%3A53Z&se=2023-06-13T12%3A49%3A53Z&sp=rw\",\r\n    \"storageUrlExpiry\": \"2023-06-13T12:49:53.84892Z\",\r\n    \"state\": \"Active\",\r\n    \"format\": \"zip\",\r\n    \"lastActivationTime\": \"2023-06-13T08:49:53.7970717Z\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"type\": \"Microsoft.Batch/batchAccounts/applications/versions\",\r\n  \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/123/providers/Microsoft.Batch/batchAccounts/hoppeeastasia2/applications/createPoolWithApplicationPackage/versions/foo\",\r\n  \"name\": \"foo\",\r\n  \"etag\": \"W/\\\"0x8DB6E3A80426C57\\\"\",\r\n  \"properties\": {\r\n    \"storageUrl\": \"https://hoppeeastasia123.blob.core.windows.net/app-createpoolwithapplicationp-cae3c650ad18410c99607bdbc0934c81/foo?sv=2019-07-07&sr=b&sig=YLMMa8y0IUSiQLO%2Fj%2FhHNRlQPT8scnbERs1oGLeiOsE%3D&skoid=91248766-5d90-412c-a3a7-792c4ef92a2e&sktid=72f988bf-86f1-41af-91ab-2d7cd011db47&skt=2023-06-16T07%3A17%3A54Z&ske=2023-06-16T11%3A22%3A54Z&sks=b&skv=2019-07-07&st=2023-06-16T07%3A17%3A54Z&se=2023-06-16T11%3A22%3A54Z&sp=rw\",\r\n    \"storageUrlExpiry\": \"2023-06-16T11:22:54.2459774Z\",\r\n    \"state\": \"Active\",\r\n    \"format\": \"zip\",\r\n    \"lastActivationTime\": \"2023-06-16T07:22:54.1793846Z\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -150,7 +150,7 @@
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "c954440d-a53f-4eef-bfbd-b03fd70b38f9"
+          "e0913b45-720e-4f2a-88e0-e80823be51b7"
         ],
         "Accept-Language": [
           "en-US"
@@ -171,13 +171,13 @@
           "no-cache"
         ],
         "ETag": [
-          "W/\"0x8DB6BEB28247706\""
+          "W/\"0x8DB6E3A80426C57\""
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11999"
+          "11997"
         ],
         "x-ms-request-id": [
-          "712f6bff-9d5c-4536-9962-468a27ecd9db"
+          "936e142d-882a-4fa3-93b7-25b2839214a4"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -189,16 +189,16 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-correlation-request-id": [
-          "c8e9dac8-b38e-41f5-8cc6-8c7a4c8311f3"
+          "e34465aa-1458-41b8-bfea-604df879f608"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20230613T084954Z:c8e9dac8-b38e-41f5-8cc6-8c7a4c8311f3"
+          "SOUTHEASTASIA:20230616T072254Z:e34465aa-1458-41b8-bfea-604df879f608"
         ],
         "Date": [
-          "Tue, 13 Jun 2023 08:49:53 GMT"
+          "Fri, 16 Jun 2023 07:22:53 GMT"
         ],
         "Content-Length": [
-          "876"
+          "880"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -207,34 +207,34 @@
           "-1"
         ],
         "Last-Modified": [
-          "Tue, 13 Jun 2023 08:49:53 GMT"
+          "Fri, 16 Jun 2023 07:22:54 GMT"
         ]
       },
-      "ResponseBody": "{\r\n  \"type\": \"Microsoft.Batch/batchAccounts/applications/versions\",\r\n  \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/123/providers/Microsoft.Batch/batchAccounts/hoppeeastasia2/applications/createPoolWithApplicationPackage/versions/foo\",\r\n  \"name\": \"foo\",\r\n  \"etag\": \"W/\\\"0x8DB6BEB28247706\\\"\",\r\n  \"properties\": {\r\n    \"storageUrl\": \"https://hoppeeastasia123.blob.core.windows.net/app-createpoolwithapplicationp-d9569256590040fa8b7d0b2466ec46ff/foo?sv=2019-07-07&sr=b&sig=a1yqjL0pU5duqqrDGtuYMnfPbCFRXN6KLQYP7OICiGs%3D&skoid=91248766-5d90-412c-a3a7-792c4ef92a2e&sktid=72f988bf-86f1-41af-91ab-2d7cd011db47&skt=2023-06-13T08%3A44%3A54Z&ske=2023-06-13T12%3A49%3A54Z&sks=b&skv=2019-07-07&st=2023-06-13T08%3A44%3A54Z&se=2023-06-13T12%3A49%3A54Z&sp=rw\",\r\n    \"storageUrlExpiry\": \"2023-06-13T12:49:54.2105786Z\",\r\n    \"state\": \"Active\",\r\n    \"format\": \"zip\",\r\n    \"lastActivationTime\": \"2023-06-13T08:49:53.7970717Z\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"type\": \"Microsoft.Batch/batchAccounts/applications/versions\",\r\n  \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/123/providers/Microsoft.Batch/batchAccounts/hoppeeastasia2/applications/createPoolWithApplicationPackage/versions/foo\",\r\n  \"name\": \"foo\",\r\n  \"etag\": \"W/\\\"0x8DB6E3A80426C57\\\"\",\r\n  \"properties\": {\r\n    \"storageUrl\": \"https://hoppeeastasia123.blob.core.windows.net/app-createpoolwithapplicationp-cae3c650ad18410c99607bdbc0934c81/foo?sv=2019-07-07&sr=b&sig=YLMMa8y0IUSiQLO%2Fj%2FhHNRlQPT8scnbERs1oGLeiOsE%3D&skoid=91248766-5d90-412c-a3a7-792c4ef92a2e&sktid=72f988bf-86f1-41af-91ab-2d7cd011db47&skt=2023-06-16T07%3A17%3A54Z&ske=2023-06-16T11%3A22%3A54Z&sks=b&skv=2019-07-07&st=2023-06-16T07%3A17%3A54Z&se=2023-06-16T11%3A22%3A54Z&sp=rw\",\r\n    \"storageUrlExpiry\": \"2023-06-16T11:22:54.5843215Z\",\r\n    \"state\": \"Active\",\r\n    \"format\": \"zip\",\r\n    \"lastActivationTime\": \"2023-06-16T07:22:54.1793846Z\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/pools?api-version=2022-10-01.16.0",
-      "EncodedRequestUri": "L3Bvb2xzP2FwaS12ZXJzaW9uPTIwMjItMTAtMDEuMTYuMA==",
+      "RequestUri": "/pools?api-version=2023-05-01.17.0",
+      "EncodedRequestUri": "L3Bvb2xzP2FwaS12ZXJzaW9uPTIwMjMtMDUtMDEuMTcuMA==",
       "RequestMethod": "POST",
       "RequestHeaders": {
         "client-request-id": [
-          "5b3157c0-d4db-4557-a4d2-9c4501797771"
+          "4ce8d3ec-3556-4ce4-b8ef-4c2ce0f98d4f"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "ocp-date": [
-          "Tue, 13 Jun 2023 08:49:53 GMT"
+          "Fri, 16 Jun 2023 07:22:53 GMT"
         ],
         "x-ms-client-request-id": [
-          "b96b30c9-a43c-4e69-b5a5-ec2d8cf58484"
+          "689930b3-3450-4858-b636-970ca12a9c5d"
         ],
         "User-Agent": [
           "FxVersion/4.700.22.55902",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.22621",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/15.400.22.55103",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/16.0.23.31502",
           "AzurePowershell/Az1.0.0"
         ],
         "Content-Type": [
@@ -250,7 +250,7 @@
           "chunked"
         ],
         "ETag": [
-          "0x8DB6BEB28B2203C"
+          "0x8DB6E3A80BEC448"
         ],
         "Location": [
           "https://hoppeeastasia2.eastasia.batch.azure.com/pools/testCreatePoolWithAppPackages"
@@ -259,7 +259,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "bf42bfab-acf9-4386-a434-17bc0fe6ab38"
+          "abae4d71-d05f-4c70-9eb6-5e9ce4566584"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -274,10 +274,10 @@
           "https://hoppeeastasia2.eastasia.batch.azure.com/pools/testCreatePoolWithAppPackages"
         ],
         "Date": [
-          "Tue, 13 Jun 2023 08:49:54 GMT"
+          "Fri, 16 Jun 2023 07:22:54 GMT"
         ],
         "Last-Modified": [
-          "Tue, 13 Jun 2023 08:49:54 GMT"
+          "Fri, 16 Jun 2023 07:22:55 GMT"
         ]
       },
       "ResponseBody": "",
@@ -289,7 +289,7 @@
       "RequestMethod": "DELETE",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "0934a9e5-cc64-4bff-8e2f-e5361362f5a2"
+          "673838ab-a671-4869-9153-3c2c28b495df"
         ],
         "Accept-Language": [
           "en-US"
@@ -310,7 +310,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "c4add593-e683-4d78-b559-fb6b21d6262d"
+          "ac139d21-9b06-4022-a850-9ac3943d538c"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -322,16 +322,16 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-deletes": [
-          "14999"
+          "14997"
         ],
         "x-ms-correlation-request-id": [
-          "e71cba4a-25dc-4f2c-8dad-c404479d57ea"
+          "16359351-db8f-4e60-8d22-360cae0cde67"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20230613T084955Z:e71cba4a-25dc-4f2c-8dad-c404479d57ea"
+          "SOUTHEASTASIA:20230616T072255Z:16359351-db8f-4e60-8d22-360cae0cde67"
         ],
         "Date": [
-          "Tue, 13 Jun 2023 08:49:54 GMT"
+          "Fri, 16 Jun 2023 07:22:54 GMT"
         ],
         "Expires": [
           "-1"
@@ -349,7 +349,7 @@
       "RequestMethod": "DELETE",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "f93903d7-0bc8-42e0-89cc-313274849db9"
+          "a3acb2bb-195a-460d-a6a8-4e84ae3e1b1b"
         ],
         "Accept-Language": [
           "en-US"
@@ -370,7 +370,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "f7a2576d-8719-49f3-a3ff-4b7d490add34"
+          "f17bb341-81a3-4282-b0da-d0aac3591d1c"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -382,16 +382,16 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-deletes": [
-          "14998"
+          "14996"
         ],
         "x-ms-correlation-request-id": [
-          "51109870-7191-4942-a818-591a3fd0ec9f"
+          "a4f08b2e-a930-4bc1-a258-58552d9a4f30"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20230613T084955Z:51109870-7191-4942-a818-591a3fd0ec9f"
+          "SOUTHEASTASIA:20230616T072255Z:a4f08b2e-a930-4bc1-a258-58552d9a4f30"
         ],
         "Date": [
-          "Tue, 13 Jun 2023 08:49:55 GMT"
+          "Fri, 16 Jun 2023 07:22:54 GMT"
         ],
         "Expires": [
           "-1"
@@ -404,27 +404,27 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/pools/testCreatePoolWithAppPackages?api-version=2022-10-01.16.0",
-      "EncodedRequestUri": "L3Bvb2xzL3Rlc3RDcmVhdGVQb29sV2l0aEFwcFBhY2thZ2VzP2FwaS12ZXJzaW9uPTIwMjItMTAtMDEuMTYuMA==",
+      "RequestUri": "/pools/testCreatePoolWithAppPackages?api-version=2023-05-01.17.0",
+      "EncodedRequestUri": "L3Bvb2xzL3Rlc3RDcmVhdGVQb29sV2l0aEFwcFBhY2thZ2VzP2FwaS12ZXJzaW9uPTIwMjMtMDUtMDEuMTcuMA==",
       "RequestMethod": "DELETE",
       "RequestHeaders": {
         "client-request-id": [
-          "f684bc00-248d-4564-8541-90191d7fd332"
+          "d1107215-339b-4f92-835f-534bba4e1d28"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "ocp-date": [
-          "Tue, 13 Jun 2023 08:49:55 GMT"
+          "Fri, 16 Jun 2023 07:22:54 GMT"
         ],
         "x-ms-client-request-id": [
-          "9c92d34f-e82a-45d9-9c8b-e65a23b6f597"
+          "6acdb43b-f280-4796-a788-3ba3ca9c2f6e"
         ],
         "User-Agent": [
           "FxVersion/4.700.22.55902",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.22621",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/15.400.22.55103",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/16.0.23.31502",
           "AzurePowershell/Az1.0.0"
         ],
         "Content-Length": [
@@ -440,7 +440,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "f3883d53-0fdd-423d-98ac-4ecdcd7ae2a5"
+          "a2798591-31df-4edc-b7d6-bd08c10d616a"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -452,7 +452,7 @@
           "3.0"
         ],
         "Date": [
-          "Tue, 13 Jun 2023 08:49:56 GMT"
+          "Fri, 16 Jun 2023 07:22:55 GMT"
         ]
       },
       "ResponseBody": "",

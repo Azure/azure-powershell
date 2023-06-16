@@ -1,27 +1,27 @@
 {
   "Entries": [
     {
-      "RequestUri": "/supportedimages?api-version=2022-10-01.16.0",
-      "EncodedRequestUri": "L3N1cHBvcnRlZGltYWdlcz9hcGktdmVyc2lvbj0yMDIyLTEwLTAxLjE2LjA=",
+      "RequestUri": "/supportedimages?api-version=2023-05-01.17.0",
+      "EncodedRequestUri": "L3N1cHBvcnRlZGltYWdlcz9hcGktdmVyc2lvbj0yMDIzLTA1LTAxLjE3LjA=",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "client-request-id": [
-          "fbaaba7c-9643-4f70-94d8-98def87c66f8"
+          "b82635f6-ef44-404e-822c-c35d49d4d2b8"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "ocp-date": [
-          "Tue, 13 Jun 2023 08:54:28 GMT"
+          "Fri, 16 Jun 2023 07:27:15 GMT"
         ],
         "x-ms-client-request-id": [
-          "d5b3d28f-5259-4374-9ef7-68851bc95776"
+          "1f2f09d4-8912-45cb-8bad-c696c0898e7a"
         ],
         "User-Agent": [
           "FxVersion/4.700.22.55902",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.22621",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/15.400.22.55103",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/16.0.23.31502",
           "AzurePowershell/Az1.0.0"
         ]
       },
@@ -34,7 +34,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "2825d316-389a-4e2e-ad0c-df728ba07739"
+          "6a482eab-96c8-4d52-a256-147fdb176373"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -46,7 +46,7 @@
           "3.0"
         ],
         "Date": [
-          "Tue, 13 Jun 2023 08:54:29 GMT"
+          "Fri, 16 Jun 2023 07:27:16 GMT"
         ],
         "Content-Type": [
           "application/json; odata=minimalmetadata"

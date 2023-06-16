@@ -1,27 +1,27 @@
 {
   "Entries": [
     {
-      "RequestUri": "/pools/testIaasPool/nodes?api-version=2022-10-01.16.0",
-      "EncodedRequestUri": "L3Bvb2xzL3Rlc3RJYWFzUG9vbC9ub2Rlcz9hcGktdmVyc2lvbj0yMDIyLTEwLTAxLjE2LjA=",
+      "RequestUri": "/pools/testIaasPool/nodes?api-version=2023-05-01.17.0",
+      "EncodedRequestUri": "L3Bvb2xzL3Rlc3RJYWFzUG9vbC9ub2Rlcz9hcGktdmVyc2lvbj0yMDIzLTA1LTAxLjE3LjA=",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "client-request-id": [
-          "36b9fcf8-513e-4e86-8071-1a7e7dfd0965"
+          "4c8b42a1-90ce-43e3-9046-17adce4af862"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "ocp-date": [
-          "Tue, 13 Jun 2023 09:01:22 GMT"
+          "Fri, 16 Jun 2023 07:23:16 GMT"
         ],
         "x-ms-client-request-id": [
-          "dd7fcec3-5d81-4b6e-8963-4e8dc1e43558"
+          "33101fe5-504f-4f82-a19d-e19c0666841a"
         ],
         "User-Agent": [
           "FxVersion/4.700.22.55902",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.22621",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/15.400.22.55103",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/16.0.23.31502",
           "AzurePowershell/Az1.0.0"
         ]
       },
@@ -34,7 +34,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "cbd8bc87-5f84-4c55-9ab6-2b9c6d72516a"
+          "220a07e3-3490-4361-aa44-ff7047358c8b"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -46,7 +46,7 @@
           "3.0"
         ],
         "Date": [
-          "Tue, 13 Jun 2023 09:01:23 GMT"
+          "Fri, 16 Jun 2023 07:23:17 GMT"
         ],
         "Content-Type": [
           "application/json; odata=minimalmetadata"
@@ -56,27 +56,27 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/pools/testIaasPool/nodes/tvmps_dab0d74aeac5bae0c2175d1eb1ac01e7bd02cece885de1af52cbbd2750b66828_d?api-version=2022-10-01.16.0",
-      "EncodedRequestUri": "L3Bvb2xzL3Rlc3RJYWFzUG9vbC9ub2Rlcy90dm1wc19kYWIwZDc0YWVhYzViYWUwYzIxNzVkMWViMWFjMDFlN2JkMDJjZWNlODg1ZGUxYWY1MmNiYmQyNzUwYjY2ODI4X2Q/YXBpLXZlcnNpb249MjAyMi0xMC0wMS4xNi4w",
+      "RequestUri": "/pools/testIaasPool/nodes/tvmps_dab0d74aeac5bae0c2175d1eb1ac01e7bd02cece885de1af52cbbd2750b66828_d?api-version=2023-05-01.17.0",
+      "EncodedRequestUri": "L3Bvb2xzL3Rlc3RJYWFzUG9vbC9ub2Rlcy90dm1wc19kYWIwZDc0YWVhYzViYWUwYzIxNzVkMWViMWFjMDFlN2JkMDJjZWNlODg1ZGUxYWY1MmNiYmQyNzUwYjY2ODI4X2Q/YXBpLXZlcnNpb249MjAyMy0wNS0wMS4xNy4w",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "client-request-id": [
-          "257d866e-9a95-467f-831b-15a84823fa01"
+          "3a84d6ae-5881-482e-8f22-85b6f03337b4"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "ocp-date": [
-          "Tue, 13 Jun 2023 09:01:23 GMT"
+          "Fri, 16 Jun 2023 07:23:16 GMT"
         ],
         "x-ms-client-request-id": [
-          "cb6fde8d-2b2b-442c-b2ad-078f1f77dc49"
+          "10743cf3-3492-43b2-a39d-735ff0fd18f7"
         ],
         "User-Agent": [
           "FxVersion/4.700.22.55902",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.22621",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/15.400.22.55103",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/16.0.23.31502",
           "AzurePowershell/Az1.0.0"
         ]
       },
@@ -89,7 +89,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "c3f00867-4306-4c44-a995-314f4403279e"
+          "a633b32a-c51c-4410-9c14-b3204634a6e2"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -101,7 +101,7 @@
           "3.0"
         ],
         "Date": [
-          "Tue, 13 Jun 2023 09:01:23 GMT"
+          "Fri, 16 Jun 2023 07:23:17 GMT"
         ],
         "Content-Type": [
           "application/json; odata=minimalmetadata"
@@ -111,27 +111,27 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/pools/testIaasPool/nodes/tvmps_dab0d74aeac5bae0c2175d1eb1ac01e7bd02cece885de1af52cbbd2750b66828_d/remoteloginsettings?api-version=2022-10-01.16.0",
-      "EncodedRequestUri": "L3Bvb2xzL3Rlc3RJYWFzUG9vbC9ub2Rlcy90dm1wc19kYWIwZDc0YWVhYzViYWUwYzIxNzVkMWViMWFjMDFlN2JkMDJjZWNlODg1ZGUxYWY1MmNiYmQyNzUwYjY2ODI4X2QvcmVtb3RlbG9naW5zZXR0aW5ncz9hcGktdmVyc2lvbj0yMDIyLTEwLTAxLjE2LjA=",
+      "RequestUri": "/pools/testIaasPool/nodes/tvmps_dab0d74aeac5bae0c2175d1eb1ac01e7bd02cece885de1af52cbbd2750b66828_d/remoteloginsettings?api-version=2023-05-01.17.0",
+      "EncodedRequestUri": "L3Bvb2xzL3Rlc3RJYWFzUG9vbC9ub2Rlcy90dm1wc19kYWIwZDc0YWVhYzViYWUwYzIxNzVkMWViMWFjMDFlN2JkMDJjZWNlODg1ZGUxYWY1MmNiYmQyNzUwYjY2ODI4X2QvcmVtb3RlbG9naW5zZXR0aW5ncz9hcGktdmVyc2lvbj0yMDIzLTA1LTAxLjE3LjA=",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "client-request-id": [
-          "c031cb24-bbe6-40bf-9efc-504a6efaa962"
+          "3bc81632-8dbb-48e1-8c91-6aad487e9b5b"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "ocp-date": [
-          "Tue, 13 Jun 2023 09:01:23 GMT"
+          "Fri, 16 Jun 2023 07:23:16 GMT"
         ],
         "x-ms-client-request-id": [
-          "cb6fde8d-2b2b-442c-b2ad-078f1f77dc49"
+          "10743cf3-3492-43b2-a39d-735ff0fd18f7"
         ],
         "User-Agent": [
           "FxVersion/4.700.22.55902",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.22621",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/15.400.22.55103",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/16.0.23.31502",
           "AzurePowershell/Az1.0.0"
         ]
       },
@@ -144,7 +144,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "b375fc46-2fb4-4e87-9933-d62cb7f7a12c"
+          "1ff3c092-401d-4e5e-bb20-f4d83e7e7eeb"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -159,7 +159,7 @@
           "https://hoppeeastasia2.eastasia.batch.azure.com/pools/testIaasPool/nodes/tvmps_dab0d74aeac5bae0c2175d1eb1ac01e7bd02cece885de1af52cbbd2750b66828_d/remoteloginsettings"
         ],
         "Date": [
-          "Tue, 13 Jun 2023 09:01:23 GMT"
+          "Fri, 16 Jun 2023 07:23:17 GMT"
         ],
         "Content-Type": [
           "application/json; odata=minimalmetadata"

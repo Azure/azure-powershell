@@ -18,11 +18,12 @@ using System.Management.Automation;
 using System.Security;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Batch
 {
     [System.Obsolete]
+    [GenericBreakingChange("The Batch account certificates feature is deprecated. Please transition to using Azure Key Vault to securely access and install certificates on your Batch pools (https://learn.microsoft.com/en-us/azure/batch/batch-certificate-migration-guide)", null, "02/29/2024")]
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzurePrefix + "BatchCertificate", DefaultParameterSetName = FileParameterSet), OutputType(typeof(void))]
     public class NewBatchCertificateCommand : BatchObjectModelCmdletBase
     {
