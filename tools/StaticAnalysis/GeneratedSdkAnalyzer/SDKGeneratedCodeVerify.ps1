@@ -25,6 +25,7 @@ try{
         Write-Error "Only accept .txt files as input."
     }
     Write-Host "Preparing Autorest..."
+    npm install -g autorest
     autorest --reset
     autorest --use:@microsoft.azure/autorest.csharp@2.3.90
     foreach ($_ in $ChangedSdks) {
