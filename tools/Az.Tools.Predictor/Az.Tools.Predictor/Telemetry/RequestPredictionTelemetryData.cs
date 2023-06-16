@@ -38,6 +38,11 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
         /// </summary>
         public const string PropertyNameValidCommandCount = "ValidCommandCount";
 
+        /// <summary>
+        /// The telemetry property name for command line parsing errors.
+        /// </summary>
+        public const string PropertyNameCommandLineParsingError = "CommandLineParsingError";
+
         /// <inheritdoc/>
         public PredictionClient Client { get; init; }
 

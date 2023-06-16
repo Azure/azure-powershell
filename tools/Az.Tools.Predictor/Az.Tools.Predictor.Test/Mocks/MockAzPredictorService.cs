@@ -86,7 +86,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test.Mocks
             }
 
             Commands = commands;
-            RequestPredictionTaskCompletionSource.TrySetResult((true, new CommandLineSummary(3, 3)));
+            RequestPredictionTaskCompletionSource.TrySetResult((true, new CommandLineSummary(3, 3, null)));
             return RequestPredictionTaskCompletionSource.Task;
         }
 

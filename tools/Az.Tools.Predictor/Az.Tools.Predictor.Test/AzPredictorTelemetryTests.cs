@@ -63,10 +63,10 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
                         new List<string>(),
                         hasSentHttpRequest: true,
                         exception: null,
-                        predictorSummary: new CommandLineSummary(3, 3)));
+                        predictorSummary: new CommandLineSummary(3, 3, null)));
 
             VerifyTelemetryDispatchCount(expectedTelemetryCount, telemetryClient);
-            // We have udpated the cached aggregated data.
+            // We have updated the cached aggregated data.
             Assert.Equal(firstRequestId, telemetryClient.RecordedAggregatedData.RequestId);
             // We haven't sent this telemetry yet.
             Assert.Equal(0, telemetryClient.RecordedTelemetry.Count);
@@ -84,7 +84,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
                         },
                         hasSentHttpRequest: true,
                         exception: null,
-                        predictorSummary: new CommandLineSummary(10, 10)));
+                        predictorSummary: new CommandLineSummary(10, 10, null)));
 
             VerifyTelemetryDispatchCount(expectedTelemetryCount, telemetryClient);
 

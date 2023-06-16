@@ -66,6 +66,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             _telemetryClient = telemetryClient;
             _parameterValuePredictor = parameterValuePredictor;
             var commnadLines =  new List<CommandLine>();
+            var errors = new HashSet<string>();
 
             if (modelPredictions != null)
             {
@@ -75,13 +76,14 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                     {
                         this._commandLinePredictions.Add(new CommandLine(modelPredictions[i], azContext));
                     }
-                    catch (Exception)
+                    catch (Exception e)
                     {
+                        errors.Add(e.Message);
                     }
                 }
             }
 
-            PredictorSummary = new CommandLineSummary(modelPredictions?.Count ?? 0, this._commandLinePredictions.Count);
+            PredictorSummary = new CommandLineSummary(modelPredictions?.Count ?? 0, this._commandLinePredictions.Count, errors);
         }
 
         /// <summary>

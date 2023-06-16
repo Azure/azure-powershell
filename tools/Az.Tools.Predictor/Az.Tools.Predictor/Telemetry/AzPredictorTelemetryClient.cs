@@ -256,6 +256,10 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
             {
                 properties.Add(RequestPredictionTelemetryData.PropertyNameReceivedCommandCount, aggregatedData.PredictorSummary.ReceivedCommandCount.ToString(CultureInfo.InvariantCulture));
                 properties.Add(RequestPredictionTelemetryData.PropertyNameValidCommandCount, aggregatedData.PredictorSummary.ValidCommandCount.ToString(CultureInfo.InvariantCulture));
+                if (aggregatedData.PredictorSummary.Errors?.Any() == true)
+                {
+                    properties.Add(RequestPredictionTelemetryData.PropertyNameCommandLineParsingError, string.Join('|', aggregatedData.PredictorSummary.Errors));
+                }
             }
 
             var suggestions = new List<Dictionary<string, object>>();

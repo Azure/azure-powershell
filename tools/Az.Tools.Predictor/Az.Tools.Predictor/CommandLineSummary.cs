@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 {
@@ -20,5 +21,6 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
     /// </summary>
     /// <param name="ReceivedCommandCount">The number of commands that the predictor receives.</param>
     /// <param name="ValidCommandCount">The number of commands that are valid and can be used by the predictor.</param>
-    public record CommandLineSummary(int ReceivedCommandCount, int ValidCommandCount);
+    /// <param name="Errors">The errors we encounter when we try to parse the command line.</param>
+    public record CommandLineSummary(int ReceivedCommandCount, int ValidCommandCount, IEnumerable<string> Errors);
 }
