@@ -1,4 +1,4 @@
-$FilesChangedPaths = "../../../artifacts/FilesChanged.txt"
+$FilesChangedPaths = "$PSScriptRoot/../../../artifacts/FilesChanged.txt"
 # All errors should be logged using this function, as it tracks the errors in
 # the $errors array, which is used in the finally block of the script to determine
 # the return code.
@@ -17,7 +17,7 @@ Set-StrictMode -Version 1
 try{
     # . (Join-Path $PSScriptRoot\..\common\scripts common.ps1)
     # When the input $MarkdownPaths is the path of txt file contained markdown paths
-
+    Write-Host (Resolve-Path $FilesChangedPaths)
     if ((Test-Path $FilesChangedPaths -PathType Leaf) -and $FilesChangedPaths.EndsWith(".txt")) {
         $FilesChanged = Get-Content $FilesChangedPaths | Where-Object { ($_ -match "^src\\.*\.Sdk\\.*Generated.*")}# -and (Test-Path $_) }
         # Write-Host "FilesChanged:" $FilesChanged
@@ -35,20 +35,25 @@ try{
     foreach ($_ in $ChangedModules) {
         # Direct to the Sdk directory
         $module = ($_ -split "\/|\\")[1]
-        Write-Host "Directing to " + $PSScriptRoot + "../" + $_
-        cd $PSScriptRoot + "../" + $_
+        Write-Host "Directing to " $PSScriptRoot/../../../$_
+        cd $PSScriptRoot/../../../$_
 
         # Regenerate the Sdk under Generated folder
-        Write-Host "Re-generating SDK under Generated folder for $module..."
+        Write-Host (Test-Path -Path "README.md" -PathType Leaf)
         if( Test-Path -Path "README.md" -PathType Leaf){
+            Write-Host "Re-generating SDK under Generated folder for $module..."
             autorest --reset
+            Write-Host "1"
             autorest --use:@microsoft.azure/autorest.csharp@2.3.90
+            Write-Host "2"
             autorest.cmd README.md --version=v2
+            Write-Host "3"
         }
         else {
             LogError "No README file detected."
         }
 
+        Write-Host "git status"
         # See if the code is completely the same as we generated
         $changes = git status --porcelain
         if (!$changes -eq $null){
