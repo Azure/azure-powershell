@@ -14,7 +14,7 @@
     "devCenterName": {
       "value": "pwshDcuoq9z6"
     },
-    "devCenterName2": {
+    "devCenterNameDelete": {
       "value": "pwshDc2lpsn7o"
     },
     "projectName": {
@@ -32,7 +32,7 @@
     "networkConnectionName": {
       "value": "qu4rta"
     },
-    "networkConnectionName2": {
+    "networkConnectionNameDelete": {
       "value": "8h6jlf"
     },
     "catalogName": {
@@ -74,25 +74,37 @@
     "sigId": {
       "value": "/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/amlim-test/providers/Microsoft.Compute/galleries/amlim_pwsh_sig"
     },
-    "projectName2": {
+    "projectNameDelete": {
       "value": "pwshPro2g2u183"
     },
-    "catalogName2": {
+    "catalogNameDelete": {
       "value": "efy5zp"
     },
-    "attachedNetworkName2": {
+    "attachedNetworkNameDelete": {
       "value": "9x68nw"
     },
-    "devBoxDefinitionName2": {
+    "devBoxDefinitionNameDelete": {
       "value": "4azi69"
     },
-    "environmentTypeName2": {
+    "environmentTypeNameDelete": {
       "value": "5ozpr4"
     },
-    "galleryName2": {
+    "galleryNameDelete": {
       "value": "3wa54r"
     },
-    "poolName2": {
+    "poolNameDelete": {
+      "value": "inbrue"
+    },
+    "envForProjEnvTypeNew": {
+      "value": "4azi69"
+    },
+    "envForProjEnvTypeNew2": {
+      "value": "5ozpr4"
+    },
+    "poolForScheduleNew": {
+      "value": "3wa54r"
+    },
+    "poolForScheduleNew2": {
       "value": "inbrue"
     }
   }

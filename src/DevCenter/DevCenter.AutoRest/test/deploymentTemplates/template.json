@@ -14,7 +14,7 @@
         "devCenterName": {
             "type": "string"
         },
-        "devCenterName2": {
+        "devCenterNameDelete": {
             "type": "string"
         },
         "projectName": {
@@ -32,7 +32,7 @@
         "networkConnectionName": {
             "type": "string"
         },
-        "networkConnectionName2": {
+        "networkConnectionNameDelete": {
             "type": "string"
         },
         "catalogName": {
@@ -81,36 +81,48 @@
                 "description": "A new GUID used to identify the role assignment"
             }
         },
-        "projectName2": {
+        "projectNameDelete": {
             "type": "string"
 
         },
-        "catalogName2": {
+        "catalogNameDelete": {
             "type": "string"
 
         },
-        "attachedNetworkName2": {
+        "attachedNetworkNameDelete": {
             "type": "string"
 
         },
-        "devBoxDefinitionName2": {
+        "devBoxDefinitionNameDelete": {
             "type": "string"
 
         },
-        "environmentTypeName2": {
+        "environmentTypeNameDelete": {
             "type": "string"
 
         },
-        "galleryName2": {
+        "galleryNameDelete": {
             "type": "string"
 
         },
-        "poolName2": {
+        "poolNameDelete": {
             "type": "string"
         },
         "osStorageType": {
             "type": "string"
 
+        },
+        "envForProjEnvTypeNew": {
+            "type": "string"
+        },
+        "envForProjEnvTypeNew2": {
+            "type": "string"
+        },
+        "poolForScheduleNew": {
+            "type": "string"
+        },
+        "poolForScheduleNew2": {
+            "type": "string"
         }
     },
     "functions": [],
@@ -124,13 +136,13 @@
         },
         {
             "type": "Microsoft.DevCenter/devcenters",
-            "name": "[parameters('devCenterName2')]",
+            "name": "[parameters('devCenterNameDelete')]",
             "apiVersion": "2023-04-01",
             "location": "[parameters('location')]"
         },
         {
             "type": "Microsoft.DevCenter/networkconnections",
-            "name": "[parameters('networkConnectionName2')]",
+            "name": "[parameters('networkConnectionNameDelete')]",
             "apiVersion": "2023-04-01",
             "location": "[parameters('location')]",
             "properties": {
@@ -181,7 +193,7 @@
                         },
                         {
                             "type": "Microsoft.DevCenter/projects",
-                            "name": "[parameters('projectName2')]",
+                            "name": "[parameters('projectNameDelete')]",
                             "apiVersion": "2023-04-01",
                             "location": "[parameters('location')]",
                             "properties": {
@@ -288,7 +300,7 @@
                         },
                         {
                             "type": "microsoft.devcenter/devcenters/catalogs",
-                            "name": "[concat(parameters('devCenterName') ,'/', parameters('catalogName2'))]",
+                            "name": "[concat(parameters('devCenterName') ,'/', parameters('catalogNameDelete'))]",
                             "apiVersion": "2023-04-01",
                             "properties": {
                                 "gitHub": {
@@ -309,7 +321,7 @@
                         },
                         {
                             "type": "microsoft.devcenter/devcenters/attachednetworks",
-                            "name": "[concat(parameters('devCenterName'), '/', parameters('attachedNetworkName2'))]",
+                            "name": "[concat(parameters('devCenterName'), '/', parameters('attachedNetworkNameDelete'))]",
                             "apiVersion": "2023-04-01",
                             "properties": {
                                 "networkConnectionId": "[resourceId('Microsoft.DevCenter/networkConnections', parameters('networkConnectionName'))]"
@@ -333,7 +345,7 @@
                         },
                         {
                             "type": "microsoft.devcenter/devcenters/devboxdefinitions",
-                            "name": "[concat(parameters('devCenterName'), '/', parameters('devBoxDefinitionName2'))]",
+                            "name": "[concat(parameters('devCenterName'), '/', parameters('devBoxDefinitionNameDelete'))]",
                             "location": "[parameters('location')]",
                             "apiVersion": "2023-04-01",
                             "properties": {
@@ -354,7 +366,17 @@
                         },
                         {
                             "type": "microsoft.devcenter/devcenters/environmenttypes",
-                            "name": "[concat(parameters('devCenterName'), '/', parameters('environmentTypeName2'))]",
+                            "name": "[concat(parameters('devCenterName'), '/', parameters('environmentTypeNameDelete'))]",
+                            "apiVersion": "2023-04-01"
+                        },
+                        {
+                            "type": "microsoft.devcenter/devcenters/environmenttypes",
+                            "name": "[concat(parameters('devCenterName'), '/', parameters('envForProjEnvTypeNew'))]",
+                            "apiVersion": "2023-04-01"
+                        },
+                        {
+                            "type": "microsoft.devcenter/devcenters/environmenttypes",
+                            "name": "[concat(parameters('devCenterName'), '/', parameters('envForProjEnvTypeNew2'))]",
                             "apiVersion": "2023-04-01"
                         },
                         {
@@ -367,7 +389,7 @@
                         },
                         {
                             "type": "microsoft.devcenter/devcenters/galleries",
-                            "name": "[concat(parameters('devCenterName'), '/', parameters('galleryName2'))]",
+                            "name": "[concat(parameters('devCenterName'), '/', parameters('galleryNameDelete'))]",
                             "apiVersion": "2023-04-01",
                             "properties": {
                                 "galleryResourceId": "[parameters('sigId')]"
@@ -411,7 +433,41 @@
                         },
                         {
                             "type": "microsoft.devcenter/projects/pools",
-                            "name": "[concat(parameters('projectName'), '/', parameters('poolName2'))]",
+                            "name": "[concat(parameters('projectName'), '/', parameters('poolNameDelete'))]",
+                            "apiVersion": "2023-04-01",
+                            "location": "[parameters('location')]",
+                            "properties": {
+                                "devBoxDefinitionName": "[parameters('devBoxDefinitionName')]",
+                                "networkConnectionName": "[parameters('attachedNetworkName')]",
+                                "licenseType": "Windows_Client",
+                                "localAdministrator": "Enabled",
+                                "stopOnDisconnect": {
+                                    "status": "Enabled",
+                                    "gracePeriodMinutes": 60
+                                }
+
+                            }
+                        },
+                        {
+                            "type": "microsoft.devcenter/projects/pools",
+                            "name": "[concat(parameters('projectName'), '/', parameters('poolForScheduleNew'))]",
+                            "apiVersion": "2023-04-01",
+                            "location": "[parameters('location')]",
+                            "properties": {
+                                "devBoxDefinitionName": "[parameters('devBoxDefinitionName')]",
+                                "networkConnectionName": "[parameters('attachedNetworkName')]",
+                                "licenseType": "Windows_Client",
+                                "localAdministrator": "Enabled",
+                                "stopOnDisconnect": {
+                                    "status": "Enabled",
+                                    "gracePeriodMinutes": 60
+                                }
+
+                            }
+                        },
+                        {
+                            "type": "microsoft.devcenter/projects/pools",
+                            "name": "[concat(parameters('projectName'), '/', parameters('poolForScheduleNew2'))]",
                             "apiVersion": "2023-04-01",
                             "location": "[parameters('location')]",
                             "properties": {
@@ -456,7 +512,7 @@
                         },
                         {
                             "type": "microsoft.devcenter/projects/environmenttypes",
-                            "name": "[concat(parameters('projectName'), '/', parameters('environmentTypeName2'))]",
+                            "name": "[concat(parameters('projectName'), '/', parameters('environmentTypeNameDelete'))]",
                             "apiVersion": "2023-04-01",
                             "properties": {
                                 "deploymentTargetId": "[concat('/subscriptions/', parameters('subscriptionId'))]",
@@ -498,7 +554,7 @@
                         },
                         {
                             "type": "microsoft.devcenter/projects/pools/schedules",
-                            "name": "[concat(parameters('projectName'), '/', parameters('poolName2'), '/default')]",
+                            "name": "[concat(parameters('projectName'), '/', parameters('poolNameDelete'), '/default')]",
                             "apiVersion": "2023-04-01",
                             "properties": {
                                 "frequency": "Daily",
@@ -508,7 +564,7 @@
                                 "type": "StopDevBox"
                             },
                             "dependsOn": [
-                                "[resourceId('Microsoft.DevCenter/projects/pools', parameters('projectName'), parameters('poolName2'))]"
+                                "[resourceId('Microsoft.DevCenter/projects/pools', parameters('projectName'), parameters('poolNameDelete'))]"
                             ]
                         }
                     ]

@@ -15,19 +15,28 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzDevCenterAdminDevBoxDef
 }
 
 Describe 'New-AzDevCenterAdminDevBoxDefinition' {
-    It 'CreateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'CreateExpanded' {
+
+        $devBoxDefinition = New-AzDevCenterAdminDevBoxDefinition -Name $env.devBoxDefinitionNew -DevCenterName $env.devCenterName -ResourceGroupName $env.resourceGroup -Location $env.location -HibernateSupport "Enabled" -ImageReferenceId $env.imageReferenceId -OSStorageType $env.osStorageType -SkuName $env.skuName 
+        $devBoxDefinition.Name | Should -Be $env.devBoxDefinitionNew
+        $devBoxDefinition.ImageReferenceId | Should -Be $env.imageReferenceId
+        $devBoxDefinition.OSStorageType | Should -Be $env.osStorageType
+        $devBoxDefinition.SkuName | Should -Be $env.skuName
+        $devBoxDefinition.ImageReferenceExactVersion | Should -Be "1.0.0"
+        $devBoxDefinition.HibernateSupport | Should -Be "Enabled"
+        }
+
+    It 'Create' {
+        $body = @{"Location" = $env.location; "ImageReferenceId" = $env.ImageReferenceId; "OSStorageType" = $env.osStorageType; "SkuName" = $env.skuName; "HibernateSupport" = "Enabled"}
+
+        $devBoxDefinition = New-AzDevCenterAdminDevBoxDefinition -Name $env.devBoxDefinitionNew2 -DevCenterName $env.devCenterName -ResourceGroupName $env.resourceGroup -Body $body
+
+        $devBoxDefinition.Name | Should -Be $env.devBoxDefinitionNew2
+        $devBoxDefinition.ImageReferenceId | Should -Be $env.imageReferenceId
+        $devBoxDefinition.OSStorageType | Should -Be $env.osStorageType
+        $devBoxDefinition.SkuName | Should -Be $env.skuName
+        $devBoxDefinition.ImageReferenceExactVersion | Should -Be "1.0.0"
+        $devBoxDefinition.HibernateSupport | Should -Be "Enabled"
     }
 
-    It 'Create' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'CreateViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'CreateViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
 }

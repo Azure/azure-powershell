@@ -23,6 +23,9 @@ Describe 'Get-AzDevCenterAdminDevCenter' {
     It 'Get' {
         $devCenter = Get-AzDevCenterAdminDevCenter -ResourceGroupName $env.resourceGroup -Name $env.devCenterName
         $devCenter.Name | Should -Be $env.devCenterName
+        $identityHash = $devCenter.IdentityUserAssignedIdentity | ConvertTo-Json | ConvertFrom-Json
+        $identityHash.Keys[0] | Should -Be $env.identityId
+        $devcenter.IdentityType | Should -Be "UserAssigned"
 
     }
 
@@ -35,5 +38,8 @@ Describe 'Get-AzDevCenterAdminDevCenter' {
         $devCenter = Get-AzDevCenterAdminDevCenter -ResourceGroupName $env.resourceGroup -Name $env.devCenterName
         $devCenter = Get-AzDevCenterAdminDevCenter -InputObject $devCenter
         $devCenter.Name | Should -Be $env.devCenterName
+        $identityHash = $devCenter.IdentityUserAssignedIdentity | ConvertTo-Json | ConvertFrom-Json
+        $identityHash.Keys[0] | Should -Be $env.identityId
+        $devcenter.IdentityType | Should -Be "UserAssigned"
     }
 }

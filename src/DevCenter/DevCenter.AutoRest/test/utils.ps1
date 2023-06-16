@@ -1,8 +1,9 @@
 function RandomString([bool]$allChars, [int32]$len) {
     if ($allChars) {
-        return -join ((33..126) | Get-Random -Count $len | % {[char]$_})
-    } else {
-        return -join ((48..57) + (97..122) | Get-Random -Count $len | % {[char]$_})
+        return -join ((33..126) | Get-Random -Count $len | % { [char]$_ })
+    }
+    else {
+        return -join ((48..57) + (97..122) | Get-Random -Count $len | % { [char]$_ })
     }
 }
 $env = @{}
@@ -23,60 +24,129 @@ function setupEnv() {
     $resourceGroup = "pwshRg" + (RandomString -allChars $false -len 6)
     $managedIdentityName = "pwshMsi" + (RandomString -allChars $false -len 6)
     $devCenterName = "pwshDc" + (RandomString -allChars $false -len 6)
-    $devCenterName2 = "pwshDc2" + (RandomString -allChars $false -len 6)
+    $devCenterNameDelete = "pwshDc2" + (RandomString -allChars $false -len 6)
     $projectName = "pwshProj" + (RandomString -allChars $false -len 6)
-    $projectName2 = "pwshPro2" + (RandomString -allChars $false -len 6)
+    $projectNameDelete = "pwshPro2" + (RandomString -allChars $false -len 6)
     $poolName = RandomString -allChars $false -len 6
-    $poolName2 = RandomString -allChars $false -len 6
+    $poolNameDelete = RandomString -allChars $false -len 6
     $location = "canadacentral"
     $catalogName = RandomString -allChars $false -len 6
-    $catalogName2 = RandomString -allChars $false -len 6
-    $attachedNetworkName  = RandomString -allChars $false -len 6
-    $attachedNetworkName2  = RandomString -allChars $false -len 6
-    $networkConnectionName  = RandomString -allChars $false -len 6
-    $networkConnectionName2  = RandomString -allChars $false -len 6
-    $galleryName  = RandomString -allChars $false -len 6
-    $galleryName2  = RandomString -allChars $false -len 6
+    $catalogNameDelete = RandomString -allChars $false -len 6
+    $attachedNetworkName = RandomString -allChars $false -len 6
+    $attachedNetworkNameDelete = RandomString -allChars $false -len 6
+    $networkConnectionName = RandomString -allChars $false -len 6
+    $networkConnectionNameDelete = RandomString -allChars $false -len 6
+    $galleryName = RandomString -allChars $false -len 6
+    $galleryNameDelete = RandomString -allChars $false -len 6
     $networkConnectionId = "/subscriptions/" + $env.SubscriptionId + "/resourceGroups/" + $resourceGroup + "/providers/Microsoft.DevCenter/networkConnections/" + $networkConnectionName
     $gitHubBranch = "main"
     $gitHubPath = "/Environments"
-    $gitHubSecretIdentifier = "https://dummyVault/dummy/00000000"
-    $keyVaultName = "dummy"
-    $gitHubUri = "https://github.com/fake/fake.git"
-    $devBoxDefinitionName  = RandomString -allChars $false -len 6
-    $devBoxDefinitionName2  = RandomString -allChars $false -len 6
+    $devBoxDefinitionName = RandomString -allChars $false -len 6
+    $devBoxDefinitionNameDelete = RandomString -allChars $false -len 6
     $osStorageType = "ssd_1024gb"
     $skuName = "general_a_8c32gb_v1"
     $imageName = "MicrosoftWindowsDesktop_windows-ent-cpc_win11-22h2-ent-cpc-os"
     $imageReferenceId = "/subscriptions/" + $env.SubscriptionId + "/resourceGroups/" + $resourceGroup + "/providers/Microsoft.DevCenter/devcenters/" + $devCenterName + "/galleries/Default/images/" + $imageName
     $imageVersion = "1.0.0"
-    $environmentTypeName =  RandomString -allChars $false -len 6
-    $environmentTypeName2 =  RandomString -allChars $false -len 6
+    $environmentTypeName = RandomString -allChars $false -len 6
+    $environmentTypeNameDelete = RandomString -allChars $false -len 6
     $devCenterId = "/subscriptions/" + $env.SubscriptionId + "/resourceGroups/" + $resourceGroup + "/providers/Microsoft.DevCenter/devcenters/" + $devCenterName
     $time = "18:30"
     $timeZone = "America/Los_Angeles"
     $subnetId = "/subscriptions/" + $env.SubscriptionId + "/resourceGroups/amlim-test/providers/Microsoft.Network/virtualNetworks/amlim-vnet-canadacentral/subnets/default"
     $sigId = "/subscriptions/" + $env.SubscriptionId + "/resourceGroups/amlim-test/providers/Microsoft.Compute/galleries/amlim_pwsh_sig"
+
+    # Replace with real values when running test recordings
+    $gitHubSecretIdentifier = "https://dummyVault/dummy/00000000"
+    $keyVaultName = "dummy"
+    $gitHubUri = "https://github.com/fake/fake.git"
+
     New-AzResourceGroup -Name $resourceGroup -Location "canadacentral"
+
+    $attachedNetworkNew = RandomString -allChars $false -len 4
+    $attachedNetworkNew2 = RandomString -allChars $false -len 5
+    $catalogNew = RandomString -allChars $false -len 4
+    $catalogNew2 = RandomString -allChars $false -len 5
+    $devBoxDefinitionNew = RandomString -allChars $false -len 4
+    $devBoxDefinitionNew2 = RandomString -allChars $false -len 5
+    $devCenterNew = RandomString -allChars $false -len 4
+    $devCenterNew2 = RandomString -allChars $false -len 5
+    $envTypeNew = RandomString -allChars $false -len 5
+    $envTypeNew2 = RandomString -allChars $false -len 4
+    $galleryNew = RandomString -allChars $false -len 5
+    $galleryNew2 = RandomString -allChars $false -len 4
+    $networkConnectionNew = RandomString -allChars $false -len 5
+    $networkConnectionNew2 = RandomString -allChars $false -len 4
+    $networkConnectionHybridNew = RandomString -allChars $false -len 5
+    $networkConnectionHybridNew2 = RandomString -allChars $false -len 4
+    $poolNew = RandomString -allChars $false -len 4
+    $poolNew2 = RandomString -allChars $false -len 5
+    $projectNew = RandomString -allChars $false -len 4
+    $projectNew2 = RandomString -allChars $false -len 5
+    $envForProjEnvTypeNew = RandomString -allChars $false -len 4
+    $envForProjEnvTypeNew2 = RandomString -allChars $false -len 4
+    $poolForScheduleNew = RandomString -allChars $false -len 5
+    $poolForScheduleNew2 = RandomString -allChars $false -len 4
+    $networkingRgName1 = "1" + (RandomString -allChars $false -len 4)
+    $networkingRgName2 = "2" + (RandomString -allChars $false -len 4)
+    $networkingRgName3 = "3" + (RandomString -allChars $false -len 4)
+    $networkingRgName4 = "4" + (RandomString -allChars $false -len 4)
+    $aadJoinType = "AzureADJoin"
+    $hybridDomainJoinType = "HybridAzureADJoin"
+    $domainName = "fidalgoppe010.local"
+    $domainPassword = "fakePassword"
+    $domainUsername = "domainjoin@fidalgoppe010.local"
+
+    $env.Add("aadJoinType", $aadJoinType)
+    $env.Add("hybridDomainJoinType", $hybridDomainJoinType)
+    $env.Add("domainName", $domainName)
+    $env.Add("domainPassword", $domainPassword)
+    $env.Add("domainUsername", $domainUsername)
+    $env.Add("networkingRgName1", $networkingRgName1)
+    $env.Add("networkingRgName2", $networkingRgName2)
+    $env.Add("networkingRgName3", $networkingRgName3)
+    $env.Add("networkingRgName4", $networkingRgName4)
+    $env.Add("attachedNetworkNew", $attachedNetworkNew)
+    $env.Add("attachedNetworkNew2", $attachedNetworkNew2)
+    $env.Add("catalogNew", $catalogNew)
+    $env.Add("catalogNew2", $catalogNew2)
+    $env.Add("devBoxDefinitionNew", $devBoxDefinitionNew)
+    $env.Add("devBoxDefinitionNew2", $devBoxDefinitionNew2)
+    $env.Add("devCenterNew", $devCenterNew)
+    $env.Add("devCenterNew2", $devCenterNew2)
+    $env.Add("envTypeNew", $envTypeNew)
+    $env.Add("envTypeNew2", $envTypeNew2)
+    $env.Add("galleryNew", $galleryNew)
+    $env.Add("galleryNew2", $galleryNew2)
+    $env.Add("networkConnectionNew", $networkConnectionNew)
+    $env.Add("networkConnectionNew2", $networkConnectionNew2)
+    $env.Add("poolNew", $poolNew)
+    $env.Add("poolNew2", $poolNew2)
+    $env.Add("networkConnectionHybridNew", $networkConnectionHybridNew)
+    $env.Add("networkConnectionHybridNew2", $networkConnectionHybridNew2)
+    $env.Add("projectNew", $projectNew)
+    $env.Add("projectNew2", $projectNew2)
+    $env.Add("envForProjEnvTypeNew", $envForProjEnvTypeNew)
+    $env.Add("envForProjEnvTypeNew2", $envForProjEnvTypeNew2)
+    $env.Add("poolForScheduleNew", $poolForScheduleNew)
+    $env.Add("poolForScheduleNew2", $poolForScheduleNew2)
 
     $env.Add("resourceGroup", $resourceGroup)
     $env.Add("managedIdentityName", $managedIdentityName)
     $env.Add("devCenterName", $devCenterName)
-    $env.Add("devCenterName2", $devCenterName2)
+    $env.Add("devCenterNameDelete", $devCenterNameDelete)
     $env.Add("projectName", $projectName)
     $env.Add("location", $location)
     $env.Add("catalogName", $catalogName)
     $env.Add("attachedNetworkName", $attachedNetworkName)
-    $env.Add("attachedNetworkName2", $attachedNetworkName2)
     $env.Add("networkConnectionName", $networkConnectionName)
-    $env.Add("networkConnectionName2", $networkConnectionName2)
     $env.Add("networkConnectionId", $networkConnectionId)
     $env.Add("gitHubBranch", $gitHubBranch)
     $env.Add("gitHubPath", $gitHubPath)
     $env.Add("gitHubSecretIdentifier", $gitHubSecretIdentifier)
     $env.Add("gitHubUri", $gitHubUri)
     $env.Add("devBoxDefinitionName", $devBoxDefinitionName)
-    $env.Add("devBoxDefinitionName2", $devBoxDefinitionName2)
+    $env.Add("galleryName", $galleryName)
     $env.Add("osStorageType", $osStorageType)
     $env.Add("skuName", $skuName)
     $env.Add("imageReferenceId", $imageReferenceId)
@@ -89,16 +159,20 @@ function setupEnv() {
     $env.Add("timeZone", $timeZone)
     $env.Add("subnetId", $subnetId)
     $env.Add("sigId", $sigId)
-    $env.Add("projectName2", $projectName2)
-    $env.Add("catalogName2", $catalogName2)
-    $env.Add("environmentTypeName2", $environmentTypeName2)
-    $env.Add("galleryName", $galleryName)
-    $env.Add("galleryName2", $galleryName2)
-    $env.Add("poolName2", $poolName2)
+
+    $env.Add("projectNameDelete", $projectNameDelete)
+    $env.Add("catalogNameDelete", $catalogNameDelete)
+    $env.Add("environmentTypeNameDelete", $environmentTypeNameDelete)
+    $env.Add("devBoxDefinitionNameDelete", $devBoxDefinitionNameDelete)
+    $env.Add("galleryNameDelete", $galleryNameDelete)
+    $env.Add("poolNameDelete", $poolNameDelete)
+    $env.Add("networkConnectionNameDelete", $networkConnectionNameDelete)
+    $env.Add("attachedNetworkNameDelete", $attachedNetworkNameDelete)
+    $env.Add("devCenterNameDelete", $devCenterNameDelete)
 
     $devboxTemplate = Get-Content .\test\deploymentTemplates\parameter.json | ConvertFrom-Json
     $devboxTemplate.parameters.managedIdentityName.value = $managedIdentityName
-    $devboxTemplate.parameters.subscriptionId.value =  $env.SubscriptionId
+    $devboxTemplate.parameters.subscriptionId.value = $env.SubscriptionId
     $devboxTemplate.parameters.resourceGroup.value = $resourceGroup
     $devboxTemplate.parameters.devCenterName.value = $devCenterName
     $devboxTemplate.parameters.devCenterName2.value = $devCenterName2
@@ -128,11 +202,20 @@ function setupEnv() {
     $devboxTemplate.parameters.galleryName.value = $galleryName
     $devboxTemplate.parameters.galleryName2.value = $galleryName2
     $devboxTemplate.parameters.poolName2.value = $poolName2
+    $devboxTemplate.parameters.envForProjEnvTypeNew.value = $envForProjEnvTypeNew
+    $devboxTemplate.parameters.envForProjEnvTypeNew2.value = $envForProjEnvTypeNew2
+    $devboxTemplate.parameters.poolForScheduleNew.value = $poolForScheduleNew
+    $devboxTemplate.parameters.poolForScheduleNew2.value = $poolForScheduleNew2
 
     Set-Content -Path .\test\deploymentTemplates\parameter.json -Value (ConvertTo-Json $devboxTemplate)
 
     New-AzResourceGroupDeployment -TemplateFile .\test\deploymentTemplates\template.json -TemplateParameterFile .\test\deploymentTemplates\parameter.json -Name devboxTemplate -ResourceGroupName $resourceGroup
     Write-Host -ForegroundColor Magenta "Deployed dev box template"
+
+    $identity = Get-AzUserAssignedIdentity -ResourceGroupName $env.resourceGroup -Name $env.managedIdentityName
+    $identityId = $identity.Id
+    $env.Add("identityId", $identityId)
+
 
 
     # For any resources you created for test, you should add it to $env here.
@@ -145,5 +228,9 @@ function setupEnv() {
 function cleanupEnv() {
     # Clean resources you create for testing
     Remove-AzResourceGroup -Name $env.resourceGroup
+    Remove-AzResourceGroup -Name $env.networkingRgName1
+    Remove-AzResourceGroup -Name $env.networkingRgName2
+    Remove-AzResourceGroup -Name $env.networkingRgName3
+    Remove-AzResourceGroup -Name $env.networkingRgName4
 }
 

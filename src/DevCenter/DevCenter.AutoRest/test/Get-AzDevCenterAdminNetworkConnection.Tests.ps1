@@ -22,7 +22,7 @@ Describe 'Get-AzDevCenterAdminNetworkConnection' {
 
     It 'Get' {
         $nc = Get-AzDevCenterAdminNetworkConnection -ResourceGroupName $env.resourceGroup -Name $env.networkConnectionName
-        $nc.DomainJoinType | Should -Be "AzureADJoin"
+        $nc.DomainJoinType | Should -Be $env.aadJoinType
         $nc.Name | Should -Be $env.networkConnectionName
     }
 
@@ -35,7 +35,7 @@ Describe 'Get-AzDevCenterAdminNetworkConnection' {
     It 'GetViaIdentity' {
         $nc = Get-AzDevCenterAdminNetworkConnection -ResourceGroupName $env.resourceGroup -Name $env.networkConnectionName
         $nc = Get-AzDevCenterAdminNetworkConnection -InputObject $nc
-        $nc.DomainJoinType | Should -Be "AzureADJoin"
+        $nc.DomainJoinType | Should -Be $env.aadJoinType
         $nc.Name | Should -Be $env.networkConnectionName
     }
 }
