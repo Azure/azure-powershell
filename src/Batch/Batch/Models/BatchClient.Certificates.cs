@@ -26,6 +26,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
         /// </summary>
         /// <param name="options">The options to use when querying for certificates.</param>
         /// <returns>The certificates matching the specified filter options.</returns>
+        [Obsolete]
         public IEnumerable<PSCertificate> ListCertificates(ListCertificateOptions options)
         {
             if (options == null)
@@ -72,6 +73,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
         /// Adds a certificate to the specified Batch account.
         /// </summary>
         /// <param name="parameters">The parameters to use when creating the certificate.</param>
+        [Obsolete]
         public void AddCertificate(NewCertificateParameters parameters)
         {
             if (parameters == null)
