@@ -35,9 +35,9 @@ Retrieve a resource group scoped deployment stack.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Retrieve a stack named MyRGStack from the resource group MyResourceGroup
 ```powershell
-PS C:\> Get-AzResourceGroupDeploymentStackTemplate -ResourceGroupName MyResourceGroup -Name MyRGStack
+PS C:\> Get-AzResourceGroupDeploymentStack -ResourceGroupName MyResourceGroup -Name MyRGStack
 ```
 
 Get a deployment stack named 'MyRGStack' under an RG named 'MyResourceGroup'.

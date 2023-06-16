@@ -146,7 +146,7 @@ Update a subscription scoped deployment stack.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Updates the subscription scoped deployment stack MySubStack at the current subscription
 ```powershell
 PS C:\>  Set-AzSubscriptionDeploymentStack -Name MySubStack -TemplateFile myTemplate.json -Location westus -DenySettingsMode DenyDelete
 ```

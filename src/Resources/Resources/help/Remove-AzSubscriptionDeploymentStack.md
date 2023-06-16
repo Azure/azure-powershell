@@ -31,7 +31,7 @@ Delete a subscription scoped deployment stack.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Deletes the subscription scoped deployment stack MySubStack from the current subscription
 ```powershell
 PS C:\> Remove-AzSubscriptionDeploymentStack -Name MySubStack
 ```

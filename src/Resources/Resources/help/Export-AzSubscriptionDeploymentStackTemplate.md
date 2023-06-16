@@ -29,7 +29,7 @@ Exports a template (or template link) for a subscription scoped deployment stack
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Exports the template used for the deployment stack MySubStack at the current subscription
 ```powershell
 PS C:\> Export-AzSubscriptionDeploymentStackTemplate -Name MySubStack
 ```

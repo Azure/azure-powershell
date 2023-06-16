@@ -29,7 +29,7 @@ Exports a template (or template link) for a resource group scoped deployment sta
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Exports the template used for the deployment stack MyRGStack in the resource group MyResourceGroup
 ```powershell
 PS C:\> Export-AzResourceGroupDeploymentStackTemplate -ResourceGroupName MyResourceGroup -Name MyRGStack
 ```

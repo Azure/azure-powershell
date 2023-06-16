@@ -34,9 +34,9 @@ Retrieve a subscription scoped deployment stack.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Retrieve a stack named MySubStack from the current subscription
 ```powershell
-PS C:\> Get-AzSubscriptionDeploymentStackTemplate -Name MySubStack
+PS C:\> Get-AzSubscriptionDeploymentStack -Name MySubStack
 ```
 
 Get a deployment stack named 'MySubStack' under the default subscription.

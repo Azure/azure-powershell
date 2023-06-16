@@ -29,7 +29,7 @@ Exports a template (or template link) for a management group scoped deployment s
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Export the template used for the deployment stack named MyManagementGroup at MyManagementGroup management group
 ```powershell
 PS C:\> Export-AzManagementGroupDeploymentStackTemplate -ManagementGroupId MyManagementGroup -Name MyMGStack
 ```
