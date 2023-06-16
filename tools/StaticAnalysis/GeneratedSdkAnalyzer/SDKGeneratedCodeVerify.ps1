@@ -25,7 +25,7 @@ try{
         Write-Error "Only accept .txt files as input."
     }
     Write-Host "Preparing Autorest..."
-    npm install -g autorest
+    npm install -g autorest@latest
     Write-Host "changed1: $ChangedSdks"
     autorest --reset
     Write-Host "changed2: $ChangedSdks"
