@@ -71,6 +71,10 @@ $Steps = @(
     @{
         PhaseName = "ux"
         IssuePath = "$StaticAnalysisOutputDirectory/UXMetadataIssues.csv"
+    },
+    @{
+        PhaseName = "phase-x"
+        IssuePath = "$StaticAnalysisVerifyGensdk/VerifyGensdk.csv"
     }
 )
 
