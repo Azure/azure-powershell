@@ -143,7 +143,7 @@ Create a subscription scoped deployment stack.
 
 ### Example 1: Create a subscription scoped deployment stack MySubStack at westus location
 ```powershell
-PS C:\> New-AzSubscriptionDeploymentStack -Name MySubStack -TemplateFile myTemplate.json -Location westus -DenySettingsMode DenyDelete
+New-AzSubscriptionDeploymentStack -Name MySubStack -TemplateFile myTemplate.json -Location westus -DenySettingsMode DenyDelete
 ```
 
 Create a new subscription scoped deployment stack named 'MySubStack' in the default subscription, with deny settings being DenyDelete. 

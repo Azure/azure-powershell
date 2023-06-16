@@ -139,7 +139,7 @@ Update a resource group scoped deployment stack.
 
 ### Example 1: Update the stack MyRGStack in the Resource Group MyResourceGroup
 ```powershell
-PS C:\> Set-AzResourceGroupDeploymentStack -Name MyRGStack -ResourceGroupName MyResourceGroup -TemplateFile myTemplate.json -DenySettingsMode DenyDelete
+Set-AzResourceGroupDeploymentStack -Name MyRGStack -ResourceGroupName MyResourceGroup -TemplateFile myTemplate.json -DenySettingsMode DenyDelete
 ```
 
 Update a resource group scoped deployment stack named 'MyRGStack' in management group 'MyResoourceGroup,' with deny settings being DenyDelete.

@@ -148,7 +148,7 @@ Update a management group scoped deployment stack.
 
 ### Example 1: Updates the management group scoped stack MyMGStack at MyManagementGroup deployed to the child subscription MySubId
 ```powershell
-PS C:\> Set-AzManagementGroupDeploymentStack -Name MyMGStack -ManagementGroupId MyMangementGroup -DeploymentSubscriptionId MySubId -TemplateFile myTemplate.json -Location westus -DenySettingsMode DenyDelete
+Set-AzManagementGroupDeploymentStack -Name MyMGStack -ManagementGroupId MyMangementGroup -DeploymentSubscriptionId MySubId -TemplateFile myTemplate.json -Location westus -DenySettingsMode DenyDelete
 ```
 
 Update a management group scoped deployment stack named 'MyMGStack' in management group 'MyManagementGroup,' with the scope of the underlying deployment being MySubId and deny settings being DenyDelete. 

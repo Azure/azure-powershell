@@ -33,7 +33,7 @@ Delete a resource group scoped deployment stack.
 
 ### Example 1: Deletes the resource group deployment tsack MyRgStack from MyResourceGroup
 ```powershell
-PS C:\> Remove-AzResourceGroupDeploymentStack -ResourceGroupName MyResourceGroup -Name MyRGStack
+Remove-AzResourceGroupDeploymentStack -ResourceGroupName MyResourceGroup -Name MyRGStack
 ```
 
 Deletes a resource group scoped deployment stack named 'MyRGStack' in resource group 'MyResourceGroup,' with unmanaged resources and resource groups being detached on cleanup.

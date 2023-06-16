@@ -151,7 +151,7 @@ Create a management group scoped deployment stack.
 
 ### Example 1: Creates a new stack MyMGStack at the MyManagementGroup management group and deploys it into the child subscription MySubId
 ```powershell
-PS C:\> New-AzManagementGroupDeploymentStack -Name MyMGStack -ManagementGroupId MyMangementGroup -DeploymentSubscriptionId MySubId -TemplateFile myTemplate.json -Location westus -DenySettingsMode DenyDelete
+New-AzManagementGroupDeploymentStack -Name MyMGStack -ManagementGroupId MyMangementGroup -DeploymentSubscriptionId MySubId -TemplateFile myTemplate.json -Location westus -DenySettingsMode DenyDelete
 ```
 
 Create a new management group scoped deployment stack named 'MyMGStack' in management group 'MyManagementGroup,' with the scope of the underlying deployment being MySubId and deny settings being DenyDelete. 

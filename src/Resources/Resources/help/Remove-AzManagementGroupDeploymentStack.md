@@ -33,7 +33,7 @@ Delete a management group scoped deployment stack.
 
 ### Example 1: Deletes the management group scoped stack MyMGStack from MyManagementGroup
 ```powershell
-PS C:\> Remove-AzManagementGroupDeploymentStack -ManagementGroupId MyManagementGroup -Name MyMGStack
+Remove-AzManagementGroupDeploymentStack -ManagementGroupId MyManagementGroup -Name MyMGStack
 ```
 
 Deletes a management group scoped deployment stack named 'MyMGStack' in management group 'MyManagementGroup,' with unmanaged resources and resource groups being detached on cleanup.
