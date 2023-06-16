@@ -13,12 +13,14 @@ try{
     if ((Test-Path $FilesChangedPaths -PathType Leaf) -and $FilesChangedPaths.EndsWith(".txt")) {
         # Read Changedfiles and check if generted sdk code is updated.
         $FilesChanged = Get-Content $FilesChangedPaths | Where-Object { ($_ -match "^src\\.*\.Sdk\\.*Generated.*")}
+        Write-Host "changed-1: $FilesChanged"
         # Collect Sdk paths whose files under Generated folder change.
         $ChangedSdks = New-Object System.Collections.Generic.List[System.Object]
         foreach ($_ in $FilesChanged) {
             $ChangedSdks.Add($_.Substring(0,$_.IndexOf('.Sdk'))+'.Sdk')
         }
         # Remove duplicated Sdks.
+        Write-Host "changed0: $ChangedSdks"
         $ChangedSdks = $ChangedSdks | select -unique
     }
     else {
