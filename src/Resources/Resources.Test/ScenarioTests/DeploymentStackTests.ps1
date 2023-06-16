@@ -414,7 +414,7 @@ function Test-NewAndSetResourceGroupDeploymentStackWithBicep
  		Assert-AreEqual "succeeded" $deployment.ProvisioningState
 
 		# Test - Export-AzResourceGroupDeploymentStack checking for template link
-		$template = Export-AzResourceGroupDeploymentStackTemplate -Name $stackname -ResourceGroupName $rgname
+		$template = Export-AzResourceGroupDeploymentStackTemplate -StackName $stackname -ResourceGroupName $rgname
 		Assert-NotNull $template
 		Assert-NotNull $template.TemplateLink
 		Assert-Null $template.Template
@@ -534,15 +534,15 @@ function Test-ExportResourceGroupDeploymentStackTemplate
 		# Test - Failure - Resource Group NotFound
 		$badResourceGroupName = "badrg1928273615"
 		$exceptionMessage = "DeploymentStack '$rname' in Resource Group '$badResourceGroupName' not found."
-		Assert-Throws { Export-AzResourceGroupDeploymentStackTemplate -Name $rname -ResourceGroupName $badResourceGroupName } $exceptionMessage
+		Assert-Throws { Export-AzResourceGroupDeploymentStackTemplate -StackName $rname -ResourceGroupName $badResourceGroupName } $exceptionMessage
 		
 		# Test - Failure - Stack NotFound
 		$badStackName = "badStack1928273615"
 		$exceptionMessage = "DeploymentStack '$badStackName' in Resource Group '$rgname' not found."
-		Assert-Throws { Export-AzResourceGroupDeploymentStackTemplate -Name $badStackName -ResourceGroupName $rgname } $exceptionMessage
+		Assert-Throws { Export-AzResourceGroupDeploymentStackTemplate -StackName $badStackName -ResourceGroupName $rgname } $exceptionMessage
 
 		# Test - Success
-		$deployment = Export-AzResourceGroupDeploymentStackTemplate -Name $rname -ResourceGroupName $rgname
+		$deployment = Export-AzResourceGroupDeploymentStackTemplate -StackName $rname -ResourceGroupName $rgname
 		Assert-NotNull $deployment
 		Assert-NotNull $deployment.Template 
 	}
@@ -913,7 +913,7 @@ function Test-NewAndSetSubscriptionDeploymentStackWithBicep
  		Assert-AreEqual "succeeded" $deployment.ProvisioningState
 
 		# Test - Export-AzSubscriptionDeploymentStack checking for template link
-		$template = Export-AzSubscriptionDeploymentStackTemplate -Name $stackname
+		$template = Export-AzSubscriptionDeploymentStackTemplate -StackName $stackname
 		Assert-NotNull $template
 		Assert-NotNull $template.TemplateLink
 		Assert-Null $template.Template
@@ -1021,10 +1021,10 @@ function Test-ExportSubscriptionDeploymentStackTemplate
 		# Test - Failure - Stack NotFound
 		$badStackName = "badStack1928273615"
 		$exceptionMessage = "DeploymentStack '$badStackName' in active subscription not found."
-		Assert-Throws { Export-AzSubscriptionDeploymentStackTemplate -Name $badStackName } $exceptionMessage
+		Assert-Throws { Export-AzSubscriptionDeploymentStackTemplate -StackName $badStackName } $exceptionMessage
 
 		# Test - Success
-		$deployment = Export-AzSubscriptionDeploymentStackTemplate -Name $rname
+		$deployment = Export-AzSubscriptionDeploymentStackTemplate -StackName $rname
 		Assert-NotNull $deployment
 		Assert-NotNull $deployment.Template 
 	}
@@ -1403,7 +1403,7 @@ function Test-NewAndSetManagementGroupDeploymentStackWithBicep
  		Assert-AreEqual "succeeded" $deployment.ProvisioningState
 
 		# Test - Export-AzManagementGroupDeploymentStack checking for template link
-		$template = Export-AzManagementGroupDeploymentStackTemplate -Name $stackname -ManagementGroupId $mgid
+		$template = Export-AzManagementGroupDeploymentStackTemplate -StackName $stackname -ManagementGroupId $mgid
 		Assert-NotNull $template
 		Assert-NotNull $template.TemplateLink
 		Assert-Null $template.Template
@@ -1513,10 +1513,10 @@ function Test-ExportManagementGroupDeploymentStackTemplate
 		# Test - Failure - Stack NotFound
 		$badStackName = "badStack1928273615"
 		$exceptionMessage = "DeploymentStack '$badStackName' in Management Group '$mgid' not found."
-		Assert-Throws { Export-AzManagementGroupDeploymentStackTemplate -Name $badStackName -ManagementGroupId $mgid } $exceptionMessage
+		Assert-Throws { Export-AzManagementGroupDeploymentStackTemplate -StackName $badStackName -ManagementGroupId $mgid } $exceptionMessage
 
 		# Test - Success
-		$deployment = Export-AzManagementGroupDeploymentStackTemplate -Name $rname -ManagementGroupId $mgid
+		$deployment = Export-AzManagementGroupDeploymentStackTemplate -StackName $rname -ManagementGroupId $mgid
 		Assert-NotNull $deployment
 		Assert-NotNull $deployment.Template 
 	}

@@ -14,8 +14,8 @@ Exports a Subscription scoped Deployment Stack Template.
 
 ### ExportByName (Default)
 ```
-Export-AzSubscriptionDeploymentStackTemplate [-Name] <String> [-Pre] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Export-AzSubscriptionDeploymentStackTemplate [-StackName] <String> [-Pre]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ExportByResourceId
@@ -31,7 +31,7 @@ Exports a template (or template link) for a subscription scoped deployment stack
 
 ### Example 1: Exports the template used for the deployment stack MySubStack at the current subscription
 ```powershell
-Export-AzSubscriptionDeploymentStackTemplate -Name MySubStack
+Export-AzSubscriptionDeploymentStackTemplate -StackName MySubStack
 ```
 
 Export a template (or template link) for a stack named 'MySubStack' under the default subscription.
@@ -50,21 +50,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Name
-The name of the DeploymentStack to get
-
-```yaml
-Type: System.String
-Parameter Sets: ExportByName
-Aliases: StackName
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -93,6 +78,21 @@ Aliases: Id
 
 Required: True
 Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -StackName
+The name of the DeploymentStack to get
+
+```yaml
+Type: System.String
+Parameter Sets: ExportByName
+Aliases:
+
+Required: True
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

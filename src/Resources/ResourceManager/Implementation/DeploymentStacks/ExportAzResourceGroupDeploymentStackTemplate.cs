@@ -43,11 +43,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Alias("StackName")]
         [Parameter(Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ExportByNameAndResourceGroupNameParameterSetName,
              HelpMessage = "The name of the DeploymentStack to get")]
         [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
+        public string StackName { get; set; }
 
         #endregion
 
@@ -61,16 +60,16 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 {
                     case ExportByResourceIdParameterSetName:
                         ResourceGroupName = ResourceIdUtility.GetResourceGroupName(ResourceId);
-                        Name = ResourceIdUtility.GetDeploymentName(ResourceId);
-                        if (ResourceGroupName == null || Name == null)
+                        StackName = ResourceIdUtility.GetDeploymentName(ResourceId);
+                        if (ResourceGroupName == null || StackName == null)
                         {
                             throw new PSArgumentException($"Provided Id '{ResourceId}' is not in correct form. Should be in form " + 
                                 "/subscriptions/<subid>/resourceGroups/<rgname>/providers/Microsoft.Resources/deploymentStacks/<stackname>");
                         }
-                        WriteObject(DeploymentStacksSdkClient.ExportResourceGroupDeploymentStack(ResourceGroupName, Name), true);
+                        WriteObject(DeploymentStacksSdkClient.ExportResourceGroupDeploymentStack(ResourceGroupName, StackName), true);
                         break;
                     case ExportByNameAndResourceGroupNameParameterSetName:
-                        WriteObject(DeploymentStacksSdkClient.ExportResourceGroupDeploymentStack(ResourceGroupName, Name), true);
+                        WriteObject(DeploymentStacksSdkClient.ExportResourceGroupDeploymentStack(ResourceGroupName, StackName), true);
                         break;
                     default:
                         throw new PSInvalidOperationException();

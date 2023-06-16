@@ -14,7 +14,7 @@ Exports a Management Group scoped Deployment Stack Template.
 
 ### ExportByNameAndManagmentGroupId (Default)
 ```
-Export-AzManagementGroupDeploymentStackTemplate [-Name] <String> [-ManagementGroupId] <String> [-Pre]
+Export-AzManagementGroupDeploymentStackTemplate [-StackName] <String> [-ManagementGroupId] <String> [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -31,7 +31,7 @@ Exports a template (or template link) for a management group scoped deployment s
 
 ### Example 1: Export the template used for the deployment stack named MyManagementGroup at MyManagementGroup management group
 ```powershell
-Export-AzManagementGroupDeploymentStackTemplate -ManagementGroupId MyManagementGroup -Name MyMGStack
+Export-AzManagementGroupDeploymentStackTemplate -ManagementGroupId MyManagementGroup -StackName MyMGStack
 ```
 
 Export a template (or template link) from a stack named 'MyMGStack' under an MG named 'MyManagementGroup'.
@@ -68,21 +68,6 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Name
-The name of the DeploymentStack to get
-
-```yaml
-Type: System.String
-Parameter Sets: ExportByNameAndManagmentGroupId
-Aliases: StackName
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -Pre
 When set, indicates that the cmdlet should use pre-release API versions when automatically determining which version to use.
 
@@ -108,6 +93,21 @@ Aliases: Id
 
 Required: True
 Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -StackName
+The name of the DeploymentStack to get
+
+```yaml
+Type: System.String
+Parameter Sets: ExportByNameAndManagmentGroupId
+Aliases:
+
+Required: True
+Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

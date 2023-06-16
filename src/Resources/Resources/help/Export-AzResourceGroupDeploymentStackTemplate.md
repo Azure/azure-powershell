@@ -14,7 +14,7 @@ Exports a Resource Group scoped Deployment Stack Template.
 
 ### ExportByNameAndResourceGroupName (Default)
 ```
-Export-AzResourceGroupDeploymentStackTemplate [-ResourceGroupName] <String> [-Name] <String> [-Pre]
+Export-AzResourceGroupDeploymentStackTemplate [-ResourceGroupName] <String> [-StackName] <String> [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -31,7 +31,7 @@ Exports a template (or template link) for a resource group scoped deployment sta
 
 ### Example 1: Exports the template used for the deployment stack MyRGStack in the resource group MyResourceGroup
 ```powershell
-Export-AzResourceGroupDeploymentStackTemplate -ResourceGroupName MyResourceGroup -Name MyRGStack
+Export-AzResourceGroupDeploymentStackTemplate -ResourceGroupName MyResourceGroup -StackName MyRGStack
 ```
 
 Export a template from a stack named 'MyRGStack' under an RG named 'MyResourceGroup'.
@@ -50,21 +50,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Name
-The name of the DeploymentStack to get
-
-```yaml
-Type: System.String
-Parameter Sets: ExportByNameAndResourceGroupName
-Aliases: StackName
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -108,6 +93,21 @@ Aliases: Id
 
 Required: True
 Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -StackName
+The name of the DeploymentStack to get
+
+```yaml
+Type: System.String
+Parameter Sets: ExportByNameAndResourceGroupName
+Aliases:
+
+Required: True
+Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

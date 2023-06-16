@@ -37,11 +37,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
-        [Alias("StackName")]
         [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ExportByNameParameterSetName,
             HelpMessage = "The name of the DeploymentStack to get")]
         [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
+        public string StackName { get; set; }
 
         #endregion
 
@@ -53,16 +52,16 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 switch (ParameterSetName)
                 {
                     case ExportByResourceIdParameterSetName:
-                        Name = ResourceIdUtility.GetDeploymentName(ResourceId);
-                        if (Name == null)
+                        StackName = ResourceIdUtility.GetDeploymentName(ResourceId);
+                        if (StackName == null)
                         {
                             throw new PSArgumentException($"Provided Id '{ResourceId}' is not in correct form. Should be in form " +
                                 "/subscriptions/<subid>/providers/Microsoft.Resources/deploymentStacks/<stackname>");
                         }
-                        WriteObject(DeploymentStacksSdkClient.ExportSubscriptionDeploymentStack(Name), true);
+                        WriteObject(DeploymentStacksSdkClient.ExportSubscriptionDeploymentStack(StackName), true);
                         break;
                     case ExportByNameParameterSetName:
-                        WriteObject(DeploymentStacksSdkClient.ExportSubscriptionDeploymentStack(Name), true);
+                        WriteObject(DeploymentStacksSdkClient.ExportSubscriptionDeploymentStack(StackName), true);
                         break;
                     default:
                         throw new PSInvalidOperationException();

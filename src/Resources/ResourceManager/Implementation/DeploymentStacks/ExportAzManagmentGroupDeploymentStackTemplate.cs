@@ -37,11 +37,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
-        [Alias("StackName")]
         [Parameter(Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ExportByNameAndManagementGroupIdParameterSetName, 
             HelpMessage = "The name of the DeploymentStack to get")]
         [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
+        public string StackName { get; set; }
 
         [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ExportByNameAndManagementGroupIdParameterSetName,
             HelpMessage = "The id of the ManagementGroup where the DeploymentStack is deployed")]
@@ -59,16 +58,16 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 {
                     case ExportByResourceIdParameterSetName:
                         ManagementGroupId = ResourceIdUtility.GetManagementGroupId(ResourceId);
-                        Name = ResourceIdUtility.GetDeploymentName(ResourceId);
-                        if (ManagementGroupId == null || Name == null)
+                        StackName = ResourceIdUtility.GetDeploymentName(ResourceId);
+                        if (ManagementGroupId == null || StackName == null)
                         {
                             throw new PSArgumentException($"Provided Id '{ResourceId}' is not in correct form. Should be in form " +
                                 "/providers/Microsoft.Management/managementGroups/<managementgroupid>/providers/Microsoft.Resources/deploymentStacks/<stackname>");
                         }
-                        WriteObject(DeploymentStacksSdkClient.ExportManagementGroupDeploymentStack(ManagementGroupId, Name), true);
+                        WriteObject(DeploymentStacksSdkClient.ExportManagementGroupDeploymentStack(ManagementGroupId, StackName), true);
                         break;
                     case ExportByNameAndManagementGroupIdParameterSetName:
-                        WriteObject(DeploymentStacksSdkClient.ExportManagementGroupDeploymentStack(ManagementGroupId, Name), true);
+                        WriteObject(DeploymentStacksSdkClient.ExportManagementGroupDeploymentStack(ManagementGroupId, StackName), true);
                         break;
                     default:
                         throw new PSInvalidOperationException();
