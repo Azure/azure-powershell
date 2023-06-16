@@ -30,5 +30,11 @@ Describe 'Get-AzDevCenterAdminSchedule' {
     It 'GetViaIdentity' {
         $schedule = Get-AzDevCenterAdminSchedule -PoolName $env.poolName -ProjectName $env.projectName -ResourceGroupName $env.resourceGroup
         $schedule = Get-AzDevCenterAdminSchedule -InputObject $schedule
+        $schedule.Frequency | Should -Be "Daily"
+        $schedule.Name | Should -Be "default"
+        $schedule.PropertiesType | Should -Be "StopDevBox"
+        $schedule.State | Should -Be "Enabled"
+        $schedule.Time | Should -Be "18:30"
+        $schedule.TimeZone | Should -Be "America/Los_Angeles"
     }
 }

@@ -16,11 +16,14 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzDevCenterAdminProjectEn
 
 Describe 'New-AzDevCenterAdminProjectEnvironmentType' {
     It 'CreateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        New-AzDevCenterAdminProjectEnvironmentType -EnvironmentTypeName <String> -ProjectName <String> -ResourceGroupName
+     [-CreatorRoleAssignmentRole <Hashtable>] [-DeploymentTargetId <String>]
+    [-IdentityType <ManagedServiceIdentityType>] [-IdentityUserAssignedIdentity <Hashtable>] [-Location <String>]
+    [-Status <EnvironmentTypeEnableStatus>] [-UserRoleAssignment <Hashtable>]
     }
 
     It 'Create' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        New-AzDevCenterAdminProjectEnvironmentType -EnvironmentTypeName <String> -ProjectName <String> -ResourceGroupName -Body 
     }
 
 }
