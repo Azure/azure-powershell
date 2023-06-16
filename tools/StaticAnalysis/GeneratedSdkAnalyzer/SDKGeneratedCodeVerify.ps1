@@ -13,7 +13,7 @@ try{
     if ((Test-Path $FilesChangedPaths -PathType Leaf) -and $FilesChangedPaths.EndsWith(".txt")) {
         Write-Host (Get-Content $FilesChangedPaths)
         # Read Changedfiles and check if generted sdk code is updated.
-        $FilesChanged = Get-Content $FilesChangedPaths | Where-Object { ($_ -match "^src\\.*\.Sdk\\.*Generated.*")}
+        $FilesChanged = Get-Content $FilesChangedPaths | Where-Object { ($_ -match "^src\/.*\.Sdk\/.*Generated.*")}
         Write-Host "changed-1: $FilesChanged"
         # Collect Sdk paths whose files under Generated folder change.
         $ChangedSdks = New-Object System.Collections.Generic.List[System.Object]
