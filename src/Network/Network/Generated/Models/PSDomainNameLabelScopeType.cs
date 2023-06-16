@@ -24,22 +24,19 @@
 // Please contact wanrpdev@microsoft.com if you need to make changes to this file.
 // </auto-generated>
 
-using Microsoft.Azure.Management.Network.Models;
-using Microsoft.WindowsAzure.Commands.Common.Attributes;
+using System;
+using System.Collections.Generic;
 using Newtonsoft.Json;
+using System.Text;
+using Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
-    public partial class PSPublicIpAddressDnsSettings
+    public enum PSDomainNameLabelScopeType
     {
-        [Ps1Xml(Target = ViewControl.Table)]
-        public PSDomainNameLabelScopeType DomainNameLabelScope { get; set; }
-
-        [Ps1Xml(Target = ViewControl.Table)]
-        public string DomainNameLabel { get; set; }
-        [Ps1Xml(Target = ViewControl.Table)]
-        public string Fqdn { get; set; }
-        [Ps1Xml(Target = ViewControl.Table)]
-        public string ReverseFqdn { get; set; }
+        TenantReuse,
+        SubscriptionReuse,
+        ResourceGroupReuse,
+        NoReuse
     }
 }
