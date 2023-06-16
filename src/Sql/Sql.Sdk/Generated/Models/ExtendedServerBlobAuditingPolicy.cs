@@ -116,7 +116,7 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// audit logs.
         ///
         /// For more information, see [Database-Level Audit Action
-        /// Groups](https://docs.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions#database-level-audit-action-groups).
+        /// Groups](https://learn.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions#database-level-audit-action-groups).
         ///
         /// For Database auditing policy, specific Actions can also be
         /// specified (note that Actions cannot be specified for Server
@@ -143,7 +143,7 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// SELECT on SCHEMA::mySchema by public
         ///
         /// For more information, see [Database-Level Audit
-        /// Actions](https://docs.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions#database-level-audit-actions)</param>
+        /// Actions](https://learn.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions#database-level-audit-actions)</param>
         /// <param name="isStorageSecondaryKeyInUse">Specifies whether
         /// storageAccountAccessKey value is the storage's secondary
         /// key.</param>
@@ -305,7 +305,7 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// audit logs.
         ///
         /// For more information, see [Database-Level Audit Action
-        /// Groups](https://docs.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions#database-level-audit-action-groups).
+        /// Groups](https://learn.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions#database-level-audit-action-groups).
         ///
         /// For Database auditing policy, specific Actions can also be
         /// specified (note that Actions cannot be specified for Server
@@ -333,7 +333,7 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// SELECT on SCHEMA::mySchema by public
         ///
         /// For more information, see [Database-Level Audit
-        /// Actions](https://docs.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions#database-level-audit-actions)
+        /// Actions](https://learn.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions#database-level-audit-actions)
         /// </summary>
         [JsonProperty(PropertyName = "properties.auditActionsAndGroups")]
         public IList<string> AuditActionsAndGroups { get; set; }
