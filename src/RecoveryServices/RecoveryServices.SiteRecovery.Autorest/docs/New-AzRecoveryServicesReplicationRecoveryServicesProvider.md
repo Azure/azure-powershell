@@ -263,7 +263,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -523,7 +524,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-ADDPROVIDERINPUT <IAddRecoveryServicesProviderInput>: Input required to add a provider.
+`ADDPROVIDERINPUT <IAddRecoveryServicesProviderInput>`: Input required to add a provider.
   - `AuthenticationIdentityInputAadAuthority <String>`: The base authority for Azure Active Directory authentication.
   - `AuthenticationIdentityInputApplicationId <String>`: The application/client Id for the service principal with which the on-premise management/data plane components would communicate with our Azure services.
   - `AuthenticationIdentityInputAudience <String>`: The intended Audience of the service principal with which the on-premise management/data plane components would communicate with our Azure services.

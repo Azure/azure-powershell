@@ -1,22 +1,15 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create a new replication fabric in a specific recovery services vault
 ```powershell
-{{ Add code here }}
+$fabric = [Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.AzureFabricCreationInput]::new()
+$fabric.ReplicationScenario="ReplicateAzureToAzure"
+$fabric.Location="East US"
+New-AzRecoveryServicesReplicationFabric -ResourceGroupName "a2arecoveryrg" -ResourceName "a2arecoveryvault" -FabricName "demofabric" -ProviderDetail $fabric
 ```
 
 ```output
-{{ Add output here }}
+Id                                                                                                                                                                             Location Name          Type
+--                                                                                                                                                                             -------- ----          ----
+/Subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/a2arecoveryrg/providers/Microsoft.RecoveryServices/vaults/a2arecoveryvault/replicationFabrics/testfabriccmd          testfabriccmd Microsoft.RecoveryServices/vaults/replicationFabrics
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+Creates a new replication fabric in a specified recovery services vault for a replicateAzuretoAzure instance type.

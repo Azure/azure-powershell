@@ -13,7 +13,7 @@ Operation to remove a protection container.
 ## SYNTAX
 
 ```
-Remove-AzRecoveryServicesReplicationProtectionContainer -FabricName <String> -ProtectionContainerName <String>
+Remove-AzRecoveryServicesReplicationProtectionContainer -ProtectionContainer <IProtectionContainer>
  -ResourceGroupName <String> -ResourceName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -23,27 +23,14 @@ Operation to remove a protection container.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Remove a replication protection container in a fabric
 ```powershell
-{{ Add code here }}
+$fabric=Get-AzRecoveryServicesReplicationFabric -ResourceGroupName "a2arecoveryrg" -ResourceName "a2arecoveryvault" -FabricName "demofabric"
+$protectionConatiner=Get-AzRecoveryServicesReplicationProtectionContainer -ResourceGroupName "a2arecoveryrg" -ResourceName "a2arecoveryvault" -Fabric $fabric -ProtectionContainer "demoProtectionContainer"
+Remove-AzRecoveryServicesReplicationProtectionContainer -ProtectionContainer $protectionConatiner -ResourceGroupName "a2arecoveryrg" -ResourceName "a2arecoveryvault"
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Removes a replication protection container using a protection container object fetched using fabric object in a recovery services vault.
 
 ## PARAMETERS
 
@@ -71,21 +58,6 @@ Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -FabricName
-Unique fabric ARM name.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -122,11 +94,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProtectionContainerName
-Unique protection container ARM name.
+### -ProtectionContainer
+Unique Protection Container Object
+To construct, see NOTES section for PROTECTIONCONTAINER properties and create a hash table.
 
 ```yaml
-Type: System.String
+Type: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IProtectionContainer
 Parameter Sets: (All)
 Aliases:
 
@@ -225,6 +198,20 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ALIASES
+
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+
+`PROTECTIONCONTAINER <IProtectionContainer>`: Unique Protection Container Object
+  - `[Location <String>]`: Resource Location
+  - `[FabricFriendlyName <String>]`: Fabric friendly name.
+  - `[FabricType <String>]`: The fabric type.
+  - `[FriendlyName <String>]`: The name.
+  - `[PairingStatus <String>]`: The pairing status of this cloud.
+  - `[ProtectedItemCount <Int32?>]`: Number of protected PEs.
+  - `[Role <String>]`: The role of this cloud.
 
 ## RELATED LINKS
 

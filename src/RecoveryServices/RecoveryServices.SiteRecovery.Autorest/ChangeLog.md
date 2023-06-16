@@ -17,6 +17,17 @@
 ## Upcoming Release
 
 ## Version 2.0.0
-* Added a feature of remove and update and new replication policy for H2A scenario using a policy object.
+* Added a feature of remove and update replication policy using a policy object.
+* Added a feature of remove replication fabric using a fabric object.
+* Added a feature of searching a fabric using fabric friendly name.
+* Added a feature of getting list of replication protection containers using a fabric object.
+* Added a feature of removing a replication protection containers using a protection container object.
+* Fixed the ICreatePolicyInput object to receive Policy specifications using an object.
+* Fixed the IFabrciCreationInput object to receive fabric specifications using an object.
+* Fixed the IProtectionContainerCreationInput to receive protection container specifications using an object.
+* Changed the Input InstanceType to ReplicationScenario for better understanding of the user.
 * Added help examples and test recordings
   * `AzRecoveryServicesReplicationPolicy`
+  * `AzRecoveryServicesReplicationFabric`
+  * `AzRecoveryServicesReplicationProtectionContainer`
+  * `AzRecoveryServicesReplicationProtectionContainerMapping`

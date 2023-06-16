@@ -13,7 +13,7 @@ The operation to delete or remove an Azure Site Recovery fabric.
 ## SYNTAX
 
 ```
-Remove-AzRecoveryServicesReplicationFabric -FabricName <String> -ResourceGroupName <String>
+Remove-AzRecoveryServicesReplicationFabric -Fabric <IFabric> -ResourceGroupName <String>
  -ResourceName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -23,27 +23,21 @@ The operation to delete or remove an Azure Site Recovery fabric.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Remove a replication fabric using a fabric object input
 ```powershell
-{{ Add code here }}
+$fabric=Get-AzRecoveryServicesReplicationFabric -ResourceGroupName "a2arecoveryrg" -ResourceName "a2arecoveryvault" -FabricName "A2Aprimaryfabric"
+Remove-AzRecoveryServicesReplicationFabric -ResourceGroupName "a2arecoveryrg" -ResourceName "a2arecoveryvault" -Fabric $fabric
 ```
 
-```output
-{{ Add output here }}
-```
+Removes a replication fabric using a fabric object input fetched using fabric name.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Remove a replication fabric using a fabric object input
 ```powershell
-{{ Add code here }}
+$fabric=Get-AzRecoveryServicesReplicationFabric -ResourceGroupName "a2arecoveryrg" -ResourceName "a2arecoveryvault" -FriendlyName "West US 2"
+Remove-AzRecoveryServicesReplicationFabric -ResourceGroupName "a2arecoveryrg" -ResourceName "a2arecoveryvault" -Fabric $fabric
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Removes a replication fabric using a fabric object input fetched using friendly name.
 
 ## PARAMETERS
 
@@ -77,11 +71,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -FabricName
+### -Fabric
 ASR fabric to delete.
+To construct, see NOTES section for FABRIC properties and create a hash table.
 
 ```yaml
-Type: System.String
+Type: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IFabric
 Parameter Sets: (All)
 Aliases:
 
@@ -210,6 +205,55 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ALIASES
+
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+
+`FABRIC <IFabric>`: ASR fabric to delete.
+  - `[Location <String>]`: Resource Location
+  - `[BcdrState <String>]`: BCDR state of the fabric.
+  - `[CustomDetailInstanceType <String>]`: Gets the class type. Overridden in derived classes.
+  - `[EncryptionDetailKekCertExpiryDate <DateTime?>]`: The key encryption key certificate expiry date.
+  - `[EncryptionDetailKekCertThumbprint <String>]`: The key encryption key certificate thumbprint.
+  - `[EncryptionDetailKekState <String>]`: The key encryption key state for the Vmm.
+  - `[FriendlyName <String>]`: Friendly name of the fabric.
+  - `[Health <String>]`: Health of fabric.
+  - `[HealthErrorDetail <IHealthError[]>]`: Fabric health error details.
+    - `[CreationTimeUtc <DateTime?>]`: Error creation time (UTC).
+    - `[CustomerResolvability <HealthErrorCustomerResolvability?>]`: Value indicating whether the health error is customer resolvable.
+    - `[EntityId <String>]`: ID of the entity.
+    - `[ErrorCategory <String>]`: Category of error.
+    - `[ErrorCode <String>]`: Error code.
+    - `[ErrorId <String>]`: The health error unique id.
+    - `[ErrorLevel <String>]`: Level of error.
+    - `[ErrorMessage <String>]`: Error message.
+    - `[ErrorSource <String>]`: Source of error.
+    - `[ErrorType <String>]`: Type of error.
+    - `[InnerHealthError <IInnerHealthError[]>]`: The inner health errors. HealthError having a list of HealthError as child errors is problematic. InnerHealthError is used because this will prevent an infinite loop of structures when Hydra tries to auto-generate the contract. We are exposing the related health errors as inner health errors and all API consumers can utilize this in the same fashion as Exception -&gt; InnerException.
+      - `[CreationTimeUtc <DateTime?>]`: Error creation time (UTC).
+      - `[CustomerResolvability <HealthErrorCustomerResolvability?>]`: Value indicating whether the health error is customer resolvable.
+      - `[EntityId <String>]`: ID of the entity.
+      - `[ErrorCategory <String>]`: Category of error.
+      - `[ErrorCode <String>]`: Error code.
+      - `[ErrorId <String>]`: The health error unique id.
+      - `[ErrorLevel <String>]`: Level of error.
+      - `[ErrorMessage <String>]`: Error message.
+      - `[ErrorSource <String>]`: Source of error.
+      - `[ErrorType <String>]`: Type of error.
+      - `[PossibleCaus <String>]`: Possible causes of error.
+      - `[RecommendedAction <String>]`: Recommended action to resolve error.
+      - `[RecoveryProviderErrorMessage <String>]`: DRA error message.
+      - `[SummaryMessage <String>]`: Summary message of the entity.
+    - `[PossibleCaus <String>]`: Possible causes of error.
+    - `[RecommendedAction <String>]`: Recommended action to resolve error.
+    - `[RecoveryProviderErrorMessage <String>]`: DRA error message.
+    - `[SummaryMessage <String>]`: Summary message of the entity.
+  - `[InternalIdentifier <String>]`: Dra Registration Id.
+  - `[RolloverEncryptionDetailKekCertExpiryDate <DateTime?>]`: The key encryption key certificate expiry date.
+  - `[RolloverEncryptionDetailKekCertThumbprint <String>]`: The key encryption key certificate thumbprint.
+  - `[RolloverEncryptionDetailKekState <String>]`: The key encryption key state for the Vmm.
 
 ## RELATED LINKS
 

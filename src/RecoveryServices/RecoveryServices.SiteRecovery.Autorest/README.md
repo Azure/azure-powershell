@@ -17,7 +17,7 @@ This directory contains the PowerShell module for the RecoveryServices service.
 This module was primarily generated via [AutoRest](https://github.com/Azure/autorest) using the [PowerShell](https://github.com/Azure/autorest.powershell) extension.
 
 ## Module Requirements
-- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 2.2.3 or greater
+- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 2.7.5 or greater
 
 ## Authentication
 AutoRest does not generate authentication code for the module. Authentication is handled via Az.Accounts by altering the HTTP payload before it is sent.
@@ -44,6 +44,9 @@ directive:
   # Correct some generated models
   - no-inline:
     - PolicyProviderSpecificInput
+    - FabricSpecificCreationInput
+    - ReplicationProviderSpecificContainerMappingInput
+    - ReplicationProviderSpecificUpdateContainerMappingInput
   # Remove variants not in scope
   - where:
       verb: Add
@@ -87,8 +90,17 @@ directive:
     remove: true
   - where:
       verb: ^New$|^Update$
-      subject: ReplicationPolicy
+      subject: ^ReplicationPolicy$|^ReplicationFabric$|^ReplicationProtectionContainer$|^ReplicationProtectionContainerMapping$
       variant: ^Create$|^Update$
+    remove: true
+  - where:
+      verb: Remove
+      subject: ReplicationProtectionContainerMapping
+      variant: Delete
+    remove: true
+  - where:
+      verb: Clear
+      subject: ReplicationProtectionContainerMapping
     remove: true
   - where:
       verb: Remove
@@ -143,11 +155,28 @@ directive:
   # Hide some commands that require some edits
   - where:
       verb: ^Remove$|^New$|^Update$
-      subject: ReplicationPolicy
+      subject: ^ReplicationPolicy$|^ReplicationProtectionContainer$
+    hide: true
+  - where:
+      verb: Remove
+      subject: ^ReplicationFabric$|^ReplicationProtectionContainerMapping$
+    hide: true
+  - where:
+      verb: ^Clear$|^New$|^Update$
+      subject: ReplicationProtectionContainerMapping
+    hide: true
+  - where:
+      verb: Get
+      subject: ^ReplicationProtectionContainer$|^ReplicationProtectionContainerMapping$
+      variant: ^Get$|^List$
+    hide: true
+  - where:
+      verb: New
+      subject: ReplicationFabric
     hide: true
   # Rename some model properties
   - where:
-      model-name: ^A2APolicyCreationInput$|^PolicyProviderSpecificInput$|^A2ACrossClusterMigrationPolicyCreationInput$|^InMagePolicyInput$|^HyperVReplicaAzurePolicyInput$|^HyperVReplicaBluePolicyInput$|^HyperVReplicaPolicyInput$|^InMageRcmFailbackPolicyCreationInput$|^InMageRcmPolicyCreationInput$|^InMageAzureV2PolicyInput$|^VMwareCbtPolicyCreationInput$
+      model-name: ^A2APolicyCreationInput$|^PolicyProviderSpecificInput$|^A2ACrossClusterMigrationPolicyCreationInput$|^InMagePolicyInput$|^HyperVReplicaAzurePolicyInput$|^HyperVReplicaBluePolicyInput$|^HyperVReplicaPolicyInput$|^InMageRcmFailbackPolicyCreationInput$|^InMageRcmPolicyCreationInput$|^InMageAzureV2PolicyInput$|^VMwareCbtPolicyCreationInput$|^FabricSpecificCreationInput$|^AzureFabricCreationInput$|^InMageRcmFabricCreationInput$|^VMwareV2FabricCreationInput$|^ReplicationProviderSpecificContainerCreationInput$|^A2AContainerCreationInput$|^A2ACrossClusterMigrationContainerCreationInput$|^VMwareCbtContainerCreationInput$|^ReplicationProviderSpecificContainerMappingInput$|^A2AContainerMappingInput$|^VMwareCbtContainerMappingInput$
       property-name: InstanceType
     set:
       property-name: ReplicationScenario

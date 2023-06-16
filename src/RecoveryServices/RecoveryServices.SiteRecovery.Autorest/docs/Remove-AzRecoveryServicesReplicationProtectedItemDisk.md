@@ -73,7 +73,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -274,7 +275,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-REMOVEDISKSINPUT <IRemoveDisksInput>: Input for remove disk(s) operation.
+`REMOVEDISKSINPUT <IRemoveDisksInput>`: Input for remove disk(s) operation.
   - `[ProviderSpecificDetailInstanceType <String>]`: The class type.
 
 ## RELATED LINKS

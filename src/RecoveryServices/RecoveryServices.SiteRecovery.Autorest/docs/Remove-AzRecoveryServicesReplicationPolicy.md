@@ -155,7 +155,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IJob
+### System.Boolean
 
 ## NOTES
 
@@ -166,7 +166,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-POLICY <IPolicy>: Specific replication policy object.
+`POLICY <IPolicy>`: Specific replication policy object.
   - `[Location <String>]`: Resource Location
   - `[FriendlyName <String>]`: The FriendlyName.
   - `[ProviderSpecificDetailInstanceType <String>]`: Gets the class type. Overridden in derived classes.

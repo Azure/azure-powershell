@@ -76,7 +76,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -414,7 +415,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-UPDATEPROTECTIONINPUT <IUpdateReplicationProtectedItemInput>: Update replication protected item input.
+`UPDATEPROTECTIONINPUT <IUpdateReplicationProtectedItemInput>`: Update replication protected item input.
   - `[EnableRdpOnTargetOption <String>]`: The selected option to enable RDP\SSH on target vm after failover. String value of SrsDataContract.EnableRDPOnTargetOption enum.
   - `[LicenseType <LicenseType?>]`: License type.
   - `[ProviderSpecificDetailInstanceType <String>]`: The class type.
@@ -451,7 +452,7 @@ UPDATEPROTECTIONINPUT <IUpdateReplicationProtectedItemInput>: Update replication
     - `[TfoNicResourceGroupName <String>]`: The resource group of the NIC to be used when creating target NICs in TFO.
     - `[TfoReuseExistingNic <Boolean?>]`: A value indicating whether an existing NIC is allowed to be reused during test failover subject to availability.
 
-VMNIC <IVMNicInputDetails[]>: The list of VM nic details.
+`VMNIC <IVMNicInputDetails[]>`: The list of VM nic details.
   - `[EnableAcceleratedNetworkingOnRecovery <Boolean?>]`: Whether the NIC has accelerated networking enabled.
   - `[EnableAcceleratedNetworkingOnTfo <Boolean?>]`: Whether the test NIC has accelerated networking enabled.
   - `[IPConfig <IIPConfigInputDetails[]>]`: The IP configurations to be used by NIC during test failover and failover.

@@ -1,0 +1,44 @@
+{
+  "New-AzRecoveryServicesReplicationProtectionContainerMapping+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/a2arecoveryrg/providers/Microsoft.RecoveryServices/vaults/a2arecoveryvault/replicationPolicies/A2APolicy?api-version=2023-02-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/a2arecoveryrg/providers/Microsoft.RecoveryServices/vaults/a2arecoveryvault/replicationPolicies/A2APolicy?api-version=2023-02-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "29" ],
+        "x-ms-client-request-id": [ "a2ace613-996b-46c5-8e62-bf39255717ac" ],
+        "CommandName": [ "Get-AzRecoveryServicesReplicationPolicy" ],
+        "FullCommandName": [ "Get-AzRecoveryServicesReplicationPolicy_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.4", "Az.RecoveryServices/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "a2ace613-996b-46c5-8e62-bf39255717ac 6/16/2023 1:33:29 PM" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-client-request-id": [ "a2ace613-996b-46c5-8e62-bf39255717ac" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11974" ],
+        "x-ms-correlation-request-id": [ "475927d3-2d42-4668-b1bf-4a9267a60b25" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20230616T133329Z:475927d3-2d42-4668-b1bf-4a9267a60b25" ],
+        "Date": [ "Fri, 16 Jun 2023 13:33:29 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "523" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/a2arecoveryrg/providers/Microsoft.RecoveryServices/vaults/a2arecoveryvault/replicationPolicies/A2APolicy\",\"name\":\"A2APolicy\",\"type\":\"Microsoft.RecoveryServices/vaults/replicationPolicies\",\"properties\":{\"friendlyName\":\"A2APolicy\",\"providerSpecificDetails\":{\"instanceType\":\"A2A\",\"recoveryPointThresholdInMinutes\":0,\"recoveryPointHistory\":1440,\"appConsistentFrequencyInMinutes\":240,\"multiVmSyncStatus\":\"Enabled\",\"crashConsistentFrequencyInMinutes\":5}}}",
+      "isContentBase64": false
+    }
+  }
+}

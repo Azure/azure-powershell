@@ -12,20 +12,11 @@ The operation to update protection container mapping.
 
 ## SYNTAX
 
-### UpdateExpanded (Default)
 ```
-Update-AzRecoveryServicesReplicationProtectionContainerMapping -FabricName <String> -MappingName <String>
- -ProtectionContainerName <String> -ResourceGroupName <String> -ResourceName <String>
- [-SubscriptionId <String>] [-ProviderSpecificInputInstanceType <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### Update
-```
-Update-AzRecoveryServicesReplicationProtectionContainerMapping -FabricName <String> -MappingName <String>
- -ProtectionContainerName <String> -ResourceGroupName <String> -ResourceName <String>
- -UpdateInput <IUpdateProtectionContainerMappingInput> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzRecoveryServicesReplicationProtectionContainerMapping -MappingName <String>
+ -PrimaryProtectionContainer <IProtectionContainer> -ResourceGroupName <String> -ResourceName <String>
+ -ProviderSpecificInput <IReplicationProviderSpecificUpdateContainerMappingInput> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -33,27 +24,24 @@ The operation to update protection container mapping.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Update a replocation protection container mapping
 ```powershell
-{{ Add code here }}
+$fabric=Get-AzRecoveryServicesReplicationFabric -ResourceGroupName "a2arecoveryrg" -ResourceName "a2arecoveryvault" -FabricName "A2Ademo-EastUS"
+$protectioncontainer=Get-AzRecoveryServicesReplicationProtectionContainer -ResourceGroupName "a2arecoveryrg" -ResourceName "a2arecoveryvault" -Fabric $fabric -ProtectionContainer "A2AEastUSProtectionContainer"
+$mappingInput=[Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.A2AUpdateContainerMappingInput]::new()
+$mappingInput.InstanceType="A2A"
+$mappingInput.AgentAutoUpdateStatus='Enabled'
+$mappingInput.AutomationAccountArmId="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/a2arecoveryrg/providers/Microsoft.Automation/automationAccounts/testAutomation"
+Update-AzRecoveryServicesReplicationProtectionContainerMapping -MappingName "demomap" -PrimaryProtectionContainer $protectioncontainer -ResourceGroupName "a2arecoveryrg" -ResourceName "a2arecoveryvault" -ProviderSpecificinput $mappingInput
 ```
 
 ```output
-{{ Add output here }}
+Location Name    Type
+-------- ----    ----
+         demomap Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectionContainerMappings
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Updates an already existing replication protection container mapping in a recovery services vault.
 
 ## PARAMETERS
 
@@ -81,21 +69,6 @@ Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -FabricName
-Fabric name.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -132,11 +105,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProtectionContainerName
-Protection container name.
+### -PrimaryProtectionContainer
+Primary protection container object.
+To construct, see NOTES section for PRIMARYPROTECTIONCONTAINER properties and create a hash table.
 
 ```yaml
-Type: System.String
+Type: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IProtectionContainer
 Parameter Sets: (All)
 Aliases:
 
@@ -147,15 +121,16 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProviderSpecificInputInstanceType
-The class type.
+### -ProviderSpecificInput
+Provider specific input for updating protection container mapping.
+To construct, see NOTES section for PROVIDERSPECIFICINPUT properties and create a hash table.
 
 ```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded
+Type: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IReplicationProviderSpecificUpdateContainerMappingInput
+Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -207,22 +182,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -UpdateInput
-Container pairing update input.
-To construct, see NOTES section for UPDATEINPUT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IUpdateProtectionContainerMappingInput
-Parameter Sets: Update
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.
 
@@ -259,8 +218,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IUpdateProtectionContainerMappingInput
-
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IProtectionContainerMapping
@@ -274,8 +231,17 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-UPDATEINPUT <IUpdateProtectionContainerMappingInput>: Container pairing update input.
-  - `[ProviderSpecificInputInstanceType <String>]`: The class type.
+`PRIMARYPROTECTIONCONTAINER <IProtectionContainer>`: Primary protection container object.
+  - `[Location <String>]`: Resource Location
+  - `[FabricFriendlyName <String>]`: Fabric friendly name.
+  - `[FabricType <String>]`: The fabric type.
+  - `[FriendlyName <String>]`: The name.
+  - `[PairingStatus <String>]`: The pairing status of this cloud.
+  - `[ProtectedItemCount <Int32?>]`: Number of protected PEs.
+  - `[Role <String>]`: The role of this cloud.
+
+`PROVIDERSPECIFICINPUT <IReplicationProviderSpecificUpdateContainerMappingInput>`: Provider specific input for updating protection container mapping.
+  - `InstanceType <String>`: The class type.
 
 ## RELATED LINKS
 

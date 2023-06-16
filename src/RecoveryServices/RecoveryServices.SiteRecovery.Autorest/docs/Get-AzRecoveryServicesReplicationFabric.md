@@ -30,32 +30,38 @@ Gets the details of an Azure Site Recovery fabric.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List all the replication fabrics in a specified recovery services vault
 ```powershell
-{{ Add code here }}
+Get-AzRecoveryServicesReplicationFabric -ResourceGroupName "a2arecoveryrg" -ResourceName "a2arecoveryvault"
 ```
 
 ```output
-{{ Add output here }}
+Location Name             Type
+-------- ----             ----
+         A2Ademo-EastUS   Microsoft.RecoveryServices/vaults/replicationFabrics
+         A2Aprimaryfabric Microsoft.RecoveryServices/vaults/replicationFabrics
 ```
 
-{{ Add description here }}
+Lists details of all the replication fabrics in a specific recovery servivces vault.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get a replication fabric using a fabric name
 ```powershell
-{{ Add code here }}
+Get-AzRecoveryServicesReplicationFabric -ResourceGroupName "a2arecoveryrg" -ResourceName "a2arecoveryvault" -FabricName "A2Aprimaryfabric"
 ```
 
 ```output
-{{ Add output here }}
+Location Name             Type
+-------- ----             ----
+         A2Aprimaryfabric Microsoft.RecoveryServices/vaults/replicationFabrics
 ```
 
-{{ Add description here }}
+Gets details of a replication fabric using fabric name in a specific recovery services vault.
 
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject

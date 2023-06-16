@@ -43,7 +43,7 @@ Id                                                                              
 /Subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/a2arecoveryrg/providers/Microsoft.RecoveryServices/vaults/a2arecoveryvault/replicationPolicies/A2APolicy            A2APolicy   Microsoft.RecoveryServices/vaults/replicationPolicies
 ```
 
-Gets all the replication policies in the specified vault in the specified resource group.
+Lists all the replication policies in the specified vault in the specified resource group.
 
 ### Example 2: Get info for a specific replication policy
 ```powershell
@@ -90,7 +90,8 @@ Gets info for a specific replication policy by its name in the specified vault i
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject

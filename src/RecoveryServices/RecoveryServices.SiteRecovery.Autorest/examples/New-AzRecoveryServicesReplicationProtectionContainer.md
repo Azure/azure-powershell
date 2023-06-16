@@ -1,22 +1,15 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create a replication protection container in a fabric.
 ```powershell
-{{ Add code here }}
+$fabric=Get-AzRecoveryServicesReplicationFabric -ResourceGroupName "a2arecoveryrg" -ResourceName "a2arecoveryvault" -FabricName "A2Aprimaryfabric"
+$protectioncontainer=[Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.A2AContainerCreationInput]::new()
+$protectioncontainer.ReplicationScenario="ReplicateAzureToAzure"
+New-AzRecoveryServicesReplicationProtectionContainer -Fabric $fabric -ProtectionContainerName "testcontainercmd" -ResourceGroupName "a2arecoveryrg" -ResourceName "a2arecoveryvault" -ProviderSpecificInput $protectioncontainer
 ```
 
 ```output
-{{ Add output here }}
+Id                                                                                                                                                                                                                                 Location Name             Type
+--                                                                                                                                                                                                                                 -------- ----             ----
+/Subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/a2arecoveryrg/providers/Microsoft.RecoveryServices/vaults/a2arecoveryvault/replicationFabrics/A2Aprimaryfabric/replicationProtectionContainers/testcontainercmd          testcontainercmd Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+Creates a replication protection container in a fabric in a specific recovery services vault.

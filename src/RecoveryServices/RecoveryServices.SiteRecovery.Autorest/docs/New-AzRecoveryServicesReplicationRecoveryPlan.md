@@ -73,7 +73,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -306,7 +307,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-GROUP <IRecoveryPlanGroup[]>: The recovery plan groups.
+`GROUP <IRecoveryPlanGroup[]>`: The recovery plan groups.
   - `GroupType <RecoveryPlanGroupType>`: The group type.
   - `[EndGroupAction <IRecoveryPlanAction[]>]`: The end group actions.
     - `ActionName <String>`: The action name.
@@ -318,7 +319,7 @@ GROUP <IRecoveryPlanGroup[]>: The recovery plan groups.
     - `[VirtualMachineId <String>]`: The virtual machine Id.
   - `[StartGroupAction <IRecoveryPlanAction[]>]`: The start group actions.
 
-INPUT <ICreateRecoveryPlanInput>: Create recovery plan input class.
+`INPUT <ICreateRecoveryPlanInput>`: Create recovery plan input class.
   - `Group <IRecoveryPlanGroup[]>`: The recovery plan groups.
     - `GroupType <RecoveryPlanGroupType>`: The group type.
     - `[EndGroupAction <IRecoveryPlanAction[]>]`: The end group actions.
@@ -336,7 +337,7 @@ INPUT <ICreateRecoveryPlanInput>: Create recovery plan input class.
   - `[ProviderSpecificInput <IRecoveryPlanProviderSpecificInput[]>]`: The provider specific input.
     - `InstanceType <String>`: Gets the Instance type.
 
-PROVIDERSPECIFICINPUT <IRecoveryPlanProviderSpecificInput[]>: The provider specific input.
+`PROVIDERSPECIFICINPUT <IRecoveryPlanProviderSpecificInput[]>`: The provider specific input.
   - `InstanceType <String>`: Gets the Instance type.
 
 ## RELATED LINKS

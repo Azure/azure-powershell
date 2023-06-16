@@ -1,22 +1,16 @@
-### Example 1: {{ Add title here }}
+### Example 1: Remove a replication fabric using a fabric object input
 ```powershell
-{{ Add code here }}
+$fabric=Get-AzRecoveryServicesReplicationFabric -ResourceGroupName "a2arecoveryrg" -ResourceName "a2arecoveryvault" -FabricName "A2Aprimaryfabric"
+Remove-AzRecoveryServicesReplicationFabric -ResourceGroupName "a2arecoveryrg" -ResourceName "a2arecoveryvault" -Fabric $fabric
 ```
 
-```output
-{{ Add output here }}
-```
+Removes a replication fabric using a fabric object input fetched using fabric name.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Remove a replication fabric using a fabric object input
 ```powershell
-{{ Add code here }}
+$fabric=Get-AzRecoveryServicesReplicationFabric -ResourceGroupName "a2arecoveryrg" -ResourceName "a2arecoveryvault" -FriendlyName "West US 2"
+Remove-AzRecoveryServicesReplicationFabric -ResourceGroupName "a2arecoveryrg" -ResourceName "a2arecoveryvault" -Fabric $fabric
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Removes a replication fabric using a fabric object input fetched using friendly name.
 

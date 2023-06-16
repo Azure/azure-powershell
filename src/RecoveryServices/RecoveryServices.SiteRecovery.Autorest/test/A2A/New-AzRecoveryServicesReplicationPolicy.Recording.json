@@ -1,0 +1,125 @@
+{
+  "New-AzRecoveryServicesReplicationPolicy+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/a2arecoveryrg/providers/Microsoft.RecoveryServices/vaults/a2arecoveryvault/replicationPolicies/a2ademoPolicy?api-version=2023-02-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/a2arecoveryrg/providers/Microsoft.RecoveryServices/vaults/a2arecoveryvault/replicationPolicies/a2ademoPolicy?api-version=2023-02-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"providerSpecificInput\": {\r\n      \"instanceType\": \"A2A\",\r\n      \"recoveryPointHistory\": 4320,\r\n      \"crashConsistentFrequencyInMinutes\": 60,\r\n      \"appConsistentFrequencyInMinutes\": 240,\r\n      \"multiVmSyncStatus\": \"Enable\"\r\n    }\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "266" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/a2arecoveryrg/providers/Microsoft.RecoveryServices/vaults/a2arecoveryvault/replicationPolicies/a2ademoPolicy/operationresults/b00be185-61e9-4289-a18e-5aab2d682400?api-version=2023-02-01" ],
+        "Retry-After": [ "30" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "ab9da031-6248-482d-8357-75362e6ca5a0 6/16/2023 1:32:24 PM" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/a2arecoveryrg/providers/Microsoft.RecoveryServices/vaults/a2arecoveryvault/replicationOperationStatus/b00be185-61e9-4289-a18e-5aab2d682400?api-version=2023-02-01" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-client-request-id": [ "ab9da031-6248-482d-8357-75362e6ca5a0" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
+        "x-ms-correlation-request-id": [ "7331b259-99c9-4c39-9aab-59c3185eba6e" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20230616T133224Z:7331b259-99c9-4c39-9aab-59c3185eba6e" ],
+        "Date": [ "Fri, 16 Jun 2023 13:32:23 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "New-AzRecoveryServicesReplicationPolicy+[NoContext]+CreateExpanded+$GET+https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/a2arecoveryrg/providers/Microsoft.RecoveryServices/vaults/a2arecoveryvault/replicationOperationStatus/b00be185-61e9-4289-a18e-5aab2d682400?api-version=2023-02-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/a2arecoveryrg/providers/Microsoft.RecoveryServices/vaults/a2arecoveryvault/replicationOperationStatus/b00be185-61e9-4289-a18e-5aab2d682400?api-version=2023-02-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "23" ],
+        "x-ms-client-request-id": [ "ab9da031-6248-482d-8357-75362e6ca5a0" ],
+        "CommandName": [ "Az.RecoveryServices.internal\\New-AzRecoveryServicesReplicationPolicy" ],
+        "FullCommandName": [ "New-AzRecoveryServicesReplicationPolicy_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.4", "Az.RecoveryServices/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/a2arecoveryrg/providers/Microsoft.RecoveryServices/vaults/a2arecoveryvault/replicationJobs/b00be185-61e9-4289-a18e-5aab2d682400" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-client-request-id": [ "ab9da031-6248-482d-8357-75362e6ca5a0" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11979" ],
+        "x-ms-correlation-request-id": [ "1cfa4447-79de-402f-b4f6-05f1fde6c060" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20230616T133254Z:1cfa4447-79de-402f-b4f6-05f1fde6c060" ],
+        "Date": [ "Fri, 16 Jun 2023 13:32:54 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "216" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"error\":null,\"id\":null,\"name\":\"b00be185-61e9-4289-a18e-5aab2d682400\",\"properties\":null,\"status\":\"Succeeded\",\"startTime\":\"2023-06-16T13:32:24.2057172Z\",\"endTime\":\"2023-06-16T13:32:25.0000000Z\",\"percentComplete\":null}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzRecoveryServicesReplicationPolicy+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/a2arecoveryrg/providers/Microsoft.RecoveryServices/vaults/a2arecoveryvault/replicationPolicies/a2ademoPolicy?api-version=2023-02-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/a2arecoveryrg/providers/Microsoft.RecoveryServices/vaults/a2arecoveryvault/replicationPolicies/a2ademoPolicy?api-version=2023-02-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "24" ],
+        "x-ms-client-request-id": [ "ab9da031-6248-482d-8357-75362e6ca5a0" ],
+        "CommandName": [ "Az.RecoveryServices.internal\\New-AzRecoveryServicesReplicationPolicy" ],
+        "FullCommandName": [ "New-AzRecoveryServicesReplicationPolicy_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.4", "Az.RecoveryServices/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "ab9da031-6248-482d-8357-75362e6ca5a0 6/16/2023 1:32:55 PM" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-client-request-id": [ "ab9da031-6248-482d-8357-75362e6ca5a0" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11978" ],
+        "x-ms-correlation-request-id": [ "0d5d6e45-087f-48a1-b61e-93b547547357" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20230616T133255Z:0d5d6e45-087f-48a1-b61e-93b547547357" ],
+        "Date": [ "Fri, 16 Jun 2023 13:32:54 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "536" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/a2arecoveryrg/providers/Microsoft.RecoveryServices/vaults/a2arecoveryvault/replicationPolicies/a2ademoPolicy\",\"name\":\"a2ademoPolicy\",\"type\":\"Microsoft.RecoveryServices/vaults/replicationPolicies\",\"properties\":{\"friendlyName\":\"a2ademoPolicy\",\"providerSpecificDetails\":{\"instanceType\":\"A2A\",\"recoveryPointThresholdInMinutes\":0,\"recoveryPointHistory\":4320,\"appConsistentFrequencyInMinutes\":240,\"multiVmSyncStatus\":\"Enabled\",\"crashConsistentFrequencyInMinutes\":60}}}",
+      "isContentBase64": false
+    }
+  }
+}

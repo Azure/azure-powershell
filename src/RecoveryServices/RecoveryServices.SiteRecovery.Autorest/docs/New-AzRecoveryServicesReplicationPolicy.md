@@ -14,7 +14,7 @@ schema: 2.0.0
 
 ```
 New-AzRecoveryServicesReplicationPolicy -PolicyName <String> -ResourceGroupName <String>
- -ResourceName <String> [-SubscriptionId <String>] [-ProviderSpecificInput <IPolicyProviderSpecificInput>]
+ -ResourceName <String> -ProviderSpecificInput <IPolicyProviderSpecificInput> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -52,7 +52,7 @@ $providerSpecificPolicy.ReplicationInterval = 300
 New-AzRecoveryServicesReplicationPolicy -ResourceGroupName "ASRTesting" -ResourceName "HyperV2AzureVault" -PolicyName "replicapolicy4h2a" -ProviderSpecificInput $providerSpecificPolicy
 ```
 
-```
+```output
 Location Name              Type
 -------- ----              ----
          replicapolicy4h2a Microsoft.RecoveryServices/vaults/replicationPolicies
@@ -130,7 +130,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IPo
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -231,7 +231,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-PROVIDERSPECIFICINPUT <IPolicyProviderSpecificInput>: 
+`PROVIDERSPECIFICINPUT <IPolicyProviderSpecificInput>`: 
   - `ReplicationScenario <String>`: The class type.
 
 ## RELATED LINKS

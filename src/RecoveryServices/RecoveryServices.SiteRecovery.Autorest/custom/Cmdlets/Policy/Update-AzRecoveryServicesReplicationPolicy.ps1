@@ -18,10 +18,6 @@
 The operation to update a replication policy.
 .Description
 The operation to update a replication policy.
-.Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IPolicy
@@ -40,18 +36,21 @@ function Update-AzRecoveryServicesReplicationPolicy {
     [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(Mandatory)]
+        [ValidateNotNull()]
         [Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IPolicy]
         # Specific replication policy object.
         ${Policy},
 
         [Parameter(Mandatory)]
+        [ValidateNotNullOrEmpty()]
         [Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Category('Path')]
         [System.String]
         # The name of the resource group where the recovery services vault is present.
         ${ResourceGroupName},
 
         [Parameter(Mandatory)]
+        [ValidateNotNullOrEmpty()]
         [Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Category('Path')]
         [System.String]
         # The name of the recovery services vault.
@@ -64,7 +63,8 @@ function Update-AzRecoveryServicesReplicationPolicy {
         # The subscription Id.
         ${SubscriptionId},
 
-        [Parameter()]
+        [Parameter(Mandatory)]
+        [ValidateNotNull()]
         [Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IPolicyProviderSpecificInput]
         # The ReplicationProviderSettings.

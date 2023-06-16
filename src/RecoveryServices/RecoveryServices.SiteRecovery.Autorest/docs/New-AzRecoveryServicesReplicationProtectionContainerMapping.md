@@ -12,21 +12,12 @@ The operation to create a protection container mapping.
 
 ## SYNTAX
 
-### CreateExpanded (Default)
 ```
-New-AzRecoveryServicesReplicationProtectionContainerMapping -FabricName <String> -MappingName <String>
- -ProtectionContainerName <String> -ResourceGroupName <String> -ResourceName <String>
- [-SubscriptionId <String>] [-PolicyId <String>] [-ProviderSpecificInputInstanceType <String>]
- [-TargetProtectionContainerId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### Create
-```
-New-AzRecoveryServicesReplicationProtectionContainerMapping -FabricName <String> -MappingName <String>
- -ProtectionContainerName <String> -ResourceGroupName <String> -ResourceName <String>
- -CreationInput <ICreateProtectionContainerMappingInput> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzRecoveryServicesReplicationProtectionContainerMapping -MappingName <String>
+ -PrimaryProtectionContainer <IProtectionContainer> -ResourceGroupName <String> -ResourceName <String>
+ -Policy <IPolicy> -ProviderSpecificInput <IReplicationProviderSpecificContainerMappingInput>
+ -RecoveryProtectionContainer <IProtectionContainer> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -34,27 +25,25 @@ The operation to create a protection container mapping.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create a new replication protection container mapping
 ```powershell
-{{ Add code here }}
+$policy=Get-AzRecoveryServicesReplicationPolicy -ResourceGroupName "a2arecoveryrg" -ResourceName "a2arecoveryvault" -PolicyName "A2APolicy"
+$mappingInput=[Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.A2AContainerMappingInput]::new()
+$mappingInput.ReplicationScenario="ReplicateAzureToAzure"
+$primaryfabric=Get-AzRecoveryServicesReplicationFabric -ResourceGroupName "a2arecoveryrg" -ResourceName "a2arecoveryvault" -FabricName "A2Ademo-EastUS"
+$primaryprotectioncontainer=Get-AzRecoveryServicesReplicationProtectionContainer -ResourceGroupName "a2arecoveryrg" -ResourceName "a2arecoveryvault" -Fabric $primaryfabric -ProtectionContainer "A2AEastUSProtectionContainer"
+$recoveryfabric=Get-AzRecoveryServicesReplicationFabric -ResourceGroupName "a2arecoveryrg" -ResourceName "a2arecoveryvault" -FabricName "A2Aprimaryfabric"
+$recoveryprotectioncontainer=Get-AzRecoveryServicesReplicationProtectionContainer -ResourceGroupName "a2arecoveryrg" -ResourceName "a2arecoveryvault" -Fabric $recoveryfabric -ProtectionContainer "demoProtectionContainer"
+New-AzRecoveryServicesReplicationProtectionContainerMapping -MappingName "demomap" -PrimaryProtectionContainer $primaryprotectioncontainer -ResourceName "a2arecoveryvault" -ResourceGroupName "a2arecoveryrg" -ProviderSpecificInput $mappingInput -Policy $policy -RecoveryProtectionContainer $recoveryprotectioncontainer
 ```
 
 ```output
-{{ Add output here }}
+Id                                                                                                                                                                                                                                                                                                 Location Name    Type
+--                                                                                                                                                                                                                                                                                                 -------- ----    ----
+/Subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/a2arecoveryrg/providers/Microsoft.RecoveryServices/vaults/a2arecoveryvault/replicationFabrics/A2Ademo-EastUS/replicationProtectionContainers/A2AEastUSProtectionContainer/replicationProtectionContainerMappings/testmappingcmd			demomap	Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectionContainerMappings
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Creates a New azure protection container mapping in a recovery services vault.
 
 ## PARAMETERS
 
@@ -73,22 +62,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -CreationInput
-Configure pairing input.
-To construct, see NOTES section for CREATIONINPUT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.ICreateProtectionContainerMappingInput
-Parameter Sets: Create
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -98,21 +71,6 @@ Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -FabricName
-Fabric name.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -149,26 +107,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PolicyId
-Applicable policy.
+### -Policy
+Applicable policy object.
+To construct, see NOTES section for POLICY properties and create a hash table.
 
 ```yaml
-Type: System.String
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProtectionContainerName
-Protection container name.
-
-```yaml
-Type: System.String
+Type: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IPolicy
 Parameter Sets: (All)
 Aliases:
 
@@ -179,15 +123,48 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProviderSpecificInputInstanceType
-The class type.
+### -PrimaryProtectionContainer
+Primary protection container object.
+To construct, see NOTES section for PRIMARYPROTECTIONCONTAINER properties and create a hash table.
 
 ```yaml
-Type: System.String
-Parameter Sets: CreateExpanded
+Type: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IProtectionContainer
+Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProviderSpecificInput
+Provider specific input for pairing.
+To construct, see NOTES section for PROVIDERSPECIFICINPUT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IReplicationProviderSpecificContainerMappingInput
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RecoveryProtectionContainer
+The target unique protection container object.
+To construct, see NOTES section for RECOVERYPROTECTIONCONTAINER properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IProtectionContainer
+Parameter Sets: (All)
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -239,21 +216,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -TargetProtectionContainerId
-The target unique protection container name.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.
 
@@ -290,8 +252,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.ICreateProtectionContainerMappingInput
-
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IProtectionContainerMapping
@@ -305,10 +265,31 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-CREATIONINPUT <ICreateProtectionContainerMappingInput>: Configure pairing input.
-  - `[PolicyId <String>]`: Applicable policy.
-  - `[ProviderSpecificInputInstanceType <String>]`: The class type.
-  - `[TargetProtectionContainerId <String>]`: The target unique protection container name.
+`POLICY <IPolicy>`: Applicable policy object.
+  - `[Location <String>]`: Resource Location
+  - `[FriendlyName <String>]`: The FriendlyName.
+  - `[ProviderSpecificDetailInstanceType <String>]`: Gets the class type. Overridden in derived classes.
+
+`PRIMARYPROTECTIONCONTAINER <IProtectionContainer>`: Primary protection container object.
+  - `[Location <String>]`: Resource Location
+  - `[FabricFriendlyName <String>]`: Fabric friendly name.
+  - `[FabricType <String>]`: The fabric type.
+  - `[FriendlyName <String>]`: The name.
+  - `[PairingStatus <String>]`: The pairing status of this cloud.
+  - `[ProtectedItemCount <Int32?>]`: Number of protected PEs.
+  - `[Role <String>]`: The role of this cloud.
+
+`PROVIDERSPECIFICINPUT <IReplicationProviderSpecificContainerMappingInput>`: Provider specific input for pairing.
+  - `ReplicationScenario <String>`: The class type.
+
+`RECOVERYPROTECTIONCONTAINER <IProtectionContainer>`: The target unique protection container object.
+  - `[Location <String>]`: Resource Location
+  - `[FabricFriendlyName <String>]`: Fabric friendly name.
+  - `[FabricType <String>]`: The fabric type.
+  - `[FriendlyName <String>]`: The name.
+  - `[PairingStatus <String>]`: The pairing status of this cloud.
+  - `[ProtectedItemCount <Int32?>]`: Number of protected PEs.
+  - `[Role <String>]`: The role of this cloud.
 
 ## RELATED LINKS
 

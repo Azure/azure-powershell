@@ -25,9 +25,6 @@ The operation to delete or purge a replication protected item.
 This operation will force delete the replication protected item.
 Use the remove operation on replication protected item to perform a clean disable replication for the item.
 
-### [Clear-AzRecoveryServicesReplicationProtectionContainerMapping](Clear-AzRecoveryServicesReplicationProtectionContainerMapping.md)
-The operation to purge(force delete) a protection container mapping.
-
 ### [Clear-AzRecoveryServicesReplicationRecoveryServicesProvider](Clear-AzRecoveryServicesReplicationRecoveryServicesProvider.md)
 The operation to purge(force delete) a recovery services provider from the vault.
 
@@ -83,10 +80,10 @@ The operation to get the details of a protectable item.
 Gets the details of an ASR replication protected item.
 
 ### [Get-AzRecoveryServicesReplicationProtectionContainer](Get-AzRecoveryServicesReplicationProtectionContainer.md)
-Gets the details of a protection container.
+Lists the protection containers in a vault.
 
 ### [Get-AzRecoveryServicesReplicationProtectionContainerMapping](Get-AzRecoveryServicesReplicationProtectionContainerMapping.md)
-Gets the details of a protection container mapping.
+Lists the protection container mappings in the vault.
 
 ### [Get-AzRecoveryServicesReplicationProtectionIntent](Get-AzRecoveryServicesReplicationProtectionIntent.md)
 Gets the details of an ASR replication protection intent.
@@ -175,7 +172,7 @@ The operation to create an ASR migration item (enable migration).
 The operation to create an ASR network mapping.
 
 ### [New-AzRecoveryServicesReplicationPolicy](New-AzRecoveryServicesReplicationPolicy.md)
-The operation to create a replication policy.
+
 
 ### [New-AzRecoveryServicesReplicationProtectedItem](New-AzRecoveryServicesReplicationProtectedItem.md)
 The operation to create an ASR replication protected item (Enable replication).

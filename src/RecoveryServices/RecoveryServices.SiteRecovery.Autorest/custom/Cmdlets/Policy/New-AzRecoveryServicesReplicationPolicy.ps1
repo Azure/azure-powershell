@@ -17,10 +17,7 @@
 The operation to create a replication policy.
 .Description
 The operation to create a replication policy.
-.Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IPolicy
 .Notes
@@ -32,18 +29,21 @@ function New-AzRecoveryServicesReplicationPolicy {
     [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(Mandatory, HelpMessage='Specific replication policy name.')]
+        [ValidateNotNullOrEmpty()]
         [Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Category('Path')]
         [System.String]
         # Replication policy name.
         ${PolicyName},
     
         [Parameter(Mandatory, HelpMessage='The name of the resource group where the recovery services vault is present.')]
+        [ValidateNotNullOrEmpty()]
         [Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Category('Path')]
         [System.String]
         # The name of the resource group where the recovery services vault is present.
         ${ResourceGroupName},
 
         [Parameter(Mandatory, HelpMessage='The name of the recovery services vault.')]
+        [ValidateNotNullOrEmpty()]
         [Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Category('Path')]
         [System.String]
         # The name of the recovery services vault.
@@ -56,7 +56,8 @@ function New-AzRecoveryServicesReplicationPolicy {
         # The subscription Id.
         ${SubscriptionId},
 
-        [Parameter()]
+        [Parameter(Mandatory)]
+        [ValidateNotNull()]
         [Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IPolicyProviderSpecificInput]
         # The ReplicationProviderSettings.
