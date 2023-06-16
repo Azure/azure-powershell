@@ -512,9 +512,7 @@ namespace Microsoft.Azure.Commands.Compute
                 if (_cmdlet.DiskFile == null)
                 {
                     // Temporary message until after the Ignite 2023 release that should remove these outdated image aliases. 
-                    if ((_cmdlet.Image != "")
-                        &&
-                        (_cmdlet.Image == "CentOS" || _cmdlet.Image == "Debian" || _cmdlet.Image == "RHEL"
+                    if ((_cmdlet.Image == "CentOS" || _cmdlet.Image == "Debian" || _cmdlet.Image == "RHEL"
                          || _cmdlet.Image == "UbuntuLTS"))
                     {
                         string ImageOutdatedMessage = "You are using the image " + _cmdlet.Image + ", which is outdated and this image name will be removed in October 2023. Please update to a newer versioned image alias as seen here, [Find and use Azure Marketplace VM images with Azure PowerShell](https://learn.microsoft.com/en-us/azure/virtual-machines/windows/cli-ps-findimage#default-images).";
