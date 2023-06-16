@@ -26,8 +26,11 @@ try{
     }
     Write-Host "Preparing Autorest..."
     npm install -g autorest
+    Write-Host "changed1: $ChangedSdks"
     autorest --reset
+    Write-Host "changed2: $ChangedSdks"
     autorest --use:@microsoft.azure/autorest.csharp@2.3.90
+    Write-Host "changed3: $ChangedSdks"
     foreach ($_ in $ChangedSdks) {
         # Direct to the Sdk directory
         $module = ($_ -split "\/|\\")[1]
