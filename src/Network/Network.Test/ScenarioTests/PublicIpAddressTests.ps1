@@ -196,7 +196,7 @@ function Test-PublicIpAddressCRUD-WithDomainNameLabelScope
     $rgname = Get-ResourceGroupName
     $rname = Get-ResourceName
     $domainNameLabel = Get-ResourceName
-    $domainNameLabelScope = "TenantReuse"
+    $domainNameLabelScope = "tenantreuse"
     $rglocation = "eastus2euap"
     $resourceTypeParent = "Microsoft.Network/publicIpAddresses"
    
