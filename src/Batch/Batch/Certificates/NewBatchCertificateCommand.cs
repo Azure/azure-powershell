@@ -23,7 +23,7 @@ using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 namespace Microsoft.Azure.Commands.Batch
 {
     [System.Obsolete]
-    [GenericBreakingChange("The Batch account certificates feature is deprecated. Please transition to using Azure Key Vault to securely access and install certificates on your Batch pools (https://learn.microsoft.com/en-us/azure/batch/batch-certificate-migration-guide)", null, "02/29/2024")]
+    [GenericBreakingChange("The Batch account certificates feature is deprecated. Please transition to using Azure Key Vault to securely access and install certificates on your Batch pools, learn more: https://learn.microsoft.com/azure/batch/batch-certificate-migration-guide", "4.0.0", "02/29/2024")]
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzurePrefix + "BatchCertificate", DefaultParameterSetName = FileParameterSet), OutputType(typeof(void))]
     public class NewBatchCertificateCommand : BatchObjectModelCmdletBase
     {
