@@ -20,6 +20,7 @@ variables:
   EnableTestCoverage: true
   TestCoverageLocation: $(Build.SourcesDirectory)/artifacts
   PowerShellPlatform: PowerShell Core
+
 trigger: none
 
 pr:
@@ -57,34 +58,34 @@ jobs:
       testFramework: ${{ variables.TestFramework }}
       powerShellPlatform: ${{ variables.PowerShellPlatform }}
 
-# - job: Test
-#   displayName: Test
-#   dependsOn: Build
-#   condition: succeeded()
-#   timeoutInMinutes: ${{ variables.TestTimeoutInMinutes }}
-#   strategy:
-#     matrix:
-#       windows:
-#         OSName: ${{ variables.WindowsName }}
-#         agentPoolName: ${{ variables.WindowsAgentPoolName }}
-#         agentPoolVMImage: ${{ variables.WindowsAgentPoolVMImage }}
-#       linux:
-#         OSName: ${{ variables.LinuxName }}
-#         agentPoolName: ${{ variables.LinuxAgentPoolName }}
-#         agentPoolVMImage: ${{ variables.LinuxAgentPoolVMImage }}
-#       macOS:
-#         OSName: ${{ variables.MacOSName }}
-#         agentPoolName: ${{ variables.MacOSAgentPoolName }}
-#         agentPoolVMImage: ${{ variables.MacOSAgentPoolVMImage }}
-#   pool:
-#     name: $(agentPoolName)
-#     vmImage: $(agentPoolVMImage)
+- job: Test
+  displayName: Test
+  dependsOn: Build
+  condition: succeeded()
+  timeoutInMinutes: ${{ variables.TestTimeoutInMinutes }}
+  strategy:
+    matrix:
+      windows:
+        OSName: ${{ variables.WindowsName }}
+        agentPoolName: ${{ variables.WindowsAgentPoolName }}
+        agentPoolVMImage: ${{ variables.WindowsAgentPoolVMImage }}
+      linux:
+        OSName: ${{ variables.LinuxName }}
+        agentPoolName: ${{ variables.LinuxAgentPoolName }}
+        agentPoolVMImage: ${{ variables.LinuxAgentPoolVMImage }}
+      macOS:
+        OSName: ${{ variables.MacOSName }}
+        agentPoolName: ${{ variables.MacOSAgentPoolName }}
+        agentPoolVMImage: ${{ variables.MacOSAgentPoolVMImage }}
+  pool:
+    name: $(agentPoolName)
+    vmImage: $(agentPoolVMImage)
 
-#   steps:
-#   - template: util/test-steps.yml
-#     parameters:
-#       osName: $(OSName)
-#       testFramework: ${{ variables.TestFramework }}
-#       testTarget: ${{ variables.TestTarget }}
-#       configuration: ${{ variables.Configuration }}
-#       powerShellPlatform: ${{ variables.PowerShellPlatform }}
+  steps:
+  - template: util/test-steps.yml
+    parameters:
+      osName: $(OSName)
+      testFramework: ${{ variables.TestFramework }}
+      testTarget: ${{ variables.TestTarget }}
+      configuration: ${{ variables.Configuration }}
+      powerShellPlatform: ${{ variables.PowerShellPlatform }}
