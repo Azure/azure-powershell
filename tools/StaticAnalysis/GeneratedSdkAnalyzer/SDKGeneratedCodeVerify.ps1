@@ -15,7 +15,7 @@
 
 $ArtifactsFolder = "$PSScriptRoot/../../../artifacts"
 $FilesChangedPaths = "$ArtifactsFolder/FilesChanged.txt"
-$ExceptionFilePath = "$ArtifactsFolder/StaticAnalysisResults/FileChangeIssue.csv"
+$ExceptionFilePath = "$ArtifactsFolder/StaticAnalysisResults/VerifyGenSdk.csv"
 
 Class GeneratedSdkIssue {
     [String]$Module
@@ -25,18 +25,9 @@ Class GeneratedSdkIssue {
 }
 
 $ExceptionList = @()
-# $errors = New-Object System.Collections.Generic.List[System.Object]
-# # All errors should be logged using this function, as it tracks the errors in
-# # the $errors array, which is used in the finally block of the script to determine
-# # the return code.
-# function LogError([string]$message) {
-#     Write-Host -f Red "error: $message"
-#     $errors.Add($message)
-# }
 
 try{
     if ((Test-Path $FilesChangedPaths -PathType Leaf) -and $FilesChangedPaths.EndsWith(".txt")) {
-        Write-Host (Get-Content $FilesChangedPaths)
         # Read Changedfiles and check if generted sdk code is updated.
         $FilesChanged = Get-Content $FilesChangedPaths | Where-Object { ($_ -match "^src\/.*\.Sdk\/.*Generated.*")}
         # Collect Sdk paths whose files under Generated folder change.
@@ -55,19 +46,18 @@ try{
     autorest --reset
     autorest --use:@microsoft.azure/autorest.csharp@2.3.90
     foreach ($_ in $ChangedSdks) {
-        # Direct to the Sdk directory
+        # Extract Module Name
         $ModuleName = ($_ -split "\/|\\")[1]
+        # Direct to the Sdk directory
         Write-Host "Directing to " "$PSScriptRoot/../../../$_"
         cd "$PSScriptRoot/../../../$_"
 
         # Regenerate the Sdk under Generated folder
-        Write-Host (Test-Path -Path "README.md" -PathType Leaf)
         if( Test-Path -Path "README.md" -PathType Leaf){
             Write-Host "Re-generating SDK under Generated folder for $ModuleName..."
             autorest.cmd README.md --version=v2
         }
         else {
-            # LogError "No README file detected under $_."
             $ExceptionList += [GeneratedSdkIssue]@{
                     Module = $ModuleName;
                     Severity = 2;
@@ -79,7 +69,6 @@ try{
         $changes = git status ".\Generated" --porcelain
         if ($changes -ne $null){
             $changes = $changes.replace("  ", "`n")
-            # LogError "Generated code for $ModuleName is not up to date.`n       You may need to rebase on the latest main, regenerate code accroding to README.md file under $_`n"
             $ExceptionList += [GeneratedSdkIssue]@{
                     Module = $ModuleName;
                     Severity = 1;
@@ -93,11 +82,11 @@ finally {
     Write-Host ""
     Write-Host "Summary:" 
     Write-Host ""
-    Write-Host "  $($ExceptionList.Length) error(s):"
+    Write-Host "  $($ExceptionList.Length) error(s) detected while verifying generated sdk:"
     Write-Host ""
 
     foreach ($err in $ExceptionList) {
-        Write-Host -f Red "error : " $err.Description " " $err.Remediation
+        Write-Host -f Red "error : " $err.Description "`n " $err.Remediation
     }
 
     if ($ExceptionList.Length -ne 0) {

@@ -73,8 +73,8 @@ $Steps = @(
         IssuePath = "$StaticAnalysisOutputDirectory/UXMetadataIssues.csv"
     },
     @{
-        PhaseName = "phase-x"
-        IssuePath = "$StaticAnalysisVerifyGensdk/VerifyGensdk.csv"
+        PhaseName = "verify-gensdk"
+        IssuePath = "$StaticAnalysisOutputDirectory/VerifyGensdk.csv"
     }
 )
 
@@ -141,7 +141,7 @@ ForEach ($Step In $Steps) {
             $MatchedIssues = $Issues | Where-Object { $_.Module -Eq $ModuleName }
             If ($MatchedIssues.Length -Ne 0) {
                 #Region generate table head of each step
-                $NormalSteps = [System.Collections.Generic.HashSet[String]]@("breaking-change", "help", "signature", "file-change")
+                $NormalSteps = [System.Collections.Generic.HashSet[String]]@("breaking-change", "help", "signature", "file-change", "verify-gensdk")
                 If ($NormalSteps.Contains($PhaseName)) {
                     $Content = "|Type|Cmdlet|Description|Remediation|`n|---|---|---|---|`n"
                 }
