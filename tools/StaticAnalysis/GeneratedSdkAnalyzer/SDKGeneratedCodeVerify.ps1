@@ -66,7 +66,7 @@ try{
             Write-Host "loging error..."
             LogError "Generated code for $ModuleName is not up to date.`n       You may need to rebase on the latest main, regenerate code accroding to README.md file under $_`n"
             $ExceptionList += [GeneratedSdkIssue]@{
-                    Module = Az.$ModuleName;
+                    Module = $ModuleName;
                     Severity = 1;
                     Description = "Generated code for $ModuleName is not up to date or you have updated generated Sdk."
                     Remediation = "You may need to rebase on the latest main, regenerate code accroding to README.md file under $_, and make sure no more updates based on generated files."
