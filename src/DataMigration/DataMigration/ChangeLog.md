@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added new cmdlet `New-AzDataMigrationSqlServerSchema` to migrate Sql Server Schema from the source Sql Servers to the target Azure Sql Servers
 
 ## Version 0.13.0
 * Added the custom cmdlet for TDE Migration: `New-AzDataMigrationTdeCertificateMigration`

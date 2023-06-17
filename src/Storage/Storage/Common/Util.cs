@@ -33,6 +33,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
     using global::Azure.Storage.Files.Shares.Models;
     using global::Azure.Storage.Files.DataLake;
     using global::Azure.Storage.Files.Shares;
+    using global::Azure.Storage.Queues;
 
     internal static class Util
     {
@@ -795,6 +796,25 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             {
                 return shareClient;
             }
+        }
+
+        public static QueueClient GetTrack2QueueClient(string queueName, AzureStorageContext context, QueueClientOptions options)
+        {
+            if (context == null || string.IsNullOrEmpty(context.ConnectionString))
+            {
+                throw new ArgumentException(Resources.DefaultStorageCredentialsNotFound);
+            }
+
+            string connectionString = context.ConnectionString;
+            if (context != null && context.StorageAccount != null && context.StorageAccount.Credentials != null && context.StorageAccount.Credentials.IsSAS)
+            {
+                connectionString = connectionString.Replace("SharedAccessSignature=?", "SharedAccessSignature=");
+            }
+
+            QueueClient queueClient;
+
+            queueClient = new QueueClient(connectionString, queueName, options);
+            return queueClient;
         }
 
         /// <summary>

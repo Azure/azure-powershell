@@ -80,6 +80,8 @@ namespace Microsoft.Azure.Commands.Compute.Common
         public const string Automated = "Automated";
         public const string Daily = "Daily";
         public const string Weekly = "Weekly";
+        public const string TrustedLaunch = "TrustedLaunch";
+        public const string ConfidentialVM = "ConfidentialVM";
     }
 
     public static class ProfileNouns

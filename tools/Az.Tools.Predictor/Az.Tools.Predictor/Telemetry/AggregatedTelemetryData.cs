@@ -14,7 +14,6 @@
 
 using System.Collections.Generic;
 using System.Globalization;
-using System.Management.Automation.Language;
 using System.Management.Automation.Subsystem.Prediction;
 
 namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry

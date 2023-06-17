@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed a few typos in Get-AzMarketplaceTerms.md
 
 ## Version 2.0.0
 * Upgraded API version to 2021-01-01.
