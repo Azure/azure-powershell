@@ -104,7 +104,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
             cmdlet.VirtualMachineConfiguration = new PSVirtualMachineConfiguration(new PSImageReference("offer", "publisher", "sku"), "node agent");
             cmdlet.VirtualMachineConfiguration.Extensions = new List<PSVMExtension>
             {
-                new PSVMExtension("sample-extension", "sample-publisher", "snample-type") { EnableAutomaticUpgrade = true },
+                new PSVMExtension("sample-extension", "sample-publisher", "sample-type") { EnableAutomaticUpgrade = true },
             };
             cmdlet.VirtualMachineConfiguration.ContainerConfiguration = new PSContainerConfiguration() { Type = "CriCompatible" };
             cmdlet.VirtualMachineSize = "small";
