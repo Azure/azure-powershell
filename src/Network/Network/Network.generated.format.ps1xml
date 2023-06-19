@@ -8919,10 +8919,10 @@
             <Alignment>Left</Alignment>
             <Label>ProvisioningState</Label>
           </TableColumnHeader>
-	<TableColumnHeader>
-		<Alignment>Left</Alignment>
-		<Label>HubRoutingPreference</Label>
-	</TableColumnHeader>
+		  <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>HubRoutingPreference</Label>
+          </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
@@ -8951,10 +8951,10 @@
                 <Alignment>Left</Alignment>
                 <PropertyName>ProvisioningState</PropertyName>
               </TableColumnItem>
-		<TableColumnItem>
-			<Alignment>Left</Alignment>
-			<PropertyName>HubRoutingPreference</PropertyName>
-		</TableColumnItem>
+			  <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>HubRoutingPreference</PropertyName>
+              </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
         </TableRowEntries>
