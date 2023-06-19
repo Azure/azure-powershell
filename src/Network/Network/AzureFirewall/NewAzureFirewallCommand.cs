@@ -313,6 +313,11 @@ namespace Microsoft.Azure.Commands.Network
                     throw new ArgumentException("The list of public Ip addresses cannot be provided during the firewall creation");
                 }
 
+                if(this.RouteServerId != null)
+                {
+                    throw new ArgumentException("The Route Server is not supported on AZFW Hub SKU Firewalls");
+                }
+
                 firewall = new PSAzureFirewall()
                 {
                     Name = this.Name,
