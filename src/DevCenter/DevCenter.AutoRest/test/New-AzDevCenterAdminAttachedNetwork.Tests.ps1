@@ -1,5 +1,3 @@
-.\utils.ps1
-
 if(($null -eq $TestName) -or ($TestName -contains 'New-AzDevCenterAdminAttachedNetwork'))
 {
   $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'

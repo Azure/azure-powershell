@@ -1,0 +1,66 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "managedIdentityName": {
+      "value": "pwshMsinzfos4"
+    },
+    "subscriptionId": {
+      "value": "f141e9f2-4778-45a4-9aa0-8b31e6469454"
+    },
+    "resourceGroup": {
+      "value": "pwshRgbfptry"
+    },
+    "devCenterName": {
+      "value": "pwshDcuoq9z6"
+    },
+    "projectName": {
+      "value": "pwshProj6mufxh"
+    },
+    "location": {
+      "value": "canadacentral"
+    },
+    "keyVaultSecret": {
+      "value": "https://dummyVault/dummy/00000000"
+    },
+    "subnetId": {
+      "value": "/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/amlim-test/providers/Microsoft.Network/virtualNetworks/amlim-vnet-canadacentral/subnets/default"
+    },
+    "networkConnectionName": {
+      "value": "qu4rta"
+    },
+    "catalogName": {
+      "value": "1rcvk0"
+    },
+    "gitHubRepo": {
+      "value": "https://github.com/fake/fake.git"
+    },
+    "attachedNetworkName": {
+      "value": "4q9ju0"
+    },
+    "devBoxDefinitionName": {
+      "value": "kyw0um"
+    },
+    "imageReferenceId": {
+      "value": "/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRgbfptry/providers/Microsoft.DevCenter/devcenters/pwshDcuoq9z6/galleries/Default/images/MicrosoftWindowsDesktop_windows-ent-cpc_win11-22h2-ent-cpc-os"
+    },
+    "skuName": {
+      "value": "general_a_8c32gb_v1"
+    },
+    "osStorageType": {
+      "value": "ssd_1024gb"
+    },
+    "keyVaultName": {
+      "value": "dummy"
+    },
+    "tenantId": {
+      "value": "003b06c3-d471-4452-9686-9e7f3ca85f0a"
+    },
+    "environmentTypeName": {
+      "value": "w9udil"
+    },
+    "poolName": {
+      "value": "ed94mq"
+    }
+  }
+}

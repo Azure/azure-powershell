@@ -55,6 +55,20 @@ function setupEnv() {
     $timeZone = "America/Los_Angeles"
     $subnetId = "/subscriptions/" + $env.SubscriptionId + "/resourceGroups/amlim-test/providers/Microsoft.Network/virtualNetworks/amlim-vnet-canadacentral/subnets/default"
     $sigId = "/subscriptions/" + $env.SubscriptionId + "/resourceGroups/amlim-test/providers/Microsoft.Compute/galleries/amlim_pwsh_sig"
+    $projectNameDelete2 = RandomString -allChars $false -len 6
+    $catalogNameDelete2 = RandomString -allChars $false -len 6
+    $environmentTypeNameDelete2 = RandomString -allChars $false -len 6
+    $projEnvironmentTypeNameDelete = RandomString -allChars $false -len 6
+    $projEnvironmentTypeNameDelete2 = RandomString -allChars $false -len 6
+    $devBoxDefinitionNameDelete2 = RandomString -allChars $false -len 6
+    $galleryNameDelete2 = RandomString -allChars $false -len 6
+    $poolNameDelete2 = RandomString -allChars $false -len 6
+    $networkConnectionNameDelete2 = RandomString -allChars $false -len 6
+    $attachedNetworkNameDelete2 = RandomString -allChars $false -len 6
+    $devCenterNameDelete2 = RandomString -allChars $false -len 6
+    $poolForScheduleDelete = RandomString -allChars $false -len 6
+    $poolForScheduleDelete2 = RandomString -allChars $false -len 6
+
 
     # Replace with real values when running test recordings
     $gitHubSecretIdentifier = "https://dummyVault/dummy/00000000"
@@ -134,7 +148,6 @@ function setupEnv() {
     $env.Add("resourceGroup", $resourceGroup)
     $env.Add("managedIdentityName", $managedIdentityName)
     $env.Add("devCenterName", $devCenterName)
-    $env.Add("devCenterNameDelete", $devCenterNameDelete)
     $env.Add("projectName", $projectName)
     $env.Add("location", $location)
     $env.Add("catalogName", $catalogName)
@@ -161,14 +174,27 @@ function setupEnv() {
     $env.Add("sigId", $sigId)
 
     $env.Add("projectNameDelete", $projectNameDelete)
+    $env.Add("projectNameDelete2", $projectNameDelete2)
     $env.Add("catalogNameDelete", $catalogNameDelete)
+    $env.Add("catalogNameDelete2", $catalogNameDelete2)
     $env.Add("environmentTypeNameDelete", $environmentTypeNameDelete)
+    $env.Add("environmentTypeNameDelete2", $environmentTypeNameDelete2)
+    $env.Add("projEnvironmentTypeNameDelete", $projEnvironmentTypeNameDelete)
+    $env.Add("projEnvironmentTypeNameDelete2", $projEnvironmentTypeNameDelete2)
     $env.Add("devBoxDefinitionNameDelete", $devBoxDefinitionNameDelete)
+    $env.Add("devBoxDefinitionNameDelete2", $devBoxDefinitionNameDelete2)
     $env.Add("galleryNameDelete", $galleryNameDelete)
+    $env.Add("galleryNameDelete2", $galleryNameDelete2)
     $env.Add("poolNameDelete", $poolNameDelete)
+    $env.Add("poolNameDelete2", $poolNameDelete2)
     $env.Add("networkConnectionNameDelete", $networkConnectionNameDelete)
+    $env.Add("networkConnectionNameDelete2", $networkConnectionNameDelete2)
     $env.Add("attachedNetworkNameDelete", $attachedNetworkNameDelete)
+    $env.Add("attachedNetworkNameDelete2", $attachedNetworkNameDelete2)
     $env.Add("devCenterNameDelete", $devCenterNameDelete)
+    $env.Add("devCenterNameDelete2", $devCenterNameDelete2)
+    $env.Add("poolForScheduleDelete", $poolForScheduleDelete)
+    $env.Add("poolForScheduleDelete2", $poolForScheduleDelete2)
 
     $devboxTemplate = Get-Content .\test\deploymentTemplates\parameter.json | ConvertFrom-Json
     $devboxTemplate.parameters.managedIdentityName.value = $managedIdentityName
@@ -207,6 +233,20 @@ function setupEnv() {
     $devboxTemplate.parameters.poolForScheduleNew.value = $poolForScheduleNew
     $devboxTemplate.parameters.poolForScheduleNew2.value = $poolForScheduleNew2
 
+    $devboxTemplate.parameters.projectNameDelete2.value = $projectNameDelete2
+    $devboxTemplate.parameters.catalogNameDelete2.value = $catalogNameDelete2
+    $devboxTemplate.parameters.environmentTypeNameDelete2.value = $environmentTypeNameDelete2
+    $devboxTemplate.parameters.projEnvironmentTypeNameDelete.value = $projEnvironmentTypeNameDelete
+    $devboxTemplate.parameters.projEnvironmentTypeNameDelete2.value = $projEnvironmentTypeNameDelete2
+    $devboxTemplate.parameters.devBoxDefinitionNameDelete2.value = $devBoxDefinitionNameDelete2
+    $devboxTemplate.parameters.galleryNameDelete2.value = $galleryNameDelete2
+    $devboxTemplate.parameters.poolNameDelete2.value = $poolNameDelete2
+    $devboxTemplate.parameters.networkConnectionNameDelete2.value = $networkConnectionNameDelete2
+    $devboxTemplate.parameters.attachedNetworkNameDelete2.value = $attachedNetworkNameDelete2
+    $devboxTemplate.parameters.devCenterNameDelete2.value = $devCenterNameDelete2
+    $devBoxTemplate.parameters.poolForScheduleDelete.value = $poolForScheduleDelete
+    $devBoxTemplate.parameters.poolForScheduleDelete2.value = $poolForScheduleDelete2
+
     Set-Content -Path .\test\deploymentTemplates\parameter.json -Value (ConvertTo-Json $devboxTemplate)
 
     New-AzResourceGroupDeployment -TemplateFile .\test\deploymentTemplates\template.json -TemplateParameterFile .\test\deploymentTemplates\parameter.json -Name devboxTemplate -ResourceGroupName $resourceGroup
@@ -214,7 +254,10 @@ function setupEnv() {
 
     $identity = Get-AzUserAssignedIdentity -ResourceGroupName $env.resourceGroup -Name $env.managedIdentityName
     $identityId = $identity.Id
+    $identityPrincipalId = $identity.PrincipalId
     $env.Add("identityId", $identityId)
+    $env.Add("identityPrincipalId", $identityPrincipalId)
+
 
 
 
@@ -228,9 +271,5 @@ function setupEnv() {
 function cleanupEnv() {
     # Clean resources you create for testing
     Remove-AzResourceGroup -Name $env.resourceGroup
-    Remove-AzResourceGroup -Name $env.networkingRgName1
-    Remove-AzResourceGroup -Name $env.networkingRgName2
-    Remove-AzResourceGroup -Name $env.networkingRgName3
-    Remove-AzResourceGroup -Name $env.networkingRgName4
 }
 

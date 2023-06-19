@@ -3,22 +3,22 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "managedIdentityName": {
-      "value": "pwshMsinzfos4"
+      "value": "pwshMsi1ypn97"
     },
     "subscriptionId": {
       "value": "f141e9f2-4778-45a4-9aa0-8b31e6469454"
     },
     "resourceGroup": {
-      "value": "pwshRgbfptry"
+      "value": "pwshRgjvg0d1"
     },
     "devCenterName": {
-      "value": "pwshDcuoq9z6"
+      "value": "pwshDcas7hur"
     },
     "devCenterNameDelete": {
-      "value": "pwshDc2lpsn7o"
+      "value": "pwshDc2b8lv3y"
     },
     "projectName": {
-      "value": "pwshProj6mufxh"
+      "value": "pwshProjz7kpj8"
     },
     "location": {
       "value": "canadacentral"
@@ -30,25 +30,25 @@
       "value": "/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/amlim-test/providers/Microsoft.Network/virtualNetworks/amlim-vnet-canadacentral/subnets/default"
     },
     "networkConnectionName": {
-      "value": "qu4rta"
+      "value": "zr9pi3"
     },
     "networkConnectionNameDelete": {
-      "value": "8h6jlf"
+      "value": "7v91lw"
     },
     "catalogName": {
-      "value": "1rcvk0"
+      "value": "9j5yo0"
     },
     "gitHubRepo": {
       "value": "https://github.com/fake/fake.git"
     },
     "attachedNetworkName": {
-      "value": "4q9ju0"
+      "value": "exc0k9"
     },
     "devBoxDefinitionName": {
-      "value": "kyw0um"
+      "value": "ia1tsf"
     },
     "imageReferenceId": {
-      "value": "/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRgbfptry/providers/Microsoft.DevCenter/devcenters/pwshDcuoq9z6/galleries/Default/images/MicrosoftWindowsDesktop_windows-ent-cpc_win11-22h2-ent-cpc-os"
+      "value": "/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRgjvg0d1/providers/Microsoft.DevCenter/devcenters/pwshDcas7hur/galleries/Default/images/MicrosoftWindowsDesktop_windows-ent-cpc_win11-22h2-ent-cpc-os"
     },
     "skuName": {
       "value": "general_a_8c32gb_v1"
@@ -63,49 +63,88 @@
       "value": "003b06c3-d471-4452-9686-9e7f3ca85f0a"
     },
     "environmentTypeName": {
-      "value": "w9udil"
+      "value": "2l9gm0"
     },
     "poolName": {
-      "value": "ed94mq"
+      "value": "cykjlm"
     },
     "galleryName": {
-      "value": "bx2dli"
+      "value": "or759v"
     },
     "sigId": {
       "value": "/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/amlim-test/providers/Microsoft.Compute/galleries/amlim_pwsh_sig"
     },
     "projectNameDelete": {
-      "value": "pwshPro2g2u183"
+      "value": "pwshPro2ua8mwq"
     },
     "catalogNameDelete": {
-      "value": "efy5zp"
+      "value": "h4jzr1"
     },
     "attachedNetworkNameDelete": {
-      "value": "9x68nw"
+      "value": "fztv24"
     },
     "devBoxDefinitionNameDelete": {
-      "value": "4azi69"
+      "value": "xnifcq"
     },
     "environmentTypeNameDelete": {
-      "value": "5ozpr4"
+      "value": "l1ux42"
     },
     "galleryNameDelete": {
-      "value": "3wa54r"
+      "value": "u32pnb"
     },
     "poolNameDelete": {
-      "value": "inbrue"
+      "value": "vu4o3i"
     },
     "envForProjEnvTypeNew": {
-      "value": "4azi69"
+      "value": "yw0x"
     },
     "envForProjEnvTypeNew2": {
-      "value": "5ozpr4"
+      "value": "gewd"
     },
     "poolForScheduleNew": {
-      "value": "3wa54r"
+      "value": "r65sf"
     },
     "poolForScheduleNew2": {
-      "value": "inbrue"
+      "value": "7nby"
+    },
+    "projectNameDelete2": {
+      "value": "p27jyb"
+    },
+    "catalogNameDelete2": {
+      "value": "0zlkts"
+    },
+    "environmentTypeNameDelete2": {
+      "value": "jfal57"
+    },
+    "projEnvironmentTypeNameDelete": {
+      "value": "8aupj5"
+    },
+    "projEnvironmentTypeNameDelete2": {
+      "value": "jmu83f"
+    },
+    "devBoxDefinitionNameDelete2": {
+      "value": "5h1eal"
+    },
+    "galleryNameDelete2": {
+      "value": "u70bz5"
+    },
+    "poolNameDelete2": {
+      "value": "3jrgh8"
+    },
+    "networkConnectionNameDelete2": {
+      "value": "umnecg"
+    },
+    "attachedNetworkNameDelete2": {
+      "value": "zaumov"
+    },
+    "devCenterNameDelete2": {
+      "value": "m3rb5g"
+    },
+    "poolForScheduleDelete": {
+      "value": "e6yisp"
+    },
+    "poolForScheduleDelete2": {
+      "value": "7aoeu1"
     }
   }
 }

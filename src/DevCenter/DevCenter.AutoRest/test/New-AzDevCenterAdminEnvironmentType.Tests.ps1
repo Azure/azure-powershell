@@ -26,7 +26,7 @@ Describe 'New-AzDevCenterAdminEnvironmentType' {
 
     }
 
-    It 'Create' -skip {
+    It 'Create' {
         $tags = @{"dev" ="test"}
         $body = @{"Tag" = $tags}
 

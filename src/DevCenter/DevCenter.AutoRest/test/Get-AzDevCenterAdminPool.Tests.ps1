@@ -25,6 +25,12 @@ Describe 'Get-AzDevCenterAdminPool' {
         $pool = Get-AzDevCenterAdminPool -ResourceGroupName $env.resourceGroup -Name $env.poolName -ProjectName $env.projectName
 
         $pool.Name | Should -Be $env.poolName
+        $pool.DevBoxDefinitionName | Should -Be $env.devBoxDefinitionName
+        $pool.LocalAdministrator | Should -Be "Enabled"
+        $pool.NetworkConnectionName | Should -Be $env.networkConnectionName
+        $pool.StopOnDisconnectGracePeriodMinute | Should -Be 60
+        $pool.StopOnDisconnectStatus | Should -Be "Enabled"
+        $pool.LicenseType | Should -Be "Windows_Client"
     }
 
     It 'GetViaIdentity' {
@@ -32,5 +38,11 @@ Describe 'Get-AzDevCenterAdminPool' {
         $pool = Get-AzDevCenterAdminPool -InputObject $pool
 
         $pool.Name | Should -Be $env.poolName
+        $pool.DevBoxDefinitionName | Should -Be $env.devBoxDefinitionName
+        $pool.LocalAdministrator | Should -Be "Enabled"
+        $pool.NetworkConnectionName | Should -Be $env.networkConnectionName
+        $pool.StopOnDisconnectGracePeriodMinute | Should -Be 60
+        $pool.StopOnDisconnectStatus | Should -Be "Enabled"
+        $pool.LicenseType | Should -Be "Windows_Client"
     }
 }

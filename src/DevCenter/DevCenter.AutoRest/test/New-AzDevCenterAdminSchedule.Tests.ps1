@@ -14,7 +14,7 @@ if (($null -eq $TestName) -or ($TestName -contains 'New-AzDevCenterAdminSchedule
 }
 
 Describe 'New-AzDevCenterAdminSchedule' {
-    It 'CreateExpanded' -skip {
+    It 'CreateExpanded' {
         $schedule = New-AzDevCenterAdminSchedule -PoolName $env.poolForScheduleNew -ProjectName $env.projectName -ResourceGroupName $env.resourceGroup -State "Enabled" -Time $env.time -TimeZone $env.timeZone
         $schedule.Frequency | Should -Be "Daily"
         $schedule.Name | Should -Be "default"
@@ -24,7 +24,7 @@ Describe 'New-AzDevCenterAdminSchedule' {
         $schedule.TimeZone | Should -Be "America/Los_Angeles"
     }
 
-    It 'Create' -skip {
+    It 'Create' {
         $body = @{"State" = "Enabled"; "Time" = $env.time; "TimeZone" = $env.timeZone }
         $schedule = New-AzDevCenterAdminSchedule -PoolName $env.poolForScheduleNew2 -ProjectName $env.projectName -ResourceGroupName $env.resourceGroup -Body $body
         $schedule.Frequency | Should -Be "Daily"
