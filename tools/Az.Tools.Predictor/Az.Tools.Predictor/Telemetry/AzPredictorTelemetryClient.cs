@@ -41,7 +41,10 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
         /// </remarks>
         internal const int MaxPropertyValueSizeWithBuffer = MaxAppInsightPropertyValueSize - 100;
 
-        private const char _StringValueConcatenator = '|';
+        /// <summary>
+        /// The value used to concatenate the string together.
+        /// </summary>
+        internal const char _StringValueConcatenator = '\n';
 
         /// <inheritdoc/>
         public string RequestId { get; set; } = Guid.NewGuid().ToString();
