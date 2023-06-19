@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ResourceManager.dll-Help.xml
 Module Name: Az.Resources
-online version: https://learn.microsoft.com/powershell/module/az.resources/Export-AzManagementGroupDeploymentStackTemplate
+online version: https://learn.microsoft.com/powershell/module/az.resources/Save-AzManagementGroupDeploymentStackTemplate
 schema: 2.0.0
 ---
 
-# Export-AzManagementGroupDeploymentStackTemplate
+# Save-AzManagementGroupDeploymentStackTemplate
 
 ## SYNOPSIS
 Exports a Management Group scoped Deployment Stack Template.
@@ -14,13 +14,13 @@ Exports a Management Group scoped Deployment Stack Template.
 
 ### ExportByNameAndManagmentGroupId (Default)
 ```
-Export-AzManagementGroupDeploymentStackTemplate [-StackName] <String> [-ManagementGroupId] <String> [-Pre]
+Save-AzManagementGroupDeploymentStackTemplate [-StackName] <String> [-ManagementGroupId] <String> [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ExportByResourceId
 ```
-Export-AzManagementGroupDeploymentStackTemplate -ResourceId <String> [-Pre]
+Save-AzManagementGroupDeploymentStackTemplate -ResourceId <String> [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -31,7 +31,7 @@ Exports a template (or template link) for a management group scoped deployment s
 
 ### Example 1: Export the template used for the deployment stack named MyManagementGroup at MyManagementGroup management group
 ```powershell
-Export-AzManagementGroupDeploymentStackTemplate -ManagementGroupId MyManagementGroup -StackName MyMGStack
+Save-AzManagementGroupDeploymentStackTemplate -ManagementGroupId MyManagementGroup -StackName MyMGStack
 ```
 
 Export a template (or template link) from a stack named 'MyMGStack' under an MG named 'MyManagementGroup'.

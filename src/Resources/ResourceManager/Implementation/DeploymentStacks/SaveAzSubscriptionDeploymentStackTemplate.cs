@@ -14,44 +14,37 @@
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
+
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
-    using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
     using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
     using System;
     using System.Management.Automation;
 
-    [Cmdlet("Export", Common.AzureRMConstants.AzureRMPrefix + "ResourceGroupDeploymentStackTemplate",
-        DefaultParameterSetName = ExportByNameAndResourceGroupNameParameterSetName), OutputType(typeof(PSDeploymentStackTemplateDefinition))]
+    [Cmdlet("Save", Common.AzureRMConstants.AzureRMPrefix + "SubscriptionDeploymentStackTemplate",
+        DefaultParameterSetName = ExportByNameParameterSetName), OutputType(typeof(PSDeploymentStackTemplateDefinition))]
     [CmdletPreview("The cmdlet is in preview and under development.")]
-    public class ExportAzResourceGroupDeploymentStackTemplate : DeploymentStacksCmdletBase
+    public class SaveAzSubscriptionDeploymentStackTemplate : DeploymentStacksCmdletBase
     {
         #region Cmdlet Parameters and Parameter Set Definitions
-
+        
         internal const string ExportByResourceIdParameterSetName = "ExportByResourceId";
-        internal const string ExportByNameAndResourceGroupNameParameterSetName = "ExportByNameAndResourceGroupName";
+        internal const string ExportByNameParameterSetName = "ExportByName";
 
         [Alias("Id")]
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ExportByResourceIdParameterSetName,
-             HelpMessage = "ResourceId of the DeploymentStack to get")]
+            HelpMessage = "ResourceId of the DeploymentStack to get")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
-        [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ExportByNameAndResourceGroupNameParameterSetName,
-             HelpMessage = "The name of the ResourceGroup where the DeploymentStack is deployed")]
-        [ResourceGroupCompleter]
-        [ValidateNotNullOrEmpty]
-        public string ResourceGroupName { get; set; }
-
-        [Parameter(Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ExportByNameAndResourceGroupNameParameterSetName,
-             HelpMessage = "The name of the DeploymentStack to get")]
+        [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ExportByNameParameterSetName,
+            HelpMessage = "The name of the DeploymentStack to get")]
         [ValidateNotNullOrEmpty]
         public string StackName { get; set; }
 
         #endregion
 
         #region Cmdlet Overrides
-
         protected override void OnProcessRecord()
         {
             try
@@ -59,17 +52,16 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 switch (ParameterSetName)
                 {
                     case ExportByResourceIdParameterSetName:
-                        ResourceGroupName = ResourceIdUtility.GetResourceGroupName(ResourceId);
                         StackName = ResourceIdUtility.GetDeploymentName(ResourceId);
-                        if (ResourceGroupName == null || StackName == null)
+                        if (StackName == null)
                         {
-                            throw new PSArgumentException($"Provided Id '{ResourceId}' is not in correct form. Should be in form " + 
-                                "/subscriptions/<subid>/resourceGroups/<rgname>/providers/Microsoft.Resources/deploymentStacks/<stackname>");
+                            throw new PSArgumentException($"Provided Id '{ResourceId}' is not in correct form. Should be in form " +
+                                "/subscriptions/<subid>/providers/Microsoft.Resources/deploymentStacks/<stackname>");
                         }
-                        WriteObject(DeploymentStacksSdkClient.ExportResourceGroupDeploymentStack(ResourceGroupName, StackName), true);
+                        WriteObject(DeploymentStacksSdkClient.ExportSubscriptionDeploymentStack(StackName), true);
                         break;
-                    case ExportByNameAndResourceGroupNameParameterSetName:
-                        WriteObject(DeploymentStacksSdkClient.ExportResourceGroupDeploymentStack(ResourceGroupName, StackName), true);
+                    case ExportByNameParameterSetName:
+                        WriteObject(DeploymentStacksSdkClient.ExportSubscriptionDeploymentStack(StackName), true);
                         break;
                     default:
                         throw new PSInvalidOperationException();

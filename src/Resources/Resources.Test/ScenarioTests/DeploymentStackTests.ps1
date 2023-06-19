@@ -385,9 +385,9 @@ function Test-NewAndSetResourceGroupDeploymentStackWithBicep
 
  <#
  .SYNOPSIS
- Tests NEW, SET and EXPORT operations on deploymentStacks at the RG scope using template specs.
+ Tests NEW, SET and SAVE operations on deploymentStacks at the RG scope using template specs.
  #>
- function Test-NewAndSetAndExportResourceGroupDeploymentStackWithTemplateSpec
+ function Test-NewAndSetAndSaveResourceGroupDeploymentStackWithTemplateSpec
  {
  	# Setup
  	$rgname = Get-ResourceGroupName
@@ -413,8 +413,8 @@ function Test-NewAndSetResourceGroupDeploymentStackWithBicep
  		$id = $deployment.id
  		Assert-AreEqual "succeeded" $deployment.ProvisioningState
 
-		# Test - Export-AzResourceGroupDeploymentStack checking for template link
-		$template = Export-AzResourceGroupDeploymentStackTemplate -StackName $stackname -ResourceGroupName $rgname
+		# Test - Save-AzResourceGroupDeploymentStack checking for template link
+		$template = Save-AzResourceGroupDeploymentStackTemplate -StackName $stackname -ResourceGroupName $rgname
 		Assert-NotNull $template
 		Assert-NotNull $template.TemplateLink
 		Assert-Null $template.Template
@@ -502,9 +502,9 @@ function Test-RemoveResourceGroupDeploymentStack
 
 <#
 .SYNOPSIS
-Tests EXPORT operation on deployment stack templates at RG scope.
+Tests SAVE operation on deployment stack templates at RG scope.
 #>
-function Test-ExportResourceGroupDeploymentStackTemplate
+function Test-SaveResourceGroupDeploymentStackTemplate
 {
 	# Setup
 	$rgname = Get-ResourceGroupName
@@ -519,30 +519,30 @@ function Test-ExportResourceGroupDeploymentStackTemplate
 		$deployment = New-AzResourceGroupDeploymentStack -Name $rname -ResourceGroupName $rgname -TemplateFile StacksRGTemplate.json -TemplateParameterFile StacksRGTemplateParams.json -DenySettingsMode None -Force
 		$resourceId = "/subscriptions/$subId/resourcegroups/$rgname/providers/Microsoft.Resources/deploymentStacks/$rname"
 
-		# --- ExportByResourceIdParameterSetName ---
+		# --- SaveByResourceIdParameterSetName ---
 		$badId = "a/bad/id"
 		$exceptionMessage = "Provided Id '$badId' is not in correct form. Should be in form /subscriptions/<subid>/resourceGroups/<rgname>/providers/Microsoft.Resources/deploymentStacks/<stackname>"
-		Assert-Throws { Export-AzResourceGroupDeploymentStackTemplate -Id $badId } $exceptionMessage
+		Assert-Throws { Save-AzResourceGroupDeploymentStackTemplate -Id $badId } $exceptionMessage
 
 		# Test - Success
-		$deployment = Export-AzResourceGroupDeploymentStackTemplate -Id $resourceId
+		$deployment = Save-AzResourceGroupDeploymentStackTemplate -Id $resourceId
 		Assert-NotNull $deployment
 		Assert-NotNull $deployment.Template
 
-		# --- ExportByNameAndResourceGroupName ---
+		# --- SaveByNameAndResourceGroupName ---
 
 		# Test - Failure - Resource Group NotFound
 		$badResourceGroupName = "badrg1928273615"
 		$exceptionMessage = "DeploymentStack '$rname' in Resource Group '$badResourceGroupName' not found."
-		Assert-Throws { Export-AzResourceGroupDeploymentStackTemplate -StackName $rname -ResourceGroupName $badResourceGroupName } $exceptionMessage
+		Assert-Throws { Save-AzResourceGroupDeploymentStackTemplate -StackName $rname -ResourceGroupName $badResourceGroupName } $exceptionMessage
 		
 		# Test - Failure - Stack NotFound
 		$badStackName = "badStack1928273615"
 		$exceptionMessage = "DeploymentStack '$badStackName' in Resource Group '$rgname' not found."
-		Assert-Throws { Export-AzResourceGroupDeploymentStackTemplate -StackName $badStackName -ResourceGroupName $rgname } $exceptionMessage
+		Assert-Throws { Save-AzResourceGroupDeploymentStackTemplate -StackName $badStackName -ResourceGroupName $rgname } $exceptionMessage
 
 		# Test - Success
-		$deployment = Export-AzResourceGroupDeploymentStackTemplate -StackName $rname -ResourceGroupName $rgname
+		$deployment = Save-AzResourceGroupDeploymentStackTemplate -StackName $rname -ResourceGroupName $rgname
 		Assert-NotNull $deployment
 		Assert-NotNull $deployment.Template 
 	}
@@ -883,9 +883,9 @@ function Test-NewAndSetSubscriptionDeploymentStackWithBicep
 
  <#
  .SYNOPSIS
- Tests NEW, SET, and EXPORT operations on deploymentStacks at the Sub scope using template specs.
+ Tests NEW, SET, and SAVE operations on deploymentStacks at the Sub scope using template specs.
  #>
- function Test-NewAndSetAndExportSubscriptionDeploymentStackWithTemplateSpec
+ function Test-NewAndSetAndSaveSubscriptionDeploymentStackWithTemplateSpec
  {
  	# Setup
  	$rgname = Get-ResourceGroupName
@@ -912,8 +912,8 @@ function Test-NewAndSetSubscriptionDeploymentStackWithBicep
  		$id = $deployment.id
  		Assert-AreEqual "succeeded" $deployment.ProvisioningState
 
-		# Test - Export-AzSubscriptionDeploymentStack checking for template link
-		$template = Export-AzSubscriptionDeploymentStackTemplate -StackName $stackname
+		# Test - Save-AzSubscriptionDeploymentStack checking for template link
+		$template = Save-AzSubscriptionDeploymentStackTemplate -StackName $stackname
 		Assert-NotNull $template
 		Assert-NotNull $template.TemplateLink
 		Assert-Null $template.Template
@@ -990,9 +990,9 @@ function Test-RemoveSubscriptionDeploymentStack
 
 <#
 .SYNOPSIS
-Tests EXPORT operation on deploymentStacks.
+Tests SAVE operation on deploymentStacks.
 #>
-function Test-ExportSubscriptionDeploymentStackTemplate
+function Test-SaveSubscriptionDeploymentStackTemplate
 {
 	# Setup
 	$rname = Get-ResourceName
@@ -1006,25 +1006,25 @@ function Test-ExportSubscriptionDeploymentStackTemplate
 		$resourceId = "/subscriptions/$subId/providers/Microsoft.Resources/deploymentStacks/$rname"
 		Assert-AreEqual "succeeded" $deployment.ProvisioningState
 
-		# --- ExportByResourceIdParameterSetName ---
+		# --- SaveByResourceIdParameterSetName ---
 		$badId = "a/bad/id"
 		$exceptionMessage = "Provided Id '$badId' is not in correct form. Should be in form /subscriptions/<subid>/providers/Microsoft.Resources/deploymentStacks/<stackname>"
-		Assert-Throws { Export-AzSubscriptionDeploymentStackTemplate -Id $badId } $exceptionMessage
+		Assert-Throws { Save-AzSubscriptionDeploymentStackTemplate -Id $badId } $exceptionMessage
 
 		# Test - Success
-		$deployment = Export-AzSubscriptionDeploymentStackTemplate -Id $resourceId
+		$deployment = Save-AzSubscriptionDeploymentStackTemplate -Id $resourceId
 		Assert-NotNull $deployment
 		Assert-NotNull $deployment.Template
 
-		# --- ExportByNameParameterSetName ---
+		# --- SaveByNameParameterSetName ---
 		
 		# Test - Failure - Stack NotFound
 		$badStackName = "badStack1928273615"
 		$exceptionMessage = "DeploymentStack '$badStackName' in active subscription not found."
-		Assert-Throws { Export-AzSubscriptionDeploymentStackTemplate -StackName $badStackName } $exceptionMessage
+		Assert-Throws { Save-AzSubscriptionDeploymentStackTemplate -StackName $badStackName } $exceptionMessage
 
 		# Test - Success
-		$deployment = Export-AzSubscriptionDeploymentStackTemplate -StackName $rname
+		$deployment = Save-AzSubscriptionDeploymentStackTemplate -StackName $rname
 		Assert-NotNull $deployment
 		Assert-NotNull $deployment.Template 
 	}
@@ -1372,9 +1372,9 @@ function Test-NewAndSetManagementGroupDeploymentStackWithBicep
 
  <#
  .SYNOPSIS
- Tests NEW, SET and EXPORT operations on deploymentStacks at the RG scope using template specs.
+ Tests NEW, SET and SAVE operations on deploymentStacks at the RG scope using template specs.
  #>
- function Test-NewAndSetAndExportManagementGroupDeploymentStackWithTemplateSpec
+ function Test-NewAndSetAndSaveManagementGroupDeploymentStackWithTemplateSpec
  {
  	# Setup
  	$mgid = "AzBlueprintAssignTest"
@@ -1402,8 +1402,8 @@ function Test-NewAndSetManagementGroupDeploymentStackWithBicep
  		$id = $deployment.id
  		Assert-AreEqual "succeeded" $deployment.ProvisioningState
 
-		# Test - Export-AzManagementGroupDeploymentStack checking for template link
-		$template = Export-AzManagementGroupDeploymentStackTemplate -StackName $stackname -ManagementGroupId $mgid
+		# Test - Save-AzManagementGroupDeploymentStack checking for template link
+		$template = Save-AzManagementGroupDeploymentStackTemplate -StackName $stackname -ManagementGroupId $mgid
 		Assert-NotNull $template
 		Assert-NotNull $template.TemplateLink
 		Assert-Null $template.Template
@@ -1482,9 +1482,9 @@ function Test-RemoveManagementGroupDeploymentStack
 
 <#
 .SYNOPSIS
-Tests EXPORT operation on deployment stack templates at RG scope.
+Tests SAVE operation on deployment stack templates at RG scope.
 #>
-function Test-ExportManagementGroupDeploymentStackTemplate
+function Test-SaveManagementGroupDeploymentStackTemplate
 {
 	# Setup
 	$mgid = "AzBlueprintAssignTest"
@@ -1498,25 +1498,25 @@ function Test-ExportManagementGroupDeploymentStackTemplate
 		$deployment = New-AzManagementGroupDeploymentStack -Name $rname -ManagementGroupId $mgid -DeploymentSubscriptionId $subId -TemplateFile StacksMGTemplate.json -TemplateParameterFile StacksMGTemplateParams.json -Location $location -DenySettingsMode None -Force
 		$resourceId = "/providers/Microsoft.Management/managementGroups/$mgid/providers/Microsoft.Resources/deploymentStacks/$rname"
 
-		# --- ExportByResourceIdParameterSetName ---
+		# --- SaveByResourceIdParameterSetName ---
 		$badId = "a/bad/id"
 		$exceptionMessage = "Provided Id '$badId' is not in correct form. Should be in form /providers/Microsoft.Management/managementGroups/<managementgroupid>/providers/Microsoft.Resources/deploymentStacks/<stackname>"
-		Assert-Throws { Export-AzManagementGroupDeploymentStackTemplate -Id $badId } $exceptionMessage
+		Assert-Throws { Save-AzManagementGroupDeploymentStackTemplate -Id $badId } $exceptionMessage
 
 		# Test - Success
-		$deployment = Export-AzManagementGroupDeploymentStackTemplate -Id $resourceId
+		$deployment = Save-AzManagementGroupDeploymentStackTemplate -Id $resourceId
 		Assert-NotNull $deployment
 		Assert-NotNull $deployment.Template
 
-		# --- ExportByNameAndManagementGroupId ---
+		# --- SaveByNameAndManagementGroupId ---
 		
 		# Test - Failure - Stack NotFound
 		$badStackName = "badStack1928273615"
 		$exceptionMessage = "DeploymentStack '$badStackName' in Management Group '$mgid' not found."
-		Assert-Throws { Export-AzManagementGroupDeploymentStackTemplate -StackName $badStackName -ManagementGroupId $mgid } $exceptionMessage
+		Assert-Throws { Save-AzManagementGroupDeploymentStackTemplate -StackName $badStackName -ManagementGroupId $mgid } $exceptionMessage
 
 		# Test - Success
-		$deployment = Export-AzManagementGroupDeploymentStackTemplate -StackName $rname -ManagementGroupId $mgid
+		$deployment = Save-AzManagementGroupDeploymentStackTemplate -StackName $rname -ManagementGroupId $mgid
 		Assert-NotNull $deployment
 		Assert-NotNull $deployment.Template 
 	}

@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ResourceManager.dll-Help.xml
 Module Name: Az.Resources
-online version: https://learn.microsoft.com/powershell/module/az.resources/Export-AzResourceGroupDeploymentStackTemplate
+online version: https://learn.microsoft.com/powershell/module/az.resources/Save-AzResourceGroupDeploymentStackTemplate
 schema: 2.0.0
 ---
 
-# Export-AzResourceGroupDeploymentStackTemplate
+# Save-AzResourceGroupDeploymentStackTemplate
 
 ## SYNOPSIS
 Exports a Resource Group scoped Deployment Stack Template.
@@ -14,13 +14,13 @@ Exports a Resource Group scoped Deployment Stack Template.
 
 ### ExportByNameAndResourceGroupName (Default)
 ```
-Export-AzResourceGroupDeploymentStackTemplate [-ResourceGroupName] <String> [-StackName] <String> [-Pre]
+Save-AzResourceGroupDeploymentStackTemplate [-ResourceGroupName] <String> [-StackName] <String> [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ExportByResourceId
 ```
-Export-AzResourceGroupDeploymentStackTemplate -ResourceId <String> [-Pre]
+Save-AzResourceGroupDeploymentStackTemplate -ResourceId <String> [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -31,7 +31,7 @@ Exports a template (or template link) for a resource group scoped deployment sta
 
 ### Example 1: Exports the template used for the deployment stack MyRGStack in the resource group MyResourceGroup
 ```powershell
-Export-AzResourceGroupDeploymentStackTemplate -ResourceGroupName MyResourceGroup -StackName MyRGStack
+Save-AzResourceGroupDeploymentStackTemplate -ResourceGroupName MyResourceGroup -StackName MyRGStack
 ```
 
 Export a template from a stack named 'MyRGStack' under an RG named 'MyResourceGroup'.

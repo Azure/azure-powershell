@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ResourceManager.dll-Help.xml
 Module Name: Az.Resources
-online version: https://learn.microsoft.com/powershell/module/az.resources/Export-AzSubscriptionDeploymentStackTemplate
+online version: https://learn.microsoft.com/powershell/module/az.resources/Save-AzSubscriptionDeploymentStackTemplate
 schema: 2.0.0
 ---
 
-# Export-AzSubscriptionDeploymentStackTemplate
+# Save-AzSubscriptionDeploymentStackTemplate
 
 ## SYNOPSIS
 Exports a Subscription scoped Deployment Stack Template.
@@ -14,13 +14,13 @@ Exports a Subscription scoped Deployment Stack Template.
 
 ### ExportByName (Default)
 ```
-Export-AzSubscriptionDeploymentStackTemplate [-StackName] <String> [-Pre]
+Save-AzSubscriptionDeploymentStackTemplate [-StackName] <String> [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ExportByResourceId
 ```
-Export-AzSubscriptionDeploymentStackTemplate -ResourceId <String> [-Pre]
+Save-AzSubscriptionDeploymentStackTemplate -ResourceId <String> [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -31,7 +31,7 @@ Exports a template (or template link) for a subscription scoped deployment stack
 
 ### Example 1: Exports the template used for the deployment stack MySubStack at the current subscription
 ```powershell
-Export-AzSubscriptionDeploymentStackTemplate -StackName MySubStack
+Save-AzSubscriptionDeploymentStackTemplate -StackName MySubStack
 ```
 
 Export a template (or template link) for a stack named 'MySubStack' under the default subscription.

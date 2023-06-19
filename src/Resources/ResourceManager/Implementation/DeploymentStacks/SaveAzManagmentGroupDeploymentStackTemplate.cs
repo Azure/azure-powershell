@@ -21,10 +21,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     using System;
     using System.Management.Automation;
 
-    [Cmdlet("Export", Common.AzureRMConstants.AzureRMPrefix + "ManagementGroupDeploymentStackTemplate",
+    [Cmdlet("Save", Common.AzureRMConstants.AzureRMPrefix + "ManagementGroupDeploymentStackTemplate",
         DefaultParameterSetName = ExportByNameAndManagementGroupIdParameterSetName), OutputType(typeof(PSDeploymentStackTemplateDefinition))]
     [CmdletPreview("The cmdlet is in preview and under development.")]
-    public class ExportAzManagementGroupDeploymentStackTemplate : DeploymentStacksCmdletBase
+    public class SaveAzManagementGroupDeploymentStackTemplate : DeploymentStacksCmdletBase
     {
         #region Cmdlet Parameters and Parameter Set Definitions
 

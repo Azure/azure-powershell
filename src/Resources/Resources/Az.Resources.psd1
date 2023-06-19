@@ -196,8 +196,8 @@ CmdletsToExport = 'Get-AzProviderOperation', 'Remove-AzRoleAssignment',
                'New-AzSubscriptionDeploymentStack', 'Remove-AzResourceGroupDeploymentStack',
                'Remove-AzSubscriptionDeploymentStack','Set-AzResourceGroupDeploymentStack',
                'Set-AzSubscriptionDeploymentStack', 'Get-AzSubscriptionDeploymentStack',
-               'Export-AzResourceGroupDeploymentStackTemplate', 'Export-AzSubscriptionDeploymentStackTemplate',
-               'Export-AzManagementGroupDeploymentStackTemplate', 'Set-AzManagementGroupDeploymentStack',
+               'Save-AzResourceGroupDeploymentStackTemplate', 'Save-AzSubscriptionDeploymentStackTemplate',
+               'Save-AzManagementGroupDeploymentStackTemplate', 'Set-AzManagementGroupDeploymentStack',
                'New-AzManagementGroupDeploymentStack', 'Remove-AzManagementGroupDeploymentStack', 'Get-AzManagementGroupDeploymentStack'
 # Variables to export from this module
 VariablesToExport = '*'

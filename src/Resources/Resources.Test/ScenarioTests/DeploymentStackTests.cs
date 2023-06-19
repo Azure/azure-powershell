@@ -68,9 +68,9 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 
         [Fact()]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestNewAndSetAndExportResourceGroupDeploymentStackWithTemplateSpec()
+        public void TestNewAndSetAndSaveResourceGroupDeploymentStackWithTemplateSpec()
         {
-            TestRunner.RunTestScript("Test-NewAndSetAndExportResourceGroupDeploymentStackWithTemplateSpec");
+            TestRunner.RunTestScript("Test-NewAndSetAndSaveResourceGroupDeploymentStackWithTemplateSpec");
         }
 
         [Fact()]
@@ -82,9 +82,9 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 
         [Fact()]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestExportResourceGroupDeploymentStackTemplate()
+        public void TestSaveResourceGroupDeploymentStackTemplate()
         {
-            TestRunner.RunTestScript("Test-ExportResourceGroupDeploymentStackTemplate");
+            TestRunner.RunTestScript("Test-SaveResourceGroupDeploymentStackTemplate");
         }
 
         [Fact()]
@@ -138,9 +138,9 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 
         [Fact()]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestNewAndSetAndExportSubscriptionDeploymentStackWithTemplateSpec()
+        public void TestNewAndSetAndSaveSubscriptionDeploymentStackWithTemplateSpec()
         {
-            TestRunner.RunTestScript("Test-NewAndSetAndExportSubscriptionDeploymentStackWithTemplateSpec");
+            TestRunner.RunTestScript("Test-NewAndSetAndSaveSubscriptionDeploymentStackWithTemplateSpec");
         }
 
         [Fact()]
@@ -152,9 +152,9 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 
         [Fact()]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestExportSubscriptionDeploymentStackTemplate()
+        public void TestSaveSubscriptionDeploymentStackTemplate()
         {
-            TestRunner.RunTestScript("Test-ExportSubscriptionDeploymentStackTemplate");
+            TestRunner.RunTestScript("Test-SaveSubscriptionDeploymentStackTemplate");
         }
 
         [Fact()]
@@ -208,9 +208,9 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 
         [Fact()]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestNewAndSetAndExportManagementGroupDeploymentStackWithTemplateSpec()
+        public void TestNewAndSetAndSaveManagementGroupDeploymentStackWithTemplateSpec()
         {
-            TestRunner.RunTestScript("Test-NewAndSetAndExportManagementGroupDeploymentStackWithTemplateSpec");
+            TestRunner.RunTestScript("Test-NewAndSetAndSaveManagementGroupDeploymentStackWithTemplateSpec");
         }
 
         [Fact()]
@@ -222,9 +222,9 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 
         [Fact()]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestExportManagementGroupDeploymentStackTemplate()
+        public void TestSaveManagementGroupDeploymentStackTemplate()
         {
-            TestRunner.RunTestScript("Test-ExportManagementGroupDeploymentStackTemplate");
+            TestRunner.RunTestScript("Test-SaveManagementGroupDeploymentStackTemplate");
         }
 
         [Fact()]
