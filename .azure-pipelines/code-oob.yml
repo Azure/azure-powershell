@@ -24,7 +24,7 @@ stages:
       inputs:
         command: custom
         custom: msbuild
-        arguments: 'build.proj /t:Clean;Build /p:Configuration=Release'
+        arguments: 'build.proj "/t:Clean;Build" /p:Configuration=Release'
     - task: UseDotNet@2
       inputs:
         version: '3.1.x'
@@ -38,7 +38,7 @@ stages:
           azurePowerShellVersion: 'LatestVersion'
           inline: |
               Set-AzContext -Tenant $(TenantId) -SubscriptionId $(SubscriptionId)
-              $Token = Get-AzKeyVaultSecret -VaultName azurepsdev -Name azpsbot-github-pat -AsPlainText
+              $Token = Get-AzKeyVaultSecret -VaultName $(KeyVaultName) -Name $(KeyVaultAccount) -AsPlainText
               git config user.email "65331932+azure-powershell-bot@users.noreply.github.com"
               git config user.name "azure-powershell-bot"
               git checkout -b codeoob/${{ parameters.ServiceName }}
