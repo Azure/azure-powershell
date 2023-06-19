@@ -41,6 +41,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
         /// </remarks>
         internal const int MaxPropertyValueSizeWithBuffer = MaxAppInsightPropertyValueSize - 100;
 
+        private const char _StringValueConcatenator = '|';
+
         /// <inheritdoc/>
         public string RequestId { get; set; } = Guid.NewGuid().ToString();
 
@@ -258,7 +260,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
                 properties.Add(RequestPredictionTelemetryData.PropertyNameValidCommandCount, aggregatedData.PredictorSummary.ValidCommandCount.ToString(CultureInfo.InvariantCulture));
                 if (aggregatedData.PredictorSummary.Errors?.Any() == true)
                 {
-                    properties.Add(RequestPredictionTelemetryData.PropertyNameCommandLineParsingError, string.Join('|', aggregatedData.PredictorSummary.Errors));
+                    properties.Add(RequestPredictionTelemetryData.PropertyNameCommandLineParsingError, string.Join(_StringValueConcatenator, aggregatedData.PredictorSummary.Errors));
                 }
             }
 
