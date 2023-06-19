@@ -315,7 +315,7 @@ namespace Microsoft.Azure.Commands.Network
 
                 if(this.RouteServerId != null)
                 {
-                    throw new ArgumentException("The Route Server is not supported on AZFW Hub SKU Firewalls");
+                    throw new ArgumentException("The Route Server is not supported on AZFW_Hub SKU Firewalls");
                 }
 
                 firewall = new PSAzureFirewall()
