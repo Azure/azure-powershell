@@ -25,9 +25,6 @@ stages:
         command: custom
         custom: msbuild
         arguments: 'build.proj "/t:Clean;Build" /p:Configuration=Release'
-    - task: UseDotNet@2
-      inputs:
-        version: '3.1.x'
     - pwsh: |
           .\tools\RunVersionController.ps1 -ModuleName "Az.${{ parameters.ServiceName }}”
       displayName: 'Bump up version'
