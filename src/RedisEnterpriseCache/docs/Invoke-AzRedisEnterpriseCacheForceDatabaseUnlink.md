@@ -15,15 +15,15 @@ Forcibly removes the link to the specified database resource.
 ### ForceExpanded (Default)
 ```
 Invoke-AzRedisEnterpriseCacheForceDatabaseUnlink -ClusterName <String> -ResourceGroupName <String>
- -Id <String[]> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ -Id <String[]> [-DatabaseName <String>] [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Force
 ```
 Invoke-AzRedisEnterpriseCacheForceDatabaseUnlink -ClusterName <String> -ResourceGroupName <String>
- -Parameter <IForceUnlinkParameters> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -Parameter <IForceUnlinkParameters> [-DatabaseName <String>] [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ForceViaIdentity
@@ -79,6 +79,21 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DatabaseName
+The name of the database.
+
+```yaml
+Type: System.String
+Parameter Sets: Force, ForceExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: "default"
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -149,7 +164,7 @@ Parameters for a Redis Enterprise Active Geo Replication Force Unlink operation.
 To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api202201.IForceUnlinkParameters
+Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20230301Preview.IForceUnlinkParameters
 Parameter Sets: Force, ForceViaIdentity
 Aliases:
 
@@ -242,7 +257,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api202201.IForceUnlinkParameters
+### Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20230301Preview.IForceUnlinkParameters
 
 ### Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IRedisEnterpriseCacheIdentity
 
@@ -259,17 +274,17 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-`INPUTOBJECT <IRedisEnterpriseCacheIdentity>`: Identity Parameter
+INPUTOBJECT <IRedisEnterpriseCacheIdentity>: Identity Parameter
   - `[ClusterName <String>]`: The name of the RedisEnterprise cluster.
   - `[DatabaseName <String>]`: The name of the database.
   - `[Id <String>]`: Resource identity path
-  - `[Location <String>]`: The region the operation is in.
-  - `[OperationId <String>]`: The operation's unique identifier.
+  - `[Location <String>]`: The name of Azure region.
+  - `[OperationId <String>]`: The ID of an ongoing async operation.
   - `[PrivateEndpointConnectionName <String>]`: The name of the private endpoint connection associated with the Azure resource
   - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
   - `[SubscriptionId <String>]`: The ID of the target subscription.
 
-`PARAMETER <IForceUnlinkParameters>`: Parameters for a Redis Enterprise Active Geo Replication Force Unlink operation.
+PARAMETER <IForceUnlinkParameters>: Parameters for a Redis Enterprise Active Geo Replication Force Unlink operation.
   - `Id <String[]>`: The resource IDs of the database resources to be unlinked.
 
 ## RELATED LINKS

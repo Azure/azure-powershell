@@ -22,35 +22,35 @@ Describe 'Remove-AzWvdScalingPlan' {
         try {
             $scalingPlan = New-AzWvdScalingPlan `
                 -SubscriptionId $env.SubscriptionId `
-                -ResourceGroupName $resourceGroup `
+                -ResourceGroupName $env.ResourceGroup `
                 -Name 'ScalingPlanPowershellContained1' `
-                -Location $resourceLocation `
+                -Location $env.Location `
                 -Description 'desc' `
                 -FriendlyName 'fri' `
                 -HostPoolType 'Pooled' `
-                -TimeZone '(UTC-08:00) Pacific Time (US & Canada)' `
+                -TimeZone 'Pacific Standard Time' `
                 -Schedule @() `
                 -HostPoolReference @()
 
             $scalingPlan.Name | Should -Be 'ScalingPlanPowershellContained1'
-            $scalingPlan.Location | Should -Be $resourceLocation
+            $scalingPlan.Location | Should -Be $env.Location
 
             $scalingPlan = Remove-AzWvdScalingPlan `
                 -SubscriptionId $env.SubscriptionId `
-                -ResourceGroupName $resourceGroup `
+                -ResourceGroupName $env.ResourceGroup `
                 -Name 'ScalingPlanPowershellContained1'
 
             {
                 Get-AzWvdScalingPlan `
                     -SubscriptionId $env.SubscriptionId `
-                    -ResourceGroupName $resourceGroup `
+                    -ResourceGroupName $env.ResourceGroup `
                     -Name 'ScalingPlanPowershellContained1'
             } | Should -Throw
         }
         finally {
             $scalingPlan = Remove-AzWvdScalingPlan `
                 -SubscriptionId $env.SubscriptionId `
-                -ResourceGroupName $resourceGroup `
+                -ResourceGroupName $env.ResourceGroup `
                 -Name 'ScalingPlanPowershellContained1'
         }
     }

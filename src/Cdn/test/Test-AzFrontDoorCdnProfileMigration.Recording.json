@@ -1,0 +1,39 @@
+{
+  "Test-AzFrontDoorCdnProfileMigration+[NoContext]+CanExpanded+$POST+https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-1p9h/providers/Microsoft.Cdn/canMigrate?api-version=2022-11-01-preview+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-1p9h/providers/Microsoft.Cdn/canMigrate?api-version=2022-11-01-preview",
+      "Content": "{\r\n  \"classicResourceReference\": {\r\n    \"id\": \"/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourcegroups/testps-rg-1p9h/providers/Microsoft.Network/Frontdoors/fdp-3atp0k\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "187" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1184" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "49fb824d-1b66-465e-924d-315c20cef38a" ],
+        "x-ms-client-request-id": [ "f9d62393-35ed-41d6-8840-bf511127391d" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-correlation-request-id": [ "6dde87a0-a1a4-4f9c-a50c-de7843437cd3" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230428T045337Z:6dde87a0-a1a4-4f9c-a50c-de7843437cd3" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 28 Apr 2023 04:53:37 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "70" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"canMigrate\":true,\"defaultSku\":\"Standard_AzureFrontDoor\",\"errors\":[]}",
+      "isContentBase64": false
+    }
+  }
+}

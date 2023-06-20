@@ -48,6 +48,22 @@ domain001 testps-rg-da16jm
 
 Update an AzureFrontDoor customdomain under the profile
 
+### Example 2: Update an AzureFrontDoor customdomain under the profile via identity
+```powershell
+$secret =  Get-AzFrontDoorCdnSecret -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -Name secret001
+$secretResoure = New-AzFrontDoorCdnResourceReferenceObject -Id $secret.Id
+$updateTlsSetting = New-AzFrontDoorCdnCustomDomainTlsSettingParametersObject -CertificateType "CustomerCertificate" -MinimumTlsVersion "TLS10" -Secret $secretResoure
+Get-AzFrontDoorCdnCustomDomain -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -CustomDomainName domain001 | Update-AzFrontDoorCdnCustomDomain -TlsSetting $updateSetting
+```
+
+```output
+Name      ResourceGroupName
+----      -----------------
+domain001 testps-rg-da16jm
+```
+
+Update an AzureFrontDoor customdomain under the profile via identity
+
 ## PARAMETERS
 
 ### -AsJob
@@ -96,7 +112,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -207,7 +224,7 @@ If not specified, enabling ssl uses AzureFrontDoor managed certificate by defaul
 To construct, see NOTES section for TLSSETTING properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IAfdDomainHttpsParameters
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IAfdDomainHttpsParameters
 Parameter Sets: (All)
 Aliases:
 
@@ -258,7 +275,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IAfdDomain
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IAfdDomain
 
 ## NOTES
 
@@ -275,7 +292,7 @@ To create the parameters described below, construct a hash table containing the 
   - `[Id <String>]`: Resource identity path
   - `[OriginGroupName <String>]`: Name of the origin group which is unique within the endpoint.
   - `[OriginName <String>]`: Name of the origin which is unique within the profile.
-  - `[ProfileName <String>]`: Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
+  - `[ProfileName <String>]`: Name of the Azure Front Door Standard or Azure Front Door Premium profile which is unique within the resource group.
   - `[ResourceGroupName <String>]`: Name of the Resource group within the Azure subscription.
   - `[RouteName <String>]`: Name of the routing rule.
   - `[RuleName <String>]`: Name of the delivery rule which is unique within the endpoint.

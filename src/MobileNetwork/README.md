@@ -58,6 +58,7 @@ identity-correction-for-post: true
 nested-object-to-string: true
 
 directive:
+  # Change interopSettings type from <IAny> to <HashTable>
   - from: swagger-document 
     where: $.definitions.PacketCoreControlPlanePropertiesFormat.properties.interopSettings
     transform: >-
@@ -67,6 +68,7 @@ directive:
         "description": "Settings to allow interoperability with third party components e.g. RANs and UEs."
       }
 
+  # Remove parameters from swagger file
   - from: swagger-document 
     where: $.definitions
     transform: delete $.CoreNetworkTypeRm
@@ -74,6 +76,7 @@ directive:
     where: $.definitions
     transform: delete $.PduSessionTypeRm
 
+  # Replace [`default`] with ['default']
   - from: swagger-document
     where: $
     transform: return $.replace(/\`default\`/g, "'default'")
@@ -94,6 +97,7 @@ directive:
   - where:
       verb: Set
     remove: true
+
   - where:
       subject: ^AttachedDataNetworkTag$
     set:
@@ -138,11 +142,13 @@ directive:
       subject: ^Slouse$
     set:
       subject: Slice
+
   - where:
       parameter-name: DefaultSlouseId
     set:
       parameter-name: DefaultSliceId
 
+  # Due to business requirements, the logic of some commands is customized and they need to be hidden
   - where:
       verb: Update
       subject: ^AttachedDataNetwork$|^DataNetwork$|^PacketCoreControlPlane$|^PacketCoreDataPlane$|^Service$|^SimGroup$|^SimPolicy$|^Slice$
@@ -152,63 +158,40 @@ directive:
       verb: Update
       subject: ^AttachedDataNetwork$|^DataNetwork$|^PacketCoreControlPlane$|^PacketCoreDataPlane$|^Service$|^SimGroup$|^SimPolicy$|^Slice$
     hide: true
+  - where:
+      verb: New
+      subject: ^Site$
+    hide: true
 
-  # - where:
-  #     verb: Invoke
-  #     subject: ^BulkSimDelete$
-  #   set:
-  #     verb: Remove
+  # Due to business needs, some commands are deleted and not exposed to the public
   - where:
       verb: Invoke
       subject: ^BulkSimDelete$
     remove: true
-  # - where:
-  #     verb: Invoke
-  #     subject: ^BulkSimUpload$
-  #   set:
-  #     verb: Update
   - where:
       verb: Invoke
       subject: ^BulkSimUpload$
     remove: true
-  # - where:
-  #     verb: Invoke
-  #     subject: ^BulkSimUploadEncrypted$
-  #   set:
-  #     verb: Update
   - where:
       verb: Invoke
       subject: ^BulkSimUploadEncrypted$
     remove: true
-  # - where:
-  #     verb: Invoke
-  #     subject: ^CollectPacketCoreControlPlaneDiagnosticPackage$
-  #   set:
-  #     verb: Update
   - where:
       verb: Invoke
       subject: ^CollectPacketCoreControlPlaneDiagnosticPackage$
     remove: true
-  # - where:
-  #     verb: Invoke
-  #     subject: ^ReinstallPacketCoreControlPlane$
-  #   set:
-  #     verb: Reset
   - where:
       verb: Invoke
       subject: ^ReinstallPacketCoreControlPlane$
     remove: true
-  # - where:
-  #     verb: Invoke
-  #     subject: ^RollbackPacketCoreControlPlane$
-  #   set:
-  #     verb: Revoke
   - where:
       verb: Invoke
       subject: ^RollbackPacketCoreControlPlane$
     remove: true
 
+  # Some of the parameters are of type Object and need to be expanded into a command for the convenience of the user
   # The following are commented out and their generated cmdlets may be renamed and custom logic
+  # Do not delete this code
   # - model-cmdlet:
   #     - SliceConfiguration  # SlouseId -> SliceId
   #     - DataNetworkConfiguration

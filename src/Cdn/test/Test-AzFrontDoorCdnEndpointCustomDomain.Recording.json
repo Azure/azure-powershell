@@ -1,0 +1,39 @@
+{
+  "Test-AzFrontDoorCdnEndpointCustomDomain+[NoContext]+ValidateExpanded+$POST+https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-1p9h/providers/Microsoft.Cdn/profiles/fdp-htr41c/afdEndpoints/end-so3fyz/validateCustomDomain?api-version=2022-11-01-preview+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-1p9h/providers/Microsoft.Cdn/profiles/fdp-htr41c/afdEndpoints/end-so3fyz/validateCustomDomain?api-version=2022-11-01-preview",
+      "Content": "{\r\n  \"hostName\": \"test.dev.cdn.azure.cn\"\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "43" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "8d9b20fc-3355-46d7-9f82-f85fb85f4ad0" ],
+        "x-ms-client-request-id": [ "f33b954f-aac6-42f4-8b95-1cebe3f211c3" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "499" ],
+        "x-ms-correlation-request-id": [ "eb08e7f4-cf0c-4625-b90b-4fc83495e4b5" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230428T045309Z:eb08e7f4-cf0c-4625-b90b-4fc83495e4b5" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 28 Apr 2023 04:53:09 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "159" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"customDomainValidated\":false,\"reason\":\"NotExist\",\"message\":\"Custom domain dose not exist in the profile. Please make sure the domain exsits in the profile.\"}",
+      "isContentBase64": false
+    }
+  }
+}

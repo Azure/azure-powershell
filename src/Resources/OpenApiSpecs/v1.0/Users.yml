@@ -381,6 +381,8 @@ paths:
                       $ref: '#/components/schemas/microsoft.graph.user'
                   '@odata.nextLink':
                     type: string
+                  '@odata.count':
+                    type: integer
                 additionalProperties:
                   type: object
         default:

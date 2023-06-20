@@ -72,7 +72,7 @@ if ($PSCmdlet.ParameterSetName -eq "Markdown") {
     }
     foreach ($_ in Get-ChildItem $MarkdownPath -Recurse:$Recurse) {
         # Filter the .md of overview in "\help\"
-        if ((Get-Item -Path $_.FullName).Directory.Name -eq "help" -and $_.FullName -cmatch ".*\.md" -and $_.BaseName -cmatch "^[A-Z][a-z]+-([A-Z][a-z0-9]*)+$") {
+        if (((Get-Item -Path $_.FullName).Directory.Name -eq "help" -or (Get-Item -Path $_.FullName).Directory.Name -eq "docs") -and $_.FullName -cmatch ".*\.md" -and $_.BaseName -cmatch "^[A-Z][a-z]+-([A-Z][a-z0-9]*)+$") {
             if ((Get-Item -Path $_.FullName).Directory.Parent.Name -eq "netcoreapp3.1") {
                 continue
             }

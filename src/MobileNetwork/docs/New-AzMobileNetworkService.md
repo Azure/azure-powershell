@@ -65,7 +65,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -368,7 +369,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-PCCRULE <IPccRuleConfiguration[]>: The set of data flow policy rules that make up this service.
+`PCCRULE <IPccRuleConfiguration[]>`: The set of data flow policy rules that make up this service.
   - `RuleName <String>`: The name of the rule. This must be unique within the parent service. You must not use any of the following reserved strings - 'default', 'requested' or 'service'.
   - `RulePrecedence <Int32>`: A precedence value that is used to decide between data flow policy rules when identifying the QoS values to use for a particular SIM. A lower value means a higher priority. This value should be unique among all data flow policy rules configured in the mobile network.
   - `ServiceDataFlowTemplate <IServiceDataFlowTemplate[]>`: The set of data flow templates to use for this data flow policy rule.

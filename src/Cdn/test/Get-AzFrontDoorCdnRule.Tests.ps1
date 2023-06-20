@@ -14,116 +14,41 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzFrontDoorCdnRule'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Get-AzFrontDoorCdnRule' -Tag 'LiveOnly' {
-    It 'List' {
-        $ResourceGroupName = 'testps-rg-' + (RandomString -allChars $false -len 6)
-        try
-        {
-            Write-Host -ForegroundColor Green "Create test group $($ResourceGroupName)"
-            New-AzResourceGroup -Name $ResourceGroupName -Location $env.location
-            $frontDoorCdnProfileName = 'fdp-' + (RandomString -allChars $false -len 6);
-            Write-Host -ForegroundColor Green "Use frontDoorCdnProfileName : $($frontDoorCdnProfileName)"
-            $profileSku = "Standard_AzureFrontDoor";
-            New-AzFrontDoorCdnProfile -SkuName $profileSku -Name $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName -Location Global
-            $rulesetName = 'rs' + (RandomString -allChars $false -len 6);
-            Write-Host -ForegroundColor Green "Use rulesetName : $($rulesetName)"
-            New-AzFrontDoorCdnRuleSet -ProfileName $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName -Name $rulesetName
-            $uriConditon = New-AzFrontDoorCdnRuleRequestUriConditionObject -Name "RequestUri" -ParameterOperator "Any"
-            $conditions = @(
-                $uriConditon
-            );
-            $overrideAction = New-AzFrontDoorCdnRuleRouteConfigurationOverrideActionObject -Name "RouteConfigurationOverride" `
-            -CacheConfigurationQueryStringCachingBehavior "IgnoreSpecifiedQueryStrings" `
-            -CacheConfigurationQueryParameter "a=test" `
-            -CacheConfigurationIsCompressionEnabled "Enabled" `
-            -CacheConfigurationCacheBehavior "HonorOrigin"
-            $actions = @($overrideAction);
-            
-            $ruleName = 'r' + (RandomString -allChars $false -len 6);
-            Write-Host -ForegroundColor Green "Use ruleName : $($ruleName)"
-            New-AzFrontDoorCdnRule -ProfileName $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName -RuleSetName $rulesetName -Name $ruleName `
-            -Action $actions -Condition $conditions
+Describe 'Get-AzFrontDoorCdnRule'  {
+    BeforeAll {
+        $rulesetName = 'rs' + (RandomString -allChars $false -len 6);
+        Write-Host -ForegroundColor Green "Use rulesetName : $($rulesetName)"
+        New-AzFrontDoorCdnRuleSet -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Name $rulesetName
+        $uriConditon = New-AzFrontDoorCdnRuleRequestUriConditionObject -Name "RequestUri" -ParameterOperator "Any"
+        $conditions = @(    
+            $uriConditon
+        );
+        $overrideAction = New-AzFrontDoorCdnRuleRouteConfigurationOverrideActionObject -Name "RouteConfigurationOverride" `
+        -CacheConfigurationQueryStringCachingBehavior "IgnoreSpecifiedQueryStrings" `
+        -CacheConfigurationQueryParameter "a=test" `
+        -CacheConfigurationIsCompressionEnabled "Enabled" `
+        -CacheConfigurationCacheBehavior "HonorOrigin"
+        $actions = @($overrideAction);
+        
+        $ruleName = 'r' + (RandomString -allChars $false -len 6);
+        Write-Host -ForegroundColor Green "Use ruleName : $($ruleName)"
+        New-AzFrontDoorCdnRule -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -RuleSetName $rulesetName -Name $ruleName `
+        -Action $actions -Condition $conditions
+    }
 
-            $rules = Get-AzFrontDoorCdnRule -ProfileName $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName -RuleSetName $rulesetName
-            $rules.Count | Should -Be 1
-        } Finally
-        {
-            Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
-        }
+    It 'List' {
+        $rules = Get-AzFrontDoorCdnRule -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -RuleSetName $rulesetName
+        $rules.Count | Should -BeGreaterOrEqual 1
     }
 
     It 'Get' {
-        $ResourceGroupName = 'testps-rg-' + (RandomString -allChars $false -len 6)
-        try
-        {
-            Write-Host -ForegroundColor Green "Create test group $($ResourceGroupName)"
-            New-AzResourceGroup -Name $ResourceGroupName -Location $env.location
-            $frontDoorCdnProfileName = 'fdp-' + (RandomString -allChars $false -len 6);
-            Write-Host -ForegroundColor Green "Use frontDoorCdnProfileName : $($frontDoorCdnProfileName)"
-            $profileSku = "Standard_AzureFrontDoor";
-            New-AzFrontDoorCdnProfile -SkuName $profileSku -Name $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName -Location Global
-            $rulesetName = 'rs' + (RandomString -allChars $false -len 6);
-            Write-Host -ForegroundColor Green "Use rulesetName : $($rulesetName)"
-            New-AzFrontDoorCdnRuleSet -ProfileName $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName -Name $rulesetName
-            $uriConditon = New-AzFrontDoorCdnRuleRequestUriConditionObject -Name "RequestUri" -ParameterOperator "Any"
-            $conditions = @(
-                $uriConditon
-            );
-            $overrideAction = New-AzFrontDoorCdnRuleRouteConfigurationOverrideActionObject -Name "RouteConfigurationOverride" `
-            -CacheConfigurationQueryStringCachingBehavior "IgnoreSpecifiedQueryStrings" `
-            -CacheConfigurationQueryParameter "a=test" `
-            -CacheConfigurationIsCompressionEnabled "Enabled" `
-            -CacheConfigurationCacheBehavior "HonorOrigin"
-            $actions = @($overrideAction);
-            
-            $ruleName = 'r' + (RandomString -allChars $false -len 6);
-            Write-Host -ForegroundColor Green "Use ruleName : $($ruleName)"
-            New-AzFrontDoorCdnRule -ProfileName $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName -RuleSetName $rulesetName -Name $ruleName `
-            -Action $actions -Condition $conditions
-
-            $rule = Get-AzFrontDoorCdnRule -ProfileName $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName -RuleSetName $rulesetName -Name $ruleName
-            $rule.Name | Should -Be $ruleName
-        } Finally
-        {
-            Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
-        }
+        $rule = Get-AzFrontDoorCdnRule -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -RuleSetName $rulesetName -Name $ruleName
+        $rule.Name | Should -Be $ruleName
     }
 
     It 'GetViaIdentity' {
         $PSDefaultParameterValues['Disabled'] = $true
-        $ResourceGroupName = 'testps-rg-' + (RandomString -allChars $false -len 6)
-        try
-        {
-            Write-Host -ForegroundColor Green "Create test group $($ResourceGroupName)"
-            New-AzResourceGroup -Name $ResourceGroupName -Location $env.location
-            $frontDoorCdnProfileName = 'fdp-' + (RandomString -allChars $false -len 6);
-            Write-Host -ForegroundColor Green "Use frontDoorCdnProfileName : $($frontDoorCdnProfileName)"
-            $profileSku = "Standard_AzureFrontDoor";
-            New-AzFrontDoorCdnProfile -SkuName $profileSku -Name $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName -Location Global
-            $rulesetName = 'rs' + (RandomString -allChars $false -len 6);
-            Write-Host -ForegroundColor Green "Use rulesetName : $($rulesetName)"
-            New-AzFrontDoorCdnRuleSet -ProfileName $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName -Name $rulesetName
-            $uriConditon = New-AzFrontDoorCdnRuleRequestUriConditionObject -Name "RequestUri" -ParameterOperator "Any"
-            $conditions = @(
-                $uriConditon
-            );
-            $overrideAction = New-AzFrontDoorCdnRuleRouteConfigurationOverrideActionObject -Name "RouteConfigurationOverride" `
-            -CacheConfigurationQueryStringCachingBehavior "IgnoreSpecifiedQueryStrings" `
-            -CacheConfigurationQueryParameter "a=test" `
-            -CacheConfigurationIsCompressionEnabled "Enabled" `
-            -CacheConfigurationCacheBehavior "HonorOrigin"
-            $actions = @($overrideAction);
-            
-            $ruleName = 'r' + (RandomString -allChars $false -len 6);
-            Write-Host -ForegroundColor Green "Use ruleName : $($ruleName)"
-            New-AzFrontDoorCdnRule -ProfileName $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName -RuleSetName $rulesetName -Name $ruleName `
-            -Action $actions -Condition $conditions
-
-            $rule = Get-AzFrontDoorCdnRule -ProfileName $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName -RuleSetName $rulesetName -Name $ruleName | Get-AzFrontDoorCdnRule
-            $rule.Name | Should -Be $ruleName
-        } Finally
-        {
-            Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
-        }
+        $rule = Get-AzFrontDoorCdnRule -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -RuleSetName $rulesetName -Name $ruleName | Get-AzFrontDoorCdnRule
+        $rule.Name | Should -Be $ruleName   
     }
 }

@@ -11,7 +11,7 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.DataBox.private.dll'
   FormatsToProcess = './Az.DataBox.format.ps1xml'
-  FunctionsToExport = 'Get-AzDataBoxJob', 'Get-AzDataBoxJobCredential', 'New-AzDataBoxContactDetailsObject', 'New-AzDataBoxDiskJobDetailsObject', 'New-AzDataBoxHeavyJobDetailsObject', 'New-AzDataBoxJob', 'New-AzDataBoxJobDetailsObject', 'New-AzDataBoxKeyEncryptionKeyObject', 'New-AzDataBoxManagedDiskDetailsObject', 'New-AzDataBoxShippingAddressObject', 'New-AzDataBoxStorageAccountDetailsObject', 'New-AzDataBoxTransferConfigurationObject', 'Remove-AzDataBoxJob', 'Stop-AzDataBoxJob', 'Update-AzDataBoxJob', '*'
+  FunctionsToExport = 'Get-AzDataBoxJob', 'Get-AzDataBoxJobCredential', 'New-AzDataBoxContactDetailsObject', 'New-AzDataBoxCustomerDiskJobDetailsObject', 'New-AzDataBoxDiskJobDetailsObject', 'New-AzDataBoxHeavyJobDetailsObject', 'New-AzDataBoxJob', 'New-AzDataBoxJobDetailsObject', 'New-AzDataBoxKeyEncryptionKeyObject', 'New-AzDataBoxManagedDiskDetailsObject', 'New-AzDataBoxShippingAddressObject', 'New-AzDataBoxStorageAccountDetailsObject', 'New-AzDataBoxTransferConfigurationObject', 'Remove-AzDataBoxJob', 'Stop-AzDataBoxJob', 'Update-AzDataBoxJob', '*'
   AliasesToExport = '*'
   PrivateData = @{
     PSData = @{
