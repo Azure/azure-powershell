@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital.Support
 {
 
-    /// <summary>Direction (uplink or downlink).</summary>
+    /// <summary>Direction (Uplink or Downlink).</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Support.DirectionTypeConverter))]
     public partial struct Direction :
         System.Management.Automation.IArgumentCompleter
@@ -26,13 +26,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital.Support
         /// </returns>
         public global::System.Collections.Generic.IEnumerable<global::System.Management.Automation.CompletionResult> CompleteArgument(global::System.String commandName, global::System.String parameterName, global::System.String wordToComplete, global::System.Management.Automation.Language.CommandAst commandAst, global::System.Collections.IDictionary fakeBoundParameters)
         {
-            if (global::System.String.IsNullOrEmpty(wordToComplete) || "uplink".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Uplink".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("'uplink'", "uplink", global::System.Management.Automation.CompletionResultType.ParameterValue, "uplink");
+                yield return new global::System.Management.Automation.CompletionResult("'Uplink'", "Uplink", global::System.Management.Automation.CompletionResultType.ParameterValue, "Uplink");
             }
-            if (global::System.String.IsNullOrEmpty(wordToComplete) || "downlink".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Downlink".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("'downlink'", "downlink", global::System.Management.Automation.CompletionResultType.ParameterValue, "downlink");
+                yield return new global::System.Management.Automation.CompletionResult("'Downlink'", "Downlink", global::System.Management.Automation.CompletionResultType.ParameterValue, "Downlink");
             }
         }
     }
