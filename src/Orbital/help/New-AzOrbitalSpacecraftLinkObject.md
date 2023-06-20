@@ -24,13 +24,13 @@ Create an in-memory object for SpacecraftLink.
 
 ### Example 1: Create a SpacecraftLink object for OrbitalSpacecraft.
 ```powershell
-New-AzOrbitalSpacecraftLinkObject -BandwidthMHz 50 -CenterFrequencyMHz 50 -Direction 'uplink' -Name spacecraftlink -Polarization 'LHCP'
+New-AzOrbitalSpacecraftLinkObject -BandwidthMHz 50 -CenterFrequencyMHz 50 -Direction 'Uplink' -Name spacecraftlink -Polarization 'LHCP'
 ```
 
 ```output
 BandwidthMHz CenterFrequencyMHz Direction Name           Polarization
 ------------ ------------------ --------- ----           ------------
-50           50                 uplink    spacecraftlink LHCP
+50           50                 Uplink    spacecraftlink LHCP
 ```
 
 Create a SpacecraftLink object for OrbitalSpacecraft.
@@ -120,7 +120,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.SpacecraftLink
+### Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.SpacecraftLink
 
 ## NOTES
 

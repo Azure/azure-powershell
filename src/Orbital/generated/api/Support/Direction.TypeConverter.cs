@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital.Support
 {
 
-    /// <summary>Direction (uplink or downlink).</summary>
+    /// <summary>Direction (Uplink or Downlink).</summary>
     public partial class DirectionTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

@@ -16,61 +16,29 @@
 
 <#
 .Synopsis
-Gets the specified available ground station.
+Returns list of available ground stations.
 .Description
-Gets the specified available ground station.
+Returns list of available ground stations.
 .Example
 Get-AzOrbitalAvailableGroundStation -Capability 'EarthObservation'
 
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IOrbitalIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.IAvailableGroundStation
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT <IOrbitalIdentity>: Identity Parameter
-  [ContactName <String>]: Contact name.
-  [ContactProfileName <String>]: Contact Profile name.
-  [GroundStationName <String>]: Ground Station name.
-  [Id <String>]: Resource identity path
-  [Location <String>]: The name of Azure region.
-  [OperationId <String>]: The ID of an ongoing async operation.
-  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [SpacecraftName <String>]: Spacecraft ID.
-  [SubscriptionId <String>]: The ID of the target subscription.
+Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.IAvailableGroundStation
 .Link
 https://learn.microsoft.com/powershell/module/az.orbital/get-azorbitalavailablegroundstation
 #>
 function Get-AzOrbitalAvailableGroundStation {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.IAvailableGroundStation])]
-[CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false)]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.IAvailableGroundStation])]
+[CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
-    [Parameter(ParameterSetName='Get', Mandatory)]
-    [Alias('GroundStationName')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Category('Path')]
-    [System.String]
-    # Ground Station name.
-    ${Name},
-
-    [Parameter(ParameterSetName='Get')]
-    [Parameter(ParameterSetName='List')]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String[]]
     # The ID of the target subscription.
     ${SubscriptionId},
 
-    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IOrbitalIdentity]
-    # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-    ${InputObject},
-
-    [Parameter(ParameterSetName='List', Mandatory)]
+    [Parameter(Mandatory)]
     [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Orbital.Support.CapabilityParameter])]
     [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Category('Query')]
     [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Support.CapabilityParameter]
@@ -82,7 +50,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -134,7 +103,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
         }         
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {
@@ -151,11 +120,9 @@ begin {
         }
 
         $mapping = @{
-            Get = 'Az.Orbital.private\Get-AzOrbitalAvailableGroundStation_Get';
-            GetViaIdentity = 'Az.Orbital.private\Get-AzOrbitalAvailableGroundStation_GetViaIdentity';
             List = 'Az.Orbital.private\Get-AzOrbitalAvailableGroundStation_List';
         }
-        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]

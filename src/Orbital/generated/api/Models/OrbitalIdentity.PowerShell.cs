@@ -128,10 +128,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IOrbitalIdentityInternal)this).ContactProfileName = (string) content.GetValueForProperty("ContactProfileName",((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IOrbitalIdentityInternal)this).ContactProfileName, global::System.Convert.ToString);
             }
-            if (content.Contains("GroundStationName"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IOrbitalIdentityInternal)this).GroundStationName = (string) content.GetValueForProperty("GroundStationName",((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IOrbitalIdentityInternal)this).GroundStationName, global::System.Convert.ToString);
-            }
             if (content.Contains("Location"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IOrbitalIdentityInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IOrbitalIdentityInternal)this).Location, global::System.Convert.ToString);
@@ -180,10 +176,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models
             if (content.Contains("ContactProfileName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IOrbitalIdentityInternal)this).ContactProfileName = (string) content.GetValueForProperty("ContactProfileName",((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IOrbitalIdentityInternal)this).ContactProfileName, global::System.Convert.ToString);
-            }
-            if (content.Contains("GroundStationName"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IOrbitalIdentityInternal)this).GroundStationName = (string) content.GetValueForProperty("GroundStationName",((Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IOrbitalIdentityInternal)this).GroundStationName, global::System.Convert.ToString);
             }
             if (content.Contains("Location"))
             {

@@ -45,7 +45,7 @@ Contact Profile Link Channel.
 To construct, see NOTES section for CHANNEL properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.IContactProfileLinkChannel[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.IContactProfileLinkChannel[]
 Parameter Sets: (All)
 Aliases:
 
@@ -139,7 +139,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ContactProfileLink
+### Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.ContactProfileLink
 
 ## NOTES
 
@@ -153,7 +153,7 @@ To create the parameters described below, construct a hash table containing the 
 `CHANNEL <IContactProfileLinkChannel[]>`: Contact Profile Link Channel.
   - `BandwidthMHz <Single>`: Bandwidth in MHz.
   - `CenterFrequencyMHz <Single>`: Center Frequency in MHz.
-  - `EndPointIPAddress <String>`: IP Address.
+  - `EndPointIPAddress <String>`: IP Address (IPv4).
   - `EndPointName <String>`: Name of an end point.
   - `EndPointPort <String>`: TCP port to listen on to receive data.
   - `EndPointProtocol <Protocol>`: Protocol either UDP or TCP.

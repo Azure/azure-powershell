@@ -49,7 +49,7 @@ Get-AzOrbitalSpacecraft
 Name                     Location NoradId TitleLine   ResourceGroupName
 ----                     -------- ------- ---------   -----------------
 azpstest-test-spacecraft westus2  12345   ISS (ZARYA) azpstest-gp
-AQUA   eastus   12345   ISS (ZARYA) azpstest-gp
+AQUA                     eastus   12345   ISS (ZARYA) azpstest-gp
 ```
 
 List the specified spacecraft.
@@ -83,7 +83,8 @@ Get the specified spacecraft in a specified Name.
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -185,7 +186,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ISpacecraft
+### Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.ISpacecraft
 
 ## NOTES
 
@@ -199,7 +200,6 @@ To create the parameters described below, construct a hash table containing the 
 `INPUTOBJECT <IOrbitalIdentity>`: Identity Parameter
   - `[ContactName <String>]`: Contact name.
   - `[ContactProfileName <String>]`: Contact Profile name.
-  - `[GroundStationName <String>]`: Ground Station name.
   - `[Id <String>]`: Resource identity path
   - `[Location <String>]`: The name of Azure region.
   - `[OperationId <String>]`: The ID of an ongoing async operation.
