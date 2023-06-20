@@ -22,7 +22,7 @@ Describe 'Get-AzWvdPrivateLinkResource' {
             -ApplicationGroupReference $null `
             -Description 'des'
 
-            $privateLinkResource = Get-AzWvdPrivateLinkResource -ResourceGroupName $env.ResourceGroupName `
+            $privateLinkResource = Get-AzWvdPrivateLinkResource -ResourceGroupName $env.ResourceGroup `
                                                                 -WorkspaceName $env.Workspace
 
             $privateLinkResource.Name | Should -Match "feed"
@@ -36,7 +36,7 @@ Describe 'Get-AzWvdPrivateLinkResource' {
     }
 
     It 'GetHostPool' {
-        $privateLinkResource = Get-AzWvdPrivateLinkResource -ResourceGroupName $env.ResourceGroupName `
+        $privateLinkResource = Get-AzWvdPrivateLinkResource -ResourceGroupName $env.ResourceGroup `
                                                             -HostPoolName $env.HostPoolPersistent
 
         $privateLinkResource.Name | Should -Match "connection"
