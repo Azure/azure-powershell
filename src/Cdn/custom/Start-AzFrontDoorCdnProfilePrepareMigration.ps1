@@ -15,11 +15,11 @@
 
 <#
 .Synopsis
-Migrate the CDN profile to Azure Frontdoor(Standard/Premium) profile.
-MigrationWebApplicationFirewallMapping should be associated if the front door has WAF policy. MSI Identity should be associated if the frontdoor has Customer Certificates.
+Migrate the classic AFD instance to Azure Front Door(Standard/Premium) profile.
+MigrationWebApplicationFirewallMapping should be associated if the front door has WAF policy. Managed Identity should be associated if the frontdoor has Customer Certificates.
 The change need to be committed after this.
 .Description
-Migrate the CDN profile to Azure Frontdoor(Standard/Premium) profile.
+Migrate the classic AFD instance to Azure Front Door(Standard/Premium) profile.
 The change need to be committed after this.
 .Example
 PS C:\> {{ Add code here }}
@@ -31,7 +31,7 @@ PS C:\> {{ Add code here }}
 {{ Add output here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IMigrateResult
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IMigrateResult
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -46,7 +46,7 @@ https://learn.microsoft.com/powershell/module/az.cdn/start-azfrontdoorcdnprofile
 #>
 function Start-AzFrontDoorCdnProfilePrepareMigration {
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.PreviewMessageAttribute("This cmdlet is using a preview API version and is subject to breaking change in a future release.")]
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IMigrateResult])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IMigrateResult])]
     [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(Mandatory)]
@@ -78,7 +78,7 @@ function Start-AzFrontDoorCdnProfilePrepareMigration {
         [Parameter()]
         [AllowEmptyCollection()]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IMigrationWebApplicationFirewallMapping[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IMigrationWebApplicationFirewallMapping[]]
         # Waf mapping for the migrated profile
         # To construct, see NOTES section for MIGRATIONWEBAPPLICATIONFIREWALLMAPPING properties and create a hash table.
         ${MigrationWebApplicationFirewallMapping},
@@ -301,7 +301,7 @@ function Start-AzFrontDoorCdnProfilePrepareMigration {
             Write-Host("Starting to enable managed identity.")
 
             # Waiting for results of profile created return
-            Start-Sleep(10)
+            Start-Sleep(20)
 
             # 1. Enable MSI: get "principalId" from RP
             $commandArgs = @{ ResourceGroupName = ${ResourceGroupName}; Name = ${ProfileName}; IdentityType = ${IdentityType}; ErrorAction = 'Stop'}
@@ -315,12 +315,17 @@ function Start-AzFrontDoorCdnProfilePrepareMigration {
             $profileIdentity = RetryCommand -Command 'Update-AzFrontDoorCdnProfile' -CommandArgs $commandArgs -RetryTimes 6 -SecondsDelay 20 -SuccessMessage $enableMSISuccessMessage -RetryMessage $enableMSIRetryMessage -ErrorMessage $enableMSIErrorMessage
             $identity = [System.Collections.ArrayList]@()
             foreach ($id in $profileIdentity.IdentityUserAssignedIdentity.Values.PrincipalId) {
-                $identity.Add($id) | Out-Null
+                if ($id) {
+                    $identity.Add($id) | Out-Null
+                }
             }
-            $identity.Add($profileIdentity.IdentityPrincipalId) | Out-Null
-            
+
+            if ($profileIdentity.IdentityPrincipalId){
+                $identity.Add($profileIdentity.IdentityPrincipalId) | Out-Null
+            }
+
             # Waiting for MSI granted access...
-            Start-Sleep(10)
+            Start-Sleep(20)
             Write-Host("Starting to grant managed identity to key vault.")
             foreach ($vault in $allPoliciesWithVault) {
                 foreach ($principal in $identity) {
@@ -337,13 +342,12 @@ function Start-AzFrontDoorCdnProfilePrepareMigration {
 
             Write-Host("Your have successfully granted managed identity to key vault.")
         }
+
+        Write-Host("The change need to be committed after this.")
     }
 }
 
 function ValidateInputType {
-    # if (-not (${SubscriptionId} -is [guid])) {
-    #     throw "The SubscriptionId must be of type [guid]"
-    # }
     $validateResourceIdReg = "^/subscriptions/[A-Fa-f0-9]{8}(?:-[A-Fa-f0-9]{4}){3}-[A-Fa-f0-9]{12}/resourcegroups/(?<resourceGroupName>[^/]+)/providers/microsoft.network/frontdoors/(?<frontDoorName>[^/]+)$"
     if (${ClassicResourceReferenceId} -notmatch $validateResourceIdReg) {
         throw "The format of ClassicResourceReferenceId: '${ClassicResourceReferenceId}', supposed to be like $validateResourceIdReg"

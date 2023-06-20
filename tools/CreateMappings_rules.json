@@ -811,5 +811,9 @@
   {
     "module": "Workloads",
     "alias": "Workloads"
+  },
+  {
+    "alias": "SelfHelp",
+    "module": "SelfHelp"
   }
 ]

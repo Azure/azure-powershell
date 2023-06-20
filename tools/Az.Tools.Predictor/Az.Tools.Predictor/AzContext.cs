@@ -16,12 +16,14 @@ using Microsoft.Azure.PowerShell.Tools.AzPredictor.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Management.Automation;
 using System.Management.Automation.Runspaces;
 using System.Net.NetworkInformation;
 using System.Security.Cryptography;
 using System.Text;
+using System.Text.Json;
 
 namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 {
@@ -32,7 +34,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
     {
         private const string InternalUserSuffix = "@microsoft.com";
         private static readonly Version DefaultVersion = new Version("0.0.0.0");
-        private IPowerShellRuntime _powerShellRuntime;
+        private readonly IPowerShellRuntime _powerShellRuntime;
 
         /// <inheritdoc/>
         public Version AzVersion { get; private set; } = DefaultVersion;
@@ -61,6 +63,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             }
         }
 
+        public string InstallationId => new Lazy<string>(GetAzureCLIInstallationId).Value;
+
         /// <inheritdoc/>
         public string HashUserId { get; private set; } = string.Empty;
 
@@ -75,10 +79,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                     _macAddress = string.Empty;
 
                     var macAddress = GetMACAddress();
-                    if (!string.IsNullOrWhiteSpace(macAddress))
-                    {
-                        _macAddress = GenerateSha256HashString(macAddress)?.Replace("-", string.Empty).ToLowerInvariant();
-                    }
+                    _macAddress = GenerateSha256HashString(macAddress).Replace("-", string.Empty).ToLowerInvariant();
                 }
 
                 return _macAddress;
@@ -129,6 +130,9 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// <inheritdoc/>
         public bool IsInternal { get; private set; }
 
+        /// <inheritdoc/>
+        public string HostEnvironment => new Lazy<string>(() => (Environment.GetEnvironmentVariable("AZUREPS_HOST_ENVIRONMENT") ?? string.Empty).Trim()).Value;
+
         public AzContext(IPowerShellRuntime powerShellRuntime) => _powerShellRuntime
              = powerShellRuntime;
 
@@ -171,11 +175,20 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 
             try
             {
-                var outputs = _powerShellRuntime.ExecuteScript<PSObject>("Get-Module -Name Az -ListAvailable");
+                var outputs = _powerShellRuntime.ExecuteScript<PSObject>("Get-Module -Name Az -ListAvailable").ToList();
 
-                if (!(outputs?.Any() == true))
+                if (outputs?.Any() == true)
                 {
-                    outputs = _powerShellRuntime.ExecuteScript<PSObject>("Get-Module -Name AzPreview -ListAvailable");
+                    var previewOutputs = _powerShellRuntime.ExecuteScript<PSObject>("Get-Module -Name AzPreview -ListAvailable");
+
+                    if (previewOutputs?.Any() == true)
+                    {
+                        outputs.AddRange(previewOutputs);
+                    }
+                }
+                else
+                {
+                    outputs = _powerShellRuntime.ExecuteScript<PSObject>("Get-Module -Name AzPreview -ListAvailable").ToList();
                 }
 
                 if (outputs?.Any() == true)
@@ -196,6 +209,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                     string versionOutput = psObject.Properties["Version"].Value.ToString();
                     int positionOfVersion = versionOutput.IndexOf('-');
                     Version currentAzVersion = (positionOfVersion == -1) ? new Version(versionOutput) : new Version(versionOutput.Substring(0, positionOfVersion));
+                    string currentSuffix = (positionOfVersion == -1 || positionOfVersion == versionOutput.Length - 1) ? "" : versionOutput.Substring(positionOfVersion + 1);
                     if (currentAzVersion > latestAzVersion)
                     {
                         latestAzVersion = currentAzVersion;
@@ -242,8 +256,32 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             return NetworkInterface.GetAllNetworkInterfaces()?
                                     .FirstOrDefault(nic => nic != null &&
                                                            nic.OperationalStatus == OperationalStatus.Up &&
+                                                           ((nic.NetworkInterfaceType == NetworkInterfaceType.Ethernet) ||
+                                                                (nic.NetworkInterfaceType == NetworkInterfaceType.Wireless80211) ||
+                                                                (nic.NetworkInterfaceType == NetworkInterfaceType.GigabitEthernet)) &&
                                                            !string.IsNullOrWhiteSpace(nic.GetPhysicalAddress()?.ToString()))?
                                     .GetPhysicalAddress()?.ToString();
+        }
+
+        private static string GetAzureCLIInstallationId()
+        {
+            // Check if a file exists.
+            if (File.Exists(AzCLIProfileInfo.AzCLIProfileFile))
+            {
+                try
+                {
+                    AzCLIProfileInfo azInfo = JsonSerializer.Deserialize<AzCLIProfileInfo>(File.ReadAllText(AzCLIProfileInfo.AzCLIProfileFile), JsonUtilities.DefaultSerializerOptions);
+                    if (!string.IsNullOrEmpty(azInfo?.installationId))
+                    {
+                        return azInfo.installationId;
+                    }
+                }
+                catch
+                {
+                }
+            }
+
+            return string.Empty;
         }
     }
 }

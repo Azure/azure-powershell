@@ -99,7 +99,7 @@ Set-AzStorageBlobContent -File $filepath -Container "contosouploads" -Properties
 ```
 
 ```output
-   AccountName: storageaccountname, ContainerName: contosouploads
+AccountName: storageaccountname, ContainerName: contosouploads
 
 Name                 BlobType  Length          ContentType                    LastModified         AccessTier SnapshotTime                 IsDeleted  VersionId                     
 ----                 --------  ------          -----------                    ------------         ---------- ------------                 ---------  ---------                     
@@ -415,7 +415,7 @@ Accept wildcard characters: False
 ```
 
 ### -StandardBlobTier
-Block Blob Tier, valid values are Hot/Cool/Archive.
+Block Blob Tier, valid values are Hot/Cool/Archive/Cold.
 See detail in https://learn.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers
 
 ```yaml

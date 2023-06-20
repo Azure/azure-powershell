@@ -24,12 +24,12 @@ $contentPath = @("/movies/amazing.mp4","/pictures/pic1.jpg")
 New-AzCdnLoadParametersObject -ContentPath $contentPath
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.LoadParameters
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.LoadParameters
 .Link
 https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzCdnLoadParametersObject
 #>
 function New-AzCdnLoadParametersObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.LoadParameters])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.LoadParameters])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]

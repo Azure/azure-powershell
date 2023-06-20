@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzCosmosDBAccount
 
 ## SYNOPSIS
-Remove a CosmosDB Account.
+Remove a Cosmos DB Account.
 
 ## SYNTAX
 
@@ -31,7 +31,7 @@ Remove-AzCosmosDBAccount -InputObject <PSDatabaseAccountGetResults> [-AsJob] [-P
 ```
 
 ## DESCRIPTION
-Remove a CosmosDB Account with a given Name in the given ResourceGroup.
+Remove a Cosmos DB Account with a given Name in the given ResourceGroup.
 
 ## EXAMPLES
 

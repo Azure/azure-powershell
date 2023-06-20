@@ -349,7 +349,7 @@
     <value>Could not find object id of service principal : {0}, please make sure you have graph directory.read permission which is required for grant acrpull permission.</value>
   </data>
   <data name="CouldNotFindSpecifiedAcr" xml:space="preserve">
-    <value>Could not find specified Acr '{0}' to attach.</value>
+    <value>Could not find specified Acr '{0}' to attach or detach.</value>
   </data>
   <data name="AgentPoolAlreadyExistsError" xml:space="preserve">
     <value>The node pool already exists. Please use Update-AzAksNodePool for update.</value>

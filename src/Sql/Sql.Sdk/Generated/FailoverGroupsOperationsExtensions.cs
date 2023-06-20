@@ -22,6 +22,48 @@ namespace Microsoft.Azure.Management.Sql
     public static partial class FailoverGroupsOperationsExtensions
     {
             /// <summary>
+            /// Lists the failover groups in a server.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group that contains the resource. You can obtain
+            /// this value from the Azure Resource Manager API or the portal.
+            /// </param>
+            /// <param name='serverName'>
+            /// The name of the server containing the failover group.
+            /// </param>
+            public static IPage<FailoverGroup> ListByServer(this IFailoverGroupsOperations operations, string resourceGroupName, string serverName)
+            {
+                return operations.ListByServerAsync(resourceGroupName, serverName).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Lists the failover groups in a server.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group that contains the resource. You can obtain
+            /// this value from the Azure Resource Manager API or the portal.
+            /// </param>
+            /// <param name='serverName'>
+            /// The name of the server containing the failover group.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IPage<FailoverGroup>> ListByServerAsync(this IFailoverGroupsOperations operations, string resourceGroupName, string serverName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ListByServerWithHttpMessagesAsync(resourceGroupName, serverName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
             /// Gets a failover group.
             /// </summary>
             /// <param name='operations'>
@@ -223,48 +265,6 @@ namespace Microsoft.Azure.Management.Sql
             }
 
             /// <summary>
-            /// Lists the failover groups in a server.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group that contains the resource. You can obtain
-            /// this value from the Azure Resource Manager API or the portal.
-            /// </param>
-            /// <param name='serverName'>
-            /// The name of the server containing the failover group.
-            /// </param>
-            public static IPage<FailoverGroup> ListByServer(this IFailoverGroupsOperations operations, string resourceGroupName, string serverName)
-            {
-                return operations.ListByServerAsync(resourceGroupName, serverName).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Lists the failover groups in a server.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group that contains the resource. You can obtain
-            /// this value from the Azure Resource Manager API or the portal.
-            /// </param>
-            /// <param name='serverName'>
-            /// The name of the server containing the failover group.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<IPage<FailoverGroup>> ListByServerAsync(this IFailoverGroupsOperations operations, string resourceGroupName, string serverName, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.ListByServerWithHttpMessagesAsync(resourceGroupName, serverName, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
             /// Fails over from the current primary server to this server.
             /// </summary>
             /// <param name='operations'>
@@ -357,6 +357,56 @@ namespace Microsoft.Azure.Management.Sql
             public static async Task<FailoverGroup> ForceFailoverAllowDataLossAsync(this IFailoverGroupsOperations operations, string resourceGroupName, string serverName, string failoverGroupName, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ForceFailoverAllowDataLossWithHttpMessagesAsync(resourceGroupName, serverName, failoverGroupName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Fails over from the current primary server to this server. This operation
+            /// tries planned before forced failover but might still result in data loss.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group that contains the resource. You can obtain
+            /// this value from the Azure Resource Manager API or the portal.
+            /// </param>
+            /// <param name='serverName'>
+            /// The name of the server.
+            /// </param>
+            /// <param name='failoverGroupName'>
+            /// The name of the failover group.
+            /// </param>
+            public static FailoverGroup TryPlannedBeforeForcedFailover(this IFailoverGroupsOperations operations, string resourceGroupName, string serverName, string failoverGroupName)
+            {
+                return operations.TryPlannedBeforeForcedFailoverAsync(resourceGroupName, serverName, failoverGroupName).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Fails over from the current primary server to this server. This operation
+            /// tries planned before forced failover but might still result in data loss.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group that contains the resource. You can obtain
+            /// this value from the Azure Resource Manager API or the portal.
+            /// </param>
+            /// <param name='serverName'>
+            /// The name of the server.
+            /// </param>
+            /// <param name='failoverGroupName'>
+            /// The name of the failover group.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<FailoverGroup> TryPlannedBeforeForcedFailoverAsync(this IFailoverGroupsOperations operations, string resourceGroupName, string serverName, string failoverGroupName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.TryPlannedBeforeForcedFailoverWithHttpMessagesAsync(resourceGroupName, serverName, failoverGroupName, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -608,6 +658,56 @@ namespace Microsoft.Azure.Management.Sql
             public static async Task<FailoverGroup> BeginForceFailoverAllowDataLossAsync(this IFailoverGroupsOperations operations, string resourceGroupName, string serverName, string failoverGroupName, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.BeginForceFailoverAllowDataLossWithHttpMessagesAsync(resourceGroupName, serverName, failoverGroupName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Fails over from the current primary server to this server. This operation
+            /// tries planned before forced failover but might still result in data loss.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group that contains the resource. You can obtain
+            /// this value from the Azure Resource Manager API or the portal.
+            /// </param>
+            /// <param name='serverName'>
+            /// The name of the server.
+            /// </param>
+            /// <param name='failoverGroupName'>
+            /// The name of the failover group.
+            /// </param>
+            public static FailoverGroup BeginTryPlannedBeforeForcedFailover(this IFailoverGroupsOperations operations, string resourceGroupName, string serverName, string failoverGroupName)
+            {
+                return operations.BeginTryPlannedBeforeForcedFailoverAsync(resourceGroupName, serverName, failoverGroupName).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Fails over from the current primary server to this server. This operation
+            /// tries planned before forced failover but might still result in data loss.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group that contains the resource. You can obtain
+            /// this value from the Azure Resource Manager API or the portal.
+            /// </param>
+            /// <param name='serverName'>
+            /// The name of the server.
+            /// </param>
+            /// <param name='failoverGroupName'>
+            /// The name of the failover group.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<FailoverGroup> BeginTryPlannedBeforeForcedFailoverAsync(this IFailoverGroupsOperations operations, string resourceGroupName, string serverName, string failoverGroupName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.BeginTryPlannedBeforeForcedFailoverWithHttpMessagesAsync(resourceGroupName, serverName, failoverGroupName, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

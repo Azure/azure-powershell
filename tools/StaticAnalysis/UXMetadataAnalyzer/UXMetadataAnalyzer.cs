@@ -55,7 +55,7 @@ namespace StaticAnalysis.UXMetadataAnalyzer
         {
             Name = "UX Metadata Analyzer";
             UXMetadataIssueReportLoggerName = "UXMetadataIssues.csv";
-            var executingPath = Path.GetDirectoryName(new Uri(Assembly.GetExecutingAssembly().CodeBase).AbsolutePath);
+            var executingPath = Path.GetDirectoryName(new Uri(Assembly.GetExecutingAssembly().Location).AbsolutePath);
             var schemaPath = Path.Combine(executingPath, "UXMetadataAnalyzer", "PortalInputSchema.json");
             var schemaContent = File.ReadAllText(schemaPath);
             schema = JsonSchema.FromJsonAsync(schemaContent).Result;

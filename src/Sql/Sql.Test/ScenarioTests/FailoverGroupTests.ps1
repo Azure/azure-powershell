@@ -402,3 +402,18 @@ function Test-SwitchFailoverGroupAllowDataLoss()
 		Validate-FailoverGroupWithGet $newSecondaryFg
 	}
 }
+
+function Test-SwitchFailoverGroupTryPlannedBeforeForcedFailover()
+{
+	Handle-FailoverGroupTestWithFailoverGroup {
+		Param($fg)
+
+		$foGroup = Get-AzSqlDatabaseFailoverGroup $fg.PartnerResourceGroupName $fg.PartnerServerName $fg.FailoverGroupName
+		$job = $foGroup | Switch-AzSqlDatabaseFailoverGroup -TryPlannedBeforeForcedFailover -AsJob
+		$job | Wait-Job
+
+		$newSecondaryFg = $fg | Get-AzSqlDatabaseFailoverGroup
+		Assert-FailoverGroupsEqual $fg $newSecondaryFg -role "Secondary"
+		Validate-FailoverGroupWithGet $newSecondaryFg
+	}
+}

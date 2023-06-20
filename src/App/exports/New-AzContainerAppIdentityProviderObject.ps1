@@ -32,7 +32,7 @@ To create the parameters described below, construct a hash table containing the 
 CUSTOMOPENIDCONNECTPROVIDER <IIdentityProvidersCustomOpenIdConnectProviders>: The map of the name of the alias of each custom Open ID Connect provider to the         configuration settings of the custom Open ID Connect provider.
   [(Any) <ICustomOpenIdConnectProvider>]: This indicates any property can be added to this object.
 .Link
-https://learn.microsoft.com/powershell/module/az./new-azcontainerappidentityproviderobject
+https://learn.microsoft.com/powershell/module/az.app/new-azcontainerappidentityproviderobject
 #>
 function New-AzContainerAppIdentityProviderObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.IdentityProviders])]
@@ -314,7 +314,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
         }         
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {
