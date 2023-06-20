@@ -176,16 +176,6 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
         }
 
         /// <inheritdoc/>
-        public void OnParseCommandLineFailure(CommandLineParsingTelemetryData telemetryData)
-        {
-            PostTelemetryData(telemetryData);
-
-#if TELEMETRY_TRACE && DEBUG
-            System.Diagnostics.Trace.WriteLine("Recording CommandLineParsing");
-#endif
-        }
-
-        /// <inheritdoc/>
         public virtual void OnGeneralException(GeneralExceptionTelemetryData telemetryData)
         {
             PostTelemetryData(telemetryData);
@@ -228,9 +218,6 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
                     break;
                 case ParameterMapTelemetryData parameterMap:
                     ProcessTelemetryData(parameterMap);
-                    break;
-                case CommandLineParsingTelemetryData commandLineParsing:
-                    ProcessTelemetryData(commandLineParsing);
                     break;
                 case GeneralExceptionTelemetryData exception:
                     ProcessTelemetryData(exception);
@@ -581,22 +568,6 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
             if (telemetryData.Exception != null)
             {
                 SendException("An error occurred when loading parameter map.", telemetryData, telemetryData.Exception);
-            }
-        }
-
-        /// <summary>
-        /// Processes the telemetry with the command line parsing information.
-        /// </summary>
-        private void ProcessTelemetryData(CommandLineParsingTelemetryData telemetryData)
-        {
-            if (telemetryData.Exception != null)
-            {
-                var properties = new Dictionary<string,string>()
-                {
-                    { "Command", telemetryData.Command },
-                };
-
-                SendException("An error occurred when parsing command line.", telemetryData, telemetryData.Exception, properties);
             }
         }
 
