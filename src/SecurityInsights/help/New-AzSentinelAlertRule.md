@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzSentinelAlertRule
 
 ## SYNOPSIS
-Creates or updates the alert rule.
+Creates alert rule.
 
 ## SYNTAX
 
