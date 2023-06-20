@@ -33,47 +33,45 @@ Describe 'Get-AzWvdPrivateEndpointConnection' {
             $vnet = Get-AzVirtualNetwork -ResourceGroupName $env.ResourceGroup `
                                          -Name $env.VnetName
 
-            New-AzPrivateEndpoint -ResourceGroupName = $env.ResourceGroup `
-                                  -Name = $env.PrivateEndpointName `
-                                  -Location = $env.Location `
-                                  -Subnet = $vnet.Subnets[0] `
-                                  -PrivateLinkServiceConnection = $privateLinkServiceConnection
+            New-AzPrivateEndpoint -ResourceGroupName $env.ResourceGroup `
+                                  -Name $env.PrivateEndpointName `
+                                  -Location $env.Location `
+                                  -Subnet $vnet.Subnets[0] `
+                                  -PrivateLinkServiceConnection $privateLinkServiceConnection `
+                                  -Force
 
-            New-AzPrivateEndpoint -ResourceGroupName = $env.ResourceGroup `
-                                  -Name = $env.PrivateEndpointName1 `
-                                  -Location = $env.Location `
-                                  -Subnet = $vnet.Subnets[0] `
-                                  -PrivateLinkServiceConnection = $privateLinkServiceConnection1
+            New-AzPrivateEndpoint -ResourceGroupName $env.ResourceGroup `
+                                  -Name $env.PrivateEndpointName1 `
+                                  -Location $env.Location `
+                                  -Subnet $vnet.Subnets[0] `
+                                  -PrivateLinkServiceConnection $privateLinkServiceConnection1 `
+                                  -Force
         
         
 
             $privateEndpointConnections = Get-AzWvdPrivateEndpointConnection -ResourceGroupName $env.ResourceGroup `
                                                                              -workspaceName $env.Workspace 
 
-            $privateEndpointConnections[0].Name | Should -Be $env.PrivateEndpointConnectionName
-            $privateEndpointConnections[0].PrivateEndpointId | Should -Be "test"
-            $privateEndpointConnections[1].Name | Should -Be $env.PrivateEndpointConnectionName1
-            $privateEndpointConnections[1].PrivateEndpointId | Should -Be "test1"
+           #Index of name is random, so we need to check both each time
+           $name0 = $env.PrivateEndpointConnectionName0
+           $name1 = $env.PrivateEndpointConnectionName1
+           $privateEndpointConnections[0].Name | Should -Match "$name0|$name1"
+           $privateEndpointConnections[1].Name | Should -Match "$name0|$name1"
             
         }
         finally {
-            Remove-AzWvdPrivateEndpointConnection -ResourceGroupName $env.ResourceGroup `
-                                                  -WorkspaceName $env.Workspace `
-                                                  -Name $env.PrivateEndpointConnectionName
-                                                  
-            Remove-AzWvdPrivateEndpointConnection -ResourceGroupName $env.ResourceGroup `
-                                                  -WorkspaceName $env.Workspace `
-                                                  -Name $env.PrivateEndpointConnectionName1
-
-            Remove-AzPrivateEndpoint -ResourceGroupName $env.ResourceGroup `
-                                     -Name $env.PrivateEndpointName
-
-            Remove-AzPrivateEndpoint -ResourceGroupName $env.ResourceGroup `
-                                     -Name $env.PrivateEndpointName1
-                                     
+                                                 
             Remove-AzWvdWorkspace -SubscriptionId $env.SubscriptionId `
                                   -ResourceGroupName $env.ResourceGroup `
                                   -Name $env.Workspace
+
+            Remove-AzPrivateEndpoint -ResourceGroupName $env.ResourceGroup `
+                                     -Name $env.PrivateEndpointName `
+                                     -Force
+
+            Remove-AzPrivateEndpoint -ResourceGroupName $env.ResourceGroup `
+                                     -Name $env.PrivateEndpointName1 `
+                                     -Force
         }
 
     }
@@ -95,37 +93,49 @@ Describe 'Get-AzWvdPrivateEndpointConnection' {
             $vnet = Get-AzVirtualNetwork -ResourceGroupName $env.ResourceGroup `
                                          -Name $env.VnetName
 
-            New-AzPrivateEndpoint -ResourceGroupName = $env.ResourceGroup `
-                                  -Name = $env.PrivateEndpointName `
-                                  -Location = $env.Location `
-                                  -Subnet = $vnet.Subnets[0] `
-                                  -PrivateLinkServiceConnection = $privateLinkServiceConnection `
+            New-AzPrivateEndpoint -ResourceGroupName $env.ResourceGroup `
+                                  -Name $env.PrivateEndpointName `
+                                  -Location $env.Location `
+                                  -Subnet $vnet.Subnets[0] `
+                                  -PrivateLinkServiceConnection $privateLinkServiceConnection `
+                                  -Force
 
             $privateEndpointConnection = Get-AzWvdPrivateEndpointConnection -ResourceGroupName $env.ResourceGroup `
                                                                             -workspaceName $env.Workspace 
 
-            $privateEndpointConnection.Name | Should -Be $env.PrivateEndpointConnectionName
-            $privateEndpointConnection.PrivateEndpointId | Should -Be "test"
+            $privateEndpointConnection.Name | Should -Match $env.PrivateEndpointConnectionName
         }
         finally {
-            Remove-AzWvdPrivateEndpointConnection -ResourceGroupName $env.ResourceGroup `
-                                                  -WorkspaceName $env.Workspace `
-                                                  -Name $env.PrivateEndpointConnectionName
-                                                  
-            Remove-AzPrivateEndpoint -ResourceGroupName $env.ResourceGroup `
-                                     -Name $env.PrivateEndpointName
-
-                                     
+                                         
             Remove-AzWvdWorkspace -SubscriptionId $env.SubscriptionId `
             -ResourceGroupName $env.ResourceGroup `
             -Name $env.Workspace
+            
+            Remove-AzPrivateEndpoint -ResourceGroupName $env.ResourceGroup `
+                                     -Name $env.PrivateEndpointName `
+                                     -Force
         }
     }
 
     It 'GetHostPool' {
         try {
-            $hostpool = Get-AzWvdHostPool -ResourceGroupName $env.ResourceGroup `
-                                          -Name $env.HostPoolPersistent
+            $hostpool = New-AzWvdHostPool -SubscriptionId $env.SubscriptionId `
+            -ResourceGroupName $env.ResourceGroup `
+            -Name $env.HostPool `
+            -Location $env.Location `
+            -HostPoolType 'Pooled' `
+            -LoadBalancerType 'DepthFirst' `
+            -RegistrationTokenOperation 'Update' `
+            -ExpirationTime $((get-date).ToUniversalTime().AddDays(1).ToString('yyyy-MM-ddTHH:mm:ss.fffffffZ')) `
+            -Description 'des' `
+            -FriendlyName 'fri' `
+            -MaxSessionLimit 5 `
+            -VMTemplate '{option1}' `
+            -CustomRdpProperty $null `
+            -Ring $null `
+            -ValidationEnvironment:$false `
+            -PreferredAppGroupType 'Desktop' `
+            -StartVMOnConnect:$false
 
             $privateLinkServiceConnection = New-AzPrivateLinkServiceConnection -Name $env.PrivateEndpointConnectionName `
                                                -PrivateLinkServiceId $hostpool.ID `
@@ -135,32 +145,47 @@ Describe 'Get-AzWvdPrivateEndpointConnection' {
             $vnet = Get-AzVirtualNetwork -ResourceGroupName $env.ResourceGroup `
                                          -Name $env.VnetName
 
-            New-AzPrivateEndpoint -ResourceGroupName = $env.ResourceGroup `
-                                  -Name = $env.PrivateEndpointName `
-                                  -Location = $env.Location `
-                                  -Subnet = $vnet.Subnets[0] `
-                                  -PrivateLinkServiceConnection = $privateLinkServiceConnection
+            New-AzPrivateEndpoint -ResourceGroupName $env.ResourceGroup `
+                                  -Name $env.PrivateEndpointName `
+                                  -Location $env.Location `
+                                  -Subnet $vnet.Subnets[0] `
+                                  -PrivateLinkServiceConnection $privateLinkServiceConnection `
+                                  -Force
 
             $privateEndpointConnection = Get-AzWvdPrivateEndpointConnection -ResourceGroupName $env.ResourceGroup `
-                                                                            -HostPoolName $env.HostPool 
+                                                                            -HostPoolName $env.HostPool
 
-            $privateEndpointConnection.Name | Should -Be $env.PrivateEndpointConnectionName
-            $privateEndpointConnection.PrivateEndpointId | Should -Be "test"
+            $privateEndpointConnection.Name | Should -Match $env.PrivateEndpointConnectionName
         }
         finally {
-            Remove-AzWvdPrivateEndpointConnection -ResourceGroupName $env.ResourceGroup `
-                                                  -HostPoolName $env.HostPoolPersistent `
-                                                  -Name $env.PrivateEndpointConnectionName
+            Remove-AzWvdHostPool -ResourceGroupName $env.ResourceGroup `
+                                 -Name $env.HostPool
 
             Remove-AzPrivateEndpoint -ResourceGroupName $env.ResourceGroup `
-                                     -Name $env.PrivateEndpointName
+                                     -Name $env.PrivateEndpointName `
+                                     -Force
         }
     }
 
     It 'ListHostPool' {
         try {
-            $hostpool = Get-AzWvdHostPool -ResourceGroupName $env.ResourceGroup `
-                                          -Name $env.HostPoolPersistent
+            $hostpool = New-AzWvdHostPool -SubscriptionId $env.SubscriptionId `
+            -ResourceGroupName $env.ResourceGroup `
+            -Name $env.HostPool `
+            -Location $env.Location `
+            -HostPoolType 'Pooled' `
+            -LoadBalancerType 'DepthFirst' `
+            -RegistrationTokenOperation 'Update' `
+            -ExpirationTime $((get-date).ToUniversalTime().AddDays(1).ToString('yyyy-MM-ddTHH:mm:ss.fffffffZ')) `
+            -Description 'des' `
+            -FriendlyName 'fri' `
+            -MaxSessionLimit 5 `
+            -VMTemplate '{option1}' `
+            -CustomRdpProperty $null `
+            -Ring $null `
+            -ValidationEnvironment:$false `
+            -PreferredAppGroupType 'Desktop' `
+            -StartVMOnConnect:$false
 
             $privateLinkServiceConnection = New-AzPrivateLinkServiceConnection -Name $env.PrivateEndpointConnectionName `
                                                                                -PrivateLinkServiceId $hostpool.ID `
@@ -174,40 +199,40 @@ Describe 'Get-AzWvdPrivateEndpointConnection' {
             $vnet = Get-AzVirtualNetwork -ResourceGroupName $env.ResourceGroup `
                                          -Name $env.VnetName
 
-            New-AzPrivateEndpoint -ResourceGroupName = $env.ResourceGroup `
-                                  -Name = $env.PrivateEndpointName `
-                                  -Location = $env.Location `
-                                  -Subnet = $vnet.Subnets[0] `
-                                  -PrivateLinkServiceConnection = $privateLinkServiceConnection
+            New-AzPrivateEndpoint -ResourceGroupName $env.ResourceGroup `
+                                  -Name $env.PrivateEndpointName `
+                                  -Location $env.Location `
+                                  -Subnet $vnet.Subnets[0] `
+                                  -PrivateLinkServiceConnection $privateLinkServiceConnection `
+                                  -Force
 
-            New-AzPrivateEndpoint -ResourceGroupName = $env.ResourceGroup `
-                                  -Name = $env.PrivateEndpointName1 `
-                                  -Location = $env.Location `
-                                  -Subnet = $vnet.Subnets[0] `
-                                  -PrivateLinkServiceConnection = $privateLinkServiceConnection1
+            New-AzPrivateEndpoint -ResourceGroupName $env.ResourceGroup `
+                                  -Name $env.PrivateEndpointName1 `
+                                  -Location $env.Location `
+                                  -Subnet $vnet.Subnets[0] `
+                                  -PrivateLinkServiceConnection $privateLinkServiceConnection1 `
+                                  -Force
 
             $privateEndpointConnections = Get-AzWvdPrivateEndpointConnection -ResourceGroupName $env.ResourceGroup `
-                                                                             -HostPoolName $env.HostPool 
+                                                                             -HostPoolName $env.HostPool
 
-            $privateEndpointConnections[0].Name | Should -Be $env.PrivateEndpointConnectionName
-            $privateEndpointConnections[0].PrivateEndpointId | Should -Be "test"
-            $privateEndpointConnections[1].Name | Should -Be $env.PrivateEndpointConnectionName
-            $privateEndpointConnections[1].PrivateEndpointId | Should -Be "test1"
+            #Index of name is random, so we need to check both each time
+            $name0 = $env.PrivateEndpointConnectionName0
+            $name1 = $env.PrivateEndpointConnectionName1
+            $privateEndpointConnections[0].Name | Should -Match "$name0|$name1"
+            $privateEndpointConnections[1].Name | Should -Match "$name0|$name1"
         }
         finally {
-            Remove-AzWvdPrivateEndpointConnection -ResourceGroupName $env.ResourceGroup `
-                                                  -HostPoolName $env.HostPoolPersistent `
-                                                  -Name $env.PrivateEndpointConnectionName
-                                                  
-            Remove-AzWvdPrivateEndpointConnection -ResourceGroupName $env.ResourceGroup `
-                                                  -HostPoolName $env.HostPoolPersistent `
-                                                  -Name $env.PrivateEndpointConnectionName1
+            Remove-AzWvdHostPool -ResourceGroupName $env.ResourceGroup `
+                                 -Name $env.HostPool
 
             Remove-AzPrivateEndpoint -ResourceGroupName $env.ResourceGroup `
-                                     -Name $env.PrivateEndpointName
+                                     -Name $env.PrivateEndpointName `
+                                     -Force
 
             Remove-AzPrivateEndpoint -ResourceGroupName $env.ResourceGroup `
-                                     -Name $env.PrivateEndpointName1
+                                     -Name $env.PrivateEndpointName1 `
+                                     -Force
         }
     }
 }

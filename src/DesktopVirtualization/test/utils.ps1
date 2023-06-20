@@ -25,7 +25,7 @@ function setupEnv() {
     $null = $env.Add("DesktopApplicationGroup", "ApplicationGroupPowershell1")
     #TODO: Need to make this not local
     $null = $env.Add("MSIXImagePath", "C:\AppAttach\Firefox20110.0.1.vhdx")
-    $null = $env.Add("PrivateEndpointConnectionName", "pwshTestPEC")
+    $null = $env.Add("PrivateEndpointConnectionName", "pwshTestPEC0")
     $null = $env.Add("PrivateEndpointConnectionName1", "pwshTestPEC1")
     $null = $env.Add("PrivateEndpointName", "pwshTestPrivateEndpoint")
     $null = $env.Add("PrivateEndpointName1", "pwshTestPrivateEndpoint1")
