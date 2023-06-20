@@ -22,28 +22,28 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     using System.Management.Automation;
 
     [Cmdlet("Save", Common.AzureRMConstants.AzureRMPrefix + "ResourceGroupDeploymentStackTemplate",
-        DefaultParameterSetName = ExportByNameAndResourceGroupNameParameterSetName), OutputType(typeof(PSDeploymentStackTemplateDefinition))]
+        DefaultParameterSetName = SaveByNameAndResourceGroupNameParameterSetName), OutputType(typeof(PSDeploymentStackTemplateDefinition))]
     [CmdletPreview("The cmdlet is in preview and under development.")]
     public class SaveAzResourceGroupDeploymentStackTemplate : DeploymentStacksCmdletBase
     {
         #region Cmdlet Parameters and Parameter Set Definitions
 
-        internal const string ExportByResourceIdParameterSetName = "ExportByResourceId";
-        internal const string ExportByNameAndResourceGroupNameParameterSetName = "ExportByNameAndResourceGroupName";
+        internal const string SaveByResourceIdParameterSetName = "SaveByResourceId";
+        internal const string SaveByNameAndResourceGroupNameParameterSetName = "SaveByNameAndResourceGroupName";
 
         [Alias("Id")]
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ExportByResourceIdParameterSetName,
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = SaveByResourceIdParameterSetName,
              HelpMessage = "ResourceId of the DeploymentStack to get")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
-        [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ExportByNameAndResourceGroupNameParameterSetName,
+        [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = SaveByNameAndResourceGroupNameParameterSetName,
              HelpMessage = "The name of the ResourceGroup where the DeploymentStack is deployed")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ExportByNameAndResourceGroupNameParameterSetName,
+        [Parameter(Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = SaveByNameAndResourceGroupNameParameterSetName,
              HelpMessage = "The name of the DeploymentStack to get")]
         [ValidateNotNullOrEmpty]
         public string StackName { get; set; }
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             {
                 switch (ParameterSetName)
                 {
-                    case ExportByResourceIdParameterSetName:
+                    case SaveByResourceIdParameterSetName:
                         ResourceGroupName = ResourceIdUtility.GetResourceGroupName(ResourceId);
                         StackName = ResourceIdUtility.GetDeploymentName(ResourceId);
                         if (ResourceGroupName == null || StackName == null)
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                         }
                         WriteObject(DeploymentStacksSdkClient.ExportResourceGroupDeploymentStack(ResourceGroupName, StackName), true);
                         break;
-                    case ExportByNameAndResourceGroupNameParameterSetName:
+                    case SaveByNameAndResourceGroupNameParameterSetName:
                         WriteObject(DeploymentStacksSdkClient.ExportResourceGroupDeploymentStack(ResourceGroupName, StackName), true);
                         break;
                     default:

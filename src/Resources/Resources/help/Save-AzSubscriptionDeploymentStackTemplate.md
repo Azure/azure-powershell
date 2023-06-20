@@ -8,33 +8,33 @@ schema: 2.0.0
 # Save-AzSubscriptionDeploymentStackTemplate
 
 ## SYNOPSIS
-Exports a Subscription scoped Deployment Stack Template.
+Saves a Subscription scoped Deployment Stack Template.
 
 ## SYNTAX
 
-### ExportByName (Default)
+### SaveByName (Default)
 ```
 Save-AzSubscriptionDeploymentStackTemplate [-StackName] <String> [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### ExportByResourceId
+### SaveByResourceId
 ```
 Save-AzSubscriptionDeploymentStackTemplate -ResourceId <String> [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Exports a template (or template link) for a subscription scoped deployment stack.
+Saves a template (or template link) for a subscription scoped deployment stack.
 
 ## EXAMPLES
 
-### Example 1: Exports the template used for the deployment stack MySubStack at the current subscription
+### Example 1: Saves the template used for the deployment stack MySubStack at the current subscription
 ```powershell
 Save-AzSubscriptionDeploymentStackTemplate -StackName MySubStack
 ```
 
-Export a template (or template link) for a stack named 'MySubStack' under the default subscription.
+Save a template (or template link) for a stack named 'MySubStack' under the default subscription.
 
 ## PARAMETERS
 
@@ -73,7 +73,7 @@ ResourceId of the DeploymentStack to get
 
 ```yaml
 Type: System.String
-Parameter Sets: ExportByResourceId
+Parameter Sets: SaveByResourceId
 Aliases: Id
 
 Required: True
@@ -88,7 +88,7 @@ The name of the DeploymentStack to get
 
 ```yaml
 Type: System.String
-Parameter Sets: ExportByName
+Parameter Sets: SaveByName
 Aliases:
 
 Required: True

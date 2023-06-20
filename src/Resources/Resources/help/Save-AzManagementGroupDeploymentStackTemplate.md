@@ -8,33 +8,33 @@ schema: 2.0.0
 # Save-AzManagementGroupDeploymentStackTemplate
 
 ## SYNOPSIS
-Exports a Management Group scoped Deployment Stack Template.
+Saves a Management Group scoped Deployment Stack Template.
 
 ## SYNTAX
 
-### ExportByNameAndManagmentGroupId (Default)
+### SaveByNameAndManagmentGroupId (Default)
 ```
 Save-AzManagementGroupDeploymentStackTemplate [-StackName] <String> [-ManagementGroupId] <String> [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### ExportByResourceId
+### SaveByResourceId
 ```
 Save-AzManagementGroupDeploymentStackTemplate -ResourceId <String> [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Exports a template (or template link) for a management group scoped deployment stack.
+Saves a template (or template link) for a management group scoped deployment stack.
 
 ## EXAMPLES
 
-### Example 1: Export the template used for the deployment stack named MyManagementGroup at MyManagementGroup management group
+### Example 1: Save the template used for the deployment stack named MyManagementGroup at MyManagementGroup management group
 ```powershell
 Save-AzManagementGroupDeploymentStackTemplate -ManagementGroupId MyManagementGroup -StackName MyMGStack
 ```
 
-Export a template (or template link) from a stack named 'MyMGStack' under an MG named 'MyManagementGroup'.
+Save a template (or template link) from a stack named 'MyMGStack' under an MG named 'MyManagementGroup'.
 
 ## PARAMETERS
 
@@ -58,7 +58,7 @@ The id of the ManagementGroup where the DeploymentStack is deployed
 
 ```yaml
 Type: System.String
-Parameter Sets: ExportByNameAndManagmentGroupId
+Parameter Sets: SaveByNameAndManagmentGroupId
 Aliases:
 
 Required: True
@@ -88,7 +88,7 @@ ResourceId of the DeploymentStack to get
 
 ```yaml
 Type: System.String
-Parameter Sets: ExportByResourceId
+Parameter Sets: SaveByResourceId
 Aliases: Id
 
 Required: True
@@ -103,7 +103,7 @@ The name of the DeploymentStack to get
 
 ```yaml
 Type: System.String
-Parameter Sets: ExportByNameAndManagmentGroupId
+Parameter Sets: SaveByNameAndManagmentGroupId
 Aliases:
 
 Required: True

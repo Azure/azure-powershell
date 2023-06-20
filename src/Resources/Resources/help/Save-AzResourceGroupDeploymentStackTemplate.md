@@ -8,33 +8,33 @@ schema: 2.0.0
 # Save-AzResourceGroupDeploymentStackTemplate
 
 ## SYNOPSIS
-Exports a Resource Group scoped Deployment Stack Template.
+Saves a Resource Group scoped Deployment Stack Template.
 
 ## SYNTAX
 
-### ExportByNameAndResourceGroupName (Default)
+### SaveByNameAndResourceGroupName (Default)
 ```
 Save-AzResourceGroupDeploymentStackTemplate [-ResourceGroupName] <String> [-StackName] <String> [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### ExportByResourceId
+### SaveByResourceId
 ```
 Save-AzResourceGroupDeploymentStackTemplate -ResourceId <String> [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Exports a template (or template link) for a resource group scoped deployment stack.
+Saves a template (or template link) for a resource group scoped deployment stack.
 
 ## EXAMPLES
 
-### Example 1: Exports the template used for the deployment stack MyRGStack in the resource group MyResourceGroup
+### Example 1: Saves the template used for the deployment stack MyRGStack in the resource group MyResourceGroup
 ```powershell
 Save-AzResourceGroupDeploymentStackTemplate -ResourceGroupName MyResourceGroup -StackName MyRGStack
 ```
 
-Export a template from a stack named 'MyRGStack' under an RG named 'MyResourceGroup'.
+Save a template from a stack named 'MyRGStack' under an RG named 'MyResourceGroup'.
 
 ## PARAMETERS
 
@@ -73,7 +73,7 @@ The name of the ResourceGroup where the DeploymentStack is deployed
 
 ```yaml
 Type: System.String
-Parameter Sets: ExportByNameAndResourceGroupName
+Parameter Sets: SaveByNameAndResourceGroupName
 Aliases:
 
 Required: True
@@ -88,7 +88,7 @@ ResourceId of the DeploymentStack to get
 
 ```yaml
 Type: System.String
-Parameter Sets: ExportByResourceId
+Parameter Sets: SaveByResourceId
 Aliases: Id
 
 Required: True
@@ -103,7 +103,7 @@ The name of the DeploymentStack to get
 
 ```yaml
 Type: System.String
-Parameter Sets: ExportByNameAndResourceGroupName
+Parameter Sets: SaveByNameAndResourceGroupName
 Aliases:
 
 Required: True

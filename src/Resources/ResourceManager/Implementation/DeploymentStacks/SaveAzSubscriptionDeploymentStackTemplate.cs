@@ -22,22 +22,22 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     using System.Management.Automation;
 
     [Cmdlet("Save", Common.AzureRMConstants.AzureRMPrefix + "SubscriptionDeploymentStackTemplate",
-        DefaultParameterSetName = ExportByNameParameterSetName), OutputType(typeof(PSDeploymentStackTemplateDefinition))]
+        DefaultParameterSetName = SaveByNameParameterSetName), OutputType(typeof(PSDeploymentStackTemplateDefinition))]
     [CmdletPreview("The cmdlet is in preview and under development.")]
     public class SaveAzSubscriptionDeploymentStackTemplate : DeploymentStacksCmdletBase
     {
         #region Cmdlet Parameters and Parameter Set Definitions
         
-        internal const string ExportByResourceIdParameterSetName = "ExportByResourceId";
-        internal const string ExportByNameParameterSetName = "ExportByName";
+        internal const string SaveByResourceIdParameterSetName = "SaveByResourceId";
+        internal const string SaveByNameParameterSetName = "SaveByName";
 
         [Alias("Id")]
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ExportByResourceIdParameterSetName,
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = SaveByResourceIdParameterSetName,
             HelpMessage = "ResourceId of the DeploymentStack to get")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
-        [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ExportByNameParameterSetName,
+        [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = SaveByNameParameterSetName,
             HelpMessage = "The name of the DeploymentStack to get")]
         [ValidateNotNullOrEmpty]
         public string StackName { get; set; }
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             {
                 switch (ParameterSetName)
                 {
-                    case ExportByResourceIdParameterSetName:
+                    case SaveByResourceIdParameterSetName:
                         StackName = ResourceIdUtility.GetDeploymentName(ResourceId);
                         if (StackName == null)
                         {
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                         }
                         WriteObject(DeploymentStacksSdkClient.ExportSubscriptionDeploymentStack(StackName), true);
                         break;
-                    case ExportByNameParameterSetName:
+                    case SaveByNameParameterSetName:
                         WriteObject(DeploymentStacksSdkClient.ExportSubscriptionDeploymentStack(StackName), true);
                         break;
                     default:
