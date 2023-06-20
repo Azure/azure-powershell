@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '2.12.3'
+ModuleVersion = '2.12.399'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -147,7 +147,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Updated System.Security.Permissions to 4.7.0.'
+        ReleaseNotes = '* Fixed the concurrency issue when run Connect-AzAccount.'
 
         # Prerelease string of this module
         # Prerelease = ''
