@@ -66,13 +66,13 @@ namespace Microsoft.Azure.Commands.Tags.Client
 
         public List<PSTag> ListTags()
         {
-            var page = ResourceManagementClient.Tags.List();
-            List<TagDetails> result = new List<TagDetails>();
-            AddOrMergeTags(result, page);
-            while (!string.IsNullOrEmpty(page.NextPageLink))
+            var result = new List<TagDetails>();
+            var pageOfTags = ResourceManagementClient.Tags.List();
+            AddOrMergeTags(result, pageOfTags);
+            while (!string.IsNullOrEmpty(pageOfTags.NextPageLink))
             {
-                page = ResourceManagementClient.Tags.ListNext(page.NextPageLink);
-                AddOrMergeTags(result, page);
+                pageOfTags = ResourceManagementClient.Tags.ListNext(pageOfTags.NextPageLink);
+                AddOrMergeTags(result, pageOfTags);
             }
             return new List<PSTag>(result.Select(t => t.ToPSTag()));
         }
