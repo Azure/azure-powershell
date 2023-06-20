@@ -261,6 +261,44 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Services
             }
         }
 
+        public void MoveManagedDatabase(MoveCopyManagedDatabaseModel model)
+        {
+            Communicator.Move(model.ResourceGroupName, model.InstanceName, model.DatabaseName, model.getTargetManagedDatabaseId(), model.OperationMode);
+        }
+
+        public void CompleteMove(MoveCopyManagedDatabaseModel model)
+        {
+            Communicator.CompleteMoveCopy(model.ResourceGroupName, model.InstanceName, model.DatabaseName, model.getTargetManagedDatabaseId());
+        }
+
+        public void CancelMove(MoveCopyManagedDatabaseModel model)
+        {
+            Communicator.CancelMoveCopy(model.ResourceGroupName, model.InstanceName, model.DatabaseName, model.getTargetManagedDatabaseId());
+        }
+
+        public IList<ManagedDatabaseMoveCopyOperation> ListMoveCopyOperations(MoveCopyManagedDatabaseModel model, bool onlyLatestPerDatabase)
+        {
+            var operations = Communicator.GetMoveOperations(
+                model.ResourceGroupName,
+                model.Location,
+                model.InstanceName,
+                model.DatabaseName,
+                model.TargetInstanceName,
+                model.OperationMode,
+                onlyLatestPerDatabase)
+                .Select(operation => new ManagedDatabaseMoveCopyOperation(operation));
+
+            // OData filter does not support 'has' or 'contains', so we do not have ability use Odata for target RG filtration
+            // Instead filteration is done on the client side
+            if (!string.IsNullOrEmpty(model.TargetResourceGroupName))
+            {
+                return operations
+                    .Where(operation => operation.TargetManagedInstanceId.ToLower().Contains($"resourceGroups/{model.TargetResourceGroupName}/".ToLower()))
+                    .ToList();
+            }
+            return operations.ToList();
+        }
+
         /// <summary>
         /// Converts the response from the service to a powershell managed database object
         /// </summary>
