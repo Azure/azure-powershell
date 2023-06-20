@@ -6,13 +6,13 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital.Support
 {
 
-    /// <summary>Direction (uplink or downlink).</summary>
+    /// <summary>Direction (Uplink or Downlink).</summary>
     public partial struct Direction :
         System.IEquatable<Direction>
     {
-        public static Microsoft.Azure.PowerShell.Cmdlets.Orbital.Support.Direction Downlink = @"downlink";
+        public static Microsoft.Azure.PowerShell.Cmdlets.Orbital.Support.Direction Downlink = @"Downlink";
 
-        public static Microsoft.Azure.PowerShell.Cmdlets.Orbital.Support.Direction Uplink = @"uplink";
+        public static Microsoft.Azure.PowerShell.Cmdlets.Orbital.Support.Direction Uplink = @"Uplink";
 
         /// <summary>the value for an instance of the <see cref="Direction" /> Enum.</summary>
         private string _value { get; set; }
