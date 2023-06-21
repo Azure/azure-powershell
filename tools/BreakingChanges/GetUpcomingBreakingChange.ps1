@@ -43,6 +43,28 @@ Function Test-TypeIsGenericBreakingChangeAttribute
     Return $False
 }
 
+Function Test-TypeIsGenericBreakingChangeWithVersionAttribute
+{
+    [CmdletBinding()]
+    Param(
+        [Parameter()]
+        [System.Reflection.TypeInfo[]]
+        $type
+    )
+    ForEach ($loopType in $type)
+    {
+        While ($loopType.Name -ne "Object")
+        {
+            If ($loopType.Name -eq "GenericBreakingChangeWithVersionAttribute")
+            {
+                Return $True
+            }
+            $loopType = $loopType.BaseType
+        }
+    }
+    Return $False
+}
+
 Function Get-AttributeSpecificMessage
 {
     [CmdletBinding()]
@@ -67,6 +89,7 @@ Function Get-AttributeSpecificMessage
     {
         $Message = "- $Message"
     }
+    $Message += "`n- This change is expected to take effect from version: $($attribute.DeprecateByVersion) and Az version: $($attribute.DeprecateByAzVersion)"
     Return $Message
 }
 
@@ -82,7 +105,7 @@ Function Find-ParameterBreakingChange
 
     ForEach ($attribute In $ParameterInfo.Attributes)
     {
-        If (Test-TypeIsGenericBreakingChangeAttribute $attribute.TypeId)
+        If (Test-TypeIsGenericBreakingChangeWithVersionAttribute $attribute.TypeId)
         {
             Return Get-AttributeSpecIficMessage($attribute)
         }
@@ -105,7 +128,7 @@ Function Find-CmdletBreakingChange
     $customAttributes = $CmdletInfo.ImplementingType.GetTypeInfo().GetCustomAttributes([System.object], $true)
     ForEach ($customAttribute In $customAttributes)
     {
-        If (Test-TypeIsGenericBreakingChangeAttribute $customAttribute.TypeId)
+        If (Test-TypeIsGenericBreakingChangeWithVersionAttribute $customAttribute.TypeId)
         {
             $tmp = Get-AttributeSpecIficMessage($customAttribute)
             If (-not $Result.ContainsKey($AllParameterSetsName))

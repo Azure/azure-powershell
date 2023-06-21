@@ -1,4 +1,4 @@
-﻿//
+//
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -27,7 +27,6 @@ namespace Microsoft.Azure.Commands.Media.ServiceKey
     /// <summary>
     /// List key information for accessing the REST endpoint associated with the media service.
     /// </summary>
-    [GenericBreakingChange("Get-AzMediaServiceKeys alias will be removed in an upcoming breaking change release", "2.0.0")]
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "MediaServiceKey"), OutputType(typeof(PSServiceKeys))]
     [Alias("Get-AzMediaServiceKeys")]
     public class GetAzureRmMediaServiceKeys : AzureMediaServiceCmdletBase
