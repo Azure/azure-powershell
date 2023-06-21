@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Commands.Ssh
             ValidateParameters();
             SetResourceType();
 
-            ProgressRecord record = new ProgressRecord(0, "Export Azure SSH Config", "Initialize Setup");
+            record = new ProgressRecord(0, "Export Azure SSH Config", "Initialize Setup");
             UpdateProgressBar(record, "Preparing to create SSH Config", 0);
 
             if (!IsArc() && !ParameterSetName.Equals(IpAddressParameterSet))

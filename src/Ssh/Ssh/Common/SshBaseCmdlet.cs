@@ -46,6 +46,8 @@ using System.Management.Automation.Runspaces;
 using System.Collections.ObjectModel;
 using Microsoft.Azure.PowerShell.Ssh.Helpers.HybridCompute.Models;
 using Microsoft.Azure.PowerShell.Ssh.Helpers.HybridCompute;
+using static Microsoft.Azure.Commands.Common.Authentication.Abstractions.AzureEnvironment;
+
 
 namespace Microsoft.Azure.Commands.Ssh
 
@@ -60,7 +62,6 @@ namespace Microsoft.Azure.Commands.Ssh
         protected internal const string IpAddressParameterSet = "IpAddress";
 
         private const int RelayInfoExpirationInSec = 3600;
-        private const int ServiceConfigDelayInSec = 10;
         #endregion
 
         #region Fields
@@ -68,6 +69,8 @@ namespace Microsoft.Azure.Commands.Ssh
         protected internal bool deleteCert;
         protected internal string proxyPath;
         protected internal ProgressRecord record;
+        protected internal EndpointAccessResource relayInfo;
+        protected internal bool createdServiceConfig;
 
         protected internal readonly string[] supportedResourceTypes = {
             "Microsoft.HybridCompute/machines",
@@ -509,7 +512,7 @@ namespace Microsoft.Azure.Commands.Ssh
                 $"\"namespaceNameSuffix\": \"{cred.NamespaceNameSuffix}\", " +
                 $"\"hybridConnectionName\": \"{cred.HybridConnectionName}\", " +
                 $"\"accessKey\": \"{cred.AccessKey}\", " +
-                $"\"expiresOn\": {cred.ExpiresOn}" +
+                $"\"expiresOn\": {cred.ExpiresOn}, " +
                 $"\"serviceConfigurationToken\": \"{cred.ServiceConfigurationToken}\"" +
                 "}}";
 
@@ -679,38 +682,24 @@ namespace Microsoft.Azure.Commands.Ssh
 
         protected internal void CheckIfAgentIsUpToDate()
         {
+            // Currently this logic is just for arc servers. Add same logic for private cloud?
             // We don't want any exceptions in this method to cause the execution to fail.
-            if (ResourceGroupName == null && Name == null && ResourceId != null)
-            {
-                ResourceIdentifier parsedId = new ResourceIdentifier(ResourceId);
-                ResourceGroupName = parsedId.ResourceGroupName;
-                Name = parsedId.ResourceName;
-            }
-
-            Machine arcServer = null;
             try
             {
-                arcServer = ArcServerClient.Get(ResourceGroupName, Name);
+                Machine arcServer = ArcServerClient.Get(ResourceGroupName, Name);
+                if (!String.IsNullOrEmpty(arcServer?.AgentVersion))
+                {
+                    Version ArcServerVersion = new Version(arcServer.AgentVersion);
+                    Version MinimumVersion = new Version("1.31.0.0");
+                    if (ArcServerVersion < MinimumVersion)
+                    {
+                        WriteWarning($"The Arc Agent running in the target machine {Name} on Resource Group {ResourceGroupName} is an old version {arcServer.AgentVersion}. Please update to the latest version. For instructions see: https://aka.ms/update-arc-agent.");
+                    }
+                }
             }
             catch (Exception)
             {
                 return;
-            }
-
-            if (!String.IsNullOrEmpty(arcServer?.AgentVersion))
-            {
-                try
-                {
-                    string[] version = arcServer.AgentVersion.Split('.');
-                    if (Int32.Parse(version[0]) < 1 || Int32.Parse(version[1]) < 31)
-                    {
-                        WriteWarning($"The Arc Agent running in the target namchine {Name} on Resource Group {ResourceGroupName} is an old version {arcServer.AgentVersion}. Please update to the latest version. For instructions see: https://aka.ms/update-arc-agent.");
-                    }
-                }
-                catch (Exception)
-                {
-                    return;
-                }
             }
         }
         #endregion
@@ -743,7 +732,13 @@ namespace Microsoft.Azure.Commands.Ssh
                 return true;
             }
 
-            if (result.Port != Int32.Parse(Port))
+            int port = 22;
+            if (Port != null)
+            {
+                port = Int32.Parse(Port);
+            }
+
+            if (result.Port != port)
             {
                 return false;
             }
@@ -758,9 +753,11 @@ namespace Microsoft.Azure.Commands.Ssh
         {
             // If the user doesn't provide a port, they might be trying to connect to port 22 or a different port set on ssh_config.
             string caption = "The port 22 is not allowed for SSH connections in this resource. Would you like to update the current Service Confugration in the endpoint to allow connections to port 22? If you would like to update the Service Configuration to allow connections to a different port, please provide the -Port parameter or manually set up the Service Configuration. For more information see: http://aka.ms/ssharc/allow-ports.";
+            int port = 22;
             if (Port != null)
             {
                 caption = $"The port {Port} that you are trying to connect to is not allowed for SSH connections for this resource. Would you like to update the current Service Confugration in the endpoint to allow connections to port {Port}?";
+                port = Int32.Parse(Port);
             }
 
             Collection<ChoiceDescription> choices = new Collection<ChoiceDescription> { 
@@ -778,23 +775,23 @@ namespace Microsoft.Azure.Commands.Ssh
                 throw new AzPSApplicationException($"SSH connection is not enabled in the target port {Port}. For more information see: http://aka.ms/ssharc/allow-ports");
             }
 
-            ServiceConfigurationResource serviceConfigurationResource = new ServiceConfigurationResource(serviceName: "SSH", port: Int32.Parse(Port));
+            ServiceConfigurationResource serviceConfigurationResource = new ServiceConfigurationResource(serviceName: "SSH", port: port);
             try
             {
                 var result = ServiceConfigurationsClient.CreateOrupdate(ResourceId, "default", "SSH", serviceConfigurationResource);
             }
             catch (PowerShell.Ssh.Helpers.HybridConnectivity.Models.ErrorResponseException exception)
             {
-                // What is the httpcode?
-                if (exception.Body.Error.Code == "AuthorizationFailed")
+                if (exception?.Response?.StatusCode == HttpStatusCode.Forbidden)
                 {
                     throw new AzPSCloudException($"Client is not authorized to create or update Service Configuration in the endpoint for {Name} in the Resource Group {ResourceGroupName}. This is an operation that must be performed by an account with Owner or Contributor role to allow SSH connections to the specified port {Port}. For more information see: https://aka.ms/ssharc/allow-ports.");
                 }
-                throw new AzPSApplicationException($"Failed to create service configuration to allow SSH connections to port {Port} on the endpoint for {Name} in the Resource Group {ResourceGroupName} with error: {exception.Message}");
-            }
 
-            UpdateProgressBar(record, "Service Configuration Setup", 40);
-            Thread.Sleep(ServiceConfigDelayInSec * 1000);
+                if (exception?.Body?.Error?.Code != null && exception?.Body?.Error?.Message != null)
+                    throw new AzPSCloudException($"Failed to create service configuration to allow SSH connections to port {Port} on the endpoint for {Name} in the Resource Group {ResourceGroupName}.\nError Code: {exception.Body.Error.Code}\nError Message: {exception.Body.Error.Message}");
+                throw new AzPSCloudException($"Failed to create service configuration to allow SSH connections to port {Port} on the endpoint for {Name} in the Resource Group {ResourceGroupName}.\n{exception}");
+            }
+            createdServiceConfig = true;
         }
 
         /// <summary>
@@ -811,15 +808,14 @@ namespace Microsoft.Azure.Commands.Ssh
             }
             catch (PowerShell.Ssh.Helpers.HybridConnectivity.Models.ErrorResponseException exception)
             {
-                // what is the httpcode?
-                if (exception.Body.Error.Code == "AuthorizationFailed")
+                if (exception?.Response?.StatusCode == HttpStatusCode.Forbidden)
                 {
-                    throw new AzPSApplicationException($"Client is not authorized to create a Default connectivity endpoint for {Name} in the Resource Group {ResourceGroupName}. This is a one-time operation that must be performed by an account with Owner or Contributor role to allow connections to target resource. For more information see: https://aka.ms/ssharc/create-endpoint.");
+                    throw new AzPSCloudException($"Client is not authorized to create a Default connectivity endpoint for {Name} in the Resource Group {ResourceGroupName}. This is a one-time operation that must be performed by an account with Owner or Contributor role to allow connections to target resource. For more information see: https://aka.ms/ssharc/create-endpoint.");
                 }
-                else
-                {
-                    throw new AzPSApplicationException(String.Format(Resources.FailedToCreateDefaultEndpoint, exception));
-                }
+
+                if (exception?.Body?.Error?.Code != null && exception?.Body?.Error?.Message != null)
+                    throw new AzPSCloudException($"Failed to create default endpoint for the target Arc Server (see: https://aka.ms/ssharc/create-default-endpoint).\nError Code: {exception.Body.Error.Code}\nError Message: {exception.Body.Error.Message}");
+                throw new AzPSCloudException($"Failed to create default endpoint for the target Arc Server (see: https://aka.ms/ssharc/create-default-endpoint)\n{exception}");
             }
         }
 
@@ -838,7 +834,9 @@ namespace Microsoft.Azure.Commands.Ssh
             }
             catch (PowerShell.Ssh.Helpers.HybridConnectivity.Models.ErrorResponseException exception)
             {
-                throw new AzPSApplicationException($"Unable to retrieve Relay Information. Failed with error: {exception.Message}.");
+                if (exception?.Body?.Error?.Code != null && exception?.Body?.Error?.Message != null)
+                    throw new AzPSCloudException($"Unable to retrieve Relay Information.\nError Code: {exception.Body.Error.Code}\nError Message: {exception.Body.Error.Message}");
+                throw new AzPSCloudException($"Unable to retrieve Relay Information.\n{exception}");
             }
 
             return cred;
@@ -875,7 +873,7 @@ namespace Microsoft.Azure.Commands.Ssh
                         continue;
                     }
 
-                    if (!File.Exists(proxyPath))
+                    if (!System.IO.File.Exists(proxyPath))
                     {
                         continue;
                     }
