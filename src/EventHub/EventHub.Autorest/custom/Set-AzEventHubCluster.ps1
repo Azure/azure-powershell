@@ -20,7 +20,7 @@ Sets an EventHub Cluster
 #>
 
 function Set-AzEventHubCluster{
-	[OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.ICluster])]
+	[OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.ICluster])]
     [CmdletBinding(DefaultParameterSetName = 'SetExpanded', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
 	param(
         [Parameter(ParameterSetName = 'SetExpanded', Mandatory, HelpMessage = "The name of the EventHub Dedicated Cluster")]
@@ -56,12 +56,6 @@ function Set-AzEventHubCluster{
         [System.Int32]
         # The quantity of Event Hubs Cluster Capacity Units contained in this cluster.
         ${Capacity},
-
-        [Parameter(HelpMessage = "Resource tags.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api10.ITrackedResourceTags]
-        # Resource tags.
-        ${Tag},
 
         [Parameter(HelpMessage = "The credentials, account, tenant, and subscription used for communication with Azure.")]
         [Alias('AzureRMContext', 'AzureCredential')]
@@ -125,7 +119,6 @@ function Set-AzEventHubCluster{
 	process{
 		try{
             $hasCapacity = $PSBoundParameters.Remove('Capacity')
-            $hasTag = $PSBoundParameters.Remove('Tag')
             $hasAsJob = $PSBoundParameters.Remove('AsJob')
             $null = $PSBoundParameters.Remove('WhatIf')
             $null = $PSBoundParameters.Remove('Confirm')
@@ -142,10 +135,6 @@ function Set-AzEventHubCluster{
 
             if ($hasCapacity) {
                 $cluster.Capacity = $Capacity
-                $hasProperty = $true
-            }
-            if ($hasTag) {
-                $cluster.Tag = $Tag
                 $hasProperty = $true
             }
 

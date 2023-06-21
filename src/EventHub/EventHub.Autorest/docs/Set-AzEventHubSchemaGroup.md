@@ -1,64 +1,51 @@
 ---
 external help file:
 Module Name: Az.EventHub
-online version: https://learn.microsoft.com/powershell/module/az.eventhub/new-azeventhubgeodrconfiguration
+online version: https://learn.microsoft.com/powershell/module/az.eventhub/set-azeventhubschemagroup
 schema: 2.0.0
 ---
 
-# New-AzEventHubGeoDRConfiguration
+# Set-AzEventHubSchemaGroup
 
 ## SYNOPSIS
-Creates or updates a new Alias(Disaster Recovery configuration)
+
 
 ## SYNTAX
 
 ```
-New-AzEventHubGeoDRConfiguration -Name <String> -NamespaceName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-AlternateName <String>] [-PartnerNamespace <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Set-AzEventHubSchemaGroup -NamespaceName <String> -ResourceGroupName <String> -SchemaGroupName <String>
+ [-SubscriptionId <String>] [-GroupProperty <Hashtable>] [-SchemaCompatibility <SchemaCompatibility>]
+ [-SchemaType <SchemaType>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Creates or updates a new Alias(Disaster Recovery configuration)
+
 
 ## EXAMPLES
 
-### Example 1: Create a disaster recovery 
+### Example 1: {{ Add title here }}
 ```powershell
-New-AzEventHubGeoDRConfiguration -Name myAlias -ResourceGroupName myResourceGroup -NamespaceName myPrimaryNamespace -PartnerNamespace /subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/namespaces/mySecondaryNamespace
+{{ Add code here }}
 ```
 
 ```output
-AlternateName                     :
-Id                                : /subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/namespaces/myPrimaryNamespace/disasterRecoveryCon
-                                    figs/myAlias
-Location                          :
-Name                              : myAlias
-PartnerNamespace                  : /subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/namespaces/mySecondaryNamespace
-PendingReplicationOperationsCount :
-ProvisioningState                 : Succeeded
-ResourceGroupName                 : myResourceGroup
-Role                              : Primary
+{{ Add output here }}
 ```
 
-Creates a Disaster Recovery configuration which sets `mySecondaryNamespace` as secondary to `myPrimaryNamespace`.
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
-
-### -AlternateName
-Alternate name specified when alias and namespace names are same.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
@@ -76,15 +63,15 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
-The Disaster Recovery configuration name
+### -GroupProperty
+dictionary object for SchemaGroup group properties
 
 ```yaml
-Type: System.String
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -106,11 +93,26 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PartnerNamespace
-ARM Id of the Primary/Secondary eventhub namespace name, which is part of GEO DR pairing
+### -ResourceGroupName
+Name of the resource group within the azure subscription.
 
 ```yaml
 Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SchemaCompatibility
+.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.SchemaCompatibility
 Parameter Sets: (All)
 Aliases:
 
@@ -121,8 +123,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
-Name of the resource group within the azure subscription.
+### -SchemaGroupName
+The Schema Group name
 
 ```yaml
 Type: System.String
@@ -130,6 +132,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SchemaType
+.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.SchemaType
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -190,7 +207,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IArmDisasterRecovery
+### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.ISchemaGroup
 
 ## NOTES
 

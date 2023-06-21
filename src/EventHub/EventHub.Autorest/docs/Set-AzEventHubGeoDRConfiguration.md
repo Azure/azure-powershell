@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.EventHub
-online version: https://learn.microsoft.com/powershell/module/az.eventhub/new-azeventhubgeodrconfiguration
+online version: https://learn.microsoft.com/powershell/module/az.eventhub/set-azeventhubgeodrconfiguration
 schema: 2.0.0
 ---
 
-# New-AzEventHubGeoDRConfiguration
+# Set-AzEventHubGeoDRConfiguration
 
 ## SYNOPSIS
 Creates or updates a new Alias(Disaster Recovery configuration)
@@ -13,7 +13,7 @@ Creates or updates a new Alias(Disaster Recovery configuration)
 ## SYNTAX
 
 ```
-New-AzEventHubGeoDRConfiguration -Name <String> -NamespaceName <String> -ResourceGroupName <String>
+Set-AzEventHubGeoDRConfiguration -Name <String> -NamespaceName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-AlternateName <String>] [-PartnerNamespace <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -23,25 +23,27 @@ Creates or updates a new Alias(Disaster Recovery configuration)
 
 ## EXAMPLES
 
-### Example 1: Create a disaster recovery 
+### Example 1: {{ Add title here }}
 ```powershell
-New-AzEventHubGeoDRConfiguration -Name myAlias -ResourceGroupName myResourceGroup -NamespaceName myPrimaryNamespace -PartnerNamespace /subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/namespaces/mySecondaryNamespace
+{{ Add code here }}
 ```
 
 ```output
-AlternateName                     :
-Id                                : /subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/namespaces/myPrimaryNamespace/disasterRecoveryCon
-                                    figs/myAlias
-Location                          :
-Name                              : myAlias
-PartnerNamespace                  : /subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/namespaces/mySecondaryNamespace
-PendingReplicationOperationsCount :
-ProvisioningState                 : Succeeded
-ResourceGroupName                 : myResourceGroup
-Role                              : Primary
+{{ Add output here }}
 ```
 
-Creates a Disaster Recovery configuration which sets `mySecondaryNamespace` as secondary to `myPrimaryNamespace`.
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 

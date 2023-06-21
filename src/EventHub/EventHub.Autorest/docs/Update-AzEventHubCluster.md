@@ -1,50 +1,59 @@
 ---
 external help file:
 Module Name: Az.EventHub
-online version: https://learn.microsoft.com/powershell/module/az.eventhub/remove-azeventhubnamespace
+online version: https://learn.microsoft.com/powershell/module/az.eventhub/update-azeventhubcluster
 schema: 2.0.0
 ---
 
-# Remove-AzEventHubNamespace
+# Update-AzEventHubCluster
 
 ## SYNOPSIS
-Deletes an existing namespace.
-This operation also removes all associated resources under the namespace.
+Modifies mutable properties on the Event Hubs Cluster.
+This operation is idempotent.
 
 ## SYNTAX
 
-### Delete (Default)
+### UpdateExpanded (Default)
 ```
-Remove-AzEventHubNamespace -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzEventHubCluster -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-Location <String>] [-SkuCapacity <Int32>] [-SupportsScaling] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### DeleteViaIdentity
+### UpdateViaIdentityExpanded
 ```
-Remove-AzEventHubNamespace -InputObject <IEventHubIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzEventHubCluster -InputObject <IEventHubIdentity> [-Location <String>] [-SkuCapacity <Int32>]
+ [-SupportsScaling] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Deletes an existing namespace.
-This operation also removes all associated resources under the namespace.
+Modifies mutable properties on the Event Hubs Cluster.
+This operation is idempotent.
 
 ## EXAMPLES
 
-### Example 1: Delete an EventHub namespace
+### Example 1: {{ Add title here }}
 ```powershell
-Remove-AzEventHubNamespace -ResourceGroupName myResourceGroup -Name myNamespace
+{{ Add code here }}
 ```
 
-Deletes an EventHub namespace `myNamespace` under resource group `myResourceGroup`.
-
-### Example 2: Delete an EventHub namespace using InputObject parameter set
-```powershell
-$namespace = Get-AzEventHubNamespace -ResourceGroupName myResourceGroup -Name myNamespace
-Remove-AzEventHubNamespace -InputObject $namespace
+```output
+{{ Add output here }}
 ```
 
-Deletes an EventHub namespace `myNamespace` under resource group `myResourceGroup` using InputObject parameter set.
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -85,7 +94,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubIdentity
-Parameter Sets: DeleteViaIdentity
+Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -95,13 +104,28 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Name
-The Namespace name
+### -Location
+Resource location.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
-Aliases: NamespaceName
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+The name of the Event Hubs Cluster.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded
+Aliases: ClusterName
 
 Required: True
 Position: Named
@@ -125,8 +149,54 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PassThru
-Returns true when the command succeeds
+### -ResourceGroupName
+Name of the resource group within the azure subscription.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SkuCapacity
+The quantity of Event Hubs Cluster Capacity Units contained in this cluster.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+Subscription credentials that uniquely identify a Microsoft Azure subscription.
+The subscription ID forms part of the URI for every service call.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SupportsScaling
+A value that indicates whether Scaling is Supported.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -140,33 +210,17 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
-Name of the resource group within the azure subscription.
+### -Tag
+Resource tags.
 
 ```yaml
-Type: System.String
-Parameter Sets: Delete
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SubscriptionId
-Subscription credentials that uniquely identify a Microsoft Azure subscription.
-The subscription ID forms part of the URI for every service call.
-
-```yaml
-Type: System.String
-Parameter Sets: Delete
+Type: System.Collections.Hashtable
+Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
-Default value: (Get-AzContext).Subscription.Id
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -211,13 +265,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Boolean
+### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.ICluster
 
 ## NOTES
 
 ALIASES
-
-Remove-AzEventHubNamespaceV2
 
 COMPLEX PARAMETER PROPERTIES
 

@@ -44,11 +44,8 @@ Retrieves Alias(Disaster Recovery configuration) for primary or secondary namesp
 ### [Get-AzEventHubKey](Get-AzEventHubKey.md)
 Gets an EventHub SAS key
 
-### [Get-AzEventHubNamespace](Get-AzEventHubNamespace.md)
-Gets the description of the specified namespace.
-
-### [Get-AzEventHubNetworkRuleSet](Get-AzEventHubNetworkRuleSet.md)
-Gets NetworkRuleSet for a Namespace.
+### [Get-AzEventHubNetworkSecurityPerimeterConfiguration](Get-AzEventHubNetworkSecurityPerimeterConfiguration.md)
+Gets list of current NetworkSecurityPerimeterConfiguration for Namespace
 
 ### [Get-AzEventHubPrivateEndpointConnection](Get-AzEventHubPrivateEndpointConnection.md)
 Gets a description for the specified Private Endpoint Connection name.
@@ -57,7 +54,7 @@ Gets a description for the specified Private Endpoint Connection name.
 Gets lists of resources that supports Privatelinks.
 
 ### [Get-AzEventHubSchemaGroup](Get-AzEventHubSchemaGroup.md)
-Gets the details of an EventHub schema group.
+
 
 ### [New-AzEventHub](New-AzEventHub.md)
 Creates or updates a new Event Hub as a nested resource within a Namespace.
@@ -77,9 +74,6 @@ Creates or updates an Event Hubs consumer group as a nested resource within a Na
 ### [New-AzEventHubGeoDRConfiguration](New-AzEventHubGeoDRConfiguration.md)
 Creates or updates a new Alias(Disaster Recovery configuration)
 
-### [New-AzEventHubIPRuleConfig](New-AzEventHubIPRuleConfig.md)
-Constructs an INwRuleSetIPRules object that can be fed as input to Set-AzEventHubNetworkRuleSet
-
 ### [New-AzEventHubKey](New-AzEventHubKey.md)
 Regenerates an EventHub SAS key
 
@@ -90,13 +84,10 @@ Create an in-memory object for KeyVaultProperties.
 Creates an EventHub Namespace
 
 ### [New-AzEventHubSchemaGroup](New-AzEventHubSchemaGroup.md)
-Creates or Updates an EventHub schema group.
+
 
 ### [New-AzEventHubThrottlingPolicyConfig](New-AzEventHubThrottlingPolicyConfig.md)
 Constructs an IThrottlingPolicy object that can be fed as input to New-AzEventHubApplicationGroup or Set-AzEventHubApplicationGroup
-
-### [New-AzEventHubVirtualNetworkRuleConfig](New-AzEventHubVirtualNetworkRuleConfig.md)
-Constructs an INwRuleSetVirtualNetworkRules object that can be fed as input to Set-AzEventHubNetworkRuleSet
 
 ### [Remove-AzEventHub](Remove-AzEventHub.md)
 Deletes an Event Hub from the specified Namespace and resource group.
@@ -117,31 +108,33 @@ Deletes a consumer group from the specified Event Hub and resource group.
 ### [Remove-AzEventHubGeoDRConfiguration](Remove-AzEventHubGeoDRConfiguration.md)
 Deletes an Alias(Disaster Recovery configuration)
 
-### [Remove-AzEventHubNamespace](Remove-AzEventHubNamespace.md)
-Deletes an existing namespace.
-This operation also removes all associated resources under the namespace.
-
 ### [Remove-AzEventHubPrivateEndpointConnection](Remove-AzEventHubPrivateEndpointConnection.md)
 Deletes an existing namespace.
 This operation also removes all associated resources under the namespace.
 
 ### [Remove-AzEventHubSchemaGroup](Remove-AzEventHubSchemaGroup.md)
-Deletes an EventHub schema group.
+
 
 ### [Set-AzEventHub](Set-AzEventHub.md)
-Updates an EventHub Entity
+Creates or updates a new Event Hub as a nested resource within a Namespace.
 
 ### [Set-AzEventHubApplicationGroup](Set-AzEventHubApplicationGroup.md)
-Sets an EventHub Application Group
+Creates or updates an ApplicationGroup for a Namespace.
 
 ### [Set-AzEventHubAuthorizationRule](Set-AzEventHubAuthorizationRule.md)
 Sets an EventHub Authorization Rule
 
 ### [Set-AzEventHubCluster](Set-AzEventHubCluster.md)
-Sets an EventHub Cluster
+Creates or updates an instance of an Event Hubs Cluster.
 
 ### [Set-AzEventHubConsumerGroup](Set-AzEventHubConsumerGroup.md)
-Sets an EventHub Consumer Group
+Creates or updates an Event Hubs consumer group as a nested resource within a Namespace.
+
+### [Set-AzEventHubGeoDr](Set-AzEventHubGeoDr.md)
+GeoDR Failover
+
+### [Set-AzEventHubGeoDRConfiguration](Set-AzEventHubGeoDRConfiguration.md)
+Creates or updates a new Alias(Disaster Recovery configuration)
 
 ### [Set-AzEventHubGeoDRConfigurationBreakPair](Set-AzEventHubGeoDRConfigurationBreakPair.md)
 This operation disables the Disaster Recovery and stops replicating changes from primary to secondary namespaces
@@ -152,9 +145,16 @@ Invokes GEO DR failover and reconfigure the alias to point to the secondary name
 ### [Set-AzEventHubNamespace](Set-AzEventHubNamespace.md)
 Updates an EventHub Namespace
 
-### [Set-AzEventHubNetworkRuleSet](Set-AzEventHubNetworkRuleSet.md)
-Sets an EventHub Namespace Network Rule Set
+### [Set-AzEventHubPrivateEndpointConnection](Set-AzEventHubPrivateEndpointConnection.md)
+Creates or updates PrivateEndpointConnections of service namespace.
+
+### [Set-AzEventHubSchemaGroup](Set-AzEventHubSchemaGroup.md)
+
 
 ### [Test-AzEventHubName](Test-AzEventHubName.md)
 Checks availability of a namespace name or disaster recovery alias.
+
+### [Update-AzEventHubCluster](Update-AzEventHubCluster.md)
+Modifies mutable properties on the Event Hubs Cluster.
+This operation is idempotent.
 

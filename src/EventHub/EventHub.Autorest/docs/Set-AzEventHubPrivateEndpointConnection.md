@@ -1,64 +1,54 @@
 ---
 external help file:
 Module Name: Az.EventHub
-online version: https://learn.microsoft.com/powershell/module/az.eventhub/new-azeventhubgeodrconfiguration
+online version: https://learn.microsoft.com/powershell/module/az.eventhub/set-azeventhubprivateendpointconnection
 schema: 2.0.0
 ---
 
-# New-AzEventHubGeoDRConfiguration
+# Set-AzEventHubPrivateEndpointConnection
 
 ## SYNOPSIS
-Creates or updates a new Alias(Disaster Recovery configuration)
+Creates or updates PrivateEndpointConnections of service namespace.
 
 ## SYNTAX
 
 ```
-New-AzEventHubGeoDRConfiguration -Name <String> -NamespaceName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-AlternateName <String>] [-PartnerNamespace <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Set-AzEventHubPrivateEndpointConnection -Name <String> -NamespaceName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-PrivateEndpointId <String>]
+ [-PrivateLinkServiceConnectionStateDescription <String>]
+ [-PrivateLinkServiceConnectionStateStatus <PrivateLinkConnectionStatus>]
+ [-ProvisioningState <EndPointProvisioningState>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Creates or updates a new Alias(Disaster Recovery configuration)
+Creates or updates PrivateEndpointConnections of service namespace.
 
 ## EXAMPLES
 
-### Example 1: Create a disaster recovery 
+### Example 1: {{ Add title here }}
 ```powershell
-New-AzEventHubGeoDRConfiguration -Name myAlias -ResourceGroupName myResourceGroup -NamespaceName myPrimaryNamespace -PartnerNamespace /subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/namespaces/mySecondaryNamespace
+{{ Add code here }}
 ```
 
 ```output
-AlternateName                     :
-Id                                : /subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/namespaces/myPrimaryNamespace/disasterRecoveryCon
-                                    figs/myAlias
-Location                          :
-Name                              : myAlias
-PartnerNamespace                  : /subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/namespaces/mySecondaryNamespace
-PendingReplicationOperationsCount :
-ProvisioningState                 : Succeeded
-ResourceGroupName                 : myResourceGroup
-Role                              : Primary
+{{ Add output here }}
 ```
 
-Creates a Disaster Recovery configuration which sets `mySecondaryNamespace` as secondary to `myPrimaryNamespace`.
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
-
-### -AlternateName
-Alternate name specified when alias and namespace names are same.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
@@ -77,12 +67,12 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The Disaster Recovery configuration name
+The PrivateEndpointConnection name
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases:
+Aliases: PrivateEndpointConnectionName
 
 Required: True
 Position: Named
@@ -106,11 +96,56 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PartnerNamespace
-ARM Id of the Primary/Secondary eventhub namespace name, which is part of GEO DR pairing
+### -PrivateEndpointId
+The ARM identifier for Private Endpoint.
 
 ```yaml
 Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PrivateLinkServiceConnectionStateDescription
+Description of the connection state.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PrivateLinkServiceConnectionStateStatus
+Status of the connection.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.PrivateLinkConnectionStatus
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProvisioningState
+Provisioning state of the Private Endpoint Connection.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.EndPointProvisioningState
 Parameter Sets: (All)
 Aliases:
 
@@ -190,7 +225,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IArmDisasterRecovery
+### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IPrivateEndpointConnection
 
 ## NOTES
 

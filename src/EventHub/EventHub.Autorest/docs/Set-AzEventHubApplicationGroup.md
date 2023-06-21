@@ -8,7 +8,7 @@ schema: 2.0.0
 # Set-AzEventHubApplicationGroup
 
 ## SYNOPSIS
-Sets an EventHub Application Group
+Creates or updates an ApplicationGroup for a Namespace.
 
 ## SYNTAX
 
@@ -27,8 +27,15 @@ Set-AzEventHubApplicationGroup -InputObject <IEventHubIdentity> [-ClientAppGroup
  [-WhatIf] [<CommonParameters>]
 ```
 
+### UpdateExpanded
+```
+Set-AzEventHubApplicationGroup -Name <String> -NamespaceName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-ClientAppGroupIdentifier <String>] [-IsEnabled]
+ [-Policy <IApplicationGroupPolicy[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ## DESCRIPTION
-Sets an EventHub Application Group
+Creates or updates an ApplicationGroup for a Namespace.
 
 ## EXAMPLES
 
@@ -111,7 +118,7 @@ Run the command as a job
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: SetExpanded, SetViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -137,7 +144,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -184,11 +192,11 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the Application Group.
+The Application Group name
 
 ```yaml
 Type: System.String
-Parameter Sets: SetExpanded
+Parameter Sets: SetExpanded, UpdateExpanded
 Aliases: ApplicationGroupName
 
 Required: True
@@ -199,11 +207,11 @@ Accept wildcard characters: False
 ```
 
 ### -NamespaceName
-The name of EventHub namespace
+The Namespace name
 
 ```yaml
 Type: System.String
-Parameter Sets: SetExpanded
+Parameter Sets: SetExpanded, UpdateExpanded
 Aliases:
 
 Required: True
@@ -218,7 +226,7 @@ Run the command asynchronously
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: SetExpanded, SetViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -234,7 +242,7 @@ The policies can support resource governance scenarios such as limiting ingress 
 To construct, see NOTES section for POLICY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.IApplicationGroupPolicy[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IApplicationGroupPolicy[]
 Parameter Sets: (All)
 Aliases:
 
@@ -246,12 +254,11 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The name of the resource group.
-The name is case insensitive.
+Name of the resource group within the azure subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: SetExpanded
+Parameter Sets: SetExpanded, UpdateExpanded
 Aliases:
 
 Required: True
@@ -262,11 +269,12 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-The ID of the target subscription.
+Subscription credentials that uniquely identify a Microsoft Azure subscription.
+The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: SetExpanded
+Parameter Sets: SetExpanded, UpdateExpanded
 Aliases:
 
 Required: False
@@ -312,7 +320,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.IApplicationGroupPolicy[]
+### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IApplicationGroupPolicy[]
 
 ### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubIdentity
 
@@ -322,7 +330,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.IApplicationGroup
+### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IApplicationGroup
 
 ## NOTES
 

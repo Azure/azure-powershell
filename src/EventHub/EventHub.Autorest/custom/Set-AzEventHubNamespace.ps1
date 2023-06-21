@@ -21,7 +21,7 @@ Updates an EventHub Namespace
 
 function Set-AzEventHubNamespace{
     [Alias("Set-AzEventHubNamespaceV2")]
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.IEhNamespace])]    
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IEhNamespace])]    
     [CmdletBinding(DefaultParameterSetName = 'SetExpanded', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
     param(
 
@@ -64,7 +64,7 @@ function Set-AzEventHubNamespace{
 
         [Parameter(HelpMessage = "Properties to configure Encryption")]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.IKeyVaultProperties[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IKeyVaultProperties[]]
         ${KeyVaultProperty},
 
         [Parameter(HelpMessage = "Enable Infrastructure Encryption (Double Encryption)")]
@@ -109,11 +109,6 @@ function Set-AzEventHubNamespace{
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
         [System.Int32]
         ${SkuCapacity},
-
-        [Parameter(HelpMessage = "Tag of EventHub Namespace.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
-        [System.Collections.Hashtable]
-        ${Tag},
 
         [Parameter(HelpMessage = "The credentials, account, tenant, and subscription used for communication with Azure.")]
         [Alias('AzureRMContext', 'AzureCredential')]
@@ -186,7 +181,6 @@ function Set-AzEventHubNamespace{
             $hasRequireInfrastructureEncryption = $PSBoundParameters.Remove('RequireInfrastructureEncryption') 
             $hasPublicNetworkAccess = $PSBoundParameters.Remove('PublicNetworkAccess')
             $hasSkuCapacity = $PSBoundParameters.Remove('SkuCapacity')
-            $hasTag = $PSBoundParameters.Remove('Tag')
             $hasAsJob = $PSBoundParameters.Remove('AsJob')
             $null = $PSBoundParameters.Remove('WhatIf')
             $null = $PSBoundParameters.Remove('Confirm')
@@ -220,7 +214,7 @@ function Set-AzEventHubNamespace{
                 $identityHashTable = @{}
 
                 foreach ($resourceID in $UserAssignedIdentityId){
-                    $identityHashTable.Add($resourceID, [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.UserAssignedIdentity]::new())
+                    $identityHashTable.Add($resourceID, [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.UserAssignedIdentity]::new())
                 }
 
                 $eventHubNamespace.UserAssignedIdentity = $identityHashTable
@@ -239,9 +233,6 @@ function Set-AzEventHubNamespace{
             }
             if ($hasSkuCapacity) {
                 $eventHubNamespace.SkuCapacity = $SkuCapacity
-            }
-            if ($hasTag) {
-                $eventHubNamespace.Tag = $Tag
             }
             if ($hasAsJob) {
                 $PSBoundParameters.Add('AsJob', $true)

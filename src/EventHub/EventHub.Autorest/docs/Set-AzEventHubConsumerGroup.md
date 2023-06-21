@@ -8,7 +8,7 @@ schema: 2.0.0
 # Set-AzEventHubConsumerGroup
 
 ## SYNOPSIS
-Sets an EventHub Consumer Group
+Creates or updates an Event Hubs consumer group as a nested resource within a Namespace.
 
 ## SYNTAX
 
@@ -25,8 +25,15 @@ Set-AzEventHubConsumerGroup -InputObject <IEventHubIdentity> -UserMetadata <Stri
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### UpdateExpanded
+```
+Set-AzEventHubConsumerGroup -EventHubName <String> -Name <String> -NamespaceName <String>
+ -ResourceGroupName <String> [-SubscriptionId <String>] [-UserMetadata <String>] [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ## DESCRIPTION
-Sets an EventHub Consumer Group
+Creates or updates an Event Hubs consumer group as a nested resource within a Namespace.
 
 ## EXAMPLES
 
@@ -74,7 +81,7 @@ Run the command as a job
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: SetExpanded, SetViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -85,7 +92,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -100,11 +108,11 @@ Accept wildcard characters: False
 ```
 
 ### -EventHubName
-The name of EventHub
+The Event Hub name
 
 ```yaml
 Type: System.String
-Parameter Sets: SetExpanded
+Parameter Sets: SetExpanded, UpdateExpanded
 Aliases:
 
 Required: True
@@ -131,11 +139,11 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the Consumer Group.
+The consumer group name
 
 ```yaml
 Type: System.String
-Parameter Sets: SetExpanded
+Parameter Sets: SetExpanded, UpdateExpanded
 Aliases: ConsumerGroupName
 
 Required: True
@@ -146,11 +154,11 @@ Accept wildcard characters: False
 ```
 
 ### -NamespaceName
-The name of EventHub namespace
+The Namespace name
 
 ```yaml
 Type: System.String
-Parameter Sets: SetExpanded
+Parameter Sets: SetExpanded, UpdateExpanded
 Aliases:
 
 Required: True
@@ -165,7 +173,7 @@ Run the command asynchronously
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: SetExpanded, SetViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -176,12 +184,11 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The name of the resource group.
-The name is case insensitive.
+Name of the resource group within the azure subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: SetExpanded
+Parameter Sets: SetExpanded, UpdateExpanded
 Aliases:
 
 Required: True
@@ -192,11 +199,12 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-The ID of the target subscription.
+Subscription credentials that uniquely identify a Microsoft Azure subscription.
+The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: SetExpanded
+Parameter Sets: SetExpanded, UpdateExpanded
 Aliases:
 
 Required: False
@@ -263,7 +271,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.IConsumerGroup
+### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IConsumerGroup
 
 ## NOTES
 

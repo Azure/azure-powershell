@@ -8,25 +8,31 @@ schema: 2.0.0
 # Set-AzEventHubCluster
 
 ## SYNOPSIS
-Sets an EventHub Cluster
+Creates or updates an instance of an Event Hubs Cluster.
 
 ## SYNTAX
 
 ### SetExpanded (Default)
 ```
 Set-AzEventHubCluster -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-Capacity <Int32>] [-Tag <ITrackedResourceTags>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-Capacity <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### SetViaIdentityExpanded
 ```
-Set-AzEventHubCluster -InputObject <IEventHubIdentity> [-Capacity <Int32>] [-Tag <ITrackedResourceTags>]
+Set-AzEventHubCluster -InputObject <IEventHubIdentity> [-Capacity <Int32>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateExpanded
+```
+Set-AzEventHubCluster -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-Location <String>] [-SkuCapacity <Int32>] [-SupportsScaling] [-Tag <Hashtable>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Sets an EventHub Cluster
+Creates or updates an instance of an Event Hubs Cluster.
 
 ## EXAMPLES
 
@@ -95,7 +101,7 @@ The quantity of Event Hubs Cluster Capacity Units contained in this cluster.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: SetExpanded, SetViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -106,7 +112,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -136,12 +143,27 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Name
-The name of the EventHub Dedicated Cluster
+### -Location
+Resource location.
 
 ```yaml
 Type: System.String
-Parameter Sets: SetExpanded
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+The name of the Event Hubs Cluster.
+
+```yaml
+Type: System.String
+Parameter Sets: SetExpanded, UpdateExpanded
 Aliases: ClusterName
 
 Required: True
@@ -167,12 +189,11 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The name of the resource group.
-The name is case insensitive.
+Name of the resource group within the azure subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: SetExpanded
+Parameter Sets: SetExpanded, UpdateExpanded
 Aliases:
 
 Required: True
@@ -182,12 +203,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -SkuCapacity
+The quantity of Event Hubs Cluster Capacity Units contained in this cluster.
+
+```yaml
+Type: System.Int32
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SubscriptionId
-The ID of the target subscription.
+Subscription credentials that uniquely identify a Microsoft Azure subscription.
+The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: SetExpanded
+Parameter Sets: SetExpanded, UpdateExpanded
 Aliases:
 
 Required: False
@@ -197,13 +234,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Tag
-Resource tags.
-To construct, see NOTES section for TAG properties and create a hash table.
+### -SupportsScaling
+A value that indicates whether Scaling is Supported.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api10.ITrackedResourceTags
-Parameter Sets: (All)
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Tag
+Resource tags.
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -253,7 +304,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.ICluster
+### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.ICluster
 
 ## NOTES
 
@@ -278,9 +329,6 @@ To create the parameters described below, construct a hash table containing the 
   - `[ResourceGroupName <String>]`: Name of the resource group within the azure subscription.
   - `[SchemaGroupName <String>]`: The Schema Group name 
   - `[SubscriptionId <String>]`: Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
-
-`TAG <ITrackedResourceTags>`: Resource tags.
-  - `[(Any) <String>]`: This indicates any property can be added to this object.
 
 ## RELATED LINKS
 

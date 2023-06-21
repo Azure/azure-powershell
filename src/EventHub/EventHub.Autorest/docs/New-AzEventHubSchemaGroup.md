@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzEventHubSchemaGroup
 
 ## SYNOPSIS
-Creates or Updates an EventHub schema group.
+
 
 ## SYNTAX
 
@@ -19,7 +19,7 @@ New-AzEventHubSchemaGroup -Name <String> -NamespaceName <String> -ResourceGroupN
 ```
 
 ## DESCRIPTION
-Creates or Updates an EventHub schema group.
+
 
 ## EXAMPLES
 
@@ -205,7 +205,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.ISchemaGroup
+### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.ISchemaGroup
 
 ## NOTES
 

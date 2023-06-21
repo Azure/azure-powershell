@@ -17,7 +17,7 @@ New-AzEventHubNamespace -Name <String> -ResourceGroupName <String> -Location <St
  [-SubscriptionId <String>] [-AlternateName <String>] [-ClusterArmId <String>] [-DisableLocalAuth]
  [-EnableAutoInflate] [-IdentityType <ManagedServiceIdentityType>] [-KeyVaultProperty <IKeyVaultProperties[]>]
  [-MaximumThroughputUnit <Int64>] [-MinimumTlsVersion <String>] [-PublicNetworkAccess <PublicNetworkAccess>]
- [-RequireInfrastructureEncryption] [-SkuCapacity <Int64>] [-SkuName <SkuName>] [-Tag <Hashtable>]
+ [-RequireInfrastructureEncryption] [-SkuCapacity <Int64>] [-SkuName <SkuName>]
  [-UserAssignedIdentityId <String[]>] [-ZoneRedundant] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
@@ -292,7 +292,7 @@ Properties to configure Encryption
 To construct, see NOTES section for KEYVAULTPROPERTY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.IKeyVaultProperties[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IKeyVaultProperties[]
 Parameter Sets: (All)
 Aliases:
 
@@ -459,21 +459,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Tag
-Tag of EventHub Namespace.
-
-```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -UserAssignedIdentityId
 Properties for User Assigned Identities
 
@@ -542,7 +527,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.IEhNamespace
+### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IEhNamespace
 
 ## NOTES
 
