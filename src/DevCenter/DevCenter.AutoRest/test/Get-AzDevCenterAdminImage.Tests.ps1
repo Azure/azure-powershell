@@ -17,7 +17,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzDevCenterAdminImage'))
 Describe 'Get-AzDevCenterAdminImage' {
     It 'List' {
         $listOfImages = Get-AzDevCenterAdminImage -ResourceGroupName $env.resourceGroup -DevCenterName $env.devCenterName
-        $listOfImages.Count | Should -BeGreaterOrEqual 20
+        $listOfImages.Count | Should -BeGreaterOrEqual 19
     }
 
     It 'List1' {

@@ -1,8 +1,8 @@
 {
-  "New-AzDevCenterAdminEnvironmentType+[NoContext]+Create+$PUT+https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRgkmyvux/providers/Microsoft.DevCenter/devcenters/pwshRgkmyvux/environmentTypes/8hga?api-version=2023-04-01+1": {
+  "New-AzDevCenterAdminEnvironmentType+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRg9xk0p7/providers/Microsoft.DevCenter/devcenters/pwshDcbfj81w/environmentTypes/z34q9?api-version=2023-04-01+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRgkmyvux/providers/Microsoft.DevCenter/devcenters/pwshRgkmyvux/environmentTypes/8hga?api-version=2023-04-01",
+      "RequestUri": "https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRg9xk0p7/providers/Microsoft.DevCenter/devcenters/pwshDcbfj81w/environmentTypes/z34q9?api-version=2023-04-01",
       "Content": "{\r\n  \"tags\": {\r\n    \"dev\": \"test\"\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -13,24 +13,69 @@
       }
     },
     "Response": {
-      "StatusCode": 404,
+      "StatusCode": 200,
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-failure-cause": [ "gateway" ],
-        "x-ms-request-id": [ "3c92d002-bdb3-493e-a875-0170ca050d8e" ],
-        "x-ms-correlation-request-id": [ "3c92d002-bdb3-493e-a875-0170ca050d8e" ],
-        "x-ms-routing-request-id": [ "WESTUS:20230620T002500Z:3c92d002-bdb3-493e-a875-0170ca050d8e" ],
+        "ETag": [ "\"4e0090d5-0000-0a00-0000-6492792d0000\"" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1191" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "X-Rate-Limit-Limit": [ "1m" ],
+        "X-Rate-Limit-Remaining": [ "299" ],
+        "X-Rate-Limit-Reset": [ "2023-06-21T04:15:36.7647648Z" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "b6425723-4f59-4672-9ee1-f057f8a6fcd9" ],
+        "x-ms-correlation-request-id": [ "e78f8f9a-a70e-4db7-a182-4bdaaa56bbfd" ],
+        "x-ms-routing-request-id": [ "WESTUS:20230621T041437Z:e78f8f9a-a70e-4db7-a182-4bdaaa56bbfd" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 20 Jun 2023 00:25:00 GMT" ]
+        "Date": [ "Wed, 21 Jun 2023 04:14:37 GMT" ]
       },
       "ContentHeaders": {
+        "Content-Length": [ "534" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ],
-        "Content-Length": [ "153" ]
+        "Expires": [ "-1" ]
       },
-      "Content": "{\"error\":{\"code\":\"ParentResourceNotFound\",\"message\":\"Can not perform requested operation on nested resource. Parent resource \u0027pwshRgkmyvux\u0027 not found.\"}}",
+      "Content": "{\"id\":\"/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRg9xk0p7/providers/Microsoft.DevCenter/devcenters/pwshDcbfj81w/environmentTypes/z34q9\",\"name\":\"z34q9\",\"type\":\"microsoft.devcenter/devcenters/environmenttypes\",\"tags\":{\"dev\":\"test\"},\"systemData\":{\"createdBy\":\"amlim@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-06-21T04:14:36.522059Z\",\"lastModifiedBy\":\"amlim@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-06-21T04:14:36.522059Z\"},\"properties\":{\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzDevCenterAdminEnvironmentType+[NoContext]+Create+$PUT+https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRg9xk0p7/providers/Microsoft.DevCenter/devcenters/pwshDcbfj81w/environmentTypes/wy1n?api-version=2023-04-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRg9xk0p7/providers/Microsoft.DevCenter/devcenters/pwshDcbfj81w/environmentTypes/wy1n?api-version=2023-04-01",
+      "Content": "{\r\n  \"tags\": {\r\n    \"dev\": \"test\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "41" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"4e0092d5-0000-0a00-0000-6492792d0000\"" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1190" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "X-Rate-Limit-Limit": [ "1m" ],
+        "X-Rate-Limit-Remaining": [ "299" ],
+        "X-Rate-Limit-Reset": [ "2023-06-21T04:15:37.5885934Z" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "1ba4b940-4ce4-4c64-944f-0ec3390c255b" ],
+        "x-ms-correlation-request-id": [ "4b305713-4487-4af1-9fa2-f0421adc97ca" ],
+        "x-ms-routing-request-id": [ "WESTUS:20230621T041438Z:4b305713-4487-4af1-9fa2-f0421adc97ca" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 21 Jun 2023 04:14:37 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "534" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRg9xk0p7/providers/Microsoft.DevCenter/devcenters/pwshDcbfj81w/environmentTypes/wy1n\",\"name\":\"wy1n\",\"type\":\"microsoft.devcenter/devcenters/environmenttypes\",\"tags\":{\"dev\":\"test\"},\"systemData\":{\"createdBy\":\"amlim@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-06-21T04:14:37.3970961Z\",\"lastModifiedBy\":\"amlim@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-06-21T04:14:37.3970961Z\"},\"properties\":{\"provisioningState\":\"Succeeded\"}}",
       "isContentBase64": false
     }
   }

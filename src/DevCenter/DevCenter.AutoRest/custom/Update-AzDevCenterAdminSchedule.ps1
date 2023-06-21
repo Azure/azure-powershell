@@ -67,172 +67,172 @@ INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.devcenter/update-azdevcenteradminschedule
 #>
 function Update-AzDevCenterAdminSchedule {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.ISchedule])]
-    [CmdletBinding(DefaultParameterSetName = 'UpdateExpanded', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
-    param(
-        [Parameter(ParameterSetName = 'Update', Mandatory)]
-        [Parameter(ParameterSetName = 'UpdateExpanded', Mandatory)]
-        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
-        [System.String]
-        # Name of the pool.
-        ${PoolName},
+  [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.ISchedule])]
+  [CmdletBinding(DefaultParameterSetName = 'UpdateExpanded', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
+  param(
+    [Parameter(ParameterSetName = 'Update', Mandatory)]
+    [Parameter(ParameterSetName = 'UpdateExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
+    [System.String]
+    # Name of the pool.
+    ${PoolName},
 
-        [Parameter(ParameterSetName = 'Update', Mandatory)]
-        [Parameter(ParameterSetName = 'UpdateExpanded', Mandatory)]
-        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
-        [System.String]
-        # The name of the project.
-        ${ProjectName},
+    [Parameter(ParameterSetName = 'Update', Mandatory)]
+    [Parameter(ParameterSetName = 'UpdateExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
+    [System.String]
+    # The name of the project.
+    ${ProjectName},
 
-        [Parameter(ParameterSetName = 'Update', Mandatory)]
-        [Parameter(ParameterSetName = 'UpdateExpanded', Mandatory)]
-        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
-        [System.String]
-        # The name of the resource group.
-        # The name is case insensitive.
-        ${ResourceGroupName},
+    [Parameter(ParameterSetName = 'Update', Mandatory)]
+    [Parameter(ParameterSetName = 'UpdateExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
 
-        [Parameter(ParameterSetName = 'Update')]
-        [Parameter(ParameterSetName = 'UpdateExpanded')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.DefaultInfo(Script = '(Get-AzContext).Subscription.Id')]
-        [System.String]
-        # The ID of the target subscription.
-        ${SubscriptionId},
+    [Parameter(ParameterSetName = 'Update')]
+    [Parameter(ParameterSetName = 'UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.DefaultInfo(Script = '(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
 
-        [Parameter(ParameterSetName = 'UpdateViaIdentity', Mandatory, ValueFromPipeline)]
-        [Parameter(ParameterSetName = 'UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
-        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity]
-        # Identity Parameter
-        # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-        ${InputObject},
+    [Parameter(ParameterSetName = 'UpdateViaIdentity', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName = 'UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
 
-        [Parameter(ParameterSetName = 'Update', Mandatory, ValueFromPipeline)]
-        [Parameter(ParameterSetName = 'UpdateViaIdentity', Mandatory, ValueFromPipeline)]
-        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.IScheduleUpdate]
-        # The schedule properties for partial update.
-        # Properties not provided in the update request will not be changed.
-        # To construct, see NOTES section for BODY properties and create a hash table.
-        ${Body},
+    [Parameter(ParameterSetName = 'Update', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName = 'UpdateViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.IScheduleUpdate]
+    # The schedule properties for partial update.
+    # Properties not provided in the update request will not be changed.
+    # To construct, see NOTES section for BODY properties and create a hash table.
+    ${Body},
 
-        [Parameter(ParameterSetName = 'UpdateExpanded')]
-        [Parameter(ParameterSetName = 'UpdateViaIdentityExpanded')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
-        [System.String]
-        # The geo-location where the resource lives
-        ${Location},
+    [Parameter(ParameterSetName = 'UpdateExpanded')]
+    [Parameter(ParameterSetName = 'UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
+    [System.String]
+    # The geo-location where the resource lives
+    ${Location},
 
-        [Parameter(ParameterSetName = 'UpdateExpanded')]
-        [Parameter(ParameterSetName = 'UpdateViaIdentityExpanded')]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.ScheduleEnableStatus])]
-        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.ScheduleEnableStatus]
-        # Indicates whether or not this scheduled task is enabled.
-        ${State},
+    [Parameter(ParameterSetName = 'UpdateExpanded')]
+    [Parameter(ParameterSetName = 'UpdateViaIdentityExpanded')]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.ScheduleEnableStatus])]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.ScheduleEnableStatus]
+    # Indicates whether or not this scheduled task is enabled.
+    ${State},
 
-        [Parameter(ParameterSetName = 'UpdateExpanded')]
-        [Parameter(ParameterSetName = 'UpdateViaIdentityExpanded')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.Info(PossibleTypes = ([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.ITags]))]
-        [System.Collections.Hashtable]
-        # Resource tags.
-        ${Tag},
+    [Parameter(ParameterSetName = 'UpdateExpanded')]
+    [Parameter(ParameterSetName = 'UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.Info(PossibleTypes = ([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.ITags]))]
+    [System.Collections.Hashtable]
+    # Resource tags.
+    ${Tag},
 
-        [Parameter(ParameterSetName = 'UpdateExpanded')]
-        [Parameter(ParameterSetName = 'UpdateViaIdentityExpanded')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
-        [System.String]
-        # The target time to trigger the action.
-        # The format is HH:MM.
-        ${Time},
+    [Parameter(ParameterSetName = 'UpdateExpanded')]
+    [Parameter(ParameterSetName = 'UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
+    [System.String]
+    # The target time to trigger the action.
+    # The format is HH:MM.
+    ${Time},
 
-        [Parameter(ParameterSetName = 'UpdateExpanded')]
-        [Parameter(ParameterSetName = 'UpdateViaIdentityExpanded')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
-        [System.String]
-        # The IANA timezone id at which the schedule should execute.
-        ${TimeZone},
+    [Parameter(ParameterSetName = 'UpdateExpanded')]
+    [Parameter(ParameterSetName = 'UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
+    [System.String]
+    # The IANA timezone id at which the schedule should execute.
+    ${TimeZone},
 
-        [Parameter(ParameterSetName = 'UpdateExpanded')]
-        [Parameter(ParameterSetName = 'UpdateViaIdentityExpanded')]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.ScheduledType])]
-        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.ScheduledType]
-        # Supported type this scheduled task represents.
-        ${Type},
+    [Parameter(ParameterSetName = 'UpdateExpanded')]
+    [Parameter(ParameterSetName = 'UpdateViaIdentityExpanded')]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.ScheduledType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.ScheduledType]
+    # Supported type this scheduled task represents.
+    ${Type},
 
-        [Parameter()]
-        [Alias('AzureRMContext', 'AzureCredential')]
-        [ValidateNotNull()]
-        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Azure')]
-        [System.Management.Automation.PSObject]
-        # The DefaultProfile parameter is not functional.
-        # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
-        ${DefaultProfile},
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
 
-        [Parameter()]
-        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
-        [System.Management.Automation.SwitchParameter]
-        # Run the command as a job
-        ${AsJob},
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
 
-        [Parameter(DontShow)]
-        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
-        [System.Management.Automation.SwitchParameter]
-        # Wait for .NET debugger to attach
-        ${Break},
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
 
-        [Parameter(DontShow)]
-        [ValidateNotNull()]
-        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.SendAsyncStep[]]
-        # SendAsync Pipeline Steps to be appended to the front of the pipeline
-        ${HttpPipelineAppend},
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
 
-        [Parameter(DontShow)]
-        [ValidateNotNull()]
-        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.SendAsyncStep[]]
-        # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-        ${HttpPipelinePrepend},
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
 
-        [Parameter()]
-        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
-        [System.Management.Automation.SwitchParameter]
-        # Run the command asynchronously
-        ${NoWait},
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
 
-        [Parameter(DontShow)]
-        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
-        [System.Uri]
-        # The URI for the proxy server to use
-        ${Proxy},
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
 
-        [Parameter(DontShow)]
-        [ValidateNotNull()]
-        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
-        [System.Management.Automation.PSCredential]
-        # Credentials for a proxy server to use for the remote call
-        ${ProxyCredential},
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
 
-        [Parameter(DontShow)]
-        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
-        [System.Management.Automation.SwitchParameter]
-        # Use the default credentials for the proxy
-        ${ProxyUseDefaultCredentials}
-    )
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+  )
 
-    process {
-        if ($PSBoundParameters.ContainsKey('Body')) {
-            $Body["Frequency"] = "Daily"
-            $Body["PropertiesType"] = "StopDevBox"
-            $PSBoundParameters["Body"] = $Body
-        }
-
-        Az.DevCenter.internal\Update-AzDevCenterAdminSchedule @PSBoundParameters
-
+  process {
+    if ($PSBoundParameters.ContainsKey('Body')) {
+      $Body.Frequency = "Daily"
+      $Body.PropertiesType = "StopDevBox"
+      $PSBoundParameters["Body"] = $Body
     }
+
+    Az.DevCenter.internal\Update-AzDevCenterAdminSchedule @PSBoundParameters
+
+  }
 
 }

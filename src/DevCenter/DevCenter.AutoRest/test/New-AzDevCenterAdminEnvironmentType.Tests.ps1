@@ -19,7 +19,7 @@ Describe 'New-AzDevCenterAdminEnvironmentType' {
         $tags = @{"dev" ="test"}
 
         $envType = New-AzDevCenterAdminEnvironmentType -DevCenterName $env.devCenterName -Name $env.envTypeNew -ResourceGroupName $env.resourceGroup -Tag $tags
-        $envType.Name | Should -Be $env.environmentTypeName
+        $envType.Name | Should -Be $env.envTypeNew
         $envTypeTag = $env.Tag | ConvertTo-Json | ConvertFrom-Json
         $envTypeTag.Keys[0] | Should -Be "dev"
         $envTypeTag.Values[0] | Should -Be "test"
@@ -31,7 +31,7 @@ Describe 'New-AzDevCenterAdminEnvironmentType' {
         $body = @{"Tag" = $tags}
 
         $envType = New-AzDevCenterAdminEnvironmentType -DevCenterName $env.devCenterName -Name $env.envTypeNew2 -ResourceGroupName $env.resourceGroup -Body $body
-        $envType.Name | Should -Be $env.environmentTypeName
+        $envType.Name | Should -Be $env.envTypeNew2
         $envTypeTag = $env.Tag | ConvertTo-Json | ConvertFrom-Json
         $envTypeTag.Keys[0] | Should -Be "dev"
         $envTypeTag.Values[0] | Should -Be "test"

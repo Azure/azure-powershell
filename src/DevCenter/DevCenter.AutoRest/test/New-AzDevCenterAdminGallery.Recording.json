@@ -1,48 +1,132 @@
 {
-  "New-AzDevCenterAdminGallery+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRgkmyvux/providers/Microsoft.DevCenter/devcenters/pwshDcykf1ob/galleries/gl13i?api-version=2023-04-01+1": {
+  "New-AzDevCenterAdminGallery+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRg9xk0p7/providers/Microsoft.DevCenter/devcenters/pwshDcbfj81w/galleries/sek8t?api-version=2023-04-01+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRgkmyvux/providers/Microsoft.DevCenter/devcenters/pwshDcykf1ob/galleries/gl13i?api-version=2023-04-01",
-      "Content": "{\r\n  \"properties\": {\r\n    \"galleryResourceId\": \"/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/amlim-test/providers/Microsoft.Compute/galleries/amlim_pwsh_sig\"\r\n  }\r\n}",
+      "RequestUri": "https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRg9xk0p7/providers/Microsoft.DevCenter/devcenters/pwshDcbfj81w/galleries/sek8t?api-version=2023-04-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"galleryResourceId\": \"/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRg9xk0p7/providers/Microsoft.Compute/galleries/6xqyv9\"\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
-        "Content-Length": [ "187" ]
+        "Content-Length": [ "181" ]
       }
     },
     "Response": {
-      "StatusCode": 400,
+      "StatusCode": 201,
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1190" ],
+        "ETag": [ "\"a701df5e-0000-0a00-0000-6492792f0000\"" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1189" ],
         "x-ms-providerhub-traffic": [ "True" ],
         "X-Rate-Limit-Limit": [ "1m" ],
-        "X-Rate-Limit-Remaining": [ "299" ],
-        "X-Rate-Limit-Reset": [ "2023-06-20T00:26:01.4860129Z" ],
+        "X-Rate-Limit-Remaining": [ "298" ],
+        "X-Rate-Limit-Reset": [ "2023-06-21T04:15:37.1534580Z" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-failure-cause": [ "gateway" ],
-        "x-ms-request-id": [ "b3902341-f7d6-4e81-98e9-08428220475e" ],
-        "x-ms-correlation-request-id": [ "3723b614-dd8d-4136-b5b0-d598f642ee0b" ],
-        "x-ms-routing-request-id": [ "WESTUS:20230620T002502Z:3723b614-dd8d-4136-b5b0-d598f642ee0b" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/providers/Microsoft.DevCenter/locations/CANADACENTRAL/operationStatuses/863da83c-3bd0-45ef-96d0-92d3317fc5d4*E3A0FC6F9720418D636319C3B2864412FF580A2981D3FAD7AFC5FD21FE5C2A66?api-version=2023-04-01" ],
+        "x-ms-request-id": [ "863da83c-3bd0-45ef-96d0-92d3317fc5d4" ],
+        "x-ms-correlation-request-id": [ "49113374-961f-4bd5-b9fa-c9e4dc631e6c" ],
+        "x-ms-routing-request-id": [ "WESTUS:20230621T041439Z:49113374-961f-4bd5-b9fa-c9e4dc631e6c" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 20 Jun 2023 00:25:02 GMT" ]
+        "Date": [ "Wed, 21 Jun 2023 04:14:39 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "263" ],
-        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "646" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"error\":{\"code\":\"ValidationError\",\"message\":\"The request is not valid.\",\"details\":[{\"code\":\"ComputeGalleryAlreadyAttachedToDevCenter\",\"target\":\"\",\"message\":\"The provided compute gallery is already attached to this DevCenter.\",\"details\":[],\"additionalInfo\":[]}]}}",
+      "Content": "{\"id\":\"/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRg9xk0p7/providers/Microsoft.DevCenter/devcenters/pwshDcbfj81w/galleries/sek8t\",\"name\":\"sek8t\",\"type\":\"microsoft.devcenter/devcenters/galleries\",\"systemData\":{\"createdBy\":\"amlim@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-06-21T04:14:38.4284552Z\",\"lastModifiedBy\":\"amlim@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-06-21T04:14:38.4284552Z\"},\"properties\":{\"provisioningState\":\"Accepted\",\"galleryResourceId\":\"/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRg9xk0p7/providers/Microsoft.Compute/galleries/6xqyv9\"}}",
       "isContentBase64": false
     }
   },
-  "New-AzDevCenterAdminGallery+[NoContext]+Create+$PUT+https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRgkmyvux/providers/Microsoft.DevCenter/devcenters/pwshDcykf1ob/galleries/5iun?api-version=2023-04-01+1": {
+  "New-AzDevCenterAdminGallery+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/providers/Microsoft.DevCenter/locations/CANADACENTRAL/operationStatuses/863da83c-3bd0-45ef-96d0-92d3317fc5d4*E3A0FC6F9720418D636319C3B2864412FF580A2981D3FAD7AFC5FD21FE5C2A66?api-version=2023-04-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/providers/Microsoft.DevCenter/locations/CANADACENTRAL/operationStatuses/863da83c-3bd0-45ef-96d0-92d3317fc5d4*E3A0FC6F9720418D636319C3B2864412FF580A2981D3FAD7AFC5FD21FE5C2A66?api-version=2023-04-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "105" ],
+        "x-ms-client-request-id": [ "24006a40-864f-419f-b9c3-46a72e6f2712" ],
+        "CommandName": [ "New-AzDevCenterAdminGallery" ],
+        "FullCommandName": [ "New-AzDevCenterAdminGallery_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v9.4.0", "PSVersion/v7.2.11", "Az.DevCenter/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"1a00f6ed-0000-0a00-0000-649279370000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11912" ],
+        "x-ms-request-id": [ "ebe0c01e-10fd-46a0-b546-c1edc894a3e9" ],
+        "x-ms-correlation-request-id": [ "6b70e488-0346-4fe4-a85d-bfb7f9617a2c" ],
+        "x-ms-routing-request-id": [ "WESTUS:20230621T041510Z:6b70e488-0346-4fe4-a85d-bfb7f9617a2c" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 21 Jun 2023 04:15:10 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "633" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/providers/Microsoft.DevCenter/locations/CANADACENTRAL/operationStatuses/863da83c-3bd0-45ef-96d0-92d3317fc5d4*E3A0FC6F9720418D636319C3B2864412FF580A2981D3FAD7AFC5FD21FE5C2A66\",\"name\":\"863da83c-3bd0-45ef-96d0-92d3317fc5d4*E3A0FC6F9720418D636319C3B2864412FF580A2981D3FAD7AFC5FD21FE5C2A66\",\"resourceId\":\"/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRg9xk0p7/providers/Microsoft.DevCenter/devcenters/pwshDcbfj81w/galleries/sek8t\",\"status\":\"Succeeded\",\"startTime\":\"2023-06-21T04:14:38.9297378Z\",\"endTime\":\"2023-06-21T04:14:47.1213309Z\",\"properties\":null}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzDevCenterAdminGallery+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRg9xk0p7/providers/Microsoft.DevCenter/devcenters/pwshDcbfj81w/galleries/sek8t?api-version=2023-04-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRg9xk0p7/providers/Microsoft.DevCenter/devcenters/pwshDcbfj81w/galleries/sek8t?api-version=2023-04-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "106" ],
+        "x-ms-client-request-id": [ "24006a40-864f-419f-b9c3-46a72e6f2712" ],
+        "CommandName": [ "New-AzDevCenterAdminGallery" ],
+        "FullCommandName": [ "New-AzDevCenterAdminGallery_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v9.4.0", "PSVersion/v7.2.11", "Az.DevCenter/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"a7010e67-0000-0a00-0000-649279370000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11911" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "92e07731-abc5-47c1-9967-1bb6cb27d4c0" ],
+        "x-ms-correlation-request-id": [ "23880bd5-48b1-48cf-a99e-e2fb4d3424f4" ],
+        "x-ms-routing-request-id": [ "WESTUS:20230621T041511Z:23880bd5-48b1-48cf-a99e-e2fb4d3424f4" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 21 Jun 2023 04:15:10 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "647" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRg9xk0p7/providers/Microsoft.DevCenter/devcenters/pwshDcbfj81w/galleries/sek8t\",\"name\":\"sek8t\",\"type\":\"microsoft.devcenter/devcenters/galleries\",\"systemData\":{\"createdBy\":\"amlim@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-06-21T04:14:38.4284552Z\",\"lastModifiedBy\":\"amlim@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-06-21T04:14:38.4284552Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"galleryResourceId\":\"/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRg9xk0p7/providers/Microsoft.Compute/galleries/6xqyv9\"}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzDevCenterAdminGallery+[NoContext]+Create+$PUT+https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRg9xk0p7/providers/Microsoft.DevCenter/devcenters/pwshDcbfj81w/galleries/czd8?api-version=2023-04-01+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRgkmyvux/providers/Microsoft.DevCenter/devcenters/pwshDcykf1ob/galleries/5iun?api-version=2023-04-01",
+      "RequestUri": "https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRg9xk0p7/providers/Microsoft.DevCenter/devcenters/pwshDcbfj81w/galleries/czd8?api-version=2023-04-01",
       "Content": "{\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -57,18 +141,18 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1189" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1188" ],
         "x-ms-providerhub-traffic": [ "True" ],
         "X-Rate-Limit-Limit": [ "1m" ],
-        "X-Rate-Limit-Remaining": [ "299" ],
-        "X-Rate-Limit-Reset": [ "2023-06-20T00:26:02.7809732Z" ],
+        "X-Rate-Limit-Remaining": [ "297" ],
+        "X-Rate-Limit-Reset": [ "2023-06-21T04:15:37.1534580Z" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "x-ms-failure-cause": [ "gateway" ],
-        "x-ms-request-id": [ "ab90a07d-72a0-4a34-8f68-d4c1b68734df" ],
-        "x-ms-correlation-request-id": [ "3cd7364d-8ae3-410c-a90b-63f77da55b95" ],
-        "x-ms-routing-request-id": [ "WESTUS:20230620T002505Z:3cd7364d-8ae3-410c-a90b-63f77da55b95" ],
+        "x-ms-request-id": [ "dd4972f6-53fc-4387-9f4f-13e24773ee56" ],
+        "x-ms-correlation-request-id": [ "0929ec01-b273-4a51-8900-bfb3e76a476c" ],
+        "x-ms-routing-request-id": [ "WESTUS:20230621T041511Z:0929ec01-b273-4a51-8900-bfb3e76a476c" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 20 Jun 2023 00:25:05 GMT" ]
+        "Date": [ "Wed, 21 Jun 2023 04:15:11 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "239" ],

@@ -240,7 +240,7 @@ function New-AzDevCenterAdminPool {
     process {
 
         if ($PSBoundParameters.ContainsKey('Body')) {
-            $Body["LicenseType"] = "Windows_Client"
+            $Body.LicenseType = "Windows_Client"
             $PSBoundParameters["Body"] = $Body
         }
 

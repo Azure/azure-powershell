@@ -53,7 +53,7 @@ function setupEnv() {
     $devCenterId = "/subscriptions/" + $env.SubscriptionId + "/resourceGroups/" + $resourceGroup + "/providers/Microsoft.DevCenter/devcenters/" + $devCenterName
     $time = "18:30"
     $timeZone = "America/Los_Angeles"
-    $subnetId = "/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454//resourceGroups/amlim-test/providers/Microsoft.Network/virtualNetworks/amlim-vnet-canadacentral/subnets/default"
+    $subnetId = "/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/amlim-test/providers/Microsoft.Network/virtualNetworks/amlim-vnet-canadacentral/subnets/default"
     $sigId = "/subscriptions/" + $env.SubscriptionId + "/resourceGroups/amlim-test/providers/Microsoft.Compute/galleries/amlim_pwsh_sig"
     $sigName2 = RandomString -allChars $false -len 6
     $sigName3 = RandomString -allChars $false -len 6
@@ -128,7 +128,7 @@ function setupEnv() {
     $gitHubSecretIdentifier = "https://dummyVault/dummy/00000000"
     $keyVaultName = "dummy"
     $gitHubUri = "https://github.com/fake/fake.git"
-    $gitHubSecretIdentier2 = "https://dummy.vault.azure.net/secrets/envTest2/9eda24d737854e8ebf60260b180410a0"
+    $gitHubSecretIdentier2 = "https://dummyVault/dummy/00000000"
 
     New-AzResourceGroup -Name $resourceGroup -Location "canadacentral"
 

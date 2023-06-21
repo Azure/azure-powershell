@@ -15,7 +15,7 @@ if (($null -eq $TestName) -or ($TestName -contains 'Remove-AzDevCenterAdminGalle
 
 Describe 'Remove-AzDevCenterAdminGallery' {
     It 'Delete' {
-        Remove-AzDevCenterAdminGallery -ResourceGroupName $env.resourceGroup -DevCenterName -Name $env.galleryNameDelete
+        Remove-AzDevCenterAdminGallery -ResourceGroupName $env.resourceGroup -DevCenterName $env.devCenterName -Name $env.galleryNameDelete
         { Get-AzDevCenterAdminGallery -ResourceGroupName $env.resourceGroup -DevCenterName $env.devCenterName -Name $env.galleryNameDelete } | Should -Throw
     }
 

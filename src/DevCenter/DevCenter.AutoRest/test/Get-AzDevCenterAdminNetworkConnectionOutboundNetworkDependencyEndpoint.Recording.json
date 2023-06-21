@@ -1,13 +1,13 @@
 {
-  "Get-AzDevCenterAdminNetworkConnectionOutboundNetworkDependencyEndpoint+[NoContext]+List+$GET+https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRgkmyvux/providers/Microsoft.DevCenter/networkConnections/z9frba/outboundNetworkDependenciesEndpoints?api-version=2023-04-01+1": {
+  "Get-AzDevCenterAdminNetworkConnectionOutboundNetworkDependencyEndpoint+[NoContext]+List+$GET+https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRg9xk0p7/providers/Microsoft.DevCenter/networkConnections/xlt217/outboundNetworkDependenciesEndpoints?api-version=2023-04-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRgkmyvux/providers/Microsoft.DevCenter/networkConnections/z9frba/outboundNetworkDependenciesEndpoints?api-version=2023-04-01",
+      "RequestUri": "https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRg9xk0p7/providers/Microsoft.DevCenter/networkConnections/xlt217/outboundNetworkDependenciesEndpoints?api-version=2023-04-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "43" ],
-        "x-ms-client-request-id": [ "e71e2522-5408-4816-9f61-525dd54c6374" ],
+        "x-ms-client-request-id": [ "e0b6a6be-7452-4dff-a7c8-bf67386b6f44" ],
         "CommandName": [ "Get-AzDevCenterAdminNetworkConnectionOutboundNetworkDependencyEndpoint" ],
         "FullCommandName": [ "Get-AzDevCenterAdminNetworkConnectionOutboundNetworkDependencyEndpoint_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -26,13 +26,13 @@
         "x-ms-providerhub-traffic": [ "True" ],
         "X-Rate-Limit-Limit": [ "1m" ],
         "X-Rate-Limit-Remaining": [ "296" ],
-        "X-Rate-Limit-Reset": [ "2023-06-20T00:19:09.8732713Z" ],
+        "X-Rate-Limit-Reset": [ "2023-06-21T04:07:23.6345457Z" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "61d809c6-b22a-4515-8c7b-648cc9bc3ce2" ],
-        "x-ms-correlation-request-id": [ "14542e3f-3fb9-4b37-b53d-a13bda7d678e" ],
-        "x-ms-routing-request-id": [ "WESTUS:20230620T001815Z:14542e3f-3fb9-4b37-b53d-a13bda7d678e" ],
+        "x-ms-request-id": [ "c45f1812-b279-4479-984a-32cff51dcb67" ],
+        "x-ms-correlation-request-id": [ "fa4cecf0-e031-4365-af04-7021d03329f7" ],
+        "x-ms-routing-request-id": [ "WESTUS:20230621T040630Z:fa4cecf0-e031-4365-af04-7021d03329f7" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 20 Jun 2023 00:18:15 GMT" ]
+        "Date": [ "Wed, 21 Jun 2023 04:06:30 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "3782" ],

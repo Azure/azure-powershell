@@ -168,8 +168,8 @@ param(
 
 process {
     if ($PSBoundParameters.ContainsKey('Body')) {
-        $Body["Frequency"] = "Daily"
-        $Body["PropertiesType"] = "StopDevBox"
+        $Body.Frequency = "Daily"
+        $Body.PropertiesType = "StopDevBox"
         $PSBoundParameters["Body"] = $Body
     }
 
