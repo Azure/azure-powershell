@@ -88,17 +88,12 @@ function Test-AccountRelatedCmdlets
   Assert-NotNull $cosmosDBAccountKey
 
   $cosmosDBAccountConnectionStrings = Get-AzCosmosDBAccountKey -Name $cosmosDBAccountName -ResourceGroupName $rgname -Type "ConnectionStrings"
-  Write-Output $cosmosDBAccountConnectionStrings
   Assert-NotNull $cosmosDBAccountConnectionStrings
-
-  for (($i = 0); $i -lt $cosmosDBAccountConnectionStrings.Count; $i++) {
-    Assert-NotNull $cosmosDBAccountConnectionStrings[$i].KeyKind
-    Assert-NotNull $cosmosDBAccountConnectionStrings[$i].Type
-  }
+  Assert-NotNull $cosmosDBAccountConnectionStrings.ConnectionStrings[0].KeyKind
+  Assert-NotNull $cosmosDBAccountConnectionStrings.ConnectionStrings[0].Type
 
   $cosmosDBAccountReadOnlyKeys = Get-AzCosmosDBAccountKey -Name $cosmosDBAccountName -ResourceGroupName $rgname -Type "ReadOnlyKeys"
-  Assert-NotNull $cosmosDBAccountReadOnlyKeys["PrimaryReadonlyMasterKey"]
-  Assert-NotNull $cosmosDBAccountReadOnlyKeys["SecondaryReadonlyMasterKey"]
+  Assert-NotNull $cosmosDBAccountReadOnlyKeys
 
   $RegeneratedKey = New-AzCosmosDBAccountKey -Name $cosmosDBAccountName -ResourceGroupName $rgname -KeyKind "primary"
   Assert-NotNull $RegeneratedKey 

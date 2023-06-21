@@ -49,22 +49,6 @@ SecondaryReadonlyMasterKey     9YRcTABuOHcKyHAKf0lmCeHsrcXu02aeID1g3wjXjlX8SU4s2
 
 Lists the keys for CosmosDB Account. The Key Type can be value from : ConnectionStrings, Keys and ReadOnlyKeys. Default is Keys.
 
-### Example 2
-```powershell
-Get-AzCosmosDBAccountKey -ResourceGroupName rg1 -Name dbname -Type "ConnectionStrings"
-```
-
-```output
-ConnectionString                                                                                                                                                      Description                               KeyKind           Type
-----------------                                                                                                                                                      -----------                               -------           ----
-AccountEndpoint=https://cosmosdbaccount.documents.azure.com:443/;AccountKey=qjw0ISW1WNN0BIVPeaI7Tm3H8uZ1h7ESQjxaUendxHmIUNQowVvcL84fTqeXoC2HFgyu8Zo1mCFEcg0jZJHPjA==; Primary SQL Connection String             Primary           Sql
-AccountEndpoint=https://cosmosdbaccount.documents.azure.com:443/;AccountKey=qjw0ISW1WNN0BIVPeaI7Tm3H8uZ1h7ESQjxaUendxHmIUNQowVvcL84fTqeXoC2HFgyu8Zo1mCFEcg0jZJHPjA==; Secondary SQL Connection String           Secondary         Sql
-AccountEndpoint=https://cosmosdbaccount.documents.azure.com:443/;AccountKey=qjw0ISW1WNN0BIVPeaI7Tm3H8uZ1h7ESQjxaUendxHmIUNQowVvcL84fTqeXoC2HFgyu8Zo1mCFEcg0jZJHPjA==; Primary Read-Only SQL Connection String   PrimaryReadonly   Sql
-AccountEndpoint=https://cosmosdbaccount.documents.azure.com:443/;AccountKey=qjw0ISW1WNN0BIVPeaI7Tm3H8uZ1h7ESQjxaUendxHmIUNQowVvcL84fTqeXoC2HFgyu8Zo1mCFEcg0jZJHPjA==; Secondary Read-Only SQL Connection String SecondaryReadonly Sql
-```
-
-Lists the ConnectionStrings for CosmosDB Account by specifying Key Type ConnectionStrings.
-
 ## PARAMETERS
 
 ### -DefaultProfile

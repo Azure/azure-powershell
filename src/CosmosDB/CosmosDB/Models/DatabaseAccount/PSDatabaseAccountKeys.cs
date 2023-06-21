@@ -15,7 +15,6 @@
 namespace Microsoft.Azure.Commands.CosmosDB.Models
 {
     using System.Collections;
-    using System.Collections.Generic;
     using Microsoft.Azure.Management.CosmosDB.Models;
 
     public class PSDatabaseAccountListKeys 
@@ -44,7 +43,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
 
             foreach (DatabaseAccountConnectionString connectionString in databaseAccountConnectionString.ConnectionStrings)
             {
-                ConnectionStrings.Add(connectionString);
+                Keys.Add(connectionString.Description, connectionString.ConnectionString);
             }
         }
 
@@ -62,7 +61,5 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
         }
 
         public Hashtable Keys { get; set; } = new Hashtable();
-
-        public IList<DatabaseAccountConnectionString> ConnectionStrings { get; set; } = new List<DatabaseAccountConnectionString>();
     }
 }
