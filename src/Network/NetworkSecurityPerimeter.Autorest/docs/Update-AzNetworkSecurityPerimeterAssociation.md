@@ -150,7 +150,7 @@ The name of the association.
 ```yaml
 Type: System.String
 Parameter Sets: UpdateExpanded
-Aliases: WorkspaceName
+Aliases: AssociationName
 
 Required: True
 Position: Named
@@ -320,6 +320,8 @@ To create the parameters described below, construct a hash table containing the 
   - `[AccessRuleName <String>]`: The name of the NSP access rule.
   - `[AssociationName <String>]`: The name of the NSP association.
   - `[Id <String>]`: Resource identity path
+  - `[LinkName <String>]`: The name of the NSP link.
+  - `[LinkReferenceName <String>]`: The name of the NSP linkReference.
   - `[Location <String>]`: The location of network security perimeter.
   - `[NetworkSecurityPerimeterName <String>]`: The name of the network security perimeter.
   - `[ProfileName <String>]`: The name of the NSP profile.

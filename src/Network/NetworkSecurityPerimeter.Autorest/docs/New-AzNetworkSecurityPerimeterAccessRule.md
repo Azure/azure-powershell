@@ -16,9 +16,10 @@ Creates or updates a network access rule.
 ```
 New-AzNetworkSecurityPerimeterAccessRule -Name <String> -ProfileName <String> -ResourceGroupName <String>
  -SecurityPerimeterName <String> [-SubscriptionId <String>] [-AccessRuleId <String>]
- [-AddressPrefix <String[]>] [-Direction <AccessRuleDirection>] [-FullyQualifiedDomainName <String[]>]
- [-Location <String>] [-Perimeter <IPerimeterBasedAccessRule[]>] [-Subscription <ISubscriptionId[]>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-AddressPrefix <String[]>] [-Direction <AccessRuleDirection>] [-EmailAddress <String[]>]
+ [-FullyQualifiedDomainName <String[]>] [-Location <String>] [-Perimeter <IPerimeterBasedAccessRule[]>]
+ [-PhoneNumber <String[]>] [-Subscription <ISubscriptionId[]>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Create
@@ -32,9 +33,9 @@ New-AzNetworkSecurityPerimeterAccessRule -Name <String> -ProfileName <String> -R
 ```
 New-AzNetworkSecurityPerimeterAccessRule -InputObject <INetworkSecurityPerimeterIdentity>
  [-AccessRuleId <String>] [-AddressPrefix <String[]>] [-Direction <AccessRuleDirection>]
- [-FullyQualifiedDomainName <String[]>] [-Location <String>] [-Perimeter <IPerimeterBasedAccessRule[]>]
- [-Subscription <ISubscriptionId[]>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-EmailAddress <String[]>] [-FullyQualifiedDomainName <String[]>] [-Location <String>]
+ [-Perimeter <IPerimeterBasedAccessRule[]>] [-PhoneNumber <String[]>] [-Subscription <ISubscriptionId[]>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -153,6 +154,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EmailAddress
+Outbound rules email address format.
+
+```yaml
+Type: System.String[]
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -FullyQualifiedDomainName
 Outbound rules fully qualified domain name format.
 
@@ -236,6 +252,21 @@ To construct, see NOTES section for PERIMETER properties and create a hash table
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.Api20210201Preview.IPerimeterBasedAccessRule[]
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PhoneNumber
+Outbound rules phone number format.
+
+```yaml
+Type: System.String[]
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
@@ -395,6 +426,8 @@ To create the parameters described below, construct a hash table containing the 
   - `[AccessRuleName <String>]`: The name of the NSP access rule.
   - `[AssociationName <String>]`: The name of the NSP association.
   - `[Id <String>]`: Resource identity path
+  - `[LinkName <String>]`: The name of the NSP link.
+  - `[LinkReferenceName <String>]`: The name of the NSP linkReference.
   - `[Location <String>]`: The location of network security perimeter.
   - `[NetworkSecurityPerimeterName <String>]`: The name of the network security perimeter.
   - `[ProfileName <String>]`: The name of the NSP profile.
@@ -408,9 +441,11 @@ To create the parameters described below, construct a hash table containing the 
     - `[(Any) <String>]`: This indicates any property can be added to this object.
   - `[AddressPrefix <String[]>]`: Inbound address prefixes (IPv4/IPv6)
   - `[Direction <AccessRuleDirection?>]`: Direction that specifies whether the access rules is inbound/outbound.
+  - `[EmailAddress <String[]>]`: Outbound rules email address format.
   - `[FullyQualifiedDomainName <String[]>]`: Outbound rules fully qualified domain name format.
   - `[NetworkSecurityPerimeter <IPerimeterBasedAccessRule[]>]`: Inbound rule specified by the perimeter id.
     - `[Id <String>]`: NSP id in the ARM id format.
+  - `[PhoneNumber <String[]>]`: Outbound rules phone number format.
   - `[Subscription <ISubscriptionId[]>]`: List of subscription ids
     - `[Id <String>]`: Subscription id in the ARM id format.
 

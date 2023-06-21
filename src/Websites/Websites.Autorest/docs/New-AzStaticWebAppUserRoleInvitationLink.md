@@ -35,6 +35,7 @@ Description for Creates an invitation link for a user with the role
 ```powershell
 New-AzStaticWebAppUserRoleInvitationLink -ResourceGroupName azure-rg-test -Name staticweb-pwsh02 -Domain 'xxxxxxxxx.azurestaticapps.net' -Provider 'github' -UserDetail 'UserName' -Role 'reader' -NumHoursToExpiration 1
 ```
+
 ```output
 Kind Name                                 Type
 ---- ----                                 ----

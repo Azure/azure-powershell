@@ -36,7 +36,7 @@ require:
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
 # You need to specify your swagger files here.
-  - https://github.com/kaushal087/azure-rest-api-specs/blob/51762fd45c3403c23ebe2f8969650bdb95533d79/specification/network/resource-manager/Microsoft.Network/preview/2021-02-01-preview/networkSecurityPerimeter.json
+  - https://github.com/kaushal087/azure-rest-api-specs/blob/edd10769b1c1bc88bde274add8562beb13b118af/specification/network/resource-manager/Microsoft.Network/preview/2021-02-01-preview/networkSecurityPerimeter.json
 #  - C:\repo\azure-rest-api-specs/specification/network/resource-manager/Microsoft.Network/preview/2021-02-01-preview/networkSecurityPerimeter.json
 # If the swagger has not been put in the repo, you may uncomment the following line and refer to it locally
 # - (this-folder)/relative-path-to-your-swagger 
@@ -87,6 +87,14 @@ directive:
       subject: NspAssociation
     set:
       subject: Association
+  - where:
+      subject: NspLink
+    set:
+      subject: Link
+  - where:
+      subject: NspLinkReference
+    set:
+      subject: LinkReference
 
 # Parameter Update
 # NSP
@@ -207,6 +215,58 @@ directive:
       parameter-name: AssociationId
       alias:
         - Id
+
+# Link
+  - where:
+      subject: Link
+      parameter-name: LinkName
+    set:
+      parameter-name: Name
+      alias:
+        - LinkName
+
+  - where:
+      subject: Link
+      parameter-name: Id
+    set:
+      parameter-name: LinkId
+      alias: 
+        - Id
+
+  - where:
+      subject: Link
+      parameter-name: NetworkSecurityPerimeterName
+    set:
+      parameter-name: SecurityPerimeterName
+      alias: 
+        - NetworkSecurityPerimeterName
+        - NSPName
+
+# LinkReference
+  - where:
+      subject: LinkReference
+      parameter-name: LinkReferenceName
+    set:
+      parameter-name: Name
+      alias:
+        - LinkReferenceName
+
+  - where:
+      subject: LinkReference
+      parameter-name: Id
+    set:
+      parameter-name: LinkReferenceId
+      alias: 
+        - Id
+
+  - where:
+      subject: LinkReference
+      parameter-name: NetworkSecurityPerimeterName
+    set:
+      parameter-name: SecurityPerimeterName
+      alias: 
+        - NetworkSecurityPerimeterName
+        - NSPName
 
 # feature request for the below change https://github.com/Azure/autorest.powershell/issues/982
   - from: source-file-csharp

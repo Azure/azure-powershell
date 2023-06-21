@@ -8,7 +8,7 @@ schema: 2.0.0
 # Test-AzFrontDoorCdnEndpointCustomDomain
 
 ## SYNOPSIS
-Validates the custom domain mapping to ensure it maps to the correct CDN endpoint in DNS.This api isn't work for apex domain.
+Validates the custom domain mapping to ensure it maps to the correct Azure Front Door endpoint in DNS.
 
 ## SYNTAX
 
@@ -26,7 +26,7 @@ Test-AzFrontDoorCdnEndpointCustomDomain -InputObject <ICdnIdentity> -HostName <S
 ```
 
 ## DESCRIPTION
-Validates the custom domain mapping to ensure it maps to the correct CDN endpoint in DNS.This api isn't work for apex domain.
+Validates the custom domain mapping to ensure it maps to the correct Azure Front Door endpoint in DNS.
 
 ## EXAMPLES
 
@@ -43,10 +43,24 @@ True
 
 Test an AzureFrontDoor domain within the specified AzureFrontDoor endpoint
 
+### Example 2: Test an AzureFrontDoor domain within the specified AzureFrontDoor endpoint via identity 
+```powershell
+Get-AzFrontDoorCdnEndpoint -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -EndpointName end001 | Test-AzFrontDoorCdnEndpointCustomDomain -HostName "pstest001.dev.cdn.azure.cn"
+```
+
+```output
+CustomDomainValidated Message Reason
+--------------------- ------- ------
+True
+```
+
+Test an AzureFrontDoor domain within the specified AzureFrontDoor endpoint via identity
+
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -192,7 +206,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IValidateCustomDomainOutput
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IValidateCustomDomainOutput
 
 ## NOTES
 
@@ -209,7 +223,7 @@ To create the parameters described below, construct a hash table containing the 
   - `[Id <String>]`: Resource identity path
   - `[OriginGroupName <String>]`: Name of the origin group which is unique within the endpoint.
   - `[OriginName <String>]`: Name of the origin which is unique within the profile.
-  - `[ProfileName <String>]`: Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
+  - `[ProfileName <String>]`: Name of the Azure Front Door Standard or Azure Front Door Premium profile which is unique within the resource group.
   - `[ResourceGroupName <String>]`: Name of the Resource group within the Azure subscription.
   - `[RouteName <String>]`: Name of the routing rule.
   - `[RuleName <String>]`: Name of the delivery rule which is unique within the endpoint.

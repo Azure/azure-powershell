@@ -34,6 +34,7 @@ Description for Updates a user entry with the listed roles
 ```powershell
 Update-AzStaticWebAppUser -ResourceGroupName azure-rg-test -Name staticweb-portal01 -Authprovider 'github' -Userid 'fa4eba85fa9f4a42b5300dc4c7bb45aa' -Role 'contributor'
 ```
+
 ```output
 Kind Name                             Type
 ---- ----                             ----
@@ -46,6 +47,7 @@ This command updates a user entry with the listed roles.
 ```powershell
 Get-AzStaticWebAppUser -ResourceGroupName azure-rg-test -Name staticweb-portal01 -Authprovider 'all'  | Update-AzStaticWebAppUser -Role 'contributor'
 ```
+
 ```output
 Kind Name                             Type
 ---- ----                             ----

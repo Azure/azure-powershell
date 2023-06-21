@@ -452,25 +452,7 @@ namespace Microsoft.WindowsAzure.Build.Tasks
                 {
                     return false;
                 }
-                else if (FilesChanged.Length >= OCTOKIT_CHANGED_FILE_LIMIT)
-                {
-                    var selectedModuleList = GetSelectedModuleList();
-                    Dictionary<string, HashSet<string>> influencedModuleInfo = new Dictionary<string, HashSet<string>>
-                    {
-                        [BUILD_PHASE] = new HashSet<string>(selectedModuleList),
-                        [TEST_PHASE] = new HashSet<string>(selectedModuleList)
-                    };
-                    foreach (var analysisPhase in ANALYSIS_PHASE_LIST)
-                    {
-                        influencedModuleInfo.Add(analysisPhase, new HashSet<string>(selectedModuleList));
-                    }
-                    FilterTaskResult.PhaseInfo = CalculateCsprojForBuildAndTest(influencedModuleInfo, csprojMap);
-                    return true;
-                }
-                else
-                {
-                    return ProcessFileChanged(csprojMap);
-                }
+                return ProcessFileChanged(csprojMap);
             }
             return true;
         }

@@ -154,6 +154,32 @@ function CheckKeyVaultModuleDependency {
     }
 }
 
+function CheckAksModuleDependency {
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.DoNotExportAttribute()]
+    param() 
+
+    process {
+        $module = Get-Module -ListAvailable | Where-Object { $_.Name -eq "Az.Aks" }
+        if ($module -eq $null) {
+            $message = "Az.Aks Module must be installed to run this command. Please run 'Install-Module -Name Az.Aks' to install and continue."
+            throw $message
+        }
+    }
+}
+
+function CheckStorageModuleDependency {
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.DoNotExportAttribute()]
+    param() 
+
+    process {
+        $module = Get-Module -ListAvailable | Where-Object { $_.Name -eq "Az.Storage" }
+        if ($module -eq $null) {
+            $message = "Az.Storage Module must be installed to run this command. Please run 'Install-Module -Name Az.Storage' to install and continue."
+            throw $message
+        }
+    }
+}
+
 function AssignMissingRolesHelper {
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.DoNotExportAttribute()]
     param(
@@ -171,7 +197,14 @@ function AssignMissingRolesHelper {
     )
 
     process {
-        try { New-AzRoleAssignment -ObjectId $ObjectId -RoleDefinitionName $Permission -Scope $ResourceScope | Out-Null }
+        Write-Debug "Assigning new role for ObjectId, RoleDefinitionName, Scope: "
+        Write-Debug $ObjectId
+        Write-Debug $Permission
+        Write-Debug $ResourceGroup        
+
+        try { 
+            New-AzRoleAssignment -ObjectId $ObjectId -RoleDefinitionName $Permission -Scope $ResourceScope | Out-Null 
+        }
          
         catch {
             $err = $_
@@ -182,7 +215,6 @@ function AssignMissingRolesHelper {
         }
     }
 }
-
 
 function AssignMissingRoles {
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.DoNotExportAttribute()]

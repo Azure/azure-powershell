@@ -11,7 +11,7 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.RedisEnterpriseCache.private.dll'
   FormatsToProcess = './Az.RedisEnterpriseCache.format.ps1xml'
-  FunctionsToExport = 'Export-AzRedisEnterpriseCache', 'Get-AzRedisEnterpriseCache', 'Get-AzRedisEnterpriseCacheDatabase', 'Get-AzRedisEnterpriseCacheKey', 'Get-AzRedisEnterpriseCacheOperationStatus', 'Import-AzRedisEnterpriseCache', 'Invoke-AzRedisEnterpriseCacheForceDatabaseUnlink', 'New-AzRedisEnterpriseCache', 'New-AzRedisEnterpriseCacheDatabase', 'New-AzRedisEnterpriseCacheKey', 'Remove-AzRedisEnterpriseCache', 'Remove-AzRedisEnterpriseCacheDatabase', 'Update-AzRedisEnterpriseCache', 'Update-AzRedisEnterpriseCacheDatabase', '*'
+  FunctionsToExport = 'Export-AzRedisEnterpriseCache', 'Get-AzRedisEnterpriseCache', 'Get-AzRedisEnterpriseCacheDatabase', 'Get-AzRedisEnterpriseCacheKey', 'Get-AzRedisEnterpriseCacheOperationStatus', 'Import-AzRedisEnterpriseCache', 'Invoke-AzRedisEnterpriseCacheDatabaseFlush', 'Invoke-AzRedisEnterpriseCacheForceDatabaseUnlink', 'New-AzRedisEnterpriseCache', 'New-AzRedisEnterpriseCacheDatabase', 'New-AzRedisEnterpriseCacheKey', 'Remove-AzRedisEnterpriseCache', 'Remove-AzRedisEnterpriseCacheDatabase', 'Update-AzRedisEnterpriseCache', 'Update-AzRedisEnterpriseCacheDatabase', '*'
   AliasesToExport = 'Export-AzRedisEnterpriseCacheDatabase', 'Get-AzRedisEnterpriseCacheDatabaseKey', 'Get-AzRedisEnterpriseCacheAccessKey', 'Import-AzRedisEnterpriseCacheDatabase', 'New-AzRedisEnterpriseCacheDatabaseKey', 'New-AzRedisEnterpriseCacheAccessKey', '*'
   PrivateData = @{
     PSData = @{

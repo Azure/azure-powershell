@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzNetworkSecurityPerimeterAccessRule
 
 ## SYNOPSIS
-Updates a workspace.
+Updates an access rule.
 
 ## SYNTAX
 
@@ -16,21 +16,22 @@ Updates a workspace.
 ```
 Update-AzNetworkSecurityPerimeterAccessRule -Name <String> -ProfileName <String> -ResourceGroupName <String>
  -SecurityPerimeterName <String> [-SubscriptionId <String>] [-AddressPrefix <ArrayList>] [-Direction <String>]
- [-FullyQualifiedDomainName <ArrayList>] [-Location <String>] [-Perimeter <IPerimeterBasedAccessRule[]>]
- [-Subscription <ISubscriptionId[]>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-EmailAddress <ArrayList>] [-FullyQualifiedDomainName <ArrayList>] [-Location <String>]
+ [-Perimeter <IPerimeterBasedAccessRule[]>] [-PhoneNumber <ArrayList>] [-Subscription <ISubscriptionId[]>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzNetworkSecurityPerimeterAccessRule -InputObject <INetworkSecurityPerimeterIdentity>
- [-AddressPrefix <ArrayList>] [-Direction <String>] [-FullyQualifiedDomainName <ArrayList>]
- [-Location <String>] [-Perimeter <IPerimeterBasedAccessRule[]>] [-Subscription <ISubscriptionId[]>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-AddressPrefix <ArrayList>] [-Direction <String>] [-EmailAddress <ArrayList>]
+ [-FullyQualifiedDomainName <ArrayList>] [-Location <String>] [-Perimeter <IPerimeterBasedAccessRule[]>]
+ [-PhoneNumber <ArrayList>] [-Subscription <ISubscriptionId[]>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Updates a workspace.
+Updates an access rule.
 
 ## EXAMPLES
 
@@ -132,6 +133,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EmailAddress
+Email Addresses
+
+```yaml
+Type: System.Collections.ArrayList
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -FullyQualifiedDomainName
 Fully qualified domain name
 
@@ -214,6 +230,21 @@ To construct, see NOTES section for PERIMETER properties and create a hash table
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.Api20210201Preview.IPerimeterBasedAccessRule[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PhoneNumber
+Phone Numbers
+
+```yaml
+Type: System.Collections.ArrayList
 Parameter Sets: (All)
 Aliases:
 
@@ -371,6 +402,8 @@ To create the parameters described below, construct a hash table containing the 
   - `[AccessRuleName <String>]`: The name of the NSP access rule.
   - `[AssociationName <String>]`: The name of the NSP association.
   - `[Id <String>]`: Resource identity path
+  - `[LinkName <String>]`: The name of the NSP link.
+  - `[LinkReferenceName <String>]`: The name of the NSP linkReference.
   - `[Location <String>]`: The location of network security perimeter.
   - `[NetworkSecurityPerimeterName <String>]`: The name of the network security perimeter.
   - `[ProfileName <String>]`: The name of the NSP profile.

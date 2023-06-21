@@ -54,7 +54,7 @@ steps:
 
 - pwsh: |
    Install-Module -Name Pester -RequiredVersion 4.10.1 -Force
-   Install-Module -Name Az.Accounts -Scope CurrentUser -Force
+   Import-Module (Join-Path -Path . -ChildPath Az.Accounts | Join-Path -ChildPath Az.Accounts.psd1) -Force
    if ($IsWindows) { $sp = ";" } else { $sp = ":" }
    $env:PSModulePath = $env:PSModulePath + $sp + (pwd).Path
    $rootFolder = (Get-item $PWD).Parent.Parent
@@ -69,6 +69,13 @@ steps:
   continueOnError: true
   env:
     PowerShellPlatform: ${{ parameters.powerShellPlatform }}
+
+- task: PowerShell@2
+  displayName: Analyze Test Coverage
+  inputs:
+    pwsh: true
+    targetType: filePath
+    filePath: ./tools/TestFx/Coverage/ValidateTestCoverage.ps1
 
 - pwsh: |
     $PipelineResult = Get-Content PipelineResult.json | ConvertFrom-Json

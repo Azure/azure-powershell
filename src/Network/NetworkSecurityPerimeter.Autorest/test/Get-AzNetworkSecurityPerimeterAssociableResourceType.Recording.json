@@ -6,12 +6,12 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "27" ],
-        "x-ms-client-request-id": [ "c750cc95-2b8e-4272-bb9d-a36e3f2e7b69" ],
+        "x-ms-unique-id": [ "39" ],
+        "x-ms-client-request-id": [ "09b52be8-b0f9-4422-a653-bb8275632493" ],
         "CommandName": [ "Get-AzNetworkSecurityPerimeterAssociableResourceType" ],
         "FullCommandName": [ "Get-AzNetworkSecurityPerimeterAssociableResourceType_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.6", "Az.NetworkSecurityPerimeter/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.9", "Az.NetworkSecurityPerimeter/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -22,14 +22,14 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11969" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11992" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "Server": [ "Kestrel" ],
-        "x-ms-request-id": [ "a708413d-1245-4fe3-9f67-b3552e6a805f" ],
-        "x-ms-correlation-request-id": [ "a708413d-1245-4fe3-9f67-b3552e6a805f" ],
-        "x-ms-routing-request-id": [ "SOUTHINDIA:20221018T145056Z:a708413d-1245-4fe3-9f67-b3552e6a805f" ],
+        "x-ms-request-id": [ "3bb7884e-864f-4d04-810b-c0108c845073" ],
+        "x-ms-correlation-request-id": [ "3bb7884e-864f-4d04-810b-c0108c845073" ],
+        "x-ms-routing-request-id": [ "CENTRALINDIA:20230315T091111Z:3bb7884e-864f-4d04-810b-c0108c845073" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 18 Oct 2022 14:50:56 GMT" ]
+        "Date": [ "Wed, 15 Mar 2023 09:11:10 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "4959" ],
@@ -48,12 +48,12 @@
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "28" ],
-        "x-ms-client-request-id": [ "c750cc95-2b8e-4272-bb9d-a36e3f2e7b69" ],
+        "x-ms-unique-id": [ "40" ],
+        "x-ms-client-request-id": [ "09b52be8-b0f9-4422-a653-bb8275632493" ],
         "CommandName": [ "Get-AzNetworkSecurityPerimeterAssociableResourceType" ],
         "FullCommandName": [ "Get-AzNetworkSecurityPerimeterAssociableResourceType_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.6", "Az.NetworkSecurityPerimeter/0.1.0" ]
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.9", "Az.NetworkSecurityPerimeter/0.1.0" ]
       },
       "ContentHeaders": {
       }
@@ -63,21 +63,21 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11968" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11991" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "Server": [ "Kestrel" ],
-        "x-ms-request-id": [ "78f74519-0228-432f-8f3e-301296ed3e0e" ],
-        "x-ms-correlation-request-id": [ "78f74519-0228-432f-8f3e-301296ed3e0e" ],
-        "x-ms-routing-request-id": [ "SOUTHINDIA:20221018T145057Z:78f74519-0228-432f-8f3e-301296ed3e0e" ],
+        "x-ms-request-id": [ "f8cae700-9295-460f-8649-3f7eb924f30e" ],
+        "x-ms-correlation-request-id": [ "f8cae700-9295-460f-8649-3f7eb924f30e" ],
+        "x-ms-routing-request-id": [ "CENTRALINDIA:20230315T091111Z:f8cae700-9295-460f-8649-3f7eb924f30e" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 18 Oct 2022 14:50:57 GMT" ]
+        "Date": [ "Wed, 15 Mar 2023 09:11:11 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "482" ],
+        "Content-Length": [ "4002" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"type\":\"\",\"nextLink\":\"\",\"value\":[{\"type\":\"Microsoft.Network/PerimeterAssociableResourceTypes\",\"name\":\"Microsoft.ServiceBus.namespaces\",\"id\":\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/PerimeterAssociableResourceTypes/Microsoft.ServiceBus.namespaces\",\"properties\":{\"providerNamespace\":\"Microsoft.ServiceBus\",\"resourceType\":\"namespaces\",\"displayName\":\"Microsoft.ServiceBus/namespaces\",\"apiVersion\":\"2022-01-01-preview\",\"publicDnsZones\":[\"servicebus.windows.net\"]}}]}",
+      "Content": "{\"type\":\"\",\"nextLink\":\"\",\"value\":[{\"type\":\"Microsoft.Network/PerimeterAssociableResourceTypes\",\"name\":\"Microsoft.ServiceBus.namespaces\",\"id\":\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/PerimeterAssociableResourceTypes/Microsoft.ServiceBus.namespaces\",\"properties\":{\"providerNamespace\":\"Microsoft.ServiceBus\",\"resourceType\":\"namespaces\",\"displayName\":\"Microsoft.ServiceBus/namespaces\",\"apiVersion\":\"2022-01-01-preview\",\"publicDnsZones\":[\"servicebus.windows.net\"]}},{\"type\":\"Microsoft.Network/PerimeterAssociableResourceTypes\",\"name\":\"Microsoft.Insights.ScheduledQueryRules\",\"id\":\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/PerimeterAssociableResourceTypes/Microsoft.Insights.ScheduledQueryRules\",\"properties\":{\"providerNamespace\":\"Microsoft.Insights\",\"resourceType\":\"ScheduledQueryRules\",\"displayName\":\"Microsoft.Insights/ScheduledQueryRules\",\"apiVersion\":\"2021-10-01\",\"publicDnsZones\":[]}},{\"type\":\"Microsoft.Network/PerimeterAssociableResourceTypes\",\"name\":\"Microsoft.Insights.actionGroups\",\"id\":\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/PerimeterAssociableResourceTypes/Microsoft.Insights.actionGroups\",\"properties\":{\"providerNamespace\":\"Microsoft.Insights\",\"resourceType\":\"actionGroups\",\"displayName\":\"Microsoft.Insights/actionGroups\",\"apiVersion\":\"2021-10-01\",\"publicDnsZones\":[\"azns.azure.com\",\"azns.azure.net\",\"azns.azure.cn\",\"azns.microsofticm.com\",\"azurenotifications.msftcloudes.cn\",\"azurenotifications.msftcloudes.net\"]}},{\"type\":\"Microsoft.Network/PerimeterAssociableResourceTypes\",\"name\":\"Microsoft.DocumentDB.databaseAccounts\",\"id\":\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/PerimeterAssociableResourceTypes/Microsoft.DocumentDB.databaseAccounts\",\"properties\":{\"providerNamespace\":\"Microsoft.DocumentDB\",\"resourceType\":\"databaseAccounts\",\"displayName\":\"Microsoft.DocumentDB/databaseAccounts\",\"apiVersion\":\"2022-08-15-preview\",\"publicDnsZones\":[\"documents.azure.com\",\"mongo.cosmos.azure.com\",\"cassandra.cosmos.azure.com\",\"gremlin.cosmos.azure.com\",\"table.cosmos.azure.com\"]}},{\"type\":\"Microsoft.Network/PerimeterAssociableResourceTypes\",\"name\":\"Microsoft.Devices.IotHubs\",\"id\":\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/PerimeterAssociableResourceTypes/Microsoft.Devices.IotHubs\",\"properties\":{\"providerNamespace\":\"Microsoft.Devices\",\"resourceType\":\"IotHubs\",\"displayName\":\"Microsoft.Devices/IotHubs\",\"apiVersion\":\"2021-07-02-preview\",\"publicDnsZones\":[\"servicebus.windows.net\",\"azure-devices.net\"]}},{\"type\":\"Microsoft.Network/PerimeterAssociableResourceTypes\",\"name\":\"Microsoft.DigitalTwins.digitalTwinsInstances\",\"id\":\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/PerimeterAssociableResourceTypes/Microsoft.DigitalTwins.digitalTwinsInstances\",\"properties\":{\"providerNamespace\":\"Microsoft.DigitalTwins\",\"resourceType\":\"digitalTwinsInstances\",\"displayName\":\"Microsoft.DigitalTwins/digitalTwinsInstances\",\"apiVersion\":\"2023-06-30-preview\",\"publicDnsZones\":[\"digitaltwins.azure.net\",\"digitaltwins.azure.cn\",\"azuredigitaltwins-ppe.net\"]}},{\"type\":\"Microsoft.Network/PerimeterAssociableResourceTypes\",\"name\":\"Microsoft.Attestation.attestationProviders\",\"id\":\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/PerimeterAssociableResourceTypes/Microsoft.Attestation.attestationProviders\",\"properties\":{\"providerNamespace\":\"Microsoft.Attestation\",\"resourceType\":\"attestationProviders\",\"displayName\":\"Microsoft.Attestation/attestationProviders\",\"apiVersion\":\"2023-03-01-preview\",\"publicDnsZones\":[\"attest.azure.net\",\"attest.azure.us\"]}},{\"type\":\"Microsoft.Network/PerimeterAssociableResourceTypes\",\"name\":\"Microsoft.BotService.botServices\",\"id\":\"/subscriptions/{subscriptionId}/providers/Microsoft.Network/PerimeterAssociableResourceTypes/Microsoft.BotService.botServices\",\"properties\":{\"providerNamespace\":\"Microsoft.BotService\",\"resourceType\":\"botServices\",\"displayName\":\"Microsoft.BotService/botServices\",\"apiVersion\":\"2022-06-15-preview\",\"publicDnsZones\":[\"botframework.com\"]}}]}",
       "isContentBase64": false
     }
   }

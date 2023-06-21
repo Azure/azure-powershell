@@ -77,13 +77,6 @@ Remove-AzStackHCIVMAttestation removes guests from AzureStack HCI IMDS Attestati
 ### [Set-AzStackHCI](Set-AzStackHCI.md)
 Set-AzStackHCI modifies resource properties of the Microsoft.AzureStackHCI cloud resource representing the on-premises cluster to enable or disable features.
 
-### [Test-AzStackHCIConnection](Test-AzStackHCIConnection.md)
-Test-AzStackHCIConnection verifies connectivity from on-premises clustered nodes to the Azure services required by Azure Stack HCI.
-
-Note: Test-AzStackhHCIConnection is deprecated.
-Please use 'Invoke-AzStackHciConnectivityValidation' from 'AzStackHCI.EnvironmentChecker' module for enhanced connectivity verification tests.
-For more information, see https://learn.microsoft.com/en-us/azure-stack/hci/whats-new#new-azure-stack-hci-environment-checker-tool.
-
 ### [Unregister-AzStackHCI](Unregister-AzStackHCI.md)
 Unregister-AzStackHCI deletes the Microsoft.AzureStackHCI cloud resource representing the on-premises cluster and unregisters the on-premises cluster with Azure.
 The registered information available on the cluster is used to unregister the cluster if no parameters are passed.

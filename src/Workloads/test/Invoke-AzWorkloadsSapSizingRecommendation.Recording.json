@@ -1,0 +1,38 @@
+{
+  "Invoke-AzWorkloadsSapSizingRecommendation+[NoContext]+SapExpanded+$POST+https://management.azure.com/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/providers/Microsoft.Workloads/locations/eastus/sapVirtualInstanceMetadata/default/getSizingRecommendations?api-version=2023-04-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/providers/Microsoft.Workloads/locations/eastus/sapVirtualInstanceMetadata/default/getSizingRecommendations?api-version=2023-04-01",
+      "Content": "{\r\n  \"appLocation\": \"eastus\",\r\n  \"environment\": \"NonProd\",\r\n  \"sapProduct\": \"S4HANA\",\r\n  \"deploymentType\": \"SingleServer\",\r\n  \"saps\": 10000,\r\n  \"dbMemory\": 256,\r\n  \"databaseType\": \"HANA\",\r\n  \"dbScaleMethod\": \"ScaleUp\"\r\n}",
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "220" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1197" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "mise-correlation-id": [ "412ac0bf-8334-4015-9b90-19b439b34ff2" ],
+        "api-supported-versions": [ "2021-12-01-preview, 2022-10-15-preview, 2022-11-01-preview, 2023-04-01" ],
+        "x-ms-request-id": [ "248f6f66-c2ab-46c9-94dc-ecfbdd4a4cef" ],
+        "x-ms-correlation-request-id": [ "7bf78eac-02a0-4691-b721-0b4f73240c56" ],
+        "x-ms-routing-request-id": [ "WESTINDIA:20230313T062549Z:7bf78eac-02a0-4691-b721-0b4f73240c56" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 13 Mar 2023 06:25:49 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "61" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"vmSku\":\"Standard_E32ds_v4\",\"deploymentType\":\"SingleServer\"}"
+    }
+  }
+}

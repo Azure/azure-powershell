@@ -105,6 +105,9 @@ Function Move-Generation2Master {
         If ($Psd1Metadata.FunctionsToExport -Contains "*") {
             $Psd1Metadata.FunctionsToExport = ($Psd1Metadata.FunctionsToExport | Where-Object { $_ -ne "*" })
         }
+        If ($Psd1Metadata.AliasesToExport.Length -ne 1) {
+            $Psd1Metadata.AliasesToExport = @($Psd1Metadata.AliasesToExport | Where-Object { $_ -ne "*" })
+        }
         Update-ModuleManifest -Path $SourcePsd1Path @Psd1Metadata
         Copy-Item -Path $SourcePsd1Path -Destination $DestPsd1Path
         #EndRegion
@@ -252,7 +255,7 @@ Function Move-Generation2MasterHybrid {
                 Remove-Item -Path $LocalModulesPath -Recurse -Force
             }
             #EndRegion
-            $File2Copy = @('*.ps1', 'how-to.md', 'readme.md', 'README.md', '*.psm1', '*.ps1xml')
+            $File2Copy = @('*.ps1', 'how-to.md', 'readme.md', 'README.md', '*.psm1', '*.ps1xml', '*.psd1')
             Foreach ($File in $File2Copy) {
                 $SourceItem = Join-Path -Path (Join-Path -Path $SourcePath -ChildPath $submoduleDir.Name) -ChildPath $File
                 $DestItem = Join-Path -Path (Join-Path -Path $DestPath -ChildPath $submoduleDir.Name) -ChildPath $File
@@ -269,7 +272,7 @@ Function Move-Generation2MasterHybrid {
             if (-not (Test-Path (Join-Path -Path (Join-Path -Path $DestPath -ChildPath $ModuleName) -ChildPath "Az.$ModuleName.psd1"))) {
                 $Psd1FolderPostfix = '.Management'
             }
-            Copy-Item -Path ("$SourcePath\{0}\docs\*" -f $submoduleDir.Name) -Destination "$DestPath\$ModuleName$Psd1FolderPostfix\help" -Filter *-*
+            Copy-Item -Path ("$SourcePath\{0}\docs\*" -f $submoduleDir.Name) -Destination "$DestPath\$ModuleName$Psd1FolderPostfix\help" -Filter *-* -Force
 
             #Region generate-info.json Here have a issue that user may not use latest version to generate the code.
             $generateInfo = @{}
@@ -352,8 +355,16 @@ Function Move-Generation2MasterHybrid {
                 [string] $DestPath,
                 [string] $Psd1FolderPostfix
             )
-            Import-Module "$DestPath\..\..\artifacts\Debug\Az.$ModuleName\Az.$ModuleName.psd1"
-            Update-MarkdownHelpModule -Path "$DestPath\$ModuleName$Psd1FolderPostfix\help" -RefreshModulePage -AlphabeticParamsOrder -UseFullTypeName -ExcludeDontShow         
+            $psd1Path = "$DestPath\..\..\artifacts\Debug\Az.$ModuleName\Az.$ModuleName.psd1"
+            $assemblyToRemove = "YamlDotNet.dll"
+            $psd1Data = Import-PowerShellDataFile -Path $psd1Path
+            if ($psd1Data.ContainsKey('RequiredAssemblies') -and $psd1Data.RequiredAssemblies -contains $assemblyToRemove) {
+                $psd1Data.RequiredAssemblies = $psd1Data.RequiredAssemblies | Where-Object { $_ -ne $assemblyToRemove }
+                Update-ModuleManifest -Path $psd1Path -RequiredAssemblies $psd1Data.RequiredAssemblies
+            }
+            Import-Module $psd1Path
+            Import-Module platyPS
+            Update-MarkdownHelpModule -Path "$DestPath\$ModuleName$Psd1FolderPostfix\help" -RefreshModulePage -AlphabeticParamsOrder -UseFullTypeName -ExcludeDontShow
         } -ArgumentList $ModuleName, $DestPath, $Psd1FolderPostfix
 
         $job | Wait-Job | Receive-Job

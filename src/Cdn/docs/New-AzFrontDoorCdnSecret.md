@@ -36,7 +36,7 @@ Name      ResourceGroupName
 secret001 testps-rg-da16jm
 ```
 
-
+Create an AzureFrontDoor Secret within the specified AzureFrontDoor profile
 
 ## PARAMETERS
 
@@ -56,7 +56,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -105,7 +106,7 @@ object which contains secret parameters
 To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.ISecretParameters
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.ISecretParameters
 Parameter Sets: (All)
 Aliases:
 
@@ -199,7 +200,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.ISecret
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.ISecret
 
 ## NOTES
 
