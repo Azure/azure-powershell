@@ -57,7 +57,7 @@ New-AzSentinelAlertRule -ResourceGroupName <String> -WorkspaceName <String> -Dis
 ```
 
 ## DESCRIPTION
-Creates or updates the alert rule.
+Creates the alert rule.
 
 ## EXAMPLES
 
