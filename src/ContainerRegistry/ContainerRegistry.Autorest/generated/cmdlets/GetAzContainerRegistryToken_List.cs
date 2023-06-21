@@ -13,7 +13,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Cmdlets
     /// [OpenAPI] List=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/tokens"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzContainerRegistryToken_List")]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.PreviewMessage("This is a preview version of ContainerRegistry. Let us know if you run into any issues.")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IToken))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Description(@"Lists all the tokens for the specified container registry.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Generated]

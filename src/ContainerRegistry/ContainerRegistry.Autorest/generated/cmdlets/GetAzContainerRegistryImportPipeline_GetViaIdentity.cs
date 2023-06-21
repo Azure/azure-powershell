@@ -13,7 +13,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Cmdlets
     /// [OpenAPI] Get=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/importPipelines/{importPipelineName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzContainerRegistryImportPipeline_GetViaIdentity")]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.PreviewMessage("This is a preview version of ContainerRegistry. Let us know if you run into any issues.")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IImportPipeline))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Description(@"Gets the properties of the import pipeline.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Generated]

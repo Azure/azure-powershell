@@ -14,7 +14,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Cmdlets
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzContainerRegistryPipelineRun_CreateExpanded", SupportsShouldProcess = true)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.PreviewMessage("This is a preview version of ContainerRegistry. Let us know if you run into any issues.")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IPipelineRun))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Description(@"Creates a pipeline run for a container registry with the specified parameters")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Generated]

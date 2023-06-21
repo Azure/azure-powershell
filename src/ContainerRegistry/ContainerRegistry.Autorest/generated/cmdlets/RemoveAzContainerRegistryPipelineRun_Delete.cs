@@ -14,7 +14,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Cmdlets
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Remove, @"AzContainerRegistryPipelineRun_Delete", SupportsShouldProcess = true)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.PreviewMessage("This is a preview version of ContainerRegistry. Let us know if you run into any issues.")]
     [global::System.Management.Automation.OutputType(typeof(bool))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Description(@"Deletes a pipeline run from a container registry.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Generated]
