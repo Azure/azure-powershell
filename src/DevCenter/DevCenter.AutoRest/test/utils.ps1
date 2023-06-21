@@ -78,57 +78,60 @@ function setupEnv() {
     $poolForScheduleDelete2 = RandomString -allChars $false -len 6
 
     $catalogSet = RandomString -allChars $false -len 6
-    $catalogSet2 = RandomString -allChars $false -len 6
     $devBoxDefinitionSet = RandomString -allChars $false -len 6
-    $devBoxDefinitionSet2 = RandomString -allChars $false -len 6
     $devCenterSet = RandomString -allChars $false -len 6
-    $devCenterSet2 = RandomString -allChars $false -len 6
     $environmentTypeSet = RandomString -allChars $false -len 6
-    $environmentTypeSet2 = RandomString -allChars $false -len 6
-    $gallerySet = RandomString -allChars $false -len 6
-    $gallerySet2 = RandomString -allChars $false -len 6
     $networkConnectionSet = RandomString -allChars $false -len 6
-    $networkConnectionSet2 = RandomString -allChars $false -len 6
     $poolSet = RandomString -allChars $false -len 6
-    $poolSet2 = RandomString -allChars $false -len 6
     $projectSet = RandomString -allChars $false -len 6
-    $projectSet2 = RandomString -allChars $false -len 6
     $projectEnvironmentTypeSet = RandomString -allChars $false -len 6
-    $projectEnvironmentTypeSet2 = RandomString -allChars $false -len 6
     $scheduleSet = RandomString -allChars $false -len 6
-    $scheduleSet2 = RandomString -allChars $false -len 6
 
     $networkConnectionStart = RandomString -allChars $false -len 6
-    $networkConnectionStart2 = RandomString -allChars $false -len 6
     $poolStart = RandomString -allChars $false -len 6
-    $poolStart2 = RandomString -allChars $false -len 6
     $catalogSync = RandomString -allChars $false -len 6
-    $catalogSync2 = RandomString -allChars $false -len 6
 
     $catalogUpdate = RandomString -allChars $false -len 6
-    $catalogUpdate2 = RandomString -allChars $false -len 6
     $devBoxDefinitionUpdate = RandomString -allChars $false -len 6
-    $devBoxDefinitionUpdate2 = RandomString -allChars $false -len 6
     $devCenterUpdate = RandomString -allChars $false -len 6
-    $devCenterUpdate2 = RandomString -allChars $false -len 6
     $environmentTypeUpdate = RandomString -allChars $false -len 6
-    $environmentTypeUpdate2 = RandomString -allChars $false -len 6
     $networkConnectionUpdate = RandomString -allChars $false -len 6
-    $networkConnectionUpdate2 = RandomString -allChars $false -len 6
     $poolUpdate = RandomString -allChars $false -len 6
-    $poolUpdate2 = RandomString -allChars $false -len 6
     $projectUpdate = RandomString -allChars $false -len 6
-    $projectUpdate2 = RandomString -allChars $false -len 6
     $projectEnvironmentTypeUpdate = RandomString -allChars $false -len 6
-    $projectEnvironmentTypeUpdate2 = RandomString -allChars $false -len 6
     $scheduleUpdate = RandomString -allChars $false -len 6
-    $scheduleUpdate2 = RandomString -allChars $false -len 6
+
+    $env.Add("catalogSet", $catalogSet)
+    $env.Add("devBoxDefinitionSet", $devBoxDefinitionSet)
+    $env.Add("devCenterSet", $devCenterSet)
+    $env.Add("environmentTypeSet", $environmentTypeSet)
+    $env.Add("networkConnectionSet", $networkConnectionSet)
+    $env.Add("poolSet", $poolSet)
+    $env.Add("projectSet", $projectSet)
+    $env.Add("projectEnvironmentTypeSet", $projectEnvironmentTypeSet)
+    $env.Add("scheduleSet", $scheduleSet)
+
+    $env.Add("networkConnectionStart", $networkConnectionStart)
+    $env.Add("poolStart", $poolStart)
+    $env.Add("catalogSync", $catalogSync)
+
+    $env.Add("catalogUpdate", $catalogUpdate)
+    $env.Add("devBoxDefinitionUpdate", $devBoxDefinitionUpdate)
+    $env.Add("devCenterUpdate", $devCenterUpdate)
+    $env.Add("environmentTypeUpdate", $environmentTypeUpdate)
+    $env.Add("networkConnectionUpdate", $networkConnectionUpdate)
+    $env.Add("poolUpdate", $poolUpdate)
+    $env.Add("projectUpdate", $projectUpdate)
+    $env.Add("projectEnvironmentTypeUpdate", $projectEnvironmentTypeUpdate)
+    $env.Add("scheduleUpdate", $scheduleUpdate)
 
     # Replace with real values when running test recordings
     $gitHubSecretIdentifier = "https://dummyVault/dummy/00000000"
     $keyVaultName = "dummy"
     $gitHubUri = "https://github.com/fake/fake.git"
     $gitHubSecretIdentier2 = "https://dummyVault/dummy/00000000"
+
+    $env.Add("gitHubSecretIdentier2", $gitHubSecretIdentier2)
 
     New-AzResourceGroup -Name $resourceGroup -Location "canadacentral"
 
@@ -320,9 +323,6 @@ function setupEnv() {
     $identityPrincipalId = $identity.PrincipalId
     $env.Add("identityId", $identityId)
     $env.Add("identityPrincipalId", $identityPrincipalId)
-
-
-
 
     # For any resources you created for test, you should add it to $env here.
     $envFile = 'env.json'

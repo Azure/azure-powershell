@@ -19,7 +19,7 @@ Describe 'Remove-AzDevCenterAdminCatalog' {
         { Get-AzDevCenterAdminCatalog -DevCenterName $env.devCenterName -Name $env.catalogNameDelete -ResourceGroupName $env.resourceGroup } | Should -Throw
     }
 
-    It 'DeleteViaIdentity' -skip {
+    It 'DeleteViaIdentity' {
         $catalog = Get-AzDevCenterAdminCatalog -DevCenterName $env.devCenterName -Name $env.catalogNameDelete2 -ResourceGroupName $env.resourceGroup
         Remove-AzDevCenterAdminCatalog -InputObject $catalog
         { Get-AzDevCenterAdminCatalog -DevCenterName $env.devCenterName -Name $env.catalogNameDelete2 -ResourceGroupName $env.resourceGroup } | Should -Throw
