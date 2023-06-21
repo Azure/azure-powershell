@@ -19,7 +19,6 @@
 -->
 
 ## Upcoming Release
-* ListConnectionStrings response now includes keyKind and type properties
 * Locations show response now includes status, isSubscriptionRegionAccessAllowedForRegular and isSubscriptionRegionAccessAllowedForAz properties
 
 ## Version 1.11.0
