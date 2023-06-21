@@ -24,7 +24,7 @@
     <SignAssembly>true</SignAssembly>
     <DelaySign>true</DelaySign>
     <AssemblyOriginatorKeyFile>$(RepoSrc)MSSharedLibKey.snk</AssemblyOriginatorKeyFile>
-    <DefineConstants>TRACE;RELEASE;NETSTANDARD;SIGN</DefineConstants>
+    <DefineConstants>TRACE;RELEASE;NETSTANDARD;SIGN;$(TestCoverage)</DefineConstants>
   </PropertyGroup>
 
   <!-- Resources -->
@@ -34,8 +34,6 @@
       <AutoGen>true</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <!-- include shared source code -->
-    <Compile Include="$(MSBuildThisFileDirectory)shared\*.cs" />
   </ItemGroup>
 
   <ItemGroup>

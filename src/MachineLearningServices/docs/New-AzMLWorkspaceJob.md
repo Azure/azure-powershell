@@ -191,7 +191,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-JOB <IJobBaseProperties>: [Required] Additional attributes of the entity.
+`JOB <IJobBaseProperties>`: [Required] Additional attributes of the entity.
   - `JobType <JobType>`: [Required] Specifies the type of job.
   - `[Description <String>]`: The asset description text.
   - `[Property <IResourceBaseProperties>]`: The asset property dictionary.

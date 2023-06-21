@@ -30,7 +30,7 @@ function New-AzImageBuilderTemplateSourceObject_PlatformImageSource {
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
-        [Parameter(HelpMessage="Image offer from the [Azure Gallery Images](https://docs.microsoft.com/en-us/rest/api/compute/virtualmachineimages).")]
+        [Parameter(HelpMessage="Image offer from the [Azure Gallery Images](https://learn.microsoft.com/en-us/rest/api/compute/virtualmachineimages).")]
         [string]
         $Offer,
         [Parameter(HelpMessage="Name of the purchase plan.")]
@@ -42,20 +42,20 @@ function New-AzImageBuilderTemplateSourceObject_PlatformImageSource {
         [Parameter(HelpMessage="Publisher of the purchase plan.")]
         [string]
         $PlanInfoPlanPublisher,
-        [Parameter(HelpMessage="Image Publisher in [Azure Gallery Images](https://docs.microsoft.com/en-us/rest/api/compute/virtualmachineimages).")]
+        [Parameter(HelpMessage="Image Publisher in [Azure Gallery Images](https://learn.microsoft.com/en-us/rest/api/compute/virtualmachineimages).")]
         [string]
         $Publisher,
-        [Parameter(HelpMessage="Image sku from the [Azure Gallery Images](https://docs.microsoft.com/en-us/rest/api/compute/virtualmachineimages).")]
+        [Parameter(HelpMessage="Image sku from the [Azure Gallery Images](https://learn.microsoft.com/en-us/rest/api/compute/virtualmachineimages).")]
         [string]
         $Sku,
-        [Parameter(HelpMessage="Image version from the [Azure Gallery Images](https://docs.microsoft.com/en-us/rest/api/compute/virtualmachineimages). If 'latest' is specified here, the version is evaluated when the image build takes place, not when the template is submitted.")]
+        [Parameter(HelpMessage="Image version from the [Azure Gallery Images](https://learn.microsoft.com/en-us/rest/api/compute/virtualmachineimages). If 'latest' is specified here, the version is evaluated when the image build takes place, not when the template is submitted.")]
         [string]
         $Version,
         # Change it to switch parameter
         # [Parameter(Mandatory, HelpMessage="Specifies the type of source image you want to start with.")]
         # [string]
         # $Type
-        [Parameter(Mandatory, HelpMessage="Describes an image source from [Azure Gallery Images](https://docs.microsoft.com/en-us/rest/api/compute/virtualmachineimages).")]
+        [Parameter(Mandatory, HelpMessage="Describes an image source from [Azure Gallery Images](https://learn.microsoft.com/en-us/rest/api/compute/virtualmachineimages).")]
         [Switch]
         $PlatformImageSource
     )

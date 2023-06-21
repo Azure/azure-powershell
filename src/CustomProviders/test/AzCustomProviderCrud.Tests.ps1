@@ -17,7 +17,7 @@ Describe 'Az CustomProvider Crud' {
 		$provider.Count | Should -BeGreaterOrEqual 1
 	}
     It 'Can Create, Update, and Remove a custom provider'{
-		$resourceType = @(@{Name="CustomRoute1"; Endpoint="https://www.microsoft.com/"}, @{Name="associations"; Endpoint="https://docs.microsoft.com"; RoutingType="Proxy,Cache,Extension"})
+		$resourceType = @(@{Name="CustomRoute1"; Endpoint="https://www.microsoft.com/"}, @{Name="associations"; Endpoint="https://learn.microsoft.com"; RoutingType="Proxy,Cache,Extension"})
         $provider = New-AzCustomProvider -ResourceGroupName $env.ResourceGroup -Name $env.CustomProvider -Location "West US 2" -ResourceType $resourceType
 		$provider | Should -Not -BeNullOrEmpty
 		$provider.ResourceType | Should -Not -BeNullOrEmpty

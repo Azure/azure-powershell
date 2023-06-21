@@ -1,12 +1,4 @@
 ### Thanks to our community contributors
-* @Ajay1250, The example was using the wrong command (#20237)
-* @alon-microsoft, adding new cmdlet - Get-AzApplicationGatewayWafDynamicManifests (#20217)
-* Hiroshi Yoshioka (@hyoshioka0128), Typo "resouce"→"resource" (#20321)
-* Mats Estensen (@matsest), [Az.Tools.Installer]: Updates for a new minor/patch version (#20022)
-* Matthew Burleigh (@mburleigh), fix typos (#20020)
-* Mo Zaatar (@mzaatar), Change letter case in example of New-AzStorageBlobSASToken (#20018)
-* @patchin404, Updates Enable-AzCdnCustomDomainCustomHttps Doc (#20165)
-* Robin Malik (@robinmalik), Update New-AzADAppCredential.md (#20317)
-* @SherrySahni, container name not supported with upper case (#20012)
-* @sushil490023, Adding PS Cmdlets for Azure Automation Python3 operation (#19598)
-* Thomas Pike (@thwpike), Typo Fix (#20087)
+* @geologyrocks
+  * Update IsCustom property on example role defintion (#21514)
+  * Fix Assignment/Definition typo in Output (#21442)

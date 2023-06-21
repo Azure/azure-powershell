@@ -1,8 +1,8 @@
 {
-  "New-AzVoiceServicesCommunicationsGateway+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/voiceservices-rgn5lhg7/providers/Microsoft.VoiceServices/communicationsGateways/vsgateway-8hsd4a?api-version=2022-12-01-preview+1": {
+  "New-AzVoiceServicesCommunicationsGateway+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/voiceservices-rgn5lhg7/providers/Microsoft.VoiceServices/communicationsGateways/vsgateway-8hsd4a?api-version=2023-01-31+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/voiceservices-rgn5lhg7/providers/Microsoft.VoiceServices/communicationsGateways/vsgateway-8hsd4a?api-version=2022-12-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/voiceservices-rgn5lhg7/providers/Microsoft.VoiceServices/communicationsGateways/vsgateway-8hsd4a?api-version=2023-01-31",
       "Content": "{\n  \"location\": \"westcentralus\",\n  \"properties\": {\n    \"serviceLocations\": [\n      {\n        \"primaryRegionProperties\": {\n          \"operatorAddresses\": [ \"198.51.100.1\" ]\n        },\n        \"name\": \"useast\"\n      },\n      {\n        \"primaryRegionProperties\": {\n          \"operatorAddresses\": [ \"198.51.100.2\" ]\n        },\n        \"name\": \"useast2\"\n      }\n    ],\n    \"connectivity\": \"PublicAddress\",\n    \"codecs\": [ \"PCMA\" ],\n    \"e911Type\": \"Standard\",\n    \"platforms\": [ \"OperatorConnect\" ]\n  }\n}",
       "isContentBase64": false,
       "Headers": {
@@ -37,10 +37,10 @@
       "isContentBase64": false
     }
   },
-  "New-AzVoiceServicesCommunicationsGateway+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/voiceservices-rgn5lhg7/providers/Microsoft.VoiceServices/communicationsGateways/vsgateway-8hsd4a?api-version=2022-12-01-preview+2": {
+  "New-AzVoiceServicesCommunicationsGateway+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/voiceservices-rgn5lhg7/providers/Microsoft.VoiceServices/communicationsGateways/vsgateway-8hsd4a?api-version=2023-01-31+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/voiceservices-rgn5lhg7/providers/Microsoft.VoiceServices/communicationsGateways/vsgateway-8hsd4a?api-version=2022-12-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/voiceservices-rgn5lhg7/providers/Microsoft.VoiceServices/communicationsGateways/vsgateway-8hsd4a?api-version=2023-01-31",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -80,10 +80,10 @@
       "isContentBase64": false
     }
   },
-  "New-AzVoiceServicesCommunicationsGateway+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/voiceservices-rgn5lhg7/providers/Microsoft.VoiceServices/communicationsGateways/vsgateway-8hsd4a?api-version=2022-12-01-preview+3": {
+  "New-AzVoiceServicesCommunicationsGateway+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/voiceservices-rgn5lhg7/providers/Microsoft.VoiceServices/communicationsGateways/vsgateway-8hsd4a?api-version=2023-01-31+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/voiceservices-rgn5lhg7/providers/Microsoft.VoiceServices/communicationsGateways/vsgateway-8hsd4a?api-version=2022-12-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/voiceservices-rgn5lhg7/providers/Microsoft.VoiceServices/communicationsGateways/vsgateway-8hsd4a?api-version=2023-01-31",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -123,10 +123,10 @@
       "isContentBase64": false
     }
   },
-  "New-AzVoiceServicesCommunicationsGateway+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/voiceservices-rgn5lhg7/providers/Microsoft.VoiceServices/communicationsGateways/vsgateway-8hsd4a?api-version=2022-12-01-preview+4": {
+  "New-AzVoiceServicesCommunicationsGateway+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/voiceservices-rgn5lhg7/providers/Microsoft.VoiceServices/communicationsGateways/vsgateway-8hsd4a?api-version=2023-01-31+4": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/voiceservices-rgn5lhg7/providers/Microsoft.VoiceServices/communicationsGateways/vsgateway-8hsd4a?api-version=2022-12-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/voiceservices-rgn5lhg7/providers/Microsoft.VoiceServices/communicationsGateways/vsgateway-8hsd4a?api-version=2023-01-31",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -166,10 +166,10 @@
       "isContentBase64": false
     }
   },
-  "New-AzVoiceServicesCommunicationsGateway+[NoContext]+CreateExpanded+$PATCH+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/voiceservices-rgn5lhg7/providers/Microsoft.VoiceServices/communicationsGateways/vsgateway-8hsd4a?api-version=2022-12-01-preview+5": {
+  "New-AzVoiceServicesCommunicationsGateway+[NoContext]+CreateExpanded+$PATCH+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/voiceservices-rgn5lhg7/providers/Microsoft.VoiceServices/communicationsGateways/vsgateway-8hsd4a?api-version=2023-01-31+5": {
     "Request": {
       "Method": "PATCH",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/voiceservices-rgn5lhg7/providers/Microsoft.VoiceServices/communicationsGateways/vsgateway-8hsd4a?api-version=2022-12-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/voiceservices-rgn5lhg7/providers/Microsoft.VoiceServices/communicationsGateways/vsgateway-8hsd4a?api-version=2023-01-31",
       "Content": "{\n  \"tags\": {\n    \"key1\": \"value1\"\n  }\n}",
       "isContentBase64": false,
       "Headers": {
@@ -203,10 +203,10 @@
       "isContentBase64": false
     }
   },
-  "New-AzVoiceServicesCommunicationsGateway+[NoContext]+CreateExpanded+$DELETE+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/voiceservices-rgn5lhg7/providers/Microsoft.VoiceServices/communicationsGateways/vsgateway-8hsd4a?api-version=2022-12-01-preview+6": {
+  "New-AzVoiceServicesCommunicationsGateway+[NoContext]+CreateExpanded+$DELETE+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/voiceservices-rgn5lhg7/providers/Microsoft.VoiceServices/communicationsGateways/vsgateway-8hsd4a?api-version=2023-01-31+6": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/voiceservices-rgn5lhg7/providers/Microsoft.VoiceServices/communicationsGateways/vsgateway-8hsd4a?api-version=2022-12-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/voiceservices-rgn5lhg7/providers/Microsoft.VoiceServices/communicationsGateways/vsgateway-8hsd4a?api-version=2023-01-31",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -244,10 +244,10 @@
       "isContentBase64": false
     }
   },
-  "New-AzVoiceServicesCommunicationsGateway+[NoContext]+CreateExpandedViaIdentity+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/voiceservices-rgn5lhg7/providers/Microsoft.VoiceServices/communicationsGateways/vsgateway-456v4a?api-version=2022-12-01-preview+1": {
+  "New-AzVoiceServicesCommunicationsGateway+[NoContext]+CreateExpandedViaIdentity+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/voiceservices-rgn5lhg7/providers/Microsoft.VoiceServices/communicationsGateways/vsgateway-456v4a?api-version=2023-01-31+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/voiceservices-rgn5lhg7/providers/Microsoft.VoiceServices/communicationsGateways/vsgateway-456v4a?api-version=2022-12-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/voiceservices-rgn5lhg7/providers/Microsoft.VoiceServices/communicationsGateways/vsgateway-456v4a?api-version=2023-01-31",
       "Content": "{\n  \"location\": \"westcentralus\",\n  \"properties\": {\n    \"serviceLocations\": [\n      {\n        \"primaryRegionProperties\": {\n          \"operatorAddresses\": [ \"198.51.100.1\" ]\n        },\n        \"name\": \"useast\"\n      },\n      {\n        \"primaryRegionProperties\": {\n          \"operatorAddresses\": [ \"198.51.100.2\" ]\n        },\n        \"name\": \"useast2\"\n      }\n    ],\n    \"connectivity\": \"PublicAddress\",\n    \"codecs\": [ \"PCMA\" ],\n    \"e911Type\": \"Standard\",\n    \"platforms\": [ \"OperatorConnect\" ]\n  }\n}",
       "isContentBase64": false,
       "Headers": {
@@ -282,10 +282,10 @@
       "isContentBase64": false
     }
   },
-  "New-AzVoiceServicesCommunicationsGateway+[NoContext]+CreateExpandedViaIdentity+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/voiceservices-rgn5lhg7/providers/Microsoft.VoiceServices/communicationsGateways/vsgateway-456v4a?api-version=2022-12-01-preview+2": {
+  "New-AzVoiceServicesCommunicationsGateway+[NoContext]+CreateExpandedViaIdentity+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/voiceservices-rgn5lhg7/providers/Microsoft.VoiceServices/communicationsGateways/vsgateway-456v4a?api-version=2023-01-31+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/voiceservices-rgn5lhg7/providers/Microsoft.VoiceServices/communicationsGateways/vsgateway-456v4a?api-version=2022-12-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/voiceservices-rgn5lhg7/providers/Microsoft.VoiceServices/communicationsGateways/vsgateway-456v4a?api-version=2023-01-31",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -325,10 +325,10 @@
       "isContentBase64": false
     }
   },
-  "New-AzVoiceServicesCommunicationsGateway+[NoContext]+CreateExpandedViaIdentity+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/voiceservices-rgn5lhg7/providers/Microsoft.VoiceServices/communicationsGateways/vsgateway-456v4a?api-version=2022-12-01-preview+3": {
+  "New-AzVoiceServicesCommunicationsGateway+[NoContext]+CreateExpandedViaIdentity+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/voiceservices-rgn5lhg7/providers/Microsoft.VoiceServices/communicationsGateways/vsgateway-456v4a?api-version=2023-01-31+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/voiceservices-rgn5lhg7/providers/Microsoft.VoiceServices/communicationsGateways/vsgateway-456v4a?api-version=2022-12-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/voiceservices-rgn5lhg7/providers/Microsoft.VoiceServices/communicationsGateways/vsgateway-456v4a?api-version=2023-01-31",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -368,10 +368,10 @@
       "isContentBase64": false
     }
   },
-  "New-AzVoiceServicesCommunicationsGateway+[NoContext]+CreateExpandedViaIdentity+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/voiceservices-rgn5lhg7/providers/Microsoft.VoiceServices/communicationsGateways/vsgateway-456v4a?api-version=2022-12-01-preview+4": {
+  "New-AzVoiceServicesCommunicationsGateway+[NoContext]+CreateExpandedViaIdentity+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/voiceservices-rgn5lhg7/providers/Microsoft.VoiceServices/communicationsGateways/vsgateway-456v4a?api-version=2023-01-31+4": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/voiceservices-rgn5lhg7/providers/Microsoft.VoiceServices/communicationsGateways/vsgateway-456v4a?api-version=2022-12-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/voiceservices-rgn5lhg7/providers/Microsoft.VoiceServices/communicationsGateways/vsgateway-456v4a?api-version=2023-01-31",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -411,10 +411,10 @@
       "isContentBase64": false
     }
   },
-  "New-AzVoiceServicesCommunicationsGateway+[NoContext]+CreateExpandedViaIdentity+$PATCH+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/voiceservices-rgn5lhg7/providers/Microsoft.VoiceServices/communicationsGateways/vsgateway-456v4a?api-version=2022-12-01-preview+5": {
+  "New-AzVoiceServicesCommunicationsGateway+[NoContext]+CreateExpandedViaIdentity+$PATCH+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/voiceservices-rgn5lhg7/providers/Microsoft.VoiceServices/communicationsGateways/vsgateway-456v4a?api-version=2023-01-31+5": {
     "Request": {
       "Method": "PATCH",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/voiceservices-rgn5lhg7/providers/Microsoft.VoiceServices/communicationsGateways/vsgateway-456v4a?api-version=2022-12-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/voiceservices-rgn5lhg7/providers/Microsoft.VoiceServices/communicationsGateways/vsgateway-456v4a?api-version=2023-01-31",
       "Content": "{\n  \"tags\": {\n    \"key1\": \"value1\"\n  }\n}",
       "isContentBase64": false,
       "Headers": {
@@ -448,10 +448,10 @@
       "isContentBase64": false
     }
   },
-  "New-AzVoiceServicesCommunicationsGateway+[NoContext]+CreateExpandedViaIdentity+$DELETE+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/voiceservices-rgn5lhg7/providers/Microsoft.VoiceServices/communicationsGateways/vsgateway-456v4a?api-version=2022-12-01-preview+6": {
+  "New-AzVoiceServicesCommunicationsGateway+[NoContext]+CreateExpandedViaIdentity+$DELETE+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/voiceservices-rgn5lhg7/providers/Microsoft.VoiceServices/communicationsGateways/vsgateway-456v4a?api-version=2023-01-31+6": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/voiceservices-rgn5lhg7/providers/Microsoft.VoiceServices/communicationsGateways/vsgateway-456v4a?api-version=2022-12-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/voiceservices-rgn5lhg7/providers/Microsoft.VoiceServices/communicationsGateways/vsgateway-456v4a?api-version=2023-01-31",
       "Content": null,
       "isContentBase64": false,
       "Headers": {

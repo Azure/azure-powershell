@@ -74,7 +74,7 @@ New-AzResource `
     -Location centralus
 ```
 
-Some Network cmdlets use in-memory models or configurations for sub-resources that are then passed to creation cmdlets. To align all creation scenarios, we have removed all in-memory model and configuration creation commands. In `Az` 4.0 (Preview) and beyond you will create all resources directly in Azure. A Subnet is a good example of this model as described in the [_Virtual Network Creation Quickstart_](https://docs.microsoft.com/en-us/azure/virtual-network/quick-create-powershell) document.
+Some Network cmdlets use in-memory models or configurations for sub-resources that are then passed to creation cmdlets. To align all creation scenarios, we have removed all in-memory model and configuration creation commands. In `Az` 4.0 (Preview) and beyond you will create all resources directly in Azure. A Subnet is a good example of this model as described in the [_Virtual Network Creation Quickstart_](https://learn.microsoft.com/en-us/azure/virtual-network/quick-create-powershell) document.
 
 #### `Az` 2.x
 
@@ -131,7 +131,7 @@ New-AzVnetSubnet -Name MySubnet `
     -AddressPrefix 10.0.2.0/24
 ```
 
-You could use an array of hashtables and pass it to `-Subnet`, similar to using a the array of subnet configurations used in the Create Application Gateway - Powershell quickstart. [Required network resources](https://docs.microsoft.com/en-us/azure/application-gateway/quick-create-powershell). Here is the `Az` 2.6 script to setup a VirtualNetwork with 2 subnets:
+You could use an array of hashtables and pass it to `-Subnet`, similar to using a the array of subnet configurations used in the Create Application Gateway - Powershell quickstart. [Required network resources](https://learn.microsoft.com/en-us/azure/application-gateway/quick-create-powershell). Here is the `Az` 2.6 script to setup a VirtualNetwork with 2 subnets:
 
 #### `Az` 2.6
 

@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.MachineLearningServices
-online version: https://learn.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceJobServiceObject
+online version: https://learn.microsoft.com/powershell/module/Az.MachineLearningServices/new-AzMLWorkspaceJobServiceObject
 schema: 2.0.0
 ---
 
@@ -110,7 +110,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-PROPERTY <IJobServiceProperties>: Additional properties to set on the endpoint.
+`PROPERTY <IJobServiceProperties>`: Additional properties to set on the endpoint.
   - `[(Any) <String>]`: This indicates any property can be added to this object.
 
 ## RELATED LINKS

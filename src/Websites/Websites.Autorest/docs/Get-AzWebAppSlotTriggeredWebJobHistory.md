@@ -40,6 +40,7 @@ Get or list triggered web job's history for a deployment slot.
 ```powershell
 Get-AzWebAppSlotTriggeredWebJobHistory -ResourceGroupName webjob-rg-test -AppName appService-test01 -SlotName slot01 -Name slottriggeredjob-03
 ```
+
 ```output
 Kind Name                                                            ResourceGroupName
 ---- ----                                                            -----------------
@@ -52,6 +53,7 @@ This command list triggered web job's history for a deployment slot.
 ```powershell
 Get-AzWebAppSlotTriggeredWebJobHistory -ResourceGroupName webjob-rg-test -AppName appService-test01 -SlotName slot01 -Name slottriggeredjob-03 -Id 202201040202032401
 ```
+
 ```output
 Kind Name                                                            ResourceGroupName
 ---- ----                                                            -----------------
@@ -65,6 +67,7 @@ This command get triggered web job's history for a deployment slot.
 $jobs = Get-AzWebAppSlotTriggeredWebJobHistory -ResourceGroupName webjob-rg-test -AppName appService-test01 -SlotName slot01 -Name slottriggeredjob-03
 $jobs[0].Id | Get-AzWebAppSlotTriggeredWebJobHistory
 ```
+
 ```output
 Kind Name                                                            ResourceGroupName
 ---- ----                                                            -----------------

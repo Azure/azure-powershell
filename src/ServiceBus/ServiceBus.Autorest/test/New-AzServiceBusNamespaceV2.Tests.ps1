@@ -30,11 +30,13 @@ Describe 'New-AzServiceBusNamespaceV2' {
         $serviceBusNamespace.DisableLocalAuth | Should -Be $true
         $serviceBusNamespace.Tag.Count | should -Be 2
 
-        $serviceBusNamespace = New-AzServiceBusNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.namespaceV4 -SkuName Premium -Location eastus -IdentityType SystemAssigned -ZoneRedundant
+        $serviceBusNamespace = New-AzServiceBusNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.namespaceV4 -SkuName Premium -Location eastus -IdentityType SystemAssigned -ZoneRedundant -PremiumMessagingPartition 2 -SkuCapacity 2
         $serviceBusNamespace.Name | Should -Be $env.namespaceV4
         $serviceBusNamespace.IdentityType | Should -Be SystemAssigned
         $serviceBusNamespace.SkuName | Should -Be Premium
         $serviceBusNamespace.SkuTier | Should -Be Premium
+        $serviceBusNamespace.SkuCapacity | Should -Be 2
+        $serviceBusNamespace.PremiumMessagingPartition | Should -Be 2
         $serviceBusNamespace.Location | Should -Be "East Us"
         $serviceBusNamespace.ZoneRedundant | Should be $true
 

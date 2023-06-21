@@ -75,5 +75,5 @@ FromPrefix           ToPrefix
 "container2/aab"    "container2/abc" 
 "container3"        "container3-0"   (restores whole container3)
                     
-Note: The ranges shouldn't overlap with each other. Reference: https://docs.microsoft.com/en-us/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata
+Note: The ranges shouldn't overlap with each other. Reference: https://learn.microsoft.com/en-us/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata
 

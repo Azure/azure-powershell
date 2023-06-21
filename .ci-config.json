@@ -3,7 +3,11 @@
     {
       "patterns": [
         "src/{ModuleName}/readme.md",
-        "src/{ModuleName}[a-zA-Z`.`/]*/readme.md"
+        "src/{ModuleName}/README.md",
+        "src/{ModuleName}[a-zA-Z`.`/]*/readme.md",
+        "src/{ModuleName}[a-zA-Z`.`/]*/README.md",
+        "src/{ModuleName}/*/README.md",
+        "src/{ModuleName}/*/readme.md"
       ],
       "phases": [
         "build:related-module",
@@ -89,7 +93,7 @@
       "phases": [
         "build:module",
         "help:module",
-        "example:module"
+        "help-example:module"
       ]
     },
     {
@@ -114,7 +118,8 @@
         "signature:module",
         "test:dependence-module",
         "file-change:module",
-        "ux:module"
+        "ux:module",
+        "cmdlet-diff:module"
       ]
     },
     {

@@ -236,8 +236,8 @@ To create the parameters described below, construct a hash table containing the 
 
 `INPUTOBJECT <IVoiceServicesIdentity>`: Identity Parameter
   - `[CommunicationsGatewayName <String>]`: Unique identifier for this deployment
-  - `[ContactName <String>]`: Unique identifier for this contact
   - `[Id <String>]`: Resource identity path
+  - `[Location <String>]`: The location in which uniqueness will be verified.
   - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
   - `[SubscriptionId <String>]`: The ID of the target subscription.
   - `[TestLineName <String>]`: Unique identifier for this test line

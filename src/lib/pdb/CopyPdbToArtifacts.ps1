@@ -10,6 +10,7 @@ Param(
 $PathMappings = @{
     'msalruntime.pdb' = 'Az.Accounts/lib/netstandard2.0'
     'msalruntime_x86.pdb' = 'Az.Accounts/lib/netstandard2.0'
+    'msalruntime_arm64.pdb' = 'Az.Accounts/lib/netstandard2.0'
 }
 
 $ArtifactsPath = [System.IO.Path]::Combine($PSScriptRoot, "../../../artifacts", $Configuration)

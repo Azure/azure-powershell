@@ -21,7 +21,7 @@ Create a CloudService Resource
 #>
 
 function New-AzCloudService {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudService')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.ICloudService')]
     [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(ParameterSetName='quickCreateParameterSetWithoutStorage', Mandatory)]
@@ -86,7 +86,7 @@ function New-AzCloudService {
         [Parameter(ParameterSetName='quickCreateParameterSetWithoutStorage', HelpMessage="Describes a cloud service extension profile.")]
         [Parameter(ParameterSetName='quickCreateParameterSetWithStorage', HelpMessage="Describes a cloud service extension profile.")]
         [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudServiceExtensionProfile]
+        [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.ICloudServiceExtensionProfile]
         # Describes a cloud service extension profile.
         # To construct, see NOTES section for EXTENSIONPROFILE properties and create a hash table.
         ${ExtensionProfile},
@@ -104,7 +104,7 @@ function New-AzCloudService {
         [Parameter(ParameterSetName='quickCreateParameterSetWithoutStorage')]
         [Parameter(ParameterSetName='quickCreateParameterSetWithStorage')]
         [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudServiceTags]))]
+        [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.ICloudServiceTags]))]
         [System.Collections.Hashtable]
         # Resource tags.
         ${Tag},

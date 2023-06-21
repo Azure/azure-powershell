@@ -19,7 +19,7 @@ Merge two reservations into one reservation within the same reservation order.
 Merge two reservations into one reservation within the same reservation order.
 #>
 function Merge-AzReservation {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IReservationResponse])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IReservationResponse])]
     [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(Mandatory, HelpMessage='Reservation Order Id.')]

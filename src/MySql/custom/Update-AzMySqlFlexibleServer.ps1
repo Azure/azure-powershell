@@ -181,17 +181,18 @@ function Update-AzMySqlFlexibleServer {
 
             if ($PSBoundParameters.ContainsKey('Iops')) {
                 $PSBoundParameters.StorageIop = $PSBoundParameters.Iops
+                $null = $PSBoundParameters.Remove('Iops')
             }
 
             if ($PSBoundParameters.ContainsKey('HighAvailability')){
                 if($PSBoundParameters['HighAvailability'].ToLower() -eq 'disabled'){
-                    $PSBoundParameter.HighAvailabilityMode = [Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.HighAvailabilityMode]::Disabled
+                    $PSBoundParameters.HighAvailabilityMode = [Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.HighAvailabilityMode]::Disabled
                 }
                 elseif($PSBoundParameters['HighAvailability'].ToLower() -eq 'zoneredundant') {
-                    $PSBoundParameter.HighAvailabilityMode = [Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.HighAvailabilityMode]::ZoneRedundant
+                    $PSBoundParameters.HighAvailabilityMode = [Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.HighAvailabilityMode]::ZoneRedundant
                 }
                 elseif($PSBoundParameters['HighAvailability'].ToLower() -eq 'samezone') {
-                    $PSBoundParameter.HighAvailabilityMode = [Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.HighAvailabilityMode]::SameZone
+                    $PSBoundParameters.HighAvailabilityMode = [Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.HighAvailabilityMode]::SameZone
                 }
                 $null = $PSBoundParameters.Remove('HighAvailability')
             }

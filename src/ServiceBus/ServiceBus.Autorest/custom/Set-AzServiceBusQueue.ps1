@@ -20,7 +20,7 @@ Updates a ServiceBus Queue
 #>
 
 function Set-AzServiceBusQueue{
-	[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbQueue])]
+	[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.ISbQueue])]
     [CmdletBinding(DefaultParameterSetName = 'SetExpanded', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
 	param(
 		[Parameter(ParameterSetName = 'SetExpanded', Mandatory, HelpMessage = "The name of the Queue.")]
@@ -285,22 +285,6 @@ function Set-AzServiceBusQueue{
 
             if ($hasAsJob) {
                 $PSBoundParameters.Add('AsJob', $true)
-            }
-
-            if ($queue.DefaultMessageTimeToLive -gt (New-TimeSpan -Days 10675197)) {
-                $queue.DefaultMessageTimeToLive = (New-TimeSpan -Days 10675197)
-            }
-
-            if ($queue.AutoDeleteOnIdle -gt (New-TimeSpan -Days 10675197)) {
-                $queue.AutoDeleteOnIdle = (New-TimeSpan -Days 10675197)
-            }
-
-            if ($queue.DuplicateDetectionHistoryTimeWindow -gt (New-TimeSpan -Days 10675197)) {
-                $queue.DuplicateDetectionHistoryTimeWindow = (New-TimeSpan -Days 10675197)
-            }
-
-            if ($queue.LockDuration -gt (New-TimeSpan -Days 10675197)) {
-                $queue.LockDuration = (New-TimeSpan -Days 10675197)
             }
 
             if ($PSCmdlet.ShouldProcess("ServiceBus Queue $($queue.Name)", "Create or update")) {

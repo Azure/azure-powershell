@@ -35,8 +35,8 @@ require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:
 # You need to specify your swagger files here.
-  - $(repo)/specification/cdn/resource-manager/Microsoft.Cdn/stable/2021-06-01/afdx.json
-  - $(repo)/specification/cdn/resource-manager/Microsoft.Cdn/stable/2021-06-01/cdn.json
+  - $(repo)/specification/cdn/resource-manager/Microsoft.Cdn/stable/2023-05-01/afdx.json
+  - $(repo)/specification/cdn/resource-manager/Microsoft.Cdn/stable/2023-05-01/cdn.json
 # If the swagger has not been put in the repo, you may uncomment the following line and refer to it locally
 # - (this-folder)/relative-path-to-your-swagger 
 
@@ -45,7 +45,7 @@ module-version: 0.1.0
 # Normally, title is the service name
 title: Cdn
 subject-prefix: $(service-name)
-branch: 1278b951080f769d400bb5d03090de8bc21dc355
+branch: 61c04ab5495e259114bc427cdd77c3ab8ce8ec81
 
 # If there are post APIs for some kinds of actions in the RP, you may need to 
 # uncomment following line to support viaIdentity for these post APIs
@@ -55,6 +55,9 @@ resourcegroup-append: true
 nested-object-to-string: true
 
 directive:
+  - from: swagger-document
+    where: $.paths..operationId
+    transform: return $.replace(/^AFDProfiles_Upgrade$/g, "AFDProfileSku_Upgrade")
   - no-inline:
     # AFDX
     - SecurityPolicyPropertiesParameters
@@ -100,6 +103,16 @@ directive:
     - UrlRewriteAction
     - DeliveryRuleRequestHeaderAction
     - DeliveryRuleResponseHeaderAction
+    # CDN content
+    - PurgeParameters
+    - LoadParameters
+
+    # Migration to AFDx
+    # - MigrationParameters
+    # - MigrationWebApplicationFirewallMapping
+    # Upgrade sku
+    # - ProfileUpgradeParameters
+    # - ProfileChangeSkuWafMapping
 
   - where:
       model-name: .*
@@ -113,7 +126,7 @@ directive:
           - SystemDataLastModifiedAt
           - SystemDataLastModifiedBy
           - SystemDataLastModifiedByType
-          
+        
   # Following is two common directive which are normally required in all the RPs
   # 1. Remove the unexpanded parameter set
   # 2. For New-* cmdlets, ViaIdentity is not required, so CreateViaIdentityExpanded is removed as well
@@ -142,6 +155,10 @@ directive:
       variant: ^EnableExpanded$|^EnableViaIdentityExpanded$
       subject: ^CustomDomainCustomHttps$
     remove: true
+  - where:
+      variant: ^UpgradeExpanded$
+      subject: AFDProfileSku
+    remove: true
 
   # Hide Cdn profile
   - where:
@@ -155,6 +172,29 @@ directive:
     hide: true
   - where:
       subject: LogAnalytic(.*)
+    hide: true
+  # Hide classicAfd migrate command and customize
+  - where:
+      subject: CanProfileMigrate
+    hide: true
+  - where:
+      subject: CommitProfileMigration
+    hide: true
+  # Hide UpgradeSku command and customize
+  - where:
+      subject: AFDProfileSku
+      verb: Update|Upgrade
+    hide: true
+  # Hide validate the secret
+  - where:
+      subject: (.*)ProfileSecret
+      verb: Test
+    hide: true
+
+  # Hide check the availability of an afdx endpoint name
+  - where:
+      subject: (.*)ProfileEndpointNameAvailability
+      verb: Test
     hide: true
 
   # Rename
@@ -212,6 +252,25 @@ directive:
       property-name: PreValidatedCustomDomainResourceIdId
     set:
       property-name: PreValidatedCustomDomainResourceId
+
+  # Customize the output table formatting
+  - where:
+      model-name: CanMigrateResult
+    set:
+      format-table:
+        properties:
+          - CanMigrate
+          - DefaultSku
+          - Error
+
+  - where:
+      model-name: MigrateResult
+    set:
+      format-table:
+        properties:
+          - PropertiesMigratedProfileResourceIdId
+        labels:
+          PropertiesMigratedProfileResourceIdId: MigratedProfileResourceId
 
   # Delete 404
   - from: swagger-document

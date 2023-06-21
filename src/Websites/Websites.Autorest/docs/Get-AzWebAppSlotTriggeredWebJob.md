@@ -39,6 +39,7 @@ Get or list triggered web for a deployment slot.
 ```powershell
 Get-AzWebAppSlotTriggeredWebJob -ResourceGroupName webjob-rg-test -AppName appService-test01 -SlotName slot01
 ```
+
 ```output
 Name                                         Kind WebJobType ResourceGroupName
 ----                                         ---- ---------- -----------------
@@ -52,6 +53,7 @@ This command lists triggered webs for a deployment slot.
 ```powershell
 Get-AzWebAppSlotTriggeredWebJob -ResourceGroupName webjob-rg-test -AppName appService-test01 -SlotName slot01 -Name slottriggeredjob-03
 ```
+
 ```output
 Name                                         Kind WebJobType ResourceGroupName
 ----                                         ---- ---------- -----------------
@@ -66,6 +68,7 @@ $webjob = Get-AzWebAppSlotTriggeredWebJob -ResourceGroupName webjob-rg-test -App
 Start-AzWebAppSlotTriggeredWebJob -ResourceGroupName webjob-rg-test -AppName appService-test01 -SlotName slot01 -Name slottriggeredjob-03
 $webjob.Id | Get-AzWebAppSlotTriggeredWebJob
 ```
+
 ```output
 Name                                         Kind WebJobType ResourceGroupName
 ----                                         ---- ---------- -----------------

@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Set-AzServiceBusTopic'))
 }
 
 function AssertTopicUpdates{
-    param([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbTopic]$expectedTopic,[Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbTopic]$actualTopic)
+    param([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.ISbTopic]$expectedTopic,[Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.ISbTopic]$actualTopic)
     $expectedTopic.Name | Should -Be $actualTopic.Name
     $expectedTopic.ResourceGroupName | Should -Be $actualTopic.ResourceGroupName
     $expectedTopic.MaxSizeInMegabytes | Should -Be $actualTopic.MaxSizeInMegabytes
@@ -25,27 +25,9 @@ function AssertTopicUpdates{
     $expectedTopic.EnablePartitioning | Should -Be $actualTopic.EnablePartitioning
     $expectedTopic.EnableExpress | Should -Be $actualTopic.EnableExpress
     $expectedTopic.SupportOrdering | Should -Be $actualTopic.SupportOrdering
-
-    if ($expectedTopic.DefaultMessageTimeToLive -gt (New-TimeSpan -Days 10675197)){
-        $actualTopic.DefaultMessageTimeToLive | Should -BeGreaterOrEqual (New-TimeSpan -Days 10675197)
-    }
-    else{
-        $actualTopic.DefaultMessageTimeToLive | Should -Be $expectedTopic.DefaultMessageTimeToLive
-    }
-
-    if ($expectedTopic.DuplicateDetectionHistoryTimeWindow -gt (New-TimeSpan -Days 10675197)){
-        $actualTopic.DuplicateDetectionHistoryTimeWindow | Should -BeGreaterOrEqual (New-TimeSpan -Days 10675197)
-    }
-    else{
-        $actualTopic.DuplicateDetectionHistoryTimeWindow | Should -Be $expectedTopic.DuplicateDetectionHistoryTimeWindow
-    }
-
-    if ($expectedTopic.AutoDeleteOnIdle -gt (New-TimeSpan -Days 10675197)){
-        $actualTopic.AutoDeleteOnIdle | Should -BeGreaterOrEqual (New-TimeSpan -Days 10675197)
-    }
-    else{
-        $actualTopic.AutoDeleteOnIdle | Should -Be $expectedTopic.AutoDeleteOnIdle
-    }
+    $expectedTopic.DefaultMessageTimeToLive | Should -Be $actualTopic.DefaultMessageTimeToLive
+    $expectedTopic.DuplicateDetectionHistoryTimeWindow | Should -Be $actualTopic.DuplicateDetectionHistoryTimeWindow
+    $expectedTopic.AutoDeleteOnIdle | Should -Be $actualTopic.AutoDeleteOnIdle
 }
 
 Describe 'Set-AzServiceBusTopic' {

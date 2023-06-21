@@ -17,42 +17,42 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "ETag": [ "\"ac03942e-0000-0100-0000-63bd71db0000\"" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1190" ],
+        "ETag": [ "\"170020fe-0000-0100-0000-641ade120000\"" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1187" ],
         "x-ms-providerhub-traffic": [ "True" ],
-        "mise-correlation-id": [ "9ac3cdb4-0f0f-422c-b043-06f826ae0330" ],
-        "x-ms-request-id": [ "024318b5-8613-4bce-a8f3-66c45ef1b30b" ],
+        "mise-correlation-id": [ "62321a30-94fe-46eb-b1ba-fe57e7b7306e" ],
+        "x-ms-request-id": [ "d1693c37-5d9c-4137-9a63-652e67eddaac" ],
         "x-ms-build-version": [ "1.0.1" ],
-        "Azure-AsyncOperation": [ "https://management.azure.com/providers/Microsoft.MobileNetwork/locations/EASTUS/operationStatuses/e1a7c67d-249a-46ff-81d9-2006909060cd*7B9F805CB21592124EB5015DE77BB22008A2E7B1181EFDAC0DB88ECC2307BF87?api-version=2022-11-01" ],
-        "x-ms-correlation-request-id": [ "bd016242-1977-4f15-81f6-0f29b467f1a6" ],
-        "x-ms-routing-request-id": [ "JAPANEAST:20230110T141036Z:bd016242-1977-4f15-81f6-0f29b467f1a6" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/providers/Microsoft.MobileNetwork/locations/EASTUS/operationStatuses/d7e42a17-ae72-4dcf-8005-41415d141911*7B9F805CB21592124EB5015DE77BB22008A2E7B1181EFDAC0DB88ECC2307BF87?api-version=2022-11-01" ],
+        "x-ms-correlation-request-id": [ "7062d07f-a004-4c48-bf04-d0216ce3b7a1" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20230322T105307Z:7062d07f-a004-4c48-bf04-d0216ce3b7a1" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 10 Jan 2023 14:10:36 GMT" ]
+        "Date": [ "Wed, 22 Mar 2023 10:53:06 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "703" ],
+        "Content-Length": [ "705" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/simGroups/test-mn-simgroup\",\"name\":\"test-mn-simgroup\",\"type\":\"microsoft.mobilenetwork/simgroups\",\"location\":\"eastus\",\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-01-10T14:10:34.624493Z\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-01-10T14:10:34.624493Z\"},\"properties\":{\"mobileNetwork\":{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/mobileNetworks/test-mn2\"},\"provisioningState\":\"Accepted\"}}",
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/simGroups/test-mn-simgroup\",\"name\":\"test-mn-simgroup\",\"type\":\"microsoft.mobilenetwork/simgroups\",\"location\":\"eastus\",\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-03-22T10:53:05.4253596Z\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-03-22T10:53:05.4253596Z\"},\"properties\":{\"mobileNetwork\":{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/mobileNetworks/test-mn2\"},\"provisioningState\":\"Accepted\"}}",
       "isContentBase64": false
     }
   },
-  "AzMobileNetworkSimGroup+[NoContext]+CreateExpanded+$GET+https://management.azure.com/providers/Microsoft.MobileNetwork/locations/EASTUS/operationStatuses/e1a7c67d-249a-46ff-81d9-2006909060cd*7B9F805CB21592124EB5015DE77BB22008A2E7B1181EFDAC0DB88ECC2307BF87?api-version=2022-11-01+2": {
+  "AzMobileNetworkSimGroup+[NoContext]+CreateExpanded+$GET+https://management.azure.com/providers/Microsoft.MobileNetwork/locations/EASTUS/operationStatuses/d7e42a17-ae72-4dcf-8005-41415d141911*7B9F805CB21592124EB5015DE77BB22008A2E7B1181EFDAC0DB88ECC2307BF87?api-version=2022-11-01+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Microsoft.MobileNetwork/locations/EASTUS/operationStatuses/e1a7c67d-249a-46ff-81d9-2006909060cd*7B9F805CB21592124EB5015DE77BB22008A2E7B1181EFDAC0DB88ECC2307BF87?api-version=2022-11-01",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.MobileNetwork/locations/EASTUS/operationStatuses/d7e42a17-ae72-4dcf-8005-41415d141911*7B9F805CB21592124EB5015DE77BB22008A2E7B1181EFDAC0DB88ECC2307BF87?api-version=2022-11-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "40" ],
-        "x-ms-client-request-id": [ "91ba0fc4-2f83-490f-a2aa-c8413ce77245" ],
+        "x-ms-unique-id": [ "64" ],
+        "x-ms-client-request-id": [ "ab0608a2-f4b0-48ea-aa7d-54d78ae9da06" ],
         "CommandName": [ "New-AzMobileNetworkSimGroup" ],
         "FullCommandName": [ "New-AzMobileNetworkSimGroup_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.1", "Az.MobileNetwork/0.1.0" ]
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.2", "Az.MobileNetwork/0.1.0" ]
       },
       "ContentHeaders": {
       }
@@ -62,38 +62,38 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "ETag": [ "\"ae00e206-0000-0100-0000-63bd71db0000\"" ],
-        "x-ms-ratelimit-remaining-tenant-reads": [ "11986" ],
-        "x-ms-request-id": [ "3acf9a18-4431-489c-ac3f-ce19121602cb" ],
-        "x-ms-correlation-request-id": [ "478c514b-9a77-4d58-ab24-cb84cfa752c8" ],
-        "x-ms-routing-request-id": [ "JAPANEAST:20230110T141107Z:478c514b-9a77-4d58-ab24-cb84cfa752c8" ],
+        "ETag": [ "\"0f001faf-0000-0100-0000-641ade110000\"" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "11976" ],
+        "x-ms-request-id": [ "0c2a3e83-29bc-4a3a-b91c-575ed0233243" ],
+        "x-ms-correlation-request-id": [ "43a86304-27ba-4732-9aa0-58cc711c787c" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20230322T105337Z:43a86304-27ba-4732-9aa0-58cc711c787c" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 10 Jan 2023 14:11:06 GMT" ]
+        "Date": [ "Wed, 22 Mar 2023 10:53:36 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "521" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/providers/Microsoft.MobileNetwork/locations/EASTUS/operationStatuses/e1a7c67d-249a-46ff-81d9-2006909060cd*7B9F805CB21592124EB5015DE77BB22008A2E7B1181EFDAC0DB88ECC2307BF87\",\"name\":\"e1a7c67d-249a-46ff-81d9-2006909060cd*7B9F805CB21592124EB5015DE77BB22008A2E7B1181EFDAC0DB88ECC2307BF87\",\"resourceId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/simGroups/test-mn-simgroup\",\"status\":\"Accepted\",\"startTime\":\"2023-01-10T14:10:35.2329864Z\"}",
+      "Content": "{\"id\":\"/providers/Microsoft.MobileNetwork/locations/EASTUS/operationStatuses/d7e42a17-ae72-4dcf-8005-41415d141911*7B9F805CB21592124EB5015DE77BB22008A2E7B1181EFDAC0DB88ECC2307BF87\",\"name\":\"d7e42a17-ae72-4dcf-8005-41415d141911*7B9F805CB21592124EB5015DE77BB22008A2E7B1181EFDAC0DB88ECC2307BF87\",\"resourceId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/simGroups/test-mn-simgroup\",\"status\":\"Accepted\",\"startTime\":\"2023-03-22T10:53:05.8037939Z\"}",
       "isContentBase64": false
     }
   },
-  "AzMobileNetworkSimGroup+[NoContext]+CreateExpanded+$GET+https://management.azure.com/providers/Microsoft.MobileNetwork/locations/EASTUS/operationStatuses/e1a7c67d-249a-46ff-81d9-2006909060cd*7B9F805CB21592124EB5015DE77BB22008A2E7B1181EFDAC0DB88ECC2307BF87?api-version=2022-11-01+3": {
+  "AzMobileNetworkSimGroup+[NoContext]+CreateExpanded+$GET+https://management.azure.com/providers/Microsoft.MobileNetwork/locations/EASTUS/operationStatuses/d7e42a17-ae72-4dcf-8005-41415d141911*7B9F805CB21592124EB5015DE77BB22008A2E7B1181EFDAC0DB88ECC2307BF87?api-version=2022-11-01+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Microsoft.MobileNetwork/locations/EASTUS/operationStatuses/e1a7c67d-249a-46ff-81d9-2006909060cd*7B9F805CB21592124EB5015DE77BB22008A2E7B1181EFDAC0DB88ECC2307BF87?api-version=2022-11-01",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.MobileNetwork/locations/EASTUS/operationStatuses/d7e42a17-ae72-4dcf-8005-41415d141911*7B9F805CB21592124EB5015DE77BB22008A2E7B1181EFDAC0DB88ECC2307BF87?api-version=2022-11-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "41" ],
-        "x-ms-client-request-id": [ "91ba0fc4-2f83-490f-a2aa-c8413ce77245" ],
+        "x-ms-unique-id": [ "65" ],
+        "x-ms-client-request-id": [ "ab0608a2-f4b0-48ea-aa7d-54d78ae9da06" ],
         "CommandName": [ "New-AzMobileNetworkSimGroup" ],
         "FullCommandName": [ "New-AzMobileNetworkSimGroup_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.1", "Az.MobileNetwork/0.1.0" ]
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.2", "Az.MobileNetwork/0.1.0" ]
       },
       "ContentHeaders": {
       }
@@ -103,38 +103,38 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "ETag": [ "\"ae00e206-0000-0100-0000-63bd71db0000\"" ],
-        "x-ms-ratelimit-remaining-tenant-reads": [ "11985" ],
-        "x-ms-request-id": [ "27bccafd-3ae4-44de-a614-0cd77d18b6a2" ],
-        "x-ms-correlation-request-id": [ "4b8f9792-2e98-4241-8105-754ed4c48f37" ],
-        "x-ms-routing-request-id": [ "JAPANEAST:20230110T141137Z:4b8f9792-2e98-4241-8105-754ed4c48f37" ],
+        "ETag": [ "\"0f001faf-0000-0100-0000-641ade110000\"" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "11975" ],
+        "x-ms-request-id": [ "dc760e1f-e462-40ca-bfb7-b4538b890027" ],
+        "x-ms-correlation-request-id": [ "a080c3b4-befa-4c1e-b7b2-1e07c2a8260c" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20230322T105408Z:a080c3b4-befa-4c1e-b7b2-1e07c2a8260c" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 10 Jan 2023 14:11:36 GMT" ]
+        "Date": [ "Wed, 22 Mar 2023 10:54:08 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "521" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/providers/Microsoft.MobileNetwork/locations/EASTUS/operationStatuses/e1a7c67d-249a-46ff-81d9-2006909060cd*7B9F805CB21592124EB5015DE77BB22008A2E7B1181EFDAC0DB88ECC2307BF87\",\"name\":\"e1a7c67d-249a-46ff-81d9-2006909060cd*7B9F805CB21592124EB5015DE77BB22008A2E7B1181EFDAC0DB88ECC2307BF87\",\"resourceId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/simGroups/test-mn-simgroup\",\"status\":\"Accepted\",\"startTime\":\"2023-01-10T14:10:35.2329864Z\"}",
+      "Content": "{\"id\":\"/providers/Microsoft.MobileNetwork/locations/EASTUS/operationStatuses/d7e42a17-ae72-4dcf-8005-41415d141911*7B9F805CB21592124EB5015DE77BB22008A2E7B1181EFDAC0DB88ECC2307BF87\",\"name\":\"d7e42a17-ae72-4dcf-8005-41415d141911*7B9F805CB21592124EB5015DE77BB22008A2E7B1181EFDAC0DB88ECC2307BF87\",\"resourceId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/simGroups/test-mn-simgroup\",\"status\":\"Accepted\",\"startTime\":\"2023-03-22T10:53:05.8037939Z\"}",
       "isContentBase64": false
     }
   },
-  "AzMobileNetworkSimGroup+[NoContext]+CreateExpanded+$GET+https://management.azure.com/providers/Microsoft.MobileNetwork/locations/EASTUS/operationStatuses/e1a7c67d-249a-46ff-81d9-2006909060cd*7B9F805CB21592124EB5015DE77BB22008A2E7B1181EFDAC0DB88ECC2307BF87?api-version=2022-11-01+4": {
+  "AzMobileNetworkSimGroup+[NoContext]+CreateExpanded+$GET+https://management.azure.com/providers/Microsoft.MobileNetwork/locations/EASTUS/operationStatuses/d7e42a17-ae72-4dcf-8005-41415d141911*7B9F805CB21592124EB5015DE77BB22008A2E7B1181EFDAC0DB88ECC2307BF87?api-version=2022-11-01+4": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Microsoft.MobileNetwork/locations/EASTUS/operationStatuses/e1a7c67d-249a-46ff-81d9-2006909060cd*7B9F805CB21592124EB5015DE77BB22008A2E7B1181EFDAC0DB88ECC2307BF87?api-version=2022-11-01",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.MobileNetwork/locations/EASTUS/operationStatuses/d7e42a17-ae72-4dcf-8005-41415d141911*7B9F805CB21592124EB5015DE77BB22008A2E7B1181EFDAC0DB88ECC2307BF87?api-version=2022-11-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "42" ],
-        "x-ms-client-request-id": [ "91ba0fc4-2f83-490f-a2aa-c8413ce77245" ],
+        "x-ms-unique-id": [ "66" ],
+        "x-ms-client-request-id": [ "ab0608a2-f4b0-48ea-aa7d-54d78ae9da06" ],
         "CommandName": [ "New-AzMobileNetworkSimGroup" ],
         "FullCommandName": [ "New-AzMobileNetworkSimGroup_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.1", "Az.MobileNetwork/0.1.0" ]
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.2", "Az.MobileNetwork/0.1.0" ]
       },
       "ContentHeaders": {
       }
@@ -144,21 +144,21 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "ETag": [ "\"1a006e5d-0000-0600-0000-63bd721d0000\"" ],
-        "x-ms-ratelimit-remaining-tenant-reads": [ "11984" ],
-        "x-ms-request-id": [ "5eee982a-2a70-48ab-8513-a3426ab339d6" ],
-        "x-ms-correlation-request-id": [ "2e4691c6-200b-4c1f-b197-fe2029c0712f" ],
-        "x-ms-routing-request-id": [ "JAPANEAST:20230110T141207Z:2e4691c6-200b-4c1f-b197-fe2029c0712f" ],
+        "ETag": [ "\"8c00608c-0000-0600-0000-641ade540000\"" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "11974" ],
+        "x-ms-request-id": [ "2a3a63fc-65a1-41b4-ace7-f0d4769d894a" ],
+        "x-ms-correlation-request-id": [ "0f2b0fce-5329-43e7-9d97-4e4fbcc4fe5d" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20230322T105438Z:0f2b0fce-5329-43e7-9d97-4e4fbcc4fe5d" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 10 Jan 2023 14:12:07 GMT" ]
+        "Date": [ "Wed, 22 Mar 2023 10:54:38 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "540" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/providers/Microsoft.MobileNetwork/locations/EASTUS/operationStatuses/e1a7c67d-249a-46ff-81d9-2006909060cd*7B9F805CB21592124EB5015DE77BB22008A2E7B1181EFDAC0DB88ECC2307BF87\",\"name\":\"e1a7c67d-249a-46ff-81d9-2006909060cd*7B9F805CB21592124EB5015DE77BB22008A2E7B1181EFDAC0DB88ECC2307BF87\",\"resourceId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/simGroups/test-mn-simgroup\",\"status\":\"Succeeded\",\"startTime\":\"2023-01-10T14:10:35.2329864Z\",\"properties\":null}",
+      "Content": "{\"id\":\"/providers/Microsoft.MobileNetwork/locations/EASTUS/operationStatuses/d7e42a17-ae72-4dcf-8005-41415d141911*7B9F805CB21592124EB5015DE77BB22008A2E7B1181EFDAC0DB88ECC2307BF87\",\"name\":\"d7e42a17-ae72-4dcf-8005-41415d141911*7B9F805CB21592124EB5015DE77BB22008A2E7B1181EFDAC0DB88ECC2307BF87\",\"resourceId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/simGroups/test-mn-simgroup\",\"status\":\"Succeeded\",\"startTime\":\"2023-03-22T10:53:05.8037939Z\",\"properties\":null}",
       "isContentBase64": false
     }
   },
@@ -170,12 +170,12 @@
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "43" ],
-        "x-ms-client-request-id": [ "91ba0fc4-2f83-490f-a2aa-c8413ce77245" ],
+        "x-ms-unique-id": [ "67" ],
+        "x-ms-client-request-id": [ "ab0608a2-f4b0-48ea-aa7d-54d78ae9da06" ],
         "CommandName": [ "New-AzMobileNetworkSimGroup" ],
         "FullCommandName": [ "New-AzMobileNetworkSimGroup_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.1", "Az.MobileNetwork/0.1.0" ]
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.2", "Az.MobileNetwork/0.1.0" ]
       },
       "ContentHeaders": {
       }
@@ -185,22 +185,22 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "ETag": [ "\"ac03c42e-0000-0100-0000-63bd71ed0000\"" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11985" ],
+        "ETag": [ "\"170032fe-0000-0100-0000-641ade190000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11976" ],
         "x-ms-providerhub-traffic": [ "True" ],
-        "x-ms-request-id": [ "1ab16927-1a8f-4f66-85a0-d3917bd21cd0" ],
-        "x-ms-correlation-request-id": [ "71e7b213-0244-40d2-9e24-3cb70156bb7b" ],
-        "x-ms-routing-request-id": [ "JAPANEAST:20230110T141208Z:71e7b213-0244-40d2-9e24-3cb70156bb7b" ],
+        "x-ms-request-id": [ "ba6bd330-e568-475a-983a-273b905f43b7" ],
+        "x-ms-correlation-request-id": [ "a5b80a50-2a17-42c9-ac5d-8ff379b1ffbf" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20230322T105439Z:a5b80a50-2a17-42c9-ac5d-8ff379b1ffbf" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 10 Jan 2023 14:12:07 GMT" ]
+        "Date": [ "Wed, 22 Mar 2023 10:54:38 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "704" ],
+        "Content-Length": [ "706" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/simGroups/test-mn-simgroup\",\"name\":\"test-mn-simgroup\",\"type\":\"microsoft.mobilenetwork/simgroups\",\"location\":\"eastus\",\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-01-10T14:10:34.624493Z\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-01-10T14:10:34.624493Z\"},\"properties\":{\"mobileNetwork\":{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/mobileNetworks/test-mn2\"},\"provisioningState\":\"Succeeded\"}}",
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/simGroups/test-mn-simgroup\",\"name\":\"test-mn-simgroup\",\"type\":\"microsoft.mobilenetwork/simgroups\",\"location\":\"eastus\",\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-03-22T10:53:05.4253596Z\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-03-22T10:53:05.4253596Z\"},\"properties\":{\"mobileNetwork\":{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/mobileNetworks/test-mn2\"},\"provisioningState\":\"Succeeded\"}}",
       "isContentBase64": false
     }
   },
@@ -211,12 +211,12 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "44" ],
-        "x-ms-client-request-id": [ "dfdabf7a-9b00-407d-b4fb-5cbef1eab350" ],
+        "x-ms-unique-id": [ "68" ],
+        "x-ms-client-request-id": [ "91f37159-5da5-4187-9999-33f01e7494f2" ],
         "CommandName": [ "Get-AzMobileNetworkSimGroup" ],
         "FullCommandName": [ "Get-AzMobileNetworkSimGroup_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.1", "Az.MobileNetwork/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.2", "Az.MobileNetwork/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -227,21 +227,21 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-original-request-ids": [ "3c2c85cb-7be9-43cb-ad13-91c9c9ea2d78", "db427d44-6170-4982-974f-f44430003cb1", "bc938dfc-656c-49e1-ac30-1cb3a5b6bd17" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11984" ],
-        "x-ms-request-id": [ "c753cd16-f8cf-4a5d-a40b-b46484f44c8a" ],
-        "x-ms-correlation-request-id": [ "c753cd16-f8cf-4a5d-a40b-b46484f44c8a" ],
-        "x-ms-routing-request-id": [ "JAPANEAST:20230110T141208Z:c753cd16-f8cf-4a5d-a40b-b46484f44c8a" ],
+        "x-ms-original-request-ids": [ "69de2dd3-397b-42cc-af1b-89f90e4c0b9b", "e3e0c907-ddf1-417f-a4ea-a844f3756684", "ecd7fc04-dcb1-42e5-ad30-b69d9b483560", "821c7e6d-ac96-4bc6-89ca-6985326a0931" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11975" ],
+        "x-ms-request-id": [ "616b27fe-d9c4-45f6-8d31-5189179d536a" ],
+        "x-ms-correlation-request-id": [ "616b27fe-d9c4-45f6-8d31-5189179d536a" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20230322T105440Z:616b27fe-d9c4-45f6-8d31-5189179d536a" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 10 Jan 2023 14:12:08 GMT" ]
+        "Date": [ "Wed, 22 Mar 2023 10:54:39 GMT" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ],
-        "Content-Length": [ "1406" ]
+        "Content-Length": [ "718" ]
       },
-      "Content": "{\"value\":[{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps_test_group/providers/Microsoft.MobileNetwork/simGroups/azps-mn-simgroup\",\"name\":\"azps-mn-simgroup\",\"type\":\"microsoft.mobilenetwork/simgroups\",\"location\":\"eastus\",\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-01-10T13:40:03.0596392Z\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-01-10T13:40:03.0596392Z\"},\"properties\":{\"mobileNetwork\":{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps_test_group/providers/Microsoft.MobileNetwork/mobileNetworks/azps-mn\"},\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/simGroups/test-mn-simgroup\",\"name\":\"test-mn-simgroup\",\"type\":\"microsoft.mobilenetwork/simgroups\",\"location\":\"eastus\",\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-01-10T14:10:34.624493Z\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-01-10T14:10:34.624493Z\"},\"properties\":{\"mobileNetwork\":{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/mobileNetworks/test-mn2\"},\"provisioningState\":\"Succeeded\"}}]}",
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/simGroups/test-mn-simgroup\",\"name\":\"test-mn-simgroup\",\"type\":\"microsoft.mobilenetwork/simgroups\",\"location\":\"eastus\",\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-03-22T10:53:05.4253596Z\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-03-22T10:53:05.4253596Z\"},\"properties\":{\"mobileNetwork\":{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/mobileNetworks/test-mn2\"},\"provisioningState\":\"Succeeded\"}}]}",
       "isContentBase64": false
     }
   },
@@ -252,12 +252,12 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "45" ],
-        "x-ms-client-request-id": [ "456fe0da-c168-4a66-8fcc-715168c934a3" ],
+        "x-ms-unique-id": [ "69" ],
+        "x-ms-client-request-id": [ "ba3f7be5-cb80-4a38-8e18-9676bb1dafd6" ],
         "CommandName": [ "Get-AzMobileNetworkSimGroup" ],
         "FullCommandName": [ "Get-AzMobileNetworkSimGroup_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.1", "Az.MobileNetwork/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.2", "Az.MobileNetwork/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -268,22 +268,22 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "ETag": [ "\"ac03c42e-0000-0100-0000-63bd71ed0000\"" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11983" ],
+        "ETag": [ "\"170032fe-0000-0100-0000-641ade190000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11974" ],
         "x-ms-providerhub-traffic": [ "True" ],
-        "x-ms-request-id": [ "f59d4538-9574-41be-bbda-72b6017f0df0" ],
-        "x-ms-correlation-request-id": [ "679aa0b8-f0a9-4363-ae97-fdfc375a7785" ],
-        "x-ms-routing-request-id": [ "JAPANEAST:20230110T141209Z:679aa0b8-f0a9-4363-ae97-fdfc375a7785" ],
+        "x-ms-request-id": [ "5fe2b1f4-0f62-4d92-92d3-77432bd113a7" ],
+        "x-ms-correlation-request-id": [ "dd71f649-540c-4521-80b4-b1cc00b26157" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20230322T105441Z:dd71f649-540c-4521-80b4-b1cc00b26157" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 10 Jan 2023 14:12:09 GMT" ]
+        "Date": [ "Wed, 22 Mar 2023 10:54:40 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "704" ],
+        "Content-Length": [ "706" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/simGroups/test-mn-simgroup\",\"name\":\"test-mn-simgroup\",\"type\":\"microsoft.mobilenetwork/simgroups\",\"location\":\"eastus\",\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-01-10T14:10:34.624493Z\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-01-10T14:10:34.624493Z\"},\"properties\":{\"mobileNetwork\":{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/mobileNetworks/test-mn2\"},\"provisioningState\":\"Succeeded\"}}",
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/simGroups/test-mn-simgroup\",\"name\":\"test-mn-simgroup\",\"type\":\"microsoft.mobilenetwork/simgroups\",\"location\":\"eastus\",\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-03-22T10:53:05.4253596Z\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-03-22T10:53:05.4253596Z\"},\"properties\":{\"mobileNetwork\":{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/mobileNetworks/test-mn2\"},\"provisioningState\":\"Succeeded\"}}",
       "isContentBase64": false
     }
   },
@@ -294,12 +294,12 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "46" ],
-        "x-ms-client-request-id": [ "58660dd5-50e7-46cd-95de-a1b85160bade" ],
+        "x-ms-unique-id": [ "70" ],
+        "x-ms-client-request-id": [ "64494f73-d54d-4b6b-b5de-15392858bc80" ],
         "CommandName": [ "Get-AzMobileNetworkSimGroup" ],
         "FullCommandName": [ "Get-AzMobileNetworkSimGroup_List1" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.1", "Az.MobileNetwork/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.2", "Az.MobileNetwork/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -310,35 +310,80 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-original-request-ids": [ "ebf73ff9-c4b5-4b37-a7ba-e0e5494250a9", "ecb23a85-4cc2-455f-af92-709c91db748f", "fed0ca1c-e54d-4026-8f97-a547f1efdfa2" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11982" ],
-        "x-ms-request-id": [ "27c2ce72-1307-4734-8942-dcbf5c38ee1a" ],
-        "x-ms-correlation-request-id": [ "27c2ce72-1307-4734-8942-dcbf5c38ee1a" ],
-        "x-ms-routing-request-id": [ "JAPANEAST:20230110T141209Z:27c2ce72-1307-4734-8942-dcbf5c38ee1a" ],
+        "x-ms-original-request-ids": [ "954081e1-0819-4ff5-a300-0a0c00200440", "0216b609-6b01-4e44-af23-5a9db179a732", "d334ed7b-6029-44f1-9cb6-6a8758e93296", "4217488b-529e-4e59-a0ac-a86a951e13f6" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11973" ],
+        "x-ms-request-id": [ "20856afa-b4b6-41bc-a626-cb8e2b56778d" ],
+        "x-ms-correlation-request-id": [ "20856afa-b4b6-41bc-a626-cb8e2b56778d" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20230322T105441Z:20856afa-b4b6-41bc-a626-cb8e2b56778d" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 10 Jan 2023 14:12:09 GMT" ]
+        "Date": [ "Wed, 22 Mar 2023 10:54:40 GMT" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ],
-        "Content-Length": [ "716" ]
+        "Content-Length": [ "718" ]
       },
-      "Content": "{\"value\":[{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/simGroups/test-mn-simgroup\",\"name\":\"test-mn-simgroup\",\"type\":\"microsoft.mobilenetwork/simgroups\",\"location\":\"eastus\",\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-01-10T14:10:34.624493Z\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-01-10T14:10:34.624493Z\"},\"properties\":{\"mobileNetwork\":{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/mobileNetworks/test-mn2\"},\"provisioningState\":\"Succeeded\"}}]}",
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/simGroups/test-mn-simgroup\",\"name\":\"test-mn-simgroup\",\"type\":\"microsoft.mobilenetwork/simgroups\",\"location\":\"eastus\",\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-03-22T10:53:05.4253596Z\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-03-22T10:53:05.4253596Z\"},\"properties\":{\"mobileNetwork\":{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/mobileNetworks/test-mn2\"},\"provisioningState\":\"Succeeded\"}}]}",
       "isContentBase64": false
     }
   },
-  "AzMobileNetworkSimGroup+[NoContext]+UpdateExpanded+$PATCH+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/simGroups/test-mn-simgroup?api-version=2022-11-01+1": {
+  "AzMobileNetworkSimGroup+[NoContext]+UpdateExpanded+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/simGroups/test-mn-simgroup?api-version=2022-11-01+1": {
     "Request": {
-      "Method": "PATCH",
+      "Method": "PUT",
       "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/simGroups/test-mn-simgroup?api-version=2022-11-01",
-      "Content": "{\r\n  \"tags\": {\r\n    \"abc\": \"123\"\r\n  }\r\n}",
+      "Content": "{\r\n  \"tags\": {\r\n    \"abc\": \"123\"\r\n  },\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"mobileNetwork\": {\r\n      \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/mobileNetworks/test-mn2\"\r\n    }\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
-        "Content-Length": [ "40" ]
+        "Content-Length": [ "285" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"17008dfe-0000-0100-0000-641ade730000\"" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1186" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "mise-correlation-id": [ "5ec5d4ad-763d-474a-bbec-5e0abd279ee5" ],
+        "x-ms-request-id": [ "76968c18-1cc0-4e6d-bede-d8295b054f2c" ],
+        "x-ms-build-version": [ "1.0.1" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/providers/Microsoft.MobileNetwork/locations/EASTUS/operationStatuses/7209f42b-044b-4258-982c-169408ccd840*7B9F805CB21592124EB5015DE77BB22008A2E7B1181EFDAC0DB88ECC2307BF87?api-version=2022-11-01" ],
+        "x-ms-correlation-request-id": [ "33359ae7-4f13-480c-a1d9-4a82faa73769" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20230322T105444Z:33359ae7-4f13-480c-a1d9-4a82faa73769" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 22 Mar 2023 10:54:44 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "726" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/simGroups/test-mn-simgroup\",\"name\":\"test-mn-simgroup\",\"type\":\"microsoft.mobilenetwork/simgroups\",\"location\":\"eastus\",\"tags\":{\"abc\":\"123\"},\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-03-22T10:53:05.4253596Z\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-03-22T10:54:42.4263373Z\"},\"properties\":{\"provisioningState\":\"Accepted\",\"mobileNetwork\":{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/mobileNetworks/test-mn2\"}}}",
+      "isContentBase64": false
+    }
+  },
+  "AzMobileNetworkSimGroup+[NoContext]+UpdateExpanded+$GET+https://management.azure.com/providers/Microsoft.MobileNetwork/locations/EASTUS/operationStatuses/7209f42b-044b-4258-982c-169408ccd840*7B9F805CB21592124EB5015DE77BB22008A2E7B1181EFDAC0DB88ECC2307BF87?api-version=2022-11-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.MobileNetwork/locations/EASTUS/operationStatuses/7209f42b-044b-4258-982c-169408ccd840*7B9F805CB21592124EB5015DE77BB22008A2E7B1181EFDAC0DB88ECC2307BF87?api-version=2022-11-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "73" ],
+        "x-ms-client-request-id": [ "b08bff8e-b45b-4abb-b404-0fa4bc7a37c8" ],
+        "CommandName": [ "Az.MobileNetwork.private\\New-AzMobileNetworkSimGroup_CreateExpanded" ],
+        "FullCommandName": [ "New-AzMobileNetworkSimGroup_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.2", "Az.MobileNetwork/0.1.0" ]
+      },
+      "ContentHeaders": {
       }
     },
     "Response": {
@@ -346,39 +391,202 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "ETag": [ "\"ac03a42f-0000-0100-0000-63bd723a0000\"" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1189" ],
-        "x-ms-providerhub-traffic": [ "True" ],
-        "x-ms-request-id": [ "b5135741-d1f2-4664-a87a-2134293972a1" ],
-        "x-ms-correlation-request-id": [ "1c47bf59-5aac-4da9-bf6e-c2c318c84a93" ],
-        "x-ms-routing-request-id": [ "JAPANEAST:20230110T141211Z:1c47bf59-5aac-4da9-bf6e-c2c318c84a93" ],
+        "ETag": [ "\"0f00d7af-0000-0100-0000-641ade720000\"" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "11973" ],
+        "x-ms-request-id": [ "3fcefa95-7745-43f2-a5f9-9838b8fcc587" ],
+        "x-ms-correlation-request-id": [ "8c7fff11-3fd3-4eb5-8186-163f6cf84daa" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20230322T105514Z:8c7fff11-3fd3-4eb5-8186-163f6cf84daa" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 10 Jan 2023 14:12:11 GMT" ]
+        "Date": [ "Wed, 22 Mar 2023 10:55:13 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "726" ],
+        "Content-Length": [ "521" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/simGroups/test-mn-simgroup\",\"name\":\"test-mn-simgroup\",\"type\":\"microsoft.mobilenetwork/simgroups\",\"location\":\"eastus\",\"tags\":{\"abc\":\"123\"},\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-01-10T14:10:34.624493Z\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-01-10T14:12:10.1086491Z\"},\"properties\":{\"mobileNetwork\":{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/mobileNetworks/test-mn2\"},\"provisioningState\":\"Succeeded\"}}",
+      "Content": "{\"id\":\"/providers/Microsoft.MobileNetwork/locations/EASTUS/operationStatuses/7209f42b-044b-4258-982c-169408ccd840*7B9F805CB21592124EB5015DE77BB22008A2E7B1181EFDAC0DB88ECC2307BF87\",\"name\":\"7209f42b-044b-4258-982c-169408ccd840*7B9F805CB21592124EB5015DE77BB22008A2E7B1181EFDAC0DB88ECC2307BF87\",\"resourceId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/simGroups/test-mn-simgroup\",\"status\":\"Accepted\",\"startTime\":\"2023-03-22T10:54:42.8860087Z\"}",
       "isContentBase64": false
     }
   },
-  "AzMobileNetworkSimGroup+[NoContext]+UpdateViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/simGroups/test-mn-simgroup?api-version=2022-11-01+1": {
+  "AzMobileNetworkSimGroup+[NoContext]+UpdateExpanded+$GET+https://management.azure.com/providers/Microsoft.MobileNetwork/locations/EASTUS/operationStatuses/7209f42b-044b-4258-982c-169408ccd840*7B9F805CB21592124EB5015DE77BB22008A2E7B1181EFDAC0DB88ECC2307BF87?api-version=2022-11-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.MobileNetwork/locations/EASTUS/operationStatuses/7209f42b-044b-4258-982c-169408ccd840*7B9F805CB21592124EB5015DE77BB22008A2E7B1181EFDAC0DB88ECC2307BF87?api-version=2022-11-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "74" ],
+        "x-ms-client-request-id": [ "b08bff8e-b45b-4abb-b404-0fa4bc7a37c8" ],
+        "CommandName": [ "Az.MobileNetwork.private\\New-AzMobileNetworkSimGroup_CreateExpanded" ],
+        "FullCommandName": [ "New-AzMobileNetworkSimGroup_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.2", "Az.MobileNetwork/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"0f00d7af-0000-0100-0000-641ade720000\"" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "11972" ],
+        "x-ms-request-id": [ "de28efe0-23bd-4b41-bd06-16767ef79f24" ],
+        "x-ms-correlation-request-id": [ "b605f77c-6cf2-47c1-b6bc-21867bc417d5" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20230322T105545Z:b605f77c-6cf2-47c1-b6bc-21867bc417d5" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 22 Mar 2023 10:55:45 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "521" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/providers/Microsoft.MobileNetwork/locations/EASTUS/operationStatuses/7209f42b-044b-4258-982c-169408ccd840*7B9F805CB21592124EB5015DE77BB22008A2E7B1181EFDAC0DB88ECC2307BF87\",\"name\":\"7209f42b-044b-4258-982c-169408ccd840*7B9F805CB21592124EB5015DE77BB22008A2E7B1181EFDAC0DB88ECC2307BF87\",\"resourceId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/simGroups/test-mn-simgroup\",\"status\":\"Accepted\",\"startTime\":\"2023-03-22T10:54:42.8860087Z\"}",
+      "isContentBase64": false
+    }
+  },
+  "AzMobileNetworkSimGroup+[NoContext]+UpdateExpanded+$GET+https://management.azure.com/providers/Microsoft.MobileNetwork/locations/EASTUS/operationStatuses/7209f42b-044b-4258-982c-169408ccd840*7B9F805CB21592124EB5015DE77BB22008A2E7B1181EFDAC0DB88ECC2307BF87?api-version=2022-11-01+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.MobileNetwork/locations/EASTUS/operationStatuses/7209f42b-044b-4258-982c-169408ccd840*7B9F805CB21592124EB5015DE77BB22008A2E7B1181EFDAC0DB88ECC2307BF87?api-version=2022-11-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "75" ],
+        "x-ms-client-request-id": [ "b08bff8e-b45b-4abb-b404-0fa4bc7a37c8" ],
+        "CommandName": [ "Az.MobileNetwork.private\\New-AzMobileNetworkSimGroup_CreateExpanded" ],
+        "FullCommandName": [ "New-AzMobileNetworkSimGroup_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.2", "Az.MobileNetwork/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"0f00d7af-0000-0100-0000-641ade720000\"" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "11971" ],
+        "x-ms-request-id": [ "3ff24a9a-0423-420b-9036-4a275483629b" ],
+        "x-ms-correlation-request-id": [ "e0b1f087-1c1f-4b6c-a29a-2805811c3c82" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20230322T105616Z:e0b1f087-1c1f-4b6c-a29a-2805811c3c82" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 22 Mar 2023 10:56:15 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "521" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/providers/Microsoft.MobileNetwork/locations/EASTUS/operationStatuses/7209f42b-044b-4258-982c-169408ccd840*7B9F805CB21592124EB5015DE77BB22008A2E7B1181EFDAC0DB88ECC2307BF87\",\"name\":\"7209f42b-044b-4258-982c-169408ccd840*7B9F805CB21592124EB5015DE77BB22008A2E7B1181EFDAC0DB88ECC2307BF87\",\"resourceId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/simGroups/test-mn-simgroup\",\"status\":\"Accepted\",\"startTime\":\"2023-03-22T10:54:42.8860087Z\"}",
+      "isContentBase64": false
+    }
+  },
+  "AzMobileNetworkSimGroup+[NoContext]+UpdateExpanded+$GET+https://management.azure.com/providers/Microsoft.MobileNetwork/locations/EASTUS/operationStatuses/7209f42b-044b-4258-982c-169408ccd840*7B9F805CB21592124EB5015DE77BB22008A2E7B1181EFDAC0DB88ECC2307BF87?api-version=2022-11-01+5": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.MobileNetwork/locations/EASTUS/operationStatuses/7209f42b-044b-4258-982c-169408ccd840*7B9F805CB21592124EB5015DE77BB22008A2E7B1181EFDAC0DB88ECC2307BF87?api-version=2022-11-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "76" ],
+        "x-ms-client-request-id": [ "b08bff8e-b45b-4abb-b404-0fa4bc7a37c8" ],
+        "CommandName": [ "Az.MobileNetwork.private\\New-AzMobileNetworkSimGroup_CreateExpanded" ],
+        "FullCommandName": [ "New-AzMobileNetworkSimGroup_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.2", "Az.MobileNetwork/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"0f00d7af-0000-0100-0000-641ade720000\"" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "11970" ],
+        "x-ms-request-id": [ "4866a1d2-0dc5-4138-8abe-d3a16d351078" ],
+        "x-ms-correlation-request-id": [ "9ecb5b62-1bb2-499b-8975-dee4eca3706a" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20230322T105647Z:9ecb5b62-1bb2-499b-8975-dee4eca3706a" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 22 Mar 2023 10:56:46 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "521" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/providers/Microsoft.MobileNetwork/locations/EASTUS/operationStatuses/7209f42b-044b-4258-982c-169408ccd840*7B9F805CB21592124EB5015DE77BB22008A2E7B1181EFDAC0DB88ECC2307BF87\",\"name\":\"7209f42b-044b-4258-982c-169408ccd840*7B9F805CB21592124EB5015DE77BB22008A2E7B1181EFDAC0DB88ECC2307BF87\",\"resourceId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/simGroups/test-mn-simgroup\",\"status\":\"Accepted\",\"startTime\":\"2023-03-22T10:54:42.8860087Z\"}",
+      "isContentBase64": false
+    }
+  },
+  "AzMobileNetworkSimGroup+[NoContext]+UpdateExpanded+$GET+https://management.azure.com/providers/Microsoft.MobileNetwork/locations/EASTUS/operationStatuses/7209f42b-044b-4258-982c-169408ccd840*7B9F805CB21592124EB5015DE77BB22008A2E7B1181EFDAC0DB88ECC2307BF87?api-version=2022-11-01+6": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.MobileNetwork/locations/EASTUS/operationStatuses/7209f42b-044b-4258-982c-169408ccd840*7B9F805CB21592124EB5015DE77BB22008A2E7B1181EFDAC0DB88ECC2307BF87?api-version=2022-11-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "77" ],
+        "x-ms-client-request-id": [ "b08bff8e-b45b-4abb-b404-0fa4bc7a37c8" ],
+        "CommandName": [ "Az.MobileNetwork.private\\New-AzMobileNetworkSimGroup_CreateExpanded" ],
+        "FullCommandName": [ "New-AzMobileNetworkSimGroup_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.2", "Az.MobileNetwork/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"0f00f5af-0000-0100-0000-641adef20000\"" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "11969" ],
+        "x-ms-request-id": [ "ebf70120-43b5-4e3c-893f-64de3c524d28" ],
+        "x-ms-correlation-request-id": [ "083d0f90-28b0-4c1d-99a7-e8d5371822e4" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20230322T105718Z:083d0f90-28b0-4c1d-99a7-e8d5371822e4" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 22 Mar 2023 10:57:17 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "540" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/providers/Microsoft.MobileNetwork/locations/EASTUS/operationStatuses/7209f42b-044b-4258-982c-169408ccd840*7B9F805CB21592124EB5015DE77BB22008A2E7B1181EFDAC0DB88ECC2307BF87\",\"name\":\"7209f42b-044b-4258-982c-169408ccd840*7B9F805CB21592124EB5015DE77BB22008A2E7B1181EFDAC0DB88ECC2307BF87\",\"resourceId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/simGroups/test-mn-simgroup\",\"status\":\"Succeeded\",\"startTime\":\"2023-03-22T10:54:42.8860087Z\",\"properties\":null}",
+      "isContentBase64": false
+    }
+  },
+  "AzMobileNetworkSimGroup+[NoContext]+UpdateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/simGroups/test-mn-simgroup?api-version=2022-11-01+7": {
     "Request": {
       "Method": "GET",
       "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/simGroups/test-mn-simgroup?api-version=2022-11-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "48" ],
-        "x-ms-client-request-id": [ "2145e947-f40f-4f0a-9e60-c8c219d5a721" ],
-        "CommandName": [ "Get-AzMobileNetworkSimGroup" ],
-        "FullCommandName": [ "Get-AzMobileNetworkSimGroup_Get" ],
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "78" ],
+        "x-ms-client-request-id": [ "b08bff8e-b45b-4abb-b404-0fa4bc7a37c8" ],
+        "CommandName": [ "Az.MobileNetwork.private\\New-AzMobileNetworkSimGroup_CreateExpanded" ],
+        "FullCommandName": [ "New-AzMobileNetworkSimGroup_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.1", "Az.MobileNetwork/0.1.0" ],
-        "Authorization": [ "[Filtered]" ]
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.2", "Az.MobileNetwork/0.1.0" ]
       },
       "ContentHeaders": {
       }
@@ -388,59 +596,22 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "ETag": [ "\"ac03a42f-0000-0100-0000-63bd723a0000\"" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11981" ],
+        "ETag": [ "\"170009ff-0000-0100-0000-641adeb50000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11971" ],
         "x-ms-providerhub-traffic": [ "True" ],
-        "x-ms-request-id": [ "8be0896d-a743-4e60-9010-825229372f60" ],
-        "x-ms-correlation-request-id": [ "f0928d3e-4e76-4ce5-87e3-559f78815b03" ],
-        "x-ms-routing-request-id": [ "JAPANEAST:20230110T141211Z:f0928d3e-4e76-4ce5-87e3-559f78815b03" ],
+        "x-ms-request-id": [ "23f71f92-7e35-4314-87e5-57bbe2daccf8" ],
+        "x-ms-correlation-request-id": [ "70a9d958-8dbd-4e32-bde2-bd084fc345ce" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20230322T105718Z:70a9d958-8dbd-4e32-bde2-bd084fc345ce" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 10 Jan 2023 14:12:11 GMT" ]
+        "Date": [ "Wed, 22 Mar 2023 10:57:17 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "726" ],
+        "Content-Length": [ "727" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/simGroups/test-mn-simgroup\",\"name\":\"test-mn-simgroup\",\"type\":\"microsoft.mobilenetwork/simgroups\",\"location\":\"eastus\",\"tags\":{\"abc\":\"123\"},\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-01-10T14:10:34.624493Z\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-01-10T14:12:10.1086491Z\"},\"properties\":{\"mobileNetwork\":{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/mobileNetworks/test-mn2\"},\"provisioningState\":\"Succeeded\"}}",
-      "isContentBase64": false
-    }
-  },
-  "AzMobileNetworkSimGroup+[NoContext]+UpdateViaIdentityExpanded+$PATCH+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/simGroups/test-mn-simgroup?api-version=2022-11-01+2": {
-    "Request": {
-      "Method": "PATCH",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/simGroups/test-mn-simgroup?api-version=2022-11-01",
-      "Content": "{\r\n  \"tags\": {\r\n    \"abc\": \"123\"\r\n  }\r\n}",
-      "isContentBase64": false,
-      "Headers": {
-      },
-      "ContentHeaders": {
-        "Content-Type": [ "application/json" ],
-        "Content-Length": [ "40" ]
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "ETag": [ "\"ac03aa2f-0000-0100-0000-63bd723c0000\"" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1188" ],
-        "x-ms-providerhub-traffic": [ "True" ],
-        "x-ms-request-id": [ "78dd0348-d12e-42fc-b5fd-45ad88b1444d" ],
-        "x-ms-correlation-request-id": [ "d1e442ca-c0cc-4bab-89ed-d15249251e9c" ],
-        "x-ms-routing-request-id": [ "JAPANEAST:20230110T141213Z:d1e442ca-c0cc-4bab-89ed-d15249251e9c" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 10 Jan 2023 14:12:12 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "726" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/simGroups/test-mn-simgroup\",\"name\":\"test-mn-simgroup\",\"type\":\"microsoft.mobilenetwork/simgroups\",\"location\":\"eastus\",\"tags\":{\"abc\":\"123\"},\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-01-10T14:10:34.624493Z\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-01-10T14:12:12.3120088Z\"},\"properties\":{\"mobileNetwork\":{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/mobileNetworks/test-mn2\"},\"provisioningState\":\"Succeeded\"}}",
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/simGroups/test-mn-simgroup\",\"name\":\"test-mn-simgroup\",\"type\":\"microsoft.mobilenetwork/simgroups\",\"location\":\"eastus\",\"tags\":{\"abc\":\"123\"},\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-03-22T10:53:05.4253596Z\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-03-22T10:54:42.4263373Z\"},\"properties\":{\"mobileNetwork\":{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/mobileNetworks/test-mn2\"},\"provisioningState\":\"Succeeded\"}}",
       "isContentBase64": false
     }
   },
@@ -451,12 +622,12 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "50" ],
-        "x-ms-client-request-id": [ "22b0c32a-0e13-4eae-8e6e-070eab431da2" ],
+        "x-ms-unique-id": [ "79" ],
+        "x-ms-client-request-id": [ "2c86836c-b6e1-4259-b0d3-96fba06e5ca0" ],
         "CommandName": [ "Remove-AzMobileNetworkSimGroup" ],
         "FullCommandName": [ "Remove-AzMobileNetworkSimGroup_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.1", "Az.MobileNetwork/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.2", "Az.MobileNetwork/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -467,19 +638,19 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "ETag": [ "\"ac03ad2f-0000-0100-0000-63bd723e0000\"" ],
-        "Location": [ "https://management.azure.com/providers/Microsoft.MobileNetwork/locations/EASTUS/operationStatuses/40203608-e498-4ab5-ace6-21cf94e2be8d*7B9F805CB21592124EB5015DE77BB22008A2E7B1181EFDAC0DB88ECC2307BF87?api-version=2022-11-01" ],
+        "ETag": [ "\"170099ff-0000-0100-0000-641adf0f0000\"" ],
+        "Location": [ "https://management.azure.com/providers/Microsoft.MobileNetwork/locations/EASTUS/operationStatuses/71fd7c15-7ca7-434a-8567-17f3b6365a3c*7B9F805CB21592124EB5015DE77BB22008A2E7B1181EFDAC0DB88ECC2307BF87?api-version=2022-11-01" ],
         "x-ms-ratelimit-remaining-subscription-deletes": [ "14996" ],
         "x-ms-providerhub-traffic": [ "True" ],
-        "mise-correlation-id": [ "c9a05d62-183c-439e-a538-30e6ec0f2276" ],
-        "x-ms-request-id": [ "e647ffc0-9fb4-4f19-ab99-97e2819173f2" ],
+        "mise-correlation-id": [ "4fee0fb9-81e6-413f-8991-55384e04846b" ],
+        "x-ms-request-id": [ "1f110907-260f-4e13-91a7-9b0fd0f07361" ],
         "x-ms-build-version": [ "1.0.1" ],
-        "Azure-AsyncOperation": [ "https://management.azure.com/providers/Microsoft.MobileNetwork/locations/EASTUS/operationStatuses/40203608-e498-4ab5-ace6-21cf94e2be8d*7B9F805CB21592124EB5015DE77BB22008A2E7B1181EFDAC0DB88ECC2307BF87?api-version=2022-11-01" ],
-        "x-ms-correlation-request-id": [ "e018a1f0-5bed-406f-a24a-6c7302b34638" ],
-        "x-ms-routing-request-id": [ "JAPANEAST:20230110T141214Z:e018a1f0-5bed-406f-a24a-6c7302b34638" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/providers/Microsoft.MobileNetwork/locations/EASTUS/operationStatuses/71fd7c15-7ca7-434a-8567-17f3b6365a3c*7B9F805CB21592124EB5015DE77BB22008A2E7B1181EFDAC0DB88ECC2307BF87?api-version=2022-11-01" ],
+        "x-ms-correlation-request-id": [ "b7816f4a-a1b1-45af-bda8-3ed31ecee8c8" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20230322T105719Z:b7816f4a-a1b1-45af-bda8-3ed31ecee8c8" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 10 Jan 2023 14:12:14 GMT" ]
+        "Date": [ "Wed, 22 Mar 2023 10:57:19 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "4" ],
@@ -490,20 +661,20 @@
       "isContentBase64": false
     }
   },
-  "AzMobileNetworkSimGroup+[NoContext]+Delete+$GET+https://management.azure.com/providers/Microsoft.MobileNetwork/locations/EASTUS/operationStatuses/40203608-e498-4ab5-ace6-21cf94e2be8d*7B9F805CB21592124EB5015DE77BB22008A2E7B1181EFDAC0DB88ECC2307BF87?api-version=2022-11-01+2": {
+  "AzMobileNetworkSimGroup+[NoContext]+Delete+$GET+https://management.azure.com/providers/Microsoft.MobileNetwork/locations/EASTUS/operationStatuses/71fd7c15-7ca7-434a-8567-17f3b6365a3c*7B9F805CB21592124EB5015DE77BB22008A2E7B1181EFDAC0DB88ECC2307BF87?api-version=2022-11-01+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Microsoft.MobileNetwork/locations/EASTUS/operationStatuses/40203608-e498-4ab5-ace6-21cf94e2be8d*7B9F805CB21592124EB5015DE77BB22008A2E7B1181EFDAC0DB88ECC2307BF87?api-version=2022-11-01",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.MobileNetwork/locations/EASTUS/operationStatuses/71fd7c15-7ca7-434a-8567-17f3b6365a3c*7B9F805CB21592124EB5015DE77BB22008A2E7B1181EFDAC0DB88ECC2307BF87?api-version=2022-11-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "51" ],
-        "x-ms-client-request-id": [ "22b0c32a-0e13-4eae-8e6e-070eab431da2" ],
+        "x-ms-unique-id": [ "80" ],
+        "x-ms-client-request-id": [ "2c86836c-b6e1-4259-b0d3-96fba06e5ca0" ],
         "CommandName": [ "Remove-AzMobileNetworkSimGroup" ],
         "FullCommandName": [ "Remove-AzMobileNetworkSimGroup_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.1", "Az.MobileNetwork/0.1.0" ]
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.2", "Az.MobileNetwork/0.1.0" ]
       },
       "ContentHeaders": {
       }
@@ -513,38 +684,38 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "ETag": [ "\"ae003208-0000-0100-0000-63bd723e0000\"" ],
-        "x-ms-ratelimit-remaining-tenant-reads": [ "11983" ],
-        "x-ms-request-id": [ "31a58e8e-9b0f-4353-947a-55cd5ca8fbf6" ],
-        "x-ms-correlation-request-id": [ "1175de4b-ea20-4643-b310-f3b7c9c930b3" ],
-        "x-ms-routing-request-id": [ "JAPANEAST:20230110T141244Z:1175de4b-ea20-4643-b310-f3b7c9c930b3" ],
+        "ETag": [ "\"0f00faaf-0000-0100-0000-641adf0f0000\"" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "11968" ],
+        "x-ms-request-id": [ "fb4ec38f-5116-4b54-bada-541b481932f0" ],
+        "x-ms-correlation-request-id": [ "697aa3b9-98f5-43a8-b353-82d9ef3168c4" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20230322T105750Z:697aa3b9-98f5-43a8-b353-82d9ef3168c4" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 10 Jan 2023 14:12:43 GMT" ]
+        "Date": [ "Wed, 22 Mar 2023 10:57:50 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "521" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/providers/Microsoft.MobileNetwork/locations/EASTUS/operationStatuses/40203608-e498-4ab5-ace6-21cf94e2be8d*7B9F805CB21592124EB5015DE77BB22008A2E7B1181EFDAC0DB88ECC2307BF87\",\"name\":\"40203608-e498-4ab5-ace6-21cf94e2be8d*7B9F805CB21592124EB5015DE77BB22008A2E7B1181EFDAC0DB88ECC2307BF87\",\"resourceId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/simGroups/test-mn-simgroup\",\"status\":\"Deleting\",\"startTime\":\"2023-01-10T14:12:14.1498908Z\"}",
+      "Content": "{\"id\":\"/providers/Microsoft.MobileNetwork/locations/EASTUS/operationStatuses/71fd7c15-7ca7-434a-8567-17f3b6365a3c*7B9F805CB21592124EB5015DE77BB22008A2E7B1181EFDAC0DB88ECC2307BF87\",\"name\":\"71fd7c15-7ca7-434a-8567-17f3b6365a3c*7B9F805CB21592124EB5015DE77BB22008A2E7B1181EFDAC0DB88ECC2307BF87\",\"resourceId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/simGroups/test-mn-simgroup\",\"status\":\"Deleting\",\"startTime\":\"2023-03-22T10:57:19.3496086Z\"}",
       "isContentBase64": false
     }
   },
-  "AzMobileNetworkSimGroup+[NoContext]+Delete+$GET+https://management.azure.com/providers/Microsoft.MobileNetwork/locations/EASTUS/operationStatuses/40203608-e498-4ab5-ace6-21cf94e2be8d*7B9F805CB21592124EB5015DE77BB22008A2E7B1181EFDAC0DB88ECC2307BF87?api-version=2022-11-01+3": {
+  "AzMobileNetworkSimGroup+[NoContext]+Delete+$GET+https://management.azure.com/providers/Microsoft.MobileNetwork/locations/EASTUS/operationStatuses/71fd7c15-7ca7-434a-8567-17f3b6365a3c*7B9F805CB21592124EB5015DE77BB22008A2E7B1181EFDAC0DB88ECC2307BF87?api-version=2022-11-01+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Microsoft.MobileNetwork/locations/EASTUS/operationStatuses/40203608-e498-4ab5-ace6-21cf94e2be8d*7B9F805CB21592124EB5015DE77BB22008A2E7B1181EFDAC0DB88ECC2307BF87?api-version=2022-11-01",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.MobileNetwork/locations/EASTUS/operationStatuses/71fd7c15-7ca7-434a-8567-17f3b6365a3c*7B9F805CB21592124EB5015DE77BB22008A2E7B1181EFDAC0DB88ECC2307BF87?api-version=2022-11-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "52" ],
-        "x-ms-client-request-id": [ "22b0c32a-0e13-4eae-8e6e-070eab431da2" ],
+        "x-ms-unique-id": [ "81" ],
+        "x-ms-client-request-id": [ "2c86836c-b6e1-4259-b0d3-96fba06e5ca0" ],
         "CommandName": [ "Remove-AzMobileNetworkSimGroup" ],
         "FullCommandName": [ "Remove-AzMobileNetworkSimGroup_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.1", "Az.MobileNetwork/0.1.0" ]
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.2", "Az.MobileNetwork/0.1.0" ]
       },
       "ContentHeaders": {
       }
@@ -554,38 +725,38 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "ETag": [ "\"ae003208-0000-0100-0000-63bd723e0000\"" ],
-        "x-ms-ratelimit-remaining-tenant-reads": [ "11982" ],
-        "x-ms-request-id": [ "b13f628a-214c-40a5-a9fc-5d89a125edc1" ],
-        "x-ms-correlation-request-id": [ "c9ffd999-dfa3-4236-8fbd-a9dc97161c3c" ],
-        "x-ms-routing-request-id": [ "JAPANEAST:20230110T141315Z:c9ffd999-dfa3-4236-8fbd-a9dc97161c3c" ],
+        "ETag": [ "\"0f00faaf-0000-0100-0000-641adf0f0000\"" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "11967" ],
+        "x-ms-request-id": [ "0ca443b5-7936-4e82-92fe-99c734c167e1" ],
+        "x-ms-correlation-request-id": [ "51b230d8-e887-4178-9cd9-0e7df8e42d3b" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20230322T105821Z:51b230d8-e887-4178-9cd9-0e7df8e42d3b" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 10 Jan 2023 14:13:14 GMT" ]
+        "Date": [ "Wed, 22 Mar 2023 10:58:20 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "521" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/providers/Microsoft.MobileNetwork/locations/EASTUS/operationStatuses/40203608-e498-4ab5-ace6-21cf94e2be8d*7B9F805CB21592124EB5015DE77BB22008A2E7B1181EFDAC0DB88ECC2307BF87\",\"name\":\"40203608-e498-4ab5-ace6-21cf94e2be8d*7B9F805CB21592124EB5015DE77BB22008A2E7B1181EFDAC0DB88ECC2307BF87\",\"resourceId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/simGroups/test-mn-simgroup\",\"status\":\"Deleting\",\"startTime\":\"2023-01-10T14:12:14.1498908Z\"}",
+      "Content": "{\"id\":\"/providers/Microsoft.MobileNetwork/locations/EASTUS/operationStatuses/71fd7c15-7ca7-434a-8567-17f3b6365a3c*7B9F805CB21592124EB5015DE77BB22008A2E7B1181EFDAC0DB88ECC2307BF87\",\"name\":\"71fd7c15-7ca7-434a-8567-17f3b6365a3c*7B9F805CB21592124EB5015DE77BB22008A2E7B1181EFDAC0DB88ECC2307BF87\",\"resourceId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/simGroups/test-mn-simgroup\",\"status\":\"Deleting\",\"startTime\":\"2023-03-22T10:57:19.3496086Z\"}",
       "isContentBase64": false
     }
   },
-  "AzMobileNetworkSimGroup+[NoContext]+Delete+$GET+https://management.azure.com/providers/Microsoft.MobileNetwork/locations/EASTUS/operationStatuses/40203608-e498-4ab5-ace6-21cf94e2be8d*7B9F805CB21592124EB5015DE77BB22008A2E7B1181EFDAC0DB88ECC2307BF87?api-version=2022-11-01+4": {
+  "AzMobileNetworkSimGroup+[NoContext]+Delete+$GET+https://management.azure.com/providers/Microsoft.MobileNetwork/locations/EASTUS/operationStatuses/71fd7c15-7ca7-434a-8567-17f3b6365a3c*7B9F805CB21592124EB5015DE77BB22008A2E7B1181EFDAC0DB88ECC2307BF87?api-version=2022-11-01+4": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Microsoft.MobileNetwork/locations/EASTUS/operationStatuses/40203608-e498-4ab5-ace6-21cf94e2be8d*7B9F805CB21592124EB5015DE77BB22008A2E7B1181EFDAC0DB88ECC2307BF87?api-version=2022-11-01",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.MobileNetwork/locations/EASTUS/operationStatuses/71fd7c15-7ca7-434a-8567-17f3b6365a3c*7B9F805CB21592124EB5015DE77BB22008A2E7B1181EFDAC0DB88ECC2307BF87?api-version=2022-11-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "53" ],
-        "x-ms-client-request-id": [ "22b0c32a-0e13-4eae-8e6e-070eab431da2" ],
+        "x-ms-unique-id": [ "82" ],
+        "x-ms-client-request-id": [ "2c86836c-b6e1-4259-b0d3-96fba06e5ca0" ],
         "CommandName": [ "Remove-AzMobileNetworkSimGroup" ],
         "FullCommandName": [ "Remove-AzMobileNetworkSimGroup_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.1", "Az.MobileNetwork/0.1.0" ]
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.2", "Az.MobileNetwork/0.1.0" ]
       },
       "ContentHeaders": {
       }
@@ -595,38 +766,38 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "ETag": [ "\"1a00235e-0000-0600-0000-63bd72800000\"" ],
-        "x-ms-ratelimit-remaining-tenant-reads": [ "11981" ],
-        "x-ms-request-id": [ "e027dc39-7256-4314-a84f-55f6b0499514" ],
-        "x-ms-correlation-request-id": [ "6f645268-d439-4526-8940-781bb7770af6" ],
-        "x-ms-routing-request-id": [ "JAPANEAST:20230110T141345Z:6f645268-d439-4526-8940-781bb7770af6" ],
+        "ETag": [ "\"8c0088a4-0000-0600-0000-641adf510000\"" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "11966" ],
+        "x-ms-request-id": [ "392653c0-628c-4dd7-967f-743b04d213bc" ],
+        "x-ms-correlation-request-id": [ "152627ff-8d0a-4732-94ca-43fb6458bc34" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20230322T105851Z:152627ff-8d0a-4732-94ca-43fb6458bc34" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 10 Jan 2023 14:13:44 GMT" ]
+        "Date": [ "Wed, 22 Mar 2023 10:58:50 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "540" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/providers/Microsoft.MobileNetwork/locations/EASTUS/operationStatuses/40203608-e498-4ab5-ace6-21cf94e2be8d*7B9F805CB21592124EB5015DE77BB22008A2E7B1181EFDAC0DB88ECC2307BF87\",\"name\":\"40203608-e498-4ab5-ace6-21cf94e2be8d*7B9F805CB21592124EB5015DE77BB22008A2E7B1181EFDAC0DB88ECC2307BF87\",\"resourceId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/simGroups/test-mn-simgroup\",\"status\":\"Succeeded\",\"startTime\":\"2023-01-10T14:12:14.1498908Z\",\"properties\":null}",
+      "Content": "{\"id\":\"/providers/Microsoft.MobileNetwork/locations/EASTUS/operationStatuses/71fd7c15-7ca7-434a-8567-17f3b6365a3c*7B9F805CB21592124EB5015DE77BB22008A2E7B1181EFDAC0DB88ECC2307BF87\",\"name\":\"71fd7c15-7ca7-434a-8567-17f3b6365a3c*7B9F805CB21592124EB5015DE77BB22008A2E7B1181EFDAC0DB88ECC2307BF87\",\"resourceId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/simGroups/test-mn-simgroup\",\"status\":\"Succeeded\",\"startTime\":\"2023-03-22T10:57:19.3496086Z\",\"properties\":null}",
       "isContentBase64": false
     }
   },
-  "AzMobileNetworkSimGroup+[NoContext]+Delete+$GET+https://management.azure.com/providers/Microsoft.MobileNetwork/locations/EASTUS/operationStatuses/40203608-e498-4ab5-ace6-21cf94e2be8d*7B9F805CB21592124EB5015DE77BB22008A2E7B1181EFDAC0DB88ECC2307BF87?api-version=2022-11-01+5": {
+  "AzMobileNetworkSimGroup+[NoContext]+Delete+$GET+https://management.azure.com/providers/Microsoft.MobileNetwork/locations/EASTUS/operationStatuses/71fd7c15-7ca7-434a-8567-17f3b6365a3c*7B9F805CB21592124EB5015DE77BB22008A2E7B1181EFDAC0DB88ECC2307BF87?api-version=2022-11-01+5": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Microsoft.MobileNetwork/locations/EASTUS/operationStatuses/40203608-e498-4ab5-ace6-21cf94e2be8d*7B9F805CB21592124EB5015DE77BB22008A2E7B1181EFDAC0DB88ECC2307BF87?api-version=2022-11-01",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.MobileNetwork/locations/EASTUS/operationStatuses/71fd7c15-7ca7-434a-8567-17f3b6365a3c*7B9F805CB21592124EB5015DE77BB22008A2E7B1181EFDAC0DB88ECC2307BF87?api-version=2022-11-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "54" ],
-        "x-ms-client-request-id": [ "22b0c32a-0e13-4eae-8e6e-070eab431da2" ],
+        "x-ms-unique-id": [ "83" ],
+        "x-ms-client-request-id": [ "2c86836c-b6e1-4259-b0d3-96fba06e5ca0" ],
         "CommandName": [ "Remove-AzMobileNetworkSimGroup" ],
         "FullCommandName": [ "Remove-AzMobileNetworkSimGroup_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.1", "Az.MobileNetwork/0.1.0" ]
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.2", "Az.MobileNetwork/0.1.0" ]
       },
       "ContentHeaders": {
       }
@@ -636,21 +807,21 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "ETag": [ "\"1a00235e-0000-0600-0000-63bd72800000\"" ],
-        "x-ms-ratelimit-remaining-tenant-reads": [ "11980" ],
-        "x-ms-request-id": [ "727d05a3-c1d4-45c4-aac8-f59078f60fa3" ],
-        "x-ms-correlation-request-id": [ "e6e46b5d-9cd7-475a-a0e5-900461495fae" ],
-        "x-ms-routing-request-id": [ "JAPANEAST:20230110T141345Z:e6e46b5d-9cd7-475a-a0e5-900461495fae" ],
+        "ETag": [ "\"8c0088a4-0000-0600-0000-641adf510000\"" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "11965" ],
+        "x-ms-request-id": [ "0ec44640-5bda-4ded-be95-7e357419d0b5" ],
+        "x-ms-correlation-request-id": [ "51521164-6cda-4eb1-a410-3865c561d1fb" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20230322T105852Z:51521164-6cda-4eb1-a410-3865c561d1fb" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 10 Jan 2023 14:13:45 GMT" ]
+        "Date": [ "Wed, 22 Mar 2023 10:58:51 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "540" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/providers/Microsoft.MobileNetwork/locations/EASTUS/operationStatuses/40203608-e498-4ab5-ace6-21cf94e2be8d*7B9F805CB21592124EB5015DE77BB22008A2E7B1181EFDAC0DB88ECC2307BF87\",\"name\":\"40203608-e498-4ab5-ace6-21cf94e2be8d*7B9F805CB21592124EB5015DE77BB22008A2E7B1181EFDAC0DB88ECC2307BF87\",\"resourceId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/simGroups/test-mn-simgroup\",\"status\":\"Succeeded\",\"startTime\":\"2023-01-10T14:12:14.1498908Z\",\"properties\":null}",
+      "Content": "{\"id\":\"/providers/Microsoft.MobileNetwork/locations/EASTUS/operationStatuses/71fd7c15-7ca7-434a-8567-17f3b6365a3c*7B9F805CB21592124EB5015DE77BB22008A2E7B1181EFDAC0DB88ECC2307BF87\",\"name\":\"71fd7c15-7ca7-434a-8567-17f3b6365a3c*7B9F805CB21592124EB5015DE77BB22008A2E7B1181EFDAC0DB88ECC2307BF87\",\"resourceId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/simGroups/test-mn-simgroup\",\"status\":\"Succeeded\",\"startTime\":\"2023-03-22T10:57:19.3496086Z\",\"properties\":null}",
       "isContentBase64": false
     }
   }

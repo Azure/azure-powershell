@@ -21,27 +21,27 @@ function ExecuteTestCases([object]$response) {
     $response.BillingInformationBillingCurrencyRemainingCommitmentAmount | Should -Not -Be $null
     $response.BillingInformationBillingCurrencyTotalPaidAmount | Should -Not -Be $null
     $response.BillingInformationBillingCurrencyProratedAmount.CurrencyCode | Should -Be 'USD'
-    $response.BillingInformationBillingCurrencyProratedAmount.Amount | Should -Be 25.05
+    $response.BillingInformationBillingCurrencyProratedAmount.Amount | Should -Be 6.18
     $response.BillingInformationBillingCurrencyRemainingCommitmentAmount.CurrencyCode | Should -Be 'USD'
-    $response.BillingInformationBillingCurrencyRemainingCommitmentAmount.Amount | Should -Be 18.06
+    $response.BillingInformationBillingCurrencyRemainingCommitmentAmount.Amount | Should -Be 23.94
     $response.BillingInformationBillingCurrencyTotalPaidAmount.CurrencyCode | Should -Be 'USD'
-    $response.BillingInformationBillingCurrencyTotalPaidAmount.Amount | Should -Be 25.8
+    $response.BillingInformationBillingCurrencyTotalPaidAmount.Amount | Should -Be 7.98
     $response.BillingInformationBillingPlan | Should -Be 'Monthly'
-    $response.BillingInformationCompletedTransaction | Should -Be 5
+    $response.BillingInformationCompletedTransaction | Should -Be 3
     $response.BillingInformationTotalTransaction | Should -Be 12
     $response.BillingRefundAmount | Should -Not -Be $null
     $response.ConsumedRefundsTotal | Should -Not -Be $null
     $response.BillingRefundAmount.CurrencyCode | Should -Be 'USD'
-    $response.BillingRefundAmount.Amount | Should -Be 0.75
+    $response.BillingRefundAmount.Amount | Should -Be 1.8
     $response.ConsumedRefundsTotal.CurrencyCode | Should -Be 'USD'
-    $response.ConsumedRefundsTotal.Amount | Should -Be 365.43
+    $response.ConsumedRefundsTotal.Amount | Should -Be 0
     $response.Id| Should -Be '/providers/Microsoft.Capacity/reservationOrders/50000000-aaaa-bbbb-cccc-100000000003/reservations/30000000-aaaa-bbbb-cccc-100000000003'
     $response.MaxRefundLimit | Should -Not -Be $null
     $response.MaxRefundLimit.CurrencyCode | Should -Be 'USD'
     $response.MaxRefundLimit.Amount | Should -Be 50000
     $response.PricingRefundAmount | Should -Not -Be $null
     $response.PricingRefundAmount.CurrencyCode | Should -Be 'USD'
-    $response.PricingRefundAmount.Amount | Should -Be 0.75
+    $response.PricingRefundAmount.Amount | Should -Be 1.8
 }
 
 Describe 'Invoke-AzReservationCalculateRefund' {

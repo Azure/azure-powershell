@@ -1,8 +1,8 @@
 {
-  "New-AzMigrateReplicationPolicy+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2201rg/providers/Microsoft.RecoveryServices/vaults/signoffccyapp3352vault/replicationPolicies/migratesignoff2105app1452sitepolicy?api-version=2022-05-01+1": {
+  "New-AzMigrateReplicationPolicy+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2201rg/providers/Microsoft.RecoveryServices/vaults/signoffccyapp3352vault/replicationPolicies/migratesignoff2105app1452sitepolicy?api-version=2023-01-01+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2201rg/providers/Microsoft.RecoveryServices/vaults/signoffccyapp3352vault/replicationPolicies/migratesignoff2105app1452sitepolicy?api-version=2022-05-01",
+      "RequestUri": "https://management.azure.com/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2201rg/providers/Microsoft.RecoveryServices/vaults/signoffccyapp3352vault/replicationPolicies/migratesignoff2105app1452sitepolicy?api-version=2023-01-01",
       "Content": "{\n  \"properties\": {\n    \"providerSpecificInput\": {\n      \"instanceType\": \"VMwareCbt\",\n      \"recoveryPointHistoryInMinutes\": 4320,\n      \"crashConsistentFrequencyInMinutes\": 60,\n      \"appConsistentFrequencyInMinutes\": 240\n    }\n  }\n}",
       "Headers": {
       },
@@ -16,11 +16,11 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2201rg/providers/Microsoft.RecoveryServices/vaults/signoffccyapp3352vault/replicationPolicies/migratesignoff2105app1452sitepolicy/operationresults/d257053b-b34f-4303-ab6d-45ce8e393a11?api-version=2022-05-01" ],
+        "Location": [ "https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2201rg/providers/Microsoft.RecoveryServices/vaults/signoffccyapp3352vault/replicationPolicies/migratesignoff2105app1452sitepolicy/operationresults/d257053b-b34f-4303-ab6d-45ce8e393a11?api-version=2023-01-01" ],
         "Retry-After": [ "30" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "x-ms-request-id": [ "d85bb2cd-a4bc-4e19-a4f1-99f335e86fdb 9/26/2022 11:59:49 AM" ],
-        "Azure-AsyncOperation": [ "https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2201rg/providers/Microsoft.RecoveryServices/vaults/signoffccyapp3352vault/replicationOperationStatus/d257053b-b34f-4303-ab6d-45ce8e393a11?api-version=2022-05-01" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2201rg/providers/Microsoft.RecoveryServices/vaults/signoffccyapp3352vault/replicationOperationStatus/d257053b-b34f-4303-ab6d-45ce8e393a11?api-version=2023-01-01" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "x-ms-client-request-id": [ "d85bb2cd-a4bc-4e19-a4f1-99f335e86fdb" ],
         "Server": [ "Kestrel" ],
@@ -36,10 +36,10 @@
       "Content": null
     }
   },
-  "New-AzMigrateReplicationPolicy+[NoContext]+CreateExpanded+$GET+https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2201rg/providers/Microsoft.RecoveryServices/vaults/signoffccyapp3352vault/replicationOperationStatus/d257053b-b34f-4303-ab6d-45ce8e393a11?api-version=2022-05-01+2": {
+  "New-AzMigrateReplicationPolicy+[NoContext]+CreateExpanded+$GET+https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2201rg/providers/Microsoft.RecoveryServices/vaults/signoffccyapp3352vault/replicationOperationStatus/d257053b-b34f-4303-ab6d-45ce8e393a11?api-version=2023-01-01+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2201rg/providers/Microsoft.RecoveryServices/vaults/signoffccyapp3352vault/replicationOperationStatus/d257053b-b34f-4303-ab6d-45ce8e393a11?api-version=2022-05-01",
+      "RequestUri": "https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2201rg/providers/Microsoft.RecoveryServices/vaults/signoffccyapp3352vault/replicationOperationStatus/d257053b-b34f-4303-ab6d-45ce8e393a11?api-version=2023-01-01",
       "Content": null,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
@@ -76,10 +76,10 @@
       "Content": "{\"error\":null,\"id\":null,\"name\":\"d257053b-b34f-4303-ab6d-45ce8e393a11\",\"properties\":null,\"status\":\"Succeeded\",\"startTime\":\"2022-09-26T11:59:48.8359163Z\",\"endTime\":\"2022-09-26T11:59:49.0000000Z\",\"percentComplete\":null}"
     }
   },
-  "New-AzMigrateReplicationPolicy+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2201rg/providers/Microsoft.RecoveryServices/vaults/signoffccyapp3352vault/replicationPolicies/migratesignoff2105app1452sitepolicy?api-version=2022-05-01+3": {
+  "New-AzMigrateReplicationPolicy+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2201rg/providers/Microsoft.RecoveryServices/vaults/signoffccyapp3352vault/replicationPolicies/migratesignoff2105app1452sitepolicy?api-version=2023-01-01+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2201rg/providers/Microsoft.RecoveryServices/vaults/signoffccyapp3352vault/replicationPolicies/migratesignoff2105app1452sitepolicy?api-version=2022-05-01",
+      "RequestUri": "https://management.azure.com/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2201rg/providers/Microsoft.RecoveryServices/vaults/signoffccyapp3352vault/replicationPolicies/migratesignoff2105app1452sitepolicy?api-version=2023-01-01",
       "Content": null,
       "Headers": {
         "Authorization": [ "[Filtered]" ],

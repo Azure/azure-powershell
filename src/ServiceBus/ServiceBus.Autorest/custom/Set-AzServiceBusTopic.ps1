@@ -20,7 +20,7 @@ Updates a ServiceBus Topic
 #>
 
 function Set-AzServiceBusTopic{
-	[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbTopic])]
+	[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.ISbTopic])]
     [CmdletBinding(DefaultParameterSetName = 'SetExpanded', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
 	param(
 		[Parameter(ParameterSetName = 'SetExpanded', Mandatory, HelpMessage = "The name of the Topic.")]
@@ -246,19 +246,6 @@ function Set-AzServiceBusTopic{
             if ($hasAsJob) {
                 $PSBoundParameters.Add('AsJob', $true)
             }
-
-            if ($topic.DefaultMessageTimeToLive -gt (New-TimeSpan -Days 10675197)) {
-                $topic.DefaultMessageTimeToLive = (New-TimeSpan -Days 10675197)
-            }
-
-            if ($topic.AutoDeleteOnIdle -gt (New-TimeSpan -Days 10675197)) {
-                $topic.AutoDeleteOnIdle = (New-TimeSpan -Days 10675197)
-            }
-
-            if ($topic.DuplicateDetectionHistoryTimeWindow -gt (New-TimeSpan -Days 10675197)) {
-                $topic.DuplicateDetectionHistoryTimeWindow = (New-TimeSpan -Days 10675197)
-            }
-            
 
             if ($PSCmdlet.ShouldProcess("ServiceBus Topic $($topic.Name)", "Create or update")) {
                 Az.ServiceBus.private\New-AzServiceBusTopic_CreateViaIdentity -InputObject $topic -Parameter $topic @PSBoundParameters

@@ -1,0 +1,124 @@
+{
+  "Get-AzPeeringService+[NoContext]+List1+$GET+https://management.azure.com/subscriptions/e815e305-b43a-49c4-8b1a-4e61f1aec1e8/providers/Microsoft.Peering/peeringServices?api-version=2022-10-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/e815e305-b43a-49c4-8b1a-4e61f1aec1e8/providers/Microsoft.Peering/peeringServices?api-version=2022-10-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "15" ],
+        "x-ms-client-request-id": [ "67cdb48f-977a-47fd-b39a-9ae43e984328" ],
+        "CommandName": [ "Get-AzPeeringService" ],
+        "FullCommandName": [ "Get-AzPeeringService_List1" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.3", "Az.Peering/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-original-request-ids": [ "01f9f314-256a-4a65-9b14-ffe533bef4d3", "fb2199f3-49dc-4dcb-ab66-4ca9cdc33b82", "84de8adb-1ec4-4f92-920e-2ee153e5c173" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "599" ],
+        "x-ms-request-id": [ "d11923e7-2cdd-41d9-8829-5b8dc7835758" ],
+        "x-ms-correlation-request-id": [ "d11923e7-2cdd-41d9-8829-5b8dc7835758" ],
+        "x-ms-routing-request-id": [ "WESTUS:20230113T012518Z:d11923e7-2cdd-41d9-8829-5b8dc7835758" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 13 Jan 2023 01:25:18 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ],
+        "Content-Length": [ "3332" ]
+      },
+      "Content": "{\"value\":[{\"properties\":{\"peeringServiceLocation\":\"Georgia\",\"peeringServiceProvider\":\"MicrosoftEdge\",\"provisioningState\":\"Succeeded\",\"providerPrimaryPeeringLocation\":\"Atlanta\"},\"location\":\"East US 2\",\"tags\":{},\"name\":\"TestPrefixForAtlanta\",\"id\":\"/subscriptions/e815e305-b43a-49c4-8b1a-4e61f1aec1e8/resourceGroups/DemoRG/providers/Microsoft.Peering/peeringServices/TestPrefixForAtlanta\",\"type\":\"Microsoft.Peering/peeringServices\"},{\"properties\":{\"peeringServiceLocation\":\"Virginia\",\"peeringServiceProvider\":\"MicrosoftEdge\",\"provisioningState\":\"Succeeded\",\"providerPrimaryPeeringLocation\":\"Dallas\"},\"location\":\"East US\",\"tags\":{},\"name\":\"TestExtension\",\"id\":\"/subscriptions/e815e305-b43a-49c4-8b1a-4e61f1aec1e8/resourceGroups/DemoRG/providers/Microsoft.Peering/peeringServices/TestExtension\",\"type\":\"Microsoft.Peering/peeringServices\"},{\"properties\":{\"peeringServiceLocation\":\"Virginia\",\"peeringServiceProvider\":\"MicrosoftEdge\",\"provisioningState\":\"Succeeded\",\"providerPrimaryPeeringLocation\":\"Atlanta\",\"providerBackupPeeringLocation\":\"Dallas\"},\"location\":\"East US\",\"tags\":{},\"name\":\"TestExtension2\",\"id\":\"/subscriptions/e815e305-b43a-49c4-8b1a-4e61f1aec1e8/resourceGroups/DemoRG/providers/Microsoft.Peering/peeringServices/TestExtension2\",\"type\":\"Microsoft.Peering/peeringServices\"},{\"properties\":{\"peeringServiceLocation\":\"London\",\"peeringServiceProvider\":\"InterCloud\",\"provisioningState\":\"Succeeded\",\"providerPrimaryPeeringLocation\":\"London\"},\"location\":\"UK South\",\"tags\":{},\"name\":\"DemoPeeringServiceInterCloudLondon\",\"id\":\"/subscriptions/e815e305-b43a-49c4-8b1a-4e61f1aec1e8/resourceGroups/DemoRG/providers/Microsoft.Peering/peeringServices/DemoPeeringServiceInterCloudLondon\",\"type\":\"Microsoft.Peering/peeringServices\"},{\"properties\":{\"peeringServiceLocation\":\"Ile-de-France\",\"peeringServiceProvider\":\"InterCloud\",\"provisioningState\":\"Succeeded\"},\"location\":\"UK South\",\"tags\":{\"hello\":\"world\"},\"name\":\"DRTestInterCloud\",\"id\":\"/subscriptions/e815e305-b43a-49c4-8b1a-4e61f1aec1e8/resourceGroups/DemoRG/providers/Microsoft.Peering/peeringServices/DRTestInterCloud\",\"type\":\"Microsoft.Peering/peeringServices\"},{\"properties\":{\"peeringServiceLocation\":\"Ile-de-France\",\"peeringServiceProvider\":\"InterCloud\",\"provisioningState\":\"Succeeded\",\"providerPrimaryPeeringLocation\":\"London\"},\"location\":\"UK South\",\"tags\":{},\"name\":\"Gaurav Thareja\",\"id\":\"/subscriptions/e815e305-b43a-49c4-8b1a-4e61f1aec1e8/resourceGroups/DemoRG/providers/Microsoft.Peering/peeringServices/Gaurav Thareja\",\"type\":\"Microsoft.Peering/peeringServices\"},{\"properties\":{\"peeringServiceLocation\":\"Zurich\",\"peeringServiceProvider\":\"InterCloud\",\"provisioningState\":\"Succeeded\",\"providerPrimaryPeeringLocation\":\"Zurich\"},\"location\":\"France Central\",\"tags\":{},\"name\":\"TestDRInterCloudZurich\",\"id\":\"/subscriptions/e815e305-b43a-49c4-8b1a-4e61f1aec1e8/resourceGroups/DemoRG/providers/Microsoft.Peering/peeringServices/TestDRInterCloudZurich\",\"type\":\"Microsoft.Peering/peeringServices\"},{\"properties\":{\"peeringServiceLocation\":\"Ile-de-France\",\"peeringServiceProvider\":\"InterCloud\",\"provisioningState\":\"Succeeded\",\"providerPrimaryPeeringLocation\":\"Paris\"},\"location\":\"France Central\",\"name\":\"DRTest\",\"id\":\"/subscriptions/e815e305-b43a-49c4-8b1a-4e61f1aec1e8/resourceGroups/DemoRG/providers/Microsoft.Peering/peeringServices/DRTest\",\"type\":\"Microsoft.Peering/peeringServices\"}]}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzPeeringService+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/e815e305-b43a-49c4-8b1a-4e61f1aec1e8/resourceGroups/DemoRG/providers/Microsoft.Peering/peeringServices/TestExtension?api-version=2022-10-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/e815e305-b43a-49c4-8b1a-4e61f1aec1e8/resourceGroups/DemoRG/providers/Microsoft.Peering/peeringServices/TestExtension?api-version=2022-10-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "16" ],
+        "x-ms-client-request-id": [ "ed8bdf59-d287-4209-b48f-f585dfa4c746" ],
+        "CommandName": [ "Get-AzPeeringService" ],
+        "FullCommandName": [ "Get-AzPeeringService_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.3", "Az.Peering/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "d94a6bcf-a36f-4bd0-93bb-e016b8e1a32e" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "598" ],
+        "x-ms-correlation-request-id": [ "b4921d18-3d7f-4272-bc75-d171e2e69c98" ],
+        "x-ms-routing-request-id": [ "WESTUS:20230113T012518Z:b4921d18-3d7f-4272-bc75-d171e2e69c98" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 13 Jan 2023 01:25:18 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "467" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"properties\": {\r\n    \"peeringServiceLocation\": \"Virginia\",\r\n    \"peeringServiceProvider\": \"MicrosoftEdge\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"providerPrimaryPeeringLocation\": \"Dallas\"\r\n  },\r\n  \"location\": \"East US\",\r\n  \"tags\": {},\r\n  \"name\": \"TestExtension\",\r\n  \"id\": \"/subscriptions/e815e305-b43a-49c4-8b1a-4e61f1aec1e8/resourceGroups/DemoRG/providers/Microsoft.Peering/peeringServices/TestExtension\",\r\n  \"type\": \"Microsoft.Peering/peeringServices\"\r\n}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzPeeringService+[NoContext]+List+$GET+https://management.azure.com/subscriptions/e815e305-b43a-49c4-8b1a-4e61f1aec1e8/resourceGroups/DemoRG/providers/Microsoft.Peering/peeringServices?api-version=2022-10-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/e815e305-b43a-49c4-8b1a-4e61f1aec1e8/resourceGroups/DemoRG/providers/Microsoft.Peering/peeringServices?api-version=2022-10-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "17" ],
+        "x-ms-client-request-id": [ "b6e25a3d-2a15-4478-9608-a110937c65cf" ],
+        "CommandName": [ "Get-AzPeeringService" ],
+        "FullCommandName": [ "Get-AzPeeringService_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.3", "Az.Peering/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-original-request-ids": [ "cfa9f530-92bc-48ff-a848-6eed5a4f1808", "cb671b6c-3d1d-4167-bf35-5d8b786059af", "f7506798-318d-4a76-a36a-4fc134e77355" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "597" ],
+        "x-ms-request-id": [ "3798d4fb-1f42-417b-a6c5-f0a48325489f" ],
+        "x-ms-correlation-request-id": [ "3798d4fb-1f42-417b-a6c5-f0a48325489f" ],
+        "x-ms-routing-request-id": [ "WESTUS:20230113T012520Z:3798d4fb-1f42-417b-a6c5-f0a48325489f" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 13 Jan 2023 01:25:19 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ],
+        "Content-Length": [ "3332" ]
+      },
+      "Content": "{\"value\":[{\"properties\":{\"peeringServiceLocation\":\"Georgia\",\"peeringServiceProvider\":\"MicrosoftEdge\",\"provisioningState\":\"Succeeded\",\"providerPrimaryPeeringLocation\":\"Atlanta\"},\"location\":\"East US 2\",\"tags\":{},\"name\":\"TestPrefixForAtlanta\",\"id\":\"/subscriptions/e815e305-b43a-49c4-8b1a-4e61f1aec1e8/resourceGroups/DemoRG/providers/Microsoft.Peering/peeringServices/TestPrefixForAtlanta\",\"type\":\"Microsoft.Peering/peeringServices\"},{\"properties\":{\"peeringServiceLocation\":\"Virginia\",\"peeringServiceProvider\":\"MicrosoftEdge\",\"provisioningState\":\"Succeeded\",\"providerPrimaryPeeringLocation\":\"Dallas\"},\"location\":\"East US\",\"tags\":{},\"name\":\"TestExtension\",\"id\":\"/subscriptions/e815e305-b43a-49c4-8b1a-4e61f1aec1e8/resourceGroups/DemoRG/providers/Microsoft.Peering/peeringServices/TestExtension\",\"type\":\"Microsoft.Peering/peeringServices\"},{\"properties\":{\"peeringServiceLocation\":\"Virginia\",\"peeringServiceProvider\":\"MicrosoftEdge\",\"provisioningState\":\"Succeeded\",\"providerPrimaryPeeringLocation\":\"Atlanta\",\"providerBackupPeeringLocation\":\"Dallas\"},\"location\":\"East US\",\"tags\":{},\"name\":\"TestExtension2\",\"id\":\"/subscriptions/e815e305-b43a-49c4-8b1a-4e61f1aec1e8/resourceGroups/DemoRG/providers/Microsoft.Peering/peeringServices/TestExtension2\",\"type\":\"Microsoft.Peering/peeringServices\"},{\"properties\":{\"peeringServiceLocation\":\"London\",\"peeringServiceProvider\":\"InterCloud\",\"provisioningState\":\"Succeeded\",\"providerPrimaryPeeringLocation\":\"London\"},\"location\":\"UK South\",\"tags\":{},\"name\":\"DemoPeeringServiceInterCloudLondon\",\"id\":\"/subscriptions/e815e305-b43a-49c4-8b1a-4e61f1aec1e8/resourceGroups/DemoRG/providers/Microsoft.Peering/peeringServices/DemoPeeringServiceInterCloudLondon\",\"type\":\"Microsoft.Peering/peeringServices\"},{\"properties\":{\"peeringServiceLocation\":\"Ile-de-France\",\"peeringServiceProvider\":\"InterCloud\",\"provisioningState\":\"Succeeded\"},\"location\":\"UK South\",\"tags\":{\"hello\":\"world\"},\"name\":\"DRTestInterCloud\",\"id\":\"/subscriptions/e815e305-b43a-49c4-8b1a-4e61f1aec1e8/resourceGroups/DemoRG/providers/Microsoft.Peering/peeringServices/DRTestInterCloud\",\"type\":\"Microsoft.Peering/peeringServices\"},{\"properties\":{\"peeringServiceLocation\":\"Ile-de-France\",\"peeringServiceProvider\":\"InterCloud\",\"provisioningState\":\"Succeeded\",\"providerPrimaryPeeringLocation\":\"London\"},\"location\":\"UK South\",\"tags\":{},\"name\":\"Gaurav Thareja\",\"id\":\"/subscriptions/e815e305-b43a-49c4-8b1a-4e61f1aec1e8/resourceGroups/DemoRG/providers/Microsoft.Peering/peeringServices/Gaurav Thareja\",\"type\":\"Microsoft.Peering/peeringServices\"},{\"properties\":{\"peeringServiceLocation\":\"Zurich\",\"peeringServiceProvider\":\"InterCloud\",\"provisioningState\":\"Succeeded\",\"providerPrimaryPeeringLocation\":\"Zurich\"},\"location\":\"France Central\",\"tags\":{},\"name\":\"TestDRInterCloudZurich\",\"id\":\"/subscriptions/e815e305-b43a-49c4-8b1a-4e61f1aec1e8/resourceGroups/DemoRG/providers/Microsoft.Peering/peeringServices/TestDRInterCloudZurich\",\"type\":\"Microsoft.Peering/peeringServices\"},{\"properties\":{\"peeringServiceLocation\":\"Ile-de-France\",\"peeringServiceProvider\":\"InterCloud\",\"provisioningState\":\"Succeeded\",\"providerPrimaryPeeringLocation\":\"Paris\"},\"location\":\"France Central\",\"name\":\"DRTest\",\"id\":\"/subscriptions/e815e305-b43a-49c4-8b1a-4e61f1aec1e8/resourceGroups/DemoRG/providers/Microsoft.Peering/peeringServices/DRTest\",\"type\":\"Microsoft.Peering/peeringServices\"}]}",
+      "isContentBase64": false
+    }
+  }
+}

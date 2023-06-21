@@ -41,6 +41,9 @@ Gets a job with id in a backup vault
 ### [Get-AzDataProtectionOperation](Get-AzDataProtectionOperation.md)
 Returns the list of available operations.
 
+### [Get-AzDataProtectionOperationStatus](Get-AzDataProtectionOperationStatus.md)
+Gets the operation status for a resource.
+
 ### [Get-AzDataProtectionPolicyTemplate](Get-AzDataProtectionPolicyTemplate.md)
 Gets default policy template for a selected datasource type.
 
@@ -55,6 +58,9 @@ Initializes Backup instance Request object for configuring backup
 
 ### [Initialize-AzDataProtectionRestoreRequest](Initialize-AzDataProtectionRestoreRequest.md)
 Initializes Restore Request object for triggering restore on a protected backup instance.
+
+### [New-AzDataProtectionBackupConfigurationClientObject](New-AzDataProtectionBackupConfigurationClientObject.md)
+Creates new backup configuration object
 
 ### [New-AzDataProtectionBackupInstance](New-AzDataProtectionBackupInstance.md)
 Configures Backup for supported azure resources
@@ -76,6 +82,9 @@ Creates new Schedule object
 
 ### [New-AzDataProtectionResourceGuard](New-AzDataProtectionResourceGuard.md)
 Creates a resource guard under a resource group
+
+### [New-AzDataProtectionRestoreConfigurationClientObject](New-AzDataProtectionRestoreConfigurationClientObject.md)
+Creates new restore configuration object
 
 ### [New-AzDataProtectionRetentionLifeCycleClientObject](New-AzDataProtectionRetentionLifeCycleClientObject.md)
 Creates new Lifecycle object
@@ -102,7 +111,7 @@ Searches for Backup instances in Azure Resource Graph and retrieves the expected
 Searches for Backup Jobs in Azure Resource Graph and retrieves the expected entries
 
 ### [Set-AzDataProtectionMSIPermission](Set-AzDataProtectionMSIPermission.md)
-Grants required permissions to the backup vault to configure backup
+Grants required permissions to the backup vault and other resources for configure backup and restore scenarios
 
 ### [Start-AzDataProtectionBackupInstanceRestore](Start-AzDataProtectionBackupInstanceRestore.md)
 Triggers restore for a BackupInstance
