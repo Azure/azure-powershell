@@ -52,9 +52,11 @@ namespace Microsoft.Azure.Management.Network.Models
         /// 'Succeeded', 'Updating', 'Deleting', 'Failed'</param>
         /// <param name="deleteExistingPeering">Flag if need to remove current
         /// existing peerings. Possible values include: 'False', 'True'</param>
+        /// <param name="resourceGuid">Unique identifier for this
+        /// resource.</param>
         /// <param name="systemData">The system metadata related to this
         /// resource.</param>
-        public ConnectivityConfiguration(string connectivityTopology, IList<ConnectivityGroupItem> appliesToGroups, string id = default(string), string name = default(string), string type = default(string), string etag = default(string), string description = default(string), IList<Hub> hubs = default(IList<Hub>), string isGlobal = default(string), string provisioningState = default(string), string deleteExistingPeering = default(string), SystemData systemData = default(SystemData))
+        public ConnectivityConfiguration(string connectivityTopology, IList<ConnectivityGroupItem> appliesToGroups, string id = default(string), string name = default(string), string type = default(string), string etag = default(string), string description = default(string), IList<Hub> hubs = default(IList<Hub>), string isGlobal = default(string), string provisioningState = default(string), string deleteExistingPeering = default(string), string resourceGuid = default(string), SystemData systemData = default(SystemData))
             : base(id, name, type, etag)
         {
             Description = description;
@@ -64,6 +66,7 @@ namespace Microsoft.Azure.Management.Network.Models
             AppliesToGroups = appliesToGroups;
             ProvisioningState = provisioningState;
             DeleteExistingPeering = deleteExistingPeering;
+            ResourceGuid = resourceGuid;
             SystemData = systemData;
             CustomInit();
         }
@@ -119,6 +122,12 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.deleteExistingPeering")]
         public string DeleteExistingPeering { get; set; }
+
+        /// <summary>
+        /// Gets unique identifier for this resource.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.resourceGuid")]
+        public string ResourceGuid { get; private set; }
 
         /// <summary>
         /// Gets the system metadata related to this resource.
