@@ -66,10 +66,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                             throw new PSArgumentException($"Provided Id '{ResourceId}' is not in correct form. Should be in form " + 
                                 "/subscriptions/<subid>/resourceGroups/<rgname>/providers/Microsoft.Resources/deploymentStacks/<stackname>");
                         }
-                        WriteObject(DeploymentStacksSdkClient.ExportResourceGroupDeploymentStack(ResourceGroupName, StackName), true);
+                        WriteObject(DeploymentStacksSdkClient.SaveResourceGroupDeploymentStack(ResourceGroupName, StackName), true);
                         break;
                     case SaveByNameAndResourceGroupNameParameterSetName:
-                        WriteObject(DeploymentStacksSdkClient.ExportResourceGroupDeploymentStack(ResourceGroupName, StackName), true);
+                        WriteObject(DeploymentStacksSdkClient.SaveResourceGroupDeploymentStack(ResourceGroupName, StackName), true);
                         break;
                     default:
                         throw new PSInvalidOperationException();

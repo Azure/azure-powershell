@@ -131,7 +131,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             }
         }
 
-        public PSDeploymentStackTemplateDefinition ExportResourceGroupDeploymentStack(
+        public PSDeploymentStackTemplateDefinition SaveResourceGroupDeploymentStack(
             string resourceGroupName,
            string deploymentStackName,
            bool throwIfNotExists = true)
@@ -166,7 +166,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             }
         }
 
-        public PSDeploymentStackTemplateDefinition ExportSubscriptionDeploymentStack(
+        public PSDeploymentStackTemplateDefinition SaveSubscriptionDeploymentStack(
             string deploymentStackName,
             bool throwIfNotExists = true)
         {
@@ -200,7 +200,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             }
         }
 
-        public PSDeploymentStackTemplateDefinition ExportManagementGroupDeploymentStack(
+        public PSDeploymentStackTemplateDefinition SaveManagementGroupDeploymentStack(
             string managementGroupId,
             string deploymentStackName,
             bool throwIfNotExists = true)
