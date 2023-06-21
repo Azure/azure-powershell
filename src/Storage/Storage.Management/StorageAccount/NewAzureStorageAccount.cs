@@ -26,7 +26,7 @@ using StorageModels = Microsoft.Azure.Management.Storage.Models;
 
 namespace Microsoft.Azure.Commands.Management.Storage
 {
-    [GenericBreakingChange("Default value of AllowBlobPublicAccess and AllowCrossTenantReplication will be changed from True to False in a future release. \n" +
+    [GenericBreakingChangeWithVersion("Default value of AllowBlobPublicAccess and AllowCrossTenantReplication will be changed from True to False in a future release. \n" +
         "When AllowBlobPublicAccess is False on a storage account, it is not permitted to configure container ACLs to allow anonymous access to blobs within the storage account. \n" +
         "When AllowCrossTenantReplication is False on a storage account, cross AAD tenant object replication is not allowed.",
         "11.0.0", "6.0.0",
