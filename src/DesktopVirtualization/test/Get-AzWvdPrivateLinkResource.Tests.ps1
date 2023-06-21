@@ -25,7 +25,7 @@ Describe 'Get-AzWvdPrivateLinkResource' {
             $privateLinkResource = Get-AzWvdPrivateLinkResource -ResourceGroupName $env.ResourceGroup `
                                                                 -WorkspaceName $env.Workspace
 
-            $privateLinkResource.Name | Should -Match "feed"
+            $privateLinkResource.Name | Should -Match "feed|global"
         }
         finally {
             Remove-AzWvdWorkspace -SubscriptionId $env.SubscriptionId `

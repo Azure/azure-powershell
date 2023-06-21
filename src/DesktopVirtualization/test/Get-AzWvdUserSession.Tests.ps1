@@ -36,7 +36,7 @@ Describe 'Get-AzWvdUserSession' {
             $userSessions[1].Name | Should -Be $userName3
     }
 
-    It 'List host pool Level' {
+    It 'List HostPool Level' {
         $userSessions = Get-AzWvdUserSession -SubscriptionId $env.SubscriptionId `
                                 -ResourceGroupName $env.ResourceGroupPersistent `
                                 -HostPoolName $env.HostPoolPersistent `
