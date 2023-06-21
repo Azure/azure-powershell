@@ -37,23 +37,19 @@ Get a ScalingPlanPooledSchedule.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get a Scaling Plan Pooled Schedule
 ```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+Get-AzWvdScalingPlanPooledSchedule -ResourceGroupName rgName -ScalingPlanName scalingPlan1
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+```output
+Name
+----
+scalingPlan1/weekdays_schedule
+scalingPlan1/PooledSchedule1
 ```
 
-{{ Add description here }}
+Gets an existing ScalingPlanPooledSchedule.
 
 ## PARAMETERS
 
