@@ -35,7 +35,7 @@ Creates a container registry with the specified parameters.
 
 ### Example 1: Create a container registry with a new storage account.
 ```powershell
- New-AzContainerRegistry -ResourceGroupName "MyResourceGroup" -Name "RegistryExample" -SkuName "Basic" -Location "west us"
+ New-AzContainerRegistry -ResourceGroupName "MyResourceGroup" -Name "RegistryExample" -Sku "Basic" -Location "west us"
 ```
 
 ```output
@@ -48,7 +48,7 @@ Create a container registry with a new storage account.
 
 ### Example 2: Create a container registry with admin user enabled.
 ```powershell
- New-AzContainerRegistry -ResourceGroupName "MyResourceGroup" -Name "RegistryExample" -SkuName "Basic" -Location "west us" -AdminUserEnabled
+ New-AzContainerRegistry -ResourceGroupName "MyResourceGroup" -Name "RegistryExample" -Sku "Basic" -Location "west us" -EnableAdminUser
 ```
 
 ```output

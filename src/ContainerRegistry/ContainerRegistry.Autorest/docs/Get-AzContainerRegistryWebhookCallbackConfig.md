@@ -32,7 +32,7 @@ Gets the configuration of service URI and custom headers for the webhook.
 
 ### Example 1: Gets the configuration of service URI and custom headers for the webhook.
 ```powershell
-Get-AzContainerRegistryWebhookCallbackConfig -ResourceGroupName "MyResourceGroup" -RegistryName "RegistryExample" -Name "webhook001"
+Get-AzContainerRegistryWebhookCallbackConfig -ResourceGroupName "MyResourceGroup" -RegistryName "RegistryExample" -WebhookName "webhook001"
 ```
 
 ```output

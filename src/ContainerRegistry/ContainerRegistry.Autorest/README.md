@@ -95,7 +95,7 @@ directive:
     subject: (.*)CredentialSet
   hide: true
 - where:
-    subject: (.*)Task
+    subject: (.*)Task(.*)
   hide: true
 - where:
     subject: (.*)UploadUrl
@@ -318,3 +318,8 @@ directive:
     verb: Get
     subject: Registry
   hide: true
+# preview cmdlet
+- where:
+    subject: (.*)AgentPool(.*)|(.*)Pipeline|(.*)ScopeMap|(.*)Token|(.*)WebhookCallbackConfig
+  set:
+    preview-message: This is a preview version of ContainerRegistry. Let us know if you run into any issues.
