@@ -11,21 +11,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301P
     public partial class Token :
         Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IToken,
         Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.ITokenInternal,
-        Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.IValidates,
-        Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.IHeaderSerializable
+        Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.IValidates
     {
         /// <summary>
         /// Backing field for Inherited model <see cref= "Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api20190601Preview.IProxyResource"
         /// />
         /// </summary>
         private Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api20190601Preview.IProxyResource __proxyResource = new Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api20190601Preview.ProxyResource();
-
-        /// <summary>Backing field for <see cref="AzureAsyncOperation" /> property.</summary>
-        private string _azureAsyncOperation;
-
-        [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Origin(Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.PropertyOrigin.Owned)]
-        [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.DoNotFormat]
-        public string AzureAsyncOperation { get => this._azureAsyncOperation; set => this._azureAsyncOperation = value; }
 
         /// <summary>The creation date of scope map.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Origin(Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.PropertyOrigin.Inlined)]
@@ -142,15 +134,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301P
         [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.FormatTable(Index = 3)]
         public string Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api20190601Preview.IProxyResourceInternal)__proxyResource).Type; }
 
-        /// <param name="headers"></param>
-        void Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.IHeaderSerializable.ReadHeaders(global::System.Net.Http.Headers.HttpResponseHeaders headers)
-        {
-            if (headers.TryGetValues("Azure-AsyncOperation", out var __azureAsyncOperationHeader0))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.ITokenInternal)this).AzureAsyncOperation = System.Linq.Enumerable.FirstOrDefault(__azureAsyncOperationHeader0) is string __headerAzureAsyncOperationHeader0 ? __headerAzureAsyncOperationHeader0 : (string)null;
-            }
-        }
-
         /// <summary>Creates an new <see cref="Token" /> instance.</summary>
         public Token()
         {
@@ -174,13 +157,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301P
         Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.IJsonSerializable,
         Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api20190601Preview.IProxyResource
     {
-        [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"",
-        SerializedName = @"Azure-AsyncOperation",
-        PossibleTypes = new [] { typeof(string) })]
-        string AzureAsyncOperation { get; set; }
         /// <summary>The creation date of scope map.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.Info(
         Required = false,
@@ -235,7 +211,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301P
     internal partial interface ITokenInternal :
         Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api20190601Preview.IProxyResourceInternal
     {
-        string AzureAsyncOperation { get; set; }
         /// <summary>The creation date of scope map.</summary>
         global::System.DateTime? CreationDate { get; set; }
         /// <summary>The credentials that can be used for authenticating the token.</summary>
