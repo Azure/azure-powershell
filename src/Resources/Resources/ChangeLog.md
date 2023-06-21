@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Fixed the incorrect behavior of pagination for `Get-AzTag`
 * Updated API version to 2022-09-01
 
 ## Version 6.7.0

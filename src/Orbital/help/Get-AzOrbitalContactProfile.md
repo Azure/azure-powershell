@@ -59,9 +59,10 @@ Get-AzOrbitalContactProfile -ResourceGroupName azpstest-gp
 ```
 
 ```output
-Name                        Location ProvisioningState ResourceGroupName
-----                        -------- ----------------- -----------------
-azps-orbital-contactprofile westus2  succeeded         azpstest-gp
+Name                        Location      ProvisioningState ResourceGroupName
+----                        --------      ----------------- -----------------
+azps-orbital-contactprofile westus2       succeeded         azpstest-gp
+Sweden-contactprofile       swedencentral succeeded         azpstest-gp
 ```
 
 Gets the specified contact Profile in a specified resource group.
@@ -82,7 +83,8 @@ Get the specified contact Profile in a specified.
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -184,7 +186,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.IContactProfile
+### Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.IContactProfile
 
 ## NOTES
 
@@ -198,7 +200,6 @@ To create the parameters described below, construct a hash table containing the 
 `INPUTOBJECT <IOrbitalIdentity>`: Identity Parameter
   - `[ContactName <String>]`: Contact name.
   - `[ContactProfileName <String>]`: Contact Profile name.
-  - `[GroundStationName <String>]`: Ground Station name.
   - `[Id <String>]`: Resource identity path
   - `[Location <String>]`: The name of Azure region.
   - `[OperationId <String>]`: The ID of an ongoing async operation.

@@ -10,17 +10,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital.Support
     public partial struct ProvisioningState :
         System.IEquatable<ProvisioningState>
     {
-        public static Microsoft.Azure.PowerShell.Cmdlets.Orbital.Support.ProvisioningState Canceled = @"Canceled";
+        public static Microsoft.Azure.PowerShell.Cmdlets.Orbital.Support.ProvisioningState Canceled = @"canceled";
 
-        public static Microsoft.Azure.PowerShell.Cmdlets.Orbital.Support.ProvisioningState Creating = @"Creating";
+        public static Microsoft.Azure.PowerShell.Cmdlets.Orbital.Support.ProvisioningState Creating = @"creating";
 
-        public static Microsoft.Azure.PowerShell.Cmdlets.Orbital.Support.ProvisioningState Deleting = @"Deleting";
+        public static Microsoft.Azure.PowerShell.Cmdlets.Orbital.Support.ProvisioningState Deleting = @"deleting";
 
-        public static Microsoft.Azure.PowerShell.Cmdlets.Orbital.Support.ProvisioningState Failed = @"Failed";
+        public static Microsoft.Azure.PowerShell.Cmdlets.Orbital.Support.ProvisioningState Failed = @"failed";
 
-        public static Microsoft.Azure.PowerShell.Cmdlets.Orbital.Support.ProvisioningState Succeeded = @"Succeeded";
+        public static Microsoft.Azure.PowerShell.Cmdlets.Orbital.Support.ProvisioningState Succeeded = @"succeeded";
 
-        public static Microsoft.Azure.PowerShell.Cmdlets.Orbital.Support.ProvisioningState Updating = @"Updating";
+        public static Microsoft.Azure.PowerShell.Cmdlets.Orbital.Support.ProvisioningState Updating = @"updating";
 
         /// <summary>the value for an instance of the <see cref="ProvisioningState" /> Enum.</summary>
         private string _value { get; set; }

@@ -20,14 +20,14 @@ Creates or updates a contact profile.
 .Description
 Creates or updates a contact profile.
 .Example
-$linkChannel = New-AzOrbitalContactProfileLinkChannelObject -BandwidthMHz 15 -CenterFrequencyMHz 8160 -EndPointIPAddress 10.0.1.0 -EndPointName AQUA_command -EndPointPort 55555 -EndPointProtocol TCP -Name channel1 -DecodingConfiguration na -DemodulationConfiguration na -EncodingConfiguration AQUA_CMD_CCSDS -ModulationConfiguration AQUA_UPLINK_BPSK
+$linkChannel = New-AzOrbitalContactProfileLinkChannelObject -BandwidthMHz 15 -CenterFrequencyMHz 8160 -EndPointIPAddress 10.0.1.0 -EndPointName AQUA_VM -EndPointPort 51103 -EndPointProtocol TCP -Name channel1 -DecodingConfiguration na -DemodulationConfiguration na -EncodingConfiguration na -ModulationConfiguration aqua_direct_broadcast
 
-$profileLink = New-AzOrbitalContactProfileLinkObject -Channel $linkChannel -Direction Downlink -Name RHCP_UL -Polarization RHCP -EirpdBw 45 -GainOverTemperature 0
+$profileLink = New-AzOrbitalContactProfileLinkObject -Channel $linkChannel -Direction Downlink -Name RHCP_Downlink -Polarization RHCP -EirpdBw 0 -GainOverTemperature 0
 
-New-AzOrbitalContactProfile -Name azps-orbital-contactprofile -ResourceGroupName azpstest-gp -Location westus2 -SubscriptionId 9e223dbe-3399-4e19-88eb-0975f02ac87f -AutoTrackingConfiguration xBand -EventHubUri /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest-gp/providers/Microsoft.EventHub/namespaces/eventhub-test -Link $profileLink -MinimumElevationDegree 10 -MinimumViableContactDuration PT1M -NetworkConfigurationSubnetId /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest-gp/providers/Microsoft.Network/virtualNetworks/orbital-virtualnetwork/subnets/orbital-vn
+New-AzOrbitalContactProfile -Name azps-orbital-contactprofile -ResourceGroupName azpstest-gp -Location westus2 -AutoTrackingConfiguration xBand -EventHubUri /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest-gp/providers/Microsoft.EventHub/namespaces/eventhub-test -Link $profileLink -MinimumElevationDegree 5 -MinimumViableContactDuration PT1M -NetworkConfigurationSubnetId /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest-gp/providers/Microsoft.Network/virtualNetworks/orbital-virtualnetwork/subnets/orbital-vn
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.IContactProfile
+Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.IContactProfile
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -37,7 +37,7 @@ LINK <IContactProfileLink[]>: Links of the Contact Profile. Describes RF links, 
   Channel <IContactProfileLinkChannel[]>: Contact Profile Link Channel.
     BandwidthMHz <Single>: Bandwidth in MHz.
     CenterFrequencyMHz <Single>: Center Frequency in MHz.
-    EndPointIPAddress <String>: IP Address.
+    EndPointIPAddress <String>: IP Address (IPv4).
     EndPointName <String>: Name of an end point.
     EndPointPort <String>: TCP port to listen on to receive data.
     EndPointProtocol <Protocol>: Protocol either UDP or TCP.
@@ -46,16 +46,20 @@ LINK <IContactProfileLink[]>: Links of the Contact Profile. Describes RF links, 
     [DemodulationConfiguration <String>]: Copy of the modem configuration file such as Kratos QRadio or Kratos QuantumRx. Only valid for downlink directions. If provided, the modem connects to the customer endpoint and sends demodulated data instead of a VITA.49 stream.
     [EncodingConfiguration <String>]: Currently unused.
     [ModulationConfiguration <String>]: Copy of the modem configuration file such as Kratos QRadio. Only valid for uplink directions. If provided, the modem connects to the customer endpoint and accepts commands from the customer instead of a VITA.49 stream.
-  Direction <Direction>: Direction (uplink or downlink).
+  Direction <Direction>: Direction (Uplink or Downlink).
   Name <String>: Link name.
   Polarization <Polarization>: Polarization. e.g. (RHCP, LHCP).
   [EirpdBw <Single?>]: Effective Isotropic Radiated Power (EIRP) in dBW. It is the required EIRP by the customer. Not used yet.
-  [GainOverTemperature <Single?>]: Gain To Noise Temperature in db/K. It is the required G/T by the customer. Not used yet.
+  [GainOverTemperature <Single?>]: Gain to noise temperature in db/K. It is the required G/T by the customer. Not used yet.
+
+THIRDPARTYCONFIGURATION <IContactProfileThirdPartyConfiguration[]>: Third-party mission configuration of the Contact Profile. Describes RF links, modem processing, and IP endpoints.
+  MissionConfiguration <String>: Name of string referencing the configuration describing contact set-up for a particular mission. Expected values are those which have been created in collaboration with the partner network.
+  ProviderName <String>: Name of the third-party provider.
 .Link
 https://learn.microsoft.com/powershell/module/az.orbital/new-azorbitalcontactprofile
 #>
 function New-AzOrbitalContactProfile {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.IContactProfile])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.IContactProfile])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -80,10 +84,26 @@ param(
     ${SubscriptionId},
 
     [Parameter(Mandatory)]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.IContactProfileLink[]]
+    # Links of the Contact Profile.
+    # Describes RF links, modem processing, and IP endpoints.
+    # To construct, see NOTES section for LINK properties and create a hash table.
+    ${Link},
+
+    [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Category('Body')]
     [System.String]
     # The geo-location where the resource lives
     ${Location},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Category('Body')]
+    [System.String]
+    # ARM resource identifier of the subnet delegated to the Microsoft.Orbital/orbitalGateways.
+    # Needs to be at least a class C subnet, and should not have any IP created in it.
+    ${NetworkConfigurationSubnetId},
 
     [Parameter()]
     [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Orbital.Support.AutoTrackingConfiguration])]
@@ -98,15 +118,6 @@ param(
     # ARM resource identifier of the Event Hub used for telemetry.
     # Requires granting Orbital Resource Provider the rights to send telemetry into the hub.
     ${EventHubUri},
-
-    [Parameter()]
-    [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.IContactProfileLink[]]
-    # Links of the Contact Profile.
-    # Describes RF links, modem processing, and IP endpoints.
-    # To construct, see NOTES section for LINK properties and create a hash table.
-    ${Link},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Category('Body')]
@@ -124,24 +135,27 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Category('Body')]
-    [System.String]
-    # ARM resource identifier of the subnet delegated to the Microsoft.Orbital/orbitalGateways.
-    # Needs to be at least a class C subnet, and should not have any IP created in it.
-    ${NetworkConfigurationSubnetId},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api30.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
 
     [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.IContactProfileThirdPartyConfiguration[]]
+    # Third-party mission configuration of the Contact Profile.
+    # Describes RF links, modem processing, and IP endpoints.
+    # To construct, see NOTES section for THIRDPARTYCONFIGURATION properties and create a hash table.
+    ${ThirdPartyConfiguration},
+
+    [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter()]
@@ -205,7 +219,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
         }         
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {

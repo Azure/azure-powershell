@@ -25,7 +25,7 @@ $linkChannel = New-AzOrbitalContactProfileLinkChannelObject -BandwidthMHz 0.036 
 New-AzOrbitalContactProfileLinkObject -Channel $linkChannel -Direction uplink -Name RHCP_UL -Polarization RHCP -EirpdBw 45 -GainOverTemperature 0
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ContactProfileLink
+Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.ContactProfileLink
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -34,7 +34,7 @@ To create the parameters described below, construct a hash table containing the 
 CHANNEL <IContactProfileLinkChannel[]>: Contact Profile Link Channel.
   BandwidthMHz <Single>: Bandwidth in MHz.
   CenterFrequencyMHz <Single>: Center Frequency in MHz.
-  EndPointIPAddress <String>: IP Address.
+  EndPointIPAddress <String>: IP Address (IPv4).
   EndPointName <String>: Name of an end point.
   EndPointPort <String>: TCP port to listen on to receive data.
   EndPointProtocol <Protocol>: Protocol either UDP or TCP.
@@ -47,12 +47,12 @@ CHANNEL <IContactProfileLinkChannel[]>: Contact Profile Link Channel.
 https://learn.microsoft.com/powershell/module/az.Orbital/new-AzOrbitalContactProfileLinkObject
 #>
 function New-AzOrbitalContactProfileLinkObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ContactProfileLink])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.ContactProfileLink])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.IContactProfileLinkChannel[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.IContactProfileLinkChannel[]]
     # Contact Profile Link Channel.
     # To construct, see NOTES section for CHANNEL properties and create a hash table.
     ${Channel},
@@ -100,7 +100,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
         }         
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {
