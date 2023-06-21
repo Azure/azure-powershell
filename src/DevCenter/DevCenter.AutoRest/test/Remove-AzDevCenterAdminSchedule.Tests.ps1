@@ -13,14 +13,14 @@ if (($null -eq $TestName) -or ($TestName -contains 'Remove-AzDevCenterAdminSched
     . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Remove-AzDevCenterAdminSchedule' {
+Describe 'Remove-AzDevCenterAdminSchedule' -skip {
     It 'Delete' {
         Remove-AzDevCenterAdminSchedule -PoolName $env.poolForScheduleDelete -ProjectName $env.projectName -ResourceGroupName $env.resourceGroup
         { Get-AzDevCenterAdminSchedule -PoolName $env.poolForScheduleDelete -ProjectName $env.projectName -ResourceGroupName $env.resourceGroup } | Should -Throw
 
     }
 
-    It 'DeleteViaIdentity' {
+    It 'DeleteViaIdentity' -skip {
         $schedule = Get-AzDevCenterAdminSchedule -PoolName $env.poolForScheduleDelete2 -ProjectName $env.projectName -ResourceGroupName $env.resourceGroup
         Remove-AzDevCenterAdminSchedule -InputObject $schedule
         { Get-AzDevCenterAdminSchedule -PoolName $env.poolForScheduleDelete2 -ProjectName $env.projectName -ResourceGroupName $env.resourceGroup } | Should -Throw

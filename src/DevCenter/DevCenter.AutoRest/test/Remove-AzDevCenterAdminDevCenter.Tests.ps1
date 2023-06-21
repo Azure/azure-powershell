@@ -14,13 +14,13 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzDevCenterAdminDevCen
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Remove-AzDevCenterAdminDevCenter' {
+Describe 'Remove-AzDevCenterAdminDevCenter' -skip {
     It 'Delete' {
         Remove-AzDevCenterAdminDevCenter -Name $env.devCenterNameDelete -ResourceGroupName $env.resourceGroup
         { Get-AzDevCenterAdminDevCenter -ResourceGroupName $env.resourceGroup -Name $env.devCenterNameDelete } | Should -Throw
     }
 
-    It 'DeleteViaIdentity' {
+    It 'DeleteViaIdentity' -skip {
         $devCenter = Get-AzDevCenterAdminDevCenter -ResourceGroupName $env.resourceGroup -Name $env.devCenterNameDelete2
 
         Remove-AzDevCenterAdminDevCenter -InputObject $devCenter

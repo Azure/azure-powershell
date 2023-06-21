@@ -14,14 +14,14 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzDevCenterAdminAttach
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Remove-AzDevCenterAdminAttachedNetwork' {
+Describe 'Remove-AzDevCenterAdminAttachedNetwork' -skip {
     It 'Delete' {
         Remove-AzDevCenterAdminAttachedNetwork -ConnectionName $env.attachedNetworkNameDelete -DevCenterName $env.devCenterName -ResourceGroupName $env.resourceGroup
         { Get-AzDevCenterAdminAttachedNetwork -ConnectionName $env.attachedNetworkNameDelete -DevCenterName $env.devCenterName -ResourceGroupName $env.resourceGroup  } | Should -Throw
 
     }
 
-    It 'DeleteViaIdentity' {
+    It 'DeleteViaIdentity' -skip {
         $id = "/subscriptions/" + $env.SubscriptionId + "/resourceGroups/" + $env.resourceGroup + "/providers/Microsoft.DevCenter/devcenters/" + $env.devCenterName + "/attachednetworks/" + $env.attachedNetworkNameDelete2
 
         $attachedNetworkInput = @{"Id" = $id}

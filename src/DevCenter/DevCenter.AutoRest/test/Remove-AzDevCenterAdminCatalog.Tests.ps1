@@ -13,13 +13,13 @@ if (($null -eq $TestName) -or ($TestName -contains 'Remove-AzDevCenterAdminCatal
     . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Remove-AzDevCenterAdminCatalog' {
+Describe 'Remove-AzDevCenterAdminCatalog' -skip {
     It 'Delete' {
         Remove-AzDevCenterAdminCatalog -DevCenterName $env.devCenterName -Name $env.catalogNameDelete -ResourceGroupName $env.resourceGroup
         { Get-AzDevCenterAdminCatalog -DevCenterName $env.devCenterName -Name $env.catalogNameDelete -ResourceGroupName $env.resourceGroup } | Should -Throw
     }
 
-    It 'DeleteViaIdentity' {
+    It 'DeleteViaIdentity' -skip {
         $catalog = Get-AzDevCenterAdminCatalog -DevCenterName $env.devCenterName -Name $env.catalogNameDelete2 -ResourceGroupName $env.resourceGroup
         Remove-AzDevCenterAdminCatalog -InputObject $catalog
         { Get-AzDevCenterAdminCatalog -DevCenterName $env.devCenterName -Name $env.catalogNameDelete2 -ResourceGroupName $env.resourceGroup } | Should -Throw

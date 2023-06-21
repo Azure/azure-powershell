@@ -7,7 +7,7 @@
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "66" ],
-        "x-ms-client-request-id": [ "46aa9957-5710-4217-b2db-fa36ccbdb553" ],
+        "x-ms-client-request-id": [ "b50b88ae-37bf-45d3-8b89-20dc3380c26f" ],
         "CommandName": [ "Get-AzDevCenterAdminUsage" ],
         "FullCommandName": [ "Get-AzDevCenterAdminUsage_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -26,20 +26,20 @@
         "x-ms-providerhub-traffic": [ "True" ],
         "X-Rate-Limit-Limit": [ "1m" ],
         "X-Rate-Limit-Remaining": [ "299" ],
-        "X-Rate-Limit-Reset": [ "2023-06-21T04:07:39.7179913Z" ],
+        "X-Rate-Limit-Reset": [ "2023-06-21T05:20:04.4904866Z" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "cfeea191-684f-4ef7-9002-07ee81998364" ],
-        "x-ms-correlation-request-id": [ "8c16de15-cc0a-401c-9528-2f9e949373f2" ],
-        "x-ms-routing-request-id": [ "WESTUS:20230621T040640Z:8c16de15-cc0a-401c-9528-2f9e949373f2" ],
+        "x-ms-request-id": [ "c9d7662f-337e-4224-9c73-433587ba314a" ],
+        "x-ms-correlation-request-id": [ "f8241826-e726-4d93-aa09-fabfcdd11b6c" ],
+        "x-ms-routing-request-id": [ "WESTUS:20230621T051905Z:f8241826-e726-4d93-aa09-fabfcdd11b6c" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Wed, 21 Jun 2023 04:06:40 GMT" ]
+        "Date": [ "Wed, 21 Jun 2023 05:19:05 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "560" ],
+        "Content-Length": [ "559" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[{\"currentValue\":19,\"limit\":200,\"unit\":\"Count\",\"name\":{\"value\":\"devBoxDefinitions\"}},{\"currentValue\":13,\"limit\":100,\"unit\":\"Count\",\"name\":{\"value\":\"devCenters\"}},{\"currentValue\":10,\"limit\":20,\"unit\":\"Count\",\"name\":{\"value\":\"networkConnections\"}},{\"currentValue\":21,\"limit\":500,\"unit\":\"Count\",\"name\":{\"value\":\"pools\"}},{\"currentValue\":11,\"limit\":500,\"unit\":\"Count\",\"name\":{\"value\":\"projects\"}},{\"currentValue\":48,\"limit\":100,\"unit\":\"Count\",\"name\":{\"value\":\"general_a_v2\"}},{\"currentValue\":48,\"limit\":48,\"unit\":\"Count\",\"name\":{\"value\":\"general_i_v2\"}}]}",
+      "Content": "{\"value\":[{\"currentValue\":19,\"limit\":200,\"unit\":\"Count\",\"name\":{\"value\":\"devBoxDefinitions\"}},{\"currentValue\":13,\"limit\":100,\"unit\":\"Count\",\"name\":{\"value\":\"devCenters\"}},{\"currentValue\":9,\"limit\":20,\"unit\":\"Count\",\"name\":{\"value\":\"networkConnections\"}},{\"currentValue\":21,\"limit\":500,\"unit\":\"Count\",\"name\":{\"value\":\"pools\"}},{\"currentValue\":11,\"limit\":500,\"unit\":\"Count\",\"name\":{\"value\":\"projects\"}},{\"currentValue\":48,\"limit\":100,\"unit\":\"Count\",\"name\":{\"value\":\"general_a_v2\"}},{\"currentValue\":48,\"limit\":48,\"unit\":\"Count\",\"name\":{\"value\":\"general_i_v2\"}}]}",
       "isContentBase64": false
     }
   }

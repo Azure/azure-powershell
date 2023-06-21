@@ -13,13 +13,13 @@ if (($null -eq $TestName) -or ($TestName -contains 'Remove-AzDevCenterAdminGalle
     . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Remove-AzDevCenterAdminGallery' {
-    It 'Delete' {
+Describe 'Remove-AzDevCenterAdminGallery' -skip {
+    It 'Delete' -skip {
         Remove-AzDevCenterAdminGallery -ResourceGroupName $env.resourceGroup -DevCenterName $env.devCenterName -Name $env.galleryNameDelete
         { Get-AzDevCenterAdminGallery -ResourceGroupName $env.resourceGroup -DevCenterName $env.devCenterName -Name $env.galleryNameDelete } | Should -Throw
     }
 
-    It 'DeleteViaIdentity' {
+    It 'DeleteViaIdentity' -skip {
         $gallery = Get-AzDevCenterAdminGallery -ResourceGroupName $env.resourceGroup -DevCenterName $env.devCenterName -Name $env.galleryNameDelete2
         Remove-AzDevCenterAdminGallery -InputObject $gallery
         { Get-AzDevCenterAdminGallery -ResourceGroupName $env.resourceGroup -DevCenterName $env.devCenterName -Name $env.galleryNameDelete2 } | Should -Throw

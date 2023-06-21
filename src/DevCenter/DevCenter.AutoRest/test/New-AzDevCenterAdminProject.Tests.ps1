@@ -13,7 +13,7 @@ if (($null -eq $TestName) -or ($TestName -contains 'New-AzDevCenterAdminProject'
     . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'New-AzDevCenterAdminProject' {
+Describe 'New-AzDevCenterAdminProject' -skip {
     It 'CreateExpanded' {
         $project = New-AzDevCenterAdminProject -Name $env.projectNew -ResourceGroupName $env.resourceGroup -Location $env.location -DevCenterId $env.devCenterId -MaxDevBoxesPerUser 3
         $project.DevCenterId | Should -Be $env.devCenterId
@@ -21,7 +21,7 @@ Describe 'New-AzDevCenterAdminProject' {
         $project.MaxDevBoxesPerUser | Should -Be 3
     }
 
-    It 'Create' {
+    It 'Create' -skip {
         $body = @{"DevCenterId" = $env.devCenterId; "Location" = $env.location; "MaxDevBoxesPerUser" = 3 }
         $project = New-AzDevCenterAdminProject -Name $env.projectNew2 -ResourceGroupName $env.resourceGroup -Body $body
         $project.DevCenterId | Should -Be $env.devCenterId

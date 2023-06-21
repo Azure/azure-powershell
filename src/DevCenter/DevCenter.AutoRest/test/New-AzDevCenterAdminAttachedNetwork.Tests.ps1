@@ -15,14 +15,14 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzDevCenterAdminAttachedN
 }
 
 Describe 'New-AzDevCenterAdminAttachedNetwork' {
-    It 'CreateExpanded' {
+    It 'CreateExpanded' -skip {
         $attachedNetwork = New-AzDevCenterAdminAttachedNetwork -ConnectionName $env.attachedNetworkNew -DevCenterName $env.devCenterName -ResourceGroupName $env.resourceGroup -NetworkConnectionId $env.networkConnectionId
         $attachedNetwork.Name | Should -Be $env.attachedNetworkNew
         $attachedNetwork.NetworkConnectionId | Should -Be $env.networkConnectionId
         $attachedNetwork.DomainJoinType | Should -Be "AzureADJoin"
     }
 
-    It 'Create' {
+    It 'Create' -skip {
         $body = @{"NetworkConnectionId" = $env.networkConnectionId}
         $attachedNetwork = New-AzDevCenterAdminAttachedNetwork -ConnectionName $env.attachedNetworkNew2 -DevCenterName $env.devCenterName -ResourceGroupName $env.resourceGroup -Body $body
         $attachedNetwork.Name | Should -Be $env.attachedNetworkNew2

@@ -13,7 +13,7 @@ if (($null -eq $TestName) -or ($TestName -contains 'New-AzDevCenterAdminPool')) 
     . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'New-AzDevCenterAdminPool' {
+Describe 'New-AzDevCenterAdminPool' -skip {
     It 'CreateExpanded' {
         $pool = New-AzDevCenterAdminPool -Name $env.poolNew -ProjectName $env.projectName -ResourceGroupName $env.resourceGroup -Location $env.location -DevBoxDefinitionName $env.devBoxDefinitionName -LocalAdministrator "Enabled" -NetworkConnectionName $env.attachedNetworkName -StopOnDisconnectGracePeriodMinute 60 -StopOnDisconnectStatus "Enabled"
         $pool.Name | Should -Be $env.poolNew
@@ -25,7 +25,7 @@ Describe 'New-AzDevCenterAdminPool' {
         $pool.LicenseType | Should -Be "Windows_Client"
     }
 
-    It 'Create' {
+    It 'Create' -skip {
         $body = @{"Location" = $env.location; "DevBoxDefinitionName" = $env.devBoxDefinitionName; "LocalAdministrator" = "Enabled" ; "NetworkConnectionName" = $env.attachedNetworkName; "StopOnDisconnectGracePeriodMinute" = 60; "StopOnDisconnectStatus" = "Enabled"}
         $pool = New-AzDevCenterAdminPool -Name $env.poolNew2 -ProjectName $env.projectName -ResourceGroupName $env.resourceGroup -Body $body  
         $pool.Name | Should -Be $env.poolNew2

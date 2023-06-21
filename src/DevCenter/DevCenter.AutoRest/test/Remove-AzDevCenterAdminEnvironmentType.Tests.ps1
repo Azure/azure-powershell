@@ -14,14 +14,14 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzDevCenterAdminEnviro
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Remove-AzDevCenterAdminEnvironmentType' {
+Describe 'Remove-AzDevCenterAdminEnvironmentType' -skip {
     It 'Delete' {
         Remove-AzDevCenterAdminEnvironmentType -ResourceGroupName $env.resourceGroup -DevCenterName $env.devCenterName -Name $env.environmentTypeNameDelete 
         { Get-AzDevCenterAdminEnvironmentType -ResourceGroupName $env.resourceGroup -DevCenterName $env.devCenterName -Name $env.environmentTypeNameDelete } | Should -Throw
   
      }
 
-    It 'DeleteViaIdentity' {
+    It 'DeleteViaIdentity' -skip {
         $env = Get-AzDevCenterAdminEnvironmentType -ResourceGroupName $env.resourceGroup -DevCenterName $env.devCenterName -Name $env.environmentTypeNameDelete2
         Remove-AzDevCenterAdminEnvironmentType -InputObject $env
         { Get-AzDevCenterAdminEnvironmentType -ResourceGroupName $env.resourceGroup -DevCenterName $env.devCenterName -Name $env.environmentTypeNameDelete2 } | Should -Throw

@@ -3,7 +3,7 @@
     "Request": {
       "Method": "POST",
       "RequestUri": "https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/providers/Microsoft.DevCenter/checkNameAvailability?api-version=2023-04-01",
-      "Content": "{\r\n  \"name\": \"pwshDcbfj81w\",\r\n  \"type\": \"Microsoft.devcenter/devcenters\"\r\n}",
+      "Content": "{\r\n  \"name\": \"pwshDcisx0w8\",\r\n  \"type\": \"Microsoft.devcenter/devcenters\"\r\n}",
       "isContentBase64": false,
       "Headers": {
       },
@@ -21,13 +21,13 @@
         "x-ms-providerhub-traffic": [ "True" ],
         "X-Rate-Limit-Limit": [ "1m" ],
         "X-Rate-Limit-Remaining": [ "299" ],
-        "X-Rate-Limit-Reset": [ "2023-06-21T04:07:41.4158245Z" ],
+        "X-Rate-Limit-Reset": [ "2023-06-21T05:20:06.2057906Z" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "09c142ac-ffe6-48df-a827-79e513422b0e" ],
-        "x-ms-correlation-request-id": [ "ed538187-1ec7-4ea1-82fd-bc09657acaa2" ],
-        "x-ms-routing-request-id": [ "WESTUS:20230621T040641Z:ed538187-1ec7-4ea1-82fd-bc09657acaa2" ],
+        "x-ms-request-id": [ "cd0a14ee-144f-4829-90ed-ad24ba0f8677" ],
+        "x-ms-correlation-request-id": [ "9a32be74-ab05-4fcb-b4a3-251ae05eca37" ],
+        "x-ms-routing-request-id": [ "WESTUS:20230621T051906Z:9a32be74-ab05-4fcb-b4a3-251ae05eca37" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Wed, 21 Jun 2023 04:06:41 GMT" ]
+        "Date": [ "Wed, 21 Jun 2023 05:19:05 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "224" ],
@@ -42,7 +42,7 @@
     "Request": {
       "Method": "POST",
       "RequestUri": "https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/providers/Microsoft.DevCenter/checkNameAvailability?api-version=2023-04-01",
-      "Content": "{\r\n  \"name\": \"pwshDcbfj81w11\",\r\n  \"type\": \"Microsoft.devcenter/devcenters\"\r\n}",
+      "Content": "{\r\n  \"name\": \"pwshDcisx0w811\",\r\n  \"type\": \"Microsoft.devcenter/devcenters\"\r\n}",
       "isContentBase64": false,
       "Headers": {
       },
@@ -60,13 +60,13 @@
         "x-ms-providerhub-traffic": [ "True" ],
         "X-Rate-Limit-Limit": [ "1m" ],
         "X-Rate-Limit-Remaining": [ "299" ],
-        "X-Rate-Limit-Reset": [ "2023-06-21T04:07:41.6097189Z" ],
+        "X-Rate-Limit-Reset": [ "2023-06-21T05:20:06.3825461Z" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "76180273-e6fb-4011-ba97-75d36c50a5e4" ],
-        "x-ms-correlation-request-id": [ "989f2508-cb36-4a4c-8c38-cfdd46223a7c" ],
-        "x-ms-routing-request-id": [ "WESTUS:20230621T040641Z:989f2508-cb36-4a4c-8c38-cfdd46223a7c" ],
+        "x-ms-request-id": [ "4d41a071-4e0b-43f2-b1cc-68145a283a81" ],
+        "x-ms-correlation-request-id": [ "14bc30f1-6cd1-402b-afc2-9c0266e8c806" ],
+        "x-ms-routing-request-id": [ "WESTUS:20230621T051906Z:14bc30f1-6cd1-402b-afc2-9c0266e8c806" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Wed, 21 Jun 2023 04:06:41 GMT" ]
+        "Date": [ "Wed, 21 Jun 2023 05:19:06 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "22" ],
@@ -81,7 +81,7 @@
     "Request": {
       "Method": "POST",
       "RequestUri": "https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/providers/Microsoft.DevCenter/checkNameAvailability?api-version=2023-04-01",
-      "Content": "{\r\n  \"name\": \"pwshDcbfj81w\",\r\n  \"type\": \"Microsoft.devcenter/devcenters\"\r\n}",
+      "Content": "{\r\n  \"name\": \"pwshDcisx0w8\",\r\n  \"type\": \"Microsoft.devcenter/devcenters\"\r\n}",
       "isContentBase64": false,
       "Headers": {
       },
@@ -99,13 +99,13 @@
         "x-ms-providerhub-traffic": [ "True" ],
         "X-Rate-Limit-Limit": [ "1m" ],
         "X-Rate-Limit-Remaining": [ "298" ],
-        "X-Rate-Limit-Reset": [ "2023-06-21T04:07:39.7179913Z" ],
+        "X-Rate-Limit-Reset": [ "2023-06-21T05:20:04.4904866Z" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "3fb0ed3e-0cd8-4496-ac01-ff2db7bb63cd" ],
-        "x-ms-correlation-request-id": [ "8dd2acb0-6005-4868-a8bf-4ecf514494a9" ],
-        "x-ms-routing-request-id": [ "WESTUS:20230621T040641Z:8dd2acb0-6005-4868-a8bf-4ecf514494a9" ],
+        "x-ms-request-id": [ "3ec8d7a4-0992-42b4-a340-c93956beeef2" ],
+        "x-ms-correlation-request-id": [ "b8d74c64-3248-4dae-9863-d836ed284bdb" ],
+        "x-ms-routing-request-id": [ "WESTUS:20230621T051906Z:b8d74c64-3248-4dae-9863-d836ed284bdb" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Wed, 21 Jun 2023 04:06:41 GMT" ]
+        "Date": [ "Wed, 21 Jun 2023 05:19:06 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "224" ],
@@ -120,7 +120,7 @@
     "Request": {
       "Method": "POST",
       "RequestUri": "https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/providers/Microsoft.DevCenter/checkNameAvailability?api-version=2023-04-01",
-      "Content": "{\r\n  \"name\": \"pwshDcbfj81w11\",\r\n  \"type\": \"Microsoft.devcenter/devcenters\"\r\n}",
+      "Content": "{\r\n  \"name\": \"pwshDcisx0w811\",\r\n  \"type\": \"Microsoft.devcenter/devcenters\"\r\n}",
       "isContentBase64": false,
       "Headers": {
       },
@@ -138,13 +138,13 @@
         "x-ms-providerhub-traffic": [ "True" ],
         "X-Rate-Limit-Limit": [ "1m" ],
         "X-Rate-Limit-Remaining": [ "298" ],
-        "X-Rate-Limit-Reset": [ "2023-06-21T04:07:41.4158245Z" ],
+        "X-Rate-Limit-Reset": [ "2023-06-21T05:20:06.2057906Z" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "50cf139d-99d9-4902-be27-f4695e42debb" ],
-        "x-ms-correlation-request-id": [ "5278f92f-63e1-4c54-b9c1-af562a3192b1" ],
-        "x-ms-routing-request-id": [ "WESTUS:20230621T040642Z:5278f92f-63e1-4c54-b9c1-af562a3192b1" ],
+        "x-ms-request-id": [ "a5bd2cc8-81ab-41d2-acff-224da26f386a" ],
+        "x-ms-correlation-request-id": [ "2af8ad85-dbc0-477c-988c-e74e343f122b" ],
+        "x-ms-routing-request-id": [ "WESTUS:20230621T051906Z:2af8ad85-dbc0-477c-988c-e74e343f122b" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Wed, 21 Jun 2023 04:06:41 GMT" ]
+        "Date": [ "Wed, 21 Jun 2023 05:19:06 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "22" ],
