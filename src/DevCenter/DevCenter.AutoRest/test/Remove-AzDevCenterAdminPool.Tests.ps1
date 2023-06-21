@@ -14,13 +14,13 @@ if (($null -eq $TestName) -or ($TestName -contains 'Remove-AzDevCenterAdminPool'
 }
 
 Describe 'Remove-AzDevCenterAdminPool' {
-    It 'Delete' -skip {
+    It 'Delete' {
         Remove-AzDevCenterAdminPool -ResourceGroupName $env.resourceGroup -Name $env.poolNameDelete -ProjectName $env.projectName
         { Get-AzDevCenterAdminPool -ResourceGroupName $env.resourceGroup -Name $env.poolNameDelete -ProjectName $env.projectName } | Should -Throw
 
     }
 
-    It 'DeleteViaIdentity' -skip {
+    It 'DeleteViaIdentity' {
         $pool = Get-AzDevCenterAdminPool -ResourceGroupName $env.resourceGroup -Name $env.poolNameDelete2 -ProjectName $env.projectName
         Remove-AzDevCenterAdminPool -InputObject $pool
         { Get-AzDevCenterAdminPool -ResourceGroupName $env.resourceGroup -Name $env.poolNameDelete2 -ProjectName $env.projectName } | Should -Throw

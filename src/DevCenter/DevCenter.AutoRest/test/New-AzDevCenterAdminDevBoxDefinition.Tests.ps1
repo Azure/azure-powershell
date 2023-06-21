@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzDevCenterAdminDevBoxDef
 }
 
 Describe 'New-AzDevCenterAdminDevBoxDefinition' {
-    It 'CreateExpanded' -skip {
+    It 'CreateExpanded'  {
 
         $devBoxDefinition = New-AzDevCenterAdminDevBoxDefinition -Name $env.devBoxDefinitionNew -DevCenterName $env.devCenterName -ResourceGroupName $env.resourceGroup -Location $env.location -HibernateSupport "Enabled" -ImageReferenceId $env.imageReferenceId -OSStorageType $env.osStorageType -SkuName $env.skuName 
         $devBoxDefinition.Name | Should -Be $env.devBoxDefinitionNew
@@ -26,7 +26,7 @@ Describe 'New-AzDevCenterAdminDevBoxDefinition' {
         $devBoxDefinition.HibernateSupport | Should -Be "Enabled"
         }
 
-    It 'Create' -skip {
+    It 'Create'  {
         $body = @{"Location" = $env.location; "ImageReferenceId" = $env.ImageReferenceId; "OSStorageType" = $env.osStorageType; "SkuName" = $env.skuName; "HibernateSupport" = "Enabled"}
 
         $devBoxDefinition = New-AzDevCenterAdminDevBoxDefinition -Name $env.devBoxDefinitionNew2 -DevCenterName $env.devCenterName -ResourceGroupName $env.resourceGroup -Body $body

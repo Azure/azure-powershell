@@ -14,12 +14,12 @@ if (($null -eq $TestName) -or ($TestName -contains 'Remove-AzDevCenterAdminGalle
 }
 
 Describe 'Remove-AzDevCenterAdminGallery' {
-    It 'Delete' -skip {
+    It 'Delete' {
         Remove-AzDevCenterAdminGallery -ResourceGroupName $env.resourceGroup -DevCenterName $env.devCenterName -Name $env.galleryNameDelete
         { Get-AzDevCenterAdminGallery -ResourceGroupName $env.resourceGroup -DevCenterName $env.devCenterName -Name $env.galleryNameDelete } | Should -Throw
     }
 
-    It 'DeleteViaIdentity' -skip {
+    It 'DeleteViaIdentity' {
         $gallery = Get-AzDevCenterAdminGallery -ResourceGroupName $env.resourceGroup -DevCenterName $env.devCenterName -Name $env.galleryNameDelete2
         Remove-AzDevCenterAdminGallery -InputObject $gallery
         { Get-AzDevCenterAdminGallery -ResourceGroupName $env.resourceGroup -DevCenterName $env.devCenterName -Name $env.galleryNameDelete2 } | Should -Throw

@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzDevCenterAdminNetworkCo
 }
 
 Describe 'New-AzDevCenterAdminNetworkConnection' {
-    It 'CreateExpanded' -skip {
+    It 'CreateExpanded' {
         $networkConnection = New-AzDevCenterAdminNetworkConnection -Name $env.networkConnectionNew -ResourceGroupName $env.resourceGroup -Location $env.location -DomainJoinType $env.aadJoinType -NetworkingResourceGroupName $env.networkingRgName1 -SubnetId $env.SubnetId
         $networkConnection.DomainJoinType | Should -Be $env.aadJoinType
         $networkConnection.Name | Should -Be $env.networkConnectionNew
@@ -33,7 +33,7 @@ Describe 'New-AzDevCenterAdminNetworkConnection' {
   
         }
 
-    It 'Create' -skip {
+    It 'Create' {
         $body = @{"Location" = $env.location; "NetworkingResourceGroupName" = $env.networkingRgName3; "SubnetId" = $env.SubnetId; "DomainJoinType" = $env.aadJoinType}
         $networkConnection = New-AzDevCenterAdminNetworkConnection -Name $env.networkConnectionNew2 -ResourceGroupName $env.resourceGroup -Body $body
         $networkConnection.DomainJoinType | Should -Be $env.aadJoinType

@@ -14,14 +14,14 @@ if (($null -eq $TestName) -or ($TestName -contains 'Remove-AzDevCenterAdminNetwo
 }
 
 Describe 'Remove-AzDevCenterAdminNetworkConnection' {
-    It 'Delete' -skip {
+    It 'Delete' {
         Remove-AzDevCenterAdminNetworkConnection -Name $env.networkConnectionNameDelete -ResourceGroupName $env.resourceGroup
         { Get-AzDevCenterAdminNetworkConnection -ResourceGroupName $env.resourceGroup -Name $env.networkConnectionNameDelete } | Should -Throw
 
     }
 
 
-    It 'DeleteViaIdentity' -skip {
+    It 'DeleteViaIdentity' {
         $networkConnection = Get-AzDevCenterAdminNetworkConnection -ResourceGroupName $env.resourceGroup -Name $env.networkConnectionNameDelete2
         Remove-AzDevCenterAdminNetworkConnection -InputObject $networkConnection
         { Get-AzDevCenterAdminNetworkConnection -ResourceGroupName $env.resourceGroup -Name $env.networkConnectionNameDelete2 } | Should -Throw

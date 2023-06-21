@@ -15,13 +15,13 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzDevCenterAdminAttach
 }
 
 Describe 'Remove-AzDevCenterAdminAttachedNetwork' {
-    It 'Delete' -skip {
+    It 'Delete' {
         Remove-AzDevCenterAdminAttachedNetwork -ConnectionName $env.attachedNetworkNameDelete -DevCenterName $env.devCenterName -ResourceGroupName $env.resourceGroup
         { Get-AzDevCenterAdminAttachedNetwork -ConnectionName $env.attachedNetworkNameDelete -DevCenterName $env.devCenterName -ResourceGroupName $env.resourceGroup  } | Should -Throw
 
     }
 
-    It 'DeleteViaIdentity' -skip {
+    It 'DeleteViaIdentity' {
         $id = "/subscriptions/" + $env.SubscriptionId + "/resourceGroups/" + $env.resourceGroup + "/providers/Microsoft.DevCenter/devcenters/" + $env.devCenterName + "/attachednetworks/" + $env.attachedNetworkNameDelete2
 
         $attachedNetworkInput = @{"Id" = $id}

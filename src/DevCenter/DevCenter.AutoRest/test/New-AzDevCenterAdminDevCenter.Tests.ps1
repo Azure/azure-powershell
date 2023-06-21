@@ -14,7 +14,7 @@ if (($null -eq $TestName) -or ($TestName -contains 'New-AzDevCenterAdminDevCente
 }
 
 Describe 'New-AzDevCenterAdminDevCenter' {
-    It 'CreateExpanded' -skip {
+    It 'CreateExpanded'  {
         $identityHashTable = @{$env.identityId = @{} }
         $devCenter = New-AzDevCenterAdminDevCenter -Name $env.devCenterNew -ResourceGroupName $env.resourceGroup -Location $env.location -IdentityType "UserAssigned" -IdentityUserAssignedIdentity $identityHashTable
         $devCenter.Name | Should -Be $env.devCenterNew
@@ -23,7 +23,7 @@ Describe 'New-AzDevCenterAdminDevCenter' {
         $devcenter.IdentityType | Should -Be "UserAssigned"
     }
 
-    It 'Create' -skip {
+    It 'Create'  {
         $identityHashTable = @{$env.identityId = @{} }
         $body = @{"Location" = $env.location; "IdentityType" = "UserAssigned"; "IdentityUserAssignedIdentity" = $identityHashTable }
 

@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Invoke-AzDevCenterAdminExecut
 }
 
 Describe 'Invoke-AzDevCenterAdminExecuteCheckNameAvailability' {
-    It 'ExecuteExpanded' -skip {
+    It 'ExecuteExpanded' {
         $avail = Invoke-AzDevCenterAdminExecuteCheckNameAvailability -Name $env.devCenterName -Type "Microsoft.devcenter/devcenters"
         $avail.Message | Should -Be "Failed to create the DevCenter as the name is already in use. DevCenter names must be unique within the tenant. Retry the operation with a different DevCenter name"
 
@@ -24,7 +24,7 @@ Describe 'Invoke-AzDevCenterAdminExecuteCheckNameAvailability' {
         $avail.NameAvailable | Should -Be "True"
     }
 
-    It 'Execute' -skip {
+    It 'Execute' {
         $hash1 =  @{"Name" = $env.devCenterName; "Type" = "Microsoft.devcenter/devcenters" }
         $unusedName =  $env.devCenterName + "11"
         $hash2 =  @{"Name" = $unusedName; "Type" = "Microsoft.devcenter/devcenters" }

@@ -14,7 +14,7 @@ if (($null -eq $TestName) -or ($TestName -contains 'Remove-AzDevCenterAdminCatal
 }
 
 Describe 'Remove-AzDevCenterAdminCatalog' {
-    It 'Delete' -skip {
+    It 'Delete' {
         Remove-AzDevCenterAdminCatalog -DevCenterName $env.devCenterName -Name $env.catalogNameDelete -ResourceGroupName $env.resourceGroup
         { Get-AzDevCenterAdminCatalog -DevCenterName $env.devCenterName -Name $env.catalogNameDelete -ResourceGroupName $env.resourceGroup } | Should -Throw
     }

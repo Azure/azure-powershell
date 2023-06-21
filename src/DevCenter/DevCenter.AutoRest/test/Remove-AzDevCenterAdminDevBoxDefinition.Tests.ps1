@@ -14,13 +14,13 @@ if (($null -eq $TestName) -or ($TestName -contains 'Remove-AzDevCenterAdminDevBo
 }
 
 Describe 'Remove-AzDevCenterAdminDevBoxDefinition' {
-    It 'Delete' -skip {
+    It 'Delete' {
         Remove-AzDevCenterAdminDevBoxDefinition -DevCenterName $env.devCenterName -Name $env.devBoxDefinitionNameDelete -ResourceGroupName $env.resourceGroup
         { Get-AzDevCenterAdminDevBoxDefinition -ResourceGroupName $env.resourceGroup -DevCenterName $env.devCenterName -Name $env.devBoxDefinitionNameDelete } | Should -Throw
 
     }
 
-    It 'DeleteViaIdentity' -skip {
+    It 'DeleteViaIdentity' {
         $id = "/subscriptions/" + $env.SubscriptionId + "/resourceGroups/" + $env.resourceGroup + "/providers/Microsoft.DevCenter/devcenters/" + $env.devCenterName + "/devboxdefinitions/" + $env.devBoxDefinitionNameDelete2
         $devBoxDefinitionId = @{"Id" = $id }
 
