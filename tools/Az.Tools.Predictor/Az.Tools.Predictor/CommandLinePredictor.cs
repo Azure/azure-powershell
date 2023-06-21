@@ -63,7 +63,6 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 
             _telemetryClient = telemetryClient;
             _parameterValuePredictor = parameterValuePredictor;
-            var commnadLines =  new List<CommandLine>();
 
             if (modelPredictions != null)
             {
