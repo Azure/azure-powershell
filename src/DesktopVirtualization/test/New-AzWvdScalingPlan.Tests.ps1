@@ -11,12 +11,6 @@ while(-not $mockingPath) {
 }
 . ($mockingPath | Select-Object -First 1).FullName
 
-# TODO: Use this because we have limited Arm rollout for this feature, change to use $env.Location and $env.ResourceGroup
-#$resourceGroup = $env.ResourceGroup
-#$resourceLocation = $env.Location
-$resourceGroup = 'jehurren-westcentralus'
-$resourceLocation = 'westcentralus'
-
 Describe 'New-AzWvdScalingPlan' {
     It 'CreateExpanded' {
         try {
@@ -38,11 +32,11 @@ Describe 'New-AzWvdScalingPlan' {
                             -ValidationEnvironment:$false `
                             -PreferredAppGroupType 'Desktop'
 
-            $Role = New-AzRoleAssignment -ResourceGroupName $env.ResourceGroup `
+<#             $Role = New-AzRoleAssignment -ResourceGroupName $env.ResourceGroup `
                                  -ResourceType 'Microsoft.DesktopVirtualization/HostPools' `
                                  -RoleDefinitionName "Contributor" `
                                  -ServicePrincipalName '9cdead84-a844-4324-93f2-b2e6bb768d07' `
-                                 -ResourceName $env.HostPool
+                                 -ResourceName $env.HostPool #>
 
             $scalingPlan = New-AzWvdScalingPlan `
                 -SubscriptionId $env.SubscriptionId `
