@@ -15,7 +15,7 @@ if (($null -eq $TestName) -or ($TestName -contains 'Remove-AzDevCenterAdminDevBo
 
 Describe 'Remove-AzDevCenterAdminDevBoxDefinition' {
     It 'Delete' {
-        Remove-AzDevCenterAdminDevBoxDefinition --DevCenterName $env.devCenterNam -Name $env.devBoxDefinitionNameDelete -ResourceGroupName $env.resourceGroup
+        Remove-AzDevCenterAdminDevBoxDefinition -DevCenterName $env.devCenterNam -Name $env.devBoxDefinitionNameDelete -ResourceGroupName $env.resourceGroup
         { Get-AzDevCenterAdminDevBoxDefinition -ResourceGroupName $env.resourceGroup -DevCenterName $env.devCenterName -Name $env.devBoxDefinitionNameDelete } | Should -Throw
 
     }

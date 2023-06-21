@@ -53,8 +53,16 @@ function setupEnv() {
     $devCenterId = "/subscriptions/" + $env.SubscriptionId + "/resourceGroups/" + $resourceGroup + "/providers/Microsoft.DevCenter/devcenters/" + $devCenterName
     $time = "18:30"
     $timeZone = "America/Los_Angeles"
-    $subnetId = "/subscriptions/" + $env.SubscriptionId + "/resourceGroups/amlim-test/providers/Microsoft.Network/virtualNetworks/amlim-vnet-canadacentral/subnets/default"
+    $subnetId = "/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454//resourceGroups/amlim-test/providers/Microsoft.Network/virtualNetworks/amlim-vnet-canadacentral/subnets/default"
     $sigId = "/subscriptions/" + $env.SubscriptionId + "/resourceGroups/amlim-test/providers/Microsoft.Compute/galleries/amlim_pwsh_sig"
+    $sigName2 = RandomString -allChars $false -len 6
+    $sigName3 = RandomString -allChars $false -len 6
+    $sigName4 = RandomString -allChars $false -len 6
+    $sigName5 = RandomString -allChars $false -len 6
+    $sigId2 = "/subscriptions/" + $env.SubscriptionId + "/resourceGroups/" + $resourceGroup + "/providers/Microsoft.Compute/galleries/" + $sigName2
+    $sigId3 = "/subscriptions/" + $env.SubscriptionId + "/resourceGroups/" + $resourceGroup + "/providers/Microsoft.Compute/galleries/" + $sigName3
+    $sigId4 = "/subscriptions/" + $env.SubscriptionId + "/resourceGroups/" + $resourceGroup + "/providers/Microsoft.Compute/galleries/" + $sigName4
+    $sigId5 = "/subscriptions/" + $env.SubscriptionId + "/resourceGroups/" + $resourceGroup + "/providers/Microsoft.Compute/galleries/" + $sigName5
     $projectNameDelete2 = RandomString -allChars $false -len 6
     $catalogNameDelete2 = RandomString -allChars $false -len 6
     $environmentTypeNameDelete2 = RandomString -allChars $false -len 6
@@ -69,11 +77,58 @@ function setupEnv() {
     $poolForScheduleDelete = RandomString -allChars $false -len 6
     $poolForScheduleDelete2 = RandomString -allChars $false -len 6
 
+    $catalogSet = RandomString -allChars $false -len 6
+    $catalogSet2 = RandomString -allChars $false -len 6
+    $devBoxDefinitionSet = RandomString -allChars $false -len 6
+    $devBoxDefinitionSet2 = RandomString -allChars $false -len 6
+    $devCenterSet = RandomString -allChars $false -len 6
+    $devCenterSet2 = RandomString -allChars $false -len 6
+    $environmentTypeSet = RandomString -allChars $false -len 6
+    $environmentTypeSet2 = RandomString -allChars $false -len 6
+    $gallerySet = RandomString -allChars $false -len 6
+    $gallerySet2 = RandomString -allChars $false -len 6
+    $networkConnectionSet = RandomString -allChars $false -len 6
+    $networkConnectionSet2 = RandomString -allChars $false -len 6
+    $poolSet = RandomString -allChars $false -len 6
+    $poolSet2 = RandomString -allChars $false -len 6
+    $projectSet = RandomString -allChars $false -len 6
+    $projectSet2 = RandomString -allChars $false -len 6
+    $projectEnvironmentTypeSet = RandomString -allChars $false -len 6
+    $projectEnvironmentTypeSet2 = RandomString -allChars $false -len 6
+    $scheduleSet = RandomString -allChars $false -len 6
+    $scheduleSet2 = RandomString -allChars $false -len 6
+
+    $networkConnectionStart = RandomString -allChars $false -len 6
+    $networkConnectionStart2 = RandomString -allChars $false -len 6
+    $poolStart = RandomString -allChars $false -len 6
+    $poolStart2 = RandomString -allChars $false -len 6
+    $catalogSync = RandomString -allChars $false -len 6
+    $catalogSync2 = RandomString -allChars $false -len 6
+
+    $catalogUpdate = RandomString -allChars $false -len 6
+    $catalogUpdate2 = RandomString -allChars $false -len 6
+    $devBoxDefinitionUpdate = RandomString -allChars $false -len 6
+    $devBoxDefinitionUpdate2 = RandomString -allChars $false -len 6
+    $devCenterUpdate = RandomString -allChars $false -len 6
+    $devCenterUpdate2 = RandomString -allChars $false -len 6
+    $environmentTypeUpdate = RandomString -allChars $false -len 6
+    $environmentTypeUpdate2 = RandomString -allChars $false -len 6
+    $networkConnectionUpdate = RandomString -allChars $false -len 6
+    $networkConnectionUpdate2 = RandomString -allChars $false -len 6
+    $poolUpdate = RandomString -allChars $false -len 6
+    $poolUpdate2 = RandomString -allChars $false -len 6
+    $projectUpdate = RandomString -allChars $false -len 6
+    $projectUpdate2 = RandomString -allChars $false -len 6
+    $projectEnvironmentTypeUpdate = RandomString -allChars $false -len 6
+    $projectEnvironmentTypeUpdate2 = RandomString -allChars $false -len 6
+    $scheduleUpdate = RandomString -allChars $false -len 6
+    $scheduleUpdate2 = RandomString -allChars $false -len 6
 
     # Replace with real values when running test recordings
     $gitHubSecretIdentifier = "https://dummyVault/dummy/00000000"
     $keyVaultName = "dummy"
     $gitHubUri = "https://github.com/fake/fake.git"
+    $gitHubSecretIdentier2 = "https://dummy.vault.azure.net/secrets/envTest2/9eda24d737854e8ebf60260b180410a0"
 
     New-AzResourceGroup -Name $resourceGroup -Location "canadacentral"
 
@@ -172,6 +227,10 @@ function setupEnv() {
     $env.Add("timeZone", $timeZone)
     $env.Add("subnetId", $subnetId)
     $env.Add("sigId", $sigId)
+    $env.Add("sigId2", $sigId2)
+    $env.Add("sigId3", $sigId3)
+    $env.Add("sigId4", $sigId4)
+    $env.Add("sigId5", $sigId5)
 
     $env.Add("projectNameDelete", $projectNameDelete)
     $env.Add("projectNameDelete2", $projectNameDelete2)
@@ -219,6 +278,10 @@ function setupEnv() {
     $devboxTemplate.parameters.environmentTypeName.value = $environmentTypeName
     $devboxTemplate.parameters.poolName.value = $poolName
     $devboxTemplate.parameters.sigId.value = $sigId
+    $devboxTemplate.parameters.sigName2.value = $sigName2
+    $devboxTemplate.parameters.sigName3.value = $sigName3
+    $devboxTemplate.parameters.sigName4.value = $sigName4
+    $devboxTemplate.parameters.sigName5.value = $sigName5
     $devboxTemplate.parameters.projectNameDelete.value = $projectNameDelete
     $devboxTemplate.parameters.catalogNameDelete.value = $catalogNameDelete
     $devboxTemplate.parameters.attachedNetworkNameDelete.value = $attachedNetworkNameDelete

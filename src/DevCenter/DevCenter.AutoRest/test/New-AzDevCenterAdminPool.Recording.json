@@ -1,0 +1,79 @@
+{
+  "New-AzDevCenterAdminPool+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRgkmyvux/providers/Microsoft.DevCenter/projects/pwshProj9ml3cv/pools/8j6r?api-version=2023-04-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRgkmyvux/providers/Microsoft.DevCenter/projects/pwshProj9ml3cv/pools/8j6r?api-version=2023-04-01",
+      "Content": "{\r\n  \"location\": \"canadacentral\",\r\n  \"properties\": {\r\n    \"stopOnDisconnect\": {\r\n      \"status\": \"Enabled\",\r\n      \"gracePeriodMinutes\": 60\r\n    },\r\n    \"devBoxDefinitionName\": \"pgtn8b\",\r\n    \"networkConnectionName\": \"z9frba\",\r\n    \"licenseType\": \"Windows_Client\",\r\n    \"localAdministrator\": \"Enabled\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "309" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 400,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1184" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "X-Rate-Limit-Limit": [ "1m" ],
+        "X-Rate-Limit-Remaining": [ "299" ],
+        "X-Rate-Limit-Reset": [ "2023-06-20T00:30:22.0169025Z" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-failure-cause": [ "gateway" ],
+        "x-ms-request-id": [ "ded26a55-6522-4cb5-a00d-5a2c0a6b9236" ],
+        "x-ms-correlation-request-id": [ "f35b13ee-e5a9-4bab-bf59-cf228ff1bab4" ],
+        "x-ms-routing-request-id": [ "WESTUS:20230620T002922Z:f35b13ee-e5a9-4bab-bf59-cf228ff1bab4" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 20 Jun 2023 00:29:22 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "292" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"error\":{\"code\":\"ValidationError\",\"message\":\"The request is not valid.\",\"details\":[{\"code\":\"AttachedNetworkConnectionNotFound\",\"target\":\"\",\"message\":\"The Network Connection could not be found. Ensure the Network Connection is attached to the Dev Center.\",\"details\":[],\"additionalInfo\":[]}]}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzDevCenterAdminPool+[NoContext]+Create+$PUT+https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRgkmyvux/providers/Microsoft.DevCenter/projects/pwshProj9ml3cv/pools/hlxet?api-version=2023-04-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRgkmyvux/providers/Microsoft.DevCenter/projects/pwshProj9ml3cv/pools/hlxet?api-version=2023-04-01",
+      "Content": "{\r\n  \"location\": \"canadacentral\",\r\n  \"properties\": {\r\n    \"stopOnDisconnect\": {\r\n      \"status\": \"Enabled\",\r\n      \"gracePeriodMinutes\": 60\r\n    },\r\n    \"devBoxDefinitionName\": \"pgtn8b\",\r\n    \"networkConnectionName\": \"z9frba\",\r\n    \"localAdministrator\": \"Enabled\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "271" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 400,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1183" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-failure-cause": [ "user-api-validation" ],
+        "x-ms-request-id": [ "efdd91c3-2601-468b-b722-eba618277919" ],
+        "x-ms-correlation-request-id": [ "c6cd55ae-b1c2-4334-a70a-35ff349299f9" ],
+        "x-ms-routing-request-id": [ "WESTUS:20230620T002924Z:c6cd55ae-b1c2-4334-a70a-35ff349299f9" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 20 Jun 2023 00:29:24 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "422" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"error\":{\"code\":\"HttpRequestPayloadAPISpecValidationFailed\",\"target\":\"Microsoft.DevCenter/projects/pwshProj9ml3cv/pools/hlxet\",\"message\":\"HTTP request payload failed validation against API specification with one or more errors. Please see details for more information.\",\"details\":[{\"code\":\"ObjectMissingRequiredProperty\",\"message\":\"Missing required property: licenseType. Paths in payload: \u0027$.properties.licenseType\u0027\"}]}}",
+      "isContentBase64": false
+    }
+  }
+}

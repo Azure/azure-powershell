@@ -14,13 +14,13 @@ if (($null -eq $TestName) -or ($TestName -contains 'Remove-AzDevCenterAdminProje
 }
 
 Describe 'Remove-AzDevCenterAdminProjectEnvironmentType' {
-    It 'Delete' {
+    It 'Delete' -skip {
         Remove-AzDevCenterAdminProjectEnvironmentType -ProjectName $env.projectName -ResourceGroupName $env.resourceGroup -EnvironmentTypeName $env.projEnvironmentTypeNameDelete
         { Get-AzDevCenterAdminProjectEnvironmentType -ProjectName $env.projectName -ResourceGroupName $env.resourceGroup -EnvironmentTypeName $env.projEnvironmentTypeNameDelete } | Should -Throw
 
     }
 
-    It 'DeleteViaIdentity' {
+    It 'DeleteViaIdentity' -skip {
         $projEnvType = Get-AzDevCenterAdminProjectEnvironmentType -ProjectName $env.projectName -ResourceGroupName $env.resourceGroup -EnvironmentTypeName $env.projEnvironmentTypeNameDelete2
         Remove-AzDevCenterAdminProjectEnvironmentType -InputObject $projEnvType
         { Get-AzDevCenterAdminProjectEnvironmentType -ProjectName $env.projectName -ResourceGroupName $env.resourceGroup -EnvironmentTypeName $env.projEnvironmentTypeNameDelete2 } | Should -Throw

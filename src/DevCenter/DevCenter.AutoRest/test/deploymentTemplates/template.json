@@ -70,6 +70,22 @@
             "type": "string"
 
         },
+        "sigName2": {
+            "type": "string"
+
+        },
+        "sigName3": {
+            "type": "string"
+
+        },
+        "sigName4": {
+            "type": "string"
+
+        },
+        "sigName5": {
+            "type": "string"
+
+        },
         "galleryName": {
             "type": "string"
 
@@ -290,6 +306,105 @@
             }
         },
         {
+            "name": "createSigs",
+            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2022-09-01",
+            "subscriptionId": "[parameters('subscriptionId')]",
+            "resourceGroup": "[parameters('resourceGroup')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.ManagedIdentity/userAssignedIdentities', parameters('managedIdentityName'))]"
+            ],
+            "properties": {
+                "mode": "Incremental",
+                "template": {
+                    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+                    "contentVersion": "1.0.0.0",
+                    "resources": [
+                        {
+                            "type": "Microsoft.Compute/galleries",
+                            "name": "[parameters('sigName2')]",
+                            "apiVersion": "2022-03-03",
+                            "location": "[parameters('location')]"
+                        },
+                        {
+                            "type": "Microsoft.Compute/galleries",
+                            "name": "[parameters('sigName3')]",
+                            "apiVersion": "2022-03-03",
+                            "location": "[parameters('location')]"
+                        },
+                        {
+                            "type": "Microsoft.Compute/galleries",
+                            "name": "[parameters('sigName4')]",
+                            "apiVersion": "2022-03-03",
+                            "location": "[parameters('location')]"
+                        },
+                        {
+                            "type": "Microsoft.Compute/galleries",
+                            "name": "[parameters('sigName5')]",
+                            "apiVersion": "2022-03-03",
+                            "location": "[parameters('location')]"
+                        },
+                        {
+                            "type": "Microsoft.Authorization/roleAssignments",
+                            "apiVersion": "2022-04-01",
+                            "name": "[parameters('roleNameGuid')]",
+                            "scope": "[resourceId('Microsoft.Compute/galleries', parameters('sigName2'))]",
+                            "properties": {
+                                "roleDefinitionId": "[concat('/subscriptions/', subscription().subscriptionId, '/providers/Microsoft.Authorization/roleDefinitions/', 'b24988ac-6180-42a0-ab88-20f7382dd24c')]",
+                                "principalId": "[reference(parameters('managedIdentityName')).principalId]",
+                                "principalType": "ServicePrincipal"
+                            },
+                            "dependsOn": [
+                                "[resourceId('Microsoft.Compute/galleries', parameters('sigName2'))]"
+                            ]
+                        },
+                        {
+                            "type": "Microsoft.Authorization/roleAssignments",
+                            "apiVersion": "2022-04-01",
+                            "name": "[parameters('roleNameGuid')]",
+                            "scope": "[resourceId('Microsoft.Compute/galleries', parameters('sigName3'))]",
+                            "properties": {
+                                "roleDefinitionId": "[concat('/subscriptions/', subscription().subscriptionId, '/providers/Microsoft.Authorization/roleDefinitions/', 'b24988ac-6180-42a0-ab88-20f7382dd24c')]",
+                                "principalId": "[reference(parameters('managedIdentityName')).principalId]",
+                                "principalType": "ServicePrincipal"
+                            },
+                            "dependsOn": [
+                                "[resourceId('Microsoft.Compute/galleries', parameters('sigName3'))]"
+                            ]
+                        },
+                        {
+                            "type": "Microsoft.Authorization/roleAssignments",
+                            "apiVersion": "2022-04-01",
+                            "name": "[parameters('roleNameGuid')]",
+                            "scope": "[resourceId('Microsoft.Compute/galleries', parameters('sigName4'))]",
+                            "properties": {
+                                "roleDefinitionId": "[concat('/subscriptions/', subscription().subscriptionId, '/providers/Microsoft.Authorization/roleDefinitions/', 'b24988ac-6180-42a0-ab88-20f7382dd24c')]",
+                                "principalId": "[reference(parameters('managedIdentityName')).principalId]",
+                                "principalType": "ServicePrincipal"
+                            },
+                            "dependsOn": [
+                                "[resourceId('Microsoft.Compute/galleries', parameters('sigName4'))]"
+                            ]
+                        },
+                        {
+                            "type": "Microsoft.Authorization/roleAssignments",
+                            "apiVersion": "2022-04-01",
+                            "name": "[parameters('roleNameGuid')]",
+                            "scope": "[resourceId('Microsoft.Compute/galleries', parameters('sigName5'))]",
+                            "properties": {
+                                "roleDefinitionId": "[concat('/subscriptions/', subscription().subscriptionId, '/providers/Microsoft.Authorization/roleDefinitions/', 'b24988ac-6180-42a0-ab88-20f7382dd24c')]",
+                                "principalId": "[reference(parameters('managedIdentityName')).principalId]",
+                                "principalType": "ServicePrincipal"
+                            },
+                            "dependsOn": [
+                                "[resourceId('Microsoft.Compute/galleries', parameters('sigName5'))]"
+                            ]
+                        }
+                    ]
+                }
+            }
+        },
+        {
             "name": "createPolicies",
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2022-09-01",
@@ -333,7 +448,6 @@
                                 "principalType": "ServicePrincipal"
                             }
                         }
-
                     ]
                 }
             }
@@ -346,6 +460,7 @@
             "resourceGroup": "[parameters('resourceGroup')]",
             "dependsOn": [
                 "[resourceId('Microsoft.Resources/deployments', 'createParentResources')]",
+                "[resourceId('Microsoft.Resources/deployments', 'createSigs')]",
                 "[resourceId('amlim-test', 'Microsoft.Resources/deployments', 'createPolicies')]"
             ],
             "properties": {
@@ -513,7 +628,7 @@
                             "name": "[concat(parameters('devCenterName'), '/', parameters('galleryNameDelete'))]",
                             "apiVersion": "2023-04-01",
                             "properties": {
-                                "galleryResourceId": "[parameters('sigId')]"
+                                "galleryResourceId": "[resourceId('Microsoft.Compute/galleries', parameters('sigName2'))]"
                             }
                         },
                         {
@@ -521,7 +636,7 @@
                             "name": "[concat(parameters('devCenterName'), '/', parameters('galleryNameDelete2'))]",
                             "apiVersion": "2023-04-01",
                             "properties": {
-                                "galleryResourceId": "[parameters('sigId')]"
+                                "galleryResourceId": "[resourceId('Microsoft.Compute/galleries', parameters('sigName3'))]"
                             }
                         }
                     ]
@@ -758,7 +873,7 @@
                                 "[resourceId('Microsoft.DevCenter/projects/pools', parameters('projectName'), parameters('poolName'))]"
                             ]
                         },
-                                                {
+                        {
                             "type": "microsoft.devcenter/projects/pools/schedules",
                             "name": "[concat(parameters('projectName'), '/', parameters('poolForScheduleDelete'), '/default')]",
                             "apiVersion": "2023-04-01",
@@ -773,7 +888,7 @@
                                 "[resourceId('Microsoft.DevCenter/projects/pools', parameters('projectName'), parameters('poolForScheduleDelete'))]"
                             ]
                         },
-                                                {
+                        {
                             "type": "microsoft.devcenter/projects/pools/schedules",
                             "name": "[concat(parameters('projectName'), '/', parameters('poolForScheduleDelete2'), '/default')]",
                             "apiVersion": "2023-04-01",

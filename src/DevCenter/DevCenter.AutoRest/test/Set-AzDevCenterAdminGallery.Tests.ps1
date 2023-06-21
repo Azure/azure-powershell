@@ -13,7 +13,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Set-AzDevCenterAdminGallery')
   }
   . ($mockingPath | Select-Object -First 1).FullName
 }
-
+#Remove this cmdlet
 Describe 'Set-AzDevCenterAdminGallery' {
     It 'UpdateExpanded' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw

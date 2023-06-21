@@ -27,7 +27,7 @@ Describe 'Get-AzDevCenterAdminPool' {
         $pool.Name | Should -Be $env.poolName
         $pool.DevBoxDefinitionName | Should -Be $env.devBoxDefinitionName
         $pool.LocalAdministrator | Should -Be "Enabled"
-        $pool.NetworkConnectionName | Should -Be $env.networkConnectionName
+        $pool.NetworkConnectionName | Should -Be $env.attachedNetworkName
         $pool.StopOnDisconnectGracePeriodMinute | Should -Be 60
         $pool.StopOnDisconnectStatus | Should -Be "Enabled"
         $pool.LicenseType | Should -Be "Windows_Client"
@@ -40,7 +40,7 @@ Describe 'Get-AzDevCenterAdminPool' {
         $pool.Name | Should -Be $env.poolName
         $pool.DevBoxDefinitionName | Should -Be $env.devBoxDefinitionName
         $pool.LocalAdministrator | Should -Be "Enabled"
-        $pool.NetworkConnectionName | Should -Be $env.networkConnectionName
+        $pool.NetworkConnectionName | Should -Be $env.attachedNetworkName
         $pool.StopOnDisconnectGracePeriodMinute | Should -Be 60
         $pool.StopOnDisconnectStatus | Should -Be "Enabled"
         $pool.LicenseType | Should -Be "Windows_Client"

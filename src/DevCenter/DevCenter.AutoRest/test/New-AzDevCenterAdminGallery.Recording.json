@@ -1,0 +1,82 @@
+{
+  "New-AzDevCenterAdminGallery+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRgkmyvux/providers/Microsoft.DevCenter/devcenters/pwshDcykf1ob/galleries/gl13i?api-version=2023-04-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRgkmyvux/providers/Microsoft.DevCenter/devcenters/pwshDcykf1ob/galleries/gl13i?api-version=2023-04-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"galleryResourceId\": \"/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/amlim-test/providers/Microsoft.Compute/galleries/amlim_pwsh_sig\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "187" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 400,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1190" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "X-Rate-Limit-Limit": [ "1m" ],
+        "X-Rate-Limit-Remaining": [ "299" ],
+        "X-Rate-Limit-Reset": [ "2023-06-20T00:26:01.4860129Z" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-failure-cause": [ "gateway" ],
+        "x-ms-request-id": [ "b3902341-f7d6-4e81-98e9-08428220475e" ],
+        "x-ms-correlation-request-id": [ "3723b614-dd8d-4136-b5b0-d598f642ee0b" ],
+        "x-ms-routing-request-id": [ "WESTUS:20230620T002502Z:3723b614-dd8d-4136-b5b0-d598f642ee0b" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 20 Jun 2023 00:25:02 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "263" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"error\":{\"code\":\"ValidationError\",\"message\":\"The request is not valid.\",\"details\":[{\"code\":\"ComputeGalleryAlreadyAttachedToDevCenter\",\"target\":\"\",\"message\":\"The provided compute gallery is already attached to this DevCenter.\",\"details\":[],\"additionalInfo\":[]}]}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzDevCenterAdminGallery+[NoContext]+Create+$PUT+https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRgkmyvux/providers/Microsoft.DevCenter/devcenters/pwshDcykf1ob/galleries/5iun?api-version=2023-04-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRgkmyvux/providers/Microsoft.DevCenter/devcenters/pwshDcykf1ob/galleries/5iun?api-version=2023-04-01",
+      "Content": "{\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "4" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 400,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1189" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "X-Rate-Limit-Limit": [ "1m" ],
+        "X-Rate-Limit-Remaining": [ "299" ],
+        "X-Rate-Limit-Reset": [ "2023-06-20T00:26:02.7809732Z" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-failure-cause": [ "gateway" ],
+        "x-ms-request-id": [ "ab90a07d-72a0-4a34-8f68-d4c1b68734df" ],
+        "x-ms-correlation-request-id": [ "3cd7364d-8ae3-410c-a90b-63f77da55b95" ],
+        "x-ms-routing-request-id": [ "WESTUS:20230620T002505Z:3cd7364d-8ae3-410c-a90b-63f77da55b95" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 20 Jun 2023 00:25:05 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "239" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"error\":{\"code\":\"ValidationError\",\"message\":\"The request is not valid.\",\"details\":[{\"code\":\"InvalidResourceId\",\"target\":\"Properties.GalleryResourceId\",\"message\":\"The supplied resource ID is not valid.\",\"details\":[],\"additionalInfo\":[]}]}}",
+      "isContentBase64": false
+    }
+  }
+}

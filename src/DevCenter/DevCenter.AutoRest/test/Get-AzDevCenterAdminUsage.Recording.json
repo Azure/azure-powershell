@@ -6,8 +6,8 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "65" ],
-        "x-ms-client-request-id": [ "19d33239-35a5-40b2-8dd8-fabaf3ac51d8" ],
+        "x-ms-unique-id": [ "62" ],
+        "x-ms-client-request-id": [ "204bb1ee-3b5c-4015-bb28-a460964ee025" ],
         "CommandName": [ "Get-AzDevCenterAdminUsage" ],
         "FullCommandName": [ "Get-AzDevCenterAdminUsage_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -22,24 +22,24 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11865" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11940" ],
         "x-ms-providerhub-traffic": [ "True" ],
         "X-Rate-Limit-Limit": [ "1m" ],
         "X-Rate-Limit-Remaining": [ "299" ],
-        "X-Rate-Limit-Reset": [ "2023-06-15T23:54:11.9564137Z" ],
+        "X-Rate-Limit-Reset": [ "2023-06-20T00:19:23.7902009Z" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "2ce9030e-5a8c-418b-9dc1-154f53c797d0" ],
-        "x-ms-correlation-request-id": [ "750fb923-1506-42c3-bab2-dfbb57017e28" ],
-        "x-ms-routing-request-id": [ "WESTUS:20230615T235312Z:750fb923-1506-42c3-bab2-dfbb57017e28" ],
+        "x-ms-request-id": [ "483b9181-b1dc-44f0-8c23-e81fd5bba453" ],
+        "x-ms-correlation-request-id": [ "855f5f1c-fea2-4e2a-851e-c2b9c5408a0e" ],
+        "x-ms-routing-request-id": [ "WESTUS:20230620T001824Z:855f5f1c-fea2-4e2a-851e-c2b9c5408a0e" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Thu, 15 Jun 2023 23:53:12 GMT" ]
+        "Date": [ "Tue, 20 Jun 2023 00:18:24 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "637" ],
+        "Content-Length": [ "559" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[{\"currentValue\":17,\"limit\":200,\"unit\":\"Count\",\"name\":{\"value\":\"devBoxDefinitions\"}},{\"currentValue\":12,\"limit\":100,\"unit\":\"Count\",\"name\":{\"value\":\"devCenters\"}},{\"currentValue\":40,\"limit\":48,\"unit\":\"Count\",\"name\":{\"value\":\"general_a_v1\"}},{\"currentValue\":8,\"limit\":20,\"unit\":\"Count\",\"name\":{\"value\":\"networkConnections\"}},{\"currentValue\":18,\"limit\":500,\"unit\":\"Count\",\"name\":{\"value\":\"pools\"}},{\"currentValue\":10,\"limit\":500,\"unit\":\"Count\",\"name\":{\"value\":\"projects\"}},{\"currentValue\":40,\"limit\":100,\"unit\":\"Count\",\"name\":{\"value\":\"general_a_v2\"}},{\"currentValue\":48,\"limit\":48,\"unit\":\"Count\",\"name\":{\"value\":\"general_i_v2\"}}]}",
+      "Content": "{\"value\":[{\"currentValue\":19,\"limit\":200,\"unit\":\"Count\",\"name\":{\"value\":\"devBoxDefinitions\"}},{\"currentValue\":13,\"limit\":100,\"unit\":\"Count\",\"name\":{\"value\":\"devCenters\"}},{\"currentValue\":9,\"limit\":20,\"unit\":\"Count\",\"name\":{\"value\":\"networkConnections\"}},{\"currentValue\":21,\"limit\":500,\"unit\":\"Count\",\"name\":{\"value\":\"pools\"}},{\"currentValue\":11,\"limit\":500,\"unit\":\"Count\",\"name\":{\"value\":\"projects\"}},{\"currentValue\":48,\"limit\":100,\"unit\":\"Count\",\"name\":{\"value\":\"general_a_v2\"}},{\"currentValue\":48,\"limit\":48,\"unit\":\"Count\",\"name\":{\"value\":\"general_i_v2\"}}]}",
       "isContentBase64": false
     }
   }

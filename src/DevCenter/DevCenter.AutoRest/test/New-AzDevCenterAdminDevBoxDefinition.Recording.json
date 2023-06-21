@@ -1,0 +1,252 @@
+{
+  "New-AzDevCenterAdminDevBoxDefinition+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRgkmyvux/providers/Microsoft.DevCenter/devcenters/pwshDcykf1ob/devboxdefinitions/mvuh?api-version=2023-04-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRgkmyvux/providers/Microsoft.DevCenter/devcenters/pwshDcykf1ob/devboxdefinitions/mvuh?api-version=2023-04-01",
+      "Content": "{\r\n  \"location\": \"canadacentral\",\r\n  \"properties\": {\r\n    \"imageReference\": {\r\n      \"id\": \"/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRgkmyvux/providers/Microsoft.DevCenter/devcenters/pwshDcykf1ob/galleries/Default/images/MicrosoftWindowsDesktop_windows-ent-cpc_win11-22h2-ent-cpc-os\"\r\n    },\r\n    \"sku\": {\r\n      \"name\": \"general_a_8c32gb_v1\"\r\n    },\r\n    \"osStorageType\": \"ssd_1024gb\",\r\n    \"hibernateSupport\": \"Enabled\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "459" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"3400dda0-0000-0a00-0000-6490f0db0000\"" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1195" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "X-Rate-Limit-Limit": [ "1m" ],
+        "X-Rate-Limit-Remaining": [ "299" ],
+        "X-Rate-Limit-Reset": [ "2023-06-20T00:21:36.8691311Z" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-quota": [ "{\"name\":{\"localizedValue\":null,\"value\":\"devBoxDefinitions\"},\"limit\":200,\"currentUsed\":20,\"category\":\"Informational\",\"scope\":\"subscription\",\"target\":\"/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/\",\"region\":\"canadacentral\"}" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/providers/Microsoft.DevCenter/locations/CANADACENTRAL/operationStatuses/37c4b95a-c621-4eb3-9f94-8822744005c8*1200FB61953D450A6922928D514E6B6DFB506EC946BF4E0FEA56B2C27FB60412?api-version=2023-04-01" ],
+        "x-ms-request-id": [ "37c4b95a-c621-4eb3-9f94-8822744005c8" ],
+        "x-ms-correlation-request-id": [ "a450dc50-4d48-4b95-aca5-65610dfd3b43" ],
+        "x-ms-routing-request-id": [ "WESTUS:20230620T002043Z:a450dc50-4d48-4b95-aca5-65610dfd3b43" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 20 Jun 2023 00:20:43 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "882" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRgkmyvux/providers/Microsoft.DevCenter/devcenters/pwshDcykf1ob/devboxdefinitions/mvuh\",\"name\":\"mvuh\",\"type\":\"microsoft.devcenter/devcenters/devboxdefinitions\",\"location\":\"canadacentral\",\"systemData\":{\"createdBy\":\"amlim@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-06-20T00:20:36.7656167Z\",\"lastModifiedBy\":\"amlim@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-06-20T00:20:36.7656167Z\"},\"properties\":{\"provisioningState\":\"Accepted\",\"imageReference\":{\"id\":\"/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRgkmyvux/providers/Microsoft.DevCenter/devcenters/pwshDcykf1ob/galleries/Default/images/MicrosoftWindowsDesktop_windows-ent-cpc_win11-22h2-ent-cpc-os\"},\"sku\":{\"name\":\"general_a_8c32gb_v1\"},\"osStorageType\":\"ssd_1024gb\",\"hibernateSupport\":\"Enabled\"}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzDevCenterAdminDevBoxDefinition+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/providers/Microsoft.DevCenter/locations/CANADACENTRAL/operationStatuses/37c4b95a-c621-4eb3-9f94-8822744005c8*1200FB61953D450A6922928D514E6B6DFB506EC946BF4E0FEA56B2C27FB60412?api-version=2023-04-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/providers/Microsoft.DevCenter/locations/CANADACENTRAL/operationStatuses/37c4b95a-c621-4eb3-9f94-8822744005c8*1200FB61953D450A6922928D514E6B6DFB506EC946BF4E0FEA56B2C27FB60412?api-version=2023-04-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "80" ],
+        "x-ms-client-request-id": [ "e1451028-103f-42ae-b1b5-15abfe4ecc00" ],
+        "CommandName": [ "New-AzDevCenterAdminDevBoxDefinition" ],
+        "FullCommandName": [ "New-AzDevCenterAdminDevBoxDefinition_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v9.4.0", "PSVersion/v7.2.11", "Az.DevCenter/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"17003413-0000-0a00-0000-6490f0e90000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11931" ],
+        "x-ms-request-id": [ "8362dd48-f900-473f-aa46-1ac2c9c1b9f9" ],
+        "x-ms-correlation-request-id": [ "5d51dd62-32d7-4ea8-9a94-64dd6114245c" ],
+        "x-ms-routing-request-id": [ "WESTUS:20230620T002113Z:5d51dd62-32d7-4ea8-9a94-64dd6114245c" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 20 Jun 2023 00:21:13 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "640" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/providers/Microsoft.DevCenter/locations/CANADACENTRAL/operationStatuses/37c4b95a-c621-4eb3-9f94-8822744005c8*1200FB61953D450A6922928D514E6B6DFB506EC946BF4E0FEA56B2C27FB60412\",\"name\":\"37c4b95a-c621-4eb3-9f94-8822744005c8*1200FB61953D450A6922928D514E6B6DFB506EC946BF4E0FEA56B2C27FB60412\",\"resourceId\":\"/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRgkmyvux/providers/Microsoft.DevCenter/devcenters/pwshDcykf1ob/devboxdefinitions/mvuh\",\"status\":\"Succeeded\",\"startTime\":\"2023-06-20T00:20:39.9100005Z\",\"endTime\":\"2023-06-20T00:20:57.6784754Z\",\"properties\":null}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzDevCenterAdminDevBoxDefinition+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRgkmyvux/providers/Microsoft.DevCenter/devcenters/pwshDcykf1ob/devboxdefinitions/mvuh?api-version=2023-04-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRgkmyvux/providers/Microsoft.DevCenter/devcenters/pwshDcykf1ob/devboxdefinitions/mvuh?api-version=2023-04-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "81" ],
+        "x-ms-client-request-id": [ "e1451028-103f-42ae-b1b5-15abfe4ecc00" ],
+        "CommandName": [ "New-AzDevCenterAdminDevBoxDefinition" ],
+        "FullCommandName": [ "New-AzDevCenterAdminDevBoxDefinition_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v9.4.0", "PSVersion/v7.2.11", "Az.DevCenter/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"340009a1-0000-0a00-0000-6490f0e90000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11930" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "7d4173b1-4cea-45c5-8187-25dbc1f50c2d" ],
+        "x-ms-correlation-request-id": [ "4a2748ea-74a4-4b45-aa7a-182d4f177f32" ],
+        "x-ms-routing-request-id": [ "WESTUS:20230620T002114Z:4a2748ea-74a4-4b45-aa7a-182d4f177f32" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 20 Jun 2023 00:21:13 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1218" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRgkmyvux/providers/Microsoft.DevCenter/devcenters/pwshDcykf1ob/devboxdefinitions/mvuh\",\"name\":\"mvuh\",\"type\":\"microsoft.devcenter/devcenters/devboxdefinitions\",\"location\":\"canadacentral\",\"systemData\":{\"createdBy\":\"amlim@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-06-20T00:20:36.7656167Z\",\"lastModifiedBy\":\"amlim@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-06-20T00:20:36.7656167Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"imageReference\":{\"id\":\"/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRgkmyvux/providers/Microsoft.DevCenter/devcenters/pwshDcykf1ob/galleries/Default/images/MicrosoftWindowsDesktop_windows-ent-cpc_win11-22h2-ent-cpc-os\",\"exactVersion\":\"1.0.0\"},\"sku\":{\"name\":\"general_a_8c32gb_v1\"},\"osStorageType\":\"ssd_1024gb\",\"hibernateSupport\":\"Enabled\",\"imageValidationStatus\":\"Succeeded\",\"activeImageReference\":{\"id\":\"/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRgkmyvux/providers/Microsoft.DevCenter/devcenters/pwshDcykf1ob/galleries/Default/images/MicrosoftWindowsDesktop_windows-ent-cpc_win11-22h2-ent-cpc-os\",\"exactVersion\":\"1.0.0\"}}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzDevCenterAdminDevBoxDefinition+[NoContext]+Create+$PUT+https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRgkmyvux/providers/Microsoft.DevCenter/devcenters/pwshDcykf1ob/devboxdefinitions/0pwgy?api-version=2023-04-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRgkmyvux/providers/Microsoft.DevCenter/devcenters/pwshDcykf1ob/devboxdefinitions/0pwgy?api-version=2023-04-01",
+      "Content": "{\r\n  \"location\": \"canadacentral\",\r\n  \"properties\": {\r\n    \"imageReference\": {\r\n      \"id\": \"/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRgkmyvux/providers/Microsoft.DevCenter/devcenters/pwshDcykf1ob/galleries/Default/images/MicrosoftWindowsDesktop_windows-ent-cpc_win11-22h2-ent-cpc-os\"\r\n    },\r\n    \"sku\": {\r\n      \"name\": \"general_a_8c32gb_v1\"\r\n    },\r\n    \"osStorageType\": \"ssd_1024gb\",\r\n    \"hibernateSupport\": \"Enabled\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "459" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"34005ea1-0000-0a00-0000-6490f1010000\"" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1194" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "X-Rate-Limit-Limit": [ "1m" ],
+        "X-Rate-Limit-Remaining": [ "299" ],
+        "X-Rate-Limit-Reset": [ "2023-06-20T00:22:15.2029614Z" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-quota": [ "{\"name\":{\"localizedValue\":null,\"value\":\"devBoxDefinitions\"},\"limit\":200,\"currentUsed\":21,\"category\":\"Informational\",\"scope\":\"subscription\",\"target\":\"/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/\",\"region\":\"canadacentral\"}" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/providers/Microsoft.DevCenter/locations/CANADACENTRAL/operationStatuses/f3e6bb76-8608-42ce-9038-9cbf0ed7dbf4*2B79A67D5CA59A2B7F3CE88FB371732427A7F636C7CBC53BAB54EE2FE82FC55D?api-version=2023-04-01" ],
+        "x-ms-request-id": [ "f3e6bb76-8608-42ce-9038-9cbf0ed7dbf4" ],
+        "x-ms-correlation-request-id": [ "92277adb-ef97-4dea-a260-ba6856fc1e97" ],
+        "x-ms-routing-request-id": [ "WESTUS:20230620T002122Z:92277adb-ef97-4dea-a260-ba6856fc1e97" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 20 Jun 2023 00:21:21 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "882" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRgkmyvux/providers/Microsoft.DevCenter/devcenters/pwshDcykf1ob/devboxdefinitions/0pwgy\",\"name\":\"0pwgy\",\"type\":\"microsoft.devcenter/devcenters/devboxdefinitions\",\"location\":\"canadacentral\",\"systemData\":{\"createdBy\":\"amlim@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-06-20T00:21:15.001197Z\",\"lastModifiedBy\":\"amlim@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-06-20T00:21:15.001197Z\"},\"properties\":{\"provisioningState\":\"Accepted\",\"imageReference\":{\"id\":\"/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRgkmyvux/providers/Microsoft.DevCenter/devcenters/pwshDcykf1ob/galleries/Default/images/MicrosoftWindowsDesktop_windows-ent-cpc_win11-22h2-ent-cpc-os\"},\"sku\":{\"name\":\"general_a_8c32gb_v1\"},\"osStorageType\":\"ssd_1024gb\",\"hibernateSupport\":\"Enabled\"}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzDevCenterAdminDevBoxDefinition+[NoContext]+Create+$GET+https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/providers/Microsoft.DevCenter/locations/CANADACENTRAL/operationStatuses/f3e6bb76-8608-42ce-9038-9cbf0ed7dbf4*2B79A67D5CA59A2B7F3CE88FB371732427A7F636C7CBC53BAB54EE2FE82FC55D?api-version=2023-04-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/providers/Microsoft.DevCenter/locations/CANADACENTRAL/operationStatuses/f3e6bb76-8608-42ce-9038-9cbf0ed7dbf4*2B79A67D5CA59A2B7F3CE88FB371732427A7F636C7CBC53BAB54EE2FE82FC55D?api-version=2023-04-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "83" ],
+        "x-ms-client-request-id": [ "5ff68286-f8c6-4482-8bbe-000f74b1fa71" ],
+        "CommandName": [ "New-AzDevCenterAdminDevBoxDefinition" ],
+        "FullCommandName": [ "New-AzDevCenterAdminDevBoxDefinition_Create" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v9.4.0", "PSVersion/v7.2.11", "Az.DevCenter/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"17008913-0000-0a00-0000-6490f1090000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11929" ],
+        "x-ms-request-id": [ "f60b245a-d58a-4a1f-acfa-99e163cf9235" ],
+        "x-ms-correlation-request-id": [ "026cd468-494c-4901-91bf-101d0f2367fd" ],
+        "x-ms-routing-request-id": [ "WESTUS:20230620T002152Z:026cd468-494c-4901-91bf-101d0f2367fd" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 20 Jun 2023 00:21:52 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "641" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/providers/Microsoft.DevCenter/locations/CANADACENTRAL/operationStatuses/f3e6bb76-8608-42ce-9038-9cbf0ed7dbf4*2B79A67D5CA59A2B7F3CE88FB371732427A7F636C7CBC53BAB54EE2FE82FC55D\",\"name\":\"f3e6bb76-8608-42ce-9038-9cbf0ed7dbf4*2B79A67D5CA59A2B7F3CE88FB371732427A7F636C7CBC53BAB54EE2FE82FC55D\",\"resourceId\":\"/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRgkmyvux/providers/Microsoft.DevCenter/devcenters/pwshDcykf1ob/devboxdefinitions/0pwgy\",\"status\":\"Succeeded\",\"startTime\":\"2023-06-20T00:21:18.1265036Z\",\"endTime\":\"2023-06-20T00:21:29.1282715Z\",\"properties\":null}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzDevCenterAdminDevBoxDefinition+[NoContext]+Create+$GET+https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRgkmyvux/providers/Microsoft.DevCenter/devcenters/pwshDcykf1ob/devboxdefinitions/0pwgy?api-version=2023-04-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRgkmyvux/providers/Microsoft.DevCenter/devcenters/pwshDcykf1ob/devboxdefinitions/0pwgy?api-version=2023-04-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "84" ],
+        "x-ms-client-request-id": [ "5ff68286-f8c6-4482-8bbe-000f74b1fa71" ],
+        "CommandName": [ "New-AzDevCenterAdminDevBoxDefinition" ],
+        "FullCommandName": [ "New-AzDevCenterAdminDevBoxDefinition_Create" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v9.4.0", "PSVersion/v7.2.11", "Az.DevCenter/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"340074a1-0000-0a00-0000-6490f1090000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11928" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "d1bf2d7e-22e2-4f66-9409-b68bf3f01eac" ],
+        "x-ms-correlation-request-id": [ "cad5e8f8-c720-4135-88a4-103b2b722380" ],
+        "x-ms-routing-request-id": [ "WESTUS:20230620T002152Z:cad5e8f8-c720-4135-88a4-103b2b722380" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 20 Jun 2023 00:21:52 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1218" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRgkmyvux/providers/Microsoft.DevCenter/devcenters/pwshDcykf1ob/devboxdefinitions/0pwgy\",\"name\":\"0pwgy\",\"type\":\"microsoft.devcenter/devcenters/devboxdefinitions\",\"location\":\"canadacentral\",\"systemData\":{\"createdBy\":\"amlim@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-06-20T00:21:15.001197Z\",\"lastModifiedBy\":\"amlim@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-06-20T00:21:15.001197Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"imageReference\":{\"id\":\"/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRgkmyvux/providers/Microsoft.DevCenter/devcenters/pwshDcykf1ob/galleries/Default/images/MicrosoftWindowsDesktop_windows-ent-cpc_win11-22h2-ent-cpc-os\",\"exactVersion\":\"1.0.0\"},\"sku\":{\"name\":\"general_a_8c32gb_v1\"},\"osStorageType\":\"ssd_1024gb\",\"hibernateSupport\":\"Enabled\",\"imageValidationStatus\":\"Succeeded\",\"activeImageReference\":{\"id\":\"/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRgkmyvux/providers/Microsoft.DevCenter/devcenters/pwshDcykf1ob/galleries/Default/images/MicrosoftWindowsDesktop_windows-ent-cpc_win11-22h2-ent-cpc-os\",\"exactVersion\":\"1.0.0\"}}}",
+      "isContentBase64": false
+    }
+  }
+}

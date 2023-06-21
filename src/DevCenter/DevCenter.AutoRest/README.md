@@ -69,8 +69,9 @@ directive:
     set:
       default:
         script: '"default"'
+# Matches any verb that is not Remove for Schedule
   - where:
-      verb: Get
+      verb: ^(?!Remove$)
       subject: Schedule
     hide: true
   - where:
@@ -80,6 +81,19 @@ directive:
     set:
       default:
         script: '"Windows_Client"'
+  - where:
+      verb: New
+      subject: Pool
+      parameter-name: LicenseType
+    hide: true
+    set:
+      default:
+        script: '"Windows_Client"'
+# Matches any verb that is not Get or Remove for Pool
+  - where:
+      verb: ^(?!Get$|Remove$)
+      subject: Pool
+    hide: true
   - where:
       subject: ^(.*)
     set:

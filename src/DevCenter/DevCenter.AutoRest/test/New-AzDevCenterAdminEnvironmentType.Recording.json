@@ -1,0 +1,37 @@
+{
+  "New-AzDevCenterAdminEnvironmentType+[NoContext]+Create+$PUT+https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRgkmyvux/providers/Microsoft.DevCenter/devcenters/pwshRgkmyvux/environmentTypes/8hga?api-version=2023-04-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRgkmyvux/providers/Microsoft.DevCenter/devcenters/pwshRgkmyvux/environmentTypes/8hga?api-version=2023-04-01",
+      "Content": "{\r\n  \"tags\": {\r\n    \"dev\": \"test\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "41" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 404,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-failure-cause": [ "gateway" ],
+        "x-ms-request-id": [ "3c92d002-bdb3-493e-a875-0170ca050d8e" ],
+        "x-ms-correlation-request-id": [ "3c92d002-bdb3-493e-a875-0170ca050d8e" ],
+        "x-ms-routing-request-id": [ "WESTUS:20230620T002500Z:3c92d002-bdb3-493e-a875-0170ca050d8e" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 20 Jun 2023 00:25:00 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ],
+        "Content-Length": [ "153" ]
+      },
+      "Content": "{\"error\":{\"code\":\"ParentResourceNotFound\",\"message\":\"Can not perform requested operation on nested resource. Parent resource \u0027pwshRgkmyvux\u0027 not found.\"}}",
+      "isContentBase64": false
+    }
+  }
+}

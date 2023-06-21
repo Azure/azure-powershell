@@ -18,7 +18,7 @@ Describe 'New-AzDevCenterAdminEnvironmentType' {
     It 'CreateExpanded' {
         $tags = @{"dev" ="test"}
 
-        $envType = New-AzDevCenterAdminEnvironmentType -DevCenterName $env.resourceGroup -Name $env.envTypeNew -ResourceGroupName $env.resourceGroup -Tags $tags
+        $envType = New-AzDevCenterAdminEnvironmentType -DevCenterName $env.devCenterName -Name $env.envTypeNew -ResourceGroupName $env.resourceGroup -Tag $tags
         $envType.Name | Should -Be $env.environmentTypeName
         $envTypeTag = $env.Tag | ConvertTo-Json | ConvertFrom-Json
         $envTypeTag.Keys[0] | Should -Be "dev"
@@ -30,7 +30,7 @@ Describe 'New-AzDevCenterAdminEnvironmentType' {
         $tags = @{"dev" ="test"}
         $body = @{"Tag" = $tags}
 
-        $envType = New-AzDevCenterAdminEnvironmentType -DevCenterName $env.resourceGroup -Name $env.envTypeNew2 -ResourceGroupName $env.resourceGroup -Body $body
+        $envType = New-AzDevCenterAdminEnvironmentType -DevCenterName $env.devCenterName -Name $env.envTypeNew2 -ResourceGroupName $env.resourceGroup -Body $body
         $envType.Name | Should -Be $env.environmentTypeName
         $envTypeTag = $env.Tag | ConvertTo-Json | ConvertFrom-Json
         $envTypeTag.Keys[0] | Should -Be "dev"

@@ -1,13 +1,13 @@
 {
-  "Get-AzDevCenterAdminNetworkConnectionHealthDetail+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRgbfptry/providers/Microsoft.DevCenter/networkConnections/qu4rta/healthChecks/latest?api-version=2023-04-01+1": {
+  "Get-AzDevCenterAdminNetworkConnectionHealthDetail+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRgkmyvux/providers/Microsoft.DevCenter/networkConnections/z9frba/healthChecks/latest?api-version=2023-04-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRgbfptry/providers/Microsoft.DevCenter/networkConnections/qu4rta/healthChecks/latest?api-version=2023-04-01",
+      "RequestUri": "https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRgkmyvux/providers/Microsoft.DevCenter/networkConnections/z9frba/healthChecks/latest?api-version=2023-04-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "41" ],
-        "x-ms-client-request-id": [ "5bbee2d3-f8a2-4ca7-a484-31d4881c095e" ],
+        "x-ms-unique-id": [ "42" ],
+        "x-ms-client-request-id": [ "2ab99052-6f5b-495d-99e7-517412f055cd" ],
         "CommandName": [ "Get-AzDevCenterAdminNetworkConnectionHealthDetail" ],
         "FullCommandName": [ "Get-AzDevCenterAdminNetworkConnectionHealthDetail_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -22,24 +22,24 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11889" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11960" ],
         "x-ms-providerhub-traffic": [ "True" ],
         "X-Rate-Limit-Limit": [ "1m" ],
-        "X-Rate-Limit-Remaining": [ "294" ],
-        "X-Rate-Limit-Reset": [ "2023-06-15T23:53:45.7758010Z" ],
+        "X-Rate-Limit-Remaining": [ "298" ],
+        "X-Rate-Limit-Reset": [ "2023-06-20T00:19:11.5342198Z" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "916d6a0d-757f-45f4-b744-71432d2a5cce" ],
-        "x-ms-correlation-request-id": [ "b4de8e1c-443e-4850-92dd-d4c8f1b984df" ],
-        "x-ms-routing-request-id": [ "WESTUS:20230615T235301Z:b4de8e1c-443e-4850-92dd-d4c8f1b984df" ],
+        "x-ms-request-id": [ "86df3331-8fce-40e9-a767-070259dfe24a" ],
+        "x-ms-correlation-request-id": [ "b321fcad-7ff1-4214-8ae0-1ee646b2252c" ],
+        "x-ms-routing-request-id": [ "WESTUS:20230620T001814Z:b321fcad-7ff1-4214-8ae0-1ee646b2252c" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Thu, 15 Jun 2023 23:53:01 GMT" ]
+        "Date": [ "Tue, 20 Jun 2023 00:18:14 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "1229" ],
+        "Content-Length": [ "1515" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"properties\":{\"startDateTime\":\"2023-06-15T23:44:07.000000Z\",\"endDateTime\":\"2023-06-15T23:50:33.000000Z\",\"healthChecks\":[{\"status\":\"Passed\",\"displayName\":\"Azure tenant readiness\",\"startDateTime\":\"2023-06-15T23:44:08.258904Z\",\"endDateTime\":\"2023-06-15T23:45:12.802766Z\"},{\"status\":\"Passed\",\"displayName\":\"Azure virtual network readiness\",\"startDateTime\":\"2023-06-15T23:44:08.418052Z\",\"endDateTime\":\"2023-06-15T23:44:09.297958Z\"},{\"status\":\"Passed\",\"displayName\":\"Intune enrollment restrictions allow Windows enrollment\",\"startDateTime\":\"2023-06-15T23:44:08.622572Z\",\"endDateTime\":\"2023-06-15T23:44:08.967687Z\"},{\"status\":\"Passed\",\"displayName\":\"Azure subnet IP address usage\",\"startDateTime\":\"2023-06-15T23:44:09.476660Z\",\"endDateTime\":\"2023-06-15T23:44:09.570716Z\"},{\"status\":\"Passed\",\"displayName\":\"Endpoint connectivity\",\"startDateTime\":\"2023-06-15T23:49:29.000000Z\",\"endDateTime\":\"2023-06-15T23:49:51.000000Z\"},{\"status\":\"Passed\",\"displayName\":\"Localization language package readiness\",\"startDateTime\":\"2023-06-15T23:49:29.000000Z\",\"endDateTime\":\"2023-06-15T23:49:51.000000Z\"},{\"status\":\"Passed\",\"displayName\":\"UDP connection check\",\"startDateTime\":\"2023-06-15T23:49:54.000000Z\",\"endDateTime\":\"2023-06-15T23:49:55.000000Z\"}]}}",
+      "Content": "{\"properties\":{\"startDateTime\":\"2023-06-20T00:05:14.000000Z\",\"endDateTime\":\"2023-06-20T00:15:36.000000Z\",\"healthChecks\":[{\"status\":\"Passed\",\"displayName\":\"Azure tenant readiness\",\"startDateTime\":\"2023-06-20T00:05:15.837240Z\",\"endDateTime\":\"2023-06-20T00:10:29.783983Z\"},{\"status\":\"Passed\",\"displayName\":\"Azure virtual network readiness\",\"startDateTime\":\"2023-06-20T00:05:16.028776Z\",\"endDateTime\":\"2023-06-20T00:09:47.242413Z\"},{\"status\":\"Warning\",\"displayName\":\"Intune enrollment restrictions allow Windows enrollment\",\"startDateTime\":\"2023-06-20T00:05:16.309970Z\",\"endDateTime\":\"2023-06-20T00:09:46.970201Z\",\"errorType\":\"ResourceAvailabilityCheckNoIntuneReaderRoleError\",\"recommendedAction\":\"The application of Cloud PC First Party App doesn\u0027t have sufficient permissions on the device management configuration. Make sure that the application has device management configuration reader role.\"},{\"status\":\"Passed\",\"displayName\":\"Azure subnet IP address usage\",\"startDateTime\":\"2023-06-20T00:09:47.423978Z\",\"endDateTime\":\"2023-06-20T00:09:47.560378Z\"},{\"status\":\"Passed\",\"displayName\":\"Endpoint connectivity\",\"startDateTime\":\"2023-06-20T00:14:47.000000Z\",\"endDateTime\":\"2023-06-20T00:15:06.000000Z\"},{\"status\":\"Passed\",\"displayName\":\"Localization language package readiness\",\"startDateTime\":\"2023-06-20T00:14:47.000000Z\",\"endDateTime\":\"2023-06-20T00:15:06.000000Z\"},{\"status\":\"Passed\",\"displayName\":\"UDP connection check\",\"startDateTime\":\"2023-06-20T00:15:09.000000Z\",\"endDateTime\":\"2023-06-20T00:15:10.000000Z\"}]}}",
       "isContentBase64": false
     }
   }
