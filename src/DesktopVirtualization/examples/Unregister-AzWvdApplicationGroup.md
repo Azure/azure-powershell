@@ -1,18 +1,8 @@
-### Example 1: {{ Add title here }}
+### Example 1: Unregister an Application Group
 ```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+Unregister-AzWvdApplicationGroup -ResourceGroupName ResourceGroupName `
+                                    -WorkspaceName WorkspaceName `
+                                    -ApplicationGroupPath '/subscriptions/SubscriptionId/resourceGroups/ResourceGroupName/providers/Microsoft.DesktopVirtualization/applicationGroups/ApplicationGroupName'
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+This command unregisters an Application Group from a Workspace

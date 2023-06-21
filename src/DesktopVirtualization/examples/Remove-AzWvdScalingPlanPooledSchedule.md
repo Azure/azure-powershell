@@ -1,18 +1,6 @@
-### Example 1: {{ Add title here }}
+### Example 1: Delete a Pooled Schedule 
 ```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+Remove-AzWvdScalingPlanPooledSchedule -ResourceGroupName rgName -ScalingPlanName spName -ScalingPlanScheduleName scheduleName
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+Remove a Pooled Schedule from a Scaling Plan
