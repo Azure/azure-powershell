@@ -25,7 +25,7 @@ using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Management.PowerBIEmbedded.WorkspaceCollection
 {
-    [CmdletDeprecation()]
+    [CmdletDeprecationWithVersion("11.0.0", "2.0.0")]
     [Cmdlet("Reset", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PowerBIWorkspaceCollectionAccessKey", SupportsShouldProcess = true), OutputType(typeof(PSWorkspaceCollectionAccessKey))]
     [Alias("Reset-AzPowerBIWorkspaceCollectionAccessKeys")]
     public class ResetWorkspaceCollectionAccessKeys : WorkspaceCollectionBaseCmdlet

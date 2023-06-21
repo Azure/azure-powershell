@@ -20,7 +20,7 @@ using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Management.PowerBIEmbedded.WorkspaceCollection
 {
-    [CmdletDeprecation()]
+    [CmdletDeprecationWithVersion("11.0.0", "2.0.0")]
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PowerBIWorkspaceCollectionAccessKey"), OutputType(typeof(PSWorkspaceCollectionAccessKey))]
     [Alias("Get-AzPowerBIWorkspaceCollectionAccessKeys")]
     public class GetWorkspaceCollectionAccessKeys : WorkspaceCollectionBaseCmdlet

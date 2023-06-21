@@ -54,8 +54,8 @@ using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [GenericBreakingChange("Consider using the image alias including the version of the distribution you want to use in the \"-Image\" parameter of the \"New-AzVM\" cmdlet. On April 30, 2023, the image deployed using `UbuntuLTS` will reach its end of life. In October 2023, the aliases `UbuntuLTS`, `CentOS`, `Debian`, and `RHEL` will be removed.")]
-    [GenericBreakingChange("Starting in November 2023 the \"New-AzVM\" cmdlet will deploy with the Trusted Launch configuration by default. To know more about Trusted Launch, please visit https://docs.microsoft.com/en-us/azure/virtual-machines/trusted-launch")]
+    [GenericBreakingChangeWithVersion("Consider using the image alias including the version of the distribution you want to use in the \"-Image\" parameter of the \"New-AzVM\" cmdlet. On April 30, 2023, the image deployed using `UbuntuLTS` will reach its end of life. In October 2023, the aliases `UbuntuLTS`, `CentOS`, `Debian`, and `RHEL` will be removed.", "11.0.0", "7.0.0")]
+    [GenericBreakingChangeWithVersion("Starting in November 2023 the \"New-AzVM\" cmdlet will deploy with the Trusted Launch configuration by default. To know more about Trusted Launch, please visit https://docs.microsoft.com/en-us/azure/virtual-machines/trusted-launch", "11.0.0", "7.0.0")]
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VM", SupportsShouldProcess = true, DefaultParameterSetName = "SimpleParameterSet")]
     [OutputType(typeof(PSAzureOperationResponse), typeof(PSVirtualMachine))]
     public class NewAzureVMCommand : VirtualMachineBaseCmdlet

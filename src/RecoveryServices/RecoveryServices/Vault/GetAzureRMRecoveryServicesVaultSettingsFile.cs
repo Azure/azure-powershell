@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// <summary>
         /// Gets or sets Certificate.
         /// </summary>
-        [CmdletParameterBreakingChange("Certificate", ChangeDescription = "Parameter is being deprecated without being replaced")]
+        [CmdletParameterBreakingChangeWithVersion("Certificate", ChangeDescription = "Parameter is being deprecated without being replaced", "11.0.0", "7.0.0")]
         [Parameter(ParameterSetName = ARSParameterSets.ForSiteWithCertificate, Mandatory = false)]
         [Parameter(ParameterSetName = ARSParameterSets.ByDefaultWithCertificate, Mandatory = false)]
         [Parameter(ParameterSetName = ARSParameterSets.ForBackupVaultTypeWithCertificate, Mandatory = false)]

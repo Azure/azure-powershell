@@ -20,7 +20,7 @@ using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Management.PowerBIEmbedded.WorkspaceCollection
 {
-    [CmdletDeprecation()]
+    [CmdletDeprecationWithVersion("11.0.0", "2.0.0")]
     [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PowerBIWorkspaceCollection", SupportsShouldProcess = true), OutputType(typeof(void))]
     public class RemoveWorkspaceCollection : WorkspaceCollectionBaseCmdlet
     {
