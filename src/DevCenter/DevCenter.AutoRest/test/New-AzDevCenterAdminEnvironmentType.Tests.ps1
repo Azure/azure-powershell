@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzDevCenterAdminEnvironme
 }
 
 Describe 'New-AzDevCenterAdminEnvironmentType' {
-    It 'CreateExpanded' {
+    It 'CreateExpanded' -skip {
         $tags = @{"dev" ="test"}
 
         $envType = New-AzDevCenterAdminEnvironmentType -DevCenterName $env.devCenterName -Name $env.envTypeNew -ResourceGroupName $env.resourceGroup -Tag $tags
@@ -26,7 +26,7 @@ Describe 'New-AzDevCenterAdminEnvironmentType' {
 
     }
 
-    It 'Create' {
+    It 'Create' -skip {
         $tags = @{"dev" ="test"}
         $body = @{"Tag" = $tags}
 

@@ -13,8 +13,8 @@ if (($null -eq $TestName) -or ($TestName -contains 'New-AzDevCenterAdminSchedule
     . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'New-AzDevCenterAdminSchedule' -skip {
-    It 'CreateExpanded' {
+Describe 'New-AzDevCenterAdminSchedule' {
+    It 'CreateExpanded' -skip {
         $schedule = New-AzDevCenterAdminSchedule -PoolName $env.poolForScheduleNew -ProjectName $env.projectName -ResourceGroupName $env.resourceGroup -State "Enabled" -Time $env.time -TimeZone $env.timeZone
         $schedule.Frequency | Should -Be "Daily"
         $schedule.Name | Should -Be "default"

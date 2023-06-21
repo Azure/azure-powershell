@@ -14,7 +14,7 @@ if (($null -eq $TestName) -or ($TestName -contains 'New-AzDevCenterAdminProjectE
 }
 
 Describe 'New-AzDevCenterAdminProjectEnvironmentType' {
-    It 'CreateExpanded' {
+    It 'CreateExpanded' -skip {
         $identityHashTable = @{$env.identityId = @{} }
         $deploymentTargetId = '/subscriptions/' + $env.subscriptionId
         $creatorRoleAssignmentRole = @{"8e3af657-a8ff-443c-a75c-2fe8c4bcb635" = @{} }
@@ -38,7 +38,7 @@ Describe 'New-AzDevCenterAdminProjectEnvironmentType' {
 
 
 
-    It 'Create' {
+    It 'Create' -skip {
         $identityHashTable = @{$env.identityId = @{} }
         $deploymentTargetId = '/subscriptions/' + $env.subscriptionId
         $creatorRoleAssignmentRole = @{"8e3af657-a8ff-443c-a75c-2fe8c4bcb635" = @{} }

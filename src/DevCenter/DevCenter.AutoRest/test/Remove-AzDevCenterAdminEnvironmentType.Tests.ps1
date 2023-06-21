@@ -14,8 +14,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzDevCenterAdminEnviro
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Remove-AzDevCenterAdminEnvironmentType' -skip {
-    It 'Delete' {
+Describe 'Remove-AzDevCenterAdminEnvironmentType' {
+    It 'Delete' -skip {
         Remove-AzDevCenterAdminEnvironmentType -ResourceGroupName $env.resourceGroup -DevCenterName $env.devCenterName -Name $env.environmentTypeNameDelete 
         { Get-AzDevCenterAdminEnvironmentType -ResourceGroupName $env.resourceGroup -DevCenterName $env.devCenterName -Name $env.environmentTypeNameDelete } | Should -Throw
   

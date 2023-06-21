@@ -14,8 +14,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzDevCenterAdminGallery')
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'New-AzDevCenterAdminGallery' -skip {
-    It 'CreateExpanded' {
+Describe 'New-AzDevCenterAdminGallery' {
+    It 'CreateExpanded' -skip {
         $gallery = New-AzDevCenterAdminGallery -DevCenterName $env.devCenterName -Name $env.galleryNew -ResourceGroupName $env.resourceGroup -GalleryResourceId $env.sigId4
         $gallery.Name | Should -Be $env.galleryNew
         $gallery.ResourceId | Should -Be $env.sigId4

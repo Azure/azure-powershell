@@ -13,7 +13,7 @@ if (($null -eq $TestName) -or ($TestName -contains 'Remove-AzDevCenterAdminGalle
     . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Remove-AzDevCenterAdminGallery' -skip {
+Describe 'Remove-AzDevCenterAdminGallery' {
     It 'Delete' -skip {
         Remove-AzDevCenterAdminGallery -ResourceGroupName $env.resourceGroup -DevCenterName $env.devCenterName -Name $env.galleryNameDelete
         { Get-AzDevCenterAdminGallery -ResourceGroupName $env.resourceGroup -DevCenterName $env.devCenterName -Name $env.galleryNameDelete } | Should -Throw

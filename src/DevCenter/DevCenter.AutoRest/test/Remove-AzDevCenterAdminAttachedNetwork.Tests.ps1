@@ -14,8 +14,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzDevCenterAdminAttach
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Remove-AzDevCenterAdminAttachedNetwork' -skip {
-    It 'Delete' {
+Describe 'Remove-AzDevCenterAdminAttachedNetwork' {
+    It 'Delete' -skip {
         Remove-AzDevCenterAdminAttachedNetwork -ConnectionName $env.attachedNetworkNameDelete -DevCenterName $env.devCenterName -ResourceGroupName $env.resourceGroup
         { Get-AzDevCenterAdminAttachedNetwork -ConnectionName $env.attachedNetworkNameDelete -DevCenterName $env.devCenterName -ResourceGroupName $env.resourceGroup  } | Should -Throw
 

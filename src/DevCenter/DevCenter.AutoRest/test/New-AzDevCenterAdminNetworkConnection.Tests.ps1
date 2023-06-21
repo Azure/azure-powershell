@@ -14,8 +14,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzDevCenterAdminNetworkCo
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'New-AzDevCenterAdminNetworkConnection' -skip {
-    It 'CreateExpanded' {
+Describe 'New-AzDevCenterAdminNetworkConnection' {
+    It 'CreateExpanded' -skip {
         $networkConnection = New-AzDevCenterAdminNetworkConnection -Name $env.networkConnectionNew -ResourceGroupName $env.resourceGroup -Location $env.location -DomainJoinType $env.aadJoinType -NetworkingResourceGroupName $env.networkingRgName1 -SubnetId $env.SubnetId
         $networkConnection.DomainJoinType | Should -Be $env.aadJoinType
         $networkConnection.Name | Should -Be $env.networkConnectionNew
