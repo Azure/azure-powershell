@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Azure.Deployments.Templates.Engines;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
@@ -295,9 +296,9 @@ namespace Microsoft.Azure.Commands.Resources.Test
 
         /// <summary>
         /// When deployments are created using a template spec, the dynamic parameters are
-        /// resolved by reading the parameters from the template spec version's template body. 
+        /// resolved by reading the parameters from the template spec version's template body.
         /// Previously a bug was present that prevented successful dynamic parameter resolution
-        /// if the template spec existed in a subscription outside the current subscription 
+        /// if the template spec existed in a subscription outside the current subscription
         /// context. This test validates dynamic parameter resolution works for deployments using
         /// cross-subscription template specs.
         /// </summary>
@@ -321,7 +322,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
                 : templateFile; // Windows based (already valid)
 
             var templateContentForTest = File.ReadAllText(normalizedTemplateFilePath);
-            var template = JsonConvert.DeserializeObject<TemplateFile>(templateContentForTest);
+            var template = TemplateEngine.ParseTemplate(templateContentForTest);
 
             templateSpecsVersionOperationsMock.Setup(f => f.GetWithHttpMessagesAsync(
                     templateSpecRGName,

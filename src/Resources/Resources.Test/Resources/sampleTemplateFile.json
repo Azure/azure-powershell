@@ -1,5 +1,6 @@
 {
-    "schemaVersion": "2014-01.1.0-preview",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
     "parameters": {
         "string": {
             "type": "string"
@@ -48,7 +49,7 @@
                 "location": "West US"
             }
         }
-    },    
+    },
     "resources": [
         {
             "name": "resource1",
@@ -66,7 +67,7 @@
                     },
                     "dependsOn": [
                         "ResourceProviderTestHost/TestResourceType/resource2"
-                    ]                    
+                    ]
                 }
             ]
         },
