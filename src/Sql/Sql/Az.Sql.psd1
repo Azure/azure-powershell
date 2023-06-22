@@ -77,7 +77,6 @@ FunctionsToExport = @()
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 CmdletsToExport = 'Invoke-AzSqlServerExternalGovernanceStatusRefresh', 
                'Get-AzSqlDatabaseTransparentDataEncryption', 
-               'Get-AzSqlDatabaseTransparentDataEncryptionActivity', 
                'Set-AzSqlDatabaseTransparentDataEncryption', 
                'Get-AzSqlDatabaseUpgradeHint', 'Get-AzSqlServerUpgradeHint', 
                'Get-AzSqlServerServiceObjective', 
@@ -303,7 +302,15 @@ CmdletsToExport = 'Invoke-AzSqlServerExternalGovernanceStatusRefresh',
                'Set-AzSqlServerConfigurationOption', 
                'Enable-AzSqlInstanceDatabaseLedgerDigestUpload', 
                'Disable-AzSqlInstanceDatabaseLedgerDigestUpload', 
-               'Get-AzSqlInstanceDatabaseLedgerDigestUpload'
+               'Get-AzSqlInstanceDatabaseLedgerDigestUpload',
+               'Copy-AzSqlInstanceDatabase',
+               'Move-AzSqlInstanceDatabase',
+               'Complete-AzSqlInstanceDatabaseMove',
+               'Complete-AzSqlInstanceDatabaseCopy',
+               'Stop-AzSqlInstanceDatabaseMove',
+               'Stop-AzSqlInstanceDatabaseCopy',
+               'Get-AzSqlInstanceDatabaseCopyOperation',
+               'Get-AzSqlInstanceDatabaseMoveOperation'
 
 # Variables to export from this module
 # VariablesToExport = @()

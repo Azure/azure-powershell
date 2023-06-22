@@ -89,6 +89,9 @@ Creates a database input object that contains information about source and targe
 ### [New-AzDataMigrationService](New-AzDataMigrationService.md)
 Creates a new instance of the Azure Database Migration Service (classic).
 
+### [New-AzDataMigrationSqlServerSchema](New-AzDataMigrationSqlServerSchema.md)
+Migrate Sql Server Schema from the source Sql Servers to the target Azure Sql Servers.
+
 ### [New-AzDataMigrationSqlService](New-AzDataMigrationSqlService.md)
 Create or Update Database Migration Service.
 

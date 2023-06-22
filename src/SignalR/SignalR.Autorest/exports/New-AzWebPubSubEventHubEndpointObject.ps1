@@ -26,7 +26,7 @@ $eventHub
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.EventHubEndpoint
 .Link
-https://learn.microsoft.com/powershell/module/az./new-AzWebPubSubEventHubEndpointObject
+https://learn.microsoft.com/powershell/module/az.signalr/new-azwebpubsubeventhubendpointobject
 #>
 function New-AzWebPubSubEventHubEndpointObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.EventHubEndpoint])]
@@ -55,7 +55,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
         }         
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {

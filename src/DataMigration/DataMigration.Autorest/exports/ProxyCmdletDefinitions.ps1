@@ -5151,11 +5151,161 @@ end {
 
 <#
 .Synopsis
+Migrate Sql Server Schema from the source Sql Servers to the target Azure Sql Servers.
+.Description
+Migrate Sql Server Schema from the source Sql Servers to the target Azure Sql Servers.
+.Example
+New-AzDataMigrationSqlServerSchema -Action "MigrateSchema" -SourceConnectionString "Server=;Initial Catalog=;User ID=;Password=" -TargetConnectionString "Server=;Initial Catalog=;User ID=;Password=" 
+.Example
+New-AzDataMigrationSqlServerSchema -Action "GenerateScript" -SourceConnectionString "Server=;Initial Catalog=;User ID=;Password=" -TargetConnectionString "Server=;Initial Catalog=;User ID=;Password=" -OutputFolder "C:\OutputFolder"
+.Example
+New-AzDataMigrationSqlServerSchema -Action "DeploySchema" -SourceConnectionString "Server=;Initial Catalog=;User ID=;Password=" -TargetConnectionString "Server=;Initial Catalog=;User ID=;Password=" -InputScriptFilePath "C:\OutputFolder\script.sql"
+.Example
+New-AzDataMigrationSqlServerSchema -ConfigFilePath "C:\configfile.json"
+
+.Outputs
+System.Boolean
+.Link
+https://learn.microsoft.com/powershell/module/az.datamigration/new-azdatamigrationsqlserverschema
+#>
+function New-AzDataMigrationSqlServerSchema {
+[OutputType([System.Boolean])]
+[CmdletBinding(DefaultParameterSetName='ConfigFile', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='CommandLine', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Category('Body')]
+    [System.String]
+    # Required.
+    # Select one schema migration action.
+    # The valid values are: MigrateSchema, GenerateScript, DeploySchema.
+    # MigrateSchema is to migrate the database objects to Azure SQL Database target.
+    # GenerateScript is to generate an editable TSQL schema script that can be used to run on the target to deploy the objects.
+    # DeploySchema is to run the TSQL script generated from -GenerateScript action on the target to deploy the objects.
+    ${Action},
+
+    [Parameter(ParameterSetName='CommandLine', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Category('Body')]
+    [System.String]
+    # Required.
+    # Connection string for the source SQL instance, using the formal connection string format.
+    ${SourceConnectionString},
+
+    [Parameter(ParameterSetName='CommandLine', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Category('Body')]
+    [System.String]
+    # Required.
+    # Connection string for the target SQL instance, using the formal connection string format.
+    ${TargetConnectionString},
+
+    [Parameter(ParameterSetName='CommandLine')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Category('Body')]
+    [System.String]
+    # Optional.
+    # Location of an editable TSQL schema script.
+    # Use this parameter only with DeploySchema Action.
+    ${InputScriptFilePath},
+
+    [Parameter(ParameterSetName='CommandLine')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Category('Body')]
+    [System.String]
+    # Optional.
+    # Default: %LocalAppData%/Microsoft/SqlSchemaMigrations) Folder where logs will be written and the generated TSQL schema script by GenerateScript Action.
+    ${OutputFolder},
+
+    [Parameter(ParameterSetName='ConfigFile', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Category('Body')]
+    [System.String]
+    # Path of the ConfigFile
+    ${ConfigFilePath},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    ${PassThru}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.DataMigration.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            CommandLine = 'Az.DataMigration.custom\New-AzDataMigrationSqlServerSchema';
+            ConfigFile = 'Az.DataMigration.custom\New-AzDataMigrationSqlServerSchema';
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.DataMigration.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
 Migrate TDE certificate(s) from source SQL Server to the target Azure SQL Server.
 .Description
 Migrate TDE certificate(s) from source SQL Server to the target Azure SQL Server.
 .Example
-New-AzDataMigrationTdeCertificateMigration -SourceSqlConnectionString $SourceSqlConnectionString -TargetSubscriptionId "00000000-0000-0000-0000-000000000000" -TargetResourceGroupName "ResourceGroupName" -TargetManagedInstanceName "TargetManagedInstanceName" -NetworkSharePath "\\NetworkShare\Folder" -NetworkShareDomain "NetworkShare" -NetworkShareUserName "NetworkShareUserName" -NetworkSharePassword $NetworkSharePassword -DatabaseName "TdeDb_0", "TdeDb_1", "TdeDb_2"
+New-AzDataMigrationTdeCertificateMigration -SourceSqlConnectionString "data source=servername;user id=userid;password=;initial catalog=master;TrustServerCertificate=True" -TargetSubscriptionId "00000000-0000-0000-0000-000000000000" -TargetResourceGroupName "ResourceGroupName" -TargetManagedInstanceName "TargetManagedInstanceName" -NetworkSharePath "\\NetworkShare\Folder" -NetworkShareDomain "NetworkShare" -NetworkShareUserName "NetworkShareUserName" -NetworkSharePassword "NetworkSharePassword" -DatabaseName "TdeDb_0", "TdeDb_1", "TdeDb_2"
 
 .Outputs
 System.Boolean

@@ -475,6 +475,9 @@
   <data name="DeploymentOperationOuterError" xml:space="preserve">
     <value>The deployment '{0}' failed with error(s). Showing {1} out of {2} error(s).</value>
   </data>
+  <data name="DeploymentStackOperationOuterError" xml:space="preserve">
+    <value>The deployment '{0}' failed with error(s). Showing {1} out of {2} error(s).</value>
+  </data>
   <data name="DeploymentOperationErrorMessageNoDetails" xml:space="preserve">
     <value>{0} (Code:{1})</value>
   </data>

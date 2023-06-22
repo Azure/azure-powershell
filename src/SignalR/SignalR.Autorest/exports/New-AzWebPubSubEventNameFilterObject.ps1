@@ -26,7 +26,7 @@ $filter
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.EventNameFilter
 .Link
-https://learn.microsoft.com/powershell/module/az./new-AzWebPubSubEventNameFilterObject
+https://learn.microsoft.com/powershell/module/az.signalr/new-azwebpubsubeventnamefilterobject
 #>
 function New-AzWebPubSubEventNameFilterObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.EventNameFilter])]
@@ -63,7 +63,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
         }         
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {

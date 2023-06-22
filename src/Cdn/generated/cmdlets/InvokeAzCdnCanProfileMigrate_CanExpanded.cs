@@ -16,7 +16,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Cmdlets
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsLifecycle.Invoke, @"AzCdnCanProfileMigrate_CanExpanded", SupportsShouldProcess = true)]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.ICanMigrateResult))]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ICanMigrateResult))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.Description(@"Checks if CDN profile can be migrated to Azure Frontdoor(Standard/Premium) profile.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.Generated]
     public partial class InvokeAzCdnCanProfileMigrate_CanExpanded : global::System.Management.Automation.PSCmdlet,
@@ -32,12 +32,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Cmdlets
         private string __processRecordId;
 
         /// <summary>Request body for CanMigrate operation.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.ICanMigrateParameters _canMigrateParametersBody = new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.CanMigrateParameters();
+        private Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ICanMigrateParameters _canMigrateParametersBody = new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.CanMigrateParameters();
 
         /// <summary>
         /// The <see cref="global::System.Threading.CancellationTokenSource" /> for this operation.
         /// </summary>
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
+
+        /// <summary>when specified, runs this cmdlet as a PowerShell job</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Run the command as a job")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.ParameterCategory.Runtime)]
+        public global::System.Management.Automation.SwitchParameter AsJob { get; set; }
 
         /// <summary>Wait for .NET debugger to attach</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "Wait for .NET debugger to attach")]
@@ -90,6 +95,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Cmdlets
 
         /// <summary><see cref="Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener" /> cancellation token.</summary>
         global::System.Threading.CancellationToken Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener.Token => _cancellationTokenSource.Token;
+
+        /// <summary>
+        /// when specified, will make the remote call, and return an AsyncOperationResponse, letting the remote operation continue
+        /// asynchronously.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Run the command asynchronously")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.ParameterCategory.Runtime)]
+        public global::System.Management.Automation.SwitchParameter NoWait { get; set; }
 
         /// <summary>
         /// The instance of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.HttpPipeline" /> that the remote call will use.
@@ -149,24 +162,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Cmdlets
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IErrorResponse</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IErrorResponse</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onDefault method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// <c>overrideOnOk</c> will be called before the regular onOk has been processed, allowing customization of what happens
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.ICanMigrateResult">Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.ICanMigrateResult</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ICanMigrateResult">Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ICanMigrateResult</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.ICanMigrateResult> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ICanMigrateResult> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -184,6 +197,29 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Cmdlets
                 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.AttachDebugger.Break();
             }
             ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.CmdletBeginProcessing).Wait(); if( ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
+        }
+
+        /// <summary>Creates a duplicate instance of this cmdlet (via JSON serialization).</summary>
+        /// <returns>a duplicate instance of InvokeAzCdnCanProfileMigrate_CanExpanded</returns>
+        public Microsoft.Azure.PowerShell.Cmdlets.Cdn.Cmdlets.InvokeAzCdnCanProfileMigrate_CanExpanded Clone()
+        {
+            var clone = new InvokeAzCdnCanProfileMigrate_CanExpanded();
+            clone.__correlationId = this.__correlationId;
+            clone.__processRecordId = this.__processRecordId;
+            clone.DefaultProfile = this.DefaultProfile;
+            clone.InvocationInformation = this.InvocationInformation;
+            clone.Proxy = this.Proxy;
+            clone.Pipeline = this.Pipeline;
+            clone.AsJob = this.AsJob;
+            clone.Break = this.Break;
+            clone.ProxyCredential = this.ProxyCredential;
+            clone.ProxyUseDefaultCredentials = this.ProxyUseDefaultCredentials;
+            clone.HttpPipelinePrepend = this.HttpPipelinePrepend;
+            clone.HttpPipelineAppend = this.HttpPipelineAppend;
+            clone._canMigrateParametersBody = this._canMigrateParametersBody;
+            clone.ResourceGroupName = this.ResourceGroupName;
+            clone.SubscriptionId = this.SubscriptionId;
+            return clone;
         }
 
         /// <summary>Performs clean-up after the command execution</summary>
@@ -230,8 +266,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Cmdlets
                     }
                     case Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.Information:
                     {
-                        var data = messageData();
-                        WriteInformation(data.Message, new string[]{});
+                        // When an operation supports asjob, Information messages must go thru verbose.
+                        WriteVerbose($"INFORMATION: {(messageData().Message ?? global::System.String.Empty)}");
                         return ;
                     }
                     case Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.Debug:
@@ -243,6 +279,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Cmdlets
                     {
                         WriteError(new global::System.Management.Automation.ErrorRecord( new global::System.Exception(messageData().Message), string.Empty, global::System.Management.Automation.ErrorCategory.NotSpecified, null ) );
                         return ;
+                    }
+                    case Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.DelayBeforePolling:
+                    {
+                        if (true == MyInvocation?.BoundParameters?.ContainsKey("NoWait"))
+                        {
+                            var data = messageData();
+                            if (data.ResponseMessage is System.Net.Http.HttpResponseMessage response)
+                            {
+                                var asyncOperation = response.GetFirstHeader(@"Azure-AsyncOperation");
+                                var location = response.GetFirstHeader(@"Location");
+                                var uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? response.RequestMessage.RequestUri.AbsoluteUri : location : asyncOperation;
+                                WriteObject(new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.PowerShell.AsyncOperationResponse { Target = uri });
+                                // do nothing more.
+                                data.Cancel();
+                                return;
+                            }
+                        }
+                        break;
                     }
                 }
                 await Microsoft.Azure.PowerShell.Cmdlets.Cdn.Module.Instance.Signal(id, token, messageData, (i,t,m) => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener)this).Signal(i,t,()=> Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.EventDataConverter.ConvertFrom( m() ) as Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.EventData ), InvocationInformation, this.ParameterSetName, __correlationId, __processRecordId, null );
@@ -264,9 +318,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Cmdlets
                 // work
                 if (ShouldProcess($"Call remote 'ProfilesCanMigrate' operation"))
                 {
-                    using( var asyncCommandRuntime = new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.PowerShell.AsyncCommandRuntime(this, ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener)this).Token) )
+                    if (true == MyInvocation?.BoundParameters?.ContainsKey("AsJob"))
                     {
-                        asyncCommandRuntime.Wait( ProcessRecordAsync(),((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener)this).Token);
+                        var instance = this.Clone();
+                        var job = new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.PowerShell.AsyncJob(instance, this.MyInvocation.Line, this.MyInvocation.MyCommand.Name, this._cancellationTokenSource.Token, this._cancellationTokenSource.Cancel);
+                        JobRepository.Add(job);
+                        var task = instance.ProcessRecordAsync();
+                        job.Monitor(task);
+                        WriteObject(job);
+                    }
+                    else
+                    {
+                        using( var asyncCommandRuntime = new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.PowerShell.AsyncCommandRuntime(this, ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener)this).Token) )
+                        {
+                            asyncCommandRuntime.Wait( ProcessRecordAsync(),((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener)this).Token);
+                        }
                     }
                 }
             }
@@ -342,12 +408,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Cmdlets
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IErrorResponse</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IErrorResponse</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IErrorResponse> response)
+        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IErrorResponse> response)
         {
             using( NoSynchronizationContext )
             {
@@ -364,7 +430,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Cmdlets
                 if ((null == code || null == message))
                 {
                     // Unrecognized Response. Create an error record based on what we have.
-                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IErrorResponse>(responseMessage, await response);
+                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IErrorResponse>(responseMessage, await response);
                     WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { ResourceGroupName=ResourceGroupName, SubscriptionId=SubscriptionId, body=_canMigrateParametersBody })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
@@ -382,12 +448,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.ICanMigrateResult">Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.ICanMigrateResult</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ICanMigrateResult">Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ICanMigrateResult</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.ICanMigrateResult> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ICanMigrateResult> response)
         {
             using( NoSynchronizationContext )
             {
@@ -399,7 +465,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.ICanMigrateResult
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ICanMigrateResult
                 WriteObject((await response));
             }
         }

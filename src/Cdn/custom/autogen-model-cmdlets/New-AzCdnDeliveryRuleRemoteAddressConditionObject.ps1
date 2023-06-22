@@ -21,12 +21,12 @@ Create an in-memory object for DeliveryRuleRemoteAddressCondition.
 Create an in-memory object for DeliveryRuleRemoteAddressCondition.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.DeliveryRuleRemoteAddressCondition
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.DeliveryRuleRemoteAddressCondition
 .Link
 https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzCdnDeliveryRuleRemoteAddressConditionObject
 #>
 function New-AzCdnDeliveryRuleRemoteAddressConditionObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.DeliveryRuleRemoteAddressCondition')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.DeliveryRuleRemoteAddressCondition')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -51,7 +51,7 @@ function New-AzCdnDeliveryRuleRemoteAddressConditionObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.DeliveryRuleRemoteAddressCondition]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.DeliveryRuleRemoteAddressCondition]::New()
 
         if ($PSBoundParameters.ContainsKey('ParameterMatchValue')) {
             $Object.ParameterMatchValue = $ParameterMatchValue

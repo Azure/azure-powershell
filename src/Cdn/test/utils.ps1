@@ -33,7 +33,7 @@ function setupEnv() {
 
     $env.Add("ResourceGroupName", $resourceGroupName)
 
-    ## Create profile, Standard Verizon SKU
+    # Create profile, Standard Verizon SKU
     $verizonCdnProfileName = 'p-' + (RandomString -allChars $false -len 6);
     Write-Host -ForegroundColor Green "Start to create Standard_Verizon SKU profile : $($verizonCdnProfileName)"    
     New-AzCdnProfile -SkuName "Standard_Verizon" -Name $verizonCdnProfileName -ResourceGroupName $resourceGroupName -Location Global | Out-Null

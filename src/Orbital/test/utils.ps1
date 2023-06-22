@@ -19,16 +19,16 @@ function setupEnv() {
     $env.SubscriptionId = (Get-AzContext).Subscription.Id
     $env.Tenant = (Get-AzContext).Tenant.Id
 
-    $spacecraftName = "AQUA"
+    $spacecraftName = "AQUA-Test"
     $env.Add("spacecraftName", $spacecraftName)
 
-    $spacecraftContact = "azps-orbital-contact"
+    $spacecraftContact = "azps-orbital-testspacecraftContact"
     $env.Add("spacecraftContact", $spacecraftContact)
 
     $contactProfile = "azps-orbital-contactprofile"
     $env.Add("contactProfile", $contactProfile)
 
-    $eventhub = "eventhub-test-0721"
+    $eventhub = "eventhub-test-0505"
     $env.Add("eventhub", $eventhub)
 
     $virtualnetwork = "orbital-virtualnetwork"
@@ -42,6 +42,20 @@ function setupEnv() {
     $resourceGroup = "azpstest-gp"
     $env.Add("resourceGroup", $resourceGroup)
 
+    $contactProfileSweden = "Sweden-contactprofile"
+    $env.Add("contactProfileSweden", $contactProfileSweden)
+
+    $virtualnetworkSweden = "Sweden-virtualnetwork"
+    $env.Add("virtualnetworkSweden", $virtualnetworkSweden)
+
+    $env.Add("locationSweden", "SwedenCentral")
+
+    $spacecraftNameSweden = "SwedenAQUASpacecraft"
+    $env.Add("spacecraftNameSweden", $spacecraftNameSweden)
+
+    $groundStationName = "Microsoft_Gavle"
+    $env.Add("groundStationName", $groundStationName)
+
     # For any resources you created for test, you should add it to $env here.
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {
@@ -51,5 +65,6 @@ function setupEnv() {
 }
 function cleanupEnv() {
     # Clean resources you create for testing
+    #Remove-AzOrbitalContactProfile -Name azps-orbital-contactprofile -ResourceGroupName azpstest-gp
 }
 
