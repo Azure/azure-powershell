@@ -26,9 +26,6 @@ Get Deployment of a Cognitive Services account
 ### [Get-AzCognitiveServicesAccountKey](Get-AzCognitiveServicesAccountKey.md)
 Gets the API keys for an account.
 
-### [Get-AzCognitiveServicesAccountModel](Get-AzCognitiveServicesAccountModel.md)
-Get Models available for a Cognitive Services account
-
 ### [Get-AzCognitiveServicesAccountNetworkRuleSet](Get-AzCognitiveServicesAccountNetworkRuleSet.md)
 Get the NetworkRule property of a Cognitive Services account
 
@@ -37,9 +34,6 @@ Gets the available SKUs for an account.
 
 ### [Get-AzCognitiveServicesAccountType](Get-AzCognitiveServicesAccountType.md)
 Gets the available Cognitive Services Account Types.
-
-### [Get-AzCognitiveServicesAccountUsage](Get-AzCognitiveServicesAccountUsage.md)
-Get current usages for a Cognitive Services account.
 
 ### [Get-AzCognitiveServicesCommitmentPlan](Get-AzCognitiveServicesCommitmentPlan.md)
 Get Cognitive Services Commitment Plan
