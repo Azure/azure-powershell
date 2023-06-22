@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="statusCode">Status code of the application gateway
         /// custom error. Possible values include: 'HttpStatus400',
         /// 'HttpStatus403', 'HttpStatus404', 'HttpStatus405', 'HttpStatus408',
-        /// 'HttpStatus499', 'HttpStatus500', 'HttpStatus502', 'HttpStatus503',
+        /// 'HttpStatus500', 'HttpStatus502', 'HttpStatus503',
         /// 'HttpStatus504'</param>
         /// <param name="customErrorPageUrl">Error page URL of the application
         /// gateway custom error.</param>
@@ -53,8 +53,8 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <summary>
         /// Gets or sets status code of the application gateway custom error.
         /// Possible values include: 'HttpStatus400', 'HttpStatus403',
-        /// 'HttpStatus404', 'HttpStatus405', 'HttpStatus408', 'HttpStatus499',
-        /// 'HttpStatus500', 'HttpStatus502', 'HttpStatus503', 'HttpStatus504'
+        /// 'HttpStatus404', 'HttpStatus405', 'HttpStatus408', 'HttpStatus500',
+        /// 'HttpStatus502', 'HttpStatus503', 'HttpStatus504'
         /// </summary>
         [JsonProperty(PropertyName = "statusCode")]
         public string StatusCode { get; set; }

@@ -1778,6 +1778,7 @@ function Test-AzureFirewallSnat {
     $vnetName = Get-ResourceName
     $privateRange = @("3.3.0.0/24", "98.0.0.0/8","10.227.16.0/20")
     $privateRange2 = @("0.0.0.0/0", "66.92.0.0/16")
+    $emptyPrivateRange = @()
    
     try {
         
@@ -1801,7 +1802,7 @@ function Test-AzureFirewallSnat {
         Assert-AreEqualArray $privateRange $getAzureFirewallPolicy.Snat.PrivateRanges
         Assert-AreEqual "Enabled" $getAzureFirewallPolicy.Snat.AutoLearnPrivateRanges
 
-        # Modify
+         # Modify
         $snat = New-AzFirewallPolicySnat -PrivateRange $privateRange2
         # Set AzureFirewallPolicy
         $azureFirewallPolicy.Snat = $snat
@@ -1811,6 +1812,13 @@ function Test-AzureFirewallSnat {
         Assert-NotNull $policy.Snat
         Assert-AreEqualArray $privateRange2 $policy.Snat.PrivateRanges
         Assert-AreEqual "Disabled" $policy.Snat.AutoLearnPrivateRanges
+
+          # Modify
+        $snat = New-AzFirewallPolicySnat -AutoLearnPrivateRange
+        Assert-AreEqual $emptyPrivateRange $snat.PrivateRanges
+        Assert-NotNull $snat.PrivateRanges
+        Assert-AreEqual $snat.PrivateRanges.count 0
+     
     }
     finally {
         # Cleanup
