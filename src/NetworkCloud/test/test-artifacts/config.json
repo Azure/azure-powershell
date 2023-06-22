@@ -1,0 +1,31 @@
+{
+  "common": {
+    "location": "eastus",
+    "customLocationType": "CustomLocation",
+    "extendedLocation": "/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourcegroups/simulator-hostedresources-4ae3464d/providers/microsoft.extendedlocation/customlocations/simulator-cstm-loc"
+  },
+  "AzNetworkCloudL2Network": {
+    "l2NetworkName": "l2network",
+    "tags": "tag1",
+    "tagsUpdate": "tagUpdate",
+    "interfaceName": "eth0",
+    "l2IsolationDomainId": "/subscriptions/fabricsubs/resourceGroups/fabric-rg/providers/Microsoft.NetworkFabric/L2IsolationDomains/l2isolationdomain1",
+    "resourceGroup": "pstest_rgqu19zn",
+    "subscriptionId": "a3eeb848-665a-4dbf-80a4-eb460930fb23",
+    "isHydrated": "false"
+  },
+  "AzNetworkCloudL3Network": {
+    "l3NetworkName": "l3network",
+    "tags": "tag1",
+    "tagsUpdate": "tagUpdate",
+    "vlan": "1001",
+    "ipv4Prefix": "10.1.100.0/24",
+    "ipv6Prefix": "fd01:1::0/64",
+    "ipAllocationType": "DualStack",
+    "interfaceName": "eth0",
+    "l3IsolationDomainId": "/subscriptions/fabricsubs/resourceGroups/fabric-rg/providers/Microsoft.NetworkFabric/L3IsolationDomains/l3isolationdomain1",
+    "resourceGroup": "pstest_rgurh26o",
+    "subscriptionId": "a3eeb848-665a-4dbf-80a4-eb460930fb23",
+    "isHydrated": "false"
+  }
+}
