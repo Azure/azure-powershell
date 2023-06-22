@@ -39,13 +39,14 @@ using Microsoft.Azure.Commands.Common.Compute.Version_2018_04;
 using Microsoft.Azure.Commands.Common.Compute.Version_2018_04.Models;
 using Microsoft.Azure.Commands.Common.KeyVault.Version2016_10_1;
 using Microsoft.Azure.Commands.Common.KeyVault.Version2016_10_1.Models;
-using Microsoft.Azure.KeyVault;
-using Microsoft.Azure.KeyVault.Models;
 using Newtonsoft.Json.Linq;
 using System.Threading;
 using Microsoft.Azure.Management.Internal.Resources.Models;
 using Newtonsoft.Json;
+using Azure.Security.KeyVault.Secrets;
 using SFResource = Microsoft.Azure.Management.ServiceFabric.Models.Resource;
+using Azure.Security.KeyVault.Certificates;
+using Azure.Identity;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
@@ -97,7 +98,8 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         private Lazy<IComputeManagementClient> computeClient;
         private Lazy<IKeyVaultManagementClient> keyVaultManageClient;
         private Lazy<GraphRbacManagementClient> graphClient;
-        private Lazy<IKeyVaultClient> keyVaultClient;
+        private Lazy<CertificateClient> certificateClient;
+        private Lazy<SecretClient> secretClient;
 
         internal ServiceFabricManagementClient SFRPClient
         {
@@ -123,10 +125,16 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             set { graphClient = new Lazy<GraphRbacManagementClient>(() => value); }
         }
 
-        internal IKeyVaultClient KeyVaultClient
+        internal CertificateClient KeyVaultCertificateClient
         {
-            get { return keyVaultClient.Value; }
-            set { keyVaultClient = new Lazy<IKeyVaultClient>(() => value); }
+            get { return certificateClient.Value; }
+            set { certificateClient = new Lazy<CertificateClient>(() => value); }
+        }
+
+        internal SecretClient KeyVaultSecretClient
+        {
+            get { return secretClient.Value; }
+            set { secretClient = new Lazy<SecretClient>(() => value); }
         }
 
         public ServiceFabricCmdletBase() : base()
@@ -154,9 +162,6 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             AzureSession.Instance.ClientFactory.CreateArmClient<KeyVaultManagementClient>(
                 DefaultContext,
                 AzureEnvironment.Endpoint.ResourceManager));
-
-            this.keyVaultClient = new Lazy<IKeyVaultClient>(() =>
-            new KeyVaultClient(AuthenticationCallback));
 
             this.graphClient = new Lazy<GraphRbacManagementClient>(() =>
              AzureSession.Instance.ClientFactory.CreateArmClient<GraphRbacManagementClient>(
@@ -424,7 +429,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             return vault;
         }
 
-        protected CertificateBundle ImportCertificateToAzureKeyVault(string keyVaultName, string certificateName, string pfxFilePath, SecureString password, out string thumbprint, out string commonName)
+        protected KeyVaultCertificateWithPolicy ImportCertificateToAzureKeyVault(string keyVaultName, string certificateName, string pfxFilePath, SecureString password, out string thumbprint, out string commonName)
         {
             var keyFile = new FileInfo(this.GetUnresolvedProviderPathFromPSPath(pfxFilePath));
             if (!keyFile.Exists)
@@ -450,26 +455,29 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 throw new PSArgumentException("Invalid pfx");
             }
 
-            var fileContentEncoded = Convert.ToBase64String(clearBytes);
+            //var fileContentEncoded = Convert.ToBase64String(clearBytes);
 
             WriteVerboseWithTimestamp(string.Format("Importing certificate to Azure KeyVault {0}", certificateName));
-            var certificateBundle = this.KeyVaultClient.ImportCertificateAsync(
-                CreateVaultUri(keyVaultName).ToString(),
-                certificateName,
-                fileContentEncoded,
-                clearPassword,
-                new CertificatePolicy
+
+
+            CertificateClient client = new CertificateClient(
+                CreateVaultUri(keyVaultName),
+               new DefaultAzureCredential());
+
+            var importCertOptions = new ImportCertificateOptions(certificateName, clearBytes) { 
+                Policy = new CertificatePolicy()
                 {
-                    SecretProperties = new SecretProperties
-                    {
-                        ContentType = Constants.SecretContentType
-                    }
-                }
-                ).GetAwaiter().GetResult();
+                    ContentType = CertificateContentType.Pkcs12
+                },
+                Password = clearPassword
+            };
+            
+            var certificateBundle = client.ImportCertificateAsync(
+                importCertOptions).GetAwaiter().GetResult();
 
-            WriteVerboseWithTimestamp(string.Format("Certificate imported Azure KeyVault {0}", certificateBundle.Id));
+            WriteVerboseWithTimestamp(string.Format("Certificate imported Azure KeyVault {0}", certificateBundle.Value.Id));
 
-            return certificateBundle;
+            return certificateBundle.Value;
         }
 
         protected string GetCurrentUserObjectId()
