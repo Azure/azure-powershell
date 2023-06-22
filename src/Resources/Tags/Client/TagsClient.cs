@@ -66,20 +66,32 @@ namespace Microsoft.Azure.Commands.Tags.Client
 
         public List<PSTag> ListTags()
         {
-            var result = ResourceManagementClient.Tags.List();
-            List<PSTag> tags = new List<PSTag>();
-
-            do
+            var result = new List<TagDetails>();
+            var pageOfTags = ResourceManagementClient.Tags.List();
+            AddOrMergeTags(result, pageOfTags);
+            while (!string.IsNullOrEmpty(pageOfTags.NextPageLink))
             {
-                result.Where(t => !t.TagName.StartsWith(ExecludedTagPrefix)).ForEach(t => tags.Add(t.ToPSTag()));
+                pageOfTags = ResourceManagementClient.Tags.ListNext(pageOfTags.NextPageLink);
+                AddOrMergeTags(result, pageOfTags);
+            }
+            return new List<PSTag>(result.Select(t => t.ToPSTag()));
+        }
 
-                if (!string.IsNullOrEmpty(result.NextPageLink))
+        private void AddOrMergeTags(List<TagDetails> results, IEnumerable<TagDetails> tags)
+        {
+            tags.Where(t => !t.TagName.StartsWith(ExecludedTagPrefix)).ForEach(t =>
+            {
+                var tagNameFound = results.FirstOrDefault(pst => pst.TagName.Equals(t.TagName, StringComparison.OrdinalIgnoreCase));
+                if (tagNameFound != null)
                 {
-                    result = ResourceManagementClient.Tags.ListNext(result.NextPageLink);
+                    // tag name already in previous page, merge instead of add
+                    tagNameFound.Values = new List<TagValue>(tagNameFound.Values.Concat(t.Values));
                 }
-            } while (!string.IsNullOrEmpty(result.NextPageLink));
-
-            return tags;
+                else
+                {
+                    results.Add(t);
+                }
+            });
         }
 
         public PSTag GetTag(string tag)

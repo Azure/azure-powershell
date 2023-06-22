@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.dll-Help.xml
+external help file: Az.ContainerRegistry-help.xml
 Module Name: Az.ContainerRegistry
 online version: https://learn.microsoft.com/powershell/module/az.containerregistry/import-azcontainerregistryimage
 schema: 2.0.0
@@ -8,74 +8,68 @@ schema: 2.0.0
 # Import-AzContainerRegistryImage
 
 ## SYNOPSIS
-Import image from a public/azure registry to an azure container registry.
+Copies an image to this container registry from the specified container registry.
 
 ## SYNTAX
 
-### ImportImageByResourceId (Default)
+### ImportExpanded (Default)
 ```
-Import-AzContainerRegistryImage -ResourceGroupName <String> -RegistryName <String> -SourceImage <String>
- -SourceRegistryResourceId <String> [-Mode <String>] [-TargetTag <String[]>]
- [-UntaggedTargetRepository <String[]>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+Import-AzContainerRegistryImage -RegistryName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -SourceImage <String> [-Mode <ImportMode>] [-Password <String>] [-SourceRegistryUri <String>]
+ [-SourceResourceId <String>] [-TargetTag <String[]>] [-UntaggedTargetRepository <String[]>]
+ [-Username <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
-### ImportImageByResourceIdWithCredential
+### Import
 ```
-Import-AzContainerRegistryImage -ResourceGroupName <String> -RegistryName <String> -SourceImage <String>
- -SourceRegistryResourceId <String> [-Mode <String>] [-TargetTag <String[]>]
- [-UntaggedTargetRepository <String[]>] [-Username <String>] -Password <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ImportImageByRegistryUri
-```
-Import-AzContainerRegistryImage -ResourceGroupName <String> -RegistryName <String> -SourceImage <String>
- -SourceRegistryUri <String> [-Mode <String>] [-TargetTag <String[]>] [-UntaggedTargetRepository <String[]>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ImportImageByRegistryUriWithCredential
-```
-Import-AzContainerRegistryImage -ResourceGroupName <String> -RegistryName <String> -SourceImage <String>
- -SourceRegistryUri <String> [-Mode <String>] [-TargetTag <String[]>] [-UntaggedTargetRepository <String[]>]
- [-Username <String>] -Password <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Import-AzContainerRegistryImage -RegistryName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -Parameter <IImportImageParameters> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Import image from a public/azure registry to an azure container registry.
+Copies an image to this container registry from the specified container registry.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Import image from a public/azure registry to an azure container registry.
 ```powershell
 Import-AzContainerRegistryImage -SourceImage library/busybox:latest -ResourceGroupName $resourceGroupName -RegistryName $RegistryName -SourceRegistryUri docker.io -TargetTag busybox:latest
 ```
 
-Import busybox to ACR. 
-Note: 
-* "library/" need to be add before source image. "busybox:latest" => "library/busybox:latest"
-* Credential needed if source registry is not publicly available
-
-### Example 2
-```powershell
-Import-AzContainerRegistryImage -SourceImage "$SourceRegistry.azurecr.io/busybox:latest" -ResourceGroupName $resourceGroupName -RegistryName $RegistryName -SourceRegistryResourceId $SourceACRID -TargetTag busybox:latest
-```
-
-Import busybox from source ACR to target ACR. 
-Note: 
-* Credential needed if admin user for source registry was disabled.
+Import busybox to ACR.
+Note:
+"library/" need to be add before source image.
+"busybox:latest" =\> "library/busybox:latest"
+Credential needed if source registry is not publicly available
+SourceRegistryResourceId or SourceRegistryUri is required for this cmdlet
 
 ## PARAMETERS
 
-### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+### -AsJob
+Run the command as a job
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+
+```yaml
+Type: System.Management.Automation.PSObject
+Parameter Sets: (All)
+Aliases: AzureRMContext, AzureCredential
 
 Required: False
 Position: Named
@@ -89,10 +83,55 @@ When Force, any existing target tags will be overwritten.
 When NoForce, any existing target tags will fail the operation before any copying begins.
 
 ```yaml
-Type: System.String
+Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.ImportMode
+Parameter Sets: ImportExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
-Accepted values: Force, NoForce
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Parameter
+.
+To construct, see NOTES section for PARAMETER properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IImportImageParameters
+Parameter Sets: Import
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -PassThru
+Returns true when the command succeeds
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -106,10 +145,10 @@ The password used to authenticate with the source registry.
 
 ```yaml
 Type: System.String
-Parameter Sets: ImportImageByResourceIdWithCredential, ImportImageByRegistryUriWithCredential
+Parameter Sets: ImportExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -117,7 +156,7 @@ Accept wildcard characters: False
 ```
 
 ### -RegistryName
-Target registry name.
+The name of the container registry.
 
 ```yaml
 Type: System.String
@@ -132,7 +171,8 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Resource group name.
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
@@ -147,39 +187,18 @@ Accept wildcard characters: False
 ```
 
 ### -SourceImage
-Repository name of the source image.
-
-Specify an image by repository ('hello-world').
-This will use the 'latest' tag.
-
-Specify an image by tag ('hello-world:latest').
-
-Specify an image by sha256-based manifest digest ('hello-world@sha256:abc123').
+Repository name of the source image.Specify an image by repository ('hello-world').
+This will use the 'latest' tag.Specify an image by tag ('hello-world:latest').Specify an image by sha256-based manifest digest ('hello-world@sha256:abc123').
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ImportExpanded
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -SourceRegistryResourceId
-The resource identifier of the source Azure Container Registry.
-
-```yaml
-Type: System.String
-Parameter Sets: ImportImageByResourceId, ImportImageByResourceIdWithCredential
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -189,23 +208,54 @@ The address of the source registry (e.g.
 
 ```yaml
 Type: System.String
-Parameter Sets: ImportImageByRegistryUri, ImportImageByRegistryUriWithCredential
+Parameter Sets: ImportExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SourceResourceId
+The resource identifier of the source Azure Container Registry.
+
+```yaml
+Type: System.String
+Parameter Sets: ImportExpanded
+Aliases: SourceRegistryResourceId
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+The ID of the target subscription.
+The value must be an UUID.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -TargetTag
-List of strings of the form repo\[:tag\].
+List of strings of the form repo[:tag].
 When tag is omitted the source will be used (or 'latest' if source tag is also omitted).
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
+Parameter Sets: ImportExpanded
 Aliases:
 
 Required: False
@@ -221,7 +271,7 @@ No tag will be created.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
+Parameter Sets: ImportExpanded
 Aliases:
 
 Required: False
@@ -236,7 +286,7 @@ The username to authenticate with the source registry.
 
 ```yaml
 Type: System.String
-Parameter Sets: ImportImageByResourceIdWithCredential, ImportImageByRegistryUriWithCredential
+Parameter Sets: ImportExpanded
 Aliases:
 
 Required: False
@@ -282,12 +332,29 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
+### Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IImportImageParameters
 
 ## OUTPUTS
 
 ### System.Boolean
 
 ## NOTES
+
+ALIASES
+
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+
+`PARAMETER <IImportImageParameters>`: .
+  - `SourceImage <String>`: Repository name of the source image.         Specify an image by repository ('hello-world'). This will use the 'latest' tag.         Specify an image by tag ('hello-world:latest').         Specify an image by sha256-based manifest digest ('hello-world@sha256:abc123').
+  - `[CredentialsPassword <String>]`: The password used to authenticate with the source registry.
+  - `[CredentialsUsername <String>]`: The username to authenticate with the source registry.
+  - `[Mode <ImportMode?>]`: When Force, any existing target tags will be overwritten. When NoForce, any existing target tags will fail the operation before any copying begins.
+  - `[SourceRegistryUri <String>]`: The address of the source registry (e.g. 'mcr.microsoft.com').
+  - `[SourceResourceId <String>]`: The resource identifier of the source Azure Container Registry.
+  - `[TargetTag <String[]>]`: List of strings of the form repo[:tag]. When tag is omitted the source will be used (or 'latest' if source tag is also omitted).
+  - `[UntaggedTargetRepository <String[]>]`: List of strings of repository names to do a manifest only copy. No tag will be created.
 
 ## RELATED LINKS

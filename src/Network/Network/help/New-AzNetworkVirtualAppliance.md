@@ -16,9 +16,10 @@ Create a Network Virtual Appliance resource.
 ```
 New-AzNetworkVirtualAppliance -Name <String> -ResourceGroupName <String> -Location <String>
  -VirtualHubId <String> -Sku <PSVirtualApplianceSkuProperties> -VirtualApplianceAsn <Int32>
- [-Identity <PSManagedServiceIdentity>] [-BootStrapConfigurationBlob <String[]>] [-AdditionalNic <PSVirtualApplianceAdditionalNicProperties>]
+ [-Identity <PSManagedServiceIdentity>] [-BootStrapConfigurationBlob <String[]>]
  [-CloudInitConfigurationBlob <String[]>] [-CloudInitConfiguration <String>] [-Tag <Hashtable>] [-Force]
- [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AsJob] [-AdditionalNic <PSVirtualApplianceAdditionalNicProperties[]>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
@@ -26,8 +27,9 @@ New-AzNetworkVirtualAppliance -Name <String> -ResourceGroupName <String> -Locati
 New-AzNetworkVirtualAppliance -ResourceId <String> -Location <String> -VirtualHubId <String>
  -Sku <PSVirtualApplianceSkuProperties> -VirtualApplianceAsn <Int32> [-Identity <PSManagedServiceIdentity>]
  [-BootStrapConfigurationBlob <String[]>] [-CloudInitConfigurationBlob <String[]>]
- [-CloudInitConfiguration <String>] [-Tag <Hashtable>] [-Force] [-AsJob] [-AdditionalNic <PSVirtualApplianceAdditionalNicProperties>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-CloudInitConfiguration <String>] [-Tag <Hashtable>] [-Force] [-AsJob]
+ [-AdditionalNic <PSVirtualApplianceAdditionalNicProperties[]>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -55,12 +57,26 @@ $hub=Get-AzVirtualHub -ResourceGroupName testrg -Name hub
 $additionalNic=New-AzVirtualApplianceAdditionalNicProperty -NicName "sdwan" -HasPublicIp $true
 
 $nva=New-AzNetworkVirtualAppliance -ResourceGroupName testrg -Name nva -Location eastus2 -VirtualApplianceAsn 65222 -VirtualHubId $hub.Id -Sku $sku -CloudInitConfiguration "echo Hello World!" -AdditionalNic $additionalNic
-
 ```
 
 Creates a new Network Virtual Appliance resource in resource group: testrg with additional nic "sdwan" and a public IP attached to "sdwan" nic.
 
 ## PARAMETERS
+
+### -AdditionalNic
+The AdditionalNic Properties of the Virtual Appliance.
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSVirtualApplianceAdditionalNicProperties[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
 
 ### -AsJob
 Run cmdlet in the background
@@ -281,21 +297,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -AdditionalNic
-The AdditionalNic Properties of the Virtual Appliance.
-
-```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSVirtualApplianceAdditionalNicProperties
-Parameter Sets: (All)
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)

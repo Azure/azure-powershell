@@ -13,18 +13,22 @@ Create a route map to a VirtualHub.
 ## SYNTAX
 
 ### ByVirtualHubName (Default)
-```powershell
-New-AzRouteMap -Name <String> -ResourceGroupName <String> -VirtualHubName <String> -RouteMapRule <PSRouteMapRule[]> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+New-AzRouteMap [-ResourceGroupName <String>] [-VirtualHubName <String>] [-Name <String>]
+ [-RouteMapRule <PSRouteMapRule[]>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByVirtualHubObject
-```powershell
-New-AzRouteMap -Name <String> -VirtualHubObject <PSVirtualHub> -RouteMapRule <PSRouteMapRule[]> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+New-AzRouteMap [-VirtualHubObject <PSVirtualHub>] [-Name <String>] [-RouteMapRule <PSRouteMapRule[]>] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByVirtualHubResourceId
-```powershell
-New-AzRouteMap -Name <String> -VirtualHubResourceId <String> -RouteMapRule <PSRouteMapRule[]> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+New-AzRouteMap [-VirtualHubResourceId <String>] [-Name <String>] [-RouteMapRule <PSRouteMapRule[]>] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -52,7 +56,6 @@ $routeMapAction2 = New-AzRouteMapRuleAction -Type "Drop"
 $routeMapRule2 = New-AzRouteMapRule -Name "rule2" -MatchCriteria @($routeMapMatchCriterion2) -RouteMapRuleAction @($routeMapAction2) -NextStepIfMatched "Terminate"
 
 New-AzRouteMap -ResourceGroupName "testRg" -VirtualHubName "testHub" -Name "testRouteMap" -RouteMapRule @($routeMapRule1, $routeMapRule2)
-
 ```
 
 ```output
@@ -111,7 +114,6 @@ RouteMapRules                 : [
                                 ]
 AssociatedInboundConnections  : []
 AssociatedOutboundConnections : []
-
 ```
 
 ### Example 2 Apply route map to connections
@@ -128,7 +130,6 @@ $frontendSubnet = New-AzVirtualNetworkSubnetConfig -Name frontendSubnet -Address
 $backendSubnet  = New-AzVirtualNetworkSubnetConfig -Name backendSubnet  -AddressPrefix "10.2.2.0/24"
 $remoteVirtualNetwork = New-AzVirtualNetwork -Name "MyVirtualNetwork" -ResourceGroupName "testRG" -Location "westcentralus" -AddressPrefix "10.2.0.0/16" -Subnet $frontendSubnet,$backendSubnet
 New-AzVirtualHubVnetConnection -ResourceGroupName "testRG" -VirtualHubName "testHub" -Name "testvnetconnection" -RemoteVirtualNetwork $remoteVirtualNetwork -RoutingConfiguration $testRoutingConfiguration
-
 ```
 
 ```output
@@ -164,7 +165,7 @@ RoutingConfiguration : {
 Run cmdlet in the background
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -198,7 +199,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases: ResourceName, RouteMapName
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -213,7 +214,7 @@ Type: System.String
 Parameter Sets: ByVirtualHubName
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -224,8 +225,8 @@ Accept wildcard characters: False
 List of route map rules in the route map. 
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSRouteMapRule
-Parameter Sets:
+Type: Microsoft.Azure.Commands.Network.Models.PSRouteMapRule[]
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -256,12 +257,12 @@ The Virtual Hub Object.
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSVirtualHub
 Parameter Sets: ByVirtualHubObject
-Aliases: ParentObject, ParentVirtualHub
+Aliases: VirtualHub, ParentVirtualHub
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -277,6 +278,36 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

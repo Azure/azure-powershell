@@ -37,8 +37,8 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
     [Cmdlet("Publish", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "WebApp", SupportsShouldProcess = true, DefaultParameterSetName = ParameterSet2Name), OutputType(typeof(PSSite))]
     public class PublishAzureWebAppCmdlet : WebAppOptionalSlotBaseCmdlet
     {
-        // Poll status for a maximum of 20 minutes (1200 seconds / 2 seconds per status check)
-        private const int NumStatusChecks = 600;
+        // Poll status for a maximum of 35 minutes (2100 seconds / 2 seconds per status check)
+        private const int NumStatusChecks = 1050;
 
         [Parameter(Mandatory = true, HelpMessage = "The path of the archive file. ZIP, WAR, and JAR are supported.")]
         [ValidateNotNullOrEmpty]

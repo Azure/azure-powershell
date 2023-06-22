@@ -544,7 +544,14 @@ function Test-RouteMapCRUD
 		$frontendSubnet = New-AzVirtualNetworkSubnetConfig -Name frontendSubnet -AddressPrefix "10.2.1.0/24"
 		$backendSubnet  = New-AzVirtualNetworkSubnetConfig -Name backendSubnet  -AddressPrefix "10.2.2.0/24"
 		$remoteVirtualNetwork = New-AzVirtualNetwork -Name $virtualNetworkName -ResourceGroupName $rgName -Location $rglocation -AddressPrefix "10.2.0.0/16" -Subnet $frontendSubnet,$backendSubnet
-		New-AzVirtualHubVnetConnection -ResourceGroupName $rgName -VirtualHubName $virtualHubName -Name $virtualNetworkConnectionName -RemoteVirtualNetwork $remoteVirtualNetwork -RoutingConfiguration $testRoutingConfiguration
+		$hubVnetCon1 = New-AzVirtualHubVnetConnection -ResourceGroupName $rgName -VirtualHubName $virtualHubName -Name $virtualNetworkConnectionName -RemoteVirtualNetwork $remoteVirtualNetwork -RoutingConfiguration $testRoutingConfiguration
+
+		$effectiveRoutes = Get-AzVHubEffectiveRoute -ResourceGroupName $rgName -VirtualHubName $virtualHubName -ResourceId $rt1.Id -VirtualWanResourceType 'RouteTable'
+		Assert-AreEqual $effectiveRoutes.Value.Count 1
+
+		$inboundRoutes = Get-AzVHubInboundRoute -ResourceGroupName $rgName -VirtualHubName $virtualHubName -ResourceUri $hubVnetCon1.Id -VirtualWanConnectionType 'HubVirtualNetworkConnection'
+		Assert-AreEqual $inboundRoutes.Value.Count 1
+		Assert-AreEqual "10.2.0.0/16" $inboundRoutes.Value.Prefix
 
 		$routeMap = Get-AzRouteMap -ResourceGroupName $rgName -VirtualHubName $virtualHubName -Name $routeMapName
 		Assert-AreEqual $routeMap.AssociatedInboundConnections.Count 1

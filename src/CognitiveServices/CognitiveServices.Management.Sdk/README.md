@@ -25,8 +25,9 @@ payload-flattening-threshold: 2
 
 ###
 ``` yaml
+commit: fd296f4cbe90e46098824e020e4a02517d56fc35
 input-file:
-  - https://github.com/Azure/azure-rest-api-specs/blob/fd296f4cbe90e46098824e020e4a02517d56fc35/specification/cognitiveservices/resource-manager/Microsoft.CognitiveServices/stable/2022-12-01/cognitiveservices.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/cognitiveservices/resource-manager/Microsoft.CognitiveServices/stable/2022-12-01/cognitiveservices.json
 
 output-folder: Generated
 

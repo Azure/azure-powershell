@@ -64,6 +64,50 @@ namespace Microsoft.Azure.Management.ContainerService
             }
 
             /// <summary>
+            /// Gets a list of supported Kubernetes versions in the specified subscription.
+            /// </summary>
+            /// <remarks>
+            /// Contains extra metadata on the version, including supported patch versions,
+            /// capabilities, available upgrades, and details on preview status of the
+            /// version
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='location'>
+            /// The name of Azure region.
+            /// </param>
+            public static KubernetesVersionListResult ListKubernetesVersions(this IManagedClustersOperations operations, string location)
+            {
+                return operations.ListKubernetesVersionsAsync(location).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Gets a list of supported Kubernetes versions in the specified subscription.
+            /// </summary>
+            /// <remarks>
+            /// Contains extra metadata on the version, including supported patch versions,
+            /// capabilities, available upgrades, and details on preview status of the
+            /// version
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='location'>
+            /// The name of Azure region.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<KubernetesVersionListResult> ListKubernetesVersionsAsync(this IManagedClustersOperations operations, string location, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ListKubernetesVersionsWithHttpMessagesAsync(location, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
             /// Gets a list of managed clusters in the specified subscription.
             /// </summary>
             /// <param name='operations'>

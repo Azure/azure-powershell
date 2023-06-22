@@ -13,7 +13,9 @@ Creates a log scrubbing configuration for firewall policy
 ## SYNTAX
 
 ```
-New-AzApplicationGatewayFirewallPolicyLogScrubbingConfiguration -State <String> -ScrubbingRule  <PSApplicationGatewayFirewallPolicyLogScrubbingRule[]> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+New-AzApplicationGatewayFirewallPolicyLogScrubbingConfiguration -State <String>
+ -ScrubbingRule <PSApplicationGatewayFirewallPolicyLogScrubbingRule[]>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -29,21 +31,19 @@ $logScrubbingRuleConfig = New-AzApplicationGatewayFirewallPolicyLogScrubbingConf
 The command creates a log scrubbing rule configuration with state as enable, ScrubbingRule as $logScrubbingRule1.
 The new log scrubbing rule configuration is stored to $logScrubbingRuleConfig.
 
-
 ## PARAMETERS
 
-### -State
-State of the log scrubbing config. Default value is Enabled.
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: System.String
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases:
-Accepted values: Disabled, Enabled
+Aliases: AzContext, AzureRmContext, AzureCredential
 
-Required: True
+Required: False
 Position: Named
-Default value: Enabled
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -59,6 +59,22 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -State
+State of the log scrubbing config. Default value is Enabled.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+Accepted values: Enabled, Disabled
+
+Required: True
+Position: Named
+Default value: Enabled
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

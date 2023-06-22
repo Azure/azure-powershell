@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy
     {
         public PsPolicyExemption(JToken input)
         {
-            var resource = input.ToResource();
+            var resource = input.ToResourceWithSystemData();
             Name = resource.Name;
             Properties = new PsPolicyExemptionProperties(resource.Properties);
             ResourceId = resource.Id;
@@ -34,6 +34,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy
             ResourceGroupName = string.IsNullOrEmpty(resource.Id) ? null : ResourceIdUtility.GetResourceGroupName(resource.Id);
             ResourceType = resource.Type;
             SubscriptionId = string.IsNullOrEmpty(resource.Id) ? null : ResourceIdUtility.GetSubscriptionId(resource.Id);
+            SystemData = resource.SystemData.ToPsObject();
         }
 
         /// <summary>
