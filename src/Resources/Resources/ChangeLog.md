@@ -21,6 +21,7 @@
 ## Upcoming Release
 * Fixed the incorrect behavior of pagination for `Get-AzTag`
 * Updated API version to 2022-09-01
+* Added Deployment Stacks cmdlets
 
 ## Version 6.7.0
 * Added parameter `-CountVariable` for list operations, `odataCount` can now be assigned to this variable [#20982]

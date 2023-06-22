@@ -1,4 +1,4 @@
-﻿param location string = 'westus'
+param location string = 'westus'
 param name string = 'bezstorage007'
 var storageSku = 'Standard_LRS'
 
