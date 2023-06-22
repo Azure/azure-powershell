@@ -51,6 +51,18 @@
 * Onboarded `Microsoft.HardwareSecurityModules/cloudHsmClusters` to private link cmdlets
 * Updated cmdlet to add the property of `DisableRequestBodyEnforcement`, `RequestBodyInspectLimitInKB` and `DisableFileUploadEnforcement` 
     - `New-AzApplicationGatewayFirewallPolicySetting`
+* Added optional property 'AuxiliarySku' to cmdlet `New-AzNetworkInterface` to help choose performance on an AuxiliaryMode enabled Network Interface.
+* Added a new value, 'AcceleratedConnections' for existing property 'AuxiliaryMode' for `New-AzNetworkInterface`
+* Added new cmdlets to get Connection child resource of Network Virtual Appliance.
+    -`Get-AzNetworkVirtualApplianceConnection`
+* Update cmdlets to return connections in Network Virtual Appliance
+    -`Network Virtual Appliance`
+* Allowed not to provide `Rules` in `PSApplicationGatewayFirewallPolicyManagedRuleGroupOverride`, which would return an empty `RuleID` to be passed to NRP.
+* Add optional parameter 'AdminState' to Express Route Virtual Network Gateway
+* Fixed bug that caused `Remove-AzApplicationGatewayAutoscaleConfiguration` to always fails
+* Added read-only property `DefaultPredefinedSslPolicy` in PSApplicationGateway
+* Updated cmdlet to added optional parameter `DomainNameLabelScope` to Public Ip Address
+    - `New-AzPublicIpAddress`
 * Added optional property `AuxiliarySku` to cmdlet `New-AzNetworkInterface` to help choose performance on an `AuxiliaryMode` enabled Network Interface.
 * Added a new value `AcceleratedConnections` for existing property `AuxiliaryMode` for `New-AzNetworkInterface`
 * Added new cmdlets to get virtual hub effective routes and in/outbound routes
