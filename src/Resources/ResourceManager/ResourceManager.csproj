@@ -14,7 +14,6 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.Management.ResourceManager" Version="3.17.3-preview" />
     <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="2.2.0" />
-    <PackageReference Include="Azure.Deployments.Templates" Version="1.0.872" />
   </ItemGroup>
 
   <ItemGroup>
