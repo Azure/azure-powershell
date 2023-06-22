@@ -46,7 +46,6 @@ using System.Management.Automation.Runspaces;
 using System.Collections.ObjectModel;
 using Microsoft.Azure.PowerShell.Ssh.Helpers.HybridCompute.Models;
 using Microsoft.Azure.PowerShell.Ssh.Helpers.HybridCompute;
-using static Microsoft.Azure.Commands.Common.Authentication.Abstractions.AzureEnvironment;
 
 
 namespace Microsoft.Azure.Commands.Ssh
@@ -470,7 +469,6 @@ namespace Microsoft.Azure.Commands.Ssh
             try
             {
                 ListCredentialsRequest req = new ListCredentialsRequest(serviceName: "SSH");
-                // put the expires in on a const?
                 cred = EndpointsClient.ListCredentials(ResourceId, "default", RelayInfoExpirationInSec, req);
             }
             catch (PowerShell.Ssh.Helpers.HybridConnectivity.Models.ErrorResponseException exception)
@@ -873,18 +871,14 @@ namespace Microsoft.Azure.Commands.Ssh
                         continue;
                     }
 
-                    if (!System.IO.File.Exists(proxyPath))
+                    if (!File.Exists(proxyPath))
                     {
                         continue;
                     }
 
-                    if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+                    if (!SetExecutePermissionForProxyOnLinux(proxyPath))
                     {
-                        // does this check even work?
-                        if (!SetExecutePermissionForProxyOnLinux(proxyPath))
-                        {
-                            WriteWarning($"Unable to add Execute permission to SSH Proxy {proxyPath}. The SSH connection will fail if the current user doesn't have permission to execute the SSH proxy file.");
-                        }
+                        WriteWarning($"Unable to add Execute permission to SSH Proxy {proxyPath}. The SSH connection will fail if the current user doesn't have permission to execute the SSH proxy file.");
                     }
 
                     return proxyPath;
@@ -894,25 +888,34 @@ namespace Microsoft.Azure.Commands.Ssh
             return null;
         }
 
-        private bool SetExecutePermissionForProxyOnLinux(string path)
+        public bool SetExecutePermissionForProxyOnLinux(string path)
         {
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
             {
                 try
                 {
-                    var script = $"chmod +x {path}";
+                    var script = $"chmod +x {path}; $LastExitCode;";
                     var results = InvokeCommand.InvokeScript(
                         script: script,
                         useNewScope: true,
                         writeToPipeline: PipelineResultTypes.Error,
                         input: null,
                         args: null);
+
+                    if (results.Count() > 0)
+                    {
+                        var exitCode = (int) results.Last().BaseObject;
+                        if (exitCode != 0)
+                        {
+                            return false;
+                        }
+
+                    }
                 }
                 catch
                 {
                     return false;
                 }
-                return true;
             }
             return true;
         }

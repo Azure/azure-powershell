@@ -182,7 +182,6 @@ namespace Microsoft.Azure.Commands.Ssh
                 rdpLocalPort = ((IPEndPoint)listener.LocalEndpoint).Port;
                 listener.Stop();
 
-                // Start SSH Process
                 sshProcess.StartInfo.RedirectStandardError = true;
                 sshProcess.Start();
 
