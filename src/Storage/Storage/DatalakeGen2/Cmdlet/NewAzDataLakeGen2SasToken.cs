@@ -22,10 +22,12 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
     using global::Azure.Storage.Files.DataLake;
     using global::Azure.Storage.Sas;
     using System;
+    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
     /// <summary>
     /// list azure blobs in specified azure FileSystem
     /// </summary>
+    [GenericBreakingChange("The leading question mark '?' of the created SAS token will be removed in a future release.")]
     [Cmdlet("New", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "DataLakeGen2SasToken", DefaultParameterSetName = ManualParameterSet), OutputType(typeof(String))]
     public class NewDataLakeGen2SasTokenCommand : StorageCloudBlobCmdletBase
     {

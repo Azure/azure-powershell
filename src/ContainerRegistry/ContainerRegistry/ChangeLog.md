@@ -19,6 +19,8 @@
 -->
 ## Upcoming Release
 
+## Version 4.0.0
+* Updated module to autorest based
 ## Version 3.0.4
 * Updated Azure.Core to 1.31.0.
 

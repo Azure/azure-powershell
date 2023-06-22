@@ -18,7 +18,12 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Removed New-AzWebAppContainerPSSession and Enter-AzWebAppContainerPSSession cmdlets
+* Increased timeout for Publish-AzWebApp command
+* Fixed Set-AzWebApp issue with `Set-AzWebApp` when piping in Get-AzWebApp object [#21820]
+* Added support for the PremiumMV3 tier to `New-AzAppServicePlan` [#21933]
+
+## Version 3.0.0
+* Removed `New-AzWebAppContainerPSSession` and `Enter-AzWebAppContainerPSSession` cmdlets
 
 ## Version 2.15.1
 * Used AAD Auth instead of Basic Auth for PublishAzureWebApps

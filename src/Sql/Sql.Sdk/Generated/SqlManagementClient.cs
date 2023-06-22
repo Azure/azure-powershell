@@ -147,11 +147,6 @@ namespace Microsoft.Azure.Management.Sql
         public virtual IEncryptionProtectorsOperations EncryptionProtectors { get; private set; }
 
         /// <summary>
-        /// Gets the IFailoverGroupsOperations.
-        /// </summary>
-        public virtual IFailoverGroupsOperations FailoverGroups { get; private set; }
-
-        /// <summary>
         /// Gets the IInstancePoolsOperations.
         /// </summary>
         public virtual IInstancePoolsOperations InstancePools { get; private set; }
@@ -517,6 +512,16 @@ namespace Microsoft.Azure.Management.Sql
         public virtual IManagedDatabasesOperations ManagedDatabases { get; private set; }
 
         /// <summary>
+        /// Gets the IManagedDatabaseMoveOperations.
+        /// </summary>
+        public virtual IManagedDatabaseMoveOperations ManagedDatabaseMoveOperations { get; private set; }
+
+        /// <summary>
+        /// Gets the IFailoverGroupsOperations.
+        /// </summary>
+        public virtual IFailoverGroupsOperations FailoverGroups { get; private set; }
+
+        /// <summary>
         /// Initializes a new instance of the SqlManagementClient class.
         /// </summary>
         /// <param name='httpClient'>
@@ -773,7 +778,6 @@ namespace Microsoft.Azure.Management.Sql
             DatabaseVulnerabilityAssessmentScans = new DatabaseVulnerabilityAssessmentScansOperations(this);
             ElasticPoolOperations = new ElasticPoolOperations(this);
             EncryptionProtectors = new EncryptionProtectorsOperations(this);
-            FailoverGroups = new FailoverGroupsOperations(this);
             InstancePools = new InstancePoolsOperations(this);
             JobAgents = new JobAgentsOperations(this);
             JobCredentials = new JobCredentialsOperations(this);
@@ -847,6 +851,9 @@ namespace Microsoft.Azure.Management.Sql
             ServerConfigurationOptions = new ServerConfigurationOptionsOperations(this);
             ManagedLedgerDigestUploads = new ManagedLedgerDigestUploadsOperations(this);
             ManagedDatabases = new ManagedDatabasesOperations(this);
+            ManagedDatabaseMoveOperations = new ManagedDatabaseMoveOperations(this);
+            FailoverGroups = new FailoverGroupsOperations(this);
+
             BaseUri = new System.Uri("https://management.azure.com");
             AcceptLanguage = "en-US";
             LongRunningOperationRetryTimeout = 30;

@@ -156,7 +156,7 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
 
                     var newModuleMetadata = MetadataLoader.GetModuleMetadata(moduleName);
                     var fileName = $"{moduleName}.json";
-                    var executingPath = Path.GetDirectoryName(new Uri(Assembly.GetExecutingAssembly().CodeBase).AbsolutePath);
+                    var executingPath = Path.GetDirectoryName(new Uri(Assembly.GetExecutingAssembly().Location).AbsolutePath);
 
                     var filePath = Path.Combine(executingPath, "SerializedCmdlets", fileName);
 

@@ -13,7 +13,8 @@ Creates a new GroupByUserSession for the application gateway firewall custom rul
 ## SYNTAX
 
 ```
-New-AzApplicationGatewayFirewallCustomRuleGroupByUserSession -GroupByVariable<PSApplicationGatewayFirewallCustomRuleGroupByVariable[]> 
+New-AzApplicationGatewayFirewallCustomRuleGroupByUserSession
+ -GroupByVariable <PSApplicationGatewayFirewallCustomRuleGroupByVariable[]>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -24,27 +25,12 @@ The **New-AzApplicationGatewayFirewallCustomRuleGroupByUserSession** creates a n
 
 ### Example 1
 ```powershell
-New-AzApplicationGatewayFirewallCustomRuleGroupByUserSession -GroupByVariable $groupbyVar 
+New-AzApplicationGatewayFirewallCustomRuleGroupByUserSession -GroupByVariable $groupbyVar
 ```
 
 The command creates a new GroupByUserSession, with the GroupByVariables condition named groupbyVar
 
 ## PARAMETERS
-
-### -GroupByVariable
-Define user session group by clause variables.
-
-```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayFirewallCustomRuleGroupByVariable[]
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -61,8 +47,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -GroupByVariable
+Define user session group by clause variables.
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayFirewallCustomRuleGroupByVariable[]
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

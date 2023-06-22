@@ -602,6 +602,9 @@ Gets a route filter.
 ### [Get-AzRouteFilterRuleConfig](Get-AzRouteFilterRuleConfig.md)
 Gets a route filter rule in a route filter.
 
+### [Get-AzRouteMap](Get-AzRouteMap.md)
+Retrieves a route map of a VirtualHub.
+
 ### [Get-AzRouteServer](Get-AzRouteServer.md)
 Get an Azure RouteServer
 
@@ -631,6 +634,15 @@ Gets a service endpoint policy.
 
 ### [Get-AzServiceEndpointPolicyDefinition](Get-AzServiceEndpointPolicyDefinition.md)
 Gets a service endpoint policy definition.
+
+### [Get-AzVHubEffectiveRoute](Get-AzVHubEffectiveRoute.md)
+Retrieves the effective routes of a virtual hub resource
+
+### [Get-AzVHubInboundRoute](Get-AzVHubInboundRoute.md)
+Retrieves the inbound routes of a virtual hub connection
+
+### [Get-AzVHubOutboundRoute](Get-AzVHubOutboundRoute.md)
+Retrieves the outbound routes of a virtual hub connection
 
 ### [Get-AzVHubRouteTable](Get-AzVHubRouteTable.md)
 Retrieves  a hub route table resource associated with a VirtualHub.
@@ -806,6 +818,12 @@ Creates a match condition for custom rule
 ### [New-AzApplicationGatewayFirewallCustomRule](New-AzApplicationGatewayFirewallCustomRule.md)
 Creates a new custom rule for the application gateway firewall policy.
 
+### [New-AzApplicationGatewayFirewallCustomRuleGroupByUserSession](New-AzApplicationGatewayFirewallCustomRuleGroupByUserSession.md)
+Creates a new GroupByUserSession for the application gateway firewall custom rule.
+
+### [New-AzApplicationGatewayFirewallCustomRuleGroupByVariable](New-AzApplicationGatewayFirewallCustomRuleGroupByVariable.md)
+Creates a new GroupByVariable for the application gateway firewall custom rule GroupByUserSession.
+
 ### [New-AzApplicationGatewayFirewallDisabledRuleGroupConfig](New-AzApplicationGatewayFirewallDisabledRuleGroupConfig.md)
 Creates a new disabled rule group configuration.
 
@@ -829,6 +847,12 @@ Creates ExclusionManagedRuleGroup entry in ExclusionManagedRuleSets for the fire
 
 ### [New-AzApplicationGatewayFirewallPolicyExclusionManagedRuleSet](New-AzApplicationGatewayFirewallPolicyExclusionManagedRuleSet.md)
 Creates an ExclusionManagedRuleSet for the firewallPolicy exclusion
+
+### [New-AzApplicationGatewayFirewallPolicyLogScrubbingConfiguration](New-AzApplicationGatewayFirewallPolicyLogScrubbingConfiguration.md)
+Creates a log scrubbing configuration for firewall policy
+
+### [New-AzApplicationGatewayFirewallPolicyLogScrubbingRule](New-AzApplicationGatewayFirewallPolicyLogScrubbingRule.md)
+Creates a log scrubbing rule for firewall policy
 
 ### [New-AzApplicationGatewayFirewallPolicyManagedRule](New-AzApplicationGatewayFirewallPolicyManagedRule.md)
 Create ManagedRules for the firewall policy.
@@ -1008,7 +1032,7 @@ Creates a new Azure Firewall Policy
 Create a new Azure Firewall Policy Application Rule
 
 ### [New-AzFirewallPolicyApplicationRuleCustomHttpHeader](New-AzFirewallPolicyApplicationRuleCustomHttpHeader.md)
-Create a new Azure Firewall Policy Application Rule Custom Http Header
+Create a new Azure Firewall Policy Application Rule Custon HTTP Header
 
 ### [New-AzFirewallPolicyDnsSetting](New-AzFirewallPolicyDnsSetting.md)
 Creates a new DNS Setting for Azure Firewall Policy
@@ -1275,6 +1299,21 @@ Creates a route filter.
 ### [New-AzRouteFilterRuleConfig](New-AzRouteFilterRuleConfig.md)
 Creates a route filter rule for a route filter.
 
+### [New-AzRouteMap](New-AzRouteMap.md)
+Create a route map to a VirtualHub.
+
+### [New-AzRouteMapRule](New-AzRouteMapRule.md)
+Create a route map rule.
+
+### [New-AzRouteMapRuleAction](New-AzRouteMapRuleAction.md)
+Create a route map rule action.
+
+### [New-AzRouteMapRuleActionParameter](New-AzRouteMapRuleActionParameter.md)
+Create a route map rule action parameter for the rule action.
+
+### [New-AzRouteMapRuleCriterion](New-AzRouteMapRuleCriterion.md)
+Create a route map rule criterion.
+
 ### [New-AzRouteServer](New-AzRouteServer.md)
 Creates an Azure RouteServer.
 
@@ -1307,6 +1346,9 @@ Creates a VHubRoute object which can be passed as parameter to the New-AzVHubRou
 
 ### [New-AzVHubRouteTable](New-AzVHubRouteTable.md)
 Creates a hub route table resource associated with a VirtualHub.
+
+### [New-AzVirtualApplianceAdditionalNicProperty](New-AzVirtualApplianceAdditionalNicProperty.md)
+Define a Network Virtual Appliance Additional Nic Property for the resource.
 
 ### [New-AzVirtualApplianceSite](New-AzVirtualApplianceSite.md)
 Create a site connected to a Network Virtual Appliance.
@@ -1684,6 +1726,9 @@ Removes a route filter.
 ### [Remove-AzRouteFilterRuleConfig](Remove-AzRouteFilterRuleConfig.md)
 Removes a route filter rule from a route filter.
 
+### [Remove-AzRouteMap](Remove-AzRouteMap.md)
+Remove a route map from a VirtualHub.
+
 ### [Remove-AzRouteServer](Remove-AzRouteServer.md)
 Deletes an Azure RouteServer.
 
@@ -2015,7 +2060,7 @@ Updates a network manager security admin rule.
 Updates a network manager security admin rule collection.
 
 ### [Set-AzNetworkManagerSubscriptionConnection](Set-AzNetworkManagerSubscriptionConnection.md)
-Update a network manger subscription connection.
+Update a network manager subscription connection.
 
 ### [Set-AzNetworkProfile](Set-AzNetworkProfile.md)
 Updates a network profile.
@@ -2178,6 +2223,9 @@ Update or Change a Network Virtual Appliance resource.
 
 ### [Update-AzP2sVpnGateway](Update-AzP2sVpnGateway.md)
 Update an existing P2SVpnGateway under VirtualHub for point to site connectivity.
+
+### [Update-AzRouteMap](Update-AzRouteMap.md)
+Update a route map of a VirtualHub.
 
 ### [Update-AzRouteServer](Update-AzRouteServer.md)
 Update an Azure RouteServer.

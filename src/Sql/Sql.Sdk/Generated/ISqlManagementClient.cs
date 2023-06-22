@@ -144,11 +144,6 @@ namespace Microsoft.Azure.Management.Sql
         IEncryptionProtectorsOperations EncryptionProtectors { get; }
 
         /// <summary>
-        /// Gets the IFailoverGroupsOperations.
-        /// </summary>
-        IFailoverGroupsOperations FailoverGroups { get; }
-
-        /// <summary>
         /// Gets the IInstancePoolsOperations.
         /// </summary>
         IInstancePoolsOperations InstancePools { get; }
@@ -513,5 +508,14 @@ namespace Microsoft.Azure.Management.Sql
         /// </summary>
         IManagedDatabasesOperations ManagedDatabases { get; }
 
+        /// <summary>
+        /// Gets the IManagedDatabaseMoveOperations.
+        /// </summary>
+        IManagedDatabaseMoveOperations ManagedDatabaseMoveOperations { get; }
+
+        /// <summary>
+        /// Gets the IFailoverGroupsOperations.
+        /// </summary>
+        IFailoverGroupsOperations FailoverGroups { get; }
     }
 }

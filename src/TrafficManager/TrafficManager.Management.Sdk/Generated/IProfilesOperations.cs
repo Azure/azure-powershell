@@ -49,6 +49,31 @@ namespace Microsoft.Azure.Management.TrafficManager
         /// </exception>
         Task<AzureOperationResponse<TrafficManagerNameAvailability>> CheckTrafficManagerRelativeDnsNameAvailabilityWithHttpMessagesAsync(string name = default(string), string type = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
+        /// Checks the availability of a Traffic Manager Relative DNS name.
+        /// </summary>
+        /// <param name='name'>
+        /// The name of the resource.
+        /// </param>
+        /// <param name='type'>
+        /// The type of the resource.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<TrafficManagerNameAvailability>> CheckTrafficManagerNameAvailabilityV2WithHttpMessagesAsync(string name = default(string), string type = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
         /// Lists all Traffic Manager profiles within a resource group.
         /// </summary>
         /// <param name='resourceGroupName'>

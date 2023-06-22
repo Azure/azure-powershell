@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 1.0.0
+* General availability for module Az.MachineLearningServices
+
 ## Version 0.1.0
 * First preview release for module Az.MachineLearningServices
 

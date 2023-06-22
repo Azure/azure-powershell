@@ -12,10 +12,10 @@ The topics in this section document the Azure PowerShell cmdlets for Azure Cosmo
 
 ## Az.CosmosDB Cmdlets
 ### [Get-AzCosmosDBAccount](Get-AzCosmosDBAccount.md)
-Get CosmosDB Account.
+Get Cosmos DB Account.
 
 ### [Get-AzCosmosDBAccountKey](Get-AzCosmosDBAccountKey.md)
-Get Keys{"ConnectionKeys", "PrimaryReadOnly" or "Keys"} for the given CosmosDB Account. 
+Get Keys{"ConnectionKeys", "PrimaryReadOnly" or "Keys"} for the given Cosmos DB Account. 
 
 ### [Get-AzCosmosDBCassandraKeyspace](Get-AzCosmosDBCassandraKeyspace.md)
 Gets a CosmosDB Cassandra Keyspace.
@@ -184,10 +184,10 @@ Use this to migrate autoscale throughput to manual throughput and vice versa.
 Use this to migrate autoscale throughput to manual throughput and vice versa.
 
 ### [New-AzCosmosDBAccount](New-AzCosmosDBAccount.md)
-Create a new CosmosDB Account.
+Create a new Cosmos DB Account.
 
 ### [New-AzCosmosDBAccountKey](New-AzCosmosDBAccountKey.md)
-Regenerate a given CosmosDB Account Key.
+Regenerate a given Cosmos DB Account Key.
 
 ### [New-AzCosmosDBCassandraClusterKey](New-AzCosmosDBCassandraClusterKey.md)
 Creates a new CosmosDB Cassandra Cluster Key.
@@ -337,7 +337,7 @@ Create a new Azure Managed Instances for Apache Cassandra data center.
 Creates a new Cosmos DB Service
 
 ### [Remove-AzCosmosDBAccount](Remove-AzCosmosDBAccount.md)
-Remove a CosmosDB Account.
+Remove a Cosmos DB Account.
 
 ### [Remove-AzCosmosDBCassandraKeyspace](Remove-AzCosmosDBCassandraKeyspace.md)
 Deletes a CosmosDB Cassandra Keyspace.
@@ -403,10 +403,10 @@ Restores an existing CosmosDB account (live or deleted) to a given timestamp to 
 Update a CosmosDB account attributes.
 
 ### [Update-AzCosmosDBAccountFailoverPriority](Update-AzCosmosDBAccountFailoverPriority.md)
-Update Failover Region Priority of a CosmosDB Account.
+Update Failover Region Priority of a Cosmos DB Account.
 
 ### [Update-AzCosmosDBAccountRegion](Update-AzCosmosDBAccountRegion.md)
-Update Regions of a CosmosDB Account.
+Update Regions of a Cosmos DB Account.
 
 ### [Update-AzCosmosDBCassandraKeyspace](Update-AzCosmosDBCassandraKeyspace.md)
 Updates the CosmosDB Cassandra Keyspace. Performs a client side patch operation by reading the existing Keyspace.

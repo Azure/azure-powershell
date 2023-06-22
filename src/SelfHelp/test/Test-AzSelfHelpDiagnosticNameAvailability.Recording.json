@@ -1,0 +1,80 @@
+{
+  "Test-AzSelfHelpDiagnosticNameAvailability+[NoContext]+CheckExpanded+$POST+https://management.azure.com//subscriptions/6bded6d5-a6af-43e1-96d3-bf71f6f5f8ba/providers/Microsoft.Help/checkNameAvailability?api-version=2023-06-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com//subscriptions/6bded6d5-a6af-43e1-96d3-bf71f6f5f8ba/providers/Microsoft.Help/checkNameAvailability?api-version=2023-06-01",
+      "Content": "{\r\n  \"name\": \"!9Nu7Yo\\u003eAd\",\r\n  \"type\": \"microsoft.help/diagnostics\"\r\n}",
+      "isContentBase64": false,
+      "Headers": {},
+      "ContentHeaders": {
+        "Content-Type": ["application/json"],
+        "Content-Length": ["74"]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": ["no-cache"],
+        "Pragma": ["no-cache"],
+        "Vary": ["Accept-Encoding"],
+        "x-ms-request-id": ["641f75e9-1d78-4cf0-a300-74e4714c9747"],
+        "x-ms-ratelimit-remaining-subscription-writes": ["1199"],
+        "Server": ["Microsoft-IIS/10.0"],
+        "X-Powered-By": ["ASP.NET"],
+        "x-ms-correlation-request-id": ["641f75e9-1d78-4cf0-a300-74e4714c9747"],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20230511T161719Z:641f75e9-1d78-4cf0-a300-74e4714c9747"
+        ],
+        "Strict-Transport-Security": ["max-age=31536000; includeSubDomains"],
+        "X-Content-Type-Options": ["nosniff"],
+        "Date": ["Thu, 11 May 2023 16:17:19 GMT"]
+      },
+      "ContentHeaders": {
+        "Content-Length": ["22"],
+        "Content-Type": ["application/json; charset=utf-8"],
+        "Expires": ["-1"]
+      },
+      "Content": "{\"nameAvailable\":true}",
+      "isContentBase64": false
+    }
+  },
+  "Test-AzSelfHelpDiagnosticNameAvailability+[NoContext]+Check+$POST+https://management.azure.com//subscriptions/6bded6d5-a6af-43e1-96d3-bf71f6f5f8ba/providers/Microsoft.Help/checkNameAvailability?api-version=2023-01-01-preview+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com//subscriptions/6bded6d5-a6af-43e1-96d3-bf71f6f5f8ba/providers/Microsoft.Help/checkNameAvailability?api-version=2023-01-01-preview",
+      "Content": "{\r\n  \"name\": \"^%Xhb;5\\u003eJ=\",\r\n  \"type\": \"microsoft.help/diagnostics\"\r\n}",
+      "isContentBase64": false,
+      "Headers": {},
+      "ContentHeaders": {
+        "Content-Type": ["application/json"],
+        "Content-Length": ["74"]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": ["no-cache"],
+        "Pragma": ["no-cache"],
+        "Vary": ["Accept-Encoding"],
+        "x-ms-request-id": ["dcc1c100-8d7e-415e-b92a-b52d9687695f"],
+        "x-ms-ratelimit-remaining-subscription-writes": ["1198"],
+        "Server": ["Microsoft-IIS/10.0"],
+        "X-Powered-By": ["ASP.NET"],
+        "x-ms-correlation-request-id": ["dcc1c100-8d7e-415e-b92a-b52d9687695f"],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20230511T161720Z:dcc1c100-8d7e-415e-b92a-b52d9687695f"
+        ],
+        "Strict-Transport-Security": ["max-age=31536000; includeSubDomains"],
+        "X-Content-Type-Options": ["nosniff"],
+        "Date": ["Thu, 11 May 2023 16:17:20 GMT"]
+      },
+      "ContentHeaders": {
+        "Content-Length": ["22"],
+        "Content-Type": ["application/json; charset=utf-8"],
+        "Expires": ["-1"]
+      },
+      "Content": "{\"nameAvailable\":true}",
+      "isContentBase64": false
+    }
+  }
+}

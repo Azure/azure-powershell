@@ -16,9 +16,32 @@ namespace Microsoft.Azure.Management.ContainerService.Models
     /// </summary>
     public static class OSSKU
     {
+        /// <summary>
+        /// Use Ubuntu as the OS for node images.
+        /// </summary>
         public const string Ubuntu = "Ubuntu";
+        /// <summary>
+        /// Use AzureLinux as the OS for node images. Azure Linux is a
+        /// container-optimized Linux distro built by Microsoft, visit
+        /// https://aka.ms/azurelinux for more information.
+        /// </summary>
+        public const string AzureLinux = "AzureLinux";
+        /// <summary>
+        /// Deprecated OSSKU. Microsoft recommends that new deployments choose
+        /// 'AzureLinux' instead.
+        /// </summary>
         public const string CBLMariner = "CBLMariner";
+        /// <summary>
+        /// Use Windows2019 as the OS for node images. Unsupported for system
+        /// node pools. Windows2019 only supports Windows2019 containers; it
+        /// cannot run Windows2022 containers and vice versa.
+        /// </summary>
         public const string Windows2019 = "Windows2019";
+        /// <summary>
+        /// Use Windows2022 as the OS for node images. Unsupported for system
+        /// node pools. Windows2022 only supports Windows2022 containers; it
+        /// cannot run Windows2019 containers and vice versa.
+        /// </summary>
         public const string Windows2022 = "Windows2022";
     }
 }
