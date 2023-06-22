@@ -1787,7 +1787,7 @@ function Test-ListModels
         $accountname = 'csa' + $rgname;
         $skuname = 'S0';
         $accounttype = 'OpenAI';
-        $loc = "westus2";
+        $loc = "eastus";
         
         # generate a account
         New-AzResourceGroup -Name $rgname -Location $loc;
