@@ -36,6 +36,11 @@ namespace Microsoft.Azure.Commands.Network
         {
             base.Execute();
 
+            if(this.AutoLearnPrivateRange.IsPresent && this.PrivateRange == null)
+            {
+                this.PrivateRange = new string[] {};
+            }
+
             var firewallPolicySNAT = new PSAzureFirewallPolicySNAT
             {
                 AutoLearnPrivateRanges = this.AutoLearnPrivateRange.IsPresent ? "Enabled" : "Disabled",

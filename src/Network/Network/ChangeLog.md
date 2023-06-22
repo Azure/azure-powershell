@@ -58,6 +58,8 @@
 * Add optional parameter 'AdminState' to Express Route Virtual Network Gateway
 * Fixed bug that caused `Remove-AzApplicationGatewayAutoscaleConfiguration` to always fails
 * Added read-only property `DefaultPredefinedSslPolicy` in PSApplicationGateway
+* Updated cmdlet to added optional parameter `DomainNameLabelScope` to Public Ip Address
+    - `New-AzPublicIpAddress`
 
 ## Version 5.7.0
 * Onboarded `Microsoft.HardwareSecurityModules/cloudHsmClusters` to private link cmdlets
