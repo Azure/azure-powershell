@@ -338,7 +338,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Cmdlets
             try
             {
                 // work
-                if (ShouldProcess($"Call remote 'SitesDelete' operation"))
+                if (ShouldProcess($"{this.Name} and all dependent resources"))
                 {
                     if (true == MyInvocation?.BoundParameters?.ContainsKey("AsJob"))
                     {

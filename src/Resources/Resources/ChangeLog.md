@@ -19,7 +19,10 @@
 -->
 
 ## Upcoming Release
+* Fixed the incorrect behavior of pagination for `Get-AzTag`
 * Updated API version to 2022-09-01
+* Added Deployment Stacks cmdlets
+* Added support for dynamic parameters when deploying symbolic name templates.
 
 ## Version 6.7.0
 * Added parameter `-CountVariable` for list operations, `odataCount` can now be assigned to this variable [#20982]
@@ -28,7 +31,7 @@
     - `Get-AzADUser`
     - `Get-AzADGroup`
 * Supported polymorphism for `Get-AzADGroupMember`, output of this cmdlet was now `Application` `ServicePrincipal`, `User` and `Group` based on the `odataType` [#19728]
-* Added `-Force` parameter on `Publish-AzBicepModule` for supporting overwriting existing modules. 
+* Added `-Force` parameter on `Publish-AzBicepModule` for supporting overwriting existing modules.
 * Fixed `New-AzADApplication` when multiple redirect url types were provided. [#21108]
 * Fixed `Update-AzADServicePrincipal` when empty array passed for `IdentifierUri` [#21345]
 * Fixed an issue where location header was missing in the response from the service for `New-AzManagedApplication`.
@@ -79,12 +82,12 @@
 
 ## Version 6.3.0
 * Removed unused reference to resource identifier in role assignment create cmdlet
-* Exposed parameter `-Count` for `Get-AzADApplication`, `Get-AzADServicePrincipal`, `Get-AzADGroup` [#19476] 
+* Exposed parameter `-Count` for `Get-AzADApplication`, `Get-AzADServicePrincipal`, `Get-AzADGroup` [#19476]
 
 ## Version 6.2.0
 * Fixed bug `-Password` overwrite `-PasswordProfile` in `New-AzADUser` [#19265]
 * Exposed `EmployeeOrgData` `Manager` for `Get-AzADUSer` [#18205]
-* Exposed parameter `-Count` for `Get-AzADUser` [#16874] 
+* Exposed parameter `-Count` for `Get-AzADUser` [#16874]
 
 ## Version 6.1.0
 * Removed the warning messages for MSGraph migration [#18856]
@@ -103,8 +106,8 @@
 
 ## Version 6.0.0
 * Added cmdlet for Application federated identity credential
-    - `Get-AzADAppFederatedIdentityCredential` 
-    - `New-AzADAppFederatedIdentityCredential` 
+    - `Get-AzADAppFederatedIdentityCredential`
+    - `New-AzADAppFederatedIdentityCredential`
     - `Remove-AzADAppFederatedIdentityCredential`
     - `Update-AzADAppFederatedIdentityCredential`
 * Upgraded and revised `Get-AzLocation` cmdlet:
@@ -117,11 +120,11 @@
     - `Update-AzHierarchySetting`
     - `Remove-AzHierarchySetting`
     - `Get-AzManagementGroupSubscription`
-    - `Get-AzSubscriptionUnderManagementGroup` 
+    - `Get-AzSubscriptionUnderManagementGroup`
     - `Start-AzTenantBackfill`
-    - `Get-AzTenantBackfillStatus` 
+    - `Get-AzTenantBackfillStatus`
     - `Get-AzManagementGroupNameAvailability`
-    - `Get-AzEntity` 
+    - `Get-AzEntity`
 * [Breaking Change] Renamed property `isSyncedFromOnPremis` to `isSyncedFromOnPremise` to align with API spec
 
 ## Version 5.6.0
@@ -140,17 +143,17 @@
     - `Get-AzRoleAssignmentScheduleRequest`
     - `Get-AzRoleEligibilitySchedule`
     - `Get-AzRoleEligibilityScheduleInstance`
-    - `Get-AzRoleEligibilityScheduleRequest` 
+    - `Get-AzRoleEligibilityScheduleRequest`
     - `Get-AzRoleEligibleChildResource`
-    - `Get-AzRoleManagementPolicy` 
+    - `Get-AzRoleManagementPolicy`
     - `Get-AzRoleManagementPolicyAssignment`
-    - `New-AzRoleAssignmentScheduleRequest` 
+    - `New-AzRoleAssignmentScheduleRequest`
     - `New-AzRoleEligibilityScheduleRequest`
-    - `New-AzRoleManagementPolicyAssignment` 
+    - `New-AzRoleManagementPolicyAssignment`
     - `Remove-AzRoleManagementPolicy`
-    - `Remove-AzRoleManagementPolicyAssignment` 
+    - `Remove-AzRoleManagementPolicyAssignment`
     - `Stop-AzRoleAssignmentScheduleRequest`
-    - `Stop-AzRoleEligibilityScheduleRequest` 
+    - `Stop-AzRoleEligibilityScheduleRequest`
     - `Update-AzRoleManagementPolicy`
 * Added `Get-AzResourceManagementPrivateLink`, `Remove-AzResourceManagementPrivateLink`, `Get-AzResourceManagementPrivateLinkAssociation` and  `Remove-AzResourceManagementPrivateLinkAssociation` cmdlets
 

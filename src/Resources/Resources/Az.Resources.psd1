@@ -191,8 +191,14 @@ CmdletsToExport = 'Get-AzProviderOperation', 'Remove-AzRoleAssignment',
                'New-AzManagementGroupHierarchySetting', 
                'Update-AzManagementGroupHierarchySetting', 
                'Get-AzManagementGroupHierarchySetting', 
-               'Remove-AzManagementGroupHierarchySetting'
-
+               'Remove-AzManagementGroupHierarchySetting', 'Get-AzResourceGroupDeploymentStack',
+               'New-AzResourceGroupDeploymentStack',
+               'New-AzSubscriptionDeploymentStack', 'Remove-AzResourceGroupDeploymentStack',
+               'Remove-AzSubscriptionDeploymentStack','Set-AzResourceGroupDeploymentStack',
+               'Set-AzSubscriptionDeploymentStack', 'Get-AzSubscriptionDeploymentStack',
+               'Save-AzResourceGroupDeploymentStackTemplate', 'Save-AzSubscriptionDeploymentStackTemplate',
+               'Save-AzManagementGroupDeploymentStackTemplate', 'Set-AzManagementGroupDeploymentStack',
+               'New-AzManagementGroupDeploymentStack', 'Remove-AzManagementGroupDeploymentStack', 'Get-AzManagementGroupDeploymentStack'
 # Variables to export from this module
 VariablesToExport = '*'
 
@@ -268,4 +274,3 @@ PrivateData = @{
 # DefaultCommandPrefix = ''
 
 }
-

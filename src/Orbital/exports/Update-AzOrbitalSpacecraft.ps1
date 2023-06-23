@@ -28,7 +28,7 @@ Update-AzOrbitalSpacecraft -InputObject $spacecraftObject -Tag @{"123"="abc"}
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IOrbitalIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ISpacecraft
+Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.ISpacecraft
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -37,7 +37,6 @@ To create the parameters described below, construct a hash table containing the 
 INPUTOBJECT <IOrbitalIdentity>: Identity Parameter
   [ContactName <String>]: Contact name.
   [ContactProfileName <String>]: Contact Profile name.
-  [GroundStationName <String>]: Ground Station name.
   [Id <String>]: Resource identity path
   [Location <String>]: The name of Azure region.
   [OperationId <String>]: The ID of an ongoing async operation.
@@ -48,7 +47,7 @@ INPUTOBJECT <IOrbitalIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.orbital/update-azorbitalspacecraft
 #>
 function Update-AzOrbitalSpacecraft {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ISpacecraft])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.ISpacecraft])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -80,7 +79,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ITagsObjectTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.ITagsObjectTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
@@ -90,7 +89,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter()]
@@ -154,7 +154,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
         }         
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {

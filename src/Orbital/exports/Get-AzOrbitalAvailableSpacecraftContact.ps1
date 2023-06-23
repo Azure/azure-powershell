@@ -22,30 +22,30 @@ A contact is available if the spacecraft is visible from the ground station for 
 Returns list of available contacts.
 A contact is available if the spacecraft is visible from the ground station for more than the minimum viable contact duration provided in the contact profile.
 .Example
-$dateS = Get-Date -Day 22 -Month 7
-$dateE = Get-Date -Day 23 -Month 7
+$dateS = Get-Date -Day 9 -Month 5 -AsUTC
+$dateE = Get-Date -Day 10 -Month 5 -AsUTC
 
-Get-AzOrbitalAvailableSpacecraftContact -Name AQUA -ResourceGroupName azpstest-gp -EndTime $dateE -StartTime $dateS -GroundStationName WESTUS2_1 -ContactProfileId /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest-gp/providers/Microsoft.Orbital/contactProfiles/azps-orbital-contactprofile
+Get-AzOrbitalAvailableSpacecraftContact -Name SwedenAQUASpacecraft -ResourceGroupName azpstest-gp -EndTime $dateE -StartTime $dateS -GroundStationName Microsoft_Gavle -ContactProfileId /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest-gp/providers/Microsoft.Orbital/contactProfiles/Sweden-contactprofile
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.IContactParameters
+Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.IContactParameters
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.IAvailableContacts
+Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.IAvailableContacts
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 PARAMETER <IContactParameters>: Parameters that define the contact resource.
+  ContactProfileId <String>: Resource ID.
   EndTime <DateTime>: End time of a contact (ISO 8601 UTC standard).
   GroundStationName <String>: Name of Azure Ground Station.
   StartTime <DateTime>: Start time of a contact (ISO 8601 UTC standard).
-  [ContactProfileId <String>]: Resource ID.
 .Link
 https://learn.microsoft.com/powershell/module/az.orbital/get-azorbitalavailablespacecraftcontact
 #>
 function Get-AzOrbitalAvailableSpacecraftContact {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.IAvailableContacts])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.IAvailableContacts])]
 [CmdletBinding(DefaultParameterSetName='ListExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -71,10 +71,16 @@ param(
 
     [Parameter(ParameterSetName='List', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.IContactParameters]
+    [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.IContactParameters]
     # Parameters that define the contact resource.
     # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
+
+    [Parameter(ParameterSetName='ListExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Category('Body')]
+    [System.String]
+    # Resource ID.
+    ${ContactProfileId},
 
     [Parameter(ParameterSetName='ListExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Category('Body')]
@@ -94,18 +100,13 @@ param(
     # Start time of a contact (ISO 8601 UTC standard).
     ${StartTime},
 
-    [Parameter(ParameterSetName='ListExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Category('Body')]
-    [System.String]
-    # Resource ID.
-    ${ContactProfileId},
-
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter()]
@@ -169,7 +170,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
         }         
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {
