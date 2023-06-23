@@ -24,7 +24,6 @@ using Microsoft.Azure.Commands.Ssh.Properties;
 using Microsoft.Azure.PowerShell.Ssh.Helpers.HybridConnectivity.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
-using System.Threading;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -343,6 +342,9 @@ namespace Microsoft.Azure.Commands.Ssh
         [Parameter(Mandatory = false)]
         public virtual SwitchParameter PassThru { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "When connecting to an Arc resource, do not ask for confirmation before updating the Service Configuration of the Connection Endpoint to match the target port.")]
+        public SwitchParameter Force { get; set; }
+
         #endregion
 
         #region Protected Internal Methods
@@ -539,7 +541,7 @@ namespace Microsoft.Azure.Commands.Ssh
                 if (userChoice == 1)
                 {
                     var installationResults = InvokeCommand.InvokeScript(
-                        script: "Install-module Az.Ssh.ArcProxy -Repository PsGallery -Scope CurrentUser -MaximumVersion 1.9.9 -AllowClobber",
+                        script: "Install-module Az.Ssh.ArcProxy -Repository PsGallery -Scope CurrentUser -MaximumVersion 1.9.9 -AllowClobber -Force",
                         useNewScope: true,
                         writeToPipeline: PipelineResultTypes.Error,
                         input: null,
@@ -691,7 +693,7 @@ namespace Microsoft.Azure.Commands.Ssh
                     Version MinimumVersion = new Version("1.31.0.0");
                     if (ArcServerVersion < MinimumVersion)
                     {
-                        WriteWarning($"The Arc Agent running in the target machine {Name} on Resource Group {ResourceGroupName} is an old version {arcServer.AgentVersion}. Please update to the latest version. For instructions see: https://aka.ms/update-arc-agent.");
+                        WriteWarning($"The Arc Agent running on the target machine {Name} in Resource Group {ResourceGroupName} is an older version than supported, {arcServer.AgentVersion}. Please update to the latest version.");
                     }
                 }
             }
@@ -726,7 +728,7 @@ namespace Microsoft.Azure.Commands.Ssh
             if (Port == null && result.Port != 22)
             {
                 // In this case, we assume that the port might be set in a ssh config file.
-                WriteWarning("Port 22 is not set as de connection port. If you want that to change, provide -Port 22 as a parameter on the first connection or set it manually. See: http://aka.ms/ssharc/allow-ports");
+                WriteWarning(Resources.ServiceConfigNotSetToDefaultPort);
                 return true;
             }
 
@@ -750,27 +752,20 @@ namespace Microsoft.Azure.Commands.Ssh
         private void CreateServiceConfiguration()
         {
             // If the user doesn't provide a port, they might be trying to connect to port 22 or a different port set on ssh_config.
-            string caption = "The port 22 is not allowed for SSH connections in this resource. Would you like to update the current Service Confugration in the endpoint to allow connections to port 22? If you would like to update the Service Configuration to allow connections to a different port, please provide the -Port parameter or manually set up the Service Configuration. For more information see: http://aka.ms/ssharc/allow-ports.";
+            string caption = Resources.ServiceConfigCreateConfirmCaptionDefaultPort;
             int port = 22;
             if (Port != null)
             {
-                caption = $"The port {Port} that you are trying to connect to is not allowed for SSH connections for this resource. Would you like to update the current Service Confugration in the endpoint to allow connections to port {Port}?";
                 port = Int32.Parse(Port);
+                caption = String.Format(Resources.ServiceConfigCreateConfirmCaptionExplicitPort, port);  
             }
 
-            Collection<ChoiceDescription> choices = new Collection<ChoiceDescription> { 
-                new ChoiceDescription("N", "No"),
-                new ChoiceDescription("Y", "Yes") 
-            };
-            int userChoice = Host.UI.PromptForChoice(
-                caption: caption,
-                message: "You must have owner or contributor roles in this resource to be able to change the service configuration. For more information see: http://aka.ms/ssharc/allow-ports",
-                choices: choices,
-                defaultChoice: 0);
-            
-            if (userChoice == 0)
+            string query = String.Format(Resources.ServiceConfigCreateConfirmQuery, port);
+
+            // Need to come back to these messages
+            if (!Force.IsPresent && !ShouldContinue(caption, query))
             {
-                throw new AzPSApplicationException($"SSH connection is not enabled in the target port {Port}. For more information see: http://aka.ms/ssharc/allow-ports");
+                throw new AzPSApplicationException(String.Format(Resources.ServiceConfigCreateConfirmationDenied, port));
             }
 
             ServiceConfigurationResource serviceConfigurationResource = new ServiceConfigurationResource(serviceName: "SSH", port: port);
@@ -782,12 +777,12 @@ namespace Microsoft.Azure.Commands.Ssh
             {
                 if (exception?.Response?.StatusCode == HttpStatusCode.Forbidden)
                 {
-                    throw new AzPSCloudException($"Client is not authorized to create or update Service Configuration in the endpoint for {Name} in the Resource Group {ResourceGroupName}. This is an operation that must be performed by an account with Owner or Contributor role to allow SSH connections to the specified port {Port}. For more information see: https://aka.ms/ssharc/allow-ports.");
+                    throw new AzPSCloudException(String.Format(Resources.ServiceConfigCreateForbidden, Name, ResourceGroupName, port);
                 }
 
                 if (exception?.Body?.Error?.Code != null && exception?.Body?.Error?.Message != null)
-                    throw new AzPSCloudException($"Failed to create service configuration to allow SSH connections to port {Port} on the endpoint for {Name} in the Resource Group {ResourceGroupName}.\nError Code: {exception.Body.Error.Code}\nError Message: {exception.Body.Error.Message}");
-                throw new AzPSCloudException($"Failed to create service configuration to allow SSH connections to port {Port} on the endpoint for {Name} in the Resource Group {ResourceGroupName}.\n{exception}");
+                    throw new AzPSCloudException($"{String.Format(Resources.ServiceConfigCreateCloudFailure, port, Name, ResourceGroupName)}\nError Code: {exception.Body.Error.Code}\nError Message: {exception.Body.Error.Message}");
+                throw new AzPSCloudException($"{String.Format(Resources.ServiceConfigCreateCloudFailure, port, Name, ResourceGroupName)}\n{exception}");
             }
             createdServiceConfig = true;
         }
@@ -808,12 +803,12 @@ namespace Microsoft.Azure.Commands.Ssh
             {
                 if (exception?.Response?.StatusCode == HttpStatusCode.Forbidden)
                 {
-                    throw new AzPSCloudException($"Client is not authorized to create a Default connectivity endpoint for {Name} in the Resource Group {ResourceGroupName}. This is a one-time operation that must be performed by an account with Owner or Contributor role to allow connections to target resource. For more information see: https://aka.ms/ssharc/create-endpoint.");
+                    throw new AzPSCloudException(String.Format(Resources.DefaultEndpointCreateForbidden, Name, ResourceGroupName));
                 }
 
                 if (exception?.Body?.Error?.Code != null && exception?.Body?.Error?.Message != null)
-                    throw new AzPSCloudException($"Failed to create default endpoint for the target Arc Server (see: https://aka.ms/ssharc/create-default-endpoint).\nError Code: {exception.Body.Error.Code}\nError Message: {exception.Body.Error.Message}");
-                throw new AzPSCloudException($"Failed to create default endpoint for the target Arc Server (see: https://aka.ms/ssharc/create-default-endpoint)\n{exception}");
+                    throw new AzPSCloudException($"Failed to create default endpoint for the target Arc Server.\nError Code: {exception.Body.Error.Code}\nError Message: {exception.Body.Error.Message}");
+                throw new AzPSCloudException($"Failed to create default endpoint for the target Arc Server.\n{exception}");
             }
         }
 

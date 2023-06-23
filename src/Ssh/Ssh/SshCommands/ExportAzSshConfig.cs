@@ -77,6 +77,7 @@ namespace Microsoft.Azure.Commands.Ssh
             }
             if (IsArc())
             {
+                CheckIfAgentIsUpToDate();
                 proxyPath = GetProxyPath();
                 UpdateProgressBar(record, $"Downloaded proxy to {proxyPath}", 25);
                 EndpointAccessResource relayInfo = GetRelayInformation();
