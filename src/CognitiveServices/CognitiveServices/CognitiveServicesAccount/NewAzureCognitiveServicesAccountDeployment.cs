@@ -61,16 +61,15 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
             Mandatory = true,
             ParameterSetName = DefaultParameterSet,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Cognitive Services Deployment Sku.")]
-        public Sku Sku { get; set; }
-
-        [Parameter(
-            Position = 4,
-            Mandatory = true,
-            ParameterSetName = DefaultParameterSet,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Cognitive Services Deployment Properties.")]
         public DeploymentProperties Properties { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = DefaultParameterSet,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Cognitive Services Deployment Sku.")]
+        public Sku Sku { get; set; }
 
         public override void ExecuteCmdlet()
         {
