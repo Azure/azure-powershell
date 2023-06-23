@@ -337,4 +337,8 @@ directive:
       format-table:
         properties:
           - Name
+
+  - from: RemoveAzMobileNetworkSite_Delete.cs
+    where: $
+    transform: $ = $.replace('Call remote \'SitesDelete\' operation', '{this.Name} and all dependent resources');
 ```
