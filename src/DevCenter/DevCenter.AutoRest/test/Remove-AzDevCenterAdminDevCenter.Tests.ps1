@@ -15,11 +15,16 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzDevCenterAdminDevCen
 }
 
 Describe 'Remove-AzDevCenterAdminDevCenter' {
-    It 'Delete' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Delete' {
+        Remove-AzDevCenterAdminDevCenter -Name $env.devCenterNameDelete -ResourceGroupName $env.resourceGroup
+        { Get-AzDevCenterAdminDevCenter -ResourceGroupName $env.resourceGroup -Name $env.devCenterNameDelete } | Should -Throw
     }
 
-    It 'DeleteViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'DeleteViaIdentity' {
+        $devCenter = Get-AzDevCenterAdminDevCenter -ResourceGroupName $env.resourceGroup -Name $env.devCenterNameDelete2
+
+        Remove-AzDevCenterAdminDevCenter -InputObject $devCenter
+        { Get-AzDevCenterAdminDevCenter -ResourceGroupName $env.resourceGroup -Name $env.devCenterNameDelete2 } | Should -Throw
+
     }
 }

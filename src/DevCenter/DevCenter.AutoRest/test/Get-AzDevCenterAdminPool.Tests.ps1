@@ -15,15 +15,34 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzDevCenterAdminPool'))
 }
 
 Describe 'Get-AzDevCenterAdminPool' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        $listOfPools = Get-AzDevCenterAdminPool -ResourceGroupName $env.resourceGroup -ProjectName $env.projectName
+        
+        $listOfPools.Count | Should -BeGreaterOrEqual 2
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        $pool = Get-AzDevCenterAdminPool -ResourceGroupName $env.resourceGroup -Name $env.poolName -ProjectName $env.projectName
+
+        $pool.Name | Should -Be $env.poolName
+        $pool.DevBoxDefinitionName | Should -Be $env.devBoxDefinitionName
+        $pool.LocalAdministrator | Should -Be "Enabled"
+        $pool.NetworkConnectionName | Should -Be $env.attachedNetworkName
+        $pool.StopOnDisconnectGracePeriodMinute | Should -Be 60
+        $pool.StopOnDisconnectStatus | Should -Be "Enabled"
+        $pool.LicenseType | Should -Be "Windows_Client"
     }
 
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'GetViaIdentity' {
+        $pool = Get-AzDevCenterAdminPool -ResourceGroupName $env.resourceGroup -Name $env.poolName -ProjectName $env.projectName
+        $pool = Get-AzDevCenterAdminPool -InputObject $pool
+
+        $pool.Name | Should -Be $env.poolName
+        $pool.DevBoxDefinitionName | Should -Be $env.devBoxDefinitionName
+        $pool.LocalAdministrator | Should -Be "Enabled"
+        $pool.NetworkConnectionName | Should -Be $env.attachedNetworkName
+        $pool.StopOnDisconnectGracePeriodMinute | Should -Be 60
+        $pool.StopOnDisconnectStatus | Should -Be "Enabled"
+        $pool.LicenseType | Should -Be "Windows_Client"
     }
 }

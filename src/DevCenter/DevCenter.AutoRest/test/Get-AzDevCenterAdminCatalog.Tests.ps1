@@ -15,15 +15,27 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzDevCenterAdminCatalog')
 }
 
 Describe 'Get-AzDevCenterAdminCatalog' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        $listOfCatalogs = Get-AzDevCenterAdminCatalog -DevCenterName $env.devCenterName -ResourceGroupName $env.resourceGroup
+        $listOfCatalogs.Count | Should -BeGreaterOrEqual 1
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        $catalog = Get-AzDevCenterAdminCatalog -DevCenterName $env.devCenterName -Name $env.catalogName -ResourceGroupName $env.resourceGroup
+        $catalog.Name | Should -Be $env.catalogName
+        $catalog.GitHubBranch | Should -Be $env.gitHubBranch
+        $catalog.GitHubPath | Should -Be $env.gitHubPath
+        $catalog.GitHubSecretIdentifier | Should -Be $env.gitHubSecretIdentifier
+        $catalog.GitHubUri | Should -Be $env.gitHubUri
     }
 
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'GetViaIdentity' {
+        $catalog = Get-AzDevCenterAdminCatalog -DevCenterName $env.devCenterName -Name $env.catalogName -ResourceGroupName $env.resourceGroup
+        $catalog = Get-AzDevCenterAdminCatalog -InputObject $catalog
+        $catalog.Name | Should -Be $env.catalogName
+        $catalog.GitHubBranch | Should -Be $env.gitHubBranch
+        $catalog.GitHubPath | Should -Be $env.gitHubPath
+        $catalog.GitHubSecretIdentifier | Should -Be $env.gitHubSecretIdentifier
+        $catalog.GitHubUri | Should -Be $env.gitHubUri
     }
 }

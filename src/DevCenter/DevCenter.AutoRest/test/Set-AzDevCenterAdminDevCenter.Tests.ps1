@@ -15,11 +15,21 @@ if(($null -eq $TestName) -or ($TestName -contains 'Set-AzDevCenterAdminDevCenter
 }
 
 Describe 'Set-AzDevCenterAdminDevCenter' {
-    It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateExpanded' {
+        $devCenter = Set-AzDevCenterAdminDevCenter -Name $env.devCenterSet -ResourceGroupName $env.resourceGroup -Location $env.location -IdentityType "SystemAssigned"
+        $devCenter.Name | Should -Be $env.devCenterSet
+        $devcenter.IdentityType | Should -Be "SystemAssigned"
     }
 
-    It 'Update' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Update' {
+        $identityHashTable = @{$env.identityId = @{} }
+        $body = @{"Location" = $env.location; "IdentityType" = "UserAssigned"; "IdentityUserAssignedIdentity" = $identityHashTable }
+
+        $devCenter = Set-AzDevCenterAdminDevCenter -Name $env.devCenterSet -ResourceGroupName $env.resourceGroup -Body $body
+        $devCenter.Name | Should -Be $env.devCenterSet
+        $devCenter.IdentityUserAssignedIdentity.Keys[0] | Should -Be $env.identityId
+        $identityHash = $devCenter.IdentityUserAssignedIdentity | ConvertTo-Json | ConvertFrom-Json
+        $identityHash.Keys[0] | Should -Be $env.identityId
+        $devcenter.IdentityType | Should -Be "UserAssigned"
     }
 }

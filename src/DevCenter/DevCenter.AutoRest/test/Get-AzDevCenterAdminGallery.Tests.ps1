@@ -15,15 +15,19 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzDevCenterAdminGallery')
 }
 
 Describe 'Get-AzDevCenterAdminGallery' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        $listOfGalleries = Get-AzDevCenterAdminGallery -ResourceGroupName $env.resourceGroup -DevCenterName $env.devCenterName
+        $listOfGalleries.Count | Should -BeGreaterOrEqual 2
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        $gallery = Get-AzDevCenterAdminGallery -ResourceGroupName $env.resourceGroup -DevCenterName $env.devCenterName -Name "Default"
+        $gallery.Name | Should -Be "Default"
     }
 
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'GetViaIdentity' {
+        $gallery = Get-AzDevCenterAdminGallery -ResourceGroupName $env.resourceGroup -DevCenterName $env.devCenterName -Name "Default"
+        $gallery = Get-AzDevCenterAdminGallery -InputObject $gallery
+        $gallery.Name | Should -Be "Default"
     }
 }

@@ -15,11 +15,24 @@ if(($null -eq $TestName) -or ($TestName -contains 'Set-AzDevCenterAdminEnvironme
 }
 
 Describe 'Set-AzDevCenterAdminEnvironmentType' {
-    It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateExpanded' {
+        $tags = @{"dev" ="test"}
+
+        $envType = Set-AzDevCenterAdminEnvironmentType -DevCenterName $env.devCenterName -Name $env.environmentTypeSet -ResourceGroupName $env.resourceGroup -Tag $tags
+        $envType.Name | Should -Be $env.environmentTypeSet
+        $envTypeTag = $envType.Tag | ConvertTo-Json | ConvertFrom-Json
+        $envTypeTag.Keys[0] | Should -Be "dev"
+        $envTypeTag.Values[0] | Should -Be "test"
     }
 
-    It 'Update' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Update' {
+        $tags = @{"dev1" ="test1"}
+        $body = @{"Tag" = $tags}
+
+        $envType = Set-AzDevCenterAdminEnvironmentType -DevCenterName $env.devCenterName -Name $env.environmentTypeSet -ResourceGroupName $env.resourceGroup -Body $body
+        $envType.Name | Should -Be $env.environmentTypeSet
+        $envTypeTag = $envType.Tag | ConvertTo-Json | ConvertFrom-Json
+        $envTypeTag.Keys[0] | Should -Be "dev1"
+        $envTypeTag.Values[0] | Should -Be "test1"
     }
 }

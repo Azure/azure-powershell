@@ -1,33 +1,61 @@
-if(($null -eq $TestName) -or ($TestName -contains 'Update-AzDevCenterAdminEnvironmentType'))
-{
-  $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
-  if (-Not (Test-Path -Path $loadEnvPath)) {
-      $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
-  }
-  . ($loadEnvPath)
-  $TestRecordingFile = Join-Path $PSScriptRoot 'Update-AzDevCenterAdminEnvironmentType.Recording.json'
-  $currentPath = $PSScriptRoot
-  while(-not $mockingPath) {
-      $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
-      $currentPath = Split-Path -Path $currentPath -Parent
-  }
-  . ($mockingPath | Select-Object -First 1).FullName
+if (($null -eq $TestName) -or ($TestName -contains 'Update-AzDevCenterAdminEnvironmentType')) {
+    $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
+    if (-Not (Test-Path -Path $loadEnvPath)) {
+        $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
+    }
+    . ($loadEnvPath)
+    $TestRecordingFile = Join-Path $PSScriptRoot 'Update-AzDevCenterAdminEnvironmentType.Recording.json'
+    $currentPath = $PSScriptRoot
+    while (-not $mockingPath) {
+        $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
+        $currentPath = Split-Path -Path $currentPath -Parent
+    }
+    . ($mockingPath | Select-Object -First 1).FullName
 }
 
 Describe 'Update-AzDevCenterAdminEnvironmentType' {
-    It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateExpanded' {
+        $tags = @{"dev" = "test" }
+
+        $envType = Update-AzDevCenterAdminEnvironmentType -DevCenterName $env.devCenterName -Name $env.environmentTypeUpdate -ResourceGroupName $env.resourceGroup -Tag $tags
+        $envType.Name | Should -Be $env.environmentTypeUpdate
+        $envTypeTag = $envType.Tag | ConvertTo-Json | ConvertFrom-Json
+        $envTypeTag.Keys[0] | Should -Be "dev"
+        $envTypeTag.Values[0] | Should -Be "test"
     }
 
-    It 'Update' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Update' {
+        $tags = @{"dev1" = "test1" }
+        $body = @{"Tag" = $tags }
+
+        $envType = Update-AzDevCenterAdminEnvironmentType -DevCenterName $env.devCenterName -Name $env.environmentTypeUpdate -ResourceGroupName $env.resourceGroup -Body $body
+        $envType.Name | Should -Be $env.environmentTypeUpdate
+        $envTypeTag = $envType.Tag | ConvertTo-Json | ConvertFrom-Json
+        $envTypeTag.Keys[0] | Should -Be "dev1"
+        $envTypeTag.Values[0] | Should -Be "test1"
     }
 
-    It 'UpdateViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateViaIdentityExpanded' {
+
+        $envTypeInput = Get-AzDevCenterAdminEnvironmentType -ResourceGroupName $env.resourceGroup -DevCenterName $env.devCenterName -Name $env.environmentTypeUpdate
+        $tags = @{"dev" = "test" }
+
+        $envType = Update-AzDevCenterAdminEnvironmentType -InputObject $envTypeInput -Tag $tags
+        $envType.Name | Should -Be $env.environmentTypeUpdate
+        $envTypeTag = $envType.Tag | ConvertTo-Json | ConvertFrom-Json
+        $envTypeTag.Keys[0] | Should -Be "dev"
+        $envTypeTag.Values[0] | Should -Be "test"
     }
 
-    It 'UpdateViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateViaIdentity' {
+        $envTypeInput = Get-AzDevCenterAdminEnvironmentType -ResourceGroupName $env.resourceGroup -DevCenterName $env.devCenterName -Name $env.environmentTypeUpdate
+        $tags = @{"dev1" = "test1" }
+        $body = @{"Tag" = $tags }
+
+        $envType = Update-AzDevCenterAdminEnvironmentType -InputObject $envTypeInput -Body $body
+        $envType.Name | Should -Be $env.environmentTypeUpdate
+        $envTypeTag = $envType.Tag | ConvertTo-Json | ConvertFrom-Json
+        $envTypeTag.Keys[0] | Should -Be "dev1"
+        $envTypeTag.Values[0] | Should -Be "test1"
     }
 }

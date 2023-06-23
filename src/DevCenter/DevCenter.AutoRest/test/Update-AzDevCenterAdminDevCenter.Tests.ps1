@@ -15,19 +15,43 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzDevCenterAdminDevCen
 }
 
 Describe 'Update-AzDevCenterAdminDevCenter' {
-    It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateExpanded' {
+        $devCenter = Update-AzDevCenterAdminDevCenter -Name $env.devCenterUpdate -ResourceGroupName $env.resourceGroup -IdentityType "SystemAssigned"
+        $devCenter.Name | Should -Be $env.devCenterUpdate
+        $devcenter.IdentityType | Should -Be "SystemAssigned"   
+     }
+
+    It 'Update' {
+        $identityHashTable = @{$env.identityId = @{} }
+        $body = @{"IdentityType" = "UserAssigned"; "IdentityUserAssignedIdentity" = $identityHashTable }
+
+        $devCenter = Update-AzDevCenterAdminDevCenter -Name $env.devCenterUpdate -ResourceGroupName $env.resourceGroup -Body $body
+        $devCenter.Name | Should -Be $env.devCenterUpdate
+        $devCenter.IdentityUserAssignedIdentity.Keys[0] | Should -Be $env.identityId
+        $identityHash = $devCenter.IdentityUserAssignedIdentity | ConvertTo-Json | ConvertFrom-Json
+        $identityHash.Keys[0] | Should -Be $env.identityId
+        $devcenter.IdentityType | Should -Be "UserAssigned"
+        }
+
+    It 'UpdateViaIdentityExpanded' {
+        $devCenterInput = Get-AzDevCenterAdminDevCenter -ResourceGroupName $env.resourceGroup -Name $env.devCenterUpdate
+
+        $devCenter = Update-AzDevCenterAdminDevCenter -InputObject $devCenterInput -IdentityType "SystemAssigned"
+        $devCenter.Name | Should -Be $env.devCenterUpdate
+        $devcenter.IdentityType | Should -Be "SystemAssigned" 
     }
 
-    It 'Update' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
+    It 'UpdateViaIdentity' {
+        $devCenterInput = Get-AzDevCenterAdminDevCenter -ResourceGroupName $env.resourceGroup -Name $env.devCenterUpdate
 
-    It 'UpdateViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
+        $identityHashTable = @{$env.identityId = @{} }
+        $body = @{"IdentityType" = "UserAssigned"; "IdentityUserAssignedIdentity" = $identityHashTable }
 
-    It 'UpdateViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        $devCenter = Update-AzDevCenterAdminDevCenter -InputObject $devCenterInput -Body $body
+        $devCenter.Name | Should -Be $env.devCenterUpdate
+        $devCenter.IdentityUserAssignedIdentity.Keys[0] | Should -Be $env.identityId
+        $identityHash = $devCenter.IdentityUserAssignedIdentity | ConvertTo-Json | ConvertFrom-Json
+        $identityHash.Keys[0] | Should -Be $env.identityId
+        $devcenter.IdentityType | Should -Be "UserAssigned"
     }
 }

@@ -15,15 +15,19 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzDevCenterAdminEnvironme
 }
 
 Describe 'Get-AzDevCenterAdminEnvironmentType' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        $listOfEnvTypes = Get-AzDevCenterAdminEnvironmentType -ResourceGroupName $env.resourceGroup -DevCenterName $env.devCenterName
+        $listOfEnvTypes.Count | Should -BeGreaterOrEqual 1
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        $envType = Get-AzDevCenterAdminEnvironmentType -ResourceGroupName $env.resourceGroup -DevCenterName $env.devCenterName -Name $env.environmentTypeName
+        $envType.Name | Should -Be $env.environmentTypeName
     }
 
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'GetViaIdentity' {
+        $envType = Get-AzDevCenterAdminEnvironmentType -ResourceGroupName $env.resourceGroup -DevCenterName $env.devCenterName -Name $env.environmentTypeName
+        $envType = Get-AzDevCenterAdminEnvironmentType -InputObject $envType
+        $envType.Name | Should -Be $env.environmentTypeName
     }
 }

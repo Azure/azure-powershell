@@ -15,19 +15,24 @@ if(($null -eq $TestName) -or ($TestName -contains 'Invoke-AzDevCenterAdminExecut
 }
 
 Describe 'Invoke-AzDevCenterAdminExecuteCheckNameAvailability' {
-    It 'ExecuteExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'ExecuteExpanded' {
+        $avail = Invoke-AzDevCenterAdminExecuteCheckNameAvailability -Name $env.devCenterName -Type "Microsoft.devcenter/devcenters"
+        $avail.Message | Should -Be "Failed to create the DevCenter as the name is already in use. DevCenter names must be unique within the tenant. Retry the operation with a different DevCenter name"
+
+        $unusedName =  $env.devCenterName + "11"
+        $avail = Invoke-AzDevCenterAdminExecuteCheckNameAvailability -Name $unusedName -Type "Microsoft.devcenter/devcenters"
+        $avail.NameAvailable | Should -Be "True"
     }
 
-    It 'Execute' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
+    It 'Execute' {
+        $hash1 =  @{"Name" = $env.devCenterName; "Type" = "Microsoft.devcenter/devcenters" }
+        $unusedName =  $env.devCenterName + "11"
+        $hash2 =  @{"Name" = $unusedName; "Type" = "Microsoft.devcenter/devcenters" }
 
-    It 'ExecuteViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
+        $avail = Invoke-AzDevCenterAdminExecuteCheckNameAvailability -NameAvailabilityRequest $hash1
+        $avail.Message | Should -Be "Failed to create the DevCenter as the name is already in use. DevCenter names must be unique within the tenant. Retry the operation with a different DevCenter name"
 
-    It 'ExecuteViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        $avail = Invoke-AzDevCenterAdminExecuteCheckNameAvailability -NameAvailabilityRequest $hash2
+        $avail.NameAvailable | Should -Be "True" #check if this works or should be true
     }
 }

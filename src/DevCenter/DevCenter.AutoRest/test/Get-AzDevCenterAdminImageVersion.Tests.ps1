@@ -15,15 +15,21 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzDevCenterAdminImageVers
 }
 
 Describe 'Get-AzDevCenterAdminImageVersion' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        $listOfImageVersions = Get-AzDevCenterAdminImageVersion -ResourceGroupName $env.resourceGroup -DevCenterName $env.devCenterName -ImageName $env.imageName -GalleryName "Default"
+        $listOfImageVersions.Count | Should -Be 1
+
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        $imageVersion = Get-AzDevCenterAdminImageVersion -ResourceGroupName $env.resourceGroup -DevCenterName $env.devCenterName -ImageName $env.imageName -VersionName $env.imageVersion -GalleryName "Default"
+        $imageVersion.Name | Should -Be $env.imageVersion
+
     }
 
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'GetViaIdentity' {
+        $imageVersion = Get-AzDevCenterAdminImageVersion -ResourceGroupName $env.resourceGroup -DevCenterName $env.devCenterName -ImageName $env.imageName -VersionName $env.imageVersion -GalleryName "Default"
+        $imageVersion = Get-AzDevCenterAdminImageVersion -InputObject $imageVersion
+        $imageVersion.Name | Should -Be $env.imageVersion
     }
 }

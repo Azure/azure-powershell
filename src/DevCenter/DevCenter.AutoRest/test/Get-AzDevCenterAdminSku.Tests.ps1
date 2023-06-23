@@ -15,7 +15,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzDevCenterAdminSku'))
 }
 
 Describe 'Get-AzDevCenterAdminSku' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        $skus = Get-AzDevCenterAdminSku
+        $skus.Count | Should -Be 24
     }
 }

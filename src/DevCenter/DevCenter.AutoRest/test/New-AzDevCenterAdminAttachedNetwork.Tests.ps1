@@ -15,19 +15,19 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzDevCenterAdminAttachedN
 }
 
 Describe 'New-AzDevCenterAdminAttachedNetwork' {
-    It 'CreateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'CreateExpanded' {
+        $attachedNetwork = New-AzDevCenterAdminAttachedNetwork -ConnectionName $env.attachedNetworkNew -DevCenterName $env.devCenterName -ResourceGroupName $env.resourceGroup -NetworkConnectionId $env.networkConnectionId
+        $attachedNetwork.Name | Should -Be $env.attachedNetworkNew
+        $attachedNetwork.NetworkConnectionId | Should -Be $env.networkConnectionId
+        $attachedNetwork.DomainJoinType | Should -Be "AzureADJoin"
     }
 
-    It 'Create' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Create' {
+        $body = @{"NetworkConnectionId" = $env.networkConnectionId}
+        $attachedNetwork = New-AzDevCenterAdminAttachedNetwork -ConnectionName $env.attachedNetworkNew2 -DevCenterName $env.devCenterName -ResourceGroupName $env.resourceGroup -Body $body
+        $attachedNetwork.Name | Should -Be $env.attachedNetworkNew2
+        $attachedNetwork.NetworkConnectionId | Should -Be $env.networkConnectionId
+        $attachedNetwork.DomainJoinType | Should -Be "AzureADJoin"
     }
 
-    It 'CreateViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'CreateViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
 }

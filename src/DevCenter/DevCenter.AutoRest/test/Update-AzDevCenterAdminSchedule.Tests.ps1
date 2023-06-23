@@ -15,19 +15,49 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzDevCenterAdminSchedu
 }
 
 Describe 'Update-AzDevCenterAdminSchedule' {
-    It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
+    It 'UpdateExpanded' {
+        $schedule = New-AzDevCenterAdminSchedule -PoolName $env.scheduleUpdate -ProjectName $env.projectName -ResourceGroupName $env.resourceGroup -State "Disabled" -Time "17:30" -TimeZone "America/New_York"
+        $schedule.Frequency | Should -Be "Daily"
+        $schedule.Name | Should -Be "default"
+        $schedule.PropertiesType | Should -Be "StopDevBox"
+        $schedule.State | Should -Be "Disabled"
+        $schedule.Time | Should -Be "17:30"
+        $schedule.TimeZone | Should -Be "America/New_York"
+        }
 
-    It 'Update' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
+    It 'Update' {
+        $body = @{"State" = "Enabled"; "Time" = $env.time; "TimeZone" = $env.timeZone }
+        $schedule = New-AzDevCenterAdminSchedule -PoolName $env.scheduleUpdate -ProjectName $env.projectName -ResourceGroupName $env.resourceGroup -Body $body
+        $schedule.Frequency | Should -Be "Daily"
+        $schedule.Name | Should -Be "default"
+        $schedule.PropertiesType | Should -Be "StopDevBox"
+        $schedule.State | Should -Be "Enabled"
+        $schedule.Time | Should -Be "18:30"
+        $schedule.TimeZone | Should -Be "America/Los_Angeles"
+         }
 
-    It 'UpdateViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
+    It 'UpdateViaIdentityExpanded' {
+        $scheduleInput = Get-AzDevCenterAdminSchedule -PoolName $env.scheduleUpdate -ProjectName $env.projectName -ResourceGroupName $env.resourceGroup
 
-    It 'UpdateViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
+        $schedule = New-AzDevCenterAdminSchedule -InputObject $scheduleInput -State "Disabled" -Time "17:30" -TimeZone "America/New_York"
+        $schedule.Frequency | Should -Be "Daily"
+        $schedule.Name | Should -Be "default"
+        $schedule.PropertiesType | Should -Be "StopDevBox"
+        $schedule.State | Should -Be "Disabled"
+        $schedule.Time | Should -Be "17:30"
+        $schedule.TimeZone | Should -Be "America/New_York"
+        }
+
+    It 'UpdateViaIdentity' {
+        $scheduleInput = Get-AzDevCenterAdminSchedule -PoolName $env.scheduleUpdate -ProjectName $env.projectName -ResourceGroupName $env.resourceGroup
+
+        $body = @{"State" = "Enabled"; "Time" = $env.time; "TimeZone" = $env.timeZone }
+        $schedule = New-AzDevCenterAdminSchedule -InputObject $scheduleInput -Body $body
+        $schedule.Frequency | Should -Be "Daily"
+        $schedule.Name | Should -Be "default"
+        $schedule.PropertiesType | Should -Be "StopDevBox"
+        $schedule.State | Should -Be "Enabled"
+        $schedule.Time | Should -Be "18:30"
+        $schedule.TimeZone | Should -Be "America/Los_Angeles"
+        }
 }

@@ -15,7 +15,14 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzDevCenterAdminNetworkCo
 }
 
 Describe 'Get-AzDevCenterAdminNetworkConnectionOutboundNetworkDependencyEndpoint' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        $listOfEndpoints = Get-AzDevCenterAdminNetworkConnectionOutboundNetworkDependencyEndpoint -ResourceGroupName $env.resourceGroup -NetworkConnectionName $env.networkConnectionName
+        
+        $listOfEndpoints.Count | Should -Be 4
+        $listOfEndpoints[0].Category | Should -Be "Azure Virtual Desktop Commercial Cloud"
+        $listOfEndpoints[1].Category | Should -Be "Azure Virtual Desktop Optional"
+        $listOfEndpoints[2].Category | Should -Be "Intune"
+        $listOfEndpoints[3].Category | Should -Be "Cloud PC"
+
     }
 }

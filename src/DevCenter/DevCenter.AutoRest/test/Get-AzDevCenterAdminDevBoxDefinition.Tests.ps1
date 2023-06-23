@@ -15,27 +15,35 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzDevCenterAdminDevBoxDef
 }
 
 Describe 'Get-AzDevCenterAdminDevBoxDefinition' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        $listOfDevBoxDefinitions = Get-AzDevCenterAdminDevBoxDefinition -ResourceGroupName $env.resourceGroup -DevCenterName $env.devCenterName
+        
+        $listOfDevBoxDefinitions.Count | Should -BeGreaterOrEqual 1
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        $devBoxDefinition = Get-AzDevCenterAdminDevBoxDefinition -ResourceGroupName $env.resourceGroup -DevCenterName $env.devCenterName -Name $env.devBoxDefinitionName
+        $devBoxDefinition.Name | Should -Be $env.devBoxDefinitionName
+        $devBoxDefinition.ImageReferenceId | Should -Be $env.imageReferenceId
+        $devBoxDefinition.OSStorageType | Should -Be $env.osStorageType
+        $devBoxDefinition.SkuName | Should -Be $env.skuName
+        $devBoxDefinition.ImageReferenceExactVersion | Should -Be "1.0.0"
+        $devBoxDefinition.HibernateSupport | Should -Be "Enabled"
     }
 
-    It 'Get1' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get1' {
+        $devBoxDefinition = Get-AzDevCenterAdminDevBoxDefinition -ResourceGroupName $env.resourceGroup -ProjectName $env.projectName -Name $env.devBoxDefinitionName
+        $devBoxDefinition.Name | Should -Be $env.devBoxDefinitionName
+        $devBoxDefinition.ImageReferenceId | Should -Be $env.imageReferenceId
+        $devBoxDefinition.OSStorageType | Should -Be $env.osStorageType
+        $devBoxDefinition.SkuName | Should -Be $env.skuName
+        $devBoxDefinition.ImageReferenceExactVersion | Should -Be "1.0.0"
+        $devBoxDefinition.HibernateSupport | Should -Be "Enabled"
     }
 
-    It 'List1' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'GetViaIdentity1' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List1' {
+        $listOfDevBoxDefinitions = Get-AzDevCenterAdminDevBoxDefinition -ResourceGroupName $env.resourceGroup -ProjectName $env.projectName
+        
+        $listOfDevBoxDefinitions.Count | Should -BeGreaterOrEqual 1 
     }
 }

@@ -36,9 +36,9 @@ require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
-  - $(this-folder)/../..//specification/devcenter/data-plane/Microsoft.DevCenter/stable/2023-04-01/devbox.json
-  - $(this-folder)/../..//specification/devcenter/data-plane/Microsoft.DevCenter/stable/2023-04-01/devcenter.json
-  - $(this-folder)/../..//specification/devcenter/data-plane/Microsoft.DevCenter/stable/2023-04-01/environments.json
+  - $(this-folder)/../../specification/devcenter/data-plane/Microsoft.DevCenter/stable/2023-04-01/devbox.json
+  - $(this-folder)/../../specification/devcenter/data-plane/Microsoft.DevCenter/stable/2023-04-01/devcenter.json
+  - $(this-folder)/../../specification/devcenter/data-plane/Microsoft.DevCenter/stable/2023-04-01/environments.json
 title: DevCenterdata
 subject-prefix: DevCenter
 endpoint-resource-id-key-name: https://devcenter.azure.com
@@ -59,12 +59,14 @@ directive:
       subject: ^(.*)(EnvironmentCatalog)(.*)$
     set:
       subject: Catalog
+# Matches any subject that is not strictly "DevBox" or "Environment" (eg. still includes DevBoxAction)
   - where:
       subject: ^(?!DevBox$|Environment$).*
       parameter-name: UserId
     set:
       default:
         script: '"me"'
+# Matches cmdlets with exact subject DevBox or Environment, but not with verb Get
   - where:
       verb: ^(?!Get$)
       subject: ^(DevBox|Environment)$

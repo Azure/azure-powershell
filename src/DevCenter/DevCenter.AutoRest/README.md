@@ -36,9 +36,9 @@ require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
-  - $(repo)/specification/devcenter/resource-manager/Microsoft.DevCenter/stable/2023-04-01/commonDefinitions.json
-  - $(repo)/specification/devcenter/resource-manager/Microsoft.DevCenter/stable/2023-04-01/devcenter.json
-  - $(repo)/specification/devcenter/resource-manager/Microsoft.DevCenter/stable/2023-04-01/vdi.json
+  - $(this-folder)/../../specification/devcenter/resource-manager/Microsoft.DevCenter/stable/2023-04-01/commonDefinitions.json
+  - $(this-folder)/../../specification/devcenter/resource-manager/Microsoft.DevCenter/stable/2023-04-01/devcenter.json
+  - $(this-folder)/../../specification/devcenter/resource-manager/Microsoft.DevCenter/stable/2023-04-01/vdi.json
 directive:
   - where:
       subject: ^(.*)
@@ -63,15 +63,15 @@ directive:
       default:
         script: '"StopDevBox"'
   - where:
-      verb: ^(?!Get$)
       subject: Schedule
       parameter-name: Name
     hide: true
     set:
       default:
         script: '"default"'
+# Matches any verb that is not Remove for Schedule
   - where:
-      verb: Get
+      verb: ^(?!Remove$)
       subject: Schedule
     hide: true
   - where:
@@ -81,6 +81,19 @@ directive:
     set:
       default:
         script: '"Windows_Client"'
+  - where:
+      verb: New
+      subject: Pool
+      parameter-name: LicenseType
+    hide: true
+    set:
+      default:
+        script: '"Windows_Client"'
+# Matches any verb that is not Get or Remove for Pool
+  - where:
+      verb: ^(?!Get$|Remove$)
+      subject: Pool
+    hide: true
   - where:
       subject: ^(.*)
     set:

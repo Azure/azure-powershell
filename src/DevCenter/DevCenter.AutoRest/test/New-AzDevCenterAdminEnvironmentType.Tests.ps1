@@ -15,19 +15,26 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzDevCenterAdminEnvironme
 }
 
 Describe 'New-AzDevCenterAdminEnvironmentType' {
-    It 'CreateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'CreateExpanded' {
+        $tags = @{"dev" ="test"}
+
+        $envType = New-AzDevCenterAdminEnvironmentType -DevCenterName $env.devCenterName -Name $env.envTypeNew -ResourceGroupName $env.resourceGroup -Tag $tags
+        $envType.Name | Should -Be $env.envTypeNew
+        $envTypeTag = $envType.Tag | ConvertTo-Json | ConvertFrom-Json
+        $envTypeTag.Keys[0] | Should -Be "dev"
+        $envTypeTag.Values[0] | Should -Be "test"
+
     }
 
-    It 'Create' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Create' {
+        $tags = @{"dev" ="test"}
+        $body = @{"Tag" = $tags}
+
+        $envType = New-AzDevCenterAdminEnvironmentType -DevCenterName $env.devCenterName -Name $env.envTypeNew2 -ResourceGroupName $env.resourceGroup -Body $body
+        $envType.Name | Should -Be $env.envTypeNew2
+        $envTypeTag = $envType.Tag | ConvertTo-Json | ConvertFrom-Json
+        $envTypeTag.Keys[0] | Should -Be "dev"
+        $envTypeTag.Values[0] | Should -Be "test"
     }
 
-    It 'CreateViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'CreateViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
 }

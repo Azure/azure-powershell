@@ -15,19 +15,19 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzDevCenterAdminGallery')
 }
 
 Describe 'New-AzDevCenterAdminGallery' {
-    It 'CreateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'CreateExpanded' {
+        $gallery = New-AzDevCenterAdminGallery -DevCenterName $env.devCenterName -Name $env.galleryNew -ResourceGroupName $env.resourceGroup -GalleryResourceId $env.sigId4
+        $gallery.Name | Should -Be $env.galleryNew
+        $gallery.ResourceId | Should -Be $env.sigId4
+
     }
 
-    It 'Create' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Create'{
+        $body = @{"ResourceId" = $env.sigId5}
+        $gallery = New-AzDevCenterAdminGallery -DevCenterName $env.devCenterName -Name $env.galleryNew2 -ResourceGroupName $env.resourceGroup -Body $body
+        $gallery.Name | Should -Be $env.galleryNew2
+        $gallery.ResourceId | Should -Be $env.sigId5
+
     }
 
-    It 'CreateViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'CreateViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
 }
