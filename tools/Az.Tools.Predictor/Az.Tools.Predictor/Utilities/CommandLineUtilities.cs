@@ -43,7 +43,20 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Utilities
             // parse the user input passed from PSReadLine.
 
             var predictionContext = PredictionContext.Create(commandLine);
-            var relatedAsts = predictionContext.RelatedAsts;
+
+            return GetCommandAst(predictionContext);
+        }
+
+        /// <summary>
+        /// Gets the CommandAst for the whole command line.
+        /// </summary>
+        /// <param name="commandLine">The command line to get the CommandAst.</param>
+        /// <returns>The CommandAst.</returns>
+        /// <remarks>This parses the command line and returns the last one it encounters. The reason to choose the last one is because <see cref="AzPredictorService.GetSuggestion" /> returns suggestions to the last one too.
+        /// It doesn't work well in a complex command line, for example: <c>Get-AzContext | Set-AzContext</c> will return <c>Set-AzContext</c>.</remarks>
+        public static CommandAst GetCommandAst(PredictionContext commandLine)
+        {
+            var relatedAsts = commandLine.RelatedAsts;
 
             for (var i = relatedAsts.Count - 1; i >= 0; --i)
             {
@@ -56,6 +69,16 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Utilities
                     // Some are wrapped inside a ScriptBlockAst (when there is a command at the end),
                     // e.g. Add-AzImageDataDisk -Image $imageConfig -Lun 1 -BlobUri $dataDiskVhdUri1;
                     var extracted = ExtractCommandAstFromScriptBlockAst(s);
+                    if (extracted != null)
+                    {
+                        return extracted;
+                    }
+                }
+                else if (relatedAsts[i] is ParenExpressionAst p)
+                {
+                    // Some are wrapped inside parenthesis
+                    // e.g. Remove-AzRoleAssignment -RoleDefinitionId (Get-AzRoleAssignment -ObjectId xxx")
+                    var extracted = ExtractCommandAstFromStatement(p.Pipeline);
                     if (extracted != null)
                     {
                         return extracted;
@@ -163,20 +186,36 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Utilities
 
         private static CommandAst ExtractCommandAstFromScriptBlockAst(ScriptBlockAst scriptAst)
         {
-            foreach (var statement in scriptAst.EndBlock.Statements)
+            if (scriptAst.EndBlock is not null)
             {
-                if (statement is CommandAst commandAst)
+                for (var i = scriptAst.EndBlock.Statements.Count - 1; i >= 0; --i)
                 {
-                    return commandAst;
-                }
-                else if (statement is PipelineAst pipelineAst)
-                {
-                    foreach (var pipeline in pipelineAst.PipelineElements)
+                    var statement = scriptAst.EndBlock.Statements[i];
+                    var commandAst = ExtractCommandAstFromStatement(statement);
+
+                    if(commandAst is not null)
                     {
-                        if (pipeline is CommandAst commandAst2)
-                        {
-                            return commandAst2;
-                        }
+                        return commandAst;
+                    }
+                }
+            }
+
+            return null;
+        }
+
+        private static CommandAst ExtractCommandAstFromStatement(StatementAst statement)
+        {
+            if (statement is CommandAst commandAst)
+            {
+                return commandAst;
+            }
+            else if (statement is PipelineAst pipelineAst)
+            {
+                foreach (var pipeline in pipelineAst.PipelineElements)
+                {
+                    if (pipeline is CommandAst commandAst2)
+                    {
+                        return commandAst2;
                     }
                 }
             }
