@@ -82,20 +82,18 @@ function setupEnv() {
     $devCenterSet = RandomString -allChars $false -len 6
     $environmentTypeSet = RandomString -allChars $false -len 6
     $networkConnectionSet = RandomString -allChars $false -len 6
+    $networkConnectionHybridSet = RandomString -allChars $false -len 6
     $poolSet = RandomString -allChars $false -len 6
     $projectSet = RandomString -allChars $false -len 6
     $projectEnvironmentTypeSet = RandomString -allChars $false -len 6
     $scheduleSet = RandomString -allChars $false -len 6
-
-    $networkConnectionStart = RandomString -allChars $false -len 6
-    $poolStart = RandomString -allChars $false -len 6
-    $catalogSync = RandomString -allChars $false -len 6
 
     $catalogUpdate = RandomString -allChars $false -len 6
     $devBoxDefinitionUpdate = RandomString -allChars $false -len 6
     $devCenterUpdate = RandomString -allChars $false -len 6
     $environmentTypeUpdate = RandomString -allChars $false -len 6
     $networkConnectionUpdate = RandomString -allChars $false -len 6
+    $networkConnectionHybridUpdate = RandomString -allChars $false -len 6
     $poolUpdate = RandomString -allChars $false -len 6
     $projectUpdate = RandomString -allChars $false -len 6
     $projectEnvironmentTypeUpdate = RandomString -allChars $false -len 6
@@ -106,20 +104,18 @@ function setupEnv() {
     $env.Add("devCenterSet", $devCenterSet)
     $env.Add("environmentTypeSet", $environmentTypeSet)
     $env.Add("networkConnectionSet", $networkConnectionSet)
+    $env.Add("networkConnectionHybridSet", $networkConnectionHybridSet)
     $env.Add("poolSet", $poolSet)
     $env.Add("projectSet", $projectSet)
     $env.Add("projectEnvironmentTypeSet", $projectEnvironmentTypeSet)
     $env.Add("scheduleSet", $scheduleSet)
-
-    $env.Add("networkConnectionStart", $networkConnectionStart)
-    $env.Add("poolStart", $poolStart)
-    $env.Add("catalogSync", $catalogSync)
 
     $env.Add("catalogUpdate", $catalogUpdate)
     $env.Add("devBoxDefinitionUpdate", $devBoxDefinitionUpdate)
     $env.Add("devCenterUpdate", $devCenterUpdate)
     $env.Add("environmentTypeUpdate", $environmentTypeUpdate)
     $env.Add("networkConnectionUpdate", $networkConnectionUpdate)
+    $env.Add("networkConnectionHybridUpdate", $networkConnectionHybridUpdate)
     $env.Add("poolUpdate", $poolUpdate)
     $env.Add("projectUpdate", $projectUpdate)
     $env.Add("projectEnvironmentTypeUpdate", $projectEnvironmentTypeUpdate)
@@ -129,10 +125,11 @@ function setupEnv() {
     $gitHubSecretIdentifier = "https://dummyVault/dummy/00000000"
     $keyVaultName = "dummy"
     $gitHubUri = "https://github.com/fake/fake.git"
-    $gitHubSecretIdentier2 = "https://dummyVault/dummy/00000000"
+    $gitHubSecretIdentifier2 = "https://dummyVault/dummy/00000000"
 
-    $env.Add("gitHubSecretIdentier2", $gitHubSecretIdentier2)
+    $env.Add("gitHubSecretIdentifier2", $gitHubSecretIdentifier2)
 
+    Connect-AzAccount -Tenant $env.Tenant -AccountId amlim@microsoft.com
     New-AzResourceGroup -Name $resourceGroup -Location "canadacentral"
 
     $attachedNetworkNew = RandomString -allChars $false -len 4
@@ -312,6 +309,28 @@ function setupEnv() {
     $devboxTemplate.parameters.devCenterNameDelete2.value = $devCenterNameDelete2
     $devBoxTemplate.parameters.poolForScheduleDelete.value = $poolForScheduleDelete
     $devBoxTemplate.parameters.poolForScheduleDelete2.value = $poolForScheduleDelete2
+
+    $devboxTemplate.parameters.catalogSet.value = $catalogSet
+    $devboxTemplate.parameters.devBoxDefinitionSet.value = $devBoxDefinitionSet
+    $devboxTemplate.parameters.devCenterSet.value = $devCenterSet
+    $devboxTemplate.parameters.environmentTypeSet.value = $environmentTypeSet
+    $devboxTemplate.parameters.networkConnectionSet.value = $networkConnectionSet
+    $devboxTemplate.parameters.networkConnectionHybridSet.value = $networkConnectionHybridSet
+
+    $devboxTemplate.parameters.poolSet.value = $poolSet
+    $devboxTemplate.parameters.projectSet.value = $projectSet
+    $devboxTemplate.parameters.projectEnvironmentTypeSet.value = $projectEnvironmentTypeSet
+    $devboxTemplate.parameters.scheduleSet.value = $scheduleSet
+    $devBoxTemplate.parameters.catalogUpdate.value = $catalogUpdate
+    $devBoxTemplate.parameters.devBoxDefinitionUpdate.value = $devBoxDefinitionUpdate
+    $devBoxTemplate.parameters.devCenterUpdate.value = $devCenterUpdate
+    $devBoxTemplate.parameters.environmentTypeUpdate.value = $environmentTypeUpdate
+    $devBoxTemplate.parameters.networkConnectionUpdate.value = $networkConnectionUpdate
+    $devBoxTemplate.parameters.networkConnectionHybridUpdate.value = $networkConnectionHybridUpdate
+    $devBoxTemplate.parameters.poolUpdate.value = $poolUpdate
+    $devBoxTemplate.parameters.projectUpdate.value = $projectUpdate
+    $devBoxTemplate.parameters.projectEnvironmentTypeUpdate.value = $projectEnvironmentTypeUpdate
+    $devBoxTemplate.parameters.scheduleUpdate.value = $scheduleUpdate
 
     Set-Content -Path .\test\deploymentTemplates\parameter.json -Value (ConvertTo-Json $devboxTemplate)
 

@@ -15,11 +15,11 @@ if(($null -eq $TestName) -or ($TestName -contains 'Start-AzDevCenterAdminNetwork
 }
 
 Describe 'Start-AzDevCenterAdminNetworkConnectionHealthCheck' {
-    It 'Run' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Run' {
+        Start-AzDevCenterAdminNetworkConnectionHealthCheck -NetworkConnectionName $env.networkConnectionName -ResourceGroupName $env.resourceGroup
     }
 
-    It 'RunViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'RunViaIdentity' {
+        Start-AzDevCenterAdminNetworkConnectionHealthCheck -InputObject @{"NetworkConnectionName" = $env.networkConnectionName; "ResourceGroupName" = $env.resourceGroup; "SubscriptionId" = $env.SubscriptionId}
     }
 }

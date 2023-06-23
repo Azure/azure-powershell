@@ -34,6 +34,7 @@ Describe 'New-AzDevCenterAdminProjectEnvironmentType' {
         $envType.IdentityUserAssignedIdentity.Values[0].PrincipalId | Should -Be $env.identityPrincipalId
         $envType.UserRoleAssignment.Keys[0] | Should -Be $env.identityPrincipalId
         $envType.Name | Should -Be $env.envForProjEnvTypeNew
+        $envType.Status | Should -Be "Enabled"
     }
 
 
@@ -60,6 +61,8 @@ Describe 'New-AzDevCenterAdminProjectEnvironmentType' {
         $envType.IdentityUserAssignedIdentity.Values[0].PrincipalId | Should -Be $env.identityPrincipalId
         $envType.UserRoleAssignment.Keys[0] | Should -Be $env.identityPrincipalId
         $envType.Name | Should -Be $env.envForProjEnvTypeNew2
+        $envType.Status | Should -Be "Enabled"
+
     }
 }
 

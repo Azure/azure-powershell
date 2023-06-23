@@ -22,7 +22,7 @@ Describe 'New-AzDevCenterAdminGallery' {
 
     }
 
-    It 'Create' {
+    It 'Create'{
         $body = @{"ResourceId" = $env.sigId5}
         $gallery = New-AzDevCenterAdminGallery -DevCenterName $env.devCenterName -Name $env.galleryNew2 -ResourceGroupName $env.resourceGroup -Body $body
         $gallery.Name | Should -Be $env.galleryNew2

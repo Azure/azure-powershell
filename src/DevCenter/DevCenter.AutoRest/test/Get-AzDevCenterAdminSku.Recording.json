@@ -7,7 +7,7 @@
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "65" ],
-        "x-ms-client-request-id": [ "6cdde54a-f83a-4039-a357-7a7346552277" ],
+        "x-ms-client-request-id": [ "5ae80e17-83fe-47b6-a035-a150a9da260a" ],
         "CommandName": [ "Get-AzDevCenterAdminSku" ],
         "FullCommandName": [ "Get-AzDevCenterAdminSku_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -22,13 +22,14 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11937" ],
-        "x-ms-request-id": [ "7b8437ee-9e69-4449-9d66-90401ff437e2" ],
-        "x-ms-correlation-request-id": [ "7b8437ee-9e69-4449-9d66-90401ff437e2" ],
-        "x-ms-routing-request-id": [ "WESTUS:20230621T161936Z:7b8437ee-9e69-4449-9d66-90401ff437e2" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11871" ],
+        "x-ms-request-id": [ "f9b1dd8e-433e-4212-ac1f-42cb2553daf3" ],
+        "x-ms-correlation-request-id": [ "f9b1dd8e-433e-4212-ac1f-42cb2553daf3" ],
+        "x-ms-routing-request-id": [ "WESTUS:20230623T001015Z:f9b1dd8e-433e-4212-ac1f-42cb2553daf3" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Wed, 21 Jun 2023 16:19:36 GMT" ]
+        "Date": [ "Fri, 23 Jun 2023 00:10:15 GMT" ],
+        "Connection": [ "close" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json; charset=utf-8" ],

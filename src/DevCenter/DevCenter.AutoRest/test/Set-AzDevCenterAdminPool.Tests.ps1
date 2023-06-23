@@ -15,11 +15,26 @@ if(($null -eq $TestName) -or ($TestName -contains 'Set-AzDevCenterAdminPool'))
 }
 
 Describe 'Set-AzDevCenterAdminPool' {
-    It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
+    It 'UpdateExpanded' {
+        $pool = Set-AzDevCenterAdminPool -Name $env.poolSet -ProjectName $env.projectName -ResourceGroupName $env.resourceGroup -Location $env.location -DevBoxDefinitionName $env.devBoxDefinitionSet -LocalAdministrator "Disabled" -NetworkConnectionName $env.attachedNetworkName -StopOnDisconnectGracePeriodMinute 80 -StopOnDisconnectStatus "Disabled"
+        $pool.Name | Should -Be $env.poolSet
+        $pool.DevBoxDefinitionName | Should -Be $env.devBoxDefinitionSet
+        $pool.LocalAdministrator | Should -Be "Disabled"
+        $pool.NetworkConnectionName | Should -Be $env.attachedNetworkName
+        $pool.StopOnDisconnectGracePeriodMinute | Should -Be 80
+        $pool.StopOnDisconnectStatus | Should -Be "Disabled"
+        $pool.LicenseType | Should -Be "Windows_Client"
+        }
 
-    It 'Update' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Update' {
+        $body = @{"Location" = $env.location; "DevBoxDefinitionName" = $env.devBoxDefinitionName; "LocalAdministrator" = "Enabled" ; "NetworkConnectionName" = $env.attachedNetworkName; "StopOnDisconnectGracePeriodMinute" = 60; "StopOnDisconnectStatus" = "Enabled"}
+        $pool = Set-AzDevCenterAdminPool -Name $env.poolSet -ProjectName $env.projectName -ResourceGroupName $env.resourceGroup -Body $body  
+        $pool.Name | Should -Be $env.poolSet
+        $pool.DevBoxDefinitionName | Should -Be $env.devBoxDefinitionName
+        $pool.LocalAdministrator | Should -Be "Enabled"
+        $pool.NetworkConnectionName | Should -Be $env.attachedNetworkName
+        $pool.StopOnDisconnectGracePeriodMinute | Should -Be 60
+        $pool.StopOnDisconnectStatus | Should -Be "Enabled"
+        $pool.LicenseType | Should -Be "Windows_Client"
     }
 }

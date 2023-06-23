@@ -18,7 +18,6 @@ function setupEnv() {
     # as default. You could change them if needed.
     $env.SubscriptionId = (Get-AzContext).Subscription.Id
     $env.Tenant = (Get-AzContext).Tenant.Id
-    
 
     $resourceGroup = "pwshRg" + (RandomString -allChars $false -len 6)
     $managedIdentityName = "pwshMsi" + (RandomString -allChars $false -len 6)
@@ -43,6 +42,9 @@ function setupEnv() {
     $time = "18:30"
     $timeZone = "America/Los_Angeles"
     $subnetId = "/subscriptions/" + $env.SubscriptionId + "/resourceGroups/amlim-test/providers/Microsoft.Network/virtualNetworks/amlim-vnet-canadacentral/subnets/default"
+
+    Connect-AzAccount -Tenant $env.Tenant -AccountId amlim@microsoft.com
+
     New-AzResourceGroup -Name $resourceGroup -Location "canadacentral"
 
     #Replace with real values
@@ -51,6 +53,7 @@ function setupEnv() {
     $gitHubUri = "https://github.com/fake/fake.git"
 
     $env.Add("resourceGroup", $resourceGroup)
+
     $env.Add("managedIdentityName", $managedIdentityName)
     $env.Add("devCenterName", $devCenterName)
     $env.Add("projectName", $projectName)
@@ -103,6 +106,12 @@ function setupEnv() {
 
     New-AzResourceGroupDeployment -TemplateFile .\test\deploymentTemplates\template.json -TemplateParameterFile .\test\deploymentTemplates\parameter.json -Name devboxTemplate -ResourceGroupName $resourceGroup
     Write-Host -ForegroundColor Magenta "Deployed dev box template"
+
+    Connect-AzAccount -Tenant $env.Tenant -AccountId amlim@fidalgosh010.onmicrosoft.com
+    Write-Host -ForegroundColor Magenta "Switched to non-guest account"
+    $a = Get-AzDevCenterDevProject -DevCenter "amlim-dc"
+    Write-Host $a.Name
+
 
 
     # For any resources you created for test, you should add it to $env here.

@@ -15,11 +15,22 @@ if(($null -eq $TestName) -or ($TestName -contains 'Set-AzDevCenterAdminCatalog')
 }
 
 Describe 'Set-AzDevCenterAdminCatalog' {
-    It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateExpanded' {
+        $catalog = Set-AzDevCenterAdminCatalog -DevCenterName $env.devCenterName -Name $env.catalogSet -ResourceGroupName $env.resourceGroup -GitHubBranch $env.gitHubBranch -GitHubPath "testpath" -GitHubSecretIdentifier $env.gitHubSecretIdentifier2 -GitHubUri $env.gitHubUri
+        $catalog.Name | Should -Be $env.catalogSet
+        $catalog.GitHubBranch | Should -Be $env.gitHubBranch
+        $catalog.GitHubPath | Should -Be "testpath"
+        $catalog.GitHubSecretIdentifier | Should -Be $env.gitHubSecretIdentifier2
+        $catalog.GitHubUri | Should -Be $env.gitHubUri
     }
 
-    It 'Update' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Update' {
+        $body = @{"GitHubBranch" = $env.gitHubBranch; "GitHubPath" = $env.gitHubPath; "GitHubSecretIdentifier" = $env.gitHubSecretIdentifier; "GitHubUri" = $env.gitHubUri}
+        $catalog = Set-AzDevCenterAdminCatalog -DevCenterName $env.devCenterName -Name $env.catalogSet -ResourceGroupName $env.resourceGroup -Body $body
+        $catalog.Name | Should -Be $env.catalogSet
+        $catalog.GitHubBranch | Should -Be $env.gitHubBranch
+        $catalog.GitHubPath | Should -Be $env.gitHubPath
+        $catalog.GitHubSecretIdentifier | Should -Be $env.gitHubSecretIdentifier
+        $catalog.GitHubUri | Should -Be $env.gitHubUri
     }
 }

@@ -3,22 +3,22 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "managedIdentityName": {
-      "value": "pwshMsinh2oib"
+      "value": "pwshMsilo1utm"
     },
     "subscriptionId": {
       "value": "f141e9f2-4778-45a4-9aa0-8b31e6469454"
     },
     "resourceGroup": {
-      "value": "pwshRg64t1dm"
+      "value": "pwshRggm9tz2"
     },
     "devCenterName": {
-      "value": "pwshDclskghm"
+      "value": "pwshDchw2yeu"
     },
     "devCenterNameDelete": {
-      "value": "pwshDc2d798uk"
+      "value": "pwshDc2kgj0lq"
     },
     "projectName": {
-      "value": "pwshProjn6k9ho"
+      "value": "pwshProj3stxlh"
     },
     "location": {
       "value": "canadacentral"
@@ -30,25 +30,25 @@
       "value": "/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/amlim-test/providers/Microsoft.Network/virtualNetworks/amlim-vnet-canadacentral/subnets/default"
     },
     "networkConnectionName": {
-      "value": "ep7l3o"
+      "value": "7xsgmy"
     },
     "networkConnectionNameDelete": {
-      "value": "u3vw5z"
+      "value": "h0ukoj"
     },
     "catalogName": {
-      "value": "0lx8fb"
+      "value": "i29785"
     },
     "gitHubRepo": {
       "value": "https://github.com/fake/fake.git"
     },
     "attachedNetworkName": {
-      "value": "pbzt81"
+      "value": "6naz5c"
     },
     "devBoxDefinitionName": {
-      "value": "m7d0n8"
+      "value": "h3dpk9"
     },
     "imageReferenceId": {
-      "value": "/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRg64t1dm/providers/Microsoft.DevCenter/devcenters/pwshDclskghm/galleries/Default/images/MicrosoftWindowsDesktop_windows-ent-cpc_win11-22h2-ent-cpc-os"
+      "value": "/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRggm9tz2/providers/Microsoft.DevCenter/devcenters/pwshDchw2yeu/galleries/Default/images/MicrosoftWindowsDesktop_windows-ent-cpc_win11-22h2-ent-cpc-os"
     },
     "skuName": {
       "value": "general_a_8c32gb_v1"
@@ -63,100 +63,160 @@
       "value": "003b06c3-d471-4452-9686-9e7f3ca85f0a"
     },
     "environmentTypeName": {
-      "value": "5gxr4l"
+      "value": "dwejvk"
     },
     "poolName": {
-      "value": "yn1cue"
+      "value": "vpa70o"
     },
     "galleryName": {
-      "value": "nxg5ci"
+      "value": "leh6m0"
     },
     "sigId": {
       "value": "/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/amlim-test/providers/Microsoft.Compute/galleries/amlim_pwsh_sig"
     },
     "sigName2": {
-      "value": "4vh6ad"
+      "value": "7un96r"
     },
     "sigName3": {
-      "value": "xkz64y"
+      "value": "uvhm7y"
     },
     "sigName4": {
-      "value": "s8hj5w"
+      "value": "u48phj"
     },
     "sigName5": {
-      "value": "f7hac9"
+      "value": "8pvrkx"
     },
     "projectNameDelete": {
-      "value": "pwshPro2t18cdy"
+      "value": "pwshPro2og402n"
     },
     "catalogNameDelete": {
-      "value": "rs2wta"
+      "value": "2t5u7q"
     },
     "attachedNetworkNameDelete": {
-      "value": "5q9fer"
+      "value": "92nl3z"
     },
     "devBoxDefinitionNameDelete": {
-      "value": "2x8ioz"
+      "value": "vz9ibo"
     },
     "environmentTypeNameDelete": {
-      "value": "38bzwj"
+      "value": "1mu390"
     },
     "galleryNameDelete": {
-      "value": "2cxreo"
+      "value": "7omi64"
     },
     "poolNameDelete": {
-      "value": "xoeynq"
+      "value": "fzolg0"
     },
     "envForProjEnvTypeNew": {
-      "value": "g7bi"
+      "value": "s0my"
     },
     "envForProjEnvTypeNew2": {
-      "value": "jy0r"
+      "value": "25gl"
     },
     "poolForScheduleNew": {
-      "value": "wkld4"
+      "value": "60qks"
     },
     "poolForScheduleNew2": {
-      "value": "5c1x"
+      "value": "c65i"
     },
     "projectNameDelete2": {
-      "value": "g94bwv"
+      "value": "vepyst"
     },
     "catalogNameDelete2": {
-      "value": "d1k6tr"
+      "value": "4kfnut"
     },
     "environmentTypeNameDelete2": {
-      "value": "vjkeqs"
+      "value": "w76xp1"
     },
     "projEnvironmentTypeNameDelete": {
-      "value": "pqmfvc"
+      "value": "t9rqhz"
     },
     "projEnvironmentTypeNameDelete2": {
-      "value": "ufy35l"
+      "value": "tj7rw5"
     },
     "devBoxDefinitionNameDelete2": {
-      "value": "t0er7i"
+      "value": "kxgqbo"
     },
     "galleryNameDelete2": {
-      "value": "5n6kr9"
+      "value": "zfwrem"
     },
     "poolNameDelete2": {
-      "value": "yu8nzf"
+      "value": "odspl1"
     },
     "networkConnectionNameDelete2": {
-      "value": "5jp8ua"
+      "value": "gezmtq"
     },
     "attachedNetworkNameDelete2": {
-      "value": "8kpigz"
+      "value": "lw0ys2"
     },
     "devCenterNameDelete2": {
-      "value": "7fjtrn"
+      "value": "zyv7hr"
     },
     "poolForScheduleDelete": {
-      "value": "ei7al0"
+      "value": "oy09qc"
     },
     "poolForScheduleDelete2": {
-      "value": "alwb7c"
+      "value": "5ypd7c"
+    },
+    "catalogSet": {
+      "value": "6q1cyh"
+    },
+    "devBoxDefinitionSet": {
+      "value": "l4a9fe"
+    },
+    "devCenterSet": {
+      "value": "bys8zj"
+    },
+    "environmentTypeSet": {
+      "value": "9mb28l"
+    },
+    "networkConnectionSet": {
+      "value": "wp3q5m"
+    },
+    "poolSet": {
+      "value": "b8lfax"
+    },
+    "projectSet": {
+      "value": "1yf8he"
+    },
+    "projectEnvironmentTypeSet": {
+      "value": "kqa5px"
+    },
+    "scheduleSet": {
+      "value": "drbf0o"
+    },
+    "catalogUpdate": {
+      "value": "r4dg8z"
+    },
+    "devBoxDefinitionUpdate": {
+      "value": "zyp7u0"
+    },
+    "devCenterUpdate": {
+      "value": "5rkqgw"
+    },
+    "environmentTypeUpdate": {
+      "value": "sf2b9c"
+    },
+    "networkConnectionUpdate": {
+      "value": "u617o3"
+    },
+    "poolUpdate": {
+      "value": "b5ri3z"
+    },
+    "projectUpdate": {
+      "value": "jr05ay"
+    },
+    "projectEnvironmentTypeUpdate": {
+      "value": "bucn8l"
+    },
+    "scheduleUpdate": {
+      "value": "ebsz6a"
+    },
+    "networkConnectionHybridSet": {
+      "value": "16eso2"
+    },
+    "networkConnectionHybridUpdate": {
+      "value": "dgp80s"
     }
   }
 }

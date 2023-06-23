@@ -15,19 +15,35 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzDevCenterAdminProjec
 }
 
 Describe 'Update-AzDevCenterAdminProject' {
-    It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
+    It 'UpdateExpanded' {
+        $project = Update-AzDevCenterAdminProject -Name $env.projectUpdate -ResourceGroupName $env.resourceGroup -MaxDevBoxesPerUser 5
+        $project.DevCenterId | Should -Be $env.devCenterId
+        $project.Name | Should -Be $env.projectUpdate
+        $project.MaxDevBoxesPerUser | Should -Be 5 
+       }
 
-    It 'Update' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
+    It 'Update' {
+        $body = @{"MaxDevBoxesPerUser" = 3 }
+        $project = Update-AzDevCenterAdminProject -Name $env.projectUpdate -ResourceGroupName $env.resourceGroup -Body $body
+        $project.DevCenterId | Should -Be $env.devCenterId
+        $project.Name | Should -Be $env.projectUpdate
+        $project.MaxDevBoxesPerUser | Should -Be 3 
+       }
 
-    It 'UpdateViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
+    It 'UpdateViaIdentityExpanded' {
+        $projectInput = Get-AzDevCenterAdminProject -ResourceGroupName $env.resourceGroup -Name $env.projectUpdate
 
-    It 'UpdateViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
+        $project = Update-AzDevCenterAdminProject -InputObject $projectInput -MaxDevBoxesPerUser 5
+        $project.DevCenterId | Should -Be $env.devCenterId
+        $project.Name | Should -Be $env.projectUpdate
+        $project.MaxDevBoxesPerUser | Should -Be 5     }
+
+    It 'UpdateViaIdentity' {
+        $projectInput = Get-AzDevCenterAdminProject -ResourceGroupName $env.resourceGroup -Name $env.projectUpdate
+
+        $body = @{"MaxDevBoxesPerUser" = 3 }
+        $project = Update-AzDevCenterAdminProject -InputObject $projectInput -Body $body
+        $project.DevCenterId | Should -Be $env.devCenterId
+        $project.Name | Should -Be $env.projectUpdate
+        $project.MaxDevBoxesPerUser | Should -Be 3     }
 }

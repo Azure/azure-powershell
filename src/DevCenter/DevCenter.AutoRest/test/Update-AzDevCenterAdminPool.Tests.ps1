@@ -1,33 +1,65 @@
-if(($null -eq $TestName) -or ($TestName -contains 'Update-AzDevCenterAdminPool'))
-{
-  $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
-  if (-Not (Test-Path -Path $loadEnvPath)) {
-      $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
-  }
-  . ($loadEnvPath)
-  $TestRecordingFile = Join-Path $PSScriptRoot 'Update-AzDevCenterAdminPool.Recording.json'
-  $currentPath = $PSScriptRoot
-  while(-not $mockingPath) {
-      $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
-      $currentPath = Split-Path -Path $currentPath -Parent
-  }
-  . ($mockingPath | Select-Object -First 1).FullName
+if (($null -eq $TestName) -or ($TestName -contains 'Update-AzDevCenterAdminPool')) {
+    $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
+    if (-Not (Test-Path -Path $loadEnvPath)) {
+        $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
+    }
+    . ($loadEnvPath)
+    $TestRecordingFile = Join-Path $PSScriptRoot 'Update-AzDevCenterAdminPool.Recording.json'
+    $currentPath = $PSScriptRoot
+    while (-not $mockingPath) {
+        $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
+        $currentPath = Split-Path -Path $currentPath -Parent
+    }
+    . ($mockingPath | Select-Object -First 1).FullName
 }
 
 Describe 'Update-AzDevCenterAdminPool' {
-    It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateExpanded' {
+        $pool = Update-AzDevCenterAdminPool -Name $env.poolUpdate -ProjectName $env.projectName -ResourceGroupName $env.resourceGroup -DevBoxDefinitionName $env.devBoxDefinitionSet -LocalAdministrator "Disabled" -NetworkConnectionName $env.attachedNetworkName -StopOnDisconnectGracePeriodMinute 80 -StopOnDisconnectStatus "Disabled"
+        $pool.Name | Should -Be $env.poolUpdate
+        $pool.DevBoxDefinitionName | Should -Be $env.devBoxDefinitionSet
+        $pool.LocalAdministrator | Should -Be "Disabled"
+        $pool.NetworkConnectionName | Should -Be $env.attachedNetworkName
+        $pool.StopOnDisconnectGracePeriodMinute | Should -Be 80
+        $pool.StopOnDisconnectStatus | Should -Be "Disabled"
+        $pool.LicenseType | Should -Be "Windows_Client"
     }
 
-    It 'Update' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Update' {
+        $body = @{"DevBoxDefinitionName" = $env.devBoxDefinitionName; "LocalAdministrator" = "Enabled" ; "NetworkConnectionName" = $env.attachedNetworkName; "StopOnDisconnectGracePeriodMinute" = 60; "StopOnDisconnectStatus" = "Enabled" }
+        $pool = Update-AzDevCenterAdminPool -Name $env.poolUpdate -ProjectName $env.projectName -ResourceGroupName $env.resourceGroup -Body $body  
+        $pool.Name | Should -Be $env.poolUpdate
+        $pool.DevBoxDefinitionName | Should -Be $env.devBoxDefinitionName
+        $pool.LocalAdministrator | Should -Be "Enabled"
+        $pool.NetworkConnectionName | Should -Be $env.attachedNetworkName
+        $pool.StopOnDisconnectGracePeriodMinute | Should -Be 60
+        $pool.StopOnDisconnectStatus | Should -Be "Enabled"
+        $pool.LicenseType | Should -Be "Windows_Client"    
     }
 
-    It 'UpdateViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
+    It 'UpdateViaIdentityExpanded' {
+        $poolInput = Get-AzDevCenterAdminPool -ResourceGroupName $env.resourceGroup -Name $env.poolUpdate -ProjectName $env.projectName
 
-    It 'UpdateViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        $pool = Update-AzDevCenterAdminPool -InputObject $poolInput -DevBoxDefinitionName $env.devBoxDefinitionSet -LocalAdministrator "Disabled" -NetworkConnectionName $env.attachedNetworkName -StopOnDisconnectGracePeriodMinute 80 -StopOnDisconnectStatus "Disabled"
+        $pool.Name | Should -Be $env.poolUpdate
+        $pool.DevBoxDefinitionName | Should -Be $env.devBoxDefinitionSet
+        $pool.LocalAdministrator | Should -Be "Disabled"
+        $pool.NetworkConnectionName | Should -Be $env.attachedNetworkName
+        $pool.StopOnDisconnectGracePeriodMinute | Should -Be 80
+        $pool.StopOnDisconnectStatus | Should -Be "Disabled"
+        $pool.LicenseType | Should -Be "Windows_Client" }
+
+    It 'UpdateViaIdentity' {
+        $poolInput = Get-AzDevCenterAdminPool -ResourceGroupName $env.resourceGroup -Name $env.poolUpdate -ProjectName $env.projectName
+
+        $body = @{"DevBoxDefinitionName" = $env.devBoxDefinitionName; "LocalAdministrator" = "Enabled" ; "NetworkConnectionName" = $env.attachedNetworkName; "StopOnDisconnectGracePeriodMinute" = 60; "StopOnDisconnectStatus" = "Enabled" }
+        $pool = Update-AzDevCenterAdminPool -InputObject $poolInput -Body $body  
+        $pool.Name | Should -Be $env.poolUpdate
+        $pool.DevBoxDefinitionName | Should -Be $env.devBoxDefinitionName
+        $pool.LocalAdministrator | Should -Be "Enabled"
+        $pool.NetworkConnectionName | Should -Be $env.attachedNetworkName
+        $pool.StopOnDisconnectGracePeriodMinute | Should -Be 60
+        $pool.StopOnDisconnectStatus | Should -Be "Enabled"
+        $pool.LicenseType | Should -Be "Windows_Client"
     }
 }
