@@ -41,13 +41,25 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Utilities
             // We used to call Parser.ParseInput and then Ast.FindAll() to get the last CommandAst. That isn't very accurate
             // when it handles @{} parameter value. So we change to use PredictionContext which is also similar to how we
             // parse the user input passed from PSReadLine.
-            var predictionContext = PredictionContext.Create(commandLine);
 
-            for (var i = predictionContext.RelatedAsts.Count - 1; i >= 0; --i)
+            var predictionContext = PredictionContext.Create(commandLine);
+            var relatedAsts = predictionContext.RelatedAsts;
+
+            for (var i = relatedAsts.Count - 1; i >= 0; --i)
             {
-                if (predictionContext.RelatedAsts[i] is CommandAst c)
+                if (relatedAsts[i] is CommandAst c)
                 {
                     return c;
+                }
+                else if (relatedAsts[i] is ScriptBlockAst s)
+                {
+                    // Some are wrapped inside a ScriptBlockAst (when there is a command at the end),
+                    // e.g. Add-AzImageDataDisk -Image $imageConfig -Lun 1 -BlobUri $dataDiskVhdUri1;
+                    var extracted = ExtractCommandAstFromScriptBlockAst(s);
+                    if (extracted != null)
+                    {
+                        return extracted;
+                    }
                 }
             }
 
@@ -127,10 +139,10 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Utilities
         /// <param name="text">The text to escape.</param>
         public static string EscapePredictionText(string text)
         {
-            return text.Replace("<", "`<")
-                .Replace(">", "`>")
-                .Replace("{", "`{")
-                .Replace("}", "`}")
+            return text.Replace("<", "'<")
+                .Replace(">", ">'")
+                .Replace("{", "[[")
+                .Replace("}", "]]")
                 .Replace("\\\"", "\"");
         }
 
@@ -143,11 +155,33 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Utilities
         {
             // Since the value with '<', and '>' doesn't make it a valid powershell command and
             // make it hard to use Alt+a from PSReadLine to navigate parameter value, we replace '<' with '{' and '>' with '}'.
-            return text.Replace("`<", "<")
-                .Replace("`>", ">")
-                .Replace("`[", "[")
-                .Replace("`]", "]");
-                //.Replace("`\"", "\\\\");
+            return text.Replace("'<", "{")
+                .Replace(">'", "}")
+                .Replace("[[", "{")
+                .Replace("]]", "}");
+        }
+
+        private static CommandAst ExtractCommandAstFromScriptBlockAst(ScriptBlockAst scriptAst)
+        {
+            foreach (var statement in scriptAst.EndBlock.Statements)
+            {
+                if (statement is CommandAst commandAst)
+                {
+                    return commandAst;
+                }
+                else if (statement is PipelineAst pipelineAst)
+                {
+                    foreach (var pipeline in pipelineAst.PipelineElements)
+                    {
+                        if (pipeline is CommandAst commandAst2)
+                        {
+                            return commandAst2;
+                        }
+                    }
+                }
+            }
+
+            return null;
         }
     }
 }
