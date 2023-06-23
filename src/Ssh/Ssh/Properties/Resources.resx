@@ -123,6 +123,9 @@
   <data name="ConfigFolderDoesNotExist" xml:space="preserve">
     <value>Config file destination folder {0} does not exist.</value>
   </data>
+  <data name="DefaultEndpointCreateForbidden" xml:space="preserve">
+    <value>Client is not authorized to create a Default connectivity endpoint for {0} in the Resource Group {1}. This is a one-time operation that must be performed by an account with Owner or Contributor role in the resource to allow connections to target resource.</value>
+  </data>
   <data name="FailedToAADUnsupportedAccountType" xml:space="preserve">
     <value>Failed to generate AAD certificate. AAD Login is currently not supported for accounts of type {0} in Azure PowerShell. Try connecting to a Local Account instead.</value>
   </data>

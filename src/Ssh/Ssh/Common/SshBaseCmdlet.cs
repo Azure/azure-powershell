@@ -777,7 +777,7 @@ namespace Microsoft.Azure.Commands.Ssh
             {
                 if (exception?.Response?.StatusCode == HttpStatusCode.Forbidden)
                 {
-                    throw new AzPSCloudException(String.Format(Resources.ServiceConfigCreateForbidden, Name, ResourceGroupName, port);
+                    throw new AzPSCloudException(String.Format(Resources.ServiceConfigCreateForbidden, Name, ResourceGroupName, port));
                 }
 
                 if (exception?.Body?.Error?.Code != null && exception?.Body?.Error?.Message != null)
