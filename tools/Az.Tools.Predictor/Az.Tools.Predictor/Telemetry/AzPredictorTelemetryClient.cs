@@ -41,6 +41,11 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
         /// </remarks>
         internal const int MaxPropertyValueSizeWithBuffer = MaxAppInsightPropertyValueSize - 100;
 
+        /// <summary>
+        /// The value used to concatenate the string together.
+        /// </summary>
+        internal const char _StringValueConcatenator = '\n';
+
         /// <inheritdoc/>
         public string RequestId { get; set; } = Guid.NewGuid().ToString();
 
@@ -77,6 +82,18 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
         /// </remarks>
         protected AggregatedTelemetryData CachedAggregatedTelemetryData { get; private set; } = new();
 
+        /// <summary>
+        /// A set of user inputs that will be sent in the telemetry.
+        /// </summary>
+        /// <remarks>
+        /// This is the same value (after de-deuplication) of the user input field in the prediction property.
+        /// It's added as the property so that we can tell that if any issue is from the user inputs or the found examples
+        /// from the service. Though the user input is also in the prediction property, there is still too much data to go
+        /// through. We still need the user input in prediction to help with query.
+        ///
+        /// It's a class level field so that we don't always need to create a new instance for sending each telemetry.
+        /// </remarks>
+        private HashSet<string> _uniqueUserInput = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
         private bool _isDisposed;
 
         /// <summary>
@@ -253,6 +270,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
             }
 
             var suggestions = new List<Dictionary<string, object>>();
+            _uniqueUserInput.Clear();
+
             for (var i = 0; i < aggregatedData.SuggestionSessions.Count; ++i)
             {
                 var suggestionSession = aggregatedData.SuggestionSessions[i];
@@ -276,6 +295,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
                 if (suggestionSession.UserInput != null)
                 {
                     toAddSuggestion.Add(GetSuggestionTelemetryData.PropertyNameUserInput, suggestionSession.UserInput);
+                    _uniqueUserInput.Add(suggestionSession.UserInput);
                 }
 
                 // Add the display suggestion data
@@ -307,6 +327,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
             if (suggestions.Count > 0)
             {
                 properties.Add(GetSuggestionTelemetryData.PropertyNamePrediction, JsonSerializer.Serialize(suggestions, JsonUtilities.TelemetrySerializerOptions));
+                properties.Add(GetSuggestionTelemetryData.PropertyNameUserInput, string.Join(_StringValueConcatenator, _uniqueUserInput));
             }
 
             if (aggregatedData.CommandLine != null)
