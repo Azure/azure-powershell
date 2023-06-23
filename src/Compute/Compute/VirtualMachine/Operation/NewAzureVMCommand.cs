@@ -898,6 +898,7 @@ namespace Microsoft.Azure.Commands.Compute
                             Publisher = "Microsoft.Azure.Security.LinuxAttestation",
                             VirtualMachineExtensionType = "GuestAttestation",
                             TypeHandlerVersion = "1.0",
+                            EnableAutomaticUpgrade = true
                         };
                     }
                     else //windows
@@ -908,6 +909,7 @@ namespace Microsoft.Azure.Commands.Compute
                             Publisher = "Microsoft.Azure.Security.WindowsAttestation",
                             VirtualMachineExtensionType = "GuestAttestation",
                             TypeHandlerVersion = "1.0",
+                            EnableAutomaticUpgrade = true
                         };
                     }
 
@@ -1096,6 +1098,7 @@ namespace Microsoft.Azure.Commands.Compute
                                 Publisher = "Microsoft.Azure.Security.LinuxAttestation",
                                 VirtualMachineExtensionType = "GuestAttestation",
                                 TypeHandlerVersion = "1.0",
+                                EnableAutomaticUpgrade = true
                             };
                         }
                         else //windows
@@ -1106,6 +1109,7 @@ namespace Microsoft.Azure.Commands.Compute
                                 Publisher = "Microsoft.Azure.Security.WindowsAttestation",
                                 VirtualMachineExtensionType = "GuestAttestation",
                                 TypeHandlerVersion = "1.0",
+                                EnableAutomaticUpgrade = true
                             };
                         }
 

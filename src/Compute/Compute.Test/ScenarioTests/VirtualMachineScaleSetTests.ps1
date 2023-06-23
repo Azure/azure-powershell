@@ -4514,6 +4514,7 @@ function Test-VirtualMachineScaleSetSecurityType
         Assert-NotNull $vmssvms;
         $vmssvm = Get-AzVmssvm -ResourceGroupName $rgname -VMScaleSetName $vmssName1 -InstanceId $vmssvms[0].InstanceId;
         Assert-AreEqual $extDefaultName $vmssvm.Resources[2].Name;
+        Assert-True {$vmssvm.Resources[2].EnableAutomaticUpgrade};
     }
     finally
     {
@@ -4592,6 +4593,7 @@ function Test-VirtualMachineScaleSetSecurityTypeWithoutConfig
         Assert-NotNull $vmssvms;
         $vmssvm = Get-AzVmssvm -ResourceGroupName $rgname -VMScaleSetName $vmssName1 -InstanceId $vmssvms[0].InstanceId;
         Assert-AreEqual $extDefaultName $vmssvm.Resources[2].Name;
+        Assert-True {$vmssvm.Resources[2].EnableAutomaticUpgrade};
     }
     finally
     {
