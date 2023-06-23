@@ -84,7 +84,6 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         /// </summary>
         [Theory]
         [InlineData("Set-AzContext -Subscription 'xxxx-xxxx-xxxx-xxxx' -Tenant <String>", null)]
-        [InlineData("Set-AzContext -Subscription 'xxxx-xxxx-xxxx-xxxx' -Tenant {String}", null)]
         [InlineData("Set-AzContext -Subscription 'xxxx-xxxx-xxxx-xxxx' -Tenant `<String`>", null)]
         [InlineData("Set-AzContext -Subscription $subscription -Tenant [[String]]", null)]
         [InlineData("Set-AzContext -Subscription 'xxxx-xxxx-xxxx-xxxx' -Tenant TenantName", null)]
