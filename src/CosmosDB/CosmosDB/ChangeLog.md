@@ -21,6 +21,7 @@
 * Added capability to provide Min/Max Throughput RU Consumption
 * Added SecuredByPerimeter value to PublicNetworkAccess enum
 * Added Default Priority Level and Priority Based Execution enablement features
+* Locations show response now includes status, isSubscriptionRegionAccessAllowedForRegular and isSubscriptionRegionAccessAllowedForAz properties
 
 ## Version 2.0.5
 * Added PublicNetworkAccess parameter to `Restore-AzCosmosDBAccount`.

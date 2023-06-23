@@ -33,6 +33,9 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
             SupportsAvailabilityZone = locationProperties.SupportsAvailabilityZone;
             IsResidencyRestricted = locationProperties.IsResidencyRestricted;
             BackupStorageRedundancies = locationProperties.BackupStorageRedundancies;
+            IsSubscriptionRegionAccessAllowedForRegular = locationProperties.IsSubscriptionRegionAccessAllowedForRegular;
+            IsSubscriptionRegionAccessAllowedForAz = locationProperties.IsSubscriptionRegionAccessAllowedForAz;
+            Status = locationProperties.Status;
         }
 
         /// <summary>
@@ -49,5 +52,24 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
         ///  Gets the properties of available backup storage redundancies.
         /// </summary>
         public IList<string> BackupStorageRedundancies { get; set; }
+
+        /// <summary>
+        /// Gets flag indicating whether the subscription have access in region
+        /// for Non-Availability Zones.
+        /// </summary>
+        public bool? IsSubscriptionRegionAccessAllowedForRegular { get; set; }
+
+        /// <summary>
+        /// Gets flag indicating whether the subscription have access in region
+        /// for Availability Zones(Az).
+        /// </summary>
+        public bool? IsSubscriptionRegionAccessAllowedForAz { get; set; }
+
+        /// <summary>
+        /// Gets enum to indicate current buildout status of the region.
+        /// Possible values include: 'Uninitialized', 'Initializing',
+        /// 'InternallyReady', 'Online', 'Deleting'
+        /// </summary>
+        public string Status { get; set; }
     }
 }

@@ -351,6 +351,9 @@ function Test-CosmosDBLocations {
     Assert-NotNull $locationProperty.Properties.SupportsAvailabilityZone
     Assert-NotNull $locationProperty.Properties.IsResidencyRestricted
     Assert-NotNull $locationProperty.Properties.BackupStorageRedundancies
+    Assert-NotNull $locationProperty.Properties.IsSubscriptionRegionAccessAllowedForRegular
+    Assert-NotNull $locationProperty.Properties.IsSubscriptionRegionAccessAllowedForAz
+    Assert-NotNull $locationProperty.Properties.Status
   }
 
   $locationProperties = Get-AzCosmosDBLocation -Location $locationName
@@ -360,4 +363,7 @@ function Test-CosmosDBLocations {
   Assert-NotNull $locationProperties.Properties.SupportsAvailabilityZone
   Assert-NotNull $locationProperties.Properties.IsResidencyRestricted
   Assert-NotNull $locationProperties.Properties.BackupStorageRedundancies
+  Assert-NotNull $locationProperty.Properties.IsSubscriptionRegionAccessAllowedForRegular
+  Assert-NotNull $locationProperty.Properties.IsSubscriptionRegionAccessAllowedForAz
+  Assert-NotNull $locationProperty.Properties.Status
 }
