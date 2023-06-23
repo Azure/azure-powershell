@@ -175,11 +175,11 @@ directive:
     set:
       verb: Update
 
-  # - where:
-  #     verb: Invoke
-  #     subject: ^BulkSimUploadEncrypted$
-  #   set:
-  #     verb: Update
+  - where:
+      verb: Invoke
+      subject: ^BulkSimUploadEncrypted$
+    set:
+      verb: Update
   - where:
       verb: Invoke
       subject: ^BulkSimUploadEncrypted$

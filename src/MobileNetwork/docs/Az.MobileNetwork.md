@@ -168,6 +168,10 @@ Updates an attached data network.
 ### [Update-AzMobileNetworkBulkSimUpload](Update-AzMobileNetworkBulkSimUpload.md)
 Bulk upload SIMs to a SIM group.
 
+### [Update-AzMobileNetworkBulkSimUploadEncrypted](Update-AzMobileNetworkBulkSimUploadEncrypted.md)
+Bulk upload SIMs in encrypted form to a SIM group.
+The SIM credentials must be encrypted.
+
 ### [Update-AzMobileNetworkDataNetwork](Update-AzMobileNetworkDataNetwork.md)
 Updates data network.
 
