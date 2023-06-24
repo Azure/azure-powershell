@@ -584,6 +584,47 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             Assert.EndsWith("Aggregation", telemetryClient.RecordedTelemetry[0].EventName);
             var suggestionSessions = JsonSerializer.Deserialize<IList<IDictionary<string, object>>>(telemetryClient.RecordedTelemetry[0].Properties[GetSuggestionTelemetryData.PropertyNamePrediction]);
             Assert.Equal(expectedUserInput, ((JsonElement)(suggestionSessions[0][GetSuggestionTelemetryData.PropertyNameUserInput])).GetString());
+            Assert.Equal(expectedUserInput, telemetryClient.RecordedTelemetry[0].Properties[GetSuggestionTelemetryData.PropertyNameUserInput]);
+        }
+
+        /// <summary>
+        /// Verify that we only record unique user input in the telemetry.
+        /// </summary>
+        [Fact]
+        public void VerifySeparateUserInput()
+        {
+            var userInputs = new string[]
+            {
+                "Get-AzContext",
+                "get-azcontext",
+                "Get-AzResourceGroup -Location westus2 -Name rg1",
+                "Set-",
+                "git",
+                "ls",
+            };
+
+            var expectedUserInputValue = new string[]
+            {
+                "Get-AzContext",
+                "Get-AzResourceGroup -Location *** -Name ***",
+                "Set-",
+                "start_of_snippet",
+            };
+
+            var expectedTelemetryCount = userInputs.Length;
+            var (azPredictor, telemetryClient) = CreateTestObjects(throwException: false, expectedTelemetryCount);
+
+            foreach (var input in userInputs)
+            {
+                var predictionContext = PredictionContext.Create(input);
+                var suggestionPackage = azPredictor.GetSuggestion(MockObjects.PredictionClient, predictionContext, CancellationToken.None);
+            }
+
+            Assert.NotNull(telemetryClient.GetSuggestionData.Suggestion);
+            VerifyTelemetryDispatchCount(expectedTelemetryCount, telemetryClient);
+
+            Assert.EndsWith("Aggregation", telemetryClient.RecordedTelemetry[0].EventName);
+            Assert.Equal(string.Join(AzPredictorTelemetryClient._StringValueConcatenator, expectedUserInputValue), telemetryClient.RecordedTelemetry[0].Properties[GetSuggestionTelemetryData.PropertyNameUserInput]);
         }
 
         /// <summary>
