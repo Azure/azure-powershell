@@ -5,7 +5,7 @@ online version: https://learn.microsoft.com/powershell/module/az.cognitiveservic
 schema: 2.0.0
 ---
 
-# Get-AzCognitiveServicesModels
+# Get-AzCognitiveServicesUsage
 
 ## SYNOPSIS
 Get Usage of Cognitive Services
@@ -37,7 +37,7 @@ QuotaPeriod   : 30.00:00:00
 NextResetTime : 0001-01-01T00:00:00Z
 ```
 
-Get Models of Cognitive Services
+Get Usage of Cognitive Services
 
 ## PARAMETERS
 

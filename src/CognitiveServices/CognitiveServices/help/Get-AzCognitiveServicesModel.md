@@ -5,7 +5,7 @@ online version: https://learn.microsoft.com/powershell/module/az.cognitiveservic
 schema: 2.0.0
 ---
 
-# Get-AzCognitiveServicesModels
+# Get-AzCognitiveServicesModel
 
 ## SYNOPSIS
 Get Models of Cognitive Services

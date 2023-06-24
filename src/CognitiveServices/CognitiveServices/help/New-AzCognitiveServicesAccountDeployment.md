@@ -14,7 +14,7 @@ Create a Deployment for a Cognitive Services account
 
 ```
 New-AzCognitiveServicesAccountDeployment [-ResourceGroupName] <String> [-AccountName] <String> [-Name] <String>
- [-Sku] <Sku> [-Properties] <DeploymentProperties> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Properties] <DeploymentProperties> [-Sku] <Sku> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -87,7 +87,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 4
+Position: 3
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -116,8 +116,7 @@ Type: Microsoft.Azure.Management.CognitiveServices.Models.Sku
 Parameter Sets: (All)
 Aliases:
 
-Required: True
-Position: 3
+Required: False
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

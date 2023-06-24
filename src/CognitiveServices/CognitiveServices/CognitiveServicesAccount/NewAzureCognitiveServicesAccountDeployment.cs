@@ -66,8 +66,6 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
 
         [Parameter(
             Mandatory = false,
-            ParameterSetName = DefaultParameterSet,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Cognitive Services Deployment Sku.")]
         public Sku Sku { get; set; }
 

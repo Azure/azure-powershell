@@ -1756,11 +1756,7 @@ function Test-Deployment
         $properties.Model.Name = "text-ada-001"
         $properties.Model.Version = "1"
 
-        $sku = New-AzCognitiveServicesObject -Type Sku
-        $sku.Name = "Standard"
-        $sku.Capacity = "1"
-
-        New-AzCognitiveServicesAccountDeployment -ResourceGroupName $rgname -AccountName $accountname -Name dpy -Sku $sku -Properties $properties
+        New-AzCognitiveServicesAccountDeployment -ResourceGroupName $rgname -AccountName $accountname -Name dpy -Properties $properties
         Get-AzCognitiveServicesAccountDeployment -ResourceGroupName $rgname -AccountName $accountname
         Get-AzCognitiveServicesAccountDeployment -ResourceGroupName $rgname -AccountName $accountname -Name dpy
         Remove-AzCognitiveServicesAccountDeployment -ResourceGroupName $rgname -AccountName $accountname -Name dpy
