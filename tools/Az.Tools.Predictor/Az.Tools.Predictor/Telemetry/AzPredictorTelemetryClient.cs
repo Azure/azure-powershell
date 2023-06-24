@@ -191,16 +191,6 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
         }
 
         /// <inheritdoc/>
-        public void OnParseCommandLineFailure(CommandLineParsingTelemetryData telemetryData)
-        {
-            PostTelemetryData(telemetryData);
-
-#if TELEMETRY_TRACE && DEBUG
-            System.Diagnostics.Trace.WriteLine("Recording CommandLineParsing");
-#endif
-        }
-
-        /// <inheritdoc/>
         public virtual void OnGeneralException(GeneralExceptionTelemetryData telemetryData)
         {
             PostTelemetryData(telemetryData);
@@ -244,9 +234,6 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
                 case ParameterMapTelemetryData parameterMap:
                     ProcessTelemetryData(parameterMap);
                     break;
-                case CommandLineParsingTelemetryData commandLineParsing:
-                    ProcessTelemetryData(commandLineParsing);
-                    break;
                 case GeneralExceptionTelemetryData exception:
                     ProcessTelemetryData(exception);
                     break;
@@ -267,6 +254,16 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
             if (aggregatedData.HasSentHttpRequest.HasValue)
             {
                 properties.Add(RequestPredictionTelemetryData.PropertyNameHttpRequestSent, aggregatedData.HasSentHttpRequest.Value.ToString(CultureInfo.InvariantCulture));
+            }
+
+            if (aggregatedData.PredictorSummary != null)
+            {
+                properties.Add(RequestPredictionTelemetryData.PropertyNameReceivedCommandCount, aggregatedData.PredictorSummary.ReceivedCommandCount.ToString(CultureInfo.InvariantCulture));
+                properties.Add(RequestPredictionTelemetryData.PropertyNameValidCommandCount, aggregatedData.PredictorSummary.ValidCommandCount.ToString(CultureInfo.InvariantCulture));
+                if (aggregatedData.PredictorSummary.Errors?.Any() == true)
+                {
+                    properties.Add(RequestPredictionTelemetryData.PropertyNameCommandLineParsingError, string.Join(_StringValueConcatenator, aggregatedData.PredictorSummary.Errors));
+                }
             }
 
             var suggestions = new List<Dictionary<string, object>>();
@@ -440,6 +437,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
 
             CachedAggregatedTelemetryData.UpdateFromTelemetryData(telemetryData);
             CachedAggregatedTelemetryData.HasSentHttpRequest = telemetryData.HasSentHttpRequest;
+            CachedAggregatedTelemetryData.PredictorSummary = telemetryData.PredictorSummary;
 
             if (telemetryData.Exception != null)
             {
@@ -589,22 +587,6 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
             if (telemetryData.Exception != null)
             {
                 SendException("An error occurred when loading parameter map.", telemetryData, telemetryData.Exception);
-            }
-        }
-
-        /// <summary>
-        /// Processes the telemetry with the command line parsing information.
-        /// </summary>
-        private void ProcessTelemetryData(CommandLineParsingTelemetryData telemetryData)
-        {
-            if (telemetryData.Exception != null)
-            {
-                var properties = new Dictionary<string,string>()
-                {
-                    { "Command", telemetryData.Command },
-                };
-
-                SendException("An error occurred when parsing command line.", telemetryData, telemetryData.Exception, properties);
             }
         }
 

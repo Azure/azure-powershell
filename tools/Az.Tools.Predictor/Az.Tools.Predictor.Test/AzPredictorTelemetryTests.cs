@@ -43,6 +43,60 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         }
 
         /// <summary>
+        /// Verify that a telemetry event is sent when a new RequestPredictionTelemetry event is created.
+        /// </summary>
+        [Fact]
+        public void VerifyTelemetrySentOnNewRequestPredictionTelemetryData()
+        {
+            var expectedTelemetryCount = 1;
+            var firstRequestId = Guid.NewGuid().ToString();
+            var secondRequestId = Guid.NewGuid().ToString();
+
+            var telemetryClient = new MockAzPredictorTelemetryClient();
+
+            telemetryClient.ExceptedTelemetryDispatchCount = expectedTelemetryCount;
+            telemetryClient.FlushAtDispatch = false;
+            telemetryClient.ResetWaitingTasks();
+
+            telemetryClient.RequestId = firstRequestId;;
+            telemetryClient.OnRequestPrediction(new RequestPredictionTelemetryData(null,
+                        new List<string>(),
+                        hasSentHttpRequest: true,
+                        exception: null,
+                        predictorSummary: new CommandLineSummary(3, 3, null)));
+
+            VerifyTelemetryDispatchCount(expectedTelemetryCount, telemetryClient);
+            // We have updated the cached aggregated data.
+            Assert.Equal(firstRequestId, telemetryClient.RecordedAggregatedData.RequestId);
+            // We haven't sent this telemetry yet.
+            Assert.Equal(0, telemetryClient.RecordedTelemetry.Count);
+
+            telemetryClient.ExceptedTelemetryDispatchCount = 1;
+            telemetryClient.FlushAtDispatch = false;
+            telemetryClient.ResetWaitingTasks();
+
+            telemetryClient.RequestId = secondRequestId;
+            telemetryClient.OnRequestPrediction(new RequestPredictionTelemetryData(null,
+                        new List<string>()
+                        {
+                            AzPredictorConstants.CommandPlaceholder,
+                            AzPredictorConstants.CommandPlaceholder
+                        },
+                        hasSentHttpRequest: true,
+                        exception: null,
+                        predictorSummary: new CommandLineSummary(10, 10, null)));
+
+            VerifyTelemetryDispatchCount(expectedTelemetryCount, telemetryClient);
+
+            // We should send the cached aggregated data before recording the new RequestPredictionTelemetryData
+            Assert.Equal(1, telemetryClient.RecordedTelemetry.Count);
+            Assert.Equal(firstRequestId, telemetryClient.RecordedTelemetry[0].Properties["RequestId"]);
+
+            // Now the cached aggregated data is updated with the new RequestPredictionTelemetryData
+            Assert.Equal(secondRequestId, telemetryClient.RecordedAggregatedData.RequestId);
+        }
+
+        /// <summary>
         /// Verify that the unsupported commands are replaced with placeholders in <see cref="AzPredictor.OnCommandLineAccepted"/>.
         /// </summary>
         [Theory]
