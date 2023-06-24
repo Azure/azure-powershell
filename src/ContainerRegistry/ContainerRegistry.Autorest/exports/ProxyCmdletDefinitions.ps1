@@ -6996,7 +6996,6 @@ REGISTRY <IRegistry>: The Registry Object.
   [AdminUserEnabled <Boolean?>]: The value that indicates whether the admin user is enabled.
   [AnonymousPullEnabled <Boolean?>]: Enables registry-wide pull from unauthenticated clients.
   [AzureAdAuthenticationAsArmPolicyStatus <AzureAdAuthenticationAsArmPolicyStatus?>]: The value that indicates whether the policy is enabled or not.
-  [AzureAsyncOperation <String>]: 
   [DataEndpointEnabled <Boolean?>]: Enable a single data endpoint per region for serving data.
   [EncryptionStatus <EncryptionStatus?>]: Indicates whether or not the encryption is enabled for container registry.
   [ExportPolicyStatus <ExportPolicyStatus?>]: The value that indicates whether the policy is enabled or not.
@@ -7240,7 +7239,6 @@ REGISTRY <IRegistry>: The Registry Object.
   [AdminUserEnabled <Boolean?>]: The value that indicates whether the admin user is enabled.
   [AnonymousPullEnabled <Boolean?>]: Enables registry-wide pull from unauthenticated clients.
   [AzureAdAuthenticationAsArmPolicyStatus <AzureAdAuthenticationAsArmPolicyStatus?>]: The value that indicates whether the policy is enabled or not.
-  [AzureAsyncOperation <String>]: 
   [DataEndpointEnabled <Boolean?>]: Enable a single data endpoint per region for serving data.
   [EncryptionStatus <EncryptionStatus?>]: Indicates whether or not the encryption is enabled for container registry.
   [ExportPolicyStatus <ExportPolicyStatus?>]: The value that indicates whether the policy is enabled or not.
@@ -7502,7 +7500,6 @@ REGISTRY <IRegistry>: The Registry Object.
   [AdminUserEnabled <Boolean?>]: The value that indicates whether the admin user is enabled.
   [AnonymousPullEnabled <Boolean?>]: Enables registry-wide pull from unauthenticated clients.
   [AzureAdAuthenticationAsArmPolicyStatus <AzureAdAuthenticationAsArmPolicyStatus?>]: The value that indicates whether the policy is enabled or not.
-  [AzureAsyncOperation <String>]: 
   [DataEndpointEnabled <Boolean?>]: Enable a single data endpoint per region for serving data.
   [EncryptionStatus <EncryptionStatus?>]: Indicates whether or not the encryption is enabled for container registry.
   [ExportPolicyStatus <ExportPolicyStatus?>]: The value that indicates whether the policy is enabled or not.
@@ -7736,7 +7733,6 @@ WEBHOOK <IWebhook>: The Webhook Object.
   [Tag <IResourceTags>]: The tags of the resource.
     [(Any) <String>]: This indicates any property can be added to this object.
   [Action <WebhookAction[]>]: The list of actions that trigger the webhook to post notifications.
-  [AzureAsyncOperation <String>]: 
   [Scope <String>]: The scope of repositories where the event can be triggered. For example, 'foo:*' means events for all tags under repository 'foo'. 'foo:bar' means events for 'foo:bar' only. 'foo' is equivalent to 'foo:latest'. Empty means all events.
   [Status <WebhookStatus?>]: The status of the webhook at the time the operation was called.
 .Link
@@ -8042,7 +8038,6 @@ REGISTRY <IRegistry>: The Registry Object.
   [AdminUserEnabled <Boolean?>]: The value that indicates whether the admin user is enabled.
   [AnonymousPullEnabled <Boolean?>]: Enables registry-wide pull from unauthenticated clients.
   [AzureAdAuthenticationAsArmPolicyStatus <AzureAdAuthenticationAsArmPolicyStatus?>]: The value that indicates whether the policy is enabled or not.
-  [AzureAsyncOperation <String>]: 
   [DataEndpointEnabled <Boolean?>]: Enable a single data endpoint per region for serving data.
   [EncryptionStatus <EncryptionStatus?>]: Indicates whether or not the encryption is enabled for container registry.
   [ExportPolicyStatus <ExportPolicyStatus?>]: The value that indicates whether the policy is enabled or not.
@@ -8307,7 +8302,6 @@ REGISTRY <IRegistry>: The Registry Object.
   [AdminUserEnabled <Boolean?>]: The value that indicates whether the admin user is enabled.
   [AnonymousPullEnabled <Boolean?>]: Enables registry-wide pull from unauthenticated clients.
   [AzureAdAuthenticationAsArmPolicyStatus <AzureAdAuthenticationAsArmPolicyStatus?>]: The value that indicates whether the policy is enabled or not.
-  [AzureAsyncOperation <String>]: 
   [DataEndpointEnabled <Boolean?>]: Enable a single data endpoint per region for serving data.
   [EncryptionStatus <EncryptionStatus?>]: Indicates whether or not the encryption is enabled for container registry.
   [ExportPolicyStatus <ExportPolicyStatus?>]: The value that indicates whether the policy is enabled or not.
@@ -8594,7 +8588,6 @@ WEBHOOK <IWebhook>: The webhook object.
   [Tag <IResourceTags>]: The tags of the resource.
     [(Any) <String>]: This indicates any property can be added to this object.
   [Action <WebhookAction[]>]: The list of actions that trigger the webhook to post notifications.
-  [AzureAsyncOperation <String>]: 
   [Scope <String>]: The scope of repositories where the event can be triggered. For example, 'foo:*' means events for all tags under repository 'foo'. 'foo:bar' means events for 'foo:bar' only. 'foo' is equivalent to 'foo:latest'. Empty means all events.
   [Status <WebhookStatus?>]: The status of the webhook at the time the operation was called.
 .Link
@@ -8826,7 +8819,6 @@ REGISTRY <IRegistry>: The Registry Object.
   [AdminUserEnabled <Boolean?>]: The value that indicates whether the admin user is enabled.
   [AnonymousPullEnabled <Boolean?>]: Enables registry-wide pull from unauthenticated clients.
   [AzureAdAuthenticationAsArmPolicyStatus <AzureAdAuthenticationAsArmPolicyStatus?>]: The value that indicates whether the policy is enabled or not.
-  [AzureAsyncOperation <String>]: 
   [DataEndpointEnabled <Boolean?>]: Enable a single data endpoint per region for serving data.
   [EncryptionStatus <EncryptionStatus?>]: Indicates whether or not the encryption is enabled for container registry.
   [ExportPolicyStatus <ExportPolicyStatus?>]: The value that indicates whether the policy is enabled or not.
