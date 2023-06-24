@@ -242,6 +242,9 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             catch
             {
                 // do not throw if CryptoProvider is not provided
+                // We just set the value to distinguish it from an empty string which means we don't get the information at
+                // all.
+                result = "Failed";
             }
 
             return result;
