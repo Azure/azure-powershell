@@ -1,4 +1,4 @@
-### Example 1: Create a minimum set FileSystemResource
+### Example 1: Create a minimum set file system resource
 ```powershell
 $password = ConvertTo-SecureString "1qaz@WSX" -AsPlainText
 
@@ -11,9 +11,9 @@ Location Name               SystemDataCreatedAt  SystemDataCreatedBy   SystemDat
 eastus   qumulo01           5/24/2023 7:27:12 AM user@organization.com User                    5/24/2023 7:42:17 AM     13c34964-a135-4390-aa53-32f3c7251982 Application                  ps-joyer-test
 ```
 
-Create a FileSystemResource. The password must contain at least 8 characters and have at least 1 letter, 1 number and 1 special character.
+Create a file system resource. The password must contain at least 8 characters and have at least 1 letter, 1 number and 1 special character.
 
-### Example 2: Create a FileSystemResource with other settings
+### Example 2: Create a file system resource with other settings
 ```powershell
 $password = ConvertTo-SecureString "2wsx#EDC" -AsPlainText
 
@@ -26,5 +26,5 @@ Location Name               SystemDataCreatedAt  SystemDataCreatedBy   SystemDat
 eastus   qumulo02           5/24/2023 9:31:50 AM user@organization.com User                    5/24/2023 9:41:10 AM     13c34964-a135-4390-aa53-32f3c7251982 Application                  ps-joyer-test
 ```
 
-Create a FileSystemResource with a maximum set
+Create a file system resource with a maximum set
 

@@ -1,14 +1,13 @@
-### Example 1: Remove special resource with sepecial group
+### Example 1: Remove specific resource with specified resource group
 ```powershell
 Remove-AzQumuloFileSystem -Name qumulo01 -ResourceGroupName ps-joyer-test02
 ```
 
-Remove special File System Resource in sepecial group
+Remove specific resource with specified resource group
 
-### Example 2: Get and remove special resource with sepecial group
+### Example 2: Get and remove specific resource with specified resource group by pipeline
 ```powershell
-$fileSystem = Get-AzQumuloFileSystem -ResourceGroupName ps-joyer-test -Name qumulo-resource-01
-Remove-AzQumuloFileSystem -InputObject $fileSystem
+Get-AzQumuloFileSystem -ResourceGroupName ps-joyer-test -Name qumulo-resource-01 | Remove-AzQumuloFileSystem
 ```
 
-Remove special File System Resource in sepecial group
+Remove specific file system resource with specified resource group by pipeline
