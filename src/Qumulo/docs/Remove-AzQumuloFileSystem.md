@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzQumuloFileSystem
 
 ## SYNOPSIS
-Delete a FileSystemResource
+Delete a file system resource
 
 ## SYNTAX
 
@@ -25,7 +25,7 @@ Remove-AzQumuloFileSystem -InputObject <IQumuloIdentity> [-DefaultProfile <PSObj
 ```
 
 ## DESCRIPTION
-Delete a FileSystemResource
+Delete a file system resource
 
 ## EXAMPLES
 

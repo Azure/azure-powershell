@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzQumuloFileSystem
 
 ## SYNOPSIS
-Get a FileSystemResource
+Get a file system resource
 
 ## SYNTAX
 
@@ -35,7 +35,7 @@ Get-AzQumuloFileSystem -ResourceGroupName <String> [-SubscriptionId <String[]>] 
 ```
 
 ## DESCRIPTION
-Get a FileSystemResource
+Get a file system resource
 
 ## EXAMPLES
 

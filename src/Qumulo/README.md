@@ -77,6 +77,27 @@ directive:
           "description": "Initial administrator password of the resource",
           "format": "password"
       }
+  # Rename FileSystemResource to file system resource 
+  - from: swagger-document 
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Qumulo.Storage/fileSystems"].get.description
+    transform: >-
+      return "List file system resources by resource group"
+  - from: swagger-document 
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Qumulo.Storage/fileSystems/{fileSystemName}"].get.description
+    transform: >-
+      return "Get a file system resource"
+  - from: swagger-document 
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Qumulo.Storage/fileSystems/{fileSystemName}"].put.description
+    transform: >-
+      return "Create a file system resource"
+  - from: swagger-document 
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Qumulo.Storage/fileSystems/{fileSystemName}"].patch.description
+    transform: >-
+      return "Update a file system resource"
+  - from: swagger-document 
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Qumulo.Storage/fileSystems/{fileSystemName}"].delete.description
+    transform: >-
+      return "Delete a file system resource"
   # rename parameters
   - where:
       parameter-name: IdentityUserAssignedIdentity #Useless parameter

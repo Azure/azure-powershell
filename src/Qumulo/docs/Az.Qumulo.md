@@ -12,13 +12,13 @@ Microsoft Azure PowerShell: Qumulo cmdlets
 
 ## Az.Qumulo Cmdlets
 ### [Get-AzQumuloFileSystem](Get-AzQumuloFileSystem.md)
-Get a FileSystemResource
+Get a file system resource
 
 ### [New-AzQumuloFileSystem](New-AzQumuloFileSystem.md)
-Create a FileSystemResource
+Create a file system resource
 
 ### [Remove-AzQumuloFileSystem](Remove-AzQumuloFileSystem.md)
-Delete a FileSystemResource
+Delete a file system resource
 
 ### [Update-AzQumuloFileSystem](Update-AzQumuloFileSystem.md)
 Update a FileSystemResource

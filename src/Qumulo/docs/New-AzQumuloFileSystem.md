@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzQumuloFileSystem
 
 ## SYNOPSIS
-Create a FileSystemResource
+Create a file system resource
 
 ## SYNTAX
 
@@ -23,7 +23,7 @@ New-AzQumuloFileSystem -Name <String> -ResourceGroupName <String> -AdminPassword
 ```
 
 ## DESCRIPTION
-Create a FileSystemResource
+Create a file system resource
 
 ## EXAMPLES
 
