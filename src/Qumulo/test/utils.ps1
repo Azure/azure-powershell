@@ -38,9 +38,6 @@ function setupEnv() {
     $qumulo2Name = 'qumulo-rs-02'
     $env.Add('qumulo2Name', $qumulo2Name)
 
-    $qumulo3Name = 'qumulo-rs-03'
-    $env.Add('qumulo3Name', $qumulo3Name)
-
     $region = 'eastus'
     $env.Add('region', $region)
 

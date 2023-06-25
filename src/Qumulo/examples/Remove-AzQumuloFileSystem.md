@@ -3,7 +3,7 @@
 Remove-AzQumuloFileSystem -Name qumulo01 -ResourceGroupName ps-joyer-test02
 ```
 
-Remove special File System Resource with sepecial group
+Remove special File System Resource in sepecial group
 
 ### Example 2: Get and remove special resource with sepecial group
 ```powershell
@@ -11,4 +11,4 @@ $fileSystem = Get-AzQumuloFileSystem -ResourceGroupName ps-joyer-test -Name qumu
 Remove-AzQumuloFileSystem -InputObject $fileSystem
 ```
 
-Remove special File System Resource with sepecial group
+Remove special File System Resource in sepecial group

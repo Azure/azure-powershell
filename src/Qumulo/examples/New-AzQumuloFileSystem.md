@@ -11,7 +11,7 @@ Location Name               SystemDataCreatedAt  SystemDataCreatedBy   SystemDat
 eastus   qumulo01           5/24/2023 7:27:12 AM user@organization.com User                    5/24/2023 7:42:17 AM     13c34964-a135-4390-aa53-32f3c7251982 Application                  ps-joyer-test
 ```
 
-Create a FileSystemResource with a minimum set
+Create a FileSystemResource. The password must contain at least 8 characters and have at least 1 letter, 1 number and 1 special character.
 
 ### Example 2: Create a FileSystemResource with other settings
 ```powershell

@@ -61,7 +61,7 @@ directive:
     remove: true
   # don't support updation of resource
   - where:
-      verb: update
+      verb: Update
     hide: true
   # Remove the set-* cmdlet
   - where:
