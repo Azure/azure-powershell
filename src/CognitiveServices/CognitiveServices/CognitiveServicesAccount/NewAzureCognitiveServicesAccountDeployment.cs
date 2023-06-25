@@ -64,6 +64,11 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
             HelpMessage = "Cognitive Services Deployment Properties.")]
         public DeploymentProperties Properties { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Cognitive Services Deployment Sku.")]
+        public Sku Sku { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -74,6 +79,7 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
                                     ResourceGroupName,
                                     AccountName,
                                     Name,
+                                    Sku,
                                     Properties);
 
                     WriteObject(createAccountResponse);

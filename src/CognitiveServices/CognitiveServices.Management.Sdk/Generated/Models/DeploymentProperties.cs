@@ -34,10 +34,13 @@ namespace Microsoft.Azure.Management.CognitiveServices.Models
         /// <param name="provisioningState">Gets the status of the resource at
         /// the time the operation was called. Possible values include:
         /// 'Accepted', 'Creating', 'Deleting', 'Moving', 'Failed',
-        /// 'Succeeded'</param>
+        /// 'Succeeded', 'Disabled', 'Canceled'</param>
         /// <param name="capabilities">The capabilities.</param>
         /// <param name="raiPolicyName">The name of RAI policy.</param>
-        public DeploymentProperties(string provisioningState = default(string), DeploymentModel model = default(DeploymentModel), DeploymentScaleSettings scaleSettings = default(DeploymentScaleSettings), IDictionary<string, string> capabilities = default(IDictionary<string, string>), string raiPolicyName = default(string), CallRateLimit callRateLimit = default(CallRateLimit))
+        /// <param name="versionUpgradeOption">Deployment model version upgrade
+        /// option. Possible values include: 'OnceNewDefaultVersionAvailable',
+        /// 'OnceCurrentVersionExpired', 'NoAutoUpgrade'</param>
+        public DeploymentProperties(string provisioningState = default(string), DeploymentModel model = default(DeploymentModel), DeploymentScaleSettings scaleSettings = default(DeploymentScaleSettings), IDictionary<string, string> capabilities = default(IDictionary<string, string>), string raiPolicyName = default(string), CallRateLimit callRateLimit = default(CallRateLimit), IList<ThrottlingRule> rateLimits = default(IList<ThrottlingRule>), string versionUpgradeOption = default(string))
         {
             ProvisioningState = provisioningState;
             Model = model;
@@ -45,6 +48,8 @@ namespace Microsoft.Azure.Management.CognitiveServices.Models
             Capabilities = capabilities;
             RaiPolicyName = raiPolicyName;
             CallRateLimit = callRateLimit;
+            RateLimits = rateLimits;
+            VersionUpgradeOption = versionUpgradeOption;
             CustomInit();
         }
 
@@ -56,7 +61,7 @@ namespace Microsoft.Azure.Management.CognitiveServices.Models
         /// <summary>
         /// Gets the status of the resource at the time the operation was
         /// called. Possible values include: 'Accepted', 'Creating',
-        /// 'Deleting', 'Moving', 'Failed', 'Succeeded'
+        /// 'Deleting', 'Moving', 'Failed', 'Succeeded', 'Disabled', 'Canceled'
         /// </summary>
         [JsonProperty(PropertyName = "provisioningState")]
         public string ProvisioningState { get; private set; }
@@ -87,6 +92,19 @@ namespace Microsoft.Azure.Management.CognitiveServices.Models
         /// </summary>
         [JsonProperty(PropertyName = "callRateLimit")]
         public CallRateLimit CallRateLimit { get; private set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "rateLimits")]
+        public IList<ThrottlingRule> RateLimits { get; private set; }
+
+        /// <summary>
+        /// Gets or sets deployment model version upgrade option. Possible
+        /// values include: 'OnceNewDefaultVersionAvailable',
+        /// 'OnceCurrentVersionExpired', 'NoAutoUpgrade'
+        /// </summary>
+        [JsonProperty(PropertyName = "versionUpgradeOption")]
+        public string VersionUpgradeOption { get; set; }
 
     }
 }
