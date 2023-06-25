@@ -11,7 +11,6 @@
 namespace Microsoft.Azure.Management.NetApp.Models
 {
     using Microsoft.Rest;
-    using Microsoft.Rest.Azure;
     using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
     using System.Collections;
@@ -22,7 +21,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
     /// Backup patch
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class BackupPatch : IResource
+    public partial class BackupPatch
     {
         /// <summary>
         /// Initializes a new instance of the BackupPatch class.
