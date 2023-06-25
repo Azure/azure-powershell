@@ -147,7 +147,7 @@ function Get-NrpResourceName
 
 function Get-NrpResourceGroupName
 {
-	Get-ResourceGroupName "psnrp";
+   Get-ResourceGroupName "psnrp";
 }
 
 function Wait-Vm($vm)
@@ -323,10 +323,12 @@ function Test-GetNextHop
     # Setup
     $resourceGroupName = Get-NrpResourceGroupName
     $nwName = Get-NrpResourceName
+    $location = Get-PilotLocation
     $nwRgName = Get-NrpResourceGroupName
     $securityRuleName = Get-NrpResourceName
     $templateFile = (Resolve-Path ".\TestData\Deployment.json").Path
-    $location = Get-ProviderLocation "Microsoft.Network/networkWatchers" "East US"
+    $resourceTypeParent = "Microsoft.Network/networkWatchers"
+    $nwLocation = Get-ProviderLocation $resourceTypeParent
     
     try 
     {
@@ -350,18 +352,23 @@ function Test-GetNextHop
         #Get pablic IP address
         $address = Get-AzPublicIpAddress -ResourceGroupName $resourceGroupName
 
+        #Get Nic for Source IP address
+        $Nics = Get-AzNetworkInterface | Where-Object {$_.Id -eq $vm.NetworkProfile.NetworkInterfaces.Id.ForEach({$_})}
+        
+        #Write-Output $Nics
+
         #Get next hop
-        $job = Get-AzNetworkWatcherNextHop -NetworkWatcher $nw -TargetVirtualMachineId $vm.Id -DestinationIPAddress 10.1.3.6 -SourceIPAddress $address.IpAddress -AsJob
+        $job = Get-AzNetworkWatcherNextHop -NetworkWatcher $nw -TargetVirtualMachineId $vm.Id -DestinationIPAddress 10.1.3.6 -SourceIPAddress $Nics[0].IpConfigurations[0].PrivateIpAddress -AsJob
         $job | Wait-Job
         $nextHop1 = $job | Receive-Job
-        $nextHop2 = Get-AzNetworkWatcherNextHop -NetworkWatcher $nw -TargetVirtualMachineId $vm.Id -DestinationIPAddress 12.11.12.14 -SourceIPAddress $address.IpAddress
+        $nextHop2 = Get-AzNetworkWatcherNextHop -NetworkWatcher $nw -TargetVirtualMachineId $vm.Id -DestinationIPAddress 12.11.12.14 -SourceIPAddress $Nics[0].IpConfigurations[0].PrivateIpAddress
     
         #Verification
         Assert-AreEqual $nextHop1.NextHopType None
         Assert-AreEqual $nextHop1.NextHopIpAddress 10.0.1.2
         Assert-AreEqual $nextHop2.NextHopType Internet
         Assert-AreEqual $nextHop2.RouteTableId "System Route"
-    }
+    } 
     finally
     {
         # Cleanup
@@ -529,6 +536,7 @@ function Test-PacketCapture
 
         #Get Vm
         $vm = Get-AzVM -ResourceGroupName $resourceGroupName
+        
 
         #Install networkWatcherAgent on Vm
         Set-AzVMExtension -ResourceGroupName "$resourceGroupName" -Location "$location" -VMName $vm.Name -Name "MyNetworkWatcherAgent" -Type "NetworkWatcherAgentWindows" -TypeHandlerVersion "1.4" -Publisher "Microsoft.Azure.NetworkWatcher" 
