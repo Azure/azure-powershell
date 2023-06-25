@@ -29,20 +29,12 @@ Delete a FileSystemResource
 
 ## EXAMPLES
 
-### Example 1: Remove special resource with sepecial group
+### Example 1: Remove specific resource with specified resource group
 ```powershell
 Remove-AzQumuloFileSystem -Name qumulo01 -ResourceGroupName ps-joyer-test02
 ```
 
-Remove special File System Resource in sepecial group
-
-### Example 2: Get and remove special resource with sepecial group
-```powershell
-$fileSystem = Get-AzQumuloFileSystem -ResourceGroupName ps-joyer-test -Name qumulo-resource-01
-Remove-AzQumuloFileSystem -InputObject $fileSystem
-```
-
-Remove special File System Resource in sepecial group
+Remove specific resource with specified resource group
 
 ## PARAMETERS
 

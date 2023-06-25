@@ -55,7 +55,7 @@ eastus   qumulo-resource-01 5/24/2023 7:27:12 AM user@organization.com User     
 eastus   qumulo-resource-02 5/24/2023 9:31:50 AM user@organization.com User                    5/24/2023 9:41:10 AM     13c34964-a135-4390-aa53-32f3c7251982 Application                  ps-joyer-test
 ```
 
-Get list of File System Resource by subscription
+Get list of file system resources by subscription
 
 ### Example 2: List by resource group
 ```powershell
@@ -70,9 +70,9 @@ eastus   qumulo-resource-01 5/24/2023 7:27:12 AM user@organization.com User     
 eastus   qumulo-resource-02 5/24/2023 9:31:50 AM user@organization.com User                    5/24/2023 9:41:10 AM     13c34964-a135-4390-aa53-32f3c7251982 Application                  ps-joyer-test 
 ```
 
-Get list of File System Resource by resource group
+Get list of file system resources by resource group
 
-### Example 3: Get special resource with sepecial group
+### Example 3: Get specific resource with specified resource group
 ```powershell
 Get-AzQumuloFileSystem -ResourceGroupName azpstest-gp -Name fileSystem
 ```
@@ -83,7 +83,7 @@ Location Name               SystemDataCreatedAt  SystemDataCreatedBy   SystemDat
 eastus   qumulo-resource-01 5/24/2023 7:27:12 AM user@organization.com User                    5/24/2023 9:58:45 AM     user@organization.com    User                         ps-joyer-test 
 ```
 
-Get special File System Resource with special resource group
+Get specific file system resource with specified resource group
 
 ## PARAMETERS
 
