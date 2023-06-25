@@ -15,7 +15,7 @@ Update tags with specific name and group
 ### Example 2: Update tags with specific file system object
 ```powershell
 $fileSystem = Get-AzQumuloFileSystem -ResourceGroupName ps-joyer-test -Name qumulo-resource-01
-Update-AzQumuloFileSystem --InputObject $fileSystem -Tag @{"123"="abc"}
+Update-AzQumuloFileSystem -InputObject $fileSystem -Tag @{"123"="abc"}
 ```
 
 ```output
