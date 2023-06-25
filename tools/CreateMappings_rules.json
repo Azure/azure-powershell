@@ -813,10 +813,6 @@
     "alias": "Workloads"
   },
   {
-    "alias": "Deployment Stacks",
-    "module": "DeploymentStacks"
-  },
-  {
     "alias": "SelfHelp",
     "module": "SelfHelp"
   }
