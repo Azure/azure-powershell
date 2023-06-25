@@ -93,7 +93,7 @@ Get threat intelligence indicators metrics (Indicators counts by Type, Threat Ty
 Query threat intelligence indicators as per filtering criteria.
 
 ### [New-AzSentinelAlertRule](New-AzSentinelAlertRule.md)
-Creates or updates the alert rule.
+Creates the alert rule.
 
 ### [New-AzSentinelAlertRuleAction](New-AzSentinelAlertRuleAction.md)
 Creates or updates the action of alert rule.
