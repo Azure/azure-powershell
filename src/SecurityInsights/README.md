@@ -74,8 +74,8 @@ input-file:
 module-version: 1.2.0
 title: SecurityInsights
 subject-prefix: Sentinel
-  
 inlining-threshold: 50
+disable-getput: true
 
 directive:
   # Fixes/overrides to swaggers
