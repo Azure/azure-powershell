@@ -23,7 +23,7 @@ Create an in-memory object for IPRule.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IPRule
 .Link
-https://learn.microsoft.com/powershell/module/az.ContainerRegistry/new-AzContainerRegistryIPRuleObject
+https://learn.microsoft.com/powershell/module/Az.ContainerRegistry/new-AzContainerRegistryIPRuleObject
 #>
 function New-AzContainerRegistryIPRuleObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IPRule')]

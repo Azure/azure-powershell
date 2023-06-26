@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.ContainerRegistry
-online version: https://learn.microsoft.com/powershell/module/az.ContainerRegistry/new-AzContainerRegistryIPRuleObject
+online version: https://learn.microsoft.com/powershell/module/Az.ContainerRegistry/new-AzContainerRegistryIPRuleObject
 schema: 2.0.0
 ---
 
