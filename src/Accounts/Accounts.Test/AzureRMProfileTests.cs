@@ -20,6 +20,7 @@ using Microsoft.Azure.Commands.Common.Authentication.ResourceManager.Common;
 using Microsoft.Azure.Commands.Profile;
 using Microsoft.Azure.Commands.Profile.Models;
 using Microsoft.Azure.Commands.Profile.Test;
+using Microsoft.Azure.Commands.Profile.Utilities;
 using Microsoft.Azure.Commands.ScenarioTest;
 using Microsoft.Azure.Commands.TestFx.Mocks;
 using Microsoft.Azure.Management.ResourceManager.Version2021_01_01.Models;
@@ -30,6 +31,9 @@ using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+
+using Moq;
+
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
@@ -191,6 +195,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                 TenantId = DefaultTenant.ToString()
             };
 
+            var mockOpenIDConfig = new Mock<IOpenIDConfiguration>();
+            mockOpenIDConfig.SetupGet(p => p.TenantId).Returns(DefaultTenant.ToString());
+
             var azureRmProfile = client.Login(
                 Context.Account,
                 Context.Environment,
@@ -199,6 +206,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                 null,
                 null,
                 false,
+                mockOpenIDConfig.Object,
                 null);
             Assert.Equal("2021-01-01", client.SubscriptionAndTenantClient.ApiVersion);
         }
@@ -221,6 +229,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                 TenantId = DefaultTenant.ToString()
             };
 
+            var mockOpenIDConfig = new Mock<IOpenIDConfiguration>();
+            mockOpenIDConfig.SetupGet(p => p.TenantId).Returns(DefaultTenant.ToString());
+
             var azureRmProfile = client.Login(
                 Context.Account,
                 Context.Environment,
@@ -229,6 +240,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                 null,
                 null,
                 false,
+                mockOpenIDConfig.Object,
                 null);
             Assert.Equal("2021-01-01", client.SubscriptionAndTenantClient.ApiVersion);
         }
@@ -255,7 +267,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             {
                 throw new CloudException("InvalidAuthenticationTokenTenant: The access token is from the wrong issuer");
             });
-            
+
+            var mockOpenIDConfig = new Mock<IOpenIDConfiguration>();
+            mockOpenIDConfig.SetupGet(p => p.TenantId).Returns(DefaultTenant.ToString());
+
             Assert.Throws<PSInvalidOperationException>(() => client.Login(
                Context.Account,
                Context.Environment,
@@ -264,6 +279,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                null,
                null,
                false,
+               mockOpenIDConfig.Object,
                null));
             Assert.Equal("2021-01-01", client.SubscriptionAndTenantClient.ApiVersion);
         }
@@ -286,6 +302,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                 TenantId = DefaultTenant.ToString()
             };
 
+            var mockOpenIDConfig = new Mock<IOpenIDConfiguration>();
+            mockOpenIDConfig.SetupGet(p => p.TenantId).Returns(DefaultTenant.ToString());
+
             Assert.Throws<PSInvalidOperationException>(() => client.Login(
                Context.Account,
                Context.Environment,
@@ -294,6 +313,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                null,
                null,
                false,
+               mockOpenIDConfig.Object,
                null));
         }
 
@@ -322,6 +342,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                 throw new CloudException("InvalidAuthenticationTokenTenant: The access token is from the wrong issuer");
             });
 
+            var mockOpenIDConfig = new Mock<IOpenIDConfiguration>();
+            mockOpenIDConfig.SetupGet(p => p.TenantId).Returns(DefaultTenant.ToString());
+
             var azureRmProfile = client.Login(
                 Context.Account,
                 Context.Environment,
@@ -330,6 +353,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                 null,
                 null,
                 false,
+                mockOpenIDConfig.Object,
                 null);
         }
 
@@ -377,6 +401,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                 };
             });
 
+            var mockOpenIDConfig = new Mock<IOpenIDConfiguration>();
+            mockOpenIDConfig.SetupGet(p => p.TenantId).Returns(DefaultTenant.ToString());
+
             var azureRmProfile = client.Login(
                 Context.Account,
                 Context.Environment,
@@ -385,6 +412,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                 MockSubscriptionClientFactory.GetSubscriptionNameFromId(subscriptionInSecondTenant),
                 null,
                 false,
+                mockOpenIDConfig.Object,
                 null);
         }
 
@@ -428,6 +456,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                     return token;
                 };
 
+            var mockOpenIDConfig = new Mock<IOpenIDConfiguration>();
+            mockOpenIDConfig.SetupGet(p => p.TenantId).Returns(DefaultTenant.ToString());
+
             var azureRmProfile = client.Login(
                 Context.Account,
                 Context.Environment,
@@ -436,6 +467,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                 null,
                 null,
                 false,
+                mockOpenIDConfig.Object,
                 null);
 
             var tenantsInAccount = azureRmProfile.DefaultContext.Account.GetPropertyAsArray(AzureAccount.Property.Tenants);
@@ -468,6 +500,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                 throw new AadAuthenticationCanceledException("Login window was closed", null);
             };
 
+            var mockOpenIDConfig = new Mock<IOpenIDConfiguration>();
+            mockOpenIDConfig.SetupGet(p => p.TenantId).Returns(DefaultTenant.ToString());
+
             Assert.Throws<AadAuthenticationCanceledException>(() => client.Login(
                Context.Account,
                Context.Environment,
@@ -476,6 +511,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                null,
                null,
                false,
+               mockOpenIDConfig.Object,
                null));
         }
 

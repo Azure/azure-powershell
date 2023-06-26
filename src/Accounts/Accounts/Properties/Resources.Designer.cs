@@ -673,6 +673,15 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The uri is invalid: {0}.
+        /// </summary>
+        internal static string InvalidOpenIDConfigUri {
+            get {
+                return ResourceManager.GetString("InvalidOpenIDConfigUri", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The specified ResourceTypeName &quot;{0}&quot; is not supported, please provide a valid value. e.g. Arm, AadGraph, etc..
         /// </summary>
         internal static string InvalidResourceTypeName {
@@ -750,6 +759,15 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         internal static string ObsoleteManagedServiceParameters {
             get {
                 return ResourceManager.GetString("ObsoleteManagedServiceParameters", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failed to find the &apos;issuer‘ from the OpenID configuration response: {0}..
+        /// </summary>
+        internal static string OpenIDConfigResponseError {
+            get {
+                return ResourceManager.GetString("OpenIDConfigResponseError", resourceCulture);
             }
         }
         
@@ -1254,6 +1272,15 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         internal static string TenantIdNotFound {
             get {
                 return ResourceManager.GetString("TenantIdNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fail to parse tenant Id from issuer {0}..
+        /// </summary>
+        internal static string TenantIdNotFoundinIssuer {
+            get {
+                return ResourceManager.GetString("TenantIdNotFoundinIssuer", resourceCulture);
             }
         }
         

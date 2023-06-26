@@ -574,4 +574,13 @@
   <data name="KeyStoreLoadingError" xml:space="preserve">
     <value>KeyStore cannot be loaded from storage. Please check the keystore file integrity or system compablity. The functions relate to context autosaving may be affected.</value>
   </data>
+  <data name="InvalidOpenIDConfigUri" xml:space="preserve">
+    <value>The uri is invalid: {0}</value>
+  </data>
+  <data name="OpenIDConfigResponseError" xml:space="preserve">
+    <value>Failed to find the 'issuer‘ from the OpenID configuration response: {0}.</value>
+  </data>
+  <data name="TenantIdNotFoundinIssuer" xml:space="preserve">
+    <value>Fail to parse tenant Id from issuer {0}.</value>
+  </data>
 </root>

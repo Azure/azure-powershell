@@ -11,32 +11,19 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 // ----------------------------------------------------------------------------------
-
 using Microsoft.Azure.Commands.Common.Authentication;
-using System;
-using System.Collections.Generic;
 
-namespace Microsoft.Azure.Commands.TestFx.Mocks
+using System.Threading.Tasks;
+
+namespace Microsoft.Azure.Commands.Profile.Utilities
 {
-    public class MockAccessToken : IRenewableToken
+    public interface IOpenIDConfiguration
     {
-        public string TenantId { get; set; }
+        Task<string> Open(IHttpOperationsFactory httpOperationsFactory);
 
-        public string UserId { get; set; }
-
-        public string LoginType { get; set; }
-
-        public string AccessToken { get; set; }
-
-        public DateTimeOffset ExpiresOn { get; set; }
-
-        public void AuthorizeRequest(Action<string, string> authTokenSetter)
+        string TenantId
         {
-            authTokenSetter("Bearer", AccessToken);
+            get;
         }
-
-        public string HomeAccountId { get; set; }
-
-        public IDictionary<string, string> ExtendedProperties => throw new NotImplementedException();
     }
 }
