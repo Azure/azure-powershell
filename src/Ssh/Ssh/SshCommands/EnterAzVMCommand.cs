@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Commands.Ssh
             ValidateParameters();
             SetResourceType();
  
-            record = new ProgressRecord(0, "Prepare for starting SSH connection", "Start Preparing");
+            record = new ProgressRecord(0, "Preparing for SSH connection", "Initiating connection setup");
             UpdateProgressBar(record, "Setup SSH connection", 0);
 
             if (!IsArc() && !ParameterSetName.Equals(IpAddressParameterSet))

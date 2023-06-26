@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Commands.Ssh
             {
                 CheckIfAgentIsUpToDate();
                 proxyPath = GetProxyPath();
-                UpdateProgressBar(record, $"Downloaded proxy to {proxyPath}", 25);
+                UpdateProgressBar(record, $"Retrieved path to Arc Proxy", 25);
                 EndpointAccessResource relayInfo = GetRelayInformation();
                 UpdateProgressBar(record, "Retrieved relay information", 50);
                 CreateRelayInfoFile(relayInfo);
