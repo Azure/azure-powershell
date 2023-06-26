@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzMLWorkspaceConnection
 
 ## SYNOPSIS
-
+Remove a new workspace connection
 
 ## SYNTAX
 
@@ -25,7 +25,7 @@ Remove-AzMLWorkspaceConnection -InputObject <IMachineLearningServicesIdentity> [
 ```
 
 ## DESCRIPTION
-
+Remove a new workspace connection
 
 ## EXAMPLES
 
@@ -203,7 +203,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IMachineLearningServicesIdentity>: Identity Parameter
+`INPUTOBJECT <IMachineLearningServicesIdentity>`: Identity Parameter
   - `[ComputeName <String>]`: Name of the Azure Machine Learning compute.
   - `[ConnectionName <String>]`: Friendly name of the workspace connection
   - `[DeploymentName <String>]`: Inference deployment identifier.

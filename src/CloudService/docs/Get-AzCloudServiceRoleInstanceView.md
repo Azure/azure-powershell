@@ -38,7 +38,7 @@ This cmdlet gets the instance view of the role instance named ContosoFrontEnd_IN
 ## PARAMETERS
 
 ### -CloudServiceName
-.
+Name of the cloud service.
 
 ```yaml
 Type: System.String
@@ -68,7 +68,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-.
+Name of the resource group.
 
 ```yaml
 Type: System.String
@@ -120,7 +120,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.IRoleInstanceView
+### Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.IRoleInstanceView
 
 ## NOTES
 

@@ -1,8 +1,8 @@
 {
-  "Invoke-AzCloudServiceReimage+[NoContext]+Reimage cloud service+$POST+https://management.azure.com/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/resourceGroups/cscmdlettestn8rmh5qx/providers/Microsoft.Compute/cloudServices/cscmdlettestoe6r0n2k/reimage?api-version=2021-03-01+1": {
+  "Invoke-AzCloudServiceReimage+[NoContext]+Reimage cloud service+$POST+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/cscmdlettestkwpz6jb9/providers/Microsoft.Compute/cloudServices/cscmdlettestyl5shqje/reimage?api-version=2022-09-04+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/resourceGroups/cscmdlettestn8rmh5qx/providers/Microsoft.Compute/cloudServices/cscmdlettestoe6r0n2k/reimage?api-version=2021-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/cscmdlettestkwpz6jb9/providers/Microsoft.Compute/cloudServices/cscmdlettestyl5shqje/reimage?api-version=2022-09-04",
       "Content": "{\r\n  \"roleInstances\": [ \"WebRole_IN_0\" ]\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -17,17 +17,17 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/112144dc-de4b-4d74-a622-70eda6d4dd5c?monitor=true\u0026api-version=2021-03-01" ],
-        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/112144dc-de4b-4d74-a622-70eda6d4dd5c?api-version=2021-03-01" ],
+        "Location": [ "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/36371666-0584-437e-a498-c0a46a5194c4?monitor=true\u0026api-version=2022-09-04" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/36371666-0584-437e-a498-c0a46a5194c4?api-version=2022-09-04" ],
+        "x-ms-ratelimit-remaining-resource": [ "Microsoft.Compute/CreateUpdateDeleteCloudServiceOperations30Min;296,Microsoft.Compute/CreateUpdateDeleteCloudServiceOperations30Min;296" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "112144dc-de4b-4d74-a622-70eda6d4dd5c" ],
-        "x-ms-ratelimit-remaining-resource": [ "Microsoft.Compute/CreateUpdateDeleteCloudServiceOperations30Min;296" ],
+        "x-ms-request-id": [ "36371666-0584-437e-a498-c0a46a5194c4" ],
         "Server": [ "Microsoft-HTTPAPI/2.0,Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "1197" ],
-        "x-ms-correlation-request-id": [ "ecb6d661-e3ea-4896-85e2-07e2570e636e" ],
-        "x-ms-routing-request-id": [ "BRAZILUS:20210326T010830Z:ecb6d661-e3ea-4896-85e2-07e2570e636e" ],
+        "x-ms-correlation-request-id": [ "331890c2-7f63-43ab-9ff9-254c516406b5" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230220T053543Z:331890c2-7f63-43ab-9ff9-254c516406b5" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Fri, 26 Mar 2021 01:08:29 GMT" ]
+        "Date": [ "Mon, 20 Feb 2023 05:35:42 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ],
@@ -37,20 +37,20 @@
       "isContentBase64": false
     }
   },
-  "Invoke-AzCloudServiceReimage+[NoContext]+Reimage cloud service+$GET+https://management.azure.com/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/112144dc-de4b-4d74-a622-70eda6d4dd5c?api-version=2021-03-01+2": {
+  "Invoke-AzCloudServiceReimage+[NoContext]+Reimage cloud service+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/36371666-0584-437e-a498-c0a46a5194c4?api-version=2022-09-04+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/112144dc-de4b-4d74-a622-70eda6d4dd5c?api-version=2021-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/36371666-0584-437e-a498-c0a46a5194c4?api-version=2022-09-04",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "45" ],
-        "x-ms-client-request-id": [ "3e2ae830-244a-4378-a384-85d539099205" ],
+        "x-ms-unique-id": [ "60" ],
+        "x-ms-client-request-id": [ "277ea842-5cb3-4256-ad9f-84d4ee6319a0" ],
         "CommandName": [ "Invoke-AzCloudServiceReimage" ],
         "FullCommandName": [ "Invoke-AzCloudServiceReimage_ReimageExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+        "User-Agent": [ "AzurePowershell/v9.0.1", "PSVersion/v7.3.2", "Az.CloudService/0.1.0" ]
       },
       "ContentHeaders": {
       }
@@ -61,38 +61,38 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-served-by": [ "5c0ea146-6027-4948-b7cf-c10a0ff2b9df_132606022997966010" ],
-        "x-ms-request-id": [ "05cbde7d-9de3-4a79-b1be-f2a626dc7e48" ],
+        "x-ms-served-by": [ "86d6fedf-4646-41c8-b051-88bbc636c458_133210851372904375" ],
+        "x-ms-request-id": [ "b17e5d67-c636-4dab-b122-b8de0e6f0718" ],
         "Server": [ "Microsoft-HTTPAPI/2.0", "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11917" ],
-        "x-ms-correlation-request-id": [ "4e478e14-5bee-4c98-95bd-421c864ae75e" ],
-        "x-ms-routing-request-id": [ "BRAZILUS:20210326T010900Z:4e478e14-5bee-4c98-95bd-421c864ae75e" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11945" ],
+        "x-ms-correlation-request-id": [ "90c5b6c4-9bf1-4985-8691-7a30419a4f6d" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230220T053613Z:90c5b6c4-9bf1-4985-8691-7a30419a4f6d" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Fri, 26 Mar 2021 01:09:00 GMT" ]
+        "Date": [ "Mon, 20 Feb 2023 05:36:13 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "134" ],
+        "Content-Length": [ "133" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\r\n  \"startTime\": \"2021-03-26T01:08:29.8754735+00:00\",\r\n  \"status\": \"InProgress\",\r\n  \"name\": \"112144dc-de4b-4d74-a622-70eda6d4dd5c\"\r\n}",
+      "Content": "{\r\n  \"startTime\": \"2023-02-20T05:35:43.384864+00:00\",\r\n  \"status\": \"InProgress\",\r\n  \"name\": \"36371666-0584-437e-a498-c0a46a5194c4\"\r\n}",
       "isContentBase64": false
     }
   },
-  "Invoke-AzCloudServiceReimage+[NoContext]+Reimage cloud service+$GET+https://management.azure.com/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/112144dc-de4b-4d74-a622-70eda6d4dd5c?api-version=2021-03-01+3": {
+  "Invoke-AzCloudServiceReimage+[NoContext]+Reimage cloud service+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/36371666-0584-437e-a498-c0a46a5194c4?api-version=2022-09-04+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/112144dc-de4b-4d74-a622-70eda6d4dd5c?api-version=2021-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/36371666-0584-437e-a498-c0a46a5194c4?api-version=2022-09-04",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "46" ],
-        "x-ms-client-request-id": [ "3e2ae830-244a-4378-a384-85d539099205" ],
+        "x-ms-unique-id": [ "61" ],
+        "x-ms-client-request-id": [ "277ea842-5cb3-4256-ad9f-84d4ee6319a0" ],
         "CommandName": [ "Invoke-AzCloudServiceReimage" ],
         "FullCommandName": [ "Invoke-AzCloudServiceReimage_ReimageExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+        "User-Agent": [ "AzurePowershell/v9.0.1", "PSVersion/v7.3.2", "Az.CloudService/0.1.0" ]
       },
       "ContentHeaders": {
       }
@@ -103,38 +103,38 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-served-by": [ "5c0ea146-6027-4948-b7cf-c10a0ff2b9df_132606022997966010" ],
-        "x-ms-request-id": [ "ff6a456d-e5fe-413d-9ca3-8e7c038b2ec2" ],
+        "x-ms-served-by": [ "86d6fedf-4646-41c8-b051-88bbc636c458_133210851372904375" ],
+        "x-ms-request-id": [ "3beb484d-ddc9-4c17-bcd0-e656409d2a83" ],
         "Server": [ "Microsoft-HTTPAPI/2.0", "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11916" ],
-        "x-ms-correlation-request-id": [ "6de9c1b7-1d93-48cf-8607-95900a633055" ],
-        "x-ms-routing-request-id": [ "BRAZILUS:20210326T010930Z:6de9c1b7-1d93-48cf-8607-95900a633055" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11944" ],
+        "x-ms-correlation-request-id": [ "c5e52425-6705-4aea-b2db-05f7c54c7f8d" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230220T053644Z:c5e52425-6705-4aea-b2db-05f7c54c7f8d" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Fri, 26 Mar 2021 01:09:30 GMT" ]
+        "Date": [ "Mon, 20 Feb 2023 05:36:43 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "134" ],
+        "Content-Length": [ "133" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\r\n  \"startTime\": \"2021-03-26T01:08:29.8754735+00:00\",\r\n  \"status\": \"InProgress\",\r\n  \"name\": \"112144dc-de4b-4d74-a622-70eda6d4dd5c\"\r\n}",
+      "Content": "{\r\n  \"startTime\": \"2023-02-20T05:35:43.384864+00:00\",\r\n  \"status\": \"InProgress\",\r\n  \"name\": \"36371666-0584-437e-a498-c0a46a5194c4\"\r\n}",
       "isContentBase64": false
     }
   },
-  "Invoke-AzCloudServiceReimage+[NoContext]+Reimage cloud service+$GET+https://management.azure.com/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/112144dc-de4b-4d74-a622-70eda6d4dd5c?api-version=2021-03-01+4": {
+  "Invoke-AzCloudServiceReimage+[NoContext]+Reimage cloud service+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/36371666-0584-437e-a498-c0a46a5194c4?api-version=2022-09-04+4": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/112144dc-de4b-4d74-a622-70eda6d4dd5c?api-version=2021-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/36371666-0584-437e-a498-c0a46a5194c4?api-version=2022-09-04",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "47" ],
-        "x-ms-client-request-id": [ "3e2ae830-244a-4378-a384-85d539099205" ],
+        "x-ms-unique-id": [ "62" ],
+        "x-ms-client-request-id": [ "277ea842-5cb3-4256-ad9f-84d4ee6319a0" ],
         "CommandName": [ "Invoke-AzCloudServiceReimage" ],
         "FullCommandName": [ "Invoke-AzCloudServiceReimage_ReimageExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+        "User-Agent": [ "AzurePowershell/v9.0.1", "PSVersion/v7.3.2", "Az.CloudService/0.1.0" ]
       },
       "ContentHeaders": {
       }
@@ -145,38 +145,38 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-served-by": [ "5c0ea146-6027-4948-b7cf-c10a0ff2b9df_132606022997966010" ],
-        "x-ms-request-id": [ "80af6d6a-cfe8-488e-afd7-96d3628e5b26" ],
+        "x-ms-served-by": [ "86d6fedf-4646-41c8-b051-88bbc636c458_133210851372904375" ],
+        "x-ms-request-id": [ "572babd9-7899-41ab-86fd-1e335f8c7165" ],
         "Server": [ "Microsoft-HTTPAPI/2.0", "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11915" ],
-        "x-ms-correlation-request-id": [ "7efe86c8-9fca-4d0c-bf07-63912837afe5" ],
-        "x-ms-routing-request-id": [ "BRAZILUS:20210326T011000Z:7efe86c8-9fca-4d0c-bf07-63912837afe5" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11943" ],
+        "x-ms-correlation-request-id": [ "e04e4fcd-e06a-4d3a-8c64-6176d0153cf5" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230220T053714Z:e04e4fcd-e06a-4d3a-8c64-6176d0153cf5" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Fri, 26 Mar 2021 01:10:00 GMT" ]
+        "Date": [ "Mon, 20 Feb 2023 05:37:13 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "134" ],
+        "Content-Length": [ "133" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\r\n  \"startTime\": \"2021-03-26T01:08:29.8754735+00:00\",\r\n  \"status\": \"InProgress\",\r\n  \"name\": \"112144dc-de4b-4d74-a622-70eda6d4dd5c\"\r\n}",
+      "Content": "{\r\n  \"startTime\": \"2023-02-20T05:35:43.384864+00:00\",\r\n  \"status\": \"InProgress\",\r\n  \"name\": \"36371666-0584-437e-a498-c0a46a5194c4\"\r\n}",
       "isContentBase64": false
     }
   },
-  "Invoke-AzCloudServiceReimage+[NoContext]+Reimage cloud service+$GET+https://management.azure.com/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/112144dc-de4b-4d74-a622-70eda6d4dd5c?api-version=2021-03-01+5": {
+  "Invoke-AzCloudServiceReimage+[NoContext]+Reimage cloud service+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/36371666-0584-437e-a498-c0a46a5194c4?api-version=2022-09-04+5": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/112144dc-de4b-4d74-a622-70eda6d4dd5c?api-version=2021-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/36371666-0584-437e-a498-c0a46a5194c4?api-version=2022-09-04",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "48" ],
-        "x-ms-client-request-id": [ "3e2ae830-244a-4378-a384-85d539099205" ],
+        "x-ms-unique-id": [ "63" ],
+        "x-ms-client-request-id": [ "277ea842-5cb3-4256-ad9f-84d4ee6319a0" ],
         "CommandName": [ "Invoke-AzCloudServiceReimage" ],
         "FullCommandName": [ "Invoke-AzCloudServiceReimage_ReimageExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+        "User-Agent": [ "AzurePowershell/v9.0.1", "PSVersion/v7.3.2", "Az.CloudService/0.1.0" ]
       },
       "ContentHeaders": {
       }
@@ -187,38 +187,38 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-served-by": [ "5c0ea146-6027-4948-b7cf-c10a0ff2b9df_132606022997966010" ],
-        "x-ms-request-id": [ "b28a894e-9c18-4b38-8df9-957f090de9bd" ],
+        "x-ms-served-by": [ "86d6fedf-4646-41c8-b051-88bbc636c458_133210851372904375" ],
+        "x-ms-request-id": [ "1a16567e-8d47-436c-8c32-62ccfa40df93" ],
         "Server": [ "Microsoft-HTTPAPI/2.0", "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11914" ],
-        "x-ms-correlation-request-id": [ "5c9dafc9-2341-47d8-b6de-3c209ad80038" ],
-        "x-ms-routing-request-id": [ "BRAZILUS:20210326T011031Z:5c9dafc9-2341-47d8-b6de-3c209ad80038" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11942" ],
+        "x-ms-correlation-request-id": [ "89dac5cf-f3d3-46cd-a74f-5015564f60f9" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230220T053744Z:89dac5cf-f3d3-46cd-a74f-5015564f60f9" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Fri, 26 Mar 2021 01:10:30 GMT" ]
+        "Date": [ "Mon, 20 Feb 2023 05:37:44 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "134" ],
+        "Content-Length": [ "133" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\r\n  \"startTime\": \"2021-03-26T01:08:29.8754735+00:00\",\r\n  \"status\": \"InProgress\",\r\n  \"name\": \"112144dc-de4b-4d74-a622-70eda6d4dd5c\"\r\n}",
+      "Content": "{\r\n  \"startTime\": \"2023-02-20T05:35:43.384864+00:00\",\r\n  \"status\": \"InProgress\",\r\n  \"name\": \"36371666-0584-437e-a498-c0a46a5194c4\"\r\n}",
       "isContentBase64": false
     }
   },
-  "Invoke-AzCloudServiceReimage+[NoContext]+Reimage cloud service+$GET+https://management.azure.com/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/112144dc-de4b-4d74-a622-70eda6d4dd5c?api-version=2021-03-01+6": {
+  "Invoke-AzCloudServiceReimage+[NoContext]+Reimage cloud service+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/36371666-0584-437e-a498-c0a46a5194c4?api-version=2022-09-04+6": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/112144dc-de4b-4d74-a622-70eda6d4dd5c?api-version=2021-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/36371666-0584-437e-a498-c0a46a5194c4?api-version=2022-09-04",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "49" ],
-        "x-ms-client-request-id": [ "3e2ae830-244a-4378-a384-85d539099205" ],
+        "x-ms-unique-id": [ "64" ],
+        "x-ms-client-request-id": [ "277ea842-5cb3-4256-ad9f-84d4ee6319a0" ],
         "CommandName": [ "Invoke-AzCloudServiceReimage" ],
         "FullCommandName": [ "Invoke-AzCloudServiceReimage_ReimageExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+        "User-Agent": [ "AzurePowershell/v9.0.1", "PSVersion/v7.3.2", "Az.CloudService/0.1.0" ]
       },
       "ContentHeaders": {
       }
@@ -229,38 +229,38 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-served-by": [ "5c0ea146-6027-4948-b7cf-c10a0ff2b9df_132606022997966010" ],
-        "x-ms-request-id": [ "931c5be8-be99-44cd-8362-ac74790634d1" ],
+        "x-ms-served-by": [ "86d6fedf-4646-41c8-b051-88bbc636c458_133210851372904375" ],
+        "x-ms-request-id": [ "21b14bfe-46a3-4d35-b0eb-451b96bac53f" ],
         "Server": [ "Microsoft-HTTPAPI/2.0", "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11913" ],
-        "x-ms-correlation-request-id": [ "f6978a8d-7e2f-4a8a-8f95-30bf1a4508a4" ],
-        "x-ms-routing-request-id": [ "BRAZILUS:20210326T011101Z:f6978a8d-7e2f-4a8a-8f95-30bf1a4508a4" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11941" ],
+        "x-ms-correlation-request-id": [ "5992292a-ef06-44dd-ab40-05580aa3d214" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230220T053815Z:5992292a-ef06-44dd-ab40-05580aa3d214" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Fri, 26 Mar 2021 01:11:00 GMT" ]
+        "Date": [ "Mon, 20 Feb 2023 05:38:14 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "134" ],
+        "Content-Length": [ "133" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\r\n  \"startTime\": \"2021-03-26T01:08:29.8754735+00:00\",\r\n  \"status\": \"InProgress\",\r\n  \"name\": \"112144dc-de4b-4d74-a622-70eda6d4dd5c\"\r\n}",
+      "Content": "{\r\n  \"startTime\": \"2023-02-20T05:35:43.384864+00:00\",\r\n  \"status\": \"InProgress\",\r\n  \"name\": \"36371666-0584-437e-a498-c0a46a5194c4\"\r\n}",
       "isContentBase64": false
     }
   },
-  "Invoke-AzCloudServiceReimage+[NoContext]+Reimage cloud service+$GET+https://management.azure.com/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/112144dc-de4b-4d74-a622-70eda6d4dd5c?api-version=2021-03-01+7": {
+  "Invoke-AzCloudServiceReimage+[NoContext]+Reimage cloud service+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/36371666-0584-437e-a498-c0a46a5194c4?api-version=2022-09-04+7": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/112144dc-de4b-4d74-a622-70eda6d4dd5c?api-version=2021-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/36371666-0584-437e-a498-c0a46a5194c4?api-version=2022-09-04",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "50" ],
-        "x-ms-client-request-id": [ "3e2ae830-244a-4378-a384-85d539099205" ],
+        "x-ms-unique-id": [ "65" ],
+        "x-ms-client-request-id": [ "277ea842-5cb3-4256-ad9f-84d4ee6319a0" ],
         "CommandName": [ "Invoke-AzCloudServiceReimage" ],
         "FullCommandName": [ "Invoke-AzCloudServiceReimage_ReimageExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+        "User-Agent": [ "AzurePowershell/v9.0.1", "PSVersion/v7.3.2", "Az.CloudService/0.1.0" ]
       },
       "ContentHeaders": {
       }
@@ -271,38 +271,38 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-served-by": [ "5c0ea146-6027-4948-b7cf-c10a0ff2b9df_132606022997966010" ],
-        "x-ms-request-id": [ "e5d64cf4-9913-4030-8559-534ae56772c7" ],
+        "x-ms-served-by": [ "86d6fedf-4646-41c8-b051-88bbc636c458_133210851372904375" ],
+        "x-ms-request-id": [ "d3563a8d-7d72-48d6-8c8a-f016c5a59997" ],
         "Server": [ "Microsoft-HTTPAPI/2.0", "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11912" ],
-        "x-ms-correlation-request-id": [ "59886f84-5900-41e7-bc66-fa2666c02724" ],
-        "x-ms-routing-request-id": [ "BRAZILUS:20210326T011131Z:59886f84-5900-41e7-bc66-fa2666c02724" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11940" ],
+        "x-ms-correlation-request-id": [ "c9bc878a-ece7-415b-8a49-e9680a4d62ed" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230220T053845Z:c9bc878a-ece7-415b-8a49-e9680a4d62ed" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Fri, 26 Mar 2021 01:11:31 GMT" ]
+        "Date": [ "Mon, 20 Feb 2023 05:38:45 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "134" ],
+        "Content-Length": [ "133" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\r\n  \"startTime\": \"2021-03-26T01:08:29.8754735+00:00\",\r\n  \"status\": \"InProgress\",\r\n  \"name\": \"112144dc-de4b-4d74-a622-70eda6d4dd5c\"\r\n}",
+      "Content": "{\r\n  \"startTime\": \"2023-02-20T05:35:43.384864+00:00\",\r\n  \"status\": \"InProgress\",\r\n  \"name\": \"36371666-0584-437e-a498-c0a46a5194c4\"\r\n}",
       "isContentBase64": false
     }
   },
-  "Invoke-AzCloudServiceReimage+[NoContext]+Reimage cloud service+$GET+https://management.azure.com/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/112144dc-de4b-4d74-a622-70eda6d4dd5c?api-version=2021-03-01+8": {
+  "Invoke-AzCloudServiceReimage+[NoContext]+Reimage cloud service+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/36371666-0584-437e-a498-c0a46a5194c4?api-version=2022-09-04+8": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/112144dc-de4b-4d74-a622-70eda6d4dd5c?api-version=2021-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/36371666-0584-437e-a498-c0a46a5194c4?api-version=2022-09-04",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "51" ],
-        "x-ms-client-request-id": [ "3e2ae830-244a-4378-a384-85d539099205" ],
+        "x-ms-unique-id": [ "66" ],
+        "x-ms-client-request-id": [ "277ea842-5cb3-4256-ad9f-84d4ee6319a0" ],
         "CommandName": [ "Invoke-AzCloudServiceReimage" ],
         "FullCommandName": [ "Invoke-AzCloudServiceReimage_ReimageExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+        "User-Agent": [ "AzurePowershell/v9.0.1", "PSVersion/v7.3.2", "Az.CloudService/0.1.0" ]
       },
       "ContentHeaders": {
       }
@@ -313,38 +313,38 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-served-by": [ "5c0ea146-6027-4948-b7cf-c10a0ff2b9df_132606022997966010" ],
-        "x-ms-request-id": [ "dc96da55-978b-4d0f-a4d1-a9243b257da1" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11911" ],
+        "x-ms-served-by": [ "86d6fedf-4646-41c8-b051-88bbc636c458_133210851372904375" ],
+        "x-ms-request-id": [ "1a234efc-a768-434a-b9a0-6450c02e21f5" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11939" ],
         "Server": [ "Microsoft-HTTPAPI/2.0", "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-correlation-request-id": [ "f1c44042-e6aa-47e0-85e6-7ad0865925f8" ],
-        "x-ms-routing-request-id": [ "BRAZILUS:20210326T011201Z:f1c44042-e6aa-47e0-85e6-7ad0865925f8" ],
+        "x-ms-correlation-request-id": [ "8d40a7ce-8b73-4115-9635-9a266201c7f2" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230220T053915Z:8d40a7ce-8b73-4115-9635-9a266201c7f2" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Fri, 26 Mar 2021 01:12:01 GMT" ]
+        "Date": [ "Mon, 20 Feb 2023 05:39:15 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "134" ],
+        "Content-Length": [ "133" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\r\n  \"startTime\": \"2021-03-26T01:08:29.8754735+00:00\",\r\n  \"status\": \"InProgress\",\r\n  \"name\": \"112144dc-de4b-4d74-a622-70eda6d4dd5c\"\r\n}",
+      "Content": "{\r\n  \"startTime\": \"2023-02-20T05:35:43.384864+00:00\",\r\n  \"status\": \"InProgress\",\r\n  \"name\": \"36371666-0584-437e-a498-c0a46a5194c4\"\r\n}",
       "isContentBase64": false
     }
   },
-  "Invoke-AzCloudServiceReimage+[NoContext]+Reimage cloud service+$GET+https://management.azure.com/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/112144dc-de4b-4d74-a622-70eda6d4dd5c?api-version=2021-03-01+9": {
+  "Invoke-AzCloudServiceReimage+[NoContext]+Reimage cloud service+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/36371666-0584-437e-a498-c0a46a5194c4?api-version=2022-09-04+9": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/112144dc-de4b-4d74-a622-70eda6d4dd5c?api-version=2021-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/36371666-0584-437e-a498-c0a46a5194c4?api-version=2022-09-04",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "52" ],
-        "x-ms-client-request-id": [ "3e2ae830-244a-4378-a384-85d539099205" ],
+        "x-ms-unique-id": [ "67" ],
+        "x-ms-client-request-id": [ "277ea842-5cb3-4256-ad9f-84d4ee6319a0" ],
         "CommandName": [ "Invoke-AzCloudServiceReimage" ],
         "FullCommandName": [ "Invoke-AzCloudServiceReimage_ReimageExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+        "User-Agent": [ "AzurePowershell/v9.0.1", "PSVersion/v7.3.2", "Az.CloudService/0.1.0" ]
       },
       "ContentHeaders": {
       }
@@ -355,38 +355,38 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-served-by": [ "5c0ea146-6027-4948-b7cf-c10a0ff2b9df_132606022997966010" ],
-        "x-ms-request-id": [ "5c7f6448-69c8-4ea9-9966-1fb05ab84382" ],
+        "x-ms-served-by": [ "86d6fedf-4646-41c8-b051-88bbc636c458_133210851372904375" ],
+        "x-ms-request-id": [ "82e84eb2-10a1-44c1-9812-c790de0c2e72" ],
         "Server": [ "Microsoft-HTTPAPI/2.0", "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11910" ],
-        "x-ms-correlation-request-id": [ "1b8b16d6-1e52-47a2-8e94-f7d94e5c8c64" ],
-        "x-ms-routing-request-id": [ "BRAZILUS:20210326T011231Z:1b8b16d6-1e52-47a2-8e94-f7d94e5c8c64" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11938" ],
+        "x-ms-correlation-request-id": [ "c947b3ab-0eb2-4f5d-9a43-1a607b45b9b7" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230220T053947Z:c947b3ab-0eb2-4f5d-9a43-1a607b45b9b7" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Fri, 26 Mar 2021 01:12:31 GMT" ]
+        "Date": [ "Mon, 20 Feb 2023 05:39:47 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "184" ],
+        "Content-Length": [ "133" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\r\n  \"startTime\": \"2021-03-26T01:08:29.8754735+00:00\",\r\n  \"endTime\": \"2021-03-26T01:12:17.4367272+00:00\",\r\n  \"status\": \"Succeeded\",\r\n  \"name\": \"112144dc-de4b-4d74-a622-70eda6d4dd5c\"\r\n}",
+      "Content": "{\r\n  \"startTime\": \"2023-02-20T05:35:43.384864+00:00\",\r\n  \"status\": \"InProgress\",\r\n  \"name\": \"36371666-0584-437e-a498-c0a46a5194c4\"\r\n}",
       "isContentBase64": false
     }
   },
-  "Invoke-AzCloudServiceReimage+[NoContext]+Reimage cloud service+$GET+https://management.azure.com/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/112144dc-de4b-4d74-a622-70eda6d4dd5c?monitor=true\u0026api-version=2021-03-01+10": {
+  "Invoke-AzCloudServiceReimage+[NoContext]+Reimage cloud service+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/36371666-0584-437e-a498-c0a46a5194c4?api-version=2022-09-04+10": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/112144dc-de4b-4d74-a622-70eda6d4dd5c?monitor=true\u0026api-version=2021-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/36371666-0584-437e-a498-c0a46a5194c4?api-version=2022-09-04",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "53" ],
-        "x-ms-client-request-id": [ "3e2ae830-244a-4378-a384-85d539099205" ],
+        "x-ms-unique-id": [ "68" ],
+        "x-ms-client-request-id": [ "277ea842-5cb3-4256-ad9f-84d4ee6319a0" ],
         "CommandName": [ "Invoke-AzCloudServiceReimage" ],
         "FullCommandName": [ "Invoke-AzCloudServiceReimage_ReimageExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+        "User-Agent": [ "AzurePowershell/v9.0.1", "PSVersion/v7.3.2", "Az.CloudService/0.1.0" ]
       },
       "ContentHeaders": {
       }
@@ -397,14 +397,56 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-served-by": [ "5c0ea146-6027-4948-b7cf-c10a0ff2b9df_132606022997966010" ],
-        "x-ms-request-id": [ "3e289266-e0a3-4e07-8bfb-3ddba352b5f4" ],
+        "x-ms-served-by": [ "86d6fedf-4646-41c8-b051-88bbc636c458_133210851372904375" ],
+        "x-ms-request-id": [ "32f59f4d-a44a-4368-81bb-59e897d7cfcb" ],
         "Server": [ "Microsoft-HTTPAPI/2.0", "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11909" ],
-        "x-ms-correlation-request-id": [ "8c89b406-31a7-40f0-b4d3-146d30b0914b" ],
-        "x-ms-routing-request-id": [ "BRAZILUS:20210326T011231Z:8c89b406-31a7-40f0-b4d3-146d30b0914b" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11937" ],
+        "x-ms-correlation-request-id": [ "b8db0824-0b61-4499-88af-f36d4c68da05" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230220T054017Z:b8db0824-0b61-4499-88af-f36d4c68da05" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Fri, 26 Mar 2021 01:12:31 GMT" ]
+        "Date": [ "Mon, 20 Feb 2023 05:40:17 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "183" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"startTime\": \"2023-02-20T05:35:43.384864+00:00\",\r\n  \"endTime\": \"2023-02-20T05:40:01.5115904+00:00\",\r\n  \"status\": \"Succeeded\",\r\n  \"name\": \"36371666-0584-437e-a498-c0a46a5194c4\"\r\n}",
+      "isContentBase64": false
+    }
+  },
+  "Invoke-AzCloudServiceReimage+[NoContext]+Reimage cloud service+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/36371666-0584-437e-a498-c0a46a5194c4?monitor=true\u0026api-version=2022-09-04+11": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/36371666-0584-437e-a498-c0a46a5194c4?monitor=true\u0026api-version=2022-09-04",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "69" ],
+        "x-ms-client-request-id": [ "277ea842-5cb3-4256-ad9f-84d4ee6319a0" ],
+        "CommandName": [ "Invoke-AzCloudServiceReimage" ],
+        "FullCommandName": [ "Invoke-AzCloudServiceReimage_ReimageExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v9.0.1", "PSVersion/v7.3.2", "Az.CloudService/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-served-by": [ "86d6fedf-4646-41c8-b051-88bbc636c458_133210851372904375" ],
+        "x-ms-request-id": [ "dc87b364-8fd6-4fde-a646-bb209b077089" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0", "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11936" ],
+        "x-ms-correlation-request-id": [ "89879f83-189b-4e11-868e-75847048a162" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230220T054018Z:89879f83-189b-4e11-868e-75847048a162" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 20 Feb 2023 05:40:17 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ],
@@ -414,19 +456,19 @@
       "isContentBase64": false
     }
   },
-  "Invoke-AzCloudServiceReimage+[NoContext]+Reimage cloud service via identity+$GET+https://management.azure.com/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/resourceGroups/cscmdlettestn8rmh5qx/providers/Microsoft.Compute/cloudServices/cscmdlettestoe6r0n2k?api-version=2021-03-01+1": {
+  "Invoke-AzCloudServiceReimage+[NoContext]+Reimage cloud service via identity+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/cscmdlettestkwpz6jb9/providers/Microsoft.Compute/cloudServices/cscmdlettestyl5shqje?api-version=2022-09-04+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/resourceGroups/cscmdlettestn8rmh5qx/providers/Microsoft.Compute/cloudServices/cscmdlettestoe6r0n2k?api-version=2021-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/cscmdlettestkwpz6jb9/providers/Microsoft.Compute/cloudServices/cscmdlettestyl5shqje?api-version=2022-09-04",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "54" ],
-        "x-ms-client-request-id": [ "8317e106-cb0f-4e9b-ba42-eebee0666915" ],
+        "x-ms-unique-id": [ "70" ],
+        "x-ms-client-request-id": [ "b9665d5d-613c-41dc-b0ce-ebf9148bc512" ],
         "CommandName": [ "Get-AzCloudService" ],
         "FullCommandName": [ "Get-AzCloudService_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "User-Agent": [ "AzurePowershell/v9.0.1", "PSVersion/v7.3.2", "Az.CloudService/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -437,29 +479,29 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-resource": [ "Microsoft.Compute/GetCloudService3Min;999,Microsoft.Compute/GetCloudService30Min;4938,Microsoft.Compute/GetCloudService3Min;399,Microsoft.Compute/GetCloudService30Min;2578" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "fb053c48-d6a9-4fe0-9e17-6fe185b8d33d" ],
-        "x-ms-ratelimit-remaining-resource": [ "Microsoft.Compute/GetCloudService3Min;397,Microsoft.Compute/GetCloudService30Min;2575" ],
+        "x-ms-request-id": [ "26b03a86-5727-428c-9ca9-72039be73763" ],
         "Server": [ "Microsoft-HTTPAPI/2.0,Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11908" ],
-        "x-ms-correlation-request-id": [ "5fd2cd2b-25bf-49b8-87af-215e1289d11b" ],
-        "x-ms-routing-request-id": [ "BRAZILUS:20210326T011232Z:5fd2cd2b-25bf-49b8-87af-215e1289d11b" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11935" ],
+        "x-ms-correlation-request-id": [ "95eae75b-2a80-48a4-ad6f-7849e3bdca24" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230220T054020Z:95eae75b-2a80-48a4-ad6f-7849e3bdca24" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Fri, 26 Mar 2021 01:12:31 GMT" ]
+        "Date": [ "Mon, 20 Feb 2023 05:40:19 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "3611" ],
+        "Content-Length": [ "3766" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\r\n  \"name\": \"cscmdlettestoe6r0n2k\",\r\n  \"id\": \"/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/resourceGroups/CSCMDLETTESTN8RMH5QX/providers/Microsoft.Compute/cloudServices/cscmdlettestoe6r0n2k\",\r\n  \"type\": \"Microsoft.Compute/cloudServices\",\r\n  \"location\": \"eastus2euap\",\r\n  \"properties\": {\r\n    \"configuration\": \"\u003c?xml version=\\\"1.0\\\" encoding=\\\"utf-8\\\"?\u003e\\r\\n\u003c!--\\r\\n  **********************************************************************************************\\r\\n\\r\\n  This file was generated by a tool from the project file: ServiceConfiguration.Cloud.cscfg\\r\\n\\r\\n  Changes to this file may cause incorrect behavior and will be lost if the file is regenerated.\\r\\n\\r\\n  **********************************************************************************************\\r\\n--\u003e\\r\\n\u003cServiceConfiguration serviceName=\\\"AzureCloudServicePowerShellCmdletTest\\\" xmlns=\\\"http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceConfiguration\\\" osFamily=\\\"6\\\" osVersion=\\\"*\\\" schemaVersion=\\\"2015-04.2.6\\\"\u003e\\r\\n  \u003cRole name=\\\"WebRole\\\"\u003e\\r\\n    \u003cInstances count=\\\"2\\\" /\u003e\\r\\n    \u003cConfigurationSettings\u003e\\r\\n      \u003cSetting name=\\\"Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString\\\" value=\\\"UseDevelopmentStorage=true\\\" /\u003e\\r\\n    \u003c/ConfigurationSettings\u003e\\r\\n  \u003c/Role\u003e\\r\\n  \u003cRole name=\\\"WorkerRole\\\"\u003e\\r\\n    \u003cInstances count=\\\"2\\\" /\u003e\\r\\n    \u003cConfigurationSettings\u003e\\r\\n      \u003cSetting name=\\\"Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString\\\" value=\\\"UseDevelopmentStorage=true\\\" /\u003e\\r\\n    \u003c/ConfigurationSettings\u003e\\r\\n  \u003c/Role\u003e\\r\\n  \u003cNetworkConfiguration\u003e\\r\\n    \u003cVirtualNetworkSite name=\\\"CsCmdletTestVnet\\\" /\u003e\\r\\n    \u003cAddressAssignments\u003e\\r\\n      \u003cInstanceAddress roleName=\\\"WebRole\\\"\u003e\\r\\n        \u003cSubnets\u003e\\r\\n          \u003cSubnet name=\\\"WebTier\\\" /\u003e\\r\\n        \u003c/Subnets\u003e\\r\\n      \u003c/InstanceAddress\u003e\\r\\n      \u003cInstanceAddress roleName=\\\"WorkerRole\\\"\u003e\\r\\n        \u003cSubnets\u003e\\r\\n          \u003cSubnet name=\\\"WebTier\\\" /\u003e\\r\\n        \u003c/Subnets\u003e\\r\\n      \u003c/InstanceAddress\u003e\\r\\n    \u003c/AddressAssignments\u003e\\r\\n  \u003c/NetworkConfiguration\u003e\\r\\n\u003c/ServiceConfiguration\u003e\",\r\n    \"upgradeMode\": \"Manual\",\r\n    \"roleProfile\": {\r\n      \"roles\": [\r\n        {\r\n          \"name\": \"WebRole\",\r\n          \"sku\": {\r\n            \"name\": \"Standard_D1_v2\",\r\n            \"tier\": \"Standard\",\r\n            \"capacity\": 2\r\n          }\r\n        },\r\n        {\r\n          \"name\": \"WorkerRole\",\r\n          \"sku\": {\r\n            \"name\": \"Standard_D1_v2\",\r\n            \"tier\": \"Standard\",\r\n            \"capacity\": 2\r\n          }\r\n        }\r\n      ]\r\n    },\r\n    \"osProfile\": {\r\n      \"secrets\": []\r\n    },\r\n    \"networkProfile\": {\"loadBalancerConfigurations\":[{\"name\":\"cscmdlettestLB\",\"properties\":{\"frontendIpConfigurations\":[{\"name\":\"cscmdlettestLBFE\",\"properties\":{\"publicIPAddress\":{\"id\":\"/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/resourceGroups/cscmdlettestn8rmh5qx/providers/Microsoft.Network/publicIPAddresses/cscmdlettestip\"}}}]}}]},\r\n    \"extensionProfile\": {\r\n      \"extensions\": [\r\n        {\r\n          \"name\": \"RDPExtension\",\r\n          \"properties\": {\r\n            \"autoUpgradeMinorVersion\": false,\r\n            \"provisioningState\": \"Succeeded\",\r\n            \"rolesAppliedTo\": [\r\n              \"*\"\r\n            ],\r\n            \"publisher\": \"Microsoft.Windows.Azure.Extensions\",\r\n            \"type\": \"RDP\",\r\n            \"typeHandlerVersion\": \"1.2.1\",\r\n            \"settings\": \"\u003cPublicConfig\u003e\u003cUserName\u003euserazure\u003c/UserName\u003e\u003cExpiration\u003e03/25/2022 18:01:31\u003c/Expiration\u003e\u003c/PublicConfig\u003e\"\r\n          }\r\n        }\r\n      ]\r\n    },\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"uniqueId\": \"25056192-64fb-42b6-b81f-37e6b25c1515\"\r\n  }\r\n}",
+      "Content": "{\r\n  \"name\": \"cscmdlettestyl5shqje\",\r\n  \"id\": \"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/CSCMDLETTESTKWPZ6JB9/providers/Microsoft.Compute/cloudServices/cscmdlettestyl5shqje\",\r\n  \"type\": \"Microsoft.Compute/cloudServices\",\r\n  \"location\": \"eastus2euap\",\r\n  \"properties\": {\r\n    \"configuration\": \"\u003c?xml version=\\\"1.0\\\" encoding=\\\"utf-8\\\"?\u003e\\r\\n\u003c!--\\r\\n  **********************************************************************************************\\r\\n\\r\\n  This file was generated by a tool from the project file: ServiceConfiguration.Cloud.cscfg\\r\\n\\r\\n  Changes to this file may cause incorrect behavior and will be lost if the file is regenerated.\\r\\n\\r\\n  **********************************************************************************************\\r\\n--\u003e\\r\\n\u003cServiceConfiguration serviceName=\\\"AzureCloudServicePowerShellCmdletTest\\\" xmlns=\\\"http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceConfiguration\\\" osFamily=\\\"6\\\" osVersion=\\\"*\\\" schemaVersion=\\\"2015-04.2.6\\\"\u003e\\r\\n  \u003cRole name=\\\"WebRole\\\"\u003e\\r\\n    \u003cInstances count=\\\"2\\\" /\u003e\\r\\n    \u003cConfigurationSettings\u003e\\r\\n      \u003cSetting name=\\\"Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString\\\" value=\\\"UseDevelopmentStorage=true\\\" /\u003e\\r\\n    \u003c/ConfigurationSettings\u003e\\r\\n  \u003c/Role\u003e\\r\\n  \u003cRole name=\\\"WorkerRole\\\"\u003e\\r\\n    \u003cInstances count=\\\"2\\\" /\u003e\\r\\n    \u003cConfigurationSettings\u003e\\r\\n      \u003cSetting name=\\\"Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString\\\" value=\\\"UseDevelopmentStorage=true\\\" /\u003e\\r\\n    \u003c/ConfigurationSettings\u003e\\r\\n  \u003c/Role\u003e\\r\\n  \u003cNetworkConfiguration\u003e\\r\\n    \u003cVirtualNetworkSite name=\\\"CsCmdletTestVnet\\\" /\u003e\\r\\n    \u003cAddressAssignments\u003e\\r\\n      \u003cInstanceAddress roleName=\\\"WebRole\\\"\u003e\\r\\n        \u003cSubnets\u003e\\r\\n          \u003cSubnet name=\\\"WebTier\\\" /\u003e\\r\\n        \u003c/Subnets\u003e\\r\\n      \u003c/InstanceAddress\u003e\\r\\n      \u003cInstanceAddress roleName=\\\"WorkerRole\\\"\u003e\\r\\n        \u003cSubnets\u003e\\r\\n          \u003cSubnet name=\\\"WebTier\\\" /\u003e\\r\\n        \u003c/Subnets\u003e\\r\\n      \u003c/InstanceAddress\u003e\\r\\n    \u003c/AddressAssignments\u003e\\r\\n  \u003c/NetworkConfiguration\u003e\\r\\n\u003c/ServiceConfiguration\u003e\",\r\n    \"upgradeMode\": \"Manual\",\r\n    \"roleProfile\": {\r\n      \"roles\": [\r\n        {\r\n          \"name\": \"WebRole\",\r\n          \"sku\": {\r\n            \"name\": \"Standard_D1_v2\",\r\n            \"tier\": \"Standard\",\r\n            \"capacity\": 2\r\n          }\r\n        },\r\n        {\r\n          \"name\": \"WorkerRole\",\r\n          \"sku\": {\r\n            \"name\": \"Standard_D1_v2\",\r\n            \"tier\": \"Standard\",\r\n            \"capacity\": 2\r\n          }\r\n        }\r\n      ]\r\n    },\r\n    \"osProfile\": {\r\n      \"secrets\": []\r\n    },\r\n    \"networkProfile\": {\"slotType\":\"Production\",\"loadBalancerConfigurations\":[{\"name\":\"cscmdlettestLB\",\"properties\":{\"frontendIpConfigurations\":[{\"name\":\"cscmdlettestLBFE\",\"properties\":{\"publicIPAddress\":{\"id\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/cscmdlettestkwpz6jb9/providers/Microsoft.Network/publicIPAddresses/cscmdlettestip\"}}}]}}]},\r\n    \"extensionProfile\": {\r\n      \"extensions\": [\r\n        {\r\n          \"name\": \"RDPExtension\",\r\n          \"properties\": {\r\n            \"autoUpgradeMinorVersion\": false,\r\n            \"provisioningState\": \"Succeeded\",\r\n            \"rolesAppliedTo\": [\r\n              \"*\"\r\n            ],\r\n            \"publisher\": \"Microsoft.Windows.Azure.Extensions\",\r\n            \"type\": \"RDP\",\r\n            \"typeHandlerVersion\": \"1.2.3.2\",\r\n            \"settings\": \"\u003cPublicConfig\u003e\u003cUserName\u003euserazure\u003c/UserName\u003e\u003cExpiration\u003e02/20/2024 13:20:46\u003c/Expiration\u003e\u003c/PublicConfig\u003e\"\r\n          }\r\n        }\r\n      ]\r\n    },\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"uniqueId\": \"97fdf1c8-f8f4-437d-b41f-5433ad7cac17\"\r\n  },\r\n  \"systemData\": {\r\n    \"createdAt\": \"2023-02-20T05:20:54.1910845Z\",\r\n    \"lastModifiedAt\": \"2023-02-20T05:20:54.1910845Z\"\r\n  }\r\n}",
       "isContentBase64": false
     }
   },
-  "Invoke-AzCloudServiceReimage+[NoContext]+Reimage cloud service via identity+$POST+https://management.azure.com/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/resourceGroups/CSCMDLETTESTN8RMH5QX/providers/Microsoft.Compute/cloudServices/cscmdlettestoe6r0n2k/reimage?api-version=2021-03-01+2": {
+  "Invoke-AzCloudServiceReimage+[NoContext]+Reimage cloud service via identity+$POST+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/CSCMDLETTESTKWPZ6JB9/providers/Microsoft.Compute/cloudServices/cscmdlettestyl5shqje/reimage?api-version=2022-09-04+2": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/resourceGroups/CSCMDLETTESTN8RMH5QX/providers/Microsoft.Compute/cloudServices/cscmdlettestoe6r0n2k/reimage?api-version=2021-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/CSCMDLETTESTKWPZ6JB9/providers/Microsoft.Compute/cloudServices/cscmdlettestyl5shqje/reimage?api-version=2022-09-04",
       "Content": "{\r\n  \"roleInstances\": [ \"WebRole_IN_0\" ]\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -474,17 +516,17 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/2b84a06b-3698-4ce5-9f83-24f05058fffd?monitor=true\u0026api-version=2021-03-01" ],
-        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/2b84a06b-3698-4ce5-9f83-24f05058fffd?api-version=2021-03-01" ],
+        "Location": [ "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/aaa0436d-a8f4-46dc-9ea8-bf9f8196a018?monitor=true\u0026api-version=2022-09-04" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/aaa0436d-a8f4-46dc-9ea8-bf9f8196a018?api-version=2022-09-04" ],
+        "x-ms-ratelimit-remaining-resource": [ "Microsoft.Compute/CreateUpdateDeleteCloudServiceOperations30Min;295,Microsoft.Compute/CreateUpdateDeleteCloudServiceOperations30Min;295" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "2b84a06b-3698-4ce5-9f83-24f05058fffd" ],
-        "x-ms-ratelimit-remaining-resource": [ "Microsoft.Compute/CreateUpdateDeleteCloudServiceOperations30Min;295" ],
+        "x-ms-request-id": [ "aaa0436d-a8f4-46dc-9ea8-bf9f8196a018" ],
         "Server": [ "Microsoft-HTTPAPI/2.0,Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "1196" ],
-        "x-ms-correlation-request-id": [ "47473fa6-d9d4-4326-82f2-2c6ba504be3e" ],
-        "x-ms-routing-request-id": [ "BRAZILUS:20210326T011232Z:47473fa6-d9d4-4326-82f2-2c6ba504be3e" ],
+        "x-ms-correlation-request-id": [ "e48b0979-703b-4b0d-9834-ba9a74869b47" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230220T054021Z:e48b0979-703b-4b0d-9834-ba9a74869b47" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Fri, 26 Mar 2021 01:12:32 GMT" ]
+        "Date": [ "Mon, 20 Feb 2023 05:40:20 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ],
@@ -494,20 +536,20 @@
       "isContentBase64": false
     }
   },
-  "Invoke-AzCloudServiceReimage+[NoContext]+Reimage cloud service via identity+$GET+https://management.azure.com/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/2b84a06b-3698-4ce5-9f83-24f05058fffd?api-version=2021-03-01+3": {
+  "Invoke-AzCloudServiceReimage+[NoContext]+Reimage cloud service via identity+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/aaa0436d-a8f4-46dc-9ea8-bf9f8196a018?api-version=2022-09-04+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/2b84a06b-3698-4ce5-9f83-24f05058fffd?api-version=2021-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/aaa0436d-a8f4-46dc-9ea8-bf9f8196a018?api-version=2022-09-04",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "56" ],
-        "x-ms-client-request-id": [ "ddc77e91-768b-44b5-8b36-d06d518ea840" ],
+        "x-ms-unique-id": [ "72" ],
+        "x-ms-client-request-id": [ "6caacc73-b804-436e-a2b8-f8278fea6f7b" ],
         "CommandName": [ "Invoke-AzCloudServiceReimage" ],
         "FullCommandName": [ "Invoke-AzCloudServiceReimage_ReimageViaIdentityExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+        "User-Agent": [ "AzurePowershell/v9.0.1", "PSVersion/v7.3.2", "Az.CloudService/0.1.0" ]
       },
       "ContentHeaders": {
       }
@@ -518,38 +560,374 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-served-by": [ "5c0ea146-6027-4948-b7cf-c10a0ff2b9df_132606022997966010" ],
-        "x-ms-request-id": [ "a99f6810-81c7-47bd-863e-a6e085aa857b" ],
+        "x-ms-served-by": [ "86d6fedf-4646-41c8-b051-88bbc636c458_133210851372904375" ],
+        "x-ms-request-id": [ "6e3a5b11-9c3a-417f-a81f-1dd586381dd1" ],
         "Server": [ "Microsoft-HTTPAPI/2.0", "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11907" ],
-        "x-ms-correlation-request-id": [ "fb090a9c-9e35-4fbb-82eb-c0ec6b101214" ],
-        "x-ms-routing-request-id": [ "BRAZILUS:20210326T011302Z:fb090a9c-9e35-4fbb-82eb-c0ec6b101214" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11934" ],
+        "x-ms-correlation-request-id": [ "1880bf72-2314-45f5-bb2d-292bdf260f93" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230220T054051Z:1880bf72-2314-45f5-bb2d-292bdf260f93" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Fri, 26 Mar 2021 01:13:02 GMT" ]
+        "Date": [ "Mon, 20 Feb 2023 05:40:50 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "134" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"startTime\": \"2023-02-20T05:40:20.8242162+00:00\",\r\n  \"status\": \"InProgress\",\r\n  \"name\": \"aaa0436d-a8f4-46dc-9ea8-bf9f8196a018\"\r\n}",
+      "isContentBase64": false
+    }
+  },
+  "Invoke-AzCloudServiceReimage+[NoContext]+Reimage cloud service via identity+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/aaa0436d-a8f4-46dc-9ea8-bf9f8196a018?api-version=2022-09-04+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/aaa0436d-a8f4-46dc-9ea8-bf9f8196a018?api-version=2022-09-04",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "73" ],
+        "x-ms-client-request-id": [ "6caacc73-b804-436e-a2b8-f8278fea6f7b" ],
+        "CommandName": [ "Invoke-AzCloudServiceReimage" ],
+        "FullCommandName": [ "Invoke-AzCloudServiceReimage_ReimageViaIdentityExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v9.0.1", "PSVersion/v7.3.2", "Az.CloudService/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-served-by": [ "86d6fedf-4646-41c8-b051-88bbc636c458_133210851372904375" ],
+        "x-ms-request-id": [ "2ae3584c-be0e-45cb-8a73-9eed531300e9" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0", "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11933" ],
+        "x-ms-correlation-request-id": [ "6afb3e62-cede-4e32-bf09-da4d106e58d0" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230220T054121Z:6afb3e62-cede-4e32-bf09-da4d106e58d0" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 20 Feb 2023 05:41:21 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "134" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"startTime\": \"2023-02-20T05:40:20.8242162+00:00\",\r\n  \"status\": \"InProgress\",\r\n  \"name\": \"aaa0436d-a8f4-46dc-9ea8-bf9f8196a018\"\r\n}",
+      "isContentBase64": false
+    }
+  },
+  "Invoke-AzCloudServiceReimage+[NoContext]+Reimage cloud service via identity+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/aaa0436d-a8f4-46dc-9ea8-bf9f8196a018?api-version=2022-09-04+5": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/aaa0436d-a8f4-46dc-9ea8-bf9f8196a018?api-version=2022-09-04",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "74" ],
+        "x-ms-client-request-id": [ "6caacc73-b804-436e-a2b8-f8278fea6f7b" ],
+        "CommandName": [ "Invoke-AzCloudServiceReimage" ],
+        "FullCommandName": [ "Invoke-AzCloudServiceReimage_ReimageViaIdentityExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v9.0.1", "PSVersion/v7.3.2", "Az.CloudService/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-served-by": [ "86d6fedf-4646-41c8-b051-88bbc636c458_133210851372904375" ],
+        "x-ms-request-id": [ "54af0ce9-5b8c-4ad8-9288-26f086d155d6" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0", "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11932" ],
+        "x-ms-correlation-request-id": [ "db3fd247-635c-46bc-ad32-de82a064eaa2" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230220T054152Z:db3fd247-635c-46bc-ad32-de82a064eaa2" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 20 Feb 2023 05:41:51 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "134" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"startTime\": \"2023-02-20T05:40:20.8242162+00:00\",\r\n  \"status\": \"InProgress\",\r\n  \"name\": \"aaa0436d-a8f4-46dc-9ea8-bf9f8196a018\"\r\n}",
+      "isContentBase64": false
+    }
+  },
+  "Invoke-AzCloudServiceReimage+[NoContext]+Reimage cloud service via identity+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/aaa0436d-a8f4-46dc-9ea8-bf9f8196a018?api-version=2022-09-04+6": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/aaa0436d-a8f4-46dc-9ea8-bf9f8196a018?api-version=2022-09-04",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "75" ],
+        "x-ms-client-request-id": [ "6caacc73-b804-436e-a2b8-f8278fea6f7b" ],
+        "CommandName": [ "Invoke-AzCloudServiceReimage" ],
+        "FullCommandName": [ "Invoke-AzCloudServiceReimage_ReimageViaIdentityExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v9.0.1", "PSVersion/v7.3.2", "Az.CloudService/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-served-by": [ "86d6fedf-4646-41c8-b051-88bbc636c458_133210851372904375" ],
+        "x-ms-request-id": [ "133468c1-2254-446f-9cab-ca087f5fbf82" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0", "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11931" ],
+        "x-ms-correlation-request-id": [ "60439232-a75e-4729-b967-1fffc4ba06f5" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230220T054222Z:60439232-a75e-4729-b967-1fffc4ba06f5" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 20 Feb 2023 05:42:21 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "134" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"startTime\": \"2023-02-20T05:40:20.8242162+00:00\",\r\n  \"status\": \"InProgress\",\r\n  \"name\": \"aaa0436d-a8f4-46dc-9ea8-bf9f8196a018\"\r\n}",
+      "isContentBase64": false
+    }
+  },
+  "Invoke-AzCloudServiceReimage+[NoContext]+Reimage cloud service via identity+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/aaa0436d-a8f4-46dc-9ea8-bf9f8196a018?api-version=2022-09-04+7": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/aaa0436d-a8f4-46dc-9ea8-bf9f8196a018?api-version=2022-09-04",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "76" ],
+        "x-ms-client-request-id": [ "6caacc73-b804-436e-a2b8-f8278fea6f7b" ],
+        "CommandName": [ "Invoke-AzCloudServiceReimage" ],
+        "FullCommandName": [ "Invoke-AzCloudServiceReimage_ReimageViaIdentityExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v9.0.1", "PSVersion/v7.3.2", "Az.CloudService/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-served-by": [ "86d6fedf-4646-41c8-b051-88bbc636c458_133210851372904375" ],
+        "x-ms-request-id": [ "88533e0c-1003-4824-bf84-d5fb465ec29c" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0", "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11930" ],
+        "x-ms-correlation-request-id": [ "2dd42761-6252-4c03-83a2-c6f141da9c29" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230220T054252Z:2dd42761-6252-4c03-83a2-c6f141da9c29" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 20 Feb 2023 05:42:52 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "134" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"startTime\": \"2023-02-20T05:40:20.8242162+00:00\",\r\n  \"status\": \"InProgress\",\r\n  \"name\": \"aaa0436d-a8f4-46dc-9ea8-bf9f8196a018\"\r\n}",
+      "isContentBase64": false
+    }
+  },
+  "Invoke-AzCloudServiceReimage+[NoContext]+Reimage cloud service via identity+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/aaa0436d-a8f4-46dc-9ea8-bf9f8196a018?api-version=2022-09-04+8": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/aaa0436d-a8f4-46dc-9ea8-bf9f8196a018?api-version=2022-09-04",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "77" ],
+        "x-ms-client-request-id": [ "6caacc73-b804-436e-a2b8-f8278fea6f7b" ],
+        "CommandName": [ "Invoke-AzCloudServiceReimage" ],
+        "FullCommandName": [ "Invoke-AzCloudServiceReimage_ReimageViaIdentityExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v9.0.1", "PSVersion/v7.3.2", "Az.CloudService/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-served-by": [ "86d6fedf-4646-41c8-b051-88bbc636c458_133210851372904375" ],
+        "x-ms-request-id": [ "dce65ace-b0e5-460e-8bce-110e127f2f24" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0", "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11929" ],
+        "x-ms-correlation-request-id": [ "8e744a6f-b8ff-4968-90da-22ba6a2e7cdb" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230220T054323Z:8e744a6f-b8ff-4968-90da-22ba6a2e7cdb" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 20 Feb 2023 05:43:22 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "134" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"startTime\": \"2023-02-20T05:40:20.8242162+00:00\",\r\n  \"status\": \"InProgress\",\r\n  \"name\": \"aaa0436d-a8f4-46dc-9ea8-bf9f8196a018\"\r\n}",
+      "isContentBase64": false
+    }
+  },
+  "Invoke-AzCloudServiceReimage+[NoContext]+Reimage cloud service via identity+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/aaa0436d-a8f4-46dc-9ea8-bf9f8196a018?api-version=2022-09-04+9": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/aaa0436d-a8f4-46dc-9ea8-bf9f8196a018?api-version=2022-09-04",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "78" ],
+        "x-ms-client-request-id": [ "6caacc73-b804-436e-a2b8-f8278fea6f7b" ],
+        "CommandName": [ "Invoke-AzCloudServiceReimage" ],
+        "FullCommandName": [ "Invoke-AzCloudServiceReimage_ReimageViaIdentityExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v9.0.1", "PSVersion/v7.3.2", "Az.CloudService/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-served-by": [ "86d6fedf-4646-41c8-b051-88bbc636c458_133210851372904375" ],
+        "x-ms-request-id": [ "24a101db-af18-4b20-b709-226dac9486b0" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0", "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11928" ],
+        "x-ms-correlation-request-id": [ "d5762882-92f4-438f-9fff-58f229a708ba" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230220T054353Z:d5762882-92f4-438f-9fff-58f229a708ba" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 20 Feb 2023 05:43:53 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "134" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"startTime\": \"2023-02-20T05:40:20.8242162+00:00\",\r\n  \"status\": \"InProgress\",\r\n  \"name\": \"aaa0436d-a8f4-46dc-9ea8-bf9f8196a018\"\r\n}",
+      "isContentBase64": false
+    }
+  },
+  "Invoke-AzCloudServiceReimage+[NoContext]+Reimage cloud service via identity+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/aaa0436d-a8f4-46dc-9ea8-bf9f8196a018?api-version=2022-09-04+10": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/aaa0436d-a8f4-46dc-9ea8-bf9f8196a018?api-version=2022-09-04",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "79" ],
+        "x-ms-client-request-id": [ "6caacc73-b804-436e-a2b8-f8278fea6f7b" ],
+        "CommandName": [ "Invoke-AzCloudServiceReimage" ],
+        "FullCommandName": [ "Invoke-AzCloudServiceReimage_ReimageViaIdentityExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v9.0.1", "PSVersion/v7.3.2", "Az.CloudService/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-served-by": [ "86d6fedf-4646-41c8-b051-88bbc636c458_133210851372904375" ],
+        "x-ms-request-id": [ "e2885114-5381-4efe-8fa8-7bb04a3ac1f1" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0", "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11927" ],
+        "x-ms-correlation-request-id": [ "a3230390-e8d0-4146-a30c-4022559f2326" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230220T054423Z:a3230390-e8d0-4146-a30c-4022559f2326" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 20 Feb 2023 05:44:23 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "134" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"startTime\": \"2023-02-20T05:40:20.8242162+00:00\",\r\n  \"status\": \"InProgress\",\r\n  \"name\": \"aaa0436d-a8f4-46dc-9ea8-bf9f8196a018\"\r\n}",
+      "isContentBase64": false
+    }
+  },
+  "Invoke-AzCloudServiceReimage+[NoContext]+Reimage cloud service via identity+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/aaa0436d-a8f4-46dc-9ea8-bf9f8196a018?api-version=2022-09-04+11": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/aaa0436d-a8f4-46dc-9ea8-bf9f8196a018?api-version=2022-09-04",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "80" ],
+        "x-ms-client-request-id": [ "6caacc73-b804-436e-a2b8-f8278fea6f7b" ],
+        "CommandName": [ "Invoke-AzCloudServiceReimage" ],
+        "FullCommandName": [ "Invoke-AzCloudServiceReimage_ReimageViaIdentityExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v9.0.1", "PSVersion/v7.3.2", "Az.CloudService/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-served-by": [ "86d6fedf-4646-41c8-b051-88bbc636c458_133210851372904375" ],
+        "x-ms-request-id": [ "0c3e450b-f571-4a31-b0c1-03abf69f4a5b" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0", "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11926" ],
+        "x-ms-correlation-request-id": [ "5f492a74-da7b-469e-9213-25abcee42d57" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230220T054454Z:5f492a74-da7b-469e-9213-25abcee42d57" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 20 Feb 2023 05:44:53 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "184" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\r\n  \"startTime\": \"2021-03-26T01:12:32.5985157+00:00\",\r\n  \"endTime\": \"2021-03-26T01:12:47.9825898+00:00\",\r\n  \"status\": \"Succeeded\",\r\n  \"name\": \"2b84a06b-3698-4ce5-9f83-24f05058fffd\"\r\n}",
+      "Content": "{\r\n  \"startTime\": \"2023-02-20T05:40:20.8242162+00:00\",\r\n  \"endTime\": \"2023-02-20T05:44:48.7009575+00:00\",\r\n  \"status\": \"Succeeded\",\r\n  \"name\": \"aaa0436d-a8f4-46dc-9ea8-bf9f8196a018\"\r\n}",
       "isContentBase64": false
     }
   },
-  "Invoke-AzCloudServiceReimage+[NoContext]+Reimage cloud service via identity+$GET+https://management.azure.com/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/2b84a06b-3698-4ce5-9f83-24f05058fffd?monitor=true\u0026api-version=2021-03-01+4": {
+  "Invoke-AzCloudServiceReimage+[NoContext]+Reimage cloud service via identity+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/aaa0436d-a8f4-46dc-9ea8-bf9f8196a018?monitor=true\u0026api-version=2022-09-04+12": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/2b84a06b-3698-4ce5-9f83-24f05058fffd?monitor=true\u0026api-version=2021-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/aaa0436d-a8f4-46dc-9ea8-bf9f8196a018?monitor=true\u0026api-version=2022-09-04",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "57" ],
-        "x-ms-client-request-id": [ "ddc77e91-768b-44b5-8b36-d06d518ea840" ],
+        "x-ms-unique-id": [ "81" ],
+        "x-ms-client-request-id": [ "6caacc73-b804-436e-a2b8-f8278fea6f7b" ],
         "CommandName": [ "Invoke-AzCloudServiceReimage" ],
         "FullCommandName": [ "Invoke-AzCloudServiceReimage_ReimageViaIdentityExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+        "User-Agent": [ "AzurePowershell/v9.0.1", "PSVersion/v7.3.2", "Az.CloudService/0.1.0" ]
       },
       "ContentHeaders": {
       }
@@ -560,14 +938,14 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-served-by": [ "5c0ea146-6027-4948-b7cf-c10a0ff2b9df_132606022997966010" ],
-        "x-ms-request-id": [ "be512289-59fd-4bc9-8ae7-9a497f0e5be3" ],
+        "x-ms-served-by": [ "86d6fedf-4646-41c8-b051-88bbc636c458_133210851372904375" ],
+        "x-ms-request-id": [ "f60cd0a4-069a-4e16-9dfa-8c17dae2e1c4" ],
         "Server": [ "Microsoft-HTTPAPI/2.0", "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11906" ],
-        "x-ms-correlation-request-id": [ "70c0b071-649b-4aef-8e60-c7d1240edb1d" ],
-        "x-ms-routing-request-id": [ "BRAZILUS:20210326T011303Z:70c0b071-649b-4aef-8e60-c7d1240edb1d" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11925" ],
+        "x-ms-correlation-request-id": [ "32d0fa08-680b-4365-b555-e98caa822a35" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230220T054454Z:32d0fa08-680b-4365-b555-e98caa822a35" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Fri, 26 Mar 2021 01:13:02 GMT" ]
+        "Date": [ "Mon, 20 Feb 2023 05:44:53 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ],

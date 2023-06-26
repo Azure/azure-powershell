@@ -10,7 +10,7 @@ assignees: ''
 <!--
 
 - The AzureRM module has been replaced by the Az module; please see the following document for more information:
-    - https://docs.microsoft.com/en-us/powershell/azure/new-azureps-module-az
+    - https://learn.microsoft.com/en-us/powershell/azure/new-azureps-module-az
 - If you are able to, please migrate to the Az module and see if the issue is reproducible
     - If so, please file an issue using the Az module template
 - Please search the existing issues to see if there has been a similar issue filed

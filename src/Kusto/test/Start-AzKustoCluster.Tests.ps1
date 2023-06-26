@@ -17,7 +17,7 @@ Describe 'Start-AzKustoCluster' {
     }
     It 'Start' {
         $resourceGroupName = $env.resourceGroupName
-        $clusterName = $env.PlainClusterName
+        $clusterName = $env.kustoFollowerClusterName
 
         Stop-AzKustoCluster -ResourceGroupName $resourceGroupName -Name $clusterName
         { Start-AzKustoCluster -ResourceGroupName $resourceGroupName -Name $clusterName } | Should -Not -Throw
@@ -25,7 +25,7 @@ Describe 'Start-AzKustoCluster' {
 
     It 'StartViaIdentity' {
         $resourceGroupName = $env.resourceGroupName
-        $clusterName = $env.PlainClusterName
+        $clusterName = $env.kustoFollowerClusterName
 
         $clusterGetItem = Get-AzKustoCluster -ResourceGroupName $resourceGroupName -Name $clusterName
 

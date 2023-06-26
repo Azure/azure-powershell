@@ -1,0 +1,52 @@
+{
+  "resourceType": "staticSites/userProvidedFunctionApps",
+  "apiVersion": "2020-12-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.websites"
+  },
+  "commands": [
+    {
+      "name": "Unregister-AzStaticWebAppUserProvidedFunctionApp",
+      "description": "Description for Detach the user provided function app from the static site",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}/userProvidedFunctionApps/{functionAppName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.websites/unregister-azstaticwebappuserprovidedfunctionapp"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-FunctionAppName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Description for Detach the user provided function app from the static site",
+          "parameters": [
+            {
+              "name": "-FunctionAppName",
+              "value": "[Path.functionAppName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.name]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

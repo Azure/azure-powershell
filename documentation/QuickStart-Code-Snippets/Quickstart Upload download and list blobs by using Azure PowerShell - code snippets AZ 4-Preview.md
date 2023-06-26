@@ -1,4 +1,4 @@
-[Quickstart: Upload, download, and list blobs by using Azure PowerShell](https://docs.microsoft.com/en-us/azure/storage/blobs/storage-quickstart-blobs-powershell)
+[Quickstart: Upload, download, and list blobs by using Azure PowerShell](https://learn.microsoft.com/en-us/azure/storage/blobs/storage-quickstart-blobs-powershell)
 
 # Quickstart: Upload, download, and list blobs by using Azure PowerShell
 

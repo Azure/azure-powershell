@@ -16,7 +16,7 @@ New-AzVirtualNetwork   -Name $VNetName   -ResourceGroupName $RG   -Location $Loc
 
 # Prerequisite 2: An ExpressRoute gateway
 # follow "Configure a virtual network gateway for ExpressRoute using PowerShell"
-# https://docs.microsoft.com/azure/expressroute/expressroute-howto-add-gateway-resource-manager
+# https://learn.microsoft.com/azure/expressroute/expressroute-howto-add-gateway-resource-manager
 $vnet = Get-AzVirtualNetwork -Name $VNetName -ResourceGroupName $RG
 $gatewaySubnet = Get-AzVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -VirtualNetwork $vnet
 $pip = New-AzPublicIpAddress -Name $GwIpName  -ResourceGroupName $RG -Location $Location -AllocationMethod Dynamic

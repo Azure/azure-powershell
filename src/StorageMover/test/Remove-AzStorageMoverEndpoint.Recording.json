@@ -1,8 +1,8 @@
 {
-  "Remove-AzStorageMoverEndpoint+[NoContext]+Delete+$PUT+https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testStorageMover/providers/Microsoft.StorageMover/storageMovers/testStoMover14068b735/endpoints/containerEndpoint24068b735?api-version=2022-07-01-preview+1": {
+  "Remove-AzStorageMoverEndpoint+[NoContext]+Delete+$PUT+https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testStorageMover/providers/Microsoft.StorageMover/storageMovers/testStoMover14068b735/endpoints/containerEndpoint24068b735?api-version=2023-03-01+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testStorageMover/providers/Microsoft.StorageMover/storageMovers/testStoMover14068b735/endpoints/containerEndpoint24068b735?api-version=2022-07-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testStorageMover/providers/Microsoft.StorageMover/storageMovers/testStoMover14068b735/endpoints/containerEndpoint24068b735?api-version=2023-03-01",
       "Content": "{\r\n  \"properties\": {\r\n    \"endpointType\": \"AzureStorageBlobContainer\",\r\n    \"storageAccountResourceId\": \"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testStorageMover/providers/Microsoft.Storage/storageAccounts/storacc4068b735\",\r\n    \"blobContainerName\": \"container4068b735\"\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -37,10 +37,10 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzStorageMoverEndpoint+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testStorageMover/providers/Microsoft.StorageMover/storageMovers/testStorageMover2/endpoints/containerEndpoint24068b735?api-version=2022-07-01-preview+2": {
+  "Remove-AzStorageMoverEndpoint+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testStorageMover/providers/Microsoft.StorageMover/storageMovers/testStorageMover2/endpoints/containerEndpoint24068b735?api-version=2023-03-01+2": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testStorageMover/providers/Microsoft.StorageMover/storageMovers/testStorageMover2/endpoints/containerEndpoint24068b735?api-version=2022-07-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testStorageMover/providers/Microsoft.StorageMover/storageMovers/testStorageMover2/endpoints/containerEndpoint24068b735?api-version=2023-03-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -76,10 +76,10 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzStorageMoverEndpoint+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testStorageMover/providers/Microsoft.StorageMover/storageMovers/testStorageMover2/endpoints?api-version=2022-07-01-preview+3": {
+  "Remove-AzStorageMoverEndpoint+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testStorageMover/providers/Microsoft.StorageMover/storageMovers/testStorageMover2/endpoints?api-version=2023-03-01+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testStorageMover/providers/Microsoft.StorageMover/storageMovers/testStorageMover2/endpoints?api-version=2022-07-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testStorageMover/providers/Microsoft.StorageMover/storageMovers/testStorageMover2/endpoints?api-version=2023-03-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {

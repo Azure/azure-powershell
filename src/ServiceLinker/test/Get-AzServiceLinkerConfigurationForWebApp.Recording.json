@@ -1,12 +1,12 @@
 {
-  "Get-AzServiceLinkerConfigurationForWebApp+[NoContext]+Get+$POST+https://management.azure.com//subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/resourceGroups/servicelinker-test-linux-group/providers/Microsoft.Web/sites/servicelinker-test-app/providers/Microsoft.ServiceLinker/linkers/preparedLinker/listConfigurations?api-version=2022-05-01+1": {
+  "Get-AzServiceLinkerConfigurationForWebApp+[NoContext]+Get+$POST+https://management.azure.com//subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/resourceGroups/servicelinker-test-linux-group/providers/Microsoft.Web/sites/servicelinker-test-app/providers/Microsoft.ServiceLinker/linkers/preparedLinker/listConfigurations?api-version=2022-11-01-preview+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com//subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/resourceGroups/servicelinker-test-linux-group/providers/Microsoft.Web/sites/servicelinker-test-app/providers/Microsoft.ServiceLinker/linkers/preparedLinker/listConfigurations?api-version=2022-05-01",
+      "RequestUri": "https://management.azure.com//subscriptions/937bc588-a144-4083-8612-5f9ffbbddb14/resourceGroups/servicelinker-test-linux-group/providers/Microsoft.Web/sites/servicelinker-test-app/providers/Microsoft.ServiceLinker/linkers/preparedLinker/listConfigurations?api-version=2022-11-01-preview",
       "Content": null,
       "Headers": {
         "x-ms-unique-id": [ "3" ],
-        "x-ms-client-request-id": [ "8e0d4168-901b-4b8d-a6e3-82ad02b40994" ],
+        "x-ms-client-request-id": [ "425697d2-6df2-4c61-9e8e-f1f98a1d499c" ],
         "CommandName": [ "Az.ServiceLinker.internal\\Get-AzServiceLinkerConfiguration" ],
         "FullCommandName": [ "Get-AzServiceLinkerConfiguration_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -21,23 +21,22 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Vary": [ "Accept-Encoding" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "1197" ],
         "x-ms-providerhub-traffic": [ "True" ],
-        "mise-correlation-id": [ "f69c1f96-fe48-49ff-a2f0-a8fdb7d66b9f" ],
+        "mise-correlation-id": [ "dc91cd06-8937-4c3a-9c20-ff21246f5e80" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "df837b82-5b49-442f-b70e-4ff769419e73" ],
-        "x-ms-correlation-request-id": [ "669dc65e-e639-43a6-8ab5-51850a31fba2" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220507T064313Z:669dc65e-e639-43a6-8ab5-51850a31fba2" ],
+        "x-ms-request-id": [ "fd7f3303-d09d-4655-8cf3-f58f58188de4" ],
+        "x-ms-correlation-request-id": [ "12d11d7a-5667-4970-b480-eb8cf025f8b3" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230130T074124Z:12d11d7a-5667-4970-b480-eb8cf025f8b3" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Sat, 07 May 2022 06:43:12 GMT" ]
+        "Date": [ "Mon, 30 Jan 2023 07:41:23 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "235" ],
+        "Content-Length": [ "220" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"configurations\":[{\"name\":\"AZURE_POSTGRESQL_PREPAREDLINKER_CONNECTIONSTRING\",\"value\":\"Server=servicelinker-postgresql.postgres.database.azure.com;Database=pollsdb;Port=5432;Ssl Mode=Require;User Id=xichen@servicelinker-postgresql;\"}]}"
+      "Content": "{\"configurations\":[{\"name\":\"AZURE_POSTGRESQL_CONNECTIONSTRING\",\"value\":\"Server=servicelinker-postgresql.postgres.database.azure.com;Database=pollsdb;Port=5432;Ssl Mode=Require;User Id=xichen@servicelinker-postgresql;\"}]}"
     }
   }
 }

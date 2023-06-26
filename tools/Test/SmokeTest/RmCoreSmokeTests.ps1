@@ -164,7 +164,7 @@ $resourceTestCommands = @(
 
 $generalCommands = @(
     @{
-        Name = "Import Az.Accounts in Parallel";
+        Name = "Import Az.Accounts in Parallel (Process)";
         Command = {
             if ($null -ne $env:SYSTEM_DEFINITIONID -or $null -ne $env:Release_DefinitionId -or $null -ne $env:AZUREPS_HOST_ENVIRONMENT) {
                 Write-Warning "Skipping because 'Start-Job' is not supported by design in scenarios where PowerShell is being hosted in other applications."
@@ -173,6 +173,24 @@ $generalCommands = @(
             $importJobs = @()
             1..10 | ForEach-Object {
                 $importJobs += Start-Job -name "import-no.$_" -ScriptBlock { Import-Module Az.Accounts; Get-AzConfig; }
+            }
+            $importJobs | Wait-Job
+            $importJobs | Receive-Job
+            $importJobs | ForEach-Object {
+                if ("Completed" -ne $_.State) {
+                    throw "Some jobs have failed."
+                }
+            }
+        };
+        Retry = 0; # no need to retry
+    }
+    @{
+        Name = "Import Az.Accounts in Parallel (Thread)";
+
+        Command = {
+            $importJobs = @()
+            1..50 | ForEach-Object {
+                $importJobs += Start-ThreadJob -name "import-no.$_" -ScriptBlock { Import-Module Az.Accounts; Get-AzTenant; }
             }
             $importJobs | Wait-Job
             $importJobs | Receive-Job

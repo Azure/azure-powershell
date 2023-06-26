@@ -1,10 +1,9 @@
 {
-  "Get-AzReservationAvailableScope+[NoContext]+AvailableExpanded+$POST+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/50000000-aaaa-bbbb-cccc-100000000003/reservations/10000000-aaaa-bbbb-cccc-100000000001/availableScopes?api-version=2022-03-01+1": {
+  "Get-AzReservationAvailableScope+[NoContext]+AvailableExpanded+$POST+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/50000000-aaaa-bbbb-cccc-100000000003/reservations/10000000-aaaa-bbbb-cccc-100000000001/availableScopes?api-version=2022-11-01+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/50000000-aaaa-bbbb-cccc-100000000003/reservations/10000000-aaaa-bbbb-cccc-100000000001/availableScopes?api-version=2022-03-01",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/50000000-aaaa-bbbb-cccc-100000000003/reservations/10000000-aaaa-bbbb-cccc-100000000001/availableScopes?api-version=2022-11-01",
       "Content": "{\r\n  \"properties\": {\r\n    \"scopes\": [ \"/subscriptions/40000000-aaaa-bbbb-cccc-100000000003\" ]\r\n  }\r\n}",
-      "isContentBase64": false,
       "Headers": {
       },
       "ContentHeaders": {
@@ -19,30 +18,29 @@
         "Pragma": [ "no-cache" ],
         "Vary": [ "Accept-Encoding" ],
         "x-ms-ratelimit-remaining-tenant-writes": [ "1199" ],
-        "x-ms-request-id": [ "westcentralus:bf7bcf8f-c0f8-4b58-88e6-e58647e019cc" ],
+        "x-ms-test": [ "{\"contact\":\"cabri\",\"scenarios\":\"CSZ,Inv-v7,crs-vnext,GtmRiPurchase\",\"retention\":\"05/28/2025 00:00:00\"}" ],
+        "x-ms-request-id": [ "westcentralus:bb639d79-a9e4-426b-a22b-04e0d93361cf" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "Server": [ "Microsoft-IIS/10.0" ],
         "X-AspNet-Version": [ "4.0.30319" ],
-        "x-ms-correlation-request-id": [ "1e3e71d4-f594-480b-9009-02229ef5f0d7" ],
-        "x-ms-routing-request-id": [ "WESTCENTRALUS:20220628T003421Z:1e3e71d4-f594-480b-9009-02229ef5f0d7" ],
+        "x-ms-correlation-request-id": [ "f5ba4ed8-5c78-499d-8369-d1cd8a24ce6a" ],
+        "x-ms-routing-request-id": [ "SOUTHCENTRALUS:20230210T165230Z:f5ba4ed8-5c78-499d-8369-d1cd8a24ce6a" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "Date": [ "Tue, 28 Jun 2022 00:34:20 GMT" ]
+        "Date": [ "Fri, 10 Feb 2023 16:52:29 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "215" ],
+        "Content-Length": [ "104" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"properties\":{\"scopes\":[{\"scope\":\"/subscriptions/40000000-aaaa-bbbb-cccc-100000000003\",\"valid\":true,\"reason\":\"\"}]}}",
-      "isContentBase64": false
+      "Content": "{\"properties\":{\"scopes\":[{\"scope\":\"/subscriptions/40000000-aaaa-bbbb-cccc-100000000003\",\"valid\":true}]}}"
     }
   },
-  "Get-AzReservationAvailableScope+[NoContext]+Available+$POST+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/50000000-aaaa-bbbb-cccc-100000000003/reservations/10000000-aaaa-bbbb-cccc-100000000001/availableScopes?api-version=2022-03-01+1": {
+  "Get-AzReservationAvailableScope+[NoContext]+Available+$POST+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/50000000-aaaa-bbbb-cccc-100000000003/reservations/10000000-aaaa-bbbb-cccc-100000000001/availableScopes?api-version=2022-11-01+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/50000000-aaaa-bbbb-cccc-100000000003/reservations/10000000-aaaa-bbbb-cccc-100000000001/availableScopes?api-version=2022-03-01",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/50000000-aaaa-bbbb-cccc-100000000003/reservations/10000000-aaaa-bbbb-cccc-100000000001/availableScopes?api-version=2022-11-01",
       "Content": "{\r\n  \"properties\": {\r\n    \"scopes\": [ \"/subscriptions/40000000-aaaa-bbbb-cccc-100000000003\" ]\r\n  }\r\n}",
-      "isContentBase64": false,
       "Headers": {
       },
       "ContentHeaders": {
@@ -57,30 +55,29 @@
         "Pragma": [ "no-cache" ],
         "Vary": [ "Accept-Encoding" ],
         "x-ms-ratelimit-remaining-tenant-writes": [ "1198" ],
-        "x-ms-request-id": [ "westcentralus:b2ccbb62-2376-456e-ba70-82bb8d5741e3" ],
+        "x-ms-test": [ "{\"contact\":\"cabri\",\"scenarios\":\"CSZ,Inv-v7,crs-vnext,GtmRiPurchase\",\"retention\":\"05/28/2025 00:00:00\"}" ],
+        "x-ms-request-id": [ "westcentralus:30d933c4-3818-4517-8374-8b38a3400413" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "Server": [ "Microsoft-IIS/10.0" ],
         "X-AspNet-Version": [ "4.0.30319" ],
-        "x-ms-correlation-request-id": [ "c01dc8ec-f0a0-4b12-a7af-9e5a3b23add1" ],
-        "x-ms-routing-request-id": [ "WESTCENTRALUS:20220628T003422Z:c01dc8ec-f0a0-4b12-a7af-9e5a3b23add1" ],
+        "x-ms-correlation-request-id": [ "058b2e7c-0087-4ba1-a368-8e4e6ed17032" ],
+        "x-ms-routing-request-id": [ "SOUTHCENTRALUS:20230210T165231Z:058b2e7c-0087-4ba1-a368-8e4e6ed17032" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "Date": [ "Tue, 28 Jun 2022 00:34:21 GMT" ]
+        "Date": [ "Fri, 10 Feb 2023 16:52:30 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "215" ],
+        "Content-Length": [ "104" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"properties\":{\"scopes\":[{\"scope\":\"/subscriptions/40000000-aaaa-bbbb-cccc-100000000003\",\"valid\":true,\"reason\":\"\"}]}}",
-      "isContentBase64": false
+      "Content": "{\"properties\":{\"scopes\":[{\"scope\":\"/subscriptions/40000000-aaaa-bbbb-cccc-100000000003\",\"valid\":true}]}}"
     }
   },
-  "Get-AzReservationAvailableScope+[NoContext]+AvailableViaIdentityExpanded+$POST+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/50000000-aaaa-bbbb-cccc-100000000003/reservations/10000000-aaaa-bbbb-cccc-100000000001/availableScopes?api-version=2022-03-01+1": {
+  "Get-AzReservationAvailableScope+[NoContext]+AvailableViaIdentityExpanded+$POST+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/50000000-aaaa-bbbb-cccc-100000000003/reservations/10000000-aaaa-bbbb-cccc-100000000001/availableScopes?api-version=2022-11-01+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/50000000-aaaa-bbbb-cccc-100000000003/reservations/10000000-aaaa-bbbb-cccc-100000000001/availableScopes?api-version=2022-03-01",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/50000000-aaaa-bbbb-cccc-100000000003/reservations/10000000-aaaa-bbbb-cccc-100000000001/availableScopes?api-version=2022-11-01",
       "Content": "{\r\n  \"properties\": {\r\n    \"scopes\": [ \"/subscriptions/40000000-aaaa-bbbb-cccc-100000000003\" ]\r\n  }\r\n}",
-      "isContentBase64": false,
       "Headers": {
       },
       "ContentHeaders": {
@@ -95,30 +92,29 @@
         "Pragma": [ "no-cache" ],
         "Vary": [ "Accept-Encoding" ],
         "x-ms-ratelimit-remaining-tenant-writes": [ "1197" ],
-        "x-ms-request-id": [ "westcentralus:1ff5ddc8-2944-4ed2-ab6c-d4bc17e7cb43" ],
+        "x-ms-test": [ "{\"contact\":\"cabri\",\"scenarios\":\"CSZ,Inv-v7,crs-vnext,GtmRiPurchase\",\"retention\":\"05/28/2025 00:00:00\"}" ],
+        "x-ms-request-id": [ "westcentralus:ce5896ec-81ab-48c7-bb04-7bdf569fe839" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "Server": [ "Microsoft-IIS/10.0" ],
         "X-AspNet-Version": [ "4.0.30319" ],
-        "x-ms-correlation-request-id": [ "643a1320-2d5d-4bb1-92f9-73ec1c398267" ],
-        "x-ms-routing-request-id": [ "WESTCENTRALUS:20220628T003422Z:643a1320-2d5d-4bb1-92f9-73ec1c398267" ],
+        "x-ms-correlation-request-id": [ "3d097a0f-1ca5-4b10-8ea1-ace822109b7b" ],
+        "x-ms-routing-request-id": [ "SOUTHCENTRALUS:20230210T165231Z:3d097a0f-1ca5-4b10-8ea1-ace822109b7b" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "Date": [ "Tue, 28 Jun 2022 00:34:21 GMT" ]
+        "Date": [ "Fri, 10 Feb 2023 16:52:31 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "215" ],
+        "Content-Length": [ "104" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"properties\":{\"scopes\":[{\"scope\":\"/subscriptions/40000000-aaaa-bbbb-cccc-100000000003\",\"valid\":true,\"reason\":\"\"}]}}",
-      "isContentBase64": false
+      "Content": "{\"properties\":{\"scopes\":[{\"scope\":\"/subscriptions/40000000-aaaa-bbbb-cccc-100000000003\",\"valid\":true}]}}"
     }
   },
-  "Get-AzReservationAvailableScope+[NoContext]+AvailableViaIdentity+$POST+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/50000000-aaaa-bbbb-cccc-100000000003/reservations/10000000-aaaa-bbbb-cccc-100000000001/availableScopes?api-version=2022-03-01+1": {
+  "Get-AzReservationAvailableScope+[NoContext]+AvailableViaIdentity+$POST+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/50000000-aaaa-bbbb-cccc-100000000003/reservations/10000000-aaaa-bbbb-cccc-100000000001/availableScopes?api-version=2022-11-01+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/50000000-aaaa-bbbb-cccc-100000000003/reservations/10000000-aaaa-bbbb-cccc-100000000001/availableScopes?api-version=2022-03-01",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/50000000-aaaa-bbbb-cccc-100000000003/reservations/10000000-aaaa-bbbb-cccc-100000000001/availableScopes?api-version=2022-11-01",
       "Content": "{\r\n  \"properties\": {\r\n    \"scopes\": [ \"/subscriptions/40000000-aaaa-bbbb-cccc-100000000003\" ]\r\n  }\r\n}",
-      "isContentBase64": false,
       "Headers": {
       },
       "ContentHeaders": {
@@ -133,22 +129,22 @@
         "Pragma": [ "no-cache" ],
         "Vary": [ "Accept-Encoding" ],
         "x-ms-ratelimit-remaining-tenant-writes": [ "1196" ],
-        "x-ms-request-id": [ "westcentralus:88e1182e-9404-4709-af3e-7f982dd85042" ],
+        "x-ms-test": [ "{\"contact\":\"cabri\",\"scenarios\":\"CSZ,Inv-v7,crs-vnext,GtmRiPurchase\",\"retention\":\"05/28/2025 00:00:00\"}" ],
+        "x-ms-request-id": [ "westcentralus:b06edd88-1ce1-4abc-a592-a34bd814fabd" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "Server": [ "Microsoft-IIS/10.0" ],
         "X-AspNet-Version": [ "4.0.30319" ],
-        "x-ms-correlation-request-id": [ "da031485-c7f6-41a4-944c-a723e3bff3a0" ],
-        "x-ms-routing-request-id": [ "WESTCENTRALUS:20220628T003423Z:da031485-c7f6-41a4-944c-a723e3bff3a0" ],
+        "x-ms-correlation-request-id": [ "d5b40d34-5da6-46e1-b5ad-43d3f3330207" ],
+        "x-ms-routing-request-id": [ "SOUTHCENTRALUS:20230210T165232Z:d5b40d34-5da6-46e1-b5ad-43d3f3330207" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "Date": [ "Tue, 28 Jun 2022 00:34:22 GMT" ]
+        "Date": [ "Fri, 10 Feb 2023 16:52:31 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "215" ],
+        "Content-Length": [ "104" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"properties\":{\"scopes\":[{\"scope\":\"/subscriptions/40000000-aaaa-bbbb-cccc-100000000003\",\"valid\":true,\"reason\":\"\"}]}}",
-      "isContentBase64": false
+      "Content": "{\"properties\":{\"scopes\":[{\"scope\":\"/subscriptions/40000000-aaaa-bbbb-cccc-100000000003\",\"valid\":true}]}}"
     }
   }
 }

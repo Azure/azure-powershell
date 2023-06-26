@@ -23,7 +23,7 @@ Create an in-memory object for ServicePrincipalDatastoreCredentials.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.ServicePrincipalDatastoreCredentials
 .Link
-https://learn.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceDatastoreServicePrincipalCredentialObject
+https://learn.microsoft.com/powershell/module/az.MachineLearningServices/new-AzMLWorkspaceDatastoreServicePrincipalCredentialObject
 #>
 function New-AzMLWorkspaceDatastoreServicePrincipalCredentialObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.ServicePrincipalDatastoreCredentials')]

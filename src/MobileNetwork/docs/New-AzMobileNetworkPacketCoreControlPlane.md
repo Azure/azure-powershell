@@ -21,8 +21,8 @@ New-AzMobileNetworkPacketCoreControlPlane -Name <String> -ResourceGroupName <Str
  [-ControlPlaneAccessInterfaceIpv4Subnet <String>] [-ControlPlaneAccessInterfaceName <String>]
  [-CoreNetworkTechnology <CoreNetworkType>] [-CustomLocationId <String>] [-HttpsServerCertificateUrl <String>]
  [-IdentityType <ManagedServiceIdentityType>] [-IdentityUserAssignedIdentity <Hashtable>]
- [-InteropSetting <IAny>] [-Tag <Hashtable>] [-UeMtu <Int32>] [-Version <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-InteropSetting <Hashtable>] [-Tag <Hashtable>] [-UeMtu <Int32>] [-Version <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -199,7 +199,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -266,7 +267,7 @@ Settings to allow interoperability with third party components e.g.
 RANs and UEs.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IAny
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases:
 

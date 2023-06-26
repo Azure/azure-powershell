@@ -14,6 +14,15 @@ components:
           readOnly: true
           description: Read-only.
     microsoft.graph.directoryObject:
+      required:
+        - '@odata.type'
+      discriminator:
+        propertyName: '@odata.type'
+        mapping:
+          '#microsoft.graph.application': 'v1.0/Applications.yml#/components/schemas/microsoft.graph.application'
+          '#microsoft.graph.serviceprincipal': 'v1.0/Applications.yml#/components/schemas/microsoft.graph.servicePrincipal'
+          '#microsoft.graph.user': 'v1.0/Users.yml#/components/schemas/microsoft.graph.user'
+          '#microsoft.graph.group': 'v1.0/Groups.yml#/components/schemas/microsoft.graph.group'
       allOf:
         - $ref: '#/components/schemas/microsoft.graph.entity'
         - title: directoryObject

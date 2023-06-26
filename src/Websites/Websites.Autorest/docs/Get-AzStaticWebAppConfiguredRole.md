@@ -26,6 +26,7 @@ Description for Lists the roles configured for the static site.
 ```powershell
 Get-AzStaticWebAppConfiguredRole -ResourceGroupName azure-rg-test -Name staticweb-portal04
 ```
+
 ```output
 Kind Name            Type                                      Property
 ---- ----            ----                                      --------

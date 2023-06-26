@@ -160,16 +160,21 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                 }
             }
 
+            CommandLineSuggestion earlyReturnResult = new()
+            {
+                CommandAst = commandAst
+            };
+
             if (commandAst == null)
             {
-                return null;
+                return earlyReturnResult;
             }
 
             var commandName = commandAst.GetCommandName();
 
             if (string.IsNullOrWhiteSpace(commandName))
             {
-                return null;
+                return earlyReturnResult;
             }
 
             ParameterSet inputParameterSet = null;
@@ -182,7 +187,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             {
                 // We only ignore the exception when the command name is not supported.
                 // We want to collect the telemetry about the exception how common it is for the format we don't support.
-                return null;
+                return earlyReturnResult;
             }
 
             cancellationToken.ThrowIfCancellationRequested();
@@ -250,11 +255,18 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                 }
             }
 
+            if (result is null)
+            {
+                result = new CommandLineSuggestion();
+            }
+
+            result.CommandAst = commandAst;
+
             return result;
         }
 
         /// <inheritdoc/>
-        public virtual async Task<bool?> RequestPredictionsAsync(IEnumerable<string> commands, string requestId, CancellationToken cancellationToken)
+        public virtual async Task<(bool, CommandLineSummary)?> RequestPredictionsAsync(IEnumerable<string> commands, string requestId, CancellationToken cancellationToken)
         {
             Validation.CheckArgument(commands, $"{nameof(commands)} cannot be null.");
 
@@ -306,11 +318,12 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             {
                 throw new ServiceRequestException(e.Message, e)
                         {
-                            IsRequestSent =isRequestSent
+                            IsRequestSent = isRequestSent,
+                            PredictorSummary = _commandBasedPredictor.Item2.PredictorSummary,
                         };
             }
 
-            return isRequestSent;
+            return (isRequestSent, _commandBasedPredictor.Item2.PredictorSummary);
         }
 
         /// <inheritdoc/>
@@ -323,16 +336,40 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             });
 
         /// <inheritdoc/>
-        public virtual bool IsSupportedCommand(string cmd) => IsRecognizedCommand(cmd)
-            && !_surveyCmdlets.Any(cmdlet => cmdlet.Command.StartsWith(cmd, StringComparison.OrdinalIgnoreCase)) // the survey cmdlets aren't in the normal az command flow, so mark them as unsupported.
-            && cmd.IndexOf(AzPredictorConstants.AzCommandMoniker) > 0; // This is the Az cmdlet.
+        public virtual bool IsSupportedCommand(string cmd)
+        {
+            if (string.IsNullOrWhiteSpace(cmd))
+            {
+                return false;
+            }
+
+            if (IsRecognizedCommand(cmd))
+            {
+                // When it's already on our list of suggestions.
+                return true;
+            }
+
+            // If it's not completely certain the command is supported (as it's checked in IsRecognizedCommand),
+            // we need to apply strict heuristic check to make sure that we don't collect any other information other than the command in the telemetry.
+
+            var commandParts = cmd.Split(AzPredictorConstants.PowerShellCommandSeparator, StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries);
+
+            // There must be two parts (verb and noun) to be a valid PowerShell commands.
+            // The first part must be an approved PowerShell verb and the second part must begin with "Az".
+            if (commandParts?.Length == 2 )
+            {
+                return AzPredictorConstants.ApprovedPowerShellVerbs.Contains(commandParts[0])
+                    && commandParts[1].StartsWith(AzPredictorConstants.AzCommandMoniker, StringComparison.OrdinalIgnoreCase);
+            }
+
+            return false;
+        }
 
         /// <summary>
         /// Checks whether the given <paramref name="cmd" /> is in the command list.
         /// </summary>
         /// <param name="cmd">The command to check if it's in the list.</param>
-        protected bool IsRecognizedCommand(string cmd) => !string.IsNullOrWhiteSpace(cmd)
-            && (_allPredictiveCommands?.Contains(cmd) == true);
+        protected bool IsRecognizedCommand(string cmd) => _allPredictiveCommands?.Contains(cmd) == true;
 
         /// <summary>
         /// Requests a list of popular commands from service. These commands are used as fall back suggestion
@@ -370,7 +407,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                             _telemetryClient.OnRequestPrediction(new RequestPredictionTelemetryData(null,
                                         new List<string>(),
                                         hasSentHttpRequest,
-                                        exception));
+                                        exception,
+                                        _fallbackPredictor.PredictorSummary));
                         }
 
                         // Initialize predictions

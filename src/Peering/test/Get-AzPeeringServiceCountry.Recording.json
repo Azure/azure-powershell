@@ -1,0 +1,42 @@
+{
+  "Get-AzPeeringServiceCountry+[NoContext]+List+$GET+https://management.azure.com/subscriptions/e815e305-b43a-49c4-8b1a-4e61f1aec1e8/providers/Microsoft.Peering/peeringServiceCountries?api-version=2022-10-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/e815e305-b43a-49c4-8b1a-4e61f1aec1e8/providers/Microsoft.Peering/peeringServiceCountries?api-version=2022-10-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "18" ],
+        "x-ms-client-request-id": [ "a00f82dc-e20b-4322-a8c2-f741a820b3c2" ],
+        "CommandName": [ "Get-AzPeeringServiceCountry" ],
+        "FullCommandName": [ "Get-AzPeeringServiceCountry_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.3", "Az.Peering/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "3993c7c5-c229-4051-a1f4-d42cbcd9a54e" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "599" ],
+        "x-ms-correlation-request-id": [ "c2d503eb-1043-48d3-90bb-b8e30b59d657" ],
+        "x-ms-routing-request-id": [ "WESTUS:20230113T012520Z:c2d503eb-1043-48d3-90bb-b8e30b59d657" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 13 Jan 2023 01:25:19 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "6012" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"value\": [\r\n    {\r\n      \"name\": \"Australia\",\r\n      \"id\": \"/subscriptions/e815e305-b43a-49c4-8b1a-4e61f1aec1e8/providers/Microsoft.Peering/peeringServiceCountries/Australia\",\r\n      \"type\": \"Microsoft.Peering/peeringServiceCountries\"\r\n    },\r\n    {\r\n      \"name\": \"Belgium\",\r\n      \"id\": \"/subscriptions/e815e305-b43a-49c4-8b1a-4e61f1aec1e8/providers/Microsoft.Peering/peeringServiceCountries/Belgium\",\r\n      \"type\": \"Microsoft.Peering/peeringServiceCountries\"\r\n    },\r\n    {\r\n      \"name\": \"Brazil\",\r\n      \"id\": \"/subscriptions/e815e305-b43a-49c4-8b1a-4e61f1aec1e8/providers/Microsoft.Peering/peeringServiceCountries/Brazil\",\r\n      \"type\": \"Microsoft.Peering/peeringServiceCountries\"\r\n    },\r\n    {\r\n      \"name\": \"Canada\",\r\n      \"id\": \"/subscriptions/e815e305-b43a-49c4-8b1a-4e61f1aec1e8/providers/Microsoft.Peering/peeringServiceCountries/Canada\",\r\n      \"type\": \"Microsoft.Peering/peeringServiceCountries\"\r\n    },\r\n    {\r\n      \"name\": \"Denmark\",\r\n      \"id\": \"/subscriptions/e815e305-b43a-49c4-8b1a-4e61f1aec1e8/providers/Microsoft.Peering/peeringServiceCountries/Denmark\",\r\n      \"type\": \"Microsoft.Peering/peeringServiceCountries\"\r\n    },\r\n    {\r\n      \"name\": \"Finland\",\r\n      \"id\": \"/subscriptions/e815e305-b43a-49c4-8b1a-4e61f1aec1e8/providers/Microsoft.Peering/peeringServiceCountries/Finland\",\r\n      \"type\": \"Microsoft.Peering/peeringServiceCountries\"\r\n    },\r\n    {\r\n      \"name\": \"France\",\r\n      \"id\": \"/subscriptions/e815e305-b43a-49c4-8b1a-4e61f1aec1e8/providers/Microsoft.Peering/peeringServiceCountries/France\",\r\n      \"type\": \"Microsoft.Peering/peeringServiceCountries\"\r\n    },\r\n    {\r\n      \"name\": \"Germany\",\r\n      \"id\": \"/subscriptions/e815e305-b43a-49c4-8b1a-4e61f1aec1e8/providers/Microsoft.Peering/peeringServiceCountries/Germany\",\r\n      \"type\": \"Microsoft.Peering/peeringServiceCountries\"\r\n    },\r\n    {\r\n      \"name\": \"Hong Kong\",\r\n      \"id\": \"/subscriptions/e815e305-b43a-49c4-8b1a-4e61f1aec1e8/providers/Microsoft.Peering/peeringServiceCountries/Hong Kong\",\r\n      \"type\": \"Microsoft.Peering/peeringServiceCountries\"\r\n    },\r\n    {\r\n      \"name\": \"Japan\",\r\n      \"id\": \"/subscriptions/e815e305-b43a-49c4-8b1a-4e61f1aec1e8/providers/Microsoft.Peering/peeringServiceCountries/Japan\",\r\n      \"type\": \"Microsoft.Peering/peeringServiceCountries\"\r\n    },\r\n    {\r\n      \"name\": \"Kenya\",\r\n      \"id\": \"/subscriptions/e815e305-b43a-49c4-8b1a-4e61f1aec1e8/providers/Microsoft.Peering/peeringServiceCountries/Kenya\",\r\n      \"type\": \"Microsoft.Peering/peeringServiceCountries\"\r\n    },\r\n    {\r\n      \"name\": \"Korea, South\",\r\n      \"id\": \"/subscriptions/e815e305-b43a-49c4-8b1a-4e61f1aec1e8/providers/Microsoft.Peering/peeringServiceCountries/Korea, South\",\r\n      \"type\": \"Microsoft.Peering/peeringServiceCountries\"\r\n    },\r\n    {\r\n      \"name\": \"Malaysia\",\r\n      \"id\": \"/subscriptions/e815e305-b43a-49c4-8b1a-4e61f1aec1e8/providers/Microsoft.Peering/peeringServiceCountries/Malaysia\",\r\n      \"type\": \"Microsoft.Peering/peeringServiceCountries\"\r\n    },\r\n    {\r\n      \"name\": \"Netherlands\",\r\n      \"id\": \"/subscriptions/e815e305-b43a-49c4-8b1a-4e61f1aec1e8/providers/Microsoft.Peering/peeringServiceCountries/Netherlands\",\r\n      \"type\": \"Microsoft.Peering/peeringServiceCountries\"\r\n    },\r\n    {\r\n      \"name\": \"New Zealand\",\r\n      \"id\": \"/subscriptions/e815e305-b43a-49c4-8b1a-4e61f1aec1e8/providers/Microsoft.Peering/peeringServiceCountries/New Zealand\",\r\n      \"type\": \"Microsoft.Peering/peeringServiceCountries\"\r\n    },\r\n    {\r\n      \"name\": \"Nigeria\",\r\n      \"id\": \"/subscriptions/e815e305-b43a-49c4-8b1a-4e61f1aec1e8/providers/Microsoft.Peering/peeringServiceCountries/Nigeria\",\r\n      \"type\": \"Microsoft.Peering/peeringServiceCountries\"\r\n    },\r\n    {\r\n      \"name\": \"Norway\",\r\n      \"id\": \"/subscriptions/e815e305-b43a-49c4-8b1a-4e61f1aec1e8/providers/Microsoft.Peering/peeringServiceCountries/Norway\",\r\n      \"type\": \"Microsoft.Peering/peeringServiceCountries\"\r\n    },\r\n    {\r\n      \"name\": \"Poland\",\r\n      \"id\": \"/subscriptions/e815e305-b43a-49c4-8b1a-4e61f1aec1e8/providers/Microsoft.Peering/peeringServiceCountries/Poland\",\r\n      \"type\": \"Microsoft.Peering/peeringServiceCountries\"\r\n    },\r\n    {\r\n      \"name\": \"Portugal\",\r\n      \"id\": \"/subscriptions/e815e305-b43a-49c4-8b1a-4e61f1aec1e8/providers/Microsoft.Peering/peeringServiceCountries/Portugal\",\r\n      \"type\": \"Microsoft.Peering/peeringServiceCountries\"\r\n    },\r\n    {\r\n      \"name\": \"Singapore\",\r\n      \"id\": \"/subscriptions/e815e305-b43a-49c4-8b1a-4e61f1aec1e8/providers/Microsoft.Peering/peeringServiceCountries/Singapore\",\r\n      \"type\": \"Microsoft.Peering/peeringServiceCountries\"\r\n    },\r\n    {\r\n      \"name\": \"South Africa\",\r\n      \"id\": \"/subscriptions/e815e305-b43a-49c4-8b1a-4e61f1aec1e8/providers/Microsoft.Peering/peeringServiceCountries/South Africa\",\r\n      \"type\": \"Microsoft.Peering/peeringServiceCountries\"\r\n    },\r\n    {\r\n      \"name\": \"Spain\",\r\n      \"id\": \"/subscriptions/e815e305-b43a-49c4-8b1a-4e61f1aec1e8/providers/Microsoft.Peering/peeringServiceCountries/Spain\",\r\n      \"type\": \"Microsoft.Peering/peeringServiceCountries\"\r\n    },\r\n    {\r\n      \"name\": \"Sweden\",\r\n      \"id\": \"/subscriptions/e815e305-b43a-49c4-8b1a-4e61f1aec1e8/providers/Microsoft.Peering/peeringServiceCountries/Sweden\",\r\n      \"type\": \"Microsoft.Peering/peeringServiceCountries\"\r\n    },\r\n    {\r\n      \"name\": \"Switzerland\",\r\n      \"id\": \"/subscriptions/e815e305-b43a-49c4-8b1a-4e61f1aec1e8/providers/Microsoft.Peering/peeringServiceCountries/Switzerland\",\r\n      \"type\": \"Microsoft.Peering/peeringServiceCountries\"\r\n    },\r\n    {\r\n      \"name\": \"United Kingdom\",\r\n      \"id\": \"/subscriptions/e815e305-b43a-49c4-8b1a-4e61f1aec1e8/providers/Microsoft.Peering/peeringServiceCountries/United Kingdom\",\r\n      \"type\": \"Microsoft.Peering/peeringServiceCountries\"\r\n    },\r\n    {\r\n      \"name\": \"United States\",\r\n      \"id\": \"/subscriptions/e815e305-b43a-49c4-8b1a-4e61f1aec1e8/providers/Microsoft.Peering/peeringServiceCountries/United States\",\r\n      \"type\": \"Microsoft.Peering/peeringServiceCountries\"\r\n    }\r\n  ]\r\n}",
+      "isContentBase64": false
+    }
+  }
+}

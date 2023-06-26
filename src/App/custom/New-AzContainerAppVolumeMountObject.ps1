@@ -22,8 +22,6 @@ Create an in-memory object for VolumeMount.
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.VolumeMount
-.Link
-https://learn.microsoft.com/powershell/module/az./new-azcontainerappvolumemountobject
 #>
 function New-AzContainerAppVolumeMountObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.VolumeMount')]

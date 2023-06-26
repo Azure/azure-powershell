@@ -28,7 +28,11 @@ Get-AzDataBoxJobCredential -Name "DtbxPowershell" -ResourceGroupName "resourceGr
 
 $obj = Get-AzDataBoxJobCredential -Name TJy-637522091284252285 -ResourceGroupName bvttoolrg12-Wednesday
 $obj | Format-List
+$obj.JobSecret | Format-List
+$cabinetJobSecret = $obj.JobSecret.CabinetPodSecret | Format-List
+```
 
+```output
 AdditionalInfo                          :
 Code                                    :
 DcAccessSecurityCodeForwardDcAccessCode :
@@ -41,8 +45,6 @@ Message                                 :
 Target                                  :
 
 
-$obj.JobSecret | Format-List
-
 AdditionalInfo                          :
 CabinetPodSecret                        : {, }
 Code                                    :
@@ -54,8 +56,6 @@ Error                                   : Microsoft.Azure.PowerShell.Cmdlets.Dat
 Message                                 :
 Target                                  :
 Type                                    : DataBoxHeavy
-
-$cabinetJobSecret = $obj.JobSecret.CabinetPodSecret | Format-List
 ```
 
 Get databoxHeavy job credential
@@ -63,7 +63,8 @@ Get databoxHeavy job credential
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -161,7 +162,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IUnencryptedCredentials
+### Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IUnencryptedCredentials
 
 ## NOTES
 

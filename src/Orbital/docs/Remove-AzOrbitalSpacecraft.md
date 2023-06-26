@@ -54,7 +54,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -214,7 +215,6 @@ To create the parameters described below, construct a hash table containing the 
 `INPUTOBJECT <IOrbitalIdentity>`: Identity Parameter
   - `[ContactName <String>]`: Contact name.
   - `[ContactProfileName <String>]`: Contact Profile name.
-  - `[GroundStationName <String>]`: Ground Station name.
   - `[Id <String>]`: Resource identity path
   - `[Location <String>]`: The name of Azure region.
   - `[OperationId <String>]`: The ID of an ongoing async operation.
