@@ -23,6 +23,8 @@
 * Updated API version to 2022-09-01
 * Added Deployment Stacks cmdlets
 * Added support for dynamic parameters when deploying symbolic name templates.
+* Fixed `Set-AzPolicyExemption` parameter PolicyDefinitionReferenceId not accept empty array.
+* Fixed `Get-AzPolicyExemption` output not contain system data.
 
 ## Version 6.7.0
 * Added parameter `-CountVariable` for list operations, `odataCount` can now be assigned to this variable [#20982]
@@ -36,8 +38,6 @@
 * Fixed `Update-AzADServicePrincipal` when empty array passed for `IdentifierUri` [#21345]
 * Fixed an issue where location header was missing in the response from the service for `New-AzManagedApplication`.
 * Fixed `Get-AzResourceGroup` ignored the subscription ID in `-Id` [#21725]
-* Fixed `Set-AzPolicyExemption` parameter PolicyDefinitionReferenceId not accept empty array.
-* Fixed `Get-AzPolicyExemption` output not contain system data.
 
 ## Version 6.6.1
 * Added support for Azure resources deployment with parameters file using Bicep parameters syntax
