@@ -134,6 +134,7 @@ command connects the specified Azure tenant using the service principal credenti
 authenticates as a service principal.
 
 ```powershell
+$SecurePassword = $password | ConvertTo-SecureString -AsPlainText -Force
 $Credential = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $ApplicationId, $SecuredPassword
 Connect-AzAccount -ServicePrincipal -TenantId $TenantId -Credential $Credential
 ```
