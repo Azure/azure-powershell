@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Update cmdlet only have tags parameter
+* Set 'AdminPassword' as a secret string
+* Rename parameters
+* Rename resource description
 
 ## Version 0.1.0
 * First preview release for module Az.Qumulo
