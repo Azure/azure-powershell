@@ -91,6 +91,10 @@ directive:
     transform: >-
       return "Create a file system resource"
   - from: swagger-document 
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Qumulo.Storage/fileSystems/{fileSystemName}"].patch.description
+    transform: >-
+      return "Update a file system resource"
+  - from: swagger-document 
     where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Qumulo.Storage/fileSystems/{fileSystemName}"].delete.description
     transform: >-
       return "Delete a file system resource"

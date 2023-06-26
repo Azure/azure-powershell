@@ -20,9 +20,7 @@ Update a file system resource
 .Description
 Update a file system resource
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+Update-AzQumuloFileSystem -ResourceGroupName ps-joyer-test -Name qumulo-resource-01 -Tag @{"123"="abc"}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Models.IQumuloIdentity
