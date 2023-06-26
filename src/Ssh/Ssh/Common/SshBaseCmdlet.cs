@@ -45,6 +45,7 @@ using System.Management.Automation.Runspaces;
 using System.Collections.ObjectModel;
 using Microsoft.Azure.PowerShell.Ssh.Helpers.HybridCompute.Models;
 using Microsoft.Azure.PowerShell.Ssh.Helpers.HybridCompute;
+using System.Collections;
 
 
 namespace Microsoft.Azure.Commands.Ssh
@@ -528,17 +529,10 @@ namespace Microsoft.Azure.Commands.Ssh
             
             if (String.IsNullOrEmpty(proxyPath))
             {
-                Collection<ChoiceDescription> choices = new Collection<ChoiceDescription> { 
-                    new ChoiceDescription("N", "No"),
-                    new ChoiceDescription("Y", "Yes")
-                };
+                string caption = Resources.InstallProxyModuleCaption;
+                string query = Resources.InstallProxyModuleMessage;
 
-                int userChoice = this.Host.UI.PromptForChoice(
-                    caption: Resources.InstallProxyModuleCaption,
-                    message: Resources.InstallProxyModuleMessage,
-                    choices: choices,
-                    defaultChoice: 0);
-                if (userChoice == 1)
+                if (Force && ShouldContinue(caption, query))
                 {
                     var installationResults = InvokeCommand.InvokeScript(
                         script: "Install-module Az.Ssh.ArcProxy -Repository PsGallery -Scope CurrentUser -MaximumVersion 1.9.9 -AllowClobber -Force",
@@ -546,10 +540,10 @@ namespace Microsoft.Azure.Commands.Ssh
                         writeToPipeline: PipelineResultTypes.Error,
                         input: null,
                         args: null);
-                    
+
                     proxyPath = SearchForInstalledProxyPath();
                 }
-                
+
             }
 
             if (!String.IsNullOrEmpty(proxyPath)) { return proxyPath; }
