@@ -24,6 +24,7 @@ using System.Runtime.InteropServices;
 using System.Threading;
 using System.Text.RegularExpressions;
 using Microsoft.Azure.Commands.Ssh.Properties;
+using Microsoft.Azure.PowerShell.Ssh.Helpers.HybridConnectivity.Models;
 
 namespace Microsoft.Azure.Commands.Ssh
 {
@@ -55,6 +56,7 @@ namespace Microsoft.Azure.Commands.Ssh
 
         #region fields
         private int rdpLocalPort;
+        private EndpointAccessResource relayInfo;
         #endregion
 
         #region constants

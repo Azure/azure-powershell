@@ -68,7 +68,6 @@ namespace Microsoft.Azure.Commands.Ssh
         protected internal bool deleteCert;
         protected internal string proxyPath;
         protected internal ProgressRecord record;
-        protected internal EndpointAccessResource relayInfo;
         protected internal bool createdServiceConfig;
 
         protected internal readonly string[] supportedResourceTypes = {
