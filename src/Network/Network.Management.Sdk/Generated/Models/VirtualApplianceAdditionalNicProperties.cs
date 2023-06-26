@@ -34,9 +34,9 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Initializes a new instance of the
         /// VirtualApplianceAdditionalNicProperties class.
         /// </summary>
-        /// <param name="name">Customer Name for additional nic</param>
-        /// <param name="hasPublicIp">Customer Intent for Public Ip on
-        /// additional nic</param>
+        /// <param name="name">Name of additional nic</param>
+        /// <param name="hasPublicIp">Flag (true or false) for Intent for
+        /// Public Ip on additional nic</param>
         public VirtualApplianceAdditionalNicProperties(string name = default(string), bool? hasPublicIp = default(bool?))
         {
             Name = name;
@@ -50,13 +50,14 @@ namespace Microsoft.Azure.Management.Network.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets customer Name for additional nic
+        /// Gets or sets name of additional nic
         /// </summary>
         [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets customer Intent for Public Ip on additional nic
+        /// Gets or sets flag (true or false) for Intent for Public Ip on
+        /// additional nic
         /// </summary>
         [JsonProperty(PropertyName = "hasPublicIp")]
         public bool? HasPublicIp { get; set; }
