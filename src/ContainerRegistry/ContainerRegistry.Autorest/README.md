@@ -53,7 +53,6 @@ require:
   - $(repo)/specification/containerregistry/resource-manager/readme.md
 try-require:
   - $(repo)/specification/containerregistry/resource-manager/readme.powershell.md
-
 module-version: 0.1.0
 title: ContainerRegistry
 subject-prefix: $(service-name)

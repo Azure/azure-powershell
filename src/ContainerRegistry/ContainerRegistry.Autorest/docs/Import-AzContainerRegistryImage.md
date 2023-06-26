@@ -40,7 +40,6 @@ Import-AzContainerRegistryImage -SourceImage library/busybox:latest -ResourceGro
 
 Import busybox to ACR.
 Note:
-
 "library/" need to be add before source image.
 "busybox:latest" =\> "library/busybox:latest"
 Credential needed if source registry is not publicly available

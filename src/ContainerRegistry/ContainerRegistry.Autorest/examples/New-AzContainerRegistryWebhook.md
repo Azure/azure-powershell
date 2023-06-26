@@ -10,4 +10,6 @@ webhook001 eastus   enabled foo:* Succeeded
 ```
 
 Create a container registry webhook.
+Please notice that some parameters are required in this cmdlets but not marked as required in syntax, we would change it later.
+
 
