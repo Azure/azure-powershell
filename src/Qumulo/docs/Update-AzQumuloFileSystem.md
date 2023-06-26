@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzQumuloFileSystem
 
 ## SYNOPSIS
-Update a FileSystemResource
+Update a file system resource
 
 ## SYNTAX
 
@@ -25,7 +25,7 @@ Update-AzQumuloFileSystem -InputObject <IQumuloIdentity> [-Tag <Hashtable>] [-De
 ```
 
 ## DESCRIPTION
-Update a FileSystemResource
+Update a file system resource
 
 ## EXAMPLES
 

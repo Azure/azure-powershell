@@ -21,5 +21,5 @@ Create a file system resource
 Delete a file system resource
 
 ### [Update-AzQumuloFileSystem](Update-AzQumuloFileSystem.md)
-Update a FileSystemResource
+Update a file system resource
 

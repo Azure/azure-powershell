@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Update a FileSystemResource
+Update a file system resource
 .Description
-Update a FileSystemResource
+Update a file system resource
 .Example
 {{ Add code here }}
 .Example
