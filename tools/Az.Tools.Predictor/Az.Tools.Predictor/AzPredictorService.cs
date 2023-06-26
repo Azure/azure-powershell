@@ -256,7 +256,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         }
 
         /// <inheritdoc/>
-        public virtual async Task<bool?> RequestPredictionsAsync(IEnumerable<string> commands, string requestId, CancellationToken cancellationToken)
+        public virtual async Task<(bool, CommandLineSummary)?> RequestPredictionsAsync(IEnumerable<string> commands, string requestId, CancellationToken cancellationToken)
         {
             Validation.CheckArgument(commands, $"{nameof(commands)} cannot be null.");
 
@@ -308,11 +308,12 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             {
                 throw new ServiceRequestException(e.Message, e)
                         {
-                            IsRequestSent =isRequestSent
+                            IsRequestSent = isRequestSent,
+                            PredictorSummary = _commandBasedPredictor.Item2.PredictorSummary,
                         };
             }
 
-            return isRequestSent;
+            return (isRequestSent, _commandBasedPredictor.Item2.PredictorSummary);
         }
 
         /// <inheritdoc/>
@@ -396,7 +397,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                             _telemetryClient.OnRequestPrediction(new RequestPredictionTelemetryData(null,
                                         new List<string>(),
                                         hasSentHttpRequest,
-                                        exception));
+                                        exception,
+                                        _fallbackPredictor.PredictorSummary));
                         }
 
                         // Initialize predictions

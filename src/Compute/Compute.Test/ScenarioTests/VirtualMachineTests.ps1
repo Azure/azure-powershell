@@ -6644,6 +6644,7 @@ function Test-VirtualMachineSecurityType
         $vm = Get-AzVm -ResourceGroupName $rgname -Name $vmName;
         $vmExt = Get-AzVMExtension -ResourceGroupName $rgname -VMName $vmName -Name $extDefaultName;
         Assert-AreEqual $extDefaultName $vmExt.Name;
+        Assert-True {$vmExt.EnableAutomaticUpgrade};
         #Assert-AreEqual $vmGADefaultIDentity $vm.Identity.Type;
         $output2 = $vm.Identity.Type| Out-String;
         Assert-True { $output2.Contains($vmGADefaultIDentity) };
@@ -6745,6 +6746,7 @@ function Test-VirtualMachineSecurityTypeWithoutConfig
         $vm = Get-AzVm -ResourceGroupName $rgname -Name $vmName;
         $vmExt = Get-AzVMExtension -ResourceGroupName $rgname -VMName $vmName -Name $extDefaultName;
         Assert-AreEqual $extDefaultName $vmExt.Name;
+        Assert-True {$vmExt.EnableAutomaticUpgrade};
         Assert-AreEqual $vmGADefaultIDentity $vm.Identity.Type;
     }
     finally
