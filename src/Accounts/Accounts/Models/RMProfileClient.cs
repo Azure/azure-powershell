@@ -14,20 +14,19 @@
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.Common.Authentication.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Common.Authentication.ResourceManager;
 using Microsoft.Azure.Commands.Profile.Models;
 using Microsoft.Azure.Commands.Profile.Properties;
 using Microsoft.Azure.Commands.Profile.Utilities;
-using Microsoft.Azure.Commands.ResourceManager.Common.Utilities;
-using Microsoft.Azure.PowerShell.Authenticators;
 using Microsoft.Rest.Azure;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using System.Security;
+
 using AuthenticationMessages = Microsoft.Azure.Commands.Common.Authentication.Properties.Resources;
 using ProfileMessages = Microsoft.Azure.Commands.Profile.Properties.Resources;
 using ResourceMessages = Microsoft.Azure.Commands.ResourceManager.Common.Properties.Resources;

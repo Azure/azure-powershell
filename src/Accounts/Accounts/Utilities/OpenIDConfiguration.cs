@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Commands.Profile.Utilities
 
         }
 
-        public virtual async Task<string> Open(IHttpOperationsFactory httpClientFactory)
+        public async Task<string> Open(IHttpOperationsFactory httpClientFactory)
         {
             Uri url = new Uri(Authority, Path);
             if (!Uri.IsWellFormedUriString(url.AbsoluteUri, UriKind.Absolute))
