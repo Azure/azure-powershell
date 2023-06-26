@@ -815,5 +815,9 @@
   {
     "alias": "SelfHelp",
     "module": "SelfHelp"
+  },
+  {
+    "module": "Qumulo",
+    "alias": "Qumulo"
   }
 ]
