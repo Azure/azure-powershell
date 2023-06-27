@@ -1,4 +1,4 @@
-### Example 1: Updates SIM group tags.
+### Example 1: Updates SIM group.
 ```powershell
 Update-AzMobileNetworkSimGroup -SimGroupName azps-mn-simgroup -ResourceGroupName azps_test_group -Tag @{"abc"="123"}
 ```
@@ -9,4 +9,4 @@ Location Name             ResourceGroupName ProvisioningState
 eastus   azps-mn-simgroup azps_test_group   Succeeded
 ```
 
-Updates SIM group tags.
+Updates SIM group.

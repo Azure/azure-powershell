@@ -28,7 +28,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
     using global::Azure.Storage.Blobs;
     using System.Collections.Generic;
     using global::Azure.Storage;
+    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
+    [GenericBreakingChange("The leading question mark '?' of the created SAS token will be removed in a future release.")]
     [Cmdlet("New", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageBlobSASToken", DefaultParameterSetName = BlobNamePipelineParmeterSetWithPermission, SupportsShouldProcess = true), OutputType(typeof(String))]
     public class NewAzureStorageBlobSasTokenCommand : StorageCloudBlobCmdletBase
     {
@@ -180,7 +182,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
 
             // When the input context is Oauth bases, can't generate normal SAS, but UserDelegationSas
             bool generateUserDelegationSas = false;
-            if (Channel != null && Channel.StorageContext != null && Channel.StorageContext.StorageAccount.Credentials.IsToken)
+            if (Channel != null && Channel.StorageContext != null && Channel.StorageContext.StorageAccount.Credentials !=null && Channel.StorageContext.StorageAccount.Credentials.IsToken)
             {
                 if (ShouldProcess(blob.Name, "Generate User Delegation SAS, since input Storage Context is OAuth based."))
                 {

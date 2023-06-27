@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
                 ResourceGroupName = resourceGroupName
             };
             result.Add(expected);
-            resourcesClientMock.Setup(f => f.FilterResourceGroups(resourceGroupName, null, false, null)).Returns(result);
+            resourcesClientMock.Setup(f => f.FilterResourceGroups(resourceGroupName, null, false, null, null)).Returns(result);
 
             cmdlet.Name = resourceGroupName;
 
@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
                 ResourceGroupName = resourceGroupName
             };
             result.Add(expected);
-            resourcesClientMock.Setup(f => f.FilterResourceGroups(null, null, true, null)).Returns(result);
+            resourcesClientMock.Setup(f => f.FilterResourceGroups(null, null, true, null, null)).Returns(result);
 
             cmdlet.Id = resourceGroupId;
 

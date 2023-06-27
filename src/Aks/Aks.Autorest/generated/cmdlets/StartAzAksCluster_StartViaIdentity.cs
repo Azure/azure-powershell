@@ -8,13 +8,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Cmdlets
     using static Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Extensions;
     using System;
 
-    /// <summary>Starts a Stopped Managed Cluster</summary>
+    /// <summary>
+    /// See [starting a cluster](https://docs.microsoft.com/azure/aks/start-stop-cluster) for more details about starting a cluster.
+    /// </summary>
     /// <remarks>
     /// [OpenAPI] Start=>POST:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/start"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsLifecycle.Start, @"AzAksCluster_StartViaIdentity", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(bool))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Aks.Description(@"Starts a Stopped Managed Cluster")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Aks.Description(@"See [starting a cluster](https://docs.microsoft.com/azure/aks/start-stop-cluster) for more details about starting a cluster.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Aks.Generated]
     public partial class StartAzAksCluster_StartViaIdentity : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.IEventListener
@@ -47,9 +49,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Cmdlets
         public Microsoft.Azure.PowerShell.Cmdlets.Aks.Aks Client => Microsoft.Azure.PowerShell.Cmdlets.Aks.Module.Instance.ClientAPI;
 
         /// <summary>
-        /// The credentials, account, tenant, and subscription used for communication with Azure
+        /// The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet
+        /// against a different subscription
         /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The credentials, account, tenant, and subscription used for communication with Azure.")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.")]
         [global::System.Management.Automation.ValidateNotNull]
         [global::System.Management.Automation.Alias("AzureRMContext", "AzureCredential")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Aks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Aks.ParameterCategory.Azure)]
@@ -127,12 +130,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Cmdlets
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.ICloudError">Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.ICloudError</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ICloudError">Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ICloudError</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onDefault method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.ICloudError> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ICloudError> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// <c>overrideOnNoContent</c> will be called before the regular onNoContent has been processed, allowing customization of
@@ -388,12 +391,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Cmdlets
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.ICloudError">Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.ICloudError</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ICloudError">Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ICloudError</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.ICloudError> response)
+        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ICloudError> response)
         {
             using( NoSynchronizationContext )
             {
@@ -410,7 +413,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Cmdlets
                 if ((null == code || null == message))
                 {
                     // Unrecognized Response. Create an error record based on what we have.
-                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.ICloudError>(responseMessage, await response);
+                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ICloudError>(responseMessage, await response);
                     WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }

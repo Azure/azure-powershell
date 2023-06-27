@@ -112,6 +112,10 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
 
             if (siteEnvelope != null)
             {
+                if (siteEnvelope is PSSite)
+                {
+                    ((PSSite)siteEnvelope).VnetInfo = null;
+                }
                 webSiteToUpdate = siteEnvelope;
             }
 
@@ -219,16 +223,16 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
                 WrappedWebsitesClient.WebApps().Stop(resourceGroupName, webSiteName);
             }
         }
-        public void RestartWebApp(string resourceGroupName, string webSiteName, string slotName)
+        public void RestartWebApp(string resourceGroupName, string webSiteName, string slotName, bool softRestart)
         {
             string qualifiedSiteName;
             if (CmdletHelpers.ShouldUseDeploymentSlot(webSiteName, slotName, out qualifiedSiteName))
             {
-                WrappedWebsitesClient.WebApps().RestartSlot(resourceGroupName, webSiteName, slotName);
+                WrappedWebsitesClient.WebApps().RestartSlot(resourceGroupName, webSiteName, slotName, softRestart);
             }
             else
             {
-                WrappedWebsitesClient.WebApps().Restart(resourceGroupName, webSiteName);
+                WrappedWebsitesClient.WebApps().Restart(resourceGroupName, webSiteName, softRestart);
             }
         }
 

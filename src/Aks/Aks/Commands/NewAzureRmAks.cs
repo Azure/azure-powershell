@@ -19,7 +19,6 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Management.Automation;
-using System.Security;
 using Microsoft.Azure.Commands.Aks.Models;
 using Microsoft.Azure.Commands.Aks.Properties;
 using Microsoft.Azure.Commands.Aks.Utils;
@@ -30,6 +29,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.ContainerService.Models;
 using Microsoft.Rest;
 using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Aks
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Commands.Aks
         public string NodePoolMode { get; set; } = "System";
 
         [Parameter(Mandatory = false, HelpMessage = "The default OS sku for the node pools.")]
-        [PSArgumentCompleter("Ubuntu", "CBLMariner")]
+        [PSArgumentCompleter("Ubuntu", "CBLMariner", "AzureLinux", "Windows2019", "Windows2022")]
         public string NodeOsSKU { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "ScaleSetEvictionPolicy to be used to specify eviction policy for low priority virtual machine scale set. Default to Delete.")]
@@ -87,11 +87,6 @@ namespace Microsoft.Azure.Commands.Aks
         [Parameter(Mandatory = false, HelpMessage = "The administrator username to use for Windows VMs.")]
         public string WindowsProfileAdminUserName { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "The administrator password to use for Windows VMs. Password requirement:"
-          + "At least one lower case, one upper case, one special character !@#$%^&*(), the minimum lenth is 12.")]
-        [ValidateSecureString(RegularExpression = "^(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%\\^&\\*\\(\\)])[a-zA-Z\\d!@#$%\\^&\\*\\(\\)]{12,123}$", ParameterName = nameof(WindowsProfileAdminUserPassword))]
-        public SecureString WindowsProfileAdminUserPassword { get; set; }
-
         [Parameter(Mandatory = false, HelpMessage = "Network plugin used for building Kubernetes network.")]
         [PSArgumentCompleter("azure", "kubenet")]
         public string NetworkPlugin { get; set; } = "azure";
@@ -108,8 +103,13 @@ namespace Microsoft.Azure.Commands.Aks
         [Parameter(Mandatory = false, HelpMessage = "DNS service IP used for building Kubernetes network.")]
         public string DnsServiceIP { get; set; }
 
+        [CmdletParameterBreakingChange("DockerBridgeCidr", "6.0.0", ChangeDescription = "DockerBridgeCidr parameter will be deprecated in Az 11.0.0 without being replaced.")]
         [Parameter(Mandatory = false, HelpMessage = "Docker bridge cidr used for building Kubernetes network.")]
         public string DockerBridgeCidr { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The outbound (egress) routing method.")]
+        [PSArgumentCompleter("loadBalancer", "userDefinedRouting", "managedNATGateway", "userAssignedNATGateway")]
+        public string OutboundType { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "The load balancer sku for the managed cluster.")]
         [PSArgumentCompleter("basic", "standard")]
@@ -176,6 +176,12 @@ namespace Microsoft.Azure.Commands.Aks
         [Parameter(Mandatory = false, HelpMessage = "The fully qualified resource ID of the Dedicated Host Group to provision virtual machines from, used only in creation scenario and not allowed to changed once set.")]
         public string NodeHostGroupID { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "The ID of the subnet which pods will join when launched.")]
+        public string NodePodSubnetID { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Whether to enalbe OIDC issuer feature.")]
+        public SwitchParameter EnableOidcIssuer { get; set; }
+
         private AcsServicePrincipal acsServicePrincipal;
 
         public override void ExecuteCmdlet()
@@ -192,7 +198,7 @@ namespace Microsoft.Azure.Commands.Aks
                 {
 
                     var cluster = this.CreateOrUpdate(ResourceGroupName, Name, managedCluster);
-                    var psObj = PSMapper.Instance.Map<PSKubernetesCluster>(cluster);
+                    var psObj = AdapterHelper<ManagedCluster, PSKubernetesCluster>.Adapt(cluster);
 
                     if (this.IsParameterBound(c => c.AcrNameToAttach))
                     {
@@ -414,16 +420,21 @@ namespace Microsoft.Azure.Commands.Aks
             {
                 if (EnableUptimeSLA.ToBool())
                 {
-                    managedCluster.Sku = new ManagedClusterSKU(name: "Basic", tier: "Paid");
+                    managedCluster.Sku = new ManagedClusterSKU(name: "Base", tier: "Standard");
                 }
                 else
                 {
-                    managedCluster.Sku = new ManagedClusterSKU(name: "Basic", tier: "Free");
+                    managedCluster.Sku = new ManagedClusterSKU(name: "Base", tier: "Free");
                 }
             }
             if (this.IsParameterBound(c => c.EdgeZone))
             {
                 managedCluster.ExtendedLocation = new ExtendedLocation(name: EdgeZone, type: "EdgeZone");
+            }
+
+            if (EnableOidcIssuer.IsPresent)
+            {
+                managedCluster.OidcIssuerProfile = new ManagedClusterOIDCIssuerProfile(enabled: true);
             }
 
             return managedCluster;
@@ -452,9 +463,9 @@ namespace Microsoft.Azure.Commands.Aks
             {
                 networkProfile.DnsServiceIP = DnsServiceIP;
             }
-            if (this.IsParameterBound(c => c.DockerBridgeCidr))
+            if (this.IsParameterBound(c => c.OutboundType))
             {
-                networkProfile.DockerBridgeCidr = DockerBridgeCidr;
+                networkProfile.OutboundType = OutboundType;
             }
             networkProfile.LoadBalancerProfile = CreateOrUpdateLoadBalancerProfile(null);
 
@@ -470,6 +481,10 @@ namespace Microsoft.Azure.Commands.Aks
             {
                 windowsProfile = new ManagedClusterWindowsProfile(WindowsProfileAdminUserName,
                     WindowsProfileAdminUserPassword?.ConvertToString());
+                if (this.IsParameterBound(c => c.EnableAHUB) && EnableAHUB.ToBool()) 
+                {
+                    windowsProfile.LicenseType = "Windows_Server";
+                }
             }
             return windowsProfile;
         }
@@ -487,6 +502,9 @@ namespace Microsoft.Azure.Commands.Aks
             if (this.IsParameterBound(c => c.NodeOsSKU))
             {
                 defaultAgentPoolProfile.OsSKU = NodeOsSKU;
+                if (NodeOsSKU.ToLower().Equals("cblmariner") || NodeOsSKU.ToLower().Equals("mariner")) {
+                    WriteWarning("The NodeOsSKU 'AzureLinux' should be used going forward instead of 'CBLMariner' or 'Mariner'. The NodeOsSKU 'CBLMariner' and 'Mariner' will eventually be deprecated.");
+                }
             }
             if (this.IsParameterBound(c => c.NodeMaxPodCount))
             {
@@ -535,6 +553,9 @@ namespace Microsoft.Azure.Commands.Aks
                 {
                     defaultAgentPoolProfile.Tags.Add(key.ToString(), NodePoolTag[key].ToString());
                 }
+            }
+            if (this.IsParameterBound(c => c.NodePodSubnetID)) {
+                defaultAgentPoolProfile.PodSubnetID = NodePodSubnetID;
             }
             if (this.IsParameterBound(c => c.AvailabilityZone))
             {

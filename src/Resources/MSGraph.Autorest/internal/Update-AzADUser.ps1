@@ -40,7 +40,7 @@ IDENTITY <IMicrosoftGraphObjectIdentity[]>: Represents the identities that can b
   [SignInType <String>]: Specifies the user sign-in types in your directory, such as emailAddress, userName or federated. Here, federated represents a unique identifier for a user from an issuer, that can be in any format chosen by the issuer. Additional validation is enforced on issuerAssignedId when the sign-in type is set to emailAddress or userName. This property can also be set to any custom string.
 
 MANAGER <IMicrosoftGraphDirectoryObject>: Represents an Azure Active Directory object. The directoryObject type is the base type for many other directory entity types.
-  [DeletedDateTime <DateTime?>]: Date and time when this object was deleted. Always null when the object hasn't been deleted.
+  [DeletedDateTime <DateTime?>]: 
   [DisplayName <String>]: The name displayed in directory
 
 PASSWORDPROFILE <IMicrosoftGraphPasswordProfile>: passwordProfile
@@ -139,8 +139,7 @@ param(
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.DateTime]
-    # Date and time when this object was deleted.
-    # Always null when the object hasn't been deleted.
+    # .
     ${DeletedDateTime},
 
     [Parameter()]

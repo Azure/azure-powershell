@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// </summary>
         /// <remarks>
         /// For more information see [setting the AKS cluster auto-upgrade
-        /// channel](https://learn.microsoft.com/azure/aks/upgrade-cluster#set-auto-upgrade-channel).
+        /// channel](https://docs.microsoft.com/azure/aks/upgrade-cluster#set-auto-upgrade-channel).
         /// Possible values include: 'rapid', 'stable', 'patch', 'node-image',
         /// 'none'
         /// </remarks>

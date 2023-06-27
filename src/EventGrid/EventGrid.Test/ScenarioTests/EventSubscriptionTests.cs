@@ -41,6 +41,13 @@ namespace Microsoft.Azure.Commands.EventGrid.Tests.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void EventGrid_EventSubscription_CustomTopics_Delivery_Attributes()
+        {
+            TestRunner.RunTestScript("EventSubscriptionTests_CustomTopic_Delivery_Attributes");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void EventGrid_EventSubscription_CustomTopics_WebhookBatching()
         {
             TestRunner.RunTestScript("EventSubscriptionTests_CustomTopic_Webhook_Batching");
@@ -82,7 +89,7 @@ namespace Microsoft.Azure.Commands.EventGrid.Tests.ScenarioTests
             TestRunner.RunTestScript("EventSubscriptionTests_ResourceGroup2");
         }
 
-        [Fact]
+        [Fact(Skip = "Test case fails due to the New-AzEventHubNamespace migration to autorest")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void EventGrid_EventSubscription_ResourceCRUD()
         {

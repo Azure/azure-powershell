@@ -35,13 +35,16 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// </summary>
         /// <param name="connectionErrors">List relevant information about any
         /// connection errors to the Datacenters.</param>
+        /// <param name="errors">List relevant information about any errors
+        /// about cluster, data center and connection error.</param>
         /// <param name="dataCenters">List of the status of each datacenter in
         /// this cluster.</param>
-        public CassandraClusterPublicStatus(string eTag = default(string), ManagedCassandraReaperStatus reaperStatus = default(ManagedCassandraReaperStatus), IList<ConnectionError> connectionErrors = default(IList<ConnectionError>), IList<CassandraClusterPublicStatusDataCentersItem> dataCenters = default(IList<CassandraClusterPublicStatusDataCentersItem>))
+        public CassandraClusterPublicStatus(string eTag = default(string), ManagedCassandraReaperStatus reaperStatus = default(ManagedCassandraReaperStatus), IList<ConnectionError> connectionErrors = default(IList<ConnectionError>), IList<CassandraError> errors = default(IList<CassandraError>), IList<CassandraClusterPublicStatusDataCentersItem> dataCenters = default(IList<CassandraClusterPublicStatusDataCentersItem>))
         {
             ETag = eTag;
             ReaperStatus = reaperStatus;
             ConnectionErrors = connectionErrors;
+            Errors = errors;
             DataCenters = dataCenters;
             CustomInit();
         }
@@ -67,6 +70,13 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// </summary>
         [JsonProperty(PropertyName = "connectionErrors")]
         public IList<ConnectionError> ConnectionErrors { get; set; }
+
+        /// <summary>
+        /// Gets or sets list relevant information about any errors about
+        /// cluster, data center and connection error.
+        /// </summary>
+        [JsonProperty(PropertyName = "errors")]
+        public IList<CassandraError> Errors { get; set; }
 
         /// <summary>
         /// Gets or sets list of the status of each datacenter in this cluster.

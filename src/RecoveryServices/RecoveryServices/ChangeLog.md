@@ -18,6 +18,11 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added CRR support for new regions malaysiasouth, chinanorth3, chinaeast3, jioindiacentral, jioindiawest.
+
+## Version 6.4.0
+* Added support for updating CrossSubscriptionRestoreState of the vault
+* Added Cross subscription restore support for workload type MSSQL
 
 ## Version 6.3.0
 * Supported using managed disks for replication for HyperV to Azure provider in Azure Site Recovery

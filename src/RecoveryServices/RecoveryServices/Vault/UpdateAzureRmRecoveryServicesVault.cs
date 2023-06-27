@@ -104,6 +104,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         [ValidateSet("Disabled", "Unlocked", "Locked")]
         public ImmutabilityState? ImmutabilityState { get; set; }
 
+        /// <summary>
+        /// Enables or disables cross subscription restore state for RS vault. Allowed values are Enabled, Disabled, PermanentlyDisabled.
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "Cross subscription restore state of the vault. Allowed values are \"Enabled\", \"Disabled\", \"PermanentlyDisabled\".")]
+        [ValidateSet("Enabled", "Disabled", "PermanentlyDisabled")]
+        public CrossSubscriptionRestoreState? CrossSubscriptionRestoreState { get; set; }
+
         #endregion
 
         public override void ExecuteCmdlet()
@@ -232,7 +239,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                             }
                         }
                         
-                        else if (DisableAzureMonitorAlertsForJobFailure == null && DisableClassicAlerts == null && PublicNetworkAccess == null && ImmutabilityState == null )
+                        else if (DisableAzureMonitorAlertsForJobFailure == null && DisableClassicAlerts == null && PublicNetworkAccess == null && ImmutabilityState == null && CrossSubscriptionRestoreState == null)
                         {
                             throw new ArgumentException(Resources.InvalidParameterSet);
                         }
@@ -312,6 +319,18 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                         }
                         else patchVault.Properties.SecuritySettings.ImmutabilitySettings.State = ImmutabilityState.ToString();                                               
                     }
+
+                    // update cross subscription restore state of the vault
+                    if (CrossSubscriptionRestoreState != null)
+                    {
+                        RestoreSettings csrSetting = (vault.Properties != null && vault.Properties.RestoreSettings != null) ? vault.Properties.RestoreSettings : new RestoreSettings();
+                        if (csrSetting.CrossSubscriptionRestoreSettings == null) { csrSetting.CrossSubscriptionRestoreSettings = new CrossSubscriptionRestoreSettings();  }
+                        csrSetting.CrossSubscriptionRestoreSettings.CrossSubscriptionRestoreState = CrossSubscriptionRestoreState.ToString();
+
+                        if (patchVault.Properties == null) { patchVault.Properties = new VaultProperties(); }
+                        patchVault.Properties.RestoreSettings = csrSetting;
+                    }
+
                     #endregion
 
                     vault = RecoveryServicesClient.UpdateRSVault(this.ResourceGroupName, this.Name, patchVault);                                                         

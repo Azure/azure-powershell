@@ -19,5 +19,6 @@ namespace Microsoft.Azure.Management.CognitiveServices.Models
         public const string Web = "Web";
         public const string ConnectedContainer = "ConnectedContainer";
         public const string DisconnectedContainer = "DisconnectedContainer";
+        public const string ProvisionedWeb = "ProvisionedWeb";
     }
 }

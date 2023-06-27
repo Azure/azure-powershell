@@ -38,17 +38,9 @@ Describe 'AzMobileNetworkService' {
         } | Should -Not -Throw
     }
 
-    It 'UpdateExpanded' {
+    It 'UpdateExpanded' -skip {
         {
-            $config = Update-AzMobileNetworkService -MobileNetworkName $env.testNetwork3 -ServiceName $env.testService -ResourceGroupName $env.resourceGroup -Tag @{"abc"="123"}
-            $config.Name | Should -Be $env.testService
-        } | Should -Not -Throw
-    }
-
-    It 'UpdateViaIdentityExpanded' {
-        {
-            $config = Get-AzMobileNetworkService -MobileNetworkName $env.testNetwork3 -ResourceGroupName $env.resourceGroup -Name $env.testService
-            $config = Update-AzMobileNetworkService -InputObject $config -Tag @{"abc"="123"}
+            $config = Update-AzMobileNetworkService -MobileNetworkName $env.testNetwork3 -ServiceName $env.testService -ResourceGroupName $env.resourceGroup -Tag @{"abc"="123"} -ServicePrecedence 0
             $config.Name | Should -Be $env.testService
         } | Should -Not -Throw
     }

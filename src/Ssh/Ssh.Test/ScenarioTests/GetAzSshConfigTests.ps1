@@ -28,7 +28,9 @@ function Test-GetArcConfig
     
         Remove-Item ./config -ErrorAction Ignore
 
-        $configEntry = Export-AzSshConfig -ResourceGroupName $ResourceGroupName -Name $MachineName -ConfigFilePath ./config -LocalUser azureuser -Port 35000
+        Install-Module Az.Ssh.ArcProxy -Scope CurrentUser -Repository PsGallery -Force -AllowClobber
+
+        $configEntry = Export-AzSshConfig -ResourceGroupName $ResourceGroupName -Name $MachineName -ConfigFilePath ./config -LocalUser azureuser -Port 35000 -Force
 
         Assert-NotNull $configEntry
         Assert-AreEqual $configEntry.Host "$ResourceGroupName-$MachineName"
@@ -49,11 +51,12 @@ function Test-GetArcConfig
         }
 
 
-        $proxyName = "sshProxy_" + $os + "_" + $arch +"_1_3_017634"
+        $proxyNamePattern = "sshProxy_" + $os + "_" + $arch +"_*"
         if ($IsWindows) {
             $proxyName = $proxyName + ".exe"
         }
-        $proxyPath = Join-Path $HOME ".clientsshproxy" $proxyName
+        $proxyDir = (Get-Item (Get-module -ListAvailable -Name Az.Ssh.ArcProxy).Path).Directory.FullName
+        $proxyPath = (Get-ChildItem $proxyDir -Filter $proxyNamePattern | Select-Object -First 1).FullName
 
         $relayPath = Join-Path (Split-Path ((Resolve-Path ./config).Path)) "az_ssh_config" "$ResourceGroupName-$MachineName" "$ResourceGroupName-$MachineName-relay_info"
 
@@ -61,9 +64,9 @@ function Test-GetArcConfig
 
     }
     finally {
+        Uninstall-Module Az.Ssh.ArcProxy -ErrorAction Ignore
         Remove-Item ./config -ErrorAction Ignore -Force
         Remove-Item ./az_ssh_config -ErrorAction Ignore -Force -Recurse
-        Remove-Item (Join-Path $HOME ".clientsshproxy") -ErrorAction Ignore -Force -Recurse
         if (-not $isPlayback) { Stop-Agent -AgentPath $agent }
         Remove-AzResourceGroup -Name $ResourceGroupName -Force
     }

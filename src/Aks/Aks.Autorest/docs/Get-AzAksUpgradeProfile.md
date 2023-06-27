@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzAksUpgradeProfile
 
 ## SYNOPSIS
-Gets the details of the upgrade profile for a managed cluster with a specified resource group and name.
+Gets the upgrade profile of a managed cluster.
 
 ## SYNTAX
 
@@ -24,7 +24,7 @@ Get-AzAksUpgradeProfile -InputObject <IAksIdentity> [-DefaultProfile <PSObject>]
 ```
 
 ## DESCRIPTION
-Gets the details of the upgrade profile for a managed cluster with a specified resource group and name.
+Gets the upgrade profile of a managed cluster.
 
 ## EXAMPLES
 
@@ -59,7 +59,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -91,6 +92,7 @@ Accept wildcard characters: False
 
 ### -ResourceGroupName
 The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
@@ -105,8 +107,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-Subscription credentials which uniquely identify Microsoft Azure subscription.
-The subscription ID forms part of the URI for every service call.
+The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
@@ -129,7 +130,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.IManagedClusterUpgradeProfile
+### Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.IManagedClusterUpgradeProfile
 
 ## NOTES
 
@@ -144,13 +145,15 @@ To create the parameters described below, construct a hash table containing the 
 
 `INPUTOBJECT <IAksIdentity>`: Identity Parameter
   - `[AgentPoolName <String>]`: The name of the agent pool.
+  - `[CommandId <String>]`: Id of the command.
+  - `[ConfigName <String>]`: The name of the maintenance configuration.
   - `[Id <String>]`: Resource identity path
-  - `[Location <String>]`: The name of a supported Azure region.
+  - `[Location <String>]`: The name of Azure region.
   - `[PrivateEndpointConnectionName <String>]`: The name of the private endpoint connection.
-  - `[ResourceGroupName <String>]`: The name of the resource group.
+  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
   - `[ResourceName <String>]`: The name of the managed cluster resource.
   - `[RoleName <String>]`: The name of the role for managed cluster accessProfile resource.
-  - `[SubscriptionId <String>]`: Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  - `[SubscriptionId <String>]`: The ID of the target subscription.
 
 ## RELATED LINKS
 

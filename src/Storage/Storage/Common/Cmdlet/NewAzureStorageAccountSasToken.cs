@@ -21,7 +21,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
     using System.Security.Permissions;
     using global::Azure.Storage.Sas;
     using global::Azure.Storage;
+    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
+    [GenericBreakingChange("The leading question mark '?' of the created SAS token will be removed in a future release.")]
     [Cmdlet("New", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageAccountSASToken"), OutputType(typeof(String))]
     public class NewAzureStorageAccountSasTokenCommand : StorageCloudBlobCmdletBase
     {
@@ -90,7 +92,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         public override void ExecuteCmdlet()
         {
-            if (Channel != null && Channel.StorageContext != null && !Channel.StorageContext.StorageAccount.Credentials.IsSharedKey)
+            if (Channel != null && Channel.StorageContext != null && Channel.StorageContext.StorageAccount != null 
+                && Channel.StorageContext.StorageAccount.Credentials != null && !Channel.StorageContext.StorageAccount.Credentials.IsSharedKey)
             {
                 throw new ArgumentException("Storage account SAS token must be secured with the storage account key.", "Context");
             }

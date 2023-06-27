@@ -20,13 +20,41 @@
 
 -->
 ## Upcoming Release
+* Added useful examples to the `New-AzVMConfig` help doc.
+* Added new `ResourceId` parameter to the `Get-AzVmss` cmdlet. 
+* Added `-SecurityType`, `-EnableSecureBoot` and `-EnableVtpm` parameters to `New-AzVm`,`New-AzVmConfig`, `New-AzVmss`, `New-AzVmssConfig`, `Update-AzVm` and `Update-AzVmss` cmdlets.
+* Configured parameter flags `-EnableSecureBoot` and `-EnableVtpm` to default to True for TrustedLaunch and ConfidentialVM values for the `-SecurityType` parameter in `New-AzVm`,`New-AzVmConfig`, `New-AzVmss`, `New-AzVmssConfig`, `Update-AzVm` and `Update-AzVmss` cmdlets.
+* Added a message to the user when they provide an outdated image alias to `New-AzVM` via the `-Image` parameter or to `New-AzVmss` via the `-ImageName` parameter.
+  The non-versioned image aliases are being updated to versioned values in October 2023, and this message is to help urge customers to use the newer versioned image alias values.
+* Changed the installation behavior for the `GuestAttestation` extension in `New-AzVM` and `New-AzVmss` to set the property `EnableAutomaticUpgrade` to true.
+* Changes to `Set-AzVMOperatingSyste` to correct unnecessary mandatory paramaters.
+
+
+## Version 6.0.0
+* Added new switch parameter `OSImageScheduledEventEnabled` and string parameter `OSImageScheduledEventNotBeforeTimeoutInMinutes` to the cmdlets `New-AzVmssConfig` and `Update-AzVmss`.
+* Fixed an issue that `Add-AzVhd` throws `FileNotFoundException` on Windows PowerShell. [#21321]
+* Removed the `NextLink` parameter and parameter set from the `Get-AzVM` cmdlet.
+
+## Version 5.7.1
+* Added a breaking change warning to the `Get-AzVM` cmdlet to show that the `NextLink` parameter and parameter set will be removed in June 2023. The parameter has been non-functional for a long time. 
+* Updated the breaking change warning in `New-AzVM` and `New-AzVmss` regarding using the new versioned image aliases to indicate that certain aliases will be removed next breaking change release.
+* Updated the `Get-AzVMRunCommand` to include the `ProvisioningState` value. Fix [#21473]
+* Updated Azure.Core to 1.31.0.
+
+## Version 5.7.0
+* Addressed bug in `Remove-AzVmss` to throw error when `-InstanceId` is null. [#21162]
+* Added `-CustomData`, `-AdminPassword`, and `-ExactVersion` parameters to `Invoke-AzVMReimage`.
 * Removed the image alias `CoreOS` as the publisher CoreOS no longer has any images for Azure. 
-* Updated the names of the `openSUSE-Leap` and `SLES` aliases to `OpenSuseLeap154` and `SuseSles15SP4` respectively. Updated these aliases to point to an image that actually exists and updated the alias names to be descriptive and versioned.
-* Added new descriptive and versioned alias names for the Linux image aliases.
+  Updated the names of the `openSUSE-Leap` and `SLES` aliases to `OpenSuseLeap154` and `SuseSles15SP4` respectively. Updated these aliases to point to an image that actually exists.
+* Added a breaking change warning to `New-AzVM` and `New-AzVmss` for future planned image alias removals due to the images reaching their End of Support date. 
+* Added new descriptive and versioned alias names for the Linux image aliases, including a new alias for  the `Kinvolk` publisher.
+* Added 'ImageDeprecationStatus' to the output of Get-AzVmImage.
+
+## Version 5.6.0
 * Added `-NetworkAccessPolicy` parameter to `New-AzSnapshotUpdateConfig`.
 * Added `-SharedGalleryImageId` parameter to `New-AzVM`, `New-AzVmConfig`, `New-AzVmss`, `New-AzVmssConfig`, `Update-AzVmss`, and `Set-AzVmssStorageProfile`.
 * Updated `Set-AzVMDiagnosticsExtension` to correct capitalization by passing "StorageAccount" as configuration property instead of "storageAccount".
-* Changes to `Set-AzVMOperatingSyste` to correct unnecessary mandatory paramaters.
+* Added condition in Automapper configurations to check for null Tag values for `PSDiskUpdate` and `PSSnapshotUpdate` to fix bug in Update-AzDisk and Update-AzSnapshot.
 
 ## Version 5.5.0
 * Added breaking change message for `New-AzVmss`.

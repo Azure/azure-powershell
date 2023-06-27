@@ -19,6 +19,15 @@
 -->
 ## Upcoming Release
 
+## Version 2.0.0
+* Added support for Blob Hardened recovery points (VaultStore).
+* Added Cross Subscription Restore for `AzureDisk`, `AzureDatabaseForPostgreSQL` and `AzureBlob`.
+* Added `Get-AzDataProtectionOperationStatus` command for long running cmdlets async.
+
+## Version 1.2.0
+* Added support for AKS workload with Backup Vaults
+* Added support for `Set-AzDataProtectionMSIPermission` during restore with AKS workload
+
 ## Version 1.1.0
 * Added support for Immutable backup vaults
 * Added Cross subscription restore flag for backup vaults

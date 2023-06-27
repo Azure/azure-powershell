@@ -148,10 +148,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
+
 ### Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource
+
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.SignalR.Models.PSSignalRKeys
+
 ## NOTES
 
 ## RELATED LINKS

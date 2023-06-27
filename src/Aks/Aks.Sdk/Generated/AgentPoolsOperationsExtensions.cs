@@ -22,6 +22,64 @@ namespace Microsoft.Azure.Management.ContainerService
     public static partial class AgentPoolsOperationsExtensions
     {
             /// <summary>
+            /// Aborts last operation running on agent pool.
+            /// </summary>
+            /// <remarks>
+            /// Aborts the currently running operation on the agent pool. The Agent Pool
+            /// will be moved to a Canceling state and eventually to a Canceled state when
+            /// cancellation finishes. If the operation completes before cancellation can
+            /// take place, a 409 error code is returned.
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='resourceName'>
+            /// The name of the managed cluster resource.
+            /// </param>
+            /// <param name='agentPoolName'>
+            /// The name of the agent pool.
+            /// </param>
+            public static AgentPoolsAbortLatestOperationHeaders AbortLatestOperation(this IAgentPoolsOperations operations, string resourceGroupName, string resourceName, string agentPoolName)
+            {
+                return operations.AbortLatestOperationAsync(resourceGroupName, resourceName, agentPoolName).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Aborts last operation running on agent pool.
+            /// </summary>
+            /// <remarks>
+            /// Aborts the currently running operation on the agent pool. The Agent Pool
+            /// will be moved to a Canceling state and eventually to a Canceled state when
+            /// cancellation finishes. If the operation completes before cancellation can
+            /// take place, a 409 error code is returned.
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='resourceName'>
+            /// The name of the managed cluster resource.
+            /// </param>
+            /// <param name='agentPoolName'>
+            /// The name of the agent pool.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<AgentPoolsAbortLatestOperationHeaders> AbortLatestOperationAsync(this IAgentPoolsOperations operations, string resourceGroupName, string resourceName, string agentPoolName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.AbortLatestOperationWithHttpMessagesAsync(resourceGroupName, resourceName, agentPoolName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Headers;
+                }
+            }
+
+            /// <summary>
             /// Gets a list of agent pools in the specified managed cluster.
             /// </summary>
             /// <param name='operations'>
@@ -174,9 +232,9 @@ namespace Microsoft.Azure.Management.ContainerService
             /// <param name='agentPoolName'>
             /// The name of the agent pool.
             /// </param>
-            public static void Delete(this IAgentPoolsOperations operations, string resourceGroupName, string resourceName, string agentPoolName)
+            public static AgentPoolsDeleteHeaders Delete(this IAgentPoolsOperations operations, string resourceGroupName, string resourceName, string agentPoolName)
             {
-                operations.DeleteAsync(resourceGroupName, resourceName, agentPoolName).GetAwaiter().GetResult();
+                return operations.DeleteAsync(resourceGroupName, resourceName, agentPoolName).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -197,9 +255,12 @@ namespace Microsoft.Azure.Management.ContainerService
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task DeleteAsync(this IAgentPoolsOperations operations, string resourceGroupName, string resourceName, string agentPoolName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<AgentPoolsDeleteHeaders> DeleteAsync(this IAgentPoolsOperations operations, string resourceGroupName, string resourceName, string agentPoolName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, resourceName, agentPoolName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, resourceName, agentPoolName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Headers;
+                }
             }
 
             /// <summary>
@@ -253,7 +314,7 @@ namespace Microsoft.Azure.Management.ContainerService
             /// </summary>
             /// <remarks>
             /// See [supported Kubernetes
-            /// versions](https://learn.microsoft.com/azure/aks/supported-kubernetes-versions)
+            /// versions](https://docs.microsoft.com/azure/aks/supported-kubernetes-versions)
             /// for more details about the version lifecycle.
             /// </remarks>
             /// <param name='operations'>
@@ -275,7 +336,7 @@ namespace Microsoft.Azure.Management.ContainerService
             /// </summary>
             /// <remarks>
             /// See [supported Kubernetes
-            /// versions](https://learn.microsoft.com/azure/aks/supported-kubernetes-versions)
+            /// versions](https://docs.microsoft.com/azure/aks/supported-kubernetes-versions)
             /// for more details about the version lifecycle.
             /// </remarks>
             /// <param name='operations'>
@@ -305,7 +366,7 @@ namespace Microsoft.Azure.Management.ContainerService
             /// Upgrading the node image version of an agent pool applies the newest OS and
             /// runtime updates to the nodes. AKS provides one new image per week with the
             /// latest updates. For more details on node image versions, see:
-            /// https://learn.microsoft.com/azure/aks/node-image-upgrade
+            /// https://docs.microsoft.com/azure/aks/node-image-upgrade
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -331,7 +392,7 @@ namespace Microsoft.Azure.Management.ContainerService
             /// Upgrading the node image version of an agent pool applies the newest OS and
             /// runtime updates to the nodes. AKS provides one new image per week with the
             /// latest updates. For more details on node image versions, see:
-            /// https://learn.microsoft.com/azure/aks/node-image-upgrade
+            /// https://docs.microsoft.com/azure/aks/node-image-upgrade
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -353,6 +414,64 @@ namespace Microsoft.Azure.Management.ContainerService
                 using (var _result = await operations.UpgradeNodeImageVersionWithHttpMessagesAsync(resourceGroupName, resourceName, agentPoolName, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Aborts last operation running on agent pool.
+            /// </summary>
+            /// <remarks>
+            /// Aborts the currently running operation on the agent pool. The Agent Pool
+            /// will be moved to a Canceling state and eventually to a Canceled state when
+            /// cancellation finishes. If the operation completes before cancellation can
+            /// take place, a 409 error code is returned.
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='resourceName'>
+            /// The name of the managed cluster resource.
+            /// </param>
+            /// <param name='agentPoolName'>
+            /// The name of the agent pool.
+            /// </param>
+            public static AgentPoolsAbortLatestOperationHeaders BeginAbortLatestOperation(this IAgentPoolsOperations operations, string resourceGroupName, string resourceName, string agentPoolName)
+            {
+                return operations.BeginAbortLatestOperationAsync(resourceGroupName, resourceName, agentPoolName).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Aborts last operation running on agent pool.
+            /// </summary>
+            /// <remarks>
+            /// Aborts the currently running operation on the agent pool. The Agent Pool
+            /// will be moved to a Canceling state and eventually to a Canceled state when
+            /// cancellation finishes. If the operation completes before cancellation can
+            /// take place, a 409 error code is returned.
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='resourceName'>
+            /// The name of the managed cluster resource.
+            /// </param>
+            /// <param name='agentPoolName'>
+            /// The name of the agent pool.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<AgentPoolsAbortLatestOperationHeaders> BeginAbortLatestOperationAsync(this IAgentPoolsOperations operations, string resourceGroupName, string resourceName, string agentPoolName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.BeginAbortLatestOperationWithHttpMessagesAsync(resourceGroupName, resourceName, agentPoolName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Headers;
                 }
             }
 
@@ -423,9 +542,9 @@ namespace Microsoft.Azure.Management.ContainerService
             /// <param name='agentPoolName'>
             /// The name of the agent pool.
             /// </param>
-            public static void BeginDelete(this IAgentPoolsOperations operations, string resourceGroupName, string resourceName, string agentPoolName)
+            public static AgentPoolsDeleteHeaders BeginDelete(this IAgentPoolsOperations operations, string resourceGroupName, string resourceName, string agentPoolName)
             {
-                operations.BeginDeleteAsync(resourceGroupName, resourceName, agentPoolName).GetAwaiter().GetResult();
+                return operations.BeginDeleteAsync(resourceGroupName, resourceName, agentPoolName).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -446,9 +565,12 @@ namespace Microsoft.Azure.Management.ContainerService
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task BeginDeleteAsync(this IAgentPoolsOperations operations, string resourceGroupName, string resourceName, string agentPoolName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<AgentPoolsDeleteHeaders> BeginDeleteAsync(this IAgentPoolsOperations operations, string resourceGroupName, string resourceName, string agentPoolName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, resourceName, agentPoolName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, resourceName, agentPoolName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Headers;
+                }
             }
 
             /// <summary>
@@ -458,7 +580,7 @@ namespace Microsoft.Azure.Management.ContainerService
             /// Upgrading the node image version of an agent pool applies the newest OS and
             /// runtime updates to the nodes. AKS provides one new image per week with the
             /// latest updates. For more details on node image versions, see:
-            /// https://learn.microsoft.com/azure/aks/node-image-upgrade
+            /// https://docs.microsoft.com/azure/aks/node-image-upgrade
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -484,7 +606,7 @@ namespace Microsoft.Azure.Management.ContainerService
             /// Upgrading the node image version of an agent pool applies the newest OS and
             /// runtime updates to the nodes. AKS provides one new image per week with the
             /// latest updates. For more details on node image versions, see:
-            /// https://learn.microsoft.com/azure/aks/node-image-upgrade
+            /// https://docs.microsoft.com/azure/aks/node-image-upgrade
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.

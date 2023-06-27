@@ -267,6 +267,10 @@
                 <Label>DataDiskImages</Label>
                 <PropertyName>DataDiskImagesText</PropertyName>
               </ListItem>
+              <ListItem>
+                <Label>ImageDeprecationStatus</Label>
+                <PropertyName>ImageDeprecationStatusText</PropertyName>
+              </ListItem>
             </ListItems>
           </ListEntry>
         </ListEntries>

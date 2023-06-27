@@ -28,6 +28,7 @@ using Microsoft.Azure.Commands.Compute.Automation.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
@@ -36,9 +37,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     [OutputType(typeof(PSVirtualMachineScaleSet))]
     public partial class GetAzureRmVmss : ComputeAutomationBaseCmdlet
     {
-        protected const string DefaultParameter = "DefaultParameter";
-        protected const string FriendMethod = "FriendMethod";
-        protected const string OSUpgradeHistoryMethodParameter = "OSUpgradeHistoryMethodParameter";
+        protected const string DefaultParameter = "DefaultParameter", ResourceIdParameterSet = "ResourceIdParameterSet", FriendMethod = "FriendMethod", OSUpgradeHistoryMethodParameter = "OSUpgradeHistoryMethodParameter";
         private string UserDataExpand = ExpandTypesForGetVMScaleSets.UserData;
         
         public override void ExecuteCmdlet()
@@ -118,6 +117,17 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     }
                     WriteObject(TopLevelWildcardFilter(resourceGroupName, vmScaleSetName, psObject), true);
                 }
+                else if (this.ParameterSetName.Equals(ResourceIdParameterSet))
+                {
+                    ResourceIdentifier identifier = new ResourceIdentifier(this.ResourceId);
+                    resourceGroupName = identifier.ResourceGroupName;
+                    vmScaleSetName = identifier.ResourceName;
+
+                    var result = VirtualMachineScaleSetsClient.Get(resourceGroupName, vmScaleSetName);
+                    var psObject = new PSVirtualMachineScaleSet();
+                    ComputeAutomationAutoMapperProfile.Mapper.Map<VirtualMachineScaleSet, PSVirtualMachineScaleSet>(result, psObject);
+                    WriteObject(psObject);
+                }
                 else
                 {
                     var result = VirtualMachineScaleSetsClient.ListAll();
@@ -144,6 +154,15 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(
             Position = 0,
+            ParameterSetName = DefaultParameter,
+            ValueFromPipelineByPropertyName = true)]
+        [Parameter(
+            Position = 0,
+            ParameterSetName = FriendMethod,
+            ValueFromPipelineByPropertyName = true)]
+        [Parameter(
+            Position = 0,
+            ParameterSetName = OSUpgradeHistoryMethodParameter,
             ValueFromPipelineByPropertyName = true)]
         [ResourceGroupCompleter]
         [SupportsWildcards]
@@ -151,6 +170,15 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(
             Position = 1,
+            ParameterSetName = DefaultParameter,
+            ValueFromPipelineByPropertyName = true)]
+            [Parameter(
+            Position = 1,
+            ParameterSetName = FriendMethod,
+            ValueFromPipelineByPropertyName = true)]
+        [Parameter(
+            Position = 1,
+            ParameterSetName = OSUpgradeHistoryMethodParameter,
             ValueFromPipelineByPropertyName = true)]
         [ResourceNameCompleter("Microsoft.Compute/virtualMachineScaleSets", "ResourceGroupName")]
         [SupportsWildcards]
@@ -173,5 +201,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             HelpMessage = "UserData for the Vmss, which will be Base64 encoded. Customer should not pass any secrets in here.",
             ValueFromPipelineByPropertyName = true)]
         public SwitchParameter UserData { get; set; }
+
+        [Parameter(
+            ParameterSetName = ResourceIdParameterSet,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The ARM resource id specifying the specific virtual machine scale set to return.")]
+        [ValidateNotNullOrEmpty]
+        public string ResourceId { get; set; }
     }
 }

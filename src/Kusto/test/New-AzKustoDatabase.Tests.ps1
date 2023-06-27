@@ -19,20 +19,20 @@ Describe 'New-AzKustoDatabase' {
 
     It 'CreateExpanded' {
         $name = "testdatabase" + $env.rstr4
-        $databaseFullName = $env.clusterName + "/" + $name
+        $databaseFullName = $env.kustoClusterName + "/" + $name
 
-        $databaseCreated = New-AzKustoDatabase -ResourceGroupName $env.resourceGroupName -ClusterName $env.clusterName -Name $name -Kind ReadWrite -Location $env.location
-        Validate_Database $databaseCreated $databaseFullName $env.location $env.databaseType $null $null
-        { Remove-AzKustoDatabase -ResourceGroupName $env.resourceGroupName -ClusterName $env.clusterName -Name $name } | Should -Not -Throw
+        $databaseCreated = New-AzKustoDatabase -ResourceGroupName $env.resourceGroupName -ClusterName $env.kustoClusterName -Name $name -Kind ReadWrite -Location $env.location
+        Validate_Database $databaseCreated $databaseFullName $env.location "Microsoft.Kusto/Clusters/Databases" $null $null
+        { Remove-AzKustoDatabase -ResourceGroupName $env.resourceGroupName -ClusterName $env.kustoClusterName -Name $name } | Should -Not -Throw
     }
 
     It 'Create' {
         $hotCachePeriodInDays = Get-Hot-Cache-Period-In-Days
         $name = "testdatabase" + $env.rstr5
-        $databaseFullName = $env.clusterName + "/" + $name
+        $databaseFullName = $env.kustoClusterName + "/" + $name
 
-        $databaseCreated = New-AzKustoDatabase -ResourceGroupName $env.resourceGroupName -ClusterName $env.clusterName -Name $name -Location $env.location -Kind ReadWrite -HotCachePeriod $hotCachePeriodInDays
-        Validate_Database $databaseCreated $databaseFullName $env.location $env.databaseType $null $hotCachePeriodInDays
-        { Remove-AzKustoDatabase -ResourceGroupName $env.resourceGroupName -ClusterName $env.clusterName -Name $name } | Should -Not -Throw
+        $databaseCreated = New-AzKustoDatabase -ResourceGroupName $env.resourceGroupName -ClusterName $env.kustoClusterName -Name $name -Location $env.location -Kind ReadWrite -HotCachePeriod $hotCachePeriodInDays
+        Validate_Database $databaseCreated $databaseFullName $env.location "Microsoft.Kusto/Clusters/Databases" $null $hotCachePeriodInDays
+        { Remove-AzKustoDatabase -ResourceGroupName $env.resourceGroupName -ClusterName $env.kustoClusterName -Name $name } | Should -Not -Throw
     }
 }

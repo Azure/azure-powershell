@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Management.NetApp
         /// Returns a list of the subvolumes in the volume
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
         /// The name of the NetApp account
@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Management.NetApp
         /// Returns the path associated with the subvolumeName provided
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
         /// The name of the NetApp account
@@ -105,7 +105,7 @@ namespace Microsoft.Azure.Management.NetApp
         /// Subvolume object supplied in the body of the operation.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
         /// The name of the NetApp account
@@ -145,7 +145,7 @@ namespace Microsoft.Azure.Management.NetApp
         /// Subvolume object supplied in the body of the operation.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
         /// The name of the NetApp account
@@ -182,7 +182,7 @@ namespace Microsoft.Azure.Management.NetApp
         /// Delete subvolume
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
         /// The name of the NetApp account
@@ -216,7 +216,7 @@ namespace Microsoft.Azure.Management.NetApp
         /// Get details of the specified subvolume
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
         /// The name of the NetApp account
@@ -257,7 +257,7 @@ namespace Microsoft.Azure.Management.NetApp
         /// Subvolume object supplied in the body of the operation.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
         /// The name of the NetApp account
@@ -297,7 +297,7 @@ namespace Microsoft.Azure.Management.NetApp
         /// Subvolume object supplied in the body of the operation.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
         /// The name of the NetApp account
@@ -334,7 +334,7 @@ namespace Microsoft.Azure.Management.NetApp
         /// Delete subvolume
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
         /// The name of the NetApp account
@@ -368,7 +368,7 @@ namespace Microsoft.Azure.Management.NetApp
         /// Get details of the specified subvolume
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
         /// The name of the NetApp account

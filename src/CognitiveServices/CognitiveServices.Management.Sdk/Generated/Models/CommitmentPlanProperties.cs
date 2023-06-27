@@ -11,6 +11,8 @@
 namespace Microsoft.Azure.Management.CognitiveServices.Models
 {
     using Newtonsoft.Json;
+    using System.Collections;
+    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
@@ -35,11 +37,13 @@ namespace Microsoft.Azure.Management.CognitiveServices.Models
         /// 'Succeeded', 'Canceled'</param>
         /// <param name="commitmentPlanGuid">Commitment plan guid.</param>
         /// <param name="hostingModel">Account hosting model. Possible values
-        /// include: 'Web', 'ConnectedContainer',
-        /// 'DisconnectedContainer'</param>
+        /// include: 'Web', 'ConnectedContainer', 'DisconnectedContainer',
+        /// 'ProvisionedWeb'</param>
         /// <param name="planType">Commitment plan type.</param>
         /// <param name="autoRenew">AutoRenew commitment plan.</param>
-        public CommitmentPlanProperties(string provisioningState = default(string), string commitmentPlanGuid = default(string), string hostingModel = default(string), string planType = default(string), CommitmentPeriod current = default(CommitmentPeriod), bool? autoRenew = default(bool?), CommitmentPeriod next = default(CommitmentPeriod), CommitmentPeriod last = default(CommitmentPeriod))
+        /// <param name="provisioningIssues">The list of
+        /// ProvisioningIssue.</param>
+        public CommitmentPlanProperties(string provisioningState = default(string), string commitmentPlanGuid = default(string), string hostingModel = default(string), string planType = default(string), CommitmentPeriod current = default(CommitmentPeriod), bool? autoRenew = default(bool?), CommitmentPeriod next = default(CommitmentPeriod), CommitmentPeriod last = default(CommitmentPeriod), IList<string> provisioningIssues = default(IList<string>))
         {
             ProvisioningState = provisioningState;
             CommitmentPlanGuid = commitmentPlanGuid;
@@ -49,6 +53,7 @@ namespace Microsoft.Azure.Management.CognitiveServices.Models
             AutoRenew = autoRenew;
             Next = next;
             Last = last;
+            ProvisioningIssues = provisioningIssues;
             CustomInit();
         }
 
@@ -73,7 +78,7 @@ namespace Microsoft.Azure.Management.CognitiveServices.Models
 
         /// <summary>
         /// Gets or sets account hosting model. Possible values include: 'Web',
-        /// 'ConnectedContainer', 'DisconnectedContainer'
+        /// 'ConnectedContainer', 'DisconnectedContainer', 'ProvisionedWeb'
         /// </summary>
         [JsonProperty(PropertyName = "hostingModel")]
         public string HostingModel { get; set; }
@@ -104,6 +109,12 @@ namespace Microsoft.Azure.Management.CognitiveServices.Models
         /// </summary>
         [JsonProperty(PropertyName = "last")]
         public CommitmentPeriod Last { get; private set; }
+
+        /// <summary>
+        /// Gets the list of ProvisioningIssue.
+        /// </summary>
+        [JsonProperty(PropertyName = "provisioningIssues")]
+        public IList<string> ProvisioningIssues { get; private set; }
 
     }
 }

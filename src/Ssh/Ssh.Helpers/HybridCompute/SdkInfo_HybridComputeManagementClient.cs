@@ -19,7 +19,7 @@ namespace Microsoft.Azure.PowerShell.Ssh.Helpers.HybridCompute
           {
               return new Tuple<string, string, string>[]
               {
-                new Tuple<string, string, string>("HybridCompute", "Machines", "2020-08-02"),
+                new Tuple<string, string, string>("HybridCompute", "Machines", "2022-11-10"),
               }.AsEnumerable();
           }
       }

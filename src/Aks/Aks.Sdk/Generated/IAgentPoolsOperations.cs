@@ -24,6 +24,38 @@ namespace Microsoft.Azure.Management.ContainerService
     public partial interface IAgentPoolsOperations
     {
         /// <summary>
+        /// Aborts last operation running on agent pool.
+        /// </summary>
+        /// <remarks>
+        /// Aborts the currently running operation on the agent pool. The Agent
+        /// Pool will be moved to a Canceling state and eventually to a
+        /// Canceled state when cancellation finishes. If the operation
+        /// completes before cancellation can take place, a 409 error code is
+        /// returned.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the managed cluster resource.
+        /// </param>
+        /// <param name='agentPoolName'>
+        /// The name of the agent pool.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationHeaderResponse<AgentPoolsAbortLatestOperationHeaders>> AbortLatestOperationWithHttpMessagesAsync(string resourceGroupName, string resourceName, string agentPoolName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
         /// Gets a list of agent pools in the specified managed cluster.
         /// </summary>
         /// <param name='resourceGroupName'>
@@ -131,7 +163,7 @@ namespace Microsoft.Azure.Management.ContainerService
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string resourceName, string agentPoolName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationHeaderResponse<AgentPoolsDeleteHeaders>> DeleteWithHttpMessagesAsync(string resourceGroupName, string resourceName, string agentPoolName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Gets the upgrade profile for an agent pool.
         /// </summary>
@@ -166,7 +198,7 @@ namespace Microsoft.Azure.Management.ContainerService
         /// </summary>
         /// <remarks>
         /// See [supported Kubernetes
-        /// versions](https://learn.microsoft.com/azure/aks/supported-kubernetes-versions)
+        /// versions](https://docs.microsoft.com/azure/aks/supported-kubernetes-versions)
         /// for more details about the version lifecycle.
         /// </remarks>
         /// <param name='resourceGroupName'>
@@ -199,7 +231,7 @@ namespace Microsoft.Azure.Management.ContainerService
         /// newest OS and runtime updates to the nodes. AKS provides one new
         /// image per week with the latest updates. For more details on node
         /// image versions, see:
-        /// https://learn.microsoft.com/azure/aks/node-image-upgrade
+        /// https://docs.microsoft.com/azure/aks/node-image-upgrade
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -226,6 +258,38 @@ namespace Microsoft.Azure.Management.ContainerService
         /// Thrown when a required parameter is null
         /// </exception>
         Task<AzureOperationResponse<AgentPool,AgentPoolsUpgradeNodeImageVersionHeaders>> UpgradeNodeImageVersionWithHttpMessagesAsync(string resourceGroupName, string resourceName, string agentPoolName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Aborts last operation running on agent pool.
+        /// </summary>
+        /// <remarks>
+        /// Aborts the currently running operation on the agent pool. The Agent
+        /// Pool will be moved to a Canceling state and eventually to a
+        /// Canceled state when cancellation finishes. If the operation
+        /// completes before cancellation can take place, a 409 error code is
+        /// returned.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the managed cluster resource.
+        /// </param>
+        /// <param name='agentPoolName'>
+        /// The name of the agent pool.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationHeaderResponse<AgentPoolsAbortLatestOperationHeaders>> BeginAbortLatestOperationWithHttpMessagesAsync(string resourceGroupName, string resourceName, string agentPoolName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Creates or updates an agent pool in the specified managed cluster.
         /// </summary>
@@ -281,7 +345,7 @@ namespace Microsoft.Azure.Management.ContainerService
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string resourceName, string agentPoolName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationHeaderResponse<AgentPoolsDeleteHeaders>> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string resourceName, string agentPoolName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Upgrades the node image version of an agent pool to the latest.
         /// </summary>
@@ -290,7 +354,7 @@ namespace Microsoft.Azure.Management.ContainerService
         /// newest OS and runtime updates to the nodes. AKS provides one new
         /// image per week with the latest updates. For more details on node
         /// image versions, see:
-        /// https://learn.microsoft.com/azure/aks/node-image-upgrade
+        /// https://docs.microsoft.com/azure/aks/node-image-upgrade
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.

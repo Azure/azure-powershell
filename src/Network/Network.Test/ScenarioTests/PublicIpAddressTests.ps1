@@ -32,7 +32,7 @@ function Test-PublicIpAddressCRUD
       $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" } 
       
       # Create publicIpAddres
-      $job = New-AzPublicIpAddress -ResourceGroupName $rgname -name $rname -location $location -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel -AsJob
+      $job = New-AzPublicIpAddress -ResourceGroupName $rgname -name $rname -location $location -AllocationMethod Static -DomainNameLabel $domainNameLabel -AsJob
       $job | Wait-Job
 	  $actual = $job | Receive-Job
 
@@ -41,7 +41,7 @@ function Test-PublicIpAddressCRUD
       Assert-AreEqual $expected.ResourceGroupName $actual.ResourceGroupName	
       Assert-AreEqual $expected.Name $actual.Name	
       Assert-AreEqual $expected.Location $actual.Location
-      Assert-AreEqual "Dynamic" $expected.PublicIpAllocationMethod
+      Assert-AreEqual "Static" $expected.PublicIpAllocationMethod
       Assert-NotNull $expected.ResourceGuid
       Assert-AreEqual "Succeeded" $expected.ProvisioningState
       Assert-AreEqual $domainNameLabel $expected.DnsSettings.DomainNameLabel
@@ -52,7 +52,7 @@ function Test-PublicIpAddressCRUD
       Assert-AreEqual $list[0].ResourceGroupName $actual.ResourceGroupName  
       Assert-AreEqual $list[0].Name $actual.Name    
       Assert-AreEqual $list[0].Location $actual.Location
-      Assert-AreEqual "Dynamic" $list[0].PublicIpAllocationMethod
+      Assert-AreEqual "Static" $list[0].PublicIpAllocationMethod
       Assert-AreEqual "Succeeded" $list[0].ProvisioningState
       Assert-AreEqual $domainNameLabel $list[0].DnsSettings.DomainNameLabel
 
@@ -102,12 +102,12 @@ function Test-PublicIpAddressCRUD-NoDomainNameLabel
       $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" } 
       
       # Create publicIpAddres
-      $actual = New-AzPublicIpAddress -ResourceGroupName $rgname -name $rname -location $location -AllocationMethod Dynamic
+      $actual = New-AzPublicIpAddress -ResourceGroupName $rgname -name $rname -location $location -AllocationMethod Static
       $expected = Get-AzPublicIpAddress -ResourceGroupName $rgname -name $rname
       Assert-AreEqual $expected.ResourceGroupName $actual.ResourceGroupName 
       Assert-AreEqual $expected.Name $actual.Name   
       Assert-AreEqual $expected.Location $actual.Location
-      Assert-AreEqual "Dynamic" $expected.PublicIpAllocationMethod
+      Assert-AreEqual "Static" $expected.PublicIpAllocationMethod
       Assert-AreEqual "Succeeded" $expected.ProvisioningState
 
       # list
@@ -116,7 +116,7 @@ function Test-PublicIpAddressCRUD-NoDomainNameLabel
       Assert-AreEqual $list[0].ResourceGroupName $actual.ResourceGroupName  
       Assert-AreEqual $list[0].Name $actual.Name    
       Assert-AreEqual $list[0].Location $actual.Location
-      Assert-AreEqual "Dynamic" $list[0].PublicIpAllocationMethod
+      Assert-AreEqual "Static" $list[0].PublicIpAllocationMethod
       Assert-AreEqual "Succeeded" $list[0].ProvisioningState
 
       # delete
@@ -188,6 +188,50 @@ function Test-PublicIpAddressCRUD-StaticAllocation
 
 <#
 .SYNOPSIS
+Tests creating new simple publicIpAddress with DomainNameLabelScope.
+#>
+function Test-PublicIpAddressCRUD-WithDomainNameLabelScope
+{
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $rname = Get-ResourceName
+    $domainNameLabel = Get-ResourceName
+    $domainNameLabelScope = "tenantreuse"
+    $rglocation = "eastus2euap"
+    $resourceTypeParent = "Microsoft.Network/publicIpAddresses"
+   
+    try 
+     {
+      # Create the resource group
+      $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" } 
+      
+      # Create publicIpAddres
+      $actual = New-AzPublicIpAddress -ResourceGroupName $rgname -name $rname -location $rglocation -AllocationMethod Static -DomainNameLabel $domainNameLabel -DomainNameLabelScope $domainNameLabelScope
+      $publicip = Get-AzPublicIpAddress -ResourceGroupName $rgname -name $rname
+      Assert-AreEqual $publicip.ResourceGroupName $actual.ResourceGroupName 
+      Assert-AreEqual $publicip.Name $actual.Name   
+      Assert-AreEqual $publicip.Location $actual.Location
+      Assert-AreEqual "Static" $publicip.PublicIpAllocationMethod
+      Assert-AreEqual "Succeeded" $publicip.ProvisioningState
+      Assert-AreEqual $domainNameLabel $publicip.DnsSettings.DomainNameLabel
+      Assert-AreEqual $domainNameLabelScope $publicip.DnsSettings.DomainNameLabelScope
+      
+      # delete
+      $delete = Remove-AzPublicIpAddress -ResourceGroupName $actual.ResourceGroupName -name $rname -PassThru -Force
+      Assert-AreEqual true $delete
+      
+      $list = Get-AzPublicIpAddress -ResourceGroupName $actual.ResourceGroupName
+      Assert-AreEqual 0 @($list).Count
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
 Tests edit the domain name label of a publicIpAddress.
 #>
 function Test-PublicIpAddressCRUD-EditDomainNameLavel
@@ -207,12 +251,12 @@ function Test-PublicIpAddressCRUD-EditDomainNameLavel
       $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" } 
       
       # Create publicIpAddres
-      $actual = New-AzPublicIpAddress -ResourceGroupName $rgname -name $rname -location $location -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel
+      $actual = New-AzPublicIpAddress -ResourceGroupName $rgname -name $rname -location $location -AllocationMethod Static -DomainNameLabel $domainNameLabel
       $publicip = Get-AzPublicIpAddress -ResourceGroupName $rgname -name $rname
       Assert-AreEqual $publicip.ResourceGroupName $actual.ResourceGroupName 
       Assert-AreEqual $publicip.Name $actual.Name   
       Assert-AreEqual $publicip.Location $actual.Location
-      Assert-AreEqual "Dynamic" $publicip.PublicIpAllocationMethod
+      Assert-AreEqual "Static" $publicip.PublicIpAllocationMethod
       Assert-AreEqual "Succeeded" $publicip.ProvisioningState
       Assert-AreEqual $domainNameLabel $publicip.DnsSettings.DomainNameLabel
       
@@ -259,12 +303,12 @@ function Test-PublicIpAddressCRUD-ReverseFqdn
       $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" } 
       
       # Create publicIpAddres
-      $actual = New-AzPublicIpAddress -ResourceGroupName $rgname -name $rname -location $location -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel
+      $actual = New-AzPublicIpAddress -ResourceGroupName $rgname -name $rname -location $location -AllocationMethod Static -DomainNameLabel $domainNameLabel
       $publicip = Get-AzPublicIpAddress -ResourceGroupName $rgname -name $rname
       Assert-AreEqual $publicip.ResourceGroupName $actual.ResourceGroupName 
       Assert-AreEqual $publicip.Name $actual.Name   
       Assert-AreEqual $publicip.Location $actual.Location
-      Assert-AreEqual "Dynamic" $publicip.PublicIpAllocationMethod
+      Assert-AreEqual "Static" $publicip.PublicIpAllocationMethod
       Assert-AreEqual "Succeeded" $publicip.ProvisioningState
       Assert-AreEqual $domainNameLabel $publicip.DnsSettings.DomainNameLabel
       
@@ -321,12 +365,12 @@ function Test-PublicIpAddressCRUD-IpTag
       Assert-AreEqual $IpTag2.Tag "/Internet"
 
       # Create publicIpAddres
-      $actual = New-AzPublicIpAddress -ResourceGroupName $rgname -name $rname -location $location -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel -IpTag $IpTag
+      $actual = New-AzPublicIpAddress -ResourceGroupName $rgname -name $rname -location $location -AllocationMethod Static -DomainNameLabel $domainNameLabel -IpTag $IpTag
       $publicip = Get-AzPublicIpAddress -ResourceGroupName $rgname -name $rname
       Assert-AreEqual $publicip.ResourceGroupName $actual.ResourceGroupName
       Assert-AreEqual $publicip.Name $actual.Name
       Assert-AreEqual $publicip.Location $actual.Location
-      Assert-AreEqual "Dynamic" $publicip.PublicIpAllocationMethod
+      Assert-AreEqual "Static" $publicip.PublicIpAllocationMethod
       Assert-AreEqual "Succeeded" $publicip.ProvisioningState
       Assert-AreEqual $domainNameLabel $publicip.DnsSettings.DomainNameLabel
 
@@ -373,12 +417,12 @@ function Test-PublicIpAddressIpVersion
       $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" } 
       
       # Create publicIpAddres with default ipversion
-      $actual = New-AzPublicIpAddress -ResourceGroupName $rgname -name $rname -location $location -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel
+      $actual = New-AzPublicIpAddress -ResourceGroupName $rgname -name $rname -location $location -AllocationMethod Static -DomainNameLabel $domainNameLabel
       $expected = Get-AzPublicIpAddress -ResourceGroupName $rgname -name $rname
       Assert-AreEqual $expected.ResourceGroupName $actual.ResourceGroupName 
       Assert-AreEqual $expected.Name $actual.Name   
       Assert-AreEqual $expected.Location $actual.Location
-      Assert-AreEqual "Dynamic" $expected.PublicIpAllocationMethod
+      Assert-AreEqual "Static" $expected.PublicIpAllocationMethod
       Assert-NotNull $expected.ResourceGuid
       Assert-AreEqual "Succeeded" $expected.ProvisioningState
       Assert-AreEqual $domainNameLabel $expected.DnsSettings.DomainNameLabel
@@ -390,29 +434,29 @@ function Test-PublicIpAddressIpVersion
       Assert-AreEqual $list[0].ResourceGroupName $actual.ResourceGroupName  
       Assert-AreEqual $list[0].Name $actual.Name    
       Assert-AreEqual $list[0].Location $actual.Location
-      Assert-AreEqual "Dynamic" $list[0].PublicIpAllocationMethod
+      Assert-AreEqual "Static" $list[0].PublicIpAllocationMethod
       Assert-AreEqual "Succeeded" $list[0].ProvisioningState
       Assert-AreEqual $domainNameLabel $list[0].DnsSettings.DomainNameLabel
       Assert-AreEqual $list[0].PublicIpAddressVersion IPv4
 
       # Create publicIpAddres with IPv4 ipversion
-      $actual = New-AzPublicIpAddress -ResourceGroupName $rgname -name $rname1 -location $location -AllocationMethod Dynamic -IpAddressVersion IPv4
+      $actual = New-AzPublicIpAddress -ResourceGroupName $rgname -name $rname1 -location $location -AllocationMethod Static -IpAddressVersion IPv4
       $expected = Get-AzPublicIpAddress -ResourceGroupName $rgname -name $rname1
       Assert-AreEqual $expected.ResourceGroupName $actual.ResourceGroupName 
       Assert-AreEqual $expected.Name $actual.Name   
       Assert-AreEqual $expected.Location $actual.Location
-      Assert-AreEqual "Dynamic" $expected.PublicIpAllocationMethod
+      Assert-AreEqual "Static" $expected.PublicIpAllocationMethod
       Assert-NotNull $expected.ResourceGuid
       Assert-AreEqual "Succeeded" $expected.ProvisioningState      
       Assert-AreEqual $expected.PublicIpAddressVersion IPv4
       
       # Create publicIpAddres with IPv6 ipversion
-      $actual = New-AzPublicIpAddress -ResourceGroupName $rgname -name $rname2 -location $location -AllocationMethod Dynamic -IpAddressVersion IPv6
+      $actual = New-AzPublicIpAddress -ResourceGroupName $rgname -name $rname2 -location $location -AllocationMethod Static -IpAddressVersion IPv6
       $expected = Get-AzPublicIpAddress -ResourceGroupName $rgname -name $rname2
       Assert-AreEqual $expected.ResourceGroupName $actual.ResourceGroupName 
       Assert-AreEqual $expected.Name $actual.Name   
       Assert-AreEqual $expected.Location $actual.Location
-      Assert-AreEqual "Dynamic" $expected.PublicIpAllocationMethod
+      Assert-AreEqual "Static" $expected.PublicIpAllocationMethod
       Assert-NotNull $expected.ResourceGuid
       Assert-AreEqual "Succeeded" $expected.ProvisioningState      
       Assert-AreEqual $expected.PublicIpAddressVersion IPv6
@@ -553,7 +597,7 @@ function Test-PublicIpAddressCRUD-BasicSku
 
 <#
 .SYNOPSIS
-Tests creating new simple publicIpAddress with Static allocation.
+Tests creating new simple publicIpAddress with Standard Sku.
 #>
 function Test-PublicIpAddressCRUD-StandardSku
 {
@@ -572,6 +616,61 @@ function Test-PublicIpAddressCRUD-StandardSku
       
       # Create publicIpAddres
       $actual = New-AzPublicIpAddress -ResourceGroupName $rgname -name $rname -location $location -AllocationMethod Static -Sku Standard -DomainNameLabel $domainNameLabel
+      $expected = Get-AzPublicIpAddress -ResourceGroupName $rgname -name $rname
+      Assert-AreEqual $expected.ResourceGroupName $actual.ResourceGroupName
+      Assert-AreEqual $expected.Name $actual.Name
+      Assert-AreEqual $expected.Location $actual.Location
+      Assert-AreEqualObjectProperties $expected.Sku $actual.Sku
+      Assert-AreEqual "Static" $expected.PublicIpAllocationMethod
+      Assert-NotNull $expected.IpAddress
+      Assert-AreEqual "Succeeded" $expected.ProvisioningState
+
+      # list
+      $list = Get-AzPublicIpAddress -ResourceGroupName $rgname
+      Assert-AreEqual 1 @($list).Count
+      Assert-AreEqual $list[0].ResourceGroupName $actual.ResourceGroupName
+      Assert-AreEqual $list[0].Name $actual.Name
+      Assert-AreEqual $list[0].Location $actual.Location
+      Assert-AreEqualObjectProperties $list[0].Sku $actual.Sku
+      Assert-AreEqual "Static" $list[0].PublicIpAllocationMethod
+      Assert-NotNull $list[0].IpAddress
+      Assert-AreEqual "Succeeded" $list[0].ProvisioningState
+
+      # delete
+      $delete = Remove-AzPublicIpAddress -ResourceGroupName $actual.ResourceGroupName -name $rname -PassThru -Force
+      Assert-AreEqual true $delete
+      
+      $list = Get-AzPublicIpAddress -ResourceGroupName $actual.ResourceGroupName
+      Assert-AreEqual 0 @($list).Count
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Tests creating new simple publicIpAddress with Standard Sku as default.
+#>
+function Test-PublicIpAddressCRUD-StandardSkuDefault
+{
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $rname = Get-ResourceName
+    $domainNameLabel = Get-ResourceName
+    $rglocation = Get-ProviderLocation ResourceManagement
+    $resourceTypeParent = "Microsoft.Network/publicIpAddresses"
+    $location = Get-ProviderLocation $resourceTypeParent
+   
+    try 
+     {
+      # Create the resource group
+      $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" } 
+      
+      # Create publicIpAddres
+      $actual = New-AzPublicIpAddress -ResourceGroupName $rgname -name $rname -location $location -AllocationMethod Static -DomainNameLabel $domainNameLabel
       $expected = Get-AzPublicIpAddress -ResourceGroupName $rgname -name $rname
       Assert-AreEqual $expected.ResourceGroupName $actual.ResourceGroupName
       Assert-AreEqual $expected.Name $actual.Name
@@ -851,13 +950,13 @@ function Test-PublicIpAddressCRUD-IdleTimeout
         $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation 
 
         # Create public ip address
-        $actual = New-AzPublicIpAddress -ResourceGroupName $rgname -name $rname -location $location -IdleTimeoutInMinutes 15 -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel
+        $actual = New-AzPublicIpAddress -ResourceGroupName $rgname -name $rname -location $location -IdleTimeoutInMinutes 15 -AllocationMethod Static -DomainNameLabel $domainNameLabel
         $expected = Get-AzPublicIpAddress -ResourceGroupName $rgname -name $rname
         Assert-AreEqual $expected.ResourceGroupName $actual.ResourceGroupName 
         Assert-AreEqual $expected.Name $actual.Name 
         Assert-AreEqual $expected.Location $actual.Location
         Assert-NotNull $expected.ResourceGuid
-        Assert-AreEqual "Dynamic" $expected.PublicIpAllocationMethod
+        Assert-AreEqual "Static" $expected.PublicIpAllocationMethod
         Assert-AreEqual "Succeeded" $expected.ProvisioningState
         Assert-AreEqual $domainNameLabel $expected.DnsSettings.DomainNameLabel
         Assert-AreEqual 15 $expected.IdleTimeoutInMinutes

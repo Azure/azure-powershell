@@ -324,7 +324,7 @@ namespace Microsoft.Azure.PowerShell.Ssh.Helpers.Compute
         {
             VirtualMachines = new VirtualMachinesOperations(this);
             BaseUri = new System.Uri("https://management.azure.com");
-            ApiVersion = "2022-03-01";
+            ApiVersion = "2022-08-01";
             AcceptLanguage = "en-US";
             LongRunningOperationRetryTimeout = 30;
             GenerateClientRequestId = true;

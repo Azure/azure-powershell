@@ -60,6 +60,14 @@ namespace Commands.Network.Test.ScenarioTests
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.wanrpdev)]
+        public void TestPublicIpAddressCRUDWithDomainNameLabelScope()
+        {
+            TestRunner.RunTestScript("Test-PublicIpAddressCRUD-WithDomainNameLabelScope");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.wanrpdev)]
         public void TestPublicIpAddressCRUDEditDomainNameLavel()
         {
             TestRunner.RunTestScript("Test-PublicIpAddressCRUD-EditDomainNameLavel");
@@ -111,6 +119,14 @@ namespace Commands.Network.Test.ScenarioTests
         public void TestPublicIpStandardSku()
         {
             TestRunner.RunTestScript("Test-PublicIpAddressCRUD-StandardSku");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.wanrpdev)]
+        public void TestPublicIpStandardSkuAsDefault()
+        {
+            TestRunner.RunTestScript("Test-PublicIpAddressCRUD-StandardSkuDefault");
         }
 
         [Fact]

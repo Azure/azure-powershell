@@ -33,8 +33,8 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// Initializes a new instance of the ActiveDirectory class.
         /// </summary>
         /// <param name="activeDirectoryId">Id of the Active Directory</param>
-        /// <param name="username">Username of Active Directory domain
-        /// administrator</param>
+        /// <param name="username">A domain user account with permission to
+        /// create machine accounts</param>
         /// <param name="password">Plain text password of Active Directory
         /// domain administrator, value is masked in the response</param>
         /// <param name="domain">Name of the Active Directory domain</param>
@@ -85,7 +85,10 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// <param name="encryptDCConnections">If enabled, Traffic between the
         /// SMB server to Domain Controller (DC) will be encrypted.</param>
         /// <param name="ldapSearchScope">LDAP Search scope options</param>
-        public ActiveDirectory(string activeDirectoryId = default(string), string username = default(string), string password = default(string), string domain = default(string), string dns = default(string), string status = default(string), string statusDetails = default(string), string smbServerName = default(string), string organizationalUnit = default(string), string site = default(string), IList<string> backupOperators = default(IList<string>), IList<string> administrators = default(IList<string>), string kdcIP = default(string), string adName = default(string), string serverRootCACertificate = default(string), bool? aesEncryption = default(bool?), bool? ldapSigning = default(bool?), IList<string> securityOperators = default(IList<string>), bool? ldapOverTLS = default(bool?), bool? allowLocalNfsUsersWithLdap = default(bool?), bool? encryptDCConnections = default(bool?), LdapSearchScopeOpt ldapSearchScope = default(LdapSearchScopeOpt))
+        /// <param name="preferredServersForLdapClient">Comma separated list of
+        /// IPv4 addresses of preferred servers for LDAP client. At most two
+        /// comma separated IPv4 addresses can be passed.</param>
+        public ActiveDirectory(string activeDirectoryId = default(string), string username = default(string), string password = default(string), string domain = default(string), string dns = default(string), string status = default(string), string statusDetails = default(string), string smbServerName = default(string), string organizationalUnit = default(string), string site = default(string), IList<string> backupOperators = default(IList<string>), IList<string> administrators = default(IList<string>), string kdcIP = default(string), string adName = default(string), string serverRootCACertificate = default(string), bool? aesEncryption = default(bool?), bool? ldapSigning = default(bool?), IList<string> securityOperators = default(IList<string>), bool? ldapOverTLS = default(bool?), bool? allowLocalNfsUsersWithLdap = default(bool?), bool? encryptDCConnections = default(bool?), LdapSearchScopeOpt ldapSearchScope = default(LdapSearchScopeOpt), string preferredServersForLdapClient = default(string))
         {
             ActiveDirectoryId = activeDirectoryId;
             Username = username;
@@ -109,6 +112,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
             AllowLocalNfsUsersWithLdap = allowLocalNfsUsersWithLdap;
             EncryptDCConnections = encryptDCConnections;
             LdapSearchScope = ldapSearchScope;
+            PreferredServersForLdapClient = preferredServersForLdapClient;
             CustomInit();
         }
 
@@ -124,7 +128,8 @@ namespace Microsoft.Azure.Management.NetApp.Models
         public string ActiveDirectoryId { get; set; }
 
         /// <summary>
-        /// Gets or sets username of Active Directory domain administrator
+        /// Gets or sets a domain user account with permission to create
+        /// machine accounts
         /// </summary>
         [JsonProperty(PropertyName = "username")]
         public string Username { get; set; }
@@ -275,6 +280,14 @@ namespace Microsoft.Azure.Management.NetApp.Models
         public LdapSearchScopeOpt LdapSearchScope { get; set; }
 
         /// <summary>
+        /// Gets or sets comma separated list of IPv4 addresses of preferred
+        /// servers for LDAP client. At most two comma separated IPv4 addresses
+        /// can be passed.
+        /// </summary>
+        [JsonProperty(PropertyName = "preferredServersForLdapClient")]
+        public string PreferredServersForLdapClient { get; set; }
+
+        /// <summary>
         /// Validate the object.
         /// </summary>
         /// <exception cref="ValidationException">
@@ -321,6 +334,17 @@ namespace Microsoft.Azure.Management.NetApp.Models
             if (LdapSearchScope != null)
             {
                 LdapSearchScope.Validate();
+            }
+            if (PreferredServersForLdapClient != null)
+            {
+                if (PreferredServersForLdapClient.Length > 32)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "PreferredServersForLdapClient", 32);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(PreferredServersForLdapClient, "^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)((, ?)(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?))?)?$"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "PreferredServersForLdapClient", "^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)((, ?)(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?))?)?$");
+                }
             }
         }
     }

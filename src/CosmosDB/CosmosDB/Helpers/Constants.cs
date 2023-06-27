@@ -58,6 +58,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
         public const string NetworkAclBypassResourceIdHelpMessage = "List of Resource Ids to allow Network Acl Bypass for Synapse Link.";
         public const string DatabaseResourceIdHelpMessage = "ResourceId of the database.";
         public const string AnalyticalStorageSchemaTypeHelpMessage = "The schema type for analytical storage. Valid values include: 'WellDefined' and 'FullFidelity'.";
+        public const string EnablePartitionMergeHelpMessage = "Enables partition merge feature on the Cosmos DB database account. Accepted values: false, true";
 
         //Restore specific help messages
         public const string IsRestoreRequestHelpMessage = "Indicates that the new Cosmos DB account request is a restore request.";
@@ -80,6 +81,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
         public const string BackupRetentionInHoursHelpMessage = "The time(in hours) for which each backup is retained (only for accounts with periodic mode backups)";
         public const string BackupTypeHelpMessage = "The type of backups on the Cosmos DB account. Accepted values: Periodic, Continuous";
         public const string BackupStorageRedundancyHelpMessage = "The redundancy type of the backup Storage account";
+        public const string ContinuousTierHelpMessage = "The continuous backup tier of the account";
 
         //Sql cmdlets help messages
         public const string DatabaseNameHelpMessage = "Database name.";

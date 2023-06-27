@@ -53,6 +53,7 @@ namespace Microsoft.Azure.Commands.Network.Models
             }
             this.AllowBranchToBranchTraffic = virtualHub.AllowBranchToBranchTraffic;
             this.PublicIpAddress = ipconfig.PublicIPAddress.Id;
+            this.HubRoutingPreference = virtualHub.HubRoutingPreference;
         }
 
         [Ps1Xml(Target = ViewControl.Table)]
@@ -65,6 +66,8 @@ namespace Microsoft.Azure.Commands.Network.Models
         public List<PSRouteServerPeer> Peerings { get; set; }
         public bool AllowBranchToBranchTraffic { get; set; }
         public string PublicIpAddress { get; set; }
+        [Ps1Xml(Target = ViewControl.Table)]
+        public string HubRoutingPreference { get; set; }
 
         [JsonIgnore]
         public string PeeringsText

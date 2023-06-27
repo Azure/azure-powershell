@@ -21,7 +21,7 @@ Set-AzSearchPrivateEndpointConnection [-ResourceGroupName] <String> [-ServiceNam
 
 ### ParentObjectParameterSet
 ```
-Set-AzSearchPrivateEndpointConnection -ParentObject <PSSearchService> [-Name] <String>
+Set-AzSearchPrivateEndpointConnection [-ParentObject] <PSSearchService> [-Name] <String>
  -Status <PSPrivateLinkServiceConnectionStatus> [-Description <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -35,7 +35,7 @@ Set-AzSearchPrivateEndpointConnection [-ResourceId] <String> -Status <PSPrivateL
 ### InputObjectParameterSet
 ```
 Set-AzSearchPrivateEndpointConnection -Status <PSPrivateLinkServiceConnectionStatus> [-Description <String>]
- -InputObject <PSPrivateEndpointConnection> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-InputObject] <PSPrivateEndpointConnection> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -48,6 +48,7 @@ The **Set-AzSearchPrivateEndpointConnection** updates the private endpoint conne
 ```powershell
 Set-AzSearchPrivateEndpointConnection -ResourceGroupName arjagann -ServiceName arjagann-test-cuseuap -Name arjagann-test-cuseuap-pe.4c74dd7c-7016-42ac-827a-8d5d1378f266 -Status Rejected  -Description "Rejected" | ConvertTo-Json
 ```
+
 ```output
 {
   "Name": "arjagann-test-cuseuap-pe.4c74dd7c-7016-42ac-827a-8d5d1378f266",
@@ -106,7 +107,7 @@ Parameter Sets: InputObjectParameterSet
 Aliases:
 
 Required: True
-Position: Named
+Position: 0
 Default value: None
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
@@ -136,7 +137,7 @@ Parameter Sets: ParentObjectParameterSet
 Aliases:
 
 Required: True
-Position: Named
+Position: 0
 Default value: None
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False

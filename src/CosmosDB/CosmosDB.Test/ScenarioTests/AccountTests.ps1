@@ -59,7 +59,7 @@ function Test-AccountRelatedCmdlets
     Assert-AreEqual $_.Exception.Message ("Resource with Name " + $cosmosDBAccountName + " already exists.")
   }
 
-  $updatedCosmosDBAccount = Update-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDBAccountName -DefaultConsistencyLevel "BoundedStaleness" -MaxStalenessIntervalInSeconds 10  -MaxStalenessPrefix 20 -IpRule $IpRule -Tag $tags -EnableVirtualNetwork 1 -EnableAutomaticFailover 1 -PublicNetworkAccess $publicNetworkAccess -NetworkAclBypassResourceId $networkAclBypassResourceId
+  $updatedCosmosDBAccount = Update-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDBAccountName -DefaultConsistencyLevel "BoundedStaleness" -MaxStalenessIntervalInSeconds 10  -MaxStalenessPrefix 20 -IpRule $IpRule -Tag $tags -EnableVirtualNetwork 1 -EnableAutomaticFailover 1 -PublicNetworkAccess $publicNetworkAccess -NetworkAclBypassResourceId $networkAclBypassResourceId -EnablePartitionMerge 0
 
   Assert-AreEqual $cosmosDBAccountName $updatedCosmosDBAccount.Name
   Assert-AreEqual "BoundedStaleness" $updatedCosmosDBAccount.ConsistencyPolicy.DefaultConsistencyLevel
@@ -72,6 +72,7 @@ function Test-AccountRelatedCmdlets
   Assert-AreEqual $updatedCosmosDBAccount.NetworkAclBypassResourceIds.Count 1
   Assert-AreEqual $updatedCosmosDBAccount.BackupPolicy.BackupIntervalInMinutes 480
   Assert-AreEqual $updatedCosmosDBAccount.BackupPolicy.BackupRetentionIntervalInHours 16
+  Assert-AreEqual $updatedCosmosDBAccount.EnablePartitionMerge 0
 
   $updatedCosmosDBAccount = Update-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDBAccountName -BackupStorageRedundancy "Geo"
   Assert-AreEqual $updatedCosmosDBAccount.BackupPolicy.BackupIntervalInMinutes 480
@@ -342,6 +343,9 @@ function Test-CosmosDBLocations {
     Assert-NotNull $locationProperty.Properties.SupportsAvailabilityZone
     Assert-NotNull $locationProperty.Properties.IsResidencyRestricted
     Assert-NotNull $locationProperty.Properties.BackupStorageRedundancies
+    Assert-NotNull $locationProperty.Properties.IsSubscriptionRegionAccessAllowedForRegular
+    Assert-NotNull $locationProperty.Properties.IsSubscriptionRegionAccessAllowedForAz
+    Assert-NotNull $locationProperty.Properties.Status
   }
 
   $locationProperties = Get-AzCosmosDBLocation -Location $locationName
@@ -351,4 +355,7 @@ function Test-CosmosDBLocations {
   Assert-NotNull $locationProperties.Properties.SupportsAvailabilityZone
   Assert-NotNull $locationProperties.Properties.IsResidencyRestricted
   Assert-NotNull $locationProperties.Properties.BackupStorageRedundancies
+  Assert-NotNull $locationProperty.Properties.IsSubscriptionRegionAccessAllowedForRegular
+  Assert-NotNull $locationProperty.Properties.IsSubscriptionRegionAccessAllowedForAz
+  Assert-NotNull $locationProperty.Properties.Status
 }

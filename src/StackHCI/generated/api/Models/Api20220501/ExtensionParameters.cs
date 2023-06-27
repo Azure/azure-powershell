@@ -35,11 +35,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501
         public string ForceUpdateTag { get => this._forceUpdateTag; set => this._forceUpdateTag = value; }
 
         /// <summary>Backing field for <see cref="ProtectedSetting" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IAny _protectedSetting;
+        private Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IExtensionParametersProtectedSettings _protectedSetting;
 
         /// <summary>Protected settings (may contain secrets).</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Origin(Microsoft.Azure.PowerShell.Cmdlets.StackHCI.PropertyOrigin.Owned)]
-        public Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IAny ProtectedSetting { get => (this._protectedSetting = this._protectedSetting ?? new Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Any()); set => this._protectedSetting = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IExtensionParametersProtectedSettings ProtectedSetting { get => (this._protectedSetting = this._protectedSetting ?? new Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.ExtensionParametersProtectedSettings()); set => this._protectedSetting = value; }
 
         /// <summary>Backing field for <see cref="Publisher" /> property.</summary>
         private string _publisher;
@@ -49,11 +49,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501
         public string Publisher { get => this._publisher; set => this._publisher = value; }
 
         /// <summary>Backing field for <see cref="Setting" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IAny _setting;
+        private Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IExtensionParametersSettings _setting;
 
         /// <summary>Json formatted public settings for the extension.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Origin(Microsoft.Azure.PowerShell.Cmdlets.StackHCI.PropertyOrigin.Owned)]
-        public Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IAny Setting { get => (this._setting = this._setting ?? new Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Any()); set => this._setting = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IExtensionParametersSettings Setting { get => (this._setting = this._setting ?? new Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.ExtensionParametersSettings()); set => this._setting = value; }
 
         /// <summary>Backing field for <see cref="Type" /> property.</summary>
         private string _type;
@@ -106,8 +106,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501
         ReadOnly = false,
         Description = @"Protected settings (may contain secrets).",
         SerializedName = @"protectedSettings",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IAny) })]
-        Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IAny ProtectedSetting { get; set; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IExtensionParametersProtectedSettings) })]
+        Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IExtensionParametersProtectedSettings ProtectedSetting { get; set; }
         /// <summary>The name of the extension handler publisher.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.Info(
         Required = false,
@@ -122,8 +122,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501
         ReadOnly = false,
         Description = @"Json formatted public settings for the extension.",
         SerializedName = @"settings",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IAny) })]
-        Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IAny Setting { get; set; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IExtensionParametersSettings) })]
+        Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IExtensionParametersSettings Setting { get; set; }
         /// <summary>Specifies the type of the extension; an example is "CustomScriptExtension".</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.Info(
         Required = false,
@@ -156,11 +156,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501
         /// </summary>
         string ForceUpdateTag { get; set; }
         /// <summary>Protected settings (may contain secrets).</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IAny ProtectedSetting { get; set; }
+        Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IExtensionParametersProtectedSettings ProtectedSetting { get; set; }
         /// <summary>The name of the extension handler publisher.</summary>
         string Publisher { get; set; }
         /// <summary>Json formatted public settings for the extension.</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IAny Setting { get; set; }
+        Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IExtensionParametersSettings Setting { get; set; }
         /// <summary>Specifies the type of the extension; an example is "CustomScriptExtension".</summary>
         string Type { get; set; }
         /// <summary>Specifies the version of the script handler.</summary>

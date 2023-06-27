@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Management.NetApp
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='accountName'>
             /// The name of the NetApp account
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Management.NetApp
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='accountName'>
             /// The name of the NetApp account
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Management.NetApp
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='accountName'>
             /// The name of the NetApp account
@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Management.NetApp
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='accountName'>
             /// The name of the NetApp account
@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Management.NetApp
             /// Snapshot policy object supplied in the body of the operation.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='accountName'>
             /// The name of the NetApp account
@@ -142,7 +142,7 @@ namespace Microsoft.Azure.Management.NetApp
             /// Snapshot policy object supplied in the body of the operation.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='accountName'>
             /// The name of the NetApp account
@@ -171,7 +171,7 @@ namespace Microsoft.Azure.Management.NetApp
             /// Snapshot policy object supplied in the body of the operation.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='accountName'>
             /// The name of the NetApp account
@@ -194,7 +194,7 @@ namespace Microsoft.Azure.Management.NetApp
             /// Snapshot policy object supplied in the body of the operation.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='accountName'>
             /// The name of the NetApp account
@@ -220,7 +220,7 @@ namespace Microsoft.Azure.Management.NetApp
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='accountName'>
             /// The name of the NetApp account
@@ -240,7 +240,7 @@ namespace Microsoft.Azure.Management.NetApp
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='accountName'>
             /// The name of the NetApp account
@@ -266,7 +266,7 @@ namespace Microsoft.Azure.Management.NetApp
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='accountName'>
             /// The name of the NetApp account
@@ -289,7 +289,7 @@ namespace Microsoft.Azure.Management.NetApp
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='accountName'>
             /// The name of the NetApp account
@@ -318,7 +318,7 @@ namespace Microsoft.Azure.Management.NetApp
             /// Snapshot policy object supplied in the body of the operation.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='accountName'>
             /// The name of the NetApp account
@@ -341,7 +341,7 @@ namespace Microsoft.Azure.Management.NetApp
             /// Snapshot policy object supplied in the body of the operation.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='accountName'>
             /// The name of the NetApp account
@@ -367,7 +367,7 @@ namespace Microsoft.Azure.Management.NetApp
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='accountName'>
             /// The name of the NetApp account
@@ -387,7 +387,7 @@ namespace Microsoft.Azure.Management.NetApp
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='accountName'>
             /// The name of the NetApp account

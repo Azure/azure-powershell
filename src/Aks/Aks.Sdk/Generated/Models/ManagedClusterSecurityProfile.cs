@@ -36,10 +36,18 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// <param name="azureKeyVaultKms">Azure Key Vault [key management
         /// service](https://kubernetes.io/docs/tasks/administer-cluster/kms-provider/)
         /// settings for the security profile.</param>
-        public ManagedClusterSecurityProfile(ManagedClusterSecurityProfileDefender defender = default(ManagedClusterSecurityProfileDefender), AzureKeyVaultKms azureKeyVaultKms = default(AzureKeyVaultKms))
+        /// <param name="workloadIdentity">Workload identity settings for the
+        /// security profile. Workload identity enables Kubernetes applications
+        /// to access Azure cloud resources securely with Azure AD. See
+        /// https://aka.ms/aks/wi for more details.</param>
+        /// <param name="imageCleaner">Image Cleaner settings for the security
+        /// profile.</param>
+        public ManagedClusterSecurityProfile(ManagedClusterSecurityProfileDefender defender = default(ManagedClusterSecurityProfileDefender), AzureKeyVaultKms azureKeyVaultKms = default(AzureKeyVaultKms), ManagedClusterSecurityProfileWorkloadIdentity workloadIdentity = default(ManagedClusterSecurityProfileWorkloadIdentity), ManagedClusterSecurityProfileImageCleaner imageCleaner = default(ManagedClusterSecurityProfileImageCleaner))
         {
             Defender = defender;
             AzureKeyVaultKms = azureKeyVaultKms;
+            WorkloadIdentity = workloadIdentity;
+            ImageCleaner = imageCleaner;
             CustomInit();
         }
 
@@ -61,6 +69,21 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// </summary>
         [JsonProperty(PropertyName = "azureKeyVaultKms")]
         public AzureKeyVaultKms AzureKeyVaultKms { get; set; }
+
+        /// <summary>
+        /// Gets or sets workload identity settings for the security profile.
+        /// Workload identity enables Kubernetes applications to access Azure
+        /// cloud resources securely with Azure AD. See https://aka.ms/aks/wi
+        /// for more details.
+        /// </summary>
+        [JsonProperty(PropertyName = "workloadIdentity")]
+        public ManagedClusterSecurityProfileWorkloadIdentity WorkloadIdentity { get; set; }
+
+        /// <summary>
+        /// Gets or sets image Cleaner settings for the security profile.
+        /// </summary>
+        [JsonProperty(PropertyName = "imageCleaner")]
+        public ManagedClusterSecurityProfileImageCleaner ImageCleaner { get; set; }
 
     }
 }

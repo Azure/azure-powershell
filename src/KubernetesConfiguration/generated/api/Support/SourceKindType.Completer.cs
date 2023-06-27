@@ -34,6 +34,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support
             {
                 yield return new global::System.Management.Automation.CompletionResult("'Bucket'", "Bucket", global::System.Management.Automation.CompletionResultType.ParameterValue, "Bucket");
             }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "AzureBlob".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'AzureBlob'", "AzureBlob", global::System.Management.Automation.CompletionResultType.ParameterValue, "AzureBlob");
+            }
         }
     }
 }

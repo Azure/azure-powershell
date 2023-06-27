@@ -84,6 +84,12 @@ Param(
 $CIPlanPath = "$RepoArtifacts/PipelineResult/CIPlan.json"
 $PipelineResultPath = "$RepoArtifacts/PipelineResult/PipelineResult.json"
 
+$testResults = @{
+    Succeeded = 1
+    Warning = 10
+    Failed = 100
+}
+
 Function Get-PlatformInfo
 {
     If ($IsWindows)
@@ -134,8 +140,10 @@ Function Set-ModuleTestStatusInPipelineResult
         {
             If ($ModuleInfo.Module -Eq $ModuleName)
             {
-                $ModuleInfo.Status = $Status
-                $ModuleInfo.Content = $Content
+                if ([string]::IsNullOrWhiteSpace($ModuleInfo.Status) -or $testResults[$ModuleInfo.Status] -lt $testResults[$Status]) {
+                    $ModuleInfo.Status = $Status
+                    $ModuleInfo.Content = $Content
+                }
             }
         }
         ConvertTo-Json -Depth 10 -InputObject $PipelineResult | Out-File -FilePath $PipelineResultPath
@@ -290,12 +298,17 @@ If ($TestAutorest)
         Return
     }
     $ModuleName = Split-Path -Path $AutorestDirectory -Leaf
+    If ($ModuleName.EndsWith(".Autorest"))
+    {
+        $ModuleName = Split-Path -Path $AutorestDirectory | Split-Path -Leaf
+    }
     $ModuleFolderName = $ModuleName.Split(".")[1]
     If (Test-Path $CIPlanPath)
     {
         $CIPlan = Get-Content $CIPlanPath | ConvertFrom-Json
         If (-not ($CIPlan.test.Contains($ModuleFolderName)))
         {
+            Write-Debug "Skip test for $ModuleName because it is not in the test plan."
             Return
         }
         . $AutorestDirectory/test-module.ps1
@@ -315,7 +328,7 @@ If ($TestAutorest)
 If ($Test -And (($CIPlan.test.Length -Ne 0) -Or ($PSBoundParameters.ContainsKey("TargetModule"))))
 {
     dotnet test $RepoArtifacts/Azure.PowerShell.sln --filter "AcceptanceType=CheckIn&RunType!=DesktopOnly" --configuration $Configuration --framework $TestFramework --logger trx --results-directory $TestOutputDirectory
-    
+
     $TestResultFiles = Get-ChildItem "$RepoArtifacts/TestResults/" -Filter *.trx
     $FailedTestCases = @{}
     Foreach ($TestResultFile in $TestResultFiles)
@@ -356,7 +369,7 @@ If ($Test -And (($CIPlan.test.Length -Ne 0) -Or ($PSBoundParameters.ContainsKey(
             Set-ModuleTestStatusInPipelineResult -ModuleName $ModuleInfo.Module -Status $Status
         }
     }
-    
+
     If ($FailedTestCases.Length -ne 0)
     {
         Return -1

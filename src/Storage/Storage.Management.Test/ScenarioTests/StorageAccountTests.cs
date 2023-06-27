@@ -295,5 +295,12 @@ namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-AzureStorageLocalUserSftp");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestStorageAccountDnsEndpointType()
+        {
+            TestRunner.RunTestScript("Test-StorageAccountDnsEndpointType");
+        }
     }
 }

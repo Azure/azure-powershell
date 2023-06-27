@@ -19,16 +19,21 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// <summary>
         /// Use Calico network policies. See [differences between Azure and
         /// Calico
-        /// policies](https://learn.microsoft.com/azure/aks/use-network-policies#differences-between-azure-and-calico-policies-and-their-capabilities)
+        /// policies](https://docs.microsoft.com/azure/aks/use-network-policies#differences-between-azure-and-calico-policies-and-their-capabilities)
         /// for more information.
         /// </summary>
         public const string Calico = "calico";
         /// <summary>
         /// Use Azure network policies. See [differences between Azure and
         /// Calico
-        /// policies](https://learn.microsoft.com/azure/aks/use-network-policies#differences-between-azure-and-calico-policies-and-their-capabilities)
+        /// policies](https://docs.microsoft.com/azure/aks/use-network-policies#differences-between-azure-and-calico-policies-and-their-capabilities)
         /// for more information.
         /// </summary>
         public const string Azure = "azure";
+        /// <summary>
+        /// Use Cilium to enforce network policies. This requires
+        /// networkDataplane to be 'cilium'.
+        /// </summary>
+        public const string Cilium = "cilium";
     }
 }

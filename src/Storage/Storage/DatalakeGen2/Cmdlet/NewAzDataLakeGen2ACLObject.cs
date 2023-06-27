@@ -46,8 +46,9 @@ namespace Microsoft.Azure.Commands.Management.Storage
             IgnoreCase = true)]
         public AccessControlType AccessControlType;
 
-        [Parameter(Mandatory = true, HelpMessage = "The permission field is a 3-character sequence where the first character is 'r' to grant read access, the second character is 'w' to grant write access, and the third character is 'x' to grant execute permission. If access is not granted, the '-' character is used to denote that the permission is denied.")]
-        [ValidatePattern("[r-][w-][x-]")]
+        [Parameter(Mandatory = true, HelpMessage = "The permission field is a 3-character sequence where the first character is 'r' to grant read access, the second character is 'w' to grant write access, and the third character is 'x' to grant execute permission. If access is not granted, the '-' character is used to denote that the permission is denied. " +
+            "The sticky bit is also supported and its represented either by the letter t or T in the final character-place depending on whether the execution bit for the others category is set or unset respectively, absence of t or T indicates sticky bit not set.")]
+        [ValidatePattern("[r-][w-][xtT-]")]
         public string Permission { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "If input the PSPathAccessControlEntry[] object, will add the new ACL entry as a new element of the input PSPathAccessControlEntry[] object. If an ACL entry when same AccessControlType, EntityId, DefaultScope exist, will update permission of it.")]
@@ -80,7 +81,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
                 psacls.Remove(entryToRemove);
             }
 
-            PSPathAccessControlEntry psacl = new PSPathAccessControlEntry(this.AccessControlType, PathAccessControlExtensions.ParseSymbolicRolePermissions(this.Permission), this.DefaultScope, this.EntityId);
+            PSPathAccessControlEntry psacl = new PSPathAccessControlEntry(this.AccessControlType, PathAccessControlExtensions.ParseSymbolicRolePermissions(this.Permission, true), this.DefaultScope, this.EntityId);
             psacls.Add(psacl);
 
             WriteObject(psacls.ToArray(), true);

@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Management.NetApp
         /// Get the default and current limits for quotas
         /// </remarks>
         /// <param name='location'>
-        /// The location
+        /// The name of Azure region.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -86,9 +86,23 @@ namespace Microsoft.Azure.Management.NetApp
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
+            if (Client.SubscriptionId != null)
+            {
+                if (Client.SubscriptionId.Length < 1)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "Client.SubscriptionId", 1);
+                }
+            }
             if (location == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "location");
+            }
+            if (location != null)
+            {
+                if (location.Length < 1)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "location", 1);
+                }
             }
             if (Client.ApiVersion == null)
             {
@@ -254,7 +268,7 @@ namespace Microsoft.Azure.Management.NetApp
         /// Get the default and current subscription quota limit
         /// </remarks>
         /// <param name='location'>
-        /// The location
+        /// The name of Azure region.
         /// </param>
         /// <param name='quotaLimitName'>
         /// The name of the Quota Limit
@@ -286,9 +300,23 @@ namespace Microsoft.Azure.Management.NetApp
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
+            if (Client.SubscriptionId != null)
+            {
+                if (Client.SubscriptionId.Length < 1)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "Client.SubscriptionId", 1);
+                }
+            }
             if (location == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "location");
+            }
+            if (location != null)
+            {
+                if (location.Length < 1)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "location", 1);
+                }
             }
             if (quotaLimitName == null)
             {

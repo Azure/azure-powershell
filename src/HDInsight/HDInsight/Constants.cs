@@ -23,7 +23,6 @@ namespace Microsoft.Azure.Commands.HDInsight
             public const string AzureHDInsightClusterConfig = "AzureRmHDInsightClusterConfig";
             public const string AzureHDInsightClusterSize = "AzureRmHDInsightClusterSize";
             public const string AzureHDInsightHttpServicesAccess = "AzureRmHDInsightHttpServicesAccess";
-            public const string AzureHDInsightRdpServicesAccess = "AzureRmHDInsightRdpServicesAccess";
             public const string AzureHDInsightConfigValues = "AzureRmHDInsightConfigValues";
             public const string AzureHDInsightMetastore = "AzureRmHDInsightMetastore";
             public const string AzureHDInsightScriptAction = "AzureRmHDInsightScriptAction";

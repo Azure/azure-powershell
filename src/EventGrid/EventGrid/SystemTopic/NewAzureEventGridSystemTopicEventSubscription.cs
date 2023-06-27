@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Commands.EventGrid
             HelpMessage = EventGridConstants.DeliveryAttributeMappingHelp,
             ParameterSetName = SystemTopicEventSuscriptionParameterSet)]
         [ValidateNotNullOrEmpty]
-        public string[] DeliveryAttributeMapping { get; set; }
+        public Hashtable[] DeliveryAttributeMapping { get; set; }
 
         [Parameter(
             Mandatory = false,

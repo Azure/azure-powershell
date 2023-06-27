@@ -285,7 +285,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.Commands.CosmosDB.Models.PSSqlRoleDefinitionGetResults
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.CosmosDB.Models.PSSqlRoleAssignmentGetResults
+### Microsoft.Azure.Commands.CosmosDB.Models.PSSqlRoleDefinitionGetResults
 ## NOTES
 
 ## RELATED LINKS

@@ -20,6 +20,9 @@ This method gets the unencrypted secrets related to the job.
 ### [New-AzDataBoxContactDetailsObject](New-AzDataBoxContactDetailsObject.md)
 Create an in-memory object for ContactDetails.
 
+### [New-AzDataBoxCustomerDiskJobDetailsObject](New-AzDataBoxCustomerDiskJobDetailsObject.md)
+Create an in-memory object for DataBoxCustomerDiskJobDetails.
+
 ### [New-AzDataBoxDiskJobDetailsObject](New-AzDataBoxDiskJobDetailsObject.md)
 Create an in-memory object for DataBoxDiskJobDetails.
 

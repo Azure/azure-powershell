@@ -18,6 +18,73 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Supported TierToCold and TierToHot in Storage account management policy 
+    - `Add-AzStorageAccountManagementPolicyAction`
+* Supported Blob Tier Cold
+    - `Copy-AzStorageBlob`
+    - `Set-AzStorageBlobContent` 
+    - `Start-AzStorageBlobCopy`
+* Migrated the following Azure Queue dataplane cmdlets from 'Microsoft.Azure.Storage.Queue' to 'Azure.Storage.Queue'
+    - `New-AzStorageQueueSASToken`
+* Add warning messages for an upcoming breaking change when creating SAS token
+    - `New-AzStorageBlobSasToken`
+    - `New-AzStorageContainerSasToken`
+    - `New-AzStorageAccountSasToken`
+    - `New-AzStorageContext`
+    - `New-AzStorageFileSasToken`
+    - `New-AzStorageShareSasToken`
+    - `New-AzStorageQueueSasToken`
+    - `New-AzStorageTableSasToken`
+    - `New-AzDataLakeGen2SasToken`
+* Add a warning message for an upcoming breaking change when creating a storage account 
+    - `New-AzStorageAccount`
+
+## Version 5.7.0
+* Fixed issue of getting a single blob with leading slashes
+    - `Get-AzStorageBlob`
+* Supported setting CORS rules in management plane cmdlets 
+    - `Update-AzStorageBlobServiceProperty`
+    - `Update-AzStorageFileServiceProperty`
+* Fixed an issue of `StorageAccountName` field in context object when the context is invalid 
+    - `New-AzStorageContext`
+* Fixed an issue when a context does not have Credentials field
+* Added `$blobchangefeed` to be a valid container name
+
+## Version 5.6.0
+* Supported rename file and directory
+    - `Rename-AzStorageFile`
+    - `Rename-AzStorageDirectory`
+* Added a warning message for an upcoming breaking change when getting a single blob 
+    - `Get-AzStorageBlob`
+* Fixed the issue of listing blobs with leading slashes 
+    - `Get-AzStorageBlob`
+* Added support for sticky bit 
+    - `New-AzDataLakeGen2Item`
+    - `New-AzDataLakeGen2ACLObject`
+    - `Update-AzDataLakeGen2Item`
+* Added warning messages for an upcoming cmdlet breaking change 
+    - `New-AzStorageAccount`
+    - `Set-AzStorageAccount`
+* Allowed to clear blob tags on a blob 
+    - `Set-AzStorageBlobTag`
+* Updated Azure.Core to 1.31.0
+
+## Version 5.5.0
+* Supported create storage account with DnsEndpointType
+    - `New-AzStorageAccount`
+* Fixed file cmdlets potential context issue when the current context doesn't match with the credential of input Azure File object
+    - `Close-AzStorageFileHandle`
+    - `Get-AzStorageFile`
+    - `Get-AzStorageFileContent`
+    - `Get-AzStorageFileHandle`
+    - `New-AzStorageDirectory`
+    - `New-AzStorageFileSASToken`
+    - `Remove-AzStorageDirectory`
+    - `Remove-AzStorageFile`
+    - `Remove-AzStorageShare`
+    - `Set-AzStorageFileContent`
+    - `Set-AzStorageShareQuota`
+    - `Start-AzStorageFileCopy`
 
 ## Version 5.4.1
 * Updated Azure.Core to 1.28.0.

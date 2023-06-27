@@ -284,7 +284,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 
                     if (this.PassThru)
                     {
-                        WriteCloudFileObject(taskId, this.Channel, cloudFileToBeUploaded);
+                        WriteCloudFileObject(taskId, (AzureStorageContext)this.Context, cloudFileToBeUploaded);
                     }
                 });
             }
@@ -314,6 +314,12 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             {
                 case LocalConstants.DirectoryParameterSetName:
                     baseDirectory = this.Directory;
+                    // Build and set storage context for the output object when
+                    // 1. input track1 object and storage context is missing 2. the current context doesn't match the context of the input object 
+                    if (ShouldSetContext(this.Context, this.Directory.ServiceClient))
+                    {
+                        this.Context = GetStorageContextFromTrack1FileServiceClient(this.Directory.ServiceClient, DefaultContext);
+                    }
                     break;
 
                 case LocalConstants.ShareNameParameterSetName:
@@ -323,6 +329,12 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 
                 case LocalConstants.ShareParameterSetName:
                     baseDirectory = this.Share.GetRootDirectoryReference();
+                    // Build and set storage context for the output object when
+                    // 1. input track1 object and storage context is missing 2. the current context doesn't match the context of the input object 
+                    if (ShouldSetContext(this.Context, this.Share.ServiceClient))
+                    {
+                        this.Context = GetStorageContextFromTrack1FileServiceClient(this.Share.ServiceClient, DefaultContext);
+                    }
                     break;
 
                 default:

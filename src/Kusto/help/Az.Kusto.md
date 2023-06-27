@@ -68,6 +68,9 @@ Gets a private link resource.
 ### [Get-AzKustoScript](Get-AzKustoScript.md)
 Gets a Kusto cluster database script.
 
+### [Get-AzKustoSku](Get-AzKustoSku.md)
+Lists eligible region SKUs for Kusto resource provider by Azure region.
+
 ### [Invoke-AzKustoDataConnectionValidation](Invoke-AzKustoDataConnectionValidation.md)
 Checks that the data connection parameters are valid.
 

@@ -12,11 +12,14 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.Management.DataLake.Store" Version="2.4.2-preview" />
-    <PackageReference Include="Microsoft.Azure.Management.Network" Version="26.0.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\DataLakeStore\DataLakeStore.csproj" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <ProjectReference Include="..\..\Network\Network.Management.Sdk\Network.Management.Sdk.csproj" />
   </ItemGroup>
 
 </Project>

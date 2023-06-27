@@ -55,6 +55,14 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
         public SwitchParameter AllowDataLoss { get; set; }
 
         /// <summary>
+        /// Switch parameter indicating whether this failover operation will try planned before forced failover.
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "Performs planned failover as first step and if it fails for any reason than forced failover with potential data loss is initiated. "
+                + "This will allow the failover to proceed even if a primary database is unavailable.")]
+        public SwitchParameter TryPlannedBeforeForcedFailover { get; set; }
+
+        /// <summary>
         /// Gets or sets whether or not to run this cmdlet in the background as a job
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
@@ -93,7 +101,8 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
                     this.ResourceGroupName,
                     this.ServerName,
                     this.FailoverGroupName,
-                    this.AllowDataLoss.IsPresent)
+                    this.AllowDataLoss.IsPresent,
+                    this.TryPlannedBeforeForcedFailover.IsPresent)
            };
         }
     }

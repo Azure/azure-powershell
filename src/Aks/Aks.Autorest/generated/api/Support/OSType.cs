@@ -6,14 +6,14 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Support
 {
 
-    /// <summary>
-    /// OsType to be used to specify os type. Choose from Linux and Windows. Default to Linux.
-    /// </summary>
+    /// <summary>The operating system type. The default is Linux.</summary>
     public partial struct OSType :
         System.IEquatable<OSType>
     {
+        /// <summary>Use Linux.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.OSType Linux = @"Linux";
 
+        /// <summary>Use Windows.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.OSType Windows = @"Windows";
 
         /// <summary>the value for an instance of the <see cref="OSType" /> Enum.</summary>

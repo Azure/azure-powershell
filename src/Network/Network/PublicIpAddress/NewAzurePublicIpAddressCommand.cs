@@ -19,6 +19,7 @@ using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Network;
+using Microsoft.Azure.Management.Network.Models;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System.Collections;
 using System.Collections.Generic;
@@ -117,6 +118,18 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The Domain Name label Scope, the value can be TenantReuse or SubscriptionReuse or ResourceGroupReuse or NoReuse. It will decide HashedReusePolicy for FQDN, and can be set only when Domain Name Label has a valid value.")]
+        [ValidateSet(
+            nameof(PSDomainNameLabelScopeType.TenantReuse),
+            nameof(PSDomainNameLabelScopeType.SubscriptionReuse),
+            nameof(PSDomainNameLabelScopeType.ResourceGroupReuse),
+            nameof(PSDomainNameLabelScopeType.NoReuse), 
+            IgnoreCase = true)]
+        public PSDomainNameLabelScopeType DomainNameLabelScope { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "IpTag List.")]
         public PSPublicIpTag[] IpTag { get; set; }
 
@@ -211,6 +224,9 @@ namespace Microsoft.Azure.Commands.Network
             publicIp.PublicIpPrefix = this.PublicIpPrefix;
             publicIp.IpAddress = this.IpAddress;
 
+            publicIp.Sku = new PSPublicIpAddressSku();
+            publicIp.Sku.Name = MNM.PublicIPAddressSkuName.Standard;
+
             if (!string.IsNullOrEmpty(this.EdgeZone))
             {
                 publicIp.ExtendedLocation = new PSExtendedLocation(this.EdgeZone);
@@ -252,6 +268,10 @@ namespace Microsoft.Azure.Commands.Network
             {
                 publicIp.DnsSettings = new PSPublicIpAddressDnsSettings();
                 publicIp.DnsSettings.DomainNameLabel = this.DomainNameLabel;
+                if (!string.IsNullOrWhiteSpace(this.DomainNameLabelScope.ToString())) 
+                {
+                    publicIp.DnsSettings.DomainNameLabelScope = this.DomainNameLabelScope;
+                }
                 publicIp.DnsSettings.ReverseFqdn = this.ReverseFqdn;
             }
 

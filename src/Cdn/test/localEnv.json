@@ -1,5 +1,6 @@
 {
-  "Tenant": "72f988bf-86f1-41af-91ab-2d7cd011db47",
+  "ResourceGroupName": "testps-rg-mq96",
+  "SubscriptionId": "27cafca8-b9a4-4264-b399-45d0c9cca1ab",
   "location": "westus",
-  "SubscriptionId": "4d894474-aa7f-4611-b830-344860c3eb9c"
+  "Tenant": null
 }

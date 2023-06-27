@@ -19,9 +19,12 @@
 -->
 ## Upcoming Release
 
+## Version 3.2.0
+* Added new cmdlet `Add-AzServiceFabricManagedClusterNetworkSecurityRule` to update network security rules in managed cluster resource
+
 ## Version 3.1.1
 * Added support for Windows 2022 server vm image. 
-    - This enables cluster operations with Windows 2022 server vm image 
+    - This enables cluster operations with Windows 2022 server vm image
 
 ## Version 3.1.0
 * Fixed typo in verbose log message.

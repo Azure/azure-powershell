@@ -84,11 +84,6 @@ namespace Microsoft.Azure.Management.Sql
         IElasticPoolDatabaseActivitiesOperations ElasticPoolDatabaseActivities { get; }
 
         /// <summary>
-        /// Gets the IServersOperations.
-        /// </summary>
-        IServersOperations Servers { get; }
-
-        /// <summary>
         /// Gets the IServerDevOpsAuditSettingsOperations.
         /// </summary>
         IServerDevOpsAuditSettingsOperations ServerDevOpsAuditSettings { get; }
@@ -147,11 +142,6 @@ namespace Microsoft.Azure.Management.Sql
         /// Gets the IEncryptionProtectorsOperations.
         /// </summary>
         IEncryptionProtectorsOperations EncryptionProtectors { get; }
-
-        /// <summary>
-        /// Gets the IFailoverGroupsOperations.
-        /// </summary>
-        IFailoverGroupsOperations FailoverGroups { get; }
 
         /// <summary>
         /// Gets the IInstancePoolsOperations.
@@ -474,11 +464,6 @@ namespace Microsoft.Azure.Management.Sql
         IManagedInstanceDtcsOperations ManagedInstanceDtcs { get; }
 
         /// <summary>
-        /// Gets the IManagedDatabasesOperations.
-        /// </summary>
-        IManagedDatabasesOperations ManagedDatabases { get; }
-
-        /// <summary>
         /// Gets the IManagedDatabaseRestoreDetailsOperations.
         /// </summary>
         IManagedDatabaseRestoreDetailsOperations ManagedDatabaseRestoreDetails { get; }
@@ -503,5 +488,34 @@ namespace Microsoft.Azure.Management.Sql
         /// </summary>
         IInstanceFailoverGroupsOperations InstanceFailoverGroups { get; }
 
+        /// <summary>
+        /// Gets the IServersOperations.
+        /// </summary>
+        IServersOperations Servers { get; }
+
+        /// <summary>
+        /// Gets the IServerConfigurationOptionsOperations.
+        /// </summary>
+        IServerConfigurationOptionsOperations ServerConfigurationOptions { get; }
+
+        /// <summary>
+        /// Gets the IManagedLedgerDigestUploadsOperations.
+        /// </summary>
+        IManagedLedgerDigestUploadsOperations ManagedLedgerDigestUploads { get; }
+
+        /// <summary>
+        /// Gets the IManagedDatabasesOperations.
+        /// </summary>
+        IManagedDatabasesOperations ManagedDatabases { get; }
+
+        /// <summary>
+        /// Gets the IManagedDatabaseMoveOperations.
+        /// </summary>
+        IManagedDatabaseMoveOperations ManagedDatabaseMoveOperations { get; }
+
+        /// <summary>
+        /// Gets the IFailoverGroupsOperations.
+        /// </summary>
+        IFailoverGroupsOperations FailoverGroups { get; }
     }
 }

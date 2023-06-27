@@ -87,11 +87,6 @@ namespace Microsoft.Azure.Management.Sql
         public virtual IElasticPoolDatabaseActivitiesOperations ElasticPoolDatabaseActivities { get; private set; }
 
         /// <summary>
-        /// Gets the IServersOperations.
-        /// </summary>
-        public virtual IServersOperations Servers { get; private set; }
-
-        /// <summary>
         /// Gets the IServerDevOpsAuditSettingsOperations.
         /// </summary>
         public virtual IServerDevOpsAuditSettingsOperations ServerDevOpsAuditSettings { get; private set; }
@@ -150,11 +145,6 @@ namespace Microsoft.Azure.Management.Sql
         /// Gets the IEncryptionProtectorsOperations.
         /// </summary>
         public virtual IEncryptionProtectorsOperations EncryptionProtectors { get; private set; }
-
-        /// <summary>
-        /// Gets the IFailoverGroupsOperations.
-        /// </summary>
-        public virtual IFailoverGroupsOperations FailoverGroups { get; private set; }
 
         /// <summary>
         /// Gets the IInstancePoolsOperations.
@@ -477,11 +467,6 @@ namespace Microsoft.Azure.Management.Sql
         public virtual IManagedInstanceDtcsOperations ManagedInstanceDtcs { get; private set; }
 
         /// <summary>
-        /// Gets the IManagedDatabasesOperations.
-        /// </summary>
-        public virtual IManagedDatabasesOperations ManagedDatabases { get; private set; }
-
-        /// <summary>
         /// Gets the IManagedDatabaseRestoreDetailsOperations.
         /// </summary>
         public virtual IManagedDatabaseRestoreDetailsOperations ManagedDatabaseRestoreDetails { get; private set; }
@@ -500,11 +485,41 @@ namespace Microsoft.Azure.Management.Sql
         /// Gets the IRestorableDroppedDatabasesOperations.
         /// </summary>
         public virtual IRestorableDroppedDatabasesOperations RestorableDroppedDatabases { get; private set; }
-        
+
         /// <summary>
         /// Gets the IInstanceFailoverGroupsOperations.
         /// </summary>
         public virtual IInstanceFailoverGroupsOperations InstanceFailoverGroups { get; private set; }
+
+        /// <summary>
+        /// Gets the IServersOperations.
+        /// </summary>
+        public virtual IServersOperations Servers { get; private set; }
+
+        /// <summary>
+        /// Gets the IServerConfigurationOptionsOperations.
+        /// </summary>
+        public virtual IServerConfigurationOptionsOperations ServerConfigurationOptions { get; private set; }
+
+        /// <summary>
+        /// Gets the IManagedLedgerDigestUploadsOperations.
+        /// </summary>
+        public virtual IManagedLedgerDigestUploadsOperations ManagedLedgerDigestUploads { get; private set; }
+
+        /// <summary>
+        /// Gets the IManagedDatabasesOperations.
+        /// </summary>
+        public virtual IManagedDatabasesOperations ManagedDatabases { get; private set; }
+
+        /// <summary>
+        /// Gets the IManagedDatabaseMoveOperations.
+        /// </summary>
+        public virtual IManagedDatabaseMoveOperations ManagedDatabaseMoveOperations { get; private set; }
+
+        /// <summary>
+        /// Gets the IFailoverGroupsOperations.
+        /// </summary>
+        public virtual IFailoverGroupsOperations FailoverGroups { get; private set; }
 
         /// <summary>
         /// Initializes a new instance of the SqlManagementClient class.
@@ -751,7 +766,6 @@ namespace Microsoft.Azure.Management.Sql
             ElasticPools = new ElasticPoolsOperations(this);
             ElasticPoolActivities = new ElasticPoolActivitiesOperations(this);
             ElasticPoolDatabaseActivities = new ElasticPoolDatabaseActivitiesOperations(this);
-            Servers = new ServersOperations(this);
             ServerDevOpsAuditSettings = new ServerDevOpsAuditSettingsOperations(this);
             ServerBlobAuditingPolicies = new ServerBlobAuditingPoliciesOperations(this);
             DatabaseBlobAuditingPolicies = new DatabaseBlobAuditingPoliciesOperations(this);
@@ -764,7 +778,6 @@ namespace Microsoft.Azure.Management.Sql
             DatabaseVulnerabilityAssessmentScans = new DatabaseVulnerabilityAssessmentScansOperations(this);
             ElasticPoolOperations = new ElasticPoolOperations(this);
             EncryptionProtectors = new EncryptionProtectorsOperations(this);
-            FailoverGroups = new FailoverGroupsOperations(this);
             InstancePools = new InstancePoolsOperations(this);
             JobAgents = new JobAgentsOperations(this);
             JobCredentials = new JobCredentialsOperations(this);
@@ -829,12 +842,18 @@ namespace Microsoft.Azure.Management.Sql
             ServerAdvancedThreatProtectionSettings = new ServerAdvancedThreatProtectionSettingsOperations(this);
             ManagedServerDnsAliases = new ManagedServerDnsAliasesOperations(this);
             ManagedInstanceDtcs = new ManagedInstanceDtcsOperations(this);
-            ManagedDatabases = new ManagedDatabasesOperations(this);
             ManagedDatabaseRestoreDetails = new ManagedDatabaseRestoreDetailsOperations(this);
             DatabaseEncryptionProtectors = new DatabaseEncryptionProtectorsOperations(this);
             RecoverableDatabases = new RecoverableDatabasesOperations(this);
             RestorableDroppedDatabases = new RestorableDroppedDatabasesOperations(this);
             InstanceFailoverGroups = new InstanceFailoverGroupsOperations(this);
+            Servers = new ServersOperations(this);
+            ServerConfigurationOptions = new ServerConfigurationOptionsOperations(this);
+            ManagedLedgerDigestUploads = new ManagedLedgerDigestUploadsOperations(this);
+            ManagedDatabases = new ManagedDatabasesOperations(this);
+            ManagedDatabaseMoveOperations = new ManagedDatabaseMoveOperations(this);
+            FailoverGroups = new FailoverGroupsOperations(this);
+
             BaseUri = new System.Uri("https://management.azure.com");
             AcceptLanguage = "en-US";
             LongRunningOperationRetryTimeout = 30;

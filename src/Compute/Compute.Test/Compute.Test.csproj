@@ -14,7 +14,6 @@
     <PackageReference Include="Microsoft.Azure.Graph.RBAC" Version="3.4.0-preview" />
     <PackageReference Include="Microsoft.Azure.Management.Compute" Version="60.0.0" />
     <PackageReference Include="Microsoft.Azure.Management.KeyVault" Version="4.0.0-preview.1" />
-    <PackageReference Include="Microsoft.Azure.Management.Network" Version="26.0.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -30,6 +29,10 @@
 
   <ItemGroup>
     <None Include="..\..\Resources\Resources.Test\ScenarioTests\Common.ps1" Link="ScenarioTests\Common.ps1" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <ProjectReference Include="..\..\Network\Network.Management.Sdk\Network.Management.Sdk.csproj" />
   </ItemGroup>
 
 </Project>

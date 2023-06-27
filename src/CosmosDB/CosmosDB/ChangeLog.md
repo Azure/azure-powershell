@@ -19,6 +19,16 @@
 -->
 
 ## Upcoming Release
+* Locations show response now includes status, isSubscriptionRegionAccessAllowedForRegular and isSubscriptionRegionAccessAllowedForAz properties
+
+## Version 1.11.0
+* Added support for Continuous 7 Days backup mode.
+* Added new parameter `EnablePartitionMerge` to `Update-AzCosmosDBAccount` and `New-AzCosmosDBAccount`.
+
+## Version 1.10.1
+* Updated Azure.Core to 1.31.0.
+
+## Version 1.10.0
 * Introduced restorable apis support for Gremlin and Table, which includes:
     - Added the apis for RestorableGremlinDatabases, RestorableGremlinGraphs, RestorableGremlinResources,RestorableTables, RestorableResources.
     - Added RetrieveContinuousBackupInfo apis for Gremlin and Table which help in determining the restore point of time and the resources to restore.

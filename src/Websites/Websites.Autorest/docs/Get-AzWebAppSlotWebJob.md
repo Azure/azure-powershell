@@ -24,8 +24,10 @@ List webjobs for a deployment slot.
 
 ### Example 1: List webjobs for a deployment slot
 ```powershell
-PS C:\> Get-AzWebAppSlotWebJob -ResourceGroupName webjob-rg-test -AppName appService-test01 -SlotName slot01
+Get-AzWebAppSlotWebJob -ResourceGroupName webjob-rg-test -AppName appService-test01 -SlotName slot01
+```
 
+```output
 Name                                          Kind WebJobType ResourceGroupName
 ----                                          ---- ---------- -----------------
 appService-test01/slot01/slottriggeredjob-03                  webjob-rg-test
@@ -54,7 +56,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject

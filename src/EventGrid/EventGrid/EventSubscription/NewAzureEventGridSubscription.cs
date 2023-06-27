@@ -994,7 +994,7 @@ namespace Microsoft.Azure.Commands.EventGrid
             ValueFromPipelineByPropertyName = false,
             HelpMessage = EventGridConstants.DeliveryAttributeMappingHelp,
             ParameterSetName = EventSubscriptionDomainTopicInputObjectParameterSet)]
-        public string[] DeliveryAttributeMapping { get; set; }
+        public Hashtable[] DeliveryAttributeMapping { get; set; }
 
         [Parameter(
             Mandatory = false,

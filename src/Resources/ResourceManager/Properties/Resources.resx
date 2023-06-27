@@ -475,6 +475,9 @@
   <data name="DeploymentOperationOuterError" xml:space="preserve">
     <value>The deployment '{0}' failed with error(s). Showing {1} out of {2} error(s).</value>
   </data>
+  <data name="DeploymentStackOperationOuterError" xml:space="preserve">
+    <value>The deployment '{0}' failed with error(s). Showing {1} out of {2} error(s).</value>
+  </data>
   <data name="DeploymentOperationErrorMessageNoDetails" xml:space="preserve">
     <value>{0} (Code:{1})</value>
   </data>
@@ -511,5 +514,11 @@ You can help us improve the accuracy of the result by opening an issue here: htt
   </data>
   <data name="BuildBicepFileToJsonFailed" xml:space="preserve">
     <value>Build bicep file '{0}' to json failed.</value>
+  </data>
+  <data name="InvalidBicepparamFilePath" xml:space="preserve">
+    <value>Invalid Bicepparam file path.</value>
+  </data>
+  <data name="BuildBicepparamFileToJsonFailed" xml:space="preserve">
+    <value>Build bicepparam file '{0}' to json failed.</value>
   </data>
 </root>

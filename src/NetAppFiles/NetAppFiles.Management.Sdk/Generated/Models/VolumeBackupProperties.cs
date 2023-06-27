@@ -31,13 +31,11 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// </summary>
         /// <param name="backupPolicyId">Backup Policy Resource ID</param>
         /// <param name="policyEnforced">Policy Enforced</param>
-        /// <param name="vaultId">Vault Resource ID</param>
         /// <param name="backupEnabled">Backup Enabled</param>
-        public VolumeBackupProperties(string backupPolicyId = default(string), bool? policyEnforced = default(bool?), string vaultId = default(string), bool? backupEnabled = default(bool?))
+        public VolumeBackupProperties(string backupPolicyId = default(string), bool? policyEnforced = default(bool?), bool? backupEnabled = default(bool?))
         {
             BackupPolicyId = backupPolicyId;
             PolicyEnforced = policyEnforced;
-            VaultId = vaultId;
             BackupEnabled = backupEnabled;
             CustomInit();
         }
@@ -58,12 +56,6 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// </summary>
         [JsonProperty(PropertyName = "policyEnforced")]
         public bool? PolicyEnforced { get; set; }
-
-        /// <summary>
-        /// Gets or sets vault Resource ID
-        /// </summary>
-        [JsonProperty(PropertyName = "vaultId")]
-        public string VaultId { get; set; }
 
         /// <summary>
         /// Gets or sets backup Enabled

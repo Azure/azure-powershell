@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.Network.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -318,6 +318,15 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         internal static string CommissioningStateConflict {
             get {
                 return ResourceManager.GetString("CommissioningStateConflict", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Confirm.
+        /// </summary>
+        internal static string ConfirmMessage {
+            get {
+                return ResourceManager.GetString("ConfirmMessage", resourceCulture);
             }
         }
         
@@ -1195,6 +1204,15 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Removing this Route Map resource may affect the routing in your VirtualHub.
+        /// </summary>
+        internal static string RemoveRouteMapWarning {
+            get {
+                return ResourceManager.GetString("RemoveRouteMapWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Removing a Route Server will also remove all peerings associated with it. Are you sure you want to remove resource &apos;{0}&apos;.
         /// </summary>
         internal static string RemoveRouteServerWarning {
@@ -1335,6 +1353,15 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         internal static string ResourceNotFound {
             get {
                 return ResourceManager.GetString("ResourceNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The route map resource could not be found.
+        /// </summary>
+        internal static string RouteMapNotFound {
+            get {
+                return ResourceManager.GetString("RouteMapNotFound", resourceCulture);
             }
         }
         
@@ -1672,6 +1699,15 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to A valid VHub RouteMap reference is required.
+        /// </summary>
+        internal static string VHubRouteMapReferenceNotFound {
+            get {
+                return ResourceManager.GetString("VHubRouteMapReferenceNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The HubRouteTable could not be found..
         /// </summary>
         internal static string VHubRouteTableNotFound {
@@ -1875,6 +1911,24 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         internal static string VpnGatewayRequiredToCreateVpnNatRule {
             get {
                 return ResourceManager.GetString("VpnGatewayRequiredToCreateVpnNatRule", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Warning: VpnClientProtocol being configured are: OpenVPN, IkeV2. AAD is one of the auth types configured. Since AAD is only supported for OpenVPN, it will only be used for OpenVPN..
+        /// </summary>
+        internal static string VpnMultiAuthIkev2OpenvpnAadWarning {
+            get {
+                return ResourceManager.GetString("VpnMultiAuthIkev2OpenvpnAadWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to VpnClientProtocol being configured are : OpenVPN, IkeV2. VpnAuthenticationType being configured is AAD. Since AAD is only supported for OpenVPN, please choose one additional auth type or choose only OpenVPN protocol..
+        /// </summary>
+        internal static string VpnMultiAuthIkev2OpenvpnOnlyAad {
+            get {
+                return ResourceManager.GetString("VpnMultiAuthIkev2OpenvpnOnlyAad", resourceCulture);
             }
         }
         

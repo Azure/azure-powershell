@@ -1,7 +1,7 @@
 param (
     [Parameter(Mandatory, Position = 0)]
     [ValidateNotNullOrEmpty()]
-    [guid] $ServicePrincipalTenantId,
+    [guid] $TenantId,
 
     [Parameter(Mandatory, Position = 1)]
     [ValidateNotNullOrEmpty()]
@@ -17,57 +17,16 @@ param (
 
     [Parameter(Mandatory, Position = 4)]
     [ValidateNotNullOrEmpty()]
-    [string] $ClusterRegion,
-
-    [Parameter(Mandatory, Position = 5)]
-    [ValidateNotNullOrEmpty()]
-    [string] $DatabaseName,
-
-    [Parameter(Mandatory, Position = 6)]
-    [ValidateNotNullOrEmpty()]
-    [string] $LiveTestTableName,
-
-    [Parameter(Mandatory, Position = 7)]
-    [ValidateNotNullOrEmpty()]
-    [string] $TestCoverageTableName,
-
-    [Parameter(Mandatory, Position = 8)]
-    [ValidateNotNullOrEmpty()]
-    [string] $DataLocation
+    [string] $ClusterRegion
 )
 
-Import-Module "./tools/TestFx/Utilities/KustoUtility.psd1" -Force
+$ltDir = Join-Path -Path ${env:DATALOCATION} -ChildPath "LiveTestAnalysis" | Join-Path -ChildPath "Raw"
+$ltResults = Get-ChildItem -Path $ltDir -Filter "*.csv" -File -ErrorAction SilentlyContinue | Select-Object -ExpandProperty FullName
 
-$liveTestDir = Join-Path -Path $DataLocation -ChildPath "LiveTestAnalysis" | Join-Path -ChildPath "Raw"
-if (Test-Path -LiteralPath $liveTestDir) {
-    $liveTestResults = Get-ChildItem -Path $liveTestDir -Filter "*.csv" -File | Select-Object -ExpandProperty FullName
-    Import-KustoDataFromCsv `
-        -ServicePrincipalTenantId $ServicePrincipalTenantId `
-        -ServicePrincipalId $ServicePrincipalId `
-        -ServicePrincipalSecret $ServicePrincipalSecret `
-        -ClusterName $ClusterName `
-        -ClusterRegion $ClusterRegion `
-        -DatabaseName $DatabaseName `
-        -TableName $LiveTestTableName `
-        -CsvFile $liveTestResults
+if (![string]::IsNullOrEmpty($ltResults)) {
+    Import-Module "./tools/TestFx/Utilities/KustoUtility.psd1" -ArgumentList $TenantId, $ServicePrincipalId, $ServicePrincipalSecret, $ClusterName, $ClusterRegion -Force
+    Add-KustoData -DatabaseName ${env:LIVETESTDATABASENAME} -TableName ${env:LIVETESTTABLENAME} -CsvFile $ltResults
 }
 else {
-    Write-Warning "No live test data generated."
-}
-
-$testCoverageDir = Join-Path -Path $DataLocation -ChildPath "TestCoverageAnalysis" | Join-Path -ChildPath "Raw"
-if (Test-Path -LiteralPath $testCoverageDir) {
-    $testCoverageResults = Get-ChildItem -Path $testCoverageDir -Filter "*.csv" -File | Select-Object -ExpandProperty FullName
-    Import-KustoDataFromCsv `
-        -ServicePrincipalTenantId $ServicePrincipalTenantId `
-        -ServicePrincipalId $ServicePrincipalId `
-        -ServicePrincipalSecret $ServicePrincipalSecret `
-        -ClusterName $ClusterName `
-        -ClusterRegion $ClusterRegion `
-        -DatabaseName $DatabaseName `
-        -TableName $TestCoverageTableName `
-        -CsvFile $testCoverageResults
-}
-else {
-    Write-Warning "No test coverage data generated."
+    Write-Host "##[warning]No live test data was found."
 }
