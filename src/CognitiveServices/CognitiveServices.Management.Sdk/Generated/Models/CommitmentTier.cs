@@ -33,8 +33,8 @@ namespace Microsoft.Azure.Management.CognitiveServices.Models
         /// <param name="skuName">The name of the SKU. Ex - P3. It is typically
         /// a letter+number code</param>
         /// <param name="hostingModel">Account hosting model. Possible values
-        /// include: 'Web', 'ConnectedContainer',
-        /// 'DisconnectedContainer'</param>
+        /// include: 'Web', 'ConnectedContainer', 'DisconnectedContainer',
+        /// 'ProvisionedWeb'</param>
         /// <param name="planType">Commitment plan type.</param>
         /// <param name="tier">Commitment period commitment tier.</param>
         /// <param name="maxCount">Commitment period commitment max
@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Management.CognitiveServices.Models
 
         /// <summary>
         /// Gets or sets account hosting model. Possible values include: 'Web',
-        /// 'ConnectedContainer', 'DisconnectedContainer'
+        /// 'ConnectedContainer', 'DisconnectedContainer', 'ProvisionedWeb'
         /// </summary>
         [JsonProperty(PropertyName = "hostingModel")]
         public string HostingModel { get; set; }

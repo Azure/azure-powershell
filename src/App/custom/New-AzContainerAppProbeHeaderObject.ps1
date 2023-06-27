@@ -22,8 +22,6 @@ Create an in-memory object for ContainerAppProbeHttpGetHttpHeadersItem.
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.ContainerAppProbeHttpGetHttpHeadersItem
-.Link
-https://learn.microsoft.com/powershell/module/az./new-azcontainerappprobeheaderobject
 #>
 function New-AzContainerAppProbeHeaderObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.ContainerAppProbeHttpGetHttpHeadersItem')]

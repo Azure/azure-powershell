@@ -24,12 +24,12 @@ $secret =  Get-AzFrontDoorCdnSecret -ResourceGroupName testps-rg-da16jm -Profile
 New-AzFrontDoorCdnResourceReferenceObject -Id $secret.Id
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.ResourceReference
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ResourceReference
 .Link
 https://learn.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnResourceReferenceObject
 #>
 function New-AzFrontDoorCdnResourceReferenceObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.ResourceReference])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ResourceReference])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter()]

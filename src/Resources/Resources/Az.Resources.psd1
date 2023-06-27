@@ -66,7 +66,8 @@ RequiredAssemblies = 'Microsoft.Azure.Management.Authorization.dll',
                'Microsoft.Extensions.Primitives.dll', 
                'System.Runtime.CompilerServices.Unsafe.dll', 
                'MSGraph.Autorest\bin\Az.MSGraph.private.dll', 
-               'Authorization.Autorest\bin\Az.Authorization.private.dll'
+               'Authorization.Autorest\bin\Az.Authorization.private.dll',
+               'Microsoft.Azure.PowerShell.Resources.Management.Sdk.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()
@@ -190,8 +191,14 @@ CmdletsToExport = 'Get-AzProviderOperation', 'Remove-AzRoleAssignment',
                'New-AzManagementGroupHierarchySetting', 
                'Update-AzManagementGroupHierarchySetting', 
                'Get-AzManagementGroupHierarchySetting', 
-               'Remove-AzManagementGroupHierarchySetting'
-
+               'Remove-AzManagementGroupHierarchySetting', 'Get-AzResourceGroupDeploymentStack',
+               'New-AzResourceGroupDeploymentStack',
+               'New-AzSubscriptionDeploymentStack', 'Remove-AzResourceGroupDeploymentStack',
+               'Remove-AzSubscriptionDeploymentStack','Set-AzResourceGroupDeploymentStack',
+               'Set-AzSubscriptionDeploymentStack', 'Get-AzSubscriptionDeploymentStack',
+               'Save-AzResourceGroupDeploymentStackTemplate', 'Save-AzSubscriptionDeploymentStackTemplate',
+               'Save-AzManagementGroupDeploymentStackTemplate', 'Set-AzManagementGroupDeploymentStack',
+               'New-AzManagementGroupDeploymentStack', 'Remove-AzManagementGroupDeploymentStack', 'Get-AzManagementGroupDeploymentStack'
 # Variables to export from this module
 VariablesToExport = '*'
 
@@ -267,4 +274,3 @@ PrivateData = @{
 # DefaultCommandPrefix = ''
 
 }
-

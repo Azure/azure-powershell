@@ -99,9 +99,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         [ValidateSet("Block", "Page", "Append", IgnoreCase = true)]
         public string DestBlobType { get; set; }
 
-        [Parameter(HelpMessage = "Block Blob Tier, valid values are Hot/Cool/Archive. See detail in https://learn.microsoft.com/en-us/azure/storage/blobs/storage-blob-storage-tiers", Mandatory = false)]
+        [Parameter(HelpMessage = "Block Blob Tier, valid values are Hot/Cool/Archive/Cold. See detail in https://learn.microsoft.com/en-us/azure/storage/blobs/storage-blob-storage-tiers", Mandatory = false)]
         [ValidateNotNullOrEmpty]
-        [PSArgumentCompleter("Hot", "Cool", "Archive")]
+        [PSArgumentCompleter("Hot", "Cool", "Archive", "Cold")]
         public string StandardBlobTier
         {
             get

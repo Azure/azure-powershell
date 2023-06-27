@@ -21,12 +21,12 @@ Create an in-memory object for SpacecraftLink.
 Create an in-memory object for SpacecraftLink.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.SpacecraftLink
+Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.SpacecraftLink
 .Link
 https://learn.microsoft.com/powershell/module/az.Orbital/new-AzOrbitalSpacecraftLinkObject
 #>
 function New-AzOrbitalSpacecraftLinkObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.SpacecraftLink')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.SpacecraftLink')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -50,7 +50,7 @@ function New-AzOrbitalSpacecraftLinkObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.SpacecraftLink]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.SpacecraftLink]::New()
 
         if ($PSBoundParameters.ContainsKey('BandwidthMHz')) {
             $Object.BandwidthMHz = $BandwidthMHz

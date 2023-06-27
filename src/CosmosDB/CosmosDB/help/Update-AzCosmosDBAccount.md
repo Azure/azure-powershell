@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzCosmosDBAccount
 
 ## SYNOPSIS
-Update a CosmosDB account attributes.
+Update a Cosmos DB Account attributes.
 
 ## SYNTAX
 
@@ -88,7 +88,7 @@ NetworkAclBypass              : None
 NetworkAclBypassResourceIds   : {}
 ```
 
-Updated DefaultConsistencyLevel to "Strong", Enabled AutomaticFailover, Enabled MultipleWriteLocations and Enabled VirtualNetwork for CosmosDB Account with name accountName. 
+Updated DefaultConsistencyLevel to "Strong", Enabled AutomaticFailover, Enabled MultipleWriteLocations and Enabled VirtualNetwork for Cosmos DB Account with name accountName. 
 
 ## PARAMETERS
 
@@ -323,7 +323,7 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-CosmosDB Account object
+Cosmos DB Account object
 
 ```yaml
 Type: Microsoft.Azure.Commands.CosmosDB.Models.PSDatabaseAccountGetResults

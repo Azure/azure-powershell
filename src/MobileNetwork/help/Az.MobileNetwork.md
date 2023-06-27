@@ -11,6 +11,16 @@ Locale: en-US
 Microsoft Azure PowerShell: MobileNetwork cmdlets
 
 ## Az.MobileNetwork Cmdlets
+### [Deploy-AzMobileNetworkReinstallPacketCoreControlPlane](Deploy-AzMobileNetworkReinstallPacketCoreControlPlane.md)
+Reinstall the specified packet core control plane.
+This action will remove any transaction state from the packet core to return it to a known state.
+This action will cause a service outage.
+
+### [Deploy-AzMobileNetworkRollbackPacketCoreControlPlane](Deploy-AzMobileNetworkRollbackPacketCoreControlPlane.md)
+Roll back the specified packet core control plane to the previous version, \"rollbackVersion\".
+Multiple consecutive rollbacks are not possible.
+This action may cause a service outage.
+
 ### [Get-AzMobileNetwork](Get-AzMobileNetwork.md)
 Gets information about the specified mobile network.
 
@@ -141,6 +151,10 @@ This will also delete any network functions that are a part of this site.
 
 ### [Remove-AzMobileNetworkSlice](Remove-AzMobileNetworkSlice.md)
 Deletes the specified network slice.
+
+### [Trace-AzMobileNetworkCollectPacketCoreControlPlaneDiagnosticPackage](Trace-AzMobileNetworkCollectPacketCoreControlPlaneDiagnosticPackage.md)
+Collect a diagnostics package for the specified packet core control plane.
+This action will upload the diagnostics to a storage account.
 
 ### [Update-AzMobileNetwork](Update-AzMobileNetwork.md)
 Updates mobile network tags.

@@ -60,7 +60,7 @@ VOLUMEMOUNT <IVolumeMount[]>: Container volume mounts.
   [MountPath <String>]: Path within the container at which the volume should be mounted.Must not contain ':'.
   [VolumeName <String>]: This must match the Name of a Volume.
 .Link
-https://learn.microsoft.com/powershell/module/az./new-azcontainerapptemplateobject
+https://learn.microsoft.com/powershell/module/az.app/new-azcontainerapptemplateobject
 #>
 function New-AzContainerAppTemplateObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.Container])]
@@ -135,7 +135,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
         }         
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {

@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Locations show response now includes status, isSubscriptionRegionAccessAllowedForRegular and isSubscriptionRegionAccessAllowedForAz properties
 
 ## Version 1.11.0
 * Added support for Continuous 7 Days backup mode.

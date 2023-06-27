@@ -18,7 +18,7 @@ Get-AzCosmosDBLocation [-Location <String>] [-DefaultProfile <IAzureContextConta
 ```
 
 ## DESCRIPTION
-List Azure Cosmos DB locations with their location properties. It includes Location Id, Name, Type, SupportsAvailabilityZone, IsResidencyRestricted and BackupStorageRedundancies.
+List Azure Cosmos DB locations with their location properties. It includes Location Id, Name, Type, SupportsAvailabilityZone, IsResidencyRestricted, BackupStorageRedundancies, IsSubscriptionRegionAccessAllowedForRegular, IsSubscriptionRegionAccessAllowedForAz and Status.
 
 ## EXAMPLES
 
@@ -44,7 +44,10 @@ Get-AzCosmosDBLocation -Location "Central US" | ConvertTo-Json
                                                          "Geo",
                                                          "Zone",
                                                          "Local"
-                                                     ]
+                                                     ],
+                        "IsSubscriptionRegionAccessAllowedForRegular": true,
+                        "IsSubscriptionRegionAccessAllowedForAz": false,
+                        "Status": "Online"
                    }
 }
 ```
@@ -70,7 +73,10 @@ Get-AzCosmosDBLocation | ConvertTo-Json
         "Properties":  {
                            "SupportsAvailabilityZone":  true,
                            "IsResidencyRestricted":  false,
-                           "BackupStorageRedundancies":  "Geo Local"
+                           "BackupStorageRedundancies":  "Geo Local",
+                           "IsSubscriptionRegionAccessAllowedForRegular": true,
+                           "IsSubscriptionRegionAccessAllowedForAz": false,
+                           "Status": "Online"
                        }
     },
     {
@@ -80,7 +86,10 @@ Get-AzCosmosDBLocation | ConvertTo-Json
         "Properties":  {
                            "SupportsAvailabilityZone":  true,
                            "IsResidencyRestricted":  false,
-                           "BackupStorageRedundancies":  "Geo Zone Local"
+                           "BackupStorageRedundancies":  "Geo Zone Local",
+                           "IsSubscriptionRegionAccessAllowedForRegular": false,
+                           "IsSubscriptionRegionAccessAllowedForAz": true,
+                           "Status": "Online"
                        }
     },
     {
@@ -90,7 +99,10 @@ Get-AzCosmosDBLocation | ConvertTo-Json
         "Properties":  {
                            "SupportsAvailabilityZone":  false,
                            "IsResidencyRestricted":  false,
-                           "BackupStorageRedundancies":  "Geo Local"
+                           "BackupStorageRedundancies":  "Geo Local",
+                           "IsSubscriptionRegionAccessAllowedForRegular": true,
+                           "IsSubscriptionRegionAccessAllowedForAz": true,
+                           "Status": "Online"
                        }
     }
 ]

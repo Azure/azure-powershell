@@ -38,9 +38,10 @@ namespace Microsoft.Azure.Management.CognitiveServices.Models
         /// <param name="etag">Resource Etag.</param>
         /// <param name="properties">Properties of Cognitive Services account
         /// deployment.</param>
-        public Deployment(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), string etag = default(string), DeploymentProperties properties = default(DeploymentProperties))
+        public Deployment(string id = default(string), string name = default(string), string type = default(string), Sku sku = default(Sku), SystemData systemData = default(SystemData), string etag = default(string), DeploymentProperties properties = default(DeploymentProperties))
             : base(id, name, type)
         {
+            Sku = sku;
             SystemData = systemData;
             Etag = etag;
             Properties = properties;
@@ -51,6 +52,11 @@ namespace Microsoft.Azure.Management.CognitiveServices.Models
         /// An initialization method that performs custom operations like setting defaults
         /// </summary>
         partial void CustomInit();
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "sku")]
+        public Sku Sku { get; set; }
 
         /// <summary>
         /// </summary>
@@ -69,5 +75,18 @@ namespace Microsoft.Azure.Management.CognitiveServices.Models
         [JsonProperty(PropertyName = "properties")]
         public DeploymentProperties Properties { get; set; }
 
+        /// <summary>
+        /// Validate the object.
+        /// </summary>
+        /// <exception cref="Rest.ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public virtual void Validate()
+        {
+            if (Sku != null)
+            {
+                Sku.Validate();
+            }
+        }
     }
 }

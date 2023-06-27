@@ -79,6 +79,15 @@ namespace Microsoft.Azure.Commands.Ssh.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Client is not authorized to create a Default connectivity endpoint for {0} in the Resource Group {1}. This is a one-time operation that must be performed by an account with Owner or Contributor role in the resource to allow connections to target resource..
+        /// </summary>
+        internal static string DefaultEndpointCreateForbidden {
+            get {
+                return ResourceManager.GetString("DefaultEndpointCreateForbidden", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Failed to generate AAD certificate. AAD Login is currently not supported for accounts of type {0} in Azure PowerShell. Try connecting to a Local Account instead..
         /// </summary>
         internal static string FailedToAADUnsupportedAccountType {
@@ -124,7 +133,7 @@ namespace Microsoft.Azure.Commands.Ssh.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to You currently don&apos;t have the required Az.Ssh.ArcProxy module installed in this machine. Would you like this cmdlet to attempt to install the Az.Ssh.ArcProxy module from the PowerShell Gallery in the current user scope?.
+        ///   Looks up a localized string similar to The required Az.Ssh.ArcProxy module is not installed in this machine. Would you like this cmdlet to attempt to install the Az.Ssh.ArcProxy module from the PowerShell Gallery in the current user scope?.
         /// </summary>
         internal static string InstallProxyModuleCaption {
             get {
@@ -133,7 +142,7 @@ namespace Microsoft.Azure.Commands.Ssh.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to You must have the Az.Ssh.Proxy PowerShell module installed in the client machine in order to connect to Azure Arc resources. Installing the module to this machine is a one time operation, and you can choose to do it manually. You can find the module in the PowerShell Gallery (see: https://aka.ms/PowerShellGallery-Az.Ssh.ArcProxy)..
+        ///   Looks up a localized string similar to The Az.Ssh.Proxy PowerShell module must be installed on the client machine in order to connect to Azure Arc resources. Installing the module to this machine is a one time operation, and you can choose to do it manually. You can find the module in the PowerShell Gallery (see: https://aka.ms/PowerShellGallery-Az.Ssh.ArcProxy)..
         /// </summary>
         internal static string InstallProxyModuleMessage {
             get {
@@ -228,6 +237,69 @@ namespace Microsoft.Azure.Commands.Ssh.Properties {
         internal static string ResourceNotFoundTypeProvided {
             get {
                 return ResourceManager.GetString("ResourceNotFoundTypeProvided", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failed to create service configuration to allow SSH connections to port {0} on the endpoint for {1} in the Resource Group {2}..
+        /// </summary>
+        internal static string ServiceConfigCreateCloudFailure {
+            get {
+                return ResourceManager.GetString("ServiceConfigCreateCloudFailure", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SSH connection is not enabled in the target port {0}..
+        /// </summary>
+        internal static string ServiceConfigCreateConfirmationDenied {
+            get {
+                return ResourceManager.GetString("ServiceConfigCreateConfirmationDenied", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Port 22 is not allowed for SSH connections in this resource. You must have owner or contributor roles in this resource to be able to change the service configuration. If you would like this cmdlet to update the Service Configuration to allow connections to a different port, please provide the -Port parameter or manually set up the Service Configuration..
+        /// </summary>
+        internal static string ServiceConfigCreateConfirmCaptionDefaultPort {
+            get {
+                return ResourceManager.GetString("ServiceConfigCreateConfirmCaptionDefaultPort", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Port {0} is not allowed for SSH connections in this resource. You must have owner or contributor roles in this resource to be able to change the service configuration..
+        /// </summary>
+        internal static string ServiceConfigCreateConfirmCaptionExplicitPort {
+            get {
+                return ResourceManager.GetString("ServiceConfigCreateConfirmCaptionExplicitPort", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Would you like to update the current Service Configuration in the endpoint to allow connections to port {0}?.
+        /// </summary>
+        internal static string ServiceConfigCreateConfirmQuery {
+            get {
+                return ResourceManager.GetString("ServiceConfigCreateConfirmQuery", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Client is not authorized to create or update the Service Configuration endpoint for {0} in the Resource Group {1}. This is an operation that must be performed by an account with Owner or Contributor role to allow SSH connections to the specified port {2}..
+        /// </summary>
+        internal static string ServiceConfigCreateForbidden {
+            get {
+                return ResourceManager.GetString("ServiceConfigCreateForbidden", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The Service Configuration in the Connection Endpoint is set to a non-default port. If you want this cmdlet to update the port in the Service Configuration to the default SSH port, please provide -Port 22 as a parameter on the first attempt to connect..
+        /// </summary>
+        internal static string ServiceConfigNotSetToDefaultPort {
+            get {
+                return ResourceManager.GetString("ServiceConfigNotSetToDefaultPort", resourceCulture);
             }
         }
         

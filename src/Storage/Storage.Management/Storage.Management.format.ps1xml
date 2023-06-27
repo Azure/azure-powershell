@@ -300,6 +300,30 @@
                 <Label>BaseBlob.Delete.DaysAfterCreationGreaterThan</Label>
               </ListItem>
               <ListItem>
+                  <ScriptBlock>$_.BaseBlob.TierToCold.DaysAfterModificationGreaterThan</ScriptBlock>
+                  <Label>BaseBlob.TierToCold.DaysAfterModificationGreaterThan</Label>
+              </ListItem>
+              <ListItem>
+                  <ScriptBlock>$_.BaseBlob.TierToCold.DaysAfterLastAccessTimeGreaterThan</ScriptBlock>
+                  <Label>BaseBlob.TierToCold.DaysAfterLastAccessTimeGreaterThan</Label>
+              </ListItem>
+              <ListItem>
+                  <ScriptBlock>$_.BaseBlob.TierToCold.DaysAfterCreationGreaterThan</ScriptBlock>
+                  <Label>BaseBlob.TierToCold.DaysAfterCreationGreaterThan</Label>
+              </ListItem>
+              <ListItem>
+                  <ScriptBlock>$_.BaseBlob.TierToHot.DaysAfterModificationGreaterThan</ScriptBlock>
+                  <Label>BaseBlob.TierToHot.DaysAfterModificationGreaterThan</Label>
+              </ListItem>
+              <ListItem>
+                  <ScriptBlock>$_.BaseBlob.TierToHot.DaysAfterLastAccessTimeGreaterThan</ScriptBlock>
+                  <Label>BaseBlob.TierToHot.DaysAfterLastAccessTimeGreaterThan</Label>
+              </ListItem>
+              <ListItem>
+                  <ScriptBlock>$_.BaseBlob.TierToHot.DaysAfterCreationGreaterThan</ScriptBlock>
+                  <Label>BaseBlob.TierToHot.DaysAfterCreationGreaterThan</Label>
+              </ListItem>
+              <ListItem>
                 <ScriptBlock>$_.Snapshot.TierToCool.DaysAfterCreationGreaterThan</ScriptBlock>
                 <Label>Snapshot.TierToCool.DaysAfterCreationGreaterThan</Label>
               </ListItem>
@@ -316,6 +340,14 @@
                 <Label>Snapshot.Delete.DaysAfterCreationGreaterThan</Label>
               </ListItem>
               <ListItem>
+                  <ScriptBlock>$_.Snapshot.TierToCold.DaysAfterCreationGreaterThan</ScriptBlock>
+                  <Label>Snapshot.TierToCold.DaysAfterCreationGreaterThan</Label>
+              </ListItem>
+              <ListItem>
+                  <ScriptBlock>$_.Snapshot.TierToHot.DaysAfterCreationGreaterThan</ScriptBlock>
+                  <Label>Snapshot.TierToHot.DaysAfterCreationGreaterThan</Label>
+              </ListItem>
+              <ListItem>
                 <ScriptBlock>$_.Version.TierToCool.DaysAfterCreationGreaterThan</ScriptBlock>
                 <Label>Version.TierToCool.DaysAfterCreationGreaterThan</Label>
               </ListItem>
@@ -330,6 +362,14 @@
               <ListItem>
                 <ScriptBlock>$_.Version.Delete.DaysAfterCreationGreaterThan</ScriptBlock>
                 <Label>Version.Delete.DaysAfterCreationGreaterThan</Label>
+              </ListItem>
+              <ListItem>
+                  <ScriptBlock>$_.Version.TierToCold.DaysAfterCreationGreaterThan</ScriptBlock>
+                  <Label>Version.TierToCold.DaysAfterCreationGreaterThan</Label>
+              </ListItem>
+              <ListItem>
+                  <ScriptBlock>$_.Version.TierToHot.DaysAfterCreationGreaterThan</ScriptBlock>
+                  <Label>Version.TierToHot.DaysAfterCreationGreaterThan</Label>
               </ListItem>
             </ListItems>
           </ListEntry>

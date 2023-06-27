@@ -15,7 +15,7 @@
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
-using Microsoft.Azure.Management.ResourceManager.Models;
+using Microsoft.Azure.Management.Resources.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Moq;
@@ -30,7 +30,7 @@ using System.Linq;
 using System.Collections;
 using FluentAssertions;
 using ProvisioningState = Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.ProvisioningState;
-using Microsoft.Azure.Management.ResourceManager;
+using Microsoft.Azure.Management.Resources;
 using Newtonsoft.Json.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
     {
         private NewAzureResourceGroupDeploymentCmdlet cmdlet;
 
-        private Mock<ResourceManagerSdkClient> resourcesClientMock;
+        private Mock<NewResourceManagerSdkClient> resourcesClientMock;
 
         private Mock<ITemplateSpecsClient> templateSpecsClientMock;
 
@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
 
         public NewAzureResourceGroupDeploymentCommandTests(ITestOutputHelper output)
         {
-            resourcesClientMock = new Mock<ResourceManagerSdkClient>();
+            resourcesClientMock = new Mock<NewResourceManagerSdkClient>();
 
             templateSpecsClientMock = new Mock<ITemplateSpecsClient>();
             templateSpecsClientMock.SetupAllProperties();
@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
             cmdlet = new NewAzureResourceGroupDeploymentCmdlet()
             {
                 CommandRuntime = commandRuntimeMock.Object,
-                ResourceManagerSdkClient = resourcesClientMock.Object,
+                NewResourceManagerSdkClient = resourcesClientMock.Object,
                 TemplateSpecsClient = templateSpecsClientMock.Object
             };
         }

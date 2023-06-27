@@ -13,11 +13,12 @@ Creates or updates a contact profile.
 ## SYNTAX
 
 ```
-New-AzOrbitalContactProfile -Name <String> -ResourceGroupName <String> -Location <String>
- [-SubscriptionId <String>] [-AutoTrackingConfiguration <AutoTrackingConfiguration>] [-EventHubUri <String>]
- [-Link <IContactProfileLink[]>] [-MinimumElevationDegree <Single>] [-MinimumViableContactDuration <String>]
- [-NetworkConfigurationSubnetId <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzOrbitalContactProfile -Name <String> -ResourceGroupName <String> -Link <IContactProfileLink[]>
+ -Location <String> -NetworkConfigurationSubnetId <String> [-SubscriptionId <String>]
+ [-AutoTrackingConfiguration <AutoTrackingConfiguration>] [-EventHubUri <String>]
+ [-MinimumElevationDegree <Single>] [-MinimumViableContactDuration <String>] [-Tag <Hashtable>]
+ [-ThirdPartyConfiguration <IContactProfileThirdPartyConfiguration[]>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -27,11 +28,11 @@ Creates or updates a contact profile.
 
 ### Example 1: Creates or updates a contact profile.
 ```powershell
-$linkChannel = New-AzOrbitalContactProfileLinkChannelObject -BandwidthMHz 15 -CenterFrequencyMHz 8160 -EndPointIPAddress 10.0.1.0 -EndPointName AQUA_command -EndPointPort 55555 -EndPointProtocol TCP -Name channel1 -DecodingConfiguration na -DemodulationConfiguration na -EncodingConfiguration AQUA_CMD_CCSDS -ModulationConfiguration AQUA_UPLINK_BPSK
+$linkChannel = New-AzOrbitalContactProfileLinkChannelObject -BandwidthMHz 15 -CenterFrequencyMHz 8160 -EndPointIPAddress 10.0.1.0 -EndPointName AQUA_VM -EndPointPort 51103 -EndPointProtocol TCP -Name channel1 -DecodingConfiguration na -DemodulationConfiguration na -EncodingConfiguration na -ModulationConfiguration aqua_direct_broadcast
 
-$profileLink = New-AzOrbitalContactProfileLinkObject -Channel $linkChannel -Direction Downlink -Name RHCP_UL -Polarization RHCP -EirpdBw 45 -GainOverTemperature 0
+$profileLink = New-AzOrbitalContactProfileLinkObject -Channel $linkChannel -Direction Downlink -Name RHCP_Downlink -Polarization RHCP -EirpdBw 0 -GainOverTemperature 0
 
-New-AzOrbitalContactProfile -Name azps-orbital-contactprofile -ResourceGroupName azpstest-gp -Location westus2 -SubscriptionId 9e223dbe-3399-4e19-88eb-0975f02ac87f -AutoTrackingConfiguration xBand -EventHubUri /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest-gp/providers/Microsoft.EventHub/namespaces/eventhub-test -Link $profileLink -MinimumElevationDegree 10 -MinimumViableContactDuration PT1M -NetworkConfigurationSubnetId /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest-gp/providers/Microsoft.Network/virtualNetworks/orbital-virtualnetwork/subnets/orbital-vn
+New-AzOrbitalContactProfile -Name azps-orbital-contactprofile -ResourceGroupName azpstest-gp -Location westus2 -AutoTrackingConfiguration xBand -EventHubUri /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest-gp/providers/Microsoft.EventHub/namespaces/eventhub-test -Link $profileLink -MinimumElevationDegree 5 -MinimumViableContactDuration PT1M -NetworkConfigurationSubnetId /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest-gp/providers/Microsoft.Network/virtualNetworks/orbital-virtualnetwork/subnets/orbital-vn
 ```
 
 ```output
@@ -75,7 +76,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -111,11 +113,11 @@ Describes RF links, modem processing, and IP endpoints.
 To construct, see NOTES section for LINK properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.IContactProfileLink[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.IContactProfileLink[]
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -193,7 +195,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -261,6 +263,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ThirdPartyConfiguration
+Third-party mission configuration of the Contact Profile.
+Describes RF links, modem processing, and IP endpoints.
+To construct, see NOTES section for THIRDPARTYCONFIGURATION properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.IContactProfileThirdPartyConfiguration[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.
 
@@ -299,7 +318,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.IContactProfile
+### Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.IContactProfile
 
 ## NOTES
 
@@ -314,7 +333,7 @@ To create the parameters described below, construct a hash table containing the 
   - `Channel <IContactProfileLinkChannel[]>`: Contact Profile Link Channel.
     - `BandwidthMHz <Single>`: Bandwidth in MHz.
     - `CenterFrequencyMHz <Single>`: Center Frequency in MHz.
-    - `EndPointIPAddress <String>`: IP Address.
+    - `EndPointIPAddress <String>`: IP Address (IPv4).
     - `EndPointName <String>`: Name of an end point.
     - `EndPointPort <String>`: TCP port to listen on to receive data.
     - `EndPointProtocol <Protocol>`: Protocol either UDP or TCP.
@@ -323,11 +342,15 @@ To create the parameters described below, construct a hash table containing the 
     - `[DemodulationConfiguration <String>]`: Copy of the modem configuration file such as Kratos QRadio or Kratos QuantumRx. Only valid for downlink directions. If provided, the modem connects to the customer endpoint and sends demodulated data instead of a VITA.49 stream.
     - `[EncodingConfiguration <String>]`: Currently unused.
     - `[ModulationConfiguration <String>]`: Copy of the modem configuration file such as Kratos QRadio. Only valid for uplink directions. If provided, the modem connects to the customer endpoint and accepts commands from the customer instead of a VITA.49 stream.
-  - `Direction <Direction>`: Direction (uplink or downlink).
+  - `Direction <Direction>`: Direction (Uplink or Downlink).
   - `Name <String>`: Link name.
   - `Polarization <Polarization>`: Polarization. e.g. (RHCP, LHCP).
   - `[EirpdBw <Single?>]`: Effective Isotropic Radiated Power (EIRP) in dBW. It is the required EIRP by the customer. Not used yet.
-  - `[GainOverTemperature <Single?>]`: Gain To Noise Temperature in db/K. It is the required G/T by the customer. Not used yet.
+  - `[GainOverTemperature <Single?>]`: Gain to noise temperature in db/K. It is the required G/T by the customer. Not used yet.
+
+`THIRDPARTYCONFIGURATION <IContactProfileThirdPartyConfiguration[]>`: Third-party mission configuration of the Contact Profile. Describes RF links, modem processing, and IP endpoints.
+  - `MissionConfiguration <String>`: Name of string referencing the configuration describing contact set-up for a particular mission. Expected values are those which have been created in collaboration with the partner network.
+  - `ProviderName <String>`: Name of the third-party provider.
 
 ## RELATED LINKS
 
