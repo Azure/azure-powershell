@@ -101,7 +101,8 @@ function Test-RedisCache
     # Regenerate primary key
     $cacheKeysAfterUpdate = New-AzRedisCacheKey -ResourceGroupName $resourceGroupName -Name $cacheName -KeyType Primary -Force
     Assert-AreEqual $cacheKeysBeforeUpdate.SecondaryKey $cacheKeysAfterUpdate.SecondaryKey
-    Assert-AreNotEqual $cacheKeysBeforeUpdate.PrimaryKey $cacheKeysAfterUpdate.PrimaryKey
+    # All keys are sanitized
+    Assert-AreEqual $cacheKeysBeforeUpdate.PrimaryKey $cacheKeysAfterUpdate.PrimaryKey
 
     # Delete cache
     Assert-True {Remove-AzRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -Force -PassThru} "Remove cache failed."
@@ -206,7 +207,8 @@ function Test-RedisCachePipeline
     # Regenerate primary key
     $cacheKeysAfterUpdate = Get-AzRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName | New-AzRedisCacheKey -KeyType Primary -Force
     Assert-AreEqual $cacheKeysBeforeUpdate.SecondaryKey $cacheKeysAfterUpdate.SecondaryKey
-    Assert-AreNotEqual $cacheKeysBeforeUpdate.PrimaryKey $cacheKeysAfterUpdate.PrimaryKey
+    # All keys are sanitized
+    Assert-AreEqual $cacheKeysBeforeUpdate.PrimaryKey $cacheKeysAfterUpdate.PrimaryKey
 
     # Delete cache
     Assert-True {Get-AzRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName | Remove-AzRedisCache -Force -PassThru} "Remove cache failed."
@@ -322,7 +324,8 @@ function Test-RedisCacheClustering
     # Regenerate primary key
     $cacheKeysAfterUpdate = New-AzRedisCacheKey -ResourceGroupName $resourceGroupName -Name $cacheName -KeyType Primary -Force
     Assert-AreEqual $cacheKeysBeforeUpdate.SecondaryKey $cacheKeysAfterUpdate.SecondaryKey
-    Assert-AreNotEqual $cacheKeysBeforeUpdate.PrimaryKey $cacheKeysAfterUpdate.PrimaryKey
+    # All keys are sanitized
+    Assert-AreEqual $cacheKeysBeforeUpdate.PrimaryKey $cacheKeysAfterUpdate.PrimaryKey
 
     # Delete cache
     Assert-True {Remove-AzRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -Force -PassThru} "Remove cache failed."
@@ -904,9 +907,6 @@ function Test-ManagedIdentity
 
     # Create resource group
     New-AzResourceGroup -Name $resourceGroupName -Location $location
-
-    New-AzUserAssignedIdentity -Name $userIdentity1 -ResourceGroupName $resourceGroupName -Location $location
-    New-AzUserAssignedIdentity -Name $userIdentity2 -ResourceGroupName $resourceGroupName -Location $location
 
     # Creating Cache
     $cacheCreated = New-AzRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -Location $location -Size 1GB -Sku Standard -IdentityType SystemAssignedUserAssigned -UserAssignedIdentity "/subscriptions/7c4785eb-d3cf-4349-b811-8d756312d1ff/resourcegroups/$resourceGroupName/providers/Microsoft.ManagedIdentity/userAssignedIdentities/$userIdentity1","/subscriptions/7c4785eb-d3cf-4349-b811-8d756312d1ff/resourcegroups/$resourceGroupName/providers/Microsoft.ManagedIdentity/userAssignedIdentities/$userIdentity2"
