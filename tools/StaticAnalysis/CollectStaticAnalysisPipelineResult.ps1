@@ -74,7 +74,7 @@ $Steps = @(
     },
     @{
         PhaseName = "verify-gensdk"
-        IssuePath = "$StaticAnalysisOutputDirectory/VerifyGensdk.csv"
+        IssuePath = "$StaticAnalysisOutputDirectory/VerifyGensdkIssues.csv"
     }
 )
 
@@ -141,7 +141,7 @@ ForEach ($Step In $Steps) {
             $MatchedIssues = $Issues | Where-Object { $_.Module -Eq $ModuleName }
             If ($MatchedIssues.Length -Ne 0) {
                 #Region generate table head of each step
-                $NormalSteps = [System.Collections.Generic.HashSet[String]]@("breaking-change", "help", "signature", "file-change", "verify-gensdk")
+                $NormalSteps = [System.Collections.Generic.HashSet[String]]@("breaking-change", "help", "signature", "file-change")
                 If ($NormalSteps.Contains($PhaseName)) {
                     $Content = "|Type|Cmdlet|Description|Remediation|`n|---|---|---|---|`n"
                 }
@@ -150,6 +150,9 @@ ForEach ($Step In $Steps) {
                 }
                 ElseIf ($PhaseName -Eq "ux") {
                     $Content = "|Type|Module|ResourceType|SubResourceType|Command|Description|`n|---|---|---|---|---|---|`n"
+                }
+                ElseIf ($PhaseName -Eq "verify-gensdk") {
+                    $Content = "|Type|Module|Sdk|Description|Remediation|`n|---|---|---|---|---|`n"
                 }
                 #EndRegion
 

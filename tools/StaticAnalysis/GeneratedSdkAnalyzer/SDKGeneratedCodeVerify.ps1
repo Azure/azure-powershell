@@ -15,10 +15,11 @@
 
 $ArtifactsFolder = "$PSScriptRoot/../../../artifacts"
 $FilesChangedPaths = "$ArtifactsFolder/FilesChanged.txt"
-$ExceptionFilePath = "$ArtifactsFolder/StaticAnalysisResults/VerifyGenSdk.csv"
+$ExceptionFilePath = "$ArtifactsFolder/StaticAnalysisResults/VerifyGenSdkIssues.csv"
 
 Class GeneratedSdkIssue {
     [String]$Module
+    [String]$Sdk
     [Int]$Severity
     [String]$Description
     [String]$Remediation
@@ -39,7 +40,8 @@ try{
         $ChangedSdks = $ChangedSdks | select -unique
     }
     else {
-        Write-Error "Only accept .txt files as input."
+        Write-Warning "Only accept .txt files as input."
+        return
     }
     Write-Host "Preparing Autorest..."
     npm install -g autorest@latest
@@ -60,7 +62,8 @@ try{
         else {
             $ExceptionList += [GeneratedSdkIssue]@{
                     Module = $ModuleName;
-                    Severity = 2;
+                    Sdk = $_;
+                    Severity = 1;
                     Description = "No README file detected under $_."
                     Remediation = "Make sure that the ReadMe file of Sdk is loaded."
             }
@@ -71,6 +74,7 @@ try{
             $changes = $changes.replace("  ", "`n")
             $ExceptionList += [GeneratedSdkIssue]@{
                     Module = $ModuleName;
+                    Sdk = $_;
                     Severity = 1;
                     Description = "Generated code for $ModuleName is not up to date or you have updated generated Sdk."
                     Remediation = "You may need to rebase on the latest main, regenerate code accroding to README.md file under $_, and make sure no more updates based on generated files."
@@ -90,6 +94,6 @@ finally {
     }
 
     if ($ExceptionList.Length -ne 0) {
-        $ExceptionList | Sort-Object -Unique -Property Module,Description | Export-Csv $ExceptionFilePath -NoTypeInformation
+        $ExceptionList | Sort-Object -Unique -Property Module,Sdk,Description | Export-Csv $ExceptionFilePath -NoTypeInformation
     }
 }
