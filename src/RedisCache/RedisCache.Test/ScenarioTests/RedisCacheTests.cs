@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Commands.RedisCache.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
         public void TestManagedIdentity()
         {
             TestRunner.RunTestScript("Test-ManagedIdentity");
