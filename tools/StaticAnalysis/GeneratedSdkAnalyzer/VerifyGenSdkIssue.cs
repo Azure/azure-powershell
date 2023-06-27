@@ -28,18 +28,19 @@ namespace StaticAnalysis.GeneratedSdkAnalyzer
         /// The associated sdk of the module.
         /// </summary>
         public string Sdk { get; set; }
+        public int ProblemId { get; set; }
         public string Description { get; set; }
         public string Remediation { get; set; }
         public int Severity { get; set; }
         public string PrintHeaders()
         {
-            return "\"Module\",\"Sdk\",\"Severity\",\"Description\",\"Remediation\"";
+            return "\"Module\",\"Sdk\",\"Severity\",\"ProblemId\",\"Description\",\"Remediation\"";
         }
 
         public string FormatRecord()
         {
             return string.Format("\"{0}\",\"{1}\",\"{2}\",\"{3}\",\"{4}\"",
-                Module, Sdk, Severity, Description, Remediation);
+                Module, Sdk, Severity, ProblemId, Description, Remediation);
         }
 
         public bool Match(IReportRecord other)
@@ -50,7 +51,8 @@ namespace StaticAnalysis.GeneratedSdkAnalyzer
             {
                 result = string.Equals(record.Module, Module, StringComparison.OrdinalIgnoreCase) &&
                     string.Equals(record.Sdk, Sdk, StringComparison.OrdinalIgnoreCase) &&
-                    string.Equals(record.Description, Description, StringComparison.OrdinalIgnoreCase);
+                    string.Equals(record.Description, Description, StringComparison.OrdinalIgnoreCase)&&
+                         record.ProblemId == ProblemId;
             }
 
             return result;
@@ -58,9 +60,9 @@ namespace StaticAnalysis.GeneratedSdkAnalyzer
 
         public IReportRecord Parse(string line)
         {
-            var matcher = "\"([^\"]*)\",\"([^\"]*)\",\"([^\"]+)\",\"([^\"]*)\",\"([^\"]*)\"";
+            var matcher = "\"([^\"]*)\",\"([^\"]*)\",\"([^\"]+)\",\"([^\"]+)\",\"([^\"]*)\",\"([^\"]*)\"";
             var match = Regex.Match(line, matcher);
-            if (!match.Success || match.Groups.Count < 6)
+            if (!match.Success || match.Groups.Count < 7)
             {
                 throw new InvalidOperationException(string.Format("Could not parse '{0}' as VerifyGenSdkIssue record", line));
             }
@@ -68,9 +70,9 @@ namespace StaticAnalysis.GeneratedSdkAnalyzer
             Module = match.Groups[1].Value;
             Sdk = match.Groups[2].Value;
             Severity = int.Parse(match.Groups[3].Value);
-            // ProblemId = int.Parse(match.Groups[5].Value);
-            Description = match.Groups[4].Value;
-            Remediation = match.Groups[5].Value;
+            ProblemId = int.Parse(match.Groups[4].Value);
+            Description = match.Groups[5].Value;
+            Remediation = match.Groups[6].Value;
             return this;
         }
     }

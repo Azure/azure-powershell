@@ -173,6 +173,9 @@ ForEach ($Step In $Steps) {
                     ElseIf ($PhaseName -Eq "ux") {
                         $Content += "|$ErrorTypeEmoji|$($Issue.Module)|$($Issue.ResourceType)|$($Issue.SubResourceType)|$($Issue.Command)|$($Issue.Description)|`n"
                     }
+                    ElseIf ($PhaseName -Eq "verify-gensdk") {
+                        $Content += "|$ErrorTypeEmoji|$($Issue.Module)|$($Issue.Sdk)|$($Issue.Description)|$($Issue.Remediation)|`n"
+                    }
                     #EndRegion
                 }
                 $ModuleInfo.Content = $Content

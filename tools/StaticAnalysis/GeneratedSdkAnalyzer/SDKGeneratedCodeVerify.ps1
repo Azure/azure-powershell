@@ -21,12 +21,15 @@ Class GeneratedSdkIssue {
     [String]$Module
     [String]$Sdk
     [Int]$Severity
+    [Int]$ProblemId
     [String]$Description
     [String]$Remediation
 }
 
 $ExceptionList = @()
 
+$MissReadMe = 9000
+$GenSdkChanged = 9090
 try{
     if ((Test-Path $FilesChangedPaths -PathType Leaf) -and $FilesChangedPaths.EndsWith(".txt")) {
         # Read Changedfiles and check if generted sdk code is updated.
@@ -64,6 +67,7 @@ try{
                     Module = $ModuleName;
                     Sdk = $_;
                     Severity = 1;
+                    ProblemId = $MissReadMe;
                     Description = "No README file detected under $_."
                     Remediation = "Make sure that the ReadMe file of Sdk is loaded."
             }
@@ -76,6 +80,7 @@ try{
                     Module = $ModuleName;
                     Sdk = $_;
                     Severity = 1;
+                    ProblemId = $GenSdkChanged
                     Description = "Generated code for $ModuleName is not up to date or you have updated generated Sdk."
                     Remediation = "You may need to rebase on the latest main, regenerate code accroding to README.md file under $_, and make sure no more updates based on generated files."
             }
