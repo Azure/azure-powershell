@@ -36,5 +36,3 @@ outname       False             /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac
 ```
 
 This command creates a shared image distributor.
-
-

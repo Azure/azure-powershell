@@ -42,4 +42,3 @@ eastus   test-img-temp
 ```
 
 This command gets a template under a resource group.
-

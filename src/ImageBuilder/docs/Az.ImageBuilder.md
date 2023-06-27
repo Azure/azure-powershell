@@ -17,6 +17,9 @@ Get information about a virtual machine image template
 ### [Get-AzImageBuilderTemplateRunOutput](Get-AzImageBuilderTemplateRunOutput.md)
 Get the specified run output for the specified image template resource
 
+### [Get-AzImageBuilderTrigger](Get-AzImageBuilderTrigger.md)
+Get the specified trigger for the specified image template resource
+
 ### [New-AzImageBuilderTemplate](New-AzImageBuilderTemplate.md)
 Create or update a virtual machine image template
 
@@ -34,6 +37,9 @@ Create an in-memory object for ImageTemplateValidator.
 
 ### [Remove-AzImageBuilderTemplate](Remove-AzImageBuilderTemplate.md)
 Delete a virtual machine image template
+
+### [Remove-AzImageBuilderTrigger](Remove-AzImageBuilderTrigger.md)
+Delete a trigger for the specified virtual machine image template
 
 ### [Start-AzImageBuilderTemplate](Start-AzImageBuilderTemplate.md)
 Create artifacts from a existing image template

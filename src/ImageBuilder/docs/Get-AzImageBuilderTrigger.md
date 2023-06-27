@@ -1,65 +1,61 @@
 ---
 external help file:
 Module Name: Az.ImageBuilder
-online version: https://learn.microsoft.com/powershell/module/az.imagebuilder/get-azimagebuildertemplaterunoutput
+online version: https://learn.microsoft.com/powershell/module/az.imagebuilder/get-azimagebuildertrigger
 schema: 2.0.0
 ---
 
-# Get-AzImageBuilderTemplateRunOutput
+# Get-AzImageBuilderTrigger
 
 ## SYNOPSIS
-Get the specified run output for the specified image template resource
+Get the specified trigger for the specified image template resource
 
 ## SYNTAX
 
 ### List (Default)
 ```
-Get-AzImageBuilderTemplateRunOutput -ImageTemplateName <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzImageBuilderTrigger -ImageTemplateName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzImageBuilderTemplateRunOutput -ImageTemplateName <String> -Name <String> -ResourceGroupName <String>
+Get-AzImageBuilderTrigger -ImageTemplateName <String> -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzImageBuilderTemplateRunOutput -InputObject <IImageBuilderIdentity> [-DefaultProfile <PSObject>]
+Get-AzImageBuilderTrigger -InputObject <IImageBuilderIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Get the specified run output for the specified image template resource
+Get the specified trigger for the specified image template resource
 
 ## EXAMPLES
 
-### Example 1: List all run results under a template
+### Example 1: {{ Add title here }}
 ```powershell
-Get-AzImageBuilderTemplateRunOutput -ImageTemplateName test-img-temp -ResourceGroupName bez-rg
+{{ Add code here }}
 ```
 
 ```output
-Name    SystemDataCreatedAt SystemDataCreatedBy SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType ResourceGroupName
-----    ------------------- ------------------- ----------------------- ------------------------ ------------------------ ---------------------------- -----------------
-testrunoutput                                                                                                                                          bez-rg
+{{ Add output here }}
 ```
 
-This command lists all run results under a template.
+{{ Add description here }}
 
-### Example 2: Get a run result under a template
+### Example 2: {{ Add title here }}
 ```powershell
-Get-AzImageBuilderTemplateRunOutput -ImageTemplateName test-img-temp -ResourceGroupName bez-rg -Name runout-template-name-u7gjq
+{{ Add code here }}
 ```
 
 ```output
-Name    SystemDataCreatedAt SystemDataCreatedBy SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType ResourceGroupName
-----    ------------------- ------------------- ----------------------- ------------------------ ------------------------ ---------------------------- -----------------
-runout-template-name-u7gjq  
+{{ Add output here }}
 ```
 
-This command gets a run result under a template.
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -111,12 +107,12 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the run output
+The name of the trigger
 
 ```yaml
 Type: System.String
 Parameter Sets: Get
-Aliases: RunOutputName
+Aliases: TriggerName
 
 Required: True
 Position: Named
@@ -165,7 +161,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.IRunOutput
+### Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.ITrigger
 
 ## NOTES
 

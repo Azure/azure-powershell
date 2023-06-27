@@ -1,53 +1,56 @@
 ---
 external help file:
 Module Name: Az.ImageBuilder
-online version: https://learn.microsoft.com/powershell/module/az.imagebuilder/start-azimagebuildertemplate
+online version: https://learn.microsoft.com/powershell/module/az.imagebuilder/remove-azimagebuildertrigger
 schema: 2.0.0
 ---
 
-# Start-AzImageBuilderTemplate
+# Remove-AzImageBuilderTrigger
 
 ## SYNOPSIS
-Create artifacts from a existing image template
+Delete a trigger for the specified virtual machine image template
 
 ## SYNTAX
 
-### Run (Default)
+### Delete (Default)
 ```
-Start-AzImageBuilderTemplate -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzImageBuilderTrigger -ImageTemplateName <String> -Name <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
-### RunViaIdentity
+### DeleteViaIdentity
 ```
-Start-AzImageBuilderTemplate -InputObject <IImageBuilderIdentity> [-DefaultProfile <PSObject>] [-AsJob]
+Remove-AzImageBuilderTrigger -InputObject <IImageBuilderIdentity> [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create artifacts from a existing image template
+Delete a trigger for the specified virtual machine image template
 
 ## EXAMPLES
 
-### Example 1: Start an image template
+### Example 1: {{ Add title here }}
 ```powershell
-Start-AzImageBuilderTemplate -Name bez-test-img-temp12 -ResourceGroupName bez-rg
+{{ Add code here }}
 ```
 
 ```output
-Id     Name            PSJobTypeName   State         HasMoreData     Location             Command
---     ----            -------------   -----         -----------     --------             -------
-1      Start-AzImageB…                 Running       True            localhost            Start-AzImageBuilderTemp…
+{{ Add output here }}
 ```
 
-This command starts an image template.
+{{ Add description here }}
 
-### Example 2: Start an image template
+### Example 2: {{ Add title here }}
 ```powershell
-Get-AzImageBuilderTemplate -Name bez-test-img-temp12 -ResourceGroupName bez-rg | Start-AzImageBuilderTemplate
+{{ Add code here }}
 ```
 
-This command starts an image template.
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -82,13 +85,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ImageTemplateName
+The name of the image Template
+
+```yaml
+Type: System.String
+Parameter Sets: Delete
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -InputObject
 Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IImageBuilderIdentity
-Parameter Sets: RunViaIdentity
+Parameter Sets: DeleteViaIdentity
 Aliases:
 
 Required: True
@@ -99,12 +117,12 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the image Template
+The name of the trigger
 
 ```yaml
 Type: System.String
-Parameter Sets: Run
-Aliases: ImageTemplateName
+Parameter Sets: Delete
+Aliases: TriggerName
 
 Required: True
 Position: Named
@@ -148,7 +166,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Run
+Parameter Sets: Delete
 Aliases:
 
 Required: True
@@ -164,7 +182,7 @@ The subscription Id forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Run
+Parameter Sets: Delete
 Aliases:
 
 Required: False

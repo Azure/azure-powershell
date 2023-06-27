@@ -11,4 +11,3 @@ Get-AzImageBuilderTemplate -Name bez-test-img-temp13 -ResourceGroupName bez-rg |
 ```
 
 This command removes a image template.
-

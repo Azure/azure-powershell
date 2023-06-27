@@ -22,4 +22,3 @@ Name    SystemDataCreatedAt SystemDataCreatedBy SystemDataCreatedByType SystemDa
 runout-template-name-u7gjq  
 ```
 This command gets a run result under a template.
-

@@ -14,14 +14,15 @@ Create or update a virtual machine image template
 
 ### CreateExpanded (Default)
 ```
-New-AzImageBuilderTemplate -Name <String> -ResourceGroupName <String> -Customize <IImageTemplateCustomizer[]>
- -Distribute <IImageTemplateDistributor[]> -Location <String> -Source <IImageTemplateSource>
- -UserAssignedIdentityId <String> [-SubscriptionId <String>] [-BuildTimeoutInMinute <Int32>]
- [-StagingResourceGroup <String>] [-Tag <Hashtable>] [-ValidateContinueDistributeOnFailure]
- [-ValidateSourceValidationOnly] [-Validator <IImageTemplateInVMValidator[]>] [-VMProfileOsdiskSizeGb <Int32>]
- [-VMProfileUserAssignedIdentity <String[]>] [-VMProfileVmsize <String>] [-VnetConfigProxyVMSize <String>]
- [-VnetConfigSubnetId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+New-AzImageBuilderTemplate -Name <String> -ResourceGroupName <String> -Location <String>
+ [-SubscriptionId <String>] [-BuildTimeoutInMinute <Int32>] [-Customize <IImageTemplateCustomizer[]>]
+ [-Distribute <IImageTemplateDistributor[]>] [-IdentityType <ResourceIdentityType>]
+ [-Source <IImageTemplateSource>] [-StagingResourceGroup <String>] [-Tag <Hashtable>]
+ [-UserAssignedIdentity <Hashtable>] [-ValidateContinueDistributeOnFailure] [-ValidateSourceValidationOnly]
+ [-Validator <IImageTemplateInVMValidator[]>] [-VMBootState <VMBootOptimizationState>]
+ [-VMProfileOsdiskSizeGb <Int32>] [-VMProfileUserAssignedIdentity <String[]>] [-VMProfileVmsize <String>]
+ [-VnetConfigProxyVMSize <String>] [-VnetConfigSubnetId <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
@@ -207,11 +208,11 @@ Accept wildcard characters: False
 To construct, see NOTES section for CUSTOMIZE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220214.IImageTemplateCustomizer[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.IImageTemplateCustomizer[]
 Parameter Sets: CreateExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -237,11 +238,26 @@ Accept wildcard characters: False
 To construct, see NOTES section for DISTRIBUTE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220214.IImageTemplateDistributor[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.IImageTemplateDistributor[]
 Parameter Sets: CreateExpanded
 Aliases:
 
-Required: True
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IdentityType
+
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Support.ResourceIdentityType
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -342,11 +358,11 @@ Accept wildcard characters: False
 To construct, see NOTES section for SOURCE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220214.IImageTemplateSource
+Type: Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.IImageTemplateSource
 Parameter Sets: CreateExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -399,15 +415,15 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -UserAssignedIdentityId
+### -UserAssignedIdentity
 
 
 ```yaml
-Type: System.String
+Type: System.Collections.Hashtable
 Parameter Sets: CreateExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -448,7 +464,22 @@ Accept wildcard characters: False
 To construct, see NOTES section for VALIDATOR properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220214.IImageTemplateInVMValidator[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.IImageTemplateInVMValidator[]
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -VMBootState
+
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Support.VMBootOptimizationState
 Parameter Sets: CreateExpanded
 Aliases:
 
@@ -572,7 +603,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220214.IImageTemplate
+### Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.IImageTemplate
 
 ## NOTES
 

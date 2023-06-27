@@ -1,7 +1,7 @@
 @{
   GUID = 'bdedc683-d9b6-41ea-b310-d068b8c72305'
   RootModule = './Az.ImageBuilder.psm1'
-  ModuleVersion = '0.1.0'
+  ModuleVersion = '0.2.0'
   CompatiblePSEditions = 'Core', 'Desktop'
   Author = 'Microsoft Corporation'
   CompanyName = 'Microsoft Corporation'
@@ -11,7 +11,7 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.ImageBuilder.private.dll'
   FormatsToProcess = './Az.ImageBuilder.format.ps1xml'
-  FunctionsToExport = 'Get-AzImageBuilderTemplate', 'Get-AzImageBuilderTemplateRunOutput', 'New-AzImageBuilderTemplate', 'New-AzImageBuilderTemplateCustomizerObject', 'New-AzImageBuilderTemplateDistributorObject', 'New-AzImageBuilderTemplateSourceObject', 'New-AzImageBuilderTemplateValidatorObject', 'Remove-AzImageBuilderTemplate', 'Start-AzImageBuilderTemplate', 'Stop-AzImageBuilderTemplate', '*'
+  FunctionsToExport = 'Get-AzImageBuilderTemplate', 'Get-AzImageBuilderTemplateRunOutput', 'Get-AzImageBuilderTrigger', 'New-AzImageBuilderTemplate', 'New-AzImageBuilderTemplateCustomizerObject', 'New-AzImageBuilderTemplateDistributorObject', 'New-AzImageBuilderTemplateSourceObject', 'New-AzImageBuilderTemplateValidatorObject', 'Remove-AzImageBuilderTemplate', 'Remove-AzImageBuilderTrigger', 'Start-AzImageBuilderTemplate', 'Stop-AzImageBuilderTemplate', '*'
   AliasesToExport = '*'
   PrivateData = @{
     PSData = @{

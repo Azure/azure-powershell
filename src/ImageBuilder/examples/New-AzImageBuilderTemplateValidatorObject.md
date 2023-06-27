@@ -23,4 +23,3 @@ ShellValidator        https://example.com/path/to/script.sh
 ```
 
 This command creates a shell validator.
-

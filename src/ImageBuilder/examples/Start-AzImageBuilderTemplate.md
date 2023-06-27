@@ -17,4 +17,3 @@ Get-AzImageBuilderTemplate -Name bez-test-img-temp12 -ResourceGroupName bez-rg |
 ```
 
 This command starts an image template.
-
