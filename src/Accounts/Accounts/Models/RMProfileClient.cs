@@ -11,7 +11,6 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 // ----------------------------------------------------------------------------------
-
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
@@ -184,16 +183,26 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
 
                         if (!Guid.TryParse(tenantIdOrName, out Guid _))
                         {
-                            var tid = openIDConfigDoc.TenantId;
-                            token = new RawAccessToken()
+                            try
                             {
-                                AccessToken = token.AccessToken,
-                                LoginType = token.LoginType,
-                                TenantId = tid,
-                                UserId = token.UserId,
-                                HomeAccountId = token.HomeAccountId,
-                            };
-                            tenantIdOrName = token.TenantId;
+                                var tid = openIDConfigDoc.TenantId;
+                                token = new RawAccessToken()
+                                {
+                                    AccessToken = token.AccessToken,
+                                    LoginType = token.LoginType,
+                                    TenantId = tid,
+                                    UserId = token.UserId,
+                                    HomeAccountId = token.HomeAccountId,
+                                };
+
+                                WriteDebugMessage(string.Format(ProfileMessages.TenantDomainToTenantIdMessage, tenantIdOrName, token.TenantId));
+                                tenantIdOrName = token.TenantId;
+                            }
+                            finally
+                            {
+                                WriteDebugMessage(string.Format(ProfileMessages.OpenIDAbsoluteUriMessage, tenantIdOrName, openIDConfigDoc.AbsoluteUri));
+                                WriteDebugMessage(string.Format(ProfileMessages.OpenIDConfigurationDocInJsonMessage, openIDConfigDoc.OpenIDConfigDoc));
+                            }
                         }
                     }
                     catch(Exception e)

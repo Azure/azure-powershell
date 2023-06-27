@@ -17,11 +17,37 @@ using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.Profile.Utilities
 {
+    /// <summary>
+    /// OpenID configuration doc parser
+    /// </summary>
     public interface IOpenIDConfiguration
     {
+        /// <summary>
+        /// Open a OpenID configuration doc from server.
+        /// </summary>
+        /// <param name="httpOperationsFactory">HTTP client factory to retrieve OpenID configuration from server.</param>
         Task<string> Open(IHttpOperationsFactory httpOperationsFactory);
 
+        /// <summary>
+        /// Tenant Id parsed from OpenID configuration doc
+        /// </summary>
         string TenantId
+        {
+            get;
+        }
+
+        /// <summary>
+        /// Uri to retrieve the OpenID configuration doc.
+        /// </summary>
+        string AbsoluteUri
+        {
+            get;
+        }
+
+        /// <summary>
+        /// OpenID configuration doc in Json format
+        /// </summary>
+        string OpenIDConfigDoc
         {
             get;
         }

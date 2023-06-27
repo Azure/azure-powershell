@@ -35,6 +35,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             XunitTracingInterceptor.AddToContext(xunitLogger);
         }
 
+        private const string AADAuthority = "https://login.microsoftonline.com";
         private const string uriPattern = "https://login.microsoftonline.com/{0}/.well-known/openid-configuration";
 
         [Fact]
@@ -48,7 +49,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             var factoryMock = new Mock<IHttpOperationsFactory>();
             factoryMock.Setup(f => f.ReadAsStringAsync(It.IsAny<Uri>())).ReturnsAsync(contentSuccess);
 
-            IOpenIDConfiguration config = new OpenIDConfiguration(testDomain, factoryMock.Object);
+            IOpenIDConfiguration config = new OpenIDConfiguration(testDomain, AADAuthority, httpClientFactory : factoryMock.Object);
             Assert.Equal("54821234-0000-0000-0000-b7b93a3e1234", config.TenantId);
             factoryMock.Verify(f => f.ReadAsStringAsync(It.IsAny<Uri>()), Times.Once);
         }
@@ -66,7 +67,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             var factoryMock = new Mock<IHttpOperationsFactory>();
             factoryMock.Setup(f => f.ReadAsStringAsync(It.IsAny<Uri>())).ReturnsAsync(contentFailure);
 
-            IOpenIDConfiguration config = new OpenIDConfiguration(testDomain, factoryMock.Object);
+            IOpenIDConfiguration config = new OpenIDConfiguration(testDomain, AADAuthority, httpClientFactory: factoryMock.Object);
             Assert.Throws<AggregateException>(() => config.TenantId);
             factoryMock.Verify(f => f.ReadAsStringAsync(It.IsAny<Uri>()), Times.Once);
         }

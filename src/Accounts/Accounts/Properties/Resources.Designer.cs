@@ -763,11 +763,29 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Failed to find the &apos;issuer‘ from the OpenID configuration response: {0}..
+        ///   Looks up a localized string similar to Uri of OpenID Configuration Doc for {0}: {1}.
+        /// </summary>
+        internal static string OpenIDAbsoluteUriMessage {
+            get {
+                return ResourceManager.GetString("OpenIDAbsoluteUriMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failed to query tenant information by domain name: unable to find the &apos;issuer&apos; from the OpenID configuration response: {0}..
         /// </summary>
         internal static string OpenIDConfigResponseError {
             get {
                 return ResourceManager.GetString("OpenIDConfigResponseError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to OpenID configuration doc in Json: {0}.
+        /// </summary>
+        internal static string OpenIDConfigurationDocInJsonMessage {
+            get {
+                return ResourceManager.GetString("OpenIDConfigurationDocInJsonMessage", resourceCulture);
             }
         }
         
@@ -1267,6 +1285,15 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The input domain is {0} and the tenant Id is {1}.
+        /// </summary>
+        internal static string TenantDomainToTenantIdMessage {
+            get {
+                return ResourceManager.GetString("TenantDomainToTenantIdMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Unable to find tenant &apos;{0}&apos;..
         /// </summary>
         internal static string TenantIdNotFound {
@@ -1276,7 +1303,7 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Fail to parse tenant Id from issuer {0}..
+        ///   Looks up a localized string similar to Failed to parse tenant ID from issuer {0}..
         /// </summary>
         internal static string TenantIdNotFoundinIssuer {
             get {

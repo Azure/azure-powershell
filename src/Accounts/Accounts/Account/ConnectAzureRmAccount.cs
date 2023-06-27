@@ -492,8 +492,8 @@ namespace Microsoft.Azure.Commands.Profile
                     return;
                 }
 
-                IHttpOperationsFactory factory = null;
-                AzureSession.Instance.TryGetComponent(HttpClientOperationsFactory.Name, out factory);
+                IHttpOperationsFactory httpClientFactory = null;
+                AzureSession.Instance.TryGetComponent(HttpClientOperationsFactory.Name, out httpClientFactory);
 
                 SetContextWithOverwritePrompt((localProfile, profileClient, name) =>
                 {
@@ -513,7 +513,7 @@ namespace Microsoft.Azure.Commands.Profile
                         subscriptionName,
                         password,
                         SkipValidation,
-                        new OpenIDConfiguration(Tenant, factory),
+                        new OpenIDConfiguration(Tenant, baseUri: _environment.ActiveDirectoryAuthority, httpClientFactory: httpClientFactory),
                         WriteWarningEvent, //Could not use WriteWarning directly because it may be in worker thread
                         name,
                         shouldPopulateContextList,

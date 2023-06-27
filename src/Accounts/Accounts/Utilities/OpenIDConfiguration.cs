@@ -25,7 +25,6 @@ namespace Microsoft.Azure.Commands.Profile.Utilities
 {
     internal class OpenIDConfiguration : IOpenIDConfiguration
     {
-        private const string DefaultAuthority = "https://login.microsoftonline.com/";
         private const string DefaultPath = "{0}/v2.0/.well-known/openid-configuration";
 
         internal Uri Authority;
@@ -36,36 +35,33 @@ namespace Microsoft.Azure.Commands.Profile.Utilities
 
         private IHttpOperationsFactory _httpClientFactory = null;
 
-        public OpenIDConfiguration(string baseUri, string path, string tenantDomain, IHttpOperationsFactory httpClientFactory = null)
+        public OpenIDConfiguration(string tenantDomain, string baseUri, string path = DefaultPath, IHttpOperationsFactory httpClientFactory = null)
         {
             this.Authority = new Uri(baseUri);
             this.Path = string.Format(path, tenantDomain);
             this.Tenant = tenantDomain;
             this._httpClientFactory = httpClientFactory;
-        }
-
-        public OpenIDConfiguration(string tenantDomain, IHttpOperationsFactory httpClientFactory = null) :this(DefaultAuthority, DefaultPath, tenantDomain, httpClientFactory)
-        {
-
+            AbsoluteUri = new Uri(Authority, Path).AbsoluteUri;
         }
 
         public async Task<string> Open(IHttpOperationsFactory httpClientFactory)
         {
-            Uri url = new Uri(Authority, Path);
+            var url = new Uri(AbsoluteUri);
             if (!Uri.IsWellFormedUriString(url.AbsoluteUri, UriKind.Absolute))
             {
                 throw new UriFormatException(string.Format(Resources.InvalidOpenIDConfigUri, url));
             }
-            string content = await httpClientFactory.ReadAsStringAsync(url);
-            var jObject = JsonConvert.DeserializeObject<JObject>(content);
+
+            OpenIDConfigDoc = await httpClientFactory.ReadAsStringAsync(url);
+            var jObject = JsonConvert.DeserializeObject<JObject>(OpenIDConfigDoc);
             foreach (JProperty property in jObject.Properties())
             {
-                if (string.Compare(property.Name, "issuer") == 0)
+                if (string.Equals(property.Name, "issuer"))
                 {
                     return (string)property.Value;
                 }
             }
-            throw new InvalidOperationException(string.Format(Resources.OpenIDConfigResponseError, content));
+            throw new InvalidOperationException(string.Format(Resources.OpenIDConfigResponseError, OpenIDConfigDoc));
         }
 
         private string tenantId = null;
@@ -74,7 +70,7 @@ namespace Microsoft.Azure.Commands.Profile.Utilities
         {
             get
             {
-                if(tenantId == null)
+                if (tenantId == null)
                 {
                     if (_httpClientFactory != null)
                     {
@@ -89,6 +85,18 @@ namespace Microsoft.Azure.Commands.Profile.Utilities
                 }
                 return tenantId;
             }
+        }
+
+        public string AbsoluteUri
+        {
+            get;
+            private set;
+        }
+
+        public string OpenIDConfigDoc
+        {
+            get;
+            private set;
         }
     }
 }
