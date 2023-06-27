@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Commands.Aks
         [Parameter(Mandatory = false, HelpMessage = "DNS service IP used for building Kubernetes network.")]
         public string DnsServiceIP { get; set; }
 
-        [CmdletParameterBreakingChange("DockerBridgeCidr", "6.0.0", ChangeDescription = "DockerBridgeCidr parameter will be deprecated in Az 11.0.0 without being replaced.")]
+        [CmdletParameterBreakingChangeWithVersion("DockerBridgeCidr", "11.0.0", "6.0.0", ChangeDescription = "DockerBridgeCidr parameter will be deprecated in Az 11.0.0 without being replaced.")]
         [Parameter(Mandatory = false, HelpMessage = "Docker bridge cidr used for building Kubernetes network.")]
         public string DockerBridgeCidr { get; set; }
 
@@ -481,7 +481,7 @@ namespace Microsoft.Azure.Commands.Aks
             {
                 windowsProfile = new ManagedClusterWindowsProfile(WindowsProfileAdminUserName,
                     WindowsProfileAdminUserPassword?.ConvertToString());
-                if (this.IsParameterBound(c => c.EnableAHUB) && EnableAHUB.ToBool()) 
+                if (this.IsParameterBound(c => c.EnableAHUB) && EnableAHUB.ToBool())
                 {
                     windowsProfile.LicenseType = "Windows_Server";
                 }
@@ -587,7 +587,7 @@ namespace Microsoft.Azure.Commands.Aks
             }
             if (EnableFIPS.IsPresent)
             {
-                defaultAgentPoolProfile.EnableFIPS = EnableFIPS.ToBool(); 
+                defaultAgentPoolProfile.EnableFIPS = EnableFIPS.ToBool();
             }
             if (this.IsParameterBound(c => c.GpuInstanceProfile))
             {
@@ -595,7 +595,7 @@ namespace Microsoft.Azure.Commands.Aks
             }
             if (this.IsParameterBound(c => c.NodeHostGroupID)) {
                 defaultAgentPoolProfile.HostGroupID = NodeHostGroupID;
-            } 
+            }
 
             defaultAgentPoolProfile.Mode = NodePoolMode;
 
