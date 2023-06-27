@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Fixed keyvault SPN Id coming as null for some users
+* Fixed key vault SPN Id coming as null for some users
 * Added support for Windows Server OS upgrade while migrating the server to Azure using Azure Migrate
 * Updated OsUpgradeVersion parameter for Azure Migrate
 
