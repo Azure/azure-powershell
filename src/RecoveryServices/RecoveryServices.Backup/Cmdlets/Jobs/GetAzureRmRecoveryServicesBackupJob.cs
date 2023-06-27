@@ -97,7 +97,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "Location of the Recovery Services Vault used to fetch the secondary region jobs.")]
         [LocationCompleter("Microsoft.RecoveryServices/vaults")]
-        [ValidateNotNullOrEmpty]
         public string VaultLocation { get; set; }
 
         public override void ExecuteCmdlet()
