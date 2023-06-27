@@ -134,7 +134,9 @@ command connects the specified Azure tenant using the service principal credenti
 authenticates as a service principal.
 
 ```powershell
-$SecurePassword = $password | ConvertTo-SecureString -AsPlainText -Force
+$SecurePassword = ConvertTo-SecureString -String "Password123!" -AsPlainText -Force
+$TenantId = 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyy'
+$ApplicationId = 'zzzzzzzz-zzzz-zzzz-zzzz-zzzzzzzz'
 $Credential = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $ApplicationId, $SecuredPassword
 Connect-AzAccount -ServicePrincipal -TenantId $TenantId -Credential $Credential
 ```
@@ -240,7 +242,7 @@ This example connects to an Azure account using certificate-based service princi
 The certificate file, which is specified by `CertficatePath`, should contains both certificate and private key as the input.
 
 ```powershell
-$securePassword = $plainPassword | ConvertTo-SecureString -AsPlainText -Force
+$SecurePassword = ConvertTo-SecureString -String "Password123!" -AsPlainText -Force
 $TenantId = 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyy'
 $ApplicationId = 'zzzzzzzz-zzzz-zzzz-zzzz-zzzzzzzz'
 Connect-AzAccount -ServicePrincipal -ApplicationId $ApplicationId -TenantId $TenantId -CertificatePath './certificatefortest.pfx' -CertificatePassword $securePassword
