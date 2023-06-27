@@ -89,6 +89,74 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.CrossRegionRestore
             }
 
             /// <summary>
+            /// Provides the information of the backed up data identified using
+            /// RecoveryPointID.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='vaultName'>
+            /// The name of the recovery services vault.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group where the recovery services vault is
+            /// present.
+            /// </param>
+            /// <param name='fabricName'>
+            /// Fabric name associated with backed up item.
+            /// </param>
+            /// <param name='containerName'>
+            /// Container name associated with backed up item.
+            /// </param>
+            /// <param name='protectedItemName'>
+            /// Backed up item name whose backup data needs to be fetched.
+            /// </param>
+            /// <param name='recoveryPointId'>
+            /// RecoveryPointID represents the backed up data to be fetched.
+            /// </param>
+            public static RecoveryPointResource Get(this IRecoveryPointsCrrOperations operations, string vaultName, string resourceGroupName, string fabricName, string containerName, string protectedItemName, string recoveryPointId)
+            {
+                return operations.GetAsync(vaultName, resourceGroupName, fabricName, containerName, protectedItemName, recoveryPointId).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Provides the information of the backed up data identified using
+            /// RecoveryPointID.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='vaultName'>
+            /// The name of the recovery services vault.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group where the recovery services vault is
+            /// present.
+            /// </param>
+            /// <param name='fabricName'>
+            /// Fabric name associated with backed up item.
+            /// </param>
+            /// <param name='containerName'>
+            /// Container name associated with backed up item.
+            /// </param>
+            /// <param name='protectedItemName'>
+            /// Backed up item name whose backup data needs to be fetched.
+            /// </param>
+            /// <param name='recoveryPointId'>
+            /// RecoveryPointID represents the backed up data to be fetched.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<RecoveryPointResource> GetAsync(this IRecoveryPointsCrrOperations operations, string vaultName, string resourceGroupName, string fabricName, string containerName, string protectedItemName, string recoveryPointId, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.GetWithHttpMessagesAsync(vaultName, resourceGroupName, fabricName, containerName, protectedItemName, recoveryPointId, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
             /// Lists the backup copies for the backed up item.
             /// </summary>
             /// <param name='operations'>
