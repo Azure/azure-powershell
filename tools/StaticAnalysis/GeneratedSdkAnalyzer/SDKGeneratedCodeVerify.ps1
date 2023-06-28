@@ -87,7 +87,7 @@ try{
         }
     }
 }
-catch [] {
+catch{
     "Caught an error."
 }
 finally {
