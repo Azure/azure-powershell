@@ -19,8 +19,9 @@
 -->
 
 ## Upcoming Release
-* Support updating Service Configuration for Arc resources at runtime.
+* Supported updating Service Configuration for Arc resources at runtime.
     - Owners/Contributors can change what port is allowed for SSH connection at runtime by providing the -Port parameter and confirming the operation when prompted.
+* Fixed bug in the RDP feature in the Enter-AzVM cmdlet.
 
 ## Version 0.1.2
 * The SSH Proxy required for connection to Arc resources must be installed by the user as part of the Az.Ssh.ArcProxy PowerShell module
