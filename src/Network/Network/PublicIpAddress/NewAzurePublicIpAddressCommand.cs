@@ -122,7 +122,7 @@ namespace Microsoft.Azure.Commands.Network
             nameof(PSDomainNameLabelScopeType.ResourceGroupReuse),
             nameof(PSDomainNameLabelScopeType.NoReuse), 
             IgnoreCase = true)]
-        public PSDomainNameLabelScopeType DomainNameLabelScope { get; set; }
+        public PSDomainNameLabelScopeType? DomainNameLabelScope { get; set; }
 
         [Parameter(
             Mandatory = false,
