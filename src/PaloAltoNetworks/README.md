@@ -46,7 +46,7 @@ nested-object-to-string: true
 
 directive:
   - where:
-      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
+      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$|^Save$|^SaveViaIdentity$
     remove: true
   - where:
       verb: Set
@@ -59,7 +59,20 @@ directive:
 #       - IPAddress
 #       - FrontendSetting
 #       - NetworkProfile
-#       - LogSettings
+#       - TagInfo
+
+  - where:
+      subject: PostRule
+    remove: true
+  - where:
+      subject: PostRuleCounter
+    remove: true
+  - where:
+      subject: PreRule
+    remove: true
+  - where:
+      subject: PreRuleCounter
+    remove: true
 
 # We can exclude GlobalRulestack. All GlobalRulestack APIs are not in use.
   - where:

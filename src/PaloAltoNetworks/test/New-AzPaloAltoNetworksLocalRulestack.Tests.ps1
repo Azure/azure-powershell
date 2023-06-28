@@ -18,4 +18,16 @@ Describe 'New-AzPaloAltoNetworksLocalRulestack' {
     It 'CreateExpanded' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
+
+    It 'Create' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
+    It 'CreateViaIdentityExpanded' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
+    It 'CreateViaIdentity' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
 }

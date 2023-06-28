@@ -59,20 +59,8 @@ List the security services for rulestack
 ### [Get-AzPaloAltoNetworksLocalRulestackSupportInfo](Get-AzPaloAltoNetworksLocalRulestackSupportInfo.md)
 support info for rulestack.
 
-### [Get-AzPaloAltoNetworksPostRule](Get-AzPaloAltoNetworksPostRule.md)
-Get a PostRulesResource
-
-### [Get-AzPaloAltoNetworksPostRuleCounter](Get-AzPaloAltoNetworksPostRuleCounter.md)
-Get counters
-
 ### [Get-AzPaloAltoNetworksPrefixListLocalRulestack](Get-AzPaloAltoNetworksPrefixListLocalRulestack.md)
 Get a PrefixListResource
-
-### [Get-AzPaloAltoNetworksPreRule](Get-AzPaloAltoNetworksPreRule.md)
-Get a PreRulesResource
-
-### [Get-AzPaloAltoNetworksPreRuleCounter](Get-AzPaloAltoNetworksPreRuleCounter.md)
-Get counters
 
 ### [Invoke-AzPaloAltoNetworksCommitLocalRulestack](Invoke-AzPaloAltoNetworksCommitLocalRulestack.md)
 Commit rulestack configuration
@@ -98,20 +86,14 @@ Create a LocalRulesResource
 ### [New-AzPaloAltoNetworksLocalRulestack](New-AzPaloAltoNetworksLocalRulestack.md)
 Create a LocalRulestackResource
 
-### [New-AzPaloAltoNetworksLogSettingsObject](New-AzPaloAltoNetworksLogSettingsObject.md)
-Create an in-memory object for LogSettings.
-
 ### [New-AzPaloAltoNetworksNetworkProfileObject](New-AzPaloAltoNetworksNetworkProfileObject.md)
 Create an in-memory object for NetworkProfile.
-
-### [New-AzPaloAltoNetworksPostRule](New-AzPaloAltoNetworksPostRule.md)
-Create a PostRulesResource
 
 ### [New-AzPaloAltoNetworksPrefixListLocalRulestack](New-AzPaloAltoNetworksPrefixListLocalRulestack.md)
 Create a PrefixListResource
 
-### [New-AzPaloAltoNetworksPreRule](New-AzPaloAltoNetworksPreRule.md)
-Create a PreRulesResource
+### [New-AzPaloAltoNetworksTagInfoObject](New-AzPaloAltoNetworksTagInfoObject.md)
+Create an in-memory object for TagInfo.
 
 ### [Remove-AzPaloAltoNetworksFirewall](Remove-AzPaloAltoNetworksFirewall.md)
 Delete a FirewallResource
@@ -125,22 +107,10 @@ Delete a LocalRulesResource
 ### [Remove-AzPaloAltoNetworksLocalRulestack](Remove-AzPaloAltoNetworksLocalRulestack.md)
 Delete a LocalRulestackResource
 
-### [Remove-AzPaloAltoNetworksPostRule](Remove-AzPaloAltoNetworksPostRule.md)
-Delete a PostRulesResource
-
 ### [Remove-AzPaloAltoNetworksPrefixListLocalRulestack](Remove-AzPaloAltoNetworksPrefixListLocalRulestack.md)
 Delete a PrefixListResource
 
-### [Remove-AzPaloAltoNetworksPreRule](Remove-AzPaloAltoNetworksPreRule.md)
-Delete a PreRulesResource
-
 ### [Reset-AzPaloAltoNetworksLocalRuleCounter](Reset-AzPaloAltoNetworksLocalRuleCounter.md)
-Reset counters
-
-### [Reset-AzPaloAltoNetworksPostRuleCounter](Reset-AzPaloAltoNetworksPostRuleCounter.md)
-Reset counters
-
-### [Reset-AzPaloAltoNetworksPreRuleCounter](Reset-AzPaloAltoNetworksPreRuleCounter.md)
 Reset counters
 
 ### [Save-AzPaloAltoNetworksFirewallLogProfile](Save-AzPaloAltoNetworksFirewallLogProfile.md)
@@ -154,10 +124,4 @@ Refresh counters
 
 ### [Update-AzPaloAltoNetworksLocalRulestack](Update-AzPaloAltoNetworksLocalRulestack.md)
 Update a LocalRulestackResource
-
-### [Update-AzPaloAltoNetworksPostRuleCounter](Update-AzPaloAltoNetworksPostRuleCounter.md)
-Refresh counters
-
-### [Update-AzPaloAltoNetworksPreRuleCounter](Update-AzPaloAltoNetworksPreRuleCounter.md)
-Refresh counters
 

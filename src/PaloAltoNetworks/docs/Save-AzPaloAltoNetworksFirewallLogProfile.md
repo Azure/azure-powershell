@@ -70,19 +70,6 @@ Save-AzPaloAltoNetworksFirewallLogProfile -FirewallName <String> -ResourceGroupN
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### Save
-```
-Save-AzPaloAltoNetworksFirewallLogProfile -FirewallName <String> -ResourceGroupName <String>
- -LogSetting <ILogSettings> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### SaveViaIdentity
-```
-Save-AzPaloAltoNetworksFirewallLogProfile -InputObject <IPaloAltoNetworksIdentity> -LogSetting <ILogSettings>
- [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ### SaveViaIdentityExpanded
 ```
 Save-AzPaloAltoNetworksFirewallLogProfile -InputObject <IPaloAltoNetworksIdentity>
@@ -175,7 +162,7 @@ Resource id for Application Insights
 
 ```yaml
 Type: System.String
-Parameter Sets: SaveExpanded, SaveViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -190,7 +177,7 @@ Application Insights key
 
 ```yaml
 Type: System.String
-Parameter Sets: SaveExpanded, SaveViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -205,7 +192,7 @@ Resource ID of EventHub
 
 ```yaml
 Type: System.String
-Parameter Sets: SaveExpanded, SaveViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -220,7 +207,7 @@ EventHub name
 
 ```yaml
 Type: System.String
-Parameter Sets: SaveExpanded, SaveViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -235,7 +222,7 @@ EventHub namespace
 
 ```yaml
 Type: System.String
-Parameter Sets: SaveExpanded, SaveViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -250,7 +237,7 @@ EventHub policy name
 
 ```yaml
 Type: System.String
-Parameter Sets: SaveExpanded, SaveViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -265,7 +252,7 @@ Subscription Id
 
 ```yaml
 Type: System.String
-Parameter Sets: SaveExpanded, SaveViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -280,7 +267,7 @@ Resource ID of MonitorLog
 
 ```yaml
 Type: System.String
-Parameter Sets: SaveExpanded, SaveViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -295,7 +282,7 @@ Primary Key value for Monitor
 
 ```yaml
 Type: System.String
-Parameter Sets: SaveExpanded, SaveViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -310,7 +297,7 @@ Secondary Key value for Monitor
 
 ```yaml
 Type: System.String
-Parameter Sets: SaveExpanded, SaveViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -325,7 +312,7 @@ Subscription Id
 
 ```yaml
 Type: System.String
-Parameter Sets: SaveExpanded, SaveViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -340,7 +327,7 @@ MonitorLog workspace
 
 ```yaml
 Type: System.String
-Parameter Sets: SaveExpanded, SaveViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -355,7 +342,7 @@ Storage account name
 
 ```yaml
 Type: System.String
-Parameter Sets: SaveExpanded, SaveViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -370,7 +357,7 @@ Resource ID of storage account
 
 ```yaml
 Type: System.String
-Parameter Sets: SaveExpanded, SaveViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -385,7 +372,7 @@ Subscription Id
 
 ```yaml
 Type: System.String
-Parameter Sets: SaveExpanded, SaveViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -400,7 +387,7 @@ Resource ID of EventHub
 
 ```yaml
 Type: System.String
-Parameter Sets: SaveExpanded, SaveViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -415,7 +402,7 @@ EventHub name
 
 ```yaml
 Type: System.String
-Parameter Sets: SaveExpanded, SaveViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -430,7 +417,7 @@ EventHub namespace
 
 ```yaml
 Type: System.String
-Parameter Sets: SaveExpanded, SaveViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -445,7 +432,7 @@ EventHub policy name
 
 ```yaml
 Type: System.String
-Parameter Sets: SaveExpanded, SaveViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -460,7 +447,7 @@ Subscription Id
 
 ```yaml
 Type: System.String
-Parameter Sets: SaveExpanded, SaveViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -475,7 +462,7 @@ Resource ID of MonitorLog
 
 ```yaml
 Type: System.String
-Parameter Sets: SaveExpanded, SaveViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -490,7 +477,7 @@ Primary Key value for Monitor
 
 ```yaml
 Type: System.String
-Parameter Sets: SaveExpanded, SaveViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -505,7 +492,7 @@ Secondary Key value for Monitor
 
 ```yaml
 Type: System.String
-Parameter Sets: SaveExpanded, SaveViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -520,7 +507,7 @@ Subscription Id
 
 ```yaml
 Type: System.String
-Parameter Sets: SaveExpanded, SaveViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -535,7 +522,7 @@ MonitorLog workspace
 
 ```yaml
 Type: System.String
-Parameter Sets: SaveExpanded, SaveViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -550,7 +537,7 @@ Storage account name
 
 ```yaml
 Type: System.String
-Parameter Sets: SaveExpanded, SaveViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -565,7 +552,7 @@ Resource ID of storage account
 
 ```yaml
 Type: System.String
-Parameter Sets: SaveExpanded, SaveViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -580,7 +567,7 @@ Subscription Id
 
 ```yaml
 Type: System.String
-Parameter Sets: SaveExpanded, SaveViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -611,7 +598,7 @@ Firewall resource name
 
 ```yaml
 Type: System.String
-Parameter Sets: Save, SaveExpanded
+Parameter Sets: SaveExpanded
 Aliases:
 
 Required: True
@@ -627,7 +614,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPaloAltoNetworksIdentity
-Parameter Sets: SaveViaIdentity, SaveViaIdentityExpanded
+Parameter Sets: SaveViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -642,7 +629,7 @@ Log option SAME/INDIVIDUAL
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Support.LogOption
-Parameter Sets: SaveExpanded, SaveViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -652,28 +639,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -LogSetting
-Log Settings for Firewall
-To construct, see NOTES section for LOGSETTING properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.ILogSettings
-Parameter Sets: Save, SaveViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -LogType
 One of possible log type
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Support.LogType
-Parameter Sets: SaveExpanded, SaveViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -704,7 +675,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Save, SaveExpanded
+Parameter Sets: SaveExpanded
 Aliases:
 
 Required: True
@@ -719,7 +690,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Save, SaveExpanded
+Parameter Sets: SaveExpanded
 Aliases:
 
 Required: False
@@ -734,7 +705,7 @@ Resource ID of EventHub
 
 ```yaml
 Type: System.String
-Parameter Sets: SaveExpanded, SaveViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -749,7 +720,7 @@ EventHub name
 
 ```yaml
 Type: System.String
-Parameter Sets: SaveExpanded, SaveViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -764,7 +735,7 @@ EventHub namespace
 
 ```yaml
 Type: System.String
-Parameter Sets: SaveExpanded, SaveViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -779,7 +750,7 @@ EventHub policy name
 
 ```yaml
 Type: System.String
-Parameter Sets: SaveExpanded, SaveViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -794,7 +765,7 @@ Subscription Id
 
 ```yaml
 Type: System.String
-Parameter Sets: SaveExpanded, SaveViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -809,7 +780,7 @@ Resource ID of MonitorLog
 
 ```yaml
 Type: System.String
-Parameter Sets: SaveExpanded, SaveViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -824,7 +795,7 @@ Primary Key value for Monitor
 
 ```yaml
 Type: System.String
-Parameter Sets: SaveExpanded, SaveViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -839,7 +810,7 @@ Secondary Key value for Monitor
 
 ```yaml
 Type: System.String
-Parameter Sets: SaveExpanded, SaveViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -854,7 +825,7 @@ Subscription Id
 
 ```yaml
 Type: System.String
-Parameter Sets: SaveExpanded, SaveViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -869,7 +840,7 @@ MonitorLog workspace
 
 ```yaml
 Type: System.String
-Parameter Sets: SaveExpanded, SaveViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -884,7 +855,7 @@ Storage account name
 
 ```yaml
 Type: System.String
-Parameter Sets: SaveExpanded, SaveViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -899,7 +870,7 @@ Resource ID of storage account
 
 ```yaml
 Type: System.String
-Parameter Sets: SaveExpanded, SaveViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -914,7 +885,7 @@ Subscription Id
 
 ```yaml
 Type: System.String
-Parameter Sets: SaveExpanded, SaveViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -929,7 +900,7 @@ Resource ID of EventHub
 
 ```yaml
 Type: System.String
-Parameter Sets: SaveExpanded, SaveViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -944,7 +915,7 @@ EventHub name
 
 ```yaml
 Type: System.String
-Parameter Sets: SaveExpanded, SaveViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -959,7 +930,7 @@ EventHub namespace
 
 ```yaml
 Type: System.String
-Parameter Sets: SaveExpanded, SaveViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -974,7 +945,7 @@ EventHub policy name
 
 ```yaml
 Type: System.String
-Parameter Sets: SaveExpanded, SaveViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -989,7 +960,7 @@ Subscription Id
 
 ```yaml
 Type: System.String
-Parameter Sets: SaveExpanded, SaveViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -1004,7 +975,7 @@ Resource ID of MonitorLog
 
 ```yaml
 Type: System.String
-Parameter Sets: SaveExpanded, SaveViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -1019,7 +990,7 @@ Primary Key value for Monitor
 
 ```yaml
 Type: System.String
-Parameter Sets: SaveExpanded, SaveViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -1034,7 +1005,7 @@ Secondary Key value for Monitor
 
 ```yaml
 Type: System.String
-Parameter Sets: SaveExpanded, SaveViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -1049,7 +1020,7 @@ Subscription Id
 
 ```yaml
 Type: System.String
-Parameter Sets: SaveExpanded, SaveViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -1064,7 +1035,7 @@ MonitorLog workspace
 
 ```yaml
 Type: System.String
-Parameter Sets: SaveExpanded, SaveViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -1079,7 +1050,7 @@ Storage account name
 
 ```yaml
 Type: System.String
-Parameter Sets: SaveExpanded, SaveViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -1094,7 +1065,7 @@ Resource ID of storage account
 
 ```yaml
 Type: System.String
-Parameter Sets: SaveExpanded, SaveViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -1109,7 +1080,7 @@ Subscription Id
 
 ```yaml
 Type: System.String
-Parameter Sets: SaveExpanded, SaveViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -1155,8 +1126,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.ILogSettings
-
 ### Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPaloAltoNetworksIdentity
 
 ## OUTPUTS
@@ -1181,64 +1150,6 @@ To create the parameters described below, construct a hash table containing the 
   - `[Priority <String>]`: Post Rule priority
   - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
   - `[SubscriptionId <String>]`: The ID of the target subscription.
-
-`LOGSETTING <ILogSettings>`: Log Settings for Firewall
-  - `[ApplicationInsightId <String>]`: Resource id for Application Insights
-  - `[ApplicationInsightKey <String>]`: Application Insights key
-  - `[CommonDestinationEventHubConfigurationsId <String>]`: Resource ID of EventHub
-  - `[CommonDestinationEventHubConfigurationsName <String>]`: EventHub name
-  - `[CommonDestinationEventHubConfigurationsNameSpace <String>]`: EventHub namespace
-  - `[CommonDestinationEventHubConfigurationsPolicyName <String>]`: EventHub policy name
-  - `[CommonDestinationEventHubConfigurationsSubscriptionId <String>]`: Subscription Id
-  - `[CommonDestinationMonitorConfigurationsId <String>]`: Resource ID of MonitorLog
-  - `[CommonDestinationMonitorConfigurationsPrimaryKey <String>]`: Primary Key value for Monitor
-  - `[CommonDestinationMonitorConfigurationsSecondaryKey <String>]`: Secondary Key value for Monitor
-  - `[CommonDestinationMonitorConfigurationsSubscriptionId <String>]`: Subscription Id
-  - `[CommonDestinationMonitorConfigurationsWorkspace <String>]`: MonitorLog workspace
-  - `[CommonDestinationStorageConfigurationsAccountName <String>]`: Storage account name
-  - `[CommonDestinationStorageConfigurationsId <String>]`: Resource ID of storage account
-  - `[CommonDestinationStorageConfigurationsSubscriptionId <String>]`: Subscription Id
-  - `[DecryptLogDestinationEventHubConfigurationsId <String>]`: Resource ID of EventHub
-  - `[DecryptLogDestinationEventHubConfigurationsName <String>]`: EventHub name
-  - `[DecryptLogDestinationEventHubConfigurationsNameSpace <String>]`: EventHub namespace
-  - `[DecryptLogDestinationEventHubConfigurationsPolicyName <String>]`: EventHub policy name
-  - `[DecryptLogDestinationEventHubConfigurationsSubscriptionId <String>]`: Subscription Id
-  - `[DecryptLogDestinationMonitorConfigurationsId <String>]`: Resource ID of MonitorLog
-  - `[DecryptLogDestinationMonitorConfigurationsPrimaryKey <String>]`: Primary Key value for Monitor
-  - `[DecryptLogDestinationMonitorConfigurationsSecondaryKey <String>]`: Secondary Key value for Monitor
-  - `[DecryptLogDestinationMonitorConfigurationsSubscriptionId <String>]`: Subscription Id
-  - `[DecryptLogDestinationMonitorConfigurationsWorkspace <String>]`: MonitorLog workspace
-  - `[DecryptLogDestinationStorageConfigurationsAccountName <String>]`: Storage account name
-  - `[DecryptLogDestinationStorageConfigurationsId <String>]`: Resource ID of storage account
-  - `[DecryptLogDestinationStorageConfigurationsSubscriptionId <String>]`: Subscription Id
-  - `[LogOption <LogOption?>]`: Log option SAME/INDIVIDUAL
-  - `[LogType <LogType?>]`: One of possible log type
-  - `[ThreatLogDestinationEventHubConfigurationsId <String>]`: Resource ID of EventHub
-  - `[ThreatLogDestinationEventHubConfigurationsName <String>]`: EventHub name
-  - `[ThreatLogDestinationEventHubConfigurationsNameSpace <String>]`: EventHub namespace
-  - `[ThreatLogDestinationEventHubConfigurationsPolicyName <String>]`: EventHub policy name
-  - `[ThreatLogDestinationEventHubConfigurationsSubscriptionId <String>]`: Subscription Id
-  - `[ThreatLogDestinationMonitorConfigurationsId <String>]`: Resource ID of MonitorLog
-  - `[ThreatLogDestinationMonitorConfigurationsPrimaryKey <String>]`: Primary Key value for Monitor
-  - `[ThreatLogDestinationMonitorConfigurationsSecondaryKey <String>]`: Secondary Key value for Monitor
-  - `[ThreatLogDestinationMonitorConfigurationsSubscriptionId <String>]`: Subscription Id
-  - `[ThreatLogDestinationMonitorConfigurationsWorkspace <String>]`: MonitorLog workspace
-  - `[ThreatLogDestinationStorageConfigurationsAccountName <String>]`: Storage account name
-  - `[ThreatLogDestinationStorageConfigurationsId <String>]`: Resource ID of storage account
-  - `[ThreatLogDestinationStorageConfigurationsSubscriptionId <String>]`: Subscription Id
-  - `[TrafficLogDestinationEventHubConfigurationsId <String>]`: Resource ID of EventHub
-  - `[TrafficLogDestinationEventHubConfigurationsName <String>]`: EventHub name
-  - `[TrafficLogDestinationEventHubConfigurationsNameSpace <String>]`: EventHub namespace
-  - `[TrafficLogDestinationEventHubConfigurationsPolicyName <String>]`: EventHub policy name
-  - `[TrafficLogDestinationEventHubConfigurationsSubscriptionId <String>]`: Subscription Id
-  - `[TrafficLogDestinationMonitorConfigurationsId <String>]`: Resource ID of MonitorLog
-  - `[TrafficLogDestinationMonitorConfigurationsPrimaryKey <String>]`: Primary Key value for Monitor
-  - `[TrafficLogDestinationMonitorConfigurationsSecondaryKey <String>]`: Secondary Key value for Monitor
-  - `[TrafficLogDestinationMonitorConfigurationsSubscriptionId <String>]`: Subscription Id
-  - `[TrafficLogDestinationMonitorConfigurationsWorkspace <String>]`: MonitorLog workspace
-  - `[TrafficLogDestinationStorageConfigurationsAccountName <String>]`: Storage account name
-  - `[TrafficLogDestinationStorageConfigurationsId <String>]`: Resource ID of storage account
-  - `[TrafficLogDestinationStorageConfigurationsSubscriptionId <String>]`: Subscription Id
 
 ## RELATED LINKS
 

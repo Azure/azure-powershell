@@ -19,7 +19,15 @@ Describe 'Update-AzPaloAltoNetworksFirewall' {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
+    It 'Update' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
     It 'UpdateViaIdentityExpanded' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
+    It 'UpdateViaIdentity' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }
