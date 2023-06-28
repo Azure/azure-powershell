@@ -525,7 +525,8 @@ If ($StaticAnalysisVerifyGensdk)
     If ("" -Ne $VerifyGenSdkModuleList)
     {
         Write-Host "Running static analysis to verify generated sdk..."
-        .($PSScriptRoot + "/StaticAnalysis/GeneratedSdkAnalyzer/SDKGeneratedCodeVerify.ps1") 
+        $result = .($PSScriptRoot + "/StaticAnalysis/GeneratedSdkAnalyzer/SDKGeneratedCodeVerify.ps1")
+        Write-Host "Static analysis to verify generated sdk result: $result"
     }
     Return
 }
