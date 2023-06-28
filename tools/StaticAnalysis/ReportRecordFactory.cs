@@ -68,6 +68,10 @@ namespace StaticAnalysis
             {
                 return new UXMetadataIssue();
             }
+            if (type.Equals(typeof(VerifyGenSdkIssue).FullName))
+            {
+                return new VerifyGenSdkIssue();
+            }
 
             return null;
         }
