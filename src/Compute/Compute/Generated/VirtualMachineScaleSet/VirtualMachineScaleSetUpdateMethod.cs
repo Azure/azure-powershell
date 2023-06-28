@@ -79,29 +79,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     VirtualMachineScaleSet parameters = new VirtualMachineScaleSet();
                     ComputeAutomationAutoMapperProfile.Mapper.Map<PSVirtualMachineScaleSet, VirtualMachineScaleSet>(this.VirtualMachineScaleSet, parameters);
 
-                    
-                    if (this.VirtualMachineScaleSetUpdate == null)
-                    {
-                        var result = VirtualMachineScaleSetsClient.CreateOrUpdate(resourceGroupName, vmScaleSetName, parameters);
+                    var result = (this.VirtualMachineScaleSetUpdate == null)
+                                 ? VirtualMachineScaleSetsClient.CreateOrUpdate(resourceGroupName, vmScaleSetName, parameters)
+                                 : VirtualMachineScaleSetsClient.Update(resourceGroupName, vmScaleSetName, parametersupdate);
                         var psObject = new PSVirtualMachineScaleSet();
                         ComputeAutomationAutoMapperProfile.Mapper.Map<VirtualMachineScaleSet, PSVirtualMachineScaleSet>(result, psObject);
                         WriteObject(psObject);
                     }
-                    else
-                    {
-                        var result = VirtualMachineScaleSetsClient.Update(resourceGroupName, vmScaleSetName, parametersupdate);
-                        var psObject = new PSVirtualMachineScaleSet();
-                        ComputeAutomationAutoMapperProfile.Mapper.Map<VirtualMachineScaleSet, PSVirtualMachineScaleSet>(result, psObject);
-                        WriteObject(psObject);
-                    }
-                        
-                    //var result = (this.VirtualMachineScaleSetUpdate == null)
-                    //             ? VirtualMachineScaleSetsClient.CreateOrUpdate(resourceGroupName, vmScaleSetName, parameters)
-                    //             : VirtualMachineScaleSetsClient.Update(resourceGroupName, vmScaleSetName, parametersupdate);
-                    //var psObject = new PSVirtualMachineScaleSet();
-                    //ComputeAutomationAutoMapperProfile.Mapper.Map<VirtualMachineScaleSet, PSVirtualMachineScaleSet>(result, psObject);
-                    //WriteObject(psObject);
-                }
             });
         }
 
