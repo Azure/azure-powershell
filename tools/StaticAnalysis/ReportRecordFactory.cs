@@ -19,6 +19,7 @@ using StaticAnalysis.HelpAnalyzer;
 using StaticAnalysis.SignatureVerifier;
 using StaticAnalysis.ExampleAnalyzer;
 using StaticAnalysis.UXMetadataAnalyzer;
+using StaticAnalysis.GeneratedSdkAnalyzer;
 
 using System;
 using System.Collections.Generic;
