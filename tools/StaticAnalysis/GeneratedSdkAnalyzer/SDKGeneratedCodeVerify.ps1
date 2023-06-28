@@ -27,6 +27,7 @@ Class GeneratedSdkIssue {
 }
 
 $ExceptionList = @()
+$SavePath = $PWD
 
 $MissReadMe = 9000
 $GenSdkChanged = 9090
@@ -49,7 +50,6 @@ try{
     Write-Host "Preparing Autorest..."
     npm install -g autorest@latest
     autorest --reset
-    autorest --use:@microsoft.azure/autorest.csharp@2.3.90
     foreach ($_ in $ChangedSdks) {
         # Extract Module Name
         $ModuleName = ($_ -split "\/|\\")[1]
@@ -60,7 +60,8 @@ try{
         # Regenerate the Sdk under Generated folder
         if( Test-Path -Path "README.md" -PathType Leaf){
             Write-Host "Re-generating SDK under Generated folder for $ModuleName..."
-            autorest.cmd README.md --version=v2
+            autorest --use:@microsoft.azure/autorest.csharp@2.3.90
+            autorest README.md --version=v2
         }
         else {
             $ExceptionList += [GeneratedSdkIssue]@{
@@ -85,12 +86,8 @@ try{
                     Remediation = "You may need to rebase on the latest main, regenerate code accroding to README.md file under $_, and make sure no more updates based on generated files."
             }
         }
+        Set-Location $SavePath
     }
-}
-catch{
-    "Caught an error."
-}
-finally {
     Write-Host ""
     Write-Host "Summary:" 
     Write-Host ""
@@ -104,5 +101,8 @@ finally {
     if ($ExceptionList.Length -ne 0) {
         $ExceptionList | Sort-Object -Unique -Property Module,Sdk,Description | Export-Csv $ExceptionFilePath -NoTypeInformation
     }
+}
+catch{
+    Write-Host "Caught an error."
 }
 return
