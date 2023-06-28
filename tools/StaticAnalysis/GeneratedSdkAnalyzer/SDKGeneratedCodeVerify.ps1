@@ -99,9 +99,9 @@ finally {
     Write-Host "  $($ExceptionList.Length) error(s) detected while verifying generated sdk:"
     Write-Host ""
 
-    foreach ($err in $ExceptionList) {
-        Write-Host "error : " $err.Description "`n " $err.Remediation
-    }
+    # foreach ($err in $ExceptionList) {
+    #     Write-Host "error : " $err.Description "`n " $err.Remediation
+    # }
 
     if ($ExceptionList.Length -ne 0) {
         $ExceptionList | Sort-Object -Unique -Property Module,Sdk,Description | Export-Csv $ExceptionFilePath -NoTypeInformation
