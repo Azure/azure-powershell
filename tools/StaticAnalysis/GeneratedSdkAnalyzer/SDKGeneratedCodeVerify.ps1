@@ -87,6 +87,9 @@ try{
         }
     }
 }
+catch [] {
+    "Caught an error."
+}
 finally {
     Write-Host ""
     Write-Host "Summary:" 
@@ -102,3 +105,4 @@ finally {
         $ExceptionList | Sort-Object -Unique -Property Module,Sdk,Description | Export-Csv $ExceptionFilePath -NoTypeInformation
     }
 }
+return

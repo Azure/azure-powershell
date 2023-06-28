@@ -7,7 +7,7 @@
         "src/{ModuleName}/{ModuleName}.Sdk/Generated/*"
       ],
       "phases": [
-        "verify-gensdk:related-module"
+        "verify-gensdk:module"
       ]
     },
     {
