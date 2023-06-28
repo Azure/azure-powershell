@@ -13,118 +13,50 @@ while(-not $mockingPath) {
 
 Describe 'Remove-AzWvdPrivateEndpointConnection' {
     It 'DeleteWorkspace' {
-        try {
-            $workspace = New-AzWvdWorkspace -ResourceGroupName $env.ResourceGroup `
-                                            -Location $env.Location `
-                                            -Name $env.Workspace `
-                                            -FriendlyName 'fri' `
-                                            -ApplicationGroupReference $null `
-                                            -Description 'des'
+        $privateEndpointConnection = Get-AzWvdPrivateEndpointConnection -ResourceGroupName $env.ResourceGroup `
+                                                                        -WorkspaceName $env.PvtLinkWS 
 
-            $privateLinkServiceConnection = New-AzPrivateLinkServiceConnection -Name $env.PrivateEndpointConnectionName `
-                                               -PrivateLinkServiceId $workspace.ID `
-                                               -GroupId $env.PECGroupIdWorkspace
+        $privateEndpointConnection.Name | Should -Match $env.PrivateEndpointConnectionNameWS
 
-            ## Create the private endpoints, which are required for Get-AzWvdPrivateEndpointConnection, do not remove. ##
-            $vnet = Get-AzVirtualNetwork -ResourceGroupName $env.ResourceGroup `
-                                         -Name $env.VnetName
+        Remove-AzWvdPrivateEndpointConnection -ResourceGroupName $env.ResourceGroup `
+                                                -WorkspaceName $env.PvtLinkWS `
+                                                -Name $privateEndpointConnection[1].Name
 
-            New-AzPrivateEndpoint -ResourceGroupName $env.ResourceGroup `
-                                  -Name $env.PrivateEndpointName `
-                                  -Location $env.Location `
-                                  -Subnet $vnet.Subnets[0] `
-                                  -PrivateLinkServiceConnection $privateLinkServiceConnection `
-                                  -Force
-
+        Remove-AzWvdPrivateEndpointConnection -ResourceGroupName $env.ResourceGroup `
+                                                -WorkspaceName $env.PvtLinkWS `
+                                                -Name $privateEndpointConnection[0].Name
+        try{
             $privateEndpointConnection = Get-AzWvdPrivateEndpointConnection -ResourceGroupName $env.ResourceGroup `
-                                                                            -WorkspaceName $env.Workspace 
-
-            $privateEndpointConnection.Name | Should -Match $env.PrivateEndpointConnectionName
-
-            Remove-AzWvdPrivateEndpointConnection -ResourceGroupName $env.ResourceGroup `
-                                                  -WorkspaceName $env.Workspace `
-                                                  -Name $privateEndpointConnection.Name `
-
-            try{
-                $privateEndpointConnection = Get-AzWvdPrivateEndpointConnection -ResourceGroupName $env.ResourceGroup `
-                -WorkspaceName $env.Workspace
-                throw "Get should have failed" 
-            }
-            catch {
-
-            }
+                                                                            -WorkspaceName $env.PvtLinkWS
+            throw "Get should have failed" 
         }
-        finally {                        
-            Remove-AzWvdWorkspace -SubscriptionId $env.SubscriptionId `
-            -ResourceGroupName $env.ResourceGroup `
-            -Name $env.Workspace
-            
-            Remove-AzPrivateEndpoint -ResourceGroupName $env.ResourceGroup `
-                                     -Name $env.PrivateEndpointName `
-                                     -Force
+        catch {
+
         }
     }
 
     It 'DeleteHostpool' {
-        try {
-            $hostpool = New-AzWvdHostPool -SubscriptionId $env.SubscriptionId `
-            -ResourceGroupName $env.ResourceGroup `
-            -Name $env.HostPool `
-            -Location $env.Location `
-            -HostPoolType 'Pooled' `
-            -LoadBalancerType 'DepthFirst' `
-            -RegistrationTokenOperation 'Update' `
-            -ExpirationTime $((get-date).ToUniversalTime().AddDays(1).ToString('yyyy-MM-ddTHH:mm:ss.fffffffZ')) `
-            -Description 'des' `
-            -FriendlyName 'fri' `
-            -MaxSessionLimit 5 `
-            -VMTemplate '{option1}' `
-            -CustomRdpProperty $null `
-            -Ring $null `
-            -ValidationEnvironment:$false `
-            -PreferredAppGroupType 'Desktop' `
-            -StartVMOnConnect:$false
+        $privateEndpointConnection = Get-AzWvdPrivateEndpointConnection -ResourceGroupName $env.ResourceGroup `
+                                                                        -HostPoolName $env.PvtLinkHP
 
-            $privateLinkServiceConnection = New-AzPrivateLinkServiceConnection -Name $env.PrivateEndpointConnectionName `
-                                               -PrivateLinkServiceId $hostpool.ID `
-                                               -GroupId $env.PECGroupIdHostPool
+        $privateEndpointConnection.Name | Should -Match $env.PrivateEndpointConnectionNameHP
 
-            ## Create the private endpoints, which are required for Get-AzWvdPrivateEndpointConnection, do not remove. ##
-            $vnet = Get-AzVirtualNetwork -ResourceGroupName $env.ResourceGroup `
-                                         -Name $env.VnetName
+        Remove-AzWvdPrivateEndpointConnection -ResourceGroupName $env.ResourceGroup `
+                                                -HostPoolName $env.PvtLinkHP `
+                                                -Name $privateEndpointConnection[0].Name
 
-            New-AzPrivateEndpoint -ResourceGroupName $env.ResourceGroup `
-                                  -Name $env.PrivateEndpointName `
-                                  -Location $env.Location `
-                                  -Subnet $vnet.Subnets[0] `
-                                  -PrivateLinkServiceConnection $privateLinkServiceConnection `
-                                  -Force
+                                                                            
+        Remove-AzWvdPrivateEndpointConnection -ResourceGroupName $env.ResourceGroup `
+                                                -HostPoolName $env.PvtLinkHP `
+                                                -Name $privateEndpointConnection[1].Name
 
+        try{
             $privateEndpointConnection = Get-AzWvdPrivateEndpointConnection -ResourceGroupName $env.ResourceGroup `
-                                                                            -HostPoolName $env.HostPool
-
-            $privateEndpointConnection.Name | Should -Match $env.PrivateEndpointConnectionName
-
-            $privateEndpointConnection = Remove-AzWvdPrivateEndpointConnection -ResourceGroupName $env.ResourceGroup `
-                                                                               -HostPoolName $env.HostPool `
-                                                                               -name $privateEndpointConnection.Name `
-                                                                               
-            try{
-                $privateEndpointConnection = Get-AzWvdPrivateEndpointConnection -ResourceGroupName $env.ResourceGroup `
-                                                                                -HostpoolName $env.HostPool
-                throw "Get should have failed" 
-            }
-            catch {
-
-            }
+                                                                            -HostpoolName $env.PvtLinkHP
+            throw "Get should have failed" 
         }
-        finally {
-            Remove-AzWvdHostPool -ResourceGroupName $env.ResourceGroup `
-                                 -Name $env.HostPool
+        catch {
 
-            Remove-AzPrivateEndpoint -ResourceGroupName $env.ResourceGroup `
-                                     -Name $env.PrivateEndpointName `
-                                     -Force
         }
         
     }

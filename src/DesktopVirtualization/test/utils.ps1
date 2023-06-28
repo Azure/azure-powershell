@@ -21,14 +21,20 @@ function setupEnv() {
     $null = $env.Add("HostPool", "HostPoolPowershellContained1")
     $null = $env.Add("HostPool2", "HostPoolPowershellContained2")
     $null = $env.Add("Workspace", "WorkspacePowershellContained")
+    $null = $env.Add("PvtLinkWS", "PrivateLinkWorkspace")
+    $null = $env.Add("PvtLinkHP", "PrivateLinkHostPool")
     $null = $env.Add("RemoteApplicationGroup", "ApplicationGroupPowershell2")
     $null = $env.Add("DesktopApplicationGroup", "ApplicationGroupPowershell1")
     #TODO: Need to make this not local
     $null = $env.Add("MSIXImagePath", "C:\AppAttach\Firefox20110.0.1.vhdx")
-    $null = $env.Add("PrivateEndpointConnectionName", "pwshTestPEC0")
-    $null = $env.Add("PrivateEndpointConnectionName1", "pwshTestPEC1")
-    $null = $env.Add("PrivateEndpointName", "pwshTestPrivateEndpoint")
-    $null = $env.Add("PrivateEndpointName1", "pwshTestPrivateEndpoint1")
+    $null = $env.Add("PrivateEndpointConnectionNameWS", "pwshTestPECWS")
+    $null = $env.Add("PrivateEndpointConnectionNameWS1", "pwshTestPECWS1")
+    $null = $env.Add("PrivateEndpointConnectionNameHP", "pwshTestPECHP")
+    $null = $env.Add("PrivateEndpointConnectionNameHP1", "pwshTestPECHP1")
+    $null = $env.Add("PrivateEndpointNameWS", "pwshTestPrivateEndpointWS")
+    $null = $env.Add("PrivateEndpointNameWS1", "pwshTestPrivateEndpointWS1")
+    $null = $env.Add("PrivateEndpointNameHP", "pwshTestPrivateEndpointHP")
+    $null = $env.Add("PrivateEndpointNameHP1", "pwshTestPrivateEndpointHP1")
     $null = $env.Add("PECGroupIdWorkspace", "feed")
     $null = $env.Add("PECGroupIdHostPool", "connection")
 
@@ -53,6 +59,91 @@ function setupEnv() {
     # Currently the scaling tests need to be run in a context with @microsoft, while the other tests are run with a test account
     # Modify the env.json manually after recording the necessary tests to get around this issue.
 
+    # Due to a limitation on how the powershell tests are validated during the PR process,
+    # any "cross-module" calls (Az.Network or similar) cannot be ran in the test file.
+    # the following commands will set up non-persistent resources that will be cleaned up at
+    # the end of each test run.
+
+    #variables used for internal setup
+
+    #PrivateLink Workspace resources
+    $workspace = New-AzWvdWorkspace -ResourceGroupName $env.ResourceGroup `
+    -Location $env.Location `
+    -Name $env.PvtLinkWS `
+    -FriendlyName 'fri' `
+    -ApplicationGroupReference $null `
+    -Description 'des'
+
+    $privateLinkServiceConnectionWS = New-AzPrivateLinkServiceConnection -Name $env.PrivateEndpointConnectionNameWS `
+                                        -PrivateLinkServiceId $workspace.ID `
+                                        -GroupId $env.PECGroupIdWorkspace
+
+    $privateLinkServiceConnectionWS1 = New-AzPrivateLinkServiceConnection -Name $env.PrivateEndpointConnectionNameWS1 `
+                                            -PrivateLinkServiceId $workspace.ID `
+                                            -GroupId $env.PECGroupIdWorkspace
+
+    $vnet = Get-AzVirtualNetwork -ResourceGroupName $env.ResourceGroup `
+    -Name $env.VnetName
+
+    New-AzPrivateEndpoint -ResourceGroupName $env.ResourceGroup `
+    -Name $env.PrivateEndpointNameWS `
+    -Location $env.Location `
+    -Subnet $vnet.Subnets[0] `
+    -PrivateLinkServiceConnection $privateLinkServiceConnectionWS `
+    -Force
+
+    New-AzPrivateEndpoint -ResourceGroupName $env.ResourceGroup `
+    -Name $env.PrivateEndpointNameWS1 `
+    -Location $env.Location `
+    -Subnet $vnet.Subnets[0] `
+    -PrivateLinkServiceConnection $privateLinkServiceConnectionWS1 `
+    -Force
+
+    #Private Link HostPool Resources
+    $hostpool = New-AzWvdHostPool -SubscriptionId $env.SubscriptionId `
+        -ResourceGroupName $env.ResourceGroup `
+        -Name $env.PvtLinkHP `
+        -Location $env.Location `
+        -HostPoolType 'Pooled' `
+        -LoadBalancerType 'DepthFirst' `
+        -RegistrationTokenOperation 'Update' `
+        -ExpirationTime $((get-date).ToUniversalTime().AddDays(1).ToString('yyyy-MM-ddTHH:mm:ss.fffffffZ')) `
+        -Description 'des' `
+        -FriendlyName 'fri' `
+        -MaxSessionLimit 5 `
+        -VMTemplate '{option1}' `
+        -CustomRdpProperty $null `
+        -Ring $null `
+        -ValidationEnvironment:$false `
+        -PreferredAppGroupType 'Desktop' `
+        -StartVMOnConnect:$false
+
+        $privateLinkServiceConnectionHP = New-AzPrivateLinkServiceConnection -Name $env.PrivateEndpointConnectionNameHP `
+                                            -PrivateLinkServiceId $hostpool.ID `
+                                            -GroupId $env.PECGroupIdHostPool
+
+        $privateLinkServiceConnectionHP1 = New-AzPrivateLinkServiceConnection -Name $env.PrivateEndpointConnectionNameHP1 `
+                                            -PrivateLinkServiceId $hostpool.ID `
+                                            -GroupId $env.PECGroupIdHostPool
+
+        $vnet = Get-AzVirtualNetwork -ResourceGroupName $env.ResourceGroup `
+                                     -Name $env.VnetName
+
+        New-AzPrivateEndpoint -ResourceGroupName $env.ResourceGroup `
+                                -Name $env.PrivateEndpointNameHP `
+                                -Location $env.Location `
+                                -Subnet $vnet.Subnets[0] `
+                                -PrivateLinkServiceConnection $privateLinkServiceConnectionHP `
+                                -Force
+
+        New-AzPrivateEndpoint -ResourceGroupName $env.ResourceGroup `
+                                -Name $env.PrivateEndpointNameHP1 `
+                                -Location $env.Location `
+                                -Subnet $vnet.Subnets[0] `
+                                -PrivateLinkServiceConnection $privateLinkServiceConnectionHP1 `
+                                -Force
+
+    #Wrap up and create JSON file for tests to use
     if ($TestMode -eq 'live') {
         $envFile = 'localEnv.json'
     }
@@ -60,5 +151,34 @@ function setupEnv() {
 }
 function cleanupEnv() {
     # Clean resources you create for testing
+    $ResourceGroup = "alecbUserSessionTests"
+    $PvtLinkWS = "PrivateLinkWorkspace"
+    $PvtLinkHP = "PrivateLinkHostPool"
+    $PrivateEndpointNameWS = "pwshTestPrivateEndpointWS"
+    $PrivateEndpointNameWS1 = "pwshTestPrivateEndpointWS1"
+    $PrivateEndpointNameHP = "pwshTestPrivateEndpointHP"
+    $PrivateEndpointNameHP1 = "pwshTestPrivateEndpointHP1"
+
+    Remove-AzWvdWorkspace -ResourceGroupName $ResourceGroup `
+                          -Name $PvtLinkWS
+
+    Remove-AzPrivateEndpoint -ResourceGroupName $ResourceGroup `
+                             -Name $PrivateEndpointNameWS `
+                             -Force
+
+    Remove-AzPrivateEndpoint -ResourceGroupName $ResourceGroup `
+                             -Name $PrivateEndpointNameWS1 `
+                             -Force
+
+    Remove-AzWvdHostPool -ResourceGroupName $ResourceGroup `
+                         -Name $PvtLinkHP
+    
+    Remove-AzPrivateEndpoint -ResourceGroupName $ResourceGroup `
+                             -Name $PrivateEndpointNameHP `
+                             -Force
+
+    Remove-AzPrivateEndpoint -ResourceGroupName $ResourceGroup `
+                             -Name $PrivateEndpointNameHP1 `
+                             -Force
 }
 
