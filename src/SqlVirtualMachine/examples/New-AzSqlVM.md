@@ -138,3 +138,29 @@ eastus		sqlvm1		ResourceGroup01
 ```
 
 Create a SQL virtual machine and configure key vault settings.
+
+### Example 11
+```powershell
+New-AzSqlVM -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1' -Location 'eastus' -SqlManagementType 'Lightweight'
+```
+
+```output
+Location	Name		ResourceGroupName
+--------	----		-----------------
+eastus		sqlvm1		ResourceGroup01	
+```
+
+Create a SQL virtual machine with Lightweight mode.
+
+### Example 12
+```powershell
+New-AzSqlVM -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1' -Location 'eastus' -AsJob
+```
+
+```output
+Location	Name		ResourceGroupName
+--------	----		-----------------
+eastus		sqlvm1		ResourceGroup01	
+```
+
+Create a SQL virtual machine as a background job.
