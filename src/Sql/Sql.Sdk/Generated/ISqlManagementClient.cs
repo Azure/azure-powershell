@@ -374,11 +374,6 @@ namespace Microsoft.Azure.Management.Sql
         ILongTermRetentionManagedInstanceBackupsOperations LongTermRetentionManagedInstanceBackups { get; }
 
         /// <summary>
-        /// Gets the IManagedInstancesOperations.
-        /// </summary>
-        IManagedInstancesOperations ManagedInstances { get; }
-
-        /// <summary>
         /// Gets the IRestorableDroppedManagedDatabasesOperations.
         /// </summary>
         IRestorableDroppedManagedDatabasesOperations RestorableDroppedManagedDatabases { get; }
@@ -509,13 +504,19 @@ namespace Microsoft.Azure.Management.Sql
         IManagedDatabasesOperations ManagedDatabases { get; }
 
         /// <summary>
+        /// Gets the IFailoverGroupsOperations.
+        /// </summary>
+        IFailoverGroupsOperations FailoverGroups { get; }
+
+        /// <summary>
         /// Gets the IManagedDatabaseMoveOperations.
         /// </summary>
         IManagedDatabaseMoveOperations ManagedDatabaseMoveOperations { get; }
 
         /// <summary>
-        /// Gets the IFailoverGroupsOperations.
+        /// Gets the IManagedInstancesOperations.
         /// </summary>
-        IFailoverGroupsOperations FailoverGroups { get; }
+        IManagedInstancesOperations ManagedInstances { get; }
+
     }
 }
