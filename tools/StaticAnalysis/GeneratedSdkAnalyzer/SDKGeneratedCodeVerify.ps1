@@ -88,19 +88,19 @@ try{
         }
         Set-Location $SavePath
     }
-    # Write-Host ""
-    # Write-Host "Summary:" 
-    # Write-Host ""
-    # Write-Host "  $($ExceptionList.Length) error(s) detected while verifying generated sdk:"
-    # Write-Host ""
+    Write-Host ""
+    Write-Host "Summary:" 
+    Write-Host ""
+    Write-Host "  $($ExceptionList.Length) error(s) detected while verifying generated sdk:"
+    Write-Host ""
 
     # foreach ($err in $ExceptionList) {
     #     Write-Host -f Red "error : " $err.Description "`n " $err.Remediation
     # }
 
-    # if ($ExceptionList.Length -ne 0) {
-    #     $ExceptionList | Sort-Object -Unique -Property Module,Sdk,Description | Export-Csv $ExceptionFilePath -NoTypeInformation
-    # }
+    if ($ExceptionList.Length -ne 0) {
+        $ExceptionList | Sort-Object -Unique -Property Module,Sdk,Description | Export-Csv $ExceptionFilePath -NoTypeInformation
+    }
 }
 catch{
     Write-Host "Caught an error."
