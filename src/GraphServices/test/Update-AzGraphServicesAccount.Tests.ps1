@@ -15,11 +15,11 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzGraphServicesAccount
 }
 
 Describe 'Update-AzGraphServicesAccount' {
-    It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'UpdateViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateExistingResource' {
+        {
+            New-AzGraphServicesAccount -ResourceGroupName $env.resourceGroup -Name $env.createResource -AppId $env.appId -SubscriptionId $env.SubscriptionId -Location $env.location
+            $tags = @{ TestTag = "testTag" }
+            Update-AzGraphServicesAccount -ResourceGroupName $env.resourceGroup -Name $env.createResource -Tag $tags
+        } | Should -Not -Throw
     }
 }

@@ -18,6 +18,20 @@ function setupEnv() {
     # as default. You could change them if needed.
     $env.SubscriptionId = (Get-AzContext).Subscription.Id
     $env.Tenant = (Get-AzContext).Tenant.Id
+
+    write-host "start to create test group"
+    $resourceGroup = "auto-test-graphservices-" + (RandomString -allChars $false -len 2)
+    $env.Add("resourceGroup", $resourceGroup)
+    New-AzResourceGroup -Name $env.resourceGroup -Location eastus
+
+    write-host "WARNING: remember to add an existing appId"
+    $env.Add("appId", "{GUID}")
+
+    write-host "set up resource names"
+    $env.Add("location", "global")
+    $createResource = "auto-test-create-" + (RandomString -allChars $false -len 2)
+    $env.Add("createResource", $createResource)
+
     # For any resources you created for test, you should add it to $env here.
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {
@@ -27,5 +41,6 @@ function setupEnv() {
 }
 function cleanupEnv() {
     # Clean resources you create for testing
+    Remove-AzResourceGroup -Name $env.resourceGroup
 }
 

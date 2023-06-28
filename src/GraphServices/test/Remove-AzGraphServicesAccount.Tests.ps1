@@ -15,11 +15,10 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzGraphServicesAccount
 }
 
 Describe 'Remove-AzGraphServicesAccount' {
-    It 'Delete' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'DeleteViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'RemoveResource' {
+        {
+            New-AzGraphServicesAccount -ResourceGroupName $env.resourceGroup -Name $env.createResource -AppId $env.appId -SubscriptionId $env.SubscriptionId -Location $env.location
+            Remove-AzGraphServicesAccount -ResourceGroupName $env.resourceGroup -Name $env.createResource
+        } | Should -Not -Throw
     }
 }

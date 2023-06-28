@@ -15,7 +15,11 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzGraphServicesAccount'))
 }
 
 Describe 'New-AzGraphServicesAccount' {
-    It 'CreateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Create' {
+        {
+            $resource = New-AzGraphServicesAccount -ResourceGroupName $env.resourceGroup -Name $env.createResource -AppId $env.appId -SubscriptionId $env.SubscriptionId -Location $env.location
+            $resource.Name | Should -Be $env.createResource
+            Remove-AzGraphServicesAccount -ResourceGroupName $env.resourceGroup -Name $env.createResource
+        } | Should -Not -Throw
     }
 }

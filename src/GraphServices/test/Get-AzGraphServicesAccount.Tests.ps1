@@ -15,19 +15,21 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzGraphServicesAccount'))
 }
 
 Describe 'Get-AzGraphServicesAccount' {
-    It 'List1' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'GetAccountsByResourceGroup' {
+        {
+            New-AzGraphServicesAccount -ResourceGroupName $env.resourceGroup -Name $env.createResource -AppId $env.appId -SubscriptionId $env.SubscriptionId -Location $env.location
+            $resource = Get-AzGraphServicesAccount -ResourceGroupName $env.resourceGroup
+            $resource.Name | Should -Be $env.createResource
+            Remove-AzGraphServicesAccount -ResourceGroupName $env.resourceGroup -Name $env.createResource
+        } | Should -Not -Throw
     }
 
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'GetAccountsByResourceName' {
+    {
+        New-AzGraphServicesAccount -ResourceGroupName $env.resourceGroup -Name $env.createResource -AppId $env.appId -SubscriptionId $env.SubscriptionId -Location $env.location
+        $resource = Get-AzGraphServicesAccount -ResourceGroupName $env.resourceGroup -Name $env.createResource
+        $resource.Name | Should -Be $env.createResource
+        Remove-AzGraphServicesAccount -ResourceGroupName $env.resourceGroup -Name $env.createResource
+    } | Should -Not -Throw
     }
 }

@@ -1,6 +1,6 @@
 ### Example 1: Update Resource
 ```powershell
-Update-AzGraphServicesAccount -Name myRG -ResourceName myGraphAppBilling
+Update-AzGraphServicesAccount -ResourceGroupName myRG -Name myGraphAppBilling
 ```
 
 ```output
