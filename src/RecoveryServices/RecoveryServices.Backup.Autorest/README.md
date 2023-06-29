@@ -41,6 +41,12 @@ input-file:
   - $(repo)/specification/recoveryservicesbackup/resource-manager/Microsoft.RecoveryServices/stable/2023-02-01/bms.json
 title: RecoveryServices
 directive:
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}"].put
+    transform: $["x-ms-long-running-operation"] = true
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}"].delete
+    transform: $["x-ms-long-running-operation"] = true
   - where:
       verb: New
       subject: ProtectionPolicy
@@ -76,7 +82,10 @@ directive:
     remove: true
   - no-inline:
     - DailyRetentionSchedule
+    - DiskExclusionProperty
+    - DiskLunList
     - HourlySchedule
+    - IsInclusionList
     - MonthlyRetentionSchedule
     - Settings
     - SubProtectionPolicyTieringPolicy
@@ -92,4 +101,13 @@ directive:
   - from: source-file-csharp
     where: $
     transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.ISchedulePolicy SchedulePolicy', 'public Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.ISchedulePolicy SchedulePolicy'); 
+  - from: source-file-csharp
+    where: $
+    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IProtectedItem Property', 'public Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IProtectedItem Property');
+  - from: source-file-csharp
+    where: $
+    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IExtendedProperties ExtendedProperty', 'public Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IExtendedProperties ExtendedProperty');
+  - from: source-file-csharp
+    where: $
+    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IWorkloadProtectableItem Property', 'public Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IWorkloadProtectableItem Property');
 ```

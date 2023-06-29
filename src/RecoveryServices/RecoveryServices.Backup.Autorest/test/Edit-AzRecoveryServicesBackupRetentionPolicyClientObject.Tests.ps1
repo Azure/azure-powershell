@@ -150,10 +150,11 @@ Describe 'Edit-AzRecoveryServicesBackupRetentionPolicyClientObject' {
         $newPolicyName = $env.TestBackupPolicy.NewPolicyName
         
         $pol1=Get-AzRecoveryServicesPolicyTemplate -DatasourceType SAPHANA
-
+ 
         # Mandatory Full backup schedule ,Incremental schedule and log schedule conditions for testing
         Edit-AzRecoveryServicesBackupSchedulePolicyClientObject -Policy $pol1 -BackupFrequency "Weekly" -ScheduleRunDay @("Monday","Tuesday") -ScheduleTime "1:30 PM" -EnableIncrementalBackup 1 -IncrementalRunDay @("Sunday") -IncrementalScheduleTime "2:00 AM" -TimeZone "Tokyo Standard Time" -EnableLogBackup 1 -LogBackupFrequency 120
-
+ 
+      
         # update weekly retention
         Edit-AzRecoveryServicesBackupRetentionPolicyClientObject -Policy $pol1 -DatasourceType SAPHANA -ModifyFullBackup -EnableWeeklyRetention $true -WeeklyRetentionDurationInWeeks 11 -WeeklyRetentionDaysOfTheWeek Sunday
         

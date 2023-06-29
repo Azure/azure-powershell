@@ -11,11 +11,17 @@ Locale: en-US
 Microsoft Azure PowerShell: RecoveryServices cmdlets
 
 ## Az.RecoveryServices Cmdlets
+### [Disable-AzRecoveryServicesProtection](Disable-AzRecoveryServicesProtection.md)
+Triggers the disable protection operation for the given item
+
 ### [Edit-AzRecoveryServicesBackupRetentionPolicyClientObject](Edit-AzRecoveryServicesBackupRetentionPolicyClientObject.md)
 Edits the retention settings for the policy client object
 
 ### [Edit-AzRecoveryServicesBackupSchedulePolicyClientObject](Edit-AzRecoveryServicesBackupSchedulePolicyClientObject.md)
 Edits the schedule policy in the specified backup policy object.
+
+### [Enable-AzRecoveryServicesProtection](Enable-AzRecoveryServicesProtection.md)
+Triggers the enable protection operation for the given item
 
 ### [Export-AzRecoveryServicesJob](Export-AzRecoveryServicesJob.md)
 Triggers export of jobs specified by filters and returns an OperationID to track.

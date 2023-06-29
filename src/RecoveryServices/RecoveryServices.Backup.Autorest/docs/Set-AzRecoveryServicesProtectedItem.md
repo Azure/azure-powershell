@@ -23,14 +23,15 @@ Set-AzRecoveryServicesProtectedItem -ContainerName <String> -FabricName <String>
  [-IsScheduledForDeferredDelete] [-LastRecoveryPoint <DateTime>] [-Location <String>] [-PolicyId <String>]
  [-PolicyName <String>] [-PropertiesContainerName <String>] [-ProtectedItemType <String>]
  [-ResourceGuardOperationRequest <String[]>] [-SoftDeleteRetentionPeriod <Int32>] [-SourceResourceId <String>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Update
 ```
 Set-AzRecoveryServicesProtectedItem -ContainerName <String> -FabricName <String> -Name <String>
  -ResourceGroupName <String> -VaultName <String> -Parameter <IProtectedItemResource>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -63,6 +64,21 @@ To know the status of the operation, call the GetItemOperationResult API.
 {{ Add description here }}
 
 ## PARAMETERS
+
+### -AsJob
+Run the command as a job
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -BackupSetName
 Name of the backup set the backup item belongs to
@@ -290,6 +306,34 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+### -PassThru
+Returns true when the command succeeds
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+
 ### -Parameter
 Base class for backup items.
 To construct, see NOTES section for PARAMETER properties and create a hash table.
@@ -303,21 +347,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -PassThru
-Returns true when the command succeeds
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
