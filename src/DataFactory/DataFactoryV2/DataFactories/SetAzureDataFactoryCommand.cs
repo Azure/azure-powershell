@@ -584,10 +584,12 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                     this.LastCommitId = this.LastCommitId ?? InputObject.RepoConfiguration.LastCommitId;
                     this.RepositoryName = this.RepositoryName ?? InputObject.RepoConfiguration.RepositoryName;
                     this.RootFolder = this.RootFolder ?? InputObject.RepoConfiguration.RootFolder;
+
                     if (InputObject.RepoConfiguration.DisablePublish.HasValue)
                     {
                         this.DisablePublish = this.DisablePublish.IsPresent ? true : InputObject.RepoConfiguration.DisablePublish.Value;
                     }
+
                     var factoryVSTSConfiguration = InputObject.RepoConfiguration as FactoryVSTSConfiguration;
                     if (factoryVSTSConfiguration != null)
                     {
