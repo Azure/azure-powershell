@@ -43,6 +43,8 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
 
         private string templateFile = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"Resources/sampleTemplateFile.json");
 
+        private string symbolicNameTemplateFile = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"Resources/sampleSymbolicNameTemplateFile.json");
+
         private string invalidTemplateFile = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"Resources/invalidTemplateFile.json");
 
         private string templateParameterFileSchema1 = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"Resources/sampleTemplateParameterFile.json");
@@ -282,6 +284,40 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
         {
             RuntimeDefinedParameterDictionary result = TemplateUtility.GetTemplateParametersFromFile(
                 templateFile,
+                null,
+                null,
+                new[] { "TestPS" });
+
+            Assert.Equal(7, result.Count);
+
+            Assert.Equal("string", result["string"].Name);
+            Assert.Equal(typeof(string), result["String"].ParameterType);
+
+            Assert.Equal("int", result["int"].Name);
+            Assert.Equal(typeof(int), result["int"].ParameterType);
+
+            Assert.Equal("securestring", result["securestring"].Name);
+            Assert.Equal(typeof(SecureString), result["securestring"].ParameterType);
+
+            Assert.Equal("bool", result["bool"].Name);
+            Assert.Equal(typeof(bool), result["bool"].ParameterType);
+
+            Assert.Equal("object", result["object"].Name);
+            Assert.Equal(typeof(Hashtable), result["object"].ParameterType);
+
+            Assert.Equal("secureObject", result["secureObject"].Name);
+            Assert.Equal(typeof(Hashtable), result["secureObject"].ParameterType);
+
+            Assert.Equal("array", result["array"].Name);
+            Assert.Equal(typeof(object[]), result["array"].ParameterType);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void GetsDynamicParametersForSymbolicNameTemplateFile()
+        {
+            RuntimeDefinedParameterDictionary result = TemplateUtility.GetTemplateParametersFromFile(
+                symbolicNameTemplateFile,
                 null,
                 null,
                 new[] { "TestPS" });

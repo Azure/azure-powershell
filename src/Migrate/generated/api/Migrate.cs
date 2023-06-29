@@ -1310,7 +1310,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task HyperVClusterCreateOrUpdate(string subscriptionId, string resourceGroupName, string siteName, string clusterName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IHyperVCluster body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IHyperVClusterCreateOrUpdateAcceptedResponseHeaders>, global::System.Threading.Tasks.Task> onAccepted, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task HyperVClusterCreateOrUpdate(string subscriptionId, string resourceGroupName, string siteName, string clusterName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IHyperVCluster body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onAccepted, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2020-01-01";
             // Constant Parameters
@@ -1356,7 +1356,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task HyperVClusterCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IHyperVCluster body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IHyperVClusterCreateOrUpdateAcceptedResponseHeaders>, global::System.Threading.Tasks.Task> onAccepted, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task HyperVClusterCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IHyperVCluster body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onAccepted, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2020-01-01";
             // Constant Parameters
@@ -1414,7 +1414,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task HyperVClusterCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IHyperVClusterCreateOrUpdateAcceptedResponseHeaders>, global::System.Threading.Tasks.Task> onAccepted, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task HyperVClusterCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onAccepted, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -1432,7 +1432,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.Accepted:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onAccepted(_response,null /* deserializeFromResponse doesn't support '-header-' C:\Users\cloudtest\.autorest\@autorest_powershell@3.0.504\node_modules\@autorest\powershell\dist\llcsharp\schema\object.js*/);
+                            await onAccepted(_response);
                             break;
                         }
                         default:
@@ -1823,7 +1823,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task HyperVHostCreateOrUpdate(string subscriptionId, string resourceGroupName, string siteName, string hostName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IHyperVHost body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IHyperVHostCreateOrUpdateAcceptedResponseHeaders>, global::System.Threading.Tasks.Task> onAccepted, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task HyperVHostCreateOrUpdate(string subscriptionId, string resourceGroupName, string siteName, string hostName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IHyperVHost body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onAccepted, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2020-01-01";
             // Constant Parameters
@@ -1869,7 +1869,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task HyperVHostCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IHyperVHost body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IHyperVHostCreateOrUpdateAcceptedResponseHeaders>, global::System.Threading.Tasks.Task> onAccepted, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task HyperVHostCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IHyperVHost body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onAccepted, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2020-01-01";
             // Constant Parameters
@@ -1927,7 +1927,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task HyperVHostCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IHyperVHostCreateOrUpdateAcceptedResponseHeaders>, global::System.Threading.Tasks.Task> onAccepted, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task HyperVHostCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onAccepted, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -1945,7 +1945,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.Accepted:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onAccepted(_response,null /* deserializeFromResponse doesn't support '-header-' C:\Users\cloudtest\.autorest\@autorest_powershell@3.0.504\node_modules\@autorest\powershell\dist\llcsharp\schema\object.js*/);
+                            await onAccepted(_response);
                             break;
                         }
                         default:
@@ -4333,7 +4333,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task HyperVSitesRefresh(string subscriptionId, string resourceGroupName, string siteName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IHyperVSitesRefreshAcceptedResponseHeaders>, global::System.Threading.Tasks.Task> onAccepted, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task HyperVSitesRefresh(string subscriptionId, string resourceGroupName, string siteName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onAccepted, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2020-01-01";
             // Constant Parameters
@@ -4373,7 +4373,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task HyperVSitesRefreshViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IHyperVSitesRefreshAcceptedResponseHeaders>, global::System.Threading.Tasks.Task> onAccepted, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task HyperVSitesRefreshViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onAccepted, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2020-01-01";
             // Constant Parameters
@@ -4425,7 +4425,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task HyperVSitesRefresh_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IHyperVSitesRefreshAcceptedResponseHeaders>, global::System.Threading.Tasks.Task> onAccepted, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task HyperVSitesRefresh_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onAccepted, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -4443,7 +4443,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.Accepted:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onAccepted(_response,null /* deserializeFromResponse doesn't support '-header-' C:\Users\cloudtest\.autorest\@autorest_powershell@3.0.504\node_modules\@autorest\powershell\dist\llcsharp\schema\object.js*/);
+                            await onAccepted(_response);
                             break;
                         }
                         default:
@@ -5700,7 +5700,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task MachinesStartMachine(string subscriptionId, string resourceGroupName, string siteName, string machineName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMachinesStartMachineAcceptedResponseHeaders>, global::System.Threading.Tasks.Task> onAccepted, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task MachinesStartMachine(string subscriptionId, string resourceGroupName, string siteName, string machineName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onAccepted, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2020-01-01";
             // Constant Parameters
@@ -5742,7 +5742,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task MachinesStartMachineViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMachinesStartMachineAcceptedResponseHeaders>, global::System.Threading.Tasks.Task> onAccepted, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task MachinesStartMachineViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onAccepted, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2020-01-01";
             // Constant Parameters
@@ -5797,7 +5797,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task MachinesStartMachine_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMachinesStartMachineAcceptedResponseHeaders>, global::System.Threading.Tasks.Task> onAccepted, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task MachinesStartMachine_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onAccepted, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -5815,7 +5815,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.Accepted:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onAccepted(_response,null /* deserializeFromResponse doesn't support '-header-' C:\Users\cloudtest\.autorest\@autorest_powershell@3.0.504\node_modules\@autorest\powershell\dist\llcsharp\schema\object.js*/);
+                            await onAccepted(_response);
                             break;
                         }
                         default:
@@ -5868,7 +5868,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task MachinesStopMachine(string subscriptionId, string resourceGroupName, string siteName, string machineName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMachinesStopMachineAcceptedResponseHeaders>, global::System.Threading.Tasks.Task> onAccepted, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task MachinesStopMachine(string subscriptionId, string resourceGroupName, string siteName, string machineName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onAccepted, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2020-01-01";
             // Constant Parameters
@@ -5910,7 +5910,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task MachinesStopMachineViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMachinesStopMachineAcceptedResponseHeaders>, global::System.Threading.Tasks.Task> onAccepted, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task MachinesStopMachineViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onAccepted, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2020-01-01";
             // Constant Parameters
@@ -5965,7 +5965,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task MachinesStopMachine_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMachinesStopMachineAcceptedResponseHeaders>, global::System.Threading.Tasks.Task> onAccepted, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task MachinesStopMachine_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onAccepted, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -5983,7 +5983,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.Accepted:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onAccepted(_response,null /* deserializeFromResponse doesn't support '-header-' C:\Users\cloudtest\.autorest\@autorest_powershell@3.0.504\node_modules\@autorest\powershell\dist\llcsharp\schema\object.js*/);
+                            await onAccepted(_response);
                             break;
                         }
                         default:
@@ -40186,7 +40186,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task SitesRefresh(string subscriptionId, string resourceGroupName, string siteName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.ISitesRefreshAcceptedResponseHeaders>, global::System.Threading.Tasks.Task> onAccepted, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task SitesRefresh(string subscriptionId, string resourceGroupName, string siteName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onAccepted, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2020-01-01";
             // Constant Parameters
@@ -40226,7 +40226,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task SitesRefreshViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.ISitesRefreshAcceptedResponseHeaders>, global::System.Threading.Tasks.Task> onAccepted, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task SitesRefreshViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onAccepted, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2020-01-01";
             // Constant Parameters
@@ -40278,7 +40278,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task SitesRefresh_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.ISitesRefreshAcceptedResponseHeaders>, global::System.Threading.Tasks.Task> onAccepted, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task SitesRefresh_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onAccepted, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -40296,7 +40296,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.Accepted:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onAccepted(_response,null /* deserializeFromResponse doesn't support '-header-' C:\Users\cloudtest\.autorest\@autorest_powershell@3.0.504\node_modules\@autorest\powershell\dist\llcsharp\schema\object.js*/);
+                            await onAccepted(_response);
                             break;
                         }
                         default:
@@ -42097,7 +42097,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task VCenterCreateOrUpdate(string subscriptionId, string resourceGroupName, string siteName, string vcenterName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVCenter body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IVCenterCreateOrUpdateAcceptedResponseHeaders>, global::System.Threading.Tasks.Task> onAccepted, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task VCenterCreateOrUpdate(string subscriptionId, string resourceGroupName, string siteName, string vcenterName, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVCenter body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onAccepted, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2020-01-01";
             // Constant Parameters
@@ -42143,7 +42143,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task VCenterCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVCenter body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IVCenterCreateOrUpdateAcceptedResponseHeaders>, global::System.Threading.Tasks.Task> onAccepted, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task VCenterCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVCenter body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onAccepted, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2020-01-01";
             // Constant Parameters
@@ -42201,7 +42201,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task VCenterCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IVCenterCreateOrUpdateAcceptedResponseHeaders>, global::System.Threading.Tasks.Task> onAccepted, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task VCenterCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onAccepted, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -42219,7 +42219,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.Accepted:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onAccepted(_response,null /* deserializeFromResponse doesn't support '-header-' C:\Users\cloudtest\.autorest\@autorest_powershell@3.0.504\node_modules\@autorest\powershell\dist\llcsharp\schema\object.js*/);
+                            await onAccepted(_response);
                             break;
                         }
                         default:

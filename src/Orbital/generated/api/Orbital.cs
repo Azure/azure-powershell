@@ -14,165 +14,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital
     public partial class Orbital
     {
 
-        /// <summary>Gets the specified available ground station.</summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
-        /// <param name="groundStationName">Ground Station name.</param>
-        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
-        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
-        /// elsewhere).</param>
-        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.IEventListener" /> instance that will receive events.</param>
-        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.ISendAsync pipeline to use to make the request.</param>
-        /// <returns>
-        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
-        /// </returns>
-        public async global::System.Threading.Tasks.Task AvailableGroundStationsGet(string subscriptionId, string groundStationName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.IAvailableGroundStation>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.ISendAsync sender)
-        {
-            var apiVersion = @"2022-03-01";
-            // Constant Parameters
-            using( NoSynchronizationContext )
-            {
-                // construct URL
-                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
-                        "/subscriptions/"
-                        + global::System.Uri.EscapeDataString(subscriptionId)
-                        + "/providers/Microsoft.Orbital/availableGroundStations/"
-                        + global::System.Uri.EscapeDataString(groundStationName)
-                        + "?"
-                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
-
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
-
-                // generate request object
-                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
-                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Method.Get, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
-
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
-                // make the call
-                await this.AvailableGroundStationsGet_Call(request,onOk,onDefault,eventListener,sender);
-            }
-        }
-
-        /// <summary>Gets the specified available ground station.</summary>
-        /// <param name="viaIdentity"></param>
-        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
-        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
-        /// elsewhere).</param>
-        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.IEventListener" /> instance that will receive events.</param>
-        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.ISendAsync pipeline to use to make the request.</param>
-        /// <returns>
-        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
-        /// </returns>
-        public async global::System.Threading.Tasks.Task AvailableGroundStationsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.IAvailableGroundStation>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.ISendAsync sender)
-        {
-            var apiVersion = @"2022-03-01";
-            // Constant Parameters
-            using( NoSynchronizationContext )
-            {
-                // verify that Identity format is an exact match for uri
-
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Microsoft.Orbital/availableGroundStations/(?<groundStationName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
-                if (!_match.Success)
-                {
-                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/providers/Microsoft.Orbital/availableGroundStations/{groundStationName}'");
-                }
-
-                // replace URI parameters with values from identity
-                var subscriptionId = _match.Groups["subscriptionId"].Value;
-                var groundStationName = _match.Groups["groundStationName"].Value;
-                // construct URL
-                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
-                        "/subscriptions/"
-                        + subscriptionId
-                        + "/providers/Microsoft.Orbital/availableGroundStations/"
-                        + groundStationName
-                        + "?"
-                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
-
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
-
-                // generate request object
-                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
-                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Method.Get, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
-
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
-                // make the call
-                await this.AvailableGroundStationsGet_Call(request,onOk,onDefault,eventListener,sender);
-            }
-        }
-
-        /// <summary>Actual wire call for <see cref="AvailableGroundStationsGet" /> method.</summary>
-        /// <param name="request">the prepared HttpRequestMessage to send.</param>
-        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
-        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
-        /// elsewhere).</param>
-        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.IEventListener" /> instance that will receive events.</param>
-        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.ISendAsync pipeline to use to make the request.</param>
-        /// <returns>
-        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
-        /// </returns>
-        internal async global::System.Threading.Tasks.Task AvailableGroundStationsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.IAvailableGroundStation>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.ISendAsync sender)
-        {
-            using( NoSynchronizationContext )
-            {
-                global::System.Net.Http.HttpResponseMessage _response = null;
-                try
-                {
-                    var sendTask = sender.SendAsync(request, eventListener);
-                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    _response = await sendTask;
-                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
-
-                    switch ( _response.StatusCode )
-                    {
-                        case global::System.Net.HttpStatusCode.OK:
-                        {
-                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.AvailableGroundStation.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Json.JsonNode.Parse(body.Result)) ));
-                            break;
-                        }
-                        default:
-                        {
-                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Json.JsonNode.Parse(body.Result)) ));
-                            break;
-                        }
-                    }
-                }
-                finally
-                {
-                    // finally statements
-                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Events.Finally, request, _response);
-                    _response?.Dispose();
-                    request?.Dispose();
-                }
-            }
-        }
-
-        /// <summary>
-        /// Validation method for <see cref="AvailableGroundStationsGet" /> method. Call this like the actual call, but you will get
-        /// validation events back.
-        /// </summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
-        /// <param name="groundStationName">Ground Station name.</param>
-        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.IEventListener" /> instance that will receive events.</param>
-        /// <returns>
-        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
-        /// </returns>
-        internal async global::System.Threading.Tasks.Task AvailableGroundStationsGet_Validate(string subscriptionId, string groundStationName, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.IEventListener eventListener)
-        {
-            using( NoSynchronizationContext )
-            {
-                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
-                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
-                await eventListener.AssertNotNull(nameof(groundStationName),groundStationName);
-            }
-        }
-
         /// <summary>Returns list of available ground stations.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="capability">Ground Station Capability.</param>
@@ -184,9 +25,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task AvailableGroundStationsListByCapability(string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Support.CapabilityParameter capability, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.IAvailableGroundStationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task AvailableGroundStationsListByCapability(string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Support.CapabilityParameter capability, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.IAvailableGroundStationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-03-01";
+            var apiVersion = @"2022-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -225,9 +66,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task AvailableGroundStationsListByCapabilityViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Support.CapabilityParameter capability, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.IAvailableGroundStationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task AvailableGroundStationsListByCapabilityViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Support.CapabilityParameter capability, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.IAvailableGroundStationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-03-01";
+            var apiVersion = @"2022-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -277,7 +118,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task AvailableGroundStationsListByCapability_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.IAvailableGroundStationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task AvailableGroundStationsListByCapability_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.IAvailableGroundStationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -295,13 +136,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.AvailableGroundStationListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.AvailableGroundStationListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api30.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -350,9 +191,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ContactProfilesCreateOrUpdate(string resourceGroupName, string subscriptionId, string contactProfileName, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.IContactProfile body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.IContactProfile>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ContactProfilesCreateOrUpdate(string resourceGroupName, string subscriptionId, string contactProfileName, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.IContactProfile body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.IContactProfile>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-03-01";
+            var apiVersion = @"2022-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -396,9 +237,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ContactProfilesCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.IContactProfile body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.IContactProfile>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ContactProfilesCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.IContactProfile body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.IContactProfile>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-03-01";
+            var apiVersion = @"2022-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -453,7 +294,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ContactProfilesCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.IContactProfile>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ContactProfilesCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.IContactProfile>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -567,13 +408,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ContactProfile.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.ContactProfile.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api30.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -600,7 +441,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ContactProfilesCreateOrUpdate_Validate(string resourceGroupName, string subscriptionId, string contactProfileName, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.IContactProfile body, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task ContactProfilesCreateOrUpdate_Validate(string resourceGroupName, string subscriptionId, string contactProfileName, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.IContactProfile body, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -628,9 +469,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ContactProfilesDelete(string resourceGroupName, string subscriptionId, string contactProfileName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ContactProfilesDelete(string resourceGroupName, string subscriptionId, string contactProfileName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-03-01";
+            var apiVersion = @"2022-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -670,9 +511,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ContactProfilesDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ContactProfilesDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-03-01";
+            var apiVersion = @"2022-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -724,7 +565,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ContactProfilesDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ContactProfilesDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -851,7 +692,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api30.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -902,9 +743,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ContactProfilesGet(string resourceGroupName, string subscriptionId, string contactProfileName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.IContactProfile>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ContactProfilesGet(string resourceGroupName, string subscriptionId, string contactProfileName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.IContactProfile>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-03-01";
+            var apiVersion = @"2022-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -943,9 +784,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ContactProfilesGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.IContactProfile>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ContactProfilesGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.IContactProfile>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-03-01";
+            var apiVersion = @"2022-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -996,7 +837,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ContactProfilesGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.IContactProfile>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ContactProfilesGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.IContactProfile>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -1014,13 +855,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ContactProfile.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.ContactProfile.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api30.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -1074,9 +915,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ContactProfilesList(string resourceGroupName, string subscriptionId, string Skiptoken, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.IContactProfileListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ContactProfilesList(string resourceGroupName, string subscriptionId, string Skiptoken, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.IContactProfileListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-03-01";
+            var apiVersion = @"2022-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1120,9 +961,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ContactProfilesListBySubscription(string subscriptionId, string Skiptoken, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.IContactProfileListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ContactProfilesListBySubscription(string subscriptionId, string Skiptoken, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.IContactProfileListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-03-01";
+            var apiVersion = @"2022-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1164,9 +1005,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ContactProfilesListBySubscriptionViaIdentity(global::System.String viaIdentity, string Skiptoken, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.IContactProfileListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ContactProfilesListBySubscriptionViaIdentity(global::System.String viaIdentity, string Skiptoken, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.IContactProfileListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-03-01";
+            var apiVersion = @"2022-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1214,7 +1055,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ContactProfilesListBySubscription_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.IContactProfileListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ContactProfilesListBySubscription_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.IContactProfileListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -1232,13 +1073,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ContactProfileListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.ContactProfileListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api30.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -1290,9 +1131,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ContactProfilesListViaIdentity(global::System.String viaIdentity, string Skiptoken, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.IContactProfileListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ContactProfilesListViaIdentity(global::System.String viaIdentity, string Skiptoken, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.IContactProfileListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-03-01";
+            var apiVersion = @"2022-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1343,7 +1184,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ContactProfilesList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.IContactProfileListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ContactProfilesList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.IContactProfileListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -1361,13 +1202,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ContactProfileListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.ContactProfileListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api30.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -1422,9 +1263,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ContactProfilesUpdateTags(string resourceGroupName, string subscriptionId, string contactProfileName, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ITagsObject body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.IContactProfile>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ContactProfilesUpdateTags(string resourceGroupName, string subscriptionId, string contactProfileName, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.ITagsObject body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.IContactProfile>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-03-01";
+            var apiVersion = @"2022-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1468,9 +1309,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ContactProfilesUpdateTagsViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ITagsObject body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.IContactProfile>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ContactProfilesUpdateTagsViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.ITagsObject body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.IContactProfile>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-03-01";
+            var apiVersion = @"2022-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1525,7 +1366,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ContactProfilesUpdateTags_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.IContactProfile>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ContactProfilesUpdateTags_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.IContactProfile>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -1640,13 +1481,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ContactProfile.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.ContactProfile.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api30.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -1673,7 +1514,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ContactProfilesUpdateTags_Validate(string resourceGroupName, string subscriptionId, string contactProfileName, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ITagsObject body, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task ContactProfilesUpdateTags_Validate(string resourceGroupName, string subscriptionId, string contactProfileName, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.ITagsObject body, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -1702,9 +1543,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ContactsCreate(string resourceGroupName, string subscriptionId, string spacecraftName, string contactName, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.IContact body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.IContact>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ContactsCreate(string resourceGroupName, string subscriptionId, string spacecraftName, string contactName, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.IContact body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.IContact>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-03-01";
+            var apiVersion = @"2022-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1750,9 +1591,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ContactsCreateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.IContact body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.IContact>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ContactsCreateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.IContact body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.IContact>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-03-01";
+            var apiVersion = @"2022-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1810,7 +1651,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ContactsCreate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.IContact>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ContactsCreate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.IContact>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -1924,13 +1765,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.Contact.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.Contact.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api30.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -1958,7 +1799,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ContactsCreate_Validate(string resourceGroupName, string subscriptionId, string spacecraftName, string contactName, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.IContact body, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task ContactsCreate_Validate(string resourceGroupName, string subscriptionId, string spacecraftName, string contactName, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.IContact body, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -1988,9 +1829,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ContactsDelete(string resourceGroupName, string subscriptionId, string spacecraftName, string contactName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ContactsDelete(string resourceGroupName, string subscriptionId, string spacecraftName, string contactName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-03-01";
+            var apiVersion = @"2022-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2032,9 +1873,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ContactsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ContactsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-03-01";
+            var apiVersion = @"2022-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2089,7 +1930,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ContactsDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ContactsDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -2216,7 +2057,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api30.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -2270,9 +2111,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ContactsGet(string resourceGroupName, string subscriptionId, string spacecraftName, string contactName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.IContact>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ContactsGet(string resourceGroupName, string subscriptionId, string spacecraftName, string contactName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.IContact>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-03-01";
+            var apiVersion = @"2022-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2313,9 +2154,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ContactsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.IContact>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ContactsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.IContact>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-03-01";
+            var apiVersion = @"2022-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2369,7 +2210,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ContactsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.IContact>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ContactsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.IContact>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -2387,13 +2228,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.Contact.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.Contact.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api30.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -2450,9 +2291,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ContactsList(string resourceGroupName, string subscriptionId, string spacecraftName, string Skiptoken, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.IContactListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ContactsList(string resourceGroupName, string subscriptionId, string spacecraftName, string Skiptoken, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.IContactListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-03-01";
+            var apiVersion = @"2022-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2498,9 +2339,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ContactsListViaIdentity(global::System.String viaIdentity, string Skiptoken, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.IContactListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ContactsListViaIdentity(global::System.String viaIdentity, string Skiptoken, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.IContactListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-03-01";
+            var apiVersion = @"2022-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2554,7 +2395,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ContactsList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.IContactListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ContactsList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.IContactListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -2572,13 +2413,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ContactListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.ContactListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api30.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -2631,9 +2472,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task OperationsList(global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api30.IOperationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task OperationsList(global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api30.IOperationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-03-01";
+            var apiVersion = @"2022-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2667,9 +2508,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task OperationsListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api30.IOperationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task OperationsListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api30.IOperationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-03-01";
+            var apiVersion = @"2022-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2712,7 +2553,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task OperationsList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api30.IOperationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task OperationsList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api30.IOperationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -2736,7 +2577,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api30.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -2772,7 +2613,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital
         /// <param name="location">The name of Azure region.</param>
         /// <param name="operationId">The ID of an ongoing async operation.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
-        /// <param name="onAccepted">a delegate that is called when the remote service returns 202 (Accepted).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -2780,9 +2620,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task OperationsResultsGet(string subscriptionId, string location, string operationId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.IOperationResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IOperationsResultsGetAcceptedResponseHeaders>, global::System.Threading.Tasks.Task> onAccepted, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task OperationsResultsGet(string subscriptionId, string location, string operationId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.IOperationResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-03-01";
+            var apiVersion = @"2022-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2807,14 +2647,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.OperationsResultsGet_Call(request,onOk,onAccepted,onDefault,eventListener,sender);
+                await this.OperationsResultsGet_Call(request,onOk,onDefault,eventListener,sender);
             }
         }
 
         /// <summary>Returns operation results.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
-        /// <param name="onAccepted">a delegate that is called when the remote service returns 202 (Accepted).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -2822,9 +2661,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task OperationsResultsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.IOperationResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IOperationsResultsGetAcceptedResponseHeaders>, global::System.Threading.Tasks.Task> onAccepted, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task OperationsResultsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.IOperationResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-03-01";
+            var apiVersion = @"2022-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2861,14 +2700,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.OperationsResultsGet_Call(request,onOk,onAccepted,onDefault,eventListener,sender);
+                await this.OperationsResultsGet_Call(request,onOk,onDefault,eventListener,sender);
             }
         }
 
         /// <summary>Actual wire call for <see cref="OperationsResultsGet" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
-        /// <param name="onAccepted">a delegate that is called when the remote service returns 202 (Accepted).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -2876,7 +2714,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task OperationsResultsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.IOperationResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IOperationsResultsGetAcceptedResponseHeaders>, global::System.Threading.Tasks.Task> onAccepted, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task OperationsResultsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.IOperationResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -2887,6 +2725,103 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
+                    // declared final-state-via: location
+                    var _finalUri = _response.GetFirstHeader(@"Location");
+                    var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                    var location = _response.GetFirstHeader(@"Location");
+                    while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                    {
+
+                        // get the delay before polling. (default to 30 seconds if not present)
+                        int delay = (int)(_response.Headers.RetryAfter?.Delta?.TotalSeconds ?? 30);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Events.DelayBeforePolling, $"Delaying {delay} seconds before polling.", _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                        // start the delay timer (we'll await later...)
+                        var waiting = global::System.Threading.Tasks.Task.Delay(delay * 1000, eventListener.Token );
+
+                        // while we wait, let's grab the headers and get ready to poll.
+                        if (!System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Azure-AsyncOperation"))) {
+                            asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
+                            location = _response.GetFirstHeader(@"Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Method.Get);
+
+                        // and let's look at the current response body and see if we have some information we can give back to the listener
+                        var content = await _response.Content.ReadAsStringAsync();
+                        await waiting;
+
+                        // check for cancellation
+                        if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the polling call
+                        _response = await sender.SendAsync(request, eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                        // if we got back an OK, take a peek inside and see if it's done
+                        if( _response.StatusCode == global::System.Net.HttpStatusCode.OK)
+                        {
+                            var error = false;
+                            try {
+                                if( Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Json.JsonNode.Parse(await _response.Content.ReadAsStringAsync()) is Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Json.JsonObject json)
+                                {
+                                    var state = json.Property("properties")?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Json.JsonString>("provisioningState") ?? json.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Json.JsonString>("status");
+                                    if( state is null )
+                                    {
+                                        // the body doesn't contain any information that has the state of the LRO
+                                        // we're going to just get out, and let the consumer have the result
+                                        break;
+                                    }
+
+                                    switch( state?.ToString()?.ToLower() )
+                                    {
+                                      case "failed":
+                                          error = true;
+                                          break;
+                                      case "succeeded":
+                                      case "canceled":
+                                        // we're done polling.
+                                        break;
+
+                                      default:
+                                        // need to keep polling!
+                                        _response.StatusCode = global::System.Net.HttpStatusCode.Created;
+                                        continue;
+                                    }
+                                }
+                            } catch {
+                                // if we run into a problem peeking into the result,
+                                // we really don't want to do anything special.
+                            }
+                            if (error) {
+                                throw new Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.UndeclaredResponseException(_response);
+                            }
+                        }
+
+                        // check for terminal status code
+                        if (_response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                        {
+                            continue;
+                        }
+                        // we are done polling, do a request on final target?
+                        // create a new request with the final uri
+                        request = request.CloneAndDispose(new global::System.Uri(_finalUri), Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Method.Get);
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the final call
+                        _response = await sender.SendAsync(request,  eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                        break;
+                    }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
 
                     switch ( _response.StatusCode )
@@ -2894,19 +2829,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.OperationResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Json.JsonNode.Parse(body.Result)) ));
-                            break;
-                        }
-                        case global::System.Net.HttpStatusCode.Accepted:
-                        {
-                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onAccepted(_response,null /* deserializeFromResponse doesn't support '-header-' C:\Users\VssAdministrator\.autorest\@autorest_powershell@3.0.492\node_modules\@autorest\powershell\dist\llcsharp\schema\object.js*/);
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.OperationResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api30.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -2958,9 +2887,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task SpacecraftsCreateOrUpdate(string resourceGroupName, string subscriptionId, string spacecraftName, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ISpacecraft body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ISpacecraft>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task SpacecraftsCreateOrUpdate(string resourceGroupName, string subscriptionId, string spacecraftName, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.ISpacecraft body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.ISpacecraft>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-03-01";
+            var apiVersion = @"2022-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3004,9 +2933,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task SpacecraftsCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ISpacecraft body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ISpacecraft>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task SpacecraftsCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.ISpacecraft body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.ISpacecraft>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-03-01";
+            var apiVersion = @"2022-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3061,7 +2990,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task SpacecraftsCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ISpacecraft>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task SpacecraftsCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.ISpacecraft>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -3175,13 +3104,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.Spacecraft.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.Spacecraft.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api30.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -3208,7 +3137,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task SpacecraftsCreateOrUpdate_Validate(string resourceGroupName, string subscriptionId, string spacecraftName, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ISpacecraft body, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task SpacecraftsCreateOrUpdate_Validate(string resourceGroupName, string subscriptionId, string spacecraftName, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.ISpacecraft body, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -3236,9 +3165,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task SpacecraftsDelete(string resourceGroupName, string subscriptionId, string spacecraftName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task SpacecraftsDelete(string resourceGroupName, string subscriptionId, string spacecraftName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-03-01";
+            var apiVersion = @"2022-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3278,9 +3207,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task SpacecraftsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task SpacecraftsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-03-01";
+            var apiVersion = @"2022-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3332,7 +3261,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task SpacecraftsDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task SpacecraftsDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -3459,7 +3388,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api30.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -3510,9 +3439,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task SpacecraftsGet(string resourceGroupName, string subscriptionId, string spacecraftName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ISpacecraft>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task SpacecraftsGet(string resourceGroupName, string subscriptionId, string spacecraftName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.ISpacecraft>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-03-01";
+            var apiVersion = @"2022-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3551,9 +3480,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task SpacecraftsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ISpacecraft>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task SpacecraftsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.ISpacecraft>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-03-01";
+            var apiVersion = @"2022-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3604,7 +3533,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task SpacecraftsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ISpacecraft>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task SpacecraftsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.ISpacecraft>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -3622,13 +3551,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.Spacecraft.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.Spacecraft.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api30.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -3682,9 +3611,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task SpacecraftsList(string resourceGroupName, string subscriptionId, string Skiptoken, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ISpacecraftListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task SpacecraftsList(string resourceGroupName, string subscriptionId, string Skiptoken, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.ISpacecraftListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-03-01";
+            var apiVersion = @"2022-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3730,9 +3659,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task SpacecraftsListAvailableContacts(string resourceGroupName, string subscriptionId, string spacecraftName, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.IContactParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.IAvailableContactsListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task SpacecraftsListAvailableContacts(string resourceGroupName, string subscriptionId, string spacecraftName, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.IContactParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.IAvailableContactsListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-03-01";
+            var apiVersion = @"2022-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3780,9 +3709,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task SpacecraftsListAvailableContactsViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.IContactParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.IAvailableContactsListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task SpacecraftsListAvailableContactsViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.IContactParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.IAvailableContactsListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-03-01";
+            var apiVersion = @"2022-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3838,7 +3767,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task SpacecraftsListAvailableContacts_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.IAvailableContactsListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task SpacecraftsListAvailableContacts_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.IAvailableContactsListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -3953,13 +3882,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.AvailableContactsListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.AvailableContactsListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api30.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -3986,7 +3915,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task SpacecraftsListAvailableContacts_Validate(string resourceGroupName, string subscriptionId, string spacecraftName, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.IContactParameters body, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task SpacecraftsListAvailableContacts_Validate(string resourceGroupName, string subscriptionId, string spacecraftName, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.IContactParameters body, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -4015,9 +3944,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task SpacecraftsListBySubscription(string subscriptionId, string Skiptoken, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ISpacecraftListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task SpacecraftsListBySubscription(string subscriptionId, string Skiptoken, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.ISpacecraftListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-03-01";
+            var apiVersion = @"2022-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4059,9 +3988,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task SpacecraftsListBySubscriptionViaIdentity(global::System.String viaIdentity, string Skiptoken, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ISpacecraftListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task SpacecraftsListBySubscriptionViaIdentity(global::System.String viaIdentity, string Skiptoken, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.ISpacecraftListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-03-01";
+            var apiVersion = @"2022-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4109,7 +4038,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task SpacecraftsListBySubscription_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ISpacecraftListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task SpacecraftsListBySubscription_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.ISpacecraftListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -4127,13 +4056,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.SpacecraftListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.SpacecraftListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api30.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -4185,9 +4114,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task SpacecraftsListViaIdentity(global::System.String viaIdentity, string Skiptoken, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ISpacecraftListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task SpacecraftsListViaIdentity(global::System.String viaIdentity, string Skiptoken, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.ISpacecraftListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-03-01";
+            var apiVersion = @"2022-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4238,7 +4167,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task SpacecraftsList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ISpacecraftListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task SpacecraftsList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.ISpacecraftListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -4256,13 +4185,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.SpacecraftListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.SpacecraftListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api30.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -4317,9 +4246,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task SpacecraftsUpdateTags(string resourceGroupName, string subscriptionId, string spacecraftName, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ITagsObject body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ISpacecraft>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task SpacecraftsUpdateTags(string resourceGroupName, string subscriptionId, string spacecraftName, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.ITagsObject body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.ISpacecraft>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-03-01";
+            var apiVersion = @"2022-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4363,9 +4292,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task SpacecraftsUpdateTagsViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ITagsObject body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ISpacecraft>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task SpacecraftsUpdateTagsViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.ITagsObject body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.ISpacecraft>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-03-01";
+            var apiVersion = @"2022-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4420,7 +4349,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task SpacecraftsUpdateTags_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ISpacecraft>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task SpacecraftsUpdateTags_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.ISpacecraft>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -4535,13 +4464,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.Spacecraft.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.Spacecraft.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api30.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -4568,7 +4497,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task SpacecraftsUpdateTags_Validate(string resourceGroupName, string subscriptionId, string spacecraftName, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ITagsObject body, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task SpacecraftsUpdateTags_Validate(string resourceGroupName, string subscriptionId, string spacecraftName, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.ITagsObject body, Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {

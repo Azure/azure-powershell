@@ -40,13 +40,16 @@ namespace Microsoft.Azure.PowerShell.Ssh.Helpers.HybridConnectivity.Models
         /// <param name="accessKey">Access key for hybrid connection.</param>
         /// <param name="expiresOn">The expiration of access key in unix
         /// time.</param>
-        public EndpointAccessResource(string namespaceName, string namespaceNameSuffix, string hybridConnectionName, string accessKey = default(string), long? expiresOn = default(long?))
+        /// <param name="serviceConfigurationToken">The token to access the
+        /// enabled service.</param>
+        public EndpointAccessResource(string namespaceName, string namespaceNameSuffix, string hybridConnectionName, string accessKey = default(string), long? expiresOn = default(long?), string serviceConfigurationToken = default(string))
         {
             NamespaceName = namespaceName;
             NamespaceNameSuffix = namespaceNameSuffix;
             HybridConnectionName = hybridConnectionName;
             AccessKey = accessKey;
             ExpiresOn = expiresOn;
+            ServiceConfigurationToken = serviceConfigurationToken;
             CustomInit();
         }
 
@@ -84,6 +87,12 @@ namespace Microsoft.Azure.PowerShell.Ssh.Helpers.HybridConnectivity.Models
         /// </summary>
         [JsonProperty(PropertyName = "relay.expiresOn")]
         public long? ExpiresOn { get; set; }
+
+        /// <summary>
+        /// Gets or sets the token to access the enabled service.
+        /// </summary>
+        [JsonProperty(PropertyName = "relay.serviceConfigurationToken")]
+        public string ServiceConfigurationToken { get; set; }
 
         /// <summary>
         /// Validate the object.

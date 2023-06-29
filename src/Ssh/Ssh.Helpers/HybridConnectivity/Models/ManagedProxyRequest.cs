@@ -32,10 +32,15 @@ namespace Microsoft.Azure.PowerShell.Ssh.Helpers.HybridConnectivity.Models
         /// </summary>
         /// <param name="service">The name of the service.</param>
         /// <param name="hostname">The target host name.</param>
-        public ManagedProxyRequest(string service, string hostname = default(string))
+        /// <param name="serviceName">The name of the service. It is an
+        /// optional property, if not provided, service configuration tokens
+        /// issue code would be by passed. Possible values include: 'SSH',
+        /// 'WAC'</param>
+        public ManagedProxyRequest(string service, string hostname = default(string), string serviceName = default(string))
         {
             Service = service;
             Hostname = hostname;
+            ServiceName = serviceName;
             CustomInit();
         }
 
@@ -55,6 +60,14 @@ namespace Microsoft.Azure.PowerShell.Ssh.Helpers.HybridConnectivity.Models
         /// </summary>
         [JsonProperty(PropertyName = "hostname")]
         public string Hostname { get; set; }
+
+        /// <summary>
+        /// Gets or sets the name of the service. It is an optional property,
+        /// if not provided, service configuration tokens issue code would be
+        /// by passed. Possible values include: 'SSH', 'WAC'
+        /// </summary>
+        [JsonProperty(PropertyName = "serviceName")]
+        public string ServiceName { get; set; }
 
         /// <summary>
         /// Validate the object.

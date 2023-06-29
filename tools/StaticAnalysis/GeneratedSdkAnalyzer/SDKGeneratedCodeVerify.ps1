@@ -53,6 +53,7 @@ try{
     foreach ($_ in $ChangedSdks) {
         # Extract Module Name
         $ModuleName = "Az." + ($_ -split "\/|\\")[1]
+
         # Direct to the Sdk directory
         Write-Host "Directing to " "$PSScriptRoot/../../../$_"
         cd "$PSScriptRoot/../../../$_"

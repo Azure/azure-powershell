@@ -1,15 +1,15 @@
 {
-  "AzOrbitalContactProfile+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest-gp/providers/Microsoft.Orbital/contactProfiles/azps-orbital-contactprofile?api-version=2022-03-01+1": {
+  "AzOrbitalContactProfile+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest-gp/providers/Microsoft.Orbital/contactProfiles/azps-orbital-contactprofile?api-version=2022-11-01+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest-gp/providers/Microsoft.Orbital/contactProfiles/azps-orbital-contactprofile?api-version=2022-03-01",
-      "Content": "{\r\n  \"location\": \"westus2\",\r\n  \"properties\": {\r\n    \"networkConfiguration\": {\r\n      \"subnetId\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest-gp/providers/Microsoft.Network/virtualNetworks/orbital-virtualnetwork/subnets/orbital-vn\"\r\n    },\r\n    \"minimumViableContactDuration\": \"PT1M\",\r\n    \"minimumElevationDegrees\": 10,\r\n    \"autoTrackingConfiguration\": \"xBand\",\r\n    \"eventHubUri\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest-gp/providers/Microsoft.EventHub/namespaces/eventhub-test-0721\",\r\n    \"links\": [\r\n      {\r\n        \"name\": \"RHCP_UL\",\r\n        \"polarization\": \"RHCP\",\r\n        \"direction\": \"Downlink\",\r\n        \"gainOverTemperature\": 0,\r\n        \"eirpdBW\": 45,\r\n        \"channels\": [\r\n          {\r\n            \"endPoint\": {\r\n              \"ipAddress\": \"10.0.1.0\",\r\n              \"endPointName\": \"AQUA_command\",\r\n              \"port\": \"55555\",\r\n              \"protocol\": \"TCP\"\r\n            },\r\n            \"name\": \"channel1\",\r\n            \"centerFrequencyMHz\": 8160,\r\n            \"bandwidthMHz\": 15,\r\n            \"modulationConfiguration\": \"AQUA_UPLINK_BPSK\",\r\n            \"demodulationConfiguration\": \"na\",\r\n            \"encodingConfiguration\": \"AQUA_CMD_CCSDS\",\r\n            \"decodingConfiguration\": \"na\"\r\n          }\r\n        ]\r\n      }\r\n    ]\r\n  }\r\n}",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest-gp/providers/Microsoft.Orbital/contactProfiles/azps-orbital-contactprofile?api-version=2022-11-01",
+      "Content": "{\r\n  \"location\": \"westus2\",\r\n  \"properties\": {\r\n    \"networkConfiguration\": {\r\n      \"subnetId\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest-gp/providers/Microsoft.Network/virtualNetworks/orbital-virtualnetwork/subnets/orbital-vn\"\r\n    },\r\n    \"minimumViableContactDuration\": \"PT1M\",\r\n    \"minimumElevationDegrees\": 10,\r\n    \"autoTrackingConfiguration\": \"xBand\",\r\n    \"eventHubUri\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest-gp/providers/Microsoft.EventHub/namespaces/eventhub-test-0505\",\r\n    \"links\": [\r\n      {\r\n        \"name\": \"RHCP_Downlink\",\r\n        \"polarization\": \"RHCP\",\r\n        \"direction\": \"Downlink\",\r\n        \"gainOverTemperature\": 0,\r\n        \"eirpdBW\": 45,\r\n        \"channels\": [\r\n          {\r\n            \"endPoint\": {\r\n              \"ipAddress\": \"10.0.1.0\",\r\n              \"endPointName\": \"AQUA_command\",\r\n              \"port\": \"55555\",\r\n              \"protocol\": \"TCP\"\r\n            },\r\n            \"name\": \"channel1\",\r\n            \"centerFrequencyMHz\": 8160,\r\n            \"bandwidthMHz\": 15,\r\n            \"modulationConfiguration\": \"AQUA_UPLINK_BPSK\",\r\n            \"demodulationConfiguration\": \"na\",\r\n            \"encodingConfiguration\": \"AQUA_CMD_CCSDS\",\r\n            \"decodingConfiguration\": \"na\"\r\n          }\r\n        ]\r\n      }\r\n    ]\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
-        "Content-Length": [ "1328" ]
+        "Content-Length": [ "1334" ]
       }
     },
     "Response": {
@@ -19,36 +19,37 @@
         "Pragma": [ "no-cache" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-request-id": [ "827cc3e7-7c2e-42b7-a1d2-ba597fca6f6c" ],
-        "x-ms-correlation-request-id": [ "827cc3e7-7c2e-42b7-a1d2-ba597fca6f6c" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220721T110950Z:827cc3e7-7c2e-42b7-a1d2-ba597fca6f6c" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Orbital/locations/westus2/operationResults/0540aed0-b4c0-43f6-859d-ad8623738086?api-version=2022-11-01" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-request-id": [ "08652e73-e3ce-4259-a33b-775fdd095f49" ],
+        "x-ms-correlation-request-id": [ "08652e73-e3ce-4259-a33b-775fdd095f49" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230509T061448Z:08652e73-e3ce-4259-a33b-775fdd095f49" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Thu, 21 Jul 2022 11:09:49 GMT" ]
+        "Date": [ "Tue, 09 May 2023 06:14:47 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "1223" ],
+        "Content-Length": [ "1260" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"location\":\"westus2\",\"tags\":null,\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest-gp/providers/Microsoft.Orbital/contactProfiles/azps-orbital-contactprofile\",\"name\":\"azps-orbital-contactprofile\",\"type\":\"Microsoft.Orbital/contactProfiles\",\"properties\":{\"provisioningState\":\"succeeded\",\"minimumViableContactDuration\":\"PT1M\",\"minimumElevationDegrees\":10.0,\"autoTrackingConfiguration\":\"xBand\",\"eventHubUri\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest-gp/providers/Microsoft.EventHub/namespaces/eventhub-test-0721\",\"networkConfiguration\":{\"subnetId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest-gp/providers/Microsoft.Network/virtualNetworks/orbital-virtualnetwork/subnets/orbital-vn\"},\"links\":[{\"name\":\"RHCP_UL\",\"polarization\":\"RHCP\",\"direction\":\"Downlink\",\"gainOverTemperature\":0.0,\"eirpdBW\":45.0,\"channels\":[{\"name\":\"channel1\",\"centerFrequencyMHz\":8160.0,\"bandwidthMHz\":15.0,\"endPoint\":{\"ipAddress\":\"10.0.1.0\",\"endPointName\":\"AQUA_command\",\"port\":\"55555\",\"protocol\":\"TCP\"},\"modulationConfiguration\":\"AQUA_UPLINK_BPSK\",\"demodulationConfiguration\":\"na\",\"encodingConfiguration\":\"AQUA_CMD_CCSDS\",\"decodingConfiguration\":\"na\"}]}]}}",
+      "Content": "{\"location\":\"westus2\",\"tags\":null,\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest-gp/providers/Microsoft.Orbital/contactProfiles/azps-orbital-contactprofile\",\"name\":\"azps-orbital-contactprofile\",\"type\":\"Microsoft.Orbital/contactProfiles\",\"properties\":{\"thirdPartyConfigurations\":null,\"provisioningState\":\"updating\",\"minimumViableContactDuration\":\"PT1M\",\"minimumElevationDegrees\":10.0,\"autoTrackingConfiguration\":\"xBand\",\"eventHubUri\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest-gp/providers/Microsoft.EventHub/namespaces/eventhub-test-0505\",\"networkConfiguration\":{\"subnetId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest-gp/providers/Microsoft.Network/virtualNetworks/orbital-virtualnetwork/subnets/orbital-vn\"},\"links\":[{\"name\":\"RHCP_Downlink\",\"polarization\":\"RHCP\",\"direction\":\"Downlink\",\"gainOverTemperature\":0.0,\"eirpdBW\":45.0,\"channels\":[{\"name\":\"channel1\",\"centerFrequencyMHz\":8160.0,\"bandwidthMHz\":15.0,\"endPoint\":{\"ipAddress\":\"10.0.1.0\",\"endPointName\":\"AQUA_command\",\"port\":\"55555\",\"protocol\":\"TCP\"},\"modulationConfiguration\":\"AQUA_UPLINK_BPSK\",\"demodulationConfiguration\":\"na\",\"encodingConfiguration\":\"AQUA_CMD_CCSDS\",\"decodingConfiguration\":\"na\"}]}]}}",
       "isContentBase64": false
     }
   },
-  "AzOrbitalContactProfile+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest-gp/providers/Microsoft.Orbital/contactProfiles/azps-orbital-contactprofile?api-version=2022-03-01+2": {
+  "AzOrbitalContactProfile+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Orbital/locations/westus2/operationResults/0540aed0-b4c0-43f6-859d-ad8623738086?api-version=2022-11-01+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest-gp/providers/Microsoft.Orbital/contactProfiles/azps-orbital-contactprofile?api-version=2022-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Orbital/locations/westus2/operationResults/0540aed0-b4c0-43f6-859d-ad8623738086?api-version=2022-11-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
         "x-ms-unique-id": [ "3" ],
-        "x-ms-client-request-id": [ "d6b5291b-30a6-4550-8693-b36ad4d407a7" ],
+        "x-ms-client-request-id": [ "f0a3e494-9b2f-4dbc-9cb0-ac13ae03bf36" ],
         "CommandName": [ "New-AzOrbitalContactProfile" ],
         "FullCommandName": [ "New-AzOrbitalContactProfile_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.2", "Az.Orbital/0.1.0" ]
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.4", "Az.Orbital/0.1.0" ]
       },
       "ContentHeaders": {
       }
@@ -60,36 +61,37 @@
         "Pragma": [ "no-cache" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "11998" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-request-id": [ "b08a2fd2-069d-4d19-b7a7-ba5d3d392fdf" ],
-        "x-ms-correlation-request-id": [ "b08a2fd2-069d-4d19-b7a7-ba5d3d392fdf" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220721T111020Z:b08a2fd2-069d-4d19-b7a7-ba5d3d392fdf" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Orbital/locations/westus2/operationResults/0540aed0-b4c0-43f6-859d-ad8623738086?api-version=2022-11-01" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-request-id": [ "d662e951-e9a6-41f7-94a5-7522398b5d7d" ],
+        "x-ms-correlation-request-id": [ "d662e951-e9a6-41f7-94a5-7522398b5d7d" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230509T061518Z:d662e951-e9a6-41f7-94a5-7522398b5d7d" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Thu, 21 Jul 2022 11:10:19 GMT" ]
+        "Date": [ "Tue, 09 May 2023 06:15:18 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "1223" ],
+        "Content-Length": [ "364" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"location\":\"westus2\",\"tags\":null,\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest-gp/providers/Microsoft.Orbital/contactProfiles/azps-orbital-contactprofile\",\"name\":\"azps-orbital-contactprofile\",\"type\":\"Microsoft.Orbital/contactProfiles\",\"properties\":{\"provisioningState\":\"succeeded\",\"minimumViableContactDuration\":\"PT1M\",\"minimumElevationDegrees\":10.0,\"autoTrackingConfiguration\":\"xBand\",\"eventHubUri\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest-gp/providers/Microsoft.EventHub/namespaces/eventhub-test-0721\",\"networkConfiguration\":{\"subnetId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest-gp/providers/Microsoft.Network/virtualNetworks/orbital-virtualnetwork/subnets/orbital-vn\"},\"links\":[{\"name\":\"RHCP_UL\",\"polarization\":\"RHCP\",\"direction\":\"Downlink\",\"gainOverTemperature\":0.0,\"eirpdBW\":45.0,\"channels\":[{\"name\":\"channel1\",\"centerFrequencyMHz\":8160.0,\"bandwidthMHz\":15.0,\"endPoint\":{\"ipAddress\":\"10.0.1.0\",\"endPointName\":\"AQUA_command\",\"port\":\"55555\",\"protocol\":\"TCP\"},\"modulationConfiguration\":\"AQUA_UPLINK_BPSK\",\"demodulationConfiguration\":\"na\",\"encodingConfiguration\":\"AQUA_CMD_CCSDS\",\"decodingConfiguration\":\"na\"}]}]}}",
+      "Content": "{\"status\":\"Succeeded\",\"percentComplete\":100,\"startTime\":\"2023-05-09T06:14:45.1640288Z\",\"endTime\":\"2023-05-09T06:14:45.2402661Z\",\"error\":null,\"properties\":null,\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Orbital/locations/westus2/operationResults/0540aed0-b4c0-43f6-859d-ad8623738086\",\"name\":\"0540aed0-b4c0-43f6-859d-ad8623738086\"}",
       "isContentBase64": false
     }
   },
-  "AzOrbitalContactProfile+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest-gp/providers/Microsoft.Orbital/contactProfiles/azps-orbital-contactprofile?api-version=2022-03-01+3": {
+  "AzOrbitalContactProfile+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest-gp/providers/Microsoft.Orbital/contactProfiles/azps-orbital-contactprofile?api-version=2022-11-01+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest-gp/providers/Microsoft.Orbital/contactProfiles/azps-orbital-contactprofile?api-version=2022-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest-gp/providers/Microsoft.Orbital/contactProfiles/azps-orbital-contactprofile?api-version=2022-11-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
         "x-ms-unique-id": [ "4" ],
-        "x-ms-client-request-id": [ "d6b5291b-30a6-4550-8693-b36ad4d407a7" ],
+        "x-ms-client-request-id": [ "f0a3e494-9b2f-4dbc-9cb0-ac13ae03bf36" ],
         "CommandName": [ "New-AzOrbitalContactProfile" ],
         "FullCommandName": [ "New-AzOrbitalContactProfile_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.2", "Az.Orbital/0.1.0" ]
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.4", "Az.Orbital/0.1.0" ]
       },
       "ContentHeaders": {
       }
@@ -101,35 +103,35 @@
         "Pragma": [ "no-cache" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "11997" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-request-id": [ "41ff1fbd-44c1-49a8-8424-be7edadc4e02" ],
-        "x-ms-correlation-request-id": [ "41ff1fbd-44c1-49a8-8424-be7edadc4e02" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220721T111021Z:41ff1fbd-44c1-49a8-8424-be7edadc4e02" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-request-id": [ "562fed49-2b83-49f6-900e-2fbca0392a13" ],
+        "x-ms-correlation-request-id": [ "562fed49-2b83-49f6-900e-2fbca0392a13" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230509T061518Z:562fed49-2b83-49f6-900e-2fbca0392a13" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Thu, 21 Jul 2022 11:10:20 GMT" ]
+        "Date": [ "Tue, 09 May 2023 06:15:18 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "1223" ],
+        "Content-Length": [ "1261" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"location\":\"westus2\",\"tags\":null,\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest-gp/providers/Microsoft.Orbital/contactProfiles/azps-orbital-contactprofile\",\"name\":\"azps-orbital-contactprofile\",\"type\":\"Microsoft.Orbital/contactProfiles\",\"properties\":{\"provisioningState\":\"succeeded\",\"minimumViableContactDuration\":\"PT1M\",\"minimumElevationDegrees\":10.0,\"autoTrackingConfiguration\":\"xBand\",\"eventHubUri\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest-gp/providers/Microsoft.EventHub/namespaces/eventhub-test-0721\",\"networkConfiguration\":{\"subnetId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest-gp/providers/Microsoft.Network/virtualNetworks/orbital-virtualnetwork/subnets/orbital-vn\"},\"links\":[{\"name\":\"RHCP_UL\",\"polarization\":\"RHCP\",\"direction\":\"Downlink\",\"gainOverTemperature\":0.0,\"eirpdBW\":45.0,\"channels\":[{\"name\":\"channel1\",\"centerFrequencyMHz\":8160.0,\"bandwidthMHz\":15.0,\"endPoint\":{\"ipAddress\":\"10.0.1.0\",\"endPointName\":\"AQUA_command\",\"port\":\"55555\",\"protocol\":\"TCP\"},\"modulationConfiguration\":\"AQUA_UPLINK_BPSK\",\"demodulationConfiguration\":\"na\",\"encodingConfiguration\":\"AQUA_CMD_CCSDS\",\"decodingConfiguration\":\"na\"}]}]}}",
+      "Content": "{\"location\":\"westus2\",\"tags\":null,\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/azpstest-gp/providers/Microsoft.Orbital/contactProfiles/azps-orbital-contactprofile\",\"name\":\"azps-orbital-contactprofile\",\"type\":\"Microsoft.Orbital/contactProfiles\",\"properties\":{\"thirdPartyConfigurations\":null,\"provisioningState\":\"succeeded\",\"minimumViableContactDuration\":\"PT1M\",\"minimumElevationDegrees\":10.0,\"autoTrackingConfiguration\":\"xBand\",\"eventHubUri\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest-gp/providers/Microsoft.EventHub/namespaces/eventhub-test-0505\",\"networkConfiguration\":{\"subnetId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest-gp/providers/Microsoft.Network/virtualNetworks/orbital-virtualnetwork/subnets/orbital-vn\"},\"links\":[{\"name\":\"RHCP_Downlink\",\"polarization\":\"RHCP\",\"direction\":\"Downlink\",\"gainOverTemperature\":0.0,\"eirpdBW\":45.0,\"channels\":[{\"name\":\"channel1\",\"centerFrequencyMHz\":8160.0,\"bandwidthMHz\":15.0,\"endPoint\":{\"ipAddress\":\"10.0.1.0\",\"endPointName\":\"AQUA_command\",\"port\":\"55555\",\"protocol\":\"TCP\"},\"modulationConfiguration\":\"AQUA_UPLINK_BPSK\",\"demodulationConfiguration\":\"na\",\"encodingConfiguration\":\"AQUA_CMD_CCSDS\",\"decodingConfiguration\":\"na\"}]}]}}",
       "isContentBase64": false
     }
   },
-  "AzOrbitalContactProfile+[NoContext]+List+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Orbital/contactProfiles?api-version=2022-03-01+1": {
+  "AzOrbitalContactProfile+[NoContext]+List+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Orbital/contactProfiles?api-version=2022-11-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Orbital/contactProfiles?api-version=2022-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Orbital/contactProfiles?api-version=2022-11-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "5" ],
-        "x-ms-client-request-id": [ "beb25e6c-d07d-497d-b4c2-4cc09fabee1c" ],
+        "x-ms-client-request-id": [ "33ccb330-2ee6-400f-9ef0-95d5a1ad3569" ],
         "CommandName": [ "Get-AzOrbitalContactProfile" ],
         "FullCommandName": [ "Get-AzOrbitalContactProfile_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.2", "Az.Orbital/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.4", "Az.Orbital/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -140,37 +142,37 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
+        "x-ms-original-request-ids": [ "", "" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "11996" ],
+        "x-ms-request-id": [ "2902a53f-53e5-463a-92dd-69bb3b91655a" ],
+        "x-ms-correlation-request-id": [ "2902a53f-53e5-463a-92dd-69bb3b91655a" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230509T061519Z:2902a53f-53e5-463a-92dd-69bb3b91655a" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-request-id": [ "42b0b666-0d84-435e-91d1-5f7b87679cd8" ],
-        "x-ms-correlation-request-id": [ "42b0b666-0d84-435e-91d1-5f7b87679cd8" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220721T111022Z:42b0b666-0d84-435e-91d1-5f7b87679cd8" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Thu, 21 Jul 2022 11:10:21 GMT" ]
+        "Date": [ "Tue, 09 May 2023 06:15:19 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "1251" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
+        "Expires": [ "-1" ],
+        "Content-Length": [ "2380" ]
       },
-      "Content": "{\"nextLink\":null,\"value\":[{\"location\":\"westus2\",\"tags\":null,\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest-gp/providers/Microsoft.Orbital/contactProfiles/azps-orbital-contactprofile\",\"name\":\"azps-orbital-contactprofile\",\"type\":\"Microsoft.Orbital/contactProfiles\",\"properties\":{\"provisioningState\":\"succeeded\",\"minimumViableContactDuration\":\"PT1M\",\"minimumElevationDegrees\":10.0,\"autoTrackingConfiguration\":\"xBand\",\"eventHubUri\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest-gp/providers/Microsoft.EventHub/namespaces/eventhub-test-0721\",\"networkConfiguration\":{\"subnetId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest-gp/providers/Microsoft.Network/virtualNetworks/orbital-virtualnetwork/subnets/orbital-vn\"},\"links\":[{\"name\":\"RHCP_UL\",\"polarization\":\"RHCP\",\"direction\":\"Downlink\",\"gainOverTemperature\":0.0,\"eirpdBW\":45.0,\"channels\":[{\"name\":\"channel1\",\"centerFrequencyMHz\":8160.0,\"bandwidthMHz\":15.0,\"endPoint\":{\"ipAddress\":\"10.0.1.0\",\"endPointName\":\"AQUA_command\",\"port\":\"55555\",\"protocol\":\"TCP\"},\"modulationConfiguration\":\"AQUA_UPLINK_BPSK\",\"demodulationConfiguration\":\"na\",\"encodingConfiguration\":\"AQUA_CMD_CCSDS\",\"decodingConfiguration\":\"na\"}]}]}}]}",
+      "Content": "{\"value\":[{\"location\":\"westus2\",\"tags\":null,\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/azpstest-gp/providers/Microsoft.Orbital/contactProfiles/azps-orbital-contactprofile\",\"name\":\"azps-orbital-contactprofile\",\"type\":\"Microsoft.Orbital/contactProfiles\",\"properties\":{\"thirdPartyConfigurations\":null,\"provisioningState\":\"succeeded\",\"minimumViableContactDuration\":\"PT1M\",\"minimumElevationDegrees\":10.0,\"autoTrackingConfiguration\":\"xBand\",\"eventHubUri\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest-gp/providers/Microsoft.EventHub/namespaces/eventhub-test-0505\",\"networkConfiguration\":{\"subnetId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest-gp/providers/Microsoft.Network/virtualNetworks/orbital-virtualnetwork/subnets/orbital-vn\"},\"links\":[{\"name\":\"RHCP_Downlink\",\"polarization\":\"RHCP\",\"direction\":\"Downlink\",\"gainOverTemperature\":0.0,\"eirpdBW\":45.0,\"channels\":[{\"name\":\"channel1\",\"centerFrequencyMHz\":8160.0,\"bandwidthMHz\":15.0,\"endPoint\":{\"ipAddress\":\"10.0.1.0\",\"endPointName\":\"AQUA_command\",\"port\":\"55555\",\"protocol\":\"TCP\"},\"modulationConfiguration\":\"AQUA_UPLINK_BPSK\",\"demodulationConfiguration\":\"na\",\"encodingConfiguration\":\"AQUA_CMD_CCSDS\",\"decodingConfiguration\":\"na\"}]}]}},{\"location\":\"swedencentral\",\"tags\":{},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/azpstest-gp/providers/Microsoft.Orbital/contactProfiles/Sweden-contactprofile\",\"name\":\"Sweden-contactprofile\",\"type\":\"Microsoft.Orbital/contactProfiles\",\"properties\":{\"thirdPartyConfigurations\":[],\"provisioningState\":\"succeeded\",\"minimumViableContactDuration\":\"PT1M\",\"minimumElevationDegrees\":5.0,\"autoTrackingConfiguration\":\"disabled\",\"eventHubUri\":null,\"networkConfiguration\":{\"subnetId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest-gp/providers/Microsoft.Network/virtualNetworks/Sweden-virtualnetwork/subnets/orbital-vn\"},\"links\":[{\"name\":\"RHCP_DL\",\"polarization\":\"RHCP\",\"direction\":\"Downlink\",\"gainOverTemperature\":25.0,\"eirpdBW\":0.0,\"channels\":[{\"name\":\"channel1\",\"centerFrequencyMHz\":8160.0,\"bandwidthMHz\":15.0,\"endPoint\":{\"ipAddress\":\"10.0.1.1\",\"endPointName\":\"Sweden-command\",\"port\":\"51103\",\"protocol\":\"TCP\"},\"modulationConfiguration\":null,\"demodulationConfiguration\":\"aqua_direct_broadcast\",\"encodingConfiguration\":null,\"decodingConfiguration\":null}]}]}}]}",
       "isContentBase64": false
     }
   },
-  "AzOrbitalContactProfile+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest-gp/providers/Microsoft.Orbital/contactProfiles/azps-orbital-contactprofile?api-version=2022-03-01+1": {
+  "AzOrbitalContactProfile+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest-gp/providers/Microsoft.Orbital/contactProfiles/azps-orbital-contactprofile?api-version=2022-11-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest-gp/providers/Microsoft.Orbital/contactProfiles/azps-orbital-contactprofile?api-version=2022-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest-gp/providers/Microsoft.Orbital/contactProfiles/azps-orbital-contactprofile?api-version=2022-11-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "6" ],
-        "x-ms-client-request-id": [ "18f32b3b-db48-4c5d-b8b5-18753c2932d5" ],
+        "x-ms-client-request-id": [ "92d6d1b2-4360-4154-9724-fe56913f01bf" ],
         "CommandName": [ "Get-AzOrbitalContactProfile" ],
         "FullCommandName": [ "Get-AzOrbitalContactProfile_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.2", "Az.Orbital/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.4", "Az.Orbital/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -183,35 +185,35 @@
         "Pragma": [ "no-cache" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "11995" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-request-id": [ "b46b5d64-f061-4d86-9569-e14dc85011d8" ],
-        "x-ms-correlation-request-id": [ "b46b5d64-f061-4d86-9569-e14dc85011d8" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220721T111022Z:b46b5d64-f061-4d86-9569-e14dc85011d8" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-request-id": [ "5533d2a3-dd76-47d0-834e-aea57a3195f0" ],
+        "x-ms-correlation-request-id": [ "5533d2a3-dd76-47d0-834e-aea57a3195f0" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230509T061519Z:5533d2a3-dd76-47d0-834e-aea57a3195f0" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Thu, 21 Jul 2022 11:10:21 GMT" ]
+        "Date": [ "Tue, 09 May 2023 06:15:19 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "1223" ],
+        "Content-Length": [ "1261" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"location\":\"westus2\",\"tags\":null,\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest-gp/providers/Microsoft.Orbital/contactProfiles/azps-orbital-contactprofile\",\"name\":\"azps-orbital-contactprofile\",\"type\":\"Microsoft.Orbital/contactProfiles\",\"properties\":{\"provisioningState\":\"succeeded\",\"minimumViableContactDuration\":\"PT1M\",\"minimumElevationDegrees\":10.0,\"autoTrackingConfiguration\":\"xBand\",\"eventHubUri\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest-gp/providers/Microsoft.EventHub/namespaces/eventhub-test-0721\",\"networkConfiguration\":{\"subnetId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest-gp/providers/Microsoft.Network/virtualNetworks/orbital-virtualnetwork/subnets/orbital-vn\"},\"links\":[{\"name\":\"RHCP_UL\",\"polarization\":\"RHCP\",\"direction\":\"Downlink\",\"gainOverTemperature\":0.0,\"eirpdBW\":45.0,\"channels\":[{\"name\":\"channel1\",\"centerFrequencyMHz\":8160.0,\"bandwidthMHz\":15.0,\"endPoint\":{\"ipAddress\":\"10.0.1.0\",\"endPointName\":\"AQUA_command\",\"port\":\"55555\",\"protocol\":\"TCP\"},\"modulationConfiguration\":\"AQUA_UPLINK_BPSK\",\"demodulationConfiguration\":\"na\",\"encodingConfiguration\":\"AQUA_CMD_CCSDS\",\"decodingConfiguration\":\"na\"}]}]}}",
+      "Content": "{\"location\":\"westus2\",\"tags\":null,\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/azpstest-gp/providers/Microsoft.Orbital/contactProfiles/azps-orbital-contactprofile\",\"name\":\"azps-orbital-contactprofile\",\"type\":\"Microsoft.Orbital/contactProfiles\",\"properties\":{\"thirdPartyConfigurations\":null,\"provisioningState\":\"succeeded\",\"minimumViableContactDuration\":\"PT1M\",\"minimumElevationDegrees\":10.0,\"autoTrackingConfiguration\":\"xBand\",\"eventHubUri\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest-gp/providers/Microsoft.EventHub/namespaces/eventhub-test-0505\",\"networkConfiguration\":{\"subnetId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest-gp/providers/Microsoft.Network/virtualNetworks/orbital-virtualnetwork/subnets/orbital-vn\"},\"links\":[{\"name\":\"RHCP_Downlink\",\"polarization\":\"RHCP\",\"direction\":\"Downlink\",\"gainOverTemperature\":0.0,\"eirpdBW\":45.0,\"channels\":[{\"name\":\"channel1\",\"centerFrequencyMHz\":8160.0,\"bandwidthMHz\":15.0,\"endPoint\":{\"ipAddress\":\"10.0.1.0\",\"endPointName\":\"AQUA_command\",\"port\":\"55555\",\"protocol\":\"TCP\"},\"modulationConfiguration\":\"AQUA_UPLINK_BPSK\",\"demodulationConfiguration\":\"na\",\"encodingConfiguration\":\"AQUA_CMD_CCSDS\",\"decodingConfiguration\":\"na\"}]}]}}",
       "isContentBase64": false
     }
   },
-  "AzOrbitalContactProfile+[NoContext]+List1+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest-gp/providers/Microsoft.Orbital/contactProfiles?api-version=2022-03-01+1": {
+  "AzOrbitalContactProfile+[NoContext]+List1+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest-gp/providers/Microsoft.Orbital/contactProfiles?api-version=2022-11-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest-gp/providers/Microsoft.Orbital/contactProfiles?api-version=2022-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest-gp/providers/Microsoft.Orbital/contactProfiles?api-version=2022-11-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "7" ],
-        "x-ms-client-request-id": [ "32782006-e15e-4d21-99bc-60bfa8860192" ],
+        "x-ms-client-request-id": [ "314e4a1e-fd7c-4f90-8554-91140adfc3b6" ],
         "CommandName": [ "Get-AzOrbitalContactProfile" ],
         "FullCommandName": [ "Get-AzOrbitalContactProfile_List1" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.2", "Az.Orbital/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.4", "Az.Orbital/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -222,28 +224,28 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
+        "x-ms-original-request-ids": [ "", "" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "11994" ],
+        "x-ms-request-id": [ "46247577-3955-40a5-8108-62e62a2bb703" ],
+        "x-ms-correlation-request-id": [ "46247577-3955-40a5-8108-62e62a2bb703" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230509T061520Z:46247577-3955-40a5-8108-62e62a2bb703" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-request-id": [ "ede07f55-8f87-4acc-99df-2d687967c29f" ],
-        "x-ms-correlation-request-id": [ "ede07f55-8f87-4acc-99df-2d687967c29f" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220721T111023Z:ede07f55-8f87-4acc-99df-2d687967c29f" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Thu, 21 Jul 2022 11:10:22 GMT" ]
+        "Date": [ "Tue, 09 May 2023 06:15:20 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "1251" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
+        "Expires": [ "-1" ],
+        "Content-Length": [ "2380" ]
       },
-      "Content": "{\"nextLink\":null,\"value\":[{\"location\":\"westus2\",\"tags\":null,\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest-gp/providers/Microsoft.Orbital/contactProfiles/azps-orbital-contactprofile\",\"name\":\"azps-orbital-contactprofile\",\"type\":\"Microsoft.Orbital/contactProfiles\",\"properties\":{\"provisioningState\":\"succeeded\",\"minimumViableContactDuration\":\"PT1M\",\"minimumElevationDegrees\":10.0,\"autoTrackingConfiguration\":\"xBand\",\"eventHubUri\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest-gp/providers/Microsoft.EventHub/namespaces/eventhub-test-0721\",\"networkConfiguration\":{\"subnetId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest-gp/providers/Microsoft.Network/virtualNetworks/orbital-virtualnetwork/subnets/orbital-vn\"},\"links\":[{\"name\":\"RHCP_UL\",\"polarization\":\"RHCP\",\"direction\":\"Downlink\",\"gainOverTemperature\":0.0,\"eirpdBW\":45.0,\"channels\":[{\"name\":\"channel1\",\"centerFrequencyMHz\":8160.0,\"bandwidthMHz\":15.0,\"endPoint\":{\"ipAddress\":\"10.0.1.0\",\"endPointName\":\"AQUA_command\",\"port\":\"55555\",\"protocol\":\"TCP\"},\"modulationConfiguration\":\"AQUA_UPLINK_BPSK\",\"demodulationConfiguration\":\"na\",\"encodingConfiguration\":\"AQUA_CMD_CCSDS\",\"decodingConfiguration\":\"na\"}]}]}}]}",
+      "Content": "{\"value\":[{\"location\":\"westus2\",\"tags\":null,\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/azpstest-gp/providers/Microsoft.Orbital/contactProfiles/azps-orbital-contactprofile\",\"name\":\"azps-orbital-contactprofile\",\"type\":\"Microsoft.Orbital/contactProfiles\",\"properties\":{\"thirdPartyConfigurations\":null,\"provisioningState\":\"succeeded\",\"minimumViableContactDuration\":\"PT1M\",\"minimumElevationDegrees\":10.0,\"autoTrackingConfiguration\":\"xBand\",\"eventHubUri\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest-gp/providers/Microsoft.EventHub/namespaces/eventhub-test-0505\",\"networkConfiguration\":{\"subnetId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest-gp/providers/Microsoft.Network/virtualNetworks/orbital-virtualnetwork/subnets/orbital-vn\"},\"links\":[{\"name\":\"RHCP_Downlink\",\"polarization\":\"RHCP\",\"direction\":\"Downlink\",\"gainOverTemperature\":0.0,\"eirpdBW\":45.0,\"channels\":[{\"name\":\"channel1\",\"centerFrequencyMHz\":8160.0,\"bandwidthMHz\":15.0,\"endPoint\":{\"ipAddress\":\"10.0.1.0\",\"endPointName\":\"AQUA_command\",\"port\":\"55555\",\"protocol\":\"TCP\"},\"modulationConfiguration\":\"AQUA_UPLINK_BPSK\",\"demodulationConfiguration\":\"na\",\"encodingConfiguration\":\"AQUA_CMD_CCSDS\",\"decodingConfiguration\":\"na\"}]}]}},{\"location\":\"swedencentral\",\"tags\":{},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/azpstest-gp/providers/Microsoft.Orbital/contactProfiles/Sweden-contactprofile\",\"name\":\"Sweden-contactprofile\",\"type\":\"Microsoft.Orbital/contactProfiles\",\"properties\":{\"thirdPartyConfigurations\":[],\"provisioningState\":\"succeeded\",\"minimumViableContactDuration\":\"PT1M\",\"minimumElevationDegrees\":5.0,\"autoTrackingConfiguration\":\"disabled\",\"eventHubUri\":null,\"networkConfiguration\":{\"subnetId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest-gp/providers/Microsoft.Network/virtualNetworks/Sweden-virtualnetwork/subnets/orbital-vn\"},\"links\":[{\"name\":\"RHCP_DL\",\"polarization\":\"RHCP\",\"direction\":\"Downlink\",\"gainOverTemperature\":25.0,\"eirpdBW\":0.0,\"channels\":[{\"name\":\"channel1\",\"centerFrequencyMHz\":8160.0,\"bandwidthMHz\":15.0,\"endPoint\":{\"ipAddress\":\"10.0.1.1\",\"endPointName\":\"Sweden-command\",\"port\":\"51103\",\"protocol\":\"TCP\"},\"modulationConfiguration\":null,\"demodulationConfiguration\":\"aqua_direct_broadcast\",\"encodingConfiguration\":null,\"decodingConfiguration\":null}]}]}}]}",
       "isContentBase64": false
     }
   },
-  "AzOrbitalContactProfile+[NoContext]+UpdateExpanded+$PATCH+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest-gp/providers/Microsoft.Orbital/contactProfiles/azps-orbital-contactprofile?api-version=2022-03-01+1": {
+  "AzOrbitalContactProfile+[NoContext]+UpdateExpanded+$PATCH+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest-gp/providers/Microsoft.Orbital/contactProfiles/azps-orbital-contactprofile?api-version=2022-11-01+1": {
     "Request": {
       "Method": "PATCH",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest-gp/providers/Microsoft.Orbital/contactProfiles/azps-orbital-contactprofile?api-version=2022-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest-gp/providers/Microsoft.Orbital/contactProfiles/azps-orbital-contactprofile?api-version=2022-11-01",
       "Content": "{\r\n  \"tags\": {\r\n    \"123\": \"abc\"\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -260,35 +262,35 @@
         "Pragma": [ "no-cache" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-request-id": [ "f3441b3e-afc4-4f8d-b209-b212bac450b2" ],
-        "x-ms-correlation-request-id": [ "f3441b3e-afc4-4f8d-b209-b212bac450b2" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220721T111025Z:f3441b3e-afc4-4f8d-b209-b212bac450b2" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-request-id": [ "8e640bc1-96a6-4682-ba40-7dfeef202d42" ],
+        "x-ms-correlation-request-id": [ "8e640bc1-96a6-4682-ba40-7dfeef202d42" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230509T061522Z:8e640bc1-96a6-4682-ba40-7dfeef202d42" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Thu, 21 Jul 2022 11:10:24 GMT" ]
+        "Date": [ "Tue, 09 May 2023 06:15:22 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "1232" ],
+        "Content-Length": [ "1270" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"location\":\"westus2\",\"tags\":{\"123\":\"abc\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest-gp/providers/Microsoft.Orbital/contactProfiles/azps-orbital-contactprofile\",\"name\":\"azps-orbital-contactprofile\",\"type\":\"Microsoft.Orbital/contactProfiles\",\"properties\":{\"provisioningState\":\"succeeded\",\"minimumViableContactDuration\":\"PT1M\",\"minimumElevationDegrees\":10.0,\"autoTrackingConfiguration\":\"xBand\",\"eventHubUri\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest-gp/providers/Microsoft.EventHub/namespaces/eventhub-test-0721\",\"networkConfiguration\":{\"subnetId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest-gp/providers/Microsoft.Network/virtualNetworks/orbital-virtualnetwork/subnets/orbital-vn\"},\"links\":[{\"name\":\"RHCP_UL\",\"polarization\":\"RHCP\",\"direction\":\"Downlink\",\"gainOverTemperature\":0.0,\"eirpdBW\":45.0,\"channels\":[{\"name\":\"channel1\",\"centerFrequencyMHz\":8160.0,\"bandwidthMHz\":15.0,\"endPoint\":{\"ipAddress\":\"10.0.1.0\",\"endPointName\":\"AQUA_command\",\"port\":\"55555\",\"protocol\":\"TCP\"},\"modulationConfiguration\":\"AQUA_UPLINK_BPSK\",\"demodulationConfiguration\":\"na\",\"encodingConfiguration\":\"AQUA_CMD_CCSDS\",\"decodingConfiguration\":\"na\"}]}]}}",
+      "Content": "{\"location\":\"westus2\",\"tags\":{\"123\":\"abc\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/azpstest-gp/providers/Microsoft.Orbital/contactProfiles/azps-orbital-contactprofile\",\"name\":\"azps-orbital-contactprofile\",\"type\":\"Microsoft.Orbital/contactProfiles\",\"properties\":{\"thirdPartyConfigurations\":null,\"provisioningState\":\"succeeded\",\"minimumViableContactDuration\":\"PT1M\",\"minimumElevationDegrees\":10.0,\"autoTrackingConfiguration\":\"xBand\",\"eventHubUri\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest-gp/providers/Microsoft.EventHub/namespaces/eventhub-test-0505\",\"networkConfiguration\":{\"subnetId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest-gp/providers/Microsoft.Network/virtualNetworks/orbital-virtualnetwork/subnets/orbital-vn\"},\"links\":[{\"name\":\"RHCP_Downlink\",\"polarization\":\"RHCP\",\"direction\":\"Downlink\",\"gainOverTemperature\":0.0,\"eirpdBW\":45.0,\"channels\":[{\"name\":\"channel1\",\"centerFrequencyMHz\":8160.0,\"bandwidthMHz\":15.0,\"endPoint\":{\"ipAddress\":\"10.0.1.0\",\"endPointName\":\"AQUA_command\",\"port\":\"55555\",\"protocol\":\"TCP\"},\"modulationConfiguration\":\"AQUA_UPLINK_BPSK\",\"demodulationConfiguration\":\"na\",\"encodingConfiguration\":\"AQUA_CMD_CCSDS\",\"decodingConfiguration\":\"na\"}]}]}}",
       "isContentBase64": false
     }
   },
-  "AzOrbitalContactProfile+[NoContext]+UpdateViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest-gp/providers/Microsoft.Orbital/contactProfiles/azps-orbital-contactprofile?api-version=2022-03-01+1": {
+  "AzOrbitalContactProfile+[NoContext]+UpdateViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest-gp/providers/Microsoft.Orbital/contactProfiles/azps-orbital-contactprofile?api-version=2022-11-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest-gp/providers/Microsoft.Orbital/contactProfiles/azps-orbital-contactprofile?api-version=2022-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest-gp/providers/Microsoft.Orbital/contactProfiles/azps-orbital-contactprofile?api-version=2022-11-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "9" ],
-        "x-ms-client-request-id": [ "23c19330-1d97-45db-8e15-c5ac0c80ed0e" ],
+        "x-ms-client-request-id": [ "2540df70-8f05-45fb-b7a9-952a3b66e0c5" ],
         "CommandName": [ "Get-AzOrbitalContactProfile" ],
         "FullCommandName": [ "Get-AzOrbitalContactProfile_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.2", "Az.Orbital/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.4", "Az.Orbital/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -301,26 +303,26 @@
         "Pragma": [ "no-cache" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "11993" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-request-id": [ "37f06a56-5693-41c0-8524-5760d6ed8377" ],
-        "x-ms-correlation-request-id": [ "37f06a56-5693-41c0-8524-5760d6ed8377" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220721T111026Z:37f06a56-5693-41c0-8524-5760d6ed8377" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-request-id": [ "f833d95f-89b9-408d-b515-13921a279de8" ],
+        "x-ms-correlation-request-id": [ "f833d95f-89b9-408d-b515-13921a279de8" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230509T061523Z:f833d95f-89b9-408d-b515-13921a279de8" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Thu, 21 Jul 2022 11:10:25 GMT" ]
+        "Date": [ "Tue, 09 May 2023 06:15:23 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "1232" ],
+        "Content-Length": [ "1270" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"location\":\"westus2\",\"tags\":{\"123\":\"abc\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest-gp/providers/Microsoft.Orbital/contactProfiles/azps-orbital-contactprofile\",\"name\":\"azps-orbital-contactprofile\",\"type\":\"Microsoft.Orbital/contactProfiles\",\"properties\":{\"provisioningState\":\"succeeded\",\"minimumViableContactDuration\":\"PT1M\",\"minimumElevationDegrees\":10.0,\"autoTrackingConfiguration\":\"xBand\",\"eventHubUri\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest-gp/providers/Microsoft.EventHub/namespaces/eventhub-test-0721\",\"networkConfiguration\":{\"subnetId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest-gp/providers/Microsoft.Network/virtualNetworks/orbital-virtualnetwork/subnets/orbital-vn\"},\"links\":[{\"name\":\"RHCP_UL\",\"polarization\":\"RHCP\",\"direction\":\"Downlink\",\"gainOverTemperature\":0.0,\"eirpdBW\":45.0,\"channels\":[{\"name\":\"channel1\",\"centerFrequencyMHz\":8160.0,\"bandwidthMHz\":15.0,\"endPoint\":{\"ipAddress\":\"10.0.1.0\",\"endPointName\":\"AQUA_command\",\"port\":\"55555\",\"protocol\":\"TCP\"},\"modulationConfiguration\":\"AQUA_UPLINK_BPSK\",\"demodulationConfiguration\":\"na\",\"encodingConfiguration\":\"AQUA_CMD_CCSDS\",\"decodingConfiguration\":\"na\"}]}]}}",
+      "Content": "{\"location\":\"westus2\",\"tags\":{\"123\":\"abc\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/azpstest-gp/providers/Microsoft.Orbital/contactProfiles/azps-orbital-contactprofile\",\"name\":\"azps-orbital-contactprofile\",\"type\":\"Microsoft.Orbital/contactProfiles\",\"properties\":{\"thirdPartyConfigurations\":null,\"provisioningState\":\"succeeded\",\"minimumViableContactDuration\":\"PT1M\",\"minimumElevationDegrees\":10.0,\"autoTrackingConfiguration\":\"xBand\",\"eventHubUri\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest-gp/providers/Microsoft.EventHub/namespaces/eventhub-test-0505\",\"networkConfiguration\":{\"subnetId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest-gp/providers/Microsoft.Network/virtualNetworks/orbital-virtualnetwork/subnets/orbital-vn\"},\"links\":[{\"name\":\"RHCP_Downlink\",\"polarization\":\"RHCP\",\"direction\":\"Downlink\",\"gainOverTemperature\":0.0,\"eirpdBW\":45.0,\"channels\":[{\"name\":\"channel1\",\"centerFrequencyMHz\":8160.0,\"bandwidthMHz\":15.0,\"endPoint\":{\"ipAddress\":\"10.0.1.0\",\"endPointName\":\"AQUA_command\",\"port\":\"55555\",\"protocol\":\"TCP\"},\"modulationConfiguration\":\"AQUA_UPLINK_BPSK\",\"demodulationConfiguration\":\"na\",\"encodingConfiguration\":\"AQUA_CMD_CCSDS\",\"decodingConfiguration\":\"na\"}]}]}}",
       "isContentBase64": false
     }
   },
-  "AzOrbitalContactProfile+[NoContext]+UpdateViaIdentityExpanded+$PATCH+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest-gp/providers/Microsoft.Orbital/contactProfiles/azps-orbital-contactprofile?api-version=2022-03-01+2": {
+  "AzOrbitalContactProfile+[NoContext]+UpdateViaIdentityExpanded+$PATCH+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest-gp/providers/Microsoft.Orbital/contactProfiles/azps-orbital-contactprofile?api-version=2022-11-01+2": {
     "Request": {
       "Method": "PATCH",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest-gp/providers/Microsoft.Orbital/contactProfiles/azps-orbital-contactprofile?api-version=2022-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest-gp/providers/Microsoft.Orbital/contactProfiles/azps-orbital-contactprofile?api-version=2022-11-01",
       "Content": "{\r\n  \"tags\": {\r\n    \"123\": \"abc\"\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -337,19 +339,19 @@
         "Pragma": [ "no-cache" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "1197" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-request-id": [ "f8cbd2c4-eb0f-4e56-b34f-b1455750f7e8" ],
-        "x-ms-correlation-request-id": [ "f8cbd2c4-eb0f-4e56-b34f-b1455750f7e8" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220721T111028Z:f8cbd2c4-eb0f-4e56-b34f-b1455750f7e8" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-request-id": [ "dc75380f-359e-49dc-bc24-b3a2c144b7e8" ],
+        "x-ms-correlation-request-id": [ "dc75380f-359e-49dc-bc24-b3a2c144b7e8" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230509T061525Z:dc75380f-359e-49dc-bc24-b3a2c144b7e8" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Thu, 21 Jul 2022 11:10:28 GMT" ]
+        "Date": [ "Tue, 09 May 2023 06:15:25 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "1232" ],
+        "Content-Length": [ "1270" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"location\":\"westus2\",\"tags\":{\"123\":\"abc\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest-gp/providers/Microsoft.Orbital/contactProfiles/azps-orbital-contactprofile\",\"name\":\"azps-orbital-contactprofile\",\"type\":\"Microsoft.Orbital/contactProfiles\",\"properties\":{\"provisioningState\":\"succeeded\",\"minimumViableContactDuration\":\"PT1M\",\"minimumElevationDegrees\":10.0,\"autoTrackingConfiguration\":\"xBand\",\"eventHubUri\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest-gp/providers/Microsoft.EventHub/namespaces/eventhub-test-0721\",\"networkConfiguration\":{\"subnetId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest-gp/providers/Microsoft.Network/virtualNetworks/orbital-virtualnetwork/subnets/orbital-vn\"},\"links\":[{\"name\":\"RHCP_UL\",\"polarization\":\"RHCP\",\"direction\":\"Downlink\",\"gainOverTemperature\":0.0,\"eirpdBW\":45.0,\"channels\":[{\"name\":\"channel1\",\"centerFrequencyMHz\":8160.0,\"bandwidthMHz\":15.0,\"endPoint\":{\"ipAddress\":\"10.0.1.0\",\"endPointName\":\"AQUA_command\",\"port\":\"55555\",\"protocol\":\"TCP\"},\"modulationConfiguration\":\"AQUA_UPLINK_BPSK\",\"demodulationConfiguration\":\"na\",\"encodingConfiguration\":\"AQUA_CMD_CCSDS\",\"decodingConfiguration\":\"na\"}]}]}}",
+      "Content": "{\"location\":\"westus2\",\"tags\":{\"123\":\"abc\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/azpstest-gp/providers/Microsoft.Orbital/contactProfiles/azps-orbital-contactprofile\",\"name\":\"azps-orbital-contactprofile\",\"type\":\"Microsoft.Orbital/contactProfiles\",\"properties\":{\"thirdPartyConfigurations\":null,\"provisioningState\":\"succeeded\",\"minimumViableContactDuration\":\"PT1M\",\"minimumElevationDegrees\":10.0,\"autoTrackingConfiguration\":\"xBand\",\"eventHubUri\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest-gp/providers/Microsoft.EventHub/namespaces/eventhub-test-0505\",\"networkConfiguration\":{\"subnetId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest-gp/providers/Microsoft.Network/virtualNetworks/orbital-virtualnetwork/subnets/orbital-vn\"},\"links\":[{\"name\":\"RHCP_Downlink\",\"polarization\":\"RHCP\",\"direction\":\"Downlink\",\"gainOverTemperature\":0.0,\"eirpdBW\":45.0,\"channels\":[{\"name\":\"channel1\",\"centerFrequencyMHz\":8160.0,\"bandwidthMHz\":15.0,\"endPoint\":{\"ipAddress\":\"10.0.1.0\",\"endPointName\":\"AQUA_command\",\"port\":\"55555\",\"protocol\":\"TCP\"},\"modulationConfiguration\":\"AQUA_UPLINK_BPSK\",\"demodulationConfiguration\":\"na\",\"encodingConfiguration\":\"AQUA_CMD_CCSDS\",\"decodingConfiguration\":\"na\"}]}]}}",
       "isContentBase64": false
     }
   }

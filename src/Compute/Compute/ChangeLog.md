@@ -22,12 +22,17 @@
 ## Upcoming Release
 * Added useful examples to the `New-AzVMConfig` help doc.
 * Added new `ResourceId` parameter to the `Get-AzVmss` cmdlet. 
+* Added `-SecurityType`, `-EnableSecureBoot` and `-EnableVtpm` parameters to `New-AzVm`,`New-AzVmConfig`, `New-AzVmss`, `New-AzVmssConfig`, `Update-AzVm` and `Update-AzVmss` cmdlets.
+* Configured parameter flags `-EnableSecureBoot` and `-EnableVtpm` to default to True for TrustedLaunch and ConfidentialVM values for the `-SecurityType` parameter in `New-AzVm`,`New-AzVmConfig`, `New-AzVmss`, `New-AzVmssConfig`, `Update-AzVm` and `Update-AzVmss` cmdlets.
+* Added a message to the user when they provide an outdated image alias to `New-AzVM` via the `-Image` parameter or to `New-AzVmss` via the `-ImageName` parameter.
+  The non-versioned image aliases are being updated to versioned values in October 2023, and this message is to help urge customers to use the newer versioned image alias values.
+* Changed the installation behavior for the `GuestAttestation` extension in `New-AzVM` and `New-AzVmss` to set the property `EnableAutomaticUpgrade` to true.
+* Changes to `Set-AzVMOperatingSystem` to correct unnecessary mandatory parameters.
 
 ## Version 6.0.0
 * Added new switch parameter `OSImageScheduledEventEnabled` and string parameter `OSImageScheduledEventNotBeforeTimeoutInMinutes` to the cmdlets `New-AzVmssConfig` and `Update-AzVmss`.
 * Fixed an issue that `Add-AzVhd` throws `FileNotFoundException` on Windows PowerShell. [#21321]
 * Removed the `NextLink` parameter and parameter set from the `Get-AzVM` cmdlet.
-
 
 ## Version 5.7.1
 * Added a breaking change warning to the `Get-AzVM` cmdlet to show that the `NextLink` parameter and parameter set will be removed in June 2023. The parameter has been non-functional for a long time. 

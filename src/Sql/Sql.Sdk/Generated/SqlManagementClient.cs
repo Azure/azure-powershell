@@ -512,6 +512,11 @@ namespace Microsoft.Azure.Management.Sql
         public virtual IManagedDatabasesOperations ManagedDatabases { get; private set; }
 
         /// <summary>
+        /// Gets the IManagedDatabaseMoveOperations.
+        /// </summary>
+        public virtual IManagedDatabaseMoveOperations ManagedDatabaseMoveOperations { get; private set; }
+
+        /// <summary>
         /// Gets the IFailoverGroupsOperations.
         /// </summary>
         public virtual IFailoverGroupsOperations FailoverGroups { get; private set; }
@@ -846,7 +851,9 @@ namespace Microsoft.Azure.Management.Sql
             ServerConfigurationOptions = new ServerConfigurationOptionsOperations(this);
             ManagedLedgerDigestUploads = new ManagedLedgerDigestUploadsOperations(this);
             ManagedDatabases = new ManagedDatabasesOperations(this);
+            ManagedDatabaseMoveOperations = new ManagedDatabaseMoveOperations(this);
             FailoverGroups = new FailoverGroupsOperations(this);
+
             BaseUri = new System.Uri("https://management.azure.com");
             AcceptLanguage = "en-US";
             LongRunningOperationRetryTimeout = 30;

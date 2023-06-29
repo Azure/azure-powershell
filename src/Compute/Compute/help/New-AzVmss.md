@@ -254,6 +254,28 @@ $result = New-AzVmss -ResourceGroupName $rgname -Name $vmssName -VirtualMachineS
 
 Create a VMSS with the Guest Attestation extension installed with the TrustedLaunch security type
 
+### Example 5: Create a Vmss with the security type TrustedLaunch
+```powershell
+$rgname = "rganme";
+$loc = "eastus";
+New-AzResourceGroup -Name $rgname -Location $loc -Force;
+# VMSS Profile & Hardware requirements for the TrustedLaunch default behavior.
+$vmssSize = 'Standard_D4s_v3';
+$vmssName1 = 'vmss1' + $rgname;
+$vmssName2 = 'vmss2' + $rgname;
+$imageName = "Win2016DataCenterGenSecond";
+$adminUsername = "<Username>";
+$adminPassword = "<Password>" | ConvertTo-SecureString -AsPlainText -Force;
+$vmCred = New-Object System.Management.Automation.PSCredential ($adminUsername, $adminPassword);
+
+# VMSS Creation 
+$result = New-AzVmss -Credential $vmCred -VMScaleSetName $vmssName1 -ImageName $imageName -SecurityType "TrustedLaunch";
+# Validate that for -SecurityType "TrustedLaunch" "-Vtpm" and -"SecureBoot" are "Enabled/true"
+# $result.VirtualMachineProfile.SecurityProfile.UefiSettings.VTpmEnabled $true;
+# $result.VirtualMachineProfile.SecurityProfile.UefiSettings.SecureBootEnabled $true;
+```
+This example Creates a new VMSS with the new Security Type 'TrustedLaunch'.
+
 ## PARAMETERS
 
 ### -AllocationMethod

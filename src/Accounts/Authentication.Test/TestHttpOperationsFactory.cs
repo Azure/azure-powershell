@@ -57,6 +57,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Test
             return factory;
         }
 
+        Task<string> IHttpOperationsFactory.ReadAsStringAsync(Uri requestUri)
+        {
+            throw new NotImplementedException();
+        }
+
         class TestHttpOperations<T> : IHttpOperations<T>
         {
             ITestOutputHelper _output;
