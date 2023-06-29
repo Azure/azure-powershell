@@ -120,9 +120,6 @@ ForEach ($Step In $Steps) {
         }
         Else {
             $Issues = @()
-            Write-Host "=============================="
-            Write-Host "No issues for $PhaseName"
-            Write-Host "=============================="
         }
         ForEach ($ModuleInfo In $Details.Modules) {
             $ModuleName = $ModuleInfo.Module
