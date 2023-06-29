@@ -74,7 +74,7 @@ $Steps = @(
     },
     @{
         PhaseName = "verify-gensdk"
-        IssuePath = "$StaticAnalysisOutputDirectory/VerifyGensdkIssues.csv"
+        IssuePath = "$StaticAnalysisOutputDirectory/VerifyGenSdkIssues.csv"
     }
 )
 
