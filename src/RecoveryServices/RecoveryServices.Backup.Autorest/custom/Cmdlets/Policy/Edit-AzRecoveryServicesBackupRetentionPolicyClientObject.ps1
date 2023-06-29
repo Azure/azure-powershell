@@ -1,6 +1,6 @@
 
 
-function Edit-AzrecoveryServicesBackupRetentionPolicyClientObject {
+function Edit-AzRecoveryServicesBackupRetentionPolicyClientObject {
 	[OutputType('Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IProtectionPolicy')]
     [CmdletBinding(PositionalBinding=$false)]
     [Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Description('Edits the retention settings for the policy client object')]
@@ -141,7 +141,7 @@ function Edit-AzrecoveryServicesBackupRetentionPolicyClientObject {
           #Validation part begins
 
           $parametersToTest = @{}
-          $commandParameters = (Get-Command Edit-AzrecoveryServicesBackupRetentionPolicyClientObject).Parameters
+          $commandParameters = (Get-Command Edit-AzRecoveryServicesBackupRetentionPolicyClientObject).Parameters
           # Retrieve the parameter names and their default values
           foreach ($parameter in $commandParameters.Values) {
               $parameterName = $parameter.Name
@@ -158,6 +158,27 @@ function Edit-AzrecoveryServicesBackupRetentionPolicyClientObject {
           
           # main code begins
           $policyObject = $Policy 
+          $scheduletime=$null
+          if($policyObject.PolicyType -eq "V2")
+          {
+              if($policyObject.SchedulePolicy.ScheduleRunFrequency -eq "Hourly")
+              {
+                  $scheduletime=$policyObject.SchedulePolicy.HourlySchedule.ScheduleWindowStartTime
+              }
+              elseif($policyObject.SchedulePolicy.ScheduleRunFrequency -eq "Daily")
+              {
+                  $scheduletime=$policyObject.SchedulePolicy.DailyScheduleRunTime
+              }
+              elseif($policyObject.SchedulePolicy.ScheduleRunFrequency -eq "Weekly")
+              {
+                  $scheduletime=$policyObject.SchedulePolicy.WeeklyScheduleRunTime
+              }
+          }
+          else
+          {
+              $scheduletime=$policyObject.SchedulePolicy.ScheduleRunTime
+          }
+
           if(-not($ModifyFullBackup))
           {
               if($policyObject.SchedulePolicy.ScheduleRunFrequency -eq "Weekly" -and ($policyObject.RetentionPolicy.DailySchedule.RetentionDuration.Count -ne $null) -and ($policyObject.RetentionPolicy.DailySchedule.RetentionDuration.Count -ne 0))
@@ -204,14 +225,7 @@ function Edit-AzrecoveryServicesBackupRetentionPolicyClientObject {
               }    
               if(($policyObject.RetentionPolicy.DailySchedule.RetentionDuration.Count -ne $null) -and ($policyObject.RetentionPolicy.DailySchedule.RetentionDuration.Count -ne 0)) 
               {
-                  if($policyObject.SchedulePolicy.ScheduleRunFrequency -eq "Hourly")
-                  {
-                      $policyObject.RetentionPolicy.DailySchedule.RetentionTime=$policyObject.SchedulePolicy.HourlySchedule.ScheduleWindowStartTime
-                  }
-                  else
-                  {
-                      $policyObject.RetentionPolicy.DailySchedule.RetentionTime=$policyObject.SchedulePolicy.ScheduleRunTime  
-                  }  
+                   $policyObject.RetentionPolicy.DailySchedule.RetentionTime=$scheduletime
               }
 
 
@@ -267,16 +281,8 @@ function Edit-AzrecoveryServicesBackupRetentionPolicyClientObject {
               }
               if (($policyObject.RetentionPolicy.WeeklySchedule.RetentionDuration.Count -ne $null) -and ($policyObject.RetentionPolicy.WeeklySchedule.RetentionDuration.Count -ne 0)) 
               {
-                  if($policyObject.SchedulePolicy.ScheduleRunFrequency -eq "Hourly")
-                  {
-                      $policyObject.RetentionPolicy.WeeklySchedule.RetentionTime=$policyObject.SchedulePolicy.HourlySchedule.ScheduleWindowStartTime
-                  }
-                  else
-                  {
-                      $policyObject.RetentionPolicy.WeeklySchedule.RetentionTime=$policyObject.SchedulePolicy.ScheduleRunTime
-                  }
+                   $policyObject.RetentionPolicy.WeeklySchedule.RetentionTime=$scheduletime
               }
-
 
               if($EnableMonthlyRetention -eq $false )
               {
@@ -397,14 +403,7 @@ function Edit-AzrecoveryServicesBackupRetentionPolicyClientObject {
               }
               if (($policyObject.RetentionPolicy.MonthlySchedule.RetentionDuration.Count -ne $null) -and ($policyObject.RetentionPolicy.MonthlySchedule.RetentionDuration.Count -ne 0)) 
               {
-                  if($policyObject.SchedulePolicy.ScheduleRunFrequency -eq "Hourly")
-                  {
-                      $policyObject.RetentionPolicy.MonthlySchedule.RetentionTime=$policyObject.SchedulePolicy.HourlySchedule.ScheduleWindowStartTime
-                  }
-                  else
-                  {
-                      $policyObject.RetentionPolicy.MonthlySchedule.RetentionTime=$policyObject.SchedulePolicy.ScheduleRunTime
-                  }
+                   $policyObject.RetentionPolicy.MonthlySchedule.RetentionTime=$scheduletime
               }
 
 
@@ -548,14 +547,7 @@ function Edit-AzrecoveryServicesBackupRetentionPolicyClientObject {
               }
               if (($policyObject.RetentionPolicy.YearlySchedule.RetentionDuration.Count -ne $null) -and ($policyObject.RetentionPolicy.YearlySchedule.RetentionDuration.Count -ne 0)) 
               {
-                  if($policyObject.SchedulePolicy.ScheduleRunFrequency -eq "Hourly")
-                  {
-                      $policyObject.RetentionPolicy.YearlySchedule.RetentionTime=$policyObject.SchedulePolicy.HourlySchedule.ScheduleWindowStartTime
-                  }
-                  else
-                  {
-                      $policyObject.RetentionPolicy.YearlySchedule.RetentionTime=$policyObject.SchedulePolicy.ScheduleRunTime
-                  }
+                   $policyObject.RetentionPolicy.YearlySchedule.RetentionTime=$scheduletime
               }
 
           }

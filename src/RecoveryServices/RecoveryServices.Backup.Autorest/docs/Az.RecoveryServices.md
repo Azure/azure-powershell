@@ -11,7 +11,7 @@ Locale: en-US
 Microsoft Azure PowerShell: RecoveryServices cmdlets
 
 ## Az.RecoveryServices Cmdlets
-### [Edit-AzrecoveryServicesBackupRetentionPolicyClientObject](Edit-AzrecoveryServicesBackupRetentionPolicyClientObject.md)
+### [Edit-AzRecoveryServicesBackupRetentionPolicyClientObject](Edit-AzRecoveryServicesBackupRetentionPolicyClientObject.md)
 Edits the retention settings for the policy client object
 
 ### [Edit-AzRecoveryServicesBackupSchedulePolicyClientObject](Edit-AzRecoveryServicesBackupSchedulePolicyClientObject.md)

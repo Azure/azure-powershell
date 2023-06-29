@@ -11,7 +11,7 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.RecoveryServices.private.dll'
   FormatsToProcess = './Az.RecoveryServices.format.ps1xml'
-  FunctionsToExport = 'Edit-AzrecoveryServicesBackupRetentionPolicyClientObject', 'Edit-AzRecoveryServicesBackupSchedulePolicyClientObject', 'Get-AzRecoveryServicesBackupPolicy', 'Get-AzRecoveryServicesPolicyTemplate', 'New-AzRecoveryServicesBackupPolicy', 'Remove-AzRecoveryServicesBackupPolicy', '*'
+  FunctionsToExport = 'Edit-AzRecoveryServicesBackupRetentionPolicyClientObject', 'Edit-AzRecoveryServicesBackupSchedulePolicyClientObject', 'Get-AzRecoveryServicesBackupPolicy', 'Get-AzRecoveryServicesPolicyTemplate', 'New-AzRecoveryServicesBackupPolicy', 'Remove-AzRecoveryServicesBackupPolicy', '*'
   AliasesToExport = '*'
   PrivateData = @{
     PSData = @{

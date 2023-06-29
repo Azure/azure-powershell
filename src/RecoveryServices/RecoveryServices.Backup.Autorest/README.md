@@ -99,11 +99,3 @@ directive:
     where: $
     transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.ISchedulePolicy SchedulePolicy', 'public Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.ISchedulePolicy SchedulePolicy'); 
 ```
-
-## Alternate settings
-
-This section is only activated if the `--make-it-rain` switch is added to the command line
-
-``` yaml $(make-it-rain)
-namespace: MyCompany.Special.Rest
-```

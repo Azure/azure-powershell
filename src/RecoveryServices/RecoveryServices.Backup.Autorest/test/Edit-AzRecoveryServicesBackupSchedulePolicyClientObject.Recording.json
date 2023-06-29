@@ -3,7 +3,8 @@
     "Request": {
       "Method": "PUT",
       "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/anssingh-rg/providers/Microsoft.RecoveryServices/vaults/anssingh-vault/backupPolicies/anssingh-testPolicy?api-version=2023-02-01",
-      "Content": "{\r\n  \"properties\": {\r\n    \"protectedItemsCount\": 0,\r\n    \"backupManagementType\": \"AzureIaasVM\",\r\n    \"schedulePolicy\": {\r\n      \"schedulePolicyType\": \"SimpleSchedulePolicy\",\r\n      \"scheduleRunFrequency\": \"Daily\",\r\n      \"scheduleRunTimes\": [ \"2023-06-26T13:30:00.0000000Z\" ],\r\n      \"scheduleWeeklyFrequency\": 0\r\n    },\r\n    \"retentionPolicy\": {\r\n      \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n      \"dailySchedule\": {\r\n        \"retentionTimes\": [ \"2023-06-26T13:30:00.0000000Z\" ],\r\n        \"retentionDuration\": {\r\n          \"count\": 180,\r\n          \"durationType\": \"Days\"\r\n        }\r\n      }\r\n    },\r\n    \"tieringPolicy\": {\r\n      \"ArchivedRP\": {\r\n        \"tieringMode\": \"DoNotTier\",\r\n        \"duration\": 0,\r\n        \"durationType\": \"Invalid\"\r\n      }\r\n    },\r\n    \"instantRpRetentionRangeInDays\": 2,\r\n    \"timeZone\": \"Tokyo Standard Time\",\r\n    \"policyType\": \"V1\"\r\n  }\r\n}",
+      "Content": "{\r\n  \"properties\": {\r\n    \"protectedItemsCount\": 0,\r\n    \"backupManagementType\": \"AzureIaasVM\",\r\n    \"schedulePolicy\": {\r\n      \"schedulePolicyType\": \"SimpleSchedulePolicy\",\r\n      \"scheduleRunFrequency\": \"Daily\",\r\n      \"scheduleRunTimes\": [ \"2023-07-03T13:30:00.0000000Z\" ],\r\n      \"scheduleWeeklyFrequency\": 0\r\n    },\r\n    \"retentionPolicy\": {\r\n      \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n      \"dailySchedule\": {\r\n        \"retentionTimes\": [ \"2023-07-03T13:30:00.0000000Z\" ],\r\n        \"retentionDuration\": {\r\n          \"count\": 180,\r\n          \"durationType\": \"Days\"\r\n        }\r\n      }\r\n    },\r\n    \"tieringPolicy\": {\r\n      \"ArchivedRP\": {\r\n        \"tieringMode\": \"DoNotTier\",\r\n        \"duration\": 0,\r\n        \"durationType\": \"Invalid\"\r\n      }\r\n    },\r\n    \"instantRpRetentionRangeInDays\": 2,\r\n    \"timeZone\": \"Tokyo Standard Time\",\r\n    \"policyType\": \"V1\"\r\n  }\r\n}",
+      "isContentBase64": false,
       "Headers": {
       },
       "ContentHeaders": {
@@ -17,22 +18,23 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-request-id": [ "75532e68-f1e0-460c-beff-65bc37b4c264" ],
-        "x-ms-client-request-id": [ "25b36367-b1b8-4b15-b730-02a20038c2dd", "25b36367-b1b8-4b15-b730-02a20038c2dd" ],
+        "x-ms-request-id": [ "5e1b353a-7ece-4856-bba8-f562210203f8" ],
+        "x-ms-client-request-id": [ "3e122081-afc3-4af5-8149-d2af70cf7f26", "3e122081-afc3-4af5-8149-d2af70cf7f26" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "Server": [ "Microsoft-IIS/10.0" ],
         "X-Powered-By": [ "ASP.NET" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "1193" ],
-        "x-ms-correlation-request-id": [ "75532e68-f1e0-460c-beff-65bc37b4c264" ],
-        "x-ms-routing-request-id": [ "JIOINDIACENTRAL:20230626T160404Z:75532e68-f1e0-460c-beff-65bc37b4c264" ],
-        "Date": [ "Mon, 26 Jun 2023 16:04:03 GMT" ]
+        "x-ms-correlation-request-id": [ "5e1b353a-7ece-4856-bba8-f562210203f8" ],
+        "x-ms-routing-request-id": [ "JIOINDIAWEST:20230703T051330Z:5e1b353a-7ece-4856-bba8-f562210203f8" ],
+        "Date": [ "Mon, 03 Jul 2023 05:13:30 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "898" ],
         "Content-Type": [ "application/json" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/anssingh-rg/providers/Microsoft.RecoveryServices/vaults/anssingh-vault/backupPolicies/anssingh-testPolicy\",\"name\":\"anssingh-testPolicy\",\"type\":\"Microsoft.RecoveryServices/vaults/backupPolicies\",\"properties\":{\"backupManagementType\":\"AzureIaasVM\",\"policyType\":\"V1\",\"instantRPDetails\":{},\"schedulePolicy\":{\"schedulePolicyType\":\"SimpleSchedulePolicy\",\"scheduleRunFrequency\":\"Daily\",\"scheduleRunTimes\":[\"2023-06-26T13:30:00Z\"],\"scheduleWeeklyFrequency\":0},\"retentionPolicy\":{\"retentionPolicyType\":\"LongTermRetentionPolicy\",\"dailySchedule\":{\"retentionTimes\":[\"2023-06-26T13:30:00Z\"],\"retentionDuration\":{\"count\":180,\"durationType\":\"Days\"}}},\"tieringPolicy\":{\"ArchivedRP\":{\"tieringMode\":\"DoNotTier\",\"duration\":0,\"durationType\":\"Invalid\"}},\"instantRpRetentionRangeInDays\":2,\"timeZone\":\"Tokyo Standard Time\",\"protectedItemsCount\":0}}"
+      "Content": "{\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/anssingh-rg/providers/Microsoft.RecoveryServices/vaults/anssingh-vault/backupPolicies/anssingh-testPolicy\",\"name\":\"anssingh-testPolicy\",\"type\":\"Microsoft.RecoveryServices/vaults/backupPolicies\",\"properties\":{\"backupManagementType\":\"AzureIaasVM\",\"policyType\":\"V1\",\"instantRPDetails\":{},\"schedulePolicy\":{\"schedulePolicyType\":\"SimpleSchedulePolicy\",\"scheduleRunFrequency\":\"Daily\",\"scheduleRunTimes\":[\"2023-07-03T13:30:00Z\"],\"scheduleWeeklyFrequency\":0},\"retentionPolicy\":{\"retentionPolicyType\":\"LongTermRetentionPolicy\",\"dailySchedule\":{\"retentionTimes\":[\"2023-07-03T13:30:00Z\"],\"retentionDuration\":{\"count\":180,\"durationType\":\"Days\"}}},\"tieringPolicy\":{\"ArchivedRP\":{\"tieringMode\":\"DoNotTier\",\"duration\":0,\"durationType\":\"Invalid\"}},\"instantRpRetentionRangeInDays\":2,\"timeZone\":\"Tokyo Standard Time\",\"protectedItemsCount\":0}}",
+      "isContentBase64": false
     }
   },
   "Edit-AzRecoveryServicesBackupSchedulePolicyClientObject+[NoContext]+AzureVMStandardDaily+$GET+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/anssingh-rg/providers/Microsoft.RecoveryServices/vaults/anssingh-vault/backupPolicies/anssingh-testPolicy?api-version=2023-02-01+2": {
@@ -40,13 +42,14 @@
       "Method": "GET",
       "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/anssingh-rg/providers/Microsoft.RecoveryServices/vaults/anssingh-vault/backupPolicies/anssingh-testPolicy?api-version=2023-02-01",
       "Content": null,
+      "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "20" ],
-        "x-ms-client-request-id": [ "a0ad8b32-3c7d-4a73-bf30-bc5a9623523c" ],
+        "x-ms-client-request-id": [ "cbd83ffd-361b-486c-bb76-69655d2d1128" ],
         "CommandName": [ "Get-AzRecoveryServicesBackupPolicy" ],
         "FullCommandName": [ "Get-AzRecoveryServicesBackupPolicy_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.4", "Az.RecoveryServices/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -58,22 +61,23 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-request-id": [ "63069326-1a09-456b-a1ee-99b7ed7451d8" ],
-        "x-ms-client-request-id": [ "a0ad8b32-3c7d-4a73-bf30-bc5a9623523c", "a0ad8b32-3c7d-4a73-bf30-bc5a9623523c" ],
+        "x-ms-request-id": [ "aa136e80-1c65-44b8-8383-a47867ae4629" ],
+        "x-ms-client-request-id": [ "cbd83ffd-361b-486c-bb76-69655d2d1128", "cbd83ffd-361b-486c-bb76-69655d2d1128" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "Server": [ "Microsoft-IIS/10.0" ],
         "X-Powered-By": [ "ASP.NET" ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [ "293" ],
-        "x-ms-correlation-request-id": [ "63069326-1a09-456b-a1ee-99b7ed7451d8" ],
-        "x-ms-routing-request-id": [ "JIOINDIACENTRAL:20230626T160404Z:63069326-1a09-456b-a1ee-99b7ed7451d8" ],
-        "Date": [ "Mon, 26 Jun 2023 16:04:04 GMT" ]
+        "x-ms-correlation-request-id": [ "aa136e80-1c65-44b8-8383-a47867ae4629" ],
+        "x-ms-routing-request-id": [ "JIOINDIAWEST:20230703T051331Z:aa136e80-1c65-44b8-8383-a47867ae4629" ],
+        "Date": [ "Mon, 03 Jul 2023 05:13:31 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "898" ],
         "Content-Type": [ "application/json" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/anssingh-rg/providers/Microsoft.RecoveryServices/vaults/anssingh-vault/backupPolicies/anssingh-testPolicy\",\"name\":\"anssingh-testPolicy\",\"type\":\"Microsoft.RecoveryServices/vaults/backupPolicies\",\"properties\":{\"backupManagementType\":\"AzureIaasVM\",\"policyType\":\"V1\",\"instantRPDetails\":{},\"schedulePolicy\":{\"schedulePolicyType\":\"SimpleSchedulePolicy\",\"scheduleRunFrequency\":\"Daily\",\"scheduleRunTimes\":[\"2023-06-26T13:30:00Z\"],\"scheduleWeeklyFrequency\":0},\"retentionPolicy\":{\"retentionPolicyType\":\"LongTermRetentionPolicy\",\"dailySchedule\":{\"retentionTimes\":[\"2023-06-26T13:30:00Z\"],\"retentionDuration\":{\"count\":180,\"durationType\":\"Days\"}}},\"tieringPolicy\":{\"ArchivedRP\":{\"tieringMode\":\"DoNotTier\",\"duration\":0,\"durationType\":\"Invalid\"}},\"instantRpRetentionRangeInDays\":2,\"timeZone\":\"Tokyo Standard Time\",\"protectedItemsCount\":0}}"
+      "Content": "{\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/anssingh-rg/providers/Microsoft.RecoveryServices/vaults/anssingh-vault/backupPolicies/anssingh-testPolicy\",\"name\":\"anssingh-testPolicy\",\"type\":\"Microsoft.RecoveryServices/vaults/backupPolicies\",\"properties\":{\"backupManagementType\":\"AzureIaasVM\",\"policyType\":\"V1\",\"instantRPDetails\":{},\"schedulePolicy\":{\"schedulePolicyType\":\"SimpleSchedulePolicy\",\"scheduleRunFrequency\":\"Daily\",\"scheduleRunTimes\":[\"2023-07-03T13:30:00Z\"],\"scheduleWeeklyFrequency\":0},\"retentionPolicy\":{\"retentionPolicyType\":\"LongTermRetentionPolicy\",\"dailySchedule\":{\"retentionTimes\":[\"2023-07-03T13:30:00Z\"],\"retentionDuration\":{\"count\":180,\"durationType\":\"Days\"}}},\"tieringPolicy\":{\"ArchivedRP\":{\"tieringMode\":\"DoNotTier\",\"duration\":0,\"durationType\":\"Invalid\"}},\"instantRpRetentionRangeInDays\":2,\"timeZone\":\"Tokyo Standard Time\",\"protectedItemsCount\":0}}",
+      "isContentBase64": false
     }
   },
   "Edit-AzRecoveryServicesBackupSchedulePolicyClientObject+[NoContext]+AzureVMStandardDaily+$DELETE+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/anssingh-rg/providers/Microsoft.RecoveryServices/vaults/anssingh-vault/backupPolicies/anssingh-testPolicy?api-version=2023-02-01+3": {
@@ -81,13 +85,14 @@
       "Method": "DELETE",
       "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/anssingh-rg/providers/Microsoft.RecoveryServices/vaults/anssingh-vault/backupPolicies/anssingh-testPolicy?api-version=2023-02-01",
       "Content": null,
+      "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "21" ],
-        "x-ms-client-request-id": [ "00c09d8f-660c-4229-9e2c-c008accb9f6b" ],
+        "x-ms-client-request-id": [ "2d5065ec-2ebd-44fa-bd27-176c9a282079" ],
         "CommandName": [ "Remove-AzRecoveryServicesBackupPolicy" ],
         "FullCommandName": [ "Remove-AzRecoveryServicesBackupPolicy_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.4", "Az.RecoveryServices/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -99,27 +104,29 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-request-id": [ "0fce0fe1-0346-4d05-9315-db2e09e50dd2" ],
-        "x-ms-client-request-id": [ "00c09d8f-660c-4229-9e2c-c008accb9f6b", "00c09d8f-660c-4229-9e2c-c008accb9f6b" ],
+        "x-ms-request-id": [ "0caf36bc-bff1-4700-a5eb-f07bd96cf51a" ],
+        "x-ms-client-request-id": [ "2d5065ec-2ebd-44fa-bd27-176c9a282079", "2d5065ec-2ebd-44fa-bd27-176c9a282079" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Powered-By": [ "ASP.NET" ],
         "x-ms-ratelimit-remaining-subscription-deletes": [ "14993" ],
-        "x-ms-correlation-request-id": [ "0fce0fe1-0346-4d05-9315-db2e09e50dd2" ],
-        "x-ms-routing-request-id": [ "JIOINDIACENTRAL:20230626T160406Z:0fce0fe1-0346-4d05-9315-db2e09e50dd2" ],
-        "Date": [ "Mon, 26 Jun 2023 16:04:05 GMT" ]
+        "x-ms-correlation-request-id": [ "0caf36bc-bff1-4700-a5eb-f07bd96cf51a" ],
+        "x-ms-routing-request-id": [ "JIOINDIAWEST:20230703T051332Z:0caf36bc-bff1-4700-a5eb-f07bd96cf51a" ],
+        "Date": [ "Mon, 03 Jul 2023 05:13:32 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ],
         "Content-Length": [ "0" ]
       },
-      "Content": null
+      "Content": null,
+      "isContentBase64": false
     }
   },
   "Edit-AzRecoveryServicesBackupSchedulePolicyClientObject+[NoContext]+AzureVMEnhancedWeekly+$PUT+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/anssingh-rg/providers/Microsoft.RecoveryServices/vaults/anssingh-vault/backupPolicies/anssingh-testPolicy?api-version=2023-02-01+1": {
     "Request": {
       "Method": "PUT",
       "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/anssingh-rg/providers/Microsoft.RecoveryServices/vaults/anssingh-vault/backupPolicies/anssingh-testPolicy?api-version=2023-02-01",
-      "Content": "{\r\n  \"properties\": {\r\n    \"protectedItemsCount\": 0,\r\n    \"backupManagementType\": \"AzureIaasVM\",\r\n    \"schedulePolicy\": {\r\n      \"schedulePolicyType\": \"SimpleSchedulePolicyV2\",\r\n      \"weeklySchedule\": {\r\n        \"scheduleRunDays\": [ \"Monday\", \"Thursday\" ],\r\n        \"scheduleRunTimes\": [ \"2023-06-26T13:30:00.0000000Z\" ]\r\n      },\r\n      \"scheduleRunFrequency\": \"Weekly\"\r\n    },\r\n    \"retentionPolicy\": {\r\n      \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n      \"weeklySchedule\": {\r\n        \"daysOfTheWeek\": [ \"Monday\", \"Thursday\" ],\r\n        \"retentionTimes\": [ \"2023-06-26T13:30:00.0000000Z\" ],\r\n        \"retentionDuration\": {\r\n          \"count\": 12,\r\n          \"durationType\": \"Weeks\"\r\n        }\r\n      }\r\n    },\r\n    \"tieringPolicy\": {\r\n      \"ArchivedRP\": {\r\n        \"tieringMode\": \"DoNotTier\",\r\n        \"duration\": 0,\r\n        \"durationType\": \"Invalid\"\r\n      }\r\n    },\r\n    \"instantRpRetentionRangeInDays\": 5,\r\n    \"timeZone\": \"Tokyo Standard Time\",\r\n    \"policyType\": \"V2\"\r\n  }\r\n}",
+      "Content": "{\r\n  \"properties\": {\r\n    \"protectedItemsCount\": 0,\r\n    \"backupManagementType\": \"AzureIaasVM\",\r\n    \"schedulePolicy\": {\r\n      \"schedulePolicyType\": \"SimpleSchedulePolicyV2\",\r\n      \"weeklySchedule\": {\r\n        \"scheduleRunDays\": [ \"Monday\", \"Thursday\" ],\r\n        \"scheduleRunTimes\": [ \"2023-07-03T13:30:00.0000000Z\" ]\r\n      },\r\n      \"scheduleRunFrequency\": \"Weekly\"\r\n    },\r\n    \"retentionPolicy\": {\r\n      \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n      \"weeklySchedule\": {\r\n        \"daysOfTheWeek\": [ \"Monday\", \"Thursday\" ],\r\n        \"retentionTimes\": [ \"2023-07-03T13:30:00.0000000Z\" ],\r\n        \"retentionDuration\": {\r\n          \"count\": 12,\r\n          \"durationType\": \"Weeks\"\r\n        }\r\n      }\r\n    },\r\n    \"tieringPolicy\": {\r\n      \"ArchivedRP\": {\r\n        \"tieringMode\": \"DoNotTier\",\r\n        \"duration\": 0,\r\n        \"durationType\": \"Invalid\"\r\n      }\r\n    },\r\n    \"instantRpRetentionRangeInDays\": 5,\r\n    \"timeZone\": \"Tokyo Standard Time\",\r\n    \"policyType\": \"V2\"\r\n  }\r\n}",
+      "isContentBase64": false,
       "Headers": {
       },
       "ContentHeaders": {
@@ -133,22 +140,23 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-request-id": [ "57d64c41-dad9-4d60-b380-b4304fc6d9c9" ],
-        "x-ms-client-request-id": [ "416ca5ee-7d01-4157-b65f-23b86bc39a36", "416ca5ee-7d01-4157-b65f-23b86bc39a36" ],
+        "x-ms-request-id": [ "85d5fafd-0062-4872-a751-069e96b20daa" ],
+        "x-ms-client-request-id": [ "4806ad0a-fe4e-4840-afa1-210b59c6b545", "4806ad0a-fe4e-4840-afa1-210b59c6b545" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "Server": [ "Microsoft-IIS/10.0" ],
         "X-Powered-By": [ "ASP.NET" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "1192" ],
-        "x-ms-correlation-request-id": [ "57d64c41-dad9-4d60-b380-b4304fc6d9c9" ],
-        "x-ms-routing-request-id": [ "JIOINDIACENTRAL:20230626T160408Z:57d64c41-dad9-4d60-b380-b4304fc6d9c9" ],
-        "Date": [ "Mon, 26 Jun 2023 16:04:07 GMT" ]
+        "x-ms-correlation-request-id": [ "85d5fafd-0062-4872-a751-069e96b20daa" ],
+        "x-ms-routing-request-id": [ "JIOINDIAWEST:20230703T051334Z:85d5fafd-0062-4872-a751-069e96b20daa" ],
+        "Date": [ "Mon, 03 Jul 2023 05:13:34 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "971" ],
         "Content-Type": [ "application/json" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/anssingh-rg/providers/Microsoft.RecoveryServices/vaults/anssingh-vault/backupPolicies/anssingh-testPolicy\",\"name\":\"anssingh-testPolicy\",\"type\":\"Microsoft.RecoveryServices/vaults/backupPolicies\",\"properties\":{\"backupManagementType\":\"AzureIaasVM\",\"policyType\":\"V2\",\"instantRPDetails\":{},\"schedulePolicy\":{\"schedulePolicyType\":\"SimpleSchedulePolicyV2\",\"scheduleRunFrequency\":\"Weekly\",\"weeklySchedule\":{\"scheduleRunDays\":[\"Monday\",\"Thursday\"],\"scheduleRunTimes\":[\"2023-06-26T13:30:00Z\"]}},\"retentionPolicy\":{\"retentionPolicyType\":\"LongTermRetentionPolicy\",\"weeklySchedule\":{\"daysOfTheWeek\":[\"Monday\",\"Thursday\"],\"retentionTimes\":[\"2023-06-26T13:30:00Z\"],\"retentionDuration\":{\"count\":12,\"durationType\":\"Weeks\"}}},\"tieringPolicy\":{\"ArchivedRP\":{\"tieringMode\":\"DoNotTier\",\"duration\":0,\"durationType\":\"Invalid\"}},\"instantRpRetentionRangeInDays\":5,\"timeZone\":\"Tokyo Standard Time\",\"protectedItemsCount\":0}}"
+      "Content": "{\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/anssingh-rg/providers/Microsoft.RecoveryServices/vaults/anssingh-vault/backupPolicies/anssingh-testPolicy\",\"name\":\"anssingh-testPolicy\",\"type\":\"Microsoft.RecoveryServices/vaults/backupPolicies\",\"properties\":{\"backupManagementType\":\"AzureIaasVM\",\"policyType\":\"V2\",\"instantRPDetails\":{},\"schedulePolicy\":{\"schedulePolicyType\":\"SimpleSchedulePolicyV2\",\"scheduleRunFrequency\":\"Weekly\",\"weeklySchedule\":{\"scheduleRunDays\":[\"Monday\",\"Thursday\"],\"scheduleRunTimes\":[\"2023-07-03T13:30:00Z\"]}},\"retentionPolicy\":{\"retentionPolicyType\":\"LongTermRetentionPolicy\",\"weeklySchedule\":{\"daysOfTheWeek\":[\"Monday\",\"Thursday\"],\"retentionTimes\":[\"2023-07-03T13:30:00Z\"],\"retentionDuration\":{\"count\":12,\"durationType\":\"Weeks\"}}},\"tieringPolicy\":{\"ArchivedRP\":{\"tieringMode\":\"DoNotTier\",\"duration\":0,\"durationType\":\"Invalid\"}},\"instantRpRetentionRangeInDays\":5,\"timeZone\":\"Tokyo Standard Time\",\"protectedItemsCount\":0}}",
+      "isContentBase64": false
     }
   },
   "Edit-AzRecoveryServicesBackupSchedulePolicyClientObject+[NoContext]+AzureVMEnhancedWeekly+$GET+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/anssingh-rg/providers/Microsoft.RecoveryServices/vaults/anssingh-vault/backupPolicies/anssingh-testPolicy?api-version=2023-02-01+2": {
@@ -156,13 +164,14 @@
       "Method": "GET",
       "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/anssingh-rg/providers/Microsoft.RecoveryServices/vaults/anssingh-vault/backupPolicies/anssingh-testPolicy?api-version=2023-02-01",
       "Content": null,
+      "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "23" ],
-        "x-ms-client-request-id": [ "642be1cb-eef3-48b4-9ed2-53ab0d634113" ],
+        "x-ms-client-request-id": [ "d94f8201-de66-472a-88a0-baf990a4513f" ],
         "CommandName": [ "Get-AzRecoveryServicesBackupPolicy" ],
         "FullCommandName": [ "Get-AzRecoveryServicesBackupPolicy_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.4", "Az.RecoveryServices/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -174,22 +183,23 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-request-id": [ "e101963b-96c2-4ca1-a073-0e217b5101ce" ],
-        "x-ms-client-request-id": [ "642be1cb-eef3-48b4-9ed2-53ab0d634113", "642be1cb-eef3-48b4-9ed2-53ab0d634113" ],
+        "x-ms-request-id": [ "bac27b2a-67a3-4aea-959d-fa93d88aefd5" ],
+        "x-ms-client-request-id": [ "d94f8201-de66-472a-88a0-baf990a4513f", "d94f8201-de66-472a-88a0-baf990a4513f" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "Server": [ "Microsoft-IIS/10.0" ],
         "X-Powered-By": [ "ASP.NET" ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [ "292" ],
-        "x-ms-correlation-request-id": [ "e101963b-96c2-4ca1-a073-0e217b5101ce" ],
-        "x-ms-routing-request-id": [ "JIOINDIACENTRAL:20230626T160409Z:e101963b-96c2-4ca1-a073-0e217b5101ce" ],
-        "Date": [ "Mon, 26 Jun 2023 16:04:08 GMT" ]
+        "x-ms-correlation-request-id": [ "bac27b2a-67a3-4aea-959d-fa93d88aefd5" ],
+        "x-ms-routing-request-id": [ "JIOINDIAWEST:20230703T051335Z:bac27b2a-67a3-4aea-959d-fa93d88aefd5" ],
+        "Date": [ "Mon, 03 Jul 2023 05:13:34 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "971" ],
         "Content-Type": [ "application/json" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/anssingh-rg/providers/Microsoft.RecoveryServices/vaults/anssingh-vault/backupPolicies/anssingh-testPolicy\",\"name\":\"anssingh-testPolicy\",\"type\":\"Microsoft.RecoveryServices/vaults/backupPolicies\",\"properties\":{\"backupManagementType\":\"AzureIaasVM\",\"policyType\":\"V2\",\"instantRPDetails\":{},\"schedulePolicy\":{\"schedulePolicyType\":\"SimpleSchedulePolicyV2\",\"scheduleRunFrequency\":\"Weekly\",\"weeklySchedule\":{\"scheduleRunDays\":[\"Monday\",\"Thursday\"],\"scheduleRunTimes\":[\"2023-06-26T13:30:00Z\"]}},\"retentionPolicy\":{\"retentionPolicyType\":\"LongTermRetentionPolicy\",\"weeklySchedule\":{\"daysOfTheWeek\":[\"Monday\",\"Thursday\"],\"retentionTimes\":[\"2023-06-26T13:30:00Z\"],\"retentionDuration\":{\"count\":12,\"durationType\":\"Weeks\"}}},\"tieringPolicy\":{\"ArchivedRP\":{\"tieringMode\":\"DoNotTier\",\"duration\":0,\"durationType\":\"Invalid\"}},\"instantRpRetentionRangeInDays\":5,\"timeZone\":\"Tokyo Standard Time\",\"protectedItemsCount\":0}}"
+      "Content": "{\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/anssingh-rg/providers/Microsoft.RecoveryServices/vaults/anssingh-vault/backupPolicies/anssingh-testPolicy\",\"name\":\"anssingh-testPolicy\",\"type\":\"Microsoft.RecoveryServices/vaults/backupPolicies\",\"properties\":{\"backupManagementType\":\"AzureIaasVM\",\"policyType\":\"V2\",\"instantRPDetails\":{},\"schedulePolicy\":{\"schedulePolicyType\":\"SimpleSchedulePolicyV2\",\"scheduleRunFrequency\":\"Weekly\",\"weeklySchedule\":{\"scheduleRunDays\":[\"Monday\",\"Thursday\"],\"scheduleRunTimes\":[\"2023-07-03T13:30:00Z\"]}},\"retentionPolicy\":{\"retentionPolicyType\":\"LongTermRetentionPolicy\",\"weeklySchedule\":{\"daysOfTheWeek\":[\"Monday\",\"Thursday\"],\"retentionTimes\":[\"2023-07-03T13:30:00Z\"],\"retentionDuration\":{\"count\":12,\"durationType\":\"Weeks\"}}},\"tieringPolicy\":{\"ArchivedRP\":{\"tieringMode\":\"DoNotTier\",\"duration\":0,\"durationType\":\"Invalid\"}},\"instantRpRetentionRangeInDays\":5,\"timeZone\":\"Tokyo Standard Time\",\"protectedItemsCount\":0}}",
+      "isContentBase64": false
     }
   },
   "Edit-AzRecoveryServicesBackupSchedulePolicyClientObject+[NoContext]+AzureVMEnhancedWeekly+$DELETE+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/anssingh-rg/providers/Microsoft.RecoveryServices/vaults/anssingh-vault/backupPolicies/anssingh-testPolicy?api-version=2023-02-01+3": {
@@ -197,13 +207,14 @@
       "Method": "DELETE",
       "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/anssingh-rg/providers/Microsoft.RecoveryServices/vaults/anssingh-vault/backupPolicies/anssingh-testPolicy?api-version=2023-02-01",
       "Content": null,
+      "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "24" ],
-        "x-ms-client-request-id": [ "c8374d5e-b8d8-416c-a9c6-4b51ac10cc43" ],
+        "x-ms-client-request-id": [ "a7273d87-e23e-42e9-bfe1-f07ecf4cd9e7" ],
         "CommandName": [ "Remove-AzRecoveryServicesBackupPolicy" ],
         "FullCommandName": [ "Remove-AzRecoveryServicesBackupPolicy_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.4", "Az.RecoveryServices/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -215,27 +226,29 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-request-id": [ "5edd9644-511c-495f-a601-1eade03de67a" ],
-        "x-ms-client-request-id": [ "c8374d5e-b8d8-416c-a9c6-4b51ac10cc43", "c8374d5e-b8d8-416c-a9c6-4b51ac10cc43" ],
+        "x-ms-request-id": [ "05c48148-5da1-4aae-a460-611aa7eabc0b" ],
+        "x-ms-client-request-id": [ "a7273d87-e23e-42e9-bfe1-f07ecf4cd9e7", "a7273d87-e23e-42e9-bfe1-f07ecf4cd9e7" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Powered-By": [ "ASP.NET" ],
         "x-ms-ratelimit-remaining-subscription-deletes": [ "14992" ],
-        "x-ms-correlation-request-id": [ "5edd9644-511c-495f-a601-1eade03de67a" ],
-        "x-ms-routing-request-id": [ "JIOINDIACENTRAL:20230626T160410Z:5edd9644-511c-495f-a601-1eade03de67a" ],
-        "Date": [ "Mon, 26 Jun 2023 16:04:09 GMT" ]
+        "x-ms-correlation-request-id": [ "05c48148-5da1-4aae-a460-611aa7eabc0b" ],
+        "x-ms-routing-request-id": [ "JIOINDIAWEST:20230703T051336Z:05c48148-5da1-4aae-a460-611aa7eabc0b" ],
+        "Date": [ "Mon, 03 Jul 2023 05:13:36 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ],
         "Content-Length": [ "0" ]
       },
-      "Content": null
+      "Content": null,
+      "isContentBase64": false
     }
   },
   "Edit-AzRecoveryServicesBackupSchedulePolicyClientObject+[NoContext]+AzureVMEnhancedHourly+$PUT+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/anssingh-rg/providers/Microsoft.RecoveryServices/vaults/anssingh-vault/backupPolicies/anssingh-testPolicy?api-version=2023-02-01+1": {
     "Request": {
       "Method": "PUT",
       "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/anssingh-rg/providers/Microsoft.RecoveryServices/vaults/anssingh-vault/backupPolicies/anssingh-testPolicy?api-version=2023-02-01",
-      "Content": "{\r\n  \"properties\": {\r\n    \"protectedItemsCount\": 0,\r\n    \"backupManagementType\": \"AzureIaasVM\",\r\n    \"schedulePolicy\": {\r\n      \"schedulePolicyType\": \"SimpleSchedulePolicyV2\",\r\n      \"scheduleRunFrequency\": \"Hourly\",\r\n      \"hourlySchedule\": {\r\n        \"interval\": 4,\r\n        \"scheduleWindowStartTime\": \"2023-06-26T13:30:00.0000000Z\",\r\n        \"scheduleWindowDuration\": 24\r\n      }\r\n    },\r\n    \"retentionPolicy\": {\r\n      \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n      \"dailySchedule\": {\r\n        \"retentionTimes\": [ \"2023-06-26T13:30:00.0000000Z\" ],\r\n        \"retentionDuration\": {\r\n          \"count\": 180,\r\n          \"durationType\": \"Days\"\r\n        }\r\n      }\r\n    },\r\n    \"tieringPolicy\": {\r\n      \"ArchivedRP\": {\r\n        \"tieringMode\": \"DoNotTier\",\r\n        \"duration\": 0,\r\n        \"durationType\": \"Invalid\"\r\n      }\r\n    },\r\n    \"instantRpRetentionRangeInDays\": 7,\r\n    \"timeZone\": \"Tokyo Standard Time\",\r\n    \"policyType\": \"V2\"\r\n  }\r\n}",
+      "Content": "{\r\n  \"properties\": {\r\n    \"protectedItemsCount\": 0,\r\n    \"backupManagementType\": \"AzureIaasVM\",\r\n    \"schedulePolicy\": {\r\n      \"schedulePolicyType\": \"SimpleSchedulePolicyV2\",\r\n      \"scheduleRunFrequency\": \"Hourly\",\r\n      \"hourlySchedule\": {\r\n        \"interval\": 4,\r\n        \"scheduleWindowStartTime\": \"2023-07-03T13:30:00.0000000Z\",\r\n        \"scheduleWindowDuration\": 24\r\n      }\r\n    },\r\n    \"retentionPolicy\": {\r\n      \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n      \"dailySchedule\": {\r\n        \"retentionTimes\": [ \"2023-07-03T13:30:00.0000000Z\" ],\r\n        \"retentionDuration\": {\r\n          \"count\": 180,\r\n          \"durationType\": \"Days\"\r\n        }\r\n      }\r\n    },\r\n    \"tieringPolicy\": {\r\n      \"ArchivedRP\": {\r\n        \"tieringMode\": \"DoNotTier\",\r\n        \"duration\": 0,\r\n        \"durationType\": \"Invalid\"\r\n      }\r\n    },\r\n    \"instantRpRetentionRangeInDays\": 7,\r\n    \"timeZone\": \"Tokyo Standard Time\",\r\n    \"policyType\": \"V2\"\r\n  }\r\n}",
+      "isContentBase64": false,
       "Headers": {
       },
       "ContentHeaders": {
@@ -249,22 +262,23 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-request-id": [ "e5b1058c-5bb7-4d79-844e-b5bff16dc32a" ],
-        "x-ms-client-request-id": [ "21bb53c4-7f6e-4216-9bed-c984256a39bd", "21bb53c4-7f6e-4216-9bed-c984256a39bd" ],
+        "x-ms-request-id": [ "bf73dfb1-61f0-4251-8186-39691bd77f7c" ],
+        "x-ms-client-request-id": [ "8b1dba79-1f83-420e-a01f-a1b7f32fa544", "8b1dba79-1f83-420e-a01f-a1b7f32fa544" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "Server": [ "Microsoft-IIS/10.0" ],
         "X-Powered-By": [ "ASP.NET" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "1191" ],
-        "x-ms-correlation-request-id": [ "e5b1058c-5bb7-4d79-844e-b5bff16dc32a" ],
-        "x-ms-routing-request-id": [ "JIOINDIACENTRAL:20230626T160411Z:e5b1058c-5bb7-4d79-844e-b5bff16dc32a" ],
-        "Date": [ "Mon, 26 Jun 2023 16:04:10 GMT" ]
+        "x-ms-correlation-request-id": [ "bf73dfb1-61f0-4251-8186-39691bd77f7c" ],
+        "x-ms-routing-request-id": [ "JIOINDIAWEST:20230703T051338Z:bf73dfb1-61f0-4251-8186-39691bd77f7c" ],
+        "Date": [ "Mon, 03 Jul 2023 05:13:37 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "938" ],
         "Content-Type": [ "application/json" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/anssingh-rg/providers/Microsoft.RecoveryServices/vaults/anssingh-vault/backupPolicies/anssingh-testPolicy\",\"name\":\"anssingh-testPolicy\",\"type\":\"Microsoft.RecoveryServices/vaults/backupPolicies\",\"properties\":{\"backupManagementType\":\"AzureIaasVM\",\"policyType\":\"V2\",\"instantRPDetails\":{},\"schedulePolicy\":{\"schedulePolicyType\":\"SimpleSchedulePolicyV2\",\"scheduleRunFrequency\":\"Hourly\",\"hourlySchedule\":{\"interval\":4,\"scheduleWindowStartTime\":\"2023-06-26T13:30:00Z\",\"scheduleWindowDuration\":24}},\"retentionPolicy\":{\"retentionPolicyType\":\"LongTermRetentionPolicy\",\"dailySchedule\":{\"retentionTimes\":[\"2023-06-26T13:30:00Z\"],\"retentionDuration\":{\"count\":180,\"durationType\":\"Days\"}}},\"tieringPolicy\":{\"ArchivedRP\":{\"tieringMode\":\"DoNotTier\",\"duration\":0,\"durationType\":\"Invalid\"}},\"instantRpRetentionRangeInDays\":7,\"timeZone\":\"Tokyo Standard Time\",\"protectedItemsCount\":0}}"
+      "Content": "{\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/anssingh-rg/providers/Microsoft.RecoveryServices/vaults/anssingh-vault/backupPolicies/anssingh-testPolicy\",\"name\":\"anssingh-testPolicy\",\"type\":\"Microsoft.RecoveryServices/vaults/backupPolicies\",\"properties\":{\"backupManagementType\":\"AzureIaasVM\",\"policyType\":\"V2\",\"instantRPDetails\":{},\"schedulePolicy\":{\"schedulePolicyType\":\"SimpleSchedulePolicyV2\",\"scheduleRunFrequency\":\"Hourly\",\"hourlySchedule\":{\"interval\":4,\"scheduleWindowStartTime\":\"2023-07-03T13:30:00Z\",\"scheduleWindowDuration\":24}},\"retentionPolicy\":{\"retentionPolicyType\":\"LongTermRetentionPolicy\",\"dailySchedule\":{\"retentionTimes\":[\"2023-07-03T13:30:00Z\"],\"retentionDuration\":{\"count\":180,\"durationType\":\"Days\"}}},\"tieringPolicy\":{\"ArchivedRP\":{\"tieringMode\":\"DoNotTier\",\"duration\":0,\"durationType\":\"Invalid\"}},\"instantRpRetentionRangeInDays\":7,\"timeZone\":\"Tokyo Standard Time\",\"protectedItemsCount\":0}}",
+      "isContentBase64": false
     }
   },
   "Edit-AzRecoveryServicesBackupSchedulePolicyClientObject+[NoContext]+AzureVMEnhancedHourly+$GET+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/anssingh-rg/providers/Microsoft.RecoveryServices/vaults/anssingh-vault/backupPolicies/anssingh-testPolicy?api-version=2023-02-01+2": {
@@ -272,13 +286,14 @@
       "Method": "GET",
       "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/anssingh-rg/providers/Microsoft.RecoveryServices/vaults/anssingh-vault/backupPolicies/anssingh-testPolicy?api-version=2023-02-01",
       "Content": null,
+      "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "26" ],
-        "x-ms-client-request-id": [ "345bc641-a8f9-4820-936c-62ffe273ae8e" ],
+        "x-ms-client-request-id": [ "0d98030c-7c99-4b02-89e9-5d5a16fcd7e7" ],
         "CommandName": [ "Get-AzRecoveryServicesBackupPolicy" ],
         "FullCommandName": [ "Get-AzRecoveryServicesBackupPolicy_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.4", "Az.RecoveryServices/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -290,22 +305,23 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-request-id": [ "d2917739-3ffc-4b11-ad46-be82bb789118" ],
-        "x-ms-client-request-id": [ "345bc641-a8f9-4820-936c-62ffe273ae8e", "345bc641-a8f9-4820-936c-62ffe273ae8e" ],
+        "x-ms-request-id": [ "f2bda6ae-eff2-416e-a019-aec86a0c97d4" ],
+        "x-ms-client-request-id": [ "0d98030c-7c99-4b02-89e9-5d5a16fcd7e7", "0d98030c-7c99-4b02-89e9-5d5a16fcd7e7" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "Server": [ "Microsoft-IIS/10.0" ],
         "X-Powered-By": [ "ASP.NET" ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [ "291" ],
-        "x-ms-correlation-request-id": [ "d2917739-3ffc-4b11-ad46-be82bb789118" ],
-        "x-ms-routing-request-id": [ "JIOINDIACENTRAL:20230626T160412Z:d2917739-3ffc-4b11-ad46-be82bb789118" ],
-        "Date": [ "Mon, 26 Jun 2023 16:04:11 GMT" ]
+        "x-ms-correlation-request-id": [ "f2bda6ae-eff2-416e-a019-aec86a0c97d4" ],
+        "x-ms-routing-request-id": [ "JIOINDIAWEST:20230703T051338Z:f2bda6ae-eff2-416e-a019-aec86a0c97d4" ],
+        "Date": [ "Mon, 03 Jul 2023 05:13:38 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "938" ],
         "Content-Type": [ "application/json" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/anssingh-rg/providers/Microsoft.RecoveryServices/vaults/anssingh-vault/backupPolicies/anssingh-testPolicy\",\"name\":\"anssingh-testPolicy\",\"type\":\"Microsoft.RecoveryServices/vaults/backupPolicies\",\"properties\":{\"backupManagementType\":\"AzureIaasVM\",\"policyType\":\"V2\",\"instantRPDetails\":{},\"schedulePolicy\":{\"schedulePolicyType\":\"SimpleSchedulePolicyV2\",\"scheduleRunFrequency\":\"Hourly\",\"hourlySchedule\":{\"interval\":4,\"scheduleWindowStartTime\":\"2023-06-26T13:30:00Z\",\"scheduleWindowDuration\":24}},\"retentionPolicy\":{\"retentionPolicyType\":\"LongTermRetentionPolicy\",\"dailySchedule\":{\"retentionTimes\":[\"2023-06-26T13:30:00Z\"],\"retentionDuration\":{\"count\":180,\"durationType\":\"Days\"}}},\"tieringPolicy\":{\"ArchivedRP\":{\"tieringMode\":\"DoNotTier\",\"duration\":0,\"durationType\":\"Invalid\"}},\"instantRpRetentionRangeInDays\":7,\"timeZone\":\"Tokyo Standard Time\",\"protectedItemsCount\":0}}"
+      "Content": "{\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/anssingh-rg/providers/Microsoft.RecoveryServices/vaults/anssingh-vault/backupPolicies/anssingh-testPolicy\",\"name\":\"anssingh-testPolicy\",\"type\":\"Microsoft.RecoveryServices/vaults/backupPolicies\",\"properties\":{\"backupManagementType\":\"AzureIaasVM\",\"policyType\":\"V2\",\"instantRPDetails\":{},\"schedulePolicy\":{\"schedulePolicyType\":\"SimpleSchedulePolicyV2\",\"scheduleRunFrequency\":\"Hourly\",\"hourlySchedule\":{\"interval\":4,\"scheduleWindowStartTime\":\"2023-07-03T13:30:00Z\",\"scheduleWindowDuration\":24}},\"retentionPolicy\":{\"retentionPolicyType\":\"LongTermRetentionPolicy\",\"dailySchedule\":{\"retentionTimes\":[\"2023-07-03T13:30:00Z\"],\"retentionDuration\":{\"count\":180,\"durationType\":\"Days\"}}},\"tieringPolicy\":{\"ArchivedRP\":{\"tieringMode\":\"DoNotTier\",\"duration\":0,\"durationType\":\"Invalid\"}},\"instantRpRetentionRangeInDays\":7,\"timeZone\":\"Tokyo Standard Time\",\"protectedItemsCount\":0}}",
+      "isContentBase64": false
     }
   },
   "Edit-AzRecoveryServicesBackupSchedulePolicyClientObject+[NoContext]+AzureVMEnhancedHourly+$DELETE+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/anssingh-rg/providers/Microsoft.RecoveryServices/vaults/anssingh-vault/backupPolicies/anssingh-testPolicy?api-version=2023-02-01+3": {
@@ -313,13 +329,14 @@
       "Method": "DELETE",
       "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/anssingh-rg/providers/Microsoft.RecoveryServices/vaults/anssingh-vault/backupPolicies/anssingh-testPolicy?api-version=2023-02-01",
       "Content": null,
+      "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "27" ],
-        "x-ms-client-request-id": [ "a34ca890-05f8-4d85-ba65-275eaba33875" ],
+        "x-ms-client-request-id": [ "8c412f28-31c9-4f1c-9d9f-59f773b0a9b9" ],
         "CommandName": [ "Remove-AzRecoveryServicesBackupPolicy" ],
         "FullCommandName": [ "Remove-AzRecoveryServicesBackupPolicy_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.4", "Az.RecoveryServices/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -331,27 +348,29 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-request-id": [ "b400b9c9-b83d-45bc-86dc-585d84564e37" ],
-        "x-ms-client-request-id": [ "a34ca890-05f8-4d85-ba65-275eaba33875", "a34ca890-05f8-4d85-ba65-275eaba33875" ],
+        "x-ms-request-id": [ "0c16b536-9325-49a1-97e2-b9fca523c948" ],
+        "x-ms-client-request-id": [ "8c412f28-31c9-4f1c-9d9f-59f773b0a9b9", "8c412f28-31c9-4f1c-9d9f-59f773b0a9b9" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Powered-By": [ "ASP.NET" ],
         "x-ms-ratelimit-remaining-subscription-deletes": [ "14991" ],
-        "x-ms-correlation-request-id": [ "b400b9c9-b83d-45bc-86dc-585d84564e37" ],
-        "x-ms-routing-request-id": [ "JIOINDIACENTRAL:20230626T160413Z:b400b9c9-b83d-45bc-86dc-585d84564e37" ],
-        "Date": [ "Mon, 26 Jun 2023 16:04:12 GMT" ]
+        "x-ms-correlation-request-id": [ "0c16b536-9325-49a1-97e2-b9fca523c948" ],
+        "x-ms-routing-request-id": [ "JIOINDIAWEST:20230703T051340Z:0c16b536-9325-49a1-97e2-b9fca523c948" ],
+        "Date": [ "Mon, 03 Jul 2023 05:13:39 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ],
         "Content-Length": [ "0" ]
       },
-      "Content": null
+      "Content": null,
+      "isContentBase64": false
     }
   },
   "Edit-AzRecoveryServicesBackupSchedulePolicyClientObject+[NoContext]+SAPHANADailyFull+$PUT+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/anssingh-rg/providers/Microsoft.RecoveryServices/vaults/anssingh-vault/backupPolicies/anssingh-testPolicy?api-version=2023-02-01+1": {
     "Request": {
       "Method": "PUT",
       "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/anssingh-rg/providers/Microsoft.RecoveryServices/vaults/anssingh-vault/backupPolicies/anssingh-testPolicy?api-version=2023-02-01",
-      "Content": "{\r\n  \"properties\": {\r\n    \"backupManagementType\": \"AzureWorkload\",\r\n    \"workLoadType\": \"SAPHanaDatabase\",\r\n    \"settings\": {\r\n      \"timeZone\": \"Tokyo Standard Time\",\r\n      \"issqlcompression\": false,\r\n      \"isCompression\": false\r\n    },\r\n    \"subProtectionPolicy\": [\r\n      {\r\n        \"schedulePolicy\": {\r\n          \"schedulePolicyType\": \"SimpleSchedulePolicy\",\r\n          \"scheduleRunFrequency\": \"Daily\",\r\n          \"scheduleRunTimes\": [ \"2023-06-26T13:30:00.0000000Z\" ],\r\n          \"scheduleWeeklyFrequency\": 0\r\n        },\r\n        \"retentionPolicy\": {\r\n          \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n          \"dailySchedule\": {\r\n            \"retentionTimes\": [ \"2023-06-26T13:30:00.0000000Z\" ],\r\n            \"retentionDuration\": {\r\n              \"count\": 180,\r\n              \"durationType\": \"Days\"\r\n            }\r\n          },\r\n          \"weeklySchedule\": {\r\n            \"daysOfTheWeek\": [ \"Sunday\" ],\r\n            \"retentionTimes\": [ \"2023-06-26T13:30:00.0000000Z\" ],\r\n            \"retentionDuration\": {\r\n              \"count\": 104,\r\n              \"durationType\": \"Weeks\"\r\n            }\r\n          },\r\n          \"monthlySchedule\": {\r\n            \"retentionScheduleFormatType\": \"Weekly\",\r\n            \"retentionScheduleWeekly\": {\r\n              \"daysOfTheWeek\": [ \"Sunday\" ],\r\n              \"weeksOfTheMonth\": [ \"First\" ]\r\n            },\r\n            \"retentionTimes\": [ \"2023-06-26T13:30:00.0000000Z\" ],\r\n            \"retentionDuration\": {\r\n              \"count\": 60,\r\n              \"durationType\": \"Months\"\r\n            }\r\n          },\r\n          \"yearlySchedule\": {\r\n            \"retentionScheduleFormatType\": \"Weekly\",\r\n            \"monthsOfYear\": [ \"January\" ],\r\n            \"retentionScheduleWeekly\": {\r\n              \"daysOfTheWeek\": [ \"Sunday\" ],\r\n              \"weeksOfTheMonth\": [ \"First\" ]\r\n            },\r\n            \"retentionTimes\": [ \"2023-06-26T13:30:00.0000000Z\" ],\r\n            \"retentionDuration\": {\r\n              \"count\": 10,\r\n              \"durationType\": \"Years\"\r\n            }\r\n          }\r\n        },\r\n        \"policyType\": \"Full\",\r\n        \"tieringPolicy\": {\r\n          \"ArchivedRP\": {\r\n            \"tieringMode\": \"DoNotTier\",\r\n            \"duration\": 0,\r\n            \"durationType\": \"Invalid\"\r\n          }\r\n        }\r\n      },\r\n      {\r\n        \"schedulePolicy\": {\r\n          \"schedulePolicyType\": \"LogSchedulePolicy\",\r\n          \"scheduleFrequencyInMins\": 120\r\n        },\r\n        \"retentionPolicy\": {\r\n          \"retentionPolicyType\": \"SimpleRetentionPolicy\",\r\n          \"retentionDuration\": {\r\n            \"count\": 15,\r\n            \"durationType\": \"Days\"\r\n          }\r\n        },\r\n        \"policyType\": \"Log\"\r\n      }\r\n    ]\r\n  }\r\n}",
+      "Content": "{\r\n  \"properties\": {\r\n    \"backupManagementType\": \"AzureWorkload\",\r\n    \"workLoadType\": \"SAPHanaDatabase\",\r\n    \"settings\": {\r\n      \"timeZone\": \"Tokyo Standard Time\",\r\n      \"issqlcompression\": false,\r\n      \"isCompression\": false\r\n    },\r\n    \"subProtectionPolicy\": [\r\n      {\r\n        \"schedulePolicy\": {\r\n          \"schedulePolicyType\": \"SimpleSchedulePolicy\",\r\n          \"scheduleRunFrequency\": \"Daily\",\r\n          \"scheduleRunTimes\": [ \"2023-07-03T13:30:00.0000000Z\" ],\r\n          \"scheduleWeeklyFrequency\": 0\r\n        },\r\n        \"retentionPolicy\": {\r\n          \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n          \"dailySchedule\": {\r\n            \"retentionTimes\": [ \"2023-07-03T13:30:00.0000000Z\" ],\r\n            \"retentionDuration\": {\r\n              \"count\": 180,\r\n              \"durationType\": \"Days\"\r\n            }\r\n          },\r\n          \"weeklySchedule\": {\r\n            \"daysOfTheWeek\": [ \"Sunday\" ],\r\n            \"retentionTimes\": [ \"2023-07-03T13:30:00.0000000Z\" ],\r\n            \"retentionDuration\": {\r\n              \"count\": 104,\r\n              \"durationType\": \"Weeks\"\r\n            }\r\n          },\r\n          \"monthlySchedule\": {\r\n            \"retentionScheduleFormatType\": \"Weekly\",\r\n            \"retentionScheduleWeekly\": {\r\n              \"daysOfTheWeek\": [ \"Sunday\" ],\r\n              \"weeksOfTheMonth\": [ \"First\" ]\r\n            },\r\n            \"retentionTimes\": [ \"2023-07-03T13:30:00.0000000Z\" ],\r\n            \"retentionDuration\": {\r\n              \"count\": 60,\r\n              \"durationType\": \"Months\"\r\n            }\r\n          },\r\n          \"yearlySchedule\": {\r\n            \"retentionScheduleFormatType\": \"Weekly\",\r\n            \"monthsOfYear\": [ \"January\" ],\r\n            \"retentionScheduleWeekly\": {\r\n              \"daysOfTheWeek\": [ \"Sunday\" ],\r\n              \"weeksOfTheMonth\": [ \"First\" ]\r\n            },\r\n            \"retentionTimes\": [ \"2023-07-03T13:30:00.0000000Z\" ],\r\n            \"retentionDuration\": {\r\n              \"count\": 10,\r\n              \"durationType\": \"Years\"\r\n            }\r\n          }\r\n        },\r\n        \"policyType\": \"Full\",\r\n        \"tieringPolicy\": {\r\n          \"ArchivedRP\": {\r\n            \"tieringMode\": \"DoNotTier\",\r\n            \"duration\": 0,\r\n            \"durationType\": \"Invalid\"\r\n          }\r\n        }\r\n      },\r\n      {\r\n        \"schedulePolicy\": {\r\n          \"schedulePolicyType\": \"LogSchedulePolicy\",\r\n          \"scheduleFrequencyInMins\": 120\r\n        },\r\n        \"retentionPolicy\": {\r\n          \"retentionPolicyType\": \"SimpleRetentionPolicy\",\r\n          \"retentionDuration\": {\r\n            \"count\": 15,\r\n            \"durationType\": \"Days\"\r\n          }\r\n        },\r\n        \"policyType\": \"Log\"\r\n      }\r\n    ]\r\n  }\r\n}",
+      "isContentBase64": false,
       "Headers": {
       },
       "ContentHeaders": {
@@ -365,22 +384,23 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-request-id": [ "7613100d-2c72-4f40-8777-5220ba5a013e" ],
-        "x-ms-client-request-id": [ "02844323-6d19-432d-9656-85fd0afbae80", "02844323-6d19-432d-9656-85fd0afbae80" ],
+        "x-ms-request-id": [ "98cdec5b-0043-4bec-9509-d6bfae0f8405" ],
+        "x-ms-client-request-id": [ "71df748b-11ef-45c3-9003-87955d54bc6f", "71df748b-11ef-45c3-9003-87955d54bc6f" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "Server": [ "Microsoft-IIS/10.0" ],
         "X-Powered-By": [ "ASP.NET" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "1190" ],
-        "x-ms-correlation-request-id": [ "7613100d-2c72-4f40-8777-5220ba5a013e" ],
-        "x-ms-routing-request-id": [ "JIOINDIACENTRAL:20230626T160414Z:7613100d-2c72-4f40-8777-5220ba5a013e" ],
-        "Date": [ "Mon, 26 Jun 2023 16:04:13 GMT" ]
+        "x-ms-correlation-request-id": [ "98cdec5b-0043-4bec-9509-d6bfae0f8405" ],
+        "x-ms-routing-request-id": [ "JIOINDIAWEST:20230703T051341Z:98cdec5b-0043-4bec-9509-d6bfae0f8405" ],
+        "Date": [ "Mon, 03 Jul 2023 05:13:40 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "1849" ],
         "Content-Type": [ "application/json" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/anssingh-rg/providers/Microsoft.RecoveryServices/vaults/anssingh-vault/backupPolicies/anssingh-testPolicy\",\"name\":\"anssingh-testPolicy\",\"type\":\"Microsoft.RecoveryServices/vaults/backupPolicies\",\"properties\":{\"backupManagementType\":\"AzureWorkload\",\"workLoadType\":\"SAPHanaDatabase\",\"settings\":{\"timeZone\":\"Tokyo Standard Time\",\"issqlcompression\":false,\"isCompression\":false},\"subProtectionPolicy\":[{\"policyType\":\"Full\",\"schedulePolicy\":{\"schedulePolicyType\":\"SimpleSchedulePolicy\",\"scheduleRunFrequency\":\"Daily\",\"scheduleRunTimes\":[\"2023-06-26T13:30:00Z\"],\"scheduleWeeklyFrequency\":0},\"retentionPolicy\":{\"retentionPolicyType\":\"LongTermRetentionPolicy\",\"dailySchedule\":{\"retentionTimes\":[\"2023-06-26T13:30:00Z\"],\"retentionDuration\":{\"count\":180,\"durationType\":\"Days\"}},\"weeklySchedule\":{\"daysOfTheWeek\":[\"Sunday\"],\"retentionTimes\":[\"2023-06-26T13:30:00Z\"],\"retentionDuration\":{\"count\":104,\"durationType\":\"Weeks\"}},\"monthlySchedule\":{\"retentionScheduleFormatType\":\"Weekly\",\"retentionScheduleWeekly\":{\"daysOfTheWeek\":[\"Sunday\"],\"weeksOfTheMonth\":[\"First\"]},\"retentionTimes\":[\"2023-06-26T13:30:00Z\"],\"retentionDuration\":{\"count\":60,\"durationType\":\"Months\"}},\"yearlySchedule\":{\"retentionScheduleFormatType\":\"Weekly\",\"monthsOfYear\":[\"January\"],\"retentionScheduleWeekly\":{\"daysOfTheWeek\":[\"Sunday\"],\"weeksOfTheMonth\":[\"First\"]},\"retentionTimes\":[\"2023-06-26T13:30:00Z\"],\"retentionDuration\":{\"count\":10,\"durationType\":\"Years\"}}},\"tieringPolicy\":{\"ArchivedRP\":{\"tieringMode\":\"DoNotTier\",\"duration\":0,\"durationType\":\"Invalid\"}}},{\"policyType\":\"Log\",\"schedulePolicy\":{\"schedulePolicyType\":\"LogSchedulePolicy\",\"scheduleFrequencyInMins\":120},\"retentionPolicy\":{\"retentionPolicyType\":\"SimpleRetentionPolicy\",\"retentionDuration\":{\"count\":15,\"durationType\":\"Days\"}}}],\"protectedItemsCount\":0}}"
+      "Content": "{\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/anssingh-rg/providers/Microsoft.RecoveryServices/vaults/anssingh-vault/backupPolicies/anssingh-testPolicy\",\"name\":\"anssingh-testPolicy\",\"type\":\"Microsoft.RecoveryServices/vaults/backupPolicies\",\"properties\":{\"backupManagementType\":\"AzureWorkload\",\"workLoadType\":\"SAPHanaDatabase\",\"settings\":{\"timeZone\":\"Tokyo Standard Time\",\"issqlcompression\":false,\"isCompression\":false},\"subProtectionPolicy\":[{\"policyType\":\"Full\",\"schedulePolicy\":{\"schedulePolicyType\":\"SimpleSchedulePolicy\",\"scheduleRunFrequency\":\"Daily\",\"scheduleRunTimes\":[\"2023-07-03T13:30:00Z\"],\"scheduleWeeklyFrequency\":0},\"retentionPolicy\":{\"retentionPolicyType\":\"LongTermRetentionPolicy\",\"dailySchedule\":{\"retentionTimes\":[\"2023-07-03T13:30:00Z\"],\"retentionDuration\":{\"count\":180,\"durationType\":\"Days\"}},\"weeklySchedule\":{\"daysOfTheWeek\":[\"Sunday\"],\"retentionTimes\":[\"2023-07-03T13:30:00Z\"],\"retentionDuration\":{\"count\":104,\"durationType\":\"Weeks\"}},\"monthlySchedule\":{\"retentionScheduleFormatType\":\"Weekly\",\"retentionScheduleWeekly\":{\"daysOfTheWeek\":[\"Sunday\"],\"weeksOfTheMonth\":[\"First\"]},\"retentionTimes\":[\"2023-07-03T13:30:00Z\"],\"retentionDuration\":{\"count\":60,\"durationType\":\"Months\"}},\"yearlySchedule\":{\"retentionScheduleFormatType\":\"Weekly\",\"monthsOfYear\":[\"January\"],\"retentionScheduleWeekly\":{\"daysOfTheWeek\":[\"Sunday\"],\"weeksOfTheMonth\":[\"First\"]},\"retentionTimes\":[\"2023-07-03T13:30:00Z\"],\"retentionDuration\":{\"count\":10,\"durationType\":\"Years\"}}},\"tieringPolicy\":{\"ArchivedRP\":{\"tieringMode\":\"DoNotTier\",\"duration\":0,\"durationType\":\"Invalid\"}}},{\"policyType\":\"Log\",\"schedulePolicy\":{\"schedulePolicyType\":\"LogSchedulePolicy\",\"scheduleFrequencyInMins\":120},\"retentionPolicy\":{\"retentionPolicyType\":\"SimpleRetentionPolicy\",\"retentionDuration\":{\"count\":15,\"durationType\":\"Days\"}}}],\"protectedItemsCount\":0}}",
+      "isContentBase64": false
     }
   },
   "Edit-AzRecoveryServicesBackupSchedulePolicyClientObject+[NoContext]+SAPHANADailyFull+$GET+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/anssingh-rg/providers/Microsoft.RecoveryServices/vaults/anssingh-vault/backupPolicies/anssingh-testPolicy?api-version=2023-02-01+2": {
@@ -388,13 +408,14 @@
       "Method": "GET",
       "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/anssingh-rg/providers/Microsoft.RecoveryServices/vaults/anssingh-vault/backupPolicies/anssingh-testPolicy?api-version=2023-02-01",
       "Content": null,
+      "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "29" ],
-        "x-ms-client-request-id": [ "8d0835de-56b1-4a65-ab56-3851ffdcf958" ],
+        "x-ms-client-request-id": [ "ea944b94-4b9e-4c4d-8d62-65dd276d88a1" ],
         "CommandName": [ "Get-AzRecoveryServicesBackupPolicy" ],
         "FullCommandName": [ "Get-AzRecoveryServicesBackupPolicy_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.4", "Az.RecoveryServices/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -406,22 +427,23 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-request-id": [ "da3628df-5507-45cc-9623-14c243145ee2" ],
-        "x-ms-client-request-id": [ "8d0835de-56b1-4a65-ab56-3851ffdcf958", "8d0835de-56b1-4a65-ab56-3851ffdcf958" ],
+        "x-ms-request-id": [ "38a65a51-a25a-4702-bbd1-dff57eb23d7d" ],
+        "x-ms-client-request-id": [ "ea944b94-4b9e-4c4d-8d62-65dd276d88a1", "ea944b94-4b9e-4c4d-8d62-65dd276d88a1" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "Server": [ "Microsoft-IIS/10.0" ],
         "X-Powered-By": [ "ASP.NET" ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [ "290" ],
-        "x-ms-correlation-request-id": [ "da3628df-5507-45cc-9623-14c243145ee2" ],
-        "x-ms-routing-request-id": [ "JIOINDIACENTRAL:20230626T160415Z:da3628df-5507-45cc-9623-14c243145ee2" ],
-        "Date": [ "Mon, 26 Jun 2023 16:04:14 GMT" ]
+        "x-ms-correlation-request-id": [ "38a65a51-a25a-4702-bbd1-dff57eb23d7d" ],
+        "x-ms-routing-request-id": [ "JIOINDIAWEST:20230703T051342Z:38a65a51-a25a-4702-bbd1-dff57eb23d7d" ],
+        "Date": [ "Mon, 03 Jul 2023 05:13:41 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "1849" ],
         "Content-Type": [ "application/json" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/anssingh-rg/providers/Microsoft.RecoveryServices/vaults/anssingh-vault/backupPolicies/anssingh-testPolicy\",\"name\":\"anssingh-testPolicy\",\"type\":\"Microsoft.RecoveryServices/vaults/backupPolicies\",\"properties\":{\"backupManagementType\":\"AzureWorkload\",\"workLoadType\":\"SAPHanaDatabase\",\"settings\":{\"timeZone\":\"Tokyo Standard Time\",\"issqlcompression\":false,\"isCompression\":false},\"subProtectionPolicy\":[{\"policyType\":\"Full\",\"schedulePolicy\":{\"schedulePolicyType\":\"SimpleSchedulePolicy\",\"scheduleRunFrequency\":\"Daily\",\"scheduleRunTimes\":[\"2023-06-26T13:30:00Z\"],\"scheduleWeeklyFrequency\":0},\"retentionPolicy\":{\"retentionPolicyType\":\"LongTermRetentionPolicy\",\"dailySchedule\":{\"retentionTimes\":[\"2023-06-26T13:30:00Z\"],\"retentionDuration\":{\"count\":180,\"durationType\":\"Days\"}},\"weeklySchedule\":{\"daysOfTheWeek\":[\"Sunday\"],\"retentionTimes\":[\"2023-06-26T13:30:00Z\"],\"retentionDuration\":{\"count\":104,\"durationType\":\"Weeks\"}},\"monthlySchedule\":{\"retentionScheduleFormatType\":\"Weekly\",\"retentionScheduleWeekly\":{\"daysOfTheWeek\":[\"Sunday\"],\"weeksOfTheMonth\":[\"First\"]},\"retentionTimes\":[\"2023-06-26T13:30:00Z\"],\"retentionDuration\":{\"count\":60,\"durationType\":\"Months\"}},\"yearlySchedule\":{\"retentionScheduleFormatType\":\"Weekly\",\"monthsOfYear\":[\"January\"],\"retentionScheduleWeekly\":{\"daysOfTheWeek\":[\"Sunday\"],\"weeksOfTheMonth\":[\"First\"]},\"retentionTimes\":[\"2023-06-26T13:30:00Z\"],\"retentionDuration\":{\"count\":10,\"durationType\":\"Years\"}}},\"tieringPolicy\":{\"ArchivedRP\":{\"tieringMode\":\"DoNotTier\",\"duration\":0,\"durationType\":\"Invalid\"}}},{\"policyType\":\"Log\",\"schedulePolicy\":{\"schedulePolicyType\":\"LogSchedulePolicy\",\"scheduleFrequencyInMins\":120},\"retentionPolicy\":{\"retentionPolicyType\":\"SimpleRetentionPolicy\",\"retentionDuration\":{\"count\":15,\"durationType\":\"Days\"}}}],\"protectedItemsCount\":0}}"
+      "Content": "{\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/anssingh-rg/providers/Microsoft.RecoveryServices/vaults/anssingh-vault/backupPolicies/anssingh-testPolicy\",\"name\":\"anssingh-testPolicy\",\"type\":\"Microsoft.RecoveryServices/vaults/backupPolicies\",\"properties\":{\"backupManagementType\":\"AzureWorkload\",\"workLoadType\":\"SAPHanaDatabase\",\"settings\":{\"timeZone\":\"Tokyo Standard Time\",\"issqlcompression\":false,\"isCompression\":false},\"subProtectionPolicy\":[{\"policyType\":\"Full\",\"schedulePolicy\":{\"schedulePolicyType\":\"SimpleSchedulePolicy\",\"scheduleRunFrequency\":\"Daily\",\"scheduleRunTimes\":[\"2023-07-03T13:30:00Z\"],\"scheduleWeeklyFrequency\":0},\"retentionPolicy\":{\"retentionPolicyType\":\"LongTermRetentionPolicy\",\"dailySchedule\":{\"retentionTimes\":[\"2023-07-03T13:30:00Z\"],\"retentionDuration\":{\"count\":180,\"durationType\":\"Days\"}},\"weeklySchedule\":{\"daysOfTheWeek\":[\"Sunday\"],\"retentionTimes\":[\"2023-07-03T13:30:00Z\"],\"retentionDuration\":{\"count\":104,\"durationType\":\"Weeks\"}},\"monthlySchedule\":{\"retentionScheduleFormatType\":\"Weekly\",\"retentionScheduleWeekly\":{\"daysOfTheWeek\":[\"Sunday\"],\"weeksOfTheMonth\":[\"First\"]},\"retentionTimes\":[\"2023-07-03T13:30:00Z\"],\"retentionDuration\":{\"count\":60,\"durationType\":\"Months\"}},\"yearlySchedule\":{\"retentionScheduleFormatType\":\"Weekly\",\"monthsOfYear\":[\"January\"],\"retentionScheduleWeekly\":{\"daysOfTheWeek\":[\"Sunday\"],\"weeksOfTheMonth\":[\"First\"]},\"retentionTimes\":[\"2023-07-03T13:30:00Z\"],\"retentionDuration\":{\"count\":10,\"durationType\":\"Years\"}}},\"tieringPolicy\":{\"ArchivedRP\":{\"tieringMode\":\"DoNotTier\",\"duration\":0,\"durationType\":\"Invalid\"}}},{\"policyType\":\"Log\",\"schedulePolicy\":{\"schedulePolicyType\":\"LogSchedulePolicy\",\"scheduleFrequencyInMins\":120},\"retentionPolicy\":{\"retentionPolicyType\":\"SimpleRetentionPolicy\",\"retentionDuration\":{\"count\":15,\"durationType\":\"Days\"}}}],\"protectedItemsCount\":0}}",
+      "isContentBase64": false
     }
   },
   "Edit-AzRecoveryServicesBackupSchedulePolicyClientObject+[NoContext]+SAPHANADailyFull+$DELETE+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/anssingh-rg/providers/Microsoft.RecoveryServices/vaults/anssingh-vault/backupPolicies/anssingh-testPolicy?api-version=2023-02-01+3": {
@@ -429,13 +451,14 @@
       "Method": "DELETE",
       "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/anssingh-rg/providers/Microsoft.RecoveryServices/vaults/anssingh-vault/backupPolicies/anssingh-testPolicy?api-version=2023-02-01",
       "Content": null,
+      "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "30" ],
-        "x-ms-client-request-id": [ "5239b47b-beee-4087-b506-30408e322a36" ],
+        "x-ms-client-request-id": [ "fc17cc8b-211d-49e6-8dc2-0876189571c6" ],
         "CommandName": [ "Remove-AzRecoveryServicesBackupPolicy" ],
         "FullCommandName": [ "Remove-AzRecoveryServicesBackupPolicy_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.4", "Az.RecoveryServices/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -447,27 +470,29 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-request-id": [ "ab794c31-6627-4a0f-a430-a50eacd60408" ],
-        "x-ms-client-request-id": [ "5239b47b-beee-4087-b506-30408e322a36", "5239b47b-beee-4087-b506-30408e322a36" ],
+        "x-ms-request-id": [ "606058a4-9f91-4119-8029-5c9f0106a6a5" ],
+        "x-ms-client-request-id": [ "fc17cc8b-211d-49e6-8dc2-0876189571c6", "fc17cc8b-211d-49e6-8dc2-0876189571c6" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Powered-By": [ "ASP.NET" ],
         "x-ms-ratelimit-remaining-subscription-deletes": [ "14990" ],
-        "x-ms-correlation-request-id": [ "ab794c31-6627-4a0f-a430-a50eacd60408" ],
-        "x-ms-routing-request-id": [ "JIOINDIACENTRAL:20230626T160416Z:ab794c31-6627-4a0f-a430-a50eacd60408" ],
-        "Date": [ "Mon, 26 Jun 2023 16:04:15 GMT" ]
+        "x-ms-correlation-request-id": [ "606058a4-9f91-4119-8029-5c9f0106a6a5" ],
+        "x-ms-routing-request-id": [ "JIOINDIAWEST:20230703T051343Z:606058a4-9f91-4119-8029-5c9f0106a6a5" ],
+        "Date": [ "Mon, 03 Jul 2023 05:13:43 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ],
         "Content-Length": [ "0" ]
       },
-      "Content": null
+      "Content": null,
+      "isContentBase64": false
     }
   },
   "Edit-AzRecoveryServicesBackupSchedulePolicyClientObject+[NoContext]+SAPHANAWeeklyDifferential+$PUT+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/anssingh-rg/providers/Microsoft.RecoveryServices/vaults/anssingh-vault/backupPolicies/anssingh-testPolicy?api-version=2023-02-01+1": {
     "Request": {
       "Method": "PUT",
       "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/anssingh-rg/providers/Microsoft.RecoveryServices/vaults/anssingh-vault/backupPolicies/anssingh-testPolicy?api-version=2023-02-01",
-      "Content": "{\r\n  \"properties\": {\r\n    \"backupManagementType\": \"AzureWorkload\",\r\n    \"workLoadType\": \"SAPHanaDatabase\",\r\n    \"settings\": {\r\n      \"timeZone\": \"Tokyo Standard Time\",\r\n      \"issqlcompression\": false,\r\n      \"isCompression\": false\r\n    },\r\n    \"subProtectionPolicy\": [\r\n      {\r\n        \"schedulePolicy\": {\r\n          \"schedulePolicyType\": \"SimpleSchedulePolicy\",\r\n          \"scheduleRunFrequency\": \"Weekly\",\r\n          \"scheduleRunDays\": [ \"Monday\", \"Thursday\" ],\r\n          \"scheduleRunTimes\": [ \"2023-06-26T13:30:00.0000000Z\" ],\r\n          \"scheduleWeeklyFrequency\": 0\r\n        },\r\n        \"retentionPolicy\": {\r\n          \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n          \"weeklySchedule\": {\r\n            \"daysOfTheWeek\": [ \"Monday\", \"Thursday\" ],\r\n            \"retentionTimes\": [ \"2023-06-26T13:30:00.0000000Z\" ],\r\n            \"retentionDuration\": {\r\n              \"count\": 104,\r\n              \"durationType\": \"Weeks\"\r\n            }\r\n          },\r\n          \"monthlySchedule\": {\r\n            \"retentionScheduleFormatType\": \"Weekly\",\r\n            \"retentionScheduleWeekly\": {\r\n              \"daysOfTheWeek\": [ \"Monday\" ],\r\n              \"weeksOfTheMonth\": [ \"First\" ]\r\n            },\r\n            \"retentionTimes\": [ \"2023-06-26T13:30:00.0000000Z\" ],\r\n            \"retentionDuration\": {\r\n              \"count\": 60,\r\n              \"durationType\": \"Months\"\r\n            }\r\n          },\r\n          \"yearlySchedule\": {\r\n            \"retentionScheduleFormatType\": \"Weekly\",\r\n            \"monthsOfYear\": [ \"January\" ],\r\n            \"retentionScheduleWeekly\": {\r\n              \"daysOfTheWeek\": [ \"Monday\" ],\r\n              \"weeksOfTheMonth\": [ \"First\" ]\r\n            },\r\n            \"retentionTimes\": [ \"2023-06-26T13:30:00.0000000Z\" ],\r\n            \"retentionDuration\": {\r\n              \"count\": 10,\r\n              \"durationType\": \"Years\"\r\n            }\r\n          }\r\n        },\r\n        \"policyType\": \"Full\",\r\n        \"tieringPolicy\": {\r\n          \"ArchivedRP\": {\r\n            \"tieringMode\": \"DoNotTier\",\r\n            \"duration\": 0,\r\n            \"durationType\": \"Invalid\"\r\n          }\r\n        }\r\n      },\r\n      {\r\n        \"schedulePolicy\": {\r\n          \"schedulePolicyType\": \"LogSchedulePolicy\",\r\n          \"scheduleFrequencyInMins\": 120\r\n        },\r\n        \"retentionPolicy\": {\r\n          \"retentionPolicyType\": \"SimpleRetentionPolicy\",\r\n          \"retentionDuration\": {\r\n            \"count\": 15,\r\n            \"durationType\": \"Days\"\r\n          }\r\n        },\r\n        \"policyType\": \"Log\"\r\n      },\r\n      {\r\n        \"schedulePolicy\": {\r\n          \"schedulePolicyType\": \"SimpleSchedulePolicy\",\r\n          \"scheduleRunFrequency\": \"Weekly\",\r\n          \"scheduleRunDays\": [ \"Tuesday\", \"Friday\" ],\r\n          \"scheduleRunTimes\": [ \"2023-06-26T02:00:00.0000000Z\" ],\r\n          \"scheduleWeeklyFrequency\": 0\r\n        },\r\n        \"retentionPolicy\": {\r\n          \"retentionPolicyType\": \"SimpleRetentionPolicy\",\r\n          \"retentionDuration\": {\r\n            \"count\": 30,\r\n            \"durationType\": \"Days\"\r\n          }\r\n        },\r\n        \"policyType\": \"Differential\"\r\n      }\r\n    ]\r\n  }\r\n}",
+      "Content": "{\r\n  \"properties\": {\r\n    \"backupManagementType\": \"AzureWorkload\",\r\n    \"workLoadType\": \"SAPHanaDatabase\",\r\n    \"settings\": {\r\n      \"timeZone\": \"Tokyo Standard Time\",\r\n      \"issqlcompression\": false,\r\n      \"isCompression\": false\r\n    },\r\n    \"subProtectionPolicy\": [\r\n      {\r\n        \"schedulePolicy\": {\r\n          \"schedulePolicyType\": \"SimpleSchedulePolicy\",\r\n          \"scheduleRunFrequency\": \"Weekly\",\r\n          \"scheduleRunDays\": [ \"Monday\", \"Thursday\" ],\r\n          \"scheduleRunTimes\": [ \"2023-07-03T13:30:00.0000000Z\" ],\r\n          \"scheduleWeeklyFrequency\": 0\r\n        },\r\n        \"retentionPolicy\": {\r\n          \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n          \"weeklySchedule\": {\r\n            \"daysOfTheWeek\": [ \"Monday\", \"Thursday\" ],\r\n            \"retentionTimes\": [ \"2023-07-03T13:30:00.0000000Z\" ],\r\n            \"retentionDuration\": {\r\n              \"count\": 104,\r\n              \"durationType\": \"Weeks\"\r\n            }\r\n          },\r\n          \"monthlySchedule\": {\r\n            \"retentionScheduleFormatType\": \"Weekly\",\r\n            \"retentionScheduleWeekly\": {\r\n              \"daysOfTheWeek\": [ \"Monday\" ],\r\n              \"weeksOfTheMonth\": [ \"First\" ]\r\n            },\r\n            \"retentionTimes\": [ \"2023-07-03T13:30:00.0000000Z\" ],\r\n            \"retentionDuration\": {\r\n              \"count\": 60,\r\n              \"durationType\": \"Months\"\r\n            }\r\n          },\r\n          \"yearlySchedule\": {\r\n            \"retentionScheduleFormatType\": \"Weekly\",\r\n            \"monthsOfYear\": [ \"January\" ],\r\n            \"retentionScheduleWeekly\": {\r\n              \"daysOfTheWeek\": [ \"Monday\" ],\r\n              \"weeksOfTheMonth\": [ \"First\" ]\r\n            },\r\n            \"retentionTimes\": [ \"2023-07-03T13:30:00.0000000Z\" ],\r\n            \"retentionDuration\": {\r\n              \"count\": 10,\r\n              \"durationType\": \"Years\"\r\n            }\r\n          }\r\n        },\r\n        \"policyType\": \"Full\",\r\n        \"tieringPolicy\": {\r\n          \"ArchivedRP\": {\r\n            \"tieringMode\": \"DoNotTier\",\r\n            \"duration\": 0,\r\n            \"durationType\": \"Invalid\"\r\n          }\r\n        }\r\n      },\r\n      {\r\n        \"schedulePolicy\": {\r\n          \"schedulePolicyType\": \"LogSchedulePolicy\",\r\n          \"scheduleFrequencyInMins\": 120\r\n        },\r\n        \"retentionPolicy\": {\r\n          \"retentionPolicyType\": \"SimpleRetentionPolicy\",\r\n          \"retentionDuration\": {\r\n            \"count\": 15,\r\n            \"durationType\": \"Days\"\r\n          }\r\n        },\r\n        \"policyType\": \"Log\"\r\n      },\r\n      {\r\n        \"schedulePolicy\": {\r\n          \"schedulePolicyType\": \"SimpleSchedulePolicy\",\r\n          \"scheduleRunFrequency\": \"Weekly\",\r\n          \"scheduleRunDays\": [ \"Tuesday\", \"Friday\" ],\r\n          \"scheduleRunTimes\": [ \"2023-07-03T02:00:00.0000000Z\" ],\r\n          \"scheduleWeeklyFrequency\": 0\r\n        },\r\n        \"retentionPolicy\": {\r\n          \"retentionPolicyType\": \"SimpleRetentionPolicy\",\r\n          \"retentionDuration\": {\r\n            \"count\": 30,\r\n            \"durationType\": \"Days\"\r\n          }\r\n        },\r\n        \"policyType\": \"Differential\"\r\n      }\r\n    ]\r\n  }\r\n}",
+      "isContentBase64": false,
       "Headers": {
       },
       "ContentHeaders": {
@@ -481,22 +506,23 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-request-id": [ "9ef08c04-2e32-4448-b844-dea0ceb18a2a" ],
-        "x-ms-client-request-id": [ "c29f606e-70fa-4452-b8b4-a0e0da92edf0", "c29f606e-70fa-4452-b8b4-a0e0da92edf0" ],
+        "x-ms-request-id": [ "da056d66-6703-4ac7-bfa6-cd2464deb4ab" ],
+        "x-ms-client-request-id": [ "ab6b89df-1c00-4aa9-b9f1-8d61638f4f28", "ab6b89df-1c00-4aa9-b9f1-8d61638f4f28" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "Server": [ "Microsoft-IIS/10.0" ],
         "X-Powered-By": [ "ASP.NET" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "1189" ],
-        "x-ms-correlation-request-id": [ "9ef08c04-2e32-4448-b844-dea0ceb18a2a" ],
-        "x-ms-routing-request-id": [ "JIOINDIACENTRAL:20230626T160417Z:9ef08c04-2e32-4448-b844-dea0ceb18a2a" ],
-        "Date": [ "Mon, 26 Jun 2023 16:04:16 GMT" ]
+        "x-ms-correlation-request-id": [ "da056d66-6703-4ac7-bfa6-cd2464deb4ab" ],
+        "x-ms-routing-request-id": [ "JIOINDIAWEST:20230703T051345Z:da056d66-6703-4ac7-bfa6-cd2464deb4ab" ],
+        "Date": [ "Mon, 03 Jul 2023 05:13:44 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "2142" ],
         "Content-Type": [ "application/json" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/anssingh-rg/providers/Microsoft.RecoveryServices/vaults/anssingh-vault/backupPolicies/anssingh-testPolicy\",\"name\":\"anssingh-testPolicy\",\"type\":\"Microsoft.RecoveryServices/vaults/backupPolicies\",\"properties\":{\"backupManagementType\":\"AzureWorkload\",\"workLoadType\":\"SAPHanaDatabase\",\"settings\":{\"timeZone\":\"Tokyo Standard Time\",\"issqlcompression\":false,\"isCompression\":false},\"subProtectionPolicy\":[{\"policyType\":\"Full\",\"schedulePolicy\":{\"schedulePolicyType\":\"SimpleSchedulePolicy\",\"scheduleRunFrequency\":\"Weekly\",\"scheduleRunDays\":[\"Monday\",\"Thursday\"],\"scheduleRunTimes\":[\"2023-06-26T13:30:00Z\"],\"scheduleWeeklyFrequency\":0},\"retentionPolicy\":{\"retentionPolicyType\":\"LongTermRetentionPolicy\",\"weeklySchedule\":{\"daysOfTheWeek\":[\"Monday\",\"Thursday\"],\"retentionTimes\":[\"2023-06-26T13:30:00Z\"],\"retentionDuration\":{\"count\":104,\"durationType\":\"Weeks\"}},\"monthlySchedule\":{\"retentionScheduleFormatType\":\"Weekly\",\"retentionScheduleWeekly\":{\"daysOfTheWeek\":[\"Monday\"],\"weeksOfTheMonth\":[\"First\"]},\"retentionTimes\":[\"2023-06-26T13:30:00Z\"],\"retentionDuration\":{\"count\":60,\"durationType\":\"Months\"}},\"yearlySchedule\":{\"retentionScheduleFormatType\":\"Weekly\",\"monthsOfYear\":[\"January\"],\"retentionScheduleWeekly\":{\"daysOfTheWeek\":[\"Monday\"],\"weeksOfTheMonth\":[\"First\"]},\"retentionTimes\":[\"2023-06-26T13:30:00Z\"],\"retentionDuration\":{\"count\":10,\"durationType\":\"Years\"}}},\"tieringPolicy\":{\"ArchivedRP\":{\"tieringMode\":\"DoNotTier\",\"duration\":0,\"durationType\":\"Invalid\"}}},{\"policyType\":\"Differential\",\"schedulePolicy\":{\"schedulePolicyType\":\"SimpleSchedulePolicy\",\"scheduleRunFrequency\":\"Weekly\",\"scheduleRunDays\":[\"Tuesday\",\"Friday\"],\"scheduleRunTimes\":[\"2023-06-26T02:00:00Z\"],\"scheduleWeeklyFrequency\":0},\"retentionPolicy\":{\"retentionPolicyType\":\"SimpleRetentionPolicy\",\"retentionDuration\":{\"count\":30,\"durationType\":\"Days\"}}},{\"policyType\":\"Log\",\"schedulePolicy\":{\"schedulePolicyType\":\"LogSchedulePolicy\",\"scheduleFrequencyInMins\":120},\"retentionPolicy\":{\"retentionPolicyType\":\"SimpleRetentionPolicy\",\"retentionDuration\":{\"count\":15,\"durationType\":\"Days\"}}}],\"protectedItemsCount\":0}}"
+      "Content": "{\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/anssingh-rg/providers/Microsoft.RecoveryServices/vaults/anssingh-vault/backupPolicies/anssingh-testPolicy\",\"name\":\"anssingh-testPolicy\",\"type\":\"Microsoft.RecoveryServices/vaults/backupPolicies\",\"properties\":{\"backupManagementType\":\"AzureWorkload\",\"workLoadType\":\"SAPHanaDatabase\",\"settings\":{\"timeZone\":\"Tokyo Standard Time\",\"issqlcompression\":false,\"isCompression\":false},\"subProtectionPolicy\":[{\"policyType\":\"Full\",\"schedulePolicy\":{\"schedulePolicyType\":\"SimpleSchedulePolicy\",\"scheduleRunFrequency\":\"Weekly\",\"scheduleRunDays\":[\"Monday\",\"Thursday\"],\"scheduleRunTimes\":[\"2023-07-03T13:30:00Z\"],\"scheduleWeeklyFrequency\":0},\"retentionPolicy\":{\"retentionPolicyType\":\"LongTermRetentionPolicy\",\"weeklySchedule\":{\"daysOfTheWeek\":[\"Monday\",\"Thursday\"],\"retentionTimes\":[\"2023-07-03T13:30:00Z\"],\"retentionDuration\":{\"count\":104,\"durationType\":\"Weeks\"}},\"monthlySchedule\":{\"retentionScheduleFormatType\":\"Weekly\",\"retentionScheduleWeekly\":{\"daysOfTheWeek\":[\"Monday\"],\"weeksOfTheMonth\":[\"First\"]},\"retentionTimes\":[\"2023-07-03T13:30:00Z\"],\"retentionDuration\":{\"count\":60,\"durationType\":\"Months\"}},\"yearlySchedule\":{\"retentionScheduleFormatType\":\"Weekly\",\"monthsOfYear\":[\"January\"],\"retentionScheduleWeekly\":{\"daysOfTheWeek\":[\"Monday\"],\"weeksOfTheMonth\":[\"First\"]},\"retentionTimes\":[\"2023-07-03T13:30:00Z\"],\"retentionDuration\":{\"count\":10,\"durationType\":\"Years\"}}},\"tieringPolicy\":{\"ArchivedRP\":{\"tieringMode\":\"DoNotTier\",\"duration\":0,\"durationType\":\"Invalid\"}}},{\"policyType\":\"Differential\",\"schedulePolicy\":{\"schedulePolicyType\":\"SimpleSchedulePolicy\",\"scheduleRunFrequency\":\"Weekly\",\"scheduleRunDays\":[\"Tuesday\",\"Friday\"],\"scheduleRunTimes\":[\"2023-07-03T02:00:00Z\"],\"scheduleWeeklyFrequency\":0},\"retentionPolicy\":{\"retentionPolicyType\":\"SimpleRetentionPolicy\",\"retentionDuration\":{\"count\":30,\"durationType\":\"Days\"}}},{\"policyType\":\"Log\",\"schedulePolicy\":{\"schedulePolicyType\":\"LogSchedulePolicy\",\"scheduleFrequencyInMins\":120},\"retentionPolicy\":{\"retentionPolicyType\":\"SimpleRetentionPolicy\",\"retentionDuration\":{\"count\":15,\"durationType\":\"Days\"}}}],\"protectedItemsCount\":0}}",
+      "isContentBase64": false
     }
   },
   "Edit-AzRecoveryServicesBackupSchedulePolicyClientObject+[NoContext]+SAPHANAWeeklyDifferential+$GET+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/anssingh-rg/providers/Microsoft.RecoveryServices/vaults/anssingh-vault/backupPolicies/anssingh-testPolicy?api-version=2023-02-01+2": {
@@ -504,13 +530,14 @@
       "Method": "GET",
       "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/anssingh-rg/providers/Microsoft.RecoveryServices/vaults/anssingh-vault/backupPolicies/anssingh-testPolicy?api-version=2023-02-01",
       "Content": null,
+      "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "32" ],
-        "x-ms-client-request-id": [ "71da2006-90e1-4428-a29e-1034f2f823ac" ],
+        "x-ms-client-request-id": [ "cc6f75e1-510a-4e9c-835e-d9c53318e08f" ],
         "CommandName": [ "Get-AzRecoveryServicesBackupPolicy" ],
         "FullCommandName": [ "Get-AzRecoveryServicesBackupPolicy_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.4", "Az.RecoveryServices/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -522,22 +549,23 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-request-id": [ "96737f25-d4e7-4b8b-a52f-88b5d55f4807" ],
-        "x-ms-client-request-id": [ "71da2006-90e1-4428-a29e-1034f2f823ac", "71da2006-90e1-4428-a29e-1034f2f823ac" ],
+        "x-ms-request-id": [ "f33eca12-4332-4ce7-b853-d48299e0aa6d" ],
+        "x-ms-client-request-id": [ "cc6f75e1-510a-4e9c-835e-d9c53318e08f", "cc6f75e1-510a-4e9c-835e-d9c53318e08f" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "Server": [ "Microsoft-IIS/10.0" ],
         "X-Powered-By": [ "ASP.NET" ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [ "289" ],
-        "x-ms-correlation-request-id": [ "96737f25-d4e7-4b8b-a52f-88b5d55f4807" ],
-        "x-ms-routing-request-id": [ "JIOINDIACENTRAL:20230626T160418Z:96737f25-d4e7-4b8b-a52f-88b5d55f4807" ],
-        "Date": [ "Mon, 26 Jun 2023 16:04:17 GMT" ]
+        "x-ms-correlation-request-id": [ "f33eca12-4332-4ce7-b853-d48299e0aa6d" ],
+        "x-ms-routing-request-id": [ "JIOINDIAWEST:20230703T051346Z:f33eca12-4332-4ce7-b853-d48299e0aa6d" ],
+        "Date": [ "Mon, 03 Jul 2023 05:13:45 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "2142" ],
         "Content-Type": [ "application/json" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/anssingh-rg/providers/Microsoft.RecoveryServices/vaults/anssingh-vault/backupPolicies/anssingh-testPolicy\",\"name\":\"anssingh-testPolicy\",\"type\":\"Microsoft.RecoveryServices/vaults/backupPolicies\",\"properties\":{\"backupManagementType\":\"AzureWorkload\",\"workLoadType\":\"SAPHanaDatabase\",\"settings\":{\"timeZone\":\"Tokyo Standard Time\",\"issqlcompression\":false,\"isCompression\":false},\"subProtectionPolicy\":[{\"policyType\":\"Full\",\"schedulePolicy\":{\"schedulePolicyType\":\"SimpleSchedulePolicy\",\"scheduleRunFrequency\":\"Weekly\",\"scheduleRunDays\":[\"Monday\",\"Thursday\"],\"scheduleRunTimes\":[\"2023-06-26T13:30:00Z\"],\"scheduleWeeklyFrequency\":0},\"retentionPolicy\":{\"retentionPolicyType\":\"LongTermRetentionPolicy\",\"weeklySchedule\":{\"daysOfTheWeek\":[\"Monday\",\"Thursday\"],\"retentionTimes\":[\"2023-06-26T13:30:00Z\"],\"retentionDuration\":{\"count\":104,\"durationType\":\"Weeks\"}},\"monthlySchedule\":{\"retentionScheduleFormatType\":\"Weekly\",\"retentionScheduleWeekly\":{\"daysOfTheWeek\":[\"Monday\"],\"weeksOfTheMonth\":[\"First\"]},\"retentionTimes\":[\"2023-06-26T13:30:00Z\"],\"retentionDuration\":{\"count\":60,\"durationType\":\"Months\"}},\"yearlySchedule\":{\"retentionScheduleFormatType\":\"Weekly\",\"monthsOfYear\":[\"January\"],\"retentionScheduleWeekly\":{\"daysOfTheWeek\":[\"Monday\"],\"weeksOfTheMonth\":[\"First\"]},\"retentionTimes\":[\"2023-06-26T13:30:00Z\"],\"retentionDuration\":{\"count\":10,\"durationType\":\"Years\"}}},\"tieringPolicy\":{\"ArchivedRP\":{\"tieringMode\":\"DoNotTier\",\"duration\":0,\"durationType\":\"Invalid\"}}},{\"policyType\":\"Differential\",\"schedulePolicy\":{\"schedulePolicyType\":\"SimpleSchedulePolicy\",\"scheduleRunFrequency\":\"Weekly\",\"scheduleRunDays\":[\"Tuesday\",\"Friday\"],\"scheduleRunTimes\":[\"2023-06-26T02:00:00Z\"],\"scheduleWeeklyFrequency\":0},\"retentionPolicy\":{\"retentionPolicyType\":\"SimpleRetentionPolicy\",\"retentionDuration\":{\"count\":30,\"durationType\":\"Days\"}}},{\"policyType\":\"Log\",\"schedulePolicy\":{\"schedulePolicyType\":\"LogSchedulePolicy\",\"scheduleFrequencyInMins\":120},\"retentionPolicy\":{\"retentionPolicyType\":\"SimpleRetentionPolicy\",\"retentionDuration\":{\"count\":15,\"durationType\":\"Days\"}}}],\"protectedItemsCount\":0}}"
+      "Content": "{\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/anssingh-rg/providers/Microsoft.RecoveryServices/vaults/anssingh-vault/backupPolicies/anssingh-testPolicy\",\"name\":\"anssingh-testPolicy\",\"type\":\"Microsoft.RecoveryServices/vaults/backupPolicies\",\"properties\":{\"backupManagementType\":\"AzureWorkload\",\"workLoadType\":\"SAPHanaDatabase\",\"settings\":{\"timeZone\":\"Tokyo Standard Time\",\"issqlcompression\":false,\"isCompression\":false},\"subProtectionPolicy\":[{\"policyType\":\"Full\",\"schedulePolicy\":{\"schedulePolicyType\":\"SimpleSchedulePolicy\",\"scheduleRunFrequency\":\"Weekly\",\"scheduleRunDays\":[\"Monday\",\"Thursday\"],\"scheduleRunTimes\":[\"2023-07-03T13:30:00Z\"],\"scheduleWeeklyFrequency\":0},\"retentionPolicy\":{\"retentionPolicyType\":\"LongTermRetentionPolicy\",\"weeklySchedule\":{\"daysOfTheWeek\":[\"Monday\",\"Thursday\"],\"retentionTimes\":[\"2023-07-03T13:30:00Z\"],\"retentionDuration\":{\"count\":104,\"durationType\":\"Weeks\"}},\"monthlySchedule\":{\"retentionScheduleFormatType\":\"Weekly\",\"retentionScheduleWeekly\":{\"daysOfTheWeek\":[\"Monday\"],\"weeksOfTheMonth\":[\"First\"]},\"retentionTimes\":[\"2023-07-03T13:30:00Z\"],\"retentionDuration\":{\"count\":60,\"durationType\":\"Months\"}},\"yearlySchedule\":{\"retentionScheduleFormatType\":\"Weekly\",\"monthsOfYear\":[\"January\"],\"retentionScheduleWeekly\":{\"daysOfTheWeek\":[\"Monday\"],\"weeksOfTheMonth\":[\"First\"]},\"retentionTimes\":[\"2023-07-03T13:30:00Z\"],\"retentionDuration\":{\"count\":10,\"durationType\":\"Years\"}}},\"tieringPolicy\":{\"ArchivedRP\":{\"tieringMode\":\"DoNotTier\",\"duration\":0,\"durationType\":\"Invalid\"}}},{\"policyType\":\"Differential\",\"schedulePolicy\":{\"schedulePolicyType\":\"SimpleSchedulePolicy\",\"scheduleRunFrequency\":\"Weekly\",\"scheduleRunDays\":[\"Tuesday\",\"Friday\"],\"scheduleRunTimes\":[\"2023-07-03T02:00:00Z\"],\"scheduleWeeklyFrequency\":0},\"retentionPolicy\":{\"retentionPolicyType\":\"SimpleRetentionPolicy\",\"retentionDuration\":{\"count\":30,\"durationType\":\"Days\"}}},{\"policyType\":\"Log\",\"schedulePolicy\":{\"schedulePolicyType\":\"LogSchedulePolicy\",\"scheduleFrequencyInMins\":120},\"retentionPolicy\":{\"retentionPolicyType\":\"SimpleRetentionPolicy\",\"retentionDuration\":{\"count\":15,\"durationType\":\"Days\"}}}],\"protectedItemsCount\":0}}",
+      "isContentBase64": false
     }
   },
   "Edit-AzRecoveryServicesBackupSchedulePolicyClientObject+[NoContext]+SAPHANAWeeklyDifferential+$DELETE+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/anssingh-rg/providers/Microsoft.RecoveryServices/vaults/anssingh-vault/backupPolicies/anssingh-testPolicy?api-version=2023-02-01+3": {
@@ -545,13 +573,14 @@
       "Method": "DELETE",
       "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/anssingh-rg/providers/Microsoft.RecoveryServices/vaults/anssingh-vault/backupPolicies/anssingh-testPolicy?api-version=2023-02-01",
       "Content": null,
+      "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "33" ],
-        "x-ms-client-request-id": [ "0cc09140-7a54-4a44-9c5d-97e80a3d036f" ],
+        "x-ms-client-request-id": [ "dc4cca86-9ef4-461d-b48b-b261f895c3a1" ],
         "CommandName": [ "Remove-AzRecoveryServicesBackupPolicy" ],
         "FullCommandName": [ "Remove-AzRecoveryServicesBackupPolicy_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.4", "Az.RecoveryServices/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -563,27 +592,29 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-request-id": [ "e882ba46-0ab7-4d87-8ff8-f74a5e6805da" ],
-        "x-ms-client-request-id": [ "0cc09140-7a54-4a44-9c5d-97e80a3d036f", "0cc09140-7a54-4a44-9c5d-97e80a3d036f" ],
+        "x-ms-request-id": [ "d2aadfde-74a6-4f35-a43e-908735bc83b1" ],
+        "x-ms-client-request-id": [ "dc4cca86-9ef4-461d-b48b-b261f895c3a1", "dc4cca86-9ef4-461d-b48b-b261f895c3a1" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Powered-By": [ "ASP.NET" ],
         "x-ms-ratelimit-remaining-subscription-deletes": [ "14989" ],
-        "x-ms-correlation-request-id": [ "e882ba46-0ab7-4d87-8ff8-f74a5e6805da" ],
-        "x-ms-routing-request-id": [ "JIOINDIACENTRAL:20230626T160419Z:e882ba46-0ab7-4d87-8ff8-f74a5e6805da" ],
-        "Date": [ "Mon, 26 Jun 2023 16:04:19 GMT" ]
+        "x-ms-correlation-request-id": [ "d2aadfde-74a6-4f35-a43e-908735bc83b1" ],
+        "x-ms-routing-request-id": [ "JIOINDIAWEST:20230703T051347Z:d2aadfde-74a6-4f35-a43e-908735bc83b1" ],
+        "Date": [ "Mon, 03 Jul 2023 05:13:46 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ],
         "Content-Length": [ "0" ]
       },
-      "Content": null
+      "Content": null,
+      "isContentBase64": false
     }
   },
   "Edit-AzRecoveryServicesBackupSchedulePolicyClientObject+[NoContext]+SAPHANWeeklyIncremental+$PUT+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/anssingh-rg/providers/Microsoft.RecoveryServices/vaults/anssingh-vault/backupPolicies/anssingh-testPolicy?api-version=2023-02-01+1": {
     "Request": {
       "Method": "PUT",
       "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/anssingh-rg/providers/Microsoft.RecoveryServices/vaults/anssingh-vault/backupPolicies/anssingh-testPolicy?api-version=2023-02-01",
-      "Content": "{\r\n  \"properties\": {\r\n    \"backupManagementType\": \"AzureWorkload\",\r\n    \"workLoadType\": \"SAPHanaDatabase\",\r\n    \"settings\": {\r\n      \"timeZone\": \"Tokyo Standard Time\",\r\n      \"issqlcompression\": false,\r\n      \"isCompression\": false\r\n    },\r\n    \"subProtectionPolicy\": [\r\n      {\r\n        \"schedulePolicy\": {\r\n          \"schedulePolicyType\": \"SimpleSchedulePolicy\",\r\n          \"scheduleRunFrequency\": \"Weekly\",\r\n          \"scheduleRunDays\": [ \"Monday\", \"Thursday\" ],\r\n          \"scheduleRunTimes\": [ \"2023-06-26T13:30:00.0000000Z\" ],\r\n          \"scheduleWeeklyFrequency\": 0\r\n        },\r\n        \"retentionPolicy\": {\r\n          \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n          \"weeklySchedule\": {\r\n            \"daysOfTheWeek\": [ \"Monday\", \"Thursday\" ],\r\n            \"retentionTimes\": [ \"2023-06-26T13:30:00.0000000Z\" ],\r\n            \"retentionDuration\": {\r\n              \"count\": 104,\r\n              \"durationType\": \"Weeks\"\r\n            }\r\n          },\r\n          \"monthlySchedule\": {\r\n            \"retentionScheduleFormatType\": \"Weekly\",\r\n            \"retentionScheduleWeekly\": {\r\n              \"daysOfTheWeek\": [ \"Monday\" ],\r\n              \"weeksOfTheMonth\": [ \"First\" ]\r\n            },\r\n            \"retentionTimes\": [ \"2023-06-26T13:30:00.0000000Z\" ],\r\n            \"retentionDuration\": {\r\n              \"count\": 60,\r\n              \"durationType\": \"Months\"\r\n            }\r\n          },\r\n          \"yearlySchedule\": {\r\n            \"retentionScheduleFormatType\": \"Weekly\",\r\n            \"monthsOfYear\": [ \"January\" ],\r\n            \"retentionScheduleWeekly\": {\r\n              \"daysOfTheWeek\": [ \"Monday\" ],\r\n              \"weeksOfTheMonth\": [ \"First\" ]\r\n            },\r\n            \"retentionTimes\": [ \"2023-06-26T13:30:00.0000000Z\" ],\r\n            \"retentionDuration\": {\r\n              \"count\": 10,\r\n              \"durationType\": \"Years\"\r\n            }\r\n          }\r\n        },\r\n        \"policyType\": \"Full\",\r\n        \"tieringPolicy\": {\r\n          \"ArchivedRP\": {\r\n            \"tieringMode\": \"DoNotTier\",\r\n            \"duration\": 0,\r\n            \"durationType\": \"Invalid\"\r\n          }\r\n        }\r\n      },\r\n      {\r\n        \"schedulePolicy\": {\r\n          \"schedulePolicyType\": \"LogSchedulePolicy\",\r\n          \"scheduleFrequencyInMins\": 120\r\n        },\r\n        \"retentionPolicy\": {\r\n          \"retentionPolicyType\": \"SimpleRetentionPolicy\",\r\n          \"retentionDuration\": {\r\n            \"count\": 15,\r\n            \"durationType\": \"Days\"\r\n          }\r\n        },\r\n        \"policyType\": \"Log\"\r\n      },\r\n      {\r\n        \"schedulePolicy\": {\r\n          \"schedulePolicyType\": \"SimpleSchedulePolicy\",\r\n          \"scheduleRunFrequency\": \"Weekly\",\r\n          \"scheduleRunDays\": [ \"Tuesday\", \"Friday\" ],\r\n          \"scheduleRunTimes\": [ \"2023-06-26T02:00:00.0000000Z\" ],\r\n          \"scheduleWeeklyFrequency\": 0\r\n        },\r\n        \"retentionPolicy\": {\r\n          \"retentionPolicyType\": \"SimpleRetentionPolicy\",\r\n          \"retentionDuration\": {\r\n            \"count\": 30,\r\n            \"durationType\": \"Days\"\r\n          }\r\n        },\r\n        \"policyType\": \"Incremental\"\r\n      }\r\n    ]\r\n  }\r\n}",
+      "Content": "{\r\n  \"properties\": {\r\n    \"backupManagementType\": \"AzureWorkload\",\r\n    \"workLoadType\": \"SAPHanaDatabase\",\r\n    \"settings\": {\r\n      \"timeZone\": \"Tokyo Standard Time\",\r\n      \"issqlcompression\": false,\r\n      \"isCompression\": false\r\n    },\r\n    \"subProtectionPolicy\": [\r\n      {\r\n        \"schedulePolicy\": {\r\n          \"schedulePolicyType\": \"SimpleSchedulePolicy\",\r\n          \"scheduleRunFrequency\": \"Weekly\",\r\n          \"scheduleRunDays\": [ \"Monday\", \"Thursday\" ],\r\n          \"scheduleRunTimes\": [ \"2023-07-03T13:30:00.0000000Z\" ],\r\n          \"scheduleWeeklyFrequency\": 0\r\n        },\r\n        \"retentionPolicy\": {\r\n          \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n          \"weeklySchedule\": {\r\n            \"daysOfTheWeek\": [ \"Monday\", \"Thursday\" ],\r\n            \"retentionTimes\": [ \"2023-07-03T13:30:00.0000000Z\" ],\r\n            \"retentionDuration\": {\r\n              \"count\": 104,\r\n              \"durationType\": \"Weeks\"\r\n            }\r\n          },\r\n          \"monthlySchedule\": {\r\n            \"retentionScheduleFormatType\": \"Weekly\",\r\n            \"retentionScheduleWeekly\": {\r\n              \"daysOfTheWeek\": [ \"Monday\" ],\r\n              \"weeksOfTheMonth\": [ \"First\" ]\r\n            },\r\n            \"retentionTimes\": [ \"2023-07-03T13:30:00.0000000Z\" ],\r\n            \"retentionDuration\": {\r\n              \"count\": 60,\r\n              \"durationType\": \"Months\"\r\n            }\r\n          },\r\n          \"yearlySchedule\": {\r\n            \"retentionScheduleFormatType\": \"Weekly\",\r\n            \"monthsOfYear\": [ \"January\" ],\r\n            \"retentionScheduleWeekly\": {\r\n              \"daysOfTheWeek\": [ \"Monday\" ],\r\n              \"weeksOfTheMonth\": [ \"First\" ]\r\n            },\r\n            \"retentionTimes\": [ \"2023-07-03T13:30:00.0000000Z\" ],\r\n            \"retentionDuration\": {\r\n              \"count\": 10,\r\n              \"durationType\": \"Years\"\r\n            }\r\n          }\r\n        },\r\n        \"policyType\": \"Full\",\r\n        \"tieringPolicy\": {\r\n          \"ArchivedRP\": {\r\n            \"tieringMode\": \"DoNotTier\",\r\n            \"duration\": 0,\r\n            \"durationType\": \"Invalid\"\r\n          }\r\n        }\r\n      },\r\n      {\r\n        \"schedulePolicy\": {\r\n          \"schedulePolicyType\": \"LogSchedulePolicy\",\r\n          \"scheduleFrequencyInMins\": 120\r\n        },\r\n        \"retentionPolicy\": {\r\n          \"retentionPolicyType\": \"SimpleRetentionPolicy\",\r\n          \"retentionDuration\": {\r\n            \"count\": 15,\r\n            \"durationType\": \"Days\"\r\n          }\r\n        },\r\n        \"policyType\": \"Log\"\r\n      },\r\n      {\r\n        \"schedulePolicy\": {\r\n          \"schedulePolicyType\": \"SimpleSchedulePolicy\",\r\n          \"scheduleRunFrequency\": \"Weekly\",\r\n          \"scheduleRunDays\": [ \"Tuesday\", \"Friday\" ],\r\n          \"scheduleRunTimes\": [ \"2023-07-03T02:00:00.0000000Z\" ],\r\n          \"scheduleWeeklyFrequency\": 0\r\n        },\r\n        \"retentionPolicy\": {\r\n          \"retentionPolicyType\": \"SimpleRetentionPolicy\",\r\n          \"retentionDuration\": {\r\n            \"count\": 30,\r\n            \"durationType\": \"Days\"\r\n          }\r\n        },\r\n        \"policyType\": \"Incremental\"\r\n      }\r\n    ]\r\n  }\r\n}",
+      "isContentBase64": false,
       "Headers": {
       },
       "ContentHeaders": {
@@ -597,22 +628,23 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-request-id": [ "b2d6e946-6ce7-4804-9a9d-802e016f4132" ],
-        "x-ms-client-request-id": [ "8dc64b63-0b86-4e17-8a99-9cffc515bb42", "8dc64b63-0b86-4e17-8a99-9cffc515bb42" ],
+        "x-ms-request-id": [ "02b76db0-9c36-437c-9d81-39412a1a032c" ],
+        "x-ms-client-request-id": [ "58bb4599-48cb-4172-95eb-001b1e96bf60", "58bb4599-48cb-4172-95eb-001b1e96bf60" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "Server": [ "Microsoft-IIS/10.0" ],
         "X-Powered-By": [ "ASP.NET" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "1188" ],
-        "x-ms-correlation-request-id": [ "b2d6e946-6ce7-4804-9a9d-802e016f4132" ],
-        "x-ms-routing-request-id": [ "JIOINDIACENTRAL:20230626T160420Z:b2d6e946-6ce7-4804-9a9d-802e016f4132" ],
-        "Date": [ "Mon, 26 Jun 2023 16:04:20 GMT" ]
+        "x-ms-correlation-request-id": [ "02b76db0-9c36-437c-9d81-39412a1a032c" ],
+        "x-ms-routing-request-id": [ "JIOINDIAWEST:20230703T051348Z:02b76db0-9c36-437c-9d81-39412a1a032c" ],
+        "Date": [ "Mon, 03 Jul 2023 05:13:48 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "2141" ],
         "Content-Type": [ "application/json" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/anssingh-rg/providers/Microsoft.RecoveryServices/vaults/anssingh-vault/backupPolicies/anssingh-testPolicy\",\"name\":\"anssingh-testPolicy\",\"type\":\"Microsoft.RecoveryServices/vaults/backupPolicies\",\"properties\":{\"backupManagementType\":\"AzureWorkload\",\"workLoadType\":\"SAPHanaDatabase\",\"settings\":{\"timeZone\":\"Tokyo Standard Time\",\"issqlcompression\":false,\"isCompression\":false},\"subProtectionPolicy\":[{\"policyType\":\"Full\",\"schedulePolicy\":{\"schedulePolicyType\":\"SimpleSchedulePolicy\",\"scheduleRunFrequency\":\"Weekly\",\"scheduleRunDays\":[\"Monday\",\"Thursday\"],\"scheduleRunTimes\":[\"2023-06-26T13:30:00Z\"],\"scheduleWeeklyFrequency\":0},\"retentionPolicy\":{\"retentionPolicyType\":\"LongTermRetentionPolicy\",\"weeklySchedule\":{\"daysOfTheWeek\":[\"Monday\",\"Thursday\"],\"retentionTimes\":[\"2023-06-26T13:30:00Z\"],\"retentionDuration\":{\"count\":104,\"durationType\":\"Weeks\"}},\"monthlySchedule\":{\"retentionScheduleFormatType\":\"Weekly\",\"retentionScheduleWeekly\":{\"daysOfTheWeek\":[\"Monday\"],\"weeksOfTheMonth\":[\"First\"]},\"retentionTimes\":[\"2023-06-26T13:30:00Z\"],\"retentionDuration\":{\"count\":60,\"durationType\":\"Months\"}},\"yearlySchedule\":{\"retentionScheduleFormatType\":\"Weekly\",\"monthsOfYear\":[\"January\"],\"retentionScheduleWeekly\":{\"daysOfTheWeek\":[\"Monday\"],\"weeksOfTheMonth\":[\"First\"]},\"retentionTimes\":[\"2023-06-26T13:30:00Z\"],\"retentionDuration\":{\"count\":10,\"durationType\":\"Years\"}}},\"tieringPolicy\":{\"ArchivedRP\":{\"tieringMode\":\"DoNotTier\",\"duration\":0,\"durationType\":\"Invalid\"}}},{\"policyType\":\"Incremental\",\"schedulePolicy\":{\"schedulePolicyType\":\"SimpleSchedulePolicy\",\"scheduleRunFrequency\":\"Weekly\",\"scheduleRunDays\":[\"Tuesday\",\"Friday\"],\"scheduleRunTimes\":[\"2023-06-26T02:00:00Z\"],\"scheduleWeeklyFrequency\":0},\"retentionPolicy\":{\"retentionPolicyType\":\"SimpleRetentionPolicy\",\"retentionDuration\":{\"count\":30,\"durationType\":\"Days\"}}},{\"policyType\":\"Log\",\"schedulePolicy\":{\"schedulePolicyType\":\"LogSchedulePolicy\",\"scheduleFrequencyInMins\":120},\"retentionPolicy\":{\"retentionPolicyType\":\"SimpleRetentionPolicy\",\"retentionDuration\":{\"count\":15,\"durationType\":\"Days\"}}}],\"protectedItemsCount\":0}}"
+      "Content": "{\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/anssingh-rg/providers/Microsoft.RecoveryServices/vaults/anssingh-vault/backupPolicies/anssingh-testPolicy\",\"name\":\"anssingh-testPolicy\",\"type\":\"Microsoft.RecoveryServices/vaults/backupPolicies\",\"properties\":{\"backupManagementType\":\"AzureWorkload\",\"workLoadType\":\"SAPHanaDatabase\",\"settings\":{\"timeZone\":\"Tokyo Standard Time\",\"issqlcompression\":false,\"isCompression\":false},\"subProtectionPolicy\":[{\"policyType\":\"Full\",\"schedulePolicy\":{\"schedulePolicyType\":\"SimpleSchedulePolicy\",\"scheduleRunFrequency\":\"Weekly\",\"scheduleRunDays\":[\"Monday\",\"Thursday\"],\"scheduleRunTimes\":[\"2023-07-03T13:30:00Z\"],\"scheduleWeeklyFrequency\":0},\"retentionPolicy\":{\"retentionPolicyType\":\"LongTermRetentionPolicy\",\"weeklySchedule\":{\"daysOfTheWeek\":[\"Monday\",\"Thursday\"],\"retentionTimes\":[\"2023-07-03T13:30:00Z\"],\"retentionDuration\":{\"count\":104,\"durationType\":\"Weeks\"}},\"monthlySchedule\":{\"retentionScheduleFormatType\":\"Weekly\",\"retentionScheduleWeekly\":{\"daysOfTheWeek\":[\"Monday\"],\"weeksOfTheMonth\":[\"First\"]},\"retentionTimes\":[\"2023-07-03T13:30:00Z\"],\"retentionDuration\":{\"count\":60,\"durationType\":\"Months\"}},\"yearlySchedule\":{\"retentionScheduleFormatType\":\"Weekly\",\"monthsOfYear\":[\"January\"],\"retentionScheduleWeekly\":{\"daysOfTheWeek\":[\"Monday\"],\"weeksOfTheMonth\":[\"First\"]},\"retentionTimes\":[\"2023-07-03T13:30:00Z\"],\"retentionDuration\":{\"count\":10,\"durationType\":\"Years\"}}},\"tieringPolicy\":{\"ArchivedRP\":{\"tieringMode\":\"DoNotTier\",\"duration\":0,\"durationType\":\"Invalid\"}}},{\"policyType\":\"Incremental\",\"schedulePolicy\":{\"schedulePolicyType\":\"SimpleSchedulePolicy\",\"scheduleRunFrequency\":\"Weekly\",\"scheduleRunDays\":[\"Tuesday\",\"Friday\"],\"scheduleRunTimes\":[\"2023-07-03T02:00:00Z\"],\"scheduleWeeklyFrequency\":0},\"retentionPolicy\":{\"retentionPolicyType\":\"SimpleRetentionPolicy\",\"retentionDuration\":{\"count\":30,\"durationType\":\"Days\"}}},{\"policyType\":\"Log\",\"schedulePolicy\":{\"schedulePolicyType\":\"LogSchedulePolicy\",\"scheduleFrequencyInMins\":120},\"retentionPolicy\":{\"retentionPolicyType\":\"SimpleRetentionPolicy\",\"retentionDuration\":{\"count\":15,\"durationType\":\"Days\"}}}],\"protectedItemsCount\":0}}",
+      "isContentBase64": false
     }
   },
   "Edit-AzRecoveryServicesBackupSchedulePolicyClientObject+[NoContext]+SAPHANWeeklyIncremental+$GET+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/anssingh-rg/providers/Microsoft.RecoveryServices/vaults/anssingh-vault/backupPolicies/anssingh-testPolicy?api-version=2023-02-01+2": {
@@ -620,13 +652,14 @@
       "Method": "GET",
       "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/anssingh-rg/providers/Microsoft.RecoveryServices/vaults/anssingh-vault/backupPolicies/anssingh-testPolicy?api-version=2023-02-01",
       "Content": null,
+      "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "35" ],
-        "x-ms-client-request-id": [ "091539ff-2879-402c-a95a-df1da939db56" ],
+        "x-ms-client-request-id": [ "15ffcef3-67a4-46d9-97fc-6975d16710c0" ],
         "CommandName": [ "Get-AzRecoveryServicesBackupPolicy" ],
         "FullCommandName": [ "Get-AzRecoveryServicesBackupPolicy_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.4", "Az.RecoveryServices/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -638,22 +671,23 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-request-id": [ "d8381c97-40db-4391-b21e-f574ba52fa6d" ],
-        "x-ms-client-request-id": [ "091539ff-2879-402c-a95a-df1da939db56", "091539ff-2879-402c-a95a-df1da939db56" ],
+        "x-ms-request-id": [ "52c9b3c0-f5a8-436b-b8d7-893b339277eb" ],
+        "x-ms-client-request-id": [ "15ffcef3-67a4-46d9-97fc-6975d16710c0", "15ffcef3-67a4-46d9-97fc-6975d16710c0" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "Server": [ "Microsoft-IIS/10.0" ],
         "X-Powered-By": [ "ASP.NET" ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [ "288" ],
-        "x-ms-correlation-request-id": [ "d8381c97-40db-4391-b21e-f574ba52fa6d" ],
-        "x-ms-routing-request-id": [ "JIOINDIACENTRAL:20230626T160421Z:d8381c97-40db-4391-b21e-f574ba52fa6d" ],
-        "Date": [ "Mon, 26 Jun 2023 16:04:21 GMT" ]
+        "x-ms-correlation-request-id": [ "52c9b3c0-f5a8-436b-b8d7-893b339277eb" ],
+        "x-ms-routing-request-id": [ "JIOINDIAWEST:20230703T051349Z:52c9b3c0-f5a8-436b-b8d7-893b339277eb" ],
+        "Date": [ "Mon, 03 Jul 2023 05:13:48 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "2141" ],
         "Content-Type": [ "application/json" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/anssingh-rg/providers/Microsoft.RecoveryServices/vaults/anssingh-vault/backupPolicies/anssingh-testPolicy\",\"name\":\"anssingh-testPolicy\",\"type\":\"Microsoft.RecoveryServices/vaults/backupPolicies\",\"properties\":{\"backupManagementType\":\"AzureWorkload\",\"workLoadType\":\"SAPHanaDatabase\",\"settings\":{\"timeZone\":\"Tokyo Standard Time\",\"issqlcompression\":false,\"isCompression\":false},\"subProtectionPolicy\":[{\"policyType\":\"Full\",\"schedulePolicy\":{\"schedulePolicyType\":\"SimpleSchedulePolicy\",\"scheduleRunFrequency\":\"Weekly\",\"scheduleRunDays\":[\"Monday\",\"Thursday\"],\"scheduleRunTimes\":[\"2023-06-26T13:30:00Z\"],\"scheduleWeeklyFrequency\":0},\"retentionPolicy\":{\"retentionPolicyType\":\"LongTermRetentionPolicy\",\"weeklySchedule\":{\"daysOfTheWeek\":[\"Monday\",\"Thursday\"],\"retentionTimes\":[\"2023-06-26T13:30:00Z\"],\"retentionDuration\":{\"count\":104,\"durationType\":\"Weeks\"}},\"monthlySchedule\":{\"retentionScheduleFormatType\":\"Weekly\",\"retentionScheduleWeekly\":{\"daysOfTheWeek\":[\"Monday\"],\"weeksOfTheMonth\":[\"First\"]},\"retentionTimes\":[\"2023-06-26T13:30:00Z\"],\"retentionDuration\":{\"count\":60,\"durationType\":\"Months\"}},\"yearlySchedule\":{\"retentionScheduleFormatType\":\"Weekly\",\"monthsOfYear\":[\"January\"],\"retentionScheduleWeekly\":{\"daysOfTheWeek\":[\"Monday\"],\"weeksOfTheMonth\":[\"First\"]},\"retentionTimes\":[\"2023-06-26T13:30:00Z\"],\"retentionDuration\":{\"count\":10,\"durationType\":\"Years\"}}},\"tieringPolicy\":{\"ArchivedRP\":{\"tieringMode\":\"DoNotTier\",\"duration\":0,\"durationType\":\"Invalid\"}}},{\"policyType\":\"Incremental\",\"schedulePolicy\":{\"schedulePolicyType\":\"SimpleSchedulePolicy\",\"scheduleRunFrequency\":\"Weekly\",\"scheduleRunDays\":[\"Tuesday\",\"Friday\"],\"scheduleRunTimes\":[\"2023-06-26T02:00:00Z\"],\"scheduleWeeklyFrequency\":0},\"retentionPolicy\":{\"retentionPolicyType\":\"SimpleRetentionPolicy\",\"retentionDuration\":{\"count\":30,\"durationType\":\"Days\"}}},{\"policyType\":\"Log\",\"schedulePolicy\":{\"schedulePolicyType\":\"LogSchedulePolicy\",\"scheduleFrequencyInMins\":120},\"retentionPolicy\":{\"retentionPolicyType\":\"SimpleRetentionPolicy\",\"retentionDuration\":{\"count\":15,\"durationType\":\"Days\"}}}],\"protectedItemsCount\":0}}"
+      "Content": "{\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/anssingh-rg/providers/Microsoft.RecoveryServices/vaults/anssingh-vault/backupPolicies/anssingh-testPolicy\",\"name\":\"anssingh-testPolicy\",\"type\":\"Microsoft.RecoveryServices/vaults/backupPolicies\",\"properties\":{\"backupManagementType\":\"AzureWorkload\",\"workLoadType\":\"SAPHanaDatabase\",\"settings\":{\"timeZone\":\"Tokyo Standard Time\",\"issqlcompression\":false,\"isCompression\":false},\"subProtectionPolicy\":[{\"policyType\":\"Full\",\"schedulePolicy\":{\"schedulePolicyType\":\"SimpleSchedulePolicy\",\"scheduleRunFrequency\":\"Weekly\",\"scheduleRunDays\":[\"Monday\",\"Thursday\"],\"scheduleRunTimes\":[\"2023-07-03T13:30:00Z\"],\"scheduleWeeklyFrequency\":0},\"retentionPolicy\":{\"retentionPolicyType\":\"LongTermRetentionPolicy\",\"weeklySchedule\":{\"daysOfTheWeek\":[\"Monday\",\"Thursday\"],\"retentionTimes\":[\"2023-07-03T13:30:00Z\"],\"retentionDuration\":{\"count\":104,\"durationType\":\"Weeks\"}},\"monthlySchedule\":{\"retentionScheduleFormatType\":\"Weekly\",\"retentionScheduleWeekly\":{\"daysOfTheWeek\":[\"Monday\"],\"weeksOfTheMonth\":[\"First\"]},\"retentionTimes\":[\"2023-07-03T13:30:00Z\"],\"retentionDuration\":{\"count\":60,\"durationType\":\"Months\"}},\"yearlySchedule\":{\"retentionScheduleFormatType\":\"Weekly\",\"monthsOfYear\":[\"January\"],\"retentionScheduleWeekly\":{\"daysOfTheWeek\":[\"Monday\"],\"weeksOfTheMonth\":[\"First\"]},\"retentionTimes\":[\"2023-07-03T13:30:00Z\"],\"retentionDuration\":{\"count\":10,\"durationType\":\"Years\"}}},\"tieringPolicy\":{\"ArchivedRP\":{\"tieringMode\":\"DoNotTier\",\"duration\":0,\"durationType\":\"Invalid\"}}},{\"policyType\":\"Incremental\",\"schedulePolicy\":{\"schedulePolicyType\":\"SimpleSchedulePolicy\",\"scheduleRunFrequency\":\"Weekly\",\"scheduleRunDays\":[\"Tuesday\",\"Friday\"],\"scheduleRunTimes\":[\"2023-07-03T02:00:00Z\"],\"scheduleWeeklyFrequency\":0},\"retentionPolicy\":{\"retentionPolicyType\":\"SimpleRetentionPolicy\",\"retentionDuration\":{\"count\":30,\"durationType\":\"Days\"}}},{\"policyType\":\"Log\",\"schedulePolicy\":{\"schedulePolicyType\":\"LogSchedulePolicy\",\"scheduleFrequencyInMins\":120},\"retentionPolicy\":{\"retentionPolicyType\":\"SimpleRetentionPolicy\",\"retentionDuration\":{\"count\":15,\"durationType\":\"Days\"}}}],\"protectedItemsCount\":0}}",
+      "isContentBase64": false
     }
   },
   "Edit-AzRecoveryServicesBackupSchedulePolicyClientObject+[NoContext]+SAPHANWeeklyIncremental+$DELETE+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/anssingh-rg/providers/Microsoft.RecoveryServices/vaults/anssingh-vault/backupPolicies/anssingh-testPolicy?api-version=2023-02-01+3": {
@@ -661,13 +695,14 @@
       "Method": "DELETE",
       "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/anssingh-rg/providers/Microsoft.RecoveryServices/vaults/anssingh-vault/backupPolicies/anssingh-testPolicy?api-version=2023-02-01",
       "Content": null,
+      "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "36" ],
-        "x-ms-client-request-id": [ "6943e13a-22e0-4554-b536-82a05bd20374" ],
+        "x-ms-client-request-id": [ "c5afc372-8234-4d1a-b9b5-98e7f1b1070c" ],
         "CommandName": [ "Remove-AzRecoveryServicesBackupPolicy" ],
         "FullCommandName": [ "Remove-AzRecoveryServicesBackupPolicy_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.4", "Az.RecoveryServices/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -679,27 +714,29 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-request-id": [ "bc92081f-0dfd-4af4-8242-a6d8ae924c84" ],
-        "x-ms-client-request-id": [ "6943e13a-22e0-4554-b536-82a05bd20374", "6943e13a-22e0-4554-b536-82a05bd20374" ],
+        "x-ms-request-id": [ "ee583189-5a6a-4043-a32e-98848e863124" ],
+        "x-ms-client-request-id": [ "c5afc372-8234-4d1a-b9b5-98e7f1b1070c", "c5afc372-8234-4d1a-b9b5-98e7f1b1070c" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Powered-By": [ "ASP.NET" ],
         "x-ms-ratelimit-remaining-subscription-deletes": [ "14988" ],
-        "x-ms-correlation-request-id": [ "bc92081f-0dfd-4af4-8242-a6d8ae924c84" ],
-        "x-ms-routing-request-id": [ "JIOINDIACENTRAL:20230626T160422Z:bc92081f-0dfd-4af4-8242-a6d8ae924c84" ],
-        "Date": [ "Mon, 26 Jun 2023 16:04:22 GMT" ]
+        "x-ms-correlation-request-id": [ "ee583189-5a6a-4043-a32e-98848e863124" ],
+        "x-ms-routing-request-id": [ "JIOINDIAWEST:20230703T051351Z:ee583189-5a6a-4043-a32e-98848e863124" ],
+        "Date": [ "Mon, 03 Jul 2023 05:13:50 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ],
         "Content-Length": [ "0" ]
       },
-      "Content": null
+      "Content": null,
+      "isContentBase64": false
     }
   },
   "Edit-AzRecoveryServicesBackupSchedulePolicyClientObject+[NoContext]+SAPHANALog+$PUT+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/anssingh-rg/providers/Microsoft.RecoveryServices/vaults/anssingh-vault/backupPolicies/anssingh-testPolicy?api-version=2023-02-01+1": {
     "Request": {
       "Method": "PUT",
       "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/anssingh-rg/providers/Microsoft.RecoveryServices/vaults/anssingh-vault/backupPolicies/anssingh-testPolicy?api-version=2023-02-01",
-      "Content": "{\r\n  \"properties\": {\r\n    \"backupManagementType\": \"AzureWorkload\",\r\n    \"workLoadType\": \"SAPHanaDatabase\",\r\n    \"settings\": {\r\n      \"timeZone\": \"UTC\",\r\n      \"issqlcompression\": false,\r\n      \"isCompression\": false\r\n    },\r\n    \"subProtectionPolicy\": [\r\n      {\r\n        \"schedulePolicy\": {\r\n          \"schedulePolicyType\": \"SimpleSchedulePolicy\",\r\n          \"scheduleRunFrequency\": \"Daily\",\r\n          \"scheduleRunTimes\": [ \"2023-06-26T19:30:00.0000000Z\" ],\r\n          \"scheduleWeeklyFrequency\": 0\r\n        },\r\n        \"retentionPolicy\": {\r\n          \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n          \"dailySchedule\": {\r\n            \"retentionTimes\": [ \"2023-06-26T19:30:00.0000000Z\" ],\r\n            \"retentionDuration\": {\r\n              \"count\": 180,\r\n              \"durationType\": \"Days\"\r\n            }\r\n          },\r\n          \"weeklySchedule\": {\r\n            \"daysOfTheWeek\": [ \"Sunday\" ],\r\n            \"retentionTimes\": [ \"2023-06-26T19:30:00.0000000Z\" ],\r\n            \"retentionDuration\": {\r\n              \"count\": 104,\r\n              \"durationType\": \"Weeks\"\r\n            }\r\n          },\r\n          \"monthlySchedule\": {\r\n            \"retentionScheduleFormatType\": \"Weekly\",\r\n            \"retentionScheduleWeekly\": {\r\n              \"daysOfTheWeek\": [ \"Sunday\" ],\r\n              \"weeksOfTheMonth\": [ \"First\" ]\r\n            },\r\n            \"retentionTimes\": [ \"2023-06-26T19:30:00.0000000Z\" ],\r\n            \"retentionDuration\": {\r\n              \"count\": 60,\r\n              \"durationType\": \"Months\"\r\n            }\r\n          },\r\n          \"yearlySchedule\": {\r\n            \"retentionScheduleFormatType\": \"Weekly\",\r\n            \"monthsOfYear\": [ \"January\" ],\r\n            \"retentionScheduleWeekly\": {\r\n              \"daysOfTheWeek\": [ \"Sunday\" ],\r\n              \"weeksOfTheMonth\": [ \"First\" ]\r\n            },\r\n            \"retentionTimes\": [ \"2023-06-26T19:30:00.0000000Z\" ],\r\n            \"retentionDuration\": {\r\n              \"count\": 10,\r\n              \"durationType\": \"Years\"\r\n            }\r\n          }\r\n        },\r\n        \"policyType\": \"Full\",\r\n        \"tieringPolicy\": {\r\n          \"ArchivedRP\": {\r\n            \"tieringMode\": \"DoNotTier\",\r\n            \"duration\": 0,\r\n            \"durationType\": \"Invalid\"\r\n          }\r\n        }\r\n      },\r\n      {\r\n        \"schedulePolicy\": {\r\n          \"schedulePolicyType\": \"LogSchedulePolicy\",\r\n          \"scheduleFrequencyInMins\": 120\r\n        },\r\n        \"retentionPolicy\": {\r\n          \"retentionPolicyType\": \"SimpleRetentionPolicy\",\r\n          \"retentionDuration\": {\r\n            \"count\": 15,\r\n            \"durationType\": \"Days\"\r\n          }\r\n        },\r\n        \"policyType\": \"Log\"\r\n      }\r\n    ]\r\n  }\r\n}",
+      "Content": "{\r\n  \"properties\": {\r\n    \"backupManagementType\": \"AzureWorkload\",\r\n    \"workLoadType\": \"SAPHanaDatabase\",\r\n    \"settings\": {\r\n      \"timeZone\": \"UTC\",\r\n      \"issqlcompression\": false,\r\n      \"isCompression\": false\r\n    },\r\n    \"subProtectionPolicy\": [\r\n      {\r\n        \"schedulePolicy\": {\r\n          \"schedulePolicyType\": \"SimpleSchedulePolicy\",\r\n          \"scheduleRunFrequency\": \"Daily\",\r\n          \"scheduleRunTimes\": [ \"2023-07-03T19:30:00.0000000Z\" ],\r\n          \"scheduleWeeklyFrequency\": 0\r\n        },\r\n        \"retentionPolicy\": {\r\n          \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n          \"dailySchedule\": {\r\n            \"retentionTimes\": [ \"2023-07-03T19:30:00.0000000Z\" ],\r\n            \"retentionDuration\": {\r\n              \"count\": 180,\r\n              \"durationType\": \"Days\"\r\n            }\r\n          },\r\n          \"weeklySchedule\": {\r\n            \"daysOfTheWeek\": [ \"Sunday\" ],\r\n            \"retentionTimes\": [ \"2023-07-03T19:30:00.0000000Z\" ],\r\n            \"retentionDuration\": {\r\n              \"count\": 104,\r\n              \"durationType\": \"Weeks\"\r\n            }\r\n          },\r\n          \"monthlySchedule\": {\r\n            \"retentionScheduleFormatType\": \"Weekly\",\r\n            \"retentionScheduleWeekly\": {\r\n              \"daysOfTheWeek\": [ \"Sunday\" ],\r\n              \"weeksOfTheMonth\": [ \"First\" ]\r\n            },\r\n            \"retentionTimes\": [ \"2023-07-03T19:30:00.0000000Z\" ],\r\n            \"retentionDuration\": {\r\n              \"count\": 60,\r\n              \"durationType\": \"Months\"\r\n            }\r\n          },\r\n          \"yearlySchedule\": {\r\n            \"retentionScheduleFormatType\": \"Weekly\",\r\n            \"monthsOfYear\": [ \"January\" ],\r\n            \"retentionScheduleWeekly\": {\r\n              \"daysOfTheWeek\": [ \"Sunday\" ],\r\n              \"weeksOfTheMonth\": [ \"First\" ]\r\n            },\r\n            \"retentionTimes\": [ \"2023-07-03T19:30:00.0000000Z\" ],\r\n            \"retentionDuration\": {\r\n              \"count\": 10,\r\n              \"durationType\": \"Years\"\r\n            }\r\n          }\r\n        },\r\n        \"policyType\": \"Full\",\r\n        \"tieringPolicy\": {\r\n          \"ArchivedRP\": {\r\n            \"tieringMode\": \"DoNotTier\",\r\n            \"duration\": 0,\r\n            \"durationType\": \"Invalid\"\r\n          }\r\n        }\r\n      },\r\n      {\r\n        \"schedulePolicy\": {\r\n          \"schedulePolicyType\": \"LogSchedulePolicy\",\r\n          \"scheduleFrequencyInMins\": 120\r\n        },\r\n        \"retentionPolicy\": {\r\n          \"retentionPolicyType\": \"SimpleRetentionPolicy\",\r\n          \"retentionDuration\": {\r\n            \"count\": 15,\r\n            \"durationType\": \"Days\"\r\n          }\r\n        },\r\n        \"policyType\": \"Log\"\r\n      }\r\n    ]\r\n  }\r\n}",
+      "isContentBase64": false,
       "Headers": {
       },
       "ContentHeaders": {
@@ -713,22 +750,23 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-request-id": [ "b169ebba-57b2-47da-b7a8-713e67f4d00f" ],
-        "x-ms-client-request-id": [ "a9527b0d-2767-4696-9784-c643347a2b6a", "a9527b0d-2767-4696-9784-c643347a2b6a" ],
+        "x-ms-request-id": [ "8b0fd482-183d-41d4-98fe-14422bdc63b1" ],
+        "x-ms-client-request-id": [ "f3892fca-3f7d-4e8c-9d02-aa204470e897", "f3892fca-3f7d-4e8c-9d02-aa204470e897" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "Server": [ "Microsoft-IIS/10.0" ],
         "X-Powered-By": [ "ASP.NET" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "1187" ],
-        "x-ms-correlation-request-id": [ "b169ebba-57b2-47da-b7a8-713e67f4d00f" ],
-        "x-ms-routing-request-id": [ "JIOINDIACENTRAL:20230626T160423Z:b169ebba-57b2-47da-b7a8-713e67f4d00f" ],
-        "Date": [ "Mon, 26 Jun 2023 16:04:23 GMT" ]
+        "x-ms-correlation-request-id": [ "8b0fd482-183d-41d4-98fe-14422bdc63b1" ],
+        "x-ms-routing-request-id": [ "JIOINDIAWEST:20230703T051352Z:8b0fd482-183d-41d4-98fe-14422bdc63b1" ],
+        "Date": [ "Mon, 03 Jul 2023 05:13:51 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "1833" ],
         "Content-Type": [ "application/json" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/anssingh-rg/providers/Microsoft.RecoveryServices/vaults/anssingh-vault/backupPolicies/anssingh-testPolicy\",\"name\":\"anssingh-testPolicy\",\"type\":\"Microsoft.RecoveryServices/vaults/backupPolicies\",\"properties\":{\"backupManagementType\":\"AzureWorkload\",\"workLoadType\":\"SAPHanaDatabase\",\"settings\":{\"timeZone\":\"UTC\",\"issqlcompression\":false,\"isCompression\":false},\"subProtectionPolicy\":[{\"policyType\":\"Full\",\"schedulePolicy\":{\"schedulePolicyType\":\"SimpleSchedulePolicy\",\"scheduleRunFrequency\":\"Daily\",\"scheduleRunTimes\":[\"2023-06-26T19:30:00Z\"],\"scheduleWeeklyFrequency\":0},\"retentionPolicy\":{\"retentionPolicyType\":\"LongTermRetentionPolicy\",\"dailySchedule\":{\"retentionTimes\":[\"2023-06-26T19:30:00Z\"],\"retentionDuration\":{\"count\":180,\"durationType\":\"Days\"}},\"weeklySchedule\":{\"daysOfTheWeek\":[\"Sunday\"],\"retentionTimes\":[\"2023-06-26T19:30:00Z\"],\"retentionDuration\":{\"count\":104,\"durationType\":\"Weeks\"}},\"monthlySchedule\":{\"retentionScheduleFormatType\":\"Weekly\",\"retentionScheduleWeekly\":{\"daysOfTheWeek\":[\"Sunday\"],\"weeksOfTheMonth\":[\"First\"]},\"retentionTimes\":[\"2023-06-26T19:30:00Z\"],\"retentionDuration\":{\"count\":60,\"durationType\":\"Months\"}},\"yearlySchedule\":{\"retentionScheduleFormatType\":\"Weekly\",\"monthsOfYear\":[\"January\"],\"retentionScheduleWeekly\":{\"daysOfTheWeek\":[\"Sunday\"],\"weeksOfTheMonth\":[\"First\"]},\"retentionTimes\":[\"2023-06-26T19:30:00Z\"],\"retentionDuration\":{\"count\":10,\"durationType\":\"Years\"}}},\"tieringPolicy\":{\"ArchivedRP\":{\"tieringMode\":\"DoNotTier\",\"duration\":0,\"durationType\":\"Invalid\"}}},{\"policyType\":\"Log\",\"schedulePolicy\":{\"schedulePolicyType\":\"LogSchedulePolicy\",\"scheduleFrequencyInMins\":120},\"retentionPolicy\":{\"retentionPolicyType\":\"SimpleRetentionPolicy\",\"retentionDuration\":{\"count\":15,\"durationType\":\"Days\"}}}],\"protectedItemsCount\":0}}"
+      "Content": "{\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/anssingh-rg/providers/Microsoft.RecoveryServices/vaults/anssingh-vault/backupPolicies/anssingh-testPolicy\",\"name\":\"anssingh-testPolicy\",\"type\":\"Microsoft.RecoveryServices/vaults/backupPolicies\",\"properties\":{\"backupManagementType\":\"AzureWorkload\",\"workLoadType\":\"SAPHanaDatabase\",\"settings\":{\"timeZone\":\"UTC\",\"issqlcompression\":false,\"isCompression\":false},\"subProtectionPolicy\":[{\"policyType\":\"Full\",\"schedulePolicy\":{\"schedulePolicyType\":\"SimpleSchedulePolicy\",\"scheduleRunFrequency\":\"Daily\",\"scheduleRunTimes\":[\"2023-07-03T19:30:00Z\"],\"scheduleWeeklyFrequency\":0},\"retentionPolicy\":{\"retentionPolicyType\":\"LongTermRetentionPolicy\",\"dailySchedule\":{\"retentionTimes\":[\"2023-07-03T19:30:00Z\"],\"retentionDuration\":{\"count\":180,\"durationType\":\"Days\"}},\"weeklySchedule\":{\"daysOfTheWeek\":[\"Sunday\"],\"retentionTimes\":[\"2023-07-03T19:30:00Z\"],\"retentionDuration\":{\"count\":104,\"durationType\":\"Weeks\"}},\"monthlySchedule\":{\"retentionScheduleFormatType\":\"Weekly\",\"retentionScheduleWeekly\":{\"daysOfTheWeek\":[\"Sunday\"],\"weeksOfTheMonth\":[\"First\"]},\"retentionTimes\":[\"2023-07-03T19:30:00Z\"],\"retentionDuration\":{\"count\":60,\"durationType\":\"Months\"}},\"yearlySchedule\":{\"retentionScheduleFormatType\":\"Weekly\",\"monthsOfYear\":[\"January\"],\"retentionScheduleWeekly\":{\"daysOfTheWeek\":[\"Sunday\"],\"weeksOfTheMonth\":[\"First\"]},\"retentionTimes\":[\"2023-07-03T19:30:00Z\"],\"retentionDuration\":{\"count\":10,\"durationType\":\"Years\"}}},\"tieringPolicy\":{\"ArchivedRP\":{\"tieringMode\":\"DoNotTier\",\"duration\":0,\"durationType\":\"Invalid\"}}},{\"policyType\":\"Log\",\"schedulePolicy\":{\"schedulePolicyType\":\"LogSchedulePolicy\",\"scheduleFrequencyInMins\":120},\"retentionPolicy\":{\"retentionPolicyType\":\"SimpleRetentionPolicy\",\"retentionDuration\":{\"count\":15,\"durationType\":\"Days\"}}}],\"protectedItemsCount\":0}}",
+      "isContentBase64": false
     }
   },
   "Edit-AzRecoveryServicesBackupSchedulePolicyClientObject+[NoContext]+SAPHANALog+$GET+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/anssingh-rg/providers/Microsoft.RecoveryServices/vaults/anssingh-vault/backupPolicies/anssingh-testPolicy?api-version=2023-02-01+2": {
@@ -736,13 +774,14 @@
       "Method": "GET",
       "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/anssingh-rg/providers/Microsoft.RecoveryServices/vaults/anssingh-vault/backupPolicies/anssingh-testPolicy?api-version=2023-02-01",
       "Content": null,
+      "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "38" ],
-        "x-ms-client-request-id": [ "7b95b574-9b82-4ac2-8f3c-cac656e6b2d8" ],
+        "x-ms-client-request-id": [ "debfe5e8-de75-4f7f-b980-96f2442056a5" ],
         "CommandName": [ "Get-AzRecoveryServicesBackupPolicy" ],
         "FullCommandName": [ "Get-AzRecoveryServicesBackupPolicy_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.4", "Az.RecoveryServices/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -754,22 +793,23 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-request-id": [ "f4e9828e-f527-40a0-9529-16efd280cf3d" ],
-        "x-ms-client-request-id": [ "7b95b574-9b82-4ac2-8f3c-cac656e6b2d8", "7b95b574-9b82-4ac2-8f3c-cac656e6b2d8" ],
+        "x-ms-request-id": [ "08da4969-537e-4d36-a7c7-dcf2b232b9b0" ],
+        "x-ms-client-request-id": [ "debfe5e8-de75-4f7f-b980-96f2442056a5", "debfe5e8-de75-4f7f-b980-96f2442056a5" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "Server": [ "Microsoft-IIS/10.0" ],
         "X-Powered-By": [ "ASP.NET" ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [ "287" ],
-        "x-ms-correlation-request-id": [ "f4e9828e-f527-40a0-9529-16efd280cf3d" ],
-        "x-ms-routing-request-id": [ "JIOINDIACENTRAL:20230626T160424Z:f4e9828e-f527-40a0-9529-16efd280cf3d" ],
-        "Date": [ "Mon, 26 Jun 2023 16:04:24 GMT" ]
+        "x-ms-correlation-request-id": [ "08da4969-537e-4d36-a7c7-dcf2b232b9b0" ],
+        "x-ms-routing-request-id": [ "JIOINDIAWEST:20230703T051353Z:08da4969-537e-4d36-a7c7-dcf2b232b9b0" ],
+        "Date": [ "Mon, 03 Jul 2023 05:13:52 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "1833" ],
         "Content-Type": [ "application/json" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/anssingh-rg/providers/Microsoft.RecoveryServices/vaults/anssingh-vault/backupPolicies/anssingh-testPolicy\",\"name\":\"anssingh-testPolicy\",\"type\":\"Microsoft.RecoveryServices/vaults/backupPolicies\",\"properties\":{\"backupManagementType\":\"AzureWorkload\",\"workLoadType\":\"SAPHanaDatabase\",\"settings\":{\"timeZone\":\"UTC\",\"issqlcompression\":false,\"isCompression\":false},\"subProtectionPolicy\":[{\"policyType\":\"Full\",\"schedulePolicy\":{\"schedulePolicyType\":\"SimpleSchedulePolicy\",\"scheduleRunFrequency\":\"Daily\",\"scheduleRunTimes\":[\"2023-06-26T19:30:00Z\"],\"scheduleWeeklyFrequency\":0},\"retentionPolicy\":{\"retentionPolicyType\":\"LongTermRetentionPolicy\",\"dailySchedule\":{\"retentionTimes\":[\"2023-06-26T19:30:00Z\"],\"retentionDuration\":{\"count\":180,\"durationType\":\"Days\"}},\"weeklySchedule\":{\"daysOfTheWeek\":[\"Sunday\"],\"retentionTimes\":[\"2023-06-26T19:30:00Z\"],\"retentionDuration\":{\"count\":104,\"durationType\":\"Weeks\"}},\"monthlySchedule\":{\"retentionScheduleFormatType\":\"Weekly\",\"retentionScheduleWeekly\":{\"daysOfTheWeek\":[\"Sunday\"],\"weeksOfTheMonth\":[\"First\"]},\"retentionTimes\":[\"2023-06-26T19:30:00Z\"],\"retentionDuration\":{\"count\":60,\"durationType\":\"Months\"}},\"yearlySchedule\":{\"retentionScheduleFormatType\":\"Weekly\",\"monthsOfYear\":[\"January\"],\"retentionScheduleWeekly\":{\"daysOfTheWeek\":[\"Sunday\"],\"weeksOfTheMonth\":[\"First\"]},\"retentionTimes\":[\"2023-06-26T19:30:00Z\"],\"retentionDuration\":{\"count\":10,\"durationType\":\"Years\"}}},\"tieringPolicy\":{\"ArchivedRP\":{\"tieringMode\":\"DoNotTier\",\"duration\":0,\"durationType\":\"Invalid\"}}},{\"policyType\":\"Log\",\"schedulePolicy\":{\"schedulePolicyType\":\"LogSchedulePolicy\",\"scheduleFrequencyInMins\":120},\"retentionPolicy\":{\"retentionPolicyType\":\"SimpleRetentionPolicy\",\"retentionDuration\":{\"count\":15,\"durationType\":\"Days\"}}}],\"protectedItemsCount\":0}}"
+      "Content": "{\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/anssingh-rg/providers/Microsoft.RecoveryServices/vaults/anssingh-vault/backupPolicies/anssingh-testPolicy\",\"name\":\"anssingh-testPolicy\",\"type\":\"Microsoft.RecoveryServices/vaults/backupPolicies\",\"properties\":{\"backupManagementType\":\"AzureWorkload\",\"workLoadType\":\"SAPHanaDatabase\",\"settings\":{\"timeZone\":\"UTC\",\"issqlcompression\":false,\"isCompression\":false},\"subProtectionPolicy\":[{\"policyType\":\"Full\",\"schedulePolicy\":{\"schedulePolicyType\":\"SimpleSchedulePolicy\",\"scheduleRunFrequency\":\"Daily\",\"scheduleRunTimes\":[\"2023-07-03T19:30:00Z\"],\"scheduleWeeklyFrequency\":0},\"retentionPolicy\":{\"retentionPolicyType\":\"LongTermRetentionPolicy\",\"dailySchedule\":{\"retentionTimes\":[\"2023-07-03T19:30:00Z\"],\"retentionDuration\":{\"count\":180,\"durationType\":\"Days\"}},\"weeklySchedule\":{\"daysOfTheWeek\":[\"Sunday\"],\"retentionTimes\":[\"2023-07-03T19:30:00Z\"],\"retentionDuration\":{\"count\":104,\"durationType\":\"Weeks\"}},\"monthlySchedule\":{\"retentionScheduleFormatType\":\"Weekly\",\"retentionScheduleWeekly\":{\"daysOfTheWeek\":[\"Sunday\"],\"weeksOfTheMonth\":[\"First\"]},\"retentionTimes\":[\"2023-07-03T19:30:00Z\"],\"retentionDuration\":{\"count\":60,\"durationType\":\"Months\"}},\"yearlySchedule\":{\"retentionScheduleFormatType\":\"Weekly\",\"monthsOfYear\":[\"January\"],\"retentionScheduleWeekly\":{\"daysOfTheWeek\":[\"Sunday\"],\"weeksOfTheMonth\":[\"First\"]},\"retentionTimes\":[\"2023-07-03T19:30:00Z\"],\"retentionDuration\":{\"count\":10,\"durationType\":\"Years\"}}},\"tieringPolicy\":{\"ArchivedRP\":{\"tieringMode\":\"DoNotTier\",\"duration\":0,\"durationType\":\"Invalid\"}}},{\"policyType\":\"Log\",\"schedulePolicy\":{\"schedulePolicyType\":\"LogSchedulePolicy\",\"scheduleFrequencyInMins\":120},\"retentionPolicy\":{\"retentionPolicyType\":\"SimpleRetentionPolicy\",\"retentionDuration\":{\"count\":15,\"durationType\":\"Days\"}}}],\"protectedItemsCount\":0}}",
+      "isContentBase64": false
     }
   },
   "Edit-AzRecoveryServicesBackupSchedulePolicyClientObject+[NoContext]+SAPHANALog+$DELETE+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/anssingh-rg/providers/Microsoft.RecoveryServices/vaults/anssingh-vault/backupPolicies/anssingh-testPolicy?api-version=2023-02-01+3": {
@@ -777,13 +817,14 @@
       "Method": "DELETE",
       "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/anssingh-rg/providers/Microsoft.RecoveryServices/vaults/anssingh-vault/backupPolicies/anssingh-testPolicy?api-version=2023-02-01",
       "Content": null,
+      "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "39" ],
-        "x-ms-client-request-id": [ "cedb565e-548f-4efc-9382-9622d0487407" ],
+        "x-ms-client-request-id": [ "649dfda1-a4b1-4bc9-b945-3829bccf6caf" ],
         "CommandName": [ "Remove-AzRecoveryServicesBackupPolicy" ],
         "FullCommandName": [ "Remove-AzRecoveryServicesBackupPolicy_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.4", "Az.RecoveryServices/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -795,20 +836,21 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-request-id": [ "0a92e0ad-b7ff-4f95-aba0-5368186b6259" ],
-        "x-ms-client-request-id": [ "cedb565e-548f-4efc-9382-9622d0487407", "cedb565e-548f-4efc-9382-9622d0487407" ],
+        "x-ms-request-id": [ "39ace9e6-9b33-43fd-90b7-e835f52a691e" ],
+        "x-ms-client-request-id": [ "649dfda1-a4b1-4bc9-b945-3829bccf6caf", "649dfda1-a4b1-4bc9-b945-3829bccf6caf" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Powered-By": [ "ASP.NET" ],
         "x-ms-ratelimit-remaining-subscription-deletes": [ "14987" ],
-        "x-ms-correlation-request-id": [ "0a92e0ad-b7ff-4f95-aba0-5368186b6259" ],
-        "x-ms-routing-request-id": [ "JIOINDIACENTRAL:20230626T160425Z:0a92e0ad-b7ff-4f95-aba0-5368186b6259" ],
-        "Date": [ "Mon, 26 Jun 2023 16:04:25 GMT" ]
+        "x-ms-correlation-request-id": [ "39ace9e6-9b33-43fd-90b7-e835f52a691e" ],
+        "x-ms-routing-request-id": [ "JIOINDIAWEST:20230703T051354Z:39ace9e6-9b33-43fd-90b7-e835f52a691e" ],
+        "Date": [ "Mon, 03 Jul 2023 05:13:53 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ],
         "Content-Length": [ "0" ]
       },
-      "Content": null
+      "Content": null,
+      "isContentBase64": false
     }
   }
 }
