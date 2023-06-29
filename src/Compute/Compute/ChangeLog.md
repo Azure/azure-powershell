@@ -20,6 +20,8 @@
 
 -->
 ## Upcoming Release
+
+## Version 6.1.0
 * Added useful examples to the `New-AzVMConfig` help doc.
 * Added new `ResourceId` parameter to the `Get-AzVmss` cmdlet.
 * Added `-SecurityType`, `-EnableSecureBoot` and `-EnableVtpm` parameters to `New-AzVm`,`New-AzVmConfig`, `New-AzVmss`, `New-AzVmssConfig`, `Update-AzVm` and `Update-AzVmss` cmdlets.

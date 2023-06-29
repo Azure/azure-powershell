@@ -902,6 +902,8 @@
       "New-AzCognitiveServicesCommitmentPlanAssociation": {},
       "Remove-AzCognitiveServicesCommitmentPlanAssociation": {},
       "Get-AzCognitiveServicesCommitmentPlanAssociation": {},
+      "Get-AzCognitiveServicesModel": {},
+      "Get-AzCognitiveServicesUsage": {},
       "Get-AzCognitiveServicesAccountSkus": {}
     },
     "Az.Communication": {
@@ -1584,6 +1586,7 @@
       "New-AzDatabricksAccessConnector": {},
       "New-AzDatabricksVNetPeering": {},
       "New-AzDatabricksWorkspace": {},
+      "New-AzDatabricksWorkspaceProviderAuthorizationObject": {},
       "Remove-AzDatabricksAccessConnector": {},
       "Remove-AzDatabricksVNetPeering": {},
       "Remove-AzDatabricksWorkspace": {},
@@ -1905,6 +1908,7 @@
       "Stop-AzDataMigrationToSqlDb": {},
       "New-AzDataMigrationLoginsMigration": {},
       "New-AzDataMigrationTdeCertificateMigration": {},
+      "New-AzDataMigrationSqlServerSchema": {},
       "Get-AzDms": {},
       "Get-AzDmsTask": {},
       "Get-AzDmsProject": {},
@@ -3356,6 +3360,8 @@
       "Update-AzMixedRealitySpatialAnchorsAccount": {}
     },
     "Az.MobileNetwork": {
+      "Deploy-AzMobileNetworkReinstallPacketCoreControlPlane": {},
+      "Deploy-AzMobileNetworkRollbackPacketCoreControlPlane": {},
       "Get-AzMobileNetwork": {},
       "Get-AzMobileNetworkAttachedDataNetwork": {},
       "Get-AzMobileNetworkDataNetwork": {},
@@ -3397,6 +3403,7 @@
       "Remove-AzMobileNetworkSimPolicy": {},
       "Remove-AzMobileNetworkSite": {},
       "Remove-AzMobileNetworkSlice": {},
+      "Trace-AzMobileNetworkCollectPacketCoreControlPlaneDiagnosticPackage": {},
       "Update-AzMobileNetwork": {},
       "Update-AzMobileNetworkAttachedDataNetwork": {},
       "Update-AzMobileNetworkDataNetwork": {},
@@ -4875,6 +4882,12 @@
       "Start-AzPurviewScanResultScan": {},
       "Stop-AzPurviewScanResultScan": {}
     },
+    "Az.Qumulo": {
+      "Get-AzQumuloFileSystem": {},
+      "New-AzQumuloFileSystem": {},
+      "Remove-AzQumuloFileSystem": {},
+      "Update-AzQumuloFileSystem": {}
+    },
     "Az.Quota": {
       "Get-AzQuota": {},
       "Get-AzQuotaOperation": {},
@@ -5333,6 +5346,21 @@
       "Update-AzManagementGroupHierarchySetting": {},
       "Get-AzManagementGroupHierarchySetting": {},
       "Remove-AzManagementGroupHierarchySetting": {},
+      "Get-AzResourceGroupDeploymentStack": {},
+      "New-AzResourceGroupDeploymentStack": {},
+      "New-AzSubscriptionDeploymentStack": {},
+      "Remove-AzResourceGroupDeploymentStack": {},
+      "Remove-AzSubscriptionDeploymentStack": {},
+      "Set-AzResourceGroupDeploymentStack": {},
+      "Set-AzSubscriptionDeploymentStack": {},
+      "Get-AzSubscriptionDeploymentStack": {},
+      "Save-AzResourceGroupDeploymentStackTemplate": {},
+      "Save-AzSubscriptionDeploymentStackTemplate": {},
+      "Save-AzManagementGroupDeploymentStackTemplate": {},
+      "Set-AzManagementGroupDeploymentStack": {},
+      "New-AzManagementGroupDeploymentStack": {},
+      "Remove-AzManagementGroupDeploymentStack": {},
+      "Get-AzManagementGroupDeploymentStack": {},
       "Add-AzADAppPermission": {},
       "Add-AzADGroupMember": {},
       "Get-AzADAppCredential": {},
@@ -5570,6 +5598,12 @@
       "Update-AzSentinelIncidentComment": {},
       "Update-AzSentinelIncidentRelation": {},
       "Update-AzSentinelSetting": {}
+    },
+    "Az.SelfHelp": {
+      "Get-AzSelfHelpDiagnostic": {},
+      "Get-AzSelfHelpDiscoverySolution": {},
+      "New-AzSelfHelpDiagnostic": {},
+      "Test-AzSelfHelpDiagnosticNameAvailability": {}
     },
     "Az.ServiceBus": {
       "New-AzServiceBusAuthorizationRuleSASToken": {},
@@ -5825,7 +5859,6 @@
     "Az.Sql": {
       "Invoke-AzSqlServerExternalGovernanceStatusRefresh": {},
       "Get-AzSqlDatabaseTransparentDataEncryption": {},
-      "Get-AzSqlDatabaseTransparentDataEncryptionActivity": {},
       "Set-AzSqlDatabaseTransparentDataEncryption": {},
       "Get-AzSqlDatabaseUpgradeHint": {},
       "Get-AzSqlServerUpgradeHint": {},
@@ -6121,6 +6154,14 @@
       "Enable-AzSqlInstanceDatabaseLedgerDigestUpload": {},
       "Disable-AzSqlInstanceDatabaseLedgerDigestUpload": {},
       "Get-AzSqlInstanceDatabaseLedgerDigestUpload": {},
+      "Copy-AzSqlInstanceDatabase": {},
+      "Move-AzSqlInstanceDatabase": {},
+      "Complete-AzSqlInstanceDatabaseMove": {},
+      "Complete-AzSqlInstanceDatabaseCopy": {},
+      "Stop-AzSqlInstanceDatabaseMove": {},
+      "Stop-AzSqlInstanceDatabaseCopy": {},
+      "Get-AzSqlInstanceDatabaseCopyOperation": {},
+      "Get-AzSqlInstanceDatabaseMoveOperation": {},
       "Get-AzSqlDatabaseServerAuditingPolicy": {},
       "Remove-AzSqlDatabaseServerAuditing": {},
       "Set-AzSqlDatabaseServerAuditingPolicy": {},

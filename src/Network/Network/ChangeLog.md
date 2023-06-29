@@ -19,6 +19,8 @@
 --->
 
 ## Upcoming Release
+
+## Version 6.1.0
 * Added new cmdlets to get Connection child resource of Network Virtual Appliance.
     -`Get-AzNetworkVirtualApplianceConnection`
 * Updated cmdlets to return connections in Network Virtual Appliance

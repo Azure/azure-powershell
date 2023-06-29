@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 5.8.0
 * Supported TierToCold and TierToHot in Storage account management policy
     - `Add-AzStorageAccountManagementPolicyAction`
 * Supported Blob Tier Cold
