@@ -414,6 +414,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DisablePublish
+Disable manual publish operation in ADF studio to favor automated publish.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Location
 The data factory is created in this region.
 
