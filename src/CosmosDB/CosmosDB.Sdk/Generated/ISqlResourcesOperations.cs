@@ -474,6 +474,37 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// </exception>
         Task<AzureOperationHeaderResponse<SqlResourcesDeleteSqlContainerHeaders>> DeleteSqlContainerWithHttpMessagesAsync(string resourceGroupName, string accountName, string databaseName, string containerName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
+        /// Merges the partitions of a SQL database
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='databaseName'>
+        /// Cosmos DB database name.
+        /// </param>
+        /// <param name='mergeParameters'>
+        /// The parameters for the merge operation.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<PhysicalPartitionStorageInfoCollection,SqlResourcesSqlDatabasePartitionMergeHeaders>> SqlDatabasePartitionMergeWithHttpMessagesAsync(string resourceGroupName, string accountName, string databaseName, MergeParameters mergeParameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
         /// Merges the partitions of a SQL Container
         /// </summary>
         /// <param name='resourceGroupName'>
@@ -1677,6 +1708,37 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// Thrown when a required parameter is null
         /// </exception>
         Task<AzureOperationHeaderResponse<SqlResourcesDeleteSqlContainerHeaders>> BeginDeleteSqlContainerWithHttpMessagesAsync(string resourceGroupName, string accountName, string databaseName, string containerName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Merges the partitions of a SQL database
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='databaseName'>
+        /// Cosmos DB database name.
+        /// </param>
+        /// <param name='mergeParameters'>
+        /// The parameters for the merge operation.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<PhysicalPartitionStorageInfoCollection,SqlResourcesSqlDatabasePartitionMergeHeaders>> BeginSqlDatabasePartitionMergeWithHttpMessagesAsync(string resourceGroupName, string accountName, string databaseName, MergeParameters mergeParameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Merges the partitions of a SQL Container
         /// </summary>

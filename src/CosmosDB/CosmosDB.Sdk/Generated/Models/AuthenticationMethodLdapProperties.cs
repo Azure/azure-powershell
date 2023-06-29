@@ -45,7 +45,9 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// <param name="searchFilterTemplate">Template to use for searching.
         /// Defaults to (cn=%s) where %s will be replaced by the username used
         /// to login.</param>
-        public AuthenticationMethodLdapProperties(string serverHostname = default(string), int? serverPort = default(int?), string serviceUserDistinguishedName = default(string), string serviceUserPassword = default(string), string searchBaseDistinguishedName = default(string), string searchFilterTemplate = default(string), IList<Certificate> serverCertificates = default(IList<Certificate>))
+        /// <param name="connectionTimeoutInMs">Timeout for connecting to the
+        /// LDAP server in miliseconds. The default is 5000 ms.</param>
+        public AuthenticationMethodLdapProperties(string serverHostname = default(string), int? serverPort = default(int?), string serviceUserDistinguishedName = default(string), string serviceUserPassword = default(string), string searchBaseDistinguishedName = default(string), string searchFilterTemplate = default(string), IList<Certificate> serverCertificates = default(IList<Certificate>), int? connectionTimeoutInMs = default(int?))
         {
             ServerHostname = serverHostname;
             ServerPort = serverPort;
@@ -54,6 +56,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
             SearchBaseDistinguishedName = searchBaseDistinguishedName;
             SearchFilterTemplate = searchFilterTemplate;
             ServerCertificates = serverCertificates;
+            ConnectionTimeoutInMs = connectionTimeoutInMs;
             CustomInit();
         }
 
@@ -105,6 +108,13 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// </summary>
         [JsonProperty(PropertyName = "serverCertificates")]
         public IList<Certificate> ServerCertificates { get; set; }
+
+        /// <summary>
+        /// Gets or sets timeout for connecting to the LDAP server in
+        /// miliseconds. The default is 5000 ms.
+        /// </summary>
+        [JsonProperty(PropertyName = "connectionTimeoutInMs")]
+        public int? ConnectionTimeoutInMs { get; set; }
 
     }
 }
