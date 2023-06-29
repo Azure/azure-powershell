@@ -58,7 +58,7 @@ module-version: 0.1.0
 resourcegroup-append: true
 nested-object-to-string: true
 identity-correction-for-post: true
-ps-pipeline-input-disable-getByIteself-and-enable-listByParent: false
+enable-parent-pipeline-input-for-list: false
 
 directive:
   - where:
