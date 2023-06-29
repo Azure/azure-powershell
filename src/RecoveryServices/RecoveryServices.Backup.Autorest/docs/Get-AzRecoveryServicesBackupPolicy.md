@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.RecoveryServices
-online version: https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackuppolicy
+online version: https://learn.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackuppolicy
 schema: 2.0.0
 ---
 
@@ -33,27 +33,39 @@ Status of the operation can be fetched using GetPolicyOperationResult API.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get all backup policies in a recovery services vault
 ```powershell
-{{ Add code here }}
+$pol = Get-AzRecoveryServicesBackupProtectionPolicy -ResourceGroupName "myresourcegroup" -VaultName "myvault"
+$pol
 ```
 
 ```output
-{{ Add output here }}
+ETag Id                                                                                                                                                                           Location Name                Type
+---- --                                                                                                                                                                           -------- ----                ----
+     /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.RecoveryServices/vaults/myvault/backupPolicies/policy1                          policy1             Microsoft.RecoveryServices/vaults/backupPolicies
+     /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.RecoveryServices/vaults/myvault/backupPolicies/HourlyLogBackup                  HourlyLogBackup     Microsoft.RecoveryServices/vaults/backupPolicies
+     /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.RecoveryServices/vaults/myvault/backupPolicies/DefaultPolicy                    DefaultPolicy       Microsoft.RecoveryServices/vaults/backupPolicies
+     /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.RecoveryServices/vaults/myvault/backupPolicies/policy2                          policy2             Microsoft.RecoveryServices/vaults/backupPolicies
+     /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.RecoveryServices/vaults/myvault/backupPolicies/testPolicy                       testPolicy          Microsoft.RecoveryServices/vaults/backupPolicies
+     /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.RecoveryServices/vaults/myvault/backupPolicies/EnhancedPolicy                   EnhancedPolicy      Microsoft.RecoveryServices/vaults/backupPolicies
 ```
 
-{{ Add description here }}
+Gets all the backup policies in the specified vault in the specified resource group.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get info for a specific backup policy
 ```powershell
-{{ Add code here }}
+$pol = Get-AzRecoveryServicesBackupProtectionPolicy -ResourceGroupName "myresourcegroup" -VaultName "myvault" -Name "DefaultPolicy"
+$pol 
 ```
 
 ```output
-{{ Add output here }}
+ETag Id                                                                                                                                                                           Location Name       Type
+---- --                                                                                                                                                                           -------- ----       ----
+     /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.RecoveryServices/vaults/myvault/backupPolicies/testPolicy                       testPolicy Microsoft.RecoveryServices/vaults/backupPolicies
+
 ```
 
-{{ Add description here }}
+Gets info for a specific backup policy by its name in the specified vault in the specified resource group.
 
 ## PARAMETERS
 

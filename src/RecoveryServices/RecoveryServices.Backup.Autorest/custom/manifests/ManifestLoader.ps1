@@ -20,7 +20,6 @@ function LoadManifest {
     }
 }
 
-# RsvRef : get DSTypes - check this code
 function GetDatasourceTypes {
     [Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.DoNotExportAttribute()]
     [OutputType('PSObject')]

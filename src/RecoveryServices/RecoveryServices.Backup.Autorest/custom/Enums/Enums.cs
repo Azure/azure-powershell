@@ -2,7 +2,6 @@
 
 namespace Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Support
 {
-    // RsvRef: check all the types in this file are used. if not, remove.
     public enum DatasourceTypes
     {
         AzureVM = 0,
@@ -17,28 +16,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Support
         GeoRedundant = 0,
         LocallyRedundant,
         ZoneRedundant
-    }
-
-    public enum DataStoreType
-    {
-        ArchiveStore = 0,
-        OperationalStore,
-        VaultStore
-    }
-
-    public enum DurationType
-    {
-        Days = 0,
-        Weeks,
-        Months,
-        Years
-    }
-
-    public enum CopyOption
-    {
-        CustomCopyOption = 0,
-        ImmediateCopyOption,
-        CopyOnExpiryOption
     }
 
     public enum BackupFrequency
@@ -63,23 +40,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Support
         Yearly
     }
 
-    public enum TagName
-    {
-        Daily = 0,
-        Weekly,
-        Monthly,
-        Yearly
-    }
-
-    public enum AbsoluteTagCriteria
-    {
-        AllBackup = 0,
-        FirstOfDay,
-        FirstOfMonth,
-        FirstOfWeek,
-        FirstOfYear
-    }
-    
     public enum WeeksOfMonth
     {
         First = 0,
@@ -128,26 +88,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Support
         OriginalLocation,
         RestoreAsFiles
     }
-
-    /*public enum ProtectionStatus
-    {
-        ConfiguringProtection = 0,
-        ProtectionConfigured,
-        ConfiguringProtectionFailed,
-        ProtectionError
-    }
-*/
-    public enum JobOperation
-    {
-        OnDemandBackup = 0,
-        ScheduledBackup,
-        Restore
-    }
-
-    /*public enum JobStatus
-    {
-        InProgress = 0,
-        Completed,
-        Failed
-    }*/
 }

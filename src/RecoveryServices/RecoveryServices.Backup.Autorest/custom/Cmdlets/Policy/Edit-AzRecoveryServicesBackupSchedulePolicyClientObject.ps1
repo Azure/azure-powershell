@@ -1,7 +1,6 @@
 ﻿function Edit-AzRecoveryServicesBackupSchedulePolicyClientObject {
 	[OutputType('Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IProtectionPolicy')]
     [CmdletBinding(PositionalBinding=$false)]
-    # RsvRef: should we call it workload type
     [Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Description('Edits the schedule policy in the specified backup policy object.')]
 
 	param (

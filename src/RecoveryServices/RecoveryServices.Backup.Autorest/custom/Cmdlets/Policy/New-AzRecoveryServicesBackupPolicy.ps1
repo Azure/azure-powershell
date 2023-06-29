@@ -182,20 +182,15 @@
         $null = $PSBoundParameters.Remove("TierAfterDurationType")
 
 
-        # RsvRef
-        # public string[] ResourceGuardOperationRequest --- this should be a parameter (check in SDK code) ? If yes, optional parameters ? 
-                
-        # RsvRef : add policy validation (preferably one entry point)
+        # RsvRef: public string[] ResourceGuardOperationRequest - this should be a parameter, check in SDK code
         
         $policyObject = [Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.ProtectionPolicyResource]::new()
         $policyObject.Property = $Policy
 
         
-        
         $null = $PSBoundParameters.Remove("Policy")
         $null = $PSBoundParameters.Add("Parameter", $policyObject)
-
-        # RsvRef : change command name while taking a pull or modify the directive
+                
         Az.RecoveryServices.Internal\New-AzRecoveryServicesBackupPolicy @PSBoundParameters
     }
 }

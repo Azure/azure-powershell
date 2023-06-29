@@ -1,7 +1,7 @@
 ---
 Module Name: Az.RecoveryServices
 Module Guid: 37eaf44e-78f7-4a5a-82d1-f6350681704b
-Download Help Link: https://docs.microsoft.com/powershell/module/az.recoveryservices
+Download Help Link: https://learn.microsoft.com/powershell/module/az.recoveryservices
 Help Version: 1.0.0.0
 Locale: en-US
 ---
@@ -11,7 +11,7 @@ Locale: en-US
 Microsoft Azure PowerShell: RecoveryServices cmdlets
 
 ## Az.RecoveryServices Cmdlets
-### [Edit-AzrecoveryServicesBackupRetentionPolicyClientObject](Edit-AzrecoveryServicesBackupRetentionPolicyClientObject.md)
+### [Edit-AzRecoveryServicesBackupRetentionPolicyClientObject](Edit-AzRecoveryServicesBackupRetentionPolicyClientObject.md)
 Edits the retention settings for the policy client object
 
 ### [Edit-AzRecoveryServicesBackupSchedulePolicyClientObject](Edit-AzRecoveryServicesBackupSchedulePolicyClientObject.md)

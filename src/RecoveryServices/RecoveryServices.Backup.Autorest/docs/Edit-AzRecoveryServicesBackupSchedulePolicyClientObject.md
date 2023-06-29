@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.RecoveryServices
-online version: https://docs.microsoft.com/powershell/module/az.recoveryservices/edit-azrecoveryservicesbackupschedulepolicyclientobject
+online version: https://learn.microsoft.com/powershell/module/az.recoveryservices/edit-azrecoveryservicesbackupschedulepolicyclientobject
 schema: 2.0.0
 ---
 

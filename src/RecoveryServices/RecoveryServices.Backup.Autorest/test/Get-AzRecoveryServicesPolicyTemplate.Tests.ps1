@@ -15,7 +15,15 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzRecoveryServicesPolicyT
 }
 
 Describe 'Get-AzRecoveryServicesPolicyTemplate' {
-    It '__AllParameterSets' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It '__AllParameterSets' {
+        
+        $tempPolicy = Get-AzRecoveryServicesPolicyTemplate -DatasourceType AzureVM
+        $tempPolicy.SchedulePolicy.ScheduleRunTime[0].ToString() -eq "5/22/2023 2:00:00 PM" | Should be $true
+
+        $tempPolicy = Get-AzRecoveryServicesPolicyTemplate -DatasourceType MSSQL
+        $tempPolicy.SubProtectionPolicy[0].SchedulePolicy.ScheduleRunTime[0].ToString() -eq "9/30/2020 7:30:00 PM"
+
+        $tempPolicy = Get-AzRecoveryServicesPolicyTemplate -DatasourceType SAPHANA
+        $tempPolicy.SubProtectionPolicy[0].SchedulePolicy.ScheduleRunTime[0].ToString() -eq "9/30/2020 7:30:00 PM"
     }
 }

@@ -625,10 +625,6 @@ function ValidateMandatoryFields {
                         $errormsg = "Weeks of the month must not be empty for week based monthly retention."
 				        throw $errormsg
                     }
-                    #Write-Host "Monthly retention duration in months: $($Policy.SubProtectionPolicy[$Index].RetentionPolicy.MonthlySchedule.RetentionDuration.Count)"
-                    #Write-Host "Monthly retention: $($Policy.SubProtectionPolicy[$Index].RetentionPolicy.MonthlySchedule.RetentionScheduleFormatType)"
-                    #Write-Host "Monthly retention Days of the week: $($Policy.SubProtectionPolicy[$Index].RetentionPolicy.MonthlySchedule.RetentionScheduleWeekly.DaysOfTheWeek)"
-                    #Write-Host "Monthly retention Weeks of the month: $($Policy.SubProtectionPolicy[$Index].RetentionPolicy.MonthlySchedule.RetentionScheduleWeekly.weeksOfTheMonth)"
                 }
                 elseif($Policy.SubProtectionPolicy[$Index].RetentionPolicy.MonthlySchedule.RetentionScheduleFormatType -eq "Daily")
                 {
@@ -637,15 +633,12 @@ function ValidateMandatoryFields {
                         $errormsg = "Days of the month must not be empty for day based monthly retention."
 				        throw $errormsg
                     }
-                    #Write-Host "Monthly retention duration in months: $($Policy.SubProtectionPolicy[$Index].RetentionPolicy.MonthlySchedule.RetentionDuration.Count)"
-                    #Write-Host "Monthly retention: $($Policy.SubProtectionPolicy[$Index].RetentionPolicy.MonthlySchedule.RetentionScheduleFormatType)"
-                    #$days = $pol1.SubProtectionPolicy[$Index].RetentionPolicy.MonthlySchedule.RetentionScheduleDaily.DaysOfTheMonth
-                    #Write-Host "Monthly retention Days of the month:"               
-                    #foreach ($day in $days) {
-                    #    $dayValue = $day.Date
-                    #    Write-Host $dayValu$Index
-                    #}
                 }  
+                else
+                {
+                    $errormsg="RetentionScheduleFormatType cannot be null. Please specify the type: daily/weekly"
+                    throw $errormsg
+                }
 			}
             else    #AzureVM
             {
@@ -666,10 +659,6 @@ function ValidateMandatoryFields {
                         $errormsg = "Weeks of the month must not be empty for week based monthly retention."
 				        throw $errormsg
                     }
-                    #Write-Host "Monthly retention duration in months: $($Policy.RetentionPolicy.MonthlySchedule.RetentionDuration.Count)"
-                    #Write-Host "Monthly retention: $($Policy.RetentionPolicy.MonthlySchedule.RetentionScheduleFormatType)"
-                    #Write-Host "Monthly retention Days of the week: $($Policy.RetentionPolicy.MonthlySchedule.RetentionScheduleWeekly.DaysOfTheWeek)"
-                    #Write-Host "Monthly retention Weeks of the month: $($Policy.RetentionPolicy.MonthlySchedule.RetentionScheduleWeekly.weeksOfTheMonth)"
                 }
                 elseif($Policy.RetentionPolicy.MonthlySchedule.RetentionScheduleFormatType -eq "Daily")
                 {
@@ -678,15 +667,12 @@ function ValidateMandatoryFields {
                         $errormsg = "Days of the month must not be empty for day based monthly retention."
 				        throw $errormsg
                     }
-                    #Write-Host "Monthly retention duration in months: $($Policy.RetentionPolicy.MonthlySchedule.RetentionDuration.Count)"
-                    #Write-Host "Monthly retention: $($Policy.RetentionPolicy.MonthlySchedule.RetentionScheduleFormatType)"
-                    #$days = $pol1.RetentionPolicy.MonthlySchedule.RetentionScheduleDaily.DaysOfTheMonth
-                    #Write-Host "Monthly retention Days of the month:"               
-                    #foreach ($day in $days) {
-                    #    $dayValue = $day.Date
-                    #    Write-Host $dayValue
-                    #}
                 }  
+                else
+                {
+                    $errormsg="RetentionScheduleFormatType cannot be null. Please specify the type: daily/weekly"
+                    throw $errormsg
+                }
             }
 		}
 
@@ -717,12 +703,7 @@ function ValidateMandatoryFields {
                     {
                         $errormsg = "Months of the year must not be empty for week based Yearly retention."
 				        throw $errormsg
-                    }
-                    #Write-Host "Yearly retention duration in years: $($Policy.SubProtectionPolicy[$Index].RetentionPolicy.YearlySchedule.RetentionDuration.Count)"
-                    #Write-Host "Yearly retention: $($Policy.SubProtectionPolicy[$Index].RetentionPolicy.YearlySchedule.RetentionScheduleFormatType)"
-                    #Write-Host "Yearly retention Days of the week: $($Policy.SubProtectionPolicy[$Index].RetentionPolicy.YearlySchedule.RetentionScheduleWeekly.DaysOfTheWeek)"
-                    #Write-Host "Yearly retention Weeks of the month: $($Policy.SubProtectionPolicy[$Index].RetentionPolicy.YearlySchedule.RetentionScheduleWeekly.weeksOfTheMonth)"
-                    #Write-Host "Yearly retention Months of the year: $($Policy.SubProtectionPolicy[$Index].RetentionPolicy.YearlySchedule.monthsOfYear)"                    
+                    }                   
                 }
                 elseif($Policy.SubProtectionPolicy[$Index].RetentionPolicy.YearlySchedule.RetentionScheduleFormatType -eq "Daily")
                 {
@@ -736,16 +717,12 @@ function ValidateMandatoryFields {
                         $errormsg = "Days of the month must not be empty for day based Yearly retention."
 				        throw $errormsg
                     }  
-                    #Write-Host "Yearly retention duration in years: $($Policy.SubProtectionPolicy[$Index].RetentionPolicy.YearlySchedule.RetentionDuration.Count)"
-                    #Write-Host "Yearly retention: $($Policy.SubProtectionPolicy[$Index].RetentionPolicy.YearlySchedule.RetentionScheduleFormatType)"
-                    #Write-Host "Yearly retention Months of the year: $($Policy.SubProtectionPolicy[$Index].RetentionPolicy.YearlySchedule.monthsOfYear)"
-                    #$days = $pol1.SubProtectionPolicy[$Index].RetentionPolicy.YearlySchedule.RetentionScheduleDaily.DaysOfTheMonth
-                    #Write-Host "Yearly retention Days of the month:"               
-                    #foreach ($day in $days) {
-                    #    $dayValue = $day.Date
-                    #    Write-Host $dayValue
-                    #}
                 }  
+                else
+                {
+                    $errormsg="RetentionScheduleFormatType cannot be null. Please specify the type: daily/weekly"
+                    throw $errormsg
+                }
 			}
             else    #AzureVM
             {
@@ -771,11 +748,6 @@ function ValidateMandatoryFields {
                         $errormsg = "Months of the year must not be empty for week based Yearly retention."
 				        throw $errormsg
                     }
-                    #Write-Host "Yearly retention duration in years: $($Policy.RetentionPolicy.YearlySchedule.RetentionDuration.Count)"
-                    #Write-Host "Yearly retention: $($Policy.RetentionPolicy.YearlySchedule.RetentionScheduleFormatType)"
-                    #Write-Host "Yearly retention Days of the week: $($Policy.RetentionPolicy.YearlySchedule.RetentionScheduleWeekly.DaysOfTheWeek)"
-                    #Write-Host "Yearly retention Weeks of the month: $($Policy.RetentionPolicy.YearlySchedule.RetentionScheduleWeekly.weeksOfTheMonth)"
-                    #Write-Host "Yearly retention Months of the year: $($Policy.RetentionPolicy.YearlySchedule.monthsOfYear)"
                 }
                 elseif($Policy.RetentionPolicy.YearlySchedule.RetentionScheduleFormatType -eq "Daily")
                 {
@@ -789,16 +761,12 @@ function ValidateMandatoryFields {
                         $errormsg = "Days of the month must not be empty for day based Yearly retention."
 				        throw $errormsg
                     }
-                    #Write-Host "Yearly retention duration in years: $($Policy.RetentionPolicy.YearlySchedule.RetentionDuration.Count)"
-                    #Write-Host "Yearly retention: $($Policy.RetentionPolicy.YearlySchedule.RetentionScheduleFormatType)"
-                    #Write-Host "Yearly retention Months of the year: $($Policy.RetentionPolicy.YearlySchedule.monthsOfYear)"
-                    #$days = $pol1.RetentionPolicy.YearlySchedule.RetentionScheduleDaily.DaysOfTheMonth
-                    #Write-Host "Yearly retention Days of the month:"               
-                    #foreach ($day in $days) {
-                    #    $dayValue = $day.Date
-                    #    Write-Host $dayValue
-                    #}
                 }  
+                else
+                {
+                    $errormsg="RetentionScheduleFormatType cannot be null. Please specify the type: daily/weekly"
+                    throw $errormsg
+                }
             }
         }
     }
