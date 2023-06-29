@@ -97,6 +97,13 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Test.ScenarioTests
 
         [Fact, TestPriority(0)]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewAzureRmServiceFabricClusterWithSelfSignedCert()
+        {
+            TestRunner.RunTestScript("Test-NewAzureRmServiceFabricClusterWithSelfSignedCert");
+        }
+
+        [Fact, TestPriority(0)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewAzureRmServiceFabricClusterCNCert()
         {
             TestRunner.RunTestScript("Test-NewAzureRmServiceFabricClusterCNCert");

@@ -98,8 +98,6 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         private Lazy<IComputeManagementClient> computeClient;
         private Lazy<IKeyVaultManagementClient> keyVaultManageClient;
         private Lazy<GraphRbacManagementClient> graphClient;
-        private Lazy<CertificateClient> certificateClient;
-        private Lazy<SecretClient> secretClient;
 
         internal ServiceFabricManagementClient SFRPClient
         {
@@ -123,18 +121,6 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         {
             get { return graphClient.Value; }
             set { graphClient = new Lazy<GraphRbacManagementClient>(() => value); }
-        }
-
-        internal CertificateClient KeyVaultCertificateClient
-        {
-            get { return certificateClient.Value; }
-            set { certificateClient = new Lazy<CertificateClient>(() => value); }
-        }
-
-        internal SecretClient KeyVaultSecretClient
-        {
-            get { return secretClient.Value; }
-            set { secretClient = new Lazy<SecretClient>(() => value); }
         }
 
         public ServiceFabricCmdletBase() : base()

@@ -89,6 +89,23 @@ function Test-NewAzureRmServiceFabricCluster
 	Assert-Null $newClsuter.CertificateCommonNames
 }
 
+function Test-NewAzureRmServiceFabricClusterWithSelfSignedCert
+{
+    $clusterName = "azurermsfclustertptest2"
+    $resourceGroupName = "azurermsfrgTP11"
+    $vmPassword = Get-RandomPwd | ConvertTo-SecureString -Force -AsPlainText
+	$subscriptionId = 'b36cdf46-b75d-4dc2-9fe1-1296ee8c623d'
+	$appId = '1950a258-227b-4e31-a9cf-717495945fc2'
+	$princId = 'b4f91a72-fd09-4e86-9280-7e0eae864947'
+	$user = 'mwesigwaguma@microsoft.com'
+
+    $cluster = New-AzServiceFabricCluster -ResourceGroupName $resourceGroupName -VmPassword $vmPassword `
+        -TemplateFile (Join-Path $pwd '\Resources\template.json') -ParameterFile (Join-Path $pwd '\Resources\parameters.json') -Verbose
+
+	Assert-NotNull Cluster
+	Assert-NotNull Cluster.Certificate
+}
+
 function Test-NewAzureRmServiceFabricClusterCNCert
 {
     $clusterName = "azurermsfcntest"
