@@ -15,7 +15,7 @@
 
 $ArtifactsFolder = "$PSScriptRoot/../../../artifacts"
 $FilesChangedPaths = "$ArtifactsFolder/FilesChanged.txt"
-$ExceptionFilePath = "$ArtifactsFolder/StaticAnalysisResults/VerifyGenSdkIssues.csv"
+$ExceptionFilePath = "$ArtifactsFolder/StaticAnalysisResults/GeneratedSdkIssues.csv"
 
 Class GeneratedSdkIssue {
     [String]$Module

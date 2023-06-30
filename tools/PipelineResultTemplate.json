@@ -47,8 +47,8 @@
         "Details": [
         ]
     },
-    "verify-gensdk": {
-        "PhaseName": "Verify Generated Sdk",
+    "generated-sdk": {
+        "PhaseName": "Generated Sdk Check",
         "Order": 9,
         "Details": [
         ]
