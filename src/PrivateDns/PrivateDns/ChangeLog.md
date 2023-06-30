@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Removing length validation for DNS TXT record to make it consistent with Azure CLI and Azure portal.
+* Removed length validation for DNS TXT record to make it consistent with Azure CLI and Azure portal.
 
 ## Version 1.0.3
 * Corrected verbose output string formatting for Remove-AzPrivateDnsRecordSet
