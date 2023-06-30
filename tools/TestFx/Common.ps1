@@ -580,6 +580,7 @@ function getSubscriptionFromEnvironment
    return $subscription
 }
 
+<#
 function Get-Location
 {
     param([string]$providerNamespace, [string]$resourceType, [string]$preferredLocation, [switch]$UseCanonical)
@@ -635,6 +636,7 @@ function Normalize-Location
     param([string]$location)
     return $location.ToLower() -replace '[^a-z0-9]'
 }
+#>
 
 <#
 .SYNOPSIS
