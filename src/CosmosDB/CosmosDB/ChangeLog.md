@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 1.11.1
 * Locations showed in response included status, isSubscriptionRegionAccessAllowedForRegular and isSubscriptionRegionAccessAllowedForAz properties
 
 ## Version 1.11.0
