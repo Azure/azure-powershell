@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -62,7 +62,6 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "RouteTable")]
         public PSRouteTable RouteTable { get; set; }
 
-        [GenericBreakingChange("Update Property Name", OldWay = "-ResourceId", NewWay = "-NatGatewayId")]
         [Alias("NatGatewayId")]
         [Parameter(
             Mandatory = false,
@@ -71,7 +70,6 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "Specifies the Id of NAT Gateway resource associated with the subnet configuration")]
         public string ResourceId { get; set; }
 
-        [GenericBreakingChange("Update Property Name", OldWay = "-InputObject", NewWay = "-NatGateway")]
         [Alias("NatGateway")]
         [Parameter(
             Mandatory = false,
