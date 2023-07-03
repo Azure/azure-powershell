@@ -17,7 +17,6 @@ Breaking changes and preview messages for auto gen cmdlets are added through dir
   set:
     breaking-change:
       deprecated-by-version: 5.0.0
-      deprecated-by-azversion: 20.0.0
       change-effective-date: 2055/10/30
 ```
 
@@ -31,7 +30,6 @@ Breaking changes and preview messages for auto gen cmdlets are added through dir
     breaking-change:
       replacement-cmdlet: New-AzNewVNetPeering
       deprecated-by-version: 5.0.0
-      deprecated-by-azversion: 20.0.0
       change-effective-date: 2022/05/30
 ```
 
@@ -44,7 +42,6 @@ Breaking changes and preview messages for auto gen cmdlets are added through dir
     breaking-change:
       replacement-cmdlet: $.replace("VNetPeering", "VNewNetPeering")
       deprecated-by-version: 5.0.0
-      deprecated-by-version: 20.0.0
       change-effective-date: 2022/05/30
 ```
 
@@ -66,7 +63,6 @@ Breaking changes and preview messages for auto gen cmdlets are added through dir
         - PropertyD
       change-description: This is a custom message for the change.
       deprecated-by-version: 5.0.0
-      deprecated-by-version: 20.0.0
       change-effective-date: 2022/05/11
 ```
 
@@ -80,7 +76,6 @@ Breaking changes and preview messages for auto gen cmdlets are added through dir
   set:
     breaking-change:
       deprecated-by-version: 5.0.0
-      deprecated-by-azversion: 5.0.0
       change-effective-date: 2022/05/30
 ```
 
@@ -96,7 +91,6 @@ Breaking changes and preview messages for auto gen cmdlets are added through dir
       become-mandatory: true
       change-description: This is a custom message for the change.
       deprecated-by-version: 5.0.0
-      deprecated-by-version: 20.0.0
       change-effective-date: 2022/05/30
 ```
 
@@ -114,32 +108,32 @@ Breaking changes and preview messages for auto gen cmdlets are added through dir
 
 To add breaking changes or preview messages for a customized cmdlets, you will need to add related attributes in code directly. And following are some common cases.
 
-You must provide expected breaking change az version and moudle verision otherwise it won't compile. The first version is expected az version while the second one is expected moudle verision.
+(For Case 1/2/3/5, the attributes are applied on the functions. For case 5, the attribute is applied in the parameter.)
 
 **Note: these examples are based on the Az.Databricks module. Please double check the namesapce. You will most likely need to replace "Databricks" with your module's name.**
 
-## Case 1 — Generic Breaking change for a cmdlet
+## Case 1 — Breaking change for a cmdlet
 
 ```csharp
-[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.GenericBreakingChangeWithVersionAttribute("16.0.0", "4.0.0", "2022/05/30")
+[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.CmdletBreakingChangeAttribute("4.0", "2022/05/30", ReplacementCmdletName = 'replace-xxx')
 ```
 
-## Case 2 — Breaking change for a cmdlet
+## Case 2 — Breaking change for parameter sets(variants)
 
 ```csharp
-[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.CmdletDeprecationWithVersionAttribute("16.0.0", "4.0.0", "2022/05/30", ReplacementCmdletName = 'replace-xxx')
+[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.ParameterSetBreakingChangeAttribute(("parametersetname1", "parametersetname2"), "4.0", "2022/05/30")]
 ```
 
 ## Case 3 — Breaking change for an output type
 
 ```csharp
-[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.CmdletOutputBreakingChangeWithVersionAttribute("oldtype", "11.0.0", "5.0.0", "2022/05/11", ReplacementCmdletOutputType = "newtype", DeprecatedOutputProperties = ("propertyA", "PropertyB"), NewOutputProperties = ("PropertyC", "PropertyD"))]
+[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.OutputBreakingChange("oldtype", "5.0.0", "2022/05/11", ReplacementCmdletOutputType = "newtype", DeprecatedOutputProperties = ("propertyA", "PropertyB"), NewOutputProperties = ("PropertyC", "PropertyD"))]
 ```
 
 ## Case 4 — Breaking change for a parameter
 
 ```csharp
-[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.CmdletParameterBreakingChangeWithVersionAttribute("ResourceGroupName", "11.0.0", "4.1.0", "2028/06/18")]
+[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.ParameterBreakingChangeAttribute("ResourceGroupName", "4.1", "2028/06/18")]
 ```
 
 ## Case 5 — Preview message

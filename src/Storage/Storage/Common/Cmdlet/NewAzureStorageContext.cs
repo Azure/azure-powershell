@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -150,7 +150,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
         public string StorageAccountKey { get; set; }
 
         private const string SasTokenHelpMessage = "Azure Storage SAS Token";
-        [CmdletParameterBreakingChangeWithVersion("SasToken", "11.0.0", "6.0.0", ChangeDescription = "The SAS token in created Storage context properties " +
+        [CmdletParameterBreakingChange("SasToken", ChangeDescription = "The SAS token in created Storage context properties " +
             "'ConnectionString' and 'StorageAccount.Credentials' won't have the leading question mark '?' in a future release.")]
         [Parameter(HelpMessage = SasTokenHelpMessage,
             Mandatory = true, ParameterSetName = SasTokenParameterSet)]

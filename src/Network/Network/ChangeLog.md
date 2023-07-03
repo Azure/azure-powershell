@@ -19,14 +19,12 @@
 --->
 
 ## Upcoming Release
-
-## Version 6.1.0
 * Added new cmdlets to get Connection child resource of Network Virtual Appliance.
     -`Get-AzNetworkVirtualApplianceConnection`
-* Updated cmdlets to return connections in Network Virtual Appliance
+* Update cmdlets to return connections in Network Virtual Appliance
     -`Network Virtual Appliance`
 * Allowed not to provide `Rules` in `PSApplicationGatewayFirewallPolicyManagedRuleGroupOverride`, which would return an empty `RuleID` to be passed to NRP.
-* Added optional parameter 'AdminState' to Express Route Virtual Network Gateway
+* Add optional parameter 'AdminState' to Express Route Virtual Network Gateway
 * Fixed bug that caused `Remove-AzApplicationGatewayAutoscaleConfiguration` to always fails
 * Added read-only property `DefaultPredefinedSslPolicy` in PSApplicationGateway
 * Updated cmdlet to added optional parameter `DomainNameLabelScope` to Public Ip Address

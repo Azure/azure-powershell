@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,7 +20,7 @@ using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Management.PowerBIEmbedded.WorkspaceCollection
 {
-    [CmdletDeprecationWithVersion("11.0.0", "2.0.0")]
+    [CmdletDeprecation()]
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PowerBIWorkspaceCollectionAccessKey"), OutputType(typeof(PSWorkspaceCollectionAccessKey))]
     [Alias("Get-AzPowerBIWorkspaceCollectionAccessKeys")]
     public class GetWorkspaceCollectionAccessKeys : WorkspaceCollectionBaseCmdlet

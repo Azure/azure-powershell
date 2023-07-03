@@ -143,7 +143,7 @@ Accept wildcard characters: False
 ```
 
 ### -Force
-When connecting to Arc resources, do not prompt for confirmation before updating the allowed port for SSH connection in the Connection Endpoint to match the target port or to install Az.Ssh.ArcProxy module from the PowerShell Gallery, if needed.
+When connecting to an Arc resource, do not ask for confirmation before updating the Service Configuration of the Connection Endpoint to match the target port.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

@@ -18,8 +18,6 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-
-## Version 0.3.0
 * Three cmdlets were added: `Deploy-AzMobileNetworkReinstallPacketCoreControlPlane`, `Deploy-AzMobileNetworkRollbackPacketCoreControlPlane`, `Trace-AzMobileNetworkCollectPacketCoreControlPlaneDiagnosticPackage`.
 * Improved message shown to user when deleting site, to indicate this will affect dependent resources.
 * Made further parameters optional for New-AzMobileNetworkSite when creating on an ASE.
