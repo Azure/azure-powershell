@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzEventHubSchemaGroup
 
 ## SYNOPSIS
-Gets the details of an EventHub schema group.
+
 
 ## SYNTAX
 
@@ -30,7 +30,7 @@ Get-AzEventHubSchemaGroup -InputObject <IEventHubIdentity> [-DefaultProfile <PSO
 ```
 
 ## DESCRIPTION
-Gets the details of an EventHub schema group.
+
 
 ## EXAMPLES
 
@@ -196,7 +196,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.ISchemaGroup
+### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.ISchemaGroup
 
 ## NOTES
 
