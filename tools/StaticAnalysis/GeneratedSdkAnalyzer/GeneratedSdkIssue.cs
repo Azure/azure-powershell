@@ -18,7 +18,7 @@ using Tools.Common.Issues;
 
 namespace StaticAnalysis.GeneratedSdkAnalyzer
 {
-    public class VerifyGenSdkIssue : IReportRecord
+    public class GeneratedSdkIssue : IReportRecord
     {
         /// <summary>
         /// The module containing the generated sdk issue
@@ -46,7 +46,7 @@ namespace StaticAnalysis.GeneratedSdkAnalyzer
         public bool Match(IReportRecord other)
         {
             var result = false;
-            var record = other as VerifyGenSdkIssue;
+            var record = other as GeneratedSdkIssue;
             if (record != null)
             {
                 result = string.Equals(record.Module, Module, StringComparison.OrdinalIgnoreCase) &&
@@ -64,7 +64,7 @@ namespace StaticAnalysis.GeneratedSdkAnalyzer
             var match = Regex.Match(line, matcher);
             if (!match.Success || match.Groups.Count < 7)
             {
-                throw new InvalidOperationException(string.Format("Could not parse '{0}' as VerifyGenSdkIssue record", line));
+                throw new InvalidOperationException(string.Format("Could not parse '{0}' as GeneratedSdkIssue record", line));
             }
 
             Module = match.Groups[1].Value;

@@ -44,7 +44,7 @@ namespace StaticAnalysis.IssueChecker
             ("SignatureIssues.csv", typeof(SignatureIssue).FullName),
             ("ExampleIssues.csv", typeof(ExampleIssue).FullName),
             ("UXMetadataIssues.csv", typeof(UXMetadataIssue).FullName),
-            ("VerifyGenSdkIssues.csv", typeof(VerifyGenSdkIssue).FullName)
+            ("GeneratedSdkIssues.csv", typeof(GeneratedSdkIssue).FullName)
         };
         public AnalysisLogger Logger { get; set; }
 
