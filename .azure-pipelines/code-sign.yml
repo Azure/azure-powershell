@@ -31,7 +31,7 @@ jobs:
     inputs:
       command: custom
       custom: msbuild
-      arguments: 'build.proj /t:Build;CopyAboutTopics;GenerateHelp /p:Configuration=Release;GenerateDocumentationFile=true'
+      arguments: 'build.proj /t:"Build;CopyAboutTopics;GenerateHelp" /p:"Configuration=Release;GenerateDocumentationFile=true"'
 
   - task: AzureArtifacts.manifest-generator-task.manifest-generator-task.ManifestGeneratorTask@0
     displayName: 'Manifest Generator '
