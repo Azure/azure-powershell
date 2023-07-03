@@ -522,6 +522,11 @@ namespace Microsoft.Azure.Management.Sql
         public virtual IManagedInstancesOperations ManagedInstances { get; private set; }
 
         /// <summary>
+        /// Gets the IStartStopManagedInstanceSchedulesOperations.
+        /// </summary>
+        public virtual IStartStopManagedInstanceSchedulesOperations StartStopManagedInstanceSchedules { get; private set; }
+
+        /// <summary>
         /// Initializes a new instance of the SqlManagementClient class.
         /// </summary>
         /// <param name='httpClient'>
@@ -853,6 +858,7 @@ namespace Microsoft.Azure.Management.Sql
             FailoverGroups = new FailoverGroupsOperations(this);
             ManagedDatabaseMoveOperations = new ManagedDatabaseMoveOperations(this);
             ManagedInstances = new ManagedInstancesOperations(this);
+            StartStopManagedInstanceSchedules = new StartStopManagedInstanceSchedulesOperations(this);
             BaseUri = new System.Uri("https://management.azure.com");
             AcceptLanguage = "en-US";
             LongRunningOperationRetryTimeout = 30;
