@@ -18,8 +18,6 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-
-## Version 6.5.0
 * Added CRR support for new regions malaysiasouth, chinanorth3, chinaeast3, jioindiacentral, jioindiawest.
 * Regenerated CRR SDK. Fixed issues with SQL CRR.
 * Fixed bug with rp expiry time, making 30 days expiry time for adhoc backup as default from client side.

@@ -34,7 +34,7 @@ using Microsoft.Azure.Management.Compute;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
-    [GenericBreakingChangeWithVersion("Consider using the image alias including the version of the distribution you want to use in the \"-ImageName\" parameter of the \"New-AzVmss\" cmdlet. On April 30, 2023, the image deployed using `UbuntuLTS` will reach its end of life. In November 2023, the aliases `UbuntuLTS`, `CentOS`, `Debian`, and `RHEL` will be removed.", "11.0.0", "7.0.0")]
+    [GenericBreakingChange("Consider using the image alias including the version of the distribution you want to use in the \"-ImageName\" parameter of the \"New-AzVmss\" cmdlet. On April 30, 2023, the image deployed using `UbuntuLTS` will reach its end of life. In November 2023, the aliases `UbuntuLTS`, `CentOS`, `Debian`, and `RHEL` will be removed.")]
     public partial class NewAzureRmVmss : ComputeAutomationBaseCmdlet
     {
         private const string flexibleOrchestrationMode = "Flexible", uniformOrchestrationMode = "Uniform";

@@ -18,8 +18,6 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-
-## Version 1.6.0
 * Added some parameters in the `New-AzDatabricksWorkspace` and `Update-AzDatabricksWorkspace`.
     - `ManagedDiskKeyVaultPropertiesKeyName`
     - `ManagedDiskKeyVaultPropertiesKeyVaultUri`

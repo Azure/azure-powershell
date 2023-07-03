@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -23,6 +23,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
+    [CmdletOutputBreakingChange(typeof(PSExpressRouteCircuit), DeprecatedOutputProperties = new[] { "AllowGlobalReach" })]
     [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ExpressRouteCircuit"), OutputType(typeof(PSExpressRouteCircuit))]
     public class SetAzureExpressRouteCircuitCommand : ExpressRouteCircuitBaseCmdlet
     {

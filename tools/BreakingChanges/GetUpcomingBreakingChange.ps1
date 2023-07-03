@@ -14,7 +14,7 @@
 
 # To get upcoming breaking change info, you need to build az first
 # ```powershell
-# dotnet msbuild build.proj /t:build /p:configuration=Debug
+# dotnet msbuild build.proj /t:build /p:configuration=debug
 # Import-Module ./tools/BreakingChanges/GetUpcomingBreakingChange.ps1
 # Export-AllBreakingChangeMessageUnderArtifacts -ArtifactsPath .\artifacts\Debug\ -MarkdownPath UpcommingBreakingChange.md
 # ```
@@ -43,28 +43,6 @@ Function Test-TypeIsGenericBreakingChangeAttribute
     Return $False
 }
 
-Function Test-TypeIsGenericBreakingChangeWithVersionAttribute
-{
-    [CmdletBinding()]
-    Param(
-        [Parameter()]
-        [System.Reflection.TypeInfo[]]
-        $type
-    )
-    ForEach ($loopType in $type)
-    {
-        While ($loopType.Name -ne "Object")
-        {
-            If ($loopType.Name -eq "GenericBreakingChangeWithVersionAttribute")
-            {
-                Return $True
-            }
-            $loopType = $loopType.BaseType
-        }
-    }
-    Return $False
-}
-
 Function Get-AttributeSpecificMessage
 {
     [CmdletBinding()]
@@ -82,14 +60,13 @@ Function Get-AttributeSpecificMessage
         # GenericBreakingChangeAttribute is the base class of the BreakingChangeAttribute classes and have a protected method named as Get-AttributeSpecIficMessage.
         # We can use this to get the specIfic message to show on document.
         $Method = $attribute.GetType().GetMethod('GetAttributeSpecificMessage', [System.Reflection.BindingFlags]::NonPublic -bor [System.Reflection.BindingFlags]::Instance)
-
+    
         $Message = $Method.Invoke($attribute, @()).Trim()
     }
     If (-Not ($Message.StartsWith("-")))
     {
         $Message = "- $Message"
     }
-    $Message += "`n- This change is expected to take effect from version: $($attribute.DeprecateByVersion) and Az version: $($attribute.DeprecateByAzVersion)"
     Return $Message
 }
 
@@ -105,7 +82,7 @@ Function Find-ParameterBreakingChange
 
     ForEach ($attribute In $ParameterInfo.Attributes)
     {
-        If (Test-TypeIsGenericBreakingChangeWithVersionAttribute $attribute.TypeId)
+        If (Test-TypeIsGenericBreakingChangeAttribute $attribute.TypeId)
         {
             Return Get-AttributeSpecIficMessage($attribute)
         }
@@ -128,7 +105,7 @@ Function Find-CmdletBreakingChange
     $customAttributes = $CmdletInfo.ImplementingType.GetTypeInfo().GetCustomAttributes([System.object], $true)
     ForEach ($customAttribute In $customAttributes)
     {
-        If (Test-TypeIsGenericBreakingChangeWithVersionAttribute $customAttribute.TypeId)
+        If (Test-TypeIsGenericBreakingChangeAttribute $customAttribute.TypeId)
         {
             $tmp = Get-AttributeSpecIficMessage($customAttribute)
             If (-not $Result.ContainsKey($AllParameterSetsName))
@@ -280,7 +257,7 @@ Function Get-BreakingChangeOfGeneratedModule
         {
             $Attribute = $BreakingChangeAttribute.Constructor.Invoke(@($BreakingChangeAttribute.ConstructorArguments.value))
             $BreakingChangeMessage = Get-BreakingChangeMessageFromGeneratedAttribute -Attribute $Attribute -AttributeType $Attribute.GetType()
-
+    
             If (-not $AllBreakingChangeMessages.ContainsKey($CmdletName))
             {
                 $AllBreakingChangeMessages.Add($CmdletName, @{})
@@ -429,7 +406,7 @@ Function Merge-BreakingChangeInfoOfCmdlet
         $AllParameterSets = $CmdletBreakingChangeInfo[$AllParameterSetsName]
         $CmdletBreakingChangeInfo.Remove($AllParameterSetsName)
     }
-    Else
+    Else 
     {
         $AllParameterSets = @{
             CmdletBreakingChange = [System.Collections.ArrayList]::New();
