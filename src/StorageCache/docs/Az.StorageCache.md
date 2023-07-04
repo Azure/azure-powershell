@@ -31,9 +31,6 @@ Returns an AML file system.
 ### [Get-AzStorageCacheAmlFileSystemSubnetRequiredSize](Get-AzStorageCacheAmlFileSystemSubnetRequiredSize.md)
 Get the number of available IP addresses needed for the AML file system information provided.
 
-### [Get-AzStorageCacheAscOperation](Get-AzStorageCacheAscOperation.md)
-Gets the status of an asynchronous operation for the Azure HPC Cache
-
 ### [Get-AzStorageCacheAscUsage](Get-AzStorageCacheAscUsage.md)
 Gets the quantity used and quota limit for resources
 

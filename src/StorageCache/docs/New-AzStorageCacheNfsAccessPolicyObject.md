@@ -21,27 +21,19 @@ Create an in-memory object for NfsAccessPolicy.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create an in-memory object for NfsAccessPolicy.
 ```powershell
-{{ Add code here }}
+$objcet = New-AzStorageCacheNfsAccessRuleObject -Access 'rw' -Scope 'network' -AnonymousUid "65534" -AnonymousGid "65534" -SubmountAccess:$True -RootSquash:$True -Suid:$False -Filter "10.99.1.0/24"
+New-AzStorageCacheNfsAccessPolicyObject -AccessRule $object -Name azps-nfsaccesspolicy
 ```
 
 ```output
-{{ Add output here }}
+Name
+----
+azps-nfsaccesspolicy
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Create an in-memory object for NfsAccessPolicy.
 
 ## PARAMETERS
 

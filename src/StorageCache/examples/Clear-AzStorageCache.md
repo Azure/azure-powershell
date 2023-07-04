@@ -1,22 +1,19 @@
-### Example 1: {{ Add title here }}
+### Example 1: Tells a cache to write all dirty data to the Storage Target(s).
 ```powershell
-{{ Add code here }}
+Clear-AzStorageCache -Name azps-storagecache -ResourceGroupName azps_test_gp_storagecache
+```
+
+Tells a cache to write all dirty data to the Storage Target(s).
+During the flush, clients will see errors returned until the flush is complete.
+
+### Example 2: Tells a cache to write all dirty data to the Storage Target(s).
+```powershell
+Clear-AzStorageCache -Name azps-storagecache -ResourceGroupName azps_test_gp_storagecache -PassThru
 ```
 
 ```output
-{{ Add output here }}
+True
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+Tells a cache to write all dirty data to the Storage Target(s).
+During the flush, clients will see errors returned until the flush is complete.

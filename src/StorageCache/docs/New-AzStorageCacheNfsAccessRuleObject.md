@@ -23,27 +23,18 @@ Create an in-memory object for NfsAccessRule.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create an in-memory object for NfsAccessRule.
 ```powershell
-{{ Add code here }}
+New-AzStorageCacheNfsAccessRuleObject -Access 'rw' -Scope 'network' -AnonymousUid "65534" -AnonymousGid "65534" -SubmountAccess:$True -RootSquash:$True -Suid:$False -Filter "10.99.1.0/24"
 ```
 
 ```output
-{{ Add output here }}
+Access AnonymousGid AnonymousUid Filter       RootSquash Scope   SubmountAccess Suid
+------ ------------ ------------ ------       ---------- -----   -------------- ----
+rw     65534        65534        10.99.1.0/24 True       network True           False
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Create an in-memory object for NfsAccessRule.
 
 ## PARAMETERS
 

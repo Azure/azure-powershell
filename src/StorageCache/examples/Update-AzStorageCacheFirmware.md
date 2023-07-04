@@ -1,22 +1,19 @@
-### Example 1: {{ Add title here }}
+### Example 1: Upgrade a cache's firmware if a new version is available.
 ```powershell
-{{ Add code here }}
+Update-AzStorageCacheFirmware -CacheName azps-storagecache -ResourceGroupName azps_test_gp_storagecache
+```
+
+Upgrade a cache's firmware if a new version is available.
+Otherwise, this operation has no effect.
+
+### Example 2: Upgrade a cache's firmware if a new version is available.
+```powershell
+Update-AzStorageCacheFirmware -CacheName azps-storagecache -ResourceGroupName azps_test_gp_storagecache -PassThru
 ```
 
 ```output
-{{ Add output here }}
+True
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+Upgrade a cache's firmware if a new version is available.
+Otherwise, this operation has no effect.

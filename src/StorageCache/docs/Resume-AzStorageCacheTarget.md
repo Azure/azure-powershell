@@ -30,27 +30,23 @@ Resumes client access to a previously suspended storage target.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Resumes client access to a previously suspended storage target.
 ```powershell
-{{ Add code here }}
+Resume-AzStorageCacheTarget -CacheName azps-storagecache -Name azps-cachetarget -ResourceGroupName azps_test_gp_storagecache
+```
+
+Resumes client access to a previously suspended storage target.
+
+### Example 2: Resumes client access to a previously suspended storage target.
+```powershell
+Resume-AzStorageCacheTarget -CacheName azps-storagecache -Name azps-cachetarget -ResourceGroupName azps_test_gp_storagecache -PassThru
 ```
 
 ```output
-{{ Add output here }}
+True
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Resumes client access to a previously suspended storage target.
 
 ## PARAMETERS
 

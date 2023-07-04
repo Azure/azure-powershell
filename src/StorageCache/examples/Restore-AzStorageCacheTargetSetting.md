@@ -1,22 +1,17 @@
-### Example 1: {{ Add title here }}
+### Example 1: Tells a storage target to restore its settings to their default values.
 ```powershell
-{{ Add code here }}
+Restore-AzStorageCacheTargetSetting -CacheName azps-storagecache -StorageTargetName azps-cachetarget -ResourceGroupName azps_test_gp_storagecache
+```
+
+Tells a storage target to restore its settings to their default values.
+
+### Example 2: Tells a storage target to restore its settings to their default values.
+```powershell
+Restore-AzStorageCacheTargetSetting -CacheName azps-storagecache -StorageTargetName azps-cachetarget -ResourceGroupName azps_test_gp_storagecache -PassThru
 ```
 
 ```output
-{{ Add output here }}
+True
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+Tells a storage target to restore its settings to their default values.

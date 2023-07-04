@@ -1,22 +1,38 @@
-### Example 1: {{ Add title here }}
+### Example 1: List storage cache by subscription.
 ```powershell
-{{ Add code here }}
+Get-AzStorageCache
 ```
 
 ```output
-{{ Add output here }}
+Location Name              ResourceGroupName
+-------- ----              -----------------
+eastus   azps-storagecache azps_test_gp_storagecache
 ```
 
-{{ Add description here }}
+List storage cache by subscription.
 
-### Example 2: {{ Add title here }}
+### Example 2: List storage cache by resource group name.
 ```powershell
-{{ Add code here }}
+Get-AzStorageCache -ResourceGroupName azps_test_gp_storagecache
 ```
 
 ```output
-{{ Add output here }}
+Location Name              ResourceGroupName
+-------- ----              -----------------
+eastus   azps-storagecache azps_test_gp_storagecache
 ```
 
-{{ Add description here }}
+List storage cache by resource group name.
 
+### Example 3: Get a storage cache by name.
+```powershell
+Get-AzStorageCache -ResourceGroupName azps_test_gp_storagecache -Name azps-storagecache
+```
+
+```output
+Location Name              ResourceGroupName
+-------- ----              -----------------
+eastus   azps-storagecache azps_test_gp_storagecache
+```
+
+Get a storage cache by name.

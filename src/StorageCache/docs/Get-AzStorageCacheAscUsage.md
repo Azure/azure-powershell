@@ -22,27 +22,19 @@ Gets the quantity used and quota limit for resources
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Gets the quantity used and quota limit for resources.
 ```powershell
-{{ Add code here }}
+Get-AzStorageCacheAscUsage -Location eastus
 ```
 
 ```output
-{{ Add output here }}
+CurrentValue Limit Unit
+------------ ----- ----
+1            4     Count
+0            4     Count
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Gets the quantity used and quota limit for resources.
 
 ## PARAMETERS
 

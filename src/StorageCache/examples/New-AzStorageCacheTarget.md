@@ -1,22 +1,13 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create or update a Storage Target.
 ```powershell
-{{ Add code here }}
+New-AzStorageCacheTarget -CacheName azps-storagecache -Name azps-cachetarget -ResourceGroupName azps_test_gp_storagecache -Nfs3Target "10.0.44.44" -Nfs3UsageModel "READ_WRITE" -Nfs3VerificationTimer 30 -TargetType 'nfs3'
 ```
 
 ```output
-{{ Add output here }}
+Name             Location ResourceGroupName         State
+----             -------- -----------------         -----
+azps-cachetarget eastus   azps_test_gp_storagecache Ready
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+Create or update a Storage Target.
+This operation is allowed at any time, but if the cache is down or unhealthy, the actual creation/modification of the Storage Target may be delayed until the cache is healthy again.

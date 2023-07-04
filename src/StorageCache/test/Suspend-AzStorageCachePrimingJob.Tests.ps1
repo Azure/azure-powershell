@@ -19,15 +19,7 @@ Describe 'Suspend-AzStorageCachePrimingJob' {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'Pause' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
     It 'PauseViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'PauseViaIdentity' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

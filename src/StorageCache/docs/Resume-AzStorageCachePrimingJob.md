@@ -14,14 +14,15 @@ Resumes a paused priming job.
 
 ### ResumeExpanded (Default)
 ```
-Resume-AzStorageCachePrimingJob -CacheName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Resume-AzStorageCachePrimingJob -CacheName <String> -ResourceGroupName <String> -PrimingJobId <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### ResumeViaIdentityExpanded
 ```
-Resume-AzStorageCachePrimingJob -InputObject <IStorageCacheIdentity> [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Resume-AzStorageCachePrimingJob -InputObject <IStorageCacheIdentity> -PrimingJobId <String>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -29,27 +30,23 @@ Resumes a paused priming job.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Resumes a paused priming job.
 ```powershell
-{{ Add code here }}
+Resume-AzStorageCachePrimingJob -CacheName azps-storagecache -ResourceGroupName azps_test_gp_storagecache -PrimingJobId "00000000000_0000000000" -PassThru
+```
+
+Resumes a paused priming job.
+
+### Example 2: Resumes a paused priming job.
+```powershell
+Resume-AzStorageCachePrimingJob -CacheName azps-storagecache -ResourceGroupName azps_test_gp_storagecache -PrimingJobId "00000000000_0000000000" -PassThru
 ```
 
 ```output
-{{ Add output here }}
+True
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Resumes a paused priming job.
 
 ## PARAMETERS
 
@@ -140,6 +137,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PrimingJobId
+The unique identifier of the priming job.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

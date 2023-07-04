@@ -19,15 +19,7 @@ Describe 'Start-AzStorageCachePrimingJob' {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'Start' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
     It 'StartViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'StartViaIdentity' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

@@ -1,22 +1,17 @@
-### Example 1: {{ Add title here }}
+### Example 1: Resumes a paused priming job.
 ```powershell
-{{ Add code here }}
+Resume-AzStorageCachePrimingJob -CacheName azps-storagecache -ResourceGroupName azps_test_gp_storagecache -PrimingJobId "00000000000_0000000000" -PassThru
+```
+
+Resumes a paused priming job.
+
+### Example 2: Resumes a paused priming job.
+```powershell
+Resume-AzStorageCachePrimingJob -CacheName azps-storagecache -ResourceGroupName azps_test_gp_storagecache -PrimingJobId "00000000000_0000000000" -PassThru
 ```
 
 ```output
-{{ Add output here }}
+True
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+Resumes a paused priming job.

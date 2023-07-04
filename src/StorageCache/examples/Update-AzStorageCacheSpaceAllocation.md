@@ -1,22 +1,19 @@
-### Example 1: {{ Add title here }}
+### Example 1: Update cache space allocation.
 ```powershell
-{{ Add code here }}
+$object = New-AzStorageCacheTargetSpaceAllocationObject -AllocationPercentage 100 -Name azps-cachetarget
+Update-AzStorageCacheSpaceAllocation -CacheName azps-storagecache -ResourceGroupName azps_test_gp_storagecache -SpaceAllocation $object
+```
+
+Update cache space allocation.
+
+### Example 2: Update cache space allocation.
+```powershell
+$object = New-AzStorageCacheTargetSpaceAllocationObject -AllocationPercentage 100 -Name azps-cachetarget
+Update-AzStorageCacheSpaceAllocation -CacheName azps-storagecache -ResourceGroupName azps_test_gp_storagecache -SpaceAllocation $object -PassThru
 ```
 
 ```output
-{{ Add output here }}
+True
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+Update cache space allocation.

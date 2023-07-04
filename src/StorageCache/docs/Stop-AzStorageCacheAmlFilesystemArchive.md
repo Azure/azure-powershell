@@ -29,27 +29,16 @@ Cancel archiving data from the AML file system.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Cancel archiving data from the AML file system.
 ```powershell
-{{ Add code here }}
+Stop-AzStorageCacheAmlFilesystemArchive -AmlFilesystemName azps-cache-fs -ResourceGroupName azps_test_gp_storagecache -PassThru
 ```
 
 ```output
-{{ Add output here }}
+True
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Cancel archiving data from the AML file system.
 
 ## PARAMETERS
 

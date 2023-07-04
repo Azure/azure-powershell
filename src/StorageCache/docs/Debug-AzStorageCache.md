@@ -29,27 +29,23 @@ Tells a cache to write generate debug info for support to process.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Tells a cache to write generate debug info for support to process.
 ```powershell
-{{ Add code here }}
+Debug-AzStorageCache -CacheName azps-storagecache -ResourceGroupName azps_test_gp_storagecache
+```
+
+Tells a cache to write generate debug info for support to process.
+
+### Example 2: Tells a cache to write generate debug info for support to process.
+```powershell
+Debug-AzStorageCache -CacheName azps-storagecache -ResourceGroupName azps_test_gp_storagecache -PassThru
 ```
 
 ```output
-{{ Add output here }}
+True
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Tells a cache to write generate debug info for support to process.
 
 ## PARAMETERS
 

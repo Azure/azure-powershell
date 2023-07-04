@@ -29,27 +29,23 @@ Tells a Stopped state cache to transition to Active state.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Tells a Stopped state cache to transition to Active state.
 ```powershell
-{{ Add code here }}
+Start-AzStorageCache -Name azps-storagecache -ResourceGroupName azps_test_gp_storagecache
+```
+
+Tells a Stopped state cache to transition to Active state.
+
+### Example 2: Tells a Stopped state cache to transition to Active state.
+```powershell
+Start-AzStorageCache -Name azps-storagecache -ResourceGroupName azps_test_gp_storagecache -PassThru
 ```
 
 ```output
-{{ Add output here }}
+True
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Tells a Stopped state cache to transition to Active state.
 
 ## PARAMETERS
 

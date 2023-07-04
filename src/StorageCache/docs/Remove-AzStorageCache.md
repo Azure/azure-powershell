@@ -29,27 +29,19 @@ Schedules a cache for deletion.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Schedules a cache for deletion.
 ```powershell
-{{ Add code here }}
+Remove-AzStorageCache -Name azps-cachetarget -ResourceGroupName azps_test_gp_storagecache
 ```
 
-```output
-{{ Add output here }}
-```
+Schedules a cache for deletion.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Schedules a cache for deletion.
 ```powershell
-{{ Add code here }}
+Get-AzStorageCache -Name azps-cachetarget -ResourceGroupName azps_test_gp_storagecache | Remove-AzStorageCache
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Schedules a cache for deletion.
 
 ## PARAMETERS
 

@@ -1,22 +1,12 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create an in-memory object for NamespaceJunction.
 ```powershell
-{{ Add code here }}
+New-AzStorageCacheNamespaceJunctionObject -NamespacePath "/path/on/cache" -NfsAccessPolicy "default" -NfsExport "exp2" -TargetPath "/path/on/exp1"
 ```
 
 ```output
-{{ Add output here }}
+NamespacePath  NfsAccessPolicy NfsExport TargetPath
+-------------  --------------- --------- ----------
+/path/on/cache default         exp2      /path/on/exp1
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+Create an in-memory object for NamespaceJunction.

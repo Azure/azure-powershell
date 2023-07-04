@@ -1,22 +1,13 @@
-### Example 1: {{ Add title here }}
+### Example 1: Get the list of cache usage models available to this subscription.
 ```powershell
-{{ Add code here }}
+Get-AzStorageCacheUsageModel
 ```
 
 ```output
-{{ Add output here }}
+ModelName  TargetType
+---------  ----------
+READ_ONLY  Nfs
+READ_WRITE Nfs
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+Get the list of cache usage models available to this subscription.

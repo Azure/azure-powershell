@@ -15,15 +15,15 @@ Update cache space allocation.
 ### SpaceViaIdentity (Default)
 ```
 Update-AzStorageCacheSpaceAllocation -InputObject <IStorageCacheIdentity>
- -SpaceAllocation <IStorageTargetSpaceAllocation[]> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ -SpaceAllocation <IStorageTargetSpaceAllocation[]> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Space
 ```
 Update-AzStorageCacheSpaceAllocation -CacheName <String> -ResourceGroupName <String>
  -SpaceAllocation <IStorageTargetSpaceAllocation[]> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -31,27 +31,25 @@ Update cache space allocation.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Update cache space allocation.
 ```powershell
-{{ Add code here }}
+$object = New-AzStorageCacheTargetSpaceAllocationObject -AllocationPercentage 100 -Name azps-cachetarget
+Update-AzStorageCacheSpaceAllocation -CacheName azps-storagecache -ResourceGroupName azps_test_gp_storagecache -SpaceAllocation $object
+```
+
+Update cache space allocation.
+
+### Example 2: Update cache space allocation.
+```powershell
+$object = New-AzStorageCacheTargetSpaceAllocationObject -AllocationPercentage 100 -Name azps-cachetarget
+Update-AzStorageCacheSpaceAllocation -CacheName azps-storagecache -ResourceGroupName azps_test_gp_storagecache -SpaceAllocation $object -PassThru
 ```
 
 ```output
-{{ Add output here }}
+True
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Update cache space allocation.
 
 ## PARAMETERS
 
@@ -120,6 +118,21 @@ Accept wildcard characters: False
 
 ### -NoWait
 Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PassThru
+Returns true when the command succeeds
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

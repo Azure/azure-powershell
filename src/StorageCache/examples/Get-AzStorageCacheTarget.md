@@ -1,22 +1,25 @@
-### Example 1: {{ Add title here }}
+### Example 1: List Storage Target by Cache Name.
 ```powershell
-{{ Add code here }}
+Get-AzStorageCacheTarget -CacheName azps-storagecache -ResourceGroupName azps_test_gp_storagecache
 ```
 
 ```output
-{{ Add output here }}
+Name             Location ResourceGroupName         State
+----             -------- -----------------         -----
+azps-cachetarget eastus   azps_test_gp_storagecache Ready
 ```
 
-{{ Add description here }}
+List Storage Target by Cache Name.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get a Storage Target by Storage Target Name.
 ```powershell
-{{ Add code here }}
+Get-AzStorageCacheTarget -CacheName azps-storagecache -ResourceGroupName azps_test_gp_storagecache -Name azps-cachetarget
 ```
 
 ```output
-{{ Add output here }}
+Name             Location ResourceGroupName         State
+----             -------- -----------------         -----
+azps-cachetarget eastus   azps_test_gp_storagecache Ready
 ```
 
-{{ Add description here }}
-
+Get a Storage Target by Storage Target Name.

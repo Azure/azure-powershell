@@ -19,15 +19,7 @@ Describe 'Test-AzStorageCacheAmlFileSystemSubnet' {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'Check' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
     It 'CheckViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'CheckViaIdentity' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

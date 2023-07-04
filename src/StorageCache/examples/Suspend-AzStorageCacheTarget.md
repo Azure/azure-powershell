@@ -1,22 +1,17 @@
-### Example 1: {{ Add title here }}
+### Example 1: Suspends client access to a storage target.
 ```powershell
-{{ Add code here }}
+Suspend-AzStorageCacheTarget -CacheName azps-storagecache -Name azps-cachetarget -ResourceGroupName azps_test_gp_storagecache
+```
+
+Suspends client access to a storage target.
+
+### Example 2: Suspends client access to a storage target.
+```powershell
+Suspend-AzStorageCacheTarget -CacheName azps-storagecache -Name azps-cachetarget -ResourceGroupName azps_test_gp_storagecache -PassThru
 ```
 
 ```output
-{{ Add output here }}
+True
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+Suspends client access to a storage target.

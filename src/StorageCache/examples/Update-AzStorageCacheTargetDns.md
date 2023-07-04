@@ -1,22 +1,17 @@
-### Example 1: {{ Add title here }}
+### Example 1: Tells a storage target to refresh its DNS information.
 ```powershell
-{{ Add code here }}
+Update-AzStorageCacheTargetDns -CacheName azps-storagecache -ResourceGroupName azps_test_gp_storagecache -StorageTargetName azps-cachetarget
+```
+
+Tells a storage target to refresh its DNS information.
+
+### Example 2: Tells a storage target to refresh its DNS information.
+```powershell
+Update-AzStorageCacheTargetDns -CacheName azps-storagecache -ResourceGroupName azps_test_gp_storagecache -StorageTargetName azps-cachetarget -PassThru
 ```
 
 ```output
-{{ Add output here }}
+True
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+Tells a storage target to refresh its DNS information.

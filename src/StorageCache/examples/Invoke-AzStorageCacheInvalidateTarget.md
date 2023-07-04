@@ -1,22 +1,19 @@
-### Example 1: {{ Add title here }}
+### Example 1: Invalidate all cached data for a storage target.
 ```powershell
-{{ Add code here }}
+Invoke-AzStorageCacheInvalidateTarget -CacheName azps-storagecache -ResourceGroupName azps_test_gp_storagecache -StorageTargetName azps-cachetarget
+```
+
+Invalidate all cached data for a storage target.
+Cached files are discarded and fetched from the back end on the next request.
+
+### Example 2: Invalidate all cached data for a storage target.
+```powershell
+Invoke-AzStorageCacheInvalidateTarget -CacheName azps-storagecache -ResourceGroupName azps_test_gp_storagecache -StorageTargetName azps-cachetarget -PassThru
 ```
 
 ```output
-{{ Add output here }}
+True
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+Invalidate all cached data for a storage target.
+Cached files are discarded and fetched from the back end on the next request.

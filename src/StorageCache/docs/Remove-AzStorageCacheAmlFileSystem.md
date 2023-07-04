@@ -29,27 +29,19 @@ Schedules an AML file system for deletion.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Schedules an AML file system for deletion.
 ```powershell
-{{ Add code here }}
+Remove-AzStorageCacheAmlFileSystem -Name azps-cache-fs -ResourceGroupName azps_test_gp_storagecache
 ```
 
-```output
-{{ Add output here }}
-```
+Schedules an AML file system for deletion.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Schedules an AML file system for deletion.
 ```powershell
-{{ Add code here }}
+Get-AzStorageCacheAmlFileSystem -ResourceGroupName azps_test_gp_storagecache -Name azps-cache-fs | Remove-AzStorageCacheAmlFileSystem 
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Schedules an AML file system for deletion.
 
 ## PARAMETERS
 

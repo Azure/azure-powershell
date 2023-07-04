@@ -29,27 +29,16 @@ Get the number of available IP addresses needed for the AML file system informat
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get the number of available IP addresses needed for the AML file system information provided.
 ```powershell
-{{ Add code here }}
+Get-AzStorageCacheAmlFileSystemSubnetRequiredSize -SkuName "AMLFS-Durable-Premium-250" -StorageCapacityTiB 16
 ```
 
 ```output
-{{ Add output here }}
+8
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Get the number of available IP addresses needed for the AML file system information provided.
 
 ## PARAMETERS
 

@@ -19,15 +19,7 @@ Describe 'Resume-AzStorageCachePrimingJob' {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'Resume' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
     It 'ResumeViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'ResumeViaIdentity' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

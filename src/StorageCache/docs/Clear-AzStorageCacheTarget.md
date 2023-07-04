@@ -32,27 +32,25 @@ Client requests to this storage target's namespace will return errors until the 
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Tells the cache to write all dirty data to the Storage Target's backend storage.
 ```powershell
-{{ Add code here }}
+Clear-AzStorageCacheTarget -CacheName azps-storagecache -Name azps-cachetarget -ResourceGroupName azps_test_gp_storagecache
+```
+
+Tells the cache to write all dirty data to the Storage Target's backend storage.
+Client requests to this storage target's namespace will return errors until the flush operation completes.
+
+### Example 2: Tells the cache to write all dirty data to the Storage Target's backend storage.
+```powershell
+Clear-AzStorageCacheTarget -CacheName azps-storagecache -Name azps-cachetarget -ResourceGroupName azps_test_gp_storagecache -PassThru
 ```
 
 ```output
-{{ Add output here }}
+True
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Tells the cache to write all dirty data to the Storage Target's backend storage.
+Client requests to this storage target's namespace will return errors until the flush operation completes.
 
 ## PARAMETERS
 

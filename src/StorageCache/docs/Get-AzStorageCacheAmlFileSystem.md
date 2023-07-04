@@ -40,27 +40,44 @@ Returns an AML file system.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List AML file system by Subscription.
 ```powershell
-{{ Add code here }}
+Get-AzStorageCacheAmlFileSystem
 ```
 
 ```output
-{{ Add output here }}
+Name          Location ResourceGroupName         HealthState SkuName
+----          -------- -----------------         ----------- -------
+azps-cache-fs eastus   azps_test_gp_storagecache Available   AMLFS-Durable-Premium-250
 ```
 
-{{ Add description here }}
+List AML file system by Subscription.
 
-### Example 2: {{ Add title here }}
+### Example 2: Gets AML file system by ResourceGroup.
 ```powershell
-{{ Add code here }}
+Get-AzStorageCacheAmlFileSystem -ResourceGroupName azps_test_gp_storagecache
 ```
 
 ```output
-{{ Add output here }}
+Name          Location ResourceGroupName         HealthState SkuName
+----          -------- -----------------         ----------- -------
+azps-cache-fs eastus   azps_test_gp_storagecache Available   AMLFS-Durable-Premium-250
 ```
 
-{{ Add description here }}
+Gets AML file system by ResourceGroup.
+
+### Example 3: Get AML file system by Name.
+```powershell
+Get-AzStorageCacheAmlFileSystem -ResourceGroupName azps_test_gp_storagecache -Name azps-cache-fs
+```
+
+```output
+Name          Location ResourceGroupName         HealthState SkuName
+----          -------- -----------------         ----------- -------
+azps-cache-fs eastus   azps_test_gp_storagecache Available   AMLFS-Durable-Premium-250
+```
+
+Get AML file system by Name.
 
 ## PARAMETERS
 

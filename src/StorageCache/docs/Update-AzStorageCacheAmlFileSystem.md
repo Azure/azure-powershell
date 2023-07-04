@@ -33,27 +33,18 @@ Update an AML file system instance.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Update an AML file system instance.
 ```powershell
-{{ Add code here }}
+Update-AzStorageCacheAmlFileSystem -Name azps-cache-fs -ResourceGroupName azps_test_gp_storagecache -KeyEncryptionKeyUrl "https://azps-keyvault.vault.azure.net/keys/azps-kv/4cc795e46f114ce2a65b82b312964e0e" -MaintenanceWindowDayOfWeek 'Monday' -MaintenanceWindowTimeOfDayUtc "03:00" -SourceVaultId "/subscriptions/{subId}/resourceGroups/azps_test_gp_storagecache/providers/Microsoft.KeyVault/vaults/azps-keyvault"
 ```
 
 ```output
-{{ Add output here }}
+Name          Location ResourceGroupName         HealthState SkuName
+----          -------- -----------------         ----------- -------
+azps-cache-fs eastus   azps_test_gp_storagecache Available   AMLFS-Durable-Premium-250
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Update an AML file system instance.
 
 ## PARAMETERS
 
