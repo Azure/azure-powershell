@@ -339,7 +339,7 @@ namespace Microsoft.Azure.Commands.Ssh
         [Parameter(Mandatory = false)]
         public virtual SwitchParameter PassThru { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "When connecting to Arc resources, do not prompt for confirmation before updating the Service Configuration of the Connection Endpoint to match the target port or to install Az.Ssh.ArcProxy module from Gallery, if needed.")]
+        [Parameter(Mandatory = false, HelpMessage = "When connecting to Arc resources, do not prompt for confirmation before updating the allowed port for SSH connection in the Connection Endpoint to match the target port or to install Az.Ssh.ArcProxy module from the PowerShell Gallery, if needed.")]
         public SwitchParameter Force { get; set; }
 
         #endregion
