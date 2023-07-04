@@ -120,10 +120,6 @@ namespace Microsoft.Azure.Commands.Dns
     {
         public abstract object Clone();
 
-        public const int TxtRecordMaxLength = 1024;
-
-        public const int TxtRecordMinLength = 0;
-
         public const int TxtRecordChunkSize = 255;
 
         public const int CaaRecordMaxLength = 1024;
