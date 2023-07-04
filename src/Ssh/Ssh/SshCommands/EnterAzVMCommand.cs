@@ -25,7 +25,6 @@ using System.Threading;
 using System.Text.RegularExpressions;
 using Microsoft.Azure.Commands.Ssh.Properties;
 using Microsoft.Azure.PowerShell.Ssh.Helpers.HybridConnectivity.Models;
-using Microsoft.Azure.PowerShell.Cmdlets.Ssh.Common;
 
 namespace Microsoft.Azure.Commands.Ssh
 {
@@ -56,31 +55,13 @@ namespace Microsoft.Azure.Commands.Ssh
         #endregion
 
         #region fields
+        private int rdpLocalPort;
         private EndpointAccessResource relayInfo;
         #endregion
 
         #region constants
         private const int retryDelayInSec = 10;
         private const int ServiceConfigDelayInSec = 15;
-        #endregion
-
-        #region Properties
-        private int RdpLocalPort
-        {
-            get
-            {
-                if (_rdpLocalPort == 0)
-                {
-                    TcpListener listener = new TcpListener(IPAddress.Loopback, 0);
-                    listener.Start();
-                    _rdpLocalPort = ((IPEndPoint)listener.LocalEndpoint).Port;
-                    listener.Stop();
-                }
-
-                return _rdpLocalPort;
-            }
-        }
-        private int _rdpLocalPort = 0;
         #endregion
 
         public override void ExecuteCmdlet()
@@ -197,6 +178,12 @@ namespace Microsoft.Azure.Commands.Ssh
 
             try
             {
+                // Get an open local port to act an a listener
+                TcpListener listener = new TcpListener(IPAddress.Loopback, 0);
+                listener.Start();
+                rdpLocalPort = ((IPEndPoint)listener.LocalEndpoint).Port;
+                listener.Stop();
+
                 sshProcess.StartInfo.RedirectStandardError = true;
                 sshProcess.Start();
 
@@ -220,7 +207,7 @@ namespace Microsoft.Azure.Commands.Ssh
 
                     Process rdpProcess = new Process();
                     rdpProcess.StartInfo.FileName = rdpCommand;
-                    rdpProcess.StartInfo.Arguments = $"/v:localhost:{RdpLocalPort}";
+                    rdpProcess.StartInfo.Arguments = $"/v:localhost:{rdpLocalPort}";
                     rdpProcess.Start();
                     rdpProcess.WaitForExit();
                     success = rdpProcess.ExitCode;
@@ -411,7 +398,7 @@ namespace Microsoft.Azure.Commands.Ssh
             if (Rdp)
             {
                 argList.Add("-L");
-                argList.Add($"{RdpLocalPort}:localhost:3389");
+                argList.Add($"{rdpLocalPort}:localhost:3389");
                 argList.Add("-N");
             }
 

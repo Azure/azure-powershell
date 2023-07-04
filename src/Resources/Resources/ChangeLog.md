@@ -19,8 +19,6 @@
 -->
 
 ## Upcoming Release
-
-## Version 6.8.0
 * Fixed the incorrect behavior of pagination for `Get-AzTag`
 * Updated API version to 2022-09-01
 * Added Deployment Stacks cmdlets

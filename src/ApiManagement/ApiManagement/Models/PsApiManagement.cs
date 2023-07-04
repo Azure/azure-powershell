@@ -1,4 +1,4 @@
-//  
+﻿//  
 // Copyright (c) Microsoft.  All rights reserved.
 // 
 //  Licensed under the Apache License, Version 2.0 (the "License");
@@ -161,6 +161,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
 
         public string Location { get; private set; }
 
+        [CmdletParameterBreakingChange("Sku", OldParamaterType = typeof(PsApiManagementSku), NewParameterTypeName = nameof(String))]
         public string Sku { get; set; }
 
         public int Capacity { get; set; }

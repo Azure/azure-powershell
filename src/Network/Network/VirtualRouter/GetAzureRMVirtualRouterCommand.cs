@@ -27,6 +27,7 @@ using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Network
 {
+    [CmdletDeprecation(ReplacementCmdletName = "Get-AzRouteServer")]
     [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualRouter", DefaultParameterSetName = VirtualRouterParameterSetNames.ByVirtualRouterSubscriptionId), OutputType(typeof(PSVirtualRouter))]
     public partial class GetAzureRmVirtualRouter : VirtualRouterBaseCmdlet
     {
