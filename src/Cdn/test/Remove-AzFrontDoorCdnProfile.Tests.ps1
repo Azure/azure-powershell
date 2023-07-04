@@ -24,7 +24,22 @@ Describe 'Remove-AzFrontDoorCdnProfile'  {
         New-AzFrontDoorCdnProfile -SkuName $profileSku -Name $frontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Location Global
 
         Write-Host -ForegroundColor Green "Remove frontDoorCdnProfileName"
-        Remove-AzFrontDoorCdnProfile -Name $frontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName
+        $res = Remove-AzFrontDoorCdnProfile -Name $frontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName
+        $res | Should -BeNullOrEmpty
+    }
+
+    # Use "PassThru" parameter to test
+    It 'Delete' {
+        $frontDoorCdnProfileName = 'fdp-pstest020'
+        Write-Host -ForegroundColor Green "Use frontDoorCdnProfileName : $($frontDoorCdnProfileName)"
+
+        $profileSku = "Standard_AzureFrontDoor"
+        Write-Host -ForegroundColor Green "New frontDoorCdnProfileName"
+        New-AzFrontDoorCdnProfile -SkuName $profileSku -Name $frontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Location Global
+
+        Write-Host -ForegroundColor Green "Remove frontDoorCdnProfileName"
+        $res = Remove-AzFrontDoorCdnProfile -Name $frontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -PassThru
+        $res | Should -Be "True"
     }
 
     It 'DeleteViaIdentity' {

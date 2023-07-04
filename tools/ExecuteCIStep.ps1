@@ -298,12 +298,17 @@ If ($TestAutorest)
         Return
     }
     $ModuleName = Split-Path -Path $AutorestDirectory -Leaf
+    If ($ModuleName.EndsWith(".Autorest"))
+    {
+        $ModuleName = Split-Path -Path $AutorestDirectory | Split-Path -Leaf
+    }
     $ModuleFolderName = $ModuleName.Split(".")[1]
     If (Test-Path $CIPlanPath)
     {
         $CIPlan = Get-Content $CIPlanPath | ConvertFrom-Json
         If (-not ($CIPlan.test.Contains($ModuleFolderName)))
         {
+            Write-Debug "Skip test for $ModuleName because it is not in the test plan."
             Return
         }
         . $AutorestDirectory/test-module.ps1
