@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -27,8 +27,6 @@ namespace Microsoft.Azure.Commands.Network
     using System;
     using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
-    [GenericBreakingChange("Default behaviour of Zone will be changed", OldWay = "Sku = Standard means the Standard PublicIpPrefix is zone-redundant.",
-        NewWay = "Sku = Standard and Zone = {} means the Standard PublicIpPrefix has no zones. If you want to create a zone-redundant PublicIpPrefix, please specify all the zones in the region. For example, Zone = ['1', '2', '3'].")]
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PublicIpPrefix", SupportsShouldProcess = true), OutputType(typeof(PSPublicIpPrefix))]
     public class NewAzurePublicIpPrefixCommand : PublicIpPrefixBaseCmdlet
     {

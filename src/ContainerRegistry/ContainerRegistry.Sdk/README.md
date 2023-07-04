@@ -28,9 +28,10 @@ title: ContainerRegistryManagementClient
 
 ### 
 ``` yaml 
+commit: 5035a36bcd5b0543a9a65ee21f03bd12e301ea72
 input-file:
-  - https://github.com/Azure/azure-rest-api-specs/blob/5035a36bcd5b0543a9a65ee21f03bd12e301ea72/specification/containerregistry/resource-manager/Microsoft.ContainerRegistry/stable/2019-05-01/containerregistry.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/5035a36bcd5b0543a9a65ee21f03bd12e301ea72/specification/containerregistry/resource-manager/Microsoft.ContainerRegistry/stable/2019-04-01/containerregistry_build.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/containerregistry/resource-manager/Microsoft.ContainerRegistry/stable/2019-05-01/containerregistry.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/containerregistry/resource-manager/Microsoft.ContainerRegistry/stable/2019-04-01/containerregistry_build.json
 output-folder: Generated
 
 namespace: Microsoft.Azure.Management.ContainerRegistry

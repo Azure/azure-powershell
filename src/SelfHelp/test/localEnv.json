@@ -1,0 +1,7 @@
+{
+  "location": "eastus",
+  "scope": "/subscriptions/6bded6d5-a6af-43e1-96d3-bf71f6f5f8ba/resourcegroups/k4wc0hlp6m/providers/Microsoft.Storage/storageAccounts/teststorageforselfhelp",
+  "Tenant": "72f988bf-86f1-41af-91ab-2d7cd011db47",
+  "SubscriptionId": "6bded6d5-a6af-43e1-96d3-bf71f6f5f8ba",
+  "resourceGroup": "k4wc0hlp6m"
+}

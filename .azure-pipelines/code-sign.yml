@@ -1,0 +1,468 @@
+parameters:
+- name: OOBBranch
+  displayName: Branch for OOB pipeline
+  type: string
+  default: 'none'
+jobs:
+- job: Release
+  timeoutInMinutes: 180
+  pool:
+    name: $(AgentPool)
+    demands: npm
+  variables:
+    LocalRepoName: 'LocalRepo'
+  steps:
+  - task: PowerShell@2
+    displayName: checkout OOBbranch
+    inputs:
+      targetType: 'inline'
+      script: |
+          git remote set-url origin https://azure-powershell-bot:$Token@github.com/Azure/azure-powershell.git;
+          git fetch origin
+          git checkout -b ${{ parameters.OOBBranch }} origin/${{ parameters.OOBBranch }}
+  - pwsh: 'Install-Module platyPS -Force -Confirm:$false -Scope CurrentUser'
+    displayName: 'Install platyPS'
+
+  - pwsh: 'Install-Module PowerShellGet -Force -Confirm:$false -Scope CurrentUser -SkipPublisherCheck'
+    displayName: 'Install PowerShellGet [v2.1.3 has a Publish-Module bug]'
+
+  - task: DotNetCoreCLI@2
+    displayName: Build
+    inputs:
+      command: custom
+      custom: msbuild
+      arguments: 'build.proj /t:"Build;CopyAboutTopics;GenerateHelp" /p:"Configuration=Release;GenerateDocumentationFile=true"'
+
+  - task: AzureArtifacts.manifest-generator-task.manifest-generator-task.ManifestGeneratorTask@0
+    displayName: 'Manifest Generator '
+    inputs:
+      BuildDropPath: artifacts
+      PackageName: 'Azure PowerShell'
+      PackageVersion: 7.2
+    enabled: false
+
+  - pwsh: |
+      # Delete PowerShell Runtime Files
+      Get-ChildItem -Path $Env:RepoArtifacts/$Env:Configuration -Recurse -Include 'runtimes' | Remove-Item -Recurse -Force
+      # Copy ShortCut to be Signed
+      Copy-Item .\tools\Az\Az.psm1 -Destination $Env:RepoArtifacts/$Env:Configuration
+      Copy-Item .\tools\AzPreview\AzPreview.psm1 -Destination $Env:RepoArtifacts/$Env:Configuration
+      Copy-Item .\tools\Installer\InstallModule.ps1 -Destination $Env:RepoArtifacts/$Env:Configuration
+      Copy-Item .\setup\InstallerChecks.dll -Destination $Env:RepoArtifacts/
+      Copy-Item .\setup\Microsoft.Deployment.WindowsInstaller.dll -Destination $Env:RepoArtifacts/
+    displayName: 'Before Signing'
+  - task: SFP.build-tasks.custom-build-task-1.EsrpCodeSigning@1
+    displayName: 'Sign Dll [Authenticode + Strong Name]'
+    inputs:
+      ConnectedServiceName: 'ESRP Signing Service'
+      FolderPath: artifacts
+      Pattern: |
+        Release/**/Microsoft*Azure*PowerShell*Cmdlets*.dll
+        Release/**/Microsoft.Azure.PowerShell.*.Sdk.dll
+        Release/**/Az.*.private.dll
+        Release/**/Microsoft.Azure.PowerShell.Authentication.dll
+        Release/**/Microsoft.Azure.PowerShell.Authentication.ResourceManager.dll
+        Release/**/Microsoft.Azure.PowerShell.Authenticators.dll
+        Release/**/Microsoft.Azure.PowerShell.AuthenticationAssemblyLoadContext.dll
+        Release/**/Microsoft.Azure.PowerShell.AssemblyLoading.dll
+        Release/**/Microsoft.Azure.Commands.*.AlcWrapper.dll
+        InstallerChecks.dll
+        !Release/**/Microsoft*Azure*PowerShell*Cmdlets*.Test.dll
+      UseMinimatch: true
+      signConfigType: inlineSignParams
+      inlineOperation: |
+        [
+          {
+            "KeyCode": "CP-233863-SN",
+            "OperationCode": "StrongNameSign",
+            "Parameters": {},
+            "ToolName": "sign",
+            "ToolVersion": "1.0"
+          },
+          {
+            "KeyCode": "CP-233863-SN",
+            "OperationCode": "StrongNameVerify",
+            "Parameters": {},
+            "ToolName": "sign",
+            "ToolVersion": "1.0"
+          },
+          {
+            "KeyCode": "CP-230012",
+            "OperationCode": "SigntoolSign",
+            "Parameters": {
+              "OpusName": "Microsoft",
+              "OpusInfo": "http://www.microsoft.com",
+              "FileDigest": "/fd \"SHA256\"",
+              "PageHash": "/NPH",
+              "TimeStamp": "/tr \"http://rfc3161.gtm.corp.microsoft.com/TSS/HttpTspServer\" /td sha256"
+            },
+            "ToolName": "sign",
+            "ToolVersion": "1.0"
+          },
+          {
+            "KeyCode": "CP-230012",
+            "OperationCode": "SigntoolVerify",
+            "Parameters": {},
+            "ToolName": "sign",
+            "ToolVersion": "1.0"
+          }
+        ]
+
+  - task: SFP.build-tasks.custom-build-task-1.EsrpCodeSigning@1
+    displayName: 'Sign Scripts [Authenticode]'
+    inputs:
+      ConnectedServiceName: 'ESRP Signing Service'
+      FolderPath: artifacts
+      Pattern: |
+        Release/**/*.ps1
+        Release/**/*.psm1
+        Release/**/*.ps1xml
+        Release/**/*.js
+      UseMinimatch: true
+      signConfigType: inlineSignParams
+      inlineOperation: |
+        [
+          {
+            "KeyCode": "CP-230012",
+            "OperationCode": "SigntoolSign",
+            "Parameters": {
+              "OpusName": "Microsoft",
+              "OpusInfo": "http://www.microsoft.com",
+              "FileDigest": "/fd \"SHA256\"",
+              "PageHash": "/NPH",
+              "TimeStamp": "/tr \"http://rfc3161.gtm.corp.microsoft.com/TSS/HttpTspServer\" /td sha256"
+            },
+            "ToolName": "sign",
+            "ToolVersion": "1.0"
+          },
+          {
+            "KeyCode": "CP-230012",
+            "OperationCode": "SigntoolVerify",
+            "Parameters": {},
+            "ToolName": "sign",
+            "ToolVersion": "1.0"
+          }
+        ]
+
+  - task: SFP.build-tasks.custom-build-task-1.EsrpCodeSigning@1
+    displayName: 'Sign 3rd Party [Strong Name]'
+    inputs:
+      ConnectedServiceName: 'ESRP Signing Service'
+      FolderPath: artifacts
+      Pattern: 'Release/**/FuzzySharp.dll'
+      UseMinimatch: true
+      signConfigType: inlineSignParams
+      inlineOperation: |
+        [
+          {
+            "KeyCode": "CP-233863-SN",
+            "OperationCode": "StrongNameSign",
+            "Parameters": {},
+            "ToolName": "sign",
+            "ToolVersion": "1.0"
+          },
+          {
+            "KeyCode": "CP-233863-SN",
+            "OperationCode": "StrongNameVerify",
+            "Parameters": {},
+            "ToolName": "sign",
+            "ToolVersion": "1.0"
+          }
+        ]
+
+  - task: SFP.build-tasks.custom-build-task-1.EsrpCodeSigning@1
+    displayName: 'Sign 3rd Party [Authenticode]'
+    inputs:
+      ConnectedServiceName: 'ESRP Signing Service'
+      FolderPath: artifacts
+      Pattern: |
+        Release/**/*AutoMapper*.dll
+        Release/**/*TimeZoneConverter*.dll
+        Release/**/*YamlDotNet*.dll
+        Release/**/*Newtonsoft.Json*.dll
+        Release/**/*BouncyCastle.Crypto*.dll
+        Release/**/FuzzySharp.dll
+        Microsoft.Deployment.WindowsInstaller.dll
+      UseMinimatch: true
+      signConfigType: inlineSignParams
+      inlineOperation: |
+        [
+          {
+            "KeyCode": "CP-231522",
+            "OperationCode": "SigntoolSign",
+            "Parameters": {
+              "OpusName": "Microsoft",
+              "OpusInfo": "http://www.microsoft.com",
+              "FileDigest": "/fd \"SHA256\"",
+              "PageHash": "/NPH",
+              "Append" : "/as",
+              "TimeStamp": "/tr \"http://rfc3161.gtm.corp.microsoft.com/TSS/HttpTspServer\" /td sha256"
+            },
+            "ToolName": "sign",
+            "ToolVersion": "1.0"
+          },
+          {
+            "KeyCode": "CP-231522",
+            "OperationCode": "SigntoolVerify",
+            "Parameters": {},
+            "ToolName": "sign",
+            "ToolVersion": "1.0"
+          }
+        ]
+
+  - pwsh: |
+      # Check Signature
+      $Env:Path += ";C:\Program Files (x86)\Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.7.2 Tools"
+      # Do not check psd1
+      $Env:CheckPsd1 = "False"
+      ./tools/CheckSignature.ps1 -CustomPath $Env:RepoArtifacts/$Env:Configuration
+      # Copy files back after signing
+      Copy-Item $Env:RepoArtifacts/$Env:Configuration/Az.psm1 -Destination ./tools/Az
+      Copy-Item $Env:RepoArtifacts/$Env:Configuration/AzPreview.psm1 -Destination ./tools/AzPreview
+      Copy-Item $Env:RepoArtifacts/InstallerChecks.dll -Destination .\setup
+      Copy-Item $Env:RepoArtifacts/Microsoft.Deployment.WindowsInstaller.dll -Destination .\setup
+    displayName: 'After Signing'
+    env:
+      CheckPsd1: True
+
+  - task: securedevelopmentteam.vss-secure-development-tools.build-task-codesignvalidation.CodeSign@1
+    displayName: 'Run Codesign Validation'
+    inputs:
+      Path: artifacts/Release
+
+  - script: '"%wix%\sdk\MakeSfxCA.exe" "%cd%\setup\InstallerChecks.CA.dll" "%cd%\setup\SfxCA.dll" "%cd%\setup\InstallerChecks.dll" "%cd%\setup\Microsoft.Deployment.WindowsInstaller.dll;%cd%\setup\InstallerChecks\InstallerChecks\CustomAction.config"'
+    displayName: 'Generate InstallerCheck.CA.dll'
+
+  - task: SFP.build-tasks.custom-build-task-1.EsrpCodeSigning@1
+    displayName: 'Sign Installercheck.CA.dll [Authenticode]'
+    inputs:
+      ConnectedServiceName: 'ESRP Signing Service'
+      FolderPath: setup
+      Pattern: InstallerChecks.CA.dll
+      signConfigType: inlineSignParams
+      inlineOperation: |
+        [
+          {
+            "KeyCode": "CP-231522",
+            "OperationCode": "SigntoolSign",
+            "Parameters": {
+              "OpusName": "Microsoft",
+              "OpusInfo": "http://www.microsoft.com",
+              "FileDigest": "/fd \"SHA256\"",
+              "PageHash": "/NPH",
+              "Append" : "/as",
+              "TimeStamp": "/tr \"http://rfc3161.gtm.corp.microsoft.com/TSS/HttpTspServer\" /td sha256"
+            },
+            "ToolName": "sign",
+            "ToolVersion": "1.0"
+          },
+          {
+            "KeyCode": "CP-231522",
+            "OperationCode": "SigntoolVerify",
+            "Parameters": {},
+            "ToolName": "sign",
+            "ToolVersion": "1.0"
+          }
+        ]
+
+  - pwsh: './tools/CleanupBuild.ps1 -BuildConfig Release -GenerateDocumentationFile true'
+    displayName: 'Cleanup Build'
+    enabled: false
+
+  - task: PublishBuildArtifacts@1
+    displayName: 'Save artifacts before cleanup'
+    inputs:
+      PathtoPublish: artifacts
+      ArtifactName: 'docs-artifacts'
+    condition: succeededOrFailed()
+
+  - task: DotNetCoreCLI@2
+    displayName: Publish
+    inputs:
+      command: custom
+      custom: msbuild
+      arguments: 'build.proj /t:Publish /p:Configuration=Release;NuGetKey=$(NuGetKey);GenerateDocumentationFile=false'
+
+  - pwsh: |
+      #this task won't be triggered unless $AzureStack was set to true
+      #move Az.Accounts.*.nupkg to a temporary folder "non_release_artifacts"
+      New-Item -Path "artifacts" -Name "non_release_artifacts" -ItemType "directory"
+      
+      # $accounts = Get-ChildItem -Path "artifacts" -Filter "*Az.Accounts.*.nupkg"
+      # $iothub= Get-ChildItem -Path "artifacts" -Filter "*Az.IotHub.*.nupkg"
+      $eventhub= Get-ChildItem -Path "artifacts" -Filter "*Az.EventHub.*.nupkg"
+      $databoxedge= Get-ChildItem -Path "artifacts" -Filter "*Az.DataBoxEdge.*.nupkg"
+      $monitor= Get-ChildItem -Path "artifacts" -Filter "*Az.Monitor.*.nupkg"
+      
+      # Move-Item -Path $accounts.FullName -Destination "artifacts\non_release_artifacts"
+      # Move-Item -Path $iothub.FullName -Destination "artifacts\non_release_artifacts"
+      Move-Item -Path $eventhub.FullName -Destination "artifacts\non_release_artifacts"
+      Move-Item -Path $databoxedge.FullName -Destination "artifacts\non_release_artifacts"
+      Move-Item -Path $monitor.FullName -Destination "artifacts\non_release_artifacts"
+    displayName: 'AzureStack (hide Az.Accounts/Az.IotHub/Az.EventHub/DataboxEdge/Monitor)'
+    condition: and(succeeded(), ne(variables['AzureStack'], 'false'))
+
+  - pwsh: './tools/ExpandModules -Artifacts artifacts'
+    displayName: 'Expand modules'
+    condition: and(succeeded(), ne(variables['SignPsd1'], 'false'))
+
+  - task: SFP.build-tasks.custom-build-task-1.EsrpCodeSigning@1
+    displayName: 'Psd1 Signing [Authenticode]'
+    inputs:
+      ConnectedServiceName: 'ESRP Signing Service'
+      FolderPath: artifacts
+      Pattern: 'tmp/**/*.psd1'
+      UseMinimatch: true
+      signConfigType: inlineSignParams
+      inlineOperation: |
+        [
+          {
+            "KeyCode": "CP-230012",
+            "OperationCode": "SigntoolSign",
+            "Parameters": {
+              "OpusName": "Microsoft",
+              "OpusInfo": "http://www.microsoft.com",
+              "FileDigest": "/fd \"SHA256\"",
+              "PageHash": "/NPH",
+              "TimeStamp": "/tr \"http://rfc3161.gtm.corp.microsoft.com/TSS/HttpTspServer\" /td sha256"
+            },
+            "ToolName": "sign",
+            "ToolVersion": "1.0"
+          },
+          {
+            "KeyCode": "CP-230012",
+            "OperationCode": "SigntoolVerify",
+            "Parameters": {},
+            "ToolName": "sign",
+            "ToolVersion": "1.0"
+          }
+        ]
+    condition: and(succeeded(), ne(variables['SignPsd1'], 'false'))
+
+  - pwsh: './tools/PackModules.ps1 -Artifacts artifacts -NugetExe tools\NuGet.exe'
+    displayName: 'Repackage modules'
+    condition: and(succeeded(), ne(variables['SignPsd1'], 'false'))
+
+  - task: PublishBuildArtifacts@1
+    displayName: 'Save artifacts'
+    inputs:
+      PathtoPublish: artifacts
+      ArtifactName: artifacts
+    condition: succeededOrFailed()
+
+  - pwsh: |
+      $Env:Path += ";$Env:WIX"+"bin"
+      Register-PSRepository -Name MSIcreationrepository -SourceLocation $Env:RepoArtifacts -InstallationPolicy Trusted
+      ./setup/generate.ps1 -repository MSIcreationrepository
+      Unregister-PSRepository -Name MSIcreationrepository
+    displayName: 'Build Installer'
+
+  - task: SFP.build-tasks.custom-build-task-1.EsrpCodeSigning@1
+    displayName: 'Installer Signing [Authenticode]'
+    inputs:
+      ConnectedServiceName: 'ESRP Signing Service'
+      FolderPath: setup
+      Pattern: '**/*.msi'
+      UseMinimatch: true
+      signConfigType: inlineSignParams
+      inlineOperation: |
+        [
+          {
+            "KeyCode": "CP-230012",
+            "OperationCode": "SigntoolSign",
+            "Parameters": {
+              "OpusName": "Microsoft",
+              "OpusInfo": "http://www.microsoft.com",
+              "FileDigest": "/fd \"SHA256\"",
+              "PageHash": "/NPH",
+              "TimeStamp": "/tr \"http://rfc3161.gtm.corp.microsoft.com/TSS/HttpTspServer\" /td sha256"
+            },
+            "ToolName": "sign",
+            "ToolVersion": "1.0"
+          },
+          {
+            "KeyCode": "CP-230012",
+            "OperationCode": "SigntoolVerify",
+            "Parameters": {},
+            "ToolName": "sign",
+            "ToolVersion": "1.0"
+          }
+        ]
+
+  - pwsh: |
+      $folderName = "$(LocalRepoName)"
+      New-Item -Path $Env:RepoArtifacts -Name $folderName -ItemType Directory -Force
+      
+      Import-LocalizedData -FileName Az.psd1 -BindingVariable "AzModuleInfo" -BaseDirectory .\tools\Az\
+      $incluedModuleList = @("Az.$($AzModuleInfo.ModuleVersion).nupkg")
+      $incluedModuleList += $AzModuleInfo.RequiredModules | ForEach-Object { return $_.ModuleName + "."+$_.ModuleVersion+$_.RequiredVersion+".nupkg"}
+      
+      Copy-Item $Env:RepoArtifacts/*.nupkg -Destination $Env:RepoArtifacts/$folderName -Include $incluedModuleList
+      Get-ChildItem $Env:RepoArtifacts/$folderName
+      Copy-Item $Env:RepoArtifacts/$Env:Configuration/InstallModule.ps1 -Destination $Env:RepoArtifacts/$folderName
+    displayName: 'Gather nuget packages and install script'
+
+  - task: ArchiveFiles@2
+    displayName: 'Pack nuget packages as Az-Cmdlets-latest.tar.gz'
+    inputs:
+      rootFolderOrFile: 'artifacts/$(LocalRepoName)'
+      includeRootFolder: false
+      archiveType: tar
+      archiveFile: 'setup/Az-Cmdlets-latest.tar.gz'
+
+  - pwsh: |
+      $msi= Get-Item .\setup\*.msi
+      if($msi.Count -lt 1)
+      {
+      throw "No msi available"
+      }
+      elseif($msi.Count -gt 1)
+      {
+      $msi = $msi[0]
+      }
+      $newName = $msi.BaseName.Substring(0,$msi.BaseName.Length-4)
+      $tarPath = "setup/Az-Cmdlets-latest.tar.gz"
+      Copy-Item $tarPath -Destination "setup/$newName.tar.gz"
+      $sha256 = Get-FileHash -Path "setup/$newName.tar.gz"
+      $value = "### SHA256 Hashes of the release artifacts`n" +
+                  "* $newName.tar.gz`n" + 
+                  "  - "+$sha256.Hash+"`n"
+      New-Item -Path "setup" -Name "ReleaseNotes.txt" -ItemType File -Force -Value $value
+    displayName: 'Rename Az-Cmdlets-latest.tar.gz and Calculate SHA256'
+
+  - task: PublishBuildArtifacts@1
+    displayName: 'Publish Artifact: installer'
+    inputs:
+      PathtoPublish: setup
+      ArtifactName: setup
+
+  - task: AzurePowerShell@5
+    displayName: 'Push packages to storage account'
+    inputs:
+      azureSubscription: 'azureps-infra-sp'
+      ScriptType: InlineScript
+      Inline: |
+        $context = New-AzStorageContext -StorageAccountName "$(StorageAccountName)"
+        
+        # Push MSIs
+        $msi = Get-Item .\setup\*.msi
+        $msi | Set-AzStorageBlobContent -Container $(ContainerName) -Context $context -Force
+        
+        # Push tarball
+        $tarball = Get-Item .\setup\*.tar.gz
+        $tarball | Set-AzStorageBlobContent -Container $(ContainerName) -Context $context -Force
+        
+        # Push Az.Cmdlet-preview.zip
+        if($msi.Count -lt 1)
+        {
+        throw "No msi available"
+        }
+        elseif($msi.Count -gt 1)
+        {
+        $msi = $msi[0]
+        }
+        $buildName = $msi.BaseName.Substring(0,$msi.BaseName.Length-4)
+        Get-ChildItem -Path $Env:RepoArtifacts -Filter Az.*.0.*.*.nupkg | Compress-Archive -DestinationPath "$buildName-preview.zip" -PassThru | Set-AzStorageBlobContent -Container $(ContainerName) -Context $context -Force
+      azurePowerShellVersion: LatestVersion
+      pwsh: true
+    condition: and(succeeded(), eq(variables['PushPackageToStorageAccount'], 'true'))

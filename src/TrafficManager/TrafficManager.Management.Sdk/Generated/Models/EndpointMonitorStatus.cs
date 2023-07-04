@@ -22,5 +22,6 @@ namespace Microsoft.Azure.Management.TrafficManager.Models
         public const string Disabled = "Disabled";
         public const string Inactive = "Inactive";
         public const string Stopped = "Stopped";
+        public const string Unmonitored = "Unmonitored";
     }
 }

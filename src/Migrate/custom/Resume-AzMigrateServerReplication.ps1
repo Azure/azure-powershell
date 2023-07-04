@@ -22,7 +22,7 @@ The Resume-AzMigrateServerReplication starts the replication that has been suspe
 https://learn.microsoft.com/powershell/module/az.migrate/resume-azmigrateserverreplication
 #>
 function Resume-AzMigrateServerReplication {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IJob])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IJob])]
     [CmdletBinding(DefaultParameterSetName = 'ByIDVMwareCbt', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
     param(
         [Parameter(ParameterSetName = 'ByIDVMwareCbt', Mandatory)]
@@ -33,7 +33,7 @@ function Resume-AzMigrateServerReplication {
 
         [Parameter(ParameterSetName = 'ByInputObjectVMwareCbt', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IMigrationItem]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IMigrationItem]
         # Specifies the replicating server for which the resume replication needs to be initiated. The server object can be retrieved using the Get-AzMigrateServerReplication cmdlet
         ${InputObject},
 
@@ -203,7 +203,7 @@ function Resume-AzMigrateServerReplication {
 
             }
 
-            $ProviderSpecificDetailInput = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.VMwareCbtResumeReplicationInput]::new()
+            $ProviderSpecificDetailInput = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.VMwareCbtResumeReplicationInput]::new()
             $ProviderSpecificDetailInput.InstanceType = 'VMwareCbt'
             $ProviderSpecificDetailInput.DeleteMigrationResource = $PerformDeleteResource
             $null = $PSBoundParameters.Add('ProviderSpecificDetail', $ProviderSpecificDetailInput)

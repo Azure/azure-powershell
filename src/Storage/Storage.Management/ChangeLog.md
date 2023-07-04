@@ -19,6 +19,28 @@
 -->
 ## Upcoming Release
 
+## Version 5.8.0
+* Supported TierToCold and TierToHot in Storage account management policy
+    - `Add-AzStorageAccountManagementPolicyAction`
+* Supported Blob Tier Cold
+    - `Copy-AzStorageBlob`
+    - `Set-AzStorageBlobContent`
+    - `Start-AzStorageBlobCopy`
+* Migrated the following Azure Queue dataplane cmdlets from 'Microsoft.Azure.Storage.Queue' to 'Azure.Storage.Queue'
+    - `New-AzStorageQueueSASToken`
+* Added warning messages for an upcoming breaking change when creating SAS token
+    - `New-AzStorageBlobSasToken`
+    - `New-AzStorageContainerSasToken`
+    - `New-AzStorageAccountSasToken`
+    - `New-AzStorageContext`
+    - `New-AzStorageFileSasToken`
+    - `New-AzStorageShareSasToken`
+    - `New-AzStorageQueueSasToken`
+    - `New-AzStorageTableSasToken`
+    - `New-AzDataLakeGen2SasToken`
+* Added a warning message for an upcoming breaking change when creating a storage account
+    - `New-AzStorageAccount`
+
 ## Version 5.7.0
 * Fixed issue of getting a single blob with leading slashes
     - `Get-AzStorageBlob`

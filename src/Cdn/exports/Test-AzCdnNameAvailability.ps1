@@ -25,12 +25,12 @@ This is needed for resources where name is globally unique, such as a CDN endpoi
 Test-AzCdnNameAvailability -Name endptest001 -Type Microsoft.Cdn/Profiles/Endpoints
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.ICheckNameAvailabilityOutput
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ICheckNameAvailabilityOutput
 .Link
 https://learn.microsoft.com/powershell/module/az.cdn/test-azcdnnameavailability
 #>
 function Test-AzCdnNameAvailability {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.ICheckNameAvailabilityOutput])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ICheckNameAvailabilityOutput])]
 [CmdletBinding(DefaultParameterSetName='CheckExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='CheckExpanded1')]

@@ -295,7 +295,7 @@ namespace Microsoft.Azure.Commands.Aks.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Could not find specified Acr &apos;{0}&apos; to attach..
+        ///   Looks up a localized string similar to Could not find specified Acr &apos;{0}&apos; to attach or detach..
         /// </summary>
         internal static string CouldNotFindSpecifiedAcr {
             get {
@@ -304,7 +304,7 @@ namespace Microsoft.Azure.Commands.Aks.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Could not find SSH public key in default path &apos;{0}&apos; which is required for creating k8s cluster. See https://learn.microsoft.com/en-us/azure/virtual-machines/linux/mac-create-ssh-keys or https://learn.microsoft.com/en-us/azure/virtual-machines/linux/ssh-from-windows for generating a key pair manually; or you could try to add switch parameter -GenerateSshKey during calling New-AzAksCluster which will automatically generate SSH key file if you have ssh-keygen installed..
+        ///   Looks up a localized string similar to Could not find SSH public key in default path &apos;{0}&apos; which is required for creating k8s cluster. See https://docs.microsoft.com/en-us/azure/virtual-machines/linux/mac-create-ssh-keys or https://docs.microsoft.com/en-us/azure/virtual-machines/linux/ssh-from-windows for generating a key pair manually; or you could try to add switch parameter -GenerateSshKey during calling New-AzAksCluster which will automatically generate SSH key file if you have ssh-keygen installed..
         /// </summary>
         internal static string CouldNotFindSshPublicKeyInError {
             get {

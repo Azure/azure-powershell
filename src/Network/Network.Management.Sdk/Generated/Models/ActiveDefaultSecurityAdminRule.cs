@@ -72,7 +72,9 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="provisioningState">The provisioning state of the
         /// resource. Possible values include: 'Succeeded', 'Updating',
         /// 'Deleting', 'Failed'</param>
-        public ActiveDefaultSecurityAdminRule(string id = default(string), System.DateTime? commitTime = default(System.DateTime?), string region = default(string), string configurationDescription = default(string), string ruleCollectionDescription = default(string), IList<NetworkManagerSecurityGroupItem> ruleCollectionAppliesToGroups = default(IList<NetworkManagerSecurityGroupItem>), IList<ConfigurationGroup> ruleGroups = default(IList<ConfigurationGroup>), string description = default(string), string flag = default(string), string protocol = default(string), IList<AddressPrefixItem> sources = default(IList<AddressPrefixItem>), IList<AddressPrefixItem> destinations = default(IList<AddressPrefixItem>), IList<string> sourcePortRanges = default(IList<string>), IList<string> destinationPortRanges = default(IList<string>), string access = default(string), int? priority = default(int?), string direction = default(string), string provisioningState = default(string))
+        /// <param name="resourceGuid">Unique identifier for this
+        /// resource.</param>
+        public ActiveDefaultSecurityAdminRule(string id = default(string), System.DateTime? commitTime = default(System.DateTime?), string region = default(string), string configurationDescription = default(string), string ruleCollectionDescription = default(string), IList<NetworkManagerSecurityGroupItem> ruleCollectionAppliesToGroups = default(IList<NetworkManagerSecurityGroupItem>), IList<ConfigurationGroup> ruleGroups = default(IList<ConfigurationGroup>), string description = default(string), string flag = default(string), string protocol = default(string), IList<AddressPrefixItem> sources = default(IList<AddressPrefixItem>), IList<AddressPrefixItem> destinations = default(IList<AddressPrefixItem>), IList<string> sourcePortRanges = default(IList<string>), IList<string> destinationPortRanges = default(IList<string>), string access = default(string), int? priority = default(int?), string direction = default(string), string provisioningState = default(string), string resourceGuid = default(string))
             : base(id, commitTime, region, configurationDescription, ruleCollectionDescription, ruleCollectionAppliesToGroups, ruleGroups)
         {
             Description = description;
@@ -86,6 +88,7 @@ namespace Microsoft.Azure.Management.Network.Models
             Priority = priority;
             Direction = direction;
             ProvisioningState = provisioningState;
+            ResourceGuid = resourceGuid;
             CustomInit();
         }
 
@@ -166,6 +169,12 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.provisioningState")]
         public string ProvisioningState { get; private set; }
+
+        /// <summary>
+        /// Gets unique identifier for this resource.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.resourceGuid")]
+        public string ResourceGuid { get; private set; }
 
     }
 }

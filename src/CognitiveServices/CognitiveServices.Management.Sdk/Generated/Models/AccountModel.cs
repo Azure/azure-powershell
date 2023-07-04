@@ -33,18 +33,29 @@ namespace Microsoft.Azure.Management.CognitiveServices.Models
         /// </summary>
         /// <param name="format">Deployment model format.</param>
         /// <param name="name">Deployment model name.</param>
-        /// <param name="version">Deployment model version.</param>
+        /// <param name="version">Optional. Deployment model version. If
+        /// version is not specified, a default version will be assigned. The
+        /// default version is different for different models and might change
+        /// when there is new version available for a model. Default version
+        /// for a model could be found from list models API.</param>
+        /// <param name="source">Optional. Deployment model source ARM resource
+        /// ID.</param>
         /// <param name="baseModel">Base Model Identifier.</param>
+        /// <param name="isDefaultVersion">If the model is default
+        /// version.</param>
+        /// <param name="skus">The list of Model Sku.</param>
         /// <param name="maxCapacity">The max capacity.</param>
         /// <param name="capabilities">The capabilities.</param>
         /// <param name="finetuneCapabilities">The capabilities for finetune
         /// models.</param>
         /// <param name="lifecycleStatus">Model lifecycle status. Possible
         /// values include: 'GenerallyAvailable', 'Preview'</param>
-        public AccountModel(string format = default(string), string name = default(string), string version = default(string), CallRateLimit callRateLimit = default(CallRateLimit), DeploymentModel baseModel = default(DeploymentModel), int? maxCapacity = default(int?), IDictionary<string, string> capabilities = default(IDictionary<string, string>), IDictionary<string, string> finetuneCapabilities = default(IDictionary<string, string>), ModelDeprecationInfo deprecation = default(ModelDeprecationInfo), string lifecycleStatus = default(string), SystemData systemData = default(SystemData))
-            : base(format, name, version, callRateLimit)
+        public AccountModel(string format = default(string), string name = default(string), string version = default(string), string source = default(string), CallRateLimit callRateLimit = default(CallRateLimit), DeploymentModel baseModel = default(DeploymentModel), bool? isDefaultVersion = default(bool?), IList<ModelSku> skus = default(IList<ModelSku>), int? maxCapacity = default(int?), IDictionary<string, string> capabilities = default(IDictionary<string, string>), IDictionary<string, string> finetuneCapabilities = default(IDictionary<string, string>), ModelDeprecationInfo deprecation = default(ModelDeprecationInfo), string lifecycleStatus = default(string), SystemData systemData = default(SystemData))
+            : base(format, name, version, source, callRateLimit)
         {
             BaseModel = baseModel;
+            IsDefaultVersion = isDefaultVersion;
+            Skus = skus;
             MaxCapacity = maxCapacity;
             Capabilities = capabilities;
             FinetuneCapabilities = finetuneCapabilities;
@@ -64,6 +75,18 @@ namespace Microsoft.Azure.Management.CognitiveServices.Models
         /// </summary>
         [JsonProperty(PropertyName = "baseModel")]
         public DeploymentModel BaseModel { get; set; }
+
+        /// <summary>
+        /// Gets or sets if the model is default version.
+        /// </summary>
+        [JsonProperty(PropertyName = "isDefaultVersion")]
+        public bool? IsDefaultVersion { get; set; }
+
+        /// <summary>
+        /// Gets or sets the list of Model Sku.
+        /// </summary>
+        [JsonProperty(PropertyName = "skus")]
+        public IList<ModelSku> Skus { get; set; }
 
         /// <summary>
         /// Gets or sets the max capacity.

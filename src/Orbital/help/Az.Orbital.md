@@ -12,7 +12,7 @@ Microsoft Azure PowerShell: Orbital cmdlets
 
 ## Az.Orbital Cmdlets
 ### [Get-AzOrbitalAvailableGroundStation](Get-AzOrbitalAvailableGroundStation.md)
-Gets the specified available ground station.
+Returns list of available ground stations.
 
 ### [Get-AzOrbitalAvailableSpacecraftContact](Get-AzOrbitalAvailableSpacecraftContact.md)
 Returns list of available contacts.
