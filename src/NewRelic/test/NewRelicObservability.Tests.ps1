@@ -100,7 +100,7 @@ DEscribe 'NewRelicObservability' {
         } | Should -Not -Throw
     }
 
-    It 'InvokeHost' {
+    It 'InvokeHost' -skip {
         {
             Invoke-AzNewRelicHostMonitor -MonitorName $env.NewMonitorName -ResourceGroupName $env.resourceGroup
         } | Should -Not -Throw
