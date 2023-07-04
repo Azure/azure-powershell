@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Fixed the issue that `New-AzRoleAssignment` didn't work without subscription.
 
 ## Version 6.8.0
 * Fixed the incorrect behavior of pagination for `Get-AzTag`
