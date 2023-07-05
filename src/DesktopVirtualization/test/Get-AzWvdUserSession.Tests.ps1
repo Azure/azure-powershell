@@ -32,17 +32,17 @@ Describe 'Get-AzWvdUserSession' {
                                 -HostPoolName $env.HostPoolPersistent `
                                 -SessionHostName $env.SessionHostName `
                                 | Sort-Object -Property Name
-            $userSessions[0].Name | Should -Be $userName3
-            $userSessions[1].Name | Should -Be $userName5
+            $userSessions[0].Name | Should -Be $userName2
+            $userSessions[1].Name | Should -Be $userName3
     }
 
-    It 'List host pool Level' {
+    It 'List HostPool Level' {
         $userSessions = Get-AzWvdUserSession -SubscriptionId $env.SubscriptionId `
                                 -ResourceGroupName $env.ResourceGroupPersistent `
                                 -HostPoolName $env.HostPoolPersistent `
                                 | Sort-Object -Property Name
-            $userSessions[0].Name | Should -Be $userName3
-            $userSessions[1].Name | Should -Be $userName5
-            $userSessions[2].Name | Should -Be $userName6
+            $userSessions[0].Name | Should -Be $userName2
+            $userSessions[1].Name | Should -Be $userName3
+            $userSessions[2].Name | Should -Be $userName5
     }
 }
