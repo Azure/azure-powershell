@@ -28,7 +28,6 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// </summary>
         [Parameter(Mandatory = false,
             HelpMessage = "Specifies allowed network IP address range of network rule.")]
-        [ValidateCount(0, 127)]
         public string[] IpAddressRange { get; set; }
 
         /// <summary>
@@ -36,7 +35,6 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// </summary>
         [Parameter(Mandatory = false,
             HelpMessage = "Specifies allowed virtual network resource identifier of network rule.")]
-        [ValidateCount(0, 127)]
         public string[] VirtualNetworkResourceId { get; set; }
 
         /// <summary>
