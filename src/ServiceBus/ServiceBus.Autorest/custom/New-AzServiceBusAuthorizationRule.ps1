@@ -20,7 +20,7 @@ Creates a ServiceBus Namespace, Queue, Topic Authorization Rule
 #>
 
 function New-AzServiceBusAuthorizationRule{
-	[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbAuthorizationRule])]
+	[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.ISbAuthorizationRule])]
     [CmdletBinding(DefaultParameterSetName = 'NewExpandedNamespace', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
 	param(
         [Parameter(Mandatory, HelpMessage = "The name of the Authorization Rule")]
@@ -134,7 +134,7 @@ function New-AzServiceBusAuthorizationRule{
             $null = $PSBoundParameters.Remove('WhatIf')
             $null = $PSBoundParameters.Remove('Confirm')
 
-            $authRule = [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbAuthorizationRule]@{
+            $authRule = [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.ISbAuthorizationRule]@{
                 Rights = $Rights
             }
 

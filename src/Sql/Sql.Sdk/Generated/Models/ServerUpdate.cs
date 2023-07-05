@@ -46,11 +46,12 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// <param name="privateEndpointConnections">List of private endpoint
         /// connections on a server</param>
         /// <param name="minimalTlsVersion">Minimal TLS version. Allowed
-        /// values: '1.0', '1.1', '1.2'</param>
+        /// values: 'None', '1.0', '1.1', '1.2'</param>
         /// <param name="publicNetworkAccess">Whether or not public endpoint
         /// access is allowed for this server.  Value is optional but if passed
-        /// in, must be 'Enabled' or 'Disabled'. Possible values include:
-        /// 'Enabled', 'Disabled'</param>
+        /// in, must be 'Enabled' or 'Disabled' or 'SecuredByPerimeter'.
+        /// Possible values include: 'Enabled', 'Disabled',
+        /// 'SecuredByPerimeter'</param>
         /// <param name="workspaceFeature">Whether or not existing server has a
         /// workspace created and if it allows connection from workspace.
         /// Possible values include: 'Connected', 'Disconnected'</param>
@@ -60,14 +61,19 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// CMK scenario</param>
         /// <param name="keyId">A CMK URI of the key to use for
         /// encryption.</param>
-        /// <param name="administrators">The Azure Active Directory identity of
-        /// the server.</param>
+        /// <param name="administrators">The Azure Active Directory
+        /// administrator of the server. This can only be used at server create
+        /// time. If used for server update, it will be ignored or it will
+        /// result in an error. For updates individual APIs will need to be
+        /// used.</param>
         /// <param name="restrictOutboundNetworkAccess">Whether or not to
         /// restrict outbound network access for this server.  Value is
         /// optional but if passed in, must be 'Enabled' or 'Disabled'.
         /// Possible values include: 'Enabled', 'Disabled'</param>
+        /// <param name="externalGovernanceStatus">Status of external
+        /// governance. Possible values include: 'Enabled', 'Disabled'</param>
         /// <param name="tags">Resource tags.</param>
-        public ServerUpdate(ResourceIdentity identity = default(ResourceIdentity), string administratorLogin = default(string), string administratorLoginPassword = default(string), string version = default(string), string state = default(string), string fullyQualifiedDomainName = default(string), IList<ServerPrivateEndpointConnection> privateEndpointConnections = default(IList<ServerPrivateEndpointConnection>), string minimalTlsVersion = default(string), string publicNetworkAccess = default(string), string workspaceFeature = default(string), string primaryUserAssignedIdentityId = default(string), System.Guid? federatedClientId = default(System.Guid?), string keyId = default(string), ServerExternalAdministrator administrators = default(ServerExternalAdministrator), string restrictOutboundNetworkAccess = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>))
+        public ServerUpdate(ResourceIdentity identity = default(ResourceIdentity), string administratorLogin = default(string), string administratorLoginPassword = default(string), string version = default(string), string state = default(string), string fullyQualifiedDomainName = default(string), IList<ServerPrivateEndpointConnection> privateEndpointConnections = default(IList<ServerPrivateEndpointConnection>), string minimalTlsVersion = default(string), string publicNetworkAccess = default(string), string workspaceFeature = default(string), string primaryUserAssignedIdentityId = default(string), System.Guid? federatedClientId = default(System.Guid?), string keyId = default(string), ServerExternalAdministrator administrators = default(ServerExternalAdministrator), string restrictOutboundNetworkAccess = default(string), string externalGovernanceStatus = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>))
         {
             Identity = identity;
             AdministratorLogin = administratorLogin;
@@ -84,6 +90,7 @@ namespace Microsoft.Azure.Management.Sql.Models
             KeyId = keyId;
             Administrators = administrators;
             RestrictOutboundNetworkAccess = restrictOutboundNetworkAccess;
+            ExternalGovernanceStatus = externalGovernanceStatus;
             Tags = tags;
             CustomInit();
         }
@@ -138,8 +145,8 @@ namespace Microsoft.Azure.Management.Sql.Models
         public IList<ServerPrivateEndpointConnection> PrivateEndpointConnections { get; private set; }
 
         /// <summary>
-        /// Gets or sets minimal TLS version. Allowed values: '1.0', '1.1',
-        /// '1.2'
+        /// Gets or sets minimal TLS version. Allowed values: 'None', '1.0',
+        /// '1.1', '1.2'
         /// </summary>
         [JsonProperty(PropertyName = "properties.minimalTlsVersion")]
         public string MinimalTlsVersion { get; set; }
@@ -147,7 +154,8 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// <summary>
         /// Gets or sets whether or not public endpoint access is allowed for
         /// this server.  Value is optional but if passed in, must be 'Enabled'
-        /// or 'Disabled'. Possible values include: 'Enabled', 'Disabled'
+        /// or 'Disabled' or 'SecuredByPerimeter'. Possible values include:
+        /// 'Enabled', 'Disabled', 'SecuredByPerimeter'
         /// </summary>
         [JsonProperty(PropertyName = "properties.publicNetworkAccess")]
         public string PublicNetworkAccess { get; set; }
@@ -180,7 +188,10 @@ namespace Microsoft.Azure.Management.Sql.Models
         public string KeyId { get; set; }
 
         /// <summary>
-        /// Gets or sets the Azure Active Directory identity of the server.
+        /// Gets or sets the Azure Active Directory administrator of the
+        /// server. This can only be used at server create time. If used for
+        /// server update, it will be ignored or it will result in an error.
+        /// For updates individual APIs will need to be used.
         /// </summary>
         [JsonProperty(PropertyName = "properties.administrators")]
         public ServerExternalAdministrator Administrators { get; set; }
@@ -192,6 +203,13 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.restrictOutboundNetworkAccess")]
         public string RestrictOutboundNetworkAccess { get; set; }
+
+        /// <summary>
+        /// Gets status of external governance. Possible values include:
+        /// 'Enabled', 'Disabled'
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.externalGovernanceStatus")]
+        public string ExternalGovernanceStatus { get; private set; }
 
         /// <summary>
         /// Gets or sets resource tags.

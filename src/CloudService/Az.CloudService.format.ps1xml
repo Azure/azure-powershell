@@ -90,257 +90,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.CloudService</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.ApplicationGatewayBackendAddress</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.CloudService</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>ResourceGroupName</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Name</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Location</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ProvisioningState</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>ResourceGroupName</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Name</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Location</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ProvisioningState</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.CloudServiceTags</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.CloudServiceTags</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Item</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Item</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.CloudServiceVaultCertificate</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.CloudServiceVaultCertificate</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>CertificateUrl</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>CertificateUrl</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ResourceInstanceViewStatus</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ResourceInstanceViewStatus</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Code</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>DisplayStatus</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Level</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Message</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Time</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Code</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>DisplayStatus</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Level</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Message</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Time</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.RoleInstanceTags</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.RoleInstanceTags</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Item</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Item</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.StatusCodeCount</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.StatusCodeCount</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Code</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Count</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Code</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Count</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ApiError</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ApiError</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Code</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Message</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Target</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Code</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Message</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Target</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ApiErrorBase</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ApiErrorBase</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Code</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Message</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Target</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Code</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Message</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Target</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ApplicationGatewayBackendAddress</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ApplicationGatewayBackendAddress</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.ApplicationGatewayBackendAddress</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -366,9 +118,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ApplicationGatewayBackendAddressPool</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.ApplicationGatewayBackendAddressPool</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ApplicationGatewayBackendAddressPool</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.ApplicationGatewayBackendAddressPool</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -394,9 +146,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ApplicationGatewayBackendAddressPoolPropertiesFormat</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.ApplicationGatewayBackendAddressPoolPropertiesFormat</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ApplicationGatewayBackendAddressPoolPropertiesFormat</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.ApplicationGatewayBackendAddressPoolPropertiesFormat</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -416,9 +168,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ApplicationGatewayIPConfiguration</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.ApplicationGatewayIPConfiguration</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ApplicationGatewayIPConfiguration</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.ApplicationGatewayIPConfiguration</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -444,9 +196,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ApplicationGatewayIPConfigurationPropertiesFormat</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.ApplicationGatewayIPConfigurationPropertiesFormat</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ApplicationGatewayIPConfigurationPropertiesFormat</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.ApplicationGatewayIPConfigurationPropertiesFormat</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -466,9 +218,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ApplicationSecurityGroup</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.ApplicationSecurityGroup</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ApplicationSecurityGroup</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.ApplicationSecurityGroup</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -500,9 +252,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ApplicationSecurityGroupPropertiesFormat</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.ApplicationSecurityGroupPropertiesFormat</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ApplicationSecurityGroupPropertiesFormat</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.ApplicationSecurityGroupPropertiesFormat</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -528,9 +280,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.BackendAddressPool</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.BackendAddressPool</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.BackendAddressPool</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.BackendAddressPool</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -556,12 +308,15 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.BackendAddressPoolPropertiesFormat</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.BackendAddressPoolPropertiesFormat</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.BackendAddressPoolPropertiesFormat</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.BackendAddressPoolPropertiesFormat</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
+          <TableColumnHeader>
+            <Label>DrainPeriodInSecond</Label>
+          </TableColumnHeader>
           <TableColumnHeader>
             <Label>Location</Label>
           </TableColumnHeader>
@@ -572,6 +327,9 @@
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>DrainPeriodInSecond</PropertyName>
+              </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>Location</PropertyName>
               </TableColumnItem>
@@ -584,9 +342,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.CloudErrorBody</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.CloudErrorBody</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.CloudErrorBody</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.CloudErrorBody</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -618,377 +376,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.CloudServiceExtensionProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.CustomDnsConfigPropertiesFormat</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.CloudServiceExtensionProperties</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>AutoUpgradeMinorVersion</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ForceUpdateTag</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ProtectedSetting</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ProvisioningState</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Publisher</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>RolesAppliedTo</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Setting</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>TypeHandlerVersion</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>AutoUpgradeMinorVersion</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ForceUpdateTag</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ProtectedSetting</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ProvisioningState</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Publisher</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>RolesAppliedTo</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Setting</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>TypeHandlerVersion</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.CloudServiceInstanceView</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.CloudServiceInstanceView</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Statuses</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>RoleInstanceStatusesSummary</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Statuses</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>RoleInstanceStatusesSummary</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.CloudServiceListResult</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.CloudServiceListResult</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>NextLink</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>NextLink</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.CloudServiceProperties</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.CloudServiceProperties</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>AllowModelOverride</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Configuration</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ConfigurationUrl</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>PackageUrl</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ProvisioningState</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>StartCloudService</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>UniqueId</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>UpgradeMode</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>AllowModelOverride</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Configuration</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ConfigurationUrl</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>PackageUrl</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ProvisioningState</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>StartCloudService</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>UniqueId</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>UpgradeMode</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.CloudServiceRole</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.CloudServiceRole</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Location</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Name</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Location</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Name</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.CloudServiceRoleListResult</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.CloudServiceRoleListResult</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>NextLink</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>NextLink</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.CloudServiceRoleProfileProperties</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.CloudServiceRoleProfileProperties</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Name</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SkuName</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SkuTier</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SkuCapacity</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Name</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SkuName</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SkuTier</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SkuCapacity</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.CloudServiceRoleProperties</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.CloudServiceRoleProperties</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>UniqueId</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>UniqueId</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.CloudServiceRoleSku</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.CloudServiceRoleSku</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Capacity</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Name</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Tier</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Capacity</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Name</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Tier</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.CloudServiceUpdateTags</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.CloudServiceUpdateTags</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Item</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Item</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.CloudServiceVaultAndSecretReference</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.CloudServiceVaultAndSecretReference</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>SecretUrl</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>SecretUrl</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.CustomDnsConfigPropertiesFormat</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.CustomDnsConfigPropertiesFormat</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.CustomDnsConfigPropertiesFormat</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1014,27 +404,21 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.DdosSettings</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.DdosSettings</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.DdosSettings</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.DdosSettings</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
-            <Label>ProtectedIP</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ProtectionCoverage</Label>
+            <Label>ProtectionMode</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
-                <PropertyName>ProtectedIP</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ProtectionCoverage</PropertyName>
+                <PropertyName>ProtectionMode</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -1042,9 +426,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.Delegation</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.Delegation</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.Delegation</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.Delegation</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1070,9 +454,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ExtendedLocation</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.ExtendedLocation</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ExtendedLocation</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.ExtendedLocation</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1092,49 +476,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.Extension</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.FlowLog</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.Extension</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Name</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Publisher</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>TypeHandlerVersion</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ProvisioningState</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Name</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Publisher</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>TypeHandlerVersion</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ProvisioningState</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.FlowLog</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.FlowLog</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.FlowLog</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1166,9 +510,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.FlowLogFormatParameters</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.FlowLogFormatParameters</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.FlowLogFormatParameters</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.FlowLogFormatParameters</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1188,9 +532,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.FlowLogPropertiesFormat</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.FlowLogPropertiesFormat</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.FlowLogPropertiesFormat</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.FlowLogPropertiesFormat</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1234,9 +578,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.FrontendIPConfiguration</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.FrontendIPConfiguration</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.FrontendIPConfiguration</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.FrontendIPConfiguration</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1268,9 +612,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.FrontendIPConfigurationPropertiesFormat</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.FrontendIPConfigurationPropertiesFormat</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.FrontendIPConfigurationPropertiesFormat</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.FrontendIPConfigurationPropertiesFormat</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1308,9 +652,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.GatewayLoadBalancerTunnelInterface</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.GatewayLoadBalancerTunnelInterface</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.GatewayLoadBalancerTunnelInterface</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.GatewayLoadBalancerTunnelInterface</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1342,9 +686,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.InboundNatRule</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.InboundNatRule</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.InboundNatRule</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.InboundNatRule</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1370,9 +714,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.InboundNatRulePropertiesFormat</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.InboundNatRulePropertiesFormat</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.InboundNatRulePropertiesFormat</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.InboundNatRulePropertiesFormat</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1440,65 +784,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.InnerError</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.IPConfiguration</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.InnerError</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Errordetail</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Exceptiontype</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Errordetail</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Exceptiontype</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.InstanceSku</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.InstanceSku</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Name</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Tier</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Name</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Tier</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.IPConfiguration</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.IPConfiguration</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.IPConfiguration</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1524,9 +812,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.IPConfigurationProfile</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.IPConfigurationProfile</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.IPConfigurationProfile</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.IPConfigurationProfile</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1552,9 +840,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.IPConfigurationProfilePropertiesFormat</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.IPConfigurationProfilePropertiesFormat</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.IPConfigurationProfilePropertiesFormat</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.IPConfigurationProfilePropertiesFormat</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1574,9 +862,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.IPConfigurationPropertiesFormat</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.IPConfigurationPropertiesFormat</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.IPConfigurationPropertiesFormat</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.IPConfigurationPropertiesFormat</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1608,9 +896,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.IPTag</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.IPTag</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.IPTag</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.IPTag</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1630,9 +918,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.LoadBalancerBackendAddress</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.LoadBalancerBackendAddress</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.LoadBalancerBackendAddress</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.LoadBalancerBackendAddress</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1652,12 +940,15 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.LoadBalancerBackendAddressPropertiesFormat</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.LoadBalancerBackendAddressPropertiesFormat</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.LoadBalancerBackendAddressPropertiesFormat</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.LoadBalancerBackendAddressPropertiesFormat</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
+          <TableColumnHeader>
+            <Label>AdminState</Label>
+          </TableColumnHeader>
           <TableColumnHeader>
             <Label>IPAddress</Label>
           </TableColumnHeader>
@@ -1665,6 +956,9 @@
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>AdminState</PropertyName>
+              </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>IPAddress</PropertyName>
               </TableColumnItem>
@@ -1674,81 +968,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.LoadBalancerConfiguration</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.NatGateway</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.LoadBalancerConfiguration</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Name</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>FrontendIPConfiguration</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Name</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>FrontendIPConfiguration</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.LoadBalancerFrontendIPConfiguration</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.LoadBalancerFrontendIPConfiguration</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Name</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Name</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.LoadBalancerFrontendIPConfigurationProperties</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.LoadBalancerFrontendIPConfigurationProperties</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>PrivateIPAddress</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>PrivateIPAddress</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.NatGateway</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.NatGateway</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.NatGateway</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1786,9 +1008,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.NatGatewayPropertiesFormat</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.NatGatewayPropertiesFormat</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.NatGatewayPropertiesFormat</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.NatGatewayPropertiesFormat</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1820,9 +1042,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.NatGatewaySku</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.NatGatewaySku</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.NatGatewaySku</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.NatGatewaySku</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1842,9 +1064,43 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.NetworkInterface</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.NatRulePortMapping</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.NetworkInterface</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.NatRulePortMapping</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>BackendPort</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>FrontendPort</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>InboundNatRuleName</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>BackendPort</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>FrontendPort</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>InboundNatRuleName</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.NetworkInterface</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.NetworkInterface</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1876,9 +1132,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.NetworkInterfaceDnsSettings</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.NetworkInterfaceDnsSettings</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.NetworkInterfaceDnsSettings</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.NetworkInterfaceDnsSettings</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1922,9 +1178,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.NetworkInterfaceIPConfiguration</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.NetworkInterfaceIPConfiguration</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.NetworkInterfaceIPConfiguration</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.NetworkInterfaceIPConfiguration</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1950,9 +1206,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.NetworkInterfaceIPConfigurationPrivateLinkConnectionProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.NetworkInterfaceIPConfigurationPrivateLinkConnectionProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.NetworkInterfaceIPConfigurationPrivateLinkConnectionProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.NetworkInterfaceIPConfigurationPrivateLinkConnectionProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1984,9 +1240,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.NetworkInterfaceIPConfigurationPropertiesFormat</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.NetworkInterfaceIPConfigurationPropertiesFormat</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.NetworkInterfaceIPConfigurationPropertiesFormat</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.NetworkInterfaceIPConfigurationPropertiesFormat</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2030,9 +1286,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.NetworkInterfaceListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.NetworkInterfaceListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.NetworkInterfaceListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.NetworkInterfaceListResult</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2052,12 +1308,18 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.NetworkInterfacePropertiesFormat</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.NetworkInterfacePropertiesFormat</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.NetworkInterfacePropertiesFormat</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.NetworkInterfacePropertiesFormat</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
+          <TableColumnHeader>
+            <Label>AuxiliaryMode</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>DisableTcpStateTracking</Label>
+          </TableColumnHeader>
           <TableColumnHeader>
             <Label>EnableAcceleratedNetworking</Label>
           </TableColumnHeader>
@@ -2086,12 +1348,21 @@
             <Label>ResourceGuid</Label>
           </TableColumnHeader>
           <TableColumnHeader>
+            <Label>VnetEncryptionSupported</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>WorkloadType</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>AuxiliaryMode</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>DisableTcpStateTracking</PropertyName>
+              </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>EnableAcceleratedNetworking</PropertyName>
               </TableColumnItem>
@@ -2120,6 +1391,9 @@
                 <PropertyName>ResourceGuid</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
+                <PropertyName>VnetEncryptionSupported</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>WorkloadType</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
@@ -2128,9 +1402,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.NetworkInterfaceTapConfiguration</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.NetworkInterfaceTapConfiguration</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.NetworkInterfaceTapConfiguration</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.NetworkInterfaceTapConfiguration</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2156,9 +1430,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.NetworkInterfaceTapConfigurationPropertiesFormat</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.NetworkInterfaceTapConfigurationPropertiesFormat</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.NetworkInterfaceTapConfigurationPropertiesFormat</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.NetworkInterfaceTapConfigurationPropertiesFormat</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2178,9 +1452,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.NetworkSecurityGroup</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.NetworkSecurityGroup</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.NetworkSecurityGroup</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.NetworkSecurityGroup</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2212,12 +1486,15 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.NetworkSecurityGroupPropertiesFormat</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.NetworkSecurityGroupPropertiesFormat</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.NetworkSecurityGroupPropertiesFormat</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.NetworkSecurityGroupPropertiesFormat</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
+          <TableColumnHeader>
+            <Label>FlushConnection</Label>
+          </TableColumnHeader>
           <TableColumnHeader>
             <Label>ProvisioningState</Label>
           </TableColumnHeader>
@@ -2228,6 +1505,9 @@
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>FlushConnection</PropertyName>
+              </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>ProvisioningState</PropertyName>
               </TableColumnItem>
@@ -2240,253 +1520,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.OSFamily</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.PrivateEndpoint</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.OSFamily</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Name</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Label</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Name</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Label</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.OSFamilyListResult</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.OSFamilyListResult</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>NextLink</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>NextLink</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.OSFamilyProperties</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.OSFamilyProperties</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Label</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Name</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Label</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Name</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.OSVersion</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.OSVersion</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Name</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Label</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>IsDefault</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>IsActive</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Family</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>FamilyLabel</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Name</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Label</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>IsDefault</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>IsActive</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Family</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>FamilyLabel</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.OSVersionListResult</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.OSVersionListResult</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>NextLink</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>NextLink</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.OSVersionProperties</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.OSVersionProperties</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Family</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>FamilyLabel</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>IsActive</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>IsDefault</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Label</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Version</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Family</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>FamilyLabel</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>IsActive</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>IsDefault</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Label</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Version</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.OSVersionPropertiesBase</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.OSVersionPropertiesBase</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>IsActive</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>IsDefault</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Label</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Version</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>IsActive</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>IsDefault</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Label</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Version</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.PrivateEndpoint</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.PrivateEndpoint</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.PrivateEndpoint</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2518,9 +1554,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.PrivateEndpointConnection</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.PrivateEndpointConnection</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.PrivateEndpointConnection</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.PrivateEndpointConnection</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2546,9 +1582,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.PrivateEndpointConnectionProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.PrivateEndpointConnectionProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.PrivateEndpointConnectionProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.PrivateEndpointConnectionProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2574,9 +1610,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.PrivateEndpointIPConfiguration</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.PrivateEndpointIPConfiguration</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.PrivateEndpointIPConfiguration</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.PrivateEndpointIPConfiguration</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2602,9 +1638,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.PrivateEndpointIPConfigurationProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.PrivateEndpointIPConfigurationProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.PrivateEndpointIPConfigurationProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.PrivateEndpointIPConfigurationProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2636,9 +1672,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.PrivateEndpointProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.PrivateEndpointProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.PrivateEndpointProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.PrivateEndpointProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2664,9 +1700,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.PrivateLinkService</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.PrivateLinkService</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.PrivateLinkService</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.PrivateLinkService</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2698,9 +1734,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.PrivateLinkServiceConnection</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.PrivateLinkServiceConnection</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.PrivateLinkServiceConnection</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.PrivateLinkServiceConnection</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2726,9 +1762,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.PrivateLinkServiceConnectionProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.PrivateLinkServiceConnectionProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.PrivateLinkServiceConnectionProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.PrivateLinkServiceConnectionProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2766,9 +1802,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.PrivateLinkServiceConnectionState</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.PrivateLinkServiceConnectionState</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.PrivateLinkServiceConnectionState</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.PrivateLinkServiceConnectionState</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2800,9 +1836,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.PrivateLinkServiceIPConfiguration</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.PrivateLinkServiceIPConfiguration</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.PrivateLinkServiceIPConfiguration</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.PrivateLinkServiceIPConfiguration</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2828,9 +1864,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.PrivateLinkServiceIPConfigurationProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.PrivateLinkServiceIPConfigurationProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.PrivateLinkServiceIPConfigurationProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.PrivateLinkServiceIPConfigurationProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2874,9 +1910,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.PrivateLinkServiceProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.PrivateLinkServiceProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.PrivateLinkServiceProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.PrivateLinkServiceProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2914,9 +1950,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.PrivateLinkServicePropertiesAutoApproval</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.PrivateLinkServicePropertiesAutoApproval</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.PrivateLinkServicePropertiesAutoApproval</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.PrivateLinkServicePropertiesAutoApproval</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2936,9 +1972,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.PrivateLinkServicePropertiesVisibility</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.PrivateLinkServicePropertiesVisibility</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.PrivateLinkServicePropertiesVisibility</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.PrivateLinkServicePropertiesVisibility</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2958,9 +1994,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.PublicIPAddress</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.PublicIPAddress</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.PublicIPAddress</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.PublicIPAddress</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2998,9 +2034,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.PublicIPAddressDnsSettings</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.PublicIPAddressDnsSettings</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.PublicIPAddressDnsSettings</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.PublicIPAddressDnsSettings</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3032,9 +2068,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.PublicIPAddressListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.PublicIPAddressListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.PublicIPAddressListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.PublicIPAddressListResult</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3054,9 +2090,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.PublicIPAddressPropertiesFormat</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.PublicIPAddressPropertiesFormat</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.PublicIPAddressPropertiesFormat</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.PublicIPAddressPropertiesFormat</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3118,9 +2154,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.PublicIPAddressSku</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.PublicIPAddressSku</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.PublicIPAddressSku</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.PublicIPAddressSku</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3146,9 +2182,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.Resource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.Resource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.Resource</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.Resource</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3174,9 +2210,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ResourceNavigationLink</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.ResourceNavigationLink</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ResourceNavigationLink</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.ResourceNavigationLink</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3202,9 +2238,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ResourceNavigationLinkFormat</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.ResourceNavigationLinkFormat</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ResourceNavigationLinkFormat</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.ResourceNavigationLinkFormat</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3236,9 +2272,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ResourceSet</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.ResourceSet</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ResourceSet</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.ResourceSet</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3258,9 +2294,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ResourceTags</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.ResourceTags</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ResourceTags</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.ResourceTags</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3280,9 +2316,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.RetentionPolicyParameters</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.RetentionPolicyParameters</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.RetentionPolicyParameters</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.RetentionPolicyParameters</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3308,127 +2344,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.RoleInstance</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.Route</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.RoleInstance</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Name</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Location</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SkuName</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SkuTier</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Name</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Location</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SkuName</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SkuTier</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.RoleInstanceListResult</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.RoleInstanceListResult</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>NextLink</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>NextLink</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.RoleInstances</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.RoleInstances</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>RoleInstance</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>RoleInstance</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.RoleInstanceView</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.RoleInstanceView</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Statuses</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>PlatformFaultDomain</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>PlatformUpdateDomain</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Statuses</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>PlatformFaultDomain</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>PlatformUpdateDomain</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.Route</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.Route</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.Route</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3454,9 +2372,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.RoutePropertiesFormat</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.RoutePropertiesFormat</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.RoutePropertiesFormat</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.RoutePropertiesFormat</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3500,9 +2418,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.RouteTable</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.RouteTable</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.RouteTable</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.RouteTable</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3534,9 +2452,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.RouteTablePropertiesFormat</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.RouteTablePropertiesFormat</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.RouteTablePropertiesFormat</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.RouteTablePropertiesFormat</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3568,9 +2486,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.SecurityRule</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.SecurityRule</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.SecurityRule</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.SecurityRule</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3596,9 +2514,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.SecurityRulePropertiesFormat</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.SecurityRulePropertiesFormat</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.SecurityRulePropertiesFormat</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.SecurityRulePropertiesFormat</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3696,9 +2614,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ServiceAssociationLink</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.ServiceAssociationLink</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ServiceAssociationLink</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.ServiceAssociationLink</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3724,9 +2642,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ServiceAssociationLinkPropertiesFormat</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.ServiceAssociationLinkPropertiesFormat</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ServiceAssociationLinkPropertiesFormat</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.ServiceAssociationLinkPropertiesFormat</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3770,9 +2688,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ServiceDelegationPropertiesFormat</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.ServiceDelegationPropertiesFormat</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ServiceDelegationPropertiesFormat</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.ServiceDelegationPropertiesFormat</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3804,9 +2722,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ServiceEndpointPolicy</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.ServiceEndpointPolicy</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ServiceEndpointPolicy</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.ServiceEndpointPolicy</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3844,9 +2762,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ServiceEndpointPolicyDefinition</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.ServiceEndpointPolicyDefinition</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ServiceEndpointPolicyDefinition</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.ServiceEndpointPolicyDefinition</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3872,9 +2790,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ServiceEndpointPolicyDefinitionPropertiesFormat</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.ServiceEndpointPolicyDefinitionPropertiesFormat</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ServiceEndpointPolicyDefinitionPropertiesFormat</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.ServiceEndpointPolicyDefinitionPropertiesFormat</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3912,9 +2830,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ServiceEndpointPolicyPropertiesFormat</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.ServiceEndpointPolicyPropertiesFormat</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ServiceEndpointPolicyPropertiesFormat</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.ServiceEndpointPolicyPropertiesFormat</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3952,9 +2870,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ServiceEndpointPropertiesFormat</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.ServiceEndpointPropertiesFormat</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ServiceEndpointPropertiesFormat</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.ServiceEndpointPropertiesFormat</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3986,9 +2904,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.Subnet</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.Subnet</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.Subnet</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.Subnet</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -4014,9 +2932,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.SubnetPropertiesFormat</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.SubnetPropertiesFormat</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.SubnetPropertiesFormat</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.SubnetPropertiesFormat</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -4066,9 +2984,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.TrafficAnalyticsConfigurationProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.TrafficAnalyticsConfigurationProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.TrafficAnalyticsConfigurationProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.TrafficAnalyticsConfigurationProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -4112,53 +3030,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.UpdateDomain</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.VirtualNetworkTap</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.UpdateDomain</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Name</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Name</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.UpdateDomainListResult</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.UpdateDomainListResult</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>NextLink</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>NextLink</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.VirtualNetworkTap</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.VirtualNetworkTap</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.VirtualNetworkTap</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -4190,9 +3064,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.VirtualNetworkTapPropertiesFormat</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.VirtualNetworkTapPropertiesFormat</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.VirtualNetworkTapPropertiesFormat</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.VirtualNetworkTapPropertiesFormat</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -4217,6 +3091,1246 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>ResourceGuid</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api10.ApiError</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api10.ApiError</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Code</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Message</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Target</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Code</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Message</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Target</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api10.ApiErrorBase</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api10.ApiErrorBase</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Code</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Message</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Target</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Code</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Message</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Target</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api10.InnerError</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api10.InnerError</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Errordetail</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Exceptiontype</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Errordetail</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Exceptiontype</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api10.SystemData</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api10.SystemData</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>CreatedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>LastModifiedAt</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>CreatedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>LastModifiedAt</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.CloudService</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.CloudService</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>ResourceGroupName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Location</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ProvisioningState</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>ResourceGroupName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Location</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ProvisioningState</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.CloudServiceTags</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.CloudServiceTags</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Item</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Item</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.CloudServiceVaultCertificate</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.CloudServiceVaultCertificate</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>CertificateUrl</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>CertificateUrl</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.ResourceInstanceViewStatus</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.ResourceInstanceViewStatus</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Code</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>DisplayStatus</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Level</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Message</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Time</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Code</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>DisplayStatus</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Level</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Message</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Time</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.RoleInstanceTags</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.RoleInstanceTags</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Item</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Item</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.StatusCodeCount</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.StatusCodeCount</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Code</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Count</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Code</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Count</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.CloudServiceExtensionProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.CloudServiceExtensionProperties</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>AutoUpgradeMinorVersion</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ForceUpdateTag</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ProtectedSetting</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ProvisioningState</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Publisher</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>RolesAppliedTo</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Setting</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>TypeHandlerVersion</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>AutoUpgradeMinorVersion</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ForceUpdateTag</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ProtectedSetting</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ProvisioningState</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Publisher</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>RolesAppliedTo</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Setting</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>TypeHandlerVersion</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.CloudServiceInstanceView</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.CloudServiceInstanceView</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Statuses</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>RoleInstanceStatusesSummary</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Statuses</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>RoleInstanceStatusesSummary</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.CloudServiceListResult</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.CloudServiceListResult</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>NextLink</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>NextLink</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.CloudServiceNetworkProfile</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.CloudServiceNetworkProfile</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>SlotType</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>SlotType</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.CloudServiceProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.CloudServiceProperties</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>AllowModelOverride</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Configuration</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ConfigurationUrl</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>PackageUrl</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ProvisioningState</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>StartCloudService</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>UniqueId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>UpgradeMode</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>AllowModelOverride</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Configuration</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ConfigurationUrl</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>PackageUrl</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ProvisioningState</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>StartCloudService</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>UniqueId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>UpgradeMode</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.CloudServiceRole</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.CloudServiceRole</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Location</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Location</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.CloudServiceRoleListResult</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.CloudServiceRoleListResult</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>NextLink</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>NextLink</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.CloudServiceRoleProfileProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.CloudServiceRoleProfileProperties</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SkuName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SkuTier</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SkuCapacity</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SkuName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SkuTier</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SkuCapacity</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.CloudServiceRoleProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.CloudServiceRoleProperties</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>UniqueId</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>UniqueId</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.CloudServiceRoleSku</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.CloudServiceRoleSku</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Capacity</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Tier</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Capacity</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Tier</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.CloudServiceUpdateTags</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.CloudServiceUpdateTags</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Item</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Item</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.CloudServiceVaultAndSecretReference</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.CloudServiceVaultAndSecretReference</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>SecretUrl</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>SecretUrl</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.Extension</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.Extension</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Publisher</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>TypeHandlerVersion</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ProvisioningState</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Publisher</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>TypeHandlerVersion</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ProvisioningState</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.InstanceSku</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.InstanceSku</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Tier</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Tier</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.LoadBalancerConfiguration</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.LoadBalancerConfiguration</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>FrontendIPConfiguration</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>FrontendIPConfiguration</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.LoadBalancerFrontendIPConfiguration</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.LoadBalancerFrontendIPConfiguration</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.LoadBalancerFrontendIPConfigurationProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.LoadBalancerFrontendIPConfigurationProperties</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>PrivateIPAddress</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>PrivateIPAddress</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.OSFamily</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.OSFamily</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Label</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Label</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.OSFamilyListResult</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.OSFamilyListResult</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>NextLink</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>NextLink</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.OSFamilyProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.OSFamilyProperties</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Label</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Label</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.OSVersion</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.OSVersion</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Label</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>IsDefault</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>IsActive</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Family</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>FamilyLabel</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Label</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>IsDefault</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>IsActive</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Family</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>FamilyLabel</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.OSVersionListResult</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.OSVersionListResult</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>NextLink</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>NextLink</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.OSVersionProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.OSVersionProperties</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Family</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>FamilyLabel</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>IsActive</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>IsDefault</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Label</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Version</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Family</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>FamilyLabel</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>IsActive</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>IsDefault</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Label</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Version</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.OSVersionPropertiesBase</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.OSVersionPropertiesBase</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>IsActive</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>IsDefault</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Label</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Version</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>IsActive</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>IsDefault</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Label</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Version</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.RoleInstance</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.RoleInstance</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Location</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SkuName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SkuTier</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Location</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SkuName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SkuTier</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.RoleInstanceListResult</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.RoleInstanceListResult</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>NextLink</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>NextLink</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.RoleInstances</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.RoleInstances</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>RoleInstance</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>RoleInstance</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.RoleInstanceView</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.RoleInstanceView</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Statuses</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>PlatformFaultDomain</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>PlatformUpdateDomain</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Statuses</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>PlatformFaultDomain</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>PlatformUpdateDomain</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.UpdateDomain</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.UpdateDomain</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.UpdateDomainListResult</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.UpdateDomainListResult</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>NextLink</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>NextLink</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>

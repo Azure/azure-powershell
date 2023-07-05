@@ -11,7 +11,6 @@
 namespace Microsoft.Azure.Management.NetApp.Models
 {
     using Microsoft.Rest;
-    using Microsoft.Rest.Azure;
     using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
     using System.Linq;
@@ -20,7 +19,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
     /// Backup of a Volume
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class Backup : IResource
+    public partial class Backup : ProxyResource
     {
         /// <summary>
         /// Initializes a new instance of the Backup class.
@@ -34,9 +33,14 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// Initializes a new instance of the Backup class.
         /// </summary>
         /// <param name="location">Resource location</param>
-        /// <param name="id">Resource Id</param>
-        /// <param name="name">Resource name</param>
-        /// <param name="type">Resource type</param>
+        /// <param name="id">Fully qualified resource ID for the resource. Ex -
+        /// /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}</param>
+        /// <param name="name">The name of the resource</param>
+        /// <param name="type">The type of the resource. E.g.
+        /// "Microsoft.Compute/virtualMachines" or
+        /// "Microsoft.Storage/storageAccounts"</param>
+        /// <param name="systemData">Azure Resource Manager metadata containing
+        /// createdBy and modifiedBy information.</param>
         /// <param name="backupId">backupId</param>
         /// <param name="creationDate">creationDate</param>
         /// <param name="provisioningState">Azure lifecycle management</param>
@@ -48,12 +52,10 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// <param name="useExistingSnapshot">Manual backup an already existing
         /// snapshot. This will always be false for scheduled backups and
         /// true/false for manual backups</param>
-        public Backup(string location, string id = default(string), string name = default(string), string type = default(string), string backupId = default(string), System.DateTime? creationDate = default(System.DateTime?), string provisioningState = default(string), long? size = default(long?), string label = default(string), string backupType = default(string), string failureReason = default(string), string volumeName = default(string), bool? useExistingSnapshot = default(bool?))
+        public Backup(string location, string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), string backupId = default(string), System.DateTime? creationDate = default(System.DateTime?), string provisioningState = default(string), long? size = default(long?), string label = default(string), string backupType = default(string), string failureReason = default(string), string volumeName = default(string), bool? useExistingSnapshot = default(bool?))
+            : base(id, name, type, systemData)
         {
             Location = location;
-            Id = id;
-            Name = name;
-            Type = type;
             BackupId = backupId;
             CreationDate = creationDate;
             ProvisioningState = provisioningState;
@@ -76,24 +78,6 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// </summary>
         [JsonProperty(PropertyName = "location")]
         public string Location { get; set; }
-
-        /// <summary>
-        /// Gets resource Id
-        /// </summary>
-        [JsonProperty(PropertyName = "id")]
-        public string Id { get; private set; }
-
-        /// <summary>
-        /// Gets resource name
-        /// </summary>
-        [JsonProperty(PropertyName = "name")]
-        public string Name { get; private set; }
-
-        /// <summary>
-        /// Gets resource type
-        /// </summary>
-        [JsonProperty(PropertyName = "type")]
-        public string Type { get; private set; }
 
         /// <summary>
         /// Gets backupId

@@ -54,7 +54,7 @@ PARAMETER <IDatabase>: Represents a Database.
   [Charset <String>]: The charset of the database.
   [Collation <String>]: The collation of the database.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.mariadb/new-azmariadbdatabase
+https://learn.microsoft.com/en-us/powershell/module/az.mariadb/new-azmariadbdatabase
 #>
 function New-AzMariaDbDatabase {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IDatabase])]

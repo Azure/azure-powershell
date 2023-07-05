@@ -51,7 +51,7 @@ PARAMETER <IEnvironmentCreateOrUpdateParameters>: Parameters supplied to the Cre
   [Tag <ICreateOrUpdateTrackedResourcePropertiesTags>]: Key-value pairs of additional properties for the resource.
     [(Any) <String>]: This indicates any property can be added to this object.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.timeseriesinsights/new-aztimeseriesinsightsenvironment
+https://learn.microsoft.com/en-us/powershell/module/az.timeseriesinsights/new-aztimeseriesinsightsenvironment
 #>
 function New-AzTimeSeriesInsightsEnvironment {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IEnvironmentResource])]

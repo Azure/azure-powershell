@@ -118,7 +118,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// <summary>
         /// Gets the level of compute power that each node in the Big
         /// Data pool has. Possible values include: 'None', 'Small', 'Medium',
-        /// 'Large'
+        /// 'Large', 'XLarge', 'XXLarge', 'XXXLarge'
         /// </summary>
         public string NodeSize { get; set; }
 

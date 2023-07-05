@@ -109,18 +109,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.PowerShell
     {
         public string Title { get; }
         public string Code { get; }
+        public string Output { get; }
         public string Remarks { get; }
 
         public PsHelpExampleInfo(PSObject exampleObject)
         {
             Title = exampleObject.GetProperty<string>("title");
             Code = exampleObject.GetProperty<string>("code");
+            Output = exampleObject.GetProperty<string>("output");
             Remarks = exampleObject.GetProperty<PSObject[]>("remarks").EmptyIfNull().ToDescriptionText();
         }
         public PsHelpExampleInfo(MarkdownExampleHelpInfo markdownExample)
         {
             Title = markdownExample.Name;
             Code = markdownExample.Code;
+            Output = markdownExample.Output;
             Remarks = markdownExample.Description;
         }
 

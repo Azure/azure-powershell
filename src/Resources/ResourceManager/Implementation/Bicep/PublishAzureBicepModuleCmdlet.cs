@@ -30,12 +30,18 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Bicep
         [ValidateNotNullOrEmpty]
         public string Target { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Documentation uri of the Bicep module.")]
+        public string DocumentationUri { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage="Overwrite existing published module.")]
+        public SwitchParameter Force { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage="Indicates that this cmdlet returns a boolean result. By default, this cmdlet does not generate any output.")]
         public SwitchParameter PassThru { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            BicepUtility.PublishFile(this.TryResolvePath(this.FilePath), this.Target, this.WriteVerbose, this.WriteWarning);
+            BicepUtility.PublishFile(this.TryResolvePath(this.FilePath), this.Target, this.DocumentationUri, this.Force.IsPresent, this.WriteVerbose, this.WriteWarning);
 
             if (this.PassThru.IsPresent)
             {

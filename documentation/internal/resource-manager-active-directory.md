@@ -21,7 +21,7 @@ One thing that differentiates the `ResourceManager` project from all other servi
 
 ### Resources
 
-From the [_Azure Resource Manager overview_](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-overview#terminology) document, a resource is defined as the following:
+From the [_Azure Resource Manager overview_](https://learn.microsoft.com/en-us/azure/azure-resource-manager/resource-group-overview#terminology) document, a resource is defined as the following:
 
 _A manageable item that is available through Azure. Virtual machines, storage accounts, web apps, databases, and virtual networks are examples of resources._
 
@@ -125,7 +125,7 @@ The `Resources` project contains all of the Active Directory, Authorization, and
 
 ### Active Directory Applications
 
-From the [_Application and service principal objects in Azure Active Directory_](https://docs.microsoft.com/en-us/azure/active-directory/develop/app-objects-and-service-principals#application-object) document, an Azure AD application is defined as the following:
+From the [_Application and service principal objects in Azure Active Directory_](https://learn.microsoft.com/en-us/azure/active-directory/develop/app-objects-and-service-principals#application-object) document, an Azure AD application is defined as the following:
 
 _An Azure AD application is defined by its one and only application object, which resides in the Azure AD tenant where the application was registered, known as the application's "home" tenant._
 
@@ -162,7 +162,7 @@ Get-AzADApplication @FilterParameters | Remove-AzADAppCredential
 
 ### Active Directory Groups
 
-From the [_Manage app and resource access using Azure Active Directory groups_](https://docs.microsoft.com/en-us/azure/active-directory/fundamentals/active-directory-manage-groups#how-does-access-management-in-azure-ad-work) document, an Azure AD group does the following:
+From the [_Manage app and resource access using Azure Active Directory groups_](https://learn.microsoft.com/en-us/azure/active-directory/fundamentals/active-directory-manage-groups#how-does-access-management-in-azure-ad-work) document, an Azure AD group does the following:
 
 _Using groups lets the resource owner (or Azure AD directory owner), assign a set of access permissions to all the members of the group, instead of having to provide the rights one-by-one. The resource or directory owner can also give management rights for the member list to someone else, such as a department manager or a Helpdesk administrator, letting that person add and remove members, as needed._
 
@@ -193,7 +193,7 @@ Get-AzADGroup @FilterParameters | Remove-AzADGroupMember @UserParameters
 
 ### Active Directory Service Principals
 
-From the [_Application and service principal objects in Azure Active Directory_](https://docs.microsoft.com/en-us/azure/active-directory/develop/app-objects-and-service-principals) document, a service principal is defined as the following:
+From the [_Application and service principal objects in Azure Active Directory_](https://learn.microsoft.com/en-us/azure/active-directory/develop/app-objects-and-service-principals) document, a service principal is defined as the following:
 
 _When an application is given permission to access resources in a tenant (upon registration or consent), a service principal object is created._
 

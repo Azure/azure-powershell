@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.dll-Help.xml
 Module Name: Az.EventGrid
-online version:
+online version: https://learn.microsoft.com/powershell/module/az.eventgrid/revoke-azeventgridpartnerconfiguration
 schema: 2.0.0
 ---
 
@@ -47,7 +47,7 @@ If specified, the allowed values are between 1 to the value of defaultMaximumExp
 If not specified, the default value will be the value of defaultMaximumExpirationTimeInDays specified in PartnerConfiguration or 7 if this value is not specified.
 
 ```yaml
-Type: DateTime
+Type: System.Nullable`1[System.DateTime]
 Parameter Sets: (All)
 Aliases:
 
@@ -62,7 +62,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -77,7 +77,7 @@ Accept wildcard characters: False
 PartnerConfiguration object.
 
 ```yaml
-Type: PSPartnerConfiguration
+Type: Microsoft.Azure.Commands.EventGrid.Models.PSPartnerConfiguration
 Parameter Sets: PartnerConfigurationInputObjectParameterSet
 Aliases:
 
@@ -92,7 +92,7 @@ Accept wildcard characters: False
 Parter name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -107,7 +107,7 @@ Accept wildcard characters: False
 Immutable id of the corresponding partner registration
 
 ```yaml
-Type: Guid
+Type: System.Nullable`1[System.Guid]
 Parameter Sets: (All)
 Aliases:
 
@@ -122,7 +122,7 @@ Accept wildcard characters: False
 The name of the resource group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceGroupNameParameterSet
 Aliases: ResourceGroup
 
@@ -137,7 +137,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -153,7 +153,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

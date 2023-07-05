@@ -31,7 +31,7 @@ Get-AzIotHubModuleTwin [-ResourceId] <String> [-DeviceId] <String> -ModuleId <St
 ```
 
 ## DESCRIPTION
-Gets an IoT device module twin. See https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-module-twins for more information.
+Gets an IoT device module twin. See https://learn.microsoft.com/azure/iot-hub/iot-hub-devguide-module-twins for more information.
 
 ## EXAMPLES
 

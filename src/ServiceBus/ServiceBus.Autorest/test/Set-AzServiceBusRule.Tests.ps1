@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Set-AzServiceBusRule'))
 }
 
 function AssertCorrelationFilterUpdates{
-    param([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IRule]$expectedRule,[Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IRule]$actualRule)
+    param([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.IRule]$expectedRule,[Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.IRule]$actualRule)
     $expectedRule.Name | Should -Be $actualRule.Name
     $expectedRule.ResourceGroupName | Should -Be $actualRule.ResourceGroupName
     $expectedRule.ContentType | Should -Be $actualRule.ContentType

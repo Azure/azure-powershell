@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,7 +20,6 @@ using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch
 {
-    [GenericBreakingChange("Get-AzBatchTaskCounts alias will be removed in an upcoming breaking change release", "2.0.0")]
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzurePrefix + "BatchTaskCount"),OutputType(typeof(PSTaskCounts))]
     [Alias("Get-AzBatchTaskCounts")]
     public class GetBatchTaskCountCommand : BatchObjectModelCmdletBase

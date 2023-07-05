@@ -14,7 +14,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Cmdlets
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzDatabricksWorkspace_CreateExpanded", SupportsShouldProcess = true)]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20220401Preview.IWorkspace))]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IWorkspace))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.Description(@"Creates a new workspace.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.Generated]
     public partial class NewAzDatabricksWorkspace_CreateExpanded : global::System.Management.Automation.PSCmdlet,
@@ -35,7 +35,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Cmdlets
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
 
         /// <summary>Information about workspace.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20220401Preview.IWorkspace _parametersBody = new Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20220401Preview.Workspace();
+        private Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IWorkspace _parametersBody = new Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.Workspace();
 
         /// <summary>The value which should be used for this field.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The value which should be used for this field.")]
@@ -62,8 +62,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Cmdlets
         ReadOnly = false,
         Description = @"The workspace provider authorizations.",
         SerializedName = @"authorizations",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20220401Preview.IWorkspaceProviderAuthorization) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20220401Preview.IWorkspaceProviderAuthorization[] Authorization { get => _parametersBody.Authorization ?? null /* arrayOf */; set => _parametersBody.Authorization = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IWorkspaceProviderAuthorization) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IWorkspaceProviderAuthorization[] Authorization { get => _parametersBody.Authorization ?? null /* arrayOf */; set => _parametersBody.Authorization = value; }
 
         /// <summary>Wait for .NET debugger to attach</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "Wait for .NET debugger to attach")]
@@ -74,9 +74,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Cmdlets
         public Microsoft.Azure.PowerShell.Cmdlets.Databricks.Databricks Client => Microsoft.Azure.PowerShell.Cmdlets.Databricks.Module.Instance.ClientAPI;
 
         /// <summary>
-        /// The credentials, account, tenant, and subscription used for communication with Azure
+        /// The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet
+        /// against a different subscription
         /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The credentials, account, tenant, and subscription used for communication with Azure.")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.")]
         [global::System.Management.Automation.ValidateNotNull]
         [global::System.Management.Automation.Alias("AzureRMContext", "AzureCredential")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.ParameterCategory.Azure)]
@@ -155,39 +156,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Cmdlets
         /// <summary>Accessor for our copy of the InvocationInfo.</summary>
         public global::System.Management.Automation.InvocationInfo InvocationInformation { get => __invocationInfo = __invocationInfo ?? this.MyInvocation ; set { __invocationInfo = value; } }
 
-        /// <summary>The name of KeyVault key.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The name of KeyVault key.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"The name of KeyVault key.",
-        SerializedName = @"keyName",
-        PossibleTypes = new [] { typeof(string) })]
-        public string KeyVaultKeyName { get => _parametersBody.KeyVaultPropertyKeyName ?? null; set => _parametersBody.KeyVaultPropertyKeyName = value; }
-
-        /// <summary>The version of KeyVault key.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The version of KeyVault key.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"The version of KeyVault key.",
-        SerializedName = @"keyVersion",
-        PossibleTypes = new [] { typeof(string) })]
-        public string KeyVaultKeyVersion { get => _parametersBody.KeyVaultPropertyKeyVersion ?? null; set => _parametersBody.KeyVaultPropertyKeyVersion = value; }
-
-        /// <summary>The Uri of KeyVault.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The Uri of KeyVault.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"The Uri of KeyVault.",
-        SerializedName = @"keyVaultUri",
-        PossibleTypes = new [] { typeof(string) })]
-        public string KeyVaultUri { get => _parametersBody.KeyVaultPropertyKeyVaultUri ?? null; set => _parametersBody.KeyVaultPropertyKeyVaultUri = value; }
-
         /// <summary>The value which should be used for this field.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The value which should be used for this field.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.ParameterCategory.Body)]
@@ -221,6 +189,52 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Cmdlets
         PossibleTypes = new [] { typeof(string) })]
         public string Location { get => _parametersBody.Location ?? null; set => _parametersBody.Location = value; }
 
+        /// <summary>The name of KeyVault key.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The name of KeyVault key.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The name of KeyVault key.",
+        SerializedName = @"keyName",
+        PossibleTypes = new [] { typeof(string) })]
+        public string ManagedDiskKeyVaultPropertiesKeyName { get => _parametersBody.ManagedDiskKeyVaultPropertiesKeyName ?? null; set => _parametersBody.ManagedDiskKeyVaultPropertiesKeyName = value; }
+
+        /// <summary>The URI of KeyVault.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The URI of KeyVault.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The URI of KeyVault.",
+        SerializedName = @"keyVaultUri",
+        PossibleTypes = new [] { typeof(string) })]
+        public string ManagedDiskKeyVaultPropertiesKeyVaultUri { get => _parametersBody.ManagedDiskKeyVaultPropertiesKeyVaultUri ?? null; set => _parametersBody.ManagedDiskKeyVaultPropertiesKeyVaultUri = value; }
+
+        /// <summary>The version of KeyVault key.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The version of KeyVault key.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The version of KeyVault key.",
+        SerializedName = @"keyVersion",
+        PossibleTypes = new [] { typeof(string) })]
+        public string ManagedDiskKeyVaultPropertiesKeyVersion { get => _parametersBody.ManagedDiskKeyVaultPropertiesKeyVersion ?? null; set => _parametersBody.ManagedDiskKeyVaultPropertiesKeyVersion = value; }
+
+        /// <summary>
+        /// Indicate whether the latest key version should be automatically used for Managed Disk Encryption.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Indicate whether the latest key version should be automatically used for Managed Disk Encryption.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Indicate whether the latest key version should be automatically used for Managed Disk Encryption.",
+        SerializedName = @"rotationToLatestKeyVersionEnabled",
+        PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
+        public global::System.Management.Automation.SwitchParameter ManagedDiskRotationToLatestKeyVersionEnabled { get => _parametersBody.ManagedDiskRotationToLatestKeyVersionEnabled ?? default(global::System.Management.Automation.SwitchParameter); set => _parametersBody.ManagedDiskRotationToLatestKeyVersionEnabled = value; }
+
         /// <summary>The managed resource group Id.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The managed resource group Id.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.ParameterCategory.Body)]
@@ -231,6 +245,39 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Cmdlets
         SerializedName = @"managedResourceGroupId",
         PossibleTypes = new [] { typeof(string) })]
         public string ManagedResourceGroupId { get => _parametersBody.ManagedResourceGroupId ?? null; set => _parametersBody.ManagedResourceGroupId = value; }
+
+        /// <summary>The name of KeyVault key.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The name of KeyVault key.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The name of KeyVault key.",
+        SerializedName = @"keyName",
+        PossibleTypes = new [] { typeof(string) })]
+        public string ManagedServicesKeyVaultPropertiesKeyName { get => _parametersBody.ManagedServicesKeyVaultPropertiesKeyName ?? null; set => _parametersBody.ManagedServicesKeyVaultPropertiesKeyName = value; }
+
+        /// <summary>The Uri of KeyVault.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The Uri of KeyVault.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The Uri of KeyVault.",
+        SerializedName = @"keyVaultUri",
+        PossibleTypes = new [] { typeof(string) })]
+        public string ManagedServicesKeyVaultPropertiesKeyVaultUri { get => _parametersBody.ManagedServicesKeyVaultPropertiesKeyVaultUri ?? null; set => _parametersBody.ManagedServicesKeyVaultPropertiesKeyVaultUri = value; }
+
+        /// <summary>The version of KeyVault key.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The version of KeyVault key.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The version of KeyVault key.",
+        SerializedName = @"keyVersion",
+        PossibleTypes = new [] { typeof(string) })]
+        public string ManagedServicesKeyVaultPropertiesKeyVersion { get => _parametersBody.ManagedServicesKeyVaultPropertiesKeyVersion ?? null; set => _parametersBody.ManagedServicesKeyVaultPropertiesKeyVersion = value; }
 
         /// <summary>
         /// <see cref="Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.IEventListener" /> cancellation delegate. Stops the cmdlet when called.
@@ -517,12 +564,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Cmdlets
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20220401Preview.IWorkspace">Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20220401Preview.IWorkspace</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IWorkspace">Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IWorkspace</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20220401Preview.IWorkspace> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IWorkspace> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -792,12 +839,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20220401Preview.IWorkspace">Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20220401Preview.IWorkspace</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IWorkspace">Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IWorkspace</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20220401Preview.IWorkspace> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IWorkspace> response)
         {
             using( NoSynchronizationContext )
             {
@@ -809,7 +856,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20220401Preview.IWorkspace
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IWorkspace
                 WriteObject((await response));
             }
         }

@@ -15,7 +15,7 @@ Update or create a managed Kubernetes cluster.
 ### defaultParameterSet (Default)
 ```
 Set-AzAksCluster [-NodePoolMode <String>] [-AcrNameToDetach <String>] [-NodeImageOnly] [-ControlPlaneOnly]
- [-AutoScalerProfile <ManagedClusterPropertiesAutoScalerProfile>] [-EnableUptimeSLA]
+ [-AutoScalerProfile <ManagedClusterPropertiesAutoScalerProfile>] [-EnableUptimeSLA] [-EnableOidcIssuer]
  [-ResourceGroupName] <String> [-Name] <String> [[-ServicePrincipalIdAndSecret] <PSCredential>]
  [-Location <String>] [-LinuxProfileAdminUserName <String>] [-DnsNamePrefix <String>]
  [-KubernetesVersion <String>] [-NodeName <String>] [-NodeMinCount <Int32>] [-NodeMaxCount <Int32>]
@@ -30,19 +30,19 @@ Set-AzAksCluster [-NodePoolMode <String>] [-AcrNameToDetach <String>] [-NodeImag
  [-DiskEncryptionSetID <String>] [-DisableLocalAccount] [-HttpProxy <String>] [-HttpsProxy <String>]
  [-HttpProxyConfigNoProxyEndpoint <String[]>] [-HttpProxyConfigTrustedCa <String>]
  [-AksCustomHeader <Hashtable>] [-AadProfile <ManagedClusterAADProfile>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [-SubscriptionId <String>]
- [<CommonParameters>]
+ [-WindowsProfileAdminUserPassword <SecureString>] [-EnableAHUB] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [-SubscriptionId <String>] [<CommonParameters>]
 ```
 
 ### InputObjectParameterSet
 ```
 Set-AzAksCluster -InputObject <PSKubernetesCluster> [-NodePoolMode <String>] [-AcrNameToDetach <String>]
  [-NodeImageOnly] [-ControlPlaneOnly] [-AutoScalerProfile <ManagedClusterPropertiesAutoScalerProfile>]
- [-EnableUptimeSLA] [-Location <String>] [-LinuxProfileAdminUserName <String>] [-DnsNamePrefix <String>]
- [-KubernetesVersion <String>] [-NodeName <String>] [-NodeMinCount <Int32>] [-NodeMaxCount <Int32>]
- [-EnableNodeAutoScaling] [-NodeCount <Int32>] [-NodeOsDiskSize <Int32>] [-NodeVmSize <String>]
- [-NodePoolLabel <Hashtable>] [-NodePoolTag <Hashtable>] [-SshKeyValue <String>] [-AcrNameToAttach <String>]
- [-AsJob] [-Tag <Hashtable>] [-LoadBalancerAllocatedOutboundPort <Int32>]
+ [-EnableUptimeSLA] [-EnableOidcIssuer] [-Location <String>] [-LinuxProfileAdminUserName <String>]
+ [-DnsNamePrefix <String>] [-KubernetesVersion <String>] [-NodeName <String>] [-NodeMinCount <Int32>]
+ [-NodeMaxCount <Int32>] [-EnableNodeAutoScaling] [-NodeCount <Int32>] [-NodeOsDiskSize <Int32>]
+ [-NodeVmSize <String>] [-NodePoolLabel <Hashtable>] [-NodePoolTag <Hashtable>] [-SshKeyValue <String>]
+ [-AcrNameToAttach <String>] [-AsJob] [-Tag <Hashtable>] [-LoadBalancerAllocatedOutboundPort <Int32>]
  [-LoadBalancerManagedOutboundIpCount <Int32>] [-LoadBalancerOutboundIp <String[]>]
  [-LoadBalancerOutboundIpPrefix <String[]>] [-LoadBalancerIdleTimeoutInMinute <Int32>]
  [-ApiServerAccessAuthorizedIpRange <String[]>] [-EnableApiServerAccessPrivateCluster]
@@ -51,15 +51,15 @@ Set-AzAksCluster -InputObject <PSKubernetesCluster> [-NodePoolMode <String>] [-A
  [-DiskEncryptionSetID <String>] [-DisableLocalAccount] [-HttpProxy <String>] [-HttpsProxy <String>]
  [-HttpProxyConfigNoProxyEndpoint <String[]>] [-HttpProxyConfigTrustedCa <String>]
  [-AksCustomHeader <Hashtable>] [-AadProfile <ManagedClusterAADProfile>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [-SubscriptionId <String>]
- [<CommonParameters>]
+ [-WindowsProfileAdminUserPassword <SecureString>] [-EnableAHUB] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [-SubscriptionId <String>] [<CommonParameters>]
 ```
 
 ### IdParameterSet
 ```
 Set-AzAksCluster [-NodePoolMode <String>] [-AcrNameToDetach <String>] [-NodeImageOnly] [-ControlPlaneOnly]
  [-Id] <String> [-AutoScalerProfile <ManagedClusterPropertiesAutoScalerProfile>] [-EnableUptimeSLA]
- [-Location <String>] [-LinuxProfileAdminUserName <String>] [-DnsNamePrefix <String>]
+ [-EnableOidcIssuer] [-Location <String>] [-LinuxProfileAdminUserName <String>] [-DnsNamePrefix <String>]
  [-KubernetesVersion <String>] [-NodeName <String>] [-NodeMinCount <Int32>] [-NodeMaxCount <Int32>]
  [-EnableNodeAutoScaling] [-NodeCount <Int32>] [-NodeOsDiskSize <Int32>] [-NodeVmSize <String>]
  [-NodePoolLabel <Hashtable>] [-NodePoolTag <Hashtable>] [-SshKeyValue <String>] [-AcrNameToAttach <String>]
@@ -72,8 +72,8 @@ Set-AzAksCluster [-NodePoolMode <String>] [-AcrNameToDetach <String>] [-NodeImag
  [-DiskEncryptionSetID <String>] [-DisableLocalAccount] [-HttpProxy <String>] [-HttpsProxy <String>]
  [-HttpProxyConfigNoProxyEndpoint <String[]>] [-HttpProxyConfigTrustedCa <String>]
  [-AksCustomHeader <Hashtable>] [-AadProfile <ManagedClusterAADProfile>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [-SubscriptionId <String>]
- [<CommonParameters>]
+ [-WindowsProfileAdminUserPassword <SecureString>] [-EnableAHUB] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [-SubscriptionId <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -254,7 +254,7 @@ Accept wildcard characters: False
 ```
 
 ### -AutoUpgradeChannel
-The upgrade channel for auto upgrade. For more information see https://docs.microsoft.com/azure/aks/upgrade-cluster#set-auto-upgrade-channel.
+The upgrade channel for auto upgrade. For more information see https://learn.microsoft.com/azure/aks/upgrade-cluster#set-auto-upgrade-channel.
 
 ```yaml
 Type: System.String
@@ -343,6 +343,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EnableAHUB
+Whether to enable Azure Hybrid User Benefits (AHUB) for Windows VMs.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -EnableApiServerAccessPrivateCluster
 Whether to create the cluster as a private cluster or not.
 
@@ -390,6 +405,21 @@ Accept wildcard characters: False
 
 ### -EnableNodeAutoScaling
 Whether to enable auto-scaler
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableOidcIssuer
+Whether to enalbe OIDC issuer feature.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -877,6 +907,21 @@ Tags to be applied to the resource
 
 ```yaml
 Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WindowsProfileAdminUserPassword
+The administrator password to use for Windows VMs. Password requirement:At least one lower case, one upper case, one special character !@#$%^&*(), the minimum lenth is 12.
+
+```yaml
+Type: System.Security.SecureString
 Parameter Sets: (All)
 Aliases:
 

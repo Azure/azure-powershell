@@ -77,6 +77,9 @@ Disables Advanced Data Security on a managed instance.
 ### [Disable-AzSqlInstanceDatabaseSensitivityRecommendation](Disable-AzSqlInstanceDatabaseSensitivityRecommendation.md)
 Disables (dismisses) sensitivity recommendations on columns in the Azure SQL Managed Instance database.
 
+### [Disable-AzSqlInstanceDatabaseLedgerDigestUpload](Disable-AzSqlInstanceDatabaseLedgerDigestUpload.md)
+Disables uploading ledger digests to Azure Blob storage or Azure Confidential Ledger in Azure SQL Managed Instance.
+
 ### [Disable-AzSqlServerActiveDirectoryOnlyAuthentication](Disable-AzSqlServerActiveDirectoryOnlyAuthentication.md)
 Disables Azure AD only authentication for a specific SQL Server.
 
@@ -97,6 +100,9 @@ Enables Advanced Data Security on a managed instance.
 
 ### [Enable-AzSqlInstanceDatabaseSensitivityRecommendation](Enable-AzSqlInstanceDatabaseSensitivityRecommendation.md)
 Enables sensitivity recommendations on columns (recommendations are enabled by default on all columns) in the Azure SQL Managed Instance database.
+
+### [Enable-AzSqlInstanceDatabaseLedgerDigestUpload](Enable-AzSqlInstanceDatabaseLedgerDigestUpload.md)
+Enables uploading ledger digests to an Azure Storage account or Azure Confidential Ledger for a database in an Azure SQL Managed Instance.
 
 ### [Enable-AzSqlServerActiveDirectoryOnlyAuthentication](Enable-AzSqlServerActiveDirectoryOnlyAuthentication.md)
 Enables Azure AD only authentication for a specific SQL Server.
@@ -269,6 +275,9 @@ Gets a backup short term retention policy.
 ### [Get-AzSqlInstanceDatabaseGeoBackup](Get-AzSqlInstanceDatabaseGeoBackup.md)
 Returns information about Azure SQL Managed Instance database redundant backup.
 
+### [Get-AzSqlInstanceDatabaseLedgerDigestUpload](Get-AzSqlInstanceDatabaseLedgerDigestUpload.md)
+Gets the ledger digest upload settings of a database in Azure SQL Managed Instance.
+
 ### [Get-AzSqlInstanceDatabaseLogReplay](Get-AzSqlInstanceDatabaseLogReplay.md)
 Gets the Log Replay service status.
 
@@ -344,6 +353,9 @@ Gets the auditing settings of an Azure SQL server.
 ### [Get-AzSqlServerCommunicationLink](Get-AzSqlServerCommunicationLink.md)
 Gets communication links for elastic database transactions between database servers.
 
+### [Get-AzSqlServerConfigurationOption](Get-AzSqlServerConfigurationOption.md)
+Gets server configuration option of an Azure SQL Managed Instance.
+
 ### [Get-AzSqlServerDisasterRecoveryConfiguration](Get-AzSqlServerDisasterRecoveryConfiguration.md)
 Gets a database server system recovery configuration.
 
@@ -413,11 +425,23 @@ Returns information about Azure SQL Virtual Cluster.
 ### [Invoke-AzSqlDatabaseFailover](Invoke-AzSqlDatabaseFailover.md)
 Failovers a database.
 
+### [Invoke-AzSqlDatabaseTransparentDataEncryptionProtectorRevalidation](Invoke-AzSqlDatabaseTransparentDataEncryptionProtectorRevalidation.md)
+Revalidates Database Encryption Protector AKV key
+
+### [Invoke-AzSqlDatabaseTransparentDataEncryptionProtectorRevert](Invoke-AzSqlDatabaseTransparentDataEncryptionProtectorRevert.md)
+Reverts Database Encryption Protector AKV key to Server level key
+
 ### [Invoke-AzSqlElasticPoolFailover](Invoke-AzSqlElasticPoolFailover.md)
 Failovers an elastic pool.
 
 ### [Invoke-AzSqlInstanceFailover](Invoke-AzSqlInstanceFailover.md)
 Failovers an Azure SQL Managed Instance.
+
+### [Invoke-AzSqlInstanceTransparentDataEncryptionProtectorRevalidation](Invoke-AzSqlInstanceTransparentDataEncryptionProtectorRevalidation.md)
+Revalidates the Managed Instance Encryption Protector AKV key
+
+### [Invoke-AzSqlServerTransparentDataEncryptionProtectorRevalidation](Invoke-AzSqlServerTransparentDataEncryptionProtectorRevalidation.md)
+Revalidates the Server Encryption Protector AKV key
 
 ### [New-AzSqlDatabase](New-AzSqlDatabase.md)
 Creates a database or an elastic database.
@@ -761,6 +785,9 @@ Updates the auto execute status of an Azure SQL Server Advisor.
 ### [Set-AzSqlServerAudit](Set-AzSqlServerAudit.md)
 Changes the auditing settings of an Azure SQL server.
 
+### [Set-AzSqlServerConfigurationOption](Set-AzSqlServerConfigurationOption.md)
+Sets the value of a server configuration option on Azure SQL Managed Instance.
+
 ### [Set-AzSqlServerDisasterRecoveryConfiguration](Set-AzSqlServerDisasterRecoveryConfiguration.md)
 Modifies a database server recovery configuration.
 
@@ -873,4 +900,6 @@ Updates an Azure SQL Database Sync Member.
 Update the sync schema for a sync member database or a sync hub database.
 It will get the latest database schema from the real database and then use it refresh the schema cached by Sync metadata database.
 If "SyncMemberName" is specified, it will refresh the member database schema; if not, it will refresh the hub database schema.
+
+
 

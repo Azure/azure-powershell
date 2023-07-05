@@ -34,11 +34,27 @@ The **Get-AzCognitiveServicesAccountType** cmdlet gets the available Cognitive S
 Get-AzCognitiveServicesAccountType
 ```
 
+```output
+CognitiveServices
+ComputerVision
+Face
+FormRecognizer
+LUIS
+```
+
 Get the list of available Types.
 
 ### Example 2
 ```powershell
 Get-AzCognitiveServicesAccountType -Location westus
+```
+
+```output
+CognitiveServices
+ComputerVision
+Face
+FormRecognizer
+LUIS
 ```
 
 Get the list of available Types in westus.

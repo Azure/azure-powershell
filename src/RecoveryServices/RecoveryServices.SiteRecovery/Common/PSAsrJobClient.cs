@@ -117,7 +117,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             var op = this.GetSiteRecoveryClient()
                 .ReplicationJobs.BeginResumeWithHttpMessagesAsync(
                     jobName,
-                    resumeJobParams,
+                    resumeJobParams.Properties,
                     this.GetRequestHeaders(true))
                 .GetAwaiter()
                 .GetResult();

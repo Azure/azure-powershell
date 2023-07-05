@@ -29,7 +29,7 @@ Get-AzReservationCatalog -SubscriptionId "10000000-aaaa-bbbb-cccc-100000000001" 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationsIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.ICatalog
+Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.ICatalog
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -37,14 +37,14 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IReservationsIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
-  [ReservationId <String>]: Id of the Reservation Item
+  [ReservationId <String>]: Id of the reservation item
   [ReservationOrderId <String>]: Order Id of the reservation
   [SubscriptionId <String>]: Id of the subscription
 .Link
 https://learn.microsoft.com/powershell/module/az.reservations/get-azreservationcatalog
 #>
 function Get-AzReservationCatalog {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.ICatalog])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.ICatalog])]
 [CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get')]
@@ -64,8 +64,15 @@ param(
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Query')]
     [System.String]
+    # May be used to filter by Catalog properties.
+    # The filter supports 'eq', 'or', and 'and'.
+    ${Filter},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Query')]
+    [System.String]
     # Filters the skus based on the location specified in this parameter.
-    # This can be an azure region or global
+    # This can be an Azure region or global
     ${Location},
 
     [Parameter()]
@@ -93,11 +100,24 @@ param(
     ${ReservedResourceType},
 
     [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Query')]
+    [System.Single]
+    # The number of reservations to skip from the list before returning results
+    ${Skip},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Query')]
+    [System.Single]
+    # To number of reservations to return
+    ${Take},
+
+    [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -149,7 +169,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
         }         
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {

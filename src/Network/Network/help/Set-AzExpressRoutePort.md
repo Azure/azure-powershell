@@ -46,6 +46,13 @@ $erport.SciState = 'Disabled'
 Set-AzExpressRoutePort -ExpressRoutePort $erport
 ```
 
+### Example 4
+```powershell
+$erport = Get-AzExpressRoutePort -Name $PortName -ResourceGroupName $rg
+$erport.BillingType = 'UnlimitedData'
+Set-AzExpressRoutePort -ExpressRoutePort $erport
+```
+
 ## PARAMETERS
 
 ### -AsJob
@@ -125,7 +132,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

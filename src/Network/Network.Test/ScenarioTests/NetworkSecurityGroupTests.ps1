@@ -39,7 +39,7 @@ function Test-NetworkSecurityGroupCRUD
         $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
         
         # Create NetworkSecurityGroup
-        $job = New-AzNetworkSecurityGroup -name $nsgName -ResourceGroupName $rgname -Location $location -AsJob
+        $job = New-AzNetworkSecurityGroup -name $nsgName -ResourceGroupName $rgname -Location $location -FlushConnection -AsJob
 		$job | Wait-Job
 		$nsg = $job | Receive-Job
 
@@ -52,6 +52,7 @@ function Test-NetworkSecurityGroupCRUD
         Assert-NotNull $getNsg.Location
         Assert-NotNull $getNsg.ResourceGuid
         Assert-NotNull $getNsg.Etag
+        Assert-AreEqual $true $getNsg.FlushConnection
         Assert-AreEqual 0 @($getNsg.SecurityRules).Count
         Assert-AreEqual 6 @($getNsg.DefaultSecurityRules).Count
         Assert-AreEqual "AllowVnetInBound" $getNsg.DefaultSecurityRules[0].Name
@@ -68,6 +69,7 @@ function Test-NetworkSecurityGroupCRUD
         Assert-AreEqual $list[0].Name $getNsg.Name
         Assert-AreEqual $list[0].Location $getNsg.Location
         Assert-AreEqual $list[0].Etag $getNsg.Etag
+        Assert-AreEqual $list[0].FlushConnection $getNsg.FlushConnection
         Assert-AreEqual @($list[0].SecurityRules).Count @($getNsg.SecurityRules).Count
         Assert-AreEqual @($list[0].DefaultSecurityRules).Count @($getNsg.DefaultSecurityRules).Count
         Assert-AreEqual $list[0].DefaultSecurityRules[0].Name $getNsg.DefaultSecurityRules[0].Name

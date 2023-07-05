@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Operation to update an existing link.
+Operation to update an existing Linker.
 .Description
-Operation to update an existing link.
+Operation to update an existing Linker.
 .Example
 {{ Add code here }}
 .Example
@@ -27,7 +27,7 @@ Operation to update an existing link.
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.IServiceLinkerIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20220501.ILinkerResource
+Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.ILinkerResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -37,9 +37,14 @@ AUTHINFO <IAuthInfoBase>: The authentication type.
   AuthType <AuthType>: The authentication type.
 
 INPUTOBJECT <IServiceLinkerIdentity>: Identity Parameter
+  [ConnectorName <String>]: The name of resource.
+  [DryrunName <String>]: The name of dryrun.
   [Id <String>]: Resource identity path
   [LinkerName <String>]: The name Linker resource.
+  [Location <String>]: The name of Azure region.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ResourceUri <String>]: The fully qualified Azure Resource manager identifier of the resource to be connected.
+  [SubscriptionId <String>]: The ID of the target subscription.
 
 TARGETSERVICE <ITargetServiceBase>: The target service properties
   Type <TargetServiceType>: The target service type.
@@ -47,7 +52,7 @@ TARGETSERVICE <ITargetServiceBase>: The target service properties
 https://learn.microsoft.com/powershell/module/az.servicelinker/update-azservicelinker
 #>
 function Update-AzServiceLinker {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20220501.ILinkerResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.ILinkerResource])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -78,7 +83,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20220501.IAuthInfoBase]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.IAuthInfoBase]
     # The authentication type.
     # To construct, see NOTES section for AUTHINFO properties and create a hash table.
     ${AuthInfo},
@@ -89,6 +94,66 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.ClientType]
     # The application client type
     ${ClientType},
+
+    [Parameter()]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.ActionType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.ActionType]
+    # Optional, indicate whether to apply configurations on source application.
+    # If enable, generate configurations and applied to the source application.
+    # Default is enable.
+    # If optOut, no configuration change will be made on source.
+    ${ConfigurationInfoAction},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.IConfigurationInfoAdditionalConfigurations]))]
+    [System.Collections.Hashtable]
+    # A dictionary of additional configurations to be added.
+    # Service will auto generate a set of basic configurations and this property is to full fill more customized configurations
+    ${ConfigurationInfoAdditionalConfiguration},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.IConfigurationInfoCustomizedKeys]))]
+    [System.Collections.Hashtable]
+    # Optional.
+    # A dictionary of default key name and customized key name mapping.
+    # If not specified, default key name will be used for generate configurations
+    ${ConfigurationInfoCustomizedKey},
+
+    [Parameter()]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.AllowType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.AllowType]
+    # Allow Azure services to access the target service if true.
+    ${FirewallRuleAzureService},
+
+    [Parameter()]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.AllowType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.AllowType]
+    # Allow caller client IP to access the target service if true.
+    # the property is used when connecting local application to target service.
+    ${FirewallRuleCallerClientIP},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Body')]
+    [System.String[]]
+    # This value specifies the set of IP addresses or IP address ranges in CIDR form to be included as the allowed list of client IPs for a given database account.
+    ${FirewallRuleIPRange},
+
+    [Parameter()]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.ActionType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.ActionType]
+    # Optional.
+    # Indicates public network solution.
+    # If enable, enable public network access of target service with best try.
+    # Default is enable.
+    # If optOut, opt out public network access configuration.
+    ${PublicNetworkSolutionAction},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Body')]
@@ -104,7 +169,13 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20220501.ITargetServiceBase]
+    [System.String]
+    # The key vault secret name to store secret, only valid when storing one secret
+    ${SecretStoreKeyVaultSecretName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.ITargetServiceBase]
     # The target service properties
     # To construct, see NOTES section for TARGETSERVICE properties and create a hash table.
     ${TargetService},

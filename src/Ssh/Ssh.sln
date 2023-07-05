@@ -1,6 +1,6 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31702.278
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ssh", "Ssh\Ssh.csproj", "{42656543-77AD-4968-BA4B-BE0778705625}"
 EndProject
@@ -19,6 +19,12 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ssh.Helpers", "Ssh.Helpers\Ssh.Helpers.csproj", "{CB857704-977C-40BB-880E-C6ADDDBE2AD1}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ssh.Test", "Ssh.Test\Ssh.Test.csproj", "{D7433FFA-1008-4C8E-8E64-3419D20BDCCC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Compute", "..\Compute\Compute\Compute.csproj", "{AEFE94D4-CBA1-4B3A-AC7C-4946B6BE7A62}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Compute.AlcWrapper", "..\Compute\Compute.AlcWrapper\Compute.AlcWrapper.csproj", "{38A6AE2E-4F40-415A-9998-2049E145B27E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Compute.Helpers", "..\Compute\Compute.Helpers\Compute.Helpers.csproj", "{E5FD2EC8-264B-4A04-9650-A0E5A65AC4DE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -62,6 +68,18 @@ Global
 		{D7433FFA-1008-4C8E-8E64-3419D20BDCCC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D7433FFA-1008-4C8E-8E64-3419D20BDCCC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D7433FFA-1008-4C8E-8E64-3419D20BDCCC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AEFE94D4-CBA1-4B3A-AC7C-4946B6BE7A62}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AEFE94D4-CBA1-4B3A-AC7C-4946B6BE7A62}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AEFE94D4-CBA1-4B3A-AC7C-4946B6BE7A62}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AEFE94D4-CBA1-4B3A-AC7C-4946B6BE7A62}.Release|Any CPU.Build.0 = Release|Any CPU
+		{38A6AE2E-4F40-415A-9998-2049E145B27E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{38A6AE2E-4F40-415A-9998-2049E145B27E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{38A6AE2E-4F40-415A-9998-2049E145B27E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{38A6AE2E-4F40-415A-9998-2049E145B27E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E5FD2EC8-264B-4A04-9650-A0E5A65AC4DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E5FD2EC8-264B-4A04-9650-A0E5A65AC4DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E5FD2EC8-264B-4A04-9650-A0E5A65AC4DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E5FD2EC8-264B-4A04-9650-A0E5A65AC4DE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

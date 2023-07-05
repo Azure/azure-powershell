@@ -66,7 +66,7 @@ INPUTOBJECT <ITimeSeriesInsightsIdentity>: Identity Parameter
   [ResourceGroupName <String>]: Name of an Azure Resource group.
   [SubscriptionId <String>]: Azure Subscription ID.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.timeseriesinsights/update-aztimeseriesinsightseventsource
+https://learn.microsoft.com/en-us/powershell/module/az.timeseriesinsights/update-aztimeseriesinsightseventsource
 #>
 function Update-AzTimeSeriesInsightsEventSource {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IEventSourceResource])]

@@ -39,7 +39,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Cmdlets
         /// <summary>
         /// Safe failover is to indicate the service should wait for pending replication to finish before switching to the secondary.
         /// </summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IFailoverProperties _parametersBody = new Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.FailoverProperties();
+        private Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.IFailoverProperties _parametersBody = new Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.FailoverProperties();
 
         /// <summary>Wait for .NET debugger to attach</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "Wait for .NET debugger to attach")]
@@ -50,9 +50,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Cmdlets
         public Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.ServiceBus Client => Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Module.Instance.ClientAPI;
 
         /// <summary>
-        /// The credentials, account, tenant, and subscription used for communication with Azure
+        /// The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet
+        /// against a different subscription
         /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The credentials, account, tenant, and subscription used for communication with Azure.")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.")]
         [global::System.Management.Automation.ValidateNotNull]
         [global::System.Management.Automation.Alias("AzureRMContext", "AzureCredential")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.ParameterCategory.Azure)]

@@ -62,7 +62,7 @@ Get Models available for a Cognitive Services account
 Cognitive Services Account Name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: DefaultParameterSet
 Aliases: CognitiveServicesAccountName
 
@@ -77,7 +77,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -92,7 +92,7 @@ Accept wildcard characters: False
 Resource Group Name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: DefaultParameterSet
 Aliases:
 
@@ -107,7 +107,7 @@ Accept wildcard characters: False
 Resource Id.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceIdParameterSet
 Aliases:
 

@@ -124,6 +124,34 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         }
 
         /// <summary>
+        /// Gets detail about the recovery point from Secondary region for CRR
+        /// </summary>
+        /// <param name="containerName">Name of the container which the item belongs to</param>
+        /// <param name="protectedItemName">Name of the item</param>
+        /// <param name="recoveryPointId">ID of the recovery point</param>
+        /// <param name="vaultName"></param>
+        /// <param name="resourceGroupName"></param>
+        /// <returns>Recovery point response returned by the service</returns>
+        public CrrModel.RecoveryPointResource GetRecoveryPointDetailsFromSecondaryRegion(
+            string containerName,
+            string protectedItemName,
+            string recoveryPointId,
+            string vaultName = null,
+            string resourceGroupName = null)
+        {
+            var response = CrrAdapter.Client.RecoveryPointsCrr.GetWithHttpMessagesAsync(
+                vaultName ?? BmsAdapter.GetResourceName(),
+                resourceGroupName ?? BmsAdapter.GetResourceGroupName(),
+                AzureFabricName,
+                containerName,
+                protectedItemName,
+                recoveryPointId,
+                cancellationToken: BmsAdapter.CmdletCancellationToken).Result.Body;
+
+            return response;
+        }
+
+        /// <summary>
         /// Lists recovery points recommended for Archive move
         /// </summary>
         /// <param name="containerName">Name of the container which the item belongs to</param>
@@ -187,7 +215,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
                 moveRPAcrossTiersRequest
                 ).Result;
         }
-
 
         /// <summary>
         /// provision item level recovery connection identified by the input parameters

@@ -26,7 +26,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401P
 
         /// <summary>
         /// The collection name pattern for the collections to be used. The collection name format can be constructed using the optional
-        /// {partition} token, where partitions start from 0. See the DocumentDB section of https://docs.microsoft.com/en-us/rest/api/streamanalytics/stream-analytics-output
+        /// {partition} token, where partitions start from 0. See the DocumentDB section of https://learn.microsoft.com/en-us/rest/api/streamanalytics/stream-analytics-output
         /// for more information. Required on PUT (CreateOrReplace) requests.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Origin(Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.PropertyOrigin.Inlined)]
@@ -112,13 +112,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401P
         string AccountKey { get; set; }
         /// <summary>
         /// The collection name pattern for the collections to be used. The collection name format can be constructed using the optional
-        /// {partition} token, where partitions start from 0. See the DocumentDB section of https://docs.microsoft.com/en-us/rest/api/streamanalytics/stream-analytics-output
+        /// {partition} token, where partitions start from 0. See the DocumentDB section of https://learn.microsoft.com/en-us/rest/api/streamanalytics/stream-analytics-output
         /// for more information. Required on PUT (CreateOrReplace) requests.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"The collection name pattern for the collections to be used. The collection name format can be constructed using the optional {partition} token, where partitions start from 0. See the DocumentDB section of https://docs.microsoft.com/en-us/rest/api/streamanalytics/stream-analytics-output for more information. Required on PUT (CreateOrReplace) requests.",
+        Description = @"The collection name pattern for the collections to be used. The collection name format can be constructed using the optional {partition} token, where partitions start from 0. See the DocumentDB section of https://learn.microsoft.com/en-us/rest/api/streamanalytics/stream-analytics-output for more information. Required on PUT (CreateOrReplace) requests.",
         SerializedName = @"collectionNamePattern",
         PossibleTypes = new [] { typeof(string) })]
         string CollectionNamePattern { get; set; }
@@ -167,7 +167,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401P
         string AccountKey { get; set; }
         /// <summary>
         /// The collection name pattern for the collections to be used. The collection name format can be constructed using the optional
-        /// {partition} token, where partitions start from 0. See the DocumentDB section of https://docs.microsoft.com/en-us/rest/api/streamanalytics/stream-analytics-output
+        /// {partition} token, where partitions start from 0. See the DocumentDB section of https://learn.microsoft.com/en-us/rest/api/streamanalytics/stream-analytics-output
         /// for more information. Required on PUT (CreateOrReplace) requests.
         /// </summary>
         string CollectionNamePattern { get; set; }

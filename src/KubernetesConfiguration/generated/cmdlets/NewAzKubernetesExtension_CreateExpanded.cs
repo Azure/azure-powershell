@@ -15,7 +15,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Cmdlets
     [global::Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzKubernetesExtension_CreateExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.Alias("New-AzK8sExtension")]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.IExtension))]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.IExtension))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Description(@"Create a new Kubernetes Cluster Extension.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Generated]
     public partial class NewAzKubernetesExtension_CreateExpanded : global::System.Management.Automation.PSCmdlet,
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Cmdlets
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
 
         /// <summary>The Extension object.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.IExtension _extensionBody = new Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.Extension();
+        private Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.IExtension _extensionBody = new Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.Extension();
 
         /// <summary>The identity type.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The identity type.")]
@@ -90,20 +90,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category(global::Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.ParameterCategory.Path)]
         public string ClusterName { get => this._clusterName; set => this._clusterName = value; }
 
-        /// <summary>
-        /// Namespace where the extension Release must be placed, for a Cluster scoped extension. If this namespace does not exist,
-        /// it will be created
-        /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Namespace where the extension Release must be placed, for a Cluster scoped extension. If this namespace does not exist, it will be created")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category(global::Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Namespace where the extension Release must be placed, for a Cluster scoped extension. If this namespace does not exist, it will be created",
-        SerializedName = @"releaseNamespace",
-        PossibleTypes = new [] { typeof(string) })]
-        public string ClusterReleaseNamespace { get => _extensionBody.ClusterReleaseNamespace ?? null; set => _extensionBody.ClusterReleaseNamespace = value; }
-
         /// <summary>Backing field for <see cref="ClusterRp" /> property.</summary>
         private string _clusterRp;
 
@@ -133,6 +119,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Cmdlets
         Description = @"The Kubernetes cluster resource name - i.e. managedClusters, connectedClusters, provisionedClusters.",
         SerializedName = @"clusterResourceName",
         PossibleTypes = new [] { typeof(string) })]
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.CompleterInfo(
+        Name = @"",
+        Description =@"",
+        Script = @"'ManagedClusters', 'ConnectedClusters', 'ProvisionedClusters'")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category(global::Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.ParameterCategory.Path)]
         public string ClusterType { get => this._clusterType; set => this._clusterType = value; }
 
@@ -147,8 +137,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Cmdlets
         ReadOnly = false,
         Description = @"Configuration settings that are sensitive, as name-value pairs for configuring this extension.",
         SerializedName = @"configurationProtectedSettings",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.IExtensionPropertiesConfigurationProtectedSettings) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.IExtensionPropertiesConfigurationProtectedSettings ConfigurationProtectedSetting { get => _extensionBody.ConfigurationProtectedSetting ?? null /* object */; set => _extensionBody.ConfigurationProtectedSetting = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.IExtensionPropertiesConfigurationProtectedSettings) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.IExtensionPropertiesConfigurationProtectedSettings ConfigurationProtectedSetting { get => _extensionBody.ConfigurationProtectedSetting ?? null /* object */; set => _extensionBody.ConfigurationProtectedSetting = value; }
 
         /// <summary>Configuration settings, as name-value pairs for configuring this extension.</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.ExportAs(typeof(global::System.Collections.Hashtable))]
@@ -159,13 +149,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Cmdlets
         ReadOnly = false,
         Description = @"Configuration settings, as name-value pairs for configuring this extension.",
         SerializedName = @"configurationSettings",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.IExtensionPropertiesConfigurationSettings) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.IExtensionPropertiesConfigurationSettings ConfigurationSetting { get => _extensionBody.ConfigurationSetting ?? null /* object */; set => _extensionBody.ConfigurationSetting = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.IExtensionPropertiesConfigurationSettings) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.IExtensionPropertiesConfigurationSettings ConfigurationSetting { get => _extensionBody.ConfigurationSetting ?? null /* object */; set => _extensionBody.ConfigurationSetting = value; }
 
         /// <summary>
-        /// The credentials, account, tenant, and subscription used for communication with Azure
+        /// The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet
+        /// against a different subscription
         /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The credentials, account, tenant, and subscription used for communication with Azure.")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.")]
         [global::System.Management.Automation.ValidateNotNull]
         [global::System.Management.Automation.Alias("AzureRMContext", "AzureCredential")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category(global::Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.ParameterCategory.Azure)]
@@ -236,20 +227,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Cmdlets
         public string Name { get => this._name; set => this._name = value; }
 
         /// <summary>
-        /// Namespace where the extension will be created for an Namespace scoped extension. If this namespace does not exist, it
-        /// will be created
-        /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Namespace where the extension will be created for an Namespace scoped extension. If this namespace does not exist, it will be created")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category(global::Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Namespace where the extension will be created for an Namespace scoped extension. If this namespace does not exist, it will be created",
-        SerializedName = @"targetNamespace",
-        PossibleTypes = new [] { typeof(string) })]
-        public string NamespaceTargetNamespace { get => _extensionBody.NamespaceTargetNamespace ?? null; set => _extensionBody.NamespaceTargetNamespace = value; }
-
-        /// <summary>
         /// when specified, will make the remote call, and return an AsyncOperationResponse, letting the remote operation continue
         /// asynchronously.
         /// </summary>
@@ -261,6 +238,66 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Cmdlets
         /// The instance of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.HttpPipeline" /> that the remote call will use.
         /// </summary>
         private Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.HttpPipeline Pipeline { get; set; }
+
+        /// <summary>A user defined name of the 3rd Party Artifact that is being procured.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "A user defined name of the 3rd Party Artifact that is being procured.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category(global::Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"A user defined name of the 3rd Party Artifact that is being procured.",
+        SerializedName = @"name",
+        PossibleTypes = new [] { typeof(string) })]
+        public string PlanName { get => _extensionBody.PlanName ?? null; set => _extensionBody.PlanName = value; }
+
+        /// <summary>
+        /// The 3rd Party artifact that is being procured. E.g. NewRelic. Product maps to the OfferID specified for the artifact at
+        /// the time of Data Market onboarding.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The 3rd Party artifact that is being procured. E.g. NewRelic. Product maps to the OfferID specified for the artifact at the time of Data Market onboarding. ")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category(global::Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The 3rd Party artifact that is being procured. E.g. NewRelic. Product maps to the OfferID specified for the artifact at the time of Data Market onboarding. ",
+        SerializedName = @"product",
+        PossibleTypes = new [] { typeof(string) })]
+        public string PlanProduct { get => _extensionBody.PlanProduct ?? null; set => _extensionBody.PlanProduct = value; }
+
+        /// <summary>
+        /// A publisher provided promotion code as provisioned in Data Market for the said product/artifact.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "A publisher provided promotion code as provisioned in Data Market for the said product/artifact.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category(global::Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"A publisher provided promotion code as provisioned in Data Market for the said product/artifact.",
+        SerializedName = @"promotionCode",
+        PossibleTypes = new [] { typeof(string) })]
+        public string PlanPromotionCode { get => _extensionBody.PlanPromotionCode ?? null; set => _extensionBody.PlanPromotionCode = value; }
+
+        /// <summary>The publisher of the 3rd Party Artifact that is being bought. E.g. NewRelic</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The publisher of the 3rd Party Artifact that is being bought. E.g. NewRelic")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category(global::Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The publisher of the 3rd Party Artifact that is being bought. E.g. NewRelic",
+        SerializedName = @"publisher",
+        PossibleTypes = new [] { typeof(string) })]
+        public string PlanPublisher { get => _extensionBody.PlanPublisher ?? null; set => _extensionBody.PlanPublisher = value; }
+
+        /// <summary>The version of the desired product/artifact.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The version of the desired product/artifact.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category(global::Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The version of the desired product/artifact.",
+        SerializedName = @"version",
+        PossibleTypes = new [] { typeof(string) })]
+        public string PlanVersion { get => _extensionBody.PlanVersion ?? null; set => _extensionBody.PlanVersion = value; }
 
         /// <summary>The URI for the proxy server to use</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "The URI for the proxy server to use")]
@@ -277,6 +314,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Cmdlets
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "Use the default credentials for the proxy")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category(global::Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter ProxyUseDefaultCredentials { get; set; }
+
+        /// <summary>
+        /// Namespace where the extension Release must be placed, for a Cluster scoped extension. If this namespace does not exist,
+        /// it will be created
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Namespace where the extension Release must be placed, for a Cluster scoped extension. If this namespace does not exist, it will be created")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category(global::Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Namespace where the extension Release must be placed, for a Cluster scoped extension. If this namespace does not exist, it will be created",
+        SerializedName = @"releaseNamespace",
+        PossibleTypes = new [] { typeof(string) })]
+        public string ReleaseNamespace { get => _extensionBody.ClusterReleaseNamespace ?? null; set => _extensionBody.ClusterReleaseNamespace = value; }
 
         /// <summary>
         /// ReleaseTrain this extension participates in for auto-upgrade (e.g. Stable, Preview, etc.) - only if autoUpgradeMinorVersion
@@ -325,6 +376,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Cmdlets
         public string SubscriptionId { get => this._subscriptionId; set => this._subscriptionId = value; }
 
         /// <summary>
+        /// Namespace where the extension will be created for an Namespace scoped extension. If this namespace does not exist, it
+        /// will be created
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Namespace where the extension will be created for an Namespace scoped extension. If this namespace does not exist, it will be created")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category(global::Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Namespace where the extension will be created for an Namespace scoped extension. If this namespace does not exist, it will be created",
+        SerializedName = @"targetNamespace",
+        PossibleTypes = new [] { typeof(string) })]
+        public string TargetNamespace { get => _extensionBody.NamespaceTargetNamespace ?? null; set => _extensionBody.NamespaceTargetNamespace = value; }
+
+        /// <summary>
         /// User-specified version of the extension for this extension to 'pin'. To use 'version', autoUpgradeMinorVersion must be
         /// 'false'.
         /// </summary>
@@ -355,12 +420,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Cmdlets
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.IExtension">Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.IExtension</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.IExtension">Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.IExtension</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.IExtension> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.IExtension> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -633,12 +698,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.IExtension">Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.IExtension</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.IExtension">Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.IExtension</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.IExtension> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.IExtension> response)
         {
             using( NoSynchronizationContext )
             {
@@ -650,7 +715,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.IExtension
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.IExtension
                 WriteObject((await response));
             }
         }

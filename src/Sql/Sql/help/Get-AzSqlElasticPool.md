@@ -185,6 +185,31 @@ Tags              :
 
 This command gets all of the elastic pools on the server named Server01 that start with "ElasticPool".
 
+### Example 5: Get elastic pool with preferred enclave type as VBS
+
+```powershell
+Get-AzSqlElasticPool -ResourceGroupName "ResourceGroup01" -ServerName "Server01"
+```
+
+```output
+ResourceId            : /subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/resourcegroup01/providers/Microsoft.Sql/servers/server01/elasticPools/elasticpool01
+ResourceGroupName     : resourcegroup01
+ServerName            : server01
+ElasticPoolName       : elasticpool01
+Location              : Central US
+CreationDate          : 8/26/2015 10:00:17 PM
+State                 : Ready
+Edition               : Standard
+Dtu                   : 400
+DatabaseDtuMax        : 100
+DatabaseDtuMin        : 10
+StorageMB             : 409600
+PreferredEnclaveType  : VBS
+Tags                  :
+```
+
+This command gets an elastic pool configured with VBS enclave
+
 ## PARAMETERS
 
 ### -DefaultProfile

@@ -92,7 +92,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact(Skip = "'The '1' auxiliary tokens are either not application token(s) or are from the application(s) ... which are different from the application of primary identity <...>.' StatusCode: 401; ReasonPhrase: Unauthorized.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.wanrpdev_subset1)]
+        [Trait(Category.Owner, NrpTeamAlias.vnetpeeringdev)]
         public void TestVirtualNetworkPeeringCRUD()
         {
             TestRunner.RunTestScript("Test-VirtualNetworkPeeringCRUD");
@@ -156,7 +156,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.wanrpdev_subset1)]
+        [Trait(Category.Owner, NrpTeamAlias.vnetpeeringdev)]
         public void TestVirtualNetworkPeeringSyncCRUD()
         {
             TestRunner.RunTestScript("Test-SyncVirtualNetworkPeeringCRUD");

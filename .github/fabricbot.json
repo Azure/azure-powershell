@@ -1064,7 +1064,7 @@
             ],
             "mentionees": [
               "mojayara",
-              "Prasanna-Padmanabhan"
+              "jportugal0"
             ]
           },
           {
@@ -1199,8 +1199,7 @@
               "ARM - Templates"
             ],
             "mentionees": [
-              "satyavel",
-              "apclouds"
+              "Azure/deployments-owners"
             ]
           },
           {
@@ -1531,10 +1530,14 @@
               "Compute"
             ],
             "mentionees": [
-              "amjads1",
-              "avirishuv",
-              "vaibhav-agar",
-              "Drewm3"
+              "Drewm3",
+              "TravisCragg-MSFT",
+              "nikhilpatel909",
+              "sandeepraichura",
+              "hilaryw29",
+              "GabstaMSFT",
+              "ramankumarlive",
+              "ushnaarshadkhan"
             ]
           },
           {
@@ -1543,8 +1546,8 @@
               "Compute - Extensions"
             ],
             "mentionees": [
-              "amjads1",
-              "Drewm3"
+              "TravisCragg-MSFT",
+              "GabstaMSFT"
             ]
           },
           {
@@ -1553,8 +1556,8 @@
               "Compute - Images"
             ],
             "mentionees": [
-              "Drewm3",
-              "vaibhav-agar"
+              "TravisCragg-MSFT",
+              "sandeepraichura"
             ]
           },
           {
@@ -1563,8 +1566,9 @@
               "Compute - Managed Disks"
             ],
             "mentionees": [
-              "Drewm3",
-              "vaibhav-agar"
+              "TravisCragg-MSFT",
+              "ramankumarlive",
+              "ushnaarshadkhan"
             ]
           },
           {
@@ -1574,7 +1578,7 @@
             ],
             "mentionees": [
               "Drewm3",
-              "avirishuv"
+              "TravisCragg-MSFT"
             ]
           },
           {
@@ -1584,7 +1588,11 @@
             ],
             "mentionees": [
               "Drewm3",
-              "avirishuv"
+              "TravisCragg-MSFT",
+              "nikhilpatel909",
+              "sandeepraichura",
+              "hilaryw29",
+              "GabstaMSFT"
             ]
           },
           {
@@ -1593,8 +1601,8 @@
               "Compute - VMSS"
             ],
             "mentionees": [
-              "Drewm3",
-              "avirishuv"
+              "TravisCragg-MSFT",
+              "sandeepraichura"
             ]
           },
           {
@@ -2231,7 +2239,7 @@
               "Migrate"
             ],
             "mentionees": [
-              "shijojoy"
+              "prsadhu-ms-idc"
             ]
           },
           {
@@ -2848,7 +2856,7 @@
               "SecurityInsights"
             ],
             "mentionees": [
-              "amirke"
+              "nazang"
             ]
           },
           {
@@ -2875,9 +2883,9 @@
               "Service Fabric"
             ],
             "mentionees": [
-              "QingChenmsft",
-              "vaishnavk",
-              "juhacket"
+              "a-Santamaria",
+              "LukeSlev",
+              "jkochhar"
             ]
           },
           {
@@ -3024,7 +3032,7 @@
             ],
             "mentionees": [
               "wonner",
-              "zesluo"
+              "v-yanjungao"
             ]
           },
           {

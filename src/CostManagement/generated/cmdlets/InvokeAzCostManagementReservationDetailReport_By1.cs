@@ -10,14 +10,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Cmdlets
 
     /// <summary>
     /// Generates the reservations details report for provided date range asynchronously by billing profile. The Reservation usage
-    /// details can be viewed by only certain enterprise roles by default. For more details on the roles see, https://docs.microsoft.com/en-us/azure/cost-management-billing/reservations/reservation-utilization#view-utilization-in-the-azure-portal-with-azure-rbac-access
+    /// details can be viewed by only certain enterprise roles by default. For more details on the roles see, https://learn.microsoft.com/en-us/azure/cost-management-billing/reservations/reservation-utilization#view-utilization-in-the-azure-portal-with-azure-rbac-access
     /// </summary>
     /// <remarks>
     /// [OpenAPI] ByBillingProfileId=>POST:"/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/providers/Microsoft.CostManagement/generateReservationDetailsReport"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsLifecycle.Invoke, @"AzCostManagementReservationDetailReport_By1", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.IOperationStatus))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Description(@"Generates the reservations details report for provided date range asynchronously by billing profile. The Reservation usage details can be viewed by only certain enterprise roles by default. For more details on the roles see, https://docs.microsoft.com/en-us/azure/cost-management-billing/reservations/reservation-utilization#view-utilization-in-the-azure-portal-with-azure-rbac-access")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Description(@"Generates the reservations details report for provided date range asynchronously by billing profile. The Reservation usage details can be viewed by only certain enterprise roles by default. For more details on the roles see, https://learn.microsoft.com/en-us/azure/cost-management-billing/reservations/reservation-utilization#view-utilization-in-the-azure-portal-with-azure-rbac-access")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Generated]
     public partial class InvokeAzCostManagementReservationDetailReport_By1 : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.IEventListener

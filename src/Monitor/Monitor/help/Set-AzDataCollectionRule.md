@@ -38,7 +38,7 @@ Data Collection Rules (DCR) define data coming into Azure Monitor and specify wh
 
 To use the -RuleFile parameter, construct a json file containing three properties: dataSources, destinations, dataFlows (see Example #1).
 
-You may find here the [schema detail](https://docs.microsoft.com/rest/api/monitor/datacollectionrules/create).
+You may find here the [schema detail](https://learn.microsoft.com/rest/api/monitor/datacollectionrules/create).
 
 The output of a DCR serialized with the cmdlet ConvertTo-Json is also supported (Example #2).
 

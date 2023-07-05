@@ -33,7 +33,7 @@ Update-AzContainerGroup -Name test-cg1 -ResourceGroupName test-rg -Tag @{"test"=
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.IContainerInstanceIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.IContainerGroup
+Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IContainerGroup
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -45,12 +45,14 @@ INPUTOBJECT <IContainerInstanceIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
   [Location <String>]: The identifier for the physical azure location.
   [ResourceGroupName <String>]: The name of the resource group.
+  [SubnetName <String>]: The name of the subnet.
   [SubscriptionId <String>]: Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [VirtualNetworkName <String>]: The name of the virtual network.
 .Link
 https://learn.microsoft.com/powershell/module/az.containerinstance/get-azcontainergroup
 #>
 function Get-AzContainerGroup {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.IContainerGroup])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IContainerGroup])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]

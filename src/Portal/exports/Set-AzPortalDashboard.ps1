@@ -28,7 +28,7 @@ eastasia dashbase03 Microsoft.Portal/dashboards
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IDashboard
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.portal/set-azportaldashboard
+https://learn.microsoft.com/en-us/powershell/module/az.portal/set-azportaldashboard
 #>
 function Set-AzPortalDashboard {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IDashboard])]

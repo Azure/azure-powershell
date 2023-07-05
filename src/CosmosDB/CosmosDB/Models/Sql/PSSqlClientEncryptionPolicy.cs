@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
                     throw new ArgumentException($"Supported versions of client encryption policy are 1 and 2. ");
                 }
 
-                clientEncryptionPolicy.PolicyFormatVersion = policyFormatVersion;
+                clientEncryptionPolicy.PolicyFormatVersion = (int) policyFormatVersion;
             }
 
             return clientEncryptionPolicy;

@@ -32,7 +32,7 @@ Add-AzIotHubMessageEnrichment [-ResourceId] <String> [-Key] <String> -Value <Str
 
 ## DESCRIPTION
 Add up to 10 message enrichments per IoT Hub. These are added as application properties to messages sent to chosen endpoint(s).
-To know more, see https://docs.microsoft.com/azure/iot-hub/iot-hub-message-enrichments-overview
+To know more, see https://learn.microsoft.com/azure/iot-hub/iot-hub-message-enrichments-overview
 
 ## EXAMPLES
 

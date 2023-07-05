@@ -30,7 +30,7 @@ PS C:\> {{ Add code here }}
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IConfiguration
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.mariadb/new-azmariadbconfiguration
+https://learn.microsoft.com/en-us/powershell/module/az.mariadb/new-azmariadbconfiguration
 #>
 function New-AzMariaDbConfiguration {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IConfiguration])]

@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Commands.Network.Models
         {
             get
             {
-                return Snat?.PrivateRanges.ToArray();
+                return Snat?.PrivateRanges?.ToArray();
             }
             set
             {

@@ -230,7 +230,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 More information about the supported metrics may be found at:
-https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported
+https://learn.microsoft.com/azure/azure-monitor/platform/metrics-supported
 
 ## RELATED LINKS
 

@@ -16,6 +16,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support
         /// <summary>Device has been received at Azure datacenter from the user.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.StageName AtAzureDc = @"AtAzureDC";
 
+        /// <summary>Awaiting shipment details of device from customer.</summary>
+        public static Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.StageName AwaitingShipmentDetails = @"AwaitingShipmentDetails";
+
         /// <summary>Order has been cancelled.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.StageName Cancelled = @"Cancelled";
 
@@ -27,6 +30,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support
 
         /// <summary>Order has completed with warnings.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.StageName CompletedWithWarnings = @"CompletedWithWarnings";
+
+        /// <summary>Job created by the customer.</summary>
+        public static Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.StageName Created = @"Created";
 
         /// <summary>Data copy from the device at Azure datacenter.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.StageName DataCopy = @"DataCopy";
@@ -52,11 +58,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support
         /// <summary>Device has been picked up from user and in transit to Azure datacenter.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.StageName PickedUp = @"PickedUp";
 
+        /// <summary>Preparing the device to ship to customer.</summary>
+        public static Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.StageName PreparingToShipFromAzureDc = @"PreparingToShipFromAzureDC";
+
         /// <summary>Device is ready to be handed to customer from Azure DC.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.StageName ReadyToDispatchFromAzureDc = @"ReadyToDispatchFromAzureDC";
 
         /// <summary>Device can be dropped off at Azure DC.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.StageName ReadyToReceiveAtAzureDc = @"ReadyToReceiveAtAzureDC";
+
+        /// <summary>User shipped the device to AzureDC.</summary>
+        public static Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.StageName ShippedToAzureDc = @"ShippedToAzureDC";
+
+        /// <summary>Shipped the device to customer.</summary>
+        public static Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.StageName ShippedToCustomer = @"ShippedToCustomer";
 
         /// <summary>the value for an instance of the <see cref="StageName" /> Enum.</summary>
         private string _value { get; set; }
@@ -91,7 +106,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support
             return this._value.GetHashCode();
         }
 
-        /// <summary>Creates an instance of the <see cref="StageName" Enum class./></summary>
+        /// <summary>Creates an instance of the <see cref="StageName"/> Enum class.</summary>
         /// <param name="underlyingValue">the value to create an instance for.</param>
         private StageName(string underlyingValue)
         {
@@ -122,8 +137,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support
         }
 
         /// <summary>Overriding != operator for enum StageName</summary>
-        /// <param name="e1">the value to compare against <see cref="e2" /></param>
-        /// <param name="e2">the value to compare against <see cref="e1" /></param>
+        /// <param name="e1">the value to compare against <paramref name="e2" /></param>
+        /// <param name="e2">the value to compare against <paramref name="e1" /></param>
         /// <returns><c>true</c> if the two instances are not equal to the same value</returns>
         public static bool operator !=(Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.StageName e1, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.StageName e2)
         {
@@ -131,8 +146,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support
         }
 
         /// <summary>Overriding == operator for enum StageName</summary>
-        /// <param name="e1">the value to compare against <see cref="e2" /></param>
-        /// <param name="e2">the value to compare against <see cref="e1" /></param>
+        /// <param name="e1">the value to compare against <paramref name="e2" /></param>
+        /// <param name="e2">the value to compare against <paramref name="e1" /></param>
         /// <returns><c>true</c> if the two instances are equal to the same value</returns>
         public static bool operator ==(Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.StageName e1, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.StageName e2)
         {

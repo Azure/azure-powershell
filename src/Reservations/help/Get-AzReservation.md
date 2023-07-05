@@ -14,8 +14,8 @@ Get specific `Reservation` details.
 
 ### List1 (Default)
 ```
-Get-AzReservation [-Filter <String>] [-Orderby <String>] [-RefreshSummary <String>] [-SelectedState <String>]
- [-Skiptoken <Single>] [-Take <Single>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzReservation [-Filter <String>] [-Orderby <String>] [-SelectedState <String>] [-First <UInt64>]
+ [-Skip <UInt64>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
@@ -77,7 +77,8 @@ Some data might be trucated due to the width of powershell view, appending this 
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -110,7 +111,7 @@ Accept wildcard characters: False
 May be used to filter by reservation properties.
 The filter supports 'eq', 'or', and 'and'.
 It does not currently support 'ne', 'gt', 'le', 'ge', or 'not'.
-Reservation properties include sku/name, properties/{appliedScopeType, archived, displayName, displayProvisioningState, effectiveDateTime, expiryDate, provisioningState, quantity, renew, reservedResourceType, term, userFriendlyAppliedScopeType, userFriendlyRenewState}
+Reservation properties include sku/name, properties/{appliedScopeType, archived, displayName, displayProvisioningState, effectiveDateTime, expiryDate, expiryDateTime, provisioningState, quantity, renew, reservedResourceType, term, userFriendlyAppliedScopeType, userFriendlyRenewState}
 
 ```yaml
 Type: System.String
@@ -124,8 +125,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -First
+Gets only the first 'n' objects.
+
+```yaml
+Type: System.UInt64
+Parameter Sets: List1
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Id
-Id of the Reservation Item
+Id of the reservation item
 
 ```yaml
 Type: System.String
@@ -185,21 +201,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -RefreshSummary
-To indicate whether to refresh the roll up counts of the reservations group by provisioning states
-
-```yaml
-Type: System.String
-Parameter Sets: List1
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -SelectedState
 The selected provisioning state
 
@@ -215,26 +216,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Skiptoken
-The number of reservations to skip from the list before returning results
+### -Skip
+Ignores the first 'n' objects and then gets the remaining objects.
 
 ```yaml
-Type: System.Single
-Parameter Sets: List1
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Take
-To number of reservations to return
-
-```yaml
-Type: System.Single
+Type: System.UInt64
 Parameter Sets: List1
 Aliases:
 
@@ -254,7 +240,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IReservationResponse
+### Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IReservationResponse
 
 ## NOTES
 
@@ -267,7 +253,7 @@ To create the parameters described below, construct a hash table containing the 
 
 `INPUTOBJECT <IReservationsIdentity>`: Identity Parameter
   - `[Id <String>]`: Resource identity path
-  - `[ReservationId <String>]`: Id of the Reservation Item
+  - `[ReservationId <String>]`: Id of the reservation item
   - `[ReservationOrderId <String>]`: Order Id of the reservation
   - `[SubscriptionId <String>]`: Id of the subscription
 

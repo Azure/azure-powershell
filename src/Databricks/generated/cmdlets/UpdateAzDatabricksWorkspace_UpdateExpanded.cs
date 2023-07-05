@@ -14,7 +14,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Cmdlets
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzDatabricksWorkspace_UpdateExpanded", SupportsShouldProcess = true)]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20220401Preview.IWorkspace))]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IWorkspace))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.Description(@"Updates a workspace.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.Generated]
     public partial class UpdateAzDatabricksWorkspace_UpdateExpanded : global::System.Management.Automation.PSCmdlet,
@@ -35,7 +35,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Cmdlets
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
 
         /// <summary>An update to a workspace.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20220401Preview.IWorkspaceUpdate _parametersBody = new Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20220401Preview.WorkspaceUpdate();
+        private Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IWorkspaceUpdate _parametersBody = new Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.WorkspaceUpdate();
 
         /// <summary>when specified, runs this cmdlet as a PowerShell job</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Run the command as a job")]
@@ -51,9 +51,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Cmdlets
         public Microsoft.Azure.PowerShell.Cmdlets.Databricks.Databricks Client => Microsoft.Azure.PowerShell.Cmdlets.Databricks.Module.Instance.ClientAPI;
 
         /// <summary>
-        /// The credentials, account, tenant, and subscription used for communication with Azure
+        /// The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet
+        /// against a different subscription
         /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The credentials, account, tenant, and subscription used for communication with Azure.")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.")]
         [global::System.Management.Automation.ValidateNotNull]
         [global::System.Management.Automation.Alias("AzureRMContext", "AzureCredential")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.ParameterCategory.Azure)]
@@ -167,8 +168,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Cmdlets
         ReadOnly = false,
         Description = @"Resource tags.",
         SerializedName = @"tags",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20220401Preview.IWorkspaceUpdateTags) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20220401Preview.IWorkspaceUpdateTags Tag { get => _parametersBody.Tag ?? null /* object */; set => _parametersBody.Tag = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IWorkspaceUpdateTags) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IWorkspaceUpdateTags Tag { get => _parametersBody.Tag ?? null /* object */; set => _parametersBody.Tag = value; }
 
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
@@ -187,12 +188,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Cmdlets
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20220401Preview.IWorkspace">Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20220401Preview.IWorkspace</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IWorkspace">Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IWorkspace</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20220401Preview.IWorkspace> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IWorkspace> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -462,12 +463,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20220401Preview.IWorkspace">Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20220401Preview.IWorkspace</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IWorkspace">Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IWorkspace</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20220401Preview.IWorkspace> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IWorkspace> response)
         {
             using( NoSynchronizationContext )
             {
@@ -479,7 +480,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20220401Preview.IWorkspace
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IWorkspace
                 WriteObject((await response));
             }
         }

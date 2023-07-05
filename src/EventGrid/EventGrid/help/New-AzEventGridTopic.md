@@ -94,6 +94,7 @@ Different identity types. Could be either  of following 'SystemAssigned', 'UserA
 Type: System.String
 Parameter Sets: (All)
 Aliases:
+Accepted values: SystemAssigned, UserAssigned, SystemAssigned, UserAssigned, None
 
 Required: False
 Position: Named

@@ -9,7 +9,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api2
 
     /// <summary>
     /// Defines Component definition details.
-    /// <see href="https://docs.microsoft.com/en-us/azure/machine-learning/reference-yaml-component-command" />
+    /// <see href="https://learn.microsoft.com/en-us/azure/machine-learning/reference-yaml-component-command" />
     /// </summary>
     public partial class ComponentVersionComponentSpec :
         Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IComponentVersionComponentSpec,
@@ -23,7 +23,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api2
         }
     }
     /// Defines Component definition details.
-    /// <see href="https://docs.microsoft.com/en-us/azure/machine-learning/reference-yaml-component-command" />
+    /// <see href="https://learn.microsoft.com/en-us/azure/machine-learning/reference-yaml-component-command" />
     public partial interface IComponentVersionComponentSpec :
         Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.IJsonSerializable,
         Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.IAssociativeArray<global::System.Object>
@@ -31,7 +31,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api2
 
     }
     /// Defines Component definition details.
-    /// <see href="https://docs.microsoft.com/en-us/azure/machine-learning/reference-yaml-component-command" />
+    /// <see href="https://learn.microsoft.com/en-us/azure/machine-learning/reference-yaml-component-command" />
     internal partial interface IComponentVersionComponentSpecInternal
 
     {

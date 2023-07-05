@@ -48,7 +48,7 @@ INPUTOBJECT <ICustomProvidersIdentity>: Identity Parameter
   [Scope <String>]: The scope of the association.
   [SubscriptionId <String>]: The Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000)
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.customproviders/get-azcustomproviderassociation
+https://learn.microsoft.com/en-us/powershell/module/az.customproviders/get-azcustomproviderassociation
 #>
 function Get-AzCustomProviderAssociation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.Api20180901Preview.IAssociation])]
@@ -218,7 +218,7 @@ INPUTOBJECT <ICustomProvidersIdentity>: Identity Parameter
   [Scope <String>]: The scope of the association.
   [SubscriptionId <String>]: The Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000)
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.customproviders/get-azcustomprovider
+https://learn.microsoft.com/en-us/powershell/module/az.customproviders/get-azcustomprovider
 #>
 function Get-AzCustomProvider {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.Api20180901Preview.ICustomRpManifest])]
@@ -376,7 +376,7 @@ East US 2 MyAssoc  Microsoft.CustomProviders/associations
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.Api20180901Preview.IAssociation
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.customproviders/new-azcustomproviderassociation
+https://learn.microsoft.com/en-us/powershell/module/az.customproviders/new-azcustomproviderassociation
 #>
 function New-AzCustomProviderAssociation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.Api20180901Preview.IAssociation])]
@@ -553,7 +553,7 @@ VALIDATION <ICustomRpValidations[]>: A list of validations to run on the custom 
   Specification <String>: A link to the validation specification. The specification must be hosted on raw.githubusercontent.com.
   [ValidationType <ValidationType?>]: The type of validation to run against a matching request.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.customproviders/new-azcustomprovider
+https://learn.microsoft.com/en-us/powershell/module/az.customproviders/new-azcustomprovider
 #>
 function New-AzCustomProvider {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.Api20180901Preview.ICustomRpManifest])]
@@ -757,7 +757,7 @@ INPUTOBJECT <ICustomProvidersIdentity>: Identity Parameter
   [Scope <String>]: The scope of the association.
   [SubscriptionId <String>]: The Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000)
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.customproviders/remove-azcustomproviderassociation
+https://learn.microsoft.com/en-us/powershell/module/az.customproviders/remove-azcustomproviderassociation
 #>
 function Remove-AzCustomProviderAssociation {
 [OutputType([System.Boolean])]
@@ -929,7 +929,7 @@ INPUTOBJECT <ICustomProvidersIdentity>: Identity Parameter
   [Scope <String>]: The scope of the association.
   [SubscriptionId <String>]: The Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000)
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.customproviders/remove-azcustomprovider
+https://learn.microsoft.com/en-us/powershell/module/az.customproviders/remove-azcustomprovider
 #>
 function Remove-AzCustomProvider {
 [OutputType([System.Boolean])]
@@ -1127,7 +1127,7 @@ INPUTOBJECT <ICustomProvidersIdentity>: Identity Parameter
   [Scope <String>]: The scope of the association.
   [SubscriptionId <String>]: The Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000)
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.customproviders/update-azcustomprovider
+https://learn.microsoft.com/en-us/powershell/module/az.customproviders/update-azcustomprovider
 #>
 function Update-AzCustomProvider {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.Api20180901Preview.ICustomRpManifest])]

@@ -31,7 +31,7 @@ Remove-AzIotHubConfiguration [-ResourceId] <String> [-Name <String>] [-PassThru]
 ```
 
 ## DESCRIPTION
-See https://docs.microsoft.com/azure/iot-hub/iot-hub-automatic-device-management for more information.
+See https://learn.microsoft.com/azure/iot-hub/iot-hub-automatic-device-management for more information.
 
 ## EXAMPLES
 

@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,7 +21,6 @@ using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Batch
 {
-    [GenericBreakingChange("Get-AzBatchPoolUsageMetrics alias will be removed in an upcoming breaking change release", "2.0.0")]
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzurePrefix + "BatchPoolUsageMetric"), OutputType(typeof(PSPoolUsageMetrics))]
     [Alias("Get-AzBatchPoolUsageMetrics")]
     public class GetBatchPoolUsageMetrics : BatchObjectModelCmdletBase

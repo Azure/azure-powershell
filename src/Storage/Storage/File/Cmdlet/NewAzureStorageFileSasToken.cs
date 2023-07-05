@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -25,9 +25,11 @@ using Azure.Storage.Files.Shares;
 using Azure.Storage.Files.Shares.Models;
 using Azure.Storage.Sas;
 using Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 {
+    [GenericBreakingChangeWithVersion("The leading question mark '?' of the created SAS token will be removed in a future release.", "11.0.0", "6.0.0")]
     [Cmdlet("New", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageFileSASToken"), OutputType(typeof(String))]
     public class NewAzureStorageFileSasToken : AzureStorageFileCmdletBase
     {
@@ -159,8 +161,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             ShareFileClient fileClient;
             if (null != this.File)
             {
-                // when only track1 object input, might miss storage context, so need to build storage context for prepare the output object.
-                if (this.Context == null)
+                // Build and set storage context for the output object when
+                // 1. input track1 object and storage context is missing 2. the current context doesn't match the context of the input object 
+                if (ShouldSetContext(this.Context, this.File.ServiceClient))
                 {
                     this.Context = GetStorageContextFromTrack1FileServiceClient(this.File.ServiceClient, DefaultContext);
                 }

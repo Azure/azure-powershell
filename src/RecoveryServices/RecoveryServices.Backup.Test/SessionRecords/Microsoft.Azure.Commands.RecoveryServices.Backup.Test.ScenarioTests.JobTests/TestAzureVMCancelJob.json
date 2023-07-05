@@ -6,7 +6,7 @@
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "c47c80e8-0063-4979-b915-9ac12d814fd2"
+          "6f861b8e-c585-4cbb-8906-4e7c808304a4"
         ],
         "Accept-Language": [
           "en-US"
@@ -14,7 +14,7 @@
         "User-Agent": [
           "FxVersion/4.700.22.55902",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22000",
+          "OSVersion/Microsoft.Windows.10.0.22621",
           "Microsoft.Azure.Management.Compute.ComputeManagementClient/60.0.0"
         ]
       },
@@ -27,13 +27,13 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-resource": [
-          "Microsoft.Compute/LowCostGet3Min;3995,Microsoft.Compute/LowCostGet30Min;31726"
+          "Microsoft.Compute/LowCostGet3Min;3997,Microsoft.Compute/LowCostGet30Min;31972"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "6249eff9-8e73-4d0a-9297-adcbae6faf3c"
+          "0eea25c3-447a-43e4-ab3a-6fb0793e1d9f"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0",
@@ -43,16 +43,16 @@
           "11999"
         ],
         "x-ms-correlation-request-id": [
-          "176b9971-a57e-4c54-ac56-2b28fdf0ccca"
+          "807ccbd1-9b22-4036-a9ef-f6f165ce0f5f"
         ],
         "x-ms-routing-request-id": [
-          "JIOINDIAWEST:20230131T160508Z:176b9971-a57e-4c54-ac56-2b28fdf0ccca"
+          "JIOINDIAWEST:20230418T172506Z:807ccbd1-9b22-4036-a9ef-f6f165ce0f5f"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Tue, 31 Jan 2023 16:05:07 GMT"
+          "Tue, 18 Apr 2023 17:25:05 GMT"
         ],
         "Content-Length": [
           "5213"
@@ -68,12 +68,12 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault?api-version=2022-10-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oaWFnYS1hZGhvYy12YXVsdD9hcGktdmVyc2lvbj0yMDIyLTEwLTAx",
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault?api-version=2023-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oaWFnYS1hZGhvYy12YXVsdD9hcGktdmVyc2lvbj0yMDIzLTAyLTAx",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "524bb1be-7db0-48bd-8910-06e0e3358157"
+          "15a0fdae-cb7e-4cf8-ac9a-b8704eeddb42"
         ],
         "Accept-Language": [
           "en-US"
@@ -81,8 +81,8 @@
         "User-Agent": [
           "FxVersion/4.700.22.55902",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22000",
-          "Microsoft.Azure.Management.RecoveryServices.RecoveryServicesClient/6.1.3"
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.RecoveryServices.RecoveryServicesClient/6.3.0"
         ]
       },
       "RequestBody": "",
@@ -93,44 +93,44 @@
         "Pragma": [
           "no-cache"
         ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11999"
-        ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "x-ms-request-id": [
-          "62541954-a11d-4232-bcf3-a47ccce89ed8"
+          "f7fdd545-f007-487a-8bd7-ea4dbb46c03a"
         ],
         "x-ms-client-request-id": [
-          "524bb1be-7db0-48bd-8910-06e0e3358157"
-        ],
-        "Server": [
-          "Kestrel"
-        ],
-        "x-ms-correlation-request-id": [
-          "62541954-a11d-4232-bcf3-a47ccce89ed8"
-        ],
-        "x-ms-routing-request-id": [
-          "JIOINDIAWEST:20230131T160512Z:62541954-a11d-4232-bcf3-a47ccce89ed8"
+          "15a0fdae-cb7e-4cf8-ac9a-b8704eeddb42"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11997"
+        ],
+        "x-ms-correlation-request-id": [
+          "f7fdd545-f007-487a-8bd7-ea4dbb46c03a"
+        ],
+        "x-ms-routing-request-id": [
+          "JIOINDIAWEST:20230418T172508Z:f7fdd545-f007-487a-8bd7-ea4dbb46c03a"
+        ],
         "Date": [
-          "Tue, 31 Jan 2023 16:05:12 GMT"
+          "Tue, 18 Apr 2023 17:25:07 GMT"
         ],
         "Content-Length": [
-          "821"
+          "1011"
         ],
         "Content-Type": [
-          "application/json; charset=utf-8"
+          "application/json"
         ],
         "Expires": [
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"location\": \"centraluseuap\",\r\n  \"name\": \"hiaga-adhoc-vault\",\r\n  \"etag\": \"W/\\\"datetime'2022-12-16T15%3A10%3A54.8368269Z'\\\"\",\r\n  \"tags\": {\r\n    \"MABUsed\": \"Yes\",\r\n    \"Owner\": \"hiaga\",\r\n    \"Purpose\": \"testing\",\r\n    \"DeleteBy\": \"01-2031\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"privateEndpointStateForBackup\": \"None\",\r\n    \"privateEndpointStateForSiteRecovery\": \"None\",\r\n    \"backupStorageVersion\": \"Unassigned\",\r\n    \"redundancySettings\": {\r\n      \"standardTierStorageRedundancy\": \"GeoRedundant\",\r\n      \"crossRegionRestore\": \"Disabled\"\r\n    },\r\n    \"publicNetworkAccess\": \"Enabled\",\r\n    \"restoreSettings\": {\r\n      \"crossSubscriptionRestoreSettings\": {\r\n        \"crossSubscriptionRestoreState\": \"Enabled\"\r\n      }\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults\",\r\n  \"sku\": {\r\n    \"name\": \"RS0\",\r\n    \"tier\": \"Standard\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"location\": \"centraluseuap\",\r\n  \"name\": \"hiaga-adhoc-vault\",\r\n  \"etag\": \"W/\\\"datetime'2023-04-17T09%3A04%3A00.9298011Z'\\\"\",\r\n  \"tags\": {\r\n    \"MABUsed\": \"Yes\",\r\n    \"Owner\": \"hiaga\",\r\n    \"Purpose\": \"testing\",\r\n    \"DeleteBy\": \"01-2031\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"privateEndpointStateForBackup\": \"None\",\r\n    \"privateEndpointStateForSiteRecovery\": \"None\",\r\n    \"backupStorageVersion\": \"Unassigned\",\r\n    \"redundancySettings\": {\r\n      \"standardTierStorageRedundancy\": \"GeoRedundant\",\r\n      \"crossRegionRestore\": \"Disabled\"\r\n    },\r\n    \"securitySettings\": {\r\n      \"immutabilitySettings\": {\r\n        \"state\": \"Disabled\"\r\n      },\r\n      \"softDeleteSettings\": {\r\n        \"softDeleteRetentionPeriodInDays\": 14,\r\n        \"softDeleteState\": \"Disabled\"\r\n      },\r\n      \"multiUserAuthorization\": \"Disabled\"\r\n    },\r\n    \"publicNetworkAccess\": \"Enabled\",\r\n    \"restoreSettings\": {\r\n      \"crossSubscriptionRestoreSettings\": {\r\n        \"crossSubscriptionRestoreState\": \"Enabled\"\r\n      }\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults\",\r\n  \"sku\": {\r\n    \"name\": \"RS0\",\r\n    \"tier\": \"Standard\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -139,7 +139,7 @@
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "ed9b35c1-ff92-4cc9-8ec1-bb40d1de2f3b"
+          "7d1ec3f7-ba5b-49fc-b659-b23313ff758f"
         ],
         "Accept-Language": [
           "en-US"
@@ -147,8 +147,8 @@
         "User-Agent": [
           "FxVersion/4.700.22.55902",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22000",
-          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/6.1.3"
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/6.3.0"
         ]
       },
       "RequestBody": "",
@@ -162,17 +162,17 @@
         "X-Content-Type-Options": [
           "nosniff"
         ],
+        "x-ms-request-id": [
+          ""
+        ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
-        "x-ms-request-id": [
-          "eb1e48f8-981d-4746-9075-0c97b230c878"
-        ],
         "x-ms-client-request-id": [
-          "ed9b35c1-ff92-4cc9-8ec1-bb40d1de2f3b"
+          "7d1ec3f7-ba5b-49fc-b659-b23313ff758f"
         ],
         "Server": [
-          "Kestrel"
+          "Microsoft-IIS/10.0"
         ],
         "X-Powered-By": [
           "ASP.NET"
@@ -181,19 +181,19 @@
           "299"
         ],
         "x-ms-correlation-request-id": [
-          "eb1e48f8-981d-4746-9075-0c97b230c878"
+          "455f8ae8-f4ef-450a-ba8c-3abeccda0cb2"
         ],
         "x-ms-routing-request-id": [
-          "WESTINDIA:20230131T160515Z:eb1e48f8-981d-4746-9075-0c97b230c878"
+          "JIOINDIAWEST:20230418T172512Z:455f8ae8-f4ef-450a-ba8c-3abeccda0cb2"
         ],
         "Date": [
-          "Tue, 31 Jan 2023 16:05:15 GMT"
+          "Tue, 18 Apr 2023 17:25:12 GMT"
         ],
         "Content-Length": [
           "409"
         ],
         "Content-Type": [
-          "application/json; charset=utf-8"
+          "application/json"
         ],
         "Expires": [
           "-1"
@@ -208,7 +208,7 @@
       "RequestMethod": "PATCH",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "ed9b35c1-ff92-4cc9-8ec1-bb40d1de2f3b"
+          "7d1ec3f7-ba5b-49fc-b659-b23313ff758f"
         ],
         "Accept-Language": [
           "en-US"
@@ -216,8 +216,8 @@
         "User-Agent": [
           "FxVersion/4.700.22.55902",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22000",
-          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/6.1.3"
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/6.3.0"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -238,16 +238,17 @@
           "nosniff"
         ],
         "x-ms-request-id": [
-          "8bc2e8fc-4fc1-40d7-b15d-5a8832d618ab"
+          "15b3a2d0-5d14-4536-bbdd-0074f52673b1"
         ],
         "x-ms-client-request-id": [
-          "ed9b35c1-ff92-4cc9-8ec1-bb40d1de2f3b"
+          "7d1ec3f7-ba5b-49fc-b659-b23313ff758f",
+          "7d1ec3f7-ba5b-49fc-b659-b23313ff758f"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "Server": [
-          "Kestrel"
+          "Microsoft-IIS/10.0"
         ],
         "X-Powered-By": [
           "ASP.NET"
@@ -256,19 +257,19 @@
           "1199"
         ],
         "x-ms-correlation-request-id": [
-          "8bc2e8fc-4fc1-40d7-b15d-5a8832d618ab"
+          "15b3a2d0-5d14-4536-bbdd-0074f52673b1"
         ],
         "x-ms-routing-request-id": [
-          "WESTINDIA:20230131T160516Z:8bc2e8fc-4fc1-40d7-b15d-5a8832d618ab"
+          "JIOINDIAWEST:20230418T172513Z:15b3a2d0-5d14-4536-bbdd-0074f52673b1"
         ],
         "Date": [
-          "Tue, 31 Jan 2023 16:05:15 GMT"
+          "Tue, 18 Apr 2023 17:25:13 GMT"
         ],
         "Content-Length": [
           "409"
         ],
         "Content-Type": [
-          "application/json; charset=utf-8"
+          "application/json"
         ],
         "Expires": [
           "-1"
@@ -283,7 +284,7 @@
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "ccf11250-37e3-430c-af96-cc93972078f8"
+          "e2d3db71-72e1-4796-a66a-e33d058deea3"
         ],
         "Accept-Language": [
           "en-US"
@@ -291,8 +292,8 @@
         "User-Agent": [
           "FxVersion/4.700.22.55902",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22000",
-          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/6.1.3"
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/6.3.0"
         ]
       },
       "RequestBody": "",
@@ -307,16 +308,17 @@
           "nosniff"
         ],
         "x-ms-request-id": [
-          "8e63a7b9-7e78-4a7d-a2b8-be30b6ead003"
+          "38658ce3-7eb6-426e-a2cd-ce5b18187599"
         ],
         "x-ms-client-request-id": [
-          "ccf11250-37e3-430c-af96-cc93972078f8"
+          "e2d3db71-72e1-4796-a66a-e33d058deea3",
+          "e2d3db71-72e1-4796-a66a-e33d058deea3"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "Server": [
-          "Kestrel"
+          "Microsoft-IIS/10.0"
         ],
         "X-Powered-By": [
           "ASP.NET"
@@ -325,25 +327,25 @@
           "299"
         ],
         "x-ms-correlation-request-id": [
-          "8e63a7b9-7e78-4a7d-a2b8-be30b6ead003"
+          "38658ce3-7eb6-426e-a2cd-ce5b18187599"
         ],
         "x-ms-routing-request-id": [
-          "WESTINDIA:20230131T160517Z:8e63a7b9-7e78-4a7d-a2b8-be30b6ead003"
+          "JIOINDIAWEST:20230418T172518Z:38658ce3-7eb6-426e-a2cd-ce5b18187599"
         ],
         "Date": [
-          "Tue, 31 Jan 2023 16:05:16 GMT"
+          "Tue, 18 Apr 2023 17:25:17 GMT"
         ],
         "Content-Length": [
-          "3499"
+          "3635"
         ],
         "Content-Type": [
-          "application/json; charset=utf-8"
+          "application/json"
         ],
         "Expires": [
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupFabrics/Azure/protectionContainers/IaasVMContainer;iaasvmcontainerv2;hiagarg;hiaga-adhoc-vm/protectedItems/VM;iaasvmcontainerv2;hiagarg;hiaga-adhoc-vm\",\r\n      \"name\": \"VM;iaasvmcontainerv2;hiagarg;hiaga-adhoc-vm\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers/protectedItems\",\r\n      \"properties\": {\r\n        \"friendlyName\": \"hiaga-adhoc-vm\",\r\n        \"virtualMachineId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/virtualMachines/hiaga-adhoc-vm\",\r\n        \"protectionStatus\": \"Healthy\",\r\n        \"protectionState\": \"Protected\",\r\n        \"healthStatus\": \"Passed\",\r\n        \"healthDetails\": [\r\n          {\r\n            \"code\": 400239,\r\n            \"title\": \"IaasVmHealthGreenDefault\",\r\n            \"message\": \"Backup pre-check status of this virtual machine is OK.\",\r\n            \"recommendations\": []\r\n          }\r\n        ],\r\n        \"lastBackupStatus\": \"Completed\",\r\n        \"lastBackupTime\": \"2023-01-31T14:35:38.6301768Z\",\r\n        \"protectedItemDataId\": \"1086960339\",\r\n        \"ConfiguredRPGenerationFrequency\": \"00:00:00\",\r\n        \"protectedItemType\": \"Microsoft.Compute/virtualMachines\",\r\n        \"backupManagementType\": \"AzureIaasVM\",\r\n        \"workloadType\": \"VM\",\r\n        \"containerName\": \"iaasvmcontainerv2;hiagarg;hiaga-adhoc-vm\",\r\n        \"sourceResourceId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/virtualMachines/hiaga-adhoc-vm\",\r\n        \"policyId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupPolicies/DefaultPolicy\",\r\n        \"policyName\": \"DefaultPolicy\",\r\n        \"lastRecoveryPoint\": \"2023-01-31T14:35:44.571575Z\",\r\n        \"vaultId\": \"https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault\",\r\n        \"isArchiveEnabled\": false,\r\n        \"softDeleteRetentionPeriod\": 0\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupFabrics/Azure/protectionContainers/IaasVMContainer;iaasvmcontainerv2;hiagarg;hiaganewvm3/protectedItems/VM;iaasvmcontainerv2;hiagarg;hiaganewvm3\",\r\n      \"name\": \"VM;iaasvmcontainerv2;hiagarg;hiaganewvm3\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers/protectedItems\",\r\n      \"properties\": {\r\n        \"friendlyName\": \"hiaganewVM3\",\r\n        \"virtualMachineId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/virtualMachines/hiaganewVM3\",\r\n        \"protectionStatus\": \"Healthy\",\r\n        \"protectionState\": \"IRPending\",\r\n        \"healthStatus\": \"Passed\",\r\n        \"lastBackupStatus\": \"\",\r\n        \"lastBackupTime\": \"2001-01-01T00:00:00Z\",\r\n        \"protectedItemDataId\": \"867109773\",\r\n        \"ConfiguredRPGenerationFrequency\": \"00:00:00\",\r\n        \"protectedItemType\": \"Microsoft.Compute/virtualMachines\",\r\n        \"backupManagementType\": \"AzureIaasVM\",\r\n        \"workloadType\": \"VM\",\r\n        \"containerName\": \"iaasvmcontainerv2;hiagarg;hiaganewvm3\",\r\n        \"sourceResourceId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/virtualMachines/hiaganewVM3\",\r\n        \"policyId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupPolicies/DefaultPolicy\",\r\n        \"policyName\": \"DefaultPolicy\",\r\n        \"vaultId\": \"https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault\",\r\n        \"isArchiveEnabled\": false,\r\n        \"softDeleteRetentionPeriod\": 0\r\n      }\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupFabrics/Azure/protectionContainers/IaasVMContainer;iaasvmcontainerv2;hiagarg;hiaga-adhoc-vm/protectedItems/VM;iaasvmcontainerv2;hiagarg;hiaga-adhoc-vm\",\r\n      \"name\": \"VM;iaasvmcontainerv2;hiagarg;hiaga-adhoc-vm\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers/protectedItems\",\r\n      \"properties\": {\r\n        \"friendlyName\": \"hiaga-adhoc-vm\",\r\n        \"virtualMachineId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/virtualMachines/hiaga-adhoc-vm\",\r\n        \"protectionStatus\": \"Healthy\",\r\n        \"protectionState\": \"Protected\",\r\n        \"healthStatus\": \"Passed\",\r\n        \"healthDetails\": [\r\n          {\r\n            \"code\": 400239,\r\n            \"title\": \"IaasVmHealthGreenDefault\",\r\n            \"message\": \"Backup pre-check status of this virtual machine is OK.\",\r\n            \"recommendations\": []\r\n          }\r\n        ],\r\n        \"lastBackupStatus\": \"Completed\",\r\n        \"lastBackupTime\": \"2023-04-18T17:03:15.2862165Z\",\r\n        \"protectedItemDataId\": \"1086960339\",\r\n        \"protectedItemType\": \"Microsoft.Compute/virtualMachines\",\r\n        \"backupManagementType\": \"AzureIaasVM\",\r\n        \"workloadType\": \"VM\",\r\n        \"containerName\": \"iaasvmcontainerv2;hiagarg;hiaga-adhoc-vm\",\r\n        \"sourceResourceId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/virtualMachines/hiaga-adhoc-vm\",\r\n        \"policyId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupPolicies/DefaultPolicy\",\r\n        \"policyName\": \"DefaultPolicy\",\r\n        \"lastRecoveryPoint\": \"2023-04-18T17:03:18.6017886Z\",\r\n        \"vaultId\": \"https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault\",\r\n        \"isArchiveEnabled\": false,\r\n        \"softDeleteRetentionPeriod\": 0\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupFabrics/Azure/protectionContainers/IaasVMContainer;iaasvmcontainerv2;hiagarg;hiaganewvm3/protectedItems/VM;iaasvmcontainerv2;hiagarg;hiaganewvm3\",\r\n      \"name\": \"VM;iaasvmcontainerv2;hiagarg;hiaganewvm3\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers/protectedItems\",\r\n      \"properties\": {\r\n        \"friendlyName\": \"hiaganewVM3\",\r\n        \"virtualMachineId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/virtualMachines/hiaganewVM3\",\r\n        \"protectionStatus\": \"Healthy\",\r\n        \"protectionState\": \"Protected\",\r\n        \"healthStatus\": \"Passed\",\r\n        \"healthDetails\": [\r\n          {\r\n            \"code\": 400239,\r\n            \"title\": \"IaasVmHealthGreenDefault\",\r\n            \"message\": \"Backup pre-check status of this virtual machine is OK.\",\r\n            \"recommendations\": []\r\n          }\r\n        ],\r\n        \"lastBackupStatus\": \"Completed\",\r\n        \"lastBackupTime\": \"2023-04-18T16:38:50.1040117Z\",\r\n        \"protectedItemDataId\": \"867109773\",\r\n        \"protectedItemType\": \"Microsoft.Compute/virtualMachines\",\r\n        \"backupManagementType\": \"AzureIaasVM\",\r\n        \"workloadType\": \"VM\",\r\n        \"containerName\": \"iaasvmcontainerv2;hiagarg;hiaganewvm3\",\r\n        \"sourceResourceId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/virtualMachines/hiaganewVM3\",\r\n        \"policyId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupPolicies/DefaultPolicy\",\r\n        \"policyName\": \"DefaultPolicy\",\r\n        \"lastRecoveryPoint\": \"2023-04-18T16:38:53.4415921Z\",\r\n        \"vaultId\": \"https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault\",\r\n        \"isArchiveEnabled\": false,\r\n        \"softDeleteRetentionPeriod\": 0\r\n      }\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     },
     {
@@ -352,7 +354,7 @@
       "RequestMethod": "POST",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "120783c0-a020-4a3b-95c9-64e54de4a9bb"
+          "5d91eb10-bb00-436f-80fe-d91c4ddbf1b1"
         ],
         "Accept-Language": [
           "en-US"
@@ -360,8 +362,8 @@
         "User-Agent": [
           "FxVersion/4.700.22.55902",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22000",
-          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/6.1.3"
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/6.3.0"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -379,28 +381,26 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupFabrics/Azure/protectionContainers/IaasVMContainer;iaasvmcontainerv2;hiagarg;hiaga-adhoc-vm/protectedItems/VM;iaasvmcontainerv2;hiagarg;hiaga-adhoc-vm/operationResults/2e91b0ea-c510-4e72-9db8-509c2a47605d?api-version=2023-01-01"
+          "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupFabrics/Azure/protectionContainers/IaasVMContainer;iaasvmcontainerv2;hiagarg;hiaga-adhoc-vm/protectedItems/VM;iaasvmcontainerv2;hiagarg;hiaga-adhoc-vm/operationResults/b4567fa3-3be1-458f-9bc1-3655bde710ce?api-version=2023-01-01"
         ],
         "Retry-After": [
           "60"
         ],
         "Azure-AsyncOperation": [
-          "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupFabrics/Azure/protectionContainers/IaasVMContainer;iaasvmcontainerv2;hiagarg;hiaga-adhoc-vm/protectedItems/VM;iaasvmcontainerv2;hiagarg;hiaga-adhoc-vm/operationsStatus/2e91b0ea-c510-4e72-9db8-509c2a47605d?api-version=2023-01-01"
+          "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupFabrics/Azure/protectionContainers/IaasVMContainer;iaasvmcontainerv2;hiagarg;hiaga-adhoc-vm/protectedItems/VM;iaasvmcontainerv2;hiagarg;hiaga-adhoc-vm/operationsStatus/b4567fa3-3be1-458f-9bc1-3655bde710ce?api-version=2023-01-01"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "x-ms-request-id": [
-          "f5856f89-4c67-46d8-b058-99640e376bb7"
+          "fce0c9c9-e68d-4b20-b1b8-1c2423406dc0"
         ],
         "x-ms-client-request-id": [
-          "120783c0-a020-4a3b-95c9-64e54de4a9bb"
+          "5d91eb10-bb00-436f-80fe-d91c4ddbf1b1",
+          "5d91eb10-bb00-436f-80fe-d91c4ddbf1b1"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
-        ],
-        "Server": [
-          "Kestrel"
         ],
         "X-Powered-By": [
           "ASP.NET"
@@ -409,13 +409,13 @@
           "1199"
         ],
         "x-ms-correlation-request-id": [
-          "f5856f89-4c67-46d8-b058-99640e376bb7"
+          "fce0c9c9-e68d-4b20-b1b8-1c2423406dc0"
         ],
         "x-ms-routing-request-id": [
-          "WESTINDIA:20230131T160520Z:f5856f89-4c67-46d8-b058-99640e376bb7"
+          "JIOINDIAWEST:20230418T172522Z:fce0c9c9-e68d-4b20-b1b8-1c2423406dc0"
         ],
         "Date": [
-          "Tue, 31 Jan 2023 16:05:20 GMT"
+          "Tue, 18 Apr 2023 17:25:21 GMT"
         ],
         "Expires": [
           "-1"
@@ -428,12 +428,12 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupOperations/2e91b0ea-c510-4e72-9db8-509c2a47605d?api-version=2023-01-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oaWFnYS1hZGhvYy12YXVsdC9iYWNrdXBPcGVyYXRpb25zLzJlOTFiMGVhLWM1MTAtNGU3Mi05ZGI4LTUwOWMyYTQ3NjA1ZD9hcGktdmVyc2lvbj0yMDIzLTAxLTAx",
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupOperations/b4567fa3-3be1-458f-9bc1-3655bde710ce?api-version=2023-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oaWFnYS1hZGhvYy12YXVsdC9iYWNrdXBPcGVyYXRpb25zL2I0NTY3ZmEzLTNiZTEtNDU4Zi05YmMxLTM2NTViZGU3MTBjZT9hcGktdmVyc2lvbj0yMDIzLTAxLTAx",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "120783c0-a020-4a3b-95c9-64e54de4a9bb"
+          "5d91eb10-bb00-436f-80fe-d91c4ddbf1b1"
         ],
         "Accept-Language": [
           "en-US"
@@ -441,8 +441,8 @@
         "User-Agent": [
           "FxVersion/4.700.22.55902",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22000",
-          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/6.1.3"
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/6.3.0"
         ]
       },
       "RequestBody": "",
@@ -457,16 +457,17 @@
           "nosniff"
         ],
         "x-ms-request-id": [
-          "8d6bb20f-a3c2-4553-9f0a-020a9f47cdf2"
+          "e0ea6079-d298-4b2b-82bf-8e689f1f21b0"
         ],
         "x-ms-client-request-id": [
-          "120783c0-a020-4a3b-95c9-64e54de4a9bb"
+          "5d91eb10-bb00-436f-80fe-d91c4ddbf1b1",
+          "5d91eb10-bb00-436f-80fe-d91c4ddbf1b1"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "Server": [
-          "Kestrel"
+          "Microsoft-IIS/10.0"
         ],
         "X-Powered-By": [
           "ASP.NET"
@@ -475,34 +476,34 @@
           "299"
         ],
         "x-ms-correlation-request-id": [
-          "8d6bb20f-a3c2-4553-9f0a-020a9f47cdf2"
+          "e0ea6079-d298-4b2b-82bf-8e689f1f21b0"
         ],
         "x-ms-routing-request-id": [
-          "WESTINDIA:20230131T160520Z:8d6bb20f-a3c2-4553-9f0a-020a9f47cdf2"
+          "JIOINDIAWEST:20230418T172523Z:e0ea6079-d298-4b2b-82bf-8e689f1f21b0"
         ],
         "Date": [
-          "Tue, 31 Jan 2023 16:05:20 GMT"
+          "Tue, 18 Apr 2023 17:25:22 GMT"
         ],
         "Content-Length": [
-          "304"
+          "302"
         ],
         "Content-Type": [
-          "application/json; charset=utf-8"
+          "application/json"
         ],
         "Expires": [
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"2e91b0ea-c510-4e72-9db8-509c2a47605d\",\r\n  \"name\": \"2e91b0ea-c510-4e72-9db8-509c2a47605d\",\r\n  \"status\": \"Succeeded\",\r\n  \"startTime\": \"2023-01-31T16:05:19.9257152Z\",\r\n  \"endTime\": \"2023-01-31T16:05:19.9257152Z\",\r\n  \"properties\": {\r\n    \"objectType\": \"OperationStatusJobExtendedInfo\",\r\n    \"jobId\": \"bef25514-cb03-4f66-8aa5-1bd239ded0ed\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"b4567fa3-3be1-458f-9bc1-3655bde710ce\",\r\n  \"name\": \"b4567fa3-3be1-458f-9bc1-3655bde710ce\",\r\n  \"status\": \"Succeeded\",\r\n  \"startTime\": \"2023-04-18T17:25:22.137707Z\",\r\n  \"endTime\": \"2023-04-18T17:25:22.137707Z\",\r\n  \"properties\": {\r\n    \"objectType\": \"OperationStatusJobExtendedInfo\",\r\n    \"jobId\": \"e3e6a2bd-5ea6-436d-9187-f292b8fd141c\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupOperations/2e91b0ea-c510-4e72-9db8-509c2a47605d?api-version=2023-01-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oaWFnYS1hZGhvYy12YXVsdC9iYWNrdXBPcGVyYXRpb25zLzJlOTFiMGVhLWM1MTAtNGU3Mi05ZGI4LTUwOWMyYTQ3NjA1ZD9hcGktdmVyc2lvbj0yMDIzLTAxLTAx",
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupOperations/b4567fa3-3be1-458f-9bc1-3655bde710ce?api-version=2023-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oaWFnYS1hZGhvYy12YXVsdC9iYWNrdXBPcGVyYXRpb25zL2I0NTY3ZmEzLTNiZTEtNDU4Zi05YmMxLTM2NTViZGU3MTBjZT9hcGktdmVyc2lvbj0yMDIzLTAxLTAx",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "120783c0-a020-4a3b-95c9-64e54de4a9bb"
+          "5d91eb10-bb00-436f-80fe-d91c4ddbf1b1"
         ],
         "Accept-Language": [
           "en-US"
@@ -510,8 +511,8 @@
         "User-Agent": [
           "FxVersion/4.700.22.55902",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22000",
-          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/6.1.3"
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/6.3.0"
         ]
       },
       "RequestBody": "",
@@ -526,16 +527,17 @@
           "nosniff"
         ],
         "x-ms-request-id": [
-          "ec417132-30dc-47fe-8ec4-f6b29626a053"
+          "3eebdc1e-76ee-4e43-aa2d-9676e1c87175"
         ],
         "x-ms-client-request-id": [
-          "120783c0-a020-4a3b-95c9-64e54de4a9bb"
+          "5d91eb10-bb00-436f-80fe-d91c4ddbf1b1",
+          "5d91eb10-bb00-436f-80fe-d91c4ddbf1b1"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "Server": [
-          "Kestrel"
+          "Microsoft-IIS/10.0"
         ],
         "X-Powered-By": [
           "ASP.NET"
@@ -544,34 +546,34 @@
           "298"
         ],
         "x-ms-correlation-request-id": [
-          "ec417132-30dc-47fe-8ec4-f6b29626a053"
+          "3eebdc1e-76ee-4e43-aa2d-9676e1c87175"
         ],
         "x-ms-routing-request-id": [
-          "WESTINDIA:20230131T160522Z:ec417132-30dc-47fe-8ec4-f6b29626a053"
+          "JIOINDIAWEST:20230418T172524Z:3eebdc1e-76ee-4e43-aa2d-9676e1c87175"
         ],
         "Date": [
-          "Tue, 31 Jan 2023 16:05:22 GMT"
+          "Tue, 18 Apr 2023 17:25:23 GMT"
         ],
         "Content-Length": [
-          "304"
+          "302"
         ],
         "Content-Type": [
-          "application/json; charset=utf-8"
+          "application/json"
         ],
         "Expires": [
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"2e91b0ea-c510-4e72-9db8-509c2a47605d\",\r\n  \"name\": \"2e91b0ea-c510-4e72-9db8-509c2a47605d\",\r\n  \"status\": \"Succeeded\",\r\n  \"startTime\": \"2023-01-31T16:05:19.9257152Z\",\r\n  \"endTime\": \"2023-01-31T16:05:19.9257152Z\",\r\n  \"properties\": {\r\n    \"objectType\": \"OperationStatusJobExtendedInfo\",\r\n    \"jobId\": \"bef25514-cb03-4f66-8aa5-1bd239ded0ed\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"b4567fa3-3be1-458f-9bc1-3655bde710ce\",\r\n  \"name\": \"b4567fa3-3be1-458f-9bc1-3655bde710ce\",\r\n  \"status\": \"Succeeded\",\r\n  \"startTime\": \"2023-04-18T17:25:22.137707Z\",\r\n  \"endTime\": \"2023-04-18T17:25:22.137707Z\",\r\n  \"properties\": {\r\n    \"objectType\": \"OperationStatusJobExtendedInfo\",\r\n    \"jobId\": \"e3e6a2bd-5ea6-436d-9187-f292b8fd141c\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupJobs/bef25514-cb03-4f66-8aa5-1bd239ded0ed?api-version=2023-01-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oaWFnYS1hZGhvYy12YXVsdC9iYWNrdXBKb2JzL2JlZjI1NTE0LWNiMDMtNGY2Ni04YWE1LTFiZDIzOWRlZDBlZD9hcGktdmVyc2lvbj0yMDIzLTAxLTAx",
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupJobs/e3e6a2bd-5ea6-436d-9187-f292b8fd141c?api-version=2023-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oaWFnYS1hZGhvYy12YXVsdC9iYWNrdXBKb2JzL2UzZTZhMmJkLTVlYTYtNDM2ZC05MTg3LWYyOTJiOGZkMTQxYz9hcGktdmVyc2lvbj0yMDIzLTAxLTAx",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "120783c0-a020-4a3b-95c9-64e54de4a9bb"
+          "5d91eb10-bb00-436f-80fe-d91c4ddbf1b1"
         ],
         "Accept-Language": [
           "en-US"
@@ -579,8 +581,8 @@
         "User-Agent": [
           "FxVersion/4.700.22.55902",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22000",
-          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/6.1.3"
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/6.3.0"
         ]
       },
       "RequestBody": "",
@@ -591,56 +593,58 @@
         "Pragma": [
           "no-cache"
         ],
+        "Server": [
+          "Microsoft-IIS/10.0",
+          "Microsoft-IIS/10.0"
+        ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "x-ms-request-id": [
-          "d62e714d-579d-4140-a18e-4a5fb713f30a"
+          "b640e4db-fc6e-4fed-97f8-d05ec825ef94"
         ],
         "x-ms-client-request-id": [
-          "120783c0-a020-4a3b-95c9-64e54de4a9bb"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "Server": [
-          "Microsoft-IIS/10.0"
+          "5d91eb10-bb00-436f-80fe-d91c4ddbf1b1",
+          "5d91eb10-bb00-436f-80fe-d91c4ddbf1b1"
         ],
         "X-Powered-By": [
           "ASP.NET"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
           "149"
         ],
         "x-ms-correlation-request-id": [
-          "d62e714d-579d-4140-a18e-4a5fb713f30a"
+          "b640e4db-fc6e-4fed-97f8-d05ec825ef94"
         ],
         "x-ms-routing-request-id": [
-          "WESTINDIA:20230131T160523Z:d62e714d-579d-4140-a18e-4a5fb713f30a"
+          "JIOINDIAWEST:20230418T172525Z:b640e4db-fc6e-4fed-97f8-d05ec825ef94"
         ],
         "Date": [
-          "Tue, 31 Jan 2023 16:05:23 GMT"
+          "Tue, 18 Apr 2023 17:25:24 GMT"
         ],
         "Content-Length": [
-          "1099"
+          "1098"
         ],
         "Content-Type": [
-          "application/json; charset=utf-8"
+          "application/json"
         ],
         "Expires": [
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupJobs/bef25514-cb03-4f66-8aa5-1bd239ded0ed\",\r\n  \"name\": \"bef25514-cb03-4f66-8aa5-1bd239ded0ed\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/backupJobs\",\r\n  \"properties\": {\r\n    \"jobType\": \"AzureIaaSVMJob\",\r\n    \"actionsInfo\": [\r\n      1\r\n    ],\r\n    \"containerName\": \"iaasvmcontainerv2;hiagarg;hiaga-adhoc-vm\",\r\n    \"duration\": \"PT3.2437155S\",\r\n    \"virtualMachineVersion\": \"Compute\",\r\n    \"extendedInfo\": {\r\n      \"tasksList\": [\r\n        {\r\n          \"taskId\": \"Take Snapshot\",\r\n          \"startTime\": \"2023-01-31T16:05:22.1562915Z\",\r\n          \"endTime\": \"0001-01-01T00:00:00\",\r\n          \"duration\": \"PT1.4081554S\",\r\n          \"status\": \"InProgress\"\r\n        },\r\n        {\r\n          \"taskId\": \"Transfer data to vault\",\r\n          \"startTime\": \"0001-01-01T00:00:00\",\r\n          \"endTime\": \"0001-01-01T00:00:00\",\r\n          \"duration\": \"PT0S\",\r\n          \"status\": \"NotStarted\"\r\n        }\r\n      ],\r\n      \"propertyBag\": {\r\n        \"VM Name\": \"hiaga-adhoc-vm\"\r\n      },\r\n      \"internalPropertyBag\": {\r\n        \"IsInstantRpJob\": \"True\"\r\n      }\r\n    },\r\n    \"entityFriendlyName\": \"hiaga-adhoc-vm\",\r\n    \"backupManagementType\": \"AzureIaasVM\",\r\n    \"operation\": \"Backup\",\r\n    \"status\": \"InProgress\",\r\n    \"startTime\": \"2023-01-31T16:05:19.9257152Z\",\r\n    \"activityId\": \"120783c0-a020-4a3b-95c9-64e54de4a9bb\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupJobs/e3e6a2bd-5ea6-436d-9187-f292b8fd141c\",\r\n  \"name\": \"e3e6a2bd-5ea6-436d-9187-f292b8fd141c\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/backupJobs\",\r\n  \"properties\": {\r\n    \"jobType\": \"AzureIaaSVMJob\",\r\n    \"actionsInfo\": [\r\n      1\r\n    ],\r\n    \"containerName\": \"iaasvmcontainerv2;hiagarg;hiaga-adhoc-vm\",\r\n    \"duration\": \"PT2.4073832S\",\r\n    \"virtualMachineVersion\": \"Compute\",\r\n    \"extendedInfo\": {\r\n      \"tasksList\": [\r\n        {\r\n          \"taskId\": \"Take Snapshot\",\r\n          \"startTime\": \"2023-04-18T17:25:23.4014829Z\",\r\n          \"endTime\": \"0001-01-01T00:00:00\",\r\n          \"duration\": \"PT1.4294117S\",\r\n          \"status\": \"InProgress\"\r\n        },\r\n        {\r\n          \"taskId\": \"Transfer data to vault\",\r\n          \"startTime\": \"0001-01-01T00:00:00\",\r\n          \"endTime\": \"0001-01-01T00:00:00\",\r\n          \"duration\": \"PT0S\",\r\n          \"status\": \"NotStarted\"\r\n        }\r\n      ],\r\n      \"propertyBag\": {\r\n        \"VM Name\": \"hiaga-adhoc-vm\"\r\n      },\r\n      \"internalPropertyBag\": {\r\n        \"IsInstantRpJob\": \"True\"\r\n      }\r\n    },\r\n    \"entityFriendlyName\": \"hiaga-adhoc-vm\",\r\n    \"backupManagementType\": \"AzureIaasVM\",\r\n    \"operation\": \"Backup\",\r\n    \"status\": \"InProgress\",\r\n    \"startTime\": \"2023-04-18T17:25:22.137707Z\",\r\n    \"activityId\": \"5d91eb10-bb00-436f-80fe-d91c4ddbf1b1\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupJobs/bef25514-cb03-4f66-8aa5-1bd239ded0ed?api-version=2023-01-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oaWFnYS1hZGhvYy12YXVsdC9iYWNrdXBKb2JzL2JlZjI1NTE0LWNiMDMtNGY2Ni04YWE1LTFiZDIzOWRlZDBlZD9hcGktdmVyc2lvbj0yMDIzLTAxLTAx",
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupJobs/e3e6a2bd-5ea6-436d-9187-f292b8fd141c?api-version=2023-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oaWFnYS1hZGhvYy12YXVsdC9iYWNrdXBKb2JzL2UzZTZhMmJkLTVlYTYtNDM2ZC05MTg3LWYyOTJiOGZkMTQxYz9hcGktdmVyc2lvbj0yMDIzLTAxLTAx",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "f6d7b775-d008-4136-b33d-7d38fc497396"
+          "9eecd736-0322-48b3-b2e2-843f5145193c"
         ],
         "Accept-Language": [
           "en-US"
@@ -648,8 +652,8 @@
         "User-Agent": [
           "FxVersion/4.700.22.55902",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22000",
-          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/6.1.3"
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/6.3.0"
         ]
       },
       "RequestBody": "",
@@ -660,56 +664,58 @@
         "Pragma": [
           "no-cache"
         ],
+        "Server": [
+          "Microsoft-IIS/10.0",
+          "Microsoft-IIS/10.0"
+        ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "x-ms-request-id": [
-          "f6160343-8d80-475a-b998-fb1bf722dfbe"
+          "31fa7c61-3e1e-4ab6-b3a0-31ee4f8ee3f5"
         ],
         "x-ms-client-request-id": [
-          "f6d7b775-d008-4136-b33d-7d38fc497396"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "Server": [
-          "Microsoft-IIS/10.0"
+          "9eecd736-0322-48b3-b2e2-843f5145193c",
+          "9eecd736-0322-48b3-b2e2-843f5145193c"
         ],
         "X-Powered-By": [
           "ASP.NET"
         ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "149"
+          "107"
         ],
         "x-ms-correlation-request-id": [
-          "f6160343-8d80-475a-b998-fb1bf722dfbe"
+          "31fa7c61-3e1e-4ab6-b3a0-31ee4f8ee3f5"
         ],
         "x-ms-routing-request-id": [
-          "WESTINDIA:20230131T160540Z:f6160343-8d80-475a-b998-fb1bf722dfbe"
+          "WESTINDIA:20230418T172529Z:31fa7c61-3e1e-4ab6-b3a0-31ee4f8ee3f5"
         ],
         "Date": [
-          "Tue, 31 Jan 2023 16:05:40 GMT"
+          "Tue, 18 Apr 2023 17:25:28 GMT"
         ],
         "Content-Length": [
-          "1100"
+          "1098"
         ],
         "Content-Type": [
-          "application/json; charset=utf-8"
+          "application/json"
         ],
         "Expires": [
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupJobs/bef25514-cb03-4f66-8aa5-1bd239ded0ed\",\r\n  \"name\": \"bef25514-cb03-4f66-8aa5-1bd239ded0ed\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/backupJobs\",\r\n  \"properties\": {\r\n    \"jobType\": \"AzureIaaSVMJob\",\r\n    \"actionsInfo\": [\r\n      1\r\n    ],\r\n    \"containerName\": \"iaasvmcontainerv2;hiagarg;hiaga-adhoc-vm\",\r\n    \"duration\": \"PT20.4285979S\",\r\n    \"virtualMachineVersion\": \"Compute\",\r\n    \"extendedInfo\": {\r\n      \"tasksList\": [\r\n        {\r\n          \"taskId\": \"Take Snapshot\",\r\n          \"startTime\": \"2023-01-31T16:05:22.1562915Z\",\r\n          \"endTime\": \"0001-01-01T00:00:00\",\r\n          \"duration\": \"PT1.5624873S\",\r\n          \"status\": \"Cancelling\"\r\n        },\r\n        {\r\n          \"taskId\": \"Transfer data to vault\",\r\n          \"startTime\": \"0001-01-01T00:00:00\",\r\n          \"endTime\": \"0001-01-01T00:00:00\",\r\n          \"duration\": \"PT0S\",\r\n          \"status\": \"Cancelling\"\r\n        }\r\n      ],\r\n      \"propertyBag\": {\r\n        \"VM Name\": \"hiaga-adhoc-vm\"\r\n      },\r\n      \"internalPropertyBag\": {\r\n        \"IsInstantRpJob\": \"True\"\r\n      }\r\n    },\r\n    \"entityFriendlyName\": \"hiaga-adhoc-vm\",\r\n    \"backupManagementType\": \"AzureIaasVM\",\r\n    \"operation\": \"Backup\",\r\n    \"status\": \"Cancelling\",\r\n    \"startTime\": \"2023-01-31T16:05:19.9257152Z\",\r\n    \"activityId\": \"120783c0-a020-4a3b-95c9-64e54de4a9bb\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupJobs/e3e6a2bd-5ea6-436d-9187-f292b8fd141c\",\r\n  \"name\": \"e3e6a2bd-5ea6-436d-9187-f292b8fd141c\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/backupJobs\",\r\n  \"properties\": {\r\n    \"jobType\": \"AzureIaaSVMJob\",\r\n    \"actionsInfo\": [\r\n      1\r\n    ],\r\n    \"containerName\": \"iaasvmcontainerv2;hiagarg;hiaga-adhoc-vm\",\r\n    \"duration\": \"PT7.2285133S\",\r\n    \"virtualMachineVersion\": \"Compute\",\r\n    \"extendedInfo\": {\r\n      \"tasksList\": [\r\n        {\r\n          \"taskId\": \"Take Snapshot\",\r\n          \"startTime\": \"2023-04-18T17:25:23.4014829Z\",\r\n          \"endTime\": \"0001-01-01T00:00:00\",\r\n          \"duration\": \"PT0.9062615S\",\r\n          \"status\": \"Cancelling\"\r\n        },\r\n        {\r\n          \"taskId\": \"Transfer data to vault\",\r\n          \"startTime\": \"0001-01-01T00:00:00\",\r\n          \"endTime\": \"0001-01-01T00:00:00\",\r\n          \"duration\": \"PT0S\",\r\n          \"status\": \"Cancelling\"\r\n        }\r\n      ],\r\n      \"propertyBag\": {\r\n        \"VM Name\": \"hiaga-adhoc-vm\"\r\n      },\r\n      \"internalPropertyBag\": {\r\n        \"IsInstantRpJob\": \"True\"\r\n      }\r\n    },\r\n    \"entityFriendlyName\": \"hiaga-adhoc-vm\",\r\n    \"backupManagementType\": \"AzureIaasVM\",\r\n    \"operation\": \"Backup\",\r\n    \"status\": \"Cancelling\",\r\n    \"startTime\": \"2023-04-18T17:25:22.137707Z\",\r\n    \"activityId\": \"5d91eb10-bb00-436f-80fe-d91c4ddbf1b1\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupJobs/bef25514-cb03-4f66-8aa5-1bd239ded0ed/cancel?api-version=2023-01-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oaWFnYS1hZGhvYy12YXVsdC9iYWNrdXBKb2JzL2JlZjI1NTE0LWNiMDMtNGY2Ni04YWE1LTFiZDIzOWRlZDBlZC9jYW5jZWw/YXBpLXZlcnNpb249MjAyMy0wMS0wMQ==",
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupJobs/e3e6a2bd-5ea6-436d-9187-f292b8fd141c/cancel?api-version=2023-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oaWFnYS1hZGhvYy12YXVsdC9iYWNrdXBKb2JzL2UzZTZhMmJkLTVlYTYtNDM2ZC05MTg3LWYyOTJiOGZkMTQxYy9jYW5jZWw/YXBpLXZlcnNpb249MjAyMy0wMS0wMQ==",
       "RequestMethod": "POST",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "f6d7b775-d008-4136-b33d-7d38fc497396"
+          "9eecd736-0322-48b3-b2e2-843f5145193c"
         ],
         "Accept-Language": [
           "en-US"
@@ -717,8 +723,8 @@
         "User-Agent": [
           "FxVersion/4.700.22.55902",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22000",
-          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/6.1.3"
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/6.3.0"
         ]
       },
       "RequestBody": "",
@@ -730,28 +736,26 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupJobs/bef25514-cb03-4f66-8aa5-1bd239ded0ed/operationResults/82a57c43-6fcf-41d9-a2a7-64a51ff2cd4f?api-version=2023-01-01"
+          "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupJobs/e3e6a2bd-5ea6-436d-9187-f292b8fd141c/operationResults/487583f1-a290-4e30-80fa-069516444328?api-version=2023-01-01"
         ],
         "Retry-After": [
           "60"
         ],
         "Azure-AsyncOperation": [
-          "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupJobs/bef25514-cb03-4f66-8aa5-1bd239ded0ed/operationsStatus/82a57c43-6fcf-41d9-a2a7-64a51ff2cd4f?api-version=2019-05-13-preview"
+          "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupJobs/e3e6a2bd-5ea6-436d-9187-f292b8fd141c/operationsStatus/487583f1-a290-4e30-80fa-069516444328?api-version=2019-05-13-preview"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "x-ms-request-id": [
-          "2adcf8ea-91aa-4462-a94f-a2440fa10265"
+          "ab81ffb6-b2e9-4410-9d56-cf6982b8dcc4"
         ],
         "x-ms-client-request-id": [
-          "f6d7b775-d008-4136-b33d-7d38fc497396"
+          "9eecd736-0322-48b3-b2e2-843f5145193c",
+          "9eecd736-0322-48b3-b2e2-843f5145193c"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
-        ],
-        "Server": [
-          "Kestrel"
         ],
         "X-Powered-By": [
           "ASP.NET"
@@ -760,13 +764,13 @@
           "1199"
         ],
         "x-ms-correlation-request-id": [
-          "2adcf8ea-91aa-4462-a94f-a2440fa10265"
+          "ab81ffb6-b2e9-4410-9d56-cf6982b8dcc4"
         ],
         "x-ms-routing-request-id": [
-          "WESTINDIA:20230131T160526Z:2adcf8ea-91aa-4462-a94f-a2440fa10265"
+          "WESTINDIA:20230418T172527Z:ab81ffb6-b2e9-4410-9d56-cf6982b8dcc4"
         ],
         "Date": [
-          "Tue, 31 Jan 2023 16:05:25 GMT"
+          "Tue, 18 Apr 2023 17:25:26 GMT"
         ],
         "Expires": [
           "-1"
@@ -779,12 +783,12 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupJobs/Azure/operationResults/82a57c43-6fcf-41d9-a2a7-64a51ff2cd4f?api-version=2023-01-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oaWFnYS1hZGhvYy12YXVsdC9iYWNrdXBKb2JzL0F6dXJlL29wZXJhdGlvblJlc3VsdHMvODJhNTdjNDMtNmZjZi00MWQ5LWEyYTctNjRhNTFmZjJjZDRmP2FwaS12ZXJzaW9uPTIwMjMtMDEtMDE=",
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupJobs/Azure/operationResults/487583f1-a290-4e30-80fa-069516444328?api-version=2023-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oaWFnYS1hZGhvYy12YXVsdC9iYWNrdXBKb2JzL0F6dXJlL29wZXJhdGlvblJlc3VsdHMvNDg3NTgzZjEtYTI5MC00ZTMwLTgwZmEtMDY5NTE2NDQ0MzI4P2FwaS12ZXJzaW9uPTIwMjMtMDEtMDE=",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "f6d7b775-d008-4136-b33d-7d38fc497396"
+          "9eecd736-0322-48b3-b2e2-843f5145193c"
         ],
         "Accept-Language": [
           "en-US"
@@ -792,8 +796,8 @@
         "User-Agent": [
           "FxVersion/4.700.22.55902",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22000",
-          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/6.1.3"
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/6.3.0"
         ]
       },
       "RequestBody": "",
@@ -804,29 +808,18 @@
         "Pragma": [
           "no-cache"
         ],
-        "Location": [
-          "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupJobs/Azure/operationResults/82a57c43-6fcf-41d9-a2a7-64a51ff2cd4f?api-version=2023-01-01"
-        ],
-        "Retry-After": [
-          "60"
-        ],
-        "Azure-AsyncOperation": [
-          "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupJobs/Azure/operationsStatus/82a57c43-6fcf-41d9-a2a7-64a51ff2cd4f?api-version=2019-05-13-preview"
-        ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "x-ms-request-id": [
-          "731b6ef6-e20e-47b3-bee9-4a909ce17779"
+          "e8374fc7-c835-4e84-844f-8c312388d350"
         ],
         "x-ms-client-request-id": [
-          "f6d7b775-d008-4136-b33d-7d38fc497396"
+          "9eecd736-0322-48b3-b2e2-843f5145193c",
+          "9eecd736-0322-48b3-b2e2-843f5145193c"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
-        ],
-        "Server": [
-          "Kestrel"
         ],
         "X-Powered-By": [
           "ASP.NET"
@@ -835,91 +828,25 @@
           "299"
         ],
         "x-ms-correlation-request-id": [
-          "731b6ef6-e20e-47b3-bee9-4a909ce17779"
+          "e8374fc7-c835-4e84-844f-8c312388d350"
         ],
         "x-ms-routing-request-id": [
-          "WESTINDIA:20230131T160527Z:731b6ef6-e20e-47b3-bee9-4a909ce17779"
+          "WESTINDIA:20230418T172528Z:e8374fc7-c835-4e84-844f-8c312388d350"
         ],
         "Date": [
-          "Tue, 31 Jan 2023 16:05:26 GMT"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Content-Length": [
-          "0"
-        ]
-      },
-      "ResponseBody": "",
-      "StatusCode": 202
-    },
-    {
-      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupJobs/Azure/operationResults/82a57c43-6fcf-41d9-a2a7-64a51ff2cd4f?api-version=2023-01-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oaWFnYS1hZGhvYy12YXVsdC9iYWNrdXBKb2JzL0F6dXJlL29wZXJhdGlvblJlc3VsdHMvODJhNTdjNDMtNmZjZi00MWQ5LWEyYTctNjRhNTFmZjJjZDRmP2FwaS12ZXJzaW9uPTIwMjMtMDEtMDE=",
-      "RequestMethod": "GET",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "f6d7b775-d008-4136-b33d-7d38fc497396"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.700.22.55902",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22000",
-          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/6.1.3"
-        ]
-      },
-      "RequestBody": "",
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "x-ms-request-id": [
-          "f6d1e7ca-56d1-43f7-8e47-3d647cbe70cd"
-        ],
-        "x-ms-client-request-id": [
-          "f6d7b775-d008-4136-b33d-7d38fc497396"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "Server": [
-          "Kestrel"
-        ],
-        "X-Powered-By": [
-          "ASP.NET"
-        ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "298"
-        ],
-        "x-ms-correlation-request-id": [
-          "f6d1e7ca-56d1-43f7-8e47-3d647cbe70cd"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTINDIA:20230131T160538Z:f6d1e7ca-56d1-43f7-8e47-3d647cbe70cd"
-        ],
-        "Date": [
-          "Tue, 31 Jan 2023 16:05:37 GMT"
+          "Tue, 18 Apr 2023 17:25:27 GMT"
         ]
       },
       "ResponseBody": "",
       "StatusCode": 204
     },
     {
-      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupJobs/Azure/operationResults/82a57c43-6fcf-41d9-a2a7-64a51ff2cd4f?api-version=2023-01-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oaWFnYS1hZGhvYy12YXVsdC9iYWNrdXBKb2JzL0F6dXJlL29wZXJhdGlvblJlc3VsdHMvODJhNTdjNDMtNmZjZi00MWQ5LWEyYTctNjRhNTFmZjJjZDRmP2FwaS12ZXJzaW9uPTIwMjMtMDEtMDE=",
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupJobs/Azure/operationResults/487583f1-a290-4e30-80fa-069516444328?api-version=2023-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oaWFnYS1hZGhvYy12YXVsdC9iYWNrdXBKb2JzL0F6dXJlL29wZXJhdGlvblJlc3VsdHMvNDg3NTgzZjEtYTI5MC00ZTMwLTgwZmEtMDY5NTE2NDQ0MzI4P2FwaS12ZXJzaW9uPTIwMjMtMDEtMDE=",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "f6d7b775-d008-4136-b33d-7d38fc497396"
+          "9eecd736-0322-48b3-b2e2-843f5145193c"
         ],
         "Accept-Language": [
           "en-US"
@@ -927,8 +854,8 @@
         "User-Agent": [
           "FxVersion/4.700.22.55902",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22000",
-          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/6.1.3"
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/6.3.0"
         ]
       },
       "RequestBody": "",
@@ -943,31 +870,29 @@
           "nosniff"
         ],
         "x-ms-request-id": [
-          "975a33b2-0e21-4030-898d-0626840c3348"
+          "1d34dd87-aad3-4485-a883-32edbc2eb4b7"
         ],
         "x-ms-client-request-id": [
-          "f6d7b775-d008-4136-b33d-7d38fc497396"
+          "9eecd736-0322-48b3-b2e2-843f5145193c",
+          "9eecd736-0322-48b3-b2e2-843f5145193c"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
-        ],
-        "Server": [
-          "Kestrel"
         ],
         "X-Powered-By": [
           "ASP.NET"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "297"
+          "298"
         ],
         "x-ms-correlation-request-id": [
-          "975a33b2-0e21-4030-898d-0626840c3348"
+          "1d34dd87-aad3-4485-a883-32edbc2eb4b7"
         ],
         "x-ms-routing-request-id": [
-          "WESTINDIA:20230131T160539Z:975a33b2-0e21-4030-898d-0626840c3348"
+          "WESTINDIA:20230418T172528Z:1d34dd87-aad3-4485-a883-32edbc2eb4b7"
         ],
         "Date": [
-          "Tue, 31 Jan 2023 16:05:39 GMT"
+          "Tue, 18 Apr 2023 17:25:27 GMT"
         ]
       },
       "ResponseBody": "",

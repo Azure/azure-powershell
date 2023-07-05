@@ -17,6 +17,7 @@ using Microsoft.Azure.Commands.Sql.Backup.Model;
 using Microsoft.Azure.Commands.Sql.Database.Model;
 using Microsoft.Azure.Commands.Sql.Server.Adapter;
 using Microsoft.Azure.Management.Sql.LegacySdk.Models;
+using Microsoft.Rest.Azure.OData;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -180,6 +181,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
         internal AzureSqlDatabaseGeoBackupModel GetGeoBackup(string resourceGroup, string serverName, string databaseName)
         {
             var geoBackup = Communicator.GetGeoBackup(resourceGroup, serverName, databaseName);
+
             return new AzureSqlDatabaseGeoBackupModel()
             {
                 ResourceGroupName = resourceGroup,
@@ -189,6 +191,43 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
                 Edition = geoBackup.Properties.Edition,
                 LastAvailableBackupDate = geoBackup.Properties.LastAvailableBackupDate,
             };
+        }
+
+        /// <summary>
+        /// Get a recoverable databases (geo backup) for a given Sql Azure Database.
+        /// </summary>
+        /// <param name="resourceGroup">The name of the resource group</param>
+        /// <param name="serverName">The name of the Azure SQL Server</param>
+        /// <param name="databaseName">The name of the Azure SQL Database</param>
+        /// <param name="oDataQuery">Additional query filter parameters</param>
+        /// <returns>A Recoverable database</returns>
+        internal AzureSqlDatabaseGeoBackupModel GetRecoverableDatabase(string resourceGroup, string serverName, string databaseName, ODataQuery<Management.Sql.Models.RecoverableDatabase> oDataQuery = null)
+        {
+            var recoverableDatabase = Communicator.GetRecoverableDatabase(resourceGroup, serverName, databaseName, oDataQuery);
+
+            AzureSqlDatabaseGeoBackupModel model = new AzureSqlDatabaseGeoBackupModel()
+            {
+                ResourceGroupName = resourceGroup,
+                DatabaseName = recoverableDatabase.Name,
+                ServerName = serverName,
+                ResourceId = recoverableDatabase.Id,
+                Edition = recoverableDatabase.Edition,
+                LastAvailableBackupDate = (DateTime)recoverableDatabase.LastAvailableBackupDate,
+            };
+
+            List<string> keysFromGet = new List<string>();
+
+            if (recoverableDatabase.Keys.Any())
+            {
+                foreach (var keys in recoverableDatabase.Keys)
+                {
+                    keysFromGet.Add(keys.Key);
+                }
+            }
+
+            model.Keys = keysFromGet.ToArray();
+
+            return model;
         }
 
         /// <summary>
@@ -215,6 +254,46 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
                 RecoveryPeriodStartDate = deletedDatabaseBackup.Properties.EarliestRestoreDate,
                 ResourceId = deletedDatabaseBackup.Id,
             };
+        }
+
+        /// <summary>
+        /// Get a restorable dropped databases for a given Sql Azure Database.
+        /// </summary>
+        /// <param name="resourceGroup">The name of the resource group</param>
+        /// <param name="serverName">The name of the Azure SQL Server</param>
+        /// <param name="databaseId">The id of the Azure SQL Database</param>
+        /// <param name="oDataQuery">Additional query filter parameters</param>
+        /// <returns>A restorable dropped database</returns>
+        internal AzureSqlDeletedDatabaseBackupModel GetRestorableDroppedDatabase(string resourceGroup, string serverName, string databaseId, ODataQuery<Management.Sql.Models.RestorableDroppedDatabase> oDataQuery = null)
+        {
+            var restoreableDroppedDatabase = Communicator.GetRestorableDroppedDatabase(resourceGroup, serverName, databaseId, oDataQuery);
+
+            AzureSqlDeletedDatabaseBackupModel model =  new AzureSqlDeletedDatabaseBackupModel()
+            {
+                ResourceGroupName = resourceGroup,
+                ServerName = serverName,
+                DatabaseName = restoreableDroppedDatabase.DatabaseName,
+                Edition = restoreableDroppedDatabase.Sku.Tier,
+                MaxSizeBytes = (long)restoreableDroppedDatabase.MaxSizeBytes,
+                CreationDate = (DateTime)restoreableDroppedDatabase.CreationDate,
+                DeletionDate = (DateTime)restoreableDroppedDatabase.DeletionDate,
+                RecoveryPeriodStartDate = restoreableDroppedDatabase.EarliestRestoreDate,
+                ResourceId = restoreableDroppedDatabase.Id,
+            };
+
+            List<string> keysFromGet = new List<string>();
+
+            if (restoreableDroppedDatabase.Keys.Any())
+            {
+                foreach (var keys in restoreableDroppedDatabase.Keys)
+                {
+                    keysFromGet.Add(keys.Key);
+                }
+            }
+
+            model.Keys = keysFromGet.ToArray();
+
+            return model;
         }
 
         /// <summary>
@@ -595,7 +674,11 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
                 HighAvailabilityReplicaCount = model.HighAvailabilityReplicaCount,
                 RequestedBackupStorageRedundancy = model.RequestedBackupStorageRedundancy,
                 ZoneRedundant = model.ZoneRedundant,
-                Tags = model.Tags
+                Tags = model.Tags,
+                Identity = model.Identity,
+                Keys = model.Keys,
+                EncryptionProtector = model.EncryptionProtector,
+                FederatedClientId = model.FederatedClientId
             };
             
             // check if restore operation is cross subscription or same subscription

@@ -16,21 +16,21 @@
 
 <#
 .Synopsis
-list source configurations for a linker.
+list source configurations for a Linker.
 .Description
-list source configurations for a linker.
+list source configurations for a Linker.
 .Example
 {{ Add code here }}
 .Example
 {{ Add code here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20220501.ISourceConfiguration
+Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.ISourceConfiguration
 .Link
 https://learn.microsoft.com/powershell/module/az.servicelinker/get-azservicelinkerconfiguration
 #>
 function Get-AzServiceLinkerConfiguration {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20220501.ISourceConfiguration])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.ISourceConfiguration])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -137,6 +137,153 @@ end {
 
 <#
 .Synopsis
+get a dryrun job
+.Description
+get a dryrun job
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.IServiceLinkerIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.IDryrunResource
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IServiceLinkerIdentity>: Identity Parameter
+  [ConnectorName <String>]: The name of resource.
+  [DryrunName <String>]: The name of dryrun.
+  [Id <String>]: Resource identity path
+  [LinkerName <String>]: The name Linker resource.
+  [Location <String>]: The name of Azure region.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ResourceUri <String>]: The fully qualified Azure Resource manager identifier of the resource to be connected.
+  [SubscriptionId <String>]: The ID of the target subscription.
+.Link
+https://learn.microsoft.com/powershell/module/az.servicelinker/get-azservicelinkerdryrun
+#>
+function Get-AzServiceLinkerDryrun {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.IDryrunResource])]
+[CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
+param(
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Path')]
+    [System.String]
+    # The name of dryrun.
+    ${DryrunName},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='List', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Path')]
+    [System.String]
+    # The fully qualified Azure Resource manager identifier of the resource to be connected.
+    ${ResourceUri},
+
+    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.IServiceLinkerIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The credentials, account, tenant, and subscription used for communication with Azure.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        $mapping = @{
+            Get = 'Az.ServiceLinker.private\Get-AzServiceLinkerDryrun_Get';
+            GetViaIdentity = 'Az.ServiceLinker.private\Get-AzServiceLinkerDryrun_GetViaIdentity';
+            List = 'Az.ServiceLinker.private\Get-AzServiceLinkerDryrun_List';
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
 Lists the available ServiceLinker REST API operations.
 .Description
 Lists the available ServiceLinker REST API operations.
@@ -146,12 +293,12 @@ Lists the available ServiceLinker REST API operations.
 {{ Add code here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20.IOperation
+Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api30.IOperation
 .Link
 https://learn.microsoft.com/powershell/module/az.servicelinker/get-azservicelinkeroperation
 #>
 function Get-AzServiceLinkerOperation {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20.IOperation])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api30.IOperation])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter()]
@@ -257,21 +404,26 @@ Returns Linker resource for a given name.
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.IServiceLinkerIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20220501.ILinkerResource
+Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.ILinkerResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IServiceLinkerIdentity>: Identity Parameter
+  [ConnectorName <String>]: The name of resource.
+  [DryrunName <String>]: The name of dryrun.
   [Id <String>]: Resource identity path
   [LinkerName <String>]: The name Linker resource.
+  [Location <String>]: The name of Azure region.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ResourceUri <String>]: The fully qualified Azure Resource manager identifier of the resource to be connected.
+  [SubscriptionId <String>]: The ID of the target subscription.
 .Link
 https://learn.microsoft.com/powershell/module/az.servicelinker/get-azservicelinker
 #>
 function Get-AzServiceLinker {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20220501.ILinkerResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.ILinkerResource])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -389,16 +541,347 @@ end {
 
 <#
 .Synopsis
-Create or update linker resource.
+Generate configurations for a Linker.
 .Description
-Create or update linker resource.
+Generate configurations for a Linker.
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.IConfigurationInfo
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.IServiceLinkerIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.ISourceConfiguration
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IServiceLinkerIdentity>: Identity Parameter
+  [ConnectorName <String>]: The name of resource.
+  [DryrunName <String>]: The name of dryrun.
+  [Id <String>]: Resource identity path
+  [LinkerName <String>]: The name Linker resource.
+  [Location <String>]: The name of Azure region.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ResourceUri <String>]: The fully qualified Azure Resource manager identifier of the resource to be connected.
+  [SubscriptionId <String>]: The ID of the target subscription.
+
+PARAMETER <IConfigurationInfo>: The configuration information, used to generate configurations or save to applications
+  [Action <ActionType?>]: Optional, indicate whether to apply configurations on source application. If enable, generate configurations and applied to the source application. Default is enable. If optOut, no configuration change will be made on source.
+  [AdditionalConfiguration <IConfigurationInfoAdditionalConfigurations>]: A dictionary of additional configurations to be added. Service will auto generate a set of basic configurations and this property is to full fill more customized configurations
+    [(Any) <String>]: This indicates any property can be added to this object.
+  [CustomizedKey <IConfigurationInfoCustomizedKeys>]: Optional. A dictionary of default key name and customized key name mapping. If not specified, default key name will be used for generate configurations
+    [(Any) <String>]: This indicates any property can be added to this object.
+  [DeleteOrUpdateBehavior <DeleteOrUpdateBehavior?>]: Indicates whether to clean up previous operation when Linker is updating or deleting
+.Link
+https://learn.microsoft.com/powershell/module/az.servicelinker/new-azservicelinkerconfiguration
+#>
+function New-AzServiceLinkerConfiguration {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.ISourceConfiguration])]
+[CmdletBinding(DefaultParameterSetName='GenerateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='Generate', Mandatory)]
+    [Parameter(ParameterSetName='GenerateExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Path')]
+    [System.String]
+    # The name Linker resource.
+    ${LinkerName},
+
+    [Parameter(ParameterSetName='Generate', Mandatory)]
+    [Parameter(ParameterSetName='GenerateExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Path')]
+    [System.String]
+    # The fully qualified Azure Resource manager identifier of the resource to be connected.
+    ${ResourceUri},
+
+    [Parameter(ParameterSetName='GenerateViaIdentity', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='GenerateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.IServiceLinkerIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter(ParameterSetName='Generate', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='GenerateViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.IConfigurationInfo]
+    # The configuration information, used to generate configurations or save to applications
+    # To construct, see NOTES section for PARAMETER properties and create a hash table.
+    ${Parameter},
+
+    [Parameter(ParameterSetName='GenerateExpanded')]
+    [Parameter(ParameterSetName='GenerateViaIdentityExpanded')]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.ActionType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.ActionType]
+    # Optional, indicate whether to apply configurations on source application.
+    # If enable, generate configurations and applied to the source application.
+    # Default is enable.
+    # If optOut, no configuration change will be made on source.
+    ${Action},
+
+    [Parameter(ParameterSetName='GenerateExpanded')]
+    [Parameter(ParameterSetName='GenerateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.IConfigurationInfoAdditionalConfigurations]))]
+    [System.Collections.Hashtable]
+    # A dictionary of additional configurations to be added.
+    # Service will auto generate a set of basic configurations and this property is to full fill more customized configurations
+    ${AdditionalConfiguration},
+
+    [Parameter(ParameterSetName='GenerateExpanded')]
+    [Parameter(ParameterSetName='GenerateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.IConfigurationInfoCustomizedKeys]))]
+    [System.Collections.Hashtable]
+    # Optional.
+    # A dictionary of default key name and customized key name mapping.
+    # If not specified, default key name will be used for generate configurations
+    ${CustomizedKey},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The credentials, account, tenant, and subscription used for communication with Azure.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        $mapping = @{
+            Generate = 'Az.ServiceLinker.private\New-AzServiceLinkerConfiguration_Generate';
+            GenerateExpanded = 'Az.ServiceLinker.private\New-AzServiceLinkerConfiguration_GenerateExpanded';
+            GenerateViaIdentity = 'Az.ServiceLinker.private\New-AzServiceLinkerConfiguration_GenerateViaIdentity';
+            GenerateViaIdentityExpanded = 'Az.ServiceLinker.private\New-AzServiceLinkerConfiguration_GenerateViaIdentityExpanded';
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+create a dryrun job to do necessary check before actual creation
+.Description
+create a dryrun job to do necessary check before actual creation
 .Example
 {{ Add code here }}
 .Example
 {{ Add code here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20220501.ILinkerResource
+Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.IDryrunResource
+.Link
+https://learn.microsoft.com/powershell/module/az.servicelinker/new-azservicelinkerdryrun
+#>
+function New-AzServiceLinkerDryrun {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.IDryrunResource])]
+[CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Path')]
+    [System.String]
+    # The name of dryrun.
+    ${DryrunName},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Path')]
+    [System.String]
+    # The fully qualified Azure Resource manager identifier of the resource to be connected.
+    ${ResourceUri},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The credentials, account, tenant, and subscription used for communication with Azure.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        $mapping = @{
+            CreateExpanded = 'Az.ServiceLinker.private\New-AzServiceLinkerDryrun_CreateExpanded';
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Create or update Linker resource.
+.Description
+Create or update Linker resource.
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.ILinkerResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -413,7 +896,7 @@ TARGETSERVICE <ITargetServiceBase>: The target service properties
 https://learn.microsoft.com/powershell/module/az.servicelinker/new-azservicelinker
 #>
 function New-AzServiceLinker {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20220501.ILinkerResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.ILinkerResource])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -438,7 +921,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20220501.IAuthInfoBase]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.IAuthInfoBase]
     # The authentication type.
     # To construct, see NOTES section for AUTHINFO properties and create a hash table.
     ${AuthInfo},
@@ -450,6 +933,66 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.ClientType]
     # The application client type
     ${ClientType},
+
+    [Parameter()]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.ActionType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.ActionType]
+    # Optional, indicate whether to apply configurations on source application.
+    # If enable, generate configurations and applied to the source application.
+    # Default is enable.
+    # If optOut, no configuration change will be made on source.
+    ${ConfigurationInfoAction},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.IConfigurationInfoAdditionalConfigurations]))]
+    [System.Collections.Hashtable]
+    # A dictionary of additional configurations to be added.
+    # Service will auto generate a set of basic configurations and this property is to full fill more customized configurations
+    ${ConfigurationInfoAdditionalConfiguration},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.IConfigurationInfoCustomizedKeys]))]
+    [System.Collections.Hashtable]
+    # Optional.
+    # A dictionary of default key name and customized key name mapping.
+    # If not specified, default key name will be used for generate configurations
+    ${ConfigurationInfoCustomizedKey},
+
+    [Parameter()]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.AllowType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.AllowType]
+    # Allow Azure services to access the target service if true.
+    ${FirewallRuleAzureService},
+
+    [Parameter()]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.AllowType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.AllowType]
+    # Allow caller client IP to access the target service if true.
+    # the property is used when connecting local application to target service.
+    ${FirewallRuleCallerClientIP},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Body')]
+    [System.String[]]
+    # This value specifies the set of IP addresses or IP address ranges in CIDR form to be included as the allowed list of client IPs for a given database account.
+    ${FirewallRuleIPRange},
+
+    [Parameter()]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.ActionType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.ActionType]
+    # Optional.
+    # Indicates public network solution.
+    # If enable, enable public network access of target service with best try.
+    # Default is enable.
+    # If optOut, opt out public network access configuration.
+    ${PublicNetworkSolutionAction},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Body')]
@@ -465,7 +1008,13 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20220501.ITargetServiceBase]
+    [System.String]
+    # The key vault secret name to store secret, only valid when storing one secret
+    ${SecretStoreKeyVaultSecretName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.ITargetServiceBase]
     # The target service properties
     # To construct, see NOTES section for TARGETSERVICE properties and create a hash table.
     ${TargetService},
@@ -587,9 +1136,9 @@ end {
 
 <#
 .Synopsis
-Delete a link.
+delete a dryrun job
 .Description
-Delete a link.
+delete a dryrun job
 .Example
 {{ Add code here }}
 .Example
@@ -605,9 +1154,165 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IServiceLinkerIdentity>: Identity Parameter
+  [ConnectorName <String>]: The name of resource.
+  [DryrunName <String>]: The name of dryrun.
   [Id <String>]: Resource identity path
   [LinkerName <String>]: The name Linker resource.
+  [Location <String>]: The name of Azure region.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ResourceUri <String>]: The fully qualified Azure Resource manager identifier of the resource to be connected.
+  [SubscriptionId <String>]: The ID of the target subscription.
+.Link
+https://learn.microsoft.com/powershell/module/az.servicelinker/remove-azservicelinkerdryrun
+#>
+function Remove-AzServiceLinkerDryrun {
+[OutputType([System.Boolean])]
+[CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Path')]
+    [System.String]
+    # The name of dryrun.
+    ${DryrunName},
+
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Path')]
+    [System.String]
+    # The fully qualified Azure Resource manager identifier of the resource to be connected.
+    ${ResourceUri},
+
+    [Parameter(ParameterSetName='DeleteViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.IServiceLinkerIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The credentials, account, tenant, and subscription used for communication with Azure.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Returns true when the command succeeds
+    ${PassThru},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        $mapping = @{
+            Delete = 'Az.ServiceLinker.private\Remove-AzServiceLinkerDryrun_Delete';
+            DeleteViaIdentity = 'Az.ServiceLinker.private\Remove-AzServiceLinkerDryrun_DeleteViaIdentity';
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Delete a Linker.
+.Description
+Delete a Linker.
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.IServiceLinkerIdentity
+.Outputs
+System.Boolean
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IServiceLinkerIdentity>: Identity Parameter
+  [ConnectorName <String>]: The name of resource.
+  [DryrunName <String>]: The name of dryrun.
+  [Id <String>]: Resource identity path
+  [LinkerName <String>]: The name Linker resource.
+  [Location <String>]: The name of Azure region.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ResourceUri <String>]: The fully qualified Azure Resource manager identifier of the resource to be connected.
+  [SubscriptionId <String>]: The ID of the target subscription.
 .Link
 https://learn.microsoft.com/powershell/module/az.servicelinker/remove-azservicelinker
 #>
@@ -746,9 +1451,9 @@ end {
 
 <#
 .Synopsis
-Validate a link.
+Validate a Linker.
 .Description
-Validate a link.
+Validate a Linker.
 .Example
 {{ Add code here }}
 .Example
@@ -757,21 +1462,26 @@ Validate a link.
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.IServiceLinkerIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20220501.IValidateOperationResult
+Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.IValidateOperationResult
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IServiceLinkerIdentity>: Identity Parameter
+  [ConnectorName <String>]: The name of resource.
+  [DryrunName <String>]: The name of dryrun.
   [Id <String>]: Resource identity path
   [LinkerName <String>]: The name Linker resource.
+  [Location <String>]: The name of Azure region.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ResourceUri <String>]: The fully qualified Azure Resource manager identifier of the resource to be connected.
+  [SubscriptionId <String>]: The ID of the target subscription.
 .Link
 https://learn.microsoft.com/powershell/module/az.servicelinker/test-azservicelinker
 #>
 function Test-AzServiceLinker {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20220501.IValidateOperationResult])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.IValidateOperationResult])]
 [CmdletBinding(DefaultParameterSetName='Validate', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Validate', Mandatory)]
@@ -899,9 +1609,9 @@ end {
 
 <#
 .Synopsis
-Operation to update an existing link.
+add a dryrun job to do necessary check before actual creation
 .Description
-Operation to update an existing link.
+add a dryrun job to do necessary check before actual creation
 .Example
 {{ Add code here }}
 .Example
@@ -910,7 +1620,164 @@ Operation to update an existing link.
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.IServiceLinkerIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20220501.ILinkerResource
+Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.IDryrunResource
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IServiceLinkerIdentity>: Identity Parameter
+  [ConnectorName <String>]: The name of resource.
+  [DryrunName <String>]: The name of dryrun.
+  [Id <String>]: Resource identity path
+  [LinkerName <String>]: The name Linker resource.
+  [Location <String>]: The name of Azure region.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ResourceUri <String>]: The fully qualified Azure Resource manager identifier of the resource to be connected.
+  [SubscriptionId <String>]: The ID of the target subscription.
+.Link
+https://learn.microsoft.com/powershell/module/az.servicelinker/update-azservicelinkerdryrun
+#>
+function Update-AzServiceLinkerDryrun {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.IDryrunResource])]
+[CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Path')]
+    [System.String]
+    # The name of dryrun.
+    ${DryrunName},
+
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Path')]
+    [System.String]
+    # The fully qualified Azure Resource manager identifier of the resource to be connected.
+    ${ResourceUri},
+
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.IServiceLinkerIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The credentials, account, tenant, and subscription used for communication with Azure.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        $mapping = @{
+            UpdateExpanded = 'Az.ServiceLinker.private\Update-AzServiceLinkerDryrun_UpdateExpanded';
+            UpdateViaIdentityExpanded = 'Az.ServiceLinker.private\Update-AzServiceLinkerDryrun_UpdateViaIdentityExpanded';
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Operation to update an existing Linker.
+.Description
+Operation to update an existing Linker.
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.IServiceLinkerIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.ILinkerResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -920,9 +1787,14 @@ AUTHINFO <IAuthInfoBase>: The authentication type.
   AuthType <AuthType>: The authentication type.
 
 INPUTOBJECT <IServiceLinkerIdentity>: Identity Parameter
+  [ConnectorName <String>]: The name of resource.
+  [DryrunName <String>]: The name of dryrun.
   [Id <String>]: Resource identity path
   [LinkerName <String>]: The name Linker resource.
+  [Location <String>]: The name of Azure region.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ResourceUri <String>]: The fully qualified Azure Resource manager identifier of the resource to be connected.
+  [SubscriptionId <String>]: The ID of the target subscription.
 
 TARGETSERVICE <ITargetServiceBase>: The target service properties
   Type <TargetServiceType>: The target service type.
@@ -930,7 +1802,7 @@ TARGETSERVICE <ITargetServiceBase>: The target service properties
 https://learn.microsoft.com/powershell/module/az.servicelinker/update-azservicelinker
 #>
 function Update-AzServiceLinker {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20220501.ILinkerResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.ILinkerResource])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -961,7 +1833,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20220501.IAuthInfoBase]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.IAuthInfoBase]
     # The authentication type.
     # To construct, see NOTES section for AUTHINFO properties and create a hash table.
     ${AuthInfo},
@@ -972,6 +1844,66 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.ClientType]
     # The application client type
     ${ClientType},
+
+    [Parameter()]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.ActionType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.ActionType]
+    # Optional, indicate whether to apply configurations on source application.
+    # If enable, generate configurations and applied to the source application.
+    # Default is enable.
+    # If optOut, no configuration change will be made on source.
+    ${ConfigurationInfoAction},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.IConfigurationInfoAdditionalConfigurations]))]
+    [System.Collections.Hashtable]
+    # A dictionary of additional configurations to be added.
+    # Service will auto generate a set of basic configurations and this property is to full fill more customized configurations
+    ${ConfigurationInfoAdditionalConfiguration},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.IConfigurationInfoCustomizedKeys]))]
+    [System.Collections.Hashtable]
+    # Optional.
+    # A dictionary of default key name and customized key name mapping.
+    # If not specified, default key name will be used for generate configurations
+    ${ConfigurationInfoCustomizedKey},
+
+    [Parameter()]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.AllowType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.AllowType]
+    # Allow Azure services to access the target service if true.
+    ${FirewallRuleAzureService},
+
+    [Parameter()]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.AllowType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.AllowType]
+    # Allow caller client IP to access the target service if true.
+    # the property is used when connecting local application to target service.
+    ${FirewallRuleCallerClientIP},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Body')]
+    [System.String[]]
+    # This value specifies the set of IP addresses or IP address ranges in CIDR form to be included as the allowed list of client IPs for a given database account.
+    ${FirewallRuleIPRange},
+
+    [Parameter()]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.ActionType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.ActionType]
+    # Optional.
+    # Indicates public network solution.
+    # If enable, enable public network access of target service with best try.
+    # Default is enable.
+    # If optOut, opt out public network access configuration.
+    ${PublicNetworkSolutionAction},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Body')]
@@ -987,7 +1919,13 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20220501.ITargetServiceBase]
+    [System.String]
+    # The key vault secret name to store secret, only valid when storing one secret
+    ${SecretStoreKeyVaultSecretName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.ITargetServiceBase]
     # The target service properties
     # To construct, see NOTES section for TARGETSERVICE properties and create a hash table.
     ${TargetService},

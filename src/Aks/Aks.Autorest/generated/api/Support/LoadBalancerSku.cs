@@ -6,12 +6,21 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Support
 {
 
-    /// <summary>The load balancer sku for the managed cluster.</summary>
+    /// <summary>
+    /// The default is 'standard'. See [Azure Load Balancer SKUs](https://docs.microsoft.com/azure/load-balancer/skus) for more
+    /// information about the differences between load balancer SKUs.
+    /// </summary>
     public partial struct LoadBalancerSku :
         System.IEquatable<LoadBalancerSku>
     {
+        /// <summary>Use a basic Load Balancer with limited functionality.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.LoadBalancerSku Basic = @"basic";
 
+        /// <summary>
+        /// Use a a standard Load Balancer. This is the recommended Load Balancer SKU. For more information about on working with
+        /// the load balancer in the managed cluster, see the [standard Load Balancer](https://docs.microsoft.com/azure/aks/load-balancer-standard)
+        /// article.
+        /// </summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.LoadBalancerSku Standard = @"standard";
 
         /// <summary>the value for an instance of the <see cref="LoadBalancerSku" /> Enum.</summary>

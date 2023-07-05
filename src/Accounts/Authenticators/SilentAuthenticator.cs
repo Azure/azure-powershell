@@ -58,8 +58,11 @@ namespace Microsoft.Azure.PowerShell.Authenticators
 
         private static SharedTokenCacheCredentialOptions GetTokenCredentialOptions(SilentParameters silentParameters, string tenantId, string authority, PowerShellTokenCacheProvider tokenCacheProvider)
         {
-            SharedTokenCacheCredentialOptions options =
-                new SharedTokenCacheCredentialBrokerOptions(tokenCacheProvider.GetTokenCachePersistenceOptions());
+            bool isWamEnabled = AzureSession.Instance.TryGetComponent<IConfigManager>(nameof(IConfigManager), out var config)
+                && config.GetConfigValue<bool>(ConfigKeys.EnableLoginByWam);
+            SharedTokenCacheCredentialOptions options = isWamEnabled
+                ? new SharedTokenCacheCredentialBrokerOptions(tokenCacheProvider.GetTokenCachePersistenceOptions())
+                : new SharedTokenCacheCredentialOptions(tokenCacheProvider.GetTokenCachePersistenceOptions());
             options.EnableGuestTenantAuthentication = true;
             options.ClientId = Constants.PowerShellClientId;
             options.Username = silentParameters.UserId;

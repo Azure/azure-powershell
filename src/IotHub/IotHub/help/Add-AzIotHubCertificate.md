@@ -33,7 +33,7 @@ Add-AzIotHubCertificate [-ResourceId] <String> [-Path] <String> [-Etag <String>]
 
 ## DESCRIPTION
 Uploads a new certificate or to replace the existing certificate with the same name.
-For a detailed explanation of CA certificates in Azure IoT Hub, see https://docs.microsoft.com/azure/iot-hub/iot-hub-x509ca-overview
+For a detailed explanation of CA certificates in Azure IoT Hub, see https://learn.microsoft.com/azure/iot-hub/iot-hub-x509ca-overview
 
 ## EXAMPLES
 

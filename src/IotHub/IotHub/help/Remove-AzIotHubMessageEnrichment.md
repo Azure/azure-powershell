@@ -31,7 +31,7 @@ Remove-AzIotHubMessageEnrichment [-ResourceId] <String> [-Key <String>] [-PassTh
 ```
 
 ## DESCRIPTION
-For a detailed explanation of message enrichments in Azure IoT Hub, see https://docs.microsoft.com/azure/iot-hub/iot-hub-message-enrichments-overview
+For a detailed explanation of message enrichments in Azure IoT Hub, see https://learn.microsoft.com/azure/iot-hub/iot-hub-message-enrichments-overview
 
 ## EXAMPLES
 

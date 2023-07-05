@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
 
         [Parameter(
             Mandatory = true,
-            HelpMessage = "Maximum storage quota allowed for a file system in bytes. This is a soft quota used for alerting only. Minimum size is 500 GiB, 500 GiB for large volumes. Upper limit is 100TiB. Specified in bytes.")]
+            HelpMessage = "Maximum storage quota allowed for a file system in bytes. This is a soft quota used for alerting only. Minimum size is 100 GiB, 500 GiB for large volumes. Upper limit is 100TiB. Specified in bytes.")]
         [ValidateNotNullOrEmpty]
         public long UsageThreshold { get; set; }
 
@@ -145,7 +145,6 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
             Mandatory = false,
             HelpMessage = "A hashtable array which represents the snapshot object")]
         [ValidateNotNullOrEmpty]
-        [CmdletParameterBreakingChange("Snapshot", ChangeDescription = "Snapshot invalid and preserved for compatibility. Parameter SnapshotPolicyId should be used instead")]
         public PSNetAppFilesVolumeSnapshot Snapshot { get; set; }
 
         [Parameter(
@@ -222,7 +221,6 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
         [Parameter(
             Mandatory = false,
             HelpMessage = "UNIX permissions for NFS volume accepted in octal 4 digit format. First digit selects the set user ID(4), set group ID (2) and sticky (1) attributes. Second digit selects permission for the owner of the file: read (4), write (2) and execute (1). Third selects permissions for other users in the same group. the fourth for other users not in the group. 0755 - gives read/write/execute permissions to owner and read/execute to group and other users.")]
-        [CmdletParameterBreakingChange("UnixPermissions", ChangeDescription = "Parameter Alias UnixPermissions will be removed, please use UnixPermission.")]
         [Alias("UnixPermissions")]
         public string UnixPermission { get; set; }
 
@@ -317,6 +315,11 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = "Specifies whether volume is a Large Volume or Regular Volume. Defaults to false")]
+        public SwitchParameter IsLargeVolume { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "A hashtable which represents resource tags")]
         [ValidateNotNullOrEmpty]
         [Alias("Tags")]
@@ -402,7 +405,8 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
                 KeyVaultPrivateEndpointResourceId = KeyVaultPrivateEndpointResourceId,
                 DeleteBaseSnapshot = DeleteBaseSnapshot,
                 SmbAccessBasedEnumeration = SmbAccessBasedEnumeration,
-                SmbNonBrowsable = SmbNonBrowsable
+                SmbNonBrowsable = SmbNonBrowsable,
+                IsLargeVolume = IsLargeVolume                
             };
             if (this.Zone != null)
             {

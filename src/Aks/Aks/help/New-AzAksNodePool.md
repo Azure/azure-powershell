@@ -20,10 +20,10 @@ New-AzAksNodePool -ResourceGroupName <String> -ClusterName <String> -Name <Strin
  [-ScaleSetEvictionPolicy <String>] [-VmSetType <String>] [-AvailabilityZone <String[]>] [-Force]
  [-EnableEncryptionAtHost] [-EnableUltraSSD] [-LinuxOSConfig <LinuxOSConfig>] [-KubeletConfig <KubeletConfig>]
  [-MaxSurge <String>] [-PPG <String>] [-SpotMaxPrice <Double>] [-EnableFIPS] [-GpuInstanceProfile <String>]
- [-HostGroupID <String>] [-KubernetesVersion <String>] [-MinCount <Int32>] [-MaxCount <Int32>]
- [-EnableAutoScaling] [-Mode <String>] [-NodeLabel <Hashtable>] [-Tag <Hashtable>] [-NodeTaint <String[]>]
- [-AksCustomHeader <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [-SubscriptionId <String>] [<CommonParameters>]
+ [-HostGroupID <String>] [-PodSubnetID <String>] [-KubernetesVersion <String>] [-MinCount <Int32>]
+ [-MaxCount <Int32>] [-EnableAutoScaling] [-Mode <String>] [-NodeLabel <Hashtable>] [-Tag <Hashtable>]
+ [-NodeTaint <String[]>] [-AksCustomHeader <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [-SubscriptionId <String>] [<CommonParameters>]
 ```
 
 ### ParentObjectParameterSet
@@ -34,10 +34,10 @@ New-AzAksNodePool -Name <String> -ClusterObject <PSKubernetesCluster> [-Count <I
  [-ScaleSetEvictionPolicy <String>] [-VmSetType <String>] [-AvailabilityZone <String[]>] [-Force]
  [-EnableEncryptionAtHost] [-EnableUltraSSD] [-LinuxOSConfig <LinuxOSConfig>] [-KubeletConfig <KubeletConfig>]
  [-MaxSurge <String>] [-PPG <String>] [-SpotMaxPrice <Double>] [-EnableFIPS] [-GpuInstanceProfile <String>]
- [-HostGroupID <String>] [-KubernetesVersion <String>] [-MinCount <Int32>] [-MaxCount <Int32>]
- [-EnableAutoScaling] [-Mode <String>] [-NodeLabel <Hashtable>] [-Tag <Hashtable>] [-NodeTaint <String[]>]
- [-AksCustomHeader <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [-SubscriptionId <String>] [<CommonParameters>]
+ [-HostGroupID <String>] [-PodSubnetID <String>] [-KubernetesVersion <String>] [-MinCount <Int32>]
+ [-MaxCount <Int32>] [-EnableAutoScaling] [-Mode <String>] [-NodeLabel <Hashtable>] [-Tag <Hashtable>]
+ [-NodeTaint <String[]>] [-AksCustomHeader <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [-SubscriptionId <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -493,7 +493,7 @@ Accept wildcard characters: False
 ```
 
 ### -OsSKU
-OsSKU to be used to specify os SKU. Choose from Ubuntu, CBLMariner, Windows2019, Windows2022. The default is Ubuntu if OSType is Linux. The default is Windows2019 when Kubernetes <= 1.24 or Windows2022 when Kubernetes >= 1.25 if OSType is Windows.
+OsSKU to be used to specify OS SKU. The default is Ubuntu if OSType is Linux. The default is Windows2019 when Kubernetes <= 1.24 or Windows2022 when Kubernetes >= 1.25 if OSType is Windows.
 
 ```yaml
 Type: System.String
@@ -511,6 +511,21 @@ Accept wildcard characters: False
 OsType to be used to specify os type.
 Choose from Linux and Windows.
 Default to Linux.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PodSubnetID
+The ID of the subnet which pods will join when launched.
 
 ```yaml
 Type: System.String

@@ -16,7 +16,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Cmdlets
     /// [OpenAPI] List=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Databricks/workspaces/{workspaceName}/outboundNetworkDependenciesEndpoints"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzDatabricksOutboundNetworkDependenciesEndpoint_List")]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20220401Preview.IOutboundEnvironmentEndpoint))]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IOutboundEnvironmentEndpoint))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.Description(@"Gets the list of endpoints that VNET Injected Workspace calls Azure Databricks Control Plane. You must configure outbound access with these endpoints. For more information, see https://docs.microsoft.com/en-us/azure/databricks/administration-guide/cloud-configurations/azure/udr")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.Generated]
     public partial class GetAzDatabricksOutboundNetworkDependenciesEndpoint_List : global::System.Management.Automation.PSCmdlet,
@@ -45,9 +45,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Cmdlets
         public Microsoft.Azure.PowerShell.Cmdlets.Databricks.Databricks Client => Microsoft.Azure.PowerShell.Cmdlets.Databricks.Module.Instance.ClientAPI;
 
         /// <summary>
-        /// The credentials, account, tenant, and subscription used for communication with Azure
+        /// The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet
+        /// against a different subscription
         /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The credentials, account, tenant, and subscription used for communication with Azure.")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.")]
         [global::System.Management.Automation.ValidateNotNull]
         [global::System.Management.Automation.Alias("AzureRMContext", "AzureCredential")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.ParameterCategory.Azure)]
@@ -160,12 +161,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Cmdlets
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20220401Preview.IOutboundEnvironmentEndpoint">Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20220401Preview.IOutboundEnvironmentEndpoint[]</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IOutboundEnvironmentEndpoint">Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IOutboundEnvironmentEndpoint[]</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20220401Preview.IOutboundEnvironmentEndpoint[]> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IOutboundEnvironmentEndpoint[]> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -381,12 +382,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20220401Preview.IOutboundEnvironmentEndpoint">Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20220401Preview.IOutboundEnvironmentEndpoint[]</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IOutboundEnvironmentEndpoint">Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IOutboundEnvironmentEndpoint[]</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20220401Preview.IOutboundEnvironmentEndpoint[]> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IOutboundEnvironmentEndpoint[]> response)
         {
             using( NoSynchronizationContext )
             {

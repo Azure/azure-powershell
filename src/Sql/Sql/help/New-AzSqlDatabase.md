@@ -21,8 +21,11 @@ New-AzSqlDatabase -DatabaseName <String> [-CollationName <String>] [-CatalogColl
  [-ZoneRedundant] [-AsJob] [-Force] [-LicenseType <String>] [-AutoPauseDelayInMinutes <Int32>]
  [-MinimumCapacity <Double>] [-HighAvailabilityReplicaCount <Int32>] [-BackupStorageRedundancy <String>]
  [-SecondaryType <String>] [-MaintenanceConfigurationId <String>] [-EnableLedger]
- [-PreferredEnclaveType <String>] [-ServerName] <String> [-ResourceGroupName] <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-PreferredEnclaveType <String>] [-AssignIdentity] [-EncryptionProtector <String>]
+ [-UserAssignedIdentityId <System.Collections.Generic.List`1[System.String]>]
+ [-KeyList <System.Collections.Generic.List`1[System.String]>] [-FederatedClientId <Guid>]
+ [-ServerName] <String> [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### VcoreBasedDatabase
@@ -33,8 +36,11 @@ New-AzSqlDatabase -DatabaseName <String> [-CollationName <String>] [-CatalogColl
  [-LicenseType <String>] [-ComputeModel <String>] [-AutoPauseDelayInMinutes <Int32>]
  [-MinimumCapacity <Double>] [-HighAvailabilityReplicaCount <Int32>] [-BackupStorageRedundancy <String>]
  [-SecondaryType <String>] [-MaintenanceConfigurationId <String>] [-EnableLedger]
- [-PreferredEnclaveType <String>] [-ServerName] <String> [-ResourceGroupName] <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-PreferredEnclaveType <String>] [-AssignIdentity] [-EncryptionProtector <String>]
+ [-UserAssignedIdentityId <System.Collections.Generic.List`1[System.String]>]
+ [-KeyList <System.Collections.Generic.List`1[System.String]>] [-FederatedClientId <Guid>]
+ [-ServerName] <String> [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -167,10 +173,55 @@ MinimumCapacity          : 0.5
 
 This command creates a Serverless database named Database04 on server Server01.
 
+### Example 5: Create a database configured with preferred enclave type as VBS
+
+```powershell
+New-AzSqlDatabase -ResourceGroupName "ResourceGroup01" -DatabaseName "Database01" -ServerName "Server01" -Edition "GeneralPurpose" -Vcore 2 -ComputeGeneration "Gen5" -PreferredEnclaveType "VBS"
+```
+
+```output
+ResourceGroupName             : ResourceGroup01
+ServerName                    : Server01
+DatabaseName                  : Database01
+Location                      : Central US
+DatabaseId                    : 34d9d561-42a7-484e-bf05-62ddef8000ab
+Edition                       : GeneralPurpose
+CollationName                 : SQL_Latin1_General_CP1_CI_AS
+CatalogCollation              :
+MaxSizeBytes                  : 268435456000
+Status                        : Online
+CreationDate                  : 8/26/2015 10:04:29 PM
+CurrentServiceObjectiveName   : GP_Gen5_2
+RequestedServiceObjectiveName :
+ElasticPoolName               :
+EarliestRestoreDate           :
+LicenseType                   : LicenseIncluded
+Tags                          :
+EnableLedger                  : False
+PreferredEnclaveType          : VBS
+```
+
+This command creates a database configured with VBS enclave
+
 ## PARAMETERS
 
 ### -AsJob
 Run cmdlet in the background
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AssignIdentity
+Generate and assign an Azure Active Directory Identity for this database for use with key management services like Azure KeyVault.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -371,6 +422,36 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EncryptionProtector
+The encryption protector key for SQL Database.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FederatedClientId
+The federated client id for the SQL Database. It is used for cross tenant CMK scenario.
+
+```yaml
+Type: System.Nullable`1[System.Guid]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Force
 Skip confirmation message for performing the action
 
@@ -393,6 +474,21 @@ The number of readonly secondary replicas associated with the database to which 
 Type: System.Int32
 Parameter Sets: (All)
 Aliases: ReadReplicaCount
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -KeyList
+The list of AKV keys for the SQL Database.
+
+```yaml
+Type: System.Collections.Generic.List`1[System.String]
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -589,6 +685,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -UserAssignedIdentityId
+The list of user assigned identity for the SQL Database.
+
+```yaml
+Type: System.Collections.Generic.List`1[System.String]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -VCore
 The Vcore number for the Azure Sql database
 
@@ -679,5 +790,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 [Suspend-AzSqlDatabase](./Suspend-AzSqlDatabase.md)
 
-[SQL Database Documentation](https://docs.microsoft.com/azure/sql-database/)
+[SQL Database Documentation](https://learn.microsoft.com/azure/sql-database/)
 

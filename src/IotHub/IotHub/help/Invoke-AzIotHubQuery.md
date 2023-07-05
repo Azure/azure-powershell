@@ -32,7 +32,7 @@ Invoke-AzIotHubQuery [-ResourceId] <String> [-Query] <String> [-Top <Int32>]
 
 ## DESCRIPTION
 Query an IoT Hub using a powerful SQL-like language to retrieve information regarding device and module twins, jobs and message routing.
-See https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-query-language for more information.
+See https://learn.microsoft.com/azure/iot-hub/iot-hub-devguide-query-language for more information.
 
 ## EXAMPLES
 

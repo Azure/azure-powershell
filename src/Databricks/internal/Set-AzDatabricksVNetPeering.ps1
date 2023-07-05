@@ -25,12 +25,12 @@ Creates vNet Peering for workspace.
 {{ Add code here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20220401Preview.IVirtualNetworkPeering
+Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IVirtualNetworkPeering
 .Link
 https://learn.microsoft.com/powershell/module/az.databricks/set-azdatabricksvnetpeering
 #>
 function Set-AzDatabricksVNetPeering {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20220401Preview.IVirtualNetworkPeering])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IVirtualNetworkPeering])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -82,20 +82,20 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
     [System.String[]]
     # A list of address blocks reserved for this virtual network in CIDR notation.
-    ${DatabrickAddressSpaceAddressPrefix},
+    ${DatabricksAddressSpacePrefix},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
     [System.String]
     # The Id of the databricks virtual network.
-    ${DatabrickVirtualNetworkId},
+    ${DatabricksVirtualNetworkId},
 
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
     [System.String[]]
     # A list of address blocks reserved for this virtual network in CIDR notation.
-    ${RemoteAddressSpaceAddressPrefix},
+    ${RemoteAddressSpacePrefix},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
@@ -117,7 +117,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter()]

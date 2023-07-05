@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.StorageMover
-online version: https://learn.microsoft.com/powershell/module/az.storagemover/remove-azstoragemoveragent
+online version: https://learn.microsoft.com/powershell/module/az.storagemover/unregister-azstoragemoveragent
 schema: 2.0.0
 ---
 

@@ -47,6 +47,7 @@ The following prerequisites should be completed before contributing to the Azure
 - Install [Visual Studio 2019 or above](https://www.visualstudio.com/downloads/)
 - Install the latest version of [Git](https://git-scm.com/downloads)
 - Install the [`platyPS` module](help-generation.md#Installing-platyPS)
+- Install [PSScriptAnalyzer](https://github.com/PowerShell/PSScriptAnalyzer#installation)
 - Install [**.NET Core 3.1, the Latest .NET, and .NET Framework Dev Pack 4.7.2**](https://dotnet.microsoft.com/en-us/download/dotnet) or greater
 - Install [PowerShell 7](https://github.com/PowerShell/PowerShell/releases/latest)
 - Set the PowerShell [execution policy](https://technet.microsoft.com/en-us/library/ee176961.aspx) to **Unrestricted** for the following versions of PowerShell:
@@ -331,7 +332,7 @@ CI in DevOps will happens under `Debug` folder. So you need to make sure that th
 
 > **Important!**
 > 1. Be sure that you have set the `ExecutionPolicy` to `Unrestricted` on both 32-bit and 64-bit PowerShell environments, as mentioned in the [prerequisites](#prerequisites) at the top
-> 2. When recording tests, if you are using a Prod environment, use ServicePrincipalName (SPN) and ServicePrincipalSecret. For more information on creating an SPN, click [here](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-create-service-principal-portal).
+> 2. When recording tests, if you are using a Prod environment, use ServicePrincipalName (SPN) and ServicePrincipalSecret. For more information on creating an SPN, click [here](https://learn.microsoft.com/en-us/azure/azure-resource-manager/resource-group-create-service-principal-portal).
 
 ### AD Scenario Tests
 

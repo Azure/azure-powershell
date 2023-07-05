@@ -251,8 +251,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         {
             if(this.DestFile != null)
             {
-                // when only track1 object input, will miss storage context, so need to build storage context for prepare the output object.
-                if (this.DestContext == null)
+                // Build and set storage context for the output object when
+                // 1. input track1 object and storage context is missing 2. the current context doesn't match the context of the input object 
+                if (ShouldSetContext(this.DestContext, this.DestFile.ServiceClient))
                 {
                     this.DestContext = GetStorageContextFromTrack1FileServiceClient(this.DestFile.ServiceClient, DefaultContext);
                 }
@@ -338,8 +339,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                 sourceFile = this.SrcFile;
                 filePath = this.SrcFile.GetFullPath();
 
-                // when only track1 object input, will miss storage context, so need to build storage context for prepare the output object.
-                if (this.Context == null)
+                // Build and set storage context for the output object when
+                // 1. input track1 object and storage context is missing 2. the current context doesn't match the context of the input object 
+                if (ShouldSetContext(this.Context, this.SrcFile.ServiceClient))
                 {
                     this.Context = GetStorageContextFromTrack1FileServiceClient(this.SrcFile.ServiceClient, DefaultContext);
                 }

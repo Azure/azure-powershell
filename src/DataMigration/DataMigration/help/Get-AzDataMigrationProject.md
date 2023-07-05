@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzDataMigrationProject
 
 ## SYNOPSIS
-Retrieves the properties of an Azure Database Migration project.
+Retrieves the properties of an Azure Database Migration Service (classic) project.
 
 ## SYNTAX
 

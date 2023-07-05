@@ -25,7 +25,7 @@ Invokes GEO DR failover and reconfigure the alias to point to the secondary name
 {{ Add code here }}
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IFailoverProperties
+Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.IFailoverProperties
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentity
 .Outputs
@@ -99,7 +99,7 @@ param(
     [Parameter(ParameterSetName='Fail', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='FailViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IFailoverProperties]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.IFailoverProperties]
     # Safe failover is to indicate the service should wait for pending replication to finish before switching to the secondary.
     # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
@@ -116,7 +116,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]

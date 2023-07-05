@@ -525,10 +525,10 @@ function Test-AzureFirewallCRUDWithZones {
         $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
 
         # Create public ip
-        $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Static -Sku Standard
+        $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Static -Sku Standard -Zone 1, 2, 3
 
         # Create AzureFirewall (with no rules, ThreatIntel is in Alert mode by default)
-        $azureFirewall = New-AzFirewall –Name $azureFirewallName -ResourceGroupName $rgname -Location $location -VirtualNetworkName $vnetName -PublicIpName $publicIpName -Zone 1, 2, 3
+        $azureFirewall = New-AzFirewall –Name $azureFirewallName -ResourceGroupName $rgname -Location $location -VirtualNetwork $vnet -PublicIpAddress $publicip -Zone 1, 2, 3
 
         # Get AzureFirewall
         $getAzureFirewall = Get-AzFirewall -name $azureFirewallName -ResourceGroupName $rgname
@@ -1236,8 +1236,8 @@ function Test-AzureFirewallVirtualHubCRUDWithZones {
     $rgname = Get-ResourceGroupName
     $azureFirewallName = Get-ResourceName
     $resourceTypeParent = "Microsoft.Network/AzureFirewalls"
-    $policyLocation = Get-ProviderLocation $resourceTypeParent "eastus2euap"
-    $location = Get-ProviderLocation $resourceTypeParent "eastus2euap"
+    $policyLocation = Get-ProviderLocation $resourceTypeParent "eastus"
+    $location = Get-ProviderLocation $resourceTypeParent "eastus"
     $azureFirewallPolicyName = Get-ResourceName
     $skuName = "AZFW_Hub"
     $skuTier = "Standard"
@@ -2049,6 +2049,31 @@ function Test-AzureFirewallCRUDRouteServerId {
         $azfw = Get-AzFirewall -Name $azureFirewallName -ResourceGroupName $rgname
         
         Assert-AreEqual "" $azfw.RouteServerId
+    }
+    finally {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Tests AzureFirewall RouteServerId on Hub Firewall
+#>
+function Test-AzureFirewallCRUDRouteServerIdHub {
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $azureFirewallName = Get-ResourceName
+    $resourceTypeParent = "Microsoft.Network/AzureFirewalls"
+    $location = Get-ProviderLocation $resourceTypeParent
+    $skuName = "AZFW_Hub"
+    $skuTier = "Standard"
+    $routeServerId="/subscriptions/aeb5b02a-0f18-45a4-86d6-81808115cacf/resourceGroups/testRG/providers/Microsoft.Network/virtualHubs/TestRS"
+
+    try {
+
+         Assert-ThrowsContains { New-AzFirewall -Name $azureFirewallName -ResourceGroupName $rgname -Location $location -SkuName $skuName -SkuTier $skuTier -RouteServerId $routeServerId } "The Route Server is not supported on AZFW_Hub SKU Firewalls"
+
     }
     finally {
         # Cleanup

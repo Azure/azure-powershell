@@ -16,10 +16,10 @@ namespace Microsoft.Azure.Commands.RedisCache
 {
     using Microsoft.Azure.Commands.RedisCache.Models;
     using Microsoft.Azure.Commands.RedisCache.Properties;
-    using Microsoft.Azure.Management.Redis.Models;
     using ResourceManager.Common.ArgumentCompleters;
     using System.Management.Automation;
     using Rest.Azure;
+    using Microsoft.Azure.Management.RedisCache.Models;
 
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RedisCacheFirewallRule", DefaultParameterSetName = NormalParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSRedisFirewallRule))]
     public class NewAzureRedisCacheFirewallRule : RedisCacheCmdletBase

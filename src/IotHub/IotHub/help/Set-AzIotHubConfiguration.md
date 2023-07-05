@@ -36,7 +36,7 @@ Set-AzIotHubConfiguration [-ResourceId] <String> [-Name] <String> [-Priority <In
 ## DESCRIPTION
 Update specified properties of an IoT automatic device management configuration.
 Note: Configuration content is immutable. Configuration properties that can be updated are 'labels', 'metrics', 'priority' and 'targetCondition'.
-See https://docs.microsoft.com/azure/iot-hub/iot-hub-automatic-device-management for more information.
+See https://learn.microsoft.com/azure/iot-hub/iot-hub-automatic-device-management for more information.
 
 ## EXAMPLES
 

@@ -28,12 +28,12 @@ New-AzFederatedIdentityCredentials -ResourceGroupName azure-rg-test -IdentityNam
     -Audience @("api://AzureADTokenExchange-Modified")
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.Api20220131Preview.IFederatedIdentityCredential
+Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.Api20230131.IFederatedIdentityCredential
 .Link
 https://learn.microsoft.com/powershell/module/az.managedserviceidentity/new-azfederatedidentitycredentials
 #>
 function New-AzFederatedIdentityCredentials {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.Api20220131Preview.IFederatedIdentityCredential])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.Api20230131.IFederatedIdentityCredential])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -51,7 +51,8 @@ param(
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Category('Path')]
     [System.String]
-    # The name of the Resource Group to which the identity belongs.
+    # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter()]

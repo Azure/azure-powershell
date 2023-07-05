@@ -39,11 +39,11 @@ The **Remove-AzSearchService** cmdlet removes an Azure Cognitive Search service 
 ```powershell
 Remove-AzSearchService -ResourceGroupName "TestAzureSearchPsGroup" -Name "pstestazuresearch01"
 ```
+
 ```output
 Confirm
 Are you sure you want to remove Search Service 'pstestazuresearch01'?
 [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): y
-
 ```
 
 The example removes an Azure Cognitive Search service.

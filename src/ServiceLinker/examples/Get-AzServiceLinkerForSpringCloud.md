@@ -16,12 +16,12 @@ List all linkers in a spring cloud app's deployment
 
 ### Example 2: Get linker by name
 ```powershell
-Get-AzServiceLinkerForSpringCloud -ServiceName servicelinker-springcloud -AppName appconfiguration -DeploymentName "default" -ResourceGroupName servicelinker-test-group  -Name postgresql_connection | fl
+Get-AzServiceLinkerForSpringCloud -ServiceName servicelinker-springcloud -AppName appconfiguration -DeploymentName "default" -ResourceGroupName servicelinker-test-group  -Name postgresql_connection | Format-List
 ```
 
 ```output
 AuthInfo                     : Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Model
-                               s.Api20220501.SecretAuthInfo
+                               s.Api20221101Preview.SecretAuthInfo
 ClientType                   : dotnet
 Id                           : /subscriptions/00000000-0000-0000-0000-000000000000/re 
                                sourceGroups/servicelinker-test-group/providers/ 
@@ -38,7 +38,7 @@ SystemDataLastModifiedAt     :
 SystemDataLastModifiedBy     :
 SystemDataLastModifiedByType :
 TargetService                : Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Model 
-                               s.Api20220501.AzureResource
+                               s.Api20221101Preview.AzureResource
 Type                         : microsoft.servicelinker/linkers
 VNetSolutionType             : serviceEndpoint
 
@@ -52,12 +52,12 @@ $identity = @{
 ResourceUri = '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/servicelinker-test-linux-group/providers/Microsoft.AppPlatform/Spring/servicelinker-springcloud/apps/appconfiguration/deployments/default'
 LinkerName = 'postgresql_connection'}
 
-$identity | Get-AzServiceLinkerForSpringCloud  |fl
+$identity | Get-AzServiceLinkerForSpringCloud  | Format-List
 ```
 
 ```output
 AuthInfo                     : Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Model
-                               s.Api20220501.SecretAuthInfo
+                               s.Api20221101Preview.SecretAuthInfo
 ClientType                   : dotnet
 Id                           : /subscriptions/00000000-0000-0000-0000-000000000000/re 
                                sourceGroups/servicelinker-test-group/providers/ 
@@ -74,7 +74,7 @@ SystemDataLastModifiedAt     :
 SystemDataLastModifiedBy     :
 SystemDataLastModifiedByType :
 TargetService                : Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Model 
-                               s.Api20220501.AzureResource
+                               s.Api20221101Preview.AzureResource
 Type                         : microsoft.servicelinker/linkers
 VNetSolutionType             : serviceEndpoint
 

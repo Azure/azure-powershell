@@ -120,6 +120,9 @@
   <data name="ApproveVolumeReplicationMessage" xml:space="preserve">
     <value>Approving volume replication on {0}</value>
   </data>
+  <data name="BreakFileLockOnVolumeMessage" xml:space="preserve">
+    <value>Breaking File Locks on volume {0}</value>
+  </data>
   <data name="CreateResourceMessage" xml:space="preserve">
     <value>Create the new {0}</value>
   </data>

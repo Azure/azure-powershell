@@ -25,7 +25,7 @@ New-AzAutoscaleScaleRuleMetricDimensionObject -DimensionName VMName -Operator 'E
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.ScaleRuleMetricDimension
 .Link
-https://learn.microsoft.com/powershell/module/az.Autoscale/new-AzAutoscaleScaleRuleMetricDimensionObject
+https://learn.microsoft.com/powershell/module/Az.Monitor/new-AzAutoscaleScaleRuleMetricDimensionObject
 #>
 function New-AzAutoscaleScaleRuleMetricDimensionObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.ScaleRuleMetricDimension])]
@@ -64,7 +64,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
         }         
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {

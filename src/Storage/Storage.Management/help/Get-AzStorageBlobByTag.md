@@ -224,7 +224,7 @@ Accept wildcard characters: False
 
 ### -TagFilterSqlExpression
 Filters the result set to only include blobs whose tags match the specified expression.
-See details in https://docs.microsoft.com/en-us/rest/api/storageservices/find-blobs-by-tags#remarks.
+See details in https://learn.microsoft.com/en-us/rest/api/storageservices/find-blobs-by-tags#remarks.
 
 ```yaml
 Type: System.String

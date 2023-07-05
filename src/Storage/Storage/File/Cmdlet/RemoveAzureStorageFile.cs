@@ -95,8 +95,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                 case Constants.FileParameterSetName:
                     fileToBeRemoved = AzureStorageFile.GetTrack2FileClient(this.File, ClientOptions);
 
-                    // when only track1 object input, will miss storage context, so need to build storage context for prepare the output object.
-                    if (this.Context == null)
+                    // Build and set storage context for the output object when
+                    // 1. input track1 object and storage context is missing 2. the current context doesn't match the context of the input object 
+                    if (ShouldSetContext(this.Context, this.File.ServiceClient))
                     {
                         this.Context = GetStorageContextFromTrack1FileServiceClient(this.File.ServiceClient, DefaultContext);
                     }
@@ -111,8 +112,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                 case Constants.ShareParameterSetName:
                     fileToBeRemoved = AzureStorageFileDirectory.GetTrack2FileDirClient(this.Share.GetRootDirectoryReference(), ClientOptions).GetFileClient(this.Path);
 
-                    // when only track1 object input, will miss storage context, so need to build storage context for prepare the output object.
-                    if (this.Context == null)
+                    // Build and set storage context for the output object when
+                    // 1. input track1 object and storage context is missing 2. the current context doesn't match the context of the input object 
+                    if (ShouldSetContext(this.Context, this.Share.ServiceClient))
                     {
                         this.Context = GetStorageContextFromTrack1FileServiceClient(this.Share.ServiceClient, DefaultContext);
                     }
@@ -121,8 +123,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                 case Constants.DirectoryParameterSetName:
                     fileToBeRemoved = AzureStorageFileDirectory.GetTrack2FileDirClient(this.Directory, ClientOptions).GetFileClient(this.Path);
 
-                    // when only track1 object input, will miss storage context, so need to build storage context for prepare the output object.
-                    if (this.Context == null)
+                    // Build and set storage context for the output object when
+                    // 1. input track1 object and storage context is missing 2. the current context doesn't match the context of the input object 
+                    if (ShouldSetContext(this.Context, this.Directory.ServiceClient))
                     {
                         this.Context = GetStorageContextFromTrack1FileServiceClient(this.Directory.ServiceClient, DefaultContext);
                     }

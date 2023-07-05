@@ -38,6 +38,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support
             {
                 yield return new global::System.Management.Automation.CompletionResult("'ConfluentSchemaRegistry'", "ConfluentSchemaRegistry", global::System.Management.Automation.CompletionResultType.ParameterValue, "ConfluentSchemaRegistry");
             }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "SelfHostedServer".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'SelfHostedServer'", "SelfHostedServer", global::System.Management.Automation.CompletionResultType.ParameterValue, "SelfHostedServer");
+            }
         }
     }
 }

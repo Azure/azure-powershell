@@ -23,9 +23,9 @@ Creates or updates a top-level Storage Mover resource.
 New-AzStorageMover -ResourceGroupName myResourceGroup -Name myStorageMover -Location eastus -Description "Description"
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20220701Preview.IStorageMover
+Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20230301.IStorageMover
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20220701Preview.IStorageMover
+Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20230301.IStorageMover
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -46,7 +46,7 @@ STORAGEMOVER <IStorageMover>: The Storage Mover resource, which is a container f
 https://learn.microsoft.com/powershell/module/az.storagemover/new-azstoragemover
 #>
 function New-AzStorageMover {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20220701Preview.IStorageMover])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20230301.IStorageMover])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -72,7 +72,7 @@ param(
 
     [Parameter(ParameterSetName='Create', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20220701Preview.IStorageMover]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20230301.IStorageMover]
     # The Storage Mover resource, which is a container for a group of Agents, Projects, and Endpoints.
     # To construct, see NOTES section for STORAGEMOVER properties and create a hash table.
     ${StorageMover},
@@ -101,7 +101,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -153,7 +154,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
         }         
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {

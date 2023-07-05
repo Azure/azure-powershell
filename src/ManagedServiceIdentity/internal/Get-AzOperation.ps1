@@ -91,6 +91,7 @@ begin {
 
         $mapping = @{
             List = 'Az.ManagedServiceIdentity.private\Get-AzOperation_List';
+            List1 = 'Az.ManagedServiceIdentity.private\Get-AzOperation_List1';
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)

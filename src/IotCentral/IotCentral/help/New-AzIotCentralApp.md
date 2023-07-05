@@ -19,7 +19,7 @@ New-AzIotCentralApp [-Subdomain] <String> [-DisplayName <String>] [-Template <St
 ```
 
 ## DESCRIPTION
-Creates a new IoT Central Application with the provided properties and metadata. For an introduction to IoT Central, see https://docs.microsoft.com/azure/iot-central/.
+Creates a new IoT Central Application with the provided properties and metadata. For an introduction to IoT Central, see https://learn.microsoft.com/azure/iot-central/.
 
 ## EXAMPLES
 

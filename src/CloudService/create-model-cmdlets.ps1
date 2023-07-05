@@ -23,7 +23,7 @@ function CreateModelCmdlet {
     }
 
     $ModelCsPath = Join-Path (Join-Path $PSScriptRoot 'generated\api') 'Models'
-    $ModuleName = 'Az.CloudService'.Split(".")[1]
+    $ModuleName = 'CloudService'
     $OutputDir = Join-Path $PSScriptRoot 'custom\autogen-model-cmdlets'
     $null = New-Item -ItemType Directory -Force -Path $OutputDir
 
@@ -115,7 +115,9 @@ function CreateModelCmdlet {
                 # check whether completer is needed
                 $completer = '';
                 if($Type.Split('.').Split('.')[-2] -eq 'Support') {
-                    $completer += "`n        [ArgumentCompleter([${Type}])]"
+                    # If Type is an array, need to strip []
+                    $strippedType = $Type.Replace('[]', '')
+                    $completer += "`n        [ArgumentCompleter([${strippedType}])]"
                 }
                 $ParameterDefineScript = "
         [Parameter($ParameterDefineProperty)]${completer}

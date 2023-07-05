@@ -1,17 +1,17 @@
 {
-  "Get-AzCloudServiceInstanceView+[NoContext]+Get cloud service InstanceView+$GET+https://management.azure.com/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/resourceGroups/cscmdlettestn8rmh5qx/providers/Microsoft.Compute/cloudServices/cscmdlettestoe6r0n2k/instanceView?api-version=2021-03-01+1": {
+  "Get-AzCloudServiceInstanceView+[NoContext]+Get cloud service InstanceView+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/cscmdlettestkwpz6jb9/providers/Microsoft.Compute/cloudServices/cscmdlettestyl5shqje/instanceView?api-version=2022-09-04+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/resourceGroups/cscmdlettestn8rmh5qx/providers/Microsoft.Compute/cloudServices/cscmdlettestoe6r0n2k/instanceView?api-version=2021-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/cscmdlettestkwpz6jb9/providers/Microsoft.Compute/cloudServices/cscmdlettestyl5shqje/instanceView?api-version=2022-09-04",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "22" ],
-        "x-ms-client-request-id": [ "0ebaa70c-6aa9-48ce-8bec-c69f1d474f8c" ],
+        "x-ms-unique-id": [ "21" ],
+        "x-ms-client-request-id": [ "8869c002-3960-4695-90c1-b31b8db568f0" ],
         "CommandName": [ "Get-AzCloudServiceInstanceView" ],
         "FullCommandName": [ "Get-AzCloudServiceInstanceView_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "User-Agent": [ "AzurePowershell/v9.0.1", "PSVersion/v7.3.2", "Az.CloudService/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -22,22 +22,22 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-resource": [ "Microsoft.Compute/GetCloudService3Min;983,Microsoft.Compute/GetCloudService30Min;4965,Microsoft.Compute/GetCloudService3Min;392,Microsoft.Compute/GetCloudService30Min;2589" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "aef889a6-aaa6-4817-acfb-76816091f702" ],
-        "x-ms-ratelimit-remaining-resource": [ "Microsoft.Compute/GetCloudService3Min;391,Microsoft.Compute/GetCloudService30Min;2588" ],
+        "x-ms-request-id": [ "13d335ec-66c2-4712-92cd-192f23cbae20" ],
         "Server": [ "Microsoft-HTTPAPI/2.0,Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11937" ],
-        "x-ms-correlation-request-id": [ "54b1c170-d52b-4584-81ec-c523d8df8a5c" ],
-        "x-ms-routing-request-id": [ "BRAZILUS:20210326T010713Z:54b1c170-d52b-4584-81ec-c523d8df8a5c" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11981" ],
+        "x-ms-correlation-request-id": [ "7b74b924-9221-4fcf-aa42-cd193444cd9b" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230220T052612Z:7b74b924-9221-4fcf-aa42-cd193444cd9b" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Fri, 26 Mar 2021 01:07:13 GMT" ]
+        "Date": [ "Mon, 20 Feb 2023 05:26:12 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "1168" ],
+        "Content-Length": [ "1081" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\r\n  \"roleInstance\": {\r\n    \"statusesSummary\": [\r\n      {\r\n        \"code\": \"ProvisioningState/succeeded\",\r\n        \"count\": 4\r\n      },\r\n      {\r\n        \"code\": \"PowerState/started\",\r\n        \"count\": 4\r\n      },\r\n      {\r\n        \"code\": \"RoleState/RoleStateStarted\",\r\n        \"count\": 3\r\n      },\r\n      {\r\n        \"code\": \"RoleState/RoleStateStarting\",\r\n        \"count\": 1\r\n      }\r\n    ]\r\n  },\r\n  \"sdkVersion\": \"2.9.6496.3\",\r\n  \"privateIds\": [\r\n    \"c1893e78-9ae2-4f24-9f46-c403e4ab2d1c\"\r\n  ],\r\n  \"statuses\": [\r\n    {\r\n      \"code\": \"ProvisioningState/succeeded\",\r\n      \"level\": \"Info\",\r\n      \"displayStatus\": \"Provisioning succeeded\",\r\n      \"time\": \"2021-03-26T01:06:35.8554316+00:00\"\r\n    },\r\n    {\r\n      \"code\": \"PowerState/started\",\r\n      \"level\": \"Info\",\r\n      \"displayStatus\": \"Started\",\r\n      \"time\": \"2021-03-26T01:06:35.8554316+00:00\"\r\n    },\r\n    {\r\n      \"code\": \"CurrentUpgradeDomain/-1\",\r\n      \"level\": \"Info\",\r\n      \"displayStatus\": \"Current Upgrade Domain of cloud service is -1.\"\r\n    },\r\n    {\r\n      \"code\": \"MaxUpgradeDomain/1\",\r\n      \"level\": \"Info\",\r\n      \"displayStatus\": \"Max Upgrade Domain of cloud service is 1.\"\r\n    }\r\n  ]\r\n}",
+      "Content": "{\r\n  \"roleInstance\": {\r\n    \"statusesSummary\": [\r\n      {\r\n        \"code\": \"ProvisioningState/succeeded\",\r\n        \"count\": 4\r\n      },\r\n      {\r\n        \"code\": \"PowerState/started\",\r\n        \"count\": 4\r\n      },\r\n      {\r\n        \"code\": \"RoleState/RoleStateStarted\",\r\n        \"count\": 4\r\n      }\r\n    ]\r\n  },\r\n  \"sdkVersion\": \"2.9.6496.3\",\r\n  \"privateIds\": [\r\n    \"48b8e5be-ad84-4d93-958e-1b37bc9fd7d4\"\r\n  ],\r\n  \"statuses\": [\r\n    {\r\n      \"code\": \"ProvisioningState/succeeded\",\r\n      \"level\": \"Info\",\r\n      \"displayStatus\": \"Provisioning succeeded\",\r\n      \"time\": \"2023-02-20T05:25:35.5991392+00:00\"\r\n    },\r\n    {\r\n      \"code\": \"PowerState/started\",\r\n      \"level\": \"Info\",\r\n      \"displayStatus\": \"Started\",\r\n      \"time\": \"2023-02-20T05:25:35.5991392+00:00\"\r\n    },\r\n    {\r\n      \"code\": \"CurrentUpgradeDomain/-1\",\r\n      \"level\": \"Info\",\r\n      \"displayStatus\": \"Current Upgrade Domain of cloud service is -1.\"\r\n    },\r\n    {\r\n      \"code\": \"MaxUpgradeDomain/1\",\r\n      \"level\": \"Info\",\r\n      \"displayStatus\": \"Max Upgrade Domain of cloud service is 1.\"\r\n    }\r\n  ]\r\n}",
       "isContentBase64": false
     }
   }

@@ -52,7 +52,7 @@ Mount the attached data disk to the virtual machine in each instance using the f
     Linux Manual Steps
         - open an ssh connection into the Linux VM (ssh username@[ip] -p [port])
         - sudo to format the drive, add it to /etc/fstab using a persistent device name
-        (see https://docs.microsoft.com/en-us/azure/virtual-machines/linux/troubleshoot-device-names-problems)
+        (see https://learn.microsoft.com/en-us/azure/virtual-machines/linux/troubleshoot-device-names-problems)
         - run 'mount -a' and then test with lsblk to ensure it is mounted
         - logout
 These steps can be automated as follows:

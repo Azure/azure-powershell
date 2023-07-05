@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.MachineLearningServices
-online version: https://learn.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceDatastoreBlobObject
+online version: https://learn.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspacedatastoreblobobject
 schema: 2.0.0
 ---
 

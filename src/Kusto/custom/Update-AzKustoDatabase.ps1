@@ -21,7 +21,7 @@ Updates a database.
 .Example
 $2ds = New-TimeSpan -Days 2
 $4ds = New-TimeSpan -Days 4
-Update-AzKustoDatabase -ResourceGroupName testrg -ClusterName testnewkustocluster -Name mykustodatabase -Kind ReadWrite -SoftDeletePeriod $4ds -HotCachePeriod $2ds -Location 'East US'
+Update-AzKustoDatabase -ResourceGroupName testrg -ClusterName testnewkustocluster -Name mykustodatabase -Kind ReadWrite -SoftDeletePeriod $4ds -HotCachePeriod $2ds -Location 'East US' -CallerRole Admin
 
 Kind      Location Name                                Type
 ----      -------- ----                                ----
@@ -31,7 +31,7 @@ ReadWrite East US  testnewkustocluster/mykustodatabase Microsoft.Kusto/Clusters/
 https://learn.microsoft.com/powershell/module/az.kusto/update-azkustodatabase
 #>
 function Update-AzKustoDatabase {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.IDatabase])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IDatabase])]
     [CmdletBinding(DefaultParameterSetName = 'UpdateExpanded', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
     param(
         [Parameter(ParameterSetName = 'UpdateExpanded', Mandatory)]
@@ -87,6 +87,13 @@ function Update-AzKustoDatabase {
         [System.TimeSpan]
         # The time the data should be kept before it stops being accessible to queries in TimeSpan.
         ${SoftDeletePeriod},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Query')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.CallerRole]
+        # By default, any user who run operation on a database become an Admin on it.
+        # This property allows the caller to exclude the caller from Admins list.
+        ${CallerRole},
 
         [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
@@ -157,10 +164,10 @@ function Update-AzKustoDatabase {
     process {
         try {
             if ($PSBoundParameters['Kind'] -eq 'ReadWrite') {
-                $Parameter = [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.ReadWriteDatabase]::new()
+                $Parameter = [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ReadWriteDatabase]::new()
             }
             else {
-                $Parameter = [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.ReadOnlyFollowingDatabase]::new()
+                $Parameter = [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ReadOnlyFollowingDatabase]::new()
             }
 
             $Parameter.Kind = $PSBoundParameters['Kind']

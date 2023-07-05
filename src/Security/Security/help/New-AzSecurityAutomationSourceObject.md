@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Security.dll-Help.xml
 Module Name: Az.Security
-online version:
+online version: https://learn.microsoft.com/powershell/module/az.security/new-azsecurityautomationsourceobject
 schema: 2.0.0
 ---
 

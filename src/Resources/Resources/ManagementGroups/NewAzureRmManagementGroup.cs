@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Resources.ManagementGroups.Common;
 using Microsoft.Azure.Commands.Resources.Models.ManagementGroups;
@@ -31,7 +32,6 @@ namespace Microsoft.Azure.Commands.Resources.ManagementGroups
     public class NewAzureRmManagementGroup : AzureManagementGroupsCmdletBase
     {
         [Alias("GroupId")]
-        [CmdletParameterBreakingChange("GroupName", ReplaceMentCmdletParameterName = "GroupId", ChangeDescription = "We will replace GroupName with GroupId to make it more clear.")]
         [Parameter(ParameterSetName = Constants.ParameterSetNames.GroupOperationsParameterSet, Mandatory = true, HelpMessage = Constants.HelpMessages.GroupName, Position = 0)]
         [Parameter(ParameterSetName = Constants.ParameterSetNames.ParentGroupParameterSet, Mandatory = true,
             HelpMessage = Constants.HelpMessages.ParentObject)]
@@ -76,9 +76,19 @@ namespace Microsoft.Azure.Commands.Resources.ManagementGroups
                         {
                             Parent = new CreateParentGroupInfo() {Id = ParentId}
                         });
-
-                    var response = (ManagementGroup)ManagementGroupsApiClient.ManagementGroups.CreateOrUpdate(GroupName, createGroupRequest);
-                    WriteObject(new PSManagementGroup(response));
+                    var response = ManagementGroupsApiClient.ManagementGroups.CreateOrUpdate(GroupName, createGroupRequest);
+                    try
+                    {
+                        var managementGroup =
+                        ((JObject)response).ToObject<ManagementGroup>(
+                            JsonSerializer.Create(ManagementGroupsApiClient.DeserializationSettings));
+                        WriteObject(new PSManagementGroup(managementGroup));
+                    }
+                    catch(InvalidCastException)
+                    {
+                        var getResponse  = ManagementGroupsApiClient.ManagementGroups.Get(GroupName);
+                        WriteObject(new PSManagementGroup(getResponse));
+                    }
                 }
             }
             catch (ErrorResponseException ex)

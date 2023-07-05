@@ -29,10 +29,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101
         public int? AllocationAndRetentionPriorityLevel { get => ((Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.IQosPolicyInternal)__qosPolicy).AllocationAndRetentionPriorityLevel; set => ((Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.IQosPolicyInternal)__qosPolicy).AllocationAndRetentionPriorityLevel = value ?? default(int); }
 
         /// <summary>
-        /// QoS Flow 5G QoS Indicator value. The 5QI identifies a specific QoS forwarding treatment to be provided to a flow. This
-        /// must not be a standardized 5QI value corresponding to a GBR (guaranteed bit rate) QoS Flow. The illegal GBR 5QI values
-        /// are: 1, 2, 3, 4, 65, 66, 67, 71, 72, 73, 74, 75, 76, 82, 83, 84, and 85. See 3GPP TS23.501 section 5.7.2.1 for a full
-        /// description of the 5QI parameter, and table 5.7.4-1 for the definition of which are the GBR 5QI values.
+        /// 5G QoS Flow Indicator value. The 5QI identifies a specific QoS forwarding treatment to be provided to a flow. See 3GPP
+        /// TS23.501 section 5.7.2.1 for a full description of the 5QI parameter, and table 5.7.4-1 for the definition the 5QI values.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Origin(Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.PropertyOrigin.Inherited)]
         public int? FiveQi { get => ((Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.IQosPolicyInternal)__qosPolicy).FiveQi; set => ((Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.IQosPolicyInternal)__qosPolicy).FiveQi = value ?? default(int); }

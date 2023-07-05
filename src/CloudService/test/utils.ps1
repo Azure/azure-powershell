@@ -29,7 +29,7 @@ function CreateCloudService([string]$publicIpName, [string]$cloudServiceName) {
     $roleProfile = @{role = @($role1, $role2)}
 
     # Create RDP Extension Profile
-    [SecureString]$securePassword = ConvertTo-SecureString (RandomString $false 8) -AsPlainText -Force
+    [SecureString]$securePassword = ConvertTo-SecureString (RandomString $true 16) -AsPlainText -Force
     [PSCredential]$credential = New-Object System.Management.Automation.PSCredential ("userazure", $securePassword)
     $rdpExpiration = (Get-Date).AddYears(1)
     $rdpExtension = New-AzCloudServiceRemoteDesktopExtensionObject -Name "RDPExtension" -Credential $credential -Expiration $rdpExpiration -TypeHandlerVersion "1.2.1"

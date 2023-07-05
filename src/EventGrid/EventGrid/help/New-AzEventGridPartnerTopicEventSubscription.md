@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.dll-Help.xml
 Module Name: Az.EventGrid
-online version:
+online version: https://learn.microsoft.com/powershell/module/az.eventgrid/new-azeventgridpartnertopiceventsubscription
 schema: 2.0.0
 ---
 
@@ -15,13 +15,13 @@ Creates a new Azure Event Grid Event Subscription to a Partner topic.
 ```
 New-AzEventGridPartnerTopicEventSubscription -Name <String> -ResourceGroupName <String>
  -PartnerTopicName <String> [-AzureActiveDirectoryApplicationIdOrUri <String>]
- [-AzureActiveDirectoryTenantId <String>] [-DeadLetterEndpoint <String>] [-DeliveryAttributeMapping <String[]>]
- [-Endpoint <String>] [-EndpointType <String>] [-DeliverySchema <String>] [-EventTtl <Int32>]
- [-ExpirationDate <DateTime>] [-Label <String[]>] [-MaxDeliveryAttempt <Int32>] [-MaxEventsPerBatch <Int32>]
- [-PreferredBatchSizeInKiloByte <Int32>] [-StorageQueueMessageTtl <Int64>] [-AdvancedFilter <Hashtable[]>]
- [-AdvancedFilteringOnArray] [-IncludedEventType <String[]>] [-SubjectBeginsWith <String>]
- [-SubjectEndsWith <String>] [-SubjectCaseSensitive] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-AzureActiveDirectoryTenantId <String>] [-DeadLetterEndpoint <String>]
+ [-DeliveryAttributeMapping <Hashtable[]>] [-Endpoint <String>] [-EndpointType <String>]
+ [-DeliverySchema <String>] [-EventTtl <Int32>] [-ExpirationDate <DateTime>] [-Label <String[]>]
+ [-MaxDeliveryAttempt <Int32>] [-MaxEventsPerBatch <Int32>] [-PreferredBatchSizeInKiloByte <Int32>]
+ [-StorageQueueMessageTtl <Int64>] [-AdvancedFilter <Hashtable[]>] [-AdvancedFilteringOnArray]
+ [-IncludedEventType <String[]>] [-SubjectBeginsWith <String>] [-SubjectEndsWith <String>]
+ [-SubjectCaseSensitive] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -64,7 +64,7 @@ This can be a single value of the corresponding type or an array of values.
 As an example of the advanced filter parameters: $AdvancedFilters=@($AdvFilter1, $AdvFilter2) where $AdvFilter1=@{operator="NumberIn"; key="Data.Key1"; Values=@(1,2)} and $AdvFilter2=@{operator="StringBringsWith"; key="Subject"; Values=@("SubjectPrefix1","SubjectPrefix2")}
 
 ```yaml
-Type: Hashtable[]
+Type: System.Collections.Hashtable[]
 Parameter Sets: (All)
 Aliases:
 
@@ -79,7 +79,7 @@ Accept wildcard characters: False
 The presence of this parameter denotes that advanced filtering on arrays is enabled
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -94,7 +94,7 @@ Accept wildcard characters: False
 The Azure Active Directory (AAD) Application Id or Uri to get the access token that will be included as the bearer token in delivery requests.Applicable only for webhook as a destination.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -109,7 +109,7 @@ Accept wildcard characters: False
 The Azure Active Directory (AAD) Tenant Id to get the access token that will be included as the bearer token in delivery requests.Applicable only for webhook as a destination.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -126,7 +126,7 @@ Specify the Azure resource ID of a Storage blob container.
 For example: /subscriptions/\[SubscriptionId\]/resourceGroups/\[ResourceGroupName\]/providers/Microsoft.Storage/storageAccounts/\[StorageAccountName\]/blobServices/default/containers/\[ContainerName\].
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -141,7 +141,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -153,10 +153,15 @@ Accept wildcard characters: False
 ```
 
 ### -DeliveryAttributeMapping
-The delivery attribute mappings for this system topic event subscription
+The delivery attribute mappings for this system topic event subscription.
+Each delivery attribute mapping should contain following two mandatory fields : Name and Type.
+The Type can either be 'Static' or 'Dynamic'.
+If the type is 'Static' then properties 'Value' and 'IsSecret' are required.
+If the type is 'Dynamic' then property 'SourceField' is required.
+An example of the DynamicAttributeMapping parameters: $DeliveryAttributeMapping=@($DeliveryAttributeMapping1, $DeliveryAttributeMapping2) where $DeliveryAttributeMapping1=@{Name="Name1"; Type="Static"; Values="value"; IsSecret="false"} and $DeliveryAttributeMapping2=@{Name="Name2"; Type="Dynamic"; SourceField="data.prop1"}
 
 ```yaml
-Type: String[]
+Type: System.Collections.Hashtable[]
 Parameter Sets: (All)
 Aliases:
 
@@ -173,7 +178,7 @@ The possible values are: eventgridschema, CustomInputSchema, or cloudeventv01sch
 Default value is CustomInputSchema.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -191,7 +196,7 @@ For example, the resource ID for a hybrid connection takes the following form: /
 It is expected that the destination endpoint to be created and available for use before executing any Event Grid cmdlets.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -208,7 +213,7 @@ This can be webhook, eventhub, storagequeue, hybridconnection, servicebusqueue, 
 Default value is webhook.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -224,7 +229,7 @@ The time in minutes for the event delivery.
 This value must be between 1 and 1440
 
 ```yaml
-Type: Int32
+Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -239,7 +244,7 @@ Accept wildcard characters: False
 Determines the expiration DateTime for the event subscription after which event subscription will retire.
 
 ```yaml
-Type: DateTime
+Type: System.DateTime
 Parameter Sets: (All)
 Aliases:
 
@@ -255,7 +260,7 @@ Filter that specifies a list of event types to include.
 If not specified, all event types (for the custom topics and domains) or default event types (for other topic types) will be included.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -270,7 +275,7 @@ Accept wildcard characters: False
 Labels for the event subscription.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -286,7 +291,7 @@ The maximum number of attempts to deliver the event.
 This value must be between 1 and 30.
 
 ```yaml
-Type: Int32
+Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -303,7 +308,7 @@ This value must be between 1 and 5000.
 This parameter is valid when Endpint Type is webhook only.
 
 ```yaml
-Type: Int32
+Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -318,7 +323,7 @@ Accept wildcard characters: False
 EventGrid event subscription name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: EventSubscriptionName
 
@@ -333,7 +338,7 @@ Accept wildcard characters: False
 Event Grid partner topic name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -350,7 +355,7 @@ This value must be between 1 and 1024.
 This parameter is valid when Endpint Type is webhook only.
 
 ```yaml
-Type: Int32
+Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -365,7 +370,7 @@ Accept wildcard characters: False
 The name of the resource group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: ResourceGroup
 
@@ -380,7 +385,7 @@ Accept wildcard characters: False
 The time in milliseconds for time to live of a storage queue message
 
 ```yaml
-Type: Int64
+Type: System.Int64
 Parameter Sets: (All)
 Aliases:
 
@@ -396,7 +401,7 @@ Filter that specifies that only events matching the specified subject prefix wil
 If not specified, events with all subject prefixes will be included.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -412,7 +417,7 @@ Filter that specifies that the subject field should be compared in a case sensit
 If not specified, subject will be compared in a case insensitive manner.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -428,7 +433,7 @@ Filter that specifies that only events matching the specified subject suffix wil
 If not specified, events with all subject suffixes will be included.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -443,7 +448,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -459,7 +464,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

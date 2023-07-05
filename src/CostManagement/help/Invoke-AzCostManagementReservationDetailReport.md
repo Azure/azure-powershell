@@ -10,7 +10,7 @@ schema: 2.0.0
 ## SYNOPSIS
 Generates the reservations details report for provided date range asynchronously based on enrollment id.
 The Reservation usage details can be viewed only by certain enterprise roles.
-For more details on the roles see, https://docs.microsoft.com/en-us/azure/cost-management-billing/manage/understand-ea-roles#usage-and-costs-access-by-role
+For more details on the roles see, https://learn.microsoft.com/en-us/azure/cost-management-billing/manage/understand-ea-roles#usage-and-costs-access-by-role
 
 ## SYNTAX
 
@@ -30,7 +30,7 @@ Invoke-AzCostManagementReservationDetailReport -BillingAccountId <String> -Billi
 ## DESCRIPTION
 Generates the reservations details report for provided date range asynchronously based on enrollment id.
 The Reservation usage details can be viewed only by certain enterprise roles.
-For more details on the roles see, https://docs.microsoft.com/en-us/azure/cost-management-billing/manage/understand-ea-roles#usage-and-costs-access-by-role
+For more details on the roles see, https://learn.microsoft.com/en-us/azure/cost-management-billing/manage/understand-ea-roles#usage-and-costs-access-by-role
 
 ## EXAMPLES
 

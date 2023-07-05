@@ -84,6 +84,7 @@ Different identity types. Could be either  of following 'SystemAssigned', 'UserA
 Type: System.String
 Parameter Sets: (All)
 Aliases:
+Accepted values: SystemAssigned, UserAssigned, SystemAssigned, UserAssigned, None
 
 Required: False
 Position: Named
@@ -156,7 +157,7 @@ This determines if traffic is allowed over public network. By default it is enab
 Type: System.String
 Parameter Sets: TopicNameParameterSet, ResourceIdEventSubscriptionParameterSet
 Aliases:
-Accepted values: enabled, disabled, enabled, disabled
+Accepted values: enabled, disabled
 
 Required: True
 Position: 4
@@ -169,7 +170,7 @@ Accept wildcard characters: False
 Type: System.String
 Parameter Sets: TopicInputObjectParameterSet
 Aliases:
-Accepted values: enabled, disabled, enabled, disabled
+Accepted values: enabled, disabled
 
 Required: False
 Position: 4

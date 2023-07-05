@@ -144,13 +144,15 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT `<IContainerInstanceIdentity>`: Identity Parameter
+`INPUTOBJECT <IContainerInstanceIdentity>`: Identity Parameter
   - `[ContainerGroupName <String>]`: The name of the container group.
   - `[ContainerName <String>]`: The name of the container instance.
   - `[Id <String>]`: Resource identity path
   - `[Location <String>]`: The identifier for the physical azure location.
   - `[ResourceGroupName <String>]`: The name of the resource group.
+  - `[SubnetName <String>]`: The name of the subnet.
   - `[SubscriptionId <String>]`: Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  - `[VirtualNetworkName <String>]`: The name of the virtual network.
 
 ## RELATED LINKS
 

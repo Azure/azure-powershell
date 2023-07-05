@@ -124,7 +124,7 @@ Accept wildcard characters: False
 ```
 
 ### -JoinOption
-Specifies the join option. For join options see [JoinOptions](https://docs.microsoft.com/windows/desktop/api/lmjoin/nf-lmjoin-netjoindomain)
+Specifies the join option. For join options see [JoinOptions](https://learn.microsoft.com/windows/desktop/api/lmjoin/nf-lmjoin-netjoindomain)
 
 ```yaml
 Type: System.Nullable`1[System.UInt32]

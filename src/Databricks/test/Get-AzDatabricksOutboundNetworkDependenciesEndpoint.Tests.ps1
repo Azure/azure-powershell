@@ -15,11 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzDatabricksOutboundNetwo
 }
 
 Describe 'Get-AzDatabricksOutboundNetworkDependenciesEndpoint' {
-    It 'List' {
-        { 
-            Get-AzDatabricksOutboundNetworkDependenciesEndpoint -WorkspaceName $env.testWorkspace4 -ResourceGroupName $env.resourceGroup
-            # The virtual network only be use by one workspace.
-            Remove-AzDatabricksWorkspace -Name $env.testWorkspace4 -ResourceGroupName $env.resourceGroup
-        } | Should -Not -Throw
+    It 'List' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

@@ -210,9 +210,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         }
         private PremiumPageBlobTier? pageBlobTier = null;
 
-        [Parameter(HelpMessage = "Block Blob Tier, valid values are Hot/Cool/Archive. See detail in https://docs.microsoft.com/en-us/azure/storage/blobs/storage-blob-storage-tiers", Mandatory = false)]
+        [Parameter(HelpMessage = "Block Blob Tier, valid values are Hot/Cool/Archive/Cold. See detail in https://learn.microsoft.com/en-us/azure/storage/blobs/storage-blob-storage-tiers", Mandatory = false)]
         [ValidateNotNullOrEmpty]
-        [PSArgumentCompleter("Hot", "Cool", "Archive")]
+        [PSArgumentCompleter("Hot", "Cool", "Archive", "Cold")]
         public string StandardBlobTier
         {
             get
@@ -677,6 +677,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                 if (Channel!=null && destChannel != null && 
                     Channel.StorageContext!= null && destChannel.StorageContext != null 
                     && Channel.StorageContext.StorageAccountName == destChannel.StorageContext.StorageAccountName
+                    && Channel.StorageContext.StorageAccount != null 
+                    && Channel.StorageContext.StorageAccount.Credentials != null
                     && Channel.StorageContext.StorageAccount.Credentials.IsToken)
                 {
                     // if inside same account, source blob can be anonumous
@@ -712,6 +714,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                 if (Channel != null && destChannel != null &&
                     Channel.StorageContext != null && destChannel.StorageContext != null
                     && Channel.StorageContext.StorageAccountName == destChannel.StorageContext.StorageAccountName
+                    && Channel.StorageContext.StorageAccount != null
+                    && Channel.StorageContext.StorageAccount.Credentials != null
                     && Channel.StorageContext.StorageAccount.Credentials.IsToken)
                 {
                     // if inside same account, source blob can be anonumous
@@ -772,7 +776,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                 {
                     string copyId;
 
-                    //Clean the Metadata of the destination Blob object, or the source metadata won't overwirte the dest blob metadata. See https://docs.microsoft.com/en-us/rest/api/storageservices/copy-blob
+                    //Clean the Metadata of the destination Blob object, or the source metadata won't overwirte the dest blob metadata. See https://learn.microsoft.com/en-us/rest/api/storageservices/copy-blob
                     destBlob.Metadata.Clear();
 
                     // The Blob Type and Blob Tier must match, since already checked they are match at the begin of ExecuteCmdlet().

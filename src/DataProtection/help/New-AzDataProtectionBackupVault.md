@@ -249,7 +249,7 @@ Use New-AzDataProtectionBackupVaultStorageSetting Cmdlet to Create.
 To construct, see NOTES section for STORAGESETTING properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20221201.IStorageSetting[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202301.IStorageSetting[]
 Parameter Sets: (All)
 Aliases:
 

@@ -25,6 +25,7 @@ using System.Globalization;
 using System.Linq;
 using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Management.Sql.Models;
+using Microsoft.Rest.Azure.OData;
 
 namespace Microsoft.Azure.Commands.Sql.Database.Services
 {
@@ -71,11 +72,34 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
         /// <param name="resourceGroupName">The name of the resource group</param>
         /// <param name="serverName">The name of the Azure Sql Database Server</param>
         /// <param name="databaseName">The name of the Azure Sql Database</param>
+        /// <param name="oDataQuery">Additional query filter parameters</param>
         /// <returns>The Azure Sql Database object</returns>
-        internal AzureSqlDatabaseModel GetDatabase(string resourceGroupName, string serverName, string databaseName)
+        internal AzureSqlDatabaseModel GetDatabase(string resourceGroupName, string serverName, string databaseName, ODataQuery<Management.Sql.Models.Database> oDataQuery = null)
         {
-            var resp = Communicator.Get(resourceGroupName, serverName, databaseName);
+            var resp = Communicator.Get(resourceGroupName, serverName, databaseName, oDataQuery);
             return CreateDatabaseModelFromResponse(resourceGroupName, serverName, resp);
+        }
+
+        /// <summary>
+        /// Revalidates database transparent data encryption protector.
+        /// </summary>
+        /// <param name="resourceGroupName">The name of the resource group</param>
+        /// <param name="serverName">The name of the Azure Sql Database Server</param>
+        /// <param name="databaseName">The name of the Azure Sql Database</param>
+        internal Rest.Azure.AzureOperationResponse RevalidateDatabaseEncryptionProtector(string resourceGroupName, string serverName, string databaseName)
+        {
+            return Communicator.RevalidateDatabaseEncryptionProtector(resourceGroupName, serverName, databaseName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Reverts the database transparent data encryption protector.
+        /// </summary>
+        /// <param name="resourceGroupName">The name of the resource group</param>
+        /// <param name="serverName">The name of the Azure Sql Database Server</param>
+        /// <param name="databaseName">The name of the Azure Sql Database</param>
+        internal Rest.Azure.AzureOperationResponse RevertDatabaseEncryptionProtector(string resourceGroupName, string serverName, string databaseName)
+        {
+            return Communicator.RevertDatabaseEncryptionProtector(resourceGroupName, serverName, databaseName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -166,6 +190,10 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
                 MaintenanceConfigurationId = MaintenanceConfigurationHelper.ConvertMaintenanceConfigurationIdArgument(model.Database.MaintenanceConfigurationId, _subscription.Id),
                 IsLedgerOn = model.Database.EnableLedger,
                 PreferredEnclaveType = model.Database.PreferredEnclaveType,
+                Identity = model.Database.Identity,
+                Keys = model.Database.Keys,
+                EncryptionProtector = model.Database.EncryptionProtector,
+                FederatedClientId = model.Database.FederatedClientId
             });
 
             return CreateDatabaseModelFromResponse(resourceGroup, serverName, resp);

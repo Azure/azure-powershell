@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Management.NetApp
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='accountName'>
             /// The name of the NetApp account
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Management.NetApp
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='accountName'>
             /// The name of the NetApp account
@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Management.NetApp
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='accountName'>
             /// The name of the NetApp account
@@ -117,7 +117,7 @@ namespace Microsoft.Azure.Management.NetApp
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='accountName'>
             /// The name of the NetApp account
@@ -149,7 +149,7 @@ namespace Microsoft.Azure.Management.NetApp
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='accountName'>
             /// The name of the NetApp account
@@ -175,7 +175,7 @@ namespace Microsoft.Azure.Management.NetApp
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='accountName'>
             /// The name of the NetApp account
@@ -207,7 +207,7 @@ namespace Microsoft.Azure.Management.NetApp
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='accountName'>
             /// The name of the NetApp account
@@ -236,7 +236,7 @@ namespace Microsoft.Azure.Management.NetApp
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='accountName'>
             /// The name of the NetApp account
@@ -271,7 +271,7 @@ namespace Microsoft.Azure.Management.NetApp
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='accountName'>
             /// The name of the NetApp account
@@ -303,7 +303,7 @@ namespace Microsoft.Azure.Management.NetApp
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='accountName'>
             /// The name of the NetApp account
@@ -341,7 +341,7 @@ namespace Microsoft.Azure.Management.NetApp
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='accountName'>
             /// The name of the NetApp account
@@ -373,7 +373,7 @@ namespace Microsoft.Azure.Management.NetApp
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='accountName'>
             /// The name of the NetApp account
@@ -411,7 +411,7 @@ namespace Microsoft.Azure.Management.NetApp
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='accountName'>
             /// The name of the NetApp account
@@ -440,7 +440,7 @@ namespace Microsoft.Azure.Management.NetApp
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='accountName'>
             /// The name of the NetApp account
@@ -463,6 +463,78 @@ namespace Microsoft.Azure.Management.NetApp
             }
 
             /// <summary>
+            /// Create a new Backup Restore Files request
+            /// </summary>
+            /// <remarks>
+            /// Restore the specified files from the specified backup to the active
+            /// filesystem
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='body'>
+            /// Restore payload supplied in the body of the operation.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='accountName'>
+            /// The name of the NetApp account
+            /// </param>
+            /// <param name='poolName'>
+            /// The name of the capacity pool
+            /// </param>
+            /// <param name='volumeName'>
+            /// The name of the volume
+            /// </param>
+            /// <param name='backupName'>
+            /// The name of the backup
+            /// </param>
+            public static BackupsRestoreFilesHeaders RestoreFiles(this IBackupsOperations operations, BackupRestoreFiles body, string resourceGroupName, string accountName, string poolName, string volumeName, string backupName)
+            {
+                return operations.RestoreFilesAsync(body, resourceGroupName, accountName, poolName, volumeName, backupName).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Create a new Backup Restore Files request
+            /// </summary>
+            /// <remarks>
+            /// Restore the specified files from the specified backup to the active
+            /// filesystem
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='body'>
+            /// Restore payload supplied in the body of the operation.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='accountName'>
+            /// The name of the NetApp account
+            /// </param>
+            /// <param name='poolName'>
+            /// The name of the capacity pool
+            /// </param>
+            /// <param name='volumeName'>
+            /// The name of the volume
+            /// </param>
+            /// <param name='backupName'>
+            /// The name of the backup
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<BackupsRestoreFilesHeaders> RestoreFilesAsync(this IBackupsOperations operations, BackupRestoreFiles body, string resourceGroupName, string accountName, string poolName, string volumeName, string backupName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.RestoreFilesWithHttpMessagesAsync(body, resourceGroupName, accountName, poolName, volumeName, backupName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Headers;
+                }
+            }
+
+            /// <summary>
             /// Create a backup
             /// </summary>
             /// <remarks>
@@ -472,7 +544,7 @@ namespace Microsoft.Azure.Management.NetApp
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='accountName'>
             /// The name of the NetApp account
@@ -504,7 +576,7 @@ namespace Microsoft.Azure.Management.NetApp
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='accountName'>
             /// The name of the NetApp account
@@ -542,7 +614,7 @@ namespace Microsoft.Azure.Management.NetApp
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='accountName'>
             /// The name of the NetApp account
@@ -574,7 +646,7 @@ namespace Microsoft.Azure.Management.NetApp
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='accountName'>
             /// The name of the NetApp account
@@ -612,7 +684,7 @@ namespace Microsoft.Azure.Management.NetApp
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='accountName'>
             /// The name of the NetApp account
@@ -641,7 +713,7 @@ namespace Microsoft.Azure.Management.NetApp
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='accountName'>
             /// The name of the NetApp account
@@ -661,6 +733,78 @@ namespace Microsoft.Azure.Management.NetApp
             public static async Task BeginDeleteAsync(this IBackupsOperations operations, string resourceGroupName, string accountName, string poolName, string volumeName, string backupName, CancellationToken cancellationToken = default(CancellationToken))
             {
                 (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, accountName, poolName, volumeName, backupName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            }
+
+            /// <summary>
+            /// Create a new Backup Restore Files request
+            /// </summary>
+            /// <remarks>
+            /// Restore the specified files from the specified backup to the active
+            /// filesystem
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='body'>
+            /// Restore payload supplied in the body of the operation.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='accountName'>
+            /// The name of the NetApp account
+            /// </param>
+            /// <param name='poolName'>
+            /// The name of the capacity pool
+            /// </param>
+            /// <param name='volumeName'>
+            /// The name of the volume
+            /// </param>
+            /// <param name='backupName'>
+            /// The name of the backup
+            /// </param>
+            public static BackupsRestoreFilesHeaders BeginRestoreFiles(this IBackupsOperations operations, BackupRestoreFiles body, string resourceGroupName, string accountName, string poolName, string volumeName, string backupName)
+            {
+                return operations.BeginRestoreFilesAsync(body, resourceGroupName, accountName, poolName, volumeName, backupName).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Create a new Backup Restore Files request
+            /// </summary>
+            /// <remarks>
+            /// Restore the specified files from the specified backup to the active
+            /// filesystem
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='body'>
+            /// Restore payload supplied in the body of the operation.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='accountName'>
+            /// The name of the NetApp account
+            /// </param>
+            /// <param name='poolName'>
+            /// The name of the capacity pool
+            /// </param>
+            /// <param name='volumeName'>
+            /// The name of the volume
+            /// </param>
+            /// <param name='backupName'>
+            /// The name of the backup
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<BackupsRestoreFilesHeaders> BeginRestoreFilesAsync(this IBackupsOperations operations, BackupRestoreFiles body, string resourceGroupName, string accountName, string poolName, string volumeName, string backupName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.BeginRestoreFilesWithHttpMessagesAsync(body, resourceGroupName, accountName, poolName, volumeName, backupName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Headers;
+                }
             }
 
     }

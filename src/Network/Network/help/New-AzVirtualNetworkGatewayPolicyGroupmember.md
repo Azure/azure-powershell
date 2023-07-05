@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://learn.microsoft.com/powershell/module/az.network/new-azvirtualnetworkgatewaynatrule
+online version: https://learn.microsoft.com/powershell/module/az.network/new-azvirtualnetworkgatewaypolicygroupmember
 schema: 2.0.0
 ---
 
@@ -24,7 +24,7 @@ Virtual Network Gateway Policy Group Member is a used for setting up one policy 
 
 ### Example 1
 ```powershell
- #create the policy group and connection client configuration
+#create the policy group and connection client configuration
 $member1=New-AzVirtualNetworkGatewayPolicyGroupMember -Name "member1" -AttributeType "CertificateGroupId" -AttributeValue "ab"
 $member2=New-AzVirtualNetworkGatewayPolicyGroupMember -Name "member2" -AttributeType "CertificateGroupId" -AttributeValue "cd"
 $policyGroup1=New-AzVirtualNetworkGatewayPolicyGroup -Name "policyGroup1" -Priority 0 -DefaultPolicyGroup  -PolicyMember $member1

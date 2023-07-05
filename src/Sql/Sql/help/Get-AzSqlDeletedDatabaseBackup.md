@@ -14,9 +14,9 @@ Gets a deleted database that you can restore.
 ## SYNTAX
 
 ```
-Get-AzSqlDeletedDatabaseBackup [-ServerName] <String> [[-DatabaseName] <String>] [[-DeletionDate] <DateTime>]
- [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Get-AzSqlDeletedDatabaseBackup [-ExpandKeyList] [-KeysFilter <String>] [-DatabaseId <String>]
+ [-ServerName] <String> [[-DatabaseName] <String>] [[-DeletionDate] <DateTime>] [-ResourceGroupName] <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -40,6 +40,21 @@ Get-AzSqlDeletedDatabaseBackup -ResourceGroupName "ContosoResourceGroup" -Server
 This command gets the deleted database backup for ContosoDatabase.
 
 ## PARAMETERS
+
+### -DatabaseId
+Id of the database
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
 
 ### -DatabaseName
 Specifies the name of the database.
@@ -82,6 +97,36 @@ Aliases:
 
 Required: False
 Position: 3
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ExpandKeyList
+Flag to be used to view all the AKV keys in a database.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -KeysFilter
+Timestamp filter to get AKV keys
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -167,4 +212,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 [Get-AzSqlDatabase](./Get-AzSqlDatabase.md)
 
-[SQL Database Documentation](https://docs.microsoft.com/azure/sql-database/)
+[SQL Database Documentation](https://learn.microsoft.com/azure/sql-database/)

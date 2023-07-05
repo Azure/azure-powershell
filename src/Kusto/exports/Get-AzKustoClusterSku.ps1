@@ -25,14 +25,14 @@ Get-AzKustoClusterSku
  Get-AzKustoClusterSku -ResourceGroupName testrg -ClusterName testnewkustocluster
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.IAzureResourceSku
+Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IAzureResourceSku
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.ISkuDescription
+Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ISkuDescription
 .Link
 https://learn.microsoft.com/powershell/module/az.kusto/get-azkustoclustersku
 #>
 function Get-AzKustoClusterSku {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.ISkuDescription], [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.IAzureResourceSku])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ISkuDescription], [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IAzureResourceSku])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter()]
@@ -60,7 +60,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -112,7 +113,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Runspace.Version.ToString()
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
         }         
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {

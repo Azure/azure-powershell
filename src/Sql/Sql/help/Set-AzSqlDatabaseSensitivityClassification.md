@@ -296,4 +296,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Learn more about Azure SQL Database data discovery and classification](https://docs.microsoft.com/azure/sql-database/sql-database-data-discovery-and-classification)
+[Learn more about Azure SQL Database data discovery and classification](https://learn.microsoft.com/azure/sql-database/sql-database-data-discovery-and-classification)

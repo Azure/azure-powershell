@@ -1,3 +1,6 @@
+> **WARNING:**<br>
+> **This page is moved to [Breaking Changes Attribute Help](https://eng.ms/docs/cloud-ai-platform/azure-core/azure-management-and-platforms/control-plane-bburns/azure-cli-tools-azure-cli-powershell-and-terraform/azure-cli-tools/devguide/azps/breaking-change/breaking-changes-attribute-help). DO NOT UPDATE IT HERE!**<br>
+
 # Breaking Changes Attribute Help
 
 Below is description of the various types of Breaking Change Attributes (custom attributes) that can be used to decorate the cmdlet or its parameters to call out various [types of breaking changes](https://github.com/praries880/azure-powershell/blob/breakingchangeattribute/documentation/breaking-changes/breaking-changes-definition.md).

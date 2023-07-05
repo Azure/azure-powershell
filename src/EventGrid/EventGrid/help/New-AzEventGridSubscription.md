@@ -21,7 +21,7 @@ New-AzEventGridSubscription [-EventSubscriptionName] <String> [-Endpoint] <Strin
  [-ExpirationDate <DateTime>] [-AdvancedFilter <Hashtable[]>] [-MaxEventsPerBatch <Int32>]
  [-PreferredBatchSizeInKiloByte <Int32>] [-AzureActiveDirectoryTenantId <String>]
  [-AzureActiveDirectoryApplicationIdOrUri <String>] [-AdvancedFilteringOnArray]
- [-DeliveryAttributeMapping <String[]>] [-StorageQueueMessageTtl <Int64>]
+ [-DeliveryAttributeMapping <Hashtable[]>] [-StorageQueueMessageTtl <Int64>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -33,7 +33,7 @@ New-AzEventGridSubscription [-ResourceId] <String> [-EventSubscriptionName] <Str
  [-DeliverySchema <String>] [-DeadLetterEndpoint <String>] [-ExpirationDate <DateTime>]
  [-AdvancedFilter <Hashtable[]>] [-MaxEventsPerBatch <Int32>] [-PreferredBatchSizeInKiloByte <Int32>]
  [-AzureActiveDirectoryTenantId <String>] [-AzureActiveDirectoryApplicationIdOrUri <String>]
- [-AdvancedFilteringOnArray] [-DeliveryAttributeMapping <String[]>] [-StorageQueueMessageTtl <Int64>]
+ [-AdvancedFilteringOnArray] [-DeliveryAttributeMapping <Hashtable[]>] [-StorageQueueMessageTtl <Int64>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -45,7 +45,7 @@ New-AzEventGridSubscription [-InputObject] <PSTopic> [-EventSubscriptionName] <S
  [-DeliverySchema <String>] [-DeadLetterEndpoint <String>] [-ExpirationDate <DateTime>]
  [-AdvancedFilter <Hashtable[]>] [-MaxEventsPerBatch <Int32>] [-PreferredBatchSizeInKiloByte <Int32>]
  [-AzureActiveDirectoryTenantId <String>] [-AzureActiveDirectoryApplicationIdOrUri <String>]
- [-AdvancedFilteringOnArray] [-DeliveryAttributeMapping <String[]>] [-StorageQueueMessageTtl <Int64>]
+ [-AdvancedFilteringOnArray] [-DeliveryAttributeMapping <Hashtable[]>] [-StorageQueueMessageTtl <Int64>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -58,7 +58,7 @@ New-AzEventGridSubscription [-DomainInputObject] <PSDomain> [-EventSubscriptionN
  [-ExpirationDate <DateTime>] [-AdvancedFilter <Hashtable[]>] [-MaxEventsPerBatch <Int32>]
  [-PreferredBatchSizeInKiloByte <Int32>] [-AzureActiveDirectoryTenantId <String>]
  [-AzureActiveDirectoryApplicationIdOrUri <String>] [-AdvancedFilteringOnArray]
- [-DeliveryAttributeMapping <String[]>] [-StorageQueueMessageTtl <Int64>]
+ [-DeliveryAttributeMapping <Hashtable[]>] [-StorageQueueMessageTtl <Int64>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -71,7 +71,7 @@ New-AzEventGridSubscription [-DomainTopicInputObject] <PSDomainTopic> [-EventSub
  [-ExpirationDate <DateTime>] [-AdvancedFilter <Hashtable[]>] [-MaxEventsPerBatch <Int32>]
  [-PreferredBatchSizeInKiloByte <Int32>] [-AzureActiveDirectoryTenantId <String>]
  [-AzureActiveDirectoryApplicationIdOrUri <String>] [-AdvancedFilteringOnArray]
- [-DeliveryAttributeMapping <String[]>] [-StorageQueueMessageTtl <Int64>]
+ [-DeliveryAttributeMapping <Hashtable[]>] [-StorageQueueMessageTtl <Int64>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -84,7 +84,7 @@ New-AzEventGridSubscription [-EventSubscriptionName] <String> [-Endpoint] <Strin
  [-ExpirationDate <DateTime>] [-AdvancedFilter <Hashtable[]>] [-MaxEventsPerBatch <Int32>]
  [-PreferredBatchSizeInKiloByte <Int32>] [-AzureActiveDirectoryTenantId <String>]
  [-AzureActiveDirectoryApplicationIdOrUri <String>] [-AdvancedFilteringOnArray]
- [-DeliveryAttributeMapping <String[]>] [-StorageQueueMessageTtl <Int64>]
+ [-DeliveryAttributeMapping <Hashtable[]>] [-StorageQueueMessageTtl <Int64>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -97,7 +97,7 @@ New-AzEventGridSubscription [-EventSubscriptionName] <String> [-Endpoint] <Strin
  [-ExpirationDate <DateTime>] [-AdvancedFilter <Hashtable[]>] [-MaxEventsPerBatch <Int32>]
  [-PreferredBatchSizeInKiloByte <Int32>] [-AzureActiveDirectoryTenantId <String>]
  [-AzureActiveDirectoryApplicationIdOrUri <String>] [-AdvancedFilteringOnArray]
- [-DeliveryAttributeMapping <String[]>] [-StorageQueueMessageTtl <Int64>]
+ [-DeliveryAttributeMapping <Hashtable[]>] [-StorageQueueMessageTtl <Int64>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -110,7 +110,7 @@ New-AzEventGridSubscription [-EventSubscriptionName] <String> [-Endpoint] <Strin
  [-DeliverySchema <String>] [-DeadLetterEndpoint <String>] [-ExpirationDate <DateTime>]
  [-AdvancedFilter <Hashtable[]>] [-MaxEventsPerBatch <Int32>] [-PreferredBatchSizeInKiloByte <Int32>]
  [-AzureActiveDirectoryTenantId <String>] [-AzureActiveDirectoryApplicationIdOrUri <String>]
- [-AdvancedFilteringOnArray] [-DeliveryAttributeMapping <String[]>] [-StorageQueueMessageTtl <Int64>]
+ [-AdvancedFilteringOnArray] [-DeliveryAttributeMapping <Hashtable[]>] [-StorageQueueMessageTtl <Int64>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -308,10 +308,15 @@ Accept wildcard characters: False
 ```
 
 ### -DeliveryAttributeMapping
-The delivery attribute mappings for this system topic event subscription
+The delivery attribute mappings for this system topic event subscription.
+Each delivery attribute mapping should contain following two mandatory fields : Name and Type.
+The Type can either be 'Static' or 'Dynamic'.
+If the type is 'Static' then properties 'Value' and 'IsSecret' are required.
+If the type is 'Dynamic' then property 'SourceField' is required.
+An example of the DynamicAttributeMapping parameters: $DeliveryAttributeMapping=@($DeliveryAttributeMapping1, $DeliveryAttributeMapping2) where $DeliveryAttributeMapping1=@{Name="Name1"; Type="Static"; Values="value"; IsSecret="false"} and $DeliveryAttributeMapping2=@{Name="Name2"; Type="Dynamic"; SourceField="data.prop1"}
 
 ```yaml
-Type: System.String[]
+Type: System.Collections.Hashtable[]
 Parameter Sets: ResourceGroupNameParameterSet, ResourceIdEventSubscriptionParameterSet, CustomTopicEventSubscriptionParameterSet, DomainEventSubscriptionParameterSet, DomainTopicEventSubscriptionParameterSet
 Aliases:
 
@@ -323,7 +328,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: System.String[]
+Type: System.Collections.Hashtable[]
 Parameter Sets: EventSubscriptionCustomTopicInputObjectParameterSet, EventSubscriptionDomainInputObjectParameterSet, EventSubscriptionDomainTopicInputObjectParameterSet
 Aliases:
 
@@ -341,7 +346,7 @@ The schema to be used when delivering events to the destination. The possible va
 Type: System.String
 Parameter Sets: ResourceGroupNameParameterSet, ResourceIdEventSubscriptionParameterSet, CustomTopicEventSubscriptionParameterSet, DomainEventSubscriptionParameterSet, DomainTopicEventSubscriptionParameterSet
 Aliases:
-Accepted values: EventGridSchema, CustomInputSchema, CloudEventSchemaV1_0, EventGridSchema, CustomInputSchema, CloudEventSchemaV1_0
+Accepted values: EventGridSchema, CustomInputSchema, CloudEventSchemaV1_0
 
 Required: False
 Position: Named
@@ -354,7 +359,7 @@ Accept wildcard characters: False
 Type: System.String
 Parameter Sets: EventSubscriptionCustomTopicInputObjectParameterSet, EventSubscriptionDomainInputObjectParameterSet, EventSubscriptionDomainTopicInputObjectParameterSet
 Aliases:
-Accepted values: EventGridSchema, CustomInputSchema, CloudEventSchemaV1_0, EventGridSchema, CustomInputSchema, CloudEventSchemaV1_0
+Accepted values: EventGridSchema, CustomInputSchema, CloudEventSchemaV1_0
 
 Required: False
 Position: Named
@@ -460,7 +465,7 @@ This can be webhook, eventhub, storagequeue, hybridconnection or servicebusqueue
 Type: System.String
 Parameter Sets: ResourceGroupNameParameterSet, ResourceIdEventSubscriptionParameterSet, CustomTopicEventSubscriptionParameterSet, DomainEventSubscriptionParameterSet, DomainTopicEventSubscriptionParameterSet
 Aliases:
-Accepted values: webhook, eventhub, storagequeue, hybridconnection, servicebusqueue, servicebustopic, azurefunction, webhook, eventhub, storagequeue, hybridconnection, servicebusqueue, servicebustopic, azurefunction
+Accepted values: webhook, eventhub, storagequeue, hybridconnection, servicebusqueue, servicebustopic, azurefunction
 
 Required: False
 Position: Named
@@ -473,7 +478,7 @@ Accept wildcard characters: False
 Type: System.String
 Parameter Sets: EventSubscriptionCustomTopicInputObjectParameterSet, EventSubscriptionDomainInputObjectParameterSet, EventSubscriptionDomainTopicInputObjectParameterSet
 Aliases:
-Accepted values: webhook, eventhub, storagequeue, hybridconnection, servicebusqueue, servicebustopic, azurefunction, webhook, eventhub, storagequeue, hybridconnection, servicebusqueue, servicebustopic, azurefunction
+Accepted values: webhook, eventhub, storagequeue, hybridconnection, servicebusqueue, servicebustopic, azurefunction
 
 Required: False
 Position: Named

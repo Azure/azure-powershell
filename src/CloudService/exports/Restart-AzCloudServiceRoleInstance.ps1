@@ -20,7 +20,7 @@ The Reboot Role Instance asynchronous operation requests a reboot of a role inst
 .Description
 The Reboot Role Instance asynchronous operation requests a reboot of a role instance in the cloud service.
 .Example
-Restart-AzCloudService -ResourceGroupName "ContosOrg" -CloudServiceName "ContosoCS" -RoleInstanceName "ContosoFrontEnd_IN_0"
+Restart-AzCloudServiceRoleInstance -ResourceGroupName "ContosOrg" -CloudServiceName "ContosoCS" -RoleInstanceName "ContosoFrontEnd_IN_0"
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentity
@@ -32,7 +32,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <ICloudServiceIdentity>: Identity Parameter
-  [CloudServiceName <String>]: 
+  [CloudServiceName <String>]: Name of the cloud service.
   [IPConfigurationName <String>]: The IP configuration name.
   [Id <String>]: Resource identity path
   [Location <String>]: Name of the location that the OS version pertains to.
@@ -40,7 +40,7 @@ INPUTOBJECT <ICloudServiceIdentity>: Identity Parameter
   [OSFamilyName <String>]: Name of the OS family.
   [OSVersionName <String>]: Name of the OS version.
   [PublicIPAddressName <String>]: The name of the public IP Address.
-  [ResourceGroupName <String>]: 
+  [ResourceGroupName <String>]: Name of the resource group.
   [RoleInstanceName <String>]: Name of the role instance.
   [RoleName <String>]: Name of the role.
   [SubscriptionId <String>]: Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
@@ -55,13 +55,13 @@ param(
     [Parameter(ParameterSetName='Restart', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category('Path')]
     [System.String]
-    # .
+    # Name of the cloud service.
     ${CloudServiceName},
 
     [Parameter(ParameterSetName='Restart', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category('Path')]
     [System.String]
-    # .
+    # Name of the resource group.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Restart', Mandatory)]
@@ -158,6 +158,24 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.CloudService.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
         $mapping = @{
             Restart = 'Az.CloudService.private\Restart-AzCloudServiceRoleInstance_Restart';
             RestartViaIdentity = 'Az.CloudService.private\Restart-AzCloudServiceRoleInstance_RestartViaIdentity';
@@ -172,6 +190,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
         throw
     }
 }
@@ -180,15 +199,32 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
         throw
     }
-}
 
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
 end {
     try {
         $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.CloudService.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
     } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
         throw
     }
-}
+} 
 }

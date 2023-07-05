@@ -86,10 +86,14 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// containing agent pool nodes.</param>
         /// <param name="enableRBAC">Whether to enable Kubernetes Role-Based
         /// Access Control.</param>
-        /// <param name="enablePodSecurityPolicy">(DEPRECATING) Whether to
-        /// enable Kubernetes pod security policy (preview). This feature is
-        /// set for removal on October 15th, 2020. Learn more at
-        /// aka.ms/aks/azpodpolicy.</param>
+        /// <param name="supportPlan">The support plan for the Managed Cluster.
+        /// If unspecified, the default is 'KubernetesOfficial'. Possible
+        /// values include: 'KubernetesOfficial', 'AKSLongTermSupport'</param>
+        /// <param name="enablePodSecurityPolicy">(DEPRECATED) Whether to
+        /// enable Kubernetes pod security policy (preview). PodSecurityPolicy
+        /// was deprecated in Kubernetes v1.21, and removed from Kubernetes in
+        /// v1.25. Learn more at https://aka.ms/k8s/psp and
+        /// https://aka.ms/aks/psp.</param>
         /// <param name="networkProfile">The network configuration
         /// profile.</param>
         /// <param name="aadProfile">The Azure Active Directory
@@ -116,7 +120,7 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// cluster.</param>
         /// <param name="publicNetworkAccess">PublicNetworkAccess of the
         /// managedCluster</param>
-        public ManagedCluster(string location, string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), IDictionary<string, string> tags = default(IDictionary<string, string>), ManagedClusterSKU sku = default(ManagedClusterSKU), ExtendedLocation extendedLocation = default(ExtendedLocation), ManagedClusterIdentity identity = default(ManagedClusterIdentity), string provisioningState = default(string), PowerState powerState = default(PowerState), int? maxAgentPools = default(int?), string kubernetesVersion = default(string), string currentKubernetesVersion = default(string), string dnsPrefix = default(string), string fqdnSubdomain = default(string), string fqdn = default(string), string privateFQDN = default(string), string azurePortalFQDN = default(string), IList<ManagedClusterAgentPoolProfile> agentPoolProfiles = default(IList<ManagedClusterAgentPoolProfile>), ContainerServiceLinuxProfile linuxProfile = default(ContainerServiceLinuxProfile), ManagedClusterWindowsProfile windowsProfile = default(ManagedClusterWindowsProfile), ManagedClusterServicePrincipalProfile servicePrincipalProfile = default(ManagedClusterServicePrincipalProfile), IDictionary<string, ManagedClusterAddonProfile> addonProfiles = default(IDictionary<string, ManagedClusterAddonProfile>), ManagedClusterPodIdentityProfile podIdentityProfile = default(ManagedClusterPodIdentityProfile), ManagedClusterOIDCIssuerProfile oidcIssuerProfile = default(ManagedClusterOIDCIssuerProfile), string nodeResourceGroup = default(string), bool? enableRBAC = default(bool?), bool? enablePodSecurityPolicy = default(bool?), ContainerServiceNetworkProfile networkProfile = default(ContainerServiceNetworkProfile), ManagedClusterAADProfile aadProfile = default(ManagedClusterAADProfile), ManagedClusterAutoUpgradeProfile autoUpgradeProfile = default(ManagedClusterAutoUpgradeProfile), ManagedClusterPropertiesAutoScalerProfile autoScalerProfile = default(ManagedClusterPropertiesAutoScalerProfile), ManagedClusterAPIServerAccessProfile apiServerAccessProfile = default(ManagedClusterAPIServerAccessProfile), string diskEncryptionSetID = default(string), IDictionary<string, UserAssignedIdentity> identityProfile = default(IDictionary<string, UserAssignedIdentity>), IList<PrivateLinkResource> privateLinkResources = default(IList<PrivateLinkResource>), bool? disableLocalAccounts = default(bool?), ManagedClusterHTTPProxyConfig httpProxyConfig = default(ManagedClusterHTTPProxyConfig), ManagedClusterSecurityProfile securityProfile = default(ManagedClusterSecurityProfile), ManagedClusterStorageProfile storageProfile = default(ManagedClusterStorageProfile), string publicNetworkAccess = default(string))
+        public ManagedCluster(string location, string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), IDictionary<string, string> tags = default(IDictionary<string, string>), ManagedClusterSKU sku = default(ManagedClusterSKU), ExtendedLocation extendedLocation = default(ExtendedLocation), ManagedClusterIdentity identity = default(ManagedClusterIdentity), string provisioningState = default(string), PowerState powerState = default(PowerState), int? maxAgentPools = default(int?), string kubernetesVersion = default(string), string currentKubernetesVersion = default(string), string dnsPrefix = default(string), string fqdnSubdomain = default(string), string fqdn = default(string), string privateFQDN = default(string), string azurePortalFQDN = default(string), IList<ManagedClusterAgentPoolProfile> agentPoolProfiles = default(IList<ManagedClusterAgentPoolProfile>), ContainerServiceLinuxProfile linuxProfile = default(ContainerServiceLinuxProfile), ManagedClusterWindowsProfile windowsProfile = default(ManagedClusterWindowsProfile), ManagedClusterServicePrincipalProfile servicePrincipalProfile = default(ManagedClusterServicePrincipalProfile), IDictionary<string, ManagedClusterAddonProfile> addonProfiles = default(IDictionary<string, ManagedClusterAddonProfile>), ManagedClusterPodIdentityProfile podIdentityProfile = default(ManagedClusterPodIdentityProfile), ManagedClusterOIDCIssuerProfile oidcIssuerProfile = default(ManagedClusterOIDCIssuerProfile), string nodeResourceGroup = default(string), bool? enableRBAC = default(bool?), string supportPlan = default(string), bool? enablePodSecurityPolicy = default(bool?), ContainerServiceNetworkProfile networkProfile = default(ContainerServiceNetworkProfile), ManagedClusterAADProfile aadProfile = default(ManagedClusterAADProfile), ManagedClusterAutoUpgradeProfile autoUpgradeProfile = default(ManagedClusterAutoUpgradeProfile), ManagedClusterPropertiesAutoScalerProfile autoScalerProfile = default(ManagedClusterPropertiesAutoScalerProfile), ManagedClusterAPIServerAccessProfile apiServerAccessProfile = default(ManagedClusterAPIServerAccessProfile), string diskEncryptionSetID = default(string), IDictionary<string, UserAssignedIdentity> identityProfile = default(IDictionary<string, UserAssignedIdentity>), IList<PrivateLinkResource> privateLinkResources = default(IList<PrivateLinkResource>), bool? disableLocalAccounts = default(bool?), ManagedClusterHTTPProxyConfig httpProxyConfig = default(ManagedClusterHTTPProxyConfig), ManagedClusterSecurityProfile securityProfile = default(ManagedClusterSecurityProfile), ManagedClusterStorageProfile storageProfile = default(ManagedClusterStorageProfile), string publicNetworkAccess = default(string), ManagedClusterWorkloadAutoScalerProfile workloadAutoScalerProfile = default(ManagedClusterWorkloadAutoScalerProfile), ManagedClusterAzureMonitorProfile azureMonitorProfile = default(ManagedClusterAzureMonitorProfile))
             : base(location, id, name, type, systemData, tags)
         {
             Sku = sku;
@@ -141,6 +145,7 @@ namespace Microsoft.Azure.Management.ContainerService.Models
             OidcIssuerProfile = oidcIssuerProfile;
             NodeResourceGroup = nodeResourceGroup;
             EnableRBAC = enableRBAC;
+            SupportPlan = supportPlan;
             EnablePodSecurityPolicy = enablePodSecurityPolicy;
             NetworkProfile = networkProfile;
             AadProfile = aadProfile;
@@ -155,6 +160,8 @@ namespace Microsoft.Azure.Management.ContainerService.Models
             SecurityProfile = securityProfile;
             StorageProfile = storageProfile;
             PublicNetworkAccess = publicNetworkAccess;
+            WorkloadAutoScalerProfile = workloadAutoScalerProfile;
+            AzureMonitorProfile = azureMonitorProfile;
             CustomInit();
         }
 
@@ -340,9 +347,18 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         public bool? EnableRBAC { get; set; }
 
         /// <summary>
-        /// Gets or sets (DEPRECATING) Whether to enable Kubernetes pod
-        /// security policy (preview). This feature is set for removal on
-        /// October 15th, 2020. Learn more at aka.ms/aks/azpodpolicy.
+        /// Gets or sets the support plan for the Managed Cluster. If
+        /// unspecified, the default is 'KubernetesOfficial'. Possible values
+        /// include: 'KubernetesOfficial', 'AKSLongTermSupport'
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.supportPlan")]
+        public string SupportPlan { get; set; }
+
+        /// <summary>
+        /// Gets or sets (DEPRECATED) Whether to enable Kubernetes pod security
+        /// policy (preview). PodSecurityPolicy was deprecated in Kubernetes
+        /// v1.21, and removed from Kubernetes in v1.25. Learn more at
+        /// https://aka.ms/k8s/psp and https://aka.ms/aks/psp.
         /// </summary>
         [JsonProperty(PropertyName = "properties.enablePodSecurityPolicy")]
         public bool? EnablePodSecurityPolicy { get; set; }
@@ -444,6 +460,16 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         public string PublicNetworkAccess { get; set; }
 
         /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.workloadAutoScalerProfile")]
+        public ManagedClusterWorkloadAutoScalerProfile WorkloadAutoScalerProfile { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.azureMonitorProfile")]
+        public ManagedClusterAzureMonitorProfile AzureMonitorProfile { get; set; }
+
+        /// <summary>
         /// Validate the object.
         /// </summary>
         /// <exception cref="ValidationException">
@@ -487,6 +513,14 @@ namespace Microsoft.Azure.Management.ContainerService.Models
             if (NetworkProfile != null)
             {
                 NetworkProfile.Validate();
+            }
+            if (WorkloadAutoScalerProfile != null)
+            {
+                WorkloadAutoScalerProfile.Validate();
+            }
+            if (AzureMonitorProfile != null)
+            {
+                AzureMonitorProfile.Validate();
             }
         }
     }

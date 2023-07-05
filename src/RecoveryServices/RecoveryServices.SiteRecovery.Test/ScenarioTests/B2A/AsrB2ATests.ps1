@@ -917,3 +917,20 @@ function Test-CreateRPIWithListOfDisks
     $OSDiskName = "HyperVVm5960_078F16BE-769B-4535-9177-454EFDFC4595"
     $EnableDRjob = New-AzRecoveryServicesAsrReplicationProtectedItem -ProtectableItem $VM -Name $VM.Name -ProtectionContainerMapping $ProtectionContainerMapping -RecoveryAzureStorageAccountId $StorageAccountID -RecoveryResourceGroupId $RecoveryResourceGroupId -IncludeDiskId $diskIds -OS Windows -OSDiskName $OSDiskName
 }
+
+<#
+.SYNOPSIS
+Site Recovery Create RPI with managed disks for replication
+#>
+function Test-CreateRPIWithMangedDisksForReplication
+{
+    param([string] $vaultSettingsFilePath)
+
+    Import-AzRecoveryServicesAsrVaultSettingsFile -Path $vaultSettingsFilePath
+    $fabric =  Get-AsrFabric -FriendlyName $PrimaryFabricName
+    $pc =  Get-ASRProtectionContainer -Fabric $fabric
+    $ProtectionContainerMapping = Get-ASRProtectionContainerMapping -ProtectionContainer $pc
+    $policy = Get-AzRecoveryServicesAsrPolicy -Name $PolicyName
+    $VM= Get-AsrProtectableItem -ProtectionContainer $pc -FriendlyName $VMName
+    $EnableDRjob = New-AzRecoveryServicesAsrReplicationProtectedItem -ProtectableItem $VM -Name $VM.Name -ProtectionContainerMapping $ProtectionContainerMapping[0] -RecoveryAzureStorageAccountId $StorageAccountID -OSDiskName $VMName -OS Windows -RecoveryResourceGroupId $RecoveryResourceGroupId -UseManagedDisksForReplication True
+}

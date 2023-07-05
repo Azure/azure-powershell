@@ -59,7 +59,7 @@ Using a service principal is the preferred option for recording tests because it
 In order to create a new service principal, run the following command with an unused service principal display name:
 
 ```powershell
-Set-TestFxEnvironment -ServicePrincipalDisplayName <DisplayName> -SubscriptionId <SubscriptionId> -TenantId <TenantId> -RecordMode "Record"
+Set-TestFxEnvironment -ServicePrincipalDisplayName <DisplayName> -SubscriptionId <SubscriptionId> -TenantId <TenantId> -RecorderMode "Record"
 ```
 
 This command will first create a new service principal. And then set the `Contributor` role assignment for this service principal based upon the subscription provided. After that, it will place the service principal application id and automatically generated secret into the credentials file.
@@ -67,14 +67,14 @@ This command will first create a new service principal. And then set the `Contri
 If the display name of the service principal already exists, it will prompt if you would like to create a new one with the same name.
 If the answer is "Y", the new generated application id and the secret will be saved.
 
-Alternatively, if you prefer creating a service principal by yourself from Azure portal, follow the [Azure AD guide to create a Application Service Principal](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-create-service-principal-portal#create-an-active-directory-application).
+Alternatively, if you prefer creating a service principal by yourself from Azure portal, follow the [Azure AD guide to create a Application Service Principal](https://learn.microsoft.com/en-us/azure/azure-resource-manager/resource-group-create-service-principal-portal#create-an-active-directory-application).
 
 #### Use Existing Service Principal
 
 If you would like to use an existing service principal, run the following command with an existing service principal application id and secret:
 
 ```powershell
-Set-TestFxEnvironment -ServicePrincipalId <ServicePrincipalApplicationId> -ServicePrincipalSecret <ServicePrincipalSecret> -SubscriptionId <SubscriptionId> -TenantId <TenantId> -RecordMode "Record"
+Set-TestFxEnvironment -ServicePrincipalId <ServicePrincipalApplicationId> -ServicePrincipalSecret <ServicePrincipalSecret> -SubscriptionId <SubscriptionId> -TenantId <TenantId> -RecorderMode "Record"
 ```
 
 For existing service principal, this command will respect your own settings and won't assign the `Contributor` role automatically.
@@ -95,7 +95,7 @@ For existing service principal, this command will respect your own settings and 
 
 #### Record Tests
 
-After the service principal is created, you will need to give it access to Azure resources. This can be done with the following PowerShell command. The argument for this command is the application id (See [Service Principal Application ID](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-create-service-principal-portal#get-application-id-and-authentication-key))
+After the service principal is created, you will need to give it access to Azure resources. This can be done with the following PowerShell command. The argument for this command is the application id (See [Service Principal Application ID](https://learn.microsoft.com/en-us/azure/azure-resource-manager/resource-group-create-service-principal-portal#get-application-id-and-authentication-key))
 
 ```powershell
 New-AzRoleAssignment -ApplicationId <ApplicationId> -Scope "/subscriptions/<SubscriptionId>" -RoleDefinitionName Contributor
@@ -105,11 +105,11 @@ To use this option, set the following environment variable before starting Visua
 
 `ClientId`
 
-* The [Service Principal Application ID](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-create-service-principal-portal#get-application-id-and-authentication-key)
+* The [Service Principal Application ID](https://learn.microsoft.com/en-us/azure/azure-resource-manager/resource-group-create-service-principal-portal#get-application-id-and-authentication-key)
 
 `ClientSecret`
 
-* The [Service Principal Authentication Key](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-create-service-principal-portal#get-application-id-and-authentication-key)
+* The [Service Principal Authentication Key](https://learn.microsoft.com/en-us/azure/azure-resource-manager/resource-group-create-service-principal-portal#get-application-id-and-authentication-key)
 
 ```
 TEST_CSM_ORGID_AUTHENTICATION=Environment=Prod;SubscriptionId=<SubscriptionId>;TenantId=<TenantId>;ServicePrincipal=<ClientId>;ServicePrincipalSecret=<ClientSecret>;HttpRecorderMode=Record;

@@ -22,46 +22,20 @@ Display information about a cloud service.
 .Example
 Get-AzCloudService -ResourceGroupName "ContosOrg"
 .Example
-Get-AzCloudService -ResourceGroupName "ContosOrg" -CloudServiceName "ContosoCS"
-
-ResourceGroupName Name              Location    ProvisioningState
------------------ ----              --------    -----------------
-ContosOrg         ContosoCS         eastus2euap Succeeded
-
 $cloudService = Get-AzCloudService -ResourceGroupName "ContosOrg" -CloudServiceName "ContosoCS"
 $cloudService | Format-List
-ResourceGroupName : ContosOrg
-Configuration     : xxxxxxxx
-ConfigurationUrl  :
-ExtensionProfile  : xxxxxxxx
-Id                : xxxxxxxx
-Location          : East US
-Name              : ContosoCS
-NetworkProfile    : xxxxxxxx
-OSProfile         : xxxxxxxx
-PackageUrl        : xxxxxxxx
-ProvisioningState : Succeeded
-RoleProfile       : xxxxxxxx
-StartCloudService :
-Tag               : {
-                      "Owner": "Contos"
-                    }
-Type              : Microsoft.Compute/cloudServices
-UniqueId          : xxxxxxxx
-UpgradeMode       : Auto
-
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudService
+Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.ICloudService
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <ICloudServiceIdentity>: Identity Parameter
-  [CloudServiceName <String>]: 
+  [CloudServiceName <String>]: Name of the cloud service.
   [IPConfigurationName <String>]: The IP configuration name.
   [Id <String>]: Resource identity path
   [Location <String>]: Name of the location that the OS version pertains to.
@@ -69,7 +43,7 @@ INPUTOBJECT <ICloudServiceIdentity>: Identity Parameter
   [OSFamilyName <String>]: Name of the OS family.
   [OSVersionName <String>]: Name of the OS version.
   [PublicIPAddressName <String>]: The name of the public IP Address.
-  [ResourceGroupName <String>]: 
+  [ResourceGroupName <String>]: Name of the resource group.
   [RoleInstanceName <String>]: Name of the role instance.
   [RoleName <String>]: Name of the role.
   [SubscriptionId <String>]: Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
@@ -78,7 +52,7 @@ INPUTOBJECT <ICloudServiceIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.cloudservice/get-azcloudservice
 #>
 function Get-AzCloudService {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudService])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.ICloudService])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -167,6 +141,24 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.CloudService.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
         $mapping = @{
             Get = 'Az.CloudService.private\Get-AzCloudService_Get';
             GetViaIdentity = 'Az.CloudService.private\Get-AzCloudService_GetViaIdentity';
@@ -183,6 +175,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
         throw
     }
 }
@@ -191,15 +184,32 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
         throw
     }
-}
 
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
 end {
     try {
         $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.CloudService.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
     } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
         throw
     }
-}
+} 
 }

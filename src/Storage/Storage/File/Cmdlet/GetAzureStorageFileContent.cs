@@ -155,6 +155,12 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             {
                 case LocalConstants.FileParameterSetName:
                     fileToBeDownloaded = this.File;
+                    // Build and set storage context for the output object when
+                    // 1. input track1 object and storage context is missing 2. the current context doesn't match the context of the input object 
+                    if (ShouldSetContext(this.Context, this.File.ServiceClient))
+                    {
+                        this.Context = GetStorageContextFromTrack1FileServiceClient(this.File.ServiceClient, DefaultContext);
+                    }
                     break;
 
                 case LocalConstants.ShareNameParameterSetName:
@@ -164,10 +170,22 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 
                 case LocalConstants.ShareParameterSetName:
                     fileToBeDownloaded = this.Share.GetRootDirectoryReference().GetFileReferenceByPath(path);
+                    // Build and set storage context for the output object when
+                    // 1. input track1 object and storage context is missing 2. the current context doesn't match the context of the input object 
+                    if (ShouldSetContext(this.Context, this.Share.ServiceClient))
+                    {
+                        this.Context = GetStorageContextFromTrack1FileServiceClient(this.Share.ServiceClient, DefaultContext);
+                    }
                     break;
 
                 case LocalConstants.DirectoryParameterSetName:
                     fileToBeDownloaded = this.Directory.GetFileReferenceByPath(path);
+                    // Build and set storage context for the output object when
+                    // 1. input track1 object and storage context is missing 2. the current context doesn't match the context of the input object 
+                    if (ShouldSetContext(this.Context, this.Directory.ServiceClient))
+                    {
+                        this.Context = GetStorageContextFromTrack1FileServiceClient(this.Directory.ServiceClient, DefaultContext);
+                    }
                     break;
 
                 default:
@@ -207,7 +225,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                         Resources.PrepareDownloadingFile);
 
                     // If not Oauth, use DMlib
-                    if (!(this.Channel != null && this.Channel.StorageContext != null && this.Channel.StorageContext.StorageAccount != null && this.Channel.StorageContext.StorageAccount.Credentials.IsToken))
+                    if (!(this.Channel != null && this.Channel.StorageContext != null && this.Channel.StorageContext.StorageAccount != null && 
+                    this.Channel.StorageContext.StorageAccount.Credentials != null && this.Channel.StorageContext.StorageAccount.Credentials.IsToken))
                     {
                         await DataMovementTransferHelper.DoTransfer(() =>
                         {
@@ -264,7 +283,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 
                     if (this.PassThru)
                     {
-                        WriteCloudFileObject(taskId, this.Channel, fileToBeDownloaded);
+                        WriteCloudFileObject(taskId, (AzureStorageContext)this.Context, fileToBeDownloaded);
                     }
                 });
             }

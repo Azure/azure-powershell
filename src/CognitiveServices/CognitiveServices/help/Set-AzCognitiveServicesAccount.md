@@ -20,8 +20,8 @@ Set-AzCognitiveServicesAccount [-ResourceGroupName] <String> [-Name] <String> [-
  [-IdentityType <IdentityType>] [-StorageAccountId <String[]>] [-CognitiveServicesEncryption]
  [-NetworkRuleSet <PSNetworkRuleSet>] [-PublicNetworkAccess <String>] [-DisableLocalAuth <Boolean>]
  [-RestrictOutboundNetworkAccess <Boolean>] [-AllowedFqdnList <String[]>]
- [-ApiProperty <CognitiveServicesAccountApiProperties>] [-Force] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-MultiRegionSetting <MultiRegionSettings>] [-ApiProperty <CognitiveServicesAccountApiProperties>] [-Force]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### KeyVaultEncryption
@@ -32,8 +32,8 @@ Set-AzCognitiveServicesAccount [-ResourceGroupName] <String> [-Name] <String> [-
  -KeyVersion <String> -KeyVaultUri <String> [-KeyVaultIdentityClientId <String>]
  [-NetworkRuleSet <PSNetworkRuleSet>] [-PublicNetworkAccess <String>] [-DisableLocalAuth <Boolean>]
  [-RestrictOutboundNetworkAccess <Boolean>] [-AllowedFqdnList <String[]>]
- [-ApiProperty <CognitiveServicesAccountApiProperties>] [-Force] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-MultiRegionSetting <MultiRegionSettings>] [-ApiProperty <CognitiveServicesAccountApiProperties>] [-Force]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -268,6 +268,21 @@ Parameter Sets: KeyVaultEncryption
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MultiRegionSetting
+Multi-region settings for multi-region account.
+
+```yaml
+Type: Microsoft.Azure.Management.CognitiveServices.Models.MultiRegionSettings
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

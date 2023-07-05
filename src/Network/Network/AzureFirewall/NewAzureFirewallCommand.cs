@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -56,15 +56,6 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public virtual string Location { get; set; }
 
-        [CmdletParameterBreakingChange(
-            "VirtualNetworkName",
-            deprecateByVersion: "2.0.0",
-            ChangeDescription = "This parameter will be removed in an upcoming breaking change release. After this point the Virtual Network will be provided as an object instead of a string.",
-            OldWay = "New-AzFirewall -VirtualNetworkName \"vnet-name\"",
-            NewWay = "New-AzFirewall -VirtualNetwork $vnet",
-            OldParamaterType = typeof(string),
-            NewParameterTypeName = nameof(PSVirtualNetwork),
-            ReplaceMentCmdletParameterName = "VirtualNetwork")]
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
@@ -73,15 +64,6 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public string VirtualNetworkName { get; set; }
 
-        [CmdletParameterBreakingChange(
-            "PublicIpName",
-            deprecateByVersion: "2.0.0",
-            ChangeDescription = "This parameter will be removed in an upcoming breaking change release. After this point the Public IP Address will be provided as a list of one or more objects instead of a string.",
-            OldWay = "New-AzFirewall -PublicIpName \"public-ip-name\"",
-            NewWay = "New-AzFirewall -PublicIpAddress @($publicip1, $publicip2)",
-            OldParamaterType = typeof(string),
-            NewParameterTypeName = "List<PSPublicIpAddress>",
-            ReplaceMentCmdletParameterName = "PublicIpAddress")]
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
@@ -289,6 +271,13 @@ namespace Microsoft.Azure.Commands.Network
             sku.Name = !string.IsNullOrEmpty(this.SkuName) ? this.SkuName : MNM.AzureFirewallSkuName.AZFWVNet;
             sku.Tier = !string.IsNullOrEmpty(this.SkuTier) ? this.SkuTier : MNM.AzureFirewallSkuTier.Standard;
 
+            if (sku.Tier.Equals(MNM.AzureFirewallSkuTier.Basic) && !string.IsNullOrEmpty(this.Location))
+            {
+                if (FirewallConstants.IsRegionRestrictedForBasicFirewall(this.Location))
+                {
+                    throw new ArgumentException("Basic Sku Firewall is not supported in this region yet - " + this.Location, nameof(this.Location));
+                }
+            }
             if (this.SkuName == MNM.AzureFirewallSkuName.AZFWHub)
             {
 
@@ -306,6 +295,11 @@ namespace Microsoft.Azure.Commands.Network
                 if (this.HubIPAddress != null && this.HubIPAddress.PublicIPs != null && this.HubIPAddress.PublicIPs.Addresses != null)
                 {
                     throw new ArgumentException("The list of public Ip addresses cannot be provided during the firewall creation");
+                }
+
+                if(this.RouteServerId != null)
+                {
+                    throw new ArgumentException("The Route Server is not supported on AZFW_Hub SKU Firewalls");
                 }
 
                 firewall = new PSAzureFirewall()

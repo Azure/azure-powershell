@@ -39,7 +39,7 @@ Get-AzDataCollectionRuleAssociation -InputObject <PSDataCollectionRuleResource>
 ## DESCRIPTION
 The **Get-AzDataCollectionRuleAssociation** cmdlet gets one or more data collection rules associations (DCRA).
 
-To apply a DCR to a virtual machine, you create an association for the virtual machine. A virtual machine may have an association to multiple DCRs, and a DCR may have multiple virtual machines associated to it. This allows you to define a set of DCRs, each matching a particular requirement, and apply them to only the virtual machines where they apply. Here is the ["Configure data collection for the Azure Monitor agent"](https://docs.microsoft.com/azure/azure-monitor/platform/data-collection-rule-azure-monitor-agent) using DCRA article.
+To apply a DCR to a virtual machine, you create an association for the virtual machine. A virtual machine may have an association to multiple DCRs, and a DCR may have multiple virtual machines associated to it. This allows you to define a set of DCRs, each matching a particular requirement, and apply them to only the virtual machines where they apply. Here is the ["Configure data collection for the Azure Monitor agent"](https://learn.microsoft.com/azure/azure-monitor/platform/data-collection-rule-azure-monitor-agent) using DCRA article.
 
 ## EXAMPLES
 

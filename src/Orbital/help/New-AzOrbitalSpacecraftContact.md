@@ -14,9 +14,9 @@ Creates a contact.
 
 ```
 New-AzOrbitalSpacecraftContact -Name <String> -ResourceGroupName <String> -SpacecraftName <String>
- [-SubscriptionId <String>] [-ContactProfileId <String>] [-GroundStationName <String>]
- [-ReservationEndTime <DateTime>] [-ReservationStartTime <DateTime>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -ContactProfileId <String> -GroundStationName <String> -ReservationEndTime <DateTime>
+ -ReservationStartTime <DateTime> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -26,16 +26,16 @@ Creates a contact.
 
 ### Example 1: Creates a contact.
 ```powershell
-$dateS = Get-Date -Day 22
-$dateE = Get-Date -Day 23
+$dateS = Get-Date -Year 2023 -Month 5 -Day 10 -Hour 11 -Minute 06 -Second 07
+$dateE = Get-Date -Year 2023 -Month 5 -Day 10 -Hour 11 -Minute 16 -Second 21
 
-New-AzOrbitalSpacecraftContact -Name azps-orbital-contact -ResourceGroupName azpstest-gp -SpacecraftName AQUA -ContactProfileId "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest-gp/providers/Microsoft.Orbital/contactProfiles/azps-orbital-contactprofile" -GroundStationName "WESTUS2_1" -ReservationStartTime $dateS -ReservationEndTime $dateE
+New-AzOrbitalSpacecraftContact -Name azps-orbital-contact -ResourceGroupName azpstest-gp -SpacecraftName SwedenAQUASpacecraft -ContactProfileId "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest-gp/providers/Microsoft.Orbital/contactProfiles/Sweden-contactprofile" -GroundStationName "Microsoft_Gavle" -ReservationStartTime $dateS -ReservationEndTime $dateE
 ```
 
 ```output
-Name                 GroundStationName Status    ReservationStartTime     ReservationEndTime     ResourceGroupName
-----                 ----------------- ------    --------------------     ------------------     -----------------
-azps-orbital-contact WESTUS2_1         scheduled 2022-06-23 09:13:05 AM   2022-06-24 09:13:10 AM azpstest-gp
+Name                 GroundStationName Status    ReservationStartTime ReservationEndTime   ResourceGroupName
+----                 ----------------- ------    -------------------- ------------------   -----------------
+azps-orbital-contact Microsoft_Gavle   scheduled 5/10/2023 3:06:07 AM 5/10/2023 3:16:21 AM azpstest-gp
 ```
 
 Creates a contact.
@@ -65,7 +65,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -73,7 +73,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -95,7 +96,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -140,7 +141,7 @@ Type: System.DateTime
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -155,7 +156,7 @@ Type: System.DateTime
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -246,7 +247,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.IContact
+### Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.IContact
 
 ## NOTES
 

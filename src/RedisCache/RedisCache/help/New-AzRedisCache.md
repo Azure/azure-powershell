@@ -151,7 +151,7 @@ New-AzRedisCache -ResourceGroupName "MyGroup" -Name "MyCache" -Location "Central
 
 ### Example 5: Configure data persistence for a Premium Azure Cache for Redis
 
-Persistence writes Redis data into an Azure Storage account that you own and manage. So before configuring data persistence you need to have [storage account](https://docs.microsoft.com/en-us/azure/storage/common/storage-account-create?tabs=azure-powershell) in same resource group. Choose a storage account in the same region and subscription as the cache, and a Premium Storage account is recommended because premium storage has higher throughput.
+Persistence writes Redis data into an Azure Storage account that you own and manage. So before configuring data persistence you need to have [storage account](https://learn.microsoft.com/en-us/azure/storage/common/storage-account-create?tabs=azure-powershell) in same resource group. Choose a storage account in the same region and subscription as the cache, and a Premium Storage account is recommended because premium storage has higher throughput.
 
 After creating a storage account, get the storage account connection string using this procedure.
 
@@ -587,7 +587,7 @@ Accept wildcard characters: False
 ```
 
 ### -Zone
-List of Azure regions with [Availability zones](https://docs.microsoft.com/en-us/azure/availability-zones/az-region#azure-services-supporting-availability-zones).
+List of Azure regions with [Availability zones](https://learn.microsoft.com/en-us/azure/availability-zones/az-region#azure-services-supporting-availability-zones).
 
 ```yaml
 Type: System.String[]

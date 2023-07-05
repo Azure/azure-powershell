@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.dll-Help.xml
 Module Name: Az.EventGrid
-online version:
+online version: https://learn.microsoft.com/powershell/module/az.eventgrid/remove-azeventgridsystemtopic
 schema: 2.0.0
 ---
 

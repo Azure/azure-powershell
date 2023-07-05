@@ -21,7 +21,6 @@ using Microsoft.Azure.Commands.Synapse.Models.WorkspacePackages;
 using Microsoft.Azure.Commands.Synapse.Properties;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.Synapse.Models;
-using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections;
@@ -111,9 +110,13 @@ namespace Microsoft.Azure.Commands.Synapse
         public int NodeCount { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = false,
+            HelpMessage = HelpMessages.IsolatedCompute)]
+        public bool? EnableIsolatedCompute { get; set; }
+
+        [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = false,
             HelpMessage = HelpMessages.NodeSize)]
-        [ValidateSet(Management.Synapse.Models.NodeSize.Small, Management.Synapse.Models.NodeSize.Medium, Management.Synapse.Models.NodeSize.Large, IgnoreCase = true)]
-        [PSArgumentCompleter(Management.Synapse.Models.NodeSize.Small, Management.Synapse.Models.NodeSize.Medium, Management.Synapse.Models.NodeSize.Large)]
+        [ValidateSet(Management.Synapse.Models.NodeSize.Small, Management.Synapse.Models.NodeSize.Medium, Management.Synapse.Models.NodeSize.Large, Management.Synapse.Models.NodeSize.XLarge, Management.Synapse.Models.NodeSize.XXLarge, Management.Synapse.Models.NodeSize.XXXLarge, IgnoreCase = true)]
+        [PSArgumentCompleter(Management.Synapse.Models.NodeSize.Small, Management.Synapse.Models.NodeSize.Medium, Management.Synapse.Models.NodeSize.Large, Management.Synapse.Models.NodeSize.XLarge, Management.Synapse.Models.NodeSize.XXLarge, Management.Synapse.Models.NodeSize.XXXLarge)]
         public string NodeSize { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = false, 
@@ -138,11 +141,6 @@ namespace Microsoft.Azure.Commands.Synapse
         [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = false,
             HelpMessage = HelpMessages.LibraryRequirementsFilePath)]
         public string LibraryRequirementsFilePath { get; set; }
-
-        [CmdletParameterBreakingChange("SparkConfigFilePath", ReplaceMentCmdletParameterName = "SparkConfiguration")]
-        [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = false,
-           HelpMessage = HelpMessages.SparkConfigPropertiesFilePath)]
-        public string SparkConfigFilePath { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = false,
            HelpMessage = HelpMessages.SparkConfigurationResource)]
@@ -215,9 +213,9 @@ namespace Microsoft.Azure.Commands.Synapse
             existingSparkPool.Tags = this.IsParameterBound(c => c.Tag) ? TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true) : existingSparkPool.Tags;
             existingSparkPool.NodeCount = this.IsParameterBound(c => c.NodeCount) ? this.NodeCount : existingSparkPool.NodeCount;
             existingSparkPool.NodeSizeFamily = NodeSizeFamily.MemoryOptimized;
+            existingSparkPool.IsComputeIsolationEnabled = this.EnableIsolatedCompute != null ? this.EnableIsolatedCompute : existingSparkPool.IsComputeIsolationEnabled ?? false;
             existingSparkPool.NodeSize = this.IsParameterBound(c => c.NodeSize) ? this.NodeSize : existingSparkPool.NodeSize;
             existingSparkPool.LibraryRequirements = this.IsParameterBound(c => c.LibraryRequirementsFilePath) ? CreateLibraryRequirements() : existingSparkPool.LibraryRequirements;
-            existingSparkPool.SparkConfigProperties = this.IsParameterBound(c => c.SparkConfigFilePath) ? CreateSparkConfigProperties() : existingSparkPool.SparkConfigProperties;
             existingSparkPool.SparkVersion = this.IsParameterBound(c => c.SparkVersion) ? this.SparkVersion : existingSparkPool.SparkVersion;
 
             if (this.IsParameterBound(c => c.EnableAutoScale)
@@ -262,9 +260,9 @@ namespace Microsoft.Azure.Commands.Synapse
 
             if (this.IsParameterBound(c => c.PackageAction) && this.IsParameterBound(c => c.Package))
             {
-                if (this.PackageAction == SynapseConstants.PackageActionType.Add)
+                if (this.PackageAction == SynapseConstants.PackageActionType.Add || this.PackageAction == SynapseConstants.PackageActionType.Set)
                 {
-                    if (existingSparkPool.CustomLibraries == null)
+                    if (existingSparkPool.CustomLibraries == null || this.PackageAction == SynapseConstants.PackageActionType.Set)
                     {
                         existingSparkPool.CustomLibraries = new List<LibraryInfo>();
                     }
@@ -322,22 +320,6 @@ namespace Microsoft.Azure.Commands.Synapse
             var powerShellDestinationPath = SessionState.Path.GetUnresolvedProviderPathFromPSPath(LibraryRequirementsFilePath);
 
             return new LibraryRequirements
-            {
-                Filename = Path.GetFileName(powerShellDestinationPath),
-                Content = this.ReadFileAsText(powerShellDestinationPath)
-            };
-        }
-
-        private SparkConfigProperties CreateSparkConfigProperties()
-        {
-            if (string.IsNullOrEmpty(SparkConfigFilePath))
-            {
-                return null;
-            }
-
-            var powerShellDestinationPath = SessionState.Path.GetUnresolvedProviderPathFromPSPath(SparkConfigFilePath);
-
-            return new SparkConfigProperties
             {
                 Filename = Path.GetFileName(powerShellDestinationPath),
                 Content = this.ReadFileAsText(powerShellDestinationPath)

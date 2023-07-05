@@ -18,6 +18,7 @@ Get-AzBatchSupportedVirtualMachineSku [-Location] <String> [[-MaxResultCount] <I
 ```
 
 ## DESCRIPTION
+Gets the list of Batch supported Virtual Machine VM sizes available at the given location.
 
 ## EXAMPLES
 

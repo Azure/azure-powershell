@@ -68,12 +68,6 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
         public void OnLoadParameterMap(ParameterMapTelemetryData telemetryData);
 
         /// <summary>
-        /// Collects when we fails to parse a command in the model.
-        /// </summary>
-        /// <param name="telemetryData">The data to collect.</param>
-        public void OnParseCommandLineFailure(CommandLineParsingTelemetryData telemetryData);
-
-        /// <summary>
         /// Collects when there is a non-specific failure in the code.
         /// </summary>
         /// <remarks>

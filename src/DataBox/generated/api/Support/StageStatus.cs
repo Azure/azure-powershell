@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support
 {
 
-    /// <summary>Status of the job stage.</summary>
+    /// <summary>Holds the device erasure completion status</summary>
     public partial struct StageStatus :
         System.IEquatable<StageStatus>
     {
@@ -15,6 +15,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support
 
         /// <summary>Stage is cancelling.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.StageStatus Cancelling = @"Cancelling";
+
+        /// <summary>Stage has performed customer action for clean up.</summary>
+        public static Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.StageStatus CustomerActionPerformed = @"CustomerActionPerformed";
+
+        /// <summary>Stage has performed customer action for clean up.</summary>
+        public static Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.StageStatus CustomerActionPerformedForCleanUp = @"CustomerActionPerformedForCleanUp";
 
         /// <summary>Stage has failed.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.StageStatus Failed = @"Failed";
@@ -36,6 +42,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support
 
         /// <summary>Stage is stuck until customer takes some action.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.StageStatus WaitingForCustomerAction = @"WaitingForCustomerAction";
+
+        /// <summary>Stage is waiting for customer action for clean up.</summary>
+        public static Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.StageStatus WaitingForCustomerActionForCleanUp = @"WaitingForCustomerActionForCleanUp";
+
+        /// <summary>Stage is waiting for customer action for kek action items.</summary>
+        public static Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.StageStatus WaitingForCustomerActionForKek = @"WaitingForCustomerActionForKek";
 
         /// <summary>the value for an instance of the <see cref="StageStatus" /> Enum.</summary>
         private string _value { get; set; }
@@ -70,7 +82,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support
             return this._value.GetHashCode();
         }
 
-        /// <summary>Creates an instance of the <see cref="StageStatus" Enum class./></summary>
+        /// <summary>Creates an instance of the <see cref="StageStatus"/> Enum class.</summary>
         /// <param name="underlyingValue">the value to create an instance for.</param>
         private StageStatus(string underlyingValue)
         {
@@ -101,8 +113,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support
         }
 
         /// <summary>Overriding != operator for enum StageStatus</summary>
-        /// <param name="e1">the value to compare against <see cref="e2" /></param>
-        /// <param name="e2">the value to compare against <see cref="e1" /></param>
+        /// <param name="e1">the value to compare against <paramref name="e2" /></param>
+        /// <param name="e2">the value to compare against <paramref name="e1" /></param>
         /// <returns><c>true</c> if the two instances are not equal to the same value</returns>
         public static bool operator !=(Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.StageStatus e1, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.StageStatus e2)
         {
@@ -110,8 +122,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support
         }
 
         /// <summary>Overriding == operator for enum StageStatus</summary>
-        /// <param name="e1">the value to compare against <see cref="e2" /></param>
-        /// <param name="e2">the value to compare against <see cref="e1" /></param>
+        /// <param name="e1">the value to compare against <paramref name="e2" /></param>
+        /// <param name="e2">the value to compare against <paramref name="e1" /></param>
         /// <returns><c>true</c> if the two instances are equal to the same value</returns>
         public static bool operator ==(Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.StageStatus e1, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.StageStatus e2)
         {

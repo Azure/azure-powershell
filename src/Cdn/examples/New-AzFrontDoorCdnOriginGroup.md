@@ -11,3 +11,4 @@ Name   ResourceGroupName
 org001 testps-rg-da16jm
 ```
 
+Create an AzureFrontDoor origin group under the AzureFrontDoor profile

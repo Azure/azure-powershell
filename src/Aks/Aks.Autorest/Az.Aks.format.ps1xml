@@ -2,6 +2,56 @@
 <Configuration>
   <ViewDefinitions>
     <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.AgentPoolsAbortLatestOperationAcceptedResponseHeaders</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.AgentPoolsAbortLatestOperationAcceptedResponseHeaders</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>AzureAsyncOperation</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Location</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>AzureAsyncOperation</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Location</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.AgentPoolsDeleteAcceptedResponseHeaders</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.AgentPoolsDeleteAcceptedResponseHeaders</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Location</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Location</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
       <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.AksIdentity</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.AksIdentity</TypeName>
@@ -10,6 +60,12 @@
         <TableHeaders>
           <TableColumnHeader>
             <Label>AgentPoolName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>CommandId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ConfigName</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>Location</Label>
@@ -37,6 +93,12 @@
                 <PropertyName>AgentPoolName</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
+                <PropertyName>CommandId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ConfigName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>Location</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
@@ -60,9 +122,395 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.AccessProfile</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ManagedClustersAbortLatestOperationAcceptedResponseHeaders</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.AccessProfile</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ManagedClustersAbortLatestOperationAcceptedResponseHeaders</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>AzureAsyncOperation</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Location</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>AzureAsyncOperation</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Location</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ManagedClustersDeleteAcceptedResponseHeaders</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ManagedClustersDeleteAcceptedResponseHeaders</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Location</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Location</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ManagedClustersGetCommandResultAcceptedResponseHeaders</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ManagedClustersGetCommandResultAcceptedResponseHeaders</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Location</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Location</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ManagedClustersResetAadProfileAcceptedResponseHeaders</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ManagedClustersResetAadProfileAcceptedResponseHeaders</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Location</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Location</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ManagedClustersResetServicePrincipalProfileAcceptedResponseHeaders</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ManagedClustersResetServicePrincipalProfileAcceptedResponseHeaders</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Location</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Location</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ManagedClustersRotateClusterCertificatesAcceptedResponseHeaders</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ManagedClustersRotateClusterCertificatesAcceptedResponseHeaders</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Location</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Location</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ManagedClustersRotateServiceAccountSigningKeysAcceptedResponseHeaders</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ManagedClustersRotateServiceAccountSigningKeysAcceptedResponseHeaders</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Location</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Location</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ManagedClustersRunCommandAcceptedResponseHeaders</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ManagedClustersRunCommandAcceptedResponseHeaders</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Location</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Location</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ManagedClustersStartAcceptedResponseHeaders</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ManagedClustersStartAcceptedResponseHeaders</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Location</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Location</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ManagedClustersStopAcceptedResponseHeaders</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ManagedClustersStopAcceptedResponseHeaders</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Location</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Location</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api30.Resource</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api30.Resource</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api30.SystemData</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api30.SystemData</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>CreatedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>CreatedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>CreatedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>LastModifiedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>LastModifiedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>LastModifiedByType</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>CreatedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>CreatedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>CreatedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>LastModifiedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>LastModifiedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>LastModifiedByType</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api30.TrackedResource</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api30.TrackedResource</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Location</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Location</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api30.TrackedResourceTags</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api30.TrackedResourceTags</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Item</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Item</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.AccessProfile</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.AccessProfile</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -82,9 +530,37 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.AgentPool</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.AgentPool</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.AgentPool</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.AgentPool</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>AzureAsyncOperation</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>AzureAsyncOperation</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.AgentPoolAvailableVersions</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.AgentPoolAvailableVersions</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -104,31 +580,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.AgentPoolAvailableVersions</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.AgentPoolAvailableVersionsPropertiesAgentPoolVersionsItem</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.AgentPoolAvailableVersions</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Name</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Name</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.AgentPoolAvailableVersionsPropertiesAgentPoolVersionsItem</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.AgentPoolAvailableVersionsPropertiesAgentPoolVersionsItem</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.AgentPoolAvailableVersionsPropertiesAgentPoolVersionsItem</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -160,9 +614,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.AgentPoolListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.AgentPoolListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.AgentPoolListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.AgentPoolListResult</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -182,9 +636,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.AgentPoolUpgradeProfile</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.AgentPoolUpgradeProfile</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.AgentPoolUpgradeProfile</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.AgentPoolUpgradeProfile</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -204,9 +658,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.AgentPoolUpgradeProfileProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.AgentPoolUpgradeProfileProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.AgentPoolUpgradeProfileProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.AgentPoolUpgradeProfileProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -238,9 +692,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.AgentPoolUpgradeProfilePropertiesUpgradesItem</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.AgentPoolUpgradeProfilePropertiesUpgradesItem</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.AgentPoolUpgradeProfilePropertiesUpgradesItem</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.AgentPoolUpgradeProfilePropertiesUpgradesItem</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -266,9 +720,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.AgentPoolUpgradeSettings</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.AgentPoolUpgradeSettings</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.AgentPoolUpgradeSettings</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.AgentPoolUpgradeSettings</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -288,9 +742,49 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.CloudErrorBody</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.AzureKeyVaultKms</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.CloudErrorBody</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.AzureKeyVaultKms</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Enabled</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>KeyId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>KeyVaultNetworkAccess</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>KeyVaultResourceId</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Enabled</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>KeyId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>KeyVaultNetworkAccess</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>KeyVaultResourceId</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.CloudErrorBody</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.CloudErrorBody</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -322,9 +816,61 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.ContainerServiceLinuxProfile</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.CommandResultProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.ContainerServiceLinuxProfile</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.CommandResultProperties</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>ExitCode</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>FinishedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Log</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ProvisioningState</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Reason</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>StartedAt</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>ExitCode</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>FinishedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Log</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ProvisioningState</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Reason</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>StartedAt</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ContainerServiceLinuxProfile</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ContainerServiceLinuxProfile</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -344,73 +890,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.ContainerServiceMasterProfile</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ContainerServiceNetworkProfile</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.ContainerServiceMasterProfile</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Count</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>DnsPrefix</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>FirstConsecutiveStaticIP</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Fqdn</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>OSDiskSizeGb</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>StorageProfile</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>VMSize</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>VnetSubnetId</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Count</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>DnsPrefix</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>FirstConsecutiveStaticIP</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Fqdn</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>OSDiskSizeGb</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>StorageProfile</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>VMSize</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>VnetSubnetId</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.ContainerServiceNetworkProfile</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.ContainerServiceNetworkProfile</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ContainerServiceNetworkProfile</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -421,13 +903,22 @@
             <Label>DockerBridgeCidr</Label>
           </TableColumnHeader>
           <TableColumnHeader>
+            <Label>IPFamily</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>LoadBalancerSku</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>NetworkDataplane</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>NetworkMode</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>NetworkPlugin</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>NetworkPluginMode</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>NetworkPolicy</Label>
@@ -439,7 +930,13 @@
             <Label>PodCidr</Label>
           </TableColumnHeader>
           <TableColumnHeader>
+            <Label>PodCidrs</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>ServiceCidr</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ServiceCidrs</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -452,13 +949,22 @@
                 <PropertyName>DockerBridgeCidr</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
+                <PropertyName>IPFamily</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>LoadBalancerSku</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>NetworkDataplane</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>NetworkMode</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>NetworkPlugin</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>NetworkPluginMode</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>NetworkPolicy</PropertyName>
@@ -470,7 +976,13 @@
                 <PropertyName>PodCidr</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
+                <PropertyName>PodCidrs</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>ServiceCidr</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ServiceCidrs</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -478,9 +990,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.ContainerServiceSshPublicKey</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ContainerServiceSshPublicKey</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.ContainerServiceSshPublicKey</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ContainerServiceSshPublicKey</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -500,27 +1012,21 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.ContainerServiceVMDiagnostics</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.CreationData</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.ContainerServiceVMDiagnostics</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.CreationData</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
-            <Label>Enabled</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>StorageUri</Label>
+            <Label>SourceResourceId</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
-                <PropertyName>Enabled</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>StorageUri</PropertyName>
+                <PropertyName>SourceResourceId</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -528,9 +1034,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.CredentialResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.CredentialResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.CredentialResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.CredentialResult</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -556,369 +1062,21 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.ManagedCluster</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.EndpointDependency</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.ManagedCluster</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.EndpointDependency</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
-            <Label>AadProfileAdminGroupObjectID</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>AadProfileClientAppId</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>AadProfileEnableAzureRbac</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>AadProfileManaged</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>AadProfileServerAppId</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>AadProfileServerAppSecret</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>AadProfileTenantId</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ApiServerAccessProfileAuthorizedIPRange</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ApiServerAccessProfileEnablePrivateCluster</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>AutoScalerProfileBalanceSimilarNodeGroup</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>AutoScalerProfileExpander</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>AutoScalerProfileMaxEmptyBulkDelete</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>AutoScalerProfileMaxGracefulTerminationSec</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>AutoScalerProfileMaxTotalUnreadyPercentage</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>AutoScalerProfileNewPodScaleUpDelay</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>AutoScalerProfileOkTotalUnreadyCount</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>AutoScalerProfileScaleDownDelayAfterAdd</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>AutoScalerProfileScaleDownDelayAfterDelete</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>AutoScalerProfileScaleDownDelayAfterFailure</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>AutoScalerProfileScaleDownUnneededTime</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>AutoScalerProfileScaleDownUnreadyTime</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>AutoScalerProfileScaleDownUtilizationThreshold</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>AutoScalerProfileScanInterval</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>AutoScalerProfileSkipNodesWithLocalStorage</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>AutoScalerProfileSkipNodesWithSystemPod</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>DiskEncryptionSetId</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>DnsPrefix</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>EnablePodSecurityPolicy</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>EnableRbac</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Fqdn</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>IdentityPrincipalId</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>IdentityTenantId</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>IdentityType</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>KubernetesVersion</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>LinuxProfileAdminUsername</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>LoadBalancerProfileAllocatedOutboundPort</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>LoadBalancerProfileIdleTimeoutInMinute</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Location</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ManagedOutboundIPCount</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>MaxAgentPool</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Name</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>NetworkProfileDnsServiceIP</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>NetworkProfileDockerBridgeCidr</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>NetworkProfileLoadBalancerSku</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>NetworkProfileNetworkMode</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>NetworkProfileNetworkPlugin</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>NetworkProfileNetworkPolicy</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>NetworkProfileOutboundType</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>NetworkProfilePodCidr</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>NetworkProfileServiceCidr</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>NodeResourceGroup</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>PowerStateCode</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>PrivateFqdn</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ProvisioningState</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ServicePrincipalProfileClientId</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ServicePrincipalProfileSecret</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>WindowProfileAdminPassword</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>WindowProfileAdminUsername</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>WindowProfileLicenseType</Label>
+            <Label>DomainName</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
-                <PropertyName>AadProfileAdminGroupObjectID</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>AadProfileClientAppId</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>AadProfileEnableAzureRbac</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>AadProfileManaged</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>AadProfileServerAppId</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>AadProfileServerAppSecret</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>AadProfileTenantId</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ApiServerAccessProfileAuthorizedIPRange</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ApiServerAccessProfileEnablePrivateCluster</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>AutoScalerProfileBalanceSimilarNodeGroup</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>AutoScalerProfileExpander</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>AutoScalerProfileMaxEmptyBulkDelete</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>AutoScalerProfileMaxGracefulTerminationSec</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>AutoScalerProfileMaxTotalUnreadyPercentage</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>AutoScalerProfileNewPodScaleUpDelay</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>AutoScalerProfileOkTotalUnreadyCount</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>AutoScalerProfileScaleDownDelayAfterAdd</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>AutoScalerProfileScaleDownDelayAfterDelete</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>AutoScalerProfileScaleDownDelayAfterFailure</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>AutoScalerProfileScaleDownUnneededTime</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>AutoScalerProfileScaleDownUnreadyTime</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>AutoScalerProfileScaleDownUtilizationThreshold</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>AutoScalerProfileScanInterval</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>AutoScalerProfileSkipNodesWithLocalStorage</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>AutoScalerProfileSkipNodesWithSystemPod</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>DiskEncryptionSetId</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>DnsPrefix</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>EnablePodSecurityPolicy</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>EnableRbac</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Fqdn</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>IdentityPrincipalId</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>IdentityTenantId</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>IdentityType</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>KubernetesVersion</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>LinuxProfileAdminUsername</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>LoadBalancerProfileAllocatedOutboundPort</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>LoadBalancerProfileIdleTimeoutInMinute</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Location</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ManagedOutboundIPCount</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>MaxAgentPool</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Name</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>NetworkProfileDnsServiceIP</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>NetworkProfileDockerBridgeCidr</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>NetworkProfileLoadBalancerSku</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>NetworkProfileNetworkMode</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>NetworkProfileNetworkPlugin</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>NetworkProfileNetworkPolicy</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>NetworkProfileOutboundType</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>NetworkProfilePodCidr</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>NetworkProfileServiceCidr</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>NodeResourceGroup</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>PowerStateCode</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>PrivateFqdn</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ProvisioningState</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ServicePrincipalProfileClientId</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ServicePrincipalProfileSecret</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>WindowProfileAdminPassword</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>WindowProfileAdminUsername</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>WindowProfileLicenseType</PropertyName>
+                <PropertyName>DomainName</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -926,9 +1084,295 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.ManagedClusterAadProfile</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.EndpointDetail</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.ManagedClusterAadProfile</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.EndpointDetail</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Description</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>IPAddress</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Port</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Protocol</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Description</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>IPAddress</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Port</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Protocol</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ExtendedLocation</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ExtendedLocation</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.KubeletConfig</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.KubeletConfig</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>AllowedUnsafeSysctl</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ContainerLogMaxFile</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ContainerLogMaxSizeMb</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>CpuCfsQuota</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>CpuCfsQuotaPeriod</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>CpuManagerPolicy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>FailSwapOn</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ImageGcHighThreshold</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ImageGcLowThreshold</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>PodMaxPid</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>TopologyManagerPolicy</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>AllowedUnsafeSysctl</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ContainerLogMaxFile</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ContainerLogMaxSizeMb</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>CpuCfsQuota</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>CpuCfsQuotaPeriod</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>CpuManagerPolicy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>FailSwapOn</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ImageGcHighThreshold</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ImageGcLowThreshold</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>PodMaxPid</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>TopologyManagerPolicy</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.LinuxOSConfig</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.LinuxOSConfig</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>SwapFileSizeMb</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>TransparentHugePageDefrag</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>TransparentHugePageEnabled</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>SwapFileSizeMb</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>TransparentHugePageDefrag</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>TransparentHugePageEnabled</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.MaintenanceConfiguration</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.MaintenanceConfiguration</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.MaintenanceConfigurationListResult</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.MaintenanceConfigurationListResult</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>NextLink</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>NextLink</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ManagedCluster</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ManagedCluster</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Location</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedByType</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Location</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedByType</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ManagedClusterAadProfile</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ManagedClusterAadProfile</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -984,9 +1428,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.ManagedClusterAccessProfile</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ManagedClusterAccessProfile</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.ManagedClusterAccessProfile</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ManagedClusterAccessProfile</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -995,6 +1439,24 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedByType</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -1006,15 +1468,33 @@
               <TableColumnItem>
                 <PropertyName>Name</PropertyName>
               </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedByType</PropertyName>
+              </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
         </TableRowEntries>
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.ManagedClusterAddonProfile</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ManagedClusterAddonProfile</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.ManagedClusterAddonProfile</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ManagedClusterAddonProfile</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1034,9 +1514,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.ManagedClusterAddonProfileConfig</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ManagedClusterAddonProfileConfig</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.ManagedClusterAddonProfileConfig</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ManagedClusterAddonProfileConfig</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1056,9 +1536,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.ManagedClusterAddonProfileIdentity</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ManagedClusterAddonProfileIdentity</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.ManagedClusterAddonProfileIdentity</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ManagedClusterAddonProfileIdentity</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1090,9 +1570,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.ManagedClusterAgentPoolProfile</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ManagedClusterAgentPoolProfile</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.ManagedClusterAgentPoolProfile</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ManagedClusterAgentPoolProfile</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1103,10 +1583,76 @@
             <Label>Count</Label>
           </TableColumnHeader>
           <TableColumnHeader>
+            <Label>CreationDataSourceResourceId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>CurrentOrchestratorVersion</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>EnableAutoScaling</Label>
           </TableColumnHeader>
           <TableColumnHeader>
+            <Label>EnableEncryptionAtHost</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>EnableFips</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>EnableNodePublicIP</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>EnableUltraSsd</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>GpuInstanceProfile</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>HostGroupId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>KubeletConfigAllowedUnsafeSysctl</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>KubeletConfigContainerLogMaxFile</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>KubeletConfigContainerLogMaxSizeMb</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>KubeletConfigCpuCfsQuota</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>KubeletConfigCpuCfsQuotaPeriod</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>KubeletConfigCpuManagerPolicy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>KubeletConfigFailSwapOn</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>KubeletConfigImageGcHighThreshold</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>KubeletConfigImageGcLowThreshold</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>KubeletConfigPodMaxPid</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>KubeletConfigTopologyManagerPolicy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>KubeletDiskType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>LinuxOSConfigSwapFileSizeMb</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>LinuxOSConfigTransparentHugePageDefrag</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>LinuxOSConfigTransparentHugePageEnabled</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>MaxCount</Label>
@@ -1124,6 +1670,9 @@
             <Label>NodeImageVersion</Label>
           </TableColumnHeader>
           <TableColumnHeader>
+            <Label>NodePublicIPPrefixId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>NodeTaint</Label>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -1133,10 +1682,16 @@
             <Label>OSDiskType</Label>
           </TableColumnHeader>
           <TableColumnHeader>
+            <Label>OSSku</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>OSType</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>OrchestratorVersion</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>PodSubnetId</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>PowerStateCode</Label>
@@ -1146,6 +1701,9 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>ProximityPlacementGroupId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ScaleDownMode</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>ScaleSetEvictionPolicy</Label>
@@ -1166,6 +1724,9 @@
             <Label>VnetSubnetId</Label>
           </TableColumnHeader>
           <TableColumnHeader>
+            <Label>WorkloadRuntime</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>Name</Label>
           </TableColumnHeader>
         </TableHeaders>
@@ -1179,10 +1740,76 @@
                 <PropertyName>Count</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
+                <PropertyName>CreationDataSourceResourceId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>CurrentOrchestratorVersion</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>EnableAutoScaling</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
+                <PropertyName>EnableEncryptionAtHost</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>EnableFips</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>EnableNodePublicIP</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>EnableUltraSsd</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>GpuInstanceProfile</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>HostGroupId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>KubeletConfigAllowedUnsafeSysctl</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>KubeletConfigContainerLogMaxFile</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>KubeletConfigContainerLogMaxSizeMb</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>KubeletConfigCpuCfsQuota</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>KubeletConfigCpuCfsQuotaPeriod</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>KubeletConfigCpuManagerPolicy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>KubeletConfigFailSwapOn</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>KubeletConfigImageGcHighThreshold</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>KubeletConfigImageGcLowThreshold</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>KubeletConfigPodMaxPid</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>KubeletConfigTopologyManagerPolicy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>KubeletDiskType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>LinuxOSConfigSwapFileSizeMb</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>LinuxOSConfigTransparentHugePageDefrag</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>LinuxOSConfigTransparentHugePageEnabled</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>MaxCount</PropertyName>
@@ -1200,6 +1827,9 @@
                 <PropertyName>NodeImageVersion</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
+                <PropertyName>NodePublicIPPrefixId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>NodeTaint</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
@@ -1209,10 +1839,16 @@
                 <PropertyName>OSDiskType</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
+                <PropertyName>OSSku</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>OSType</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>OrchestratorVersion</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>PodSubnetId</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>PowerStateCode</PropertyName>
@@ -1222,6 +1858,9 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>ProximityPlacementGroupId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ScaleDownMode</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>ScaleSetEvictionPolicy</PropertyName>
@@ -1242,6 +1881,9 @@
                 <PropertyName>VnetSubnetId</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
+                <PropertyName>WorkloadRuntime</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>Name</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
@@ -1250,9 +1892,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.ManagedClusterAgentPoolProfileProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ManagedClusterAgentPoolProfileProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.ManagedClusterAgentPoolProfileProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ManagedClusterAgentPoolProfileProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1263,10 +1905,31 @@
             <Label>Count</Label>
           </TableColumnHeader>
           <TableColumnHeader>
+            <Label>CurrentOrchestratorVersion</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>EnableAutoScaling</Label>
           </TableColumnHeader>
           <TableColumnHeader>
+            <Label>EnableEncryptionAtHost</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>EnableFips</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>EnableNodePublicIP</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>EnableUltraSsd</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>GpuInstanceProfile</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>HostGroupId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>KubeletDiskType</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>MaxCount</Label>
@@ -1284,6 +1947,9 @@
             <Label>NodeImageVersion</Label>
           </TableColumnHeader>
           <TableColumnHeader>
+            <Label>NodePublicIPPrefixId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>NodeTaint</Label>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -1293,16 +1959,25 @@
             <Label>OSDiskType</Label>
           </TableColumnHeader>
           <TableColumnHeader>
+            <Label>OSSku</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>OSType</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>OrchestratorVersion</Label>
           </TableColumnHeader>
           <TableColumnHeader>
+            <Label>PodSubnetId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>ProvisioningState</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>ProximityPlacementGroupId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ScaleDownMode</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>ScaleSetEvictionPolicy</Label>
@@ -1319,6 +1994,9 @@
           <TableColumnHeader>
             <Label>VnetSubnetId</Label>
           </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>WorkloadRuntime</Label>
+          </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
@@ -1330,10 +2008,31 @@
                 <PropertyName>Count</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
+                <PropertyName>CurrentOrchestratorVersion</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>EnableAutoScaling</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
+                <PropertyName>EnableEncryptionAtHost</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>EnableFips</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>EnableNodePublicIP</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>EnableUltraSsd</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>GpuInstanceProfile</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>HostGroupId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>KubeletDiskType</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>MaxCount</PropertyName>
@@ -1351,6 +2050,9 @@
                 <PropertyName>NodeImageVersion</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
+                <PropertyName>NodePublicIPPrefixId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>NodeTaint</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
@@ -1360,16 +2062,25 @@
                 <PropertyName>OSDiskType</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
+                <PropertyName>OSSku</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>OSType</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>OrchestratorVersion</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
+                <PropertyName>PodSubnetId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>ProvisioningState</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>ProximityPlacementGroupId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ScaleDownMode</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>ScaleSetEvictionPolicy</PropertyName>
@@ -1386,15 +2097,18 @@
               <TableColumnItem>
                 <PropertyName>VnetSubnetId</PropertyName>
               </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>WorkloadRuntime</PropertyName>
+              </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
         </TableRowEntries>
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.ManagedClusterAgentPoolProfilePropertiesNodeLabels</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ManagedClusterAgentPoolProfilePropertiesNodeLabels</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.ManagedClusterAgentPoolProfilePropertiesNodeLabels</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ManagedClusterAgentPoolProfilePropertiesNodeLabels</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1414,9 +2128,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.ManagedClusterAgentPoolProfilePropertiesTags</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ManagedClusterAgentPoolProfilePropertiesTags</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.ManagedClusterAgentPoolProfilePropertiesTags</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ManagedClusterAgentPoolProfilePropertiesTags</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1436,9 +2150,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.ManagedClusterApiServerAccessProfile</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ManagedClusterApiServerAccessProfile</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.ManagedClusterApiServerAccessProfile</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ManagedClusterApiServerAccessProfile</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1446,7 +2160,16 @@
             <Label>AuthorizedIPRange</Label>
           </TableColumnHeader>
           <TableColumnHeader>
+            <Label>DisableRunCommand</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>EnablePrivateCluster</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>EnablePrivateClusterPublicFqdn</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>PrivateDnsZone</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -1456,7 +2179,16 @@
                 <PropertyName>AuthorizedIPRange</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
+                <PropertyName>DisableRunCommand</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>EnablePrivateCluster</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>EnablePrivateClusterPublicFqdn</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>PrivateDnsZone</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -1464,9 +2196,121 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.ManagedClusterIdentity</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ManagedClusterAutoUpgradeProfile</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.ManagedClusterIdentity</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ManagedClusterAutoUpgradeProfile</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>UpgradeChannel</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>UpgradeChannel</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ManagedClusterAzureMonitorProfileKubeStateMetrics</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ManagedClusterAzureMonitorProfileKubeStateMetrics</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>MetricAnnotationsAllowList</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>MetricLabelsAllowlist</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>MetricAnnotationsAllowList</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>MetricLabelsAllowlist</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ManagedClusterAzureMonitorProfileMetrics</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ManagedClusterAzureMonitorProfileMetrics</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Enabled</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Enabled</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ManagedClusterHttpProxyConfig</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ManagedClusterHttpProxyConfig</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>HttpProxy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>HttpsProxy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>NoProxy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>TrustedCa</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>HttpProxy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>HttpsProxy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>NoProxy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>TrustedCa</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ManagedClusterIdentity</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ManagedClusterIdentity</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1492,37 +2336,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.ManagedClusterIdentityUserAssignedIdentitiesValue</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ManagedClusterListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.ManagedClusterIdentityUserAssignedIdentitiesValue</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>ClientId</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>PrincipalId</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>ClientId</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>PrincipalId</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.ManagedClusterListResult</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.ManagedClusterListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ManagedClusterListResult</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1542,14 +2358,17 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.ManagedClusterLoadBalancerProfile</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ManagedClusterLoadBalancerProfile</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.ManagedClusterLoadBalancerProfile</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ManagedClusterLoadBalancerProfile</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
             <Label>AllocatedOutboundPort</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>EnableMultipleStandardLoadBalancer</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>IdleTimeoutInMinute</Label>
@@ -1562,6 +2381,9 @@
                 <PropertyName>AllocatedOutboundPort</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
+                <PropertyName>EnableMultipleStandardLoadBalancer</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>IdleTimeoutInMinute</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
@@ -1570,9 +2392,37 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.ManagedClusterLoadBalancerProfileManagedOutboundIPs</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ManagedClusterLoadBalancerProfileManagedOutboundIPs</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.ManagedClusterLoadBalancerProfileManagedOutboundIPs</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ManagedClusterLoadBalancerProfileManagedOutboundIPs</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Count</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>CountIPv6</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Count</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>CountIPv6</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ManagedClusterManagedOutboundIPProfile</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ManagedClusterManagedOutboundIPProfile</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1592,9 +2442,211 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.ManagedClusterPoolUpgradeProfile</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ManagedClusterNatGatewayProfile</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.ManagedClusterPoolUpgradeProfile</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ManagedClusterNatGatewayProfile</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>IdleTimeoutInMinute</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>IdleTimeoutInMinute</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ManagedClusterOidcIssuerProfile</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ManagedClusterOidcIssuerProfile</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Enabled</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>IssuerUrl</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Enabled</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>IssuerUrl</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ManagedClusterPodIdentity</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ManagedClusterPodIdentity</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>BindingSelector</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Namespace</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ProvisioningState</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>BindingSelector</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Namespace</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ProvisioningState</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ManagedClusterPodIdentityException</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ManagedClusterPodIdentityException</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Namespace</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Namespace</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ManagedClusterPodIdentityExceptionPodLabels</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ManagedClusterPodIdentityExceptionPodLabels</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Item</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Item</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ManagedClusterPodIdentityProfile</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ManagedClusterPodIdentityProfile</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>AllowNetworkPluginKubenet</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Enabled</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>AllowNetworkPluginKubenet</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Enabled</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ManagedClusterPodIdentityProvisioningErrorBody</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ManagedClusterPodIdentityProvisioningErrorBody</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Code</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Message</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Target</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Code</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Message</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Target</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ManagedClusterPoolUpgradeProfile</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ManagedClusterPoolUpgradeProfile</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1626,9 +2678,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.ManagedClusterPoolUpgradeProfileUpgradesItem</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ManagedClusterPoolUpgradeProfileUpgradesItem</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.ManagedClusterPoolUpgradeProfileUpgradesItem</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ManagedClusterPoolUpgradeProfileUpgradesItem</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1654,12 +2706,21 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.ManagedClusterProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ManagedClusterProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.ManagedClusterProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ManagedClusterProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
+          <TableColumnHeader>
+            <Label>AzurePortalFqdn</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>CurrentKubernetesVersion</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>DisableLocalAccount</Label>
+          </TableColumnHeader>
           <TableColumnHeader>
             <Label>DiskEncryptionSetId</Label>
           </TableColumnHeader>
@@ -1676,6 +2737,9 @@
             <Label>Fqdn</Label>
           </TableColumnHeader>
           <TableColumnHeader>
+            <Label>FqdnSubdomain</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>KubernetesVersion</Label>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -1690,10 +2754,22 @@
           <TableColumnHeader>
             <Label>ProvisioningState</Label>
           </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>PublicNetworkAccess</Label>
+          </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>AzurePortalFqdn</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>CurrentKubernetesVersion</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>DisableLocalAccount</PropertyName>
+              </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>DiskEncryptionSetId</PropertyName>
               </TableColumnItem>
@@ -1710,6 +2786,9 @@
                 <PropertyName>Fqdn</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
+                <PropertyName>FqdnSubdomain</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>KubernetesVersion</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
@@ -1724,15 +2803,18 @@
               <TableColumnItem>
                 <PropertyName>ProvisioningState</PropertyName>
               </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>PublicNetworkAccess</PropertyName>
+              </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
         </TableRowEntries>
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.ManagedClusterPropertiesAutoScalerProfile</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ManagedClusterPropertiesAutoScalerProfile</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.ManagedClusterPropertiesAutoScalerProfile</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ManagedClusterPropertiesAutoScalerProfile</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1747,6 +2829,9 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>MaxGracefulTerminationSec</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>MaxNodeProvisionTime</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>MaxTotalUnreadyPercentage</Label>
@@ -1801,6 +2886,9 @@
                 <PropertyName>MaxGracefulTerminationSec</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
+                <PropertyName>MaxNodeProvisionTime</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>MaxTotalUnreadyPercentage</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
@@ -1842,33 +2930,21 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.ManagedClusterPropertiesIdentityProfileValue</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ManagedClusterSecurityProfileDefender</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.ManagedClusterPropertiesIdentityProfileValue</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ManagedClusterSecurityProfileDefender</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
-            <Label>ClientId</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ObjectId</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ResourceId</Label>
+            <Label>LogAnalyticsWorkspaceResourceId</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
-                <PropertyName>ClientId</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ObjectId</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ResourceId</PropertyName>
+                <PropertyName>LogAnalyticsWorkspaceResourceId</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -1876,9 +2952,81 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.ManagedClusterServicePrincipalProfile</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ManagedClusterSecurityProfileDefenderSecurityMonitoring</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.ManagedClusterServicePrincipalProfile</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ManagedClusterSecurityProfileDefenderSecurityMonitoring</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Enabled</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Enabled</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ManagedClusterSecurityProfileImageCleaner</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ManagedClusterSecurityProfileImageCleaner</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Enabled</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>IntervalHour</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Enabled</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>IntervalHour</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ManagedClusterSecurityProfileWorkloadIdentity</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ManagedClusterSecurityProfileWorkloadIdentity</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Enabled</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Enabled</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ManagedClusterServicePrincipalProfile</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ManagedClusterServicePrincipalProfile</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1904,9 +3052,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.ManagedClusterSku</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ManagedClusterSku</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.ManagedClusterSku</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ManagedClusterSku</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1932,9 +3080,97 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.ManagedClusterUpgradeProfile</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ManagedClusterStorageProfileBlobCsiDriver</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.ManagedClusterUpgradeProfile</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ManagedClusterStorageProfileBlobCsiDriver</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Enabled</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Enabled</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ManagedClusterStorageProfileDiskCsiDriver</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ManagedClusterStorageProfileDiskCsiDriver</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Enabled</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Enabled</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ManagedClusterStorageProfileFileCsiDriver</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ManagedClusterStorageProfileFileCsiDriver</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Enabled</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Enabled</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ManagedClusterStorageProfileSnapshotController</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ManagedClusterStorageProfileSnapshotController</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Enabled</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Enabled</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ManagedClusterUpgradeProfile</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ManagedClusterUpgradeProfile</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1954,9 +3190,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.ManagedClusterWindowsProfile</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ManagedClusterWindowsProfile</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.ManagedClusterWindowsProfile</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ManagedClusterWindowsProfile</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1965,6 +3201,9 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>AdminUsername</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>EnableCsiProxy</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>LicenseType</Label>
@@ -1980,6 +3219,9 @@
                 <PropertyName>AdminUsername</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
+                <PropertyName>EnableCsiProxy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>LicenseType</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
@@ -1988,9 +3230,59 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.OperationValue</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ManagedClusterWorkloadAutoScalerProfileKeda</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.OperationValue</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ManagedClusterWorkloadAutoScalerProfileKeda</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Enabled</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Enabled</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ManagedServiceIdentityUserAssignedIdentitiesValue</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ManagedServiceIdentityUserAssignedIdentitiesValue</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>ClientId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>PrincipalId</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>ClientId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>PrincipalId</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.OperationValue</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.OperationValue</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2016,9 +3308,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.OperationValueDisplay</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.OperationValueDisplay</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.OperationValueDisplay</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.OperationValueDisplay</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2056,31 +3348,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.PowerState</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.OSOptionProfile</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.PowerState</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Code</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Code</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.PrivateEndpointConnection</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.PrivateEndpointConnection</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.OSOptionProfile</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2100,9 +3370,125 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.PrivateEndpointConnectionProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.OSOptionProperty</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.PrivateEndpointConnectionProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.OSOptionProperty</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>EnableFipsImage</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>OSType</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>EnableFipsImage</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>OSType</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.OutboundEnvironmentEndpoint</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.OutboundEnvironmentEndpoint</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Category</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Category</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.OutboundEnvironmentEndpointCollection</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.OutboundEnvironmentEndpointCollection</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>NextLink</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>NextLink</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.PowerState</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.PowerState</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Code</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Code</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.PrivateEndpointConnection</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.PrivateEndpointConnection</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.PrivateEndpointConnectionProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.PrivateEndpointConnectionProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2122,9 +3508,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.PrivateLinkResource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.PrivateLinkResource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.PrivateLinkResource</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.PrivateLinkResource</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2162,9 +3548,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.PrivateLinkServiceConnectionState</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.PrivateLinkServiceConnectionState</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.PrivateLinkServiceConnectionState</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.PrivateLinkServiceConnectionState</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2190,9 +3576,43 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.Resource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.RunCommandRequest</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.Resource</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.RunCommandRequest</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>ClusterToken</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Command</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Context</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>ClusterToken</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Command</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Context</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.Snapshot</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.Snapshot</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2201,6 +3621,24 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedByType</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -2212,27 +3650,23 @@
               <TableColumnItem>
                 <PropertyName>Name</PropertyName>
               </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.ResourceTags</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.ResourceTags</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Item</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
               <TableColumnItem>
-                <PropertyName>Item</PropertyName>
+                <PropertyName>SystemDataCreatedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedByType</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -2240,9 +3674,89 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.SubResource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.SnapshotListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.SubResource</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.SnapshotListResult</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>NextLink</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>NextLink</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.SnapshotProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.SnapshotProperties</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>EnableFips</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>KubernetesVersion</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>NodeImageVersion</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>OSSku</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>OSType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SnapshotType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>VMSize</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>EnableFips</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>KubernetesVersion</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>NodeImageVersion</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>OSSku</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>OSType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SnapshotType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>VMSize</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.SubResource</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.SubResource</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2262,9 +3776,193 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.TagsObjectTags</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.SysctlConfig</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.TagsObjectTags</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.SysctlConfig</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>FsAioMaxNr</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>FsFileMax</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>FsInotifyMaxUserWatch</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>FsNrOpen</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>KernelThreadsMax</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>NetCoreNetdevMaxBacklog</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>NetCoreOptmemMax</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>NetCoreRmemDefault</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>NetCoreRmemMax</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>NetCoreSomaxconn</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>NetCoreWmemDefault</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>NetCoreWmemMax</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>NetIpv4IPLocalPortRange</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>NetIpv4NeighDefaultGcThresh1</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>NetIpv4NeighDefaultGcThresh2</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>NetIpv4NeighDefaultGcThresh3</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>NetIpv4TcpFinTimeout</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>NetIpv4TcpKeepaliveProbe</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>NetIpv4TcpKeepaliveTime</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>NetIpv4TcpMaxSynBacklog</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>NetIpv4TcpMaxTwBucket</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>NetIpv4TcpTwReuse</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>NetIpv4TcpkeepaliveIntvl</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>NetNetfilterNfConntrackBucket</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>NetNetfilterNfConntrackMax</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>VMMaxMapCount</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>VMSwappiness</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>VMVfsCachePressure</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>FsAioMaxNr</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>FsFileMax</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>FsInotifyMaxUserWatch</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>FsNrOpen</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>KernelThreadsMax</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>NetCoreNetdevMaxBacklog</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>NetCoreOptmemMax</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>NetCoreRmemDefault</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>NetCoreRmemMax</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>NetCoreSomaxconn</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>NetCoreWmemDefault</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>NetCoreWmemMax</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>NetIpv4IPLocalPortRange</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>NetIpv4NeighDefaultGcThresh1</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>NetIpv4NeighDefaultGcThresh2</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>NetIpv4NeighDefaultGcThresh3</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>NetIpv4TcpFinTimeout</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>NetIpv4TcpKeepaliveProbe</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>NetIpv4TcpKeepaliveTime</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>NetIpv4TcpMaxSynBacklog</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>NetIpv4TcpMaxTwBucket</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>NetIpv4TcpTwReuse</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>NetIpv4TcpkeepaliveIntvl</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>NetNetfilterNfConntrackBucket</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>NetNetfilterNfConntrackMax</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>VMMaxMapCount</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>VMSwappiness</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>VMVfsCachePressure</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.TagsObjectTags</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.TagsObjectTags</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2284,9 +3982,65 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.UserAssignedIdentity</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.TimeInWeek</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.UserAssignedIdentity</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.TimeInWeek</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Day</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>HourSlot</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Day</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>HourSlot</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.TimeSpan</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.TimeSpan</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>End</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Start</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>End</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Start</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.UserAssignedIdentity</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.UserAssignedIdentity</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2311,6 +4065,40 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>ResourceId</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.WindowsGmsaProfile</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.WindowsGmsaProfile</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>DnsServer</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Enabled</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>RootDomainName</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>DnsServer</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Enabled</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>RootDomainName</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>

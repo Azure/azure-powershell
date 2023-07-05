@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.dll-Help.xml
 Module Name: Az.EventGrid
-online version:
+online version: https://learn.microsoft.com/powershell/module/az.eventgrid/get-azeventgridpartnernamespacekey
 schema: 2.0.0
 ---
 
@@ -26,6 +26,7 @@ Get-AzEventGridPartnerNamespaceKey -InputObject <PSPartnerNamespace> [-DefaultPr
 
 ## DESCRIPTION
 The Get-AzEventGridPartnerNamespaceKey cmdlet gets the details of an Event Grid partner namespace key.
+
 ## EXAMPLES
 
 ### Example 1
@@ -41,7 +42,7 @@ Gets the details of the keys for Event Grid partner namespace \`PartnerNamespace
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -56,7 +57,7 @@ Accept wildcard characters: False
 PartnerNamespace object
 
 ```yaml
-Type: PSPartnerNamespace
+Type: Microsoft.Azure.Commands.EventGrid.Models.PSPartnerNamespace
 Parameter Sets: PartnerNamespaceInputObjectParameterSet
 Aliases:
 
@@ -71,7 +72,7 @@ Accept wildcard characters: False
 Event Grid partner namespace name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: PartnerNamespaceNameParameterSet
 Aliases:
 
@@ -86,7 +87,7 @@ Accept wildcard characters: False
 The name of the resource group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: PartnerNamespaceNameParameterSet
 Aliases:
 

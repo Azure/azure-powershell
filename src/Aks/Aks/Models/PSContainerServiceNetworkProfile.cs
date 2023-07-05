@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Commands.Aks.Models
         /// <remarks>
         /// This can only be set at cluster creation time and cannot be changed
         /// later. For more information see [egress outbound
-        /// type](https://docs.microsoft.com/azure/aks/egress-outboundtype).
+        /// type](https://learn.microsoft.com/azure/aks/egress-outboundtype).
         /// Possible values include: 'loadBalancer', 'userDefinedRouting',
         /// 'managedNATGateway', 'userAssignedNATGateway'
         /// </remarks>
@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Commands.Aks.Models
         /// </summary>
         /// <remarks>
         /// The default is 'standard'. See [Azure Load Balancer
-        /// SKUs](https://docs.microsoft.com/azure/load-balancer/skus) for more
+        /// SKUs](https://learn.microsoft.com/azure/load-balancer/skus) for more
         /// information about the differences between load balancer SKUs.
         /// Possible values include: 'standard', 'basic'
         /// </remarks>

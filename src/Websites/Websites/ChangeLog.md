@@ -19,6 +19,31 @@
 -->
 ## Upcoming Release
 
+## Version 3.0.1
+* Increased timeout for Publish-AzWebApp command
+* Fixed Set-AzWebApp issue with `Set-AzWebApp` when piping in Get-AzWebApp object [#21820]
+* Added support for the PremiumMV3 tier to `New-AzAppServicePlan` [#21933]
+
+## Version 3.0.0
+* Removed `New-AzWebAppContainerPSSession` and `Enter-AzWebAppContainerPSSession` cmdlets
+
+## Version 2.15.1
+* Used AAD Auth instead of Basic Auth for PublishAzureWebApps
+* Add support for OneDeploy API in PublishAzureWebApps while maintaining backwards compatibility with existing behavior
+
+## Version 2.15.0
+* Fixed Tag parameter issues with ASE for `New-AzWebApp`
+
+## Version 2.14.0
+* Fixed `Edit-AzWebAppBackupConfiguration` to pass backup configuration enabled or not
+* Added a new parameter `-SoftRestart` for `Restart-AzWebApp` and `Restart-AzWebApp` to perform a soft restart
+* Updated `Get-AzWebApp` and `Get-AzWebAppSlot` to expose `VirtualNetwork Integration Info` [#10665]
+* Set default value for `-RepositoryUrl` of `New-AzStaticWebApp` [#21202]
+
+## Version 2.13.0
+* Added a new parameter `-CopyIdentity` for `New-AzWebAppSlot` to copy the identity from the parent app to the slot.
+* Updated `New-AzWebAppSSLBinding` to support -WhatIf parameter
+
 ## Version 2.12.1
 * Fixed `Import-AzWebAppKeyVaultCertificate` to use certificate naming convention same as portal [#19592]
 

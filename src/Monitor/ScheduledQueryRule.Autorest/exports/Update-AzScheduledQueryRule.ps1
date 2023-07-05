@@ -21,7 +21,7 @@ Update a scheduled query rule.
 Update a scheduled query rule.
 .Example
 $subscriptionId=(Get-AzContext).Subscription.Id
-New-AzScheduledQueryRule -Name test-rule -ResourceGroupName test-group -Scope "/subscriptions/$subscriptionId/resourceGroups/test-group/providers/Microsoft.Compute/virtualMachines/test-vm" -ActionGroupResourceId "/subscriptions/$subscriptionId/resourceGroups/test-group/providers/microsoft.insights/actionGroups/test-action-group" -AutoMitigate:$false
+Update-AzScheduledQueryRule -Name test-rule -ResourceGroupName test-group -Scope "/subscriptions/$subscriptionId/resourceGroups/test-group/providers/Microsoft.Compute/virtualMachines/test-vm" -ActionGroupResourceId "/subscriptions/$subscriptionId/resourceGroups/test-group/providers/microsoft.insights/actionGroups/test-action-group" -AutoMitigate:$false
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Models.IScheduledQueryRuleIdentity
@@ -216,7 +216,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -268,7 +269,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
         }         
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {

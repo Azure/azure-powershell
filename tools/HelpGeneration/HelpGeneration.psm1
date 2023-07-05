@@ -91,7 +91,7 @@ function Test-AzMarkdownHelp
         $HelpFolder = Get-Item $HelpFolderPath
         $Exceptions = Import-Csv "$SuppressedExceptionsPath\ValidateHelpIssues.csv"
         [String[]]$errors = @()
-        $MarkdownFiles = Get-ChildItem -Path $HelpFolder -Include "*.md"
+        $MarkdownFiles = Get-ChildItem -Path $HelpFolder -Filter "*.md"
         $ModuleName = ($MarkdownFiles | where { $_.Name -notlike "*-*" }).Name -replace ".md",""
         foreach ($file in $MarkdownFiles)
         {
@@ -196,7 +196,7 @@ function Test-AzMarkdownHelp
                         # PS C:\> {{ Add example code here }}
                         # ```
                         #
-                        if ($content[$idx+1] -contains "PS C:\> {{ Add example code here }}")
+                        if ($content[$idx+1] -contains "{{ Add example code here }}")
                         {
                             $fileErrors += "No examples found"
                         }

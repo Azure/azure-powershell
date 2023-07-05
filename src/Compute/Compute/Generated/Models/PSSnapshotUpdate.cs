@@ -35,6 +35,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
         public SnapshotSku Sku { get; set; }
         public bool? SupportsHibernation { get; set; }
         public SupportedCapabilities SupportedCapabilities { get; set; }
+        public string NetworkAccessPolicy { get; set; }
 
         //
         // Summary:

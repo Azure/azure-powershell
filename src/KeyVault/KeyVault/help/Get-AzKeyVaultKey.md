@@ -326,7 +326,7 @@ Get-AzKeyVaultKey -VaultName $vaultName -KeyName $keyName -OutFile $path
 ```
 
 You can download the public key of a RSA key by specifying the `-OutFile` parameter.
-This is one step of importing HSM-protected keys to Azure Key Vault. See https://docs.microsoft.com/azure/key-vault/keys/hsm-protected-keys
+This is one step of importing HSM-protected keys to Azure Key Vault. See https://learn.microsoft.com/azure/key-vault/keys/hsm-protected-keys
 
 ## PARAMETERS
 

@@ -10,8 +10,8 @@ function Test-GetArcConfig
     if ($IsMacOS) {
         return
     }
-    $MachineName = Get-RandomArcName
-    $ResourceGroupName = Get-RandomResourceGroupName
+    $MachineName = Get-ArcServerName
+    $ResourceGroupName = Get-ResourceGroupName
     $SubscriptionId = (Get-AzContext).Subscription.Id
     $TenantId = (Get-AzContext).Tenant.Id
 
@@ -28,7 +28,9 @@ function Test-GetArcConfig
     
         Remove-Item ./config -ErrorAction Ignore
 
-        $configEntry = Export-AzSshConfig -ResourceGroupName $ResourceGroupName -Name $MachineName -ConfigFilePath ./config -LocalUser azureuser -Port 35000
+        Install-Module Az.Ssh.ArcProxy -Scope CurrentUser -Repository PsGallery -Force -AllowClobber
+
+        $configEntry = Export-AzSshConfig -ResourceGroupName $ResourceGroupName -Name $MachineName -ConfigFilePath ./config -LocalUser azureuser -Port 35000 -Force
 
         Assert-NotNull $configEntry
         Assert-AreEqual $configEntry.Host "$ResourceGroupName-$MachineName"
@@ -48,8 +50,13 @@ function Test-GetArcConfig
             $os = 'linux'
         }
 
-        $proxyName = "sshProxy_" + $os + "_" + $arch +"_1_3_017634.exe"
-        $proxyPath = Join-Path $HOME ".clientsshproxy" $proxyName
+
+        $proxyNamePattern = "sshProxy_" + $os + "_" + $arch +"_*"
+        if ($IsWindows) {
+            $proxyName = $proxyName + ".exe"
+        }
+        $proxyDir = (Get-Item (Get-module -ListAvailable -Name Az.Ssh.ArcProxy).Path).Directory.FullName
+        $proxyPath = (Get-ChildItem $proxyDir -Filter $proxyNamePattern | Select-Object -First 1).FullName
 
         $relayPath = Join-Path (Split-Path ((Resolve-Path ./config).Path)) "az_ssh_config" "$ResourceGroupName-$MachineName" "$ResourceGroupName-$MachineName-relay_info"
 
@@ -57,9 +64,9 @@ function Test-GetArcConfig
 
     }
     finally {
+        Uninstall-Module Az.Ssh.ArcProxy -ErrorAction Ignore
         Remove-Item ./config -ErrorAction Ignore -Force
         Remove-Item ./az_ssh_config -ErrorAction Ignore -Force -Recurse
-        Remove-Item (Join-Path $HOME ".clientsshproxy") -ErrorAction Ignore -Force -Recurse
         if (-not $isPlayback) { Stop-Agent -AgentPath $agent }
         Remove-AzResourceGroup -Name $ResourceGroupName -Force
     }
@@ -71,8 +78,8 @@ Test Exporting SSH Config File for an Azure VM using Local User Login. Test over
 #>
 function Test-GetVmConfig
 {
-    $VmName = Get-RandomVmName
-    $ResourceGroupName = Get-RandomResourceGroupName
+    $VmName = Get-AzureVmName
+    $ResourceGroupName = Get-ResourceGroupName
     $SubscriptionId = (Get-AzContext).Subscription.Id
     $TenantId = (Get-AzContext).Tenant.Id
     
@@ -82,9 +89,10 @@ function Test-GetVmConfig
 
     New-AzResourceGroup -Name $ResourceGroupName -Location "eastus" | Out-Null
 
+    $domainlabel = "d1" + $ResourceGroupName
     try 
     {
-        $vm = New-AzVM -ResourceGroupName $ResourceGroupName -Name $VmName -Location "eastus" -Image UbuntuLTS -Credential $cred
+        $vm = New-AzVM -ResourceGroupName $ResourceGroupName -Name $VmName -Location "eastus" -Credential $cred -DomainNameLabel $domainlabel
         Remove-Item ./config -ErrorAction Ignore
 
         Assert-NotNull $vm

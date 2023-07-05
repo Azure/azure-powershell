@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     fabricName,
                     protectionContainerName,
                     replicationProtectedItemName,
-                    input,
+                    input.Properties,
                     this.GetRequestHeaders(true))
                 .GetAwaiter()
                 .GetResult();
@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     fabricName,
                     protectionContainerName,
                     replicationProtectedItemName,
-                    input,
+                    input.Properties,
                     this.GetRequestHeaders(true))
                 .GetAwaiter()
                 .GetResult();
@@ -153,7 +153,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     fabricName,
                     protectionContainerName,
                     replicationProtectedItemName,
-                    input,
+                    input.Properties,
                     this.GetRequestHeaders(true))
                 .GetAwaiter()
                 .GetResult();
@@ -181,7 +181,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     fabricName,
                     protectionContainerName,
                     replicationProtectedItemName,
-                    input,
+                    input.Properties,
                     this.GetRequestHeaders(true))
                 .GetAwaiter()
                 .GetResult();
@@ -266,7 +266,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     fabricName,
                     protectionContainerName,
                     replicationProtectedItemName,
-                    input,
+                    input.Properties,
                     this.GetRequestHeaders(true))
                 .GetAwaiter()
                 .GetResult();
@@ -344,7 +344,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     fabricName,
                     protectionContainerName,
                     replicationProtectedItemName,
-                    input,
+                    input.Properties,
                     this.GetRequestHeaders(true))
                 .GetAwaiter()
                 .GetResult();
@@ -372,7 +372,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     fabricName,
                     protectionContainerName,
                     replicationProtectedItemName,
-                    input,
+                    input.Properties,
                     this.GetRequestHeaders(true))
                 .GetAwaiter()
                 .GetResult();
@@ -400,7 +400,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     fabricName,
                     protectionContainerName,
                     replicationProtectedItemName,
-                    input,
+                    input.Properties,
                     this.GetRequestHeaders(true))
                 .GetAwaiter()
                 .GetResult();
@@ -428,7 +428,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     fabricName,
                     protectionContainerName,
                     replicationProtectedItemName,
-                    input,
+                    input.Properties,
                     this.GetRequestHeaders(true))
                 .GetAwaiter()
                 .GetResult();
@@ -456,7 +456,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     fabricName,
                     protectionContainerName,
                     replicationProtectedItemName,
-                    input,
+                    input.Properties,
                     this.GetRequestHeaders(true))
                 .GetAwaiter()
                 .GetResult();
@@ -509,7 +509,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     fabricName,
                     protectionContainerName,
                     replicationProtectedItemName,
-                    input,
+                    input.Properties,
                     this.GetRequestHeaders(true))
                 .GetAwaiter()
                 .GetResult();
@@ -534,7 +534,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 .ReplicationProtectionContainers.BeginSwitchProtectionWithHttpMessagesAsync(
                     fabricName,
                     protectionContainerName,
-                    input,
+                    input.Properties,
                     this.GetRequestHeaders(true))
                 .GetAwaiter()
                 .GetResult();
@@ -562,7 +562,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     fabricName,
                     protectionContainerName,
                     replicationProtectedItemName,
-                    input,
+                    input.Properties,
                     this.GetRequestHeaders(true))
                 .GetAwaiter()
                 .GetResult();
@@ -590,7 +590,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     fabricName,
                     protectionContainerName,
                     replicationProtectedItemName,
-                    input,
+                    input.Properties,
                     this.GetRequestHeaders(true))
                 .GetAwaiter()
                 .GetResult();

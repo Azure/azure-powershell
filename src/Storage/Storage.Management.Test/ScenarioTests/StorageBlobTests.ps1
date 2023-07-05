@@ -563,6 +563,17 @@ function Test-StorageBlobServiceProperties
         $stotype = 'Standard_GRS';
         $loc = Get-ProviderLocation ResourceManagement;
         $kind = 'StorageV2'
+
+		$CorsRules = (@{
+			AllowedHeaders=@("x-ms-blob-content-type","x-ms-blob-content-disposition"); 
+			AllowedOrigins=@("*");
+			AllowedMethods=@("Get","Connect")},
+			@{
+			AllowedOrigins=@("http://www.fabrikam.com","http://www.contoso.com"); 
+			ExposedHeaders=@("x-ms-meta-data*","x-ms-meta-customheader"); 
+			AllowedHeaders=@("x-ms-meta-target*","x-ms-meta-customheader");
+			MaxAgeInSeconds=30;
+			AllowedMethods=@("PUT")})
 	
         Write-Verbose "RGName: $rgname | Loc: $loc"
         New-AzResourceGroup -Name $rgname -Location $loc;
@@ -593,6 +604,34 @@ function Test-StorageBlobServiceProperties
 		Assert-AreEqual '2018-03-28' $property.DefaultServiceVersion
 		Assert-AreEqual $false $property.DeleteRetentionPolicy.Enabled
 		Assert-AreEqual $null $property.DeleteRetentionPolicy.Days
+
+		$property = Update-AzStorageBlobServiceProperty -ResourceGroupName $rgname -StorageAccountName $stoname -CorsRule $CorsRules
+		Assert-AreEqual "*" $property.Cors.CorsRulesProperty[0].AllowedOrigins
+		Assert-AreEqual "GET" $property.Cors.CorsRulesProperty[0].AllowedMethods[0]
+		Assert-AreEqual "CONNECT" $property.Cors.CorsRulesProperty[0].AllowedMethods[1]
+		Assert-AreEqual 0 $property.Cors.CorsRulesProperty[0].MaxAgeInSeconds
+		Assert-AreEqual "x-ms-blob-content-type" $property.Cors.CorsRulesProperty[0].AllowedHeaders[0]
+		Assert-AreEqual "x-ms-blob-content-disposition" $property.Cors.CorsRulesProperty[0].AllowedHeaders[1]
+		Assert-AreEqual "http://www.fabrikam.com" $property.Cors.CorsRulesProperty[1].AllowedOrigins[0]
+		Assert-AreEqual "PUT" $property.Cors.CorsRulesProperty[1].AllowedMethods[0]
+		Assert-AreEqual 30 $property.Cors.CorsRulesProperty[1].MaxAgeInSeconds
+
+		$property = Get-AzStorageBlobServiceProperty -ResourceGroupName $rgname -StorageAccountName $stoname
+		Assert-AreEqual "*" $property.Cors.CorsRulesProperty[0].AllowedOrigins
+		Assert-AreEqual "GET" $property.Cors.CorsRulesProperty[0].AllowedMethods[0]
+		Assert-AreEqual "CONNECT" $property.Cors.CorsRulesProperty[0].AllowedMethods[1]
+		Assert-AreEqual 0 $property.Cors.CorsRulesProperty[0].MaxAgeInSeconds
+		Assert-AreEqual "x-ms-blob-content-type" $property.Cors.CorsRulesProperty[0].AllowedHeaders[0]
+		Assert-AreEqual "x-ms-blob-content-disposition" $property.Cors.CorsRulesProperty[0].AllowedHeaders[1]
+		Assert-AreEqual "http://www.fabrikam.com" $property.Cors.CorsRulesProperty[1].AllowedOrigins[0]
+		Assert-AreEqual "PUT" $property.Cors.CorsRulesProperty[1].AllowedMethods[0]
+		Assert-AreEqual 30 $property.Cors.CorsRulesProperty[1].MaxAgeInSeconds
+		
+		$property = Update-AzStorageBlobServiceProperty -ResourceGroupName $rgname -StorageAccountName $stoname -CorsRule @()
+		Assert-AreEqual 0 $property.Cors.CorsRulesProperty.Count
+
+		$property = Get-AzStorageBlobServiceProperty -ResourceGroupName $rgname -StorageAccountName $stoname
+		Assert-AreEqual 0 $property.Cors.CorsRulesProperty.Count
 
         Remove-AzStorageAccount -Force -ResourceGroupName $rgname -Name $stoname;
     }

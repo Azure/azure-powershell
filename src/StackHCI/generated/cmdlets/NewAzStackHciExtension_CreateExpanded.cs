@@ -78,9 +78,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Cmdlets
         public string ClusterName { get => this._clusterName; set => this._clusterName = value; }
 
         /// <summary>
-        /// The credentials, account, tenant, and subscription used for communication with Azure
+        /// The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet
+        /// against a different subscription
         /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The credentials, account, tenant, and subscription used for communication with Azure.")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.")]
         [global::System.Management.Automation.ValidateNotNull]
         [global::System.Management.Automation.Alias("AzureRMContext", "AzureCredential")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category(global::Microsoft.Azure.PowerShell.Cmdlets.StackHCI.ParameterCategory.Azure)]
@@ -114,6 +115,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Cmdlets
         public string ExtensionParameterForceUpdateTag { get => _extensionBody.ParameterForceUpdateTag ?? null; set => _extensionBody.ParameterForceUpdateTag = value; }
 
         /// <summary>Protected settings (may contain secrets).</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.StackHCI.ExportAs(typeof(global::System.Collections.Hashtable))]
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Protected settings (may contain secrets).")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category(global::Microsoft.Azure.PowerShell.Cmdlets.StackHCI.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.Info(
@@ -121,8 +123,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Cmdlets
         ReadOnly = false,
         Description = @"Protected settings (may contain secrets).",
         SerializedName = @"protectedSettings",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IAny) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IAny ExtensionParameterProtectedSetting { get => _extensionBody.ParameterProtectedSetting ?? null /* object */; set => _extensionBody.ParameterProtectedSetting = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IExtensionParametersProtectedSettings) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IExtensionParametersProtectedSettings ExtensionParameterProtectedSetting { get => _extensionBody.ParameterProtectedSetting ?? null /* object */; set => _extensionBody.ParameterProtectedSetting = value; }
 
         /// <summary>The name of the extension handler publisher.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The name of the extension handler publisher.")]
@@ -136,6 +138,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Cmdlets
         public string ExtensionParameterPublisher { get => _extensionBody.ParameterPublisher ?? null; set => _extensionBody.ParameterPublisher = value; }
 
         /// <summary>Json formatted public settings for the extension.</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.StackHCI.ExportAs(typeof(global::System.Collections.Hashtable))]
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Json formatted public settings for the extension.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category(global::Microsoft.Azure.PowerShell.Cmdlets.StackHCI.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.Info(
@@ -143,8 +146,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Cmdlets
         ReadOnly = false,
         Description = @"Json formatted public settings for the extension.",
         SerializedName = @"settings",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IAny) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IAny ExtensionParameterSetting { get => _extensionBody.ParameterSetting ?? null /* object */; set => _extensionBody.ParameterSetting = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IExtensionParametersSettings) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IExtensionParametersSettings ExtensionParameterSetting { get => _extensionBody.ParameterSetting ?? null /* object */; set => _extensionBody.ParameterSetting = value; }
 
         /// <summary>Specifies the type of the extension; an example is "CustomScriptExtension".</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Specifies the type of the extension; an example is \"CustomScriptExtension\".")]

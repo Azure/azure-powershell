@@ -28,7 +28,7 @@ eastus   yourihealthbot 2020/12/29 8:19:10  test@microsoft.com User             
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Models.Api20201208.IHealthBot
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.healthbot/new-azhealthbot
+https://learn.microsoft.com/en-us/powershell/module/az.healthbot/new-azhealthbot
 #>
 function New-AzHealthBot {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Models.Api20201208.IHealthBot])]

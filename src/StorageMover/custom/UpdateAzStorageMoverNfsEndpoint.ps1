@@ -1,4 +1,4 @@
-
+﻿
 # ----------------------------------------------------------------------------------
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -25,11 +25,11 @@ Properties not specified in the request body will be unchanged.
 Update-AzStorageMoverNfsEndpoint -Name myEndpointName -ResourceGroupName myResourceGroupName -StorageMoverName myStorageMover -Description "Update Description"
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20220701Preview.IEndpointBaseUpdateParameters
+Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20230301.IEndpointBaseUpdateParameters
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20220701Preview.IEndpoint
+Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20230301.IEndpoint
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -51,10 +51,10 @@ INPUTOBJECT<IStorageMoverIdentity>: Identity Parameter
   [SubscriptionId<String>]: The ID of the target subscription.
 
 .Link
-https://learn.microsoft.com/powershell/module/az.storagemover/update-azstoragemoverendpoint
+https://learn.microsoft.com/powershell/module/az.storagemover/update-azstoragemovernfsendpoint
 #>
 function Update-AzStorageMoverNfsEndpoint {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20220701Preview.IEndpoint])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20230301.IEndpoint])]
     [CmdletBinding(DefaultParameterSetName = 'UpdateExpanded', PositionalBinding =$false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
     param(
         [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -146,7 +146,7 @@ function Update-AzStorageMoverNfsEndpoint {
     )
 
     process {
-        $Properties = [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20220701Preview.NfsMountEndpointUpdateProperties]::New()
+        $Properties = [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20230301.NfsMountEndpointUpdateProperties]::New()
 
         if ($PSBoundParameters.ContainsKey('Description')) {
             $Properties.Description = $Description

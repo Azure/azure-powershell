@@ -1,5 +1,6 @@
 ### Thanks to our community contributors
-* Arun Sabale (@Ar-Sa), Fix example 1 in Set-AzVirtualNetworkPeering.md (#20588)
+* Bas Wijdenes (@baswijdenes), Update Get-AzAutomationJob.md (#21984)
+* Sebastiaan Koning (@OneAndOnlySeabass), Fix a few typos in Get-AzMarketplaceTerms.md (#21945)
 * Hiroshi Yoshioka (@hyoshioka0128)
-  * Fixed typo "resouce group"→"resource group" (#20664)
-  * Typo "resouce group"→"resource group" (#20713)
+  * Typo "CosmosDB Account"→"Cosmos DB Account" (#22005)
+  * Typo "azure key vault"→"Azure Key Vault" (#22103)

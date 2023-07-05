@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System.Collections.Generic;
+using Microsoft.Azure.Management.Monitor.Models;
 using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.Insights.OutputClasses
@@ -32,6 +33,19 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
             this.Location = location;
             this.Tags = tags;
             this.ProvisioningState = provisioningState;
+        }
+
+        internal static PSMonitorPrivateLinkScope ToPSMonitorPrivateLinkScope(AzureMonitorPrivateLinkScope scope)
+        {
+            return new PSMonitorPrivateLinkScope
+            {
+                Id = scope.Id,
+                Name = scope.Name,
+                Type = scope.Type,
+                Location = scope.Location,
+                Tags = scope.Tags,
+                ProvisioningState = scope.ProvisioningState
+            };
         }
 
         /// <summary>

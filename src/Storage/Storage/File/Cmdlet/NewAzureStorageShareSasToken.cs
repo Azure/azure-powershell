@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -26,7 +26,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
     using global::Azure.Storage.Files.Shares;
     using global::Azure.Storage.Sas;
     using global::Azure.Storage.Files.Shares.Models;
+    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
+    [GenericBreakingChangeWithVersion("The leading question mark '?' of the created SAS token will be removed in a future release.", "11.0.0", "6.0.0")]
     [Cmdlet("New", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageShareSASToken"), OutputType(typeof(String))]
     public class NewAzureStorageShareSasToken : AzureStorageFileCmdletBase
     {

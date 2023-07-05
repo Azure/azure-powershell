@@ -135,7 +135,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                         }
                     }
 
-
                     if (PublicNetworkAccess != null)
                     {
                         vaultCreateArgs.Properties.PublicNetworkAccess = (PublicNetworkAccess == cmdletModel.PublicNetworkAccess.Disabled) ? "Disabled" : "Enabled";

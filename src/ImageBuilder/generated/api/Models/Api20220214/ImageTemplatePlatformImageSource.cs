@@ -8,7 +8,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220214
     using static Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Extensions;
 
     /// <summary>
-    /// Describes an image source from [Azure Gallery Images](https://docs.microsoft.com/en-us/rest/api/compute/virtualmachineimages).
+    /// Describes an image source from [Azure Gallery Images](https://learn.microsoft.com/en-us/rest/api/compute/virtualmachineimages).
     /// </summary>
     public partial class ImageTemplatePlatformImageSource :
         Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220214.IImageTemplatePlatformImageSource,
@@ -25,7 +25,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220214
         private string _exactVersion;
 
         /// <summary>
-        /// Image version from the [Azure Gallery Images](https://docs.microsoft.com/en-us/rest/api/compute/virtualmachineimages).
+        /// Image version from the [Azure Gallery Images](https://learn.microsoft.com/en-us/rest/api/compute/virtualmachineimages).
         /// This readonly field differs from 'version', only if the value specified in 'version' field is 'latest'.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Origin(Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.PropertyOrigin.Owned)]
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220214
         private string _offer;
 
         /// <summary>
-        /// Image offer from the [Azure Gallery Images](https://docs.microsoft.com/en-us/rest/api/compute/virtualmachineimages).
+        /// Image offer from the [Azure Gallery Images](https://learn.microsoft.com/en-us/rest/api/compute/virtualmachineimages).
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Origin(Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.PropertyOrigin.Owned)]
         public string Offer { get => this._offer; set => this._offer = value; }
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220214
         private string _publisher;
 
         /// <summary>
-        /// Image Publisher in [Azure Gallery Images](https://docs.microsoft.com/en-us/rest/api/compute/virtualmachineimages).
+        /// Image Publisher in [Azure Gallery Images](https://learn.microsoft.com/en-us/rest/api/compute/virtualmachineimages).
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Origin(Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.PropertyOrigin.Owned)]
         public string Publisher { get => this._publisher; set => this._publisher = value; }
@@ -78,7 +78,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220214
         private string _sku;
 
         /// <summary>
-        /// Image sku from the [Azure Gallery Images](https://docs.microsoft.com/en-us/rest/api/compute/virtualmachineimages).
+        /// Image sku from the [Azure Gallery Images](https://learn.microsoft.com/en-us/rest/api/compute/virtualmachineimages).
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Origin(Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.PropertyOrigin.Owned)]
         public string Sku { get => this._sku; set => this._sku = value; }
@@ -91,7 +91,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220214
         private string _version;
 
         /// <summary>
-        /// Image version from the [Azure Gallery Images](https://docs.microsoft.com/en-us/rest/api/compute/virtualmachineimages).
+        /// Image version from the [Azure Gallery Images](https://learn.microsoft.com/en-us/rest/api/compute/virtualmachineimages).
         /// If 'latest' is specified here, the version is evaluated when the image build takes place, not when the template is submitted.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Origin(Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.PropertyOrigin.Owned)]
@@ -115,29 +115,29 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220214
             await eventListener.AssertObjectIsValid(nameof(__imageTemplateSource), __imageTemplateSource);
         }
     }
-    /// Describes an image source from [Azure Gallery Images](https://docs.microsoft.com/en-us/rest/api/compute/virtualmachineimages).
+    /// Describes an image source from [Azure Gallery Images](https://learn.microsoft.com/en-us/rest/api/compute/virtualmachineimages).
     public partial interface IImageTemplatePlatformImageSource :
         Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.IJsonSerializable,
         Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220214.IImageTemplateSource
     {
         /// <summary>
-        /// Image version from the [Azure Gallery Images](https://docs.microsoft.com/en-us/rest/api/compute/virtualmachineimages).
+        /// Image version from the [Azure Gallery Images](https://learn.microsoft.com/en-us/rest/api/compute/virtualmachineimages).
         /// This readonly field differs from 'version', only if the value specified in 'version' field is 'latest'.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Info(
         Required = false,
         ReadOnly = true,
-        Description = @"Image version from the [Azure Gallery Images](https://docs.microsoft.com/en-us/rest/api/compute/virtualmachineimages). This readonly field differs from 'version', only if the value specified in 'version' field is 'latest'.",
+        Description = @"Image version from the [Azure Gallery Images](https://learn.microsoft.com/en-us/rest/api/compute/virtualmachineimages). This readonly field differs from 'version', only if the value specified in 'version' field is 'latest'.",
         SerializedName = @"exactVersion",
         PossibleTypes = new [] { typeof(string) })]
         string ExactVersion { get;  }
         /// <summary>
-        /// Image offer from the [Azure Gallery Images](https://docs.microsoft.com/en-us/rest/api/compute/virtualmachineimages).
+        /// Image offer from the [Azure Gallery Images](https://learn.microsoft.com/en-us/rest/api/compute/virtualmachineimages).
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"Image offer from the [Azure Gallery Images](https://docs.microsoft.com/en-us/rest/api/compute/virtualmachineimages).",
+        Description = @"Image offer from the [Azure Gallery Images](https://learn.microsoft.com/en-us/rest/api/compute/virtualmachineimages).",
         SerializedName = @"offer",
         PossibleTypes = new [] { typeof(string) })]
         string Offer { get; set; }
@@ -166,49 +166,49 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220214
         PossibleTypes = new [] { typeof(string) })]
         string PlanInfoPlanPublisher { get; set; }
         /// <summary>
-        /// Image Publisher in [Azure Gallery Images](https://docs.microsoft.com/en-us/rest/api/compute/virtualmachineimages).
+        /// Image Publisher in [Azure Gallery Images](https://learn.microsoft.com/en-us/rest/api/compute/virtualmachineimages).
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"Image Publisher in [Azure Gallery Images](https://docs.microsoft.com/en-us/rest/api/compute/virtualmachineimages).",
+        Description = @"Image Publisher in [Azure Gallery Images](https://learn.microsoft.com/en-us/rest/api/compute/virtualmachineimages).",
         SerializedName = @"publisher",
         PossibleTypes = new [] { typeof(string) })]
         string Publisher { get; set; }
         /// <summary>
-        /// Image sku from the [Azure Gallery Images](https://docs.microsoft.com/en-us/rest/api/compute/virtualmachineimages).
+        /// Image sku from the [Azure Gallery Images](https://learn.microsoft.com/en-us/rest/api/compute/virtualmachineimages).
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"Image sku from the [Azure Gallery Images](https://docs.microsoft.com/en-us/rest/api/compute/virtualmachineimages).",
+        Description = @"Image sku from the [Azure Gallery Images](https://learn.microsoft.com/en-us/rest/api/compute/virtualmachineimages).",
         SerializedName = @"sku",
         PossibleTypes = new [] { typeof(string) })]
         string Sku { get; set; }
         /// <summary>
-        /// Image version from the [Azure Gallery Images](https://docs.microsoft.com/en-us/rest/api/compute/virtualmachineimages).
+        /// Image version from the [Azure Gallery Images](https://learn.microsoft.com/en-us/rest/api/compute/virtualmachineimages).
         /// If 'latest' is specified here, the version is evaluated when the image build takes place, not when the template is submitted.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"Image version from the [Azure Gallery Images](https://docs.microsoft.com/en-us/rest/api/compute/virtualmachineimages). If 'latest' is specified here, the version is evaluated when the image build takes place, not when the template is submitted.",
+        Description = @"Image version from the [Azure Gallery Images](https://learn.microsoft.com/en-us/rest/api/compute/virtualmachineimages). If 'latest' is specified here, the version is evaluated when the image build takes place, not when the template is submitted.",
         SerializedName = @"version",
         PossibleTypes = new [] { typeof(string) })]
         string Version { get; set; }
 
     }
-    /// Describes an image source from [Azure Gallery Images](https://docs.microsoft.com/en-us/rest/api/compute/virtualmachineimages).
+    /// Describes an image source from [Azure Gallery Images](https://learn.microsoft.com/en-us/rest/api/compute/virtualmachineimages).
     internal partial interface IImageTemplatePlatformImageSourceInternal :
         Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220214.IImageTemplateSourceInternal
     {
         /// <summary>
-        /// Image version from the [Azure Gallery Images](https://docs.microsoft.com/en-us/rest/api/compute/virtualmachineimages).
+        /// Image version from the [Azure Gallery Images](https://learn.microsoft.com/en-us/rest/api/compute/virtualmachineimages).
         /// This readonly field differs from 'version', only if the value specified in 'version' field is 'latest'.
         /// </summary>
         string ExactVersion { get; set; }
         /// <summary>
-        /// Image offer from the [Azure Gallery Images](https://docs.microsoft.com/en-us/rest/api/compute/virtualmachineimages).
+        /// Image offer from the [Azure Gallery Images](https://learn.microsoft.com/en-us/rest/api/compute/virtualmachineimages).
         /// </summary>
         string Offer { get; set; }
         /// <summary>Optional configuration of purchase plan for platform image.</summary>
@@ -220,15 +220,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220214
         /// <summary>Publisher of the purchase plan.</summary>
         string PlanInfoPlanPublisher { get; set; }
         /// <summary>
-        /// Image Publisher in [Azure Gallery Images](https://docs.microsoft.com/en-us/rest/api/compute/virtualmachineimages).
+        /// Image Publisher in [Azure Gallery Images](https://learn.microsoft.com/en-us/rest/api/compute/virtualmachineimages).
         /// </summary>
         string Publisher { get; set; }
         /// <summary>
-        /// Image sku from the [Azure Gallery Images](https://docs.microsoft.com/en-us/rest/api/compute/virtualmachineimages).
+        /// Image sku from the [Azure Gallery Images](https://learn.microsoft.com/en-us/rest/api/compute/virtualmachineimages).
         /// </summary>
         string Sku { get; set; }
         /// <summary>
-        /// Image version from the [Azure Gallery Images](https://docs.microsoft.com/en-us/rest/api/compute/virtualmachineimages).
+        /// Image version from the [Azure Gallery Images](https://learn.microsoft.com/en-us/rest/api/compute/virtualmachineimages).
         /// If 'latest' is specified here, the version is evaluated when the image build takes place, not when the template is submitted.
         /// </summary>
         string Version { get; set; }

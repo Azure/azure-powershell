@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Grants required permissions to the backup vault to configure backup
+Grants required permissions to the backup vault and other resources for configure backup and restore scenarios
 .Description
-Grants required permissions to the backup vault to configure backup
+Grants required permissions to the backup vault and other resources for configure backup and restore scenarios
 .Example
 Set-AzDataProtectionMSIPermission -BackupInstance $instance -VaultResourceGroup "VaultRG" -VaultName "Vaultname" -PermissionsScope "ResourceGroup"
 
@@ -27,6 +27,8 @@ Set-AzDataProtectionMSIPermission -BackupInstance $instance -VaultResourceGroup 
 .Example
 Set-AzDataProtectionMSIPermission -KeyVaultId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/Sqlrg/providers/Microsoft.KeyVault/vaults/testkeyvault"  -BackupInstance $instance -VaultResourceGroup "VaultRG" -VaultName "Vaultname" -PermissionsScope "Resource"
 
+.Example
+Set-AzDataProtectionMSIPermission -BackupInstance $backupInstance -VaultResourceGroup "resourceGroupName" -VaultName "vaultName" -PermissionsScope "ResourceGroup"
 
 .Outputs
 System.Object
@@ -51,6 +53,8 @@ BACKUPINSTANCE <IBackupInstanceResource>: Backup instance request object which w
     PolicyInfo <IPolicyInfo>: Gets or sets the policy information.
       PolicyId <String>: 
       [PolicyParameter <IPolicyParameters>]: Policy parameters for the backup instance
+        [BackupDatasourceParametersList <IBackupDatasourceParameters[]>]: Gets or sets the Backup Data Source Parameters
+          ObjectType <String>: Type of the specific object - used for deserializing
         [DataStoreParametersList <IDataStoreParameters[]>]: Gets or sets the DataStore Parameters
           DataStoreType <DataStoreTypes>: type of datastore; Operational/Vault/Archive
           ObjectType <String>: Type of the specific object - used for deserializing
@@ -66,20 +70,21 @@ BACKUPINSTANCE <IBackupInstanceResource>: Backup instance request object which w
       ObjectType <String>: Type of the specific object - used for deserializing
     [FriendlyName <String>]: Gets or sets the Backup Instance friendly name.
     [ValidationType <ValidationType?>]: Specifies the type of validation. In case of DeepValidation, all validations from /validateForBackup API will run again.
+
+RESTOREREQUEST <IAzureBackupRestoreRequest>: Restore request object which will be used for restore
+  ObjectType <String>: 
+  RestoreTargetInfo <IRestoreTargetInfoBase>: Gets or sets the restore target information.
+    ObjectType <String>: Type of Datasource object, used to initialize the right inherited type
+    [RestoreLocation <String>]: Target Restore region
+  SourceDataStoreType <SourceDataStoreType>: Gets or sets the type of the source data store.
+  [SourceResourceId <String>]: Fully qualified Azure Resource Manager ID of the datasource which is being recovered.
 .Link
 https://learn.microsoft.com/powershell/module/az.dataprotection/set-azdataprotectionmsipermission
 #>
 function Set-AzDataProtectionMSIPermission {
 [OutputType([System.Object])]
-[CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+[CmdletBinding(DefaultParameterSetName='SetPermissionsForBackup', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20221201.IBackupInstanceResource]
-    # Backup instance request object which will be used to configure backup
-    # To construct, see NOTES section for BACKUPINSTANCE properties and create a hash table.
-    ${BackupInstance},
-
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
     [System.String]
@@ -98,11 +103,31 @@ param(
     # Scope at which the permissions need to be granted
     ${PermissionsScope},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='SetPermissionsForBackup', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202301.IBackupInstanceResource]
+    # Backup instance request object which will be used to configure backup
+    # To construct, see NOTES section for BACKUPINSTANCE properties and create a hash table.
+    ${BackupInstance},
+
+    [Parameter(ParameterSetName='SetPermissionsForBackup')]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
     [System.String]
     # ID of the keyvault
-    ${KeyVaultId}
+    ${KeyVaultId},
+
+    [Parameter(ParameterSetName='SetPermissionsForRestore', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202301.IAzureBackupRestoreRequest]
+    # Restore request object which will be used for restore
+    # To construct, see NOTES section for RESTOREREQUEST properties and create a hash table.
+    ${RestoreRequest},
+
+    [Parameter(ParameterSetName='SetPermissionsForRestore', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
+    [System.String]
+    # Sanpshot Resource Group
+    ${SnapshotResourceGroupId}
 )
 
 begin {
@@ -114,7 +139,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
         }         
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {
@@ -131,7 +156,8 @@ begin {
         }
 
         $mapping = @{
-            __AllParameterSets = 'Az.DataProtection.custom\Set-AzDataProtectionMSIPermission';
+            SetPermissionsForBackup = 'Az.DataProtection.custom\Set-AzDataProtectionMSIPermission';
+            SetPermissionsForRestore = 'Az.DataProtection.custom\Set-AzDataProtectionMSIPermission';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)

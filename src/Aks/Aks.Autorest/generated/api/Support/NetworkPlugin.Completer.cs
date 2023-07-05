@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Support
 {
 
-    /// <summary>Network plugin used for building Kubernetes network.</summary>
+    /// <summary>Network plugin used for building the Kubernetes network.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.NetworkPluginTypeConverter))]
     public partial struct NetworkPlugin :
         System.Management.Automation.IArgumentCompleter
@@ -33,6 +33,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Support
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "kubenet".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
                 yield return new global::System.Management.Automation.CompletionResult("'kubenet'", "kubenet", global::System.Management.Automation.CompletionResultType.ParameterValue, "kubenet");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "none".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'none'", "none", global::System.Management.Automation.CompletionResultType.ParameterValue, "none");
             }
         }
     }

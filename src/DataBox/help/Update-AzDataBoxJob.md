@@ -14,9 +14,18 @@ Updates the properties of an existing job.
 
 ```
 Update-AzDataBoxJob -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] [-IfMatch <String>]
- [-ContactDetail <IContactDetails>] [-IdentityType <String>] [-KeyEncryptionKey <IKeyEncryptionKey>]
- [-ShippingAddress <IShippingAddress>] [-Tag <Hashtable>] [-UserAssignedIdentity <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-ContactDetail <IContactDetails>] [-ContactDetailContactName <String>] [-ContactDetailMobile <String>]
+ [-ContactDetailPhone <String>] [-ContactDetailPhoneExtension <String>]
+ [-EncryptionPreferenceDoubleEncryption <DoubleEncryption>]
+ [-EncryptionPreferenceHardwareEncryption <HardwareEncryption>] [-IdentityType <String>]
+ [-KeyEncryptionKey <IKeyEncryptionKey>] [-PreferencePreferredDataCenterRegion <String[]>]
+ [-ReturnToCustomerPackageDetailCarrierAccountNumber <String>]
+ [-ReturnToCustomerPackageDetailCarrierName <String>] [-ReturnToCustomerPackageDetailTrackingId <String>]
+ [-ReverseShippingDetail <IShippingAddress>] [-ReverseTransportPreferredShipmentType <TransportShipmentTypes>]
+ [-ShippingAddress <IShippingAddress>] [-StorageAccountAccessTierPreference <StorageAccountAccessTier[]>]
+ [-Tag <Hashtable>] [-TransportPreferredShipmentType <TransportShipmentTypes>]
+ [-UserAssignedIdentity <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -25,16 +34,11 @@ Updates the properties of an existing job.
 ## EXAMPLES
 
 ### Example 1: Update databox job encryption from microsoft managed to customer managed with user assigned identities 
-<!-- Skip: Output cannot be splitted from code -->
 ```powershell
 $keyEncryptionDetails = New-AzDataBoxKeyEncryptionKeyObject -KekType "CustomerManaged" -IdentityProperty @{Type = "UserAssigned"; UserAssignedResourceId = "/subscriptions/SubscriptionId/resourceGroups/resourceGroupName/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identityName"} -KekUrl "keyIdentifier" -KekVaultResourceId "/subscriptions/SubscriptionId/resourceGroups/resourceGroupName/providers/Microsoft.KeyVault/vaults/keyVaultName"
 
-$keyEncryptionDetails
-
-KekType         KekUrl                                           KekVaultResourceId
--------         ------                                           ------------------
-CustomerManaged keyIdentifier /subscriptions/SubscriptionId/resourceGroups/resourceGroupName/providers/Microsoft.KeyVault/vaults/keyVaultName
 $DebugPreference = "Continue"
+
 # You can use `$DebugPreference = "Continue"`, with any example/usecase to get exact details of error in below format when update command fails.
 # {
 #   "Error": {
@@ -46,7 +50,16 @@ $DebugPreference = "Continue"
 #     "Target": null
 #   }
 # } 
+
 Update-AzDataBoxJob -Name "powershell10" -ResourceGroupName "resourceGroupName" -KeyEncryptionKey $keyEncryptionDetails -ContactDetail $contactDetail -ShippingAddress $ShippingDetails  -IdentityType "UserAssigned" -UserAssignedIdentity @{"/subscriptions/SubscriptionId/resourceGroups/resourceGroupName/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identityName" = @{}}
+
+$keyEncryptionDetails
+```
+
+```output
+KekType         KekUrl                                           KekVaultResourceId
+-------         ------                                           ------------------
+CustomerManaged keyIdentifier /subscriptions/SubscriptionId/resourceGroups/resourceGroupName/providers/Microsoft.KeyVault/vaults/keyVaultName
 
 Name         Location Status        TransferType  SkuName IdentityType DeliveryType Detail
 ----         -------- ------        ------------  ------- ------------ ------------ ------
@@ -56,15 +69,10 @@ Powershell10 WestUS   DeviceOrdered ImportToAzure DataBox UserAssigned NonSchedu
 Update databox job encryption from microsoft managed to customer managed with user assigned identities.
 
 ### Example 2: Update databox job encryption from microsoft managed to customer managed with system identities in 2 updates
-<!-- Skip: Output cannot be splitted from code -->
 ```powershell
 $databoxUpdate = Update-AzDataBoxJob -Name "pwshTestSAssigned" -ResourceGroupName "resourceGroupName" -ContactDetail $contactDetail -ShippingAddress $ShippingDetails  -IdentityType "SystemAssigned"
 
 $databoxUpdate.Identity
-
-PrincipalId                          TenantId                             Type
------------                          --------                             ----
-920850f5-9b6b-4017-a81a-3dcafe348be7 72f988bf-86f1-41af-91ab-2d7cd011db47 SystemAssigned
 
 $keyEncryptionDetails = New-AzDataBoxKeyEncryptionKeyObject -KekType "CustomerManaged" -IdentityProperty @{Type = "SystemAssigned"} -KekUrl "keyIdentifier" -KekVaultResourceId "/subscriptions/SubscriptionId/resourceGroups/resourceGroupName/providers/Microsoft.KeyVault/vaults/keyVaultName"
 
@@ -72,11 +80,17 @@ $databoxUpdateWithCMK = Update-AzDataBoxJob -Name "pwshTestSAssigned" -ResourceG
 
 $databoxUpdateWithCMK.Identity
 
+$databoxUpdateWithCMK.Detail.KeyEncryptionKey
+```
+
+```output
 PrincipalId                          TenantId                             Type
 -----------                          --------                             ----
 920850f5-9b6b-4017-a81a-3dcafe348be7 72f988bf-86f1-41af-91ab-2d7cd011db47 SystemAssigned
 
-$databoxUpdateWithCMK.Detail.KeyEncryptionKey
+PrincipalId                          TenantId                             Type
+-----------                          --------                             ----
+920850f5-9b6b-4017-a81a-3dcafe348be7 72f988bf-86f1-41af-91ab-2d7cd011db47 SystemAssigned
 
 KekType         KekUrl                                           KekVaultResourceId
 -------         ------                                           ------------------
@@ -88,7 +102,6 @@ For any failure re-run with $DebugPreference = "Continue" as mentioned in exampl
 
 ### Example 3: Update databox job from system assigned to user assigned with customer managed key encryption
 ```powershell
-$keyEncryptionDetails = New-AzDataBoxKeyEncryptionKeyObject -KekType "CustomerManaged" -IdentityProperty @{Type = "UserAssigned"; UserAssignedResourceId = "/subscriptions/SubscriptionId/resourceGroups/resourceGroupName/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identityName"} -KekUrl "keyIdentifier" -KekVaultResourceId "/subscriptions/SubscriptionId/resourceGroups/resourceGroupName/providers/Microsoft.KeyVault/vaults/keyVaultName"
 $contactDetail = New-AzDataBoxContactDetailsObject -ContactName "random" -EmailList @("emailId") -Phone "1234567891"
 $ShippingDetails = New-AzDataBoxShippingAddressObject -StreetAddress1 "101 TOWNSEND ST" -StateOrProvince "CA" -Country "US" -City "San Francisco" -PostalCode "94107" -AddressType "Commercial"
 
@@ -120,7 +133,67 @@ Contact details for notification and shipping.
 To construct, see NOTES section for CONTACTDETAIL properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IContactDetails
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IContactDetails
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ContactDetailContactName
+Contact name of the person.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ContactDetailMobile
+Mobile number of the contact person.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ContactDetailPhone
+Phone number of the contact person.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ContactDetailPhoneExtension
+Phone extension number of the contact person.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -132,12 +205,43 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EncryptionPreferenceDoubleEncryption
+Defines secondary layer of software-based encryption enablement.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.DoubleEncryption
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EncryptionPreferenceHardwareEncryption
+Defines Hardware level encryption (Only for disk)
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.HardwareEncryption
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -182,7 +286,7 @@ Key encryption key for the job.
 To construct, see NOTES section for KEYENCRYPTIONKEY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IKeyEncryptionKey
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IKeyEncryptionKey
 Parameter Sets: (All)
 Aliases:
 
@@ -224,6 +328,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -PreferencePreferredDataCenterRegion
+Preferred data center region.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The Resource Group Name
 
@@ -239,12 +358,103 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ReturnToCustomerPackageDetailCarrierAccountNumber
+Carrier Account Number of customer for customer disk.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ReturnToCustomerPackageDetailCarrierName
+Name of the carrier.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ReturnToCustomerPackageDetailTrackingId
+Tracking Id of shipment.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ReverseShippingDetail
+Shipping address where customer wishes to receive the device.
+To construct, see NOTES section for REVERSESHIPPINGDETAIL properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IShippingAddress
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ReverseTransportPreferredShipmentType
+Indicates Shipment Logistics type that the customer preferred.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.TransportShipmentTypes
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ShippingAddress
 Shipping address of the customer.
 To construct, see NOTES section for SHIPPINGADDRESS properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShippingAddress
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IShippingAddress
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -StorageAccountAccessTierPreference
+Preferences related to the Access Tier of storage accounts.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.StorageAccountAccessTier[]
 Parameter Sets: (All)
 Aliases:
 
@@ -276,6 +486,21 @@ These tags can be used in viewing and grouping this resource (across resource gr
 
 ```yaml
 Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TransportPreferredShipmentType
+Indicates Shipment Logistics type that the customer preferred.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.TransportShipmentTypes
 Parameter Sets: (All)
 Aliases:
 
@@ -339,7 +564,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobResource
+### Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IJobResource
 
 ## NOTES
 
@@ -350,7 +575,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-CONTACTDETAIL `<IContactDetails>`: Contact details for notification and shipping.
+`CONTACTDETAIL <IContactDetails>`: Contact details for notification and shipping.
   - `ContactName <String>`: Contact name of the person.
   - `EmailList <String[]>`: List of Email-ids to be notified about job progress.
   - `Phone <String>`: Phone number of the contact person.
@@ -360,7 +585,7 @@ CONTACTDETAIL `<IContactDetails>`: Contact details for notification and shipping
     - `StageName <NotificationStageName>`: Name of the stage.
   - `[PhoneExtension <String>]`: Phone extension number of the contact person.
 
-KEYENCRYPTIONKEY `<IKeyEncryptionKey>`: Key encryption key for the job.
+`KEYENCRYPTIONKEY <IKeyEncryptionKey>`: Key encryption key for the job.
   - `KekType <KekType>`: Type of encryption key used for key encryption.
   - `[IdentityProperty <IIdentityProperties>]`: Managed identity properties used for key encryption.
     - `[Type <String>]`: Managed service identity type.
@@ -368,16 +593,32 @@ KEYENCRYPTIONKEY `<IKeyEncryptionKey>`: Key encryption key for the job.
   - `[KekUrl <String>]`: Key encryption key. It is required in case of Customer managed KekType.
   - `[KekVaultResourceId <String>]`: Kek vault resource id. It is required in case of Customer managed KekType.
 
-SHIPPINGADDRESS `<IShippingAddress>`: Shipping address of the customer.
+`REVERSESHIPPINGDETAIL <IShippingAddress>`: Shipping address where customer wishes to receive the device.
   - `Country <String>`: Name of the Country.
   - `StreetAddress1 <String>`: Street Address line 1.
   - `[AddressType <AddressType?>]`: Type of address.
   - `[City <String>]`: Name of the City.
   - `[CompanyName <String>]`: Name of the company.
   - `[PostalCode <String>]`: Postal code.
+  - `[SkipAddressValidation <Boolean?>]`: Flag to indicate if customer has chosen to skip default address validation
   - `[StateOrProvince <String>]`: Name of the State or Province.
   - `[StreetAddress2 <String>]`: Street Address line 2.
   - `[StreetAddress3 <String>]`: Street Address line 3.
+  - `[TaxIdentificationNumber <String>]`: Tax Identification Number
+  - `[ZipExtendedCode <String>]`: Extended Zip Code.
+
+`SHIPPINGADDRESS <IShippingAddress>`: Shipping address of the customer.
+  - `Country <String>`: Name of the Country.
+  - `StreetAddress1 <String>`: Street Address line 1.
+  - `[AddressType <AddressType?>]`: Type of address.
+  - `[City <String>]`: Name of the City.
+  - `[CompanyName <String>]`: Name of the company.
+  - `[PostalCode <String>]`: Postal code.
+  - `[SkipAddressValidation <Boolean?>]`: Flag to indicate if customer has chosen to skip default address validation
+  - `[StateOrProvince <String>]`: Name of the State or Province.
+  - `[StreetAddress2 <String>]`: Street Address line 2.
+  - `[StreetAddress3 <String>]`: Street Address line 3.
+  - `[TaxIdentificationNumber <String>]`: Tax Identification Number
   - `[ZipExtendedCode <String>]`: Extended Zip Code.
 
 ## RELATED LINKS

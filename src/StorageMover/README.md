@@ -31,15 +31,15 @@ For information on how to develop for `Az.StorageMover`, see [how-to.md](how-to.
 
 ``` yaml
 # Please specify the commit id that includes your features to make sure generated codes stable.
-brach: 913f1e8aa0bfc773c5f236f03d56f379d9d3d012
+brach: 470c544393281cc986c9b343fa441f54576bc0bc
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:
-  - $(repo)/specification/storagemover/resource-manager/Microsoft.StorageMover/preview/2022-07-01-preview/storagemover.json
+  - $(repo)/specification/storagemover/resource-manager/Microsoft.StorageMover/stable/2023-03-01/storagemover.json
 
 # For new RP, the version is 0.1.0
-module-version: 0.1.0
+module-version: 1.0.0
 # Normally, title is the service name
 title: StorageMover
 subject-prefix: $(service-name)
@@ -51,7 +51,7 @@ directive:
       verb: Set
     remove: true
   - where:
-      model-name: StorageMover|JobDefinition|Project|Endpoint|Agent
+      model-name: StorageMover|JobDefinition|Project|Endpoint|Agent|JobRun
     set:
       suppress-format: true
   - no-inline:

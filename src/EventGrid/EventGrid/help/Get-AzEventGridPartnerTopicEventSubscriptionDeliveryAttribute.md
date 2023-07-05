@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.dll-Help.xml
 Module Name: Az.EventGrid
-online version:
+online version: https://learn.microsoft.com/powershell/module/az.eventgrid/get-azeventgridpartnertopiceventsubscriptiondeliveryattribute
 schema: 2.0.0
 ---
 
@@ -42,14 +42,13 @@ Get-AzEventGridPartnerTopicEventSubscriptionDeliveryAttribute -ResourceGroupName
 
 Gets the list of delivery attributest for event subscription \`EventSubscription1\` created for partner topic \`Topic1\` in resource group \`MyResourceGroupName\`.
 
-
 ## PARAMETERS
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -64,7 +63,7 @@ Accept wildcard characters: False
 EventGrid event subscription name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: PartnerTopicEventSubscriptionParameterSet
 Aliases: EventSubscriptionName
 
@@ -79,7 +78,7 @@ Accept wildcard characters: False
 Event Grid partner topic name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: PartnerTopicEventSubscriptionParameterSet
 Aliases:
 
@@ -94,7 +93,7 @@ Accept wildcard characters: False
 The name of the resource group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: PartnerTopicEventSubscriptionParameterSet
 Aliases: ResourceGroup
 
@@ -109,7 +108,7 @@ Accept wildcard characters: False
 Resource Identifier representing the Event Grid Event Subscription.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceIdPartnerTopicEventSubscriptionParameterSet
 Aliases:
 

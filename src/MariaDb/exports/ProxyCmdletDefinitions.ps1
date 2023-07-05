@@ -206,7 +206,7 @@ INPUTOBJECT <IMariaDbIdentity>: Identity Parameter
   [SubscriptionId <String>]: The subscription ID that identifies an Azure subscription.
   [VirtualNetworkRuleName <String>]: The name of the virtual network rule.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.mariadb/get-azmariadbconfiguration
+https://learn.microsoft.com/en-us/powershell/module/az.mariadb/get-azmariadbconfiguration
 #>
 function Get-AzMariaDbConfiguration {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IConfiguration])]
@@ -393,7 +393,7 @@ INPUTOBJECT <IMariaDbIdentity>: Identity Parameter
   [SubscriptionId <String>]: The subscription ID that identifies an Azure subscription.
   [VirtualNetworkRuleName <String>]: The name of the virtual network rule.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.mariadb/get-azmariadbfirewallrule
+https://learn.microsoft.com/en-us/powershell/module/az.mariadb/get-azmariadbfirewallrule
 #>
 function Get-AzMariaDbFirewallRule {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IFirewallRule])]
@@ -555,7 +555,7 @@ mariadb-test-szp6dt-rep154 eastus   zcsxhpasdc         10.2    5120             
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServer
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.mariadb/get-azmariadbreplica
+https://learn.microsoft.com/en-us/powershell/module/az.mariadb/get-azmariadbreplica
 #>
 function Get-AzMariaDbReplica {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServer])]
@@ -749,7 +749,7 @@ INPUTOBJECT <IMariaDbIdentity>: Identity Parameter
   [SubscriptionId <String>]: The subscription ID that identifies an Azure subscription.
   [VirtualNetworkRuleName <String>]: The name of the virtual network rule.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.mariadb/get-azmariadbserver
+https://learn.microsoft.com/en-us/powershell/module/az.mariadb/get-azmariadbserver
 #>
 function Get-AzMariaDbServer {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServer])]
@@ -930,7 +930,7 @@ INPUTOBJECT <IMariaDbIdentity>: Identity Parameter
   [SubscriptionId <String>]: The subscription ID that identifies an Azure subscription.
   [VirtualNetworkRuleName <String>]: The name of the virtual network rule.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.mariadb/get-azmariadbvirtualnetworkrule
+https://learn.microsoft.com/en-us/powershell/module/az.mariadb/get-azmariadbvirtualnetworkrule
 #>
 function Get-AzMariaDbVirtualNetworkRule {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IVirtualNetworkRule])]
@@ -1098,7 +1098,7 @@ vnet-001 Microsoft.DBforMariaDB/servers/virtualNetworkRules
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IVirtualNetworkRule
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.mariadb/new-azmariadbvirtualnetworkrule
+https://learn.microsoft.com/en-us/powershell/module/az.mariadb/new-azmariadbvirtualnetworkrule
 #>
 function New-AzMariaDbVirtualNetworkRule {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IVirtualNetworkRule])]
@@ -1292,7 +1292,7 @@ INPUTOBJECT <IMariaDbIdentity>: Identity Parameter
   [SubscriptionId <String>]: The subscription ID that identifies an Azure subscription.
   [VirtualNetworkRuleName <String>]: The name of the virtual network rule.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.mariadb/remove-azmariadbfirewallrule
+https://learn.microsoft.com/en-us/powershell/module/az.mariadb/remove-azmariadbfirewallrule
 #>
 function Remove-AzMariaDbFirewallRule {
 [OutputType([System.Boolean])]
@@ -1485,7 +1485,7 @@ INPUTOBJECT <IMariaDbIdentity>: Identity Parameter
   [SubscriptionId <String>]: The subscription ID that identifies an Azure subscription.
   [VirtualNetworkRuleName <String>]: The name of the virtual network rule.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.mariadb/remove-azmariadbserver
+https://learn.microsoft.com/en-us/powershell/module/az.mariadb/remove-azmariadbserver
 #>
 function Remove-AzMariaDbServer {
 [OutputType([System.Boolean])]
@@ -1669,7 +1669,7 @@ INPUTOBJECT <IMariaDbIdentity>: Identity Parameter
   [SubscriptionId <String>]: The subscription ID that identifies an Azure subscription.
   [VirtualNetworkRuleName <String>]: The name of the virtual network rule.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.mariadb/remove-azmariadbvirtualnetworkrule
+https://learn.microsoft.com/en-us/powershell/module/az.mariadb/remove-azmariadbvirtualnetworkrule
 #>
 function Remove-AzMariaDbVirtualNetworkRule {
 [OutputType([System.Boolean])]
@@ -1863,7 +1863,7 @@ INPUTOBJECT <IMariaDbIdentity>: Identity Parameter
   [SubscriptionId <String>]: The subscription ID that identifies an Azure subscription.
   [VirtualNetworkRuleName <String>]: The name of the virtual network rule.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.mariadb/update-azmariadbvirtualnetworkrule
+https://learn.microsoft.com/en-us/powershell/module/az.mariadb/update-azmariadbvirtualnetworkrule
 #>
 function Update-AzMariaDbVirtualNetworkRule {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IVirtualNetworkRule])]
@@ -2082,7 +2082,7 @@ INPUTOBJECT <IServer>: Identity Parameter
   [UserVisibleState <ServerState?>]: A state of a server that is visible to user.
   [Version <ServerVersion?>]: Server version.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.mariadb/get-azmariadbconnectionstring
+https://learn.microsoft.com/en-us/powershell/module/az.mariadb/get-azmariadbconnectionstring
 #>
 function Get-AzMariaDbConnectionString {
 [OutputType([System.String])]
@@ -2252,7 +2252,7 @@ AllowAll_2020-08-11_18-19-27 0.0.0.0        255.255.255.255
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IFirewallRule
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.mariadb/new-azmariadbfirewallrule
+https://learn.microsoft.com/en-us/powershell/module/az.mariadb/new-azmariadbfirewallrule
 #>
 function New-AzMariaDbFirewallRule {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IFirewallRule])]
@@ -2487,7 +2487,7 @@ MASTER <IServer>: The source server object to restore from.
   [UserVisibleState <ServerState?>]: A state of a server that is visible to user.
   [Version <ServerVersion?>]: Server version.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.mariadb/new-azmariadbreplica
+https://learn.microsoft.com/en-us/powershell/module/az.mariadb/new-azmariadbreplica
 #>
 function New-AzMariaDbReplica {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServer])]
@@ -2683,7 +2683,7 @@ mariadb-aassd-01 eastus   adminuser          10.2    5120                    B_G
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServer
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.mariadb/new-azmariadbserver
+https://learn.microsoft.com/en-us/powershell/module/az.mariadb/new-azmariadbserver
 #>
 function New-AzMariaDbServer {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServer])]
@@ -2926,7 +2926,7 @@ INPUTOBJECT <IMariaDbIdentity>: Identity Parameter
   [SubscriptionId <String>]: The subscription ID that identifies an Azure subscription.
   [VirtualNetworkRuleName <String>]: The name of the virtual network rule.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.mariadb/restart-azmariadbserver
+https://learn.microsoft.com/en-us/powershell/module/az.mariadb/restart-azmariadbserver
 #>
 function Restart-AzMariaDbServer {
 [OutputType([System.Boolean])]
@@ -3132,7 +3132,7 @@ INPUTOBJECT <IServer>: The source server object to restore from.
   [UserVisibleState <ServerState?>]: A state of a server that is visible to user.
   [Version <ServerVersion?>]: Server version.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.mariadb/restore-azmariadbserver
+https://learn.microsoft.com/en-us/powershell/module/az.mariadb/restore-azmariadbserver
 #>
 function Restore-AzMariaDbServer {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServer])]
@@ -3342,7 +3342,7 @@ INPUTOBJECT <IMariaDbIdentity>: Identity Parameter
   [SubscriptionId <String>]: The subscription ID that identifies an Azure subscription.
   [VirtualNetworkRuleName <String>]: The name of the virtual network rule.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.mariadb/update-azmariadbconfiguration
+https://learn.microsoft.com/en-us/powershell/module/az.mariadb/update-azmariadbconfiguration
 #>
 function Update-AzMariaDbConfiguration {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IConfiguration])]
@@ -3555,7 +3555,7 @@ INPUTOBJECT <IMariaDbIdentity>: Identity Parameter
   [SubscriptionId <String>]: The subscription ID that identifies an Azure subscription.
   [VirtualNetworkRuleName <String>]: The name of the virtual network rule.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.mariadb/update-azmariadbfirewallrule
+https://learn.microsoft.com/en-us/powershell/module/az.mariadb/update-azmariadbfirewallrule
 #>
 function Update-AzMariaDbFirewallRule {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IFirewallRule])]
@@ -3783,7 +3783,7 @@ INPUTOBJECT <IMariaDbIdentity>: Identity Parameter
   [SubscriptionId <String>]: The subscription ID that identifies an Azure subscription.
   [VirtualNetworkRuleName <String>]: The name of the virtual network rule.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.mariadb/update-azmariadbserver
+https://learn.microsoft.com/en-us/powershell/module/az.mariadb/update-azmariadbserver
 #>
 function Update-AzMariaDbServer {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServer])]

@@ -80,6 +80,9 @@ namespace Microsoft.Azure.Commands.Aks
         [Parameter(Mandatory = false, HelpMessage = "Whether to use use Uptime SLA.")]
         public SwitchParameter EnableUptimeSLA { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Whether to enalbe OIDC issuer feature.")]
+        public SwitchParameter EnableOidcIssuer { get; set; }
+
         private ManagedCluster BuildNewCluster()
         {
             BeforeBuildNewCluster();
@@ -153,7 +156,7 @@ namespace Microsoft.Azure.Commands.Aks
                 case InputObjectParameterSet:
                 {
                     WriteVerbose(Resources.UsingClusterFromPipeline);
-                    cluster = PSMapper.Instance.Map<ManagedCluster>(InputObject);
+                    cluster = AdapterHelper<PSKubernetesCluster, ManagedCluster>.Adapt(InputObject);
                     var resource = new ResourceIdentifier(cluster.Id);
                     ResourceGroupName = resource.ResourceGroupName;
                     Name = resource.ResourceName;
@@ -313,7 +316,7 @@ namespace Microsoft.Azure.Commands.Aks
                                 Client.AgentPools.UpgradeNodeImageVersion(ResourceGroupName, Name, agentPoolProfile.Name);
                             }
                             cluster = Client.ManagedClusters.Get(ResourceGroupName, Name);
-                            WriteObject(PSMapper.Instance.Map<PSKubernetesCluster>(cluster));
+                            WriteObject(AdapterHelper<ManagedCluster, PSKubernetesCluster>.Adapt(cluster));
                             return;
                         }
                         if (this.IsParameterBound(c => c.KubernetesVersion))
@@ -409,55 +412,63 @@ namespace Microsoft.Azure.Commands.Aks
                     {
                         if (EnableUptimeSLA.ToBool())
                         {
-                            cluster.Sku = new ManagedClusterSKU(name: "Basic", tier: "Paid");
+                            cluster.Sku = new ManagedClusterSKU(name: "Base", tier: "Standard");
                         }
                         else
                         {
-                            cluster.Sku = new ManagedClusterSKU(name: "Basic", tier: "Free");
+                            cluster.Sku = new ManagedClusterSKU(name: "Base", tier: "Free");
                         }
                     }
                     if (this.IsParameterBound(c => c.AadProfile))
                     {
                         cluster.AadProfile = AadProfile;
                     }
-                    SetIdentity(cluster);
-
-                    var kubeCluster = this.CreateOrUpdate(ResourceGroupName, Name, cluster);
-
+                    if (EnableOidcIssuer.IsPresent)
+                    {
+                        cluster.OidcIssuerProfile = new ManagedClusterOIDCIssuerProfile(enabled: true);
+                    }
+                    if (cluster.WindowsProfile != null)
+                    {
+                        if (this.IsParameterBound(c => c.WindowsProfileAdminUserPassword) && WindowsProfileAdminUserPassword != null)
+                        {
+                            cluster.WindowsProfile.AdminPassword = WindowsProfileAdminUserPassword.ConvertToString();
+                        }
+                        if (this.IsParameterBound(c => c.EnableAHUB))
+                        {
+                            if (EnableAHUB.ToBool())
+                            {
+                                cluster.WindowsProfile.LicenseType = "Windows_Server";
+                            }
+                            else
+                            {
+                                cluster.WindowsProfile.LicenseType = "None";
+                            }
+                        }
+                    }
                     if (this.IsParameterBound(c => c.DiskEncryptionSetID))
                     {
                         cluster.DiskEncryptionSetID = DiskEncryptionSetID;
                     }
-                    if (DisableLocalAccount.IsPresent)
+                    if (this.IsParameterBound(c => c.DisableLocalAccount))
                     {
-                        cluster.DisableLocalAccounts = DisableLocalAccount;
+                        cluster.DisableLocalAccounts = DisableLocalAccount.ToBool();
                     }
-                    
-                    WriteObject(PSMapper.Instance.Map<PSKubernetesCluster>(kubeCluster));
+                    SetIdentity(cluster);
+
+                    var kubeCluster = this.CreateOrUpdate(ResourceGroupName, Name, cluster);
+                    WriteObject(AdapterHelper<ManagedCluster, PSKubernetesCluster>.Adapt(kubeCluster));
                 });
             }
         }
 
         private void RemoveAcrRoleAssignment(string acrName, string acrParameterName, AcsServicePrincipal acsServicePrincipal)
         {
-            string acrResourceId = null;
-            try
-            {
-                //Find Acr resourceId first
-                var acrQuery = new ODataQuery<GenericResourceFilter>($"$filter=resourceType eq 'Microsoft.ContainerRegistry/registries' and name eq '{acrName}'");
-                var acrObjects = RmClient.Resources.List(acrQuery);
-                acrResourceId = acrObjects.First().Id;
-            }
-            catch (Exception)
-            {
-                throw new AzPSArgumentException(
-                    string.Format(Resources.CouldNotFindSpecifiedAcr, acrName),
-                    acrParameterName,
-                    string.Format(Resources.CouldNotFindSpecifiedAcr, "*"));
-            }
+            string acrResourceId = getSpecifiedAcr(acrName, acrParameterName);
 
             var roleDefinitionId = GetRoleId("acrpull", acrResourceId);
-            RoleAssignment roleAssignment = GetRoleAssignmentWithRoleDefinitionId(roleDefinitionId);
+            var spObjectId = getSPObjectId(acsServicePrincipal);
+
+            RoleAssignment roleAssignment = GetRoleAssignmentWithRoleDefinitionId(roleDefinitionId, acrResourceId, spObjectId);
             if (roleAssignment == null)
             {
                 throw new AzPSInvalidOperationException(

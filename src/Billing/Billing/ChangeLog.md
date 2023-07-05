@@ -19,6 +19,15 @@
 -->
 ## Upcoming Release
 
+## Version 2.0.3
+* Fixed page continuation for Consumption PriceSheet cmdlet
+
+## Version 2.0.2
+* Fixed skip token for Consumption PriceSheet cmdlet
+
+## Version 2.0.1
+* Fixed pagination for `Get-AzConsumptionPriceSheet` cmdlet
+
 ## Version 2.0.0
 * Added `Get-AzBillingAccount` cmdlet
 * Added `Get-AzBillingProfile` cmdlet

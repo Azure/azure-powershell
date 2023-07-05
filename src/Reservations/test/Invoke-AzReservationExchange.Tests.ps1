@@ -17,13 +17,13 @@ if(($null -eq $TestName) -or ($TestName -contains 'Invoke-AzReservationExchange'
 # Prepare request body
 $reservationToReturn1 = @{
     Quantity = 1
-    ReservationId = "/providers/microsoft.capacity/reservationOrders/c3131617-d38c-4bbc-a33d-6094c5a88cbc/reservations/24fbc015-d032-4fc7-9dfe-7e46b655d8c1"
+    ReservationId = "/providers/microsoft.capacity/reservationOrders/068506a3-a704-4c3e-8d3a-6c566d4af58b/reservations/936a414b-5999-4eb9-9fe7-883c5fc19d34"
 }
 $reservationsToReturn = @($reservationToReturn1)
 $reservationToPurchase1Properties = @{
     AppliedScopeType = "Shared"
     BillingPlan = "Upfront"
-    BillingScopeId = "/subscriptions/b0f278e1-1f18-4378-84d7-b44dfa708665"
+    BillingScopeId = "/subscriptions/10000000-aaaa-bbbb-cccc-100000000000"
     DisplayName = "PSExchange1"
     Quantity = 2
     ReservedResourceType = "VirtualMachines"
@@ -46,11 +46,11 @@ function ExecuteTestCases([object]$response) {
     $response.PurchasesTotal | Should -Not -Be $null
     $response.NetPayable | Should -Not -Be $null
     $response.RefundsTotal.CurrencyCode | Should -Be 'GBP'
-    $response.RefundsTotal.Amount | Should -Be 6967.26
+    $response.RefundsTotal.Amount | Should -Be 42.84
     $response.PurchasesTotal.CurrencyCode | Should -Be 'GBP'
-    $response.PurchasesTotal.Amount | Should -Be 11328.0
+    $response.PurchasesTotal.Amount | Should -Be 11328
     $response.NetPayable.CurrencyCode | Should -Be 'GBP'
-    $response.NetPayable.Amount | Should -Be 4360.74
+    $response.NetPayable.Amount | Should -Be 11285.16
 
     $response.ReservationsToPurchase | Should -Not -Be $null
     $response.ReservationsToPurchase.Count | Should -Be 1
@@ -63,12 +63,12 @@ function ExecuteTestCases([object]$response) {
     $response.ReservationsToPurchase[0].Properties.Quantity | Should -Be 2
     $response.ReservationsToPurchase[0].Properties.ReservedResourceType | Should -Be "VirtualMachines"
     $response.ReservationsToPurchase[0].Properties.AppliedScopeType | Should -Be "Shared"
-    $response.ReservationsToPurchase[0].Properties.DisplayName | Should -Be "PSExchange"
+    $response.ReservationsToPurchase[0].Properties.DisplayName | Should -Be "PSExchange1"
     $response.ReservationsToPurchase[0].ReservationOrderId | Should -Not -Be $null
     $response.ReservationsToPurchase[0].ReservationId | Should -Not -Be $null
     $response.ReservationsToPurchase[0].BillingCurrencyTotal | Should -Not -Be $null
     $response.ReservationsToPurchase[0].BillingCurrencyTotal.CurrencyCode | Should -Be "GBP"
-    $response.ReservationsToPurchase[0].BillingCurrencyTotal.Amount | Should -Be 11328.0
+    $response.ReservationsToPurchase[0].BillingCurrencyTotal.Amount | Should -Be 11328
     $response.ReservationsToPurchase[0].Status | Should -Be "Succeeded"
 
     $response.ReservationsToExchange | Should -Not -Be $null
@@ -77,17 +77,17 @@ function ExecuteTestCases([object]$response) {
     $response.ReservationsToExchange[0].Quantity | Should -Be 1
     $response.ReservationsToExchange[0].BillingRefundAmount | Should -Not -Be $null
     $response.ReservationsToExchange[0].BillingRefundAmount.CurrencyCode | Should -Be "GBP"
-    $response.ReservationsToExchange[0].BillingRefundAmount.Amount | Should -Be 85.21
+    $response.ReservationsToExchange[0].BillingRefundAmount.Amount | Should -Be 1.19
     $response.ReservationsToExchange[0].BillingInformation | Should -Not -Be $null
     $response.ReservationsToExchange[0].BillingInformation.BillingCurrencyTotalPaidAmount | Should -Not -Be $null
     $response.ReservationsToExchange[0].BillingInformation.BillingCurrencyTotalPaidAmount.CurrencyCode | Should -Be "GBP"
-    $response.ReservationsToExchange[0].BillingInformation.BillingCurrencyTotalPaidAmount.Amount | Should -Be 196.63
+    $response.ReservationsToExchange[0].BillingInformation.BillingCurrencyTotalPaidAmount.Amount | Should -Be 1.19
     $response.ReservationsToExchange[0].BillingInformation.BillingCurrencyProratedAmount | Should -Not -Be $null
     $response.ReservationsToExchange[0].BillingInformation.billingCurrencyProratedAmount.CurrencyCode | Should -Be "GBP"
-    $response.ReservationsToExchange[0].BillingInformation.billingCurrencyProratedAmount.Amount | Should -Be 111.42
+    $response.ReservationsToExchange[0].BillingInformation.billingCurrencyProratedAmount.Amount | Should -Be 0
     $response.ReservationsToExchange[0].BillingInformation.BillingCurrencyRemainingCommitmentAmount | Should -Not -Be $null
     $response.ReservationsToExchange[0].BillingInformation.billingCurrencyRemainingCommitmentAmount.CurrencyCode | Should -Be "GBP"
-    $response.ReservationsToExchange[0].BillingInformation.billingCurrencyRemainingCommitmentAmount.Amount | Should -Be 6882.05
+    $response.ReservationsToExchange[0].BillingInformation.billingCurrencyRemainingCommitmentAmount.Amount | Should -Be 41.65
     $response.ReservationsToExchange[0].Status | Should -Be "Succeeded"
 }
 

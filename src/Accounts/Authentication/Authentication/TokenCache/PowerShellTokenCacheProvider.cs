@@ -21,8 +21,10 @@ using Azure.Identity;
 using Hyak.Common;
 
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Shared.Config;
 using Microsoft.Azure.Internal.Subscriptions;
 using Microsoft.Azure.Internal.Subscriptions.Models;
+using Microsoft.Azure.PowerShell.Common.Config;
 using Microsoft.Identity.Client;
 using Microsoft.Identity.Client.Broker;
 using Microsoft.Rest;
@@ -162,11 +164,19 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 
         protected abstract void RegisterCache(IPublicClientApplication client);
 
+        /// <summary>
+        /// Creates a public client app.
+        /// This method is not meant for authentication purpose. Use APIs from Azure.Identity instead.
+        /// </summary>
         public virtual IPublicClientApplication CreatePublicClient(string authority = null)
         {
-            var builder = PublicClientApplicationBuilder.Create(Constants.PowerShellClientId).WithBrokerPreview();
-
-            if(!string.IsNullOrEmpty(authority))
+            var builder = PublicClientApplicationBuilder.Create(Constants.PowerShellClientId);
+            if (AzureSession.Instance.TryGetComponent<IConfigManager>(nameof(IConfigManager), out var config)
+                && config.GetConfigValue<bool>(ConfigKeys.EnableLoginByWam))
+            {
+                builder = builder.WithBrokerPreview();
+            }
+            if (!string.IsNullOrEmpty(authority))
             {
                 builder.WithAuthority(authority);
             }

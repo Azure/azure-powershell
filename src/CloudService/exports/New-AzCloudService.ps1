@@ -23,7 +23,7 @@ Create or update a cloud service.
 Please note some properties can be set only during cloud service creation.
 .Example
 # Create role profile object
-$role = New-AzCloudServiceRoleProfilePropertiesObject-Name 'ContosoFrontend' -SkuName 'Standard_D1_v2' -SkuTier 'Standard' -SkuCapacity 2
+$role = New-AzCloudServiceRoleProfilePropertiesObject -Name 'ContosoFrontend' -SkuName 'Standard_D1_v2' -SkuTier 'Standard' -SkuCapacity 2
 $roleProfile = @{role = @($role)}
 
 # Create network profile object
@@ -48,7 +48,7 @@ $cloudService = New-AzCloudService                                              
                           -NetworkProfile $networkProfile
 .Example
 # Create role profile object
-$role = New-AzCloudServiceRoleProfilePropertiesObject-Name 'ContosoFrontend' -SkuName 'Standard_D1_v2' -SkuTier 'Standard' -SkuCapacity 2
+$role = New-AzCloudServiceRoleProfilePropertiesObject -Name 'ContosoFrontend' -SkuName 'Standard_D1_v2' -SkuTier 'Standard' -SkuCapacity 2
 $roleProfile = @{role = @($role)}
 
 # Create network profile object
@@ -80,7 +80,7 @@ $cloudService = New-AzCloudService                                              
                           -ExtensionProfile $extensionProfile
 .Example
 # Create role profile object
-$role = New-AzCloudServiceRoleProfilePropertiesObject-Name 'ContosoFrontend' -SkuName 'Standard_D1_v2' -SkuTier 'Standard' -SkuCapacity 2
+$role = New-AzCloudServiceRoleProfilePropertiesObject -Name 'ContosoFrontend' -SkuName 'Standard_D1_v2' -SkuTier 'Standard' -SkuCapacity 2
 $roleProfile = @{role = @($role)}
 
 # Create OS profile object
@@ -97,7 +97,7 @@ $networkProfile = @{loadBalancerConfiguration = $loadBalancerConfig}
 
 # Read Configuration File
 $cscfgFile = "<Path to cscfg configuration file>"
- = Get-Content $cscfgFile | Out-String
+$cscfgContent = Get-Content $cscfgFile | Out-String
 
 # Create cloud service
 $cloudService = New-AzCloudService                                              `
@@ -112,8 +112,8 @@ $cloudService = New-AzCloudService                                              
                           -OSProfile $osProfile
 .Example
 # Create role profile object
-$role1 = New-AzCloudServiceRoleProfilePropertiesObject-Name 'ContosoFrontend' -SkuName 'Standard_D1_v2' -SkuTier 'Standard' -SkuCapacity 2
-$role2 = New-AzCloudServiceRoleProfilePropertiesObject-Name 'ContosoBackend' -SkuName 'Standard_D1_v2' -SkuTier 'Standard' -SkuCapacity 2
+$role1 = New-AzCloudServiceRoleProfilePropertiesObject -Name 'ContosoFrontend' -SkuName 'Standard_D1_v2' -SkuTier 'Standard' -SkuCapacity 2
+$role2 = New-AzCloudServiceRoleProfilePropertiesObject -Name 'ContosoBackend' -SkuName 'Standard_D1_v2' -SkuTier 'Standard' -SkuCapacity 2
 $roleProfile = @{role = @($role1, $role2)}
 
 # Create network profile object
@@ -185,7 +185,7 @@ $cloudService = New-AzCloudService                                              
 
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudService
+Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.ICloudService
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -197,7 +197,7 @@ EXTENSIONPROFILE <ICloudServiceExtensionProfile>: Describes a cloud service exte
     [ForceUpdateTag <String>]: Tag to force apply the provided public and protected settings.         Changing the tag value allows for re-running the extension without changing any of the public or protected settings.         If forceUpdateTag is not changed, updates to public or protected settings would still be applied by the handler.         If neither forceUpdateTag nor any of public or protected settings change, extension would flow to the role instance with the same sequence-number, and         it is up to handler implementation whether to re-run it or not
     [Name <String>]: The name of the extension.
     [ProtectedSetting <String>]: Protected settings for the extension which are encrypted before sent to the role instance.
-    [ProtectedSettingFromKeyVaultSecretUrl <String>]: 
+    [ProtectedSettingFromKeyVaultSecretUrl <String>]: Secret URL which contains the protected settings of the extension
     [Publisher <String>]: The name of the extension handler publisher.
     [RolesAppliedTo <String[]>]: Optional list of roles to apply this extension. If property is not specified or '*' is specified, extension is applied to all roles in the cloud service.
     [Setting <String>]: Public settings for the extension. For JSON extensions, this is the JSON settings for the extension. For XML Extension (like RDP), this is the XML setting for the extension.
@@ -214,6 +214,7 @@ NETWORKPROFILE <ICloudServiceNetworkProfile>: Network Profile for the cloud serv
       [SubnetId <String>]: Resource Id
     Name <String>: The name of the Load balancer
     [Id <String>]: Resource Id
+  [SlotType <CloudServiceSlotType?>]: Slot type for the cloud service.         Possible values are <br /><br />**Production**<br /><br />**Staging**<br /><br />         If not specified, the default value is Production.
   [SwappableCloudService <ISubResource>]: The id reference of the cloud service containing the target IP with which the subject cloud service can perform a swap. This property cannot be updated once it is set. The swappable cloud service referred by this id must be present otherwise an error will be thrown.
     [Id <String>]: Resource Id
 
@@ -233,7 +234,7 @@ ROLEPROFILE <ICloudServiceRoleProfile>: Describes the role profile for the cloud
 https://learn.microsoft.com/powershell/module/az.cloudservice/new-azcloudservice
 #>
 function New-AzCloudService {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudService])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.ICloudService])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -284,21 +285,21 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudServiceExtensionProfile]
+    [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.ICloudServiceExtensionProfile]
     # Describes a cloud service extension profile.
     # To construct, see NOTES section for EXTENSIONPROFILE properties and create a hash table.
     ${ExtensionProfile},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudServiceNetworkProfile]
+    [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.ICloudServiceNetworkProfile]
     # Network Profile for the cloud service.
     # To construct, see NOTES section for NETWORKPROFILE properties and create a hash table.
     ${NetworkProfile},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudServiceOSProfile]
+    [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.ICloudServiceOSProfile]
     # Describes the OS profile for the cloud service.
     # To construct, see NOTES section for OSPROFILE properties and create a hash table.
     ${OSProfile},
@@ -313,7 +314,7 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudServiceRoleProfile]
+    [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.ICloudServiceRoleProfile]
     # Describes the role profile for the cloud service.
     # To construct, see NOTES section for ROLEPROFILE properties and create a hash table.
     ${RoleProfile},
@@ -329,7 +330,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudServiceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.ICloudServiceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
@@ -344,6 +345,15 @@ param(
     # If set to Manual, PUT UpdateDomain must be called to apply the update.
     # If set to Auto, the update is automatically applied to each update domain in sequence.
     ${UpgradeMode},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category('Body')]
+    [System.String[]]
+    # List of logical availability zone of the resource.
+    # List should contain only 1 zone where cloud service should be provisioned.
+    # This field is optional.
+    ${Zone},
 
     [Parameter(ParameterSetName='quickCreateParameterSetWithStorage', Mandatory)]
     [Parameter(ParameterSetName='quickCreateParameterSetWithoutStorage', Mandatory)]
@@ -453,6 +463,24 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.CloudService.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
         $mapping = @{
             CreateExpanded = 'Az.CloudService.private\New-AzCloudService_CreateExpanded';
             quickCreateParameterSetWithStorage = 'Az.CloudService.custom\New-AzCloudService';
@@ -468,6 +496,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
         throw
     }
 }
@@ -476,15 +505,32 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
         throw
     }
-}
 
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
 end {
     try {
         $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.CloudService.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
     } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
         throw
     }
-}
+} 
 }

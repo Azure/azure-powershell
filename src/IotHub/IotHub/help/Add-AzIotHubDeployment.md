@@ -35,7 +35,7 @@ Add-AzIotHubDeployment [-ResourceId] <String> -Name <String> [-ModulesContent <H
 
 ## DESCRIPTION
 Edge deployments can be created with user defined metrics for on demand evaluation.
-See https://docs.microsoft.com/azure/iot-edge/module-deployment-monitoring for more information.
+See https://learn.microsoft.com/azure/iot-edge/module-deployment-monitoring for more information.
 
 ## EXAMPLES
 

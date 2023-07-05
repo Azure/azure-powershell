@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -25,7 +25,6 @@ namespace Microsoft.Azure.Commands.Network
     using ResourceManager.Common.ArgumentCompleters;
     using System.Collections;
 
-    [CmdletOutputBreakingChange(typeof(PSExpressRouteCircuit), DeprecatedOutputProperties = new[] { "AllowGlobalReach" })]
     [Cmdlet("Move", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ExpressRouteCircuit", SupportsShouldProcess = true),OutputType(typeof(PSExpressRouteCircuit))]
     public class MoveAzureExpressRouteCircuitCommand : ExpressRouteCircuitBaseCmdlet
     {

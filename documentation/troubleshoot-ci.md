@@ -35,10 +35,10 @@ This means the online version url in the header of the help document is either i
 
 ### Solution
 
-The url should exactly match the schema `https://docs.microsoft.com/en-us/powershell/module/az.{modulename}/{cmdlet-name}`, all in lower case.
+The url should exactly match the schema `https://learn.microsoft.com/en-us/powershell/module/az.{modulename}/{cmdlet-name}`, all in lower case.
 
 ### Example
-> https://docs.microsoft.com/en-us/powershell/module/az.keyvault/new-azkeyvault
+> https://learn.microsoft.com/en-us/powershell/module/az.keyvault/new-azkeyvault
 
 ## Code analysis failures
 

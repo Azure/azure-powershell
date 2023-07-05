@@ -8,7 +8,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401
     using Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PowerShell;
 
     /// <summary>
-    /// The Storage Account ManagementPolicies Rules. See more details in: https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.
+    /// The Storage Account ManagementPolicies Rules. See more details in: https://learn.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.
     /// </summary>
     [System.ComponentModel.TypeConverter(typeof(ManagementPolicySchemaTypeConverter))]
     public partial class ManagementPolicySchema
@@ -136,7 +136,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401
         /// <returns>a <see cref="System.String" /> containing this model serialized to JSON text.</returns>
         public string ToJsonString() => ToJson(null, Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SerializationMode.IncludeAll)?.ToString();
     }
-    /// The Storage Account ManagementPolicies Rules. See more details in: https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.
+    /// The Storage Account ManagementPolicies Rules. See more details in: https://learn.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.
     [System.ComponentModel.TypeConverter(typeof(ManagementPolicySchemaTypeConverter))]
     public partial interface IManagementPolicySchema
 

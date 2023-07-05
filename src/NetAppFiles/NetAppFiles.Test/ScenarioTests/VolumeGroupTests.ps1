@@ -44,7 +44,7 @@ function Test-VolumeGroupCrud
     
     
     #For now we need those prerequisite resources specifically as they are manually pinned to an supporting cluster in the datacenter, untill this becomes dynamic where we can pin in code here we use this.
-    #see for more detail https://docs.microsoft.com/en-us/azure/azure-netapp-files/application-volume-group-considerations#best-practices-about-proximity-placement-groups
+    #see for more detail https://learn.microsoft.com/en-us/azure/azure-netapp-files/application-volume-group-considerations#best-practices-about-proximity-placement-groups
     $fixedResourceGroup = "sdk-net-test-qa2"
     $resourceLocation = "northeurope"
     $vnetName = "vnetnortheurope-anf"

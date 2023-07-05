@@ -55,7 +55,7 @@ function Test-AzIotDpsEnrollmentLifeCycle
 	Assert-True { $iotHub.Name -eq $IotHubName }
 
 	# Add a key to IoT Hub
-	$hubKeys = Add-AzIoTHubKey -Name $IotHubName -ResourceGroupName $ResourceGroupName -KeyName $hubKeyName -Rights ServiceConnect
+	$hubKeys = Add-AzIoTHubKey -Name $IotHubName -ResourceGroupName $ResourceGroupName -KeyName $hubKeyName -Rights RegistryWrite,ServiceConnect
 	Assert-True { $hubKeys.Count -gt 1 }
 
 	# Get key information from IoT Hub

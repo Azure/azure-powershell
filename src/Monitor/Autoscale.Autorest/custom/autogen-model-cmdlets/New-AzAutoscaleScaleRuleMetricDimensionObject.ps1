@@ -23,7 +23,7 @@ Create an in-memory object for ScaleRuleMetricDimension.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.ScaleRuleMetricDimension
 .Link
-https://learn.microsoft.com/powershell/module/az.Autoscale/new-AzAutoscaleScaleRuleMetricDimensionObject
+https://learn.microsoft.com/powershell/module/Az.Monitor/new-AzAutoscaleScaleRuleMetricDimensionObject
 #>
 function New-AzAutoscaleScaleRuleMetricDimensionObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.ScaleRuleMetricDimension')]

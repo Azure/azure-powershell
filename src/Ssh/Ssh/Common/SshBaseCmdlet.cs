@@ -20,6 +20,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.PowerShell.Cmdlets.Ssh.Common;
+using Microsoft.Azure.Commands.Ssh.Properties;
 using Microsoft.Azure.PowerShell.Ssh.Helpers.HybridConnectivity.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
@@ -33,37 +34,45 @@ using System.Runtime.InteropServices;
 using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
+using Microsoft.Azure.Management.Internal.ResourceManager.Version2018_05_01;
+using Microsoft.Rest.Azure.OData;
+using Microsoft.Azure.Management.Internal.ResourceManager.Version2018_05_01.Models;
+using Microsoft.Rest.Azure;
+using Microsoft.Azure.PowerShell.Cmdlets.Ssh.AzureClients;
+using Microsoft.Azure.PowerShell.Ssh.Helpers.HybridConnectivity;
+using System.Management.Automation.Runspaces;
+using Microsoft.Azure.PowerShell.Ssh.Helpers.HybridCompute.Models;
+using Microsoft.Azure.PowerShell.Ssh.Helpers.HybridCompute;
 
 
 namespace Microsoft.Azure.Commands.Ssh
+
 {
+
     public abstract class SshBaseCmdlet : AzureRMCmdlet
     {
 
         #region Constants
-        // Version and checksum values of the proxy are hardcoded for now only for the initial preview.
-        // Moving forward we will ship the proxy as part of the module, and this will be deprecated.
-        private const string clientProxyStorageUrl = "https://sshproxysa.blob.core.windows.net";
-        private const string clientProxyRelease = "release01-11-21";
-        private const string clientProxyVersion = "1.3.017634";
-
-        private const string sshproxy_windows_amd64_sha256_hash = "E345920FBBD1073F36DF78C619F646FD22CEFFE2B47391558969856C4FEC1F2F";
-        private const string sshproxy_windows_386_sha256_hash = "24AFD216D75D165B526F9B5AC8DD775E128F8963DA4D7FAE7B009139A784C5E2";
-        private const string sshproxy_linux_amd64_sha256_hash = "09AF191870C0E79AC9536D8655C3116DB70F131B85DE4BAF0BAE0346C33EE3DD";
-        private const string sshproxy_linux_386_sha256_hash = "E63BE773426109C35891F88B1A460FFDF722731BEAD727954D7724BFCE386CAD";
-        private const string sshproxy_darwin_amd64_sha256_hash = "7A020E92C2E515F1FCF952CDC32931DA38069C3153CFCFD078E054966295E48A";
-
         protected internal const string InteractiveParameterSet = "Interactive";
         protected internal const string ResourceIdParameterSet = "ResourceId";
         protected internal const string IpAddressParameterSet = "IpAddress";
+
+        private const int RelayInfoExpirationInSec = 3600;
         #endregion
 
         #region Fields
         protected internal bool deleteKeys;
         protected internal bool deleteCert;
         protected internal string proxyPath;
-        protected internal string relayInfo;
-        protected internal EndpointAccessResource relayInformationResource;
+        protected internal ProgressRecord record;
+        protected internal bool createdServiceConfig;
+
+        protected internal readonly string[] supportedResourceTypes = {
+            "Microsoft.HybridCompute/machines",
+            "Microsoft.Compute/virtualMachines",
+            "Microsoft.ConnectedVMwarevSphere/virtualMachines",
+            "Microsoft.ScVmm/virtualMachines",
+            "Microsoft.AzureStackHCI/virtualMachines"};
         #endregion
 
         #region Properties
@@ -81,34 +90,68 @@ namespace Microsoft.Azure.Commands.Ssh
         }
         private IpUtils _ipUtils;
 
-        internal ResourceTypeUtils ResourceTypeUtils
+        private HybridConnectivityClient HybridConnectivityClient
         {
             get
             {
-                if (_typeUtils == null)
+                if (_hyridConnectivityClient == null)
                 {
-                    _typeUtils = new ResourceTypeUtils(DefaultProfile.DefaultContext);
+                    _hyridConnectivityClient = new HybridConnectivityClient(DefaultProfile.DefaultContext);
                 }
-
-                return _typeUtils;
+                return _hyridConnectivityClient;
             }
         }
-        private ResourceTypeUtils _typeUtils;
+        private HybridConnectivityClient _hyridConnectivityClient;
 
-        internal RelayInformationUtils RelayInformationUtils
+        private IEndpointsOperations EndpointsClient
         {
             get
             {
-                if (_relayUtils == null)
-                {
-                    _relayUtils = new RelayInformationUtils(DefaultProfile.DefaultContext);
-                }
-
-                return _relayUtils;
+                return HybridConnectivityClient.HybridConectivityManagementClient.Endpoints;
             }
         }
-        private RelayInformationUtils _relayUtils;
 
+        private IServiceConfigurationsOperations ServiceConfigurationsClient
+        {
+            get
+            {
+                return HybridConnectivityClient.HybridConectivityManagementClient.ServiceConfigurations;
+            }
+        }
+
+        private HybridComputeClient HybridComputeClient
+        {
+            get
+            {
+                if (_hybridComputeClient == null)
+                {
+                    _hybridComputeClient = new HybridComputeClient(DefaultProfile.DefaultContext);
+                }
+                return _hybridComputeClient;
+            }
+        }
+        private HybridComputeClient _hybridComputeClient;
+
+        private IMachinesOperations ArcServerClient
+        {
+            get
+            {
+                return HybridComputeClient.HybridComputeManagementClient.Machines;
+            }
+        }
+
+        private ResourceManagementClient ResourceManagementClient
+        {
+            get
+            {
+                if (_resourceManagementClient == null)
+                {
+                    _resourceManagementClient = AzureSession.Instance.ClientFactory.CreateArmClient<ResourceManagementClient>(DefaultProfile.DefaultContext, AzureEnvironment.Endpoint.ResourceManager);
+                }
+                return _resourceManagementClient;
+            }
+        }
+        private ResourceManagementClient _resourceManagementClient;
         #endregion
 
         #region Parameters
@@ -130,7 +173,15 @@ namespace Microsoft.Azure.Commands.Ssh
             ParameterSetName = InteractiveParameterSet,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true)]
-        [SshResourceNameCompleter(new string[] { "Microsoft.Compute/virtualMachines", "Microsoft.HybridCompute/machines" }, "ResourceGroupName")]
+        [SshResourceNameCompleter(
+            new string[] {
+                "Microsoft.Compute/virtualMachines",
+                "Microsoft.HybridCompute/machines",
+                "Microsoft.ConnectedVMwarevSphere/virtualMachines",
+                "Microsoft.ScVmm/virtualMachines",
+                "Microsoft.AzureStackHCI/virtualMachines"
+            },
+            "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
@@ -151,7 +202,15 @@ namespace Microsoft.Azure.Commands.Ssh
             Mandatory = true,
             ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
-        [SshResourceIdCompleter(new string[] { "Microsoft.HybridCompute/machines", "Microsoft.Compute/virtualMachines" })]
+        [SshResourceIdCompleter(
+            new string[] {
+                "Microsoft.Compute/virtualMachines",
+                "Microsoft.HybridCompute/machines",
+                "Microsoft.ConnectedVMwarevSphere/virtualMachines",
+                "Microsoft.ScVmm/virtualMachines",
+                "Microsoft.AzureStackHCI/virtualMachines"
+            }
+        )]
         public string ResourceId { get; set; }
 
         /// <summary>
@@ -219,11 +278,16 @@ namespace Microsoft.Azure.Commands.Ssh
 
         /// <summary>
         /// The Type of the target Azure Resource.
-        /// Either Microsoft.Compute/virtualMachines or Microsoft.HybridCompute/machines.
+        /// Either Microsoft.Compute/virtualMachines, Microsoft.HybridCompute/machines, Microsoft.ConnectedVMwarevSphere/virtualMachines, Microsoft.ScVmm/virtualMachines, Microsoft.AzureStackHCI/virtualMachines.
         /// </summary>
         [Parameter(ParameterSetName = InteractiveParameterSet)]
-        [PSArgumentCompleter("Microsoft.Compute/virtualMachines", "Microsoft.HybridCompute/machines")]
-        [ValidateSet("Microsoft.Compute/virtualMachines", "Microsoft.HybridCompute/machines")]
+        [ValidateSet(
+            "Microsoft.HybridCompute/machines",
+            "Microsoft.Compute/virtualMachines",
+            "Microsoft.ConnectedVMwarevSphere/virtualMachines",
+            "Microsoft.ScVmm/virtualMachines",
+            "Microsoft.AzureStackHCI/virtualMachines"
+        )]
         [ValidateNotNullOrEmpty]
         public string ResourceType { get; set; }
 
@@ -263,47 +327,36 @@ namespace Microsoft.Azure.Commands.Ssh
         [ValidateNotNullOrEmpty]
         public virtual string KeysDestinationFolder { get; set; }
 
+        /// <summary>
+        /// RDP over SSH
+        /// </summary>
+        [Parameter(ParameterSetName = InteractiveParameterSet)]
+        [Parameter(ParameterSetName = IpAddressParameterSet)]
+        [Parameter(ParameterSetName = ResourceIdParameterSet)]
+        [ValidateNotNullOrEmpty]
+        public virtual SwitchParameter Rdp { get; set; }
 
         [Parameter(Mandatory = false)]
         public virtual SwitchParameter PassThru { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "When connecting to Arc resources, do not prompt for confirmation before updating the allowed port for SSH connection in the Connection Endpoint to match the target port or to install Az.Ssh.ArcProxy module from the PowerShell Gallery, if needed.")]
+        public SwitchParameter Force { get; set; }
 
         #endregion
 
         #region Protected Internal Methods
 
-
-        protected internal void SetResourceType()
-        {
-            string _resourceTypeException = "";
-
-            switch (ParameterSetName)
-            {
-                case IpAddressParameterSet:
-                    ResourceType = "Microsoft.Compute/virtualMachines";
-                    break;
-                case ResourceIdParameterSet:
-                    ResourceIdentifier parsedId = new ResourceIdentifier(ResourceId);
-                    Name = parsedId.ResourceName;
-                    ResourceGroupName = parsedId.ResourceGroupName;
-                    ResourceType = ResourceTypeUtils.GetResourceType(Name, ResourceGroupName, parsedId.ResourceType, out _resourceTypeException);
-                    break;
-                case InteractiveParameterSet:
-                    ResourceType = ResourceTypeUtils.GetResourceType(Name, ResourceGroupName, ResourceType, out _resourceTypeException);
-                    break;
-            }
-
-            if (string.IsNullOrEmpty(this.ResourceType))
-            {
-                throw new AzPSCloudException($"Unable to determine the Resource Type of the target resource: {_resourceTypeException}");
-            }
-        }
-
         protected internal void ValidateParameters()
         {
-            if (CertificateFile != null)
+            if (Rdp && !RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                throw new AzPSArgumentException(Resources.RDPOnNonWindowsClient, nameof(Rdp));
+            }
+
+                if (CertificateFile != null)
             {
                 if (LocalUser == null)
-                    WriteWarning("To authenticate with a certificate you must provide a LocalUser. The certificate will be ignored.");
+                    WriteWarning(Resources.WarningCertificateWithNoLocalUser);
                 else
                     CertificateFile = GetResolvedPath(CertificateFile, nameof(CertificateFile));
             }
@@ -324,23 +377,77 @@ namespace Microsoft.Azure.Commands.Ssh
 
                 if (Directory.Exists(ConfigFilePath))
                 {
-                    throw new AzPSArgumentException($"{ConfigFilePath} is a directory, unable to write config file in that path. Provide a valid path for a file.", ConfigFilePath);
+                    throw new AzPSArgumentException(String.Format(Resources.ConfigFilePathIsDirectory, ConfigFilePath), nameof(ConfigFilePath));
                 }
 
                 string configFolder = Path.GetDirectoryName(ConfigFilePath);
                 if (!Directory.Exists(configFolder))
                 {
-                    throw new AzPSArgumentException($"Config file destination folder {configFolder} does not exist.", nameof(ConfigFilePath));
+                    throw new AzPSArgumentException(String.Format(Resources.ConfigFolderDoesNotExist, configFolder), nameof(ConfigFilePath));
                 }
             }
 
             if (KeysDestinationFolder != null)
             {
                 if (PrivateKeyFile != null || PublicKeyFile != null)
-                    throw new AzPSArgumentException("KeysDestinationFolder can't be used in conjunction with PublicKeyFile or PrivateKeyFile. All generated keys are saved in the same directory as provided keys.", nameof(KeysDestinationFolder));
+                    throw new AzPSArgumentException(Resources.KeysDestinationFolderWithKeys, nameof(KeysDestinationFolder));
                 KeysDestinationFolder = GetUnresolvedPath(KeysDestinationFolder, nameof(KeysDestinationFolder));
             }
 
+        }
+
+        protected internal void SetResourceType()
+        {
+            if (ParameterSetName.Equals(IpAddressParameterSet))
+            {
+                ResourceType = "Microsoft.Compute/virtualMachines";
+                return;
+            }
+            if (ParameterSetName.Equals(ResourceIdParameterSet))
+            {
+                ResourceIdentifier idParser = new ResourceIdentifier(ResourceId);
+                ResourceGroupName = idParser.ResourceGroupName;
+                Name = idParser.ResourceName;
+                ResourceType = idParser.ResourceType;
+            }
+
+            var resourcetypefilter = supportedResourceTypes.Select(type => $"resourceType eq '{type}'").ToArray();
+            String filter = $"$filter=name eq '{Name}' and ({String.Join(" or ", resourcetypefilter)})";
+            ODataQuery<GenericResourceFilter> query = new ODataQuery<GenericResourceFilter>(filter);
+
+            String[] types;
+            try
+            {
+                IPage<GenericResource> resources = ResourceManagementClient.Resources.ListByResourceGroupWithHttpMessagesAsync(ResourceGroupName, query).GetAwaiter().GetResult().Body;
+                types = resources.Select(resource => resource.Type).ToArray();
+            }
+            catch (CloudException exception)
+            {
+                throw new AzPSCloudException(String.Format(Resources.ListResourcesCloudException, ResourceGroupName, exception.Message));
+            }
+            catch (ArgumentNullException)
+            {
+                throw new AzPSApplicationException(String.Format(Resources.ListResourcesArgumentNullException, ResourceGroupName));
+            }
+
+            if (ResourceType != null)
+            {
+                if (!types.Contains(ResourceType, StringComparer.CurrentCultureIgnoreCase))
+                {
+                    throw new AzPSResourceNotFoundCloudException(String.Format(Resources.ResourceNotFoundTypeProvided,Name, ResourceType, ResourceGroupName));
+                }
+                return;
+            }
+
+            if (types.Count() > 1)
+            {
+                throw new AzPSArgumentException(String.Format(Resources.MultipleResourcesWithSameName, Name, ResourceGroupName), ResourceType);
+            }
+            else if (types.Count() < 1)
+            {
+                throw new AzPSResourceNotFoundCloudException(String.Format(Resources.ResourceNotFoundNoTypeProvided, Name, ResourceGroupName));
+            }
+            ResourceType = types.ElementAt(0);
         }
 
         protected internal void UpdateProgressBar(
@@ -353,25 +460,91 @@ namespace Microsoft.Azure.Commands.Ssh
             WriteProgress(record);
         }
 
-        protected internal void GetRelayInformation()
+        protected internal EndpointAccessResource GetRelayInformation()
         {
-            string _exception = "";
+            SetResourceId();
+            EndpointAccessResource cred;
 
-            if (ResourceId != null)
+            try
             {
-                relayInformationResource = RelayInformationUtils.GetRelayInformation(ResourceId, out _exception);
+                ListCredentialsRequest req = new ListCredentialsRequest(serviceName: "SSH");
+                cred = EndpointsClient.ListCredentials(ResourceId, "default", RelayInfoExpirationInSec, req);
             }
-            else
+            catch (PowerShell.Ssh.Helpers.HybridConnectivity.Models.ErrorResponseException exception)
             {
-                relayInformationResource = RelayInformationUtils.GetRelayInformation(ResourceGroupName, Name, out _exception);
+                // These operations will not succeed if the user isn't an Owner/Contributor.
+                if (exception.Response.StatusCode == HttpStatusCode.PreconditionFailed)
+                {
+                    // Service Configuration missing. Attempt to create.
+                    CreateServiceConfiguration();
+                }
+                else if (exception.Response.StatusCode == HttpStatusCode.NotFound)
+                {
+                    // Endpoint is not created. Attempt to create default endpoint and Service config for the port
+                    CreateDefaultEndpoint();
+                    CreateServiceConfiguration();
+                }
+                else { throw exception; }
+
+                cred = CallListCredentials();
+                return cred;
             }
 
-            relayInfo = RelayInformationUtils.ConvertEndpointAccessToBase64String(relayInformationResource);
-
-            if (string.IsNullOrEmpty(relayInfo))
+            if (!ServiceConfigurationMatchesTargetPort())
             {
-                throw new AzPSCloudException($"Unable to retrieve Relay Information: {_exception}");
+                // If Service Configuration needs to be updated to match target port, we need to get the relay information again to get an updated service configuration token.
+                CreateServiceConfiguration();
+                cred = CallListCredentials();
             }
+
+            return cred;
+        }
+
+        protected internal string ConvertEndpointAccessToBase64String(EndpointAccessResource cred)
+        {
+            if (cred == null) { return null; }
+
+            string relayString = "{\"relay\": {" +
+                $"\"namespaceName\": \"{cred.NamespaceName}\", " +
+                $"\"namespaceNameSuffix\": \"{cred.NamespaceNameSuffix}\", " +
+                $"\"hybridConnectionName\": \"{cred.HybridConnectionName}\", " +
+                $"\"accessKey\": \"{cred.AccessKey}\", " +
+                $"\"expiresOn\": {cred.ExpiresOn}, " +
+                $"\"serviceConfigurationToken\": \"{cred.ServiceConfigurationToken}\"" +
+                "}}";
+
+            var bytes = Encoding.UTF8.GetBytes(relayString);
+            var encodedString = Convert.ToBase64String(bytes);
+
+            return encodedString;
+        }
+
+        protected internal string GetProxyPath()
+        {
+            string proxyPath = SearchForInstalledProxyPath();
+            
+            if (String.IsNullOrEmpty(proxyPath))
+            {
+                string caption = "Install Az.Ssh.ArcProxy module from the PowerShell Gallery";
+                string query = Resources.InstallProxyModuleQuery;
+
+                if (Force || ShouldContinue(query, caption))
+                {
+                    var installationResults = InvokeCommand.InvokeScript(
+                        script: "Install-module Az.Ssh.ArcProxy -Repository PsGallery -Scope CurrentUser -MaximumVersion 1.9.9 -AllowClobber -Force",
+                        useNewScope: true,
+                        writeToPipeline: PipelineResultTypes.Error,
+                        input: null,
+                        args: null);
+
+                    proxyPath = SearchForInstalledProxyPath();
+                }
+
+            }
+
+            if (!String.IsNullOrEmpty(proxyPath)) { return proxyPath; }
+            
+            throw new AzPSApplicationException(Resources.FailedToFindProxyModule);
         }
 
         protected internal void GetVmIpAddress()
@@ -417,72 +590,29 @@ namespace Microsoft.Azure.Commands.Ssh
             return null;
         }
 
-        protected internal string GetSSHClientPath(string sshCommand)
+        protected internal string GetClientApplicationPath(string command)
         {
 
             if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
-                return sshCommand;
+                return command;
             }
 
-            sshCommand = $"{sshCommand}.exe";
-            var cmdInfo = InvokeCommand.GetCommand(sshCommand, CommandTypes.Application);
+            command = $"{command}.exe";
+            ApplicationInfo appInfo = InvokeCommand.GetCommand(command, CommandTypes.Application) as ApplicationInfo;
 
-            if (cmdInfo == null)
+            if (appInfo == null)
             {
-                throw new AzPSApplicationException("Unable to find OpenSSH Client. Make sure to update the PATH environment variable to make OpenSSH client discoverable.");
+                if (command.Equals("mstsc.exe"))
+                {
+                    throw new AzPSApplicationException(Resources.MstscClientNotFound);
+                }
+                throw new AzPSApplicationException(Resources.OpenSSHClientNotFound);
             }
             
-            return cmdInfo.Definition;
+            return appInfo.Path;
         }
 
-        protected internal string GetClientSideProxy()
-        {
-            string proxyPath = null;
-            string oldProxyPattern = null;
-            string requestUrl = null;
-
-            GetProxyUrlAndFilename(ref proxyPath, ref oldProxyPattern, ref requestUrl);
-
-            if (!File.Exists(proxyPath))
-            {
-                string proxyDir = Path.GetDirectoryName(proxyPath);
-
-                if (!Directory.Exists(proxyDir))
-                {
-                    Directory.CreateDirectory(proxyDir);
-                }
-                else
-                {
-                    var files = Directory.GetFiles(proxyDir, oldProxyPattern);
-                    foreach (string file in files)
-                    {
-                        try
-                        {
-                            File.Delete(file);
-                        }
-                        catch (Exception exception)
-                        {
-                            WriteWarning("Couldn't delete old version of the Proxy File: " + file + ". Error: " + exception.Message);
-                        }
-                    }
-                }
-
-                try
-                {
-                    WebClient wc = new WebClient();
-                    wc.DownloadFile(new Uri(requestUrl), proxyPath);
-                }
-                catch (Exception exception)
-                {
-                    string errorMessage = "Failed to download client proxy executable from " + requestUrl + ". Error: " + exception.Message;
-                    throw new AzPSApplicationException(errorMessage);
-                }
-
-                ValidateSshProxy(proxyPath);
-            }
-            return proxyPath;
-        }
 
         protected internal void DeleteFile(string fileName, string warningMessage = null)
         {
@@ -530,16 +660,313 @@ namespace Microsoft.Azure.Commands.Ssh
 
         protected internal bool IsArc()
         {
-            if (ResourceType.Equals("Microsoft.HybridCompute/machines"))
+            if (ResourceType.Equals("Microsoft.HybridCompute/machines", StringComparison.CurrentCultureIgnoreCase) ||
+                ResourceType.Equals("Microsoft.ConnectedVMwarevSphere/virtualMachines", StringComparison.CurrentCultureIgnoreCase) ||
+                ResourceType.Equals("Microsoft.ScVmm/virtualMachines", StringComparison.CurrentCultureIgnoreCase) ||
+                ResourceType.Equals("Microsoft.AzureStackHCI/virtualMachines", StringComparison.CurrentCultureIgnoreCase))
             {
                 return true;
             }
             return false;
         }
 
+        protected internal void CheckIfAgentIsUpToDate()
+        {
+            // Currently this logic is just for arc servers. Add same logic for private cloud?
+            // We don't want any exceptions in this method to cause the execution to fail.
+            try
+            {
+                Machine arcServer = ArcServerClient.Get(ResourceGroupName, Name);
+                if (!String.IsNullOrEmpty(arcServer?.AgentVersion))
+                {
+                    Version ArcServerVersion = new Version(arcServer.AgentVersion);
+                    Version MinimumVersion = new Version("1.31.0.0");
+                    if (ArcServerVersion < MinimumVersion)
+                    {
+                        WriteWarning($"The Arc Agent running on the target machine {Name} in Resource Group {ResourceGroupName} is an older version than supported, {arcServer.AgentVersion}. Please update to the latest version.");
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                return;
+            }
+        }
         #endregion
 
         #region Private Methods
+
+        #region Get Relay Information Private Methods
+        /// <summary>
+        /// Checks if the target port matches the service configuration port 
+        /// </summary>
+        /// <returns> False if target port isn't allowed in the service configuration, True if it is or if we don't have permission to determine that.</returns>
+        private bool ServiceConfigurationMatchesTargetPort()
+        {
+            ServiceConfigurationResource result;
+            try
+            {
+                result = ServiceConfigurationsClient.Get(ResourceId, "default", "SSH");
+            }
+            catch (PowerShell.Ssh.Helpers.HybridConnectivity.Models.ErrorResponseException)
+            {
+                // This will more often than not happen when users don't have Owner/Contributor permission.
+                // Do not terminate execution.
+                return true;
+            }
+
+            if (Port == null && result.Port != 22)
+            {
+                // In this case, we assume that the port might be set in a ssh config file.
+                WriteWarning(Resources.ServiceConfigNotSetToDefaultPort);
+                return true;
+            }
+
+            int port = 22;
+            if (Port != null)
+            {
+                port = Int32.Parse(Port);
+            }
+
+            if (result.Port != port)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        /// <summary>
+        /// Prompts the user if they would like to update the Service Configuration to allow the target port. If they confirm, perform the operation.
+        /// </summary>
+        /// <exception cref="AzPSApplicationException">User might not have permission to create service config. Fail in that case.</exception>
+        private void CreateServiceConfiguration()
+        {
+            // If the user doesn't provide a port, they might be trying to connect to port 22 or a different port set on ssh_config.
+            string query = Resources.ServiceConfigCreateConfirmQueryDefaultPort;
+            int port = 22;
+            if (Port != null)
+            {
+                port = Int32.Parse(Port);
+                query = String.Format(Resources.ServiceConfigCreateConfirmQueryExplicitPort, port);
+            }
+
+            // Need to come back to these messages
+            if (!Force && !ShouldContinue(query, String.Format("Allow SSH connection to port {0}", port)))
+            {
+                throw new AzPSApplicationException(String.Format(Resources.ServiceConfigCreateConfirmationDenied, port));
+            }
+
+            ServiceConfigurationResource serviceConfigurationResource = new ServiceConfigurationResource(serviceName: "SSH", port: port);
+            try
+            {
+                var result = ServiceConfigurationsClient.CreateOrupdate(ResourceId, "default", "SSH", serviceConfigurationResource);
+            }
+            catch (PowerShell.Ssh.Helpers.HybridConnectivity.Models.ErrorResponseException exception)
+            {
+                if (exception?.Response?.StatusCode == HttpStatusCode.Forbidden)
+                {
+                    throw new AzPSCloudException(String.Format(Resources.ServiceConfigCreateForbidden, Name, ResourceGroupName, port));
+                }
+
+                if (exception?.Body?.Error?.Code != null && exception?.Body?.Error?.Message != null)
+                    throw new AzPSCloudException($"{String.Format(Resources.ServiceConfigCreateCloudFailure, port, Name, ResourceGroupName)}\nError Code: {exception.Body.Error.Code}\nError Message: {exception.Body.Error.Message}");
+                throw new AzPSCloudException($"{String.Format(Resources.ServiceConfigCreateCloudFailure, port, Name, ResourceGroupName)}\n{exception}");
+            }
+            createdServiceConfig = true;
+        }
+
+        /// <summary>
+        /// Create a default endpoint. Throw an AzPSApplicationException if it fails.
+        /// </summary>
+        /// <returns></returns>
+        /// <exception cref="AzPSApplicationException"></exception>
+        private void CreateDefaultEndpoint()
+        {
+            try
+            {
+                EndpointResource endpoint = new EndpointResource("default", ResourceId);
+                var result = EndpointsClient.CreateOrUpdate(ResourceId, "default", endpoint);
+            }
+            catch (PowerShell.Ssh.Helpers.HybridConnectivity.Models.ErrorResponseException exception)
+            {
+                if (exception?.Response?.StatusCode == HttpStatusCode.Forbidden)
+                {
+                    throw new AzPSCloudException(String.Format(Resources.DefaultEndpointCreateForbidden, Name, ResourceGroupName));
+                }
+
+                if (exception?.Body?.Error?.Code != null && exception?.Body?.Error?.Message != null)
+                    throw new AzPSCloudException($"Failed to create default endpoint for the target Arc Server.\nError Code: {exception.Body.Error.Code}\nError Message: {exception.Body.Error.Message}");
+                throw new AzPSCloudException($"Failed to create default endpoint for the target Arc Server.\n{exception}");
+            }
+        }
+
+        /// <summary>
+        /// Make a call to list credentials.
+        /// </summary>
+        /// <returns>The relay information resource.</returns>
+        /// <exception cref="AzPSApplicationException"></exception>
+        private EndpointAccessResource CallListCredentials()
+        {
+            EndpointAccessResource cred = null;
+            try
+            {
+                ListCredentialsRequest req = new ListCredentialsRequest(serviceName: "SSH");
+                cred = EndpointsClient.ListCredentials(ResourceId, "default", RelayInfoExpirationInSec, req);
+            }
+            catch (PowerShell.Ssh.Helpers.HybridConnectivity.Models.ErrorResponseException exception)
+            {
+                if (exception?.Body?.Error?.Code != null && exception?.Body?.Error?.Message != null)
+                    throw new AzPSCloudException($"Unable to retrieve Relay Information.\nError Code: {exception.Body.Error.Code}\nError Message: {exception.Body.Error.Message}");
+                throw new AzPSCloudException($"Unable to retrieve Relay Information.\n{exception}");
+            }
+
+            return cred;
+        }
+
+        private string GetRelayInfoExpiration(EndpointAccessResource cred)
+        {
+            if (cred != null && cred.ExpiresOn != null)
+            {
+                long expiresOn = (long)cred.ExpiresOn;
+                string relayExpiration = DateTimeOffset.FromUnixTimeSeconds(expiresOn).DateTime.ToLocalTime().ToString();
+                return relayExpiration;
+            }
+            return null;
+        }
+
+        #endregion
+
+        #region Arc Proxy Private Methods
+        private string SearchForInstalledProxyPath()
+        {
+            var results = InvokeCommand.InvokeScript(
+                script: "Get-module -ListAvailable -Name Az.Ssh.ArcProxy");
+
+            foreach (var result in results)
+            {
+                if (result?.BaseObject is PSModuleInfo moduleInfo)
+                {
+                    var proxyPath = GetProxyPathInModuleDirectory(moduleInfo.Path);
+
+                    if (moduleInfo.Version >= new Version("2.0.0"))
+                    {
+                        WriteWarning(String.Format(Resources.UnsuportedVersionProxyModule, moduleInfo.Path, moduleInfo.Version));
+                        continue;
+                    }
+
+                    if (!File.Exists(proxyPath))
+                    {
+                        continue;
+                    }
+
+                    if (!SetExecutePermissionForProxyOnLinux(proxyPath))
+                    {
+                        WriteWarning($"Unable to add Execute permission to SSH Proxy {proxyPath}. The SSH connection will fail if the current user doesn't have permission to execute the SSH proxy file.");
+                    }
+
+                    return proxyPath;
+                }
+
+            }
+            return null;
+        }
+
+        public bool SetExecutePermissionForProxyOnLinux(string path)
+        {
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+            {
+                try
+                {
+                    var script = $"chmod +x {path}; $LastExitCode;";
+                    var results = InvokeCommand.InvokeScript(
+                        script: script,
+                        useNewScope: true,
+                        writeToPipeline: PipelineResultTypes.Error,
+                        input: null,
+                        args: null);
+
+                    if (results.Count() > 0)
+                    {
+                        var exitCode = (int) results.Last().BaseObject;
+                        if (exitCode != 0)
+                        {
+                            return false;
+                        }
+
+                    }
+                }
+                catch
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        private string GetProxyPathInModuleDirectory(string modulePath)
+        {
+            string os;
+            string architecture;
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                os = "windows";
+            }
+            else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+            {
+                os = "linux";
+            }
+            else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+            {
+                os = "darwin";
+            }
+            else
+            {
+                throw new AzPSApplicationException("Operating System not supported.");
+            }
+            // Environment.Is64BitOperatingSystem?
+            if (Environment.Is64BitProcess)
+            {
+                architecture = "amd64";
+            }
+            else
+            {
+                architecture = "386";
+            }
+
+            string parentDirectory = Directory.GetParent(modulePath).FullName;
+            string proxyPattern = $"sshProxy_{os}_{architecture}_*";
+
+            Regex regex = new Regex(proxyPattern);
+            var matches = Directory.EnumerateFiles(parentDirectory).Where(f => regex.IsMatch(f));
+
+            if (matches.Count() > 1)
+            {
+                throw new AzPSApplicationException($"There are more than one sshProxy file for {os} OS and {architecture} architecture in the {parentDirectory} folder ({string.Join(",", matches.ToArray())}). The Az.Ssh.ArcProxy module installed your machine was modified. Please re-install the Az.Ssh.ArcProxy PowerShell module that can be found in the PowerShell Gallery (https://aka.ms/PowerShellGallery-Az.Ssh.ArcProxy).");
+            }
+
+            if (matches.Count() < 1)
+            {
+                throw new AzPSApplicationException($"Couldn't find the sshProxy file for {os} OS and {architecture} architecture in the {parentDirectory} folder. The Az.Ssh.ArcProxy module installed your machine was modified. Please re-install the Az.Ssh.ArcProxy PowerShell module that can be found in the PowerShell Gallery (https://aka.ms/PowerShellGallery-Az.Ssh.ArcProxy).");
+            }
+
+            return matches.First().ToString();
+        }
+
+        #endregion
+
+        private void SetResourceId()
+        {
+            if (String.IsNullOrEmpty(ResourceId) && ParameterSetName.Equals(InteractiveParameterSet))
+            {
+                ResourceIdentifier id = new ResourceIdentifier();
+                id.ResourceGroupName = ResourceGroupName;
+                id.Subscription = DefaultProfile.DefaultContext.Subscription.Id;
+                id.ResourceName = Name;
+                id.ResourceType = ResourceType;
+
+                ResourceId = id.ToString();
+            }
+        }
 
         /* This method gets the full path of items that already exist. It checks if the file exist and fails if it doesn't*/
         private string GetResolvedPath(string path, string paramName)
@@ -560,7 +987,7 @@ namespace Microsoft.Azure.Commands.Ssh
             }
             return SessionState.Path.GetUnresolvedProviderPathFromPSPath(path);
         }
-
+        #region AAD Certificate Operations
         private string GetAndWriteCertificate(string publicKeyFile)
         {
             SshCredential certificate = GetAccessToken(publicKeyFile);        
@@ -596,7 +1023,23 @@ namespace Microsoft.Azure.Commands.Ssh
             {
                 throw new AzPSApplicationException("Cannot load SshCredentialFactory instance from context.");
             }
-            var token = factory.GetSshCredential(context, parameters);
+
+            SshCredential token = null;
+
+            try
+            {
+                token = factory.GetSshCredential(context, parameters);
+            }
+            catch (KeyNotFoundException exception)
+            {
+                if (context.Account.Type != AzureAccount.AccountType.User)
+                {
+                    throw new AzPSApplicationException(String.Format(Resources.FailedToAADUnsupportedAccountType, context.Account.Type));
+                }
+
+                throw new AzPSApplicationException($"Failed to generate AAD certificate with exception: {exception.Message}.");
+            }
+
             return token;
         }
 
@@ -622,12 +1065,17 @@ namespace Microsoft.Azure.Commands.Ssh
                     principals.Add(line.Trim());
                 }
             }
+
+            if (!principals.Any())
+            {
+                throw new AzPSInvalidOperationException("Unable to find Principals in generated AAD Certificate.");
+            }
             return principals;
         }
 
         private string[] GetSSHCertInfo(string certFile)
         {
-            string sshKeygenPath = GetSSHClientPath("ssh-keygen");
+            string sshKeygenPath = GetClientApplicationPath("ssh-keygen");
             string args = $"-L -f \"{certFile}\"";
             WriteDebug("Runnung ssh-keygen command: " + sshKeygenPath + " " + args);
             Process keygen = new Process();
@@ -694,10 +1142,9 @@ namespace Microsoft.Azure.Commands.Ssh
         private void CreateSSHKeyfile(string privateKeyFile)
         {
             string args = $"-f \"{privateKeyFile}\" -t rsa -q -N \"\"";
-            Process keygen = Process.Start(GetSSHClientPath("ssh-keygen"), args);
+            Process keygen = Process.Start(GetClientApplicationPath("ssh-keygen"), args);
             keygen.WaitForExit();
         }
-
 
         private string CreateTempFolder()
         {
@@ -721,101 +1168,9 @@ namespace Microsoft.Azure.Commands.Ssh
 
             return dirname;
         }
+        #endregion
 
-        private void GetProxyUrlAndFilename(
-            ref string proxyPath,
-            ref string oldProxyPattern,
-            ref string requestUrl)
-        {
-            string os;
-            string architecture;
-
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-            {
-                os = "windows";
-            }
-            else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
-            {
-                os = "linux";
-            }
-            else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
-            {
-                os = "darwin";
-            }
-            else
-            {
-                throw new AzPSApplicationException("Operating System not supported.");
-            }
-
-            // Environment.Is64BitOperatingSystem?
-            if (Environment.Is64BitProcess)
-            {
-                architecture = "amd64";
-            }
-            else
-            {
-                architecture = "386";
-            }
-
-            string proxyName = "sshProxy_" + os + "_" + architecture;
-            requestUrl = clientProxyStorageUrl + "/" + clientProxyRelease + "/" + proxyName + "_" + clientProxyVersion;
-
-            string installPath = proxyName + "_" + clientProxyVersion.Replace('.', '_');
-            oldProxyPattern = proxyName + "*";
-
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-            {
-                requestUrl = requestUrl + ".exe";
-                installPath = installPath + ".exe";
-                oldProxyPattern = oldProxyPattern + ".exe";
-            }
-
-            proxyPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), Path.Combine(".clientsshproxy", installPath));
-        }
-
-        private void ValidateSshProxy(string path)
-        
-        {
-            string hashString;
-            using (var sha256 = SHA256.Create())
-            {
-                using (var filestream = File.OpenRead(path))
-                {
-                    var hash = sha256.ComputeHash(filestream);
-                    hashString = BitConverter.ToString(hash).Replace("-", "");
-                }
-            }
-
-            string filename = Path.GetFileName(path);
-            bool isValid = false;
-
-            switch (filename)
-            {
-                case "sshProxy_windows_386_1_3_017634.exe":
-                    isValid = hashString.Equals(sshproxy_windows_386_sha256_hash);
-                    break;
-                case "sshProxy_windows_amd64_1_3_017634.exe":
-                    isValid = hashString.Equals(sshproxy_windows_amd64_sha256_hash);
-                    break;
-                case "sshProxy_linux_386_1_3_017634":
-                    isValid = hashString.Equals(sshproxy_linux_386_sha256_hash);
-                    break;
-                case "sshProxy_linux_amd64_1_3_017634":
-                    isValid = hashString.Equals(sshproxy_linux_amd64_sha256_hash);
-                    break;
-                case "sshProxy_darwin_amd64_1_3_017634":
-                    isValid = hashString.Equals(sshproxy_darwin_amd64_sha256_hash);
-                    break;
-            }
-
-            if (!isValid)
-            {
-                WriteWarning("Validation of SSH Proxy {path} failed. Removing file from system.");
-                DeleteFile(path);
-                throw new AzPSApplicationException("Failed to download valid SSH Proxy. Unable to continue cmdlet execution.");
-            }
-        }
-#endregion
+    #endregion
 
     }
 

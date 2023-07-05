@@ -52,7 +52,7 @@ RULE <IScaleRule[]>: the collection of rules that provide the triggers and param
   [MetricTriggerMetricResourceLocation <String>]: the location of the resource the rule monitors.
   [ScaleActionValue <String>]: the number of instances that are involved in the scaling action. This value must be 1 or greater. The default value is 1.
 .Link
-https://learn.microsoft.com/powershell/module/az.Autoscale/new-AzAutoscaleProfileObject
+https://learn.microsoft.com/powershell/module/Az.Monitor/new-AzAutoscaleProfileObject
 #>
 function New-AzAutoscaleProfileObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.AutoscaleProfile])]
@@ -177,7 +177,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
         }         
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {

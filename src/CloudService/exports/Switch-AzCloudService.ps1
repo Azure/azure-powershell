@@ -43,7 +43,7 @@ CLOUDSERVICE <CloudService>:
       [ForceUpdateTag <String>]: Tag to force apply the provided public and protected settings.         Changing the tag value allows for re-running the extension without changing any of the public or protected settings.         If forceUpdateTag is not changed, updates to public or protected settings would still be applied by the handler.         If neither forceUpdateTag nor any of public or protected settings change, extension would flow to the role instance with the same sequence-number, and         it is up to handler implementation whether to re-run it or not
       [Name <String>]: The name of the extension.
       [ProtectedSetting <String>]: Protected settings for the extension which are encrypted before sent to the role instance.
-      [ProtectedSettingFromKeyVaultSecretUrl <String>]: 
+      [ProtectedSettingFromKeyVaultSecretUrl <String>]: Secret URL which contains the protected settings of the extension
       [Publisher <String>]: The name of the extension handler publisher.
       [RolesAppliedTo <String[]>]: Optional list of roles to apply this extension. If property is not specified or '*' is specified, extension is applied to all roles in the cloud service.
       [Setting <String>]: Public settings for the extension. For JSON extensions, this is the JSON settings for the extension. For XML Extension (like RDP), this is the XML setting for the extension.
@@ -59,6 +59,7 @@ CLOUDSERVICE <CloudService>:
         [SubnetId <String>]: Resource Id
       Name <String>: The name of the Load balancer
       [Id <String>]: Resource Id
+    [SlotType <CloudServiceSlotType?>]: Slot type for the cloud service.         Possible values are <br /><br />**Production**<br /><br />**Staging**<br /><br />         If not specified, the default value is Production.
     [SwappableCloudService <ISubResource>]: The id reference of the cloud service containing the target IP with which the subject cloud service can perform a swap. This property cannot be updated once it is set. The swappable cloud service referred by this id must be present otherwise an error will be thrown.
       [Id <String>]: Resource Id
   [OSProfile <ICloudServiceOSProfile>]: Describes the OS profile for the cloud service.
@@ -77,6 +78,7 @@ CLOUDSERVICE <CloudService>:
   [Tag <ICloudServiceTags>]: Resource tags.
     [(Any) <String>]: This indicates any property can be added to this object.
   [UpgradeMode <CloudServiceUpgradeMode?>]: Update mode for the cloud service. Role instances are allocated to update domains when the service is deployed. Updates can be initiated manually in each update domain or initiated automatically in all update domains.         Possible Values are <br /><br />**Auto**<br /><br />**Manual** <br /><br />**Simultaneous**<br /><br />         If not specified, the default value is Auto. If set to Manual, PUT UpdateDomain must be called to apply the update. If set to Auto, the update is automatically applied to each update domain in sequence.
+  [Zone <String[]>]: List of logical availability zone of the resource. List should contain only 1 zone where cloud service should be provisioned. This field is optional.
 .Link
 https://learn.microsoft.com/powershell/module/az.cloudservice/Switch-AzCloudService
 #>
@@ -104,7 +106,7 @@ param(
 
     [Parameter(ParameterSetName='CloudService', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.CloudService]
+    [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.CloudService]
     # To construct, see NOTES section for CLOUDSERVICE properties and create a hash table.
     ${CloudService},
 
@@ -141,6 +143,24 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.CloudService.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
         $mapping = @{
             CloudServiceName = 'Az.CloudService.custom\Switch-AzCloudService';
             CloudService = 'Az.CloudService.custom\Switch-AzCloudService';
@@ -155,6 +175,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
         throw
     }
 }
@@ -163,15 +184,32 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
         throw
     }
-}
 
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
 end {
     try {
         $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.CloudService.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
     } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
         throw
     }
-}
+} 
 }

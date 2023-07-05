@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.dll-Help.xml
 Module Name: Az.EventGrid
-online version:
+online version: https://learn.microsoft.com/powershell/module/az.eventgrid/new-azeventgridpartnernamespacekey
 schema: 2.0.0
 ---
 
@@ -42,7 +42,7 @@ Regenerate the key corresponding to key \`key1\` of Event Grid partner namespace
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -57,7 +57,7 @@ Accept wildcard characters: False
 PartnerNamespace object
 
 ```yaml
-Type: PSPartnerNamespace
+Type: Microsoft.Azure.Commands.EventGrid.Models.PSPartnerNamespace
 Parameter Sets: PartnerNamespaceInputObjectParameterSet
 Aliases:
 
@@ -73,7 +73,7 @@ The name of the shared access key for the partner namespace.
 Either key1 or key2.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: KeyName
 Accepted values: key1, key2
@@ -89,7 +89,7 @@ Accept wildcard characters: False
 Event Grid partner namespace name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: PartnerNamespaceNameParameterSet
 Aliases:
 
@@ -104,7 +104,7 @@ Accept wildcard characters: False
 The name of the resource group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: PartnerNamespaceNameParameterSet
 Aliases: ResourceGroup
 
@@ -119,7 +119,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -135,7 +135,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

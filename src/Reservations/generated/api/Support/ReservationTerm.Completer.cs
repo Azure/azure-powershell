@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Reservations.Support
 {
 
-    /// <summary>Represent the term of Reservation.</summary>
+    /// <summary>Represent the term of reservation.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Reservations.Support.ReservationTermTypeConverter))]
     public partial struct ReservationTerm :
         System.Management.Automation.IArgumentCompleter

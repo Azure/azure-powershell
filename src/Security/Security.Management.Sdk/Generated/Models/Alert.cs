@@ -45,14 +45,14 @@ namespace Microsoft.Azure.Management.Security.Models
         /// alert.</param>
         /// <param name="productComponentName">The name of Azure Security
         /// Center pricing tier which powering this alert. Learn more:
-        /// https://docs.microsoft.com/en-us/azure/security-center/security-center-pricing</param>
+        /// https://learn.microsoft.com/en-us/azure/security-center/security-center-pricing</param>
         /// <param name="alertDisplayName">The display name of the
         /// alert.</param>
         /// <param name="description">Description of the suspicious activity
         /// that was detected.</param>
         /// <param name="severity">The risk level of the threat that was
         /// detected. Learn more:
-        /// https://docs.microsoft.com/en-us/azure/security-center/security-center-alerts-overview#how-are-alerts-classified.
+        /// https://learn.microsoft.com/en-us/azure/security-center/security-center-alerts-overview#how-are-alerts-classified.
         /// Possible values include: 'Informational', 'Low', 'Medium',
         /// 'High'</param>
         /// <param name="intent">The kill chain related intent behind the
@@ -166,7 +166,7 @@ namespace Microsoft.Azure.Management.Security.Models
         /// <summary>
         /// Gets the name of Azure Security Center pricing tier which powering
         /// this alert. Learn more:
-        /// https://docs.microsoft.com/en-us/azure/security-center/security-center-pricing
+        /// https://learn.microsoft.com/en-us/azure/security-center/security-center-pricing
         /// </summary>
         [JsonProperty(PropertyName = "properties.productComponentName")]
         public string ProductComponentName { get; private set; }
@@ -185,7 +185,7 @@ namespace Microsoft.Azure.Management.Security.Models
 
         /// <summary>
         /// Gets the risk level of the threat that was detected. Learn more:
-        /// https://docs.microsoft.com/en-us/azure/security-center/security-center-alerts-overview#how-are-alerts-classified.
+        /// https://learn.microsoft.com/en-us/azure/security-center/security-center-alerts-overview#how-are-alerts-classified.
         /// Possible values include: 'Informational', 'Low', 'Medium', 'High'
         /// </summary>
         [JsonProperty(PropertyName = "properties.severity")]

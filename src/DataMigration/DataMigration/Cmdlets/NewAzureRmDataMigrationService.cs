@@ -35,21 +35,21 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
 
         [Parameter(
             Mandatory = true,
-            HelpMessage = "Database Migration Service Name.")]
+            HelpMessage = "Azure Database Migration Service (classic) Name.")]
         [ValidateNotNullOrEmpty]
         [Alias("ServiceName")]
         public string Name { get; set; }
 
         [Parameter(
             Mandatory = true,
-            HelpMessage = "The location of the instance of the Database Migration Service to be created. "
+            HelpMessage = "The location of the instance of the Azure Database Migration Service (classic) to be created. "
                           + "This corresponds to an Azure region.")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
         [Parameter(
             Mandatory = true,
-            HelpMessage = "The SKU for DataMigration service instance, possible values are GeneralPurpose_1vCore, GeneralPurpose_2vCores, GeneralPurpose_4vCores, BusinessCritical_4vCores"
+            HelpMessage = "The SKU for Azure Database Migration service (classic) instance, possible values are GeneralPurpose_1vCore, GeneralPurpose_2vCores, GeneralPurpose_4vCores, BusinessCritical_4vCores"
         )]
         [ValidateNotNullOrEmpty]
         [PSArgumentCompleter("GeneralPurpose_1vCore", "GeneralPurpose_2vCores", "GeneralPurpose_4vCores", "BusinessCritical_4vCores")]
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
 
         [Parameter(
             Mandatory = true,
-            HelpMessage = "The name of the subnet under the specified virtual network to be used for the Database Migration Service instance.")]
+            HelpMessage = "The name of the subnet under the specified virtual network to be used for the Azure Database Migration Service (classic) instance.")]
         [ValidateNotNullOrEmpty]
         public string VirtualSubnetId { get; set; }
 
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
         }
 
         /// <summary>
-        /// Helper method that calls the creation of an instance of the Database Migration Service
+        /// Helper method that calls the creation of an instance of the Azure Database Migration Service (classic)
         /// </summary>
         /// <returns>The instance of PSDataMigrationService that was created.</returns>
         public DataMigrationService CreateService()

@@ -310,6 +310,41 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [ResourceIdCompleter("Microsoft.Compute galleries/images/versions")]
         public string ImageReferenceId { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Specified the shared gallery image unique id for vm deployment. This can be fetched from shared gallery image GET call.")]
+        public string SharedGalleryImageId { get; set; }
+        
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Specifies whether the OS Image Scheduled event is enabled or disabled.")]
+        public SwitchParameter OSImageScheduledEventEnabled { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The length of time a virtual machine being reimaged or having its OS upgraded will have to potentially approve the OS Image Scheduled Event before the event is auto approved (timed out). The configuration is specified in ISO 8601 format, with the value set to 15 minutes (PT15M).")]
+        public string OSImageScheduledEventNotBeforeTimeoutInMinutes { get; set; }
+
+        [Parameter(
+           HelpMessage = "Specifies the SecurityType of the virtual machine. It has to be set to any specified value to enable UefiSettings. Default: UefiSettings will not be enabled unless this property is set.",
+           ValueFromPipelineByPropertyName = true,
+           Mandatory = false)]
+        [ValidateSet(ValidateSetValues.TrustedLaunch, ValidateSetValues.ConfidentialVM, IgnoreCase = true)]
+        [PSArgumentCompleter("TrustedLaunch", "ConfidentialVM")]
+        public string SecurityType { get; set; }
+
+        [Parameter(
+           HelpMessage = "Specifies whether vTPM should be enabled on the virtual machine.",
+           ValueFromPipelineByPropertyName = true,
+           Mandatory = false)]
+        public bool? EnableVtpm { get; set; } = null;
+
+        [Parameter(
+           HelpMessage = "Specifies whether secure boot should be enabled on the virtual machine.",
+           ValueFromPipelineByPropertyName = true,
+           Mandatory = false)]
+        public bool? EnableSecureBoot { get; set; } = null;
+
         protected override void ProcessRecord()
         {
             if (ShouldProcess("VirtualMachineScaleSet", "New"))
@@ -551,6 +586,62 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 }
                 vVirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations = this.NetworkInterfaceConfiguration;
             }
+            
+            if (this.IsParameterBound(c => c.SecurityType))
+            {
+                if (vVirtualMachineProfile == null)
+                {
+                    vVirtualMachineProfile = new PSVirtualMachineScaleSetVMProfile();
+                }
+                if (vVirtualMachineProfile.SecurityProfile == null)
+                {
+                    vVirtualMachineProfile.SecurityProfile = new SecurityProfile();
+                }
+                if (vVirtualMachineProfile.SecurityProfile.UefiSettings == null)
+                {
+                    vVirtualMachineProfile.SecurityProfile.UefiSettings = new UefiSettings();
+                }
+                vVirtualMachineProfile.SecurityProfile.SecurityType = this.SecurityType;
+                if (vVirtualMachineProfile.SecurityProfile.SecurityType == "TrustedLaunch" || vVirtualMachineProfile.SecurityProfile.SecurityType == "ConfidentialVM")
+                {
+                    vVirtualMachineProfile.SecurityProfile.UefiSettings.VTpmEnabled = vVirtualMachineProfile.SecurityProfile.UefiSettings.VTpmEnabled == null ? true : this.EnableVtpm;
+                    vVirtualMachineProfile.SecurityProfile.UefiSettings.SecureBootEnabled = vVirtualMachineProfile.SecurityProfile.UefiSettings.SecureBootEnabled == null ? true : this.EnableSecureBoot;
+                }
+            }
+
+            if (this.IsParameterBound(c => c.EnableVtpm))
+            {
+                if (vVirtualMachineProfile == null)
+                {
+                    vVirtualMachineProfile = new PSVirtualMachineScaleSetVMProfile();
+                }
+                if (vVirtualMachineProfile.SecurityProfile == null)
+                {
+                    vVirtualMachineProfile.SecurityProfile = new SecurityProfile();
+                }
+                if (vVirtualMachineProfile.SecurityProfile.UefiSettings == null)
+                {
+                    vVirtualMachineProfile.SecurityProfile.UefiSettings = new UefiSettings();
+                }
+                vVirtualMachineProfile.SecurityProfile.UefiSettings.VTpmEnabled = this.EnableVtpm;
+            }
+
+            if (this.IsParameterBound(c => c.EnableSecureBoot))
+            {
+                if (vVirtualMachineProfile == null)
+                {
+                    vVirtualMachineProfile = new PSVirtualMachineScaleSetVMProfile();
+                }
+                if (vVirtualMachineProfile.SecurityProfile == null)
+                {
+                    vVirtualMachineProfile.SecurityProfile = new SecurityProfile();
+                }
+                if (vVirtualMachineProfile.SecurityProfile.UefiSettings == null)
+                {
+                    vVirtualMachineProfile.SecurityProfile.UefiSettings = new UefiSettings();
+                }
+                vVirtualMachineProfile.SecurityProfile.UefiSettings.SecureBootEnabled = this.EnableSecureBoot;
+            }
 
             if (this.IsParameterBound(c => c.BootDiagnostic))
             {
@@ -767,6 +858,59 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     vVirtualMachineProfile.StorageProfile.ImageReference = new ImageReference();
                 }
                 vVirtualMachineProfile.StorageProfile.ImageReference.Id = this.ImageReferenceId;
+            }
+
+            if (this.IsParameterBound(c => c.SharedGalleryImageId))
+            {
+                if (vVirtualMachineProfile == null)
+                {
+                    vVirtualMachineProfile = new PSVirtualMachineScaleSetVMProfile();
+                }
+
+                if (vVirtualMachineProfile.StorageProfile == null)
+                {
+                    vVirtualMachineProfile.StorageProfile = new VirtualMachineScaleSetStorageProfile();
+                }
+
+                if (vVirtualMachineProfile.StorageProfile.ImageReference == null)
+                {
+                    vVirtualMachineProfile.StorageProfile.ImageReference = new ImageReference();
+                }
+                vVirtualMachineProfile.StorageProfile.ImageReference.SharedGalleryImageId = this.SharedGalleryImageId;
+            }
+
+            if (this.IsParameterBound(c => c.OSImageScheduledEventEnabled))
+            {
+                if (vVirtualMachineProfile == null)
+                {
+                    vVirtualMachineProfile = new PSVirtualMachineScaleSetVMProfile();
+                }
+                if (vVirtualMachineProfile.ScheduledEventsProfile == null)
+                {
+                    vVirtualMachineProfile.ScheduledEventsProfile = new ScheduledEventsProfile();
+                }
+                if (vVirtualMachineProfile.ScheduledEventsProfile.OsImageNotificationProfile == null)
+                {
+                    vVirtualMachineProfile.ScheduledEventsProfile.OsImageNotificationProfile = new OSImageNotificationProfile();
+                }
+                vVirtualMachineProfile.ScheduledEventsProfile.OsImageNotificationProfile.Enable = this.OSImageScheduledEventEnabled;
+            }
+
+            if (this.IsParameterBound(c => c.OSImageScheduledEventNotBeforeTimeoutInMinutes))
+            {
+                if (vVirtualMachineProfile == null)
+                {
+                    vVirtualMachineProfile = new PSVirtualMachineScaleSetVMProfile();
+                }
+                if (vVirtualMachineProfile.ScheduledEventsProfile == null)
+                {
+                    vVirtualMachineProfile.ScheduledEventsProfile = new ScheduledEventsProfile();
+                }
+                if (vVirtualMachineProfile.ScheduledEventsProfile.OsImageNotificationProfile == null)
+                {
+                    vVirtualMachineProfile.ScheduledEventsProfile.OsImageNotificationProfile = new OSImageNotificationProfile();
+                }
+                vVirtualMachineProfile.ScheduledEventsProfile.OsImageNotificationProfile.NotBeforeTimeout = this.OSImageScheduledEventNotBeforeTimeoutInMinutes;
             }
 
             var vVirtualMachineScaleSet = new PSVirtualMachineScaleSet

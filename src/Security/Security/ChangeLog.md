@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 1.4.0
 * Updated Alerts cmdlets:
     `Get-AzSecurityAlert`
     `Set-AzSecurityAlert`

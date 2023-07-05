@@ -7,7 +7,7 @@ Get-AzOrbitalSpacecraft
 Name                     Location NoradId TitleLine   ResourceGroupName
 ----                     -------- ------- ---------   -----------------
 azpstest-test-spacecraft westus2  12345   ISS (ZARYA) azpstest-gp
-AQUA   eastus   12345   ISS (ZARYA) azpstest-gp
+AQUA                     eastus   12345   ISS (ZARYA) azpstest-gp
 ```
 
 List the specified spacecraft.

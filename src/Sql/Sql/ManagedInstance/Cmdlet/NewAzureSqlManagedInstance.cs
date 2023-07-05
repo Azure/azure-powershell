@@ -36,11 +36,6 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
     /// <summary>
     /// Defines the New-AzSqlInstance cmdlet
     /// </summary>
-    [CmdletOutputBreakingChange(
-        deprecatedCmdletOutputTypeName: typeof(AzureSqlManagedInstanceModel),
-        deprecateByVersion: "4.0.0",
-        DeprecatedOutputProperties = new String[] { "BackupStorageRedundancy" },
-        NewOutputProperties = new String[] { "CurrentBackupStorageRedundancy", "RequestedBackupStorageRedundancy" })]
     [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlInstance",
         DefaultParameterSetName = NewByEditionAndComputeGenerationParameterSet,
         SupportsShouldProcess = true),

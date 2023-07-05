@@ -28,7 +28,7 @@ $container = New-AzContainerInstanceObject -Name test-container -Image alpine
 New-AzContainerGroup -ResourceGroupName testrg-rg -Name test-cg -Location eastus -Container $container
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.Container
+Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.Container
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -59,7 +59,7 @@ VOLUMEMOUNT <IVolumeMount[]>: The volume mounts available to the container insta
 https://learn.microsoft.com/powershell/module/az.ContainerInstance/new-AzContainerInstanceObject
 #>
 function New-AzContainerInstanceObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.Container])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.Container])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -82,7 +82,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.IEnvironmentVariable[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IEnvironmentVariable[]]
     # The environment variables to set in the container instance.
     # To construct, see NOTES section for ENVIRONMENTVARIABLE properties and create a hash table.
     ${EnvironmentVariable},
@@ -126,7 +126,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.IHttpHeader[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IHttpHeader[]]
     # The HTTP headers for liveness probe.
     # To construct, see NOTES section for LIVENESSPROBEHTTPGETHTTPHEADER properties and create a hash table.
     ${LivenessProbeHttpGetHttpHeader},
@@ -176,7 +176,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.IContainerPort[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IContainerPort[]]
     # The exposed ports on the container instance.
     # To construct, see NOTES section for PORT properties and create a hash table.
     ${Port},
@@ -195,7 +195,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.IHttpHeader[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IHttpHeader[]]
     # The HTTP headers for readiness probe.
     # To construct, see NOTES section for READINESSPROBEHTTPGETHTTPHEADER properties and create a hash table.
     ${ReadinessProbeHttpGetHttpHeader},
@@ -270,7 +270,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.IVolumeMount[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IVolumeMount[]]
     # The volume mounts available to the container instance.
     # To construct, see NOTES section for VOLUMEMOUNT properties and create a hash table.
     ${VolumeMount}

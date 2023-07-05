@@ -15,7 +15,11 @@ Create or update linker resource in webapp.
 ```
 New-AzServiceLinkerForWebApp -AuthInfo <IAuthInfoBase> -TargetService <ITargetServiceBase>
  -ResourceGroupName <String> -WebApp <String> [-Name <String>] [-ResourceUri <String>]
- [-ClientType <ClientType>] [-Scope <String>] [-SecretStoreKeyVaultId <String>]
+ [-ClientType <ClientType>] [-ConfigurationInfoAction <ActionType>]
+ [-ConfigurationInfoAdditionalConfiguration <Hashtable>] [-ConfigurationInfoCustomizedKey <Hashtable>]
+ [-FirewallRuleAzureService <AllowType>] [-FirewallRuleCallerClientIP <AllowType>]
+ [-FirewallRuleIPRange <String[]>] [-PublicNetworkSolutionAction <ActionType>] [-Scope <String>]
+ [-SecretStoreKeyVaultId <String>] [-SecretStoreKeyVaultSecretName <String>]
  [-VNetSolutionType <VNetSolutionType>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-SubscriptionId <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -64,7 +68,7 @@ The authentication type.
 To construct, see NOTES section for AUTHINFO properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20220501.IAuthInfoBase
+Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.IAuthInfoBase
 Parameter Sets: (All)
 Aliases:
 
@@ -90,6 +94,57 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ConfigurationInfoAction
+Optional, indicate whether to apply configurations on source application.
+If enable, generate configurations and applied to the source application.
+Default is enable.
+If optOut, no configuration change will be made on source.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.ActionType
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ConfigurationInfoAdditionalConfiguration
+A dictionary of additional configurations to be added.
+Service will auto generate a set of basic configurations and this property is to full fill more customized configurations
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ConfigurationInfoCustomizedKey
+Optional.
+A dictionary of default key name and customized key name mapping.
+If not specified, default key name will be used for generate configurations
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -97,6 +152,52 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FirewallRuleAzureService
+Allow Azure services to access the target service if true.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.AllowType
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FirewallRuleCallerClientIP
+Allow caller client IP to access the target service if true.
+the property is used when connecting local application to target service.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.AllowType
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FirewallRuleIPRange
+This value specifies the set of IP addresses or IP address ranges in CIDR form to be included as the allowed list of client IPs for a given database account.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -125,6 +226,25 @@ Run the command asynchronously
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PublicNetworkSolutionAction
+Optional.
+Indicates public network solution.
+If enable, enable public network access of target service with best try.
+Default is enable.
+If optOut, opt out public network access configuration.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.ActionType
 Parameter Sets: (All)
 Aliases:
 
@@ -196,6 +316,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -SecretStoreKeyVaultSecretName
+The key vault secret name to store secret, only valid when storing one secret
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SubscriptionId
 Gets subscription ID which uniquely identify the Microsoft Azure subscription.
 The subscription ID forms part of the URI for every service call.
@@ -217,7 +352,7 @@ The target service properties
 To construct, see NOTES section for TARGETSERVICE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20220501.ITargetServiceBase
+Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.ITargetServiceBase
 Parameter Sets: (All)
 Aliases:
 
@@ -297,7 +432,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20220501.ILinkerResource
+### Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.ILinkerResource
 
 ## NOTES
 
@@ -308,10 +443,10 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-AUTHINFO `<IAuthInfoBase>`: The authentication type.
+`AUTHINFO <IAuthInfoBase>`: The authentication type.
   - `AuthType <AuthType>`: The authentication type.
 
-TARGETSERVICE `<ITargetServiceBase>`: The target service properties
+`TARGETSERVICE <ITargetServiceBase>`: The target service properties
   - `Type <TargetServiceType>`: The target service type.
 
 ## RELATED LINKS

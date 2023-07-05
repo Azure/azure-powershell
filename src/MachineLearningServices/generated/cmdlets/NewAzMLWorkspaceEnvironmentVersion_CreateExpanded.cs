@@ -119,15 +119,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Cmdlets
         public Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[] HttpPipelinePrepend { get; set; }
 
         /// <summary>
-        /// Name of the image that will be used for the environment.<seealso href="https://docs.microsoft.com/en-us/azure/machine-learning/how-to-deploy-custom-docker-image#use-a-custom-base-image"
+        /// Name of the image that will be used for the environment.<seealso href="https://learn.microsoft.com/en-us/azure/machine-learning/how-to-deploy-custom-docker-image#use-a-custom-base-image"
         /// />
         /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Name of the image that will be used for the environment.<seealso href=\"https://docs.microsoft.com/en-us/azure/machine-learning/how-to-deploy-custom-docker-image#use-a-custom-base-image\" />")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Name of the image that will be used for the environment.<seealso href=\"https://learn.microsoft.com/en-us/azure/machine-learning/how-to-deploy-custom-docker-image#use-a-custom-base-image\" />")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category(global::Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"Name of the image that will be used for the environment.<seealso href=""https://docs.microsoft.com/en-us/azure/machine-learning/how-to-deploy-custom-docker-image#use-a-custom-base-image"" />",
+        Description = @"Name of the image that will be used for the environment.<seealso href=""https://learn.microsoft.com/en-us/azure/machine-learning/how-to-deploy-custom-docker-image#use-a-custom-base-image"" />",
         SerializedName = @"image",
         PossibleTypes = new [] { typeof(string) })]
         public string Image { get => _body.Image ?? null; set => _body.Image = value; }

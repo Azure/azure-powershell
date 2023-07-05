@@ -33,6 +33,9 @@ Get-AzADServicePrincipal -ApplicationId $appId
 Get-AzADApplication -DisplayName $name | Get-AzADServicePrincipal
 .Example
 Get-AzADServicePrincipal -Filter "startsWith(DisplayName,'some-name')"
+.Example
+Get-AzADServicePrincipal -First 10 -ConsistencyLevel eventual -Count -CountVariable 'result'
+$result
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphServicePrincipal
@@ -153,7 +156,14 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
     # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
+    ${ProxyUseDefaultCredentials},
+
+    [Parameter(ParameterSetName='List')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Runtime')]
+    [System.String]
+    # Specifies a count of the total number of items in a collection.
+    # By default, this variable will be set in the global scope.
+    ${CountVariable}
 )
 
 begin {

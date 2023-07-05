@@ -46,6 +46,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support
             {
                 yield return new global::System.Management.Automation.CompletionResult("'secret'", "secret", global::System.Management.Automation.CompletionResultType.ParameterValue, "secret");
             }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "accessKey".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'accessKey'", "accessKey", global::System.Management.Automation.CompletionResultType.ParameterValue, "accessKey");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "userAccount".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'userAccount'", "userAccount", global::System.Management.Automation.CompletionResultType.ParameterValue, "userAccount");
+            }
         }
     }
 }

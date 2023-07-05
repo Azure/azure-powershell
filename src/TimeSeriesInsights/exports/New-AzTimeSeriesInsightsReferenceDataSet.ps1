@@ -37,7 +37,7 @@ KEYPROPERTY <IReferenceDataSetKeyProperty[]>: The list of key properties for the
   [Name <String>]: The name of the key property.
   [Type <ReferenceDataKeyPropertyType?>]: The type of the key property.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.timeseriesinsights/new-aztimeseriesinsightsreferencedataset
+https://learn.microsoft.com/en-us/powershell/module/az.timeseriesinsights/new-aztimeseriesinsightsreferencedataset
 #>
 function New-AzTimeSeriesInsightsReferenceDataSet {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IReferenceDataSetResource])]

@@ -27,21 +27,26 @@ Returns Linker resource for a given name.
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.IServiceLinkerIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20220501.ILinkerResource
+Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.ILinkerResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IServiceLinkerIdentity>: Identity Parameter
+  [ConnectorName <String>]: The name of resource.
+  [DryrunName <String>]: The name of dryrun.
   [Id <String>]: Resource identity path
   [LinkerName <String>]: The name Linker resource.
+  [Location <String>]: The name of Azure region.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ResourceUri <String>]: The fully qualified Azure Resource manager identifier of the resource to be connected.
+  [SubscriptionId <String>]: The ID of the target subscription.
 .Link
 https://learn.microsoft.com/powershell/module/az.servicelinker/get-azservicelinker
 #>
 function Get-AzServiceLinker {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20220501.ILinkerResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.ILinkerResource])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]

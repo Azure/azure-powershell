@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Reservations.Support
 {
 
-    /// <summary>Represent the current display state of the Reservation.</summary>
+    /// <summary>Represent the current display state of the reservation.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Reservations.Support.DisplayProvisioningStateTypeConverter))]
     public partial struct DisplayProvisioningState :
         System.Management.Automation.IArgumentCompleter
@@ -53,6 +53,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Reservations.Support
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Failed".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
                 yield return new global::System.Management.Automation.CompletionResult("'Failed'", "Failed", global::System.Management.Automation.CompletionResultType.ParameterValue, "Failed");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Warning".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'Warning'", "Warning", global::System.Management.Automation.CompletionResultType.ParameterValue, "Warning");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "NoBenefit".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'NoBenefit'", "NoBenefit", global::System.Management.Automation.CompletionResultType.ParameterValue, "NoBenefit");
             }
         }
     }

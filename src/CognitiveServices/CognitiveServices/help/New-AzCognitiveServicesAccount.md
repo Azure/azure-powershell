@@ -20,8 +20,9 @@ New-AzCognitiveServicesAccount [-ResourceGroupName] <String> [-Name] <String> [-
  [-AssignIdentity] [-UserAssignedIdentityId <String[]>] [-IdentityType <IdentityType>]
  [-StorageAccountId <String[]>] [-CognitiveServicesEncryption] [-NetworkRuleSet <PSNetworkRuleSet>]
  [-PublicNetworkAccess <String>] [-DisableLocalAuth <Boolean>] [-RestrictOutboundNetworkAccess <Boolean>]
- [-AllowedFqdnList <String[]>] [-ApiProperty <CognitiveServicesAccountApiProperties>] [-Force]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AllowedFqdnList <String[]>] [-MultiRegionSetting <MultiRegionSettings>]
+ [-ApiProperty <CognitiveServicesAccountApiProperties>] [-Force] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### KeyVaultEncryption
@@ -32,8 +33,9 @@ New-AzCognitiveServicesAccount [-ResourceGroupName] <String> [-Name] <String> [-
  [-StorageAccountId <String[]>] [-KeyVaultEncryption] -KeyName <String> -KeyVersion <String>
  -KeyVaultUri <String> [-KeyVaultIdentityClientId <String>] [-NetworkRuleSet <PSNetworkRuleSet>]
  [-PublicNetworkAccess <String>] [-DisableLocalAuth <Boolean>] [-RestrictOutboundNetworkAccess <Boolean>]
- [-AllowedFqdnList <String[]>] [-ApiProperty <CognitiveServicesAccountApiProperties>] [-Force]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AllowedFqdnList <String[]>] [-MultiRegionSetting <MultiRegionSettings>]
+ [-ApiProperty <CognitiveServicesAccountApiProperties>] [-Force] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -287,6 +289,21 @@ Required: True
 Position: 4
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -MultiRegionSetting
+Multi-region settings for multi-region account.
+
+```yaml
+Type: Microsoft.Azure.Management.CognitiveServices.Models.MultiRegionSettings
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

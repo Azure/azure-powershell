@@ -8,7 +8,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220214
     using static Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Extensions;
 
     /// <summary>
-    /// Describes an image source from [Azure Gallery Images](https://docs.microsoft.com/en-us/rest/api/compute/virtualmachineimages).
+    /// Describes an image source from [Azure Gallery Images](https://learn.microsoft.com/en-us/rest/api/compute/virtualmachineimages).
     /// </summary>
     public partial class ImageTemplatePlatformImageSource
     {

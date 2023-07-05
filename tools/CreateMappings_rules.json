@@ -803,5 +803,21 @@
   {
     "alias": "MobileNetwork",
     "module": "MobileNetwork"
+  },
+  {
+    "module": "ArcResourceBridge",
+    "alias": "ArcResourceBridge"
+  },
+  {
+    "module": "Workloads",
+    "alias": "Workloads"
+  },
+  {
+    "alias": "SelfHelp",
+    "module": "SelfHelp"
+  },
+  {
+    "module": "Qumulo",
+    "alias": "Qumulo"
   }
 ]

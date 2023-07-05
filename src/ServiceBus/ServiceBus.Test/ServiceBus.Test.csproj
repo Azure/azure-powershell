@@ -16,4 +16,8 @@
     <PackageReference Include="Microsoft.Azure.Management.ServiceBus" Version="5.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="SessionRecords\" />
+  </ItemGroup>
+
 </Project>

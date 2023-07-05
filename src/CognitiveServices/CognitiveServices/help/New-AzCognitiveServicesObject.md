@@ -53,7 +53,7 @@ Cognitive Services Object Type.
 Type: Microsoft.Azure.Commands.Management.CognitiveServices.CognitiveServicesObjectType
 Parameter Sets: (All)
 Aliases:
-Accepted values: DeploymentProperties, CommitmentPlanProperties
+Accepted values: DeploymentProperties, CommitmentPlanProperties, MultiRegionSettings, RegionSetting, Sku
 
 Required: True
 Position: 0
