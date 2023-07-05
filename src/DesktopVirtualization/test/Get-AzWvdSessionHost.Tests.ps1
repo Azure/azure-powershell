@@ -5,8 +5,9 @@ if (-Not (Test-Path -Path $loadEnvPath)) {
 . ($loadEnvPath)
 $TestRecordingFile = Join-Path $PSScriptRoot 'Get-AzWvdSessionHost.Recording.json'
 $currentPath = $PSScriptRoot
-$sessionHostPath = $env.HostPoolPersistent + "/pwsh-0"
-$sessionHostPath2 = $env.HostPoolPersistent + "/userSess-sh-0"
+$sessionHostPath = $env.HostPoolPersistent + "/userSess-sh-0"
+$sessionHostPath2 = $env.HostPoolPersistent + "/pwsh-0"
+$removeSessionHost = $env.HostPoolPersistent + "/pwshremove-0"
 while(-not $mockingPath) {
     $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
     $currentPath = Split-Path -Path $currentPath -Parent
@@ -28,7 +29,7 @@ Describe 'Get-AzWvdSessionHost' {
                             -HostPoolName $env.HostPoolPersistent `
                             | Sort-Object -Property Name 
         
-            $sessionHosts[0].Name | Should -Be $sessionHostPath
-            $sessionHosts[1].Name | Should -Be $sessionHostPath2
+            $sessionHosts[0].Name | Should -Match "$sessionHostPath2|$sessionHostPath|$removeSessionHost"
+            $sessionHosts[1].Name | Should -Match "$sessionHostPath2|$sessionHostPath|$removeSessionHost"
     }
 }
