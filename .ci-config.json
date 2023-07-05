@@ -2,6 +2,16 @@
   "rules": [
     {
       "patterns": [
+        "src/{ModuleName}/{ModuleName}.Management.Sdk/Generated/*",
+        "src/{ModuleName}/{ModuleName}.LegacySdk/Generated/*",
+        "src/{ModuleName}/{ModuleName}.Sdk/Generated/*"
+      ],
+      "phases": [
+        "generated-sdk:module"
+      ]
+    },
+    {
+      "patterns": [
         "src/{ModuleName}/readme.md",
         "src/{ModuleName}/README.md",
         "src/{ModuleName}[a-zA-Z`.`/]*/readme.md",
