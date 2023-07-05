@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.Quantum
-online version: https://learn.microsoft.com/powershell/module/az.quantum/update-azquantumworkspacetag
+online version: https://learn.microsoft.com/powershell/module/az.quantum/update-azquantumworkspace
 schema: 2.0.0
 ---
 
-# Update-AzQuantumWorkspaceTag
+# Update-AzQuantumWorkspace
 
 ## SYNOPSIS
 Updates an existing workspace's tags.
@@ -14,13 +14,13 @@ Updates an existing workspace's tags.
 
 ### UpdateExpanded (Default)
 ```
-Update-AzQuantumWorkspaceTag -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+Update-AzQuantumWorkspace -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzQuantumWorkspaceTag -InputObject <IQuantumIdentity> [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
+Update-AzQuantumWorkspace -InputObject <IQuantumIdentity> [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -29,27 +29,31 @@ Updates an existing workspace's tags.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Updates an existing workspace's tags.
 ```powershell
-{{ Add code here }}
+Update-AzQuantumWorkspace -ResourceGroupName azps_test_group_quantum -Name azps-qw -Tag @{"abc"="123"}
 ```
 
 ```output
-{{ Add output here }}
+Location Name    ResourceGroupName
+-------- ----    -----------------
+eastus   azps-qw azps_test_group_quantum
 ```
 
-{{ Add description here }}
+Updates an existing workspace's tags.
 
-### Example 2: {{ Add title here }}
+### Example 2: Updates an existing workspace's tags.
 ```powershell
-{{ Add code here }}
+Get-AzQuantumWorkspace -ResourceGroupName azps_test_group_quantum -Name azps-qw | Update-AzQuantumWorkspace -Tag @{"abc"="123"}
 ```
 
 ```output
-{{ Add output here }}
+Location Name    ResourceGroupName
+-------- ----    -----------------
+eastus   azps-qw azps_test_group_quantum
 ```
 
-{{ Add description here }}
+Updates an existing workspace's tags.
 
 ## PARAMETERS
 

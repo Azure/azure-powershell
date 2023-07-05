@@ -11,7 +11,7 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.Quantum.private.dll'
   FormatsToProcess = './Az.Quantum.format.ps1xml'
-  FunctionsToExport = 'Get-AzQuantumOffering', 'Get-AzQuantumWorkspace', 'New-AzQuantumProviderObject', 'New-AzQuantumWorkspace', 'Remove-AzQuantumWorkspace', 'Test-AzQuantumWorkspaceNameAvailability', 'Update-AzQuantumWorkspaceTag', '*'
+  FunctionsToExport = 'Get-AzQuantumOffering', 'Get-AzQuantumWorkspace', 'New-AzQuantumProviderObject', 'New-AzQuantumWorkspace', 'Remove-AzQuantumWorkspace', 'Test-AzQuantumWorkspaceNameAvailability', 'Update-AzQuantumWorkspace', '*'
   AliasesToExport = '*'
   PrivateData = @{
     PSData = @{

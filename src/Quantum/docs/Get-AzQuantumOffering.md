@@ -22,27 +22,24 @@ Returns the list of all provider offerings available for the given location.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Returns the list of all provider offerings available for the given location.
 ```powershell
-{{ Add code here }}
+Get-AzQuantumOffering -LocationName eastus
 ```
 
 ```output
-{{ Add output here }}
+Name
+----
+1Qloud Optimization Platform
+IonQ
+Microsoft QIO
+Microsoft Quantum Computing
+Quantinuum
+Rigetti Quantum
+SQBM+ Cloud on Azure Quantum
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Returns the list of all provider offerings available for the given location.
 
 ## PARAMETERS
 

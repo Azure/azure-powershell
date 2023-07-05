@@ -57,7 +57,17 @@ directive:
     set:
       parameter-name: Name
       alias: WorkspaceName
+  - where:
+      subject: ^WorkspaceTag$
+    set:
+      subject: Workspace
 #   # The following are commented out and their generated cmdlets may be renamed and custom logic
 #   - model-cmdlet:
 #       - Provider
+  - where:
+      model-name: Provider
+    set:
+      format-table:
+        properties:
+          - Sku
 ```

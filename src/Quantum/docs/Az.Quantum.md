@@ -29,6 +29,6 @@ Deletes a Workspace resource.
 ### [Test-AzQuantumWorkspaceNameAvailability](Test-AzQuantumWorkspaceNameAvailability.md)
 Check the availability of the resource name.
 
-### [Update-AzQuantumWorkspaceTag](Update-AzQuantumWorkspaceTag.md)
+### [Update-AzQuantumWorkspace](Update-AzQuantumWorkspace.md)
 Updates an existing workspace's tags.
 

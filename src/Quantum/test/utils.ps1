@@ -18,6 +18,21 @@ function setupEnv() {
     # as default. You could change them if needed.
     $env.SubscriptionId = (Get-AzContext).Subscription.Id
     $env.Tenant = (Get-AzContext).Tenant.Id
+
+    $quantumWorkspaceName = "azps-" + (RandomString -allChars $false -len 6)
+
+    $env.Add("quantumWorkspaceName", $quantumWorkspaceName)
+    
+    $env.Add("location", "eastus")
+
+    # Create the test group
+    write-host "start to create test group"
+    $resourceGroup = "azps_test_group_quantum"
+    $env.Add("resourceGroup", $resourceGroup)
+
+    # Use mock environment, so we donnot run this cmdlet.
+    New-AzResourceGroup -Name $env.resourceGroup -Location $env.location
+
     # For any resources you created for test, you should add it to $env here.
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {
@@ -27,5 +42,6 @@ function setupEnv() {
 }
 function cleanupEnv() {
     # Clean resources you create for testing
+    # Remove-AzResourceGroup -Name $env.resourceGroup
 }
 

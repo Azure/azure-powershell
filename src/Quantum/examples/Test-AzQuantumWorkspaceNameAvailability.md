@@ -1,22 +1,12 @@
-### Example 1: {{ Add title here }}
+### Example 1: Check the availability of the resource name.
 ```powershell
-{{ Add code here }}
+Test-AzQuantumWorkspaceNameAvailability -LocationName eastus -Name sample-workspace-name -Type "Microsoft.Quantum/Workspaces"
 ```
 
 ```output
-{{ Add output here }}
+Message NameAvailable Reason
+------- ------------- ------
+        True
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+Check the availability of the resource name.

@@ -1,22 +1,13 @@
-### Example 1: {{ Add title here }}
+### Example 1: Deletes a Workspace resource.
 ```powershell
-{{ Add code here }}
+Remove-AzQuantumWorkspace -ResourceGroupName azps_test_group_quantum -Name azps-qw
 ```
 
-```output
-{{ Add output here }}
-```
+Deletes a Workspace resource.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Deletes a Workspace resource.
 ```powershell
-{{ Add code here }}
+Get-AzQuantumWorkspace -ResourceGroupName azps_test_group_quantum -Name azps-qw | Remove-AzQuantumWorkspace
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+Deletes a Workspace resource.

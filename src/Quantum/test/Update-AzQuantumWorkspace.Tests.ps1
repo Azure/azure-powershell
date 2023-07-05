@@ -1,11 +1,11 @@
-if(($null -eq $TestName) -or ($TestName -contains 'Update-AzQuantumWorkspaceTag'))
+if(($null -eq $TestName) -or ($TestName -contains 'Update-AzQuantumWorkspace'))
 {
   $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
   if (-Not (Test-Path -Path $loadEnvPath)) {
       $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
   }
   . ($loadEnvPath)
-  $TestRecordingFile = Join-Path $PSScriptRoot 'Update-AzQuantumWorkspaceTag.Recording.json'
+  $TestRecordingFile = Join-Path $PSScriptRoot 'Update-AzQuantumWorkspace.Recording.json'
   $currentPath = $PSScriptRoot
   while(-not $mockingPath) {
       $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
@@ -14,20 +14,12 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzQuantumWorkspaceTag'
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Update-AzQuantumWorkspaceTag' {
+Describe 'Update-AzQuantumWorkspace' {
     It 'UpdateExpanded' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'Update' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
     It 'UpdateViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'UpdateViaIdentity' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

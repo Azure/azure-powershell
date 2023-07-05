@@ -39,27 +39,44 @@ Returns the Workspace resource associated with the given name.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List the Workspace resource associated by the SubId.
 ```powershell
-{{ Add code here }}
+Get-AzQuantumWorkspace
 ```
 
 ```output
-{{ Add output here }}
+Location Name    ResourceGroupName
+-------- ----    -----------------
+eastus   azps-qw azps_test_group_quantum
 ```
 
-{{ Add description here }}
+List the Workspace resource associated by the SubId.
 
-### Example 2: {{ Add title here }}
+### Example 2: List the Workspace resource associated by the ResourceGroupName.
 ```powershell
-{{ Add code here }}
+Get-AzQuantumWorkspace -ResourceGroupName azps_test_group_quantum
 ```
 
 ```output
-{{ Add output here }}
+Location Name    ResourceGroupName
+-------- ----    -----------------
+eastus   azps-qw azps_test_group_quantum
 ```
 
-{{ Add description here }}
+List the Workspace resource associated by the ResourceGroupName.
+
+### Example 3: Get the Workspace resource associated by the name.
+```powershell
+Get-AzQuantumWorkspace -ResourceGroupName azps_test_group_quantum -Name azps-qw
+```
+
+```output
+Location Name    ResourceGroupName
+-------- ----    -----------------
+eastus   azps-qw azps_test_group_quantum
+```
+
+Get the Workspace resource associated by the name.
 
 ## PARAMETERS
 

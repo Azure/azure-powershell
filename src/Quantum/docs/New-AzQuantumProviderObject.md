@@ -22,27 +22,18 @@ Create an in-memory object for Provider.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create an in-memory object for Provider.
 ```powershell
-{{ Add code here }}
+New-AzQuantumProviderObject -Id "ionq" -Sku "pay-as-you-go-cred"
 ```
 
 ```output
-{{ Add output here }}
+Sku
+---
+pay-as-you-go-cred
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Create an in-memory object for Provider.
 
 ## PARAMETERS
 

@@ -24,27 +24,19 @@ Creates or updates a workspace resource.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Creates or updates a workspace resource.
 ```powershell
-{{ Add code here }}
+$object = New-AzQuantumProviderObject -Id "ionq" -Sku "pay-as-you-go-cred"
+New-AzQuantumWorkspace -Name azps-qw -ResourceGroupName azps_test_group_quantum -Location eastus -IdentityType 'SystemAssigned' -Provider $object -StorageAccount "/subscriptions/{subId}/resourceGroups/azps_test_group_quantum/providers/Microsoft.Storage/storageAccounts/azpssa"
 ```
 
 ```output
-{{ Add output here }}
+Location Name    ResourceGroupName
+-------- ----    -----------------
+eastus   azps-qw azps_test_group_quantum
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Creates or updates a workspace resource.
 
 ## PARAMETERS
 
