@@ -1,13 +1,22 @@
-### Example 1: Remove a image template
+### Example 1: {{ Add title here }}
 ```powershell
-Remove-AzImageBuilderTemplate -Name bez-test-img-temp13 -ResourceGroupName bez-rg
+{{ Add code here }}
 ```
 
-This command removes a image template.
-
-### Example 2: Remove a image template
-```powershell
-Get-AzImageBuilderTemplate -Name bez-test-img-temp13 -ResourceGroupName bez-rg | Remove-AzImageBuilderTemplate
+```output
+{{ Add output here }}
 ```
 
-This command removes a image template.
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
+

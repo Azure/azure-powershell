@@ -1,19 +1,22 @@
-### Example 1: Start an image template
+### Example 1: {{ Add title here }}
 ```powershell
-Start-AzImageBuilderTemplate -Name bez-test-img-temp12 -ResourceGroupName bez-rg
+{{ Add code here }}
 ```
 
 ```output
-Id     Name            PSJobTypeName   State         HasMoreData     Location             Command
---     ----            -------------   -----         -----------     --------             -------
-1      Start-AzImageB…                 Running       True            localhost            Start-AzImageBuilderTemp…
+{{ Add output here }}
 ```
 
-This command starts an image template.
+{{ Add description here }}
 
-### Example 2: Start an image template
+### Example 2: {{ Add title here }}
 ```powershell
-Get-AzImageBuilderTemplate -Name bez-test-img-temp12 -ResourceGroupName bez-rg | Start-AzImageBuilderTemplate
+{{ Add code here }}
 ```
 
-This command starts an image template.
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
+

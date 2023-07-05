@@ -35,31 +35,27 @@ Get the specified run output for the specified image template resource
 
 ## EXAMPLES
 
-### Example 1: List all run results under a template
+### Example 1: {{ Add title here }}
 ```powershell
-Get-AzImageBuilderTemplateRunOutput -ImageTemplateName test-img-temp -ResourceGroupName bez-rg
+{{ Add code here }}
 ```
 
 ```output
-Name    SystemDataCreatedAt SystemDataCreatedBy SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType ResourceGroupName
-----    ------------------- ------------------- ----------------------- ------------------------ ------------------------ ---------------------------- -----------------
-testrunoutput                                                                                                                                          bez-rg
+{{ Add output here }}
 ```
 
-This command lists all run results under a template.
+{{ Add description here }}
 
-### Example 2: Get a run result under a template
+### Example 2: {{ Add title here }}
 ```powershell
-Get-AzImageBuilderTemplateRunOutput -ImageTemplateName test-img-temp -ResourceGroupName bez-rg -Name runout-template-name-u7gjq
+{{ Add code here }}
 ```
 
 ```output
-Name    SystemDataCreatedAt SystemDataCreatedBy SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType ResourceGroupName
-----    ------------------- ------------------- ----------------------- ------------------------ ------------------------ ---------------------------- -----------------
-runout-template-name-u7gjq  
+{{ Add output here }}
 ```
 
-This command gets a run result under a template.
+{{ Add description here }}
 
 ## PARAMETERS
 

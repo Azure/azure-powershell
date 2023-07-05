@@ -179,7 +179,7 @@ param(
     # Omit or specify 0 to use the default (4 hours).
     ${BuildTimeoutInMinute},
 
-    [Parameter()]
+    [Parameter(Mandatory)]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.IImageTemplateCustomizer[]]
@@ -187,7 +187,7 @@ param(
     # To construct, see NOTES section for CUSTOMIZE properties and create a hash table.
     ${Customize},
 
-    [Parameter()]
+    [Parameter(Mandatory)]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.IImageTemplateDistributor[]]
@@ -195,15 +195,7 @@ param(
     # To construct, see NOTES section for DISTRIBUTE properties and create a hash table.
     ${Distribute},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Support.ResourceIdentityType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Support.ResourceIdentityType]
-    # The type of identity used for the image template.
-    # The type 'None' will remove any identities from the image template.
-    ${IdentityType},
-
-    [Parameter()]
+    [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.IImageTemplateSource]
     # Specifies the properties used to describe the source image.
@@ -227,7 +219,7 @@ param(
     # Resource tags.
     ${Tag},
 
-    [Parameter()]
+    [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.IUserAssignedIdentities]))]
     [System.Collections.Hashtable]

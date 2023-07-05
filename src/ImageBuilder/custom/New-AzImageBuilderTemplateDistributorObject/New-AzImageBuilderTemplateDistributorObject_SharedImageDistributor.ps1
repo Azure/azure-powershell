@@ -46,9 +46,9 @@ function New-AzImageBuilderTemplateDistributorObject_SharedImageDistributor {
         [Parameter(HelpMessage="The target regions where the distributed Image Version is going to be replicated to. This object supersedes replicationRegions and can be specified only if replicationRegions is not specified.")]
         [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.ITargetRegion[]]
         $TargetRegion,
-        [Parameter(HelpMessage="Version numbering scheme to be used.")]
-        [string]
-        $VersioningScheme,
+        [Parameter(HelpMessage="Describes how to generate new x.y.z version number for distribution.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.IDistributeVersioner]
+        $Versioning,
         [Parameter(HelpMessage="Tags that will be applied to the artifact once it has been created/updated by the distributor.")]
         [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.IImageTemplateDistributorArtifactTags]
         $ArtifactTag,
@@ -82,8 +82,8 @@ function New-AzImageBuilderTemplateDistributorObject_SharedImageDistributor {
         if ($PSBoundParameters.ContainsKey('TargetRegion')) {
             $Object.TargetRegion = $TargetRegion
         }
-        if ($PSBoundParameters.ContainsKey('VersioningScheme')) {
-            $Object.VersioningScheme = $VersioningScheme
+        if ($PSBoundParameters.ContainsKey('Versioning')) {
+            $Object.Versioning = $Versioning
         }
         if ($PSBoundParameters.ContainsKey('ArtifactTag')) {
             $Object.ArtifactTag = $ArtifactTag

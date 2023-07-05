@@ -40,50 +40,27 @@ Get information about a virtual machine image template
 
 ## EXAMPLES
 
-### Example 1: List all template under a subscription
+### Example 1: {{ Add title here }}
 ```powershell
-Get-AzImageBuilderTemplate
+{{ Add code here }}
 ```
 
 ```output
-Location Name                SystemDataCreatedAt SystemDataCreatedBy SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType
--------- ----                ------------------- ------------------- ----------------------- ------------------------ ------------------------ ----------------------------
-eastus   bez-test-img-temp
-eastus   bez-test-img-temp12
-eastus   bez-test-img-temp13
-eastus   test-img-temp
+{{ Add output here }}
 ```
 
-This command lists all template under a subscription.
+{{ Add description here }}
 
-### Example 2: List all template under a resource group
+### Example 2: {{ Add title here }}
 ```powershell
-Get-AzImageBuilderTemplate -ResourceGroupName bez-rg
+{{ Add code here }}
 ```
 
 ```output
-Location Name                SystemDataCreatedAt SystemDataCreatedBy SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType
--------- ----                ------------------- ------------------- ----------------------- ------------------------ ------------------------ ----------------------------
-eastus   bez-test-img-temp
-eastus   bez-test-img-temp12
-eastus   bez-test-img-temp13
-eastus   test-img-temp
+{{ Add output here }}
 ```
 
-This command lists all template under a resource group.
-
-### Example 3: Get a template under a resource group
-```powershell
-Get-AzImageBuilderTemplate -Name test-img-temp -ResourceGroupName bez-rg
-```
-
-```output
-Location Name          SystemDataCreatedAt SystemDataCreatedBy SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy
--------- ----          ------------------- ------------------- ----------------------- ------------------------ ------------------ 
-eastus   test-img-temp
-```
-
-This command gets a template under a resource group.
+{{ Add description here }}
 
 ## PARAMETERS
 

@@ -14,15 +14,15 @@ Create or update a virtual machine image template
 
 ### CreateExpanded (Default)
 ```
-New-AzImageBuilderTemplate -Name <String> -ResourceGroupName <String> -Location <String>
- [-SubscriptionId <String>] [-BuildTimeoutInMinute <Int32>] [-Customize <IImageTemplateCustomizer[]>]
- [-Distribute <IImageTemplateDistributor[]>] [-IdentityType <ResourceIdentityType>]
- [-Source <IImageTemplateSource>] [-StagingResourceGroup <String>] [-Tag <Hashtable>]
- [-UserAssignedIdentity <Hashtable>] [-ValidateContinueDistributeOnFailure] [-ValidateSourceValidationOnly]
- [-Validator <IImageTemplateInVMValidator[]>] [-VMBootState <VMBootOptimizationState>]
- [-VMProfileOsdiskSizeGb <Int32>] [-VMProfileUserAssignedIdentity <String[]>] [-VMProfileVmsize <String>]
- [-VnetConfigProxyVMSize <String>] [-VnetConfigSubnetId <String>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzImageBuilderTemplate -Name <String> -ResourceGroupName <String> -Customize <IImageTemplateCustomizer[]>
+ -Distribute <IImageTemplateDistributor[]> -Location <String> -Source <IImageTemplateSource>
+ -UserAssignedIdentity <Hashtable> [-SubscriptionId <String>] [-BuildTimeoutInMinute <Int32>]
+ [-StagingResourceGroup <String>] [-Tag <Hashtable>] [-ValidateContinueDistributeOnFailure]
+ [-ValidateSourceValidationOnly] [-Validator <IImageTemplateInVMValidator[]>]
+ [-VMBootState <VMBootOptimizationState>] [-VMProfileOsdiskSizeGb <Int32>]
+ [-VMProfileUserAssignedIdentity <String[]>] [-VMProfileVmsize <String>] [-VnetConfigProxyVMSize <String>]
+ [-VnetConfigSubnetId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
@@ -212,7 +212,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.IImageT
 Parameter Sets: CreateExpanded
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -242,22 +242,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.IImageT
 Parameter Sets: CreateExpanded
 Aliases:
 
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -IdentityType
-
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Support.ResourceIdentityType
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -362,7 +347,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.IImageT
 Parameter Sets: CreateExpanded
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -423,7 +408,7 @@ Type: System.Collections.Hashtable
 Parameter Sets: CreateExpanded
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

@@ -65,7 +65,7 @@ directive:
   # 1. Remove the unexpanded parameter set
   # 2. For New-* cmdlets, ViaIdentity is not required, so CreateViaIdentityExpanded is removed as well
   - where:
-      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$
+      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
     remove: true
   # Remove the set-* cmdlet
   - where:
@@ -91,12 +91,6 @@ directive:
       subject: (.*)Image(.*)
     set:
       subject: $2
-
-  # Update/Upgrade of image template is not supported
-  - where:
-      verb: Update
-      subject: Template
-    remove: true
 
   # Rename ImageTemplateName -> Name and keep ImageTemplateName as alias in *-AzImageBuildTemplate
   - where:
@@ -126,6 +120,7 @@ directive:
     - ImageTemplateDistributor
     - ImageTemplateSource
     - ImageTemplateInVMValidator
+    - DistributeVersioner
   
   # Generate models and combine them as 1 cmdlet
   # - model-cmdlet:
@@ -155,4 +150,8 @@ directive:
   #   - ImageTemplateInVMValidator
   #   - ImageTemplateShellValidator
   #   - ImageTemplatePowerShellValidator
+  #   ########## AzImageBuilderTemplateDistributorVersioning ###########
+  #   - DistributeVersioner
+  #   - DistributeVersionerLatest
+  #   - DistributeVersionerSource
 ```

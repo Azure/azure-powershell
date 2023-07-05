@@ -29,7 +29,7 @@ New-AzImageBuilderTemplateDistributorObject -ImageId <String> -Location <String>
 New-AzImageBuilderTemplateDistributorObject -GalleryImageId <String> -RunOutputName <String>
  -SharedImageDistributor [-ArtifactTag <IImageTemplateDistributorArtifactTags>] [-ExcludeFromLatest <Boolean>]
  [-ReplicationRegion <String[]>] [-StorageAccountType <SharedImageStorageAccountType>]
- [-TargetRegion <ITargetRegion[]>] [-VersioningScheme <String>] [<CommonParameters>]
+ [-TargetRegion <ITargetRegion[]>] [-Versioning <IDistributeVersioner>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -268,11 +268,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -VersioningScheme
-Version numbering scheme to be used.
+### -Versioning
+Describes how to generate new x.y.z version number for distribution.
+To construct, see NOTES section for VERSIONING properties and create a hash table.
 
 ```yaml
-Type: System.String
+Type: Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.IDistributeVersioner
 Parameter Sets: SharedImageDistributor
 Aliases:
 
@@ -327,6 +328,9 @@ To create the parameters described below, construct a hash table containing the 
   - `Name <String>`: The name of the region.
   - `[ReplicaCount <Int32?>]`: The number of replicas of the Image Version to be created in this region. Omit to use the default (1).
   - `[StorageAccountType <SharedImageStorageAccountType?>]`: Specifies the storage account type to be used to store the image in this region. Omit to use the default (Standard_LRS).
+
+`VERSIONING <IDistributeVersioner>`: Describes how to generate new x.y.z version number for distribution.
+  - `Scheme <String>`: Version numbering scheme to be used.
 
 ## RELATED LINKS
 

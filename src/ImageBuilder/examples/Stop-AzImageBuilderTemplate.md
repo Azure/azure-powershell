@@ -1,13 +1,22 @@
-### Example 1: Stop image template creation
+### Example 1: {{ Add title here }}
 ```powershell
-Stop-AzImageBuilderTemplate -Name bez-test-img-temp12 -ResourceGroupName bez-rg
+{{ Add code here }}
 ```
 
-This command stops image template creation.
-
-### Example 2: Stop image template creation
-```powershell
-Get-AzImageBuilderTemplate -Name bez-test-img-temp12 -ResourceGroupName bez-rg | Stop-AzImageBuilderTemplate
+```output
+{{ Add output here }}
 ```
 
-This command stops image template creation.
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
+
