@@ -17,7 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ContainerRegistry.SDK\ContainerRegistry.Sdk.csproj" />
+    <ProjectReference Include="..\ContainerRegistry.Sdk\ContainerRegistry.Sdk.csproj" />
   </ItemGroup>
   
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.Post.props" />

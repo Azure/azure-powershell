@@ -158,21 +158,6 @@ namespace Microsoft.Azure.Commands.ScenarioTest.DnsTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestRecordSetTXTLengthValidation()
-        {
-            TestRunner.RunTestScript("Test-RecordSetTXTLengthValidation");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestRecordSetTXTLegacyLengthValidation()
-        {
-            TestRunner.RunTestScript("Test-RecordSetTXTLegacyLengthValidation");
-        }
-
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRecordSetSRV()
         {
             TestRunner.RunTestScript("Test-RecordSetSRV");

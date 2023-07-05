@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Commands.Ssh
             ValidateParameters();
             SetResourceType();
 
-            ProgressRecord record = new ProgressRecord(0, "Export Azure SSH Config", "Initialize Setup");
+            record = new ProgressRecord(0, "Export Azure SSH Config", "Initialize Setup");
             UpdateProgressBar(record, "Preparing to create SSH Config", 0);
 
             if (!IsArc() && !ParameterSetName.Equals(IpAddressParameterSet))
@@ -77,8 +77,9 @@ namespace Microsoft.Azure.Commands.Ssh
             }
             if (IsArc())
             {
+                CheckIfAgentIsUpToDate();
                 proxyPath = GetProxyPath();
-                UpdateProgressBar(record, $"Downloaded proxy to {proxyPath}", 25);
+                UpdateProgressBar(record, $"Retrieved path to Arc Proxy", 25);
                 EndpointAccessResource relayInfo = GetRelayInformation();
                 UpdateProgressBar(record, "Retrieved relay information", 50);
                 CreateRelayInfoFile(relayInfo);

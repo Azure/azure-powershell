@@ -2621,5 +2621,27 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
                 return ResourceManager.GetString("CantRemoveAndRetainRPsSimultaneously", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   Looks up a localized string similar to VaultLocation can't be empty for fetching jobs from secondary region.
+        /// </summary>
+        public static string VaultLocationRequired
+        {
+            get
+            {
+                return ResourceManager.GetString("VaultLocationRequired", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to VaultLocation can't be empty for cross region restore.
+        /// </summary>
+        public static string VaultLocationRequiredForCRR
+        {
+            get
+            {
+                return ResourceManager.GetString("VaultLocationRequiredForCRR", resourceCulture);
+            }
+        }
     }
 }

@@ -46,6 +46,12 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             return new HttpClientOperations<T>(_client, _cachedItems);
         }
 
+        public async Task<string> ReadAsStringAsync(Uri requestUri)
+        {
+            var response = await _client.GetAsync(requestUri).ConfigureAwait(false);
+            return await response.EnsureSuccessStatusCode().Content.ReadAsStringAsync().ConfigureAwait(false);
+        }
+
         class HttpClientOperations<T> : IHttpOperations<T> where T : class, ICacheable
         {
             HttpClient _client;
