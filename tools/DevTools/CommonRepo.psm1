@@ -40,7 +40,11 @@ function Connect-CommonRepo {
       if ($LASTEXITCODE -ne 0) {
         throw "Failed to add $csproj to Authentication.csproj"
       }
+    }
 
+    dotnet add ./AssemblyLoading/AssemblyLoading.csproj reference "$CommonRepoPath/src/Common/Common.csproj"
+    if ($LASTEXITCODE -ne 0) {
+      throw "Failed to add Common.csproj to AssemblyLoading.csproj"
     }
   }
   finally {
@@ -78,6 +82,7 @@ function Disconnect-CommonRepo {
   Write-Host  "Please run the following commands to undo Connect-CommonRepo. Double check those files do not have wanted changes.
   git checkout -- ./src/Accounts/Accounts.sln
   git checkout -- ./src/Accounts/Accounts/Accounts.csproj
+  git checkout -- ./src/Accounts/AssemblyLoading/AssemblyLoading.csproj
   git checkout -- ./src/Accounts/Authentication/Authentication.csproj
   git checkout -- ./tools/Common.Netcore.Dependencies.targets
   "
