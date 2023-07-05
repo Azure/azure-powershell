@@ -819,5 +819,9 @@
   {
     "module": "Qumulo",
     "alias": "Qumulo"
+  },
+  {
+    "module": "StorageCache",
+    "alias": "StorageCache"
   }
 ]
