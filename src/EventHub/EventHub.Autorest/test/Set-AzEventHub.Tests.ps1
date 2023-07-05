@@ -42,7 +42,7 @@ Describe 'Set-AzEventHub' {
         $eventhub.StorageAccountResourceId | Should -Be $eventhub.StorageAccountResourceId
 
         # Create EventHub with MSI Capture Enabled
-        $eventhub = New-AzEventHub -Name $env.eventHub5 -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespaceV1 
+        $eventhub = New-AzEventHub -Name $env.eventHub5 -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespaceV1
         $eventhub = Set-AzEventHub -Name $env.eventHub5 -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespaceV1 -ArchiveNameFormat "{Namespace}/{EventHub}/{PartitionId}/{Year}/{Month}/{Day}/{Hour}/{Minute}/{Second}" -BlobContainer $env.blobContainer -CaptureEnabled -DestinationName EventHubArchive.AzureBlockBlob -Encoding Avro -IntervalInSeconds 600 -SizeLimitInBytes 11000000 -SkipEmptyArchive -StorageAccountResourceId $env.storageAccountId -IdentityType UserAssigned -UserAssignedIdentityId $env.msi2
         $eventhub.Name | Should -Be $env.eventHub5
         $eventhub.ResourceGroupName | Should -Be $env.resourceGroup
