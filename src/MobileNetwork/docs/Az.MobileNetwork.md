@@ -124,6 +124,9 @@ Deletes the specified mobile network.
 ### [Remove-AzMobileNetworkAttachedDataNetwork](Remove-AzMobileNetworkAttachedDataNetwork.md)
 Deletes the specified attached data network.
 
+### [Remove-AzMobileNetworkBulkSimDelete](Remove-AzMobileNetworkBulkSimDelete.md)
+Bulk delete SIMs from a SIM group.
+
 ### [Remove-AzMobileNetworkDataNetwork](Remove-AzMobileNetworkDataNetwork.md)
 Deletes the specified data network.
 
@@ -161,6 +164,13 @@ Updates mobile network tags.
 
 ### [Update-AzMobileNetworkAttachedDataNetwork](Update-AzMobileNetworkAttachedDataNetwork.md)
 Updates an attached data network.
+
+### [Update-AzMobileNetworkBulkSimUpload](Update-AzMobileNetworkBulkSimUpload.md)
+Bulk upload SIMs to a SIM group.
+
+### [Update-AzMobileNetworkBulkSimUploadEncrypted](Update-AzMobileNetworkBulkSimUploadEncrypted.md)
+Bulk upload SIMs in encrypted form to a SIM group.
+The SIM credentials must be encrypted.
 
 ### [Update-AzMobileNetworkDataNetwork](Update-AzMobileNetworkDataNetwork.md)
 Updates data network.
