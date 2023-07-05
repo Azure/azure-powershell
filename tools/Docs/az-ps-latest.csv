@@ -18,7 +18,7 @@ pac16,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-relea
 pac17,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.BillingBenefits.0.1.0.nupkg;sourceType=sa]Az.BillingBenefits,0.1.0
 pac18,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Blueprint.0.4.2.nupkg;sourceType=sa]Az.Blueprint,0.4.2
 pac19,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.BotService.0.5.0.nupkg;sourceType=sa]Az.BotService,0.5.0
-pac20,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Cdn.3.0.0.nupkg;sourceType=sa]Az.Cdn,3.0.0
+pac20,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Cdn.3.1.0.nupkg;sourceType=sa]Az.Cdn,3.1.0
 pac21,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.ChangeAnalysis.0.1.0.nupkg;sourceType=sa]Az.ChangeAnalysis,0.1.0
 pac22,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.CloudService.1.2.0.nupkg;sourceType=sa]Az.CloudService,1.2.0
 pac23,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.CognitiveServices.1.13.1.nupkg;sourceType=sa]Az.CognitiveServices,1.13.1

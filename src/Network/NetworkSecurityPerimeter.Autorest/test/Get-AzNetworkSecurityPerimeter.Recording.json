@@ -81,7 +81,7 @@
       "isContentBase64": false
     }
   },
-  "Get-AzNetworkSecurityPerimeter+[NoContext]+List+$GET+https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/providers/Microsoft.Network/networkSecurityPerimeters?api-version=2021-02-01-preview+1": {
+  "Get-AzNetworkSecurityPerimeter+[NoContext]+List1+$GET+https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/providers/Microsoft.Network/networkSecurityPerimeters?api-version=2021-02-01-preview+1": {
     "Request": {
       "Method": "GET",
       "RequestUri": "https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/providers/Microsoft.Network/networkSecurityPerimeters?api-version=2021-02-01-preview",
@@ -122,7 +122,7 @@
       "isContentBase64": false
     }
   },
-  "Get-AzNetworkSecurityPerimeter+[NoContext]+List+$GET+https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/providers/Microsoft.Network/networkSecurityPerimeters?api-version=2021-02-01-preview\u0026%24skiptoken=3ZFBa4MwHMW%2fSw49NUadbFYoIwyhBbWl0cOOafzrgphIEm3X0u%2b%2bwGDfYT29d3jw3o93RwqurpBqsCi7o5yyumFx3tAjytCXc5PNCBm54j2MoFzAb7OBQOiR2PlshZGTk1pZ8pImr%2bIcdjjhHcfJGwBOgSc4EmmSbEQq0nZDJqMX2YKxpJTCaKs7F1TgLtoMRP0qAzEb6b6PYOQIzmff%2bSTx4o3v2cZhHOEwxmGEJwOLhMuqk8a6vWrhuo3C1eSHMnkD79EafeRVfaJFw54FqDqc6t0f1TNcVNKCfrI9ZYem3v0TIPRYI25G2vcGeu6grfUAyo%2bnpxI9fgA%3d+2": {
+  "Get-AzNetworkSecurityPerimeter+[NoContext]+List1+$GET+https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/providers/Microsoft.Network/networkSecurityPerimeters?api-version=2021-02-01-preview\u0026%24skiptoken=3ZFBa4MwHMW%2fSw49NUadbFYoIwyhBbWl0cOOafzrgphIEm3X0u%2b%2bwGDfYT29d3jw3o93RwqurpBqsCi7o5yyumFx3tAjytCXc5PNCBm54j2MoFzAb7OBQOiR2PlshZGTk1pZ8pImr%2bIcdjjhHcfJGwBOgSc4EmmSbEQq0nZDJqMX2YKxpJTCaKs7F1TgLtoMRP0qAzEb6b6PYOQIzmff%2bSTx4o3v2cZhHOEwxmGEJwOLhMuqk8a6vWrhuo3C1eSHMnkD79EafeRVfaJFw54FqDqc6t0f1TNcVNKCfrI9ZYem3v0TIPRYI25G2vcGeu6grfUAyo%2bnpxI9fgA%3d+2": {
     "Request": {
       "Method": "GET",
       "RequestUri": "https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/providers/Microsoft.Network/networkSecurityPerimeters?api-version=2021-02-01-preview\u0026%24skiptoken=3ZFBa4MwHMW%2fSw49NUadbFYoIwyhBbWl0cOOafzrgphIEm3X0u%2b%2bwGDfYT29d3jw3o93RwqurpBqsCi7o5yyumFx3tAjytCXc5PNCBm54j2MoFzAb7OBQOiR2PlshZGTk1pZ8pImr%2bIcdjjhHcfJGwBOgSc4EmmSbEQq0nZDJqMX2YKxpJTCaKs7F1TgLtoMRP0qAzEb6b6PYOQIzmff%2bSTx4o3v2cZhHOEwxmGEJwOLhMuqk8a6vWrhuo3C1eSHMnkD79EafeRVfaJFw54FqDqc6t0f1TNcVNKCfrI9ZYem3v0TIPRYI25G2vcGeu6grfUAyo%2bnpxI9fgA%3d",
@@ -163,7 +163,7 @@
       "isContentBase64": false
     }
   },
-  "Get-AzNetworkSecurityPerimeter+[NoContext]+List+$GET+https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/providers/Microsoft.Network/networkSecurityPerimeters?api-version=2021-02-01-preview\u0026%24skiptoken=3ZHRaoMwFIbfJRe9aow62axQRhhCC2pLoxe7TOPRBTGRJNqupe%2b%2bwGDvsF6dA%2beH%2f%2fs4d6Tg6gqpBouyO8opqxsW5w09ogx9OTfZjJCRK97DCMoF%2fDYbCIQeiZ3PVhg5OamVJS9p8irOYYcT3nGcvAHgFHiCI5EmyUakIm03ZDJ6kS0YS0opjLa6c0EF7qLNQNTvZCBmI933EYwcwfnsO58kXvzie7ZxGEc4jHEY4cnAIuGy6qSxbq9auPrravKgTN5gG4VojT7yqj7RomHPIlQdTvXuz%2boZXlTSgn6yPWWHpt79EyH0WCNuRtr3BnruoK31AMrD01OJHj8%3d+3": {
+  "Get-AzNetworkSecurityPerimeter+[NoContext]+List1+$GET+https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/providers/Microsoft.Network/networkSecurityPerimeters?api-version=2021-02-01-preview\u0026%24skiptoken=3ZHRaoMwFIbfJRe9aow62axQRhhCC2pLoxe7TOPRBTGRJNqupe%2b%2bwGDvsF6dA%2beH%2f%2fs4d6Tg6gqpBouyO8opqxsW5w09ogx9OTfZjJCRK97DCMoF%2fDYbCIQeiZ3PVhg5OamVJS9p8irOYYcT3nGcvAHgFHiCI5EmyUakIm03ZDJ6kS0YS0opjLa6c0EF7qLNQNTvZCBmI933EYwcwfnsO58kXvzie7ZxGEc4jHEY4cnAIuGy6qSxbq9auPrravKgTN5gG4VojT7yqj7RomHPIlQdTvXuz%2boZXlTSgn6yPWWHpt79EyH0WCNuRtr3BnruoK31AMrD01OJHj8%3d+3": {
     "Request": {
       "Method": "GET",
       "RequestUri": "https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/providers/Microsoft.Network/networkSecurityPerimeters?api-version=2021-02-01-preview\u0026%24skiptoken=3ZHRaoMwFIbfJRe9aow62axQRhhCC2pLoxe7TOPRBTGRJNqupe%2b%2bwGDvsF6dA%2beH%2f%2fs4d6Tg6gqpBouyO8opqxsW5w09ogx9OTfZjJCRK97DCMoF%2fDYbCIQeiZ3PVhg5OamVJS9p8irOYYcT3nGcvAHgFHiCI5EmyUakIm03ZDJ6kS0YS0opjLa6c0EF7qLNQNTvZCBmI933EYwcwfnsO58kXvzie7ZxGEc4jHEY4cnAIuGy6qSxbq9auPrravKgTN5gG4VojT7yqj7RomHPIlQdTvXuz%2boZXlTSgn6yPWWHpt79EyH0WCNuRtr3BnruoK31AMrD01OJHj8%3d",
@@ -204,7 +204,7 @@
       "isContentBase64": false
     }
   },
-  "Get-AzNetworkSecurityPerimeter+[NoContext]+List+$GET+https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/providers/Microsoft.Network/networkSecurityPerimeters?api-version=2021-02-01-preview\u0026%24skiptoken=3ZFBa4MwHMW%2fSw49NSbasFlBRhjCCtqVRg89pvGvC2IiSWy7ln73CfsU2%2bm9w4P3e7wHMnALpTaDR9kDFVzUjUiKhh9Qhr5CmHxGyCiN7GEEEyJ5nx1Eyo7Ez2evnJ6CtsaTTcpe1Jl2mMlOYvYKgFOQDMcqZWyrUpW2WzI5e9EtOE8qrZz1tgvRHsLVuoGYXxWgZqfD9wGcHiEs2Tc5aXxZzNKTJzSJMU0wjfHk4KLhuuq082FnWrjlG7qaFlCh75DHFK3Re7Gvj7xsxH8ZVPGSn8SOi8%2bm%2fvgjD6HnGkk38r530MsAbW0HMAs8P1bo%2bQM%3d+4": {
+  "Get-AzNetworkSecurityPerimeter+[NoContext]+List1+$GET+https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/providers/Microsoft.Network/networkSecurityPerimeters?api-version=2021-02-01-preview\u0026%24skiptoken=3ZFBa4MwHMW%2fSw49NSbasFlBRhjCCtqVRg89pvGvC2IiSWy7ln73CfsU2%2bm9w4P3e7wHMnALpTaDR9kDFVzUjUiKhh9Qhr5CmHxGyCiN7GEEEyJ5nx1Eyo7Ez2evnJ6CtsaTTcpe1Jl2mMlOYvYKgFOQDMcqZWyrUpW2WzI5e9EtOE8qrZz1tgvRHsLVuoGYXxWgZqfD9wGcHiEs2Tc5aXxZzNKTJzSJMU0wjfHk4KLhuuq082FnWrjlG7qaFlCh75DHFK3Re7Gvj7xsxH8ZVPGSn8SOi8%2bm%2fvgjD6HnGkk38r530MsAbW0HMAs8P1bo%2bQM%3d+4": {
     "Request": {
       "Method": "GET",
       "RequestUri": "https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/providers/Microsoft.Network/networkSecurityPerimeters?api-version=2021-02-01-preview\u0026%24skiptoken=3ZFBa4MwHMW%2fSw49NSbasFlBRhjCCtqVRg89pvGvC2IiSWy7ln73CfsU2%2bm9w4P3e7wHMnALpTaDR9kDFVzUjUiKhh9Qhr5CmHxGyCiN7GEEEyJ5nx1Eyo7Ez2evnJ6CtsaTTcpe1Jl2mMlOYvYKgFOQDMcqZWyrUpW2WzI5e9EtOE8qrZz1tgvRHsLVuoGYXxWgZqfD9wGcHiEs2Tc5aXxZzNKTJzSJMU0wjfHk4KLhuuq082FnWrjlG7qaFlCh75DHFK3Re7Gvj7xsxH8ZVPGSn8SOi8%2bm%2fvgjD6HnGkk38r530MsAbW0HMAs8P1bo%2bQM%3d",
@@ -245,7 +245,7 @@
       "isContentBase64": false
     }
   },
-  "Get-AzNetworkSecurityPerimeter+[NoContext]+List+$GET+https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/providers/Microsoft.Network/networkSecurityPerimeters?api-version=2021-02-01-preview\u0026%24skiptoken=1Y9BasMwFETvokVWkSW7onUMpmgRaCBuQ20vulTkb1cYS%2bJLdtKE3L2GnqKrmcXAe3MnFq7xaOwYSHEne1k3bZ3tW3kiBfmO0YeCsUlZNcAENibqNiMk2k0szOeg0fhonA3sKRfP%2bsx7KlSvqHgBoDkoQVOdC7HTuc67HfPoFtMBBlYZjS64PibvEC8OR2b%2fsgY9o4k%2fJ0AzQVy3r8obuqxl5ZQZz1LKM8pT6hEWA5dNbzDEg%2b3gWgq%2b8atobW5QppxsSSWP8qs%2byPqjbd7%2bySHy2BKFkxwGhEFF6Bo3gl3l5WdFHr8%3d+5": {
+  "Get-AzNetworkSecurityPerimeter+[NoContext]+List1+$GET+https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/providers/Microsoft.Network/networkSecurityPerimeters?api-version=2021-02-01-preview\u0026%24skiptoken=1Y9BasMwFETvokVWkSW7onUMpmgRaCBuQ20vulTkb1cYS%2bJLdtKE3L2GnqKrmcXAe3MnFq7xaOwYSHEne1k3bZ3tW3kiBfmO0YeCsUlZNcAENibqNiMk2k0szOeg0fhonA3sKRfP%2bsx7KlSvqHgBoDkoQVOdC7HTuc67HfPoFtMBBlYZjS64PibvEC8OR2b%2fsgY9o4k%2fJ0AzQVy3r8obuqxl5ZQZz1LKM8pT6hEWA5dNbzDEg%2b3gWgq%2b8atobW5QppxsSSWP8qs%2byPqjbd7%2bySHy2BKFkxwGhEFF6Bo3gl3l5WdFHr8%3d+5": {
     "Request": {
       "Method": "GET",
       "RequestUri": "https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/providers/Microsoft.Network/networkSecurityPerimeters?api-version=2021-02-01-preview\u0026%24skiptoken=1Y9BasMwFETvokVWkSW7onUMpmgRaCBuQ20vulTkb1cYS%2bJLdtKE3L2GnqKrmcXAe3MnFq7xaOwYSHEne1k3bZ3tW3kiBfmO0YeCsUlZNcAENibqNiMk2k0szOeg0fhonA3sKRfP%2bsx7KlSvqHgBoDkoQVOdC7HTuc67HfPoFtMBBlYZjS64PibvEC8OR2b%2fsgY9o4k%2fJ0AzQVy3r8obuqxl5ZQZz1LKM8pT6hEWA5dNbzDEg%2b3gWgq%2b8atobW5QppxsSSWP8qs%2byPqjbd7%2bySHy2BKFkxwGhEFF6Bo3gl3l5WdFHr8%3d",
@@ -286,7 +286,7 @@
       "isContentBase64": false
     }
   },
-  "Get-AzNetworkSecurityPerimeter+[NoContext]+List+$GET+https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/providers/Microsoft.Network/networkSecurityPerimeters?api-version=2021-02-01-preview\u0026%24skiptoken=1Y9BboMwFETv4kVWMTbUbQkSqryI1EihjUpYZOmYD7UQtvVtSJoody9ST9HVzGKk9%2bZOLFzj3tghkOJOtrI%2bNnW2beSBFOQ7Rh8KxkZlVQ8j2Jio24SQaDeyMJ2DRuOjcTawp1y86DPvqFCdouIVgOagBE11LsRG5zpvN8yjm00LGFhlNLrguph8QLw4HJj9yxr0hCb%2bHADNCHHZvilv6LyUhVNmPEspzyhPqUeYDVxWncEQd7aFa%2fnMV34Rrc0NypSTNankXp7qnaw%2fm%2bP7PzlEHmuicJR9j9CrCO3RDWAXeflVkccv+6": {
+  "Get-AzNetworkSecurityPerimeter+[NoContext]+List1+$GET+https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/providers/Microsoft.Network/networkSecurityPerimeters?api-version=2021-02-01-preview\u0026%24skiptoken=1Y9BboMwFETv4kVWMTbUbQkSqryI1EihjUpYZOmYD7UQtvVtSJoody9ST9HVzGKk9%2bZOLFzj3tghkOJOtrI%2bNnW2beSBFOQ7Rh8KxkZlVQ8j2Jio24SQaDeyMJ2DRuOjcTawp1y86DPvqFCdouIVgOagBE11LsRG5zpvN8yjm00LGFhlNLrguph8QLw4HJj9yxr0hCb%2bHADNCHHZvilv6LyUhVNmPEspzyhPqUeYDVxWncEQd7aFa%2fnMV34Rrc0NypSTNankXp7qnaw%2fm%2bP7PzlEHmuicJR9j9CrCO3RDWAXeflVkccv+6": {
     "Request": {
       "Method": "GET",
       "RequestUri": "https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/providers/Microsoft.Network/networkSecurityPerimeters?api-version=2021-02-01-preview\u0026%24skiptoken=1Y9BboMwFETv4kVWMTbUbQkSqryI1EihjUpYZOmYD7UQtvVtSJoody9ST9HVzGKk9%2bZOLFzj3tghkOJOtrI%2bNnW2beSBFOQ7Rh8KxkZlVQ8j2Jio24SQaDeyMJ2DRuOjcTawp1y86DPvqFCdouIVgOagBE11LsRG5zpvN8yjm00LGFhlNLrguph8QLw4HJj9yxr0hCb%2bHADNCHHZvilv6LyUhVNmPEspzyhPqUeYDVxWncEQd7aFa%2fnMV34Rrc0NypSTNankXp7qnaw%2fm%2bP7PzlEHmuicJR9j9CrCO3RDWAXeflVkccv",
@@ -327,7 +327,7 @@
       "isContentBase64": false
     }
   },
-  "Get-AzNetworkSecurityPerimeter+[NoContext]+List+$GET+https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/providers/Microsoft.Network/networkSecurityPerimeters?api-version=2021-02-01-preview\u0026%24skiptoken=1Y9BasMwFETvokVWkSW7InUMpmgRaCBuQ%2b0sslTkb1cYS%2bJLdtKE3L2GnqKrmcXAe%2fMgFm7xYOwQSPEgO1k3pzrbneSRFOQ7Rh8KxkZlVQ8j2Jio%2b4SQaDeyMF2CRuOjcTawl1xs9IV3VKhOUfEKQHNQgqY6F2Krc523W%2bbRzaYFDKwyGl1wXUw%2bIF4dDsz%2bZQ16QhN%2fjoBmhLhs35Q3dF7KwikznqWUZ5Sn1CPMBq6rzmCIe9vCrdzwlV9Ea3OHMuVkTSp5kOd6L%2bvPU%2fP%2bTw6R55ooHGXfI%2fQqQtu4AewiL78q8vwF+7": {
+  "Get-AzNetworkSecurityPerimeter+[NoContext]+List1+$GET+https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/providers/Microsoft.Network/networkSecurityPerimeters?api-version=2021-02-01-preview\u0026%24skiptoken=1Y9BasMwFETvokVWkSW7InUMpmgRaCBuQ%2b0sslTkb1cYS%2bJLdtKE3L2GnqKrmcXAe%2fMgFm7xYOwQSPEgO1k3pzrbneSRFOQ7Rh8KxkZlVQ8j2Jio%2b4SQaDeyMF2CRuOjcTawl1xs9IV3VKhOUfEKQHNQgqY6F2Krc523W%2bbRzaYFDKwyGl1wXUw%2bIF4dDsz%2bZQ16QhN%2fjoBmhLhs35Q3dF7KwikznqWUZ5Sn1CPMBq6rzmCIe9vCrdzwlV9Ea3OHMuVkTSp5kOd6L%2bvPU%2fP%2bTw6R55ooHGXfI%2fQqQtu4AewiL78q8vwF+7": {
     "Request": {
       "Method": "GET",
       "RequestUri": "https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/providers/Microsoft.Network/networkSecurityPerimeters?api-version=2021-02-01-preview\u0026%24skiptoken=1Y9BasMwFETvokVWkSW7InUMpmgRaCBuQ%2b0sslTkb1cYS%2bJLdtKE3L2GnqKrmcXAe%2fMgFm7xYOwQSPEgO1k3pzrbneSRFOQ7Rh8KxkZlVQ8j2Jio%2b4SQaDeyMF2CRuOjcTawl1xs9IV3VKhOUfEKQHNQgqY6F2Krc523W%2bbRzaYFDKwyGl1wXUw%2bIF4dDsz%2bZQ16QhN%2fjoBmhLhs35Q3dF7KwikznqWUZ5Sn1CPMBq6rzmCIe9vCrdzwlV9Ea3OHMuVkTSp5kOd6L%2bvPU%2fP%2bTw6R55ooHGXfI%2fQqQtu4AewiL78q8vwF",
@@ -368,7 +368,7 @@
       "isContentBase64": false
     }
   },
-  "Get-AzNetworkSecurityPerimeter+[NoContext]+List+$GET+https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/providers/Microsoft.Network/networkSecurityPerimeters?api-version=2021-02-01-preview\u0026%24skiptoken=1Y9BasMwFETvokVWkSW7onEMpmgRaCBuQ%2b0sslTkb1cYS%2bJLdtKE3L2GnqKrmcXAe%2fMgFm7xYOwQSPEgO1k3pzrbneSRFOQ7Rh8KxkZlVQ8j2Jio%2b4SQaDeyMF2CRuOjcTawl1y86gvvqFCdomIDQHNQgqY6F2Krc523W%2bbRzaYFDKwyGl1wXUw%2bIF4dDsz%2bZQ16QhN%2fjoBmhLhs35Q3dF7KwikznqWUZ5Sn1CPMBq6rzmCIe9vCrdzwlV9Ea3OHMuVkTSp5kOd6L%2bvPU%2fP%2bTw6R55ooHGXfI%2fQqQtu4AewiL78q8vwF+8": {
+  "Get-AzNetworkSecurityPerimeter+[NoContext]+List1+$GET+https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/providers/Microsoft.Network/networkSecurityPerimeters?api-version=2021-02-01-preview\u0026%24skiptoken=1Y9BasMwFETvokVWkSW7onEMpmgRaCBuQ%2b0sslTkb1cYS%2bJLdtKE3L2GnqKrmcXAe%2fMgFm7xYOwQSPEgO1k3pzrbneSRFOQ7Rh8KxkZlVQ8j2Jio%2b4SQaDeyMF2CRuOjcTawl1y86gvvqFCdomIDQHNQgqY6F2Krc523W%2bbRzaYFDKwyGl1wXUw%2bIF4dDsz%2bZQ16QhN%2fjoBmhLhs35Q3dF7KwikznqWUZ5Sn1CPMBq6rzmCIe9vCrdzwlV9Ea3OHMuVkTSp5kOd6L%2bvPU%2fP%2bTw6R55ooHGXfI%2fQqQtu4AewiL78q8vwF+8": {
     "Request": {
       "Method": "GET",
       "RequestUri": "https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/providers/Microsoft.Network/networkSecurityPerimeters?api-version=2021-02-01-preview\u0026%24skiptoken=1Y9BasMwFETvokVWkSW7onEMpmgRaCBuQ%2b0sslTkb1cYS%2bJLdtKE3L2GnqKrmcXAe%2fMgFm7xYOwQSPEgO1k3pzrbneSRFOQ7Rh8KxkZlVQ8j2Jio%2b4SQaDeyMF2CRuOjcTawl1y86gvvqFCdomIDQHNQgqY6F2Krc523W%2bbRzaYFDKwyGl1wXUw%2bIF4dDsz%2bZQ16QhN%2fjoBmhLhs35Q3dF7KwikznqWUZ5Sn1CPMBq6rzmCIe9vCrdzwlV9Ea3OHMuVkTSp5kOd6L%2bvPU%2fP%2bTw6R55ooHGXfI%2fQqQtu4AewiL78q8vwF",
@@ -409,7 +409,7 @@
       "isContentBase64": false
     }
   },
-  "Get-AzNetworkSecurityPerimeter+[NoContext]+List+$GET+https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/providers/Microsoft.Network/networkSecurityPerimeters?api-version=2021-02-01-preview\u0026%24skiptoken=1Y%2bxasMwGITfRUOmyJJd0SoGUzQEGojbUNlDR0X%2b7QpjSUiykybk3WvoU3S6Gw6%2b7%2b7IwjUdjR0jKu9oL2TTymLfihMq0XdKPpaETMqqASawKVO3OUCm3UTifI46GJ%2bMs5E8cfasz7THTPUKsxcAzEExnGvO2E5zzbsd8cEtpoMQSW10cNH1KXuHdHFhJPYvJeg5mPRzgmAmSOv2VXmDl7WsnKqgRY5pgWmOfYDFwGXTmxDTwXZwrTjd%2bFVUmhtUOUVbVIuj%2bJIHIT%2fa5u2fHEKPLVJhEsMQYFAJusaNYFd58Vmjxy8%3d+9": {
+  "Get-AzNetworkSecurityPerimeter+[NoContext]+List1+$GET+https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/providers/Microsoft.Network/networkSecurityPerimeters?api-version=2021-02-01-preview\u0026%24skiptoken=1Y%2bxasMwGITfRUOmyJJd0SoGUzQEGojbUNlDR0X%2b7QpjSUiykybk3WvoU3S6Gw6%2b7%2b7IwjUdjR0jKu9oL2TTymLfihMq0XdKPpaETMqqASawKVO3OUCm3UTifI46GJ%2bMs5E8cfasz7THTPUKsxcAzEExnGvO2E5zzbsd8cEtpoMQSW10cNH1KXuHdHFhJPYvJeg5mPRzgmAmSOv2VXmDl7WsnKqgRY5pgWmOfYDFwGXTmxDTwXZwrTjd%2bFVUmhtUOUVbVIuj%2bJIHIT%2fa5u2fHEKPLVJhEsMQYFAJusaNYFd58Vmjxy8%3d+9": {
     "Request": {
       "Method": "GET",
       "RequestUri": "https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/providers/Microsoft.Network/networkSecurityPerimeters?api-version=2021-02-01-preview\u0026%24skiptoken=1Y%2bxasMwGITfRUOmyJJd0SoGUzQEGojbUNlDR0X%2b7QpjSUiykybk3WvoU3S6Gw6%2b7%2b7IwjUdjR0jKu9oL2TTymLfihMq0XdKPpaETMqqASawKVO3OUCm3UTifI46GJ%2bMs5E8cfasz7THTPUKsxcAzEExnGvO2E5zzbsd8cEtpoMQSW10cNH1KXuHdHFhJPYvJeg5mPRzgmAmSOv2VXmDl7WsnKqgRY5pgWmOfYDFwGXTmxDTwXZwrTjd%2bFVUmhtUOUVbVIuj%2bJIHIT%2fa5u2fHEKPLVJhEsMQYFAJusaNYFd58Vmjxy8%3d",
@@ -450,7 +450,7 @@
       "isContentBase64": false
     }
   },
-  "Get-AzNetworkSecurityPerimeter+[NoContext]+List+$GET+https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/providers/Microsoft.Network/networkSecurityPerimeters?api-version=2021-02-01-preview\u0026%24skiptoken=1Y9BasMwFETvokVWkSW7orUNpmgRaCBuQ%2b0sulTkb1cYS%2bJLdtKE3L2GnqKrmcXAe3MnFq7xYOwYSHknO9m0pybbneSRlOQ7Rh9KxiZl1QAT2Jio24yQaDexMJ%2bDRuOjcTawp1w86zPvqVC9ouIFgOagBE11LkShc513BfPoFtMBBlYbjS64PibvEC8OR2b%2fsgE9o4k%2fR0AzQVy3r8obuqxl5VQZz1LKM8pT6hEWA5dNbzDEve3gWhV841fRxtygSjnZkloe5Fezl83HqX37J4fIY0sUTnIYEAYVoWvdCHaVl581efwC+10": {
+  "Get-AzNetworkSecurityPerimeter+[NoContext]+List1+$GET+https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/providers/Microsoft.Network/networkSecurityPerimeters?api-version=2021-02-01-preview\u0026%24skiptoken=1Y9BasMwFETvokVWkSW7orUNpmgRaCBuQ%2b0sulTkb1cYS%2bJLdtKE3L2GnqKrmcXAe3MnFq7xYOwYSHknO9m0pybbneSRlOQ7Rh9KxiZl1QAT2Jio24yQaDexMJ%2bDRuOjcTawp1w86zPvqVC9ouIFgOagBE11LkShc513BfPoFtMBBlYbjS64PibvEC8OR2b%2fsgE9o4k%2fR0AzQVy3r8obuqxl5VQZz1LKM8pT6hEWA5dNbzDEve3gWhV841fRxtygSjnZkloe5Fezl83HqX37J4fIY0sUTnIYEAYVoWvdCHaVl581efwC+10": {
     "Request": {
       "Method": "GET",
       "RequestUri": "https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/providers/Microsoft.Network/networkSecurityPerimeters?api-version=2021-02-01-preview\u0026%24skiptoken=1Y9BasMwFETvokVWkSW7orUNpmgRaCBuQ%2b0sulTkb1cYS%2bJLdtKE3L2GnqKrmcXAe3MnFq7xYOwYSHknO9m0pybbneSRlOQ7Rh9KxiZl1QAT2Jio24yQaDexMJ%2bDRuOjcTawp1w86zPvqVC9ouIFgOagBE11LkShc513BfPoFtMBBlYbjS64PibvEC8OR2b%2fsgE9o4k%2fR0AzQVy3r8obuqxl5VQZz1LKM8pT6hEWA5dNbzDEve3gWhV841fRxtygSjnZkloe5Fezl83HqX37J4fIY0sUTnIYEAYVoWvdCHaVl581efwC",
@@ -491,7 +491,7 @@
       "isContentBase64": false
     }
   },
-  "Get-AzNetworkSecurityPerimeter+[NoContext]+List+$GET+https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/providers/Microsoft.Network/networkSecurityPerimeters?api-version=2021-02-01-preview\u0026%24skiptoken=1Y9BasMwFETvokVWkSW7onUMoWgRaCBuQ%2bUsulTkb1cYS%2bJLdtKE3L2GnqKrmYGBeXMnDq7pYN0QSXUnO6makyp2J3kkFflOKcSKsVE73cMILmX6NiFkxo8sTudo0IZkvYvsqRTP5sw7KnSnqXgBoCVoQXNTCrExpSnbDQvoZ9sCRlZbgz76LmXvkC4eB%2bb%2bVIGZ0KafI6AdIS3dVx0snRez7GwLXuSUF5TnNCDMFi6rzmJMe9fCdZtzvgoLqbI3WAJZk1oe5JfaS%2fVxat7%2bySPyWBONo%2bx7hF4naBs%2fgFvg5WdNHr8%3d+11": {
+  "Get-AzNetworkSecurityPerimeter+[NoContext]+List1+$GET+https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/providers/Microsoft.Network/networkSecurityPerimeters?api-version=2021-02-01-preview\u0026%24skiptoken=1Y9BasMwFETvokVWkSW7onUMoWgRaCBuQ%2bUsulTkb1cYS%2bJLdtKE3L2GnqKrmYGBeXMnDq7pYN0QSXUnO6makyp2J3kkFflOKcSKsVE73cMILmX6NiFkxo8sTudo0IZkvYvsqRTP5sw7KnSnqXgBoCVoQXNTCrExpSnbDQvoZ9sCRlZbgz76LmXvkC4eB%2bb%2bVIGZ0KafI6AdIS3dVx0snRez7GwLXuSUF5TnNCDMFi6rzmJMe9fCdZtzvgoLqbI3WAJZk1oe5JfaS%2fVxat7%2bySPyWBONo%2bx7hF4naBs%2fgFvg5WdNHr8%3d+11": {
     "Request": {
       "Method": "GET",
       "RequestUri": "https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/providers/Microsoft.Network/networkSecurityPerimeters?api-version=2021-02-01-preview\u0026%24skiptoken=1Y9BasMwFETvokVWkSW7onUMoWgRaCBuQ%2bUsulTkb1cYS%2bJLdtKE3L2GnqKrmYGBeXMnDq7pYN0QSXUnO6makyp2J3kkFflOKcSKsVE73cMILmX6NiFkxo8sTudo0IZkvYvsqRTP5sw7KnSnqXgBoCVoQXNTCrExpSnbDQvoZ9sCRlZbgz76LmXvkC4eB%2bb%2bVIGZ0KafI6AdIS3dVx0snRez7GwLXuSUF5TnNCDMFi6rzmJMe9fCdZtzvgoLqbI3WAJZk1oe5JfaS%2fVxat7%2bySPyWBONo%2bx7hF4naBs%2fgFvg5WdNHr8%3d",
@@ -532,7 +532,7 @@
       "isContentBase64": false
     }
   },
-  "Get-AzNetworkSecurityPerimeter+[NoContext]+List+$GET+https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/providers/Microsoft.Network/networkSecurityPerimeters?api-version=2021-02-01-preview\u0026%24skiptoken=1Y%2bxasMwGITfRUOmyJJc0ToGUzQEGojbUNlDR0X%2b7QpjSUiykybk3WvoU3S6Gw6%2b7%2b7IwjUdjR0jKu9oL2TTynzfihMq0XdKPpaETMqqASawKVO3OUCm3UTifI46GJ%2bMs5E8FfxZn2mPueoV5i8AuADFMdMF5ztd6KLbER%2fcYjoIkdRGBxddn7J3SBcXRmL%2fUoKeg0k%2fJwhmgrRuX5U3eFnLyqlymjNMc0wZ9gEWA5dNb0JMB9vBtWKMbvxqKs0NKkbRFtXiKL7kQciPtnn7J4%2fQY4tUmMQwBBhUgq5xI9hVXnzW6PEL+12": {
+  "Get-AzNetworkSecurityPerimeter+[NoContext]+List1+$GET+https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/providers/Microsoft.Network/networkSecurityPerimeters?api-version=2021-02-01-preview\u0026%24skiptoken=1Y%2bxasMwGITfRUOmyJJc0ToGUzQEGojbUNlDR0X%2b7QpjSUiykybk3WvoU3S6Gw6%2b7%2b7IwjUdjR0jKu9oL2TTynzfihMq0XdKPpaETMqqASawKVO3OUCm3UTifI46GJ%2bMs5E8FfxZn2mPueoV5i8AuADFMdMF5ztd6KLbER%2fcYjoIkdRGBxddn7J3SBcXRmL%2fUoKeg0k%2fJwhmgrRuX5U3eFnLyqlymjNMc0wZ9gEWA5dNb0JMB9vBtWKMbvxqKs0NKkbRFtXiKL7kQciPtnn7J4%2fQY4tUmMQwBBhUgq5xI9hVXnzW6PEL+12": {
     "Request": {
       "Method": "GET",
       "RequestUri": "https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/providers/Microsoft.Network/networkSecurityPerimeters?api-version=2021-02-01-preview\u0026%24skiptoken=1Y%2bxasMwGITfRUOmyJJc0ToGUzQEGojbUNlDR0X%2b7QpjSUiykybk3WvoU3S6Gw6%2b7%2b7IwjUdjR0jKu9oL2TTynzfihMq0XdKPpaETMqqASawKVO3OUCm3UTifI46GJ%2bMs5E8FfxZn2mPueoV5i8AuADFMdMF5ztd6KLbER%2fcYjoIkdRGBxddn7J3SBcXRmL%2fUoKeg0k%2fJwhmgrRuX5U3eFnLyqlymjNMc0wZ9gEWA5dNb0JMB9vBtWKMbvxqKs0NKkbRFtXiKL7kQciPtnn7J4%2fQY4tUmMQwBBhUgq5xI9hVXnzW6PEL",
@@ -573,7 +573,7 @@
       "isContentBase64": false
     }
   },
-  "Get-AzNetworkSecurityPerimeter+[NoContext]+List+$GET+https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/providers/Microsoft.Network/networkSecurityPerimeters?api-version=2021-02-01-preview\u0026%24skiptoken=1Y9BasMwFETvokVWkSW7onUMpmgRaCBuQ2UvulTkb1cYS%2bZLdtKE3L2GnqKrmcXAe3MnDq7xaN0QSHEne6nqRmX7Rp5IQb5jnELB2Kid7mEEFxN9mxES40cW5nMwaKdovQvsKRfP5sw7KnSnqXgBoDloQVOTC7EzucnbHZvQL7YFDKyyBn3wXUzeIV48Dsz9pQIzo40%2fJ0A7Qly3r3qydFnLyikznqWUZ5SndEJYLFw2ncUQD66Fa5lmfDOtpsreoEw52ZJKHuWXOkj10dRv%2f%2bQReWyJxlH2PUKvI7S1H8Ct8vKzIo9f+13": {
+  "Get-AzNetworkSecurityPerimeter+[NoContext]+List1+$GET+https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/providers/Microsoft.Network/networkSecurityPerimeters?api-version=2021-02-01-preview\u0026%24skiptoken=1Y9BasMwFETvokVWkSW7onUMpmgRaCBuQ2UvulTkb1cYS%2bZLdtKE3L2GnqKrmcXAe3MnDq7xaN0QSHEne6nqRmX7Rp5IQb5jnELB2Kid7mEEFxN9mxES40cW5nMwaKdovQvsKRfP5sw7KnSnqXgBoDloQVOTC7EzucnbHZvQL7YFDKyyBn3wXUzeIV48Dsz9pQIzo40%2fJ0A7Qly3r3qydFnLyikznqWUZ5SndEJYLFw2ncUQD66Fa5lmfDOtpsreoEw52ZJKHuWXOkj10dRv%2f%2bQReWyJxlH2PUKvI7S1H8Ct8vKzIo9f+13": {
     "Request": {
       "Method": "GET",
       "RequestUri": "https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/providers/Microsoft.Network/networkSecurityPerimeters?api-version=2021-02-01-preview\u0026%24skiptoken=1Y9BasMwFETvokVWkSW7onUMpmgRaCBuQ2UvulTkb1cYS%2bZLdtKE3L2GnqKrmcXAe3MnDq7xaN0QSHEne6nqRmX7Rp5IQb5jnELB2Kid7mEEFxN9mxES40cW5nMwaKdovQvsKRfP5sw7KnSnqXgBoDloQVOTC7EzucnbHZvQL7YFDKyyBn3wXUzeIV48Dsz9pQIzo40%2fJ0A7Qly3r3qydFnLyikznqWUZ5SndEJYLFw2ncUQD66Fa5lmfDOtpsreoEw52ZJKHuWXOkj10dRv%2f%2bQReWyJxlH2PUKvI7S1H8Ct8vKzIo9f",
@@ -614,7 +614,7 @@
       "isContentBase64": false
     }
   },
-  "Get-AzNetworkSecurityPerimeter+[NoContext]+List+$GET+https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/providers/Microsoft.Network/networkSecurityPerimeters?api-version=2021-02-01-preview\u0026%24skiptoken=1Y9BasMwFETvokVWkSU7onUMpmgRaCBuQ%2b0sslTkb1cYS%2bJLdtKE3L2GnqKrmcXAe%2fMgFm7xYOwQSPEgO1k3pzrbneSRFOQ7Rh8KxkZlVQ8j2Jio%2b4SQaDeyMF2CRuOjcTawTS5e9IV3VKhOUfEKQHNQgqY6F2Krc523W%2bbRzaYFDKwyGl1wXUw%2bIF4dDsz%2bZQ16QhN%2fjoBmhLhs35Q3dF7KwikznqWUZ5Sn1CPMBq6rzmCIe9vCrUw3fOUX09rcoUw5WZNKHuS53sv689S8%2f5NH5LkmCkfZ9wi9itA2bgC7yMuvijx%2fAQ%3d%3d+14": {
+  "Get-AzNetworkSecurityPerimeter+[NoContext]+List1+$GET+https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/providers/Microsoft.Network/networkSecurityPerimeters?api-version=2021-02-01-preview\u0026%24skiptoken=1Y9BasMwFETvokVWkSU7onUMpmgRaCBuQ%2b0sslTkb1cYS%2bJLdtKE3L2GnqKrmcXAe%2fMgFm7xYOwQSPEgO1k3pzrbneSRFOQ7Rh8KxkZlVQ8j2Jio%2b4SQaDeyMF2CRuOjcTawTS5e9IV3VKhOUfEKQHNQgqY6F2Krc523W%2bbRzaYFDKwyGl1wXUw%2bIF4dDsz%2bZQ16QhN%2fjoBmhLhs35Q3dF7KwikznqWUZ5Sn1CPMBq6rzmCIe9vCrUw3fOUX09rcoUw5WZNKHuS53sv689S8%2f5NH5LkmCkfZ9wi9itA2bgC7yMuvijx%2fAQ%3d%3d+14": {
     "Request": {
       "Method": "GET",
       "RequestUri": "https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/providers/Microsoft.Network/networkSecurityPerimeters?api-version=2021-02-01-preview\u0026%24skiptoken=1Y9BasMwFETvokVWkSU7onUMpmgRaCBuQ%2b0sslTkb1cYS%2bJLdtKE3L2GnqKrmcXAe%2fMgFm7xYOwQSPEgO1k3pzrbneSRFOQ7Rh8KxkZlVQ8j2Jio%2b4SQaDeyMF2CRuOjcTawTS5e9IV3VKhOUfEKQHNQgqY6F2Krc523W%2bbRzaYFDKwyGl1wXUw%2bIF4dDsz%2bZQ16QhN%2fjoBmhLhs35Q3dF7KwikznqWUZ5Sn1CPMBq6rzmCIe9vCrUw3fOUX09rcoUw5WZNKHuS53sv689S8%2f5NH5LkmCkfZ9wi9itA2bgC7yMuvijx%2fAQ%3d%3d",
@@ -655,7 +655,7 @@
       "isContentBase64": false
     }
   },
-  "Get-AzNetworkSecurityPerimeter+[NoContext]+List+$GET+https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/providers/Microsoft.Network/networkSecurityPerimeters?api-version=2021-02-01-preview\u0026%24skiptoken=1Y9BasMwFETvokVWkSW7onUMpmgRaCBuQ20vulTkb1cYS%2bJLdtKE3L2GnqKrmcXAe3MnFq7xaOwYSHEne1k3bZ3tW3kiBfmO0YeCsUlZNcAENibqNiMk2k0szOeg0fhonA3sKRfP%2bsx7KlSvqHgBoDkoQVOdC7HTuc67HfPoFtMBBlYZjS64PibvEC8OR2b%2fsgY9o4k%2fJ0AzQVy3r8obuqxl5ZQZz1LKM8pT6hEWA5dNbzDEg%2b3gWqaCb%2fxqWpsblCknW1LJo%2fyqD7L%2baJu3f%2fKIPLZE4SSHAWFQEbrGjWBXeflZkccv+15": {
+  "Get-AzNetworkSecurityPerimeter+[NoContext]+List1+$GET+https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/providers/Microsoft.Network/networkSecurityPerimeters?api-version=2021-02-01-preview\u0026%24skiptoken=1Y9BasMwFETvokVWkSW7onUMpmgRaCBuQ20vulTkb1cYS%2bJLdtKE3L2GnqKrmcXAe3MnFq7xaOwYSHEne1k3bZ3tW3kiBfmO0YeCsUlZNcAENibqNiMk2k0szOeg0fhonA3sKRfP%2bsx7KlSvqHgBoDkoQVOdC7HTuc67HfPoFtMBBlYZjS64PibvEC8OR2b%2fsgY9o4k%2fJ0AzQVy3r8obuqxl5ZQZz1LKM8pT6hEWA5dNbzDEg%2b3gWqaCb%2fxqWpsblCknW1LJo%2fyqD7L%2baJu3f%2fKIPLZE4SSHAWFQEbrGjWBXeflZkccv+15": {
     "Request": {
       "Method": "GET",
       "RequestUri": "https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/providers/Microsoft.Network/networkSecurityPerimeters?api-version=2021-02-01-preview\u0026%24skiptoken=1Y9BasMwFETvokVWkSW7onUMpmgRaCBuQ20vulTkb1cYS%2bJLdtKE3L2GnqKrmcXAe3MnFq7xaOwYSHEne1k3bZ3tW3kiBfmO0YeCsUlZNcAENibqNiMk2k0szOeg0fhonA3sKRfP%2bsx7KlSvqHgBoDkoQVOdC7HTuc67HfPoFtMBBlYZjS64PibvEC8OR2b%2fsgY9o4k%2fJ0AzQVy3r8obuqxl5ZQZz1LKM8pT6hEWA5dNbzDEg%2b3gWqaCb%2fxqWpsblCknW1LJo%2fyqD7L%2baJu3f%2fKIPLZE4SSHAWFQEbrGjWBXeflZkccv",
@@ -696,7 +696,7 @@
       "isContentBase64": false
     }
   },
-  "Get-AzNetworkSecurityPerimeter+[NoContext]+List+$GET+https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/providers/Microsoft.Network/networkSecurityPerimeters?api-version=2021-02-01-preview\u0026%24skiptoken=1Y9BboMwFETv4kVWMTbUbQkSqryI1EihjUpYZOmYD7UQtvVtSJoody9ST9HVzGKk9%2bZOLFzj3tghkOJOtrI%2bNnW2beSBFOQ7Rh8KxkZlVQ8j2Jio24SQaDeyMJ2DRuOjcTawp1y86DPvqFCdouIVgOagBE11LsRG5zpvN8yjm00LGFhlNLrguph8QLw4HJj9yxr0hCb%2bHADNCHHZvilv6LyUhVNmPEspzyhPqUeYDVxWncEQd7aFa5k%2b85VfTGtzgzLlZE0quZeneifrz%2bb4%2fk8ekceaKBxl3yP0KkJ7dAPYRV5%2bVeTxCw%3d%3d+16": {
+  "Get-AzNetworkSecurityPerimeter+[NoContext]+List1+$GET+https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/providers/Microsoft.Network/networkSecurityPerimeters?api-version=2021-02-01-preview\u0026%24skiptoken=1Y9BboMwFETv4kVWMTbUbQkSqryI1EihjUpYZOmYD7UQtvVtSJoody9ST9HVzGKk9%2bZOLFzj3tghkOJOtrI%2bNnW2beSBFOQ7Rh8KxkZlVQ8j2Jio24SQaDeyMJ2DRuOjcTawp1y86DPvqFCdouIVgOagBE11LsRG5zpvN8yjm00LGFhlNLrguph8QLw4HJj9yxr0hCb%2bHADNCHHZvilv6LyUhVNmPEspzyhPqUeYDVxWncEQd7aFa5k%2b85VfTGtzgzLlZE0quZeneifrz%2bb4%2fk8ekceaKBxl3yP0KkJ7dAPYRV5%2bVeTxCw%3d%3d+16": {
     "Request": {
       "Method": "GET",
       "RequestUri": "https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/providers/Microsoft.Network/networkSecurityPerimeters?api-version=2021-02-01-preview\u0026%24skiptoken=1Y9BboMwFETv4kVWMTbUbQkSqryI1EihjUpYZOmYD7UQtvVtSJoody9ST9HVzGKk9%2bZOLFzj3tghkOJOtrI%2bNnW2beSBFOQ7Rh8KxkZlVQ8j2Jio24SQaDeyMJ2DRuOjcTawp1y86DPvqFCdouIVgOagBE11LsRG5zpvN8yjm00LGFhlNLrguph8QLw4HJj9yxr0hCb%2bHADNCHHZvilv6LyUhVNmPEspzyhPqUeYDVxWncEQd7aFa5k%2b85VfTGtzgzLlZE0quZeneifrz%2bb4%2fk8ekceaKBxl3yP0KkJ7dAPYRV5%2bVeTxCw%3d%3d",
@@ -737,7 +737,7 @@
       "isContentBase64": false
     }
   },
-  "Get-AzNetworkSecurityPerimeter+[NoContext]+List+$GET+https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/providers/Microsoft.Network/networkSecurityPerimeters?api-version=2021-02-01-preview\u0026%24skiptoken=1Y9BasMwFETvokVWkSW7InUMpmgRaCBuQ%2b0sslTkb1cYS%2bJLdtKE3L2GnqKrmcXAe%2fMgFm7xYOwQSPEgO1k3pzrbneSRFOQ7Rh8KxkZlVQ8j2Jio%2b4SQaDeyMF2CRuOjcTawl1xs9IV3VKhOUfEKQHNQgqY6F2Krc523W%2bbRzaYFDKwyGl1wXUw%2bIF4dDsz%2bZQ16QhN%2fjoBmhLhs35Q3dF7KwikznqWUZ5Sn1CPMBq6rzmCIe9vCrUw3fOUX09rcoUw5WZNKHuS53sv689S8%2f5NH5LkmCkfZ9wi9itA2bgC7yMuvijx%2fAQ%3d%3d+17": {
+  "Get-AzNetworkSecurityPerimeter+[NoContext]+List1+$GET+https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/providers/Microsoft.Network/networkSecurityPerimeters?api-version=2021-02-01-preview\u0026%24skiptoken=1Y9BasMwFETvokVWkSW7InUMpmgRaCBuQ%2b0sslTkb1cYS%2bJLdtKE3L2GnqKrmcXAe%2fMgFm7xYOwQSPEgO1k3pzrbneSRFOQ7Rh8KxkZlVQ8j2Jio%2b4SQaDeyMF2CRuOjcTawl1xs9IV3VKhOUfEKQHNQgqY6F2Krc523W%2bbRzaYFDKwyGl1wXUw%2bIF4dDsz%2bZQ16QhN%2fjoBmhLhs35Q3dF7KwikznqWUZ5Sn1CPMBq6rzmCIe9vCrUw3fOUX09rcoUw5WZNKHuS53sv689S8%2f5NH5LkmCkfZ9wi9itA2bgC7yMuvijx%2fAQ%3d%3d+17": {
     "Request": {
       "Method": "GET",
       "RequestUri": "https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/providers/Microsoft.Network/networkSecurityPerimeters?api-version=2021-02-01-preview\u0026%24skiptoken=1Y9BasMwFETvokVWkSW7InUMpmgRaCBuQ%2b0sslTkb1cYS%2bJLdtKE3L2GnqKrmcXAe%2fMgFm7xYOwQSPEgO1k3pzrbneSRFOQ7Rh8KxkZlVQ8j2Jio%2b4SQaDeyMF2CRuOjcTawl1xs9IV3VKhOUfEKQHNQgqY6F2Krc523W%2bbRzaYFDKwyGl1wXUw%2bIF4dDsz%2bZQ16QhN%2fjoBmhLhs35Q3dF7KwikznqWUZ5Sn1CPMBq6rzmCIe9vCrUw3fOUX09rcoUw5WZNKHuS53sv689S8%2f5NH5LkmCkfZ9wi9itA2bgC7yMuvijx%2fAQ%3d%3d",
@@ -778,7 +778,7 @@
       "isContentBase64": false
     }
   },
-  "Get-AzNetworkSecurityPerimeter+[NoContext]+List+$GET+https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/providers/Microsoft.Network/networkSecurityPerimeters?api-version=2021-02-01-preview\u0026%24skiptoken=1Y9BasMwFETvokVWkSW7onEMpmgRaCBuQ%2b0sslTkb1cYS%2bJLdtKE3L2GnqKrmcXAe%2fMgFm7xYOwQSPEgO1k3pzrbneSRFOQ7Rh8KxkZlVQ8j2Jio%2b4SQaDeyMF2CRuOjcTawl1y86gvvqFCdomIDQHNQgqY6F2Krc523W%2bbRzaYFDKwyGl1wXUw%2bIF4dDsz%2bZQ16QhN%2fjoBmhLhs35Q3dF7KwikznqWUZ5Sn1CPMBq6rzmCIe9vCrUw3fOUX09rcoUw5WZNKHuS53sv689S8%2f5NH5LkmCkfZ9wi9itA2bgC7yMuvijx%2fAQ%3d%3d+18": {
+  "Get-AzNetworkSecurityPerimeter+[NoContext]+List1+$GET+https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/providers/Microsoft.Network/networkSecurityPerimeters?api-version=2021-02-01-preview\u0026%24skiptoken=1Y9BasMwFETvokVWkSW7onEMpmgRaCBuQ%2b0sslTkb1cYS%2bJLdtKE3L2GnqKrmcXAe%2fMgFm7xYOwQSPEgO1k3pzrbneSRFOQ7Rh8KxkZlVQ8j2Jio%2b4SQaDeyMF2CRuOjcTawl1y86gvvqFCdomIDQHNQgqY6F2Krc523W%2bbRzaYFDKwyGl1wXUw%2bIF4dDsz%2bZQ16QhN%2fjoBmhLhs35Q3dF7KwikznqWUZ5Sn1CPMBq6rzmCIe9vCrUw3fOUX09rcoUw5WZNKHuS53sv689S8%2f5NH5LkmCkfZ9wi9itA2bgC7yMuvijx%2fAQ%3d%3d+18": {
     "Request": {
       "Method": "GET",
       "RequestUri": "https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/providers/Microsoft.Network/networkSecurityPerimeters?api-version=2021-02-01-preview\u0026%24skiptoken=1Y9BasMwFETvokVWkSW7onEMpmgRaCBuQ%2b0sslTkb1cYS%2bJLdtKE3L2GnqKrmcXAe%2fMgFm7xYOwQSPEgO1k3pzrbneSRFOQ7Rh8KxkZlVQ8j2Jio%2b4SQaDeyMF2CRuOjcTawl1y86gvvqFCdomIDQHNQgqY6F2Krc523W%2bbRzaYFDKwyGl1wXUw%2bIF4dDsz%2bZQ16QhN%2fjoBmhLhs35Q3dF7KwikznqWUZ5Sn1CPMBq6rzmCIe9vCrUw3fOUX09rcoUw5WZNKHuS53sv689S8%2f5NH5LkmCkfZ9wi9itA2bgC7yMuvijx%2fAQ%3d%3d",
@@ -819,7 +819,7 @@
       "isContentBase64": false
     }
   },
-  "Get-AzNetworkSecurityPerimeter+[NoContext]+List+$GET+https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/providers/Microsoft.Network/networkSecurityPerimeters?api-version=2021-02-01-preview\u0026%24skiptoken=1Y%2bxasMwGITfRUOmyJJd0SoGUzQEGojbUNlDR0X%2b7QpjSUiykybk3WvoU3S6Gw6%2b7%2b7IwjUdjR0jKu9oL2TTymLfihMq0XdKPpaETMqqASawKVO3OUCm3UTifI46GJ%2bMs5E8cfasz7THTPUKsxcAzEExnGvO2E5zzbsd8cEtpoMQSW10cNH1KXuHdHFhJPYvJeg5mPRzgmAmSOv2VXmDl7WsnKqgRY5pgWmOfYDFwGXTmxDTwXZwrXJON341leYGVU7RFtXiKL7kQciPtnn7J4%2fQY4tUmMQwBBhUgq5xI9hVXnzW6PEL+19": {
+  "Get-AzNetworkSecurityPerimeter+[NoContext]+List1+$GET+https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/providers/Microsoft.Network/networkSecurityPerimeters?api-version=2021-02-01-preview\u0026%24skiptoken=1Y%2bxasMwGITfRUOmyJJd0SoGUzQEGojbUNlDR0X%2b7QpjSUiykybk3WvoU3S6Gw6%2b7%2b7IwjUdjR0jKu9oL2TTymLfihMq0XdKPpaETMqqASawKVO3OUCm3UTifI46GJ%2bMs5E8cfasz7THTPUKsxcAzEExnGvO2E5zzbsd8cEtpoMQSW10cNH1KXuHdHFhJPYvJeg5mPRzgmAmSOv2VXmDl7WsnKqgRY5pgWmOfYDFwGXTmxDTwXZwrXJON341leYGVU7RFtXiKL7kQciPtnn7J4%2fQY4tUmMQwBBhUgq5xI9hVXnzW6PEL+19": {
     "Request": {
       "Method": "GET",
       "RequestUri": "https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/providers/Microsoft.Network/networkSecurityPerimeters?api-version=2021-02-01-preview\u0026%24skiptoken=1Y%2bxasMwGITfRUOmyJJd0SoGUzQEGojbUNlDR0X%2b7QpjSUiykybk3WvoU3S6Gw6%2b7%2b7IwjUdjR0jKu9oL2TTymLfihMq0XdKPpaETMqqASawKVO3OUCm3UTifI46GJ%2bMs5E8cfasz7THTPUKsxcAzEExnGvO2E5zzbsd8cEtpoMQSW10cNH1KXuHdHFhJPYvJeg5mPRzgmAmSOv2VXmDl7WsnKqgRY5pgWmOfYDFwGXTmxDTwXZwrXJON341leYGVU7RFtXiKL7kQciPtnn7J4%2fQY4tUmMQwBBhUgq5xI9hVXnzW6PEL",
@@ -860,7 +860,7 @@
       "isContentBase64": false
     }
   },
-  "Get-AzNetworkSecurityPerimeter+[NoContext]+List+$GET+https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/providers/Microsoft.Network/networkSecurityPerimeters?api-version=2021-02-01-preview\u0026%24skiptoken=1Y9BasMwFETvokVWkSW7orUNpmgRaCBuQ%2b0sulTkb1cYS%2bJLdtKE3L2GnqKrmcXAe3MnFq7xYOwYSHknO9m0pybbneSRlOQ7Rh9KxiZl1QAT2Jio24yQaDexMJ%2bDRuOjcTawp1w86zPvqVC9ouIFgOagBE11LkShc513BfPoFtMBBlYbjS64PibvEC8OR2b%2fsgE9o4k%2fR0AzQVy3r8obuqxl5VQZz1LKM8pT6hEWA5dNbzDEve3gWqUF3%2fjVtDE3qFJOtqSWB%2fnV7GXzcWrf%2fskj8tgShZMcBoRBRehaN4Jd5eVnTR6%2f+20": {
+  "Get-AzNetworkSecurityPerimeter+[NoContext]+List1+$GET+https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/providers/Microsoft.Network/networkSecurityPerimeters?api-version=2021-02-01-preview\u0026%24skiptoken=1Y9BasMwFETvokVWkSW7orUNpmgRaCBuQ%2b0sulTkb1cYS%2bJLdtKE3L2GnqKrmcXAe3MnFq7xYOwYSHknO9m0pybbneSRlOQ7Rh9KxiZl1QAT2Jio24yQaDexMJ%2bDRuOjcTawp1w86zPvqVC9ouIFgOagBE11LkShc513BfPoFtMBBlYbjS64PibvEC8OR2b%2fsgE9o4k%2fR0AzQVy3r8obuqxl5VQZz1LKM8pT6hEWA5dNbzDEve3gWqUF3%2fjVtDE3qFJOtqSWB%2fnV7GXzcWrf%2fskj8tgShZMcBoRBRehaN4Jd5eVnTR6%2f+20": {
     "Request": {
       "Method": "GET",
       "RequestUri": "https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/providers/Microsoft.Network/networkSecurityPerimeters?api-version=2021-02-01-preview\u0026%24skiptoken=1Y9BasMwFETvokVWkSW7orUNpmgRaCBuQ%2b0sulTkb1cYS%2bJLdtKE3L2GnqKrmcXAe3MnFq7xYOwYSHknO9m0pybbneSRlOQ7Rh9KxiZl1QAT2Jio24yQaDexMJ%2bDRuOjcTawp1w86zPvqVC9ouIFgOagBE11LkShc513BfPoFtMBBlYbjS64PibvEC8OR2b%2fsgE9o4k%2fR0AzQVy3r8obuqxl5VQZz1LKM8pT6hEWA5dNbzDEve3gWqUF3%2fjVtDE3qFJOtqSWB%2fnV7GXzcWrf%2fskj8tgShZMcBoRBRehaN4Jd5eVnTR6%2f",
@@ -901,7 +901,7 @@
       "isContentBase64": false
     }
   },
-  "Get-AzNetworkSecurityPerimeter+[NoContext]+List+$GET+https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/providers/Microsoft.Network/networkSecurityPerimeters?api-version=2021-02-01-preview\u0026%24skiptoken=1Y9BasMwFETvokVWkSW7onUMoWgRaCBuQ%2bUsulTkb1cYS%2bJLdtKE3L2GnqKrGZiBeXMnDq7pYN0QSXUnO6makyp2J3kkFflOKcSKsVE73cMILmX6NiFkxo8sTudo0IZkvYvsqRTP5sw7KnSnqXgBoCVoQXNTCrExpSnbDQvoZ9sCRlZbgz76LmXvkC4eB%2bb%2bVIGZ0KafI6AdIS3dVx0snRez7GwLXuSUF5TnNCDMFi6rzmJMe9fCdUn5Kiykyt5gm3OyJrU8yC%2b1l%2brj1Lz9k0fksSYaR9n3CL1O0DZ%2bALfAy8%2baPH4B+21": {
+  "Get-AzNetworkSecurityPerimeter+[NoContext]+List1+$GET+https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/providers/Microsoft.Network/networkSecurityPerimeters?api-version=2021-02-01-preview\u0026%24skiptoken=1Y9BasMwFETvokVWkSW7onUMoWgRaCBuQ%2bUsulTkb1cYS%2bJLdtKE3L2GnqKrGZiBeXMnDq7pYN0QSXUnO6makyp2J3kkFflOKcSKsVE73cMILmX6NiFkxo8sTudo0IZkvYvsqRTP5sw7KnSnqXgBoCVoQXNTCrExpSnbDQvoZ9sCRlZbgz76LmXvkC4eB%2bb%2bVIGZ0KafI6AdIS3dVx0snRez7GwLXuSUF5TnNCDMFi6rzmJMe9fCdUn5Kiykyt5gm3OyJrU8yC%2b1l%2brj1Lz9k0fksSYaR9n3CL1O0DZ%2bALfAy8%2baPH4B+21": {
     "Request": {
       "Method": "GET",
       "RequestUri": "https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/providers/Microsoft.Network/networkSecurityPerimeters?api-version=2021-02-01-preview\u0026%24skiptoken=1Y9BasMwFETvokVWkSW7onUMoWgRaCBuQ%2bUsulTkb1cYS%2bJLdtKE3L2GnqKrGZiBeXMnDq7pYN0QSXUnO6makyp2J3kkFflOKcSKsVE73cMILmX6NiFkxo8sTudo0IZkvYvsqRTP5sw7KnSnqXgBoCVoQXNTCrExpSnbDQvoZ9sCRlZbgz76LmXvkC4eB%2bb%2bVIGZ0KafI6AdIS3dVx0snRez7GwLXuSUF5TnNCDMFi6rzmJMe9fCdUn5Kiykyt5gm3OyJrU8yC%2b1l%2brj1Lz9k0fksSYaR9n3CL1O0DZ%2bALfAy8%2baPH4B",
@@ -942,7 +942,7 @@
       "isContentBase64": false
     }
   },
-  "Get-AzNetworkSecurityPerimeter+[NoContext]+List+$GET+https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/providers/Microsoft.Network/networkSecurityPerimeters?api-version=2021-02-01-preview\u0026%24skiptoken=1Y9BasMwFETvokVWkSW7onUMpmgRaCBuQ2UvulTkb1cYS%2bZLdtKE3L2GnqKrmcXAe3MnDq7xaN0QSHEne6nqRmX7Rp5IQb5jnELB2Kid7mEEFxN9mxES40cW5nMwaKdovQvsKRfP5sw7KnSnqXgBoDloQVOTC7EzucnbHZvQL7YFDKyyBn3wXUzeIV48Dsz9pQIzo40%2fJ0A7Qly3r3qydFnLyikznqWUZ5SndEJYLFw2ncUQD66Fa5mlfDOtpsreoEw52ZJKHuWXOkj10dRv%2f%2bQReWyJxlH2PUKvI7S1H8Ct8vKzIo9f+22": {
+  "Get-AzNetworkSecurityPerimeter+[NoContext]+List1+$GET+https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/providers/Microsoft.Network/networkSecurityPerimeters?api-version=2021-02-01-preview\u0026%24skiptoken=1Y9BasMwFETvokVWkSW7onUMpmgRaCBuQ2UvulTkb1cYS%2bZLdtKE3L2GnqKrmcXAe3MnDq7xaN0QSHEne6nqRmX7Rp5IQb5jnELB2Kid7mEEFxN9mxES40cW5nMwaKdovQvsKRfP5sw7KnSnqXgBoDloQVOTC7EzucnbHZvQL7YFDKyyBn3wXUzeIV48Dsz9pQIzo40%2fJ0A7Qly3r3qydFnLyikznqWUZ5SndEJYLFw2ncUQD66Fa5mlfDOtpsreoEw52ZJKHuWXOkj10dRv%2f%2bQReWyJxlH2PUKvI7S1H8Ct8vKzIo9f+22": {
     "Request": {
       "Method": "GET",
       "RequestUri": "https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/providers/Microsoft.Network/networkSecurityPerimeters?api-version=2021-02-01-preview\u0026%24skiptoken=1Y9BasMwFETvokVWkSW7onUMpmgRaCBuQ2UvulTkb1cYS%2bZLdtKE3L2GnqKrmcXAe3MnDq7xaN0QSHEne6nqRmX7Rp5IQb5jnELB2Kid7mEEFxN9mxES40cW5nMwaKdovQvsKRfP5sw7KnSnqXgBoDloQVOTC7EzucnbHZvQL7YFDKyyBn3wXUzeIV48Dsz9pQIzo40%2fJ0A7Qly3r3qydFnLyikznqWUZ5SndEJYLFw2ncUQD66Fa5mlfDOtpsreoEw52ZJKHuWXOkj10dRv%2f%2bQReWyJxlH2PUKvI7S1H8Ct8vKzIo9f",
@@ -983,7 +983,7 @@
       "isContentBase64": false
     }
   },
-  "Get-AzNetworkSecurityPerimeter+[NoContext]+List+$GET+https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/providers/Microsoft.Network/networkSecurityPerimeters?api-version=2021-02-01-preview\u0026%24skiptoken=1Y%2bxasMwGITfRUOmyJJV0ToGUzQEGojbUNlDR0X%2b7QpjSUiykybk3WvoU3S6Gw6%2b7%2b7IwjUdjR0jKu9oL2TTSrZvxQmV6DslH0tCJmXVABPYlKnbHCDTbiJxPkcdjE%2fG2UieCv6sz7THXPUK8xcAXIDiONcF5ztd6KLbER%2fcYjoIkdRGBxddn7J3SBcXRmL%2fUoKeg0k%2fJwhmgrRuX5U3eFnLyqkYZTmmDNMc%2bwCLgcumNyGmg%2b3gWjFGN341leYGVU7RFtXiKL7kQciPtnn7J4%2fQY4tUmMQwBBhUgq5xI9hVXnzW6PEL+23": {
+  "Get-AzNetworkSecurityPerimeter+[NoContext]+List1+$GET+https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/providers/Microsoft.Network/networkSecurityPerimeters?api-version=2021-02-01-preview\u0026%24skiptoken=1Y%2bxasMwGITfRUOmyJJV0ToGUzQEGojbUNlDR0X%2b7QpjSUiykybk3WvoU3S6Gw6%2b7%2b7IwjUdjR0jKu9oL2TTSrZvxQmV6DslH0tCJmXVABPYlKnbHCDTbiJxPkcdjE%2fG2UieCv6sz7THXPUK8xcAXIDiONcF5ztd6KLbER%2fcYjoIkdRGBxddn7J3SBcXRmL%2fUoKeg0k%2fJwhmgrRuX5U3eFnLyqkYZTmmDNMc%2bwCLgcumNyGmg%2b3gWjFGN341leYGVU7RFtXiKL7kQciPtnn7J4%2fQY4tUmMQwBBhUgq5xI9hVXnzW6PEL+23": {
     "Request": {
       "Method": "GET",
       "RequestUri": "https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/providers/Microsoft.Network/networkSecurityPerimeters?api-version=2021-02-01-preview\u0026%24skiptoken=1Y%2bxasMwGITfRUOmyJJV0ToGUzQEGojbUNlDR0X%2b7QpjSUiykybk3WvoU3S6Gw6%2b7%2b7IwjUdjR0jKu9oL2TTSrZvxQmV6DslH0tCJmXVABPYlKnbHCDTbiJxPkcdjE%2fG2UieCv6sz7THXPUK8xcAXIDiONcF5ztd6KLbER%2fcYjoIkdRGBxddn7J3SBcXRmL%2fUoKeg0k%2fJwhmgrRuX5U3eFnLyqkYZTmmDNMc%2bwCLgcumNyGmg%2b3gWjFGN341leYGVU7RFtXiKL7kQciPtnn7J4%2fQY4tUmMQwBBhUgq5xI9hVXnzW6PEL",
@@ -1024,7 +1024,7 @@
       "isContentBase64": false
     }
   },
-  "Get-AzNetworkSecurityPerimeter+[NoContext]+List+$GET+https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/providers/Microsoft.Network/networkSecurityPerimeters?api-version=2021-02-01-preview\u0026%24skiptoken=1Y9BasMwFETvokVWkSU7onUMpmgRaCBuQ%2b0sslTkb1cYS%2bJLdtKE3L2GnqKrmcXAe%2fMgFm7xYOwQSPEgO1k3pzrbneSRFOQ7Rh8KxkZlVQ8j2Jio%2b4SQaDeyMF2CRuOjcTawTS5e9IV3VKhOUfEKQHNQgqY6F2Krc523W%2bbRzaYFDKwyGl1wXUw%2bIF4dDsz%2bZQ16QhN%2fjoBmhLhs35Q3dF7KwikznqWUZ5Sn1CPMBq6rzmCIe9vCrcw2fOUX09rcoUw5WZNKHuS53sv689S8%2f5NH5LkmCkfZ9wi9itA2bgC7yMuvijx%2fAQ%3d%3d+24": {
+  "Get-AzNetworkSecurityPerimeter+[NoContext]+List1+$GET+https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/providers/Microsoft.Network/networkSecurityPerimeters?api-version=2021-02-01-preview\u0026%24skiptoken=1Y9BasMwFETvokVWkSU7onUMpmgRaCBuQ%2b0sslTkb1cYS%2bJLdtKE3L2GnqKrmcXAe%2fMgFm7xYOwQSPEgO1k3pzrbneSRFOQ7Rh8KxkZlVQ8j2Jio%2b4SQaDeyMF2CRuOjcTawTS5e9IV3VKhOUfEKQHNQgqY6F2Krc523W%2bbRzaYFDKwyGl1wXUw%2bIF4dDsz%2bZQ16QhN%2fjoBmhLhs35Q3dF7KwikznqWUZ5Sn1CPMBq6rzmCIe9vCrcw2fOUX09rcoUw5WZNKHuS53sv689S8%2f5NH5LkmCkfZ9wi9itA2bgC7yMuvijx%2fAQ%3d%3d+24": {
     "Request": {
       "Method": "GET",
       "RequestUri": "https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/providers/Microsoft.Network/networkSecurityPerimeters?api-version=2021-02-01-preview\u0026%24skiptoken=1Y9BasMwFETvokVWkSU7onUMpmgRaCBuQ%2b0sslTkb1cYS%2bJLdtKE3L2GnqKrmcXAe%2fMgFm7xYOwQSPEgO1k3pzrbneSRFOQ7Rh8KxkZlVQ8j2Jio%2b4SQaDeyMF2CRuOjcTawTS5e9IV3VKhOUfEKQHNQgqY6F2Krc523W%2bbRzaYFDKwyGl1wXUw%2bIF4dDsz%2bZQ16QhN%2fjoBmhLhs35Q3dF7KwikznqWUZ5Sn1CPMBq6rzmCIe9vCrcw2fOUX09rcoUw5WZNKHuS53sv689S8%2f5NH5LkmCkfZ9wi9itA2bgC7yMuvijx%2fAQ%3d%3d",
@@ -1065,7 +1065,7 @@
       "isContentBase64": false
     }
   },
-  "Get-AzNetworkSecurityPerimeter+[NoContext]+List+$GET+https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/providers/Microsoft.Network/networkSecurityPerimeters?api-version=2021-02-01-preview\u0026%24skiptoken=1Y9BasMwFETvokVWkSW7onUMpmgRaCBuQ20vulTkb1cYS%2bJLdtKE3L2GnqKrmcXAe3MnFq7xaOwYSHEne1k3bZ3tW3kiBfmO0YeCsUlZNcAENibqNiMk2k0szOeg0fhonA3sKRfP%2bsx7KlSvqHgBoDkoQVOdC7HTuc67HfPoFtMBBlYZjS64PibvEC8OR2b%2fsgY9o4k%2fJ0AzQVy3r8obuqxl5ZQZz1LKM8pT6hEWA5dNbzDEg%2b3gWmaCb%2fxqWpsblCknW1LJo%2fyqD7L%2baJu3f%2fKIPLZE4SSHAWFQEbrGjWBXeflZkccv+25": {
+  "Get-AzNetworkSecurityPerimeter+[NoContext]+List1+$GET+https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/providers/Microsoft.Network/networkSecurityPerimeters?api-version=2021-02-01-preview\u0026%24skiptoken=1Y9BasMwFETvokVWkSW7onUMpmgRaCBuQ20vulTkb1cYS%2bJLdtKE3L2GnqKrmcXAe3MnFq7xaOwYSHEne1k3bZ3tW3kiBfmO0YeCsUlZNcAENibqNiMk2k0szOeg0fhonA3sKRfP%2bsx7KlSvqHgBoDkoQVOdC7HTuc67HfPoFtMBBlYZjS64PibvEC8OR2b%2fsgY9o4k%2fJ0AzQVy3r8obuqxl5ZQZz1LKM8pT6hEWA5dNbzDEg%2b3gWmaCb%2fxqWpsblCknW1LJo%2fyqD7L%2baJu3f%2fKIPLZE4SSHAWFQEbrGjWBXeflZkccv+25": {
     "Request": {
       "Method": "GET",
       "RequestUri": "https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/providers/Microsoft.Network/networkSecurityPerimeters?api-version=2021-02-01-preview\u0026%24skiptoken=1Y9BasMwFETvokVWkSW7onUMpmgRaCBuQ20vulTkb1cYS%2bJLdtKE3L2GnqKrmcXAe3MnFq7xaOwYSHEne1k3bZ3tW3kiBfmO0YeCsUlZNcAENibqNiMk2k0szOeg0fhonA3sKRfP%2bsx7KlSvqHgBoDkoQVOdC7HTuc67HfPoFtMBBlYZjS64PibvEC8OR2b%2fsgY9o4k%2fJ0AzQVy3r8obuqxl5ZQZz1LKM8pT6hEWA5dNbzDEg%2b3gWmaCb%2fxqWpsblCknW1LJo%2fyqD7L%2baJu3f%2fKIPLZE4SSHAWFQEbrGjWBXeflZkccv",
@@ -1106,7 +1106,7 @@
       "isContentBase64": false
     }
   },
-  "Get-AzNetworkSecurityPerimeter+[NoContext]+List+$GET+https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/providers/Microsoft.Network/networkSecurityPerimeters?api-version=2021-02-01-preview\u0026%24skiptoken=1Y9BboMwFETv4kVWMTbUbQkSqryI1EihjUpYZOmYD7UQtvVtSJoody9ST9HVzGKk9%2bZOLFzj3tghkOJOtrI%2bNnW2beSBFOQ7Rh8KxkZlVQ8j2Jio24SQaDeyMJ2DRuOjcTawp1y86DPvqFCdouIVgOagBE11LsRG5zpvN8yjm00LGFhlNLrguph8QLw4HJj9yxr0hCb%2bHADNCHHZvilv6LyUhVNmPEspzyhPqUeYDVxWncEQd7aFa5k985VfTGtzgzLlZE0quZeneifrz%2bb4%2fk8ekceaKBxl3yP0KkJ7dAPYRV5%2bVeTxCw%3d%3d+26": {
+  "Get-AzNetworkSecurityPerimeter+[NoContext]+List1+$GET+https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/providers/Microsoft.Network/networkSecurityPerimeters?api-version=2021-02-01-preview\u0026%24skiptoken=1Y9BboMwFETv4kVWMTbUbQkSqryI1EihjUpYZOmYD7UQtvVtSJoody9ST9HVzGKk9%2bZOLFzj3tghkOJOtrI%2bNnW2beSBFOQ7Rh8KxkZlVQ8j2Jio24SQaDeyMJ2DRuOjcTawp1y86DPvqFCdouIVgOagBE11LsRG5zpvN8yjm00LGFhlNLrguph8QLw4HJj9yxr0hCb%2bHADNCHHZvilv6LyUhVNmPEspzyhPqUeYDVxWncEQd7aFa5k985VfTGtzgzLlZE0quZeneifrz%2bb4%2fk8ekceaKBxl3yP0KkJ7dAPYRV5%2bVeTxCw%3d%3d+26": {
     "Request": {
       "Method": "GET",
       "RequestUri": "https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/providers/Microsoft.Network/networkSecurityPerimeters?api-version=2021-02-01-preview\u0026%24skiptoken=1Y9BboMwFETv4kVWMTbUbQkSqryI1EihjUpYZOmYD7UQtvVtSJoody9ST9HVzGKk9%2bZOLFzj3tghkOJOtrI%2bNnW2beSBFOQ7Rh8KxkZlVQ8j2Jio24SQaDeyMJ2DRuOjcTawp1y86DPvqFCdouIVgOagBE11LsRG5zpvN8yjm00LGFhlNLrguph8QLw4HJj9yxr0hCb%2bHADNCHHZvilv6LyUhVNmPEspzyhPqUeYDVxWncEQd7aFa5k985VfTGtzgzLlZE0quZeneifrz%2bb4%2fk8ekceaKBxl3yP0KkJ7dAPYRV5%2bVeTxCw%3d%3d",
@@ -1147,7 +1147,7 @@
       "isContentBase64": false
     }
   },
-  "Get-AzNetworkSecurityPerimeter+[NoContext]+List+$GET+https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/providers/Microsoft.Network/networkSecurityPerimeters?api-version=2021-02-01-preview\u0026%24skiptoken=1Y9BasMwFETvokVWkSW7InUMpmgRaCBuQ%2b0sslTkb1cYS%2bJLdtKE3L2GnqKrmcXAe%2fMgFm7xYOwQSPEgO1k3pzrbneSRFOQ7Rh8KxkZlVQ8j2Jio%2b4SQaDeyMF2CRuOjcTawl1xs9IV3VKhOUfEKQHNQgqY6F2Krc523W%2bbRzaYFDKwyGl1wXUw%2bIF4dDsz%2bZQ16QhN%2fjoBmhLhs35Q3dF7KwikznqWUZ5Sn1CPMBq6rzmCIe9vCrcw2fOUX09rcoUw5WZNKHuS53sv689S8%2f5NH5LkmCkfZ9wi9itA2bgC7yMuvijx%2fAQ%3d%3d+27": {
+  "Get-AzNetworkSecurityPerimeter+[NoContext]+List1+$GET+https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/providers/Microsoft.Network/networkSecurityPerimeters?api-version=2021-02-01-preview\u0026%24skiptoken=1Y9BasMwFETvokVWkSW7InUMpmgRaCBuQ%2b0sslTkb1cYS%2bJLdtKE3L2GnqKrmcXAe%2fMgFm7xYOwQSPEgO1k3pzrbneSRFOQ7Rh8KxkZlVQ8j2Jio%2b4SQaDeyMF2CRuOjcTawl1xs9IV3VKhOUfEKQHNQgqY6F2Krc523W%2bbRzaYFDKwyGl1wXUw%2bIF4dDsz%2bZQ16QhN%2fjoBmhLhs35Q3dF7KwikznqWUZ5Sn1CPMBq6rzmCIe9vCrcw2fOUX09rcoUw5WZNKHuS53sv689S8%2f5NH5LkmCkfZ9wi9itA2bgC7yMuvijx%2fAQ%3d%3d+27": {
     "Request": {
       "Method": "GET",
       "RequestUri": "https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/providers/Microsoft.Network/networkSecurityPerimeters?api-version=2021-02-01-preview\u0026%24skiptoken=1Y9BasMwFETvokVWkSW7InUMpmgRaCBuQ%2b0sslTkb1cYS%2bJLdtKE3L2GnqKrmcXAe%2fMgFm7xYOwQSPEgO1k3pzrbneSRFOQ7Rh8KxkZlVQ8j2Jio%2b4SQaDeyMF2CRuOjcTawl1xs9IV3VKhOUfEKQHNQgqY6F2Krc523W%2bbRzaYFDKwyGl1wXUw%2bIF4dDsz%2bZQ16QhN%2fjoBmhLhs35Q3dF7KwikznqWUZ5Sn1CPMBq6rzmCIe9vCrcw2fOUX09rcoUw5WZNKHuS53sv689S8%2f5NH5LkmCkfZ9wi9itA2bgC7yMuvijx%2fAQ%3d%3d",
@@ -1188,7 +1188,7 @@
       "isContentBase64": false
     }
   },
-  "Get-AzNetworkSecurityPerimeter+[NoContext]+List+$GET+https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/providers/Microsoft.Network/networkSecurityPerimeters?api-version=2021-02-01-preview\u0026%24skiptoken=JY7LasMwEEX%2fRevKsh3RKIZStGsgbkudLrpU5LErjB6Mxk7TkH%2bPIat7FgfOvbIAf3RwYcqsubJWH%2fRPt9fdx%2ffxjTXslyjlRghvghnBQ6DC%2fM8IhY1e5PmULbpELoYsNko%2b21M5cGkGw%2bUWgCswkldWSbmzyqp%2bJxLGxfWAWbTOYsxxoOId6BxxEuGxHdgZHV0%2bAZ0HWt1XkxxfVlg7L3VZV7yseVnxhLA4OLPbEzPo9TgijIagP8YJwnpef7Xsdgc%3d+28": {
+  "Get-AzNetworkSecurityPerimeter+[NoContext]+List1+$GET+https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/providers/Microsoft.Network/networkSecurityPerimeters?api-version=2021-02-01-preview\u0026%24skiptoken=JY7LasMwEEX%2fRevKsh3RKIZStGsgbkudLrpU5LErjB6Mxk7TkH%2bPIat7FgfOvbIAf3RwYcqsubJWH%2fRPt9fdx%2ffxjTXslyjlRghvghnBQ6DC%2fM8IhY1e5PmULbpELoYsNko%2b21M5cGkGw%2bUWgCswkldWSbmzyqp%2bJxLGxfWAWbTOYsxxoOId6BxxEuGxHdgZHV0%2bAZ0HWt1XkxxfVlg7L3VZV7yseVnxhLA4OLPbEzPo9TgijIagP8YJwnpef7Xsdgc%3d+28": {
     "Request": {
       "Method": "GET",
       "RequestUri": "https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/providers/Microsoft.Network/networkSecurityPerimeters?api-version=2021-02-01-preview\u0026%24skiptoken=JY7LasMwEEX%2fRevKsh3RKIZStGsgbkudLrpU5LErjB6Mxk7TkH%2bPIat7FgfOvbIAf3RwYcqsubJWH%2fRPt9fdx%2ffxjTXslyjlRghvghnBQ6DC%2fM8IhY1e5PmULbpELoYsNko%2b21M5cGkGw%2bUWgCswkldWSbmzyqp%2bJxLGxfWAWbTOYsxxoOId6BxxEuGxHdgZHV0%2bAZ0HWt1XkxxfVlg7L3VZV7yseVnxhLA4OLPbEzPo9TgijIagP8YJwnpef7Xsdgc%3d",
