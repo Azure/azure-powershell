@@ -312,7 +312,11 @@ CmdletsToExport = 'Invoke-AzSqlServerExternalGovernanceStatusRefresh',
                'Get-AzSqlInstanceDatabaseCopyOperation',
                'Get-AzSqlInstanceDatabaseMoveOperation',
                'Start-AzSqlInstance',
-               'Stop-AzSqlInstance'
+               'Stop-AzSqlInstance',
+               'Get-AzSqlInstanceStartStopSchedule',
+               'New-AzSqlInstanceStartStopSchedule',
+               'Remove-AzSqlInstanceStartStopSchedule',
+               'New-AzSqlInstanceScheduleItem'
 
 # Variables to export from this module
 # VariablesToExport = @()
