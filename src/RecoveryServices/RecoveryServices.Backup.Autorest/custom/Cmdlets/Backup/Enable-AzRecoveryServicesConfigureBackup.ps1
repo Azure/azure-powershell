@@ -1,5 +1,5 @@
 function Enable-AzRecoveryServicesProtection {
-	[OutputType('Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IProtectedItem')]
+	[OutputType('PSObject')]
     [CmdletBinding(PositionalBinding=$false)]
     [Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Description('Triggers the enable protection operation for the given item')]
 
@@ -43,7 +43,11 @@ function Enable-AzRecoveryServicesProtection {
 
         [Parameter( HelpMessage='Specifies to reset disk exclusion setting associated with the item')]
         [switch]
-        ${ResetExclusionSettings}
+        ${ResetExclusionSettings},
+
+        [Parameter()]
+        [System.Management.Automation.SwitchParameter]
+        ${NoWait}
     )
     process
     {   
@@ -55,23 +59,35 @@ function Enable-AzRecoveryServicesProtection {
         {
             $Object=[Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.AzureVMWorkloadSapHanaDatabaseProtectedItem]::new()
         }
+        elseif($DatasourceType -eq "MSSQL")
+        {
+            $Object=[Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.AzureVMWorkloadSqlDatabaseProtectedItem]::new()
+        }
 
         $vaultName=$VaultName
         $resourceGroupName=$ResourceGroupName
         $fabricName="Azure"
-        if(-not($item))   #configure backup
+        if(-not($Item))   #configure backup
         {
             if($DatasourceType -eq "AzureVM")
             {
                 $ProtectableItem= Get-AzRecoveryServicesBackupProtectableItem -ResourceGroupName $resourceGroupName -VaultName $vaultName -Filter "backupManagementType eq 'AzureIaasVM' and WorkloadType -eq 'AzureVM'" | Where-Object { $_.friendlyName -match $VMName}
             }
-            elseif($DatasourceType -eq "SAPHANA")
+            elseif($DatasourceType -eq "MSSQL")
             {
-                $ProtectableItem= Get-AzRecoveryServicesBackupProtectableItem -ResourceGroupName $resourceGroupName -VaultName $vaultName -Filter "backupManagementType eq 'AzureWorkload' and WorkloadType -eq 'SAPHanaDatabase'" | Where-Object { $_.friendlyName -match $VMName}
+                $ProtectableItem= Get-AzRecoveryServicesBackupProtectableItem -ResourceGroupName $resourceGroupName -VaultName $vaultName -Filter "backupManagementType eq 'AzureWorkload' and WorkloadType -eq 'SQLDataBase'" | Where-Object { $_.friendlyName -match $VMName}
             }
-            $containerName=Get-containerName -Id $ProtectableItem.Id
-            $itemName=Get-ItemName -Id $ProtectableItem.Id
-            $Object.SourceResourceId=$ProtectableItem.Property.VirtualMachineId
+            if($ProtectableItem -eq $null)
+            {
+                $errormsg= "There is no protectable item by this name in the current vault."
+                throw $errormsg
+            }
+            $containerName=Get-containerNameFromArmId -Id $ProtectableItem.Id
+            $itemName=Get-ProtectableItemNameFromArmId -Id $ProtectableItem.Id
+            if($DatasourceType -eq "AzureVM")
+            {
+                $Object.SourceResourceId=$ProtectableItem.Property.VirtualMachineId
+            }
             if($PolicyId -ne "" -and $PolicyId -ne $null)
             {
                 $Object.PolicyId =$PolicyId
@@ -84,9 +100,20 @@ function Enable-AzRecoveryServicesProtection {
         }
         elseif($Item -ne $null) #modify backup
         {
-            $itemName=$Item.Name
-            $containerName=Get-containerName -Id $Item.Id
-            $Object.SourceResourceId= $Item.SourceResourceId
+            $itemName=Get-ProtectedItemNameFromArmId -Id $Item.Id
+            $containerName=Get-containerNameFromArmId -Id $Item.Id
+            if($DatasourceType -eq "AzureVM")
+            { 
+               if($Item.SourceResourceId -ne "" -and $Item.SourceResourceId -ne $null)
+               {
+                   $Object.SourceResourceId= $Item.SourceResourceId
+               }
+               else
+               {
+                   $Object.SourceResourceId= $Item.Property.VirtualMachineId
+               }
+            }
+
             if($PolicyId -ne "" -and $PolicyId -ne $null)
             {
                 $Object.PolicyId =$PolicyId
@@ -138,12 +165,27 @@ function Enable-AzRecoveryServicesProtection {
         $ItemObject.Property=$Object
         if($DatasourceType -eq "AzureVM")
         {
+            $ItemObject.SourceResourceId=$Object.SourceResourceId
+        }
+        if($DatasourceType -eq "AzureVM")
+        {
             $ItemObject.ProtectedItemType="Microsoft.Compute/virtualMachines"
         }
         elseif($DatasourceType -eq "SAPHANA")
         {
             $ItemObject.ProtectedItemType="AzureVmWorkloadSAPHanaDatabase"
         }
-        New-AzRecoveryServicesProtectedItem -ContainerName $containerName -FabricName $fabricName -Name $itemName -ResourceGroupName $resourceGroupName -VaultName $vaultName -Parameter $ItemObject
+        elseif($DatasourceType -eq "MSSQL")
+        {
+            $ItemObject.ProtectedItemType="AzureVmWorkloadSQLDatabase"
+        }
+        if($NoWait)
+        {
+            New-AzRecoveryServicesProtectedItem -ContainerName $containerName -FabricName $fabricName -Name $itemName -ResourceGroupName $resourceGroupName -VaultName $vaultName -Parameter $ItemObject -NoWait
+        }
+        else
+        {
+            New-AzRecoveryServicesProtectedItem -ContainerName $containerName -FabricName $fabricName -Name $itemName -ResourceGroupName $resourceGroupName -VaultName $vaultName -Parameter $ItemObject
+        }
     }
 }

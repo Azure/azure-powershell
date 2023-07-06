@@ -1,7 +1,7 @@
 
 
 function Disable-AzRecoveryServicesProtection {
-	[OutputType('Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IProtectedItem')]
+	[OutputType('PSObject')]
     [CmdletBinding(PositionalBinding=$false)]
     [Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Description('Triggers the disable protection operation for the given item')]
 
@@ -33,7 +33,11 @@ function Disable-AzRecoveryServicesProtection {
 
         [Parameter(Mandatory=$false, HelpMessage='Switch parameter to indicate that this cmdlet disables protection and retains recovery points forever')]
         [Switch]
-        ${RetainRecoveryPointsForever}   
+        ${RetainRecoveryPointsForever},
+        
+        [Parameter()]
+        [System.Management.Automation.SwitchParameter]
+        ${NoWait}
     )
 
     process
@@ -46,17 +50,26 @@ function Disable-AzRecoveryServicesProtection {
         {
             $Object=[Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.AzureVMWorkloadSapHanaDatabaseProtectedItem]::new()
         }
-
-        $vaultName=$vaultName
+        elseif($DatasourceType -eq "MSSQL")
+        {
+            $Object=[Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.AzureVMWorkloadSqlDatabaseProtectedItem]::new()
+        }
+        $vaultName=$VaultName
         $resourceGroupName=$ResourceGroupName
         $itemName=$Item.Name
         $fabricName="Azure"
-        $containerName=Get-containerName -Id $Item.Id
+        $containerName=Get-containerNameFromArmId -Id $Item.Id
 
         if($RemoveRecoveryPoints)
         {   #disable immutability
-            #call the delete api 
-            Remove-AzRecoveryServicesProtectedItem -ContainerName $containerName -FabricName $fabricName -Name $itemName -ResourceGroupName $resourceGroupName -VaultName $vaultName
+            if($NoWait)
+            {
+                Remove-AzRecoveryServicesProtectedItem -ContainerName $containerName -FabricName $fabricName -Name $itemName -ResourceGroupName $resourceGroupName -VaultName $vaultName -NoWait
+            }
+            else
+            {
+                Remove-AzRecoveryServicesProtectedItem -ContainerName $containerName -FabricName $fabricName -Name $itemName -ResourceGroupName $resourceGroupName -VaultName $vaultName
+            }
             #Get-AzRecoveryServicesBackupOperationStatuses -OperationId "655642a4-dbcd-482e-98eb-debbeead3822" -ResourceGroupName arohijain-rg -SubscriptionId "38304e13-357e-405e-9e9a-220351dcce8c" -VaultName arohijain-backupvault -debug
         }
         if($RetainRecoveryPointsAsPerPolicy)
@@ -71,12 +84,18 @@ function Disable-AzRecoveryServicesProtection {
             {
                 $ItemObject.ProtectedItemType="AzureIaaSVMProtectedItem"
             }
-            elseif ($DatasourceType -eq "SAPHANA")
+            elseif ($DatasourceType -eq "SAPHANA" -or $DatasourceType -eq "MSSQL")
             {
                 $ItemObject.ProtectedItemType="AzureVmWorkloadProtectedItem"
             }
-        
-            New-AzRecoveryServicesProtectedItem -ContainerName $containerName -FabricName $fabricName -Name $itemName -ResourceGroupName $resourceGroupName -VaultName $vaultName -Parameter $ItemObject
+            if($NoWait)
+            {
+                New-AzRecoveryServicesProtectedItem -ContainerName $containerName -FabricName $fabricName -Name $itemName -ResourceGroupName $resourceGroupName -VaultName $vaultName -Parameter $ItemObject -NoWait
+            }
+            else
+            {
+                New-AzRecoveryServicesProtectedItem -ContainerName $containerName -FabricName $fabricName -Name $itemName -ResourceGroupName $resourceGroupName -VaultName $vaultName -Parameter $ItemObject
+            }
         }
         if($RetainRecoveryPointsForever)
         {
@@ -89,11 +108,18 @@ function Disable-AzRecoveryServicesProtection {
             {
                 $ItemObject.ProtectedItemType="Microsoft.Compute/virtualMachines"
             }
-            elseif ($DatasourceType -eq "SAPHANA")
+            elseif ($DatasourceType -eq "SAPHANA" -or $DatasourceType -eq "MSSQL")
             {
                 $ItemObject.ProtectedItemType="AzureVmWorkloadProtectedItem"
             }
-            New-AzRecoveryServicesProtectedItem -ContainerName $containerName -FabricName $fabricName -Name $itemName -ResourceGroupName $resourceGroupName -VaultName $vaultName -Parameter $ItemObject
+            if($NoWait)
+            {
+                New-AzRecoveryServicesProtectedItem -ContainerName $containerName -FabricName $fabricName -Name $itemName -ResourceGroupName $resourceGroupName -VaultName $vaultName -Parameter $ItemObject -NoWait
+            }
+            else
+            {
+                New-AzRecoveryServicesProtectedItem -ContainerName $containerName -FabricName $fabricName -Name $itemName -ResourceGroupName $resourceGroupName -VaultName $vaultName -Parameter $ItemObject
+            }
         }
     }
 }

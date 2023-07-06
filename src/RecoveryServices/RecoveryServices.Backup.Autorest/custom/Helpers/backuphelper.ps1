@@ -1,4 +1,4 @@
-function Get-containerName {
+function Get-containerNameFromArmId {
 	param(
 		[System.String]$Id
 	)	
@@ -7,7 +7,7 @@ function Get-containerName {
 
 }
 
-function Get-ItemName {
+function Get-ProtectableItemNameFromArmId {
 	param(
 		[System.String]$Id
 	)	
@@ -15,4 +15,12 @@ function Get-ItemName {
 	return $ItemName
 
 }
-	
+
+function Get-ProtectedItemNameFromArmId {
+	param(
+		[System.String]$Id
+	)	
+	$ItemName = (($Id -split "protectedItems/")[1] -split "/")[0]
+	return $ItemName
+
+}	
