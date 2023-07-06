@@ -12,8 +12,14 @@ Create an in-memory object for DistributeVersionerLatest.
 
 ## SYNTAX
 
+### DistributeVersionerLatest (Default)
 ```
 New-AzImageBuilderTemplateDistributorVersioningObject -Scheme <String> [-Major <Int32>] [<CommonParameters>]
+```
+
+### DistributeVersionerSource
+```
+New-AzImageBuilderTemplateDistributorVersioningObject -Scheme <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -52,7 +58,7 @@ Determine what is "latest" based on versions with this value as the major versio
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: DistributeVersionerLatest
 Aliases:
 
 Required: False
@@ -85,6 +91,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.DistributeVersionerLatest
+
+### Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.DistributeVersionerSource
 
 ## NOTES
 
